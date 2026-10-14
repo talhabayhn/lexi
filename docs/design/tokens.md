@@ -77,7 +77,8 @@ Box model as in CSS `border-box`: the border is inside a fixed size and content 
 Colored variants: `s5Red` (Pro card in settings), `s4Red` (exam-packs tile on home).
 **Pressed state:** the element translates by its shadow offset and the shadow collapses to 0 (80 ms) — see motion.md.
 
-Implementation: `Modifier.hardShadow(offset: Dp, color: Color = ink, shape: Shape)` drawing the shape
+Implementation: `Modifier.hardShadow(LexiTheme.shadows.s5, shape)` (token overload, preferred; a
+`hardShadow(offset, color, shape)` overload exists for values without a token) drawing the shape
 offset behind the content (drawBehind), not `Modifier.shadow` (that blurs).
 
 ## Shapes (`LexiShapes`)
