@@ -8,8 +8,8 @@ exact defaults.
 - `rule`: `STARTS` ("K ile başlar") or `CONTAINS` ("içinde X geçer"). Content decides per card; Q, X, Z and
   rare letters at low levels are usually `CONTAINS`.
 - Generation (`WheelGenerator`): for each letter pick one card from the pool (level [+ category]) using the
-  seeded RNG, preferring cards the player hasn't seen recently (solo only — daily/online ignore history so all
-  players get the same wheel). If no card exists for a letter, the slot is `SKIPPED` (not shown as playable;
+  seeded RNG, preferring cards the player hasn't seen recently (solo only — daily, duel and level test ignore
+  history so all players get the same wheel; `GameMode.usesCardHistory`). If no card exists for a letter, the slot is `SKIPPED` (not shown as playable;
   counts as neither right nor wrong). Content validation must keep this at 0 for shipped levels.
 - Review wheel: built from SRS-due cards; may have fewer than 26 slots (only letters that have due cards), in A–Z order.
 
@@ -57,16 +57,18 @@ the app goes to background.
 - Wrong / pass: 0. Passed-then-correct on a later lap: full points, but streak was broken by the pass.
 - Time bonus at the end if the wheel is completed: ⚙ 1 point per remaining second.
 - Hardcore ×1.5 on final total.
+- Multipliers are stored as integer percentages in `GameConfig` (110 = ×1.1) so scoring is exact on every platform.
 
 ## 7. Jokers
 | Joker | Effect | Cost | Limit |
 |---|---|---|---|
 | Harf aç (Reveal letter) | puts the correct letter into the next empty slot | ⚙ −10 s (untimed modes: −5 pts) | 1 per slot |
-| Çeldiricileri temizle (Remove distractors) | disables all distractor keys | ⚙ −15 s | 1 per slot |
+| Çeldiricileri temizle (Remove distractors) | disables all distractor keys | ⚙ −15 s (untimed modes: free) | 1 per slot |
 | Örnek cümle (Example) | shows example sentence with the word blanked | ⚙ −5 pts | 1 per slot |
 | Telaffuzu dinle (Listen) | speaks the answer (TTS) | ⚙ −10 pts | disabled at C1 and NAT |
 - Inventory per joker type, persisted. Sources: start pack (2/1/3/1), daily login +1 random, rewarded ad +1,
-  Pro +3/day refill. Jokers are not allowed in Daily (fair comparison) and Duel. ⚙
+  Pro +3/day refill. Jokers are not allowed in Daily (fair comparison), Duel and Level test (would distort the
+  placement). ⚙
 - A slot answered with a joker still counts as correct but its streak bonus is 0.
 
 ## 8. Duel (same device; same rules online in v1.1)
