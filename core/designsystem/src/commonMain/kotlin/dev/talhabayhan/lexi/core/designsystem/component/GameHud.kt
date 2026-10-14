@@ -1,7 +1,6 @@
 package dev.talhabayhan.lexi.core.designsystem.component
 
 import androidx.compose.animation.core.Animatable
-import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
@@ -87,9 +86,10 @@ public fun ClueCard(label: String, clue: String, level: String, letterCount: Str
 }
 
 /**
- * Countdown bar: 48dp, 3dp border, white track; the fill ([progress] 0..1) is yellow with a 3dp right edge, red in
- * the last 10 s ([warning]), when the counter pulses 1 → 1.18 → 1 on every change of [timeText] (motion.md #8; no
- * scale under reduced motion). The counter (18sp/800) sits 10dp from the left over the fill.
+ * Countdown bar: 48dp, 3dp border, white track; the fill ([progress] 0..1) is yellow with a 3dp right edge and the
+ * counter (18sp/800, 10dp from the left) is ink. In the last 10 s ([warning], motion.md #8) fill and counter switch
+ * to red at once (no fade: state changes are not faded) and the counter pulses 1 → 1.12 → 1 in a 600 ms loop;
+ * under reduced motion only the colours change.
  */
 @Composable
 public fun TimerBar(progress: Float, timeText: String, modifier: Modifier = Modifier, warning: Boolean = false) {
@@ -97,13 +97,14 @@ public fun TimerBar(progress: Float, timeText: String, modifier: Modifier = Modi
     val motion = LexiTheme.motion
     val border = LexiTheme.borders.regular
     val pulse = remember { Animatable(1f) }
-    LaunchedEffect(timeText, warning, motion) {
-        if (!warning || motion.reducedMotion) {
-            pulse.snapTo(1f)
-            return@LaunchedEffect
+    LaunchedEffect(warning, motion) {
+        pulse.snapTo(1f)
+        if (!warning || motion.reducedMotion) return@LaunchedEffect
+        val half = tween<Float>(motion.timeWarningPulseMillis / 2, easing = motion.linear)
+        while (true) {
+            pulse.animateTo(motion.timeWarningPulseScale, half)
+            pulse.animateTo(1f, half)
         }
-        pulse.animateTo(motion.timeWarningPulseScale, tween(motion.timeWarningPulseUpMillis, easing = LinearEasing))
-        pulse.animateTo(1f, tween(motion.timeWarningPulseDownMillis, easing = LinearEasing))
     }
     Box(
         modifier = modifier
@@ -121,6 +122,7 @@ public fun TimerBar(progress: Float, timeText: String, modifier: Modifier = Modi
         Text(
             text = timeText,
             style = LexiTheme.typography.heading18,
+            color = if (warning) colors.red else colors.ink,
             modifier = Modifier
                 .padding(start = GameHudDefaults.TimerTextInset)
                 .graphicsLayer {

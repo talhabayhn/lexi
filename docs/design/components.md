@@ -15,7 +15,7 @@ each with a `@Preview` and a Roborazzi screenshot. Feature screens compose ONLY 
 | `AnswerSlot` | Filled (ink bg, cream letter), Active (white, red border), Empty, Wrong (red bg, white letter), JokerFilled (blue bg) | 40×48dp, letter 26sp/800 |
 | `LetterKey` | Normal, Pressed (yellow), Used (dashed, muted), RemovedByJoker (dashed, empty) | height 50, 3dp border, shadow s3, 22sp/800, 5-col grid gap 8 |
 | `ClueCard` | — | white, 3dp, shadow s6, label + clue 30sp, right blue column 64dp with level + letter count |
-| `TimerBar` | normal (yellow), warning (red, pulsing counter) | 48dp high, 3dp border, fill + right border |
+| `TimerBar` | normal (yellow fill, ink counter), warning = last 10 s (red fill, red counter pulsing 1 → 1.12 → 1 every 600 ms; colours only under reduced motion) | 48dp high, 3dp border, fill + right border |
 | `ScoreBadge` | — | 48dp blue circle, white 15sp/800 |
 | `SegmentedControl` | 2–6 segments | selected = ink bg + yellow text; dividers 3dp |
 | `LexiSwitch` | on (blue track, yellow knob, right), off (cream track, ink knob, left) | 54×30 |

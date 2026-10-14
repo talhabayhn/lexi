@@ -69,14 +69,11 @@ public class LexiMotion internal constructor(
     /** #12 screen transitions. */
     public val screenTransitionDurationMillis: Int = 220
 
-    /** #8 time warning: counter scale-up of the once-a-second pulse (`aPulse`, 69 → 75 % of 4 s). */
-    public val timeWarningPulseUpMillis: Int = 240
-
-    /** #8 time warning: counter scale-down back to 1 (`aPulse`, 75 → 82 % of 4 s). */
-    public val timeWarningPulseDownMillis: Int = 280
+    /** #8 time warning: one counter pulse cycle 1 → 1.12 → 1, repeated while the warning lasts. */
+    public val timeWarningPulseMillis: Int = 600
 
     /** #8 time warning: peak counter scale. */
-    public val timeWarningPulseScale: Float = 1.18f
+    public val timeWarningPulseScale: Float = 1.12f
 
     /** #9 splash, total in app. */
     public val splashDurationMillis: Int = 1200

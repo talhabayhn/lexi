@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -35,6 +36,22 @@ class GameSampleScreenshotTest {
     fun gameComponents() {
         captureRoboImage("src/androidHostTest/screenshots/GameComponents.png") {
             LexiTheme(reducedMotion = false) { GameSample() }
+        }
+    }
+
+    /** Timer normal vs. last 10 s (reduced motion, so the pulse loop does not keep the capture busy). */
+    @Test
+    fun timerWarning() {
+        captureRoboImage("src/androidHostTest/screenshots/TimerBarStates.png") {
+            LexiTheme(reducedMotion = true) {
+                Column(
+                    modifier = Modifier.background(LexiTheme.colors.cream).padding(20.dp),
+                    verticalArrangement = Arrangement.spacedBy(16.dp),
+                ) {
+                    TimerBar(progress = 0.62f, timeText = "1:47", modifier = Modifier.width(260.dp))
+                    TimerBar(progress = 0.05f, timeText = "0:09", warning = true, modifier = Modifier.width(260.dp))
+                }
+            }
         }
     }
 }

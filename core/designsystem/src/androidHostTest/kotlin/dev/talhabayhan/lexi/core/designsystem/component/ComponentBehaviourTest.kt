@@ -12,6 +12,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshots.Snapshot
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toPixelMap
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.SemanticsProperties
@@ -23,6 +25,7 @@ import androidx.compose.ui.test.assertContentDescriptionEquals
 import androidx.compose.ui.test.assertIsNotEnabled
 import androidx.compose.ui.test.assertIsNotSelected
 import androidx.compose.ui.test.assertIsSelected
+import androidx.compose.ui.test.captureToImage
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
@@ -31,6 +34,7 @@ import androidx.compose.ui.unit.dp
 import dev.talhabayhan.lexi.core.designsystem.feedback.LocalHaptics
 import dev.talhabayhan.lexi.core.designsystem.feedback.LocalSoundPlayer
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
+import dev.talhabayhan.lexi.core.designsystem.theme.LightLexiColors
 import dev.talhabayhan.lexi.core.domain.feedback.HapticKind
 import dev.talhabayhan.lexi.core.domain.feedback.Haptics
 import dev.talhabayhan.lexi.core.domain.feedback.SoundEffect
@@ -39,11 +43,14 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
+import org.robolectric.annotation.GraphicsMode
+import kotlin.math.abs
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
 @OptIn(ExperimentalTestApi::class)
 @RunWith(RobolectricTestRunner::class)
+@GraphicsMode(GraphicsMode.Mode.NATIVE)
 @Config(sdk = [36], qualifiers = "w390dp-h844dp-xxhdpi")
 class ComponentBehaviourTest {
 
@@ -100,34 +107,79 @@ class ComponentBehaviourTest {
 
     @Test
     fun `timer counter pulses in the warning phase`() = runComposeUiTest {
-        val (peak, settled) = timerCounterWidths(reducedMotion = false)
-        assertTrue(peak > settled * 1.1f, "peak $peak vs settled $settled")
+        val (rest, peak) = timerCounterWidths(warning = true, reducedMotion = false)
+        assertTrue(peak > rest * 1.08f, "peak $peak vs rest $rest")
     }
 
     @Test
-    fun `timer counter does not scale under reduced motion`() = runComposeUiTest {
-        val (peak, settled) = timerCounterWidths(reducedMotion = true)
-        assertEquals(settled, peak, absoluteTolerance = 0.5f)
+    fun `timer counter does not pulse under reduced motion`() = runComposeUiTest {
+        val (rest, peak) = timerCounterWidths(warning = true, reducedMotion = true)
+        assertEquals(rest, peak, absoluteTolerance = 0.5f)
     }
 
-    /** Width of the new counter text at the pulse peak (240 ms after the change) and once settled, in px. */
-    private fun ComposeUiTest.timerCounterWidths(reducedMotion: Boolean): Pair<Float, Float> {
-        var time by mutableStateOf("0:10")
+    @Test
+    fun `timer counter does not pulse outside the warning phase`() = runComposeUiTest {
+        val (rest, peak) = timerCounterWidths(warning = false, reducedMotion = false)
+        assertEquals(rest, peak, absoluteTolerance = 0.5f)
+    }
+
+    /** Counter width before the state change and at the first pulse peak (300 ms into the 600 ms loop), in px. */
+    private fun ComposeUiTest.timerCounterWidths(warning: Boolean, reducedMotion: Boolean): Pair<Float, Float> {
+        var warn by mutableStateOf(false)
         setLexiContent(reducedMotion) {
-            TimerBar(progress = 0.1f, timeText = time, warning = true, modifier = Modifier.width(300.dp))
+            TimerBar(progress = 0.1f, timeText = "0:09", warning = warn, modifier = Modifier.width(300.dp))
         }
         mainClock.autoAdvance = false
         mainClock.advanceTimeBy(1_000)
+        val rest = onNodeWithText("0:09").fetchSemanticsNode().boundsInRoot.width
         runOnUiThread {
-            time = "0:09"
+            warn = warning
             Snapshot.sendApplyNotifications()
         }
-        mainClock.advanceTimeBy(FRAME + 240)
+        mainClock.advanceTimeBy(FRAME + 300)
         val peak = onNodeWithText("0:09").fetchSemanticsNode().boundsInRoot.width
-        mainClock.advanceTimeBy(1_000)
-        val settled = onNodeWithText("0:09").fetchSemanticsNode().boundsInRoot.width
-        return peak to settled
+        return rest to peak
     }
+
+    @Test
+    fun `timer fill turns from yellow to red in the warning phase`() = runComposeUiTest {
+        var warn by mutableStateOf(false)
+        setLexiContent(reducedMotion = true) {
+            TimerBar(progress = 0.5f, timeText = "0:09", warning = warn, modifier = Modifier.width(300.dp).testTag(TAG))
+        }
+        // Inside the fill, above the counter: 5dp from the top-left inner corner.
+        fun fillPixel() = onNodeWithTag(TAG).captureToImage().toPixelMap().let { it[it.width / 10, it.height / 10] }
+
+        assertEquals(LightLexiColors.yellow, fillPixel())
+        warn = true
+        waitForIdle()
+        assertEquals(LightLexiColors.red, fillPixel())
+    }
+
+    @Test
+    fun `timer counter is ink normally and red in the warning phase`() = runComposeUiTest {
+        var warn by mutableStateOf(false)
+        setLexiContent(reducedMotion = true) {
+            TimerBar(progress = 0f, timeText = "0:09", warning = warn, modifier = Modifier.width(300.dp))
+        }
+        fun counterPixels(color: Color): Int {
+            val pixels = onNodeWithText("0:09").captureToImage().toPixelMap()
+            var count = 0
+            for (x in 0 until pixels.width) for (y in 0 until pixels.height) if (pixels[x, y].near(color)) count++
+            return count
+        }
+
+        assertTrue(counterPixels(LightLexiColors.ink) > 50)
+        assertEquals(0, counterPixels(LightLexiColors.red))
+        warn = true
+        waitForIdle()
+        assertTrue(counterPixels(LightLexiColors.red) > 50)
+        assertEquals(0, counterPixels(LightLexiColors.ink))
+    }
+
+    private fun Color.near(other: Color): Boolean =
+        abs(red - other.red) < COLOR_TOLERANCE && abs(green - other.green) < COLOR_TOLERANCE &&
+            abs(blue - other.blue) < COLOR_TOLERANCE
 
     @Test
     fun `bottom sheet slides up unless motion is reduced`() = runComposeUiTest {
@@ -209,5 +261,6 @@ class ComponentBehaviourTest {
     private companion object {
         const val TAG = "subject"
         const val FRAME = 16L
+        const val COLOR_TOLERANCE = 0.1f
     }
 }

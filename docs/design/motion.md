@@ -26,7 +26,7 @@ scale or rotation; splash shows the logo statically.
 | 5 | Pass | chip rotates 90° while morphing circle → leaf, turns yellow; small arrow slides 70dp right | 260 ms, `turn` | soft | "vınn" |
 | 6 | Wheel advance | black "current" square jumps to next slot (step, no easing between slots); centre letter slides down and is replaced | 140 ms | — | — |
 | 7 | Combo (streak 3, 5, 10) | 4 shapes (square/circle/leaf/ink square) burst diagonally ~100dp and fade; badge "×N SERİ" pops (scale 0 → 1.3 → 1, rotate −20° → 6° → −4°) | 420 ms, `pop` | heavy | short fanfare |
-| 8 | Time warning (last 10 s) | timer bar yellow → red; counter pulses scale 1 → 1.18 → 1 each second, color red | per second | tick each second | "tik" |
+| 8 | Time warning (last 10 s) | timer fill `yellow` → `red` and counter `ink` → `red`, switched at once (no fade); counter pulses scale 1 → 1.12 → 1 in a loop (linear); reduced motion: colours only | 600 ms per pulse | tick each second | "tik" |
 | 9 | Splash | bg yellow circle (top-left) & blue square (bottom-right) scale 0 → 1; L slides from left (overshoot 8dp), E drops from top & bounces 10dp, X rotates −270° → 10° → 0 with scale 0 → 1.08 → 1, I rises from bottom (overshoot −8dp); tagline fades up 12dp | total ≈ 1.2 s in app (demo is 3.6 s looped), `mechanical` | light on each landing | "tık" per landing |
 | 10 | Bottom sheet (joker) | slides up from bottom, scrim fades to 55% | 220 ms | — | — |
 | 11 | Toast | slides down from top 16dp, auto-dismiss 2.5 s | 180 ms | — | — |
