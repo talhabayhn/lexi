@@ -1,0 +1,3 @@
+#!/bin/sh
+sed -i.bak -e '/^Co-Authored-By:.*[Cc]laude/d' -e '/^Claude-Session:/d' \
+  -e '/Generated with \[Claude Code\]/d' -e '/claude\.ai\/code\/session/d' "$1" && rm -f "$1.bak"

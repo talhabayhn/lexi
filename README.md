@@ -11,6 +11,11 @@ built with Kotlin + Compose Multiplatform. Bauhaus Classic design.
 Android: `./gradlew :composeApp:installDebug` · iOS: open `iosApp/iosApp.xcodeproj` in Xcode → Run.
 (The Gradle project is created in milestone M0.)
 
+## One-time setup after cloning
+```bash
+git config core.hooksPath .githooks   # enables the committed commit-msg hook
+```
+
 ## Licences
 Jost font © indestructible type*, SIL Open Font License 1.1 (`docs/design/fonts/OFL.txt`).
 Word-list attributions: see `docs/CONTENT.md` §6.
