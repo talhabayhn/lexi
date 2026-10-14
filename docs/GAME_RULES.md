@@ -143,6 +143,8 @@ Effects: LetterPlaced(slot) | Correct(letter, card, points) | Wrong(letter, card
 Duel:    BeginTurn(timestampMs) | Play(gameEvent)   (events of the active player)
 ```
 - `Tick.elapsedMs` is the time since the previous tick (a delta); the ViewModel produces it from its `TimeSource`.
+- `TimeWarning(secondsLeft)`: seconds left = remaining ms rounded up. Emitted when that value drops to ≤ 10; at
+  most one per transition (a big tick or a time joker that skips seconds emits only the lowest one); none at 0.
 - `LetterPlaced(cellIndex, letter)`: cells are answer letters only (spaces are not cells). `Advanced(toLetter, lap)`.
 - `Start.timestampMs` is only recorded (`startedAtMs`); it never influences rules.
 

@@ -37,7 +37,10 @@ public sealed interface EngineEffect {
     @SerialName("combo")
     public data class ComboReached(val streak: Int) : EngineEffect
 
-    /** Emitted once per whole second while ≤ `GameConfig.timeWarningSeconds` remain (10, 9, … 1). */
+    /**
+     * Emitted when the remaining whole seconds (rounded up) drop to a value ≤ `GameConfig.timeWarningSeconds`
+     * (10 … 1). One effect per transition, for the lowest second reached; none when the time is up.
+     */
     @Serializable
     @SerialName("timeWarning")
     public data class TimeWarning(val secondsLeft: Int) : EngineEffect

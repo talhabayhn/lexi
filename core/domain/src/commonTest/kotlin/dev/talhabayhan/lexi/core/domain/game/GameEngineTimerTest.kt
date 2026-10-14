@@ -99,20 +99,25 @@ class GameEngineTimerTest {
         val game = play("APPLE").send(GameEvent.Tick(169_500L))
         assertTrue(game.effectsOf<EngineEffect.TimeWarning>().isEmpty())
 
-        game.send(GameEvent.Tick(600L))
-        assertEquals(listOf<EngineEffect>(EngineEffect.TimeWarning(secondsLeft = 10)), game.lastEffects)
+        repeat(11) { game.send(GameEvent.Tick(1_000L)) }
 
-        game.send(GameEvent.Tick(3_000L))
-        assertEquals((9 downTo 7).map<Int, EngineEffect> { EngineEffect.TimeWarning(it) }, game.lastEffects)
+        assertEquals((10 downTo 1).toList(), game.effectsOf<EngineEffect.TimeWarning>().map { it.secondsLeft })
+        assertTrue(game.lastEffects.single() is EngineEffect.GameOver)
     }
 
     @Test
-    fun `last time warning is 1 second before time up`() {
-        val game = play("APPLE").send(GameEvent.Tick(178_500L), GameEvent.Tick(5_000L))
+    fun `a tick that skips several seconds emits only the lowest one`() {
+        val game = play("APPLE").send(GameEvent.Tick(169_500L), GameEvent.Tick(5_000L))
 
-        assertEquals(EngineEffect.TimeWarning(secondsLeft = 1), game.lastEffects[game.lastEffects.size - 2])
-        assertTrue(game.lastEffects.last() is EngineEffect.GameOver)
-        assertEquals((10 downTo 1).toList(), game.effectsOf<EngineEffect.TimeWarning>().map { it.secondsLeft })
+        assertEquals(listOf<EngineEffect>(EngineEffect.TimeWarning(secondsLeft = 6)), game.lastEffects)
+    }
+
+    @Test
+    fun `no time warning when the tick reaches 0`() {
+        val game = play("APPLE").send(GameEvent.Tick(178_500L)).send(GameEvent.Tick(5_000L))
+
+        assertEquals(listOf(2), game.effectsOf<EngineEffect.TimeWarning>().map { it.secondsLeft })
+        assertTrue(game.lastEffects.single() is EngineEffect.GameOver)
     }
 
     @Test

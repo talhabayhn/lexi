@@ -203,4 +203,11 @@ class GameEngineJokerTest {
         assertEquals(10_000L, game.state.remainingMs)
         assertTrue(EngineEffect.TimeWarning(10) in game.lastEffects)
     }
+
+    @Test
+    fun `time joker that skips several warning seconds emits only the lowest one`() {
+        val game = play("APPLE", "BREAD").send(GameEvent.Tick(165_000L)).joker(JokerType.REVEAL_LETTER)
+
+        assertEquals(listOf(5), game.lastEffects.filterIsInstance<EngineEffect.TimeWarning>().map { it.secondsLeft })
+    }
 }

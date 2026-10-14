@@ -249,8 +249,9 @@ public class GameEngine(public val config: GameConfig = GameConfig()) {
         private fun GameState.spendTime(ms: Long): GameState {
             val before = checkNotNull(remainingMs)
             val after = maxOf(0L, before - ms)
-            val fromSecond = minOf(wholeSeconds(before) - 1, config.timeWarningSeconds)
-            for (second in fromSecond downTo maxOf(wholeSeconds(after), 1)) {
+            // One warning per transition, for the lowest second reached (none when the time is up).
+            val second = wholeSeconds(after)
+            if (second in 1..config.timeWarningSeconds && second < wholeSeconds(before)) {
                 fx += EngineEffect.TimeWarning(secondsLeft = second)
             }
             val spent = copy(remainingMs = after)
