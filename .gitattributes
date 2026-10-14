@@ -1,2 +1,25 @@
-# Git hooks must keep LF endings or /bin/sh fails on macOS/Linux
+# Normalize all text to LF in the repo and working tree (ktlint, shell scripts, CI on Linux/macOS).
+* text=auto eol=lf
+
+# Windows-only scripts keep CRLF
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Shell scripts and git hooks must stay LF or /bin/sh fails on macOS/Linux
+gradlew text eol=lf
+*.sh text eol=lf
 .githooks/* text eol=lf
+
+# Binaries
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.gif binary
+*.ico binary
+*.ttf binary
+*.otf binary
+*.jar binary
+*.db binary
+*.zip binary
+*.pdf binary
