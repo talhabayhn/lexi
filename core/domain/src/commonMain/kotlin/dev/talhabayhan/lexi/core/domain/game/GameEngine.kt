@@ -231,20 +231,34 @@ public class GameEngine(public val config: GameConfig = GameConfig()) {
         // region timer (§5)
 
         /** The reveal of a wrong answer uses up ticks first; the clock stands still meanwhile (configurable). */
-        private fun GameState.tick(elapsedMs: Long): GameState {
-            var state = this
-            var left = elapsedMs
-            if (state.isRevealing) {
-                val used = minOf(left, state.revealRemainingMs)
-                if (!config.clockRunsDuringReveal) left -= used
-                state = state.copy(revealRemainingMs = state.revealRemainingMs - used)
-                if (!state.isRevealing) state = state.endReveal()
+        private fun GameState.tick(elapsedMs: Long): GameState = when {
+            !isRevealing -> spendClock(elapsedMs)
+
+            // Clock first, so time running out during the reveal ends the game without advancing.
+            config.clockRunsDuringReveal -> spendClock(elapsedMs).let {
+                if (it.isOver) it else it.spendReveal(elapsedMs)
             }
-            if (left > 0 && state.status == GameStatus.PLAYING && state.remainingMs != null) {
-                state = state.spendTime(left)
+
+            else -> {
+                val used = minOf(elapsedMs, revealRemainingMs)
+                spendReveal(used).let { if (it.isOver) it else it.spendClock(elapsedMs - used) }
             }
-            return state
         }
+
+        private fun GameState.spendReveal(ms: Long): GameState {
+            val revealing = copy(revealRemainingMs = revealRemainingMs - minOf(ms, revealRemainingMs))
+            return if (revealing.isRevealing) revealing else revealing.endReveal()
+        }
+
+        private fun GameState.spendClock(ms: Long): GameState = if (ms > 0 &&
+            remainingMs != null
+        ) {
+            spendTime(ms)
+        } else {
+            this
+        }
+
+        private val GameState.isOver: Boolean get() = status == GameStatus.FINISHED
 
         private fun GameState.spendTime(ms: Long): GameState {
             val before = checkNotNull(remainingMs)

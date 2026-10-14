@@ -138,6 +138,21 @@ class GameEngineTimerTest {
     }
 
     @Test
+    fun `time running out during the reveal ends the game without advancing when the clock runs`() {
+        val config = GameConfig(clockRunsDuringReveal = true)
+        val game = play("APPLE", "BREAD", config = config).send(GameEvent.Tick(179_000L)).answerWrong()
+
+        game.send(GameEvent.Tick(1_200L))
+
+        val summary = checkNotNull(game.state.summary)
+        assertEquals(GameOverReason.TIME_UP, summary.reason)
+        assertEquals(1, summary.wrong)
+        assertEquals(1, summary.unanswered)
+        assertTrue(game.lastEffects.none { it is EngineEffect.Advanced })
+        assertEquals(SlotState.TODO, game.state.wheel.slots[1].state)
+    }
+
+    @Test
     fun `pause also stops the reveal`() {
         val game = play("APPLE", "BREAD").answerWrong().send(GameEvent.Pause, GameEvent.Tick(5_000L))
 

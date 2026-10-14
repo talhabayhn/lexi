@@ -35,7 +35,8 @@ correct = blue circle, wrong = red square, passed = yellow leaf.
 5. End when: no TODO/PASSED slots left, or time is up, or (Hardcore) first WRONG, or `Forfeit`.
 6. Engine decisions:
    - While a wrong answer is revealed, input is ignored and the game clock stands still (⚙ `clockRunsDuringReveal
-     = false`); the reveal ends after `revealMs` of ticks, then the engine advances (Hardcore: game over).
+     = false`); the reveal ends after `revealMs` of ticks, then the engine advances (Hardcore: game over). With
+     `clockRunsDuringReveal = true`, time running out during the reveal ends the game without advancing.
    - A passed slot keeps its input (typed letters, disabled keys, used jokers) for the next lap. If the game ends
      while it is CURRENT again (time up, forfeit), it stays PASSED (counted as passed and missed, §10).
    - Events that don't apply (input while paused/revealing, a used key, anything after game over) are ignored.
