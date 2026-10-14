@@ -88,21 +88,30 @@ class GameViewModel(...) : ViewModel() {
 ## 4. GameEngine (core:domain)
 
 ```
-WheelGenerator(seed, level, category?, contentVersion) ─▶ Wheel (26 slots: letter, rule, card)
+WheelGenerator.generate(pool, level, category, mode, random, recentlySeen) ─▶ Wheel (26 slots: letter, rule, card)
+WheelGenerator.review(dueCards, random)                                    ─▶ Wheel (letters with due cards)
                                                           │
-GameEvent stream ─▶ GameEngine.reduce(state, event) ─▶ (GameState, List<EngineEffect>)
-   Start, KeyTapped(i), Backspace, Submit(auto), Pass,
-   UseJoker(type), Tick(elapsedMs), Pause, Resume, TimeUp, Forfeit
+GameEvent stream ─▶ GameEngine(config).reduce(state, event) ─▶ Transition(GameState, List<EngineEffect>)
+   Start, KeyTapped(i), Backspace, Pass, UseJoker(type), Tick(elapsedMs), Pause, Resume, Forfeit
+   (submit is automatic when all cells are filled; time up comes from Tick)
+MatchEvent stream ─▶ MatchEngine(config).reduce(match, event) ─▶ Transition(MatchState, List<EngineEffect>)
+   BeginTurn(timestampMs), Play(gameEvent)
 ```
 - `reduce` is a **pure function**. The ViewModel owns the coroutine ticker and an injected `TimeSource`;
-  it converts real time into `Tick` events.
+  it converts real time into `Tick` deltas. Events that don't apply are ignored (same state, no effects).
 - Randomness: `SeededRandom` (SplitMix64, own implementation — do not rely on `kotlin.random` internals) derived
-  from `seed`. Sub-seeds per purpose: `seed ^ "keys".hash`, etc.
-- Seeds: solo = random 64-bit; daily = `hash("daily:" + yyyy-MM-dd + ":" + level + ":" + contentVersion)`;
-  challenge/online = carried in link/room.
-- `MatchState` wraps one or more `PlayerState`s + turn info → hot-seat and online duel reuse it.
-- `EngineEffect` (Correct, Wrong, Passed, ComboReached(n), TimeWarning, LetterPlaced, ...) are mapped by the
-  ViewModel to sound/haptic/animation effects. The engine never plays sounds.
+  from `seed`. Sub-seeds per purpose: `Seeds.derive(seed, purpose)` = `mix64(seed xor fnv1a64(purpose))`
+  (`GAME_RULES.md` §13: `wheel`, `keys:<letter>`, `level-test:<index>`, `player:<n>`).
+- Seeds: solo = random 64-bit; daily = `Seeds.stableHash("daily:" + yyyy-MM-dd + ":" + level + ":" +
+  contentVersion)`; challenge/online = carried in link/room.
+- `MatchState` wraps one `GameState` per player + turn info → hot-seat and online duel reuse it.
+- `EngineEffect` (LetterPlaced, Correct, Wrong, Passed, Advanced, ComboReached, TimeWarning, JokerApplied,
+  TurnChanged, GameOver, MatchOver) are mapped by the ViewModel to sound/haptic/animation effects. The engine never
+  plays sounds.
+- Learning on top of the engine, also pure: `Srs` (Leitner notebook), `LevelTest` (onboarding staircase), `Stats`.
+  Days come in as epoch days in the player's time zone.
+- `GameConfig` holds every ⚙ number; events, effects and states are `@Serializable` (golden tests:
+  `GoldenTest` + `GoldenSnapshots.kt`, seed + event log ⇒ exact JSON).
 - Full rules: `GAME_RULES.md`.
 
 ## 5. Match transport (multiplayer-ready from day one)

@@ -30,6 +30,9 @@
 - Test names: backticks or `snake_case` describing behavior: `` `pass ends turn in duel` ``.
 - Arrange/Act/Assert; one behavior per test; fakes over mocks (fakes live in `core:testing`).
 - Engine tests run on `jvmTest` for speed; a small `commonTest` subset runs on iOS simulator in CI.
+- Engine golden tests (`core/domain/.../game/GoldenTest.kt`): seed + literal event log ⇒ exact JSON in
+  `GoldenSnapshots.kt`. A diff there changes behaviour for every device and stored replay: update it only on purpose
+  (paste the "actual" JSON from the failure) and explain the rule change in the commit.
 - Screenshot tests: Roborazzi, Robolectric host tests in `src/androidHostTest`, goldens under `src/androidHostTest/screenshots`, reviewed in the commit diff. Use `@Config(sdk = [36])` until Robolectric ships an SDK 37 runtime (ADR 0013).
 - Component behaviour (clicks, haptics/sounds, timing): `runComposeUiTest` + `mainClock` in the same Robolectric
   host tests, fakes via `LocalHaptics`/`LocalSoundPlayer` (ADR 0017).

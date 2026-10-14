@@ -36,8 +36,10 @@ Module mapping (replaces the earlier `composeApp`): `androidApp` = thin Android 
 - [x] `GameEngine.reduce` for all events in `GAME_RULES.md` §12; scoring §6; jokers §7; modes §5
 - [x] `MatchState` + duel turn rules §8 (hot-seat)
 - [x] `Srs` (Leitner) §10; `LevelTest` staircase §9; stats calculators §11
-- [ ] Golden test: seed X + event log Y ⇒ exact final state snapshot (serialized)
+- [x] Golden test: seed X + event log Y ⇒ exact final state snapshot (serialized)
 **Done when:** ≥ 90% line coverage on engine package; every rule has a named test.
+- [x] Met: engine package (`core.domain.game`) 99.5% line coverage (one-off JaCoCo run; no coverage tool in the
+  build yet).
 
 ## M3 — Content & data
 - [ ] `tools:content-compiler`: parse CSVs, validate (`CONTENT.md` §3), write `content.db`, print report
