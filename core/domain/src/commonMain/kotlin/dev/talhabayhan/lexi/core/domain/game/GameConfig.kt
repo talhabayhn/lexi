@@ -11,6 +11,8 @@ import kotlinx.serialization.Serializable
 public data class GameConfig(
     /** §3: how long the correct answer is shown after a wrong one. */
     val revealMs: Long = 1_200L,
+    /** §3: whether the game clock keeps running while a wrong answer is revealed (open decision). */
+    val clockRunsDuringReveal: Boolean = false,
     /** §5: Classic total time; the player's setting (one of [classicTimeLimitOptionsSeconds]) overrides it. */
     val classicTimeLimitSeconds: Int = 180,
     val classicTimeLimitOptionsSeconds: List<Int> = listOf(120, 180, 240, 300),

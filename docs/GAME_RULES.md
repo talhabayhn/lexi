@@ -33,6 +33,11 @@ correct = blue circle, wrong = red square, passed = yellow leaf.
 3. `Pass` → PASSED, advance.
 4. Advance = next slot clockwise that is TODO or PASSED. After Z it wraps (lap 2, 3, …) over passed slots.
 5. End when: no TODO/PASSED slots left, or time is up, or (Hardcore) first WRONG, or `Forfeit`.
+6. Engine decisions:
+   - While a wrong answer is revealed, input is ignored and the game clock stands still (⚙ `clockRunsDuringReveal
+     = false`); the reveal ends after `revealMs` of ticks, then the engine advances (Hardcore: game over).
+   - A passed slot keeps its input (typed letters, disabled keys, used jokers) for the next lap.
+   - Events that don't apply (input while paused/revealing, a used key, anything after game over) are ignored.
 
 ## 4. Letter keys
 - Key count: `max(10, ceil(answerLetters / 5) * 5)`, capped at 15 → 2 or 3 rows of 5 (design: 5-column grid).
@@ -72,6 +77,9 @@ the app goes to background.
 - Wrong / pass: 0. Passed-then-correct on a later lap: full points, but streak was broken by the pass.
 - Time bonus at the end if the wheel is completed: ⚙ 1 point per remaining second.
 - Hardcore ×1.5 on final total.
+- Points use the card's level (review wheels mix levels); unscored modes (§5) score 0 everywhere. All rounding is
+  half up. "Completed" = ended with no TODO/PASSED left (wrong answers allowed); the time bonus counts whole
+  remaining seconds. Joker point costs never take the running score below 0.
 - Multipliers are stored as integer percentages in `GameConfig` (110 = ×1.1) so scoring is exact on every platform.
 
 ## 7. Jokers
@@ -84,7 +92,12 @@ the app goes to background.
 - Inventory per joker type, persisted. Sources: start pack (2/1/3/1), daily login +1 random, rewarded ad +1,
   Pro +3/day refill. Jokers are not allowed in Daily (fair comparison), Duel and Level test (would distort the
   placement). ⚙
-- A slot answered with a joker still counts as correct but its streak bonus is 0.
+- A slot answered with a joker still counts as correct but its streak bonus is 0 (the streak itself goes on).
+- Engine decisions: every joker type is limited to once per slot, also across laps. Reveal letter fills the first
+  cell that is empty or wrong; typed letters from there on go back to their keys; the revealed letter is locked
+  (Backspace skips it); filling the last cell submits. Remove distractors also returns distractor letters already
+  typed, and is refused when the slot has no distractors (10-letter answers). Time jokers are refused when the
+  cost is ≥ the remaining time. Inventory is part of the game state; the app persists it after `JokerApplied`.
 
 ## 8. Duel (same device; same rules online in v1.1)
 - Each player has an own wheel (same level, different sub-seeds; online Race uses the same wheel) and an own
@@ -122,6 +135,10 @@ Effects: LetterPlaced(slot) | Correct(letter, card, points) | Wrong(letter, card
          Advanced(toLetter) | ComboReached(n) | TimeWarning(secondsLeft ≤ 10, each second) |
          JokerApplied(type) | TurnChanged(player) | GameOver(summary)
 ```
+- `Tick.elapsedMs` is the time since the previous tick (a delta); the ViewModel produces it from its `TimeSource`.
+- `LetterPlaced(cellIndex, letter)`: cells are answer letters only (spaces are not cells). `Advanced(toLetter, lap)`.
+- `Start.timestampMs` is only recorded (`startedAtMs`); it never influences rules.
+
 Every rule above must have a unit test named after the rule, e.g. `pass_endsTurn_inDuel()`.
 
 ## 13. Randomness & seeds
