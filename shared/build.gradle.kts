@@ -15,9 +15,17 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(libs.compose.material3)
-            implementation(libs.androidx.lifecycle.viewmodelCompose)
-            implementation(libs.androidx.lifecycle.runtimeCompose)
+            implementation(project(":core:domain"))
+            implementation(project(":core:designsystem"))
+            implementation(project(":feature:home"))
+
+            implementation(libs.androidx.navigation.compose)
+            implementation(libs.koin.core)
+            implementation(libs.koin.compose)
+            implementation(libs.koin.compose.viewmodel)
+        }
+        getByName("androidHostTest").dependencies {
+            implementation(libs.koin.test)
         }
     }
 }

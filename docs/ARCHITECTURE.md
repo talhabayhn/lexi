@@ -149,7 +149,9 @@ Swift-implemented services are injected into Koin at startup through a `Platform
 created in Swift and passed to `MainViewController(services)`.
 
 ## 8. Navigation
-Navigation Compose (JetBrains multiplatform artifact), type-safe `@Serializable` routes:
+Navigation Compose (JetBrains multiplatform artifact, 2.10.0-rc01 pinned until 2.10.0 is stable; ADR 0016), type-safe
+`@Serializable` routes. Each feature exposes its route + `NavGraphBuilder.xxxScreen()`; the graph is `LexiNavHost` in
+`shared`. Flows:
 `Splash → Onboarding? → Home`; `Home → LevelSelect → Game → Result`; `Home → Notebook | Stats | Exams | Settings | Daily`;
 `Game → JokerSheet (bottom sheet) | Pause (dialog)`; `Settings → Paywall`.
 Screen ↔ design map: `docs/design/screen-map.md`.

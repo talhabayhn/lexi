@@ -6,7 +6,8 @@ plugins {
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            implementation(libs.compose.material3)
+            // Exposed so features get Material3 as the underlay of LexiTheme (ARCHITECTURE.md §9).
+            api(libs.compose.material3)
         }
         getByName("androidHostTest").dependencies {
             implementation(libs.junit)
@@ -15,6 +16,11 @@ kotlin {
             implementation(libs.roborazzi.compose)
         }
     }
+}
+
+compose.resources {
+    // Shared strings such as `app_name` are used by features.
+    publicResClass = true
 }
 
 roborazzi {
