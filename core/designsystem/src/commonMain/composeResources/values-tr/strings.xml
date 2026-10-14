@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Lexi</string>
+
+    <!-- Çark harfi durumu, harften sonra okunur: "K, doğru" -->
+    <string name="wheel_letter_state_todo">bekliyor</string>
+    <string name="wheel_letter_state_current">sırada</string>
+    <string name="wheel_letter_state_correct">doğru</string>
+    <string name="wheel_letter_state_wrong">yanlış</string>
+    <string name="wheel_letter_state_passed">pas</string>
+    <string name="wheel_letter_description">%1$s, %2$s</string>
 </resources>

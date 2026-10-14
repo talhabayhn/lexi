@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Lexi</string>
+
+    <!-- Wheel letter state, announced after the letter: "K, correct" -->
+    <string name="wheel_letter_state_todo">waiting</string>
+    <string name="wheel_letter_state_current">current</string>
+    <string name="wheel_letter_state_correct">correct</string>
+    <string name="wheel_letter_state_wrong">wrong</string>
+    <string name="wheel_letter_state_passed">passed</string>
+    <string name="wheel_letter_description">%1$s, %2$s</string>
 </resources>

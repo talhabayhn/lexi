@@ -85,6 +85,16 @@ public class LexiTypography internal constructor(
     public val label12: TextStyle,
     /** 13 / 800: wheel letters. */
     public val wheelChip: TextStyle,
+    /** 16 / 600: list row labels (`11-settings`). */
+    public val body16SemiBold: TextStyle,
+    /** 14 / 600: level-card subtitles, empty state (`03-level-select`). */
+    public val caption14SemiBold: TextStyle,
+    /** 13 / 600: stat labels, secondary row values (`09-stats`, `06-result`). */
+    public val caption13SemiBold: TextStyle,
+    /** 12 / 600: item captions (`16-components`). */
+    public val caption12SemiBold: TextStyle,
+    /** 13 / 700, +0.12em, uppercase: wheel rule "İLE BAŞLAR", "YA DA SEVİYENİ SEÇ". */
+    public val wheelRule: TextStyle,
     /** 15 / 700, underlined: text links (`LexiTextLink`, "Atla"). */
     public val link15: TextStyle,
 )
@@ -158,6 +168,11 @@ internal fun lexiTypography(jost: FontFamily): LexiTypography {
         label13 = style(13, FontWeight.Bold, letterSpacing = 0.14.em),
         label12 = style(12, FontWeight.Bold, letterSpacing = 0.14.em),
         wheelChip = style(13, extraBold),
+        body16SemiBold = style(16, FontWeight.SemiBold),
+        caption14SemiBold = style(14, FontWeight.SemiBold),
+        caption13SemiBold = style(13, FontWeight.SemiBold),
+        caption12SemiBold = style(12, FontWeight.SemiBold),
+        wheelRule = style(13, FontWeight.Bold, letterSpacing = 0.12.em),
         link15 = style(15, FontWeight.Bold).copy(textDecoration = TextDecoration.Underline),
     )
 }

@@ -1,6 +1,7 @@
 package dev.talhabayhan.lexi.core.designsystem.gallery
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
@@ -19,6 +20,8 @@ import dev.talhabayhan.lexi.core.designsystem.component.LexiButtonVariant
 import dev.talhabayhan.lexi.core.designsystem.component.LexiTextLink
 import dev.talhabayhan.lexi.core.designsystem.component.LocalForcePressed
 import dev.talhabayhan.lexi.core.designsystem.component.NavSquareButton
+import dev.talhabayhan.lexi.core.designsystem.component.WheelLetter
+import dev.talhabayhan.lexi.core.designsystem.component.WheelLetterState
 import dev.talhabayhan.lexi.core.designsystem.icon.LexiIcons
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.core.designsystem.theme.withCssLineHeight
@@ -70,7 +73,33 @@ internal fun ColumnScope.GalleryColumnOne() {
 }
 
 @Composable
+private fun Captioned(caption: String, content: @Composable () -> Unit) {
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap6),
+    ) {
+        content()
+        Text(caption, style = LexiTheme.typography.caption12SemiBold)
+    }
+}
+
+@Composable
 internal fun ColumnScope.GalleryColumnTwo() {
+    SectionLabel("ÇARK HARFİ DURUMLARI")
+    Row(horizontalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap14)) {
+        val captions = listOf("Bekliyor", "Sırada", "Doğru", "Yanlış", "Pas")
+        WheelLetterState.entries.forEachIndexed { i, state ->
+            Captioned(captions[i]) {
+                WheelLetter(
+                    letter = 'A' + i,
+                    state = state,
+                    size = GallerySpec.demoChipSize,
+                    textStyle = LexiTheme.typography.heading18,
+                    scaleCurrent = false,
+                )
+            }
+        }
+    }
 }
 
 @Composable

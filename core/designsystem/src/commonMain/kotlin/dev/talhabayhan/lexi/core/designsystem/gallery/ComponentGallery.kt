@@ -141,6 +141,7 @@ internal object GallerySpec {
     val titleSize = 36.sp
     val hexSize = 11.sp
     val demoButtonSize = 48.dp
+    val demoChipSize = 44.dp
     const val NOTE_LINE_HEIGHT = 1.4
 }
 
