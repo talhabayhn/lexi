@@ -1,6 +1,7 @@
 rootProject.name = "Lexi"
 
 pluginManagement {
+    includeBuild("build-logic")
     repositories {
         google {
             mavenContent {
