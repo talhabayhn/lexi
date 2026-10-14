@@ -250,12 +250,10 @@ public class GameEngine(public val config: GameConfig = GameConfig()) {
             return if (revealing.isRevealing) revealing else revealing.endReveal()
         }
 
-        private fun GameState.spendClock(ms: Long): GameState = if (ms > 0 &&
-            remainingMs != null
-        ) {
-            spendTime(ms)
-        } else {
-            this
+        /** Charges [ms] to the clock; no-op in untimed modes. */
+        private fun GameState.spendClock(ms: Long): GameState = when {
+            ms <= 0 || remainingMs == null -> this
+            else -> spendTime(ms)
         }
 
         private val GameState.isOver: Boolean get() = status == GameStatus.FINISHED

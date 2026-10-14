@@ -66,6 +66,8 @@ public data class GameConfig(
     val dailyLoginJokerBonus: Int = 1,
     val rewardedAdJokerReward: Int = 1,
     val proDailyJokerRefill: Int = 3,
+    /** §10: modes whose answers don't change the notebook (hot-seat duel: the second player isn't the owner). */
+    val srsExcludedModes: Set<GameMode> = setOf(GameMode.DUEL),
     /** §1: cards last seen within this window are avoided by solo wheels (open decision). */
     val recentlySeenWindowDays: Int = 7,
 ) {

@@ -121,6 +121,10 @@ the app goes to background.
 - 12–16 slots, adaptive staircase: start at A2; 2 correct in a row at a level → go up; 1 wrong/pass → go down.
 - Result = highest level with ≥ 60% correct among its asked cards (min 3 asked), else the level below. Shown on
   a result card ("Seviyen: B1") with the option to change.
+- Engine (`LevelTest`): the test ends after 12 answers once the current level has ≥ 3 asked cards (so it can be
+  judged), and always after 16. "Else the level below" = the level below the start level (A1). Level stays within
+  A1…NAT. Each card is a seeded pick (sub-seed `level-test:<index>`) of an unasked card of the current level,
+  preferring unused letters. Showing it on the game screen comes with onboarding (M6).
 
 ## 10. SRS — Kelime Defterim (Leitner)
 - Boxes 0–4 (the 4 bars in the notebook UI = box 1–4; box 0 = red/new). Intervals: box0 = today, 1 = 1 d,
@@ -129,11 +133,18 @@ the app goes to background.
   "Tekrar edilecekler" on the result screen. Correct in a game for a card already in the notebook ⇒ box +1.
 - Review wheel: correct ⇒ box +1; wrong ⇒ box 0.
 - "Zor" tab: cards with ≥ 2 wrongs. "Tümü": all ever seen. Due count drives home & notebook badges.
+- Engine (`Srs`, `CardProgress`): every answered card has a progress row; only missed cards are in the notebook
+  (box ≠ null). A first-time correct card stays outside the notebook. PASSED counts as missed but not as wrong.
+  Wrong/passed mastered cards return to box 0. Correct for a notebook card moves it up even if it wasn't due yet.
+  Results come from the final slot states (`Srs.results`); unanswered cards are left out. Hot-seat duel answers
+  don't change the notebook (⚙ `srsExcludedModes = {DUEL}`). Days are epoch days in the player's time zone.
 
 ## 11. Statistics
 Learned words (= cards ever answered correctly), accuracy (correct / answered), longest streak (days with ≥1
 completed wheel), completed wheels, words per day (last 7 days), per-level progress (learned / total), hardest
 letters (lowest accuracy, min 5 attempts).
+Engine (`Stats`): "words per day" = correct answers per day (all sessions); percentages are rounded half up;
+hardest letters are sorted by exact accuracy, ties by letter; per-level progress needs the card totals per level.
 
 ## 12. Engine events & effects (contract)
 ```
@@ -163,4 +174,5 @@ Every rule above must have a unit test named after the rule, e.g. `pass_endsTurn
   |---|---|
   | `wheel` | card pick per letter (`WheelGenerator`, also the review wheel) |
   | `keys:<letter>` | key set + shuffle of the slot with that letter (`KeyboardGenerator`) |
+  | `level-test:<index>` | the level test's n-th card pick (`LevelTest.nextCard`) |
   | `player:<n>` | duel player n's (1-based) game seed; their `wheel` and `keys:<letter>` derive from it |
