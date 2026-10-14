@@ -11,6 +11,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.InteractionSource
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.PressInteraction
+import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.height
@@ -19,7 +20,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.State
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -53,7 +56,8 @@ import kotlinx.coroutines.launch
  * inset by its width, so a design `padding: 0 20px` is `Modifier.padding(horizontal = 20.dp)` on the content.
  * Layout and touch target come from [modifier]: interactive elements must be at least
  * `LexiTheme.dimens.minTouchTarget` on each side. Pass an [interactionSource] to derive extra pressed visuals
- * (e.g. a key turning yellow).
+ * (e.g. a key turning yellow). [propagateMinConstraints] passes a fixed size on to the content (like `Box`), for
+ * content that arranges itself across the full width.
  */
 @Composable
 public fun PressableSurface(
@@ -70,6 +74,7 @@ public fun PressableSurface(
     onClickLabel: String? = null,
     interactionSource: MutableInteractionSource? = null,
     contentAlignment: Alignment = Alignment.Center,
+    propagateMinConstraints: Boolean = false,
     content: @Composable BoxScope.() -> Unit,
 ) {
     val source = interactionSource ?: remember { MutableInteractionSource() }
@@ -77,14 +82,16 @@ public fun PressableSurface(
     val pressProgress = rememberPressProgress(source, enabled, motion)
     val haptics = LocalHaptics.current
     val sounds = LocalSoundPlayer.current
+    val forcedPressed = LocalForcePressed.current
     PressableSurfaceLayout(
-        pressProgress = { pressProgress.value },
+        pressProgress = { if (forcedPressed) 1f else pressProgress.value },
         translateOnPress = !motion.reducedMotion,
         shape = shape,
         color = color,
         border = border,
         shadow = shadow,
         contentAlignment = contentAlignment,
+        propagateMinConstraints = propagateMinConstraints,
         modifier = modifier.clickable(
             interactionSource = source,
             indication = null,
@@ -114,6 +121,7 @@ internal fun PressableSurfaceLayout(
     shadow: LexiShadow?,
     contentAlignment: Alignment,
     modifier: Modifier = Modifier,
+    propagateMinConstraints: Boolean = false,
     content: @Composable BoxScope.() -> Unit,
 ) {
     val pressTranslation = if (shadow != null && translateOnPress) {
@@ -139,8 +147,22 @@ internal fun PressableSurfaceLayout(
             // CSS box model: the border takes layout space, content starts inside it.
             .then(if (border != null) Modifier.border(border, shape).padding(border.width) else Modifier),
         contentAlignment = contentAlignment,
+        propagateMinConstraints = propagateMinConstraints,
         content = content,
     )
+}
+
+/**
+ * Pins every `PressableSurface` below it in the pressed state: the gallery and previews show the design's static
+ * "Basılı" samples with it. Never provided in the app.
+ */
+internal val LocalForcePressed = staticCompositionLocalOf { false }
+
+/** Pressed state for extra pressed visuals (e.g. a key turning yellow), honouring [LocalForcePressed]. */
+@Composable
+internal fun InteractionSource.isPressedOrForced(): Boolean {
+    val pressed by collectIsPressedAsState()
+    return pressed || LocalForcePressed.current
 }
 
 /** 80 ms CSS ease-out per direction (`.lx-press` in `source/15-motion.dc.html`); instant under reduced motion. */

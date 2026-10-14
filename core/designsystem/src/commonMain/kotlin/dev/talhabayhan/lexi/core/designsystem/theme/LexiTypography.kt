@@ -7,6 +7,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.LineHeightStyle
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
@@ -84,6 +85,8 @@ public class LexiTypography internal constructor(
     public val label12: TextStyle,
     /** 13 / 800: wheel letters. */
     public val wheelChip: TextStyle,
+    /** 15 / 700, underlined: text links (`LexiTextLink`, "Atla"). */
+    public val link15: TextStyle,
 )
 
 /** Static Jost instances shipped in `composeResources/font` (OFL, `files/licenses/jost-ofl.txt`). */
@@ -155,5 +158,6 @@ internal fun lexiTypography(jost: FontFamily): LexiTypography {
         label13 = style(13, FontWeight.Bold, letterSpacing = 0.14.em),
         label12 = style(12, FontWeight.Bold, letterSpacing = 0.14.em),
         wheelChip = style(13, extraBold),
+        link15 = style(15, FontWeight.Bold).copy(textDecoration = TextDecoration.Underline),
     )
 }

@@ -5,7 +5,9 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -29,19 +31,34 @@ import dev.talhabayhan.lexi.core.designsystem.theme.withCssLineHeight
 /**
  * Reproduction of the `16-components` canvas (1330 × 960) for side-by-side review with
  * `docs/design/screens/16-components.png`. Sample texts are the canvas copy (not app strings).
- * M1 phase A: header with palette and type samples; the component sections follow with the components.
+ * Header (palette, type samples) here, the three component columns in `GallerySections.kt`.
  */
 @Composable
 internal fun ComponentGallery(modifier: Modifier = Modifier) {
     Column(
         modifier = modifier
             .width(GallerySpec.canvasWidth)
+            .height(GallerySpec.canvasHeight)
             .background(LexiTheme.colors.cream)
             .padding(horizontal = GallerySpec.canvasPaddingHorizontal, vertical = GallerySpec.canvasPaddingVertical),
         verticalArrangement = Arrangement.spacedBy(GallerySpec.canvasGap),
     ) {
         GalleryHeader()
+        Row(horizontalArrangement = Arrangement.spacedBy(GallerySpec.columnGap)) {
+            GalleryColumn { GalleryColumnOne() }
+            GalleryColumn { GalleryColumnTwo() }
+            GalleryColumn { GalleryColumnThree() }
+        }
     }
+}
+
+@Composable
+private fun RowScope.GalleryColumn(content: @Composable ColumnScope.() -> Unit) {
+    Column(
+        modifier = Modifier.weight(1f),
+        verticalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap16),
+        content = content,
+    )
 }
 
 @Composable
@@ -110,9 +127,11 @@ private fun Swatch(swatch: GallerySwatch) {
     }
 }
 
-/** Canvas-only values of `16-components.html` (gallery chrome, not app UI tokens). */
-private object GallerySpec {
+/** Canvas-only values of `16-components.html` (gallery chrome and demo sizes, not app UI tokens). */
+internal object GallerySpec {
     val canvasWidth = 1330.dp
+    val canvasHeight = 960.dp
+    val columnGap = 32.dp
     val canvasPaddingHorizontal = 40.dp
     val canvasPaddingVertical = 36.dp
     val canvasGap = 22.dp
