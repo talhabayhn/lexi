@@ -54,4 +54,9 @@ public sealed interface EngineEffect {
     @Serializable
     @SerialName("gameOver")
     public data class GameOver(val summary: GameSummary) : EngineEffect
+
+    /** Duel: both games are over (or one player forfeited). */
+    @Serializable
+    @SerialName("matchOver")
+    public data class MatchOver(val result: MatchResult) : EngineEffect
 }

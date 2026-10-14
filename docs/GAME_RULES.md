@@ -106,6 +106,10 @@ the app goes to background.
 - Same device: between turns show a full-screen "Sıra: <name>" handover card (prevents peeking).
 - Game ends when both wheels are finished or both clocks are at 0. Winner: more correct; tie → fewer wrong;
   tie → more remaining time; else draw.
+- Engine (`MatchEngine`, `MatchState`): a wrong answer ends the turn once its reveal is over. A player whose wheel
+  is finished (completed or clock at 0) hands over; when the other player is already finished, the turn stays
+  without handover. The handover card is dismissed with `MatchEvent.BeginTurn`; until then nothing runs and the
+  second player's game starts on their first turn. `Forfeit` ends the whole match and the other player wins.
 - Race (online): same wheel, simultaneous, no turns; first to finish all slots wins, else most correct at time-up.
   Level handicap (optional room setting): each player plays own level; score = normalized points.
 
@@ -133,7 +137,8 @@ Events:  Start(timestampMs) | KeyTapped(keyIndex) | Backspace | Pass | UseJoker(
          Tick(elapsedMs) | Pause | Resume | Forfeit
 Effects: LetterPlaced(slot) | Correct(letter, card, points) | Wrong(letter, card) | Passed(letter) |
          Advanced(toLetter) | ComboReached(n) | TimeWarning(secondsLeft ≤ 10, each second) |
-         JokerApplied(type) | TurnChanged(player) | GameOver(summary)
+         JokerApplied(type) | TurnChanged(player) | GameOver(summary) | MatchOver(result)
+Duel:    BeginTurn(timestampMs) | Play(gameEvent)   (events of the active player)
 ```
 - `Tick.elapsedMs` is the time since the previous tick (a delta); the ViewModel produces it from its `TimeSource`.
 - `LetterPlaced(cellIndex, letter)`: cells are answer letters only (spaces are not cells). `Advanced(toLetter, lap)`.
@@ -152,3 +157,4 @@ Every rule above must have a unit test named after the rule, e.g. `pass_endsTurn
   |---|---|
   | `wheel` | card pick per letter (`WheelGenerator`, also the review wheel) |
   | `keys:<letter>` | key set + shuffle of the slot with that letter (`KeyboardGenerator`) |
+  | `player:<n>` | duel player n's (1-based) game seed; their `wheel` and `keys:<letter>` derive from it |

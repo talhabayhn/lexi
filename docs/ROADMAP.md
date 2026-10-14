@@ -34,7 +34,7 @@ Module mapping (replaces the earlier `composeApp`): `androidApp` = thin Android 
 - [x] `WheelGenerator` (incl. review wheel, skipped letters)
 - [x] `KeyboardGenerator` (key count, distractors, determinism)
 - [x] `GameEngine.reduce` for all events in `GAME_RULES.md` §12; scoring §6; jokers §7; modes §5
-- [ ] `MatchState` + duel turn rules §8 (hot-seat)
+- [x] `MatchState` + duel turn rules §8 (hot-seat)
 - [ ] `Srs` (Leitner) §10; `LevelTest` staircase §9; stats calculators §11
 - [ ] Golden test: seed X + event log Y ⇒ exact final state snapshot (serialized)
 **Done when:** ≥ 90% line coverage on engine package; every rule has a named test.
