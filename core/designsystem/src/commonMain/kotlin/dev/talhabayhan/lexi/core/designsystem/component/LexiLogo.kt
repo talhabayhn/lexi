@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -70,6 +71,9 @@ public object LexiLogoDefaults {
 
     /** Below this size the icon drops the "L" (`13-logo-and-icon`: the 40dp icon has none). */
     public val IconLetterMinSize: Dp = 60.dp
+
+    /** Home-screen sizes, this one and below, drop the leaf (`13-logo-and-icon`: the 60dp and 40dp icons have none). */
+    public val IconCompactMaxSize: Dp = 60.dp
 }
 
 /**
@@ -100,11 +104,17 @@ public fun LexiLogo(modifier: Modifier = Modifier, size: LexiLogoSize = LexiLogo
                     ),
                 contentAlignment = Alignment.Center,
             ) {
-                Text(letter.toString(), style = letterStyle, color = content)
+                Text(letter.toString(), CssCenteredLetter, style = letterStyle, color = content)
             }
         }
     }
 }
+
+/**
+ * The letters' CSS line box is taller than their block's content box (e.g. 92 in 90 for the icon "L"). CSS centers the
+ * overflowing box; Compose would clamp it to the block and shift the glyph down, so measure it unbounded.
+ */
+private val CssCenteredLetter: Modifier = Modifier.wrapContentSize(unbounded = true)
 
 @Composable
 private fun logoBlock(index: Int): Triple<DecorShapeKind, Color, Color> {
@@ -158,17 +168,21 @@ public fun LexiLogoMark(modifier: Modifier = Modifier) {
 /**
  * App icon, option 1 "Kompozisyon": cream square with a 3dp border, red left half, yellow circle with the "L" and a
  * blue leaf; all values scale from the 180dp design. Drawn square: the platform owns the corner mask. The "L" is left
- * out below [LexiLogoDefaults.IconLetterMinSize].
+ * out below [LexiLogoDefaults.IconLetterMinSize], the leaf at [LexiLogoDefaults.IconCompactMaxSize] and below.
+ * [framed] = false drops the border for the launcher icons, where the platform mask is the outline: the iOS AppIcon is
+ * rendered from it (`AppIconRenderTest`) and the Android adaptive icon in `androidApp` uses the same geometry.
  */
 @Composable
 public fun LexiAppIcon(
     modifier: Modifier = Modifier,
     size: Dp = LexiLogoDefaults.IconSize,
     showLetter: Boolean = size >= LexiLogoDefaults.IconLetterMinSize,
+    showLeaf: Boolean = size > LexiLogoDefaults.IconCompactMaxSize,
+    framed: Boolean = true,
 ) {
     val colors = LexiTheme.colors
     val s = size.value / LexiLogoDefaults.ICON_DESIGN
-    val border = (LexiLogoDefaults.ICON_BORDER * s).dp
+    val border = if (framed) BorderStroke((LexiLogoDefaults.ICON_BORDER * s).dp, colors.ink) else null
     Box(
         modifier
             .size(size)
@@ -176,7 +190,7 @@ public fun LexiAppIcon(
                 contentDescription = AppInfo.NAME
                 role = Role.Image
             }
-            .lexiSurface(colors.cream, BorderStroke(border, colors.ink)),
+            .lexiSurface(colors.cream, border),
     ) {
         // Positions are relative to the padding box (inside the border), as in the HTML.
         Box(Modifier.width((LexiLogoDefaults.ICON_DESIGN / 2 * s).dp).fillMaxHeight().background(colors.red))
@@ -193,20 +207,26 @@ public fun LexiAppIcon(
         ) {
             if (showLetter) {
                 val letterSize = with(LocalDensity.current) { (LexiLogoDefaults.ICON_LETTER * s).dp.toSp() }
-                Text(AppInfo.NAME.take(1).uppercase(), style = LexiTheme.typography.logo40.resized(letterSize))
+                Text(
+                    text = AppInfo.NAME.take(1).uppercase(),
+                    modifier = CssCenteredLetter,
+                    style = LexiTheme.typography.logo40.resized(letterSize),
+                )
             }
         }
-        DecorShape(
-            kind = DecorShapeKind.Leaf,
-            color = colors.blue,
-            modifier = Modifier
-                .align(Alignment.BottomEnd)
-                .padding(
-                    end = (LexiLogoDefaults.ICON_LEAF_INSET * s).dp,
-                    bottom = (LexiLogoDefaults.ICON_LEAF_INSET * s).dp,
-                )
-                .size((LexiLogoDefaults.ICON_LEAF * s).dp),
-        )
+        if (showLeaf) {
+            DecorShape(
+                kind = DecorShapeKind.Leaf,
+                color = colors.blue,
+                modifier = Modifier
+                    .align(Alignment.BottomEnd)
+                    .padding(
+                        end = (LexiLogoDefaults.ICON_LEAF_INSET * s).dp,
+                        bottom = (LexiLogoDefaults.ICON_LEAF_INSET * s).dp,
+                    )
+                    .size((LexiLogoDefaults.ICON_LEAF * s).dp),
+            )
+        }
     }
 }
 
