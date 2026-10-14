@@ -47,8 +47,16 @@ import dev.talhabayhan.lexi.core.designsystem.theme.withCssLineHeight
 
 /** Sheet and empty-state geometry (`05-joker-sheet.html`, `16-components.html`). */
 public object OverlayDefaults {
-    /** Sheet `padding: 20px 20px 28px`, gap 12, 4dp top border. */
-    public val SheetPadding: PaddingValues = PaddingValues(start = 20.dp, top = 20.dp, end = 20.dp, bottom = 28.dp)
+    /** Sheet `padding: 20px 20px 28px` (the screen paddings), gap 12, 4dp top border. */
+    public val SheetPadding: PaddingValues
+        @Composable get() = with(LexiTheme.dimens) {
+            PaddingValues(
+                start = screenPaddingHorizontal,
+                top = screenPaddingTopGame,
+                end = screenPaddingHorizontal,
+                bottom = screenPaddingBottom,
+            )
+        }
     public val SheetGap: Dp = 12.dp
 
     /** Empty state: padding 14, gap 14, 56dp illustration (circle 36 + 2 × 2, square 30 + 2 × 2). */

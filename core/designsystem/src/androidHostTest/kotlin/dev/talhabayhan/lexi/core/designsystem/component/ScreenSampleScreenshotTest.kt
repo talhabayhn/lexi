@@ -263,8 +263,11 @@ private fun LevelSelectSample() {
                             marker = level.marker,
                             markerColor = markerColors[index],
                             onClick = {},
-                            selected = index == 0,
-                            inverted = index == 5,
+                            style = when (index) {
+                                0 -> LevelCardStyle.Selected
+                                5 -> LevelCardStyle.Inverted
+                                else -> LevelCardStyle.Normal
+                            },
                             modifier = Modifier.weight(1f),
                         )
                     }

@@ -35,6 +35,7 @@ import dev.talhabayhan.lexi.core.designsystem.component.ProgressBar
 import dev.talhabayhan.lexi.core.designsystem.component.Segment
 import dev.talhabayhan.lexi.core.designsystem.component.SegmentedControl
 import dev.talhabayhan.lexi.core.designsystem.component.Toast
+import dev.talhabayhan.lexi.core.designsystem.component.ToastAction
 import dev.talhabayhan.lexi.core.designsystem.component.ToastStyle
 import dev.talhabayhan.lexi.core.designsystem.component.WheelLetter
 import dev.talhabayhan.lexi.core.designsystem.component.WheelLetterState
@@ -178,7 +179,7 @@ internal fun ColumnScope.GalleryColumnThree() {
     Toast(
         "\"egg\" kelime defterine eklendi",
         style = ToastStyle.Info,
-        actionLabel = "Geri al",
+        action = ToastAction("Geri al") {},
         modifier = Modifier.fillMaxWidth(),
     )
     SectionLabel("ONAY PENCERESİ", topMargin = LexiTheme.dimens.gap6)

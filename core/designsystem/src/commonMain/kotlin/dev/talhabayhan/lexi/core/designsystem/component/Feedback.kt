@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.Immutable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -35,6 +36,10 @@ public enum class ToastStyle {
     /** White with a yellow leaf, usually with an undo action. */
     Info,
 }
+
+/** The underlined action of an info toast ("Geri al") and what it does. */
+@Immutable
+public class ToastAction(public val label: String, public val onClick: () -> Unit)
 
 /** Toast and dialog geometry (`16-components.html`). */
 public object FeedbackDefaults {
@@ -60,7 +65,7 @@ public object FeedbackDefaults {
 /**
  * Toast (motion.md #11: slides down 16dp from the top in 180 ms, auto-dismiss after 2.5 s — hosted by the screen).
  * 3dp border, s4 (the canvas value; components.md says s5), marker, message and either [trailing] text ("+10") or an
- * underlined [actionLabel] ("Geri al"). Announced politely as a live region.
+ * underlined [action] ("Geri al"). Announced politely as a live region.
  */
 @Composable
 public fun Toast(
@@ -68,8 +73,7 @@ public fun Toast(
     modifier: Modifier = Modifier,
     style: ToastStyle = ToastStyle.Success,
     trailing: String? = null,
-    actionLabel: String? = null,
-    onAction: () -> Unit = {},
+    action: ToastAction? = null,
 ) {
     val colors = LexiTheme.colors
     val typography = LexiTheme.typography
@@ -100,16 +104,16 @@ public fun Toast(
             modifier = Modifier.weight(1f),
         )
         if (trailing != null) Text(trailing, style = typography.bodyStrong16, color = content)
-        if (actionLabel != null) {
+        if (action != null) {
             PressableSurface(
-                onClick = onAction,
+                onClick = action.onClick,
                 modifier = Modifier.height(FeedbackDefaults.ToastActionHeight),
                 color = Color.Transparent,
                 border = null,
                 shadow = null,
             ) {
                 Text(
-                    actionLabel,
+                    action.label,
                     style = typography.link14,
                     color = content,
                     modifier = Modifier.padding(FeedbackDefaults.ToastActionPadding),
@@ -186,7 +190,7 @@ private fun FeedbackPreview() {
             Toast(
                 "\"egg\" kelime defterine eklendi",
                 style = ToastStyle.Info,
-                actionLabel = "Geri al",
+                action = ToastAction("Geri al") {},
                 modifier = Modifier.fillMaxWidth(),
             )
             ConfirmDialog(

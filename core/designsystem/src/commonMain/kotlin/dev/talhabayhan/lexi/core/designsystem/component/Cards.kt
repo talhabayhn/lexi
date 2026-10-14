@@ -48,6 +48,18 @@ public enum class LevelBadgeStyle {
     Native,
 }
 
+/** Look of a [LevelCard]. */
+public enum class LevelCardStyle {
+    /** White, ink text, s3. */
+    Normal,
+
+    /** Red, white text, s6; progress ink on white. */
+    Selected,
+
+    /** Ink, cream text and lines (NAT). */
+    Inverted,
+}
+
 /** Card and tile geometry from `03-level-select`, `02-home` and `16-components`. */
 public object CardDefaults {
     /** Level badge: `padding: 4px 10px`, 2dp border. */
@@ -94,8 +106,7 @@ public fun LevelBadge(text: String, style: LevelBadgeStyle, modifier: Modifier =
 
 /**
  * Level card of the 2-column grid (150dp): title (34/800) with a marker shape, subtitle, progress bar and count.
- * Normal = white with s3; [selected] = red with white text and s6 (progress ink on white); [inverted] = ink with
- * cream text and cream lines (NAT).
+ * Look per [LevelCardStyle]; radio-button semantics, [LevelCardStyle.Selected] being the selected one.
  */
 @Composable
 public fun LevelCard(
@@ -107,11 +118,12 @@ public fun LevelCard(
     markerColor: Color,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
-    selected: Boolean = false,
-    inverted: Boolean = false,
+    style: LevelCardStyle = LevelCardStyle.Normal,
 ) {
     val colors = LexiTheme.colors
     val typography = LexiTheme.typography
+    val selected = style == LevelCardStyle.Selected
+    val inverted = style == LevelCardStyle.Inverted
     val fill = when {
         selected -> colors.red
         inverted -> colors.ink
@@ -244,11 +256,11 @@ private fun CardsPreview() {
             Row(horizontalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap12)) {
                 LevelCard(
                     "A1", "Başlangıç", 0.48f, "412 / 850 kelime", DecorShapeKind.Square, colors.yellow,
-                    onClick = {}, selected = true, modifier = Modifier.weight(1f),
+                    onClick = {}, style = LevelCardStyle.Selected, modifier = Modifier.weight(1f),
                 )
                 LevelCard(
                     "NAT", "Deyim · phrasal verb", 0f, "0 / 800 kelime", DecorShapeKind.Leaf, colors.red,
-                    onClick = {}, inverted = true, modifier = Modifier.weight(1f),
+                    onClick = {}, style = LevelCardStyle.Inverted, modifier = Modifier.weight(1f),
                 )
             }
             Row(horizontalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap12)) {

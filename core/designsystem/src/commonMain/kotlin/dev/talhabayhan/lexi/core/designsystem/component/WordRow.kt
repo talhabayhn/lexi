@@ -56,8 +56,8 @@ public fun WordRow(
     translation: String,
     meta: String,
     strength: Int,
-    onSpeak: () -> Unit,
     speakContentDescription: String,
+    onSpeak: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val colors = LexiTheme.colors

@@ -86,8 +86,7 @@ class TouchTargetTest {
                     Toast(
                         message = "\"egg\" kelime defterine eklendi",
                         style = ToastStyle.Info,
-                        actionLabel = "Geri al",
-                        onAction = { undos++ },
+                        action = ToastAction("Geri al") { undos++ },
                         modifier = Modifier.fillMaxWidth(),
                     )
                 }

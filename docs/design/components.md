@@ -41,5 +41,6 @@ component. Screenshots: `ComponentGallery.png` reproduces 16-components at its o
 `*Components.png` lay the components out like 04-game, 03-level-select, 02-home, 08-notebook, 09-stats, 11-settings,
 05-joker-sheet and 13-logo-and-icon at the PNGs' 2x scale for crop comparison.
 
-Naming in code: `Lexi*` prefix for public components. Every component takes `modifier: Modifier = Modifier` as the
-first optional parameter and has no hardcoded strings.
+Naming in code: the `Lexi` prefix is used only where a name would collide with Material/foundation (`LexiButton`,
+`LexiSwitch`, `LexiTextLink`, `LexiLogo`…); the other components keep the names in this table.
+Every component takes `modifier: Modifier = Modifier` as the first optional parameter and has no hardcoded strings.

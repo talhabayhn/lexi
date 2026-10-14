@@ -26,6 +26,9 @@ import kotlin.math.floor
  * font size as suffix (`heading18`, `heading20`) so a CSS declaration maps to exactly one token. A size/weight that
  * a screen needs and is missing here gets added here, with a comment naming the screen.
  *
+ * Every style carries its line height (sp for CSS `normal`): change the size with [resized], not `copy(fontSize = …)`
+ * or `Text(fontSize = …)`, which keep the old line height.
+ *
  * Styles carry no color: text takes `LocalContentColor` (ink inside `LexiTheme`). `label*` styles are UPPERCASE
  * by copy: keep the string resources uppercase instead of calling `uppercase()` (Turkish dotted İ).
  */
@@ -172,8 +175,11 @@ internal fun TextStyle.withCssNormalLineHeight(): TextStyle {
     )
 }
 
-/** This style at another font size, keeping a unitless line height or recomputing the CSS `normal` one. */
-internal fun TextStyle.resized(fontSize: TextUnit): TextStyle {
+/**
+ * This style at another font size, keeping a unitless line height or recomputing the CSS `normal` one. Use it instead
+ * of `copy(fontSize = …)` or `Text(fontSize = …)`, which keep the old size's line height in sp.
+ */
+public fun TextStyle.resized(fontSize: TextUnit): TextStyle {
     val resized = copy(fontSize = fontSize)
     return if (lineHeight.isSp) resized.withCssNormalLineHeight() else resized
 }
