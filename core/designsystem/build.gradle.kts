@@ -16,6 +16,8 @@ kotlin {
             implementation(libs.robolectric)
             implementation(libs.roborazzi)
             implementation(libs.roborazzi.compose)
+            implementation(libs.compose.uiTest)
+            implementation(libs.androidx.compose.uiTestManifest)
         }
     }
 }

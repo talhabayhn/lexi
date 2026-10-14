@@ -177,6 +177,7 @@ Tokens and components: `docs/design/tokens.md`, `docs/design/components.md`.
 | ViewModels | kotlin.test + Turbine + fakes from `core:testing` | every intent |
 | Repositories | SQLDelight in-memory JVM driver | queries & migrations |
 | UI | Roborazzi (Android/JVM) screenshots vs design PNGs | every designed screen |
+| UI behaviour | Compose `runComposeUiTest` on Robolectric (ADR 0017) | design-system interactions |
 | Content | content-compiler validation | 100% of cards |
 
 ## 12. Build & CI

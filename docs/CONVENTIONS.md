@@ -31,6 +31,8 @@
 - Arrange/Act/Assert; one behavior per test; fakes over mocks (fakes live in `core:testing`).
 - Engine tests run on `jvmTest` for speed; a small `commonTest` subset runs on iOS simulator in CI.
 - Screenshot tests: Roborazzi, Robolectric host tests in `src/androidHostTest`, goldens under `src/androidHostTest/screenshots`, reviewed in the commit diff. Use `@Config(sdk = [36])` until Robolectric ships an SDK 37 runtime (ADR 0013).
+- Component behaviour (clicks, haptics/sounds, timing): `runComposeUiTest` + `mainClock` in the same Robolectric
+  host tests, fakes via `LocalHaptics`/`LocalSoundPlayer` (ADR 0017).
 
 ## Git
 - Trunk-based: all work is committed directly on `main`. No feature branches, no PRs.
