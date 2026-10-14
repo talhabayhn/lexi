@@ -1,0 +1,11 @@
+-- Toolchain spike (M0): proves SQLDelight works with the AGP 9 KMP library plugin. Replaced in M3.
+CREATE TABLE toolchain_probe (
+    id INTEGER NOT NULL PRIMARY KEY,
+    label TEXT NOT NULL
+);
+
+insert:
+INSERT INTO toolchain_probe(id, label) VALUES (?, ?);
+
+selectAll:
+SELECT * FROM toolchain_probe ORDER BY id;
