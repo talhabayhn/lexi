@@ -27,7 +27,7 @@
 - Test names: backticks or `snake_case` describing behavior: `` `pass ends turn in duel` ``.
 - Arrange/Act/Assert; one behavior per test; fakes over mocks (fakes live in `core:testing`).
 - Engine tests run on `jvmTest` for speed; a small `commonTest` subset runs on iOS simulator in CI.
-- Screenshot tests: Roborazzi, files under `src/androidUnitTest/screenshots`, reviewed in the commit diff.
+- Screenshot tests: Roborazzi, Robolectric host tests in `src/androidHostTest`, goldens under `src/androidHostTest/screenshots`, reviewed in the commit diff. Use `@Config(sdk = [36])` until Robolectric ships an SDK 37 runtime (ADR 0013).
 
 ## Git
 - Trunk-based: all work is committed directly on `main`. No feature branches, no PRs.
