@@ -27,25 +27,18 @@
 - Test names: backticks or `snake_case` describing behavior: `` `pass ends turn in duel` ``.
 - Arrange/Act/Assert; one behavior per test; fakes over mocks (fakes live in `core:testing`).
 - Engine tests run on `jvmTest` for speed; a small `commonTest` subset runs on iOS simulator in CI.
-- Screenshot tests: Roborazzi, files under `src/androidUnitTest/screenshots`, reviewed in PRs.
+- Screenshot tests: Roborazzi, files under `src/androidUnitTest/screenshots`, reviewed in the commit diff.
 
 ## Git
-- `main` is always green and never receives direct commits or pushes. Everything lands through a PR.
-- One branch per ROADMAP task group / feature, not per tiny change: `feat/m0-bootstrap`, `feat/design-system`,
-  `feat/game-engine`, `feat/content-compiler`, `feat/game-screen`, `fix/<topic>`, `chore/<topic>`, `docs/<topic>`.
-  Several small commits per branch are fine.
-- Before starting a task group: `git switch main && git pull`, then create the branch. Never stack unrelated work
-  on one branch.
+- Trunk-based: all work is committed directly on `main`. No feature branches, no PRs.
+- Commit after each completed ROADMAP task. Keep commits atomic so any single one can be reverted.
 - Conventional Commits, English, imperative mood: `feat`, `fix`, `refactor`, `test`, `docs`, `chore`, `build`, `ci`;
-  scope = module/area. Commit after each completed ROADMAP task.
-- When a branch is done: push the branch → open a PR into `main` (`gh pr create`). PR body: summary, changes,
-  decisions taken, how to test, screenshots for UI, checklist (tests, lint, docs updated, no secrets).
-- **Squash-merge** with `gh pr merge --squash --delete-branch` once `./gradlew build` and
-  `./gradlew :androidApp:assembleDebug` are green locally and CI is green, after checking `git log` shows only the
-  owner's identity. Then `git switch main && git pull` and start the next branch. Agents may merge their own PRs
-  under these conditions.
-- Never commit or push directly to `main`, never force-push, never rewrite published history.
-- A change that makes a doc outdated updates that doc in the same branch.
+  scope = module/area.
+- Before every push: `./gradlew build` and `./gradlew :androidApp:assembleDebug` green, then `git pull --rebase`.
+  Push to `origin/main` after each task or small group of tasks.
+- If a push turns CI red, fix it immediately before starting new work.
+- Never force-push and never rewrite pushed history.
+- A change that makes a doc outdated updates that doc in the same commit (or the same task).
 - No AI attribution: no `Co-Authored-By: … Claude`, "Generated with Claude Code", `Claude-Session` or other
   Claude/Anthropic lines in commits, PRs or code comments. Enforced by `.claude/settings.json` (`attribution`) and
   the committed `.githooks/commit-msg` hook — run `git config core.hooksPath .githooks` once per clone.

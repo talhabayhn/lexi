@@ -77,37 +77,30 @@ iOS: open `iosApp/iosApp.xcodeproj` in Xcode and run. (Update this section if ta
 
 ### Git workflow (details in `docs/CONVENTIONS.md` § Git)
 
-- `main` is always green and **never** receives direct commits or pushes.
-- One branch per ROADMAP task group / feature (not per tiny change): `feat/m0-bootstrap`, `feat/design-system`,
-  `feat/game-engine`, `feat/content-compiler`, `feat/game-screen`, `fix/<topic>`, `chore/<topic>`, `docs/<topic>`.
-  Several small commits per branch are fine.
-- Before starting a task group: `git switch main && git pull`, then create the branch. Never stack unrelated
-  work on one branch.
-- Conventional Commits, English, imperative mood. Commit after each completed ROADMAP task.
-- When a branch is done: push the branch and open a PR into `main` with `gh pr create` (if `gh` is not
-  authenticated, print the PR title/body + URL and wait). PR body: summary, changes, decisions taken, how to test,
-  screenshots for UI.
-- Merge yourself once `./gradlew build` and `./gradlew :androidApp:assembleDebug` are green locally **and** CI is
-  green (once CI exists): verify `git log` shows only the owner's identity and no attribution lines, then
-  `gh pr merge --squash --delete-branch`, `git switch main && git pull`, and continue with the next branch of the
-  plan without waiting.
-- Never commit or push directly to `main`; never force-push; never rewrite published history.
-- At the end of each PR group give the product owner a short Turkish status: what merged, what is next, anything
-  that needs their action (e.g. a Mac check).
+- Trunk-based: work directly on `main` (the owner calls it "master"). No feature branches, no PRs, no `gh` merges.
+- Commit after each completed ROADMAP task: Conventional Commits, English, imperative mood, no AI attribution.
+  Keep commits atomic so any single one can be reverted.
+- Before every push: `./gradlew build` and `./gradlew :androidApp:assembleDebug` green, then `git pull --rebase`,
+  then push to `origin/main` after each task or small group of tasks.
+- If a push turns CI red, fix it immediately before starting new work.
+- Never force-push and never rewrite pushed history.
+- Don't enable or suggest branch protection that requires PRs.
+- After each ROADMAP task group, give the product owner a short Turkish status: what landed, what is next,
+  anything that needs their action (e.g. a Mac check).
 
 ### Decisions and docs
 
-- Decide yourself using `docs/ARCHITECTURE.md`, the ADRs and best practice; record the decision in the PR
-  description. Ask the product owner **only** when (a) a choice changes product behavior, scope, cost or a public
-  API in a way the docs don't cover, (b) something is irreversible or destructive (deleting user content,
-  force-push, rewriting history), or (c) you are blocked after trying alternatives.
-- Whenever a decision or change makes a doc outdated, update that doc in the same branch, without asking.
+- Decide yourself using `docs/ARCHITECTURE.md`, the ADRs and best practice; record the decision in the commit
+  message body (and ADR when needed). Ask the product owner **only** when (a) a choice changes product behavior,
+  scope, cost or a public API in a way the docs don't cover, (b) something is irreversible or destructive
+  (deleting user content, force-push, rewriting history), or (c) you are blocked after trying alternatives.
+- Whenever a decision or change makes a doc outdated, update that doc in the same commit/task, without asking.
 
 ## Specialised agents (`.claude/agents/`)
 
 `architect` · `game-engine-engineer` · `ui-implementer` · `data-engineer` · `platform-integrator` ·
 `content-curator` · `test-engineer` · `code-reviewer` · `multiplayer-engineer` (v1.1).
-Use them for their area; run `code-reviewer` before every merge.
+Use them for their area; run `code-reviewer` before pushing a feature.
 
 ## Language
 
