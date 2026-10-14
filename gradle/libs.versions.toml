@@ -18,6 +18,8 @@ kotlin = "2.4.21"
 kotlinx-collections-immutable = "0.5.2"
 kotlinx-datetime = "0.8.0"
 kotlinx-serialization = "1.11.0"
+ktlint = "1.8.0"
+ktlint-gradle = "14.2.0"
 material3 = "1.9.0"
 roborazzi = "1.76.0"
 robolectric = "4.17"
@@ -64,6 +66,7 @@ turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
 android-gradlePlugin = { module = "com.android.tools.build:gradle", version.ref = "agp" }
 kotlin-gradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 compose-gradlePlugin = { module = "org.jetbrains.compose:compose-gradle-plugin", version.ref = "composeMultiplatform" }
+ktlint-gradlePlugin = { module = "org.jlleitschuh.gradle:ktlint-gradle", version.ref = "ktlint-gradle" }
 composeCompiler-gradlePlugin = { module = "org.jetbrains.kotlin:compose-compiler-gradle-plugin", version.ref = "kotlin" }
 
 [plugins]
@@ -72,6 +75,7 @@ androidMultiplatformLibrary = { id = "com.android.kotlin.multiplatform.library",
 composeMultiplatform = { id = "org.jetbrains.compose", version.ref = "composeMultiplatform" }
 composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint-gradle" }
 kotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 sqldelight = { id = "app.cash.sqldelight", version.ref = "sqldelight" }
 roborazzi = { id = "io.github.takahirom.roborazzi", version.ref = "roborazzi" }

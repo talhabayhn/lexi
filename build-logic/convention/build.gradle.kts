@@ -23,6 +23,7 @@ dependencies {
     compileOnly(libs.kotlin.gradlePlugin)
     compileOnly(libs.compose.gradlePlugin)
     compileOnly(libs.composeCompiler.gradlePlugin)
+    compileOnly(libs.ktlint.gradlePlugin)
 
     testImplementation(kotlin("test"))
 }
@@ -52,6 +53,10 @@ gradlePlugin {
         register("jvmApplication") {
             id = "lexi.jvm.application"
             implementationClass = "dev.talhabayhan.lexi.buildlogic.JvmApplicationConventionPlugin"
+        }
+        register("ktlint") {
+            id = "lexi.ktlint"
+            implementationClass = "dev.talhabayhan.lexi.buildlogic.KtlintConventionPlugin"
         }
         register("moduleRules") {
             id = "lexi.module-rules"

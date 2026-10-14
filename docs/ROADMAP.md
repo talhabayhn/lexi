@@ -12,8 +12,8 @@ Module mapping (replaces the earlier `composeApp`): `androidApp` = thin Android 
 - [x] Toolchain spike: AGP 9 KMP library plugin + SQLDelight schema in `core:data`, Roborazzi screenshot in `core:designsystem`; material3 stable or dropped; outcome in toolchain ADR
 - [x] `build-logic` convention plugins: `lexi.kmp.library`, `lexi.kmp.compose`, `lexi.android.application`, `lexi.feature` (+ `lexi.kmp.pure`, `lexi.jvm.application`, `lexi.module-rules`); `shared` and `androidApp` migrated
 - [x] Create modules from `ARCHITECTURE.md` §2 (empty, compiling): core:domain/data/designsystem/platform/testing, feature:* (v1.0 ones), tools:content-compiler; dependency rules enforced by a build check
-- [ ] Version catalog with: coroutines, datetime, serialization, Koin (+compose-viewmodel), lifecycle-viewmodel-compose (KMP), navigation-compose (KMP), SQLDelight, DataStore, Kermit, Turbine, Roborazzi, BuildKonfig, detekt, ktlint
-- [ ] detekt + ktlint configured; `./gradlew build` runs them
+- [ ] Version catalog with: coroutines, datetime, serialization, Koin (+compose-viewmodel), lifecycle-viewmodel-compose (KMP), navigation-compose (KMP), SQLDelight, DataStore, Kermit, Turbine, Roborazzi, BuildKonfig, ktlint (detekt later)
+- [x] ktlint configured (detekt later, ADR 0012); `./gradlew build` runs it
 - [ ] `.gitignore`, `local.properties.example` (keys placeholders), README run instructions
 - [ ] Koin started in `App()` (`shared`); empty `HomeRoute` (`feature:home`) renders "Lexi" on both platforms
 **Done when:** both apps launch; CI green; module graph matches the dependency rules.

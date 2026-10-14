@@ -14,6 +14,7 @@ class KmpLibraryConventionPlugin : Plugin<Project> {
         pluginManager.apply("org.jetbrains.kotlin.multiplatform")
         pluginManager.apply("com.android.kotlin.multiplatform.library")
         pluginManager.apply("lexi.module-rules")
+        pluginManager.apply("lexi.ktlint")
 
         extensions.configure<KotlinMultiplatformExtension> {
             if (isCoreModule) explicitApi()

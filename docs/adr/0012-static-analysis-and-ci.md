@@ -31,4 +31,5 @@ still pre-release.
   when Kotlin code changes, Swift/Xcode problems at the latest the next night.
 - Cancelled intermediate runs mean not every single commit is verified when pushing in quick succession; the latest
   commit always is.
-- Adding detekt later requires a `config/detekt.yml`, a `lexi.quality` change and a docs update.
+- Adding detekt later requires a `config/detekt.yml`, a detekt convention plugin next to `lexi.ktlint` and a docs
+  update.

@@ -13,6 +13,7 @@ class KmpPureConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) = with(target) {
         pluginManager.apply("org.jetbrains.kotlin.multiplatform")
         pluginManager.apply("lexi.module-rules")
+        pluginManager.apply("lexi.ktlint")
 
         extensions.configure<KotlinMultiplatformExtension> {
             if (isCoreModule) explicitApi()

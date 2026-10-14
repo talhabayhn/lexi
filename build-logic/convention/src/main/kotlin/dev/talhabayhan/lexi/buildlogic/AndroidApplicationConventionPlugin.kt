@@ -13,6 +13,7 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
         pluginManager.apply("com.android.application")
         pluginManager.apply("org.jetbrains.kotlin.plugin.compose")
         pluginManager.apply("lexi.module-rules")
+        pluginManager.apply("lexi.ktlint")
 
         extensions.configure<ApplicationExtension> {
             compileSdk = libs.version("android-compileSdk").toInt()

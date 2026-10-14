@@ -15,6 +15,7 @@ class JvmApplicationConventionPlugin : Plugin<Project> {
         pluginManager.apply("org.jetbrains.kotlin.jvm")
         pluginManager.apply("application")
         pluginManager.apply("lexi.module-rules")
+        pluginManager.apply("lexi.ktlint")
 
         extensions.configure<JavaPluginExtension> {
             sourceCompatibility = org.gradle.api.JavaVersion.VERSION_17

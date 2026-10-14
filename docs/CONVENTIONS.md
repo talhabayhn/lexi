@@ -1,7 +1,9 @@
 # Conventions
 
 ## Kotlin
-- Official Kotlin style, enforced by ktlint; detekt default rules + `config/detekt.yml`.
+- Official Kotlin style, enforced by ktlint (`.editorconfig`, `intellij_idea` style, 120 columns; part of
+  `./gradlew build`, fix with `./gradlew ktlintFormat`). detekt later, once a stable release supports our Kotlin
+  version (ADR 0012).
 - Explicit API mode in `core:*` modules (`explicitApi()`); features may use internal by default.
 - Immutable models (`data class` with `val`, `kotlinx.collections.immutable` for UI state lists); `@Immutable`/`@Stable`
   on UI state classes.

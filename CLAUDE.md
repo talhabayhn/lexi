@@ -26,7 +26,7 @@ Kotlin Multiplatform + **Compose Multiplatform** (one UI for Android & iOS) · M
 separate user DB) · DataStore Preferences · Navigation Compose (type-safe `@Serializable` routes) ·
 Coroutines/Flow · kotlinx-datetime · kotlinx.serialization · RevenueCat KMP · AdMob (rewarded) ·
 Firebase Crashlytics + Analytics (behind interfaces) · Supabase (v1.1, online rooms) ·
-Roborazzi screenshot tests · detekt + ktlint · GitHub Actions.
+Roborazzi screenshot tests · ktlint (detekt later, ADR 0012) · GitHub Actions.
 
 Android `minSdk 26`, iOS 16+. Package / applicationId: `dev.talhabayhan.lexi` (change before first release if needed).
 
@@ -39,7 +39,7 @@ Android `minSdk 26`, iOS 16+. Package / applicationId: `dev.talhabayhan.lexi` (c
 ./gradlew :androidApp:installDebug       # run on Android device/emulator
 ./gradlew recordRoborazziAndroidHostTest # record screenshots
 ./gradlew verifyRoborazziAndroidHostTest # compare screenshots
-./gradlew detekt ktlintCheck             # static analysis
+./gradlew ktlintCheck                    # static analysis (detekt later); fix with ktlintFormat
 ./gradlew :tools:content-compiler:run    # CSV → content.db
 ```
 iOS: open `iosApp/iosApp.xcodeproj` in Xcode and run. (Update this section if tasks get renamed.)
