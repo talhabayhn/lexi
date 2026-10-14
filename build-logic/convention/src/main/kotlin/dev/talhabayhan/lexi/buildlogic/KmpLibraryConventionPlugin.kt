@@ -13,6 +13,7 @@ class KmpLibraryConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) = with(target) {
         pluginManager.apply("org.jetbrains.kotlin.multiplatform")
         pluginManager.apply("com.android.kotlin.multiplatform.library")
+        pluginManager.apply("lexi.module-rules")
 
         extensions.configure<KotlinMultiplatformExtension> {
             if (isCoreModule) explicitApi()

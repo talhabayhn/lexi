@@ -10,8 +10,8 @@ Module mapping (replaces the earlier `composeApp`): `androidApp` = thin Android 
 - [x] Line endings: repo-wide `.gitattributes` (LF), renormalized; `gradlew` executable
 - [x] GitHub Actions: `build.yml` (build + tests + lint on ubuntu, on push to `main`), `ios.yml` (macOS framework link + simulator tests, path-filtered; `xcodebuild` nightly / on `iosApp` changes)
 - [x] Toolchain spike: AGP 9 KMP library plugin + SQLDelight schema in `core:data`, Roborazzi screenshot in `core:designsystem`; material3 stable or dropped; outcome in toolchain ADR
-- [ ] `build-logic` convention plugins: `lexi.kmp.library`, `lexi.kmp.compose`, `lexi.android.application`, `lexi.feature`; `shared` and `androidApp` migrated
-- [ ] Create modules from `ARCHITECTURE.md` §2 (empty, compiling): core:domain/data/designsystem/platform/testing, feature:* (v1.0 ones), tools:content-compiler; dependency rules enforced by a build check
+- [x] `build-logic` convention plugins: `lexi.kmp.library`, `lexi.kmp.compose`, `lexi.android.application`, `lexi.feature` (+ `lexi.kmp.pure`, `lexi.jvm.application`, `lexi.module-rules`); `shared` and `androidApp` migrated
+- [x] Create modules from `ARCHITECTURE.md` §2 (empty, compiling): core:domain/data/designsystem/platform/testing, feature:* (v1.0 ones), tools:content-compiler; dependency rules enforced by a build check
 - [ ] Version catalog with: coroutines, datetime, serialization, Koin (+compose-viewmodel), lifecycle-viewmodel-compose (KMP), navigation-compose (KMP), SQLDelight, DataStore, Kermit, Turbine, Roborazzi, BuildKonfig, detekt, ktlint
 - [ ] detekt + ktlint configured; `./gradlew build` runs them
 - [ ] `.gitignore`, `local.properties.example` (keys placeholders), README run instructions

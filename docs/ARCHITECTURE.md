@@ -52,6 +52,11 @@ lexi/
 | `androidApp` | `shared` only |
 | `tools:content-compiler` | `core:domain` (JVM target) |
 
+The table is enforced by `verifyModuleDependencies` (part of `check`, rules in
+`build-logic/.../ModuleRules.kt`); `core:testing` is allowed only in test configurations.
+`core:domain` and `core:testing` are pure KMP (`jvm` + iOS, no Android plugin); Android targets consume their `jvm`
+variant.
+
 Features talk to data only through domain interfaces injected by Koin. A feature never depends on another feature;
 cross-feature navigation goes through route objects defined in `shared` (or a tiny `core:navigation` if it grows).
 

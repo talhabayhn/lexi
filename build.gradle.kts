@@ -6,6 +6,13 @@ plugins {
     alias(libs.plugins.composeMultiplatform) apply false
     alias(libs.plugins.composeCompiler) apply false
     alias(libs.plugins.kotlinMultiplatform) apply false
+    alias(libs.plugins.kotlinJvm) apply false
     alias(libs.plugins.sqldelight) apply false
     alias(libs.plugins.roborazzi) apply false
+}
+
+// Root lifecycle tasks so `./gradlew build` also runs the build-logic unit tests (module rules).
+plugins.apply("base")
+tasks.named("check") {
+    dependsOn(gradle.includedBuild("build-logic").task(":convention:check"))
 }

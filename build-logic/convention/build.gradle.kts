@@ -23,6 +23,12 @@ dependencies {
     compileOnly(libs.kotlin.gradlePlugin)
     compileOnly(libs.compose.gradlePlugin)
     compileOnly(libs.composeCompiler.gradlePlugin)
+
+    testImplementation(kotlin("test"))
+}
+
+tasks.test {
+    useJUnitPlatform()
 }
 
 gradlePlugin {
@@ -34,6 +40,22 @@ gradlePlugin {
         register("kmpCompose") {
             id = "lexi.kmp.compose"
             implementationClass = "dev.talhabayhan.lexi.buildlogic.KmpComposeConventionPlugin"
+        }
+        register("kmpPure") {
+            id = "lexi.kmp.pure"
+            implementationClass = "dev.talhabayhan.lexi.buildlogic.KmpPureConventionPlugin"
+        }
+        register("feature") {
+            id = "lexi.feature"
+            implementationClass = "dev.talhabayhan.lexi.buildlogic.FeatureConventionPlugin"
+        }
+        register("jvmApplication") {
+            id = "lexi.jvm.application"
+            implementationClass = "dev.talhabayhan.lexi.buildlogic.JvmApplicationConventionPlugin"
+        }
+        register("moduleRules") {
+            id = "lexi.module-rules"
+            implementationClass = "dev.talhabayhan.lexi.buildlogic.ModuleRulesConventionPlugin"
         }
         register("androidApplication") {
             id = "lexi.android.application"
