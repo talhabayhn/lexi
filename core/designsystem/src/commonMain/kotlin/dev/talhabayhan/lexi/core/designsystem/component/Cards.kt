@@ -1,0 +1,255 @@
+package dev.talhabayhan.lexi.core.designsystem.component
+
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
+import dev.talhabayhan.lexi.core.designsystem.modifier.lexiSurface
+import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
+import dev.talhabayhan.lexi.core.designsystem.theme.withCssLineHeight
+
+/** Colors of a [LevelBadge] per level (`16-components` § SEVİYE ROZETLERİ). */
+public enum class LevelBadgeStyle {
+    /** Red, white text. */
+    A1,
+
+    /** White, ink text. */
+    A2,
+
+    /** Yellow, ink text. */
+    B1,
+
+    /** Blue, white text. */
+    B2,
+
+    /** White, ink text. */
+    C1,
+
+    /** Ink, yellow text. */
+    Native,
+}
+
+/** Card and tile geometry from `03-level-select`, `02-home` and `16-components`. */
+public object CardDefaults {
+    /** Level badge: `padding: 4px 10px`, 2dp border. */
+    public val BadgePadding: PaddingValues = PaddingValues(horizontal = 10.dp, vertical = 4.dp)
+
+    /** 150: level card. */
+    public val LevelCardHeight: Dp = 150.dp
+
+    /** 110: menu tile. */
+    public val MenuTileHeight: Dp = 110.dp
+
+    /** 14: card and tile padding. */
+    public val Padding: Dp = 14.dp
+
+    /** Marker sizes including the 2dp border (the HTML sizes are CSS content-box: 24 + 2 × 2, 26 + 2 × 2). */
+    public val LevelMarkerSize: Dp = 28.dp
+    public val TileMarkerSize: Dp = 30.dp
+
+    /** Menu tile title/subtitle `line-height: 1.1` of the 18px title. */
+    internal const val TILE_TITLE_LINE_HEIGHT: Double = 1.1
+    internal const val TILE_SUBTITLE_LINE_HEIGHT: Double = 1.1 * 18 / 14
+}
+
+/** A level chip: square, 2dp ink border, 14sp/800, colored per [style]. */
+@Composable
+public fun LevelBadge(text: String, style: LevelBadgeStyle, modifier: Modifier = Modifier) {
+    val colors = LexiTheme.colors
+    val (fill, content) = when (style) {
+        LevelBadgeStyle.A1 -> colors.red to colors.white
+        LevelBadgeStyle.A2, LevelBadgeStyle.C1 -> colors.white to colors.ink
+        LevelBadgeStyle.B1 -> colors.yellow to colors.ink
+        LevelBadgeStyle.B2 -> colors.blue to colors.white
+        LevelBadgeStyle.Native -> colors.ink to colors.yellow
+    }
+    Text(
+        text = text,
+        style = LexiTheme.typography.bodyStrong14,
+        color = content,
+        modifier = modifier
+            .lexiSurface(fill, BorderStroke(LexiTheme.borders.thin, colors.ink))
+            .padding(CardDefaults.BadgePadding),
+    )
+}
+
+/**
+ * Level card of the 2-column grid (150dp): title (34/800) with a marker shape, subtitle, progress bar and count.
+ * Normal = white with s3; [selected] = red with white text and s6 (progress ink on white); [inverted] = ink with
+ * cream text and cream lines (NAT).
+ */
+@Composable
+public fun LevelCard(
+    title: String,
+    subtitle: String,
+    progress: Float,
+    progressLabel: String,
+    marker: DecorShapeKind,
+    markerColor: Color,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    selected: Boolean = false,
+    inverted: Boolean = false,
+) {
+    val colors = LexiTheme.colors
+    val typography = LexiTheme.typography
+    val fill = when {
+        selected -> colors.red
+        inverted -> colors.ink
+        else -> colors.white
+    }
+    val content = when {
+        selected -> colors.white
+        inverted -> colors.cream
+        else -> colors.ink
+    }
+    val lines = if (inverted) colors.cream else colors.ink
+    PressableSurface(
+        onClick = onClick,
+        modifier = modifier.height(CardDefaults.LevelCardHeight),
+        color = fill,
+        shadow = if (selected) LexiTheme.shadows.s6 else LexiTheme.shadows.s3,
+        role = Role.RadioButton,
+        propagateMinConstraints = true,
+    ) {
+        Column(
+            modifier = Modifier.fillMaxSize().padding(CardDefaults.Padding),
+            verticalArrangement = Arrangement.SpaceBetween,
+        ) {
+            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+                Text(title, style = typography.levelTitle, color = content)
+                DecorShape(
+                    kind = marker,
+                    color = markerColor,
+                    border = BorderStroke(LexiTheme.borders.thin, lines),
+                    modifier = Modifier.size(CardDefaults.LevelMarkerSize),
+                )
+            }
+            Text(subtitle, style = typography.caption14SemiBold, color = content)
+            Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap4)) {
+                ProgressBar(
+                    progress = progress,
+                    modifier = Modifier.fillMaxWidth(),
+                    borderColor = lines,
+                    trackColor = if (selected) colors.white else Color.Transparent,
+                    fillColor = if (selected) colors.ink else colors.blue,
+                )
+                Text(progressLabel, style = typography.caption12, color = content)
+            }
+        }
+    }
+}
+
+/**
+ * Home menu tile (110dp): marker shape (26dp, 2dp border), title (18/800) and subtitle (14/500), s4. [inverted] =
+ * ink with cream text, cream marker border and the red shadow s4Red (exam packs).
+ */
+@Composable
+public fun MenuTile(
+    title: String,
+    subtitle: String,
+    marker: DecorShapeKind,
+    markerColor: Color,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    inverted: Boolean = false,
+) {
+    val colors = LexiTheme.colors
+    val typography = LexiTheme.typography
+    val content = if (inverted) colors.cream else colors.ink
+    PressableSurface(
+        onClick = onClick,
+        modifier = modifier.height(CardDefaults.MenuTileHeight),
+        color = if (inverted) colors.ink else colors.white,
+        shadow = if (inverted) LexiTheme.shadows.s4Red else LexiTheme.shadows.s4,
+        propagateMinConstraints = true,
+    ) {
+        Column(
+            modifier = Modifier.fillMaxSize().padding(CardDefaults.Padding),
+            verticalArrangement = Arrangement.SpaceBetween,
+        ) {
+            DecorShape(
+                kind = marker,
+                color = markerColor,
+                border = BorderStroke(LexiTheme.borders.thin, if (inverted) colors.cream else colors.ink),
+                modifier = Modifier.size(CardDefaults.TileMarkerSize),
+            )
+            Column {
+                Text(
+                    title,
+                    style = typography.heading18.withCssLineHeight(CardDefaults.TILE_TITLE_LINE_HEIGHT),
+                    color = content,
+                )
+                Text(
+                    subtitle,
+                    style = typography.caption14.withCssLineHeight(CardDefaults.TILE_SUBTITLE_LINE_HEIGHT),
+                    color = content,
+                )
+            }
+        }
+    }
+}
+
+// design sample, not user-facing
+@Preview(widthDp = 390)
+@Composable
+private fun CardsPreview() {
+    LexiTheme(reducedMotion = false) {
+        val colors = LexiTheme.colors
+        Column(
+            modifier = Modifier.background(colors.cream).padding(LexiTheme.dimens.gap20),
+            verticalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap12),
+        ) {
+            Row(horizontalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap8)) {
+                LevelBadge("A1", LevelBadgeStyle.A1)
+                LevelBadge("B2", LevelBadgeStyle.B2)
+                LevelBadge("NAT", LevelBadgeStyle.Native)
+            }
+            Row(horizontalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap12)) {
+                LevelCard(
+                    "A1", "Başlangıç", 0.48f, "412 / 850 kelime", DecorShapeKind.Square, colors.yellow,
+                    onClick = {}, selected = true, modifier = Modifier.weight(1f),
+                )
+                LevelCard(
+                    "NAT", "Deyim · phrasal verb", 0f, "0 / 800 kelime", DecorShapeKind.Leaf, colors.red,
+                    onClick = {}, inverted = true, modifier = Modifier.weight(1f),
+                )
+            }
+            Row(horizontalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap12)) {
+                MenuTile(
+                    "Kelime Defterim",
+                    "24 tekrar bekliyor",
+                    DecorShapeKind.Circle,
+                    colors.blue,
+                    onClick = {},
+                    modifier = Modifier.weight(1f),
+                )
+                MenuTile(
+                    "Sınav paketleri",
+                    "LGS · YKS-Dil · YDS",
+                    DecorShapeKind.Diamond,
+                    colors.yellow,
+                    onClick = {},
+                    inverted = true,
+                    modifier = Modifier.weight(1f),
+                )
+            }
+        }
+    }
+}

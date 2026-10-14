@@ -21,6 +21,8 @@ import dev.talhabayhan.lexi.core.designsystem.component.AnswerSlotState
 import dev.talhabayhan.lexi.core.designsystem.component.IconButtonDefaults
 import dev.talhabayhan.lexi.core.designsystem.component.LetterKey
 import dev.talhabayhan.lexi.core.designsystem.component.LetterKeyState
+import dev.talhabayhan.lexi.core.designsystem.component.LevelBadge
+import dev.talhabayhan.lexi.core.designsystem.component.LevelBadgeStyle
 import dev.talhabayhan.lexi.core.designsystem.component.LexiButton
 import dev.talhabayhan.lexi.core.designsystem.component.LexiButtonVariant
 import dev.talhabayhan.lexi.core.designsystem.component.LexiSwitch
@@ -153,6 +155,15 @@ internal fun ColumnScope.GalleryColumnTwo() {
         Captioned("Joker sildi") {
             LetterKey('E', onClick = {}, modifier = key, state = LetterKeyState.RemovedByJoker)
         }
+    }
+    SectionLabel("SEVİYE ROZETLERİ", topMargin = LexiTheme.dimens.gap6)
+    Row(horizontalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap8)) {
+        LevelBadge("A1", LevelBadgeStyle.A1)
+        LevelBadge("A2", LevelBadgeStyle.A2)
+        LevelBadge("B1", LevelBadgeStyle.B1)
+        LevelBadge("B2", LevelBadgeStyle.B2)
+        LevelBadge("C1", LevelBadgeStyle.C1)
+        LevelBadge("NAT", LevelBadgeStyle.Native)
     }
 }
 

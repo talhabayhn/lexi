@@ -5,7 +5,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.Shape
-import androidx.compose.ui.unit.dp
 
 /**
  * Shapes (`docs/design/tokens.md` § Shapes). Square is the default for everything; UI corners are never rounded
@@ -19,7 +18,10 @@ public class LexiShapes internal constructor(
     public val circle: Shape,
     /** `border-radius: 50% 0 50% 0`: "pass" state. */
     public val leaf: Shape,
-    /** `border-radius: 0 80px 80px 0`: decorative side shapes. */
+    /**
+     * `border-radius: 0 80px 80px 0` on 80 × 160 (`0 60px 60px 0` on 60 × 120): decorative side shapes, the right
+     * corners rounded by the shape's width.
+     */
     public val halfPill: Shape,
 )
 
@@ -27,5 +29,10 @@ internal val DefaultLexiShapes: LexiShapes = LexiShapes(
     square = RectangleShape,
     circle = CircleShape,
     leaf = RoundedCornerShape(topStartPercent = 50, topEndPercent = 0, bottomEndPercent = 50, bottomStartPercent = 0),
-    halfPill = RoundedCornerShape(topStart = 0.dp, topEnd = 80.dp, bottomEnd = 80.dp, bottomStart = 0.dp),
+    halfPill = RoundedCornerShape(
+        topStartPercent = 0,
+        topEndPercent = 100,
+        bottomEndPercent = 100,
+        bottomStartPercent = 0,
+    ),
 )
