@@ -106,3 +106,15 @@ Effects: LetterPlaced(slot) | Correct(letter, card, points) | Wrong(letter, card
          JokerApplied(type) | TurnChanged(player) | GameOver(summary)
 ```
 Every rule above must have a unit test named after the rule, e.g. `pass_endsTurn_inDuel()`.
+
+## 13. Randomness & seeds
+- `SeededRandom` = SplitMix64 (reference `splitmix64.c`), own implementation; golden sequences are unit-tested.
+- `nextInt(bound)` is unbiased (31-bit rejection sampling, as `java.util.Random`); shuffles are Fisher–Yates from
+  the last index down (`j = nextInt(i + 1)`).
+- String hashing for seeds = FNV-1a 64 over UTF-8 (`Seeds.stableHash`), never `String.hashCode()`.
+- Sub-seed per purpose: `Seeds.derive(seed, purpose) = mix64(seed xor stableHash(purpose))`, always from the
+  game seed (never from a stream's current position). Purposes:
+  | purpose | used for |
+  |---|---|
+  | `wheel` | card pick per letter (`WheelGenerator`, also the review wheel) |
+  | `keys:<letter>` | key set + shuffle of the slot with that letter (`KeyboardGenerator`) |

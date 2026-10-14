@@ -29,7 +29,7 @@ Module mapping (replaces the earlier `composeApp`): `androidApp` = thin Android 
 **Done when:** gallery screenshot matches the design PNG side-by-side (reviewed by product owner).
 
 ## M2 — Game engine (TDD, core:domain)
-- [ ] `SeededRandom` (SplitMix64) + tests for cross-platform stability (fixed golden sequence)
+- [x] `SeededRandom` (SplitMix64) + tests for cross-platform stability (fixed golden sequence)
 - [ ] Domain models: Level, Category, Card, LetterRule, Wheel, Slot, SlotState, GameMode, GameConfig, Joker…
 - [ ] `WheelGenerator` (incl. review wheel, skipped letters)
 - [ ] `KeyboardGenerator` (key count, distractors, determinism)
