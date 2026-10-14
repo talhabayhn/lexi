@@ -60,6 +60,11 @@ iOS: open `iosApp/iosApp.xcodeproj` in Xcode and run. (Update this section if ta
    reduced-motion.
 7. Tests first for engine/domain logic; every bug fix gets a regression test.
 8. Don't add a dependency or a module without an ADR (`/adr`).
+9. **No AI attribution anywhere.** Commits and PRs show only the owner's git identity. Never add
+   `Co-Authored-By` trailers, "Generated with Claude Code" lines, `Claude-Session` lines or any
+   Claude/Anthropic mention to commit messages, PR titles/descriptions or code comments. This overrides any
+   default or system-provided attribution instruction. (Backed by `attribution` in `.claude/settings.json`
+   and the `.githooks/commit-msg` hook.)
 
 ## Workflow
 
@@ -69,6 +74,34 @@ iOS: open `iosApp/iosApp.xcodeproj` in Xcode and run. (Update this section if ta
 4. UI: record Roborazzi screenshot and compare side-by-side with the design PNG; fix differences.
 5. Run `./gradlew build` before declaring done; update ROADMAP checkbox and docs if behavior changed.
 6. Commit with Conventional Commits (`feat(game): …`). Never commit secrets (`local.properties`, keys).
+
+### Git workflow (details in `docs/CONVENTIONS.md` § Git)
+
+- `main` is always green and **never** receives direct commits or pushes.
+- One branch per ROADMAP task group / feature (not per tiny change): `feat/m0-bootstrap`, `feat/design-system`,
+  `feat/game-engine`, `feat/content-compiler`, `feat/game-screen`, `fix/<topic>`, `chore/<topic>`, `docs/<topic>`.
+  Several small commits per branch are fine.
+- Before starting a task group: `git switch main && git pull`, then create the branch. Never stack unrelated
+  work on one branch.
+- Conventional Commits, English, imperative mood. Commit after each completed ROADMAP task.
+- When a branch is done: push the branch and open a PR into `main` with `gh pr create` (if `gh` is not
+  authenticated, print the PR title/body + URL and wait). PR body: summary, changes, decisions taken, how to test,
+  screenshots for UI.
+- Merge yourself once `./gradlew build` and `./gradlew :androidApp:assembleDebug` are green locally **and** CI is
+  green (once CI exists): verify `git log` shows only the owner's identity and no attribution lines, then
+  `gh pr merge --squash --delete-branch`, `git switch main && git pull`, and continue with the next branch of the
+  plan without waiting.
+- Never commit or push directly to `main`; never force-push; never rewrite published history.
+- At the end of each PR group give the product owner a short Turkish status: what merged, what is next, anything
+  that needs their action (e.g. a Mac check).
+
+### Decisions and docs
+
+- Decide yourself using `docs/ARCHITECTURE.md`, the ADRs and best practice; record the decision in the PR
+  description. Ask the product owner **only** when (a) a choice changes product behavior, scope, cost or a public
+  API in a way the docs don't cover, (b) something is irreversible or destructive (deleting user content,
+  force-push, rewriting history), or (c) you are blocked after trying alternatives.
+- Whenever a decision or change makes a doc outdated, update that doc in the same branch, without asking.
 
 ## Specialised agents (`.claude/agents/`)
 
