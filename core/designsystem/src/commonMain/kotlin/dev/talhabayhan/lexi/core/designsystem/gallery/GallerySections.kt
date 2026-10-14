@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Text
@@ -22,9 +23,13 @@ import dev.talhabayhan.lexi.core.designsystem.component.LetterKey
 import dev.talhabayhan.lexi.core.designsystem.component.LetterKeyState
 import dev.talhabayhan.lexi.core.designsystem.component.LexiButton
 import dev.talhabayhan.lexi.core.designsystem.component.LexiButtonVariant
+import dev.talhabayhan.lexi.core.designsystem.component.LexiSwitch
 import dev.talhabayhan.lexi.core.designsystem.component.LexiTextLink
 import dev.talhabayhan.lexi.core.designsystem.component.LocalForcePressed
 import dev.talhabayhan.lexi.core.designsystem.component.NavSquareButton
+import dev.talhabayhan.lexi.core.designsystem.component.ProgressBar
+import dev.talhabayhan.lexi.core.designsystem.component.Segment
+import dev.talhabayhan.lexi.core.designsystem.component.SegmentedControl
 import dev.talhabayhan.lexi.core.designsystem.component.WheelLetter
 import dev.talhabayhan.lexi.core.designsystem.component.WheelLetterState
 import dev.talhabayhan.lexi.core.designsystem.icon.LexiIcons
@@ -74,6 +79,28 @@ internal fun ColumnScope.GalleryColumnOne() {
         Text(
             "Navigasyon = kare,\noyun aksiyonu = daire",
             style = LexiTheme.typography.caption13.withCssLineHeight(GallerySpec.NOTE_LINE_HEIGHT),
+        )
+    }
+    SectionLabel("SEGMENT VE ANAHTAR", topMargin = LexiTheme.dimens.gap8)
+    SegmentedControl(
+        segments = listOf(Segment("Seçili"), Segment("Seçenek"), Segment("Seçenek")),
+        selectedIndex = 0,
+        onSelect = {},
+        modifier = Modifier.fillMaxWidth(),
+    )
+    Row(
+        horizontalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap24),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        LexiSwitch(checked = true, onCheckedChange = {})
+        LexiSwitch(checked = false, onCheckedChange = {})
+        ProgressBar(
+            progress = GallerySpec.DEMO_PROGRESS,
+            height = GallerySpec.demoProgressHeight,
+            borderWidth = LexiTheme.borders.regular,
+            fillColor = LexiTheme.colors.yellow,
+            fillEdge = true,
+            modifier = Modifier.weight(1f),
         )
     }
 }

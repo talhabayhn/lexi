@@ -145,6 +145,8 @@ internal object GallerySpec {
     val demoChipSize = 44.dp
     val demoSlotLetterSize = 24.sp
     val demoKeyWidth = 52.dp
+    val demoProgressHeight = 14.dp
+    const val DEMO_PROGRESS = 0.62f
     const val NOTE_LINE_HEIGHT = 1.4
 }
 
