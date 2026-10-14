@@ -8,7 +8,15 @@ built with Kotlin + Compose Multiplatform. Bauhaus Classic design.
   Plan: [`docs/ROADMAP.md`](docs/ROADMAP.md) · Design: [`docs/design/README.md`](docs/design/README.md)
 
 ## Run
-Android: `./gradlew :androidApp:installDebug` · iOS: open `iosApp/iosApp.xcodeproj` in Xcode → Run.
+- Requirements: JDK 21 (Android Studio's bundled JBR works: set `JAVA_HOME` to `<Android Studio>/jbr`), Android SDK
+  (copy `local.properties.example` to `local.properties` and set `sdk.dir`), Xcode 26 on a Mac for iOS.
+- Android: `./gradlew :androidApp:installDebug`
+- iOS: open `iosApp/iosApp.xcodeproj` in Xcode → Run (builds the `Shared` framework via Gradle).
+- Full check: `./gradlew build` (on Windows/Linux the iOS framework link and simulator tests are skipped; CI runs
+  them on macOS).
+
+## CI
+GitHub Actions: `build` (ubuntu, every push to `main`) and `ios` (macOS, path-filtered + nightly). See ADR 0012.
 
 ## One-time setup after cloning
 ```bash

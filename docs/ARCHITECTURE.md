@@ -171,7 +171,9 @@ don't leak wrong colors. Tokens and components: `docs/design/tokens.md`, `docs/d
 ## 12. Build & CI
 - Version catalog `gradle/libs.versions.toml`; latest stable versions at bootstrap, recorded there.
 - Convention plugins in `build-logic`.
-- GitHub Actions: `build` (lint + tests + Android assemble) on PR; iOS framework compile on macOS runner nightly / on main.
+- GitHub Actions (ADR 0012): `build.yml` on ubuntu for every push to `main` (`./gradlew build :androidApp:assembleDebug`:
+  lint, tests, Android assemble, iOS klib compile); `ios.yml` on macOS, path-filtered (framework link +
+  `iosSimulatorArm64Test` per push, `xcodebuild` of `iosApp` nightly or when `iosApp/` changes).
 - Secrets (RevenueCat, AdMob, Supabase, Firebase files) via `local.properties` / CI secrets → BuildConfig (BuildKonfig). Never committed.
 
 ## 13. Security & privacy
