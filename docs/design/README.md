@@ -37,6 +37,15 @@ docs/design/
 - Sample texts in the design are real copy candidates — move them to string resources (TR), add EN.
 - `[FİYAT]` etc. are placeholders → come from RevenueCat.
 
+## App icons (`13-logo-and-icon`, option 1)
+- Both platforms use the home-screen variant from the board (red half + yellow circle with "L", no leaf) without
+  the 3px frame and corner radius: the OS mask is the outline.
+- Android: adaptive icon in `androidApp/src/main/res` (`drawable/ic_launcher_{background,foreground,monochrome}.xml`).
+  Path data is in the design's 180px units, mapped onto the 72dp visible area (scale 0.4, offset 18); the "L" is the
+  Jost ExtraBold outline at 64px, placed like the CSS line box. No legacy PNGs (minSdk 26).
+- iOS: `AppIcon.appiconset/app-icon-1024.png` is rendered from `LexiAppIcon` by `AppIconRenderTest` (opaque RGB).
+  After changing the icon, run `./gradlew :core:designsystem:exportIosAppIcon` and commit the PNG.
+
 ## Updating the design
 When the canvas changes, ask Claude (claude.ai) to re-export. The renderer used for the export is
 `tools/design-export/render.js` (Playwright): `node render.js <srcDir> <outDir> <Jost.ttf> "Name=NN-name,..."`.

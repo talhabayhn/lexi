@@ -35,3 +35,13 @@ roborazzi {
 tasks.withType<Test>().configureEach {
     jvmArgs("--add-exports=java.base/jdk.internal.access=ALL-UNNAMED")
 }
+
+// iOS AppIcon rendered from LexiAppIcon by AppIconRenderTest (build/app-icon), copied into the asset catalog.
+val appIconRender = layout.buildDirectory.file("app-icon/app-icon-1024.png")
+tasks.withType<Test>().matching { it.name == "testAndroidHostTest" }.configureEach { outputs.file(appIconRender) }
+tasks.register<Copy>("exportIosAppIcon") {
+    description = "Renders the iOS AppIcon from LexiAppIcon and copies it into iosApp's asset catalog."
+    dependsOn("testAndroidHostTest")
+    from(appIconRender)
+    into(rootProject.layout.projectDirectory.dir("iosApp/iosApp/Assets.xcassets/AppIcon.appiconset"))
+}

@@ -24,7 +24,7 @@ Module mapping (replaces the earlier `composeApp`): `androidApp` = thin Android 
 - [x] `hardShadow` modifier + `PressableSurface` (press animation 80 ms + haptic + sound hooks)
 - [x] All components from `docs/design/components.md` with previews
 - [x] Icons as ImageVectors
-- [ ] `LexiLogo` + launcher icons (option 1) for Android (adaptive) and iOS (AppIcon set)
+- [x] `LexiLogo` + launcher icons (option 1) for Android (adaptive) and iOS (AppIcon set)
 - [x] Roborazzi screenshot of a "component gallery" composable ≈ `16-components.png`
 **Done when:** gallery screenshot matches the design PNG side-by-side (reviewed by product owner).
 

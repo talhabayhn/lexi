@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Launcher icon only. Same values as the LexiTheme tokens (core/designsystem LexiColors); resources can't use them. -->
+    <color name="launcher_cream">#FFF2EBDD</color>
+    <color name="launcher_red">#FFD9281C</color>
+    <color name="launcher_yellow">#FFF2C200</color>
+    <color name="launcher_ink">#FF111111</color>
+</resources>
