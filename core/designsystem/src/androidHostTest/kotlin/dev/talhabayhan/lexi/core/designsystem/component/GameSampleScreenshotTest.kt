@@ -2,8 +2,9 @@ package dev.talhabayhan.lexi.core.designsystem.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -13,6 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.github.takahirom.roborazzi.captureRoboImage
+import dev.talhabayhan.lexi.core.designsystem.icon.LexiIcons
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -57,12 +59,52 @@ private fun GameSample() {
             .padding(start = 20.dp, top = 20.dp, end = 20.dp, bottom = 28.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
-        Box(Modifier.fillMaxWidth().height(48.dp))
+        Row(Modifier.height(48.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            NavSquareButton(
+                LexiIcons.Pause,
+                "Duraklat",
+                onClick = {},
+                size = IconButtonDefaults.NavSizeLarge,
+                iconSize = IconButtonDefaults.IconSizeSmall,
+                containerColor = LexiTheme.colors.cream,
+            )
+            TimerBar(progress = 0.62f, timeText = "1:47", modifier = Modifier.weight(1f))
+            ScoreBadge("120")
+        }
         LetterWheel(
             letters = GameWheelLetters,
             centerLetter = 'K',
             ruleLabel = "İLE BAŞLAR",
             modifier = Modifier.align(Alignment.CenterHorizontally),
         )
+        ClueCard(label = "İPUCU · İSİM", clue = "mutfak", level = "A1", letterCount = "7 HARF")
+        Row(
+            modifier = Modifier.fillMaxWidth().padding(top = 4.dp),
+            horizontalArrangement = Arrangement.spacedBy(AnswerSlotDefaults.Gap, Alignment.CenterHorizontally),
+        ) {
+            "KIT".forEach { AnswerSlot(it, AnswerSlotState.Filled) }
+            AnswerSlot(null, AnswerSlotState.Active)
+            repeat(3) { AnswerSlot(null, AnswerSlotState.Empty) }
+        }
+        Column(verticalArrangement = Arrangement.spacedBy(LetterKeyDefaults.GridGap)) {
+            "CHENSAYORU".chunked(LetterKeyDefaults.COLUMNS).forEach { row ->
+                Row(horizontalArrangement = Arrangement.spacedBy(LetterKeyDefaults.GridGap)) {
+                    row.forEach { LetterKey(it, onClick = {}, modifier = Modifier.weight(1f)) }
+                }
+            }
+        }
+        Spacer(Modifier.weight(1f))
+        Row(horizontalArrangement = Arrangement.spacedBy(10.dp), verticalAlignment = Alignment.CenterVertically) {
+            ActionCircleButton(LexiIcons.Bulb, "Joker kullan", onClick = {})
+            IconSquareButton(LexiIcons.Backspace, "Harf sil", onClick = {})
+            LexiButton(
+                text = "PAS",
+                onClick = {},
+                variant = LexiButtonVariant.Pass,
+                textStyle = LexiTheme.typography.button22,
+                height = LexiButtonDefaults.LargeHeight,
+                modifier = Modifier.weight(1f),
+            )
+        }
     }
 }

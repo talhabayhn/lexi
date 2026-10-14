@@ -87,6 +87,8 @@ public class LexiTypography internal constructor(
     public val label12: TextStyle,
     /** 13 / 800: wheel letters. */
     public val wheelChip: TextStyle,
+    /** 12 / 700: clue-card letter count "7 HARF" (`04-game`). */
+    public val caption12Bold: TextStyle,
     /** 16 / 600: list row labels (`11-settings`). */
     public val body16SemiBold: TextStyle,
     /** 14 / 600: level-card subtitles, empty state (`03-level-select`). */
@@ -197,6 +199,7 @@ internal fun lexiTypography(jost: FontFamily): LexiTypography {
         label13 = style(13, FontWeight.Bold, letterSpacing = 0.14.em),
         label12 = style(12, FontWeight.Bold, letterSpacing = 0.14.em),
         wheelChip = style(13, extraBold),
+        caption12Bold = style(12, FontWeight.Bold),
         body16SemiBold = style(16, FontWeight.SemiBold),
         caption14SemiBold = style(14, FontWeight.SemiBold),
         caption13SemiBold = style(13, FontWeight.SemiBold),
