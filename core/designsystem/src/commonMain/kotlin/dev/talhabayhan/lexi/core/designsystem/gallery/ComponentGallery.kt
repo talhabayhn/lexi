@@ -55,7 +55,7 @@ private fun GalleryHeader() {
             verticalAlignment = Alignment.Bottom,
         ) {
             Text(
-                text = "Bileşenler",
+                text = "Bileşenler", // design sample, not user-facing
                 style = typography.title.copy(fontSize = GallerySpec.titleSize).withCssLineHeight(1.0),
             )
             Row(horizontalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap10)) {
@@ -66,6 +66,7 @@ private fun GalleryHeader() {
                 horizontalAlignment = Alignment.End,
                 verticalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap2),
             ) {
+                // design sample, not user-facing
                 Text(
                     "Jost 800 · 28",
                     style = typography.title.withCssLineHeight(1.0),
@@ -85,6 +86,7 @@ private fun GalleryHeader() {
 
 private data class GallerySwatch(val name: String, val hex: String, val color: Color, val outlined: Boolean)
 
+// design sample, not user-facing
 private fun gallerySwatches(colors: LexiColors): List<GallerySwatch> = listOf(
     GallerySwatch("Krem", "#F2EBDD", colors.cream, outlined = true),
     GallerySwatch("Beyaz", "#FFFFFF", colors.white, outlined = true),

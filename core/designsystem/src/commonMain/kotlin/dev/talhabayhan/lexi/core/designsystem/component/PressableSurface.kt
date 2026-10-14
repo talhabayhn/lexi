@@ -185,7 +185,7 @@ private fun PressableSurfacePreview() {
         Box(Modifier.background(LexiTheme.colors.cream).padding(LexiTheme.dimens.gap20)) {
             PressableSurface(onClick = {}, color = LexiTheme.colors.red, modifier = Modifier.height(52.dp)) {
                 Text(
-                    text = "Birincil",
+                    text = "Birincil", // design sample, not user-facing
                     style = LexiTheme.typography.button16,
                     color = LexiTheme.colors.white,
                     modifier = Modifier.padding(horizontal = LexiTheme.dimens.gap20),
