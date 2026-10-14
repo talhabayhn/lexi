@@ -226,6 +226,33 @@ class MatchEngineTest {
     }
 
     @Test
+    fun `active player can forfeit during the handover`() {
+        val game = duel().begin().pass().play(GameEvent.Forfeit)
+
+        assertEquals(MatchPhase.FINISHED, game.state.phase)
+        assertEquals(MatchResult(MatchEndReason.FORFEIT, winner = 0), game.state.result)
+        assertEquals(EngineEffect.MatchOver(MatchResult(MatchEndReason.FORFEIT, winner = 0)), game.lastEffects.last())
+    }
+
+    @Test
+    fun `forfeit during a later handover also ends the forfeiting player's game`() {
+        val game = duel().begin().pass().begin().pass().play(GameEvent.Forfeit)
+
+        assertEquals(1, game.state.result?.winner)
+        assertEquals(GameOverReason.FORFEIT, game.state.players[0].summary?.reason)
+    }
+
+    @Test
+    fun `other game events during the handover are ignored`() {
+        val game = duel().begin().pass()
+        val before = game.state
+
+        game.play(GameEvent.Pass, GameEvent.Pause, GameEvent.KeyTapped(0))
+
+        assertSame(before, game.state)
+    }
+
+    @Test
     fun `jokers are not allowed in duel`() {
         val game = duel().begin()
         val before = game.state

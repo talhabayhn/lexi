@@ -29,13 +29,12 @@ public class MatchEngine(public val config: GameConfig = GameConfig()) {
         val next = when {
             state.phase == MatchPhase.FINISHED -> state
 
-            event is MatchEvent.BeginTurn -> if (state.phase ==
-                MatchPhase.HANDOVER
-            ) {
-                state.beginTurn(event, effects)
-            } else {
-                state
-            }
+            event is MatchEvent.BeginTurn && state.phase == MatchPhase.HANDOVER -> state.beginTurn(event, effects)
+
+            event is MatchEvent.BeginTurn -> state
+
+            // The active player may give up at any time, also while the handover card is shown.
+            event is MatchEvent.Play && event.event == GameEvent.Forfeit -> state.forfeit(effects)
 
             state.phase == MatchPhase.HANDOVER -> state
 
@@ -64,13 +63,17 @@ public class MatchEngine(public val config: GameConfig = GameConfig()) {
         if (after === before) return this
         fx += transition.effects
         val next = withActive(after)
-        if (event == GameEvent.Forfeit && after.status == GameStatus.FINISHED) {
-            return next.finish(MatchResult(MatchEndReason.FORFEIT, winner = other(activePlayer)), fx)
-        }
         val revealOver =
             !after.isRevealing && (before.isRevealing || transition.effects.any { it is EngineEffect.Wrong })
         val passed = transition.effects.any { it is EngineEffect.Passed }
         return if (after.status == GameStatus.FINISHED || passed || revealOver) next.endTurn(fx) else next
+    }
+
+    /** Ends the active player's game (if it has started) and the match; the other player wins. */
+    private fun MatchState.forfeit(fx: MutableList<EngineEffect>): MatchState {
+        val forfeited = games.reduce(players[activePlayer], GameEvent.Forfeit)
+        fx += forfeited.effects
+        return withActive(forfeited.state).finish(MatchResult(MatchEndReason.FORFEIT, winner = other(activePlayer)), fx)
     }
 
     private fun MatchState.endTurn(fx: MutableList<EngineEffect>): MatchState {

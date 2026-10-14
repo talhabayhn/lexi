@@ -111,7 +111,8 @@ the app goes to background.
 - Engine (`MatchEngine`, `MatchState`): a wrong answer ends the turn once its reveal is over. A player whose wheel
   is finished (completed or clock at 0) hands over; when the other player is already finished, the turn stays
   without handover. The handover card is dismissed with `MatchEvent.BeginTurn`; until then nothing runs and the
-  second player's game starts on their first turn. `Forfeit` ends the whole match and the other player wins.
+  second player's game starts on their first turn. `Forfeit` (also during the handover) ends the whole match and
+  the other player wins.
 - Race (online): same wheel, simultaneous, no turns; first to finish all slots wins, else most correct at time-up.
   Level handicap (optional room setting): each player plays own level; score = normalized points.
 
