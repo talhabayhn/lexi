@@ -180,7 +180,8 @@ don't leak wrong colors. Tokens and components: `docs/design/tokens.md`, `docs/d
 - Convention plugins in `build-logic`.
 - GitHub Actions (ADR 0012): `build.yml` on ubuntu for every push to `main` (`./gradlew build :androidApp:assembleDebug`:
   lint, tests, Android assemble, iOS klib compile); `ios.yml` on macOS, path-filtered (framework link +
-  `iosSimulatorArm64Test` per push, `xcodebuild` of `iosApp` nightly or when `iosApp/` changes).
+  `iosSimulatorArm64Test` per push, `xcodebuild` of `iosApp` + simulator launch screenshot artifact nightly or when
+  `iosApp/` changes).
 - Secrets (RevenueCat, AdMob, Supabase, Firebase files) via `local.properties` / CI secrets → BuildConfig (BuildKonfig). Never committed.
 
 ## 13. Security & privacy

@@ -23,6 +23,9 @@ still pre-release.
   - nightly (02:00 UTC): full run including `xcodebuild`, skipped by a cheap Linux pre-job when `main` had no
     commits in the last 24 h.
   - manual dispatch: full run.
+  - `screenshot` job (same gate as `xcodebuild`): boots an iPhone simulator, installs and launches the `Lexi.app`
+    built by the `ios` job (handed over as a tar artifact), fails if the app is not running after 15 s, and uploads
+    `lexi-ios.png` as the `ios-screenshot` artifact (30 days). Proof that the app renders on iOS without a Mac.
 - Both workflows use `concurrency` with `cancel-in-progress`, minimal `permissions`, and upload reports on failure.
 - A red `build` run after a push is fixed before any new work. No branch protection that requires PRs.
 
