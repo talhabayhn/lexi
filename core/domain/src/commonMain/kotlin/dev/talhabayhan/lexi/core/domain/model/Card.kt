@@ -21,7 +21,7 @@ public data class Card(
     val id: CardId,
     val level: Level,
     val category: CategoryId,
-    /** English answer: uppercase A–Z and single spaces (spaces are fixed gaps, not typed). */
+    /** English answer, see [AnswerRules]: uppercase A–Z words, 2–14 letters (spaces are fixed gaps). */
     val answer: String,
     /** Wheel letter this card serves. */
     val letter: Char,
@@ -36,14 +36,12 @@ public data class Card(
     val tags: Set<String> = emptySet(),
 ) {
     init {
-        require(ANSWER_PATTERN.matches(answer)) { "answer '$answer' must be A-Z words split by single spaces" }
+        require(AnswerRules.isValid(answer)) { "answer '$answer' must be A-Z words with 2-14 letters" }
         require(letter in 'A'..'Z') { "letter '$letter' must be A-Z" }
         require(rule.isSatisfiedBy(answer, letter)) { "answer '$answer' does not satisfy $rule '$letter'" }
         require(difficulty in 1..5) { "difficulty $difficulty must be 1-5" }
     }
 
     /** Number of letters the player has to type (spaces excluded). */
-    public val answerLetters: Int get() = answer.count { it != ' ' }
+    public val answerLetters: Int get() = AnswerRules.letterCount(answer)
 }
-
-private val ANSWER_PATTERN = Regex("[A-Z]+( [A-Z]+)*")

@@ -91,6 +91,25 @@ class GameConfigTest {
     }
 
     @Test
+    fun `remove distractors cost in untimed modes is one config value`() {
+        val config = config.copy(removeDistractorsUntimedCostPoints = 7)
+
+        assertEquals(JokerCost.Points(7), config.jokerCost(JokerType.REMOVE_DISTRACTORS, GameMode.PRACTICE))
+    }
+
+    @Test
+    fun `level test joker ban is one config value`() {
+        val config = config.copy(jokerFreeModes = setOf(GameMode.DAILY, GameMode.DUEL))
+
+        assertTrue(config.isJokerAllowed(JokerType.EXAMPLE, GameMode.LEVEL_TEST, Level.A1))
+    }
+
+    @Test
+    fun `recently seen window is 7 days`() {
+        assertEquals(7, config.recentlySeenWindowDays)
+    }
+
+    @Test
     fun `example costs 5 points and listen costs 10 points`() {
         assertEquals(JokerCost.Points(5), config.jokerCost(JokerType.EXAMPLE, GameMode.CLASSIC))
         assertEquals(JokerCost.Points(10), config.jokerCost(JokerType.LISTEN, GameMode.CLASSIC))

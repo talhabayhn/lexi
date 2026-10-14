@@ -13,7 +13,7 @@ public enum class GameMode(
     public val endsOnFirstWrong: Boolean,
     /**
      * The wheel prefers cards the player hasn't seen recently. False where every player must get the same wheel
-     * for the same seed (daily, duel) and for the level test.
+     * for the same seed (daily, duel), for the level test, and for review (its wheel is built from due cards).
      */
     public val usesCardHistory: Boolean,
 ) {
@@ -21,7 +21,7 @@ public enum class GameMode(
     PRACTICE(isScored = false, endsOnFirstWrong = false, usesCardHistory = true),
     HARDCORE(isScored = true, endsOnFirstWrong = true, usesCardHistory = true),
     DAILY(isScored = true, endsOnFirstWrong = false, usesCardHistory = false),
-    REVIEW(isScored = false, endsOnFirstWrong = false, usesCardHistory = true),
+    REVIEW(isScored = false, endsOnFirstWrong = false, usesCardHistory = false),
     LEVEL_TEST(isScored = false, endsOnFirstWrong = false, usesCardHistory = false),
 
     /** Hot-seat duel (v1.0); online rooms reuse the same rules (v1.1). */

@@ -8,12 +8,14 @@ exact defaults.
 - `rule`: `STARTS` ("K ile başlar") or `CONTAINS` ("içinde X geçer"). Content decides per card; Q, X, Z and
   rare letters at low levels are usually `CONTAINS`.
 - Generation (`WheelGenerator`): for each letter pick one card from the pool (level [+ category]) using the
-  seeded RNG, preferring cards the player hasn't seen recently (solo only — daily, duel and level test ignore
-  history so all players get the same wheel; `GameMode.usesCardHistory`). If no card exists for a letter, the slot is `SKIPPED` (not shown as playable;
-  counts as neither right nor wrong). Content validation must keep this at 0 for shipped levels.
+  seeded RNG, preferring cards the player hasn't seen recently (solo only — daily, duel, review and level test
+  ignore history so all players get the same wheel; `GameMode.usesCardHistory`). If no card exists for a letter,
+  the slot is `SKIPPED` (not shown as playable; counts as neither right nor wrong). Content validation must keep
+  this at 0 for shipped levels.
 - Pick: per letter A–Z, candidates = pool cards of that level (+ category unless `mixed`) and letter, sorted by
-  card id (pool order never matters); drop cards in `recentlySeen` unless that leaves none; `pick` = one
-  `nextInt(size)` on the `wheel` sub-seed (§13). "Recently seen" is a card-id set supplied by the data layer.
+  card id (pool order never matters; card ids in a pool must be unique); drop recently seen cards unless that
+  leaves none; `pick` = one `nextInt(size)` on the `wheel` sub-seed (§13). Recently seen = last seen within
+  ⚙ `recentlySeenWindowDays = 7` (`WheelGenerator.recentlySeen(lastSeenMs, nowMs, config)`).
 - Review wheel: built from SRS-due cards (any level/category); may have fewer than 26 slots (only letters that
   have due cards), in A–Z order; one card per letter, picked the same way. Other due cards wait for the next review.
 
@@ -34,6 +36,7 @@ correct = blue circle, wrong = red square, passed = yellow leaf.
 
 ## 4. Letter keys
 - Key count: `max(10, ceil(answerLetters / 5) * 5)`, capped at 15 → 2 or 3 rows of 5 (design: 5-column grid).
+  Answers have 2–14 letters (`AnswerRules`).
 - Keys = multiset of the answer's letters + distractors, shuffled with the slot's sub-seed.
 - Distractors: letters not over-represented in the answer, weighted by English letter frequency, with ≥ 2
   "near" letters (visually/phonetically similar, e.g. C/K, I/E, V/W) when available. Deterministic.
@@ -75,7 +78,7 @@ the app goes to background.
 | Joker | Effect | Cost | Limit |
 |---|---|---|---|
 | Harf aç (Reveal letter) | puts the correct letter into the next empty slot | ⚙ −10 s (untimed modes: −5 pts) | 1 per slot |
-| Çeldiricileri temizle (Remove distractors) | disables all distractor keys | ⚙ −15 s (untimed modes: free) | 1 per slot |
+| Çeldiricileri temizle (Remove distractors) | disables all distractor keys | ⚙ −15 s (untimed modes: ⚙ 0 pts = free) | 1 per slot |
 | Örnek cümle (Example) | shows example sentence with the word blanked | ⚙ −5 pts | 1 per slot |
 | Telaffuzu dinle (Listen) | speaks the answer (TTS) | ⚙ −10 pts | disabled at C1 and NAT |
 - Inventory per joker type, persisted. Sources: start pack (2/1/3/1), daily login +1 random, rewarded ad +1,

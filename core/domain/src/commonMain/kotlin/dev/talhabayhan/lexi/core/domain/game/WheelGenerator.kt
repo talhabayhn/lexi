@@ -58,8 +58,20 @@ public object WheelGenerator {
         return Wheel(slots)
     }
 
-    /** Distinct cards grouped by wheel letter, each group sorted by id so the pool order never matters. */
-    private fun List<Card>.candidatesByLetter(): Map<Char, List<Card>> = distinctBy { it.id }
-        .sortedBy { it.id.value }
-        .groupBy { it.letter }
+    /**
+     * Card ids last seen less than [GameConfig.recentlySeenWindowDays] before [nowMs] (time is passed in, never
+     * read from a clock).
+     */
+    public fun recentlySeen(lastSeenMs: Map<CardId, Long>, nowMs: Long, config: GameConfig): Set<CardId> {
+        val windowMs = config.recentlySeenWindowDays * MS_PER_DAY
+        return lastSeenMs.filterValues { nowMs - it < windowMs }.keys
+    }
+
+    private const val MS_PER_DAY: Long = 86_400_000L
+
+    /** Cards grouped by wheel letter, each group sorted by (unique) id so the pool order never matters. */
+    private fun List<Card>.candidatesByLetter(): Map<Char, List<Card>> {
+        require(distinctBy { it.id }.size == size) { "card ids in a pool must be unique" }
+        return sortedBy { it.id.value }.groupBy { it.letter }
+    }
 }

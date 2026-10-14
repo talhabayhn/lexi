@@ -1,5 +1,6 @@
 package dev.talhabayhan.lexi.core.domain.game
 
+import dev.talhabayhan.lexi.core.domain.model.AnswerRules
 import dev.talhabayhan.lexi.core.domain.random.SeededRandom
 
 /**
@@ -24,12 +25,15 @@ public object KeyboardGenerator {
 
     /** `max(10, ceil(answerLetters / 5) * 5)`, capped at 15 (2 or 3 rows of 5). */
     public fun keyCount(answerLetters: Int): Int {
-        require(answerLetters in 1..MAX_KEYS) { "answer must have 1-$MAX_KEYS letters, has $answerLetters" }
+        require(answerLetters in AnswerRules.MIN_LETTERS..AnswerRules.MAX_LETTERS) {
+            "answer must have ${AnswerRules.MIN_LETTERS}-${AnswerRules.MAX_LETTERS} letters, has $answerLetters"
+        }
         val fullRows = (answerLetters + COLUMNS - 1) / COLUMNS * COLUMNS
         return fullRows.coerceIn(MIN_KEYS, MAX_KEYS)
     }
 
     public fun generate(answer: String, random: SeededRandom): List<LetterKey> {
+        require(AnswerRules.isValid(answer)) { "answer '$answer' is not a valid card answer" }
         val letters = answer.filter { it != ' ' }.toList()
         val needed = keyCount(letters.size) - letters.size
         val candidates = ('A'..'Z').filter { it !in letters }

@@ -3,6 +3,7 @@ package dev.talhabayhan.lexi.core.domain.game
 import dev.talhabayhan.lexi.core.domain.card
 import dev.talhabayhan.lexi.core.domain.fullAlphabetPool
 import dev.talhabayhan.lexi.core.domain.model.Card
+import dev.talhabayhan.lexi.core.domain.model.CardId
 import dev.talhabayhan.lexi.core.domain.model.CategoryId
 import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.core.domain.random.SeededRandom
@@ -138,6 +139,31 @@ class WheelGeneratorTest {
         val seen = triplePool.filterNot { it.answer.endsWith("TWO") }.toSet()
 
         assertEquals(generate(mode = GameMode.DUEL), generate(mode = GameMode.DUEL, recentlySeen = seen))
+    }
+
+    @Test
+    fun `pool card ids must be unique`() {
+        val duplicate = card("APPLE", id = "a1-dup")
+        val other = card("ARM", id = "a1-dup")
+
+        assertFailsWith<IllegalArgumentException> { generate(pool = listOf(duplicate, other)) }
+        assertFailsWith<IllegalArgumentException> { WheelGenerator.review(listOf(duplicate, other), wheelRandom(1L)) }
+    }
+
+    @Test
+    fun `cards seen within the last 7 days are recently seen`() {
+        val day = 86_400_000L
+        val now = 100 * day
+        val lastSeen = mapOf(
+            CardId("today") to now - 1,
+            CardId("six-days") to now - 6 * day,
+            CardId("seven-days") to now - 7 * day,
+            CardId("old") to now - 30 * day,
+        )
+
+        val recent = WheelGenerator.recentlySeen(lastSeen, now, GameConfig())
+
+        assertEquals(setOf(CardId("today"), CardId("six-days")), recent)
     }
 
     @Test

@@ -45,10 +45,12 @@ public data class GameConfig(
     val revealLetterCostMs: Long = 10_000L,
     val revealLetterUntimedCostPoints: Int = 5,
     val removeDistractorsCostMs: Long = 15_000L,
+    /** Open decision: 0 = free in untimed modes (they are unscored). */
+    val removeDistractorsUntimedCostPoints: Int = 0,
     val exampleCostPoints: Int = 5,
     val listenCostPoints: Int = 10,
     val listenDisabledLevels: Set<Level> = setOf(Level.C1, Level.NAT),
-    /** §7: modes where no joker may be used (fair comparison / adaptive test). */
+    /** §7: modes where no joker may be used (fair comparison; LEVEL_TEST is an open decision). */
     val jokerFreeModes: Set<GameMode> = setOf(GameMode.DAILY, GameMode.DUEL, GameMode.LEVEL_TEST),
     /** §7 inventory sources. */
     val jokerStartPack: JokerInventory = JokerInventory(
@@ -62,6 +64,8 @@ public data class GameConfig(
     val dailyLoginJokerBonus: Int = 1,
     val rewardedAdJokerReward: Int = 1,
     val proDailyJokerRefill: Int = 3,
+    /** §1: cards last seen within this window are avoided by solo wheels (open decision). */
+    val recentlySeenWindowDays: Int = 7,
 ) {
     /** Total time for [mode] in ms (per player for [GameMode.DUEL]); null when the mode has no timer. */
     public fun timeLimitMs(mode: GameMode): Long? = when (mode) {
@@ -82,7 +86,11 @@ public data class GameConfig(
             JokerType.REVEAL_LETTER ->
                 if (timed) JokerCost.Time(revealLetterCostMs) else JokerCost.Points(revealLetterUntimedCostPoints)
 
-            JokerType.REMOVE_DISTRACTORS -> if (timed) JokerCost.Time(removeDistractorsCostMs) else JokerCost.Free
+            JokerType.REMOVE_DISTRACTORS -> when {
+                timed -> JokerCost.Time(removeDistractorsCostMs)
+                removeDistractorsUntimedCostPoints > 0 -> JokerCost.Points(removeDistractorsUntimedCostPoints)
+                else -> JokerCost.Free
+            }
 
             JokerType.EXAMPLE -> JokerCost.Points(exampleCostPoints)
 

@@ -36,6 +36,14 @@ class CardTest {
     }
 
     @Test
+    fun `card answers have 2 to 14 letters`() {
+        assertEquals(2, card("GO").answerLetters)
+        assertEquals(14, card("ABCDEFG HIJKLMN").answerLetters)
+        assertFailsWith<IllegalArgumentException> { card("A") }
+        assertFailsWith<IllegalArgumentException> { card("ABCDEFGHIJKLMNO") }
+    }
+
+    @Test
     fun `card rejects a letter outside A-Z`() {
         assertFailsWith<IllegalArgumentException> { card("APPLE", letter = 'a', rule = LetterRule.CONTAINS) }
     }

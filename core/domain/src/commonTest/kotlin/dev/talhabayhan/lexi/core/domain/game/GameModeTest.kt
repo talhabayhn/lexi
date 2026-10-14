@@ -17,9 +17,9 @@ class GameModeTest {
     }
 
     @Test
-    fun `daily duel and level test ignore card history so everyone gets the same wheel`() {
-        val ignoring = GameMode.entries.filterNot { it.usesCardHistory }.toSet()
+    fun `only classic practice and hardcore wheels use card history`() {
+        val using = GameMode.entries.filter { it.usesCardHistory }.toSet()
 
-        assertEquals(setOf(GameMode.DAILY, GameMode.DUEL, GameMode.LEVEL_TEST), ignoring)
+        assertEquals(setOf(GameMode.CLASSIC, GameMode.PRACTICE, GameMode.HARDCORE), using)
     }
 }

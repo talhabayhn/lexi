@@ -22,15 +22,15 @@ class KeyboardGeneratorTest {
 
     @Test
     fun `key count is at least 10 then rounds up to a full row of 5 capped at 15`() {
-        val expected = mapOf(1 to 10, 2 to 10, 5 to 10, 10 to 10, 11 to 15, 14 to 15, 15 to 15)
+        val expected = mapOf(2 to 10, 5 to 10, 10 to 10, 11 to 15, 14 to 15)
 
         assertEquals(expected, expected.keys.associateWith(KeyboardGenerator::keyCount))
     }
 
     @Test
     fun `key count rejects answers that cannot fit on the keyboard`() {
-        assertFailsWith<IllegalArgumentException> { KeyboardGenerator.keyCount(0) }
-        assertFailsWith<IllegalArgumentException> { KeyboardGenerator.keyCount(16) }
+        assertFailsWith<IllegalArgumentException> { KeyboardGenerator.keyCount(1) }
+        assertFailsWith<IllegalArgumentException> { KeyboardGenerator.keyCount(15) }
     }
 
     @Test
@@ -133,7 +133,10 @@ class KeyboardGeneratorTest {
     }
 
     @Test
-    fun `generate rejects answers longer than the keyboard`() {
-        assertFailsWith<IllegalArgumentException> { generate("ABCDEFGHIJKLMNOP") }
+    fun `generate rejects answers that are not valid card answers`() {
+        assertFailsWith<IllegalArgumentException> { generate("ABCDEFGHIJKLMNO") }
+        assertFailsWith<IllegalArgumentException> { generate("kitchen") }
+        assertFailsWith<IllegalArgumentException> { generate("GIVE  UP") }
+        assertFailsWith<IllegalArgumentException> { generate("A") }
     }
 }
