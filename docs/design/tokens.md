@@ -90,7 +90,7 @@ offset behind the content (drawBehind), not `Modifier.shadow` (that blurs).
 | `circle` | 50% | `CircleShape` |
 | `leaf` | `border-radius: 50% 0 50% 0` | `RoundedCornerShape(topStartPercent = 50, topEndPercent = 0, bottomEndPercent = 50, bottomStartPercent = 0)` |
 | `diamond` | square rotated 45° | `Modifier.rotate(45f)` on a square |
-| `halfPill` | `border-radius: 0 80px 80px 0` (= the shape's width) | decorative side shapes, `RoundedCornerShape(topEndPercent = 100, bottomEndPercent = 100)` |
+| `halfPill` | `border-radius: 0 80px 80px 0` (= the shape's width) | decorative side shapes; custom `HalfPillShape` with right radius min(width, height/2) — `RoundedCornerShape` would clamp each corner to half the smaller side |
 App icon corner radius is platform-owned; never round UI corners otherwise.
 
 ## Iconography
