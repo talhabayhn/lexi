@@ -11,7 +11,11 @@ exact defaults.
   seeded RNG, preferring cards the player hasn't seen recently (solo only — daily, duel and level test ignore
   history so all players get the same wheel; `GameMode.usesCardHistory`). If no card exists for a letter, the slot is `SKIPPED` (not shown as playable;
   counts as neither right nor wrong). Content validation must keep this at 0 for shipped levels.
-- Review wheel: built from SRS-due cards; may have fewer than 26 slots (only letters that have due cards), in A–Z order.
+- Pick: per letter A–Z, candidates = pool cards of that level (+ category unless `mixed`) and letter, sorted by
+  card id (pool order never matters); drop cards in `recentlySeen` unless that leaves none; `pick` = one
+  `nextInt(size)` on the `wheel` sub-seed (§13). "Recently seen" is a card-id set supplied by the data layer.
+- Review wheel: built from SRS-due cards (any level/category); may have fewer than 26 slots (only letters that
+  have due cards), in A–Z order; one card per letter, picked the same way. Other due cards wait for the next review.
 
 ## 2. Slot states
 `TODO → CURRENT → (CORRECT | WRONG | PASSED)`; `PASSED → CURRENT` again on the next lap.
