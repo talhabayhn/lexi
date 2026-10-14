@@ -13,4 +13,7 @@
     <string name="answer_slot_empty">empty</string>
     <string name="answer_slot_active">empty, next</string>
     <string name="answer_slot_joker">opened by joker</string>
+
+    <!-- Word row memory strength (Leitner box), e.g. "Memory strength 2 of 4" -->
+    <string name="word_row_strength">Memory strength %1$d of 4</string>
 </resources>

@@ -13,4 +13,7 @@
     <string name="answer_slot_empty">boş</string>
     <string name="answer_slot_active">boş, sıradaki</string>
     <string name="answer_slot_joker">joker ile açıldı</string>
+
+    <!-- Kelime satırı hafıza gücü (Leitner kutusu) -->
+    <string name="word_row_strength">Hafıza gücü 4 üzerinden %1$d</string>
 </resources>

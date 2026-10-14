@@ -48,6 +48,9 @@ public enum class LexiButtonVariant {
 
     /** Ink fill, yellow text: "Kısa reklam izle", NAT. */
     Ink,
+
+    /** Blue fill, white text: "Tekrar çarkını başlat" (`08-notebook`). */
+    Blue,
 }
 
 /** Sizes of [LexiButton] and [LexiTextLink] (`16-components`, CTAs in the screens). */
@@ -93,11 +96,12 @@ private fun LexiButtonVariant.containerColor(): Color = when (this) {
     LexiButtonVariant.Secondary -> LexiTheme.colors.white
     LexiButtonVariant.Pass -> LexiTheme.colors.yellow
     LexiButtonVariant.Ink -> LexiTheme.colors.ink
+    LexiButtonVariant.Blue -> LexiTheme.colors.blue
 }
 
 @Composable
 private fun LexiButtonVariant.defaultContentColor(): Color = when (this) {
-    LexiButtonVariant.Primary -> LexiTheme.colors.white
+    LexiButtonVariant.Primary, LexiButtonVariant.Blue -> LexiTheme.colors.white
     LexiButtonVariant.Secondary, LexiButtonVariant.Pass -> LexiTheme.colors.ink
     LexiButtonVariant.Ink -> LexiTheme.colors.yellow
 }
