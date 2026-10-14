@@ -87,6 +87,10 @@ public class LexiTypography internal constructor(
     public val label12: TextStyle,
     /** 13 / 800: wheel letters. */
     public val wheelChip: TextStyle,
+    /** 15 / 700, +0.14em, uppercase: home tagline "A'DAN Z'YE İNGİLİZCE" (`02-home`). */
+    public val label15: TextStyle,
+    /** 40 / 800, +0.02em: compact wordmark "lexi" (`13-logo-and-icon`). */
+    public val wordmark: TextStyle,
     /** 12 / 800: highlighted chart day (`09-stats`). */
     public val caption12ExtraBold: TextStyle,
     /** 14 / 800, underlined: toast action "Geri al" (`16-components`). */
@@ -215,6 +219,8 @@ internal fun lexiTypography(jost: FontFamily): LexiTypography {
         label13 = style(13, FontWeight.Bold, letterSpacing = 0.14.em),
         label12 = style(12, FontWeight.Bold, letterSpacing = 0.14.em),
         wheelChip = style(13, extraBold),
+        label15 = style(15, FontWeight.Bold, letterSpacing = 0.14.em),
+        wordmark = style(40, extraBold, letterSpacing = 0.02.em),
         caption12ExtraBold = style(12, extraBold),
         link14 = style(14, extraBold).copy(textDecoration = TextDecoration.Underline),
         bodyBold15 = style(15, FontWeight.Bold),

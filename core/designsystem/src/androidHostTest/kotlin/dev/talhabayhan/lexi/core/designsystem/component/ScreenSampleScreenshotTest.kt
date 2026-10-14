@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -75,6 +76,22 @@ class ScreenSampleScreenshotTest {
     }
 
     @Test
+    fun homeComponents() {
+        captureRoboImage("src/androidHostTest/screenshots/HomeComponents.png") {
+            LexiTheme(reducedMotion = false) { HomeSample() }
+        }
+    }
+
+    /** The top of `13-logo-and-icon` (1330 wide) plus the option-1 icon at 180, 60 and 40. */
+    @Test
+    @Config(qualifiers = "w1330dp-h844dp-xhdpi")
+    fun logoComponents() {
+        captureRoboImage("src/androidHostTest/screenshots/LogoComponents.png") {
+            LexiTheme(reducedMotion = false) { LogoSample() }
+        }
+    }
+
+    @Test
     fun notebookComponents() {
         captureRoboImage("src/androidHostTest/screenshots/NotebookComponents.png") {
             LexiTheme(reducedMotion = false) { NotebookSample() }
@@ -83,11 +100,17 @@ class ScreenSampleScreenshotTest {
 }
 
 @Composable
-private fun SampleScreen(top: Dp, bottom: Dp, gap: Dp, content: @Composable ColumnScope.() -> Unit) {
+private fun SampleScreen(
+    top: Dp,
+    bottom: Dp,
+    gap: Dp,
+    background: Color = LexiTheme.colors.cream,
+    content: @Composable ColumnScope.() -> Unit,
+) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(LexiTheme.colors.cream)
+            .background(background)
             .padding(start = 20.dp, top = top, end = 20.dp, bottom = bottom),
         verticalArrangement = Arrangement.spacedBy(gap),
         content = content,
@@ -422,6 +445,107 @@ private fun JokerSheetSample() {
                 height = LexiButtonDefaults.LargeHeight,
                 modifier = Modifier.fillMaxWidth().padding(top = 4.dp),
             )
+        }
+    }
+}
+
+@Composable
+private fun HomeSample() {
+    val colors = LexiTheme.colors
+    val typography = LexiTheme.typography
+    Box(Modifier.fillMaxSize().background(colors.cream)) {
+        DecorShape(DecorShapeKind.Circle, colors.blue, Modifier.offset(x = 320.dp, y = 210.dp).size(140.dp))
+        DecorShape(DecorShapeKind.HalfPill, colors.red, Modifier.offset(x = (-30).dp, y = 514.dp).size(60.dp, 120.dp))
+        SampleScreen(top = 24.dp, bottom = 28.dp, gap = 20.dp, background = Color.Transparent) {
+            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
+                NavSquareButton(
+                    LexiIcons.Settings,
+                    "Ayarlar",
+                    onClick = {},
+                    iconSize = IconButtonDefaults.IconSizeMedium,
+                )
+            }
+            Column(Modifier.padding(top = 8.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+                LexiLogo()
+                Text("A'DAN Z'YE İNGİLİZCE", style = typography.label15)
+            }
+            // Daily card: feature UI (M6), slot kept.
+            Spacer(Modifier.height(106.dp))
+            LexiButton(
+                onClick = {},
+                height = LexiButtonDefaults.PlayHeight,
+                shadow = LexiTheme.shadows.s6,
+                horizontalArrangement = Arrangement.SpaceBetween,
+                modifier = Modifier.fillMaxWidth(),
+            ) {
+                Text("OYNA", style = typography.button30, color = colors.white)
+                Text(
+                    "A1 · KLASİK",
+                    style = typography.bodyStrong14.copy(letterSpacing = 0.08.em),
+                    color = colors.ink,
+                    modifier = Modifier
+                        .lexiSurface(colors.white, BorderStroke(2.dp, colors.ink))
+                        .padding(horizontal = 10.dp, vertical = 4.dp),
+                )
+            }
+            Spacer(Modifier.weight(1f))
+            Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                    MenuTile("Kelime Defterim", "24 tekrar bekliyor", DecorShapeKind.Circle, colors.blue, {
+                    }, Modifier.weight(1f))
+                    MenuTile("İstatistikler", "412 kelime öğrenildi", DecorShapeKind.Square, colors.red, {
+                    }, Modifier.weight(1f))
+                }
+                Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                    MenuTile("Pratik modu", "Süresiz, baskısız", DecorShapeKind.Leaf, colors.yellow, {
+                    }, Modifier.weight(1f))
+                    MenuTile(
+                        "Sınav paketleri",
+                        "LGS · YKS-Dil · YDS",
+                        DecorShapeKind.Diamond,
+                        colors.yellow,
+                        {},
+                        Modifier.weight(1f),
+                        inverted = true,
+                    )
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun LogoSample() {
+    val typography = LexiTheme.typography
+    Column(
+        modifier = Modifier.fillMaxSize().background(LexiTheme.colors.cream).padding(48.dp),
+        verticalArrangement = Arrangement.spacedBy(40.dp),
+    ) {
+        Row(horizontalArrangement = Arrangement.spacedBy(24.dp)) {
+            Column(Modifier.width(709.83.dp), verticalArrangement = Arrangement.spacedBy(20.dp)) {
+                Text("ANA LOGO", style = typography.label13)
+                LexiLogo(size = LexiLogoSize.Hero)
+            }
+            Column(Modifier.width(500.17.dp), verticalArrangement = Arrangement.spacedBy(20.dp)) {
+                Text("YATAY YAZI + KÜÇÜK KULLANIM", style = typography.label13)
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .lexiSurface(LexiTheme.colors.white, BorderStroke(3.dp, LexiTheme.colors.ink))
+                        .padding(18.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    LexiWordmark()
+                    Spacer(Modifier.weight(1f))
+                    Text("A'dan Z'ye İngilizce", style = typography.caption14)
+                }
+                LexiLogoMark()
+            }
+        }
+        Row(horizontalArrangement = Arrangement.spacedBy(40.dp), verticalAlignment = Alignment.Bottom) {
+            LexiAppIcon()
+            LexiAppIcon(size = 60.dp)
+            LexiAppIcon(size = 40.dp)
         }
     }
 }
