@@ -34,7 +34,11 @@ class GameEngineTurnFlowTest {
         val game = play(wheel = Wheel(listOf(Slot('Q', null, SlotState.SKIPPED))))
 
         assertEquals(GameStatus.FINISHED, game.state.status)
-        assertEquals(GameOverReason.ALL_ANSWERED, game.state.summary?.reason)
+        val summary = checkNotNull(game.state.summary)
+        assertEquals(GameOverReason.EMPTY_WHEEL, summary.reason)
+        assertEquals(false, summary.completed)
+        assertEquals(0, summary.timeBonus)
+        assertEquals(0, summary.score)
     }
 
     @Test

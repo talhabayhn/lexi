@@ -80,7 +80,8 @@ the app goes to background.
 - Hardcore ×1.5 on final total.
 - Points use the card's level (review wheels mix levels); unscored modes (§5) score 0 everywhere. All rounding is
   half up. "Completed" = ended with no TODO/PASSED left (wrong answers allowed); the time bonus counts whole
-  remaining seconds. Joker point costs never take the running score below 0.
+  remaining seconds. Joker point costs never take the running score below 0. A wheel without playable slots ends
+  at `Start` with reason `EMPTY_WHEEL` (not completed, no time bonus).
 - Multipliers are stored as integer percentages in `GameConfig` (110 = ×1.1) so scoring is exact on every platform.
 
 ## 7. Jokers

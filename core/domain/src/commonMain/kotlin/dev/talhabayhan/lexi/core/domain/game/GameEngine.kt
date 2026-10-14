@@ -57,7 +57,7 @@ public class GameEngine(public val config: GameConfig = GameConfig()) {
                 remainingMs = config.timeLimitMs(mode),
             )
             val first = wheel.slots.indexOfFirst { it.state.isOpen }
-            return if (first < 0) started.finish(GameOverReason.ALL_ANSWERED) else started.makeCurrent(first, lap = 1)
+            return if (first < 0) started.finish(GameOverReason.EMPTY_WHEEL) else started.makeCurrent(first, lap = 1)
         }
 
         private fun GameState.makeCurrent(index: Int, lap: Int): GameState {

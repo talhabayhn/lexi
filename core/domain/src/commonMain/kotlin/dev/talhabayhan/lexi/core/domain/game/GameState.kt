@@ -14,6 +14,9 @@ public enum class GameOverReason {
     TIME_UP,
     WRONG_IN_HARDCORE,
     FORFEIT,
+
+    /** Started on a wheel without playable slots (all SKIPPED, or an empty review wheel): not completed, no bonus. */
+    EMPTY_WHEEL,
 }
 
 /** A letter in an answer cell. Revealed letters (Reveal letter joker) are locked: Backspace skips them. */
