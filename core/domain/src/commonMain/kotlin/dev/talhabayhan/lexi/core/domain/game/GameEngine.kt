@@ -129,7 +129,9 @@ public class GameEngine(public val config: GameConfig = GameConfig()) {
         private fun GameState.pass(): GameState {
             val index = checkNotNull(currentIndex)
             fx += EngineEffect.Passed(wheel.slots[index].letter)
-            return copy(wheel = wheel.withState(index, SlotState.PASSED), streak = 0).advance()
+            return copy(wheel = wheel.withState(index, SlotState.PASSED), streak = 0)
+                .withInput(checkNotNull(currentInput).copy(wasPassed = true))
+                .advance()
         }
 
         private fun GameState.submitIfFull(): GameState =
@@ -183,7 +185,11 @@ public class GameEngine(public val config: GameConfig = GameConfig()) {
         private fun streakBonus(streak: Int): Int = minOf(config.streakBonusStep * (streak - 1), config.streakBonusCap)
 
         private fun GameState.finish(reason: GameOverReason): GameState {
-            val slots = wheel.slots
+            // A passed slot that is current again on a later lap was never answered: it stays PASSED (§10).
+            val index = currentIndex
+            val passedAgain = currentSlot?.state == SlotState.CURRENT && currentInput?.wasPassed == true
+            val finalWheel = if (passedAgain && index != null) wheel.withState(index, SlotState.PASSED) else wheel
+            val slots = finalWheel.slots
             val completed = reason == GameOverReason.ALL_ANSWERED
             val remaining = remainingMs
             val timeBonus = if (completed && mode.isScored && remaining != null) {
@@ -211,6 +217,7 @@ public class GameEngine(public val config: GameConfig = GameConfig()) {
             )
             fx += EngineEffect.GameOver(summary)
             return copy(
+                wheel = finalWheel,
                 status = GameStatus.FINISHED,
                 isPaused = false,
                 revealRemainingMs = 0L,

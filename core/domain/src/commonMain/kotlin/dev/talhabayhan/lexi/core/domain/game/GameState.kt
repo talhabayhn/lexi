@@ -32,6 +32,8 @@ public data class SlotInput(
     /** Cell indices of non-revealed letters, in placement order (Backspace removes the last one). */
     val placementOrder: List<Int> = emptyList(),
     val jokersUsed: Set<JokerType> = emptySet(),
+    /** The slot was passed before; if the game ends while it is CURRENT again, it still counts as PASSED. */
+    val wasPassed: Boolean = false,
 ) {
     public val isFull: Boolean get() = cells.all { it != null }
 
