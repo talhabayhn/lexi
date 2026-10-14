@@ -15,8 +15,8 @@ Module mapping (replaces the earlier `composeApp`): `androidApp` = thin Android 
 - [x] Version catalog with: coroutines, datetime, serialization, Koin (+compose-viewmodel), lifecycle-viewmodel-compose (KMP), navigation-compose (KMP), SQLDelight, DataStore, Kermit, Turbine, Roborazzi, BuildKonfig, ktlint (detekt later)
 - [x] ktlint configured (detekt later, ADR 0012); `./gradlew build` runs it
 - [x] `.gitignore`, `local.properties.example` (keys placeholders), README run instructions
-- [ ] Koin started in `App()` (`shared`); empty `HomeRoute` (`feature:home`) renders "Lexi" on both platforms
-  (Android ✅ verified on emulator; iOS framework + `xcodebuild` ✅ on CI; **iOS launch needs a Mac check**)
+- [x] Koin started in `App()` (`shared`); empty `HomeRoute` (`feature:home`) renders "Lexi" on both platforms
+  (Android ✅ verified on emulator; iOS ✅ simulator launch screenshot from the `ios.yml` `screenshot` job)
 **Done when:** both apps launch; CI green; module graph matches the dependency rules.
 
 ## M1 — Design system
