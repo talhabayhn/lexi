@@ -1,7 +1,5 @@
 package dev.talhabayhan.lexi.core.designsystem.theme
 
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
@@ -23,7 +21,7 @@ import kotlin.math.min
 public class LexiShapes internal constructor(
     /** Radius 0: buttons, cards, keys, slots, "current" and "wrong" wheel letters. */
     public val square: Shape,
-    /** 50 %: "correct" and "todo" wheel letters, game action buttons. */
+    /** 50 % (elliptical on non-square boxes, like CSS): "correct" and "todo" wheel letters, game action buttons. */
     public val circle: Shape,
     /** `border-radius: 50% 0 50% 0`: "pass" state. */
     public val leaf: Shape,
@@ -36,10 +34,42 @@ public class LexiShapes internal constructor(
 
 internal val DefaultLexiShapes: LexiShapes = LexiShapes(
     square = RectangleShape,
-    circle = CircleShape,
-    leaf = RoundedCornerShape(topStartPercent = 50, topEndPercent = 0, bottomEndPercent = 50, bottomStartPercent = 0),
+    circle = CssPercentCornerShape(topLeft = true, topRight = true, bottomRight = true, bottomLeft = true),
+    leaf = CssPercentCornerShape(topLeft = true, topRight = false, bottomRight = true, bottomLeft = false),
     halfPill = HalfPillShape,
 )
+
+/**
+ * CSS `border-radius: 50%` on the chosen corners: elliptical radii of half the width and half the height, so a
+ * square gives a circle (or leaf) and a squeezed marker an ellipse, as in the browser (`CircleShape` would turn a
+ * non-square box into a pill).
+ */
+internal class CssPercentCornerShape(
+    private val topLeft: Boolean,
+    private val topRight: Boolean,
+    private val bottomRight: Boolean,
+    private val bottomLeft: Boolean,
+) : Shape {
+    override fun createOutline(size: Size, layoutDirection: LayoutDirection, density: Density): Outline {
+        val radius = CornerRadius(size.width / 2, size.height / 2)
+        fun corner(rounded: Boolean) = if (rounded) radius else CornerRadius.Zero
+        return Outline.Rounded(
+            RoundRect(
+                rect = Rect(Offset.Zero, size),
+                topLeft = corner(topLeft),
+                topRight = corner(topRight),
+                bottomRight = corner(bottomRight),
+                bottomLeft = corner(bottomLeft),
+            ),
+        )
+    }
+
+    override fun equals(other: Any?): Boolean = other is CssPercentCornerShape &&
+        topLeft == other.topLeft && topRight == other.topRight &&
+        bottomRight == other.bottomRight && bottomLeft == other.bottomLeft
+
+    override fun hashCode(): Int = listOf(topLeft, topRight, bottomRight, bottomLeft).hashCode()
+}
 
 /**
  * Rectangle with both right corners rounded by r = min(width, height / 2), as CSS resolves `border-radius: 0 W W 0`.

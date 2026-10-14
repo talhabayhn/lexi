@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Text
@@ -16,8 +17,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import dev.talhabayhan.lexi.core.designsystem.modifier.lexiSurface
@@ -157,7 +160,7 @@ public fun LevelCard(
 }
 
 /**
- * Home menu tile (110dp): marker shape (26dp, 2dp border), title (18/800) and subtitle (14/500), s4. [inverted] =
+ * Home menu tile (at least 110dp, grows with large font scales): marker shape (26dp, 2dp border), title (18/800) and subtitle (14/500), s4. [inverted] =
  * ink with cream text, cream marker border and the red shadow s4Red (exam packs).
  */
 @Composable
@@ -175,20 +178,16 @@ public fun MenuTile(
     val content = if (inverted) colors.cream else colors.ink
     PressableSurface(
         onClick = onClick,
-        modifier = modifier.height(CardDefaults.MenuTileHeight),
+        modifier = modifier.heightIn(min = CardDefaults.MenuTileHeight),
         color = if (inverted) colors.ink else colors.white,
         shadow = if (inverted) LexiTheme.shadows.s4Red else LexiTheme.shadows.s4,
         propagateMinConstraints = true,
     ) {
-        Column(
-            modifier = Modifier.fillMaxSize().padding(CardDefaults.Padding),
-            verticalArrangement = Arrangement.SpaceBetween,
-        ) {
+        MenuTileLayout(Modifier.padding(CardDefaults.Padding)) {
             DecorShape(
                 kind = marker,
                 color = markerColor,
                 border = BorderStroke(LexiTheme.borders.thin, if (inverted) colors.cream else colors.ink),
-                modifier = Modifier.size(CardDefaults.TileMarkerSize),
             )
             Column {
                 Text(
@@ -202,6 +201,27 @@ public fun MenuTile(
                     color = content,
                 )
             }
+        }
+    }
+}
+
+/**
+ * The tile's `flex-direction: column; justify-content: space-between`: marker at the top, text at the bottom. When the
+ * text needs more room than the tile's minimum height leaves, the marker shrinks in height first (CSS flex-shrink: a
+ * circle turns into an ellipse, as in `02-home`); with no marker room left the tile grows (large font scales).
+ */
+@Composable
+private fun MenuTileLayout(modifier: Modifier, content: @Composable () -> Unit) {
+    Layout(content = content, modifier = modifier) { measurables, constraints ->
+        val markerSize = CardDefaults.TileMarkerSize.roundToPx()
+        val width = constraints.maxWidth
+        val text = measurables[1].measure(Constraints(maxWidth = width))
+        val markerHeight = (constraints.minHeight - text.height).coerceIn(0, markerSize)
+        val marker = measurables[0].measure(Constraints.fixed(markerSize, markerHeight))
+        val height = maxOf(constraints.minHeight, markerHeight + text.height)
+        layout(width, height) {
+            marker.place(0, 0)
+            text.place(0, height - text.height)
         }
     }
 }
