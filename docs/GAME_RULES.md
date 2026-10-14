@@ -139,15 +139,15 @@ letters (lowest accuracy, min 5 attempts).
 ```
 Events:  Start(timestampMs) | KeyTapped(keyIndex) | Backspace | Pass | UseJoker(type) |
          Tick(elapsedMs) | Pause | Resume | Forfeit
-Effects: LetterPlaced(slot) | Correct(letter, card, points) | Wrong(letter, card) | Passed(letter) |
-         Advanced(toLetter) | ComboReached(n) | TimeWarning(secondsLeft ≤ 10, each second) |
+Effects: LetterPlaced(cellIndex, letter) | Correct(letter, card, points) | Wrong(letter, card) | Passed(letter) |
+         Advanced(toLetter, lap) | ComboReached(streak) | TimeWarning(secondsLeft ≤ 10, lowest per step) |
          JokerApplied(type) | TurnChanged(player) | GameOver(summary) | MatchOver(result)
 Duel:    BeginTurn(timestampMs) | Play(gameEvent)   (events of the active player)
 ```
 - `Tick.elapsedMs` is the time since the previous tick (a delta); the ViewModel produces it from its `TimeSource`.
 - `TimeWarning(secondsLeft)`: seconds left = remaining ms rounded up. Emitted when that value drops to ≤ 10; at
   most one per transition (a big tick or a time joker that skips seconds emits only the lowest one); none at 0.
-- `LetterPlaced(cellIndex, letter)`: cells are answer letters only (spaces are not cells). `Advanced(toLetter, lap)`.
+- `LetterPlaced`: cells are answer letters only (spaces are not cells). `Advanced.lap` starts at 1.
 - `Start.timestampMs` is only recorded (`startedAtMs`); it never influences rules.
 
 Every rule above must have a unit test named after the rule, e.g. `pass_endsTurn_inDuel()`.

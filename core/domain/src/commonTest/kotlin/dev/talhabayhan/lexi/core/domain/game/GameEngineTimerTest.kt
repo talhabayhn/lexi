@@ -171,6 +171,17 @@ class GameEngineTimerTest {
     }
 
     @Test
+    fun `hardcore wrong answer on the last slot ends as wrong in hardcore without time bonus`() {
+        val game = play("APPLE", "BREAD", mode = GameMode.HARDCORE).answer().answerWrong().send(GameEvent.Tick(1_200L))
+
+        val summary = checkNotNull(game.state.summary)
+        assertEquals(GameOverReason.WRONG_IN_HARDCORE, summary.reason)
+        assertEquals(false, summary.completed)
+        assertEquals(0, summary.timeBonus)
+        assertEquals(15, summary.score)
+    }
+
+    @Test
     fun `wrong answer in classic does not end the game`() {
         val game = play("APPLE", "BREAD").answerWrongAndWait()
 

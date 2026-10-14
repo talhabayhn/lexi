@@ -233,6 +233,21 @@ class GameEngineTurnFlowTest {
     }
 
     @Test
+    fun `wrong answer on the last open slot ends the game after the reveal`() {
+        val game = play("APPLE", "BREAD").answer().answerWrong()
+        assertEquals(GameStatus.PLAYING, game.state.status)
+        assertTrue(game.state.isRevealing)
+
+        game.send(GameEvent.Tick(1_200L))
+
+        val summary = checkNotNull(game.state.summary)
+        assertEquals(GameOverReason.ALL_ANSWERED, summary.reason)
+        assertEquals(true, summary.completed)
+        assertEquals(1, summary.wrong)
+        assertTrue(game.lastEffects.none { it is EngineEffect.Advanced })
+    }
+
+    @Test
     fun `forfeit ends the game`() {
         val game = play("APPLE", "BREAD").answer().send(GameEvent.Forfeit)
 
