@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.em
 import dev.talhabayhan.lexi.core.designsystem.component.ActionCircleButton
 import dev.talhabayhan.lexi.core.designsystem.component.AnswerSlot
 import dev.talhabayhan.lexi.core.designsystem.component.AnswerSlotState
+import dev.talhabayhan.lexi.core.designsystem.component.ConfirmDialog
 import dev.talhabayhan.lexi.core.designsystem.component.IconButtonDefaults
 import dev.talhabayhan.lexi.core.designsystem.component.LetterKey
 import dev.talhabayhan.lexi.core.designsystem.component.LetterKeyState
@@ -32,6 +33,8 @@ import dev.talhabayhan.lexi.core.designsystem.component.NavSquareButton
 import dev.talhabayhan.lexi.core.designsystem.component.ProgressBar
 import dev.talhabayhan.lexi.core.designsystem.component.Segment
 import dev.talhabayhan.lexi.core.designsystem.component.SegmentedControl
+import dev.talhabayhan.lexi.core.designsystem.component.Toast
+import dev.talhabayhan.lexi.core.designsystem.component.ToastStyle
 import dev.talhabayhan.lexi.core.designsystem.component.WheelLetter
 import dev.talhabayhan.lexi.core.designsystem.component.WheelLetterState
 import dev.talhabayhan.lexi.core.designsystem.icon.LexiIcons
@@ -169,4 +172,22 @@ internal fun ColumnScope.GalleryColumnTwo() {
 
 @Composable
 internal fun ColumnScope.GalleryColumnThree() {
+    SectionLabel("BİLDİRİMLER (TOAST)")
+    Toast("Doğru! KITCHEN", trailing = "+10", modifier = Modifier.fillMaxWidth())
+    Toast(
+        "\"egg\" kelime defterine eklendi",
+        style = ToastStyle.Info,
+        actionLabel = "Geri al",
+        modifier = Modifier.fillMaxWidth(),
+    )
+    SectionLabel("ONAY PENCERESİ", topMargin = LexiTheme.dimens.gap6)
+    ConfirmDialog(
+        title = "Çarkı bırakmak istiyor musun?",
+        message = "Bu çarktaki puanın kaydedilmez. Pas geçtiğin kelimeler yine de defterine eklenir.",
+        confirmLabel = "Bırak",
+        dismissLabel = "Devam et",
+        onConfirm = {},
+        onDismiss = {},
+        modifier = Modifier.fillMaxWidth(),
+    )
 }

@@ -13,12 +13,14 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
@@ -52,6 +54,13 @@ class ScreenSampleScreenshotTest {
     fun settingsComponents() {
         captureRoboImage("src/androidHostTest/screenshots/SettingsComponents.png") {
             LexiTheme(reducedMotion = false) { SettingsSample() }
+        }
+    }
+
+    @Test
+    fun statsComponents() {
+        captureRoboImage("src/androidHostTest/screenshots/StatsComponents.png") {
+            LexiTheme(reducedMotion = false) { StatsSample() }
         }
     }
 
@@ -261,6 +270,67 @@ private fun LevelSelectSample() {
                 ),
                 color = Color.White,
             )
+        }
+    }
+}
+
+@Composable
+private fun StatsSample() {
+    val colors = LexiTheme.colors
+    val typography = LexiTheme.typography
+    SampleScreen(top = 24.dp, bottom = 20.dp, gap = 14.dp) {
+        SampleHeader("İstatistikler")
+        StatGrid(columns = 2, modifier = Modifier.fillMaxWidth()) {
+            StatTile("412", "öğrenilen kelime", DecorShapeKind.Circle, colors.blue)
+            StatTile("%78", "doğruluk", DecorShapeKind.Square, colors.red)
+            StatTile("12 gün", "en uzun seri", DecorShapeKind.Leaf, colors.yellow)
+            StatTile("63", "tamamlanan çark", DecorShapeKind.Square, colors.ink)
+        }
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .lexiSurface(colors.white, BorderStroke(3.dp, colors.ink))
+                .padding(horizontal = 14.dp, vertical = 12.dp),
+            verticalArrangement = Arrangement.spacedBy(10.dp),
+        ) {
+            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+                Text(
+                    "Bu hafta öğrenilen kelime",
+                    style = typography.bodyStrong16,
+                    modifier = Modifier.alignByBaseline(),
+                )
+                Text("toplam 177", style = typography.caption13SemiBold, modifier = Modifier.alignByBaseline())
+            }
+            BarChart(
+                values = listOf(18, 26, 12, 31, 22, 40, 28),
+                labels = listOf("Pzt", "Sal", "Çar", "Per", "Cum", "Cmt", "Paz"),
+                highlightIndex = 6,
+                contentDescription = "Günlük öğrenilen kelime",
+            )
+        }
+        Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            Text("SEVİYE İLERLEMESİ", style = typography.label12)
+            listOf(Triple("A1", 0.48f, "412 / 850"), Triple("A2", 0.11f, "96 / 900"), Triple("B1", 0f, "0 / 1200"))
+                .forEach { (level, progress, count) ->
+                    Row(
+                        horizontalArrangement = Arrangement.spacedBy(10.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
+                        Text(level, style = typography.bodyStrong15, modifier = Modifier.width(34.dp))
+                        ProgressBar(
+                            progress = progress,
+                            height = ControlDefaults.ProgressHeightThick,
+                            fillColor = colors.ink,
+                            modifier = Modifier.weight(1f),
+                        )
+                        Text(
+                            count,
+                            style = typography.caption13SemiBold,
+                            textAlign = TextAlign.End,
+                            modifier = Modifier.width(64.dp),
+                        )
+                    }
+                }
         }
     }
 }

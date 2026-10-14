@@ -87,6 +87,18 @@ public class LexiTypography internal constructor(
     public val label12: TextStyle,
     /** 13 / 800: wheel letters. */
     public val wheelChip: TextStyle,
+    /** 12 / 800: highlighted chart day (`09-stats`). */
+    public val caption12ExtraBold: TextStyle,
+    /** 14 / 800, underlined: toast action "Geri al" (`16-components`). */
+    public val link14: TextStyle,
+    /** 15 / 700: info toast message (`16-components`). */
+    public val bodyBold15: TextStyle,
+    /** 14 / 500, line-height 1.4: dialog body (`16-components`). */
+    public val body14: TextStyle,
+    /** 24 / 800: bottom-sheet title (`05-joker-sheet`). */
+    public val heading24: TextStyle,
+    /** 22 / 800, line-height 1.1: dialog title, daily card (`16-components`, `02-home`). */
+    public val heading22: TextStyle,
     /** 30 / 800, line-height 1: stat numbers (`09-stats`, `06-result`). */
     public val statValue: TextStyle,
     /** 34 / 800, line-height 1: level-card titles (`03-level-select`). */
@@ -203,6 +215,12 @@ internal fun lexiTypography(jost: FontFamily): LexiTypography {
         label13 = style(13, FontWeight.Bold, letterSpacing = 0.14.em),
         label12 = style(12, FontWeight.Bold, letterSpacing = 0.14.em),
         wheelChip = style(13, extraBold),
+        caption12ExtraBold = style(12, extraBold),
+        link14 = style(14, extraBold).copy(textDecoration = TextDecoration.Underline),
+        bodyBold15 = style(15, FontWeight.Bold),
+        body14 = style(14, FontWeight.Medium, lineHeight = 1.4),
+        heading24 = style(24, extraBold),
+        heading22 = style(22, extraBold, lineHeight = 1.1),
         statValue = style(30, extraBold, lineHeight = 1.0),
         levelTitle = style(34, extraBold, lineHeight = 1.0),
         caption12Bold = style(12, FontWeight.Bold),
