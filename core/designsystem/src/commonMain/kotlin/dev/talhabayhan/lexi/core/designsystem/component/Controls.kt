@@ -131,12 +131,15 @@ private fun Modifier.leftBorder(width: Dp, color: Color): Modifier = this
 
 /**
  * Bauhaus switch, 54 × 30 with a 3dp border: on = blue track, yellow knob right; off = cream track, ink knob left.
- * Give it a label through the row or `Modifier.semantics { contentDescription = … }`.
+ * Give it a label through `Modifier.semantics { contentDescription = … }`, or use the toggle [ListRow], which makes the
+ * whole row the switch (pass `onCheckedChange = null` for such display-only use). Compose extends the touch bounds
+ * of small pointer targets to the platform minimum (48dp ≥ `minTouchTarget`), so the 30dp-high switch is tappable
+ * on a 48dp band without growing.
  */
 @Composable
 public fun LexiSwitch(
     checked: Boolean,
-    onCheckedChange: (Boolean) -> Unit,
+    onCheckedChange: ((Boolean) -> Unit)?,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
 ) {
@@ -152,17 +155,23 @@ public fun LexiSwitch(
     Box(
         modifier = modifier
             .size(ControlDefaults.SwitchWidth, ControlDefaults.SwitchHeight)
-            .toggleable(
-                value = checked,
-                enabled = enabled,
-                role = Role.Switch,
-                interactionSource = null,
-                indication = null,
-            ) {
-                haptics.perform(HapticKind.Light)
-                sounds.play(SoundEffect.Tap)
-                onCheckedChange(it)
-            }
+            .then(
+                if (onCheckedChange != null) {
+                    Modifier.toggleable(
+                        value = checked,
+                        enabled = enabled,
+                        role = Role.Switch,
+                        interactionSource = null,
+                        indication = null,
+                    ) {
+                        haptics.perform(HapticKind.Light)
+                        sounds.play(SoundEffect.Tap)
+                        onCheckedChange(it)
+                    }
+                } else {
+                    Modifier
+                },
+            )
             .lexiSurface(
                 if (checked) colors.blue else colors.cream,
                 BorderStroke(LexiTheme.borders.regular, colors.ink),

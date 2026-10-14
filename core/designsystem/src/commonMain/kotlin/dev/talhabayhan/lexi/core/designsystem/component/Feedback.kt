@@ -43,7 +43,10 @@ public object FeedbackDefaults {
     public val ToastGap: Dp = 10.dp
     public val ToastMarkerSize: Dp = 24.dp
 
-    /** Toast action: 32 high, padding 0 6 (touch bounds are extended to the minimum by Compose hit testing). */
+    /**
+     * Toast action: 32 high, padding 0 6. Compose hit testing extends small pointer targets to the platform minimum
+     * touch size (48dp ≥ `minTouchTarget`), so the action stays tappable without making the toast taller.
+     */
     public val ToastActionHeight: Dp = 32.dp
     public val ToastActionPadding: PaddingValues = PaddingValues(horizontal = 6.dp)
 

@@ -159,15 +159,15 @@ private fun SettingsSample() {
             Text("[FİYAT]", style = LexiTheme.typography.bodyStrong14, color = colors.yellow)
         }
         SettingsSection("OYUN") {
-            ListRow("Ses efektleri") { LexiSwitch(checked = true, onCheckedChange = {}) }
-            ListRow("Titreşim") { LexiSwitch(checked = true, onCheckedChange = {}) }
-            ListRow("Doğru cevapta telaffuzu çal") { LexiSwitch(checked = true, onCheckedChange = {}) }
+            ListRow("Ses efektleri", checked = true, onCheckedChange = {})
+            ListRow("Titreşim", checked = true, onCheckedChange = {})
+            ListRow("Doğru cevapta telaffuzu çal", checked = true, onCheckedChange = {})
             ListRow("Klasik mod süresi", onClick = {}) { ListRowValue("3:00") }
         }
         SettingsSection("ÖĞRENME") {
             ListRow("Günlük hatırlatma", onClick = {}) { ListRowValue("20:00") }
             ListRow("Günlük hedef", onClick = {}) { ListRowValue("1 çark") }
-            ListRow("Kelime defteri tekrarları") { LexiSwitch(checked = true, onCheckedChange = {}) }
+            ListRow("Kelime defteri tekrarları", checked = true, onCheckedChange = {})
         }
         SettingsSection("DİL") {
             ListRow("Arayüz dili", onClick = {}) { ListRowValue("Türkçe") }

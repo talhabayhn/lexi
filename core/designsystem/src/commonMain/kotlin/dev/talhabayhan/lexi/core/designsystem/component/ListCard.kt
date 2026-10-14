@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.selection.toggleable
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -82,7 +83,7 @@ public fun ListCard(
 
 /**
  * A row of a [ListCard]: min 52dp, padding 0 12, gap 10, label 16/600 filling the width, then [trailing] (a
- * [LexiSwitch], [ListRowValue], chip or speaker button). With [onClick] the whole row is a button (light haptic + tap).
+ * [ListRowValue], chip or speaker button; for a switch use the toggle overload). With [onClick] the whole row is a button (light haptic + tap).
  */
 @Composable
 public fun ListRow(
@@ -94,6 +95,44 @@ public fun ListRow(
     ListRow(modifier = modifier, onClick = onClick) {
         Text(label, style = LexiTheme.typography.body16SemiBold, modifier = Modifier.weight(1f))
         trailing()
+    }
+}
+
+/**
+ * A settings row whose whole area is the switch: one toggleable node (Role.Switch, label as its text) with the
+ * [LexiSwitch] as display; light haptic + tap on toggle.
+ */
+@Composable
+public fun ListRow(
+    label: String,
+    checked: Boolean,
+    onCheckedChange: (Boolean) -> Unit,
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+) {
+    val haptics = LocalHaptics.current
+    val sounds = LocalSoundPlayer.current
+    Row(
+        modifier = modifier
+            .fillMaxWidth()
+            .heightIn(min = ListDefaults.RowMinHeight)
+            .toggleable(
+                value = checked,
+                enabled = enabled,
+                role = Role.Switch,
+                interactionSource = null,
+                indication = null,
+            ) {
+                haptics.perform(HapticKind.Light)
+                sounds.play(SoundEffect.Tap)
+                onCheckedChange(it)
+            }
+            .padding(ListDefaults.RowPadding),
+        horizontalArrangement = Arrangement.spacedBy(ListDefaults.RowGap),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Text(label, style = LexiTheme.typography.body16SemiBold, modifier = Modifier.weight(1f))
+        LexiSwitch(checked = checked, onCheckedChange = null, enabled = enabled)
     }
 }
 
@@ -252,7 +291,7 @@ private fun ListCardPreview() {
             verticalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap14),
         ) {
             ListCard(Modifier.fillMaxWidth()) {
-                ListRow("Ses efektleri") { LexiSwitch(checked = true, onCheckedChange = {}) }
+                ListRow("Ses efektleri", checked = true, onCheckedChange = {})
                 ListRow("Klasik mod süresi", onClick = {}) { ListRowValue("3:00") }
             }
             StatGrid(columns = 2, modifier = Modifier.fillMaxWidth()) {
