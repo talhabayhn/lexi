@@ -8,4 +8,9 @@
     <string name="wheel_letter_state_wrong">yanlış</string>
     <string name="wheel_letter_state_passed">pas</string>
     <string name="wheel_letter_description">%1$s, %2$s</string>
+
+    <!-- Cevap kutuları -->
+    <string name="answer_slot_empty">boş</string>
+    <string name="answer_slot_active">boş, sıradaki</string>
+    <string name="answer_slot_joker">joker ile açıldı</string>
 </resources>

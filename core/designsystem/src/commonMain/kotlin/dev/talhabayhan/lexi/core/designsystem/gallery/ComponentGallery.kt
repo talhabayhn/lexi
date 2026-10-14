@@ -21,12 +21,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiColors
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
+import dev.talhabayhan.lexi.core.designsystem.theme.resized
 import dev.talhabayhan.lexi.core.designsystem.theme.withCssLineHeight
+import dev.talhabayhan.lexi.core.designsystem.theme.withCssNormalLineHeight
 
 /**
  * Reproduction of the `16-components` canvas (1330 × 960) for side-by-side review with
@@ -73,7 +74,7 @@ private fun GalleryHeader() {
         ) {
             Text(
                 text = "Bileşenler", // design sample, not user-facing
-                style = typography.title.copy(fontSize = GallerySpec.titleSize).withCssLineHeight(1.0),
+                style = typography.title.resized(GallerySpec.titleSize).withCssLineHeight(1.0),
             )
             Row(horizontalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap10)) {
                 gallerySwatches(colors).forEach { swatch -> Swatch(swatch) }
@@ -92,7 +93,7 @@ private fun GalleryHeader() {
                 Text("Jost 700 · 18", style = typography.heading18.copy(fontWeight = FontWeight.Bold))
                 Text(
                     "Jost 500 · 15 — gövde metni",
-                    style = typography.body15.copy(lineHeight = TextUnit.Unspecified, lineHeightStyle = null),
+                    style = typography.body15.withCssNormalLineHeight(),
                 )
                 Text("ETİKET · 12 · +0.14em", style = typography.label12)
             }
@@ -123,7 +124,7 @@ private fun Swatch(swatch: GallerySwatch) {
         val chip = Modifier.fillMaxWidth().height(GallerySpec.swatchHeight).background(swatch.color)
         Box(if (swatch.outlined) chip.border(LexiTheme.borders.thin, LexiTheme.colors.ink) else chip)
         Text(swatch.name, style = typography.caption12.copy(fontWeight = FontWeight.ExtraBold))
-        Text(swatch.hex, style = typography.caption12.copy(fontSize = GallerySpec.hexSize))
+        Text(swatch.hex, style = typography.caption12.resized(GallerySpec.hexSize))
     }
 }
 
@@ -142,6 +143,8 @@ internal object GallerySpec {
     val hexSize = 11.sp
     val demoButtonSize = 48.dp
     val demoChipSize = 44.dp
+    val demoSlotLetterSize = 24.sp
+    val demoKeyWidth = 52.dp
     const val NOTE_LINE_HEIGHT = 1.4
 }
 

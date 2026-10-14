@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
@@ -14,7 +15,11 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import dev.talhabayhan.lexi.core.designsystem.component.ActionCircleButton
+import dev.talhabayhan.lexi.core.designsystem.component.AnswerSlot
+import dev.talhabayhan.lexi.core.designsystem.component.AnswerSlotState
 import dev.talhabayhan.lexi.core.designsystem.component.IconButtonDefaults
+import dev.talhabayhan.lexi.core.designsystem.component.LetterKey
+import dev.talhabayhan.lexi.core.designsystem.component.LetterKeyState
 import dev.talhabayhan.lexi.core.designsystem.component.LexiButton
 import dev.talhabayhan.lexi.core.designsystem.component.LexiButtonVariant
 import dev.talhabayhan.lexi.core.designsystem.component.LexiTextLink
@@ -24,6 +29,7 @@ import dev.talhabayhan.lexi.core.designsystem.component.WheelLetter
 import dev.talhabayhan.lexi.core.designsystem.component.WheelLetterState
 import dev.talhabayhan.lexi.core.designsystem.icon.LexiIcons
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
+import dev.talhabayhan.lexi.core.designsystem.theme.resized
 import dev.talhabayhan.lexi.core.designsystem.theme.withCssLineHeight
 
 // design sample, not user-facing: every text in this file is the 16-components canvas copy.
@@ -98,6 +104,27 @@ internal fun ColumnScope.GalleryColumnTwo() {
                     scaleCurrent = false,
                 )
             }
+        }
+    }
+    SectionLabel("CEVAP KUTUSU", topMargin = LexiTheme.dimens.gap6)
+    Row(horizontalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap14), verticalAlignment = Alignment.Bottom) {
+        val slotStyle = LexiTheme.typography.slotLetter.resized(GallerySpec.demoSlotLetterSize)
+        Captioned("Dolu") { AnswerSlot('K', AnswerSlotState.Filled, textStyle = slotStyle) }
+        Captioned("Aktif") { AnswerSlot(null, AnswerSlotState.Active) }
+        Captioned("Boş") { AnswerSlot(null, AnswerSlotState.Empty) }
+        Captioned("Yanlış") { AnswerSlot('S', AnswerSlotState.Wrong, textStyle = slotStyle) }
+        Captioned("Joker ile") { AnswerSlot('N', AnswerSlotState.JokerFilled, textStyle = slotStyle) }
+    }
+    SectionLabel("HARF TUŞU", topMargin = LexiTheme.dimens.gap6)
+    Row(horizontalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap14), verticalAlignment = Alignment.Bottom) {
+        val key = Modifier.width(GallerySpec.demoKeyWidth)
+        Captioned("Normal") { LetterKey('E', onClick = {}, modifier = key) }
+        Captioned("Basılı") {
+            CompositionLocalProvider(LocalForcePressed provides true) { LetterKey('E', onClick = {}, modifier = key) }
+        }
+        Captioned("Kullanıldı") { LetterKey('E', onClick = {}, modifier = key, state = LetterKeyState.Used) }
+        Captioned("Joker sildi") {
+            LetterKey('E', onClick = {}, modifier = key, state = LetterKeyState.RemovedByJoker)
         }
     }
 }

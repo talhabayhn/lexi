@@ -8,4 +8,9 @@
     <string name="wheel_letter_state_wrong">wrong</string>
     <string name="wheel_letter_state_passed">passed</string>
     <string name="wheel_letter_description">%1$s, %2$s</string>
+
+    <!-- Answer slots -->
+    <string name="answer_slot_empty">empty</string>
+    <string name="answer_slot_active">empty, next</string>
+    <string name="answer_slot_joker">opened by joker</string>
 </resources>

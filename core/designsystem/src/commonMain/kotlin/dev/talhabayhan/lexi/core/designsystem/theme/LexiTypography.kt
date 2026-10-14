@@ -17,10 +17,12 @@ import dev.talhabayhan.lexi.core.designsystem.generated.resources.jost_extrabold
 import dev.talhabayhan.lexi.core.designsystem.generated.resources.jost_medium
 import dev.talhabayhan.lexi.core.designsystem.generated.resources.jost_semibold
 import org.jetbrains.compose.resources.Font
+import kotlin.math.floor
 
 /**
  * Jost type scale (`docs/design/tokens.md` § Typography). Values are the design HTML's CSS: font px = sp,
- * `letter-spacing: .14em` = `0.14.em`, unitless `line-height` = `em`. Roles that the doc gives as a range carry the
+ * `letter-spacing: .14em` = `0.14.em`, unitless `line-height` = `em`, no line height = CSS `normal` as Chrome
+ * computes it. Roles that the doc gives as a range carry the
  * font size as suffix (`heading18`, `heading20`) so a CSS declaration maps to exactly one token. A size/weight that
  * a screen needs and is missing here gets added here, with a comment naming the screen.
  *
@@ -109,8 +111,22 @@ internal fun rememberJostFontFamily(): FontFamily {
     return remember(medium, semiBold, bold, extraBold) { FontFamily(medium, semiBold, bold, extraBold) }
 }
 
-/** Jost's natural line height, CSS `line-height: normal`: (ascender 1070 + descender 375) / 1000 units per em. */
-private const val JOST_NATURAL_LINE_HEIGHT = 1.445
+/** Jost's ascender and descender per em (hhea/typo 1070 / −375 at 1000 units per em, no line gap). */
+private const val JOST_ASCENT = 1.07
+private const val JOST_DESCENT = 0.375
+
+/** Jost's natural line height in em: ascender + descender. */
+private const val JOST_NATURAL_LINE_HEIGHT = JOST_ASCENT + JOST_DESCENT
+
+/** Chrome's `line-height: normal`: ascent and descent each rounded to whole CSS px, so 12px text is 18px high. */
+internal fun cssNormalLineHeight(fontSize: Float): Float =
+    floor(JOST_ASCENT * fontSize + 0.5).toFloat() + floor(JOST_DESCENT * fontSize + 0.5).toFloat()
+
+private fun cssLineHeightStyle(factor: Double): LineHeightStyle = if (factor < JOST_NATURAL_LINE_HEIGHT) {
+    LineHeightStyle(LineHeightStyle.Alignment.Center, LineHeightStyle.Trim.Both, LineHeightStyle.Mode.Tight)
+} else {
+    LineHeightStyle(LineHeightStyle.Alignment.Center, LineHeightStyle.Trim.None)
+}
 
 /**
  * Returns this style with a CSS unitless `line-height` ([factor] × font size). Like a CSS line box, the half-leading
@@ -118,14 +134,27 @@ private const val JOST_NATURAL_LINE_HEIGHT = 1.445
  * requested height and glyphs may overflow it (Compose `Mode.Tight` + `Trim.Both`, otherwise Compose pads the box);
  * above it `Trim.None` keeps the half-leading on the first and last line.
  */
-internal fun TextStyle.withCssLineHeight(factor: Double): TextStyle = copy(
-    lineHeight = factor.em,
-    lineHeightStyle = if (factor < JOST_NATURAL_LINE_HEIGHT) {
-        LineHeightStyle(LineHeightStyle.Alignment.Center, LineHeightStyle.Trim.Both, LineHeightStyle.Mode.Tight)
-    } else {
-        LineHeightStyle(LineHeightStyle.Alignment.Center, LineHeightStyle.Trim.None)
-    },
-)
+internal fun TextStyle.withCssLineHeight(factor: Double): TextStyle =
+    copy(lineHeight = factor.em, lineHeightStyle = cssLineHeightStyle(factor))
+
+/**
+ * Returns this style with CSS `line-height: normal` as the browser lays it out ([cssNormalLineHeight], in sp). Every
+ * style without an explicit line height uses it, so stacked texts keep the design's vertical rhythm (Compose's own
+ * metrics are up to 0.7dp shorter per line, which adds up down a screen).
+ */
+internal fun TextStyle.withCssNormalLineHeight(): TextStyle {
+    val lineHeight = cssNormalLineHeight(fontSize.value)
+    return copy(
+        lineHeight = lineHeight.sp,
+        lineHeightStyle = cssLineHeightStyle(lineHeight.toDouble() / fontSize.value),
+    )
+}
+
+/** This style at another font size, keeping a unitless line height or recomputing the CSS `normal` one. */
+internal fun TextStyle.resized(fontSize: TextUnit): TextStyle {
+    val resized = copy(fontSize = fontSize)
+    return if (lineHeight.isSp) resized.withCssNormalLineHeight() else resized
+}
 
 internal fun lexiTypography(jost: FontFamily): LexiTypography {
     fun style(
@@ -135,7 +164,7 @@ internal fun lexiTypography(jost: FontFamily): LexiTypography {
         letterSpacing: TextUnit = TextUnit.Unspecified,
     ): TextStyle {
         val style = TextStyle(fontFamily = jost, fontWeight = weight, fontSize = size.sp, letterSpacing = letterSpacing)
-        return if (lineHeight != null) style.withCssLineHeight(lineHeight) else style
+        return if (lineHeight != null) style.withCssLineHeight(lineHeight) else style.withCssNormalLineHeight()
     }
 
     val extraBold = FontWeight.ExtraBold
