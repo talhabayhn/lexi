@@ -37,6 +37,14 @@ correct = blue circle, wrong = red square, passed = yellow leaf.
 - Keys = multiset of the answer's letters + distractors, shuffled with the slot's sub-seed.
 - Distractors: letters not over-represented in the answer, weighted by English letter frequency, with ≥ 2
   "near" letters (visually/phonetically similar, e.g. C/K, I/E, V/W) when available. Deterministic.
+  - Decision: distractors are distinct letters that do **not** occur in the answer, so every key is either part of
+    the answer multiset or a distractor (Remove distractors disables exactly those). Always feasible: answers have
+    ≤ 14 letters, so ≥ 12 letters remain.
+  - Draw order (`KeyboardGenerator`, sub-seed `keys:<letter>`): first `min(2, needed, near candidates)` near
+    letters, then the rest from all remaining candidates; both weighted by English letter frequency (hundredths of
+    a percent, E = 1270 … Z = 7) without replacement; then answer keys + distractors are Fisher–Yates shuffled.
+  - Near pairs (symmetric): CK CS CG KQ QG KX IE EY IY EA AO OU OQ UV VW UW WM MN NH BP BD DP DT TF FV FP GJ SZ
+    XZ LI LR RP JY.
 - Tapping a key places its letter in the first empty slot and marks the key USED; `Backspace` returns the last
   placed letter to its key.
 - Keys are never reordered during a slot.
