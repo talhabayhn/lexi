@@ -19,6 +19,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.selected
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.Dp
@@ -137,7 +139,7 @@ public fun LevelCard(
     val lines = if (inverted) colors.cream else colors.ink
     PressableSurface(
         onClick = onClick,
-        modifier = modifier.height(CardDefaults.LevelCardHeight),
+        modifier = modifier.height(CardDefaults.LevelCardHeight).semantics { this.selected = selected },
         color = fill,
         shadow = if (selected) LexiTheme.shadows.s6 else LexiTheme.shadows.s3,
         role = Role.RadioButton,
