@@ -17,9 +17,7 @@ public data class LevelTestState(
     /** Correct answers in a row at [currentLevel]. */
     val correctInARow: Int = 0,
     val answers: List<LevelTestAnswer> = emptyList(),
-) {
-    public val isFinished: Boolean get() = LevelTest.isFinished(this)
-}
+)
 
 /**
  * Adaptive onboarding staircase (`GAME_RULES.md` §9). Pure; the caller shows each card from [nextCard] (timer:
@@ -40,9 +38,13 @@ public object LevelTest {
 
     /**
      * Ends after [MIN_SLOTS] answers once the current level has ≥ [MIN_ASKED] asked cards (so it can be judged),
-     * and always after [MAX_SLOTS].
+     * always after [MAX_SLOTS], and early when [pool] has no unasked card of the current level ([result] then
+     * judges what was answered).
      */
-    public fun isFinished(state: LevelTestState): Boolean {
+    public fun isFinished(state: LevelTestState, pool: List<Card>): Boolean =
+        reachedEnd(state) || nextCard(state, pool) == null
+
+    private fun reachedEnd(state: LevelTestState): Boolean {
         val asked = state.answers.size
         val askedAtCurrent = state.answers.count { it.level == state.currentLevel }
         return asked >= MAX_SLOTS || (asked >= MIN_SLOTS && askedAtCurrent >= MIN_ASKED)
@@ -66,7 +68,10 @@ public object LevelTest {
 
     /** 2 correct in a row at a level ⇒ one level up; a wrong answer or pass ⇒ one level down (A1…NAT). */
     public fun record(state: LevelTestState, card: Card, correct: Boolean): LevelTestState {
-        require(!state.isFinished) { "the level test is finished" }
+        require(!reachedEnd(state)) { "the level test is finished" }
+        require(card.level == state.currentLevel) {
+            "card ${card.id} is ${card.level}, the test is at ${state.currentLevel}"
+        }
         val answers = state.answers + LevelTestAnswer(card.id, state.currentLevel, card.letter, correct)
         val levels = Level.entries
         val index = state.currentLevel.ordinal

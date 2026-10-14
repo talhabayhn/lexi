@@ -49,6 +49,23 @@ class StatsTest {
     }
 
     @Test
+    fun `longest streak without sessions is 0`() {
+        assertEquals(0, Stats.longestStreak(emptyList()))
+    }
+
+    @Test
+    fun `words per day without sessions is 7 zero days`() {
+        val days = Stats.wordsPerDay(emptyList(), todayEpochDay = 50L)
+
+        assertEquals((44L..50L).map { DayCount(it, 0) }, days)
+    }
+
+    @Test
+    fun `hardest letters without progress is empty`() {
+        assertEquals(emptyList(), Stats.hardestLetters(emptyList(), emptyMap()))
+    }
+
+    @Test
     fun `completed wheels counts completed sessions only`() {
         assertEquals(2, Stats.completedWheels(listOf(session(1), session(2, completed = false), session(3))))
     }

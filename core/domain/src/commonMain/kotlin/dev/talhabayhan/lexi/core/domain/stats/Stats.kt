@@ -81,13 +81,8 @@ public object Stats {
         .mapNotNull { card -> letterOf[card.cardId]?.let { it to card } }
         .groupBy({ it.first }, { it.second })
         .map { (letter, cards) ->
-            LetterAccuracy(
-                letter,
-                correct = cards.sumOf {
-                    it.correct
-                },
-                attempts = cards.sumOf { it.correct + it.wrong },
-            )
+            val correct = cards.sumOf { it.correct }
+            LetterAccuracy(letter, correct = correct, attempts = correct + cards.sumOf { it.wrong })
         }
         .filter { it.attempts >= minAttempts }
         // Exact comparison of correct/attempts without floating point: a/b < c/d ⇔ a·d < c·b.

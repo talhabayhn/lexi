@@ -59,9 +59,9 @@ class LevelTestTest {
     fun `test ends after 12 answers when the current level has 3 asked cards`() {
         // A2 → A1 after the wrong one, then A1 stays at A1 with alternating answers.
         val state = LevelTest.start(1L).answer(false, true, false, true, false, true, false, true, false, true, false)
-        assertFalse(state.isFinished)
+        assertFalse(LevelTest.isFinished(state, pool))
 
-        assertTrue(state.answer(false).isFinished)
+        assertTrue(LevelTest.isFinished(state.answer(false), pool))
     }
 
     /** A2 → A1 after the first wrong, nine more wrongs at A1, then two corrects back up to A2 (1 asked there). */
@@ -72,30 +72,50 @@ class LevelTestTest {
     fun `test goes on past 12 while the current level has fewer than 3 asked cards`() {
         val twelve = twelveEndingOnAFreshLevel()
         assertEquals(Level.A2, twelve.currentLevel)
-        assertFalse(twelve.isFinished)
+        assertFalse(LevelTest.isFinished(twelve, pool))
 
         val thirteen = twelve.answer(false)
 
         assertEquals(Level.A1, thirteen.currentLevel)
-        assertTrue(thirteen.isFinished)
+        assertTrue(LevelTest.isFinished(thirteen, pool))
     }
 
     @Test
     fun `test always ends after 16 answers`() {
         val fifteen = twelveEndingOnAFreshLevel().answer(true, true, true)
         assertEquals(Level.B1, fifteen.currentLevel)
-        assertFalse(fifteen.isFinished)
+        assertFalse(LevelTest.isFinished(fifteen, pool))
 
-        assertTrue(fifteen.answer(true).isFinished)
+        assertTrue(LevelTest.isFinished(fifteen.answer(true), pool))
         assertEquals(LevelTest.MAX_SLOTS, fifteen.answer(true).answers.size)
     }
 
     @Test
     fun `record rejects answers after the end`() {
         val state = LevelTest.start(1L).answer(*BooleanArray(12) { true })
-        assertTrue(state.isFinished)
+        assertTrue(LevelTest.isFinished(state, pool))
 
         assertFailsWith<IllegalArgumentException> { LevelTest.record(state, pool.first(), true) }
+    }
+
+    @Test
+    fun `record rejects a card of another level than the current one`() {
+        assertFailsWith<IllegalArgumentException> {
+            LevelTest.record(LevelTest.start(1L), card("APPLE", level = Level.C1), correct = true)
+        }
+    }
+
+    @Test
+    fun `test ends early when the current level has no unasked card left`() {
+        val small =
+            listOf(card("APPLE", level = Level.A2), card("BREAD", level = Level.A2), card("CAT", level = Level.B1))
+        var state = LevelTest.start(1L)
+        state = LevelTest.record(state, checkNotNull(LevelTest.nextCard(state, small)), correct = false)
+        assertEquals(Level.A1, state.currentLevel)
+
+        assertTrue(LevelTest.isFinished(state, small))
+        assertNull(LevelTest.nextCard(state, small))
+        assertEquals(Level.A1, LevelTest.result(state))
     }
 
     @Test

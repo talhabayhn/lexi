@@ -124,7 +124,13 @@ the app goes to background.
 - Engine (`LevelTest`): the test ends after 12 answers once the current level has ≥ 3 asked cards (so it can be
   judged), and always after 16. "Else the level below" = the level below the start level (A1). Level stays within
   A1…NAT. Each card is a seeded pick (sub-seed `level-test:<index>`) of an unasked card of the current level,
-  preferring unused letters. Showing it on the game screen comes with onboarding (M6).
+  preferring unused letters. If the pool has no unasked card of the current level, the test ends early and the
+  result judges what was answered (`LevelTest.isFinished(state, pool)`).
+- Integration (M6): the level test can't use a pre-built wheel, because each card depends on the previous answer.
+  The onboarding ViewModel owns `LevelTestState` and runs one `GameEngine` game per card (mode `LEVEL_TEST`, a
+  one-slot `Wheel` with the card from `nextCard`, seed = the test seed), feeds its CORRECT/WRONG/PASSED result to
+  `LevelTest.record`, and carries the remaining time of the ⚙ 120 s clock into the next one-slot game (time up
+  ⇒ `LevelTest.result` on the answers so far). The wheel UI shows the asked letters as they come.
 
 ## 10. SRS — Kelime Defterim (Leitner)
 - Boxes 0–4 (the 4 bars in the notebook UI = box 1–4; box 0 = red/new). Intervals: box0 = today, 1 = 1 d,
@@ -137,7 +143,9 @@ the app goes to background.
   (box ≠ null). A first-time correct card stays outside the notebook. PASSED counts as missed but not as wrong.
   Wrong/passed mastered cards return to box 0. Correct for a notebook card moves it up even if it wasn't due yet.
   Results come from the final slot states (`Srs.results`); unanswered cards are left out. Hot-seat duel answers
-  don't change the notebook (⚙ `srsExcludedModes = {DUEL}`). Days are epoch days in the player's time zone.
+  don't change the notebook (⚙ `srsExcludedModes = {DUEL}`): `Srs.update` returns no changes, so `seen`,
+  `correct`, `wrong` and `lastSeenMs` stay untouched and duel answers count neither in Stats (§11) nor in the
+  recently-seen window (§1). Days are epoch days in the player's time zone.
 
 ## 11. Statistics
 Learned words (= cards ever answered correctly), accuracy (correct / answered), longest streak (days with ≥1
@@ -145,6 +153,8 @@ completed wheel), completed wheels, words per day (last 7 days), per-level progr
 letters (lowest accuracy, min 5 attempts).
 Engine (`Stats`): "words per day" = correct answers per day (all sessions); percentages are rounded half up;
 hardest letters are sorted by exact accuracy, ties by letter; per-level progress needs the card totals per level.
+Card-based stats read `CardProgress`, which duel answers don't touch (⚙ `srsExcludedModes`); the data layer
+records no `SessionRecord` for those modes either, so streaks and words per day exclude them too.
 
 ## 12. Engine events & effects (contract)
 ```
