@@ -19,6 +19,7 @@ import dev.talhabayhan.lexi.core.designsystem.component.ActionCircleButton
 import dev.talhabayhan.lexi.core.designsystem.component.AnswerSlot
 import dev.talhabayhan.lexi.core.designsystem.component.AnswerSlotState
 import dev.talhabayhan.lexi.core.designsystem.component.ConfirmDialog
+import dev.talhabayhan.lexi.core.designsystem.component.EmptyState
 import dev.talhabayhan.lexi.core.designsystem.component.IconButtonDefaults
 import dev.talhabayhan.lexi.core.designsystem.component.LetterKey
 import dev.talhabayhan.lexi.core.designsystem.component.LetterKeyState
@@ -188,6 +189,11 @@ internal fun ColumnScope.GalleryColumnThree() {
         dismissLabel = "Devam et",
         onConfirm = {},
         onDismiss = {},
+        modifier = Modifier.fillMaxWidth(),
+    )
+    SectionLabel("BOŞ DURUM", topMargin = LexiTheme.dimens.gap6)
+    EmptyState(
+        "Defterin henüz boş. Bir çark oyna; pas geçtiğin ve bilemediğin kelimeler buraya düşer.",
         modifier = Modifier.fillMaxWidth(),
     )
 }

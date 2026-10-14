@@ -3,6 +3,7 @@ package dev.talhabayhan.lexi.core.designsystem.component
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.PaddingValues
@@ -11,6 +12,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -18,6 +20,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -61,6 +64,13 @@ class ScreenSampleScreenshotTest {
     fun statsComponents() {
         captureRoboImage("src/androidHostTest/screenshots/StatsComponents.png") {
             LexiTheme(reducedMotion = false) { StatsSample() }
+        }
+    }
+
+    @Test
+    fun jokerSheetComponents() {
+        captureRoboImage("src/androidHostTest/screenshots/JokerSheetComponents.png") {
+            LexiTheme(reducedMotion = false) { JokerSheetSample() }
         }
     }
 
@@ -331,6 +341,87 @@ private fun StatsSample() {
                         )
                     }
                 }
+        }
+    }
+}
+
+private data class JokerSample(
+    val count: String,
+    val title: String,
+    val text: String,
+    val cost: String,
+    val marker: DecorShapeKind,
+)
+
+@Composable
+private fun JokerSheetSample() {
+    val colors = LexiTheme.colors
+    val typography = LexiTheme.typography
+    val jokers = listOf(
+        JokerSample("2", "Harf aç", "Sıradaki boş kutuya doğru harfi koyar", "−10 sn", DecorShapeKind.Circle),
+        JokerSample("1", "Çeldiricileri temizle", "Yanlış harf butonlarını kaldırır", "−15 sn", DecorShapeKind.Square),
+        JokerSample("3", "Örnek cümle", "Kelimeyi boşlukla bir cümlede gösterir", "−5 puan", DecorShapeKind.Leaf),
+        JokerSample(
+            "0",
+            "Telaffuzu dinle",
+            "Cevabı sesli okur (C1 ve üstünde kapalı)",
+            "−10 puan",
+            DecorShapeKind.Square,
+        ),
+    )
+    val chipColors = listOf(colors.blue, colors.red, colors.yellow, colors.white)
+    Box(Modifier.fillMaxSize().background(colors.cream)) {
+        BottomSheet(visible = true, onDismissRequest = {}, title = "Joker kullan", closeContentDescription = "Kapat") {
+            jokers.forEachIndexed { i, joker ->
+                val enabled = i < 3
+                PressableSurface(
+                    onClick = {},
+                    enabled = enabled,
+                    shadow = if (enabled) LexiTheme.shadows.s3 else null,
+                    modifier = Modifier.fillMaxWidth().heightIn(min = 68.dp).alpha(if (enabled) 1f else 0.5f),
+                    propagateMinConstraints = true,
+                ) {
+                    Row(
+                        modifier = Modifier.padding(horizontal = 12.dp, vertical = 10.dp),
+                        horizontalArrangement = Arrangement.spacedBy(12.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
+                        Box(Modifier.size(40.dp), contentAlignment = Alignment.Center) {
+                            DecorShape(
+                                joker.marker,
+                                chipColors[i],
+                                Modifier.fillMaxSize(),
+                                BorderStroke(2.dp, colors.ink),
+                            )
+                            Text(
+                                joker.count,
+                                style = typography.bodyStrong17,
+                                color = if (i < 2) colors.white else colors.ink,
+                            )
+                        }
+                        Column(Modifier.weight(1f)) {
+                            Text(joker.title, style = typography.bodyStrong17)
+                            Text(joker.text, style = typography.caption13)
+                        }
+                        Text(
+                            joker.cost,
+                            style = typography.bodyStrong14,
+                            modifier = Modifier
+                                .lexiSurface(colors.cream, BorderStroke(2.dp, colors.ink))
+                                .padding(horizontal = 8.dp, vertical = 3.dp),
+                        )
+                    }
+                }
+            }
+            LexiButton(
+                text = "Kısa reklam izle · +1 joker",
+                onClick = {},
+                variant = LexiButtonVariant.Ink,
+                shadow = null,
+                leadingIcon = LexiIcons.Play,
+                height = LexiButtonDefaults.LargeHeight,
+                modifier = Modifier.fillMaxWidth().padding(top = 4.dp),
+            )
         }
     }
 }
