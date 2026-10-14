@@ -85,9 +85,16 @@ class GameConfigTest {
     }
 
     @Test
-    fun `remove distractors costs 15 s and is free in untimed modes`() {
+    fun `remove distractors costs 15 s or 5 points in untimed modes`() {
         assertEquals(JokerCost.Time(15_000L), config.jokerCost(JokerType.REMOVE_DISTRACTORS, GameMode.HARDCORE))
-        assertEquals(JokerCost.Free, config.jokerCost(JokerType.REMOVE_DISTRACTORS, GameMode.REVIEW))
+        assertEquals(JokerCost.Points(5), config.jokerCost(JokerType.REMOVE_DISTRACTORS, GameMode.REVIEW))
+    }
+
+    @Test
+    fun `remove distractors untimed cost of 0 points makes it free`() {
+        val config = config.copy(removeDistractorsUntimedCostPoints = 0)
+
+        assertEquals(JokerCost.Free, config.jokerCost(JokerType.REMOVE_DISTRACTORS, GameMode.PRACTICE))
     }
 
     @Test

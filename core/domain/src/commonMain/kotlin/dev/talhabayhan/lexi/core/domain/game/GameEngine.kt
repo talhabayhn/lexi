@@ -230,19 +230,11 @@ public class GameEngine(public val config: GameConfig = GameConfig()) {
 
         // region timer (§5)
 
-        /** The reveal of a wrong answer uses up ticks first; the clock stands still meanwhile (configurable). */
-        private fun GameState.tick(elapsedMs: Long): GameState = when {
-            !isRevealing -> spendClock(elapsedMs)
-
-            // Clock first, so time running out during the reveal ends the game without advancing.
-            config.clockRunsDuringReveal -> spendClock(elapsedMs).let {
-                if (it.isOver) it else it.spendReveal(elapsedMs)
-            }
-
-            else -> {
-                val used = minOf(elapsedMs, revealRemainingMs)
-                spendReveal(used).let { if (it.isOver) it else it.spendClock(elapsedMs - used) }
-            }
+        /** The reveal of a wrong answer uses up ticks first; the clock stands still meanwhile (owner decision). */
+        private fun GameState.tick(elapsedMs: Long): GameState {
+            if (!isRevealing) return spendClock(elapsedMs)
+            val used = minOf(elapsedMs, revealRemainingMs)
+            return spendReveal(used).let { if (it.isOver) it else it.spendClock(elapsedMs - used) }
         }
 
         private fun GameState.spendReveal(ms: Long): GameState {

@@ -11,8 +11,6 @@ import kotlinx.serialization.Serializable
 public data class GameConfig(
     /** §3: how long the correct answer is shown after a wrong one. */
     val revealMs: Long = 1_200L,
-    /** §3: whether the game clock keeps running while a wrong answer is revealed (open decision). */
-    val clockRunsDuringReveal: Boolean = false,
     /** §5: Classic total time; the player's setting (one of [classicTimeLimitOptionsSeconds]) overrides it. */
     val classicTimeLimitSeconds: Int = 180,
     val classicTimeLimitOptionsSeconds: List<Int> = listOf(120, 180, 240, 300),
@@ -47,8 +45,8 @@ public data class GameConfig(
     val revealLetterCostMs: Long = 10_000L,
     val revealLetterUntimedCostPoints: Int = 5,
     val removeDistractorsCostMs: Long = 15_000L,
-    /** Open decision: 0 = free in untimed modes (they are unscored). */
-    val removeDistractorsUntimedCostPoints: Int = 0,
+    /** Owner decision: points like Reveal letter in untimed modes; 0 = free. */
+    val removeDistractorsUntimedCostPoints: Int = 5,
     val exampleCostPoints: Int = 5,
     val listenCostPoints: Int = 10,
     val listenDisabledLevels: Set<Level> = setOf(Level.C1, Level.NAT),

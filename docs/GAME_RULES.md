@@ -35,9 +35,9 @@ correct = blue circle, wrong = red square, passed = yellow leaf.
 4. Advance = next slot clockwise that is TODO or PASSED. After Z it wraps (lap 2, 3, …) over passed slots.
 5. End when: no TODO/PASSED slots left, or time is up, or (Hardcore) first WRONG, or `Forfeit`.
 6. Engine decisions:
-   - While a wrong answer is revealed, input is ignored and the game clock stands still (⚙ `clockRunsDuringReveal
-     = false`); the reveal ends after `revealMs` of ticks, then the engine advances (Hardcore: game over). With
-     `clockRunsDuringReveal = true`, time running out during the reveal ends the game without advancing.
+   - While a wrong answer is revealed, input is ignored and the game clock stands still (owner decision; so time
+     can't run out during a reveal); the reveal ends after `revealMs` of ticks, then the engine advances
+     (Hardcore: game over).
    - A passed slot keeps its input (typed letters, disabled keys, used jokers) for the next lap. If the game ends
      while it is CURRENT again (time up, forfeit), it stays PASSED (counted as passed and missed, §10).
    - Events that don't apply (input while paused/revealing, a used key, anything after game over) are ignored.
@@ -90,12 +90,15 @@ the app goes to background.
 | Joker | Effect | Cost | Limit |
 |---|---|---|---|
 | Harf aç (Reveal letter) | puts the correct letter into the next empty slot | ⚙ −10 s (untimed modes: −5 pts) | 1 per slot |
-| Çeldiricileri temizle (Remove distractors) | disables all distractor keys | ⚙ −15 s (untimed modes: ⚙ 0 pts = free) | 1 per slot |
+| Çeldiricileri temizle (Remove distractors) | disables all distractor keys | ⚙ −15 s (untimed modes: ⚙ −5 pts) | 1 per slot |
 | Örnek cümle (Example) | shows example sentence with the word blanked | ⚙ −5 pts | 1 per slot |
 | Telaffuzu dinle (Listen) | speaks the answer (TTS) | ⚙ −10 pts | disabled at C1 and NAT |
 - Inventory per joker type, persisted. Sources: start pack (2/1/3/1), daily login +1 random, rewarded ad +1,
   Pro +3/day refill. Jokers are not allowed in Daily (fair comparison), Duel and Level test (would distort the
   placement). ⚙ `jokerFreeModes`. Owner decision: no jokers in the level test.
+- Owner decision: Remove distractors costs points in untimed modes like Reveal letter (⚙
+  `removeDistractorsUntimedCostPoints = 5`; 0 = free). Untimed modes are unscored today, so point costs only
+  matter if one becomes scored.
 - A slot answered with a joker still counts as correct but its streak bonus is 0 (the streak itself goes on).
 - Engine decisions: every joker type is limited to once per slot, also across laps. Reveal letter fills the first
   cell that is empty or wrong; typed letters from there on go back to their keys; the revealed letter is locked
