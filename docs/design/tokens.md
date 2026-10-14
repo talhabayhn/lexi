@@ -46,8 +46,10 @@ letterSpacing in `em` → Compose `.em` units directly (0.14em → `0.14.em`).
 In code (`LexiTypography`), roles given as a range carry the font size as suffix so one CSS declaration maps to one
 token: `logo48`/`logo40`, `button30`…`button16`, `heading20`/`heading18`, `bodyStrong17`…`bodyStrong14`,
 `body16`/`body15`, `caption14`…`caption12`, `label13`/`label12`. Unitless CSS `line-height` is applied CSS-style
-(half-leading split evenly, box shrinks below Jost's natural 1.445); unset = CSS `normal`. Labels are uppercase in
-the string resources, never via `uppercase()` (Turkish İ).
+(half-leading split evenly, box shrinks below Jost's natural 1.445); unset = CSS `normal` as Chrome computes it
+(ascent and descent rounded to whole px: 12px text = 18px line), so stacked text keeps the HTML's vertical rhythm.
+Labels are uppercase in the string resources, never via `uppercase()` (Turkish İ). Component-specific styles (e.g.
+`levelTitle`, `statValue`, `wordmark`, `link14/15`, `heading22/24`, `*SemiBold`) are tokens too.
 
 ## Spacing (`LexiDimens`)
 Screen padding: horizontal 20, top 24 (game 20), bottom 28 (list screens 20).
@@ -88,7 +90,7 @@ offset behind the content (drawBehind), not `Modifier.shadow` (that blurs).
 | `circle` | 50% | `CircleShape` |
 | `leaf` | `border-radius: 50% 0 50% 0` | `RoundedCornerShape(topStartPercent = 50, topEndPercent = 0, bottomEndPercent = 50, bottomStartPercent = 0)` |
 | `diamond` | square rotated 45° | `Modifier.rotate(45f)` on a square |
-| `halfPill` | `border-radius: 0 80px 80px 0` | decorative side shapes |
+| `halfPill` | `border-radius: 0 80px 80px 0` (= the shape's width) | decorative side shapes, `RoundedCornerShape(topEndPercent = 100, bottomEndPercent = 100)` |
 App icon corner radius is platform-owned; never round UI corners otherwise.
 
 ## Iconography
