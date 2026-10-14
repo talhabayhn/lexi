@@ -92,7 +92,9 @@ App icon corner radius is platform-owned; never round UI corners otherwise.
 
 ## Iconography
 Inline stroke icons, 2.4–3 stroke width, square caps, 16–22 size. Implement as `ImageVector`s in
-`core:designsystem/icons` (back, close, pause, settings, bulb (joker), backspace, speaker, search, chevron, play).
+`core:designsystem` as `LexiIcons.*` (Back, ChevronRight, ArrowRight, Close, Pause, Play, Settings, Bulb (joker),
+Backspace, Speaker, Search), converted 1:1 from the SVGs in the screens' HTML; size as in the SVG (`width="18"` →
+18.dp), tint at the call site.
 No emoji, no Material icon fonts.
 
 ## Decorative shapes

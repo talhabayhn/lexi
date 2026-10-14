@@ -23,7 +23,7 @@ Module mapping (replaces the earlier `composeApp`): `androidApp` = thin Android 
 - [x] Jost fonts in `composeResources/font`; `LexiTheme` (colors, typography, dimens, shapes, motion, shadows); Material3 light scheme mapped; dark mode ignored
 - [x] `hardShadow` modifier + `PressableSurface` (press animation 80 ms + haptic + sound hooks)
 - [ ] All components from `docs/design/components.md` with previews
-- [ ] Icons as ImageVectors
+- [x] Icons as ImageVectors
 - [ ] `LexiLogo` + launcher icons (option 1) for Android (adaptive) and iOS (AppIcon set)
 - [ ] Roborazzi screenshot of a "component gallery" composable ≈ `16-components.png`
 **Done when:** gallery screenshot matches the design PNG side-by-side (reviewed by product owner).
