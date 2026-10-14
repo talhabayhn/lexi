@@ -38,10 +38,14 @@
   on one branch.
 - Conventional Commits, English, imperative mood: `feat`, `fix`, `refactor`, `test`, `docs`, `chore`, `build`, `ci`;
   scope = module/area. Commit after each completed ROADMAP task.
-- When a branch is done: `./gradlew build` green → push the branch → open a PR into `main` (`gh pr create`, or
-  paste the prepared title/body). PR body: summary, changes, how to test, screenshots for UI, checklist (tests,
-  lint, docs updated, no secrets).
-- The product owner reviews and **squash-merges**. Tools/agents never merge and never push to `main`.
+- When a branch is done: push the branch → open a PR into `main` (`gh pr create`). PR body: summary, changes,
+  decisions taken, how to test, screenshots for UI, checklist (tests, lint, docs updated, no secrets).
+- **Squash-merge** with `gh pr merge --squash --delete-branch` once `./gradlew build` and
+  `./gradlew :androidApp:assembleDebug` are green locally and CI is green, after checking `git log` shows only the
+  owner's identity. Then `git switch main && git pull` and start the next branch. Agents may merge their own PRs
+  under these conditions.
+- Never commit or push directly to `main`, never force-push, never rewrite published history.
+- A change that makes a doc outdated updates that doc in the same branch.
 - No AI attribution: no `Co-Authored-By: … Claude`, "Generated with Claude Code", `Claude-Session` or other
   Claude/Anthropic lines in commits, PRs or code comments. Enforced by `.claude/settings.json` (`attribution`) and
   the committed `.githooks/commit-msg` hook — run `git config core.hooksPath .githooks` once per clone.
