@@ -35,8 +35,8 @@ import dev.talhabayhan.lexi.core.designsystem.modifier.hardShadow
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiMotion
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiShadow
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
-import dev.talhabayhan.lexi.core.platform.haptics.HapticKind
-import dev.talhabayhan.lexi.core.platform.sound.SoundEffect
+import dev.talhabayhan.lexi.core.domain.feedback.HapticKind
+import dev.talhabayhan.lexi.core.domain.feedback.SoundEffect
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 

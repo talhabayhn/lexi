@@ -20,6 +20,13 @@ class ModuleRulesTest {
     }
 
     @Test
+    fun `designsystem may use domain but not platform or data`() {
+        ok(":core:designsystem", "commonMainApi", ProjectDep(":core:domain"))
+        forbidden(":core:designsystem", "commonMainApi", ProjectDep(":core:platform"))
+        forbidden(":core:designsystem", "commonMainImplementation", ProjectDep(":core:data"))
+    }
+
+    @Test
     fun `feature must not depend on data or another feature`() {
         forbidden(":feature:home", "commonMainImplementation", ProjectDep(":core:data"))
         forbidden(":feature:home", "commonMainImplementation", ProjectDep(":feature:game"))

@@ -14,7 +14,7 @@ internal object ModuleRules {
         module == ":androidApp" -> setOf(":shared")
         module == ":core:domain" -> emptySet()
         module == ":core:data" -> setOf(":core:domain")
-        module == ":core:designsystem" -> setOf(":core:platform")
+        module == ":core:designsystem" -> setOf(":core:domain")
         module == ":core:platform" -> setOf(":core:domain")
         module == ":core:testing" -> setOf(":core:domain")
         module.startsWith(":feature:") -> FEATURE_ALLOWED

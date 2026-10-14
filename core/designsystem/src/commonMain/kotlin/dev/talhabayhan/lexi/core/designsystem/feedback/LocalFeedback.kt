@@ -2,8 +2,8 @@ package dev.talhabayhan.lexi.core.designsystem.feedback
 
 import androidx.compose.runtime.ProvidableCompositionLocal
 import androidx.compose.runtime.staticCompositionLocalOf
-import dev.talhabayhan.lexi.core.platform.haptics.Haptics
-import dev.talhabayhan.lexi.core.platform.sound.SoundPlayer
+import dev.talhabayhan.lexi.core.domain.feedback.Haptics
+import dev.talhabayhan.lexi.core.domain.feedback.SoundPlayer
 
 /**
  * Haptics used by design-system components (`PressableSurface`). No-op until the app provides the platform

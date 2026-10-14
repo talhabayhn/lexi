@@ -8,8 +8,8 @@ kotlin {
         commonMain.dependencies {
             // Exposed so features get Material3 as the underlay of LexiTheme (ARCHITECTURE.md §9).
             api(libs.compose.material3)
-            // Haptics/SoundPlayer interfaces only (ARCHITECTURE.md §2); exposed through LocalHaptics/LocalSoundPlayer.
-            api(project(":core:platform"))
+            // Haptics/SoundPlayer interfaces (pure Kotlin, ARCHITECTURE.md §2), exposed via LocalHaptics/LocalSoundPlayer.
+            api(project(":core:domain"))
         }
         getByName("androidHostTest").dependencies {
             implementation(libs.junit)

@@ -1,4 +1,4 @@
-package dev.talhabayhan.lexi.core.platform.haptics
+package dev.talhabayhan.lexi.core.domain.feedback
 
 /** Haptic patterns from `docs/design/motion.md` § Haptic map; platform mapping lives in the implementations. */
 public enum class HapticKind {

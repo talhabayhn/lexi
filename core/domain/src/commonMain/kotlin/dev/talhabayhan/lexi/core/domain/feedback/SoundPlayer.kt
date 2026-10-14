@@ -1,4 +1,4 @@
-package dev.talhabayhan.lexi.core.platform.sound
+package dev.talhabayhan.lexi.core.domain.feedback
 
 /** Sound effects from `docs/design/motion.md` § Sound assets (one asset each, ≤ 300 ms). */
 public enum class SoundEffect {

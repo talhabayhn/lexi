@@ -22,8 +22,8 @@ lexi/
 ├── core/
 │   ├── domain/                  PURE KOTLIN: models, repository interfaces, use cases, GameEngine, SRS, RNG
 │   ├── data/                    SQLDelight DBs, repositories, DataStore, content loader, remote packs (later)
-│   ├── designsystem/            LexiTheme, tokens, Bauhaus components, motion, haptics/sound API
-│   ├── platform/                expect/actual: TTS, haptics, sound player, ads, purchases, analytics, share
+│   ├── designsystem/            LexiTheme, tokens, Bauhaus components, motion, haptics/sound locals
+│   ├── platform/                implementations: TTS, haptics, sound player, ads, purchases, analytics, share
 │   └── testing/                 fakes, test rules, fixtures (test-only dependency)
 ├── feature/
 │   ├── onboarding/              onboarding + level test
@@ -45,8 +45,8 @@ lexi/
 |---|---|
 | `core:domain` | kotlinx-coroutines-core, kotlinx-datetime, kotlinx-serialization — nothing else |
 | `core:data` | `core:domain`, SQLDelight, DataStore, Ktor/Supabase (v1.1) |
-| `core:designsystem` | Compose, `core:platform` (haptics/sound interfaces only) |
-| `core:platform` | `core:domain` (interfaces are declared in domain or platform, impl here) |
+| `core:designsystem` | Compose, `core:domain` (e.g. the `Haptics`/`SoundPlayer` interfaces) |
+| `core:platform` | `core:domain` (implementations only; the interfaces are declared in domain) |
 | `feature:*` | `core:domain`, `core:designsystem`, `core:platform` (interfaces) — **never** `core:data` |
 | `shared` | everything (wires DI) |
 | `androidApp` | `shared` only |
@@ -161,7 +161,7 @@ Screen ↔ design map: `docs/design/screen-map.md`.
 `LexiMotion` via CompositionLocals (read as `LexiTheme.colors`, `LexiTheme.typography`, …); Material3 `MaterialTheme`
 is configured underneath (light scheme, Jost, square corners) so stock components don't leak wrong colors or shapes.
 `LexiMotion.reducedMotion` follows the OS setting (Android animator scale 0, iOS Reduce Motion) unless `LexiTheme`
-gets an explicit value. `Haptics`/`SoundPlayer` (interfaces in `core:platform`) reach components through
+gets an explicit value. `Haptics`/`SoundPlayer` (pure interfaces in `core:domain`, package `feedback`) reach components through
 `LocalHaptics`/`LocalSoundPlayer`: no-op by default, the platform implementations are provided at the root in M4.
 Tokens and components: `docs/design/tokens.md`, `docs/design/components.md`.
 
