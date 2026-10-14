@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<title>Lexi – Seviye ve mod seçimi</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#111111;text-decoration:none}a:hover{color:#1F4FBF}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; padding: 24px 20px 28px; background: #F2EBDD; color: #111111; font-family: 'Jost', sans-serif; display: flex; flex-direction: column; gap: 18px; overflow: hidden">
+
+  <div style="display: flex; align-items: center; gap: 12px">
+    <a href="BauhausMenu.dc.html" aria-label="Geri" style="width: 44px; height: 44px; border: 3px solid #111111; background: #FFFFFF; display: flex; align-items: center; justify-content: center; box-sizing: border-box">
+      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="3" stroke-linecap="square"><path d="M15 5l-7 7 7 7"></path></svg>
+    </a>
+    <span style="font-weight: 800; font-size: 28px">Seviyeni seç</span>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+    <sc-for list="{{levels}}" as="l" hint-placeholder-count="6">
+      <button style="{{l.card}}">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; width: 100%">
+          <span style="font-weight: 800; font-size: 34px; line-height: 1">{{l.code}}</span>
+          <div aria-hidden="true" style="{{l.shape}}"></div>
+        </div>
+        <span style="font-weight: 600; font-size: 14px">{{l.desc}}</span>
+        <div style="width: 100%; display: flex; flex-direction: column; gap: 4px">
+          <div style="{{l.track}}"><div style="{{l.fill}}"></div></div>
+          <span style="font-weight: 500; font-size: 12px">{{l.prog}}</span>
+        </div>
+      </button>
+    </sc-for>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 8px">
+    <span style="font-weight: 700; font-size: 12px; letter-spacing: .14em">OYUN MODU</span>
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border: 3px solid #111111; background: #FFFFFF">
+      <button style="height: 56px; border: none; background: #111111; color: #F2C200; font-family: 'Jost', sans-serif; font-weight: 800; font-size: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1.1">Klasik<span style="font-weight: 500; font-size: 12px; color: #F2EBDD">3:00</span></button>
+      <button style="height: 56px; border: none; border-left: 3px solid #111111; background: #FFFFFF; color: #111111; font-family: 'Jost', sans-serif; font-weight: 800; font-size: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1.1">Pratik<span style="font-weight: 500; font-size: 12px">süresiz</span></button>
+      <button style="height: 56px; border: none; border-left: 3px solid #111111; background: #FFFFFF; color: #111111; font-family: 'Jost', sans-serif; font-weight: 800; font-size: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1.1">Hardcore<span style="font-weight: 500; font-size: 12px">tek hata</span></button>
+    </div>
+  </div>
+
+  <a href="Bauhaus.dc.html" style="margin-top: auto; height: 68px; background: #D9281C; color: #FFFFFF; border: 3px solid #111111; box-shadow: 6px 6px 0 #111111; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; box-sizing: border-box; font-weight: 800; font-size: 24px; letter-spacing: .1em">
+    BAŞLA
+    <span style="font-weight: 700; font-size: 14px; letter-spacing: .06em">A1 · KLASİK · 26 HARF</span>
+  </a>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const data = [
+      ['A1', 'Başlangıç', 412, 850, '#D9281C', '#FFFFFF', 'sq', true],
+      ['A2', 'Temel', 96, 900, '#FFFFFF', '#111111', 'ci', false],
+      ['B1', 'Orta', 0, 1200, '#FFFFFF', '#111111', 'lf', false],
+      ['B2', 'İyi orta', 0, 1400, '#FFFFFF', '#111111', 'sq', false],
+      ['C1', 'İleri', 0, 1500, '#FFFFFF', '#111111', 'ci', false],
+      ['NAT', 'Deyim · phrasal verb', 0, 800, '#111111', '#F2EBDD', 'lf', false]
+    ];
+    const shapes = { sq: 'border-radius:0;', ci: 'border-radius:50%;', lf: 'border-radius:50% 0 50% 0;' };
+    const fills = ['#F2C200', '#1F4FBF', '#D9281C'];
+    const levels = data.map((d, i) => {
+      const pct = Math.round(d[2] / d[3] * 100);
+      return {
+        code: d[0], desc: d[1], prog: d[2] + ' / ' + d[3] + ' kelime',
+        card: 'height:150px;padding:14px;box-sizing:border-box;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;text-align:left;font-family:Jost,sans-serif;border:3px solid #111111;background:' + d[4] + ';color:' + d[5] + ';box-shadow:' + (d[7] ? '6px 6px 0 #111111' : '3px 3px 0 #111111') + ';',
+        shape: 'width:24px;height:24px;border:2px solid ' + (d[4] === '#111111' ? '#F2EBDD' : '#111111') + ';background:' + (d[7] ? '#F2C200' : fills[i % 3]) + ';' + shapes[d[6]],
+        track: 'width:100%;height:8px;border:2px solid ' + (d[4] === '#111111' ? '#F2EBDD' : '#111111') + ';box-sizing:content-box;background:' + (d[4] === '#D9281C' ? '#FFFFFF' : 'transparent') + ';',
+        fill: 'height:100%;width:' + pct + '%;background:' + (d[7] ? '#111111' : '#1F4FBF') + ';'
+      };
+    });
+    return { levels };
+  }
+}
+</script>
+</body>
+</html>

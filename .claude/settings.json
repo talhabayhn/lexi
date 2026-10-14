@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(./gradlew:*)",
+      "Bash(git status)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(xcrun simctl:*)",
+      "Bash(xcodebuild:*)"
+    ],
+    "deny": [
+      "Read(./local.properties)",
+      "Read(./**/google-services.json)",
+      "Read(./**/GoogleService-Info.plist)",
+      "Bash(git push --force:*)"
+    ]
+  }
+}

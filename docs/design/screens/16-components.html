@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="tr"><head>
+<meta charset="utf-8">
+<title>Lexi – Bileşen kütüphanesi</title>
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#111111}a:hover{color:#1F4FBF}
+</style>
+</head>
+<body data-rendered="1">
+
+
+<div style="width: 1330px; height: 960px; box-sizing: border-box; padding: 36px 40px; background: #F2EBDD; color: #111111; font-family: 'Jost', sans-serif; display: flex; flex-direction: column; gap: 22px">
+
+  <div style="display: flex; align-items: flex-end; gap: 28px; padding-bottom: 18px; border-bottom: 3px solid #111111">
+    <span style="font-weight: 800; font-size: 36px; line-height: 1">Bileşenler</span>
+    <div style="display: flex; gap: 10px">
+      
+        <div style="display: flex; flex-direction: column; gap: 4px; width: 92px">
+          <div style="height:40px;background:#F2EBDD;border:2px solid #111111;box-sizing:border-box;"></div>
+          <span style="font-weight: 800; font-size: 12px">Krem</span>
+          <span style="font-weight: 500; font-size: 11px">#F2EBDD</span>
+        </div>
+      
+        <div style="display: flex; flex-direction: column; gap: 4px; width: 92px">
+          <div style="height:40px;background:#FFFFFF;border:2px solid #111111;box-sizing:border-box;"></div>
+          <span style="font-weight: 800; font-size: 12px">Beyaz</span>
+          <span style="font-weight: 500; font-size: 11px">#FFFFFF</span>
+        </div>
+      
+        <div style="display: flex; flex-direction: column; gap: 4px; width: 92px">
+          <div style="height:40px;background:#111111;border:0;box-sizing:border-box;"></div>
+          <span style="font-weight: 800; font-size: 12px">Siyah</span>
+          <span style="font-weight: 500; font-size: 11px">#111111</span>
+        </div>
+      
+        <div style="display: flex; flex-direction: column; gap: 4px; width: 92px">
+          <div style="height:40px;background:#D9281C;border:0;box-sizing:border-box;"></div>
+          <span style="font-weight: 800; font-size: 12px">Kırmızı</span>
+          <span style="font-weight: 500; font-size: 11px">#D9281C</span>
+        </div>
+      
+        <div style="display: flex; flex-direction: column; gap: 4px; width: 92px">
+          <div style="height:40px;background:#1F4FBF;border:0;box-sizing:border-box;"></div>
+          <span style="font-weight: 800; font-size: 12px">Mavi</span>
+          <span style="font-weight: 500; font-size: 11px">#1F4FBF</span>
+        </div>
+      
+        <div style="display: flex; flex-direction: column; gap: 4px; width: 92px">
+          <div style="height:40px;background:#F2C200;border:0;box-sizing:border-box;"></div>
+          <span style="font-weight: 800; font-size: 12px">Sarı</span>
+          <span style="font-weight: 500; font-size: 11px">#F2C200</span>
+        </div>
+      
+    </div>
+    <div style="margin-left: auto; display: flex; flex-direction: column; gap: 2px; text-align: right">
+      <span style="font-weight: 800; font-size: 28px; line-height: 1">Jost 800 · 28</span>
+      <span style="font-weight: 700; font-size: 18px">Jost 700 · 18</span>
+      <span style="font-weight: 500; font-size: 15px">Jost 500 · 15 — gövde metni</span>
+      <span style="font-weight: 700; font-size: 12px; letter-spacing: .14em">ETİKET · 12 · +0.14em</span>
+    </div>
+  </div>
+
+  <div style="flex: 1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px">
+
+    <div style="display: flex; flex-direction: column; gap: 16px">
+      <span style="font-weight: 700; font-size: 12px; letter-spacing: .14em">BUTONLAR</span>
+      <div style="display: flex; gap: 12px; flex-wrap: wrap">
+        <button style="height: 52px; padding: 0 20px; background: #D9281C; color: #FFFFFF; border: 3px solid #111111; box-shadow: 5px 5px 0 #111111; font-family: 'Jost', sans-serif; font-weight: 800; font-size: 16px; letter-spacing: .06em">Birincil</button>
+        <button style="height: 52px; padding: 0 20px; background: #FFFFFF; color: #111111; border: 3px solid #111111; box-shadow: 5px 5px 0 #111111; font-family: 'Jost', sans-serif; font-weight: 800; font-size: 16px">İkincil</button>
+        <button style="height: 52px; padding: 0 20px; background: #F2C200; color: #111111; border: 3px solid #111111; box-shadow: 5px 5px 0 #111111; font-family: 'Jost', sans-serif; font-weight: 800; font-size: 16px; letter-spacing: .1em">PAS</button>
+      </div>
+      <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center">
+        <button style="height: 52px; padding: 0 20px; background: #D9281C; color: #FFFFFF; border: 3px solid #111111; transform: translate(5px, 5px); font-family: 'Jost', sans-serif; font-weight: 800; font-size: 16px">Basılı</button>
+        <button disabled="" style="height: 52px; padding: 0 20px; margin-left: 5px; background: #E2DACB; color: #5A5A5A; border: 3px dashed #7A7468; font-family: 'Jost', sans-serif; font-weight: 800; font-size: 16px">Pasif</button>
+        <button style="height: 44px; padding: 0 8px; background: transparent; color: #111111; border: none; text-decoration: underline; font-family: 'Jost', sans-serif; font-weight: 700; font-size: 15px">Metin bağlantı</button>
+      </div>
+      <div style="display: flex; gap: 12px; align-items: center">
+        <button aria-label="Kare ikon buton" style="width: 48px; height: 48px; background: #FFFFFF; color: #111111; border: 3px solid #111111; display: flex; align-items: center; justify-content: center; padding: 0"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"><path d="M15 5l-7 7 7 7"></path></svg></button>
+        <button aria-label="Daire ikon buton" style="width: 48px; height: 48px; border-radius: 50%; background: #D9281C; color: #FFFFFF; border: 3px solid #111111; display: flex; align-items: center; justify-content: center; padding: 0"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"></path></svg></button>
+        <span style="font-size: 13px; line-height: 1.4">Navigasyon = kare,<br>oyun aksiyonu = daire</span>
+      </div>
+
+      <span style="font-weight: 700; font-size: 12px; letter-spacing: .14em; margin-top: 8px">SEGMENT VE ANAHTAR</span>
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border: 3px solid #111111; background: #FFFFFF">
+        <button style="height: 46px; border: none; background: #111111; color: #F2C200; font-family: 'Jost', sans-serif; font-weight: 800; font-size: 14px">Seçili</button>
+        <button style="height: 46px; border: none; border-left: 2px solid #111111; background: #FFFFFF; color: #111111; font-family: 'Jost', sans-serif; font-weight: 800; font-size: 14px">Seçenek</button>
+        <button style="height: 46px; border: none; border-left: 2px solid #111111; background: #FFFFFF; color: #111111; font-family: 'Jost', sans-serif; font-weight: 800; font-size: 14px">Seçenek</button>
+      </div>
+      <div style="display: flex; gap: 24px; align-items: center">
+        <button role="switch" aria-checked="true" aria-label="Açık anahtar" style="position: relative; width: 54px; height: 30px; padding: 0; border: 3px solid #111111; background: #1F4FBF"><div style="position: absolute; top: 3px; left: 27px; width: 18px; height: 18px; border-radius: 50%; background: #F2C200; border: 2px solid #111111; box-sizing: border-box"></div></button>
+        <button role="switch" aria-checked="false" aria-label="Kapalı anahtar" style="position: relative; width: 54px; height: 30px; padding: 0; border: 3px solid #111111; background: #F2EBDD"><div style="position: absolute; top: 3px; left: 3px; width: 18px; height: 18px; border-radius: 50%; background: #111111; border: 2px solid #111111; box-sizing: border-box"></div></button>
+        <div style="flex: 1; height: 14px; border: 3px solid #111111; background: #FFFFFF"><div style="width: 62%; height: 100%; background: #F2C200; border-right: 3px solid #111111; box-sizing: border-box"></div></div>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 16px">
+      <span style="font-weight: 700; font-size: 12px; letter-spacing: .14em">ÇARK HARFİ DURUMLARI</span>
+      <div style="display: flex; gap: 14px">
+        
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 6px">
+            <div style="width:44px;height:44px;box-sizing:border-box;border:2px solid #111111;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;background:#F2EBDD;color:#111111;border-radius:50%;">A</div>
+            <span style="font-weight: 600; font-size: 12px">Bekliyor</span>
+          </div>
+        
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 6px">
+            <div style="width:44px;height:44px;box-sizing:border-box;border:2px solid #111111;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;background:#111111;color:#F2C200;">B</div>
+            <span style="font-weight: 600; font-size: 12px">Sırada</span>
+          </div>
+        
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 6px">
+            <div style="width:44px;height:44px;box-sizing:border-box;border:2px solid #111111;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;background:#1F4FBF;color:#FFFFFF;border-radius:50%;">C</div>
+            <span style="font-weight: 600; font-size: 12px">Doğru</span>
+          </div>
+        
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 6px">
+            <div style="width:44px;height:44px;box-sizing:border-box;border:2px solid #111111;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;background:#D9281C;color:#FFFFFF;">D</div>
+            <span style="font-weight: 600; font-size: 12px">Yanlış</span>
+          </div>
+        
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 6px">
+            <div style="width:44px;height:44px;box-sizing:border-box;border:2px solid #111111;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;background:#F2C200;color:#111111;border-radius:50% 0 50% 0;">E</div>
+            <span style="font-weight: 600; font-size: 12px">Pas</span>
+          </div>
+        
+      </div>
+
+      <span style="font-weight: 700; font-size: 12px; letter-spacing: .14em; margin-top: 6px">CEVAP KUTUSU</span>
+      <div style="display: flex; gap: 14px; align-items: flex-end">
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 6px"><div style="width: 40px; height: 48px; background: #111111; color: #F2EBDD; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 24px">K</div><span style="font-size: 12px; font-weight: 600">Dolu</span></div>
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 6px"><div style="width: 40px; height: 48px; border: 3px solid #D9281C; background: #FFFFFF; box-sizing: border-box"></div><span style="font-size: 12px; font-weight: 600">Aktif</span></div>
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 6px"><div style="width: 40px; height: 48px; border: 3px solid #111111; background: #FFFFFF; box-sizing: border-box"></div><span style="font-size: 12px; font-weight: 600">Boş</span></div>
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 6px"><div style="width: 40px; height: 48px; background: #D9281C; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 24px">S</div><span style="font-size: 12px; font-weight: 600">Yanlış</span></div>
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 6px"><div style="width: 40px; height: 48px; background: #1F4FBF; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 24px">N</div><span style="font-size: 12px; font-weight: 600">Joker ile</span></div>
+      </div>
+
+      <span style="font-weight: 700; font-size: 12px; letter-spacing: .14em; margin-top: 6px">HARF TUŞU</span>
+      <div style="display: flex; gap: 14px; align-items: flex-end">
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 6px"><button style="width: 52px; height: 50px; border: 3px solid #111111; background: #FFFFFF; box-shadow: 3px 3px 0 #111111; font-family: 'Jost', sans-serif; font-weight: 800; font-size: 22px">E</button><span style="font-size: 12px; font-weight: 600">Normal</span></div>
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 6px"><button style="width: 52px; height: 50px; border: 3px solid #111111; background: #F2C200; transform: translate(3px, 3px); font-family: 'Jost', sans-serif; font-weight: 800; font-size: 22px">E</button><span style="font-size: 12px; font-weight: 600">Basılı</span></div>
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 6px"><button disabled="" style="width: 52px; height: 50px; border: 3px dashed #7A7468; background: transparent; color: #7A7468; font-family: 'Jost', sans-serif; font-weight: 800; font-size: 22px">E</button><span style="font-size: 12px; font-weight: 600">Kullanıldı</span></div>
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 6px"><div style="width: 52px; height: 50px; border: 3px dashed #B8B0A0; box-sizing: border-box"></div><span style="font-size: 12px; font-weight: 600">Joker sildi</span></div>
+      </div>
+
+      <span style="font-weight: 700; font-size: 12px; letter-spacing: .14em; margin-top: 6px">SEVİYE ROZETLERİ</span>
+      <div style="display: flex; gap: 8px">
+        <span style="padding:4px 10px;border:2px solid #111111;background:#D9281C;color:#FFFFFF;font-weight:800;font-size:14px;">A1</span><span style="padding:4px 10px;border:2px solid #111111;background:#FFFFFF;color:#111111;font-weight:800;font-size:14px;">A2</span><span style="padding:4px 10px;border:2px solid #111111;background:#F2C200;color:#111111;font-weight:800;font-size:14px;">B1</span><span style="padding:4px 10px;border:2px solid #111111;background:#1F4FBF;color:#FFFFFF;font-weight:800;font-size:14px;">B2</span><span style="padding:4px 10px;border:2px solid #111111;background:#FFFFFF;color:#111111;font-weight:800;font-size:14px;">C1</span><span style="padding:4px 10px;border:2px solid #111111;background:#111111;color:#F2C200;font-weight:800;font-size:14px;">NAT</span>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 16px">
+      <span style="font-weight: 700; font-size: 12px; letter-spacing: .14em">BİLDİRİMLER (TOAST)</span>
+      <div style="display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: #1F4FBF; color: #FFFFFF; border: 3px solid #111111; box-shadow: 4px 4px 0 #111111">
+        <div aria-hidden="true" style="width: 20px; height: 20px; border-radius: 50%; background: #FFFFFF; border: 2px solid #111111"></div>
+        <span style="font-weight: 800; font-size: 16px; flex: 1">Doğru! KITCHEN</span><span style="font-weight: 800; font-size: 16px">+10</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: #FFFFFF; color: #111111; border: 3px solid #111111; box-shadow: 4px 4px 0 #111111">
+        <div aria-hidden="true" style="width: 20px; height: 20px; border-radius: 50% 0 50% 0; background: #F2C200; border: 2px solid #111111"></div>
+        <span style="font-weight: 700; font-size: 15px; flex: 1">"egg" kelime defterine eklendi</span>
+        <button style="height: 32px; padding: 0 6px; border: none; background: transparent; font-family: 'Jost', sans-serif; font-weight: 800; font-size: 14px; text-decoration: underline">Geri al</button>
+      </div>
+
+      <span style="font-weight: 700; font-size: 12px; letter-spacing: .14em; margin-top: 6px">ONAY PENCERESİ</span>
+      <div role="dialog" aria-label="Çarkı bırak" style="padding: 18px; background: #FFFFFF; border: 3px solid #111111; box-shadow: 8px 8px 0 #111111; display: flex; flex-direction: column; gap: 12px">
+        <div aria-hidden="true" style="width: 36px; height: 36px; background: #D9281C; border: 3px solid #111111; box-sizing: border-box"></div>
+        <span style="font-weight: 800; font-size: 22px; line-height: 1.1">Çarkı bırakmak istiyor musun?</span>
+        <span style="font-weight: 500; font-size: 14px; line-height: 1.4">Bu çarktaki puanın kaydedilmez. Pas geçtiğin kelimeler yine de defterine eklenir.</span>
+        <div style="display: flex; gap: 10px">
+          <button style="flex: 1; height: 48px; background: #FFFFFF; color: #111111; border: 3px solid #111111; font-family: 'Jost', sans-serif; font-weight: 800; font-size: 15px">Devam et</button>
+          <button style="flex: 1; height: 48px; background: #D9281C; color: #FFFFFF; border: 3px solid #111111; box-shadow: 4px 4px 0 #111111; font-family: 'Jost', sans-serif; font-weight: 800; font-size: 15px">Bırak</button>
+        </div>
+      </div>
+
+      <span style="font-weight: 700; font-size: 12px; letter-spacing: .14em; margin-top: 6px">BOŞ DURUM</span>
+      <div style="display: flex; align-items: center; gap: 14px; padding: 14px; border: 3px dashed #111111">
+        <div aria-hidden="true" style="position: relative; width: 56px; height: 56px; flex-shrink: 0">
+          <div style="position: absolute; left: 0; top: 0; width: 36px; height: 36px; border-radius: 50%; background: #F2C200; border: 2px solid #111111"></div>
+          <div style="position: absolute; right: 0; bottom: 0; width: 30px; height: 30px; background: #1F4FBF; border: 2px solid #111111"></div>
+        </div>
+        <span style="font-weight: 600; font-size: 14px; line-height: 1.4">Defterin henüz boş. Bir çark oyna; pas geçtiğin ve bilemediğin kelimeler buraya düşer.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+</body></html>

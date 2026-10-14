@@ -1,31 +1,16 @@
-This is a Kotlin Multiplatform project targeting Android, iOS.
+# Lexi
 
-* [/iosApp](./iosApp/iosApp) contains an iOS application. Even if you’re sharing your UI with Compose Multiplatform,
-  you need this entry point for your iOS app. This is also where you should add SwiftUI code for your project.
+Passaparola-style English vocabulary game (Turkish clue → English answer, A1 → Native) for Android & iOS,
+built with Kotlin + Compose Multiplatform. Bauhaus Classic design.
 
-* [/shared](./shared/src) is for code that will be shared across your Compose Multiplatform applications.
-  It contains several subfolders:
-  - [commonMain](./shared/src/commonMain/kotlin) is for code that’s common for all targets.
-  - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
-    For example, if you want to use Apple’s CoreCrypto for the iOS part of your Kotlin app,
-    the [iosMain](./shared/src/iosMain/kotlin) folder would be the right place for such calls.
-    Similarly, if you want to edit the Desktop (JVM) specific part, the [jvmMain](./shared/src/jvmMain/kotlin)
-    folder is the appropriate location.
+- Start here: [`CLAUDE.md`](CLAUDE.md) · Product: [`docs/PRODUCT.md`](docs/PRODUCT.md) ·
+  Architecture: [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) · Rules: [`docs/GAME_RULES.md`](docs/GAME_RULES.md) ·
+  Plan: [`docs/ROADMAP.md`](docs/ROADMAP.md) · Design: [`docs/design/README.md`](docs/design/README.md)
 
-### Running the apps
+## Run
+Android: `./gradlew :composeApp:installDebug` · iOS: open `iosApp/iosApp.xcodeproj` in Xcode → Run.
+(The Gradle project is created in milestone M0.)
 
-Use the run configurations provided by the run widget in your IDE's toolbar. You can also use these commands and options:
-
-- Android app: `./gradlew :androidApp:assembleDebug`
-- iOS app: open the [/iosApp](./iosApp) directory in Xcode and run it from there.
-
-### Running tests
-
-Use the run button in your IDE's editor gutter, or run tests using Gradle tasks:
-
-- Android tests: `./gradlew :shared:testAndroidHostTest`
-- iOS tests: `./gradlew :shared:iosSimulatorArm64Test`
-
----
-
-Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)…
+## Licences
+Jost font © indestructible type*, SIL Open Font License 1.1 (`docs/design/fonts/OFL.txt`).
+Word-list attributions: see `docs/CONTENT.md` §6.

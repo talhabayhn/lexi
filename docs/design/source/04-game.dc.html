@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<title>Lexi D – Bauhaus Klasik</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#1F4FBF}a:hover{color:#111111}
+</style>
+</helmet>
+<div style="position: relative; width: 390px; height: 844px; box-sizing: border-box; padding: 20px 20px 28px; background: #F2EBDD; color: #111111; font-family: 'Jost', sans-serif; display: flex; flex-direction: column; gap: 16px; overflow: hidden">
+
+  <div aria-hidden="true" style="position: absolute; right: -60px; top: 120px; width: 120px; height: 120px; border-radius: 50%; background: #D9281C"></div>
+  <div aria-hidden="true" style="position: absolute; left: -40px; top: 300px; width: 80px; height: 160px; background: #1F4FBF; border-radius: 0 80px 80px 0"></div>
+
+  <div style="position: relative; display: flex; align-items: stretch; gap: 8px; height: 48px">
+    <button aria-label="Duraklat" style="width: 48px; height: 48px; border: 3px solid #111111; background: #F2EBDD; color: #111111; display: flex; align-items: center; justify-content: center; padding: 0; box-sizing: border-box">
+      <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"><line x1="8" y1="5" x2="8" y2="19"></line><line x1="16" y1="5" x2="16" y2="19"></line></svg>
+    </button>
+    <div style="flex: 1; border: 3px solid #111111; box-sizing: border-box; display: flex; align-items: center; background: #FFFFFF">
+      <div style="width: 62%; height: 100%; background: #F2C200; border-right: 3px solid #111111; box-sizing: border-box; display: flex; align-items: center; padding-left: 10px; font-weight: 800; font-size: 18px">1:47</div>
+    </div>
+    <div style="width: 48px; height: 48px; border-radius: 50%; background: #1F4FBF; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 15px; border: 3px solid #111111; box-sizing: border-box">120</div>
+  </div>
+
+  <div style="position: relative; width: 320px; height: 320px; align-self: center; flex-shrink: 0">
+    <div aria-hidden="true" style="position: absolute; left: 16px; top: 16px; width: 288px; height: 288px; border-radius: 50%; border: 3px solid #111111; box-sizing: border-box"></div>
+    <div style="position: absolute; left: 70px; top: 70px; width: 180px; height: 180px; border-radius: 50%; background: #F2C200; border: 3px solid #111111; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; justify-content: center">
+      <span style="font-weight: 800; font-size: 96px; line-height: .9">K</span>
+      <span style="font-weight: 700; font-size: 13px; letter-spacing: .12em">İLE BAŞLAR</span>
+    </div>
+    <sc-for list="{{letters}}" as="item" hint-placeholder-count="26">
+      <div style="{{item.style}}">{{item.ch}}</div>
+    </sc-for>
+  </div>
+
+  <div style="position: relative; background: #FFFFFF; border: 3px solid #111111; box-shadow: 6px 6px 0 #111111; display: flex">
+    <div style="flex: 1; padding: 10px 14px; display: flex; flex-direction: column; gap: 2px">
+      <span style="font-size: 12px; font-weight: 700; letter-spacing: .14em">İPUCU · İSİM</span>
+      <span style="font-size: 30px; font-weight: 800; line-height: 1.05">mutfak</span>
+    </div>
+    <div style="width: 64px; background: #1F4FBF; color: #FFFFFF; border-left: 3px solid #111111; display: flex; flex-direction: column; align-items: center; justify-content: center; font-weight: 800">
+      <span style="font-size: 20px">A1</span><span style="font-size: 12px; font-weight: 700">7 HARF</span>
+    </div>
+  </div>
+
+  <div style="position: relative; display: flex; justify-content: center; gap: 6px; margin-top: 4px">
+    <div style="width: 40px; height: 48px; background: #111111; color: #F2EBDD; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 26px">K</div>
+    <div style="width: 40px; height: 48px; background: #111111; color: #F2EBDD; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 26px">I</div>
+    <div style="width: 40px; height: 48px; background: #111111; color: #F2EBDD; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 26px">T</div>
+    <div style="width: 40px; height: 48px; border: 3px solid #D9281C; box-sizing: border-box; background: #FFFFFF"></div>
+    <div style="width: 40px; height: 48px; border: 3px solid #111111; box-sizing: border-box; background: #FFFFFF"></div>
+    <div style="width: 40px; height: 48px; border: 3px solid #111111; box-sizing: border-box; background: #FFFFFF"></div>
+    <div style="width: 40px; height: 48px; border: 3px solid #111111; box-sizing: border-box; background: #FFFFFF"></div>
+  </div>
+
+  <div style="position: relative; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px">
+    <sc-for list="{{keys}}" as="k" hint-placeholder-count="10">
+      <button style="height: 50px; border: 3px solid #111111; background: #FFFFFF; color: #111111; box-shadow: 3px 3px 0 #111111; font-family: 'Jost', sans-serif; font-weight: 800; font-size: 22px">{{k.ch}}</button>
+    </sc-for>
+  </div>
+
+  <div style="position: relative; display: flex; gap: 10px; margin-top: auto; align-items: center">
+    <button aria-label="Joker kullan" style="width: 56px; height: 56px; border-radius: 50%; border: 3px solid #111111; background: #D9281C; color: #FFFFFF; display: flex; align-items: center; justify-content: center; padding: 0">
+      <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"><path d="M9 18h6"></path><path d="M10 21h4"></path><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"></path></svg>
+    </button>
+    <button aria-label="Harf sil" style="width: 56px; height: 56px; border: 3px solid #111111; background: #FFFFFF; color: #111111; display: flex; align-items: center; justify-content: center; padding: 0">
+      <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"><path d="M21 5H9l-6 7 6 7h12z"></path><line x1="13" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="13" y2="15"></line></svg>
+    </button>
+    <button style="flex: 1; height: 56px; border: 3px solid #111111; background: #F2C200; color: #111111; box-shadow: 5px 5px 0 #111111; font-family: 'Jost', sans-serif; font-weight: 800; font-size: 22px; letter-spacing: .12em">PAS</button>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const st = {A:'ok',B:'ok',C:'pass',D:'ok',E:'bad',F:'ok',G:'ok',H:'pass',I:'ok',J:'ok',K:'cur'};
+    const sty = {
+      ok: 'background:#1F4FBF;color:#FFFFFF;border-radius:50%;border:2px solid #111111;',
+      bad: 'background:#D9281C;color:#FFFFFF;border-radius:0;border:2px solid #111111;',
+      pass: 'background:#F2C200;color:#111111;border-radius:50% 0 50% 0;border:2px solid #111111;',
+      cur: 'background:#111111;color:#F2C200;border-radius:0;transform:scale(1.3);',
+      todo: 'background:#F2EBDD;color:#111111;border-radius:50%;border:2px solid #111111;'
+    };
+    const S = 320, r = 144, c = 28;
+    const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').map((ch, i) => {
+      const a = (-90 + i * 360 / 26) * Math.PI / 180;
+      const x = S / 2 + r * Math.cos(a) - c / 2;
+      const y = S / 2 + r * Math.sin(a) - c / 2;
+      return { ch, style: 'position:absolute;left:' + x.toFixed(1) + 'px;top:' + y.toFixed(1) + 'px;width:' + c + 'px;height:' + c + 'px;box-sizing:border-box;display:flex;align-items:center;justify-content:center;font-family:Jost,sans-serif;font-size:13px;font-weight:800;' + sty[st[ch] || 'todo'] };
+    });
+    const keys = 'CHENSAYORU'.split('').map((ch) => ({ ch }));
+    return { letters, keys };
+  }
+}
+</script>
+</body>
+</html>

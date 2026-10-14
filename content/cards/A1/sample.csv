@@ -1,0 +1,27 @@
+id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
+a1-apple,APPLE,A,STARTS,noun,elma,I eat an apple every day.,Her gün bir elma yerim.,1,,food-drink
+a1-bread,BREAD,B,STARTS,noun,ekmek,We buy fresh bread in the morning.,Sabah taze ekmek alırız.,1,,food-drink
+a1-chair,CHAIR,C,STARTS,noun,sandalye,Sit on the chair.,Sandalyeye otur.,1,,home
+a1-dog,DOG,D,STARTS,noun,köpek,My dog likes the park.,Köpeğim parkı sever.,1,,animals
+a1-egg,EGG,E,STARTS,noun,yumurta,I eat an egg for breakfast.,Kahvaltıda bir yumurta yerim.,1,,food-drink
+a1-family,FAMILY,F,STARTS,noun,aile,My family lives in Izmir.,Ailem İzmir'de yaşıyor.,1,,family-people
+a1-green,GREEN,G,STARTS,adj,yeşil,The grass is green.,Çimen yeşildir.,1,,colors-numbers
+a1-horse,HORSE,H,STARTS,noun,at,The horse runs fast.,At hızlı koşar.,1,,animals
+a1-ice,ICE,I,STARTS,noun,buz,Put some ice in the glass.,Bardağa biraz buz koy.,1,,food-drink
+a1-juice,JUICE,J,STARTS,noun,meyve suyu,She drinks orange juice.,Portakal suyu içer.,1,,food-drink
+a1-kitchen,KITCHEN,K,STARTS,noun,mutfak,Mum is cooking in the kitchen.,Annem mutfakta yemek yapıyor.,1,,home
+a1-lemon,LEMON,L,STARTS,noun,limon,This lemon is very sour.,Bu limon çok ekşi.,1,,food-drink
+a1-mirror,MIRROR,M,STARTS,noun,ayna,Look in the mirror.,Aynaya bak.,2,,home
+a1-nose,NOSE,N,STARTS,noun,burun,He has a small nose.,Küçük bir burnu var.,1,,body-health
+a1-orange,ORANGE,O,STARTS,noun,portakal,An orange has a lot of vitamin C.,Portakalda çok C vitamini vardır.,1,,food-drink
+a1-pencil,PENCIL,P,STARTS,noun,kurşun kalem,Can I borrow your pencil?,Kurşun kalemini ödünç alabilir miyim?,1,,school-work
+a1-question,QUESTION,Q,STARTS,noun,soru,Can I ask a question?,Bir soru sorabilir miyim?,2,,school-work
+a1-river,RIVER,R,STARTS,noun,nehir,The river is very long.,Nehir çok uzun.,1,,city-transport
+a1-school,SCHOOL,S,STARTS,noun,okul,I walk to school.,Okula yürüyerek giderim.,1,,school-work
+a1-table,TABLE,T,STARTS,noun,masa,The keys are on the table.,Anahtarlar masanın üstünde.,1,,home
+a1-umbrella,UMBRELLA,U,STARTS,noun,şemsiye,Take an umbrella. It is raining.,Şemsiye al. Yağmur yağıyor.,2,,time-weather
+a1-village,VILLAGE,V,STARTS,noun,köy,My grandparents live in a village.,Büyükannemler bir köyde yaşıyor.,2,,city-transport
+a1-window,WINDOW,W,STARTS,noun,pencere,Please open the window.,Lütfen pencereyi aç.,1,,home
+a1-box,BOX,X,CONTAINS,noun,kutu,The cat is in the box.,Kedi kutunun içinde.,1,,home
+a1-yellow,YELLOW,Y,STARTS,adj,sarı,The sun is yellow.,Güneş sarıdır.,1,,colors-numbers
+a1-zoo,ZOO,Z,STARTS,noun,hayvanat bahçesi,We saw lions at the zoo.,Hayvanat bahçesinde aslan gördük.,1,,animals

@@ -1,0 +1,108 @@
+# Lexi — game rules (engine specification)
+
+Numbers marked ⚙ live in `GameConfig` (domain) and can be overridden by Remote Config later. Tests use these
+exact defaults.
+
+## 1. The wheel
+- 26 slots, letters A–Z in order. Each slot = `(letter, rule, card)`.
+- `rule`: `STARTS` ("K ile başlar") or `CONTAINS` ("içinde X geçer"). Content decides per card; Q, X, Z and
+  rare letters at low levels are usually `CONTAINS`.
+- Generation (`WheelGenerator`): for each letter pick one card from the pool (level [+ category]) using the
+  seeded RNG, preferring cards the player hasn't seen recently (solo only — daily/online ignore history so all
+  players get the same wheel). If no card exists for a letter, the slot is `SKIPPED` (not shown as playable;
+  counts as neither right nor wrong). Content validation must keep this at 0 for shipped levels.
+- Review wheel: built from SRS-due cards; may have fewer than 26 slots (only letters that have due cards), in A–Z order.
+
+## 2. Slot states
+`TODO → CURRENT → (CORRECT | WRONG | PASSED)`; `PASSED → CURRENT` again on the next lap.
+UI encoding (from design): todo = cream circle, current = black square (yellow letter, scale 1.3),
+correct = blue circle, wrong = red square, passed = yellow leaf.
+
+## 3. Turn flow
+1. `Start` → first slot becomes CURRENT, timer starts (if mode has one).
+2. Player fills answer slots with letter keys. When all slots are filled → automatic submit.
+   - Match is case-insensitive; spaces in multi-word answers are fixed (pre-rendered gaps, no key needed).
+   - Correct → CORRECT, effects `Correct`, advance.
+   - Wrong → WRONG, correct answer revealed for ⚙`revealMs = 1200`, advance.
+3. `Pass` → PASSED, advance.
+4. Advance = next slot clockwise that is TODO or PASSED. After Z it wraps (lap 2, 3, …) over passed slots.
+5. End when: no TODO/PASSED slots left, or time is up, or (Hardcore) first WRONG, or `Forfeit`.
+
+## 4. Letter keys
+- Key count: `max(10, ceil(answerLetters / 5) * 5)`, capped at 15 → 2 or 3 rows of 5 (design: 5-column grid).
+- Keys = multiset of the answer's letters + distractors, shuffled with the slot's sub-seed.
+- Distractors: letters not over-represented in the answer, weighted by English letter frequency, with ≥ 2
+  "near" letters (visually/phonetically similar, e.g. C/K, I/E, V/W) when available. Deterministic.
+- Tapping a key places its letter in the first empty slot and marks the key USED; `Backspace` returns the last
+  placed letter to its key.
+- Keys are never reordered during a slot.
+
+## 5. Modes
+| Mode | Timer | Scoring | Notes |
+|---|---|---|---|
+| Classic | ⚙ 180 s total (settings: 120/180/240/300) | yes | default |
+| Practice | none | no leaderboard, still SRS | "süresiz, baskısız" |
+| Hardcore | ⚙ 180 s | yes ×1.5 | first wrong ends the game |
+| Daily | ⚙ 180 s | yes | seed per date+level, **one scored attempt per day**, shareable |
+| Review | none | no | SRS-due cards |
+| Level test | ⚙ 120 s | no | adaptive, see §9 |
+| Duel (hot-seat / online) | per-player clocks ⚙ 150 s each | yes | §8 |
+
+Timer runs while the joker sheet is open (design states "Süre işlemeye devam ediyor"); stops on Pause and when
+the app goes to background.
+
+## 6. Scoring
+- Correct: ⚙ `base = 10` × level multiplier (A1 1.0, A2 1.1, B1 1.2, B2 1.3, C1 1.5, NAT 1.7), rounded.
+- Streak bonus on each correct: ⚙ `+2 × (streak − 1)`, capped at +10. Combo celebrations at streak 3, 5, 10.
+- Wrong / pass: 0. Passed-then-correct on a later lap: full points, but streak was broken by the pass.
+- Time bonus at the end if the wheel is completed: ⚙ 1 point per remaining second.
+- Hardcore ×1.5 on final total.
+
+## 7. Jokers
+| Joker | Effect | Cost | Limit |
+|---|---|---|---|
+| Harf aç (Reveal letter) | puts the correct letter into the next empty slot | ⚙ −10 s (untimed modes: −5 pts) | 1 per slot |
+| Çeldiricileri temizle (Remove distractors) | disables all distractor keys | ⚙ −15 s | 1 per slot |
+| Örnek cümle (Example) | shows example sentence with the word blanked | ⚙ −5 pts | 1 per slot |
+| Telaffuzu dinle (Listen) | speaks the answer (TTS) | ⚙ −10 pts | disabled at C1 and NAT |
+- Inventory per joker type, persisted. Sources: start pack (2/1/3/1), daily login +1 random, rewarded ad +1,
+  Pro +3/day refill. Jokers are not allowed in Daily (fair comparison) and Duel. ⚙
+- A slot answered with a joker still counts as correct but its streak bonus is 0.
+
+## 8. Duel (same device; same rules online in v1.1)
+- Each player has an own wheel (same level, different sub-seeds; online Race uses the same wheel) and an own
+  clock that runs only on their turn.
+- TV-show rule: your turn continues while you answer correctly. A **wrong** answer or a **pass** ends your turn.
+- Same device: between turns show a full-screen "Sıra: <name>" handover card (prevents peeking).
+- Game ends when both wheels are finished or both clocks are at 0. Winner: more correct; tie → fewer wrong;
+  tie → more remaining time; else draw.
+- Race (online): same wheel, simultaneous, no turns; first to finish all slots wins, else most correct at time-up.
+  Level handicap (optional room setting): each player plays own level; score = normalized points.
+
+## 9. Level test (onboarding)
+- 12–16 slots, adaptive staircase: start at A2; 2 correct in a row at a level → go up; 1 wrong/pass → go down.
+- Result = highest level with ≥ 60% correct among its asked cards (min 3 asked), else the level below. Shown on
+  a result card ("Seviyen: B1") with the option to change.
+
+## 10. SRS — Kelime Defterim (Leitner)
+- Boxes 0–4 (the 4 bars in the notebook UI = box 1–4; box 0 = red/new). Intervals: box0 = today, 1 = 1 d,
+  2 = 3 d, 3 = 7 d, 4 = 21 d; correct in box 4 ⇒ "mastered" (leaves due queue).
+- In any game: WRONG or PASSED (never answered later) ⇒ card enters/returns to box 0 and appears in
+  "Tekrar edilecekler" on the result screen. Correct in a game for a card already in the notebook ⇒ box +1.
+- Review wheel: correct ⇒ box +1; wrong ⇒ box 0.
+- "Zor" tab: cards with ≥ 2 wrongs. "Tümü": all ever seen. Due count drives home & notebook badges.
+
+## 11. Statistics
+Learned words (= cards ever answered correctly), accuracy (correct / answered), longest streak (days with ≥1
+completed wheel), completed wheels, words per day (last 7 days), per-level progress (learned / total), hardest
+letters (lowest accuracy, min 5 attempts).
+
+## 12. Engine events & effects (contract)
+```
+Events:  Start(timestampMs) | KeyTapped(keyIndex) | Backspace | Pass | UseJoker(type) |
+         Tick(elapsedMs) | Pause | Resume | Forfeit
+Effects: LetterPlaced(slot) | Correct(letter, card, points) | Wrong(letter, card) | Passed(letter) |
+         Advanced(toLetter) | ComboReached(n) | TimeWarning(secondsLeft ≤ 10, each second) |
+         JokerApplied(type) | TurnChanged(player) | GameOver(summary)
+```
+Every rule above must have a unit test named after the rule, e.g. `pass_endsTurn_inDuel()`.

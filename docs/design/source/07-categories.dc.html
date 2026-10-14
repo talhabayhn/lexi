@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<title>Lexi – Seviye kategorileri</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#111111;text-decoration:none}a:hover{color:#1F4FBF}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; padding: 24px 20px 24px; background: #F2EBDD; color: #111111; font-family: 'Jost', sans-serif; display: flex; flex-direction: column; gap: 14px; overflow: hidden">
+
+  <div style="display: flex; align-items: center; gap: 12px">
+    <a href="BauhausSeviye.dc.html" aria-label="Geri" style="width: 44px; height: 44px; border: 3px solid #111111; background: #FFFFFF; display: flex; align-items: center; justify-content: center; box-sizing: border-box">
+      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="3" stroke-linecap="square"><path d="M15 5l-7 7 7 7"></path></svg>
+    </a>
+    <span style="font-weight: 800; font-size: 28px">Kategoriler</span>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); border: 3px solid #111111; background: #FFFFFF">
+    <sc-for list="{{tabs}}" as="t" hint-placeholder-count="6">
+      <button style="{{t.style}}">{{t.code}}</button>
+    </sc-for>
+  </div>
+
+  <button style="display: flex; align-items: center; gap: 12px; height: 64px; padding: 0 14px; background: #D9281C; color: #FFFFFF; border: 3px solid #111111; box-shadow: 5px 5px 0 #111111; font-family: 'Jost', sans-serif; text-align: left">
+    <div aria-hidden="true" style="width: 30px; height: 30px; border-radius: 50%; background: #F2C200; border: 2px solid #111111; flex-shrink: 0"></div>
+    <span style="flex: 1; display: flex; flex-direction: column"><span style="font-weight: 800; font-size: 18px">Karışık çark</span><span style="font-weight: 500; font-size: 13px">Tüm A1 kategorilerinden 26 kelime</span></span>
+    <span style="font-weight: 800; font-size: 14px">850</span>
+  </button>
+
+  <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+    <sc-for list="{{cats}}" as="c" hint-placeholder-count="10">
+      <button style="height: 92px; padding: 10px 12px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; text-align: left; background: #FFFFFF; color: #111111; border: 3px solid #111111; box-shadow: 3px 3px 0 #111111; font-family: 'Jost', sans-serif">
+        <div style="display: flex; align-items: center; gap: 8px; width: 100%">
+          <div aria-hidden="true" style="{{c.shape}}"></div>
+          <span style="font-weight: 800; font-size: 15px; line-height: 1.1; flex: 1">{{c.name}}</span>
+        </div>
+        <div style="width: 100%; display: flex; flex-direction: column; gap: 3px">
+          <div style="height: 6px; border: 2px solid #111111"><div style="{{c.fill}}"></div></div>
+          <span style="font-weight: 500; font-size: 12px">{{c.prog}}</span>
+        </div>
+      </button>
+    </sc-for>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const tabs = ['A1', 'A2', 'B1', 'B2', 'C1', 'NAT'].map((code, i) => ({
+      code, style: 'height:46px;border:none;' + (i > 0 ? 'border-left:2px solid #111111;' : '') + 'font-family:Jost,sans-serif;font-weight:800;font-size:14px;padding:0;' + (i === 0 ? 'background:#111111;color:#F2C200;' : 'background:#FFFFFF;color:#111111;')
+    }));
+    const data = [
+      ['Günlük hayat', 120, 88], ['Yiyecek ve içecek', 95, 61], ['Ev ve eşyalar', 80, 52], ['Aile ve insanlar', 70, 70],
+      ['Renkler ve sayılar', 60, 60], ['Vücut ve sağlık', 75, 23], ['Okul ve iş', 65, 18], ['Hayvanlar', 70, 30],
+      ['Şehir ve ulaşım', 85, 0], ['Zaman ve hava', 60, 0]
+    ];
+    const shapes = ['border-radius:0;background:#D9281C;', 'border-radius:50%;background:#F2C200;', 'border-radius:50% 0 50% 0;background:#1F4FBF;'];
+    const cats = data.map(([name, total, done], i) => ({
+      name, prog: done + ' / ' + total + (done === total ? ' · tamam' : ''),
+      shape: 'width:20px;height:20px;flex-shrink:0;border:2px solid #111111;box-sizing:border-box;' + shapes[i % 3],
+      fill: 'height:100%;width:' + Math.round(done / total * 100) + '%;background:' + (done === total ? '#1F4FBF' : '#111111') + ';'
+    }));
+    return { tabs, cats };
+  }
+}
+</script>
+</body>
+</html>

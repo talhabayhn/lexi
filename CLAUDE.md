@@ -1,0 +1,82 @@
+# Lexi — project guide for Claude Code
+
+Lexi is a passaparola-style (A–Z letter wheel) English vocabulary game for Android and iOS.
+The player sees a Turkish clue, finds the English word that starts with (or contains) the
+current letter, and types it by tapping letter keys. Levels: A1, A2, B1, B2, C1, Native (NAT).
+
+Working name "Lexi" may change — keep the brand name in ONE place (`AppInfo.NAME` + string resources).
+
+## Read before you work
+
+| When | Read |
+|---|---|
+| Any task | this file, `docs/ROADMAP.md` (current milestone) |
+| Architecture / new module / new dependency | `docs/ARCHITECTURE.md`, `docs/adr/` |
+| Game logic, scoring, timer, jokers, duel | `docs/GAME_RULES.md` |
+| Any UI work | `docs/design/README.md` → then the screen's PNG **and** HTML |
+| Animation, haptics, sound | `docs/design/motion.md` |
+| Word content, database | `docs/CONTENT.md`, `content/` |
+| Multiplayer (v1.1+) | `docs/MULTIPLAYER.md` |
+| Code style, testing, git | `docs/CONVENTIONS.md` |
+
+## Stack (decided — see ADRs before changing anything)
+
+Kotlin Multiplatform + **Compose Multiplatform** (one UI for Android & iOS) · MVI/UDF with
+`androidx.lifecycle.ViewModel` (KMP) · **Koin** · **SQLDelight** (bundled read-only content DB +
+separate user DB) · DataStore Preferences · Navigation Compose (type-safe `@Serializable` routes) ·
+Coroutines/Flow · kotlinx-datetime · kotlinx.serialization · RevenueCat KMP · AdMob (rewarded) ·
+Firebase Crashlytics + Analytics (behind interfaces) · Supabase (v1.1, online rooms) ·
+Roborazzi screenshot tests · detekt + ktlint · GitHub Actions.
+
+Android `minSdk 26`, iOS 16+. Package / applicationId: `dev.talhabayhan.lexi` (change before first release if needed).
+
+## Commands
+
+```bash
+./gradlew build                          # everything
+./gradlew allTests                       # all KMP unit tests
+./gradlew :core:domain:jvmTest           # fast engine tests
+./gradlew :composeApp:installDebug       # run on Android device/emulator
+./gradlew recordRoborazziDebug           # record screenshots
+./gradlew verifyRoborazziDebug           # compare screenshots
+./gradlew detekt ktlintCheck             # static analysis
+./gradlew :tools:content-compiler:run    # CSV → content.db
+```
+iOS: open `iosApp/iosApp.xcodeproj` in Xcode and run. (Update this section if tasks get renamed.)
+
+## Non-negotiable rules
+
+1. **Module boundaries** (`docs/ARCHITECTURE.md` §2): `:core:domain` is pure Kotlin — no Compose,
+   no SQLDelight, no platform code. Features never import `:core:data` implementation classes.
+2. **GameEngine is deterministic**: same `seed` + same event list ⇒ same state on every device.
+   No `Random()` without the injected seeded RNG, no `Clock.System` inside the engine.
+3. **Design fidelity is exact.** UI must match `docs/design/screens/*.png` 1:1. Values come from the
+   screen's HTML (1 CSS px = 1 dp, font px = sp). Colors/sizes only via `LexiTheme` tokens — never a raw
+   hex or magic number in a feature module. If a screen has no design, STOP and ask (or build only
+   from `16-components` and flag it as "needs design").
+4. **Light theme only.** Ignore system dark mode. No dynamic color.
+5. **No hardcoded user-facing strings.** Compose resources, Turkish (`values-tr`) + English (default `values`).
+6. **Motion** follows `docs/design/motion.md` exactly (durations, easings, haptics) and respects
+   reduced-motion.
+7. Tests first for engine/domain logic; every bug fix gets a regression test.
+8. Don't add a dependency or a module without an ADR (`/adr`).
+
+## Workflow
+
+1. Find the task in `docs/ROADMAP.md`; restate acceptance criteria.
+2. Plan (for anything > 1 file) and list files to touch.
+3. Implement in small steps; run the relevant tests after each step.
+4. UI: record Roborazzi screenshot and compare side-by-side with the design PNG; fix differences.
+5. Run `./gradlew build` before declaring done; update ROADMAP checkbox and docs if behavior changed.
+6. Commit with Conventional Commits (`feat(game): …`). Never commit secrets (`local.properties`, keys).
+
+## Specialised agents (`.claude/agents/`)
+
+`architect` · `game-engine-engineer` · `ui-implementer` · `data-engineer` · `platform-integrator` ·
+`content-curator` · `test-engineer` · `code-reviewer` · `multiplayer-engineer` (v1.1).
+Use them for their area; run `code-reviewer` before every merge.
+
+## Language
+
+Code, comments, commit messages, docs: English. App UI: Turkish + English. The product owner talks
+Turkish; summaries for him may be Turkish.

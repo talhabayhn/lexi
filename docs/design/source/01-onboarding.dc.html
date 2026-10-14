@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<title>Lexi – Onboarding</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#111111;text-decoration:none}a:hover{color:#1F4FBF}
+</style>
+</helmet>
+<div style="position: relative; width: 390px; height: 844px; box-sizing: border-box; padding: 24px 20px 28px; background: #F2EBDD; color: #111111; font-family: 'Jost', sans-serif; display: flex; flex-direction: column; gap: 20px; overflow: hidden">
+
+  <div style="display: flex; align-items: center; justify-content: space-between">
+    <div style="display: flex; gap: 6px" aria-label="Adım 2 / 3">
+      <div style="width: 28px; height: 8px; background: #111111"></div>
+      <div style="width: 28px; height: 8px; background: #D9281C"></div>
+      <div style="width: 28px; height: 8px; border: 2px solid #111111; box-sizing: border-box"></div>
+    </div>
+    <button style="height: 44px; padding: 0 8px; border: none; background: transparent; color: #111111; font-family: 'Jost', sans-serif; font-weight: 700; font-size: 15px; text-decoration: underline">Atla</button>
+  </div>
+
+  <div aria-hidden="true" style="position: relative; height: 250px">
+    <div style="position: absolute; left: 30px; top: 20px; width: 200px; height: 200px; border-radius: 50%; background: #F2C200; border: 4px solid #111111; box-sizing: border-box"></div>
+    <div style="position: absolute; left: 170px; top: 70px; width: 150px; height: 150px; background: #1F4FBF; border: 4px solid #111111; box-sizing: border-box"></div>
+    <div style="position: absolute; left: 120px; top: 120px; width: 110px; height: 110px; background: #D9281C; border: 4px solid #111111; box-sizing: border-box; border-radius: 50% 0 50% 0; display: flex; align-items: center; justify-content: center; color: #FFFFFF; font-weight: 800; font-size: 52px">?</div>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 10px">
+    <span style="font-weight: 800; font-size: 34px; line-height: 1.05">Seviyeni birlikte bulalım</span>
+    <span style="font-weight: 500; font-size: 16px; line-height: 1.5">2 dakikalık karışık bir çark çözersin, Lexi sana en uygun başlangıç seviyesini önerir. İstediğin zaman değiştirebilirsin.</span>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 10px; margin-top: auto">
+    <button style="height: 64px; background: #D9281C; color: #FFFFFF; border: 3px solid #111111; box-shadow: 6px 6px 0 #111111; font-family: 'Jost', sans-serif; font-weight: 800; font-size: 20px; letter-spacing: .06em">SEVİYE TESTİNE BAŞLA</button>
+    <span style="font-weight: 700; font-size: 13px; letter-spacing: .12em; margin-top: 10px">YA DA SEVİYENİ SEÇ</span>
+    <div style="display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px">
+      <button style="height: 48px; border: 3px solid #111111; background: #FFFFFF; color: #111111; font-family: 'Jost', sans-serif; font-weight: 800; font-size: 15px; padding: 0">A1</button>
+      <button style="height: 48px; border: 3px solid #111111; background: #FFFFFF; color: #111111; font-family: 'Jost', sans-serif; font-weight: 800; font-size: 15px; padding: 0">A2</button>
+      <button style="height: 48px; border: 3px solid #111111; background: #FFFFFF; color: #111111; font-family: 'Jost', sans-serif; font-weight: 800; font-size: 15px; padding: 0">B1</button>
+      <button style="height: 48px; border: 3px solid #111111; background: #FFFFFF; color: #111111; font-family: 'Jost', sans-serif; font-weight: 800; font-size: 15px; padding: 0">B2</button>
+      <button style="height: 48px; border: 3px solid #111111; background: #FFFFFF; color: #111111; font-family: 'Jost', sans-serif; font-weight: 800; font-size: 15px; padding: 0">C1</button>
+      <button style="height: 48px; border: 3px solid #111111; background: #111111; color: #F2EBDD; font-family: 'Jost', sans-serif; font-weight: 800; font-size: 13px; padding: 0">NAT</button>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

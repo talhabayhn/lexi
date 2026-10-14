@@ -1,0 +1,10 @@
+# Copy to local.properties (git-ignored) and fill in.
+sdk.dir=/path/to/Android/sdk
+REVENUECAT_ANDROID_KEY=
+REVENUECAT_IOS_KEY=
+ADMOB_APP_ID_ANDROID=
+ADMOB_APP_ID_IOS=
+ADMOB_REWARDED_ANDROID=
+ADMOB_REWARDED_IOS=
+SUPABASE_URL=
+SUPABASE_ANON_KEY=
