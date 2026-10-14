@@ -44,6 +44,16 @@ Android `minSdk 26`, iOS 16+. Package / applicationId: `dev.talhabayhan.lexi` (c
 ```
 iOS: open `iosApp/iosApp.xcodeproj` in Xcode and run. (Update this section if tasks get renamed.)
 
+## Output discipline
+
+- No narration between tool calls, no restating the task, no echoing code just written, no recaps of earlier steps.
+- Final report per task group: max 8 lines, Turkish (what changed, build/CI status, anything needing owner action).
+- Read only the files/line ranges you need; grep/glob before reading whole files; never re-read a file you just edited.
+- Gradle: `-q --console=plain --warning-mode=summary` unless debugging; on failure show only the failing task and
+  the first relevant error lines (`2>&1 | tail -n 60`), never full logs.
+- Delegate noisy work (large searches, log analysis, content batches) to subagents; only their summary comes back.
+- Keep docs short; don't load docs that aren't relevant to the current task.
+
 ## Non-negotiable rules
 
 1. **Module boundaries** (`docs/ARCHITECTURE.md` §2): `:core:domain` is pure Kotlin — no Compose,
