@@ -150,7 +150,11 @@ internal fun pressAnimationSpec(motion: LexiMotion): FiniteAnimationSpec<Float> 
 @Composable
 private fun rememberPressProgress(source: InteractionSource, enabled: Boolean, motion: LexiMotion): State<Float> {
     val progress = remember { Animatable(0f) }
-    LaunchedEffect(source, motion) {
+    // Restarting the effect cancels any running press/release job (they are its children) before the snap, so a
+    // disabled surface always rests at 0 without racing a release animation.
+    LaunchedEffect(source, motion, enabled) {
+        progress.snapTo(0f)
+        if (!enabled) return@LaunchedEffect
         val spec = pressAnimationSpec(motion)
         var pressJob: Job? = null
         source.interactions.collect { interaction ->
@@ -170,9 +174,6 @@ private fun rememberPressProgress(source: InteractionSource, enabled: Boolean, m
                 }
             }
         }
-    }
-    LaunchedEffect(enabled) {
-        if (!enabled) progress.snapTo(0f)
     }
     return progress.asState()
 }
