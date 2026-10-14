@@ -32,6 +32,11 @@ scale or rotation; splash shows the logo statically.
 | 11 | Toast | slides down from top 16dp, auto-dismiss 2.5 s | 180 ms | — | — |
 | 12 | Screen transitions | horizontal slide 24dp + no fade (forward), reverse on back | 220 ms | — | — |
 
+#1 is implemented once in `PressableSurface` (`core:designsystem`): CSS `ease-out` per direction (`.lx-press` in
+`source/15-motion.dc.html`); a quick tap still plays the full 80 ms press before returning; haptic and sound fire on
+click (release inside the element), not on touch-down, so a cancelled touch stays silent. Reduced motion: no
+translation, the shadow disappears instantly while pressed.
+
 Splash timing in app (scale the demo keyframe percentages from 3.6 s to 1.2 s; keep order and overshoots):
 bg 0–216 ms, L 48–312 ms, E 120–384 ms, X 192–480 ms, I 264–552 ms, tagline 576–696 ms, hold to 1200 ms.
 

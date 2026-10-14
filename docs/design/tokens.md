@@ -63,6 +63,8 @@ Min touch target 44 × 44.
 | `thick` | 4 | splash logo blocks, bottom-sheet top edge |
 | `heavy` | 5 | large logo |
 All borders are `ink` unless stated (active slot border = `red`).
+Box model as in CSS `border-box`: the border is inside a fixed size and content starts inside the border
+(`PressableSurface` insets its content by the border width), so HTML paddings are used unchanged.
 
 ## Hard shadows (`LexiShadow`) — offset, no blur, ink unless stated
 | Token | Offset | Use |

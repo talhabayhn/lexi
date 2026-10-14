@@ -161,7 +161,9 @@ Screen ↔ design map: `docs/design/screen-map.md`.
 `LexiMotion` via CompositionLocals (read as `LexiTheme.colors`, `LexiTheme.typography`, …); Material3 `MaterialTheme`
 is configured underneath (light scheme, Jost, square corners) so stock components don't leak wrong colors or shapes.
 `LexiMotion.reducedMotion` follows the OS setting (Android animator scale 0, iOS Reduce Motion) unless `LexiTheme`
-gets an explicit value. Tokens and components: `docs/design/tokens.md`, `docs/design/components.md`.
+gets an explicit value. `Haptics`/`SoundPlayer` (interfaces in `core:platform`) reach components through
+`LocalHaptics`/`LocalSoundPlayer`: no-op by default, the platform implementations are provided at the root in M4.
+Tokens and components: `docs/design/tokens.md`, `docs/design/components.md`.
 
 ## 10. Errors & logging
 - Domain returns `Result`-like sealed types for expected failures (no exceptions for control flow).
