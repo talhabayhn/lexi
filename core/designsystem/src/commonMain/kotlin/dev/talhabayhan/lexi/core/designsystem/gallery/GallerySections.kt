@@ -12,11 +12,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
+import dev.talhabayhan.lexi.core.designsystem.component.ActionCircleButton
+import dev.talhabayhan.lexi.core.designsystem.component.IconButtonDefaults
 import dev.talhabayhan.lexi.core.designsystem.component.LexiButton
 import dev.talhabayhan.lexi.core.designsystem.component.LexiButtonVariant
 import dev.talhabayhan.lexi.core.designsystem.component.LexiTextLink
 import dev.talhabayhan.lexi.core.designsystem.component.LocalForcePressed
+import dev.talhabayhan.lexi.core.designsystem.component.NavSquareButton
+import dev.talhabayhan.lexi.core.designsystem.icon.LexiIcons
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
+import dev.talhabayhan.lexi.core.designsystem.theme.withCssLineHeight
 
 // design sample, not user-facing: every text in this file is the 16-components canvas copy.
 
@@ -44,6 +49,23 @@ internal fun ColumnScope.GalleryColumnOne() {
         }
         LexiButton("Pasif", onClick = {}, enabled = false, modifier = Modifier.padding(start = 5.dp))
         LexiTextLink("Metin bağlantı", onClick = {})
+    }
+    Row(
+        horizontalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap12),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        NavSquareButton(LexiIcons.Back, "Kare ikon buton", onClick = {}, size = GallerySpec.demoButtonSize)
+        ActionCircleButton(
+            LexiIcons.Bulb,
+            "Daire ikon buton",
+            onClick = {},
+            size = GallerySpec.demoButtonSize,
+            iconSize = IconButtonDefaults.IconSize,
+        )
+        Text(
+            "Navigasyon = kare,\noyun aksiyonu = daire",
+            style = LexiTheme.typography.caption13.withCssLineHeight(GallerySpec.NOTE_LINE_HEIGHT),
+        )
     }
 }
 

@@ -140,6 +140,8 @@ internal object GallerySpec {
     val swatchHeight = 40.dp
     val titleSize = 36.sp
     val hexSize = 11.sp
+    val demoButtonSize = 48.dp
+    const val NOTE_LINE_HEIGHT = 1.4
 }
 
 @Preview(widthDp = 1330, heightDp = 960)
