@@ -157,9 +157,11 @@ Navigation Compose (JetBrains multiplatform artifact, 2.10.0-rc01 pinned until 2
 Screen ↔ design map: `docs/design/screen-map.md`.
 
 ## 9. Design system
-`LexiTheme` provides `LexiColors`, `LexiTypography`, `LexiDimens`, `LexiShapes`, `LexiMotion` via
-CompositionLocals; Material3 `MaterialTheme` is configured underneath (light scheme only) so stock components
-don't leak wrong colors. Tokens and components: `docs/design/tokens.md`, `docs/design/components.md`.
+`LexiTheme` provides `LexiColors`, `LexiTypography`, `LexiDimens`, `LexiBorders`, `LexiShapes`, `LexiShadows` and
+`LexiMotion` via CompositionLocals (read as `LexiTheme.colors`, `LexiTheme.typography`, …); Material3 `MaterialTheme`
+is configured underneath (light scheme, Jost, square corners) so stock components don't leak wrong colors or shapes.
+`LexiMotion.reducedMotion` follows the OS setting (Android animator scale 0, iOS Reduce Motion) unless `LexiTheme`
+gets an explicit value. Tokens and components: `docs/design/tokens.md`, `docs/design/components.md`.
 
 ## 10. Errors & logging
 - Domain returns `Result`-like sealed types for expected failures (no exceptions for control flow).

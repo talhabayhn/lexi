@@ -1,15 +1,21 @@
 package dev.talhabayhan.lexi
 
 import androidx.compose.runtime.Composable
+import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.di.appModules
 import dev.talhabayhan.lexi.navigation.LexiNavHost
 import org.koin.compose.KoinApplication
 import org.koin.dsl.koinConfiguration
 
-/** Root composable for Android (`MainActivity`) and iOS (`MainViewController`): starts Koin and the nav graph. */
+/**
+ * Root composable for Android (`MainActivity`) and iOS (`MainViewController`): starts Koin and hosts the nav graph
+ * inside [LexiTheme] (light only, ADR 0010).
+ */
 @Composable
 fun App() {
     KoinApplication(configuration = koinConfiguration { modules(appModules) }) {
-        LexiNavHost()
+        LexiTheme {
+            LexiNavHost()
+        }
     }
 }

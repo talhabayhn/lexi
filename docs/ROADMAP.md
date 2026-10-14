@@ -20,7 +20,7 @@ Module mapping (replaces the earlier `composeApp`): `androidApp` = thin Android 
 **Done when:** both apps launch; CI green; module graph matches the dependency rules.
 
 ## M1 — Design system
-- [ ] Jost fonts in `composeResources/font`; `LexiTheme` (colors, typography, dimens, shapes, motion, shadows); Material3 light scheme mapped; dark mode ignored
+- [x] Jost fonts in `composeResources/font`; `LexiTheme` (colors, typography, dimens, shapes, motion, shadows); Material3 light scheme mapped; dark mode ignored
 - [ ] `hardShadow` modifier + `PressableSurface` (press animation 80 ms + haptic + sound hooks)
 - [ ] All components from `docs/design/components.md` with previews
 - [ ] Icons as ImageVectors

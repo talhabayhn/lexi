@@ -17,7 +17,8 @@
 - Screen = `XxxRoute` (gets ViewModel via `koinViewModel()`, collects state with `collectAsStateWithLifecycle`,
   handles effects) + stateless `XxxScreen(state, onIntent, modifier)`.
 - Previews for every screen and component, using design sample data.
-- No raw colors/dp/sp in features — `LexiTheme.colors.*`, `LexiTheme.dimens.*`, `LexiTheme.type.*`.
+- No raw colors/dp/sp in features — `LexiTheme.colors.*`, `LexiTheme.dimens.*`, `LexiTheme.typography.*`
+  (also `borders`, `shapes`, `shadows`, `motion`).
 - `Modifier` is the first optional parameter. Hoist state. `remember` keys explicit.
 - Strings: `stringResource(Res.string.xxx)`; keys `screen_element_purpose` (e.g. `game_button_pass`).
 - Accessibility: every icon-only button has `contentDescription`; wheel letters announce state ("K, doğru").

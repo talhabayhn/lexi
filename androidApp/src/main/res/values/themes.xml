@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Light only (ADR 0010): no DayNight parent, and the system must not force-darken the Compose UI. -->
+    <style name="Theme.Lexi" parent="@android:style/Theme.Material.Light.NoActionBar">
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+    </style>
+</resources>

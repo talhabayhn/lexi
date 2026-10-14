@@ -43,6 +43,11 @@ Weights used: 500 Medium, 600 SemiBold, 700 Bold, 800 ExtraBold. Copy the TTFs t
 | `wheelChip` | 13 / 800 | wheel letters |
 
 letterSpacing in `em` → Compose `.em` units directly (0.14em → `0.14.em`).
+In code (`LexiTypography`), roles given as a range carry the font size as suffix so one CSS declaration maps to one
+token: `logo48`/`logo40`, `button30`…`button16`, `heading20`/`heading18`, `bodyStrong17`…`bodyStrong14`,
+`body16`/`body15`, `caption14`…`caption12`, `label13`/`label12`. Unitless CSS `line-height` is applied CSS-style
+(half-leading split evenly, box shrinks below Jost's natural 1.445); unset = CSS `normal`. Labels are uppercase in
+the string resources, never via `uppercase()` (Turkish İ).
 
 ## Spacing (`LexiDimens`)
 Screen padding: horizontal 20, top 24 (game 20), bottom 28 (list screens 20).
