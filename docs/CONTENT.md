@@ -4,7 +4,7 @@
 ```
 content/cards/<level>/*.csv           ──┐
 content/categories.csv                  ├─▶ tools:content-compiler (JVM) ──▶ validate ──▶ content.db
-content/exam_packs/*.csv                ┘                                            (composeApp/src/commonMain/composeResources/files/)
+content/exam_packs/*.csv                ┘                                            (shared/src/commonMain/composeResources/files/)
 ```
 - Source of truth = CSV in git (reviewable diffs). `content.db` is a build output (committed only for releases or generated in CI).
 - `content/meta.json` holds `contentVersion` (integer, bump on every content change).

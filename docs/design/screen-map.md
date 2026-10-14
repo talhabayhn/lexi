@@ -2,7 +2,7 @@
 
 | Design file | Canvas name | Route / composable | Module | Milestone |
 |---|---|---|---|---|
-| `14-splash` | Splash animasyonu | `SplashRoute` / `SplashScreen` | composeApp | M4 |
+| `14-splash` | Splash animasyonu | `SplashRoute` / `SplashScreen` | shared | M4 |
 | `01-onboarding` | Onboarding / seviye testi (step 2 of 3) | `OnboardingRoute` | feature:onboarding | M6 |
 | `02-home` | Ana menü | `HomeRoute` / `HomeScreen` | feature:home | M4 |
 | `03-level-select` | Seviye ve mod seçimi | `LevelSelectRoute` | feature:levels | M4 |

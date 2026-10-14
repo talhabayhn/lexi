@@ -4,14 +4,18 @@ Mark tasks `[x]` when done (acceptance criteria met + `./gradlew build` green). 
 each milestone ends with a demo build on both platforms and a short Turkish summary for the product owner.
 
 ## M0 — Project bootstrap
-- [ ] Generate CMP project (Android + iOS, shared UI) with package `dev.talhabayhan.lexi`; Kotlin/CMP/AGP latest stable
-- [ ] `build-logic` convention plugins: `lexi.kmp.library`, `lexi.kmp.compose`, `lexi.android.application`, `lexi.feature`
-- [ ] Create modules from `ARCHITECTURE.md` §2 (empty, compiling): core:domain/data/designsystem/platform/testing, feature:* (v1.0 ones), tools:content-compiler
+Module mapping (replaces the earlier `composeApp`): `androidApp` = thin Android shell, `shared` = KMP umbrella
+(App(), navigation, Koin start, iOS framework export), `iosApp` = Swift entry + SDK bridges.
+- [x] Generate CMP project (Android Studio wizard: `androidApp`, `shared`, `iosApp`) with package `dev.talhabayhan.lexi`
+- [x] Line endings: repo-wide `.gitattributes` (LF), renormalized; `gradlew` executable
+- [ ] GitHub Actions: `pr.yml` (build + tests + lint on ubuntu, on push to `main`), `ios.yml` (macOS framework link + simulator tests, path-filtered; `xcodebuild` nightly)
+- [ ] Toolchain spike: AGP 9 KMP library plugin + SQLDelight schema in `core:data`, Roborazzi screenshot in `core:designsystem`; material3 stable or dropped; outcome in toolchain ADR
+- [ ] `build-logic` convention plugins: `lexi.kmp.library`, `lexi.kmp.compose`, `lexi.android.application`, `lexi.feature`; `shared` and `androidApp` migrated
+- [ ] Create modules from `ARCHITECTURE.md` §2 (empty, compiling): core:domain/data/designsystem/platform/testing, feature:* (v1.0 ones), tools:content-compiler; dependency rules enforced by a build check
 - [ ] Version catalog with: coroutines, datetime, serialization, Koin (+compose-viewmodel), lifecycle-viewmodel-compose (KMP), navigation-compose (KMP), SQLDelight, DataStore, Kermit, Turbine, Roborazzi, BuildKonfig, detekt, ktlint
 - [ ] detekt + ktlint configured; `./gradlew build` runs them
-- [ ] GitHub Actions: PR workflow (build + tests + lint on ubuntu), iOS compile workflow (macOS, on main)
 - [ ] `.gitignore`, `local.properties.example` (keys placeholders), README run instructions
-- [ ] Koin started in `App()`; empty `HomeRoute` renders "Lexi" on both platforms
+- [ ] Koin started in `App()` (`shared`); empty `HomeRoute` (`feature:home`) renders "Lexi" on both platforms
 **Done when:** both apps launch; CI green; module graph matches the dependency rules.
 
 ## M1 — Design system

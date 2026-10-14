@@ -8,8 +8,7 @@ built with Kotlin + Compose Multiplatform. Bauhaus Classic design.
   Plan: [`docs/ROADMAP.md`](docs/ROADMAP.md) · Design: [`docs/design/README.md`](docs/design/README.md)
 
 ## Run
-Android: `./gradlew :composeApp:installDebug` · iOS: open `iosApp/iosApp.xcodeproj` in Xcode → Run.
-(The Gradle project is created in milestone M0.)
+Android: `./gradlew :androidApp:installDebug` · iOS: open `iosApp/iosApp.xcodeproj` in Xcode → Run.
 
 ## One-time setup after cloning
 ```bash

@@ -36,7 +36,7 @@ Android `minSdk 26`, iOS 16+. Package / applicationId: `dev.talhabayhan.lexi` (c
 ./gradlew build                          # everything
 ./gradlew allTests                       # all KMP unit tests
 ./gradlew :core:domain:jvmTest           # fast engine tests
-./gradlew :composeApp:installDebug       # run on Android device/emulator
+./gradlew :androidApp:installDebug       # run on Android device/emulator
 ./gradlew recordRoborazziDebug           # record screenshots
 ./gradlew verifyRoborazziDebug           # compare screenshots
 ./gradlew detekt ktlintCheck             # static analysis

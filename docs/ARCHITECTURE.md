@@ -16,7 +16,8 @@
 ```
 lexi/
 ├── build-logic/                 Gradle convention plugins (kmp-library, kmp-compose, android-app, feature)
-├── composeApp/                  App entry: App(), navigation graph, Koin start, platform entry points
+├── androidApp/                  Thin Android shell: MainActivity, manifest, launcher icons (com.android.application)
+├── shared/                      KMP umbrella: App(), navigation graph, Koin start, iOS framework export (`Shared`)
 ├── iosApp/                      Xcode project (Swift entry + native SDK bridges)
 ├── core/
 │   ├── domain/                  PURE KOTLIN: models, repository interfaces, use cases, GameEngine, SRS, RNG
@@ -47,11 +48,12 @@ lexi/
 | `core:designsystem` | Compose, `core:platform` (haptics/sound interfaces only) |
 | `core:platform` | `core:domain` (interfaces are declared in domain or platform, impl here) |
 | `feature:*` | `core:domain`, `core:designsystem`, `core:platform` (interfaces) — **never** `core:data` |
-| `composeApp` | everything (wires DI) |
+| `shared` | everything (wires DI) |
+| `androidApp` | `shared` only |
 | `tools:content-compiler` | `core:domain` (JVM target) |
 
 Features talk to data only through domain interfaces injected by Koin. A feature never depends on another feature;
-cross-feature navigation goes through route objects defined in `composeApp` (or a tiny `core:navigation` if it grows).
+cross-feature navigation goes through route objects defined in `shared` (or a tiny `core:navigation` if it grows).
 
 ## 3. Layers inside a feature
 
