@@ -90,8 +90,9 @@ iOS: open `iosApp/iosApp.xcodeproj` in Xcode and run. (Update this section if ta
 - Trunk-based: work directly on `main` (the owner calls it "master"). No feature branches, no PRs, no `gh` merges.
 - Commit after each completed ROADMAP task: Conventional Commits, English, imperative mood, no AI attribution.
   Keep commits atomic so any single one can be reverted.
-- Before every push: `./gradlew build` and `./gradlew :androidApp:assembleDebug` green, then `git pull --rebase`,
-  then push to `origin/main` after each task or small group of tasks.
+- Before every push: `./gradlew build` and `./gradlew :androidApp:assembleDebug` green, `code-reviewer` (reviews
+  `git diff origin/main`) ends with APPROVE, then `git pull --rebase`, then push to `origin/main` after each task
+  or small group of tasks.
 - If a push turns CI red, fix it immediately before starting new work.
 - Never force-push and never rewrite pushed history.
 - Don't enable or suggest branch protection that requires PRs.

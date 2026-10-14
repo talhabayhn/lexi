@@ -39,7 +39,8 @@
 - Commit after each completed ROADMAP task. Keep commits atomic so any single one can be reverted.
 - Conventional Commits, English, imperative mood: `feat`, `fix`, `refactor`, `test`, `docs`, `chore`, `build`, `ci`;
   scope = module/area.
-- Before every push: `./gradlew build` and `./gradlew :androidApp:assembleDebug` green, then `git pull --rebase`.
+- Before every push: `./gradlew build` and `./gradlew :androidApp:assembleDebug` green, and the `code-reviewer`
+  agent (it reviews `git diff origin/main`, i.e. all unpushed work) ends with APPROVE; then `git pull --rebase`.
   Push to `origin/main` after each task or small group of tasks.
 - If a push turns CI red, fix it immediately before starting new work.
 - Never force-push and never rewrite pushed history.

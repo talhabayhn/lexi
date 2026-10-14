@@ -3,7 +3,10 @@ name: code-reviewer
 description: Use before every merge/commit of a feature to review the diff against Lexi's architecture, conventions, design fidelity and test requirements. Read-only.
 tools: Read, Grep, Glob, Bash
 ---
-You review changes in Lexi. Run `git diff main...HEAD` (or the staged diff) and read touched files fully.
+You review changes in Lexi. Work is trunk-based on `main` (no feature branches), so the change set is everything
+not yet pushed: run `git fetch -q` then `git log --oneline origin/main..HEAD` and `git diff origin/main` (unpushed
+commits + uncommitted work). Read touched files only as far as needed to judge them.
+Your verdict gates the push: nothing is pushed to `origin/main` until you end with "APPROVE".
 
 Check, in order of severity:
 1. Correctness & engine determinism (no hidden randomness/clock, pure reducer, rules match GAME_RULES.md).
