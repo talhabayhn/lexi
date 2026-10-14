@@ -30,6 +30,7 @@
 - Test names: backticks or `snake_case` describing behavior: `` `pass ends turn in duel` ``.
 - Arrange/Act/Assert; one behavior per test; fakes over mocks (fakes live in `core:testing`).
 - Engine tests run on `jvmTest` for speed; a small `commonTest` subset runs on iOS simulator in CI.
+- Coverage is measured ad hoc (a one-off JaCoCo run on `jvmTest`), not in the build: no Kover (owner decision).
 - Engine golden tests (`core/domain/.../game/GoldenTest.kt`): seed + literal event log ⇒ exact JSON in
   `GoldenSnapshots.kt`. A diff there changes behaviour for every device and stored replay: update it only on purpose
   (paste the "actual" JSON from the failure) and explain the rule change in the commit.

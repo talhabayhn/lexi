@@ -52,7 +52,7 @@ public data class GameConfig(
     val exampleCostPoints: Int = 5,
     val listenCostPoints: Int = 10,
     val listenDisabledLevels: Set<Level> = setOf(Level.C1, Level.NAT),
-    /** §7: modes where no joker may be used (fair comparison; LEVEL_TEST is an open decision). */
+    /** §7: modes where no joker may be used (fair comparison; LEVEL_TEST: owner decision). */
     val jokerFreeModes: Set<GameMode> = setOf(GameMode.DAILY, GameMode.DUEL, GameMode.LEVEL_TEST),
     /** §7 inventory sources. */
     val jokerStartPack: JokerInventory = JokerInventory(
@@ -68,7 +68,7 @@ public data class GameConfig(
     val proDailyJokerRefill: Int = 3,
     /** §10: modes whose answers don't change the notebook (hot-seat duel: the second player isn't the owner). */
     val srsExcludedModes: Set<GameMode> = setOf(GameMode.DUEL),
-    /** §1: cards last seen within this window are avoided by solo wheels (open decision). */
+    /** §1: cards last seen within this window are avoided by solo wheels (7 days: owner decision). */
     val recentlySeenWindowDays: Int = 7,
 ) {
     /** Total time for [mode] in ms (per player for [GameMode.DUEL]); null when the mode has no timer. */

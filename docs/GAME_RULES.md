@@ -15,7 +15,8 @@ exact defaults.
 - Pick: per letter A–Z, candidates = pool cards of that level (+ category unless `mixed`) and letter, sorted by
   card id (pool order never matters; card ids in a pool must be unique); drop recently seen cards unless that
   leaves none; `pick` = one `nextInt(size)` on the `wheel` sub-seed (§13). Recently seen = last seen within
-  ⚙ `recentlySeenWindowDays = 7` (`WheelGenerator.recentlySeen(lastSeenMs, nowMs, config)`).
+  ⚙ `recentlySeenWindowDays = 7` (`WheelGenerator.recentlySeen(lastSeenMs, nowMs, config)`). Owner decision:
+  the window stays at 7 days.
 - Review wheel: built from SRS-due cards (any level/category); may have fewer than 26 slots (only letters that
   have due cards), in A–Z order; one card per letter, picked the same way. Other due cards wait for the next review.
 
@@ -94,7 +95,7 @@ the app goes to background.
 | Telaffuzu dinle (Listen) | speaks the answer (TTS) | ⚙ −10 pts | disabled at C1 and NAT |
 - Inventory per joker type, persisted. Sources: start pack (2/1/3/1), daily login +1 random, rewarded ad +1,
   Pro +3/day refill. Jokers are not allowed in Daily (fair comparison), Duel and Level test (would distort the
-  placement). ⚙
+  placement). ⚙ `jokerFreeModes`. Owner decision: no jokers in the level test.
 - A slot answered with a joker still counts as correct but its streak bonus is 0 (the streak itself goes on).
 - Engine decisions: every joker type is limited to once per slot, also across laps. Reveal letter fills the first
   cell that is empty or wrong; typed letters from there on go back to their keys; the revealed letter is locked
@@ -122,7 +123,8 @@ the app goes to background.
 - Result = highest level with ≥ 60% correct among its asked cards (min 3 asked), else the level below. Shown on
   a result card ("Seviyen: B1") with the option to change.
 - Engine (`LevelTest`): the test ends after 12 answers once the current level has ≥ 3 asked cards (so it can be
-  judged), and always after 16. "Else the level below" = the level below the start level (A1). Level stays within
+  judged), and always after 16. "Else the level below" = the level below the start level (A1); owner decision:
+  a test that starts at A2 with too few correct answers places the player at A1. Level stays within
   A1…NAT. Each card is a seeded pick (sub-seed `level-test:<index>`) of an unasked card of the current level,
   preferring unused letters. If the pool has no unasked card of the current level, the test ends early and the
   result judges what was answered (`LevelTest.isFinished(state, pool)`).
@@ -142,8 +144,8 @@ the app goes to background.
 - Engine (`Srs`, `CardProgress`): every answered card has a progress row; only missed cards are in the notebook
   (box ≠ null). A first-time correct card stays outside the notebook. PASSED counts as missed but not as wrong.
   Wrong/passed mastered cards return to box 0. Correct for a notebook card moves it up even if it wasn't due yet.
-  Results come from the final slot states (`Srs.results`); unanswered cards are left out. Hot-seat duel answers
-  don't change the notebook (⚙ `srsExcludedModes = {DUEL}`): `Srs.update` returns no changes, so `seen`,
+  Results come from the final slot states (`Srs.results`); unanswered cards are left out. Owner decision: hot-seat
+  duel answers don't change the notebook (⚙ `srsExcludedModes = {DUEL}`): `Srs.update` returns no changes, so `seen`,
   `correct`, `wrong` and `lastSeenMs` stay untouched and duel answers count neither in Stats (§11) nor in the
   recently-seen window (§1). Days are epoch days in the player's time zone.
 
