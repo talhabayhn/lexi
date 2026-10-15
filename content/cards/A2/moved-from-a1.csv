@@ -13,7 +13,7 @@ a2-voice,VOICE,V,STARTS,noun,insanın konuşurken çıkardığı ses,Your voice 
 a2-oil,OIL,O,STARTS,noun,sıvı yağ,Pour some oil in the pan.,Tavaya biraz yağ dök.,2,,food-drink
 a2-yogurt,YOGURT,Y,STARTS,noun,sütten yapılan ekşi beyaz gıda,Yogurt is sour.,Yoğurt ekşidir.,1,,food-drink
 a2-important,IMPORTANT,I,STARTS,adj,önemi çok büyük olan,Health is important for children.,Sağlık çocuklar için önemlidir.,2,,daily-life
-a2-invite,INVITE,I,STARTS,verb,bir etkinliğe katılması için çağırmak,We invite our friends to the wedding.,Arkadaşlarımızı düğüne davet ediyoruz.,2,,daily-life
+a2-invite,INVITE,I,STARTS,verb,bir etkinliğe katılması için çağırmak,We invite our friends to dinner.,Arkadaşlarımızı yemeğe davet ediyoruz.,2,,daily-life
 a2-museum,MUSEUM,M,STARTS,noun,eski eserlerin sergilendiği bina,The museum is closed on Mondays.,Müze pazartesi günleri kapalı.,2,,city-transport
 a2-actor,ACTOR,A,STARTS,noun,filmlerde ya da tiyatroda rol yapan kişi,The actor is on stage.,Oyuncu sahnede.,2,,school-work
 a2-blanket,BLANKET,B,STARTS,noun,yatağı örten kalın yünlü örtü,The blanket is soft.,Battaniye yumuşak.,2,,home
@@ -21,7 +21,7 @@ a2-church,CHURCH,C,STARTS,noun,Hristiyanların ibadet ettiği bina,The church is
 a2-hold,HOLD,H,STARTS,verb,elinde tutmak,Hold the rope.,İpi tut.,2,,daily-life
 a2-loud,LOUD,L,STARTS,adj,"yüksek sesli, gürültülü",The music is too loud.,Müzik çok gürültülü.,2,,daily-life
 a2-lose,LOSE,L,STARTS,verb,"yitirmek, elinden kaçırmak",Do not lose the receipt.,Fişi kaybetme.,2,,daily-life
-a2-volleyball,VOLLEYBALL,V,STARTS,noun,file üzerinden top aşırılan takım oyunu,The girls practise volleyball.,Kızlar voleybol antrenmanı yapıyor.,2,,daily-life
+a2-volleyball,VOLLEYBALL,V,STARTS,noun,file üzerinden top aşırılan takım oyunu,The girls play volleyball.,Kızlar voleybol oynuyor.,2,,daily-life
 a2-amazing,AMAZING,A,STARTS,adj,"şaşkınlık uyandıran, hayret verici",Ali's drawing is amazing.,Ali'nin çizimi harika.,2,,daily-life
 a2-bored,BORED,B,STARTS,adj,"sıkılmış, canı sıkkın",Selin looks bored.,Selin sıkılmış görünüyor.,2,,daily-life
 a2-bill,BILL,B,STARTS,noun,restoranda yemekten sonra ödenen hesap,Ali paid the bill.,Ali hesabı ödedi.,2,,food-drink

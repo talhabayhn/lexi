@@ -39,7 +39,7 @@ a2-actually,ACTUALLY,A,STARTS,adv,"gerçekte, aslında","Actually, I do not like
 a2-appointment,APPOINTMENT,A,STARTS,noun,doktor gibi biriyle önceden ayarlanan görüşme,I have a doctor's appointment at ten.,Saat onda doktor randevum var.,3,,body-health
 a2-bake,BAKE,B,STARTS,verb,fırında pişirmek,I bake bread on Sundays.,Pazar günleri ekmek pişiririm.,2,,food-drink
 a2-bakery,BAKERY,B,STARTS,noun,ekmek ve pasta satılan dükkân,The bakery opens at seven.,Fırın yedide açılıyor.,2,,food-drink
-a2-battery,BATTERY,B,STARTS,noun,"saat gibi aletlere güç veren küçük parça, pil",My phone battery is dead.,Telefonumun pili bitti.,3,,daily-life
+a2-battery,BATTERY,B,STARTS,noun,"saat gibi aletlere güç veren küçük parça, pil",My phone battery is empty.,Telefonumun pili bitti.,3,,daily-life
 a2-beauty,BEAUTY,B,STARTS,noun,güzel olmanın niteliği,She admired the beauty of the lake.,Gölün güzelliğine hayran kaldı.,4,,daily-life
 a2-bell,BELL,B,STARTS,noun,"çalınca ses çıkaran metal alet, çan",The school bell rang.,Okul zili çaldı.,2,,school-work
 a2-below,BELOW,B,STARTS,phrase,"bir şeyin altında, daha aşağıda",It is below zero outside.,Dışarısı sıfırın altında.,3,,time-weather
@@ -55,7 +55,7 @@ a2-bottom,BOTTOM,B,STARTS,noun,bir şeyin en alt kısmı,The key is at the botto
 a2-brave,BRAVE,B,STARTS,adj,"korkusuz, cesur",The brave boy saved the cat.,Cesur çocuk kediyi kurtardı.,3,,daily-life
 a2-bright,BRIGHT,B,STARTS,adj,"çok ışık veren, parlak",The sun is bright today.,Güneş bugün parlak.,3,,time-weather
 a2-build,BUILD,B,STARTS,verb,"inşa etmek, yapmak",They will build a new bridge.,Yeni bir köprü yapacaklar.,3,,daily-life
-a2-burn,BURN,B,STARTS,verb,ateşte yanmak ya da yakmak,Be careful. Hot tea can burn you.,Dikkat et. Sıcak çay seni yakabilir.,3,,body-health
+a2-burn,BURN,B,STARTS,verb,ateşte yanmak ya da yakmak,Watch out. Hot tea can burn you.,Dikkat et. Sıcak çay seni yakabilir.,3,,body-health
 a2-business,BUSINESS,B,STARTS,noun,para kazanmak için yapılan iş,Her father has a small business.,Babasının küçük bir işi var.,3,,school-work
 a2-badminton,BADMINTON,B,STARTS,noun,raketle ve tüylü topla oynanan spor,We play badminton in the garden.,Bahçede badminton oynuyoruz.,3,,sports
 a2-basket,BASKET,B,STARTS,noun,hasır ya da telden örülmüş taşıma kabı,The basket is full of apples.,Sepet elmalarla dolu.,2,,home

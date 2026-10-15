@@ -1,0 +1,84 @@
+id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
+a2-calendar,CALENDAR,C,STARTS,noun,günleri ve ayları gösteren liste,There is a calendar on the wall.,Duvarda bir takvim var.,2,,daily-life
+a2-camping,CAMPING,C,STARTS,noun,çadırda kalarak yapılan tatil,Camping is cheap and fun.,Kamp yapmak ucuz ve eğlencelidir.,2,,travel
+a2-candle,CANDLE,C,STARTS,noun,yanınca ışık veren mum,She lit a candle.,Bir mum yaktı.,2,,home
+a2-capital,CAPITAL,C,STARTS,noun,bir ülkenin yönetim merkezi olan şehir,Ankara is the capital of Turkey.,"Ankara, Türkiye'nin başkentidir.",2,,travel
+a2-captain,CAPTAIN,C,STARTS,noun,bir takımın ya da geminin lideri,The captain of our team is Mert.,Takımımızın kaptanı Mert.,3,,sports
+a2-care,CARE,C,STARTS,noun,bir şeye gösterilen özen ve ilgi,The nurse takes care of the baby.,Hemşire bebeğe özenle bakıyor.,3,,daily-life
+a2-careful,CAREFUL,C,STARTS,adj,dikkatli davranan,Be careful with the hot water.,Sıcak suya dikkat et.,2,,daily-life
+a2-cabbage,CABBAGE,C,STARTS,noun,yaprakları sıkı sarılı yeşil sebze,We cooked cabbage for dinner.,Akşam yemeğinde lahana pişirdik.,2,,food-drink
+a2-cash,CASH,C,STARTS,noun,banknot ve bozuk para olarak elde bulunan para,Do you pay by card or by cash?,Kartla mı nakitle mi ödüyorsun?,2,,daily-life
+a2-castle,CASTLE,C,STARTS,noun,kralların yaşadığı taştan büyük yapı,The castle is on a hill.,Şato bir tepenin üstünde.,2,,travel
+a2-celebrate,CELEBRATE,C,STARTS,verb,özel bir günü kutlamak,We celebrate her birthday in May.,Onun doğum gününü mayısta kutluyoruz.,3,,daily-life
+a2-century,CENTURY,C,STARTS,noun,"yüz yıllık süre, yüzyıl",A hundred years is one century.,Yüz yıl bir asırdır.,3,,time-weather
+a2-cereal,CEREAL,C,STARTS,noun,sütle yenen kahvaltılık tahıl,I eat cereal with milk every morning.,Her sabah sütle mısır gevreği yerim.,2,,food-drink
+a2-champion,CHAMPION,C,STARTS,noun,bir yarışmayı kazanan kişi,She is the school swimming champion.,"O, okul yüzme şampiyonu.",3,,sports
+a2-chance,CHANCE,C,STARTS,noun,bir şeyi yapabilmek için uygun fırsat,This is your chance to win.,"Bu, kazanmak için senin fırsatın.",3,,daily-life
+a2-chat,CHAT,C,STARTS,verb,biriyle rahat ve kısa konuşmak,We chat on the phone every night.,Her gece telefonda sohbet ederiz.,2,,daily-life
+a2-check,CHECK,C,STARTS,verb,doğru olup olmadığına bakmak,Please check your answers.,Lütfen cevaplarını kontrol et.,3,,school-work
+a2-chess,CHESS,C,STARTS,noun,iki kişinin satranç tahtasında oynadığı oyun,My grandfather teaches me chess.,Büyükbabam bana satranç öğretiyor.,2,,daily-life
+a2-choose,CHOOSE,C,STARTS,verb,seçeneklerden birini seçmek,You can choose one cake.,Bir kek seçebilirsin.,2,,food-drink
+a2-chemistry,CHEMISTRY,C,STARTS,noun,maddeleri inceleyen okul dersi,Chemistry is my favourite lesson.,Kimya en sevdiğim ders.,3,,school-work
+a2-circle,CIRCLE,C,STARTS,noun,"ortası boş yuvarlak şekil, daire",Draw a circle on the paper.,Kâğıda bir daire çiz.,2,,school-work
+a2-circus,CIRCUS,C,STARTS,noun,palyaço ve akrobatların gösteri yaptığı çadır,The children love the circus.,Çocuklar sirki seviyor.,2,,daily-life
+a2-clear,CLEAR,C,STARTS,adj,"bulutsuz, açık",The sky is clear tonight.,Gökyüzü bu gece açık.,3,,time-weather
+a2-clever,CLEVER,C,STARTS,adj,çabuk öğrenen ve akıllıca düşünen,She is a clever girl.,O zeki bir kız.,2,,school-work
+a2-clown,CLOWN,C,STARTS,noun,renkli giyip insanları güldüren sirk sanatçısı,The clown made the children laugh.,Palyaço çocukları güldürdü.,2,,daily-life
+a2-coach,COACH,C,STARTS,noun,sporcuları çalıştıran antrenör,Our coach is very strict.,Antrenörümüz çok sert.,3,,sports
+a2-coast,COAST,C,STARTS,noun,karanın denizle buluştuğu kıyı şeridi,We drove by the coast.,Kıyının yanından arabayla gittik.,3,,travel
+a2-collect,COLLECT,C,STARTS,verb,bir şeyleri biriktirmek ya da toplamak,He likes to collect stamps.,Pul biriktirmeyi seviyor.,3,,daily-life
+a2-comb,COMB,C,STARTS,noun,saçı düzeltmek için kullanılan dişli araç,Her comb is in her bag.,Tarağı çantasında.,2,,daily-life
+a2-comfortable,COMFORTABLE,C,STARTS,adj,"rahat, sıkıntı vermeyen",This sofa is very comfortable.,Bu kanepe çok rahat.,3,,home
+a2-common,COMMON,C,STARTS,adj,"çok görülen, yaygın",Smith is a common name in England.,"Smith, İngiltere'de yaygın bir isimdir.",3,,daily-life
+a2-company,COMPANY,C,STARTS,noun,"birçok insanın çalıştığı iş yeri, şirket",My uncle works for a big company.,Amcam büyük bir şirkette çalışıyor.,3,,school-work
+a2-competition,COMPETITION,C,STARTS,noun,birçok kişinin kazanmak için yarıştığı etkinlik,She won the singing competition.,Şarkı yarışmasını kazandı.,3,,sports
+a2-concert,CONCERT,C,STARTS,noun,canlı müzik dinletisi,We went to a concert last night.,Dün gece bir konsere gittik.,2,,music
+a2-continue,CONTINUE,C,STARTS,verb,bir işi durmadan sürdürmek,Please continue reading.,Lütfen okumaya devam edin.,3,,school-work
+a2-conversation,CONVERSATION,C,STARTS,noun,"uzunca, karşılıklı konuşma, sohbet",I had a long conversation with my aunt.,Teyzemle uzun bir konuşma yaptım.,3,,daily-life
+a2-correct,CORRECT,C,STARTS,adj,"doğru, yanlışı olmayan",Your answer is correct.,Cevabın doğru.,2,,school-work
+a2-cost,COST,C,STARTS,verb,bir şeyin fiyatı kadar olmak,How much does this jacket cost?,Bu ceket ne kadar tutuyor?,3,,daily-life
+a2-cotton,COTTON,C,STARTS,noun,bitkiden elde edilen yumuşak kumaş malzemesi,This shirt is made of cotton.,Bu gömlek pamuktan yapılmış.,3,,daily-life
+a2-cough,COUGH,C,STARTS,verb,"boğazdan sesli ve ani hava çıkarmak, öksürmek",I cough a lot at night.,Geceleri çok öksürüyorum.,3,,body-health
+a2-couple,COUPLE,C,STARTS,noun,birlikte olan iki kişi ya da iki tane,The old couple walk in the park.,Yaşlı çift parkta yürüyor.,3,,family-people
+a2-course,COURSE,C,STARTS,noun,belirli bir konuda verilen ders dizisi,I am on an English course.,Bir İngilizce kursuna gidiyorum.,3,,school-work
+a2-cover,COVER,C,STARTS,verb,bir şeyin üstünü örtmek,Cover the bowl with a plate.,Kasenin üstünü bir tabakla kapat.,3,,home
+a2-crab,CRAB,C,STARTS,noun,"yana doğru yürüyen, kıskaçlı deniz canlısı",A crab walked on the beach.,Bir yengeç plajda yürüdü.,2,,animals
+a2-cross,CROSS,C,STARTS,verb,bir yolun öbür tarafına geçmek,Look left before you cross the road.,Yolu geçmeden önce sola bak.,3,,city-transport
+a2-crowded,CROWDED,C,STARTS,adj,içinde çok insan olan,The bus is crowded this morning.,Otobüs bu sabah kalabalık.,3,,city-transport
+a2-cycling,CYCLING,C,STARTS,noun,bisiklete binme sporu,Cycling is good for your legs.,Bisiklete binmek bacakların için iyidir.,3,,sports
+a2-chef,CHEF,C,STARTS,noun,restoran mutfağını yöneten baş aşçı,The chef cooks fish very well.,Aşçıbaşı balığı çok iyi pişirir.,2,,food-drink
+a2-since,SINCE,C,CONTAINS,phrase,belirli bir zamandan beri,I have lived here since 2020.,2020'den beri burada yaşıyorum.,4,,time-weather
+a2-peace,PEACE,C,CONTAINS,noun,"savaşın olmadığı sakin durum, barış",Everyone wants peace.,Herkes barış ister.,3,,daily-life
+a2-twice,TWICE,C,CONTAINS,adv,iki kez,I call my mother twice a week.,Annemi haftada iki kez ararım.,2,,time-weather
+a2-practise,PRACTISE,C,CONTAINS,verb,iyi olmak için tekrar tekrar çalışmak,I practise the piano every day.,Her gün piyano çalışıyorum.,3,,music
+a2-decide,DECIDE,C,CONTAINS,verb,bir konuda kesin karara varmak,We cannot decide where to eat.,Nerede yemek yiyeceğimize karar veremiyoruz.,3,,daily-life
+a2-danger,DANGER,D,STARTS,noun,can ya da mal kaybı riski olan durum,The red light means danger.,Kırmızı ışık tehlike demek.,3,,city-transport
+a2-deep,DEEP,D,STARTS,adj,"yüzeyden aşağıya doğru uzun, derin",The lake is very deep.,Göl çok derin.,2,,travel
+a2-describe,DESCRIBE,D,STARTS,verb,bir şeyin nasıl olduğunu anlatmak,Can you describe your teacher?,Öğretmenini anlatabilir misin?,3,,school-work
+a2-desert,DESERT,D,STARTS,noun,çok az yağmur alan kumlu kurak bölge,It is very hot in the desert.,Çölde hava çok sıcak.,2,,travel
+a2-design,DESIGN,D,STARTS,noun,bir şeyin nasıl görüneceğini gösteren çizim ya da plan,I like the design of this bag.,Bu çantanın tasarımını beğeniyorum.,3,,daily-life
+a2-diamond,DIAMOND,D,STARTS,noun,"çok sert ve değerli, parlak taş",The ring has a small diamond.,Yüzüğün küçük bir elması var.,3,,daily-life
+a2-diary,DIARY,D,STARTS,noun,her gün yaşananların yazıldığı defter,She writes in her diary at night.,Geceleri günlüğüne yazıyor.,2,,daily-life
+a2-diet,DIET,D,STARTS,noun,"sağlık için seçilen yeme düzeni, perhiz",My mother is on a diet.,Annem diyette.,3,,body-health
+a2-dig,DIG,D,STARTS,verb,toprakta kazı yapmak,The dog likes to dig in the garden.,Köpek bahçede çukur kazmayı sever.,3,,animals
+a2-dinosaur,DINOSAUR,D,STARTS,noun,milyonlarca yıl önce yaşamış dev sürüngen,The film has a big dinosaur.,Filmde büyük bir dinozor var.,2,,animals
+a2-direction,DIRECTION,D,STARTS,noun,bir şeyin gittiği yön,Which direction is the station?,İstasyon hangi yönde?,3,,city-transport
+a2-distance,DISTANCE,D,STARTS,noun,iki yer arasındaki uzaklık,The distance to the airport is ten kilometres.,Havalimanına uzaklık on kilometre.,3,,city-transport
+a2-double,DOUBLE,D,STARTS,adj,iki kat olan,I would like a double room.,Çift kişilik bir oda istiyorum.,3,,travel
+a2-download,DOWNLOAD,D,STARTS,verb,internetten bilgisayara dosya indirmek,I download songs on my phone.,Telefonuma şarkı indiriyorum.,3,,daily-life
+a2-dragon,DRAGON,D,STARTS,noun,"ateş püskürten, masallardaki kanatlı canavar",The dragon lives on a mountain.,Ejderha bir dağda yaşıyor.,2,,daily-life
+a2-dream,DREAM,D,STARTS,noun,uykuda görülen düş,I had a strange dream last night.,Dün gece garip bir rüya gördüm.,2,,daily-life
+a2-drop,DROP,D,STARTS,verb,elden istemeden düşürmek,Do not drop the glass.,Bardağı düşürme.,2,,daily-life
+a2-drum,DRUM,D,STARTS,noun,çubuklarla vurularak çalınan müzik aleti,Mert plays the drum in a band.,Mert bir grupta davul çalıyor.,2,,music
+a2-dust,DUST,D,STARTS,noun,eşyaların üstünde biriken ince toz,There is dust on the table.,Masanın üstünde toz var.,2,,home
+a2-dead,DEAD,D,STARTS,adj,"artık yaşamayan, ölmüş",The flowers are dead.,Çiçekler ölmüş.,3,,daily-life
+a2-degree,DEGREE,D,STARTS,noun,sıcaklığın ölçü birimi,One degree is not very cold.,Bir derece çok soğuk sayılmaz.,2,,time-weather
+a2-deer,DEER,D,STARTS,noun,"dallı boynuzları olan, ormanda yaşayan hayvan",We saw a deer in the forest.,Ormanda bir geyik gördük.,2,,animals
+a2-dessert,DESSERT,D,STARTS,noun,yemekten sonra yenen tatlı,We had ice cream for dessert.,Tatlı olarak dondurma yedik.,2,,food-drink
+a2-wedding,WEDDING,D,CONTAINS,noun,iki kişinin evlendiği tören,Their wedding is in June.,Düğünleri haziranda.,3,,family-people
+a2-middle,MIDDLE,D,CONTAINS,noun,bir şeyin tam ortası,Stand in the middle of the room.,Odanın ortasında dur.,3,,daily-life
+a2-wide,WIDE,D,CONTAINS,adj,"iki yan arasındaki mesafesi çok olan, geniş",The river is very wide here.,Nehir burada çok geniş.,3,,travel
+a2-sand,SAND,D,CONTAINS,noun,plajda bulunan ince taneli madde,The children play in the sand.,Çocuklar kumda oynuyor.,2,,travel
+a2-field,FIELD,D,CONTAINS,noun,ekin ya da çimen ekili geniş açık alan,The cows are in the field.,İnekler tarlada.,3,,animals
+a2-ladder,LADDER,D,CONTAINS,noun,yüksek yere çıkmak için basamaklı araç,He climbed the ladder to the roof.,Merdivenle çatıya tırmandı.,3,,home
+a2-shoulder,SHOULDER,D,CONTAINS,noun,boyunla kolu birleştiren üst vücut kısmı,My shoulder hurts.,Omzum ağrıyor.,3,,body-health
