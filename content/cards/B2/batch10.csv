@@ -1,0 +1,43 @@
+id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
+b2-journal,JOURNAL,J,STARTS,noun,bilimsel veya düzenli yayımlanan dergi; günlük,She reads a medical journal every week.,Her hafta bir tıp dergisi okuyor.,4,,school-work
+b2-joystick,JOYSTICK,J,STARTS,noun,oyunlarda kullanılan kumanda kolu,He pushed the joystick to the left.,Kumanda kolunu sola itti.,3,,technology
+b2-jot-down,JOT DOWN,J,STARTS,phrasal,hızlıca kısa not almak,Let me jot down your address.,Adresini hızlıca not alayım.,4,,phrasal-verbs
+b2-rejection,REJECTION,J,CONTAINS,noun,bir teklifin reddedilmesi,He could not accept the rejection.,Reddedilmeyi kabullenemedi.,4,,daily-life
+b2-adjacent,ADJACENT,J,CONTAINS,adj,"yan yana olan, bitişik",The hotel is adjacent to the beach.,Otel plaja bitişik.,4,,travel
+b2-projection,PROJECTION,J,CONTAINS,noun,gelecek hakkında yapılan hesap; yansıtma,The sales projection looks good for next year.,Gelecek yıl satış tahmini iyi görünüyor.,4,,business
+b2-keep-track,KEEP TRACK,K,STARTS,idiom,bir şeyin gidişatını izleyip kaydetmek,It is hard to keep track of all the dates.,Bütün tarihleri takip etmek zor.,4,,idioms
+b2-breakdown,BREAKDOWN,K,CONTAINS,noun,"bir toplamın ayrıntılı dökümü, kalemlere ayırma",Please send me a breakdown of the costs.,Lütfen bana maliyetlerin dökümünü gönderin.,4,,daily-life
+b2-clockwise,CLOCKWISE,K,CONTAINS,adv,saat yönünde,Turn the handle clockwise.,Kolu saat yönünde çevir.,3,,daily-life
+b2-skillful,SKILLFUL,K,CONTAINS,adj,"işinde ustalaşmış, becerikli",She is a skillful designer.,O becerikli bir tasarımcı.,4,,business
+b2-workplace,WORKPLACE,K,CONTAINS,noun,insanların çalıştığı yer,Safety is important in the workplace.,İş yerinde güvenlik önemlidir.,3,,business
+b2-checklist,CHECKLIST,K,CONTAINS,noun,yapılacak işlerin kontrol listesi,Use a checklist before the trip.,Gezi öncesi bir kontrol listesi kullan.,3,,travel
+b2-booklet,BOOKLET,K,CONTAINS,noun,"ince, kısa kitapçık",The hotel gave us a booklet about the city.,Otel bize şehir hakkında bir kitapçık verdi.,3,,travel
+b2-unlock,UNLOCK,K,CONTAINS,verb,kilidi açmak,Use the key to unlock the door.,Kapıyı açmak için anahtarı kullan.,3,,technology
+b2-verbal,VERBAL,V,STARTS,adj,"sözlü, kelimelerle ilgili",They had a verbal agreement.,Sözlü bir anlaşmaları vardı.,4,,business
+b2-vertical,VERTICAL,V,STARTS,adj,"dikey, yukarı aşağı",Draw a vertical line on the page.,Sayfaya dikey bir çizgi çiz.,3,,school-work
+b2-vision,VISION,V,STARTS,noun,görme gücü; gelecek hayali,She has a clear vision for the company.,Şirket için net bir vizyonu var.,4,,business
+b2-advance,ADVANCE,V,CONTAINS,noun,"ilerleme, gelişme",Doctors announced a new advance in medicine.,Doktorlar tıpta yeni bir ilerleme duyurdu.,4,,technology
+b2-convert,CONVERT,V,CONTAINS,verb,bir şeyi başka biçime dönüştürmek,You can convert the file to a PDF.,Dosyayı PDF'ye dönüştürebilirsin.,4,,technology
+b2-diversity,DIVERSITY,V,CONTAINS,noun,çeşitlilik,The city is proud of its cultural diversity.,Şehir kültürel çeşitliliğiyle gurur duyuyor.,4,,daily-life
+b2-division,DIVISION,V,CONTAINS,noun,bir şeyin bölümlere ayrılması; bölüm,The company has a division in Izmir.,Şirketin İzmir'de bir bölümü var.,4,,business
+b2-evident,EVIDENT,V,CONTAINS,adj,açıkça belli,It was evident that he was tired.,Yorgun olduğu belliydi.,4,,daily-life
+b2-invade,INVADE,V,CONTAINS,verb,bir ülkeye silahla girmek,The army planned to invade the island.,Ordu adayı işgal etmeyi planladı.,4,,school-work
+b2-overview,OVERVIEW,V,CONTAINS,noun,bir konunun genel özeti,The book gives a short overview of history.,Kitap tarihin kısa bir özetini veriyor.,4,,school-work
+b2-systematic,SYSTEMATIC,Y,CONTAINS,adj,belli bir düzene göre yapılan,They made a systematic search of the house.,Evde sistemli bir arama yaptılar.,4,,school-work
+b2-symbolic,SYMBOLIC,Y,CONTAINS,adj,bir şeyi simgeleyen,The dove is a symbolic bird.,Güvercin simgesel bir kuştur.,4,,school-work
+b2-crystal,CRYSTAL,Y,CONTAINS,noun,"şeffaf, sert mineral parçası; kristal",The glass looks like crystal.,Bardak kristale benziyor.,3,,daily-life
+b2-questionable,QUESTIONABLE,Q,STARTS,adj,doğruluğu tartışmalı,The quality of the food was questionable.,Yemeğin kalitesi tartışmalıydı.,4,,daily-life
+b2-quarantine,QUARANTINE,Q,STARTS,noun,hastalık yayılmasın diye insanların ayrı tutulması,The sick passengers were put in quarantine.,Hasta yolcular karantinaya alındı.,4,,body-health
+b2-boutique,BOUTIQUE,Q,CONTAINS,noun,şık giysiler satan küçük mağaza,She bought a dress at a small boutique.,Küçük bir butikten elbise aldı.,3,,daily-life
+b2-critique,CRITIQUE,Q,CONTAINS,noun,bir eserin ayrıntılı eleştirisi,He wrote a critique of the film.,Film hakkında bir eleştiri yazısı yazdı.,4,,film-tv
+b2-plaque,PLAQUE,Q,CONTAINS,noun,duvara asılan anma levhası; diş plağı,A plaque on the wall marks the poet's house.,Duvardaki levha şairin evini gösteriyor.,4,,travel
+b2-seize,SEIZE,Z,CONTAINS,verb,bir şeyi aniden ve sıkıca yakalamak,You must seize the opportunity.,Fırsatı kaçırmamalısın.,4,,business
+b2-blaze,BLAZE,Z,CONTAINS,noun,"büyük, şiddetli yangın",Firefighters fought the blaze all night.,İtfaiyeciler bütün gece yangınla savaştı.,4,,daily-life
+b2-hazy,HAZY,Z,CONTAINS,adj,sisli veya belirsiz,The morning was hazy.,Sabah hava pusluydu.,3,,daily-life
+b2-authorize,AUTHORIZE,Z,CONTAINS,verb,resmî izin vermek,Only the manager can authorize this.,Bunu sadece müdür onaylayabilir.,4,,business
+b2-neutralize,NEUTRALIZE,Z,CONTAINS,verb,etkisini yok etmek,Baking soda can neutralize the smell.,Karbonat kokuyu giderebilir.,4,,daily-life
+b2-characterize,CHARACTERIZE,Z,CONTAINS,verb,bir kişinin özelliğini tanımlamak,How would you characterize his style?,Onun tarzını nasıl tanımlarsın?,4,,school-work
+b2-generalize,GENERALIZE,Z,CONTAINS,verb,tek örnekten herkese yaymak,It is unfair to generalize about teenagers.,Gençler hakkında genelleme yapmak haksızlık.,4,,daily-life
+b2-modernize,MODERNIZE,Z,CONTAINS,verb,çağdaş hale getirmek,They want to modernize the school.,Okulu modernleştirmek istiyorlar.,4,,business
+b2-standardize,STANDARDIZE,Z,CONTAINS,verb,bir şeyi tek tip hale getirmek,The company decided to standardize its forms.,Şirket formlarını tek tip yapmaya karar verdi.,4,,business
+b2-fertilizer,FERTILIZER,Z,CONTAINS,noun,toprağı verimli kılan gübre,Farmers use fertilizer on their fields.,Çiftçiler tarlalarında gübre kullanır.,3,,school-work

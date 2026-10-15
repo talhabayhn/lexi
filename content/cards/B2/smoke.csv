@@ -1,27 +1,27 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
-b2-abandon,ABANDON,A,STARTS,verb,birini ya da bir şeyi bırakıp gitmek,They had to abandon the car in the snow.,Arabayı karda bırakmak zorunda kaldılar.,3,smoke,daily-life
-b2-boost,BOOST,B,STARTS,verb,bir şeyi artırmak veya güçlendirmek,Good news can boost your mood.,İyi haberler moralini yükseltebilir.,3,smoke,daily-life
-b2-cautious,CAUTIOUS,C,STARTS,adj,"riskten kaçınan, tedbirli",Be cautious when you cross the road.,Yolu geçerken dikkatli ol.,3,smoke,daily-life
-b2-dilemma,DILEMMA,D,STARTS,noun,iki kötü seçenek arasında kalma durumu,I am in a dilemma about the new job.,Yeni iş konusunda ikilemde kaldım.,3,smoke,business
-b2-essential,ESSENTIAL,E,STARTS,adj,"vazgeçilmez, çok gerekli",Water is essential for life.,Su yaşam için vazgeçilmezdir.,3,smoke,body-health
-b2-fluctuate,FLUCTUATE,F,STARTS,verb,"sürekli inip çıkmak, değişkenlik göstermek",Prices fluctuate during the summer.,Fiyatlar yaz boyunca iniş çıkış gösterir.,3,smoke,business
-b2-genuine,GENUINE,G,STARTS,adj,"sahte olmayan, gerçek",This is a genuine leather bag.,Bu gerçek deri bir çanta.,3,smoke,daily-life
-b2-hesitate,HESITATE,H,STARTS,verb,karar verirken duraksamak,Don't hesitate to call me.,Beni aramaktan çekinme.,3,smoke,daily-life
-b2-inevitable,INEVITABLE,I,STARTS,adj,kaçınılması mümkün olmayan,Change is inevitable.,Değişim kaçınılmazdır.,3,smoke,daily-life
-b2-justify,JUSTIFY,J,STARTS,verb,bir davranışın haklı nedenini göstermek,How can you justify this price?,Bu fiyatı nasıl haklı gösterebilirsin?,3,smoke,business
-b2-keen,KEEN,K,STARTS,adj,bir şeye çok istekli ve hevesli,She is keen on learning new languages.,Yeni diller öğrenmeye çok hevesli.,3,smoke,school-work
-b2-lenient,LENIENT,L,STARTS,adj,"cezada hoşgörülü, yumuşak davranan",The teacher was lenient with late students.,Öğretmen geç kalan öğrencilere hoşgörülüydü.,3,smoke,school-work
-b2-mediocre,MEDIOCRE,M,STARTS,adj,"ne iyi ne kötü, vasat",The food was mediocre at best.,Yemek olsa olsa vasattı.,3,smoke,food-drink
-b2-neglect,NEGLECT,N,STARTS,verb,gereken ilgiyi ve bakımı göstermemek,Don't neglect your health.,Sağlığını ihmal etme.,3,smoke,body-health
-b2-obstacle,OBSTACLE,O,STARTS,noun,"yolu kapatan, ilerlemeyi zorlaştıran şey",Fear is the biggest obstacle to success.,"Korku, başarının önündeki en büyük engeldir.",3,smoke,daily-life
-b2-persuade,PERSUADE,P,STARTS,verb,birini ikna edip fikrini değiştirmek,I tried to persuade him to stay.,Onu kalmaya ikna etmeye çalıştım.,3,smoke,daily-life
-b2-questionnaire,QUESTIONNAIRE,Q,STARTS,noun,cevaplanması istenen soru listesi,Please complete this questionnaire.,Lütfen bu anketi tamamlayın.,3,smoke,school-work
-b2-reluctant,RELUCTANT,R,STARTS,adj,bir şeyi yapmaya isteksiz,He was reluctant to speak in public.,Topluluk önünde konuşmaya isteksizdi.,3,smoke,daily-life
-b2-subtle,SUBTLE,S,STARTS,adj,"belli belirsiz, zor fark edilen",There is a subtle difference between them.,Aralarında ince bir fark var.,3,smoke,daily-life
-b2-tolerate,TOLERATE,T,STARTS,verb,rahatsız edici bir şeye katlanmak,I cannot tolerate this noise.,Bu gürültüye katlanamıyorum.,3,smoke,daily-life
-b2-unanimous,UNANIMOUS,U,STARTS,adj,herkesin aynı fikirde olduğu,The vote was unanimous.,Oylama oybirliğiyle sonuçlandı.,3,smoke,business
-b2-vague,VAGUE,V,STARTS,adj,"net olmayan, belirsiz",His answer was vague.,Cevabı belirsizdi.,3,smoke,daily-life
-b2-withdraw,WITHDRAW,W,STARTS,verb,hesaptan para çekmek,I need to withdraw some cash.,Biraz nakit çekmem gerek.,3,smoke,business
-b2-anxious,ANXIOUS,X,CONTAINS,adj,kaygılı ve huzursuz,She felt anxious before the interview.,Mülakattan önce kaygılıydı.,3,smoke,body-health
-b2-yield,YIELD,Y,STARTS,verb,"ürün vermek, verim sağlamak",These trees yield sweet fruit.,Bu ağaçlar tatlı meyve verir.,3,smoke,daily-life
-b2-recognize,RECOGNIZE,Z,CONTAINS,verb,gördüğün kişiyi veya şeyi tanımak,I did not recognize his voice.,Sesini tanıyamadım.,3,smoke,daily-life
+b2-abandon,ABANDON,A,STARTS,verb,birini ya da bir şeyi bırakıp gitmek,They had to abandon the car in the snow.,Arabayı karda bırakmak zorunda kaldılar.,3,,daily-life
+b2-boost,BOOST,B,STARTS,verb,bir şeyi artırmak veya güçlendirmek,Good news can boost your mood.,İyi haberler moralini yükseltebilir.,3,,daily-life
+b2-cautious,CAUTIOUS,C,STARTS,adj,"riskten kaçınan, tedbirli",Be cautious when you cross the road.,Yolu geçerken dikkatli ol.,3,,daily-life
+b2-dilemma,DILEMMA,D,STARTS,noun,iki kötü seçenek arasında kalma durumu,I am in a dilemma about the new job.,Yeni iş konusunda ikilemde kaldım.,3,,business
+b2-essential,ESSENTIAL,E,STARTS,adj,"vazgeçilmez, çok gerekli",Water is essential for life.,Su yaşam için vazgeçilmezdir.,3,,body-health
+b2-fluctuate,FLUCTUATE,F,STARTS,verb,"sürekli inip çıkmak, değişkenlik göstermek",Prices fluctuate during the summer.,Fiyatlar yaz boyunca iniş çıkış gösterir.,3,,business
+b2-genuine,GENUINE,G,STARTS,adj,"sahte olmayan, gerçek",This is a genuine leather bag.,Bu gerçek deri bir çanta.,3,,daily-life
+b2-hesitate,HESITATE,H,STARTS,verb,karar verirken duraksamak,Don't hesitate to call me.,Beni aramaktan çekinme.,3,,daily-life
+b2-inevitable,INEVITABLE,I,STARTS,adj,kaçınılması mümkün olmayan,Change is inevitable.,Değişim kaçınılmazdır.,3,,daily-life
+b2-justify,JUSTIFY,J,STARTS,verb,bir davranışın haklı nedenini göstermek,How can you justify this price?,Bu fiyatı nasıl haklı gösterebilirsin?,3,,business
+b2-keen,KEEN,K,STARTS,adj,bir şeye çok istekli ve hevesli,She is keen on learning new languages.,Yeni diller öğrenmeye çok hevesli.,3,,school-work
+b2-lenient,LENIENT,L,STARTS,adj,"cezada hoşgörülü, yumuşak davranan",The teacher was lenient with late students.,Öğretmen geç kalan öğrencilere hoşgörülüydü.,3,,school-work
+b2-mediocre,MEDIOCRE,M,STARTS,adj,"ne iyi ne kötü, vasat",The food was mediocre at best.,Yemek olsa olsa vasattı.,3,,food-drink
+b2-neglect,NEGLECT,N,STARTS,verb,gereken ilgiyi ve bakımı göstermemek,Don't neglect your health.,Sağlığını ihmal etme.,3,,body-health
+b2-obstacle,OBSTACLE,O,STARTS,noun,"yolu kapatan, ilerlemeyi zorlaştıran şey",Fear is the biggest obstacle to success.,"Korku, başarının önündeki en büyük engeldir.",3,,daily-life
+b2-persuade,PERSUADE,P,STARTS,verb,birini ikna edip fikrini değiştirmek,I tried to persuade him to stay.,Onu kalmaya ikna etmeye çalıştım.,3,,daily-life
+b2-questionnaire,QUESTIONNAIRE,Q,STARTS,noun,cevaplanması istenen soru listesi,Please complete this questionnaire.,Lütfen bu anketi tamamlayın.,3,,school-work
+b2-reluctant,RELUCTANT,R,STARTS,adj,bir şeyi yapmaya isteksiz,He was reluctant to speak in public.,Topluluk önünde konuşmaya isteksizdi.,3,,daily-life
+b2-subtle,SUBTLE,S,STARTS,adj,"belli belirsiz, zor fark edilen",There is a subtle difference between them.,Aralarında ince bir fark var.,3,,daily-life
+b2-tolerate,TOLERATE,T,STARTS,verb,rahatsız edici bir şeye katlanmak,I cannot tolerate this noise.,Bu gürültüye katlanamıyorum.,3,,daily-life
+b2-unanimous,UNANIMOUS,U,STARTS,adj,herkesin aynı fikirde olduğu,The vote was unanimous.,Oylama oybirliğiyle sonuçlandı.,3,,business
+b2-vague,VAGUE,V,STARTS,adj,"net olmayan, belirsiz",His answer was vague.,Cevabı belirsizdi.,3,,daily-life
+b2-withdraw,WITHDRAW,W,STARTS,verb,hesaptan para çekmek,I need to withdraw some cash.,Biraz nakit çekmem gerek.,3,,business
+b2-anxious,ANXIOUS,X,CONTAINS,adj,kaygılı ve huzursuz,She felt anxious before the interview.,Mülakattan önce kaygılıydı.,3,,body-health
+b2-yield,YIELD,Y,STARTS,verb,"ürün vermek, verim sağlamak",These trees yield sweet fruit.,Bu ağaçlar tatlı meyve verir.,3,,daily-life
+b2-recognize,RECOGNIZE,Z,CONTAINS,verb,gördüğün kişiyi veya şeyi tanımak,I did not recognize his voice.,Sesini tanıyamadım.,3,,daily-life
