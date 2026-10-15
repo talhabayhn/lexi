@@ -51,7 +51,11 @@ bg 0–216 ms, L 48–312 ms, E 120–384 ms, X 192–480 ms, I 264–552 ms, ta
 | `Tick` | `CLOCK_TICK` | `UISelectionFeedbackGenerator` |
 Respect the in-app "Titreşim" setting.
 
-## Sound assets (to create / source CC0)
-`tap.ogg`, `place.ogg`, `correct.ogg` (two rising notes), `wrong.ogg` (bzzt), `pass.ogg` (vınn), `combo.ogg`,
-`tick.ogg`, `win.ogg`, `lose.ogg`. ≤ 300 ms each, normalized to −16 LUFS, OGG for Android, CAF/M4A for iOS
-(or one format both support). Respect "Ses efektleri" setting and the device silent switch (iOS ambient category).
+## Sound assets (generated placeholders)
+`tap`, `place`, `correct` (two rising notes), `wrong` (bzzt), `pass` (vınn), `combo`, `tick`, `win`, `lose` as mono
+16-bit 22.05 kHz **WAV** (one format for `SoundPool` and `AVAudioPlayer`), ≤ 300 ms (win/lose ≤ 800 ms), in
+`shared/src/commonMain/composeResources/files/sounds/`. They are synthesized by `tools/sounds/generate_sounds.py`
+(stdlib only, no third-party audio, no licensing) and are placeholders: replace a file with a final asset of the same
+name and format and nothing else changes. `SoundPlayer` implementations (`core:platform`) preload them, respect the
+"Ses efektleri" setting (`GatedSoundPlayer`) and the iOS silent switch (ambient audio session); haptics respect
+"Titreşim" (`GatedHaptics`).

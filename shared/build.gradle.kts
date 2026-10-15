@@ -28,6 +28,7 @@ kotlin {
             implementation(libs.androidx.navigation.compose)
             implementation(libs.kotlinx.serialization.core)
             implementation(libs.koin.core)
+            implementation(libs.kotlinx.coroutines.core)
             implementation(libs.koin.compose)
             implementation(libs.koin.compose.viewmodel)
         }
