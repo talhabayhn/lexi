@@ -19,7 +19,7 @@ a2-myself,MYSELF,M,STARTS,phrase,konuşanın kendisi,I made this cake myself.,Bu
 a2-medal,MEDAL,M,STARTS,noun,"boyna asılan altın, gümüş ya da bronz ödül",She won a medal last year.,Geçen yıl madalya kazandı.,3,,sports
 a2-medium,MEDIUM,M,STARTS,adj,"ne büyük ne küçük, orta boy",I wear a medium T-shirt.,Orta boy tişört giyiyorum.,3,,daily-life
 a2-mushroom,MUSHROOM,M,STARTS,noun,"ormanda biten, saplı şapkalı yenebilen bitki",We had mushroom soup for lunch.,Öğle yemeğinde mantar çorbası içtik.,2,,food-drink
-a2-mosquito,MOSQUITO,M,STARTS,noun,"insanı sokan, vızıldayan küçük böcek",A mosquito bit me last night.,Dün gece bir sivrisinek beni ısırdı.,3,,animals
+a2-mosquito,MOSQUITO,M,STARTS,noun,"insanı sokan, vızıldayan küçük böcek",A mosquito landed on my arm.,Koluma bir sivrisinek kondu.,3,,animals
 a2-moustache,MOUSTACHE,M,STARTS,noun,üst dudağın üzerindeki bıyık,My grandfather has a white moustache.,Dedemin beyaz bir bıyığı var.,3,,body-health
 a2-magician,MAGICIAN,M,STARTS,noun,sihir numaralarıyla insanları şaşırtan kişi,The magician pulled a rabbit out of a hat.,Sihirbaz şapkadan bir tavşan çıkardı.,3,,daily-life
 a2-promise,PROMISE,M,CONTAINS,verb,birine söz vermek,I promise to call you.,Seni arayacağıma söz veriyorum.,3,,daily-life

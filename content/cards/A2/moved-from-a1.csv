@@ -4,7 +4,7 @@ a2-uniform,UNIFORM,U,STARTS,noun,aynı işi yapanların giydiği kıyafet,The pi
 a2-van,VAN,V,STARTS,noun,yük taşıyan küçük kapalı araç,A van is waiting at the door.,Kapıda bir kamyonet bekliyor.,2,,city-transport
 a2-vacation,VACATION,V,STARTS,noun,işten ya da okuldan izinli geçirilen günler,Our vacation was lovely.,Tatilimiz çok güzeldi.,3,,daily-life
 a2-view,VIEW,V,STARTS,noun,pencereden görünen doğa ya da şehir,The view from the window is great.,Pencereden manzara çok güzel.,3,,daily-life
-a2-yard,YARD,Y,STARTS,noun,evin yanındaki taş döşeli açık alan,Our yard is tiny.,Avlumuz çok ufak.,3,,home
+a2-yard,YARD,Y,STARTS,noun,evin yanındaki taş döşeli açık alan,Our yard is very small.,Avlumuz çok küçük.,3,,home
 a2-size,SIZE,Z,CONTAINS,noun,giysinin numarası,Do you have this in a bigger size?,Bunun daha büyük bedeni var mı?,2,,daily-life
 a2-zip,ZIP,Z,STARTS,verb,fermuarı çekip kapatmak,"Can you zip it, Ali?","Fermuarı çeker misin, Ali?",3,,daily-life
 a2-keep,KEEP,K,STARTS,verb,"tutmak, saklamak",You can keep this badge.,Bu rozeti saklayabilirsin.,2,,daily-life
@@ -22,7 +22,7 @@ a2-hold,HOLD,H,STARTS,verb,elinde tutmak,Hold the bag.,Çantayı tut.,2,,daily-l
 a2-loud,LOUD,L,STARTS,adj,"yüksek sesli, gürültülü",The music is too loud.,Müzik çok gürültülü.,2,,daily-life
 a2-lose,LOSE,L,STARTS,verb,"yitirmek, elinden kaçırmak",Do not lose the receipt.,Fişi kaybetme.,2,,daily-life
 a2-volleyball,VOLLEYBALL,V,STARTS,noun,file üzerinden top aşırılan takım oyunu,The girls play volleyball.,Kızlar voleybol oynuyor.,2,,daily-life
-a2-amazing,AMAZING,A,STARTS,adj,"şaşkınlık uyandıran, hayret verici",Ali's drawing is amazing.,Ali'nin çizimi harika.,2,,daily-life
+a2-amazing,AMAZING,A,STARTS,adj,"şaşkınlık uyandıran, hayret verici",Ali's painting is amazing.,Ali'nin resmi harika.,2,,daily-life
 a2-bored,BORED,B,STARTS,adj,"sıkılmış, canı sıkkın",Selin looks bored.,Selin sıkılmış görünüyor.,2,,daily-life
 a2-bill,BILL,B,STARTS,noun,restoranda yemekten sonra ödenen hesap,Ali paid the bill.,Ali hesabı ödedi.,2,,food-drink
 a2-fantastic,FANTASTIC,F,STARTS,adj,"çok güzel, süper",We had a fantastic trip.,Harika bir gezi yaptık.,2,,daily-life
@@ -31,7 +31,7 @@ a2-hate,HATE,H,STARTS,verb,hiç sevmemek ve nefret etmek,I hate mushrooms.,Manta
 a2-just,JUST,J,STARTS,adv,"az önce, demin",Ayşe has just arrived.,Ayşe az önce geldi.,2,,daily-life
 a2-meeting,MEETING,M,STARTS,noun,bir konuyu görüşmek için yapılan toplantı,Mert missed the meeting.,Mert toplantıyı kaçırdı.,2,,school-work
 a2-miss,MISS,M,STARTS,verb,yanında olmayan birini özlemek,I miss Ali.,Ali'yi özlüyorum.,2,,daily-life
-a2-poor,POOR,P,STARTS,adj,parası az olan,The poor fisherman had no shoes.,Yoksul balıkçının ayakkabısı yoktu.,2,,daily-life
+a2-poor,POOR,P,STARTS,adj,parası az olan,The poor man had no shoes.,Yoksul adamın ayakkabısı yoktu.,2,,daily-life
 a2-piece,PIECE,P,STARTS,noun,bir bütünden ayrılmış küçük bölüm,Ali ate a piece of pie.,Ali bir parça turta yedi.,2,,food-drink
 a2-plan,PLAN,P,STARTS,noun,yapılacak işin önceden belirlenmiş düzeni,"Do you have a plan, Mert?","Bir planın var mı, Mert?",2,,daily-life
 a2-until,UNTIL,U,STARTS,phrase,bir zamana kadar,Mert stayed until midnight.,Mert gece yarısına kadar kaldı.,2,,daily-life

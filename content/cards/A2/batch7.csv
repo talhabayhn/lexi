@@ -61,7 +61,7 @@ a2-speech,SPEECH,S,STARTS,noun,topluluk önünde yapılan konuşma,The teacher g
 a2-stadium,STADIUM,S,STARTS,noun,büyük spor karşılaşmalarının yapıldığı yapı,The stadium is full tonight.,Stadyum bu gece dolu.,3,,sports
 a2-staff,STAFF,S,STARTS,noun,bir işyerinde çalışan kişiler,The hotel staff are friendly.,Otel personeli sıcakkanlı.,3,,school-work
 a2-stage,STAGE,S,STARTS,noun,"tiyatroda oyuncuların çıktığı yükseltilmiş yer, sahne",The singer walked onto the stage.,Şarkıcı sahneye çıktı.,3,,music
-a2-steal,STEAL,S,STARTS,verb,başkasına ait bir şeyi izinsiz almak,A thief tried to steal my bike.,Bir hırsız bisikletimi çalmaya çalıştı.,3,,daily-life
+a2-steal,STEAL,S,STARTS,verb,başkasına ait bir şeyi izinsiz almak,A man tried to steal my bike.,Bir adam bisikletimi çalmaya çalıştı.,3,,daily-life
 a2-step,STEP,S,STARTS,noun,yürürken atılan adım ya da merdiven basamağı,Take one step back.,Bir adım geri çekil.,2,,daily-life
 a2-stick,STICK,S,STARTS,noun,"ağaçtan kopan ince uzun dal parçası, sopa",The dog ran after the stick.,Köpek sopanın peşinden koştu.,2,,animals
 a2-suit,SUIT,S,STARTS,noun,aynı kumaştan ceket ve pantolon takımı,He wears a dark suit at work.,İşte koyu renk bir takım elbise giyiyor.,3,,daily-life

@@ -29,7 +29,7 @@ a2-dozen,DOZEN,Z,CONTAINS,noun,on iki tane,I bought a dozen eggs.,Bir düzine yu
 a2-freeze,FREEZE,Z,CONTAINS,verb,çok soğuktan buza dönüşmek,The lake will freeze tonight.,Göl bu gece donacak.,3,,time-weather
 a2-frozen,FROZEN,Z,CONTAINS,adj,içindeki su buza dönmüş olan,The lake is frozen in winter.,Göl kışın buz tutar.,3,,time-weather
 a2-puzzle,PUZZLE,Z,CONTAINS,noun,parçaları birleştirilerek çözülen oyun,This puzzle has a hundred pieces.,Bu yapbozun yüz parçası var.,2,,daily-life
-a2-breeze,BREEZE,Z,CONTAINS,noun,hafif ve serin esen rüzgâr,A cool breeze came through the window.,Pencereden serin bir esinti girdi.,3,,time-weather
+a2-breeze,BREEZE,Z,CONTAINS,noun,hafif ve serin esen rüzgâr,A cool breeze came into the room.,Odaya serin bir esinti girdi.,3,,time-weather
 a2-sneeze,SNEEZE,Z,CONTAINS,verb,burundan ani ve gürültülü hava vermek,Use a tissue when you sneeze.,Hapşırırken mendil kullan.,3,,body-health
 a2-realize,REALIZE,Z,CONTAINS,verb,bir şeyin farkına varmak,I did not realize it was so late.,Bu kadar geç olduğunu fark etmedim.,3,,daily-life
 a2-dizzy,DIZZY,Z,CONTAINS,adj,etrafı dönüyormuş gibi hisseden,I feel dizzy after the ride.,Gezintiden sonra başım dönüyor.,3,,body-health

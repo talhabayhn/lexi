@@ -47,7 +47,7 @@ a2-orchestra,ORCHESTRA,O,STARTS,noun,birçok çalgıcıdan oluşan müzik toplul
 a2-organise,ORGANISE,O,STARTS,verb,bir işi düzenli biçimde ayarlamak,I will organise the party.,Partiyi ben düzenleyeceğim.,4,,daily-life
 a2-outfit,OUTFIT,O,STARTS,noun,birlikte giyilen kıyafetler,I like your outfit.,Kıyafetini beğendim.,3,,daily-life
 a2-once,ONCE,O,STARTS,adv,"bir kere, bir defa",I go swimming once a week.,Haftada bir kez yüzmeye giderim.,2,,time-weather
-a2-otherwise,OTHERWISE,O,STARTS,adv,"yoksa, aksi halde","Go now, otherwise the bus will leave without you.","Şimdi git, yoksa otobüs sensiz kalkacak.",4,,daily-life
+a2-otherwise,OTHERWISE,O,STARTS,adv,"yoksa, aksi halde","Go now, otherwise the bus will leave.","Şimdi git, yoksa otobüs kalkacak.",4,,daily-life
 a2-online,ONLINE,O,STARTS,adv,internete bağlı olarak,I shop online.,Çevrimiçi alışveriş yaparım.,2,,daily-life
 a2-olive,OLIVE,O,STARTS,noun,zeytinyağı da veren küçük yeşil ya da siyah meyve,He put an olive on the pizza.,Pizzanın üstüne bir zeytin koydu.,2,,food-drink
 a2-hockey,HOCKEY,O,CONTAINS,noun,sopayla oynanan takım sporu,My cousin plays hockey.,Kuzenim hokey oynuyor.,2,,sports
@@ -89,7 +89,7 @@ a2-energy,ENERGY,E,STARTS,noun,bir işi yapmak için gereken güç,I have no ene
 a2-engine,ENGINE,E,STARTS,noun,"aracı hareket ettiren makine, motor",The car engine is hot.,Arabanın motoru sıcak.,3,,city-transport
 a2-engineer,ENGINEER,E,STARTS,noun,makine ve yapı tasarlayan meslek insanı,My father is an engineer.,Babam mühendis.,3,,school-work
 a2-enough,ENOUGH,E,STARTS,adj,ihtiyacı karşılayacak kadar,We have enough food.,Yeterince yiyeceğimiz var.,2,,daily-life
-a2-enter,ENTER,E,STARTS,verb,bir yere girmek,Do not enter without a ticket.,Biletsiz içeri girme.,2,,city-transport
+a2-enter,ENTER,E,STARTS,verb,bir yere girmek,Do not enter the kitchen.,Mutfağa girme.,2,,city-transport
 a2-entrance,ENTRANCE,E,STARTS,noun,bir yere girilen kapı ya da geçit,The entrance is at the back.,Giriş arkada.,2,,city-transport
 a2-even,EVEN,E,STARTS,adv,beklenmeyeni vurgulayan sözcük: bile,Even my little brother knows this.,Küçük kardeşim bile bunu biliyor.,3,,daily-life
 a2-event,EVENT,E,STARTS,noun,yaşanan önemli olay ya da etkinlik,The school event starts at six.,Okul etkinliği altıda başlıyor.,3,,daily-life

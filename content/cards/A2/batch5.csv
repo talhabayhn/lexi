@@ -11,7 +11,7 @@ a2-final,FINAL,F,STARTS,adj,"bir dizide en sonda gelen, son",This is the final q
 a2-finally,FINALLY,F,STARTS,adv,"uzun beklemeden sonra, en sonunda",The bus finally arrived.,Otobüs sonunda geldi.,3,,daily-life
 a2-flour,FLOUR,F,STARTS,noun,ekmek ve kek için öğütülmüş buğday tozu,You need flour and eggs for this cake.,Bu kek için un ve yumurta lazım.,2,,food-drink
 a2-flu,FLU,F,STARTS,noun,"ateş ve öksürükle gelen bulaşıcı hastalık, grip",I have the flu.,Grip oldum.,3,,body-health
-a2-fog,FOG,F,STARTS,noun,yere yakın yoğun bulut gibi hava,The fog was thick this morning.,Bu sabah sis yoğundu.,2,,time-weather
+a2-fog,FOG,F,STARTS,noun,yere yakın yoğun bulut gibi hava,The fog was heavy this morning.,Bu sabah sis yoğundu.,2,,time-weather
 a2-fresh,FRESH,F,STARTS,adj,"yeni alınmış, taze",The bread is fresh.,Ekmek taze.,2,,food-drink
 a2-fry,FRY,F,STARTS,verb,"yağda pişirmek, kızartmak",Fry the onions in a pan.,Soğanları tavada kızart.,3,,food-drink
 a2-furniture,FURNITURE,F,STARTS,noun,masa ve sandalye gibi ev eşyaları,They bought new furniture for the house.,Ev için yeni mobilya aldılar.,3,,home
@@ -66,8 +66,8 @@ a2-less,LESS,L,STARTS,phrase,daha az miktarda,I eat less meat now.,Artık daha a
 a2-level,LEVEL,L,STARTS,noun,"derece, seviye",My English level is good.,İngilizce seviyem iyi.,3,,school-work
 a2-lift,LIFT,L,STARTS,noun,insanları binanın katları arasında taşıyan kabin,Take the lift to the third floor.,Asansörle üçüncü kata çık.,2,,city-transport
 a2-lightning,LIGHTNING,L,STARTS,noun,fırtınada gökyüzünde çakan parlak ışık,We saw lightning in the sky.,Gökyüzünde şimşek gördük.,3,,time-weather
-a2-line,LINE,L,STARTS,noun,uzun ince çizgi,Draw a line under the title.,Başlığın altına bir çizgi çiz.,2,,school-work
-a2-lip,LIP,L,STARTS,noun,ağzın üst ve alt kenarı,He bit his lip.,Dudağını ısırdı.,2,,body-health
+a2-line,LINE,L,STARTS,noun,uzun ince çizgi,Draw a line under the word.,Sözcüğün altına bir çizgi çiz.,2,,school-work
+a2-lip,LIP,L,STARTS,noun,ağzın üst ve alt kenarı,He cut his lip.,Dudağını kesti.,2,,body-health
 a2-local,LOCAL,L,STARTS,adj,"bulunulan yere ait olan, yerel",We ate at a local restaurant.,Yerel bir lokantada yemek yedik.,3,,travel
 a2-lock,LOCK,L,STARTS,verb,"anahtarla kapatmak, kilitlemek",Do not forget to lock the door.,Kapıyı kilitlemeyi unutma.,2,,home
 a2-lonely,LONELY,L,STARTS,adj,yalnız olduğu için üzgün hisseden,The old man feels lonely.,Yaşlı adam kendini yalnız hissediyor.,3,,family-people

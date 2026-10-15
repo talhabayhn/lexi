@@ -1,0 +1,73 @@
+id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
+a2-tail,TAIL,T,STARTS,noun,"hayvanın arkasında uzanan uzun uzuv, kuyruk",The dog wags its tail.,Köpek kuyruğunu sallıyor.,2,,animals
+a2-taste,TASTE,T,STARTS,verb,yemeğin tadına bakmak ya da belli bir tadı olmak,Taste the soup before you add salt.,Tuz eklemeden önce çorbanın tadına bak.,2,,food-drink
+a2-tasty,TASTY,T,STARTS,adj,"tadı güzel, lezzetli",The cake is very tasty.,Kek çok lezzetli.,2,,food-drink
+a2-thief,THIEF,T,STARTS,noun,başkasının malını çalan kişi,The thief ran away.,Hırsız kaçtı.,2,,daily-life
+a2-through,THROUGH,T,STARTS,phrase,bir şeyin bir ucundan öbür ucuna geçerek,We walked through the park.,Parkın içinden yürüdük.,3,,city-transport
+a2-throw,THROW,T,STARTS,verb,elindeki şeyi havaya doğru fırlatmak,Throw the ball to me.,Topu bana at.,2,,sports
+a2-thunder,THUNDER,T,STARTS,noun,şimşekten sonra gelen gök gürültüsü,I heard thunder last night.,Dün gece gök gürültüsü duydum.,3,,time-weather
+a2-tidy,TIDY,T,STARTS,adj,"her şeyi yerli yerinde olan, derli toplu",Her desk is always tidy.,Masası her zaman derli toplu.,3,,home
+a2-tight,TIGHT,T,STARTS,adj,vücuda çok yapışan ya da sıkı,These shoes are too tight.,Bu ayakkabılar çok dar.,3,,daily-life
+a2-tiny,TINY,T,STARTS,adj,"çok küçük, minicik",A tiny spider sat on my hand.,Elimde minicik bir örümcek vardı.,3,,animals
+a2-tip,TIP,T,STARTS,noun,garsona bırakılan fazladan para ya da küçük öneri,We left a tip for the waiter.,Garson için bahşiş bıraktık.,3,,food-drink
+a2-title,TITLE,T,STARTS,noun,kitabın ya da filmin adı,What is the title of the book?,Kitabın adı ne?,3,,school-work
+a2-tool,TOOL,T,STARTS,noun,çekiç gibi iş yapmaya yarayan alet,A spade is a tool.,Kürek bir alettir.,3,,home
+a2-towards,TOWARDS,T,STARTS,phrase,bir yere doğru yönelerek,The boy ran towards the sea.,Çocuk denize doğru koştu.,3,,city-transport
+a2-traditional,TRADITIONAL,T,STARTS,adj,eski zamanlardan beri süren geleneksel,We cooked a traditional dish.,Geleneksel bir yemek pişirdik.,3,,food-drink
+a2-trainer,TRAINER,T,STARTS,noun,spor için giyilen rahat ayakkabı,My left trainer is dirty.,Sol spor ayakkabım kirli.,3,,sports
+a2-transport,TRANSPORT,T,STARTS,noun,insanları ya da malları taşıma sistemi,The city has good transport.,Şehirde ulaşım iyi.,3,,city-transport
+a2-treasure,TREASURE,T,STARTS,noun,saklanmış değerli altın ve mücevherler,The pirates hid the treasure.,Korsanlar hazineyi sakladılar.,3,,daily-life
+a2-triangle,TRIANGLE,T,STARTS,noun,"üç kenarlı şekil, üçgen",Draw a triangle on the board.,Tahtaya bir üçgen çiz.,2,,school-work
+a2-trick,TRICK,T,STARTS,noun,insanı şaşırtmak için yapılan ustaca oyun,He showed us a card trick.,Bize bir kart numarası gösterdi.,3,,daily-life
+a2-trouble,TROUBLE,T,STARTS,noun,"sıkıntı, güçlük",I had trouble with my bike.,Bisikletimle sorun yaşadım.,3,,daily-life
+a2-true,TRUE,T,STARTS,adj,"gerçeğe uygun, doğru",Is this story true?,Bu hikâye gerçek mi?,2,,daily-life
+a2-tunnel,TUNNEL,T,STARTS,noun,dağın ya da yerin altından geçen yol,The train goes into a long tunnel.,Tren uzun bir tünele giriyor.,3,,city-transport
+a2-twin,TWIN,T,STARTS,noun,aynı anda doğan iki kardeşten biri,She has a twin brother.,Onun ikiz bir erkek kardeşi var.,3,,family-people
+a2-tyre,TYRE,T,STARTS,noun,aracın tekerleğini saran lastik,The car has a flat tyre.,Arabanın lastiği patlak.,3,,city-transport
+a2-takeaway,TAKEAWAY,T,STARTS,noun,dışarı alınıp evde yenen yemek,Let's get a takeaway tonight.,Bu akşam paket yemek alalım.,3,,food-drink
+a2-tap,TAP,T,STARTS,noun,suyun akmasını sağlayan musluk,Turn off the tap.,Musluğu kapat.,2,,home
+a2-thick,THICK,T,STARTS,adj,kalınlığı çok olan,The book is very thick.,Kitap çok kalın.,2,,school-work
+a2-tongue,TONGUE,T,STARTS,noun,"ağız içindeki tat alan organ, dil",The doctor looked at my tongue.,Doktor dilime baktı.,3,,body-health
+a2-traveller,TRAVELLER,T,STARTS,noun,uzak yerlere sık sık yolculuk eden kişi,The traveller carries a big bag.,Gezgin büyük bir çanta taşıyor.,3,,travel
+a2-trumpet,TRUMPET,T,STARTS,noun,ağızdan üflenerek çalınan parlak metal çalgı,He plays the trumpet in a band.,Bir grupta trompet çalıyor.,3,,music
+a2-tube,TUBE,T,STARTS,noun,"boya ya da krem konan, sıkılarak boşaltılan kap",The paint comes in a tube.,Boya bir tüp içinde geliyor.,3,,daily-life
+a2-tune,TUNE,T,STARTS,noun,akılda kalan kısa ezgi,I know the tune but not the words.,Ezgiyi biliyorum ama sözleri bilmiyorum.,3,,music
+a2-torch,TORCH,T,STARTS,noun,karanlıkta yolu aydınlatan el lambası,Take a torch with you.,Yanına bir el feneri al.,2,,daily-life
+a2-total,TOTAL,T,STARTS,noun,"toplanınca çıkan sayı, toplam",What is the total?,Toplam ne kadar?,3,,school-work
+a2-trust,TRUST,T,STARTS,verb,birine güvenmek,I trust my best friend.,En yakın arkadaşıma güveniyorum.,3,,daily-life
+a2-statue,STATUE,T,CONTAINS,noun,taştan ya da metalden yapılmış insan heykeli,There is a statue in the park.,Parkta bir heykel var.,3,,travel
+a2-waitress,WAITRESS,T,CONTAINS,noun,lokantada yemek getiren kadın,The waitress brought our tea.,Kadın garson çayımızı getirdi.,2,,food-drink
+a2-lettuce,LETTUCE,T,CONTAINS,noun,"salatada kullanılan yeşil yapraklı sebze, marul",Put some lettuce in the sandwich.,Sandviçe biraz marul koy.,2,,food-drink
+a2-hostel,HOSTEL,T,CONTAINS,noun,gençlerin ucuza kaldığı konaklama yeri,We stayed in a cheap hostel.,Ucuz bir hostelde kaldık.,3,,travel
+a2-watermelon,WATERMELON,T,CONTAINS,noun,"içi kırmızı, çekirdekli büyük yazlık meyve, karpuz",We ate watermelon on the beach.,Plajda karpuz yedik.,2,,food-drink
+a2-warn,WARN,W,STARTS,verb,birini olası tehlikeye karşı uyarmak,The red light will warn drivers.,Kırmızı ışık sürücüleri uyarır.,3,,city-transport
+a2-waste,WASTE,W,STARTS,verb,bir şeyi boşuna harcamak,Do not waste water.,Su israf etme.,3,,daily-life
+a2-waterfall,WATERFALL,W,STARTS,noun,"yüksekten dökülen doğal su akıntısı, şelale",The waterfall is very high.,Şelale çok yüksek.,3,,travel
+a2-weak,WEAK,W,STARTS,adj,"gücü az, kuvvetsiz","After being ill, she felt weak.",Hasta olduktan sonra kendini güçsüz hissetti.,3,,body-health
+a2-whisper,WHISPER,W,STARTS,verb,"çok alçak sesle konuşmak, fısıldamak",Do not whisper in class.,Derste fısıldaşma.,3,,school-work
+a2-whose,WHOSE,W,STARTS,phrase,kime ait olduğunu soran sözcük,Whose bag is this?,Bu kimin çantası?,3,,daily-life
+a2-wild,WILD,W,STARTS,adj,"doğada yaşayan, evcilleştirilmemiş",Wild animals live in the forest.,Yabani hayvanlar ormanda yaşar.,3,,animals
+a2-winner,WINNER,W,STARTS,noun,yarışta ya da oyunda birinci olan kişi,The winner gets a prize.,Kazanan ödül alır.,2,,sports
+a2-wish,WISH,W,STARTS,verb,birine iyi bir şey dilemek ya da dilek tutmak,I wish you a happy birthday.,Sana mutlu bir doğum günü dilerim.,3,,daily-life
+a2-without,WITHOUT,W,STARTS,phrase,"bir şey olmadan, -sız",Do not go out without a coat.,Paltosuz dışarı çıkma.,3,,daily-life
+a2-wonder,WONDER,W,STARTS,verb,merak edip kendi kendine sormak,I wonder where Ali is.,Ali'nin nerede olduğunu merak ediyorum.,3,,daily-life
+a2-worker,WORKER,W,STARTS,noun,"bir işte çalışan kişi, işçi",The factory worker starts at seven.,Fabrika işçisi yedide başlıyor.,3,,school-work
+a2-worried,WORRIED,W,STARTS,adj,bir şeyden endişelenen,Her mother is worried about her.,Annesi onun için endişeli.,3,,family-people
+a2-worse,WORSE,W,STARTS,adj,bir şeyden daha kötü,The weather is worse today.,Bugün hava daha kötü.,3,,time-weather
+a2-worst,WORST,W,STARTS,adj,en kötü olan,This is the worst day of the year.,Bu yılın en kötü günü.,3,,daily-life
+a2-wrist,WRIST,W,STARTS,noun,"elle kolu birleştiren eklem, bilek",She wears a watch on her wrist.,Bileğinde saat takıyor.,3,,body-health
+a2-wardrobe,WARDROBE,W,STARTS,noun,giysilerin asıldığı büyük dolap,My clothes are in the wardrobe.,Giysilerim gardıropta.,3,,home
+a2-wet,WET,W,STARTS,adj,"ıslak, kuru olmayan",My hair is wet.,Saçlarım ıslak.,2,,time-weather
+a2-crown,CROWN,W,CONTAINS,noun,kralın başına taktığı süslü altın başlık,The queen wears a crown.,Kraliçe bir taç takıyor.,2,,daily-life
+a2-switch,SWITCH,W,CONTAINS,noun,ışığı açıp kapatan düğme,Where is the light switch?,Işık anahtarı nerede?,3,,home
+a2-bowling,BOWLING,W,CONTAINS,noun,topla labutları devirmeye çalışılan oyun,We went bowling on Friday.,Cuma günü bovlinge gittik.,3,,sports
+a2-drawing,DRAWING,W,CONTAINS,noun,"kalemle çizilmiş resim, çizim",This drawing is for you.,Bu çizim senin için.,2,,school-work
+a2-snowboard,SNOWBOARD,W,CONTAINS,noun,karda kaymak için kullanılan geniş tek tahta,He wants a new snowboard.,Yeni bir snowboard istiyor.,3,,sports
+a2-beard,BEARD,B,STARTS,noun,erkeğin çenesindeki sakal,My uncle has a long beard.,Amcamın uzun bir sakalı var.,2,,body-health
+a2-bookshop,BOOKSHOP,B,STARTS,noun,kitap satılan dükkân,I bought this at the bookshop.,Bunu kitapçıdan aldım.,2,,city-transport
+a2-brake,BRAKE,B,STARTS,noun,aracı durdurmaya yarayan fren,The brake does not work.,Fren çalışmıyor.,3,,city-transport
+a2-block,BLOCK,B,STARTS,noun,"içinde çok sayıda daire olan büyük bina, blok",He lives in the next block.,Bir sonraki blokta oturuyor.,3,,city-transport
+a2-beginning,BEGINNING,B,STARTS,noun,"bir şeyin ilk kısmı, başlangıç",The film has a good beginning.,Filmin başlangıcı güzel.,3,,time-weather
+a2-elbow,ELBOW,B,CONTAINS,noun,"kolun ortasındaki eklem, dirsek",I broke my elbow.,Dirseğimi kırdım.,3,,body-health
+a2-robber,ROBBER,B,CONTAINS,noun,zorla ya da silahla soygun yapan kişi,The robber ran out of the bank.,Soyguncu bankadan dışarı koştu.,3,,daily-life
+a2-ribbon,RIBBON,B,CONTAINS,noun,"süs olarak kullanılan ince şerit kumaş, kurdele",She has a red ribbon in her hair.,Saçında kırmızı bir kurdele var.,2,,daily-life
