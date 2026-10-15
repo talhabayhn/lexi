@@ -66,9 +66,11 @@ cross-feature navigation goes through route objects defined in `shared` (or a ti
 feature/game/
   GameRoute.kt          @Serializable route + NavGraphBuilder extension
   GameScreen.kt         stateless composable: (state, onIntent) -> Unit   ← previews & screenshots use this
-  GameViewModel.kt      holds engine + ticker; maps engine state → GameUiState
+  GameViewModel.kt      holds GameSession + ticker; publishes GameUiState, GameClockUi, GameEffect
+  GameSession.kt        engine + current state + applied-event log (SavedGame)
+  GameUiMapper.kt       pure engine state → GameUiState / GameClockUi
   GameContract.kt       GameUiState, GameIntent, GameEffect
-  components/           screen-specific composables (Wheel, AnswerSlots, LetterKeys, ...)
+  components/           screen-specific composables (GameColumn, AnswerSlots, KeyGrid, GameMotion, ...)
   di/GameModule.kt      Koin module
 ```
 
@@ -187,7 +189,10 @@ created in Swift and passed to `MainViewController(services)`.
 ## 8. Navigation
 Navigation Compose (JetBrains multiplatform artifact, 2.10.0-rc01 pinned until 2.10.0 is stable; ADR 0016), type-safe
 `@Serializable` routes. Each feature exposes its route + `NavGraphBuilder.xxxScreen()`; the graph is `LexiNavHost` in
-`shared`. Flows:
+`shared`. Route arguments are primitives/strings (enums as their `name`): navigation 2.10 has no enum nav type on iOS.
+ViewModels that need arguments get the route from Koin (`get<SavedStateHandle>().toRoute<T>()` in the module), so
+their tests construct it directly. Until Home/Level select exist, the placeholder home starts A1 classic and a
+finished game returns to Home. Flows:
 `Splash → Onboarding? → Home`; `Home → LevelSelect → Game → Result`; `Home → Notebook | Stats | Exams | Settings | Daily`;
 `Game → JokerSheet (bottom sheet) | Pause (dialog)`; `Settings → Paywall`.
 Screen ↔ design map: `docs/design/screen-map.md`.

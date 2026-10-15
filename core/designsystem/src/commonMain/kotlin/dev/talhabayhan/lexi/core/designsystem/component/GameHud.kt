@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -21,6 +22,9 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
@@ -28,6 +32,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import dev.talhabayhan.lexi.core.designsystem.modifier.lexiSurface
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
+import kotlin.math.roundToInt
 
 /** Game HUD geometry (`04-game.html`). */
 public object GameHudDefaults {
@@ -93,6 +98,15 @@ public fun ClueCard(label: String, clue: String, level: String, letterCount: Str
  */
 @Composable
 public fun TimerBar(progress: Float, timeText: String, modifier: Modifier = Modifier, warning: Boolean = false) {
+    TimerBar(progress = { progress }, timeText = timeText, modifier = modifier, warning = warning)
+}
+
+/**
+ * [TimerBar] whose fill reads [progress] only in the draw phase (ADR 0019): a running clock redraws the bar on every
+ * tick without recomposing it.
+ */
+@Composable
+public fun TimerBar(progress: () -> Float, timeText: String, modifier: Modifier = Modifier, warning: Boolean = false) {
     val colors = LexiTheme.colors
     val motion = LexiTheme.motion
     val border = LexiTheme.borders.regular
@@ -112,13 +126,18 @@ public fun TimerBar(progress: Float, timeText: String, modifier: Modifier = Modi
             .lexiSurface(colors.white, BorderStroke(border, colors.ink)),
         contentAlignment = Alignment.CenterStart,
     ) {
-        val fraction = progress.coerceIn(0f, 1f)
-        if (fraction > 0f) {
-            Row(Modifier.fillMaxWidth(fraction).fillMaxHeight()) {
-                Box(Modifier.weight(1f).fillMaxHeight().background(if (warning) colors.red else colors.yellow))
-                Box(Modifier.width(border).fillMaxHeight().background(colors.ink))
-            }
-        }
+        val fill = if (warning) colors.red else colors.yellow
+        Box(
+            Modifier.fillMaxSize().drawBehind {
+                // Like `width: N%` in CSS: whole pixels, the 3dp right edge inside the fill.
+                val width = (size.width * progress().coerceIn(0f, 1f)).roundToInt().toFloat()
+                if (width > 0f) {
+                    val edge = minOf(border.toPx().roundToInt().toFloat(), width)
+                    drawRect(fill, size = Size(width - edge, size.height))
+                    drawRect(colors.ink, topLeft = Offset(width - edge, 0f), size = Size(edge, size.height))
+                }
+            },
+        )
         Text(
             text = timeText,
             style = LexiTheme.typography.heading18,

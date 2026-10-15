@@ -48,6 +48,9 @@ public class LexiMotion internal constructor(
     /** #4 wrong answer shake. */
     public val wrongDurationMillis: Int = 360
 
+    /** #4 wrong answer: horizontal offsets of the answer slots, evenly spaced over [wrongDurationMillis]. */
+    public val wrongShakeOffsets: List<Dp> = listOf((-12).dp, 12.dp, (-9).dp, 9.dp, (-4).dp, 0.dp)
+
     /** #5 pass rotation. */
     public val passDurationMillis: Int = 260
 

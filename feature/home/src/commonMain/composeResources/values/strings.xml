@@ -1,0 +1,4 @@
+<resources>
+    <!-- Temporary entry until the designed home (02-home) and level select (03-level-select) land -->
+    <string name="home_play_a1_classic">Play A1 classic</string>
+</resources>

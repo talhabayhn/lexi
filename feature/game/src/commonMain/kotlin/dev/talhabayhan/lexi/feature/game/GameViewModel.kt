@@ -1,0 +1,319 @@
+package dev.talhabayhan.lexi.feature.game
+
+import androidx.lifecycle.SavedStateHandle
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import dev.talhabayhan.lexi.core.domain.feedback.Speaker
+import dev.talhabayhan.lexi.core.domain.game.EngineEffect
+import dev.talhabayhan.lexi.core.domain.game.GameConfig
+import dev.talhabayhan.lexi.core.domain.game.GameEngine
+import dev.talhabayhan.lexi.core.domain.game.GameEvent
+import dev.talhabayhan.lexi.core.domain.game.GameMode
+import dev.talhabayhan.lexi.core.domain.game.GameState
+import dev.talhabayhan.lexi.core.domain.game.GameStatus
+import dev.talhabayhan.lexi.core.domain.game.SavedGame
+import dev.talhabayhan.lexi.core.domain.game.SavedGameCodec
+import dev.talhabayhan.lexi.core.domain.game.WheelGenerator
+import dev.talhabayhan.lexi.core.domain.model.CategoryId
+import dev.talhabayhan.lexi.core.domain.random.SeededRandom
+import dev.talhabayhan.lexi.core.domain.repository.CardRepository
+import dev.talhabayhan.lexi.core.domain.repository.JokerRepository
+import dev.talhabayhan.lexi.core.domain.repository.ProgressRepository
+import dev.talhabayhan.lexi.core.domain.repository.SettingsRepository
+import dev.talhabayhan.lexi.core.domain.session.FinishGame
+import dev.talhabayhan.lexi.core.domain.time.AppClock
+import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.NonCancellable
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.receiveAsFlow
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import kotlin.time.ComparableTimeMark
+import kotlin.time.Duration.Companion.milliseconds
+import kotlin.time.TimeSource
+
+/** Seed of a new solo game: a random 64-bit value (`ARCHITECTURE.md` §4). Injected so tests are deterministic. */
+internal fun interface SeedSource {
+    fun nextSeed(): Long
+}
+
+/**
+ * Runs one game (ADR 0019): loads or restores the wheel, owns time (a 100 ms ticker over the injected [timeSource]
+ * that runs only while playing, unpaused and in the foreground), feeds intents to the [GameSession] and maps the
+ * engine's state and effects. Background ⇒ final tick + Pause; foreground keeps the game paused. The applied events
+ * are kept in [SavedStateHandle] for process-death restore; a finished game is recorded once by [FinishGame].
+ */
+internal class GameViewModel(
+    /** Navigation arguments, `handle.toRoute<GameRoute>()` (see `gameModule`). */
+    private val route: GameRoute,
+    private val handle: SavedStateHandle,
+    private val cards: CardRepository,
+    private val progress: ProgressRepository,
+    private val jokers: JokerRepository,
+    private val settings: SettingsRepository,
+    private val finishGame: FinishGame,
+    private val appClock: AppClock,
+    private val speaker: Speaker,
+    private val config: GameConfig,
+    private val timeSource: TimeSource.WithComparableMarks,
+    private val seeds: SeedSource,
+) : ViewModel() {
+    private val mutableState = MutableStateFlow(GameUiState())
+    val state: StateFlow<GameUiState> = mutableState.asStateFlow()
+
+    private val mutableClock = MutableStateFlow(GameClockUi.Untimed)
+    val clock: StateFlow<GameClockUi> = mutableClock.asStateFlow()
+
+    private val effectChannel = Channel<GameEffect>(Channel.BUFFERED)
+    val effects: Flow<GameEffect> = effectChannel.receiveAsFlow()
+
+    private var engine: GameEngine? = null
+    private var session: GameSession? = null
+    private var foreground = false
+    private var speakOnCorrect = true
+    private var finished = false
+    private var ticker: Job? = null
+    private var lastMark: ComparableTimeMark? = null
+
+    init {
+        viewModelScope.launch { load() }
+        viewModelScope.launch { settings.settings.collect { speakOnCorrect = it.speakOnCorrect } }
+    }
+
+    fun onIntent(intent: GameIntent) {
+        when (intent) {
+            is GameIntent.KeyTapped -> input(GameEvent.KeyTapped(intent.index))
+
+            GameIntent.Backspace -> input(GameEvent.Backspace)
+
+            GameIntent.Pass -> input(GameEvent.Pass)
+
+            // Hook for the joker sheet task (05-joker-sheet); the sheet does not pause the game (GAME_RULES.md §5).
+            GameIntent.OpenJokers -> Unit
+
+            GameIntent.Pause -> input(GameEvent.Pause)
+
+            GameIntent.Resume -> input(GameEvent.Resume)
+
+            GameIntent.Forfeit -> input(GameEvent.Forfeit)
+
+            GameIntent.Background -> {
+                foreground = false
+                input(GameEvent.Pause)
+                speaker.stop()
+            }
+
+            GameIntent.Foreground -> {
+                foreground = true
+                startIfReady()
+            }
+        }
+    }
+
+    override fun onCleared() {
+        speaker.stop()
+    }
+
+    private suspend fun load() {
+        val current = settings.settings.first()
+        val limit = handle.get<Int>(KEY_CLASSIC_LIMIT)
+            ?: current.classicTimeLimitSeconds.takeIf { it in config.classicTimeLimitOptionsSeconds }
+            ?: config.classicTimeLimitSeconds
+        handle[KEY_CLASSIC_LIMIT] = limit
+        val engine = GameEngine(config.copy(classicTimeLimitSeconds = limit)).also { engine = it }
+        val saved = handle.get<String>(KEY_GAME)?.let(SavedGameCodec::decodeOrNull)
+        val restored = saved?.let { GameSession.restore(engine, it, cards.cards(it.cardIds)) }
+        if (saved != null && restored == null) {
+            handle.remove<String>(KEY_GAME)
+            effectChannel.send(GameEffect.Abandoned)
+            return
+        }
+        session = restored ?: newSession(engine)
+        val state = checkNotNull(session).state
+        publish(state)
+        when {
+            state.status == GameStatus.FINISHED -> onGameOver()
+
+            // ADR 0019: a restored running game always comes back paused.
+            restored != null && state.status == GameStatus.PLAYING -> dispatch(GameEvent.Pause)
+
+            else -> startIfReady()
+        }
+    }
+
+    private suspend fun newSession(engine: GameEngine): GameSession {
+        val mode = route.gameMode
+        val level = route.gameLevel
+        val category = route.categoryId ?: CategoryId.MIXED
+        val seed = seeds.nextSeed()
+        val recentlySeen = if (mode.usesCardHistory) {
+            WheelGenerator.recentlySeen(progress.lastSeenMs(), appClock.nowMs(), config)
+        } else {
+            emptySet()
+        }
+        val wheel = WheelGenerator.generate(
+            pool = cards.wheelPool(level, category),
+            level = level,
+            category = category,
+            mode = mode,
+            random = SeededRandom(seed).derive(WheelGenerator.SEED_PURPOSE),
+            recentlySeen = recentlySeen,
+        )
+        jokers.grantStartPack(config.jokerStartPack)
+        val inventory = jokers.observeInventory().first()
+        val initial = engine.newGame(seed = seed, mode = mode, level = level, wheel = wheel, jokers = inventory)
+        return GameSession.start(engine, initial).also { save(it) }
+    }
+
+    /** `Start` once the wheel is loaded and the screen is resumed for the first time. */
+    private fun startIfReady() {
+        val current = session ?: return
+        if (foreground && current.state.status == GameStatus.NOT_STARTED) {
+            dispatch(GameEvent.Start(timestampMs = appClock.nowMs()))
+        }
+    }
+
+    /** Player and lifecycle events: the time up to now is charged first, so input lands at the right moment. */
+    private fun input(event: GameEvent) {
+        flushTick()
+        dispatch(event)
+    }
+
+    private fun dispatch(event: GameEvent) {
+        val current = session ?: return
+        val before = current.state
+        val transition = current.dispatch(event)
+        if (transition.state === before) return
+        // Ticks are saved with the next other event; going to the background always dispatches Pause.
+        if (event !is GameEvent.Tick || transition.state.status == GameStatus.FINISHED) save(current)
+        publish(transition.state)
+        transition.effects.forEach { onEngineEffect(it, transition.state) }
+        syncTicker()
+    }
+
+    private fun publish(state: GameState) {
+        mutableState.value = GameUiMapper.map(state, mutableState.value)
+        mutableClock.value = GameUiMapper.clock(
+            state = state,
+            timeLimitMs = engine?.config?.timeLimitMs(state.mode),
+            warningSeconds = config.timeWarningSeconds,
+        )
+    }
+
+    /** Finished games are not saved (ADR 0019). */
+    private fun save(current: GameSession) {
+        if (current.state.status == GameStatus.FINISHED) {
+            handle.remove<String>(KEY_GAME)
+        } else {
+            handle[KEY_GAME] = SavedGameCodec.encode(current.saved)
+        }
+    }
+
+    private fun onEngineEffect(effect: EngineEffect, state: GameState) {
+        when (effect) {
+            is EngineEffect.LetterPlaced -> emit(GameEffect.LetterPlaced(effect.cellIndex))
+
+            is EngineEffect.Correct -> {
+                emit(GameEffect.Correct(effect.letter, effect.points))
+                val answer = state.wheel.slots.firstOrNull { it.card?.id == effect.card }?.card?.answer
+                if (speakOnCorrect && answer != null) speaker.speak(answer.lowercase())
+            }
+
+            is EngineEffect.Wrong -> emit(GameEffect.Wrong(effect.letter))
+
+            is EngineEffect.Passed -> emit(GameEffect.Passed(effect.letter))
+
+            is EngineEffect.Advanced -> emit(GameEffect.Advanced(effect.toLetter))
+
+            is EngineEffect.ComboReached -> emit(GameEffect.ComboReached(effect.streak))
+
+            is EngineEffect.TimeWarning -> emit(GameEffect.TimeWarning(effect.secondsLeft))
+
+            // Saved at once: killing the app never refunds a joker (ADR 0019).
+            is EngineEffect.JokerApplied -> viewModelScope.launch { jokers.save(state.jokers) }
+
+            is EngineEffect.GameOver -> onGameOver()
+
+            // Duel only (M8).
+            is EngineEffect.TurnChanged, is EngineEffect.MatchOver -> Unit
+        }
+    }
+
+    /** Transient motion is best effort: while nobody collects (background) and the buffer is full, it is dropped. */
+    private fun emit(effect: GameEffect) {
+        effectChannel.trySend(effect)
+    }
+
+    /** Records the game exactly once, then leaves for the result. */
+    private fun onGameOver() {
+        if (finished) return
+        finished = true
+        syncTicker()
+        val final = checkNotNull(session).state
+        viewModelScope.launch {
+            withContext(NonCancellable) {
+                try {
+                    finishGame(final, category = sessionCategory())
+                } catch (e: CancellationException) {
+                    throw e
+                } catch (e: Exception) {
+                    // Storage failed: the result is still shown; crash reporting (M7) will report it.
+                }
+            }
+            effectChannel.send(GameEffect.NavigateToResult)
+        }
+    }
+
+    /** `SessionResult.category`: null for wheels without a category (review, daily, level test). */
+    private fun sessionCategory(): CategoryId? = when (route.gameMode) {
+        GameMode.REVIEW, GameMode.DAILY, GameMode.LEVEL_TEST -> null
+        else -> route.categoryId ?: CategoryId.MIXED
+    }
+
+    // region ticker (ADR 0019 §1)
+
+    private fun syncTicker() {
+        val state = session?.state
+        val run = !finished && foreground && state != null && state.status == GameStatus.PLAYING && !state.isPaused
+        if (run && ticker == null) {
+            lastMark = timeSource.markNow()
+            ticker = viewModelScope.launch {
+                while (true) {
+                    delay(TICK_INTERVAL)
+                    flushTick()
+                }
+            }
+        } else if (!run && ticker != null) {
+            ticker?.cancel()
+            ticker = null
+            lastMark = null
+        }
+    }
+
+    /** Dispatches the whole milliseconds since the last tick; the mark advances by exactly that, so nothing drifts. */
+    private fun flushTick() {
+        val mark = lastMark ?: return
+        val elapsedMs = mark.elapsedNow().inWholeMilliseconds
+        if (elapsedMs <= 0) return
+        lastMark = mark + elapsedMs.milliseconds
+        dispatch(GameEvent.Tick(elapsedMs))
+    }
+
+    // endregion
+
+    companion object {
+        /** Technical tick rate, not a game rule: keeps the 1200 ms reveal and the timer bar precise. */
+        val TICK_INTERVAL = 100.milliseconds
+
+        /** [SavedStateHandle] keys: the [SavedGame] JSON and the Classic time limit the game started with. */
+        const val KEY_GAME: String = "game.saved"
+        const val KEY_CLASSIC_LIMIT: String = "game.classicLimitSeconds"
+    }
+}

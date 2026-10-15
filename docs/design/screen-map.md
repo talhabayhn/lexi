@@ -7,7 +7,7 @@
 | `02-home` | Ana menü | `HomeRoute` / `HomeScreen` | feature:home | M4 |
 | `03-level-select` | Seviye ve mod seçimi | `LevelSelectRoute` | feature:levels | M4 |
 | `07-categories` | Seviye kategorileri | `CategoriesRoute(level)` | feature:levels | M5 |
-| `04-game` | Oyun ekranı | `GameRoute(setup)` / `GameScreen` | feature:game | M4 |
+| `04-game` | Oyun ekranı | `GameRoute(level, mode, category?)` / `GameScreen` | feature:game | M4 |
 | `05-joker-sheet` | Joker seçimi | `JokerSheet` (bottom sheet inside GameScreen) | feature:game | M4 |
 | `06-result` | Oyun sonu | `ResultRoute(sessionId)` | feature:game | M4 |
 | `08-notebook` | Kelime Defterim | `NotebookRoute` | feature:notebook | M5 |
@@ -27,7 +27,7 @@ before shipping.
 
 | Screen | Milestone | Hint |
 |---|---|---|
-| Pause menu (dialog) | M4 | `ConfirmDialog` style: Devam et / Yeniden başla / Ayarlar / Bırak |
+| Pause menu (dialog) | M4 | `ConfirmDialog` style: Devam et / Yeniden başla / Ayarlar / Bırak (interim: `ConfirmDialog` with Devam et / Bırak in `GameScreen`) |
 | Onboarding steps 1 & 3 | M6 | same layout as step 2, different shapes & copy |
 | Level test result ("Seviyen: B1") | M6 | result screen header style + level badge |
 | Daily wheel intro / already-played state | M6 | home daily card enlarged |
@@ -45,5 +45,6 @@ before shipping.
 - Phones narrower than 390dp: wheel size = `min(320, screenWidth − 40)`; scale wheel radius/chip proportionally;
   everything else reflows (keys stay 5 columns).
 - Short phones (< 760dp height): reduce wheel to 280 and vertical gaps by 25%; never scroll the game screen.
+  The game column also shrinks the wheel below that whenever the rest does not fit (3 key rows, system bars).
 - Tablets / landscape: center a 430dp-wide column; landscape-specific layouts later.
 - Font scale: honor system font size up to 1.3× on lists; game keys, slots and wheel are capped at 1.15×.

@@ -20,6 +20,7 @@ kotlin {
             implementation(project(":core:designsystem"))
             implementation(project(":core:platform"))
             implementation(project(":feature:home"))
+            implementation(project(":feature:game"))
 
             implementation(libs.androidx.navigation.compose)
             implementation(libs.koin.core)

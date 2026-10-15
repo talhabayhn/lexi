@@ -1,0 +1,32 @@
+<resources>
+    <!-- HUD and actions (04-game) -->
+    <string name="game_button_pause">Duraklat</string>
+    <string name="game_button_joker">Joker kullan</string>
+    <string name="game_button_backspace">Harf sil</string>
+    <string name="game_button_pass">PAS</string>
+    <string name="game_score_description">Puan: %1$d</string>
+
+    <!-- Rule under the big letter in the wheel centre -->
+    <string name="game_rule_starts">İLE BAŞLAR</string>
+    <string name="game_rule_contains">İÇİNDE GEÇER</string>
+
+    <!-- Clue card: "İPUCU · İSİM", letter count -->
+    <string name="game_clue_label">İPUCU · %1$s</string>
+    <string name="game_pos_noun">İSİM</string>
+    <string name="game_pos_verb">FİİL</string>
+    <string name="game_pos_adj">SIFAT</string>
+    <string name="game_pos_adv">ZARF</string>
+    <string name="game_pos_phrase">İFADE</string>
+    <string name="game_pos_idiom">DEYİM</string>
+    <string name="game_pos_phrasal">ÖBEK FİİL</string>
+    <plurals name="game_letter_count">
+        <item quantity="one">%1$d HARF</item>
+        <item quantity="other">%1$d HARF</item>
+    </plurals>
+
+    <!-- Pause dialog (design debt: minimal version until the pause dialog task) -->
+    <string name="game_pause_title">Oyun duraklatıldı</string>
+    <string name="game_pause_message">Süre durdu. Hazır olduğunda devam et.</string>
+    <string name="game_pause_resume">Devam et</string>
+    <string name="game_pause_quit">Bırak</string>
+</resources>

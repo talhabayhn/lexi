@@ -16,6 +16,9 @@ internal class HomeViewModel : ViewModel() {
     private val effectChannel = Channel<HomeEffect>(Channel.BUFFERED)
     val effects: Flow<HomeEffect> = effectChannel.receiveAsFlow()
 
-    @Suppress("UnusedParameter") // No intents yet; the M4 home adds them.
-    fun onIntent(intent: HomeIntent) = Unit
+    fun onIntent(intent: HomeIntent) {
+        when (intent) {
+            HomeIntent.StartGame -> effectChannel.trySend(HomeEffect.NavigateToGame)
+        }
+    }
 }

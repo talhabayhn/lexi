@@ -20,6 +20,8 @@ import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
 import kotlin.test.assertTrue
 
+// Lives in core:testing (not core:domain) because it needs the repository fakes, and core:domain must not depend on
+// core:testing (module rules: core:testing already depends on core:domain).
 class FinishGameTest {
     private val config = GameConfig()
     private val engine = GameEngine(config)
@@ -100,6 +102,24 @@ class FinishGameTest {
 
         assertEquals(first, second)
         assertEquals(1, sessions.recordCalls)
+        assertEquals(1, progress.saveCalls)
+    }
+
+    @Test
+    fun `a failed record is retried by the next call and the notebook is updated once`() = runTest {
+        val game = finishedGame()
+        sessions.failingRecords = 1
+
+        assertFailsWith<IllegalStateException> { finishGame(game, category = null) }
+        assertEquals(0, progress.saveCalls)
+        val result = finishGame(game, category = null)
+
+        assertEquals(listOf(result), sessions.sessions)
+        assertEquals(2, sessions.recordCalls)
+        assertEquals(1, progress.saveCalls)
+        // A third call writes nothing again.
+        finishGame(game, category = null)
+        assertEquals(2, sessions.recordCalls)
         assertEquals(1, progress.saveCalls)
     }
 

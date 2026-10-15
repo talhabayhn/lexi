@@ -1,0 +1,32 @@
+<resources>
+    <!-- HUD and actions (04-game) -->
+    <string name="game_button_pause">Pause</string>
+    <string name="game_button_joker">Use joker</string>
+    <string name="game_button_backspace">Delete letter</string>
+    <string name="game_button_pass">PASS</string>
+    <string name="game_score_description">Score: %1$d</string>
+
+    <!-- Rule under the big letter in the wheel centre -->
+    <string name="game_rule_starts">FIRST LETTER</string>
+    <string name="game_rule_contains">IN THE WORD</string>
+
+    <!-- Clue card: "CLUE · NOUN", letter count -->
+    <string name="game_clue_label">CLUE · %1$s</string>
+    <string name="game_pos_noun">NOUN</string>
+    <string name="game_pos_verb">VERB</string>
+    <string name="game_pos_adj">ADJECTIVE</string>
+    <string name="game_pos_adv">ADVERB</string>
+    <string name="game_pos_phrase">PHRASE</string>
+    <string name="game_pos_idiom">IDIOM</string>
+    <string name="game_pos_phrasal">PHRASAL VERB</string>
+    <plurals name="game_letter_count">
+        <item quantity="one">%1$d LETTER</item>
+        <item quantity="other">%1$d LETTERS</item>
+    </plurals>
+
+    <!-- Pause dialog (design debt: minimal version until the pause dialog task) -->
+    <string name="game_pause_title">Game paused</string>
+    <string name="game_pause_message">The clock is stopped. Continue when you are ready.</string>
+    <string name="game_pause_resume">Continue</string>
+    <string name="game_pause_quit">Give up</string>
+</resources>

@@ -50,8 +50,15 @@ public class FakeSessionRepository(private val config: GameConfig = GameConfig()
     public var recordCalls: Int = 0
         private set
 
+    /** The next this many [record] calls throw [IllegalStateException] without storing (failure injection). */
+    public var failingRecords: Int = 0
+
     override suspend fun record(session: SessionResult): Boolean {
         recordCalls++
+        if (failingRecords > 0) {
+            failingRecords--
+            throw IllegalStateException("injected record failure")
+        }
         if (session.mode in config.srsExcludedModes) return false
         stored.value += session
         return true

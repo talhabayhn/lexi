@@ -13,8 +13,5 @@ kotlin {
             // Repository interfaces expose Flow (ARCHITECTURE.md §6); allowed by ARCHITECTURE.md §2.
             api(libs.kotlinx.coroutines.core)
         }
-        commonTest.dependencies {
-            implementation(libs.kotlinx.serialization.json)
-        }
     }
 }

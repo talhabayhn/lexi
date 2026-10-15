@@ -12,4 +12,14 @@ class HomeViewModelTest {
             assertEquals(HomeUiState(isReady = true), awaitItem())
         }
     }
+
+    @Test
+    fun `start game navigates to the game`() = runTest {
+        val viewModel = HomeViewModel()
+        viewModel.effects.test {
+            viewModel.onIntent(HomeIntent.StartGame)
+
+            assertEquals(HomeEffect.NavigateToGame, awaitItem())
+        }
+    }
 }
