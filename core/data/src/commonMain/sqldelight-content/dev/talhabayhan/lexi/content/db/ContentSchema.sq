@@ -1,0 +1,56 @@
+-- content.db schema (docs/CONTENT.md §7). Single source of truth: core:data reads content.db with it and
+-- tools:content-compiler generates its writer from these same files (see tools/content-compiler/build.gradle.kts).
+-- content.db is read-only on device; a schema change needs a contentVersion bump and a compiler run.
+
+CREATE TABLE meta(
+    key TEXT NOT NULL PRIMARY KEY,
+    value TEXT NOT NULL
+);
+
+CREATE TABLE category(
+    id TEXT NOT NULL PRIMARY KEY,
+    name_tr TEXT NOT NULL,
+    name_en TEXT NOT NULL,
+    levels TEXT NOT NULL,
+    sort INTEGER NOT NULL,
+    is_pro INTEGER NOT NULL DEFAULT 0
+);
+
+CREATE TABLE card(
+    id TEXT NOT NULL PRIMARY KEY,
+    level TEXT NOT NULL,
+    category_id TEXT NOT NULL REFERENCES category(id),
+    answer TEXT NOT NULL,
+    letter TEXT NOT NULL,
+    rule TEXT NOT NULL,
+    pos TEXT NOT NULL,
+    example_en TEXT NOT NULL,
+    difficulty INTEGER NOT NULL,
+    tags TEXT NOT NULL DEFAULT ''
+);
+
+CREATE TABLE clue(
+    card_id TEXT NOT NULL REFERENCES card(id),
+    lang TEXT NOT NULL,
+    clue TEXT NOT NULL,
+    example_translation TEXT,
+    PRIMARY KEY(card_id, lang)
+);
+
+CREATE TABLE exam_pack(
+    id TEXT NOT NULL PRIMARY KEY,
+    name TEXT NOT NULL,
+    description TEXT NOT NULL DEFAULT '',
+    is_pro INTEGER NOT NULL DEFAULT 1,
+    sort INTEGER NOT NULL
+);
+
+CREATE TABLE exam_pack_card(
+    pack_id TEXT NOT NULL REFERENCES exam_pack(id),
+    card_id TEXT NOT NULL REFERENCES card(id),
+    unit TEXT,
+    PRIMARY KEY(pack_id, card_id)
+);
+
+CREATE INDEX card_level_letter ON card(level, letter);
+CREATE INDEX card_level_category ON card(level, category_id);

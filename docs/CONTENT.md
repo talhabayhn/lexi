@@ -79,18 +79,24 @@ Start with A1 complete + 26-card smoke sets for the other levels; grow per miles
 - Exam pack names (LGS, YDS, IELTS, TOEFL) are used descriptively; no logos.
 
 ## 7. Database schema (content.db)
+Source of truth: `core/data/src/commonMain/sqldelight-content/dev/talhabayhan/lexi/content/db/ContentSchema.sq`
+(shared with the compiler, see `ARCHITECTURE.md` §6). Summary:
 ```sql
-CREATE TABLE meta(key TEXT PRIMARY KEY, value TEXT NOT NULL);           -- contentVersion, builtAt
-CREATE TABLE category(id TEXT PRIMARY KEY, name_tr TEXT, name_en TEXT, sort INTEGER, is_pro INTEGER DEFAULT 0);
+CREATE TABLE meta(key TEXT NOT NULL PRIMARY KEY, value TEXT NOT NULL);  -- contentVersion, builtAt
+CREATE TABLE category(id TEXT NOT NULL PRIMARY KEY, name_tr TEXT NOT NULL, name_en TEXT NOT NULL,
+  levels TEXT NOT NULL,                     -- 'A1|A2' as in categories.csv
+  sort INTEGER NOT NULL, is_pro INTEGER NOT NULL DEFAULT 0);
 CREATE TABLE card(
-  id TEXT PRIMARY KEY, level TEXT NOT NULL, category_id TEXT NOT NULL REFERENCES category(id),
+  id TEXT NOT NULL PRIMARY KEY, level TEXT NOT NULL, category_id TEXT NOT NULL REFERENCES category(id),
   answer TEXT NOT NULL, letter TEXT NOT NULL, rule TEXT NOT NULL, pos TEXT NOT NULL,
-  example_en TEXT NOT NULL, difficulty INTEGER NOT NULL, tags TEXT NOT NULL DEFAULT ''
+  example_en TEXT NOT NULL, difficulty INTEGER NOT NULL, tags TEXT NOT NULL DEFAULT ''   -- tags 'a|b'
 );
 CREATE TABLE clue(card_id TEXT NOT NULL REFERENCES card(id), lang TEXT NOT NULL, clue TEXT NOT NULL,
   example_translation TEXT, PRIMARY KEY(card_id, lang));
-CREATE TABLE exam_pack(id TEXT PRIMARY KEY, name TEXT, description TEXT, is_pro INTEGER, sort INTEGER);
-CREATE TABLE exam_pack_card(pack_id TEXT, card_id TEXT, unit TEXT, PRIMARY KEY(pack_id, card_id));
+CREATE TABLE exam_pack(id TEXT NOT NULL PRIMARY KEY, name TEXT NOT NULL, description TEXT NOT NULL DEFAULT '',
+  is_pro INTEGER NOT NULL DEFAULT 1, sort INTEGER NOT NULL);
+CREATE TABLE exam_pack_card(pack_id TEXT NOT NULL REFERENCES exam_pack(id), card_id TEXT NOT NULL REFERENCES card(id),
+  unit TEXT, PRIMARY KEY(pack_id, card_id));
 CREATE INDEX card_level_letter ON card(level, letter);
 CREATE INDEX card_level_category ON card(level, category_id);
 ```

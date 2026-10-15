@@ -50,7 +50,7 @@ lexi/
 | `feature:*` | `core:domain`, `core:designsystem`, `core:platform` (interfaces) — **never** `core:data` |
 | `shared` | everything (wires DI) |
 | `androidApp` | `shared` only |
-| `tools:content-compiler` | `core:domain` (JVM target) |
+| `tools:content-compiler` | `core:domain` (JVM target), SQLDelight + JVM sqlite driver, kotlinx-serialization-json — **not** `core:data` (it generates its own writer from core:data's content schema files) |
 
 The table is enforced by `verifyModuleDependencies` (part of `check`, rules in
 `build-logic/.../ModuleRules.kt`); `core:testing` is allowed only in test configurations.
@@ -131,6 +131,10 @@ All participants apply the same ordered event log → same state. See `MULTIPLAY
 |---|---|---|---|
 | `content.db` | cards, clues, categories, exam packs, meta(version) | no | built by `tools:content-compiler`, shipped in `composeResources/files`, copied on first launch / version change |
 | `user.db` | SRS progress, sessions, daily results, streak, joker inventory, achievements | yes | created on device, migrations in `core/data/src/commonMain/sqldelight/migrations` |
+
+The content schema lives once, in `core/data/src/commonMain/sqldelight-content` (`ContentDatabase`).
+`tools:content-compiler` generates its writer from those same `.sq` files (plus its own INSERTs), so the compiler
+and the app always agree on the schema without a module dependency. Schema version = `PRAGMA user_version`.
 
 Keeping content separate means content updates never touch user data; `card.id` is a stable slug
 (`a1-kitchen`) so progress survives content updates.

@@ -1,0 +1,20 @@
+-- Compiler-only writes into content.db; the tables live in core/data/src/commonMain/sqldelight-content.
+
+insertMeta:
+INSERT INTO meta(key, value) VALUES (?, ?);
+
+insertCategory:
+INSERT INTO category(id, name_tr, name_en, levels, sort, is_pro) VALUES (?, ?, ?, ?, ?, ?);
+
+insertCard:
+INSERT INTO card(id, level, category_id, answer, letter, rule, pos, example_en, difficulty, tags)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+
+insertClue:
+INSERT INTO clue(card_id, lang, clue, example_translation) VALUES (?, ?, ?, ?);
+
+insertExamPack:
+INSERT INTO exam_pack(id, name, description, is_pro, sort) VALUES (?, ?, ?, ?, ?);
+
+insertExamPackCard:
+INSERT INTO exam_pack_card(pack_id, card_id, unit) VALUES (?, ?, ?);

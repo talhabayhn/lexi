@@ -35,5 +35,11 @@ sqldelight {
         create("ProbeDatabase") {
             packageName.set("dev.talhabayhan.lexi.core.data.db")
         }
+        // Read-only bundled content DB (docs/CONTENT.md §7). The same .sq files generate the writer in
+        // tools:content-compiler, so the compiler and the app can never disagree on the schema.
+        create("ContentDatabase") {
+            packageName.set("dev.talhabayhan.lexi.core.data.content.db")
+            srcDirs("src/commonMain/sqldelight-content")
+        }
     }
 }
