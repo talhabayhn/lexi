@@ -53,9 +53,9 @@ Module mapping (replaces the earlier `composeApp`): `androidApp` = thin Android 
 - [x] Splash (`14-splash`) with motion spec
 - [x] Home (`02-home`), Level select (`03-level-select`)
 - [x] Game screen (`04-game`) wired to engine: wheel, timer, clue, slots, keys, backspace, pass, score
-- [ ] Joker sheet (`05-joker-sheet`) + jokers inventory
-- [ ] Pause dialog (design debt)
-- [ ] Result (`06-result`) incl. "Tekrar edilecekler" → SRS
+- [x] Joker sheet (`05-joker-sheet`) + jokers inventory
+- [x] Pause dialog (design debt; built from `16-components`, needs design)
+- [x] Result (`06-result`) incl. "Tekrar edilecekler" → SRS
 - [ ] Motion catalogue #1–#8, haptics & sounds (`motion.md`)
 - [ ] Platform: Speaker (TTS), Haptics, SoundPlayer
 **Done when:** a full A1 classic game is playable start→result on both platforms, screenshots match designs.
