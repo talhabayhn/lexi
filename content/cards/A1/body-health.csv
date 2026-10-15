@@ -1,14 +1,20 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
 a1-arm,ARM,A,STARTS,noun,kol,My arm hurts.,Kolum ağrıyor.,1,,body-health
 a1-eye,EYE,E,STARTS,noun,göz,I have something in my eye.,Gözüme bir şey kaçtı.,1,,body-health
-a1-foot,FOOT,F,STARTS,noun,tek bir ayak,I can stand on my left foot.,Sol ayağımın üstünde durabilirim.,2,,body-health
+a1-foot,FOOT,F,STARTS,noun,tek bir ayak,My foot hurts.,Ayağım ağrıyor.,2,,body-health
 a1-hand,HAND,H,STARTS,noun,el,Raise your hand.,Elini kaldır.,1,,body-health
 a1-hair,HAIR,H,STARTS,noun,saç,She has long hair.,Uzun saçları var.,1,,body-health
 a1-leg,LEG,L,STARTS,noun,bacak,He broke his leg.,Bacağını kırdı.,1,,body-health
 a1-mouth,MOUTH,M,STARTS,noun,ağız,Cover your mouth when you cough.,Öksürürken ağzını kapat.,2,,body-health
-a1-tooth,TOOTH,T,STARTS,noun,tek bir diş,The baby has a tiny tooth.,Bebeğin minicik bir dişi var.,2,,body-health
+a1-tooth,TOOTH,T,STARTS,noun,tek bir diş,My tooth hurts.,Dişim ağrıyor.,2,,body-health
 a1-neck,NECK,N,STARTS,noun,boyun,A giraffe has a long neck.,Zürafanın uzun bir boynu vardır.,2,,body-health
 a1-ill,ILL,I,STARTS,adj,hasta,My neighbour is ill.,Komşum hasta.,2,,body-health
-a1-ear,EAR,E,STARTS,noun,kulak,My left ear hurts.,Sol kulağım ağrıyor.,1,,body-health
+a1-ear,EAR,E,STARTS,noun,kulak,My ear hurts.,Kulağım ağrıyor.,1,,body-health
 a1-finger,FINGER,F,STARTS,noun,parmak,I cut my finger.,Parmağımı kestim.,1,,body-health
 a1-hungry,HUNGRY,H,STARTS,adj,"aç, yemek isteyen",The children are hungry.,Çocuklar aç.,1,,body-health
+a1-head,HEAD,H,STARTS,noun,boynun üstündeki vücut parçası,My head hurts.,Başım ağrıyor.,1,,body-health
+a1-face,FACE,F,STARTS,noun,gözleri ve ağzı olan ön kısım,He has a round face.,Yuvarlak bir yüzü var.,1,,body-health
+a1-back,BACK,B,STARTS,noun,omurganın olduğu arka kısım,My back hurts.,Sırtım ağrıyor.,1,,body-health
+a1-knee,KNEE,K,STARTS,noun,bacağı büken eklem,My knee hurts.,Dizim ağrıyor.,1,,body-health
+a1-body,BODY,B,STARTS,noun,baştan ayağa insan vücudu,She has a strong body.,Güçlü bir vücudu var.,1,,body-health
+a1-healthy,HEALTHY,H,STARTS,adj,sağlıklı,We are healthy.,Biz sağlıklıyız.,1,,body-health

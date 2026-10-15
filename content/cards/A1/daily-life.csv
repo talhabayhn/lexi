@@ -1,18 +1,18 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
 a1-sleep,SLEEP,S,STARTS,verb,uyumak,Babies sleep a lot.,Bebekler çok uyur.,1,,daily-life
-a1-walk,WALK,W,STARTS,verb,yürümek,I walk to the station.,İstasyona yürüyerek giderim.,1,,daily-life
+a1-walk,WALK,W,STARTS,verb,yürümek,I like to walk.,Yürümeyi severim.,1,,daily-life
 a1-play,PLAY,P,STARTS,verb,oynamak,Do you want to play football?,Futbol oynamak ister misin?,1,,daily-life
 a1-open,OPEN,O,STARTS,verb,açmak,Can you open this bottle?,Bu şişeyi açabilir misin?,1,,daily-life
 a1-jump,JUMP,J,STARTS,verb,zıplamak,Frogs can jump high.,Kurbağalar yükseğe zıplayabilir.,2,,daily-life
 a1-visit,VISIT,V,STARTS,verb,ziyaret etmek,We visit our neighbours on Sundays.,Pazar günleri komşularımızı ziyaret ederiz.,2,,daily-life
 a1-money,MONEY,M,STARTS,noun,para,I don't have any money.,Hiç param yok.,1,,daily-life
 a1-happy,HAPPY,H,STARTS,adj,mutlu,You look happy!,Mutlu görünüyorsun!,1,,daily-life
-a1-quiet,QUIET,Q,STARTS,adj,sessiz,Please be quiet. The baby is sleeping.,Lütfen sessiz ol. Bebek uyuyor.,2,,daily-life
+a1-quiet,QUIET,Q,STARTS,adj,sessiz,Please be quiet.,Lütfen sessiz ol.,2,,daily-life
 a1-very,VERY,V,STARTS,adv,sıfatın önüne gelip anlamı güçlendiren 'çok',This suitcase is very heavy.,Bu bavul çok ağır.,1,,daily-life
-a1-use,USE,U,STARTS,verb,kullanmak,Can I use your phone?,Telefonunu kullanabilir miyim?,1,,daily-life
+a1-use,USE,U,STARTS,verb,kullanmak,Can I use the toilet?,Tuvaleti kullanabilir miyim?,1,,daily-life
 a1-idea,IDEA,I,STARTS,noun,fikir,I have an idea!,Bir fikrim var!,1,,daily-life
 a1-good,GOOD,G,STARTS,adj,iyi,This is a good film.,Bu iyi bir film.,1,,daily-life
-a1-next,NEXT,X,CONTAINS,adj,bir sonraki,The next lesson is at ten.,Bir sonraki ders saat onda.,2,,daily-life
+a1-next,NEXT,X,CONTAINS,adj,bir sonraki,The next lesson starts soon.,Sonraki ders yakında başlıyor.,2,,daily-life
 a1-jacket,JACKET,J,STARTS,noun,"ceket, mont",Take your jacket.,Ceketini al.,1,,daily-life
 a1-jeans,JEANS,J,STARTS,noun,kot pantolon,These jeans are too small.,Bu kot pantolon çok küçük.,1,,daily-life
 a1-shirt,SHIRT,S,STARTS,noun,gömlek,His shirt is clean.,Gömleği temiz.,1,,daily-life
@@ -32,15 +32,45 @@ a1-inside,INSIDE,I,STARTS,adv,içeride,Is she inside?,O içeride mi?,1,,daily-li
 a1-under,UNDER,U,STARTS,phrase,altında,The ball is under the sofa.,Top kanepenin altında.,1,,daily-life
 a1-up,UP,U,STARTS,adv,yukarı,"Stand up, please.",Lütfen ayağa kalk.,1,,daily-life
 a1-usually,USUALLY,U,STARTS,adv,genellikle,Usually I have toast.,Genellikle kızarmış ekmek yerim.,2,,daily-life
-a1-only,ONLY,O,STARTS,adv,sadece,I have only ten euros.,Sadece on avrom var.,1,,daily-life
+a1-only,ONLY,O,STARTS,adv,sadece,I only have a few coins.,Sadece birkaç madeni param var.,1,,daily-life
 a1-sit,SIT,S,STARTS,verb,oturmak,Please sit here.,Lütfen buraya otur.,1,,daily-life
-a1-wash,WASH,W,STARTS,verb,yıkamak,I wash my face.,Yüzümü yıkıyorum.,1,,daily-life
+a1-wash,WASH,W,STARTS,verb,yıkamak,I wash my hands.,Ellerimi yıkıyorum.,1,,daily-life
 a1-love,LOVE,L,STARTS,verb,"sevmek, âşık olmak",I love you.,Seni seviyorum.,1,,daily-life
 a1-dance,DANCE,D,STARTS,verb,dans etmek,They dance at the party.,Partide dans ediyorlar.,1,,daily-life
-a1-beach,BEACH,B,STARTS,noun,"plaj, kumsal",We swim at the beach.,Plajda yüzüyoruz.,1,,daily-life
+a1-beach,BEACH,B,STARTS,noun,"plaj, kumsal",The beach is crowded.,Plaj kalabalık.,1,,daily-life
 a1-keep,KEEP,K,STARTS,verb,"tutmak, saklamak",You can keep this ball.,Bu topu saklayabilirsin.,2,,daily-life
 a1-name,NAME,N,STARTS,noun,"ad, isim",What is your name?,Adın ne?,1,,daily-life
 a1-yes,YES,Y,STARTS,adv,evet,"Yes, I like it.","Evet, hoşuma gitti.",1,,daily-life
 a1-grass,GRASS,G,STARTS,noun,"çimen, ot",The grass is wet.,Çimen ıslak.,1,,daily-life
 a1-help,HELP,H,STARTS,verb,yardım etmek,Can you help me?,Bana yardım edebilir misin?,1,,daily-life
-a1-nice,NICE,N,STARTS,adj,"hoş, güzel",The weather is nice.,Hava güzel.,1,,daily-life
+a1-nice,NICE,N,STARTS,adj,"hoş, güzel",She has a nice smile.,Güzel bir gülümsemesi var.,1,,daily-life
+a1-coat,COAT,C,STARTS,noun,kalın dış giysi,My coat is long.,Paltom uzun.,1,,daily-life
+a1-skirt,SKIRT,S,STARTS,noun,etek,I like her skirt.,Eteğini beğeniyorum.,1,,daily-life
+a1-phone,PHONE,P,STARTS,noun,telefon,Where is my phone?,Telefonum nerede?,1,,daily-life
+a1-hobby,HOBBY,H,STARTS,noun,boş zamanda yapılan sevilen iş,Reading is my hobby.,Okumak benim hobim.,1,,daily-life
+a1-holiday,HOLIDAY,H,STARTS,noun,tatil,We are on holiday.,Tatildeyiz.,1,,daily-life
+a1-bike,BIKE,B,STARTS,noun,bisiklet,I have a new bike.,Yeni bir bisikletim var.,1,,daily-life
+a1-email,EMAIL,E,STARTS,noun,elektronik posta,I send an email.,Bir e-posta gönderiyorum.,1,,daily-life
+a1-colour,COLOUR,C,STARTS,noun,renk,I like this colour.,Bu rengi seviyorum.,1,,daily-life
+a1-guitar,GUITAR,G,STARTS,noun,altı telli çalgı,He has a new guitar.,Yeni bir gitarı var.,1,,daily-life
+a1-violin,VIOLIN,V,STARTS,noun,yaylı çalgı,The violin sounds sweet.,Keman tatlı ses çıkarır.,2,,daily-life
+a1-movie,MOVIE,M,STARTS,noun,sinema filmi,The movie starts soon.,Film yakında başlıyor.,1,,daily-life
+a1-travel,TRAVEL,T,STARTS,verb,uzak yerlere yolculuk etmek,I like to travel.,Seyahat etmeyi severim.,1,,daily-life
+a1-sing,SING,S,STARTS,verb,şarkı söylemek,She can sing well.,İyi şarkı söyleyebilir.,1,,daily-life
+a1-swim,SWIM,S,STARTS,verb,yüzmek,I can swim.,Yüzebilirim.,1,,daily-life
+a1-write,WRITE,W,STARTS,verb,yazmak,Please write it here.,Lütfen buraya yaz.,1,,daily-life
+a1-wear,WEAR,W,STARTS,verb,giymek,Do you wear glasses?,Gözlük takıyor musun?,1,,daily-life
+a1-wait,WAIT,W,STARTS,verb,beklemek,Wait for me!,Beni bekle!,1,,daily-life
+a1-learn,LEARN,L,STARTS,verb,öğrenmek,Children learn quickly.,Çocuklar hızlı öğrenir.,1,,daily-life
+a1-know,KNOW,K,STARTS,verb,bilmek,I do not know.,Bilmiyorum.,1,,daily-life
+a1-go,GO,G,STARTS,verb,gitmek,Let's go now.,Hadi şimdi gidelim.,1,,daily-life
+a1-beautiful,BEAUTIFUL,B,STARTS,adj,"çok güzel, göz alıcı",She is beautiful.,O çok güzel.,1,,daily-life
+a1-difficult,DIFFICULT,D,STARTS,adj,kolay olmayan,This exercise is difficult.,Bu alıştırma zor.,2,,daily-life
+a1-easy,EASY,E,STARTS,adj,zor olmayan,The test is easy.,Sınav kolay.,1,,daily-life
+a1-wrong,WRONG,W,STARTS,adj,yanlış,You are wrong.,Yanılıyorsun.,1,,daily-life
+a1-lake,LAKE,L,STARTS,noun,etrafı karayla çevrili büyük su,The lake is calm.,Göl sakin.,1,,daily-life
+a1-mountain,MOUNTAIN,M,STARTS,noun,çok yüksek kayalık yer,The mountain is high.,Dağ yüksek.,1,,daily-life
+a1-sea,SEA,S,STARTS,noun,deniz,I like the sea.,Denizi severim.,1,,daily-life
+a1-farm,FARM,F,STARTS,noun,çiftlik,We have a farm.,Bir çiftliğimiz var.,1,,daily-life
+a1-voice,VOICE,V,STARTS,noun,insanın konuşurken çıkardığı ses,Your voice is soft.,Sesin yumuşak.,2,,daily-life
+a1-short,SHORT,S,STARTS,adj,boyu veya süresi az,The film is short.,Film kısa.,1,,daily-life

@@ -7,9 +7,16 @@ a1-key,KEY,K,STARTS,noun,anahtar,I can't find my key.,Anahtarımı bulamıyorum.
 a1-knife,KNIFE,K,STARTS,noun,bıçak,Be careful. The knife is sharp.,Dikkat et. Bıçak keskin.,3,,home
 a1-plate,PLATE,P,STARTS,noun,tabak,"Clean your plate, please.","Tabağını temizle, lütfen.",1,,home
 a1-house,HOUSE,H,STARTS,noun,"konut, ev binası",They live in a small house.,Küçük bir evde yaşıyorlar.,1,,home
-a1-home,HOME,H,STARTS,noun,"yuva, insanın yaşadığı yer",This town is my home now.,Bu kasaba artık benim yuvam.,2,,home
+a1-home,HOME,H,STARTS,noun,"yuva, insanın yaşadığı yer",This is my home.,Burası benim evim.,2,,home
 a1-room,ROOM,R,STARTS,noun,oda,This room is clean.,Bu oda temiz.,1,,home
 a1-lamp,LAMP,L,STARTS,noun,masa veya yer lambası,Turn off the lamp.,Lambayı kapat.,1,,home
 a1-wall,WALL,W,STARTS,noun,duvar,There is a picture on the wall.,Duvarda bir resim var.,1,,home
 a1-desk,DESK,D,STARTS,noun,çalışma masası,There is a computer on the desk.,Masanın üstünde bir bilgisayar var.,1,,home
 a1-bag,BAG,B,STARTS,noun,çanta,Her bag is full.,Çantası dolu.,1,,home
+a1-bedroom,BEDROOM,B,STARTS,noun,yatılan oda,My bedroom is small.,Yatak odam küçük.,1,,home
+a1-bathroom,BATHROOM,B,STARTS,noun,lavabo ve duşun olduğu oda,The bathroom is upstairs.,Banyo üst katta.,1,,home
+a1-floor,FLOOR,F,STARTS,noun,ayakların bastığı zemin,The floor is wet.,Zemin ıslak.,1,,home
+a1-shower,SHOWER,S,STARTS,noun,akan suyun altında yıkanma,I take a quick shower.,Hızlı bir duş alırım.,1,,home
+a1-bath,BATH,B,STARTS,noun,küvette yıkanma,I take a bath.,Banyo yapıyorum.,1,,home
+a1-fridge,FRIDGE,F,STARTS,noun,yiyecekleri soğuk tutan dolap,The fridge is empty.,Buzdolabı boş.,1,,home
+a1-clock,CLOCK,C,STARTS,noun,saati gösteren duvar aleti,The clock is slow.,Saat geri kalıyor.,1,,home

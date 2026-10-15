@@ -4,7 +4,7 @@ a1-pink,PINK,P,STARTS,adj,pembe,She has a pink scarf.,Pembe bir atkısı var.,1,
 a1-purple,PURPLE,P,STARTS,adj,mor,I like purple flowers.,Mor çiçekleri severim.,2,,colors-numbers
 a1-red,RED,R,STARTS,adj,kırmızı,I want the red shoes.,Kırmızı ayakkabıları istiyorum.,1,,colors-numbers
 a1-white,WHITE,W,STARTS,adj,beyaz,My socks are white.,Çoraplarım beyaz.,1,,colors-numbers
-a1-black,BLACK,K,CONTAINS,adj,siyah,He has a black coat.,Siyah bir paltosu var.,1,,colors-numbers
+a1-black,BLACK,K,CONTAINS,adj,siyah,My shoes are black.,Ayakkabılarım siyah.,1,,colors-numbers
 a1-two,TWO,T,STARTS,noun,iki,I have two brothers.,İki erkek kardeşim var.,1,,colors-numbers
 a1-five,FIVE,F,STARTS,noun,beş,We have five apples.,Beş elmamız var.,1,,colors-numbers
 a1-six,SIX,X,CONTAINS,noun,altı,The market opens at six.,Market altıda açılıyor.,1,,colors-numbers
@@ -14,4 +14,11 @@ a1-nine,NINE,N,STARTS,noun,dokuz,My little cousin is nine.,Küçük kuzenim doku
 a1-zero,ZERO,Z,STARTS,noun,sıfır,The code starts with zero.,Kod sıfırla başlıyor.,1,,colors-numbers
 a1-sixteen,SIXTEEN,X,CONTAINS,noun,on altı,The van has sixteen seats.,Minibüste on altı koltuk var.,2,,colors-numbers
 a1-one,ONE,O,STARTS,adj,"sayıların ilki, bir",I have one ball.,Bir topum var.,1,,colors-numbers
-a1-number,NUMBER,N,STARTS,noun,"sayı, numara",What is your phone number?,Telefon numaran kaç?,1,,colors-numbers
+a1-number,NUMBER,N,STARTS,noun,"sayı, numara",What is your number?,Numaran kaç?,1,,colors-numbers
+a1-brown,BROWN,B,STARTS,adj,toprak rengi,She has brown eyes.,Kahverengi gözleri var.,1,,colors-numbers
+a1-grey,GREY,G,STARTS,adj,bulut rengi,The sky is grey.,Gökyüzü gri.,1,,colors-numbers
+a1-three,THREE,T,STARTS,noun,üç,I have three cousins.,Üç kuzenim var.,1,,colors-numbers
+a1-four,FOUR,F,STARTS,noun,dört,I bought four eggs.,Dört yumurta aldım.,1,,colors-numbers
+a1-ten,TEN,T,STARTS,noun,on,The film starts at ten.,Film saat onda başlıyor.,1,,colors-numbers
+a1-eleven,ELEVEN,E,STARTS,noun,on bir,He is eleven.,O on bir yaşında.,1,,colors-numbers
+a1-twelve,TWELVE,T,STARTS,noun,on iki,She is twelve.,O on iki yaşında.,1,,colors-numbers

@@ -10,15 +10,15 @@ a1-snow,SNOW,S,STARTS,noun,kar,Children enjoy snow.,Çocuklar karı sever.,1,,ti
 a1-today,TODAY,T,STARTS,adv,bugün,I am busy today.,Bugün meşgulüm.,1,,time-weather
 a1-winter,WINTER,W,STARTS,noun,kış,It snows a lot in winter.,Kışın çok kar yağar.,1,,time-weather
 a1-monday,MONDAY,M,STARTS,noun,pazartesi,The test is on Monday.,Sınav pazartesi.,1,,time-weather
-a1-july,JULY,J,STARTS,noun,temmuz,We go to the sea in July.,Temmuzda denize gideriz.,1,,time-weather
-a1-october,OCTOBER,O,STARTS,noun,ekim ayı,October comes after September.,"Ekim, eylülden sonra gelir.",1,,time-weather
+a1-july,JULY,J,STARTS,noun,temmuz,My birthday is in July.,Doğum günüm temmuzda.,1,,time-weather
+a1-october,OCTOBER,O,STARTS,noun,ekim ayı,It is rainy in October.,Ekimde hava yağmurlu olur.,1,,time-weather
 a1-friday,FRIDAY,F,STARTS,noun,cuma,We have a test on Friday.,Cuma günü sınavımız var.,1,,time-weather
-a1-year,YEAR,Y,STARTS,noun,yıl,There are twelve months in a year.,Bir yılda on iki ay vardır.,1,,time-weather
+a1-year,YEAR,Y,STARTS,noun,yıl,This year is long.,Bu yıl uzun.,1,,time-weather
 a1-yesterday,YESTERDAY,Y,STARTS,adv,dün,I saw a film yesterday.,Dün bir film izledim.,2,,time-weather
-a1-week,WEEK,W,STARTS,noun,hafta,We go swimming twice a week.,Haftada iki kez yüzmeye gideriz.,1,,time-weather
+a1-week,WEEK,W,STARTS,noun,hafta,I see him every week.,Onu her hafta görüyorum.,1,,time-weather
 a1-afternoon,AFTERNOON,A,STARTS,noun,öğleden sonra,I rest in the afternoon.,Öğleden sonra dinlenirim.,1,,time-weather
 a1-morning,MORNING,M,STARTS,noun,"günün ilk saatleri, sabah",The morning is cool.,Sabah serin.,1,,time-weather
-a1-hour,HOUR,H,STARTS,noun,60 dakikalık süre,I wait for an hour.,Bir saat bekliyorum.,1,,time-weather
+a1-hour,HOUR,H,STARTS,noun,60 dakikalık süre,It takes an hour.,Bir saat sürer.,1,,time-weather
 a1-time,TIME,T,STARTS,noun,"zaman, vakit",What time is it?,Saat kaç?,1,,time-weather
 a1-early,EARLY,E,STARTS,adv,erken,I leave early.,Erken çıkarım.,1,,time-weather
 a1-late,LATE,L,STARTS,adj,geç,"Sorry, I am late.","Üzgünüm, geç kaldım.",1,,time-weather
@@ -26,3 +26,22 @@ a1-sun,SUN,S,STARTS,noun,güneş,The sun is bright.,Güneş parlak.,1,,time-weat
 a1-summer,SUMMER,S,STARTS,noun,yaz mevsimi,I like summer.,Yazı severim.,1,,time-weather
 a1-january,JANUARY,J,STARTS,noun,yılın ilk ayı,My birthday is in January.,Doğum günüm ocak ayında.,1,,time-weather
 a1-always,ALWAYS,A,STARTS,adv,her zaman,She always smiles.,Her zaman gülümser.,1,,time-weather
+a1-april,APRIL,A,STARTS,noun,yılın dördüncü ayı,It rains a lot in April.,Nisanda çok yağmur yağar.,1,,time-weather
+a1-august,AUGUST,A,STARTS,noun,yılın sekizinci ayı,Grandpa comes in August.,Dede ağustosta gelir.,1,,time-weather
+a1-september,SEPTEMBER,S,STARTS,noun,yılın dokuzuncu ayı,Lessons start in September.,Dersler eylülde başlar.,1,,time-weather
+a1-november,NOVEMBER,N,STARTS,noun,yılın on birinci ayı,It is cloudy in November.,Kasımda hava bulutludur.,1,,time-weather
+a1-december,DECEMBER,D,STARTS,noun,yılın son ayı,Christmas is in December.,Noel aralık ayındadır.,1,,time-weather
+a1-february,FEBRUARY,F,STARTS,noun,yılın en kısa ayı,We ski in February.,Şubatta kayak yaparız.,1,,time-weather
+a1-june,JUNE,J,STARTS,noun,yılın altıncı ayı,Exams end in June.,Sınavlar haziranda biter.,1,,time-weather
+a1-march,MARCH,M,STARTS,noun,yılın üçüncü ayı,It is windy in March.,Martta hava rüzgârlı olur.,1,,time-weather
+a1-may,MAY,M,STARTS,noun,yılın beşinci ayı,We have a trip in May.,Mayıs ayında bir gezimiz var.,1,,time-weather
+a1-saturday,SATURDAY,S,STARTS,noun,cumartesi,I see my friends on Saturday.,Cumartesi arkadaşlarımı görüyorum.,1,,time-weather
+a1-sunday,SUNDAY,S,STARTS,noun,pazar günü,Shops are closed on Sunday.,Dükkânlar pazar günü kapalı.,1,,time-weather
+a1-tuesday,TUESDAY,T,STARTS,noun,salı,I have a lesson on Tuesday.,Salı günü dersim var.,1,,time-weather
+a1-wednesday,WEDNESDAY,W,STARTS,noun,çarşamba,The market is busy on Wednesday.,Pazar yeri çarşamba günü kalabalık.,1,,time-weather
+a1-thursday,THURSDAY,T,STARTS,noun,perşembe,We have a test on Thursday.,Perşembe günü sınavımız var.,1,,time-weather
+a1-spring,SPRING,S,STARTS,noun,ilkbahar,It rains a lot in spring.,İlkbaharda çok yağmur yağar.,1,,time-weather
+a1-weather,WEATHER,W,STARTS,noun,hava durumu,The weather is warm.,Hava ılık.,1,,time-weather
+a1-wind,WIND,W,STARTS,noun,rüzgâr,The wind is strong.,Rüzgâr güçlü.,1,,time-weather
+a1-noon,NOON,N,STARTS,noun,"öğle vakti, gün ortası",He arrives at noon.,Öğlen gelir.,1,,time-weather
+a1-month,MONTH,M,STARTS,noun,yılın on iki bölümünden biri,This month is busy.,Bu ay yoğun.,1,,time-weather

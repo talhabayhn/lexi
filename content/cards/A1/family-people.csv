@@ -4,9 +4,9 @@ a1-brother,BROTHER,B,STARTS,noun,erkek kardeş,I have a brother.,Bir erkek karde
 a1-daughter,DAUGHTER,D,STARTS,noun,kız evlat,Their daughter is a pilot.,Kızları pilot.,3,,family-people
 a1-father,FATHER,F,STARTS,noun,baba,My father likes football.,Babam futbolu sever.,1,,family-people
 a1-girl,GIRL,G,STARTS,noun,kız çocuğu,The little girl is singing.,Küçük kız şarkı söylüyor.,1,,family-people
-a1-uncle,UNCLE,U,STARTS,noun,"amca, dayı",My uncle has a farm.,Amcamın bir çiftliği var.,1,,family-people
-a1-sister,SISTER,S,STARTS,noun,kız kardeş,My sister is ten.,Kız kardeşim on yaşında.,1,,family-people
-a1-young,YOUNG,Y,STARTS,adj,genç,My parents are young.,Annemle babam genç.,1,,family-people
+a1-uncle,UNCLE,U,STARTS,noun,"amca, dayı",My uncle lives in Ankara.,Amcam Ankara'da yaşıyor.,1,,family-people
+a1-sister,SISTER,S,STARTS,noun,kız kardeş,My sister is funny.,Kız kardeşim komik.,1,,family-people
+a1-young,YOUNG,Y,STARTS,adj,genç,My cousins are young.,Kuzenlerim genç.,1,,family-people
 a1-old,OLD,O,STARTS,adj,yaşlı,My neighbour is old but strong.,Komşum yaşlı ama güçlü.,1,,family-people
 a1-queen,QUEEN,Q,STARTS,noun,kraliçe,The queen in the story is wise.,Hikâyedeki kraliçe bilge.,2,,family-people
 a1-mother,MOTHER,M,STARTS,noun,"anne, valide",My mother works in a bank.,Annem bir bankada çalışıyor.,1,,family-people
@@ -23,3 +23,8 @@ a1-kind,KIND,K,STARTS,adj,"nazik, iyi kalpli",She is kind to everyone.,Herkese k
 a1-kid,KID,K,STARTS,noun,"küçük çocuk, ufaklık",A kid is crying outside.,Dışarıda bir çocuk ağlıyor.,1,,family-people
 a1-big,BIG,B,STARTS,adj,"iri, kocaman",He has a big smile.,Kocaman bir gülümsemesi var.,1,,family-people
 a1-tall,TALL,T,STARTS,adj,uzun boylu,He is tall.,O uzun boylu.,1,,family-people
+a1-baby,BABY,B,STARTS,noun,yeni doğmuş bebek,The baby is sleeping.,Bebek uyuyor.,1,,family-people
+a1-parents,PARENTS,P,STARTS,noun,anne ve baba,My parents live in Izmir.,Anne babam İzmir'de yaşıyor.,1,,family-people
+a1-husband,HUSBAND,H,STARTS,noun,evli kadının eşi,Her husband is Turkish.,Kocası Türk.,1,,family-people
+a1-people,PEOPLE,P,STARTS,noun,insanlar,Many people live here.,Burada birçok insan yaşıyor.,1,,family-people
+a1-son,SON,S,STARTS,noun,erkek evlat,Our son is funny.,Oğlumuz komik.,1,,family-people
