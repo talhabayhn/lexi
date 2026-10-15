@@ -65,7 +65,7 @@ a2-kiwi,KIWI,K,STARTS,noun,"yeşil içli, tüylü kahverengi kabuklu meyve",I pu
 a2-pocket,POCKET,K,CONTAINS,noun,giysilerde küçük eşya konan göz,He put his keys in his pocket.,Anahtarlarını cebine koydu.,2,,daily-life
 a2-ski,SKI,K,CONTAINS,verb,karda uzun tahtalarla kaymak,We ski in the mountains every winter.,Her kış dağlarda kayak yaparız.,2,,sports
 a2-skate,SKATE,K,CONTAINS,verb,buzda ya da yerde patenle kaymak,Can you skate on ice?,Buzda patenle kayabilir misin?,2,,sports
-a2-skin,SKIN,K,CONTAINS,noun,vücudumuzu saran dış tabaka,Her skin is soft.,Cildi yumuşak.,2,,body-health
+a2-skin,SKIN,K,CONTAINS,noun,vücudumuzu saran dış tabaka,Her skin is smooth.,Cildi pürüzsüz.,2,,body-health
 a2-skill,SKILL,K,CONTAINS,noun,bir işi iyi yapabilme yeteneği,Cooking is a useful skill.,Yemek yapmak yararlı bir beceri.,3,,school-work
 a2-necklace,NECKLACE,K,CONTAINS,noun,boyna takılan süs,She wears a silver necklace.,Gümüş bir kolye takıyor.,2,,daily-life
 a2-truck,TRUCK,K,CONTAINS,noun,ağır yük taşıyan büyük araç,The truck is full of apples.,Kamyon elmalarla dolu.,2,,city-transport
@@ -94,7 +94,7 @@ a2-style,STYLE,Y,CONTAINS,noun,bir şeyin kendine özgü tarzı,I like your styl
 a2-guy,GUY,Y,CONTAINS,noun,"günlük dilde adam, tip",He is a really nice guy.,O gerçekten iyi bir adam.,3,,family-people
 a2-spicy,SPICY,Y,CONTAINS,adj,baharatlı ve acı olan,I do not like spicy food.,Acılı yemek sevmem.,2,,food-drink
 a2-copy,COPY,Y,CONTAINS,verb,bir şeyin aynısını yapmak ya da çoğaltmak,Please copy the words from the board.,Lütfen sözcükleri tahtadan kopyala.,2,,school-work
-a2-daily,DAILY,Y,CONTAINS,adj,her gün olan,Reading is part of my daily life.,Okumak günlük hayatımın bir parçası.,3,,daily-life
+a2-daily,DAILY,Y,CONTAINS,adj,her gün olan,I take a daily walk in the park.,Parkta günlük yürüyüşümü yaparım.,3,,daily-life
 a2-candy,CANDY,Y,CONTAINS,noun,şekerden yapılan küçük tatlı,The boy ate too much candy.,Çocuk çok fazla şekerleme yedi.,2,,food-drink
 a2-royal,ROYAL,Y,CONTAINS,adj,kral ve kraliçeyle ilgili,The royal family lives in a palace.,Kraliyet ailesi bir sarayda yaşıyor.,3,,family-people
 a2-plenty,PLENTY,Y,CONTAINS,phrase,ihtiyaçtan fazla miktar,We have plenty of time.,Bol bol zamanımız var.,3,,daily-life

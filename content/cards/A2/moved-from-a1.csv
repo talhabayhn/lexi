@@ -3,7 +3,7 @@ a2-quite,QUITE,Q,STARTS,adv,oldukça,The poem is quite lovely.,Şiir oldukça g�
 a2-uniform,UNIFORM,U,STARTS,noun,aynı işi yapanların giydiği kıyafet,The pilot wears a uniform.,Pilot üniforma giyer.,3,,school-work
 a2-van,VAN,V,STARTS,noun,yük taşıyan küçük kapalı araç,A van is waiting at the door.,Kapıda bir kamyonet bekliyor.,2,,city-transport
 a2-vacation,VACATION,V,STARTS,noun,işten ya da okuldan izinli geçirilen günler,Our vacation was lovely.,Tatilimiz çok güzeldi.,3,,daily-life
-a2-view,VIEW,V,STARTS,noun,pencereden görünen doğa ya da şehir,The view from the balcony is lovely.,Balkondan manzara çok güzel.,3,,daily-life
+a2-view,VIEW,V,STARTS,noun,pencereden görünen doğa ya da şehir,The view from the window is great.,Pencereden manzara çok güzel.,3,,daily-life
 a2-yard,YARD,Y,STARTS,noun,evin yanındaki taş döşeli açık alan,Our yard is tiny.,Avlumuz çok ufak.,3,,home
 a2-size,SIZE,Z,CONTAINS,noun,giysinin numarası,Do you have this in a bigger size?,Bunun daha büyük bedeni var mı?,2,,daily-life
 a2-zip,ZIP,Z,STARTS,verb,fermuarı çekip kapatmak,"Can you zip it, Ali?","Fermuarı çeker misin, Ali?",3,,daily-life
@@ -12,7 +12,7 @@ a2-violin,VIOLIN,V,STARTS,noun,"yayla çalınan, dört telli çalgı",The violin
 a2-voice,VOICE,V,STARTS,noun,insanın konuşurken çıkardığı ses,Your voice is soft.,Sesin yumuşak.,2,,daily-life
 a2-oil,OIL,O,STARTS,noun,sıvı yağ,Pour some oil in the pan.,Tavaya biraz yağ dök.,2,,food-drink
 a2-yogurt,YOGURT,Y,STARTS,noun,sütten yapılan ekşi beyaz gıda,Yogurt is sour.,Yoğurt ekşidir.,1,,food-drink
-a2-important,IMPORTANT,I,STARTS,adj,önemi çok büyük olan,Health is important for children.,Sağlık çocuklar için önemlidir.,2,,daily-life
+a2-important,IMPORTANT,I,STARTS,adj,önemi çok büyük olan,Sleep is important for children.,Uyku çocuklar için önemlidir.,2,,daily-life
 a2-invite,INVITE,I,STARTS,verb,bir etkinliğe katılması için çağırmak,We invite our friends to dinner.,Arkadaşlarımızı yemeğe davet ediyoruz.,2,,daily-life
 a2-museum,MUSEUM,M,STARTS,noun,eski eserlerin sergilendiği bina,The museum is closed on Mondays.,Müze pazartesi günleri kapalı.,2,,city-transport
 a2-actor,ACTOR,A,STARTS,noun,filmlerde ya da tiyatroda rol yapan kişi,The actor is on stage.,Oyuncu sahnede.,2,,school-work
@@ -35,5 +35,5 @@ a2-poor,POOR,P,STARTS,adj,parası az olan,The poor fisherman had no shoes.,Yoksu
 a2-piece,PIECE,P,STARTS,noun,bir bütünden ayrılmış küçük bölüm,Ali ate a piece of pie.,Ali bir parça turta yedi.,2,,food-drink
 a2-plan,PLAN,P,STARTS,noun,yapılacak işin önceden belirlenmiş düzeni,"Do you have a plan, Mert?","Bir planın var mı, Mert?",2,,daily-life
 a2-until,UNTIL,U,STARTS,phrase,bir zamana kadar,Mert stayed until midnight.,Mert gece yarısına kadar kaldı.,2,,daily-life
-a2-large,LARGE,L,STARTS,adj,"ölçüsü büyük, geniş",This hall is large.,Bu salon geniş.,2,,daily-life
+a2-large,LARGE,L,STARTS,adj,"ölçüsü büyük, geniş",This room is large.,Bu oda geniş.,2,,daily-life
 a2-shout,SHOUT,S,STARTS,verb,çok yüksek sesle bağırmak,"Don't shout, Ali.","Bağırma, Ali.",2,,daily-life
