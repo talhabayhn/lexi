@@ -98,7 +98,7 @@ internal fun ResultRoute(
         state = state,
         onIntent = { intent ->
             when (intent) {
-                ResultIntent.PlayAgain -> onPlayAgain(viewModel.playAgain)
+                ResultIntent.PlayAgain -> viewModel.playAgain?.let(onPlayAgain)
 
                 ResultIntent.Home -> onHome()
 

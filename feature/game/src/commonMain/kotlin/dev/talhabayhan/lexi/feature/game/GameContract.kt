@@ -34,6 +34,8 @@ internal data class GameUiState(
     val jokers: ImmutableList<JokerUi> = persistentListOf(),
     /** Jokers one rewarded ad grants (`GameConfig.rewardedAdJokerReward`), for the sheet's ad button. */
     val jokerAdReward: Int = 0,
+    /** The ad button is shown (`FeatureFlags.rewardedAdJokers`, off until M7). */
+    val showJokerAd: Boolean = false,
     /** The joker sheet is open; the clock keeps running (`GAME_RULES.md` §5). */
     val isJokerSheetOpen: Boolean = false,
     /** The pause dialog asks to confirm giving up ("Bırak"). Only while [isPaused]. */

@@ -34,10 +34,16 @@ internal class ResultViewModel(
     private val mutableState = MutableStateFlow(initialState(route, config))
     val state: StateFlow<ResultUiState> = mutableState.asStateFlow()
 
-    /** The game behind TEKRAR OYNA: same level, mode and category. */
-    // TODO(M6): the Daily wheel allows one scored attempt per day (GAME_RULES.md §5), so a finished Daily must not be
-    //  replayable from here (hide or redirect TEKRAR OYNA).
-    val playAgain: GameRoute get() = GameRoute(route.gameLevel, route.gameMode, route.categoryId)
+    /**
+     * The game behind TEKRAR OYNA: same level, mode and category. Null for a finished Daily: it allows one scored
+     * attempt per day (`GAME_RULES.md` §5), so the button is hidden ([ResultUiState.canPlayAgain]).
+     */
+    val playAgain: GameRoute?
+        get() = if (mutableState.value.canPlayAgain) {
+            GameRoute(route.gameLevel, route.gameMode, route.categoryId)
+        } else {
+            null
+        }
 
     private var allRows: List<ReviewRowUi> = emptyList()
     private var expanded = false

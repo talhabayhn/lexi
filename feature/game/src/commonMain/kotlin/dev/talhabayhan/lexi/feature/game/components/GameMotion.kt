@@ -12,7 +12,6 @@ import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.geometry.lerp
 import androidx.compose.ui.layout.LayoutCoordinates
@@ -40,7 +39,7 @@ import kotlinx.coroutines.delay
  * - #3 pop + ring and #5 turn + morph + arrow: [chipMotion] for `LetterWheel`.
  * - #4 shake: [slotsOffset] of the answer slots (their red comes from the state's wrong cells).
  * - #6: the current square jumps with the state; the centre letter slides inside `LetterWheel`.
- * - #7 [ComboAnimation]: burst and badge over the wheel centre ([GameMotionLayer]).
+ * - #7 [ComboAnimation]: burst and badge in the HUD row next to the score ([GameMotionLayer]).
  * - #8: only feedback here; colours and the per-second counter pulse live in `TimerBar`.
  */
 @Stable
@@ -66,7 +65,7 @@ internal class GameMotion(
 
     // Placement of the elements the overlay animates between (not state: read when an animation starts).
     private var overlay: LayoutCoordinates? = null
-    private var wheel: LayoutCoordinates? = null
+    private var hud: LayoutCoordinates? = null
     private val keys = HashMap<Int, LayoutCoordinates>()
     private val cells = HashMap<Int, LayoutCoordinates>()
 
@@ -74,8 +73,8 @@ internal class GameMotion(
         overlay = coordinates
     }
 
-    fun onWheelPlaced(coordinates: LayoutCoordinates) {
-        wheel = coordinates
+    fun onHudPlaced(coordinates: LayoutCoordinates) {
+        hud = coordinates
     }
 
     fun onKeyPlaced(index: Int, coordinates: LayoutCoordinates) {
@@ -92,8 +91,8 @@ internal class GameMotion(
     /** #3 / #5 motion of the wheel chip of [letter], null at rest. */
     fun chipMotion(letter: Char): WheelChipMotion? = chips[letter]
 
-    /** Centre of the wheel in the overlay's coordinates, null before both are placed. */
-    fun wheelCenter(): Offset? = bounds(wheel)?.center
+    /** The HUD bar (pause, timer, score) in the overlay's coordinates, null before both are placed. */
+    fun hudBounds(): Rect? = bounds(hud)
 
     suspend fun play(effect: GameEffect) {
         GameFeedback.of(effect)?.let { feedback ->

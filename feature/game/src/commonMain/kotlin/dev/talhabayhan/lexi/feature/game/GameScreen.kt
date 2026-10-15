@@ -96,7 +96,14 @@ internal fun GameScreen(
                 gap = dimens.gap16 * gapScale,
                 answerTopMargin = dimens.gap4 * gapScale,
                 maxWheelSize = if (short) GameScreenDefaults.ShortScreenWheelSize else LetterWheelDefaults.Size,
-                hud = { GameHudBar(state.score, clock, onPause = { onIntent(GameIntent.Pause) }) },
+                hud = {
+                    GameHudBar(
+                        state.score,
+                        clock,
+                        onPause = { onIntent(GameIntent.Pause) },
+                        modifier = Modifier.onPlaced(motion::onHudPlaced),
+                    )
+                },
                 wheel = { size ->
                     LetterWheel(
                         letters = state.wheel,
@@ -104,7 +111,6 @@ internal fun GameScreen(
                         ruleLabel = turn?.let { stringResource(it.rule.label()) }.orEmpty(),
                         size = size,
                         chipMotion = motion::chipMotion,
-                        modifier = Modifier.onPlaced(motion::onWheelPlaced),
                     )
                 },
                 clue = {
@@ -161,7 +167,7 @@ internal fun GameScreen(
         JokerSheet(
             visible = state.isJokerSheetOpen,
             jokers = state.jokers,
-            adReward = state.jokerAdReward,
+            adReward = state.jokerAdReward.takeIf { state.showJokerAd },
             clock = clock,
             onIntent = onIntent,
         )

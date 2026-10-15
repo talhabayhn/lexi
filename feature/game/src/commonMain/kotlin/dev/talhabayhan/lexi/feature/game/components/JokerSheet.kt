@@ -63,14 +63,14 @@ import org.jetbrains.compose.resources.stringResource
 /**
  * The joker sheet (`05-joker-sheet`): bottom sheet (motion.md #10) with the four jokers and the ad button, plus the
  * "Süre işlemeye devam ediyor · 1:31" pill at the top, because the clock keeps running (`GAME_RULES.md` §5; untimed
- * modes show no pill). [adReward] is `GameConfig.rewardedAdJokerReward`. Fills its parent; renders nothing while
+ * modes show no pill). [adReward] is `GameConfig.rewardedAdJokerReward`; null hides the ad button (feature flag). Fills its parent; renders nothing while
  * not [visible].
  */
 @Composable
 internal fun JokerSheet(
     visible: Boolean,
     jokers: ImmutableList<JokerUi>,
-    adReward: Int,
+    adReward: Int?,
     clock: () -> GameClockUi,
     onIntent: (GameIntent) -> Unit,
     modifier: Modifier = Modifier,
@@ -85,16 +85,18 @@ internal fun JokerSheet(
             closeContentDescription = stringResource(Res.string.game_jokers_close),
         ) {
             jokers.forEach { joker -> JokerOption(joker, onClick = { onIntent(GameIntent.UseJoker(joker.type)) }) }
-            LexiButton(
-                text = stringResource(Res.string.game_jokers_ad, adReward),
-                // TODO(M7): rewarded ad with UMP consent (`ROADMAP.md` M7); the button has no action until then.
-                onClick = {},
-                variant = LexiButtonVariant.Ink,
-                shadow = null,
-                leadingIcon = LexiIcons.Play,
-                height = LexiButtonDefaults.LargeHeight,
-                modifier = Modifier.fillMaxWidth().padding(top = JokerRowDefaults.AdButtonTopMargin),
-            )
+            if (adReward != null) {
+                LexiButton(
+                    text = stringResource(Res.string.game_jokers_ad, adReward),
+                    // TODO(M7): rewarded ad with UMP consent (`ROADMAP.md` M7); behind `FeatureFlags.rewardedAdJokers`.
+                    onClick = {},
+                    variant = LexiButtonVariant.Ink,
+                    shadow = null,
+                    leadingIcon = LexiIcons.Play,
+                    height = LexiButtonDefaults.LargeHeight,
+                    modifier = Modifier.fillMaxWidth().padding(top = JokerRowDefaults.AdButtonTopMargin),
+                )
+            }
         }
         val timed by remember(clock) { derivedStateOf { clock().isTimed } }
         val fade = tween<Float>(motion.bottomSheetDurationMillis, easing = motion.mechanical)

@@ -160,4 +160,19 @@ class ResultViewModelTest {
             viewModel().playAgain,
         )
     }
+
+    @Test
+    fun `a finished daily cannot be played again`() = runTest {
+        val vm = viewModel(route(mode = GameMode.DAILY))
+
+        assertFalse(vm.state.value.canPlayAgain)
+        assertNull(vm.playAgain)
+    }
+
+    @Test
+    fun `other modes can be played again`() = runTest {
+        GameMode.entries.filter { it != GameMode.DAILY }.forEach { mode ->
+            assertTrue(viewModel(route(mode = mode)).state.value.canPlayAgain, mode.name)
+        }
+    }
 }

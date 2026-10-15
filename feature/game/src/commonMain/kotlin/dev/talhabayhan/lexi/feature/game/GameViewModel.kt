@@ -4,6 +4,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import co.touchlab.kermit.Logger
+import dev.talhabayhan.lexi.core.domain.config.FeatureFlags
 import dev.talhabayhan.lexi.core.domain.feedback.Speaker
 import dev.talhabayhan.lexi.core.domain.game.EngineEffect
 import dev.talhabayhan.lexi.core.domain.game.GameConfig
@@ -73,6 +74,7 @@ internal class GameViewModel(
     private val config: GameConfig,
     private val timeSource: TimeSource.WithComparableMarks,
     private val seeds: SeedSource,
+    private val flags: FeatureFlags = FeatureFlags(),
 ) : ViewModel() {
     private val mutableState = MutableStateFlow(GameUiState())
     val state: StateFlow<GameUiState> = mutableState.asStateFlow()
@@ -259,6 +261,7 @@ internal class GameViewModel(
         mutableState.value = GameUiMapper.map(state, checkNotNull(engine), mutableState.value).copy(
             isJokerSheetOpen = jokerSheetOpen,
             isQuitConfirmation = quitConfirmation,
+            showJokerAd = flags.rewardedAdJokers,
         )
         mutableClock.value = GameUiMapper.clock(
             state = state,

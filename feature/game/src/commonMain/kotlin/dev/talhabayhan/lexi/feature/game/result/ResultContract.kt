@@ -29,7 +29,10 @@ internal data class ResultUiState(
     val hiddenRows: Int = 0,
     /** True until the review cards are loaded. */
     val isLoading: Boolean = true,
-)
+) {
+    /** TEKRAR OYNA is offered; not after a Daily (one scored attempt per day, `GAME_RULES.md` §5). */
+    val canPlayAgain: Boolean get() = mode != GameMode.DAILY
+}
 
 @Immutable
 internal data class ReviewRowUi(

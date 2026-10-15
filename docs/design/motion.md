@@ -57,7 +57,7 @@ Implemented in `feature:game` (`GameMotion`, `GameMotionLayer`, `GameFeedback`) 
   the next letter (on the wheel "right" means clockwise).
 - #6: the current square jumps with the state; the centre letter slides down out of its box and the next one follows
   from above (`mechanical`).
-- #7: burst and badge are centred on the wheel (design debt, `screen-map.md`); the badge pops in 420 ms, holds 720 ms
+- #7: burst and badge sit in the HUD row next to the score circle (design debt, `screen-map.md`); the badge pops in 420 ms, holds 720 ms
   and shrinks to 0 in 240 ms (`aCombo`). Reduced motion: the badge rests at −4° for 420 + 720 ms, no burst.
 - #8: `TimerBar` pulses whenever the counter changes (and when the warning starts), not on first composition, so a
   paused or restored warning does not pulse.

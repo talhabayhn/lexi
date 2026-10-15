@@ -15,6 +15,7 @@ import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.unit.Constraints
 import dev.talhabayhan.lexi.core.designsystem.component.ComboBadge
 import dev.talhabayhan.lexi.core.designsystem.component.ComboBurst
+import dev.talhabayhan.lexi.core.designsystem.component.GameHudDefaults
 import dev.talhabayhan.lexi.core.designsystem.modifier.lexiSurface
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.feature.game.generated.resources.Res
@@ -62,20 +63,22 @@ private fun FlyingLetter(flight: LetterFlight) {
 }
 
 /**
- * #7 centred on the wheel. DESIGN-DEBT: `15-motion` shows badge and burst alone; their place in the game (the wheel
- * centre) has no design (`screen-map.md`).
+ * #7 in the HUD row, vertically centred on it and right-aligned next to the score circle (over the empty end of the
+ * timer bar), so it stays off the centre letter and the wheel chips (the strip under the HUD is too thin for it).
+ * DESIGN-DEBT: `15-motion` shows badge and burst alone; their place in the game has no design (`screen-map.md`).
  */
 @Composable
 private fun Combo(combo: ComboAnimation, motion: GameMotion) {
+    val scoreClearance = GameHudDefaults.BarHeight + LexiTheme.dimens.gap8
     Box(
         modifier = Modifier.layout { measurable, constraints ->
             val placeable = measurable.measure(constraints.copy(minWidth = 0, minHeight = 0))
-            val center = motion.wheelCenter()
+            val hud = motion.hudBounds()
             layout(placeable.width, placeable.height) {
-                if (center != null) {
+                if (hud != null) {
                     placeable.place(
-                        (center.x - placeable.width / 2f).roundToInt(),
-                        (center.y - placeable.height / 2f).roundToInt(),
+                        (hud.right - scoreClearance.toPx() - placeable.width).roundToInt(),
+                        (hud.center.y - placeable.height / 2f).roundToInt(),
                     )
                 }
             }

@@ -36,6 +36,7 @@ val gameModule: Module = module {
             config = get(),
             timeSource = get(),
             seeds = get(),
+            flags = get(),
         )
     }
     viewModel {

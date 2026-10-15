@@ -3,6 +3,7 @@ package dev.talhabayhan.lexi.di
 import androidx.compose.runtime.Composable
 import dev.talhabayhan.lexi.core.data.db.BundledContentDb
 import dev.talhabayhan.lexi.core.data.di.dataModule
+import dev.talhabayhan.lexi.core.domain.config.FeatureFlags
 import dev.talhabayhan.lexi.core.domain.game.GameConfig
 import dev.talhabayhan.lexi.core.domain.joker.GrantDailyJokers
 import dev.talhabayhan.lexi.core.domain.session.FinishGame
@@ -26,6 +27,7 @@ import org.koin.dsl.onClose
  */
 internal val appCoreModule: Module = module {
     single { GameConfig() }
+    single { FeatureFlags() }
     single<BundledContentDb> { ResourcesBundledContentDb() }
     single<AppClock> { SystemAppClock() }
     factory { FinishGame(sessions = get(), progress = get(), clock = get(), config = get()) }

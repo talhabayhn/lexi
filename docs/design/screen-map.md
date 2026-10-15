@@ -8,7 +8,7 @@
 | `03-level-select` | Seviye ve mod seçimi | `LevelSelectRoute` / `LevelSelectScreen` | feature:levels | M4 (done) |
 | `07-categories` | Seviye kategorileri | `CategoriesRoute(level)` | feature:levels | M5 |
 | `04-game` | Oyun ekranı | `GameRoute(level, mode, category?)` / `GameScreen` | feature:game | M4 (done) |
-| `05-joker-sheet` | Joker seçimi | `JokerSheet` (bottom sheet inside GameScreen; ad button inert until M7) | feature:game | M4 (done) |
+| `05-joker-sheet` | Joker seçimi | `JokerSheet` (bottom sheet inside GameScreen; ad button hidden behind `FeatureFlags.rewardedAdJokers` until M7) | feature:game | M4 (done) |
 | `06-result` | Oyun sonu | `ResultRoute(summary)` / `ResultScreen` (summary payload: ADR 0019 addendum; Paylaş inert until M6) | feature:game (`result`) | M4 (done) |
 | `08-notebook` | Kelime Defterim | `NotebookRoute` | feature:notebook | M5 |
 | `09-stats` | İstatistikler | `StatsRoute` | feature:stats | M5 |
@@ -27,11 +27,14 @@ before shipping.
 
 | Screen | Milestone | Hint |
 |---|---|---|
-| Pause menu (dialog) — **needs design** | M4 | built as `PauseDialog` (feature:game): two `ConfirmDialog` steps, Devam et / Bırak, then "Çarkı bırakmak istiyor musun?" Bırak / Vazgeç. Yeniden başla / Ayarlar wait for the design |
+| Pause menu (dialog) — **needs design** (stays as built, DESIGN-DEBT) | M4 | built as `PauseDialog` (feature:game): two `ConfirmDialog` steps, Devam et / Bırak, then "Çarkı bırakmak istiyor musun?" Bırak / Vazgeç. Yeniden başla / Ayarlar wait for the design |
 | Example sentence of the "Örnek cümle" joker | M4 | italic line under the clue in `ClueCard` |
-| Result without misses | M4 | `EmptyState` instead of the review list |
+| Result without misses (stays as built, DESIGN-DEBT) | M4 | `EmptyState` instead of the review list |
 | Joker sheet clock pill over the live game | M4 | `05-joker-sheet` shows the pill on a dimmed screen; in the app it is drawn above the scrim at the top, over the dimmed but still running HUD timer, so the time is shown twice |
-| Combo badge position in the game | M4 | `15-motion` #7 shows badge + burst alone; in the game they are centred on the wheel centre (over the yellow disc), badge at its resting −4° |
+| Combo badge position in the game | M4 | `15-motion` #7 shows badge + burst alone; in the game they sit in the HUD row, vertically centred on it and right-aligned next to the score circle (over the empty end of the timer bar; the strip under the HUD is too thin), so the badge never covers the centre letter or wheel chips (product owner decision); badge at its resting −4°. The burst shapes (±100dp) may briefly pass over the top chips |
+| Result after a Daily (no TEKRAR OYNA) | M4 | deviation: the Daily allows one scored attempt per day, so TEKRAR OYNA is hidden and Paylaş takes the full row |
+| Result TEKRAR OYNA target | M4 | deviation: the design sends TEKRAR OYNA to level select; the app starts a new game at once with the same level, mode and category (product owner decision) |
+| Joker sheet ad button | M4 | shipped look has no "Kısa reklam izle · +1 joker" button (`FeatureFlags.rewardedAdJokers`, off until M7); `05-joker-sheet.png` shows it |
 | Daily joker gift notice | M4 | none yet: `GrantDailyJokers` returns the grants (type + reason) for a later toast; today only the joker counts change |
 | Disabled game inputs (wrong-answer reveal) | M4 | keys / backspace / joker at 50 % without shadow (joker sheet's disabled rows), PAS = `LexiButton` disabled |
 | Onboarding steps 1 & 3 | M6 | same layout as step 2, different shapes & copy |

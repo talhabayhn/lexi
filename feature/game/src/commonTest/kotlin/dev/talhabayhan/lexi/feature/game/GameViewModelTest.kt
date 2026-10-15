@@ -6,6 +6,7 @@ import app.cash.turbine.ReceiveTurbine
 import app.cash.turbine.test
 import dev.talhabayhan.lexi.core.designsystem.component.AnswerSlotState
 import dev.talhabayhan.lexi.core.designsystem.component.WheelLetterState
+import dev.talhabayhan.lexi.core.domain.config.FeatureFlags
 import dev.talhabayhan.lexi.core.domain.game.GameConfig
 import dev.talhabayhan.lexi.core.domain.game.GameEngine
 import dev.talhabayhan.lexi.core.domain.game.GameMode
@@ -79,6 +80,7 @@ class GameViewModelTest {
         handle: SavedStateHandle = routeHandle(),
         jokerRepository: JokerRepository = jokers,
         sessionRepository: SessionRepository = sessions,
+        flags: FeatureFlags = FeatureFlags(),
     ): GameViewModel = GameViewModel(
         route = route,
         handle = handle,
@@ -92,6 +94,7 @@ class GameViewModelTest {
         config = config,
         timeSource = testScheduler.timeSource,
         seeds = SeedSource { SEED },
+        flags = flags,
     )
 
     /** Loaded and resumed: the game has started (A is current). */
@@ -440,6 +443,17 @@ class GameViewModelTest {
     }
 
     // region joker sheet (05-joker-sheet)
+
+    @Test
+    fun `the joker ad button is off by default and follows the feature flag`() = runTest {
+        assertFalse(started().state.value.showJokerAd)
+
+        val flagged = viewModel(flags = FeatureFlags(rewardedAdJokers = true)).also {
+            runCurrent()
+            it.onIntent(GameIntent.Foreground)
+        }
+        assertTrue(flagged.state.value.showJokerAd)
+    }
 
     @Test
     fun `the joker sheet opens without pausing and the clock keeps running`() = runTest {

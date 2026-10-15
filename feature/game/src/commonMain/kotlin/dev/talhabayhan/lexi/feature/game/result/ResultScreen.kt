@@ -123,7 +123,7 @@ internal fun ResultScreen(state: ResultUiState, onIntent: (ResultIntent) -> Unit
                 Stats(state)
                 Review(state, onIntent)
                 Spacer(Modifier.weight(1f))
-                Actions(onIntent)
+                Actions(state.canPlayAgain, onIntent)
                 LexiTextLink(
                     text = stringResource(Res.string.result_home),
                     onClick = { onIntent(ResultIntent.Home) },
@@ -244,28 +244,33 @@ private fun Review(state: ResultUiState, onIntent: (ResultIntent) -> Unit) {
     }
 }
 
-/** 3-column grid, gap 10: TEKRAR OYNA spans two columns, Paylaş one (both 60dp, s5). */
+/**
+ * 3-column grid, gap 10: TEKRAR OYNA spans two columns, Paylaş one (both 60dp, s5). Without [canPlayAgain] (a finished
+ * Daily, deviation from the design) Paylaş takes the whole row.
+ */
 @Composable
-private fun Actions(onIntent: (ResultIntent) -> Unit) {
+private fun Actions(canPlayAgain: Boolean, onIntent: (ResultIntent) -> Unit) {
     val gap = LexiTheme.dimens.gap10
     BoxWithConstraints(Modifier.fillMaxWidth()) {
         val column = (maxWidth - gap * (ResultDefaults.CTA_COLUMNS - 1)) / ResultDefaults.CTA_COLUMNS
         Row(horizontalArrangement = Arrangement.spacedBy(gap)) {
-            LexiButton(
-                text = stringResource(Res.string.result_play_again),
-                onClick = { onIntent(ResultIntent.PlayAgain) },
-                textStyle = LexiTheme.typography.button20Wide,
-                height = LexiButtonDefaults.LargerHeight,
-                modifier = Modifier.width(
-                    column * ResultDefaults.CTA_PRIMARY_SPAN + gap * (ResultDefaults.CTA_PRIMARY_SPAN - 1),
-                ),
-            )
+            if (canPlayAgain) {
+                LexiButton(
+                    text = stringResource(Res.string.result_play_again),
+                    onClick = { onIntent(ResultIntent.PlayAgain) },
+                    textStyle = LexiTheme.typography.button20Wide,
+                    height = LexiButtonDefaults.LargerHeight,
+                    modifier = Modifier.width(
+                        column * ResultDefaults.CTA_PRIMARY_SPAN + gap * (ResultDefaults.CTA_PRIMARY_SPAN - 1),
+                    ),
+                )
+            }
             LexiButton(
                 text = stringResource(Res.string.result_share),
                 onClick = { onIntent(ResultIntent.Share) },
                 variant = LexiButtonVariant.Secondary,
                 height = LexiButtonDefaults.LargerHeight,
-                modifier = Modifier.width(column),
+                modifier = if (canPlayAgain) Modifier.width(column) else Modifier.fillMaxWidth(),
             )
         }
     }
