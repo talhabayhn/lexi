@@ -1,27 +1,22 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
-b1-achieve,ACHIEVE,A,STARTS,verb,çabayla hedefe ulaşmak,She worked hard to achieve her dream.,Hayaline ulaşmak için çok çalıştı.,3,smoke,school-work
-b1-borrow,BORROW,B,STARTS,verb,geri vermek üzere ödünç almak,Can I borrow your pen?,Kalemini ödünç alabilir miyim?,3,smoke,daily-life
-b1-career,CAREER,C,STARTS,noun,meslekte yıllar içinde ilerleyiş,He started his career as a teacher.,Kariyerine öğretmen olarak başladı.,3,smoke,business
-b1-deadline,DEADLINE,D,STARTS,noun,bir işin teslimi için son gün,The deadline is next Friday.,Son teslim tarihi gelecek cuma.,3,smoke,business
-b1-environment,ENVIRONMENT,E,STARTS,noun,doğayı da kapsayan yaşam çevresi,We must protect the environment.,Çevreyi korumalıyız.,3,smoke,daily-life
-b1-flexible,FLEXIBLE,F,STARTS,adj,"kolay uyum sağlayan, esneyebilen",My boss gives me flexible hours.,Patronum bana esnek saatler veriyor.,3,smoke,business
-b1-generous,GENEROUS,G,STARTS,adj,"paylaşmaktan çekinmeyen, eli açık",He is very generous with his friends.,Arkadaşlarına karşı çok cömert.,3,smoke,family-people
-b1-honest,HONEST,H,STARTS,adj,"doğru sözlü, yalan söylemeyen",Please be honest with me.,Lütfen bana karşı dürüst ol.,3,smoke,family-people
-b1-increase,INCREASE,I,STARTS,verb,artmak veya artırmak,Prices increase every year.,Fiyatlar her yıl artıyor.,3,smoke,business
-b1-journey,JOURNEY,J,STARTS,noun,bir yerden başka yere uzun yolculuk,The journey took six hours.,Yolculuk altı saat sürdü.,3,smoke,travel
-b1-knowledge,KNOWLEDGE,K,STARTS,noun,öğrenilmiş şeylerin tümü,Reading adds to your knowledge.,Okumak bilgini artırır.,3,smoke,school-work
-b1-loyal,LOYAL,L,STARTS,adj,"bağlı, ihanet etmeyen",A dog is a loyal friend.,Köpek sadık bir arkadaştır.,3,smoke,family-people
-b1-manage,MANAGE,M,STARTS,verb,"bir işi yürütmek, idare etmek",She can manage a small shop alone.,Küçük bir dükkânı tek başına yönetebilir.,3,smoke,business
-b1-nervous,NERVOUS,N,STARTS,adj,heyecan ve endişeyle gergin,I feel nervous before exams.,Sınavlardan önce gergin hissediyorum.,3,smoke,daily-life
-b1-opportunity,OPPORTUNITY,O,STARTS,noun,bir şeyi yapmak için uygun zaman,This job is a great opportunity.,Bu iş harika bir fırsat.,3,smoke,business
-b1-patient,PATIENT,P,STARTS,adj,beklerken sakin kalabilen,"Be patient, the bus will come soon.","Sabırlı ol, otobüs yakında gelecek.",3,smoke,daily-life
-b1-quality,QUALITY,Q,STARTS,noun,bir şeyin ne kadar iyi olduğu,The quality of this cloth is excellent.,Bu kumaşın kalitesi mükemmel.,3,smoke,business
-b1-reliable,RELIABLE,R,STARTS,adj,"kendisine güvenilen, sözünde duran",He is a reliable driver.,O güvenilir bir sürücü.,3,smoke,daily-life
-b1-scenery,SCENERY,S,STARTS,noun,bir bölgenin doğal görünümü,The scenery in the mountains is beautiful.,Dağlardaki manzara çok güzel.,3,smoke,travel
-b1-temperature,TEMPERATURE,T,STARTS,noun,havanın veya cismin ısı derecesi,The temperature fell below zero.,Sıcaklık sıfırın altına düştü.,3,smoke,daily-life
-b1-unemployed,UNEMPLOYED,U,STARTS,adj,"işi olmayan, iş arayan",He has been unemployed for a year.,Bir yıldır işsiz.,3,smoke,business
-b1-volunteer,VOLUNTEER,V,STARTS,noun,karşılıksız çalışan gönüllü kişi,She works as a volunteer at the hospital.,Hastanede gönüllü olarak çalışıyor.,3,smoke,school-work
-b1-wealthy,WEALTHY,W,STARTS,adj,"çok parası olan, varlıklı",A wealthy family lives next door.,Yan evde zengin bir aile yaşıyor.,3,smoke,family-people
-b1-experience,EXPERIENCE,X,CONTAINS,noun,bir işte zamanla kazanılan bilgi ve beceri,She has ten years of experience.,On yıllık deneyimi var.,3,smoke,business
-b1-youth,YOUTH,Y,STARTS,noun,gençlik çağı,He spent his youth in Izmir.,Gençliğini İzmir'de geçirdi.,3,smoke,family-people
-b1-zone,ZONE,Z,STARTS,noun,belirli bir amaçla ayrılmış bölge,This is a parking zone.,Burası bir park bölgesi.,3,smoke,city-transport
+b1-achieve,ACHIEVE,A,STARTS,verb,çabayla hedefe ulaşmak,She worked hard to achieve her dream.,Hayaline ulaşmak için çok çalıştı.,3,,school-work
+b1-career,CAREER,C,STARTS,noun,meslekte yıllar içinde ilerleyiş,He started his career as a teacher.,Kariyerine öğretmen olarak başladı.,3,,business
+b1-deadline,DEADLINE,D,STARTS,noun,bir işin teslimi için son gün,The deadline is next Friday.,Son teslim tarihi gelecek cuma.,3,,business
+b1-environment,ENVIRONMENT,E,STARTS,noun,doğayı da kapsayan yaşam çevresi,We must protect the environment.,Çevreyi korumalıyız.,3,,daily-life
+b1-flexible,FLEXIBLE,F,STARTS,adj,"kolay uyum sağlayan, esneyebilen",My boss gives me flexible hours.,Patronum bana esnek saatler veriyor.,3,,business
+b1-generous,GENEROUS,G,STARTS,adj,"paylaşmaktan çekinmeyen, eli açık",He is very generous with his friends.,Arkadaşlarına karşı çok cömert.,3,,family-people
+b1-honest,HONEST,H,STARTS,adj,"doğru sözlü, yalan söylemeyen",Please be honest with me.,Lütfen bana karşı dürüst ol.,3,,family-people
+b1-increase,INCREASE,I,STARTS,verb,artmak veya artırmak,Prices increase every year.,Fiyatlar her yıl artıyor.,3,,business
+b1-knowledge,KNOWLEDGE,K,STARTS,noun,öğrenilmiş şeylerin tümü,Reading adds to your knowledge.,Okumak bilgini artırır.,3,,school-work
+b1-loyal,LOYAL,L,STARTS,adj,"bağlı, ihanet etmeyen",A dog is a loyal friend.,Köpek sadık bir arkadaştır.,3,,family-people
+b1-manage,MANAGE,M,STARTS,verb,"bir işi yürütmek, idare etmek",She can manage a small shop alone.,Küçük bir dükkânı tek başına yönetebilir.,3,,business
+b1-opportunity,OPPORTUNITY,O,STARTS,noun,bir şeyi yapmak için uygun zaman,This job is a great opportunity.,Bu iş harika bir fırsat.,3,,business
+b1-patient,PATIENT,P,STARTS,adj,beklerken sakin kalabilen,"Be patient, the bus will come soon.","Sabırlı ol, otobüs yakında gelecek.",3,,daily-life
+b1-reliable,RELIABLE,R,STARTS,adj,"kendisine güvenilen, sözünde duran",He is a reliable driver.,O güvenilir bir sürücü.,3,,daily-life
+b1-scenery,SCENERY,S,STARTS,noun,bir bölgenin doğal görünümü,The scenery in the mountains is beautiful.,Dağlardaki manzara çok güzel.,3,,travel
+b1-unemployed,UNEMPLOYED,U,STARTS,adj,"işi olmayan, iş arayan",He has been unemployed for a year.,Bir yıldır işsiz.,3,,business
+b1-volunteer,VOLUNTEER,V,STARTS,noun,karşılıksız çalışan gönüllü kişi,She works as a volunteer at the hospital.,Hastanede gönüllü olarak çalışıyor.,3,,school-work
+b1-wealthy,WEALTHY,W,STARTS,adj,"çok parası olan, varlıklı",A wealthy family lives next door.,Yan evde zengin bir aile yaşıyor.,3,,family-people
+b1-experience,EXPERIENCE,X,CONTAINS,noun,bir işte zamanla kazanılan bilgi ve beceri,She has ten years of experience.,On yıllık deneyimi var.,3,,business
+b1-youth,YOUTH,Y,STARTS,noun,gençlik çağı,He spent his youth in Izmir.,Gençliğini İzmir'de geçirdi.,3,,family-people
+b1-zone,ZONE,Z,STARTS,noun,belirli bir amaçla ayrılmış bölge,This is a parking zone.,Burası bir park bölgesi.,3,,city-transport

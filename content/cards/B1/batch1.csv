@@ -1,0 +1,87 @@
+id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
+b1-ability,ABILITY,A,STARTS,noun,"bir şeyi yapabilme gücü, yetenek",She has the ability to learn languages fast.,Dilleri hızlı öğrenme yeteneği var.,3,,school-work
+b1-academic,ACADEMIC,A,STARTS,adj,okul ve üniversite eğitimiyle ilgili,His academic results are excellent.,Akademik sonuçları mükemmel.,3,,school-work
+b1-accent,ACCENT,A,STARTS,noun,"bir kişinin kendine özgü konuşma biçimi, şive",She speaks with a strong French accent.,Güçlü bir Fransız aksanıyla konuşuyor.,3,,daily-life
+b1-account,ACCOUNT,A,STARTS,noun,bankada paranın tutulduğu kayıtlı hesap,I opened a new bank account yesterday.,Dün yeni bir banka hesabı açtım.,3,,business
+b1-achievement,ACHIEVEMENT,A,STARTS,noun,çabayla elde edilen büyük başarı,Finishing the marathon was a great achievement.,Maratonu bitirmek büyük bir başarıydı.,3,,school-work
+b1-act,ACT,A,STARTS,verb,"bir durumda harekete geçmek, davranmak",You must act quickly when you see danger.,Tehlike görünce hızlı hareket etmelisin.,3,,daily-life
+b1-action,ACTION,A,STARTS,noun,"yapılan şey, eylem",The police took action immediately.,Polis hemen harekete geçti.,3,,daily-life
+b1-admire,ADMIRE,A,STARTS,verb,"birine veya bir şeye hayran olmak, takdir etmek",I admire your bravery.,Cesaretine hayranım.,3,,family-people
+b1-admit,ADMIT,A,STARTS,verb,yanlış bir şeyi yaptığını kabul etmek,He did not want to admit that he was wrong.,Yanıldığını kabul etmek istemedi.,3,,daily-life
+b1-advantage,ADVANTAGE,A,STARTS,noun,"bir kişiyi öne geçiren yarar, avantaj",Speaking two languages is a big advantage.,İki dil konuşmak büyük bir avantaj.,3,,business
+b1-advertise,ADVERTISE,A,STARTS,verb,bir ürünü duyurmak için reklam yapmak,They advertise their shop on the radio.,Dükkânlarının reklamını radyoda yapıyorlar.,3,,business
+b1-affect,AFFECT,A,STARTS,verb,bir şey üzerinde etki bırakmak,The weather can affect your mood.,Hava durumu ruh halini etkileyebilir.,3,,daily-life
+b1-afford,AFFORD,A,STARTS,verb,bir şeyi almaya yetecek parası olmak,We cannot afford a new car.,Yeni bir araba almaya gücümüz yetmez.,3,,daily-life
+b1-agent,AGENT,A,STARTS,noun,başkası adına iş yapan aracı kişi,The travel agent booked our hotel.,Seyahat acentesi görevlisi otelimizi ayırttı.,3,,business
+b1-agreement,AGREEMENT,A,STARTS,noun,iki tarafın üzerinde anlaştığı karar,They signed an agreement last week.,Geçen hafta bir anlaşma imzaladılar.,3,,business
+b1-aim,AIM,A,STARTS,noun,ulaşılmak istenen amaç,My aim is to pass the exam.,Amacım sınavı geçmek.,3,,school-work
+b1-airline,AIRLINE,A,STARTS,noun,uçak seferleri yapan şirket,This airline has cheap tickets.,Bu havayolu şirketinin ucuz biletleri var.,3,,travel
+b1-alcohol,ALCOHOL,A,STARTS,noun,bira ve şarap gibi içeceklerdeki sarhoş edici madde,Drivers must not drink alcohol.,Sürücüler alkol içmemeli.,3,,body-health
+b1-ambition,AMBITION,A,STARTS,noun,başarılı olmak için duyulan güçlü istek,Her ambition is to become a doctor.,En büyük hayali doktor olmak.,3,,school-work
+b1-announce,ANNOUNCE,A,STARTS,verb,önemli bir haberi herkese duyurmak,The school will announce the results today.,Okul sonuçları bugün açıklayacak.,3,,daily-life
+b1-annoy,ANNOY,A,STARTS,verb,birini sinirlendirmek veya rahatsız etmek,His loud music began to annoy me.,Yüksek sesli müziği beni rahatsız etmeye başladı.,3,,daily-life
+b1-annoyed,ANNOYED,A,STARTS,adj,"bir şeye canı sıkılmış, kızgın",She was annoyed because he was late.,Geç kaldığı için canı sıkıldı.,3,,daily-life
+b1-apologise,APOLOGISE,A,STARTS,verb,yaptığı şey için özür dilemek,I must apologise for being late.,Geç kaldığım için özür dilemeliyim.,3,,daily-life
+b1-appear,APPEAR,A,STARTS,verb,"görünür hale gelmek, ortaya çıkmak",A rainbow will appear after the rain.,Yağmurdan sonra bir gökkuşağı belirecek.,3,,daily-life
+b1-appearance,APPEARANCE,A,STARTS,noun,bir kişinin dışarıdan görünüşü,She cares a lot about her appearance.,Dış görünüşüne çok önem veriyor.,3,,family-people
+b1-application,APPLICATION,A,STARTS,noun,iş veya okul için yapılan resmî başvuru,I sent my application yesterday.,Başvurumu dün gönderdim.,3,,school-work
+b1-arrange,ARRANGE,A,STARTS,verb,bir toplantıyı ya da işi önceden ayarlamak,Can you arrange a meeting for Monday?,Pazartesi için bir toplantı ayarlayabilir misin?,3,,business
+b1-arrangement,ARRANGEMENT,A,STARTS,noun,önceden yapılan plan ve hazırlık,We made an arrangement to meet at six.,Altıda buluşmak için bir düzenleme yaptık.,3,,business
+b1-arrest,ARREST,A,STARTS,verb,"(polis) birini tutuklamak, gözaltına almak",The police will arrest the thief.,Polis hırsızı tutuklayacak.,3,,daily-life
+b1-atmosphere,ATMOSPHERE,A,STARTS,noun,bir yerin havası; yeryüzünü saran gaz tabakası,The cafe has a friendly atmosphere.,Kafenin samimi bir havası var.,3,,daily-life
+b1-attack,ATTACK,A,STARTS,verb,şiddetle saldırmak,Dogs may attack when they are afraid.,Köpekler korktuklarında saldırabilir.,3,,daily-life
+b1-attempt,ATTEMPT,A,STARTS,noun,bir şeyi başarmak için yapılan deneme,It was his first attempt to swim across the lake.,Gölü yüzerek geçmeye ilk denemesiydi.,3,,daily-life
+b1-attend,ATTEND,A,STARTS,verb,bir toplantıya veya derse katılmak,Over fifty people will attend the meeting.,Toplantıya ellinin üzerinde kişi katılacak.,3,,school-work
+b1-attention,ATTENTION,A,STARTS,noun,bir şeye verilen dikkat,Please pay attention to the teacher.,Lütfen öğretmeni dikkatle dinleyin.,3,,school-work
+b1-attitude,ATTITUDE,A,STARTS,noun,bir konudaki tutum ve bakış açısı,He has a positive attitude to work.,İşe karşı olumlu bir tutumu var.,3,,daily-life
+b1-attract,ATTRACT,A,STARTS,verb,ilgi çekmek veya kendine çekmek,The festival will attract many tourists.,Festival çok sayıda turist çekecek.,3,,travel
+b1-attractive,ATTRACTIVE,A,STARTS,adj,"göze hoş gelen, çekici",The old town is very attractive.,Eski şehir çok çekici.,3,,family-people
+b1-audience,AUDIENCE,A,STARTS,noun,konser veya oyunu izleyen seyirci topluluğu,The audience clapped for ten minutes.,Seyirciler on dakika alkışladı.,3,,film-tv
+b1-avoid,AVOID,A,STARTS,verb,"bir şeyden uzak durmak, kaçınmak",I try to avoid sugar.,Şekerden kaçınmaya çalışıyorum.,3,,body-health
+b1-award,AWARD,A,STARTS,noun,başarı için verilen ödül,She won an award for her film.,Filmiyle bir ödül kazandı.,3,,film-tv
+b1-aware,AWARE,A,STARTS,adj,bir durumun farkında olan,Are you aware of the problem?,Sorunun farkında mısın?,3,,daily-life
+b1-accidentally,ACCIDENTALLY,A,STARTS,adv,"istemeden, kazara",I accidentally broke her glasses.,Yanlışlıkla gözlüğünü kırdım.,4,,daily-life
+b1-background,BACKGROUND,B,STARTS,noun,bir resmin arkası; kişinin geçmişi ve geldiği çevre,He has a good educational background.,İyi bir eğitim geçmişi var.,3,,daily-life
+b1-balance,BALANCE,B,STARTS,noun,dengede durabilme hali,It is hard to keep your balance on ice.,Buzda dengeni korumak zor.,3,,body-health
+b1-barbecue,BARBECUE,B,STARTS,noun,açık havada ateşte et pişirilen yemek,We had a barbecue in the garden.,Bahçede mangal yaptık.,3,,food-drink
+b1-bargain,BARGAIN,B,STARTS,noun,normal fiyatından çok ucuza alınan şey,This coat was a real bargain.,Bu mont gerçek bir kelepirdi.,3,,daily-life
+b1-behave,BEHAVE,B,STARTS,verb,belirli bir biçimde davranmak,The children know how to behave at a party.,Çocuklar partide nasıl davranılacağını biliyor.,3,,family-people
+b1-behaviour,BEHAVIOUR,B,STARTS,noun,bir kişinin davranış biçimi,His behaviour in class is very good.,Sınıftaki davranışı çok iyi.,3,,school-work
+b1-belong,BELONG,B,STARTS,verb,bir kişiye ait olmak,Does this bag belong to your sister?,Bu çanta kız kardeşine mi ait?,3,,daily-life
+b1-benefit,BENEFIT,B,STARTS,noun,bir şeyden sağlanan yarar,Exercise has a clear benefit for your health.,Egzersizin sağlığa açık bir yararı var.,3,,body-health
+b1-biography,BIOGRAPHY,B,STARTS,noun,bir kişinin hayatını anlatan kitap,I am reading a biography of Atatürk.,Atatürk'ün biyografisini okuyorum.,4,,school-work
+b1-blame,BLAME,B,STARTS,verb,kötü bir şeyin suçunu birine yüklemek,Don't blame me for the mistake.,Hata için beni suçlama.,3,,daily-life
+b1-blank,BLANK,B,STARTS,adj,"üzerinde hiçbir şey yazılı olmayan, boş",Please leave the last page blank.,Lütfen son sayfayı boş bırakın.,3,,school-work
+b1-blind,BLIND,B,STARTS,adj,gözleri görmeyen,The blind man crossed the road with a stick.,Görme engelli adam bastonla karşıdan karşıya geçti.,3,,body-health
+b1-border,BORDER,B,STARTS,noun,iki ülkenin sınırı,We crossed the border at night.,Sınırı geceleyin geçtik.,3,,travel
+b1-bother,BOTHER,B,STARTS,verb,rahatsız etmek veya zahmete girmek,Sorry to bother you so late.,Seni bu kadar geç rahatsız ettiğim için üzgünüm.,3,,daily-life
+b1-brand,BRAND,B,STARTS,noun,bir ürünün ticari markası,What brand of shoes do you wear?,Hangi marka ayakkabı giyiyorsun?,3,,business
+b1-breathe,BREATHE,B,STARTS,verb,havayı içine çekip dışarı vermek,It is hard to breathe in the smoke.,Dumanda nefes almak zor.,3,,body-health
+b1-broadcast,BROADCAST,B,STARTS,verb,radyo veya televizyonda yayın yapmak,The match will be broadcast live.,Maç canlı yayınlanacak.,4,,film-tv
+b1-brochure,BROCHURE,B,STARTS,noun,bir ürün veya yeri tanıtan kısa kitapçık,I picked up a brochure at the hotel.,Otelde bir tanıtım broşürü aldım.,3,,travel
+b1-budget,BUDGET,B,STARTS,noun,harcamalar için ayrılan para,We have a small budget for the party.,Parti için küçük bir bütçemiz var.,3,,business
+b1-burglar,BURGLAR,B,STARTS,noun,eve girip eşya çalan hırsız,A burglar broke into the shop.,Bir hırsız dükkâna girdi.,4,,daily-life
+b1-basement,BASEMENT,B,STARTS,noun,bir evin zemin katının altındaki bölüm,We keep old boxes in the basement.,Eski kutuları bodrumda tutuyoruz.,3,,daily-life
+b1-belief,BELIEF,B,STARTS,noun,doğru olduğuna inanılan düşünce,It is my belief that honesty matters.,Bence dürüstlük önemlidir.,3,,daily-life
+b1-billion,BILLION,B,STARTS,noun,"bin milyon sayısı, milyar",The country has over a billion people.,Ülkede bir milyardan fazla insan yaşıyor.,3,,daily-life
+b1-birth,BIRTH,B,STARTS,noun,"bir bebeğin dünyaya gelişi, doğum",The birth of her son made her happy.,Oğlunun doğumu onu mutlu etti.,3,,body-health
+b1-breath,BREATH,B,STARTS,noun,ciğerlere çekilen veya dışarı verilen hava,Take a deep breath and relax.,Derin bir nefes al ve rahatla.,3,,body-health
+b1-brief,BRIEF,B,STARTS,adj,"kısa süren, kısa sürede anlatılan",He gave a brief answer.,Kısa bir cevap verdi.,3,,school-work
+b1-brilliant,BRILLIANT,B,STARTS,adj,çok zeki veya harika,She is a brilliant scientist.,O parlak bir bilim insanı.,3,,school-work
+b1-butcher,BUTCHER,B,STARTS,noun,"et satan dükkânın sahibi, kasap",The butcher sells fresh meat.,Kasap taze et satıyor.,3,,food-drink
+b1-bulb,BULB,B,STARTS,noun,elektrikle ışık veren cam lamba,The bulb in the kitchen is broken.,Mutfaktaki ampul bozuk.,3,,daily-life
+b1-battle,BATTLE,B,STARTS,noun,"muharebe, iki ordunun çarpışması",The battle lasted three days.,Savaş üç gün sürdü.,4,,school-work
+b1-beat,BEAT,B,STARTS,verb,bir oyunda rakibi yenmek,Our team will beat them tomorrow.,Takımımız yarın onları yenecek.,3,,sports
+b1-doubt,DOUBT,B,CONTAINS,noun,"bir şeyden emin olmama durumu, kuşku",I have no doubt that she will win.,Onun kazanacağından hiç şüphem yok.,3,,daily-life
+b1-debate,DEBATE,B,CONTAINS,noun,bir konu üzerinde yapılan tartışma,There was a long debate about school uniforms.,Okul üniformaları hakkında uzun bir tartışma oldu.,3,,school-work
+b1-publish,PUBLISH,B,CONTAINS,verb,bir kitabı veya yazıyı basıp yayımlamak,They will publish her first novel next year.,İlk romanını gelecek yıl yayımlayacaklar.,3,,school-work
+b1-suburb,SUBURB,B,CONTAINS,noun,bir şehrin merkez dışındaki yerleşim bölgesi,They live in a quiet suburb of London.,Londra'nın sakin bir banliyösünde yaşıyorlar.,3,,city-transport
+b1-absent,ABSENT,B,CONTAINS,adj,bulunması gereken yerde olmayan,Three students were absent today.,Bugün üç öğrenci yoktu.,3,,school-work
+b1-cabin,CABIN,B,CONTAINS,noun,gemi veya uçaktaki küçük oda; ormandaki küçük ev,Our cabin on the ship was tiny.,Gemideki kabinimiz çok küçüktü.,3,,travel
+b1-tablet,TABLET,B,CONTAINS,noun,"ince, dokunmatik ekranlı taşınabilir bilgisayar",She reads the news on her tablet.,Haberleri tabletinden okuyor.,3,,technology
+b1-disabled,DISABLED,B,CONTAINS,adj,bedensel bir engeli olan,The building has a lift for disabled people.,Binada engelli insanlar için bir asansör var.,4,,body-health
+b1-obvious,OBVIOUS,B,CONTAINS,adj,"herkesin kolayca anlayabileceği, açık",The answer is obvious.,Cevap çok açık.,3,,school-work
+b1-celebrity,CELEBRITY,B,CONTAINS,noun,ünlü kişi,She wants to marry a celebrity.,Ünlü biriyle evlenmek istiyor.,3,,film-tv
+b1-baggage,BAGGAGE,B,STARTS,noun,yolculukta taşınan çanta ve valizler,Your baggage is on the next plane.,Bagajınız bir sonraki uçakta.,3,,travel
+b1-biological,BIOLOGICAL,B,STARTS,adj,canlıların bilimiyle ilgili,He studies biological sciences at university.,Üniversitede biyolojik bilimler okuyor.,4,,school-work
+b1-booking,BOOKING,B,STARTS,noun,otel veya bilet için önceden yaptırılan rezervasyon,I made a booking for two nights.,İki gece için rezervasyon yaptırdım.,3,,travel
