@@ -11,7 +11,7 @@ a1-home,HOME,H,STARTS,noun,"yuva, insanın yaşadığı yer",This is my home.,Bu
 a1-room,ROOM,R,STARTS,noun,oda,This room is bright.,Bu oda aydınlık.,1,,home
 a1-lamp,LAMP,L,STARTS,noun,masa veya yer lambası,Turn off the lamp.,Lambayı kapat.,1,,home
 a1-wall,WALL,W,STARTS,noun,duvar,There is a poster on the wall.,Duvarda bir poster var.,1,,home
-a1-desk,DESK,D,STARTS,noun,çalışma masası,There is a ruler on the desk.,Masada bir cetvel var.,1,,home
+a1-desk,DESK,D,STARTS,noun,çalışma masası,There is a stapler on the desk.,Masada bir zımba var.,1,,home
 a1-bag,BAG,B,STARTS,noun,çanta,Her bag is full.,Çantası dolu.,1,,home
 a1-bedroom,BEDROOM,B,STARTS,noun,yatılan oda,My bedroom is small.,Yatak odam küçük.,1,,home
 a1-bathroom,BATHROOM,B,STARTS,noun,lavabo ve duşun olduğu oda,The bathroom is small.,Banyo küçük.,1,,home

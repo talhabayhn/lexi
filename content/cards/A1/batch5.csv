@@ -1,7 +1,7 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
 a1-like,LIKE,L,STARTS,verb,hoşlanmak veya beğenmek,I like this song.,Bu şarkıyı beğeniyorum.,1,,daily-life
 a1-want,WANT,W,STARTS,verb,bir şeye sahip olmayı dilemek,Do you want some more?,Biraz daha ister misin?,1,,daily-life
-a1-please,PLEASE,P,STARTS,adv,rica ederken eklenen nazik söz,"Could you repeat that, please?","Bunu tekrar eder misiniz, lütfen?",1,,daily-life
+a1-please,PLEASE,P,STARTS,adv,rica ederken eklenen nazik söz,"Could you hold this, please?","Bunu tutar mısınız, lütfen?",1,,daily-life
 a1-take,TAKE,T,STARTS,verb,bir şeyi alıp başka yere götürmek,I will take these flowers to Ayşe.,Bu çiçekleri Ayşe'ye götüreceğim.,2,,daily-life
 a1-new,NEW,N,STARTS,adj,daha önce kullanılmamış,We have new neighbours.,Yeni komşularımız var.,1,,daily-life
 a1-long,LONG,L,STARTS,adj,bir uçtan ötekine mesafesi ya da süresi fazla,It is a long film.,Bu uzun bir film.,1,,daily-life
@@ -10,7 +10,7 @@ a1-clean,CLEAN,C,STARTS,adj,leke ya da toz olmayan,Your hands are clean.,Ellerin
 a1-look,LOOK,L,STARTS,verb,gözünü bir yöne çevirmek,"Look, it is snowing!","Bak, kar yağıyor!",1,,daily-life
 a1-outside,OUTSIDE,O,STARTS,adv,binanın dışında,The cats rest outside.,Kediler dışarıda dinleniyor.,2,,daily-life
 a1-again,AGAIN,A,STARTS,adv,bir kez daha,It is snowing again.,Yine kar yağıyor.,2,,daily-life
-a1-also,ALSO,A,STARTS,adv,bunun yanında,She also speaks French.,"O, Fransızca da konuşur.",2,,daily-life
+a1-also,ALSO,A,STARTS,adv,bunun yanında,She also speaks Arabic.,"O, Arapça da konuşur.",2,,daily-life
 a1-birthday,BIRTHDAY,B,STARTS,noun,doğduğun günün her yılki kutlaması,Is it your birthday?,Bugün senin doğum günün mü?,1,,daily-life
 a1-boring,BORING,B,STARTS,adj,insanı sıkan,This film is boring.,Bu film sıkıcı.,2,,daily-life
 a1-cheap,CHEAP,C,STARTS,adj,fiyatı düşük,These shoes are cheap.,Bu ayakkabılar ucuz.,1,,daily-life

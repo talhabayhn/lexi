@@ -15,8 +15,8 @@ a1-man,MAN,M,STARTS,noun,"erkek, adam",That man is my neighbour.,O adam komşum.
 a1-woman,WOMAN,W,STARTS,noun,kadın,The woman is waiting here.,Kadın burada bekliyor.,1,,family-people
 a1-dad,DAD,D,STARTS,noun,babaya samimi hitap,My dad is funny.,Babam komiktir.,1,,family-people
 a1-friend,FRIEND,F,STARTS,noun,arkadaş,She is my best friend.,O benim en iyi arkadaşım.,1,,family-people
-a1-grandfather,GRANDFATHER,G,STARTS,noun,"büyükbaba, dede",My grandfather is eighty.,Büyükbabam seksen yaşında.,1,,family-people
-a1-grandmother,GRANDMOTHER,G,STARTS,noun,"büyükanne, nine",My grandmother is seventy.,Büyükannem yetmiş yaşında.,1,,family-people
+a1-grandfather,GRANDFATHER,G,STARTS,noun,"büyükbaba, dede",My grandfather is a retired sailor.,Büyükbabam emekli bir denizci.,1,,family-people
+a1-grandmother,GRANDMOTHER,G,STARTS,noun,"büyükanne, nine",My grandmother is gentle.,Büyükannem nazik.,1,,family-people
 a1-wife,WIFE,W,STARTS,noun,"bir erkeğin eşi, karı",He and his wife are here.,O ve karısı burada.,1,,family-people
 a1-king,KING,K,STARTS,noun,kral,The king lives in a castle.,Kral bir kalede yaşıyor.,1,,family-people
 a1-kind,KIND,K,STARTS,adj,"nazik, iyi kalpli",She is kind to everyone.,Herkese karşı nazik.,1,,family-people
@@ -25,6 +25,6 @@ a1-big,BIG,B,STARTS,adj,"iri, kocaman",He has a big smile.,Kocaman bir gülümse
 a1-tall,TALL,T,STARTS,adj,uzun boylu,He is tall.,O uzun boylu.,1,,family-people
 a1-baby,BABY,B,STARTS,noun,yeni doğmuş bebek,The baby is sleeping.,Bebek uyuyor.,1,,family-people
 a1-parents,PARENTS,P,STARTS,noun,anne ve baba,My parents are in Izmir.,Anne babam İzmir'de.,1,,family-people
-a1-husband,HUSBAND,H,STARTS,noun,evli kadının eşi,Her husband is Turkish.,Kocası Türk.,1,,family-people
+a1-husband,HUSBAND,H,STARTS,noun,evli kadının eşi,Her husband is a baker.,Kocası fırıncı.,1,,family-people
 a1-people,PEOPLE,P,STARTS,noun,insanlar,Many people are here.,Burada birçok insan var.,1,,family-people
 a1-son,SON,S,STARTS,noun,erkek evlat,Our son is funny.,Oğlumuz komik.,1,,family-people

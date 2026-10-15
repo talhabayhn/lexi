@@ -13,7 +13,7 @@ a1-child,CHILD,C,STARTS,noun,büyümekte olan küçük insan,This child is shy.,
 a1-cinema,CINEMA,C,STARTS,noun,film izlemeye gidilen salon,We went to the cinema.,Sinemaya gittik.,1,,city-transport
 a1-camera,CAMERA,C,STARTS,noun,fotoğraf çeken alet,Her camera is small.,Onun fotoğraf makinesi küçük.,2,,daily-life
 a1-clothes,CLOTHES,C,STARTS,noun,giysiler,My clothes are wet.,Kıyafetlerim ıslak.,2,,daily-life
-a1-carrot,CARROT,C,STARTS,noun,turuncu renkli kök sebze,She cut a carrot in half.,Bir havucu ikiye böldü.,2,,food-drink
+a1-carrot,CARROT,C,STARTS,noun,turuncu renkli kök sebze,Ayşe cut a carrot carefully.,Ayşe bir havucu dikkatlice kesti.,2,,food-drink
 a1-draw,DRAW,D,STARTS,verb,kalemle resim yapmak,She likes to draw flowers.,Çiçek çizmeyi sever.,1,,daily-life
 a1-drive,DRIVE,D,STARTS,verb,araç kullanmak,He can drive a truck.,Kamyon kullanabilir.,2,,daily-life
 a1-dirty,DIRTY,D,STARTS,adj,temiz olmayan,Your shoes are dirty.,Ayakkabıların kirli.,1,,daily-life
@@ -28,7 +28,7 @@ a1-expensive,EXPENSIVE,E,STARTS,adj,fiyatı çok yüksek,That ring is too expens
 a1-fast,FAST,F,STARTS,adj,yüksek hızla giden,He is a fast runner.,O hızlı bir koşucu.,2,,daily-life
 a1-flower,FLOWER,F,STARTS,noun,güzel kokan renkli bitki parçası,The flower smells sweet.,Çiçek güzel kokuyor.,1,,daily-life
 a1-fly,FLY,F,STARTS,verb,kanatla ya da uçakla havada gitmek,Birds can fly.,Kuşlar uçabilir.,1,,daily-life
-a1-football,FOOTBALL,F,STARTS,noun,ayakla oynanan takım sporu,Football is popular in Turkey.,Türkiye'de futbol çok sevilir.,1,,daily-life
+a1-football,FOOTBALL,F,STARTS,noun,ayakla oynanan takım sporu,Football is popular in my area.,Futbol bölgemde çok sevilir.,1,,daily-life
 a1-finish,FINISH,F,STARTS,verb,"bitirmek, sona ermek",When does the film finish?,Film ne zaman bitiyor?,2,,daily-life
 a1-forest,FOREST,F,STARTS,noun,ağaçlarla kaplı geniş alan,We had a picnic in the forest.,Ormanda piknik yaptık.,2,,daily-life
 a1-get,GET,G,STARTS,verb,eline geçirmek,Did you get my parcel?,Paketimi aldın mı?,1,,daily-life
@@ -70,7 +70,7 @@ a1-ride,RIDE,R,STARTS,verb,hayvanın ya da aracın üstünde gitmek,Can you ride
 a1-remember,REMEMBER,R,STARTS,verb,unutmayıp aklında tutmak,Do you remember me?,Beni hatırlıyor musun?,2,,daily-life
 a1-relax,RELAX,R,STARTS,verb,"gevşemek, rahatlamak",I relax on the sofa.,Kanepede dinlenirim.,2,,daily-life
 a1-roof,ROOF,R,STARTS,noun,binanın en üstündeki örtü,A pigeon sits on the roof.,Çatıda bir güvercin oturuyor.,2,,home
-a1-speak,SPEAK,S,STARTS,verb,dil kullanarak konuşmak,I speak a little German.,Biraz Almanca konuşurum.,1,,daily-life
+a1-speak,SPEAK,S,STARTS,verb,dil kullanarak konuşmak,I speak a little Arabic.,Biraz Arapça konuşurum.,1,,daily-life
 a1-slow,SLOW,S,STARTS,adj,hızlı olmayan,The lift is slow.,Asansör yavaş.,1,,daily-life
 a1-sport,SPORT,S,STARTS,noun,beden gücüyle yapılan yarışma oyunu,Tennis is a popular sport.,Tenis popüler bir spordur.,2,,daily-life
 a1-tired,TIRED,T,STARTS,adj,dinlenmeye ihtiyacı olan,They are tired after the trip.,Geziden sonra yorgunlar.,1,,daily-life
@@ -93,7 +93,7 @@ a1-melon,MELON,M,STARTS,noun,"yazın yenen büyük, sulu meyve",This melon is sw
 a1-towel,TOWEL,T,STARTS,noun,yıkandıktan sonra kurulanmak için kullanılan bez,Where is my towel?,Havlum nerede?,2,,home
 a1-sandwich,SANDWICH,S,STARTS,noun,iki dilim ekmek arasına konan yiyecek,He made a sandwich.,Bir sandviç yaptı.,2,,food-drink
 a1-stamp,STAMP,S,STARTS,noun,mektubun üstüne yapıştırılan küçük kâğıt,This stamp is rare.,Bu pul nadir.,2,,daily-life
-a1-joke,JOKE,J,STARTS,noun,güldürmek için söylenen kısa söz,Her joke made everyone laugh.,Şakası herkesi güldürdü.,2,,daily-life
+a1-joke,JOKE,J,STARTS,noun,güldürmek için söylenen kısa söz,Her joke made everyone smile.,Şakası herkesi gülümsetti.,2,,daily-life
 a1-computer,COMPUTER,C,STARTS,noun,ekranı ve klavyesi olan makine,The computer is broken.,Bilgisayar bozuk.,2,,school-work
 a1-laptop,LAPTOP,L,STARTS,noun,taşınabilir bilgisayar,She carries a laptop in her backpack.,Sırt çantasında dizüstü bilgisayar taşıyor.,2,,school-work
 a1-flat,FLAT,F,STARTS,noun,apartmanda tek bir konut,Our flat has a small balcony.,Dairemizin küçük bir balkonu var.,2,,home

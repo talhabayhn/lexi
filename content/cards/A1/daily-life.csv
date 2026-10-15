@@ -12,7 +12,7 @@ a1-very,VERY,V,STARTS,adv,sıfatın önüne gelip anlamı güçlendiren 'çok',T
 a1-use,USE,U,STARTS,verb,kullanmak,Can I use your charger?,Şarj aletini kullanabilir miyim?,1,,daily-life
 a1-idea,IDEA,I,STARTS,noun,fikir,I have an idea!,Bir fikrim var!,1,,daily-life
 a1-good,GOOD,G,STARTS,adj,iyi,This is a good film.,Bu iyi bir film.,1,,daily-life
-a1-next,NEXT,X,CONTAINS,adj,bir sonraki,The next page is blank.,Sonraki sayfa boş.,2,,daily-life
+a1-next,NEXT,X,CONTAINS,adj,bir sonraki,Who is next?,Sırada kim var?,2,,daily-life
 a1-jacket,JACKET,J,STARTS,noun,"ceket, mont",Put on your jacket.,Ceketini giy.,1,,daily-life
 a1-jeans,JEANS,J,STARTS,noun,kot pantolon,These jeans are too small.,Bu kot pantolon çok küçük.,1,,daily-life
 a1-shirt,SHIRT,S,STARTS,noun,gömlek,His shirt is wet.,Gömleği ıslak.,1,,daily-life
@@ -59,7 +59,7 @@ a1-travel,TRAVEL,T,STARTS,verb,uzak yerlere yolculuk etmek,We travel a lot.,Çok
 a1-sing,SING,S,STARTS,verb,şarkı söylemek,She can sing well.,İyi şarkı söyleyebilir.,1,,daily-life
 a1-swim,SWIM,S,STARTS,verb,yüzmek,I can swim.,Yüzebilirim.,1,,daily-life
 a1-write,WRITE,W,STARTS,verb,yazmak,Write it here.,Buraya yaz.,1,,daily-life
-a1-wear,WEAR,W,STARTS,verb,giymek,Do you wear glasses?,Gözlük takıyor musun?,1,,daily-life
+a1-wear,WEAR,W,STARTS,verb,giymek,Do you wear contact lenses?,Kontakt lens takıyor musun?,1,,daily-life
 a1-wait,WAIT,W,STARTS,verb,beklemek,Wait for me!,Beni bekle!,1,,daily-life
 a1-learn,LEARN,L,STARTS,verb,öğrenmek,Children learn quickly.,Çocuklar hızlı öğrenir.,1,,daily-life
 a1-know,KNOW,K,STARTS,verb,bilmek,I do not know.,Bilmiyorum.,1,,daily-life
