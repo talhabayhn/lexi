@@ -89,7 +89,8 @@ public fun LetterWheel(
             AnimatedContent(
                 targetState = centerLetter,
                 transitionSpec = {
-                    if (motion.reducedMotion) {
+                    // A blank initial letter is the pre-game state: the first letter appears in place.
+                    if (motion.reducedMotion || initialState == ' ') {
                         EnterTransition.None togetherWith ExitTransition.None
                     } else {
                         val slide = tween<IntOffset>(motion.wheelAdvanceDurationMillis, easing = motion.mechanical)

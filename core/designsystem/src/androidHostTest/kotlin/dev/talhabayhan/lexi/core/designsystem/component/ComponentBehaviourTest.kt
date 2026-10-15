@@ -142,6 +142,54 @@ class ComponentBehaviourTest {
     }
 
     @Test
+    fun `timer counter pulses on each second in the warning window but not on first composition`() = runComposeUiTest {
+        var text by mutableStateOf("0:09")
+        setLexiContent {
+            TimerBar(progress = 0.1f, timeText = text, warning = true, modifier = Modifier.width(300.dp))
+        }
+        mainClock.autoAdvance = false
+        mainClock.advanceTimeBy(FRAME + 300)
+        val rest = onNodeWithText("0:09").fetchSemanticsNode().boundsInRoot.width
+        mainClock.advanceTimeBy(1_000)
+        assertEquals(rest, onNodeWithText("0:09").fetchSemanticsNode().boundsInRoot.width, absoluteTolerance = 0.5f)
+
+        for (next in listOf("0:08", "0:07")) {
+            runOnUiThread {
+                text = next
+                Snapshot.sendApplyNotifications()
+            }
+            mainClock.advanceTimeBy(FRAME + 300)
+            val peak = onNodeWithText(next).fetchSemanticsNode().boundsInRoot.width
+            assertTrue(peak > rest * 1.08f, "$next: peak $peak vs rest $rest")
+            mainClock.advanceTimeBy(1_000)
+        }
+    }
+
+    @Test
+    fun `centre letter appears in place on game start and slides on advance`() = runComposeUiTest {
+        var letter by mutableStateOf(' ')
+        setLexiContent {
+            LetterWheel(letters = emptyList(), centerLetter = letter, ruleLabel = "İLE BAŞLAR")
+        }
+        mainClock.autoAdvance = false
+
+        fun offsetAfterOneFrame(next: Char): Float {
+            runOnUiThread {
+                letter = next
+                Snapshot.sendApplyNotifications()
+            }
+            mainClock.advanceTimeBy(FRAME * 2)
+            val early = onNodeWithText(next.toString(), useUnmergedTree = true).fetchSemanticsNode().boundsInRoot.top
+            mainClock.advanceTimeBy(1_000)
+            return early - onNodeWithText(next.toString(), useUnmergedTree = true).fetchSemanticsNode().boundsInRoot.top
+        }
+
+        assertEquals(0f, offsetAfterOneFrame('K'), absoluteTolerance = 0.5f)
+        val slide = offsetAfterOneFrame('L')
+        assertTrue(slide < -1f, "slide $slide")
+    }
+
+    @Test
     fun `timer fill turns from yellow to red in the warning phase`() = runComposeUiTest {
         var warn by mutableStateOf(false)
         setLexiContent(reducedMotion = true) {
