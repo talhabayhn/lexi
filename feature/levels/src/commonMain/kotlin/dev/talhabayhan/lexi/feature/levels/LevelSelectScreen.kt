@@ -30,6 +30,7 @@ import dev.talhabayhan.lexi.core.designsystem.component.NavSquareButton
 import dev.talhabayhan.lexi.core.designsystem.component.Segment
 import dev.talhabayhan.lexi.core.designsystem.component.SegmentedControl
 import dev.talhabayhan.lexi.core.designsystem.component.StartButton
+import dev.talhabayhan.lexi.core.designsystem.format.formatClock
 import dev.talhabayhan.lexi.core.designsystem.icon.LexiIcons
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.core.domain.game.GameMode
@@ -170,7 +171,6 @@ private fun ModePicker(state: LevelSelectUiState, onIntent: (LevelSelectIntent) 
 }
 
 private const val LEVEL_COLUMNS = 2
-private const val SECONDS_PER_MINUTE = 60
 
 /** The marker shape and color of a level's card, as in the design. */
 private class LevelLook(val marker: DecorShapeKind, val color: Color)
@@ -210,13 +210,8 @@ private fun GameMode.captionRes(): StringResource = when (this) {
 @Composable
 private fun GameMode.hint(classicSeconds: Int): String = when (this) {
     GameMode.PRACTICE -> stringResource(Res.string.levels_mode_practice_hint)
-
     GameMode.HARDCORE -> stringResource(Res.string.levels_mode_hardcore_hint)
-
-    else -> "${classicSeconds / SECONDS_PER_MINUTE}:${(classicSeconds % SECONDS_PER_MINUTE).toString().padStart(
-        2,
-        '0',
-    )}"
+    else -> formatClock(classicSeconds)
 }
 
 // design sample, not user-facing

@@ -10,16 +10,24 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.text.BasicText
+import androidx.compose.foundation.text.TextAutoSize
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import dev.talhabayhan.lexi.core.designsystem.icon.LexiIcons
 import dev.talhabayhan.lexi.core.designsystem.modifier.lexiSurface
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
@@ -36,6 +44,22 @@ public object HomeDefaults {
     internal val DailyGap: Dp = 14.dp
     internal val DailyCircleSize: Dp = 64.dp
     internal val DailyChevronSize: Dp = 22.dp
+
+    /** Background blue circle 140 at `right: -70; top: 210`: half of it leaves the screen. */
+    public val CircleSize: Dp = 140.dp
+    public val CircleBleed: Dp = 70.dp
+
+    /** Background red half-pill 60 × 120 at `left: -30; bottom: 210`. */
+    public val PillWidth: Dp = 60.dp
+    public val PillHeight: Dp = 120.dp
+    public val PillBleed: Dp = 30.dp
+
+    /** 210 from the top (circle) and from the bottom (pill). */
+    public val DecorOffset: Dp = 210.dp
+
+    /** Smallest scale a CTA caption shrinks to before it is cut with an ellipsis. */
+    internal const val CAPTION_MIN_SCALE: Float = 0.7f
+    internal val CAPTION_STEP: TextUnit = 0.5.sp
 }
 
 /** "7 gün seri": white chip with a red square, 3dp ink frame, 15/800. Informational, one node for accessibility. */
@@ -101,7 +125,8 @@ public fun DailyCard(day: String, label: String, title: String, onClick: () -> U
 }
 
 /**
- * OYNA (`02-home`): the red 76dp CTA with s6 shadow; [badge] ("A1 · KLASİK") is a small white chip on the right.
+ * OYNA (`02-home`): the red 76dp CTA with s6 shadow; [badge] ("A1 · KLASİK") is a small white chip on the right. A long
+ * badge shrinks (then ends in an ellipsis) instead of touching the label.
  */
 @Composable
 public fun PlayButton(label: String, badge: String, onClick: () -> Unit, modifier: Modifier = Modifier) {
@@ -113,19 +138,24 @@ public fun PlayButton(label: String, badge: String, onClick: () -> Unit, modifie
         horizontalArrangement = Arrangement.SpaceBetween,
         modifier = modifier.fillMaxWidth(),
     ) {
-        Text(label, style = LexiTheme.typography.button30, color = colors.white)
-        Text(
-            badge,
+        Text(label, style = LexiTheme.typography.button30, color = colors.white, maxLines = 1)
+        ShrinkingText(
+            text = badge,
             style = LexiTheme.typography.badge14,
             color = colors.ink,
             modifier = Modifier
+                .padding(start = LexiTheme.dimens.gap12)
+                .weight(1f, fill = false)
                 .lexiSurface(colors.white, BorderStroke(LexiTheme.borders.thin, colors.ink))
                 .padding(CardDefaults.BadgePadding),
         )
     }
 }
 
-/** BAŞLA (`03-level-select`): the red 68dp CTA with s6 shadow and a plain [caption] ("A1 · KLASİK · 26 HARF"). */
+/**
+ * BAŞLA (`03-level-select`): the red 68dp CTA with s6 shadow and a plain [caption] ("A1 · KLASİK · 26 HARF"), right
+ * aligned on one line with at least a 12dp gap to the label; a long caption shrinks (then ends in an ellipsis).
+ */
 @Composable
 public fun StartButton(label: String, caption: String, onClick: () -> Unit, modifier: Modifier = Modifier) {
     val colors = LexiTheme.colors
@@ -136,9 +166,32 @@ public fun StartButton(label: String, caption: String, onClick: () -> Unit, modi
         horizontalArrangement = Arrangement.SpaceBetween,
         modifier = modifier.fillMaxWidth(),
     ) {
-        Text(label, style = LexiTheme.typography.button24, color = colors.white)
-        Text(caption, style = LexiTheme.typography.ctaCaption14, color = colors.white)
+        Text(label, style = LexiTheme.typography.button24, color = colors.white, maxLines = 1)
+        ShrinkingText(
+            text = caption,
+            style = LexiTheme.typography.ctaCaption14,
+            color = colors.white,
+            modifier = Modifier.padding(start = LexiTheme.dimens.gap12).weight(1f, fill = false),
+        )
     }
+}
+
+/** One line, right aligned; when it does not fit, the font shrinks to a minimum, then it is ellipsized. */
+@Composable
+private fun ShrinkingText(text: String, style: TextStyle, color: Color, modifier: Modifier = Modifier) {
+    BasicText(
+        text = text,
+        modifier = modifier,
+        style = style.merge(TextStyle(textAlign = TextAlign.End)),
+        color = { color },
+        maxLines = 1,
+        overflow = TextOverflow.Ellipsis,
+        autoSize = TextAutoSize.StepBased(
+            minFontSize = style.fontSize * HomeDefaults.CAPTION_MIN_SCALE,
+            maxFontSize = style.fontSize,
+            stepSize = HomeDefaults.CAPTION_STEP,
+        ),
+    )
 }
 
 // design sample, not user-facing

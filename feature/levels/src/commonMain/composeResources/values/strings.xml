@@ -9,7 +9,7 @@
     <string name="levels_b1">Intermediate</string>
     <string name="levels_b2">Upper intermediate</string>
     <string name="levels_c1">Advanced</string>
-    <string name="levels_nat">Idioms · phrasal verbs</string>
+    <string name="levels_nat">Idioms · phrasals</string>
     <string name="levels_progress">%1$d / %2$d words</string>
 
     <!-- Game mode selector -->

@@ -25,6 +25,9 @@ internal data class HomeUiState(
 )
 
 internal sealed interface HomeIntent {
+    /** The screen is in the foreground again: "today" may have changed since the last time. */
+    data object Resumed : HomeIntent
+
     /** OYNA: opens the level and mode select. */
     data object Play : HomeIntent
 

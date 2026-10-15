@@ -23,10 +23,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import dev.talhabayhan.lexi.core.designsystem.component.DailyCard
 import dev.talhabayhan.lexi.core.designsystem.component.DecorShape
 import dev.talhabayhan.lexi.core.designsystem.component.DecorShapeKind
+import dev.talhabayhan.lexi.core.designsystem.component.HomeDefaults
 import dev.talhabayhan.lexi.core.designsystem.component.IconButtonDefaults
 import dev.talhabayhan.lexi.core.designsystem.component.LexiLogo
 import dev.talhabayhan.lexi.core.designsystem.component.MenuTile
@@ -75,16 +75,16 @@ internal fun HomeScreen(state: HomeUiState, onIntent: (HomeIntent) -> Unit, modi
             color = colors.blue,
             modifier = Modifier
                 .align(Alignment.TopEnd)
-                .offset(x = HomeScreenDefaults.CircleBleed, y = HomeScreenDefaults.DecorOffset)
-                .size(HomeScreenDefaults.CircleSize),
+                .offset(x = HomeDefaults.CircleBleed, y = HomeDefaults.DecorOffset)
+                .size(HomeDefaults.CircleSize),
         )
         DecorShape(
             kind = DecorShapeKind.HalfPill,
             color = colors.red,
             modifier = Modifier
                 .align(Alignment.BottomStart)
-                .offset(x = -HomeScreenDefaults.PillBleed, y = -HomeScreenDefaults.DecorOffset)
-                .size(HomeScreenDefaults.PillWidth, HomeScreenDefaults.PillHeight),
+                .offset(x = -HomeDefaults.PillBleed, y = -HomeDefaults.DecorOffset)
+                .size(HomeDefaults.PillWidth, HomeDefaults.PillHeight),
         )
         BoxWithConstraints(Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
             val screenHeight = maxHeight
@@ -200,21 +200,6 @@ private fun GameMode.nameRes() = when (this) {
     GameMode.PRACTICE -> Res.string.home_mode_practice
     GameMode.HARDCORE -> Res.string.home_mode_hardcore
     else -> Res.string.home_mode_classic
-}
-
-/** Background shapes of `02-home`. */
-private object HomeScreenDefaults {
-    /** Blue circle 140 at `right: -70; top: 210`: half of it leaves the screen. */
-    val CircleSize = 140.dp
-    val CircleBleed = 70.dp
-
-    /** Red half-pill 60 × 120 at `left: -30; bottom: 210`. */
-    val PillWidth = 60.dp
-    val PillHeight = 120.dp
-    val PillBleed = 30.dp
-
-    /** 210 from the top (circle) and from the bottom (pill). */
-    val DecorOffset = 210.dp
 }
 
 // design sample, not user-facing

@@ -2,6 +2,7 @@ package dev.talhabayhan.lexi.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.Lifecycle
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
@@ -28,19 +29,34 @@ fun LexiNavHost(modifier: Modifier = Modifier) {
     ) {
         splashScreen(
             onFinished = {
-                navController.navigate(HomeRoute) { popUpTo(SplashRoute) { inclusive = true } }
+                navController.ifResumed {
+                    navigate(HomeRoute) {
+                        launchSingleTop = true
+                        popUpTo(SplashRoute) { inclusive = true }
+                    }
+                }
             },
         )
-        homeScreen(onPlay = { navController.navigate(LevelSelectRoute) })
+        homeScreen(onPlay = { navController.ifResumed { navigate(LevelSelectRoute) { launchSingleTop = true } } })
         levelSelectScreen(
-            onBack = { navController.popBackStack() },
-            onStart = { level, mode -> navController.navigate(GameRoute(level, mode)) },
+            onBack = { navController.ifResumed { popBackStack() } },
+            onStart = { level, mode ->
+                navController.ifResumed { navigate(GameRoute(level, mode)) { launchSingleTop = true } }
+            },
         )
         gameScreen(
             onFinished = { navController.backToHome() },
             onAbandoned = { navController.backToHome() },
         )
     }
+}
+
+/**
+ * Runs [action] only while the current destination is fully shown (RESUMED). A second tap on OYNA, BAŞLA or Back
+ * during the transition finds the entry no longer resumed and is dropped, so entries never stack or the graph empty.
+ */
+private inline fun NavHostController.ifResumed(action: NavHostController.() -> Unit) {
+    if (currentBackStackEntry?.lifecycle?.currentState == Lifecycle.State.RESUMED) action()
 }
 
 private fun NavHostController.backToHome() {

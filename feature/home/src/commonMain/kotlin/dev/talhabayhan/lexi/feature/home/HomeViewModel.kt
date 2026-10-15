@@ -26,14 +26,15 @@ internal class HomeViewModel(progress: ProgressRepository, streaks: StreakReposi
     private val effectChannel = Channel<HomeEffect>(Channel.BUFFERED)
     val effects: Flow<HomeEffect> = effectChannel.receiveAsFlow()
 
+    private val today = MutableStateFlow(appClock.currentDay())
+
     init {
         viewModelScope.launch {
-            combine(progress.observeAll(), streaks.observeDays()) { cards, days ->
-                val today = appClock.epochDay(appClock.nowMs())
-                val date = civilDateOfEpochDay(today)
+            combine(progress.observeAll(), streaks.observeDays(), today) { cards, days, day ->
+                val date = civilDateOfEpochDay(day)
                 mutableState.value.copy(
-                    streakDays = currentStreak(days, today),
-                    dueReviews = cards.count { it.isDue(today) },
+                    streakDays = currentStreak(days, day),
+                    dueReviews = cards.count { it.isDue(day) },
                     learnedWords = Stats.learnedWords(cards),
                     dailyDay = date.day,
                     dailyMonth = date.month,
@@ -45,8 +46,12 @@ internal class HomeViewModel(progress: ProgressRepository, streaks: StreakReposi
         }
     }
 
+    private fun AppClock.currentDay(): Long = epochDay(nowMs())
+
     fun onIntent(intent: HomeIntent) {
         when (intent) {
+            HomeIntent.Resumed -> today.value = appClock.currentDay()
+
             HomeIntent.Play -> effectChannel.trySend(HomeEffect.NavigateToLevelSelect)
 
             // Destinations land with their milestones (see HomeIntent); until then the tiles are inert.

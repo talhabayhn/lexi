@@ -26,13 +26,27 @@ class LevelSelectScreenshotTest {
         }
     }
 
-    /** NAT and Hardcore selected: the states the design does not show. */
+    /** Longest start caption in Turkish: NAT · HARDCORE · 26 HARF must stay on one line. */
     @Test
-    fun otherSelection() {
+    fun longestCaptionTurkish() {
         captureRoboImage("src/androidHostTest/screenshots/LevelSelectNatHardcore.png") {
             LexiTheme(reducedMotion = false) {
                 LevelSelectScreen(
                     state = LevelSelectSampleState.copy(selectedLevel = Level.NAT, selectedMode = GameMode.HARDCORE),
+                    onIntent = {},
+                )
+            }
+        }
+    }
+
+    /** Longest start caption in English: NAT · PRACTICE · 26 LETTERS. */
+    @Test
+    @Config(qualifiers = "en-w390dp-h844dp-xhdpi")
+    fun longestCaptionEnglish() {
+        captureRoboImage("src/androidHostTest/screenshots/LevelSelectNatPracticeEn.png") {
+            LexiTheme(reducedMotion = false) {
+                LevelSelectScreen(
+                    state = LevelSelectSampleState.copy(selectedLevel = Level.NAT, selectedMode = GameMode.PRACTICE),
                     onIntent = {},
                 )
             }

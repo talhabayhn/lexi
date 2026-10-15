@@ -38,5 +38,9 @@ internal fun HomeRoute(onPlay: () -> Unit, viewModel: HomeViewModel = koinViewMo
             }
         }
     }
+    // "Today" (daily card, streak, due reviews) is read again whenever the home comes back to the foreground.
+    LaunchedEffect(viewModel, lifecycleOwner) {
+        lifecycleOwner.repeatOnLifecycle(Lifecycle.State.RESUMED) { viewModel.onIntent(HomeIntent.Resumed) }
+    }
     HomeScreen(state = state, onIntent = viewModel::onIntent)
 }
