@@ -6,7 +6,7 @@ a1-arrive,ARRIVE,A,STARTS,verb,yolculuk sonunda bir yere varmak,The guests arriv
 a1-buy,BUY,B,STARTS,verb,parasını verip almak,Where can I buy stamps?,Pul nereden alabilirim?,1,,daily-life
 a1-bank,BANK,B,STARTS,noun,paranı yatırdığın kurum,Is there a bank in this area?,Bu çevrede banka var mı?,2,,city-transport
 a1-building,BUILDING,B,STARTS,noun,ev ya da ofis gibi çok katlı yapı,Who lives in that building?,O binada kim oturuyor?,2,,city-transport
-a1-close,CLOSE,C,STARTS,verb,açık olanı kapatmak,Do not forget to close the gate.,Bahçe kapısını kapatmayı unutma.,1,,daily-life
+a1-close,CLOSE,C,STARTS,verb,açık olanı kapatmak,"Close the gate, Ali.","Ali, bahçe kapısını kapat.",1,,daily-life
 a1-come,COME,C,STARTS,verb,bulunduğun yere doğru gelmek,Can you come tomorrow?,Yarın gelebilir misin?,1,,daily-life
 a1-cousin,COUSIN,C,STARTS,noun,"amca, dayı, hala ya da teyze çocuğu",My cousin lives in Izmir.,Kuzenim İzmir'de yaşıyor.,2,,family-people
 a1-child,CHILD,C,STARTS,noun,büyümekte olan küçük insan,This child is shy.,Bu çocuk utangaç.,1,,family-people
@@ -18,21 +18,21 @@ a1-draw,DRAW,D,STARTS,verb,kalemle resim yapmak,She likes to draw flowers.,Çiç
 a1-drive,DRIVE,D,STARTS,verb,araç kullanmak,He can drive a truck.,Kamyon kullanabilir.,2,,daily-life
 a1-dirty,DIRTY,D,STARTS,adj,temiz olmayan,Your shoes are dirty.,Ayakkabıların kirli.,1,,daily-life
 a1-dark,DARK,D,STARTS,adj,ışığı olmayan,The tunnel is dark.,Tünel karanlık.,1,,daily-life
-a1-delicious,DELICIOUS,D,STARTS,adj,tadı çok güzel,The pasta is delicious.,Makarna çok lezzetli.,2,,food-drink
+a1-delicious,DELICIOUS,D,STARTS,adj,tadı çok güzel,The lasagne is delicious.,Lazanya çok lezzetli.,2,,food-drink
 a1-dictionary,DICTIONARY,D,STARTS,noun,kelimelerin anlamını bulduğun kitap,Her dictionary is thick.,Onun sözlüğü kalın.,2,,school-work
 a1-downstairs,DOWNSTAIRS,D,STARTS,adv,alt katta,The children are downstairs.,Çocuklar alt katta.,3,,home
 a1-enjoy,ENJOY,E,STARTS,verb,bir şeyden zevk almak,They enjoy swimming.,Yüzmekten zevk alırlar.,2,,daily-life
 a1-exam,EXAM,E,STARTS,noun,okulda bilgiyi ölçen yazılı iş,I have an exam tomorrow.,Yarın sınavım var.,2,,school-work
-a1-exercise,EXERCISE,E,STARTS,noun,sağlık için yapılan spor hareketleri,Exercise is important for health.,Egzersiz sağlık için önemlidir.,2,,body-health
+a1-exercise,EXERCISE,E,STARTS,noun,sağlık için yapılan spor hareketleri,Exercise makes you strong.,Egzersiz seni güçlendirir.,2,,body-health
 a1-expensive,EXPENSIVE,E,STARTS,adj,fiyatı çok yüksek,That ring is too expensive.,O yüzük fazla pahalı.,2,,daily-life
 a1-fast,FAST,F,STARTS,adj,yüksek hızla giden,He is a fast runner.,O hızlı bir koşucu.,2,,daily-life
 a1-flower,FLOWER,F,STARTS,noun,güzel kokan renkli bitki parçası,The flower smells sweet.,Çiçek güzel kokuyor.,1,,daily-life
 a1-fly,FLY,F,STARTS,verb,kanatla ya da uçakla havada gitmek,Birds can fly.,Kuşlar uçabilir.,1,,daily-life
-a1-football,FOOTBALL,F,STARTS,noun,ayakla oynanan takım sporu,Football is popular in my country.,Ülkemde futbol çok sevilir.,1,,daily-life
+a1-football,FOOTBALL,F,STARTS,noun,ayakla oynanan takım sporu,Football is popular in Turkey.,Türkiye'de futbol çok sevilir.,1,,daily-life
 a1-finish,FINISH,F,STARTS,verb,"bitirmek, sona ermek",When does the film finish?,Film ne zaman bitiyor?,2,,daily-life
 a1-forest,FOREST,F,STARTS,noun,ağaçlarla kaplı geniş alan,We had a picnic in the forest.,Ormanda piknik yaptık.,2,,daily-life
 a1-get,GET,G,STARTS,verb,eline geçirmek,Did you get my parcel?,Paketimi aldın mı?,1,,daily-life
-a1-give,GIVE,G,STARTS,verb,bir şeyi başkasına vermek,Can you give me the sugar?,Şekeri uzatır mısın?,1,,daily-life
+a1-give,GIVE,G,STARTS,verb,bir şeyi başkasına vermek,Give me the remote.,Kumandayı bana ver.,1,,daily-life
 a1-goodbye,GOODBYE,G,STARTS,phrase,ayrılırken söylenen söz,She waved goodbye.,El sallayıp hoşça kal dedi.,1,,daily-life
 a1-garage,GARAGE,G,STARTS,noun,arabanın park edildiği kapalı yer,Our garage is full.,Garajımız dolu.,2,,home
 a1-giraffe,GIRAFFE,G,STARTS,noun,boynu çok uzun hayvan,The giraffe is taller than the fence.,Zürafa çitten daha uzun.,2,,animals
@@ -43,7 +43,7 @@ a1-interesting,INTERESTING,I,STARTS,adj,ilgini çeken,This story is interesting.
 a1-kangaroo,KANGAROO,K,STARTS,noun,"keseli, zıplayan Avustralya hayvanı",A kangaroo jumps far.,Kanguru uzağa zıplar.,2,,animals
 a1-keyboard,KEYBOARD,K,STARTS,noun,bilgisayarda harf yazdığın tuşlar,The keyboard is broken.,Klavye bozuk.,2,,school-work
 a1-kiss,KISS,K,STARTS,verb,dudaklarla öpmek,He wants to kiss her.,Onu öpmek istiyor.,2,,daily-life
-a1-light,LIGHT,L,STARTS,adj,ağır olmayan,This scarf is light.,Bu eşarp hafif.,2,,daily-life
+a1-light,LIGHT,L,STARTS,adj,ağır olmayan,This suitcase is light.,Bu valiz hafif.,2,,daily-life
 a1-leave,LEAVE,L,STARTS,verb,bir yerden ayrılmak,The tourists leave tomorrow.,Turistler yarın ayrılıyor.,2,,daily-life
 a1-meet,MEET,M,STARTS,verb,biriyle buluşmak,Where shall we meet?,Nerede buluşalım?,1,,daily-life
 a1-market,MARKET,M,STARTS,noun,sebze meyve satılan açık alan,The market is noisy.,Pazar gürültülü.,2,,city-transport
@@ -55,8 +55,8 @@ a1-newspaper,NEWSPAPER,N,STARTS,noun,her gün çıkan haber gazetesi,The newspap
 a1-notebook,NOTEBOOK,N,STARTS,noun,not tutulan defter,Her notebook is full of drawings.,Defteri çizimlerle dolu.,2,,school-work
 a1-never,NEVER,N,STARTS,adv,hiçbir zaman,He never shouts.,Asla bağırmaz.,2,,daily-life
 a1-often,OFTEN,O,STARTS,adv,sık sık,She often calls me.,Beni sık sık arar.,2,,daily-life
-a1-other,OTHER,O,STARTS,adj,"diğer, öteki",Where is my other glove?,Diğer eldivenim nerede?,2,,daily-life
-a1-picture,PICTURE,P,STARTS,noun,resim,Look at this picture.,Şu resme bak.,2,,daily-life
+a1-other,OTHER,O,STARTS,adj,"diğer, öteki",Where is my other earring?,Diğer küpem nerede?,2,,daily-life
+a1-picture,PICTURE,P,STARTS,noun,boya ya da kalemle yapılan resim,That picture is lovely.,Şu resim çok güzel.,2,,daily-life
 a1-plane,PLANE,P,STARTS,noun,havalimanından kalkan taşıt,The plane is full of tourists.,Uçak turistlerle dolu.,1,,city-transport
 a1-paper,PAPER,P,STARTS,noun,üzerine yazı yazılan ince yaprak,Do you have a piece of paper?,Bir parça kâğıdın var mı?,1,,school-work
 a1-pool,POOL,P,STARTS,noun,içinde yüzülen su dolu çukur,The pool is deep.,Havuz derin.,2,,city-transport
@@ -72,13 +72,13 @@ a1-relax,RELAX,R,STARTS,verb,"gevşemek, rahatlamak",I relax on the sofa.,Kanepe
 a1-roof,ROOF,R,STARTS,noun,binanın en üstündeki örtü,A pigeon sits on the roof.,Çatıda bir güvercin oturuyor.,2,,home
 a1-speak,SPEAK,S,STARTS,verb,dil kullanarak konuşmak,I speak a little German.,Biraz Almanca konuşurum.,1,,daily-life
 a1-slow,SLOW,S,STARTS,adj,hızlı olmayan,The lift is slow.,Asansör yavaş.,1,,daily-life
-a1-sport,SPORT,S,STARTS,noun,beden gücüyle yapılan yarışma oyunu,Swimming is my favourite sport.,Yüzmek en sevdiğim spor.,2,,daily-life
+a1-sport,SPORT,S,STARTS,noun,beden gücüyle yapılan yarışma oyunu,Tennis is a popular sport.,Tenis popüler bir spordur.,2,,daily-life
 a1-tired,TIRED,T,STARTS,adj,dinlenmeye ihtiyacı olan,They are tired after the trip.,Geziden sonra yorgunlar.,1,,daily-life
 a1-think,THINK,T,STARTS,verb,aklından bir şey geçirmek,What do you think?,Sen ne düşünüyorsun?,2,,daily-life
 a1-toilet,TOILET,T,STARTS,noun,klozet ve lavabo olan küçük yer,Where is the toilet?,Tuvalet nerede?,2,,home
 a1-ugly,UGLY,U,STARTS,adj,görünüşü hoş olmayan,The monster is ugly.,Canavar çirkin.,2,,daily-life
 a1-useful,USEFUL,U,STARTS,adj,işe yarayan,This app is useful.,Bu uygulama çok faydalı.,2,,daily-life
-a1-uniform,UNIFORM,U,STARTS,noun,aynı işi yapanların giydiği kıyafet,The pilot wears a uniform.,Pilot üniforma giyer.,3,,school-work
+a1-uniform,UNIFORM,U,STARTS,noun,aynı işi yapanların giydiği kıyafet,The guard wears a uniform.,Bekçi üniforma giyer.,3,,school-work
 a1-upstairs,UPSTAIRS,U,STARTS,adv,üst katta,The bedrooms are upstairs.,Yatak odaları üst katta.,3,,home
 a1-van,VAN,V,STARTS,noun,yük taşıyan küçük kapalı araç,A van is waiting at the corner.,Köşede bir kamyonet bekliyor.,2,,city-transport
 a1-vacation,VACATION,V,STARTS,noun,işten ya da okuldan izinli geçirilen günler,Our vacation was great.,Tatilimiz harikaydı.,3,,daily-life

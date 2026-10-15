@@ -1,8 +1,8 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
 a1-blue,BLUE,B,STARTS,adj,mavi,The sky is blue.,Gökyüzü mavi.,1,,colors-numbers
-a1-pink,PINK,P,STARTS,adj,pembe,She has a pink scarf.,Pembe bir atkısı var.,1,,colors-numbers
-a1-purple,PURPLE,P,STARTS,adj,mor,I like purple flowers.,Mor çiçekleri severim.,2,,colors-numbers
-a1-red,RED,R,STARTS,adj,kırmızı,I want the red shoes.,Kırmızı ayakkabıları istiyorum.,1,,colors-numbers
+a1-pink,PINK,P,STARTS,adj,pembe,She has a pink ribbon.,Pembe bir kurdelesi var.,1,,colors-numbers
+a1-purple,PURPLE,P,STARTS,adj,mor,These purple flowers are lovely.,Bu mor çiçekler çok güzel.,2,,colors-numbers
+a1-red,RED,R,STARTS,adj,kırmızı,The red shoes are on sale.,Kırmızı ayakkabılar indirimde.,1,,colors-numbers
 a1-white,WHITE,W,STARTS,adj,beyaz,My socks are white.,Çoraplarım beyaz.,1,,colors-numbers
 a1-black,BLACK,K,CONTAINS,adj,siyah,My shoes are black.,Ayakkabılarım siyah.,1,,colors-numbers
 a1-two,TWO,T,STARTS,noun,iki,I have two brothers.,İki erkek kardeşim var.,1,,colors-numbers
