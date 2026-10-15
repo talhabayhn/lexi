@@ -5,7 +5,11 @@ import java.io.PrintStream
 import java.nio.file.Path
 import kotlin.io.path.createTempDirectory
 import kotlin.io.path.exists
+import kotlin.io.path.listDirectoryEntries
+import kotlin.io.path.readBytes
+import kotlin.io.path.writeText
 import kotlin.test.Test
+import kotlin.test.assertContentEquals
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
@@ -55,6 +59,52 @@ class MainTest {
         out.reset()
         assertEquals(0, run("--content", "$content", "--out", "$output", env = mapOf(PACKS_ENV to "$packs")), stderr)
         assertTrue("test-pack-two" in stdout, stdout)
+    }
+
+    @Test
+    fun `compiling twice gives byte-identical output`() {
+        val second = output.resolveSibling("second.db")
+
+        assertEquals(0, run("--content", "$content", "--out", "$output"), stderr)
+        assertEquals(0, run("--content", "$content", "--out", "$second"), stderr)
+
+        assertContentEquals(output.readBytes(), second.readBytes())
+        assertFalse("builtAt" in String(output.readBytes(), Charsets.ISO_8859_1), "no wall-clock timestamp by default")
+    }
+
+    @Test
+    fun `SOURCE_DATE_EPOCH sets a reproducible builtAt`() {
+        val second = output.resolveSibling("second.db")
+        val env = mapOf(SOURCE_DATE_EPOCH_ENV to "1700000000")
+
+        assertEquals(0, run("--content", "$content", "--out", "$output", env = env), stderr)
+        assertEquals(0, run("--content", "$content", "--out", "$second", env = env), stderr)
+
+        assertContentEquals(output.readBytes(), second.readBytes())
+        assertTrue("2023-11-14T22:13:20Z" in String(output.readBytes(), Charsets.ISO_8859_1))
+        assertEquals(2, run("--content", "$content", "--out", "$output", env = mapOf(SOURCE_DATE_EPOCH_ENV to "soon")))
+    }
+
+    @Test
+    fun `the temp file is created under build and removed`() {
+        val temp = createTempDirectory("lexi-tmp-")
+
+        assertEquals(0, run("--content", "$content", "--out", "$output", "--tmp", "$temp"), stderr)
+
+        val outputDirFiles = output.parent.listDirectoryEntries().map { it.fileName.toString() }
+        assertEquals(listOf(output.fileName.toString()), outputDirFiles)
+        assertTrue(temp.listDirectoryEntries().isEmpty())
+    }
+
+    @Test
+    fun `invalid paths and unwritable outputs exit 2 with a short message`() {
+        assertEquals(2, run("--content", "$content", "--out", "bad${Char(0)}path"))
+        assertTrue("invalid path" in stderr, stderr)
+
+        val occupied = createTempDirectory("lexi-occupied-")
+        occupied.resolve("keep.txt").writeText("x")
+        assertEquals(2, run("--content", "$content", "--out", "$occupied"))
+        assertTrue(stderr.lines().none { it.trimStart().startsWith("at ") }, "no stack trace: $stderr")
     }
 
     @Test

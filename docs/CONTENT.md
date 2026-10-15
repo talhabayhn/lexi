@@ -24,8 +24,12 @@ Run (from the repo root; exit 0 = written, 1 = validation errors and nothing wri
 ./gradlew :tools:content-compiler:run                                   # content/ → content.db, no packs
 ./gradlew :tools:content-compiler:run --args="--packs ../lexi-packs"    # with the private pack checkout
 LEXI_PACKS_DIR=../lexi-packs ./gradlew :tools:content-compiler:run      # same, via env
-# options: --content <dir> (default content), --out <file> (default shared/.../files/content.db), --help
+# options: --content <dir> (default content), --out <file> (default shared/.../files/content.db),
+#          --tmp <dir> (default build/content-compiler; the DB is built there, then moved atomically), --help
+SOURCE_DATE_EPOCH=1700000000 ./gradlew :tools:content-compiler:run     # sets meta.builtAt (reproducible)
 ```
+Output is reproducible: the same input gives a byte-identical `content.db`. `meta.builtAt` is written only when
+`SOURCE_DATE_EPOCH` is set (release/CI builds); `meta.contentVersion` is always there.
 The report lists cards per level × letter (`!` = below the minimum), cards per category × level, exam packs,
 then warnings (stdout) and errors (stderr) as clickable `file:line: error: message`.
 
@@ -130,7 +134,7 @@ Start with A1 complete + 26-card smoke sets for the other levels; grow per miles
 Source of truth: `core/data/src/commonMain/sqldelight-content/dev/talhabayhan/lexi/content/db/ContentSchema.sq`
 (shared with the compiler, see `ARCHITECTURE.md` §6). Summary:
 ```sql
-CREATE TABLE meta(key TEXT NOT NULL PRIMARY KEY, value TEXT NOT NULL);  -- contentVersion, builtAt
+CREATE TABLE meta(key TEXT NOT NULL PRIMARY KEY, value TEXT NOT NULL);  -- contentVersion, builtAt (optional)
 CREATE TABLE category(id TEXT NOT NULL PRIMARY KEY, name_tr TEXT NOT NULL, name_en TEXT NOT NULL,
   levels TEXT NOT NULL,                     -- 'A1|A2' as in categories.csv
   sort INTEGER NOT NULL, is_pro INTEGER NOT NULL DEFAULT 0);

@@ -12,16 +12,19 @@ import kotlin.io.path.deleteIfExists
 
 /**
  * Writes [CompiledContent] to a fresh SQLite file using the schema shared with `core:data` (`CONTENT.md` §7).
- * The file is built next to [output] and moved into place only when complete, so a failure never leaves a
- * half-written `content.db`. `PRAGMA user_version` = schema version, so the app's driver never re-creates it.
+ * The file is built in [tempDir] (a build directory, never the source tree) and moved into place only when
+ * complete, so a failure never leaves a half-written `content.db`. Output is deterministic: same input and
+ * [builtAt] (omitted when null) give byte-identical files. `PRAGMA user_version` = schema version, so the app's
+ * driver never re-creates it.
  */
 object ContentDbWriter {
     const val CLUE_LANG_TR = "tr"
 
-    fun write(content: CompiledContent, output: Path, builtAt: String) {
+    fun write(content: CompiledContent, output: Path, builtAt: String?, tempDir: Path) {
         val target = output.absolute()
         target.parent.createDirectories()
-        val temp = Files.createTempFile(target.parent, "${target.fileName}.", ".tmp")
+        tempDir.createDirectories()
+        val temp = Files.createTempFile(tempDir, "${target.fileName}.", ".tmp")
         try {
             temp.deleteIfExists()
             JdbcSqliteDriver("jdbc:sqlite:$temp").use { driver ->
@@ -31,7 +34,7 @@ object ContentDbWriter {
                 val queries = ContentDatabase(driver).contentWritesQueries
                 queries.transaction {
                     queries.insertMeta("contentVersion", content.contentVersion.toString())
-                    queries.insertMeta("builtAt", builtAt)
+                    if (builtAt != null) queries.insertMeta("builtAt", builtAt)
                     content.categories.forEach {
                         queries.insertCategory(
                             id = it.id,

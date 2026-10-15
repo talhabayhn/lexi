@@ -8,6 +8,7 @@ import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.intOrNull
 import kotlinx.serialization.json.jsonObject
 import java.nio.file.Path
+import kotlin.io.path.Path
 import kotlin.io.path.extension
 import kotlin.io.path.isDirectory
 import kotlin.io.path.isRegularFile
@@ -29,10 +30,19 @@ object ContentCompiler {
     private val PACK_COLUMNS = listOf("id", "name", "description", "is_pro", "sort")
     private val UNIT_COLUMNS = listOf("card_id", "unit")
 
-    fun compile(contentDir: Path, packsDir: Path?, output: Path, builtAt: String): CompileResult {
+    /** Default location for the temporary DB file, relative to the working directory (repo root via Gradle). */
+    val DEFAULT_TEMP_DIR: Path = Path("build/content-compiler")
+
+    fun compile(
+        contentDir: Path,
+        packsDir: Path?,
+        output: Path,
+        builtAt: String?,
+        tempDir: Path = DEFAULT_TEMP_DIR,
+    ): CompileResult {
         val validation = validate(contentDir, packsDir)
         if (validation.errors.isNotEmpty()) return CompileResult(validation, written = false)
-        ContentDbWriter.write(validation.content, output, builtAt)
+        ContentDbWriter.write(validation.content, output, builtAt, tempDir)
         return CompileResult(validation, written = true)
     }
 
