@@ -1,0 +1,31 @@
+# Profanity/blocklist checked by tools:content-compiler (docs/CONTENT.md §3).
+# Whole-word, case- and diacritic-insensitive. [en] terms: answer, example_en. [tr] terms: clue_tr, example_tr.
+# Starter list; extend during content review.
+[en]
+fuck
+fucking
+shit
+bitch
+bastard
+asshole
+cunt
+dick
+pussy
+slut
+whore
+nigger
+faggot
+retard
+[tr]
+amk
+aq
+orospu
+piç
+siktir
+sik
+sikmek
+yarrak
+göt
+pezevenk
+kahpe
+ibne

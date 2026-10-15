@@ -42,7 +42,7 @@ Module mapping (replaces the earlier `composeApp`): `androidApp` = thin Android 
   build yet).
 
 ## M3 — Content & data
-- [ ] `tools:content-compiler`: parse CSVs, validate (`CONTENT.md` §3), write `content.db`, print report
+- [x] `tools:content-compiler`: parse CSVs, validate (`CONTENT.md` §3), write `content.db`, print report
 - [ ] A1 full set (850) — content-curator in batches of 100, product owner reviews; other levels 26-card smoke sets
 - [ ] SQLDelight `content.db` (read-only, copied from resources on first run/version bump) + `user.db` with migrations
 - [ ] Repositories (`ARCHITECTURE.md` §6) + DataStore settings
@@ -78,7 +78,8 @@ Module mapping (replaces the earlier `composeApp`): `androidApp` = thin Android 
 - [ ] Settings (`11-settings`) all options functional; reminders (notification permission pre-prompt)
 - [ ] RevenueCat: Pro entitlement, paywall (design debt), restore purchases
 - [ ] AdMob rewarded (+1 joker) with UMP consent; interstitial policy from `PRODUCT.md`
-- [ ] Exam packs (`10-exam-packs`) gated by Pro; LGS pack content
+- [ ] Exam packs (`10-exam-packs`) gated by Pro; LGS pack content. Owner decision: pack content lives in a separate
+  private repo, never in this one; the compiler reads it via `--packs <dir>` / `LEXI_PACKS_DIR` (`CONTENT.md` §1)
 - [ ] Firebase Analytics + Crashlytics behind interfaces; event list in `docs/ANALYTICS.md`
 **Done when:** sandbox purchase unlocks Pro on both platforms; ads only where allowed.
 

@@ -1,0 +1,3 @@
+id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
+a1-box,BOX,X,CONTAINS,noun,kutu,The cat is in the box.,Kedi kutunun içinde.,1,,things
+a1-give-up,GIVE UP,G,STARTS,phrasal,vazgeçmek,Never give up on your dreams.,Hayallerinden asla vazgeçme.,3,,things

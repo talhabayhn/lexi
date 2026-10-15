@@ -1,0 +1,5 @@
+# Synthetic test terms only.
+[en]
+badword
+[tr]
+kötükelime

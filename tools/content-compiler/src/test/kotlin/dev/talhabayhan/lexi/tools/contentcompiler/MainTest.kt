@@ -1,0 +1,72 @@
+package dev.talhabayhan.lexi.tools.contentcompiler
+
+import java.io.ByteArrayOutputStream
+import java.io.PrintStream
+import java.nio.file.Path
+import kotlin.io.path.createTempDirectory
+import kotlin.io.path.exists
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertFalse
+import kotlin.test.assertTrue
+
+class MainTest {
+    private val content: Path = copyFixture("content")
+    private val output: Path = createTempDirectory("lexi-main-").resolve("content.db")
+    private val out = ByteArrayOutputStream()
+    private val err = ByteArrayOutputStream()
+
+    private fun run(vararg args: String, env: Map<String, String> = emptyMap()): Int =
+        runCompiler(arrayOf(*args), env, PrintStream(out, true, "UTF-8"), PrintStream(err, true, "UTF-8"))
+
+    private val stdout get() = out.toString("UTF-8")
+    private val stderr get() = err.toString("UTF-8")
+
+    @Test
+    fun `valid content exits 0 and prints the coverage report`() {
+        val code = run("--content", "$content", "--out", "$output")
+
+        assertEquals(0, code, stderr)
+        assertTrue(output.exists())
+        assertTrue("contentVersion 7" in stdout, stdout)
+        assertTrue(Regex("""A1\s+4\s""").containsMatchIn(stdout), stdout)
+        assertTrue("food" in stdout, stdout)
+        assertTrue("Exam packs: none" in stdout, stdout)
+    }
+
+    @Test
+    fun `validation errors exit 1 with file and line on stderr and no output`() {
+        content.writeCards("cards/A1/bad.csv", cardRow(answer = "zebra"))
+
+        val code = run("--content", "$content", "--out", "$output")
+
+        assertEquals(1, code)
+        assertTrue(Regex("""bad\.csv:2: error: answer 'zebra'""").containsMatchIn(stderr), stderr)
+        assertFalse(output.exists())
+    }
+
+    @Test
+    fun `packs come from the flag or the environment variable`() {
+        val packs = copyFixture("packs")
+
+        assertEquals(0, run("--content", "$content", "--out", "$output", "--packs", "$packs"), stderr)
+        assertTrue("test-pack-one" in stdout, stdout)
+
+        out.reset()
+        assertEquals(0, run("--content", "$content", "--out", "$output", env = mapOf(PACKS_ENV to "$packs")), stderr)
+        assertTrue("test-pack-two" in stdout, stdout)
+    }
+
+    @Test
+    fun `usage errors exit 2`() {
+        assertEquals(2, run("--bogus"))
+        assertEquals(2, run("--out"))
+        assertTrue("Usage" in stderr, stderr)
+    }
+
+    @Test
+    fun `help exits 0`() {
+        assertEquals(0, run("--help"))
+        assertTrue("--packs" in stdout)
+    }
+}

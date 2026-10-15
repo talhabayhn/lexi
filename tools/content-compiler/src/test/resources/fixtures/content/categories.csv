@@ -1,0 +1,4 @@
+id,name_tr,name_en,levels,sort,is_pro
+mixed,Karışık,Mixed,A1|B1,0,0
+food,Yiyecek ve içecek,Food,A1|B1,1,0
+things,Eşyalar,Things,A1,2,0

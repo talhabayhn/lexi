@@ -1,0 +1,3 @@
+id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
+b1-apple,APPLE,P,CONTAINS,noun,"kırmızı ya da yeşil, tatlı bir meyve",An apple a day keeps the doctor away.,Günde bir elma doktoru uzak tutar.,2,,food
+b1-yogurt,YOGURT,Y,STARTS,noun,"sütten yapılan, ekşimsi besin",Yogurt is good for you.,Yoğurt sana iyi gelir.,1,,food
