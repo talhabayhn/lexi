@@ -10,7 +10,7 @@ a2-zip,ZIP,Z,STARTS,verb,fermuarı çekip kapatmak,"Can you zip it, Ali?","Fermu
 a2-keep,KEEP,K,STARTS,verb,"tutmak, saklamak",You can keep this badge.,Bu rozeti saklayabilirsin.,2,,daily-life
 a2-violin,VIOLIN,V,STARTS,noun,"yayla çalınan, dört telli çalgı",The violin sounds lovely.,Keman çok güzel ses çıkarıyor.,2,,music
 a2-voice,VOICE,V,STARTS,noun,insanın konuşurken çıkardığı ses,Your voice is soft.,Sesin yumuşak.,2,,daily-life
-a2-oil,OIL,O,STARTS,noun,sıvı yağ,Pour some oil in the pan.,Tavaya biraz yağ dök.,2,,food-drink
+a2-oil,OIL,O,STARTS,noun,sıvı yağ,Put some oil in the pan.,Tavaya biraz yağ koy.,2,,food-drink
 a2-yogurt,YOGURT,Y,STARTS,noun,sütten yapılan ekşi beyaz gıda,Yogurt is sour.,Yoğurt ekşidir.,1,,food-drink
 a2-important,IMPORTANT,I,STARTS,adj,önemi çok büyük olan,Sleep is important for children.,Uyku çocuklar için önemlidir.,2,,daily-life
 a2-invite,INVITE,I,STARTS,verb,bir etkinliğe katılması için çağırmak,We invite our friends to dinner.,Arkadaşlarımızı yemeğe davet ediyoruz.,2,,daily-life

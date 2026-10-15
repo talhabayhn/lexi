@@ -1,0 +1,73 @@
+id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
+a2-require,REQUIRE,Q,CONTAINS,verb,bir şeyin gerekli olmasını istemek,This job will require good English.,Bu iş iyi İngilizce gerektirecek.,4,,school-work
+a2-liquid,LIQUID,Q,CONTAINS,noun,"su gibi akan madde, sıvı",Water is a liquid.,Su bir sıvıdır.,3,,school-work
+a2-squeeze,SQUEEZE,Q,CONTAINS,verb,bir şeyi sıkıp suyunu çıkarmak,Squeeze a lemon into the tea.,Çaya bir limon sık.,3,,food-drink
+a2-antique,ANTIQUE,Q,CONTAINS,noun,çok eski ve değerli eşya,This old clock is an antique.,Bu eski saat bir antika.,4,,home
+a2-tax,TAX,X,CONTAINS,noun,devlete ödenen vergi,We pay tax every year.,Her yıl vergi öderiz.,4,,daily-life
+a2-oxygen,OXYGEN,X,CONTAINS,noun,"solunan havadaki gaz, oksijen",We need oxygen to live.,Yaşamak için oksijene ihtiyacımız var.,4,,school-work
+a2-express,EXPRESS,X,CONTAINS,verb,duygu ya da düşünceyi dile getirmek,Music helps me express my feelings.,Müzik duygularımı ifade etmeme yardım ediyor.,4,,music
+a2-expense,EXPENSE,X,CONTAINS,noun,"bir şey için harcanan para, masraf",Travel is a big expense.,Seyahat büyük bir masraftır.,4,,travel
+a2-saxophone,SAXOPHONE,X,CONTAINS,noun,"kıvrık metal gövdeli üflemeli çalgı, saksafon",He plays the saxophone in a band.,Bir grupta saksafon çalıyor.,4,,music
+a2-amazed,AMAZED,Z,CONTAINS,adj,"çok şaşırmış, hayretler içinde",I was amazed by the big show.,Büyük gösteriye şaşırdım.,3,,daily-life
+a2-maze,MAZE,Z,CONTAINS,noun,"çıkışı bulunması zor dolambaçlı yollar, labirent",We got lost in the maze.,Labirentte kaybolduk.,3,,travel
+a2-fizzy,FIZZY,Z,CONTAINS,adj,içinde gaz kabarcıkları olan,I do not like fizzy drinks.,Gazlı içecekleri sevmem.,3,,food-drink
+a2-citizen,CITIZEN,Z,CONTAINS,noun,bir ülkenin vatandaşı,She is a citizen of Spain.,"O, İspanya vatandaşı.",4,,daily-life
+a2-zigzag,ZIGZAG,Z,STARTS,noun,"iki yana kıvrılan kırık çizgi, zikzak",The road goes in a zigzag up the hill.,Yol tepeye doğru zikzak çizerek çıkıyor.,4,,travel
+a2-knight,KNIGHT,K,STARTS,noun,"ortaçağda zırh giyen atlı savaşçı, şövalye",The knight fought a long battle.,Şövalye uzun bir savaş verdi.,3,,daily-life
+a2-kindergarten,KINDERGARTEN,K,STARTS,noun,okuldan önceki yaşlarda gidilen anaokulu,My little brother goes to kindergarten.,Küçük kardeşim anaokuluna gidiyor.,3,,school-work
+a2-parking,PARKING,K,CONTAINS,noun,aracı bir yere bırakma ya da bırakılan yer,There is free parking behind the shop.,Dükkânın arkasında ücretsiz otopark var.,3,,city-transport
+a2-brick,BRICK,K,CONTAINS,noun,"duvar örmekte kullanılan pişmiş toprak blok, tuğla",The wall is made of red brick.,Duvar kırmızı tuğladan yapılmış.,3,,home
+a2-sketch,SKETCH,K,CONTAINS,noun,"hızlıca çizilen kaba resim, taslak",He made a sketch of the old bridge.,Eski köprünün bir taslağını çizdi.,4,,school-work
+a2-alien,ALIEN,A,STARTS,noun,başka gezegenden geldiği düşünülen yaratık,The film is about an alien.,Film bir uzaylı hakkında.,2,,daily-life
+a2-astronaut,ASTRONAUT,A,STARTS,noun,uzaya giden kişi,The astronaut walked on the moon.,Astronot ayda yürüdü.,2,,school-work
+a2-ballet,BALLET,B,STARTS,noun,müzik eşliğinde yapılan klasik dans gösterisi,She learns ballet on Saturdays.,Cumartesi günleri bale öğreniyor.,3,,music
+a2-beetle,BEETLE,B,STARTS,noun,sert kanatlı küçük böcek,A beetle crawled over the leaf.,Bir böcek yaprağın üstünde yürüdü.,3,,animals
+a2-chimney,CHIMNEY,C,STARTS,noun,evin çatısındaki duman çıkış borusu,Our house has a tall chimney.,Evimizin yüksek bir bacası var.,3,,home
+a2-dustbin,DUSTBIN,D,STARTS,noun,evin dışındaki büyük çöp kovası,The dustbin is outside the house.,Çöp kovası evin dışında.,3,,home
+a2-explorer,EXPLORER,E,STARTS,noun,bilinmeyen yerleri keşfeden kişi,The explorer crossed the mountains.,Kaşif dağları geçti.,3,,travel
+a2-fireman,FIREMAN,F,STARTS,noun,"yangın söndüren görevli, itfaiyeci",The fireman climbed the roof.,İtfaiyeci çatıya tırmandı.,2,,school-work
+a2-fisherman,FISHERMAN,F,STARTS,noun,balık tutarak geçinen kişi,The fisherman sells fish at the market.,Balıkçı pazarda balık satıyor.,2,,school-work
+a2-ghost,GHOST,G,STARTS,noun,ölmüş birinin ruhu olduğuna inanılan görüntü,The children ran away from the ghost.,Çocuklar hayaletten kaçtı.,2,,daily-life
+a2-gorilla,GORILLA,G,STARTS,noun,Afrika ormanlarında yaşayan iri maymun,The gorilla is eating a banana.,Goril muz yiyor.,2,,animals
+a2-hippo,HIPPO,H,STARTS,noun,"nehirlerde yaşayan iri, kalın derili hayvan, su aygırı",A hippo lay in the river.,Bir su aygırı nehirde yatıyordu.,2,,animals
+a2-hurricane,HURRICANE,H,STARTS,noun,"çok şiddetli tropik fırtına, kasırga",The hurricane came to the island.,Kasırga adaya geldi.,3,,time-weather
+a2-mechanic,MECHANIC,M,STARTS,noun,arabaları tamir eden usta,The mechanic is under the car.,Tamirci arabanın altında.,3,,school-work
+a2-microwave,MICROWAVE,M,STARTS,noun,yemeği çabuk ısıtan mutfak aleti,Put the soup in the microwave.,Çorbayı mikrodalgaya koy.,3,,home
+a2-octopus,OCTOPUS,O,STARTS,noun,"sekiz kollu deniz canlısı, ahtapot",The octopus has eight arms.,Ahtapotun sekiz kolu var.,2,,animals
+a2-painter,PAINTER,P,STARTS,noun,resim yapan sanatçı ya da boya yapan usta,The painter works in a small studio.,Ressam küçük bir stüdyoda çalışıyor.,3,,school-work
+a2-pirate,PIRATE,P,STARTS,noun,"denizde gemileri soyan haydut, korsan",The pirate has a wooden leg.,Korsanın tahta bir bacağı var.,2,,daily-life
+a2-puppet,PUPPET,P,STARTS,noun,"iplerle ya da elle oynatılan oyuncak bebek, kukla",The children watch a puppet show.,Çocuklar kukla gösterisi izliyor.,2,,daily-life
+a2-pyramid,PYRAMID,P,STARTS,noun,dört yüzü üçgen biçimli eski Mısır yapısı,We visited a pyramid in Egypt.,Mısır'da bir piramit gezdik.,3,,travel
+a2-sailor,SAILOR,S,STARTS,noun,"gemide çalışan kişi, denizci",The sailor tells an old story.,Denizci eski bir hikâye anlatıyor.,2,,school-work
+a2-skateboard,SKATEBOARD,S,STARTS,noun,tekerlekli kaykay,He rides his skateboard to school.,Okula kaykayıyla gidiyor.,2,,sports
+a2-snail,SNAIL,S,STARTS,noun,"sırtında kabuk taşıyan yavaş yumuşakça, salyangoz",A snail is on the green leaf.,Yeşil yaprağın üstünde bir salyangoz var.,2,,animals
+a2-snowman,SNOWMAN,S,STARTS,noun,"karla yapılan insan figürü, kardan adam",The children made a snowman.,Çocuklar bir kardan adam yaptı.,2,,time-weather
+a2-spaceship,SPACESHIP,S,STARTS,noun,"uzayda yolculuk yapan araç, uzay gemisi",The spaceship landed on the moon.,Uzay gemisi aya indi.,2,,travel
+a2-stove,STOVE,S,STARTS,noun,üzerinde yemek pişirilen ocak,The stove is very hot.,Ocak çok sıcak.,2,,home
+a2-submarine,SUBMARINE,S,STARTS,noun,"suyun altında giden gemi, denizaltı",The submarine went under the sea.,Denizaltı denizin altına indi.,3,,travel
+a2-tin,TIN,T,STARTS,noun,konserve kutusu ya da yapıldığı ince metal,He opened a tin of tomatoes.,Bir kutu domates konservesi açtı.,2,,food-drink
+a2-tractor,TRACTOR,T,STARTS,noun,"tarlada çalışan güçlü araç, traktör",The farmer drives a tractor.,Çiftçi traktör kullanıyor.,2,,city-transport
+a2-trampoline,TRAMPOLINE,T,STARTS,noun,üstünde zıplanan yaylı eğlence aracı,The children jump on the trampoline.,Çocuklar trambolinde zıplıyor.,2,,sports
+a2-yacht,YACHT,Y,STARTS,noun,"zevk için kullanılan büyük yelkenli tekne, yat",They have a big white yacht.,Büyük beyaz bir yatları var.,3,,travel
+a2-caravan,CARAVAN,C,STARTS,noun,"arkasına bağlanan, içinde yatılan araç",We stayed in a caravan by the sea.,Deniz kenarında bir karavanda kaldık.,3,,travel
+a2-campsite,CAMPSITE,C,STARTS,noun,"çadır kurulan yer, kamp alanı",The campsite has a shop.,Kamp alanında bir dükkân var.,3,,travel
+a2-gallery,GALLERY,G,STARTS,noun,resim ve heykellerin sergilendiği yer,The gallery is free on Sundays.,Galeri pazarları ücretsiz.,3,,city-transport
+a2-headphones,HEADPHONES,H,STARTS,noun,"kulağa takılarak müzik dinlenen cihaz, kulaklık",I forgot my headphones.,Kulaklığımı unuttum.,3,,music
+a2-lighthouse,LIGHTHOUSE,L,STARTS,noun,gemilere yol gösteren kıyıdaki yüksek ışık kulesi,The lighthouse is at the end of the beach.,Deniz feneri plajın sonunda.,3,,travel
+a2-postman,POSTMAN,P,STARTS,noun,"mektup dağıtan görevli, postacı",The postman comes at ten.,Postacı saat onda gelir.,2,,school-work
+a2-scientist,SCIENTIST,S,STARTS,noun,"bilimsel araştırma yapan kişi, bilim insanı",The scientist works in a laboratory.,Bilim insanı laboratuvarda çalışıyor.,3,,school-work
+a2-shopkeeper,SHOPKEEPER,S,STARTS,noun,dükkân sahibi ya da dükkânda satış yapan kişi,The shopkeeper gave me a bag.,Dükkâncı bana bir poşet verdi.,3,,school-work
+a2-eagle,EAGLE,E,STARTS,noun,"keskin gözlü, büyük yırtıcı kuş, kartal",An eagle flew over the mountain.,Bir kartal dağın üstünden uçtu.,2,,animals
+a2-pigeon,PIGEON,P,STARTS,noun,"şehirlerde yaşayan gri kuş, güvercin",A pigeon eats bread in the park.,Bir güvercin parkta ekmek yiyor.,2,,animals
+a2-rocket,ROCKET,R,STARTS,noun,uzaya fırlatılan araç,The rocket flew to the moon.,Roket aya uçtu.,3,,travel
+a2-scooter,SCOOTER,S,STARTS,noun,ayakla itilen iki tekerlekli küçük taşıt,My brother rides a scooter.,Kardeşim scooter kullanıyor.,2,,city-transport
+a2-seagull,SEAGULL,S,STARTS,noun,"deniz kıyısında yaşayan beyaz kuş, martı",A seagull took my sandwich.,Bir martı sandviçimi aldı.,2,,animals
+a2-telescope,TELESCOPE,T,STARTS,noun,uzaktaki yıldızları yakın gösteren alet,We looked at the stars with a telescope.,Yıldızlara teleskopla baktık.,3,,school-work
+a2-toaster,TOASTER,T,STARTS,noun,ekmeği kızartan elektrikli alet,The toaster is next to the fridge.,Ekmek kızartma makinesi buzdolabının yanında.,2,,home
+a2-whistle,WHISTLE,W,STARTS,noun,"ağızla üflenerek ses çıkaran küçük alet, düdük",The referee blew his whistle.,Hakem düdüğünü çaldı.,3,,sports
+a2-racket,RACKET,R,STARTS,noun,"tenis gibi oyunlarda topa vurulan araç, raket",I need a new tennis racket.,Yeni bir tenis raketine ihtiyacım var.,3,,sports
+a2-hammer,HAMMER,H,STARTS,noun,"çivi çakmak için kullanılan alet, çekiç",He used a hammer on the wall.,Duvarda çekiç kullandı.,2,,home
+a2-ant,ANT,A,STARTS,noun,"koloni halinde yaşayan çok küçük böcek, karınca",An ant is carrying a crumb.,Bir karınca ufak bir kırıntı taşıyor.,2,,animals
+a2-bat,BAT,B,STARTS,noun,"geceleri uçan küçük memeli, yarasa",The bat flew out of the tree.,Yarasa ağaçtan uçarak çıktı.,2,,animals
+a2-bandage,BANDAGE,B,STARTS,noun,yarayı saran sargı bezi,The nurse put a bandage on my arm.,Hemşire koluma sargı sardı.,3,,body-health
+a2-compass,COMPASS,C,STARTS,noun,"yönü gösteren alet, pusula",The compass points north.,Pusula kuzeyi gösteriyor.,3,,travel

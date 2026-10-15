@@ -74,7 +74,7 @@ a2-dust,DUST,D,STARTS,noun,eşyaların üstünde biriken ince toz,There is dust 
 a2-dead,DEAD,D,STARTS,adj,"artık yaşamayan, ölmüş",The flowers are dead.,Çiçekler ölmüş.,3,,daily-life
 a2-degree,DEGREE,D,STARTS,noun,sıcaklığın ölçü birimi,One degree is not very cold.,Bir derece çok soğuk sayılmaz.,2,,time-weather
 a2-deer,DEER,D,STARTS,noun,"dallı boynuzları olan, ormanda yaşayan hayvan",We saw a deer in the forest.,Ormanda bir geyik gördük.,2,,animals
-a2-dessert,DESSERT,D,STARTS,noun,yemekten sonra yenen tatlı,We had ice cream for dessert.,Tatlı olarak dondurma yedik.,2,,food-drink
+a2-dessert,DESSERT,D,STARTS,noun,yemekten sonra yenen tatlı,We had fruit for dessert.,Tatlı olarak meyve yedik.,2,,food-drink
 a2-wedding,WEDDING,D,CONTAINS,noun,iki kişinin evlendiği tören,Their wedding is in June.,Düğünleri haziranda.,3,,family-people
 a2-middle,MIDDLE,D,CONTAINS,noun,bir şeyin tam ortası,Stand in the middle of the room.,Odanın ortasında dur.,3,,daily-life
 a2-wide,WIDE,D,CONTAINS,adj,"iki yan arasındaki mesafesi çok olan, geniş",The river is very wide here.,Nehir burada çok geniş.,3,,travel
