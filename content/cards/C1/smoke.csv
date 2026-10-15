@@ -1,0 +1,27 @@
+id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
+c1-ambiguous,AMBIGUOUS,A,STARTS,adj,"birden fazla anlama gelebilen, belirsiz",The contract wording was ambiguous.,Sözleşmenin ifadesi belirsizdi.,4,smoke,business
+c1-benevolent,BENEVOLENT,B,STARTS,adj,"iyiliksever, yardım etmeyi seven",A benevolent donor paid for the new library.,İyiliksever bir bağışçı yeni kütüphanenin parasını ödedi.,4,smoke,school-work
+c1-coherent,COHERENT,C,STARTS,adj,parçaları tutarlı ve mantıklı bir bütün olan,She gave a clear and coherent argument.,Açık ve tutarlı bir savunma yaptı.,4,smoke,school-work
+c1-detrimental,DETRIMENTAL,D,STARTS,adj,"zarar veren, olumsuz etkileyen",Lack of sleep is detrimental to health.,Uykusuzluk sağlığa zararlıdır.,4,smoke,school-work
+c1-elaborate,ELABORATE,E,STARTS,adj,ayrıntılı ve özenle hazırlanmış,They planned an elaborate surprise party.,Ayrıntılı bir sürpriz parti planladılar.,4,smoke,school-work
+c1-feasible,FEASIBLE,F,STARTS,adj,"uygulanabilir, yapılması mümkün",The plan is feasible if we have more funds.,Daha fazla bütçemiz olursa plan uygulanabilir.,4,smoke,business
+c1-gratitude,GRATITUDE,G,STARTS,noun,"minnet, teşekkür duygusu",She wrote a letter to show her gratitude.,Minnettarlığını göstermek için bir mektup yazdı.,4,smoke,school-work
+c1-hinder,HINDER,H,STARTS,verb,engelleyerek ilerlemeyi zorlaştırmak,Heavy rain may hinder the rescue work.,Şiddetli yağmur kurtarma çalışmalarını engelleyebilir.,4,smoke,school-work
+c1-inherent,INHERENT,I,STARTS,adj,"bir şeyin ayrılmaz, doğal parçası olan",Risk is inherent in any investment.,Risk her yatırımın doğasında vardır.,4,smoke,business
+c1-jeopardy,JEOPARDY,J,STARTS,noun,ciddi tehlike altında olma durumu,His reckless driving put many lives in jeopardy.,Pervasız sürüşü birçok hayatı tehlikeye attı.,4,smoke,school-work
+c1-kindle,KINDLE,K,STARTS,verb,ateş yakmak veya bir duyguyu uyandırmak,The story helped kindle her interest in history.,"Hikâye, tarihe olan ilgisinin uyanmasına yardım etti.",4,smoke,school-work
+c1-lucrative,LUCRATIVE,L,STARTS,adj,çok kazanç getiren,He left for a more lucrative job abroad.,Yurt dışında daha kazançlı bir işe geçti.,4,smoke,business
+c1-mitigate,MITIGATE,M,STARTS,verb,zararı veya etkiyi hafifletmek,Trees can mitigate the effects of heat.,Ağaçlar sıcağın etkilerini hafifletebilir.,4,smoke,school-work
+c1-nuance,NUANCE,N,STARTS,noun,ince anlam farkı,The translation misses the nuance of the poem.,Çeviri şiirdeki ince anlam farkını kaçırıyor.,4,smoke,school-work
+c1-obsolete,OBSOLETE,O,STARTS,adj,"eskimiş, artık kullanılmayan",Many old phones are now obsolete.,Birçok eski telefon artık kullanılmıyor.,4,smoke,technology
+c1-pragmatic,PRAGMATIC,P,STARTS,adj,kuramdan çok pratik sonuca bakan,"We need a pragmatic solution, not a perfect one.","Mükemmel değil, pratik bir çözüme ihtiyacımız var.",4,smoke,business
+c1-quandary,QUANDARY,Q,STARTS,noun,ne yapacağını bilemediğin zor durum,I am in a quandary about which offer to accept.,Hangi teklifi kabul edeceğim konusunda çıkmazdayım.,4,smoke,business
+c1-resilient,RESILIENT,R,STARTS,adj,zorluklardan çabuk toparlanan,Children are often more resilient than adults.,Çocuklar çoğu zaman yetişkinlerden daha dayanıklıdır.,4,smoke,school-work
+c1-scrutinize,SCRUTINIZE,S,STARTS,verb,çok dikkatle ve ayrıntılı incelemek,Auditors scrutinize every page of the accounts.,Denetçiler hesapların her sayfasını dikkatle inceler.,4,smoke,business
+c1-tangible,TANGIBLE,T,STARTS,adj,"elle tutulur, somut",We need tangible proof of the progress.,İlerlemenin somut kanıtına ihtiyacımız var.,4,smoke,business
+c1-unprecedented,UNPRECEDENTED,U,STARTS,adj,daha önce eşi görülmemiş,The city faced an unprecedented flood.,Şehir eşi görülmemiş bir sel yaşadı.,4,smoke,school-work
+c1-volatile,VOLATILE,V,STARTS,adj,ani ve öngörülemez biçimde değişen,Oil prices are highly volatile this year.,Petrol fiyatları bu yıl çok oynak.,4,smoke,business
+c1-whimsical,WHIMSICAL,W,STARTS,adj,"tuhaf, oyunbaz ve ciddiyetten uzak",She has a whimsical sense of humour.,Oyunbaz ve tuhaf bir mizah anlayışı var.,4,smoke,school-work
+c1-complexity,COMPLEXITY,X,CONTAINS,noun,"bir şeyin çok parçalı, anlaşılması zor oluşu",The complexity of the system surprised everyone.,Sistemin karmaşıklığı herkesi şaşırttı.,4,smoke,technology
+c1-yearn,YEARN,Y,STARTS,verb,"özlem duymak, çok istemek",He began to yearn for his childhood home.,Çocukluk evini özlemeye başladı.,4,smoke,school-work
+c1-zealous,ZEALOUS,Z,STARTS,adj,aşırı hevesli ve tutkulu,A zealous fan waited all night outside.,Aşırı hevesli bir hayran bütün gece dışarıda bekledi.,4,smoke,school-work

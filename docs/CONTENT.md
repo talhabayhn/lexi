@@ -144,6 +144,13 @@ How the compiler applies them (`tools/content-compiler`, every error is `file:li
 
 Start with A1 complete + 26-card smoke sets for the other levels; grow per milestone.
 
+### Smoke sets (dev data)
+`content/cards/<A2|B1|B2|C1|NAT>/smoke.csv`: exactly 26 cards (one per letter), every card has `tags = smoke`. They
+exist so every level is playable during development; they are not release content. Levels listed in `meta.json`
+`smokeLevels` are reported with the SMOKE status. Never ship a level that is only smoke: before a level enters
+`shippedLevels`, replace or extend its smoke set with real content (smoke cards may be kept if they pass review).
+Known exception: `nat-quite-a-few` covers Q with a multi-word STARTS phrase (no single-word Q idiom fits NAT smoke); `nat-no-brainer` has no hyphen because the answer charset is A–Z and spaces only.
+
 ## 6. Source lists & licensing (verify before release — not legal advice)
 - Candidate open lists: **NGSL / NAWL / TSL** (CC BY-SA 4.0 — attribution + share-alike may apply to the list
   data; keep attribution in the About screen), **CEFR-J Wordlist** (free with citation; check commercial terms).
