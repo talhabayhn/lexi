@@ -1,0 +1,4 @@
+# B1 batch 6 review (letters R, S)
+
+File `content/cards/B1/batch6.csv`. Reviewer drops (A2): SCARED, SIMILAR, SUCCESS, SUCCESSFUL, SITUATION. Clues: SHOCK (vs SURPRISE), SAFETY (vs SECURITY), SYMBOL (vs SIGN), SPREAD; three translations; categories for SOCIAL, STATEMENT, RELIGION.
+Doubtful level: RESEARCH, SYSTEM, SOFTWARE, SCHEDULE, SPELLING, REGULAR (maybe A2); REFLECT, RURAL, SPECIES, SHORTAGE, STRUGGLE, STUBBORN, SURROUND, SPIRIT, RELEASE, SUSPECT (maybe B2).

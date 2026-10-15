@@ -1,0 +1,84 @@
+id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
+b1-raise,RAISE,R,STARTS,verb,bir şeyi yukarı kaldırmak veya artırmak,Please raise your hand if you know the answer.,Cevabı biliyorsan lütfen elini kaldır.,3,,school-work
+b1-rare,RARE,R,STARTS,adj,"çok az bulunan, nadir",This bird is very rare.,Bu kuş çok nadir.,3,,animals
+b1-rarely,RARELY,R,STARTS,adv,"çok seyrek, nadiren",He rarely eats meat.,O nadiren et yer.,3,,daily-life
+b1-rate,RATE,R,STARTS,noun,bir şeyin ölçüsü veya oranı,The rate of people without jobs is falling.,İşsiz insanların oranı düşüyor.,4,,business
+b1-rather,RATHER,R,STARTS,adv,"biraz, oldukça; tercihen",The exam was rather difficult.,Sınav oldukça zordu.,3,,daily-life
+b1-reaction,REACTION,R,STARTS,noun,bir olaya verilen tepki,What was her reaction to the news?,Habere tepkisi ne oldu?,3,,daily-life
+b1-realistic,REALISTIC,R,STARTS,adj,"gerçeğe uygun, gerçekçi",Be realistic; you cannot finish by tomorrow.,Gerçekçi ol; yarına kadar bitiremezsin.,4,,daily-life
+b1-recent,RECENT,R,STARTS,adj,"çok önce olmayan, yakın zamandaki",Have you seen his recent photos?,Son fotoğraflarını gördün mü?,3,,daily-life
+b1-recently,RECENTLY,R,STARTS,adv,"yakın zamanda, geçenlerde",I have recently moved to a new flat.,Geçenlerde yeni bir daireye taşındım.,3,,daily-life
+b1-recognise,RECOGNISE,R,STARTS,verb,gördüğü birini daha önce tanıdığını anlamak,I did not recognise him with a beard.,Sakalıyla onu tanıyamadım.,3,,family-people
+b1-recommend,RECOMMEND,R,STARTS,verb,bir şeyin iyi olduğunu söyleyerek önermek,Can you recommend a good restaurant?,İyi bir restoran önerebilir misin?,3,,travel
+b1-recycle,RECYCLE,R,STARTS,verb,kullanılmış maddeleri yeniden kullanıma kazandırmak,We recycle paper and glass at home.,Evde kâğıt ve camı geri dönüştürüyoruz.,3,,daily-life
+b1-reduce,REDUCE,R,STARTS,verb,miktarı veya fiyatı azaltmak,The shop will reduce its prices in January.,Dükkân ocak ayında fiyatlarını düşürecek.,3,,business
+b1-refuse,REFUSE,R,STARTS,verb,"isteneni yapmamak, reddetmek",He will refuse to answer the question.,Soruyu cevaplamayı reddedecek.,3,,daily-life
+b1-region,REGION,R,STARTS,noun,bir ülkenin belirli bir bölgesi,This region is famous for its tea.,Bu bölge çayıyla ünlü.,3,,travel
+b1-regular,REGULAR,R,STARTS,adj,düzenli aralıklarla olan,He takes regular exercise.,Düzenli egzersiz yapar.,3,,body-health
+b1-relationship,RELATIONSHIP,R,STARTS,noun,iki kişi veya grup arasındaki ilişki,They have a close relationship.,Yakın bir ilişkileri var.,3,,family-people
+b1-release,RELEASE,R,STARTS,verb,serbest bırakmak veya yayımlamak,They will release the film in June.,Filmi haziranda gösterime sokacaklar.,4,,film-tv
+b1-religion,RELIGION,R,STARTS,noun,"inanç sistemi, din",Religion is important to many people.,Din birçok insan için önemlidir.,4,,daily-life
+b1-remind,REMIND,R,STARTS,verb,birine hatırlatmak,Please remind me to call Dad.,Lütfen bana babamı aramamı hatırlat.,3,,daily-life
+b1-remove,REMOVE,R,STARTS,verb,bir şeyi bulunduğu yerden almak veya çıkarmak,Remove your shoes at the door.,Ayakkabılarını kapıda çıkar.,3,,daily-life
+b1-replace,REPLACE,R,STARTS,verb,eski olanın yerine yenisini koymak,I need to replace the battery.,Pili değiştirmem gerekiyor.,3,,technology
+b1-rescue,RESCUE,R,STARTS,verb,tehlikedeki birini kurtarmak,Firefighters came to rescue the cat.,İtfaiyeciler kediyi kurtarmaya geldi.,3,,daily-life
+b1-research,RESEARCH,R,STARTS,noun,bir konuda yapılan bilimsel araştırma,She is doing research on bees.,Arılar üzerine araştırma yapıyor.,3,,school-work
+b1-respect,RESPECT,R,STARTS,noun,birine duyulan saygı,Children should show respect to older people.,Çocuklar yaşlılara saygı göstermeli.,3,,family-people
+b1-responsible,RESPONSIBLE,R,STARTS,adj,bir işten sorumlu olan; güvenilir,Who is responsible for this mess?,Bu dağınıklıktan kim sorumlu?,3,,business
+b1-retire,RETIRE,R,STARTS,verb,çalışma hayatını bırakıp emekli olmak,My father will retire next year.,Babam gelecek yıl emekli olacak.,3,,business
+b1-review,REVIEW,R,STARTS,noun,bir film veya kitap hakkındaki eleştiri yazısı,I read a good review of the film.,Film hakkında iyi bir eleştiri okudum.,3,,film-tv
+b1-reward,REWARD,R,STARTS,noun,iyi bir iş için verilen ödül,The police offered a reward.,Polis bir ödül teklif etti.,3,,daily-life
+b1-rhythm,RHYTHM,R,STARTS,noun,müzikteki düzenli vuruş akışı,I love the rhythm of this song.,Bu şarkının ritmini seviyorum.,3,,music
+b1-romantic,ROMANTIC,R,STARTS,adj,aşk ve duygularla ilgili,We had a romantic dinner by the sea.,Deniz kenarında romantik bir akşam yemeği yedik.,3,,family-people
+b1-rough,ROUGH,R,STARTS,adj,pürüzlü; sert,The sea was rough that night.,O gece deniz dalgalıydı.,3,,daily-life
+b1-routine,ROUTINE,R,STARTS,noun,her gün tekrarlanan alışkanlıklar,My morning routine starts at seven.,Sabah rutinim yedide başlıyor.,3,,daily-life
+b1-rural,RURAL,R,STARTS,adj,köy ve kırsal bölgeyle ilgili,She grew up in a rural area.,Kırsal bir bölgede büyüdü.,4,,travel
+b1-receipt,RECEIPT,R,STARTS,noun,"alışverişte verilen ödeme belgesi, fiş",Keep the receipt in case you need to return it.,İade etmen gerekirse fişi sakla.,3,,business
+b1-reflect,REFLECT,R,STARTS,verb,ışığı geri yansıtmak; üzerinde düşünmek,Mirrors reflect light.,Aynalar ışığı yansıtır.,4,,school-work
+b1-safety,SAFETY,S,STARTS,noun,"kaza ve tehlikelerden korunmuş olma, emniyet",Safety comes first on the road.,Yolda güvenlik her şeyden önce gelir.,3,,daily-life
+b1-satisfied,SATISFIED,S,STARTS,adj,durumdan memnun olan,Are you satisfied with your new phone?,Yeni telefonundan memnun musun?,3,,daily-life
+b1-schedule,SCHEDULE,S,STARTS,noun,"zaman çizelgesi, program",I have a busy schedule this week.,Bu hafta yoğun bir programım var.,3,,business
+b1-security,SECURITY,S,STARTS,noun,güvenlik görevlileri; güvenlik önlemleri,Security checked our bags at the entrance.,Güvenlik girişte çantalarımızı kontrol etti.,3,,travel
+b1-selfish,SELFISH,S,STARTS,adj,"yalnızca kendini düşünen, bencil",Don't be so selfish; share your toys.,O kadar bencil olma; oyuncaklarını paylaş.,3,,family-people
+b1-sense,SENSE,S,STARTS,noun,"görme, duyma gibi duyu; mantık",Dogs have a good sense of smell.,Köpeklerin koku alma duyusu iyidir.,3,,body-health
+b1-series,SERIES,S,STARTS,noun,birbirini izleyen bölümlerden oluşan dizi,My favourite series starts again tonight.,En sevdiğim dizi bu gece yeniden başlıyor.,3,,film-tv
+b1-settle,SETTLE,S,STARTS,verb,bir yere yerleşmek veya bir sorunu çözmek,They want to settle in Canada.,Kanada'ya yerleşmek istiyorlar.,4,,daily-life
+b1-shelter,SHELTER,S,STARTS,noun,yağmurdan ve soğuktan korunacak yer,We found shelter under a tree.,Bir ağacın altına sığındık.,4,,daily-life
+b1-shock,SHOCK,S,STARTS,noun,kötü bir haberin yarattığı ani sarsıntı,The news came as a shock.,Haber büyük bir şok oldu.,3,,daily-life
+b1-shortage,SHORTAGE,S,STARTS,noun,"bir şeyin yetersiz kalması, kıtlık",There is a shortage of water in summer.,Yazın su sıkıntısı var.,4,,daily-life
+b1-signal,SIGNAL,S,STARTS,noun,haber veren işaret veya sinyal,I cannot get a signal on my phone here.,Burada telefonumda sinyal alamıyorum.,3,,technology
+b1-signature,SIGNATURE,S,STARTS,noun,bir kişinin kendi eliyle attığı imza,Please put your signature here.,Lütfen imzanızı buraya atın.,3,,business
+b1-silence,SILENCE,S,STARTS,noun,"hiç ses olmaması, sessizlik",There was silence in the room.,Odada sessizlik vardı.,3,,daily-life
+b1-skilled,SKILLED,S,STARTS,adj,"işinde ustalaşmış, becerikli",He is a skilled carpenter.,O usta bir marangoz.,3,,business
+b1-social,SOCIAL,S,STARTS,adj,toplumla veya insan ilişkileriyle ilgili,Teenagers need a good social life.,Gençlerin iyi bir sosyal hayata ihtiyacı var.,3,,family-people
+b1-society,SOCIETY,S,STARTS,noun,birlikte yaşayan insanların oluşturduğu toplum,Society changes over time.,Toplum zamanla değişir.,3,,school-work
+b1-software,SOFTWARE,S,STARTS,noun,bilgisayarda çalışan programlar,This software is free to download.,Bu yazılımı indirmek ücretsiz.,3,,technology
+b1-solution,SOLUTION,S,STARTS,noun,bir sorunun çözümü,We need a solution to this problem.,Bu soruna bir çözüm bulmamız gerekiyor.,3,,school-work
+b1-source,SOURCE,S,STARTS,noun,"bir şeyin çıktığı yer, kaynak",Milk is a good source of calcium.,Süt iyi bir kalsiyum kaynağıdır.,3,,food-drink
+b1-species,SPECIES,S,STARTS,noun,biyolojide birbirine benzeyen canlı türü,This species of fish lives in warm water.,Bu balık türü ılık suda yaşar.,4,,animals
+b1-spelling,SPELLING,S,STARTS,noun,bir sözcüğün harflerle yazılışı,Her spelling is perfect.,Yazımı mükemmel.,3,,school-work
+b1-spirit,SPIRIT,S,STARTS,noun,ruh; canlılık ve cesaret,The team showed great spirit.,Takım büyük bir mücadele azmi gösterdi.,4,,sports
+b1-spoil,SPOIL,S,STARTS,verb,bir şeyi bozmak veya zevkini kaçırmak,Rain can spoil a picnic.,Yağmur pikniği berbat edebilir.,3,,daily-life
+b1-spread,SPREAD,S,STARTS,verb,yayılmak veya bir şeyi yaymak,News can spread quickly online.,Haberler internette hızla yayılabilir.,3,,daily-life
+b1-statement,STATEMENT,S,STARTS,noun,bir kişinin resmî olarak söylediği açıklama,The police asked him to make a statement.,Polis ondan ifade vermesini istedi.,4,,daily-life
+b1-stress,STRESS,S,STARTS,noun,aşırı baskıdan doğan gerginlik,Exams give me a lot of stress.,Sınavlar bana çok stres yaşatıyor.,3,,body-health
+b1-strict,STRICT,S,STARTS,adj,"kurallara sıkı sıkıya uyan, katı",Our teacher is very strict.,Öğretmenimiz çok katı.,3,,school-work
+b1-struggle,STRUGGLE,S,STARTS,verb,büyük zorlukla uğraşmak,Many families struggle to pay the rent.,Birçok aile kirayı ödemek için çok zorlanıyor.,4,,daily-life
+b1-stubborn,STUBBORN,S,STARTS,adj,"fikrinden dönmeyen, inatçı",My brother is very stubborn.,Kardeşim çok inatçı.,3,,family-people
+b1-succeed,SUCCEED,S,STARTS,verb,"hedefe ulaşmak, başarılı olmak",Hard work will help you succeed.,Çok çalışmak başarılı olmana yardım eder.,3,,school-work
+b1-sudden,SUDDEN,S,STARTS,adj,beklenmedik ve çok çabuk olan,A sudden noise woke me up.,Ani bir ses beni uyandırdı.,3,,daily-life
+b1-suffer,SUFFER,S,STARTS,verb,acı veya zorluk çekmek,Many people suffer from headaches.,Birçok insan baş ağrısı çeker.,3,,body-health
+b1-suggest,SUGGEST,S,STARTS,verb,"bir fikri öne sürmek, önermek",I suggest we take a taxi.,Bir taksi tutmayı öneriyorum.,3,,daily-life
+b1-suggestion,SUGGESTION,S,STARTS,noun,önerilen fikir,That is a good suggestion.,Bu iyi bir öneri.,3,,daily-life
+b1-suitable,SUITABLE,S,STARTS,adj,bir amaca veya kişiye uygun,This film is not suitable for young children.,Bu film küçük çocuklar için uygun değil.,3,,film-tv
+b1-summary,SUMMARY,S,STARTS,noun,bir konunun kısa özeti,Write a short summary of the story.,Hikâyenin kısa bir özetini yaz.,3,,school-work
+b1-supply,SUPPLY,S,STARTS,noun,ihtiyaç duyulan malzeme stoku,The shop has a large supply of fruit.,Dükkânda geniş bir meyve stoku var.,4,,business
+b1-support,SUPPORT,S,STARTS,verb,desteklemek veya taraftar olmak,Which football team do you support?,Hangi futbol takımını tutuyorsun?,3,,sports
+b1-suppose,SUPPOSE,S,STARTS,verb,"doğru olduğunu tahmin etmek, sanmak",I suppose you are right.,Sanırım haklısın.,3,,daily-life
+b1-surface,SURFACE,S,STARTS,noun,bir şeyin dış yüzü,The surface of the table is wet.,Masanın yüzeyi ıslak.,3,,daily-life
+b1-surgery,SURGERY,S,STARTS,noun,vücutta yapılan cerrahi ameliyat,He needs surgery on his knee.,Dizi için ameliyata ihtiyacı var.,4,,body-health
+b1-surround,SURROUND,S,STARTS,verb,bir şeyin her yanını çevrelemek,Mountains surround the village.,Dağlar köyü çevreler.,4,,travel
+b1-survive,SURVIVE,S,STARTS,verb,tehlikeli durumdan sağ çıkmak,Few animals can survive in the desert.,Çölde çok az hayvan hayatta kalabilir.,4,,animals
+b1-suspect,SUSPECT,S,STARTS,noun,suç işlediğinden şüphelenilen kişi,The police arrested a suspect.,Polis bir şüpheli yakaladı.,4,,daily-life
+b1-symbol,SYMBOL,S,STARTS,noun,bir fikri veya anlamı temsil eden simge,The dove is a symbol of peace.,Güvercin barışın simgesidir.,4,,school-work
+b1-system,SYSTEM,S,STARTS,noun,birbirine bağlı parçalardan oluşan düzen,The school has a new computer system.,Okulun yeni bir bilgisayar sistemi var.,3,,technology
