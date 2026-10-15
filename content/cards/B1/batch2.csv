@@ -59,7 +59,7 @@ b1-curious,CURIOUS,C,STARTS,adj,öğrenmeye meraklı,Children are curious about 
 b1-current,CURRENT,C,STARTS,adj,"şu anda geçerli olan, güncel",What is your current address?,Güncel adresin nedir?,4,,daily-life
 b1-custom,CUSTOM,C,STARTS,noun,bir toplumda yerleşmiş gelenek,It is a custom to give flowers on that day.,O gün çiçek vermek bir gelenektir.,3,,travel
 b1-damage,DAMAGE,D,STARTS,noun,bir şeye verilen zarar,The storm caused a lot of damage.,Fırtına çok zarara yol açtı.,3,,daily-life
-b1-deaf,DEAF,D,STARTS,adj,duyma yetisi olmayan,My grandfather is slightly deaf.,Dedem biraz sağır.,4,,body-health
+b1-deaf,DEAF,D,STARTS,adj,duyma yetisi olmayan,My grandfather is a little deaf.,Dedem biraz sağır.,4,,body-health
 b1-deal,DEAL,D,STARTS,noun,"iki taraf arasında yapılan anlaşma, pazarlık",We made a good deal on the car.,Araba konusunda iyi bir anlaşma yaptık.,3,,business
 b1-debt,DEBT,D,STARTS,noun,ödenmesi gereken borç,He is in debt to the bank.,Bankaya borcu var.,3,,business
 b1-decision,DECISION,D,STARTS,noun,düşündükten sonra verilen karar,It was a difficult decision.,Zor bir karardı.,3,,daily-life
@@ -115,7 +115,7 @@ b1-escape,ESCAPE,E,STARTS,verb,tutulduğu yerden kaçmak,Two prisoners tried to 
 b1-eventually,EVENTUALLY,E,STARTS,adv,"uzun bir sürenin sonunda, nihayet","Eventually, we found the right house.",Sonunda doğru evi bulduk.,4,,daily-life
 b1-evidence,EVIDENCE,E,STARTS,noun,bir şeyin doğruluğunu gösteren kanıt,The police have no evidence yet.,Polisin henüz bir kanıtı yok.,4,,daily-life
 b1-exact,EXACT,X,CONTAINS,adj,"tam doğru, ayrıntısına kadar doğru",What is the exact time?,Tam saat kaç?,3,,daily-life
-b1-examine,EXAMINE,X,CONTAINS,verb,bir şeye dikkatle ve ayrıntılı bakmak,The doctor will examine your throat.,Doktor boğazını muayene edecek.,3,,body-health
+b1-examine,EXAMINE,X,CONTAINS,verb,bir şeye dikkatle ve ayrıntılı bakmak,The doctor will examine your neck.,Doktor boynunu muayene edecek.,3,,body-health
 b1-excitement,EXCITEMENT,X,CONTAINS,noun,"heyecan, coşku",The children jumped with excitement.,Çocuklar heyecandan zıpladı.,3,,daily-life
 b1-exhausted,EXHAUSTED,X,CONTAINS,adj,"çok yorgun, bitkin",I was exhausted after the long walk.,Uzun yürüyüşten sonra bitkindim.,3,,body-health
 b1-exhibition,EXHIBITION,X,CONTAINS,noun,sanat eserlerinin sergilendiği etkinlik,We visited a photo exhibition yesterday.,Dün bir fotoğraf sergisini gezdik.,3,,travel

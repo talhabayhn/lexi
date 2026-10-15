@@ -1,18 +1,16 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
-b1-naked,NAKED,N,STARTS,adj,"üzerinde hiç giysi olmayan, çıplak",The baby was naked after the bath.,Bebek banyodan sonra çıplaktı.,3,,body-health
 b1-native,NATIVE,N,STARTS,adj,"bir yerde doğmuş ve büyümüş, yerli",Her native language is Spanish.,Ana dili İspanyolca.,3,,school-work
 b1-naturally,NATURALLY,N,STARTS,adv,doğal bir biçimde; tabii ki,She speaks English very naturally.,İngilizceyi çok doğal konuşuyor.,4,,daily-life
-b1-nearby,NEARBY,N,STARTS,adv,"yakında, çok uzakta olmayan yerde",Is there a bank nearby?,Yakınlarda bir banka var mı?,3,,city-transport
 b1-necessary,NECESSARY,N,STARTS,adj,mutlaka gerekli,Is it necessary to book a table?,Masa ayırtmak gerekli mi?,3,,daily-life
 b1-needle,NEEDLE,N,STARTS,noun,dikiş dikmek için kullanılan ince metal uç,I need a needle and some thread.,Bir iğneye ve biraz ipliğe ihtiyacım var.,3,,daily-life
 b1-negative,NEGATIVE,N,STARTS,adj,"olumsuz, kötü yönde",Try not to be so negative.,O kadar olumsuz olmamaya çalış.,3,,daily-life
-b1-neither,NEITHER,N,STARTS,adv,"ikisinden de hiçbiri, hiçbiri değil",Neither of my parents speaks English.,Ailemden hiçbiri İngilizce konuşmuyor.,3,,daily-life
+b1-neither,NEITHER,N,STARTS,adv,"(olumsuz cümlede) ... da değil, ... de değil","I can't swim, and neither can my sister.","Ben yüzemem, kız kardeşim de yüzemez.",3,,daily-life
 b1-nerve,NERVE,N,STARTS,noun,vücutta duyu taşıyan sinir,The doctor checked the nerve in his leg.,Doktor bacağındaki siniri kontrol etti.,4,,body-health
 b1-nightlife,NIGHTLIFE,N,STARTS,noun,gece açık olan eğlence mekânları,The city has great nightlife.,Şehrin harika bir gece hayatı var.,4,,travel
 b1-nonsense,NONSENSE,N,STARTS,noun,"anlamsız, saçma söz",Don't talk nonsense.,Saçma sapan konuşma.,3,,daily-life
 b1-northern,NORTHERN,N,STARTS,adj,kuzeyde bulunan,They live in northern Italy.,Kuzey İtalya'da yaşıyorlar.,3,,travel
 b1-notice,NOTICE,N,STARTS,verb,bir şeyi fark etmek,Did you notice the new sign?,Yeni tabelayı fark ettin mi?,3,,daily-life
-b1-nowadays,NOWADAYS,N,STARTS,adv,"günümüzde, bu günlerde",Nowadays most people have a smartphone.,Günümüzde çoğu insanın akıllı telefonu var.,3,,technology
+b1-nowadays,NOWADAYS,N,STARTS,adv,"günümüzde, bu günlerde",Nowadays most people have a smartphone.,Günümüzde çoğu insanın akıllı telefonu var.,3,,daily-life
 b1-nuclear,NUCLEAR,N,STARTS,adj,atom çekirdeğiyle ilgili,The country has a nuclear power station.,Ülkenin bir nükleer enerji santrali var.,4,,school-work
 b1-nursery,NURSERY,N,STARTS,noun,küçük çocukların bakıldığı kreş,Her son goes to nursery in the morning.,Oğlu sabahları kreşe gidiyor.,3,,family-people
 b1-nutrition,NUTRITION,N,STARTS,noun,"vücudun ihtiyacı olan besinleri alma, beslenme",Good nutrition keeps children healthy.,İyi beslenme çocukları sağlıklı tutar.,4,,body-health
@@ -30,10 +28,10 @@ b1-strength,STRENGTH,N,CONTAINS,noun,fiziksel güç,He lifted the box with great
 b1-translate,TRANSLATE,N,CONTAINS,verb,bir metni başka dile çevirmek,Can you translate this letter for me?,Bu mektubu benim için çevirebilir misin?,3,,school-work
 b1-pension,PENSION,N,CONTAINS,noun,emeklilikte alınan aylık maaş,My grandfather lives on his pension.,Dedem emekli maaşıyla geçiniyor.,4,,business
 b1-range,RANGE,N,CONTAINS,noun,bir ürün grubu veya çeşit yelpazesi,The shop sells a wide range of shoes.,Mağaza geniş bir ayakkabı yelpazesi satıyor.,4,,business
-b1-obey,OBEY,O,STARTS,verb,kurala veya emre uymak,Dogs must obey their owners.,Köpekler sahiplerine itaat etmeli.,3,,animals
+b1-obey,OBEY,O,STARTS,verb,kurala veya emre uymak,Dogs must obey their owners.,Köpekler sahiplerine itaat etmeli.,3,,daily-life
 b1-occasion,OCCASION,O,STARTS,noun,belirli bir özel zaman veya olay,The wedding was a happy occasion.,Düğün mutlu bir vesileydi.,4,,daily-life
 b1-occupation,OCCUPATION,O,STARTS,noun,"insanın yaptığı iş, meslek",Please write your name and occupation.,Lütfen adınızı ve mesleğinizi yazın.,4,,school-work
-b1-occur,OCCUR,O,STARTS,verb,bir olayın meydana gelmesi,Accidents often occur at night.,Kazalar sık sık geceleri meydana gelir.,4,,daily-life
+b1-occur,OCCUR,O,STARTS,verb,"meydana gelmek, olmak",Accidents often occur at night.,Kazalar sık sık geceleri meydana gelir.,4,,daily-life
 b1-official,OFFICIAL,O,STARTS,adj,"resmî, yetkili makamlarca onaylanan",This is the official website of the city.,Bu şehrin resmî web sitesi.,3,,business
 b1-opening,OPENING,O,STARTS,noun,bir yerin ilk açılışı; boşluk,The opening of the new library is on Friday.,Yeni kütüphanenin açılışı cuma günü.,3,,daily-life
 b1-operate,OPERATE,O,STARTS,verb,bir makineyi çalıştırmak veya ameliyat etmek,Do you know how to operate this machine?,Bu makineyi nasıl çalıştıracağını biliyor musun?,4,,technology
@@ -41,8 +39,6 @@ b1-option,OPTION,O,STARTS,noun,seçilebilecek yollardan biri,You have only one o
 b1-ordinary,ORDINARY,O,STARTS,adj,"sıradan, özel olmayan",It was an ordinary day at school.,Okulda sıradan bir gündü.,3,,daily-life
 b1-organisation,ORGANISATION,O,STARTS,noun,belli bir amaçla kurulmuş kuruluş,She works for a big organisation.,Büyük bir kuruluşta çalışıyor.,3,,business
 b1-original,ORIGINAL,O,STARTS,adj,"ilk ve gerçek olan, özgün",This is the original painting.,"Bu, orijinal tablo.",3,,daily-life
-b1-overall,OVERALL,O,STARTS,adv,genel olarak,"Overall, the holiday was great.",Genel olarak tatil harikaydı.,4,,travel
-b1-overcome,OVERCOME,O,STARTS,verb,bir engeli ya da zorluğu yenmek,She worked hard to overcome her shyness.,Utangaçlığını yenmek için çok çalıştı.,4,,daily-life
 b1-overnight,OVERNIGHT,O,STARTS,adv,"bir geceyi geçirerek, gece boyunca",We stayed overnight in a small hotel.,Küçük bir otelde geceledik.,3,,travel
 b1-owe,OWE,O,STARTS,verb,birine borçlu olmak,I owe you ten pounds.,Sana on pound borcum var.,3,,business
 b1-painful,PAINFUL,P,STARTS,adj,acı veren,His knee is still painful.,Dizi hâlâ acıyor.,3,,body-health
@@ -57,13 +53,12 @@ b1-period,PERIOD,P,STARTS,noun,belirli bir zaman dilimi,He lived abroad for a lo
 b1-permission,PERMISSION,P,STARTS,noun,bir şeyi yapmak için alınan izin,You need permission to park here.,Buraya park etmek için izne ihtiyacın var.,3,,daily-life
 b1-permit,PERMIT,P,STARTS,verb,izin vermek,The school does not permit mobile phones.,Okul cep telefonlarına izin vermiyor.,4,,school-work
 b1-personality,PERSONALITY,P,STARTS,noun,bir kişinin kendine özgü karakteri,She has a warm personality.,Sıcak bir kişiliği var.,3,,family-people
-b1-photograph,PHOTOGRAPH,P,STARTS,noun,fotoğraf makinesiyle çekilen resim,He took a photograph of the sunset.,Gün batımının bir fotoğrafını çekti.,3,,daily-life
 b1-physical,PHYSICAL,P,STARTS,adj,bedenle ilgili,Swimming is good physical exercise.,Yüzmek iyi bir bedensel egzersizdir.,3,,body-health
 b1-poet,POET,P,STARTS,noun,şiir yazan kişi,The poet read her work aloud.,Şair eserini yüksek sesle okudu.,3,,school-work
 b1-politics,POLITICS,P,STARTS,noun,"ülke yönetimiyle ilgili işler, siyaset",He is not interested in politics.,Siyasetle ilgilenmiyor.,4,,school-work
 b1-pollution,POLLUTION,P,STARTS,noun,"hava, su ve toprağın kirlenmesi",Air pollution is a problem in big cities.,Hava kirliliği büyük şehirlerde bir sorun.,3,,daily-life
 b1-population,POPULATION,P,STARTS,noun,bir yerde yaşayan insanların sayısı,The population of the city is two million.,Şehrin nüfusu iki milyon.,3,,city-transport
-b1-position,POSITION,P,STARTS,noun,bir şeyin bulunduğu yer; iş makamı,What position does he play in the team?,Takımda hangi pozisyonda oynuyor?,3,,sports
+b1-position,POSITION,P,STARTS,noun,"takımda oyuncunun oynadığı yer, mevki",What position does he play in the team?,Takımda hangi pozisyonda oynuyor?,3,,sports
 b1-positive,POSITIVE,P,STARTS,adj,"olumlu, iyimser",She feels positive about life.,Hayata dair olumlu hissediyor.,3,,daily-life
 b1-poverty,POVERTY,P,STARTS,noun,yoksulluk,Many families live in poverty.,Birçok aile yoksulluk içinde yaşıyor.,4,,daily-life
 b1-powerful,POWERFUL,P,STARTS,adj,"çok güçlü, etkili",This is a powerful engine.,Bu güçlü bir motor.,3,,technology
@@ -75,7 +70,7 @@ b1-pressure,PRESSURE,P,STARTS,noun,bir kişi üzerindeki baskı,Students feel pr
 b1-prevent,PREVENT,P,STARTS,verb,bir şeyin olmasını engellemek,Washing your hands can prevent illness.,El yıkamak hastalığı önleyebilir.,4,,body-health
 b1-pride,PRIDE,P,STARTS,noun,başarıdan duyulan gurur,He looked at his son with pride.,Oğluna gururla baktı.,3,,family-people
 b1-privacy,PRIVACY,P,STARTS,noun,başkalarından gizli kalma hakkı,Everyone needs some privacy.,Herkesin biraz mahremiyete ihtiyacı var.,4,,daily-life
-b1-private,PRIVATE,P,STARTS,adj,"kişiye özel, herkese açık olmayan",This is a private beach.,Burası özel bir plaj.,3,,daily-life
+b1-private,PRIVATE,P,STARTS,adj,"herkese açık olmayan, yalnızca belli kişilerin kullandığı",This is a private beach.,Burası özel bir plaj.,3,,daily-life
 b1-process,PROCESS,P,STARTS,noun,bir sonuca götüren işlem adımları,Making cheese is a slow process.,Peynir yapmak yavaş bir süreçtir.,4,,business
 b1-produce,PRODUCE,P,STARTS,verb,bir şeyi üretmek,The farm will produce more milk this year.,Çiftlik bu yıl daha çok süt üretecek.,3,,business
 b1-product,PRODUCT,P,STARTS,noun,satılmak üzere üretilen mal,This product is made in Turkey.,Bu ürün Türkiye'de yapılmış.,3,,business
