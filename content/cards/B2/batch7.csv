@@ -1,0 +1,57 @@
+id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
+b2-tempt,TEMPT,T,STARTS,verb,birini yapmaması gereken bir şeye özendirmek,The cake will tempt him to break his diet.,Kek onu diyetini bozmaya özendirecek.,4,,food-drink
+b2-tendency,TENDENCY,T,STARTS,noun,bir şeyi yapmaya yatkınlık,He has a tendency to talk too much.,Çok konuşmaya yatkın.,4,,daily-life
+b2-tense,TENSE,T,STARTS,adj,gergin,The atmosphere in the room was tense.,Odadaki hava gergindi.,3,,daily-life
+b2-thorough,THOROUGH,T,STARTS,adj,ayrıntılı ve eksiksiz,The police made a thorough search.,Polis kapsamlı bir arama yaptı.,4,,business
+b2-thrive,THRIVE,T,STARTS,verb,iyi gelişip büyümek,Plants thrive in warm weather.,Bitkiler ılık havada iyi gelişir.,4,,daily-life
+b2-tolerance,TOLERANCE,T,STARTS,noun,farklılıklara saygı gösterme,Schools should teach tolerance.,Okullar hoşgörüyü öğretmeli.,4,,school-work
+b2-tragic,TRAGIC,T,STARTS,adj,çok üzücü ve acı,It was a tragic accident.,Çok acı bir kazaydı.,4,,film-tv
+b2-trait,TRAIT,T,STARTS,noun,bir kişinin kişisel özelliği,Patience is a useful trait.,Sabır faydalı bir özelliktir.,4,,daily-life
+b2-transform,TRANSFORM,T,STARTS,verb,bir şeyi başka bir hale getirmek,The new owner will transform the old house.,Yeni sahip eski evi dönüştürecek.,4,,daily-life
+b2-transparent,TRANSPARENT,T,STARTS,adj,"içinden görülebilen, şeffaf",The box is made of transparent plastic.,Kutu şeffaf plastikten yapılmış.,3,,technology
+b2-tremendous,TREMENDOUS,T,STARTS,adj,çok büyük ve etkileyici,The team made a tremendous effort.,Takım muazzam bir çaba gösterdi.,4,,sports
+b2-trigger,TRIGGER,T,STARTS,verb,bir olayı başlatmak,Smoke can trigger the alarm.,Duman alarmı çalıştırabilir.,4,,technology
+b2-turnover,TURNOVER,T,STARTS,noun,bir şirketin yıllık satış cirosu,The company's turnover doubled last year.,Şirketin cirosu geçen yıl iki katına çıktı.,4,,business
+b2-take-over,TAKE OVER,T,STARTS,phrasal,bir şirketin ya da işin yönetimini devralmak,She will take over the business next year.,İşi gelecek yıl devralacak.,4,,phrasal-verbs
+b2-take-up,TAKE UP,T,STARTS,phrasal,yeni bir hobiye başlamak,I want to take up painting.,Resim yapmaya başlamak istiyorum.,3,,phrasal-verbs
+b2-take-after,TAKE AFTER,T,STARTS,phrasal,anne babaya benzemek,She seems to take after her father.,Babasına çekmiş gibi görünüyor.,4,,phrasal-verbs
+b2-take-on,TAKE ON,T,STARTS,phrasal,bir işi veya sorumluluğu üstlenmek,I cannot take on any more work.,Daha fazla iş üstlenemem.,4,,phrasal-verbs
+b2-turn-down,TURN DOWN,T,STARTS,phrasal,teklifi geri çevirmek; sesi kısmak,She will turn down the job offer.,İş teklifini reddedecek.,4,,phrasal-verbs
+b2-turn-out,TURN OUT,T,STARTS,phrasal,sonuçta ... olduğu ortaya çıkmak,I hope the party will turn out well.,Umarım parti iyi geçer.,4,,phrasal-verbs
+b2-turn-up,TURN UP,T,STARTS,phrasal,bir yere gelmek; sesi açmak,Only ten people will turn up.,Sadece on kişi gelecek.,4,,phrasal-verbs
+b2-top-up,TOP UP,T,STARTS,phrasal,"yarım kalanı doldurmak, yüklemek",I need to top up my phone credit.,Telefon kontörümü yüklemem gerekiyor.,4,,phrasal-verbs
+b2-time-flies,TIME FLIES,T,STARTS,idiom,zamanın hızla geçtiğini söyleyen deyiş,Time flies when you have fun.,Eğlenirken zaman uçar.,3,,idioms
+b2-tie-the-knot,TIE THE KNOT,T,STARTS,idiom,evlenmek,They plan to tie the knot in June.,Haziranda evlenmeyi planlıyorlar.,4,,idioms
+b2-the-last-straw,THE LAST STRAW,T,STARTS,idiom,sabrı taşıran son olay,His rude comment was the last straw.,Kaba sözü bardağı taşıran son damlaydı.,4,,idioms
+b2-turn-a-blind-eye,TURN A BLIND EYE,T,STARTS,idiom,gördüğü hâlde görmezden gelmek,The teacher will turn a blind eye to the noise.,Öğretmen gürültüye göz yumacak.,4,,idioms
+b2-undergo,UNDERGO,U,STARTS,verb,zorlu bir işlem veya değişim geçirmek,He will undergo surgery next week.,Gelecek hafta ameliyat olacak.,4,,body-health
+b2-universal,UNIVERSAL,U,STARTS,adj,"herkes için geçerli, evrensel",Music is a universal language.,Müzik evrensel bir dildir.,4,,music
+b2-unrealistic,UNREALISTIC,U,STARTS,adj,gerçekçi olmayan,Your plan is unrealistic.,Planın gerçekçi değil.,4,,business
+b2-upbringing,UPBRINGING,U,STARTS,noun,çocuğun yetiştirilme biçimi,She had a strict upbringing.,Sıkı bir terbiye aldı.,4,,daily-life
+b2-unpredictable,UNPREDICTABLE,U,STARTS,adj,ne olacağı önceden bilinemeyen,The weather here is unpredictable.,Buradaki hava tahmin edilemez.,4,,daily-life
+b2-use-up,USE UP,U,STARTS,phrasal,bir şeyi tamamen tüketmek,We might use up all the milk.,Bütün sütü bitirebiliriz.,4,,phrasal-verbs
+b2-under-pressure,UNDER PRESSURE,U,STARTS,idiom,baskı altında,She works well under pressure.,Baskı altında iyi çalışır.,4,,idioms
+b2-up-in-the-air,UP IN THE AIR,U,STARTS,idiom,"kararı henüz verilmemiş, askıda olan",Our plans are still up in the air.,Planlarımız hâlâ belirsiz.,4,,idioms
+b2-up-to-date,UP TO DATE,U,STARTS,phrase,"güncel, en yeni bilgilere sahip",Keep your software up to date.,Yazılımını güncel tut.,3,,technology
+b2-valid,VALID,V,STARTS,adj,geçerli,Your ticket is valid for one month.,Biletin bir ay geçerli.,3,,travel
+b2-variable,VARIABLE,V,STARTS,adj,"değişken, sabit olmayan",The weather is variable in spring.,İlkbaharda hava değişkendir.,4,,daily-life
+b2-variation,VARIATION,V,STARTS,noun,miktar ya da düzeyde görülen farklılık,There is little variation in temperature.,Sıcaklıkta çok az değişiklik var.,4,,food-drink
+b2-vast,VAST,V,STARTS,adj,"çok geniş, uçsuz bucaksız",A vast desert lies to the south.,Güneyde uçsuz bucaksız bir çöl uzanır.,4,,travel
+b2-verify,VERIFY,V,STARTS,verb,doğruluğunu kontrol etmek,Please verify your email address.,Lütfen e-posta adresinizi doğrulayın.,4,,technology
+b2-viewpoint,VIEWPOINT,V,STARTS,noun,bir konuya bakış açısı,Try to see it from her viewpoint.,Olaya onun bakış açısından bakmaya çalış.,4,,daily-life
+b2-visual,VISUAL,V,STARTS,adj,görme duyusuyla ilgili,Children enjoy visual learning.,Çocuklar görsel öğrenmeyi sever.,3,,school-work
+b2-vital,VITAL,V,STARTS,adj,hayati derecede önemli,Water is vital for life.,Su yaşam için hayatidir.,4,,body-health
+b2-voluntary,VOLUNTARY,V,STARTS,adj,"isteğe bağlı, zorunlu olmayan",The course is voluntary.,Kurs isteğe bağlı.,4,,school-work
+b2-vulnerable,VULNERABLE,V,STARTS,adj,"zarar görmeye açık, savunmasız",Small children are vulnerable.,Küçük çocuklar savunmasızdır.,4,,daily-life
+b2-weaken,WEAKEN,W,STARTS,verb,güçsüz hale getirmek veya gücü azalmak,The illness began to weaken him.,Hastalık onu zayıflatmaya başladı.,4,,body-health
+b2-welfare,WELFARE,W,STARTS,noun,kişilerin sağlık ve mutluluk durumu,The government cares about citizens' welfare.,Hükümet vatandaşların refahını önemsiyor.,4,,business
+b2-whereas,WHEREAS,W,STARTS,phrase,"oysa, -e karşılık","He likes tea, whereas she prefers coffee.","O çayı sever, oysa kız kahveyi tercih eder.",4,,school-work
+b2-widespread,WIDESPREAD,W,STARTS,adj,geniş bir alana yayılmış,The flu is widespread this winter.,Bu kış grip yaygın.,4,,body-health
+b2-wisdom,WISDOM,W,STARTS,noun,deneyimle kazanılan bilgelik,Old people are full of wisdom.,Yaşlılar bilgelikle doludur.,4,,daily-life
+b2-worthwhile,WORTHWHILE,W,STARTS,adj,emeğe veya paraya değer,The trip was worthwhile.,Gezi zahmete değdi.,4,,travel
+b2-wreck,WRECK,W,STARTS,noun,kaza sonucu parçalanmış araç veya yapı,The wreck of the ship lay on the beach.,Geminin enkazı sahilde yatıyordu.,4,,travel
+b2-warm-up,WARM UP,W,STARTS,phrasal,ısınmak veya ısıtmak,Warm up before you run.,Koşmadan önce ısın.,3,,phrasal-verbs
+b2-wear-out,WEAR OUT,W,STARTS,phrasal,kullanımdan aşınmak veya yıpranmak,My shoes always wear out quickly.,Ayakkabılarım hep çabuk eskir.,4,,phrasal-verbs
+b2-wipe-out,WIPE OUT,W,STARTS,phrasal,tamamen yok etmek,A flood can wipe out the village.,Sel köyü yok edebilir.,4,,phrasal-verbs
+b2-wrap-up,WRAP UP,W,STARTS,phrasal,bir işi bitirmek; sarınmak,Let's wrap up the meeting.,Toplantıyı bitirelim.,4,,phrasal-verbs
+b2-when-in-rome,WHEN IN ROME,W,STARTS,idiom,gittiğin yerin adetlerine uymak gerektiğini söyleyen deyiş,"When in Rome, do as the Romans do.",Roma'da Romalılar gibi davran.,4,,idioms
