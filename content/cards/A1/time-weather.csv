@@ -1,18 +1,18 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
 a1-autumn,AUTUMN,A,STARTS,noun,sonbahar,Leaves fall in autumn.,Yapraklar sonbaharda dökülür.,2,,time-weather
-a1-cold,COLD,C,STARTS,adj,soğuk,It is cold today.,Bugün hava soğuk.,1,,time-weather
-a1-hot,HOT,H,STARTS,adj,sıcak,It is very hot in summer.,Yazın hava çok sıcak.,1,,time-weather
+a1-cold,COLD,C,STARTS,adj,soğuk,It is cold outside.,Dışarıda hava soğuk.,1,,time-weather
+a1-hot,HOT,H,STARTS,adj,sıcak,It is hot in summer.,Yazın hava sıcak.,1,,time-weather
 a1-day,DAY,D,STARTS,noun,gün,Have a nice day!,İyi günler!,1,,time-weather
 a1-evening,EVENING,E,STARTS,noun,akşam,I watch TV in the evening.,Akşamları televizyon izlerim.,1,,time-weather
 a1-night,NIGHT,N,STARTS,noun,gece,It is dark at night.,Geceleri hava karanlıktır.,1,,time-weather
 a1-rain,RAIN,R,STARTS,noun,yağmur,I like the sound of rain.,Yağmurun sesini severim.,1,,time-weather
-a1-snow,SNOW,S,STARTS,noun,kar,The children play in the snow.,Çocuklar karda oynuyor.,1,,time-weather
-a1-today,TODAY,T,STARTS,adv,bugün,Today is my birthday.,Bugün benim doğum günüm.,1,,time-weather
+a1-snow,SNOW,S,STARTS,noun,kar,Children love snow.,Çocuklar karı sever.,1,,time-weather
+a1-today,TODAY,T,STARTS,adv,bugün,I am busy today.,Bugün meşgulüm.,1,,time-weather
 a1-winter,WINTER,W,STARTS,noun,kış,It snows a lot in winter.,Kışın çok kar yağar.,1,,time-weather
-a1-monday,MONDAY,M,STARTS,noun,pazartesi,School starts on Monday.,Okul pazartesi başlıyor.,1,,time-weather
+a1-monday,MONDAY,M,STARTS,noun,pazartesi,The test is on Monday.,Sınav pazartesi.,1,,time-weather
 a1-july,JULY,J,STARTS,noun,temmuz,We go to the sea in July.,Temmuzda denize gideriz.,1,,time-weather
 a1-october,OCTOBER,O,STARTS,noun,ekim ayı,October comes after September.,"Ekim, eylülden sonra gelir.",1,,time-weather
 a1-friday,FRIDAY,F,STARTS,noun,cuma,We have a test on Friday.,Cuma günü sınavımız var.,1,,time-weather
 a1-year,YEAR,Y,STARTS,noun,yıl,There are twelve months in a year.,Bir yılda on iki ay vardır.,1,,time-weather
-a1-yesterday,YESTERDAY,Y,STARTS,adv,dün,I was at home yesterday.,Dün evdeydim.,2,,time-weather
-a1-week,WEEK,W,STARTS,noun,hafta,See you next week!,Haftaya görüşürüz!,1,,time-weather
+a1-yesterday,YESTERDAY,Y,STARTS,adv,dün,I saw a film yesterday.,Dün bir film izledim.,2,,time-weather
+a1-week,WEEK,W,STARTS,noun,hafta,We go swimming twice a week.,Haftada iki kez yüzmeye gideriz.,1,,time-weather

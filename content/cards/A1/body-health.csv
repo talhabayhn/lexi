@@ -1,11 +1,11 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
 a1-arm,ARM,A,STARTS,noun,kol,My arm hurts.,Kolum ağrıyor.,1,,body-health
 a1-eye,EYE,E,STARTS,noun,göz,I have something in my eye.,Gözüme bir şey kaçtı.,1,,body-health
-a1-foot,FOOT,F,STARTS,noun,ayak (tekil),I can stand on one foot.,Tek ayak üstünde durabilirim.,2,,body-health
+a1-foot,FOOT,F,STARTS,noun,tek bir ayak,I can stand on one foot.,Tek ayak üstünde durabilirim.,2,,body-health
 a1-hand,HAND,H,STARTS,noun,el,Raise your hand.,Elini kaldır.,1,,body-health
-a1-hair,HAIR,H,STARTS,noun,saç,She has long black hair.,Uzun siyah saçları var.,1,,body-health
+a1-hair,HAIR,H,STARTS,noun,saç,She has long hair.,Uzun saçları var.,1,,body-health
 a1-leg,LEG,L,STARTS,noun,bacak,He broke his leg.,Bacağını kırdı.,1,,body-health
-a1-mouth,MOUTH,M,STARTS,noun,ağız,Please open your mouth.,Lütfen ağzını aç.,2,,body-health
-a1-tooth,TOOTH,T,STARTS,noun,diş (tekil),The baby has one tooth.,Bebeğin bir dişi var.,2,,body-health
+a1-mouth,MOUTH,M,STARTS,noun,ağız,Close your mouth when you eat.,Yemek yerken ağzını kapat.,2,,body-health
+a1-tooth,TOOTH,T,STARTS,noun,tek bir diş,The baby has one tooth.,Bebeğin bir dişi var.,2,,body-health
 a1-neck,NECK,N,STARTS,noun,boyun,A giraffe has a long neck.,Zürafanın uzun bir boynu vardır.,2,,body-health
-a1-ill,ILL,I,STARTS,adj,hasta,He is ill today.,O bugün hasta.,2,,body-health
+a1-ill,ILL,I,STARTS,adj,hasta,My grandmother is ill.,Büyükannem hasta.,2,,body-health

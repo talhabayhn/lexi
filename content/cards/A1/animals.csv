@@ -1,8 +1,7 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
-a1-bird,BIRD,B,STARTS,noun,kuş,A bird is singing in the tree.,Ağaçta bir kuş ötüyor.,1,,animals
-a1-cat,CAT,C,STARTS,noun,kedi,Our cat sleeps all day.,Kedimiz bütün gün uyur.,1,,animals
-a1-elephant,ELEPHANT,E,STARTS,noun,fil,The elephant is very big.,Fil çok büyük.,2,,animals
-a1-fish,FISH,F,STARTS,noun,balık,My fish is orange.,Balığım turuncu.,1,,animals
+a1-bird,BIRD,B,STARTS,noun,kuş,A small bird is singing outside.,Dışarıda küçük bir kuş ötüyor.,1,,animals
+a1-cat,CAT,C,STARTS,noun,kedi,Our cat sleeps on the sofa.,Kedimiz kanepede uyur.,1,,animals
+a1-elephant,ELEPHANT,E,STARTS,noun,fil,The elephant has big ears.,Filin büyük kulakları var.,2,,animals
+a1-fish,FISH,F,STARTS,noun,balık,I have a little fish.,Küçük bir balığım var.,1,,animals
 a1-lion,LION,L,STARTS,noun,aslan,The lion is the king of animals.,Aslan hayvanların kralıdır.,1,,animals
 a1-rabbit,RABBIT,R,STARTS,noun,tavşan,The rabbit has long ears.,Tavşanın uzun kulakları var.,2,,animals
-a1-fox,FOX,X,CONTAINS,noun,tilki,The fox has a long red tail.,Tilkinin uzun kırmızı bir kuyruğu var.,2,,animals

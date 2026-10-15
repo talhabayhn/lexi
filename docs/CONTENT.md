@@ -69,6 +69,18 @@ level-wheel/category query must filter `pack_only = 0`, and they are reachable o
 
 Level comes from the folder name (`A1`, `A2`, `B1`, `B2`, `C1`, `NAT`). See `content/cards/A1/sample.csv`. Clues for other languages (v2) go in `content/clues/<lang>/…` keyed by `id`.
 
+### Clue & example rules (owner review, apply to every batch)
+- **No other answer in examples:** `example_en` must not contain any other answer of the same level as a whole
+  word (all files incl. `sample.csv`), or the Example joker leaks it. Re-check old examples when adding answers.
+- **Ambiguous words:** the clue shows the meaning or usage in natural Turkish ("tek bir diş", "bir sonraki"),
+  never a bracket tag like "(tekil)".
+- **Near-synonym pairs** (HOUSE/HOME, …) get clearly different clues ("konut, ev binası" vs "yuva, insanın
+  yaşadığı yer"); a clue must not fit a near-synonym that is or may become a card on the same letter.
+- **CEFR level** follows the official A1–C1 level of the word (Cambridge/Oxford level labels, used only as a
+  reference, see §6). Exceptions only for hard-letter coverage (X, Z, Q, …) and noted in the review sheet.
+- **`pos` matches the example's usage** (TODAY `adv` ⇒ "I am busy today.", not "Today is …").
+- If the Turkish translation is the answer itself (PIZZA), use a short description instead.
+
 ## 3. Validation (compiler fails the build on any error)
 - unique `id`; answer charset & length; rule consistency with `letter`; clue doesn't contain the answer (case/
   diacritic-insensitive); example contains the answer; no duplicate answer within a level;

@@ -1,15 +1,15 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
 a1-sleep,SLEEP,S,STARTS,verb,uyumak,Babies sleep a lot.,Bebekler çok uyur.,1,,daily-life
-a1-walk,WALK,W,STARTS,verb,yürümek,We walk in the park every evening.,Her akşam parkta yürürüz.,1,,daily-life
+a1-walk,WALK,W,STARTS,verb,yürümek,I walk to work every morning.,Her sabah işe yürüyerek giderim.,1,,daily-life
 a1-play,PLAY,P,STARTS,verb,oynamak,Do you want to play a game?,Oyun oynamak ister misin?,1,,daily-life
 a1-open,OPEN,O,STARTS,verb,açmak,Can you open this bottle?,Bu şişeyi açabilir misin?,1,,daily-life
-a1-jump,JUMP,J,STARTS,verb,zıplamak,Frogs can jump very high.,Kurbağalar çok yükseğe zıplayabilir.,2,,daily-life
+a1-jump,JUMP,J,STARTS,verb,zıplamak,Frogs can jump high.,Kurbağalar yükseğe zıplayabilir.,2,,daily-life
 a1-visit,VISIT,V,STARTS,verb,ziyaret etmek,We visit our grandmother on Sundays.,Pazar günleri büyükannemizi ziyaret ederiz.,2,,daily-life
 a1-money,MONEY,M,STARTS,noun,para,I don't have any money.,Hiç param yok.,1,,daily-life
-a1-happy,HAPPY,H,STARTS,adj,mutlu,The children are very happy today.,Çocuklar bugün çok mutlu.,1,,daily-life
-a1-quiet,QUIET,Q,STARTS,adj,sessiz,Please be quiet in the library.,Lütfen kütüphanede sessiz olun.,2,,daily-life
-a1-very,VERY,V,STARTS,adv,çok,This bag is very heavy.,Bu çanta çok ağır.,1,,daily-life
-a1-lazy,LAZY,Z,CONTAINS,adj,tembel,Don't be lazy. Do your homework.,Tembellik yapma. Ödevini yap.,2,,daily-life
+a1-happy,HAPPY,H,STARTS,adj,mutlu,You look happy!,Mutlu görünüyorsun!,1,,daily-life
+a1-quiet,QUIET,Q,STARTS,adj,sessiz,Please be quiet. The baby is sleeping.,Lütfen sessiz ol. Bebek uyuyor.,2,,daily-life
+a1-very,VERY,V,STARTS,adv,sıfatın önüne gelip anlamı güçlendiren 'çok',This bag is very heavy.,Bu çanta çok ağır.,1,,daily-life
 a1-use,USE,U,STARTS,verb,kullanmak,Can I use your phone?,Telefonunu kullanabilir miyim?,1,,daily-life
 a1-idea,IDEA,I,STARTS,noun,fikir,I have an idea!,Bir fikrim var!,1,,daily-life
-a1-good,GOOD,G,STARTS,adj,iyi,She is a good student.,O iyi bir öğrenci.,1,,daily-life
+a1-good,GOOD,G,STARTS,adj,iyi,This is a good film.,Bu iyi bir film.,1,,daily-life
+a1-next,NEXT,X,CONTAINS,adj,bir sonraki,The next bus is at ten.,Bir sonraki otobüs saat onda.,2,,daily-life

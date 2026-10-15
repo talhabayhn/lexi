@@ -1,8 +1,10 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
-a1-bed,BED,B,STARTS,noun,yatak,My bed is very soft.,Yatağım çok yumuşak.,1,,home
+a1-bed,BED,B,STARTS,noun,yatak,My bed is soft.,Yatağım yumuşak.,1,,home
 a1-door,DOOR,D,STARTS,noun,kapı,Please close the door.,Lütfen kapıyı kapat.,1,,home
 a1-garden,GARDEN,G,STARTS,noun,bahçe,There are flowers in our garden.,Bahçemizde çiçekler var.,1,,home
 a1-glass,GLASS,G,STARTS,noun,bardak,This glass is empty.,Bu bardak boş.,1,,home
 a1-key,KEY,K,STARTS,noun,anahtar,I can't find my key.,Anahtarımı bulamıyorum.,1,,home
 a1-knife,KNIFE,K,STARTS,noun,bıçak,Be careful. The knife is sharp.,Dikkat et. Bıçak keskin.,3,,home
-a1-plate,PLATE,P,STARTS,noun,tabak,Put the plate on the table.,Tabağı masaya koy.,1,,home
+a1-plate,PLATE,P,STARTS,noun,tabak,"Wash your plate, please.",Lütfen tabağını yıka.,1,,home
+a1-house,HOUSE,H,STARTS,noun,"konut, ev binası",They live in a big house.,Büyük bir evde yaşıyorlar.,1,,home
+a1-home,HOME,H,STARTS,noun,"yuva, insanın yaşadığı yer",This city is my home now.,Bu şehir artık benim yuvam.,2,,home
