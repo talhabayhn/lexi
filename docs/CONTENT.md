@@ -186,7 +186,7 @@ CREATE INDEX card_level_letter ON card(level, letter);
 CREATE INDEX card_level_category ON card(level, category_id);
 ```
 
-## 8. user.db (schema v1)
+## 8. user.db (schema v2)
 Source of truth: `core/data/src/commonMain/sqldelight/dev/talhabayhan/lexi/core/data/user/db/*.sq`. Summary:
 ```sql
 progress(card_id TEXT PK, box INTEGER NULL,           -- NULL = not in the notebook; Leitner 0-4 (GAME_RULES.md §10)
@@ -197,9 +197,11 @@ session(id INTEGER PK AUTOINCREMENT, mode, level, category NULL, seed, started_m
 daily_result(epoch_day PK, level, score, time_ms, share_code NULL)   -- the one scored Daily attempt per day
 streak(epoch_day PK)                                  -- days with ≥ 1 completed wheel, written with the session
 joker(type PK, count ≥ 0)                             -- JokerType name → inventory
+joker_grant(kind PK, epoch_day)                       -- v2: JokerGrantReason name → last gift day (GAME_RULES.md §7)
 ```
 - Card ids are content slugs; progress of cards that left `content.db` is kept and hidden by the repository.
 - Changes only through `<from-version>.sqm` migrations in `core/data/src/commonMain/sqldelight/migrations/` plus a
   frozen snapshot `core/data/src/jvmTest/resources/user-db/<version>.sql` (`UserDatabaseMigrationTest`, ADR 0018).
-- Later, when their features land: joker grant bookkeeping (daily login, Pro refill: M4/M7), `achievement(id PK,
+- v2 (`1.sqm`): `joker_grant` for the daily gift and streak bonus, written with the inventory in one transaction.
+- Later, when their features land: Pro refill bookkeeping (M7, a `joker_grant` kind), `achievement(id PK,
   unlocked_ms)` (v1.2), the share-card payload format (M6).

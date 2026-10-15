@@ -151,7 +151,7 @@ class GameConfigTest {
             ),
         )
         assertEquals(expected, config.jokerStartPack)
-        assertEquals(1, config.dailyLoginJokerBonus)
+        assertEquals(1, config.jokerGifts.dailyGift)
         assertEquals(1, config.rewardedAdJokerReward)
         assertEquals(3, config.proDailyJokerRefill)
     }

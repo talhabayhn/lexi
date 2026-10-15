@@ -33,7 +33,7 @@ internal class HomeViewModel(progress: ProgressRepository, streaks: StreakReposi
             combine(progress.observeAll(), streaks.observeDays(), today) { cards, days, day ->
                 val date = civilDateOfEpochDay(day)
                 mutableState.value.copy(
-                    streakDays = currentStreak(days, day),
+                    streakDays = Stats.currentStreak(days, day),
                     dueReviews = cards.count { it.isDue(day) },
                     learnedWords = Stats.learnedWords(cards),
                     dailyDay = date.day,
@@ -64,19 +64,4 @@ internal class HomeViewModel(progress: ProgressRepository, streaks: StreakReposi
             -> Unit
         }
     }
-}
-
-/**
- * Length of the run of consecutive [days] (epoch days, any order) that ends today. A run ending yesterday still counts:
- * today's wheel is not played yet and the streak is not lost until the day is over. Streak rules proper land in M6.
- */
-internal fun currentStreak(days: Collection<Long>, today: Long): Int {
-    val played = days.toSet()
-    var day = if (today in played) today else today - 1
-    var length = 0
-    while (day in played) {
-        length++
-        day--
-    }
-    return length
 }

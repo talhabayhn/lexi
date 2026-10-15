@@ -1,7 +1,14 @@
--- Joker inventory per JokerType name (GAME_RULES.md §7). Grant bookkeeping (daily login, Pro refill) comes in M4/M7.
+-- Joker inventory per JokerType name (GAME_RULES.md §7).
 CREATE TABLE joker(
     type TEXT NOT NULL PRIMARY KEY,
     count INTEGER NOT NULL CHECK(count >= 0)
+);
+
+-- Gift bookkeeping (GAME_RULES.md §7, schema v2): per JokerGrantReason name, the epoch day it was last given for
+-- (daily gift: the local day; streak bonus: the day the milestone was reached). Pro refill (M7) adds its own kind.
+CREATE TABLE joker_grant(
+    kind TEXT NOT NULL PRIMARY KEY,
+    epoch_day INTEGER NOT NULL
 );
 
 selectAll:
@@ -19,3 +26,9 @@ INSERT OR IGNORE INTO joker(type, count) VALUES (?, 0);
 
 addCount:
 UPDATE joker SET count = count + :amount WHERE type = :type;
+
+grantDays:
+SELECT kind, epoch_day FROM joker_grant;
+
+setGrantDay:
+INSERT OR REPLACE INTO joker_grant(kind, epoch_day) VALUES (?, ?);

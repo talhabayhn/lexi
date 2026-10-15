@@ -54,6 +54,19 @@ class StatsTest {
     }
 
     @Test
+    fun `current streak counts the run ending today or yesterday`() {
+        val today = 100L
+        assertEquals(0, Stats.currentStreak(emptyList(), today))
+        assertEquals(1, Stats.currentStreak(listOf(today), today))
+        // Today is still open: yesterday's run is alive.
+        assertEquals(2, Stats.currentStreak(listOf(today - 2, today - 1), today))
+        // A day was skipped: the run ended.
+        assertEquals(0, Stats.currentStreak(listOf(today - 3, today - 2), today))
+        // Only the latest run counts, whatever the order.
+        assertEquals(2, Stats.currentStreak(listOf(today, today - 1, today - 5, today - 4, today - 3), today))
+    }
+
+    @Test
     fun `words per day without sessions is 7 zero days`() {
         val days = Stats.wordsPerDay(emptyList(), todayEpochDay = 50L)
 

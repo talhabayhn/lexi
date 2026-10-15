@@ -1,5 +1,6 @@
 package dev.talhabayhan.lexi.core.domain.game
 
+import dev.talhabayhan.lexi.core.domain.joker.JokerGiftConfig
 import dev.talhabayhan.lexi.core.domain.model.Level
 import kotlinx.serialization.Serializable
 
@@ -61,7 +62,8 @@ public data class GameConfig(
             JokerType.LISTEN to 1,
         ),
     ),
-    val dailyLoginJokerBonus: Int = 1,
+    /** §7 daily joker gift, inventory cap for gifts and streak bonus (owner decision). */
+    val jokerGifts: JokerGiftConfig = JokerGiftConfig(),
     val rewardedAdJokerReward: Int = 1,
     val proDailyJokerRefill: Int = 3,
     /** §10: modes whose answers don't change the notebook (hot-seat duel: the second player isn't the owner). */

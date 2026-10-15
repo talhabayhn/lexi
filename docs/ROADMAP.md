@@ -54,6 +54,7 @@ Module mapping (replaces the earlier `composeApp`): `androidApp` = thin Android 
 - [x] Home (`02-home`), Level select (`03-level-select`)
 - [x] Game screen (`04-game`) wired to engine: wheel, timer, clue, slots, keys, backspace, pass, score
 - [x] Joker sheet (`05-joker-sheet`) + jokers inventory
+- [x] Daily joker gift + 7-day streak bonus, cap 5 per type (owner decision, `GAME_RULES.md` §7; notice = design debt)
 - [x] Pause dialog (design debt; built from `16-components`, needs design)
 - [x] Result (`06-result`) incl. "Tekrar edilecekler" → SRS
 - [x] Motion catalogue #1–#8, haptics & sounds (`motion.md`)

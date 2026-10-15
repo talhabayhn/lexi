@@ -2,6 +2,7 @@ package dev.talhabayhan.lexi.core.domain.repository
 
 import dev.talhabayhan.lexi.core.domain.game.JokerInventory
 import dev.talhabayhan.lexi.core.domain.game.JokerType
+import dev.talhabayhan.lexi.core.domain.joker.JokerWallet
 import dev.talhabayhan.lexi.core.domain.model.CardId
 import dev.talhabayhan.lexi.core.domain.session.DailyResult
 import dev.talhabayhan.lexi.core.domain.session.SessionResult
@@ -36,7 +37,10 @@ public interface SessionRepository {
     public fun observeRecords(): Flow<List<SessionRecord>>
 }
 
-/** Days with at least one completed wheel (written by [SessionRepository.record]); streak rules land in M6. */
+/**
+ * Days with at least one completed wheel (written by [SessionRepository.record]); `Stats.currentStreak` gives the
+ * current streak, `JokerGifts` its bonus. More streak rules land in M6.
+ */
 public interface StreakRepository {
     /** Epoch days, ascending. */
     public fun observeDays(): Flow<List<Long>>
@@ -62,4 +66,12 @@ public interface JokerRepository {
 
     /** Gives [startPack] on the very first call (no inventory stored yet); returns whether it was granted. */
     public suspend fun grantStartPack(startPack: JokerInventory): Boolean
+
+    /**
+     * Reads the inventory and the gift bookkeeping, applies [transform] (run exactly once) and stores the result in
+     * one transaction; returns the stored wallet. The inventory is written only when it changed, so an update before
+     * [grantStartPack] doesn't block the start pack. Gift days only move forward: a transform that clears or lowers
+     * one throws [IllegalArgumentException] and nothing is stored.
+     */
+    public suspend fun updateWallet(transform: (JokerWallet) -> JokerWallet): JokerWallet
 }

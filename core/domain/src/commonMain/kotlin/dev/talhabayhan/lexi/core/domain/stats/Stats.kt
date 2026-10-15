@@ -50,6 +50,21 @@ public object Stats {
         return longest
     }
 
+    /**
+     * Length of the run of consecutive [days] (epoch days with a completed wheel, any order) that ends today. A run
+     * ending yesterday still counts: today's wheel is not played yet and the streak is not lost until the day is over.
+     */
+    public fun currentStreak(days: Collection<Long>, today: Long): Int {
+        val played = days.toSet()
+        var day = if (today in played) today else today - 1
+        var length = 0
+        while (day in played) {
+            length++
+            day--
+        }
+        return length
+    }
+
     public fun completedWheels(sessions: Collection<SessionRecord>): Int = sessions.count { it.completed }
 
     /** Correct answers per day for the last [days] days ending today, oldest first (completed or not). */

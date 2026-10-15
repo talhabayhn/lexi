@@ -100,8 +100,24 @@ the app goes to background.
 | Çeldiricileri temizle (Remove distractors) | disables all distractor keys | ⚙ −15 s (untimed modes: ⚙ −5 pts) | 1 joker per slot |
 | Örnek cümle (Example) | shows example sentence with the word blanked | ⚙ −5 pts | 1 joker per slot |
 | Telaffuzu dinle (Listen) | speaks the answer (TTS) | ⚙ −10 pts | 1 joker per slot; disabled at C1 and NAT |
-- Inventory per joker type, persisted. Sources: start pack (2/1/3/1), daily login +1 random, rewarded ad +1,
-  Pro +3/day refill. Jokers are not allowed in Daily (fair comparison), Duel and Level test (would distort the
+- Inventory per joker type, persisted. Sources: start pack (2/1/3/1), daily gift +1 random, 7-day streak bonus
+  +1 random, rewarded ad +1, Pro +3/day refill.
+- Owner decision (free gifts, ⚙ `GameConfig.jokerGifts = JokerGiftConfig(dailyGift = 1, cap = 5,
+  streakBonusEvery = 7, streakBonus = 1)`): 1 joker on the first app open of each local calendar day; inventory cap
+  5; +1 bonus joker each time the streak (§11) completes 7 days.
+- Engine decisions (`JokerGifts`, `GrantDailyJokers`): the cap is per joker type (the start pack already totals 7)
+  and only limits gifts; each gifted joker goes to a type picked uniformly among the types below the cap (enum
+  order, `SeededRandom` seeded per §13: daily gift from today's epoch day, bonus from the milestone day), re-checked
+  after each pick; with every type at the cap there is no gift but the day/milestone is used up. "Local day" =
+  `AppClock.epochDay` in the device time zone; the last gift day is stored and a gift is given only when today is
+  after it (a clock or time zone moved back gives nothing and never lowers the stored day; moving it forward is not
+  detectable offline). The streak bonus is checked at app open, not when the session is recorded: when the current
+  streak (the run ending today or yesterday) has reached a multiple of 7 on a day after the last rewarded milestone
+  day, one bonus is given (only the latest milestone of a run; a new run after a break counts again). So the bonus
+  for day 7 arrives with the first open after that wheel (usually the next day); daily gift first, then bonus. The
+  start pack is granted before the first gift. Gifts run once per cold start (splash) and are idempotent per day;
+  a process kept alive across midnight gets the next gift at its next cold start. Gift inventory and bookkeeping are
+  written in one `user.db` transaction (`JokerRepository.updateWallet`, table `joker_grant`). Jokers are not allowed in Daily (fair comparison), Duel and Level test (would distort the
   placement). ⚙ `jokerFreeModes`. Owner decision: no jokers in the level test.
 - Owner decision: Remove distractors costs points in untimed modes like Reveal letter (⚙
   `removeDistractorsUntimedCostPoints = 5`; 0 = free). Untimed modes are unscored today, so point costs only
@@ -174,6 +190,8 @@ Engine (`Stats`): "words per day" = correct answers per day (all sessions); perc
 hardest letters are sorted by exact accuracy, ties by letter; per-level progress needs the card totals per level.
 Card-based stats read `CardProgress`, which duel answers don't touch (⚙ `srsExcludedModes`); the data layer
 records no `SessionRecord` for those modes either, so streaks and words per day exclude them too.
+Current streak (`Stats.currentStreak`, home and the joker streak bonus §7) = the run of consecutive streak days
+ending today, or yesterday while today's wheel isn't done yet.
 
 ## 12. Engine events & effects (contract)
 ```
@@ -208,3 +226,5 @@ Every rule above must have a unit test named after the rule, e.g. `pass_endsTurn
   | `keys:<letter>` | key set + shuffle of the slot with that letter (`KeyboardGenerator`) |
   | `level-test:<index>` | the level test's n-th card pick (`LevelTest.nextCard`) |
   | `player:<n>` | duel player n's (1-based) game seed; their `wheel` and `keys:<letter>` derive from it |
+  | `joker-gift:daily` | daily joker gift type picks; base seed = today's epoch day, not a game seed (`JokerGifts`) |
+  | `joker-gift:streak` | streak bonus type picks; base seed = the milestone's epoch day (`JokerGifts`) |

@@ -121,16 +121,4 @@ class HomeViewModelTest {
             expectNoEvents()
         }
     }
-
-    @Test
-    fun `streak counts the run ending today or yesterday`() {
-        assertEquals(0, currentStreak(emptyList(), today))
-        assertEquals(1, currentStreak(listOf(today), today))
-        // Today is still open: yesterday's run is alive.
-        assertEquals(2, currentStreak(listOf(today - 2, today - 1), today))
-        // A day was skipped: the run ended.
-        assertEquals(0, currentStreak(listOf(today - 3, today - 2), today))
-        // Only the latest run counts, whatever the order.
-        assertEquals(2, currentStreak(listOf(today, today - 1, today - 5, today - 4, today - 3), today))
-    }
 }

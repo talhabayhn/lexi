@@ -6,11 +6,14 @@ import app.cash.sqldelight.coroutines.mapToOneOrNull
 import dev.talhabayhan.lexi.core.data.content.MAX_SQL_VARIABLES
 import dev.talhabayhan.lexi.core.data.db.Databases
 import dev.talhabayhan.lexi.core.data.db.SuspendLazy
+import dev.talhabayhan.lexi.core.data.user.db.Joker
 import dev.talhabayhan.lexi.core.data.user.db.Progress
 import dev.talhabayhan.lexi.core.data.user.db.UserDatabase
 import dev.talhabayhan.lexi.core.domain.game.GameConfig
 import dev.talhabayhan.lexi.core.domain.game.JokerInventory
 import dev.talhabayhan.lexi.core.domain.game.JokerType
+import dev.talhabayhan.lexi.core.domain.joker.JokerGrantReason
+import dev.talhabayhan.lexi.core.domain.joker.JokerWallet
 import dev.talhabayhan.lexi.core.domain.model.CardId
 import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.core.domain.repository.DailyRepository
@@ -173,19 +176,21 @@ internal class DailyRepositoryImpl(databases: Databases, io: CoroutineDispatcher
     }
 }
 
-/** One row per [JokerType] name; rows of unknown types (from a newer app version) are ignored. */
+/**
+ * One row per [JokerType] name; rows of unknown types (from a newer app version) are ignored. Gift bookkeeping lives
+ * in `joker_grant` (one row per [JokerGrantReason] name) so a gift and its day are written in one transaction.
+ */
 internal class JokerRepositoryImpl(databases: Databases, io: CoroutineDispatcher) :
     UserStore(databases, io),
     JokerRepository {
     override fun observeInventory(): Flow<JokerInventory> = observe {
-        jokerQueries.selectAll().asFlow().mapToList(io).map { rows ->
-            JokerInventory(
-                rows.mapNotNull { row ->
-                    JokerType.entries.firstOrNull { it.name == row.type }?.let { it to row.count.toInt() }
-                }.toMap(),
-            )
-        }
+        jokerQueries.selectAll().asFlow().mapToList(io).map { rows -> rows.toInventory() }
     }
+
+    private fun List<Joker>.toInventory() = JokerInventory(
+        mapNotNull { row -> JokerType.entries.firstOrNull { it.name == row.type }?.let { it to row.count.toInt() } }
+            .toMap(),
+    )
 
     override suspend fun save(inventory: JokerInventory) = write {
         jokerQueries.transaction {
@@ -208,6 +213,25 @@ internal class JokerRepositoryImpl(databases: Databases, io: CoroutineDispatcher
             if (jokerQueries.rowCount().executeAsOne() > 0) return@transactionWithResult false
             JokerType.entries.forEach { jokerQueries.setCount(it.name, startPack.count(it).toLong()) }
             true
+        }
+    }
+
+    override suspend fun updateWallet(transform: (JokerWallet) -> JokerWallet): JokerWallet = write {
+        jokerQueries.transactionWithResult {
+            val days = jokerQueries.grantDays().executeAsList().associate { it.kind to it.epoch_day }
+            val before = JokerWallet(
+                inventory = jokerQueries.selectAll().executeAsList().toInventory(),
+                lastDailyGiftDay = days[JokerGrantReason.DAILY_GIFT.name],
+                lastStreakBonusDay = days[JokerGrantReason.STREAK_BONUS.name],
+            )
+            val after = transform(before)
+            after.requireDaysNotBefore(before)
+            if (after.inventory != before.inventory) {
+                JokerType.entries.forEach { jokerQueries.setCount(it.name, after.inventory.count(it).toLong()) }
+            }
+            after.lastDailyGiftDay?.let { jokerQueries.setGrantDay(JokerGrantReason.DAILY_GIFT.name, it) }
+            after.lastStreakBonusDay?.let { jokerQueries.setGrantDay(JokerGrantReason.STREAK_BONUS.name, it) }
+            after
         }
     }
 }

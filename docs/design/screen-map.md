@@ -32,6 +32,7 @@ before shipping.
 | Result without misses | M4 | `EmptyState` instead of the review list |
 | Joker sheet clock pill over the live game | M4 | `05-joker-sheet` shows the pill on a dimmed screen; in the app it is drawn above the scrim at the top, over the dimmed but still running HUD timer, so the time is shown twice |
 | Combo badge position in the game | M4 | `15-motion` #7 shows badge + burst alone; in the game they are centred on the wheel centre (over the yellow disc), badge at its resting −4° |
+| Daily joker gift notice | M4 | none yet: `GrantDailyJokers` returns the grants (type + reason) for a later toast; today only the joker counts change |
 | Disabled game inputs (wrong-answer reveal) | M4 | keys / backspace / joker at 50 % without shadow (joker sheet's disabled rows), PAS = `LexiButton` disabled |
 | Onboarding steps 1 & 3 | M6 | same layout as step 2, different shapes & copy |
 | Level test result ("Seviyen: B1") | M6 | result screen header style + level badge |

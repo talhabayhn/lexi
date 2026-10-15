@@ -1,0 +1,5 @@
+-- v1 -> v2: joker gift bookkeeping (daily gift, streak bonus; GAME_RULES.md §7).
+CREATE TABLE joker_grant(
+    kind TEXT NOT NULL PRIMARY KEY,
+    epoch_day INTEGER NOT NULL
+);

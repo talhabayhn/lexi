@@ -7,6 +7,7 @@ import dev.talhabayhan.lexi.core.domain.game.GameConfig
 import dev.talhabayhan.lexi.core.domain.game.GameMode
 import dev.talhabayhan.lexi.core.domain.game.JokerInventory
 import dev.talhabayhan.lexi.core.domain.game.JokerType
+import dev.talhabayhan.lexi.core.domain.joker.JokerWallet
 import dev.talhabayhan.lexi.core.domain.model.CardId
 import dev.talhabayhan.lexi.core.domain.model.CategoryId
 import dev.talhabayhan.lexi.core.domain.model.Level
@@ -19,6 +20,7 @@ import kotlinx.coroutines.test.runTest
 import kotlin.test.AfterTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
 import kotlin.test.assertFalse
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
@@ -177,6 +179,51 @@ class UserRepositoriesTest {
             assertEquals(2, awaitItem().count(JokerType.LISTEN))
         }
         assertFalse(jokers.grantStartPack(pack), "an empty inventory after use is not a first run")
+    }
+
+    @Test
+    fun `wallet update writes inventory and gift days together and keeps them`() = runTest(io) {
+        val jokers = JokerRepositoryImpl(db.databases, io)
+        val pack = GameConfig().jokerStartPack
+        jokers.grantStartPack(pack)
+
+        val before = jokers.updateWallet { it }
+        assertEquals(JokerWallet(pack), before.copy(inventory = before.inventory.withoutZeros()))
+
+        val after = jokers.updateWallet {
+            it.copy(
+                inventory = it.inventory.plus(JokerType.LISTEN, 1),
+                lastDailyGiftDay = 20_000,
+                lastStreakBonusDay = 19_998,
+            )
+        }
+        assertEquals(2, after.inventory.count(JokerType.LISTEN))
+
+        // A second repository on the same user.db (next process) reads what was stored.
+        val stored = JokerRepositoryImpl(db.databases, io).updateWallet { it }
+        assertEquals(after, stored)
+        jokers.observeInventory().test { assertEquals(after.inventory, awaitItem()) }
+    }
+
+    @Test
+    fun `gift days never move back`() = runTest(io) {
+        val jokers = JokerRepositoryImpl(db.databases, io)
+        jokers.updateWallet { it.copy(lastDailyGiftDay = 20_000, lastStreakBonusDay = 19_990) }
+
+        assertFailsWith<IllegalArgumentException> { jokers.updateWallet { it.copy(lastDailyGiftDay = 19_999) } }
+        assertFailsWith<IllegalArgumentException> { jokers.updateWallet { it.copy(lastStreakBonusDay = null) } }
+
+        assertEquals(JokerWallet(JokerInventory(), 20_000, 19_990), jokers.updateWallet { it })
+    }
+
+    @Test
+    fun `wallet without a stored inventory leaves the start pack to come`() = runTest(io) {
+        val jokers = JokerRepositoryImpl(db.databases, io)
+
+        jokers.updateWallet { it.copy(lastDailyGiftDay = 20_000) }
+
+        assertTrue(jokers.grantStartPack(GameConfig().jokerStartPack))
+        assertEquals(20_000, jokers.updateWallet { it }.lastDailyGiftDay)
     }
 
     private fun JokerInventory.withoutZeros() = JokerInventory(counts.filterValues { it > 0 })

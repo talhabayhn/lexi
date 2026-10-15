@@ -3,6 +3,7 @@ package dev.talhabayhan.lexi.core.testing
 import dev.talhabayhan.lexi.core.domain.game.GameConfig
 import dev.talhabayhan.lexi.core.domain.game.JokerInventory
 import dev.talhabayhan.lexi.core.domain.game.JokerType
+import dev.talhabayhan.lexi.core.domain.joker.JokerWallet
 import dev.talhabayhan.lexi.core.domain.model.CardId
 import dev.talhabayhan.lexi.core.domain.repository.JokerRepository
 import dev.talhabayhan.lexi.core.domain.repository.ProgressRepository
@@ -68,11 +69,17 @@ public class FakeSessionRepository(private val config: GameConfig = GameConfig()
     override fun observeRecords(): Flow<List<SessionRecord>> = stored.map { list -> list.map { it.toRecord() } }
 }
 
-/** In-memory [JokerRepository]; `null` inventory = nothing stored yet (start pack not granted). */
+/**
+ * In-memory [JokerRepository]; `null` inventory = nothing stored yet (start pack not granted). [wallet] holds the gift
+ * bookkeeping (its inventory mirrors [inventory]).
+ */
 public class FakeJokerRepository(initial: JokerInventory? = null) : JokerRepository {
     private val state = MutableStateFlow(initial)
+    private var giftDays = JokerWallet()
 
     public val inventory: StateFlow<JokerInventory?> = state.asStateFlow()
+
+    public val wallet: JokerWallet get() = giftDays.copy(inventory = state.value ?: JokerInventory())
 
     override fun observeInventory(): Flow<JokerInventory> = state.map { it ?: JokerInventory() }
 
@@ -88,6 +95,15 @@ public class FakeJokerRepository(initial: JokerInventory? = null) : JokerReposit
         if (state.value != null) return false
         state.value = startPack
         return true
+    }
+
+    override suspend fun updateWallet(transform: (JokerWallet) -> JokerWallet): JokerWallet {
+        val before = wallet
+        val after = transform(before)
+        after.requireDaysNotBefore(before)
+        if (after.inventory != before.inventory) state.value = after.inventory
+        giftDays = after
+        return wallet
     }
 }
 
