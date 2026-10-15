@@ -96,7 +96,7 @@ a2-spicy,SPICY,Y,CONTAINS,adj,baharatlı ve acı olan,I do not like spicy food.,
 a2-copy,COPY,Y,CONTAINS,verb,bir şeyin aynısını yapmak ya da çoğaltmak,Please copy the words from the board.,Lütfen sözcükleri tahtadan kopyala.,2,,school-work
 a2-daily,DAILY,Y,CONTAINS,adj,her gün olan,I take a daily walk in the park.,Parkta günlük yürüyüşümü yaparım.,3,,daily-life
 a2-candy,CANDY,Y,CONTAINS,noun,şekerden yapılan küçük tatlı,The boy ate too much candy.,Çocuk çok fazla şekerleme yedi.,2,,food-drink
-a2-royal,ROYAL,Y,CONTAINS,adj,kral ve kraliçeyle ilgili,The royal family lives in a palace.,Kraliyet ailesi bir sarayda yaşıyor.,3,,family-people
+a2-royal,ROYAL,Y,CONTAINS,adj,kral ve kraliçeyle ilgili,The royal family lives in a big house.,Kraliyet ailesi büyük bir evde yaşıyor.,3,,family-people
 a2-plenty,PLENTY,Y,CONTAINS,phrase,ihtiyaçtan fazla miktar,We have plenty of time.,Bol bol zamanımız var.,3,,daily-life
 a2-anyone,ANYONE,Y,CONTAINS,phrase,herhangi bir kişi,Is anyone at home?,Evde kimse var mı?,3,,daily-life
 a2-anything,ANYTHING,Y,CONTAINS,phrase,herhangi bir şey,I cannot see anything.,Hiçbir şey göremiyorum.,3,,daily-life

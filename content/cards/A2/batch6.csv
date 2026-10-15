@@ -1,0 +1,64 @@
+id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
+a2-mad,MAD,M,STARTS,adj,"birine kızmış, öfkelenmiş (günlük dil)",My mother was mad at me.,Annem bana çok kızdı.,3,,family-people
+a2-main,MAIN,M,STARTS,adj,"en önemli olan, ana",The main street is closed.,Ana cadde kapalı.,3,,city-transport
+a2-mark,MARK,M,STARTS,noun,okulda bir sınava verilen puan,She got a high mark in maths.,Matematikten yüksek bir not aldı.,3,,school-work
+a2-marry,MARRY,M,STARTS,verb,biriyle evlenmek,They will marry in the spring.,İlkbaharda evlenecekler.,3,,family-people
+a2-mean,MEAN,M,STARTS,verb,"bir sözcüğün karşılığı olmak, anlamına gelmek",What does this word mean?,Bu sözcük ne anlama geliyor?,3,,school-work
+a2-medicine,MEDICINE,M,STARTS,noun,hastalığı iyileştirmek için alınan ilaç,Take this medicine at night.,Bu ilacı geceleri al.,2,,body-health
+a2-member,MEMBER,M,STARTS,noun,bir kulübün ya da grubun üyesi,He is a member of the music club.,Müzik kulübünün üyesi.,3,,school-work
+a2-mess,MESS,M,STARTS,noun,"karmakarışık, dağınık bir ortam",My room is a mess.,Odam çok dağınık.,3,,home
+a2-metal,METAL,M,STARTS,noun,demir ve bakır gibi sert madde,The key is made of metal.,Anahtar metalden yapılmış.,3,,home
+a2-mind,MIND,M,STARTS,verb,"bir şeyden rahatsız olmak, sakıncası olmak",Do you mind if I sit here?,Buraya oturmamın sakıncası var mı?,3,,daily-life
+a2-mistake,MISTAKE,M,STARTS,noun,yanlışlıkla yapılan hata,There is a mistake in my homework.,Ödevimde bir hata var.,2,,school-work
+a2-mobile,MOBILE,M,STARTS,adj,"taşınabilir, her yere götürülebilir",I forgot my mobile phone.,Cep telefonumu unuttum.,3,,daily-life
+a2-modern,MODERN,M,STARTS,adj,"çağdaş, yeni tarzda",They live in a modern flat.,Modern bir dairede yaşıyorlar.,3,,home
+a2-moment,MOMENT,M,STARTS,noun,"çok kısa bir zaman dilimi, an","Wait a moment, please.",Bir an bekleyin lütfen.,2,,time-weather
+a2-mud,MUD,M,STARTS,noun,"toprak ve suyun karışımı, çamur",The boots are full of mud.,Botlar çamurla dolu.,2,,daily-life
+a2-musician,MUSICIAN,M,STARTS,noun,müzik çalan ya da besteleyen kişi,The musician plays the guitar well.,Müzisyen gitarı iyi çalıyor.,2,,music
+a2-myself,MYSELF,M,STARTS,phrase,konuşanın kendisi,I made this cake myself.,Bu keki kendim yaptım.,3,,daily-life
+a2-medal,MEDAL,M,STARTS,noun,"boyna asılan altın, gümüş ya da bronz ödül",She won a medal in the race.,Yarışta madalya kazandı.,3,,sports
+a2-medium,MEDIUM,M,STARTS,adj,"ne büyük ne küçük, orta boy",I wear a medium T-shirt.,Orta boy tişört giyiyorum.,3,,daily-life
+a2-mushroom,MUSHROOM,M,STARTS,noun,"ormanda biten, saplı şapkalı yenebilen bitki",We had mushroom soup for lunch.,Öğle yemeğinde mantar çorbası içtik.,2,,food-drink
+a2-mosquito,MOSQUITO,M,STARTS,noun,"insanı sokan, vızıldayan küçük böcek",A mosquito bit me last night.,Dün gece bir sivrisinek beni ısırdı.,3,,animals
+a2-moustache,MOUSTACHE,M,STARTS,noun,üst dudağın üzerindeki bıyık,My grandfather has a white moustache.,Dedemin beyaz bir bıyığı var.,3,,body-health
+a2-magician,MAGICIAN,M,STARTS,noun,sihir numaralarıyla insanları şaşırtan kişi,The magician pulled a rabbit out of a hat.,Sihirbaz şapkadan bir tavşan çıkardı.,3,,daily-life
+a2-promise,PROMISE,M,CONTAINS,verb,birine söz vermek,I promise to call you.,Seni arayacağıma söz veriyorum.,3,,daily-life
+a2-timetable,TIMETABLE,M,CONTAINS,noun,derslerin ya da seferlerin zaman çizelgesi,Look at the bus timetable.,Otobüs tarifesine bak.,3,,school-work
+a2-stomach,STOMACH,M,CONTAINS,noun,"yenen yiyeceklerin gittiği organ, mide",My stomach hurts.,Midem ağrıyor.,3,,body-health
+a2-pack,PACK,P,STARTS,verb,eşyaları valize ya da çantaya yerleştirmek,I need to pack my bag tonight.,Bu gece çantamı hazırlamam lazım.,2,,travel
+a2-packet,PACKET,P,STARTS,noun,"bisküvi, cips gibi şeylerin satıldığı küçük ambalaj",He bought a packet of biscuits.,Bir paket bisküvi aldı.,2,,food-drink
+a2-pair,PAIR,P,STARTS,noun,birlikte kullanılan iki parçadan oluşan takım,I need a new pair of shoes.,Yeni bir çift ayakkabıya ihtiyacım var.,2,,daily-life
+a2-palace,PALACE,P,STARTS,noun,kral ve kraliçenin yaşadığı büyük ve süslü yapı,The king lives in a palace.,Kral bir sarayda yaşıyor.,2,,travel
+a2-parcel,PARCEL,P,STARTS,noun,kargoyla ya da postayla gönderilen koli,A parcel came for you today.,Bugün sana bir koli geldi.,3,,daily-life
+a2-partner,PARTNER,P,STARTS,noun,birlikte iş yapan ya da yaşayan kişi,Find a partner for this game.,Bu oyun için bir eş bul.,3,,school-work
+a2-pass,PASS,P,STARTS,verb,bir sınavı başarıyla geçmek ya da bir şeyi uzatmak,I want to pass the exam.,Sınavı geçmek istiyorum.,3,,school-work
+a2-passenger,PASSENGER,P,STARTS,noun,araca binen ama sürmeyen yolcu,Every passenger must wear a belt.,Her yolcu kemer takmalı.,3,,city-transport
+a2-path,PATH,P,STARTS,noun,yürümek için kullanılan dar yol,This path goes to the lake.,Bu patika göle gidiyor.,3,,travel
+a2-pharmacy,PHARMACY,P,STARTS,noun,"ilaç satılan dükkân, eczane",The pharmacy is next to the bank.,Eczane bankanın yanında.,3,,city-transport
+a2-pick,PICK,P,STARTS,verb,birçok şey arasından seçmek ya da koparmak,Pick a card.,Bir kart seç.,3,,daily-life
+a2-poem,POEM,P,STARTS,noun,"dizelerle yazılmış edebî eser, şiir",She wrote a poem for her mother.,Annesi için bir şiir yazdı.,3,,school-work
+a2-point,POINT,P,STARTS,noun,bir oyunda kazanılan puan,We won by one point.,Bir puanla kazandık.,3,,sports
+a2-popular,POPULAR,P,STARTS,adj,"çok sevilen, beğenilen",This song is popular.,Bu şarkı çok seviliyor.,3,,music
+a2-post,POST,P,STARTS,verb,mektubu göndermek üzere kutuya atmak,I will post this letter today.,Bu mektubu bugün postaya vereceğim.,3,,daily-life
+a2-poster,POSTER,P,STARTS,noun,duvara asılan büyük resim ya da afiş,There is a film poster on my wall.,Duvarımda bir film afişi var.,2,,home
+a2-pot,POT,P,STARTS,noun,yemek pişirmek için kullanılan derin kap,Put the pot on the cooker.,Tencereyi ocağa koy.,2,,home
+a2-power,POWER,P,STARTS,noun,"güç, yetki",The king has a lot of power.,Kralın çok gücü var.,3,,home
+a2-prefer,PREFER,P,STARTS,verb,iki şeyden birini daha çok sevmek,I prefer tea to coffee.,Çayı kahveye tercih ederim.,3,,daily-life
+a2-prepare,PREPARE,P,STARTS,verb,bir şeyi önceden hazır hale getirmek,I prepare dinner at six.,Akşam yemeğini altıda hazırlıyorum.,3,,food-drink
+a2-present,PRESENT,P,STARTS,noun,sevdiğimiz birine verilen hediye,This is a present for you.,Bu senin için bir hediye.,2,,daily-life
+a2-primary,PRIMARY,P,STARTS,adj,ilk ve temel eğitimle ilgili,My little sister goes to primary school.,Küçük kız kardeşim ilkokula gidiyor.,3,,school-work
+a2-prince,PRINCE,P,STARTS,noun,kralın oğlu,The prince is ten years old.,Prens on yaşında.,2,,family-people
+a2-princess,PRINCESS,P,STARTS,noun,kralın ya da kraliçenin kızı,The princess sang a song.,Prenses bir şarkı söyledi.,2,,family-people
+a2-print,PRINT,P,STARTS,verb,yazıyı kâğıda basmak,Can you print this page?,Bu sayfayı yazdırabilir misin?,3,,school-work
+a2-probably,PROBABLY,P,STARTS,adv,büyük olasılıkla,It will probably rain tomorrow.,Yarın muhtemelen yağmur yağacak.,3,,time-weather
+a2-programme,PROGRAMME,P,STARTS,noun,televizyonda yayınlanan gösteri,My favourite TV programme starts at eight.,En sevdiğim televizyon programı sekizde başlıyor.,3,,daily-life
+a2-proud,PROUD,P,STARTS,adj,başarılarından dolayı gurur duyan,I am proud of my son.,Oğlumla gurur duyuyorum.,3,,family-people
+a2-pumpkin,PUMPKIN,P,STARTS,noun,"turuncu renkli büyük yuvarlak sebze, balkabağı",We made soup from a pumpkin.,Balkabağından çorba yaptık.,2,,food-drink
+a2-personal,PERSONAL,P,STARTS,adj,kişiye özel olan,This is a personal question.,Bu kişisel bir soru.,4,,daily-life
+a2-prison,PRISON,P,STARTS,noun,suçluların ceza çektiği büyük bina,He was in prison for a year.,Bir yıl hapiste kaldı.,4,,daily-life
+a2-spend,SPEND,P,CONTAINS,verb,para harcamak ya da zaman geçirmek,I spend too much money on books.,Kitaplara çok para harcıyorum.,3,,daily-life
+a2-ship,SHIP,P,CONTAINS,noun,denizde yolcu ya da yük taşıyan büyük taşıt,The ship leaves at noon.,Gemi öğlen kalkıyor.,2,,city-transport
+a2-tape,TAPE,P,CONTAINS,noun,yapıştırmaya yarayan ince bant,I need some tape for this box.,Bu kutu için biraz bant lazım.,2,,school-work
+a2-simple,SIMPLE,P,CONTAINS,adj,"kolay, karmaşık olmayan",The rules are simple.,Kurallar basit.,3,,school-work
+a2-especially,ESPECIALLY,P,CONTAINS,adv,"diğerlerinden çok, özellikle","I love fruit, especially grapes.","Meyveyi severim, özellikle üzümü.",4,,daily-life
+a2-rope,ROPE,P,CONTAINS,noun,"kalın, güçlü ip",He tied the boat with a rope.,Tekneyi bir halatla bağladı.,3,,daily-life

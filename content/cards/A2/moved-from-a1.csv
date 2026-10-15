@@ -1,5 +1,5 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
-a2-quite,QUITE,Q,STARTS,adv,oldukça,The poem is quite lovely.,Şiir oldukça güzel.,3,,daily-life
+a2-quite,QUITE,Q,STARTS,adv,oldukça,The story is quite good.,Hikâye oldukça iyi.,3,,daily-life
 a2-uniform,UNIFORM,U,STARTS,noun,aynı işi yapanların giydiği kıyafet,The pilot wears a uniform.,Pilot üniforma giyer.,3,,school-work
 a2-van,VAN,V,STARTS,noun,yük taşıyan küçük kapalı araç,A van is waiting at the door.,Kapıda bir kamyonet bekliyor.,2,,city-transport
 a2-vacation,VACATION,V,STARTS,noun,işten ya da okuldan izinli geçirilen günler,Our vacation was lovely.,Tatilimiz çok güzeldi.,3,,daily-life
@@ -18,7 +18,7 @@ a2-museum,MUSEUM,M,STARTS,noun,eski eserlerin sergilendiği bina,The museum is c
 a2-actor,ACTOR,A,STARTS,noun,filmlerde ya da tiyatroda rol yapan kişi,The actor is on stage.,Oyuncu sahnede.,2,,school-work
 a2-blanket,BLANKET,B,STARTS,noun,yatağı örten kalın yünlü örtü,The blanket is soft.,Battaniye yumuşak.,2,,home
 a2-church,CHURCH,C,STARTS,noun,Hristiyanların ibadet ettiği bina,The church is near the park.,Kilise parkın yakınında.,2,,city-transport
-a2-hold,HOLD,H,STARTS,verb,elinde tutmak,Hold the rope.,İpi tut.,2,,daily-life
+a2-hold,HOLD,H,STARTS,verb,elinde tutmak,Hold the bag.,Çantayı tut.,2,,daily-life
 a2-loud,LOUD,L,STARTS,adj,"yüksek sesli, gürültülü",The music is too loud.,Müzik çok gürültülü.,2,,daily-life
 a2-lose,LOSE,L,STARTS,verb,"yitirmek, elinden kaçırmak",Do not lose the receipt.,Fişi kaybetme.,2,,daily-life
 a2-volleyball,VOLLEYBALL,V,STARTS,noun,file üzerinden top aşırılan takım oyunu,The girls play volleyball.,Kızlar voleybol oynuyor.,2,,daily-life

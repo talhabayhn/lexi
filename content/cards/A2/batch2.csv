@@ -6,14 +6,14 @@ a2-unfriendly,UNFRIENDLY,U,STARTS,adj,insanlara sıcak davranmayan,The man at th
 a2-untidy,UNTIDY,U,STARTS,adj,"düzensiz, toplanmamış",My room is untidy.,Odam dağınık.,2,,home
 a2-unlucky,UNLUCKY,U,STARTS,adj,şansı yaver gitmeyen,He was unlucky in the match.,Maçta şanssızdı.,3,,daily-life
 a2-user,USER,U,STARTS,noun,bir ürünü ya da hizmeti kullanan kişi,Every user needs a password.,Her kullanıcının bir parolaya ihtiyacı var.,3,,daily-life
-a2-underwear,UNDERWEAR,U,STARTS,noun,giysilerin altına giyilen iç çamaşırı,Pack some underwear for the trip.,Gezi için iç çamaşırı al.,2,,daily-life
+a2-underwear,UNDERWEAR,U,STARTS,noun,giysilerin altına giyilen iç çamaşırı,Take some underwear with you.,Yanına iç çamaşırı al.,2,,daily-life
 a2-underline,UNDERLINE,U,STARTS,verb,bir yazının altına çizgi çekmek,Underline the new words.,Yeni sözcüklerin altını çiz.,3,,school-work
 a2-button,BUTTON,U,CONTAINS,noun,giysiyi ilikleyen küçük yuvarlak parça,A button fell off my coat.,Paltomdan bir düğme düştü.,2,,daily-life
 a2-rubbish,RUBBISH,U,CONTAINS,noun,"atılacak şeyler, çöp","Put the rubbish outside, please.",Çöpü lütfen dışarı koy.,2,,home
 a2-purse,PURSE,U,CONTAINS,noun,bozuk para koymak için küçük kese,She keeps coins in her purse.,Bozuk paraları para cüzdanında tutuyor.,3,,daily-life
 a2-pupil,PUPIL,U,CONTAINS,noun,ilkokulda ders gören çocuk,Every pupil has a desk.,Her öğrencinin bir sırası var.,2,,school-work
 a2-huge,HUGE,U,CONTAINS,adj,"çok büyük, kocaman",They live in a huge house.,Kocaman bir evde yaşıyorlar.,2,,home
-a2-stupid,STUPID,U,CONTAINS,adj,"akılsızca olan, aptalca",That was a stupid mistake.,O aptalca bir hataydı.,2,,daily-life
+a2-stupid,STUPID,U,CONTAINS,adj,"akılsızca olan, aptalca",That was a stupid answer.,O aptalca bir cevaptı.,2,,daily-life
 a2-hurt,HURT,U,CONTAINS,verb,"bedende acı hissettirmek, incitmek",Did you hurt your leg?,Bacağını incittin mi?,3,,body-health
 a2-sound,SOUND,U,CONTAINS,noun,bir şeyden çıkan ve kulakla duyulan ses,I heard a strange sound.,Garip bir ses duydum.,2,,daily-life
 a2-touch,TOUCH,U,CONTAINS,verb,eliyle dokunmak,Do not touch the hot oven.,Sıcak fırına dokunma.,2,,daily-life
