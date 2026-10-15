@@ -1,0 +1,74 @@
+id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
+b2-narrative,NARRATIVE,N,STARTS,noun,olayları sırayla anlatan hikâye veya anlatı,The book has a simple narrative.,Kitabın basit bir anlatısı var.,4,,school-work
+b2-navigate,NAVIGATE,N,STARTS,verb,harita ya da uygulamayla yolu bulmak,Can you navigate with this app?,Bu uygulamayla yol bulabilir misin?,4,,travel
+b2-necessity,NECESSITY,N,STARTS,noun,vazgeçilmez gereksinim,Water is a basic necessity.,Su temel bir ihtiyaçtır.,4,,daily-life
+b2-negotiate,NEGOTIATE,N,STARTS,verb,anlaşmaya varmak için görüşmek,They will negotiate a new contract.,Yeni bir sözleşme için pazarlık yapacaklar.,4,,business
+b2-neutral,NEUTRAL,N,STARTS,adj,taraf tutmayan; renk olarak sade,The judge must stay neutral.,Hâkim tarafsız kalmalı.,4,,daily-life
+b2-nevertheless,NEVERTHELESS,N,STARTS,adv,buna rağmen,"It rained; nevertheless, we went out.",Yağmur yağdı; yine de dışarı çıktık.,4,,daily-life
+b2-norm,NORM,N,STARTS,noun,toplumda kabul gören davranış kuralı,Shaking hands is the norm here.,Burada el sıkışmak normdur.,4,,daily-life
+b2-notable,NOTABLE,N,STARTS,adj,dikkat çekecek ölçüde önemli,She is a notable artist.,O tanınmış bir sanatçı.,4,,music
+b2-notion,NOTION,N,STARTS,noun,bir konudaki kabaca fikir,The notion of free time is new to him.,Boş zaman kavramı onun için yeni.,4,,school-work
+b2-numerous,NUMEROUS,N,STARTS,adj,sayısı çok olan,I have called him on numerous occasions.,Onu defalarca aradım.,4,,daily-life
+b2-nutrient,NUTRIENT,N,STARTS,noun,beslenmede vücudun ihtiyaç duyduğu madde,This food has an important nutrient.,Bu yiyecekte önemli bir besin maddesi var.,4,,food-drink
+b2-nod-off,NOD OFF,N,STARTS,phrasal,istemeden uyuyakalmak,I might nod off during the film.,Film sırasında uyuyakalabilirim.,4,,phrasal-verbs
+b2-no-doubt,NO DOUBT,N,STARTS,idiom,"şüphesiz, kesinlikle",He is no doubt the best player.,O şüphesiz en iyi oyuncu.,3,,idioms
+b2-no-matter,NO MATTER,N,STARTS,idiom,ne olursa olsun,"No matter what happens, call me.","Ne olursa olsun, beni ara.",3,,idioms
+b2-obligation,OBLIGATION,O,STARTS,noun,yapmak zorunda olunan görev,You have no obligation to buy anything.,Hiçbir şey satın alma zorunluluğun yok.,4,,business
+b2-observe,OBSERVE,O,STARTS,verb,dikkatle gözlemlemek,Scientists observe the stars at night.,Bilim insanları geceleri yıldızları gözlemler.,4,,school-work
+b2-obsession,OBSESSION,O,STARTS,noun,zihni sürekli meşgul eden saplantı,Football is an obsession for him.,Futbol onun için bir saplantı.,4,,daily-life
+b2-obtain,OBTAIN,O,STARTS,verb,çaba göstererek bir şeyi elde etmek,You need to obtain a visa first.,Önce bir vize almalısın.,4,,travel
+b2-occupy,OCCUPY,O,STARTS,verb,bir yeri ya da zamanı kaplamak,The meeting will occupy the whole morning.,Toplantı bütün sabahı alacak.,4,,business
+b2-offend,OFFEND,O,STARTS,verb,birini kırmak veya gücendirmek,I hope I did not offend you.,Umarım seni gücendirmedim.,4,,daily-life
+b2-optimism,OPTIMISM,O,STARTS,noun,iyimserlik; olumlu bakış,His optimism helped the team.,İyimserliği takıma yardım etti.,4,,daily-life
+b2-outcome,OUTCOME,O,STARTS,noun,bir sürecin sonucu,We are waiting for the outcome of the vote.,Oylamanın sonucunu bekliyoruz.,4,,business
+b2-output,OUTPUT,O,STARTS,noun,üretilen miktar veya çıktı,The factory doubled its output.,Fabrika üretimini iki katına çıkardı.,4,,business
+b2-outstanding,OUTSTANDING,O,STARTS,adj,"çok başarılı, göze çarpan",She gave an outstanding performance.,Çok başarılı bir performans sergiledi.,4,,music
+b2-overall,OVERALL,O,STARTS,adj,"genel, tümünü kapsayan",The overall result was good.,Genel sonuç iyiydi.,4,,business
+b2-overcome,OVERCOME,O,STARTS,verb,zorluğu aşmak,He wants to overcome his fear.,Korkusunu yenmek istiyor.,4,,daily-life
+b2-overlook,OVERLOOK,O,STARTS,verb,gözden kaçırmak; bir yere bakmak,Don't overlook small details.,Küçük ayrıntıları gözden kaçırma.,4,,school-work
+b2-overwhelming,OVERWHELMING,O,STARTS,adj,çok yoğun ve ezici,She felt an overwhelming sense of relief.,Ezici bir rahatlama hissetti.,4,,daily-life
+b2-ownership,OWNERSHIP,O,STARTS,noun,bir şeye sahip olma,The ownership of the house is unclear.,Evin mülkiyeti belirsiz.,4,,business
+b2-open-up,OPEN UP,O,STARTS,phrasal,içini dökmek; yeni bir yer açmak,It is hard for him to open up.,Onun için içini dökmek zor.,4,,phrasal-verbs
+b2-opt-for,OPT FOR,O,STARTS,phrasal,bir seçeneği tercih etmek,Most people opt for the cheaper plan.,Çoğu insan daha ucuz planı seçer.,4,,phrasal-verbs
+b2-own-up,OWN UP,O,STARTS,phrasal,hatayı itiraf edip kabul etmek,Who will own up to breaking the window?,Camı kırdığını kim itiraf edecek?,4,,phrasal-verbs
+b2-out-of-date,OUT OF DATE,O,STARTS,idiom,"modası geçmiş, eski",My phone is out of date.,Telefonum eskidi.,3,,idioms
+b2-once-in-a-while,ONCE IN A WHILE,O,STARTS,idiom,ara sıra,I eat fast food once in a while.,Ara sıra fast food yerim.,3,,idioms
+b2-off-the-record,OFF THE RECORD,O,STARTS,idiom,"resmî olmayan, kayda geçmeyen",Can I say this off the record?,Bunu kayıt dışı söyleyebilir miyim?,4,,idioms
+b2-passionate,PASSIONATE,P,STARTS,adj,bir konuda çok tutkulu,She is passionate about music.,Müzik konusunda çok tutkulu.,3,,music
+b2-peer,PEER,P,STARTS,noun,aynı yaş veya konumdaki kişi,Teens often listen to their peer group.,Gençler genelde yaşıt grubunu dinler.,4,,daily-life
+b2-perceive,PERCEIVE,P,STARTS,verb,duyularla fark etmek; yorumlamak,How do you perceive this problem?,Bu sorunu nasıl algılıyorsun?,4,,school-work
+b2-percentage,PERCENTAGE,P,STARTS,noun,yüzde olarak ifade edilen oran,A high percentage of students passed.,Öğrencilerin yüksek bir yüzdesi geçti.,3,,school-work
+b2-perspective,PERSPECTIVE,P,STARTS,noun,bir konuya bakış açısı,Travel gives you a new perspective.,Seyahat sana yeni bir bakış açısı verir.,4,,travel
+b2-phenomenon,PHENOMENON,P,STARTS,noun,doğada ya da toplumda gözlenen olgu,Rainbows are a natural phenomenon.,Gökkuşağı doğal bir olaydır.,4,,school-work
+b2-philosophy,PHILOSOPHY,P,STARTS,noun,yaşamın anlamını inceleyen bilim dalı,He studies philosophy at university.,Üniversitede felsefe okuyor.,4,,school-work
+b2-pollute,POLLUTE,P,STARTS,verb,çevreyi kirletmek,Factories pollute the river.,Fabrikalar nehri kirletiyor.,3,,daily-life
+b2-portray,PORTRAY,P,STARTS,verb,bir kişiyi ya da olayı canlandırmak veya betimlemek,The film will portray life in the 1920s.,Film 1920'lerdeki yaşamı betimleyecek.,4,,film-tv
+b2-postpone,POSTPONE,P,STARTS,verb,bir işi ileri bir tarihe ertelemek,They decided to postpone the match.,Maçı ertelemeye karar verdiler.,3,,sports
+b2-potential,POTENTIAL,P,STARTS,noun,gelişme ihtimali olan yetenek,She has great potential.,Büyük bir potansiyeli var.,4,,school-work
+b2-precise,PRECISE,P,STARTS,adj,tam ve kesin,Give me precise directions.,Bana tam tarif ver.,4,,school-work
+b2-preference,PREFERENCE,P,STARTS,noun,bir şeyi başkasına tercih etme,Do you have a preference for tea or coffee?,Çay mı kahve mi tercihin var?,3,,food-drink
+b2-prescribe,PRESCRIBE,P,STARTS,verb,doktorun ilaç yazması,The doctor will prescribe some medicine.,Doktor ilaç yazacak.,4,,body-health
+b2-preserve,PRESERVE,P,STARTS,verb,eski hâlini bozmadan muhafaza etmek,We must preserve old buildings.,Eski binaları korumalıyız.,4,,travel
+b2-primarily,PRIMARILY,P,STARTS,adv,"esas olarak, en çok",The course is primarily for beginners.,Kurs esas olarak yeni başlayanlar için.,4,,school-work
+b2-principle,PRINCIPLE,P,STARTS,noun,temel kural veya ilke,Honesty is a basic principle of fair play.,Dürüstlük adil oyunun temel ilkesidir.,4,,daily-life
+b2-promote,PROMOTE,P,STARTS,verb,terfi ettirmek; tanıtmak,The company will promote him next year.,Şirket onu gelecek yıl terfi ettirecek.,4,,business
+b2-prompt,PROMPT,P,STARTS,adj,"gecikmeden yapılan, çabuk",We thank you for your prompt reply.,Hızlı cevabınız için teşekkür ederiz.,4,,business
+b2-proportion,PROPORTION,P,STARTS,noun,iki şey arasındaki oran; orantı,A large proportion of people agree.,İnsanların büyük bir bölümü aynı fikirde.,4,,school-work
+b2-prospect,PROSPECT,P,STARTS,noun,gelecekte olabilecek ihtimal,The prospect of moving abroad scares me.,Yurt dışına taşınma ihtimali beni korkutuyor.,4,,business
+b2-psychology,PSYCHOLOGY,P,STARTS,noun,insan zihnini inceleyen bilim,She wants to study psychology.,Psikoloji okumak istiyor.,4,,school-work
+b2-publicity,PUBLICITY,P,STARTS,noun,bir şeyin kamuoyuna duyurulması,The film got a lot of publicity.,Film çok tanıtım aldı.,4,,film-tv
+b2-pursue,PURSUE,P,STARTS,verb,bir hedefin peşinden gitmek,She wants to pursue a career in law.,Hukuk alanında kariyer yapmak istiyor.,4,,business
+b2-pass-out,PASS OUT,P,STARTS,phrasal,bayılmak,He might pass out in the heat.,Sıcakta bayılabilir.,4,,phrasal-verbs
+b2-pay-off,PAY OFF,P,STARTS,phrasal,emeğin karşılığını vermek,Hard work will pay off.,Çok çalışmak karşılığını verecek.,4,,phrasal-verbs
+b2-play-down,PLAY DOWN,P,STARTS,phrasal,bir şeyin önemini küçük göstermek,He tried to play down the problem.,Sorunu küçük göstermeye çalıştı.,4,,phrasal-verbs
+b2-put-up-with,PUT UP WITH,P,STARTS,phrasal,bir şeye katlanmak,I cannot put up with this noise.,Bu gürültüye katlanamıyorum.,4,,phrasal-verbs
+b2-play-it-by-ear,PLAY IT BY EAR,P,STARTS,idiom,önceden plan yapmadan duruma göre davranmak,We have no plan; let's play it by ear.,Planımız yok; duruma göre hareket edelim.,4,,idioms
+b2-notorious,NOTORIOUS,N,STARTS,adj,kötü bir şey yüzünden herkesçe bilinen,The street is notorious for traffic jams.,Sokak trafik sıkışıklığıyla ünlü.,4,,daily-life
+b2-novelty,NOVELTY,N,STARTS,noun,yeni olmanın verdiği ilginçlik,The novelty of the toy soon wore off.,Oyuncağın yeniliği çabuk geçti.,4,,daily-life
+b2-observation,OBSERVATION,O,STARTS,noun,dikkatle gözlem veya yorum,Her observation was very clever.,Gözlemi çok zekiceydi.,4,,school-work
+b2-oppose,OPPOSE,O,STARTS,verb,bir fikre karşı çıkmak,Many people oppose the new law.,Birçok insan yeni yasaya karşı çıkıyor.,4,,daily-life
+b2-panic,PANIC,P,STARTS,noun,ani ve kontrolsüz korku,There was panic when the fire alarm rang.,Yangın alarmı çalınca panik oldu.,3,,daily-life
+b2-prediction,PREDICTION,P,STARTS,noun,gelecekle ilgili tahmin,His prediction came true.,Tahmini gerçek oldu.,4,,school-work
+b2-provoke,PROVOKE,P,STARTS,verb,birini kışkırtmak,Don't provoke the dog.,Köpeği kışkırtma.,4,,daily-life
+b2-put-forward,PUT FORWARD,P,STARTS,phrasal,bir öneriyi ortaya atmak,She put forward a clever plan.,Zekice bir plan ortaya attı.,4,,phrasal-verbs
+b2-pull-through,PULL THROUGH,P,STARTS,phrasal,zor bir durumu atlatmak,The doctors think he will pull through.,Doktorlar onun atlatacağını düşünüyor.,4,,phrasal-verbs
