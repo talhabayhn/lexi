@@ -1,6 +1,6 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
 a1-apple,APPLE,A,STARTS,noun,elma,This apple is sweet.,Bu elma tatlı.,1,,food-drink
-a1-bread,BREAD,B,STARTS,noun,ekmek,Fresh bread smells wonderful.,Taze ekmeğin kokusu harika.,1,,food-drink
+a1-bread,BREAD,B,STARTS,noun,ekmek,Fresh bread smells lovely.,Taze ekmeğin kokusu çok güzel.,1,,food-drink
 a1-chair,CHAIR,C,STARTS,noun,sandalye,This chair is comfortable.,Bu sandalye rahat.,1,,home
 a1-dog,DOG,D,STARTS,noun,köpek,My dog likes bones.,Köpeğim kemik sever.,1,,animals
 a1-egg,EGG,E,STARTS,noun,yumurta,I boil an egg.,Bir yumurta haşlıyorum.,1,,food-drink
@@ -20,7 +20,7 @@ a1-river,RIVER,R,STARTS,noun,nehir,The river is wide.,Nehir geniş.,1,,city-tran
 a1-school,SCHOOL,S,STARTS,noun,okul,Our school is small.,Okulumuz küçük.,1,,school-work
 a1-table,TABLE,T,STARTS,noun,masa,The keys are on the table.,Anahtarlar masanın üstünde.,1,,home
 a1-umbrella,UMBRELLA,U,STARTS,noun,şemsiye,"It is raining, but I have an umbrella.",Yağmur yağıyor ama şemsiyem var.,2,,time-weather
-a1-village,VILLAGE,V,STARTS,noun,köy,Our village is on a hill.,Köyümüz bir tepede.,2,,city-transport
+a1-village,VILLAGE,V,STARTS,noun,köy,Our village is on a slope.,Köyümüz bir yamaçta.,2,,city-transport
 a1-window,WINDOW,W,STARTS,noun,pencere,Wipe the window.,Pencereyi sil.,1,,home
 a1-box,BOX,X,CONTAINS,noun,kutu,The toys are in the box.,Oyuncaklar kutunun içinde.,1,,home
 a1-yellow,YELLOW,Y,STARTS,adj,sarı,My raincoat is yellow.,Yağmurluğum sarı.,1,,colors-numbers

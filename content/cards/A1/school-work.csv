@@ -1,7 +1,7 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
 a1-teacher,TEACHER,T,STARTS,noun,öğretmen,Our teacher is funny.,Öğretmenimiz komik.,1,,school-work
 a1-student,STUDENT,S,STARTS,noun,öğrenci,I am a student.,Ben öğrenciyim.,1,,school-work
-a1-library,LIBRARY,L,STARTS,noun,kütüphane,I study in the library.,Kütüphanede ders çalışırım.,2,,school-work
+a1-library,LIBRARY,L,STARTS,noun,kütüphane,I prepare for tests in the library.,Kütüphanede sınavlara hazırlanırım.,2,,school-work
 a1-job,JOB,J,STARTS,noun,"iş, meslek",She loves her job.,İşini seviyor.,1,,school-work
 a1-nurse,NURSE,N,STARTS,noun,hemşire,The nurse is helping a sick patient.,Hemşire hasta birine yardım ediyor.,2,,school-work
 a1-book,BOOK,B,STARTS,noun,kitap,This book is funny.,Bu kitap çok eğlenceli.,1,,school-work

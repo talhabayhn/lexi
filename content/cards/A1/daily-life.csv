@@ -24,14 +24,14 @@ a1-game,GAME,G,STARTS,noun,oyun,This game is fun.,Bu oyun eğlenceli.,1,,daily-l
 a1-internet,INTERNET,I,STARTS,noun,dünya çapında bilgisayar ağı,The internet is weak here.,Burada internet zayıf.,1,,daily-life
 a1-video,VIDEO,V,STARTS,noun,hareketli görüntü kaydı,Let's see the video.,Videoyu izleyelim.,1,,daily-life
 a1-music,MUSIC,M,STARTS,noun,şarkı ve melodi sanatı,Ali loves music.,Ali müziği çok sever.,1,,daily-life
-a1-radio,RADIO,R,STARTS,noun,haber ve müzik dinlenen cihaz,The radio is loud.,Radyo çok gürültülü.,1,,daily-life
+a1-radio,RADIO,R,STARTS,noun,haber ve müzik dinlenen cihaz,The radio is noisy.,Radyo çok gürültülü.,1,,daily-life
 a1-hello,HELLO,H,STARTS,phrase,merhaba,Hello! How are you?,Merhaba! Nasılsın?,1,,daily-life
 a1-into,INTO,I,STARTS,phrase,bir şeyin içine doğru,She put the keys into her pocket.,Anahtarları cebine koydu.,2,,daily-life
 a1-ocean,OCEAN,O,STARTS,noun,okyanus,The ocean is deep.,Okyanus derin.,1,,daily-life
 a1-inside,INSIDE,I,STARTS,adv,içeride,Is she inside?,O içeride mi?,1,,daily-life
 a1-under,UNDER,U,STARTS,phrase,altında,The ball is under the sofa.,Top kanepenin altında.,1,,daily-life
-a1-up,UP,U,STARTS,adv,yukarı,"Stand up, Ali.","Ayağa kalk, Ali.",1,,daily-life
-a1-usually,USUALLY,U,STARTS,adv,genellikle,Usually I have toast.,Genellikle kızarmış ekmek yerim.,2,,daily-life
+a1-up,UP,U,STARTS,adv,yukarı,"Hurry up, Ali.","Çabuk ol, Ali.",1,,daily-life
+a1-usually,USUALLY,U,STARTS,adv,genellikle,Usually I have porridge.,Genellikle yulaf lapası yerim.,2,,daily-life
 a1-only,ONLY,O,STARTS,adv,sadece,I only have a few coins.,Sadece birkaç madeni param var.,1,,daily-life
 a1-sit,SIT,S,STARTS,verb,oturmak,"Sit here, madam.","Buraya oturun, hanımefendi.",1,,daily-life
 a1-wash,WASH,W,STARTS,verb,yıkamak,I wash my hands.,Ellerimi yıkıyorum.,1,,daily-life
@@ -45,7 +45,7 @@ a1-grass,GRASS,G,STARTS,noun,"çimen, ot",The grass is wet.,Çimen ıslak.,1,,da
 a1-help,HELP,H,STARTS,verb,yardım etmek,Can you help me?,Bana yardım edebilir misin?,1,,daily-life
 a1-nice,NICE,N,STARTS,adj,"hoş, güzel",She has a nice smile.,Güzel bir gülümsemesi var.,1,,daily-life
 a1-coat,COAT,C,STARTS,noun,kalın dış giysi,My coat is in the hall.,Paltom koridorda.,1,,daily-life
-a1-skirt,SKIRT,S,STARTS,noun,etek,Her skirt is pretty.,Eteği çok şirin.,1,,daily-life
+a1-skirt,SKIRT,S,STARTS,noun,etek,Her skirt is lovely.,Eteği çok şirin.,1,,daily-life
 a1-phone,PHONE,P,STARTS,noun,telefon,Where is my phone?,Telefonum nerede?,1,,daily-life
 a1-hobby,HOBBY,H,STARTS,noun,boş zamanda yapılan sevilen iş,Reading is my hobby.,Okumak benim hobim.,1,,daily-life
 a1-holiday,HOLIDAY,H,STARTS,noun,tatil,We are on holiday.,Tatildeyiz.,1,,daily-life

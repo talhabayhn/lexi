@@ -61,18 +61,18 @@ a1-plane,PLANE,P,STARTS,noun,havalimanından kalkan taşıt,The plane is full of
 a1-paper,PAPER,P,STARTS,noun,üzerine yazı yazılan ince yaprak,Do you have a piece of paper?,Bir parça kâğıdın var mı?,1,,school-work
 a1-pool,POOL,P,STARTS,noun,içinde yüzülen su dolu çukur,The pool is deep.,Havuz derin.,2,,city-transport
 a1-party,PARTY,P,STARTS,noun,arkadaşlarla yapılan eğlence,The party was fun.,Parti çok eğlenceliydi.,1,,daily-life
-a1-police,POLICE,P,STARTS,noun,suçluları yakalayan kurum,Call the police!,Polisi ara!,2,,city-transport
+a1-police,POLICE,P,STARTS,noun,suçluları yakalayan kurum,The police are on the way.,Polis yolda.,2,,city-transport
 a1-quick,QUICK,Q,STARTS,adj,kısa sürede yapılan,"Be quick, the film starts soon!","Çabuk ol, film birazdan başlıyor!",2,,daily-life
 a1-quarter,QUARTER,Q,STARTS,noun,bütünün dörtte biri,A quarter of the story is missing.,Hikâyenin dörtte biri eksik.,3,,colors-numbers
 a1-quite,QUITE,Q,STARTS,adv,oldukça,The story is quite funny.,Hikâye oldukça komik.,3,,daily-life
 a1-run,RUN,R,STARTS,verb,hızlı adımlarla koşmak,Do not run in the corridor.,Koridorda koşma.,1,,daily-life
-a1-ride,RIDE,R,STARTS,verb,hayvanın ya da aracın üstünde gitmek,Can you ride a camel?,Deveye binebilir misin?,2,,daily-life
+a1-ride,RIDE,R,STARTS,verb,hayvanın ya da aracın üstünde gitmek,Can you ride a scooter?,Scooter'a binebilir misin?,2,,daily-life
 a1-remember,REMEMBER,R,STARTS,verb,unutmayıp aklında tutmak,Do you remember me?,Beni hatırlıyor musun?,2,,daily-life
 a1-relax,RELAX,R,STARTS,verb,"gevşemek, rahatlamak",I relax on the sofa.,Kanepede dinlenirim.,2,,daily-life
 a1-roof,ROOF,R,STARTS,noun,binanın en üstündeki örtü,A pigeon sits on the roof.,Çatıda bir güvercin oturuyor.,2,,home
 a1-speak,SPEAK,S,STARTS,verb,dil kullanarak konuşmak,I speak a little Arabic.,Biraz Arapça konuşurum.,1,,daily-life
 a1-slow,SLOW,S,STARTS,adj,hızlı olmayan,The lift is slow.,Asansör yavaş.,1,,daily-life
-a1-sport,SPORT,S,STARTS,noun,beden gücüyle yapılan yarışma oyunu,Tennis is a popular sport.,Tenis popüler bir spordur.,2,,daily-life
+a1-sport,SPORT,S,STARTS,noun,beden gücüyle yapılan yarışma oyunu,Rugby is a popular sport.,Ragbi popüler bir spordur.,2,,daily-life
 a1-tired,TIRED,T,STARTS,adj,dinlenmeye ihtiyacı olan,They are tired after the trip.,Geziden sonra yorgunlar.,1,,daily-life
 a1-think,THINK,T,STARTS,verb,aklından bir şey geçirmek,What do you think?,Sen ne düşünüyorsun?,2,,daily-life
 a1-toilet,TOILET,T,STARTS,noun,klozet ve lavabo olan küçük yer,Where is the toilet?,Tuvalet nerede?,2,,home
@@ -83,7 +83,7 @@ a1-upstairs,UPSTAIRS,U,STARTS,adv,üst katta,The bedrooms are upstairs.,Yatak od
 a1-van,VAN,V,STARTS,noun,yük taşıyan küçük kapalı araç,A van is waiting at the corner.,Köşede bir kamyonet bekliyor.,2,,city-transport
 a1-vacation,VACATION,V,STARTS,noun,işten ya da okuldan izinli geçirilen günler,Our vacation was great.,Tatilimiz harikaydı.,3,,daily-life
 a1-view,VIEW,V,STARTS,noun,pencereden görünen doğa ya da şehir,The view from here is amazing.,Buradan manzara harika.,3,,daily-life
-a1-warm,WARM,W,STARTS,adj,ne soğuk ne de çok sıcak,This blanket is warm.,Bu battaniye sıcak tutuyor.,2,,daily-life
+a1-warm,WARM,W,STARTS,adj,ne soğuk ne de çok sıcak,This jumper is warm.,Bu kazak sıcak tutuyor.,2,,daily-life
 a1-watch,WATCH,W,STARTS,verb,ilgiyle izlemek,They watch cartoons.,Çizgi film izlerler.,1,,daily-life
 a1-weekend,WEEKEND,W,STARTS,noun,cumartesi ve pazar günleri,What do you do at the weekend?,Hafta sonu ne yaparsın?,2,,time-weather
 a1-yard,YARD,Y,STARTS,noun,evin yanındaki taş döşeli açık alan,Our yard is small.,Avlumuz küçük.,3,,home

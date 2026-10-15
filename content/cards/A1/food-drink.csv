@@ -23,7 +23,7 @@ a1-tea,TEA,T,STARTS,noun,çay,Ali pours the tea.,Ali çayı dolduruyor.,1,,food-
 a1-tomato,TOMATO,T,STARTS,noun,domates,Slice the tomato.,Domatesi dilimle.,1,,food-drink
 a1-cup,CUP,C,STARTS,noun,fincan,Can I have a cup?,Bir fincan alabilir miyim?,1,,food-drink
 a1-cook,COOK,C,STARTS,verb,pişirmek,Can you cook?,Yemek yapabilir misin?,1,,food-drink
-a1-jam,JAM,J,STARTS,noun,reçel,Spread jam on toast.,Tosta reçel sür.,1,,food-drink
+a1-jam,JAM,J,STARTS,noun,reçel,Grandma makes plum jam.,Anneannem erik reçeli yapar.,1,,food-drink
 a1-eat,EAT,E,STARTS,verb,yemek yemek,What shall we eat?,Ne yiyelim?,1,,food-drink
 a1-breakfast,BREAKFAST,B,STARTS,noun,sabah yemeği,Breakfast is ready.,Kahvaltı hazır.,1,,food-drink
 a1-butter,BUTTER,B,STARTS,noun,sütten yapılan sürülebilir yağ,The butter is soft.,Tereyağı yumuşak.,1,,food-drink
