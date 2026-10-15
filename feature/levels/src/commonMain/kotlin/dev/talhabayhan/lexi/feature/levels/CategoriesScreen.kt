@@ -109,6 +109,7 @@ private fun MixedWheel(state: CategoriesUiState, onIntent: (CategoriesIntent) ->
 @Composable
 private fun CategoryGrid(state: CategoriesUiState, onIntent: (CategoriesIntent) -> Unit) {
     val gap = LexiTheme.dimens.gap10
+    // TODO(M7): follow Settings.uiLanguage once the in-app language setting is applied.
     val turkish = Locale.current.language == TURKISH
     Column(verticalArrangement = Arrangement.spacedBy(gap)) {
         state.categories.withIndex().chunked(CATEGORY_COLUMNS).forEach { row ->

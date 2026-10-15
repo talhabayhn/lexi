@@ -49,7 +49,7 @@ internal class CategoriesViewModel(
                 val content = loadContent(level)
                 progress.observeAll()
                     // A broken read keeps the last numbers; the screen itself still works.
-                    .catch { }
+                    .catch { } // TODO(M7): report to the crash reporter once it is behind its interface.
                     .collect { answered ->
                         val byCategory = Stats.categoryProgress(answered, content.categoryOf)
                         val ui = content.categories.mapNotNull { category ->
