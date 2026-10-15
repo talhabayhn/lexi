@@ -7,12 +7,12 @@ a1-white,WHITE,W,STARTS,adj,beyaz,My socks are white.,Çoraplarım beyaz.,1,,col
 a1-black,BLACK,K,CONTAINS,adj,siyah,My shoes are black.,Ayakkabılarım siyah.,1,,colors-numbers
 a1-two,TWO,T,STARTS,noun,iki,I have two brothers.,İki erkek kardeşim var.,1,,colors-numbers
 a1-five,FIVE,F,STARTS,noun,beş,We have five apples.,Beş elmamız var.,1,,colors-numbers
-a1-six,SIX,X,CONTAINS,noun,altı,The market opens at six.,Market altıda açılıyor.,1,,colors-numbers
+a1-six,SIX,X,CONTAINS,noun,altı,The gym opens at six.,Spor salonu altıda açılır.,1,,colors-numbers
 a1-seven,SEVEN,S,STARTS,noun,yedi,The film starts at seven.,Film yedide başlıyor.,1,,colors-numbers
 a1-eight,EIGHT,E,STARTS,noun,sekiz,The film starts at eight.,Film sekizde başlıyor.,2,,colors-numbers
-a1-nine,NINE,N,STARTS,noun,dokuz,My little cousin is nine.,Küçük kuzenim dokuz yaşında.,1,,colors-numbers
+a1-nine,NINE,N,STARTS,noun,dokuz,My little niece is nine.,Küçük yeğenim dokuz yaşında.,1,,colors-numbers
 a1-zero,ZERO,Z,STARTS,noun,sıfır,The code starts with zero.,Kod sıfırla başlıyor.,1,,colors-numbers
-a1-sixteen,SIXTEEN,X,CONTAINS,noun,on altı,The van has sixteen seats.,Minibüste on altı koltuk var.,2,,colors-numbers
+a1-sixteen,SIXTEEN,X,CONTAINS,noun,on altı,The minibus has sixteen seats.,Minibüste on altı koltuk var.,2,,colors-numbers
 a1-one,ONE,O,STARTS,adj,"sayıların ilki, bir",I have one ball.,Bir topum var.,1,,colors-numbers
 a1-number,NUMBER,N,STARTS,noun,"sayı, numara",What is your number?,Numaran kaç?,1,,colors-numbers
 a1-brown,BROWN,B,STARTS,adj,toprak rengi,She has brown eyes.,Kahverengi gözleri var.,1,,colors-numbers

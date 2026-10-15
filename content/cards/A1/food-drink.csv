@@ -3,13 +3,13 @@ a1-cheese,CHEESE,C,STARTS,noun,peynir,I like cheese.,Peyniri severim.,1,,food-dr
 a1-milk,MILK,M,STARTS,noun,süt,Do you want milk?,Süt ister misin?,1,,food-drink
 a1-rice,RICE,R,STARTS,noun,"pirinç, pilav",Do you like rice?,Pilav sever misin?,1,,food-drink
 a1-onion,ONION,O,STARTS,noun,soğan,"Cut the onion, please.","Soğanı doğra, lütfen.",2,,food-drink
-a1-vegetable,VEGETABLE,V,STARTS,noun,sebze,A carrot is a vegetable.,Havuç bir sebzedir.,3,,food-drink
+a1-vegetable,VEGETABLE,V,STARTS,noun,sebze,Spinach is a vegetable.,Ispanak bir sebzedir.,3,,food-drink
 a1-lunch,LUNCH,L,STARTS,noun,öğle yemeği,We have lunch together.,Öğle yemeğini birlikte yeriz.,1,,food-drink
 a1-chicken,CHICKEN,C,STARTS,noun,tavuk,We have chicken tonight.,Bu akşam tavuk yiyoruz.,1,,food-drink
 a1-soup,SOUP,S,STARTS,noun,çorba,This soup is salty.,Bu çorba tuzlu.,1,,food-drink
 a1-dinner,DINNER,D,STARTS,noun,akşam yemeği,Dinner is ready!,Akşam yemeği hazır!,1,,food-drink
 a1-water,WATER,W,STARTS,noun,su,"Can I have some water, please?","Biraz su alabilir miyim, lütfen?",1,,food-drink
-a1-drink,DRINK,D,STARTS,verb,içmek,I often drink lemonade.,Sık sık limonata içerim.,1,,food-drink
+a1-drink,DRINK,D,STARTS,verb,içmek,I sometimes drink lemonade.,Bazen limonata içerim.,1,,food-drink
 a1-pizza,PIZZA,Z,CONTAINS,noun,fırında pişen yuvarlak İtalyan hamur yemeği,Let's order a pizza tonight.,Bu akşam pizza sipariş edelim.,1,,food-drink
 a1-banana,BANANA,B,STARTS,noun,muz,She eats a banana.,Muz yiyor.,1,,food-drink
 a1-cake,CAKE,C,STARTS,noun,"pasta, kek",Mum made a cake for my birthday.,Annem doğum günüm için pasta yaptı.,1,,food-drink
@@ -21,7 +21,7 @@ a1-oil,OIL,O,STARTS,noun,sıvı yağ,Add some oil to the pan.,Tavaya biraz yağ 
 a1-potato,POTATO,P,STARTS,noun,patates,She peeled the potato.,Patatesi soydu.,1,,food-drink
 a1-tea,TEA,T,STARTS,noun,çay,Do you want some sugar in your tea?,Çayına şeker ister misin?,1,,food-drink
 a1-tomato,TOMATO,T,STARTS,noun,domates,Please cut the tomato.,Lütfen domatesi kes.,1,,food-drink
-a1-cup,CUP,C,STARTS,noun,fincan,Please give me a cup.,Bana bir fincan verir misin?,1,,food-drink
+a1-cup,CUP,C,STARTS,noun,fincan,Can I have a cup?,Bir fincan alabilir miyim?,1,,food-drink
 a1-cook,COOK,C,STARTS,verb,pişirmek,Can you cook pasta?,Makarna pişirebilir misin?,1,,food-drink
 a1-jam,JAM,J,STARTS,noun,reçel,I like jam on toast.,Tostun üstüne reçel severim.,1,,food-drink
 a1-eat,EAT,E,STARTS,verb,yemek yemek,Do you want to eat?,Bir şeyler yemek ister misin?,1,,food-drink
@@ -34,4 +34,4 @@ a1-yogurt,YOGURT,Y,STARTS,noun,sütten yapılan ekşi beyaz gıda,I like yogurt 
 a1-salt,SALT,S,STARTS,noun,yemeğe tat veren beyaz madde,"Pass the salt, please.",Tuzu uzatır mısın?,1,,food-drink
 a1-restaurant,RESTAURANT,R,STARTS,noun,dışarıda yemek yenen yer,This restaurant is cheap.,Bu restoran ucuz.,1,,food-drink
 a1-fork,FORK,F,STARTS,noun,yemek yemek için çatal,Where is my fork?,Çatalım nerede?,1,,food-drink
-a1-spoon,SPOON,S,STARTS,noun,kaşık,Give me a spoon.,Bana bir kaşık ver.,1,,food-drink
+a1-spoon,SPOON,S,STARTS,noun,kaşık,Bring me a spoon.,Bana bir kaşık getir.,1,,food-drink

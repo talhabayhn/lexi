@@ -1,12 +1,12 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
 a1-apple,APPLE,A,STARTS,noun,elma,This apple is sweet.,Bu elma tatlı.,1,,food-drink
-a1-bread,BREAD,B,STARTS,noun,ekmek,We buy fresh bread at the bakery.,Fırından taze ekmek alırız.,1,,food-drink
+a1-bread,BREAD,B,STARTS,noun,ekmek,Fresh bread smells wonderful.,Taze ekmeğin kokusu harika.,1,,food-drink
 a1-chair,CHAIR,C,STARTS,noun,sandalye,Take this chair.,Bu sandalyeyi al.,1,,home
 a1-dog,DOG,D,STARTS,noun,köpek,My dog likes long walks.,Köpeğim uzun yürüyüşleri sever.,1,,animals
 a1-egg,EGG,E,STARTS,noun,yumurta,I boil an egg.,Bir yumurta haşlıyorum.,1,,food-drink
 a1-family,FAMILY,F,STARTS,noun,aile,My family lives in Izmir.,Ailem İzmir'de yaşıyor.,1,,family-people
 a1-green,GREEN,G,STARTS,adj,yeşil,The leaves are green.,Yapraklar yeşil.,1,,colors-numbers
-a1-horse,HORSE,H,STARTS,noun,at,The horse runs fast.,At hızlı koşar.,1,,animals
+a1-horse,HORSE,H,STARTS,noun,at,The horse runs in the meadow.,At çayırda koşuyor.,1,,animals
 a1-ice,ICE,I,STARTS,noun,buz,Ice is hard.,Buz sert.,1,,food-drink
 a1-juice,JUICE,J,STARTS,noun,meyve suyu,I like sweet juice.,Tatlı meyve suyu severim.,1,,food-drink
 a1-kitchen,KITCHEN,K,STARTS,noun,mutfak,Mum is cooking in the kitchen.,Annem mutfakta yemek yapıyor.,1,,home
@@ -23,5 +23,5 @@ a1-umbrella,UMBRELLA,U,STARTS,noun,şemsiye,Take an umbrella. It is raining.,Şe
 a1-village,VILLAGE,V,STARTS,noun,köy,My grandparents live in a village.,Büyükannemler bir köyde yaşıyor.,2,,city-transport
 a1-window,WINDOW,W,STARTS,noun,pencere,Look out of the window.,Pencereden dışarı bak.,1,,home
 a1-box,BOX,X,CONTAINS,noun,kutu,The toys are in the box.,Oyuncaklar kutunun içinde.,1,,home
-a1-yellow,YELLOW,Y,STARTS,adj,sarı,The flower is yellow.,Çiçek sarı.,1,,colors-numbers
+a1-yellow,YELLOW,Y,STARTS,adj,sarı,My raincoat is yellow.,Yağmurluğum sarı.,1,,colors-numbers
 a1-zoo,ZOO,Z,STARTS,noun,hayvanat bahçesi,We saw lions at the zoo.,Hayvanat bahçesinde aslan gördük.,1,,animals

@@ -7,8 +7,8 @@ a1-tree,TREE,T,STARTS,noun,ağaç,The tree has many leaves.,Ağacın çok yapra�
 a1-bus,BUS,B,STARTS,noun,otobüs,The bus stops here.,Otobüs burada durur.,1,,city-transport
 a1-city,CITY,C,STARTS,noun,büyük şehir,We live in a city.,Bir şehirde yaşıyoruz.,1,,city-transport
 a1-road,ROAD,R,STARTS,noun,"yol, cadde",The road is long.,Yol uzun.,1,,city-transport
-a1-train,TRAIN,T,STARTS,noun,raylarda giden araç,The train is fast.,Tren hızlı.,1,,city-transport
-a1-ticket,TICKET,T,STARTS,noun,bilet,I need a ticket.,Bir bilete ihtiyacım var.,1,,city-transport
+a1-train,TRAIN,T,STARTS,noun,raylarda giden araç,The train is full.,Tren dolu.,1,,city-transport
+a1-ticket,TICKET,T,STARTS,noun,bilet,I lost my ticket.,Biletimi kaybettim.,1,,city-transport
 a1-map,MAP,M,STARTS,noun,harita,Look at the map.,Haritaya bak.,1,,city-transport
 a1-hotel,HOTEL,H,STARTS,noun,tatilde kalınan yer,We stay at a hotel.,Bir otelde kalıyoruz.,1,,city-transport
 a1-park,PARK,P,STARTS,noun,şehirdeki yeşil alan,The park is full of children.,Park çocuklarla dolu.,1,,city-transport
