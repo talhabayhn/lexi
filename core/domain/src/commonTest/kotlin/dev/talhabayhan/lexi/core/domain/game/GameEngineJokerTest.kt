@@ -91,13 +91,13 @@ class GameEngineJokerTest {
 
     @Test
     fun `example costs 5 points and listen costs 10 points`() {
-        val game = play("APPLE", "BREAD", "CHAIR").answer().answer().joker(JokerType.EXAMPLE)
+        val game = play("APPLE", "BREAD", "CHAIR", "DOG").answer().answer().joker(JokerType.EXAMPLE)
         assertEquals(17, game.state.score)
 
-        game.joker(JokerType.LISTEN)
+        game.answer().joker(JokerType.LISTEN)
 
-        assertEquals(7, game.state.score)
-        assertEquals(setOf(JokerType.EXAMPLE, JokerType.LISTEN), game.input.jokersUsed)
+        assertEquals(17 + 10 - 10, game.state.score)
+        assertEquals(setOf(JokerType.LISTEN), game.input.jokersUsed)
         assertEquals(180_000L, game.state.remainingMs)
     }
 
@@ -109,14 +109,27 @@ class GameEngineJokerTest {
     }
 
     @Test
-    fun `each joker can be used once per slot`() {
-        val game = play("APPLE", "BREAD").joker(JokerType.EXAMPLE)
+    fun `only one joker of any type can be used per slot`() {
+        for (second in JokerType.entries) {
+            val game = play("APPLE", "BREAD").joker(JokerType.EXAMPLE)
+            val before = game.state
+
+            game.joker(second)
+
+            assertSame(before, game.state, "$second")
+            assertEquals(8, game.state.jokers.count(JokerType.EXAMPLE))
+        }
+    }
+
+    @Test
+    fun `a slot that got a joker gets no other joker on a later lap`() {
+        val game = play("APPLE", "BREAD").joker(JokerType.REVEAL_LETTER).send(GameEvent.Pass).answer()
+        assertEquals('A', game.currentLetter)
         val before = game.state
 
-        game.joker(JokerType.EXAMPLE)
+        for (type in JokerType.entries) game.joker(type)
 
         assertSame(before, game.state)
-        assertEquals(8, game.state.jokers.count(JokerType.EXAMPLE))
     }
 
     @Test

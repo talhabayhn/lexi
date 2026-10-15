@@ -39,9 +39,10 @@ correct = blue circle, wrong = red square, passed = yellow leaf.
      can't run out during a reveal); the reveal ends after `revealMs` of ticks, then the engine advances
      (Hardcore: game over).
    - Owner decision: a pass clears the typed letters (they go back to their keys), so the slot comes back empty on
-     the next lap. Joker effects survive the pass, because the joker was paid for: letters placed by Reveal letter
-     stay locked in their cells, disabled distractor keys stay disabled, and the slot's jokers stay used. If the game ends while it is CURRENT again (time up, forfeit), it stays PASSED
-     (counted as passed and missed, §10).
+     the next lap. Joker effects survive the pass, because the joker was paid for and the slot can't get another
+     one (§7): letters placed by Reveal letter stay locked in their cells, disabled distractor keys stay disabled,
+     and the slot's joker stays used. If the game ends while it is CURRENT again (time up, forfeit), it stays
+     PASSED (counted as passed and missed, §10).
    - Events that don't apply (input while paused/revealing, a used key, anything after game over) are ignored.
 
 ## 4. Letter keys
@@ -91,10 +92,10 @@ the app goes to background.
 ## 7. Jokers
 | Joker | Effect | Cost | Limit |
 |---|---|---|---|
-| Harf aç (Reveal letter) | puts the correct letter into the next empty slot | ⚙ −10 s (untimed modes: −5 pts) | 1 per slot |
-| Çeldiricileri temizle (Remove distractors) | disables all distractor keys | ⚙ −15 s (untimed modes: ⚙ −5 pts) | 1 per slot |
-| Örnek cümle (Example) | shows example sentence with the word blanked | ⚙ −5 pts | 1 per slot |
-| Telaffuzu dinle (Listen) | speaks the answer (TTS) | ⚙ −10 pts | disabled at C1 and NAT |
+| Harf aç (Reveal letter) | puts the correct letter into the next empty slot | ⚙ −10 s (untimed modes: −5 pts) | 1 joker per slot |
+| Çeldiricileri temizle (Remove distractors) | disables all distractor keys | ⚙ −15 s (untimed modes: ⚙ −5 pts) | 1 joker per slot |
+| Örnek cümle (Example) | shows example sentence with the word blanked | ⚙ −5 pts | 1 joker per slot |
+| Telaffuzu dinle (Listen) | speaks the answer (TTS) | ⚙ −10 pts | 1 joker per slot; disabled at C1 and NAT |
 - Inventory per joker type, persisted. Sources: start pack (2/1/3/1), daily login +1 random, rewarded ad +1,
   Pro +3/day refill. Jokers are not allowed in Daily (fair comparison), Duel and Level test (would distort the
   placement). ⚙ `jokerFreeModes`. Owner decision: no jokers in the level test.
@@ -102,7 +103,9 @@ the app goes to background.
   `removeDistractorsUntimedCostPoints = 5`; 0 = free). Untimed modes are unscored today, so point costs only
   matter if one becomes scored.
 - A slot answered with a joker still counts as correct but its streak bonus is 0 (the streak itself goes on).
-- Engine decisions: every joker type is limited to once per slot, also across laps. Reveal letter fills the first
+- Owner decision: one joker per letter in total, of any type. After any joker on a slot, every further joker is
+  refused for that slot, also on later laps.
+- Engine decisions: Reveal letter fills the first
   cell that is empty or wrong; typed letters from there on go back to their keys; the revealed letter is locked
   (Backspace skips it); filling the last cell submits. Remove distractors also returns distractor letters already
   typed, and is refused when the slot has no distractors (10-letter answers). Time jokers are refused when the

@@ -273,7 +273,8 @@ public class GameEngine(public val config: GameConfig = GameConfig()) {
             val input = checkNotNull(currentInput)
             val inventory = jokers.consume(type)
             val cost = config.jokerCost(type, mode)
-            val refused = type in input.jokersUsed ||
+            // One joker per slot in total, any type, also across laps (owner decision).
+            val refused = input.jokersUsed.isNotEmpty() ||
                 !config.isJokerAllowed(type, mode, card.level) ||
                 (cost is JokerCost.Time && (remainingMs ?: 0L) <= cost.ms) ||
                 (type == JokerType.REMOVE_DISTRACTORS && !input.hasEnabledDistractors)
