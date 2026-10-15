@@ -4,9 +4,11 @@ import java.io.ByteArrayOutputStream
 import java.io.PrintStream
 import java.nio.file.Path
 import kotlin.io.path.createTempDirectory
+import kotlin.io.path.deleteExisting
 import kotlin.io.path.exists
 import kotlin.io.path.listDirectoryEntries
 import kotlin.io.path.readBytes
+import kotlin.io.path.readText
 import kotlin.io.path.writeText
 import kotlin.test.Test
 import kotlin.test.assertContentEquals
@@ -105,6 +107,19 @@ class MainTest {
         occupied.resolve("keep.txt").writeText("x")
         assertEquals(2, run("--content", "$content", "--out", "$occupied"))
         assertTrue(stderr.lines().none { it.trimStart().startsWith("at ") }, "no stack trace: $stderr")
+    }
+
+    @Test
+    fun `version file holds the contentVersion and is written only with the DB`() {
+        val versionFile = output.resolveSibling("content-version.txt")
+
+        assertEquals(0, run("--content", "$content", "--out", "$output", "--version-file", "$versionFile"), stderr)
+        assertEquals("7", versionFile.readText())
+
+        versionFile.deleteExisting()
+        content.writeCards("cards/A1/bad.csv", cardRow(answer = "zebra"))
+        assertEquals(1, run("--content", "$content", "--out", "$output", "--version-file", "$versionFile"))
+        assertFalse(versionFile.exists())
     }
 
     @Test

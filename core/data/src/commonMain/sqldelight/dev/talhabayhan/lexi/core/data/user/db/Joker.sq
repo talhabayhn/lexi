@@ -1,0 +1,21 @@
+-- Joker inventory per JokerType name (GAME_RULES.md §7). Grant bookkeeping (daily login, Pro refill) comes in M4/M7.
+CREATE TABLE joker(
+    type TEXT NOT NULL PRIMARY KEY,
+    count INTEGER NOT NULL CHECK(count >= 0)
+);
+
+selectAll:
+SELECT * FROM joker ORDER BY type;
+
+rowCount:
+SELECT count(*) FROM joker;
+
+setCount:
+INSERT OR REPLACE INTO joker(type, count) VALUES (?, ?);
+
+-- No UPSERT: Android 8 (minSdk 26) ships SQLite 3.18.
+ensureRow:
+INSERT OR IGNORE INTO joker(type, count) VALUES (?, 0);
+
+addCount:
+UPDATE joker SET count = count + :amount WHERE type = :type;

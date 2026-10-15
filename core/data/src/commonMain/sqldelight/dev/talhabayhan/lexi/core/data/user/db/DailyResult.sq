@@ -1,0 +1,15 @@
+-- The one scored Daily wheel attempt per day (GAME_RULES.md §5).
+CREATE TABLE daily_result(
+    epoch_day INTEGER NOT NULL PRIMARY KEY,
+    level TEXT NOT NULL,
+    score INTEGER NOT NULL,
+    time_ms INTEGER NOT NULL,
+    -- Share card payload (M6); NULL until the share format exists.
+    share_code TEXT
+);
+
+insertIfAbsent:
+INSERT OR IGNORE INTO daily_result(epoch_day, level, score, time_ms, share_code) VALUES (?, ?, ?, ?, ?);
+
+byDay:
+SELECT * FROM daily_result WHERE epoch_day = ?;

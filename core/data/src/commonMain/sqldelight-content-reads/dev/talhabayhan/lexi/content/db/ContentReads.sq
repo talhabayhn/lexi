@@ -1,0 +1,50 @@
+-- App-side read queries on content.db (docs/CONTENT.md §7). Not part of the schema shared with the compiler.
+-- Level and category wheel queries filter pack_only = 0: exam-pack extra cards are reachable only through
+-- exam_pack_card (docs/CONTENT.md §1).
+
+metaValue:
+SELECT value FROM meta WHERE key = ?;
+
+levelCards:
+SELECT card.*, clue.clue, clue.example_translation
+FROM card JOIN clue ON clue.card_id = card.id AND clue.lang = :lang
+WHERE card.level = :level AND card.pack_only = 0
+ORDER BY card.id;
+
+levelCategoryCards:
+SELECT card.*, clue.clue, clue.example_translation
+FROM card JOIN clue ON clue.card_id = card.id AND clue.lang = :lang
+WHERE card.level = :level AND card.category_id = :category AND card.pack_only = 0
+ORDER BY card.id;
+
+allLevelCards:
+SELECT card.*, clue.clue, clue.example_translation
+FROM card JOIN clue ON clue.card_id = card.id AND clue.lang = :lang
+WHERE card.pack_only = 0
+ORDER BY card.id;
+
+cardsById:
+SELECT card.*, clue.clue, clue.example_translation
+FROM card JOIN clue ON clue.card_id = card.id AND clue.lang = :lang
+WHERE card.id IN :ids
+ORDER BY card.id;
+
+allCardIds:
+SELECT id FROM card;
+
+levelCardCounts:
+SELECT level, count(*) AS total FROM card WHERE pack_only = 0 GROUP BY level;
+
+categories:
+SELECT * FROM category ORDER BY sort, id;
+
+examPacks:
+SELECT * FROM exam_pack ORDER BY sort, id;
+
+examPackCards:
+SELECT card.*, clue.clue, clue.example_translation, exam_pack_card.unit
+FROM exam_pack_card
+JOIN card ON card.id = exam_pack_card.card_id
+JOIN clue ON clue.card_id = card.id AND clue.lang = :lang
+WHERE exam_pack_card.pack_id = :packId
+ORDER BY exam_pack_card.unit, card.id;

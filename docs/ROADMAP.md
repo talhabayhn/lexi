@@ -44,7 +44,7 @@ Module mapping (replaces the earlier `composeApp`): `androidApp` = thin Android 
 ## M3 — Content & data
 - [x] `tools:content-compiler`: parse CSVs, validate (`CONTENT.md` §3), write `content.db`, print report
 - [ ] A1 full set (850) — content-curator in batches of 100, product owner reviews; other levels 26-card smoke sets
-- [ ] SQLDelight `content.db` (read-only, copied from resources on first run/version bump) + `user.db` with migrations
+- [x] SQLDelight `content.db` (read-only, copied from resources on first run/version bump) + `user.db` with migrations
 - [ ] Repositories (`ARCHITECTURE.md` §6) + DataStore settings
 - [ ] Repository tests with in-memory driver
 **Done when:** app reads a wheel from the bundled DB on both platforms.

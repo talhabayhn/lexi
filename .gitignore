@@ -16,6 +16,6 @@ DerivedData/
 *.xcworkspace/xcuserdata/
 .claude/settings.local.json
 
-# Content pipeline: generated DB and private exam pack content (docs/CONTENT.md §1)
-shared/src/commonMain/composeResources/files/content.db
+# Content pipeline: content.db is a build output (docs/CONTENT.md §1); private exam pack content
+content.db
 content/exam_packs/

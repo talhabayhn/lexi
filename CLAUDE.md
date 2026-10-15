@@ -40,7 +40,7 @@ Android `minSdk 26`, iOS 16+. Package / applicationId: `dev.talhabayhan.lexi` (c
 ./gradlew recordRoborazziAndroidHostTest # record screenshots
 ./gradlew verifyRoborazziAndroidHostTest # compare screenshots
 ./gradlew ktlintCheck                    # static analysis (detekt later); fix with ktlintFormat
-./gradlew :tools:content-compiler:run    # CSV → content.db
+./gradlew :tools:content-compiler:run    # validate content/ + coverage report (every app build regenerates content.db itself)
 ```
 iOS: open `iosApp/iosApp.xcodeproj` in Xcode and run. (Update this section if tasks get renamed.)
 

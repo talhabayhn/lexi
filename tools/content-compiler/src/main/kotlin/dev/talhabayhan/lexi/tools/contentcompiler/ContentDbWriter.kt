@@ -9,6 +9,7 @@ import java.nio.file.StandardCopyOption
 import kotlin.io.path.absolute
 import kotlin.io.path.createDirectories
 import kotlin.io.path.deleteIfExists
+import kotlin.io.path.writeText
 
 /**
  * Writes [CompiledContent] to a fresh SQLite file using the schema shared with `core:data` (`CONTENT.md` §7).
@@ -67,13 +68,34 @@ object ContentDbWriter {
                     content.packCards.forEach { queries.insertExamPackCard(it.packId, it.cardId, it.unit) }
                 }
             }
-            try {
-                Files.move(temp, target, StandardCopyOption.REPLACE_EXISTING, StandardCopyOption.ATOMIC_MOVE)
-            } catch (_: AtomicMoveNotSupportedException) {
-                Files.move(temp, target, StandardCopyOption.REPLACE_EXISTING)
-            }
+            moveAtomically(temp, target)
         } finally {
             temp.deleteIfExists()
+        }
+    }
+
+    /**
+     * Writes [contentVersion] as plain text to [output] (temp file, then move, like the DB). The app compares it
+     * with the installed copy's `meta.contentVersion` without opening the bundled DB (`ARCHITECTURE.md` §6).
+     */
+    fun writeVersionFile(contentVersion: Int, output: Path, tempDir: Path) {
+        val target = output.absolute()
+        target.parent.createDirectories()
+        tempDir.createDirectories()
+        val temp = Files.createTempFile(tempDir, "${target.fileName}.", ".tmp")
+        try {
+            temp.writeText(contentVersion.toString())
+            moveAtomically(temp, target)
+        } finally {
+            temp.deleteIfExists()
+        }
+    }
+
+    private fun moveAtomically(source: Path, target: Path) {
+        try {
+            Files.move(source, target, StandardCopyOption.REPLACE_EXISTING, StandardCopyOption.ATOMIC_MOVE)
+        } catch (_: AtomicMoveNotSupportedException) {
+            Files.move(source, target, StandardCopyOption.REPLACE_EXISTING)
         }
     }
 }

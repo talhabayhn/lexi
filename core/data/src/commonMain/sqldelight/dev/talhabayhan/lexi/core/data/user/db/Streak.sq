@@ -1,0 +1,10 @@
+-- Days (player's time zone) with at least one completed wheel; written with the session (GAME_RULES.md §11).
+CREATE TABLE streak(
+    epoch_day INTEGER NOT NULL PRIMARY KEY
+);
+
+markDay:
+INSERT OR IGNORE INTO streak(epoch_day) VALUES (?);
+
+days:
+SELECT epoch_day FROM streak ORDER BY epoch_day;

@@ -15,13 +15,26 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
+            api(project(":core:domain"))
             implementation(libs.sqldelight.runtime)
+            implementation(libs.sqldelight.coroutines.extensions)
+            implementation(libs.kotlinx.coroutines.core)
         }
-        androidMain.dependencies {
-            implementation(libs.sqldelight.android.driver)
+        androidMain {
+            // java.io helpers shared by the Android and JVM (test) targets.
+            kotlin.srcDir("src/jvmShared/kotlin")
+            dependencies {
+                implementation(libs.sqldelight.android.driver)
+            }
+        }
+        jvmMain {
+            kotlin.srcDir("src/jvmShared/kotlin")
         }
         iosMain.dependencies {
             implementation(libs.sqldelight.native.driver)
+        }
+        commonTest.dependencies {
+            implementation(project(":core:testing"))
         }
         jvmTest.dependencies {
             implementation(libs.sqldelight.sqlite.driver)
@@ -31,15 +44,18 @@ kotlin {
 
 sqldelight {
     databases {
-        // Temporary probe schema; replaced by content.db / user.db in M3.
-        create("ProbeDatabase") {
-            packageName.set("dev.talhabayhan.lexi.core.data.db")
+        // user.db: progress, sessions, daily results, streak, jokers (docs/CONTENT.md §8). Schema in
+        // src/commonMain/sqldelight; every change after v1 is a numbered migration (<from-version>.sqm) plus a
+        // schema snapshot for UserDatabaseMigrationTest.
+        create("UserDatabase") {
+            packageName.set("dev.talhabayhan.lexi.core.data.user.db")
         }
-        // Read-only bundled content DB (docs/CONTENT.md §7). The same .sq files generate the writer in
-        // tools:content-compiler, so the compiler and the app can never disagree on the schema.
+        // Read-only bundled content DB (docs/CONTENT.md §7). The schema files are shared with
+        // tools:content-compiler, which generates its writer from them; the app's read queries live in a separate
+        // directory so the compiler doesn't get them.
         create("ContentDatabase") {
             packageName.set("dev.talhabayhan.lexi.core.data.content.db")
-            srcDirs("src/commonMain/sqldelight-content")
+            srcDirs("src/commonMain/sqldelight-content", "src/commonMain/sqldelight-content-reads")
         }
     }
 }

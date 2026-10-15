@@ -1,0 +1,27 @@
+-- Finished games (GAME_RULES.md §11). Hot-seat duel games are never stored (GameConfig.srsExcludedModes).
+CREATE TABLE session(
+    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    mode TEXT NOT NULL,
+    level TEXT NOT NULL,
+    -- Category id of a category wheel; NULL for wheels without one (review, daily, level test).
+    category TEXT,
+    seed INTEGER NOT NULL,
+    started_ms INTEGER NOT NULL,
+    ended_ms INTEGER NOT NULL,
+    -- Day in the player's time zone when the game ended.
+    epoch_day INTEGER NOT NULL,
+    score INTEGER NOT NULL,
+    correct INTEGER NOT NULL,
+    wrong INTEGER NOT NULL,
+    passed INTEGER NOT NULL,
+    completed INTEGER NOT NULL
+);
+
+CREATE INDEX session_epoch_day ON session(epoch_day);
+
+insert:
+INSERT INTO session(mode, level, category, seed, started_ms, ended_ms, epoch_day, score, correct, wrong, passed, completed)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+
+records:
+SELECT epoch_day, completed, correct FROM session ORDER BY id;
