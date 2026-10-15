@@ -1,0 +1,93 @@
+id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
+b1-quantity,QUANTITY,Q,STARTS,noun,bir şeyin miktarı,A large quantity of rice was sold.,Büyük miktarda pirinç satıldı.,3,,business
+b1-quit,QUIT,Q,STARTS,verb,bir işi veya alışkanlığı bırakmak,He wants to quit smoking.,Sigarayı bırakmak istiyor.,3,,body-health
+b1-quote,QUOTE,Q,STARTS,verb,bir kişinin sözlerini aynen aktarmak,The writer likes to quote famous poets.,Yazar ünlü şairlerden alıntı yapmayı sever.,4,,school-work
+b1-quarrel,QUARREL,Q,STARTS,noun,"iki kişi arasındaki sert tartışma, kavga",They had a quarrel about money.,Para yüzünden bir tartışma yaşadılar.,4,,family-people
+b1-qualify,QUALIFY,Q,STARTS,verb,şartları karşılayıp hak kazanmak,Our team hopes to qualify for the final.,Takımımız finale kalmayı umuyor.,4,,sports
+b1-qualification,QUALIFICATION,Q,STARTS,noun,eğitimle kazanılan belge veya yeterlilik,She has a qualification in teaching.,Öğretmenlik alanında bir diploması var.,4,,school-work
+b1-quotation,QUOTATION,Q,STARTS,noun,bir kitaptan veya konuşmadan alınan söz,The essay begins with a quotation.,Kompozisyon bir alıntıyla başlıyor.,4,,school-work
+b1-sequence,SEQUENCE,Q,CONTAINS,noun,birbirini izleyen olaylar veya sayılar dizisi,Put the pictures in the correct sequence.,Resimleri doğru sıraya koy.,4,,school-work
+b1-consequence,CONSEQUENCE,Q,CONTAINS,noun,bir olayın sonucu,Being late had a bad consequence.,Geç kalmanın kötü bir sonucu oldu.,4,,daily-life
+b1-technique,TECHNIQUE,Q,CONTAINS,noun,"bir işi yapma yöntemi, teknik",She learned a new painting technique.,Yeni bir resim tekniği öğrendi.,4,,school-work
+b1-bouquet,BOUQUET,Q,CONTAINS,noun,çiçeklerden oluşan demet,He gave her a bouquet of roses.,Ona bir buket gül verdi.,3,,daily-life
+b1-squirrel,SQUIRREL,Q,CONTAINS,noun,"ağaçlarda yaşayan, kuyruğu gür küçük hayvan",A squirrel ran up the tree.,Bir sincap ağaca tırmandı.,3,,animals
+b1-banquet,BANQUET,Q,CONTAINS,noun,"çok kişinin katıldığı resmî yemek, ziyafet",The king gave a banquet for his guests.,Kral konukları için bir ziyafet verdi.,4,,food-drink
+b1-conquer,CONQUER,Q,CONTAINS,verb,"bir ülkeyi savaşla ele geçirmek, fethetmek",The army wanted to conquer the city.,Ordu şehri fethetmek istedi.,4,,school-work
+b1-equality,EQUALITY,Q,CONTAINS,noun,"herkese aynı haklar verilmesi, eşitlik",Equality is important in a school.,Okulda eşitlik önemlidir.,4,,school-work
+b1-squash,SQUASH,Q,CONTAINS,noun,raket ve topla kapalı odada oynanan spor,She plays squash twice a week.,Haftada iki kez squash oynuyor.,4,,sports
+b1-enquire,ENQUIRE,Q,CONTAINS,verb,resmî olarak bilgi sormak,Please enquire at the front desk.,Lütfen danışmadan bilgi alın.,4,,travel
+b1-requirement,REQUIREMENT,Q,CONTAINS,noun,bir şey için gereken şart,A passport is a requirement for travel.,Pasaport seyahat için bir şarttır.,4,,travel
+b1-acquire,ACQUIRE,Q,CONTAINS,verb,çabayla bir beceri veya mal edinmek,Children acquire language quickly.,Çocuklar dili hızlı edinir.,4,,school-work
+b1-yell,YELL,Y,STARTS,verb,öfkeyle veya yüksek sesle bağırmak,Don't yell at your brother.,Kardeşine bağırma.,3,,family-people
+b1-babysitter,BABYSITTER,Y,CONTAINS,noun,ebeveynler yokken çocuğa bakan kişi,The babysitter put the children to bed.,Bakıcı çocukları yatırdı.,3,,family-people
+b1-everyday,EVERYDAY,Y,CONTAINS,adj,"her gün olan, günlük",Cooking is an everyday job.,Yemek yapmak günlük bir iştir.,3,,daily-life
+b1-policy,POLICY,Y,CONTAINS,noun,bir kurumun belirlediği kural ve ilkeler,The school has a clear policy on phones.,Okulun telefonlar konusunda net bir politikası var.,4,,business
+b1-priority,PRIORITY,Y,CONTAINS,noun,diğerlerinden önce gelen öncelik,Health is our first priority.,Sağlık birinci önceliğimiz.,4,,business
+b1-survey,SURVEY,Y,CONTAINS,noun,insanların fikrini öğrenmek için yapılan anket,The survey asked people about their habits.,Anket insanlara alışkanlıklarını sordu.,4,,school-work
+b1-layer,LAYER,Y,CONTAINS,noun,bir şeyin üst üste gelen tabakalarından biri,Put a layer of cheese on the bread.,Ekmeğin üzerine bir kat peynir koy.,3,,food-drink
+b1-display,DISPLAY,Y,CONTAINS,verb,bir şeyi herkesin görebileceği şekilde sergilemek,The shop will display the new shoes in the window.,Dükkân yeni ayakkabıları vitrinde sergileyecek.,3,,business
+b1-deny,DENY,Y,CONTAINS,verb,doğru olduğunu kabul etmeyip yadsımak,He will deny everything.,Her şeyi inkâr edecek.,4,,daily-life
+b1-identify,IDENTIFY,Y,CONTAINS,verb,bir şeyin ne olduğunu belirleyip tanımak,Can you identify this bird?,Bu kuşu tanıyabilir misin?,4,,animals
+b1-mayor,MAYOR,Y,CONTAINS,noun,bir şehrin belediye başkanı,The mayor opened the new park.,Belediye başkanı yeni parkı açtı.,3,,city-transport
+b1-loyalty,LOYALTY,Y,CONTAINS,noun,birine sadakatle bağlı olma,Dogs are famous for their loyalty.,Köpekler sadakatleriyle ünlüdür.,4,,animals
+b1-enjoyment,ENJOYMENT,Y,CONTAINS,noun,bir şeyden alınan zevk,Reading gives me great enjoyment.,Okumak bana büyük zevk veriyor.,3,,daily-life
+b1-yearly,YEARLY,Y,STARTS,adj,yılda bir yapılan,We have a yearly meeting in June.,Haziranda yıllık bir toplantımız var.,3,,business
+b1-satisfy,SATISFY,Y,CONTAINS,verb,bir isteği veya ihtiyacı karşılamak,One sandwich will not satisfy him.,Bir sandviç onu doyurmaz.,4,,food-drink
+b1-pyjamas,PYJAMAS,Y,CONTAINS,noun,geceleri giyilen takım,She sleeps in blue pyjamas.,Mavi bir pijamayla uyur.,3,,daily-life
+b1-cycle,CYCLE,Y,CONTAINS,noun,tekrar eden olaylar dizisi; döngü,The water cycle starts with rain.,Su döngüsü yağmurla başlar.,4,,school-work
+b1-youngster,YOUNGSTER,Y,STARTS,noun,"ufaklık, küçük çocuk",The youngster was happy to help.,Genç çocuk yardım etmekten memnundu.,4,,family-people
+b1-zipper,ZIPPER,Z,STARTS,noun,giysilerde kullanılan fermuar,The zipper on my bag is broken.,Çantamın fermuarı bozuk.,3,,daily-life
+b1-zoom,ZOOM,Z,STARTS,verb,hızla geçmek; görüntüyü yakınlaştırmak,You can zoom in on the map.,Haritada yakınlaştırabilirsin.,3,,technology
+b1-amaze,AMAZE,Z,CONTAINS,verb,çok şaşırtmak,Her skill will amaze you.,Becerisi seni şaşırtacak.,3,,daily-life
+b1-blizzard,BLIZZARD,Z,CONTAINS,noun,çok şiddetli kar fırtınası,The blizzard closed all the roads.,Kar fırtınası bütün yolları kapattı.,4,,daily-life
+b1-fuzzy,FUZZY,Z,CONTAINS,adj,tüylü ve yumuşak; bulanık,The puppy has fuzzy ears.,Yavrunun tüylü kulakları var.,4,,animals
+b1-gaze,GAZE,Z,CONTAINS,verb,bir şeye uzun uzun hayranlıkla bakmak,They gaze at the stars at night.,Geceleri yıldızlara dalıp bakarlar.,4,,daily-life
+b1-hazard,HAZARD,Z,CONTAINS,noun,tehlike yaratan şey,Wet floors are a hazard.,Islak zeminler bir tehlikedir.,4,,daily-life
+b1-razor,RAZOR,Z,CONTAINS,noun,sakal tıraşı için kullanılan jilet,He bought a new razor.,Yeni bir tıraş bıçağı aldı.,3,,body-health
+b1-ozone,OZONE,Z,CONTAINS,noun,dünyayı güneş ışınlarından koruyan gaz,Ozone gas protects the earth.,Ozon gazı dünyayı korur.,4,,school-work
+b1-civilization,CIVILIZATION,Z,CONTAINS,noun,"gelişmiş bir toplumun kültürü, uygarlık",Ancient Egypt had a great civilization.,Eski Mısır'ın büyük bir uygarlığı vardı.,4,,school-work
+b1-memorize,MEMORIZE,Z,CONTAINS,verb,bir şeyi ezberlemek,I have to memorize ten new words.,On yeni kelimeyi ezberlemem gerekiyor.,3,,school-work
+b1-summarize,SUMMARIZE,Z,CONTAINS,verb,bir metni kısaca özetlemek,Please summarize the story in one sentence.,Lütfen hikâyeyi tek cümleyle özetle.,4,,school-work
+b1-emphasize,EMPHASIZE,Z,CONTAINS,verb,bir noktaya özel önem verip vurgulamak,The teacher likes to emphasize reading.,Öğretmen okumayı vurgulamayı sever.,4,,school-work
+b1-freezing,FREEZING,Z,CONTAINS,adj,"çok soğuk, dondurucu",It is freezing outside today.,Bugün dışarısı dondurucu.,3,,daily-life
+b1-puzzled,PUZZLED,Z,CONTAINS,adj,"ne olduğunu anlayamayıp şaşıran, kafası karışmış",He looked puzzled by the question.,Soru karşısında şaşkın göründü.,4,,school-work
+b1-pizzeria,PIZZERIA,Z,CONTAINS,noun,pizza yapılıp satılan lokanta,We had dinner in a small pizzeria.,Küçük bir pizzacıda yemek yedik.,3,,food-drink
+b1-bazaar,BAZAAR,Z,CONTAINS,noun,dükkânların sıralandığı çarşı,We bought a lamp at the bazaar.,Çarşıdan bir lamba aldık.,3,,travel
+b1-amazement,AMAZEMENT,Z,CONTAINS,noun,büyük şaşkınlık,She looked at it in amazement.,Büyük bir şaşkınlıkla ona baktı.,4,,daily-life
+b1-snooze,SNOOZE,Z,CONTAINS,verb,kısa ve hafif uyumak,I like to snooze on the sofa.,Kanepede şekerleme yapmayı severim.,4,,daily-life
+b1-dazzle,DAZZLE,Z,CONTAINS,verb,parlak ışıkla gözü kamaştırmak,The sun can dazzle your eyes.,Güneş gözlerini kamaştırabilir.,4,,daily-life
+b1-glance,GLANCE,G,STARTS,verb,bir şeye kısaca göz atmak,He will glance at the clock.,Saate bir göz atacak.,4,,daily-life
+b1-gradually,GRADUALLY,G,STARTS,adv,"yavaş yavaş, aşama aşama",The weather is gradually getting warmer.,Hava yavaş yavaş ısınıyor.,4,,daily-life
+b1-greeting,GREETING,G,STARTS,noun,selamlaşma sözü,He answered with a friendly greeting.,Dostça bir selamla karşılık verdi.,3,,daily-life
+b1-growth,GROWTH,G,STARTS,noun,büyüme veya artış,The growth of the town is fast.,Kasabanın büyümesi hızlı.,4,,business
+b1-habitat,HABITAT,H,STARTS,noun,bir hayvanın doğal yaşam alanı,Forests are the habitat of many animals.,Ormanlar birçok hayvanın yaşam alanıdır.,4,,animals
+b1-happily,HAPPILY,H,STARTS,adv,mutlu bir şekilde,They lived happily in a small house.,Küçük bir evde mutlu yaşadılar.,3,,family-people
+b1-happiness,HAPPINESS,H,STARTS,noun,mutluluk,Money cannot buy happiness.,Para mutluluk satın alamaz.,3,,family-people
+b1-harbour,HARBOUR,H,STARTS,noun,gemilerin demirlediği liman,The boats are in the harbour.,Tekneler limanda.,3,,city-transport
+b1-heritage,HERITAGE,H,STARTS,noun,bir ülkenin geçmişten kalan kültürel mirası,The old town is part of our heritage.,Eski şehir mirasımızın bir parçası.,4,,travel
+b1-hidden,HIDDEN,H,STARTS,adj,"gizlenmiş, gözden saklı",The treasure was hidden in a cave.,Hazine bir mağarada saklıydı.,3,,daily-life
+b1-honestly,HONESTLY,H,STARTS,adv,"dürüstçe, açıkçası","Honestly, I did not like the film.",Açıkçası filmi beğenmedim.,3,,daily-life
+b1-hopeless,HOPELESS,H,STARTS,adj,umudu kalmamış,The case looks hopeless.,Dava umutsuz görünüyor.,4,,daily-life
+b1-electrician,ELECTRICIAN,E,STARTS,noun,elektrik tesisatını kuran veya onaran usta,The electrician fixed the lights.,Elektrikçi ışıkları tamir etti.,3,,school-work
+b1-element,ELEMENT,E,STARTS,noun,bir bütünü oluşturan parça,Water is an important element of life.,"Su, hayatın önemli bir unsurudur.",4,,school-work
+b1-endless,ENDLESS,E,STARTS,adj,"hiç bitmeyen, sonsuz",The desert seemed endless.,Çöl sonsuz görünüyordu.,4,,travel
+b1-enthusiasm,ENTHUSIASM,E,STARTS,noun,"bir işe duyulan büyük istek, coşku",She worked with great enthusiasm.,Büyük bir coşkuyla çalıştı.,4,,school-work
+b1-error,ERROR,E,STARTS,noun,yapılan hata,The computer showed an error.,Bilgisayar bir hata gösterdi.,3,,technology
+b1-elsewhere,ELSEWHERE,E,STARTS,adv,başka bir yerde,"If it is full, let's eat elsewhere.",Doluysa başka yerde yiyelim.,4,,city-transport
+b1-embarrassing,EMBARRASSING,E,STARTS,adj,insanı utandıran,It was an embarrassing mistake.,Utanç verici bir hataydı.,4,,daily-life
+b1-enormous,ENORMOUS,E,STARTS,adj,"çok büyük, kocaman",They live in an enormous house.,Kocaman bir evde yaşıyorlar.,3,,daily-life
+b1-odd,ODD,O,STARTS,adj,tuhaf; tek sayı,That is an odd thing to say.,Bunu söylemek tuhaf.,3,,daily-life
+b1-operation,OPERATION,O,STARTS,noun,doktorun yaptığı ameliyat; bir makinenin çalışması,He had an operation on his knee.,Dizinden ameliyat oldu.,3,,body-health
+b1-opponent,OPPONENT,O,STARTS,noun,bir yarışta karşı taraftaki rakip,Our opponent was very strong.,Rakibimiz çok güçlüydü.,4,,sports
+b1-optimistic,OPTIMISTIC,O,STARTS,adj,"her şeyin iyi olacağına inanan, iyimser",I am optimistic about the future.,Gelecek konusunda iyimserim.,4,,family-people
+b1-overweight,OVERWEIGHT,O,STARTS,adj,olması gerekenden fazla kilolu,The doctor said he was overweight.,Doktor onun fazla kilolu olduğunu söyledi.,4,,body-health
+b1-offline,OFFLINE,O,STARTS,adj,internete bağlı olmayan,My computer is offline now.,Bilgisayarım şu an çevrimdışı.,3,,technology
+b1-outgoing,OUTGOING,O,STARTS,adj,"girişken, herkesle kolay arkadaş olan",She is an outgoing girl.,O girişken bir kız.,4,,family-people
+b1-outline,OUTLINE,O,STARTS,noun,bir konunun kısa taslağı,Write an outline before your essay.,Kompozisyonundan önce bir taslak yaz.,4,,school-work
+b1-overtime,OVERTIME,O,STARTS,noun,normal mesai dışındaki fazla çalışma,He works overtime every Friday.,Her cuma fazla mesai yapıyor.,3,,business
+b1-exception,EXCEPTION,X,CONTAINS,noun,kuralın dışında kalan durum,There is one exception to this rule.,Bu kuralın tek bir istisnası var.,4,,school-work
+b1-expand,EXPAND,X,CONTAINS,verb,genişlemek veya genişletmek,The company wants to expand abroad.,Şirket yurt dışına açılmak istiyor.,4,,business
+b1-complex,COMPLEX,X,CONTAINS,adj,"birçok parçası olan, karmaşık",The story has a complex plot.,Hikâyenin karmaşık bir olay örgüsü var.,4,,film-tv
+b1-index,INDEX,X,CONTAINS,noun,kitabın sonunda yer alan dizin,Look in the index for the page number.,Sayfa numarası için dizine bak.,4,,school-work
+b1-prefix,PREFIX,X,CONTAINS,noun,sözcüğün başına eklenen ek,"The prefix ""un"" changes the meaning of a word.","""un"" öneki sözcüğün anlamını değiştirir.",4,,school-work
+b1-suffix,SUFFIX,X,CONTAINS,noun,sözcüğün sonuna eklenen ek,"The suffix ""ful"" means full of something.","""ful"" soneki bir şeyle dolu anlamı katar.",4,,school-work
