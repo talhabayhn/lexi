@@ -1,0 +1,121 @@
+id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
+b2-capability,CAPABILITY,C,STARTS,noun,bir işi yapabilme gücü ve yeteneği,The team has the capability to finish on time.,Takım zamanında bitirme yeteneğine sahip.,4,,business
+b2-ceremony,CEREMONY,C,STARTS,noun,önemli bir olay için yapılan tören,The graduation ceremony starts at ten.,Mezuniyet töreni onda başlıyor.,3,,school-work
+b2-chaos,CHAOS,C,STARTS,noun,tam bir düzensizlik ve karışıklık,The storm caused chaos at the airport.,Fırtına havaalanında kaosa yol açtı.,4,,travel
+b2-circumstance,CIRCUMSTANCE,C,STARTS,noun,bir olayı çevreleyen koşul,Under no circumstance should you open the door.,Hiçbir koşulda kapıyı açmamalısın.,4,,daily-life
+b2-cite,CITE,C,STARTS,verb,"kaynak olarak göstermek, alıntı yapmak",Always cite your sources in an essay.,Kompozisyonda kaynaklarını her zaman göster.,4,,school-work
+b2-clarify,CLARIFY,C,STARTS,verb,bir şeyi daha anlaşılır hale getirmek,Could you clarify what you mean?,Ne demek istediğini açıklayabilir misin?,4,,school-work
+b2-clash,CLASH,C,STARTS,noun,taraflar arasında ani ve sert çatışma,There was a clash between the fans.,Taraftarlar arasında bir çatışma çıktı.,4,,sports
+b2-coincidence,COINCIDENCE,C,STARTS,noun,tesadüfen aynı anda olan iki olay,It was a coincidence that we met there.,Orada karşılaşmamız bir tesadüftü.,4,,daily-life
+b2-collapse,COLLAPSE,C,STARTS,verb,(bina) çökmek; (kişi) birden yığılmak,The old bridge could collapse in the storm.,Eski köprü fırtınada çökebilir.,4,,daily-life
+b2-commit,COMMIT,C,STARTS,verb,bir suçu işlemek; bir işe bağlanmak,He did not commit the crime.,Suçu o işlemedi.,4,,daily-life
+b2-commitment,COMMITMENT,C,STARTS,noun,bir işe veya kişiye bağlılık,The job needs a lot of commitment.,İş çok bağlılık gerektiriyor.,4,,business
+b2-compensate,COMPENSATE,C,STARTS,verb,zararı karşılığını vererek telafi etmek,The airline will compensate passengers for the delay.,Havayolu yolculara gecikme için tazminat ödeyecek.,4,,travel
+b2-competent,COMPETENT,C,STARTS,adj,"işini iyi yapabilen, yetkin",She is a competent manager.,O yetkin bir yönetici.,4,,business
+b2-compliment,COMPLIMENT,C,STARTS,noun,"birine söylenen hoş söz, iltifat",He gave me a nice compliment.,Bana hoş bir iltifat etti.,3,,daily-life
+b2-compose,COMPOSE,C,STARTS,verb,müzik ya da yazı oluşturmak,Mozart began to compose at the age of five.,Mozart beş yaşında beste yapmaya başladı.,4,,music
+b2-comprehensive,COMPREHENSIVE,C,STARTS,adj,"her yönü kapsayan, geniş",The guide offers a comprehensive list of hotels.,Rehber kapsamlı bir otel listesi sunuyor.,4,,travel
+b2-compromise,COMPROMISE,C,STARTS,noun,iki tarafın karşılıklı ödün vermesi,We reached a compromise after a long talk.,Uzun bir konuşmadan sonra uzlaştık.,4,,business
+b2-concern,CONCERN,C,STARTS,noun,bir konuda duyulan endişe,Her main concern is her health.,Asıl endişesi sağlığı.,3,,body-health
+b2-conduct,CONDUCT,C,STARTS,verb,araştırma ya da deney yürütmek; orkestra yönetmek,They conduct tests in the school lab.,Okul laboratuvarında testler yapıyorlar.,4,,school-work
+b2-confess,CONFESS,C,STARTS,verb,yapılan hatayı itiraf etmek,He will confess that he broke the window.,Camı kırdığını itiraf edecek.,3,,daily-life
+b2-confirm,CONFIRM,C,STARTS,verb,bir bilgiyi doğrulamak,Please confirm your booking by email.,Lütfen rezervasyonunuzu e-postayla onaylayın.,3,,travel
+b2-conflict,CONFLICT,C,STARTS,noun,uzun süren anlaşmazlık veya savaş,The conflict lasted for years.,Anlaşmazlık yıllarca sürdü.,4,,daily-life
+b2-confront,CONFRONT,C,STARTS,verb,bir sorunla veya kişiyle yüz yüze gelmek,You must confront your fear.,Korkunla yüzleşmelisin.,4,,daily-life
+b2-conscious,CONSCIOUS,C,STARTS,adj,bir şeyin farkında olan,She was conscious of the noise.,Gürültünün farkındaydı.,4,,daily-life
+b2-considerable,CONSIDERABLE,C,STARTS,adj,hatırı sayılır ölçüde büyük,He spent a considerable amount of money.,Hatırı sayılır miktarda para harcadı.,4,,business
+b2-consistent,CONSISTENT,C,STARTS,adj,tutarlı ve değişmeyen,Her results are consistent.,Sonuçları tutarlı.,4,,school-work
+b2-constant,CONSTANT,C,STARTS,adj,"sürekli, durmayan",The constant noise made me tired.,Sürekli gürültü beni yordu.,3,,daily-life
+b2-construct,CONSTRUCT,C,STARTS,verb,bir yapıyı inşa etmek,They plan to construct a new school.,Yeni bir okul inşa etmeyi planlıyorlar.,4,,daily-life
+b2-consult,CONSULT,C,STARTS,verb,bir uzmana danışmak,You should consult a doctor.,Bir doktora danışmalısın.,3,,body-health
+b2-consume,CONSUME,C,STARTS,verb,yiyip içmek ya da enerji tüketmek,Cars consume a lot of fuel.,Arabalar çok yakıt tüketir.,4,,daily-life
+b2-contemporary,CONTEMPORARY,C,STARTS,adj,günümüzle aynı döneme ait,He likes contemporary art.,Çağdaş sanatı seviyor.,4,,music
+b2-context,CONTEXT,C,STARTS,noun,bir sözcüğü çevreleyen metin veya durum,You can guess the meaning from the context.,Anlamı bağlamdan tahmin edebilirsin.,4,,school-work
+b2-contradict,CONTRADICT,C,STARTS,verb,biriyle ya da kendisiyle çelişmek,His words contradict his actions.,Sözleri davranışlarıyla çelişiyor.,4,,daily-life
+b2-contrast,CONTRAST,C,STARTS,noun,iki şey arasındaki belirgin zıtlık,There is a big contrast between summer and winter here.,Burada yaz ile kış arasında büyük bir zıtlık var.,4,,school-work
+b2-contribute,CONTRIBUTE,C,STARTS,verb,ortak bir amaca katkıda bulunmak,Everyone can contribute to the project.,Herkes projeye katkıda bulunabilir.,4,,business
+b2-controversial,CONTROVERSIAL,C,STARTS,adj,"tartışma yaratan, görüş ayrılığına yol açan",The film is very controversial.,Film çok tartışmalı.,4,,film-tv
+b2-convention,CONVENTION,C,STARTS,noun,toplumun kabul ettiği gelenek; büyük toplantı,It is a social convention to shake hands.,El sıkışmak toplumsal bir gelenektir.,4,,daily-life
+b2-convey,CONVEY,C,STARTS,verb,bir fikri veya duyguyu aktarmak,Music can convey strong feelings.,Müzik güçlü duyguları aktarabilir.,4,,music
+b2-cope,COPE,C,STARTS,verb,zor bir durumla başa çıkmak,How do you cope with stress?,Stresle nasıl başa çıkıyorsun?,4,,body-health
+b2-correspond,CORRESPOND,C,STARTS,verb,birbirine uymak; mektuplaşmak,The two stories do not correspond.,İki hikâye birbirini tutmuyor.,4,,daily-life
+b2-corrupt,CORRUPT,C,STARTS,adj,"çıkar için yasa dışı davranan, yozlaşmış",The mayor was corrupt.,Belediye başkanı yozlaşmıştı.,4,,business
+b2-crucial,CRUCIAL,C,STARTS,adj,"çok önemli, belirleyici",Sleep is crucial for teenagers.,Uyku gençler için çok önemlidir.,4,,body-health
+b2-curriculum,CURRICULUM,C,STARTS,noun,okullarda okutulan derslerin tamamı,English is part of the school curriculum.,İngilizce okul müfredatının bir parçasıdır.,4,,school-work
+b2-call-off,CALL OFF,C,STARTS,phrasal,"son anda vazgeçip iptal etmek (maç, toplantı)",They had to call off the match.,Maçı iptal etmek zorunda kaldılar.,3,,phrasal-verbs
+b2-carry-on,CARRY ON,C,STARTS,phrasal,bir işe ara vermeden devam etmek,"Carry on reading, please.",Lütfen okumaya devam edin.,3,,phrasal-verbs
+b2-carry-out,CARRY OUT,C,STARTS,phrasal,planı ya da görevi uygulamak,The police will carry out a full search.,Polis kapsamlı bir arama yürütecek.,4,,phrasal-verbs
+b2-catch-up,CATCH UP,C,STARTS,phrasal,geride kalıp öndekilere yetişmek,I have to catch up on my homework.,Ödevlerimi tamamlamam gerekiyor.,3,,phrasal-verbs
+b2-check-out,CHECK OUT,C,STARTS,phrasal,otelden ayrılmak; bir şeye göz atmak,We must check out before noon.,Öğleden önce otelden çıkış yapmalıyız.,3,,phrasal-verbs
+b2-cheer-up,CHEER UP,C,STARTS,phrasal,birinin moralini düzeltmek; neşelenmek,A call from you will cheer up my sister.,Senden gelecek bir telefon kız kardeşimin moralini düzeltir.,3,,phrasal-verbs
+b2-clear-up,CLEAR UP,C,STARTS,phrasal,ortalığı toplamak; havanın açılması,Clear up your room before dinner.,Akşam yemeğinden önce odanı topla.,4,,phrasal-verbs
+b2-come-up-with,COME UP WITH,C,STARTS,phrasal,bir fikir ya da çözüm bulup ortaya atmak,She can come up with a great idea.,Harika bir fikir bulabilir.,4,,phrasal-verbs
+b2-count-on,COUNT ON,C,STARTS,phrasal,birine güvenip dayanmak,You can count on me.,Bana güvenebilirsin.,3,,phrasal-verbs
+b2-cut-down,CUT DOWN,C,STARTS,phrasal,miktarını azaltmak; ağacı kesmek,You should cut down on sugar.,Şekeri azaltmalısın.,4,,phrasal-verbs
+b2-cut-off,CUT OFF,C,STARTS,phrasal,bir şeyin bağlantısını veya akışını kesmek,The storm cut off the electricity.,Fırtına elektriği kesti.,4,,phrasal-verbs
+b2-call-it-a-day,CALL IT A DAY,C,STARTS,idiom,o günlük işi bırakmak,"It is late, so let's call it a day.","Geç oldu, bugünlük bırakalım.",3,,idioms
+b2-close-call,CLOSE CALL,C,STARTS,idiom,ucuz atlatılan tehlikeli durum,The car almost hit me; it was a close call.,Araba neredeyse bana çarpıyordu; ucuz atlattım.,4,,idioms
+b2-cut-corners,CUT CORNERS,C,STARTS,idiom,işi kolaylaştırmak için özensiz davranmak,Don't cut corners when you repair the roof.,Çatıyı tamir ederken işi savsaklama.,4,,idioms
+b2-define,DEFINE,D,STARTS,verb,bir sözcüğün anlamını belirtmek,"Can you define the word ""freedom""?","""Özgürlük"" sözcüğünü tanımlayabilir misin?",3,,school-work
+b2-deliberate,DELIBERATE,D,STARTS,adj,"bile bile yapılan, kasıtlı",It was a deliberate mistake.,Bu kasıtlı bir hataydı.,4,,daily-life
+b2-demonstrate,DEMONSTRATE,D,STARTS,verb,bir şeyi örnekle göstermek,The teacher will demonstrate the experiment.,Öğretmen deneyi gösterecek.,4,,school-work
+b2-deprive,DEPRIVE,D,STARTS,verb,birini bir şeyden yoksun bırakmak,Noise can deprive you of sleep.,Gürültü seni uykudan edebilir.,4,,body-health
+b2-derive,DERIVE,D,STARTS,verb,bir şeyin kaynağından çıkmak,Many English words derive from Latin.,Birçok İngilizce sözcük Latinceden gelir.,4,,school-work
+b2-detect,DETECT,D,STARTS,verb,"cihazla algılamak (duman, ses vb.)",The machine can detect smoke.,Makine dumanı algılayabilir.,4,,technology
+b2-devote,DEVOTE,D,STARTS,verb,zaman ve emeğini bir işe adamak,She wants to devote her life to music.,Hayatını müziğe adamak istiyor.,4,,music
+b2-diagnose,DIAGNOSE,D,STARTS,verb,bir hastalığı belirtilerinden tanımak,The doctor will diagnose the problem.,Doktor sorunu teşhis edecek.,4,,body-health
+b2-discard,DISCARD,D,STARTS,verb,işe yaramayan bir şeyi atmak,Discard the old batteries safely.,Eski pilleri güvenli şekilde at.,4,,daily-life
+b2-discipline,DISCIPLINE,D,STARTS,noun,kurallara uyma ve kendini denetleme,The school is famous for its discipline.,Okul disipliniyle ünlü.,4,,school-work
+b2-dismiss,DISMISS,D,STARTS,verb,birini işten çıkarmak; bir fikri reddetmek,The company will dismiss ten workers.,Şirket on işçiyi işten çıkaracak.,4,,business
+b2-distinct,DISTINCT,D,STARTS,adj,diğerlerinden açıkça ayrı,The two cities have a distinct character.,İki şehrin belirgin bir karakteri var.,4,,travel
+b2-distinguish,DISTINGUISH,D,STARTS,verb,"iki şeyin farkını görmek, ayırt etmek",Can you distinguish the twins?,İkizleri ayırt edebilir misin?,4,,daily-life
+b2-distribute,DISTRIBUTE,D,STARTS,verb,bir şeyi insanlara paylaştırmak,They distribute food to poor families.,Yoksul ailelere yiyecek dağıtıyorlar.,4,,business
+b2-diverse,DIVERSE,D,STARTS,adj,birbirinden çok farklı çeşitleri olan,The city has a diverse population.,Şehrin çok çeşitli bir nüfusu var.,4,,travel
+b2-dominant,DOMINANT,D,STARTS,adj,diğerlerinden daha güçlü veya baskın,He was the dominant player in the match.,Maçta baskın oyuncu oydu.,4,,sports
+b2-dramatic,DRAMATIC,D,STARTS,adj,etkileyici ve büyük çaplı,There was a dramatic change in her life.,Hayatında çarpıcı bir değişiklik oldu.,4,,daily-life
+b2-durable,DURABLE,D,STARTS,adj,uzun süre dayanan,This bag is made of durable material.,Bu çanta dayanıklı malzemeden yapılmış.,4,,business
+b2-dynamic,DYNAMIC,D,STARTS,adj,hareketli ve enerjik,She is a dynamic young leader.,O dinamik bir genç lider.,4,,business
+b2-die-out,DIE OUT,D,STARTS,phrasal,"(tür, gelenek) tamamen yok olmak, tükenmek",Many animals could die out soon.,Birçok hayvan yakında tükenebilir.,4,,phrasal-verbs
+b2-dig-up,DIG UP,D,STARTS,phrasal,toprağı kazarak çıkarmak,The dog likes to dig up bones.,Köpek kemik kazıp çıkarmayı sever.,3,,phrasal-verbs
+b2-draw-up,DRAW UP,D,STARTS,phrasal,bir belgeyi hazırlamak,The lawyer will draw up a contract.,Avukat bir sözleşme hazırlayacak.,4,,phrasal-verbs
+b2-dress-up,DRESS UP,D,STARTS,phrasal,özel giyinmek veya kostüm giymek,The children love to dress up as animals.,Çocuklar hayvan gibi giyinmeyi sever.,3,,phrasal-verbs
+b2-drop-off,DROP OFF,D,STARTS,phrasal,bir yerde birini bırakmak,Can you drop off the kids at school?,Çocukları okula bırakabilir misin?,3,,phrasal-verbs
+b2-drop-out,DROP OUT,D,STARTS,phrasal,okulu ya da bir yarışı yarıda bırakmak,He decided to drop out of university.,Üniversiteyi bırakmaya karar verdi.,3,,phrasal-verbs
+b2-drag-on,DRAG ON,D,STARTS,phrasal,gereğinden uzun sürmek,I hope the meeting does not drag on until midnight.,Umarım toplantı gece yarısına kadar uzamaz.,4,,phrasal-verbs
+b2-down-to-earth,DOWN TO EARTH,D,STARTS,idiom,"gösterişsiz, ayakları yere basan",She is famous but very down to earth.,Ünlü ama çok mütevazı.,4,,idioms
+b2-dead-end,DEAD END,D,STARTS,idiom,çıkışı olmayan yol ya da durum,This job is a dead end.,Bu iş çıkmaz bir sokak.,3,,idioms
+b2-draw-the-line,DRAW THE LINE,D,STARTS,idiom,kabul edilebilir sınırı belirlemek,I draw the line at lying to my parents.,Anne babama yalan söylemeye gelince çizgiyi çekerim.,4,,idioms
+b2-eliminate,ELIMINATE,E,STARTS,verb,tamamen ortadan kaldırmak,One mistake can eliminate a team in the first round.,Tek bir hata bir takımı ilk turda eleyebilir.,4,,sports
+b2-embrace,EMBRACE,E,STARTS,verb,sarılmak; yeni bir fikri benimsemek,They embrace new technology quickly.,Yeni teknolojiyi hızla benimsiyorlar.,4,,technology
+b2-emerge,EMERGE,E,STARTS,verb,ortaya çıkmak,The sun will emerge from behind the clouds.,Güneş bulutların arkasından çıkacak.,4,,daily-life
+b2-emphasis,EMPHASIS,E,STARTS,noun,bir şeye verilen özel önem,The school puts great emphasis on reading.,Okul okumaya büyük önem veriyor.,4,,school-work
+b2-enable,ENABLE,E,STARTS,verb,bir şeyi yapılabilir hale getirmek,This app will enable you to learn faster.,Bu uygulama daha hızlı öğrenmeni sağlayacak.,4,,technology
+b2-encounter,ENCOUNTER,E,STARTS,verb,beklenmedik biçimde karşılaşmak,We may encounter problems on the way.,Yolda sorunlarla karşılaşabiliriz.,4,,travel
+b2-endure,ENDURE,E,STARTS,verb,acıya veya zorluğa dayanmak,They had to endure a long winter.,Uzun bir kışa katlanmak zorunda kaldılar.,4,,daily-life
+b2-engage,ENGAGE,E,STARTS,verb,dikkat çekmek; bir işe girişmek,A good teacher can engage the whole class.,İyi bir öğretmen bütün sınıfın ilgisini çekebilir.,4,,school-work
+b2-enhance,ENHANCE,E,STARTS,verb,bir şeyin kalitesini artırmak,Music can enhance your mood.,Müzik ruh halini iyileştirebilir.,4,,music
+b2-ensure,ENSURE,E,STARTS,verb,bir şeyin olacağından emin olmak,Please ensure that all windows are closed.,Lütfen tüm pencerelerin kapalı olduğundan emin olun.,3,,business
+b2-entrepreneur,ENTREPRENEUR,E,STARTS,noun,kendi işini kuran iş insanı,The young entrepreneur opened three shops.,Genç girişimci üç dükkân açtı.,4,,business
+b2-equivalent,EQUIVALENT,E,STARTS,noun,başka bir şeyle eş değerde olan şey,What is the Turkish equivalent of this word?,Bu sözcüğün Türkçe karşılığı nedir?,4,,school-work
+b2-establish,ESTABLISH,E,STARTS,verb,bir kurumu kurmak,They want to establish a new school.,Yeni bir okul kurmak istiyorlar.,4,,school-work
+b2-estimate,ESTIMATE,E,STARTS,verb,yaklaşık olarak hesaplamak,Can you estimate the cost of the trip?,Gezinin maliyetini tahmin edebilir misin?,4,,business
+b2-ethical,ETHICAL,E,STARTS,adj,ahlaka uygun,It is not ethical to copy someone's work.,Birinin işini kopyalamak etik değil.,4,,school-work
+b2-evaluate,EVALUATE,E,STARTS,verb,bir şeyin değerini ölçerek değerlendirmek,The teacher will evaluate your project.,Öğretmen projeni değerlendirecek.,4,,school-work
+b2-evolve,EVOLVE,E,STARTS,verb,zamanla yavaş yavaş gelişmek,Language continues to evolve.,Dil gelişmeye devam eder.,4,,school-work
+b2-exaggerate,EXAGGERATE,E,STARTS,verb,bir şeyi olduğundan büyük göstermek,Don't exaggerate; it wasn't that bad.,Abartma; o kadar kötü değildi.,4,,daily-life
+b2-exceed,EXCEED,E,STARTS,verb,bir sınırı aşmak,Do not exceed the speed limit.,Hız sınırını aşmayın.,4,,daily-life
+b2-exclude,EXCLUDE,E,STARTS,verb,bir kişiyi ya da şeyi dışarıda bırakmak,Do not exclude anyone from the game.,Oyundan kimseyi dışarıda bırakma.,4,,business
+b2-expose,EXPOSE,E,STARTS,verb,gizli olanı ortaya çıkarmak veya korunmasız bırakmak,Do not expose the photos to direct sunlight.,Fotoğrafları doğrudan güneş ışığına maruz bırakma.,4,,daily-life
+b2-extend,EXTEND,E,STARTS,verb,süreyi ya da alanı uzatmak,They decided to extend the deadline.,Son teslim tarihini uzatmaya karar verdiler.,4,,business
+b2-extinct,EXTINCT,E,STARTS,adj,soyu tükenmiş,Dinosaurs are extinct.,Dinozorların soyu tükenmiştir.,4,,daily-life
+b2-extraordinary,EXTRAORDINARY,E,STARTS,adj,"sıra dışı, olağanüstü",She has extraordinary talent.,Olağanüstü bir yeteneği var.,4,,daily-life
+b2-eye-to-eye,EYE TO EYE,E,STARTS,idiom,bir konuda tamamen aynı fikirde,We don't always see eye to eye.,Her zaman aynı fikirde olmayız.,4,,idioms
+b2-cut-back,CUT BACK,C,STARTS,phrasal,harcamayı ya da miktarı kısmak,We need to cut back on spending.,Harcamaları kısmamız gerekiyor.,4,,phrasal-verbs
+b2-deal-with,DEAL WITH,D,STARTS,phrasal,bir sorunla ilgilenip çözmek,She knows how to deal with difficult people.,Zor insanlarla nasıl başa çıkacağını biliyor.,3,,phrasal-verbs
+b2-crop-up,CROP UP,C,STARTS,phrasal,beklenmedik biçimde ortaya çıkmak,Problems always crop up at the last minute.,Sorunlar hep son dakikada çıkar.,4,,phrasal-verbs
+b2-come-down-with,COME DOWN WITH,C,STARTS,phrasal,bir hastalığa yakalanmak,I think I will come down with a cold.,Sanırım nezleye yakalanacağım.,4,,phrasal-verbs
+b2-do-without,DO WITHOUT,D,STARTS,phrasal,bir şey olmadan idare etmek,We can do without a car.,Arabasız idare edebiliriz.,4,,phrasal-verbs
+b2-critical,CRITICAL,C,STARTS,adj,çok önemli; eleştirel,It is critical to arrive on time.,Zamanında varmak çok önemli.,4,,business
+b2-decline,DECLINE,D,STARTS,noun,azalma veya düşüş,There has been a decline in sales.,Satışlarda bir düşüş yaşandı.,4,,business
+b2-dispute,DISPUTE,D,STARTS,noun,tarafların uzun süren tartışması,The neighbours had a dispute about the fence.,Komşuların çit konusunda bir anlaşmazlığı oldu.,4,,daily-life
+b2-extent,EXTENT,E,STARTS,noun,bir şeyin kapsamı veya ölçüsü,Nobody knows the extent of the damage.,Hasarın boyutunu kimse bilmiyor.,4,,daily-life

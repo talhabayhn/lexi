@@ -15,7 +15,7 @@ b2-mediocre,MEDIOCRE,M,STARTS,adj,"ne iyi ne kötü, vasat",The food was mediocr
 b2-neglect,NEGLECT,N,STARTS,verb,gereken ilgiyi ve bakımı göstermemek,Don't neglect your health.,Sağlığını ihmal etme.,3,smoke,body-health
 b2-obstacle,OBSTACLE,O,STARTS,noun,"yolu kapatan, ilerlemeyi zorlaştıran şey",Fear is the biggest obstacle to success.,"Korku, başarının önündeki en büyük engeldir.",3,smoke,daily-life
 b2-persuade,PERSUADE,P,STARTS,verb,birini ikna edip fikrini değiştirmek,I tried to persuade him to stay.,Onu kalmaya ikna etmeye çalıştım.,3,smoke,daily-life
-b2-questionnaire,QUESTIONNAIRE,Q,STARTS,noun,cevaplanması istenen soru listesi,Please fill in this questionnaire.,Lütfen bu anketi doldurun.,3,smoke,school-work
+b2-questionnaire,QUESTIONNAIRE,Q,STARTS,noun,cevaplanması istenen soru listesi,Please complete this questionnaire.,Lütfen bu anketi tamamlayın.,3,smoke,school-work
 b2-reluctant,RELUCTANT,R,STARTS,adj,bir şeyi yapmaya isteksiz,He was reluctant to speak in public.,Topluluk önünde konuşmaya isteksizdi.,3,smoke,daily-life
 b2-subtle,SUBTLE,S,STARTS,adj,"belli belirsiz, zor fark edilen",There is a subtle difference between them.,Aralarında ince bir fark var.,3,smoke,daily-life
 b2-tolerate,TOLERATE,T,STARTS,verb,rahatsız edici bir şeye katlanmak,I cannot tolerate this noise.,Bu gürültüye katlanamıyorum.,3,smoke,daily-life
