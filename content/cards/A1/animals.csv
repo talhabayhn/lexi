@@ -1,14 +1,14 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
-a1-bird,BIRD,B,STARTS,noun,kuş,A small bird is singing nearby.,Yakında küçük bir kuş ötüyor.,1,,animals
-a1-cat,CAT,C,STARTS,noun,kedi,Our cat sleeps on the sofa.,Kedimiz kanepede uyur.,1,,animals
+a1-bird,BIRD,B,STARTS,noun,kuş,A tiny bird is singing nearby.,Yakınlarda minik bir kuş ötüyor.,1,,animals
+a1-cat,CAT,C,STARTS,noun,kedi,Our cat sleeps in a basket.,Kedimiz sepette uyur.,1,,animals
 a1-elephant,ELEPHANT,E,STARTS,noun,fil,The elephant has huge ears.,Filin kocaman kulakları var.,2,,animals
-a1-fish,FISH,F,STARTS,noun,balık,I have a little fish.,Küçük bir balığım var.,1,,animals
+a1-fish,FISH,F,STARTS,noun,balık,I have a tiny fish.,Küçücük bir balığım var.,1,,animals
 a1-lion,LION,L,STARTS,noun,aslan,The lion runs across the field.,Aslan tarlanın içinde koşuyor.,1,,animals
 a1-rabbit,RABBIT,R,STARTS,noun,tavşan,The rabbit has soft ears.,Tavşanın yumuşak kulakları var.,2,,animals
-a1-animal,ANIMAL,A,STARTS,noun,hayvan,Which animal is the fastest?,Hangi hayvan en hızlı?,1,,animals
+a1-animal,ANIMAL,A,STARTS,noun,hayvan,The fastest animal is the cheetah.,En hızlı hayvan çitadır.,1,,animals
 a1-pig,PIG,P,STARTS,noun,domuz,The pig is fat.,Domuz şişman.,1,,animals
 a1-zebra,ZEBRA,Z,STARTS,noun,"çizgili, at benzeri hayvan",A zebra has stripes.,Zebranın çizgileri var.,2,,animals
 a1-duck,DUCK,D,STARTS,noun,vaklayan su kuşu,The duck makes a strange noise.,Ördek garip bir ses çıkarır.,1,,animals
 a1-cow,COW,C,STARTS,noun,süt veren çiftlik hayvanı,There is a cow by the barn.,Ahırın arkasında bir inek var.,1,,animals
-a1-monkey,MONKEY,M,STARTS,noun,ağaçlara tırmanan hayvan,The monkey is funny.,Maymun komik.,1,,animals
+a1-monkey,MONKEY,M,STARTS,noun,ağaçlara tırmanan hayvan,The monkey is clever.,Maymun akıllı.,1,,animals
 a1-bear,BEAR,B,STARTS,noun,kış uykusuna yatan iri hayvan,The bear is huge.,Ayı kocaman.,2,,animals

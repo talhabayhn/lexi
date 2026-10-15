@@ -1,13 +1,13 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
-a1-teacher,TEACHER,T,STARTS,noun,öğretmen,Our teacher is funny.,Öğretmenimiz komik.,1,,school-work
+a1-teacher,TEACHER,T,STARTS,noun,öğretmen,Our teacher is strict.,Öğretmenimiz disiplinli.,1,,school-work
 a1-student,STUDENT,S,STARTS,noun,öğrenci,I am a student.,Ben öğrenciyim.,1,,school-work
 a1-library,LIBRARY,L,STARTS,noun,kütüphane,I prepare for tests in the library.,Kütüphanede sınavlara hazırlanırım.,2,,school-work
 a1-job,JOB,J,STARTS,noun,"iş, meslek",She loves her job.,İşini seviyor.,1,,school-work
 a1-nurse,NURSE,N,STARTS,noun,hemşire,The nurse is helping a sick patient.,Hemşire hasta birine yardım ediyor.,2,,school-work
-a1-book,BOOK,B,STARTS,noun,kitap,This book is funny.,Bu kitap çok eğlenceli.,1,,school-work
-a1-ask,ASK,A,STARTS,verb,sormak,Can I ask something?,Bir şey sorabilir miyim?,1,,school-work
-a1-answer,ANSWER,A,STARTS,noun,cevap,What is the answer?,Cevap nedir?,1,,school-work
-a1-office,OFFICE,O,STARTS,noun,çalışılan büro,My office is small.,Ofisim küçük.,1,,school-work
+a1-book,BOOK,B,STARTS,noun,kitap,This book is thick.,Bu kitap kalın.,1,,school-work
+a1-ask,ASK,A,STARTS,verb,sormak,Let us ask the guide.,Rehbere soralım.,1,,school-work
+a1-answer,ANSWER,A,STARTS,noun,cevap,"Is this the answer, Mert?","Bu cevap mı, Mert?",1,,school-work
+a1-office,OFFICE,O,STARTS,noun,çalışılan büro,My office is bright.,Ofisim aydınlık.,1,,school-work
 a1-doctor,DOCTOR,D,STARTS,noun,hastaları tedavi eden kişi,She wants to be a doctor.,Doktor olmak istiyor.,1,,school-work
 a1-pen,PEN,P,STARTS,noun,tükenmez kalem,Can I borrow your pen?,Kalemini ödünç alabilir miyim?,1,,school-work
 a1-read,READ,R,STARTS,verb,okumak,I read stories.,Hikâyeler okurum.,1,,school-work
@@ -15,7 +15,7 @@ a1-work,WORK,W,STARTS,verb,çalışmak,They work in a factory.,Bir fabrikada ça
 a1-english,ENGLISH,E,STARTS,noun,İngilizce dili,She speaks English.,İngilizce konuşur.,1,,school-work
 a1-letter,LETTER,L,STARTS,noun,mektup,I have a letter for you.,Senin için bir mektubum var.,1,,school-work
 a1-listen,LISTEN,L,STARTS,verb,dinlemek,Listen to this song.,Bu şarkıyı dinle.,1,,school-work
-a1-class,CLASS,C,STARTS,noun,öğrencilerin oluşturduğu sınıf topluluğu,Our class is small.,Sınıfımız küçük.,1,,school-work
+a1-class,CLASS,C,STARTS,noun,öğrencilerin oluşturduğu sınıf topluluğu,Our class went on a trip.,Sınıfımız gezi yaptı.,1,,school-work
 a1-university,UNIVERSITY,U,STARTS,noun,liseden sonra gidilen okul,She studies at university.,Üniversitede okuyor.,1,,school-work
 a1-understand,UNDERSTAND,U,STARTS,verb,anlamak,I do not understand.,Anlamıyorum.,1,,school-work
 a1-homework,HOMEWORK,H,STARTS,noun,evde yapılan ödev,Do you have homework?,Ödevin var mı?,1,,school-work

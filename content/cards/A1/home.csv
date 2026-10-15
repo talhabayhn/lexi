@@ -5,16 +5,16 @@ a1-garden,GARDEN,G,STARTS,noun,bahçe,There are flowers in our garden.,Bahçemiz
 a1-glass,GLASS,G,STARTS,noun,bardak,This glass is broken.,Bu bardak kırık.,1,,home
 a1-key,KEY,K,STARTS,noun,anahtar,I lost my key.,Anahtarımı kaybettim.,1,,home
 a1-knife,KNIFE,K,STARTS,noun,bıçak,Be careful. The knife is sharp.,Dikkat et. Bıçak keskin.,3,,home
-a1-plate,PLATE,P,STARTS,noun,tabak,Put the plate in the sink.,Tabağı lavaboya koy.,1,,home
+a1-plate,PLATE,P,STARTS,noun,tabak,The plate is in the sink.,Tabak evyede.,1,,home
 a1-house,HOUSE,H,STARTS,noun,"konut, ev binası",They have a wooden house.,Ahşap bir evleri var.,1,,home
 a1-home,HOME,H,STARTS,noun,"yuva, insanın yaşadığı yer",This is my home.,Burası benim evim.,2,,home
 a1-room,ROOM,R,STARTS,noun,oda,This room is bright.,Bu oda aydınlık.,1,,home
-a1-lamp,LAMP,L,STARTS,noun,masa veya yer lambası,Turn off the lamp.,Lambayı kapat.,1,,home
+a1-lamp,LAMP,L,STARTS,noun,masa veya yer lambası,The lamp is broken.,Lamba bozuk.,1,,home
 a1-wall,WALL,W,STARTS,noun,duvar,There is a poster on the wall.,Duvarda bir poster var.,1,,home
 a1-desk,DESK,D,STARTS,noun,çalışma masası,There is a stapler on the desk.,Masada bir zımba var.,1,,home
-a1-bag,BAG,B,STARTS,noun,çanta,Her bag is full.,Çantası dolu.,1,,home
-a1-bedroom,BEDROOM,B,STARTS,noun,yatılan oda,My bedroom is small.,Yatak odam küçük.,1,,home
-a1-bathroom,BATHROOM,B,STARTS,noun,lavabo ve duşun olduğu oda,The bathroom is small.,Banyo küçük.,1,,home
+a1-bag,BAG,B,STARTS,noun,çanta,Her bag is leather.,Çantası deri.,1,,home
+a1-bedroom,BEDROOM,B,STARTS,noun,yatılan oda,My bedroom is tidy.,Yatak odam derli toplu.,1,,home
+a1-bathroom,BATHROOM,B,STARTS,noun,lavabo ve duşun olduğu oda,The bathroom is tiny.,Banyo minicik.,1,,home
 a1-floor,FLOOR,F,STARTS,noun,ayakların bastığı zemin,The floor is wet.,Zemin ıslak.,1,,home
 a1-shower,SHOWER,S,STARTS,noun,akan suyun altında yıkanma,I have a shower daily.,Her gün duş alırım.,1,,home
 a1-bath,BATH,B,STARTS,noun,küvette yıkanma,I have a bath.,Banyo yapıyorum.,1,,home

@@ -1,30 +1,30 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
 a1-aunt,AUNT,A,STARTS,noun,"teyze, hala",My aunt lives in Ankara.,Teyzem Ankara'da yaşıyor.,1,,family-people
 a1-brother,BROTHER,B,STARTS,noun,erkek kardeş,I have a brother.,Bir erkek kardeşim var.,1,,family-people
-a1-daughter,DAUGHTER,D,STARTS,noun,kız evlat,Their daughter is a vet.,Kızları veteriner.,3,,family-people
+a1-daughter,DAUGHTER,D,STARTS,noun,kız evlat,Our daughter is a vet.,Kızımız veteriner.,3,,family-people
 a1-father,FATHER,F,STARTS,noun,baba,My father likes fishing.,Babam balık tutmayı sever.,1,,family-people
-a1-girl,GIRL,G,STARTS,noun,kız çocuğu,The little girl is singing.,Küçük kız şarkı söylüyor.,1,,family-people
+a1-girl,GIRL,G,STARTS,noun,kız çocuğu,The girl is singing.,Kız şarkı söylüyor.,1,,family-people
 a1-uncle,UNCLE,U,STARTS,noun,"amca, dayı",My uncle lives in Ankara.,Amcam Ankara'da yaşıyor.,1,,family-people
-a1-sister,SISTER,S,STARTS,noun,kız kardeş,My sister is funny.,Kız kardeşim komik.,1,,family-people
+a1-sister,SISTER,S,STARTS,noun,kız kardeş,My sister is cheerful.,Kız kardeşim neşeli.,1,,family-people
 a1-young,YOUNG,Y,STARTS,adj,genç,My cousins are young.,Kuzenlerim genç.,1,,family-people
 a1-old,OLD,O,STARTS,adj,yaşlı,My neighbour is old but strong.,Komşum yaşlı ama güçlü.,1,,family-people
-a1-queen,QUEEN,Q,STARTS,noun,kraliçe,The queen in the story is wise.,Hikâyedeki kraliçe bilge.,2,,family-people
+a1-queen,QUEEN,Q,STARTS,noun,kraliçe,The queen is wise.,Kraliçe bilge.,2,,family-people
 a1-mother,MOTHER,M,STARTS,noun,"anne, valide",My mother works in a bakery.,Annem bir fırında çalışır.,1,,family-people
-a1-boy,BOY,B,STARTS,noun,erkek çocuk,The boy has a ball.,Çocuğun bir topu var.,1,,family-people
+a1-boy,BOY,B,STARTS,noun,erkek çocuk,The boy has a skateboard.,Çocuğun bir kaykayı var.,1,,family-people
 a1-man,MAN,M,STARTS,noun,"erkek, adam",That man is my neighbour.,O adam komşum.,1,,family-people
-a1-woman,WOMAN,W,STARTS,noun,kadın,The woman is waiting here.,Kadın burada bekliyor.,1,,family-people
-a1-dad,DAD,D,STARTS,noun,babaya samimi hitap,My dad is funny.,Babam komiktir.,1,,family-people
+a1-woman,WOMAN,W,STARTS,noun,kadın,The woman is waiting patiently.,Kadın sabırla bekliyor.,1,,family-people
+a1-dad,DAD,D,STARTS,noun,babaya samimi hitap,My dad is strong.,Babam güçlü.,1,,family-people
 a1-friend,FRIEND,F,STARTS,noun,arkadaş,She is my best friend.,O benim en iyi arkadaşım.,1,,family-people
 a1-grandfather,GRANDFATHER,G,STARTS,noun,"büyükbaba, dede",My grandfather is a retired sailor.,Büyükbabam emekli bir denizci.,1,,family-people
 a1-grandmother,GRANDMOTHER,G,STARTS,noun,"büyükanne, nine",My grandmother is gentle.,Büyükannem nazik.,1,,family-people
-a1-wife,WIFE,W,STARTS,noun,"bir erkeğin eşi, karı",He and his wife are here.,O ve karısı burada.,1,,family-people
-a1-king,KING,K,STARTS,noun,kral,The king lives in a castle.,Kral bir kalede yaşıyor.,1,,family-people
-a1-kind,KIND,K,STARTS,adj,"nazik, iyi kalpli",She is kind to everyone.,Herkese karşı nazik.,1,,family-people
+a1-wife,WIFE,W,STARTS,noun,"bir erkeğin eşi, karı",He and his wife are teachers.,O ve eşi öğretmen.,1,,family-people
+a1-king,KING,K,STARTS,noun,kral,The king wears a crown.,Kral taç takıyor.,1,,family-people
+a1-kind,KIND,K,STARTS,adj,"nazik, iyi kalpli",She is kind to animals.,O hayvanlara karşı nazik.,1,,family-people
 a1-kid,KID,K,STARTS,noun,"küçük çocuk, ufaklık",A kid is crying.,Bir çocuk ağlıyor.,1,,family-people
-a1-big,BIG,B,STARTS,adj,"iri, kocaman",He has a big smile.,Kocaman bir gülümsemesi var.,1,,family-people
+a1-big,BIG,B,STARTS,adj,"iri, kocaman",He has a big moustache.,Büyük bir bıyığı var.,1,,family-people
 a1-tall,TALL,T,STARTS,adj,uzun boylu,He is tall.,O uzun boylu.,1,,family-people
 a1-baby,BABY,B,STARTS,noun,yeni doğmuş bebek,The baby is sleeping.,Bebek uyuyor.,1,,family-people
 a1-parents,PARENTS,P,STARTS,noun,anne ve baba,My parents are in Izmir.,Anne babam İzmir'de.,1,,family-people
 a1-husband,HUSBAND,H,STARTS,noun,evli kadının eşi,Her husband is a baker.,Kocası fırıncı.,1,,family-people
-a1-people,PEOPLE,P,STARTS,noun,insanlar,Many people are here.,Burada birçok insan var.,1,,family-people
-a1-son,SON,S,STARTS,noun,erkek evlat,Our son is funny.,Oğlumuz komik.,1,,family-people
+a1-people,PEOPLE,P,STARTS,noun,insanlar,Lots of people are waiting.,Bir sürü insan bekliyor.,1,,family-people
+a1-son,SON,S,STARTS,noun,erkek evlat,Our son is shy.,Oğlumuz utangaç.,1,,family-people

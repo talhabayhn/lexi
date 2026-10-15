@@ -1,5 +1,5 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
-a1-blue,BLUE,B,STARTS,adj,mavi,The sky is blue.,Gökyüzü mavi.,1,,colors-numbers
+a1-blue,BLUE,B,STARTS,adj,mavi,The bucket is blue.,Kova mavi.,1,,colors-numbers
 a1-pink,PINK,P,STARTS,adj,pembe,She has a pink ribbon.,Pembe bir kurdelesi var.,1,,colors-numbers
 a1-purple,PURPLE,P,STARTS,adj,mor,These purple flowers are lovely.,Bu mor çiçekler çok güzel.,2,,colors-numbers
 a1-red,RED,R,STARTS,adj,kırmızı,The red shoes are on sale.,Kırmızı ayakkabılar indirimde.,1,,colors-numbers
@@ -8,17 +8,17 @@ a1-black,BLACK,K,CONTAINS,adj,siyah,My shoes are black.,Ayakkabılarım siyah.,1
 a1-two,TWO,T,STARTS,noun,iki,I have two brothers.,İki erkek kardeşim var.,1,,colors-numbers
 a1-five,FIVE,F,STARTS,noun,beş,We have five apples.,Beş elmamız var.,1,,colors-numbers
 a1-six,SIX,X,CONTAINS,noun,altı,The bakery opens at six.,Fırın altıda açılır.,1,,colors-numbers
-a1-seven,SEVEN,S,STARTS,noun,yedi,The film starts at seven.,Film yedide başlıyor.,1,,colors-numbers
-a1-eight,EIGHT,E,STARTS,noun,sekiz,The film starts at eight.,Film sekizde başlıyor.,2,,colors-numbers
+a1-seven,SEVEN,S,STARTS,noun,yedi,The concert starts at seven.,Konser yedide başlıyor.,1,,colors-numbers
+a1-eight,EIGHT,E,STARTS,noun,sekiz,The bakery opens at eight.,Fırın sekizde açılıyor.,2,,colors-numbers
 a1-nine,NINE,N,STARTS,noun,dokuz,Ali has nine marbles.,Ali'nin dokuz misketi var.,1,,colors-numbers
 a1-zero,ZERO,Z,STARTS,noun,sıfır,The code starts with zero.,Kod sıfırla başlıyor.,1,,colors-numbers
 a1-sixteen,SIXTEEN,X,CONTAINS,noun,on altı,The minibus has sixteen seats.,Minibüste on altı koltuk var.,2,,colors-numbers
-a1-one,ONE,O,STARTS,adj,"sayıların ilki, bir",I have one ball.,Bir topum var.,1,,colors-numbers
-a1-number,NUMBER,N,STARTS,noun,"sayı, numara",What is your number?,Numaran kaç?,1,,colors-numbers
+a1-one,ONE,O,STARTS,adj,"sayıların ilki, bir",I have one coin.,Bir bozuk param var.,1,,colors-numbers
+a1-number,NUMBER,N,STARTS,noun,"sayı, numara",Mert dialled the number.,Mert numarayı çevirdi.,1,,colors-numbers
 a1-brown,BROWN,B,STARTS,adj,toprak rengi,She has brown eyes.,Kahverengi gözleri var.,1,,colors-numbers
-a1-grey,GREY,G,STARTS,adj,bulut rengi,The sky is grey.,Gökyüzü gri.,1,,colors-numbers
+a1-grey,GREY,G,STARTS,adj,bulut rengi,The pigeon is grey.,Güvercin gri.,1,,colors-numbers
 a1-three,THREE,T,STARTS,noun,üç,I have three cousins.,Üç kuzenim var.,1,,colors-numbers
 a1-four,FOUR,F,STARTS,noun,dört,I bought four eggs.,Dört yumurta aldım.,1,,colors-numbers
-a1-ten,TEN,T,STARTS,noun,on,The film starts at ten.,Film saat onda başlıyor.,1,,colors-numbers
+a1-ten,TEN,T,STARTS,noun,on,The ferry leaves at ten.,Vapur ona kalkıyor.,1,,colors-numbers
 a1-eleven,ELEVEN,E,STARTS,noun,on bir,He is eleven.,O on bir yaşında.,1,,colors-numbers
 a1-twelve,TWELVE,T,STARTS,noun,on iki,She is twelve.,O on iki yaşında.,1,,colors-numbers

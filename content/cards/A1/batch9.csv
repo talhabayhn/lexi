@@ -1,0 +1,74 @@
+id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
+a1-actress,ACTRESS,A,STARTS,noun,filmlerde ve oyunlarda rol yapan kadın,Selin wants to be an actress.,Selin aktris olmak istiyor.,2,,school-work
+a1-add,ADD,A,STARTS,verb,sayıları toplama işlemini yapmak,"Can you add these numbers, Selin?","Bu sayıları toplayabilir misin, Selin?",2,,school-work
+a1-all,ALL,A,STARTS,adj,"bir şeyin tamamı, hepsi",Ali ate all the cookies.,Ali bütün kurabiyeleri yedi.,1,,daily-life
+a1-around,AROUND,A,STARTS,phrase,"bir şeyi çevreleyecek biçimde, çevresinde",We walked around the pond.,Göletin etrafında yürüdük.,2,,daily-life
+a1-about,ABOUT,A,STARTS,phrase,"bir konu hakkında, ile ilgili",We talked about Selin.,Selin hakkında konuştuk.,1,,daily-life
+a1-ball,BALL,B,STARTS,noun,oyunlarda tepilen ya da atılan yuvarlak nesne,Selin throws the ball.,Selin topu atıyor.,1,,daily-life
+a1-balloon,BALLOON,B,STARTS,noun,içine hava üflenerek şişirilen renkli lastik,Ayşe is holding a balloon.,Ayşe elinde bir balon tutuyor.,2,,daily-life
+a1-begin,BEGIN,B,STARTS,verb,bir işin ilk adımını atmak,"Let's begin, Mert.","Başlayalım, Mert.",2,,daily-life
+a1-both,BOTH,B,STARTS,adj,iki kişi ya da şey için: ikisi de,Ayşe likes both songs.,Ayşe her iki şarkıyı da seviyor.,2,,daily-life
+a1-busy,BUSY,B,STARTS,adj,"yapacak çok işi olan, meşgul",Ayşe is busy with her lessons.,Ayşe dersleriyle meşgul.,1,,daily-life
+a1-carry,CARRY,C,STARTS,verb,bir şeyi elde ya da sırtta taşımak,"Can you carry the books, Ali?","Kitapları taşıyabilir misin, Ali?",2,,daily-life
+a1-corner,CORNER,C,STARTS,noun,iki duvarın ya da sokağın birleştiği yer,Ali waits at the corner.,Ali köşede bekliyor.,2,,city-transport
+a1-crocodile,CROCODILE,C,STARTS,noun,nehirde yaşayan sivri dişli büyük sürüngen,Ali is afraid of the crocodile.,Ali timsahtan korkuyor.,2,,animals
+a1-crayon,CRAYON,C,STARTS,noun,çocukların resim yaparken kullandığı mumlu boya,Selin draws with a crayon.,Selin mum boyayla çizim yapıyor.,2,,school-work
+a1-cut,CUT,C,STARTS,verb,makasla ya da bıçakla parçalara ayırmak,Can you cut this ribbon?,Bu kurdeleyi kesebilir misin?,2,,daily-life
+a1-dry,DRY,D,STARTS,adj,ıslak olmayan,The soil is dry.,Toprak kuru.,2,,time-weather
+a1-each,EACH,E,STARTS,adj,ayrı ayrı ele alınan her biri,Each pupil gets a sticker.,Her öğrenci bir çıkartma alır.,2,,school-work
+a1-end,END,E,STARTS,noun,bir şeyin son kısmı,Ali is at the end of the queue.,Ali sıranın sonunda.,2,,daily-life
+a1-everyone,EVERYONE,E,STARTS,noun,bir yerdeki bütün insanlar,Everyone clapped for Selin.,Herkes Selin için alkışladı.,2,,family-people
+a1-everything,EVERYTHING,E,STARTS,noun,tüm nesnelerin hepsi,Ali ate everything.,Ali her şeyi yedi.,2,,daily-life
+a1-far,FAR,F,STARTS,adj,"yakın olmayan, uzakta","Is it far, Ali?","Uzak mı, Ali?",2,,city-transport
+a1-film,FILM,F,STARTS,noun,sinemada ya da evde izlenen hikâyeli görüntüler,Ali and I watched a film.,Ali ve ben bir film izledik.,1,,daily-life
+a1-fire,FIRE,F,STARTS,noun,odunu yakan alev ve sıcaklık,Selin is afraid of fire.,Selin ateşten korkuyor.,1,,daily-life
+a1-free,FREE,F,STARTS,adj,parası alınmayan,This concert is free.,Bu konser ücretsiz.,1,,daily-life
+a1-full,FULL,F,STARTS,adj,içinde boş yer kalmayan,The basket is full of apples.,Sepet elmalarla dolu.,1,,daily-life
+a1-fun,FUN,F,STARTS,noun,keyifli ve neşeli vakit,The children had fun.,Çocuklar eğlendi.,2,,daily-life
+a1-funny,FUNNY,F,STARTS,adj,insanı güldüren,The clown is funny.,Palyaço komik.,1,,daily-life
+a1-great,GREAT,G,STARTS,adj,"olağanüstü güzel, çok başarılı",The concert was great.,Konser harikaydı.,2,,daily-life
+a1-here,HERE,H,STARTS,adv,konuşanın bulunduğu yerde,"Selin is here, Ali.","Selin burada, Ali.",1,,daily-life
+a1-high,HIGH,H,STARTS,adj,yerden çok yukarıda olan,The ceiling is high.,Tavan yüksek.,1,,daily-life
+a1-how,HOW,H,STARTS,phrase,bir şeyin nasıl olduğunu soran sözcük,"How are you, Ali?","Nasılsın, Ali?",1,,daily-life
+a1-kitten,KITTEN,K,STARTS,noun,yavru kedi,The kitten is asleep.,Yavru kedi uyuyor.,2,,animals
+a1-large,LARGE,L,STARTS,adj,"ölçüsü büyük, geniş",This hall is large.,Bu salon geniş.,2,,daily-life
+a1-leaf,LEAF,L,STARTS,noun,ağacın dalında biten yeşil parça,A leaf fell on Ali.,Ali'nin üstüne bir yaprak düştü.,2,,time-weather
+a1-lemonade,LEMONADE,L,STARTS,noun,limonlu soğuk içecek,Ayşe likes lemonade.,Ayşe limonata seviyor.,1,,food-drink
+a1-little,LITTLE,L,STARTS,adj,"ufak, minik",The little lamb is sleeping.,Küçük kuzu uyuyor.,1,,daily-life
+a1-many,MANY,M,STARTS,adj,"sayısı çok olan, çok sayıda",Selin has many friends.,Selin'in çok arkadaşı var.,1,,daily-life
+a1-more,MORE,M,STARTS,adv,bir şeyden daha fazla,Selin reads more than Ali.,Selin Ali'den daha çok okuyor.,2,,daily-life
+a1-much,MUCH,M,STARTS,adj,"miktarı çok olan, çok",Ayşe does not have much luck.,Ayşe'nin pek şansı yok.,2,,daily-life
+a1-off,OFF,O,STARTS,adv,"çalışmayan, kapalı durumda",Mert switched off the TV.,Mert televizyonu kapattı.,2,,daily-life
+a1-over,OVER,O,STARTS,phrase,bir şeyin üstünden geçerek,Mert jumped over the puddle.,Mert su birikintisinin üzerinden atladı.,2,,daily-life
+a1-owl,OWL,O,STARTS,noun,"geceleri öten, iri gözlü kuş",An owl sat on the branch.,Bir baykuş dala kondu.,2,,animals
+a1-picnic,PICNIC,P,STARTS,noun,doğada ya da parkta yenen açık hava yemeği,"Let's have a picnic, Mert.","Piknik yapalım, Mert.",2,,food-drink
+a1-pull,PULL,P,STARTS,verb,bir şeyi kendine doğru çekmek,"Pull the rope, Mert.","Halatı çek, Mert.",1,,daily-life
+a1-puppy,PUPPY,P,STARTS,noun,yavru köpek,Selin plays with her puppy.,Selin yavru köpeğiyle oynuyor.,2,,animals
+a1-push,PUSH,P,STARTS,verb,bir şeyi kendinden uzağa doğru itmek,"Push the cart, Ali.","Arabayı it, Ali.",1,,daily-life
+a1-put,PUT,P,STARTS,verb,bir şeyi bir yere koymak,Ali put the keys in his pocket.,Ali anahtarları cebine koydu.,1,,daily-life
+a1-rainbow,RAINBOW,R,STARTS,noun,yağmurdan sonra gökte beliren renkli yay,We saw a rainbow.,Bir gökkuşağı gördük.,2,,time-weather
+a1-ready,READY,R,STARTS,adj,bir şeyi yapmaya hazır olan,"Are you ready, Ali?","Hazır mısın, Ali?",1,,daily-life
+a1-shout,SHOUT,S,STARTS,verb,çok yüksek sesle bağırmak,"Don't shout, Ali.","Bağırma, Ali.",2,,daily-life
+a1-sky,SKY,S,STARTS,noun,bulutların ve yıldızların göründüğü yukarısı,Ali looks at the sky.,Ali gökyüzüne bakıyor.,1,,time-weather
+a1-small,SMALL,S,STARTS,adj,"ölçüsü ufak, iri olmayan",The ant is small.,Karınca küçük.,1,,daily-life
+a1-smile,SMILE,S,STARTS,verb,dudaklarını kıvırıp gülümsemek,"Smile, Ayşe!","Gülümse, Ayşe!",2,,daily-life
+a1-sofa,SOFA,S,STARTS,noun,birkaç kişinin yan yana oturabildiği koltuk,Mert is sleeping on the sofa.,Mert kanepede uyuyor.,1,,home
+a1-something,SOMETHING,S,STARTS,noun,adı söylenmeyen ya da bilinmeyen bir şey,Ayşe is hiding something.,Ayşe bir şey saklıyor.,2,,daily-life
+a1-soon,SOON,S,STARTS,adv,"çok geçmeden, birazdan","See you soon, Ayşe.","Görüşürüz, Ayşe.",1,,time-weather
+a1-story,STORY,S,STARTS,noun,anlatılan ya da yazılan olaylar dizisi,Ayşe wrote a story.,Ayşe bir hikâye yazdı.,1,,daily-life
+a1-sweet,SWEET,S,STARTS,adj,şeker gibi tadı olan,The grapes are sweet.,Üzümler tatlı.,1,,food-drink
+a1-tent,TENT,T,STARTS,noun,kamp yaparken kurulan bezden barınak,Ali sleeps in a tent.,Ali çadırda uyuyor.,2,,daily-life
+a1-their,THEIR,T,STARTS,adj,onlara ait olan,Their song is lovely.,Onların şarkısı çok güzel.,2,,daily-life
+a1-then,THEN,T,STARTS,adv,bir şeyden hemen sonra,"Ali sang, then Selin danced.","Ali şarkı söyledi, sonra Selin dans etti.",2,,time-weather
+a1-thin,THIN,T,STARTS,adj,"kalınlığı az, kalın olmayan",The string is thin.,İp ince.,2,,daily-life
+a1-tomorrow,TOMORROW,T,STARTS,adv,bugünden sonra gelen gün,We have a quiz tomorrow.,Yarın bir sınavımız var.,1,,time-weather
+a1-tonight,TONIGHT,T,STARTS,adv,bu akşam ya da bu gece,Ali watches TV tonight.,Ali bu akşam televizyon izliyor.,2,,time-weather
+a1-top,TOP,T,STARTS,noun,bir şeyin en üst kısmı,Ali is at the top of the ladder.,Ali merdivenin tepesinde.,2,,daily-life
+a1-turn,TURN,T,STARTS,verb,bir şeyi çevirmek ya da yön değiştirmek,"Turn the handle, Ali.","Kolu çevir, Ali.",2,,daily-life
+a1-well,WELL,W,STARTS,adv,"iyi bir biçimde, güzelce",Selin sings well.,Selin iyi şarkı söylüyor.,2,,daily-life
+a1-what,WHAT,W,STARTS,phrase,bir nesnenin ne olduğunu soran sözcük,"What is that, Ali?","Bu ne, Ali?",1,,daily-life
+a1-when,WHEN,W,STARTS,phrase,zamanı soran sözcük,When is Selin's concert?,Selin'in konseri ne zaman?,1,,daily-life
+a1-where,WHERE,W,STARTS,phrase,yeri soran sözcük,Where is Ali?,Ali nerede?,1,,daily-life
+a1-which,WHICH,W,STARTS,phrase,birkaç seçenek arasından seçimi soran sözcük,Which song is Ali's?,Hangi şarkı Ali'nin?,2,,daily-life
+a1-who,WHO,W,STARTS,phrase,bir kişinin kim olduğunu soran sözcük,Who called Selin?,Selin'i kim aradı?,1,,daily-life
+a1-why,WHY,W,STARTS,phrase,bir şeyin nedenini soran sözcük,Why is Ali crying?,Ali neden ağlıyor?,1,,daily-life
