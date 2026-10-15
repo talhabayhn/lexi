@@ -4,6 +4,7 @@ import dev.talhabayhan.lexi.core.domain.model.CategoryId
 import dev.talhabayhan.lexi.core.domain.model.Level
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonArray
+import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.intOrNull
 import kotlinx.serialization.json.jsonObject
@@ -91,11 +92,12 @@ object ContentCompiler {
         val cards = baseCards + packCards
         checkDuplicates(cards, diagnostics)
         val packMembership = checkPackMembership(packs, packCardRows, packCards, seenIds, diagnostics)
-        checkCoverage(baseCards, meta.shippedLevels, metaFile, diagnostics)
+        checkCoverage(baseCards, meta.shippedLevels, meta.smokeLevels, metaFile, diagnostics)
 
         val content = CompiledContent(
             contentVersion = meta.contentVersion,
             shippedLevels = meta.shippedLevels,
+            smokeLevels = meta.smokeLevels,
             categories = categories.sortedWith(compareBy({ it.sort }, { it.id })),
             cards = cards.sortedWith(compareBy({ it.level }, { it.id })),
             packs = packs.sortedWith(compareBy({ it.sort }, { it.id })),
@@ -104,42 +106,47 @@ object ContentCompiler {
         return ValidationResult(content, diagnostics.all)
     }
 
-    private data class Meta(val contentVersion: Int, val shippedLevels: Set<Level>)
+    private data class Meta(val contentVersion: Int, val shippedLevels: Set<Level>, val smokeLevels: Set<Level>)
 
     private fun readMeta(file: Path, diagnostics: Diagnostics): Meta {
         if (!file.isRegularFile()) {
             diagnostics.error(file, null, "meta.json is missing")
-            return Meta(0, emptySet())
+            return Meta(0, emptySet(), emptySet())
         }
-        val text = CsvFiles.readUtf8(file, diagnostics) ?: return Meta(0, emptySet())
+        val text = CsvFiles.readUtf8(file, diagnostics) ?: return Meta(0, emptySet(), emptySet())
         val root = runCatching { Json.parseToJsonElement(text).jsonObject }.getOrElse {
             diagnostics.error(file, null, "not a JSON object: ${it.message?.lineSequence()?.first()}")
-            return Meta(0, emptySet())
+            return Meta(0, emptySet(), emptySet())
         }
         val version = (root["contentVersion"] as? JsonPrimitive)?.takeIf { !it.isString }?.intOrNull
         if (version == null || version < 1) diagnostics.error(file, null, "contentVersion must be a positive integer")
 
-        val shipped = mutableSetOf<Level>()
-        when (val list = root["shippedLevels"]) {
+        val shipped = readLevelList(root, "shippedLevels", file, diagnostics)
+        val smoke = readLevelList(root, "smokeLevels", file, diagnostics)
+        (shipped intersect smoke).forEach {
+            diagnostics.error(file, null, "${it.name} cannot be both in shippedLevels and smokeLevels")
+        }
+        return Meta(version ?: 0, shipped, smoke)
+    }
+
+    private fun readLevelList(root: JsonObject, key: String, file: Path, diagnostics: Diagnostics): Set<Level> {
+        val levels = mutableSetOf<Level>()
+        when (val list = root[key]) {
             null -> Unit
 
             is JsonArray -> list.forEach { element ->
                 val name = (element as? JsonPrimitive)?.takeIf { it.isString }?.content
                 val level = Level.entries.firstOrNull { it.name == name }
                 if (level == null) {
-                    diagnostics.error(
-                        file,
-                        null,
-                        "shippedLevels: unknown level $element (use ${Level.entries.joinToString()})",
-                    )
+                    diagnostics.error(file, null, "$key: unknown level $element (use ${Level.entries.joinToString()})")
                 } else {
-                    shipped += level
+                    levels += level
                 }
             }
 
-            else -> diagnostics.error(file, null, "shippedLevels must be an array of level names")
+            else -> diagnostics.error(file, null, "$key must be an array of level names")
         }
-        return Meta(version ?: 0, shipped)
+        return levels
     }
 
     private fun readCategories(file: Path, diagnostics: Diagnostics): List<CategoryEntry> {
@@ -305,11 +312,18 @@ object ContentCompiler {
     }
 
     /** `CONTENT.md` §3: every letter of a shipped level has ≥ [MIN_CARDS_PER_LETTER] cards; base content only. */
-    private fun checkCoverage(cards: List<CardEntry>, shipped: Set<Level>, metaFile: Path, diagnostics: Diagnostics) {
+    private fun checkCoverage(
+        cards: List<CardEntry>,
+        shipped: Set<Level>,
+        smoke: Set<Level>,
+        metaFile: Path,
+        diagnostics: Diagnostics,
+    ) {
         val byLevel = cards.groupBy { it.level }
         for (level in Level.entries) {
             val levelCards = byLevel[level].orEmpty()
             if (levelCards.isEmpty() && level !in shipped) continue
+            if (level in smoke) continue // dev-only smoke set: thin coverage is expected
             val counts = ('A'..'Z').associateWith { letter -> levelCards.count { it.letter == letter } }
             if (level in shipped) {
                 counts.forEach { (letter, count) ->

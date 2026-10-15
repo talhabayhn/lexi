@@ -26,7 +26,11 @@ object Report {
                 val cell = if (count < ContentCompiler.MIN_CARDS_PER_LETTER) "$count!" else "$count"
                 cell.padStart(3)
             }
-            val status = if (shipped) "shipped" else "not shipped"
+            val status = when {
+                shipped -> "shipped"
+                level in content.smokeLevels -> "SMOKE (dev data, not for release)"
+                else -> "not shipped"
+            }
             appendLine(level.name.padEnd(6) + levelCards.size.toString().padStart(6) + " " + counts + "  " + status)
         }
         appendLine()

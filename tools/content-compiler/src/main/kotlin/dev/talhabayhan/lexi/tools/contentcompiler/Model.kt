@@ -79,6 +79,7 @@ data class PackCardEntry(val packId: String, val cardId: String, val unit: Strin
 data class CompiledContent(
     val contentVersion: Int,
     val shippedLevels: Set<Level>,
+    val smokeLevels: Set<Level> = emptySet(),
     val categories: List<CategoryEntry>,
     val cards: List<CardEntry>,
     val packs: List<PackEntry>,

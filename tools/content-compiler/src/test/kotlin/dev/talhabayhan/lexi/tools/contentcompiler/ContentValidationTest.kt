@@ -1,5 +1,6 @@
 package dev.talhabayhan.lexi.tools.contentcompiler
 
+import dev.talhabayhan.lexi.core.domain.model.Level
 import java.nio.file.Path
 import kotlin.io.path.writeBytes
 import kotlin.io.path.writeText
@@ -271,6 +272,33 @@ class ContentValidationTest {
 
         result.assertNoErrors()
         result.assertWarning("meta.json", null, "A1 (not shipped yet)")
+    }
+
+    @Test
+    fun `smoke levels skip the thin coverage warning`() {
+        content.resolve("meta.json").writeText("""{ "contentVersion": 7, "smokeLevels": ["A1"] }""")
+        val result = validate()
+
+        result.assertNoErrors()
+        assertTrue(result.warnings.none { it.message.contains("A1 (not shipped yet)") })
+        assertEquals(setOf(Level.A1), result.content.smokeLevels)
+    }
+
+    @Test
+    fun `report labels smoke levels as dev data`() {
+        content.resolve("meta.json").writeText("""{ "contentVersion": 7, "smokeLevels": ["A1"] }""")
+        val report = Report.render(validate(), null)
+
+        assertTrue(report.lines().any { it.startsWith("A1") && it.contains("SMOKE (dev data, not for release)") })
+    }
+
+    @Test
+    fun `a level cannot be both shipped and smoke`() {
+        content.resolve("meta.json").writeText(
+            """{ "contentVersion": 7, "shippedLevels": ["A1"], "smokeLevels": ["A1"] }""",
+        )
+
+        validate().assertError("meta.json", null, "both in shippedLevels and smokeLevels")
     }
 
     @Test
