@@ -29,7 +29,9 @@ for observable queries.
   the current version and compares tables, columns and indexes with a fresh install (and keeps rows). SQL stays
   within SQLite 3.18 (Android 8, minSdk 26): no UPSERT, no window functions.
 - **Libraries:** SQLDelight `coroutines-extensions` (same version as SQLDelight) for `Flow` queries in `core:data`;
-  Koin in `core:data` for its module (ADR 0003); DataStore as in ADR 0015.
+  Koin in `core:data` for its module (ADR 0003); DataStore as in ADR 0015 (its KMP factory takes an okio `Path`;
+  okio comes with DataStore's API, no own catalog entry); `kotlinx-coroutines-core` as `api` of `core:domain` for
+  the repository interfaces' `Flow` (allowed by `ARCHITECTURE.md` §2).
 
 ## Consequences
 - No manual step anywhere: `./gradlew build`, `assembleDebug` and the Xcode build all regenerate `content.db` when

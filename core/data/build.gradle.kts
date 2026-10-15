@@ -19,6 +19,8 @@ kotlin {
             implementation(libs.sqldelight.runtime)
             implementation(libs.sqldelight.coroutines.extensions)
             implementation(libs.kotlinx.coroutines.core)
+            implementation(libs.androidx.datastore.preferences.core)
+            implementation(libs.koin.core)
         }
         androidMain {
             // java.io helpers shared by the Android and JVM (test) targets.

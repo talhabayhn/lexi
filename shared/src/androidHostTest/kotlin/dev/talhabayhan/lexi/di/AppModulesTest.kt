@@ -1,5 +1,6 @@
 package dev.talhabayhan.lexi.di
 
+import dev.talhabayhan.lexi.core.data.db.DatabaseFiles
 import org.koin.core.annotation.KoinExperimentalAPI
 import org.koin.dsl.module
 import org.koin.test.verify.verify
@@ -9,6 +10,7 @@ class AppModulesTest {
     @OptIn(KoinExperimentalAPI::class)
     @Test
     fun `koin graph resolves every definition`() {
-        module { includes(appModules) }.verify()
+        // DatabaseFiles comes from the platform module created at the composition root.
+        module { includes(appModules) }.verify(extraTypes = listOf(DatabaseFiles::class))
     }
 }

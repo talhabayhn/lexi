@@ -3,6 +3,7 @@ package dev.talhabayhan.lexi
 import androidx.compose.runtime.Composable
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.di.appModules
+import dev.talhabayhan.lexi.di.rememberPlatformModule
 import dev.talhabayhan.lexi.navigation.LexiNavHost
 import org.koin.compose.KoinApplication
 import org.koin.dsl.koinConfiguration
@@ -13,7 +14,8 @@ import org.koin.dsl.koinConfiguration
  */
 @Composable
 fun App() {
-    KoinApplication(configuration = koinConfiguration { modules(appModules) }) {
+    val platformModule = rememberPlatformModule()
+    KoinApplication(configuration = koinConfiguration { modules(appModules + platformModule) }) {
         LexiTheme {
             LexiNavHost()
         }

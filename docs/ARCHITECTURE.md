@@ -153,7 +153,16 @@ Settings: DataStore Preferences (`SettingsRepository` exposes `Flow<Settings>`).
 ### Repositories (interfaces in domain)
 `CardRepository`, `CategoryRepository`, `ExamPackRepository`, `ProgressRepository` (SRS),
 `SessionRepository`, `DailyRepository`, `StreakRepository`, `JokerRepository`, `SettingsRepository`,
-`EntitlementRepository` (Pro), `ContentVersionRepository`.
+`EntitlementRepository` (Pro, M7 with RevenueCat), `ContentVersionRepository`.
+
+Interfaces: `core/domain/.../repository`; implementations (internal) and `dataModule` (Koin): `core:data`.
+Content reads are one-shot `suspend` functions (content never changes while the app runs); user data is observed as
+`Flow` (`ProgressRepository.observeAll`, `SessionRepository.observeRecords`, `StreakRepository.observeDays`,
+`DailyRepository.observe`, `JokerRepository.observeInventory`, `SettingsRepository.settings`). All DB and file work
+runs on the dispatcher qualified `IoDispatcher`. Progress of card ids missing from the installed content is kept and
+filtered out of every list. `SessionRepository.record` skips `GameConfig.srsExcludedModes` (hot-seat duel) and marks
+the streak day of a completed wheel in the same transaction. `shared` provides `GameConfig`, `BundledContentDb` and
+the platform `DatabaseFiles` (`rememberPlatformModule()`, Android needs the `Context`).
 
 ## 7. Platform services (expect/actual or interface + platform impl)
 | Interface | Android | iOS |
