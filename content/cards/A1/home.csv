@@ -5,6 +5,11 @@ a1-garden,GARDEN,G,STARTS,noun,bahçe,There are flowers in our garden.,Bahçemiz
 a1-glass,GLASS,G,STARTS,noun,bardak,This glass is empty.,Bu bardak boş.,1,,home
 a1-key,KEY,K,STARTS,noun,anahtar,I can't find my key.,Anahtarımı bulamıyorum.,1,,home
 a1-knife,KNIFE,K,STARTS,noun,bıçak,Be careful. The knife is sharp.,Dikkat et. Bıçak keskin.,3,,home
-a1-plate,PLATE,P,STARTS,noun,tabak,"Wash your plate, please.",Lütfen tabağını yıka.,1,,home
-a1-house,HOUSE,H,STARTS,noun,"konut, ev binası",They live in a big house.,Büyük bir evde yaşıyorlar.,1,,home
-a1-home,HOME,H,STARTS,noun,"yuva, insanın yaşadığı yer",This city is my home now.,Bu şehir artık benim yuvam.,2,,home
+a1-plate,PLATE,P,STARTS,noun,tabak,"Clean your plate, please.","Tabağını temizle, lütfen.",1,,home
+a1-house,HOUSE,H,STARTS,noun,"konut, ev binası",They live in a small house.,Küçük bir evde yaşıyorlar.,1,,home
+a1-home,HOME,H,STARTS,noun,"yuva, insanın yaşadığı yer",This town is my home now.,Bu kasaba artık benim yuvam.,2,,home
+a1-room,ROOM,R,STARTS,noun,oda,This room is clean.,Bu oda temiz.,1,,home
+a1-lamp,LAMP,L,STARTS,noun,masa veya yer lambası,Turn off the lamp.,Lambayı kapat.,1,,home
+a1-wall,WALL,W,STARTS,noun,duvar,There is a picture on the wall.,Duvarda bir resim var.,1,,home
+a1-desk,DESK,D,STARTS,noun,çalışma masası,There is a computer on the desk.,Masanın üstünde bir bilgisayar var.,1,,home
+a1-bag,BAG,B,STARTS,noun,çanta,Her bag is full.,Çantası dolu.,1,,home

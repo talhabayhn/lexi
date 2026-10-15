@@ -1,12 +1,25 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
 a1-aunt,AUNT,A,STARTS,noun,"teyze, hala",My aunt lives in Ankara.,Teyzem Ankara'da yaşıyor.,1,,family-people
-a1-brother,BROTHER,B,STARTS,noun,erkek kardeş,I have one brother.,Bir erkek kardeşim var.,1,,family-people
-a1-daughter,DAUGHTER,D,STARTS,noun,kız evlat,Their daughter is a doctor.,Kızları doktor.,3,,family-people
+a1-brother,BROTHER,B,STARTS,noun,erkek kardeş,I have a brother.,Bir erkek kardeşim var.,1,,family-people
+a1-daughter,DAUGHTER,D,STARTS,noun,kız evlat,Their daughter is a pilot.,Kızları pilot.,3,,family-people
 a1-father,FATHER,F,STARTS,noun,baba,My father likes football.,Babam futbolu sever.,1,,family-people
 a1-girl,GIRL,G,STARTS,noun,kız çocuğu,The little girl is singing.,Küçük kız şarkı söylüyor.,1,,family-people
-a1-uncle,UNCLE,U,STARTS,noun,"amca, dayı",My uncle has a big farm.,Amcamın büyük bir çiftliği var.,1,,family-people
+a1-uncle,UNCLE,U,STARTS,noun,"amca, dayı",My uncle has a farm.,Amcamın bir çiftliği var.,1,,family-people
 a1-sister,SISTER,S,STARTS,noun,kız kardeş,My sister is ten.,Kız kardeşim on yaşında.,1,,family-people
 a1-young,YOUNG,Y,STARTS,adj,genç,My parents are young.,Annemle babam genç.,1,,family-people
-a1-old,OLD,O,STARTS,adj,yaşlı,My grandfather is old but strong.,Dedem yaşlı ama güçlü.,1,,family-people
-a1-queen,QUEEN,Q,STARTS,noun,kraliçe,The queen in the story is kind.,Hikâyedeki kraliçe nazik.,2,,family-people
+a1-old,OLD,O,STARTS,adj,yaşlı,My neighbour is old but strong.,Komşum yaşlı ama güçlü.,1,,family-people
+a1-queen,QUEEN,Q,STARTS,noun,kraliçe,The queen in the story is wise.,Hikâyedeki kraliçe bilge.,2,,family-people
 a1-mother,MOTHER,M,STARTS,noun,"anne, valide",My mother works in a bank.,Annem bir bankada çalışıyor.,1,,family-people
+a1-boy,BOY,B,STARTS,noun,erkek çocuk,The boy has a ball.,Çocuğun bir topu var.,1,,family-people
+a1-man,MAN,M,STARTS,noun,"erkek, adam",That man is my neighbour.,O adam komşum.,1,,family-people
+a1-woman,WOMAN,W,STARTS,noun,kadın,The woman is waiting outside.,Kadın dışarıda bekliyor.,1,,family-people
+a1-dad,DAD,D,STARTS,noun,babaya samimi hitap,My dad is funny.,Babam komiktir.,1,,family-people
+a1-friend,FRIEND,F,STARTS,noun,arkadaş,She is my best friend.,O benim en iyi arkadaşım.,1,,family-people
+a1-grandfather,GRANDFATHER,G,STARTS,noun,"büyükbaba, dede",My grandfather is eighty.,Büyükbabam seksen yaşında.,1,,family-people
+a1-grandmother,GRANDMOTHER,G,STARTS,noun,"büyükanne, nine",My grandmother is seventy.,Büyükannem yetmiş yaşında.,1,,family-people
+a1-wife,WIFE,W,STARTS,noun,"bir erkeğin eşi, karı",He and his wife are here.,O ve karısı burada.,1,,family-people
+a1-king,KING,K,STARTS,noun,kral,The king lives in a castle.,Kral bir kalede yaşıyor.,1,,family-people
+a1-kind,KIND,K,STARTS,adj,"nazik, iyi kalpli",She is kind to everyone.,Herkese karşı nazik.,1,,family-people
+a1-kid,KID,K,STARTS,noun,"küçük çocuk, ufaklık",A kid is crying outside.,Dışarıda bir çocuk ağlıyor.,1,,family-people
+a1-big,BIG,B,STARTS,adj,"iri, kocaman",He has a big smile.,Kocaman bir gülümsemesi var.,1,,family-people
+a1-tall,TALL,T,STARTS,adj,uzun boylu,He is tall.,O uzun boylu.,1,,family-people

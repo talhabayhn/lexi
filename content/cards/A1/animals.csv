@@ -1,7 +1,10 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
 a1-bird,BIRD,B,STARTS,noun,kuş,A small bird is singing outside.,Dışarıda küçük bir kuş ötüyor.,1,,animals
 a1-cat,CAT,C,STARTS,noun,kedi,Our cat sleeps on the sofa.,Kedimiz kanepede uyur.,1,,animals
-a1-elephant,ELEPHANT,E,STARTS,noun,fil,The elephant has big ears.,Filin büyük kulakları var.,2,,animals
+a1-elephant,ELEPHANT,E,STARTS,noun,fil,The elephant has long ears.,Filin uzun kulakları var.,2,,animals
 a1-fish,FISH,F,STARTS,noun,balık,I have a little fish.,Küçük bir balığım var.,1,,animals
-a1-lion,LION,L,STARTS,noun,aslan,The lion is the king of animals.,Aslan hayvanların kralıdır.,1,,animals
+a1-lion,LION,L,STARTS,noun,aslan,The lion runs fast.,Aslan hızlı koşar.,1,,animals
 a1-rabbit,RABBIT,R,STARTS,noun,tavşan,The rabbit has long ears.,Tavşanın uzun kulakları var.,2,,animals
+a1-animal,ANIMAL,A,STARTS,noun,hayvan,What is your favourite animal?,En sevdiğin hayvan hangisi?,1,,animals
+a1-pig,PIG,P,STARTS,noun,domuz,The pig lives on a farm.,Domuz bir çiftlikte yaşar.,1,,animals
+a1-zebra,ZEBRA,Z,STARTS,noun,"çizgili, at benzeri hayvan",A zebra has stripes on its body.,Zebranın vücudunda çizgiler var.,2,,animals
