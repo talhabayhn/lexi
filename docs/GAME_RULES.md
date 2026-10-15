@@ -38,8 +38,10 @@ correct = blue circle, wrong = red square, passed = yellow leaf.
    - While a wrong answer is revealed, input is ignored and the game clock stands still (owner decision; so time
      can't run out during a reveal); the reveal ends after `revealMs` of ticks, then the engine advances
      (Hardcore: game over).
-   - A passed slot keeps its input (typed letters, disabled keys, used jokers) for the next lap. If the game ends
-     while it is CURRENT again (time up, forfeit), it stays PASSED (counted as passed and missed, §10).
+   - Owner decision: a pass clears the typed letters (they go back to their keys), so the slot comes back empty on
+     the next lap. Joker effects survive the pass, because the joker was paid for: letters placed by Reveal letter
+     stay locked in their cells, disabled distractor keys stay disabled, and the slot's jokers stay used. If the game ends while it is CURRENT again (time up, forfeit), it stays PASSED
+     (counted as passed and missed, §10).
    - Events that don't apply (input while paused/revealing, a used key, anything after game over) are ignored.
 
 ## 4. Letter keys

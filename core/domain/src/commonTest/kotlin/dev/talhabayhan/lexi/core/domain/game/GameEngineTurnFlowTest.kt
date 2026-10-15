@@ -214,11 +214,13 @@ class GameEngineTurnFlowTest {
     }
 
     @Test
-    fun `typed letters are kept when a passed slot comes back`() {
+    fun `typed letters are cleared by a pass so the slot comes back empty`() {
         val game = play("APPLE", "BREAD").type("AP").pass().answer()
 
         assertEquals('A', game.currentLetter)
-        assertEquals("AP", game.input.cells.mapNotNull { it?.letter }.joinToString(""))
+        assertTrue(game.input.cells.all { it == null })
+        assertTrue(game.input.placementOrder.isEmpty())
+        assertTrue(game.input.keys.none { it.state == KeyState.USED })
     }
 
     @Test

@@ -130,7 +130,7 @@ public class GameEngine(public val config: GameConfig = GameConfig()) {
             val index = checkNotNull(currentIndex)
             fx += EngineEffect.Passed(wheel.slots[index].letter)
             return copy(wheel = wheel.withState(index, SlotState.PASSED), streak = 0)
-                .withInput(checkNotNull(currentInput).copy(wasPassed = true))
+                .withInput(checkNotNull(currentInput).clearedTyping().copy(wasPassed = true))
                 .advance()
         }
 
@@ -351,6 +351,19 @@ private const val PERCENT = 100
 
 /** `value × percent / 100`, rounded half up (non-negative values). */
 internal fun percentOf(value: Int, percent: Int): Int = (value * percent + PERCENT / 2) / PERCENT
+
+/**
+ * Typed letters go back to their keys (owner decision: a passed slot comes back empty). Joker effects are paid and
+ * survive: revealed letters stay locked in their cells and disabled distractor keys stay disabled.
+ */
+private fun SlotInput.clearedTyping(): SlotInput {
+    val typed = placementOrder.mapTo(mutableSetOf()) { checkNotNull(cells[it]).keyIndex }
+    return copy(
+        keys = keys.mapIndexed { index, key -> if (index in typed) key.copy(state = KeyState.AVAILABLE) else key },
+        cells = cells.map { placed -> placed?.takeIf { it.revealed } },
+        placementOrder = emptyList(),
+    )
+}
 
 private val SlotInput.hasEnabledDistractors: Boolean
     get() = keys.any { it.isDistractor && it.state != KeyState.DISABLED }

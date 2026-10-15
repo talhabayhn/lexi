@@ -24,7 +24,7 @@ public enum class GameOverReason {
 public data class PlacedLetter(val letter: Char, val keyIndex: Int, val revealed: Boolean)
 
 /**
- * Input of one slot. It is kept when the slot is passed, so typed letters, disabled keys and used jokers are still
+ * Input of one slot. A pass clears the typed letters; revealed letters, disabled keys and used jokers are still
  * there when the slot comes back on a later lap.
  */
 @Serializable

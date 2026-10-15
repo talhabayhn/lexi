@@ -127,6 +127,26 @@ class GameEngineJokerTest {
     }
 
     @Test
+    fun `revealed letter survives a pass while typed letters are cleared`() {
+        val game = play("APPLE", "BREAD").joker(JokerType.REVEAL_LETTER).type("PP").send(GameEvent.Pass).answer()
+
+        assertEquals('A', game.currentLetter)
+        assertEquals("A____", game.typed())
+        assertEquals(true, game.input.cells[0]?.revealed)
+        assertEquals(1, game.input.keys.count { it.state == KeyState.USED })
+        game.type("PPLE")
+        assertEquals(SlotState.CORRECT, game.state.wheel.slots[0].state)
+    }
+
+    @Test
+    fun `disabled distractor keys stay disabled after a pass`() {
+        val game = play("APPLE", "BREAD").joker(JokerType.REMOVE_DISTRACTORS).type("A").send(GameEvent.Pass).answer()
+
+        assertEquals("_____", game.typed())
+        assertTrue(game.input.keys.filter { it.isDistractor }.all { it.state == KeyState.DISABLED })
+    }
+
+    @Test
     fun `jokers used on a slot stay used when it comes back on the next lap`() {
         val game = play("APPLE", "BREAD").joker(JokerType.EXAMPLE).send(GameEvent.Pass).answer()
         assertEquals('A', game.currentLetter)

@@ -311,8 +311,7 @@ internal const val GOLDEN_CLASSIC: String = """{
                 },
                 {
                     "letter": "B",
-                    "isDistractor": false,
-                    "state": "USED"
+                    "isDistractor": false
                 },
                 {
                     "letter": "L",
@@ -348,18 +347,11 @@ internal const val GOLDEN_CLASSIC: String = """{
                 }
             ],
             "cells": [
-                {
-                    "letter": "B",
-                    "keyIndex": 2,
-                    "revealed": false
-                },
+                null,
                 null,
                 null,
                 null,
                 null
-            ],
-            "placementOrder": [
-                0
             ],
             "jokersUsed": [
                 "REMOVE_DISTRACTORS"

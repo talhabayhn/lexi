@@ -109,7 +109,7 @@ class GoldenTest {
             GameEvent.KeyTapped(5),
             GameEvent.KeyTapped(4),
             GameEvent.KeyTapped(8),
-            // B (lap 2): Remove distractors, B, pause (tick ignored), pass → lap 3, time up.
+            // B (lap 2): Remove distractors, B, pause (tick ignored), pass (clears the typed B) → lap 3, time up.
             GameEvent.UseJoker(JokerType.REMOVE_DISTRACTORS),
             GameEvent.KeyTapped(2),
             GameEvent.Pause,
