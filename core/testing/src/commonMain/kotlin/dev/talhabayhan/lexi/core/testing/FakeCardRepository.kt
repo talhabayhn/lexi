@@ -22,4 +22,7 @@ public class FakeCardRepository(cards: Collection<Card> = emptyList()) : CardRep
     override suspend fun cards(ids: Collection<CardId>): List<Card> = cards.filter { it.id in ids }
 
     override suspend fun levelTotals(): Map<Level, Int> = cards.groupingBy { it.level }.eachCount()
+
+    override suspend fun categoryOfCards(level: Level): Map<CardId, CategoryId> =
+        cards.filter { it.level == level }.associate { it.id to it.category }
 }

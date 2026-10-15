@@ -61,6 +61,9 @@ public object ControlDefaults {
     public val ProgressHeightThin: Dp = 8.dp
     public val ProgressHeightThick: Dp = 12.dp
 
+    /** 6: the thin bars of the category cards (`07-categories`). */
+    public val ProgressHeightCompact: Dp = 6.dp
+
     /** Line height of a segment with a subtitle (`line-height: 1.1`). */
     internal const val SEGMENT_TWO_LINE_HEIGHT: Double = 1.1
 }

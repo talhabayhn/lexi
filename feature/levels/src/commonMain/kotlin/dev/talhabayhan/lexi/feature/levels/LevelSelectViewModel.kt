@@ -81,6 +81,11 @@ internal class LevelSelectViewModel(
                 effectChannel.trySend(LevelSelectEffect.StartGame(current.selectedLevel, current.selectedMode))
             }
 
+            LevelSelectIntent.OpenCategories -> {
+                val current = mutableState.value
+                effectChannel.trySend(LevelSelectEffect.OpenCategories(current.selectedLevel, current.selectedMode))
+            }
+
             LevelSelectIntent.Back -> effectChannel.trySend(LevelSelectEffect.NavigateBack)
         }
     }

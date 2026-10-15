@@ -35,6 +35,9 @@ SELECT id FROM card;
 levelCardCounts:
 SELECT level, count(*) AS total FROM card WHERE pack_only = 0 GROUP BY level;
 
+levelCardCategories:
+SELECT id, category_id FROM card WHERE level = :level AND pack_only = 0 ORDER BY id;
+
 categories:
 SELECT * FROM category ORDER BY sort, id;
 

@@ -77,6 +77,25 @@ class ContentRepositoriesTest {
     }
 
     @Test
+    fun `category of cards covers one level without exam-pack-only cards`() = runTest(io) {
+        val a1 = cards.categoryOfCards(Level.A1)
+
+        assertEquals(
+            mapOf(
+                CardId("a1-apple") to CategoryId("food"),
+                CardId("a1-box") to CategoryId("things"),
+                CardId("a1-bread") to CategoryId("food"),
+                CardId("a1-cup") to CategoryId("things"),
+                CardId("a1-six") to CategoryId("things"),
+            ),
+            a1,
+        )
+        // The index reads ids only: a card with a broken column elsewhere still counts toward its category total.
+        assertEquals(mapOf(CardId("b1-bill") to CategoryId("travel")), cards.categoryOfCards(Level.B1))
+        assertEquals(emptyMap(), cards.categoryOfCards(Level.NAT))
+    }
+
+    @Test
     fun `cards by id include exam-pack-only cards and skip unknown ids`() = runTest(io) {
         val found = cards.cards(listOf(CardId("b1-exam"), CardId("a1-apple"), CardId("gone")))
 

@@ -78,11 +78,12 @@ class GameViewModelTest {
 
     private fun TestScope.viewModel(
         handle: SavedStateHandle = routeHandle(),
+        gameRoute: GameRoute = route,
         jokerRepository: JokerRepository = jokers,
         sessionRepository: SessionRepository = sessions,
         flags: FeatureFlags = FeatureFlags(),
     ): GameViewModel = GameViewModel(
-        route = route,
+        route = gameRoute,
         handle = handle,
         cards = cards,
         progress = progress,
@@ -322,6 +323,37 @@ class GameViewModelTest {
         val vm = started()
 
         assertEquals(120_000L, vm.remainingMs)
+    }
+
+    @Test
+    fun `a category wheel skips letters without a card and counts them as neither right nor wrong`() = runTest {
+        cards.cards = listOf(
+            testCard("APPLE"),
+            testCard("BREAD", category = "home"),
+            testCard("CHAIR", category = "home"),
+        )
+        val vm = viewModel(gameRoute = GameRoute(Level.A1, GameMode.CLASSIC, CategoryId("home"))).also {
+            runCurrent()
+            it.onIntent(GameIntent.Foreground)
+        }
+
+        // A has no card in "home": its slot is SKIPPED, not shown, and the first turn is B.
+        assertEquals(listOf('B', 'C'), vm.state.value.wheel.map { it.letter })
+        assertEquals('B', vm.state.value.turn?.letter)
+        vm.effects.test {
+            vm.type("BREAD")
+            vm.type("CHAIR")
+            runCurrent()
+
+            // Both playable letters answered: the wheel is complete although 24 slots were skipped.
+            val result = awaitResult()
+            assertEquals("home", result.category)
+            assertEquals(listOf(2, 0, 0), listOf(result.correct, result.wrong, result.passed))
+            val session = sessions.sessions.single()
+            assertEquals(CategoryId("home"), session.category)
+            assertTrue(session.completed)
+            assertEquals(listOf(2, 0, 0), listOf(session.correct, session.wrong, session.passed))
+        }
     }
 
     @Test

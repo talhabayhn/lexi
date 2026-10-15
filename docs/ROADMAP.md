@@ -62,7 +62,7 @@ Module mapping (replaces the earlier `composeApp`): `androidApp` = thin Android 
 **Done when:** a full A1 classic game is playable start→result on both platforms, screenshots match designs.
 
 ## M5 — Learning & progress
-- [ ] Categories (`07-categories`) + category wheels
+- [x] Categories (`07-categories`) + category wheels
 - [ ] Notebook (`08-notebook`): tabs, search, rows, review wheel, word detail sheet (design debt)
 - [ ] Stats (`09-stats`)
 - [ ] Practice & Hardcore modes; empty/error states

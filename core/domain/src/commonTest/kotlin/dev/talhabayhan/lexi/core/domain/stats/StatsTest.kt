@@ -1,6 +1,7 @@
 package dev.talhabayhan.lexi.core.domain.stats
 
 import dev.talhabayhan.lexi.core.domain.model.CardId
+import dev.talhabayhan.lexi.core.domain.model.CategoryId
 import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.core.domain.srs.CardProgress
 import kotlin.test.Test
@@ -111,6 +112,31 @@ class StatsTest {
             Level.A1 to LevelProgress(learned = 1, total = 600),
             Level.B1 to LevelProgress(learned = 1, total = 800),
             Level.C1 to LevelProgress(learned = 0, total = 1_000),
+        )
+        assertEquals(expected, result)
+    }
+
+    @Test
+    fun `per-category progress counts learned cards of the level's own categories`() {
+        val cards = listOf(
+            progress("a1-x", correct = 1),
+            progress("a1-y", wrong = 2),
+            progress("a1-z", correct = 4),
+            progress("b1-other", correct = 1),
+        )
+        val categoryOf = mapOf(
+            CardId("a1-x") to CategoryId("food"),
+            CardId("a1-y") to CategoryId("food"),
+            CardId("a1-z") to CategoryId("home"),
+            CardId("a1-w") to CategoryId("travel"),
+        )
+
+        val result = Stats.categoryProgress(cards, categoryOf)
+
+        val expected = mapOf(
+            CategoryId("food") to LevelProgress(learned = 1, total = 2),
+            CategoryId("home") to LevelProgress(learned = 1, total = 1),
+            CategoryId("travel") to LevelProgress(learned = 0, total = 1),
         )
         assertEquals(expected, result)
     }

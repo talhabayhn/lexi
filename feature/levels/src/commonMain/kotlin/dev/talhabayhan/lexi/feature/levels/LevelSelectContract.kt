@@ -36,11 +36,16 @@ internal sealed interface LevelSelectIntent {
     /** BAŞLA. */
     data object Start : LevelSelectIntent
 
+    /** "Kategoriye göre oyna": the categories of the selected level (no design, `screen-map.md`). */
+    data object OpenCategories : LevelSelectIntent
+
     data object Back : LevelSelectIntent
 }
 
 internal sealed interface LevelSelectEffect {
     data class StartGame(val level: Level, val mode: GameMode) : LevelSelectEffect
+
+    data class OpenCategories(val level: Level, val mode: GameMode) : LevelSelectEffect
 
     data object NavigateBack : LevelSelectEffect
 }

@@ -28,6 +28,12 @@ public interface CardRepository {
 
     /** Level card count per level (no exam-pack-only cards), for `Stats.levelProgress`. */
     public suspend fun levelTotals(): Map<Level, Int>
+
+    /**
+     * Category of every card of [level] (no exam-pack-only cards), by card id: the category cards' totals (group and
+     * count) and, with the player's progress, their learned counts (`Stats.categoryProgress`). Light: no clues.
+     */
+    public suspend fun categoryOfCards(level: Level): Map<CardId, CategoryId>
 }
 
 public interface CategoryRepository {

@@ -26,4 +26,15 @@
     <string name="levels_caption_classic">CLASSIC</string>
     <string name="levels_caption_practice">PRACTICE</string>
     <string name="levels_caption_hardcore">HARDCORE</string>
+
+    <!-- Entry from the level select (no design: see docs/design/screen-map.md) -->
+    <string name="levels_open_categories">Categories</string>
+
+    <!-- Categories (07-categories) -->
+    <string name="categories_title">Categories</string>
+    <string name="categories_mixed_title">Mixed wheel</string>
+    <string name="categories_mixed_subtitle">%2$d words from all %1$s categories</string>
+    <string name="categories_progress">%1$d / %2$d</string>
+    <string name="categories_progress_done">%1$d / %2$d · done</string>
+    <string name="categories_empty">There are no categories in this level yet.</string>
 </resources>

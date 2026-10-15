@@ -7,6 +7,7 @@ import dev.talhabayhan.lexi.core.domain.feedback.SoundPlayer
 import dev.talhabayhan.lexi.core.domain.feedback.Speaker
 import dev.talhabayhan.lexi.feature.game.GameRoute
 import dev.talhabayhan.lexi.feature.game.result.ResultRoute
+import dev.talhabayhan.lexi.feature.levels.CategoriesRoute
 import kotlinx.coroutines.CoroutineScope
 import org.koin.core.annotation.KoinExperimentalAPI
 import org.koin.dsl.module
@@ -28,6 +29,7 @@ class AppModulesTest {
                 SavedStateHandle::class,
                 GameRoute::class,
                 ResultRoute::class,
+                CategoriesRoute::class,
                 CoroutineScope::class,
             ),
         )

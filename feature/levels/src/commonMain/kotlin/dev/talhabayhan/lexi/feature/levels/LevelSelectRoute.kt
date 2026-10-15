@@ -20,9 +20,13 @@ import org.koin.compose.viewmodel.koinViewModel
 data object LevelSelectRoute
 
 /** [onStart] opens a game of the chosen level and mode (the graph in `shared` owns the game route). */
-fun NavGraphBuilder.levelSelectScreen(onBack: () -> Unit, onStart: (Level, GameMode) -> Unit) {
+fun NavGraphBuilder.levelSelectScreen(
+    onBack: () -> Unit,
+    onStart: (Level, GameMode) -> Unit,
+    onOpenCategories: (Level, GameMode) -> Unit,
+) {
     composable<LevelSelectRoute> {
-        LevelSelectRoute(onBack = onBack, onStart = onStart)
+        LevelSelectRoute(onBack = onBack, onStart = onStart, onOpenCategories = onOpenCategories)
     }
 }
 
@@ -30,11 +34,13 @@ fun NavGraphBuilder.levelSelectScreen(onBack: () -> Unit, onStart: (Level, GameM
 internal fun LevelSelectRoute(
     onBack: () -> Unit,
     onStart: (Level, GameMode) -> Unit,
+    onOpenCategories: (Level, GameMode) -> Unit,
     viewModel: LevelSelectViewModel = koinViewModel(),
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
     val currentOnBack by rememberUpdatedState(onBack)
     val currentOnStart by rememberUpdatedState(onStart)
+    val currentOnOpenCategories by rememberUpdatedState(onOpenCategories)
     val lifecycleOwner = LocalLifecycleOwner.current
     LaunchedEffect(viewModel, lifecycleOwner) {
         lifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -42,6 +48,7 @@ internal fun LevelSelectRoute(
                 when (effect) {
                     LevelSelectEffect.NavigateBack -> currentOnBack()
                     is LevelSelectEffect.StartGame -> currentOnStart(effect.level, effect.mode)
+                    is LevelSelectEffect.OpenCategories -> currentOnOpenCategories(effect.level, effect.mode)
                 }
             }
         }

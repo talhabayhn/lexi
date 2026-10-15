@@ -6,7 +6,7 @@
 | `01-onboarding` | Onboarding / seviye testi (step 2 of 3) | `OnboardingRoute` | feature:onboarding | M6 |
 | `02-home` | Ana menü | `HomeRoute` / `HomeScreen` | feature:home | M4 (done; tiles of M5-M7 are inert) |
 | `03-level-select` | Seviye ve mod seçimi | `LevelSelectRoute` / `LevelSelectScreen` | feature:levels | M4 (done) |
-| `07-categories` | Seviye kategorileri | `CategoriesRoute(level)` | feature:levels | M5 |
+| `07-categories` | Seviye kategorileri | `CategoriesRoute(level, mode)` / `CategoriesScreen` (`mode` = the level select's mode, passed on to the game) | feature:levels | M5 (done) |
 | `04-game` | Oyun ekranı | `GameRoute(level, mode, category?)` / `GameScreen` | feature:game | M4 (done) |
 | `05-joker-sheet` | Joker seçimi | `JokerSheet` (bottom sheet inside GameScreen; ad button hidden behind `FeatureFlags.rewardedAdJokers` until M7) | feature:game | M4 (done) |
 | `06-result` | Oyun sonu | `ResultRoute(summary)` / `ResultScreen` (summary payload: ADR 0019 addendum; Paylaş inert until M6) | feature:game (`result`) | M4 (done) |
@@ -40,6 +40,8 @@ before shipping.
 | Onboarding steps 1 & 3 | M6 | same layout as step 2, different shapes & copy |
 | Level test result ("Seviyen: B1") | M6 | result screen header style + level badge |
 | Daily wheel intro / already-played state | M6 | home daily card enlarged |
+| Entry to the categories | M5 | the design has no way in (07's back arrow returns to level select): a small underlined "Kategoriler" link on the "OYUN MODU" label line of the level select (`LexiTypography.link12`; the touch target is widened by Compose). Starting a category starts `GameRoute(level, mode, category)`; the mixed card starts the level's regular wheel |
+| Categories: Pro lock, empty level | M5 | none in the design: no shipped category is Pro (TODO M7: lock behind the paywall); a level without categories shows `EmptyState` instead of the cards |
 | Word detail sheet | M5 | bottom sheet: word, tr, example, speaker, SRS box, remove |
 | Review wheel result | M5 | reuse result screen |
 | Paywall (Lexi Pro) | M7 | ink card + yellow diamond from settings; 3 plans as level-card style |

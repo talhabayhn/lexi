@@ -1,6 +1,7 @@
 package dev.talhabayhan.lexi.core.domain.stats
 
 import dev.talhabayhan.lexi.core.domain.model.CardId
+import dev.talhabayhan.lexi.core.domain.model.CategoryId
 import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.core.domain.srs.CardProgress
 import kotlinx.serialization.Serializable
@@ -85,6 +86,21 @@ public object Stats {
     ): Map<Level, LevelProgress> {
         val learned = progress.filter { it.correct > 0 }.mapNotNull { levelOf[it.cardId] }.groupingBy { it }.eachCount()
         return totals.mapValues { (level, total) -> LevelProgress(learned = learned[level] ?: 0, total = total) }
+    }
+
+    /**
+     * Learned cards per category against the category's card count, for every category in [categoryOf] (the cards of
+     * one level, `CardRepository.categoryOfCards`); progress of other cards is ignored.
+     */
+    public fun categoryProgress(
+        progress: Collection<CardProgress>,
+        categoryOf: Map<CardId, CategoryId>,
+    ): Map<CategoryId, LevelProgress> {
+        val learned = progress.filter {
+            it.correct > 0
+        }.mapNotNull { categoryOf[it.cardId] }.groupingBy { it }.eachCount()
+        return categoryOf.values.groupingBy { it }.eachCount()
+            .mapValues { (category, total) -> LevelProgress(learned = learned[category] ?: 0, total = total) }
     }
 
     /** Letters with ≥ [minAttempts] answers, lowest accuracy first (ties by letter). */

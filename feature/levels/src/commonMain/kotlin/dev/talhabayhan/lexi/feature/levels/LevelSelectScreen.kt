@@ -27,6 +27,7 @@ import dev.talhabayhan.lexi.core.designsystem.component.DecorShapeKind
 import dev.talhabayhan.lexi.core.designsystem.component.LevelCard
 import dev.talhabayhan.lexi.core.designsystem.component.LevelCardStyle
 import dev.talhabayhan.lexi.core.designsystem.component.NavSquareButton
+import dev.talhabayhan.lexi.core.designsystem.component.PressableSurface
 import dev.talhabayhan.lexi.core.designsystem.component.Segment
 import dev.talhabayhan.lexi.core.designsystem.component.SegmentedControl
 import dev.talhabayhan.lexi.core.designsystem.component.StartButton
@@ -52,6 +53,7 @@ import dev.talhabayhan.lexi.feature.levels.generated.resources.levels_mode_label
 import dev.talhabayhan.lexi.feature.levels.generated.resources.levels_mode_practice
 import dev.talhabayhan.lexi.feature.levels.generated.resources.levels_mode_practice_hint
 import dev.talhabayhan.lexi.feature.levels.generated.resources.levels_nat
+import dev.talhabayhan.lexi.feature.levels.generated.resources.levels_open_categories
 import dev.talhabayhan.lexi.feature.levels.generated.resources.levels_progress
 import dev.talhabayhan.lexi.feature.levels.generated.resources.levels_start
 import dev.talhabayhan.lexi.feature.levels.generated.resources.levels_start_caption
@@ -156,7 +158,16 @@ private fun LevelGrid(state: LevelSelectUiState, onIntent: (LevelSelectIntent) -
 @Composable
 private fun ModePicker(state: LevelSelectUiState, onIntent: (LevelSelectIntent) -> Unit) {
     Column(verticalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap8)) {
-        Text(stringResource(Res.string.levels_mode_label), style = LexiTheme.typography.label12)
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Text(stringResource(Res.string.levels_mode_label), style = LexiTheme.typography.label12)
+            // DESIGN-DEBT: the design has no entry to the categories; a small link on the mode label's line, which
+            // keeps every designed element where it is. Compose widens its touch target to the platform minimum.
+            CategoriesLink(onClick = { onIntent(LevelSelectIntent.OpenCategories) })
+        }
         SegmentedControl(
             segments = SelectableModes.map { mode ->
                 Segment(stringResource(mode.titleRes()), mode.hint(state.classicTimeLimitSeconds))
@@ -167,6 +178,14 @@ private fun ModePicker(state: LevelSelectUiState, onIntent: (LevelSelectIntent) 
             dividerWidth = LexiTheme.borders.regular,
             modifier = Modifier.fillMaxWidth(),
         )
+    }
+}
+
+/** Underlined "Kategoriler" link: transparent, no frame or shadow, so it does not move when pressed. */
+@Composable
+private fun CategoriesLink(onClick: () -> Unit) {
+    PressableSurface(onClick = onClick, color = Color.Transparent, border = null, shadow = null) {
+        Text(stringResource(Res.string.levels_open_categories), style = LexiTheme.typography.link12)
     }
 }
 

@@ -60,6 +60,10 @@ internal class CardRepositoryImpl(
         }.toMap()
     }
 
+    override suspend fun categoryOfCards(level: Level): Map<CardId, CategoryId> = read {
+        levelCardCategories(level.name).executeAsList().associate { CardId(it.id) to CategoryId(it.category_id) }
+    }
+
     private fun List<Result<Card>>.valid(): List<Card> = mapNotNull { result ->
         result.onFailure(onBrokenCard).getOrNull()
     }
