@@ -15,9 +15,10 @@ class TestDatabases(
     cards: List<FixtureCard> = emptyList(),
     packs: List<ContentFixture.FixturePack> = emptyList(),
     contentVersion: Int = 1,
+    /** Pass the user.db of an earlier instance to simulate a content update on the same device. */
+    val userDriver: SqlDriver = JdbcSqliteDriver(JdbcSqliteDriver.IN_MEMORY).also { UserDatabase.Schema.create(it) },
 ) {
     val contentDriver: SqlDriver = ContentFixture.inMemory(contentVersion, cards, packs)
-    val userDriver: SqlDriver = JdbcSqliteDriver(JdbcSqliteDriver.IN_MEMORY).also { UserDatabase.Schema.create(it) }
     val databases = Databases(
         content = SuspendLazy(io) { ContentDatabase(contentDriver) },
         user = SuspendLazy(io) { UserDatabase(userDriver) },

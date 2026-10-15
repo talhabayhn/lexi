@@ -46,7 +46,7 @@ Module mapping (replaces the earlier `composeApp`): `androidApp` = thin Android 
 - [ ] A1 full set (850) — content-curator in batches of 100, product owner reviews; other levels 26-card smoke sets
 - [x] SQLDelight `content.db` (read-only, copied from resources on first run/version bump) + `user.db` with migrations
 - [x] Repositories (`ARCHITECTURE.md` §6) + DataStore settings
-- [ ] Repository tests with in-memory driver
+- [x] Repository tests with in-memory driver
 **Done when:** app reads a wheel from the bundled DB on both platforms.
 
 ## M4 — Core loop UI
