@@ -75,8 +75,9 @@ How the compiler applies them (`tools/content-compiler`, every error is `file:li
   card's level is a warning.
 - Coverage (base content only): shipped level (meta `shippedLevels`) letter < 3 cards → error, < 5 → warning;
   unshipped levels with cards only warn. 3 cards per letter also guarantees the mixed wheel fills 26.
-- Blocklist: `content/blocklist.txt`, `[en]` terms checked in `answer`/`example_en`, `[tr]` in
-  `clue_tr`/`example_tr`; whole word, case/diacritic-insensitive.
+- Blocklist: `content/blocklist.txt`, `[en]` terms checked in `answer`/`example_en` (whole word, case/diacritic-
+  insensitive), `[tr]` in `clue_tr`/`example_tr` (whole word, Turkish case folding `İ`→`i`/`I`→`ı`, diacritics
+  kept: `sik` does not flag `sık` or `şık`).
 - `categories.csv`: unique slug ids, names non-empty, known levels, integer `sort`, `is_pro` 0/1, `mixed` present.
 
 ## 4. Categories (secondary axis)

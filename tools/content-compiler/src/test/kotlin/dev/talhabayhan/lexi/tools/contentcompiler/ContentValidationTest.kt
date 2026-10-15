@@ -188,6 +188,22 @@ class ContentValidationTest {
     }
 
     @Test
+    fun `Turkish blocklist terms keep diacritics and use Turkish case folding`() {
+        content.resolve("blocklist.txt").writeText("[en]\nbadword\n[tr]\nsik\n")
+        val result = withExtraA1(
+            cardRow(id = "a1-zebra", clueTr = "sık sık görülen hayvan"),
+            cardRow(id = "a1-zoo", answer = "ZOO", exampleEn = "A zoo.", clueTr = "şık bir yer"),
+            cardRow(id = "a1-zip", answer = "ZIP", exampleEn = "A zip.", clueTr = "sik"),
+            cardRow(id = "a1-zen", answer = "ZEN", exampleEn = "Zen.", exampleTr = "SİK"),
+        )
+
+        result.assertNoErrorAt(2)
+        result.assertNoErrorAt(3)
+        result.assertError("extra.csv", 4, "blocklisted term 'sik' in clue_tr")
+        result.assertError("extra.csv", 5, "blocklisted term 'sik' in example_tr")
+    }
+
+    @Test
     fun `unknown level folders are rejected`() {
         content.writeCards("cards/D9/x.csv", cardRow())
 
