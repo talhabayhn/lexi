@@ -43,7 +43,7 @@ Module mapping (replaces the earlier `composeApp`): `androidApp` = thin Android 
 
 ## M3 — Content & data
 - [x] `tools:content-compiler`: parse CSVs, validate (`CONTENT.md` §3), write `content.db`, print report
-- [ ] A1 full set (850) — content-curator in batches of 100, product owner reviews; other levels 26-card smoke sets
+- [x] A1 content set: 824 cards (target 850; gap documented in `docs/content-review/A1-batch-9.md`); other levels 26-card smoke sets (dev data; full sets in "Content completion")
 - [x] SQLDelight `content.db` (read-only, copied from resources on first run/version bump) + `user.db` with migrations
 - [x] Repositories (`ARCHITECTURE.md` §6) + DataStore settings
 - [x] Repository tests with in-memory driver
@@ -92,6 +92,13 @@ Module mapping (replaces the earlier `composeApp`): `androidApp` = thin Android 
 - [ ] Store listing TR/EN, screenshots, privacy policy, data safety / privacy nutrition labels
 - [ ] Release: Play internal testing + TestFlight
 **Done when:** v1.0 submitted.
+
+## Content completion (after M8, before/within v1.0.x)
+- [ ] Full A2, B1, B2, C1 and NAT sets (850 cards each target, curator batches + review as for A1); until then those
+  levels only have 26-card **smoke sets** (dev data, `smokeLevels` in `content/meta.json`, not for release)
+- [ ] A1 gap: 824 of the 850 target (strict A1 word lists exhausted; thin letters Q, Z, V, Y, I, J) — extend or accept
+- [ ] **Release checklist:** do not ship a level that only has a smoke set; either complete it or mark it "coming soon"
+  in the level select (product decision pending)
 
 ## v1.1 — Online rooms (`MULTIPLAYER.md`)
 Design online screens → Supabase project & RLS → anonymous auth + nickname → `SupabaseRealtimeTransport` →
