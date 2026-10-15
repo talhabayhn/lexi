@@ -25,7 +25,7 @@ a1-invite,INVITE,I,STARTS,verb,bir etkinliğe katılması için çağırmak,We i
 a1-bowl,BOWL,B,STARTS,noun,çorba ya da salata yenen derin kap,Put the apples in the bowl.,Elmaları kaseye koy.,2,,home
 a1-later,LATER,L,STARTS,adv,biraz sonra,See you later!,Sonra görüşürüz!,1,,time-weather
 a1-maybe,MAYBE,M,STARTS,adv,olabilir ama kesin değil,Maybe Ali knows.,Belki Ali bilir.,1,,daily-life
-a1-minute,MINUTE,M,STARTS,noun,saatin altmışta biri,She is ready in a minute.,Bir dakika içinde hazır olur.,1,,time-weather
+a1-minute,MINUTE,M,STARTS,noun,saatin altmışta biri,She is here in a minute.,Bir dakika içinde burada olur.,1,,time-weather
 a1-meal,MEAL,M,STARTS,noun,gün içinde oturup yenen yemek,The meal was tasty.,Yemek lezzetliydi.,2,,food-drink
 a1-now,NOW,N,STARTS,adv,şu anda,Do it now!,Şimdi yap!,1,,time-weather
 a1-news,NEWS,N,STARTS,noun,yeni olaylar hakkında verilen bilgi,I have news for you.,Sana bir haberim var.,2,,daily-life
@@ -34,7 +34,7 @@ a1-okay,OKAY,O,STARTS,adj,sorunu olmayan,Are you okay?,İyi misin?,1,,daily-life
 a1-photo,PHOTO,P,STARTS,noun,kamerayla çekilen görüntü,Her photo is in my purse.,Onun fotoğrafı çantamda.,1,,daily-life
 a1-place,PLACE,P,STARTS,noun,bir şeyin bulunduğu yer,What a lovely place!,Ne güzel bir yer!,2,,city-transport
 a1-price,PRICE,P,STARTS,noun,bir şey için ödenecek para miktarı,What is the price?,Fiyatı nedir?,2,,daily-life
-a1-really,REALLY,R,STARTS,adv,gerçekten,That is really amazing!,Bu gerçekten harika!,2,,daily-life
+a1-really,REALLY,R,STARTS,adv,gerçekten,That is really lovely!,Bu gerçekten çok güzel!,2,,daily-life
 a1-rainy,RAINY,R,STARTS,adj,çok yağmur yağan,It is rainy in Rize.,Rize'de hava yağmurlu.,2,,time-weather
 a1-sometimes,SOMETIMES,S,STARTS,adv,ara sıra,Sometimes Ali cries.,Bazen Ali ağlar.,2,,time-weather
 a1-stop,STOP,S,STARTS,verb,hareketi bırakıp durmak,"Stop, thief!","Dur, hırsız!",1,,daily-life
@@ -47,7 +47,7 @@ a1-excuse-me,EXCUSE ME,X,CONTAINS,phrase,dikkat çekerken söylenen kibar söz,"
 a1-favourite,FAVOURITE,F,STARTS,adj,en çok sevilen,That is my favourite song.,Bu benim en sevdiğim şarkı.,2,,daily-life
 a1-sheep,SHEEP,S,STARTS,noun,yünü için yetiştirilen çiftlik hayvanı,The sheep are in the field.,Koyunlar tarlada.,1,,animals
 a1-tiger,TIGER,T,STARTS,noun,siyah çizgili turuncu yırtıcı hayvan,The tiger is dangerous.,Kaplan tehlikelidir.,1,,animals
-a1-mouse,MOUSE,M,STARTS,noun,küçük ve uzun kuyruklu kemirgen,The mouse is hiding behind the wardrobe.,Fare gardırobun arkasında saklanıyor.,1,,animals
+a1-mouse,MOUSE,M,STARTS,noun,küçük ve uzun kuyruklu kemirgen,The mouse is hiding beside the wardrobe.,Fare gardırobun yanında saklanıyor.,1,,animals
 a1-snake,SNAKE,S,STARTS,noun,bacaksız ve uzun sürüngen,I see a snake!,Bir yılan görüyorum!,1,,animals
 a1-goat,GOAT,G,STARTS,noun,sakallı ve boynuzlu çiftlik hayvanı,A goat is eating the leaves.,Bir keçi yaprakları yiyor.,1,,animals
 a1-headache,HEADACHE,H,STARTS,noun,başta duyulan ağrı,I have a headache.,Başım ağrıyor.,2,,body-health
@@ -59,7 +59,7 @@ a1-fifteen,FIFTEEN,F,STARTS,noun,on beş,He paid fifteen lira.,On beş lira öde
 a1-sunny,SUNNY,S,STARTS,adj,güneşin açık olduğu,It is sunny in Antalya.,Antalya'da hava güneşli.,1,,time-weather
 a1-windy,WINDY,W,STARTS,adj,rüzgârın çok estiği,The summit is windy.,Zirve rüzgârlı.,1,,time-weather
 a1-cloudy,CLOUDY,C,STARTS,adj,gökyüzünün bulutlarla kaplı olduğu,The sky is cloudy.,Gökyüzü bulutlu.,1,,time-weather
-a1-sugar,SUGAR,S,STARTS,noun,çayı tatlandırmak için kullanılan beyaz toz,Add some sugar.,Biraz şeker ekle.,1,,food-drink
+a1-sugar,SUGAR,S,STARTS,noun,çayı tatlandırmak için kullanılan beyaz toz,Put some sugar in it.,İçine biraz şeker koy.,1,,food-drink
 a1-honey,HONEY,H,STARTS,noun,arıların yaptığı tatlı besin,Bees collect honey.,Arılar bal toplar.,1,,food-drink
 a1-pasta,PASTA,P,STARTS,noun,makarna,She makes pasta on Fridays.,Cuma günleri makarna yapar.,1,,food-drink
 a1-biscuit,BISCUIT,B,STARTS,noun,çayın yanında yenen kuru ve küçük tatlı,This biscuit is crunchy.,Bu bisküvi çıtır.,2,,food-drink
@@ -74,7 +74,7 @@ a1-boyfriend,BOYFRIEND,B,STARTS,noun,bir kızın erkek sevgilisi,Her boyfriend i
 a1-girlfriend,GIRLFRIEND,G,STARTS,noun,bir erkeğin kız sevgilisi,His girlfriend lives in Rome.,Onun kız arkadaşı Roma'da yaşıyor.,2,,family-people
 a1-find,FIND,F,STARTS,verb,aranan şeye rastlamak,I cannot find my keys.,Anahtarlarımı bulamıyorum.,1,,daily-life
 a1-forget,FORGET,F,STARTS,verb,aklından çıkarmak,Do not forget your passport.,Pasaportunu unutma.,2,,daily-life
-a1-make,MAKE,M,STARTS,verb,bir şeyi yapıp ortaya çıkarmak,Let us make a list.,Bir liste yapalım.,1,,daily-life
+a1-make,MAKE,M,STARTS,verb,bir şeyi yapıp ortaya çıkarmak,Let us make a poster.,Bir poster yapalım.,1,,daily-life
 a1-pay,PAY,P,STARTS,verb,karşılığında para vermek,I pay in cash.,Nakit ödüyorum.,1,,daily-life
 a1-start,START,S,STARTS,verb,bir işe girişmek,Let us start!,Başlayalım!,1,,daily-life
 a1-teach,TEACH,T,STARTS,verb,birine bilgi öğretmek,Can you teach me?,Bana öğretir misin?,2,,school-work
@@ -96,6 +96,6 @@ a1-waiter,WAITER,W,STARTS,noun,restoranda yemek servisi yapan kişi,The waiter i
 a1-tourist,TOURIST,T,STARTS,noun,gezmek için başka bir yere gelen kişi,The tourist is lost.,Turist yolunu kaybetmiş.,2,,city-transport
 a1-museum,MUSEUM,M,STARTS,noun,eski eserlerin sergilendiği bina,The museum is free on Sundays.,Müze pazar günleri ücretsiz.,2,,city-transport
 a1-actor,ACTOR,A,STARTS,noun,filmlerde ya da tiyatroda rol yapan kişi,The actor is on stage.,Oyuncu sahnede.,2,,school-work
-a1-singer,SINGER,S,STARTS,noun,şarkı söylemeyi meslek edinmiş kişi,That singer is famous.,O şarkıcı ünlü.,2,,school-work
+a1-singer,SINGER,S,STARTS,noun,şarkı söylemeyi meslek edinmiş kişi,That singer is excellent.,O şarkıcı mükemmel.,2,,school-work
 a1-cafe,CAFE,C,STARTS,noun,kahve ve hafif yiyecek satılan küçük mekân,This cafe is cosy.,Bu kafe sıcak ve rahat.,2,,city-transport
 a1-glove,GLOVE,G,STARTS,noun,parmakları saran ve eli koruyan giysi,I lost a glove.,Bir eldivenimi kaybettim.,1,,daily-life

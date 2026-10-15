@@ -1,0 +1,43 @@
+id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
+a1-armchair,ARMCHAIR,A,STARTS,noun,kolluğu olan rahat tekli koltuk,Grandpa sleeps in the armchair.,Dedem koltukta uyur.,2,,home
+a1-after,AFTER,A,STARTS,phrase,bir şeyden sonra,Ali felt sleepy after the concert.,Ali konserden sonra uykulu hissetti.,1,,daily-life
+a1-another,ANOTHER,A,STARTS,adj,bir tane daha,Ali asked for another sweet.,Ali bir şeker daha istedi.,2,,daily-life
+a1-agree,AGREE,A,STARTS,verb,aynı fikirde olmak,I agree with Ayşe.,Ayşe'ye katılıyorum.,2,,daily-life
+a1-amazing,AMAZING,A,STARTS,adj,insanı şaşırtacak kadar güzel,Ali's drawing is amazing.,Ali'nin çizimi harika.,2,,daily-life
+a1-air,AIR,A,STARTS,noun,soluduğumuz görünmez gaz,The air is fresh here.,Burada hava temiz.,2,,time-weather
+a1-behind,BEHIND,B,STARTS,phrase,bir şeyin arka tarafında,Mert stands behind Ayşe.,Mert Ayşe'nin arkasında duruyor.,1,,daily-life
+a1-between,BETWEEN,B,STARTS,phrase,iki şeyin arasında,Ali sits between Ayşe and Selin.,Ali Ayşe ile Selin'in arasında oturuyor.,2,,daily-life
+a1-bored,BORED,B,STARTS,adj,"sıkılmış, canı sıkkın",Selin looks bored.,Selin sıkılmış görünüyor.,2,,daily-life
+a1-board,BOARD,B,STARTS,noun,sınıfta üzerine yazı yazılan büyük levha,Selin cleaned the board.,Selin tahtayı sildi.,2,,school-work
+a1-bill,BILL,B,STARTS,noun,restoranda yemekten sonra ödenen hesap,Ali paid the bill.,Ali hesabı ödedi.,2,,food-drink
+a1-because,BECAUSE,B,STARTS,phrase,bir şeyin nedenini bildiren bağlaç,Selin smiled because she got a present.,Selin gülümsedi çünkü bir hediye aldı.,2,,daily-life
+a1-club,CLUB,C,STARTS,noun,ortak ilgisi olanların bir araya geldiği topluluk,Mert joined the chess club.,Mert satranç kulübüne katıldı.,2,,daily-life
+a1-climb,CLIMB,C,STARTS,verb,eller ve ayaklarla yukarı tırmanmak,Ali can climb the ladder.,Ali merdivene tırmanabilir.,2,,daily-life
+a1-count,COUNT,C,STARTS,verb,sayıları sırayla söyleyerek miktarı bulmak,Let us count the chairs.,Sandalyeleri sayalım.,2,,school-work
+a1-cartoon,CARTOON,C,STARTS,noun,çocukların televizyonda izlediği çizgi film,Ali is watching a cartoon.,Ali çizgi film izliyor.,2,,daily-life
+a1-canada,CANADA,C,STARTS,noun,başkenti Ottawa olan Kuzey Amerika ülkesi,Ayşe studies in Canada.,Ayşe Kanada'da okuyor.,2,,daily-life
+a1-dancer,DANCER,D,STARTS,noun,sahnede dans eden kişi,Selin's mum is a dancer.,Selin'in annesi dansçı.,2,,daily-life
+a1-famous,FAMOUS,F,STARTS,adj,herkesin tanıdığı ve adı duyulmuş,The painter is famous in many countries.,Ressam birçok ülkede ünlüdür.,2,,daily-life
+a1-fantastic,FANTASTIC,F,STARTS,adj,"harika, muhteşem",We had a fantastic trip.,Harika bir gezi yaptık.,2,,daily-life
+a1-follow,FOLLOW,F,STARTS,verb,birinin ardından gitmek,"Follow me, Ali.","Beni takip et, Ali.",2,,daily-life
+a1-flight,FLIGHT,F,STARTS,noun,uçakla yapılan yolculuk,Her flight leaves soon.,Uçağı yakında kalkıyor.,2,,city-transport
+a1-hate,HATE,H,STARTS,verb,hiç sevmemek ve nefret etmek,I hate mushrooms.,Mantardan nefret ederim.,2,,daily-life
+a1-india,INDIA,I,STARTS,noun,başkenti Yeni Delhi olan Güney Asya ülkesi,Mert went to India alone.,Mert Hindistan'a tek başına gitti.,2,,daily-life
+a1-just,JUST,J,STARTS,adv,"az önce, demin",Ayşe has just arrived.,Ayşe az önce geldi.,2,,daily-life
+a1-kite,KITE,K,STARTS,noun,ipiyle rüzgârda uçurulan hafif oyuncak,Mert's kite is high in the sky.,Mert'in uçurtması gökyüzünde çok yüksekte.,2,,daily-life
+a1-lorry,LORRY,L,STARTS,noun,ağır yük taşıyan büyük kara taşıtı,The lorry was too wide for the gate.,Kamyon kapı için fazla genişti.,3,,city-transport
+a1-list,LIST,L,STARTS,noun,alt alta yazılmış şeylerin dizisi,"Check the list, Ali.","Listeyi kontrol et, Ali.",2,,daily-life
+a1-meeting,MEETING,M,STARTS,noun,bir konuyu görüşmek için yapılan toplantı,Mert missed the meeting.,Mert toplantıyı kaçırdı.,2,,school-work
+a1-miss,MISS,M,STARTS,verb,yanında olmayan birini özlemek,I miss Ali.,Ali'yi özlüyorum.,2,,daily-life
+a1-menu,MENU,M,STARTS,noun,restoranda yemeklerin fiyatıyla yazıldığı kâğıt,Ayşe looked at the menu.,Ayşe menüye baktı.,2,,food-drink
+a1-nothing,NOTHING,N,STARTS,noun,hiçbir şey,Ali has nothing to do.,Ali'nin yapacak bir şeyi yok.,2,,daily-life
+a1-paint,PAINT,P,STARTS,verb,fırça ya da rulo ile boya sürmek,Mert will paint the fence tomorrow.,Mert çiti yarın boyayacak.,2,,daily-life
+a1-player,PLAYER,P,STARTS,noun,bir oyunu ya da sporu oynayan kişi,Ali is the best player in his team.,Ali takımının en iyi oyuncusu.,2,,daily-life
+a1-poor,POOR,P,STARTS,adj,parası az olan,The poor fisherman had no shoes.,Yoksul balıkçının ayakkabısı yoktu.,2,,daily-life
+a1-piece,PIECE,P,STARTS,noun,bir bütünden ayrılmış küçük bölüm,Ali ate a piece of pie.,Ali bir parça turta yedi.,2,,food-drink
+a1-plan,PLAN,P,STARTS,noun,yapılacak işin önceden belirlenmiş düzeni,"Do you have a plan, Mert?","Bir planın var mı, Mert?",2,,daily-life
+a1-playground,PLAYGROUND,P,STARTS,noun,okulda çocukların oynadığı açık alan,The children are in the playground.,Çocuklar oyun alanında.,3,,school-work
+a1-robot,ROBOT,R,STARTS,noun,insan yerine iş yapan mekanik makine,The little robot is made of metal.,Küçük robot metalden yapılmış.,2,,daily-life
+a1-text,TEXT,X,CONTAINS,noun,kitapta veya ekranda yazılı kelimeler bütünü,The text is too small.,Yazılar çok küçük.,2,,school-work
+a1-until,UNTIL,U,STARTS,phrase,bir zamana kadar,Mert stayed until the end.,Mert sonuna kadar kaldı.,2,,daily-life
+a1-australia,AUSTRALIA,A,STARTS,noun,Sidney'in bulunduğu Güney Yarımküre ülkesi,Selin went to Australia by ship.,Selin Avustralya'ya gemiyle gitti.,2,,daily-life

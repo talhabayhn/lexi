@@ -7,17 +7,17 @@ a1-vegetable,VEGETABLE,V,STARTS,noun,sebze,Spinach is a vegetable.,Ispanak bir s
 a1-lunch,LUNCH,L,STARTS,noun,öğle yemeği,We have lunch outdoors.,Öğle yemeğini açık havada yeriz.,1,,food-drink
 a1-chicken,CHICKEN,C,STARTS,noun,tavuk,We have chicken tonight.,Bu akşam tavuk yiyoruz.,1,,food-drink
 a1-soup,SOUP,S,STARTS,noun,çorba,This soup is salty.,Bu çorba tuzlu.,1,,food-drink
-a1-dinner,DINNER,D,STARTS,noun,akşam yemeği,Dinner is ready!,Akşam yemeği hazır!,1,,food-drink
+a1-dinner,DINNER,D,STARTS,noun,akşam yemeği,Dinner is waiting!,Akşam yemeği bekliyor!,1,,food-drink
 a1-water,WATER,W,STARTS,noun,su,Can I have some water?,Biraz su alabilir miyim?,1,,food-drink
 a1-drink,DRINK,D,STARTS,verb,içmek,I drink lemonade.,Limonata içerim.,1,,food-drink
 a1-pizza,PIZZA,Z,CONTAINS,noun,fırında pişen yuvarlak İtalyan hamur yemeği,Let's order a pizza tonight.,Bu akşam pizza sipariş edelim.,1,,food-drink
 a1-banana,BANANA,B,STARTS,noun,muz,She eats a banana.,Muz yiyor.,1,,food-drink
 a1-cake,CAKE,C,STARTS,noun,"pasta, kek",Mum made a cake for the guests.,Annem misafirler için pasta yaptı.,1,,food-drink
-a1-coffee,COFFEE,C,STARTS,noun,kahve,Is the coffee ready?,Kahve hazır mı?,1,,food-drink
-a1-food,FOOD,F,STARTS,noun,yiyecek,The food is ready.,Yiyecekler hazır.,1,,food-drink
+a1-coffee,COFFEE,C,STARTS,noun,kahve,Is the coffee strong?,Kahve koyu mu?,1,,food-drink
+a1-food,FOOD,F,STARTS,noun,yiyecek,The food smells lovely.,Yiyecekler güzel kokuyor.,1,,food-drink
 a1-fruit,FRUIT,F,STARTS,noun,meyve,Fruit is sold here.,Burada meyve satılır.,1,,food-drink
 a1-meat,MEAT,M,STARTS,noun,et,He avoids meat.,O et yemekten kaçınır.,1,,food-drink
-a1-oil,OIL,O,STARTS,noun,sıvı yağ,Add some oil to the pan.,Tavaya biraz yağ ekle.,2,,food-drink
+a1-oil,OIL,O,STARTS,noun,sıvı yağ,Pour some oil in the pan.,Tavaya biraz yağ dök.,2,,food-drink
 a1-potato,POTATO,P,STARTS,noun,patates,She peeled the potato.,Patatesi soydu.,1,,food-drink
 a1-tea,TEA,T,STARTS,noun,çay,Ali pours the tea.,Ali çayı dolduruyor.,1,,food-drink
 a1-tomato,TOMATO,T,STARTS,noun,domates,Slice the tomato.,Domatesi dilimle.,1,,food-drink
@@ -25,7 +25,7 @@ a1-cup,CUP,C,STARTS,noun,fincan,Can I have a cup?,Bir fincan alabilir miyim?,1,,
 a1-cook,COOK,C,STARTS,verb,pişirmek,Can you cook?,Yemek yapabilir misin?,1,,food-drink
 a1-jam,JAM,J,STARTS,noun,reçel,Grandma makes plum jam.,Anneannem erik reçeli yapar.,1,,food-drink
 a1-eat,EAT,E,STARTS,verb,yemek yemek,What shall we eat?,Ne yiyelim?,1,,food-drink
-a1-breakfast,BREAKFAST,B,STARTS,noun,sabah yemeği,Breakfast is ready.,Kahvaltı hazır.,1,,food-drink
+a1-breakfast,BREAKFAST,B,STARTS,noun,sabah yemeği,Breakfast is waiting for us.,Kahvaltı bizi bekliyor.,1,,food-drink
 a1-butter,BUTTER,B,STARTS,noun,sütten yapılan sürülebilir yağ,The butter is soft.,Tereyağı yumuşak.,1,,food-drink
 a1-salad,SALAD,S,STARTS,noun,marullu çiğ sebze yemeği,This salad is fresh.,Bu salata taze.,1,,food-drink
 a1-chocolate,CHOCOLATE,C,STARTS,noun,kakaodan yapılan tatlı,He likes chocolate.,Çikolatayı sever.,1,,food-drink

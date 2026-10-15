@@ -36,11 +36,11 @@ a1-only,ONLY,O,STARTS,adv,sadece,I only have a few coins.,Sadece birkaç madeni 
 a1-sit,SIT,S,STARTS,verb,oturmak,"Sit here, madam.","Buraya oturun, hanımefendi.",1,,daily-life
 a1-wash,WASH,W,STARTS,verb,yıkamak,I wash my hands.,Ellerimi yıkıyorum.,1,,daily-life
 a1-love,LOVE,L,STARTS,verb,"sevmek, âşık olmak",I love you.,Seni seviyorum.,1,,daily-life
-a1-dance,DANCE,D,STARTS,verb,dans etmek,They dance at the wedding.,Düğünde dans ederler.,1,,daily-life
+a1-dance,DANCE,D,STARTS,verb,dans etmek,They dance at the festival.,Festivalde dans ederler.,1,,daily-life
 a1-beach,BEACH,B,STARTS,noun,"plaj, kumsal",The beach is crowded.,Plaj kalabalık.,1,,daily-life
 a1-keep,KEEP,K,STARTS,verb,"tutmak, saklamak",You can keep this ball.,Bu topu saklayabilirsin.,2,,daily-life
 a1-name,NAME,N,STARTS,noun,"ad, isim",What is your name?,Adın ne?,1,,daily-life
-a1-yes,YES,Y,STARTS,adv,evet,"Yes, I agree.","Evet, katılıyorum.",1,,daily-life
+a1-yes,YES,Y,STARTS,adv,evet,"Yes, sure.","Evet, tabii.",1,,daily-life
 a1-grass,GRASS,G,STARTS,noun,"çimen, ot",The grass is wet.,Çimen ıslak.,1,,daily-life
 a1-help,HELP,H,STARTS,verb,yardım etmek,Can you help me?,Bana yardım edebilir misin?,1,,daily-life
 a1-nice,NICE,N,STARTS,adj,"hoş, güzel",She has a nice smile.,Güzel bir gülümsemesi var.,1,,daily-life

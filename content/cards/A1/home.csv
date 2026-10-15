@@ -16,7 +16,7 @@ a1-bag,BAG,B,STARTS,noun,çanta,Her bag is full.,Çantası dolu.,1,,home
 a1-bedroom,BEDROOM,B,STARTS,noun,yatılan oda,My bedroom is small.,Yatak odam küçük.,1,,home
 a1-bathroom,BATHROOM,B,STARTS,noun,lavabo ve duşun olduğu oda,The bathroom is small.,Banyo küçük.,1,,home
 a1-floor,FLOOR,F,STARTS,noun,ayakların bastığı zemin,The floor is wet.,Zemin ıslak.,1,,home
-a1-shower,SHOWER,S,STARTS,noun,akan suyun altında yıkanma,I have a shower after swimming.,Yüzdükten sonra duş alırım.,1,,home
+a1-shower,SHOWER,S,STARTS,noun,akan suyun altında yıkanma,I have a shower daily.,Her gün duş alırım.,1,,home
 a1-bath,BATH,B,STARTS,noun,küvette yıkanma,I have a bath.,Banyo yapıyorum.,1,,home
 a1-fridge,FRIDGE,F,STARTS,noun,yiyecekleri soğuk tutan dolap,The fridge is noisy.,Buzdolabı gürültülü.,1,,home
 a1-clock,CLOCK,C,STARTS,noun,saati gösteren duvar aleti,The clock is on the shelf.,Saat rafta.,1,,home

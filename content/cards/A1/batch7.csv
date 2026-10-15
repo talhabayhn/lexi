@@ -1,6 +1,6 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
 a1-ago,AGO,A,STARTS,adv,"şimdiden geriye doğru, önce",Ayşe was here minutes ago.,Ayşe birkaç dakika önce buradaydı.,2,,daily-life
-a1-band,BAND,B,STARTS,noun,birlikte müzik çalan grup,The band played until midnight.,Grup gece yarısına kadar çaldı.,2,,daily-life
+a1-band,BAND,B,STARTS,noun,birlikte müzik çalan grup,The band played for hours.,Grup saatlerce çaldı.,2,,daily-life
 a1-born,BORN,B,STARTS,adj,"dünyaya gelmiş, doğmuş",Ali was born in Izmir.,Ali İzmir'de doğdu.,2,,daily-life
 a1-brush,BRUSH,B,STARTS,noun,boyamak veya temizlemek için kıllı araç,The brush is in the drawer.,Fırça çekmecede.,2,,daily-life
 a1-bee,BEE,B,STARTS,noun,bal yapan sarı siyah çizgili böcek,A bee stung Ali.,Ali'yi bir arı soktu.,1,,animals

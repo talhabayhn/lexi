@@ -37,7 +37,7 @@ a1-march,MARCH,M,STARTS,noun,yılın üçüncü ayı,Flowers bloom in March.,Mar
 a1-may,MAY,M,STARTS,noun,yılın beşinci ayı,We have a trip in May.,Mayıs ayında bir gezimiz var.,1,,time-weather
 a1-saturday,SATURDAY,S,STARTS,noun,cumartesi,I see my friends on Saturday.,Cumartesi arkadaşlarımı görüyorum.,1,,time-weather
 a1-sunday,SUNDAY,S,STARTS,noun,pazar günü,Shops are closed on Sunday.,Dükkânlar pazar günü kapalı.,1,,time-weather
-a1-tuesday,TUESDAY,T,STARTS,noun,salı,I have a meeting on Tuesday.,Salı günü toplantım var.,1,,time-weather
+a1-tuesday,TUESDAY,T,STARTS,noun,salı,I have swimming practice on Tuesday.,Salı günü yüzme antrenmanım var.,1,,time-weather
 a1-wednesday,WEDNESDAY,W,STARTS,noun,çarşamba,The bakery is busy on Wednesday.,Fırın çarşamba günü kalabalık.,1,,time-weather
 a1-thursday,THURSDAY,T,STARTS,noun,perşembe,We have a test on Thursday.,Perşembe günü sınavımız var.,1,,time-weather
 a1-spring,SPRING,S,STARTS,noun,ilkbahar,It rains a lot in spring.,İlkbaharda çok yağmur yağar.,1,,time-weather
