@@ -34,6 +34,7 @@ Same rule (Starters/Movers or Oxford A1 stays, otherwise A2 in `moved-from-a1.cs
 | Already absent from A1 (dropped earlier), nothing to do | GOLF, NIECE, NEPHEW, PEACH, PILLOW, BACON, CEREAL, SNACK, DESSERT, SANDALS, BLOUSE, BUTTON, JAZZ, WOLF, LAMB, FOX, EURO, EXIT, WORRY, YET, COMB, CASTLE, DRUM, EARTH, FLAG, GLUE, GOLD, HOPE |
 | Duplicate of A2 answer | STORM is only an A2 smoke card (not in A1); no duplicate created |
 
-A2 examples: no other A2 answer appears in them. AMAZING/FANTASTIC clues made clearly different (near-synonyms). Nothing needed refilling.
+A2 examples: moving MEETING made the `a2-manager` smoke example leak it ("in a meeting"); reworded to "The manager
+is in her office." (review fix). No other A2 answer appears in A2 examples. AMAZING/FANTASTIC clues made clearly different (near-synonyms). Nothing needed refilling.
 
 Final A1 total: 787 (812 - 25). Per letter: A 38, B 59, C 61, D 34, E 29, F 52, G 28, H 33, I 12, J 12, K 16, L 31, M 38, N 24, O 18, P 47, Q 5, R 26, S 88, T 62, U 11, V 5, W 41, X 7, Y 5, Z 5. Minimum 5 (Q, V, Y, Z); no letter below 5. Compiler: 0 errors, 0 warnings.
