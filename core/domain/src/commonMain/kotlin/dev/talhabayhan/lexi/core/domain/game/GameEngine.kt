@@ -29,13 +29,14 @@ public class GameEngine(public val config: GameConfig = GameConfig()) {
         fun reduce(state: GameState, event: GameEvent): GameState = when {
             state.status == GameStatus.FINISHED -> state
             event is GameEvent.Start -> if (state.status == GameStatus.NOT_STARTED) state.start(event) else state
+            event == GameEvent.Forfeit && state.status == GameStatus.NOT_STARTED -> state.forfeitBeforeStart()
             state.status == GameStatus.NOT_STARTED -> state
             else -> state.reducePlaying(event)
         }
 
         private fun GameState.reducePlaying(event: GameEvent): GameState = when (event) {
             is GameEvent.Start -> this
-            GameEvent.Forfeit -> finish(GameOverReason.FORFEIT)
+            GameEvent.Forfeit -> forfeit()
             GameEvent.Pause -> if (isPaused) this else copy(isPaused = true)
             GameEvent.Resume -> if (isPaused) copy(isPaused = false) else this
             is GameEvent.Tick -> if (isPaused || event.elapsedMs <= 0) this else tick(event.elapsedMs)
@@ -156,6 +157,17 @@ public class GameEngine(public val config: GameConfig = GameConfig()) {
             }
         }
 
+        /** Owner decision: every TODO, PASSED or CURRENT slot counts as WRONG (and goes to SRS as missed). */
+        private fun GameState.forfeit(): GameState {
+            val slots = wheel.slots.map {
+                if (it.state.isOpen || it.state == SlotState.CURRENT) it.copy(state = SlotState.WRONG) else it
+            }
+            return copy(wheel = Wheel(slots)).finish(GameOverReason.FORFEIT)
+        }
+
+        /** Giving up before the first turn (duel handover) still ends the game; no time was used. */
+        private fun GameState.forfeitBeforeStart(): GameState = copy(remainingMs = config.timeLimitMs(mode)).forfeit()
+
         private fun GameState.endReveal(): GameState {
             val done = copy(revealRemainingMs = 0L)
             return if (mode.endsOnFirstWrong) done.finish(GameOverReason.WRONG_IN_HARDCORE) else done.advance()
@@ -185,7 +197,7 @@ public class GameEngine(public val config: GameConfig = GameConfig()) {
         private fun streakBonus(streak: Int): Int = minOf(config.streakBonusStep * (streak - 1), config.streakBonusCap)
 
         private fun GameState.finish(reason: GameOverReason): GameState {
-            // A passed slot that is current again on a later lap was never answered: it stays PASSED (§10).
+            // A passed slot that is current again on a later lap was never answered: it stays PASSED (§10, time up).
             val index = currentIndex
             val passedAgain = currentSlot?.state == SlotState.CURRENT && currentInput?.wasPassed == true
             val finalWheel = if (passedAgain && index != null) wheel.withState(index, SlotState.PASSED) else wheel

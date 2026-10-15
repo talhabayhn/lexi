@@ -144,7 +144,7 @@ class SrsTest {
     @Test
     fun `results of a finished game come from the final slot states`() {
         val game = play("APPLE", "BREAD", "CHAIR", "DOG").answer().answerWrongAndWait().send(GameEvent.Pass)
-            .send(GameEvent.Forfeit)
+            .send(GameEvent.Tick(180_000L))
 
         val results = Srs.results(game.state)
 
@@ -154,6 +154,22 @@ class SrsTest {
             CardResult(CardId("a1-chair"), CardOutcome.PASSED),
         )
         assertEquals(expected, results)
+    }
+
+    @Test
+    fun `forfeit sends every remaining card to the notebook as wrong`() {
+        val game = play("APPLE", "BREAD", "CHAIR").answer().send(GameEvent.Pass, GameEvent.Forfeit)
+
+        val updated = Srs.update(emptyMap(), game.state, todayEpochDay = 100L, nowMs = 5L, config = GameConfig())
+
+        assertEquals(
+            listOf(CardOutcome.CORRECT, CardOutcome.WRONG, CardOutcome.WRONG),
+            Srs.results(game.state).map { it.outcome },
+        )
+        for (id in listOf(CardId("a1-bread"), CardId("a1-chair"))) {
+            assertEquals(0, updated.getValue(id).box, "$id")
+            assertEquals(1, updated.getValue(id).wrong, "$id")
+        }
     }
 
     @Test

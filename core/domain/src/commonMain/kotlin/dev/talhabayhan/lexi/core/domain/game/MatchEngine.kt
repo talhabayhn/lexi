@@ -69,7 +69,10 @@ public class MatchEngine(public val config: GameConfig = GameConfig()) {
         return if (after.status == GameStatus.FINISHED || passed || revealOver) next.endTurn(fx) else next
     }
 
-    /** Ends the active player's game (if it has started) and the match; the other player wins. */
+    /**
+     * Ends the active player's game (also before their first turn; their remaining letters count as wrong) and the
+     * match; the other player wins.
+     */
     private fun MatchState.forfeit(fx: MutableList<EngineEffect>): MatchState {
         val forfeited = games.reduce(players[activePlayer], GameEvent.Forfeit)
         fx += forfeited.effects

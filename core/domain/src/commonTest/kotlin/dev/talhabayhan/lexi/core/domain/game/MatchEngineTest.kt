@@ -226,6 +226,27 @@ class MatchEngineTest {
     }
 
     @Test
+    fun `forfeiting player's remaining letters count as wrong`() {
+        val game = duel().begin().answer().play(GameEvent.Forfeit)
+
+        val summary = checkNotNull(game.state.players[0].summary)
+        assertEquals(GameOverReason.FORFEIT, summary.reason)
+        assertEquals(1, summary.correct)
+        assertEquals(2, summary.wrong)
+        assertEquals(0, summary.unanswered)
+    }
+
+    @Test
+    fun `player who forfeits before their first turn gets every letter wrong`() {
+        val game = duel().begin().pass().play(GameEvent.Forfeit)
+
+        val summary = checkNotNull(game.state.players[1].summary)
+        assertEquals(GameOverReason.FORFEIT, summary.reason)
+        assertEquals(3, summary.wrong)
+        assertEquals(150_000L, summary.remainingMs)
+    }
+
+    @Test
     fun `active player can forfeit during the handover`() {
         val game = duel().begin().pass().play(GameEvent.Forfeit)
 

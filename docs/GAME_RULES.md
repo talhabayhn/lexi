@@ -41,8 +41,12 @@ correct = blue circle, wrong = red square, passed = yellow leaf.
    - Owner decision: a pass clears the typed letters (they go back to their keys), so the slot comes back empty on
      the next lap. Joker effects survive the pass, because the joker was paid for and the slot can't get another
      one (§7): letters placed by Reveal letter stay locked in their cells, disabled distractor keys stay disabled,
-     and the slot's joker stays used. If the game ends while it is CURRENT again (time up, forfeit), it stays
-     PASSED (counted as passed and missed, §10).
+     and the slot's joker stays used. If time runs out while it is CURRENT again, it stays PASSED (counted as
+     passed and missed, §10).
+   - Owner decision: `Forfeit` (give up) ends the game with reason `FORFEIT`; every remaining TODO, PASSED or
+     CURRENT slot becomes WRONG (counted as wrong, listed in `missedCards`, sent to SRS as wrong, §10). SKIPPED
+     slots stay skipped. Only `GameOver` is emitted (no per-letter `Wrong` effects). A forfeit before `Start`
+     (duel: during the first handover) also ends the game, with the full time left.
    - Events that don't apply (input while paused/revealing, a used key, anything after game over) are ignored.
 
 ## 4. Letter keys
@@ -121,8 +125,9 @@ the app goes to background.
 - Engine (`MatchEngine`, `MatchState`): a wrong answer ends the turn once its reveal is over. A player whose wheel
   is finished (completed or clock at 0) hands over; when the other player is already finished, the turn stays
   without handover. The handover card is dismissed with `MatchEvent.BeginTurn`; until then nothing runs and the
-  second player's game starts on their first turn. `Forfeit` (also during the handover) ends the whole match and
-  the other player wins.
+  second player's game starts on their first turn. Owner decision: `Forfeit` (also during the handover, even
+  before the forfeiting player's first turn) ends the whole match, the other player wins, and the forfeiting
+  player's remaining letters count as wrong.
 - Race (online): same wheel, simultaneous, no turns; first to finish all slots wins, else most correct at time-up.
   Level handicap (optional room setting): each player plays own level; score = normalized points.
 

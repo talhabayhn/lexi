@@ -141,10 +141,11 @@ class GameEngineScoringTest {
     }
 
     @Test
-    fun `passed slot that is current again at forfeit still counts as passed`() {
+    fun `passed slot that is current again at forfeit counts as wrong`() {
         val game = play("APPLE", "BREAD").send(GameEvent.Pass).answer().send(GameEvent.Forfeit)
 
-        assertEquals(1, game.state.summary?.passed)
+        assertEquals(0, game.state.summary?.passed)
+        assertEquals(1, game.state.summary?.wrong)
         assertEquals(listOf(CardId("a1-apple")), game.state.summary?.missedCards)
     }
 
@@ -159,7 +160,7 @@ class GameEngineScoringTest {
         )
         assertEquals(0, correct.state.summary?.passed)
 
-        val wrong = play("APPLE", "BREAD").send(GameEvent.Pass).answer().answerWrong().send(GameEvent.Forfeit)
+        val wrong = play("APPLE", "BREAD").send(GameEvent.Pass).answer().answerWrongAndWait()
         assertEquals(1, wrong.state.summary?.wrong)
         assertEquals(0, wrong.state.summary?.passed)
     }
@@ -168,7 +169,7 @@ class GameEngineScoringTest {
     fun `summary counts slots and lists the cards to review`() {
         val base = wheelOf("APPLE", "BREAD", "CHAIR", "DOG")
         val wheel = Wheel(base.slots + Slot('Q', null, SlotState.SKIPPED))
-        val game = play(wheel = wheel).answer().answerWrongAndWait().send(GameEvent.Pass).send(GameEvent.Forfeit)
+        val game = play(wheel = wheel).answer().answerWrongAndWait().send(GameEvent.Pass, GameEvent.Tick(180_000L))
 
         val summary = checkNotNull(game.state.summary)
         assertEquals(1, summary.correct)
@@ -178,6 +179,6 @@ class GameEngineScoringTest {
         assertEquals(1, summary.unanswered)
         assertEquals(listOf(CardId("a1-apple")), summary.correctCards)
         assertEquals(listOf(CardId("a1-bread"), CardId("a1-chair")), summary.missedCards)
-        assertEquals(180_000L, summary.remainingMs)
+        assertEquals(0L, summary.remainingMs)
     }
 }

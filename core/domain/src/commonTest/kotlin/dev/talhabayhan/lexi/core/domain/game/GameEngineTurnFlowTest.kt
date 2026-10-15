@@ -250,12 +250,45 @@ class GameEngineTurnFlowTest {
     }
 
     @Test
-    fun `forfeit ends the game`() {
-        val game = play("APPLE", "BREAD").answer().send(GameEvent.Forfeit)
+    fun `forfeit ends the game and every remaining letter counts as wrong`() {
+        val game = play("APPLE", "BREAD", "CHAIR", "DOG").answer().send(GameEvent.Pass).answer()
+        assertEquals('D', game.currentLetter)
+
+        game.send(GameEvent.Forfeit)
 
         assertEquals(GameStatus.FINISHED, game.state.status)
-        assertEquals(GameOverReason.FORFEIT, game.state.summary?.reason)
-        assertEquals(1, game.state.summary?.unanswered)
+        val summary = checkNotNull(game.state.summary)
+        assertEquals(GameOverReason.FORFEIT, summary.reason)
+        assertEquals(2, summary.correct)
+        assertEquals(2, summary.wrong)
+        assertEquals(0, summary.passed)
+        assertEquals(0, summary.unanswered)
+        assertEquals(listOf(CardId("a1-bread"), CardId("a1-dog")), summary.missedCards)
+        assertEquals(
+            listOf(SlotState.CORRECT, SlotState.WRONG, SlotState.CORRECT, SlotState.WRONG),
+            game.state.wheel.slots.map { it.state },
+        )
+        assertEquals(listOf<EngineEffect>(EngineEffect.GameOver(summary)), game.lastEffects)
+    }
+
+    @Test
+    fun `forfeit leaves skipped slots skipped`() {
+        val wheel = Wheel(wheelOf("APPLE").slots + Slot('Q', null, SlotState.SKIPPED))
+        val summary = checkNotNull(play(wheel = wheel).send(GameEvent.Forfeit).state.summary)
+
+        assertEquals(1, summary.wrong)
+        assertEquals(1, summary.skipped)
+    }
+
+    @Test
+    fun `forfeit before start ends the game with every letter wrong and the full time left`() {
+        val game = play("APPLE", "BREAD", start = false).send(GameEvent.Forfeit)
+
+        val summary = checkNotNull(game.state.summary)
+        assertEquals(GameOverReason.FORFEIT, summary.reason)
+        assertEquals(2, summary.wrong)
+        assertEquals(180_000L, summary.remainingMs)
+        assertNull(game.state.startedAtMs)
     }
 
     @Test

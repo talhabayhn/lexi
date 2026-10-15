@@ -44,6 +44,7 @@ public sealed interface GameEvent {
     @SerialName("resume")
     public data object Resume : GameEvent
 
+    /** Give up: ends the game (also before Start); every remaining letter counts as WRONG. */
     @Serializable
     @SerialName("forfeit")
     public data object Forfeit : GameEvent
