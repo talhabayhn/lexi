@@ -1,0 +1,29 @@
+<resources>
+    <!-- Başlık (03-level-select) -->
+    <string name="levels_title">Seviyeni seç</string>
+    <string name="levels_back">Geri</string>
+
+    <!-- Seviye kartları: CEFR adları ve ilerleme "412 / 850 kelime" -->
+    <string name="levels_a1">Başlangıç</string>
+    <string name="levels_a2">Temel</string>
+    <string name="levels_b1">Orta</string>
+    <string name="levels_b2">İyi orta</string>
+    <string name="levels_c1">İleri</string>
+    <string name="levels_nat">Deyim · phrasal verb</string>
+    <string name="levels_progress">%1$d / %2$d kelime</string>
+
+    <!-- Oyun modu seçici -->
+    <string name="levels_mode_label">OYUN MODU</string>
+    <string name="levels_mode_classic">Klasik</string>
+    <string name="levels_mode_practice">Pratik</string>
+    <string name="levels_mode_hardcore">Hardcore</string>
+    <string name="levels_mode_practice_hint">süresiz</string>
+    <string name="levels_mode_hardcore_hint">tek hata</string>
+
+    <!-- BAŞLA düğmesi ve alt yazısı "A1 · KLASİK · 26 HARF" -->
+    <string name="levels_start">BAŞLA</string>
+    <string name="levels_start_caption">%1$s · %2$s · %3$d HARF</string>
+    <string name="levels_caption_classic">KLASİK</string>
+    <string name="levels_caption_practice">PRATİK</string>
+    <string name="levels_caption_hardcore">HARDCORE</string>
+</resources>

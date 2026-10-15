@@ -17,6 +17,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.GraphicsLayerScope
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.clearAndSetSemantics
@@ -78,10 +80,15 @@ public object LexiLogoDefaults {
 
 /**
  * The four-block logo: the brand letters ([AppInfo.NAME]) in the four game states — red square, yellow circle, blue
- * leaf, ink block. One image for accessibility, announced as the app name.
+ * leaf, ink block. One image for accessibility, announced as the app name. [blockLayer] transforms each block in the
+ * draw phase (the splash animation of `14-splash`), given the block's index 0–3.
  */
 @Composable
-public fun LexiLogo(modifier: Modifier = Modifier, size: LexiLogoSize = LexiLogoSize.Menu) {
+public fun LexiLogo(
+    modifier: Modifier = Modifier,
+    size: LexiLogoSize = LexiLogoSize.Menu,
+    blockLayer: (GraphicsLayerScope.(index: Int) -> Unit)? = null,
+) {
     val colors = LexiTheme.colors
     val letters = AppInfo.NAME.uppercase()
     val letterStyle = LexiTheme.typography.logo40.resized(with(LocalDensity.current) { size.letter.toSp() })
@@ -96,6 +103,7 @@ public fun LexiLogo(modifier: Modifier = Modifier, size: LexiLogoSize = LexiLogo
             val (kind, fill, content) = logoBlock(i)
             Box(
                 modifier = Modifier
+                    .then(if (blockLayer != null) Modifier.graphicsLayer { blockLayer(i) } else Modifier)
                     .size(size.block)
                     .lexiSurface(
                         color = fill,

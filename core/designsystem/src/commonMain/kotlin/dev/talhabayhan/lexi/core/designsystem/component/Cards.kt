@@ -18,6 +18,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.Layout
+import androidx.compose.ui.layout.layout
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.selected
 import androidx.compose.ui.semantics.semantics
@@ -162,7 +163,7 @@ public fun LevelCard(
             Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap4)) {
                 ProgressBar(
                     progress = progress,
-                    modifier = Modifier.fillMaxWidth(),
+                    modifier = Modifier.fillMaxWidth().borderOverflow(LexiTheme.borders.thin),
                     borderColor = lines,
                     trackColor = if (selected) colors.white else Color.Transparent,
                     fillColor = if (selected) colors.ink else colors.blue,
@@ -171,6 +172,17 @@ public fun LevelCard(
             }
         }
     }
+}
+
+/**
+ * The level card's bar is CSS `box-sizing: content-box; width: 100%`: the track is as wide as the card's content and
+ * its [border] comes on top, so it sticks out to the right of the label column by 2 × [border] (`03-level-select`).
+ * Lays the bar out that much wider while reporting the column width.
+ */
+private fun Modifier.borderOverflow(border: Dp): Modifier = layout { measurable, constraints ->
+    val width = constraints.maxWidth + (border * 2).roundToPx()
+    val placeable = measurable.measure(Constraints(minWidth = width, maxWidth = width))
+    layout(constraints.maxWidth, placeable.height) { placeable.place(0, 0) }
 }
 
 /**

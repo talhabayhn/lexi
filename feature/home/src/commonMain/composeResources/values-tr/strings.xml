@@ -1,4 +1,50 @@
 <resources>
-    <!-- Temporary entry until the designed home (02-home) and level select (03-level-select) land -->
-    <string name="home_play_a1_classic">A1 klasik oyna</string>
+    <!-- Üst çubuk (02-home) -->
+    <plurals name="home_streak">
+        <item quantity="one">%1$d gün seri</item>
+        <item quantity="other">%1$d gün seri</item>
+    </plurals>
+    <string name="home_settings">Ayarlar</string>
+    <string name="home_tagline">A'DAN Z'YE İNGİLİZCE</string>
+
+    <!-- Günün çarkı kartı: ay büyük harfle, "GÜNÜN ÇARKI · EKİM" -->
+    <string name="home_daily_label">GÜNÜN ÇARKI · %1$s</string>
+    <string name="home_daily_title">Herkes aynı çarkı çözüyor</string>
+    <string-array name="home_months">
+        <item>OCAK</item>
+        <item>ŞUBAT</item>
+        <item>MART</item>
+        <item>NİSAN</item>
+        <item>MAYIS</item>
+        <item>HAZİRAN</item>
+        <item>TEMMUZ</item>
+        <item>AĞUSTOS</item>
+        <item>EYLÜL</item>
+        <item>EKİM</item>
+        <item>KASIM</item>
+        <item>ARALIK</item>
+    </string-array>
+
+    <!-- OYNA düğmesi ve rozeti "A1 · KLASİK" -->
+    <string name="home_play">OYNA</string>
+    <string name="home_play_badge">%1$s · %2$s</string>
+    <string name="home_mode_classic">KLASİK</string>
+    <string name="home_mode_practice">PRATİK</string>
+    <string name="home_mode_hardcore">HARDCORE</string>
+
+    <!-- Menü kutuları -->
+    <string name="home_tile_notebook">Kelime Defterim</string>
+    <plurals name="home_tile_notebook_due">
+        <item quantity="one">%1$d tekrar bekliyor</item>
+        <item quantity="other">%1$d tekrar bekliyor</item>
+    </plurals>
+    <string name="home_tile_stats">İstatistikler</string>
+    <plurals name="home_tile_stats_learned">
+        <item quantity="one">%1$d kelime öğrenildi</item>
+        <item quantity="other">%1$d kelime öğrenildi</item>
+    </plurals>
+    <string name="home_tile_practice">Pratik modu</string>
+    <string name="home_tile_practice_subtitle">Süresiz, baskısız</string>
+    <string name="home_tile_exams">Sınav paketleri</string>
+    <string name="home_tile_exams_subtitle">LGS · YKS-Dil · YDS</string>
 </resources>

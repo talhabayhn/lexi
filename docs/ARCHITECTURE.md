@@ -191,8 +191,9 @@ Navigation Compose (JetBrains multiplatform artifact, 2.10.0-rc01 pinned until 2
 `@Serializable` routes. Each feature exposes its route + `NavGraphBuilder.xxxScreen()`; the graph is `LexiNavHost` in
 `shared`. Route arguments are primitives/strings (enums as their `name`): navigation 2.10 has no enum nav type on iOS.
 ViewModels that need arguments get the route from Koin (`get<SavedStateHandle>().toRoute<T>()` in the module), so
-their tests construct it directly. Until Home/Level select exist, the placeholder home starts A1 classic and a
-finished game returns to Home. Flows:
+their tests construct it directly. The graph today is `Splash → Home → LevelSelect → Game`; a finished game returns to
+Home until the result screen exists. Splash (`shared/splash`) plays the logo animation while the content DB is
+installed/version-checked, then pops itself. Flows:
 `Splash → Onboarding? → Home`; `Home → LevelSelect → Game → Result`; `Home → Notebook | Stats | Exams | Settings | Daily`;
 `Game → JokerSheet (bottom sheet) | Pause (dialog)`; `Settings → Paywall`.
 Screen ↔ design map: `docs/design/screen-map.md`.

@@ -1,5 +1,7 @@
 plugins {
     id("lexi.kmp.compose")
+    // @Serializable navigation route of the splash (ADR 0016); the features apply it through lexi.feature.
+    alias(libs.plugins.kotlinSerialization)
 }
 
 kotlin {
@@ -20,9 +22,11 @@ kotlin {
             implementation(project(":core:designsystem"))
             implementation(project(":core:platform"))
             implementation(project(":feature:home"))
+            implementation(project(":feature:levels"))
             implementation(project(":feature:game"))
 
             implementation(libs.androidx.navigation.compose)
+            implementation(libs.kotlinx.serialization.core)
             implementation(libs.koin.core)
             implementation(libs.koin.compose)
             implementation(libs.koin.compose.viewmodel)

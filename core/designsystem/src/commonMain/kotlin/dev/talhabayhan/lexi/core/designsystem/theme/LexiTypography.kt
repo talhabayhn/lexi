@@ -124,6 +124,12 @@ public class LexiTypography internal constructor(
     public val wheelRule: TextStyle,
     /** 15 / 700, underlined: text links (`LexiTextLink`, "Atla"). */
     public val link15: TextStyle,
+    /** 15 / 700, +0.16em, uppercase: splash tagline (`14-splash`). */
+    public val label15Wide: TextStyle,
+    /** 14 / 800, +0.08em: badge on the OYNA button "A1 · KLASİK" (`02-home`). */
+    public val badge14: TextStyle,
+    /** 14 / 700, +0.06em: caption on the BAŞLA button "A1 · KLASİK · 26 HARF" (`03-level-select`). */
+    public val ctaCaption14: TextStyle,
 )
 
 /** Static Jost instances shipped in `composeResources/font` (OFL, `files/licenses/jost-ofl.txt`). */
@@ -242,5 +248,8 @@ internal fun lexiTypography(jost: FontFamily): LexiTypography {
         caption12SemiBold = style(12, FontWeight.SemiBold),
         wheelRule = style(13, FontWeight.Bold, letterSpacing = 0.12.em),
         link15 = style(15, FontWeight.Bold).copy(textDecoration = TextDecoration.Underline),
+        label15Wide = style(15, FontWeight.Bold, letterSpacing = 0.16.em),
+        badge14 = style(14, extraBold, letterSpacing = 0.08.em),
+        ctaCaption14 = style(14, FontWeight.Bold, letterSpacing = 0.06.em),
     )
 }

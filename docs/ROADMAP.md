@@ -50,9 +50,9 @@ Module mapping (replaces the earlier `composeApp`): `androidApp` = thin Android 
 **Done when:** app reads a wheel from the bundled DB on both platforms.
 
 ## M4 — Core loop UI
-- [ ] Splash (`14-splash`) with motion spec
-- [ ] Home (`02-home`), Level select (`03-level-select`)
-- [ ] Game screen (`04-game`) wired to engine: wheel, timer, clue, slots, keys, backspace, pass, score
+- [x] Splash (`14-splash`) with motion spec
+- [x] Home (`02-home`), Level select (`03-level-select`)
+- [x] Game screen (`04-game`) wired to engine: wheel, timer, clue, slots, keys, backspace, pass, score
 - [ ] Joker sheet (`05-joker-sheet`) + jokers inventory
 - [ ] Pause dialog (design debt)
 - [ ] Result (`06-result`) incl. "Tekrar edilecekler" → SRS

@@ -2,10 +2,10 @@
 
 | Design file | Canvas name | Route / composable | Module | Milestone |
 |---|---|---|---|---|
-| `14-splash` | Splash animasyonu | `SplashRoute` / `SplashScreen` | shared | M4 |
+| `14-splash` | Splash animasyonu | `SplashRoute` / `SplashScreen` (visuals: `LexiSplash` in designsystem) | shared | M4 (done) |
 | `01-onboarding` | Onboarding / seviye testi (step 2 of 3) | `OnboardingRoute` | feature:onboarding | M6 |
-| `02-home` | Ana menü | `HomeRoute` / `HomeScreen` | feature:home | M4 |
-| `03-level-select` | Seviye ve mod seçimi | `LevelSelectRoute` | feature:levels | M4 |
+| `02-home` | Ana menü | `HomeRoute` / `HomeScreen` | feature:home | M4 (done; tiles of M5-M7 are inert) |
+| `03-level-select` | Seviye ve mod seçimi | `LevelSelectRoute` / `LevelSelectScreen` | feature:levels | M4 (done) |
 | `07-categories` | Seviye kategorileri | `CategoriesRoute(level)` | feature:levels | M5 |
 | `04-game` | Oyun ekranı | `GameRoute(level, mode, category?)` / `GameScreen` | feature:game | M4 |
 | `05-joker-sheet` | Joker seçimi | `JokerSheet` (bottom sheet inside GameScreen) | feature:game | M4 |

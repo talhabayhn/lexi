@@ -1,0 +1,29 @@
+<resources>
+    <!-- Header (03-level-select) -->
+    <string name="levels_title">Choose your level</string>
+    <string name="levels_back">Back</string>
+
+    <!-- Level cards: CEFR names and progress "412 / 850 words" -->
+    <string name="levels_a1">Beginner</string>
+    <string name="levels_a2">Elementary</string>
+    <string name="levels_b1">Intermediate</string>
+    <string name="levels_b2">Upper intermediate</string>
+    <string name="levels_c1">Advanced</string>
+    <string name="levels_nat">Idioms · phrasal verbs</string>
+    <string name="levels_progress">%1$d / %2$d words</string>
+
+    <!-- Game mode selector -->
+    <string name="levels_mode_label">GAME MODE</string>
+    <string name="levels_mode_classic">Classic</string>
+    <string name="levels_mode_practice">Practice</string>
+    <string name="levels_mode_hardcore">Hardcore</string>
+    <string name="levels_mode_practice_hint">untimed</string>
+    <string name="levels_mode_hardcore_hint">one mistake</string>
+
+    <!-- Start button and its caption "A1 · CLASSIC · 26 LETTERS" -->
+    <string name="levels_start">START</string>
+    <string name="levels_start_caption">%1$s · %2$s · %3$d LETTERS</string>
+    <string name="levels_caption_classic">CLASSIC</string>
+    <string name="levels_caption_practice">PRACTICE</string>
+    <string name="levels_caption_hardcore">HARDCORE</string>
+</resources>

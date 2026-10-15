@@ -7,6 +7,7 @@ import dev.talhabayhan.lexi.core.domain.model.CardId
 import dev.talhabayhan.lexi.core.domain.repository.JokerRepository
 import dev.talhabayhan.lexi.core.domain.repository.ProgressRepository
 import dev.talhabayhan.lexi.core.domain.repository.SessionRepository
+import dev.talhabayhan.lexi.core.domain.repository.StreakRepository
 import dev.talhabayhan.lexi.core.domain.session.SessionResult
 import dev.talhabayhan.lexi.core.domain.srs.CardProgress
 import dev.talhabayhan.lexi.core.domain.stats.SessionRecord
@@ -88,4 +89,17 @@ public class FakeJokerRepository(initial: JokerInventory? = null) : JokerReposit
         state.value = startPack
         return true
     }
+}
+
+/** In-memory [StreakRepository]; [days] are epoch days and may be replaced at any time. */
+public class FakeStreakRepository(days: Collection<Long> = emptyList()) : StreakRepository {
+    private val state = MutableStateFlow(days.distinct().sorted())
+
+    public var days: List<Long>
+        get() = state.value
+        set(value) {
+            state.value = value.distinct().sorted()
+        }
+
+    override fun observeDays(): Flow<List<Long>> = state
 }

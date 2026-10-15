@@ -11,6 +11,7 @@ import dev.talhabayhan.lexi.core.platform.time.SystemAppClock
 import dev.talhabayhan.lexi.data.ResourcesBundledContentDb
 import dev.talhabayhan.lexi.feature.game.di.gameModule
 import dev.talhabayhan.lexi.feature.home.di.homeModule
+import dev.talhabayhan.lexi.feature.levels.di.levelsModule
 import org.koin.core.module.Module
 import org.koin.dsl.module
 
@@ -41,6 +42,7 @@ val appModules: List<Module> = listOf(
     appCoreModule,
     dataModule,
     homeModule,
+    levelsModule,
     gameModule,
 )
 

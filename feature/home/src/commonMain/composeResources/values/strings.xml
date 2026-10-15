@@ -1,4 +1,50 @@
 <resources>
-    <!-- Temporary entry until the designed home (02-home) and level select (03-level-select) land -->
-    <string name="home_play_a1_classic">Play A1 classic</string>
+    <!-- Top bar (02-home) -->
+    <plurals name="home_streak">
+        <item quantity="one">%1$d day streak</item>
+        <item quantity="other">%1$d day streak</item>
+    </plurals>
+    <string name="home_settings">Settings</string>
+    <string name="home_tagline">FROM A TO Z IN ENGLISH</string>
+
+    <!-- Daily wheel card: month in capitals, "DAILY WHEEL · OCTOBER" -->
+    <string name="home_daily_label">DAILY WHEEL · %1$s</string>
+    <string name="home_daily_title">Everyone solves the same wheel</string>
+    <string-array name="home_months">
+        <item>JANUARY</item>
+        <item>FEBRUARY</item>
+        <item>MARCH</item>
+        <item>APRIL</item>
+        <item>MAY</item>
+        <item>JUNE</item>
+        <item>JULY</item>
+        <item>AUGUST</item>
+        <item>SEPTEMBER</item>
+        <item>OCTOBER</item>
+        <item>NOVEMBER</item>
+        <item>DECEMBER</item>
+    </string-array>
+
+    <!-- Play button and its badge "A1 · CLASSIC" -->
+    <string name="home_play">PLAY</string>
+    <string name="home_play_badge">%1$s · %2$s</string>
+    <string name="home_mode_classic">CLASSIC</string>
+    <string name="home_mode_practice">PRACTICE</string>
+    <string name="home_mode_hardcore">HARDCORE</string>
+
+    <!-- Menu tiles -->
+    <string name="home_tile_notebook">My Notebook</string>
+    <plurals name="home_tile_notebook_due">
+        <item quantity="one">%1$d review due</item>
+        <item quantity="other">%1$d reviews due</item>
+    </plurals>
+    <string name="home_tile_stats">Statistics</string>
+    <plurals name="home_tile_stats_learned">
+        <item quantity="one">%1$d word learned</item>
+        <item quantity="other">%1$d words learned</item>
+    </plurals>
+    <string name="home_tile_practice">Practice mode</string>
+    <string name="home_tile_practice_subtitle">Untimed, no pressure</string>
+    <string name="home_tile_exams">Exam packs</string>
+    <string name="home_tile_exams_subtitle">LGS · YKS-Dil · YDS</string>
 </resources>

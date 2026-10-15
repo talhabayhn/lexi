@@ -81,6 +81,9 @@ public class LexiMotion internal constructor(
     /** #9 splash, total in app. */
     public val splashDurationMillis: Int = 1200
 
+    /** #9 splash with reduced motion: the logo is shown statically for this long before the app moves on. */
+    public val splashReducedHoldMillis: Int = 600
+
     /** #11 toast slides down from the top by this distance. */
     public val toastSlideDistance: Dp = 16.dp
 
