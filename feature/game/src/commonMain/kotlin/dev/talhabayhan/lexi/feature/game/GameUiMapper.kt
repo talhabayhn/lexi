@@ -4,8 +4,11 @@ import dev.talhabayhan.lexi.core.designsystem.component.AnswerSlotState
 import dev.talhabayhan.lexi.core.designsystem.component.LetterKeyState
 import dev.talhabayhan.lexi.core.designsystem.component.WheelLetterState
 import dev.talhabayhan.lexi.core.designsystem.component.WheelLetterUi
+import dev.talhabayhan.lexi.core.domain.game.GameEngine
 import dev.talhabayhan.lexi.core.domain.game.GameState
 import dev.talhabayhan.lexi.core.domain.game.GameStatus
+import dev.talhabayhan.lexi.core.domain.game.JokerCost
+import dev.talhabayhan.lexi.core.domain.game.JokerType
 import dev.talhabayhan.lexi.core.domain.game.KeyState
 import dev.talhabayhan.lexi.core.domain.game.SlotState
 import kotlinx.collections.immutable.ImmutableList
@@ -14,12 +17,22 @@ import kotlinx.collections.immutable.toImmutableList
 /** Pure mapping of engine state to the screen's resting look (ADR 0019 §2). */
 internal object GameUiMapper {
     private const val MS_PER_SECOND = 1_000L
+    private const val BLANK = '_'
+
+    /** `05-joker-sheet` order: Harf aç, Çeldiricileri temizle, Örnek cümle, Telaffuzu dinle. */
+    private val SHEET_ORDER = listOf(
+        JokerType.REVEAL_LETTER,
+        JokerType.REMOVE_DISTRACTORS,
+        JokerType.EXAMPLE,
+        JokerType.LISTEN,
+    )
 
     /**
      * [previous] keeps the last turn visible after game over (the engine clears the current slot when it finishes)
-     * until the screen navigates away.
+     * until the screen navigates away. [engine] decides which jokers can be used ([GameEngine.canUseJoker]). The
+     * screen flags (joker sheet, quit confirmation) are owned by the ViewModel and stay false here.
      */
-    fun map(state: GameState, previous: GameUiState? = null): GameUiState {
+    fun map(state: GameState, engine: GameEngine, previous: GameUiState? = null): GameUiState {
         val wheel = state.wheel.slots
             .filter { it.isPlayable }
             .map { WheelLetterUi(it.letter, it.state.toWheelState()) }
@@ -36,7 +49,31 @@ internal object GameUiMapper {
                 !state.isPaused &&
                 !state.isRevealing &&
                 state.currentInput != null,
+            jokers = jokersOf(state, engine),
+            jokerAdReward = engine.config.rewardedAdJokerReward,
         )
+    }
+
+    /** The sheet's jokers in design order with inventory, cost in this mode and [GameEngine.canUseJoker]. */
+    private fun jokersOf(state: GameState, engine: GameEngine): ImmutableList<JokerUi> = SHEET_ORDER.map { type ->
+        val cost = when (val cost = engine.config.jokerCost(type, state.mode)) {
+            is JokerCost.Time -> JokerCostUi.Seconds((cost.ms / MS_PER_SECOND).toInt())
+            is JokerCost.Points -> JokerCostUi.Points(cost.points)
+            JokerCost.Free -> JokerCostUi.Free
+        }
+        JokerUi(type, state.jokers.count(type), cost, engine.canUseJoker(state, type))
+    }.toImmutableList()
+
+    /**
+     * [example] with every occurrence of [answer] (whole words, any case) blanked letter by letter; the spaces of a
+     * multi-word answer stay (`CONTENT.md` §2: the example contains the answer as written).
+     */
+    fun blankExample(example: String, answer: String): String {
+        val words = answer.trim().split(' ').filter { it.isNotEmpty() }
+        val pattern = words.joinToString(separator = "\\s+", prefix = "\\b", postfix = "\\b") { Regex.escape(it) }
+        return Regex(pattern, RegexOption.IGNORE_CASE).replace(example) { match ->
+            match.value.map { if (it.isLetter()) BLANK else it }.joinToString("")
+        }
     }
 
     /** Clock for the HUD; before `Start` the full [timeLimitMs] is shown. Null limit = untimed mode. */
@@ -78,6 +115,7 @@ internal object GameUiMapper {
             words = cells.splitIntoWords(card.answer),
             keys = input.keys.map { KeyUi(it.letter, it.state.toKeyState()) }.toImmutableList(),
             isRevealing = state.isRevealing,
+            example = if (JokerType.EXAMPLE in input.jokersUsed) blankExample(card.example, card.answer) else null,
         )
     }
 

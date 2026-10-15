@@ -1,0 +1,163 @@
+package dev.talhabayhan.lexi.feature.game.result
+
+import androidx.lifecycle.ViewModelStore
+import dev.talhabayhan.lexi.core.designsystem.component.ReviewOutcome
+import dev.talhabayhan.lexi.core.domain.game.GameConfig
+import dev.talhabayhan.lexi.core.domain.game.GameMode
+import dev.talhabayhan.lexi.core.domain.game.GameOverReason
+import dev.talhabayhan.lexi.core.domain.model.Level
+import dev.talhabayhan.lexi.core.testing.FakeCardRepository
+import dev.talhabayhan.lexi.core.testing.FakeSpeaker
+import dev.talhabayhan.lexi.core.testing.testCard
+import dev.talhabayhan.lexi.feature.game.GameRoute
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.StandardTestDispatcher
+import kotlinx.coroutines.test.TestScope
+import kotlinx.coroutines.test.resetMain
+import kotlinx.coroutines.test.runCurrent
+import kotlinx.coroutines.test.runTest
+import kotlinx.coroutines.test.setMain
+import kotlin.test.AfterTest
+import kotlin.test.BeforeTest
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertFalse
+import kotlin.test.assertNull
+import kotlin.test.assertTrue
+
+@OptIn(ExperimentalCoroutinesApi::class)
+class ResultViewModelTest {
+    private val answers = listOf("APPLE", "BREAD", "CHAIR", "DOG", "EGG", "FISH", "GOAT")
+    private val cards = FakeCardRepository(answers.map { testCard(it) })
+    private val speaker = FakeSpeaker()
+    private val config = GameConfig()
+
+    @BeforeTest
+    fun setUp() {
+        Dispatchers.setMain(StandardTestDispatcher())
+    }
+
+    @AfterTest
+    fun tearDown() {
+        Dispatchers.resetMain()
+    }
+
+    private fun route(
+        missed: List<String> = answers.map { "a1-${it.lowercase()}" },
+        passed: List<String> = listOf("a1-apple", "a1-chair"),
+        mode: GameMode = GameMode.CLASSIC,
+        remainingMs: Long? = 11_200L,
+        recorded: Boolean = true,
+    ) = ResultRoute(
+        level = "A1",
+        mode = mode.name,
+        category = "food-drink",
+        reason = GameOverReason.TIME_UP.name,
+        score = 340,
+        correct = 19,
+        wrong = 3,
+        passed = 4,
+        longestStreak = 6,
+        remainingMs = remainingMs,
+        missedCards = missed,
+        passedCards = passed,
+        recorded = recorded,
+    )
+
+    private fun TestScope.viewModel(route: ResultRoute = route()) =
+        ResultViewModel(route, cards, speaker, config).also { runCurrent() }
+
+    @Test
+    fun `the header and stats come from the route`() = runTest {
+        val state = viewModel().state.value
+
+        assertEquals(Level.A1, state.level)
+        assertEquals(GameMode.CLASSIC, state.mode)
+        assertEquals(GameOverReason.TIME_UP, state.reason)
+        assertEquals(340, state.score)
+        assertEquals(6, state.longestStreak)
+        assertEquals(12, state.remainingSeconds, "rounded up like the game clock")
+        assertEquals(listOf(19, 3, 4), listOf(state.correct, state.wrong, state.passed))
+        assertEquals(7, state.addedToNotebook)
+    }
+
+    @Test
+    fun `review rows keep the wheel order with word and clue and example and outcome`() = runTest {
+        val rows = viewModel().state.value.rows
+
+        assertEquals(listOf("apple", "bread", "chair", "dog"), rows.map { it.word })
+        assertEquals(listOf('A', 'B', 'C', 'D'), rows.map { it.letter })
+        assertEquals(
+            listOf(ReviewOutcome.Passed, ReviewOutcome.Wrong, ReviewOutcome.Passed, ReviewOutcome.Wrong),
+            rows.map { it.outcome },
+        )
+        assertEquals("ipucu", rows.first().clue)
+        assertEquals("An example with APPLE.", rows.first().example)
+    }
+
+    @Test
+    fun `seven rows show four and the rest behind see all`() = runTest {
+        val vm = viewModel()
+        assertEquals(4, vm.state.value.rows.size)
+        assertEquals(3, vm.state.value.hiddenRows)
+
+        vm.onIntent(ResultIntent.ShowAll)
+
+        assertEquals(7, vm.state.value.rows.size)
+        assertEquals(0, vm.state.value.hiddenRows)
+    }
+
+    @Test
+    fun `five rows are all shown because a see-all row would take the same place`() = runTest {
+        val state = viewModel(route(missed = answers.take(5).map { "a1-${it.lowercase()}" })).state.value
+
+        assertEquals(5, state.rows.size)
+        assertEquals(0, state.hiddenRows)
+    }
+
+    @Test
+    fun `a game without misses has no rows and adds nothing`() = runTest {
+        val state = viewModel(route(missed = emptyList(), passed = emptyList())).state.value
+
+        assertFalse(state.isLoading)
+        assertTrue(state.rows.isEmpty())
+        assertEquals(0, state.addedToNotebook)
+    }
+
+    @Test
+    fun `nothing is reported as added when the game could not be stored`() = runTest {
+        assertEquals(0, viewModel(route(recorded = false)).state.value.addedToNotebook)
+    }
+
+    @Test
+    fun `untimed modes show no time left`() = runTest {
+        assertNull(viewModel(route(mode = GameMode.PRACTICE, remainingMs = null)).state.value.remainingSeconds)
+    }
+
+    @Test
+    fun `cards that left the content are skipped`() = runTest {
+        val state = viewModel(route(missed = listOf("a1-apple", "a1-gone", "a1-bread"))).state.value
+
+        assertEquals(listOf("apple", "bread"), state.rows.map { it.word })
+    }
+
+    @Test
+    fun `the speaker reads a row and stops when the screen closes`() = runTest {
+        val vm = viewModel()
+
+        vm.onIntent(ResultIntent.Speak("chair"))
+        ViewModelStore().apply { put("result", vm) }.clear()
+
+        assertEquals(listOf("chair"), speaker.spoken)
+        assertEquals(1, speaker.stopCount)
+    }
+
+    @Test
+    fun `play again starts the same level and mode and category`() = runTest {
+        assertEquals(
+            GameRoute(level = "A1", mode = "CLASSIC", category = "food-drink"),
+            viewModel().playAgain,
+        )
+    }
+}

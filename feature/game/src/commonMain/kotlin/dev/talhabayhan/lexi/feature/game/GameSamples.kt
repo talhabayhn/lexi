@@ -4,6 +4,7 @@ import dev.talhabayhan.lexi.core.designsystem.component.AnswerSlotState
 import dev.talhabayhan.lexi.core.designsystem.component.LetterKeyState
 import dev.talhabayhan.lexi.core.designsystem.component.WheelLetterState
 import dev.talhabayhan.lexi.core.designsystem.component.WheelLetterUi
+import dev.talhabayhan.lexi.core.domain.game.JokerType
 import dev.talhabayhan.lexi.core.domain.model.LetterRule
 import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.core.domain.model.PartOfSpeech
@@ -84,4 +85,34 @@ internal object GameSamples {
         ),
         inputEnabled = false,
     )
+
+    /**
+     * `05-joker-sheet.png`: the sheet over the game at 1:31, jokers 2 / 1 / 3 / 0 (Telaffuzu dinle disabled), Classic
+     * costs. The design's background is a simplified board; this is the real game screen behind the scrim.
+     */
+    val jokerSheet: GameUiState = design.copy(
+        jokers = persistentListOf(
+            JokerUi(JokerType.REVEAL_LETTER, 2, JokerCostUi.Seconds(10), enabled = true),
+            JokerUi(JokerType.REMOVE_DISTRACTORS, 1, JokerCostUi.Seconds(15), enabled = true),
+            JokerUi(JokerType.EXAMPLE, 3, JokerCostUi.Points(5), enabled = true),
+            JokerUi(JokerType.LISTEN, 0, JokerCostUi.Points(10), enabled = false),
+        ),
+        jokerAdReward = 1,
+        isJokerSheetOpen = true,
+    )
+
+    val jokerSheetClock: GameClockUi =
+        GameClockUi(isTimed = true, remainingMs = 91_000L, fraction = 0.51f, wholeSeconds = 91, isWarning = false)
+
+    /** After the "Örnek cümle" joker (design debt: the example line in the clue card has no design). */
+    val exampleJoker: GameUiState = design.copy(
+        turn = typingTurn.copy(example = "We cook dinner in the _______."),
+        jokers = jokerSheet.jokers.map { it.copy(enabled = false) }.toImmutableList(),
+    )
+
+    /** The pause dialog (design debt) over the design board. */
+    val paused: GameUiState = design.copy(isPaused = true, inputEnabled = false)
+
+    /** Second step of the pause dialog: confirm giving up. */
+    val quitConfirmation: GameUiState = paused.copy(isQuitConfirmation = true)
 }

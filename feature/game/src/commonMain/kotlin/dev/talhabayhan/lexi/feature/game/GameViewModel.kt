@@ -3,6 +3,7 @@ package dev.talhabayhan.lexi.feature.game
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import co.touchlab.kermit.Logger
 import dev.talhabayhan.lexi.core.domain.feedback.Speaker
 import dev.talhabayhan.lexi.core.domain.game.EngineEffect
 import dev.talhabayhan.lexi.core.domain.game.GameConfig
@@ -11,6 +12,7 @@ import dev.talhabayhan.lexi.core.domain.game.GameEvent
 import dev.talhabayhan.lexi.core.domain.game.GameMode
 import dev.talhabayhan.lexi.core.domain.game.GameState
 import dev.talhabayhan.lexi.core.domain.game.GameStatus
+import dev.talhabayhan.lexi.core.domain.game.JokerType
 import dev.talhabayhan.lexi.core.domain.game.SavedGame
 import dev.talhabayhan.lexi.core.domain.game.SavedGameCodec
 import dev.talhabayhan.lexi.core.domain.game.WheelGenerator
@@ -22,7 +24,10 @@ import dev.talhabayhan.lexi.core.domain.repository.ProgressRepository
 import dev.talhabayhan.lexi.core.domain.repository.SettingsRepository
 import dev.talhabayhan.lexi.core.domain.session.FinishGame
 import dev.talhabayhan.lexi.core.domain.time.AppClock
+import dev.talhabayhan.lexi.feature.game.GameSession.Companion.isIgnored
+import dev.talhabayhan.lexi.feature.game.result.ResultRoute
 import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.CoroutineStart
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.channels.Channel
@@ -34,6 +39,8 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
 import kotlin.time.ComparableTimeMark
 import kotlin.time.Duration.Companion.milliseconds
@@ -48,7 +55,9 @@ internal fun interface SeedSource {
  * Runs one game (ADR 0019): loads or restores the wheel, owns time (a 100 ms ticker over the injected [timeSource]
  * that runs only while playing, unpaused and in the foreground), feeds intents to the [GameSession] and maps the
  * engine's state and effects. Background ⇒ final tick + Pause; foreground keeps the game paused. The applied events
- * are kept in [SavedStateHandle] for process-death restore; a finished game is recorded once by [FinishGame].
+ * are kept in [SavedStateHandle] for process-death restore until the finished game is recorded once by [FinishGame].
+ * Owns the screen flags the engine doesn't know: the joker sheet (the clock keeps running, `GAME_RULES.md` §5) and
+ * the quit confirmation of the pause dialog.
  */
 internal class GameViewModel(
     /** Navigation arguments, `handle.toRoute<GameRoute>()` (see `gameModule`). */
@@ -81,6 +90,11 @@ internal class GameViewModel(
     private var finished = false
     private var ticker: Job? = null
     private var lastMark: ComparableTimeMark? = null
+    private var jokerSheetOpen = false
+    private var quitConfirmation = false
+
+    /** Joker inventory writes run one after another, each saving the latest inventory (ADR 0019). */
+    private val jokerSaves = Mutex()
 
     init {
         viewModelScope.launch { load() }
@@ -95,14 +109,24 @@ internal class GameViewModel(
 
             GameIntent.Pass -> input(GameEvent.Pass)
 
-            // Hook for the joker sheet task (05-joker-sheet); the sheet does not pause the game (GAME_RULES.md §5).
-            GameIntent.OpenJokers -> Unit
+            // The sheet does not pause the game (GAME_RULES.md §5).
+            GameIntent.OpenJokers -> if (state.value.inputEnabled) updateFlags(jokerSheet = true)
+
+            GameIntent.CloseJokers -> updateFlags(jokerSheet = false)
+
+            is GameIntent.UseJoker -> input(GameEvent.UseJoker(intent.type))
 
             GameIntent.Pause -> input(GameEvent.Pause)
 
             GameIntent.Resume -> input(GameEvent.Resume)
 
+            GameIntent.RequestQuit -> if (session?.state?.isPaused == true) updateFlags(quit = true)
+
+            GameIntent.CancelQuit -> updateFlags(quit = false)
+
             GameIntent.Forfeit -> input(GameEvent.Forfeit)
+
+            GameIntent.Back -> back()
 
             GameIntent.Background -> {
                 foreground = false
@@ -115,6 +139,27 @@ internal class GameViewModel(
                 startIfReady()
             }
         }
+    }
+
+    /** System back, see [GameIntent.Back]. */
+    private fun back() {
+        val current = session?.state ?: return
+        when {
+            jokerSheetOpen -> updateFlags(jokerSheet = false)
+
+            quitConfirmation -> updateFlags(quit = false)
+
+            current.status == GameStatus.PLAYING && !current.isPaused -> input(GameEvent.Pause)
+
+            // Paused (the dialog stays: only "Devam et" restarts the clock), not started or finished: nothing.
+            else -> Unit
+        }
+    }
+
+    private fun updateFlags(jokerSheet: Boolean = jokerSheetOpen, quit: Boolean = quitConfirmation) {
+        jokerSheetOpen = jokerSheet
+        quitConfirmation = quit
+        session?.state?.let(::publish)
     }
 
     override fun onCleared() {
@@ -190,16 +235,27 @@ internal class GameViewModel(
         val current = session ?: return
         val before = current.state
         val transition = current.dispatch(event)
-        if (transition.state === before) return
+        // Ignored = same state and no effects, exactly what GameSession leaves out of the log.
+        if (transition.isIgnored(before)) return
         // Ticks are saved with the next other event; going to the background always dispatches Pause.
         if (event !is GameEvent.Tick || transition.state.status == GameStatus.FINISHED) save(current)
-        publish(transition.state)
-        transition.effects.forEach { onEngineEffect(it, transition.state) }
+        val state = transition.state
+        // The sheet closes when its joker was applied and whenever input stops (pause, reveal, game over).
+        if (transition.effects.any { it is EngineEffect.JokerApplied } || !acceptsInput(state)) jokerSheetOpen = false
+        if (!state.isPaused || state.status != GameStatus.PLAYING) quitConfirmation = false
+        publish(state)
+        transition.effects.forEach { onEngineEffect(it, state) }
         syncTicker()
     }
 
+    private fun acceptsInput(state: GameState): Boolean =
+        state.status == GameStatus.PLAYING && !state.isPaused && !state.isRevealing && state.currentInput != null
+
     private fun publish(state: GameState) {
-        mutableState.value = GameUiMapper.map(state, mutableState.value)
+        mutableState.value = GameUiMapper.map(state, checkNotNull(engine), mutableState.value).copy(
+            isJokerSheetOpen = jokerSheetOpen,
+            isQuitConfirmation = quitConfirmation,
+        )
         mutableClock.value = GameUiMapper.clock(
             state = state,
             timeLimitMs = engine?.config?.timeLimitMs(state.mode),
@@ -207,13 +263,12 @@ internal class GameViewModel(
         )
     }
 
-    /** Finished games are not saved (ADR 0019). */
+    /**
+     * Keeps the event log for restore. A finished game stays saved until [FinishGame] has recorded it, so a process
+     * death in between records it after restore (ADR 0019 addendum); [onGameOver] removes it.
+     */
     private fun save(current: GameSession) {
-        if (current.state.status == GameStatus.FINISHED) {
-            handle.remove<String>(KEY_GAME)
-        } else {
-            handle[KEY_GAME] = SavedGameCodec.encode(current.saved)
-        }
+        handle[KEY_GAME] = SavedGameCodec.encode(current.saved)
     }
 
     private fun onEngineEffect(effect: EngineEffect, state: GameState) {
@@ -236,8 +291,13 @@ internal class GameViewModel(
 
             is EngineEffect.TimeWarning -> emit(GameEffect.TimeWarning(effect.secondsLeft))
 
-            // Saved at once: killing the app never refunds a joker (ADR 0019).
-            is EngineEffect.JokerApplied -> viewModelScope.launch { jokers.save(state.jokers) }
+            is EngineEffect.JokerApplied -> {
+                saveJokers()
+                // "Telaffuzu dinle": the answer is spoken (whatever the speak-on-correct setting).
+                if (effect.type == JokerType.LISTEN) {
+                    state.currentSlot?.card?.answer?.let { speaker.speak(it.lowercase()) }
+                }
+            }
 
             is EngineEffect.GameOver -> onGameOver()
 
@@ -251,24 +311,62 @@ internal class GameViewModel(
         effectChannel.trySend(effect)
     }
 
-    /** Records the game exactly once, then leaves for the result. */
+    /**
+     * Saved at once and not cancellable: killing the app or leaving the screen never refunds a joker (ADR 0019). The
+     * writes are serialized and each stores the inventory current when it runs, so the last write is the newest.
+     */
+    private fun saveJokers() {
+        viewModelScope.launch(start = CoroutineStart.UNDISPATCHED) {
+            withContext(NonCancellable) {
+                jokerSaves.withLock {
+                    val inventory = session?.state?.jokers ?: return@withLock
+                    try {
+                        jokers.save(inventory)
+                    } catch (e: CancellationException) {
+                        throw e
+                    } catch (e: Exception) {
+                        // TODO(M7): report through the crash reporter (Crashlytics behind an interface).
+                        log.e(e) { "joker inventory not saved" }
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * Records the game exactly once (one retry after a storage failure), then leaves for the result. The saved
+     * snapshot is removed only after [FinishGame] succeeded.
+     */
     private fun onGameOver() {
         if (finished) return
         finished = true
+        jokerSheetOpen = false
+        quitConfirmation = false
         syncTicker()
         val final = checkNotNull(session).state
+        publish(final)
+        val category = sessionCategory()
         viewModelScope.launch {
-            withContext(NonCancellable) {
-                try {
-                    finishGame(final, category = sessionCategory())
-                } catch (e: CancellationException) {
-                    throw e
-                } catch (e: Exception) {
-                    // Storage failed: the result is still shown; crash reporting (M7) will report it.
-                }
-            }
-            effectChannel.send(GameEffect.NavigateToResult)
+            val recorded = withContext(NonCancellable) { record(final, category) }
+            if (recorded) handle.remove<String>(KEY_GAME)
+            effectChannel.send(GameEffect.NavigateToResult(ResultRoute.of(final, route.categoryId, recorded)))
         }
+    }
+
+    /** [FinishGame] with one retry (it repeats only the steps that failed); false when both attempts failed. */
+    private suspend fun record(final: GameState, category: CategoryId?): Boolean {
+        repeat(FINISH_ATTEMPTS) { attempt ->
+            try {
+                finishGame(final, category = category)
+                return true
+            } catch (e: CancellationException) {
+                throw e
+            } catch (e: Exception) {
+                // TODO(M7): report through the crash reporter (Crashlytics behind an interface).
+                log.e(e) { "finishing the game failed (attempt ${attempt + 1} of $FINISH_ATTEMPTS)" }
+            }
+        }
+        return false
     }
 
     /** `SessionResult.category`: null for wheels without a category (review, daily, level test). */
@@ -311,6 +409,11 @@ internal class GameViewModel(
     companion object {
         /** Technical tick rate, not a game rule: keeps the 1200 ms reveal and the timer bar precise. */
         val TICK_INTERVAL = 100.milliseconds
+
+        /** A failed [FinishGame] is retried once. */
+        private const val FINISH_ATTEMPTS = 2
+
+        private val log = Logger.withTag("GameViewModel")
 
         /** [SavedStateHandle] keys: the [SavedGame] JSON and the Classic time limit the game started with. */
         const val KEY_GAME: String = "game.saved"

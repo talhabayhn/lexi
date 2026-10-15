@@ -22,7 +22,7 @@ internal class GameSession private constructor(private val engine: GameEngine, i
 
     fun dispatch(event: GameEvent): Transition<GameState> {
         val transition = engine.reduce(state, event)
-        if (transition.state !== state || transition.effects.isNotEmpty()) {
+        if (!transition.isIgnored(before = state)) {
             state = transition.state
             saved = saved.append(event)
         }
@@ -30,6 +30,12 @@ internal class GameSession private constructor(private val engine: GameEngine, i
     }
 
     companion object {
+        /**
+         * An ignored event: the engine returned the very same state and no effects (`GameEngine.reduce`). Applied
+         * events are logged and reach the screen; the ViewModel uses the same rule, so no effect is ever dropped.
+         */
+        fun Transition<GameState>.isIgnored(before: GameState): Boolean = state === before && effects.isEmpty()
+
         /** A new game from `GameEngine.newGame` (before `Start`). */
         fun start(engine: GameEngine, initial: GameState): GameSession =
             GameSession(engine, initial, SavedGame.of(initial))

@@ -1,17 +1,22 @@
 package dev.talhabayhan.lexi.feature.game
 
+import dev.talhabayhan.lexi.core.domain.game.EngineEffect
 import dev.talhabayhan.lexi.core.domain.game.GameConfig
 import dev.talhabayhan.lexi.core.domain.game.GameEngine
 import dev.talhabayhan.lexi.core.domain.game.GameEvent
 import dev.talhabayhan.lexi.core.domain.game.GameMode
 import dev.talhabayhan.lexi.core.domain.game.SavedGameCodec
+import dev.talhabayhan.lexi.core.domain.game.Transition
 import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.core.testing.testCard
 import dev.talhabayhan.lexi.core.testing.testWheel
+import dev.talhabayhan.lexi.feature.game.GameSession.Companion.isIgnored
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertFalse
 import kotlin.test.assertNull
 import kotlin.test.assertSame
+import kotlin.test.assertTrue
 
 class GameSessionTest {
     private val engine = GameEngine(GameConfig())
@@ -54,6 +59,17 @@ class GameSessionTest {
 
         assertSame(before, transition.state)
         assertEquals(logged, session.saved.events)
+    }
+
+    @Test
+    fun `only the same state without effects counts as ignored`() {
+        val before = session().state
+        val effect = EngineEffect.TimeWarning(secondsLeft = 3)
+
+        assertTrue(Transition(before, emptyList()).isIgnored(before))
+        // Regression (review of 30c4bbf): effects of an unchanged state must reach the screen and the log.
+        assertFalse(Transition(before, listOf(effect)).isIgnored(before))
+        assertFalse(Transition(before.copy(score = 1), emptyList()).isIgnored(before))
     }
 
     @Test

@@ -150,7 +150,8 @@ public fun LexiButton(
         Box(
             modifier = modifier
                 .height(height)
-                .semantics {
+                // One node like the enabled button, so the label is read as a disabled button.
+                .semantics(mergeDescendants = true) {
                     role = Role.Button
                     disabled()
                 }
@@ -197,7 +198,10 @@ public fun LexiButton(
     }
 }
 
-/** Underlined text action ("Metin bağlantı", "Atla", "Ana menüye dön"); 44dp high touch target, no shadow. */
+/**
+ * Underlined text action ("Metin bağlantı", "Atla", "Ana menüye dön"); 44dp high by default, no shadow. A smaller
+ * [minHeight] keeps the design's box while Compose still extends the touch area to the platform minimum.
+ */
 @Composable
 public fun LexiTextLink(
     text: String,
@@ -205,10 +209,11 @@ public fun LexiTextLink(
     modifier: Modifier = Modifier,
     textStyle: TextStyle = LexiTheme.typography.link15,
     contentPadding: PaddingValues = LexiButtonDefaults.LinkContentPadding,
+    minHeight: Dp = LexiButtonDefaults.LinkHeight,
 ) {
     PressableSurface(
         onClick = onClick,
-        modifier = modifier.heightIn(min = LexiButtonDefaults.LinkHeight),
+        modifier = modifier.heightIn(min = minHeight),
         color = Color.Transparent,
         border = null,
         shadow = null,

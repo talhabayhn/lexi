@@ -27,6 +27,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -50,10 +51,18 @@ public object GameHudDefaults {
 
 /**
  * The clue card: white, 3dp border, s6; label (e.g. "İPUCU · İSİM") over the Turkish clue on the left, the blue
- * 64dp column with level and letter count ("A1", "7 HARF") on the right.
+ * 64dp column with level and letter count ("A1", "7 HARF") on the right. [example] is the blanked example sentence
+ * of the "Örnek cümle" joker (DESIGN-DEBT: no design shows it; an italic 14/500 line under the clue).
  */
 @Composable
-public fun ClueCard(label: String, clue: String, level: String, letterCount: String, modifier: Modifier = Modifier) {
+public fun ClueCard(
+    label: String,
+    clue: String,
+    level: String,
+    letterCount: String,
+    modifier: Modifier = Modifier,
+    example: String? = null,
+) {
     val colors = LexiTheme.colors
     val typography = LexiTheme.typography
     Row(
@@ -73,6 +82,7 @@ public fun ClueCard(label: String, clue: String, level: String, letterCount: Str
         ) {
             Text(label, style = typography.label12)
             Text(clue, style = typography.clue)
+            if (example != null) Text(example, style = typography.caption14, fontStyle = FontStyle.Italic)
         }
         Box(Modifier.width(LexiTheme.borders.regular).fillMaxHeight().background(colors.ink))
         Column(

@@ -8,13 +8,13 @@ each with a `@Preview` and a Roborazzi screenshot. Feature screens compose ONLY 
 | `LexiButton` | `Primary` (red, white text), `Secondary` (white), `Pass` (yellow), `Ink` (ink bg, yellow/cream text), `Blue` (notebook review CTA); states: normal, pressed, disabled (dashed `borderMuted`, `disabledFill`, `inkMuted` text) | 3dp border, square, hard shadow s5 (s6 for hero CTAs); pressed = translate + shadow 0 |
 | `LexiTextLink` | — | underlined, 700 |
 | `NavSquareButton` | back, close, settings, pause | 44dp square, white fill, 3dp border, icon 18–20 — **navigation = square** |
-| `ActionCircleButton` | joker (red), others | 56dp circle — **game actions = circle** |
+| `ActionCircleButton` | joker (red), others; disabled (50 %) | 56dp circle — **game actions = circle** |
 | `IconSquareButton` | backspace | 56dp square |
 | `WheelLetter` | Todo, Current, Correct, Wrong, Passed | 28dp chip, 13sp/800; shapes per tokens; Current scale 1.3 |
 | `LetterWheel` | 26 (or N) letters on a circle | 320dp box, radius 144, angle = −90° + i·360°/N, 288dp ring 3dp, centre 180dp yellow circle with big letter + rule label ("İLE BAŞLAR" / "İÇİNDE GEÇER") |
 | `AnswerSlot` | Filled (ink bg, cream letter), Active (white, red border), Empty, Wrong (red bg, white letter), JokerFilled (blue bg) | 40×48dp, letter 26sp/800 |
-| `LetterKey` | Normal, Pressed (yellow), Used (dashed, muted), RemovedByJoker (dashed, empty) | height 50, 3dp border, shadow s3, 22sp/800, 5-col grid gap 8 |
-| `ClueCard` | — | white, 3dp, shadow s6, label + clue 30sp, right blue column 64dp with level + letter count |
+| `LetterKey` | Normal, Pressed (yellow), Used (dashed, muted), RemovedByJoker (dashed, empty), disabled (input blocked: 50 %, no shadow — design debt) | height 50, 3dp border, shadow s3, 22sp/800, 5-col grid gap 8 |
+| `ClueCard` | —, with example (Örnek cümle joker, design debt: italic 14/500 line) | white, 3dp, shadow s6, label + clue 30sp, right blue column 64dp with level + letter count |
 | `TimerBar` | normal (yellow fill, ink counter), warning = last 10 s (red fill, red counter pulsing 1 → 1.12 → 1 every 600 ms; colours only under reduced motion) | 48dp high, 3dp border, fill + right border |
 | `ScoreBadge` | — | 48dp blue circle, white 15sp/800 |
 | `SegmentedControl` | 2–6 segments | selected = ink bg + yellow text; dividers 3dp |
@@ -30,6 +30,8 @@ each with a `@Preview` and a Roborazzi screenshot. Feature screens compose ONLY 
 | `Toast` | success (blue), info (white with undo link) | top, shadow s4 (16-components.html) |
 | `ConfirmDialog` | — | white, 3dp, shadow s8, red square icon, title 24/800, body, two buttons |
 | `BottomSheet` / `BottomSheetPanel` / `ModalScrim` | joker sheet | cream, 4dp top border, scrim 55%; overlays at the screen root |
+| `JokerRow` / `StatusPill` | enabled, disabled (50 %, no shadow) | joker sheet row: 40dp count chip, title 17/800, text 13/500, cost chip; white pill "Süre işlemeye devam ediyor · 1:31" (`05-joker-sheet`) |
+| `ReviewRow` / `ReviewMoreRow` | wrong (red square), passed (yellow leaf) | result list row: 34dp letter chip, word 19/800, "clue · *example*", 44dp speaker; "+N kelime daha · Tümünü gör →" (`06-result`) |
 | `EmptyState` | — | dashed 3dp border, overlapping circle+square illustration |
 | `LexiLogo` / `LexiWordmark` / `LexiLogoMark` / `LexiAppIcon` | full (4 blocks: Hero, Splash, Menu), compact wordmark, shape mark, icon option 1 | `13-logo-and-icon` |
 | `DecorShape` | circle, square, halfPill, leaf, diamond | markers and background decoration; size includes the border (HTML markers are content-box) |

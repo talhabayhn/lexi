@@ -3,6 +3,7 @@ package dev.talhabayhan.lexi.feature.game
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.LocalLifecycleOwner
@@ -15,6 +16,7 @@ import dev.talhabayhan.lexi.core.domain.game.GameMode
 import dev.talhabayhan.lexi.core.domain.model.CategoryId
 import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.feature.game.components.rememberGameMotion
+import dev.talhabayhan.lexi.feature.game.result.ResultRoute
 import kotlinx.coroutines.launch
 import kotlinx.serialization.Serializable
 import org.koin.compose.viewmodel.koinViewModel
@@ -36,17 +38,21 @@ data class GameRoute(val level: String, val mode: String, val category: String? 
 }
 
 /**
- * Registers the game screen. [onFinished] runs after the finished game is recorded (the result screen comes later in
- * M4), [onAbandoned] when a restored game can no longer be played.
+ * Registers the game screen. [onFinished] runs after the finished game is recorded, with the result to show;
+ * [onAbandoned] when a restored game can no longer be played.
  */
-fun NavGraphBuilder.gameScreen(onFinished: () -> Unit, onAbandoned: () -> Unit) {
+fun NavGraphBuilder.gameScreen(onFinished: (ResultRoute) -> Unit, onAbandoned: () -> Unit) {
     composable<GameRoute> {
         GameRoute(onFinished = onFinished, onAbandoned = onAbandoned)
     }
 }
 
 @Composable
-internal fun GameRoute(onFinished: () -> Unit, onAbandoned: () -> Unit, viewModel: GameViewModel = koinViewModel()) {
+internal fun GameRoute(
+    onFinished: (ResultRoute) -> Unit,
+    onAbandoned: () -> Unit,
+    viewModel: GameViewModel = koinViewModel(),
+) {
     val state by viewModel.state.collectAsStateWithLifecycle()
     // Read only inside lambdas (draw phase / derived state), so ticks never recompose the route.
     val clock = viewModel.clock.collectAsStateWithLifecycle()
@@ -58,12 +64,24 @@ internal fun GameRoute(onFinished: () -> Unit, onAbandoned: () -> Unit, viewMode
         lifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
             viewModel.effects.collect { effect ->
                 when (effect) {
-                    GameEffect.NavigateToResult -> currentOnFinished()
+                    is GameEffect.NavigateToResult -> currentOnFinished(effect.result)
                     GameEffect.Abandoned -> currentOnAbandoned()
                     else -> launch { motion.play(effect) }
                 }
             }
         }
     }
-    GameScreen(state = state, clock = { clock.value }, onIntent = viewModel::onIntent, motion = motion)
+    // System back on both platforms: sheet → closed, running game → paused (GameIntent.Back). While loading, back
+    // leaves the screen as usual.
+    GameBackHandler(enabled = !state.isLoading, onBack = { viewModel.onIntent(GameIntent.Back) })
+    val readClock = remember(clock) { { clock.value } }
+    GameScreen(state = state, clock = readClock, onIntent = viewModel::onIntent, motion = motion)
 }
+
+/**
+ * System back (Android back button / predictive back, iOS swipe-back) while the game is shown, through the
+ * navigation-event handler. Platform actuals: the common metadata compilation does not see `navigationevent-compose`
+ * (it is published per platform), so the call lives in `androidMain` / `iosMain` with identical code.
+ */
+@Composable
+internal expect fun GameBackHandler(enabled: Boolean, onBack: () -> Unit)

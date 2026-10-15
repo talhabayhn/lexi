@@ -130,6 +130,14 @@ public class LexiTypography internal constructor(
     public val badge14: TextStyle,
     /** 14 / 700, +0.06em: caption on the BAŞLA button "A1 · KLASİK · 26 HARF" (`03-level-select`). */
     public val ctaCaption14: TextStyle,
+    /** 15 / 600: result summary line "puan · en iyi serin ×6 · kalan süre 0:12" (`06-result`). */
+    public val body15SemiBold: TextStyle,
+    /** 19 / 800, line-height 1.1: word of a review row "chair" (`06-result`). */
+    public val reviewWord: TextStyle,
+    /** 20 / 800, +0.08em: TEKRAR OYNA (`06-result`). */
+    public val button20Wide: TextStyle,
+    /** 14 / 700: "+3 kelime daha · Tümünü gör →" (`06-result`). */
+    public val bodyBold14: TextStyle,
 )
 
 /** Static Jost instances shipped in `composeResources/font` (OFL, `files/licenses/jost-ofl.txt`). */
@@ -251,5 +259,9 @@ internal fun lexiTypography(jost: FontFamily): LexiTypography {
         label15Wide = style(15, FontWeight.Bold, letterSpacing = 0.16.em),
         badge14 = style(14, extraBold, letterSpacing = 0.08.em),
         ctaCaption14 = style(14, FontWeight.Bold, letterSpacing = 0.06.em),
+        body15SemiBold = style(15, FontWeight.SemiBold),
+        reviewWord = style(19, extraBold, lineHeight = 1.1),
+        button20Wide = style(20, extraBold, letterSpacing = 0.08.em),
+        bodyBold14 = style(14, FontWeight.Bold),
     )
 }

@@ -7,9 +7,9 @@
 | `02-home` | Ana menü | `HomeRoute` / `HomeScreen` | feature:home | M4 (done; tiles of M5-M7 are inert) |
 | `03-level-select` | Seviye ve mod seçimi | `LevelSelectRoute` / `LevelSelectScreen` | feature:levels | M4 (done) |
 | `07-categories` | Seviye kategorileri | `CategoriesRoute(level)` | feature:levels | M5 |
-| `04-game` | Oyun ekranı | `GameRoute(level, mode, category?)` / `GameScreen` | feature:game | M4 |
-| `05-joker-sheet` | Joker seçimi | `JokerSheet` (bottom sheet inside GameScreen) | feature:game | M4 |
-| `06-result` | Oyun sonu | `ResultRoute(sessionId)` | feature:game | M4 |
+| `04-game` | Oyun ekranı | `GameRoute(level, mode, category?)` / `GameScreen` | feature:game | M4 (done) |
+| `05-joker-sheet` | Joker seçimi | `JokerSheet` (bottom sheet inside GameScreen; ad button inert until M7) | feature:game | M4 (done) |
+| `06-result` | Oyun sonu | `ResultRoute(summary)` / `ResultScreen` (summary payload: ADR 0019 addendum; Paylaş inert until M6) | feature:game (`result`) | M4 (done) |
 | `08-notebook` | Kelime Defterim | `NotebookRoute` | feature:notebook | M5 |
 | `09-stats` | İstatistikler | `StatsRoute` | feature:stats | M5 |
 | `10-exam-packs` | Sınav paketleri | `ExamPacksRoute` | feature:exams | M7 |
@@ -27,7 +27,10 @@ before shipping.
 
 | Screen | Milestone | Hint |
 |---|---|---|
-| Pause menu (dialog) | M4 | `ConfirmDialog` style: Devam et / Yeniden başla / Ayarlar / Bırak (interim: `ConfirmDialog` with Devam et / Bırak in `GameScreen`) |
+| Pause menu (dialog) — **needs design** | M4 | built as `PauseDialog` (feature:game): two `ConfirmDialog` steps, Devam et / Bırak, then "Çarkı bırakmak istiyor musun?" Bırak / Vazgeç. Yeniden başla / Ayarlar wait for the design |
+| Example sentence of the "Örnek cümle" joker | M4 | italic line under the clue in `ClueCard` |
+| Result without misses | M4 | `EmptyState` instead of the review list |
+| Disabled game inputs (wrong-answer reveal) | M4 | keys / backspace / joker at 50 % without shadow (joker sheet's disabled rows), PAS = `LexiButton` disabled |
 | Onboarding steps 1 & 3 | M6 | same layout as step 2, different shapes & copy |
 | Level test result ("Seviyen: B1") | M6 | result screen header style + level badge |
 | Daily wheel intro / already-played state | M6 | home daily card enlarged |

@@ -9,6 +9,8 @@ import dev.talhabayhan.lexi.core.domain.game.GameEvent
 import dev.talhabayhan.lexi.core.domain.game.GameMode
 import dev.talhabayhan.lexi.core.domain.game.GameState
 import dev.talhabayhan.lexi.core.domain.game.GameStatus
+import dev.talhabayhan.lexi.core.domain.game.JokerInventory
+import dev.talhabayhan.lexi.core.domain.game.JokerType
 import dev.talhabayhan.lexi.core.domain.game.Slot
 import dev.talhabayhan.lexi.core.domain.game.SlotState
 import dev.talhabayhan.lexi.core.domain.game.Wheel
@@ -35,8 +37,11 @@ class GameUiMapperTest {
         ),
     )
 
-    private fun started(): GameState =
-        engine.reduce(engine.newGame(SEED, GameMode.CLASSIC, Level.A1, wheel), GameEvent.Start(0L)).state
+    private fun started(
+        jokers: JokerInventory = JokerInventory(),
+        mode: GameMode = GameMode.CLASSIC,
+        level: Level = Level.A1,
+    ): GameState = engine.reduce(engine.newGame(SEED, mode, level, wheel, jokers), GameEvent.Start(0L)).state
 
     private fun GameState.after(vararg events: GameEvent): GameState =
         events.fold(this) { state, event -> engine.reduce(state, event).state }
@@ -45,7 +50,7 @@ class GameUiMapperTest {
 
     @Test
     fun `a game that has not started is loading and shows only playable letters`() {
-        val ui = GameUiMapper.map(engine.newGame(SEED, GameMode.CLASSIC, Level.A1, wheel))
+        val ui = GameUiMapper.map(engine.newGame(SEED, GameMode.CLASSIC, Level.A1, wheel), engine)
 
         assertTrue(ui.isLoading)
         assertEquals(listOf('A', 'C'), ui.wheel.map { it.letter })
@@ -55,7 +60,7 @@ class GameUiMapperTest {
 
     @Test
     fun `the current slot shows its clue and rule with empty boxes and unused keys`() {
-        val ui = GameUiMapper.map(started())
+        val ui = GameUiMapper.map(started(), engine)
 
         val turn = checkNotNull(ui.turn)
         assertFalse(ui.isLoading)
@@ -78,7 +83,7 @@ class GameUiMapperTest {
 
     @Test
     fun `typed letters fill the boxes in order and use their keys`() {
-        val ui = GameUiMapper.map(started().typed("AP"))
+        val ui = GameUiMapper.map(started().typed("AP"), engine)
 
         val cells = checkNotNull(ui.turn).words.single()
         assertEquals(listOf('A', 'P', null, null, null), cells.map { it.letter })
@@ -92,7 +97,7 @@ class GameUiMapperTest {
 
     @Test
     fun `a wrong answer shows the correct one in red and blocks input`() {
-        val ui = GameUiMapper.map(started().typed("APPEL"))
+        val ui = GameUiMapper.map(started().typed("APPEL"), engine)
 
         val turn = checkNotNull(ui.turn)
         assertTrue(turn.isRevealing)
@@ -104,7 +109,7 @@ class GameUiMapperTest {
 
     @Test
     fun `a pass turns the letter into a leaf and moves to the next one`() {
-        val ui = GameUiMapper.map(started().after(GameEvent.Pass))
+        val ui = GameUiMapper.map(started().after(GameEvent.Pass), engine)
 
         assertEquals(WheelLetterState.Passed, ui.wheel[0].state)
         assertEquals(WheelLetterState.Current, ui.wheel[1].state)
@@ -114,7 +119,7 @@ class GameUiMapperTest {
 
     @Test
     fun `a multi-word answer is split into words without the space`() {
-        val ui = GameUiMapper.map(started().after(GameEvent.Pass))
+        val ui = GameUiMapper.map(started().after(GameEvent.Pass), engine)
 
         assertEquals(listOf(3, 5), checkNotNull(ui.turn).words.map { it.size })
         assertEquals(8, checkNotNull(ui.turn).letterCount)
@@ -122,7 +127,7 @@ class GameUiMapperTest {
 
     @Test
     fun `a correct answer turns the letter blue and adds the points`() {
-        val ui = GameUiMapper.map(started().typed("APPLE"))
+        val ui = GameUiMapper.map(started().typed("APPLE"), engine)
 
         assertEquals(WheelLetterState.Correct, ui.wheel[0].state)
         assertEquals(10, ui.score)
@@ -130,7 +135,7 @@ class GameUiMapperTest {
 
     @Test
     fun `a paused game blocks input`() {
-        val ui = GameUiMapper.map(started().after(GameEvent.Pause))
+        val ui = GameUiMapper.map(started().after(GameEvent.Pause), engine)
 
         assertTrue(ui.isPaused)
         assertFalse(ui.inputEnabled)
@@ -139,11 +144,11 @@ class GameUiMapperTest {
     @Test
     fun `after game over the last turn stays visible`() {
         val playing = started()
-        val before = GameUiMapper.map(playing)
+        val before = GameUiMapper.map(playing, engine)
         val finished = playing.after(GameEvent.Forfeit)
         assertEquals(GameStatus.FINISHED, finished.status)
 
-        val ui = GameUiMapper.map(finished, previous = before)
+        val ui = GameUiMapper.map(finished, engine, previous = before)
 
         assertEquals(before.turn, ui.turn)
         assertFalse(ui.inputEnabled)
@@ -180,7 +185,79 @@ class GameUiMapperTest {
         assertEquals(GameClockUi.Untimed, GameUiMapper.clock(started(), timeLimitMs = null, warningSeconds = 10))
     }
 
+    @Test
+    fun `the joker sheet lists the four jokers in design order with inventory and classic costs`() {
+        val ui = GameUiMapper.map(started(jokers = pack), engine)
+
+        assertEquals(
+            listOf(
+                JokerUi(JokerType.REVEAL_LETTER, 2, JokerCostUi.Seconds(10), enabled = true),
+                JokerUi(JokerType.REMOVE_DISTRACTORS, 1, JokerCostUi.Seconds(15), enabled = true),
+                JokerUi(JokerType.EXAMPLE, 3, JokerCostUi.Points(5), enabled = true),
+                JokerUi(JokerType.LISTEN, 0, JokerCostUi.Points(10), enabled = false),
+            ),
+            ui.jokers,
+        )
+        assertEquals(config.rewardedAdJokerReward, ui.jokerAdReward)
+    }
+
+    @Test
+    fun `untimed modes show point costs instead of seconds`() {
+        val ui = GameUiMapper.map(started(jokers = pack, mode = GameMode.PRACTICE), engine)
+
+        assertEquals(JokerCostUi.Points(5), ui.jokers[0].cost)
+        assertEquals(JokerCostUi.Points(5), ui.jokers[1].cost)
+    }
+
+    @Test
+    fun `jokers are disabled after one was used on the slot and while input is blocked`() {
+        val used = started(jokers = pack).after(GameEvent.UseJoker(JokerType.EXAMPLE))
+        assertTrue(GameUiMapper.map(used, engine).jokers.none { it.enabled })
+
+        val paused = started(jokers = pack).after(GameEvent.Pause)
+        assertTrue(GameUiMapper.map(paused, engine).jokers.none { it.enabled })
+
+        val revealing = started(jokers = pack).typed("APPEL")
+        assertTrue(GameUiMapper.map(revealing, engine).jokers.none { it.enabled })
+    }
+
+    @Test
+    fun `listen is disabled at C1 even with inventory`() {
+        val c1Wheel = Wheel(listOf(Slot('A', testCard("APPLE", level = Level.C1), SlotState.TODO)))
+        val state = engine.reduce(
+            engine.newGame(SEED, GameMode.CLASSIC, Level.C1, c1Wheel, JokerInventory(mapOf(JokerType.LISTEN to 1))),
+            GameEvent.Start(0L),
+        ).state
+
+        assertFalse(GameUiMapper.map(state, engine).jokers.single { it.type == JokerType.LISTEN }.enabled)
+    }
+
+    @Test
+    fun `the example joker shows the example with the answer blanked`() {
+        assertNull(GameUiMapper.map(started(jokers = pack), engine).turn?.example)
+
+        val ui = GameUiMapper.map(started(jokers = pack).after(GameEvent.UseJoker(JokerType.EXAMPLE)), engine)
+
+        assertEquals("An example with _____.", ui.turn?.example)
+    }
+
+    @Test
+    fun `blanking keeps spaces of multi-word answers and only matches whole words in any case`() {
+        assertEquals("We had ___ _____ today.", GameUiMapper.blankExample("We had ice cream today.", "ICE CREAM"))
+        assertEquals("Pineapple or _____? _____!", GameUiMapper.blankExample("Pineapple or apple? Apple!", "APPLE"))
+    }
+
     private companion object {
         const val SEED = 7L
+
+        /** The design's sheet: 2 / 1 / 3 / 0. */
+        val pack = JokerInventory(
+            mapOf(
+                JokerType.REVEAL_LETTER to 2,
+                JokerType.REMOVE_DISTRACTORS to 1,
+                JokerType.EXAMPLE to 3,
+                JokerType.LISTEN to 0,
+            ),
+        )
     }
 }

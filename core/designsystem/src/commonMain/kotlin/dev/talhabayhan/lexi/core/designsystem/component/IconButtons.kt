@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -147,7 +148,8 @@ private fun IconButtonBase(
 ) {
     PressableSurface(
         onClick = onClick,
-        modifier = modifier.size(size),
+        // Disabled (input blocked): 50 % opacity like the joker sheet's disabled rows (no design of its own).
+        modifier = modifier.size(size).alpha(if (enabled) 1f else JokerRowDefaults.DISABLED_ALPHA),
         enabled = enabled,
         shape = shape,
         color = containerColor,

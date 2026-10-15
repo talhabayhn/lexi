@@ -9,9 +9,9 @@ import org.robolectric.annotation.Config
 import org.robolectric.annotation.GraphicsMode
 
 /**
- * The stateless game screen at the size and scale of `docs/design/screens/04-game.png` (390 × 844dp, xhdpi = 2×), in
- * Turkish like the design. Warning and wrong-reveal use reduced motion so the #8 pulse loop does not keep the capture
- * busy (colours are the same).
+ * The stateless game screen at the size and scale of `docs/design/screens/04-game.png` / `05-joker-sheet.png`
+ * (390 × 844dp, xhdpi = 2×), in Turkish like the design. Warning and wrong-reveal use reduced motion so the #8 pulse
+ * loop does not keep the capture busy (colours are the same).
  */
 @RunWith(RobolectricTestRunner::class)
 @GraphicsMode(GraphicsMode.Mode.NATIVE)
@@ -41,6 +41,57 @@ class GameScreenScreenshotTest {
         captureRoboImage("src/androidHostTest/screenshots/GameScreenWrongReveal.png") {
             LexiTheme(reducedMotion = true) {
                 GameScreen(state = GameSamples.wrongReveal, clock = { GameSamples.designClock }, onIntent = {})
+            }
+        }
+    }
+
+    /** `05-joker-sheet.png`. */
+    @Test
+    fun jokerSheet() {
+        captureRoboImage("src/androidHostTest/screenshots/JokerSheet.png") {
+            LexiTheme(reducedMotion = false) {
+                GameScreen(state = GameSamples.jokerSheet, clock = { GameSamples.jokerSheetClock }, onIntent = {})
+            }
+        }
+    }
+
+    /** English copy is longer: titles and descriptions wrap, costs stay on one line. */
+    @Test
+    @Config(qualifiers = "en-w390dp-h844dp-xhdpi")
+    fun jokerSheetEnglish() {
+        captureRoboImage("src/androidHostTest/screenshots/JokerSheetEnglish.png") {
+            LexiTheme(reducedMotion = false) {
+                GameScreen(state = GameSamples.jokerSheet, clock = { GameSamples.jokerSheetClock }, onIntent = {})
+            }
+        }
+    }
+
+    /** Design debt: the blanked example of the "Örnek cümle" joker under the clue; the wheel shrinks to fit. */
+    @Test
+    fun exampleJoker() {
+        captureRoboImage("src/androidHostTest/screenshots/GameScreenExampleJoker.png") {
+            LexiTheme(reducedMotion = false) {
+                GameScreen(state = GameSamples.exampleJoker, clock = { GameSamples.designClock }, onIntent = {})
+            }
+        }
+    }
+
+    /** Design debt: pause dialog from `16-components` (no design). */
+    @Test
+    fun pauseDialog() {
+        captureRoboImage("src/androidHostTest/screenshots/GamePauseDialog.png") {
+            LexiTheme(reducedMotion = false) {
+                GameScreen(state = GameSamples.paused, clock = { GameSamples.designClock }, onIntent = {})
+            }
+        }
+    }
+
+    @Test
+    @Config(qualifiers = "en-w390dp-h844dp-xhdpi")
+    fun quitConfirmationEnglish() {
+        captureRoboImage("src/androidHostTest/screenshots/GameQuitConfirmationEnglish.png") {
+            LexiTheme(reducedMotion = false) {
+                GameScreen(state = GameSamples.quitConfirmation, clock = { GameSamples.designClock }, onIntent = {})
             }
         }
     }

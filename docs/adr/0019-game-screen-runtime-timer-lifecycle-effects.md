@@ -95,3 +95,25 @@ kotlinx-datetime.
 - Orientation: the app is portrait-only on phones (all designs are portrait; Android `screenOrientation=portrait`,
   iOS `UISupportedInterfaceOrientations` portrait). `configChanges` above still covers fold/multi-window resizes.
 - Open (M6): for the Daily wheel, whether an attempt counts at `Start` (otherwise killing the app could replay it).
+
+## Addendum (M4 joker sheet, pause, result — 2026-10-15)
+- **Result payload:** `ResultRoute` carries a small summary instead of a session id (level, mode, category, reason,
+  score, correct/wrong/passed, longest streak, remaining ms, `missedCards` in wheel order, the `passedCards` subset,
+  `recorded`). `user.db` keeps counts only, not per-card outcomes, and the event log is not stored; card ids are
+  resolved from the content by the `ResultViewModel`. The list is exactly what `FinishGame` put into box 0
+  (`GameSummary.missedCards` = WRONG/PASSED slots = `Srs.results` misses). Navigation: `Game → Result` pops up to Home,
+  so back and "Ana menüye dön" return to Home; TEKRAR OYNA starts `GameRoute(level, mode, category)` the same way.
+- **Snapshot:** a finished game stays in the `SavedStateHandle` until `FinishGame` succeeded (a process death in
+  between records it after restore). A failed `FinishGame` is retried once (it repeats only failed steps), then
+  logged with Kermit (TODO M7: crash reporter); the result is shown with `recorded = false` (no "added to notebook").
+- **Jokers:** the sheet is ViewModel state (not engine state); the clock keeps running while it is open; it closes
+  when a joker is applied, on pause/background, reveal and game over. Rows are enabled by `GameEngine.canUseJoker`,
+  the same rule `reduce` applies. Inventory writes run undispatched under `NonCancellable`, serialized by a mutex, and
+  each stores the latest inventory. The Listen joker speaks the answer; the Example joker's blanked sentence is shown
+  in the clue card (design debt).
+- **Back / pause:** system back (both platforms, `NavigationBackHandler`) closes the joker sheet, leaves the quit
+  confirmation, or pauses a running game; on the pause dialog it does nothing, so only "Devam et" restarts the clock.
+  While loading, back leaves the screen. The pause dialog (design debt) is two `ConfirmDialog` steps: pause (Devam
+  et / Bırak) and, since giving up can't be undone, a confirmation (Bırak = `Forfeit` / Vazgeç).
+- **Effects:** the ViewModel ignores a transition only when it is the same state *and* has no effects, the same rule
+  as `GameSession` (`Transition.isIgnored`).

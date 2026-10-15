@@ -45,7 +45,8 @@ internal fun GameColumn(
 
         val gapPx = gap.roundToPx()
         val answerGapPx = gapPx + answerTopMargin.roundToPx()
-        // hud | wheel | clue | answer | keys | actions: four gaps, one of them with the answer margin, + min gap.
+        // hud | wheel | clue | answer | keys | actions: five gaps, the clue | answer one with the answer margin
+        // (keys | actions is the minimum gap before `margin-top: auto`).
         val fixed = height(hudPlaceables) + height(cluePlaceables) + height(answerPlaceables) +
             height(keyPlaceables) + height(actionPlaceables) + 4 * gapPx + answerGapPx
         val maxWheelPx = min(maxWheelSize.roundToPx(), width)
@@ -59,13 +60,12 @@ internal fun GameColumn(
             .map { it.measure(Constraints.fixed(wheelPx, wheelPx)) }
 
         val contentHeight = fixed + wheelPx
+        // The column fills its bounded height (actions at the bottom) and never reports more than the constraints
+        // allow; content that still doesn't fit with a 0dp wheel overflows at the bottom instead.
         val layoutHeight = if (constraints.hasBoundedHeight) {
-            max(
-                constraints.maxHeight,
-                contentHeight,
-            )
+            constraints.maxHeight
         } else {
-            contentHeight
+            max(contentHeight, constraints.minHeight)
         }
         layout(width, layoutHeight) {
             var y = 0

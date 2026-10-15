@@ -8,6 +8,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import dev.talhabayhan.lexi.feature.game.GameRoute
 import dev.talhabayhan.lexi.feature.game.gameScreen
+import dev.talhabayhan.lexi.feature.game.result.resultScreen
 import dev.talhabayhan.lexi.feature.home.HomeRoute
 import dev.talhabayhan.lexi.feature.home.homeScreen
 import dev.talhabayhan.lexi.feature.levels.LevelSelectRoute
@@ -16,8 +17,9 @@ import dev.talhabayhan.lexi.splash.SplashRoute
 import dev.talhabayhan.lexi.splash.splashScreen
 
 /**
- * The app graph: `Splash → Home → LevelSelect → Game`. Onboarding (M6) will slot in after the splash; a finished game
- * returns to Home until the result screen (`06-result`) exists.
+ * The app graph: `Splash → Home → LevelSelect → Game → Result`. Onboarding (M6) will slot in after the splash. The
+ * result replaces everything above Home, so system back and "Ana menüye dön" both return to Home; TEKRAR OYNA starts
+ * the next game in the same place (`Home → Game`).
  */
 @Composable
 fun LexiNavHost(modifier: Modifier = Modifier) {
@@ -45,8 +47,25 @@ fun LexiNavHost(modifier: Modifier = Modifier) {
             },
         )
         gameScreen(
-            onFinished = { navController.backToHome() },
+            // Not RESUMED-guarded: fired once from the game's effects (while STARTED) after the game is recorded.
+            onFinished = { result ->
+                navController.navigate(result) {
+                    launchSingleTop = true
+                    popUpTo(HomeRoute) { inclusive = false }
+                }
+            },
             onAbandoned = { navController.backToHome() },
+        )
+        resultScreen(
+            onPlayAgain = { game ->
+                navController.ifResumed {
+                    navigate(game) {
+                        launchSingleTop = true
+                        popUpTo(HomeRoute) { inclusive = false }
+                    }
+                }
+            },
+            onHome = { navController.ifResumed { backToHome() } },
         )
     }
 }

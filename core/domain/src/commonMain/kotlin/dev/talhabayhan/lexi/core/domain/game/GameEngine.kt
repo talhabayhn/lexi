@@ -18,6 +18,28 @@ public class GameEngine(public val config: GameConfig = GameConfig()) {
         jokers: JokerInventory = JokerInventory(),
     ): GameState = GameState(seed = seed, mode = mode, level = level, wheel = wheel, jokers = jokers)
 
+    /**
+     * Whether `UseJoker(type)` would be applied to [state] right now (`GAME_RULES.md` §7): the game is playing and
+     * accepts input, a joker of [type] is in the inventory, the slot has used no joker yet, [type] is allowed in the
+     * mode and at the card's level, a time cost is below the remaining time and Remove distractors has distractors
+     * left. The UI uses it to enable the joker sheet rows; [reduce] applies exactly the same rule.
+     */
+    public fun canUseJoker(state: GameState, type: JokerType): Boolean {
+        if (state.status != GameStatus.PLAYING || state.isPaused || state.isRevealing) return false
+        val input = state.currentInput ?: return false
+        val card = state.currentSlot?.card ?: return false
+        return state.jokers.count(type) > 0 && isJokerAccepted(state, input, card, type)
+    }
+
+    /** One joker per slot in total, any type, also across laps (owner decision), plus the mode/level/cost rules. */
+    private fun isJokerAccepted(state: GameState, input: SlotInput, card: Card, type: JokerType): Boolean {
+        val cost = config.jokerCost(type, state.mode)
+        return input.jokersUsed.isEmpty() &&
+            config.isJokerAllowed(type, state.mode, card.level) &&
+            !(cost is JokerCost.Time && (state.remainingMs ?: 0L) <= cost.ms) &&
+            !(type == JokerType.REMOVE_DISTRACTORS && !input.hasEnabledDistractors)
+    }
+
     public fun reduce(state: GameState, event: GameEvent): Transition<GameState> {
         val effects = mutableListOf<EngineEffect>()
         val next = Step(effects).reduce(state, event)
@@ -285,12 +307,7 @@ public class GameEngine(public val config: GameConfig = GameConfig()) {
             val input = checkNotNull(currentInput)
             val inventory = jokers.consume(type)
             val cost = config.jokerCost(type, mode)
-            // One joker per slot in total, any type, also across laps (owner decision).
-            val refused = input.jokersUsed.isNotEmpty() ||
-                !config.isJokerAllowed(type, mode, card.level) ||
-                (cost is JokerCost.Time && (remainingMs ?: 0L) <= cost.ms) ||
-                (type == JokerType.REMOVE_DISTRACTORS && !input.hasEnabledDistractors)
-            if (refused || inventory == null) return this
+            if (inventory == null || !isJokerAccepted(this, input, card, type)) return this
 
             fx += EngineEffect.JokerApplied(type)
             val paid = copy(jokers = inventory).withInput(input.copy(jokersUsed = input.jokersUsed + type)).pay(cost)

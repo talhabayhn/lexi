@@ -14,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.disabled
@@ -44,13 +45,18 @@ public object LetterKeyDefaults {
     public const val COLUMNS: Int = 5
 }
 
-/** A letter key: 50dp high, 3dp border, s3 shadow, 22sp/800; turns yellow while pressed. Width from [modifier]. */
+/**
+ * A letter key: 50dp high, 3dp border, s3 shadow, 22sp/800; turns yellow while pressed. Width from [modifier].
+ * A Normal key that is not [enabled] (input blocked, e.g. during a wrong-answer reveal) is drawn at 50 % opacity
+ * without shadow, like the joker sheet's disabled rows (no design of its own).
+ */
 @Composable
 public fun LetterKey(
     letter: Char,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     state: LetterKeyState = LetterKeyState.Normal,
+    enabled: Boolean = true,
 ) {
     val colors = LexiTheme.colors
     val border = LexiTheme.borders.regular
@@ -60,10 +66,13 @@ public fun LetterKey(
             val pressed = source.isPressedOrForced()
             PressableSurface(
                 onClick = onClick,
-                modifier = modifier.height(LetterKeyDefaults.Height),
-                color = if (pressed) colors.yellow else colors.white,
+                modifier = modifier
+                    .height(LetterKeyDefaults.Height)
+                    .alpha(if (enabled) 1f else JokerRowDefaults.DISABLED_ALPHA),
+                enabled = enabled,
+                color = if (pressed && enabled) colors.yellow else colors.white,
                 border = BorderStroke(border, colors.ink),
-                shadow = LexiTheme.shadows.s3,
+                shadow = if (enabled) LexiTheme.shadows.s3 else null,
                 interactionSource = source,
             ) {
                 Text(letter.toString(), style = LexiTheme.typography.key)

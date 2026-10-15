@@ -29,6 +29,7 @@ import dev.talhabayhan.lexi.core.designsystem.component.LetterKeyDefaults
 import dev.talhabayhan.lexi.core.designsystem.component.NavSquareButton
 import dev.talhabayhan.lexi.core.designsystem.component.ScoreBadge
 import dev.talhabayhan.lexi.core.designsystem.component.TimerBar
+import dev.talhabayhan.lexi.core.designsystem.format.formatClock
 import dev.talhabayhan.lexi.core.designsystem.icon.LexiIcons
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.core.designsystem.theme.resized
@@ -40,8 +41,6 @@ import dev.talhabayhan.lexi.feature.game.generated.resources.game_button_pause
 import dev.talhabayhan.lexi.feature.game.generated.resources.game_score_description
 import kotlinx.collections.immutable.ImmutableList
 import org.jetbrains.compose.resources.stringResource
-
-private const val SECONDS_PER_MINUTE = 60
 
 /**
  * Top bar: pause (48dp square on cream), the timer and the score badge, gap 8. Only this composable reads the
@@ -80,13 +79,6 @@ internal fun GameHudBar(score: Int, clock: () -> GameClockUi, onPause: () -> Uni
     }
 }
 
-/** "1:47": minutes and two-digit seconds (digits only, the same in every language). */
-internal fun formatClock(wholeSeconds: Int): String {
-    val minutes = wholeSeconds / SECONDS_PER_MINUTE
-    val seconds = wholeSeconds % SECONDS_PER_MINUTE
-    return "$minutes:${seconds.toString().padStart(2, '0')}"
-}
-
 /**
  * Answer boxes, centred, gap 6; words of a multi-word answer are separated by [GameScreenDefaults.AnswerWordGap].
  * Boxes keep 40dp up to the width of the column, then narrow (with the letter) so 14-letter answers still fit.
@@ -123,9 +115,17 @@ internal fun AnswerSlots(
     }
 }
 
-/** Letter keys in rows of 5 (gap 8); keys keep their order for the whole slot (`GAME_RULES.md` §4). */
+/**
+ * Letter keys in rows of 5 (gap 8); keys keep their order for the whole slot (`GAME_RULES.md` §4). Not [enabled]
+ * while input is blocked (wrong-answer reveal): the keys are disabled and drawn at 50 %.
+ */
 @Composable
-internal fun KeyGrid(keys: ImmutableList<KeyUi>, onKey: (Int) -> Unit, modifier: Modifier = Modifier) {
+internal fun KeyGrid(
+    keys: ImmutableList<KeyUi>,
+    enabled: Boolean,
+    onKey: (Int) -> Unit,
+    modifier: Modifier = Modifier,
+) {
     Column(modifier, verticalArrangement = Arrangement.spacedBy(LetterKeyDefaults.GridGap)) {
         keys.indices.chunked(LetterKeyDefaults.COLUMNS).forEach { row ->
             Row(horizontalArrangement = Arrangement.spacedBy(LetterKeyDefaults.GridGap)) {
@@ -133,6 +133,7 @@ internal fun KeyGrid(keys: ImmutableList<KeyUi>, onKey: (Int) -> Unit, modifier:
                     LetterKey(
                         letter = keys[index].letter,
                         state = keys[index].state,
+                        enabled = enabled,
                         onClick = { onKey(index) },
                         modifier = Modifier.weight(1f),
                     )

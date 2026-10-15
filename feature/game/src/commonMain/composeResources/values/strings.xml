@@ -24,9 +24,72 @@
         <item quantity="other">%1$d LETTERS</item>
     </plurals>
 
-    <!-- Pause dialog (design debt: minimal version until the pause dialog task) -->
+    <!-- Pause dialog (design debt): pause step, then the give-up confirmation -->
     <string name="game_pause_title">Game paused</string>
     <string name="game_pause_message">The clock is stopped. Continue when you are ready.</string>
     <string name="game_pause_resume">Continue</string>
     <string name="game_pause_quit">Give up</string>
+    <string name="game_quit_title">Give up this wheel?</string>
+    <string name="game_quit_message">The remaining letters count as wrong and go into your word notebook.</string>
+    <string name="game_quit_confirm">Give up</string>
+    <string name="game_quit_cancel">Cancel</string>
+
+    <!-- Joker sheet (05-joker-sheet) -->
+    <string name="game_jokers_title">Use a joker</string>
+    <string name="game_jokers_close">Close</string>
+    <string name="game_jokers_clock_running">The clock keeps running · %1$s</string>
+    <string name="game_jokers_ad">Watch a short ad · +%1$d joker</string>
+    <string name="game_joker_reveal">Reveal a letter</string>
+    <string name="game_joker_reveal_text">Puts the right letter in the next empty box</string>
+    <string name="game_joker_remove">Clear distractors</string>
+    <string name="game_joker_remove_text">Removes the wrong letter keys</string>
+    <string name="game_joker_example">Example sentence</string>
+    <string name="game_joker_example_text">Shows the word as a gap in a sentence</string>
+    <string name="game_joker_listen">Hear it</string>
+    <string name="game_joker_listen_text">Reads the answer aloud (off at C1 and above)</string>
+    <string name="game_joker_cost_seconds">−%1$d s</string>
+    <string name="game_joker_cost_points">−%1$d pts</string>
+    <string name="game_joker_cost_free">free</string>
+    <plurals name="game_joker_count">
+        <item quantity="one">%1$d left</item>
+        <item quantity="other">%1$d left</item>
+    </plurals>
+    <string name="game_joker_count_none">none left</string>
+
+    <!-- Result (06-result) -->
+    <string name="result_header">%1$s · %2$s · %3$s</string>
+    <string name="result_mode_classic">CLASSIC</string>
+    <string name="result_mode_practice">PRACTICE</string>
+    <string name="result_mode_hardcore">HARDCORE</string>
+    <string name="result_mode_daily">DAILY</string>
+    <string name="result_mode_review">REVIEW</string>
+    <string name="result_mode_level_test">LEVEL TEST</string>
+    <string name="result_mode_duel">DUEL</string>
+    <string name="result_reason_all_answered">WHEEL DONE</string>
+    <string name="result_reason_time_up">TIME UP</string>
+    <string name="result_reason_wrong_in_hardcore">FIRST MISS</string>
+    <string name="result_reason_forfeit">GAVE UP</string>
+    <string name="result_reason_empty_wheel">EMPTY WHEEL</string>
+    <string name="result_points">points</string>
+    <string name="result_best_streak">best streak ×%1$d</string>
+    <string name="result_time_left">time left %1$s</string>
+    <string name="result_correct">correct</string>
+    <string name="result_wrong">wrong</string>
+    <string name="result_passed">passed</string>
+    <string name="result_review_title">To review</string>
+    <plurals name="result_added">
+        <item quantity="one">%1$d word added to your notebook</item>
+        <item quantity="other">%1$d words added to your notebook</item>
+    </plurals>
+    <plurals name="result_more">
+        <item quantity="one">+%1$d more word · See all →</item>
+        <item quantity="other">+%1$d more words · See all →</item>
+    </plurals>
+    <string name="result_outcome_wrong">wrong</string>
+    <string name="result_outcome_passed">passed</string>
+    <string name="result_speak">Listen to %1$s</string>
+    <string name="result_empty">All correct! Nothing to review from this wheel.</string>
+    <string name="result_play_again">PLAY AGAIN</string>
+    <string name="result_share">Share</string>
+    <string name="result_home">Back to menu</string>
 </resources>

@@ -24,7 +24,6 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.LifecycleEventEffect
 import dev.talhabayhan.lexi.core.designsystem.component.ActionCircleButton
 import dev.talhabayhan.lexi.core.designsystem.component.ClueCard
-import dev.talhabayhan.lexi.core.designsystem.component.ConfirmDialog
 import dev.talhabayhan.lexi.core.designsystem.component.DecorShape
 import dev.talhabayhan.lexi.core.designsystem.component.DecorShapeKind
 import dev.talhabayhan.lexi.core.designsystem.component.GameScreenDefaults
@@ -34,7 +33,6 @@ import dev.talhabayhan.lexi.core.designsystem.component.LetterWheelDefaults
 import dev.talhabayhan.lexi.core.designsystem.component.LexiButton
 import dev.talhabayhan.lexi.core.designsystem.component.LexiButtonDefaults
 import dev.talhabayhan.lexi.core.designsystem.component.LexiButtonVariant
-import dev.talhabayhan.lexi.core.designsystem.component.ModalScrim
 import dev.talhabayhan.lexi.core.designsystem.icon.LexiIcons
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.core.domain.model.LetterRule
@@ -43,7 +41,9 @@ import dev.talhabayhan.lexi.feature.game.components.AnswerSlots
 import dev.talhabayhan.lexi.feature.game.components.GameColumn
 import dev.talhabayhan.lexi.feature.game.components.GameHudBar
 import dev.talhabayhan.lexi.feature.game.components.GameMotion
+import dev.talhabayhan.lexi.feature.game.components.JokerSheet
 import dev.talhabayhan.lexi.feature.game.components.KeyGrid
+import dev.talhabayhan.lexi.feature.game.components.PauseDialog
 import dev.talhabayhan.lexi.feature.game.components.rememberGameMotion
 import dev.talhabayhan.lexi.feature.game.generated.resources.Res
 import dev.talhabayhan.lexi.feature.game.generated.resources.game_button_backspace
@@ -51,10 +51,6 @@ import dev.talhabayhan.lexi.feature.game.generated.resources.game_button_joker
 import dev.talhabayhan.lexi.feature.game.generated.resources.game_button_pass
 import dev.talhabayhan.lexi.feature.game.generated.resources.game_clue_label
 import dev.talhabayhan.lexi.feature.game.generated.resources.game_letter_count
-import dev.talhabayhan.lexi.feature.game.generated.resources.game_pause_message
-import dev.talhabayhan.lexi.feature.game.generated.resources.game_pause_quit
-import dev.talhabayhan.lexi.feature.game.generated.resources.game_pause_resume
-import dev.talhabayhan.lexi.feature.game.generated.resources.game_pause_title
 import dev.talhabayhan.lexi.feature.game.generated.resources.game_pos_adj
 import dev.talhabayhan.lexi.feature.game.generated.resources.game_pos_adv
 import dev.talhabayhan.lexi.feature.game.generated.resources.game_pos_idiom
@@ -69,9 +65,10 @@ import org.jetbrains.compose.resources.pluralStringResource
 import org.jetbrains.compose.resources.stringResource
 
 /**
- * The game screen (`04-game`), stateless: the resting look comes from [state]; [clock] is read only by the HUD timer;
- * [motion] plays transient effects. Lifecycle ON_PAUSE / ON_RESUME are forwarded as background / foreground intents
- * (ADR 0019). Insets: `safeDrawing` on top of the design paddings; the background shapes reach the screen edges.
+ * The game screen (`04-game`), stateless: the resting look comes from [state]; [clock] is read only by the HUD timer
+ * and the joker sheet's status pill; [motion] plays transient effects. Lifecycle ON_PAUSE / ON_RESUME are forwarded
+ * as background / foreground intents (ADR 0019). Insets: `safeDrawing` on top of the design paddings; the background
+ * shapes reach the screen edges. Overlays: the joker sheet (`05-joker-sheet`) and the pause dialog (design debt).
  */
 @Composable
 internal fun GameScreen(
@@ -119,12 +116,21 @@ internal fun GameScreen(
                                 turn.letterCount,
                                 turn.letterCount,
                             ),
+                            example = turn.example,
                         )
                     }
                 },
                 answer = { if (turn != null) AnswerSlots(turn.words, offset = { motion.slotsOffset }) },
-                keys = { if (turn != null) KeyGrid(turn.keys, onKey = { onIntent(GameIntent.KeyTapped(it)) }) },
-                actions = { GameActions(onIntent) },
+                keys = {
+                    if (turn != null) {
+                        KeyGrid(
+                            keys = turn.keys,
+                            enabled = state.inputEnabled,
+                            onKey = { onIntent(GameIntent.KeyTapped(it)) },
+                        )
+                    }
+                },
+                actions = { GameActions(enabled = state.inputEnabled, onIntent = onIntent) },
                 modifier = Modifier
                     .fillMaxSize()
                     .windowInsetsPadding(WindowInsets.safeDrawing)
@@ -136,7 +142,14 @@ internal fun GameScreen(
                     ),
             )
         }
-        if (state.isPaused) PauseOverlay(onIntent)
+        JokerSheet(
+            visible = state.isJokerSheetOpen,
+            jokers = state.jokers,
+            adReward = state.jokerAdReward,
+            clock = clock,
+            onIntent = onIntent,
+        )
+        if (state.isPaused) PauseDialog(quitConfirmation = state.isQuitConfirmation, onIntent = onIntent)
     }
 }
 
@@ -163,55 +176,36 @@ private fun GameDecor() {
     }
 }
 
-/** Joker (red circle), backspace (square) and PAS, gap 10. */
+/**
+ * Joker (red circle), backspace (square) and PAS, gap 10. Not [enabled] while input is blocked (wrong-answer reveal):
+ * disabled for touch and accessibility and drawn disabled (PAS: the button's disabled state; the others at 50 %).
+ */
 @Composable
-private fun GameActions(onIntent: (GameIntent) -> Unit) {
+private fun GameActions(enabled: Boolean, onIntent: (GameIntent) -> Unit) {
     Row(
         horizontalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap10),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        // Joker sheet (05-joker-sheet) is a later M4 task; the intent is the hook.
         ActionCircleButton(
             icon = LexiIcons.Bulb,
             contentDescription = stringResource(Res.string.game_button_joker),
             onClick = { onIntent(GameIntent.OpenJokers) },
+            enabled = enabled,
         )
         IconSquareButton(
             icon = LexiIcons.Backspace,
             contentDescription = stringResource(Res.string.game_button_backspace),
             onClick = { onIntent(GameIntent.Backspace) },
+            enabled = enabled,
         )
         LexiButton(
             text = stringResource(Res.string.game_button_pass),
             onClick = { onIntent(GameIntent.Pass) },
+            enabled = enabled,
             variant = LexiButtonVariant.Pass,
             textStyle = LexiTheme.typography.button22,
             height = LexiButtonDefaults.LargeHeight,
             modifier = Modifier.weight(1f),
-        )
-    }
-}
-
-/**
- * DESIGN-DEBT (`screen-map.md`: pause menu has no design): minimal paused state from `ConfirmDialog` until the pause
- * dialog task (Devam et / Yeniden başla / Ayarlar / Bırak). The scrim does not dismiss: the clock stays stopped until
- * the player continues.
- */
-@Composable
-private fun PauseOverlay(onIntent: (GameIntent) -> Unit) {
-    Box(Modifier.fillMaxSize()) {
-        ModalScrim(onDismissRequest = {})
-        ConfirmDialog(
-            title = stringResource(Res.string.game_pause_title),
-            message = stringResource(Res.string.game_pause_message),
-            confirmLabel = stringResource(Res.string.game_pause_resume),
-            dismissLabel = stringResource(Res.string.game_pause_quit),
-            onConfirm = { onIntent(GameIntent.Resume) },
-            onDismiss = { onIntent(GameIntent.Forfeit) },
-            modifier = Modifier
-                .align(Alignment.Center)
-                .windowInsetsPadding(WindowInsets.safeDrawing)
-                .padding(horizontal = LexiTheme.dimens.screenPaddingHorizontal),
         )
     }
 }
@@ -249,8 +243,16 @@ private fun GameScreenWrongRevealPreview() {
 
 @Preview(widthDp = 390, heightDp = 844)
 @Composable
+private fun GameScreenJokerSheetPreview() {
+    LexiTheme(reducedMotion = false) {
+        GameScreen(state = GameSamples.jokerSheet, clock = { GameSamples.jokerSheetClock }, onIntent = {})
+    }
+}
+
+@Preview(widthDp = 390, heightDp = 844)
+@Composable
 private fun GameScreenPausedPreview() {
     LexiTheme(reducedMotion = false) {
-        GameScreen(state = GameSamples.design.copy(isPaused = true), clock = { GameSamples.designClock }, onIntent = {})
+        GameScreen(state = GameSamples.paused, clock = { GameSamples.designClock }, onIntent = {})
     }
 }

@@ -243,4 +243,29 @@ class GameEngineJokerTest {
 
         assertEquals(listOf(5), game.lastEffects.filterIsInstance<EngineEffect.TimeWarning>().map { it.secondsLeft })
     }
+
+    @Test
+    fun `canUseJoker matches what reduce applies in every situation`() {
+        val engine = GameEngine()
+        val situations = listOf(
+            play("APPLE", "BREAD", start = false),
+            play("APPLE", "BREAD"),
+            play("APPLE", "BREAD", jokers = JokerInventory()),
+            play("APPLE", "BREAD").send(GameEvent.Pause),
+            play("APPLE", "BREAD").answerWrong(),
+            play("APPLE", "BREAD").joker(JokerType.EXAMPLE),
+            play("APPLE", "BREAD").send(GameEvent.Tick(170_000L)),
+            play("APPLE", "BREAD", mode = GameMode.DAILY),
+            play("APPLE", "BREAD", level = Level.C1),
+            play("APPLE", "BREAD", mode = GameMode.PRACTICE),
+            play("APPLE", "BREAD").joker(JokerType.REMOVE_DISTRACTORS).send(GameEvent.Pass, GameEvent.Pass),
+            play("APPLE").answer(),
+        )
+        for ((index, game) in situations.withIndex()) {
+            for (type in JokerType.entries) {
+                val applied = engine.reduce(game.state, GameEvent.UseJoker(type)).state !== game.state
+                assertEquals(applied, engine.canUseJoker(game.state, type), "situation $index, $type")
+            }
+        }
+    }
 }

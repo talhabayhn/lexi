@@ -24,9 +24,72 @@
         <item quantity="other">%1$d HARF</item>
     </plurals>
 
-    <!-- Pause dialog (design debt: minimal version until the pause dialog task) -->
+    <!-- Pause dialog (design debt): pause step, then the give-up confirmation -->
     <string name="game_pause_title">Oyun duraklatıldı</string>
     <string name="game_pause_message">Süre durdu. Hazır olduğunda devam et.</string>
     <string name="game_pause_resume">Devam et</string>
     <string name="game_pause_quit">Bırak</string>
+    <string name="game_quit_title">Çarkı bırakmak istiyor musun?</string>
+    <string name="game_quit_message">Kalan harfler yanlış sayılır ve kelime defterine eklenir.</string>
+    <string name="game_quit_confirm">Bırak</string>
+    <string name="game_quit_cancel">Vazgeç</string>
+
+    <!-- Joker sheet (05-joker-sheet) -->
+    <string name="game_jokers_title">Joker kullan</string>
+    <string name="game_jokers_close">Kapat</string>
+    <string name="game_jokers_clock_running">Süre işlemeye devam ediyor · %1$s</string>
+    <string name="game_jokers_ad">Kısa reklam izle · +%1$d joker</string>
+    <string name="game_joker_reveal">Harf aç</string>
+    <string name="game_joker_reveal_text">Sıradaki boş kutuya doğru harfi koyar</string>
+    <string name="game_joker_remove">Çeldiricileri temizle</string>
+    <string name="game_joker_remove_text">Yanlış harf butonlarını kaldırır</string>
+    <string name="game_joker_example">Örnek cümle</string>
+    <string name="game_joker_example_text">Kelimeyi boşlukla bir cümlede gösterir</string>
+    <string name="game_joker_listen">Telaffuzu dinle</string>
+    <string name="game_joker_listen_text">Cevabı sesli okur (C1 ve üstünde kapalı)</string>
+    <string name="game_joker_cost_seconds">−%1$d sn</string>
+    <string name="game_joker_cost_points">−%1$d puan</string>
+    <string name="game_joker_cost_free">ücretsiz</string>
+    <plurals name="game_joker_count">
+        <item quantity="one">%1$d hakkın var</item>
+        <item quantity="other">%1$d hakkın var</item>
+    </plurals>
+    <string name="game_joker_count_none">hakkın kalmadı</string>
+
+    <!-- Result (06-result) -->
+    <string name="result_header">%1$s · %2$s · %3$s</string>
+    <string name="result_mode_classic">KLASİK</string>
+    <string name="result_mode_practice">PRATİK</string>
+    <string name="result_mode_hardcore">HARDCORE</string>
+    <string name="result_mode_daily">GÜNLÜK</string>
+    <string name="result_mode_review">TEKRAR</string>
+    <string name="result_mode_level_test">SEVİYE TESTİ</string>
+    <string name="result_mode_duel">DÜELLO</string>
+    <string name="result_reason_all_answered">ÇARK TAMAM</string>
+    <string name="result_reason_time_up">SÜRE BİTTİ</string>
+    <string name="result_reason_wrong_in_hardcore">İLK HATA</string>
+    <string name="result_reason_forfeit">BIRAKILDI</string>
+    <string name="result_reason_empty_wheel">ÇARK BOŞ</string>
+    <string name="result_points">puan</string>
+    <string name="result_best_streak">en iyi serin ×%1$d</string>
+    <string name="result_time_left">kalan süre %1$s</string>
+    <string name="result_correct">doğru</string>
+    <string name="result_wrong">yanlış</string>
+    <string name="result_passed">pas</string>
+    <string name="result_review_title">Tekrar edilecekler</string>
+    <plurals name="result_added">
+        <item quantity="one">%1$d kelime defterine eklendi</item>
+        <item quantity="other">%1$d kelime defterine eklendi</item>
+    </plurals>
+    <plurals name="result_more">
+        <item quantity="one">+%1$d kelime daha · Tümünü gör →</item>
+        <item quantity="other">+%1$d kelime daha · Tümünü gör →</item>
+    </plurals>
+    <string name="result_outcome_wrong">yanlış</string>
+    <string name="result_outcome_passed">pas geçildi</string>
+    <string name="result_speak">%1$s telaffuzunu dinle</string>
+    <string name="result_empty">Hepsi doğru! Bu çarkta tekrar edilecek kelime yok.</string>
+    <string name="result_play_again">TEKRAR OYNA</string>
+    <string name="result_share">Paylaş</string>
+    <string name="result_home">Ana menüye dön</string>
 </resources>

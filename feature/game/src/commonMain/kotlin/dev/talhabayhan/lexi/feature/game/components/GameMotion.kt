@@ -35,7 +35,7 @@ internal class GameMotion(private val motion: LexiMotion) {
             is GameEffect.Advanced,
             is GameEffect.ComboReached,
             is GameEffect.TimeWarning,
-            GameEffect.NavigateToResult,
+            is GameEffect.NavigateToResult,
             GameEffect.Abandoned,
             -> Unit
         }

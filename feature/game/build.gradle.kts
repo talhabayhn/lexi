@@ -8,6 +8,8 @@ kotlin {
         commonMain.dependencies {
             // SavedStateHandle: route args and the process-death snapshot of the running game (ADR 0019).
             implementation(libs.androidx.lifecycle.viewmodelSavedstate)
+            // Logging of storage failures until the crash reporter lands (M7); in the catalog by ADR 0015.
+            implementation(libs.kermit)
         }
         getByName("androidHostTest").dependencies {
             implementation(libs.junit)

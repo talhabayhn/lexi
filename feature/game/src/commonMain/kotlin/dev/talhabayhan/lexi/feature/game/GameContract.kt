@@ -4,9 +4,11 @@ import androidx.compose.runtime.Immutable
 import dev.talhabayhan.lexi.core.designsystem.component.AnswerSlotState
 import dev.talhabayhan.lexi.core.designsystem.component.LetterKeyState
 import dev.talhabayhan.lexi.core.designsystem.component.WheelLetterUi
+import dev.talhabayhan.lexi.core.domain.game.JokerType
 import dev.talhabayhan.lexi.core.domain.model.LetterRule
 import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.core.domain.model.PartOfSpeech
+import dev.talhabayhan.lexi.feature.game.result.ResultRoute
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.persistentListOf
 
@@ -26,9 +28,31 @@ internal data class GameUiState(
     /** The current slot; after game over the last one stays visible until the screen leaves. */
     val turn: GameTurnUi? = null,
     val isPaused: Boolean = false,
-    /** Keys, backspace and pass are accepted (playing, not paused, no wrong-answer reveal). */
+    /** Keys, backspace, pass and the joker button are accepted (playing, not paused, no wrong-answer reveal). */
     val inputEnabled: Boolean = false,
+    /** The jokers in sheet order (`05-joker-sheet`) with count, cost and whether each can be used right now. */
+    val jokers: ImmutableList<JokerUi> = persistentListOf(),
+    /** Jokers one rewarded ad grants (`GameConfig.rewardedAdJokerReward`), for the sheet's ad button. */
+    val jokerAdReward: Int = 0,
+    /** The joker sheet is open; the clock keeps running (`GAME_RULES.md` §5). */
+    val isJokerSheetOpen: Boolean = false,
+    /** The pause dialog asks to confirm giving up ("Bırak"). Only while [isPaused]. */
+    val isQuitConfirmation: Boolean = false,
 )
+
+/** One joker of the sheet. [enabled] = `GameEngine.canUseJoker` (inventory, one per slot, mode, level, cost). */
+@Immutable
+internal data class JokerUi(val type: JokerType, val count: Int, val cost: JokerCostUi, val enabled: Boolean)
+
+/** What a joker costs in the current mode (`GameConfig.jokerCost`): "−10 sn", "−5 puan" or free. */
+@Immutable
+internal sealed interface JokerCostUi {
+    data class Seconds(val seconds: Int) : JokerCostUi
+
+    data class Points(val points: Int) : JokerCostUi
+
+    data object Free : JokerCostUi
+}
 
 @Immutable
 internal data class GameTurnUi(
@@ -44,6 +68,8 @@ internal data class GameTurnUi(
     val keys: ImmutableList<KeyUi>,
     /** The correct answer of a wrong guess is shown (`GameConfig.revealMs`). */
     val isRevealing: Boolean,
+    /** The example sentence with the answer blanked, once the "Örnek cümle" joker was used on this slot. */
+    val example: String? = null,
 )
 
 @Immutable
@@ -77,15 +103,33 @@ internal sealed interface GameIntent {
 
     data object Pass : GameIntent
 
-    /** Joker button; the joker sheet (`05-joker-sheet`) is a later M4 task. */
+    /** Joker button: opens the joker sheet (`05-joker-sheet`); the clock keeps running. */
     data object OpenJokers : GameIntent
+
+    /** Close button, scrim tap or back on the joker sheet. */
+    data object CloseJokers : GameIntent
+
+    /** A joker row of the sheet: `GameEvent.UseJoker`; the sheet closes when the joker was applied. */
+    data class UseJoker(val type: JokerType) : GameIntent
 
     data object Pause : GameIntent
 
     data object Resume : GameIntent
 
-    /** "Bırak" in the pause dialog: gives up (`GameEvent.Forfeit`). */
+    /** "Bırak" in the pause dialog: asks to confirm giving up. */
+    data object RequestQuit : GameIntent
+
+    /** "Vazgeç" in the quit confirmation: back to the pause dialog. */
+    data object CancelQuit : GameIntent
+
+    /** "Bırak" in the quit confirmation: gives up (`GameEvent.Forfeit`). */
     data object Forfeit : GameIntent
+
+    /**
+     * System back (both platforms): closes the joker sheet, leaves the quit confirmation, pauses a running game
+     * (the pause dialog opens); on the pause dialog it does nothing, so the clock never restarts without a tap.
+     */
+    data object Back : GameIntent
 
     /** Screen left RESUMED (ON_PAUSE): charge the time so far, stop the clock, pause. */
     data object Background : GameIntent
@@ -114,7 +158,7 @@ internal sealed interface GameEffect {
     data class TimeWarning(val secondsLeft: Int) : GameEffect
 
     /** The finished game is recorded (`FinishGame`); show the result. */
-    data object NavigateToResult : GameEffect
+    data class NavigateToResult(val result: ResultRoute) : GameEffect
 
     /** The game can't be played (a restored game's card is no longer in the content); leave the screen. */
     data object Abandoned : GameEffect
