@@ -17,7 +17,7 @@ a2-invite,INVITE,I,STARTS,verb,bir etkinliğe katılması için çağırmak,We i
 a2-museum,MUSEUM,M,STARTS,noun,eski eserlerin sergilendiği bina,The museum is closed on Mondays.,Müze pazartesi günleri kapalı.,2,,city-transport
 a2-actor,ACTOR,A,STARTS,noun,filmlerde ya da tiyatroda rol yapan kişi,The actor is on stage.,Oyuncu sahnede.,2,,school-work
 a2-blanket,BLANKET,B,STARTS,noun,yatağı örten kalın yünlü örtü,The blanket is soft.,Battaniye yumuşak.,2,,home
-a2-church,CHURCH,C,STARTS,noun,Hristiyanların ibadet ettiği bina,The church bell rang.,Kilise çanı çaldı.,2,,city-transport
+a2-church,CHURCH,C,STARTS,noun,Hristiyanların ibadet ettiği bina,The church is near the park.,Kilise parkın yakınında.,2,,city-transport
 a2-hold,HOLD,H,STARTS,verb,elinde tutmak,Hold the rope.,İpi tut.,2,,daily-life
 a2-loud,LOUD,L,STARTS,adj,"yüksek sesli, gürültülü",The music is too loud.,Müzik çok gürültülü.,2,,daily-life
 a2-lose,LOSE,L,STARTS,verb,"yitirmek, elinden kaçırmak",Do not lose the receipt.,Fişi kaybetme.,2,,daily-life

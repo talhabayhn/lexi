@@ -9,7 +9,7 @@ a2-user,USER,U,STARTS,noun,bir ürünü ya da hizmeti kullanan kişi,Every user 
 a2-underwear,UNDERWEAR,U,STARTS,noun,giysilerin altına giyilen iç çamaşırı,Pack some underwear for the trip.,Gezi için iç çamaşırı al.,2,,daily-life
 a2-underline,UNDERLINE,U,STARTS,verb,bir yazının altına çizgi çekmek,Underline the new words.,Yeni sözcüklerin altını çiz.,3,,school-work
 a2-button,BUTTON,U,CONTAINS,noun,giysiyi ilikleyen küçük yuvarlak parça,A button fell off my coat.,Paltomdan bir düğme düştü.,2,,daily-life
-a2-rubbish,RUBBISH,U,CONTAINS,noun,"atılacak şeyler, çöp",Put the rubbish in the bin.,Çöpü kutuya at.,2,,home
+a2-rubbish,RUBBISH,U,CONTAINS,noun,"atılacak şeyler, çöp","Put the rubbish outside, please.",Çöpü lütfen dışarı koy.,2,,home
 a2-purse,PURSE,U,CONTAINS,noun,bozuk para koymak için küçük kese,She keeps coins in her purse.,Bozuk paraları para cüzdanında tutuyor.,3,,daily-life
 a2-pupil,PUPIL,U,CONTAINS,noun,ilkokulda ders gören çocuk,Every pupil has a desk.,Her öğrencinin bir sırası var.,2,,school-work
 a2-huge,HUGE,U,CONTAINS,adj,"çok büyük, kocaman",They live in a huge house.,Kocaman bir evde yaşıyorlar.,2,,home
@@ -102,7 +102,7 @@ a2-edge,EDGE,E,STARTS,noun,"bir şeyin kenarı, ucu",Do not stand near the edge.
 a2-ending,ENDING,E,STARTS,noun,bir hikâyenin ya da filmin sonu,The film has a sad ending.,Filmin hüzünlü bir sonu var.,3,,daily-life
 a2-shelf,SHELF,E,CONTAINS,noun,duvara takılan kitap rafı,The books are on the shelf.,Kitaplar rafta.,2,,home
 a2-speed,SPEED,E,CONTAINS,noun,bir şeyin hareket hızı,The car was moving at high speed.,Araba yüksek hızla gidiyordu.,3,,city-transport
-a2-screen,SCREEN,E,CONTAINS,noun,televizyon ya da bilgisayarın görüntü yüzeyi,The screen is very bright.,Ekran çok parlak.,2,,daily-life
+a2-screen,SCREEN,E,CONTAINS,noun,televizyon ya da bilgisayarın görüntü yüzeyi,The screen is very big.,Ekran çok büyük.,2,,daily-life
 a2-teenager,TEENAGER,E,CONTAINS,noun,on üç ile on dokuz yaş arasındaki genç,My sister is a teenager.,Kız kardeşim bir ergen.,3,,family-people
 a2-helmet,HELMET,E,CONTAINS,noun,başı korumak için takılan sert şapka,Wear a helmet when you ride.,Bisiklete binerken kask tak.,3,,sports
 a2-gate,GATE,G,STARTS,noun,bahçe ya da havalimanında girişteki kapı,The garden gate is open.,Bahçe kapısı açık.,2,,home

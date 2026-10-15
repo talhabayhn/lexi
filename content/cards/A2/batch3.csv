@@ -1,0 +1,68 @@
+id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
+a2-able,ABLE,A,STARTS,adj,bir şeyi yapabilecek güçte ya da durumda,She is able to swim very fast.,Çok hızlı yüzebiliyor.,2,,daily-life
+a2-abroad,ABROAD,A,STARTS,adv,kendi ülkesinin dışında,They travel abroad every summer.,Her yaz yurt dışına seyahat ediyorlar.,2,,travel
+a2-accept,ACCEPT,A,STARTS,verb,önerilen bir şeyi kabul etmek,Please accept this small gift.,Lütfen bu küçük hediyeyi kabul et.,3,,daily-life
+a2-accident,ACCIDENT,A,STARTS,noun,"istemeden olan, zarar veren kötü olay",There was an accident on the road.,Yolda bir kaza oldu.,2,,city-transport
+a2-across,ACROSS,A,STARTS,phrase,bir şeyin bir yanından öbür yanına,He swam across the river.,Nehri yüzerek geçti.,3,,city-transport
+a2-active,ACTIVE,A,STARTS,adj,"sürekli hareket eden, enerjik",My grandfather is still very active.,Büyükbabam hâlâ çok hareketli.,3,,body-health
+a2-activity,ACTIVITY,A,STARTS,noun,insanların yaptığı eğlenceli iş ya da etkinlik,Swimming is my favourite activity.,Yüzmek en sevdiğim etkinlik.,3,,sports
+a2-adult,ADULT,A,STARTS,noun,"büyümüş, ergin kişi",Children must come with an adult.,Çocuklar bir yetişkinle gelmeli.,3,,family-people
+a2-adventure,ADVENTURE,V,CONTAINS,noun,"heyecan verici, bazen tehlikeli yolculuk",Our trip was a big adventure.,Gezimiz büyük bir maceraydı.,3,,travel
+a2-advice,ADVICE,A,STARTS,noun,birine verilen öğüt,Can you give me some advice?,Bana biraz öğüt verir misin?,3,,daily-life
+a2-afraid,AFRAID,A,STARTS,adj,"korku duyan, çekinen",Are you afraid of dogs?,Köpeklerden korkar mısın?,2,,daily-life
+a2-against,AGAINST,A,STARTS,phrase,bir şeye karşı olarak,We play against the best team.,En iyi takıma karşı oynuyoruz.,3,,sports
+a2-alarm,ALARM,A,STARTS,noun,uyarmak için çalan ses ya da cihaz,The alarm rang at six.,Alarm altıda çaldı.,2,,daily-life
+a2-album,ALBUM,A,STARTS,noun,fotoğraf ya da şarkıların toplandığı koleksiyon,I like her new album.,Onun yeni albümünü beğeniyorum.,2,,music
+a2-alive,ALIVE,A,STARTS,adj,"yaşayan, ölmemiş",The fish is still alive.,Balık hâlâ canlı.,3,,animals
+a2-allow,ALLOW,A,STARTS,verb,birinin bir şeyi yapmasına izin vermek,They do not allow dogs in the shop.,Dükkâna köpek sokmuyorlar.,3,,daily-life
+a2-almost,ALMOST,A,STARTS,adv,"hemen hemen, çok yakın",We are almost home.,Neredeyse eve geldik.,2,,daily-life
+a2-alone,ALONE,A,STARTS,adj,"yanında kimse olmayan, tek başına",She lives alone in a small flat.,Küçük bir dairede tek başına yaşıyor.,2,,daily-life
+a2-along,ALONG,A,STARTS,phrase,bir yolun ya da hattın boyunca,We walked along the beach.,Plaj boyunca yürüdük.,3,,travel
+a2-although,ALTHOUGH,A,STARTS,phrase,"-e rağmen, olmasına karşın","Although it was cold, we went out.",Hava soğuk olmasına rağmen dışarı çıktık.,4,,daily-life
+a2-ambulance,AMBULANCE,A,STARTS,noun,hastaları hastaneye taşıyan araç,The ambulance arrived in five minutes.,Ambulans beş dakikada geldi.,2,,city-transport
+a2-among,AMONG,A,STARTS,phrase,birçok kişi ya da şeyin arasında,He sat among his friends.,Arkadaşlarının arasında oturdu.,3,,daily-life
+a2-amount,AMOUNT,A,STARTS,noun,bir şeyin miktarı,Add a small amount of salt.,Biraz tuz ekle.,3,,daily-life
+a2-ankle,ANKLE,A,STARTS,noun,ayakla bacağı birleştiren eklem,I broke my ankle when I ran.,Koşarken ayak bileğimi kırdım.,3,,body-health
+a2-apply,APPLY,A,STARTS,verb,bir iş ya da okul için resmen başvurmak,He wants to apply for a job.,Bir işe başvurmak istiyor.,4,,school-work
+a2-argue,ARGUE,A,STARTS,verb,biriyle fikir ayrılığı yüzünden tartışmak,My parents never argue.,Annem ve babam asla tartışmaz.,3,,family-people
+a2-army,ARMY,A,STARTS,noun,"bir ülkenin askerî gücü, ordu",His brother is in the army.,Ağabeyi orduda.,3,,daily-life
+a2-article,ARTICLE,A,STARTS,noun,gazete ya da dergideki yazı,I read an article about robots.,Robotlar hakkında bir makale okudum.,3,,school-work
+a2-artist,ARTIST,A,STARTS,noun,resim ya da heykel gibi sanat eseri yapan kişi,The artist painted a blue horse.,Sanatçı mavi bir at resmi yaptı.,2,,school-work
+a2-asleep,ASLEEP,A,STARTS,adj,uyuyor durumda olan,The baby is asleep.,Bebek uyuyor.,2,,daily-life
+a2-athlete,ATHLETE,A,STARTS,noun,spor yapan ya da yarışan kişi,The athlete trains every day.,Sporcu her gün antrenman yapıyor.,3,,sports
+a2-author,AUTHOR,A,STARTS,noun,kitap yazan kişi,The author lives in Paris.,Yazar Paris'te yaşıyor.,3,,school-work
+a2-average,AVERAGE,A,STARTS,adj,"ne çok iyi ne çok kötü olan, ortalama",She is an average student.,Ortalama bir öğrenci.,4,,time-weather
+a2-awful,AWFUL,A,STARTS,adj,"çok kötü, berbat",The food was awful.,Yemek berbattı.,3,,food-drink
+a2-above,ABOVE,A,STARTS,phrase,"bir şeyin üstünde, daha yukarıda",The picture is above the sofa.,Resim kanepenin üstünde.,2,,home
+a2-awake,AWAKE,A,STARTS,adj,"uyumayan, gözleri açık olan",I was awake all night.,Bütün gece uyanıktım.,3,,daily-life
+a2-actually,ACTUALLY,A,STARTS,adv,"gerçekte, aslında","Actually, I do not like fish.",Aslında balık sevmem.,4,,daily-life
+a2-appointment,APPOINTMENT,A,STARTS,noun,doktor gibi biriyle önceden ayarlanan görüşme,I have a doctor's appointment at ten.,Saat onda doktor randevum var.,3,,body-health
+a2-bake,BAKE,B,STARTS,verb,fırında pişirmek,I bake bread on Sundays.,Pazar günleri ekmek pişiririm.,2,,food-drink
+a2-bakery,BAKERY,B,STARTS,noun,ekmek ve pasta satılan dükkân,The bakery opens at seven.,Fırın yedide açılıyor.,2,,food-drink
+a2-battery,BATTERY,B,STARTS,noun,"saat gibi aletlere güç veren küçük parça, pil",My phone battery is dead.,Telefonumun pili bitti.,3,,daily-life
+a2-beauty,BEAUTY,B,STARTS,noun,güzel olmanın niteliği,She admired the beauty of the lake.,Gölün güzelliğine hayran kaldı.,4,,daily-life
+a2-bell,BELL,B,STARTS,noun,"çalınca ses çıkaran metal alet, çan",The school bell rang.,Okul zili çaldı.,2,,school-work
+a2-below,BELOW,B,STARTS,phrase,"bir şeyin altında, daha aşağıda",It is below zero outside.,Dışarısı sıfırın altında.,3,,time-weather
+a2-bench,BENCH,B,STARTS,noun,parkta birkaç kişinin oturduğu uzun oturak,We sat on a bench in the park.,Parkta bir bankta oturduk.,2,,city-transport
+a2-bin,BIN,B,STARTS,noun,çöp atılan kutu,Throw it in the bin.,Onu çöp kutusuna at.,2,,home
+a2-biology,BIOLOGY,B,STARTS,noun,canlıları inceleyen bilim dalı,We have biology on Wednesdays.,Çarşamba günleri biyolojimiz var.,2,,school-work
+a2-bite,BITE,B,STARTS,verb,dişleriyle ısırmak,Does your dog bite?,Köpeğin ısırır mı?,3,,animals
+a2-blood,BLOOD,B,STARTS,noun,damarlarda dolaşan kırmızı sıvı,The doctor took some blood.,Doktor biraz kan aldı.,3,,body-health
+a2-blow,BLOW,B,STARTS,verb,ağızdan hızla hava vermek,Blow out the candles.,Mumları üfle.,3,,daily-life
+a2-boil,BOIL,B,STARTS,verb,"kaynatmak, kaynar suda pişirmek",Boil the eggs for ten minutes.,Yumurtaları on dakika haşla.,2,,food-drink
+a2-boss,BOSS,B,STARTS,noun,"patron, işyerinde emir veren kişi",My boss is very kind.,Patronum çok nazik.,3,,school-work
+a2-bottom,BOTTOM,B,STARTS,noun,bir şeyin en alt kısmı,The key is at the bottom of the bag.,Anahtar çantanın dibinde.,3,,daily-life
+a2-brave,BRAVE,B,STARTS,adj,"korkusuz, cesur",The brave boy saved the cat.,Cesur çocuk kediyi kurtardı.,3,,daily-life
+a2-bright,BRIGHT,B,STARTS,adj,"çok ışık veren, parlak",The sun is bright today.,Güneş bugün parlak.,3,,time-weather
+a2-build,BUILD,B,STARTS,verb,"inşa etmek, yapmak",They are building a new bridge.,Yeni bir köprü yapıyorlar.,3,,daily-life
+a2-burn,BURN,B,STARTS,verb,ateşte yanmak ya da yakmak,Be careful. Hot tea can burn you.,Dikkat et. Sıcak çay seni yakabilir.,3,,body-health
+a2-business,BUSINESS,B,STARTS,noun,para kazanmak için yapılan iş,Her father has a small business.,Babasının küçük bir işi var.,3,,school-work
+a2-badminton,BADMINTON,B,STARTS,noun,raketle ve tüylü topla oynanan spor,We play badminton in the garden.,Bahçede badminton oynuyoruz.,3,,sports
+a2-basket,BASKET,B,STARTS,noun,hasır ya da telden örülmüş taşıma kabı,The basket is full of apples.,Sepet elmalarla dolu.,2,,home
+a2-beef,BEEF,B,STARTS,noun,sığır eti,We had beef with rice.,Pilavla dana eti yedik.,3,,food-drink
+a2-blouse,BLOUSE,B,STARTS,noun,kadınların giydiği hafif gömlek,She wears a white blouse.,Beyaz bir bluz giyiyor.,2,,daily-life
+a2-bracelet,BRACELET,B,STARTS,noun,bileğe takılan süs,She gave me a bracelet.,Bana bir bilezik verdi.,3,,daily-life
+a2-branch,BRANCH,B,STARTS,noun,ağacın gövdesinden çıkan dal,A bird sat on the branch.,Bir kuş dala kondu.,2,,animals
+a2-bucket,BUCKET,B,STARTS,noun,su taşımak için kullanılan kulplu kova,Fill the bucket with water.,Kovayı suyla doldur.,2,,home
+a2-beside,BESIDE,B,STARTS,phrase,bir şeyin hemen yanında,Sit beside me.,Yanıma otur.,3,,daily-life
+a2-bacon,BACON,B,STARTS,noun,"dilimlenmiş tuzlu domuz eti, pastırma",She likes bacon and eggs.,Domuz pastırmalı yumurtayı seviyor.,2,,food-drink
