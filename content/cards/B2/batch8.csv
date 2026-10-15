@@ -1,0 +1,47 @@
+id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
+b2-qualified,QUALIFIED,Q,STARTS,adj,gerekli eğitim ve belgeye sahip,She is a qualified nurse.,O nitelikli bir hemşire.,4,,business
+b2-quota,QUOTA,Q,STARTS,noun,izin verilen ya da hedeflenen pay,Each country has a fishing quota.,Her ülkenin bir balıkçılık kotası var.,4,,business
+b2-frequency,FREQUENCY,Q,CONTAINS,noun,bir şeyin ne sıklıkla olduğu,The frequency of buses is low at night.,Geceleri otobüs sıklığı düşük.,4,,daily-life
+b2-equation,EQUATION,Q,CONTAINS,noun,matematikte eşitlik denklemi,Solve this equation in your notebook.,Bu denklemi defterinde çöz.,4,,school-work
+b2-equip,EQUIP,Q,CONTAINS,verb,bir kişiyi ya da yeri gerekli donanımla donatmak,The school will equip every room with a screen.,Okul her odayı bir ekranla donatacak.,4,,technology
+b2-sequel,SEQUEL,Q,CONTAINS,noun,bir filmin ya da kitabın devamı,The sequel is better than the first film.,Devam filmi ilkinden daha iyi.,4,,film-tv
+b2-subsequent,SUBSEQUENT,Q,CONTAINS,adj,"ardından gelen, sonraki",Subsequent events proved him right.,Sonraki olaylar onu haklı çıkardı.,4,,school-work
+b2-equally,EQUALLY,Q,CONTAINS,adv,"aynı oranda, eşit biçimde",Share the cake equally.,Keki eşit paylaş.,3,,daily-life
+b2-consequently,CONSEQUENTLY,Q,CONTAINS,adv,bunun sonucunda,"He missed the bus; consequently, he was late.",Otobüsü kaçırdı; bu yüzden geç kaldı.,4,,business
+b2-acquaintance,ACQUAINTANCE,Q,CONTAINS,noun,yakın arkadaş olmayan tanıdık,"He is just an acquaintance, not a friend.","O sadece bir tanıdık, arkadaş değil.",4,,daily-life
+b2-anxiety,ANXIETY,X,CONTAINS,noun,endişe ve huzursuzluk,Exams cause anxiety in many students.,Sınavlar birçok öğrencide kaygı yaratır.,4,,body-health
+b2-texture,TEXTURE,X,CONTAINS,noun,bir şeyin dokunuşta hissedilen yapısı,I like the texture of this cloth.,Bu kumaşın dokusunu seviyorum.,4,,daily-life
+b2-toxic,TOXIC,X,CONTAINS,adj,"zehirli, zararlı",Some cleaning products are toxic.,Bazı temizlik ürünleri zehirlidir.,4,,body-health
+b2-exclusive,EXCLUSIVE,X,CONTAINS,adj,sadece belirli kişilere özel,It is an exclusive club for members.,"Bu, yalnızca üyelere özel bir kulüp.",4,,business
+b2-exotic,EXOTIC,X,CONTAINS,adj,"uzak diyarlardan gelen, egzotik",They sell exotic fruit at the market.,Pazarda egzotik meyveler satıyorlar.,3,,food-drink
+b2-expedition,EXPEDITION,X,CONTAINS,noun,keşif amaçlı uzun gezi,The scientists went on an expedition to the Arctic.,Bilim insanları Kuzey Kutbu'na bir keşif gezisine çıktı.,4,,travel
+b2-extensive,EXTENSIVE,X,CONTAINS,adj,geniş kapsamlı,The hotel has extensive gardens.,Otelin geniş bahçeleri var.,4,,travel
+b2-expansion,EXPANSION,X,CONTAINS,noun,"bir şeyin büyümesi, genişleme",The company plans an expansion abroad.,Şirket yurt dışına genişlemeyi planlıyor.,4,,business
+b2-external,EXTERNAL,X,CONTAINS,adj,"dışarıdaki, dışa ait",Use an external hard drive.,Harici bir sabit disk kullan.,4,,technology
+b2-exhibit,EXHIBIT,X,CONTAINS,verb,sergilemek,The museum will exhibit rare paintings.,Müze nadir tabloları sergileyecek.,4,,travel
+b2-expertise,EXPERTISE,X,CONTAINS,noun,"uzmanlık, derin bilgi",We need someone with expertise in law.,Hukuk alanında uzmanlığı olan birine ihtiyacımız var.,4,,business
+b2-excursion,EXCURSION,X,CONTAINS,noun,kısa günübirlik gezi,We went on an excursion to the island.,Adaya günübirlik bir gezi yaptık.,3,,travel
+b2-executive,EXECUTIVE,X,CONTAINS,noun,şirkette üst düzey yönetici,She is a senior executive at the bank.,Bankada üst düzey bir yönetici.,4,,business
+b2-analysis,ANALYSIS,Y,CONTAINS,noun,bir şeyin ayrıntılı incelemesi,The analysis of the data took a week.,Verilerin analizi bir hafta sürdü.,4,,school-work
+b2-comply,COMPLY,Y,CONTAINS,verb,kurallara uymak,All drivers must comply with the law.,Bütün sürücüler yasaya uymalı.,4,,business
+b2-consistency,CONSISTENCY,Y,CONTAINS,noun,tutarlılık,Consistency is the key to learning.,Tutarlılık öğrenmenin anahtarıdır.,4,,school-work
+b2-currency,CURRENCY,Y,CONTAINS,noun,bir ülkenin parası,The Turkish currency is the lira.,Türkiye'nin para birimi liradır.,3,,business
+b2-delivery,DELIVERY,Y,CONTAINS,noun,bir şeyin adrese getirilmesi,Delivery usually takes two days.,Teslimat genellikle iki gün sürer.,3,,business
+b2-employment,EMPLOYMENT,Y,CONTAINS,noun,iş sahibi olma durumu,Employment is rising in the region.,Bölgede istihdam artıyor.,4,,business
+b2-recovery,RECOVERY,Y,CONTAINS,noun,hastalıktan ya da krizden iyileşme,The recovery after surgery was quick.,Ameliyattan sonraki iyileşme hızlıydı.,3,,body-health
+b2-stylish,STYLISH,Y,CONTAINS,adj,şık ve modaya uygun,She wore a stylish black coat.,Şık bir siyah palto giymişti.,3,,daily-life
+b2-sympathy,SYMPATHY,Y,CONTAINS,noun,başkasının acısını paylaşma,I have a lot of sympathy for him.,Ona karşı çok anlayışım var.,4,,daily-life
+b2-sympathetic,SYMPATHETIC,Y,CONTAINS,adj,"başkalarının derdini anlayan, ilgili",The nurse was kind and sympathetic.,Hemşire nazik ve anlayışlıydı.,4,,false-friends
+b2-typically,TYPICALLY,Y,CONTAINS,adv,"genellikle, tipik olarak","Typically, the shop opens at nine.",Genellikle dükkân dokuzda açılır.,4,,daily-life
+b2-enquiry,ENQUIRY,Y,CONTAINS,noun,bilgi almak için yapılan soru,Send your enquiry by email.,Sorunuzu e-postayla gönderin.,4,,business
+b2-specialize,SPECIALIZE,Z,CONTAINS,verb,belirli bir alanda uzmanlaşmak,She wants to specialize in children's health.,Çocuk sağlığında uzmanlaşmak istiyor.,4,,body-health
+b2-utilize,UTILIZE,Z,CONTAINS,verb,bir şeyi yararlı biçimde kullanmak,We must utilize every chance we get.,Elimizdeki her fırsatı değerlendirmeliyiz.,4,,business
+b2-maximize,MAXIMIZE,Z,CONTAINS,verb,bir şeyi en üst düzeye çıkarmak,Try to maximize your study time.,Çalışma süreni en üst düzeye çıkarmaya çalış.,4,,school-work
+b2-minimize,MINIMIZE,Z,CONTAINS,verb,bir şeyi en aza indirmek,Wash your hands to minimize the risk.,Riski en aza indirmek için ellerini yıka.,4,,body-health
+b2-prioritize,PRIORITIZE,Z,CONTAINS,verb,öncelik sırasına koymak,You should prioritize your tasks.,Görevlerini öncelik sırasına koymalısın.,4,,business
+b2-visualize,VISUALIZE,Z,CONTAINS,verb,zihinde canlandırmak,Try to visualize the final result.,Son sonucu zihninde canlandırmaya çalış.,4,,school-work
+b2-citizenship,CITIZENSHIP,Z,CONTAINS,noun,bir ülkenin vatandaşı olma hakkı,He applied for Turkish citizenship.,Türk vatandaşlığına başvurdu.,4,,daily-life
+b2-energize,ENERGIZE,Z,CONTAINS,verb,"canlandırmak, enerji vermek",A short walk can energize you.,Kısa bir yürüyüş sana enerji verebilir.,4,,body-health
+b2-sympathize,SYMPATHIZE,Z,CONTAINS,verb,başkasının duygularını anlayıp paylaşmak,I sympathize with your situation.,Durumunu anlıyorum.,4,,daily-life
+b2-privatize,PRIVATIZE,Z,CONTAINS,verb,devlet şirketini özel sektöre devretmek,They plan to privatize the railway.,Demiryolunu özelleştirmeyi planlıyorlar.,4,,business
+b2-stabilize,STABILIZE,Z,CONTAINS,verb,durumu dengede tutmak,The doctors managed to stabilize him.,Doktorlar onun durumunu dengeleyebildi.,4,,body-health
