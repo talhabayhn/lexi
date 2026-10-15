@@ -1,0 +1,82 @@
+id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
+b1-talent,TALENT,T,STARTS,noun,doğuştan gelen özel yetenek,She has a talent for music.,Müzik konusunda yeteneği var.,3,,music
+b1-target,TARGET,T,STARTS,noun,ulaşılmak veya vurulmak istenen hedef,Our target is fifty new customers.,Hedefimiz elli yeni müşteri.,3,,business
+b1-teenage,TEENAGE,T,STARTS,adj,on üç ile on dokuz yaş arasındaki gençlerle ilgili,He has two teenage daughters.,İki ergen kızı var.,3,,family-people
+b1-temporary,TEMPORARY,T,STARTS,adj,"kısa süreliğine olan, geçici",It is only a temporary job.,Bu sadece geçici bir iş.,3,,business
+b1-theft,THEFT,T,STARTS,noun,başkasının malını çalma suçu,The theft happened at night.,Hırsızlık gece oldu.,4,,daily-life
+b1-theory,THEORY,T,STARTS,noun,bir olayı açıklamaya çalışan kuram,Einstein's theory changed physics.,Einstein'ın kuramı fiziği değiştirdi.,4,,school-work
+b1-threat,THREAT,T,STARTS,noun,zarar verme ihtimali olan tehlike,The storm is a threat to the village.,Fırtına köy için bir tehdit.,4,,daily-life
+b1-threaten,THREATEN,T,STARTS,verb,birine zarar vereceğini söyleyerek korkutmak,He tried to threaten the shopkeeper.,Dükkâncıyı tehdit etmeye çalıştı.,4,,daily-life
+b1-thrilled,THRILLED,T,STARTS,adj,çok heyecanlı ve sevinçli,She was thrilled to get the job.,İşi aldığı için çok sevindi.,4,,family-people
+b1-tough,TOUGH,T,STARTS,adj,"zor, sert veya dayanıklı",The meat was tough.,Et sertti.,3,,food-drink
+b1-tourism,TOURISM,T,STARTS,noun,turistlerin gezip dolaşmasıyla ilgili sektör,Tourism is important for Antalya.,Turizm Antalya için önemlidir.,3,,travel
+b1-tower,TOWER,T,STARTS,noun,yüksek ve dar kule,We climbed to the top of the tower.,Kulenin tepesine tırmandık.,3,,city-transport
+b1-trade,TRADE,T,STARTS,noun,ülkeler veya şirketler arasında mal alım satımı,Trade between the two countries is growing.,İki ülke arasındaki ticaret büyüyor.,4,,business
+b1-tradition,TRADITION,T,STARTS,noun,nesilden nesile geçen âdet,It is a tradition to eat pasta on that day.,O gün makarna yemek bir gelenek.,3,,family-people
+b1-training,TRAINING,T,STARTS,noun,bir iş veya spor için yapılan eğitim,The training starts at nine.,Eğitim dokuzda başlıyor.,3,,sports
+b1-trap,TRAP,T,STARTS,noun,hayvan yakalamak için kurulan tuzak,The mouse is in the trap.,Fare tuzakta.,3,,animals
+b1-treat,TREAT,T,STARTS,verb,bir hastayı tedavi etmek veya birine davranmak,Doctors treat patients every day.,Doktorlar her gün hastaları tedavi eder.,3,,body-health
+b1-treatment,TREATMENT,T,STARTS,noun,hastalık için uygulanan tedavi,He is having treatment for his back.,Sırtı için tedavi görüyor.,3,,body-health
+b1-trend,TREND,T,STARTS,noun,zamanla yaygınlaşan akım,Short hair is the latest trend.,Kısa saç en son trend.,3,,daily-life
+b1-typical,TYPICAL,T,STARTS,adj,"bir şeye özgü, beklenen özellikleri taşıyan",This is a typical Turkish breakfast.,Bu tipik bir Türk kahvaltısı.,3,,daily-life
+b1-throughout,THROUGHOUT,T,STARTS,phrase,baştan sona boyunca; her yerinde,It rained throughout the night.,Bütün gece yağmur yağdı.,4,,daily-life
+b1-terrified,TERRIFIED,T,STARTS,adj,"dehşete düşmüş, çok korkmuş",She was terrified of the dark.,Karanlıktan çok korkuyordu.,4,,family-people
+b1-textbook,TEXTBOOK,X,CONTAINS,noun,derslerde kullanılan ders kitabı,Open your textbook on page ten.,Ders kitabını on numaralı sayfada aç.,3,,school-work
+b1-unable,UNABLE,U,STARTS,adj,"bir şeyi yapamayan, yapabilecek durumda olmayan",He was unable to come to the meeting.,Toplantıya gelemedi.,4,,business
+b1-uncomfortable,UNCOMFORTABLE,U,STARTS,adj,"rahatsız hissettiren, rahat olmayan",This chair is very uncomfortable.,Bu sandalye çok rahatsız.,3,,daily-life
+b1-unfair,UNFAIR,U,STARTS,adj,"adil olmayan, haksız",It is unfair to give him extra time.,Ona fazladan süre vermek haksızlık.,3,,school-work
+b1-unit,UNIT,U,STARTS,noun,bir bütünü oluşturan birim veya bölüm,We finished unit three today.,Bugün üçüncü üniteyi bitirdik.,3,,school-work
+b1-united,UNITED,U,STARTS,adj,"birleşmiş, bir araya gelmiş",The team was united after the match.,Takım maçtan sonra kenetlenmişti.,4,,sports
+b1-universe,UNIVERSE,U,STARTS,noun,bütün gök cisimlerini kapsayan evren,Stars fill the universe.,Yıldızlar evreni doldurur.,4,,school-work
+b1-unknown,UNKNOWN,U,STARTS,adj,bilinmeyen,The reason is still unknown.,Sebep hâlâ bilinmiyor.,3,,daily-life
+b1-unlikely,UNLIKELY,U,STARTS,adj,gerçekleşmesi pek mümkün olmayan,It is unlikely that it will snow today.,Bugün kar yağması pek olası değil.,4,,daily-life
+b1-unpleasant,UNPLEASANT,U,STARTS,adj,"hoşa gitmeyen, nahoş",There was an unpleasant smell in the room.,Odada nahoş bir koku vardı.,3,,daily-life
+b1-unusual,UNUSUAL,U,STARTS,adj,"alışılmamış, sıra dışı",That is an unusual name.,Bu alışılmadık bir isim.,3,,daily-life
+b1-update,UPDATE,U,STARTS,verb,en yeni bilgilerle güncellemek; yeni bilgi eklemek,You should update your phone.,Telefonunu güncellemelisin.,3,,technology
+b1-upload,UPLOAD,U,STARTS,verb,dosyayı internete yüklemek,I will upload the photos tonight.,Fotoğrafları bu gece yükleyeceğim.,3,,technology
+b1-upset,UPSET,U,STARTS,adj,"kötü bir olay yüzünden morali bozulmuş, kırılmış",She was upset about the news.,Haber yüzünden üzüldü.,3,,family-people
+b1-urban,URBAN,U,STARTS,adj,"şehirle ilgili, kentsel",Urban life can be noisy.,Kent hayatı gürültülü olabilir.,4,,city-transport
+b1-urgent,URGENT,U,STARTS,adj,"hemen yapılması gereken, acil",I have an urgent message for you.,Sana acil bir mesajım var.,3,,business
+b1-useless,USELESS,U,STARTS,adj,hiçbir işe yaramayan,This old phone is useless.,Bu eski telefon işe yaramaz.,3,,technology
+b1-understanding,UNDERSTANDING,U,STARTS,adj,"başkasının durumunu anlayan, anlayışlı",My teacher was very understanding.,Öğretmenim çok anlayışlıydı.,4,,family-people
+b1-unexpected,UNEXPECTED,U,STARTS,adj,beklenmeyen,We had an unexpected visitor.,Beklenmedik bir misafirimiz geldi.,4,,daily-life
+b1-valuable,VALUABLE,V,STARTS,adj,"çok değerli, kıymetli",The ring is very valuable.,Yüzük çok değerli.,3,,daily-life
+b1-value,VALUE,V,STARTS,noun,bir şeyin değeri,The value of the house has doubled.,Evin değeri iki katına çıktı.,3,,business
+b1-variety,VARIETY,V,STARTS,noun,"birçok farklı türün bulunması, çeşitlilik",The market sells a variety of fruit.,Pazar çok çeşitli meyve satıyor.,3,,food-drink
+b1-various,VARIOUS,V,STARTS,adj,farklı çeşitlerde olan,He worked in various countries.,Çeşitli ülkelerde çalıştı.,3,,business
+b1-vegetarian,VEGETARIAN,V,STARTS,noun,et yemeyen kişi,My sister is a vegetarian.,Kız kardeşim vejetaryen.,3,,food-drink
+b1-victim,VICTIM,V,STARTS,noun,kaza veya suçtan zarar gören kişi,The victim was taken to hospital.,Mağdur hastaneye kaldırıldı.,4,,daily-life
+b1-victory,VICTORY,V,STARTS,noun,bir yarışta veya savaşta kazanılan zafer,The team celebrated its victory.,Takım zaferini kutladı.,3,,sports
+b1-viewer,VIEWER,V,STARTS,noun,televizyon izleyen kişi,Every viewer can vote for a winner.,Her izleyici bir kazanan için oy verebilir.,3,,film-tv
+b1-violence,VIOLENCE,V,STARTS,noun,başkalarına zarar veren şiddet,The film shows too much violence.,Film çok fazla şiddet gösteriyor.,4,,film-tv
+b1-violent,VIOLENT,V,STARTS,adj,"şiddet içeren, sert",The game is too violent for children.,Oyun çocuklar için fazla şiddet içeriyor.,4,,film-tv
+b1-virtual,VIRTUAL,V,STARTS,adj,"bilgisayarda var olan, sanal",We took a virtual tour of the museum.,Müzenin sanal turunu yaptık.,4,,technology
+b1-virus,VIRUS,V,STARTS,noun,hastalık yapan mikroskobik canlı; bilgisayar zararlısı,He caught a virus last week.,Geçen hafta bir virüs kaptı.,3,,body-health
+b1-vocabulary,VOCABULARY,V,STARTS,noun,bir dilde bilinen sözcüklerin tamamı,I want to improve my English vocabulary.,İngilizce kelime dağarcığımı geliştirmek istiyorum.,3,,school-work
+b1-volume,VOLUME,V,STARTS,noun,bir sesin yüksekliği; hacim,Please turn down the volume.,Lütfen sesi kıs.,3,,technology
+b1-version,VERSION,V,STARTS,noun,bir şeyin farklı bir hali veya sürümü,Which version of the app do you use?,Uygulamanın hangi sürümünü kullanıyorsun?,3,,technology
+b1-device,DEVICE,V,CONTAINS,noun,belirli bir iş için yapılmış küçük alet,This device charges your phone.,Bu cihaz telefonunu şarj eder.,3,,technology
+b1-reserve,RESERVE,V,CONTAINS,verb,önceden yer ayırtmak,I want to reserve a table for four.,Dört kişilik bir masa ayırtmak istiyorum.,3,,travel
+b1-convince,CONVINCE,V,CONTAINS,verb,birini bir şeyin doğru olduğuna inandırmak,She could not convince her father.,Babasını ikna edemedi.,4,,daily-life
+b1-convenient,CONVENIENT,V,CONTAINS,adj,işe yarar ve kolaylık sağlayan,The hotel is in a convenient place.,Otel elverişli bir yerde.,4,,travel
+b1-servant,SERVANT,V,CONTAINS,noun,evde hizmet için çalışan kişi,The servant brought tea to the guests.,Hizmetçi misafirlere çay getirdi.,4,,family-people
+b1-overseas,OVERSEAS,V,CONTAINS,adv,denizaşırı bir ülkede veya oraya,His brother works overseas.,Kardeşi yurt dışında çalışıyor.,4,,travel
+b1-wage,WAGE,W,STARTS,noun,saat veya gün başına ödenen ücret,The wage in this shop is low.,Bu dükkândaki ücret düşük.,3,,business
+b1-warning,WARNING,W,STARTS,noun,tehlikeyi bildiren uyarı,There was a warning on the box.,Kutunun üzerinde bir uyarı vardı.,3,,daily-life
+b1-weapon,WEAPON,W,STARTS,noun,saldırı veya savunmada kullanılan silah,The police found a weapon in the car.,Polis arabada bir silah buldu.,4,,daily-life
+b1-weird,WEIRD,W,STARTS,adj,"tuhaf, garip",I had a weird dream last night.,Dün gece garip bir rüya gördüm.,3,,daily-life
+b1-whatever,WHATEVER,W,STARTS,phrase,"ne olursa olsun, her ne",Do whatever you like.,Ne istersen yap.,3,,daily-life
+b1-whenever,WHENEVER,W,STARTS,phrase,"her ne zaman, ne zaman olursa olsun",Call me whenever you need help.,Yardıma ihtiyacın olduğunda beni ara.,3,,daily-life
+b1-wherever,WHEREVER,W,STARTS,phrase,nerede olursa olsun,I will find you wherever you are.,Nerede olursan ol seni bulacağım.,4,,daily-life
+b1-whether,WHETHER,W,STARTS,phrase,-ip -mediğini; -se de -mese de,I don't know whether he is at home.,Evde olup olmadığını bilmiyorum.,4,,daily-life
+b1-wheelchair,WHEELCHAIR,W,STARTS,noun,yürüyemeyen insanların kullandığı tekerlekli sandalye,He moves around in a wheelchair.,Tekerlekli sandalyeyle dolaşıyor.,3,,body-health
+b1-widely,WIDELY,W,STARTS,adv,geniş bir alanda veya birçok kişi tarafından,English is widely spoken in Europe.,İngilizce Avrupa'da yaygın olarak konuşulur.,4,,travel
+b1-wildlife,WILDLIFE,W,STARTS,noun,doğadaki vahşi hayvanlar ve bitkiler,The park is full of wildlife.,Park vahşi yaşamla dolu.,3,,animals
+b1-willing,WILLING,W,STARTS,adj,"bir şeyi yapmaya hazır, gönüllü",Are you willing to help us?,Bize yardım etmeye hazır mısın?,3,,daily-life
+b1-within,WITHIN,W,STARTS,phrase,belirli bir süre veya sınır içinde,I will be back within an hour.,Bir saat içinde döneceğim.,3,,daily-life
+b1-witness,WITNESS,W,STARTS,noun,bir olayı gözüyle görmüş kişi,The witness saw the accident.,Tanık kazayı gördü.,4,,daily-life
+b1-workshop,WORKSHOP,W,STARTS,noun,bir şeyin yapıldığı atölye,He repairs bikes in his workshop.,Atölyesinde bisiklet tamir ediyor.,3,,school-work
+b1-workout,WORKOUT,W,STARTS,noun,vücut çalıştırma egzersizi,I do a short workout every morning.,Her sabah kısa bir antrenman yapıyorum.,3,,sports
+b1-worldwide,WORLDWIDE,W,STARTS,adv,dünyanın her yerinde,The song is popular worldwide.,Şarkı dünya çapında popüler.,4,,music
+b1-worth,WORTH,W,STARTS,adj,"belli bir değerde olan, ... eden (fiyat)",This old car is worth about a thousand euros.,Bu eski araba yaklaşık bin avro eder.,4,,business
+b1-wrap,WRAP,W,STARTS,verb,bir şeyi kâğıda sarmak,Can you wrap this present for me?,Bu hediyeyi benim için paketleyebilir misin?,3,,daily-life
