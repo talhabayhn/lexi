@@ -1,0 +1,57 @@
+id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
+b2-absorb,ABSORB,A,STARTS,verb,sıvıyı ya da bilgiyi içine çekip almak,A sponge can absorb a lot of water.,Bir sünger çok su emebilir.,3,,school-work
+b2-access,ACCESS,A,STARTS,noun,bir yere ya da bilgiye ulaşma hakkı,Students have free access to the library.,Öğrencilerin kütüphaneye ücretsiz erişimi var.,3,,technology
+b2-accommodate,ACCOMMODATE,A,STARTS,verb,birini yer ayırarak barındırmak,The hotel can accommodate two hundred guests.,Otel iki yüz misafiri barındırabilir.,4,,travel
+b2-accurate,ACCURATE,A,STARTS,adj,hatasız ve doğru,The map is accurate.,Harita doğru.,3,,school-work
+b2-accuse,ACCUSE,A,STARTS,verb,birini suç işlemekle suçlamak,They accuse him of stealing the bike.,Onu bisikleti çalmakla suçluyorlar.,3,,daily-life
+b2-acknowledge,ACKNOWLEDGE,A,STARTS,verb,birinin varlığını fark edip selam vermek,She walked past without trying to acknowledge me.,Beni selamlamaya bile çalışmadan yanımdan geçti.,4,,daily-life
+b2-adapt,ADAPT,A,STARTS,verb,yeni koşullara uyum sağlamak,It takes time to adapt to a new school.,Yeni bir okula uyum sağlamak zaman alır.,3,,school-work
+b2-adequate,ADEQUATE,A,STARTS,adj,ihtiyacı karşılayacak ölçüde yeterli,The food was adequate but not exciting.,Yemek yeterliydi ama heyecan verici değildi.,4,,food-drink
+b2-affordable,AFFORDABLE,A,STARTS,adj,fiyatı herkesin ödeyebileceği kadar makul,They sell affordable clothes for students.,Öğrencilere uygun fiyatlı giysiler satıyorlar.,3,,business
+b2-agenda,AGENDA,A,STARTS,noun,toplantıda ele alınacak konuların listesi,What is on the agenda for today?,Bugünün gündeminde ne var?,4,,business
+b2-alter,ALTER,A,STARTS,verb,bir şeyi biraz değiştirmek,We had to alter our travel plans.,Seyahat planlarımızı değiştirmek zorunda kaldık.,3,,travel
+b2-ambitious,AMBITIOUS,A,STARTS,adj,"büyük hedefleri olan, hırslı",She is an ambitious young lawyer.,O hırslı genç bir avukat.,3,,business
+b2-amuse,AMUSE,A,STARTS,verb,birini güldürüp eğlendirmek,The clown tried to amuse the children.,Palyaço çocukları eğlendirmeye çalıştı.,3,,film-tv
+b2-analyse,ANALYSE,A,STARTS,verb,bir şeyi ayrıntılı inceleyip çözümlemek,Scientists analyse the data every week.,Bilim insanları verileri her hafta analiz eder.,4,,school-work
+b2-anticipate,ANTICIPATE,A,STARTS,verb,bir şeyin olacağını önceden tahmin etmek,We anticipate heavy traffic on Friday.,Cuma günü yoğun trafik bekliyoruz.,4,,business
+b2-apparent,APPARENT,A,STARTS,adj,"açıkça görülen, belli olan",It was apparent that she was upset.,Üzgün olduğu belliydi.,4,,daily-life
+b2-appeal,APPEAL,A,STARTS,noun,bir şeyin çekiciliği; yardım çağrısı,The film has a wide appeal for young people.,Filmin gençler için geniş bir çekiciliği var.,4,,film-tv
+b2-appropriate,APPROPRIATE,A,STARTS,adj,"duruma uygun, yerinde",Jeans are not appropriate for a wedding.,Kot pantolon düğün için uygun değil.,3,,daily-life
+b2-approximate,APPROXIMATE,A,STARTS,adj,"yaklaşık, tam olmayan",The approximate cost is fifty pounds.,Yaklaşık maliyet elli pound.,4,,business
+b2-arise,ARISE,A,STARTS,verb,sorun ya da fırsatın baş göstermesi,Problems may arise during the trip.,Gezi sırasında sorunlar çıkabilir.,4,,daily-life
+b2-artificial,ARTIFICIAL,A,STARTS,adj,"doğal olmayan, insan yapımı",The cake has no artificial colours.,Kekte yapay renklendirici yok.,3,,food-drink
+b2-aspect,ASPECT,A,STARTS,noun,bir konunun belirli bir yönü,Which aspect of the job do you like most?,İşin hangi yönünü en çok seviyorsun?,4,,business
+b2-assess,ASSESS,A,STARTS,verb,bir şeyin değerini veya durumunu değerlendirmek,Teachers assess students every term.,Öğretmenler öğrencileri her dönem değerlendirir.,4,,school-work
+b2-associate,ASSOCIATE,A,STARTS,verb,iki şeyi zihinde birbirine bağlamak,Many people associate green with nature.,Birçok insan yeşili doğayla ilişkilendirir.,4,,daily-life
+b2-assure,ASSURE,A,STARTS,verb,birine bir şeyin doğruluğundan emin olduğunu söylemek,I can assure you that he is safe.,Sizi temin ederim ki o güvende.,4,,daily-life
+b2-attribute,ATTRIBUTE,A,STARTS,verb,bir sonucu bir nedene bağlamak,She likes to attribute her success to hard work.,Başarısını çok çalışmasına bağlamayı sever.,4,,school-work
+b2-authentic,AUTHENTIC,A,STARTS,adj,"gerçek, orijinal",We ate authentic Italian pizza.,Otantik bir İtalyan pizzası yedik.,4,,food-drink
+b2-authority,AUTHORITY,A,STARTS,noun,karar verme yetkisi veya yetkili kurum,Only the local authority can give permission.,Sadece yerel yönetim izin verebilir.,4,,business
+b2-awareness,AWARENESS,A,STARTS,noun,"bir konudan haberdar olma, farkındalık",The campaign raises awareness about recycling.,Kampanya geri dönüşüm konusunda farkındalık yaratıyor.,4,,school-work
+b2-abuse,ABUSE,A,STARTS,noun,birine kötü davranma veya bir şeyi kötüye kullanma,Animal abuse is a crime.,Hayvanlara kötü muamele bir suçtur.,4,,daily-life
+b2-abstract,ABSTRACT,A,STARTS,adj,"somut olmayan, soyut",Love is an abstract idea.,Aşk soyut bir fikirdir.,4,,school-work
+b2-ask-around,ASK AROUND,A,STARTS,phrasal,çevredeki insanlara sorup araştırmak,I will ask around for a cheap flat.,Ucuz bir daire için etrafa sorarım.,3,,phrasal-verbs
+b2-ask-out,ASK OUT,A,STARTS,phrasal,birine çıkma teklif etmek,He wants to ask out his classmate.,Sınıf arkadaşına çıkma teklif etmek istiyor.,3,,phrasal-verbs
+b2-back-up,BACK UP,B,STARTS,phrasal,dosyanın yedeğini almak veya desteklemek,You should back up your photos.,Fotoğraflarının yedeğini almalısın.,3,,phrasal-verbs
+b2-back-off,BACK OFF,B,STARTS,phrasal,geri çekilip yaklaşmamak,Please back off and give me some space.,Lütfen geri çekil ve bana biraz yer bırak.,4,,phrasal-verbs
+b2-blow-up,BLOW UP,B,STARTS,phrasal,patlamak veya bir şeyi patlatmak,They will blow up the old building tomorrow.,Eski binayı yarın patlatacaklar.,3,,phrasal-verbs
+b2-break-down,BREAK DOWN,B,STARTS,phrasal,araç ya da makinenin bozulması,Our car might break down on the way.,Arabamız yolda bozulabilir.,3,,phrasal-verbs
+b2-break-in,BREAK IN,B,STARTS,phrasal,zorla içeri girmek,Someone tried to break in last night.,Dün gece biri zorla içeri girmeye çalıştı.,4,,phrasal-verbs
+b2-break-out,BREAK OUT,B,STARTS,phrasal,savaş ya da yangının aniden başlaması,A fire may break out in the kitchen.,Mutfakta bir yangın çıkabilir.,4,,phrasal-verbs
+b2-bring-up,BRING UP,B,STARTS,phrasal,çocuk büyütmek; bir konuyu açmak,She likes to bring up old stories.,Eski hikâyeleri açmayı sever.,4,,phrasal-verbs
+b2-build-up,BUILD UP,B,STARTS,phrasal,azar azar birikmek veya biriktirmek,Dust can build up under the bed.,Yatağın altında toz birikebilir.,4,,phrasal-verbs
+b2-burn-out,BURN OUT,B,STARTS,phrasal,aşırı çalışmaktan bitkin düşmek,Teachers can burn out if they work too hard.,Öğretmenler çok çalışırsa tükenebilir.,4,,phrasal-verbs
+b2-by-heart,BY HEART,B,STARTS,idiom,"ezberden, bakmadan",She knows the whole poem by heart.,Bütün şiiri ezbere biliyor.,3,,idioms
+b2-by-chance,BY CHANCE,B,STARTS,idiom,"tesadüfen, planlamadan",I met him by chance at the airport.,Onunla havaalanında tesadüfen karşılaştım.,3,,idioms
+b2-break-a-leg,BREAK A LEG,B,STARTS,idiom,sahneye çıkana başarı dileme sözü,Break a leg tonight!,Bu gece bol şans!,3,,idioms
+b2-bite-the-bullet,BITE THE BULLET,B,STARTS,idiom,zor bir şeye katlanmaya karar vermek,I had to bite the bullet and tell him the truth.,Dişimi sıkıp ona gerçeği söylemek zorunda kaldım.,4,,idioms
+b2-balanced,BALANCED,B,STARTS,adj,"dengeli, her şeyi ölçülü içeren",Eat a balanced diet.,Dengeli beslen.,3,,body-health
+b2-barely,BARELY,B,STARTS,adv,"zar zor, çok az farkla",I could barely hear the teacher.,Öğretmeni zar zor duyabildim.,4,,daily-life
+b2-believable,BELIEVABLE,B,STARTS,adj,"inanılabilir, gerçekçi",The actor was very believable.,Oyuncu çok inandırıcıydı.,4,,film-tv
+b2-bias,BIAS,B,STARTS,noun,bir tarafı kayıran önyargı,The judge showed no bias.,Hâkim hiç taraf tutmadı.,4,,school-work
+b2-blend,BLEND,B,STARTS,verb,birkaç şeyi karıştırıp birleştirmek,Blend the fruit with milk.,Meyveyi sütle karıştır.,3,,food-drink
+b2-boundary,BOUNDARY,B,STARTS,noun,bir kişinin ya da alanın aşılmaması gereken sınırı,Everyone needs a personal boundary.,Herkesin kişisel bir sınırı olmalı.,4,,travel
+b2-broaden,BROADEN,B,STARTS,verb,bir şeyi genişletmek,Travel can broaden your mind.,Seyahat ufkunu genişletebilir.,4,,travel
+b2-bulletin,BULLETIN,B,STARTS,noun,kısa güncel haber bülteni,I watch the news bulletin at nine.,Dokuzda haber bültenini izlerim.,4,,film-tv
+b2-burden,BURDEN,B,STARTS,noun,taşınması zor yük veya sorumluluk,Debt is a heavy burden for many families.,Borç birçok aile için ağır bir yüktür.,4,,business
+b2-bankrupt,BANKRUPT,B,STARTS,adj,"borçlarını ödeyemeyecek duruma gelmiş, iflas etmiş",The company went bankrupt last year.,Şirket geçen yıl iflas etti.,4,,business
