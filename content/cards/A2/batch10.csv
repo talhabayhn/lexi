@@ -1,0 +1,72 @@
+id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
+a2-ice-cream,ICE CREAM,I,STARTS,noun,"sütten yapılan soğuk ve tatlı yiyecek, dondurma",The children want ice cream.,Çocuklar dondurma istiyor.,2,,food-drink
+a2-invitation,INVITATION,I,STARTS,noun,birini bir yere çağıran yazılı ya da sözlü davet,I got an invitation to her party.,Onun partisine bir davetiye aldım.,3,,daily-life
+a2-interest,INTEREST,I,STARTS,noun,bir şeye duyulan merak ve ilgi,He has an interest in old coins.,Eski paralara ilgisi var.,3,,daily-life
+a2-nationality,NATIONALITY,N,STARTS,noun,bir kişinin hangi ülkenin vatandaşı olduğu,What is your nationality?,Uyruğun nedir?,3,,daily-life
+a2-nest,NEST,N,STARTS,noun,kuşun yumurtalarını koyduğu yuva,There are three eggs in the nest.,Yuvada üç yumurta var.,2,,animals
+a2-net,NET,N,STARTS,noun,iplerden örülmüş ağ,The ball went into the net.,Top fileye girdi.,3,,sports
+a2-navy,NAVY,N,STARTS,noun,"bir ülkenin denizdeki askerî gücü, donanma",His father is in the navy.,Babası donanmada.,3,,daily-life
+a2-neighbourhood,NEIGHBOURHOOD,N,STARTS,noun,insanın yaşadığı mahalle,This is a quiet neighbourhood.,Burası sessiz bir mahalle.,3,,city-transport
+a2-officer,OFFICER,O,STARTS,noun,polis ya da orduda görevli yetkili kişi,A police officer stopped the car.,Bir polis memuru arabayı durdurdu.,3,,daily-life
+a2-omelette,OMELETTE,O,STARTS,noun,"çırpılmış yumurtadan yapılan yemek, omlet",I made an omelette for breakfast.,Kahvaltı için omlet yaptım.,2,,food-drink
+a2-opera,OPERA,O,STARTS,noun,şarkıyla anlatılan büyük sahne gösterisi,We went to the opera in Rome.,Roma'da operaya gittik.,3,,music
+a2-popcorn,POPCORN,O,CONTAINS,noun,ısıtılınca patlayan mısır,We ate popcorn at the cinema.,Sinemada patlamış mısır yedik.,2,,food-drink
+a2-coconut,COCONUT,O,CONTAINS,noun,"tropik ağaçta yetişen, içi sulu sert meyve",The monkey climbed the tree for a coconut.,Maymun hindistan cevizi için ağaca tırmandı.,3,,food-drink
+a2-earthquake,EARTHQUAKE,E,STARTS,noun,"yerin sallanması, deprem",The earthquake woke everyone up.,Deprem herkesi uyandırdı.,3,,time-weather
+a2-escalator,ESCALATOR,E,STARTS,noun,alışveriş merkezlerindeki yürüyen merdiven,Take the escalator to the second floor.,Yürüyen merdivenle ikinci kata çık.,3,,city-transport
+a2-euro,EURO,E,STARTS,noun,bazı Avrupa ülkelerinde kullanılan para birimi,The ticket costs one euro.,Bilet bir avro.,3,,daily-life
+a2-paragraph,PARAGRAPH,G,CONTAINS,noun,yazıda birkaç cümleden oluşan bölüm,Read the first paragraph.,İlk paragrafı oku.,3,,school-work
+a2-globe,GLOBE,G,STARTS,noun,dünyanın küre biçimli modeli,There is a globe on his desk.,Masasında bir dünya küresi var.,3,,school-work
+a2-grill,GRILL,G,STARTS,verb,ızgarada pişirmek,We grill fish on Sundays.,Pazar günleri balık ızgara yaparız.,3,,food-drink
+a2-departure,DEPARTURE,D,STARTS,noun,bir yerden ayrılma ve yola çıkma,Look at the departure time.,Hareket saatine bak.,3,,travel
+a2-drawer,DRAWER,D,STARTS,noun,masa ya da dolabın içindeki çekmece,The keys are in the drawer.,Anahtarlar çekmecede.,2,,home
+a2-disco,DISCO,D,STARTS,noun,insanların dans edip müzik dinlediği yer,We danced at the disco.,Diskoda dans ettik.,2,,music
+a2-plural,PLURAL,U,CONTAINS,noun,birden fazla olduğunu gösteren dil bilgisi biçimi,The plural of child is children.,Child'ın çoğulu children'dır.,3,,school-work
+a2-dive,DIVE,V,CONTAINS,verb,suya başı önde atlamak ya da suyun altına dalmak,He likes to dive into the sea.,Denize dalmayı sever.,3,,sports
+a2-sleeve,SLEEVE,V,CONTAINS,noun,giysinin kolu,The sleeve of my shirt is short.,Gömleğimin kolu kısa.,3,,daily-life
+a2-divide,DIVIDE,V,CONTAINS,verb,bir şeyi parçalara ayırmak,Divide the cake into eight parts.,Keki sekiz parçaya böl.,3,,school-work
+a2-shave,SHAVE,V,CONTAINS,verb,"sakalını kesmek, tıraş olmak",My father must shave every morning.,Babam her sabah tıraş olmalı.,3,,body-health
+a2-eyebrow,EYEBROW,Y,CONTAINS,noun,"gözün üstündeki kıl çizgisi, kaş",He raised one eyebrow.,Bir kaşını kaldırdı.,3,,body-health
+a2-tray,TRAY,Y,CONTAINS,noun,yemek ya da içecek taşımak için düz tepsi,The waiter carries a tray.,Garson bir tepsi taşıyor.,2,,food-drink
+a2-adjective,ADJECTIVE,J,CONTAINS,noun,"isimleri niteleyen sözcük türü, sıfat","""Big"" is an adjective.","""Big"" bir sıfattır.",3,,school-work
+a2-hairdresser,HAIRDRESSER,H,STARTS,noun,"saç kesen kişi, kuaför",The hairdresser cut my hair.,Kuaför saçımı kesti.,3,,school-work
+a2-phrase,PHRASE,H,CONTAINS,noun,birkaç sözcükten oluşan kalıp ifade,Learn this new phrase.,Bu yeni kalıbı öğren.,3,,school-work
+a2-laundry,LAUNDRY,L,STARTS,noun,yıkanacak ya da yıkanmış giysiler,I do the laundry on Saturdays.,Cumartesi günleri çamaşır yıkarım.,3,,home
+a2-glue,GLUE,L,CONTAINS,noun,"kâğıtları birbirine yapıştıran madde, yapıştırıcı",Do you have any glue?,Hiç yapıştırıcın var mı?,2,,school-work
+a2-plus,PLUS,L,CONTAINS,phrase,"toplama işleminde kullanılan sözcük, artı",Two plus two is four.,İki artı iki dört eder.,2,,school-work
+a2-mask,MASK,M,STARTS,noun,"yüze takılan, kimliği gizleyen örtü",He wore a mask at the party.,Partide bir maske taktı.,3,,daily-life
+a2-meaning,MEANING,M,STARTS,noun,"bir sözcüğün ya da cümlenin anlattığı şey, anlam",I do not know the meaning of this word.,Bu sözcüğün anlamını bilmiyorum.,3,,school-work
+a2-monster,MONSTER,M,STARTS,noun,"korkunç ve garip görünümlü masal yaratığı, canavar",There is a monster in the story.,Hikâyede bir canavar var.,2,,daily-life
+a2-plumber,PLUMBER,M,CONTAINS,noun,"su borularını döşeyen ve tamir eden usta, tesisatçı",We called a plumber.,Bir tesisatçı çağırdık.,3,,school-work
+a2-platform,PLATFORM,P,STARTS,noun,"istasyonda trene binilen yüksek yer, peron",The train leaves from platform two.,Tren iki numaralı perondan kalkıyor.,3,,city-transport
+a2-possible,POSSIBLE,P,STARTS,adj,"olabilen, mümkün",Is it possible to leave early?,Erken çıkmak mümkün mü?,3,,daily-life
+a2-perfume,PERFUME,P,STARTS,noun,"güzel koku veren sıvı, parfüm",She wears a sweet perfume.,Tatlı bir parfüm sürüyor.,3,,daily-life
+a2-pianist,PIANIST,P,STARTS,noun,piyano çalan kişi,The pianist is only ten years old.,Piyanist sadece on yaşında.,3,,music
+a2-relative,RELATIVE,R,STARTS,noun,aile bağıyla bağlı olunan akraba,A relative of mine lives in Ankara.,Bir akrabam Ankara'da yaşıyor.,3,,family-people
+a2-runner,RUNNER,R,STARTS,noun,koşan kişi,The runner finished first.,Koşucu birinci bitirdi.,2,,sports
+a2-seaside,SEASIDE,S,STARTS,noun,deniz kıyısı,We spent the weekend at the seaside.,Hafta sonunu deniz kenarında geçirdik.,3,,travel
+a2-sleepy,SLEEPY,S,STARTS,adj,uykusu gelmiş,I feel sleepy after lunch.,Öğle yemeğinden sonra uykum geliyor.,2,,body-health
+a2-slide,SLIDE,S,STARTS,noun,"çocukların kayarak indiği oyun aleti, kaydırak",The little girl is on the slide.,Küçük kız kaydırakta.,2,,city-transport
+a2-sweatshirt,SWEATSHIRT,S,STARTS,noun,pamuktan yapılmış kalın spor üst,He wears a grey sweatshirt.,Gri bir sweatshirt giyiyor.,2,,daily-life
+a2-skyscraper,SKYSCRAPER,S,STARTS,noun,"çok katlı çok yüksek bina, gökdelen",I work in a tall skyscraper.,Yüksek bir gökdelende çalışıyorum.,3,,city-transport
+a2-teapot,TEAPOT,T,STARTS,noun,"içinde çay demlenen kap, demlik",The teapot is on the table.,Demlik masanın üstünde.,2,,home
+a2-trophy,TROPHY,T,STARTS,noun,yarışmayı kazananlara verilen kupa,Our team won the trophy.,Takımımız kupayı kazandı.,3,,sports
+a2-collection,COLLECTION,C,STARTS,noun,bir araya getirilmiş eşyalar topluluğu,He has a big stamp collection.,Büyük bir pul koleksiyonu var.,3,,daily-life
+a2-corridor,CORRIDOR,C,STARTS,noun,"odalar arasındaki dar geçit, koridor",The classroom is at the end of the corridor.,Sınıf koridorun sonunda.,3,,school-work
+a2-cheerful,CHEERFUL,C,STARTS,adj,"neşeli, keyfi yerinde",He is always cheerful.,O her zaman neşeli.,3,,daily-life
+a2-gardener,GARDENER,G,STARTS,noun,"bahçe işleriyle uğraşan kişi, bahçıvan",The gardener waters the flowers.,Bahçıvan çiçekleri suluyor.,3,,school-work
+a2-coin,COIN,C,STARTS,noun,madenden yapılmış bozuk para,I found a coin on the street.,Sokakta bir bozuk para buldum.,2,,daily-life
+a2-bean,BEAN,B,STARTS,noun,"sebze olarak yenen küçük çekirdek, fasulye",I do not like green bean soup.,Yeşil fasulye çorbasını sevmem.,2,,food-drink
+a2-collar,COLLAR,C,STARTS,noun,gömleğin boyun çevresindeki yaka kısmı,The collar of this shirt is dirty.,Bu gömleğin yakası kirli.,3,,daily-life
+a2-chain,CHAIN,C,STARTS,noun,birbirine geçmiş halkalardan oluşan zincir,The dog has a long chain.,Köpeğin uzun bir zinciri var.,3,,daily-life
+a2-sandals,SANDALS,S,STARTS,noun,"yazın giyilen açık ayakkabı, sandalet",I wear sandals in the summer.,Yazın sandalet giyerim.,2,,daily-life
+a2-peach,PEACH,P,STARTS,noun,"tüylü kabuklu, sarı turuncu meyve, şeftali",This peach is very sweet.,Bu şeftali çok tatlı.,2,,food-drink
+a2-pineapple,PINEAPPLE,P,STARTS,noun,"dikenli kabuklu, sarı içli tropik meyve, ananas",I love pineapple on my pizza.,Pizzamda ananası severim.,2,,food-drink
+a2-cucumber,CUCUMBER,C,STARTS,noun,"salatada yenen uzun yeşil sebze, salatalık",Add a cucumber to the salad.,Salataya bir salatalık ekle.,2,,food-drink
+a2-pancake,PANCAKE,P,STARTS,noun,"tavada pişirilen ince hamur yemeği, krep",I ate a pancake for breakfast.,Kahvaltıda bir krep yedim.,2,,food-drink
+a2-lifeguard,LIFEGUARD,L,STARTS,noun,"plajda yüzenleri koruyan görevli, cankurtaran",The lifeguard saved the little boy.,Cankurtaran küçük çocuğu kurtardı.,3,,school-work
+a2-lollipop,LOLLIPOP,L,STARTS,noun,"çubuğa takılı sert şeker, lolipop",The girl has a red lollipop.,Kızın kırmızı bir lolipopu var.,2,,food-drink
+a2-mattress,MATTRESS,M,STARTS,noun,yatağın üstündeki yumuşak döşek,This mattress is very hard.,Bu yatak çok sert.,3,,home
+a2-footballer,FOOTBALLER,F,STARTS,noun,"futbol oynayan sporcu, futbolcu",My brother wants to be a footballer.,Kardeşim futbolcu olmak istiyor.,2,,sports
+a2-firefighter,FIREFIGHTER,F,STARTS,noun,"yangınları söndüren görevli, itfaiyeci",The firefighter wore a yellow hat.,İtfaiyeci sarı bir şapka taktı.,2,,school-work
+a2-freezer,FREEZER,F,STARTS,noun,yiyecekleri dondurarak saklayan dolap,The fish is in the freezer.,Balık dondurucuda.,2,,home
