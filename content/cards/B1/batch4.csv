@@ -1,0 +1,89 @@
+id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
+b1-jaw,JAW,J,STARTS,noun,"ağzın alt bölümünü oluşturan kemik, çene",He hit his jaw on the table.,Çenesini masaya çarptı.,3,,body-health
+b1-jealousy,JEALOUSY,J,STARTS,noun,başkasında olanı istemekten doğan kıskançlık,Jealousy can make you very unhappy.,Kıskançlık seni çok mutsuz edebilir.,4,,family-people
+b1-jewel,JEWEL,J,STARTS,noun,"değerli, parlak taş",The queen wore a red jewel.,Kraliçe kırmızı bir mücevher taktı.,4,,daily-life
+b1-jet,JET,J,STARTS,noun,çok hızlı giden büyük yolcu uçağı,The jet landed in Ankara at noon.,Jet uçağı öğlen Ankara'ya indi.,3,,travel
+b1-joint,JOINT,J,STARTS,adj,"iki ya da daha çok kişinin birlikte yaptığı, ortak",It was a joint plan.,Bu ortak bir plandı.,4,,business
+b1-juicy,JUICY,J,STARTS,adj,"içinde bol su bulunan, sulu",This orange is very juicy.,Bu portakal çok sulu.,3,,food-drink
+b1-junior,JUNIOR,J,STARTS,adj,yaşça ya da kıdemce daha alt konumda olan,He is a junior doctor at the hospital.,Hastanede asistan doktor olarak çalışıyor.,4,,business
+b1-junk,JUNK,J,STARTS,noun,"işe yaramaz eski eşyalar, hurda",The garage is full of junk.,Garaj eski eşyalarla dolu.,3,,daily-life
+b1-justice,JUSTICE,J,STARTS,noun,adalet,Everyone wants justice for the victims.,Herkes mağdurlar için adalet ister.,4,,daily-life
+b1-major,MAJOR,J,CONTAINS,adj,"çok önemli, büyük",Traffic is a major problem here.,Trafik burada büyük bir sorun.,3,,daily-life
+b1-majority,MAJORITY,J,CONTAINS,noun,bir grubun büyük çoğunluğu,The majority of students passed the test.,Öğrencilerin çoğunluğu sınavı geçti.,4,,school-work
+b1-reject,REJECT,J,CONTAINS,verb,bir teklifi kabul etmeyip geri çevirmek,They reject every offer we make.,Yaptığımız her teklifi reddediyorlar.,4,,business
+b1-adjust,ADJUST,J,CONTAINS,verb,bir şeyi yeni duruma uyacak şekilde ayarlamak,You can adjust the height of the chair.,Sandalyenin yüksekliğini ayarlayabilirsin.,4,,daily-life
+b1-injection,INJECTION,J,CONTAINS,noun,"iğneyle vücuda ilaç verme, iğne",The nurse gave him an injection.,Hemşire ona bir iğne yaptı.,3,,body-health
+b1-objective,OBJECTIVE,J,CONTAINS,noun,ulaşılmak istenen hedef,Our objective is to finish by Friday.,Hedefimiz cumaya kadar bitirmek.,4,,business
+b1-enjoyable,ENJOYABLE,J,CONTAINS,adj,"keyif veren, zevkli",It was an enjoyable evening.,Keyifli bir akşamdı.,3,,daily-life
+b1-projector,PROJECTOR,J,CONTAINS,noun,görüntüyü perdeye yansıtan cihaz,The teacher turned on the projector.,Öğretmen projektörü açtı.,3,,technology
+b1-prejudice,PREJUDICE,J,CONTAINS,noun,tanımadan beslenen önyargı,Prejudice against foreigners is wrong.,Yabancılara karşı önyargı yanlıştır.,4,,family-people
+b1-banjo,BANJO,J,CONTAINS,noun,dört ya da beş telli yuvarlak gövdeli çalgı,He plays the banjo in a country band.,Bir kantri grubunda banjo çalıyor.,4,,music
+b1-kingdom,KINGDOM,K,STARTS,noun,kral veya kraliçenin yönettiği ülke,Spain is a kingdom in Europe.,İspanya Avrupa'da bir krallıktır.,3,,school-work
+b1-package,PACKAGE,K,CONTAINS,noun,postayla gönderilen kutu veya paket,A package arrived for you this morning.,Bu sabah sana bir paket geldi.,3,,daily-life
+b1-network,NETWORK,K,CONTAINS,noun,birbirine bağlı bilgisayar veya yol sistemi,The school has a fast computer network.,Okulun hızlı bir bilgisayar ağı var.,3,,technology
+b1-track,TRACK,K,CONTAINS,noun,"yarış veya tren için yapılmış yol, pist",The runners are on the track.,Koşucular pistte.,3,,sports
+b1-cheek,CHEEK,K,CONTAINS,noun,yüzün göz ile çene arasındaki yumuşak yanı,She kissed him on the cheek.,Onu yanağından öptü.,3,,body-health
+b1-socket,SOCKET,K,CONTAINS,noun,duvardaki elektrik prizi,There is only one socket in this room.,Bu odada sadece bir priz var.,3,,technology
+b1-tackle,TACKLE,K,CONTAINS,verb,bir sorunla uğraşıp çözmeye çalışmak,We must tackle the problem today.,Sorunu bugün ele almalıyız.,4,,business
+b1-weakness,WEAKNESS,K,CONTAINS,noun,zayıf olan yön,Shyness is her only weakness.,Utangaçlık onun tek zayıf yanı.,3,,family-people
+b1-sneaker,SNEAKER,K,CONTAINS,noun,spor için giyilen bağcıklı ayakkabı,She lost one sneaker on the beach.,Plajda bir spor ayakkabısını kaybetti.,3,,sports
+b1-skeleton,SKELETON,K,CONTAINS,noun,vücudu oluşturan kemiklerin bütünü,The museum has a dinosaur skeleton.,Müzede bir dinozor iskeleti var.,4,,body-health
+b1-feedback,FEEDBACK,K,CONTAINS,noun,yapılan işe dair verilen geri bildirim,Thanks for your feedback on my essay.,Kompozisyonuma geri bildirimin için teşekkürler.,4,,school-work
+b1-task,TASK,K,CONTAINS,noun,"yapılması gereken iş, görev",Cleaning the garden was a hard task.,Bahçeyi temizlemek zor bir görevdi.,3,,business
+b1-risk,RISK,K,CONTAINS,noun,"zarar görme ihtimali, tehlike",Driving fast is a big risk.,Hızlı araba sürmek büyük bir risk.,3,,daily-life
+b1-disk,DISK,K,CONTAINS,noun,bilgi saklamak için kullanılan yuvarlak ortam,Save the file on a disk.,Dosyayı bir diske kaydet.,3,,technology
+b1-marketing,MARKETING,K,CONTAINS,noun,ürünlerin tanıtılıp satılması işi,She works in marketing.,Pazarlama alanında çalışıyor.,4,,business
+b1-talkative,TALKATIVE,K,CONTAINS,adj,çok konuşan,My little brother is very talkative.,Küçük kardeşim çok konuşkan.,4,,family-people
+b1-bookshelf,BOOKSHELF,K,CONTAINS,noun,kitapların dizildiği raf,He put the novel on the bookshelf.,Romanı kitaplığa koydu.,3,,daily-life
+b1-backyard,BACKYARD,K,CONTAINS,noun,evin arkasındaki bahçe,The children are playing in the backyard.,Çocuklar arka bahçede oynuyor.,3,,daily-life
+b1-label,LABEL,L,STARTS,noun,ürünün üzerindeki etiket,Read the label before you eat it.,Yemeden önce etiketi oku.,3,,food-drink
+b1-laboratory,LABORATORY,L,STARTS,noun,bilimsel deneylerin yapıldığı yer,The laboratory is on the second floor.,Laboratuvar ikinci katta.,3,,school-work
+b1-landlord,LANDLORD,L,STARTS,noun,"evini kiraya veren kişi, ev sahibi",The landlord wants more rent.,Ev sahibi daha fazla kira istiyor.,3,,business
+b1-landscape,LANDSCAPE,L,STARTS,noun,bir bölgenin doğal manzarası,The mountain landscape was beautiful.,Dağ manzarası çok güzeldi.,4,,travel
+b1-lawn,LAWN,L,STARTS,noun,evin önündeki kısa kesilmiş çimenlik,He cuts the lawn every Sunday.,Her pazar çimleri biçiyor.,3,,daily-life
+b1-leaflet,LEAFLET,L,STARTS,noun,tanıtım amacıyla dağıtılan tek sayfalık kâğıt,They gave me a leaflet about the museum.,Bana müze hakkında bir broşür verdiler.,3,,travel
+b1-lecture,LECTURE,L,STARTS,noun,üniversitede hocanın salonda anlattığı konferans dersi,The lecture lasted two hours.,Konferans dersi iki saat sürdü.,3,,school-work
+b1-legal,LEGAL,L,STARTS,adj,yasalara uygun,It is legal to drive at eighteen.,On sekiz yaşında araba kullanmak yasaldır.,3,,daily-life
+b1-leisure,LEISURE,L,STARTS,noun,boş zaman,What do you do in your leisure time?,Boş zamanında ne yaparsın?,3,,daily-life
+b1-length,LENGTH,L,STARTS,noun,bir şeyin uzunluğu,What is the length of this room?,Bu odanın uzunluğu ne kadar?,3,,daily-life
+b1-licence,LICENCE,L,STARTS,noun,bir şeyi yapmaya izin veren resmî belge,You need a licence to drive a car.,Araba kullanmak için ehliyet gerekir.,3,,city-transport
+b1-lifestyle,LIFESTYLE,L,STARTS,noun,bir kişinin günlük yaşam tarzı,A healthy lifestyle includes sport.,Sağlıklı bir yaşam tarzı spor içerir.,3,,body-health
+b1-limit,LIMIT,L,STARTS,noun,aşılmaması gereken sınır,The speed limit here is fifty.,Buradaki hız sınırı elli.,3,,city-transport
+b1-literature,LITERATURE,L,STARTS,noun,"roman, şiir ve oyunlardan oluşan edebiyat",She studies English literature.,İngiliz edebiyatı okuyor.,3,,school-work
+b1-litter,LITTER,L,STARTS,noun,yere atılmış küçük çöpler,Please do not drop litter in the park.,Lütfen parka çöp atmayın.,3,,city-transport
+b1-loan,LOAN,L,STARTS,noun,bankadan alınan borç,He took out a loan to buy a house.,Ev almak için bir kredi çekti.,4,,business
+b1-location,LOCATION,L,STARTS,noun,bir şeyin bulunduğu yer,The hotel is in a great location.,Otel harika bir konumda.,3,,travel
+b1-loose,LOOSE,L,STARTS,adj,"sıkı olmayan, bol",These trousers are too loose.,Bu pantolon çok bol.,3,,daily-life
+b1-luxury,LUXURY,L,STARTS,noun,"pahalı ve rahat yaşam, lüks",They stayed in a hotel full of luxury.,Lüks dolu bir otelde kaldılar.,4,,travel
+b1-lately,LATELY,L,STARTS,adv,son zamanlarda,I have been tired lately.,Son zamanlarda yorgunum.,3,,daily-life
+b1-lead,LEAD,L,STARTS,verb,"bir grubu yönetmek, öne geçmek",He will lead the team next year.,Gelecek yıl takımı o yönetecek.,3,,business
+b1-lively,LIVELY,L,STARTS,adj,"hareketli, neşeli",The street is lively at night.,Sokak geceleri çok hareketli.,4,,city-transport
+b1-locate,LOCATE,L,STARTS,verb,bir şeyin yerini bulmak,I cannot locate my keys.,Anahtarlarımın yerini bulamıyorum.,4,,daily-life
+b1-mainly,MAINLY,M,STARTS,adv,"çoğunlukla, esas olarak",The class is mainly girls.,Sınıf çoğunlukla kızlardan oluşuyor.,3,,school-work
+b1-male,MALE,M,STARTS,adj,erkek cinsiyetinde,The male bird has bright feathers.,Erkek kuşun parlak tüyleri var.,3,,animals
+b1-management,MANAGEMENT,M,STARTS,noun,bir işi veya şirketi yönetme,Good management saves money.,İyi yönetim para kazandırır.,4,,business
+b1-manner,MANNER,M,STARTS,noun,"birinin davranış ya da konuşma tarzı, tavır",He spoke in a friendly manner.,Dostça bir tavırla konuştu.,4,,daily-life
+b1-marriage,MARRIAGE,M,STARTS,noun,evlilik,Their marriage lasted fifty years.,Evlilikleri elli yıl sürdü.,3,,family-people
+b1-master,MASTER,M,STARTS,verb,bir şeyi çok iyi öğrenmek,It takes years to master a language.,Bir dili tam öğrenmek yıllar alır.,4,,school-work
+b1-material,MATERIAL,M,STARTS,noun,bir şey yapılırken kullanılan malzeme,What material is this chair made of?,Bu sandalye hangi malzemeden yapılmış?,3,,daily-life
+b1-matter,MATTER,M,STARTS,noun,ele alınan konu veya sorun,It is a serious matter.,Bu ciddi bir mesele.,3,,daily-life
+b1-meanwhile,MEANWHILE,M,STARTS,adv,"o sırada, bu arada","Cook the rice. Meanwhile, I will make the salad.",Pilavı pişir. Bu arada ben salatayı yapacağım.,4,,daily-life
+b1-measure,MEASURE,M,STARTS,verb,bir şeyin boyutunu ölçmek,Measure the table before you buy a cloth.,Örtü almadan önce masayı ölç.,3,,school-work
+b1-media,MEDIA,M,STARTS,noun,"gazete, televizyon ve internet gibi haber araçları",The media reported the news quickly.,Medya haberi hızla duyurdu.,3,,film-tv
+b1-medical,MEDICAL,M,STARTS,adj,tıpla ve hastalıkla ilgili,He needs medical help.,Tıbbi yardıma ihtiyacı var.,3,,body-health
+b1-memory,MEMORY,M,STARTS,noun,hatırlama yetisi veya hatıra,I have a good memory for faces.,Yüzleri hatırlama konusunda belleğim iyi.,3,,body-health
+b1-mental,MENTAL,M,STARTS,adj,akıl ve zihinle ilgili,Sleep is good for mental health.,Uyku zihinsel sağlık için iyidir.,4,,body-health
+b1-mention,MENTION,M,STARTS,verb,bir şeyi kısaca söz ederek anmak,Don't mention it to her.,Ona bundan söz etme.,3,,daily-life
+b1-method,METHOD,M,STARTS,noun,bir işi yapma yöntemi,This is an easy method to learn words.,"Bu, kelime öğrenmek için kolay bir yöntem.",3,,school-work
+b1-missing,MISSING,M,STARTS,adj,"olması gereken yerde bulunmayan, kayıp",A page is missing from the book.,Kitaptan bir sayfa eksik.,3,,daily-life
+b1-monthly,MONTHLY,M,STARTS,adj,ayda bir yapılan veya ödenen,I pay a monthly fee for the gym.,Spor salonu için aylık ücret ödüyorum.,3,,business
+b1-mood,MOOD,M,STARTS,noun,o anki ruh hali,She is in a good mood today.,Bugün keyfi yerinde.,3,,family-people
+b1-motorway,MOTORWAY,M,STARTS,noun,şehirler arası hızlı araç yolu,The motorway was closed last night.,Otoyol dün gece kapalıydı.,3,,city-transport
+b1-movement,MOVEMENT,M,STARTS,noun,hareket etme veya hareket,She felt a movement behind her.,Arkasında bir hareket hissetti.,3,,daily-life
+b1-murder,MURDER,M,STARTS,noun,bir insanı kasten öldürme,The film is about a murder in a small town.,Film küçük bir kasabada işlenen bir cinayeti anlatıyor.,4,,film-tv
+b1-muscle,MUSCLE,M,STARTS,noun,vücut hareketini sağlayan kas,He has a strong arm muscle.,Kolunda güçlü bir kası var.,3,,body-health
+b1-mystery,MYSTERY,M,STARTS,noun,açıklanamayan gizemli olay,The disappearance remains a mystery.,Kayboluş bir gizem olarak kalıyor.,3,,film-tv
+b1-mixture,MIXTURE,X,CONTAINS,noun,iki ya da daha çok şeyin karışımı,Stir the mixture slowly.,Karışımı yavaşça karıştır.,3,,food-drink
+b1-maximum,MAXIMUM,X,CONTAINS,adj,ulaşılabilecek en yüksek,The maximum speed here is fifty.,Buradaki azami hız elli.,4,,city-transport
+b1-kindness,KINDNESS,K,STARTS,noun,başkalarına nazik ve iyi davranma,Thank you for your kindness.,Nezaketin için teşekkürler.,3,,family-people
+b1-tricky,TRICKY,K,CONTAINS,adj,"dikkat ve beceri isteyen, zor",The last question was tricky.,Son soru zordu.,3,,school-work
