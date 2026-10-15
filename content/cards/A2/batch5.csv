@@ -33,7 +33,7 @@ a2-handsome,HANDSOME,H,STARTS,adj,yakışıklı,Her brother is very handsome.,A�
 a2-happen,HAPPEN,H,STARTS,verb,"meydana gelmek, olmak",What will happen next?,Sırada ne olacak?,3,,daily-life
 a2-health,HEALTH,H,STARTS,noun,beden ve zihnin genel durumu,Good food is good for your health.,İyi yemek sağlığın için faydalıdır.,3,,body-health
 a2-heart,HEART,H,STARTS,noun,"kanı pompalayan organ, kalp",My heart beats fast when I run.,Koşarken kalbim hızlı atıyor.,2,,body-health
-a2-heat,HEAT,H,STARTS,noun,havadaki bunaltıcı yüksek sıcaklık,The heat is terrible today.,Bugün sıcaklık çok bunaltıcı.,3,,time-weather
+a2-heat,HEAT,H,STARTS,noun,havadaki bunaltıcı yüksek sıcaklık,The heat is too much today.,Bugün sıcaklık çok bunaltıcı.,3,,time-weather
 a2-height,HEIGHT,H,STARTS,noun,"boy, yükseklik",What is your height?,Boyun kaç?,3,,body-health
 a2-helicopter,HELICOPTER,H,STARTS,noun,pervaneyle havalanan uçan araç,A helicopter flew over the town.,Kasabanın üzerinden bir helikopter geçti.,2,,city-transport
 a2-hero,HERO,H,STARTS,noun,"cesaretiyle örnek olan kişi, kahraman",The firefighter is a real hero.,İtfaiyeci gerçek bir kahraman.,3,,daily-life

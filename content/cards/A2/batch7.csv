@@ -1,0 +1,72 @@
+id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
+a2-race,RACE,R,STARTS,noun,kimin daha hızlı olduğunu belirleyen yarış,He won the race.,Yarışı o kazandı.,2,,sports
+a2-reach,REACH,R,STARTS,verb,bir yere varmak ya da uzanıp bir şeye ulaşmak,We reach the village at noon.,Köye öğlen varıyoruz.,3,,travel
+a2-reason,REASON,R,STARTS,noun,bir şeyin neden olduğunu açıklayan sebep,Tell me the reason.,Bana nedenini söyle.,3,,daily-life
+a2-record,RECORD,R,STARTS,noun,müzik ya da konuşmanın kaydedildiği plak ya da dosya,I bought a record of old songs.,Eski şarkıların olduğu bir plak aldım.,3,,music
+a2-rent,RENT,R,STARTS,verb,bir şeyi ücret karşılığında geçici olarak kullanmak,We rent a flat near the sea.,Deniz kenarında bir daire kiralıyoruz.,3,,home
+a2-repair,REPAIR,R,STARTS,verb,bozulan bir şeyi tamir etmek,Dad can repair my bike.,Babam bisikletimi tamir edebilir.,3,,home
+a2-report,REPORT,R,STARTS,noun,bir olay ya da konu hakkında yazılan rapor,I must write a report for school.,Okul için bir rapor yazmam lazım.,3,,school-work
+a2-result,RESULT,R,STARTS,noun,bir sınav ya da yarışmanın sonunda çıkan netice,The exam result is good.,Sınav sonucu iyi.,3,,school-work
+a2-return,RETURN,R,STARTS,verb,geri gelmek ya da bir şeyi geri vermek,When do you return from Rome?,Roma'dan ne zaman dönüyorsun?,3,,travel
+a2-rich,RICH,R,STARTS,adj,"çok parası olan, zengin",The rich man has three cars.,Zengin adamın üç arabası var.,2,,daily-life
+a2-rock,ROCK,R,STARTS,noun,"büyük, sert taş kütlesi, kaya",The cat sat on a big rock.,Kedi büyük bir kayanın üstünde oturdu.,3,,travel
+a2-rose,ROSE,R,STARTS,noun,"dikenli, güzel kokulu çiçek, gül",He gave her a red rose.,Ona kırmızı bir gül verdi.,2,,daily-life
+a2-route,ROUTE,R,STARTS,noun,bir yere giden yol,What is the best route to the station?,İstasyona giden en iyi yol hangisi?,3,,city-transport
+a2-rude,RUDE,R,STARTS,adj,"kaba, nezaketsiz",It is rude to talk with food in your mouth.,Ağzında yemekle konuşmak kabalıktır.,3,,daily-life
+a2-rule,RULE,R,STARTS,noun,uyulması gereken kural,Please follow this rule.,Lütfen bu kurala uy.,2,,school-work
+a2-railway,RAILWAY,R,STARTS,noun,trenlerin üzerinde gittiği demir yol,The railway is near our house.,Demir yolu evimize yakın.,3,,city-transport
+a2-raincoat,RAINCOAT,R,STARTS,noun,yağmurdan korumak için giyilen su geçirmez mont,Take your raincoat today.,Bugün yağmurluğunu al.,2,,daily-life
+a2-reception,RECEPTION,R,STARTS,noun,otelde gelenleri karşılayan masa,Leave your key at reception.,Anahtarını resepsiyonda bırak.,3,,travel
+a2-reply,REPLY,R,STARTS,verb,bir soru ya da mesaja karşılık vermek,Please reply to my email.,Lütfen e-postama cevap ver.,3,,daily-life
+a2-surprise,SURPRISE,R,CONTAINS,noun,beklenmedik bir olay ya da hediye,The party was a nice surprise.,Parti güzel bir sürprizdi.,3,,daily-life
+a2-straight,STRAIGHT,R,CONTAINS,adv,"eğri olmayan biçimde, doğruca","Go straight on, then turn left.","Dümdüz git, sonra sola dön.",3,,city-transport
+a2-writer,WRITER,R,CONTAINS,noun,"yazmayı meslek edinen kişi (gazete, dizi vb.)",My favourite writer lives in London.,En sevdiğim yazar Londra'da yaşıyor.,3,,school-work
+a2-terrible,TERRIBLE,R,CONTAINS,adj,"dayanılmaz derecede kötü (ağrı, hata vb.)",I have a terrible headache.,Korkunç bir baş ağrım var.,3,,body-health
+a2-fairy,FAIRY,R,CONTAINS,noun,masallarda sihirli güçleri olan küçük kanatlı kız,The fairy waved her wand.,Peri değneğini salladı.,2,,daily-life
+a2-scary,SCARY,R,CONTAINS,adj,"korku veren, ürkütücü",The film was too scary for me.,Film benim için çok korkutucuydu.,2,,daily-life
+a2-safe,SAFE,S,STARTS,adj,"zarar görme tehlikesi olmayan, güvenli",The park is safe for children.,Park çocuklar için güvenli.,2,,daily-life
+a2-sail,SAIL,S,STARTS,verb,yelkenli ile denizde ilerlemek,They sail on the sea every summer.,Her yaz yelkenliyle denizde gezerler.,3,,travel
+a2-salary,SALARY,S,STARTS,noun,çalışanın her ay aldığı maaş,His salary is good.,Maaşı iyi.,3,,school-work
+a2-sale,SALE,S,STARTS,noun,"ucuz fiyatla yapılan satış, indirim",There is a sale at the shoe shop.,Ayakkabı dükkânında indirim var.,2,,daily-life
+a2-sauce,SAUCE,S,STARTS,noun,yemeğin üstüne eklenen sıvı,I like tomato sauce on pasta.,Makarnanın üstüne domates sosunu severim.,2,,food-drink
+a2-score,SCORE,S,STARTS,noun,bir maçta atılan gol ya da kazanılan sayılar,What is the score?,Skor kaç?,2,,sports
+a2-season,SEASON,S,STARTS,noun,yılın dört bölümünden biri,Summer is my favourite season.,Yaz en sevdiğim mevsim.,2,,time-weather
+a2-seat,SEAT,S,STARTS,noun,"otobüs, sinema gibi yerlerde tek kişilik koltuk",Is this seat free?,Bu koltuk boş mu?,2,,city-transport
+a2-secret,SECRET,S,STARTS,noun,başkalarına söylenmemesi gereken bilgi,It is a big secret.,Bu büyük bir sır.,3,,daily-life
+a2-serious,SERIOUS,S,STARTS,adj,"şaka yapmayan, endişe verici ölçüde ciddi",This is a serious problem.,Bu ciddi bir sorun.,3,,daily-life
+a2-service,SERVICE,S,STARTS,noun,müşteriye sunulan hizmet,The service in this cafe is slow.,Bu kafedeki servis yavaş.,3,,daily-life
+a2-shake,SHAKE,S,STARTS,verb,bir şeyi hızlıca ileri geri sallamak,Shake the bottle before you drink.,İçmeden önce şişeyi çalkala.,3,,food-drink
+a2-sharp,SHARP,S,STARTS,adj,"keskin, kolayca kesen",The knife is very sharp.,Bıçak çok keskin.,3,,home
+a2-sheet,SHEET,S,STARTS,noun,yatağa serilen çarşaf ya da tek bir kâğıt,I need a clean sheet of paper.,Temiz bir kâğıt yaprağına ihtiyacım var.,3,,school-work
+a2-shine,SHINE,S,STARTS,verb,"parlamak, ışık saçmak",The sun will shine tomorrow.,Yarın güneş parlayacak.,3,,time-weather
+a2-shoot,SHOOT,S,STARTS,verb,silahla ateş etmek ya da topla gol denemek,He tried to shoot from far away.,Uzaktan şut çekmeye çalıştı.,3,,sports
+a2-shy,SHY,S,STARTS,adj,"insanlarla konuşurken çekinen, utangaç",The new girl is shy.,Yeni kız utangaç.,2,,family-people
+a2-sick,SICK,S,STARTS,adj,"midesi bulanan, kusacak gibi olan",I feel sick after the boat ride.,Tekne gezisinden sonra midem bulanıyor.,2,,body-health
+a2-side,SIDE,S,STARTS,noun,"bir şeyin bir tarafı, yanı",Sit on this side of the table.,Masanın bu tarafına otur.,3,,daily-life
+a2-silly,SILLY,S,STARTS,adj,"aptalca ve komik, saçma",Do not be silly.,Saçmalama.,2,,daily-life
+a2-silver,SILVER,S,STARTS,noun,"beyazımsı parlak değerli maden, gümüş",This spoon is made of silver.,Bu kaşık gümüşten yapılmış.,2,,daily-life
+a2-sink,SINK,S,STARTS,noun,mutfakta bulaşık yıkanan lavabo,There are dishes in the sink.,Lavaboda tabaklar var.,2,,home
+a2-slice,SLICE,S,STARTS,noun,ekmek ya da pastadan kesilen ince parça,Would you like a slice of cake?,Bir dilim kek ister misin?,2,,food-drink
+a2-slowly,SLOWLY,S,STARTS,adv,"acele etmeden, yavaş bir şekilde",Please speak slowly.,Lütfen yavaş konuşun.,2,,daily-life
+a2-smart,SMART,S,STARTS,adj,"zeki, çabuk öğrenen",Your sister is very smart.,Kız kardeşin çok akıllı.,2,,school-work
+a2-smoke,SMOKE,S,STARTS,noun,yanan şeyden çıkan gri gaz,There is smoke in the kitchen.,Mutfakta duman var.,2,,home
+a2-soldier,SOLDIER,S,STARTS,noun,orduda görev yapan asker,The soldier stood at the door.,Asker kapıda durdu.,3,,daily-life
+a2-solve,SOLVE,S,STARTS,verb,bir sorunun cevabını bulmak,Can you solve this problem?,Bu sorunu çözebilir misin?,3,,school-work
+a2-someone,SOMEONE,S,STARTS,noun,bilinmeyen bir kişi,Someone is at the door.,Kapıda biri var.,3,,daily-life
+a2-somewhere,SOMEWHERE,S,STARTS,adv,belirsiz bir yer,I left my keys somewhere.,Anahtarlarımı bir yerde bıraktım.,3,,daily-life
+a2-song,SONG,S,STARTS,noun,sözlü ve melodili müzik parçası,This is my favourite song.,Bu en sevdiğim şarkı.,2,,music
+a2-space,SPACE,S,STARTS,noun,dünyanın dışındaki sonsuz boşluk ya da boş yer,There is no space in my bag.,Çantamda yer yok.,3,,daily-life
+a2-speaker,SPEAKER,S,STARTS,noun,sesi yükselten hoparlör ya da konuşmacı,Turn on the speaker.,Hoparlörü aç.,3,,music
+a2-speech,SPEECH,S,STARTS,noun,topluluk önünde yapılan konuşma,The teacher gave a short speech.,Öğretmen kısa bir konuşma yaptı.,3,,school-work
+a2-stadium,STADIUM,S,STARTS,noun,büyük spor karşılaşmalarının yapıldığı yapı,The stadium is full tonight.,Stadyum bu gece dolu.,3,,sports
+a2-staff,STAFF,S,STARTS,noun,bir işyerinde çalışan kişiler,The hotel staff are friendly.,Otel personeli sıcakkanlı.,3,,school-work
+a2-stage,STAGE,S,STARTS,noun,"tiyatroda oyuncuların çıktığı yükseltilmiş yer, sahne",The singer walked onto the stage.,Şarkıcı sahneye çıktı.,3,,music
+a2-steal,STEAL,S,STARTS,verb,başkasına ait bir şeyi izinsiz almak,A thief tried to steal my bike.,Bir hırsız bisikletimi çalmaya çalıştı.,3,,daily-life
+a2-step,STEP,S,STARTS,noun,yürürken atılan adım ya da merdiven basamağı,Take one step back.,Bir adım geri çekil.,2,,daily-life
+a2-stick,STICK,S,STARTS,noun,"ağaçtan kopan ince uzun dal parçası, sopa",The dog ran after the stick.,Köpek sopanın peşinden koştu.,2,,animals
+a2-suit,SUIT,S,STARTS,noun,aynı kumaştan ceket ve pantolon takımı,He wears a dark suit at work.,İşte koyu renk bir takım elbise giyiyor.,3,,daily-life
+a2-suitcase,SUITCASE,S,STARTS,noun,yolculukta giysilerin konduğu büyük bavul,My suitcase is very heavy.,Bavulum çok ağır.,2,,travel
+a2-sunglasses,SUNGLASSES,S,STARTS,noun,güneşten korunmak için takılan gözlük,Wear your sunglasses today.,Bugün güneş gözlüğünü tak.,2,,daily-life
+a2-sunset,SUNSET,S,STARTS,noun,güneşin batma anı,The sunset was beautiful.,Gün batımı çok güzeldi.,3,,time-weather
+a2-search,SEARCH,S,STARTS,verb,bir şeyi bulmak için dikkatle aramak,I search for my keys everywhere.,Her yerde anahtarlarımı arıyorum.,3,,daily-life
+a2-serve,SERVE,S,STARTS,verb,yiyecek ya da içecek sunmak,They serve breakfast from seven.,Yediden itibaren kahvaltı servis ediyorlar.,3,,food-drink

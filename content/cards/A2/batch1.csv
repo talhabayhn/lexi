@@ -35,7 +35,7 @@ a2-realize,REALIZE,Z,CONTAINS,verb,bir şeyin farkına varmak,I did not realize 
 a2-dizzy,DIZZY,Z,CONTAINS,adj,etrafı dönüyormuş gibi hisseden,I feel dizzy after the ride.,Gezintiden sonra başım dönüyor.,3,,body-health
 a2-jazz,JAZZ,Z,CONTAINS,noun,doğaçlama ağırlıklı müzik türü,He plays jazz on the piano.,Piyanoda caz çalıyor.,2,,music
 a2-wizard,WIZARD,Z,CONTAINS,noun,masallarda büyü yapan adam,The wizard lives in a tall tower.,Büyücü uzun bir kulede yaşıyor.,3,,daily-life
-a2-lizard,LIZARD,Z,CONTAINS,noun,"kuru derili, dört bacaklı küçük sürüngen",A lizard sat on the warm rock.,Sıcak kayanın üstünde bir kertenkele duruyordu.,2,,animals
+a2-lizard,LIZARD,Z,CONTAINS,noun,"kuru derili, dört bacaklı küçük sürüngen",A lizard sat on the warm wall.,Sıcak duvarın üstünde bir kertenkele duruyordu.,2,,animals
 a2-journey,JOURNEY,J,STARTS,noun,bir yerden başka bir yere yapılan uzun yolculuk,The journey to Izmir takes five hours.,İzmir'e yolculuk beş saat sürüyor.,2,,travel
 a2-jungle,JUNGLE,J,STARTS,noun,sıcak ülkelerdeki sık ve yoğun orman,Monkeys live in the jungle.,Maymunlar ormanda yaşar.,2,,animals
 a2-join,JOIN,J,STARTS,verb,bir gruba ya da etkinliğe katılmak,Do you want to join our team?,Takımımıza katılmak ister misin?,2,,daily-life
@@ -67,7 +67,7 @@ a2-ski,SKI,K,CONTAINS,verb,karda uzun tahtalarla kaymak,We ski in the mountains 
 a2-skate,SKATE,K,CONTAINS,verb,buzda ya da yerde patenle kaymak,Can you skate on ice?,Buzda patenle kayabilir misin?,2,,sports
 a2-skin,SKIN,K,CONTAINS,noun,vücudumuzu saran dış tabaka,Her skin is smooth.,Cildi pürüzsüz.,2,,body-health
 a2-skill,SKILL,K,CONTAINS,noun,bir işi iyi yapabilme yeteneği,Cooking is a useful skill.,Yemek yapmak yararlı bir beceri.,3,,school-work
-a2-necklace,NECKLACE,K,CONTAINS,noun,boyna takılan süs,She wears a silver necklace.,Gümüş bir kolye takıyor.,2,,daily-life
+a2-necklace,NECKLACE,K,CONTAINS,noun,boyna takılan süs,She wears a long necklace.,Uzun bir kolye takıyor.,2,,daily-life
 a2-truck,TRUCK,K,CONTAINS,noun,ağır yük taşıyan büyük araç,The truck is full of apples.,Kamyon elmalarla dolu.,2,,city-transport
 a2-snack,SNACK,K,CONTAINS,noun,öğün arasında yenen küçük yiyecek,I eat a snack after school.,Okuldan sonra bir atıştırmalık yerim.,2,,food-drink
 a2-backpack,BACKPACK,K,CONTAINS,noun,"omuza takılan, içine kitap konan çanta",My backpack is full of books.,Sırt çantam kitap dolu.,2,,school-work
