@@ -1,0 +1,80 @@
+id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
+b1-addicted,ADDICTED,A,STARTS,adj,"bir şeyden vazgeçemeyen, bağımlı olan",He is addicted to his phone.,Telefonuna bağımlı.,4,,technology
+b1-aggressive,AGGRESSIVE,A,STARTS,adj,"saldırgan, kavgacı",The dog became aggressive when it was afraid.,Köpek korkunca saldırganlaştı.,4,,animals
+b1-annoying,ANNOYING,A,STARTS,adj,"insanı sinirlendiren, can sıkıcı",The noise from the street is annoying.,Sokaktaki gürültü can sıkıcı.,3,,daily-life
+b1-argument,ARGUMENT,A,STARTS,noun,iki kişi arasındaki sert tartışma; ileri sürülen gerekçe,They had an argument about the bill.,Hesap yüzünden bir tartışma yaşadılar.,3,,family-people
+b1-assignment,ASSIGNMENT,A,STARTS,noun,öğrencilere verilen ödev veya görev,The assignment is due on Monday.,Ödev pazartesi teslim edilecek.,3,,school-work
+b1-assume,ASSUME,A,STARTS,verb,kanıtı olmadan doğru kabul etmek,I assume you have eaten already.,Zaten yemek yediğini varsayıyorum.,4,,daily-life
+b1-automatic,AUTOMATIC,A,STARTS,adj,"kendiliğinden çalışan, otomatik",The door is automatic.,Kapı otomatik.,3,,technology
+b1-awkward,AWKWARD,A,STARTS,adj,rahatsız edici ve utandırıcı; beceriksiz,There was an awkward moment after his joke.,Şakasından sonra garip bir an yaşandı.,4,,daily-life
+b1-bookcase,BOOKCASE,B,STARTS,noun,"raflı, ayaklı kitap dolabı, kitaplık",The bookcase is full of old novels.,Kitaplık eski romanlarla dolu.,3,,daily-life
+b1-bunch,BUNCH,B,STARTS,noun,bir arada duran şeylerin demeti veya grubu,He bought a bunch of grapes.,Bir salkım üzüm aldı.,3,,food-drink
+b1-dare,DARE,D,STARTS,verb,cesaret edip bir şeye girişmek,He didn't dare to speak.,Konuşmaya cesaret edemedi.,4,,daily-life
+b1-defend,DEFEND,D,STARTS,verb,saldırıya karşı korumak veya savunmak,The players must defend their goal.,Oyuncular kalelerini savunmalı.,3,,sports
+b1-delight,DELIGHT,D,STARTS,noun,büyük sevinç ve zevk,The children shouted with delight.,Çocuklar sevinçle bağırdı.,4,,family-people
+b1-department,DEPARTMENT,D,STARTS,noun,bir kurumun veya mağazanın bölümü,She works in the sales department.,Satış bölümünde çalışıyor.,3,,business
+b1-desperate,DESPERATE,D,STARTS,adj,"çaresiz, umutsuz; bir şeye çok ihtiyaç duyan",He is desperate for a job.,Bir iş bulmak için çaresiz durumda.,4,,daily-life
+b1-destination,DESTINATION,D,STARTS,noun,gidilecek varış yeri,Our destination is a small island.,Varış noktamız küçük bir ada.,3,,travel
+b1-difficulty,DIFFICULTY,D,STARTS,noun,bir işin zorluğu veya sorun,She had difficulty finding the street.,Sokağı bulmakta zorlandı.,3,,daily-life
+b1-directly,DIRECTLY,D,STARTS,adv,"doğrudan, dolambaçsız",Go directly to the office.,Doğrudan ofise git.,3,,daily-life
+b1-disagree,DISAGREE,D,STARTS,verb,aynı fikirde olmamak,I disagree with you on this point.,Bu konuda seninle aynı fikirde değilim.,3,,daily-life
+b1-discount,DISCOUNT,D,STARTS,noun,fiyattan yapılan indirim,Students get a ten percent discount.,Öğrenciler yüzde on indirim alır.,3,,business
+b1-district,DISTRICT,D,STARTS,noun,şehrin belirli bir bölgesi,They live in a quiet district of Istanbul.,İstanbul'un sakin bir semtinde yaşıyorlar.,3,,city-transport
+b1-downtown,DOWNTOWN,D,STARTS,adv,şehrin merkez kısmına doğru,We usually go downtown at weekends.,Genellikle hafta sonları şehir merkezine gideriz.,3,,city-transport
+b1-galaxy,GALAXY,G,STARTS,noun,milyarlarca yıldızdan oluşan gök topluluğu,Our galaxy is called the Milky Way.,Galaksimizin adı Samanyolu.,4,,school-work
+b1-generation,GENERATION,G,STARTS,noun,aynı yaş grubundaki insanlar,My generation grew up with computers.,Benim kuşağım bilgisayarlarla büyüdü.,4,,family-people
+b1-goods,GOODS,G,STARTS,noun,"satılan mallar, eşyalar",The shop sells sports goods.,Mağaza spor malzemeleri satıyor.,4,,business
+b1-greedy,GREEDY,G,STARTS,adj,"hep daha fazlasını isteyen, açgözlü",Don't be greedy; leave some cake for me.,Açgözlü olma; bana da biraz kek bırak.,3,,family-people
+b1-judgement,JUDGEMENT,J,STARTS,noun,"doğru karar verebilme yeteneği, sağduyu",Trust your own judgement.,Kendi sağduyuna güven.,4,,daily-life
+b1-legend,LEGEND,L,STARTS,noun,"geçmişten kalan, doğruluğu kesin olmayan efsane",The legend says a dragon lived here.,Efsaneye göre burada bir ejderha yaşardı.,3,,film-tv
+b1-likely,LIKELY,L,STARTS,adj,gerçekleşme ihtimali yüksek,It is likely to rain tonight.,Bu gece yağmur yağması muhtemel.,3,,daily-life
+b1-limited,LIMITED,L,STARTS,adj,sınırlı sayıda ya da miktarda,We have limited time.,Sınırlı zamanımız var.,3,,business
+b1-link,LINK,L,STARTS,noun,iki şey arasındaki bağlantı; internet bağlantısı,Click the link to open the page.,Sayfayı açmak için bağlantıya tıkla.,3,,technology
+b1-logical,LOGICAL,L,STARTS,adj,mantığa uygun,That is a logical answer.,Bu mantıklı bir cevap.,4,,school-work
+b1-loss,LOSS,L,STARTS,noun,"kaybetme; bir işte para kaybı, zarar",The company reported a loss this year.,Şirket bu yıl zarar bildirdi.,3,,business
+b1-luckily,LUCKILY,L,STARTS,adv,"şans eseri, neyse ki","Luckily, nobody was hurt.",Neyse ki kimse yaralanmadı.,3,,daily-life
+b1-massive,MASSIVE,M,STARTS,adj,"çok büyük, kocaman",They built a massive bridge.,Kocaman bir köprü yaptılar.,4,,city-transport
+b1-membership,MEMBERSHIP,M,STARTS,noun,bir kulübe üye olma,A gym membership costs a lot.,Spor salonu üyeliği çok pahalı.,3,,sports
+b1-military,MILITARY,M,STARTS,adj,orduyla ilgili,He did his military service last year.,Askerliğini geçen yıl yaptı.,4,,daily-life
+b1-minister,MINISTER,M,STARTS,noun,"hükümette bir bakanlığı yöneten kişi, bakan",The minister spoke on television.,Bakan televizyonda konuştu.,4,,daily-life
+b1-miserable,MISERABLE,M,STARTS,adj,çok mutsuz,She felt miserable in the rain.,Yağmurda çok mutsuz hissetti.,4,,family-people
+b1-motivate,MOTIVATE,M,STARTS,verb,"birini bir şeyi yapmaya isteklendirmek, güdülemek",A good teacher can motivate students.,İyi bir öğretmen öğrencileri motive edebilir.,4,,school-work
+b1-myth,MYTH,M,STARTS,noun,tanrı ve kahramanları anlatan eski öykü,The myth tells about a brave hero.,"Mit, cesur bir kahramanı anlatır.",4,,school-work
+b1-reality,REALITY,R,STARTS,noun,"gerçekte olan şeyler, gerçeklik",He cannot accept reality.,Gerçeği kabul edemiyor.,4,,daily-life
+b1-refund,REFUND,R,STARTS,noun,alınan ürün iade edilince geri verilen para,I asked for a refund.,Para iadesi istedim.,4,,business
+b1-regret,REGRET,R,STARTS,verb,yaptığına veya yapmadığına üzülmek,I regret saying that.,Bunu söylediğime pişmanım.,4,,family-people
+b1-relief,RELIEF,R,STARTS,noun,kaygı geçince duyulan rahatlama,It was a relief to hear that she was safe.,Onun güvende olduğunu duymak büyük bir rahatlıktı.,4,,daily-life
+b1-remain,REMAIN,R,STARTS,verb,aynı yerde ya da durumda kalmak,Please remain in your seats.,Lütfen yerlerinizde kalın.,4,,daily-life
+b1-reporter,REPORTER,R,STARTS,noun,haber toplayıp yazan gazeteci,The reporter asked a difficult question.,Muhabir zor bir soru sordu.,3,,film-tv
+b1-resident,RESIDENT,R,STARTS,noun,bir yerde sürekli yaşayan kişi,Every resident received a letter.,Her sakin bir mektup aldı.,4,,city-transport
+b1-response,RESPONSE,R,STARTS,noun,"bir talebe, habere ya da duruma gösterilen tepki",I am waiting for his response.,Onun cevabını bekliyorum.,3,,business
+b1-revise,REVISE,R,STARTS,verb,sınava çalışırken konuyu tekrar etmek,I need to revise for tomorrow's exam.,Yarınki sınav için tekrar yapmam gerekiyor.,3,,school-work
+b1-scream,SCREAM,S,STARTS,verb,korku ya da acıyla çığlık atmak,The children scream on the roller coaster.,Çocuklar hız trenine bindiğinde çığlık atar.,3,,daily-life
+b1-select,SELECT,S,STARTS,verb,birçok şey arasından seçmek,Please select your favourite colour.,Lütfen en sevdiğiniz rengi seçin.,3,,technology
+b1-shame,SHAME,S,STARTS,noun,utanç; yazık,It is a shame that you cannot come.,Gelememen yazık.,3,,daily-life
+b1-sight,SIGHT,S,STARTS,noun,görme duyusu; görülecek yer,He lost his sight in the accident.,Kazada görme yetisini kaybetti.,3,,body-health
+b1-slightly,SLIGHTLY,S,STARTS,adv,"biraz, hafifçe",I am slightly tired today.,Bugün biraz yorgunum.,3,,daily-life
+b1-smooth,SMOOTH,S,STARTS,adj,"pürüzsüz, düz",The road is smooth.,Yol pürüzsüz.,3,,city-transport
+b1-solid,SOLID,S,STARTS,adj,"katı, sağlam",Ice is solid water.,Buz katı haldeki sudur.,3,,school-work
+b1-spare,SPARE,S,STARTS,adj,"yedekte tutulan, fazla",Do you have a spare key?,Yedek anahtarın var mı?,3,,daily-life
+b1-storage,STORAGE,S,STARTS,noun,"eşyaların saklandığı yer, depo alanı",There is a lot of storage in the attic.,Çatı katında çok depolama alanı var.,4,,daily-life
+b1-sweat,SWEAT,S,STARTS,noun,sıcakta veya efordan vücuttan çıkan ter,Sweat ran down his face.,Yüzünden ter akıyordu.,3,,body-health
+b1-steady,STEADY,S,STARTS,adj,düzenli ve sabit,He walks at a steady pace.,Sabit bir hızla yürüyor.,4,,daily-life
+b1-totally,TOTALLY,T,STARTS,adv,"tamamen, bütünüyle",I totally forgot about the meeting.,Toplantıyı tamamen unuttum.,3,,daily-life
+b1-tutor,TUTOR,T,STARTS,noun,özel ders veren öğretmen,She has a tutor for maths.,Matematik için özel öğretmeni var.,4,,school-work
+b1-throat,THROAT,T,STARTS,noun,ağzın arkasındaki boğaz,I have a sore throat.,Boğazım ağrıyor.,3,,body-health
+b1-thumb,THUMB,T,STARTS,noun,"elin kalın ve kısa parmağı, başparmak",He hit his thumb with a hammer.,Çekiçle başparmağına vurdu.,3,,body-health
+b1-tournament,TOURNAMENT,T,STARTS,noun,birçok maçtan oluşan turnuva,Our team won the tournament.,Takımımız turnuvayı kazandı.,3,,sports
+b1-technical,TECHNICAL,T,STARTS,adj,makine ve teknolojiyle ilgili,The plane returned because of a technical problem.,Uçak teknik bir sorun nedeniyle geri döndü.,4,,technology
+b1-technology,TECHNOLOGY,T,STARTS,noun,bilimsel bilginin araçlara uygulanması,Modern technology makes life easier.,Modern teknoloji hayatı kolaylaştırır.,3,,technology
+b1-unemployment,UNEMPLOYMENT,U,STARTS,noun,işsizlik,Unemployment is high in the north.,Kuzeyde işsizlik yüksek.,4,,business
+b1-upper,UPPER,U,STARTS,adj,"iki şeyden üstte olanı, üst",The bedrooms are on the upper floor.,Yatak odaları üst katta.,3,,daily-life
+b1-upgrade,UPGRADE,U,STARTS,verb,daha iyi bir sürüme geçirmek,I want to upgrade my phone.,Telefonumu yükseltmek istiyorum.,4,,technology
+b1-unhealthy,UNHEALTHY,U,STARTS,adj,sağlığa zararlı veya hasta görünümlü,Chips are unhealthy if you eat them every day.,Her gün yersen cips sağlıksızdır.,3,,body-health
+b1-unclear,UNCLEAR,U,STARTS,adj,"net olmayan, belirsiz",The instructions are unclear.,Talimatlar belirsiz.,3,,school-work
+b1-vary,VARY,V,STARTS,verb,zamanla veya yerden yere değişmek,Prices vary from shop to shop.,Fiyatlar dükkândan dükkâna değişir.,4,,business
+b1-visible,VISIBLE,V,STARTS,adj,gözle görülebilir,The mountain is visible from my window.,Dağ penceremden görülebiliyor.,4,,daily-life
+b1-wealth,WEALTH,W,STARTS,noun,çok miktarda para ve mal varlığı,Wealth does not always make people kind.,Zenginlik insanları her zaman nazik yapmaz.,4,,business
+b1-wire,WIRE,W,STARTS,noun,elektrik ileten ince tel,A wire came off the wall.,Bir tel duvardan koptu.,3,,technology
+b1-wireless,WIRELESS,W,STARTS,adj,kablosuz,We use a wireless keyboard.,Kablosuz klavye kullanıyoruz.,3,,technology
+b1-worrying,WORRYING,W,STARTS,adj,insanı endişelendiren,The news is worrying.,Haber endişe verici.,3,,daily-life
