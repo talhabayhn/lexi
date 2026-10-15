@@ -26,7 +26,7 @@ scale or rotation; splash shows the logo statically.
 | 5 | Pass | chip rotates 90° while morphing circle → leaf, turns yellow; small arrow slides 70dp right | 260 ms, `turn` | soft | "vınn" |
 | 6 | Wheel advance | black "current" square jumps to next slot (step, no easing between slots); centre letter slides down and is replaced | 140 ms | — | — |
 | 7 | Combo (streak 3, 5, 10) | 4 shapes (square/circle/leaf/ink square) burst diagonally ~100dp and fade; badge "×N SERİ" pops (scale 0 → 1.3 → 1, rotate −20° → 6° → −4°) | 420 ms, `pop` | heavy | short fanfare |
-| 8 | Time warning (last 10 s) | timer fill `yellow` → `red` and counter `ink` → `red`, switched at once (no fade); counter pulses scale 1 → 1.12 → 1 in a loop (linear); reduced motion: colours only | 600 ms per pulse | tick each second | "tik" |
+| 8 | Time warning (last 10 s) | timer fill `yellow` → `red` and counter `ink` → `red`, switched at once (no fade); counter pulses scale 1 → 1.12 → 1 (linear) each second, with the tick; reduced motion: colours only | 600 ms per pulse | tick each second | "tik" |
 | 9 | Splash | bg yellow circle (top-left) & blue square (bottom-right) scale 0 → 1; L slides from left (overshoot 8dp), E drops from top & bounces 10dp, X rotates −270° → 10° → 0 with scale 0 → 1.08 → 1, I rises from bottom (overshoot −8dp); tagline fades up 12dp | total ≈ 1.2 s in app (demo is 3.6 s looped), `mechanical` | light on each landing | "tık" per landing |
 | 10 | Bottom sheet (joker) | slides up from bottom, scrim fades to 55% | 220 ms | — | — |
 | 11 | Toast | slides down from top 16dp, auto-dismiss 2.5 s | 180 ms | — | — |
@@ -36,6 +36,36 @@ scale or rotation; splash shows the logo statically.
 `source/15-motion.dc.html`); a quick tap still plays the full 80 ms press before returning; haptic and sound fire on
 click (release inside the element), not on touch-down, so a cancelled touch stays silent. Reduced motion: no
 translation, the shadow disappears instantly while pressed.
+
+### Game screen (#2–#8, M4)
+Implemented in `feature:game` (`GameMotion`, `GameMotionLayer`, `GameFeedback`) on top of `LetterWheel` / `WheelLetter`
+(`WheelChipMotion`), `TimerBar`, `ComboBadge` / `ComboBurst`; keyframe positions are `LexiMotion` tokens taken from
+`source/15-motion.dc.html`. The resting look always comes from the state (ADR 0019): effects only add transient motion.
+- Feedback starts with the animation, from the screen (`LocalHaptics` / `LocalSoundPlayer`). Keys, PAS and joker rows
+  are buttons: their press plays #1, which is also #2's light haptic, so a placed letter adds none; the effect a press
+  causes (#3/#4 after the last letter, #5 after PAS) follows right after it. TTS (#3, setting "Doğru cevapta
+  telaffuz") starts after the correct sound (280 ms); the last answer of a game is spoken at once because the screen
+  leaves for the result. The Listen joker speaks at once.
+- #2: a copy of the key (white, s3) travels on `fly` for 5/7 of the time while growing to 1.15, then settles to 1 on
+  the cell; it changes size from the key's to the cell's and lands exactly on it. Until then the cell keeps its look
+  from before (red "next" border). Finishing an answer (#3/#4/#5/#6) ends letters still in the air.
+- #3: pop and ring peak at 1/3; the pop is back to 1 at 2/3; the ring (CSS ease-out, drawn under the chip, above its
+  neighbours) is gone at 320 ms.
+- #4: shake of the answer row; the red is the state's wrong cells showing the correct answer during the reveal.
+- #5: only the chip shape turns (the letter stays upright) and morphs into the leaf turned back by 90°, so it ends on the
+  resting leaf. The arrow runs in the same 260 ms (opacity peak at 2/7) and slides clockwise along the wheel, towards
+  the next letter (on the wheel "right" means clockwise).
+- #6: the current square jumps with the state; the centre letter slides down out of its box and the next one follows
+  from above (`mechanical`).
+- #7: burst and badge are centred on the wheel (design debt, `screen-map.md`); the badge pops in 420 ms, holds 720 ms
+  and shrinks to 0 in 240 ms (`aCombo`). Reduced motion: the badge rests at −4° for 420 + 720 ms, no burst.
+- #8: `TimerBar` pulses whenever the counter changes (and when the warning starts), not on first composition, so a
+  paused or restored warning does not pulse.
+- #11: no toast is shown anywhere yet (`Toast` exists in `16-components`); the slide-in is built with the first use.
+- `win` / `lose` have no catalogue row, so they are not played yet (to be decided with the result screen's motion).
+
+#12 is set on `LexiNavHost` (all destinations): enter slides from +24dp, the old screen moves −24dp, back mirrors it,
+`mechanical`, no fade; reduced motion switches in place.
 
 Splash timing in app (scale the demo keyframe percentages from 3.6 s to 1.2 s; keep order and overshoots):
 bg 0–216 ms, L 48–312 ms, E 120–384 ms, X 192–480 ms, I 264–552 ms, tagline 576–696 ms, hold to 1200 ms.

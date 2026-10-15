@@ -19,6 +19,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.onPlaced
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.LifecycleEventEffect
@@ -41,6 +42,7 @@ import dev.talhabayhan.lexi.feature.game.components.AnswerSlots
 import dev.talhabayhan.lexi.feature.game.components.GameColumn
 import dev.talhabayhan.lexi.feature.game.components.GameHudBar
 import dev.talhabayhan.lexi.feature.game.components.GameMotion
+import dev.talhabayhan.lexi.feature.game.components.GameMotionLayer
 import dev.talhabayhan.lexi.feature.game.components.JokerSheet
 import dev.talhabayhan.lexi.feature.game.components.KeyGrid
 import dev.talhabayhan.lexi.feature.game.components.PauseDialog
@@ -66,7 +68,8 @@ import org.jetbrains.compose.resources.stringResource
 
 /**
  * The game screen (`04-game`), stateless: the resting look comes from [state]; [clock] is read only by the HUD timer
- * and the joker sheet's status pill; [motion] plays transient effects. Lifecycle ON_PAUSE / ON_RESUME are forwarded
+ * and the joker sheet's status pill; [motion] plays transient effects (`motion.md` #2–#8) over the resting look, partly
+ * in [GameMotionLayer] above the content and below the sheet and dialog. Lifecycle ON_PAUSE / ON_RESUME are forwarded
  * as background / foreground intents (ADR 0019). Insets: `safeDrawing` on top of the design paddings; the background
  * shapes reach the screen edges. Overlays: the joker sheet (`05-joker-sheet`) and the pause dialog (design debt).
  */
@@ -100,6 +103,8 @@ internal fun GameScreen(
                         centerLetter = turn?.letter ?: ' ',
                         ruleLabel = turn?.let { stringResource(it.rule.label()) }.orEmpty(),
                         size = size,
+                        chipMotion = motion::chipMotion,
+                        modifier = Modifier.onPlaced(motion::onWheelPlaced),
                     )
                 },
                 clue = {
@@ -120,13 +125,23 @@ internal fun GameScreen(
                         )
                     }
                 },
-                answer = { if (turn != null) AnswerSlots(turn.words, offset = { motion.slotsOffset }) },
+                answer = {
+                    if (turn != null) {
+                        AnswerSlots(
+                            words = turn.words,
+                            offset = { motion.slotsOffset },
+                            flyingCells = motion::flyingCells,
+                            onCellPlaced = motion::onCellPlaced,
+                        )
+                    }
+                },
                 keys = {
                     if (turn != null) {
                         KeyGrid(
                             keys = turn.keys,
                             enabled = state.inputEnabled,
                             onKey = { onIntent(GameIntent.KeyTapped(it)) },
+                            onKeyPlaced = motion::onKeyPlaced,
                         )
                     }
                 },
@@ -142,6 +157,7 @@ internal fun GameScreen(
                     ),
             )
         }
+        GameMotionLayer(motion)
         JokerSheet(
             visible = state.isJokerSheetOpen,
             jokers = state.jokers,

@@ -227,9 +227,16 @@ class GameViewModelTest {
         val vm = started()
         vm.effects.test {
             awaitStart()
+            val keys = checkNotNull(vm.state.value.turn).keys.map { it.letter }
             vm.type("AP")
-            assertEquals(GameEffect.LetterPlaced(0), awaitItem())
-            assertEquals(GameEffect.LetterPlaced(1), awaitItem())
+            assertEquals(
+                GameEffect.LetterPlaced(cellIndex = 0, keyIndex = keys.indexOf('A'), letter = 'A'),
+                awaitItem(),
+            )
+            assertEquals(
+                GameEffect.LetterPlaced(cellIndex = 1, keyIndex = keys.indexOf('P'), letter = 'P'),
+                awaitItem(),
+            )
 
             vm.onIntent(GameIntent.Backspace)
 
@@ -240,14 +247,59 @@ class GameViewModelTest {
     }
 
     @Test
-    fun `a correct answer scores and speaks the word and moves on`() = runTest {
+    fun `a correct answer scores and speaks the word after the correct sound and moves on`() = runTest {
         val vm = started()
 
         vm.type("APPLE")
 
         assertEquals(10, vm.state.value.score)
-        assertEquals(listOf("apple"), speaker.spoken)
         assertEquals('B', vm.state.value.turn?.letter)
+        // motion.md #3: two rising notes, then the word.
+        advance(GameViewModel.CORRECT_SOUND_DURATION.inWholeMilliseconds - 1)
+        assertTrue(speaker.spoken.isEmpty())
+        advance(1L)
+        assertEquals(listOf("apple"), speaker.spoken)
+    }
+
+    @Test
+    fun `a word waiting for the correct sound is dropped when the game goes to the background`() = runTest {
+        val vm = started()
+        vm.type("APPLE")
+
+        vm.onIntent(GameIntent.Background)
+        advance(1_000L)
+
+        assertTrue(speaker.spoken.isEmpty())
+        assertEquals(1, speaker.stopCount)
+    }
+
+    @Test
+    fun `the last word of a game is spoken at once because the screen leaves for the result`() = runTest {
+        val vm = started()
+        vm.type("APPLE")
+        advance(GameViewModel.CORRECT_SOUND_DURATION.inWholeMilliseconds)
+        vm.type("BREAD")
+        advance(GameViewModel.CORRECT_SOUND_DURATION.inWholeMilliseconds)
+
+        vm.type("CHAIR")
+
+        assertEquals(listOf("apple", "bread", "chair"), speaker.spoken)
+    }
+
+    @Test
+    fun `a letter of the reveal joker flies from the key it used`() = runTest {
+        val vm = started()
+        vm.effects.test {
+            awaitStart()
+            val keys = checkNotNull(vm.state.value.turn).keys.map { it.letter }
+
+            vm.onIntent(GameIntent.UseJoker(JokerType.REVEAL_LETTER))
+
+            assertEquals(
+                GameEffect.LetterPlaced(cellIndex = 0, keyIndex = keys.indexOf('A'), letter = 'A'),
+                awaitItem(),
+            )
+        }
     }
 
     @Test

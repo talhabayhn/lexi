@@ -1,5 +1,12 @@
 package dev.talhabayhan.lexi.core.designsystem.component
 
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.EnterTransition
+import androidx.compose.animation.ExitTransition
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
+import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -8,15 +15,20 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.traversalIndex
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.zIndex
+import dev.talhabayhan.lexi.core.designsystem.icon.LexiIcons
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import kotlin.math.PI
 import kotlin.math.cos
@@ -35,7 +47,11 @@ public object LetterWheelDefaults {
 /**
  * Passaparola wheel: N [letters] on a circle (angle = −90° + i·360°/N, radius 144 of 320), a 288dp ring (3dp) and the
  * 180dp yellow centre with the big current letter and the rule label ("İLE BAŞLAR" / "İÇİNDE GEÇER").
- * Motion (#3, #5, #6) is driven by the game screen in M4.
+ *
+ * Motion (`motion.md`): #6 the black current square jumps with the state (a step, no easing); the centre letter slides
+ * down and the next one follows from above (`wheelAdvanceDurationMillis`, no fade; in place under reduced motion).
+ * [chipMotion] gives a chip's transient #3 / #5 motion; a moving chip is drawn above its neighbours and its #5 arrow
+ * slides clockwise along the wheel, towards the next letter.
  */
 @Composable
 public fun LetterWheel(
@@ -44,8 +60,10 @@ public fun LetterWheel(
     ruleLabel: String,
     modifier: Modifier = Modifier,
     size: Dp = LetterWheelDefaults.Size,
+    chipMotion: (Char) -> WheelChipMotion? = { null },
 ) {
     val colors = LexiTheme.colors
+    val motion = LexiTheme.motion
     val scale = size.value / LetterWheelDefaults.DESIGN_SIZE
     val chip = WheelLetterDefaults.Size * scale
     val radius = LetterWheelDefaults.CHIP_RADIUS * scale
@@ -68,22 +86,71 @@ public fun LetterWheel(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
         ) {
-            Text(centerLetter.toString(), style = LexiTheme.typography.wheelLetter)
+            AnimatedContent(
+                targetState = centerLetter,
+                transitionSpec = {
+                    if (motion.reducedMotion) {
+                        EnterTransition.None togetherWith ExitTransition.None
+                    } else {
+                        val slide = tween<IntOffset>(motion.wheelAdvanceDurationMillis, easing = motion.mechanical)
+                        slideInVertically(slide) { -it } togetherWith slideOutVertically(slide) { it }
+                    }
+                },
+                contentAlignment = Alignment.Center,
+            ) { letter ->
+                Text(letter.toString(), style = LexiTheme.typography.wheelLetter)
+            }
             Text(ruleLabel, style = LexiTheme.typography.wheelRule)
         }
         letters.forEachIndexed { i, item ->
             val angle = -PI / 2 + i * 2 * PI / letters.size
-            val x = half + radius * cos(angle).toFloat() - chip.value / 2
-            val y = half + radius * sin(angle).toFloat() - chip.value / 2
+            val centerX = half + radius * cos(angle).toFloat()
+            val centerY = half + radius * sin(angle).toFloat()
+            val itemMotion = chipMotion(item.letter)
+            if (itemMotion != null) {
+                // Under the chips: the arrow comes out from under the passed chip.
+                PassArrow(itemMotion, centerX, centerY, tangent = angle + PI / 2, scale = scale)
+            }
             WheelLetter(
                 letter = item.letter,
                 state = item.state,
                 size = chip,
-                modifier = Modifier.offset(x.dp, y.dp),
+                motion = itemMotion,
+                modifier = Modifier
+                    .offset((centerX - chip.value / 2).dp, (centerY - chip.value / 2).dp)
+                    .zIndex(if (itemMotion != null) 1f else 0f),
             )
         }
     }
 }
+
+/** #5: the arrow centred on the chip, turned to [tangent] (radians) and moved along it by the arrow progress. */
+@Composable
+private fun PassArrow(motion: WheelChipMotion, centerX: Float, centerY: Float, tangent: Double, scale: Float) {
+    val width = WheelLetterDefaults.ArrowWidth * scale
+    val height = WheelLetterDefaults.ArrowHeight * scale
+    val distance = LexiTheme.motion.passArrowDistance * scale
+    val dx = cos(tangent).toFloat()
+    val dy = sin(tangent).toFloat()
+    Icon(
+        imageVector = LexiIcons.ArrowRight,
+        contentDescription = null,
+        tint = LexiTheme.colors.ink,
+        modifier = Modifier
+            .offset((centerX - width.value / 2).dp, (centerY - height.value / 2).dp)
+            .size(width, height)
+            .zIndex(1f)
+            .graphicsLayer {
+                val travelled = distance.toPx() * motion.arrowProgress
+                alpha = motion.arrowAlpha.coerceIn(0f, 1f)
+                rotationZ = (tangent * DEGREES_PER_RADIAN).toFloat()
+                translationX = dx * travelled
+                translationY = dy * travelled
+            },
+    )
+}
+
+private const val DEGREES_PER_RADIAN: Double = 180.0 / PI
 
 private val PreviewLetters: List<WheelLetterUi> = ('A'..'Z').mapIndexed { i, c ->
     val state = when {

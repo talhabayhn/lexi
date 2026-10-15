@@ -4,6 +4,8 @@
     <string name="game_button_joker">Use joker</string>
     <string name="game_button_backspace">Delete letter</string>
     <string name="game_button_pass">PASS</string>
+    <!-- motion.md #7: combo badge at streak 3, 5 and 10 (15-motion: "×3 SERİ"). -->
+    <string name="game_combo_badge">×%1$d STREAK</string>
     <string name="game_score_description">Score: %1$d</string>
 
     <!-- Rule under the big letter in the wheel centre -->

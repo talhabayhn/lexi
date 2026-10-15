@@ -46,7 +46,8 @@ holds `GameEngine`, current `GameState` and the append-only event log of *applie
   `ImmutableList`s, string-resource keys not strings), `distinctUntilChanged` by equality, so pure ticks don't
   re-emit it. `clock: StateFlow<GameClockUi>` (remaining ms, fraction, whole seconds, warning flag) is separate.
 - `effects: Flow<GameEffect>` = `Channel(BUFFERED).receiveAsFlow()`, collected while STARTED. Mapping per
-  `motion.md`: `LetterPlaced`→fly #2 + Light; `Correct`→pop #3 + Success + sound + `Speak(word)` if TTS on;
+  `motion.md`: `LetterPlaced`→fly #2 (its light haptic is the key's #1 press); `Correct`→pop #3 + Success + sound,
+  then the word (after the correct sound) if TTS is on;
   `Wrong`→shake #4 + Error; `Passed`→#5 + Soft; `ComboReached`→#7 + Heavy; `TimeWarning`→Tick haptic + "tik";
   `JokerApplied`→inventory write; `GameOver`→record, then `NavigateToResult`. Haptics/sound play in the screen
   through `LocalHaptics`/`LocalSoundPlayer` so they stay in sync with the animation; TTS through a `Speaker`
@@ -67,8 +68,8 @@ haptics and sound still fire.
   single Canvas: per-chip animations (#3 scale + ring, #5 rotate + morph) map to `graphicsLayer`, each letter keeps
   accessibility semantics, and the component is already screenshot-verified. 26 small nodes are cheap.
 - Timer: only the HUD timer reads `clock`; the bar fill reads the fraction in `drawBehind`/`graphicsLayer` (draw
-  phase only); the counter text reads whole seconds (recomposes once per second); the #8 pulse is an infinite
-  transition keyed on the warning flag. The rest of the screen never reads time.
+  phase only); the counter text reads whole seconds (recomposes once per second); the #8 pulse is one 600 ms pulse
+  keyed on the counter text while warning (once per second, with the tick). The rest of the screen never reads time.
 
 **4. Tests.** `GameUiMapper` and `GameSession` (replay = live state) as plain unit tests; `GameViewModelTest` with
 `runTest`, `Dispatchers.setMain(StandardTestDispatcher)`, `testScheduler.timeSource`, fakes from `core:testing`
@@ -95,6 +96,9 @@ kotlinx-datetime.
 - Orientation: the app is portrait-only on phones (all designs are portrait; Android `screenOrientation=portrait`,
   iOS `UISupportedInterfaceOrientations` portrait). `configChanges` above still covers fold/multi-window resizes.
 - Open (M6): for the Daily wheel, whether an attempt counts at `Start` (otherwise killing the app could replay it).
+- Open (M7): `FinishGame` is not idempotent. If `SessionRepository.record` succeeded but the SRS update failed in
+  both attempts, the snapshot is kept, so a game restored after a process death records the session a second time.
+  Fix with an idempotent record keyed by `seed + startedAtMs` (unique key in `user.db`), not by a schema change now.
 
 ## Addendum (M4 joker sheet, pause, result — 2026-10-15)
 - **Result payload:** `ResultRoute` carries a small summary instead of a session id (level, mode, category, reason,
@@ -111,9 +115,11 @@ kotlinx-datetime.
   the same rule `reduce` applies. Inventory writes run undispatched under `NonCancellable`, serialized by a mutex, and
   each stores the latest inventory. The Listen joker speaks the answer; the Example joker's blanked sentence is shown
   in the clue card (design debt).
-- **Back / pause:** system back (both platforms, `NavigationBackHandler`) closes the joker sheet, leaves the quit
-  confirmation, or pauses a running game; on the pause dialog it does nothing, so only "Devam et" restarts the clock.
-  While loading, back leaves the screen. The pause dialog (design debt) is two `ConfirmDialog` steps: pause (Devam
-  et / Bırak) and, since giving up can't be undone, a confirmation (Bırak = `Forfeit` / Vazgeç).
+- **Back / pause:** system back (both platforms, `NavigationBackHandler` in common code; `navigationevent-compose`
+  is declared through a catalog alias of the version navigation-compose already resolves, not a new library) closes
+  the joker sheet, leaves the quit confirmation, or pauses a running game; on the pause dialog it does nothing, so
+  only "Devam et" restarts the clock. While loading, back leaves the screen. The pause dialog (design debt) is two
+  `ConfirmDialog` steps: pause (Devam et / Bırak) and, since giving up can't be undone, a confirmation (Bırak =
+  `Forfeit` / Vazgeç).
 - **Effects:** the ViewModel ignores a transition only when it is the same state *and* has no effects, the same rule
   as `GameSession` (`Transition.isIgnored`).

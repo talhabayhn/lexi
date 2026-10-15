@@ -103,8 +103,8 @@ public fun ClueCard(
 /**
  * Countdown bar: 48dp, 3dp border, white track; the fill ([progress] 0..1) is yellow with a 3dp right edge and the
  * counter (18sp/800, 10dp from the left) is ink. In the last 10 s ([warning], motion.md #8) fill and counter switch
- * to red at once (no fade: state changes are not faded) and the counter pulses 1 → 1.12 → 1 in a 600 ms loop;
- * under reduced motion only the colours change.
+ * to red at once (no fade: state changes are not faded) and the counter pulses 1 → 1.12 → 1 (600 ms, linear) each
+ * time it changes, i.e. once per second with the tick; under reduced motion only the colours change.
  */
 @Composable
 public fun TimerBar(progress: Float, timeText: String, modifier: Modifier = Modifier, warning: Boolean = false) {
@@ -121,14 +121,17 @@ public fun TimerBar(progress: () -> Float, timeText: String, modifier: Modifier 
     val motion = LexiTheme.motion
     val border = LexiTheme.borders.regular
     val pulse = remember { Animatable(1f) }
-    LaunchedEffect(warning, motion) {
+    // One pulse whenever the counter changes (each second) or the warning starts; nothing on first composition, so a
+    // restored or paused warning rests at scale 1 and a stopped clock stops pulsing.
+    val composed = remember { PulseGate() }
+    LaunchedEffect(warning, timeText, motion) {
+        val first = !composed.seen
+        composed.seen = true
         pulse.snapTo(1f)
-        if (!warning || motion.reducedMotion) return@LaunchedEffect
+        if (first || !warning || motion.reducedMotion) return@LaunchedEffect
         val half = tween<Float>(motion.timeWarningPulseMillis / 2, easing = motion.linear)
-        while (true) {
-            pulse.animateTo(motion.timeWarningPulseScale, half)
-            pulse.animateTo(1f, half)
-        }
+        pulse.animateTo(motion.timeWarningPulseScale, half)
+        pulse.animateTo(1f, half)
     }
     Box(
         modifier = modifier
@@ -160,6 +163,11 @@ public fun TimerBar(progress: () -> Float, timeText: String, modifier: Modifier 
                 },
         )
     }
+}
+
+/** Remembers whether the timer's pulse effect has run once (not snapshot state: it never triggers recomposition). */
+private class PulseGate {
+    var seen: Boolean = false
 }
 
 /** Score badge: 48dp blue circle, 3dp border, white 15sp/800. */

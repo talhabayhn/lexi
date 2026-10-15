@@ -11,6 +11,9 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
+import androidx.navigationevent.NavigationEventInfo
+import androidx.navigationevent.compose.NavigationBackHandler
+import androidx.navigationevent.compose.rememberNavigationEventState
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.core.domain.game.GameMode
 import dev.talhabayhan.lexi.core.domain.model.CategoryId
@@ -80,8 +83,13 @@ internal fun GameRoute(
 
 /**
  * System back (Android back button / predictive back, iOS swipe-back) while the game is shown, through the
- * navigation-event handler. Platform actuals: the common metadata compilation does not see `navigationevent-compose`
- * (it is published per platform), so the call lives in `androidMain` / `iosMain` with identical code.
+ * navigation-event handler (`navigationevent-compose`, declared explicitly in the catalog).
  */
 @Composable
-internal expect fun GameBackHandler(enabled: Boolean, onBack: () -> Unit)
+private fun GameBackHandler(enabled: Boolean, onBack: () -> Unit) {
+    NavigationBackHandler(
+        state = rememberNavigationEventState(NavigationEventInfo.None),
+        isBackEnabled = enabled,
+        onBackCompleted = onBack,
+    )
+}

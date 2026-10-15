@@ -143,7 +143,11 @@ internal sealed interface GameIntent {
  * look of [GameUiState]; navigation effects leave the screen.
  */
 internal sealed interface GameEffect {
-    data class LetterPlaced(val cellIndex: Int) : GameEffect
+    /**
+     * #2: [letter] went from key [keyIndex] (index in [GameTurnUi.keys]) into answer cell [cellIndex] (letters only,
+     * spaces are not cells). Also sent for a letter placed by the "Harf aç" joker (from the key it used).
+     */
+    data class LetterPlaced(val cellIndex: Int, val keyIndex: Int, val letter: Char) : GameEffect
 
     data class Correct(val letter: Char, val points: Int) : GameEffect
 

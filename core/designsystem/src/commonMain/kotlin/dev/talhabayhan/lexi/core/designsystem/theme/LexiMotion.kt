@@ -36,14 +36,40 @@ public class LexiMotion internal constructor(
     /** CSS `ease-out` (0, 0, 0.58, 1): button press, `.lx-press` in `source/15-motion.dc.html`. */
     public val press: Easing = CubicBezierEasing(0f, 0f, 0.58f, 1f)
 
+    /** CSS `ease-out` (0, 0, 0.58, 1): #3 ring (`aRing`) and #7 burst shapes (`aB1`–`aB4`). */
+    public val easeOut: Easing = press
+
     /** #1 button press: 80 ms out, 80 ms back. */
     public val pressDurationMillis: Int = 80
 
     /** #2 letter key flies to the slot. */
     public val keyFlyDurationMillis: Int = 220
 
-    /** #3 correct answer pop. */
+    /** #2 scale of the flying letter when it reaches the slot. */
+    public val keyFlyPeakScale: Float = 1.15f
+
+    /**
+     * #2 part of [keyFlyDurationMillis] spent travelling (scale 1 → [keyFlyPeakScale]); the rest settles the scale back
+     * to 1 (`aFly`: travel 20 % → 45 %, settle 45 % → 55 % of the demo loop).
+     */
+    public val keyFlyTravelFraction: Float = 5f / 7f
+
+    /** #3 correct answer: pop and ring together (the ring ends last). */
     public val correctDurationMillis: Int = 320
+
+    /** #3 peak chip scale (1 → 1.45 → 1). */
+    public val correctPopScale: Float = 1.45f
+
+    /**
+     * #3 keyframes as parts of [correctDurationMillis] (`aPop` / `aRing`: start 30 %, peak 40 %, pop back 50 %, ring
+     * gone 60 % of the demo loop): pop and ring peak at 1/3, the pop is back to 1 at 2/3, the ring fades out at the end.
+     */
+    public val correctPeakFraction: Float = 1f / 3f
+    public val correctPopEndFraction: Float = 2f / 3f
+
+    /** #3 ring scale at start, peak and end (0.6 → 1 → 1.8); its opacity goes 0 → 1 → 0. */
+    public val correctRingStartScale: Float = 0.6f
+    public val correctRingEndScale: Float = 1.8f
 
     /** #4 wrong answer shake. */
     public val wrongDurationMillis: Int = 360
@@ -51,14 +77,39 @@ public class LexiMotion internal constructor(
     /** #4 wrong answer: horizontal offsets of the answer slots, evenly spaced over [wrongDurationMillis]. */
     public val wrongShakeOffsets: List<Dp> = listOf((-12).dp, 12.dp, (-9).dp, 9.dp, (-4).dp, 0.dp)
 
-    /** #5 pass rotation. */
+    /** #5 pass rotation, morph and arrow. */
     public val passDurationMillis: Int = 260
+
+    /** #5 the chip shape turns clockwise by this much while it morphs circle → leaf. */
+    public val passRotationDegrees: Float = 90f
+
+    /** #5 the arrow slides this far (to the next letter, clockwise along the wheel). */
+    public val passArrowDistance: Dp = 70.dp
+
+    /** #5 part of [passDurationMillis] at which the arrow is fully visible (`aArrow`: 0 → 1 → 0 opacity). */
+    public val passArrowPeakFraction: Float = 2f / 7f
 
     /** #6 wheel advance (step, no easing between slots). */
     public val wheelAdvanceDurationMillis: Int = 140
 
-    /** #7 combo burst. */
+    /** #7 combo: burst of the four shapes and pop of the badge. */
     public val comboDurationMillis: Int = 420
+
+    /** #7 the badge stays at rest this long after its pop (`aCombo` 40 % → 85 % of the 1.6 s demo). */
+    public val comboBadgeHoldMillis: Int = 720
+
+    /** #7 the badge shrinks to 0 in this time (`aCombo` 85 % → 100 %). */
+    public val comboBadgeExitMillis: Int = 240
+
+    /** #7 badge pop: scale 0 → 1.3 → 1 with rotation −20° → 6° → −4°, peak at [comboBadgePeakFraction]. */
+    public val comboBadgePeakScale: Float = 1.3f
+    public val comboBadgeStartRotation: Float = -20f
+    public val comboBadgePeakRotation: Float = 6f
+    public val comboBadgeRestRotation: Float = -4f
+    public val comboBadgePeakFraction: Float = 0.6f
+
+    /** #7 burst: the shapes reach their middle keyframe here (`aB1`–`aB4`: 20 % → 60 % → 100 %) and fade after it. */
+    public val comboBurstMidFraction: Float = 0.5f
 
     /** #10 bottom sheet slide-up and scrim. */
     public val bottomSheetDurationMillis: Int = 220
@@ -72,7 +123,7 @@ public class LexiMotion internal constructor(
     /** #12 screen transitions. */
     public val screenTransitionDurationMillis: Int = 220
 
-    /** #8 time warning: one counter pulse cycle 1 → 1.12 → 1, repeated while the warning lasts. */
+    /** #8 time warning: one counter pulse 1 → 1.12 → 1, played each second (with the tick) while the warning lasts. */
     public val timeWarningPulseMillis: Int = 600
 
     /** #8 time warning: peak counter scale. */

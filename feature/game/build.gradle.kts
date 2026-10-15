@@ -10,6 +10,9 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodelSavedstate)
             // Logging of storage failures until the crash reporter lands (M7); in the catalog by ADR 0015.
             implementation(libs.kermit)
+            // System back of the game screen (GameBackHandler); already a transitive dependency of
+            // navigation-compose, declared explicitly at the same version.
+            implementation(libs.androidx.navigationevent.compose)
         }
         getByName("androidHostTest").dependencies {
             implementation(libs.junit)

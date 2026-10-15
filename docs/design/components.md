@@ -10,12 +10,13 @@ each with a `@Preview` and a Roborazzi screenshot. Feature screens compose ONLY 
 | `NavSquareButton` | back, close, settings, pause | 44dp square, white fill, 3dp border, icon 18–20 — **navigation = square** |
 | `ActionCircleButton` | joker (red), others; disabled (50 %) | 56dp circle — **game actions = circle** |
 | `IconSquareButton` | backspace | 56dp square |
-| `WheelLetter` | Todo, Current, Correct, Wrong, Passed | 28dp chip, 13sp/800; shapes per tokens; Current scale 1.3 |
-| `LetterWheel` | 26 (or N) letters on a circle | 320dp box, radius 144, angle = −90° + i·360°/N, 288dp ring 3dp, centre 180dp yellow circle with big letter + rule label ("İLE BAŞLAR" / "İÇİNDE GEÇER") |
+| `WheelLetter` | Todo, Current, Correct, Wrong, Passed | 28dp chip, 13sp/800; shapes per tokens; Current scale 1.3; optional `WheelChipMotion` (#3 pop + 4dp ring, #5 turn + morph) |
+| `LetterWheel` | 26 (or N) letters on a circle | 320dp box, radius 144, angle = −90° + i·360°/N, 288dp ring 3dp, centre 180dp yellow circle with big letter + rule label ("İLE BAŞLAR" / "İÇİNDE GEÇER"); centre letter slides down on change (#6), #5 arrow (24 × 16) |
 | `AnswerSlot` | Filled (ink bg, cream letter), Active (white, red border), Empty, Wrong (red bg, white letter), JokerFilled (blue bg) | 40×48dp, letter 26sp/800 |
 | `LetterKey` | Normal, Pressed (yellow), Used (dashed, muted), RemovedByJoker (dashed, empty), disabled (input blocked: 50 %, no shadow — design debt) | height 50, 3dp border, shadow s3, 22sp/800, 5-col grid gap 8 |
 | `ClueCard` | —, with example (Örnek cümle joker, design debt: italic 14/500 line) | white, 3dp, shadow s6, label + clue 30sp, right blue column 64dp with level + letter count |
-| `TimerBar` | normal (yellow fill, ink counter), warning = last 10 s (red fill, red counter pulsing 1 → 1.12 → 1 every 600 ms; colours only under reduced motion) | 48dp high, 3dp border, fill + right border |
+| `ComboBadge` / `ComboBurst` | "×3 SERİ" badge; four burst shapes (#7, `15-motion`) | badge: yellow, 3dp border, s4, padding 8 × 14, 24sp/800; shapes 26dp (+2dp border), offsets from `aB1`–`aB4` |
+| `TimerBar` | normal (yellow fill, ink counter), warning = last 10 s (red fill, red counter pulsing 1 → 1.12 → 1 in 600 ms each time it changes, i.e. each second; colours only under reduced motion) | 48dp high, 3dp border, fill + right border |
 | `ScoreBadge` | — | 48dp blue circle, white 15sp/800 |
 | `SegmentedControl` | 2–6 segments | selected = ink bg + yellow text; dividers 3dp |
 | `LexiSwitch` | on (blue track, yellow knob, right), off (cream track, ink knob, left) | 54×30 |

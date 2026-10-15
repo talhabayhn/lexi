@@ -15,12 +15,15 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.layout.LayoutCoordinates
+import androidx.compose.ui.layout.onPlaced
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.min
 import dev.talhabayhan.lexi.core.designsystem.component.AnswerSlot
 import dev.talhabayhan.lexi.core.designsystem.component.AnswerSlotDefaults
+import dev.talhabayhan.lexi.core.designsystem.component.AnswerSlotState
 import dev.talhabayhan.lexi.core.designsystem.component.GameHudDefaults
 import dev.talhabayhan.lexi.core.designsystem.component.GameScreenDefaults
 import dev.talhabayhan.lexi.core.designsystem.component.IconButtonDefaults
@@ -82,14 +85,20 @@ internal fun GameHudBar(score: Int, clock: () -> GameClockUi, onPause: () -> Uni
 /**
  * Answer boxes, centred, gap 6; words of a multi-word answer are separated by [GameScreenDefaults.AnswerWordGap].
  * Boxes keep 40dp up to the width of the column, then narrow (with the letter) so 14-letter answers still fit.
- * [offset] is the #4 shake, applied in the layer phase.
+ * [offset] is the #4 shake, applied in the layer phase. [flyingCells] are cells whose letter is still in the air (#2):
+ * they keep their look from before it lands, so the first of them is the red-bordered next box and the rest (with the
+ * state's next box) stay empty. [onCellPlaced] reports each cell (letters only, in answer order) for the flight.
  */
 @Composable
 internal fun AnswerSlots(
     words: ImmutableList<ImmutableList<AnswerCellUi>>,
     offset: () -> Dp,
     modifier: Modifier = Modifier,
+    flyingCells: () -> Set<Int> = { emptySet() },
+    onCellPlaced: (index: Int, coordinates: LayoutCoordinates) -> Unit = { _, _ -> },
 ) {
+    val flying = flyingCells()
+    val firstFlying = flying.minOrNull()
     BoxWithConstraints(modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
         val cells = words.sumOf { it.size }
         val gaps = AnswerSlotDefaults.Gap * (cells - words.size) + GameScreenDefaults.AnswerWordGap * (words.size - 1)
@@ -104,10 +113,23 @@ internal fun AnswerSlots(
             modifier = Modifier.graphicsLayer { translationX = offset().toPx() },
             horizontalArrangement = Arrangement.spacedBy(GameScreenDefaults.AnswerWordGap),
         ) {
+            var index = 0
             words.forEach { word ->
                 Row(horizontalArrangement = Arrangement.spacedBy(AnswerSlotDefaults.Gap)) {
                     word.forEach { cell ->
-                        AnswerSlot(cell.letter, cell.state, Modifier.width(slotWidth), textStyle = textStyle)
+                        val cellIndex = index++
+                        val state = when {
+                            firstFlying == null -> cell.state
+                            cellIndex == firstFlying -> AnswerSlotState.Active
+                            cellIndex in flying || cell.state == AnswerSlotState.Active -> AnswerSlotState.Empty
+                            else -> cell.state
+                        }
+                        AnswerSlot(
+                            letter = cell.letter,
+                            state = state,
+                            modifier = Modifier.width(slotWidth).onPlaced { onCellPlaced(cellIndex, it) },
+                            textStyle = textStyle,
+                        )
                     }
                 }
             }
@@ -117,7 +139,8 @@ internal fun AnswerSlots(
 
 /**
  * Letter keys in rows of 5 (gap 8); keys keep their order for the whole slot (`GAME_RULES.md` §4). Not [enabled]
- * while input is blocked (wrong-answer reveal): the keys are disabled and drawn at 50 %.
+ * while input is blocked (wrong-answer reveal): the keys are disabled and drawn at 50 %. [onKeyPlaced] reports each
+ * key for the #2 flight.
  */
 @Composable
 internal fun KeyGrid(
@@ -125,6 +148,7 @@ internal fun KeyGrid(
     enabled: Boolean,
     onKey: (Int) -> Unit,
     modifier: Modifier = Modifier,
+    onKeyPlaced: (index: Int, coordinates: LayoutCoordinates) -> Unit = { _, _ -> },
 ) {
     Column(modifier, verticalArrangement = Arrangement.spacedBy(LetterKeyDefaults.GridGap)) {
         keys.indices.chunked(LetterKeyDefaults.COLUMNS).forEach { row ->
@@ -135,7 +159,7 @@ internal fun KeyGrid(
                         state = keys[index].state,
                         enabled = enabled,
                         onClick = { onKey(index) },
-                        modifier = Modifier.weight(1f),
+                        modifier = Modifier.weight(1f).onPlaced { onKeyPlaced(index, it) },
                     )
                 }
                 // A short last row keeps the 5-column grid (key counts are multiples of 5 today).
