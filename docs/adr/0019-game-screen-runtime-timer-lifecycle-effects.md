@@ -1,0 +1,97 @@
+# ADR 0019: Game screen runtime — timer, lifecycle, state/effects, animation, restore
+
+- Status: Accepted
+- Date: 2026-10-15
+
+## Context
+M4 wires `04-game` to the pure `GameEngine` (ADR 0002). Open points: who owns time, how the screen reacts to
+background/rotation/process death, how engine state and `EngineEffect`s reach Compose without recomposition storms,
+how motion (`motion.md`) is driven, where the event log lives and how a finished game is stored. `feature:game` is an
+empty module; `LetterWheel`/`WheelLetter`/`GameHud` already exist in `core:designsystem`.
+
+## Decision
+**1. Time.** The engine never reads a clock; `GameViewModel` owns it.
+- Monotonic time: inject `kotlin.time.TimeSource.WithComparableMarks` (prod `TimeSource.Monotonic`, tests
+  `testScheduler.timeSource`). Wall time: new domain interface `AppClock { fun nowMs(): Long; fun epochDay(atMs: Long):
+  Long }` (`core/domain/.../time`), impl `SystemAppClock` in `core:platform` (kotlin.time `Clock.System` +
+  kotlinx-datetime zone), `FakeAppClock` in `core:testing` (reused by SRS/daily tests in M5/M6). Used only for
+  `Start.timestampMs` and the session record.
+- Ticker: one `viewModelScope` coroutine, running only while `status == PLAYING && !isPaused && foreground`. Every
+  `TICK_INTERVAL = 100.milliseconds` (VM constant, technical, not a rule) it dispatches `Tick(elapsedMs)` measured
+  from the last mark; the mark advances by exactly the dispatched whole ms, so there is no drift. 100 ms keeps the
+  1200 ms reveal and the timer bar precise; the engine is interval-agnostic, so golden tests are unaffected.
+- `Start` is dispatched once the wheel is loaded and the screen is first RESUMED.
+- Lifecycle: `GameScreen` forwards `LifecycleEventEffect(ON_PAUSE/ON_RESUME)` (lifecycle-runtime-compose) as
+  `GameIntent.Background` / `GameIntent.Foreground`. Background ⇒ flush a final `Tick` for the time since the last
+  tick, stop the ticker, dispatch `Pause`. ON_PAUSE covers screen lock, incoming call, app switcher, iOS
+  `willResignActive`/Control Centre. Foreground ⇒ nothing is charged for the time away; the game **stays paused**
+  and the pause dialog is shown until the player taps resume (`Resume`, new mark). The joker sheet does not pause
+  (`GAME_RULES.md` §5).
+- Configuration change: the ViewModel survives. Android `MainActivity` declares `android:configChanges=
+  "orientation|screenSize|screenLayout|smallestScreenSize|keyboard|keyboardHidden|navigation|uiMode|density"` so
+  rotation/dark-mode toggles don't recreate the activity (and don't auto-pause). Any recreation that still happens
+  (locale, font scale) just shows the pause dialog.
+- Process death (Android only; iOS restarts at Splash): `SavedStateHandle` (Koin-injected; route args via
+  `toRoute<GameRoute>()`) holds one JSON string `SavedGame(seed, slots = (letter, rule, cardId?, initial state),
+  jokers, events)` encoded with kotlinx-serialization-json (same codec as golden tests), consecutive `Tick`s
+  coalesced into one. Restore = `CardRepository.cards(ids)` → rebuild the wheel → replay events (effects discarded)
+  → append `Pause`. If a card is missing (content changed) the game is abandoned and the player returns to level
+  select. Finished games are not saved. Coalescing requires a new engine test: `Tick(a)` then `Tick(b)` yields the
+  same state as `Tick(a + b)`.
+
+**2. State flow (MVI/UDF, ADR 0003).** `onIntent` → `GameSession.dispatch(event)` (internal class in `feature:game`:
+holds `GameEngine`, current `GameState` and the append-only event log of *applied* events; duel later wraps
+`MatchEngine` the same way) → `Transition` → (a) `MutableStateFlow<GameState>`, (b) effects mapped and sent.
+- `state: StateFlow<GameUiState>` = engine state mapped by a pure `GameUiMapper` (domain → `@Immutable` UI model,
+  `ImmutableList`s, string-resource keys not strings), `distinctUntilChanged` by equality, so pure ticks don't
+  re-emit it. `clock: StateFlow<GameClockUi>` (remaining ms, fraction, whole seconds, warning flag) is separate.
+- `effects: Flow<GameEffect>` = `Channel(BUFFERED).receiveAsFlow()`, collected while STARTED. Mapping per
+  `motion.md`: `LetterPlaced`→fly #2 + Light; `Correct`→pop #3 + Success + sound + `Speak(word)` if TTS on;
+  `Wrong`→shake #4 + Error; `Passed`→#5 + Soft; `ComboReached`→#7 + Heavy; `TimeWarning`→Tick haptic + "tik";
+  `JokerApplied`→inventory write; `GameOver`→record, then `NavigateToResult`. Haptics/sound play in the screen
+  through `LocalHaptics`/`LocalSoundPlayer` so they stay in sync with the animation; TTS through a `Speaker`
+  interface in `core:domain` (`feedback`), implemented in `core:platform` (M4 platform task).
+- Persistence: joker use is saved at once (`JokerRepository.save`, no refund by killing the app). On `GameOver` a
+  domain use case `FinishGame` (`core/domain/.../session`, pure orchestration over repository interfaces) builds the
+  `SessionResult` (`AppClock` for `endedAtMs`/`epochDay`), calls `SessionRepository.record` and the SRS update; it
+  runs once (guard flag) under `NonCancellable`. The event log is not stored in `user.db` in v1.0; it serves
+  restore and replay tests. The result route payload is decided in the Result task.
+
+**3. Animation.** Compose animation APIs only (`Animatable`, `updateTransition`, `animate*AsState`,
+`rememberInfiniteTransition`); durations/easings only from `LexiTheme.motion`. Rule: the **resting look always comes
+from state** (slot colours, current marker #6, centre letter, timer colour #8), so screenshots, restore and reduced
+motion are correct; **effects only trigger transient motion** (fly, pop, shake, burst, pass rotation) that starts and
+ends on that look. Reduced motion: transient transforms snap to their end values, colour/shape changes stay;
+haptics and sound still fire.
+- Wheel: keep the existing composable layout (26 `WheelLetter` chips placed on the circle in `LetterWheel`), not a
+  single Canvas: per-chip animations (#3 scale + ring, #5 rotate + morph) map to `graphicsLayer`, each letter keeps
+  accessibility semantics, and the component is already screenshot-verified. 26 small nodes are cheap.
+- Timer: only the HUD timer reads `clock`; the bar fill reads the fraction in `drawBehind`/`graphicsLayer` (draw
+  phase only); the counter text reads whole seconds (recomposes once per second); the #8 pulse is an infinite
+  transition keyed on the warning flag. The rest of the screen never reads time.
+
+**4. Tests.** `GameUiMapper` and `GameSession` (replay = live state) as plain unit tests; `GameViewModelTest` with
+`runTest`, `Dispatchers.setMain(StandardTestDispatcher)`, `testScheduler.timeSource`, fakes from `core:testing`
+(`FakeAppClock`, card/session/progress/joker repos) and Turbine: ticks, pause/background/foreground (no time charged),
+reveal, game over records exactly once, effect mapping, restore from `SavedStateHandle`. Roborazzi
+`GameScreenScreenshotTest` (stateless `GameScreen` with the design's sample state, `w390dp-h844dp-xhdpi` like
+`GameSampleScreenshotTest`) plus time-warning and wrong-reveal states. No new library: `feature:game` adds existing
+catalog entries only (Roborazzi plugin, robolectric/roborazzi for `androidHostTest`, kotlinx-serialization-json,
+an explicit `lifecycle-viewmodel-savedstate` alias of the pinned lifecycle version); `core:platform` adds
+kotlinx-datetime.
+
+## Alternatives considered
+- Engine-owned timer / `delay` in domain: breaks ADR 0002 determinism and golden replay.
+- 1 s ticks: reveal could last up to 2 s and the bar would jump; event-driven next-wake scheduling: more code, same result.
+- Auto-resume on foreground: the clock would run before the player is ready again.
+- Abandon on process death: loses rounds on low-memory devices although event sourcing makes restore cheap.
+- Saving the full `GameState` (cards, clues): larger Bundle, duplicates content.
+- Canvas wheel: re-implements text, shapes and semantics for no measurable gain.
+- Feedback played by the ViewModel: harder to keep in sync with animations; `GameEffect` stays testable either way.
+
+## Consequences
+- Background time is never charged; a paused screen is the single return point after interruptions.
+- New engine property test (tick additivity) and new domain types (`AppClock`, `Speaker`, `FinishGame`).
+- Orientation: the app is portrait-only on phones (all designs are portrait; Android `screenOrientation=portrait`,
+  iOS `UISupportedInterfaceOrientations` portrait). `configChanges` above still covers fold/multi-window resizes.
+- Open (M6): for the Daily wheel, whether an attempt counts at `Start` (otherwise killing the app could replay it).
