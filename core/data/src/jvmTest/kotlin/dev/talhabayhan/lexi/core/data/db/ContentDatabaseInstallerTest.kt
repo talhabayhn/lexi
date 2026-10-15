@@ -5,12 +5,14 @@ import dev.talhabayhan.lexi.core.data.testing.ContentFixture
 import dev.talhabayhan.lexi.core.data.testing.ContentFixture.FixtureCard
 import dev.talhabayhan.lexi.core.data.testing.FakeBundledContentDb
 import dev.talhabayhan.lexi.core.data.testing.JvmDatabaseFiles
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.test.runTest
 import java.io.File
 import kotlin.io.path.createTempDirectory
 import kotlin.test.AfterTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
 
 class ContentDatabaseInstallerTest {
     private val dir: File = createTempDirectory("lexi-installer-").toFile()
@@ -78,5 +80,18 @@ class ContentDatabaseInstallerTest {
         open(FakeBundledContentDb(1, v1))
 
         assertEquals(listOf("content.db"), dir.list()!!.sorted())
+    }
+
+    @Test
+    fun `cancellation while checking the installed copy is rethrown, not treated as a broken copy`() = runTest {
+        open(FakeBundledContentDb(1, v1)).close()
+        val cancelling = object : DatabaseFiles by files {
+            override fun openContentDb(): SqlDriver = throw CancellationException("cancelled")
+        }
+
+        assertFailsWith<CancellationException> {
+            ContentDatabaseInstaller(FakeBundledContentDb(2, v2), cancelling).open()
+        }
+        assertEquals(1, files.installs, "the copy is not replaced")
     }
 }

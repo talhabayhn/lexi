@@ -83,9 +83,20 @@ class UserDatabaseMigrationTest {
             } else {
                 driver.strings("SELECT name FROM pragma_index_info('$name') ORDER BY seqno")
             }
-            listOf(entry) + details.map { "  $it" }
+            listOf(entry, "  sql: ${normalizedSql(driver, name)}") + details.map { "  $it" }
         }
     }
+
+    /**
+     * `sqlite_master.sql` without comments and with normalized whitespace, so CHECK, AUTOINCREMENT, DEFAULT and
+     * other clauses that `pragma_table_info` doesn't show are compared too.
+     */
+    private fun normalizedSql(driver: SqlDriver, name: String): String =
+        driver.strings("SELECT sql FROM sqlite_master WHERE name = '$name'").single()
+            .lines().joinToString(" ") { it.substringBefore("--") }
+            .replace(Regex("""\s+"""), " ")
+            .replace(Regex("""\s*([(),])\s*"""), "$1")
+            .trim()
 
     private fun SqlDriver.strings(sql: String): List<String> = executeQuery(
         identifier = null,

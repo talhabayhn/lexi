@@ -22,6 +22,10 @@ import platform.Foundation.NSSearchPathForDirectoriesInDomains
 import platform.Foundation.NSUserDomainMask
 import platform.Foundation.create
 import platform.Foundation.writeToFile
+import platform.posix.O_RDONLY
+import platform.posix.close
+import platform.posix.fsync
+import platform.posix.open
 import platform.posix.rename
 
 /**
@@ -41,7 +45,8 @@ public class IosDatabaseFiles : DatabaseFiles {
         val target = contentPath()
         val temp = "$target.tmp"
         try {
-            check(bytes.toNSData().writeToFile(temp, atomically = false)) { "could not write $temp" }
+            check(bytes.toNSData().writeToFile(temp, atomically = true)) { "could not write $temp" }
+            syncToDisk(temp)
             SIDE_FILE_SUFFIXES.forEach { fileManager.removeItemAtPath(target + it, null) }
             check(rename(temp, target) == 0) { "could not rename $temp to $target" }
         } finally {
@@ -79,4 +84,16 @@ public class IosDatabaseFiles : DatabaseFiles {
 @OptIn(ExperimentalForeignApi::class, BetaInteropApi::class)
 private fun ByteArray.toNSData(): NSData = usePinned { pinned ->
     NSData.create(bytes = if (isEmpty()) null else pinned.addressOf(0), length = size.convert())
+}
+
+/** fsync, so the temp file's bytes are on disk before it is renamed over the old copy. */
+@OptIn(ExperimentalForeignApi::class)
+private fun syncToDisk(path: String) {
+    val fd = open(path, O_RDONLY)
+    check(fd >= 0) { "could not open $path for fsync" }
+    try {
+        check(fsync(fd) == 0) { "fsync failed for $path" }
+    } finally {
+        close(fd)
+    }
 }

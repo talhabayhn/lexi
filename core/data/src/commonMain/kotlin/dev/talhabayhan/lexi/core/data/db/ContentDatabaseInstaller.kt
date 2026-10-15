@@ -2,6 +2,7 @@ package dev.talhabayhan.lexi.core.data.db
 
 import app.cash.sqldelight.db.SqlDriver
 import dev.talhabayhan.lexi.core.data.content.db.ContentDatabase
+import kotlinx.coroutines.CancellationException
 
 /**
  * Makes sure app storage holds the bundled `content.db` and opens it read-only (`ARCHITECTURE.md` §6). The bundled
@@ -13,13 +14,22 @@ internal class ContentDatabaseInstaller(private val bundled: BundledContentDb, p
     suspend fun open(): SqlDriver {
         val bundledVersion = bundled.contentVersion()
         if (files.contentDbExists()) {
-            val driver = runCatching { files.openContentDb() }.getOrNull()
-            val installedVersion = driver?.let { runCatching { contentVersion(it) }.getOrNull() }
+            val driver = orNull { files.openContentDb() }
+            val installedVersion = driver?.let { orNull { contentVersion(it) } }
             if (driver != null && installedVersion == bundledVersion) return driver
             driver?.close()
         }
         files.installContentDb(bundled.readBytes())
         return files.openContentDb()
+    }
+
+    /** Null when [block] fails (unreadable copy); cancellation is never swallowed. */
+    private inline fun <T> orNull(block: () -> T): T? = try {
+        block()
+    } catch (e: CancellationException) {
+        throw e
+    } catch (@Suppress("TooGenericExceptionCaught") e: Exception) {
+        null
     }
 
     companion object {
