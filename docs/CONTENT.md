@@ -97,6 +97,10 @@ How the compiler applies them (`tools/content-compiler`, every error is `file:li
 - Clue leak: answers with ≥ 4 letters must not start any clue word (`zebra` → `Zebralar` fails); shorter answers
   must not appear as a whole word (`GO` vs `gol` is fine). Example: must contain the answer as whole words,
   case-insensitive, exactly as written (the Example joker blanks it).
+- Example leak: per level (base and exam-pack cards of that level together), `example_en` must not contain any
+  other card's answer as whole word(s) (case/diacritic-insensitive, multi-word answers as a phrase; `meet` in
+  `meeting` is fine, the card's own answer is ignored). Error is reported at the leaking card and names the
+  leaked answer and its card id. Answers of other levels are not checked.
 - Columns: `clue_tr` 1–60 chars, `example_en`/`example_tr` non-empty, `pos` from §2 (lowercase), `difficulty` 1–5,
   tags `a|b` (lowercase slug, `:` allowed), `category` exists and is not `mixed`; a category not listed for the
   card's level is a warning.

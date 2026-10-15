@@ -106,6 +106,48 @@ class ContentValidationTest {
     }
 
     @Test
+    fun `example must not contain another answer of the same level`() {
+        val result = withExtraA1(
+            cardRow(id = "a1-zebra", exampleEn = "The ZEBRA is not in the zoo."),
+            cardRow(id = "a1-zoo", answer = "ZOO", exampleEn = "A zoo is big. Zoology is fun."),
+        )
+
+        result.assertError("extra.csv", 2, "example_en of 'a1-zebra' contains the answer 'ZOO' of 'a1-zoo'")
+        result.assertNoErrorAt(3)
+    }
+
+    @Test
+    fun `a substring of another answer is not a leak`() {
+        val result = withExtraA1(
+            cardRow(id = "a1-zebra", exampleEn = "The zebra visits the zoology class."),
+            cardRow(id = "a1-zoo", answer = "ZOO", exampleEn = "A zoo is big."),
+        )
+
+        result.assertNoErrors()
+    }
+
+    @Test
+    fun `a multi-word answer leaks only as a whole phrase`() {
+        val result = withExtraA1(
+            cardRow(id = "a1-zebra", exampleEn = "The zebra met the zoo keeper."),
+            cardRow(id = "a1-zoo-keeper", answer = "ZOO KEEPER", exampleEn = "The Zoo  Keeper is here."),
+            cardRow(id = "a1-zip", answer = "ZIP", exampleEn = "A zip, a zoo and a keeper."),
+        )
+
+        result.assertError("extra.csv", 2, "contains the answer 'ZOO KEEPER' of 'a1-zoo-keeper'")
+        result.assertNoErrorAt(3)
+        result.assertNoErrorAt(4)
+    }
+
+    @Test
+    fun `answers of another level are not a leak`() {
+        content.writeCards("cards/B1/extra.csv", cardRow(id = "b1-zoo", answer = "ZOO", exampleEn = "A zoo."))
+        val result = withExtraA1(cardRow(id = "a1-zebra", exampleEn = "The zebra is at the zoo."))
+
+        result.assertNoErrors()
+    }
+
+    @Test
     fun `an answer may appear once per level`() {
         val result = withExtraA1(
             cardRow(id = "a1-apple-2", answer = "APPLE", letter = "P", rule = "CONTAINS", exampleEn = "An apple."),

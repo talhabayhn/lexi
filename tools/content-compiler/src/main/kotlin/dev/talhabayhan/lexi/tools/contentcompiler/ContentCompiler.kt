@@ -91,6 +91,7 @@ object ContentCompiler {
 
         val cards = baseCards + packCards
         checkDuplicates(cards, diagnostics)
+        checkExampleLeaks(cards, diagnostics)
         val packMembership = checkPackMembership(packs, packCardRows, packCards, seenIds, diagnostics)
         checkCoverage(baseCards, meta.shippedLevels, meta.smokeLevels, metaFile, diagnostics)
 
@@ -309,6 +310,27 @@ object ContentCompiler {
         }
         report(cards.groupBy { it.id }) { "duplicate id '${it.id}'" }
         report(cards.groupBy { it.level to it.answer }) { "duplicate answer '${it.answer}' in ${it.level.name}" }
+    }
+
+    /**
+     * `CONTENT.md` §2/§3: `example_en` must not contain another answer of the same level (base and pack cards
+     * alike) as whole word(s), or the Example joker leaks it. A card's own answer is ignored.
+     */
+    private fun checkExampleLeaks(cards: List<CardEntry>, diagnostics: Diagnostics) {
+        cards.groupBy { it.level }.values.forEach { levelCards ->
+            for (card in levelCards) {
+                for (other in levelCards) {
+                    if (other === card || other.answer == card.answer) continue
+                    if (TextMatch.containsWords(card.exampleEn, other.answer)) {
+                        diagnostics.error(
+                            card.source.file,
+                            card.source.line,
+                            "example_en of '${card.id}' contains the answer '${other.answer}' of '${other.id}'",
+                        )
+                    }
+                }
+            }
+        }
     }
 
     /** `CONTENT.md` §3: every letter of a shipped level has ≥ [MIN_CARDS_PER_LETTER] cards; base content only. */
