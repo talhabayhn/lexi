@@ -1,0 +1,12 @@
+id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
+a1-cheese,CHEESE,C,STARTS,noun,peynir,I eat bread and cheese for breakfast.,Kahvaltıda ekmek ve peynir yerim.,1,,food-drink
+a1-milk,MILK,M,STARTS,noun,süt,The baby drinks milk.,Bebek süt içiyor.,1,,food-drink
+a1-rice,RICE,R,STARTS,noun,"pirinç, pilav",I cook rice for dinner.,Akşam yemeğine pilav yaparım.,1,,food-drink
+a1-onion,ONION,O,STARTS,noun,soğan,Cut the onion into small pieces.,Soğanı küçük parçalar hâlinde doğra.,2,,food-drink
+a1-vegetable,VEGETABLE,V,STARTS,noun,sebze,A carrot is a vegetable.,Havuç bir sebzedir.,3,,food-drink
+a1-lunch,LUNCH,L,STARTS,noun,öğle yemeği,We have lunch at one o'clock.,Saat birde öğle yemeği yeriz.,1,,food-drink
+a1-chicken,CHICKEN,C,STARTS,noun,tavuk,We have chicken for dinner tonight.,Bu akşam yemekte tavuk var.,1,,food-drink
+a1-soup,SOUP,S,STARTS,noun,çorba,This soup is very hot.,Bu çorba çok sıcak.,1,,food-drink
+a1-dinner,DINNER,D,STARTS,noun,akşam yemeği,Dinner is ready!,Akşam yemeği hazır!,1,,food-drink
+a1-water,WATER,W,STARTS,noun,su,Can I have a glass of water?,Bir bardak su alabilir miyim?,1,,food-drink
+a1-drink,DRINK,D,STARTS,verb,içmek,I drink tea every morning.,Her sabah çay içerim.,1,,food-drink

@@ -1,0 +1,6 @@
+id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
+a1-airport,AIRPORT,A,STARTS,noun,havalimanı,We go to the airport by taxi.,Havalimanına taksiyle gideriz.,2,,city-transport
+a1-car,CAR,C,STARTS,noun,araba,My father drives a blue car.,Babam mavi bir araba kullanıyor.,1,,city-transport
+a1-hospital,HOSPITAL,H,STARTS,noun,hastane,The hospital is near our school.,Hastane okulumuzun yakınında.,2,,city-transport
+a1-island,ISLAND,I,STARTS,noun,ada,There are many trees on the island.,Adada çok ağaç var.,3,,city-transport
+a1-tree,TREE,T,STARTS,noun,ağaç,There is a big tree in the park.,Parkta büyük bir ağaç var.,1,,city-transport

@@ -1,0 +1,11 @@
+id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
+a1-aunt,AUNT,A,STARTS,noun,"teyze, hala",My aunt lives in Ankara.,Teyzem Ankara'da yaşıyor.,1,,family-people
+a1-brother,BROTHER,B,STARTS,noun,erkek kardeş,I have one brother.,Bir erkek kardeşim var.,1,,family-people
+a1-daughter,DAUGHTER,D,STARTS,noun,kız evlat,Their daughter is five years old.,Kızları beş yaşında.,3,,family-people
+a1-father,FATHER,F,STARTS,noun,baba,My father is a teacher.,Babam öğretmen.,1,,family-people
+a1-girl,GIRL,G,STARTS,noun,kız çocuğu,The girl has long hair.,Kızın uzun saçları var.,1,,family-people
+a1-uncle,UNCLE,U,STARTS,noun,"amca, dayı",My uncle has a big car.,Amcamın büyük bir arabası var.,1,,family-people
+a1-sister,SISTER,S,STARTS,noun,kız kardeş,My sister is ten.,Kız kardeşim on yaşında.,1,,family-people
+a1-young,YOUNG,Y,STARTS,adj,genç,My parents are young.,Annemle babam genç.,1,,family-people
+a1-old,OLD,O,STARTS,adj,yaşlı,My grandfather is very old.,Dedem çok yaşlı.,1,,family-people
+a1-queen,QUEEN,Q,STARTS,noun,kraliçe,The queen in the story is kind.,Hikâyedeki kraliçe nazik.,2,,family-people

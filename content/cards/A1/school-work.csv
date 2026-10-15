@@ -1,0 +1,7 @@
+id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
+a1-teacher,TEACHER,T,STARTS,noun,öğretmen,Our teacher is very kind.,Öğretmenimiz çok nazik.,1,,school-work
+a1-student,STUDENT,S,STARTS,noun,öğrenci,I am a student.,Ben öğrenciyim.,1,,school-work
+a1-library,LIBRARY,L,STARTS,noun,kütüphane,I read books in the library.,Kütüphanede kitap okurum.,2,,school-work
+a1-job,JOB,J,STARTS,noun,"iş, meslek",My mother has a new job.,Annemin yeni bir işi var.,1,,school-work
+a1-nurse,NURSE,N,STARTS,noun,hemşire,The nurse works at the hospital.,Hemşire hastanede çalışıyor.,2,,school-work
+a1-book,BOOK,B,STARTS,noun,kitap,Open your book at page ten.,Kitabınızın onuncu sayfasını açın.,1,,school-work

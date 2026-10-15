@@ -1,0 +1,14 @@
+id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
+a1-blue,BLUE,B,STARTS,adj,mavi,The sky is blue.,Gökyüzü mavi.,1,,colors-numbers
+a1-pink,PINK,P,STARTS,adj,pembe,She has a pink bag.,Pembe bir çantası var.,1,,colors-numbers
+a1-purple,PURPLE,P,STARTS,adj,mor,I like purple flowers.,Mor çiçekleri severim.,2,,colors-numbers
+a1-red,RED,R,STARTS,adj,kırmızı,My car is red.,Arabam kırmızı.,1,,colors-numbers
+a1-white,WHITE,W,STARTS,adj,beyaz,Snow is white.,Kar beyazdır.,1,,colors-numbers
+a1-black,BLACK,K,CONTAINS,adj,siyah,My cat is black.,Kedim siyah.,1,,colors-numbers
+a1-two,TWO,T,STARTS,noun,iki,I have two brothers.,İki erkek kardeşim var.,1,,colors-numbers
+a1-five,FIVE,F,STARTS,noun,beş,We have five apples.,Beş elmamız var.,1,,colors-numbers
+a1-six,SIX,X,CONTAINS,noun,altı,The shop opens at six.,Dükkân altıda açılıyor.,1,,colors-numbers
+a1-seven,SEVEN,S,STARTS,noun,yedi,A week has seven days.,Bir haftada yedi gün vardır.,1,,colors-numbers
+a1-eight,EIGHT,E,STARTS,noun,sekiz,I get up at eight.,Saat sekizde kalkarım.,2,,colors-numbers
+a1-nine,NINE,N,STARTS,noun,dokuz,My brother is nine years old.,Erkek kardeşim dokuz yaşında.,1,,colors-numbers
+a1-zero,ZERO,Z,STARTS,noun,sıfır,My phone number starts with zero.,Telefon numaram sıfırla başlıyor.,1,,colors-numbers
