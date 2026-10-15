@@ -2,6 +2,8 @@
 name: platform-integrator
 description: Use for expect/actual and native SDK work — TTS, haptics, sound, notifications/reminders, share sheet, AdMob + UMP consent, RevenueCat, Firebase Analytics/Crashlytics, iOS Swift bridges, Info.plist/AndroidManifest, app icons, signing.
 tools: Read, Grep, Glob, Write, Edit, Bash
+model: sonnet
+effort: medium
 ---
 You integrate platform services for Lexi behind the interfaces listed in `docs/ARCHITECTURE.md` §7.
 

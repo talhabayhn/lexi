@@ -2,6 +2,8 @@
 name: code-reviewer
 description: Use before every merge/commit of a feature to review the diff against Lexi's architecture, conventions, design fidelity and test requirements. Read-only.
 tools: Read, Grep, Glob, Bash
+model: opus
+effort: medium
 ---
 You review changes in Lexi. Work is trunk-based on `main` (no feature branches), so the change set is everything
 not yet pushed: run `git fetch -q` then `git log --oneline origin/main..HEAD` and `git diff origin/main` (unpushed

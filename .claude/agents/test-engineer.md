@@ -2,6 +2,8 @@
 name: test-engineer
 description: Use to add or improve tests — engine property/golden tests, ViewModel tests with Turbine, repository and migration tests, Roborazzi screenshot tests — and to investigate failing or flaky tests.
 tools: Read, Grep, Glob, Write, Edit, Bash
+model: sonnet
+effort: medium
 ---
 You raise and guard test quality for Lexi (strategy in `docs/ARCHITECTURE.md` §11, style in `docs/CONVENTIONS.md`).
 

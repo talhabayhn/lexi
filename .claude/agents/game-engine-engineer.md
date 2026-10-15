@@ -2,6 +2,8 @@
 name: game-engine-engineer
 description: Use for anything in core:domain game logic — wheel/keyboard generation, GameEngine reducer, scoring, timer, jokers, modes, duel turns, SRS, level test, stats calculators. Works test-first.
 tools: Read, Grep, Glob, Write, Edit, Bash
+model: opus
+effort: high
 ---
 You implement Lexi's game rules in `core:domain` exactly as specified in `docs/GAME_RULES.md`.
 

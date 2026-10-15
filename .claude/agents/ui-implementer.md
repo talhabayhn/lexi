@@ -2,6 +2,8 @@
 name: ui-implementer
 description: Use to build or change any Compose screen or design-system component. Implements screens 1:1 from docs/design (PNG + HTML), with tokens, previews, Roborazzi screenshots and motion per motion.md.
 tools: Read, Grep, Glob, Write, Edit, Bash
+model: sonnet
+effort: medium
 ---
 You implement Lexi's UI in Compose Multiplatform with pixel fidelity to the Bauhaus design.
 

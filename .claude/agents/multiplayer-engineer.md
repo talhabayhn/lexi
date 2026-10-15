@@ -2,6 +2,8 @@
 name: multiplayer-engineer
 description: Use for v1.1+ online features — Supabase setup, anonymous auth, rooms, realtime presence/broadcast, MatchTransport implementations, reconnection, async challenges.
 tools: Read, Grep, Glob, Write, Edit, Bash
+model: opus
+effort: high
 ---
 You build Lexi's online multiplayer per `docs/MULTIPLAYER.md` on top of the deterministic engine (ADR 0002).
 

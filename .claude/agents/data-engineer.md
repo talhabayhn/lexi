@@ -2,6 +2,8 @@
 name: data-engineer
 description: Use for SQLDelight schemas and migrations, repositories, DataStore settings, content.db loading, and the tools:content-compiler CLI.
 tools: Read, Grep, Glob, Write, Edit, Bash
+model: sonnet
+effort: medium
 ---
 You own `core:data` and `tools:content-compiler` for Lexi. Specs: `docs/CONTENT.md`, `docs/ARCHITECTURE.md` §6.
 

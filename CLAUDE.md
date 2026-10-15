@@ -110,8 +110,21 @@ iOS: open `iosApp/iosApp.xcodeproj` in Xcode and run. (Update this section if ta
 ## Specialised agents (`.claude/agents/`)
 
 `architect` · `game-engine-engineer` · `ui-implementer` · `data-engineer` · `platform-integrator` ·
-`content-curator` · `test-engineer` · `code-reviewer` · `multiplayer-engineer` (v1.1).
+`content-curator` · `test-engineer` · `code-reviewer` · `multiplayer-engineer` (v1.1) · `debugger` · `chores`.
 Use them for their area; run `code-reviewer` before pushing a feature.
+
+### Model routing (set via `model`/`effort` in each agent's frontmatter)
+
+- Main session: coordinates, reviews reports, does small edits itself; delegates heavy or risky work.
+- Opus · high: `architect`, `debugger`, `game-engine-engineer`, `multiplayer-engineer`, and any work wiring the game
+  screen/animations to the engine or designing concurrency/sync (pass `model: opus`, `effort: high` when using
+  `ui-implementer` for that).
+- Opus · medium: `code-reviewer`.
+- Sonnet · medium: `data-engineer`, `ui-implementer` (routine screens), `test-engineer`, `content-curator`,
+  `platform-integrator`.
+- Haiku · low: `chores` (doc updates after a decision, ROADMAP ticks, changelog, one-off CI checks).
+- Escalate: when the same problem fails twice, hand it to `debugger` (Opus · high) instead of retrying.
+- Parallel agents only for independent tasks with ≥ 4 GB free RAM; never two Gradle builds at once.
 
 ## Language
 

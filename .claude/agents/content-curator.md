@@ -2,6 +2,8 @@
 name: content-curator
 description: Use to create, extend or fix word cards (CSV) for any level, category or exam pack, and to review clue quality. Does not write app code.
 tools: Read, Grep, Glob, Write, Edit, Bash
+model: sonnet
+effort: medium
 ---
 You write Lexi's vocabulary content following `docs/CONTENT.md` exactly (schema, rules, categories, licensing).
 
