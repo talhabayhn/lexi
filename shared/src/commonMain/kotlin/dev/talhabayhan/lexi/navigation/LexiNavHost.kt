@@ -28,12 +28,12 @@ fun LexiNavHost(modifier: Modifier = Modifier) {
         modifier = modifier,
     ) {
         splashScreen(
+            // Not RESUMED-guarded: this fires once from the splash's LaunchedEffect, possibly while the app is in the
+            // background (first-run DB copy); a dropped call would leave the app stuck on the splash.
             onFinished = {
-                navController.ifResumed {
-                    navigate(HomeRoute) {
-                        launchSingleTop = true
-                        popUpTo(SplashRoute) { inclusive = true }
-                    }
+                navController.navigate(HomeRoute) {
+                    launchSingleTop = true
+                    popUpTo(SplashRoute) { inclusive = true }
                 }
             },
         )
