@@ -13,11 +13,26 @@ class CsvRow(val file: Path, val line: Int, private val values: Map<String, Stri
 
 /** Strict UTF-8 file reading and header-checked CSV tables, reporting into [Diagnostics]. */
 object CsvFiles {
-    /** UTF-8 bytes read as Latin-1, e.g. `ı` (C4 B1) shows up as `Ä±`. */
-    private val DOUBLE_ENCODED = Regex("""[\xC2-\xC5][\x80-\xBF]""")
-    private val CONTROL = Regex("""[\p{Cc}&&[^\r\n\t]]|\x{FFFD}""")
+    /**
+     * UTF-8 text decoded as Latin-1 or cp1252 and saved again: the lead byte C2-C5 becomes `Â`-`Å` and the
+     * continuation byte 80-BF a Latin-1 char or its cp1252 mapping (`ı` -> `Ä±`, `ş` -> `ÅŸ`, `ğ` -> `ÄŸ`).
+     */
+    private val MOJIBAKE_LEADS: Set<Char> = (0xC2..0xC5).map { Char(it) }.toSet()
+    private val MOJIBAKE_CONTINUATIONS: Set<Char> = (0x80..0xBF).flatMap { byte ->
+        listOf(Char(byte), String(byteArrayOf(byte.toByte()), charset("windows-1252")).single())
+    }.toSet()
+    private val REPLACEMENT_CHAR = Char(0xFFFD)
 
-    /** Decodes [file] as strict UTF-8; reports the line of the first malformed byte and returns null. */
+    private fun isDoubleEncoded(value: String): Boolean =
+        value.zipWithNext().any { (lead, next) -> lead in MOJIBAKE_LEADS && next in MOJIBAKE_CONTINUATIONS }
+
+    /** Tabs, other control characters and U+FFFD; line breaks are reported separately. */
+    private fun hasControlChar(value: String): Boolean =
+        value.any { (it.isISOControl() && it != '\n' && it != '\r') || it == REPLACEMENT_CHAR }
+
+    private val BOM = Char(0xFEFF)
+
+    /** Decodes [file] as strict UTF-8 and drops a leading BOM; reports the line of the first malformed byte and returns null. */
     fun readUtf8(file: Path, diagnostics: Diagnostics): String? {
         val bytes = Files.readAllBytes(file)
         val decoder = Charsets.UTF_8.newDecoder()
@@ -32,7 +47,7 @@ object CsvFiles {
             return null
         }
         decoder.flush(output)
-        return output.flip().toString()
+        return output.flip().toString().removePrefix(BOM.toString())
     }
 
     /**
@@ -81,10 +96,10 @@ object CsvFiles {
     private fun checkValue(file: Path, line: Int, column: String, value: String, diagnostics: Diagnostics) {
         if (value != value.trim()) diagnostics.error(file, line, "$column has leading or trailing whitespace")
         if ('\n' in value || '\r' in value) diagnostics.error(file, line, "$column must be a single line")
-        if (CONTROL.containsMatchIn(value.replace("\n", "").replace("\r", ""))) {
-            diagnostics.error(file, line, "$column contains control or replacement characters")
+        if (hasControlChar(value)) {
+            diagnostics.error(file, line, "$column contains a tab or control character (or U+FFFD)")
         }
-        if (DOUBLE_ENCODED.containsMatchIn(value)) {
+        if (isDoubleEncoded(value)) {
             diagnostics.error(file, line, "$column looks double-encoded (e.g. 'Ä±' for 'ı'); re-save the file as UTF-8")
         }
     }

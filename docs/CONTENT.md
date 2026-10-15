@@ -63,9 +63,9 @@ Level comes from the folder name (`A1`, `A2`, `B1`, `B2`, `C1`, `NAT`). See `con
 - profanity/blocklist check; trailing spaces; Turkish characters valid UTF-8.
 
 How the compiler applies them (`tools/content-compiler`, every error is `file:line`):
-- Files: strict UTF-8 (BOM allowed), RFC 4180 CSV; header must have exactly the schema columns (any order);
-  every row the same width; no leading/trailing whitespace, line breaks, control chars or double-encoded UTF-8
-  (`Ä±` for `ı`) in any value.
+- Files: strict UTF-8 (a BOM is allowed in every file), RFC 4180 CSV; header must have exactly the schema columns
+  (any order); every row the same width; no leading/trailing whitespace, line breaks, tabs/control chars or
+  double-encoded UTF-8 (Latin-1 or cp1252 mojibake such as `Ä±` for `ı`, `ÅŸ` for `ş`) in any value.
 - `id`: lowercase slug starting with `<level>-` (error); not `<level>-<answer>[-n]` is a warning (ids never change
   when an answer is corrected). Unique across all levels and packs.
 - `answer`/`letter`/`rule`: the same `AnswerRules` and `LetterRule` as the app (`core:domain`).

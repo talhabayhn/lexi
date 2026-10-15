@@ -143,6 +143,37 @@ class ContentValidationTest {
     }
 
     @Test
+    fun `cp1252 mojibake of every Turkish letter is rejected`() {
+        val cp1252 = charset("windows-1252")
+        val letters = "şğıİçöüŞĞÇÖÜ"
+        val rows = letters.mapIndexed { i, letter ->
+            val mojibake = String(letter.toString().toByteArray(Charsets.UTF_8), cp1252)
+            cardRow(id = "a1-z$i", answer = "Z" + "ABCDEFGHIJKLM"[i] + "Q", exampleEn = "x Z${"ABCDEFGHIJKLM"[i]}Q x")
+                .replace("çizgili hayvan", "hayvan$mojibake")
+        }
+        val result = withExtraA1(*rows.toTypedArray())
+
+        letters.indices.forEach { i -> result.assertError("extra.csv", i + 2, "double-encoded") }
+    }
+
+    @Test
+    fun `tabs inside values are rejected`() {
+        withExtraA1(cardRow(clueTr = "çizgili${Char(9)}hayvan"))
+            .assertError("extra.csv", 2, "clue_tr contains a tab or control character")
+    }
+
+    @Test
+    fun `meta json and blocklist may start with a UTF-8 BOM`() {
+        val bom = byteArrayOf(0xEF.toByte(), 0xBB.toByte(), 0xBF.toByte())
+        content.resolve("meta.json").writeBytes(bom + """{ "contentVersion": 7 }""".toByteArray())
+        content.resolve("blocklist.txt").writeBytes(bom + "[en]\nbadword\n".toByteArray())
+
+        validate().assertNoErrors()
+        withExtraA1(cardRow(exampleEn = "The zebra said badword."))
+            .assertError("extra.csv", 2, "blocklisted term 'badword'")
+    }
+
+    @Test
     fun `column values are checked`() {
         val result = withExtraA1(
             cardRow(id = "a1-zebra", clueTr = "x".repeat(61)),
