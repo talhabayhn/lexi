@@ -6,6 +6,7 @@ import android.media.SoundPool
 import dev.talhabayhan.lexi.core.domain.feedback.SoundEffect
 import dev.talhabayhan.lexi.core.domain.feedback.SoundPlayer
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import java.io.File
 import java.util.concurrent.ConcurrentHashMap
@@ -16,7 +17,7 @@ import java.util.concurrent.ConcurrentHashMap
  */
 public class AndroidSoundPlayer(
     context: Context,
-    scope: CoroutineScope,
+    private val scope: CoroutineScope,
     private val readAsset: suspend (SoundEffect) -> ByteArray,
 ) : SoundPlayer,
     AutoCloseable {
@@ -49,6 +50,7 @@ public class AndroidSoundPlayer(
     }
 
     override fun close() {
+        scope.cancel()
         pool.release()
     }
 

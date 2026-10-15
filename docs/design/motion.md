@@ -41,15 +41,18 @@ Splash timing in app (scale the demo keyframe percentages from 3.6 s to 1.2 s; k
 bg 0–216 ms, L 48–312 ms, E 120–384 ms, X 192–480 ms, I 264–552 ms, tagline 576–696 ms, hold to 1200 ms.
 
 ## Haptic map (`HapticKind`)
+Android uses the device `Vibrator` (no View dependency); API 29+ uses predefined effects, API 26-28 a waveform
+(`timing ms / amplitude`).
 | Kind | Android | iOS |
 |---|---|---|
-| `Light` | `HapticFeedbackConstants.KEYBOARD_TAP` / `EFFECT_TICK` | `UIImpactFeedbackGenerator(.light)` |
-| `Soft` | `EFFECT_CLICK` (low amplitude) | `UIImpactFeedbackGenerator(.soft)` |
-| `Heavy` | `EFFECT_HEAVY_CLICK` | `UIImpactFeedbackGenerator(.heavy)` |
-| `Success` | `CONFIRM` (API 30+) / double tick | `UINotificationFeedbackGenerator(.success)` |
-| `Error` | `REJECT` (API 30+) / long tick | `UINotificationFeedbackGenerator(.error)` |
-| `Tick` | `CLOCK_TICK` | `UISelectionFeedbackGenerator` |
+| `Light` | `EFFECT_TICK` (29+) / one-shot 10 ms, 60 | `UIImpactFeedbackGenerator(.light)` |
+| `Soft` | `EFFECT_CLICK` (29+) / one-shot 15 ms, 40 | `UIImpactFeedbackGenerator(.soft)` |
+| `Heavy` | `EFFECT_HEAVY_CLICK` (29+) / one-shot 40 ms, 255 | `UIImpactFeedbackGenerator(.heavy)` |
+| `Success` | `EFFECT_DOUBLE_CLICK` (29+) / double tick: 15 ms, 60 ms gap, 25 ms | `UINotificationFeedbackGenerator(.success)` |
+| `Error` | long tick: one-shot 80 ms, 220 (all levels) | `UINotificationFeedbackGenerator(.error)` |
+| `Tick` | very short one-shot 8 ms, 40 (all levels) | `UISelectionFeedbackGenerator` |
 Respect the in-app "Titreşim" setting.
+iOS TTS shares the app's ambient audio session, so the silent switch also mutes pronunciation (accepted behaviour).
 
 ## Sound assets (generated placeholders)
 `tap`, `place`, `correct` (two rising notes), `wrong` (bzzt), `pass` (vınn), `combo`, `tick`, `win`, `lose` as mono

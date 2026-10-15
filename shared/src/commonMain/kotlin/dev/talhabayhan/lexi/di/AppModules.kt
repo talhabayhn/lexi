@@ -17,6 +17,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import org.koin.core.module.Module
 import org.koin.dsl.module
+import org.koin.dsl.onClose
 
 /**
  * App-level bindings: game tunables (Remote Config overrides later), the bundled content.db, the wall clock, the
@@ -28,7 +29,7 @@ internal val appCoreModule: Module = module {
     single<AppClock> { SystemAppClock() }
     factory { FinishGame(sessions = get(), progress = get(), clock = get(), config = get()) }
     // Haptics, SoundPlayer and Speaker are bound per platform (rememberPlatformModule) on top of this snapshot.
-    single { LiveSettings(get(), CoroutineScope(SupervisorJob() + Dispatchers.Default)) }
+    single { LiveSettings(get(), CoroutineScope(SupervisorJob() + Dispatchers.Default)) } onClose { it?.close() }
 }
 
 /**

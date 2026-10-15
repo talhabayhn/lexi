@@ -22,13 +22,19 @@ internal fun vibrationSpecFor(kind: HapticKind, sdk: Int): VibrationSpec {
         HapticKind.Light ->
             if (predefined) VibrationSpec(VibrationEffect.EFFECT_TICK) else oneShot(10, 60)
 
-        HapticKind.Soft -> oneShot(15, 40)
+        HapticKind.Soft ->
+            if (predefined) VibrationSpec(VibrationEffect.EFFECT_CLICK) else oneShot(15, 40)
 
         HapticKind.Heavy ->
             if (predefined) VibrationSpec(VibrationEffect.EFFECT_HEAVY_CLICK) else oneShot(40, 255)
 
         // Double tick.
-        HapticKind.Success -> VibrationSpec(null, longArrayOf(0, 15, 60, 25), intArrayOf(0, 120, 0, 200))
+        HapticKind.Success ->
+            if (predefined) {
+                VibrationSpec(VibrationEffect.EFFECT_DOUBLE_CLICK)
+            } else {
+                VibrationSpec(null, longArrayOf(0, 15, 60, 25), intArrayOf(0, 120, 0, 200))
+            }
 
         // Long tick.
         HapticKind.Error -> VibrationSpec(null, longArrayOf(0, 80), intArrayOf(0, 220))
@@ -53,7 +59,7 @@ public class AndroidHaptics(context: Context) : Haptics {
         val vibrator = vibrator?.takeIf { it.hasVibrator() } ?: return
         val spec = vibrationSpecFor(kind, Build.VERSION.SDK_INT)
         val predefined = spec.predefinedEffect
-        val effect = if (predefined != null) {
+        val effect = if (predefined != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             VibrationEffect.createPredefined(predefined)
         } else {
             VibrationEffect.createWaveform(spec.timings, spec.amplitudes, NO_REPEAT)

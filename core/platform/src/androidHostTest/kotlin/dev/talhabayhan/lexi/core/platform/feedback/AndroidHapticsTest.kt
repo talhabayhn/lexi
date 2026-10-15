@@ -11,6 +11,11 @@ class AndroidHapticsTest {
     fun apiTwentyNineUsesPredefinedEffects() {
         assertEquals(VibrationEffect.EFFECT_TICK, vibrationSpecFor(HapticKind.Light, 29).predefinedEffect)
         assertEquals(VibrationEffect.EFFECT_HEAVY_CLICK, vibrationSpecFor(HapticKind.Heavy, 36).predefinedEffect)
+        assertEquals(VibrationEffect.EFFECT_CLICK, vibrationSpecFor(HapticKind.Soft, 29).predefinedEffect)
+        assertEquals(VibrationEffect.EFFECT_DOUBLE_CLICK, vibrationSpecFor(HapticKind.Success, 30).predefinedEffect)
+        for (kind in listOf(HapticKind.Error, HapticKind.Tick)) {
+            assertNull(vibrationSpecFor(kind, 34).predefinedEffect, "$kind")
+        }
     }
 
     @Test

@@ -57,7 +57,7 @@ Module mapping (replaces the earlier `composeApp`): `androidApp` = thin Android 
 - [x] Pause dialog (design debt; built from `16-components`, needs design)
 - [x] Result (`06-result`) incl. "Tekrar edilecekler" → SRS
 - [ ] Motion catalogue #1–#8, haptics & sounds (`motion.md`)
-- [ ] Platform: Speaker (TTS), Haptics, SoundPlayer
+- [x] Platform: Speaker (TTS), Haptics, SoundPlayer
 **Done when:** a full A1 classic game is playable start→result on both platforms, screenshots match designs.
 
 ## M5 — Learning & progress

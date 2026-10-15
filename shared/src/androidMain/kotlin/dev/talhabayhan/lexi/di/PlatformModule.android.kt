@@ -38,7 +38,7 @@ internal fun androidPlatformModule(context: Context): Module = module {
         val settings = get<LiveSettings>()
         val raw = AndroidSoundPlayer(context, CoroutineScope(SupervisorJob() + Dispatchers.Default), ::readSoundAsset)
         GatedSoundPlayer(raw) { settings.current.soundEffects }
-    }
+    } onClose { (it as? AutoCloseable)?.close() }
     single<Speaker> {
         val settings = get<LiveSettings>()
         AndroidSpeaker(context) { settings.current.accent }

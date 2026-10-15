@@ -13,9 +13,16 @@ public class GatedHaptics(private val delegate: Haptics, private val enabled: ()
 }
 
 /** [SoundPlayer] that does nothing while the "Ses efektleri" setting is off. */
-public class GatedSoundPlayer(private val delegate: SoundPlayer, private val enabled: () -> Boolean) : SoundPlayer {
+public class GatedSoundPlayer(private val delegate: SoundPlayer, private val enabled: () -> Boolean) :
+    SoundPlayer,
+    AutoCloseable {
     override fun play(effect: SoundEffect) {
         if (enabled()) delegate.play(effect)
+    }
+
+    /** Releases the delegate's resources when it holds any. */
+    override fun close() {
+        (delegate as? AutoCloseable)?.close()
     }
 }
 
