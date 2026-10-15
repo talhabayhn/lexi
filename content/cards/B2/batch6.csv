@@ -1,0 +1,69 @@
+id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
+b2-radical,RADICAL,R,STARTS,adj,köklü ve ani değişiklik getiren,The city plans radical changes to its traffic system.,Şehir trafik sisteminde köklü değişiklikler planlıyor.,4,,business
+b2-rebel,REBEL,R,STARTS,noun,"düzene karşı gelen kişi, asi",He was a rebel in his teenage years.,Gençliğinde bir asiydi.,4,,daily-life
+b2-recall,RECALL,R,STARTS,verb,(resmî) akla getirmek; kusurlu ürünü geri çağırmak,I cannot recall his name.,Adını hatırlayamıyorum.,4,,daily-life
+b2-recruit,RECRUIT,R,STARTS,verb,işe veya orduya eleman almak,The company wants to recruit young graduates.,Şirket genç mezunları işe almak istiyor.,4,,business
+b2-regard,REGARD,R,STARTS,verb,birine veya bir şeye belli gözle bakmak,Many people regard him as a hero.,Birçok insan onu kahraman olarak görüyor.,4,,daily-life
+b2-register,REGISTER,R,STARTS,verb,bir listeye ya da kursa kaydolmak,You must register before the course starts.,Kurs başlamadan kaydolmalısın.,3,,school-work
+b2-relevant,RELEVANT,R,STARTS,adj,konuyla ilgili ve uygun,Only write relevant information.,Sadece konuyla ilgili bilgi yaz.,4,,school-work
+b2-remarkable,REMARKABLE,R,STARTS,adj,dikkat çekecek kadar olağanüstü,She made remarkable progress.,Dikkat çekici bir ilerleme kaydetti.,4,,school-work
+b2-remote,REMOTE,R,STARTS,adj,"uzak, ıssız",They live in a remote village.,Uzak bir köyde yaşıyorlar.,3,,travel
+b2-renew,RENEW,R,STARTS,verb,süresi dolan bir şeyi yenilemek,I need to renew my passport.,Pasaportumu yenilemem gerekiyor.,3,,travel
+b2-reputation,REPUTATION,R,STARTS,noun,insanların bir kişi veya yer hakkındaki genel kanısı,The restaurant has a good reputation.,Restoranın iyi bir ünü var.,4,,food-drink
+b2-resemble,RESEMBLE,R,STARTS,verb,birine ya da bir şeye benzemek,She seems to resemble her mother.,Annesine benzer gibi görünüyor.,4,,daily-life
+b2-resign,RESIGN,R,STARTS,verb,işinden kendi isteğiyle ayrılmak,The manager decided to resign.,Müdür istifa etmeye karar verdi.,4,,business
+b2-resolve,RESOLVE,R,STARTS,verb,bir sorunu çözüme kavuşturmak,We must resolve this problem today.,Bu sorunu bugün çözmeliyiz.,4,,business
+b2-resource,RESOURCE,R,STARTS,noun,bir işte kullanılan kaynak,Water is a valuable resource.,Su değerli bir kaynaktır.,4,,school-work
+b2-restore,RESTORE,R,STARTS,verb,eski haline getirmek,They restore old paintings.,Eski tabloları restore ediyorlar.,4,,travel
+b2-restrict,RESTRICT,R,STARTS,verb,"sınırlamak, kısıtlamak",The law will restrict the use of plastic.,Yasa plastik kullanımını kısıtlayacak.,4,,business
+b2-retain,RETAIN,R,STARTS,verb,"bir şeyi elinde tutmak, korumak",It is hard to retain so much information.,Bu kadar çok bilgiyi akılda tutmak zor.,4,,school-work
+b2-reveal,REVEAL,R,STARTS,verb,gizli bir şeyi açığa çıkarmak,The results will reveal the truth.,Sonuçlar gerçeği ortaya çıkaracak.,4,,school-work
+b2-revenue,REVENUE,R,STARTS,noun,bir şirketin geliri,The company's revenue grew by ten percent.,Şirketin geliri yüzde on arttı.,4,,business
+b2-reverse,REVERSE,R,STARTS,verb,yönünü veya sırasını ters çevirmek,The car began to reverse slowly.,Araba yavaşça geri gitmeye başladı.,3,,daily-life
+b2-rigid,RIGID,R,STARTS,adj,"esnemeyen, katı",The rules at this school are rigid.,Bu okulun kuralları katı.,4,,school-work
+b2-run-into,RUN INTO,R,STARTS,phrasal,birine tesadüfen rastlamak,I might run into an old friend.,Eski bir arkadaşa rastlayabilirim.,4,,phrasal-verbs
+b2-rule-out,RULE OUT,R,STARTS,phrasal,bir ihtimali dışlamak,Doctors cannot rule out an infection.,Doktorlar enfeksiyon olasılığını dışlayamıyor.,4,,phrasal-verbs
+b2-round-up,ROUND UP,R,STARTS,phrasal,bir araya toplamak veya yuvarlamak,The teacher will round up the students.,Öğretmen öğrencileri toplayacak.,4,,phrasal-verbs
+b2-rip-off,RIP OFF,R,STARTS,phrasal,müşteriyi haksız yere kazıklamak,Some shops rip off tourists.,Bazı dükkânlar turistleri kazıklar.,4,,phrasal-verbs
+b2-rain-check,RAIN CHECK,R,STARTS,idiom,daveti sonraya erteleme isteği,Can I take a rain check on dinner?,Akşam yemeğini sonraya erteleyebilir miyiz?,4,,idioms
+b2-ring-a-bell,RING A BELL,R,STARTS,idiom,"tanıdık gelmek, çağrışım yapmak",Does that name ring a bell?,Bu isim tanıdık geliyor mu?,4,,idioms
+b2-rule-of-thumb,RULE OF THUMB,R,STARTS,idiom,"pratik, kabaca doğru kural","As a rule of thumb, drink two litres of water.",Genel bir kural olarak iki litre su iç.,4,,idioms
+b2-scale,SCALE,S,STARTS,noun,ölçek; terazi,The map has a scale of one to a thousand.,Haritanın ölçeği binde bir.,3,,school-work
+b2-scarce,SCARCE,S,STARTS,adj,"az bulunan, kıt",Water is scarce in the desert.,Çölde su kıt.,4,,daily-life
+b2-scenario,SCENARIO,S,STARTS,noun,olabilecek durum; film senaryosu,"In the worst-case scenario, we will cancel the trip.",En kötü senaryoda geziyi iptal ederiz.,4,,daily-life
+b2-scheme,SCHEME,S,STARTS,noun,kurumun ya da devletin yürüttüğü resmî program,The city started a new recycling scheme.,Şehir yeni bir geri dönüşüm programı başlattı.,4,,business
+b2-scope,SCOPE,S,STARTS,noun,bir konunun kapsamı,The scope of the project is wide.,Projenin kapsamı geniş.,4,,business
+b2-secure,SECURE,S,STARTS,adj,sağlam kilitli ya da sıkıca bağlanmış,Make sure the door is secure.,Kapının sağlam kilitli olduğundan emin ol.,4,,daily-life
+b2-seek,SEEK,S,STARTS,verb,(resmî) yardım ya da tavsiye talep etmek,He decided to seek help.,Yardım istemeye karar verdi.,4,,daily-life
+b2-selection,SELECTION,S,STARTS,noun,seçilmiş çeşitler topluluğu,The shop has a wide selection of books.,Mağazada geniş bir kitap seçkisi var.,3,,business
+b2-sensation,SENSATION,S,STARTS,noun,bedende hissedilen duygu; büyük heyecan,She felt a strange sensation in her arm.,Kolunda garip bir his duydu.,4,,body-health
+b2-setting,SETTING,S,STARTS,noun,bir olayın geçtiği yer ve ortam,The story has a beautiful setting.,Hikâyenin güzel bir mekânı var.,4,,film-tv
+b2-severe,SEVERE,S,STARTS,adj,çok ciddi ve şiddetli,A severe storm hit the coast.,Kıyıya şiddetli bir fırtına vurdu.,4,,daily-life
+b2-shift,SHIFT,S,STARTS,noun,vardiya; kayma,He works the night shift.,Gece vardiyasında çalışıyor.,3,,business
+b2-significant,SIGNIFICANT,S,STARTS,adj,"büyük önemi olan, kayda değer",There was a significant increase in sales.,Satışlarda kayda değer bir artış oldu.,4,,business
+b2-sophisticated,SOPHISTICATED,S,STARTS,adj,gelişmiş ve ince ayrıntılı,The phone has sophisticated technology.,Telefon gelişmiş bir teknolojiye sahip.,4,,technology
+b2-specific,SPECIFIC,S,STARTS,adj,"belirli, ayrıntılı","Be more specific, please.",Lütfen daha açık ol.,3,,school-work
+b2-spectacular,SPECTACULAR,S,STARTS,adj,çok etkileyici ve görkemli,The view from the top was spectacular.,Tepeden manzara muhteşemdi.,3,,travel
+b2-sponsor,SPONSOR,S,STARTS,noun,bir etkinliğe para veren destekçi,The company is the main sponsor of the team.,Şirket takımın ana sponsoru.,4,,sports
+b2-stake,STAKE,S,STARTS,noun,riske atılan pay veya şey,There is a lot at stake in this match.,Bu maçta çok şey tehlikede.,4,,sports
+b2-standard,STANDARD,S,STARTS,noun,kabul edilen kalite ölçüsü,The hotel has a high standard of service.,Otelin hizmet standardı yüksek.,3,,travel
+b2-statistics,STATISTICS,S,STARTS,noun,"sayısal veriler, istatistik",The statistics show a rise in prices.,İstatistikler fiyatlarda bir artış gösteriyor.,4,,school-work
+b2-stereotype,STEREOTYPE,S,STARTS,noun,bir gruba dair basmakalıp ve genellikle yanlış kanı,It is a stereotype that all teenagers are lazy.,Bütün gençlerin tembel olduğu basmakalıp bir yargıdır.,4,,daily-life
+b2-stimulate,STIMULATE,S,STARTS,verb,"harekete geçirmek, canlandırmak",Games can stimulate a child's mind.,Oyunlar çocuğun zihnini harekete geçirebilir.,4,,school-work
+b2-strategy,STRATEGY,S,STARTS,noun,hedefe ulaşmak için uzun vadeli plan,Our strategy is to save money first.,Stratejimiz önce para biriktirmek.,4,,business
+b2-strike,STRIKE,S,STARTS,noun,"işçilerin işi bırakması, grev",The workers went on strike.,İşçiler greve gitti.,4,,business
+b2-structure,STRUCTURE,S,STARTS,noun,bir şeyin yapısı ve düzeni,The structure of the essay is clear.,Kompozisyonun yapısı net.,3,,school-work
+b2-substantial,SUBSTANTIAL,S,STARTS,adj,"miktarı ya da boyutu büyük, hatırı sayılır",They received a substantial amount of money.,Hatırı sayılır miktarda para aldılar.,4,,business
+b2-substitute,SUBSTITUTE,S,STARTS,noun,bir başkasının yerine geçen kişi veya şey,He came on as a substitute in the second half.,İkinci yarıda yedek olarak oyuna girdi.,4,,sports
+b2-sufficient,SUFFICIENT,S,STARTS,adj,yeterli,We do not have sufficient time.,Yeterli zamanımız yok.,4,,business
+b2-supervise,SUPERVISE,S,STARTS,verb,bir işi veya kişiyi gözetmek,A teacher will supervise the children.,Bir öğretmen çocukları gözetecek.,4,,school-work
+b2-surrender,SURRENDER,S,STARTS,verb,mücadeleyi bırakıp teslim olmak,The thief decided to surrender.,Hırsız teslim olmaya karar verdi.,4,,daily-life
+b2-sustain,SUSTAIN,S,STARTS,verb,"bir şeyi sürdürmek, ayakta tutmak",It is hard to sustain this speed.,Bu hızı sürdürmek zor.,4,,sports
+b2-sort-out,SORT OUT,S,STARTS,phrasal,dağınık şeyleri ayıklayıp düzene koymak,We need to sort out this mess.,Bu karışıklığı düzene sokmamız gerekiyor.,4,,phrasal-verbs
+b2-stand-out,STAND OUT,S,STARTS,phrasal,diğerlerinden belirgin biçimde ayrılmak,Her red coat will stand out in the crowd.,Kırmızı montu kalabalıkta göze çarpacak.,4,,phrasal-verbs
+b2-stick-to,STICK TO,S,STARTS,phrasal,plan veya kurala sadık kalmak,"Stick to the plan, please.",Lütfen plana sadık kal.,4,,phrasal-verbs
+b2-sum-up,SUM UP,S,STARTS,phrasal,kısaca özetlemek,Let me sum up the main points.,Ana noktaları özetleyeyim.,4,,phrasal-verbs
+b2-sleep-on-it,SLEEP ON IT,S,STARTS,idiom,karar vermeden önce bir gece düşünmek,Let me sleep on it before I decide.,Karar vermeden önce biraz düşüneyim.,4,,idioms
+b2-safe-and-sound,SAFE AND SOUND,S,STARTS,idiom,sağ salim,They arrived safe and sound.,Sağ salim vardılar.,3,,idioms
+b2-steal-the-show,STEAL THE SHOW,S,STARTS,idiom,herkesin dikkatini üzerine çekmek,The little girl may steal the show.,Küçük kız gösteriyi çalabilir.,4,,idioms
+b2-second-thoughts,SECOND THOUGHTS,S,STARTS,idiom,bir karar hakkında sonradan duyulan tereddüt,I am having second thoughts about the trip.,Gezi konusunda tereddüt ediyorum.,4,,idioms
