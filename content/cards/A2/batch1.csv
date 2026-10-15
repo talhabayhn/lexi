@@ -1,0 +1,104 @@
+id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
+a2-quiz,QUIZ,Q,STARTS,noun,kısa bilgi yarışması veya küçük sınav,We had a quiz in class today.,Bugün sınıfta küçük bir sınav yaptık.,2,,school-work
+a2-quality,QUALITY,Q,STARTS,noun,"bir şeyin ne kadar iyi olduğu, kalite",This shop sells good quality shoes.,Bu dükkân kaliteli ayakkabı satıyor.,3,,daily-life
+a2-quickly,QUICKLY,Q,STARTS,adv,"çabuk bir biçimde, hızla",Please eat your lunch quickly.,Lütfen öğle yemeğini çabuk ye.,2,,daily-life
+a2-quietly,QUIETLY,Q,STARTS,adv,"ses çıkarmadan, gürültüsüzce",The baby sleeps quietly.,Bebek sessizce uyuyor.,2,,daily-life
+a2-square,SQUARE,Q,CONTAINS,noun,dört kenarı eşit olan şekil,Draw a square on the paper.,Kâğıda bir kare çiz.,2,,school-work
+a2-equal,EQUAL,Q,CONTAINS,adj,miktarı ya da değeri birbirine denk olan,Two and two is equal to four.,İki artı iki dörde eşittir.,3,,school-work
+a2-request,REQUEST,Q,CONTAINS,noun,"nazikçe istenen şey, rica",I have a small request for you.,Senden küçük bir ricam var.,3,,daily-life
+a2-equipment,EQUIPMENT,Q,CONTAINS,noun,bir iş ya da spor için gereken araç gereç,The gym has new equipment.,Spor salonunun yeni ekipmanları var.,3,,sports
+a2-mosque,MOSQUE,Q,CONTAINS,noun,Müslümanların ibadet ettiği yapı,The mosque is near the market.,Cami pazarın yakınında.,2,,city-transport
+a2-cheque,CHEQUE,Q,CONTAINS,noun,bankaya verilip para alınan yazılı belge,He paid by cheque.,Çekle ödeme yaptı.,4,,daily-life
+a2-extra,EXTRA,X,CONTAINS,adj,"olması gerekenden fazla, ek",We need an extra chair.,Fazladan bir sandalyeye ihtiyacımız var.,2,,daily-life
+a2-exactly,EXACTLY,X,CONTAINS,adv,"tam olarak, hiç eksiksiz",It is exactly ten o'clock.,Saat tam olarak on.,3,,daily-life
+a2-exciting,EXCITING,X,CONTAINS,adj,"insanı heyecanlandıran, sürükleyici",The film was very exciting.,Film çok heyecan vericiydi.,2,,daily-life
+a2-excited,EXCITED,X,CONTAINS,adj,güzel bir şey için heyecan duyan,The children are excited about the trip.,Çocuklar gezi için heyecanlı.,2,,daily-life
+a2-explain,EXPLAIN,X,CONTAINS,verb,bir şeyi anlaşılır biçimde anlatmak,Can you explain this word?,Bu sözcüğü açıklayabilir misin?,2,,school-work
+a2-expect,EXPECT,X,CONTAINS,verb,"bir şeyin olacağını düşünmek, ummak",I expect good news tomorrow.,Yarın iyi haber bekliyorum.,3,,daily-life
+a2-exit,EXIT,X,CONTAINS,noun,bir binadan dışarı çıkılan kapı,The exit is on your left.,Çıkış solunda.,2,,city-transport
+a2-mix,MIX,X,CONTAINS,verb,birkaç şeyi bir araya getirip karıştırmak,Mix the eggs and the sugar.,Yumurtaları ve şekeri karıştır.,2,,food-drink
+a2-fix,FIX,X,CONTAINS,verb,bozuk bir şeyi onarmak,Can you fix my bike?,Bisikletimi onarabilir misin?,3,,daily-life
+a2-boxing,BOXING,X,CONTAINS,noun,iki kişinin eldivenle dövüştüğü spor,My brother loves boxing.,Kardeşim boksa bayılıyor.,2,,sports
+a2-except,EXCEPT,X,CONTAINS,phrase,"dışında, hariç",Everyone came except Ali.,Ali dışında herkes geldi.,4,,daily-life
+a2-expert,EXPERT,X,CONTAINS,noun,bir konuyu çok iyi bilen kişi,She is an expert on birds.,Kuşlar konusunda bir uzman.,4,,school-work
+a2-explore,EXPLORE,X,CONTAINS,verb,bilinmeyen bir yeri gezip keşfetmek,We want to explore the old town.,Eski şehri keşfetmek istiyoruz.,4,,travel
+a2-exchange,EXCHANGE,X,CONTAINS,verb,bir şeyi başka bir şeyle değiştirmek,Can I exchange this shirt for a bigger one?,Bu gömleği daha büyüğüyle değiştirebilir miyim?,4,,daily-life
+a2-zebra-crossing,ZEBRA CROSSING,Z,STARTS,noun,yayaların yolu geçtiği çizgili alan,Wait at the zebra crossing.,Yaya geçidinde bekle.,3,,city-transport
+a2-crazy,CRAZY,Z,CONTAINS,adj,"aklını kaçırmış gibi davranan, çılgın",That idea sounds crazy.,Bu fikir çılgınca geliyor.,2,,daily-life
+a2-dozen,DOZEN,Z,CONTAINS,noun,on iki tane,I bought a dozen eggs.,Bir düzine yumurta aldım.,2,,food-drink
+a2-freeze,FREEZE,Z,CONTAINS,verb,çok soğuktan buza dönüşmek,The lake will freeze tonight.,Göl bu gece donacak.,3,,time-weather
+a2-frozen,FROZEN,Z,CONTAINS,adj,içindeki su buza dönmüş olan,The lake is frozen in winter.,Göl kışın buz tutar.,3,,time-weather
+a2-puzzle,PUZZLE,Z,CONTAINS,noun,parçaları birleştirilerek çözülen oyun,This puzzle has a hundred pieces.,Bu yapbozun yüz parçası var.,2,,daily-life
+a2-breeze,BREEZE,Z,CONTAINS,noun,hafif ve serin esen rüzgâr,A cool breeze came through the window.,Pencereden serin bir esinti girdi.,3,,time-weather
+a2-sneeze,SNEEZE,Z,CONTAINS,verb,burundan ani ve gürültülü hava vermek,Cover your mouth when you sneeze.,Hapşırırken ağzını kapat.,3,,body-health
+a2-realize,REALIZE,Z,CONTAINS,verb,bir şeyin farkına varmak,I did not realize it was so late.,Bu kadar geç olduğunu fark etmedim.,3,,daily-life
+a2-dizzy,DIZZY,Z,CONTAINS,adj,etrafı dönüyormuş gibi hisseden,I feel dizzy after the ride.,Gezintiden sonra başım dönüyor.,3,,body-health
+a2-jazz,JAZZ,Z,CONTAINS,noun,doğaçlama ağırlıklı müzik türü,He plays jazz on the piano.,Piyanoda caz çalıyor.,2,,music
+a2-wizard,WIZARD,Z,CONTAINS,noun,masallarda büyü yapan adam,The wizard lives in a tall tower.,Büyücü uzun bir kulede yaşıyor.,3,,daily-life
+a2-lizard,LIZARD,Z,CONTAINS,noun,"kuru derili, dört bacaklı küçük sürüngen",A lizard sat on the warm rock.,Sıcak kayanın üstünde bir kertenkele duruyordu.,2,,animals
+a2-journey,JOURNEY,J,STARTS,noun,bir yerden başka bir yere yapılan uzun yolculuk,The journey to Izmir takes five hours.,İzmir'e yolculuk beş saat sürüyor.,2,,travel
+a2-jungle,JUNGLE,J,STARTS,noun,sıcak ülkelerdeki sık ve yoğun orman,Monkeys live in the jungle.,Maymunlar ormanda yaşar.,2,,animals
+a2-join,JOIN,J,STARTS,verb,bir gruba ya da etkinliğe katılmak,Do you want to join our team?,Takımımıza katılmak ister misin?,2,,daily-life
+a2-jumper,JUMPER,J,STARTS,noun,"yünden örülmüş, baştan geçirilen kazak",She wears a red jumper.,Kırmızı bir kazak giyiyor.,2,,daily-life
+a2-jogging,JOGGING,J,STARTS,noun,sağlık için hafif tempoda koşma,Jogging in the park is fun.,Parkta koşu yapmak eğlenceli.,2,,sports
+a2-jug,JUG,J,STARTS,noun,su ya da süt koymak için kulplu kap,There is a jug of water on the table.,Masada bir sürahi su var.,2,,home
+a2-jar,JAR,J,STARTS,noun,reçel gibi şeylerin konduğu ağzı geniş cam kap,Can you open this jar of jam?,Bu reçel kavanozunu açar mısın?,2,,home
+a2-jewellery,JEWELLERY,J,STARTS,noun,yüzük ve kolye gibi süs eşyaları,She keeps her jewellery in a box.,Takılarını bir kutuda saklıyor.,3,,daily-life
+a2-judo,JUDO,J,STARTS,noun,yere atma ve tutuş tekniklerine dayanan spor,He goes to judo class on Mondays.,Pazartesileri judo dersine gidiyor.,3,,sports
+a2-jelly,JELLY,J,STARTS,noun,"meyve sularından yapılan, sallanan tatlı",Children love strawberry jelly.,Çocuklar çilekli jöleyi sever.,3,,food-drink
+a2-jellyfish,JELLYFISH,J,STARTS,noun,"denizde yaşayan, şeffaf ve yumuşak canlı",A jellyfish floated near the boat.,Teknenin yanında bir denizanası yüzüyordu.,3,,animals
+a2-jealous,JEALOUS,J,STARTS,adj,başkasının sahip olduğunu kıskanan,She is jealous of her sister's bike.,Kız kardeşinin bisikletini kıskanıyor.,3,,family-people
+a2-judge,JUDGE,J,STARTS,noun,mahkemede karar veren kişi,The judge listened carefully.,Hâkim dikkatle dinledi.,4,,daily-life
+a2-jail,JAIL,J,STARTS,noun,suç işleyenlerin kapatıldığı yer,He spent a year in jail.,Bir yıl hapiste kaldı.,3,,daily-life
+a2-joy,JOY,J,STARTS,noun,"çok büyük mutluluk, sevinç",The news filled her with joy.,Haber onu sevinçle doldurdu.,3,,daily-life
+a2-subject,SUBJECT,J,CONTAINS,noun,okulda okutulan ders,Maths is my favourite subject.,Matematik en sevdiğim ders.,2,,school-work
+a2-project,PROJECT,J,CONTAINS,noun,üzerinde bir süre çalışılan ödev ya da plan,We have a history project this week.,Bu hafta bir tarih projemiz var.,2,,school-work
+a2-object,OBJECT,J,CONTAINS,noun,"elle tutulan, gözle görülen cisim",What is this object?,Bu cisim ne?,3,,daily-life
+a2-knock,KNOCK,K,STARTS,verb,kapıya vurarak geldiğini haber vermek,Please knock before you come in.,Lütfen girmeden önce kapıyı çal.,2,,daily-life
+a2-karate,KARATE,K,STARTS,noun,el ve ayakla yapılan Japon savunma sporu,My cousin learns karate.,Kuzenim karate öğreniyor.,2,,sports
+a2-ketchup,KETCHUP,K,STARTS,noun,domatesten yapılan kırmızı sos,Do you want ketchup on your chips?,Patateslerine ketçap ister misin?,2,,food-drink
+a2-kilo,KILO,K,STARTS,noun,bin gram ağırlığındaki ölçü birimi,I bought a kilo of apples.,Bir kilo elma aldım.,2,,food-drink
+a2-kebab,KEBAB,K,STARTS,noun,şişte ya da ızgarada pişirilen et yemeği,We ate kebab at the restaurant.,Lokantada kebap yedik.,2,,food-drink
+a2-knot,KNOT,K,STARTS,noun,ip ya da kumaşın bağlanmasıyla oluşan düğüm,Can you tie a knot?,Bir düğüm atabilir misin?,3,,daily-life
+a2-kill,KILL,K,STARTS,verb,bir canlıyı öldürmek,The cold weather can kill plants.,Soğuk hava bitkileri öldürebilir.,3,,daily-life
+a2-kiwi,KIWI,K,STARTS,noun,"yeşil içli, tüylü kahverengi kabuklu meyve",I put a kiwi in my bag.,Çantama bir kivi koydum.,3,,food-drink
+a2-pocket,POCKET,K,CONTAINS,noun,giysilerde küçük eşya konan göz,He put his keys in his pocket.,Anahtarlarını cebine koydu.,2,,daily-life
+a2-ski,SKI,K,CONTAINS,verb,karda uzun tahtalarla kaymak,We ski in the mountains every winter.,Her kış dağlarda kayak yaparız.,2,,sports
+a2-skate,SKATE,K,CONTAINS,verb,buzda ya da yerde patenle kaymak,Can you skate on ice?,Buzda patenle kayabilir misin?,2,,sports
+a2-skin,SKIN,K,CONTAINS,noun,vücudumuzu saran dış tabaka,Her skin is soft.,Cildi yumuşak.,2,,body-health
+a2-skill,SKILL,K,CONTAINS,noun,bir işi iyi yapabilme yeteneği,Cooking is a useful skill.,Yemek yapmak yararlı bir beceri.,3,,school-work
+a2-necklace,NECKLACE,K,CONTAINS,noun,boyna takılan süs,She wears a silver necklace.,Gümüş bir kolye takıyor.,2,,daily-life
+a2-truck,TRUCK,K,CONTAINS,noun,ağır yük taşıyan büyük araç,The truck is full of apples.,Kamyon elmalarla dolu.,2,,city-transport
+a2-snack,SNACK,K,CONTAINS,noun,öğün arasında yenen küçük yiyecek,I eat a snack after school.,Okuldan sonra bir atıştırmalık yerim.,2,,food-drink
+a2-backpack,BACKPACK,K,CONTAINS,noun,"omuza takılan, içine kitap konan çanta",My backpack is full of books.,Sırt çantam kitap dolu.,2,,school-work
+a2-valley,VALLEY,V,STARTS,noun,iki dağ arasındaki alçak arazi,The village is in a green valley.,Köy yeşil bir vadide.,3,,travel
+a2-vet,VET,V,STARTS,noun,hasta hayvanları tedavi eden doktor,Take the dog to the vet.,Köpeği veterinere götür.,2,,animals
+a2-vase,VASE,V,STARTS,noun,çiçek koymak için kullanılan süslü kap,She put the flowers in a vase.,Çiçekleri vazoya koydu.,2,,home
+a2-verb,VERB,V,STARTS,noun,eylemi bildiren sözcük türü,Run is a verb.,Koşmak bir fiildir.,2,,school-work
+a2-volcano,VOLCANO,V,STARTS,noun,içinden lav fışkıran dağ,The volcano threw out hot lava.,Yanardağ sıcak lav püskürttü.,3,,travel
+a2-vehicle,VEHICLE,V,STARTS,noun,araba ve otobüs gibi motorlu taşıt,This vehicle is too big for the road.,Bu taşıt yol için çok büyük.,3,,city-transport
+a2-vote,VOTE,V,STARTS,verb,seçimde tercihini belirtmek,Everyone can vote at eighteen.,Herkes on sekiz yaşında oy verebilir.,4,,daily-life
+a2-visa,VISA,V,STARTS,noun,başka bir ülkeye girmek için alınan izin,You need a visa for this trip.,Bu gezi için vizeye ihtiyacın var.,3,,travel
+a2-several,SEVERAL,V,CONTAINS,adj,"ikiden fazla ama çok olmayan, birkaç",I waited for several hours.,Birkaç saat bekledim.,3,,daily-life
+a2-nervous,NERVOUS,V,CONTAINS,adj,endişeyle gergin olan,I am nervous before exams.,Sınavlardan önce gergin oluyorum.,3,,body-health
+a2-believe,BELIEVE,V,CONTAINS,verb,bir şeyin doğru olduğunu düşünmek,I believe you.,Sana inanıyorum.,3,,daily-life
+a2-cave,CAVE,V,CONTAINS,noun,dağ ya da kayalıktaki doğal oyuk,Bats sleep in the cave.,Yarasalar mağarada uyur.,2,,travel
+a2-save,SAVE,V,CONTAINS,verb,ileride kullanmak için para biriktirmek,I save ten lira every week.,Her hafta on lira biriktiriyorum.,2,,daily-life
+a2-wave,WAVE,V,CONTAINS,verb,elini bir yandan öbür yana sallamak,Wave to your friends.,Arkadaşlarına el salla.,2,,daily-life
+a2-yet,YET,Y,STARTS,adv,"şimdiye kadar, henüz",I have not finished my homework yet.,Ödevimi henüz bitirmedim.,3,,daily-life
+a2-yourself,YOURSELF,Y,STARTS,phrase,karşımızdaki kişinin kendisi,Look at yourself in the mirror.,Aynada kendine bak.,3,,daily-life
+a2-yoga,YOGA,Y,STARTS,noun,beden ve zihin egzersizi,She does yoga every morning.,Her sabah yoga yapıyor.,2,,sports
+a2-yummy,YUMMY,Y,STARTS,adj,"tadı çok güzel, nefis",This soup is yummy.,Bu çorba nefis.,2,,food-drink
+a2-type,TYPE,Y,CONTAINS,noun,aynı özellikleri taşıyan çeşit,What type of music do you like?,Ne tür müzik seversin?,3,,daily-life
+a2-style,STYLE,Y,CONTAINS,noun,bir şeyin kendine özgü tarzı,I like your style.,Tarzını beğeniyorum.,3,,daily-life
+a2-guy,GUY,Y,CONTAINS,noun,"günlük dilde adam, tip",He is a really nice guy.,O gerçekten iyi bir adam.,3,,family-people
+a2-spicy,SPICY,Y,CONTAINS,adj,baharatlı ve acı olan,I do not like spicy food.,Acılı yemek sevmem.,2,,food-drink
+a2-copy,COPY,Y,CONTAINS,verb,bir şeyin aynısını yapmak ya da çoğaltmak,Please copy the words from the board.,Lütfen sözcükleri tahtadan kopyala.,2,,school-work
+a2-daily,DAILY,Y,CONTAINS,adj,her gün olan,Reading is part of my daily life.,Okumak günlük hayatımın bir parçası.,3,,daily-life
+a2-candy,CANDY,Y,CONTAINS,noun,şekerden yapılan küçük tatlı,The boy ate too much candy.,Çocuk çok fazla şekerleme yedi.,2,,food-drink
+a2-royal,ROYAL,Y,CONTAINS,adj,kral ve kraliçeyle ilgili,The royal family lives in a palace.,Kraliyet ailesi bir sarayda yaşıyor.,3,,family-people
+a2-plenty,PLENTY,Y,CONTAINS,phrase,ihtiyaçtan fazla miktar,We have plenty of time.,Bol bol zamanımız var.,3,,daily-life
+a2-anyone,ANYONE,Y,CONTAINS,phrase,herhangi bir kişi,Is anyone at home?,Evde kimse var mı?,3,,daily-life
+a2-anything,ANYTHING,Y,CONTAINS,phrase,herhangi bir şey,I cannot see anything.,Hiçbir şey göremiyorum.,3,,daily-life
+a2-anywhere,ANYWHERE,Y,CONTAINS,adv,herhangi bir yerde ya da yere,You can sit anywhere.,İstediğin yere oturabilirsin.,3,,daily-life
+a2-worry,WORRY,Y,CONTAINS,verb,bir şey yüzünden endişelenmek,Do not worry about the test.,Sınav için endişelenme.,3,,daily-life
