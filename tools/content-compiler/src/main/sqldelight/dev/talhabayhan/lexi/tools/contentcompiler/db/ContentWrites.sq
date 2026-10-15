@@ -7,8 +7,8 @@ insertCategory:
 INSERT INTO category(id, name_tr, name_en, levels, sort, is_pro) VALUES (?, ?, ?, ?, ?, ?);
 
 insertCard:
-INSERT INTO card(id, level, category_id, answer, letter, rule, pos, example_en, difficulty, tags)
-VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+INSERT INTO card(id, level, category_id, answer, letter, rule, pos, example_en, difficulty, tags, pack_only)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
 
 insertClue:
 INSERT INTO clue(card_id, lang, clue, example_translation) VALUES (?, ?, ?, ?);

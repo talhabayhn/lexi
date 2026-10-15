@@ -135,6 +135,8 @@ All participants apply the same ordered event log → same state. See `MULTIPLAY
 The content schema lives once, in `core/data/src/commonMain/sqldelight-content` (`ContentDatabase`).
 `tools:content-compiler` generates its writer from those same `.sq` files (plus its own INSERTs), so the compiler
 and the app always agree on the schema without a module dependency. Schema version = `PRAGMA user_version`.
+Exam-pack extra cards have `card.pack_only = 1`: `CardRepository` level/category wheel queries must filter
+`pack_only = 0`; those cards are served only through `ExamPackRepository` (`CONTENT.md` §1, §7).
 
 Keeping content separate means content updates never touch user data; `card.id` is a stable slug
 (`a1-kitchen`) so progress survives content updates.

@@ -26,7 +26,9 @@ CREATE TABLE card(
     pos TEXT NOT NULL,
     example_en TEXT NOT NULL,
     difficulty INTEGER NOT NULL,
-    tags TEXT NOT NULL DEFAULT ''
+    tags TEXT NOT NULL DEFAULT '',
+    -- 1 = extra card from an exam pack: only reachable through exam_pack_card, never in free level wheels.
+    pack_only INTEGER NOT NULL DEFAULT 0
 );
 
 CREATE TABLE clue(

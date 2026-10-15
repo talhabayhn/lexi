@@ -36,6 +36,8 @@ units/<pack-id>.csv     card_id,unit                           (references any c
 cards/<LEVEL>/*.csv     optional pack-only cards, same schema and rules as §2
 ```
 Pack-only cards are validated like level cards (unique id/answer per level) but excluded from level coverage.
+Owner decision: they are excluded from free level wheels too. They are written with `card.pack_only = 1`; every
+level-wheel/category query must filter `pack_only = 0`, and they are reachable only through `exam_pack_card`.
 
 ## 2. Card CSV schema (`content/cards/<level>/*.csv`, UTF-8, comma, header row; any file name, e.g. one file per category)
 | column | type | rule |
@@ -135,7 +137,8 @@ CREATE TABLE category(id TEXT NOT NULL PRIMARY KEY, name_tr TEXT NOT NULL, name_
 CREATE TABLE card(
   id TEXT NOT NULL PRIMARY KEY, level TEXT NOT NULL, category_id TEXT NOT NULL REFERENCES category(id),
   answer TEXT NOT NULL, letter TEXT NOT NULL, rule TEXT NOT NULL, pos TEXT NOT NULL,
-  example_en TEXT NOT NULL, difficulty INTEGER NOT NULL, tags TEXT NOT NULL DEFAULT ''   -- tags 'a|b'
+  example_en TEXT NOT NULL, difficulty INTEGER NOT NULL, tags TEXT NOT NULL DEFAULT '',  -- tags 'a|b'
+  pack_only INTEGER NOT NULL DEFAULT 0      -- 1 = exam-pack extra card; level wheel queries filter pack_only = 0
 );
 CREATE TABLE clue(card_id TEXT NOT NULL REFERENCES card(id), lang TEXT NOT NULL, clue TEXT NOT NULL,
   example_translation TEXT, PRIMARY KEY(card_id, lang));

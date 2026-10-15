@@ -95,6 +95,9 @@ class ContentDbWriterTest {
             )
             assertEquals(4, db.rows("SELECT card_id FROM exam_pack_card").size)
             assertEquals(1, db.rows("SELECT id FROM card WHERE id = 'b1-zest'").size)
+            // Pack-only cards never reach free level wheels (those queries filter pack_only = 0).
+            assertEquals(listOf("b1-zest"), db.rows("SELECT id FROM card WHERE pack_only = 1").map { it[0] })
+            assertEquals(6, db.rows("SELECT id FROM card WHERE pack_only = 0").size)
         }
     }
 

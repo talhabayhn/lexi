@@ -54,6 +54,7 @@ object ContentDbWriter {
                             example_en = it.exampleEn,
                             difficulty = it.difficulty.toLong(),
                             tags = it.tags.joinToString("|"),
+                            pack_only = if (it.fromPack) 1 else 0,
                         )
                         queries.insertClue(it.id, CLUE_LANG_TR, it.clueTr, it.exampleTr)
                     }
