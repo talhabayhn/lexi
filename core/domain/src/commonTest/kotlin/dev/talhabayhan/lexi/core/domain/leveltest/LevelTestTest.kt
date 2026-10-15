@@ -52,47 +52,61 @@ class LevelTestTest {
     @Test
     fun `level stays within A1 and NAT`() {
         assertEquals(Level.A1, LevelTest.start(1L).answer(false, false, false).currentLevel)
-        assertEquals(Level.NAT, LevelTest.start(1L).answer(*BooleanArray(12) { true }).currentLevel)
+        assertEquals(Level.NAT, LevelTest.start(1L).answer(*BooleanArray(10) { true }).currentLevel)
     }
 
     @Test
-    fun `test ends after 12 answers when the current level has 3 asked cards`() {
+    fun `test has at most 14 questions and may stop early after 10`() {
+        assertEquals(14, LevelTest.MAX_SLOTS)
+        assertEquals(10, LevelTest.MIN_SLOTS)
+    }
+
+    @Test
+    fun `test ends after 10 answers when the current level has 3 asked cards`() {
         // A2 → A1 after the wrong one, then A1 stays at A1 with alternating answers.
-        val state = LevelTest.start(1L).answer(false, true, false, true, false, true, false, true, false, true, false)
+        val state = LevelTest.start(1L).answer(false, true, false, true, false, true, false, true, false)
         assertFalse(LevelTest.isFinished(state, pool))
 
         assertTrue(LevelTest.isFinished(state.answer(false), pool))
     }
 
-    /** A2 → A1 after the first wrong, nine more wrongs at A1, then two corrects back up to A2 (1 asked there). */
-    private fun twelveEndingOnAFreshLevel(): LevelTestState =
-        LevelTest.start(1L).answer(*BooleanArray(10) { false }).answer(true, true)
+    /** A2 → A1 after the first wrong, seven more wrongs at A1, then two corrects back up to A2 (1 asked there). */
+    private fun tenEndingOnAFreshLevel(): LevelTestState =
+        LevelTest.start(1L).answer(*BooleanArray(8) { false }).answer(true, true)
 
     @Test
-    fun `test goes on past 12 while the current level has fewer than 3 asked cards`() {
-        val twelve = twelveEndingOnAFreshLevel()
-        assertEquals(Level.A2, twelve.currentLevel)
-        assertFalse(LevelTest.isFinished(twelve, pool))
+    fun `test goes on past 10 while the current level has fewer than 3 asked cards`() {
+        val ten = tenEndingOnAFreshLevel()
+        assertEquals(Level.A2, ten.currentLevel)
+        assertFalse(LevelTest.isFinished(ten, pool))
 
-        val thirteen = twelve.answer(false)
+        val eleven = ten.answer(false)
 
-        assertEquals(Level.A1, thirteen.currentLevel)
-        assertTrue(LevelTest.isFinished(thirteen, pool))
+        assertEquals(Level.A1, eleven.currentLevel)
+        assertTrue(LevelTest.isFinished(eleven, pool))
     }
 
     @Test
-    fun `test always ends after 16 answers`() {
-        val fifteen = twelveEndingOnAFreshLevel().answer(true, true, true)
-        assertEquals(Level.B1, fifteen.currentLevel)
-        assertFalse(LevelTest.isFinished(fifteen, pool))
+    fun `test always ends after 14 answers`() {
+        val thirteen = tenEndingOnAFreshLevel().answer(true, true, true)
+        assertEquals(Level.B1, thirteen.currentLevel)
+        assertFalse(LevelTest.isFinished(thirteen, pool))
 
-        assertTrue(LevelTest.isFinished(fifteen.answer(true), pool))
-        assertEquals(LevelTest.MAX_SLOTS, fifteen.answer(true).answers.size)
+        assertTrue(LevelTest.isFinished(thirteen.answer(true), pool))
+        assertEquals(LevelTest.MAX_SLOTS, thirteen.answer(true).answers.size)
+    }
+
+    @Test
+    fun `all correct answers place at NAT after 11 questions`() {
+        val state = LevelTest.start(1L).answer(*BooleanArray(11) { true })
+
+        assertTrue(LevelTest.isFinished(state, pool))
+        assertEquals(Level.NAT, LevelTest.result(state))
     }
 
     @Test
     fun `record rejects answers after the end`() {
-        val state = LevelTest.start(1L).answer(*BooleanArray(12) { true })
+        val state = LevelTest.start(1L).answer(*BooleanArray(11) { true })
         assertTrue(LevelTest.isFinished(state, pool))
 
         assertFailsWith<IllegalArgumentException> { LevelTest.record(state, pool.first(), true) }

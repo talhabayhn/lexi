@@ -132,11 +132,15 @@ the app goes to background.
   Level handicap (optional room setting): each player plays own level; score = normalized points.
 
 ## 9. Level test (onboarding)
-- 12–16 slots, adaptive staircase: start at A2; 2 correct in a row at a level → go up; 1 wrong/pass → go down.
+- 10–14 slots (owner decision: at most 14 questions, with early stop), adaptive staircase: start at A2; 2 correct
+  in a row at a level → go up; 1 wrong/pass → go down.
 - Result = highest level with ≥ 60% correct among its asked cards (min 3 asked), else the level below. Shown on
   a result card ("Seviyen: B1") with the option to change.
-- Engine (`LevelTest`): the test ends after 12 answers once the current level has ≥ 3 asked cards (so it can be
-  judged), and always after 16. "Else the level below" = the level below the start level (A1); owner decision:
+- Engine (`LevelTest`): the test ends after 10 answers once the current level has ≥ 3 asked cards (so it can be
+  judged), and always after 14. The early-stop threshold moved from 12 to 10 with the cap: it keeps the old
+  4-answer window between early stop and cap, so a test that has just changed level still has room to ask the 3
+  cards needed to judge the new level; with 12 the window would be 2 answers and most tests would just hit the cap.
+  An all-correct run ends after 11 answers at NAT. "Else the level below" = the level below the start level (A1); owner decision:
   a test that starts at A2 with too few correct answers places the player at A1. Level stays within
   A1…NAT. Each card is a seeded pick (sub-seed `level-test:<index>`) of an unasked card of the current level,
   preferring unused letters. If the pool has no unasked card of the current level, the test ends early and the

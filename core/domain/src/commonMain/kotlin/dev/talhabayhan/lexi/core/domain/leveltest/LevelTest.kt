@@ -26,8 +26,12 @@ public data class LevelTestState(
 public object LevelTest {
     public val START_LEVEL: Level = Level.A2
     public const val CORRECT_IN_A_ROW_TO_GO_UP: Int = 2
-    public const val MIN_SLOTS: Int = 12
-    public const val MAX_SLOTS: Int = 16
+
+    /** Early stop once the current level can be judged ([MAX_SLOTS] − the old 4-answer window). */
+    public const val MIN_SLOTS: Int = 10
+
+    /** Owner decision: at most 14 questions. */
+    public const val MAX_SLOTS: Int = 14
     public const val MIN_ASKED: Int = 3
     public const val PASS_PERCENT: Int = 60
 
