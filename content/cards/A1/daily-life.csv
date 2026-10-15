@@ -38,7 +38,6 @@ a1-wash,WASH,W,STARTS,verb,yıkamak,I wash my hands.,Ellerimi yıkıyorum.,1,,da
 a1-love,LOVE,L,STARTS,verb,"sevmek, âşık olmak",I love you.,Seni seviyorum.,1,,daily-life
 a1-dance,DANCE,D,STARTS,verb,dans etmek,They dance at the festival.,Festivalde dans ederler.,1,,daily-life
 a1-beach,BEACH,B,STARTS,noun,"plaj, kumsal",The beach is crowded.,Plaj kalabalık.,1,,daily-life
-a1-keep,KEEP,K,STARTS,verb,"tutmak, saklamak",You can keep this badge.,Bu rozeti saklayabilirsin.,2,,daily-life
 a1-name,NAME,N,STARTS,noun,"ad, isim",My name is Mert.,Adım Mert.,1,,daily-life
 a1-yes,YES,Y,STARTS,adv,evet,"Yes, sure.","Evet, tabii.",1,,daily-life
 a1-grass,GRASS,G,STARTS,noun,"çimen, ot",The grass is wet.,Çimen ıslak.,1,,daily-life
@@ -53,7 +52,6 @@ a1-bike,BIKE,B,STARTS,noun,bisiklet,I have a bike.,Bir bisikletim var.,1,,daily-
 a1-email,EMAIL,E,STARTS,noun,elektronik posta,Check your email.,E-postanı kontrol et.,1,,daily-life
 a1-colour,COLOUR,C,STARTS,noun,renk,Ali likes this colour.,Ali bu rengi seviyor.,1,,daily-life
 a1-guitar,GUITAR,G,STARTS,noun,altı telli çalgı,He plays the guitar.,O gitar çalıyor.,1,,daily-life
-a1-violin,VIOLIN,V,STARTS,noun,yaylı çalgı,The violin sounds lovely.,Keman çok güzel ses çıkarıyor.,2,,daily-life
 a1-movie,MOVIE,M,STARTS,noun,sinema filmi,The movie is a comedy.,Film bir komedi.,1,,daily-life
 a1-travel,TRAVEL,T,STARTS,verb,uzak yerlere yolculuk etmek,We travel a lot.,Çok seyahat ederiz.,1,,daily-life
 a1-sing,SING,S,STARTS,verb,şarkı söylemek,She can sing in a choir.,Korada şarkı söyleyebilir.,1,,daily-life
@@ -72,5 +70,5 @@ a1-lake,LAKE,L,STARTS,noun,etrafı karayla çevrili büyük su,The lake is calm.
 a1-mountain,MOUNTAIN,M,STARTS,noun,çok yüksek kayalık yer,The mountain is steep.,Dağ dik.,1,,daily-life
 a1-sea,SEA,S,STARTS,noun,deniz,The sea is calm.,Deniz sakin.,1,,daily-life
 a1-farm,FARM,F,STARTS,noun,çiftlik,We have a farm.,Bir çiftliğimiz var.,1,,daily-life
-a1-voice,VOICE,V,STARTS,noun,insanın konuşurken çıkardığı ses,Your voice is soft.,Sesin yumuşak.,2,,daily-life
 a1-short,SHORT,S,STARTS,adj,boyu veya süresi az,The poem is short.,Şiir kısa.,1,,daily-life
+a1-prize,PRIZE,Z,CONTAINS,noun,yarışmayı kazanana verilen şey,The winner gets a prize.,Kazanan bir ödül alır.,2,,daily-life

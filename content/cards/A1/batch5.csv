@@ -20,8 +20,6 @@ a1-down,DOWN,D,STARTS,adv,aşağıya doğru,Mert ran down the steps.,Mert merdiv
 a1-driver,DRIVER,D,STARTS,noun,araba ya da otobüs süren kişi,The driver is waiting for us.,Şoför bizi bekliyor.,1,,city-transport
 a1-east,EAST,E,STARTS,noun,güneşin doğduğu yön,Erzurum is in the east.,Erzurum doğudadır.,2,,city-transport
 a1-empty,EMPTY,E,STARTS,adj,içinde hiçbir şey olmayan,The shelves are empty.,Raflar boş.,2,,home
-a1-important,IMPORTANT,I,STARTS,adj,önemi çok büyük olan,Health is important for children.,Sağlık çocuklar için önemlidir.,2,,daily-life
-a1-invite,INVITE,I,STARTS,verb,bir etkinliğe katılması için çağırmak,We invite our friends to the wedding.,Arkadaşlarımızı düğüne davet ediyoruz.,2,,daily-life
 a1-bowl,BOWL,B,STARTS,noun,çorba ya da salata yenen derin kap,Ayşe filled the bowl with apples.,Ayşe kaseyi elmalarla doldurdu.,2,,home
 a1-later,LATER,L,STARTS,adv,biraz sonra,See you later!,Sonra görüşürüz!,1,,time-weather
 a1-maybe,MAYBE,M,STARTS,adv,olabilir ama kesin değil,Maybe Ali knows.,Belki Ali bilir.,1,,daily-life
@@ -94,8 +92,6 @@ a1-pilot,PILOT,P,STARTS,noun,uçağı kullanan kişi,The pilot speaks to the pas
 a1-farmer,FARMER,F,STARTS,noun,tarlada ürün yetiştiren kişi,The farmer is in the field.,Çiftçi tarlada.,1,,school-work
 a1-waiter,WAITER,W,STARTS,noun,restoranda yemek servisi yapan kişi,The waiter is polite.,Garson kibar.,1,,school-work
 a1-tourist,TOURIST,T,STARTS,noun,gezmek için başka bir yere gelen kişi,The tourist is lost.,Turist yolunu kaybetmiş.,2,,city-transport
-a1-museum,MUSEUM,M,STARTS,noun,eski eserlerin sergilendiği bina,The museum is closed on Mondays.,Müze pazartesi günleri kapalı.,2,,city-transport
-a1-actor,ACTOR,A,STARTS,noun,filmlerde ya da tiyatroda rol yapan kişi,The actor is on stage.,Oyuncu sahnede.,2,,school-work
 a1-singer,SINGER,S,STARTS,noun,şarkı söylemeyi meslek edinmiş kişi,That singer is excellent.,O şarkıcı mükemmel.,2,,school-work
 a1-cafe,CAFE,C,STARTS,noun,kahve ve hafif yiyecek satılan küçük mekân,This cafe is cosy.,Bu kafe sıcak ve rahat.,2,,city-transport
 a1-glove,GLOVE,G,STARTS,noun,parmakları saran ve eli koruyan giysi,I lost a glove.,Bir eldivenimi kaybettim.,1,,daily-life

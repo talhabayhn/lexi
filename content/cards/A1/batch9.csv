@@ -31,7 +31,6 @@ a1-here,HERE,H,STARTS,adv,konuşanın bulunduğu yerde,"Selin is here, Ali.","Se
 a1-high,HIGH,H,STARTS,adj,yerden çok yukarıda olan,The ceiling is high.,Tavan yüksek.,1,,daily-life
 a1-how,HOW,H,STARTS,phrase,bir şeyin nasıl olduğunu soran sözcük,"How are you, Ali?","Nasılsın, Ali?",1,,daily-life
 a1-kitten,KITTEN,K,STARTS,noun,yavru kedi,The kitten is asleep.,Yavru kedi uyuyor.,2,,animals
-a1-large,LARGE,L,STARTS,adj,"ölçüsü büyük, geniş",This hall is large.,Bu salon geniş.,2,,daily-life
 a1-leaf,LEAF,L,STARTS,noun,ağacın dalında biten yeşil parça,A leaf fell on Ali.,Ali'nin üstüne bir yaprak düştü.,2,,time-weather
 a1-lemonade,LEMONADE,L,STARTS,noun,limonlu soğuk içecek,Ayşe likes lemonade.,Ayşe limonata seviyor.,1,,food-drink
 a1-little,LITTLE,L,STARTS,adj,"ufak, minik",The little lamb is sleeping.,Küçük kuzu uyuyor.,1,,daily-life
@@ -48,7 +47,6 @@ a1-push,PUSH,P,STARTS,verb,bir şeyi kendinden uzağa doğru itmek,"Push the car
 a1-put,PUT,P,STARTS,verb,bir şeyi bir yere koymak,Ali put the keys in his pocket.,Ali anahtarları cebine koydu.,1,,daily-life
 a1-rainbow,RAINBOW,R,STARTS,noun,yağmurdan sonra gökte beliren renkli yay,We saw a rainbow.,Bir gökkuşağı gördük.,2,,time-weather
 a1-ready,READY,R,STARTS,adj,bir şeyi yapmaya hazır olan,"Are you ready, Ali?","Hazır mısın, Ali?",1,,daily-life
-a1-shout,SHOUT,S,STARTS,verb,çok yüksek sesle bağırmak,"Don't shout, Ali.","Bağırma, Ali.",2,,daily-life
 a1-sky,SKY,S,STARTS,noun,bulutların ve yıldızların göründüğü yukarısı,Ali looks at the sky.,Ali gökyüzüne bakıyor.,1,,time-weather
 a1-small,SMALL,S,STARTS,adj,"ölçüsü ufak, iri olmayan",The ant is small.,Karınca küçük.,1,,daily-life
 a1-smile,SMILE,S,STARTS,verb,dudaklarını kıvırıp gülümsemek,"Smile, Ayşe!","Gülümse, Ayşe!",2,,daily-life

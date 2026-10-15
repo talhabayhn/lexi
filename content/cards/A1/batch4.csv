@@ -64,7 +64,6 @@ a1-party,PARTY,P,STARTS,noun,arkadaşlarla yapılan eğlence,The party was lovel
 a1-police,POLICE,P,STARTS,noun,suçluları yakalayan kurum,The police are on the way.,Polis yolda.,2,,city-transport
 a1-quick,QUICK,Q,STARTS,adj,kısa sürede yapılan,"Be quick, Ali!","Çabuk ol, Ali!",2,,daily-life
 a1-quarter,QUARTER,Q,STARTS,noun,bütünün dörtte biri,A quarter of the pupils are absent.,Öğrencilerin dörtte biri yok.,3,,colors-numbers
-a1-quite,QUITE,Q,STARTS,adv,oldukça,The poem is quite lovely.,Şiir oldukça güzel.,3,,daily-life
 a1-run,RUN,R,STARTS,verb,hızlı adımlarla koşmak,Do not run in the corridor.,Koridorda koşma.,1,,daily-life
 a1-ride,RIDE,R,STARTS,verb,hayvanın ya da aracın üstünde gitmek,Can you ride a scooter?,Scooter'a binebilir misin?,2,,daily-life
 a1-remember,REMEMBER,R,STARTS,verb,unutmayıp aklında tutmak,Do you remember me?,Beni hatırlıyor musun?,2,,daily-life
@@ -78,17 +77,10 @@ a1-think,THINK,T,STARTS,verb,aklından bir şey geçirmek,"Do you think so, Seli
 a1-toilet,TOILET,T,STARTS,noun,klozet ve lavabo olan küçük yer,Is there a toilet in this mall?,Bu alışveriş merkezinde tuvalet var mı?,2,,home
 a1-ugly,UGLY,U,STARTS,adj,görünüşü hoş olmayan,The monster is ugly.,Canavar çirkin.,2,,daily-life
 a1-useful,USEFUL,U,STARTS,adj,işe yarayan,This app is useful.,Bu uygulama çok faydalı.,2,,daily-life
-a1-uniform,UNIFORM,U,STARTS,noun,aynı işi yapanların giydiği kıyafet,The guard wears a uniform.,Bekçi üniforma giyer.,3,,school-work
 a1-upstairs,UPSTAIRS,U,STARTS,adv,üst katta,The bedrooms are upstairs.,Yatak odaları üst katta.,3,,home
-a1-van,VAN,V,STARTS,noun,yük taşıyan küçük kapalı araç,A van is waiting at the gate.,Kapıda bir kamyonet bekliyor.,2,,city-transport
-a1-vacation,VACATION,V,STARTS,noun,işten ya da okuldan izinli geçirilen günler,Our vacation was lovely.,Tatilimiz çok güzeldi.,3,,daily-life
-a1-view,VIEW,V,STARTS,noun,pencereden görünen doğa ya da şehir,The view from the balcony is lovely.,Balkondan manzara çok güzel.,3,,daily-life
 a1-warm,WARM,W,STARTS,adj,ne soğuk ne de çok sıcak,This jumper is warm.,Bu kazak sıcak tutuyor.,2,,daily-life
 a1-watch,WATCH,W,STARTS,verb,ilgiyle izlemek,They watch cartoons.,Çizgi film izlerler.,1,,daily-life
 a1-weekend,WEEKEND,W,STARTS,noun,cumartesi ve pazar günleri,Ali plays chess at the weekend.,Ali hafta sonu satranç oynuyor.,2,,time-weather
-a1-yard,YARD,Y,STARTS,noun,evin yanındaki taş döşeli açık alan,Our yard is tiny.,Avlumuz çok ufak.,3,,home
-a1-size,SIZE,Z,CONTAINS,noun,giysinin numarası,Do you have this in a bigger size?,Bunun daha büyük bedeni var mı?,2,,daily-life
-a1-zip,ZIP,Z,STARTS,verb,fermuarı çekip kapatmak,"Can you zip it, Ali?","Fermuarı çeker misin, Ali?",3,,daily-life
 a1-melon,MELON,M,STARTS,noun,"yazın yenen büyük, sulu meyve",This melon is juicy.,Bu kavun sulu.,2,,food-drink
 a1-towel,TOWEL,T,STARTS,noun,yıkandıktan sonra kurulanmak için kullanılan bez,My towel is wet.,Havlum ıslak.,2,,home
 a1-sandwich,SANDWICH,S,STARTS,noun,iki dilim ekmek arasına konan yiyecek,He made a sandwich.,Bir sandviç yaptı.,2,,food-drink

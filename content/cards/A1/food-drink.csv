@@ -17,7 +17,6 @@ a1-coffee,COFFEE,C,STARTS,noun,kahve,Is the coffee strong?,Kahve koyu mu?,1,,foo
 a1-food,FOOD,F,STARTS,noun,yiyecek,The food smells lovely.,Yiyecekler güzel kokuyor.,1,,food-drink
 a1-fruit,FRUIT,F,STARTS,noun,meyve,Fruit is sold at the stall.,Meyve tezgâhta satılır.,1,,food-drink
 a1-meat,MEAT,M,STARTS,noun,et,He avoids meat.,O et yemekten kaçınır.,1,,food-drink
-a1-oil,OIL,O,STARTS,noun,sıvı yağ,Pour some oil in the pan.,Tavaya biraz yağ dök.,2,,food-drink
 a1-potato,POTATO,P,STARTS,noun,patates,She peeled the potato.,Patatesi soydu.,1,,food-drink
 a1-tea,TEA,T,STARTS,noun,çay,Ali pours the tea.,Ali çayı dolduruyor.,1,,food-drink
 a1-tomato,TOMATO,T,STARTS,noun,domates,Slice the tomato.,Domatesi dilimle.,1,,food-drink
@@ -30,7 +29,6 @@ a1-butter,BUTTER,B,STARTS,noun,sütten yapılan sürülebilir yağ,The butter is
 a1-salad,SALAD,S,STARTS,noun,marullu çiğ sebze yemeği,This salad is fresh.,Bu salata taze.,1,,food-drink
 a1-chocolate,CHOCOLATE,C,STARTS,noun,kakaodan yapılan tatlı,He likes chocolate.,Çikolatayı sever.,1,,food-drink
 a1-grape,GRAPE,G,STARTS,noun,salkımda biten küçük meyve,This grape is sour.,Bu üzüm ekşi.,1,,food-drink
-a1-yogurt,YOGURT,Y,STARTS,noun,sütten yapılan ekşi beyaz gıda,Yogurt is sour.,Yoğurt ekşidir.,1,,food-drink
 a1-salt,SALT,S,STARTS,noun,tuz,Pass the salt.,Tuzu uzat.,1,,food-drink
 a1-restaurant,RESTAURANT,R,STARTS,noun,dışarıda yemek yenen yer,This restaurant is closed.,Bu restoran kapalı.,1,,food-drink
 a1-fork,FORK,F,STARTS,noun,yemek yemek için çatal,I dropped my fork.,Çatalımı düşürdüm.,1,,food-drink

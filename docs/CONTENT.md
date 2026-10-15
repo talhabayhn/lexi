@@ -149,7 +149,7 @@ Start with A1 complete + 26-card smoke sets for the other levels; grow per miles
 exist so every level is playable during development; they are not release content. Levels listed in `meta.json`
 `smokeLevels` are reported with the SMOKE status. Never ship a level that is only smoke: before a level enters
 `shippedLevels`, replace or extend its smoke set with real content (smoke cards may be kept if they pass review).
-Known exception: `nat-quite-a-few` covers Q with a multi-word STARTS phrase (no single-word Q idiom fits NAT smoke); `nat-no-brainer` has no hyphen because the answer charset is A–Z and spaces only.
+Known exception: `nat-quite-a-few` covers Q with a multi-word STARTS phrase (no single-word Q idiom fits NAT smoke); `nat-nip-it-in-the-bud` replaced `nat-no-brainer` (owner decision: NO BRAINER is B2, now `b2-no-brainer` in `content/cards/B2/idioms.csv`); multi-word answers carry no hyphens because the answer charset is A–Z and spaces only.
 
 ## 6. Source lists & licensing (verify before release — not legal advice)
 - Candidate open lists: **NGSL / NAWL / TSL** (CC BY-SA 4.0 — attribution + share-alike may apply to the list

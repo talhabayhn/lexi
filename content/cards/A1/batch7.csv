@@ -5,7 +5,6 @@ a1-born,BORN,B,STARTS,adj,"dünyaya gelmiş, doğmuş",Ali was born in Izmir.,Al
 a1-brush,BRUSH,B,STARTS,noun,boyamak veya temizlemek için kıllı araç,The brush is in the drawer.,Fırça çekmecede.,2,,daily-life
 a1-bee,BEE,B,STARTS,noun,bal yapan sarı siyah çizgili böcek,A bee stung Ali.,Ali'yi bir arı soktu.,1,,animals
 a1-break,BREAK,B,STARTS,verb,bir şeyi parçalayıp kırmak,Do not break the vase.,Vazoyu kırma.,2,,daily-life
-a1-blanket,BLANKET,B,STARTS,noun,yatağı örten kalın yünlü örtü,The blanket is soft.,Battaniye yumuşak.,2,,home
 a1-call,CALL,C,STARTS,verb,birini telefonla aramak,Ali must call Ayşe.,Ali'nin Ayşe'yi araması gerek.,1,,daily-life
 a1-christmas,CHRISTMAS,C,STARTS,noun,25 Aralık'ta kutlanan Hristiyan bayramı,They exchange presents at Christmas.,Noel'de hediyeleşirler.,2,,daily-life
 a1-carpet,CARPET,C,STARTS,noun,yer döşemesini kaplayan kalın örtü,The carpet is wet.,Halı ıslak.,1,,home
@@ -13,7 +12,6 @@ a1-cupboard,CUPBOARD,C,STARTS,noun,içine tabak ve yiyecek konan dolap,The plate
 a1-curtain,CURTAIN,C,STARTS,noun,pencereyi örten kumaş,Selin washed the curtain.,Selin perdeyi yıkadı.,1,,home
 a1-cooker,COOKER,C,STARTS,noun,yemek pişirilen mutfak aleti,Ayşe cleaned the cooker.,Ayşe ocağı temizledi.,2,,home
 a1-cloud,CLOUD,C,STARTS,noun,gökyüzünde yüzen beyaz buğu kümesi,A huge cloud moved slowly.,Kocaman bir bulut yavaşça ilerledi.,1,,time-weather
-a1-church,CHURCH,C,STARTS,noun,Hristiyanların ibadet ettiği bina,The church bell rang.,Kilise çanı çaldı.,2,,city-transport
 a1-catch,CATCH,C,STARTS,verb,havadaki bir şeyi tutmak,Catch the rope!,İpi yakala!,2,,daily-life
 a1-cry,CRY,C,STARTS,verb,gözyaşı dökmek,Selin began to cry.,Selin ağlamaya başladı.,2,,daily-life
 a1-cream,CREAM,C,STARTS,noun,sütün yağlı beyaz üst kısmı,Ayşe whipped some cream.,Ayşe krema çırptı.,2,,food-drink
@@ -31,11 +29,8 @@ a1-fifth,FIFTH,F,STARTS,adj,beşinci,The fifth bulb is broken.,Beşinci ampul bo
 a1-gym,GYM,G,STARTS,noun,spor yapılan salon,The gym has modern machines.,Spor salonunda modern makineler var.,2,,daily-life
 a1-hill,HILL,H,STARTS,noun,dağdan küçük yükselti,A tower stands on the hill.,Tepenin üstünde bir kule duruyor.,2,,city-transport
 a1-history,HISTORY,H,STARTS,noun,geçmiş olayları anlatan ders,Selin loves history.,Selin tarihi çok sever.,2,,school-work
-a1-hold,HOLD,H,STARTS,verb,elinde tutmak,Hold the rope.,İpi tut.,2,,daily-life
 a1-kilometre,KILOMETRE,K,STARTS,noun,bin metreye eşit uzunluk birimi,The pharmacy is a kilometre from the bakery.,Eczane fırına bir kilometre uzaklıkta.,2,,city-transport
 a1-kick,KICK,K,STARTS,verb,ayakla vurmak,Do not kick the fence.,Çite tekme atma.,2,,daily-life
-a1-loud,LOUD,L,STARTS,adj,"yüksek sesli, gürültülü",The engine is too loud.,Motor çok gürültülü.,2,,daily-life
-a1-lose,LOSE,L,STARTS,verb,"yitirmek, elinden kaçırmak",Do not lose the receipt.,Fişi kaybetme.,2,,daily-life
 a1-match,MATCH,M,STARTS,noun,iki takımın oynadığı karşılaşma,The match was exciting.,Maç heyecanlıydı.,2,,daily-life
 a1-move,MOVE,M,STARTS,verb,bulunduğu yerden başka yere kıpırdamak,Do not move!,Kıpırdama!,2,,daily-life
 a1-million,MILLION,M,STARTS,noun,bin kere bin,Selin has a million questions.,Selin'in bir milyon sorusu var.,2,,colors-numbers
@@ -66,7 +61,6 @@ a1-toast,TOAST,T,STARTS,noun,kızartılmış ekmek dilimi,Ayşe made some toast.
 a1-theatre,THEATRE,T,STARTS,noun,oyunların sahnelendiği bina,Selin works at the theatre.,Selin tiyatroda çalışıyor.,2,,city-transport
 a1-toe,TOE,T,STARTS,noun,ayağın parmaklarından biri,My toe hurts.,Ayak parmağım ağrıyor.,2,,body-health
 a1-tenth,TENTH,T,STARTS,adj,onuncu,This is my tenth attempt.,Bu benim onuncu denemem.,2,,colors-numbers
-a1-volleyball,VOLLEYBALL,V,STARTS,noun,file üzerinden top aşırılan takım oyunu,The girls practise volleyball.,Kızlar voleybol antrenmanı yapıyor.,2,,daily-life
 a1-wonderful,WONDERFUL,W,STARTS,adj,"olağanüstü güzel, muhteşem",That concert was wonderful.,O konser muhteşemdi.,2,,daily-life
 a1-wake,WAKE,W,STARTS,verb,uykudan uyanmak,Ayşe will wake at dawn.,Ayşe şafakta uyanacak.,2,,daily-life
 a1-soap,SOAP,S,STARTS,noun,ellerin kirini temizleyen köpüren madde,Ali bought some soap.,Ali biraz sabun aldı.,1,,body-health
