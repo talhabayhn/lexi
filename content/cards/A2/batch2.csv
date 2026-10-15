@@ -1,0 +1,128 @@
+id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
+a2-unhappy,UNHAPPY,U,STARTS,adj,"mutlu olmayan, hüzünlü",He looks unhappy today.,Bugün keyifsiz görünüyor.,2,,daily-life
+a2-usual,USUAL,U,STARTS,adj,"her zamanki, alışılmış",I got up at the usual time.,Her zamanki saatte kalktım.,3,,daily-life
+a2-unless,UNLESS,U,STARTS,phrase,"eğer ... olmazsa, -medikçe",We will go unless it rains.,Yağmur yağmazsa gideceğiz.,4,,daily-life
+a2-unfriendly,UNFRIENDLY,U,STARTS,adj,insanlara sıcak davranmayan,The man at the desk was unfriendly.,Masadaki adam soğuk davrandı.,3,,daily-life
+a2-untidy,UNTIDY,U,STARTS,adj,"düzensiz, toplanmamış",My room is untidy.,Odam dağınık.,2,,home
+a2-unlucky,UNLUCKY,U,STARTS,adj,şansı yaver gitmeyen,He was unlucky in the match.,Maçta şanssızdı.,3,,daily-life
+a2-user,USER,U,STARTS,noun,bir ürünü ya da hizmeti kullanan kişi,Every user needs a password.,Her kullanıcının bir parolaya ihtiyacı var.,3,,daily-life
+a2-underwear,UNDERWEAR,U,STARTS,noun,giysilerin altına giyilen iç çamaşırı,Pack some underwear for the trip.,Gezi için iç çamaşırı al.,2,,daily-life
+a2-underline,UNDERLINE,U,STARTS,verb,bir yazının altına çizgi çekmek,Underline the new words.,Yeni sözcüklerin altını çiz.,3,,school-work
+a2-button,BUTTON,U,CONTAINS,noun,giysiyi ilikleyen küçük yuvarlak parça,A button fell off my coat.,Paltomdan bir düğme düştü.,2,,daily-life
+a2-rubbish,RUBBISH,U,CONTAINS,noun,"atılacak şeyler, çöp",Put the rubbish in the bin.,Çöpü kutuya at.,2,,home
+a2-purse,PURSE,U,CONTAINS,noun,bozuk para koymak için küçük kese,She keeps coins in her purse.,Bozuk paraları para cüzdanında tutuyor.,3,,daily-life
+a2-pupil,PUPIL,U,CONTAINS,noun,ilkokulda ders gören çocuk,Every pupil has a desk.,Her öğrencinin bir sırası var.,2,,school-work
+a2-huge,HUGE,U,CONTAINS,adj,"çok büyük, kocaman",They live in a huge house.,Kocaman bir evde yaşıyorlar.,2,,home
+a2-stupid,STUPID,U,CONTAINS,adj,"akılsızca olan, aptalca",That was a stupid mistake.,O aptalca bir hataydı.,2,,daily-life
+a2-hurt,HURT,U,CONTAINS,verb,"bedende acı hissettirmek, incitmek",Did you hurt your leg?,Bacağını incittin mi?,3,,body-health
+a2-sound,SOUND,U,CONTAINS,noun,bir şeyden çıkan ve kulakla duyulan ses,I heard a strange sound.,Garip bir ses duydum.,2,,daily-life
+a2-touch,TOUCH,U,CONTAINS,verb,eliyle dokunmak,Do not touch the hot oven.,Sıcak fırına dokunma.,2,,daily-life
+a2-round,ROUND,U,CONTAINS,adj,top gibi yuvarlak olan,The table is round.,Masa yuvarlak.,2,,daily-life
+a2-public,PUBLIC,U,CONTAINS,adj,"herkesin kullanabildiği, kamuya açık",This is a public park.,Bu herkese açık bir park.,3,,city-transport
+a2-countryside,COUNTRYSIDE,U,CONTAINS,noun,şehir dışındaki kırsal alan,We live in the countryside.,Kırsal bölgede yaşıyoruz.,3,,travel
+a2-imagine,IMAGINE,I,STARTS,verb,olmayan bir şeyi zihinde canlandırmak,Imagine you are on a beach.,Bir plajda olduğunu hayal et.,3,,daily-life
+a2-information,INFORMATION,I,STARTS,noun,bir konu hakkında verilen ya da aranan bilgi,I need more information about the trip.,Gezi hakkında daha fazla bilgiye ihtiyacım var.,3,,daily-life
+a2-insect,INSECT,I,STARTS,noun,"altı bacaklı küçük canlı, böcek",An insect is on the wall.,Duvarda bir böcek var.,2,,animals
+a2-instead,INSTEAD,I,STARTS,adv,bir şeyin yerine,Do not walk. Take the bus instead.,Yürüme. Onun yerine otobüse bin.,3,,daily-life
+a2-instrument,INSTRUMENT,I,STARTS,noun,"piyano, gitar gibi müzik çalgısı",Can you play an instrument?,Bir çalgı çalar mısın?,2,,music
+a2-interview,INTERVIEW,I,STARTS,noun,iş için yapılan yüz yüze görüşme,She has a job interview today.,Bugün bir iş mülakatı var.,3,,school-work
+a2-iron,IRON,I,STARTS,noun,kırışık giysileri düzleştiren elektrikli araç,I need an iron for this shirt.,Bu gömlek için ütüye ihtiyacım var.,3,,home
+a2-introduce,INTRODUCE,I,STARTS,verb,iki kişiyi birbirine tanıştırmak,Let me introduce my sister.,Kız kardeşimi tanıştırayım.,3,,daily-life
+a2-indoors,INDOORS,I,STARTS,adv,binanın içinde,We play indoors when it rains.,Yağmur yağınca içeride oynarız.,3,,daily-life
+a2-illness,ILLNESS,I,STARTS,noun,insanı hasta eden durum,A long illness kept him at home.,Uzun bir hastalık onu evde tuttu.,3,,body-health
+a2-impossible,IMPOSSIBLE,I,STARTS,adj,yapılması ya da olması mümkün olmayan,It is impossible to finish today.,Bugün bitirmek imkânsız.,3,,daily-life
+a2-include,INCLUDE,I,STARTS,verb,bir şeyi parçası olarak içermek,Does the price include breakfast?,Fiyata kahvaltı dahil mi?,3,,travel
+a2-improve,IMPROVE,I,STARTS,verb,bir şeyi daha iyi hale getirmek,I want to improve my English.,İngilizcemi geliştirmek istiyorum.,3,,school-work
+a2-ignore,IGNORE,I,STARTS,verb,bir şeye bilerek dikkat etmemek,Do not ignore the red light.,Kırmızı ışığı görmezden gelme.,4,,city-transport
+a2-invent,INVENT,I,STARTS,verb,daha önce olmayan bir şey bulmak,Many people want to invent something new.,Birçok kişi yeni bir şey icat etmek ister.,4,,daily-life
+a2-international,INTERNATIONAL,I,STARTS,adj,birçok ülkeyi ilgilendiren,It is an international school.,Burası uluslararası bir okul.,3,,school-work
+a2-immediately,IMMEDIATELY,I,STARTS,adv,"hiç beklemeden, hemen",Call me immediately.,Beni hemen ara.,4,,daily-life
+a2-opposite,OPPOSITE,O,STARTS,noun,bir şeyin tam tersi,Hot is the opposite of cold.,"Sıcak, soğuğun tersidir.",3,,school-work
+a2-opinion,OPINION,O,STARTS,noun,bir konudaki kişisel düşünce,"In my opinion, the film is great.",Bence film harika.,4,,daily-life
+a2-order,ORDER,O,STARTS,verb,"restoranda yiyecek istemek, sipariş etmek",We order pizza on Fridays.,Cuma günleri pizza sipariş ederiz.,2,,food-drink
+a2-outdoors,OUTDOORS,O,STARTS,adv,"açık havada, binanın dışında",The children play outdoors.,Çocuklar dışarıda oynuyor.,3,,daily-life
+a2-own,OWN,O,STARTS,adj,"başkasına değil, kişinin kendisine ait",She has her own room.,Kendine ait bir odası var.,3,,daily-life
+a2-owner,OWNER,O,STARTS,noun,bir şeye sahip olan kişi,The owner of the shop is kind.,Dükkânın sahibi nazik.,3,,daily-life
+a2-orchestra,ORCHESTRA,O,STARTS,noun,birçok çalgıcıdan oluşan müzik topluluğu,The orchestra plays tonight.,Orkestra bu gece çalıyor.,3,,music
+a2-organise,ORGANISE,O,STARTS,verb,bir işi düzenli biçimde ayarlamak,I will organise the party.,Partiyi ben düzenleyeceğim.,4,,daily-life
+a2-outfit,OUTFIT,O,STARTS,noun,birlikte giyilen kıyafetler,I like your outfit.,Kıyafetini beğendim.,3,,daily-life
+a2-once,ONCE,O,STARTS,adv,"bir kere, bir defa",I go swimming once a week.,Haftada bir kez yüzmeye giderim.,2,,time-weather
+a2-otherwise,OTHERWISE,O,STARTS,adv,"yoksa, aksi halde","Go now, otherwise the bus will leave without you.","Şimdi git, yoksa otobüs sensiz kalkacak.",4,,daily-life
+a2-online,ONLINE,O,STARTS,adv,internete bağlı olarak,I shop online.,Çevrimiçi alışveriş yaparım.,2,,daily-life
+a2-olive,OLIVE,O,STARTS,noun,zeytinyağı da veren küçük yeşil ya da siyah meyve,He put an olive on the pizza.,Pizzanın üstüne bir zeytin koydu.,2,,food-drink
+a2-hockey,HOCKEY,O,CONTAINS,noun,sopayla oynanan takım sporu,My cousin plays hockey.,Kuzenim hokey oynuyor.,2,,sports
+a2-polite,POLITE,O,CONTAINS,adj,başkalarına karşı kibar ve saygılı,The waiter is very polite.,Garson çok kibar.,3,,daily-life
+a2-cookie,COOKIE,O,CONTAINS,noun,"yuvarlak, tatlı ve kuru küçük hamur işi",Would you like a cookie?,Bir kurabiye ister misin?,2,,food-drink
+a2-broken,BROKEN,O,CONTAINS,adj,"kırılmış, bozulmuş",The window is broken.,Pencere kırık.,2,,home
+a2-wood,WOOD,O,CONTAINS,noun,ağaçtan elde edilen sert malzeme,The table is made of wood.,Masa tahtadan yapılmış.,2,,home
+a2-wool,WOOL,O,CONTAINS,noun,koyundan alınan yumuşak lif,This scarf is made of wool.,Bu atkı yünden yapılmış.,2,,daily-life
+a2-goal,GOAL,O,CONTAINS,noun,futbolda topun ağlara girmesi,He scored a goal in the last minute.,Son dakikada bir gol attı.,2,,sports
+a2-napkin,NAPKIN,N,STARTS,noun,yemekte ağzı silmek için kâğıt ya da bez,Put a napkin on the table.,Masaya bir peçete koy.,2,,home
+a2-narrow,NARROW,N,STARTS,adj,"geniş olmayan, dar",The street is narrow.,Sokak dar.,3,,city-transport
+a2-national,NATIONAL,N,STARTS,adj,bir ülkenin tamamıyla ilgili,The national team won the match.,Milli takım maçı kazandı.,3,,sports
+a2-natural,NATURAL,N,STARTS,adj,"insan yapımı olmayan, doğal",Honey is a natural food.,Bal doğal bir yiyecektir.,3,,food-drink
+a2-nature,NATURE,N,STARTS,noun,"dağ, deniz ve ormanlardan oluşan doğa",I love walking in nature.,Doğada yürümeyi seviyorum.,3,,travel
+a2-nearly,NEARLY,N,STARTS,adv,"neredeyse, az kalsın",It is nearly midnight.,Neredeyse gece yarısı.,3,,time-weather
+a2-nobody,NOBODY,N,STARTS,noun,hiç kimse,Nobody knows the answer.,Cevabı kimse bilmiyor.,3,,daily-life
+a2-noise,NOISE,N,STARTS,noun,"rahatsız edici ses, gürültü",The noise from the street woke me up.,Sokaktan gelen gürültü beni uyandırdı.,2,,daily-life
+a2-noisy,NOISY,N,STARTS,adj,"çok ses çıkaran, patırtılı",The classroom is noisy today.,Sınıf bugün çok gürültülü.,2,,daily-life
+a2-normal,NORMAL,N,STARTS,adj,"olağan, sıra dışı olmayan",It was a normal day.,Sıradan bir gündü.,2,,daily-life
+a2-note,NOTE,N,STARTS,noun,kısa yazılmış mesaj ya da not,I left you a note.,Sana bir not bıraktım.,2,,school-work
+a2-naughty,NAUGHTY,N,STARTS,adj,"söz dinlemeyen, yaramaz",The puppy is naughty.,Köpek yavrusu yaramaz.,2,,family-people
+a2-nail,NAIL,N,STARTS,noun,parmak ucundaki sert tırnak,I broke a nail yesterday.,Dün bir tırnağımı kırdım.,3,,body-health
+a2-niece,NIECE,N,STARTS,noun,kardeşin ya da eşin kardeşinin kız çocuğu,My niece is two years old.,Yeğenim iki yaşında.,2,,family-people
+a2-nephew,NEPHEW,N,STARTS,noun,kardeşin ya da eşin kardeşinin erkek çocuğu,My nephew plays football.,Erkek yeğenim futbol oynuyor.,2,,family-people
+a2-nut,NUT,N,STARTS,noun,"kabuğu sert, yağlı yemiş",There is a nut in the cake.,Kekin içinde bir fındık var.,2,,food-drink
+a2-novel,NOVEL,N,STARTS,noun,"uzun kurgusal kitap, roman",She is reading a novel.,Bir roman okuyor.,3,,school-work
+a2-bone,BONE,N,CONTAINS,noun,vücudun iskeletini oluşturan sert parça,The dog has a bone.,Köpeğin bir kemiği var.,2,,body-health
+a2-stone,STONE,N,CONTAINS,noun,yerden toplanan küçük sert kaya parçası,He threw a stone into the lake.,Göle bir taş attı.,2,,daily-life
+a2-brain,BRAIN,N,CONTAINS,noun,kafatasında bulunan düşünme organı,The brain controls the body.,Beyin vücudu yönetir.,3,,body-health
+a2-sentence,SENTENCE,N,CONTAINS,noun,"bir düşünceyi anlatan sözcük dizisi, cümle",Write a sentence with this word.,Bu sözcükle bir cümle yaz.,2,,school-work
+a2-earn,EARN,E,STARTS,verb,çalışarak para kazanmak,How much do you earn?,Ne kadar kazanıyorsun?,3,,school-work
+a2-earring,EARRING,E,STARTS,noun,kulağa takılan süs,She lost an earring.,Bir küpesini kaybetti.,2,,daily-life
+a2-earth,EARTH,E,STARTS,noun,Güneş'in çevresinde dönen gezegenimiz,The earth moves around the sun.,Dünya Güneş'in etrafında döner.,3,,daily-life
+a2-education,EDUCATION,E,STARTS,noun,okullarda verilen öğretim,Good education helps young people.,İyi eğitim gençlere yardım eder.,3,,school-work
+a2-either,EITHER,E,STARTS,phrase,iki seçenekten herhangi biri,You can have either tea or coffee.,Ya çay ya da kahve alabilirsin.,3,,daily-life
+a2-electric,ELECTRIC,E,STARTS,adj,elektrikle çalışan,My brother has an electric guitar.,Ağabeyimin elektro gitarı var.,3,,music
+a2-electricity,ELECTRICITY,E,STARTS,noun,lambaları yakan enerji,We have no electricity tonight.,Bu gece elektrik yok.,3,,home
+a2-energy,ENERGY,E,STARTS,noun,bir işi yapmak için gereken güç,I have no energy today.,Bugün hiç enerjim yok.,3,,body-health
+a2-engine,ENGINE,E,STARTS,noun,"aracı hareket ettiren makine, motor",The car engine is hot.,Arabanın motoru sıcak.,3,,city-transport
+a2-engineer,ENGINEER,E,STARTS,noun,makine ve yapı tasarlayan meslek insanı,My father is an engineer.,Babam mühendis.,3,,school-work
+a2-enough,ENOUGH,E,STARTS,adj,ihtiyacı karşılayacak kadar,We have enough food.,Yeterince yiyeceğimiz var.,2,,daily-life
+a2-enter,ENTER,E,STARTS,verb,bir yere girmek,Do not enter without a ticket.,Biletsiz içeri girme.,2,,city-transport
+a2-entrance,ENTRANCE,E,STARTS,noun,bir yere girilen kapı ya da geçit,The entrance is at the back.,Giriş arkada.,2,,city-transport
+a2-even,EVEN,E,STARTS,adv,beklenmeyeni vurgulayan sözcük: bile,Even my little brother knows this.,Küçük kardeşim bile bunu biliyor.,3,,daily-life
+a2-event,EVENT,E,STARTS,noun,yaşanan önemli olay ya da etkinlik,The school event starts at six.,Okul etkinliği altıda başlıyor.,3,,daily-life
+a2-ever,EVER,E,STARTS,adv,herhangi bir zamanda,Have you ever seen a whale?,Hiç balina gördün mü?,3,,daily-life
+a2-easily,EASILY,E,STARTS,adv,"zorlanmadan, kolaylıkla",She won easily.,Kolayca kazandı.,3,,daily-life
+a2-enemy,ENEMY,E,STARTS,noun,"karşı tarafta savaşılan kişi, düşman",The soldiers fought the enemy.,Askerler düşmanla savaştı.,3,,daily-life
+a2-eraser,ERASER,E,STARTS,noun,kurşun kalem izini silen küçük nesne,I need an eraser.,Bir silgiye ihtiyacım var.,2,,school-work
+a2-essay,ESSAY,E,STARTS,noun,belli bir konuda yazılan kısa yazı,I wrote an essay about dogs.,Köpekler üzerine bir kompozisyon yazdım.,3,,school-work
+a2-edge,EDGE,E,STARTS,noun,"bir şeyin kenarı, ucu",Do not stand near the edge.,Kenarın yakınında durma.,3,,daily-life
+a2-ending,ENDING,E,STARTS,noun,bir hikâyenin ya da filmin sonu,The film has a sad ending.,Filmin hüzünlü bir sonu var.,3,,daily-life
+a2-shelf,SHELF,E,CONTAINS,noun,duvara takılan kitap rafı,The books are on the shelf.,Kitaplar rafta.,2,,home
+a2-speed,SPEED,E,CONTAINS,noun,bir şeyin hareket hızı,The car was moving at high speed.,Araba yüksek hızla gidiyordu.,3,,city-transport
+a2-screen,SCREEN,E,CONTAINS,noun,televizyon ya da bilgisayarın görüntü yüzeyi,The screen is very bright.,Ekran çok parlak.,2,,daily-life
+a2-teenager,TEENAGER,E,CONTAINS,noun,on üç ile on dokuz yaş arasındaki genç,My sister is a teenager.,Kız kardeşim bir ergen.,3,,family-people
+a2-helmet,HELMET,E,CONTAINS,noun,başı korumak için takılan sert şapka,Wear a helmet when you ride.,Bisiklete binerken kask tak.,3,,sports
+a2-gate,GATE,G,STARTS,noun,bahçe ya da havalimanında girişteki kapı,The garden gate is open.,Bahçe kapısı açık.,2,,home
+a2-gentleman,GENTLEMAN,G,STARTS,noun,kibar ve görgülü erkek,He is a real gentleman.,O tam bir beyefendi.,3,,family-people
+a2-giant,GIANT,G,STARTS,noun,"masallardaki kocaman yaratık, dev",The giant was very tall.,Dev çok uzundu.,2,,daily-life
+a2-ground,GROUND,G,STARTS,noun,üzerinde yürüdüğümüz toprak yüzey,He sat on the ground.,Yere oturdu.,3,,daily-life
+a2-group,GROUP,G,STARTS,noun,bir arada olan insanlar ya da şeyler,A group of students is waiting.,Bir grup öğrenci bekliyor.,2,,school-work
+a2-grow,GROW,G,STARTS,verb,"boyu uzamak, büyümek",Plants grow in spring.,Bitkiler ilkbaharda büyür.,2,,daily-life
+a2-guard,GUARD,G,STARTS,noun,"bir yeri koruyan görevli, bekçi",The guard stands at the door.,Bekçi kapıda duruyor.,3,,daily-life
+a2-guide,GUIDE,G,STARTS,noun,turistlere yerleri gezdiren kişi,The guide showed us the old castle.,Rehber bize eski şatoyu gösterdi.,3,,travel
+a2-guess,GUESS,G,STARTS,verb,kesin bilmeden tahmin etmek,Guess my age!,Yaşımı tahmin et!,2,,daily-life
+a2-garlic,GARLIC,G,STARTS,noun,dişlerden oluşan keskin kokulu sebze,Add some garlic to the soup.,Çorbaya biraz sarımsak ekle.,2,,food-drink
+a2-gas,GAS,G,STARTS,noun,"ocakta yakılan yakıt, doğalgaz",Turn off the gas.,Gazı kapat.,2,,home
+a2-glad,GLAD,G,STARTS,adj,"bir şeye sevinen, memnun",I am glad to see you.,Seni gördüğüme sevindim.,2,,daily-life
+a2-gold,GOLD,G,STARTS,noun,"parlak sarı, değerli maden",The ring is made of gold.,Yüzük altından yapılmış.,2,,daily-life
+a2-grade,GRADE,G,STARTS,noun,okulda sınav sonucuna verilen not,She got a good grade.,İyi bir not aldı.,3,,school-work
+a2-golf,GOLF,G,STARTS,noun,küçük topun deliklere sokulduğu spor,My father plays golf on Sundays.,Babam pazar günleri golf oynar.,2,,sports
+a2-gymnastics,GYMNASTICS,G,STARTS,noun,beden esnekliğine dayanan jimnastik sporu,She does gymnastics after school.,Okuldan sonra jimnastik yapıyor.,3,,sports
+a2-foreign,FOREIGN,G,CONTAINS,adj,"başka bir ülkeden olan, yabancı",She speaks three foreign languages.,Üç yabancı dil konuşuyor.,3,,school-work
+a2-strong,STRONG,G,CONTAINS,adj,"gücü çok olan, kuvvetli",He is very strong.,O çok güçlü.,2,,body-health
+a2-single,SINGLE,G,CONTAINS,adj,bir tane olan ya da evli olmayan,I did not eat a single biscuit.,Tek bir bisküvi bile yemedim.,3,,daily-life
+a2-magic,MAGIC,G,CONTAINS,noun,"olağanüstü şeyler yapan gizemli güç, sihir",The story is full of magic.,Hikâye sihirle dolu.,3,,daily-life
+a2-sign,SIGN,G,CONTAINS,noun,bir şey bildiren işaret ya da tabela,Read the sign on the door.,Kapıdaki tabelayı oku.,2,,city-transport
