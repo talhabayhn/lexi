@@ -61,7 +61,7 @@ public interface JokerRepository {
     /** Replaces the inventory, e.g. with `GameState.jokers` after `JokerApplied`. */
     public suspend fun save(inventory: JokerInventory)
 
-    /** Adds [amount] jokers of [type] (daily login, rewarded ad, Pro refill). */
+    /** Adds [amount] jokers of [type] (rewarded ad, Pro refill); daily gifts go through [updateWallet]. */
     public suspend fun add(type: JokerType, amount: Int)
 
     /** Gives [startPack] on the very first call (no inventory stored yet); returns whether it was granted. */

@@ -108,6 +108,7 @@ private suspend fun GrantDailyJokers.giveQuietly() {
         throw e
     } catch (@Suppress("TooGenericExceptionCaught") e: Exception) {
         // Never block the start on a gift.
+        // TODO(M7): report as a non-fatal once Crashlytics is behind its interface.
     }
 }
 
