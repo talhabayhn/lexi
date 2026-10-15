@@ -30,7 +30,7 @@ speakers, from A1 to native-level idioms — playable solo, on one phone with a 
 | Exam packs (Pro) | LGS, MEB, YKS-Dil, YDS/YÖKDİL, IELTS, TOEFL |
 | Friends (offline) | **Same-device duel** (hot-seat, TV-show rules) |
 | Monetisation | Free + rewarded ads (jokers) + Lexi Pro (monthly, yearly, lifetime) |
-| Settings | Sound, haptics, TTS on correct, classic duration, reminder, daily goal, UI/clue language, accent |
+| Settings | Sound, haptics, TTS on correct, classic duration, reminder, daily goal, UI/clue language, accent. Owner decisions: daily reminder off until the M7 notification pre-prompt; UI language defaults to the system language |
 
 ### v1.1
 Online private rooms with a 5-character code: **1v1 Duel** and **Race**. Joining a room is always free.

@@ -73,7 +73,7 @@ correct = blue circle, wrong = red square, passed = yellow leaf.
 | Classic | ⚙ 180 s total (settings: 120/180/240/300) | yes | default |
 | Practice | none | no leaderboard, still SRS | "süresiz, baskısız" |
 | Hardcore | ⚙ 180 s | yes ×1.5 | first wrong ends the game |
-| Daily | ⚙ 180 s | yes | seed per date+level, **one scored attempt per day**, shareable |
+| Daily | ⚙ 180 s | yes | seed per date+level, **one scored attempt per day** (owner decision: per day, not per level), shareable |
 | Review | none | no | SRS-due cards |
 | Level test | ⚙ 120 s | no | adaptive, see §9 |
 | Duel (hot-seat / online) | per-player clocks ⚙ 150 s each | yes | §8 |
