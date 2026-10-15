@@ -2,6 +2,7 @@ package dev.talhabayhan.lexi.feature.game.result
 
 import com.github.takahirom.roborazzi.captureRoboImage
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
+import dev.talhabayhan.lexi.core.domain.game.GameMode
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
@@ -27,6 +28,19 @@ class ResultScreenScreenshotTest {
     fun longTextEnglish() {
         captureRoboImage("src/androidHostTest/screenshots/ResultScreenLongTextEnglish.png") {
             LexiTheme(reducedMotion = false) { ResultScreen(state = ResultSamples.longText, onIntent = {}) }
+        }
+    }
+
+    /** Daily wheel: one scored attempt per day, so TEKRAR OYNA is hidden and Paylaş fills the row. */
+    @Test
+    fun daily() {
+        captureRoboImage("src/androidHostTest/screenshots/ResultScreenDaily.png") {
+            LexiTheme(reducedMotion = false) {
+                ResultScreen(
+                    state = ResultSamples.design.copy(mode = GameMode.DAILY),
+                    onIntent = {},
+                )
+            }
         }
     }
 

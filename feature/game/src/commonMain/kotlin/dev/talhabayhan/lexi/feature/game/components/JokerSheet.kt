@@ -63,8 +63,8 @@ import org.jetbrains.compose.resources.stringResource
 /**
  * The joker sheet (`05-joker-sheet`): bottom sheet (motion.md #10) with the four jokers and the ad button, plus the
  * "Süre işlemeye devam ediyor · 1:31" pill at the top, because the clock keeps running (`GAME_RULES.md` §5; untimed
- * modes show no pill). [adReward] is `GameConfig.rewardedAdJokerReward`; null hides the ad button (feature flag). Fills its parent; renders nothing while
- * not [visible].
+ * modes show no pill). [adReward] is `GameConfig.rewardedAdJokerReward`; null hides the ad button (feature flag).
+ * Fills its parent; renders nothing while not [visible].
  */
 @Composable
 internal fun JokerSheet(

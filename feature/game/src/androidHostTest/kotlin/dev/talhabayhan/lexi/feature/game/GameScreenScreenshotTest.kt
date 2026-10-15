@@ -55,6 +55,20 @@ class GameScreenScreenshotTest {
         }
     }
 
+    /** The sheet as `05-joker-sheet.png` draws it, with the ad button (`FeatureFlags.rewardedAdJokers`, on from M7). */
+    @Test
+    fun jokerSheetWithAd() {
+        captureRoboImage("src/androidHostTest/screenshots/JokerSheetWithAd.png") {
+            LexiTheme(reducedMotion = false) {
+                GameScreen(
+                    state = GameSamples.jokerSheet.copy(showJokerAd = true),
+                    clock = { GameSamples.jokerSheetClock },
+                    onIntent = {},
+                )
+            }
+        }
+    }
+
     /** English copy is longer: titles and descriptions wrap, costs stay on one line. */
     @Test
     @Config(qualifiers = "en-w390dp-h844dp-xhdpi")
