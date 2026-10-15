@@ -2,7 +2,7 @@ id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
 b1-achieve,ACHIEVE,A,STARTS,verb,çabayla hedefe ulaşmak,She worked hard to achieve her dream.,Hayaline ulaşmak için çok çalıştı.,3,,school-work
 b1-career,CAREER,C,STARTS,noun,meslekte yıllar içinde ilerleyiş,He started his career as a teacher.,Kariyerine öğretmen olarak başladı.,3,,business
 b1-deadline,DEADLINE,D,STARTS,noun,bir işin teslimi için son gün,The deadline is next Friday.,Son teslim tarihi gelecek cuma.,3,,business
-b1-environment,ENVIRONMENT,E,STARTS,noun,doğayı da kapsayan yaşam çevresi,We must protect the environment.,Çevreyi korumalıyız.,3,,daily-life
+b1-environment,ENVIRONMENT,E,STARTS,noun,doğayı da kapsayan yaşam çevresi,We must save the environment.,Çevreyi kurtarmalıyız.,3,,daily-life
 b1-flexible,FLEXIBLE,F,STARTS,adj,"kolay uyum sağlayan, esneyebilen",My boss gives me flexible hours.,Patronum bana esnek saatler veriyor.,3,,business
 b1-generous,GENEROUS,G,STARTS,adj,"paylaşmaktan çekinmeyen, eli açık",He is very generous with his friends.,Arkadaşlarına karşı çok cömert.,3,,family-people
 b1-honest,HONEST,H,STARTS,adj,"doğru sözlü, yalan söylemeyen",Please be honest with me.,Lütfen bana karşı dürüst ol.,3,,family-people

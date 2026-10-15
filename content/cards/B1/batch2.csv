@@ -1,0 +1,127 @@
+id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
+b1-cable,CABLE,C,STARTS,noun,elektrik veya internet taşıyan kalın tel,The cable is too short to reach the wall.,Kablo duvara ulaşmak için çok kısa.,3,,technology
+b1-calm,CALM,C,STARTS,adj,"sakin, heyecanlanmayan",Stay calm and listen to me.,Sakin ol ve beni dinle.,3,,daily-life
+b1-cancel,CANCEL,C,STARTS,verb,planlanan bir şeyi iptal etmek,They had to cancel the concert because of rain.,Yağmur yüzünden konseri iptal etmek zorunda kaldılar.,3,,travel
+b1-candidate,CANDIDATE,C,STARTS,noun,bir iş veya seçim için aday olan kişi,Each candidate must send a short letter.,Her aday kısa bir mektup göndermeli.,3,,business
+b1-cardboard,CARDBOARD,C,STARTS,noun,kutu yapımında kullanılan kalın karton,The box is made of cardboard.,Kutu kartondan yapılmış.,3,,daily-life
+b1-careless,CARELESS,C,STARTS,adj,"dikkatsiz, özensiz",A careless driver can have an accident.,Dikkatsiz bir sürücü kaza yapabilir.,3,,daily-life
+b1-casual,CASUAL,C,STARTS,adj,"resmî olmayan, rahat",I wear casual clothes at weekends.,Hafta sonları rahat kıyafetler giyerim.,3,,daily-life
+b1-cause,CAUSE,C,STARTS,noun,bir olayın nedeni,Nobody knows the cause of the fire.,Yangının nedenini kimse bilmiyor.,3,,daily-life
+b1-ceiling,CEILING,C,STARTS,noun,"bir odanın üst yüzeyi, tavan",There is a spider on the ceiling.,Tavanda bir örümcek var.,3,,daily-life
+b1-certain,CERTAIN,C,STARTS,adj,"bir konuda hiç şüphesi olmayan, emin",I am certain that he is at home.,Evde olduğundan eminim.,3,,daily-life
+b1-certainly,CERTAINLY,C,STARTS,adv,"kuşkusuz, elbette",You can certainly borrow my bike.,Bisikletimi elbette ödünç alabilirsin.,3,,daily-life
+b1-certificate,CERTIFICATE,C,STARTS,noun,bir başarıyı belgeleyen resmî kâğıt,She received a certificate after the course.,Kurstan sonra bir sertifika aldı.,3,,school-work
+b1-challenge,CHALLENGE,C,STARTS,noun,güç ve cesaret gerektiren zor görev,Learning Chinese is a big challenge.,Çince öğrenmek büyük bir zorluk.,3,,school-work
+b1-character,CHARACTER,C,STARTS,noun,bir kitaptaki ya da filmdeki kişi; kişinin huyu,My favourite character in the film is the old man.,Filmdeki en sevdiğim karakter yaşlı adam.,3,,film-tv
+b1-charge,CHARGE,C,STARTS,verb,bir hizmet için belli bir ücret istemek,The hotel will charge you fifty euros a night.,Otel senden gecelik elli avro isteyecek.,4,,business
+b1-charity,CHARITY,C,STARTS,noun,yoksullara yardım eden kuruluş,They gave the money to charity.,Parayı hayır kurumuna verdiler.,3,,daily-life
+b1-cheat,CHEAT,C,STARTS,verb,oyunda veya sınavda hile yapmak,He tried to cheat in the exam.,Sınavda kopya çekmeye çalıştı.,3,,school-work
+b1-cheer,CHEER,C,STARTS,verb,bir takıma bağırarak destek vermek,The fans cheer when their team scores.,Takımları gol atınca taraftarlar tezahürat yapar.,3,,sports
+b1-chemical,CHEMICAL,C,STARTS,noun,kimyasal madde,This chemical is dangerous for children.,Bu kimyasal çocuklar için tehlikeli.,4,,school-work
+b1-chest,CHEST,C,STARTS,noun,karın ile boyun arasındaki gövde bölümü,He had a pain in his chest.,Göğsünde bir ağrı vardı.,3,,body-health
+b1-cigarette,CIGARETTE,C,STARTS,noun,ağızda içilen sarılı tütün,Every cigarette is bad for your health.,Her sigara sağlığa zararlıdır.,3,,body-health
+b1-claim,CLAIM,C,STARTS,verb,kanıtı olmadan bir şeyin doğru olduğunu söylemek,They claim that the story is true.,Hikâyenin doğru olduğunu iddia ediyorlar.,4,,daily-life
+b1-classic,CLASSIC,C,STARTS,adj,"uzun yıllar sevilen, klasik",This is a classic film from the 1950s.,"Bu, 1950'lerden kalma klasik bir film.",3,,film-tv
+b1-clerk,CLERK,C,STARTS,noun,ofis veya mağazada kayıt tutan memur,The hotel clerk gave me the key.,Otel görevlisi bana anahtarı verdi.,3,,business
+b1-client,CLIENT,C,STARTS,noun,"avukat veya danışmandan hizmet alan kişi, müvekkil",The lawyer is meeting a client now.,Avukat şu anda bir müvekkille görüşüyor.,3,,business
+b1-climate,CLIMATE,C,STARTS,noun,bir bölgenin uzun süreli hava koşulları,Turkey has a warm climate.,Türkiye'nin ılık bir iklimi var.,3,,daily-life
+b1-clothing,CLOTHING,C,STARTS,noun,giyim (toplu ad; çocuk giyimi gibi),The shop sells children's clothing.,Mağaza çocuk giyimi satıyor.,3,,daily-life
+b1-clue,CLUE,C,STARTS,noun,bir gizemi çözmeye yardım eden ipucu,The police found a clue near the door.,Polis kapının yanında bir ipucu buldu.,3,,daily-life
+b1-colleague,COLLEAGUE,C,STARTS,noun,aynı işyerinde çalışan arkadaş,I had lunch with my colleague.,Mesai arkadaşımla öğle yemeği yedim.,3,,business
+b1-college,COLLEGE,C,STARTS,noun,lise sonrası eğitim veren okul,She studied art at college.,Yüksekokulda sanat okudu.,3,,school-work
+b1-comedy,COMEDY,C,STARTS,noun,insanları güldürmek için yapılan oyun veya film,We watched a comedy last night.,Dün gece bir komedi izledik.,3,,film-tv
+b1-comfort,COMFORT,C,STARTS,noun,rahatlık ve huzur hissi,They live in comfort in a big house.,Büyük bir evde rahat yaşıyorlar.,3,,daily-life
+b1-comment,COMMENT,C,STARTS,noun,bir konuda söylenen kısa görüş,Do you have any comment on this idea?,Bu fikir hakkında bir yorumun var mı?,3,,daily-life
+b1-communicate,COMMUNICATE,C,STARTS,verb,bilgi ve düşünceleri başkalarıyla paylaşmak,Babies communicate by crying.,Bebekler ağlayarak iletişim kurar.,3,,daily-life
+b1-community,COMMUNITY,C,STARTS,noun,aynı yerde yaşayan insan topluluğu,The whole community helped after the flood.,Selden sonra bütün topluluk yardım etti.,3,,family-people
+b1-compare,COMPARE,C,STARTS,verb,iki şeyin benzerlik ve farklarına bakmak,Let's compare the prices of these two phones.,Bu iki telefonun fiyatlarını karşılaştıralım.,3,,school-work
+b1-complain,COMPLAIN,C,STARTS,verb,"memnuniyetsizliğini dile getirmek, şikâyet etmek",Guests often complain about the noise.,Misafirler sık sık gürültüden şikâyet eder.,3,,daily-life
+b1-complete,COMPLETE,C,STARTS,adj,"eksiksiz, tam",I need a complete list of names.,Tam bir isim listesine ihtiyacım var.,3,,school-work
+b1-complicated,COMPLICATED,C,STARTS,adj,"anlaması veya yapması zor, karışık",The rules of the game are too complicated.,Oyunun kuralları çok karışık.,3,,daily-life
+b1-concentrate,CONCENTRATE,C,STARTS,verb,bütün dikkatini bir şeye vermek,I cannot concentrate with that noise.,O gürültüyle konsantre olamıyorum.,3,,school-work
+b1-conclusion,CONCLUSION,C,STARTS,noun,bir düşünce sürecinin vardığı sonuç,What is your conclusion after reading the report?,Raporu okuduktan sonra vardığın sonuç nedir?,4,,school-work
+b1-condition,CONDITION,C,STARTS,noun,bir şeyin içinde bulunduğu durum,The car is in good condition.,Araba iyi durumda.,3,,daily-life
+b1-confidence,CONFIDENCE,C,STARTS,noun,kendine duyulan güven,She speaks English with confidence.,İngilizceyi kendinden emin konuşuyor.,3,,school-work
+b1-confident,CONFIDENT,C,STARTS,adj,kendine güvenen,I feel confident about the test.,Test konusunda kendime güveniyorum.,3,,school-work
+b1-confused,CONFUSED,C,STARTS,adj,"ne yapacağını bilemeyen, kafası karışmış",I am confused by this map.,Bu haritadan kafam karıştı.,3,,daily-life
+b1-connect,CONNECT,C,STARTS,verb,iki şeyi birbirine bağlamak,Connect the printer to the computer.,Yazıcıyı bilgisayara bağla.,3,,technology
+b1-consider,CONSIDER,C,STARTS,verb,karar vermeden önce uzun uzun düşünmek,Please consider my offer.,Lütfen teklifimi düşün.,3,,daily-life
+b1-contact,CONTACT,C,STARTS,noun,biriyle haberleşme ve görüşme,We lost contact after school.,Okuldan sonra irtibatı kaybettik.,3,,daily-life
+b1-contract,CONTRACT,C,STARTS,noun,iki tarafın imzaladığı yasal anlaşma,He signed a contract with the club.,Kulüple bir sözleşme imzaladı.,3,,business
+b1-control,CONTROL,C,STARTS,verb,bir şeyi yönetmek veya denetim altında tutmak,Can you control the speed of this machine?,Bu makinenin hızını kontrol edebilir misin?,3,,technology
+b1-courage,COURAGE,C,STARTS,noun,korkuya rağmen harekete geçebilme gücü,It takes courage to speak in public.,Topluluk önünde konuşmak cesaret ister.,3,,family-people
+b1-crime,CRIME,C,STARTS,noun,yasaya aykırı suç,Crime is a problem in big cities.,"Suç, büyük şehirlerde bir sorun.",3,,daily-life
+b1-criminal,CRIMINAL,C,STARTS,noun,suç işleyen kişi,The criminal was caught at the airport.,Suçlu havaalanında yakalandı.,3,,daily-life
+b1-criticise,CRITICISE,C,STARTS,verb,"bir şeyin kusurlarını söylemek, eleştirmek",Don't criticise her; she is trying.,Onu eleştirme; elinden geleni yapıyor.,4,,daily-life
+b1-crowd,CROWD,C,STARTS,noun,bir yerde toplanmış kalabalık,A large crowd waited outside the stadium.,Stadyumun dışında büyük bir kalabalık bekliyordu.,3,,city-transport
+b1-culture,CULTURE,C,STARTS,noun,"bir toplumun sanatı, inançları ve yaşam biçimi",I love learning about this culture.,Bu kültürü öğrenmeyi seviyorum.,3,,travel
+b1-curious,CURIOUS,C,STARTS,adj,öğrenmeye meraklı,Children are curious about everything.,Çocuklar her şeyi merak eder.,3,,family-people
+b1-current,CURRENT,C,STARTS,adj,"şu anda geçerli olan, güncel",What is your current address?,Güncel adresin nedir?,4,,daily-life
+b1-custom,CUSTOM,C,STARTS,noun,bir toplumda yerleşmiş gelenek,It is a custom to give flowers on that day.,O gün çiçek vermek bir gelenektir.,3,,travel
+b1-damage,DAMAGE,D,STARTS,noun,bir şeye verilen zarar,The storm caused a lot of damage.,Fırtına çok zarara yol açtı.,3,,daily-life
+b1-deaf,DEAF,D,STARTS,adj,duyma yetisi olmayan,My grandfather is slightly deaf.,Dedem biraz sağır.,4,,body-health
+b1-deal,DEAL,D,STARTS,noun,"iki taraf arasında yapılan anlaşma, pazarlık",We made a good deal on the car.,Araba konusunda iyi bir anlaşma yaptık.,3,,business
+b1-debt,DEBT,D,STARTS,noun,ödenmesi gereken borç,He is in debt to the bank.,Bankaya borcu var.,3,,business
+b1-decision,DECISION,D,STARTS,noun,düşündükten sonra verilen karar,It was a difficult decision.,Zor bir karardı.,3,,daily-life
+b1-decorate,DECORATE,D,STARTS,verb,bir yeri süsleyip güzelleştirmek,We decorate the tree at Christmas.,Noelde ağacı süsleriz.,3,,daily-life
+b1-defeat,DEFEAT,D,STARTS,verb,bir rakibi yenmek,Our team hopes to defeat them tomorrow.,Takımımız yarın onları yenmeyi umuyor.,4,,sports
+b1-definitely,DEFINITELY,D,STARTS,adv,"kesinlikle, hiç şüphesiz",I will definitely come to your party.,Partine kesinlikle geleceğim.,3,,daily-life
+b1-delay,DELAY,D,STARTS,noun,bir şeyin planlanandan geç gerçekleşmesi,There was a long delay at the airport.,Havaalanında uzun bir gecikme oldu.,3,,travel
+b1-deliver,DELIVER,D,STARTS,verb,bir şeyi istenen yere ulaştırmak,They deliver pizza to your door.,Pizzayı kapınıza getiriyorlar.,3,,food-drink
+b1-demand,DEMAND,D,STARTS,noun,bir şeye duyulan güçlü talep,There is a big demand for new houses.,Yeni evlere büyük bir talep var.,4,,business
+b1-depend,DEPEND,D,STARTS,verb,bir başkasına veya şeye bağlı olmak,Prices depend on the season.,Fiyatlar mevsime bağlıdır.,3,,daily-life
+b1-depressed,DEPRESSED,D,STARTS,adj,çok üzgün ve umutsuz,He felt depressed after losing his job.,İşini kaybettikten sonra bunalıma girdi.,3,,body-health
+b1-deserve,DESERVE,D,STARTS,verb,bir şeyi hak etmek,You deserve a long holiday.,Uzun bir tatili hak ediyorsun.,3,,daily-life
+b1-despite,DESPITE,D,STARTS,phrase,-e rağmen,"Despite the rain, we played football.",Yağmura rağmen futbol oynadık.,3,,daily-life
+b1-destroy,DESTROY,D,STARTS,verb,tamamen yıkıp yok etmek,A fire can destroy a whole forest.,Bir yangın koca bir ormanı yok edebilir.,3,,daily-life
+b1-detail,DETAIL,D,STARTS,noun,bir şeyin küçük ayrıntısı,Please tell me every detail.,Lütfen bana her ayrıntıyı anlat.,3,,daily-life
+b1-determined,DETERMINED,D,STARTS,adj,"kararlı, vazgeçmeyen",She is determined to win the race.,Yarışı kazanmakta kararlı.,3,,sports
+b1-develop,DEVELOP,D,STARTS,verb,geliştirmek veya gelişmek,The company wants to develop a new app.,Şirket yeni bir uygulama geliştirmek istiyor.,3,,technology
+b1-development,DEVELOPMENT,D,STARTS,noun,bir şeyin gelişme süreci,The development of the town was very fast.,Kasabanın gelişimi çok hızlıydı.,3,,business
+b1-dialogue,DIALOGUE,D,STARTS,noun,iki kişi arasındaki konuşma,Read the dialogue and answer the questions.,Diyaloğu okuyun ve soruları cevaplayın.,3,,school-work
+b1-director,DIRECTOR,D,STARTS,noun,film çeken veya bir şirketi yöneten kişi,The director of the film is Spanish.,Filmin yönetmeni İspanyol.,3,,film-tv
+b1-disappear,DISAPPEAR,D,STARTS,verb,gözden kaybolmak,Some animals may disappear soon.,Bazı hayvanlar yakında yok olabilir.,3,,daily-life
+b1-disappointed,DISAPPOINTED,D,STARTS,adj,beklediği olmayınca hayal kırıklığına uğrayan,I was disappointed with the film.,Filmden hayal kırıklığına uğradım.,3,,film-tv
+b1-discover,DISCOVER,D,STARTS,verb,daha önce bilinmeyen bir şeyi bulmak,Scientists discover new animals every year.,Bilim insanları her yıl yeni hayvanlar keşfeder.,3,,school-work
+b1-discuss,DISCUSS,D,STARTS,verb,bir konuyu birlikte tartışmak,We need to discuss the plan.,Planı görüşmemiz gerekiyor.,3,,school-work
+b1-disgusting,DISGUSTING,D,STARTS,adj,"insanın midesini bulandıran, iğrenç",The smell in the kitchen is disgusting.,Mutfaktaki koku iğrenç.,3,,food-drink
+b1-distant,DISTANT,D,STARTS,adj,uzakta bulunan,A distant relative came to the wedding.,Uzak bir akraba düğüne geldi.,4,,family-people
+b1-disturb,DISTURB,D,STARTS,verb,çalışan veya dinlenen birini rahatsız etmek,Please do not disturb the baby.,Lütfen bebeği rahatsız etmeyin.,3,,daily-life
+b1-divorce,DIVORCE,D,STARTS,noun,"evliliğin mahkemede sona ermesi, boşanma",Their divorce was a sad time for the children.,Onların boşanması çocuklar için üzücü bir dönemdi.,4,,family-people
+b1-document,DOCUMENT,D,STARTS,noun,resmî bilgiler içeren yazılı belge,Please sign this document.,Lütfen bu belgeyi imzalayın.,3,,business
+b1-documentary,DOCUMENTARY,D,STARTS,noun,gerçek olayları anlatan film,I watched a documentary about whales.,Balinalar hakkında bir belgesel izledim.,3,,film-tv
+b1-drama,DRAMA,D,STARTS,noun,ciddi konuları işleyen oyun veya dizi,My sister loves a good drama.,Kız kardeşim iyi bir dramı çok sever.,3,,film-tv
+b1-duty,DUTY,D,STARTS,noun,yapılması gereken görev,It is your duty to help others.,Başkalarına yardım etmek senin görevin.,3,,school-work
+b1-economy,ECONOMY,E,STARTS,noun,bir ülkenin üretim ve ticaret düzeni,The economy is growing slowly.,Ekonomi yavaş büyüyor.,3,,business
+b1-editor,EDITOR,E,STARTS,noun,gazete veya kitabı hazırlayan yayın görevlisi,The editor changed the title of the article.,Editör makalenin başlığını değiştirdi.,4,,business
+b1-effect,EFFECT,E,STARTS,noun,bir şeyin yarattığı etki,The medicine had no effect.,İlacın hiçbir etkisi olmadı.,3,,body-health
+b1-effort,EFFORT,E,STARTS,noun,bir şeyi başarmak için harcanan çaba,He made a big effort to learn English.,İngilizce öğrenmek için büyük çaba gösterdi.,3,,school-work
+b1-elderly,ELDERLY,E,STARTS,adj,"yaşlı, ileri yaşta",The bus stops for elderly people.,Otobüs yaşlı insanlar için duruyor.,3,,family-people
+b1-election,ELECTION,E,STARTS,noun,oy verilerek yapılan seçim,The election will be held in May.,Seçim mayıs ayında yapılacak.,3,,daily-life
+b1-electronic,ELECTRONIC,E,STARTS,adj,elektronik cihazlarla ilgili,He sells electronic equipment.,Elektronik ekipman satıyor.,3,,technology
+b1-embarrassed,EMBARRASSED,E,STARTS,adj,"utanmış, mahcup olmuş",I felt embarrassed when I forgot his name.,Adını unutunca mahcup oldum.,3,,daily-life
+b1-emergency,EMERGENCY,E,STARTS,noun,hemen müdahale gerektiren tehlikeli durum,Call 112 in an emergency.,Acil durumda 112'yi ara.,3,,daily-life
+b1-emotion,EMOTION,E,STARTS,noun,"sevinç, korku gibi duygu",She could not hide her emotion.,Duygusunu gizleyemedi.,3,,family-people
+b1-employ,EMPLOY,E,STARTS,verb,birini işe almak,The company will employ fifty new workers.,Şirket elli yeni işçi alacak.,3,,business
+b1-employee,EMPLOYEE,E,STARTS,noun,bir işyerinde maaşla çalışan kişi,Every employee gets a free lunch.,Her çalışan bedava öğle yemeği alır.,3,,business
+b1-employer,EMPLOYER,E,STARTS,noun,insanları çalıştıran kişi veya şirket,My employer gives us ten days of holiday.,İşverenim bize on gün izin veriyor.,3,,business
+b1-encourage,ENCOURAGE,E,STARTS,verb,birine cesaret ve destek vermek,Teachers should encourage students to read.,Öğretmenler öğrencileri okumaya teşvik etmeli.,3,,school-work
+b1-entertain,ENTERTAIN,E,STARTS,verb,insanları eğlendirmek veya konuk ağırlamak,The clown will entertain the children.,Palyaço çocukları eğlendirecek.,4,,film-tv
+b1-entertainment,ENTERTAINMENT,E,STARTS,noun,insanları eğlendiren gösteri ve etkinlikler,There is live entertainment every night.,Her gece canlı eğlence var.,3,,film-tv
+b1-enthusiastic,ENTHUSIASTIC,E,STARTS,adj,bir işe büyük heyecan duyan,The students were enthusiastic about the trip.,Öğrenciler gezi konusunda çok hevesliydi.,4,,school-work
+b1-entire,ENTIRE,E,STARTS,adj,"hiçbir parçası eksik olmayan, bütün",He read the entire book in one day.,Bütün kitabı bir günde okudu.,4,,school-work
+b1-entry,ENTRY,E,STARTS,noun,bir yere girme hakkı veya izni,Entry to the museum is free on Sundays.,Müzeye giriş pazar günleri ücretsiz.,3,,travel
+b1-escape,ESCAPE,E,STARTS,verb,tutulduğu yerden kaçmak,Two prisoners tried to escape last night.,İki mahkûm dün gece kaçmaya çalıştı.,3,,daily-life
+b1-eventually,EVENTUALLY,E,STARTS,adv,"uzun bir sürenin sonunda, nihayet","Eventually, we found the right house.",Sonunda doğru evi bulduk.,4,,daily-life
+b1-evidence,EVIDENCE,E,STARTS,noun,bir şeyin doğruluğunu gösteren kanıt,The police have no evidence yet.,Polisin henüz bir kanıtı yok.,4,,daily-life
+b1-exact,EXACT,X,CONTAINS,adj,"tam doğru, ayrıntısına kadar doğru",What is the exact time?,Tam saat kaç?,3,,daily-life
+b1-examine,EXAMINE,X,CONTAINS,verb,bir şeye dikkatle ve ayrıntılı bakmak,The doctor will examine your throat.,Doktor boğazını muayene edecek.,3,,body-health
+b1-excitement,EXCITEMENT,X,CONTAINS,noun,"heyecan, coşku",The children jumped with excitement.,Çocuklar heyecandan zıpladı.,3,,daily-life
+b1-exhausted,EXHAUSTED,X,CONTAINS,adj,"çok yorgun, bitkin",I was exhausted after the long walk.,Uzun yürüyüşten sonra bitkindim.,3,,body-health
+b1-exhibition,EXHIBITION,X,CONTAINS,noun,sanat eserlerinin sergilendiği etkinlik,We visited a photo exhibition yesterday.,Dün bir fotoğraf sergisini gezdik.,3,,travel
+b1-exist,EXIST,X,CONTAINS,verb,var olmak,Do ghosts really exist?,Hayaletler gerçekten var mı?,3,,daily-life
+b1-experiment,EXPERIMENT,X,CONTAINS,noun,bilimsel olarak yapılan deney,We did an experiment in the lab.,Laboratuvarda bir deney yaptık.,3,,school-work
+b1-explanation,EXPLANATION,X,CONTAINS,noun,bir şeyi anlaşılır kılan açıklama,I need an explanation for this mistake.,Bu hata için bir açıklamaya ihtiyacım var.,3,,school-work
+b1-explosion,EXPLOSION,X,CONTAINS,noun,şiddetli bir patlama,There was a loud explosion near the building.,Binanın yakınında yüksek sesli bir patlama oldu.,4,,daily-life
+b1-export,EXPORT,X,CONTAINS,verb,"malı yurt dışına satmak, ihraç etmek",Turkey will export more fruit this year.,Türkiye bu yıl daha fazla meyve ihraç edecek.,4,,business
+b1-extreme,EXTREME,X,CONTAINS,adj,"aşırı, son derece büyük ya da şiddetli",They live in extreme heat.,Aşırı sıcakta yaşıyorlar.,4,,daily-life

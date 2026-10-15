@@ -10,7 +10,7 @@ b1-admire,ADMIRE,A,STARTS,verb,"birine veya bir şeye hayran olmak, takdir etmek
 b1-admit,ADMIT,A,STARTS,verb,yanlış bir şeyi yaptığını kabul etmek,He did not want to admit that he was wrong.,Yanıldığını kabul etmek istemedi.,3,,daily-life
 b1-advantage,ADVANTAGE,A,STARTS,noun,"bir kişiyi öne geçiren yarar, avantaj",Speaking two languages is a big advantage.,İki dil konuşmak büyük bir avantaj.,3,,business
 b1-advertise,ADVERTISE,A,STARTS,verb,bir ürünü duyurmak için reklam yapmak,They advertise their shop on the radio.,Dükkânlarının reklamını radyoda yapıyorlar.,3,,business
-b1-affect,AFFECT,A,STARTS,verb,bir şey üzerinde etki bırakmak,The weather can affect your mood.,Hava durumu ruh halini etkileyebilir.,3,,daily-life
+b1-affect,AFFECT,A,STARTS,verb,bir şey üzerinde etki bırakmak,The weather can affect how you feel.,Hava durumu nasıl hissettiğini etkileyebilir.,3,,daily-life
 b1-afford,AFFORD,A,STARTS,verb,bir şeyi almaya yetecek parası olmak,We cannot afford a new car.,Yeni bir araba almaya gücümüz yetmez.,3,,daily-life
 b1-agent,AGENT,A,STARTS,noun,başkası adına iş yapan aracı kişi,The travel agent booked our hotel.,Seyahat acentesi görevlisi otelimizi ayırttı.,3,,business
 b1-agreement,AGREEMENT,A,STARTS,noun,iki tarafın üzerinde anlaştığı karar,They signed an agreement last week.,Geçen hafta bir anlaşma imzaladılar.,3,,business
@@ -33,7 +33,7 @@ b1-attack,ATTACK,A,STARTS,verb,şiddetle saldırmak,Dogs may attack when they ar
 b1-attempt,ATTEMPT,A,STARTS,noun,bir şeyi başarmak için yapılan deneme,It was his first attempt to swim across the lake.,Gölü yüzerek geçmeye ilk denemesiydi.,3,,daily-life
 b1-attend,ATTEND,A,STARTS,verb,bir toplantıya veya derse katılmak,Over fifty people will attend the meeting.,Toplantıya ellinin üzerinde kişi katılacak.,3,,school-work
 b1-attention,ATTENTION,A,STARTS,noun,bir şeye verilen dikkat,Please pay attention to the teacher.,Lütfen öğretmeni dikkatle dinleyin.,3,,school-work
-b1-attitude,ATTITUDE,A,STARTS,noun,bir konudaki tutum ve bakış açısı,He has a positive attitude to work.,İşe karşı olumlu bir tutumu var.,3,,daily-life
+b1-attitude,ATTITUDE,A,STARTS,noun,bir konudaki tutum ve bakış açısı,He has a great attitude to work.,İşe karşı harika bir tutumu var.,3,,daily-life
 b1-attract,ATTRACT,A,STARTS,verb,ilgi çekmek veya kendine çekmek,The festival will attract many tourists.,Festival çok sayıda turist çekecek.,3,,travel
 b1-attractive,ATTRACTIVE,A,STARTS,adj,"göze hoş gelen, çekici",The old town is very attractive.,Eski şehir çok çekici.,3,,family-people
 b1-audience,AUDIENCE,A,STARTS,noun,konser veya oyunu izleyen seyirci topluluğu,The audience clapped for ten minutes.,Seyirciler on dakika alkışladı.,3,,film-tv
