@@ -80,7 +80,7 @@ class GoldenTest {
         )
     }
 
-    private companion object {
+    internal companion object {
         /** Wheel (seed 2024): A=APPLE, B=BREAD, C=CAT, D=DOG, E=EGG, F–Z skipped. Key indices from that seed. */
         val CLASSIC_EVENTS: List<GameEvent> = listOf(
             GameEvent.Start(timestampMs = 1_000L),

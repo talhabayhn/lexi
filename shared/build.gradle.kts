@@ -18,6 +18,7 @@ kotlin {
             implementation(project(":core:domain"))
             implementation(project(":core:data"))
             implementation(project(":core:designsystem"))
+            implementation(project(":core:platform"))
             implementation(project(":feature:home"))
 
             implementation(libs.androidx.navigation.compose)

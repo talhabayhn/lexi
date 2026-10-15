@@ -100,6 +100,10 @@ MatchEvent stream ─▶ MatchEngine(config).reduce(match, event) ─▶ Transit
 - `reduce` is a **pure function**. The ViewModel owns the coroutine ticker and an injected `TimeSource`;
   it converts real time into `Tick` deltas. Events that don't apply are ignored (same state, no effects).
   Game screen runtime (100 ms ticker, auto-pause on background, process-death restore, effects → motion): ADR 0019.
+  Wall time only through `AppClock` (`core/domain/.../time`; `SystemAppClock` in `core:platform`, bound in
+  `shared`). Process death: `SavedGame` + `SavedGameCodec` (initial slots as card ids + jokers + coalesced events,
+  `restore` replays them). A finished game is stored by the `FinishGame` use case (session + SRS, once per instance;
+  Koin `factory`).
 - Randomness: `SeededRandom` (SplitMix64, own implementation — do not rely on `kotlin.random` internals) derived
   from `seed`. Sub-seeds per purpose: `Seeds.derive(seed, purpose)` = `mix64(seed xor fnv1a64(purpose))`
   (`GAME_RULES.md` §13: `wheel`, `keys:<letter>`, `level-test:<index>`, `player:<n>`).

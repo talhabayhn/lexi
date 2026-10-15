@@ -185,6 +185,9 @@ Effects: LetterPlaced(cellIndex, letter) | Correct(letter, card, points) | Wrong
 Duel:    BeginTurn(timestampMs) | Play(gameEvent)   (events of the active player)
 ```
 - `Tick.elapsedMs` is the time since the previous tick (a delta); the ViewModel produces it from its `TimeSource`.
+  Ticks are additive: `Tick(a)` then `Tick(b)` gives the same state as `Tick(a + b)` (also across the reveal end,
+  the warning and time up; only `TimeWarning` effects may differ, see below), so the tick interval never matters
+  and saved event logs coalesce consecutive ticks (`GameEngineTickSplitTest`, ADR 0019). Ticks ≤ 0 are ignored.
 - `TimeWarning(secondsLeft)`: seconds left = remaining ms rounded up. Emitted when that value drops to ≤ 10; at
   most one per transition (a big tick or a time joker that skips seconds emits only the lowest one); none at 0.
 - `LetterPlaced`: cells are answer letters only (spaces are not cells). `Advanced.lap` starts at 1.
