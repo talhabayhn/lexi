@@ -93,8 +93,8 @@ kotlinx-datetime.
 ## Consequences
 - Background time is never charged; a paused screen is the single return point after interruptions.
 - New engine property test (tick additivity) and new domain types (`AppClock`, `Speaker`, `FinishGame`).
-- Orientation: the app is portrait-only on phones (all designs are portrait; Android `screenOrientation=portrait`,
-  iOS `UISupportedInterfaceOrientations` portrait). `configChanges` above still covers fold/multi-window resizes.
+- Orientation: the app is portrait-only (all designs are portrait; Android `screenOrientation=portrait`,
+  iOS `UISupportedInterfaceOrientations` portrait). Owner decision: v1.0 is iPhone-only (`TARGETED_DEVICE_FAMILY = 1`). `configChanges` above still covers fold/multi-window resizes.
 - Open (M6): for the Daily wheel, whether an attempt counts at `Start` (otherwise killing the app could replay it).
 - Open (M7): `FinishGame` is not idempotent. If `SessionRepository.record` succeeded but the SRS update failed in
   both attempts, the snapshot is kept, so a game restored after a process death records the session a second time.
