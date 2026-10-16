@@ -5,19 +5,18 @@ c1-decree,DECREE,D,STARTS,noun,yetkili birinin çıkardığı resmî emir,The ki
 c1-dedicate,DEDICATE,D,STARTS,verb,zamanını veya emeğini bir işe adamak,She will dedicate her life to medicine.,Hayatını tıbba adayacak.,4,,school-work
 c1-deduce,DEDUCE,D,STARTS,verb,ipuçlarından mantık yürüterek sonuç çıkarmak,From the footprints we can deduce who was here.,Ayak izlerinden buraya kimin geldiğini çıkarabiliriz.,5,,school-work
 c1-defer,DEFER,D,STARTS,verb,bir şeyi daha sonraya ertelemek,The bank agreed to defer the payment for a month.,Banka ödemeyi bir ay ertelemeyi kabul etti.,5,,business
-c1-defiance,DEFIANCE,D,STARTS,noun,otoriteye açıkça karşı gelme,He stood in defiance of the order.,Emre meydan okuyarak karşı durdu.,5,,school-work
 c1-deficit,DEFICIT,D,STARTS,noun,"gelirin giderden az olması, açık",The country has a large budget deficit.,Ülkenin büyük bir bütçe açığı var.,5,,business
 c1-degrade,DEGRADE,D,STARTS,verb,değerini düşürmek veya aşağılamak,Dumping waste will degrade the beach.,Atık dökmek plajın kalitesini düşürür.,5,,school-work
 c1-delegate,DELEGATE,D,STARTS,verb,görevi veya yetkiyi başkasına devretmek,A good manager knows how to delegate.,İyi bir yönetici iş devretmeyi bilir.,5,,business
 c1-demolish,DEMOLISH,D,STARTS,verb,binayı tamamen yıkmak,They will demolish the old factory next spring.,Eski fabrikayı gelecek bahar yıkacaklar.,4,,school-work
-c1-denote,DENOTE,D,STARTS,verb,bir işaretin veya sözcüğün ifade ettiği anlam,A red light may denote danger.,Kırmızı ışık tehlikeyi gösterebilir.,5,,school-work
-c1-depict,DEPICT,D,STARTS,verb,bir şeyi resim veya sözle betimlemek,The painting seems to depict a stormy sea.,Resim fırtınalı bir denizi betimliyor gibi.,5,,music
+c1-denote,DENOTE,D,STARTS,verb,"bir işaretin bir anlamı göstermesi, belirtmek",A red light may denote danger.,Kırmızı ışık tehlikeyi gösterebilir.,5,,school-work
+c1-depict,DEPICT,D,STARTS,verb,bir şeyi resim veya sözle betimlemek,The painting seems to depict a stormy sea.,Resim fırtınalı bir denizi betimliyor gibi.,5,,film-tv
 c1-deplete,DEPLETE,D,STARTS,verb,kaynakları azaltıp tüketmek,Overfishing may deplete the stock of fish.,Aşırı avlanma balık stokunu tüketebilir.,5,,school-work
 c1-deploy,DEPLOY,D,STARTS,verb,asker veya kaynağı bir yere konuşlandırmak,The army will deploy more troops to the border.,Ordu sınıra daha fazla asker konuşlandıracak.,5,,school-work
 c1-depreciate,DEPRECIATE,D,STARTS,verb,değer kaybetmek,A new car will depreciate quickly.,Sıfır bir araba hızla değer kaybeder.,5,,business
 c1-descent,DESCENT,D,STARTS,noun,aşağı iniş; soy,The plane began its descent into the city.,Uçak şehre doğru alçalmaya başladı.,5,,travel
 c1-designate,DESIGNATE,D,STARTS,verb,resmî olarak bir görev veya yer için belirlemek,The city will designate a new area for parking.,Şehir otopark için yeni bir alan belirleyecek.,5,,business
-c1-despair,DESPAIR,D,STARTS,noun,tamamen umudunu yitirme duygusu,She wept in despair at the news.,Habere karşı umutsuzluk içinde ağladı.,4,,school-work
+c1-despair,DESPAIR,D,STARTS,noun,tamamen umudunu yitirme duygusu,She wept in despair at the news.,Haberi duyunca çaresizlik içinde ağladı.,4,,school-work
 c1-detach,DETACH,D,STARTS,verb,bir parçayı bütünden ayırmak,Detach the form and send it back.,Formu koparıp geri gönderin.,4,,school-work
 c1-deter,DETER,D,STARTS,verb,birini vazgeçirerek bir şeyi yapmasını önlemek,High prices may deter new buyers.,Yüksek fiyatlar yeni alıcıları caydırabilir.,5,,business
 c1-deteriorate,DETERIORATE,D,STARTS,verb,giderek kötüleşmek,The weather will deteriorate during the night.,Hava gece boyunca kötüleşecek.,5,,school-work
@@ -28,7 +27,6 @@ c1-devise,DEVISE,D,STARTS,verb,bir plan ya da sistem tasarlayıp bulmak,Engineer
 c1-dictate,DICTATE,D,STARTS,verb,söyleyerek yazdırmak veya buyruk vermek,The boss would dictate a letter to his secretary.,Patron sekreterine bir mektup yazdırırdı.,5,,business
 c1-diminish,DIMINISH,D,STARTS,verb,giderek azalmak veya azaltmak,Our hopes began to diminish with each hour.,Umutlarımız her saat azalmaya başladı.,5,,school-work
 c1-diplomacy,DIPLOMACY,D,STARTS,noun,devletler arası ilişkileri yürütme sanatı,The crisis ended through quiet diplomacy.,Kriz sessiz diplomasiyle sona erdi.,5,,school-work
-c1-discern,DISCERN,D,STARTS,verb,zor fark edilen bir şeyi seçip anlamak,I could barely discern a figure in the fog.,Sisin içinde bir figürü zor seçebildim.,5,,school-work
 c1-disclose,DISCLOSE,D,STARTS,verb,gizli bilgiyi açığa vurmak,The bank refused to disclose the names.,Banka isimleri açıklamayı reddetti.,5,,business
 c1-discreet,DISCREET,D,STARTS,adj,dikkatli ve gizliliğe saygılı,Please be discreet about this matter.,Lütfen bu konuda ağzı sıkı ol.,5,,school-work
 c1-discrepancy,DISCREPANCY,D,STARTS,noun,"iki şey arasındaki tutarsızlık, fark",There is a discrepancy between the two reports.,İki rapor arasında bir tutarsızlık var.,5,,business
@@ -39,22 +37,53 @@ c1-disrupt,DISRUPT,D,STARTS,verb,bir sürecin düzenini bozmak,Snow will disrupt
 c1-dissent,DISSENT,D,STARTS,noun,"çoğunluktan farklı düşünme, karşı çıkma",The leader did not accept any dissent.,Lider hiçbir karşı görüşü kabul etmedi.,5,,school-work
 c1-distort,DISTORT,D,STARTS,verb,gerçeği ya da görüntüyü çarpıtmak,The news can distort the truth.,Haberler gerçeği çarpıtabilir.,5,,film-tv
 c1-divert,DIVERT,D,STARTS,verb,yönünü veya dikkatini başka yere çevirmek,Police had to divert traffic to the side street.,Polis trafiği yan sokağa yönlendirmek zorunda kaldı.,5,,travel
-c1-dominate,DOMINATE,D,STARTS,verb,"bir şeye egemen olmak, hâkim olmak",One firm seems to dominate the market.,Bir firma pazara hâkim görünüyor.,4,,business
-c1-dormant,DORMANT,D,STARTS,adj,"şu an faaliyetsiz, uykuda",The volcano has been dormant for years.,Yanardağ yıllardır uykuda.,5,,school-work
-c1-drastic,DRASTIC,D,STARTS,adj,çok sert ve köklü,The company took drastic steps to save money.,Şirket para kazanmak için köklü adımlar attı.,4,,business
+c1-drastic,DRASTIC,D,STARTS,adj,çok sert ve köklü,The company took drastic steps to save money.,Şirket tasarruf etmek için köklü adımlar attı.,4,,business
 c1-dread,DREAD,D,STARTS,verb,kötü bir şeyden çok korkmak,I dread meeting his family.,Ailesiyle tanışmaktan çok korkuyorum.,4,,school-work
-c1-dubious,DUBIOUS,D,STARTS,adj,"şüpheli, güvenilmez",The shop sold goods of dubious quality.,Dükkân şüpheli kalitede mallar satıyordu.,5,,business
 c1-duration,DURATION,D,STARTS,noun,bir şeyin sürdüğü zaman aralığı,Stay seated for the duration of the flight.,Uçuş süresince yerinizde oturun.,4,,travel
 c1-dwell,DWELL,D,STARTS,verb,bir yerde yaşamak; bir konuya takılıp kalmak,Try not to dwell on past mistakes.,Geçmiş hatalara takılıp kalmamaya çalış.,5,,school-work
 c1-daunting,DAUNTING,D,STARTS,adj,korkutucu ve gözünü yıldıran,The exam seemed a daunting task.,Sınav gözünü korkutan bir işe benziyordu.,5,,school-work
-c1-deflect,DEFLECT,D,STARTS,verb,bir şeyi başka yöne saptırmak,He tried to deflect the blame onto others.,Suçu başkalarına yöneltmeye çalıştı.,5,,school-work
-c1-delusion,DELUSION,D,STARTS,noun,gerçek olmayan bir şeye inanma yanılgısı,He lives in a delusion about his talent.,Yeteneği konusunda bir yanılgı içinde yaşıyor.,5,,school-work
-c1-denounce,DENOUNCE,D,STARTS,verb,birini veya bir şeyi herkesin önünde suçlamak,Leaders will denounce the violence.,Liderler şiddeti alenen kınayacak.,5,,school-work
 c1-default,DEFAULT,D,STARTS,noun,önceden ayarlı varsayılan seçenek,The default setting is English.,Varsayılan ayar İngilizce.,4,,technology
 c1-debris,DEBRIS,D,STARTS,noun,"yıkımdan kalan parçalar, enkaz",Workers removed the debris after the storm.,İşçiler fırtınadan sonra enkazı kaldırdı.,5,,school-work
 c1-deceptive,DECEPTIVE,D,STARTS,adj,"insanı yanıltan, görünüşte farklı",Appearances can be deceptive.,Görünüş yanıltıcı olabilir.,5,,school-work
 c1-distinctive,DISTINCTIVE,D,STARTS,adj,kolayca ayırt edilen kendine özgü,The bird has a distinctive call.,Kuşun kendine özgü bir ötüşü var.,5,,school-work
-c1-disparity,DISPARITY,D,STARTS,noun,iki şey arasındaki adaletsiz fark,There is a wide disparity in wages.,Ücretler arasında geniş bir eşitsizlik var.,5,,business
 c1-dissolve,DISSOLVE,D,STARTS,verb,bir madde sıvıda erimek,Sugar will dissolve in warm water.,Şeker ılık suda erir.,4,,school-work
-c1-discard,DISCARD,D,STARTS,verb,işe yaramaz diye atmak,Please discard the old documents.,Lütfen eski belgeleri atın.,4,,business
-c1-dependable,DEPENDABLE,D,STARTS,adj,"güvenilir, her zaman yanında olunan",He is a dependable friend.,Güvenilir bir arkadaştır.,4,,school-work
+c1-eccentric,ECCENTRIC,E,STARTS,adj,davranışları sıra dışı ve tuhaf,The eccentric professor wore two different socks.,Tuhaf profesör iki farklı çorap giymişti.,4,,school-work
+c1-ecosystem,ECOSYSTEM,E,STARTS,noun,canlıların ve çevrenin oluşturduğu doğal bütün,Pollution can harm the whole ecosystem of a lake.,Kirlilik bir gölün tüm ekosistemine zarar verebilir.,4,,school-work
+c1-elicit,ELICIT,E,STARTS,verb,soru veya davranışla bir yanıt almak,The question failed to elicit a reply.,Soru bir cevap alamadı.,5,,school-work
+c1-elite,ELITE,E,STARTS,noun,"bir toplumun seçkin, ayrıcalıklı kesimi",Only the elite could afford such schools.,Yalnızca seçkinler bu okulları karşılayabilirdi.,4,,school-work
+c1-elusive,ELUSIVE,E,STARTS,adj,yakalanması veya bulunması zor,The snow leopard is an elusive animal.,Kar leoparı yakalanması zor bir hayvandır.,5,,school-work
+c1-embark,EMBARK,E,STARTS,verb,gemiye binmek veya bir işe girişmek,They will embark on a new project in May.,Mayıs'ta yeni bir projeye girişecekler.,4,,business
+c1-embed,EMBED,E,STARTS,verb,bir şeyi sağlam biçimde içine yerleştirmek,Some websites embed videos in their pages.,Bazı siteler sayfalarına video yerleştirir.,5,,technology
+c1-embody,EMBODY,E,STARTS,verb,bir fikri veya özelliği somut olarak temsil etmek,The hero will embody the courage of the nation.,"Kahraman, ulusun cesaretini temsil edecek.",5,,film-tv
+c1-eminent,EMINENT,E,STARTS,adj,alanında çok saygın ve tanınmış,She is an eminent scientist.,"O, saygın bir bilim insanıdır.",5,,school-work
+c1-empathy,EMPATHY,E,STARTS,noun,başkasının duygularını anlayabilme,A good nurse shows empathy for patients.,İyi bir hemşire hastalara empati gösterir.,4,,school-work
+c1-empirical,EMPIRICAL,E,STARTS,adj,gözlem ve deneye dayanan,The theory needs empirical evidence.,Kuramın deneysel kanıta ihtiyacı var.,5,,school-work
+c1-enact,ENACT,E,STARTS,verb,bir yasayı resmen yürürlüğe koymak,Parliament will enact the new law in June.,Meclis yeni yasayı haziranda yürürlüğe koyacak.,5,,school-work
+c1-encompass,ENCOMPASS,E,STARTS,verb,çok sayıda şeyi kapsamak,The course will encompass history and art.,Ders tarihi ve sanatı kapsayacak.,5,,school-work
+c1-endorse,ENDORSE,E,STARTS,verb,bir kişiyi veya ürünü açıkça desteklemek,Several stars endorse this brand.,Birkaç ünlü bu markayı destekliyor.,4,,business
+c1-endeavour,ENDEAVOUR,E,STARTS,noun,ciddi ve kararlı çaba,The team's endeavour was finally rewarded.,Takımın çabası sonunda ödüllendirildi.,5,,school-work
+c1-enforce,ENFORCE,E,STARTS,verb,bir kuralı uygulamaya zorlamak,Police must enforce the law fairly.,Polis yasayı adil biçimde uygulamalıdır.,4,,school-work
+c1-enrol,ENROL,E,STARTS,verb,bir kursa kayıt olmak veya kaydetmek,You can enrol online before September.,Eylülden önce internetten kayıt olabilirsiniz.,4,,school-work
+c1-ensue,ENSUE,E,STARTS,verb,bir olayın ardından ortaya çıkmak,A long argument will ensue if you mention it.,Bundan söz edersen uzun bir tartışma çıkar.,5,,school-work
+c1-entail,ENTAIL,E,STARTS,verb,bir şeyin gereği olarak getirmek,The job will entail a lot of travel.,İş çok seyahat gerektirecek.,5,,business
+c1-entitle,ENTITLE,E,STARTS,verb,birine bir hak tanımak,This ticket will entitle you to a free drink.,Bu bilet size bedava bir içecek hakkı tanır.,5,,travel
+c1-entity,ENTITY,E,STARTS,noun,bağımsız varlığı olan kuruluş veya şey,The bank is a separate legal entity.,Banka ayrı bir tüzel kişiliktir.,5,,business
+c1-envisage,ENVISAGE,E,STARTS,verb,gelecekte olabilecek bir şeyi zihinde canlandırmak,I cannot envisage living in a big city.,Büyük şehirde yaşamayı hayal bile edemiyorum.,5,,school-work
+c1-equity,EQUITY,E,STARTS,noun,"hakkaniyet, fırsat eşitliği; şirket hissesi",The group works for equity in education.,Grup eğitimde hakkaniyet için çalışıyor.,5,,business
+c1-eradicate,ERADICATE,E,STARTS,verb,bir şeyi kökünden yok etmek,The country hopes to eradicate the disease.,Ülke hastalığı kökünden yok etmeyi umuyor.,5,,school-work
+c1-erode,ERODE,E,STARTS,verb,su veya rüzgârla yavaşça aşınmak,Rain will erode the soil on the hill.,Yağmur tepedeki toprağı aşındıracak.,5,,school-work
+c1-escalate,ESCALATE,E,STARTS,verb,şiddetini veya boyutunu artırmak,The dispute could escalate into a fight.,Anlaşmazlık kavgaya dönüşebilir.,5,,school-work
+c1-essence,ESSENCE,E,STARTS,noun,"bir şeyin en temel özelliği, özü",The essence of the plan is simplicity.,Planın özü sadelik.,4,,school-work
+c1-ethos,ETHOS,E,STARTS,noun,bir grubun ahlaki ilkeleri ve değerleri,The school has a strong ethos of kindness.,Okulun güçlü bir iyilik anlayışı var.,5,,school-work
+c1-evade,EVADE,E,STARTS,verb,bir sorumluluktan veya kişiden kaçınmak,He tried to evade the question.,Soruyu savuşturmaya çalıştı.,5,,school-work
+c1-evoke,EVOKE,E,STARTS,verb,anı veya duyguyu zihinde uyandırmak,The smell of bread can evoke childhood memories.,Ekmek kokusu çocukluk anılarını uyandırabilir.,5,,music
+c1-exacerbate,EXACERBATE,E,STARTS,verb,kötü bir durumu daha da kötüleştirmek,Stress can exacerbate the pain.,Stres ağrıyı daha da artırabilir.,5,,school-work
+c1-excerpt,EXCERPT,E,STARTS,noun,kitap veya filmden alınan kısa bölüm,The magazine printed an excerpt from the novel.,Dergi romandan bir bölüm yayımladı.,5,,film-tv
+c1-exempt,EXEMPT,E,STARTS,adj,bir yükümlülükten muaf tutulan,Students are exempt from this fee.,Öğrenciler bu ücretten muaftır.,5,,business
+c1-exert,EXERT,E,STARTS,verb,güç veya etki uygulamak,The sun can exert a strong pull on the planets.,Güneş gezegenler üzerinde güçlü bir çekim uygulayabilir.,5,,school-work
+c1-explicit,EXPLICIT,E,STARTS,adj,"hiçbir yoruma yer bırakmayan açık, net",Her instructions were explicit.,Talimatları son derece açıktı.,5,,school-work
+c1-exploit,EXPLOIT,E,STARTS,verb,bir fırsatı veya kişiyi kendi çıkarına kullanmak,Some firms exploit cheap labour.,Bazı firmalar ucuz işgücünü sömürür.,5,,business
+c1-extinguish,EXTINGUISH,E,STARTS,verb,ateşi söndürmek,Firefighters worked to extinguish the flames.,İtfaiyeciler alevleri söndürmek için çalıştı.,4,,school-work
+c1-extract,EXTRACT,E,STARTS,verb,bir şeyi içinden çıkarıp almak,Dentists extract damaged teeth.,Diş hekimleri bozuk dişleri çeker.,4,,school-work
+c1-extravagant,EXTRAVAGANT,E,STARTS,adj,gereğinden fazla savurgan veya abartılı,The wedding was far too extravagant.,Düğün fazlasıyla gösterişliydi.,5,,school-work
+c1-extremist,EXTREMIST,E,STARTS,noun,aşırı uçta görüşleri olan kimse,The attack was blamed on a known extremist.,"Saldırı, bilinen bir aşırılıkçıya yüklendi.",5,,school-work
