@@ -132,8 +132,9 @@ How the compiler applies them (`tools/content-compiler`, every error is `file:li
 | `business` | İş İngilizcesi | B1–C1 |
 | `technology` | Teknoloji | B1–C1 |
 | `false-friends` | Yalancı eşdeğerler | B1–C1 |
-| `idioms` | Deyimler | B2, C1, NAT |
-| `phrasal-verbs` | Phrasal verbs | B2, C1, NAT |
+| `idioms` | Deyimler | B2, C1 |
+| `phrasal-verbs` | Phrasal verbs | B2, C1 |
+| `general` | Genel | NAT (neutral bucket of every NAT card; hidden from the category list, NAT has no category selection) |
 
 ## 5. Volume targets (v1.0)
 | Level | Cards | Notes |
@@ -143,7 +144,7 @@ How the compiler applies them (`tools/content-compiler`, every error is `file:li
 | B1 | 1200 | |
 | B2 | 1400 | |
 | C1 | 1500 | |
-| NAT | 800 | idioms + phrasal verbs only |
+| NAT | ~600 | educated-native (C2+) single-word vocabulary plus a few idioms/phrasal verbs; no categories (`general`); ≥ 8 cards per letter |
 | Exam packs | LGS 600, YKS-Dil 1500, YDS 2000, IELTS 1800, TOEFL 1800 | mostly references to existing cards + extra cards |
 
 Start with A1 complete + 26-card smoke sets for the other levels; grow per milestone.

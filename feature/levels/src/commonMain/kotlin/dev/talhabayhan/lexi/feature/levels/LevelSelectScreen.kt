@@ -179,7 +179,10 @@ private fun ModePicker(state: LevelSelectUiState, onIntent: (LevelSelectIntent) 
             Text(stringResource(Res.string.levels_mode_label), style = LexiTheme.typography.label12)
             // DESIGN-DEBT: the design has no entry to the categories; a small link on the mode label's line, which
             // keeps every designed element where it is. Compose widens its touch target to the platform minimum.
-            CategoriesLink(onClick = { onIntent(LevelSelectIntent.OpenCategories) })
+            // NAT has no category selection (CONTENT.md §5): no link.
+            if (state.selectedLevel != Level.NAT) {
+                CategoriesLink(onClick = { onIntent(LevelSelectIntent.OpenCategories) })
+            }
         }
         SegmentedControl(
             segments = SelectableModes.map { mode ->

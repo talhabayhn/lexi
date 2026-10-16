@@ -86,13 +86,15 @@ internal class CategoriesViewModel(
         }
     }
 
-    /** The level's categories (without the virtual mixed one) and the category of each of its cards. */
+    /** The level's categories (without the virtual mixed one and the neutral general bucket) and the category of each of its cards. */
     private class LevelContent(val categories: List<Category>, val categoryOf: Map<CardId, CategoryId>)
 
     /** Content never changes while the app runs; null when it cannot be read. */
     private suspend fun loadContent(level: Level): LevelContent? = try {
         LevelContent(
-            categories = categories.categories(level).filter { it.id != CategoryId.MIXED },
+            categories = categories.categories(level).filter {
+                it.id != CategoryId.MIXED && it.id != CategoryId.GENERAL
+            },
             categoryOf = cards.categoryOfCards(level),
         )
     } catch (e: CancellationException) {

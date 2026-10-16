@@ -10,6 +10,9 @@ public value class CategoryId(public val value: String) {
     public companion object {
         /** Virtual category: all categories of the level (`CONTENT.md` §4). */
         public val MIXED: CategoryId = CategoryId("mixed")
+
+        /** Neutral bucket of every NAT card: NAT has no category selection (`CONTENT.md` §4, §5). */
+        public val GENERAL: CategoryId = CategoryId("general")
     }
 }
 
