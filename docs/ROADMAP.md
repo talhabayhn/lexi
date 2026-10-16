@@ -66,6 +66,8 @@ Module mapping (replaces the earlier `composeApp`): `androidApp` = thin Android 
 - [x] Notebook (`08-notebook`): tabs, search, rows, review wheel, word detail sheet (design debt)
 - [x] Stats (`09-stats`): numbers, weekly chart, level bars, hardest letters, empty/error states
 - [x] Practice & Hardcore modes; empty/error states (retry / back via `EmptyState` with action, design debt)
+- [x] Settings (`11-settings`) shell: sound, haptics and speak-on-correct switches work (DataStore, read by the feedback
+  services); every other row and the Pro card show a "YAKINDA" chip until M7
 **Done when:** SRS loop works across days (test with fake clock).
 
 ## M6 — Daily, sharing, onboarding
@@ -76,7 +78,7 @@ Module mapping (replaces the earlier `composeApp`): `androidApp` = thin Android 
 **Done when:** two devices get the identical daily wheel for the same date and level.
 
 ## M7 — Monetisation, settings, exam packs, telemetry
-- [ ] Settings (`11-settings`) all options functional; reminders (notification permission pre-prompt)
+- [ ] Settings (`11-settings`) remaining options functional (classic time, goal, languages, accent, Pro card); reminders (notification permission pre-prompt)
 - [ ] RevenueCat: Pro entitlement, paywall (design debt), restore purchases
 - [ ] AdMob rewarded (+1 joker) with UMP consent; interstitial policy from `PRODUCT.md`
 - [ ] Exam packs (`10-exam-packs`) gated by Pro; LGS pack content. Owner decision: pack content lives in a separate

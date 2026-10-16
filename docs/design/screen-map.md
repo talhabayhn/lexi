@@ -13,7 +13,7 @@
 | `08-notebook` | Kelime Defterim | `NotebookRoute` / `NotebookScreen` (review wheel: `GameRoute.review()`) | feature:notebook | M5 (done) |
 | `09-stats` | İstatistikler | `StatsRoute` | feature:stats | M5 |
 | `10-exam-packs` | Sınav paketleri | `ExamPacksRoute` | feature:exams | M7 |
-| `11-settings` | Ayarlar | `SettingsRoute` | feature:settings | M7 |
+| `11-settings` | Ayarlar | `SettingsRoute` / `SettingsScreen` (Home gear icon; back pops) | feature:settings | M5 (switches), M7 (rest) |
 | `12-share-card` | Paylaşım kartı (432×540) | `ShareCardRenderer` (renders to bitmap) | feature:home / core:designsystem | M6 |
 | `13-logo-and-icon` | Logo ve uygulama ikonu — use **option 1** for app icon | `LexiLogo`, launcher icons | designsystem, platform res | M1 |
 | `15-motion` | Animasyonlar | `LexiMotion`, effects | designsystem | M1/M4 |
@@ -48,6 +48,7 @@ before shipping.
 | Stats empty / error states | M5 | no design: `EmptyState` in place of the cards when no wheel was played yet (no stored session and no answered card) or the read failed (then with "Tekrar dene"); the hardest-letters section shows an `EmptyState` until a letter has 5 answers; a level without cards is hidden |
 | Stats: hardest letters overflow | M5 | the design's four chips are wider than the screen (the 4th is cut at the edge); built as a sideways scrolling row, cut at the 20dp padding instead of the screen edge; no accuracy yet shows "–" |
 | Review wheel result | M5 | built: the normal result screen; its level badge shows the level of the first review card (a review mixes levels) |
+| Settings: rows of M7 | M5 | built: sound, haptics and speak-on-correct switches are live; the Pro card (price replaced by the "YAKINDA" chip), classic time, reminder, goal, notebook reminders, languages and accent are shown faded with a yellow `CountChip` "YAKINDA" and do nothing (the design's values and chevrons wait for M7); the page scrolls and the footer links are plain text |
 | Paywall (Lexi Pro) | M7 | ink card + yellow diamond from settings; 3 plans as level-card style |
 | Notification permission pre-prompt | M7 | onboarding layout |
 | Rating prompt | M8 | `ConfirmDialog` |

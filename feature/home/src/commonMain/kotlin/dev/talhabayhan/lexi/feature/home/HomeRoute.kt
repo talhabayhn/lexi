@@ -18,12 +18,22 @@ import org.koin.compose.viewmodel.koinViewModel
 data object HomeRoute
 
 /**
- * [onPlay] opens the level and mode select, [onOpenNotebook] the notebook, [onOpenStats] the statistics (the graph in
- * `shared` decides the routes).
+ * [onPlay] opens the level and mode select, [onOpenNotebook] the notebook, [onOpenStats] the statistics,
+ * [onOpenSettings] the settings (the graph in `shared` decides the routes).
  */
-fun NavGraphBuilder.homeScreen(onPlay: () -> Unit, onOpenNotebook: () -> Unit, onOpenStats: () -> Unit) {
+fun NavGraphBuilder.homeScreen(
+    onPlay: () -> Unit,
+    onOpenNotebook: () -> Unit,
+    onOpenStats: () -> Unit,
+    onOpenSettings: () -> Unit,
+) {
     composable<HomeRoute> {
-        HomeRoute(onPlay = onPlay, onOpenNotebook = onOpenNotebook, onOpenStats = onOpenStats)
+        HomeRoute(
+            onPlay = onPlay,
+            onOpenNotebook = onOpenNotebook,
+            onOpenStats = onOpenStats,
+            onOpenSettings = onOpenSettings,
+        )
     }
 }
 
@@ -32,12 +42,14 @@ internal fun HomeRoute(
     onPlay: () -> Unit,
     onOpenNotebook: () -> Unit,
     onOpenStats: () -> Unit,
+    onOpenSettings: () -> Unit,
     viewModel: HomeViewModel = koinViewModel(),
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
     val currentOnPlay by rememberUpdatedState(onPlay)
     val currentOnOpenNotebook by rememberUpdatedState(onOpenNotebook)
     val currentOnOpenStats by rememberUpdatedState(onOpenStats)
+    val currentOnOpenSettings by rememberUpdatedState(onOpenSettings)
     val lifecycleOwner = LocalLifecycleOwner.current
     LaunchedEffect(viewModel, lifecycleOwner) {
         lifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -46,6 +58,7 @@ internal fun HomeRoute(
                     HomeEffect.NavigateToLevelSelect -> currentOnPlay()
                     HomeEffect.NavigateToNotebook -> currentOnOpenNotebook()
                     HomeEffect.NavigateToStats -> currentOnOpenStats()
+                    HomeEffect.NavigateToSettings -> currentOnOpenSettings()
                 }
             }
         }

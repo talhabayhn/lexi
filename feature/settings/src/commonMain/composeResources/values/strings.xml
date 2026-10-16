@@ -1,0 +1,31 @@
+<resources>
+    <!-- Header (11-settings) -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_back">Back</string>
+
+    <!-- Lexi Pro card (M7) -->
+    <string name="settings_pro_title">Lexi Pro</string>
+    <string name="settings_pro_subtitle">No ads · all levels · exam packs</string>
+
+    <!-- Sections -->
+    <string name="settings_section_game">GAME</string>
+    <string name="settings_section_learning">LEARNING</string>
+    <string name="settings_section_language">LANGUAGE</string>
+
+    <!-- Rows -->
+    <string name="settings_sound">Sound effects</string>
+    <string name="settings_haptics">Vibration</string>
+    <string name="settings_speak_on_correct">Play pronunciation on a correct answer</string>
+    <string name="settings_classic_time">Classic mode time</string>
+    <string name="settings_daily_reminder">Daily reminder</string>
+    <string name="settings_daily_goal">Daily goal</string>
+    <string name="settings_review_reminders">Notebook review reminders</string>
+    <string name="settings_language">App language</string>
+    <string name="settings_clue_language">Clue language</string>
+    <string name="settings_accent">English accent</string>
+
+    <!-- Badge of the rows that arrive in a later release -->
+    <string name="settings_soon">SOON</string>
+
+    <string name="settings_footer">%1$s 1.0.0 · Privacy · Terms of use · Restore purchases</string>
+</resources>

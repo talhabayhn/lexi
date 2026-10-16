@@ -34,7 +34,7 @@ internal sealed interface HomeIntent {
     /** TODO(M6): daily wheel. */
     data object OpenDaily : HomeIntent
 
-    /** TODO(M7): settings. */
+    /** The gear icon. */
     data object OpenSettings : HomeIntent
 
     /** The Kelime Defterim tile. */
@@ -56,4 +56,6 @@ internal sealed interface HomeEffect {
     data object NavigateToNotebook : HomeEffect
 
     data object NavigateToStats : HomeEffect
+
+    data object NavigateToSettings : HomeEffect
 }

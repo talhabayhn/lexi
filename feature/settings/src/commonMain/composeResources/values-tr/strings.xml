@@ -1,0 +1,31 @@
+<resources>
+    <!-- Başlık (11-settings) -->
+    <string name="settings_title">Ayarlar</string>
+    <string name="settings_back">Geri</string>
+
+    <!-- Lexi Pro kartı (M7) -->
+    <string name="settings_pro_title">Lexi Pro</string>
+    <string name="settings_pro_subtitle">Reklamsız · tüm seviyeler · sınav paketleri</string>
+
+    <!-- Bölümler -->
+    <string name="settings_section_game">OYUN</string>
+    <string name="settings_section_learning">ÖĞRENME</string>
+    <string name="settings_section_language">DİL</string>
+
+    <!-- Satırlar -->
+    <string name="settings_sound">Ses efektleri</string>
+    <string name="settings_haptics">Titreşim</string>
+    <string name="settings_speak_on_correct">Doğru cevapta telaffuzu çal</string>
+    <string name="settings_classic_time">Klasik mod süresi</string>
+    <string name="settings_daily_reminder">Günlük hatırlatma</string>
+    <string name="settings_daily_goal">Günlük hedef</string>
+    <string name="settings_review_reminders">Kelime defteri tekrarları</string>
+    <string name="settings_language">Arayüz dili</string>
+    <string name="settings_clue_language">İpucu dili</string>
+    <string name="settings_accent">İngilizce aksanı</string>
+
+    <!-- Sonraki sürümde gelecek satırların rozeti -->
+    <string name="settings_soon">YAKINDA</string>
+
+    <string name="settings_footer">%1$s 1.0.0 · Gizlilik · Kullanım koşulları · Satın alımları geri yükle</string>
+</resources>

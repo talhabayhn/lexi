@@ -126,12 +126,21 @@ class HomeViewModelTest {
     }
 
     @Test
+    fun `the gear opens the settings`() = runTest {
+        val viewModel = viewModel()
+        viewModel.effects.test {
+            viewModel.onIntent(HomeIntent.OpenSettings)
+
+            assertEquals(HomeEffect.NavigateToSettings, awaitItem())
+        }
+    }
+
+    @Test
     fun `tiles of later milestones are inert`() = runTest {
         val viewModel = viewModel()
         viewModel.effects.test {
             listOf(
                 HomeIntent.OpenDaily,
-                HomeIntent.OpenSettings,
                 HomeIntent.OpenPractice,
                 HomeIntent.OpenExamPacks,
             ).forEach(viewModel::onIntent)
