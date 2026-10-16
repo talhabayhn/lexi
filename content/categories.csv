@@ -6,16 +6,16 @@ home,Ev ve eşyalar,Home,A1|A2,3,0
 family-people,Aile ve insanlar,Family and people,A1|A2|B1,4,0
 colors-numbers,Renkler ve sayılar,Colours and numbers,A1,5,0
 body-health,Vücut ve sağlık,Body and health,A1|A2|B1|B2,6,0
-school-work,Okul ve iş,School and work,A1|A2|B1|B2|C1,7,0
+school-work,Okul ve iş,School and work,A1|A2|B1|B2|C1|NAT,7,0
 animals,Hayvanlar,Animals,A1|A2|B1,8,0
 city-transport,Şehir ve ulaşım,City and transport,A1|A2|B1,9,0
 time-weather,Zaman ve hava,Time and weather,A1|A2,10,0
-travel,Seyahat,Travel,A2|B1|B2|C1,11,0
-sports,Spor,Sports,A2|B1|B2|C1,12,0
-music,Müzik,Music,A2|B1|B2|C1,13,0
-film-tv,Film ve dizi,Film and TV,B1|B2|C1,14,0
-business,İş İngilizcesi,Business English,B1|B2|C1,15,0
-technology,Teknoloji,Technology,B1|B2|C1,16,0
+travel,Seyahat,Travel,A2|B1|B2|C1|NAT,11,0
+sports,Spor,Sports,A2|B1|B2|C1|NAT,12,0
+music,Müzik,Music,A2|B1|B2|C1|NAT,13,0
+film-tv,Film ve dizi,Film and TV,B1|B2|C1|NAT,14,0
+business,İş İngilizcesi,Business English,B1|B2|C1|NAT,15,0
+technology,Teknoloji,Technology,B1|B2|C1|NAT,16,0
 false-friends,Yalancı eşdeğerler,False friends,B1|B2|C1,17,0
 idioms,Deyimler,Idioms,B2|C1|NAT,18,0
 phrasal-verbs,Phrasal verbs,Phrasal verbs,B2|C1|NAT,19,0
