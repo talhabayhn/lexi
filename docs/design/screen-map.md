@@ -27,7 +27,7 @@ before shipping.
 
 | Screen | Milestone | Hint |
 |---|---|---|
-| Pause menu (dialog) — **needs design** (stays as built, DESIGN-DEBT) | M4 | built as `PauseDialog` (feature:game): two `ConfirmDialog` steps, Devam et / Pes et, then "Pes etmek istiyor musun?" Pes et / Vazgeç (owner decision: "Pes et" because the button gives up and shows the result, unlike `16-components`'s "Bırak"). Yeniden başlat / Ayarlar / Çık wait for the design (Settings now exists, M5) |
+| Pause menu (dialog) — **needs design** (stays as built, DESIGN-DEBT) | M4 | built as `PauseDialog` (feature:game) from the `ConfirmDialog` panel (`DialogPanel`): "Oyun duraklatıldı" with a vertical stack of 48dp buttons, gap 10: DEVAM ET (red, s4) / YENİDEN BAŞLAT / AYARLAR / PES ET (white, flat). YENİDEN BAŞLAT → "Yeniden başlatmak istiyor musun?" Başlat / Vazgeç: the paused game is dropped unrecorded and a new wheel starts with the same level, mode, category and time limit (new seed); hidden in Daily, level test and duel (like TEKRAR OYNA). AYARLAR opens `SettingsRoute` over the paused game; back returns to the dialog. PES ET → "Pes etmek istiyor musun?" Pes et / Vazgeç (owner decision: "Pes et" because the button gives up and shows the result, unlike `16-components`'s "Bırak") |
 | Example sentence of the "Örnek cümle" joker | M4 | italic line under the clue in `ClueCard` |
 | Result without misses (stays as built, DESIGN-DEBT) | M4 | `EmptyState` instead of the review list |
 | Joker sheet clock pill over the live game | M4 | `05-joker-sheet` shows the pill on a dimmed screen; in the app it is drawn above the scrim at the top, over the dimmed but still running HUD timer, so the time is shown twice |

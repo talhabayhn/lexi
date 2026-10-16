@@ -83,6 +83,7 @@ class GameViewModelTest {
         jokerRepository: JokerRepository = jokers,
         sessionRepository: SessionRepository = sessions,
         flags: FeatureFlags = FeatureFlags(),
+        seeds: SeedSource = SeedSource { SEED },
     ): GameViewModel = GameViewModel(
         route = gameRoute,
         handle = handle,
@@ -95,7 +96,7 @@ class GameViewModelTest {
         speaker = speaker,
         config = config,
         timeSource = testScheduler.timeSource,
-        seeds = SeedSource { SEED },
+        seeds = seeds,
         flags = flags,
     )
 
@@ -706,6 +707,122 @@ class GameViewModelTest {
             assertEquals(listOf("a1-bread", "a1-chair"), result.missedCards)
             assertEquals(1, sessions.recordCalls)
             cancelAndIgnoreRemainingEvents()
+        }
+    }
+
+    @Test
+    fun `restart asks for confirmation and back or cancel return to the pause dialog`() = runTest {
+        val vm = started()
+        vm.onIntent(GameIntent.Pause)
+
+        vm.onIntent(GameIntent.RequestRestart)
+        assertTrue(vm.state.value.isRestartConfirmation)
+        vm.onIntent(GameIntent.Back)
+        assertFalse(vm.state.value.isRestartConfirmation)
+        assertTrue(vm.state.value.isPaused)
+
+        vm.onIntent(GameIntent.RequestRestart)
+        vm.onIntent(GameIntent.CancelRestart)
+        assertFalse(vm.state.value.isRestartConfirmation)
+
+        vm.onIntent(GameIntent.RequestRestart)
+        vm.onIntent(GameIntent.Resume)
+        assertFalse(vm.state.value.isRestartConfirmation)
+        assertFalse(vm.state.value.isPaused)
+    }
+
+    @Test
+    fun `restart is only offered while paused and never needs a confirmation it did not ask`() = runTest {
+        var seed = SEED
+        val handle = routeHandle()
+        val vm = viewModel(handle = handle, seeds = SeedSource { seed++ }).also {
+            runCurrent()
+            it.onIntent(GameIntent.Foreground)
+        }
+
+        vm.onIntent(GameIntent.RequestRestart)
+        assertFalse(vm.state.value.isRestartConfirmation)
+
+        vm.onIntent(GameIntent.Pause)
+        vm.onIntent(GameIntent.Restart)
+        runCurrent()
+        assertTrue(vm.state.value.isPaused)
+        val saved = SavedGameCodec.decodeOrNull(checkNotNull(handle.get<String>(GameViewModel.KEY_GAME)))
+        assertEquals(SEED, saved?.seed)
+    }
+
+    @Test
+    fun `a confirmed restart drops the game unrecorded and starts a new wheel with the same config`() = runTest {
+        var seed = SEED
+        val handle = routeHandle()
+        val vm = viewModel(handle = handle, seeds = SeedSource { seed++ }).also {
+            runCurrent()
+            it.onIntent(GameIntent.Foreground)
+        }
+        val limit = handle.get<Int>(GameViewModel.KEY_CLASSIC_LIMIT)
+        vm.effects.test {
+            awaitStart()
+            vm.type("APPLE")
+            advance(5_000)
+            vm.onIntent(GameIntent.Pause)
+            vm.onIntent(GameIntent.RequestRestart)
+
+            vm.onIntent(GameIntent.Restart)
+            runCurrent()
+
+            assertEquals(GameEffect.Advanced('A'), expectMostRecentItem())
+            val state = vm.state.value
+            assertFalse(state.isLoading)
+            assertFalse(state.isPaused)
+            assertFalse(state.isRestartConfirmation)
+            assertTrue(state.inputEnabled)
+            assertEquals(0, state.score)
+            assertEquals('A', state.turn?.letter)
+            assertEquals(config.classicTimeLimitSeconds * 1_000L, vm.remainingMs)
+            assertEquals(0, sessions.recordCalls)
+            val snapshot = checkNotNull(handle.get<String>(GameViewModel.KEY_GAME))
+            val saved = checkNotNull(SavedGameCodec.decodeOrNull(snapshot))
+            assertEquals(SEED + 1, saved.seed)
+            assertEquals(GameMode.CLASSIC, saved.mode)
+            assertEquals(Level.A1, saved.level)
+            assertEquals(limit, handle.get<Int>(GameViewModel.KEY_CLASSIC_LIMIT))
+
+            // The new game's clock runs.
+            advance(1_000)
+            assertEquals(config.classicTimeLimitSeconds * 1_000L - 1_000L, vm.remainingMs)
+            cancelAndIgnoreRemainingEvents()
+        }
+    }
+
+    @Test
+    fun `the daily has no restart`() = runTest {
+        val vm = startedIn(GameMode.DAILY)
+        vm.onIntent(GameIntent.Pause)
+
+        vm.onIntent(GameIntent.RequestRestart)
+
+        assertFalse(vm.state.value.canRestart)
+        assertFalse(vm.state.value.isRestartConfirmation)
+    }
+
+    @Test
+    fun `settings open over the paused game and the game stays paused on return`() = runTest {
+        val vm = started()
+        vm.effects.test {
+            awaitStart()
+            vm.onIntent(GameIntent.OpenSettings)
+            vm.onIntent(GameIntent.Pause)
+            vm.onIntent(GameIntent.OpenSettings)
+            assertEquals(GameEffect.NavigateToSettings, awaitItem())
+
+            vm.onIntent(GameIntent.Background)
+            advance(10_000)
+            vm.onIntent(GameIntent.Foreground)
+            advance(1_000)
+
+            assertTrue(vm.state.value.isPaused)
+            assertFalse(vm.state.value.inputEnabled)
+            expectNoEvents()
         }
     }
 

@@ -35,11 +35,17 @@
         <item quantity="other">%1$d HARF</item>
     </plurals>
 
-    <!-- Pause dialog (design debt): pause step, then the give-up confirmation -->
+    <!-- Pause dialog (design debt): pause step, then the give-up or restart confirmation -->
     <string name="game_pause_title">Oyun duraklatıldı</string>
     <string name="game_pause_message">Süre durdu. Hazır olduğunda devam et.</string>
-    <string name="game_pause_resume">Devam et</string>
-    <string name="game_pause_quit">Pes et</string>
+    <string name="game_pause_resume">DEVAM ET</string>
+    <string name="game_pause_restart">YENİDEN BAŞLAT</string>
+    <string name="game_pause_settings">AYARLAR</string>
+    <string name="game_pause_quit">PES ET</string>
+    <string name="game_restart_title">Yeniden başlatmak istiyor musun?</string>
+    <string name="game_restart_message">Bu çark kaydedilmez ve kullandığın jokerler geri gelmez. Aynı ayarlarla yeni bir çark başlar.</string>
+    <string name="game_restart_confirm">Başlat</string>
+    <string name="game_restart_cancel">Vazgeç</string>
     <string name="game_quit_title">Pes etmek istiyor musun?</string>
     <string name="game_quit_message">Kalan harfler yanlış sayılır ve kelime defterine eklenir.</string>
     <string name="game_quit_confirm">Pes et</string>

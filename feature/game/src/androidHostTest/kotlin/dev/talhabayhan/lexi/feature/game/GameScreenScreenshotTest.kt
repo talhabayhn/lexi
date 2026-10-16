@@ -90,12 +90,31 @@ class GameScreenScreenshotTest {
         }
     }
 
-    /** Design debt: pause dialog from `16-components` (no design). */
+    /** Design debt: pause dialog from `16-components` (no design): DEVAM ET / YENİDEN BAŞLAT / AYARLAR / PES ET. */
     @Test
     fun pauseDialog() {
         captureRoboImage("src/androidHostTest/screenshots/GamePauseDialog.png") {
             LexiTheme(reducedMotion = false) {
                 GameScreen(state = GameSamples.paused, clock = { GameSamples.designClock }, onIntent = {})
+            }
+        }
+    }
+
+    @Test
+    @Config(qualifiers = "en-w390dp-h844dp-xhdpi")
+    fun pauseDialogEnglish() {
+        captureRoboImage("src/androidHostTest/screenshots/GamePauseDialogEnglish.png") {
+            LexiTheme(reducedMotion = false) {
+                GameScreen(state = GameSamples.paused, clock = { GameSamples.designClock }, onIntent = {})
+            }
+        }
+    }
+
+    @Test
+    fun restartConfirmation() {
+        captureRoboImage("src/androidHostTest/screenshots/GameRestartConfirmation.png") {
+            LexiTheme(reducedMotion = false) {
+                GameScreen(state = GameSamples.restartConfirmation, clock = { GameSamples.designClock }, onIntent = {})
             }
         }
     }

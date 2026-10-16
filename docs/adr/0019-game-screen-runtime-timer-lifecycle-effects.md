@@ -117,9 +117,12 @@ kotlinx-datetime.
   in the clue card (design debt).
 - **Back / pause:** system back (both platforms, `NavigationBackHandler` in common code; `navigationevent-compose`
   is declared through a catalog alias of the version navigation-compose already resolves, not a new library) closes
-  the joker sheet, leaves the quit confirmation, or pauses a running game; on the pause dialog it does nothing, so
-  only "Devam et" restarts the clock. While loading, back leaves the screen. The pause dialog (design debt) is two
-  `ConfirmDialog` steps: pause (Devam et / Pes et) and, since giving up can't be undone, a confirmation (Pes et =
-  `Forfeit` / Vazgeç).
+  the joker sheet, leaves a confirmation, or pauses a running game; on the pause dialog it does nothing, so
+  only "Devam et" restarts the clock. While loading, back leaves the screen. The pause dialog (design debt) has a
+  first step with a button stack (DEVAM ET / YENİDEN BAŞLAT / AYARLAR / PES ET) and, since restarting and giving up
+  can't be undone, a `ConfirmDialog` for each (Başlat / Vazgeç; Pes et = `Forfeit` / Vazgeç). Restart drops the paused
+  game unrecorded (its snapshot too; used jokers stay used) and loads a new wheel for the same route with a new seed
+  and the same Classic time limit, inside the same ViewModel; not offered in Daily, level test and duel. AYARLAR opens
+  Settings over the paused game (the game entry stays on the back stack; back returns to the pause dialog).
 - **Effects:** the ViewModel ignores a transition only when it is the same state *and* has no effects, the same rule
   as `GameSession` (`Transition.isIgnored`).

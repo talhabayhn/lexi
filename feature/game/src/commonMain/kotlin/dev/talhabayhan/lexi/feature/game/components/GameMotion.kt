@@ -125,6 +125,7 @@ internal class GameMotion(
             is GameEffect.NavigateToResult,
             GameEffect.Abandoned,
             GameEffect.NavigateBack,
+            GameEffect.NavigateToSettings,
             -> Unit
         }
     }

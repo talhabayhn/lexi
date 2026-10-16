@@ -5,6 +5,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -138,6 +139,25 @@ public fun ConfirmDialog(
     onDismiss: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    DialogPanel(title = title, message = message, modifier = modifier) {
+        Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(FeedbackDefaults.DialogButtonGap)) {
+            DialogButton(dismissLabel, onDismiss, primary = false, modifier = Modifier.weight(1f))
+            DialogButton(confirmLabel, onConfirm, primary = true, modifier = Modifier.weight(1f))
+        }
+    }
+}
+
+/**
+ * The dialog panel of [ConfirmDialog] with any [actions] under the message (a column, gap 12), e.g. a stack of
+ * [DialogButton]s. Place it over a scrim ([ModalScrim]); it does not dismiss itself.
+ */
+@Composable
+public fun DialogPanel(
+    title: String,
+    message: String,
+    modifier: Modifier = Modifier,
+    actions: @Composable ColumnScope.() -> Unit,
+) {
     val colors = LexiTheme.colors
     val typography = LexiTheme.typography
     Column(
@@ -155,26 +175,22 @@ public fun ConfirmDialog(
         )
         Text(title, style = typography.heading22)
         Text(message, style = typography.body14)
-        Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(FeedbackDefaults.DialogButtonGap)) {
-            LexiButton(
-                text = dismissLabel,
-                onClick = onDismiss,
-                variant = LexiButtonVariant.Secondary,
-                textStyle = typography.bodyStrong15,
-                height = LexiButtonDefaults.SmallHeight,
-                shadow = null,
-                modifier = Modifier.weight(1f),
-            )
-            LexiButton(
-                text = confirmLabel,
-                onClick = onConfirm,
-                textStyle = typography.bodyStrong15,
-                height = LexiButtonDefaults.SmallHeight,
-                shadow = LexiTheme.shadows.s4,
-                modifier = Modifier.weight(1f),
-            )
-        }
+        actions()
     }
+}
+
+/** A 48dp dialog button (15/800): [primary] = red Primary with s4, else flat Secondary. Width from [modifier]. */
+@Composable
+public fun DialogButton(text: String, onClick: () -> Unit, primary: Boolean, modifier: Modifier = Modifier) {
+    LexiButton(
+        text = text,
+        onClick = onClick,
+        variant = if (primary) LexiButtonVariant.Primary else LexiButtonVariant.Secondary,
+        textStyle = LexiTheme.typography.bodyStrong15,
+        height = LexiButtonDefaults.SmallHeight,
+        shadow = if (primary) LexiTheme.shadows.s4 else null,
+        modifier = modifier,
+    )
 }
 
 // design sample, not user-facing

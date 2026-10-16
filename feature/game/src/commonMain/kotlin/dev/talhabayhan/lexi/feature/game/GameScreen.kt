@@ -116,7 +116,14 @@ internal fun GameScreen(
             clock = clock,
             onIntent = onIntent,
         )
-        if (state.isPaused) PauseDialog(quitConfirmation = state.isQuitConfirmation, onIntent = onIntent)
+        if (state.isPaused) {
+            PauseDialog(
+                quitConfirmation = state.isQuitConfirmation,
+                restartConfirmation = state.isRestartConfirmation,
+                canRestart = state.canRestart,
+                onIntent = onIntent,
+            )
+        }
     }
 }
 

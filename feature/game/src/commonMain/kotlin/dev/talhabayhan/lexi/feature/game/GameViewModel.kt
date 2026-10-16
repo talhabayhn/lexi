@@ -59,7 +59,7 @@ internal fun interface SeedSource {
  * engine's state and effects. Background ⇒ final tick + Pause; foreground keeps the game paused. The applied events
  * are kept in [SavedStateHandle] for process-death restore until the finished game is recorded once by [FinishGame].
  * Owns the screen flags the engine doesn't know: the joker sheet (the clock keeps running, `GAME_RULES.md` §5) and
- * the quit confirmation of the pause dialog.
+ * the quit and restart confirmations of the pause dialog.
  */
 internal class GameViewModel(
     /** Navigation arguments, `handle.toRoute<GameRoute>()` (see `gameModule`). */
@@ -98,6 +98,7 @@ internal class GameViewModel(
     private var lastMark: ComparableTimeMark? = null
     private var jokerSheetOpen = false
     private var quitConfirmation = false
+    private var restartConfirmation = false
 
     /** Joker inventory writes run one after another, each saving the latest inventory (ADR 0019). */
     private val jokerSaves = Mutex()
@@ -129,11 +130,19 @@ internal class GameViewModel(
 
             GameIntent.Resume -> input(GameEvent.Resume)
 
-            GameIntent.RequestQuit -> if (session?.state?.isPaused == true) updateFlags(quit = true)
+            GameIntent.RequestQuit -> if (isPausedGame()) updateFlags(quit = true)
 
             GameIntent.CancelQuit -> updateFlags(quit = false)
 
             GameIntent.Forfeit -> input(GameEvent.Forfeit)
+
+            GameIntent.RequestRestart -> if (isPausedGame() && state.value.canRestart) updateFlags(restart = true)
+
+            GameIntent.CancelRestart -> updateFlags(restart = false)
+
+            GameIntent.Restart -> restart()
+
+            GameIntent.OpenSettings -> if (isPausedGame()) emit(GameEffect.NavigateToSettings)
 
             GameIntent.Back -> back()
 
@@ -162,6 +171,8 @@ internal class GameViewModel(
 
             quitConfirmation -> updateFlags(quit = false)
 
+            restartConfirmation -> updateFlags(restart = false)
+
             current.status == GameStatus.PLAYING && !current.isPaused -> input(GameEvent.Pause)
 
             // Paused (the dialog stays: only "Devam et" restarts the clock), not started or finished: nothing.
@@ -169,10 +180,41 @@ internal class GameViewModel(
         }
     }
 
-    private fun updateFlags(jokerSheet: Boolean = jokerSheetOpen, quit: Boolean = quitConfirmation) {
+    private fun updateFlags(
+        jokerSheet: Boolean = jokerSheetOpen,
+        quit: Boolean = quitConfirmation,
+        restart: Boolean = restartConfirmation,
+    ) {
         jokerSheetOpen = jokerSheet
         quitConfirmation = quit
+        restartConfirmation = restart
         session?.state?.let(::publish)
+    }
+
+    /** A running game that is paused (the pause dialog is shown). */
+    private fun isPausedGame(): Boolean {
+        val current = session?.state ?: return false
+        return !finished && current.status == GameStatus.PLAYING && current.isPaused
+    }
+
+    /**
+     * "Yeniden başlat" confirmed: the paused game is dropped without being recorded (its saved snapshot too; used
+     * jokers stay used, ADR 0019) and [load] starts a new wheel for the same route with a new seed. The Classic time
+     * limit the game started with is kept ([KEY_CLASSIC_LIMIT]); the new game starts at once (the screen is resumed).
+     */
+    private fun restart() {
+        if (!restartConfirmation || !isPausedGame() || !state.value.canRestart || loading?.isActive == true) return
+        stopSpeaking()
+        session = null
+        engine = null
+        jokerSheetOpen = false
+        quitConfirmation = false
+        restartConfirmation = false
+        syncTicker()
+        handle.remove<String>(KEY_GAME)
+        mutableState.value = GameUiState()
+        mutableClock.value = GameClockUi.Untimed
+        loading = viewModelScope.launch { load() }
     }
 
     /** Leaving a running game silences it; the last word of a finished game may still play over the result. */
@@ -319,7 +361,10 @@ internal class GameViewModel(
         val state = transition.state
         // The sheet closes when its joker was applied and whenever input stops (pause, reveal, game over).
         if (transition.effects.any { it is EngineEffect.JokerApplied } || !acceptsInput(state)) jokerSheetOpen = false
-        if (!state.isPaused || state.status != GameStatus.PLAYING) quitConfirmation = false
+        if (!state.isPaused || state.status != GameStatus.PLAYING) {
+            quitConfirmation = false
+            restartConfirmation = false
+        }
         publish(state)
         transition.effects.forEach { onEngineEffect(it, state, before) }
         syncTicker()
@@ -332,6 +377,7 @@ internal class GameViewModel(
         mutableState.value = GameUiMapper.map(state, checkNotNull(engine), mutableState.value).copy(
             isJokerSheetOpen = jokerSheetOpen,
             isQuitConfirmation = quitConfirmation,
+            isRestartConfirmation = restartConfirmation,
             showJokerAd = flags.rewardedAdJokers,
         )
         mutableClock.value = GameUiMapper.clock(
@@ -450,6 +496,7 @@ internal class GameViewModel(
         finished = true
         jokerSheetOpen = false
         quitConfirmation = false
+        restartConfirmation = false
         syncTicker()
         val final = checkNotNull(session).state
         publish(final)

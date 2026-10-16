@@ -31,6 +31,7 @@ each with a `@Preview` and a Roborazzi screenshot. Feature screens compose ONLY 
 | `LevelProgressRow` / `HardLetterChip` | stats: level name · 12dp ink bar · `learned / total`; red letter tile · accuracy | `09-stats` |
 | `Toast` | success (blue), info (white with undo link) | top, shadow s4 (16-components.html) |
 | `ConfirmDialog` | — | white, 3dp, shadow s8, red square icon, title 24/800, body, two buttons |
+| `DialogPanel` / `DialogButton` | — | the `ConfirmDialog` panel with any actions (e.g. the pause menu's vertical stack of 48dp buttons, gap 10); `DialogButton` = red Primary with s4 or flat white Secondary, 15/800 |
 | `BottomSheet` / `BottomSheetPanel` / `ModalScrim` | joker sheet | cream, 4dp top border, scrim 55%; overlays at the screen root |
 | `JokerRow` / `StatusPill` | enabled, disabled (50 %, no shadow) | joker sheet row: 40dp count chip, title 17/800, text 13/500, cost chip; white pill "Süre işlemeye devam ediyor · 1:31" (`05-joker-sheet`) |
 | `ReviewRow` / `ReviewMoreRow` | wrong (red square), passed (yellow leaf) | result list row: 34dp letter chip, word 19/800, "clue · *example*", 44dp speaker; "+N kelime daha · Tümünü gör →" (`06-result`) |

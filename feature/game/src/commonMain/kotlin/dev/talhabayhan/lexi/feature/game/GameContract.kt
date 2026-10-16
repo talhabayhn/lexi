@@ -46,6 +46,13 @@ internal data class GameUiState(
     val isJokerSheetOpen: Boolean = false,
     /** The pause dialog asks to confirm giving up ("Pes et"). Only while [isPaused]. */
     val isQuitConfirmation: Boolean = false,
+    /** The pause dialog asks to confirm restarting ("Yeniden başlat"). Only while [isPaused]. */
+    val isRestartConfirmation: Boolean = false,
+    /**
+     * The pause dialog offers "Yeniden başlat": not in the Daily (one attempt a day), the level test and duels, like
+     * the result's TEKRAR OYNA.
+     */
+    val canRestart: Boolean = true,
 )
 
 /** Why a game could not be loaded (design debt: `EmptyState` with actions, `screen-map.md`). */
@@ -142,8 +149,23 @@ internal sealed interface GameIntent {
     /** "Pes et" in the quit confirmation: gives up (`GameEvent.Forfeit`). */
     data object Forfeit : GameIntent
 
+    /** "Yeniden başlat" in the pause dialog: asks to confirm restarting (only when [GameUiState.canRestart]). */
+    data object RequestRestart : GameIntent
+
+    /** "Vazgeç" in the restart confirmation: back to the pause dialog. */
+    data object CancelRestart : GameIntent
+
     /**
-     * System back (both platforms): closes the joker sheet, leaves the quit confirmation, pauses a running game
+     * "Başlat" in the restart confirmation: the paused game is dropped without being recorded (used jokers
+     * stay used) and a new wheel starts with the same level, mode, category and time limit and a new seed.
+     */
+    data object Restart : GameIntent
+
+    /** "Ayarlar" in the pause dialog: opens the settings; the game stays paused and the dialog open on return. */
+    data object OpenSettings : GameIntent
+
+    /**
+     * System back (both platforms): closes the joker sheet, leaves a confirmation, pauses a running game
      * (the pause dialog opens); on the pause dialog it does nothing, so the clock never restarts without a tap.
      */
     data object Back : GameIntent
@@ -192,4 +214,7 @@ internal sealed interface GameEffect {
 
     /** The player left a game that could not be loaded ([GameIntent.Leave]): back to the previous screen. */
     data object NavigateBack : GameEffect
+
+    /** "Ayarlar" of the pause dialog ([GameIntent.OpenSettings]): show the settings over the paused game. */
+    data object NavigateToSettings : GameEffect
 }

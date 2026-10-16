@@ -35,11 +35,17 @@
         <item quantity="other">%1$d LETTERS</item>
     </plurals>
 
-    <!-- Pause dialog (design debt): pause step, then the give-up confirmation -->
+    <!-- Pause dialog (design debt): pause step, then the give-up or restart confirmation -->
     <string name="game_pause_title">Game paused</string>
     <string name="game_pause_message">The clock is stopped. Continue when you are ready.</string>
-    <string name="game_pause_resume">Continue</string>
-    <string name="game_pause_quit">Give up</string>
+    <string name="game_pause_resume">RESUME</string>
+    <string name="game_pause_restart">RESTART</string>
+    <string name="game_pause_settings">SETTINGS</string>
+    <string name="game_pause_quit">GIVE UP</string>
+    <string name="game_restart_title">Restart this wheel?</string>
+    <string name="game_restart_message">This wheel is not recorded and used jokers are not refunded. A new wheel starts with the same settings.</string>
+    <string name="game_restart_confirm">Restart</string>
+    <string name="game_restart_cancel">Cancel</string>
     <string name="game_quit_title">Give up this wheel?</string>
     <string name="game_quit_message">The remaining letters count as wrong and go into your word notebook.</string>
     <string name="game_quit_confirm">Give up</string>

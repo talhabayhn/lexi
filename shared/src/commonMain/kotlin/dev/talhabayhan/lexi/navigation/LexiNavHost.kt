@@ -116,6 +116,8 @@ fun LexiNavHost(modifier: Modifier = Modifier) {
             },
             onAbandoned = { navController.backToHome() },
             onBack = { navController.ifResumed { popBackStack() } },
+            // The game stays on the back stack, paused; Settings' back returns to the pause dialog.
+            onOpenSettings = { navController.ifResumed { navigate(SettingsRoute) { launchSingleTop = true } } },
         )
         resultScreen(
             onPlayAgain = { game ->

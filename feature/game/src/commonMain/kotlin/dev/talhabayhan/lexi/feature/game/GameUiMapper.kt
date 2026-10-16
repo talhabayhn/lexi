@@ -5,6 +5,7 @@ import dev.talhabayhan.lexi.core.designsystem.component.LetterKeyState
 import dev.talhabayhan.lexi.core.designsystem.component.WheelLetterState
 import dev.talhabayhan.lexi.core.designsystem.component.WheelLetterUi
 import dev.talhabayhan.lexi.core.domain.game.GameEngine
+import dev.talhabayhan.lexi.core.domain.game.GameMode
 import dev.talhabayhan.lexi.core.domain.game.GameState
 import dev.talhabayhan.lexi.core.domain.game.GameStatus
 import dev.talhabayhan.lexi.core.domain.game.JokerCost
@@ -27,6 +28,9 @@ internal object GameUiMapper {
         JokerType.LISTEN,
     )
 
+    /** One attempt a day (Daily), a placement test or a hot-seat match: no "Yeniden başlat" (like TEKRAR OYNA). */
+    private val modesWithoutRestart = setOf(GameMode.DAILY, GameMode.LEVEL_TEST, GameMode.DUEL)
+
     /**
      * [previous] keeps the last turn visible after game over (the engine clears the current slot when it finishes)
      * until the screen navigates away. [engine] decides which jokers can be used ([GameEngine.canUseJoker]). The
@@ -45,6 +49,7 @@ internal object GameUiMapper {
             score = state.score,
             correct = state.wheel.slots.count { it.state == SlotState.CORRECT },
             isScored = state.mode.isScored,
+            canRestart = state.mode !in modesWithoutRestart,
             turn = turn,
             isPaused = state.isPaused,
             inputEnabled = state.status == GameStatus.PLAYING &&

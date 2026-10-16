@@ -51,11 +51,16 @@ data class GameRoute(val level: String, val mode: String, val category: String? 
 /**
  * Registers the game screen. [onFinished] runs after the finished game is recorded, with the result to show;
  * [onAbandoned] when a restored game can no longer be played; [onBack] when the player leaves a game that could not
- * be loaded ("Geri dön").
+ * be loaded ("Geri dön"); [onOpenSettings] for "Ayarlar" of the pause dialog (the game stays paused underneath).
  */
-fun NavGraphBuilder.gameScreen(onFinished: (ResultRoute) -> Unit, onAbandoned: () -> Unit, onBack: () -> Unit) {
+fun NavGraphBuilder.gameScreen(
+    onFinished: (ResultRoute) -> Unit,
+    onAbandoned: () -> Unit,
+    onBack: () -> Unit,
+    onOpenSettings: () -> Unit,
+) {
     composable<GameRoute> {
-        GameRoute(onFinished = onFinished, onAbandoned = onAbandoned, onBack = onBack)
+        GameRoute(onFinished = onFinished, onAbandoned = onAbandoned, onBack = onBack, onOpenSettings = onOpenSettings)
     }
 }
 
@@ -64,6 +69,7 @@ internal fun GameRoute(
     onFinished: (ResultRoute) -> Unit,
     onAbandoned: () -> Unit,
     onBack: () -> Unit,
+    onOpenSettings: () -> Unit,
     viewModel: GameViewModel = koinViewModel(),
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
@@ -73,6 +79,7 @@ internal fun GameRoute(
     val currentOnFinished by rememberUpdatedState(onFinished)
     val currentOnAbandoned by rememberUpdatedState(onAbandoned)
     val currentOnBack by rememberUpdatedState(onBack)
+    val currentOnOpenSettings by rememberUpdatedState(onOpenSettings)
     val lifecycleOwner = LocalLifecycleOwner.current
     LaunchedEffect(viewModel, lifecycleOwner, motion) {
         lifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -81,6 +88,7 @@ internal fun GameRoute(
                     is GameEffect.NavigateToResult -> currentOnFinished(effect.result)
                     GameEffect.Abandoned -> currentOnAbandoned()
                     GameEffect.NavigateBack -> currentOnBack()
+                    GameEffect.NavigateToSettings -> currentOnOpenSettings()
                     else -> launch { motion.play(effect) }
                 }
             }

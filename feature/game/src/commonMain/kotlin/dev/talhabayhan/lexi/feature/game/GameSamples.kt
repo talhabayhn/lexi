@@ -116,6 +116,9 @@ internal object GameSamples {
     /** Second step of the pause dialog: confirm giving up. */
     val quitConfirmation: GameUiState = paused.copy(isQuitConfirmation = true)
 
+    /** Second step of the pause dialog: confirm restarting. */
+    val restartConfirmation: GameUiState = paused.copy(isRestartConfirmation = true)
+
     /** Practice (design debt): no clock ("SÜRESİZ"), the badge counts the 5 correct answers. */
     val practice: GameUiState = design.copy(score = 0, correct = 5, isScored = false)
 
