@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Lexi sound set generator: calm, warm, minimal UI sounds in C major pentatonic.
+"""Lexi sound set generator: warm, tactile, minimal sounds for a word-puzzle game (C major pentatonic).
+
+Concept: a Bauhaus letter board — wooden letter tiles, paper cards and one warm acoustic instrument.
+Frequent UI sounds are tactile (tile on a wooden board, a paper card turning); rewards and the timer are short
+melodic gestures on the set's instrument. Same file names in every set, so any set can be shipped.
 
 One command renders everything (deterministic, seeded; only dependency: numpy):
 
@@ -8,14 +12,15 @@ One command renders everything (deterministic, seeded; only dependency: numpy):
     python3 tools/sound-gen/generate.py --install none # render only
 
 Outputs
-  tools/sound-gen/out/{a-kalimba,b-glass,c-felt}/*.wav   candidate sets (git-ignored build output)
-  docs/design/sound-previews/<set>/*.ogg + _reel.ogg       listening copies (WAV if ffmpeg is missing)
-  shared/src/commonMain/composeResources/files/sounds/     the installed set (mono 16-bit 22.05 kHz WAV)
+  tools/sound-gen/out/{a-felt-piano,b-kalimba,c-marimba}/*.wav   candidate sets (git-ignored build output)
+  docs/design/sound-previews/<set>/*.ogg + _reel.ogg               listening copies (WAV if ffmpeg is missing)
+  shared/src/commonMain/composeResources/files/sounds/             the installed set (mono 16-bit 22.05 kHz WAV)
 
-Synthesis is physically informed, never raw oscillators: modal/additive partials with inharmonic ratios and
-individual exponential decays, a soft noise mallet/hammer transient, 3-8 ms raised-cosine attacks, random
-detune/phase per partial, gentle saturation, a 4th-order low-pass (little energy above ~8 kHz) and a short
-small-room reverb from a synthetic impulse response. See docs/design/sound.md for the sound list and intent.
+Everything is physically modelled, never raw oscillators: stiff-string piano partials with three detuned unison
+strings, hammer strike position and felt filtering; a plucked kalimba tine with release glide and box resonance;
+a rosewood bar with yarn mallet and tube resonator; a wooden tile as an inharmonic block + board thump; paper as
+band-swept noise with crinkle grains. Then body EQ, gentle low-pass, soft asymmetric saturation and a small wooden
+room from a synthetic impulse response. See docs/design/sound.md for the sound list and intent.
 """
 import argparse
 import shutil
@@ -34,33 +39,32 @@ OUT_DIR = Path(__file__).resolve().parent / "out"
 PREVIEW_DIR = ROOT / "docs/design/sound-previews"
 APP_DIR = ROOT / "shared/src/commonMain/composeResources/files/sounds"
 
-PENTATONIC = {0, 2, 4, 7, 9}  # C D E G A
-NAMES = {"C": 0, "D": 2, "E": 4, "G": 7, "A": 9}
+NAMES = {"C": 0, "D": 2, "E": 4, "G": 7, "A": 9}  # C major pentatonic only: every overlap stays consonant
 
 
 def hz(note):
-    """'C5' -> frequency. Only C major pentatonic notes exist, so every combination stays consonant."""
     pc, octave = NAMES[note[0]], int(note[1:])
-    assert pc in PENTATONIC
     return 440.0 * 2 ** ((12 * (octave + 1) + pc - 69) / 12)
 
 
 # ---------------------------------------------------------------- dsp primitives
 
-def biquad(x, kind, fc, q=0.7071):
-    """RBJ biquad (causal), kind = 'lp' | 'hp' | 'bp'."""
+def biquad(x, kind, fc, q=0.7071, gain_db=0.0):
+    """RBJ biquad (causal): 'lp' | 'hp' | 'bp' | 'peak'."""
     w0 = 2 * np.pi * fc / SR
     alpha = np.sin(w0) / (2 * q)
     c = np.cos(w0)
     if kind == "lp":
-        b = [(1 - c) / 2, 1 - c, (1 - c) / 2]
+        b, a = [(1 - c) / 2, 1 - c, (1 - c) / 2], [1 + alpha, -2 * c, 1 - alpha]
     elif kind == "hp":
-        b = [(1 + c) / 2, -(1 + c), (1 + c) / 2]
+        b, a = [(1 + c) / 2, -(1 + c), (1 + c) / 2], [1 + alpha, -2 * c, 1 - alpha]
+    elif kind == "bp":
+        b, a = [alpha, 0.0, -alpha], [1 + alpha, -2 * c, 1 - alpha]
     else:
-        b = [alpha, 0.0, -alpha]
-    a0, a1, a2 = 1 + alpha, -2 * c, 1 - alpha
-    b0, b1, b2 = (v / a0 for v in b)
-    a1, a2 = a1 / a0, a2 / a0
+        g = 10 ** (gain_db / 40)
+        b, a = [1 + alpha * g, -2 * c, 1 - alpha * g], [1 + alpha / g, -2 * c, 1 - alpha / g]
+    b0, b1, b2 = (v / a[0] for v in b)
+    a1, a2 = a[1] / a[0], a[2] / a[0]
     y = np.zeros_like(x)
     x1 = x2 = y1 = y2 = 0.0
     for i, xi in enumerate(x.tolist()):
@@ -71,129 +75,153 @@ def biquad(x, kind, fc, q=0.7071):
 
 
 def ramp(n, ms):
-    """Raised-cosine attack envelope of `ms` (no clicks)."""
-    k = max(2, int(SR * ms / 1000))
+    """Raised-cosine attack envelope (no clicks)."""
+    k = min(n, max(2, int(SR * ms / 1000)))
     env = np.ones(n)
-    k = min(k, n)
     env[:k] = 0.5 - 0.5 * np.cos(np.linspace(0, np.pi, k))
     return env
 
 
-def modes(f0, partials, n, rng, detune_cents=3.0):
-    """Sum of decaying sine modes: partials = [(ratio, amp, tau_s), ...]."""
-    t = np.arange(n) / SR
-    out = np.zeros(n)
-    for ratio, amp, tau in partials:
-        f = f0 * ratio * 2 ** (rng.uniform(-detune_cents, detune_cents) / 1200)
-        if f > 0.42 * SR or amp <= 0:
-            continue
-        out += amp * np.exp(-t / tau) * np.sin(2 * np.pi * f * t + rng.uniform(0, 2 * np.pi))
-    return out
-
-
-def noise_burst(n, rng, fc, level, decay_ms, kind="lp", q=0.7071):
-    """Soft mallet / hammer transient: filtered noise, 1 ms rise, fast exponential fall."""
-    m = min(n, int(SR * 0.04))
+def burst(n, rng, kind, fc, decay_ms, q=0.7071, rise_ms=0.8):
+    """Filtered noise with a soft rise and exponential fall (mallet, finger, hammer, contact)."""
+    m = min(n, int(SR * max(0.03, decay_ms * 6 / 1000)))
     t = np.arange(m) / SR
-    burst = rng.standard_normal(m) * np.exp(-t / (decay_ms / 1000)) * ramp(m, 1.0)
-    burst = biquad(burst, kind, fc, q)
-    burst /= np.max(np.abs(burst)) + 1e-12
+    x = biquad(rng.standard_normal(m) * np.exp(-t / (decay_ms / 1000)) * ramp(m, rise_ms), kind, fc, q)
     out = np.zeros(n)
-    out[:m] = burst * level
+    out[:m] = x / (np.max(np.abs(x)) + 1e-12)
     return out
 
 
-# ---------------------------------------------------------------- instruments (one per candidate set)
-
-def marimba(f, vel, n, rng, mute=1.0):
-    """(A) Wooden bar: 1 : 3.98 : 9.2 bar modes, tube resonance on the fundamental, felt-wrapped mallet."""
-    tau = float(np.clip(0.42 * (523 / f) ** 0.6, 0.10, 0.9)) * mute
-    p = [
-        (1.0, 1.0, tau),
-        (1.0015, 0.25, tau * 1.4),  # resonator tube, slightly detuned: slow warm beating
-        (3.98, 0.22 * vel, tau * 0.22),
-        (9.2, 0.05 * vel, tau * 0.08),
-    ]
-    x = modes(f, p, n, rng)
-    x += noise_burst(n, rng, 900 + 1600 * vel, 0.06 * vel, 3.5, "bp", 0.9)
-    return x * ramp(n, 4.0)
+def decaying(f, amp, tau, t, rng, glide=0.0):
+    """One damped mode; `glide` adds a small settling pitch drop at the start (real strikes/plucks do this)."""
+    phase = 2 * np.pi * f * (t + glide * 0.015 * (1 - np.exp(-t / 0.015)))
+    return amp * np.exp(-t / tau) * np.sin(phase + rng.uniform(0, 2 * np.pi))
 
 
-def glass(f, vel, n, rng, mute=1.0):
-    """(B) Soft glass / small bell: free-bar inharmonic ratios, each mode doubled with a ~0.7 Hz beat."""
-    tau = float(np.clip(0.75 * (523 / f) ** 0.5, 0.2, 1.4)) * mute
-    p = []
-    for ratio, amp, k in ((1.0, 1.0, 1.0), (2.756, 0.20 * vel, 0.45), (5.404, 0.06 * vel, 0.22), (8.933, 0.02, 0.12)):
-        p.append((ratio, amp, tau * k))
-        p.append((ratio * (1 + 0.7 / (f * ratio)), amp * 0.5, tau * k * 1.1))
-    x = modes(f, p, n, rng, detune_cents=1.5)
-    x += noise_burst(n, rng, 2600, 0.025 * vel, 2.0)
-    return x * ramp(n, 6.0)
+# ---------------------------------------------------------------- instruments
 
-
-def felt(f, vel, n, rng, mute=1.0):
-    """(C) Felt piano / soft pluck: stiff-string partials (inharmonicity B), felt-damped highs, double decay."""
-    tau = float(np.clip(0.9 * (262 / f) ** 0.5, 0.2, 1.3)) * mute
-    b_inh = 0.00035
-    fc = 900 + 1500 * vel
+def felt_piano(f, vel, n, rng, mute=1.0):
+    """(A) Felt upright: stiff-string partials, hammer at 1/7.5 of the string, felt low-pass, 3 detuned unison
+    strings (slow beating + two-stage decay), hammer/key thump."""
     t = np.arange(n) / SR
+    tau1 = float(np.clip(1.5 * (262 / f) ** 0.7, 0.45, 2.4)) * mute
+    b_inh = float(np.clip(0.00018 * (f / 262), 0.00008, 0.0005))
+    fc = 650 + 1300 * vel**1.5
     x = np.zeros(n)
-    for k in range(1, 11):
-        fk = k * f * np.sqrt(1 + b_inh * k * k) * 2 ** (rng.uniform(-2, 2) / 1200)
-        if fk > 0.42 * SR:
+    for k in range(1, 15):
+        fk = k * f * np.sqrt(1 + b_inh * k * k)
+        if fk > 0.4 * SR:
             break
-        amp = k ** -1.6 / (1 + (fk / fc) ** 2)
-        tk = tau / (1 + 0.45 * (k - 1))
-        env = 0.65 * np.exp(-t / (tk * 0.28)) + 0.35 * np.exp(-t / tk)
-        x += amp * env * np.sin(2 * np.pi * fk * t + rng.uniform(0, 2 * np.pi))
+        amp = abs(np.sin(np.pi * k / 7.5)) * k**-1.2 / (1 + (fk / fc) ** 2.5)
+        tk = tau1 / (1 + 0.3 * (k - 1))
+        for cents, share, slow in ((-0.8, 0.34, 0.85), (0.1, 0.33, 1.0), (0.9, 0.33, 1.2)):
+            fs = fk * 2 ** ((cents + rng.uniform(-0.3, 0.3)) / 1200)
+            prompt = np.exp(-t / (tk * 0.22))
+            env = 0.55 * prompt + 0.45 * np.exp(-t / (tk * slow))
+            x += share * amp * env * np.sin(2 * np.pi * fs * t + rng.uniform(0, 2 * np.pi))
     x /= np.max(np.abs(x)) + 1e-12
-    x += noise_burst(n, rng, 500, 0.07 * vel, 6.0)  # felt hammer thump
+    x += 0.05 * vel * burst(n, rng, "lp", 1100, 2.0) + 0.06 * burst(n, rng, "bp", 140, 12.0, 1.0)
+    return x * ramp(n, 3.0)
+
+
+def kalimba(f, vel, n, rng, mute=1.0):
+    """(B) Kalimba tine: modes 1 : 5.93 : 13.4, release glide, thumb-flesh pluck, slight bridge beating."""
+    t = np.arange(n) / SR
+    tau = float(np.clip(1.0 * (523 / f) ** 0.5, 0.35, 1.6)) * mute
+    x = decaying(f, 1.0, tau, t, rng, glide=0.004)
+    x += decaying(f * 1.0008, 0.18, tau * 1.25, t, rng)
+    x += decaying(f * 5.93, 0.16 * vel, tau * 0.12, t, rng)
+    x += decaying(f * 13.4, 0.035 * vel, tau * 0.05, t, rng)
+    x += 0.05 * vel * burst(n, rng, "lp", 800, 3.0, rise_ms=1.5)
     return x * ramp(n, 5.0)
 
 
+def marimba(f, vel, n, rng, mute=1.0):
+    """(C) Rosewood bar, yarn mallet: tuned modes 1 : 3.93 : 9.3, resonator tube swelling on the fundamental."""
+    t = np.arange(n) / SR
+    tau = float(np.clip(0.6 * (262 / f) ** 0.8, 0.16, 0.95)) * mute
+    x = decaying(f, 1.0, tau, t, rng, glide=0.002)
+    x += decaying(f * 3.93, 0.12 * vel**1.5, tau * 0.18, t, rng)
+    x += decaying(f * 9.3, 0.03 * vel, tau * 0.06, t, rng)
+    tube = decaying(f * 1.0008, 0.5, tau * 1.5, t, rng) * (1 - np.exp(-t / 0.008))
+    x += tube + 0.04 * vel * burst(n, rng, "lp", 700, 4.0, rise_ms=2.0)
+    return x * ramp(n, 7.0)
+
+
+# ---------------------------------------------------------------- tactile layer (same in every set)
+
+def tile(n, rng, vel=0.5, size=1.0):
+    """Wooden letter tile on a wooden board: inharmonic block modes + contact noise + short warm board thump."""
+    t = np.arange(n) / SR
+    f0 = rng.uniform(1100, 1300) / size
+    x = np.zeros(n)
+    for ratio, amp, tau_ms in ((1, 1, 16), (1.56, 0.6, 11), (2.18, 0.35, 8), (2.71, 0.22, 6), (3.38, 0.12, 4)):
+        x += decaying(f0 * ratio * rng.uniform(0.97, 1.03), amp, tau_ms * size / 1000, t, rng)
+    for fb, amp, tau_ms in ((165, 0.5, 30), (247, 0.35, 22), (392, 0.2, 15)):
+        x += decaying(fb * rng.uniform(0.95, 1.05), amp, tau_ms / 1000, t, rng)
+    x += 0.35 * burst(n, rng, "bp", 1500 + 2500 * vel, 1.2, 0.8)
+    x = biquad(x, "lp", 1800 + 3000 * vel)  # a soft finger is darker than a firm one
+    return vel * x * ramp(n, 3.0)
+
+
+def paper(n, rng, dur, forward=True, vel=0.5):
+    """Paper card turning / sliding: noise swept between two bands, swell then fall, sparse crinkle grains."""
+    m = min(n, int(SR * dur))
+    t = np.arange(m) / SR
+    env = np.sin(np.pi * np.clip(t / dur, 0, 1)) ** 1.5 * np.exp(-t / (dur * 0.8))
+    mix = t / dur if forward else 1 - t / dur
+    noise = rng.standard_normal(m)
+    x = (1 - mix) * biquad(noise, "bp", 700, 0.8) + mix * biquad(noise, "bp", 1800, 0.9)
+    grains = (rng.random(m) < 140 / SR) * rng.uniform(-1, 1, m)
+    x = x + 0.5 * biquad(grains, "bp", 2500, 2.0)
+    x = biquad(x * env, "lp", 3800)
+    out = np.zeros(n)
+    out[:m] = x / (np.max(np.abs(x)) + 1e-12) * vel
+    return out
+
+
 SETS = {
-    "A": ("a-kalimba", marimba, {"lp": 6500, "rt": 1.0, "wet": 0.11}),
-    "B": ("b-glass", glass, {"lp": 7000, "rt": 1.1, "wet": 0.13}),
-    "C": ("c-felt", felt, {"lp": 6000, "rt": 1.0, "wet": 0.10}),
+    "A": ("a-felt-piano", felt_piano, {"lp": 5200, "eq": [(220, 3.0, 0.8), (2600, -2.0, 1.0)]}),
+    "B": ("b-kalimba", kalimba, {"lp": 5500, "eq": [(230, 4.0, 1.2), (900, 1.5, 1.0)]}),
+    "C": ("c-marimba", marimba, {"lp": 5000, "eq": [(180, 2.5, 0.9)]}),
 }
 
 
 # ---------------------------------------------------------------- room + mastering
 
 def room_ir(rt, rng):
-    """Small-room impulse response: a few early reflections + exponentially decaying, darkening noise tail."""
+    """Small wooden room: diffuse early cluster (smoothed) + darkening exponential tail, -60 dB at rt."""
     n = int(SR * rt)
     t = np.arange(n) / SR
-    tail = rng.standard_normal(n) * np.exp(-6.9 * t / rt)  # -60 dB at rt
-    tail = biquad(biquad(tail, "lp", 3200), "hp", 200)
-    ir = np.zeros(n)
-    pre = int(SR * 0.006)
-    ir[pre:] = tail[: n - pre]
-    for ms, g in ((7, 0.5), (11, -0.35), (17, 0.28), (23, -0.2), (31, 0.14)):
+    tail = rng.standard_normal(n) * np.exp(-6.9 * t / rt) * (1 - np.exp(-t / 0.004))
+    tail = biquad(biquad(tail, "lp", 2600), "hp", 160)
+    early = np.zeros(n)
+    for ms in rng.uniform(4, 28, 9):
         i = int(SR * ms / 1000)
         if i < n:
-            ir[i] += g * np.max(np.abs(tail))
+            early[i] += rng.uniform(-1, 1) * np.exp(-ms / 20)
+    early = biquad(early, "lp", 3000)
+    ir = tail / np.max(np.abs(tail)) + 0.8 * early / (np.max(np.abs(early)) + 1e-12)
     return ir / np.sqrt(np.sum(ir**2))
 
 
-def master(x, spec, rng):
-    """Low-pass, DC/rumble cut, soft saturation, reverb, end fade, decimate to 22.05 kHz."""
+def master(x, spec, rt, wet_amount, rng):
+    """Body EQ, low-pass, rumble cut, soft asymmetric saturation, wooden room, natural release, 22.05 kHz."""
+    for fc, g, q in spec["eq"]:
+        x = biquad(x, "peak", fc, q, g)
     x = biquad(biquad(x, "lp", spec["lp"]), "lp", spec["lp"])
-    x = biquad(x, "hp", 110)
+    x = biquad(x, "hp", 100)
     x = x / (np.max(np.abs(x)) + 1e-12) * 0.8
-    x = np.tanh(1.4 * x) / np.tanh(1.4)  # subtle saturation (warmth, rounds the peaks)
-    ir = room_ir(spec["rt"], rng)
-    wet = np.fft.irfft(np.fft.rfft(x, len(x) + len(ir)) * np.fft.rfft(ir, len(x) + len(ir)))[: len(x)]
+    x = np.tanh(1.3 * x + 0.1 * x * x) / np.tanh(1.3)  # mild even harmonics, rounded peaks
+    ir = room_ir(rt, rng)
+    size = len(x) + len(ir)
+    wet = np.fft.irfft(np.fft.rfft(x, size) * np.fft.rfft(ir, size))[: len(x)]
     wet *= np.sqrt(np.mean(x**2)) / (np.sqrt(np.mean(wet**2)) + 1e-12)
-    w = spec["wet"]
-    y = (1 - w) * x + w * wet
-    fade = max(int(SR * 0.015), int(len(y) * 0.35))  # long, natural release: the tail never gets cut short
+    y = (1 - wet_amount) * x + wet_amount * wet
+    fade = max(int(SR * 0.015), int(len(y) * 0.35))
     y[-fade:] *= (0.5 + 0.5 * np.cos(np.linspace(0, np.pi, fade))) ** 1.5
-    # anti-alias (zero-phase, smooth taper 8.5-10.5 kHz) then decimate by 2
-    pad = len(y) + 2048
-    spec_y = np.fft.rfft(y, pad)
-    f = np.fft.rfftfreq(pad, 1 / SR)
-    spec_y *= np.clip((10500 - f) / 2000, 0, 1)
+    pad = len(y) + 2048  # zero-phase anti-alias taper 8.5-10.5 kHz, then decimate by 2
+    spec_y = np.fft.rfft(y, pad) * np.clip((10500 - np.fft.rfftfreq(pad, 1 / SR)) / 2000, 0, 1)
     y = np.fft.irfft(spec_y, pad)[: len(y)][::2]
     return y - np.mean(y)
 
@@ -205,64 +233,106 @@ def to_int16(y, peak_db, rng):
 
 
 # ---------------------------------------------------------------- sound list
-# name: (duration_s, peak_dBFS, reverb rt (s, IR length ~ tail), [(time_s, note | (notes...), velocity, mute)])
-# mute < 1 shortens every decay (muted / damped strike). Frequent sounds: 40-120 ms, quiet, short tail.
 
-FREQUENT = {"tap", "place", "backspace", "timer_tick", "tick"}
-VARIANTS = 3
+class Take:
+    """One rendering: places instrument notes, tiles and paper on a timeline with light human timing."""
 
+    def __init__(self, instrument, dur, rng, variant):
+        self.instrument, self.rng, self.variant = instrument, rng, variant
+        self.x = np.zeros(int(SR * dur))
+
+    def _at(self, t0):
+        start = int(SR * (t0 + (self.rng.uniform(0, 0.003) if t0 else 0)))
+        return start, len(self.x) - start
+
+    def _vel(self, vel):
+        return float(np.clip(vel * self.rng.uniform(0.9, 1.1) if self.variant else vel, 0.05, 1.0))
+
+    def note(self, t0, notes, vel, mute=1.0):
+        chord = notes.split()
+        for i, nn in enumerate(chord):  # chords are rolled like a hand, never a block hit
+            start, n = self._at(t0 + 0.018 * i)
+            if n > 0:
+                f = hz(nn) * (2 ** (self.rng.uniform(-5, 5) / 1200) if self.variant else 1.0)
+                self.x[start:] += self.instrument(f, self._vel(vel), n, self.rng, mute) * (0.75 if i else 1.0)
+        return self
+
+    def tile(self, t0, vel, size=1.0, bounce=False):
+        start, n = self._at(t0)
+        if n > 0:
+            self.x[start:] += 0.9 * tile(n, self.rng, self._vel(vel), size)
+        if bounce:  # a set-down tile rocks once on the board
+            b = start + int(SR * self.rng.uniform(0.014, 0.02))
+            if b < len(self.x):
+                self.x[b:] += 0.9 * tile(len(self.x) - b, self.rng, self._vel(vel) * 0.3, size)
+        return self
+
+    def paper(self, t0, dur, forward=True, vel=0.5):
+        start, n = self._at(t0)
+        if n > 0:
+            self.x[start:] += paper(n, self.rng, dur, forward, self._vel(vel))
+        return self
+
+
+# name: (duration_s, peak_dBFS, room rt_s, reverb wet, frequent?, score(take))
 SOUNDS = {
-    # --- existing files (referenced by SoundEffect; names, format and approx. durations kept)
-    "tap": (0.07, -19, 0.12, [(0, "G5", 0.35, 0.18)]),
-    "place": (0.08, -21, 0.12, [(0, "D5", 0.3, 0.2)]),
-    "correct": (0.28, -8, 0.28, [(0, "G5", 0.65, 0.5), (0.09, "C6", 0.8, 0.6)]),
-    "wrong": (0.30, -13, 0.25, [(0, "E4", 0.4, 0.22), (0.11, "C4", 0.35, 0.28)]),
-    "pass": (0.26, -14, 0.25, [(0, "C5", 0.3, 0.3), (0.045, "D5", 0.3, 0.3), (0.09, "E5", 0.35, 0.4)]),
-    "combo": (0.40, -8, 0.40, [(0, "C5", 0.5, 0.5), (0.05, "E5", 0.55, 0.5), (0.10, "G5", 0.6, 0.6), (0.15, "C6", 0.75, 0.8)]),
-    "tick": (0.12, -18, 0.15, [(0, "A4", 0.35, 0.25)]),
-    "win": (0.90, -7, 0.70, [(0, "C5", 0.5, 1), (0.10, "E5", 0.55, 1), (0.20, "G5", 0.6, 1), (0.32, ("C6", "E5", "G5"), 0.7, 1.2)]),
-    "lose": (0.80, -11, 0.60, [(0, "A4", 0.4, 0.8), (0.14, "G4", 0.38, 0.8), (0.28, "E4", 0.36, 0.8), (0.42, ("C4", "G4"), 0.38, 1)]),
+    # --- existing files (referenced by SoundEffect; names and format kept, durations close)
+    "tap": (0.07, -19, 0.12, 0.08, True, lambda k: k.tile(0, 0.35)),
+    "place": (0.09, -20, 0.14, 0.08, True, lambda k: k.tile(0, 0.5, bounce=True)),
+    "correct": (0.28, -9, 0.3, 0.12, False, lambda k: k.note(0, "G4", 0.55, 0.6).note(0.085, "C5", 0.7, 0.8)),
+    "wrong": (0.30, -14, 0.25, 0.1, False,
+              lambda k: k.tile(0, 0.35, size=1.6).note(0.01, "E4", 0.3, 0.2).note(0.12, "C4", 0.3, 0.25)),
+    "pass": (0.26, -15, 0.2, 0.1, False, lambda k: k.paper(0, 0.2, True, 0.6).tile(0.17, 0.2, size=1.2)),
+    "combo": (0.40, -9, 0.4, 0.12, False,
+              lambda k: k.note(0, "G4", 0.5, 0.6).note(0.055, "C5", 0.55, 0.6).note(0.11, "E5", 0.6, 0.7)
+              .note(0.165, "G5", 0.7, 0.9)),
+    "tick": (0.12, -18, 0.15, 0.1, True, lambda k: k.note(0, "G4", 0.35, 0.22).tile(0, 0.15, size=1.8)),
+    "win": (0.90, -8, 0.7, 0.13, False,
+            lambda k: k.note(0, "C5", 0.5).note(0.11, "E5", 0.55).note(0.22, "G5", 0.6)
+            .note(0.36, "C4 G4 E5", 0.6, 1.2)),
+    "lose": (0.80, -12, 0.6, 0.12, False,
+             lambda k: k.note(0, "A4", 0.4, 0.8).note(0.15, "G4", 0.38, 0.8).note(0.3, "E4", 0.36, 0.8)
+             .note(0.45, "C4 G4", 0.38)),
     # --- new files (ready to wire, see docs/design/sound.md)
-    "button": (0.09, -17, 0.15, [(0, "C5", 0.4, 0.25)]),
-    "backspace": (0.07, -21, 0.12, [(0, "E5", 0.25, 0.15)]),
-    "timer_tick": (0.09, -28, 0.15, [(0, "A5", 0.2, 0.2)]),
-    "warning_1": (0.14, -19, 0.18, [(0, "G4", 0.3, 0.3)]),
-    "warning_2": (0.14, -17, 0.18, [(0, "A4", 0.4, 0.3)]),
-    "warning_3": (0.18, -15, 0.18, [(0, "C5", 0.45, 0.28), (0.085, "C5", 0.3, 0.28)]),
-    "time_up": (0.70, -11, 0.60, [(0, ("C5", "G4"), 0.5, 1.0), (0.16, "C4", 0.4, 1.0)]),
-    "joker": (0.38, -12, 0.35, [(0, "G5", 0.4, 0.5), (0.035, "A5", 0.45, 0.5), (0.07, "D6", 0.5, 0.8)]),
-    "gift": (0.65, -10, 0.55, [(0, "E5", 0.45, 0.8), (0.06, "G5", 0.5, 0.8), (0.12, "C6", 0.55, 0.9), (0.18, "E6", 0.5, 1.1)]),
-    "countdown": (0.22, -14, 0.25, [(0, "C5", 0.5, 0.45)]),
-    "countdown_go": (0.38, -11, 0.35, [(0, ("G5", "C6"), 0.6, 0.8)]),
-    "best": (0.85, -7, 0.70, [(0, "C5", 0.5, 0.7), (0.07, "E5", 0.5, 0.7), (0.14, "G5", 0.55, 0.7), (0.21, "A5", 0.6, 0.8), (0.30, ("C6", "G5", "E5"), 0.75, 1.2)]),
-    "dialog_open": (0.18, -20, 0.2, [(0, "D5", 0.3, 0.3), (0.04, "G5", 0.3, 0.35)]),
-    "dialog_close": (0.18, -21, 0.2, [(0, "G5", 0.28, 0.3), (0.04, "D5", 0.28, 0.3)]),
-    "toast": (0.25, -20, 0.25, [(0, "A5", 0.3, 0.5)]),
-    "notebook_add": (0.20, -17, 0.22, [(0, "E5", 0.4, 0.35), (0.05, "A5", 0.45, 0.45)]),
-    "notebook_remove": (0.18, -19, 0.2, [(0, "A5", 0.3, 0.25), (0.05, "E5", 0.3, 0.22)]),
-    "daily_complete": (1.00, -7, 0.70, [(0, "G4", 0.45, 1), (0.09, "C5", 0.5, 1), (0.18, "E5", 0.55, 1), (0.27, "G5", 0.6, 1), (0.38, ("C6", "E5", "G4"), 0.7, 1.3)]),
+    "button": (0.09, -17, 0.15, 0.08, False, lambda k: k.tile(0, 0.45, size=1.4)),
+    "backspace": (0.09, -21, 0.12, 0.08, True, lambda k: k.paper(0, 0.035, False, 0.5).tile(0.025, 0.25, size=1.1)),
+    "timer_tick": (0.09, -30, 0.15, 0.1, True, lambda k: k.note(0, "A4", 0.2, 0.15)),
+    "warning_1": (0.14, -19, 0.18, 0.1, False, lambda k: k.note(0, "G4", 0.3, 0.25).tile(0, 0.12, size=1.8)),
+    "warning_2": (0.14, -17, 0.18, 0.1, False, lambda k: k.note(0, "A4", 0.4, 0.25).tile(0, 0.15, size=1.8)),
+    "warning_3": (0.18, -15, 0.18, 0.1, False,
+                  lambda k: k.note(0, "C5", 0.45, 0.25).note(0.085, "C5", 0.3, 0.25).tile(0, 0.18, size=1.8)),
+    "time_up": (0.70, -12, 0.6, 0.12, False, lambda k: k.note(0, "G4", 0.45, 0.9).note(0.16, "C4 G4", 0.4)),
+    "joker": (0.38, -13, 0.35, 0.12, False,
+              lambda k: k.paper(0, 0.1, True, 0.3).note(0.04, "E5", 0.4, 0.6).note(0.08, "G5", 0.45, 0.6)
+              .note(0.12, "A5", 0.5, 0.8)),
+    "gift": (0.65, -11, 0.55, 0.12, False,
+             lambda k: k.paper(0, 0.14, True, 0.45).note(0.09, "C5", 0.45).note(0.15, "E5", 0.5)
+             .note(0.21, "G5", 0.55, 1.1)),
+    "countdown": (0.22, -14, 0.25, 0.1, False, lambda k: k.note(0, "C5", 0.5, 0.4)),
+    "countdown_go": (0.38, -11, 0.35, 0.12, False, lambda k: k.note(0, "G4 C5 E5", 0.6, 0.8)),
+    "best": (0.85, -8, 0.7, 0.13, False,
+             lambda k: k.note(0, "C5", 0.5, 0.7).note(0.07, "E5", 0.5, 0.7).note(0.14, "G5", 0.55, 0.7)
+             .note(0.21, "A5", 0.6, 0.8).note(0.32, "C4 G4 E5 C6", 0.65, 1.2)),
+    "dialog_open": (0.18, -22, 0.2, 0.1, False, lambda k: k.paper(0, 0.12, True, 0.5)),
+    "dialog_close": (0.18, -23, 0.2, 0.1, False, lambda k: k.paper(0, 0.1, False, 0.5).tile(0.08, 0.15, size=1.3)),
+    "toast": (0.25, -21, 0.25, 0.12, False, lambda k: k.note(0, "E5", 0.3, 0.5)),
+    "notebook_add": (0.24, -18, 0.22, 0.1, False,
+                     lambda k: k.paper(0, 0.09, True, 0.45).note(0.06, "E5", 0.4, 0.4).note(0.11, "A5", 0.45, 0.5)),
+    "notebook_remove": (0.22, -20, 0.2, 0.1, False,
+                        lambda k: k.paper(0, 0.09, False, 0.45).note(0.07, "A4", 0.3, 0.25)),
+    "daily_complete": (1.00, -8, 0.7, 0.13, False,
+                       lambda k: k.note(0, "G4", 0.45).note(0.09, "C5", 0.5).note(0.18, "E5", 0.55)
+                       .note(0.27, "G5", 0.6).note(0.4, "C4 G4 E5 C6", 0.65, 1.3)),
 }
+VARIANTS = 3
 
 
 def render(set_key, name, variant=0):
-    label, instrument, spec = SETS[set_key]
-    dur, peak_db, rt, notes = SOUNDS[name]
+    _, instrument, spec = SETS[set_key]
+    dur, peak_db, rt, wet, _, score = SOUNDS[name]
     rng = np.random.default_rng(zlib.crc32(f"{set_key}/{name}/{variant}".encode()))
-    n = int(SR * dur)
-    x = np.zeros(n)
-    for t0, note, vel, mute in notes:
-        chord = note if isinstance(note, tuple) else (note,)
-        if variant:  # subtle round-robin: a few cents, +-10 % velocity, fresh mallet noise
-            vel = float(np.clip(vel * rng.uniform(0.9, 1.1), 0.05, 1.0))
-        for i, nn in enumerate(chord):
-            f = hz(nn) * (2 ** (rng.uniform(-6, 6) / 1200) if variant else 1.0)
-            start = int(SR * t0) + int(SR * 0.012) * i  # chords are softly rolled, never a block hit
-            if start >= n:
-                continue
-            x[start:] += instrument(f, vel, n - start, rng, mute) * (0.8 if i else 1.0)
-    room = dict(spec, rt=rt)
-    y = master(x, room, rng)
-    return to_int16(y, peak_db, rng)
+    take = score(Take(instrument, dur, rng, variant))
+    return to_int16(master(take.x, spec, rt, wet, rng), peak_db, rng)
 
 
 def write_wav(path, pcm):
@@ -278,8 +348,7 @@ def check(name, pcm):
     """Guard rails: no click at the start/end, almost no energy above 8 kHz."""
     y = pcm.astype(np.float64) / 32768
     spec = np.abs(np.fft.rfft(y)) ** 2
-    f = np.fft.rfftfreq(len(y), 1 / OUT_SR)
-    hi = spec[f > 8000].sum() / (spec.sum() + 1e-12)
+    hi = spec[np.fft.rfftfreq(len(y), 1 / OUT_SR) > 8000].sum() / (spec.sum() + 1e-12)
     assert abs(y[0]) < 0.01 and abs(y[-1]) < 0.01, f"{name}: click at an edge"
     assert hi < 0.01, f"{name}: {hi:.2%} energy above 8 kHz"
     return hi
@@ -292,52 +361,53 @@ def main():
     args = ap.parse_args()
 
     ffmpeg = shutil.which("ffmpeg")
+    if OUT_DIR.exists():
+        shutil.rmtree(OUT_DIR)
+    if not args.no_previews and PREVIEW_DIR.exists():
+        shutil.rmtree(PREVIEW_DIR)
     for key, (label, _, _) in SETS.items():
         out = OUT_DIR / label
-        if out.exists():
-            shutil.rmtree(out)
-        files = []
-        for name in SOUNDS:
-            variants = [0] + (list(range(1, VARIANTS + 1)) if name in FREQUENT else [])
-            for v in variants:
+        mains, variants = [], []
+        for name, (*_, frequent, _score) in SOUNDS.items():
+            for v in range(VARIANTS + 1 if frequent else 1):
                 fname = f"{name}.wav" if v == 0 else f"{name}_{v}.wav"
                 pcm = render(key, name, v)
                 hi = check(f"{label}/{fname}", pcm)
                 write_wav(out / fname, pcm)
-                files.append(out / fname)
+                (variants if v else mains).append(out / fname)
                 if v == 0:
-                    print(f"{label:10} {name:16} {len(pcm) / OUT_SR * 1000:5.0f} ms  >8k {hi:.3%}")
+                    print(f"{label:13} {name:16} {len(pcm) / OUT_SR * 1000:5.0f} ms  >8k {hi:.3%}")
         if not args.no_previews:
-            write_previews(label, files, ffmpeg)
+            write_previews(label, mains, variants, ffmpeg)
 
     if args.install != "none":
         label = SETS[args.install][0]
+        for old in APP_DIR.glob("*.wav"):
+            old.unlink()
         for src in sorted((OUT_DIR / label).glob("*.wav")):
             shutil.copyfile(src, APP_DIR / src.name)
         print(f"installed set {args.install} ({label}) into {APP_DIR.relative_to(ROOT)}")
 
 
-def write_previews(label, files, ffmpeg):
+def write_previews(label, mains, variants, ffmpeg):
+    """Per-sound listening copies + `_reel` (every main sound in list order, 0.45 s apart)."""
     dest = PREVIEW_DIR / label
-    if dest.exists():
-        shutil.rmtree(dest)
     dest.mkdir(parents=True)
     gap = np.zeros(int(OUT_SR * 0.45), dtype=np.int16)
     reel = []
-    for f in files:
+    for f in mains:
         with wave.open(str(f)) as w:
             reel += [np.frombuffer(w.readframes(w.getnframes()), dtype=np.int16), gap]
     reel_path = dest / "_reel.wav"
     write_wav(reel_path, np.concatenate(reel))
     if not ffmpeg:
-        for f in files:
+        for f in mains + variants:
             shutil.copyfile(f, dest / f.name)
         return
-    for src in files + [reel_path]:
-        target = dest / (src.stem + ".ogg")
+    for src in mains + variants + [reel_path]:
         subprocess.run(
             [ffmpeg, "-loglevel", "error", "-y", "-i", str(src), "-map_metadata", "-1", "-fflags", "+bitexact",
-             "-flags:a", "+bitexact", "-c:a", "libvorbis", "-q:a", "4", str(target)],
+             "-flags:a", "+bitexact", "-c:a", "libvorbis", "-q:a", "4", str(dest / (src.stem + ".ogg"))],
             check=True,
         )
     reel_path.unlink()
