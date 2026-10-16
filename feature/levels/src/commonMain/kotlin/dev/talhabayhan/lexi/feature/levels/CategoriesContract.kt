@@ -38,6 +38,8 @@ internal data class CategoriesUiState(
     /** Slots of a regular wheel, for "26 kelime" on the mixed card. */
     val letterCount: Int = ('A'..'Z').count(),
     val isLoaded: Boolean = false,
+    /** The level's content could not be read; the screen shows an empty state with "Tekrar dene". */
+    val hasError: Boolean = false,
 )
 
 internal sealed interface CategoriesIntent {
@@ -50,6 +52,9 @@ internal sealed interface CategoriesIntent {
     data object PlayMixed : CategoriesIntent
 
     data object Back : CategoriesIntent
+
+    /** "Tekrar dene" after the content could not be read. */
+    data object Retry : CategoriesIntent
 }
 
 internal sealed interface CategoriesEffect {

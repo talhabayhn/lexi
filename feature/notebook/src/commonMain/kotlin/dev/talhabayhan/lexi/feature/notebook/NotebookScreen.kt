@@ -54,10 +54,12 @@ import dev.talhabayhan.lexi.feature.notebook.generated.resources.notebook_empty_
 import dev.talhabayhan.lexi.feature.notebook.generated.resources.notebook_empty_due
 import dev.talhabayhan.lexi.feature.notebook.generated.resources.notebook_empty_hard
 import dev.talhabayhan.lexi.feature.notebook.generated.resources.notebook_empty_search
+import dev.talhabayhan.lexi.feature.notebook.generated.resources.notebook_error
 import dev.talhabayhan.lexi.feature.notebook.generated.resources.notebook_meta_days
 import dev.talhabayhan.lexi.feature.notebook.generated.resources.notebook_meta_mastered
 import dev.talhabayhan.lexi.feature.notebook.generated.resources.notebook_meta_today
 import dev.talhabayhan.lexi.feature.notebook.generated.resources.notebook_meta_tomorrow
+import dev.talhabayhan.lexi.feature.notebook.generated.resources.notebook_retry
 import dev.talhabayhan.lexi.feature.notebook.generated.resources.notebook_review_count
 import dev.talhabayhan.lexi.feature.notebook.generated.resources.notebook_review_start
 import dev.talhabayhan.lexi.feature.notebook.generated.resources.notebook_search_placeholder
@@ -119,7 +121,15 @@ internal fun NotebookScreen(
             SearchField(search, stringResource(Res.string.notebook_search_placeholder))
             if (state.dueCount > 0) ReviewButton(state.dueCount) { onIntent(NotebookIntent.StartReview) }
             if (state.isLoaded) {
-                if (state.words.isEmpty()) {
+                if (state.hasError) {
+                    // DESIGN-DEBT: no design for a failed read; the component library's empty state with a retry.
+                    EmptyState(
+                        message = stringResource(Res.string.notebook_error),
+                        actionText = stringResource(Res.string.notebook_retry),
+                        onAction = { onIntent(NotebookIntent.Retry) },
+                        modifier = Modifier.fillMaxWidth(),
+                    )
+                } else if (state.words.isEmpty()) {
                     EmptyState(stringResource(emptyMessage(state)), Modifier.fillMaxWidth())
                 } else {
                     WordList(state, onIntent, Modifier.weight(1f, fill = false))

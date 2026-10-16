@@ -106,4 +106,14 @@ class NotebookScreenshotTest {
             }
         }
     }
+
+    /** Design debt: the notebook could not be read; an empty state with a retry in place of the list. */
+    @Test
+    fun readFailed() {
+        captureRoboImage("src/androidHostTest/screenshots/NotebookError.png") {
+            LexiTheme(reducedMotion = false) {
+                NotebookScreen(state = NotebookUiState(isLoaded = true, hasError = true), onIntent = {})
+            }
+        }
+    }
 }

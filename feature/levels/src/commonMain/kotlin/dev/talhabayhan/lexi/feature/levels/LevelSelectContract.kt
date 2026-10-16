@@ -23,6 +23,8 @@ internal data class LevelSelectUiState(
     val classicTimeLimitSeconds: Int = Settings.DEFAULT_CLASSIC_TIME_LIMIT_SECONDS,
     /** Slots of a regular wheel, for the start button's caption "26 HARF". */
     val letterCount: Int = ('A'..'Z').count(),
+    /** The card totals could not be read: the level cards show 0 / 0, an empty state offers "Tekrar dene". */
+    val hasError: Boolean = false,
 )
 
 /** The modes the picker offers, in display order. */
@@ -40,6 +42,9 @@ internal sealed interface LevelSelectIntent {
     data object OpenCategories : LevelSelectIntent
 
     data object Back : LevelSelectIntent
+
+    /** "Tekrar dene" after the card totals could not be read. */
+    data object Retry : LevelSelectIntent
 }
 
 internal sealed interface LevelSelectEffect {

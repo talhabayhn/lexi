@@ -228,4 +228,46 @@ class NotebookViewModelTest {
             assertEquals(NotebookEffect.NavigateBack, awaitItem())
         }
     }
+
+    @Test
+    fun `an unreadable notebook shows the error and retry reads it again`() {
+        progress.failing = true
+        val viewModel = viewModel()
+
+        assertTrue(viewModel.state.value.isLoaded)
+        assertTrue(viewModel.state.value.hasError)
+        assertTrue(viewModel.state.value.words.isEmpty())
+
+        progress.failing = false
+        viewModel.onIntent(NotebookIntent.Retry)
+
+        assertFalse(viewModel.state.value.hasError)
+        assertEquals(listOf("a1-egg", "a1-mirror"), viewModel.ids)
+    }
+
+    @Test
+    fun `unreadable words are an error and not an empty notebook`() {
+        cards.failing = true
+        val viewModel = viewModel()
+
+        assertTrue(viewModel.state.value.hasError)
+        assertTrue(viewModel.state.value.words.isEmpty())
+
+        cards.failing = false
+        viewModel.onIntent(NotebookIntent.Retry)
+
+        assertFalse(viewModel.state.value.hasError)
+        assertEquals(2, viewModel.state.value.dueCount)
+    }
+
+    @Test
+    fun `retry does nothing without an error`() {
+        val viewModel = viewModel()
+        val reads = cards.reads
+
+        viewModel.onIntent(NotebookIntent.Retry)
+
+        assertEquals(reads, cards.reads)
+        assertFalse(viewModel.state.value.hasError)
+    }
 }

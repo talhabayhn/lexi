@@ -223,4 +223,58 @@ class StatsViewModelTest {
             assertEquals(StatsEffect.NavigateBack, awaitItem())
         }
     }
+
+    @Test
+    fun `retry after unreadable content reads it again`() {
+        cards.failing = true
+        val viewModel = viewModel(FakeProgressRepository(listOf(progress("a1-egg", correct = 1, wrong = 0))))
+        assertTrue(viewModel.state.value.hasError)
+
+        cards.failing = false
+        viewModel.onIntent(StatsIntent.Retry)
+
+        val state = viewModel.state.value
+        assertTrue(state.isLoaded)
+        assertFalse(state.hasError)
+        assertEquals(1, state.learnedWords)
+    }
+
+    @Test
+    fun `an unreadable progress shows the error and retry recovers`() {
+        val store = FakeProgressRepository(listOf(progress("a1-egg", correct = 1, wrong = 0)))
+        store.failing = true
+        val viewModel = viewModel(store)
+        assertTrue(viewModel.state.value.hasError)
+
+        store.failing = false
+        viewModel.onIntent(StatsIntent.Retry)
+
+        assertFalse(viewModel.state.value.hasError)
+        assertEquals(1, viewModel.state.value.learnedWords)
+    }
+
+    @Test
+    fun `retry does nothing without an error`() {
+        val viewModel = viewModel()
+        val reads = cards.reads
+
+        viewModel.onIntent(StatsIntent.Retry)
+
+        assertEquals(reads, cards.reads)
+    }
+
+    @Test
+    fun `practice and hardcore wheels count like classic ones`() = runTest {
+        val sessions = FakeSessionRepository()
+        sessions.record(
+            session(daysAgo = 1, completed = true, correct = 3).copy(mode = GameMode.PRACTICE),
+            session(daysAgo = 0, completed = true, correct = 2).copy(mode = GameMode.HARDCORE, score = 30),
+        )
+
+        val state = viewModel(sessions = sessions).state.value
+
+        assertEquals(2, state.completedWheels)
+        assertEquals(2, state.longestStreak)
+        assertEquals(5, state.weekTotal)
+    }
 }

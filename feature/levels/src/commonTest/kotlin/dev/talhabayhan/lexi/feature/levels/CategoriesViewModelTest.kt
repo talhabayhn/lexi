@@ -165,4 +165,46 @@ class CategoriesViewModelTest {
             assertEquals(CategoriesEffect.NavigateBack, awaitItem())
         }
     }
+
+    @Test
+    fun `an unreadable content shows the error instead of an empty level and retry reads it again`() = runTest {
+        cards.failing = true
+        val viewModel = viewModel()
+
+        val failed = viewModel.state.value
+        assertTrue(failed.isLoaded)
+        assertTrue(failed.hasError)
+        assertTrue(failed.categories.isEmpty())
+
+        cards.failing = false
+        viewModel.onIntent(CategoriesIntent.Retry)
+
+        val loaded = viewModel.state.value
+        assertFalse(loaded.hasError)
+        assertTrue(loaded.isLoaded)
+        assertEquals(listOf("food-drink", "home"), loaded.categories.map { it.id.value })
+    }
+
+    @Test
+    fun `an unreadable category list is an error too and nothing can be started`() = runTest {
+        categories.failing = true
+        val viewModel = viewModel()
+
+        assertTrue(viewModel.state.value.hasError)
+        viewModel.effects.test {
+            viewModel.onIntent(CategoriesIntent.PlayMixed)
+            expectNoEvents()
+        }
+    }
+
+    @Test
+    fun `retry does nothing without an error`() = runTest {
+        val viewModel = viewModel()
+        val reads = cards.reads
+
+        viewModel.onIntent(CategoriesIntent.Retry)
+
+        assertEquals(reads, cards.reads)
+        assertFalse(viewModel.state.value.hasError)
+    }
 }

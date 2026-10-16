@@ -37,4 +37,5 @@
     <!-- Empty and error states (no design: EmptyState) -->
     <string name="stats_empty">No wheel played yet. Play your first wheel and your statistics will appear here.</string>
     <string name="stats_error">Your statistics could not be read. Please try again later.</string>
+    <string name="stats_retry">Try again</string>
 </resources>

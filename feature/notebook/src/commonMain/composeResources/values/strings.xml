@@ -40,4 +40,6 @@
     <string name="notebook_sheet_stats">%1$d seen · %2$d correct · %3$d wrong</string>
     <string name="notebook_sheet_speak">Listen</string>
     <string name="notebook_sheet_remove">Remove from notebook</string>
+    <string name="notebook_error">Your notebook could not be loaded.</string>
+    <string name="notebook_retry">Try again</string>
 </resources>

@@ -20,6 +20,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -42,11 +43,26 @@ internal class CategoriesViewModel(
 
     private val selectedLevel = MutableStateFlow(route.startLevel)
 
+    /** Bumped by "Tekrar dene": reads the selected level's content again. */
+    private val reloads = MutableStateFlow(0)
+
     init {
         viewModelScope.launch {
-            // A new level cancels the running collection of the old one.
-            selectedLevel.collectLatest { level ->
+            // A new level (or a retry) cancels the running collection of the old one.
+            combine(selectedLevel, reloads) { level, _ -> level }.collectLatest { level ->
                 val content = loadContent(level)
+                if (content == null) {
+                    mutableState.update {
+                        it.copy(
+                            level = level,
+                            levelTotal = 0,
+                            categories = persistentListOf(),
+                            isLoaded = true,
+                            hasError = true,
+                        )
+                    }
+                    return@collectLatest
+                }
                 progress.observeAll()
                     // A broken read keeps the last numbers; the screen itself still works.
                     .catch { } // TODO(M7): report to the crash reporter once it is behind its interface.
@@ -62,6 +78,7 @@ internal class CategoriesViewModel(
                                 levelTotal = content.categoryOf.size,
                                 categories = ui.toImmutableList(),
                                 isLoaded = true,
+                                hasError = false,
                             )
                         }
                     }
@@ -72,8 +89,8 @@ internal class CategoriesViewModel(
     /** The level's categories (without the virtual mixed one) and the category of each of its cards. */
     private class LevelContent(val categories: List<Category>, val categoryOf: Map<CardId, CategoryId>)
 
-    /** Content never changes while the app runs; empty when it cannot be read. */
-    private suspend fun loadContent(level: Level): LevelContent = try {
+    /** Content never changes while the app runs; null when it cannot be read. */
+    private suspend fun loadContent(level: Level): LevelContent? = try {
         LevelContent(
             categories = categories.categories(level).filter { it.id != CategoryId.MIXED },
             categoryOf = cards.categoryOfCards(level),
@@ -81,7 +98,8 @@ internal class CategoriesViewModel(
     } catch (e: CancellationException) {
         throw e
     } catch (@Suppress("TooGenericExceptionCaught") e: Exception) {
-        LevelContent(emptyList(), emptyMap())
+        // TODO(M7): report to the crash reporter once it is behind its interface.
+        null
     }
 
     fun onIntent(intent: CategoriesIntent) {
@@ -99,12 +117,17 @@ internal class CategoriesViewModel(
             CategoriesIntent.PlayMixed -> start(null)
 
             CategoriesIntent.Back -> effectChannel.trySend(CategoriesEffect.NavigateBack)
+
+            CategoriesIntent.Retry -> if (mutableState.value.hasError) {
+                mutableState.update { it.copy(isLoaded = false, hasError = false) }
+                reloads.update { it + 1 }
+            }
         }
     }
 
     private fun start(category: CategoryId?) {
         val current = mutableState.value
-        if (!current.isLoaded) return
+        if (!current.isLoaded || current.hasError) return
         effectChannel.trySend(CategoriesEffect.StartGame(current.level, route.startMode, category))
     }
 }

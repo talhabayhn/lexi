@@ -37,4 +37,5 @@
     <!-- Boş ve hata durumları (tasarım yok: EmptyState) -->
     <string name="stats_empty">Henüz oynanmış bir çark yok. İlk çarkını oyna, istatistiklerin burada görünsün.</string>
     <string name="stats_error">İstatistikler okunamadı. Lütfen daha sonra tekrar dene.</string>
+    <string name="stats_retry">Tekrar dene</string>
 </resources>

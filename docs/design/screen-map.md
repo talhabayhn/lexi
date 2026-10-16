@@ -41,11 +41,11 @@ before shipping.
 | Level test result ("Seviyen: B1") | M6 | result screen header style + level badge |
 | Daily wheel intro / already-played state | M6 | home daily card enlarged |
 | Entry to the categories | M5 | the design has no way in (07's back arrow returns to level select): a small underlined "Kategoriler" link on the "OYUN MODU" label line of the level select (`LexiTypography.link12`; the touch target is widened by Compose). Starting a category starts `GameRoute(level, mode, category)`; the mixed card starts the level's regular wheel |
-| Categories: Pro lock, empty level | M5 | none in the design: no shipped category is Pro (TODO M7: lock behind the paywall); a level without categories shows `EmptyState` instead of the cards |
+| Categories: Pro lock, empty level, read failure | M5 | none in the design: no shipped category is Pro (TODO M7: lock behind the paywall); a level without categories shows `EmptyState` instead of the cards; unreadable content shows the `EmptyState` with "Tekrar dene" instead (no card can be started) |
 | Word detail sheet | M5 | built (stays as built, DESIGN-DEBT): `BottomSheet` over the notebook, opened by tapping a row: word as title, Turkish clue, level · category, example + translation, memory box and next review, seen / correct / wrong, ink "Dinle" button (speaker), white "Defterden çıkar" (no confirmation) |
-| Notebook empty states, review button | M5 | no design: `EmptyState` per tab / search; the blue "Tekrar çarkını başlat" button is hidden while nothing is due (the design always shows it); it shows on every tab |
+| Notebook empty states, review button | M5 | no design: `EmptyState` per tab / search; a failed read (notebook or word content) shows the `EmptyState` with "Tekrar dene" in place of the list, never the empty notebook; the blue "Tekrar çarkını başlat" button is hidden while nothing is due (the design always shows it); it shows on every tab |
 | Notebook: placeholder font weight | M5 | the design's search placeholder is a thinner (browser default 400) Jost; the app has no Regular, so it uses Medium and is ~5 % wider |
-| Stats empty / error states | M5 | no design: `EmptyState` in place of the cards when no wheel was played yet (no stored session and no answered card) or the read failed; the hardest-letters section shows an `EmptyState` until a letter has 5 answers; a level without cards is hidden |
+| Stats empty / error states | M5 | no design: `EmptyState` in place of the cards when no wheel was played yet (no stored session and no answered card) or the read failed (then with "Tekrar dene"); the hardest-letters section shows an `EmptyState` until a letter has 5 answers; a level without cards is hidden |
 | Stats: hardest letters overflow | M5 | the design's four chips are wider than the screen (the 4th is cut at the edge); built as a sideways scrolling row, cut at the 20dp padding instead of the screen edge; no accuracy yet shows "–" |
 | Review wheel result | M5 | built: the normal result screen; its level badge shows the level of the first review card (a review mixes levels) |
 | Paywall (Lexi Pro) | M7 | ink card + yellow diamond from settings; 3 plans as level-card style |
@@ -55,6 +55,7 @@ before shipping.
 | Result of unscored modes (Practice, Review) | M5 | built: the hero number is the correct answers with "doğru" instead of "puan"; no "kalan süre" |
 | Game load errors | M5 | built: content or saved game unreadable ⇒ `EmptyState` with "Tekrar dene" (secondary button) and a "Geri dön" link at the top of the game screen (over the decor); a level / category without any card ⇒ the empty state with only "Geri dön" (nothing is recorded) |
 | Result: review list read failure | M5 | built: `EmptyState` with "Tekrar dene" in place of the "Tekrar edilecekler" list; the counts stay |
+| Level select: read failure | M5 | built: unreadable card totals ⇒ the `EmptyState` with "Tekrar dene" between the title and the level cards (they show 0 / 0, the page scrolls); BAŞLA still works, the game screen reports content it can't read |
 | Offline / error / empty states | M5–M7 | `EmptyState`; with an action (retry / back) it is `EmptyState(message, actionText, onAction, secondaryText?)`: the empty state over a full-width secondary `LexiButton`, gap 16, optional `LexiTextLink` below |
 | Hot-seat duel: player setup, handover card, duel result | M8 | big ink handover card with player name |
 | Online rooms (v1.1) | — | see `MULTIPLAYER.md` §4 — **needs design** |

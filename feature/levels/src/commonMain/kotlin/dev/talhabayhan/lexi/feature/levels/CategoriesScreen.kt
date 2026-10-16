@@ -33,12 +33,14 @@ import dev.talhabayhan.lexi.core.domain.model.CategoryId
 import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.feature.levels.generated.resources.Res
 import dev.talhabayhan.lexi.feature.levels.generated.resources.categories_empty
+import dev.talhabayhan.lexi.feature.levels.generated.resources.categories_error
 import dev.talhabayhan.lexi.feature.levels.generated.resources.categories_mixed_subtitle
 import dev.talhabayhan.lexi.feature.levels.generated.resources.categories_mixed_title
 import dev.talhabayhan.lexi.feature.levels.generated.resources.categories_progress
 import dev.talhabayhan.lexi.feature.levels.generated.resources.categories_progress_done
 import dev.talhabayhan.lexi.feature.levels.generated.resources.categories_title
 import dev.talhabayhan.lexi.feature.levels.generated.resources.levels_back
+import dev.talhabayhan.lexi.feature.levels.generated.resources.levels_retry
 import kotlinx.collections.immutable.persistentListOf
 import org.jetbrains.compose.resources.stringResource
 
@@ -85,7 +87,15 @@ internal fun CategoriesScreen(
             modifier = Modifier.fillMaxWidth(),
         )
         if (state.isLoaded) {
-            if (state.categories.isEmpty()) {
+            if (state.hasError) {
+                // DESIGN-DEBT: no design for a failed read; the component library's empty state with a retry.
+                EmptyState(
+                    message = stringResource(Res.string.categories_error),
+                    actionText = stringResource(Res.string.levels_retry),
+                    onAction = { onIntent(CategoriesIntent.Retry) },
+                    modifier = Modifier.fillMaxWidth(),
+                )
+            } else if (state.categories.isEmpty()) {
                 EmptyState(stringResource(Res.string.categories_empty), Modifier.fillMaxWidth())
             } else {
                 MixedWheel(state, onIntent)

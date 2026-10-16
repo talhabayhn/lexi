@@ -12,8 +12,10 @@ import dev.talhabayhan.lexi.core.domain.repository.ProgressRepository
 import dev.talhabayhan.lexi.core.domain.srs.CardProgress
 import dev.talhabayhan.lexi.core.domain.srs.Srs
 import dev.talhabayhan.lexi.core.domain.time.AppClock
+import kotlinx.collections.immutable.persistentListOf
 import kotlinx.collections.immutable.toImmutableList
 import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -54,8 +56,15 @@ internal class NotebookViewModel(
 
     private class Entry(val progress: CardProgress, val card: Card)
 
+    /** The running read of the notebook; restarted by "Tekrar dene". */
+    private var observing: Job? = null
+
     init {
-        viewModelScope.launch {
+        observe()
+    }
+
+    private fun observe() {
+        observing = viewModelScope.launch {
             combine(
                 progress.observeAll().map { all -> entriesOf(all) },
                 tab,
@@ -64,8 +73,13 @@ internal class NotebookViewModel(
             ) { entries, tab, query, open ->
                 present(entries, tab, query, open, appClock.epochDay(appClock.nowMs()))
             }
-                // A broken read keeps the last rows; the screen itself still works.
-                .catch { } // TODO(M7): report to the crash reporter once it is behind its interface.
+                // A broken read (notebook or word content) shows the error: hidden words would look like an empty
+                // notebook. TODO(M7): report to the crash reporter once it is behind its interface.
+                .catch {
+                    mutableState.update {
+                        it.copy(words = persistentListOf(), detail = null, isLoaded = true, hasError = true)
+                    }
+                }
                 .collect { derived ->
                     // Query and tab are written by onIntent right away: a keystroke must not wait for this flow.
                     mutableState.update {
@@ -76,6 +90,7 @@ internal class NotebookViewModel(
                             hardCount = derived.hardCount,
                             detail = derived.detail,
                             isLoaded = true,
+                            hasError = false,
                         )
                     }
                 }
@@ -85,15 +100,8 @@ internal class NotebookViewModel(
     private suspend fun entriesOf(all: List<CardProgress>): List<Entry> {
         val inNotebook = all.filter { it.inNotebook }
         val missing = inNotebook.map { it.cardId }.filter { it !in cardCache }
-        if (missing.isNotEmpty()) {
-            try {
-                cards.cards(missing).forEach { cardCache[it.id] = it }
-            } catch (e: CancellationException) {
-                throw e
-            } catch (@Suppress("TooGenericExceptionCaught") e: Exception) {
-                // Unreadable content: those words stay hidden.
-            }
-        }
+        // Unreadable content throws: the flow ends in the error state.
+        if (missing.isNotEmpty()) cards.cards(missing).forEach { cardCache[it.id] = it }
         if (categoryNames == null) {
             categoryNames = try {
                 categories.categories().associate { it.id to (it.nameTr to it.nameEn) }
@@ -205,6 +213,12 @@ internal class NotebookViewModel(
             }
 
             NotebookIntent.Back -> effectChannel.trySend(NotebookEffect.NavigateBack)
+
+            NotebookIntent.Retry -> if (mutableState.value.hasError) {
+                observing?.cancel()
+                mutableState.update { it.copy(isLoaded = false, hasError = false) }
+                observe()
+            }
         }
     }
 

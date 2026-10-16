@@ -40,4 +40,6 @@
     <string name="notebook_sheet_stats">%1$d kez görüldü · %2$d doğru · %3$d yanlış</string>
     <string name="notebook_sheet_speak">Dinle</string>
     <string name="notebook_sheet_remove">Defterden çıkar</string>
+    <string name="notebook_error">Defterin yüklenemedi.</string>
+    <string name="notebook_retry">Tekrar dene</string>
 </resources>

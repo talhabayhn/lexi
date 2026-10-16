@@ -13,6 +13,7 @@ import dev.talhabayhan.lexi.core.domain.stats.Stats
 import dev.talhabayhan.lexi.core.domain.time.AppClock
 import kotlinx.collections.immutable.toImmutableList
 import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -40,8 +41,15 @@ internal class StatsViewModel(
     private val effectChannel = Channel<StatsEffect>(Channel.BUFFERED)
     val effects: Flow<StatsEffect> = effectChannel.receiveAsFlow()
 
+    /** The running read; restarted by "Tekrar dene". */
+    private var observing: Job? = null
+
     init {
-        viewModelScope.launch {
+        observe()
+    }
+
+    private fun observe() {
+        observing = viewModelScope.launch {
             val content = loadContent()
             if (content == null) {
                 mutableState.value = StatsUiState(isLoaded = true, hasError = true)
@@ -107,6 +115,12 @@ internal class StatsViewModel(
     fun onIntent(intent: StatsIntent) {
         when (intent) {
             StatsIntent.Back -> effectChannel.trySend(StatsEffect.NavigateBack)
+
+            StatsIntent.Retry -> if (mutableState.value.hasError) {
+                observing?.cancel()
+                mutableState.value = StatsUiState()
+                observe()
+            }
         }
     }
 

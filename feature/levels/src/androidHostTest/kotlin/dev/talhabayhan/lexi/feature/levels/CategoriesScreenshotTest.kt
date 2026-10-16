@@ -69,4 +69,14 @@ class CategoriesScreenshotTest {
             }
         }
     }
+
+    /** Design debt: the level's content could not be read; an empty state with a retry. */
+    @Test
+    fun readFailed() {
+        captureRoboImage("src/androidHostTest/screenshots/CategoriesError.png") {
+            LexiTheme(reducedMotion = false) {
+                CategoriesScreen(state = CategoriesUiState(isLoaded = true, hasError = true), onIntent = {})
+            }
+        }
+    }
 }

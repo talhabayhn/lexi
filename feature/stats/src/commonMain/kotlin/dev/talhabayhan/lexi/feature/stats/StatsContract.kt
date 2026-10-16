@@ -44,6 +44,9 @@ internal data class StatsUiState(
 
 internal sealed interface StatsIntent {
     data object Back : StatsIntent
+
+    /** "Tekrar dene" after the statistics could not be read. */
+    data object Retry : StatsIntent
 }
 
 internal sealed interface StatsEffect {

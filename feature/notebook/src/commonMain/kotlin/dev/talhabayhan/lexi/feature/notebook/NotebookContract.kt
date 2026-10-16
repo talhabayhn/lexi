@@ -65,6 +65,8 @@ internal data class NotebookUiState(
     val detail: WordDetailUi? = null,
     /** False until the notebook is read, so "empty" is only reported afterwards. */
     val isLoaded: Boolean = false,
+    /** The notebook or its words could not be read; the list shows an empty state with "Tekrar dene". */
+    val hasError: Boolean = false,
 )
 
 internal sealed interface NotebookIntent {
@@ -86,6 +88,9 @@ internal sealed interface NotebookIntent {
     data object StartReview : NotebookIntent
 
     data object Back : NotebookIntent
+
+    /** "Tekrar dene" after the notebook could not be read. */
+    data object Retry : NotebookIntent
 }
 
 internal sealed interface NotebookEffect {

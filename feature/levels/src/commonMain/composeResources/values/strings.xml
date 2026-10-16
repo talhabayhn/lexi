@@ -37,4 +37,7 @@
     <string name="categories_progress">%1$d / %2$d</string>
     <string name="categories_progress_done">%1$d / %2$d · done</string>
     <string name="categories_empty">There are no categories in this level yet.</string>
+    <string name="categories_error">The categories could not be loaded.</string>
+    <string name="levels_retry">Try again</string>
+    <string name="levels_error">The word counts could not be loaded. You can still start a game.</string>
 </resources>

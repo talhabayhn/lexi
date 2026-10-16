@@ -19,6 +19,8 @@ import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertFalse
+import kotlin.test.assertTrue
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class LevelSelectViewModelTest {
@@ -125,6 +127,34 @@ class LevelSelectViewModelTest {
             viewModel.onIntent(LevelSelectIntent.Back)
 
             assertEquals(LevelSelectEffect.NavigateBack, awaitItem())
+        }
+    }
+
+    @Test
+    fun `an unreadable content shows the error with zero totals and retry reads it again`() = runTest {
+        cards.failing = true
+        val viewModel = viewModel()
+
+        val failed = viewModel.state.value
+        assertTrue(failed.hasError)
+        assertTrue(failed.levels.all { it.total == 0 })
+
+        cards.failing = false
+        viewModel.onIntent(LevelSelectIntent.Retry)
+
+        val loaded = viewModel.state.value
+        assertFalse(loaded.hasError)
+        assertEquals(LevelProgressUi(Level.A1, learned = 0, total = 3), loaded.levels[0])
+    }
+
+    @Test
+    fun `the game can still be started while the totals are missing`() = runTest {
+        cards.failing = true
+        val viewModel = viewModel()
+
+        viewModel.effects.test {
+            viewModel.onIntent(LevelSelectIntent.Start)
+            assertEquals(LevelSelectEffect.StartGame(Level.A1, GameMode.CLASSIC), awaitItem())
         }
     }
 }

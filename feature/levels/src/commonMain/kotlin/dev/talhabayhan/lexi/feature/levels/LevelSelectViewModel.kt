@@ -16,6 +16,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
@@ -27,8 +28,8 @@ import kotlinx.coroutines.launch
  */
 internal class LevelSelectViewModel(
     private val cards: CardRepository,
-    progress: ProgressRepository,
-    settings: SettingsRepository,
+    private val progress: ProgressRepository,
+    private val settings: SettingsRepository,
 ) : ViewModel() {
     private val mutableState = MutableStateFlow(LevelSelectUiState())
     val state: StateFlow<LevelSelectUiState> = mutableState.asStateFlow()
@@ -36,38 +37,48 @@ internal class LevelSelectViewModel(
     private val effectChannel = Channel<LevelSelectEffect>(Channel.BUFFERED)
     val effects: Flow<LevelSelectEffect> = effectChannel.receiveAsFlow()
 
+    /** Bumped by "Tekrar dene": reads the content again. */
+    private val reloads = MutableStateFlow(0)
+
     init {
         viewModelScope.launch {
-            val (totals, levelOf) = loadContent()
-            combine(progress.observeAll(), settings.settings) { answered, current ->
-                val byLevel = Stats.levelProgress(answered, levelOf, totals)
-                Pair(
-                    Level.entries.map { level ->
-                        val entry = byLevel[level]
-                        LevelProgressUi(level, entry?.learned ?: 0, entry?.total ?: 0)
-                    }.toImmutableList(),
-                    current.classicTimeLimitSeconds,
-                )
-            }
-                // A broken read keeps the last numbers (zeros at first); the screen itself still works.
-                .catch { }
-                .collect { (levels, classicSeconds) ->
-                    mutableState.update { it.copy(levels = levels, classicTimeLimitSeconds = classicSeconds) }
-                }
+            reloads.collectLatest { observe(loadContent()) }
         }
+    }
+
+    /** The level progress and the Classic time; [content] null = the content could not be read (zeros). */
+    private suspend fun observe(content: Pair<Map<Level, Int>, Map<CardId, Level>>?) {
+        mutableState.update { it.copy(hasError = content == null) }
+        val (totals, levelOf) = content ?: (emptyMap<Level, Int>() to emptyMap())
+        combine(progress.observeAll(), settings.settings) { answered, current ->
+            val byLevel = Stats.levelProgress(answered, levelOf, totals)
+            Pair(
+                Level.entries.map { level ->
+                    val entry = byLevel[level]
+                    LevelProgressUi(level, entry?.learned ?: 0, entry?.total ?: 0)
+                }.toImmutableList(),
+                current.classicTimeLimitSeconds,
+            )
+        }
+            // A broken progress read keeps the last numbers (zeros at first); the screen itself still works.
+            .catch { }
+            .collect { (levels, classicSeconds) ->
+                mutableState.update { it.copy(levels = levels, classicTimeLimitSeconds = classicSeconds) }
+            }
     }
 
     /**
      * Card totals per level and the level of every card. Content never changes while the app runs, so both are read
-     * once; empty when the content cannot be read.
+     * once; null when the content cannot be read.
      */
-    private suspend fun loadContent(): Pair<Map<Level, Int>, Map<CardId, Level>> = try {
+    private suspend fun loadContent(): Pair<Map<Level, Int>, Map<CardId, Level>>? = try {
         val totals = cards.levelTotals()
         totals to cards.levelCards().associate { it.id to it.level }
     } catch (e: CancellationException) {
         throw e
     } catch (@Suppress("TooGenericExceptionCaught") e: Exception) {
-        emptyMap<Level, Int>() to emptyMap()
+        // TODO(M7): report to the crash reporter once it is behind its interface.
+        null
     }
 
     fun onIntent(intent: LevelSelectIntent) {
@@ -87,6 +98,8 @@ internal class LevelSelectViewModel(
             }
 
             LevelSelectIntent.Back -> effectChannel.trySend(LevelSelectEffect.NavigateBack)
+
+            LevelSelectIntent.Retry -> if (mutableState.value.hasError) reloads.update { it + 1 }
         }
     }
 }

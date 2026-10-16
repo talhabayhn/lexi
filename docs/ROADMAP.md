@@ -65,7 +65,7 @@ Module mapping (replaces the earlier `composeApp`): `androidApp` = thin Android 
 - [x] Categories (`07-categories`) + category wheels
 - [x] Notebook (`08-notebook`): tabs, search, rows, review wheel, word detail sheet (design debt)
 - [x] Stats (`09-stats`): numbers, weekly chart, level bars, hardest letters, empty/error states
-- [ ] Practice & Hardcore modes; empty/error states
+- [x] Practice & Hardcore modes; empty/error states (retry / back via `EmptyState` with action, design debt)
 **Done when:** SRS loop works across days (test with fake clock).
 
 ## M6 — Daily, sharing, onboarding

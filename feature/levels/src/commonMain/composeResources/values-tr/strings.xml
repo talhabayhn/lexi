@@ -36,5 +36,8 @@
     <string name="categories_mixed_subtitle">Tüm %1$s kategorilerinden %2$d kelime</string>
     <string name="categories_progress">%1$d / %2$d</string>
     <string name="categories_progress_done">%1$d / %2$d · tamam</string>
+    <string name="categories_error">Kategoriler yüklenemedi.</string>
+    <string name="levels_retry">Tekrar dene</string>
+    <string name="levels_error">Kelime sayıları yüklenemedi. Yine de oyuna başlayabilirsin.</string>
     <string name="categories_empty">Bu seviyede henüz kategori yok.</string>
 </resources>

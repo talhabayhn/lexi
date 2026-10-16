@@ -53,6 +53,7 @@ import dev.talhabayhan.lexi.feature.stats.generated.resources.stats_letters_titl
 import dev.talhabayhan.lexi.feature.stats.generated.resources.stats_level_count
 import dev.talhabayhan.lexi.feature.stats.generated.resources.stats_levels_title
 import dev.talhabayhan.lexi.feature.stats.generated.resources.stats_percent
+import dev.talhabayhan.lexi.feature.stats.generated.resources.stats_retry
 import dev.talhabayhan.lexi.feature.stats.generated.resources.stats_streak_label
 import dev.talhabayhan.lexi.feature.stats.generated.resources.stats_streak_value
 import dev.talhabayhan.lexi.feature.stats.generated.resources.stats_title
@@ -91,7 +92,13 @@ internal fun StatsScreen(state: StatsUiState, onIntent: (StatsIntent) -> Unit, m
         when {
             !state.isLoaded -> Unit
 
-            state.hasError -> EmptyState(stringResource(Res.string.stats_error), Modifier.fillMaxWidth())
+            // DESIGN-DEBT: no design for a failed read; the component library's empty state with a retry.
+            state.hasError -> EmptyState(
+                message = stringResource(Res.string.stats_error),
+                actionText = stringResource(Res.string.stats_retry),
+                onAction = { onIntent(StatsIntent.Retry) },
+                modifier = Modifier.fillMaxWidth(),
+            )
 
             state.isEmpty -> EmptyState(stringResource(Res.string.stats_empty), Modifier.fillMaxWidth())
 

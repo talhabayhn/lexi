@@ -52,4 +52,14 @@ class LevelSelectScreenshotTest {
             }
         }
     }
+
+    /** Design debt: the card totals could not be read; an empty state with a retry above the 0 / 0 level cards. */
+    @Test
+    fun readFailed() {
+        captureRoboImage("src/androidHostTest/screenshots/LevelSelectError.png") {
+            LexiTheme(reducedMotion = false) {
+                LevelSelectScreen(state = LevelSelectUiState(hasError = true), onIntent = {})
+            }
+        }
+    }
 }
