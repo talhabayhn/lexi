@@ -99,8 +99,7 @@ Module mapping (replaces the earlier `composeApp`): `androidApp` = thin Android 
 - [x] Full B1 set (849 cards, `docs/content-review/B1-*.md`; Q, Y thin at true B1)
 - [x] Full B2 set (729 cards, `docs/content-review/B2-*.md`; Q, X, Y, J thin at true B2)
 - [x] Full C1 set (664 cards, `docs/content-review/C1-*.md`; W, U, V, Z, X thin at true C1)
-- [ ] Full NAT set (850 cards target, curator batches + review as for A1); until then NAT only has a 26-card
-  **smoke set** (dev data, `smokeLevels` in `content/meta.json`, not for release)
+- [x] Full NAT set (622 cards, `docs/content-review/NAT-*.md`; native-level words, Q/X/Y/Z/K mostly CONTAINS)
 - [ ] A1 gap: 787 of the 850 target (strict A1 word lists exhausted; thin letters Q, Z, V, Y, I, J) — extend or accept
 - [ ] **Release checklist:** do not ship a level that only has a smoke set; either complete it or mark it "coming soon"
   in the level select (product decision pending)

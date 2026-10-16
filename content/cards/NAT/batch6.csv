@@ -1,0 +1,114 @@
+id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
+nat-unabashed,UNABASHED,U,STARTS,adj,"(hayranlık, sevgi) hiç çekinmeden ortaya konan",She is an unabashed fan of reality TV.,"Realite şovlarına açıkça, hiç çekinmeden bayılıyor.",5,,school-work
+nat-unassuming,UNASSUMING,U,STARTS,adj,başarısına rağmen gösterişsiz ve sade,"Despite his fame, he is quiet and unassuming.",Ünlü olmasına rağmen sessiz ve gösterişsiz biri.,5,,school-work
+nat-uncanny,UNCANNY,U,STARTS,adj,"(benzerlik) ürkütücü derecede, doğaüstü gibi",She bears an uncanny resemblance to my sister.,Kız kardeşime ürkütücü derecede benziyor.,4,,school-work
+nat-uncouth,UNCOUTH,U,STARTS,adj,"kaba saba, görgüsüz",His uncouth behaviour embarrassed us.,Kaba saba davranışları bizi utandırdı.,5,,school-work
+nat-unequivocal,UNEQUIVOCAL,U,STARTS,adj,"(ret, destek) dolambaçsız, kesin ve net",The answer was an unequivocal no.,Cevap kesin bir hayırdı.,5,,school-work
+nat-unfathomable,UNFATHOMABLE,U,STARTS,adj,"akıl erdirilemeyen, derinliği ölçülemez",Her decision remains unfathomable to me.,Kararı benim için hâlâ akıl erdirilemez.,5,,school-work
+nat-unflappable,UNFLAPPABLE,U,STARTS,adj,hiçbir şey karşısında soğukkanlılığını yitirmeyen,The unflappable pilot landed safely.,Soğukkanlılığını hiç yitirmeyen pilot güvenle iniş yaptı.,5,,school-work
+nat-ungainly,UNGAINLY,U,STARTS,adj,"(hareket, beden) hantal ve biçimsiz",The ungainly bird waddled across the road.,Hantal kuş paytak paytak yolun karşısına geçti.,5,,school-work
+nat-untenable,UNTENABLE,U,STARTS,adj,"(görüş, konum) savunulamaz, artık korunamaz",His position as manager became untenable.,Müdür olarak konumu sürdürülemez hale geldi.,5,,school-work
+nat-upshot,UPSHOT,U,STARTS,noun,bir olaylar zincirinin nihai sonucu,The upshot was that we had to start again.,Sonuçta her şeye baştan başlamak zorunda kaldık.,5,,school-work
+nat-urbane,URBANE,U,STARTS,adj,"(erkek) zarif, nazik ve kendinden emin tavırlı",The urbane diplomat charmed his hosts.,Görgülü ve kültürlü diplomat ev sahiplerini büyüledi.,5,,school-work
+nat-usurp,USURP,U,STARTS,verb,"(tahtı, yetkiyi) zorla ve haksızca ele geçirmek",The general tried to usurp the throne.,General tahtı zorla ele geçirmeye çalıştı.,5,,school-work
+nat-underhand,UNDERHAND,U,STARTS,adj,"(yöntem) el altından, hileli",They used underhand tactics to win.,Kazanmak için hileli yollara başvurdular.,5,,school-work
+nat-unrequited,UNREQUITED,U,STARTS,adj,(aşk) karşılıksız,It was a story of unrequited love.,Karşılıksız bir aşkın hikâyesiydi.,5,,school-work
+nat-unsavoury,UNSAVOURY,U,STARTS,adj,"(kişi, mekân) ahlaken şüpheli, itici",He mixes with some unsavoury characters.,Bazı şüpheli tiplerle düşüp kalkıyor.,5,,school-work
+nat-unbridled,UNBRIDLED,U,STARTS,adj,"(öfke, coşku) dizginlenmemiş",They watched with unbridled joy.,Dizginlenmemiş bir sevinçle izlediler.,5,,school-work
+nat-unnerve,UNNERVE,U,STARTS,verb,soğukkanlılığını bozup ürkütmek,His cold stare seemed to unnerve her.,Soğuk bakışı onu tedirgin etmiş gibiydi.,5,,school-work
+nat-unruly,UNRULY,U,STARTS,adj,"(kalabalık, saç) zapt edilemeyen, söz dinlemez",The teacher could not control the unruly class.,Öğretmen söz dinlemez sınıfı zapt edemedi.,4,,school-work
+nat-undaunted,UNDAUNTED,U,STARTS,adj,(zorluklara rağmen) yılmamış,"Undaunted by the rain, they kept walking.",Yağmurdan yılmadan yürümeye devam ettiler.,5,,school-work
+nat-unsung,UNSUNG,U,STARTS,adj,"(kahraman) değeri bilinmemiş, adı duyulmamış",Nurses are the unsung heroes of the hospital.,Hemşireler hastanenin adı duyulmamış kahramanlarıdır.,5,,school-work
+nat-vacillate,VACILLATE,V,STARTS,verb,iki seçenek arasında gidip gelmek,He continues to vacillate between the two offers.,İki teklif arasında gidip gelmeye devam ediyor.,5,,school-work
+nat-vapid,VAPID,V,STARTS,adj,"(sohbet, şarkı) yavan ve ruhsuz",The lyrics are vapid.,Şarkı sözleri yavan ve ruhsuz.,5,,music
+nat-vehement,VEHEMENT,V,STARTS,adj,"(itiraz, inkâr) çok sert ve tutkulu",She was vehement in her denial.,İnkârında çok sert ve tutkuluydu.,5,,school-work
+nat-venerate,VENERATE,V,STARTS,verb,"(bilge, aziz) büyük saygıyla yüceltmek",Villagers still venerate the old saint.,Köylüler yaşlı azizi hâlâ büyük saygıyla yüceltiyor.,5,,school-work
+nat-verbose,VERBOSE,V,STARTS,adj,"gereğinden çok sözcük kullanan, lafı uzatan",The report is too verbose.,Rapor fazla uzun ve laf kalabalığıyla dolu.,5,,school-work
+nat-veritable,VERITABLE,V,STARTS,adj,"(vurgu) tam anlamıyla, adeta",The garden is a veritable paradise.,Bahçe adeta bir cennet.,5,,school-work
+nat-vicarious,VICARIOUS,V,STARTS,adj,başkasının yaşadığını izleyerek duyulan,Parents often feel vicarious pride in their children.,Ana babalar çocuklarının başarısıyla sanki kendileri başarmış gibi gurur duyar.,5,,school-work
+nat-vilify,VILIFY,V,STARTS,verb,birini kötüleyip şeytanlaştırmak,The papers chose to vilify the strikers.,Gazeteler grevcileri şeytanlaştırmayı seçti.,5,,school-work
+nat-vindicate,VINDICATE,V,STARTS,verb,(birinin) haklı olduğunu kanıtlamak,The results will vindicate her decision.,Sonuçlar onun kararının haklılığını kanıtlayacak.,5,,school-work
+nat-veracity,VERACITY,V,STARTS,noun,"(ifade, haber) gerçeğe uygunluk, doğruluk payı",Police questioned the veracity of his story.,Polis anlattıklarının doğruluğunu sorguladı.,5,,school-work
+nat-virulent,VIRULENT,V,STARTS,adj,"(mikrop, hastalık) son derece öldürücü",It is a virulent strain of flu.,"Bu, son derece öldürücü bir grip türü.",5,,school-work
+nat-visceral,VISCERAL,V,STARTS,adj,"(tepki) akıldan değil içten gelen, içgüdüsel",I had a visceral dislike of the man.,O adama karşı içgüdüsel bir hoşnutsuzluk duydum.,5,,school-work
+nat-vitriolic,VITRIOLIC,V,STARTS,adj,"(eleştiri) zehir zemberek, iğneleyici",He wrote a vitriolic attack on the government.,Hükümete karşı zehir zemberek bir yazı yazdı.,5,,school-work
+nat-vivacious,VIVACIOUS,V,STARTS,adj,"(kişi) neşe saçan, hayat dolu ve sevimli",Our vivacious hostess kept the party going.,Neşe saçan ev sahibemiz partiyi canlı tuttu.,5,,school-work
+nat-vociferous,VOCIFEROUS,V,STARTS,adj,"(itiraz, kalabalık) gürültülü, bağırış çağırışlı",There was vociferous opposition to the plan.,Plana bağırış çağırışlı bir muhalefet vardı.,5,,school-work
+nat-voracious,VORACIOUS,V,STARTS,adj,"(okur, iştah) doymak bilmez",She is a voracious reader.,Doymak bilmez bir okur.,5,,school-work
+nat-vernacular,VERNACULAR,V,STARTS,noun,halkın konuştuğu gündelik dil,The poem is written in the local vernacular.,Şiir yöre halkının gündelik diliyle yazılmış.,5,,school-work
+nat-vagaries,VAGARIES,V,STARTS,noun,"(hava, piyasa) önceden kestirilemeyen değişkenlikler",Farmers depend on the vagaries of the weather.,Çiftçiler havanın kestirilemeyen değişkenliklerine bağlı.,5,,school-work
+nat-wane,WANE,W,STARTS,verb,"(ay, güç, ilgi) giderek azalmak",Interest in the show began to wane.,Diziye ilgi azalmaya başladı.,4,,school-work
+nat-wanton,WANTON,W,STARTS,adj,"(yıkım, şiddet) kasıtlı ve hiçbir nedeni olmayan",It was an act of wanton destruction.,Kasıtlı ve nedensiz bir yıkımdı.,5,,school-work
+nat-wayward,WAYWARD,W,STARTS,adj,"yoldan çıkmış, söz dinlemez",They worried about their wayward son.,Yoldan çıkmış oğulları için endişeleniyorlardı.,5,,school-work
+nat-wheedle,WHEEDLE,W,STARTS,verb,dil dökerek bir şey koparmak,She tried to wheedle some money out of her dad.,Babasından dil dökerek biraz para koparmaya çalıştı.,5,,school-work
+nat-whet,WHET,W,STARTS,verb,"(iştahı, merakı) kabartmak",The trailer will whet your appetite for the film.,Fragman filme olan iştahınızı kabartacak.,5,,film-tv
+nat-wily,WILY,W,STARTS,adj,tilki gibi kurnaz,The wily old fox escaped again.,Kurnaz yaşlı tilki yine kaçtı.,4,,school-work
+nat-wistful,WISTFUL,W,STARTS,adj,hüzünlü bir özlemle dolu (bakış),She gave a wistful smile.,Hüzünlü bir özlemle gülümsedi.,5,,school-work
+nat-woeful,WOEFUL,W,STARTS,adj,(performans) acınacak derecede kötü,The team's defending was woeful.,Takımın savunması acınacak derecede kötüydü.,5,,sports
+nat-wrangle,WRANGLE,W,STARTS,verb,uzun süre çekişip tartışmak,The heirs continue to wrangle over the will.,Mirasçılar vasiyet üzerine çekişmeye devam ediyor.,5,,school-work
+nat-wrath,WRATH,W,STARTS,noun,"korkunç, büyük öfke, gazap",He feared his father's wrath.,Babasının gazabından korkuyordu.,4,,school-work
+nat-writhe,WRITHE,W,STARTS,verb,(acıyla) kıvranmak,The injured player began to writhe in pain.,Sakatlanan oyuncu acıyla kıvranmaya başladı.,5,,school-work
+nat-wry,WRY,W,STARTS,adj,"(gülümseme, mizah) hafif alaycı ve buruk",He has a wry sense of humour.,"Hafif alaycı, buruk bir mizah anlayışı var.",5,,school-work
+nat-wince,WINCE,W,STARTS,verb,"(acı, utançtan) yüzünü buruşturup irkilmek",I wince every time I hear my recorded voice.,Kayıttaki sesimi her duyduğumda irkilirim.,4,,school-work
+nat-woo,WOO,W,STARTS,verb,"(seçmen, müşteri) gönlünü kazanmaya çalışmak",Both parties are trying to woo young voters.,İki parti de genç seçmenlerin gönlünü kazanmaya çalışıyor.,4,,school-work
+nat-awry,AWRY,W,CONTAINS,adj,"(şapka, kravat) yamuk, çarpık duran",His tie was awry.,Kravatı yamuk duruyordu.,5,,school-work
+nat-erstwhile,ERSTWHILE,W,CONTAINS,adj,"eski, bir zamanki (dost, rakip)",He met his erstwhile rival at the party.,Partide bir zamanki rakibiyle karşılaştı.,5,,school-work
+nat-bellwether,BELLWETHER,W,CONTAINS,noun,bir eğilimin önceden belirtisi sayılan şey,The town is a bellwether for the national vote.,Kasaba ülke genelindeki oylamanın habercisi sayılır.,5,,school-work
+nat-unwieldy,UNWIELDY,W,CONTAINS,adj,"büyüklüğü yüzünden taşınması, yönetilmesi zor",The old system is unwieldy and slow.,Eski sistem hantal ve yavaş.,5,,school-work
+nat-overwrought,OVERWROUGHT,W,CONTAINS,adj,"aşırı gergin ve heyecanlı, sinirleri bozuk",She was overwrought after the accident.,Kazadan sonra sinirleri bozulmuştu.,5,,school-work
+nat-newfangled,NEWFANGLED,W,CONTAINS,adj,"(alay) yeni çıkmış, gereksiz modern",He hates newfangled gadgets.,Yeni çıkmış gereksiz aletlerden nefret eder.,5,,technology
+nat-exasperate,EXASPERATE,X,CONTAINS,verb,sabrını taşırıp çileden çıkarmak,His constant lateness began to exasperate her.,Sürekli geç kalması onu çileden çıkarmaya başladı.,5,,school-work
+nat-exonerate,EXONERATE,X,CONTAINS,verb,suçsuz olduğunu kanıtlayıp aklamak,New evidence may exonerate the prisoner.,Yeni kanıtlar mahkûmu aklayabilir.,5,,school-work
+nat-exorbitant,EXORBITANT,X,CONTAINS,adj,"(fiyat) fahiş, akıl almaz derecede yüksek",The hotel charges exorbitant prices.,Otel fahiş fiyatlar istiyor.,5,,travel
+nat-expunge,EXPUNGE,X,CONTAINS,verb,"(kayıttan, hafızadan) tamamen silmek",The court agreed to expunge his record.,Mahkeme sicilini tamamen silmeyi kabul etti.,5,,school-work
+nat-extol,EXTOL,X,CONTAINS,verb,göklere çıkarırcasına övmek,Fans extol the virtues of the new album.,Hayranlar yeni albümü göklere çıkarıyor.,5,,music
+nat-exuberant,EXUBERANT,X,CONTAINS,adj,"coşkusu taşan, içi içine sığmayan (kalabalık)",The exuberant crowd danced all night.,Taşkın neşeli kalabalık bütün gece dans etti.,5,,school-work
+nat-exhort,EXHORT,X,CONTAINS,verb,(bir şey yapmaya) ısrarla çağırmak,The coach likes to exhort his players to work harder.,Antrenör oyuncularını daha çok çalışmaya ısrarla çağırmayı sever.,5,,sports
+nat-extricate,EXTRICATE,X,CONTAINS,verb,"(zor durumdan, kapandan) güçlükle kurtarmak",It took hours to extricate the driver from the car.,Sürücüyü arabadan güçlükle çıkarmak saatler sürdü.,5,,school-work
+nat-obnoxious,OBNOXIOUS,X,CONTAINS,adj,son derece itici ve sinir bozucu (kişi),An obnoxious man shouted at the waiter.,Son derece itici bir adam garsona bağırdı.,4,,school-work
+nat-lax,LAX,X,CONTAINS,adj,"(kural, güvenlik) gevşek, özensiz",Security at the airport was lax.,Havalimanındaki güvenlik gevşekti.,5,,school-work
+nat-vexed,VEXED,X,CONTAINS,adj,(sorun) yıllardır tartışılıp bir türlü çözülemeyen,Immigration is a vexed issue.,"Göç, yıllardır tartışılıp çözülemeyen bir konu.",5,,school-work
+nat-inexorable,INEXORABLE,X,CONTAINS,adj,"durdurulamaz, kaçınılmaz (ilerleyiş)",We watched the inexorable rise of prices.,Fiyatların durdurulamaz yükselişini izledik.,5,,school-work
+nat-crux,CRUX,X,CONTAINS,noun,"meselenin özü, can alıcı noktası",The crux of the problem is money.,Sorunun özü para.,5,,school-work
+nat-hoax,HOAX,X,CONTAINS,noun,"aldatmaca, asılsız ihbar veya şaka",The bomb threat turned out to be a hoax.,Bomba ihbarı asılsız çıktı.,4,,school-work
+nat-maxim,MAXIM,X,CONTAINS,noun,"davranış kuralı olarak benimsenen özdeyiş, düstur",My maxim is: never borrow money.,Düsturum şu: asla borç para alma.,5,,school-work
+nat-flux,FLUX,X,CONTAINS,noun,sürekli değişim hali,The industry is in a state of flux.,Sektör sürekli bir değişim halinde.,5,,business
+nat-oxymoron,OXYMORON,X,CONTAINS,noun,çelişik sözcükleri birleştiren ifade,"""Deafening silence"" is an oxymoron.","""Sağır edici sessizlik"" çelişik sözcüklerden oluşan bir ifadedir.",5,,school-work
+nat-dexterity,DEXTERITY,X,CONTAINS,noun,"el becerisi, el çabukluğu",The game requires great dexterity.,Oyun büyük bir el becerisi gerektiriyor.,5,,school-work
+nat-perplex,PERPLEX,X,CONTAINS,verb,şaşırtıp kafasını karıştırmak,Her strange answer will perplex the judges.,Tuhaf cevabı jüriyi şaşırtacak.,5,,school-work
+nat-annex,ANNEX,X,CONTAINS,verb,(toprağı) zorla kendi ülkesine katmak,The empire tried to annex the island.,İmparatorluk adayı zorla kendi topraklarına katmaya çalıştı.,5,,school-work
+nat-yardstick,YARDSTICK,Y,STARTS,noun,başarıyı ölçmek için kullanılan kıstas,Sales are not the only yardstick of success.,Satışlar başarının tek ölçütü değil.,5,,business
+nat-yoke,YOKE,Y,STARTS,noun,(baskı) boyunduruk,The people threw off the yoke of the empire.,Halk imparatorluğun boyunduruğundan kurtuldu.,5,,school-work
+nat-doyen,DOYEN,Y,CONTAINS,noun,bir alanın en kıdemli ve saygın ismi,He is the doyen of sports writers.,Spor yazarlarının duayenidir.,5,,school-work
+nat-crony,CRONY,Y,CONTAINS,noun,(olumsuz) kayırılan yakın ahbap,The mayor gave the contract to an old crony.,Belediye başkanı ihaleyi eski bir yandaşına verdi.,5,,school-work
+nat-tycoon,TYCOON,Y,CONTAINS,noun,iş dünyasının kodamanı,The media tycoon owns ten newspapers.,Medya kodamanının on gazetesi var.,4,,business
+nat-buoyant,BUOYANT,Y,CONTAINS,adj,"(piyasa, ruh hali) canlı ve iyimser",The housing market remains buoyant.,Konut piyasası canlılığını koruyor.,5,,business
+nat-abysmal,ABYSMAL,Y,CONTAINS,adj,rezalet derecesinde kötü,The service was abysmal.,Hizmet rezalet derecesinde kötüydü.,5,,school-work
+nat-eponymous,EPONYMOUS,Y,CONTAINS,adj,"(albüm, kahraman) eserin adını veren",The band's eponymous first album was a hit.,Grubun kendi adını taşıyan ilk albümü hit oldu.,5,,music
+nat-odyssey,ODYSSEY,Y,CONTAINS,noun,(destansı) uzun ve olaylı serüven,Their trip became a three-month odyssey.,Gezileri üç aylık destansı bir serüvene dönüştü.,5,,travel
+nat-apocryphal,APOCRYPHAL,Y,CONTAINS,adj,(hikâye) doğru olmadığı halde yaygın anlatılan,The story is probably apocryphal.,Hikâye muhtemelen uydurma.,5,,school-work
+nat-mystique,MYSTIQUE,Y,CONTAINS,noun,"(meslek, marka) çevresindeki esrarlı cazibe",The brand has a certain mystique.,Markanın kendine has gizemli bir çekiciliği var.,5,,school-work
+nat-mayhem,MAYHEM,Y,CONTAINS,noun,her şeyin birbirine girdiği kaos,The storm caused mayhem on the roads.,Fırtına yollarda kaosa yol açtı.,4,,school-work
+nat-haywire,HAYWIRE,Y,CONTAINS,adj,"(makine, sistem) zıvanadan çıkmış",My computer has gone haywire.,Bilgisayarım kontrolden çıktı.,4,,technology
+nat-spry,SPRY,Y,CONTAINS,adj,(yaşlı) dinç ve çevik,My spry grandmother still swims every day.,Dinç büyükannem hâlâ her gün yüzüyor.,5,,school-work
+nat-feisty,FEISTY,Y,CONTAINS,adj,"atak, ateşli ve cesur",She is a feisty old lady.,Atak ve ateşli yaşlı bir hanımefendi.,4,,school-work
+nat-byword,BYWORD,Y,CONTAINS,noun,bir niteliğin simgesi haline gelmiş ad,The brand is a byword for quality.,Marka kalitenin simgesi haline geldi.,5,,business
+nat-zany,ZANY,Z,STARTS,adj,"tuhaf ve çılgınca komik (karakter, film)",The film is full of zany characters.,Film tuhaf ve çılgınca komik karakterlerle dolu.,4,,film-tv
+nat-zeitgeist,ZEITGEIST,Z,STARTS,noun,"bir dönemin ruhu, genel havası",The song captured the zeitgeist of the sixties.,Şarkı altmışların ruhunu yakaladı.,5,,music
+nat-zest,ZEST,Z,STARTS,noun,(hayata karşı) heves ve yaşama sevinci,She has a real zest for life.,Hayata karşı gerçek bir şevki var.,4,,school-work
+nat-brazen,BRAZEN,Z,CONTAINS,adj,"utanmaz, yüzsüzce cüretkâr",It was a brazen attempt to cheat.,Utanmazca bir hile girişimiydi.,5,,school-work
+nat-frazzled,FRAZZLED,Z,CONTAINS,adj,yorgunluk ve stresten bitap düşmüş,"By Friday, the teachers were frazzled.",Cumaya kadar öğretmenler bitap düşmüştü.,5,,school-work
+nat-fizzle,FIZZLE,Z,CONTAINS,verb,"(heyecan, plan) yavaş yavaş sönüp başarısız olmak",The protest began to fizzle out.,Protesto yavaş yavaş sönmeye başladı.,5,,school-work
+nat-galvanize,GALVANIZE,Z,CONTAINS,verb,(insanları) harekete geçirip şevklendirmek,The speech will galvanize the voters.,Konuşma seçmenleri harekete geçirecek.,5,,school-work
+nat-guzzle,GUZZLE,Z,CONTAINS,verb,"(içki, yakıt) açgözlülükle ve çok tüketmek",Big cars guzzle petrol.,Büyük arabalar çok benzin yakar.,5,,school-work
+nat-muzzle,MUZZLE,Z,CONTAINS,verb,"(basını, eleştiriyi) susturmak",The regime tried to muzzle the press.,Rejim basını susturmaya çalıştı.,5,,school-work
+nat-raze,RAZE,Z,CONTAINS,verb,"(binayı, şehri) yerle bir etmek",The army threatened to raze the village.,Ordu köyü yerle bir etmekle tehdit etti.,5,,school-work
+nat-bamboozle,BAMBOOZLE,Z,CONTAINS,verb,kafasını karıştırarak kandırmak,Don't let the salesman bamboozle you.,Satıcının kafanı karıştırıp seni kandırmasına izin verme.,5,,school-work
+nat-daze,DAZE,Z,CONTAINS,noun,"(şok haberden sonra) afallama, kendinde olmama",She walked around in a daze after the news.,Haberden sonra afallamış halde dolaşıp durdu.,4,,school-work
+nat-ooze,OOZE,Z,CONTAINS,verb,(sıvı) sızmak; (özgüven) saçmak,He seems to ooze confidence.,Her halinden özgüven saçıyor gibi.,5,,school-work
+nat-sleazy,SLEAZY,Z,CONTAINS,adj,"(mekân) bayağı, pis ve ahlaksız",They met in a sleazy bar.,Bayağı ve pis bir barda buluştular.,5,,school-work
+nat-lionize,LIONIZE,Z,CONTAINS,verb,(birini) el üstünde tutup yüceltmek,The press tends to lionize young stars.,Basın genç yıldızları el üstünde tutma eğiliminde.,5,,school-work
+nat-ostracize,OSTRACIZE,Z,CONTAINS,verb,birini topluluktan dışlamak,The village decided to ostracize the family.,Köy aileyi dışlamaya karar verdi.,5,,school-work
+nat-tantalize,TANTALIZE,Z,CONTAINS,verb,(ulaşılamayacak bir şeyle) ağzını sulandırmak,The smell from the kitchen began to tantalize us.,Mutfaktan gelen koku ağzımızı sulandırmaya başladı.,5,,school-work
+nat-patronize,PATRONIZE,Z,CONTAINS,verb,"tepeden bakarak, küçümseyerek davranmak",Please don't patronize me.,Lütfen bana tepeden bakma.,5,,school-work
+nat-mesmerize,MESMERIZE,Z,CONTAINS,verb,"(dans, ses) gözünü alamayacak kadar büyülemek",Her voice will mesmerize the audience.,Sesi seyirciyi büyüleyecek.,5,,music

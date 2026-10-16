@@ -1,0 +1,10 @@
+# NAT summary (622 cards)
+
+Batches 1-6 (`content/cards/NAT/batch1..6.csv`) + `smoke.csv` (4 cards kept: ACT UP, JUMP THE GUN, NIP IT IN THE BUD, NEXT TO NOTHING; `smoke` tag removed; 22 A2-C1 idioms/phrasal verbs removed). NAT removed from `smokeLevels`.
+Per letter: A 36, B 30, C 36, D 36, E 29, F 29, G 24, H 21, I 28, J 17, K 15, L 18, M 21, N 15, O 18, P 40, Q 21, R 24, S 30, T 20, U 20, V 18, W 20, X 21, Y 16, Z 19. No letter below 15.
+CONTAINS cards (hard-letter rule): X 21 (all), Y 14, Z 16, Q 15, K 11, J 7, W 6. X has no STARTS card at all; Y has only YARDSTICK and YOKE.
+Scope: educated native (C2+) single words, plus four native idioms/phrasal verbs from the smoke set. `CONTENT.md` §5 still describes NAT as "idioms + phrasal verbs only, 800 cards" and the smoke note still names `nat-quite-a-few`; those docs were outside this task's scope.
+Rules applied: no answer repeats an A1-C1 answer and no derived form of one (script-checked before each push); same-letter near-synonyms dropped; every clue checked against common words on the same letter, including lower-level answers (the main review finding in every batch); examples use the exact answer form; British spelling except the -IZE words on Z.
+Doubtful levels (maybe C1) are listed per batch in `NAT-batch-1..6.md` (main ones: AVID, BOGUS, BLATANT, APATHY, DUBIOUS, FUTILE, GULLIBLE, NOCTURNAL, MEDDLE, TEDIOUS, SERENE, ZEST, HOAX). Remaining clue risks: ADJUDICATE vs JUDGE, SKULK vs LURK, PERVASIVE vs PREVALENT.
+Validation: Python mirror of the compiler (charset, rule, clue and example leaks, duplicates, blocklist); the Gradle compiler runs in CI.
+Owner actions: (1) single words use `school-work`, `business`, `film-tv`, `music`, `sports`, `travel` and `technology`, which `categories.csv` does not list for NAT, so the compiler warns on about 618 cards. Fix: add NAT to those categories or create a NAT category. (2) Bump `contentVersion` (not changed here). (3) NAT is not yet in `shippedLevels`. (4) Update `CONTENT.md` §5 and the smoke note.
