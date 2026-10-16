@@ -47,6 +47,9 @@ public enum class LexiLogoSize(
 
     /** 64dp blocks, 3dp border, 40 letters, gap 6 (home). */
     Menu(64.dp, 3.dp, 40.dp, 6.dp),
+
+    /** 46dp blocks, 3dp border, 28 letters, gap 5 (home on short phones; DESIGN-DEBT, scaled from [Menu]). */
+    MenuCompact(46.dp, 3.dp, 28.dp, 5.dp),
 }
 
 /** Logo geometry that is not a size preset (`13-logo-and-icon.html`). */

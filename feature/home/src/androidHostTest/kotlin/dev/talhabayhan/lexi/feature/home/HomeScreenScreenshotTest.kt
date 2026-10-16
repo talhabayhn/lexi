@@ -27,4 +27,41 @@ class HomeScreenScreenshotTest {
             LexiTheme(reducedMotion = false) { HomeScreen(state = HomeUiState(), onIntent = {}) }
         }
     }
+
+    @Test
+    @Config(qualifiers = "tr-w320dp-h568dp-xhdpi")
+    fun w320h568() = capture("HomeLayout_w320h568")
+
+    @Test
+    @Config(qualifiers = "tr-w360dp-h640dp-xhdpi")
+    fun w360h640() = capture("HomeLayout_w360h640")
+
+    @Test
+    @Config(qualifiers = "tr-w360dp-h780dp-xhdpi")
+    fun w360h780() = capture("HomeLayout_w360h780")
+
+    @Test
+    fun w390h844() = capture("HomeLayout_w390h844")
+
+    @Test
+    @Config(qualifiers = "tr-w412dp-h915dp-xhdpi")
+    fun w412h915() = capture("HomeLayout_w412h915")
+
+    @Test
+    @Config(fontScale = 1.15f)
+    fun fontScale115() = capture("HomeLayout_fontScale115")
+
+    @Test
+    @Config(fontScale = 1.3f)
+    fun fontScale130() = capture("HomeLayout_fontScale130")
+
+    @Test
+    @Config(qualifiers = "tr-w320dp-h568dp-xhdpi", fontScale = 1.3f)
+    fun w320h568FontScale130() = capture("HomeLayout_w320h568_fontScale130")
+
+    private fun capture(name: String) {
+        captureRoboImage("src/androidHostTest/screenshots/$name.png") {
+            LexiTheme(reducedMotion = false) { HomeScreen(state = HomeSampleState, onIntent = {}) }
+        }
+    }
 }

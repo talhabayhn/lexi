@@ -79,6 +79,13 @@ before shipping.
     the previous one leaves the wheel under 240dp. Compact (very short phones, e.g. 320 × 568, 360 × 640;
     DESIGN-DEBT, derived from `04-game`): padding 12 top / 16 bottom, gaps 8, answer margin 2, HUD 44, answer boxes
     40 high, keys 44 high with 6 gaps, actions 48. At 320 × 568 the wheel is ~144dp.
+- **Home never scrolls.** `FitToHeight` (feature:home) measures the home for each tier (`HomeTier`) inside the safe-drawing
+  insets and keeps the first that fits: Regular (the design, 390 × 844 pixel-identical; the spacer absorbs spare height),
+  Compact (DESIGN-DEBT, derived from `02-home`: padding 12 / 16, gaps 12, logo blocks 46, daily card padding 12 with a
+  48 circle, OYNA 60, tiles min 84 with gap 10), Tight (padding 8 / 12, gaps 8, OYNA 52, tiles content-sized with
+  16 / 12sp text). Both tile rows have equal heights. Font scale is capped at 1.15 on the home; decor shapes stay
+  edge-to-edge decoration. `HomeLayoutTest` asserts all texts stay on screen at 320 × 568, 360 × 640, 360 × 780,
+  390 × 844, 412 × 915 and font scale 1.15 / 1.3.
 - Tablets / landscape: center a 430dp-wide column; landscape-specific layouts later.
 - Font scale: honor system font size up to 1.3× on lists; the whole game board (HUD, wheel, clue, slots, keys,
   actions) is capped at 1.15×; its fixed heights grow with the capped scale.

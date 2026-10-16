@@ -57,6 +57,28 @@ public object HomeDefaults {
     /** 210 from the top (circle) and from the bottom (pill). */
     public val DecorOffset: Dp = 210.dp
 
+    /** Short phones (DESIGN-DEBT, derived from `02-home`): smaller daily card. */
+    internal val DailyCompactPadding: Dp = 12.dp
+    internal val DailyCompactCircleSize: Dp = 48.dp
+
+    /** The home screen honours the system font size up to this scale; it never scrolls (`screen-map.md`). */
+    public const val MAX_FONT_SCALE: Float = 1.15f
+
+    /** Layout tiers by available height (DESIGN-DEBT below regular): paddings, section gap, CTA and tile heights. */
+    public val RegularPlayHeight: Dp = 76.dp
+    public val CompactPaddingTop: Dp = 12.dp
+    public val CompactPaddingBottom: Dp = 16.dp
+    public val CompactGap: Dp = 12.dp
+    public val CompactPlayHeight: Dp = 60.dp
+    public val CompactTileHeight: Dp = 84.dp
+    public val CompactTileGap: Dp = 10.dp
+    public val TightPaddingTop: Dp = 8.dp
+    public val TightPaddingBottom: Dp = 12.dp
+    public val TightGap: Dp = 8.dp
+    public val TightPlayHeight: Dp = 52.dp
+    public val TightTileHeight: Dp = 0.dp
+    public val TightTileGap: Dp = 8.dp
+
     /** Smallest scale a CTA caption shrinks to before it is cut with an ellipsis. */
     internal const val CAPTION_MIN_SCALE: Float = 0.7f
     internal val CAPTION_STEP: TextUnit = 0.5.sp
@@ -85,7 +107,14 @@ public fun StreakChip(text: String, modifier: Modifier = Modifier) {
  * ("GÜNÜN ÇARKI · EKİM", uppercase in the resource), the [title] and a chevron. The whole card is the button.
  */
 @Composable
-public fun DailyCard(day: String, label: String, title: String, onClick: () -> Unit, modifier: Modifier = Modifier) {
+public fun DailyCard(
+    day: String,
+    label: String,
+    title: String,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    compact: Boolean = false,
+) {
     val colors = LexiTheme.colors
     PressableSurface(
         onClick = onClick,
@@ -94,13 +123,15 @@ public fun DailyCard(day: String, label: String, title: String, onClick: () -> U
         shadow = LexiTheme.shadows.s6,
     ) {
         Row(
-            modifier = Modifier.fillMaxWidth().padding(HomeDefaults.DailyPadding),
+            modifier = Modifier.fillMaxWidth().padding(
+                if (compact) HomeDefaults.DailyCompactPadding else HomeDefaults.DailyPadding,
+            ),
             horizontalArrangement = Arrangement.spacedBy(HomeDefaults.DailyGap),
             verticalAlignment = Alignment.CenterVertically,
         ) {
             Box(
                 modifier = Modifier
-                    .size(HomeDefaults.DailyCircleSize)
+                    .size(if (compact) HomeDefaults.DailyCompactCircleSize else HomeDefaults.DailyCircleSize)
                     .clearAndSetSemantics {}
                     .lexiSurface(
                         color = colors.white,
@@ -129,11 +160,17 @@ public fun DailyCard(day: String, label: String, title: String, onClick: () -> U
  * badge shrinks (then ends in an ellipsis) instead of touching the label.
  */
 @Composable
-public fun PlayButton(label: String, badge: String, onClick: () -> Unit, modifier: Modifier = Modifier) {
+public fun PlayButton(
+    label: String,
+    badge: String,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    height: Dp = LexiButtonDefaults.PlayHeight,
+) {
     val colors = LexiTheme.colors
     LexiButton(
         onClick = onClick,
-        height = LexiButtonDefaults.PlayHeight,
+        height = height,
         shadow = LexiTheme.shadows.s6,
         horizontalArrangement = Arrangement.SpaceBetween,
         modifier = modifier.fillMaxWidth(),

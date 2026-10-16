@@ -25,9 +25,12 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import dev.talhabayhan.lexi.core.designsystem.modifier.lexiSurface
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
+import dev.talhabayhan.lexi.core.designsystem.theme.resized
 import dev.talhabayhan.lexi.core.designsystem.theme.withCssLineHeight
 
 /** Colors of a [LevelBadge] per level (`16-components` § SEVİYE ROZETLERİ). */
@@ -80,6 +83,11 @@ public object CardDefaults {
     /** Marker sizes including the 2dp border (the HTML sizes are CSS content-box: 24 + 2 × 2, 26 + 2 × 2). */
     public val LevelMarkerSize: Dp = 28.dp
     public val TileMarkerSize: Dp = 30.dp
+
+    /** Compact menu tile for very short or narrow phones (DESIGN-DEBT, scaled from `02-home`). */
+    public val CompactPadding: Dp = 10.dp
+    internal val CompactTileTitle: TextUnit = 16.sp
+    internal val CompactTileSubtitle: TextUnit = 12.sp
 
     /** Menu tile title/subtitle `line-height: 1.1` of the 18px title. */
     internal const val TILE_TITLE_LINE_HEIGHT: Double = 1.1
@@ -198,18 +206,20 @@ public fun MenuTile(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     inverted: Boolean = false,
+    minHeight: Dp = CardDefaults.MenuTileHeight,
+    compact: Boolean = false,
 ) {
     val colors = LexiTheme.colors
     val typography = LexiTheme.typography
     val content = if (inverted) colors.cream else colors.ink
     PressableSurface(
         onClick = onClick,
-        modifier = modifier.heightIn(min = CardDefaults.MenuTileHeight),
+        modifier = modifier.heightIn(min = minHeight),
         color = if (inverted) colors.ink else colors.white,
         shadow = if (inverted) LexiTheme.shadows.s4Red else LexiTheme.shadows.s4,
         propagateMinConstraints = true,
     ) {
-        MenuTileLayout(Modifier.padding(CardDefaults.Padding)) {
+        MenuTileLayout(Modifier.padding(if (compact) CardDefaults.CompactPadding else CardDefaults.Padding)) {
             DecorShape(
                 kind = marker,
                 color = markerColor,
@@ -218,12 +228,16 @@ public fun MenuTile(
             Column {
                 Text(
                     title,
-                    style = typography.heading18.withCssLineHeight(CardDefaults.TILE_TITLE_LINE_HEIGHT),
+                    style = typography.heading18
+                        .let { if (compact) it.resized(CardDefaults.CompactTileTitle) else it }
+                        .withCssLineHeight(CardDefaults.TILE_TITLE_LINE_HEIGHT),
                     color = content,
                 )
                 Text(
                     subtitle,
-                    style = typography.caption14.withCssLineHeight(CardDefaults.TILE_SUBTITLE_LINE_HEIGHT),
+                    style = typography.caption14
+                        .let { if (compact) it.resized(CardDefaults.CompactTileSubtitle) else it }
+                        .withCssLineHeight(CardDefaults.TILE_SUBTITLE_LINE_HEIGHT),
                     color = content,
                 )
             }
