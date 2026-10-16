@@ -96,7 +96,7 @@ class GameScreenBehaviourTest {
         }
 
         onNodeWithText("Devam et").performClick()
-        onNodeWithText("Bırak").performClick()
+        onNodeWithText("Pes et").performClick()
 
         assertEquals(
             listOf(GameIntent.Resume, GameIntent.RequestQuit),

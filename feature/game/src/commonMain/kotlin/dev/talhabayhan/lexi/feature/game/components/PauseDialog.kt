@@ -26,8 +26,8 @@ import org.jetbrains.compose.resources.stringResource
 
 /**
  * DESIGN-DEBT (`screen-map.md`: the pause menu has no design yet; needs design): built only from `16-components`, a
- * [ConfirmDialog] over the 55 % [ModalScrim]. Two steps: "Oyun duraklatıldı" with Devam et (resume) / Bırak, then,
- * because giving up can't be undone, "Çarkı bırakmak istiyor musun?" with Bırak (forfeit, recorded like every
+ * [ConfirmDialog] over the 55 % [ModalScrim]. Two steps: "Oyun duraklatıldı" with Devam et (resume) / Pes et, then,
+ * because giving up can't be undone, "Pes etmek istiyor musun?" with Pes et (forfeit, recorded like every
  * finished game) / Vazgeç (back to the first step). "Yeniden başla" and "Ayarlar" from the screen-map hint wait for
  * the design (settings: M7). The scrim does not dismiss: the clock stays stopped until the player taps Devam et.
  */

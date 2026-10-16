@@ -27,7 +27,7 @@ before shipping.
 
 | Screen | Milestone | Hint |
 |---|---|---|
-| Pause menu (dialog) — **needs design** (stays as built, DESIGN-DEBT) | M4 | built as `PauseDialog` (feature:game): two `ConfirmDialog` steps, Devam et / Bırak, then "Çarkı bırakmak istiyor musun?" Bırak / Vazgeç. Yeniden başla / Ayarlar wait for the design |
+| Pause menu (dialog) — **needs design** (stays as built, DESIGN-DEBT) | M4 | built as `PauseDialog` (feature:game): two `ConfirmDialog` steps, Devam et / Pes et, then "Pes etmek istiyor musun?" Pes et / Vazgeç (owner decision: "Pes et" because the button gives up and shows the result, unlike `16-components`'s "Bırak"). Yeniden başlat / Ayarlar / Çık wait for the design (Settings now exists, M5) |
 | Example sentence of the "Örnek cümle" joker | M4 | italic line under the clue in `ClueCard` |
 | Result without misses (stays as built, DESIGN-DEBT) | M4 | `EmptyState` instead of the review list |
 | Joker sheet clock pill over the live game | M4 | `05-joker-sheet` shows the pill on a dimmed screen; in the app it is drawn above the scrim at the top, over the dimmed but still running HUD timer, so the time is shown twice |

@@ -39,10 +39,10 @@
     <string name="game_pause_title">Oyun duraklatıldı</string>
     <string name="game_pause_message">Süre durdu. Hazır olduğunda devam et.</string>
     <string name="game_pause_resume">Devam et</string>
-    <string name="game_pause_quit">Bırak</string>
-    <string name="game_quit_title">Çarkı bırakmak istiyor musun?</string>
+    <string name="game_pause_quit">Pes et</string>
+    <string name="game_quit_title">Pes etmek istiyor musun?</string>
     <string name="game_quit_message">Kalan harfler yanlış sayılır ve kelime defterine eklenir.</string>
-    <string name="game_quit_confirm">Bırak</string>
+    <string name="game_quit_confirm">Pes et</string>
     <string name="game_quit_cancel">Vazgeç</string>
 
     <!-- Joker sheet (05-joker-sheet) -->

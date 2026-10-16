@@ -44,7 +44,7 @@ internal data class GameUiState(
     val showJokerAd: Boolean = false,
     /** The joker sheet is open; the clock keeps running (`GAME_RULES.md` §5). */
     val isJokerSheetOpen: Boolean = false,
-    /** The pause dialog asks to confirm giving up ("Bırak"). Only while [isPaused]. */
+    /** The pause dialog asks to confirm giving up ("Pes et"). Only while [isPaused]. */
     val isQuitConfirmation: Boolean = false,
 )
 
@@ -133,13 +133,13 @@ internal sealed interface GameIntent {
 
     data object Resume : GameIntent
 
-    /** "Bırak" in the pause dialog: asks to confirm giving up. */
+    /** "Pes et" in the pause dialog: asks to confirm giving up. */
     data object RequestQuit : GameIntent
 
     /** "Vazgeç" in the quit confirmation: back to the pause dialog. */
     data object CancelQuit : GameIntent
 
-    /** "Bırak" in the quit confirmation: gives up (`GameEvent.Forfeit`). */
+    /** "Pes et" in the quit confirmation: gives up (`GameEvent.Forfeit`). */
     data object Forfeit : GameIntent
 
     /**

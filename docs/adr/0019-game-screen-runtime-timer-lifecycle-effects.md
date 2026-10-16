@@ -119,7 +119,7 @@ kotlinx-datetime.
   is declared through a catalog alias of the version navigation-compose already resolves, not a new library) closes
   the joker sheet, leaves the quit confirmation, or pauses a running game; on the pause dialog it does nothing, so
   only "Devam et" restarts the clock. While loading, back leaves the screen. The pause dialog (design debt) is two
-  `ConfirmDialog` steps: pause (Devam et / Bırak) and, since giving up can't be undone, a confirmation (Bırak =
+  `ConfirmDialog` steps: pause (Devam et / Pes et) and, since giving up can't be undone, a confirmation (Pes et =
   `Forfeit` / Vazgeç).
 - **Effects:** the ViewModel ignores a transition only when it is the same state *and* has no effects, the same rule
   as `GameSession` (`Transition.isIgnored`).
