@@ -1,0 +1,20 @@
+# Baseline profile (human-readable rules), merged by AGP into assets/dexopt/baseline.prof and installed by
+# androidx.profileinstaller (already on the classpath through Compose): the code listed here is compiled ahead of time
+# instead of running interpreted / JIT-compiled on the first launches. Without it the first screen transitions of a
+# fresh install (sideloaded or Play) drop frames: composing a new screen in cold code takes several times longer.
+# Hand-written wildcards (no new dependency); replace with a generated profile if the baselineprofile plugin
+# and a macrobenchmark module are ever added.
+
+# Lexi: every module (shared, features, design system, domain, data).
+Ldev/talhabayhan/lexi/**;
+HSPLdev/talhabayhan/lexi/**->**(**)**
+
+# Libraries on the screen-entry path without their own profile in this app.
+Lorg/koin/**;
+HSPLorg/koin/**->**(**)**
+Lapp/cash/sqldelight/**;
+HSPLapp/cash/sqldelight/**->**(**)**
+Lorg/jetbrains/compose/resources/**;
+HSPLorg/jetbrains/compose/resources/**->**(**)**
+Lkotlinx/collections/immutable/**;
+HSPLkotlinx/collections/immutable/**->**(**)**
