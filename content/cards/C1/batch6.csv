@@ -1,0 +1,62 @@
+id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
+c1-magnitude,MAGNITUDE,M,STARTS,noun,bir şeyin büyüklüğü veya önemi,Nobody understood the magnitude of the problem.,Kimse sorunun büyüklüğünü anlamamıştı.,5,,school-work
+c1-mainstream,MAINSTREAM,M,STARTS,noun,çoğunluğun kabul ettiği genel akım,The band finally moved into the mainstream.,Grup sonunda genel akıma girdi.,5,,music
+c1-manifest,MANIFEST,M,STARTS,verb,bir duyguyu veya belirtiyi açıkça göstermek,The illness may manifest in different ways.,Hastalık farklı şekillerde kendini gösterebilir.,5,,school-work
+c1-manipulate,MANIPULATE,M,STARTS,verb,birini kendi çıkarına yönlendirmek,Some adverts try to manipulate our feelings.,Bazı reklamlar duygularımızı yönlendirmeye çalışır.,5,,film-tv
+c1-marginal,MARGINAL,M,STARTS,adj,"çok küçük, önemsiz düzeyde olan",There was only a marginal improvement in sales.,Satışlarda yalnızca küçük bir iyileşme oldu.,5,,business
+c1-mediate,MEDIATE,M,STARTS,verb,iki taraf arasında arabuluculuk yapmak,A neutral judge will mediate between the two sides.,Tarafsız bir yargıç iki taraf arasında arabuluculuk yapacak.,5,,business
+c1-merit,MERIT,M,STARTS,noun,"bir şeyin sahip olduğu değer, artı yön",The idea has real merit.,Fikrin gerçekten değerli bir yanı var.,5,,school-work
+c1-memoir,MEMOIR,M,STARTS,noun,kişinin kendi hayatını anlattığı kitap,She wrote a memoir about her childhood.,Çocukluğu hakkında bir anı kitabı yazdı.,5,,film-tv
+c1-misconception,MISCONCEPTION,M,STARTS,noun,yaygın yanlış kanı,It is a common misconception that sugar makes children hyper.,Şekerin çocukları hareketlendirdiği yaygın bir yanlış kanıdır.,5,,school-work
+c1-mobilise,MOBILISE,M,STARTS,verb,insanları veya kaynakları harekete geçirmek,The party tried to mobilise young voters.,Parti genç seçmenleri harekete geçirmeye çalıştı.,5,,school-work
+c1-momentum,MOMENTUM,M,STARTS,noun,bir sürecin kazandığı hız ve ivme,The campaign is gaining momentum.,Kampanya ivme kazanıyor.,5,,sports
+c1-monopoly,MONOPOLY,M,STARTS,noun,bir pazarda tek satıcı olma durumu,The firm has a monopoly on rail travel.,Firmanın demiryolu ulaşımında tekeli var.,5,,business
+c1-morale,MORALE,M,STARTS,noun,bir grubun güveni ve şevki,Morale in the team was low after the defeat.,Yenilgiden sonra takımın morali düşüktü.,5,,sports
+c1-mortality,MORTALITY,M,STARTS,noun,ölüm oranı; ölümlü olma,Infant mortality has fallen sharply.,Bebek ölümleri keskin biçimde azaldı.,5,,school-work
+c1-motive,MOTIVE,M,STARTS,noun,bir davranışın arkasındaki neden,The police could not find a motive for the crime.,Polis suçun arkasındaki nedeni bulamadı.,4,,school-work
+c1-mounting,MOUNTING,M,STARTS,adj,giderek artan,There is mounting pressure on the government.,Hükümet üzerinde artan bir baskı var.,5,,school-work
+c1-mandatory,MANDATORY,M,STARTS,adj,yasa gereği zorunlu,Helmets are mandatory for all riders.,Tüm sürücüler için kask zorunludur.,4,,sports
+c1-maritime,MARITIME,M,STARTS,adj,denizle ilgili,The town has a rich maritime history.,Kasabanın zengin bir denizcilik tarihi var.,5,,travel
+c1-mentor,MENTOR,M,STARTS,noun,deneyimli akıl hocası,She had a mentor in her first job.,İlk işinde bir akıl hocası vardı.,4,,business
+c1-metaphor,METAPHOR,M,STARTS,noun,bir şeyi başka bir şeyle anlatan mecaz,Life is often described through the metaphor of a journey.,Hayat çoğu zaman yolculuk mecazıyla anlatılır.,4,,school-work
+c1-migrant,MIGRANT,M,STARTS,noun,iş veya yaşam için yer değiştiren kişi,He came to the city as a migrant looking for work.,İş arayan bir göçmen olarak şehre geldi.,4,,school-work
+c1-mindset,MINDSET,M,STARTS,noun,"bir kişinin düşünme biçimi, zihniyet",A positive mindset helps you learn.,Olumlu bir zihniyet öğrenmene yardım eder.,5,,school-work
+c1-mischief,MISCHIEF,M,STARTS,noun,çocukça yaramazlık,The kids were up to mischief again.,Çocuklar yine yaramazlık peşindeydi.,5,,school-work
+c1-negligence,NEGLIGENCE,N,STARTS,noun,dikkatsizlik yüzünden sorumluluğu ihmal etme,The accident was caused by negligence.,Kaza ihmalden kaynaklandı.,5,,school-work
+c1-negligible,NEGLIGIBLE,N,STARTS,adj,yok denecek kadar az,The difference in price is negligible.,Fiyat farkı yok denecek kadar az.,5,,business
+c1-niche,NICHE,N,STARTS,noun,küçük ve özel bir pazar veya uzmanlık alanı,They found a niche in the market.,Piyasada kendilerine özel bir alan buldular.,5,,business
+c1-nominal,NOMINAL,N,STARTS,adj,"çok düşük, sembolik düzeyde",A nominal fee is charged for entry.,Girişte sembolik bir ücret alınır.,5,,business
+c1-nonetheless,NONETHELESS,N,STARTS,adv,buna rağmen,"The test was hard; nonetheless, she passed.",Sınav zordu; yine de geçti.,5,,school-work
+c1-nostalgia,NOSTALGIA,N,STARTS,noun,geçmişi özleyiş duygusu,The old song filled him with nostalgia.,Eski şarkı onu nostaljiyle doldurdu.,4,,music
+c1-novice,NOVICE,N,STARTS,noun,"bir işte yeni başlayan, acemi","As a novice, he made many mistakes.",Acemi olarak çok hata yaptı.,4,,sports
+c1-nurture,NURTURE,N,STARTS,verb,bakıp gelişmesini desteklemek,Parents nurture their children's talents.,Anne babalar çocuklarının yeteneklerini besler.,5,,school-work
+c1-narrate,NARRATE,N,STARTS,verb,bir olayı sırayla anlatmak,The actor will narrate the documentary.,Oyuncu belgeseli seslendirecek.,5,,film-tv
+c1-nomad,NOMAD,N,STARTS,noun,yerleşik düzeni olmayan göçebe,The nomad moved with his sheep across the plain.,Göçebe koyunlarıyla ovayı aştı.,4,,travel
+c1-nominee,NOMINEE,N,STARTS,noun,bir ödül veya göreve aday gösterilen kişi,She is a nominee for best actress.,En iyi kadın oyuncu adaylarından biri.,4,,film-tv
+c1-oblige,OBLIGE,O,STARTS,verb,birini mecbur bırakmak veya bir iyilik yapmak,The law may oblige drivers to carry a licence.,Yasa sürücülerin ehliyet taşımasını zorunlu kılabilir.,5,,school-work
+c1-obscure,OBSCURE,O,STARTS,adj,az bilinen veya anlaşılması zor,The poet remains obscure outside her country.,Şair ülkesinin dışında az bilinen biri olarak kalıyor.,5,,school-work
+c1-obstruct,OBSTRUCT,O,STARTS,verb,yolu veya ilerlemeyi engellemek,Parked cars obstruct the narrow street.,Park etmiş arabalar dar sokağı tıkıyor.,5,,travel
+c1-offset,OFFSET,O,STARTS,verb,bir etkiyi dengeleyerek azaltmak,Savings will offset the higher rent.,Tasarruflar yüksek kirayı dengeleyecek.,5,,business
+c1-offspring,OFFSPRING,O,STARTS,noun,bir canlının yavruları veya çocukları,The bird protects its offspring.,Kuş yavrularını korur.,5,,school-work
+c1-omit,OMIT,O,STARTS,verb,bilerek veya unutarak dışarıda bırakmak,Do not omit any step in the process.,İşlemde hiçbir adımı atlama.,4,,school-work
+c1-ongoing,ONGOING,O,STARTS,adj,hâlâ süren,The ongoing talks may end soon.,Süren görüşmeler yakında bitebilir.,4,,business
+c1-onset,ONSET,O,STARTS,noun,kötü bir şeyin başlangıcı,Pain marked the onset of the illness.,Ağrı hastalığın başlangıcı oldu.,5,,school-work
+c1-optimum,OPTIMUM,O,STARTS,adj,"en uygun, ideal",Plants grow best at optimum temperature.,Bitkiler en uygun sıcaklıkta en iyi büyür.,5,,school-work
+c1-optimise,OPTIMISE,O,STARTS,verb,en verimli hâle getirmek,We can optimise the schedule to save time.,Zaman kazanmak için programı en verimli hâle getirebiliriz.,5,,technology
+c1-ordeal,ORDEAL,O,STARTS,noun,çok zor ve acı veren yaşantı,Being trapped for three days was a terrible ordeal.,Üç gün mahsur kalmak korkunç bir çileydi.,5,,school-work
+c1-orthodox,ORTHODOX,O,STARTS,adj,geleneksel kurallara uyan,His methods were far from orthodox.,Yöntemleri geleneksel olmaktan uzaktı.,5,,school-work
+c1-outburst,OUTBURST,O,STARTS,noun,ani öfke veya duygu patlaması,His outburst surprised the whole room.,Öfke patlaması bütün odayı şaşırttı.,5,,school-work
+c1-outcry,OUTCRY,O,STARTS,noun,halkın sert protestosu,The plan caused a public outcry.,Plan halkta büyük tepkiye yol açtı.,5,,school-work
+c1-outlet,OUTLET,O,STARTS,noun,ürün satış noktası; boşalma yolu,The brand opened a new outlet in the mall.,Marka alışveriş merkezinde yeni bir satış noktası açtı.,5,,business
+c1-outrage,OUTRAGE,O,STARTS,noun,haksızlığa duyulan öfke,She could not hide her outrage at the decision.,Karara duyduğu öfkeyi gizleyemedi.,5,,school-work
+c1-outskirts,OUTSKIRTS,O,STARTS,noun,şehrin dış mahalleleri,They live on the outskirts of the capital.,Başkentin dış mahallelerinde yaşıyorlar.,4,,travel
+c1-outset,OUTSET,O,STARTS,noun,bir sürecin en başı (at the ___),We made our goals clear at the outset.,Hedeflerimizi en başta netleştirdik.,5,,business
+c1-outspoken,OUTSPOKEN,O,STARTS,adj,düşüncesini açıkça söyleyen,She is an outspoken critic of the plan.,Planı açıkça eleştiren biridir.,5,,school-work
+c1-outweigh,OUTWEIGH,O,STARTS,verb,değer veya ağırlık bakımından daha üstün olmak,The benefits outweigh the costs.,Faydalar maliyetlerden ağır basıyor.,5,,business
+c1-overhaul,OVERHAUL,O,STARTS,verb,bir sistemi baştan sona elden geçirmek,The team will overhaul the old engine.,Ekip eski motoru baştan elden geçirecek.,5,,technology
+c1-override,OVERRIDE,O,STARTS,verb,bir kararı veya ayarı geçersiz kılmak,The pilot can override the autopilot.,Pilot otomatik pilotu devre dışı bırakabilir.,5,,technology
+c1-oversee,OVERSEE,O,STARTS,verb,bir işi gözetip yönetmek,A manager will oversee the project.,Bir yönetici projeyi denetleyecek.,5,,business
+c1-oversight,OVERSIGHT,O,STARTS,noun,gözden kaçan hata,It was an oversight on my part.,Benim açımdan bir dikkatsizlikti.,5,,business
+c1-overthrow,OVERTHROW,O,STARTS,verb,yönetimi zorla devirmek,Rebels tried to overthrow the king.,İsyancılar kralı devirmeye çalıştı.,5,,school-work
+c1-overwhelm,OVERWHELM,O,STARTS,verb,güçlü duygu veya etkiyle bunaltmak,Too much work can overwhelm anyone.,Çok fazla iş herkesi bunaltabilir.,4,,school-work
+c1-overshadow,OVERSHADOW,O,STARTS,verb,başka bir şeyin önüne geçip gölgede bırakmak,His fame began to overshadow his brother's.,Ünü kardeşininkini gölgede bırakmaya başladı.,5,,school-work

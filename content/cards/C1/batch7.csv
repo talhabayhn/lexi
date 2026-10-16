@@ -1,0 +1,78 @@
+id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
+c1-paradigm,PARADIGM,P,STARTS,noun,bir alanda kabul gören temel model,The discovery caused a paradigm shift in physics.,Keşif fizikte bir paradigma değişimine yol açtı.,5,,school-work
+c1-parody,PARODY,P,STARTS,noun,bir eseri güldürmek için taklit eden eser,The show is a parody of old spy films.,Gösteri eski casus filmlerinin parodisi.,5,,film-tv
+c1-partisan,PARTISAN,P,STARTS,adj,tek bir tarafı körü körüne tutan,The newspaper has become more partisan.,Gazete daha taraflı bir hâle geldi.,5,,school-work
+c1-penalise,PENALISE,P,STARTS,verb,kural çiğneyeni cezalandırmak,Schools should not penalise honest mistakes.,Okullar dürüst hataları cezalandırmamalı.,5,,school-work
+c1-pending,PENDING,P,STARTS,adj,"henüz karara bağlanmamış, bekleyen",The decision is still pending.,Karar hâlâ bekliyor.,5,,business
+c1-peripheral,PERIPHERAL,P,STARTS,adj,"ana konunun dışında, ikincil",These issues are peripheral to our main goal.,Bu konular ana hedefimizin dışında kalıyor.,5,,school-work
+c1-persevere,PERSEVERE,P,STARTS,verb,zorluğa rağmen çabaya devam etmek,You must persevere if you want to win.,Kazanmak istiyorsan sebat etmelisin.,5,,sports
+c1-persist,PERSIST,P,STARTS,verb,"ısrarla sürmek, geçmemek",The pain may persist for several days.,Ağrı birkaç gün devam edebilir.,4,,school-work
+c1-pioneer,PIONEER,P,STARTS,noun,bir alanda yolu ilk açan kişi,She was a pioneer of women's football.,Kadın futbolunun öncülerinden biriydi.,4,,sports
+c1-pivotal,PIVOTAL,P,STARTS,adj,belirleyici ve çok önemli,She played a pivotal role in the talks.,Görüşmelerde belirleyici bir rol oynadı.,5,,business
+c1-plausible,PLAUSIBLE,P,STARTS,adj,"akla yatkın, inandırıcı",His excuse sounded plausible.,Mazereti akla yatkın geliyordu.,5,,school-work
+c1-pledge,PLEDGE,P,STARTS,verb,söz verip taahhüt etmek,The mayor will pledge more money for parks.,Belediye başkanı parklar için daha fazla para sözü verecek.,5,,school-work
+c1-plunge,PLUNGE,P,STARTS,verb,aniden dalmak veya sert düşmek,Share prices began to plunge on Monday.,Hisse fiyatları pazartesi sert düşmeye başladı.,5,,business
+c1-polarise,POLARISE,P,STARTS,verb,insanları zıt iki uca bölmek,The issue could polarise the nation.,Konu ulusu iki uca bölebilir.,5,,school-work
+c1-precede,PRECEDE,P,STARTS,verb,zaman olarak öncesinde gelmek,A short film will precede the main feature.,Ana filmden önce kısa bir film gösterilecek.,5,,film-tv
+c1-precedent,PRECEDENT,P,STARTS,noun,sonraki kararlara örnek olan önceki olay,The ruling sets a precedent for future cases.,Karar gelecekteki davalar için emsal oluşturuyor.,5,,school-work
+c1-predecessor,PREDECESSOR,P,STARTS,noun,aynı görevde daha önce bulunan kişi,Her predecessor left after only a year.,Selefi yalnızca bir yıl sonra ayrıldı.,5,,business
+c1-predominant,PREDOMINANT,P,STARTS,adj,"diğerlerine baskın gelen, ağır basan",Red is the predominant colour in the room.,Odada baskın renk kırmızı.,5,,school-work
+c1-premise,PREMISE,P,STARTS,noun,bir düşüncenin dayandığı temel varsayım,The story is based on a simple premise.,Hikâye basit bir temel varsayıma dayanıyor.,5,,film-tv
+c1-prestige,PRESTIGE,P,STARTS,noun,başarıdan doğan saygınlık,The job carries great prestige.,İş büyük bir saygınlık getiriyor.,5,,business
+c1-presume,PRESUME,P,STARTS,verb,kanıt olmadan doğru diye kabul etmek,I presume you have read the contract.,Sözleşmeyi okuduğunu varsayıyorum.,5,,business
+c1-prevail,PREVAIL,P,STARTS,verb,geçerli olmak veya galip gelmek,We hope that common sense will prevail.,Sağduyunun galip geleceğini umuyoruz.,5,,school-work
+c1-prevalent,PREVALENT,P,STARTS,adj,çok yaygın,The disease is prevalent in hot countries.,Hastalık sıcak ülkelerde yaygın.,5,,school-work
+c1-proclaim,PROCLAIM,P,STARTS,verb,resmen ve açıkça duyurmak,The king will proclaim a holiday.,Kral bir tatil ilan edecek.,5,,school-work
+c1-profound,PROFOUND,P,STARTS,adj,çok derin ve etkili,The book had a profound effect on me.,Kitap beni derinden etkiledi.,5,,school-work
+c1-prolific,PROLIFIC,P,STARTS,adj,"çok sayıda eser veren, üretken",He was a prolific writer of crime novels.,Çok sayıda polisiye roman yazan üretken bir yazardı.,5,,film-tv
+c1-prolong,PROLONG,P,STARTS,verb,süresini uzatmak,Do not prolong the meeting any further.,Toplantıyı daha fazla uzatma.,5,,business
+c1-prominent,PROMINENT,P,STARTS,adj,dikkat çeken veya tanınmış,She is a prominent lawyer in the city.,Şehrin tanınmış bir avukatıdır.,5,,school-work
+c1-prosperous,PROSPEROUS,P,STARTS,adj,zengin ve gelişmiş,The town became a prosperous trading centre.,Kasaba gelişmiş bir ticaret merkezi oldu.,5,,business
+c1-protocol,PROTOCOL,P,STARTS,noun,resmî kurallar ve usuller,Visitors must follow the safety protocol.,Ziyaretçiler güvenlik protokolüne uymalıdır.,5,,business
+c1-provision,PROVISION,P,STARTS,noun,bir şeyin sağlanması; sözleşme maddesi,The law makes provision for free school meals.,Yasa ücretsiz okul yemeği için hüküm içeriyor.,5,,business
+c1-provisional,PROVISIONAL,P,STARTS,adj,geçici ve değişebilir,They signed a provisional agreement.,Geçici bir anlaşma imzaladılar.,5,,business
+c1-proximity,PROXIMITY,P,STARTS,noun,yakınlık,The hotel is in close proximity to the beach.,Otel plaja çok yakın.,5,,travel
+c1-punitive,PUNITIVE,P,STARTS,adj,cezalandırma amaçlı,The company faced punitive fines.,Şirket ağır para cezalarıyla karşılaştı.,5,,business
+c1-pursuit,PURSUIT,P,STARTS,noun,bir hedefin peşinden gitme; uğraş,She left her job in pursuit of a dream.,Bir hayalin peşinde işinden ayrıldı.,5,,school-work
+c1-perpetrator,PERPETRATOR,P,STARTS,noun,suçu işleyen kişi,The police are still hunting for the perpetrator.,Polis hâlâ faili arıyor.,5,,school-work
+c1-preliminary,PRELIMINARY,P,STARTS,adj,asıl işten önce yapılan hazırlık niteliğinde,Preliminary results look good.,Ön sonuçlar iyi görünüyor.,5,,school-work
+c1-pronounced,PRONOUNCED,P,STARTS,adj,belirgin ve fark edilir,He walks with a pronounced limp.,Belirgin bir topallamayla yürüyor.,5,,school-work
+c1-proficient,PROFICIENT,P,STARTS,adj,"bir işte yetkin, becerikli",She is proficient in three languages.,Üç dilde yetkin.,5,,school-work
+c1-qualm,QUALM,Q,STARTS,noun,"vicdani rahatsızlık, tereddüt",My only qualm is the cost.,Tek çekincem maliyet.,5,,school-work
+c1-quell,QUELL,Q,STARTS,verb,isyanı veya duyguyu bastırmak,Police acted to quell the riot.,Polis isyanı bastırmak için harekete geçti.,5,,school-work
+c1-query,QUERY,Q,STARTS,noun,bilgi almak için sorulan soru,Send us your query by email.,Sorunuzu bize e-postayla gönderin.,4,,business
+c1-quest,QUEST,Q,STARTS,noun,bir şeyi bulmak için uzun arayış,They set off on a quest for the lost city.,Kayıp şehri bulmak için bir arayışa çıktılar.,5,,film-tv
+c1-quirk,QUIRK,Q,STARTS,noun,kişiye özgü tuhaf alışkanlık,Her quirk is that she never uses a pen.,Tuhaf bir huyu var: asla kalem kullanmaz.,5,,school-work
+c1-equilibrium,EQUILIBRIUM,Q,CONTAINS,noun,karşıt güçlerin dengede olması,The market reached a new equilibrium.,Piyasa yeni bir dengeye ulaştı.,5,,business
+c1-colloquial,COLLOQUIAL,Q,CONTAINS,adj,günlük konuşma diline özgü,"""Gonna"" is a colloquial form of ""going to"".","""Gonna"", ""going to"" yapısının günlük konuşma biçimidir.",5,,school-work
+c1-ratify,RATIFY,R,STARTS,verb,anlaşmayı resmen onaylamak,Parliament must ratify the treaty.,Meclis anlaşmayı onaylamalıdır.,5,,school-work
+c1-rationale,RATIONALE,R,STARTS,noun,bir kararın mantıklı gerekçesi,The rationale behind the plan is simple.,Planın ardındaki gerekçe basit.,5,,business
+c1-readily,READILY,R,STARTS,adv,"kolaylıkla, isteyerek",The information is readily available online.,Bilgi internette kolayca bulunabilir.,4,,technology
+c1-realm,REALM,R,STARTS,noun,belli bir etkinlik veya bilgi alanı,Magic belongs to the realm of fantasy.,Büyü fanteziler dünyasına aittir.,5,,film-tv
+c1-recipient,RECIPIENT,R,STARTS,noun,bir şeyi alan kişi,The recipient of the award thanked the judges.,Ödülü alan kişi jüriye teşekkür etti.,5,,school-work
+c1-reconcile,RECONCILE,R,STARTS,verb,uzlaştırmak veya barıştırmak,They tried to reconcile their different views.,Farklı görüşlerini uzlaştırmaya çalıştılar.,5,,school-work
+c1-rectify,RECTIFY,R,STARTS,verb,hatayı düzeltmek,We will rectify the error immediately.,Hatayı hemen düzelteceğiz.,5,,business
+c1-redundant,REDUNDANT,R,STARTS,adj,artık gereksiz; işine son verilmiş,Hundreds of workers were made redundant.,Yüzlerce işçinin işine son verildi.,5,,business
+c1-refrain,REFRAIN,R,STARTS,verb,bir şeyi yapmaktan kendini alıkoymak,Please refrain from smoking here.,Lütfen burada sigara içmekten kaçının.,5,,school-work
+c1-refuge,REFUGE,R,STARTS,noun,tehlikeden korunacak sığınak,They took refuge in a cave.,Bir mağaraya sığındılar.,5,,travel
+c1-regime,REGIME,R,STARTS,noun,bir ülkeyi yöneten sistem,The old regime fell in 1990.,Eski rejim 1990'da çöktü.,5,,school-work
+c1-rehearse,REHEARSE,R,STARTS,verb,gösteriden önce prova yapmak,The actors rehearse every evening.,Oyuncular her akşam prova yapıyor.,5,,film-tv
+c1-reinforce,REINFORCE,R,STARTS,verb,bir şeyi daha sağlam hâle getirmek,Steel will reinforce the old wall.,Çelik eski duvarı güçlendirecek.,4,,technology
+c1-relentless,RELENTLESS,R,STARTS,adj,"durmayan, amansız",The relentless rain lasted three days.,Dinmeyen yağmur üç gün sürdü.,5,,school-work
+c1-remedy,REMEDY,R,STARTS,noun,bir sorunu çözen çare,Rest is the best remedy for a cold.,Dinlenmek nezlenin en iyi çaresidir.,4,,school-work
+c1-renowned,RENOWNED,R,STARTS,adj,ünü geniş çevrelere ulaşmış,She is a renowned violinist.,Ünlü bir kemancıdır.,5,,music
+c1-replica,REPLICA,R,STARTS,noun,"birebir kopyası, taklidi",The museum sells a replica of the statue.,Müze heykelin bir replikasını satıyor.,5,,travel
+c1-resent,RESENT,R,STARTS,verb,haksızlık sandığı bir şeye içerlemek,She began to resent his comments.,Yorumlarına içerlemeye başladı.,5,,school-work
+c1-reservoir,RESERVOIR,R,STARTS,noun,suyun biriktiği yapay göl,The reservoir supplies water to the city.,Baraj gölü şehre su sağlıyor.,4,,travel
+c1-reside,RESIDE,R,STARTS,verb,bir yerde oturmak,Many students reside in the city centre.,Birçok öğrenci şehir merkezinde oturuyor.,5,,travel
+c1-restraint,RESTRAINT,R,STARTS,noun,duygu veya davranışı kontrol etme,The police showed great restraint.,Polis büyük bir soğukkanlılık gösterdi.,5,,school-work
+c1-retrieve,RETRIEVE,R,STARTS,verb,bir şeyi geri alıp çıkarmak,Can you retrieve the lost file?,Kayıp dosyayı geri getirebilir misin?,5,,technology
+c1-retrospect,RETROSPECT,R,STARTS,noun,geçmişe dönüp bakış: in ___,"In retrospect, it was a mistake.",Geriye bakınca bu bir hataydı.,5,,school-work
+c1-revolt,REVOLT,R,STARTS,noun,yönetime karşı ayaklanma,A revolt broke out in the north.,Kuzeyde bir ayaklanma çıktı.,5,,school-work
+c1-rigorous,RIGOROUS,R,STARTS,adj,çok titiz ve sıkı,The test was rigorous.,Test çok sıkıydı.,5,,school-work
+c1-ripple,RIPPLE,R,STARTS,noun,suda küçük dalga halkası,A ripple spread across the pond.,Gölet boyunca küçük bir dalga yayıldı.,4,,school-work
+c1-ritual,RITUAL,R,STARTS,noun,belirli bir düzenle yapılan tören veya alışkanlık,Tea is part of their morning ritual.,"Çay, sabah ritüellerinin bir parçası.",4,,school-work
+c1-robust,ROBUST,R,STARTS,adj,güçlü ve sağlam,The new design is robust.,Yeni tasarım sağlam.,5,,technology
+c1-ruthless,RUTHLESS,R,STARTS,adj,acımasız ve hiç merhamet göstermeyen,He was a ruthless businessman.,Acımasız bir iş insanıydı.,5,,business
+c1-recession,RECESSION,R,STARTS,noun,ekonomide geçici gerileme dönemi,The recession cost many jobs.,Ekonomik durgunluk birçok işe mal oldu.,4,,business
+c1-retail,RETAIL,R,STARTS,noun,"ürünün tek tek satışı, perakende",He works in retail.,Perakende sektöründe çalışıyor.,4,,business
