@@ -17,10 +17,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.LayoutCoordinates
 import androidx.compose.ui.layout.onPlaced
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.min
 import dev.talhabayhan.lexi.core.designsystem.component.AnswerSlot
 import dev.talhabayhan.lexi.core.designsystem.component.AnswerSlotDefaults
 import dev.talhabayhan.lexi.core.designsystem.component.AnswerSlotState
@@ -120,8 +120,13 @@ internal fun AnswerSlots(
     val firstFlying = flying.minOrNull()
     BoxWithConstraints(modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
         val cells = words.sumOf { it.size }
-        val gaps = AnswerSlotDefaults.Gap * (cells - words.size) + GameScreenDefaults.AnswerWordGap * (words.size - 1)
-        val slotWidth = min(AnswerSlotDefaults.Width, (maxWidth - gaps) / cells.coerceAtLeast(1))
+        // In whole pixels, as the row places them: rounded slot widths must never add up to more than the row.
+        val density = LocalDensity.current
+        val slotWidth = with(density) {
+            val gaps = AnswerSlotDefaults.Gap.roundToPx() * (cells - words.size) +
+                GameScreenDefaults.AnswerWordGap.roundToPx() * (words.size - 1)
+            minOf(AnswerSlotDefaults.Width.roundToPx(), (constraints.maxWidth - gaps) / cells.coerceAtLeast(1)).toDp()
+        }
         val baseStyle = LexiTheme.typography.slotLetter
         val textScale = minOf(slotWidth / AnswerSlotDefaults.Width, height / AnswerSlotDefaults.Height)
         val textStyle = if (textScale < 1f) {
