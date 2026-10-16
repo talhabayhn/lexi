@@ -1,0 +1,8 @@
+# NAT batch 1 review (smoke cleanup + letters A, B, C)
+
+File `content/cards/NAT/batch1.csv` (101 cards) + `smoke.csv`.
+Smoke cleanup: kept ACT UP, JUMP THE GUN, NIP IT IN THE BUD, NEXT TO NOTHING (C2/native idioms; `smoke` tag removed). Removed 22 cards that are A2-C1 phrasal verbs or idioms (GIVE UP, FIGURE OUT, HANG ON, COME ACROSS, WORK OUT, TAKE OFF, RUN OUT OF, LET DOWN, MAKE SENSE, END UP, DROP IN, PIECE OF CAKE, UP TO YOU, QUITE A FEW, YOU BET, BREAK THE ICE, IN A NUTSHELL, KEEP AN EYE ON, OUT OF THE BLUE, SPILL THE BEANS, VICE VERSA, DOZE OFF).
+Scope: NAT is built as educated native (C2+) single-word vocabulary (owner instruction), not only idioms/phrasal verbs as `CONTENT.md` §5 says; words use the closest existing category (mostly `school-work`), which the compiler reports as "category not listed for level" warnings.
+Own drops: duplicates or derived forms of other levels (ALLEVIATE, ARBITRARY, BENEVOLENT, COMPLACENT, CYNICAL, ANECDOTAL); near-synonyms on the same letter (AMIABLE vs AFFABLE, CHASTISE vs CASTIGATE/BERATE, CONGENIAL vs CONVIVIAL, BLUSTER vs BRAVADO, CURT, CAUSTIC, CREDULOUS).
+Reviewer fixes: clues that also fit a common same-letter word (COGENT, CONVOLUTED/COMPLICATED, CASTIGATE/CRITICISE, COAX, CLANDESTINE/COVERT, CIRCUMSPECT/CAUTIOUS, BOLSTER/BOOST, BUNGLE/BOTCH, CORROBORATE/CONFIRM, AFFABLE, ADROIT, ANOMALY, ADAGE, BURLY, CANTANKEROUS); BEMUSED/BEFUDDLED separated; ALLUDE, ARDUOUS, CHAGRIN translations; CACOPHONY category.
+Doubtful level (maybe C1/C2 rather than native): AVID, BOGUS, BLATANT, APATHY, ADAMANT (difficulty lowered to 2-3); ACT UP (smoke, maybe C2).

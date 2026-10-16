@@ -1,27 +1,5 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
-nat-act-up,ACT UP,A,STARTS,phrasal,"yaramazlık yapmak, başına buyruk davranmak",The kids tend to act up when they are tired.,Çocuklar yorulunca yaramazlık yapmaya başlar.,3,smoke,phrasal-verbs
-nat-break-the-ice,BREAK THE ICE,B,STARTS,idiom,ilk tanışma gerginliğini dağıtmak,He told a joke to break the ice.,Havayı yumuşatmak için bir fıkra anlattı.,3,smoke,idioms
-nat-come-across,COME ACROSS,C,STARTS,phrasal,birine veya bir şeye tesadüfen rastlamak,I might come across her at the market.,Onunla pazarda karşılaşabilirim.,3,smoke,phrasal-verbs
-nat-drop-in,DROP IN,D,STARTS,phrasal,önceden haber vermeden uğramak,Feel free to drop in any time.,İstediğin zaman uğrayabilirsin.,3,smoke,phrasal-verbs
-nat-end-up,END UP,E,STARTS,phrasal,sonunda beklenmedik bir yere veya duruma düşmek,"If you keep lying, you will end up alone.",Yalan söylemeye devam edersen sonunda yalnız kalırsın.,3,smoke,phrasal-verbs
-nat-figure-out,FIGURE OUT,F,STARTS,phrasal,uğraşıp bir şeyin cevabını bulmak,I cannot figure out this puzzle.,Bu bulmacayı çözemiyorum.,3,smoke,phrasal-verbs
-nat-give-up,GIVE UP,G,STARTS,phrasal,denemekten vazgeçmek,Never give up on your dreams.,Hayallerinden asla vazgeçme.,3,smoke,phrasal-verbs
-nat-hang-on,HANG ON,H,STARTS,phrasal,kısa bir süre beklemek,"Hang on, I will be right back.","Bir dakika bekle, hemen dönerim.",3,smoke,phrasal-verbs
-nat-in-a-nutshell,IN A NUTSHELL,I,STARTS,idiom,"kısaca, özetle","In a nutshell, we lost the match.",Kısacası maçı kaybettik.,3,smoke,idioms
-nat-jump-the-gun,JUMP THE GUN,J,STARTS,idiom,işe acele edip erken başlamak,"Don't jump the gun, wait for the results.","Acele etme, sonuçları bekle.",3,smoke,idioms
-nat-keep-an-eye-on,KEEP AN EYE ON,K,STARTS,idiom,"göz kulak olmak, dikkatle izlemek",Please keep an eye on my bag.,Lütfen çantama göz kulak ol.,3,smoke,idioms
-nat-let-down,LET DOWN,L,STARTS,phrasal,umudunu boşa çıkarıp hayal kırıklığı yaratmak,He will never let down his fans.,Hayranlarını asla hayal kırıklığına uğratmaz.,3,smoke,phrasal-verbs
-nat-make-sense,MAKE SENSE,M,STARTS,idiom,mantıklı ve anlaşılır olmak,Your story does not make sense.,Hikâyen mantıklı değil.,3,smoke,idioms
-nat-nip-it-in-the-bud,NIP IT IN THE BUD,N,STARTS,idiom,bir sorunu büyümeden kökünden çözmek,"If you see bullying, you must nip it in the bud.","Zorbalık görürsen onu büyümeden kökünden çözmelisin.",3,smoke,idioms
-nat-out-of-the-blue,OUT OF THE BLUE,O,STARTS,idiom,hiç beklenmedik bir anda,He called me out of the blue.,Beni durup dururken aradı.,3,smoke,idioms
-nat-piece-of-cake,PIECE OF CAKE,P,STARTS,idiom,çok kolay yapılan iş,The test was a piece of cake.,Sınav çocuk oyuncağıydı.,3,smoke,idioms
-nat-quite-a-few,QUITE A FEW,Q,STARTS,idiom,"hiç de az olmayan sayıda, epey",Quite a few people came to the party.,Partiye epey kişi geldi.,3,smoke,idioms
-nat-run-out-of,RUN OUT OF,R,STARTS,phrasal,"bir şeyin stoğu bitmek, tükenmek",We will run out of milk soon.,Yakında sütümüz bitecek.,3,smoke,phrasal-verbs
-nat-spill-the-beans,SPILL THE BEANS,S,STARTS,idiom,sırrı yanlışlıkla ağzından kaçırmak,Please do not spill the beans about the party.,Parti hakkındaki sırrı ağzından kaçırma lütfen.,3,smoke,idioms
-nat-take-off,TAKE OFF,T,STARTS,phrasal,(uçak) yerden havalanmak,The plane will take off at noon.,Uçak öğlen havalanacak.,3,smoke,phrasal-verbs
-nat-up-to-you,UP TO YOU,U,STARTS,idiom,karar sana ait,What we eat is up to you.,Ne yiyeceğimiz sana kalmış.,3,smoke,idioms
-nat-vice-versa,VICE VERSA,V,STARTS,idiom,tam tersi de geçerli,I trust him and vice versa.,"Ona güveniyorum, o da bana.",3,smoke,idioms
-nat-work-out,WORK OUT,W,STARTS,phrasal,"spor yapmak, idman yapmak",I work out at the gym every morning.,Her sabah spor salonunda idman yapıyorum.,3,smoke,phrasal-verbs
-nat-next-to-nothing,NEXT TO NOTHING,X,CONTAINS,idiom,"neredeyse hiç, çok ucuza",I paid next to nothing for this chair.,Bu sandalyeye neredeyse hiç para vermedim.,3,smoke,idioms
-nat-you-bet,YOU BET,Y,STARTS,idiom,"tabii ki, kesinlikle",Will you come? You bet!,Gelecek misin? Tabii ki!,3,smoke,idioms
-nat-doze-off,DOZE OFF,Z,CONTAINS,phrasal,istemeden uykuya dalmak,Grandpa tends to doze off in his chair.,Dedem koltukta uyuyakalır.,3,smoke,phrasal-verbs
+nat-act-up,ACT UP,A,STARTS,phrasal,"yaramazlık yapmak, başına buyruk davranmak",The kids tend to act up when they are tired.,Çocuklar yorulunca yaramazlık yapmaya başlar.,3,,phrasal-verbs
+nat-jump-the-gun,JUMP THE GUN,J,STARTS,idiom,işe acele edip erken başlamak,"Don't jump the gun, wait for the results.","Acele etme, sonuçları bekle.",3,,idioms
+nat-nip-it-in-the-bud,NIP IT IN THE BUD,N,STARTS,idiom,bir sorunu büyümeden kökünden çözmek,"If you see bullying, you must nip it in the bud.",Zorbalık görürsen onu büyümeden kökünden çözmelisin.,3,,idioms
+nat-next-to-nothing,NEXT TO NOTHING,X,CONTAINS,idiom,"neredeyse hiç, çok ucuza",I paid next to nothing for this chair.,Bu sandalyeye neredeyse hiç para vermedim.,3,,idioms
