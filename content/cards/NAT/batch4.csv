@@ -1,112 +1,111 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
-nat-lacklustre,LACKLUSTRE,L,STARTS,adj,"(performans) cansız, parlaklıktan yoksun",The team gave a lacklustre performance.,Takım cansız bir performans sergiledi.,4,,sports
-nat-laconic,LACONIC,L,STARTS,adj,"az ve öz konuşan, kısa cevaplar veren","He gave a laconic reply: ""No.""","Kısa ve öz bir cevap verdi: ""Hayır.""",5,,school-work
-nat-lament,LAMENT,L,STARTS,verb,(bir kaybın) yasını tutup hayıflanmak,Many fans lament the loss of the old stadium.,Pek çok taraftar eski stadın yok oluşuna hayıflanıyor.,4,,school-work
-nat-laud,LAUD,L,STARTS,verb,(resmi dilde) övgüler yağdırmak,Critics laud the film as a masterpiece.,Eleştirmenler filmi bir başyapıt diye göklere çıkarıyor.,5,,school-work
-nat-lethargic,LETHARGIC,L,STARTS,adj,"(hastalık, sıcak yüzünden) uyuşuk ve halsiz",The heat made everyone lethargic.,Sıcak herkesi uyuşuk ve halsiz yaptı.,4,,school-work
-nat-levity,LEVITY,L,STARTS,noun,"ciddi bir anda yersiz şakacılık, hafiflik",His levity at the funeral upset the family.,Cenazedeki yersiz şakacılığı aileyi üzdü.,5,,school-work
-nat-litany,LITANY,L,STARTS,noun,ard arda sıralanan bitmek bilmeyen şikâyetler,She gave me a litany of complaints.,Bana bitmek bilmeyen bir şikâyet listesi sıraladı.,5,,school-work
-nat-livid,LIVID,L,STARTS,adj,öfkeden küplere binmiş,Dad was livid when he saw the car.,Babam arabayı görünce küplere bindi.,4,,school-work
-nat-loathe,LOATHE,L,STARTS,verb,iğrenircesine nefret etmek,I loathe having to wait in queues.,Kuyrukta beklemeyi hiç çekemem.,4,,school-work
-nat-lucid,LUCID,L,STARTS,adj,(anlatım) berrak ve kolay anlaşılır,She gave a lucid account of the events.,Olayları berrak ve anlaşılır biçimde anlattı.,4,,school-work
-nat-ludicrous,LUDICROUS,L,STARTS,adj,"akla ziyan, saçmalığın daniskası",The idea is ludicrous.,Fikir gülünç derecede saçma.,4,,school-work
-nat-lurid,LURID,L,STARTS,adj,(haber ayrıntısı) şok edici ve sansasyonel,The papers printed lurid details of the crime.,Gazeteler suçun şok edici ayrıntılarını bastı.,5,,school-work
-nat-leery,LEERY,L,STARTS,adj,(bir şeye karşı) temkinli ve kuşkulu,I am leery of online deals that seem too good.,Fazla iyi görünen internet fırsatlarına karşı tetikteyim.,5,,school-work
-nat-limbo,LIMBO,L,STARTS,noun,karar beklerken belirsizlikte askıda kalma,My visa application is in limbo.,Vize başvurum belirsizlik içinde askıda.,4,,school-work
-nat-linchpin,LINCHPIN,L,STARTS,noun,her şeyin ona bağlı olduğu kilit kişi veya şey,She is the linchpin of the whole team.,"O, bütün ekibin kilit taşı.",5,,business
-nat-lofty,LOFTY,L,STARTS,adj,"(ideal, hedef) yüce ve iddialı",The project has lofty goals.,Projenin yüce ve iddialı hedefleri var.,4,,school-work
-nat-luminary,LUMINARY,L,STARTS,noun,alanında ışık saçan ünlü ve saygın kişi,She was a luminary of modern science.,Modern bilimin parlak ve saygın isimlerinden biriydi.,5,,school-work
-nat-lurk,LURK,L,STARTS,verb,pusuya yatıp sinsice beklemek,Danger can lurk in the darkest corners.,Tehlike en karanlık köşelerde pusuda bekleyebilir.,4,,school-work
-nat-macabre,MACABRE,M,STARTS,adj,ölümü ve dehşeti grotesk biçimde işleyen,It was a macabre tale of murder.,Korkunç ve ürpertici bir cinayet hikâyesiydi.,5,,film-tv
-nat-magnanimous,MAGNANIMOUS,M,STARTS,adj,"(yenilen rakibe karşı) yüce gönüllü, kin gütmeyen",She was magnanimous in victory.,Zaferde yüce gönüllü davrandı.,5,,school-work
-nat-malaise,MALAISE,M,STARTS,noun,"nedeni belirsiz genel keyifsizlik, durgunluk",The country is in a deep economic malaise.,Ülke derin bir ekonomik durgunluk içinde.,5,,business
-nat-malign,MALIGN,M,STARTS,verb,"haksız yere kötülemek, karalamak",The press continues to malign him unfairly.,Basın onu haksız yere karalamaya devam ediyor.,5,,school-work
-nat-malleable,MALLEABLE,M,STARTS,adj,kolayca şekil verilebilen; kolay yönlendirilen,Young minds are malleable.,Genç zihinler kolayca şekillenir.,5,,school-work
-nat-maudlin,MAUDLIN,M,STARTS,adj,(içkiyle) ağlak ve aşırı duygusal,He gets maudlin after a few drinks.,Birkaç içkiden sonra ağlak ve duygusal olur.,5,,school-work
-nat-maverick,MAVERICK,M,STARTS,noun,kendi bildiğini yapan aykırı kişi,The new senator is a political maverick.,Yeni senatör siyasette kendi bildiğini yapan aykırı biri.,4,,school-work
-nat-meander,MEANDER,M,STARTS,verb,"(nehir, yol) kıvrıla kıvrıla ilerlemek",Small rivers meander through the valley.,Küçük nehirler vadide kıvrıla kıvrıla akar.,4,,travel
-nat-meddle,MEDDLE,M,STARTS,verb,başkasının işine burnunu sokmak,Please don't meddle in my affairs.,Lütfen benim işlerime burnunu sokma.,4,,school-work
-nat-melancholy,MELANCHOLY,M,STARTS,noun,sebebi belirsiz derin ve sessiz hüzün,A feeling of melancholy came over him.,İçini sebebi belirsiz derin bir hüzün kapladı.,4,,school-work
-nat-misnomer,MISNOMER,M,STARTS,noun,"yanlış verilmiş, yanıltıcı ad","Calling it a ""holiday"" is a misnomer; we worked all week.","Ona ""tatil"" demek yanıltıcı; bütün hafta çalıştık.",5,,school-work
-nat-mollify,MOLLIFY,M,STARTS,verb,(öfkeli birini) yumuşatıp sakinleştirmek,Nothing could mollify the angry customer.,Hiçbir şey öfkeli müşteriyi yumuşatamadı.,5,,school-work
-nat-moribund,MORIBUND,M,STARTS,adj,"(sektör, gelenek) can çekişen, ölmek üzere",The town's moribund industry needs help.,Kasabanın can çekişen sanayisinin yardıma ihtiyacı var.,5,,business
-nat-morose,MOROSE,M,STARTS,adj,"içine kapanmış, kasvetli ve asık suratlı",He has been morose since his wife left.,Karısı gittiğinden beri suskun ve somurtkan.,5,,school-work
-nat-motley,MOTLEY,M,STARTS,adj,"(grup) birbirine hiç benzemeyen, karmakarışık",A motley crew of artists lived in the house.,Evde birbirine hiç benzemeyen bir grup sanatçı yaşıyordu.,5,,school-work
-nat-muse,MUSE,M,STARTS,verb,dalgın dalgın derin düşüncelere dalmak,I like to sit by the sea and muse.,Deniz kenarında oturup dalgın dalgın düşünmeyi severim.,5,,school-work
-nat-meagre,MEAGRE,M,STARTS,adj,"(gelir, porsiyon) yetersiz, cılız",He lives on a meagre pension.,Cılız bir emekli maaşıyla geçiniyor.,4,,school-work
-nat-menial,MENIAL,M,STARTS,adj,"(iş) vasıf gerektirmeyen, aşağı görülen",She took menial jobs to pay for college.,Okul parasını ödemek için vasıfsız işlerde çalıştı.,5,,business
-nat-maelstrom,MAELSTROM,M,STARTS,noun,insanı içine çeken kaos girdabı,They were caught in a maelstrom of war.,Savaşın kaos girdabına kapıldılar.,5,,school-work
-nat-minutiae,MINUTIAE,M,STARTS,noun,"bir işin en ince, küçük ayrıntıları",She loves the minutiae of planning.,Planlamanın en ince ayrıntılarına bayılır.,5,,school-work
-nat-myopic,MYOPIC,M,STARTS,adj,"(politika) yalnızca bugünü gören, dar görüşlü",It is a myopic policy.,"Bu yalnızca bugünü gören, dar görüşlü bir politika.",5,,school-work
-nat-nadir,NADIR,N,STARTS,noun,"bir sürecin en dip, en kötü noktası",The defeat was the nadir of his career.,Yenilgi kariyerinin en dip noktasıydı.,5,,school-work
-nat-nascent,NASCENT,N,STARTS,adj,"(sektör, hareket) henüz doğmakta, emekleme çağında",The nascent industry needs investment.,Emekleme çağındaki sektörün yatırıma ihtiyacı var.,5,,business
-nat-nebulous,NEBULOUS,N,STARTS,adj,"(fikir, plan) bulanık, şekilsiz",His plans for the future are nebulous.,Gelecek planları bulanık ve şekilsiz.,5,,school-work
-nat-nefarious,NEFARIOUS,N,STARTS,adj,"(plan, faaliyet) suç içeren, hain ve alçakça",They used the money for nefarious purposes.,Parayı alçakça amaçlar için kullandılar.,5,,school-work
-nat-nemesis,NEMESIS,N,STARTS,noun,"bir türlü yenilemeyen baş düşman, kader rakibi",The champion finally beat his old nemesis.,Şampiyon sonunda eski kader rakibini yendi.,4,,sports
-nat-nonchalant,NONCHALANT,N,STARTS,adj,"kaygısız, rahat ve umursamaz görünen",He tried to look nonchalant at the interview.,Mülakatta rahat ve umursamaz görünmeye çalıştı.,4,,school-work
-nat-nonplussed,NONPLUSSED,N,STARTS,adj,ne diyeceğini bilemeyecek kadar şaşkın,She was nonplussed by his sudden question.,Ani sorusu karşısında ne diyeceğini bilemedi.,5,,school-work
-nat-niggle,NIGGLE,N,STARTS,noun,aklını kurcalayan küçük şüphe veya dert,I had a niggle about the contract.,Sözleşmeyle ilgili aklımı kurcalayan küçük bir şüphe vardı.,5,,school-work
-nat-nettle,NETTLE,N,STARTS,verb,(küçük bir şey) sinirine dokunmak,His tone seemed to nettle her.,Ses tonu onun sinirine dokunmuş gibiydi.,5,,school-work
-nat-nimble,NIMBLE,N,STARTS,adj,"(parmak, kişi) çevik, kıvrak",The pianist has nimble fingers.,Piyanistin çevik parmakları var.,4,,music
-nat-naysayer,NAYSAYER,N,STARTS,noun,her yeni fikre karşı çıkan karamsar kişi,Don't listen to every naysayer.,Her şeye karşı çıkan herkesi dinleme.,5,,school-work
-nat-nondescript,NONDESCRIPT,N,STARTS,adj,"kendine özgü hiçbir özelliği olmayan, sıradan",They met in a nondescript office building.,Hiçbir özelliği olmayan bir ofis binasında buluştular.,5,,school-work
-nat-nepotism,NEPOTISM,N,STARTS,noun,akraba ve yakınları kayırma,The firm was accused of nepotism.,Firma akraba kayırmakla suçlandı.,4,,business
-nat-nocturnal,NOCTURNAL,N,STARTS,adj,(hayvan) geceleri etkin olan,Owls are nocturnal birds.,Baykuşlar geceleri etkin olan kuşlardır.,4,,school-work
-nat-obfuscate,OBFUSCATE,O,STARTS,verb,kasten karmaşık ve anlaşılmaz hale getirmek,The report seems to obfuscate the facts.,Rapor gerçekleri kasten bulanıklaştırıyor gibi.,5,,school-work
-nat-oblique,OBLIQUE,O,STARTS,adj,"(gönderme) dolaylı, üstü kapalı",He made an oblique reference to her past.,Geçmişine üstü kapalı bir göndermede bulundu.,5,,school-work
-nat-oblivious,OBLIVIOUS,O,STARTS,adj,(çevresinde olandan) tamamen habersiz,He was oblivious to the danger.,Tehlikeden tamamen habersizdi.,4,,school-work
-nat-obstinate,OBSTINATE,O,STARTS,adj,"inatçı, dik başlı",The obstinate child refused to eat.,İnatçı çocuk yemek yemeyi reddetti.,4,,school-work
-nat-obtuse,OBTUSE,O,STARTS,adj,"anlamakta ağır, kalın kafalı",Are you being deliberately obtuse?,Bilerek mi anlamazlıktan geliyorsun?,5,,school-work
-nat-odious,ODIOUS,O,STARTS,adj,"nefret uyandıracak kadar iğrenç (kişi, davranış)",He is an odious little man.,"Son derece iğrenç, küçük bir adam.",5,,school-work
-nat-offhand,OFFHAND,O,STARTS,adj,"(söz, tavır) laf arasında, düşünmeden ve umursamazca",He made an offhand remark about her weight.,Kilosu hakkında laf arasında umursamazca bir yorum yaptı.,4,,school-work
-nat-ominous,OMINOUS,O,STARTS,adj,"uğursuz, kötü bir şeyin habercisi",There was an ominous silence.,Uğursuz bir sessizlik vardı.,4,,school-work
-nat-onerous,ONEROUS,O,STARTS,adj,"(görev, yük) ağır ve külfetli",The new rules are onerous for small firms.,Yeni kurallar küçük firmalar için ağır bir yük.,5,,business
-nat-opaque,OPAQUE,O,STARTS,adj,"(cam) ışık geçirmeyen, içi görünmeyen",The glass in the bathroom is opaque.,Banyodaki cam ışık geçirmiyor.,5,,school-work
-nat-opulent,OPULENT,O,STARTS,adj,"(saray, otel) zenginlik saçan, son derece lüks",They stayed in an opulent hotel.,Son derece lüks bir otelde kaldılar.,5,,travel
-nat-ostensible,OSTENSIBLE,O,STARTS,adj,"görünürdeki, sözde (sebep)",The ostensible reason for the trip was business.,Yolculuğun görünürdeki sebebi işti.,5,,school-work
-nat-ostentatious,OSTENTATIOUS,O,STARTS,adj,"zenginliğini göstermeye meraklı, gösterişçi",He bought an ostentatious gold watch.,Gösterişçi bir altın saat aldı.,5,,school-work
-nat-outlandish,OUTLANDISH,O,STARTS,adj,"(kıyafet, fikir) alışılmışın çok dışında, aşırı",She wore an outlandish hat.,Akıl almaz derecede tuhaf bir şapka takmıştı.,4,,school-work
-nat-overbearing,OVERBEARING,O,STARTS,adj,"her şeye karışan, baskıcı ve buyurgan",His overbearing father controlled his life.,Baskıcı babası hayatını kontrol ediyordu.,4,,school-work
-nat-ogle,OGLE,O,STARTS,verb,şehvetle dik dik bakmak,It is rude to ogle people on the beach.,Plajda insanlara şehvetle dik dik bakmak kabalıktır.,5,,school-work
-nat-onslaught,ONSLAUGHT,O,STARTS,noun,şiddetli ve aralıksız saldırı,The city could not survive the onslaught.,Şehir şiddetli saldırıya dayanamadı.,5,,school-work
-nat-oust,OUST,O,STARTS,verb,"görevden zorla uzaklaştırmak, devirmek",The board voted to oust the chairman.,Yönetim kurulu başkanı görevden almak için oy kullandı.,4,,business
-nat-palatable,PALATABLE,P,STARTS,adj,"(yemek, fikir) kabul edilebilir, hoşa gidecek",They tried to make the news more palatable.,Haberi daha kabul edilebilir kılmaya çalıştılar.,5,,school-work
-nat-palpable,PALPABLE,P,STARTS,adj,(gerilim) elle tutulur gibi belirgin,The tension in the room was palpable.,Odadaki gerilim elle tutulur gibiydi.,5,,school-work
-nat-paltry,PALTRY,P,STARTS,adj,"(miktar) gülünç derecede az, değersiz",They offered a paltry sum.,Gülünç derecede az bir para teklif ettiler.,5,,school-work
-nat-panacea,PANACEA,P,STARTS,noun,her derde deva sanılan çare,Money is not a panacea.,Para her derde deva değil.,5,,school-work
-nat-panache,PANACHE,P,STARTS,noun,gösterişli bir özgüven ve şıklık,She played the role with panache.,Rolü gösterişli bir özgüvenle oynadı.,5,,film-tv
-nat-pandemonium,PANDEMONIUM,P,STARTS,noun,"kargaşa, kıyamet kopması",Pandemonium broke out when the lights went off.,Işıklar sönünce kıyamet koptu.,5,,school-work
-nat-paragon,PARAGON,P,STARTS,noun,(bir erdemin) kusursuz örneği olan kişi,She is a paragon of patience.,"O, sabrın kusursuz örneği.",5,,school-work
-nat-pariah,PARIAH,P,STARTS,noun,toplumdan dışlanmış kişi,After the scandal he became a pariah.,Skandaldan sonra herkesin dışladığı biri oldu.,5,,school-work
-nat-parity,PARITY,P,STARTS,noun,"(ücret, güç) eşitlik, denklik",Women are still fighting for pay parity.,Kadınlar hâlâ ücret eşitliği için mücadele ediyor.,4,,business
-nat-parochial,PAROCHIAL,P,STARTS,adj,"kendi küçük dünyasıyla sınırlı, dar görüşlü",Their view of the world is rather parochial.,Dünyaya bakışları oldukça dar.,5,,school-work
-nat-pedantic,PEDANTIC,P,STARTS,adj,ufak kurallara ve ayrıntılara takılan bilgiç,Don't be so pedantic about grammar.,Dilbilgisi konusunda bu kadar bilgiçlik taslama.,5,,school-work
-nat-penchant,PENCHANT,P,STARTS,noun,"(bir şeye) zaaf, özel düşkünlük",He has a penchant for fast cars.,Hızlı arabalara özel bir düşkünlüğü var.,5,,school-work
-nat-pensive,PENSIVE,P,STARTS,adj,"derin düşüncelere dalmış, dalgın",She looked pensive as she stared at the sea.,Denize bakarken derin düşüncelere dalmış görünüyordu.,4,,school-work
-nat-perfunctory,PERFUNCTORY,P,STARTS,adj,"(iş, selam) gönülsüzce, baştan savma",He gave a perfunctory nod.,Baştan savma bir baş selamı verdi.,5,,school-work
-nat-pernicious,PERNICIOUS,P,STARTS,adj,sinsice ve derinden zarar veren,Gossip can have a pernicious effect.,Dedikodu sinsice ve derinden zarar verebilir.,5,,school-work
-nat-pertinent,PERTINENT,P,STARTS,adj,"(soru, bilgi) tam yerinde, konuyla ilgili",She asked a pertinent question.,Tam yerinde bir soru sordu.,5,,school-work
-nat-peruse,PERUSE,P,STARTS,verb,"(menü, belge) dikkatle gözden geçirmek",Take a moment to peruse the menu.,Menüyü gözden geçirmek için biraz zaman ayır.,5,,school-work
-nat-pervasive,PERVASIVE,P,STARTS,adj,"(koku, etki) her köşeye sinmiş",The smell of smoke was pervasive.,Duman kokusu her köşeye sinmişti.,5,,school-work
-nat-petulant,PETULANT,P,STARTS,adj,çocuksu biçimde huysuz ve alıngan,He gave a petulant shrug.,Çocuksu bir huysuzlukla omuz silkti.,5,,school-work
-nat-pious,PIOUS,P,STARTS,adj,"dinine çok bağlı, sofu",Her grandmother was a pious woman.,Büyükannesi dinine çok bağlı bir kadındı.,4,,school-work
-nat-pithy,PITHY,P,STARTS,adj,"(söz, yorum) kısa ve özlü",He made a pithy comment.,Kısa ve özlü bir yorum yaptı.,5,,school-work
-nat-platitude,PLATITUDE,P,STARTS,noun,"basmakalıp, içi boş söz","""Everything happens for a reason"" is a platitude.","""Her şey bir sebeple olur"" basmakalıp bir sözdür.",5,,school-work
-nat-poignant,POIGNANT,P,STARTS,adj,"(an, anı) içe dokunan, hüzünlü",It was a poignant moment.,İçe dokunan bir andı.,4,,school-work
-nat-precarious,PRECARIOUS,P,STARTS,adj,"(durum) pamuk ipliğine bağlı, güvencesiz",They live in a precarious situation.,Pamuk ipliğine bağlı bir durumda yaşıyorlar.,4,,school-work
-nat-precocious,PRECOCIOUS,P,STARTS,adj,(çocuk) yaşına göre erken gelişmiş,She was a precocious child who read at three.,"Üç yaşında okuyan, yaşına göre erken gelişmiş bir çocuktu.",5,,school-work
-nat-preposterous,PREPOSTEROUS,P,STARTS,adj,akıl almayacak kadar saçma,That is a preposterous claim.,Bu akıl almayacak kadar saçma bir iddia.,5,,school-work
-nat-pristine,PRISTINE,P,STARTS,adj,"el değmemiş gibi tertemiz, bozulmamış",The beach was pristine.,Plaj el değmemiş gibi tertemizdi.,4,,travel
-nat-propensity,PROPENSITY,P,STARTS,noun,(çoğu zaman kötü) bir şeye doğal eğilim,He has a propensity for violence.,Şiddete doğal bir eğilimi var.,5,,school-work
-nat-prodigious,PRODIGIOUS,P,STARTS,adj,"(yetenek, miktar) olağanüstü büyük",She has a prodigious memory.,Olağanüstü bir hafızası var.,5,,school-work
-nat-profligate,PROFLIGATE,P,STARTS,adj,"parayı çarçur eden, müsrif",The government has been profligate with public money.,Hükümet kamu parasını çarçur etti.,5,,school-work
-nat-prosaic,PROSAIC,P,STARTS,adj,"hayal gücünden yoksun, yavan ve tekdüze",The truth was more prosaic.,Gerçek çok daha sıradandı.,5,,school-work
-nat-puerile,PUERILE,P,STARTS,adj,"(espri, davranış) çocukça, aptalca",His puerile jokes annoyed everyone.,Çocukça esprileri herkesi rahatsız etti.,5,,school-work
-nat-pugnacious,PUGNACIOUS,P,STARTS,adj,"kavgaya ve tartışmaya hazır, kavgacı",He was a pugnacious little boxer.,"Kavgacı, ufak tefek bir boksördü.",5,,sports
-nat-pungent,PUNGENT,P,STARTS,adj,"(koku) keskin, genze vuran",The cheese has a pungent smell.,"Peynirin keskin, genze vuran bir kokusu var.",4,,school-work
-nat-pander,PANDER,P,STARTS,verb,(birinin zaafına) yaranmak için boyun eğmek,Politicians often pander to voters' fears.,Siyasetçiler çoğu zaman seçmenlerin korkularına yaranmaya çalışır.,5,,school-work
-nat-pittance,PITTANCE,P,STARTS,noun,"çok düşük ücret, üç kuruş",They work all day for a pittance.,Bütün gün üç kuruşa çalışıyorlar.,5,,business
-nat-plucky,PLUCKY,P,STARTS,adj,"küçük ama yürekli, cesur",The plucky team beat the champions.,Küçük ama yürekli takım şampiyonu yendi.,4,,sports
-nat-pompous,POMPOUS,P,STARTS,adj,"kendini çok önemli gören, tumturaklı",He is a pompous old bore.,Kendini çok önemli gören sıkıcı bir adam.,4,,school-work
-nat-prowess,PROWESS,P,STARTS,noun,"(spor, savaş) üstün ustalık, maharet",He is famous for his prowess on the field.,Sahadaki üstün ustalığıyla ünlü.,5,,sports
-nat-pundit,PUNDIT,P,STARTS,noun,medyada yorum yapan uzman,One TV pundit predicted a close race.,Bir televizyon yorumcusu çekişmeli bir yarış öngördü.,4,,film-tv
+nat-lacklustre,LACKLUSTRE,L,STARTS,adj,"(performans) cansız, parlaklıktan yoksun",The team gave a lacklustre performance.,Takım cansız bir performans sergiledi.,4,,general
+nat-laconic,LACONIC,L,STARTS,adj,"az ve öz konuşan, kısa cevaplar veren","He gave a laconic reply: ""No.""","Kısa ve öz bir cevap verdi: ""Hayır.""",5,,general
+nat-lament,LAMENT,L,STARTS,verb,(bir kaybın) yasını tutup hayıflanmak,Many fans lament the loss of the old stadium.,Pek çok taraftar eski stadın yok oluşuna hayıflanıyor.,4,,general
+nat-laud,LAUD,L,STARTS,verb,(resmi dilde) övgüler yağdırmak,Critics laud the film as a masterpiece.,Eleştirmenler filmi bir başyapıt diye göklere çıkarıyor.,5,,general
+nat-lethargic,LETHARGIC,L,STARTS,adj,"(hastalık, sıcak yüzünden) uyuşuk ve halsiz",The heat made everyone lethargic.,Sıcak herkesi uyuşuk ve halsiz yaptı.,4,,general
+nat-levity,LEVITY,L,STARTS,noun,"ciddi bir anda yersiz şakacılık, hafiflik",His levity at the funeral upset the family.,Cenazedeki yersiz şakacılığı aileyi üzdü.,5,,general
+nat-litany,LITANY,L,STARTS,noun,ard arda sıralanan bitmek bilmeyen şikâyetler,She gave me a litany of complaints.,Bana bitmek bilmeyen bir şikâyet listesi sıraladı.,5,,general
+nat-livid,LIVID,L,STARTS,adj,öfkeden küplere binmiş,Dad was livid when he saw the car.,Babam arabayı görünce küplere bindi.,4,,general
+nat-loathe,LOATHE,L,STARTS,verb,iğrenircesine nefret etmek,I loathe having to wait in queues.,Kuyrukta beklemeyi hiç çekemem.,4,,general
+nat-lucid,LUCID,L,STARTS,adj,(anlatım) berrak ve kolay anlaşılır,She gave a lucid account of the events.,Olayları berrak ve anlaşılır biçimde anlattı.,4,,general
+nat-ludicrous,LUDICROUS,L,STARTS,adj,"akla ziyan, saçmalığın daniskası",The idea is ludicrous.,Fikir gülünç derecede saçma.,4,,general
+nat-lurid,LURID,L,STARTS,adj,(haber ayrıntısı) şok edici ve sansasyonel,The papers printed lurid details of the crime.,Gazeteler suçun şok edici ayrıntılarını bastı.,5,,general
+nat-leery,LEERY,L,STARTS,adj,(bir şeye karşı) temkinli ve kuşkulu,I am leery of online deals that seem too good.,Fazla iyi görünen internet fırsatlarına karşı tetikteyim.,5,,general
+nat-limbo,LIMBO,L,STARTS,noun,karar beklerken belirsizlikte askıda kalma,My visa application is in limbo.,Vize başvurum belirsizlik içinde askıda.,4,,general
+nat-linchpin,LINCHPIN,L,STARTS,noun,her şeyin ona bağlı olduğu kilit kişi veya şey,She is the linchpin of the whole team.,"O, bütün ekibin kilit taşı.",5,,general
+nat-lofty,LOFTY,L,STARTS,adj,"(ideal, hedef) yüce ve iddialı",The project has lofty goals.,Projenin yüce ve iddialı hedefleri var.,4,,general
+nat-luminary,LUMINARY,L,STARTS,noun,alanında ışık saçan ünlü ve saygın kişi,She was a luminary of modern science.,Modern bilimin parlak ve saygın isimlerinden biriydi.,5,,general
+nat-lurk,LURK,L,STARTS,verb,pusuda saklanıp fırsat ya da tehlike kollamak,Danger can lurk in the darkest corners.,Tehlike en karanlık köşelerde pusuda bekleyebilir.,4,,general
+nat-macabre,MACABRE,M,STARTS,adj,ölümü ve dehşeti grotesk biçimde işleyen,It was a macabre tale of murder.,Korkunç ve ürpertici bir cinayet hikâyesiydi.,5,,general
+nat-magnanimous,MAGNANIMOUS,M,STARTS,adj,"(yenilen rakibe karşı) yüce gönüllü, kin gütmeyen",She was magnanimous in victory.,Zaferde yüce gönüllü davrandı.,5,,general
+nat-malaise,MALAISE,M,STARTS,noun,"nedeni belirsiz genel keyifsizlik, durgunluk",The country is in a deep economic malaise.,Ülke derin bir ekonomik durgunluk içinde.,5,,general
+nat-malign,MALIGN,M,STARTS,verb,"haksız yere kötülemek, karalamak",The press continues to malign him unfairly.,Basın onu haksız yere karalamaya devam ediyor.,5,,general
+nat-malleable,MALLEABLE,M,STARTS,adj,kolayca şekil verilebilen; kolay yönlendirilen,Young minds are malleable.,Genç zihinler kolayca şekillenir.,5,,general
+nat-maudlin,MAUDLIN,M,STARTS,adj,(içkiyle) ağlak ve aşırı duygusal,He gets maudlin after a few drinks.,Birkaç içkiden sonra ağlak ve duygusal olur.,5,,general
+nat-maverick,MAVERICK,M,STARTS,noun,kendi bildiğini yapan aykırı kişi,The new senator is a political maverick.,Yeni senatör siyasette kendi bildiğini yapan aykırı biri.,4,,general
+nat-meander,MEANDER,M,STARTS,verb,"(nehir, yol) kıvrıla kıvrıla ilerlemek",Small rivers meander through the valley.,Küçük nehirler vadide kıvrıla kıvrıla akar.,4,,general
+nat-meddle,MEDDLE,M,STARTS,verb,başkasının işine burnunu sokmak,Please don't meddle in my affairs.,Lütfen benim işlerime burnunu sokma.,4,,general
+nat-melancholy,MELANCHOLY,M,STARTS,noun,sebebi belirsiz derin ve sessiz hüzün,A feeling of melancholy came over him.,İçini sebebi belirsiz derin bir hüzün kapladı.,4,,general
+nat-misnomer,MISNOMER,M,STARTS,noun,"yanlış verilmiş, yanıltıcı ad","Calling it a ""holiday"" is a misnomer; we worked all week.","Ona ""tatil"" demek yanıltıcı; bütün hafta çalıştık.",5,,general
+nat-mollify,MOLLIFY,M,STARTS,verb,(öfkeli birini) yumuşatıp sakinleştirmek,Nothing could mollify the angry customer.,Hiçbir şey öfkeli müşteriyi yumuşatamadı.,5,,general
+nat-moribund,MORIBUND,M,STARTS,adj,"(sektör, gelenek) can çekişen, ölmek üzere",The town's moribund industry needs help.,Kasabanın can çekişen sanayisinin yardıma ihtiyacı var.,5,,general
+nat-morose,MOROSE,M,STARTS,adj,"içine kapanmış, kasvetli ve asık suratlı",He has been morose since his wife left.,Karısı gittiğinden beri suskun ve somurtkan.,5,,general
+nat-motley,MOTLEY,M,STARTS,adj,"(grup) birbirine hiç benzemeyen, karmakarışık",A motley crew of artists lived in the house.,Evde birbirine hiç benzemeyen bir grup sanatçı yaşıyordu.,5,,general
+nat-muse,MUSE,M,STARTS,verb,dalgın dalgın derin düşüncelere dalmak,I like to sit by the sea and muse.,Deniz kenarında oturup dalgın dalgın düşünmeyi severim.,5,,general
+nat-meagre,MEAGRE,M,STARTS,adj,"(gelir, porsiyon) yetersiz, cılız",He lives on a meagre pension.,Cılız bir emekli maaşıyla geçiniyor.,4,,general
+nat-menial,MENIAL,M,STARTS,adj,"(iş) vasıf gerektirmeyen, aşağı görülen",She took menial jobs to pay for college.,Okul parasını ödemek için vasıfsız işlerde çalıştı.,5,,general
+nat-maelstrom,MAELSTROM,M,STARTS,noun,insanı içine çeken kaos girdabı,They were caught in a maelstrom of war.,Savaşın kaos girdabına kapıldılar.,5,,general
+nat-minutiae,MINUTIAE,M,STARTS,noun,"bir işin en ince, küçük ayrıntıları",She loves the minutiae of planning.,Planlamanın en ince ayrıntılarına bayılır.,5,,general
+nat-myopic,MYOPIC,M,STARTS,adj,"(politika) yalnızca bugünü gören, dar görüşlü",It is a myopic policy.,"Bu yalnızca bugünü gören, dar görüşlü bir politika.",5,,general
+nat-nadir,NADIR,N,STARTS,noun,"bir sürecin en dip, en kötü noktası",The defeat was the nadir of his career.,Yenilgi kariyerinin en dip noktasıydı.,5,,general
+nat-nascent,NASCENT,N,STARTS,adj,"(sektör, hareket) henüz doğmakta, emekleme çağında",The nascent industry needs investment.,Emekleme çağındaki sektörün yatırıma ihtiyacı var.,5,,general
+nat-nebulous,NEBULOUS,N,STARTS,adj,"(fikir, plan) bulanık, şekilsiz",His plans for the future are nebulous.,Gelecek planları bulanık ve şekilsiz.,5,,general
+nat-nefarious,NEFARIOUS,N,STARTS,adj,"(plan, faaliyet) suç içeren, hain ve alçakça",They used the money for nefarious purposes.,Parayı alçakça amaçlar için kullandılar.,5,,general
+nat-nemesis,NEMESIS,N,STARTS,noun,"bir türlü yenilemeyen baş düşman, kader rakibi",The champion finally beat his old nemesis.,Şampiyon sonunda eski kader rakibini yendi.,4,,general
+nat-nonchalant,NONCHALANT,N,STARTS,adj,"kaygısız, rahat ve umursamaz görünen",He tried to look nonchalant at the interview.,Mülakatta rahat ve umursamaz görünmeye çalıştı.,4,,general
+nat-nonplussed,NONPLUSSED,N,STARTS,adj,ne diyeceğini bilemeyecek kadar şaşkın,She was nonplussed by his sudden question.,Ani sorusu karşısında ne diyeceğini bilemedi.,5,,general
+nat-niggle,NIGGLE,N,STARTS,noun,aklını kurcalayan küçük şüphe veya dert,I had a niggle about the contract.,Sözleşmeyle ilgili aklımı kurcalayan küçük bir şüphe vardı.,5,,general
+nat-nettle,NETTLE,N,STARTS,verb,(küçük bir şey) sinirine dokunmak,His tone seemed to nettle her.,Ses tonu onun sinirine dokunmuş gibiydi.,5,,general
+nat-nimble,NIMBLE,N,STARTS,adj,"(parmak, kişi) çevik, kıvrak",The pianist has nimble fingers.,Piyanistin çevik parmakları var.,4,,general
+nat-naysayer,NAYSAYER,N,STARTS,noun,her yeni fikre karşı çıkan karamsar kişi,Don't listen to every naysayer.,Her şeye karşı çıkan herkesi dinleme.,5,,general
+nat-nondescript,NONDESCRIPT,N,STARTS,adj,"kendine özgü hiçbir özelliği olmayan, sıradan",They met in a nondescript office building.,Hiçbir özelliği olmayan bir ofis binasında buluştular.,5,,general
+nat-nepotism,NEPOTISM,N,STARTS,noun,akraba ve yakınları kayırma,The firm was accused of nepotism.,Firma akraba kayırmakla suçlandı.,4,,general
+nat-obfuscate,OBFUSCATE,O,STARTS,verb,kasten karmaşık ve anlaşılmaz hale getirmek,The report seems to obfuscate the facts.,Rapor gerçekleri kasten bulanıklaştırıyor gibi.,5,,general
+nat-oblique,OBLIQUE,O,STARTS,adj,"(gönderme) dolaylı, üstü kapalı",He made an oblique reference to her past.,Geçmişine üstü kapalı bir göndermede bulundu.,5,,general
+nat-oblivious,OBLIVIOUS,O,STARTS,adj,(çevresinde olandan) tamamen habersiz,He was oblivious to the danger.,Tehlikeden tamamen habersizdi.,4,,general
+nat-obstinate,OBSTINATE,O,STARTS,adj,"inatçı, dik başlı",The obstinate child refused to eat.,İnatçı çocuk yemek yemeyi reddetti.,4,,general
+nat-obtuse,OBTUSE,O,STARTS,adj,"anlamakta ağır, kalın kafalı",Are you being deliberately obtuse?,Bilerek mi anlamazlıktan geliyorsun?,5,,general
+nat-odious,ODIOUS,O,STARTS,adj,"nefret uyandıracak kadar iğrenç (kişi, davranış)",He is an odious little man.,"Son derece iğrenç, küçük bir adam.",5,,general
+nat-offhand,OFFHAND,O,STARTS,adj,"(söz, tavır) laf arasında, düşünmeden ve umursamazca",He made an offhand remark about her weight.,Kilosu hakkında laf arasında umursamazca bir yorum yaptı.,4,,general
+nat-ominous,OMINOUS,O,STARTS,adj,"uğursuz, kötü bir şeyin habercisi",There was an ominous silence.,Uğursuz bir sessizlik vardı.,4,,general
+nat-onerous,ONEROUS,O,STARTS,adj,"(görev, yük) ağır ve külfetli",The new rules are onerous for small firms.,Yeni kurallar küçük firmalar için ağır bir yük.,5,,general
+nat-opaque,OPAQUE,O,STARTS,adj,"(cam) ışık geçirmeyen, içi görünmeyen",The glass in the bathroom is opaque.,Banyodaki cam ışık geçirmiyor.,5,,general
+nat-opulent,OPULENT,O,STARTS,adj,"(saray, otel) zenginlik saçan, son derece lüks",They stayed in an opulent hotel.,Son derece lüks bir otelde kaldılar.,5,,general
+nat-ostensible,OSTENSIBLE,O,STARTS,adj,"görünürdeki, sözde (sebep)",The ostensible reason for the trip was business.,Yolculuğun görünürdeki sebebi işti.,5,,general
+nat-ostentatious,OSTENTATIOUS,O,STARTS,adj,"zenginliğini göstermeye meraklı, gösterişçi",He bought an ostentatious gold watch.,Gösterişçi bir altın saat aldı.,5,,general
+nat-outlandish,OUTLANDISH,O,STARTS,adj,"(kıyafet, fikir) alışılmışın çok dışında, aşırı",She wore an outlandish hat.,Akıl almaz derecede tuhaf bir şapka takmıştı.,4,,general
+nat-overbearing,OVERBEARING,O,STARTS,adj,"her şeye karışan, baskıcı ve buyurgan",His overbearing father controlled his life.,Baskıcı babası hayatını kontrol ediyordu.,4,,general
+nat-ogle,OGLE,O,STARTS,verb,şehvetle dik dik bakmak,It is rude to ogle people on the beach.,Plajda insanlara şehvetle dik dik bakmak kabalıktır.,5,,general
+nat-onslaught,ONSLAUGHT,O,STARTS,noun,şiddetli ve aralıksız saldırı,The city could not survive the onslaught.,Şehir şiddetli saldırıya dayanamadı.,5,,general
+nat-oust,OUST,O,STARTS,verb,"görevden zorla uzaklaştırmak, devirmek",The board voted to oust the chairman.,Yönetim kurulu başkanı görevden almak için oy kullandı.,4,,general
+nat-palatable,PALATABLE,P,STARTS,adj,"(yemek, fikir) kabul edilebilir, hoşa gidecek",They tried to make the news more palatable.,Haberi daha kabul edilebilir kılmaya çalıştılar.,5,,general
+nat-palpable,PALPABLE,P,STARTS,adj,(gerilim) elle tutulur gibi belirgin,The tension in the room was palpable.,Odadaki gerilim elle tutulur gibiydi.,5,,general
+nat-paltry,PALTRY,P,STARTS,adj,"(miktar) gülünç derecede az, değersiz",They offered a paltry sum.,Gülünç derecede az bir para teklif ettiler.,5,,general
+nat-panacea,PANACEA,P,STARTS,noun,her derde deva sanılan çare,Money is not a panacea.,Para her derde deva değil.,5,,general
+nat-panache,PANACHE,P,STARTS,noun,gösterişli bir özgüven ve şıklık,She played the role with panache.,Rolü gösterişli bir özgüvenle oynadı.,5,,general
+nat-pandemonium,PANDEMONIUM,P,STARTS,noun,"kargaşa, kıyamet kopması",Pandemonium broke out when the lights went off.,Işıklar sönünce kıyamet koptu.,5,,general
+nat-paragon,PARAGON,P,STARTS,noun,(bir erdemin) kusursuz örneği olan kişi,She is a paragon of patience.,"O, sabrın kusursuz örneği.",5,,general
+nat-pariah,PARIAH,P,STARTS,noun,toplumdan dışlanmış kişi,After the scandal he became a pariah.,Skandaldan sonra herkesin dışladığı biri oldu.,5,,general
+nat-parity,PARITY,P,STARTS,noun,"(ücret, güç) eşitlik, denklik",Women are still fighting for pay parity.,Kadınlar hâlâ ücret eşitliği için mücadele ediyor.,4,,general
+nat-parochial,PAROCHIAL,P,STARTS,adj,"kendi küçük dünyasıyla sınırlı, dar görüşlü",Their view of the world is rather parochial.,Dünyaya bakışları oldukça dar.,5,,general
+nat-pedantic,PEDANTIC,P,STARTS,adj,ufak kurallara ve ayrıntılara takılan bilgiç,Don't be so pedantic about grammar.,Dilbilgisi konusunda bu kadar bilgiçlik taslama.,5,,general
+nat-penchant,PENCHANT,P,STARTS,noun,"(bir şeye) zaaf, özel düşkünlük",He has a penchant for fast cars.,Hızlı arabalara özel bir düşkünlüğü var.,5,,general
+nat-pensive,PENSIVE,P,STARTS,adj,"derin düşüncelere dalmış, dalgın",She looked pensive as she stared at the sea.,Denize bakarken derin düşüncelere dalmış görünüyordu.,4,,general
+nat-perfunctory,PERFUNCTORY,P,STARTS,adj,"(iş, selam) gönülsüzce, baştan savma",He gave a perfunctory nod.,Baştan savma bir baş selamı verdi.,5,,general
+nat-pernicious,PERNICIOUS,P,STARTS,adj,sinsice ve derinden zarar veren,Gossip can have a pernicious effect.,Dedikodu sinsice ve derinden zarar verebilir.,5,,general
+nat-pertinent,PERTINENT,P,STARTS,adj,"(soru, bilgi) tam yerinde, konuyla ilgili",She asked a pertinent question.,Tam yerinde bir soru sordu.,5,,general
+nat-peruse,PERUSE,P,STARTS,verb,"(menü, belge) dikkatle gözden geçirmek",Take a moment to peruse the menu.,Menüyü gözden geçirmek için biraz zaman ayır.,5,,general
+nat-pervasive,PERVASIVE,P,STARTS,adj,"(koku, hava, fikir) her yere işlemiş, kaçınılmaz",The smell of smoke was pervasive.,Duman kokusu her köşeye sinmişti.,5,,general
+nat-petulant,PETULANT,P,STARTS,adj,çocuksu biçimde huysuz ve alıngan,He gave a petulant shrug.,Çocuksu bir huysuzlukla omuz silkti.,5,,general
+nat-pious,PIOUS,P,STARTS,adj,"dinine çok bağlı, sofu",Her grandmother was a pious woman.,Büyükannesi dinine çok bağlı bir kadındı.,4,,general
+nat-pithy,PITHY,P,STARTS,adj,"(söz, yorum) kısa ve özlü",He made a pithy comment.,Kısa ve özlü bir yorum yaptı.,5,,general
+nat-platitude,PLATITUDE,P,STARTS,noun,"basmakalıp, içi boş söz","""Everything happens for a reason"" is a platitude.","""Her şey bir sebeple olur"" basmakalıp bir sözdür.",5,,general
+nat-poignant,POIGNANT,P,STARTS,adj,"(an, anı) içe dokunan, hüzünlü",It was a poignant moment.,İçe dokunan bir andı.,4,,general
+nat-precarious,PRECARIOUS,P,STARTS,adj,"(durum) pamuk ipliğine bağlı, güvencesiz",They live in a precarious situation.,Pamuk ipliğine bağlı bir durumda yaşıyorlar.,4,,general
+nat-precocious,PRECOCIOUS,P,STARTS,adj,(çocuk) yaşına göre erken gelişmiş,She was a precocious child who read at three.,"Üç yaşında okuyan, yaşına göre erken gelişmiş bir çocuktu.",5,,general
+nat-preposterous,PREPOSTEROUS,P,STARTS,adj,akıl almayacak kadar saçma,That is a preposterous claim.,Bu akıl almayacak kadar saçma bir iddia.,5,,general
+nat-pristine,PRISTINE,P,STARTS,adj,"el değmemiş gibi tertemiz, bozulmamış",The beach was pristine.,Plaj el değmemiş gibi tertemizdi.,4,,general
+nat-propensity,PROPENSITY,P,STARTS,noun,(çoğu zaman kötü) bir şeye doğal eğilim,He has a propensity for violence.,Şiddete doğal bir eğilimi var.,5,,general
+nat-prodigious,PRODIGIOUS,P,STARTS,adj,"(yetenek, miktar) olağanüstü büyük",She has a prodigious memory.,Olağanüstü bir hafızası var.,5,,general
+nat-profligate,PROFLIGATE,P,STARTS,adj,"parayı çarçur eden, müsrif",The government has been profligate with public money.,Hükümet kamu parasını çarçur etti.,5,,general
+nat-prosaic,PROSAIC,P,STARTS,adj,"hayal gücünden yoksun, yavan ve tekdüze",The truth was more prosaic.,Gerçek çok daha sıradandı.,5,,general
+nat-puerile,PUERILE,P,STARTS,adj,"(espri, davranış) çocukça, aptalca",His puerile jokes annoyed everyone.,Çocukça esprileri herkesi rahatsız etti.,5,,general
+nat-pugnacious,PUGNACIOUS,P,STARTS,adj,"kavgaya ve tartışmaya hazır, kavgacı",He was a pugnacious little boxer.,"Kavgacı, ufak tefek bir boksördü.",5,,general
+nat-pungent,PUNGENT,P,STARTS,adj,"(koku) keskin, genze vuran",The cheese has a pungent smell.,"Peynirin keskin, genze vuran bir kokusu var.",4,,general
+nat-pander,PANDER,P,STARTS,verb,(birinin zaafına) yaranmak için boyun eğmek,Politicians often pander to voters' fears.,Siyasetçiler çoğu zaman seçmenlerin korkularına yaranmaya çalışır.,5,,general
+nat-pittance,PITTANCE,P,STARTS,noun,"çok düşük ücret, üç kuruş",They work all day for a pittance.,Bütün gün üç kuruşa çalışıyorlar.,5,,general
+nat-plucky,PLUCKY,P,STARTS,adj,"küçük ama yürekli, cesur",The plucky team beat the champions.,Küçük ama yürekli takım şampiyonu yendi.,4,,general
+nat-pompous,POMPOUS,P,STARTS,adj,"kendini çok önemli gören, tumturaklı",He is a pompous old bore.,Kendini çok önemli gören sıkıcı bir adam.,4,,general
+nat-prowess,PROWESS,P,STARTS,noun,"(spor, savaş) üstün ustalık, maharet",He is famous for his prowess on the field.,Sahadaki üstün ustalığıyla ünlü.,5,,general
+nat-pundit,PUNDIT,P,STARTS,noun,medyada yorum yapan uzman,One TV pundit predicted a close race.,Bir televizyon yorumcusu çekişmeli bir yarış öngördü.,4,,general

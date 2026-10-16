@@ -1,5 +1,5 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
-nat-act-up,ACT UP,A,STARTS,phrasal,"yaramazlık yapmak, başına buyruk davranmak",The kids tend to act up when they are tired.,Çocuklar yorulunca yaramazlık yapmaya başlar.,3,,phrasal-verbs
-nat-jump-the-gun,JUMP THE GUN,J,STARTS,idiom,işe acele edip erken başlamak,"Don't jump the gun, wait for the results.","Acele etme, sonuçları bekle.",3,,idioms
-nat-nip-it-in-the-bud,NIP IT IN THE BUD,N,STARTS,idiom,bir sorunu büyümeden kökünden çözmek,"If you see bullying, you must nip it in the bud.",Zorbalık görürsen onu büyümeden kökünden çözmelisin.,3,,idioms
-nat-next-to-nothing,NEXT TO NOTHING,X,CONTAINS,idiom,"neredeyse hiç, çok ucuza",I paid next to nothing for this chair.,Bu sandalyeye neredeyse hiç para vermedim.,3,,idioms
+nat-act-up,ACT UP,A,STARTS,phrasal,"yaramazlık yapmak, başına buyruk davranmak",The kids tend to act up when they are tired.,Çocuklar yorulunca yaramazlık yapmaya başlar.,3,,general
+nat-jump-the-gun,JUMP THE GUN,J,STARTS,idiom,işe acele edip erken başlamak,"Don't jump the gun, wait for the results.","Acele etme, sonuçları bekle.",3,,general
+nat-nip-it-in-the-bud,NIP IT IN THE BUD,N,STARTS,idiom,bir sorunu büyümeden kökünden çözmek,"If you see bullying, you must nip it in the bud.",Zorbalık görürsen onu büyümeden kökünden çözmelisin.,3,,general
+nat-next-to-nothing,NEXT TO NOTHING,X,CONTAINS,idiom,"neredeyse hiç, çok ucuza",I paid next to nothing for this chair.,Bu sandalyeye neredeyse hiç para vermedim.,3,,general

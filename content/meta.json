@@ -1,1 +1,1 @@
-{ "contentVersion": 17, "shippedLevels": [], "smokeLevels": [] }
+{ "contentVersion": 18, "shippedLevels": ["A1", "A2", "B1", "B2", "C1", "NAT"], "smokeLevels": [] }

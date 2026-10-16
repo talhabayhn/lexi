@@ -1,0 +1,12 @@
+id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
+c1-apathy,APATHY,A,STARTS,noun,"her şeye karşı ilgisizlik, umursamazlık",Voter apathy is a real problem.,Seçmen ilgisizliği gerçek bir sorun.,2,,school-work
+c1-avid,AVID,A,STARTS,adj,"(okur, hayran) çok hevesli, tutkulu",She is an avid reader of crime novels.,Polisiye romanların tutkulu bir okurudur.,2,,school-work
+c1-blatant,BLATANT,B,STARTS,adj,"göz göre göre, utanmadan açıkça yapılan",It was a blatant lie.,Göz göre göre söylenmiş bir yalandı.,2,,school-work
+c1-bogus,BOGUS,B,STARTS,adj,"sahte, uydurma",He gave the police a bogus address.,Polise sahte bir adres verdi.,2,,school-work
+c1-dubious,DUBIOUS,D,STARTS,adj,"(yöntem, para) dürüstlüğü kuşku uyandıran, şaibeli",He made his money in dubious ways.,Parasını şüpheli yollarla kazandı.,4,,school-work
+c1-futile,FUTILE,F,STARTS,adj,"boşuna, hiçbir sonuç vermeyen",It is futile to argue with him.,Onunla tartışmak boşuna.,4,,school-work
+c1-gullible,GULLIBLE,G,STARTS,adj,"her söylenene hemen inanıp kanan, saf",Gullible tourists bought fake tickets.,Saf turistler sahte bilet aldı.,4,,school-work
+c1-nocturnal,NOCTURNAL,N,STARTS,adj,(hayvan) geceleri etkin olan,Owls are nocturnal birds.,Baykuşlar geceleri etkin olan kuşlardır.,4,,school-work
+c1-tedious,TEDIOUS,T,STARTS,adj,"bitmek bilmeyen, tekdüze ve sıkıcı (iş)",Filling in forms is tedious.,Form doldurmak bıktırıcı bir iş.,4,,school-work
+c1-hoax,HOAX,X,CONTAINS,noun,"aldatmaca, asılsız ihbar veya şaka",The bomb threat turned out to be a hoax.,Bomba ihbarı asılsız çıktı.,4,,school-work
+c1-zest,ZEST,Z,STARTS,noun,(hayata karşı) heves ve yaşama sevinci,She has a real zest for life.,Hayata karşı gerçek bir şevki var.,4,,school-work
