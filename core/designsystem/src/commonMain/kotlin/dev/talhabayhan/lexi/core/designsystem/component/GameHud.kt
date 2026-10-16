@@ -254,7 +254,7 @@ private fun fitClue(
         val clueHeight = heightOf(clue, style, GameHudDefaults.CLUE_MAX_LINES) ?: continue
         // The example is never larger than the clue.
         val match = exampleHeights.firstOrNull { (candidate, exampleHeight) ->
-            candidate.fontSize <= style.fontSize && clueHeight + exampleHeight <= height
+            (example == null || candidate.fontSize <= style.fontSize) && clueHeight + exampleHeight <= height
         }
         if (match != null) return ClueFit(style, match.first)
     }
