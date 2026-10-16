@@ -1,0 +1,6 @@
+# C1 batch 9 review (letters U, V, W, CONTAINS X/Y/Z)
+
+File `content/cards/C1/batch9.csv`. Reviewer drops: spelling twins (MAXIMISE, SYNTHESIZE kept as Z exception), derived (YEARNING vs smoke YEARN), B2 or lower (URGE, UNDERGRADUATE, ANALYST, VOYAGE, WARRIOR), C2 (UNEARTH, UNILATERAL, UNRAVEL, UPHEAVAL, UPSURGE, UPTURN, UNDERPIN, VULGAR, VOUCH, WANE, WARY, WIELD, WRETCHED, WINDFALL, WAIVE, WHOLEHEARTED, WHOLESALE, ZEAL). Own drops (exist lower): WORKLOAD, TEXTURE, MIXTURE, TOXIC, INDEX, OXYGEN, APPROXIMATE, PREFIX, BAZAAR, EMPHASIZE, MINIMIZE, SYMPATHETIC, STYLISH; smoke duplicates UNPRECEDENTED, VOLATILE, YEARN removed from batch.
+Hard-letter exceptions kept: ZENITH, CONVEX, SYNTAX, PARADOX, SEXISM, TAXATION, CONTEXTUAL, HAZARDOUS, HORIZON, SYNTHESIZE (-IZE needed for Z), YOUTHFUL, VALIDATE (derived forms accepted).
+Doubtful: VERBATIM, VICINITY, VIGILANT (kept for V coverage).
+Gap: U 14, V 15, W 8 (W is weak in true C1; no padding).

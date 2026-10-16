@@ -1,0 +1,52 @@
+id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
+c1-underlying,UNDERLYING,U,STARTS,adj,görünenin altında yatan asıl,We need to find the underlying cause of the problem.,Sorunun altında yatan asıl nedeni bulmalıyız.,5,,school-work
+c1-undertake,UNDERTAKE,U,STARTS,verb,bir işi üstlenmek,The firm will undertake the repairs.,Firma onarımları üstlenecek.,5,,business
+c1-unfold,UNFOLD,U,STARTS,verb,yavaş yavaş gelişip ortaya çıkmak,The story will unfold over three episodes.,Hikâye üç bölümde gözler önüne serilecek.,5,,film-tv
+c1-unify,UNIFY,U,STARTS,verb,parçaları tek bütün hâline getirmek,The new leader tried to unify the country.,Yeni lider ülkeyi birleştirmeye çalıştı.,5,,school-work
+c1-unrest,UNREST,U,STARTS,noun,toplumsal huzursuzluk ve kargaşa,The city suffers from political unrest.,Şehir siyasi huzursuzluktan muzdarip.,5,,school-work
+c1-unveil,UNVEIL,U,STARTS,verb,yeni bir şeyi ilk kez göstermek,The company will unveil its new phone in May.,Şirket yeni telefonunu mayısta tanıtacak.,5,,technology
+c1-uphold,UPHOLD,U,STARTS,verb,bir kararı veya ilkeyi desteklemek,The court will uphold the original decision.,Mahkeme ilk kararı onaylayacak.,5,,school-work
+c1-uprising,UPRISING,U,STARTS,noun,yönetime karşı halk ayaklanması,The army crushed the uprising.,Ordu ayaklanmayı bastırdı.,5,,school-work
+c1-usage,USAGE,U,STARTS,noun,bir kelimenin kullanılış biçimi; kullanım miktarı,The dictionary explains the usage of each word.,Sözlük her kelimenin kullanımını açıklıyor.,5,,school-work
+c1-utmost,UTMOST,U,STARTS,adj,"en yüksek, azami",This matter is of the utmost importance.,Bu konu azami öneme sahip.,5,,school-work
+c1-utter,UTTER,U,STARTS,verb,ses veya söz çıkarmak,She did not utter a word.,Tek kelime etmedi.,5,,school-work
+c1-underscore,UNDERSCORE,U,STARTS,verb,önemini özellikle vurgulamak,The report will underscore the need for change.,Rapor değişim ihtiyacını vurgulayacak.,5,,business
+c1-unconditional,UNCONDITIONAL,U,STARTS,adj,hiçbir şart koşulmayan,The team gave unconditional support.,Takım koşulsuz destek verdi.,5,,school-work
+c1-validate,VALIDATE,V,STARTS,verb,bir şeyin geçerli olduğunu doğrulamak,You must validate your ticket before boarding.,Binmeden önce biletinizi doğrulamanız gerekir.,5,,travel
+c1-vandalism,VANDALISM,V,STARTS,noun,kamu malına kasten zarar verme,The park suffered from vandalism.,Park vandalizmden zarar gördü.,5,,school-work
+c1-vendor,VENDOR,V,STARTS,noun,sokakta veya pazarda satış yapan kişi,A street vendor sold hot corn.,Bir sokak satıcısı sıcak mısır satıyordu.,4,,travel
+c1-verbatim,VERBATIM,V,STARTS,adv,kelimesi kelimesine,He repeated her words verbatim.,Onun sözlerini kelimesi kelimesine tekrarladı.,5,,school-work
+c1-versatile,VERSATILE,V,STARTS,adj,"birçok işe uygun, çok yönlü",She is a versatile actress.,Çok yönlü bir oyuncu.,5,,film-tv
+c1-veto,VETO,V,STARTS,noun,bir kararı engelleme hakkı,The president used his veto against the bill.,Cumhurbaşkanı yasa tasarısına karşı vetosunu kullandı.,5,,school-work
+c1-viable,VIABLE,V,STARTS,adj,uygulanabilir ve işe yarar,It is not a viable plan.,Bu uygulanabilir bir plan değil.,5,,business
+c1-vibrant,VIBRANT,V,STARTS,adj,"canlı, enerjik ve renkli",The city has a vibrant nightlife.,Şehrin canlı bir gece hayatı var.,5,,travel
+c1-vicinity,VICINITY,V,STARTS,noun,yakın çevre,There are no shops in the vicinity.,Yakın çevrede hiç dükkân yok.,5,,travel
+c1-vigilant,VIGILANT,V,STARTS,adj,tehlikeye karşı tetikte,Drivers must stay vigilant at night.,Sürücüler geceleri tetikte kalmalı.,5,,school-work
+c1-vigorous,VIGOROUS,V,STARTS,adj,güçlü ve enerjik,He took a vigorous walk every morning.,Her sabah tempolu bir yürüyüş yapardı.,5,,sports
+c1-violate,VIOLATE,V,STARTS,verb,kural veya yasayı çiğnemek,The firm will violate no safety laws.,Firma hiçbir güvenlik yasasını ihlal etmeyecek.,5,,business
+c1-virtue,VIRTUE,V,STARTS,noun,ahlaki iyilik; bir şeyin artı yanı,Patience is a virtue.,Sabır bir erdemdir.,5,,school-work
+c1-void,VOID,V,STARTS,noun,"boşluk, dolmamış alan",His death left a void in her life.,Ölümü hayatında bir boşluk bıraktı.,5,,school-work
+c1-warrant,WARRANT,W,STARTS,noun,polisin arama veya tutuklama izni,Police need a warrant to search the house.,Polisin evi aramak için arama izni gerekir.,5,,school-work
+c1-whereabouts,WHEREABOUTS,W,STARTS,noun,bir kişinin bulunduğu yer,His whereabouts are still unknown.,Nerede olduğu hâlâ bilinmiyor.,5,,school-work
+c1-wilderness,WILDERNESS,W,STARTS,noun,insan eli değmemiş vahşi doğa,They hiked through the wilderness for days.,Günlerce vahşi doğada yürüdüler.,4,,travel
+c1-withhold,WITHHOLD,W,STARTS,verb,bilgiyi veya parayı vermemek,The bank may withhold the money until he signs.,Banka imzalayana kadar parayı vermeyebilir.,5,,business
+c1-withstand,WITHSTAND,W,STARTS,verb,baskıya veya zorluğa dayanmak,The bridge can withstand strong winds.,Köprü kuvvetli rüzgârlara dayanabilir.,5,,technology
+c1-witty,WITTY,W,STARTS,adj,zekice ve eğlenceli konuşan,He is a witty speaker.,Esprili bir konuşmacıdır.,5,,school-work
+c1-wellbeing,WELLBEING,W,STARTS,noun,sağlık ve mutluluk hâli,The school cares about pupils' wellbeing.,Okul öğrencilerin esenliğine önem veriyor.,5,,school-work
+c1-taxation,TAXATION,X,CONTAINS,noun,vergi uygulama sistemi,Taxation affects every worker.,Vergilendirme her çalışanı etkiler.,5,,business
+c1-sexism,SEXISM,X,CONTAINS,noun,cinsiyete dayalı ayrımcılık,The campaign fights sexism at work.,Kampanya işyerinde cinsiyetçilikle mücadele ediyor.,5,,school-work
+c1-syntax,SYNTAX,X,CONTAINS,noun,cümlede sözcük dizilişi kuralları,The syntax of the sentence is wrong.,Cümlenin söz dizimi yanlış.,5,,school-work
+c1-paradox,PARADOX,X,CONTAINS,noun,çelişkili görünen ama doğru olan durum,It is a paradox that he is poor but generous.,Fakir ama cömert olması bir paradoks.,5,,school-work
+c1-textile,TEXTILE,X,CONTAINS,noun,dokuma kumaş,Cotton is the main textile made in the town.,"Pamuk, kasabada üretilen başlıca kumaştır.",5,,business
+c1-contextual,CONTEXTUAL,X,CONTAINS,adj,bağlama ait,Contextual clues help you guess meaning.,Bağlamsal ipuçları anlamı tahmin etmene yardım eder.,5,,school-work
+c1-convex,CONVEX,X,CONTAINS,adj,"dışa doğru kıvrık, dışbükey",A convex lens is thicker in the middle.,Dışbükey mercek ortada daha kalındır.,5,,school-work
+c1-zenith,ZENITH,Z,STARTS,noun,bir şeyin en yüksek noktası,His career reached its zenith in 1999.,Kariyeri 1999'da zirveye ulaştı.,5,,school-work
+c1-hazardous,HAZARDOUS,Z,CONTAINS,adj,tehlikeli ve riskli,The road is hazardous in winter.,Yol kışın tehlikelidir.,5,,travel
+c1-horizon,HORIZON,Z,CONTAINS,noun,yer ile gökyüzünün birleştiği çizgi,The sun sank below the horizon.,Güneş ufkun altına battı.,4,,travel
+c1-sizeable,SIZEABLE,Z,CONTAINS,adj,oldukça büyük,They won a sizeable amount of money.,Oldukça büyük bir miktar para kazandılar.,5,,business
+c1-synthesize,SYNTHESIZE,Z,CONTAINS,verb,parçaları birleştirip yeni bir bütün yapmak,Students must synthesize several sources.,Öğrenciler birkaç kaynağı sentezlemelidir.,5,,school-work
+c1-royalty,ROYALTY,Y,CONTAINS,noun,yazara ya da sanatçıya ödenen telif payı,The author earns a royalty on every copy.,Yazar her kopyadan telif payı alır.,5,,film-tv
+c1-synthetic,SYNTHETIC,Y,CONTAINS,adj,"doğal olmayan, yapay üretilmiş",The jacket is made of synthetic fibre.,Ceket sentetik elyaftan yapılmış.,5,,school-work
+c1-syndicate,SYNDICATE,Y,CONTAINS,noun,ortak çıkar için kurulan iş birliği grubu,A syndicate of banks funded the project.,Bir banka grubu projeyi finanse etti.,5,,business
+c1-eyewitness,EYEWITNESS,Y,CONTAINS,noun,olayı gözüyle gören tanık,An eyewitness described the robber.,Bir görgü tanığı soyguncuyu tarif etti.,5,,school-work
+c1-youthful,YOUTHFUL,Y,STARTS,adj,"genç görünüşlü, dinç",She has a youthful face.,Genç görünüşlü bir yüzü var.,4,,school-work
