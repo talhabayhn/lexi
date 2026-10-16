@@ -29,6 +29,7 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.emitAll
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 
@@ -36,9 +37,10 @@ import kotlinx.coroutines.withContext
 internal abstract class UserStore(protected val databases: Databases, protected val io: CoroutineDispatcher) {
     protected suspend fun <T> write(block: UserDatabase.() -> T): T = withContext(io) { databases.user.get().block() }
 
+    /** Queries and the row mapping run on [io]: screens collect these on the main thread during transitions. */
     protected fun <T> observe(query: UserDatabase.() -> Flow<T>): Flow<T> = flow {
         emitAll(databases.user.get().query())
-    }
+    }.flowOn(io)
 }
 
 /** Progress of card ids that are not in the installed content.db is kept but filtered out of every list. */
@@ -56,7 +58,7 @@ internal class ProgressRepositoryImpl(databases: Databases, io: CoroutineDispatc
                 rows.filter { it.card_id in known }.mapNotNull { it.toDomain() }
             },
         )
-    }
+    }.flowOn(io)
 
     override suspend fun get(ids: Collection<CardId>): Map<CardId, CardProgress> = write {
         ids.map { it.value }.distinct().chunked(MAX_SQL_VARIABLES).flatMap { chunk ->

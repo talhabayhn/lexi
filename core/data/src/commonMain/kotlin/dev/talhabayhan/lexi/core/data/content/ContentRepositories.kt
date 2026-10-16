@@ -19,7 +19,7 @@ import dev.talhabayhan.lexi.core.domain.settings.ClueLanguage
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 
-/** Shared plumbing: content queries on the IO dispatcher. */
+/** Shared plumbing: content queries, and the mapping of their rows, on the IO dispatcher (never on the main thread). */
 internal abstract class ContentReader(private val databases: Databases, private val io: CoroutineDispatcher) {
     protected suspend fun <T> read(block: ContentReadsQueries.() -> T): T =
         withContext(io) { databases.content.get().contentReadsQueries.block() }
@@ -43,16 +43,16 @@ internal class CardRepositoryImpl(
             levelCards(lang, level.name, ::cardRow).executeAsList()
         } else {
             levelCategoryCards(lang, level.name, category.value, ::cardRow).executeAsList()
-        }
-    }.valid()
+        }.valid()
+    }
 
-    override suspend fun levelCards(): List<Card> = read { allLevelCards(lang, ::cardRow).executeAsList() }.valid()
+    override suspend fun levelCards(): List<Card> = read { allLevelCards(lang, ::cardRow).executeAsList().valid() }
 
     override suspend fun cards(ids: Collection<CardId>): List<Card> = read {
         ids.map { it.value }.distinct().chunked(MAX_SQL_VARIABLES).flatMap { chunk ->
             cardsById(lang, chunk, ::cardRow).executeAsList()
-        }
-    }.valid().sortedBy { it.id.value }
+        }.valid().sortedBy { it.id.value }
+    }
 
     override suspend fun levelTotals(): Map<Level, Int> = read {
         levelCardCounts().executeAsList().mapNotNull { row ->
@@ -75,8 +75,8 @@ internal class CategoryRepositoryImpl(databases: Databases, io: CoroutineDispatc
     override suspend fun categories(level: Level?): List<Category> = read {
         categories { id, nameTr, nameEn, levels, sort, isPro ->
             Category(CategoryId(id), nameTr, nameEn, levelsOf(levels), sort.toInt(), isPro != 0L)
-        }.executeAsList()
-    }.filter { level == null || level in it.levels }
+        }.executeAsList().filter { level == null || level in it.levels }
+    }
 }
 
 internal class ExamPackRepositoryImpl(
@@ -93,22 +93,22 @@ internal class ExamPackRepositoryImpl(
     }
 
     override suspend fun cards(pack: ExamPackId): List<ExamPackCard> = read {
-        examPackCards(clueLanguage.code, pack.value).executeAsList()
-    }.mapNotNull { row ->
-        cardOf(
-            id = row.id,
-            level = row.level,
-            categoryId = row.category_id,
-            answer = row.answer,
-            letter = row.letter,
-            rule = row.rule,
-            pos = row.pos,
-            exampleEn = row.example_en,
-            difficulty = row.difficulty,
-            tags = row.tags,
-            clue = row.clue,
-            exampleTranslation = row.example_translation,
-        ).map { ExamPackCard(it, row.unit) }.onFailure(onBrokenCard).getOrNull()
+        examPackCards(clueLanguage.code, pack.value).executeAsList().mapNotNull { row ->
+            cardOf(
+                id = row.id,
+                level = row.level,
+                categoryId = row.category_id,
+                answer = row.answer,
+                letter = row.letter,
+                rule = row.rule,
+                pos = row.pos,
+                exampleEn = row.example_en,
+                difficulty = row.difficulty,
+                tags = row.tags,
+                clue = row.clue,
+                exampleTranslation = row.example_translation,
+            ).map { ExamPackCard(it, row.unit) }.onFailure(onBrokenCard).getOrNull()
+        }
     }
 }
 

@@ -166,7 +166,8 @@ Interfaces: `core/domain/.../repository`; implementations (internal) and `dataMo
 Content reads are one-shot `suspend` functions (content never changes while the app runs); user data is observed as
 `Flow` (`ProgressRepository.observeAll`, `SessionRepository.observeRecords`, `StreakRepository.observeDays`,
 `DailyRepository.observe`, `JokerRepository.observeInventory`, `SettingsRepository.settings`). All DB and file work
-runs on the dispatcher qualified `IoDispatcher`. Progress of card ids missing from the installed content is kept and
+runs on the dispatcher qualified `IoDispatcher`, including the mapping of rows to domain objects (`flowOn(io)`), so
+screens never pay for it on the main thread while they slide in. Progress of card ids missing from the installed content is kept and
 filtered out of every list. `SessionRepository.record` skips `GameConfig.srsExcludedModes` (hot-seat duel) and marks
 the streak day of a completed wheel in the same transaction. `shared` provides `GameConfig`, `BundledContentDb` and
 the platform `DatabaseFiles` (`rememberPlatformModule()`, Android needs the `Context`).
