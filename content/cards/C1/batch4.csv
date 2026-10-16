@@ -1,0 +1,43 @@
+id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
+c1-facilitate,FACILITATE,F,STARTS,verb,bir işi kolaylaştırıp hızlandırmak,New software will facilitate the work of the staff.,Yeni yazılım personelin işini kolaylaştıracak.,5,,business
+c1-famine,FAMINE,F,STARTS,noun,yaygın kıtlık ve açlık,The famine forced thousands to leave the region.,Kıtlık binlerce kişiyi bölgeyi terk etmeye zorladı.,4,,school-work
+c1-fertile,FERTILE,F,STARTS,adj,"toprak verimli, bol ürün veren",The river valley has fertile soil.,Nehir vadisinin toprağı verimli.,4,,school-work
+c1-flourish,FLOURISH,F,STARTS,verb,"gelişip serpilmek, başarılı olmak",Small shops can flourish in this district.,Küçük dükkânlar bu semtte serpilebilir.,5,,business
+c1-forefront,FOREFRONT,F,STARTS,noun,en önde ve en etkili konum,The firm is at the forefront of green energy.,Firma yeşil enerjide öncü konumda.,5,,technology
+c1-forthcoming,FORTHCOMING,F,STARTS,adj,yakında gerçekleşecek veya çıkacak,Her forthcoming book is about the sea.,Yakında çıkacak kitabı deniz hakkında.,5,,film-tv
+c1-foster,FOSTER,F,STARTS,verb,gelişimini destekleyip teşvik etmek,Good teachers foster a love of reading.,İyi öğretmenler okuma sevgisini teşvik eder.,5,,school-work
+c1-fraction,FRACTION,F,STARTS,noun,bir bütünün küçük bir parçası,He paid only a fraction of the price.,Fiyatın yalnızca küçük bir bölümünü ödedi.,4,,school-work
+c1-fragment,FRAGMENT,F,STARTS,noun,kırılıp ayrılmış küçük parça,The police found a fragment of glass.,Polis küçük bir cam parçası buldu.,4,,school-work
+c1-franchise,FRANCHISE,F,STARTS,noun,bir markanın adını kullanma hakkı,He bought a franchise of a burger chain.,Bir hamburger zincirinin bayiliğini aldı.,5,,business
+c1-frantic,FRANTIC,F,STARTS,adj,korku veya telaştan çılgına dönmüş,She made a frantic search for the keys.,Anahtarlar için çılgınca bir arama yaptı.,5,,school-work
+c1-formulate,FORMULATE,F,STARTS,verb,bir fikri ya da planı dikkatle oluşturmak,The team will formulate a new strategy.,Takım yeni bir strateji oluşturacak.,5,,business
+c1-fringe,FRINGE,F,STARTS,noun,bir alanın kenar kısmı,They live on the fringe of the city.,Şehrin kenarında yaşıyorlar.,5,,school-work
+c1-flawed,FLAWED,F,STARTS,adj,"hatası olan, kusurlu",The plan was flawed from the start.,Plan baştan kusurluydu.,4,,business
+c1-fundraising,FUNDRAISING,F,STARTS,noun,bir amaç için para toplama etkinliği,The school held a fundraising evening.,Okul bir bağış toplama akşamı düzenledi.,5,,school-work
+c1-fatigue,FATIGUE,F,STARTS,noun,aşırı yorgunluk,Long flights can cause fatigue.,Uzun uçuşlar yorgunluğa yol açabilir.,4,,travel
+c1-gauge,GAUGE,G,STARTS,verb,bir şeyin derecesini ölçerek değerlendirmek,It is hard to gauge how people will react.,İnsanların nasıl tepki vereceğini ölçmek zor.,5,,school-work
+c1-glimpse,GLIMPSE,G,STARTS,noun,bir şeye kısa bir bakış,I caught a glimpse of the singer.,Şarkıcıyı bir an gördüm.,4,,film-tv
+c1-glitch,GLITCH,G,STARTS,noun,küçük teknik arıza,A software glitch delayed the flights.,Bir yazılım hatası uçuşları geciktirdi.,4,,technology
+c1-grievance,GRIEVANCE,G,STARTS,noun,haksızlık hissinden doğan şikâyet,Workers raised a grievance about the long hours.,İşçiler uzun mesai saatleri konusunda şikâyetlerini dile getirdi.,5,,business
+c1-grim,GRIM,G,STARTS,adj,"korkunç, ümitsiz ve kasvetli",The doctor had grim news for the family.,Doktorun aileye vereceği kötü haberler vardı.,4,,school-work
+c1-grave,GRAVE,G,STARTS,adj,çok ciddi ve tehlikeli,The doctors have grave concerns about his health.,Doktorlar sağlığı konusunda ciddi endişe taşıyor.,5,,school-work
+c1-grief,GRIEF,G,STARTS,noun,birinin ölümünden duyulan derin acı,She was overcome by grief.,Kedere boğuldu.,4,,school-work
+c1-groundbreaking,GROUNDBREAKING,G,STARTS,adj,alanında çığır açan,Her groundbreaking study changed the field.,Çığır açan çalışması alanı değiştirdi.,5,,school-work
+c1-govern,GOVERN,G,STARTS,verb,bir ülkeyi veya kurumu yönetmek,The party will govern for four years.,Parti dört yıl ülkeyi yönetecek.,4,,school-work
+c1-guardian,GUARDIAN,G,STARTS,noun,reşit olmayan bir çocuğun yasal sorumlusu,The guardian signed the school form.,"Vasi, okul formunu imzaladı.",5,,school-work
+c1-hamper,HAMPER,H,STARTS,verb,ilerlemeyi zorlaştırıp engellemek,Bad roads hamper the delivery of aid.,Kötü yollar yardımın ulaşmasını güçleştiriyor.,5,,travel
+c1-handicap,HANDICAP,H,STARTS,noun,bir kişiyi dezavantajlı kılan engel,A lack of experience is a serious handicap.,Deneyim eksikliği ciddi bir dezavantajdır.,5,,school-work
+c1-harass,HARASS,H,STARTS,verb,sürekli rahatsız edip taciz etmek,Reporters continued to harass the family.,Gazeteciler aileyi rahatsız etmeyi sürdürdü.,5,,school-work
+c1-hardship,HARDSHIP,H,STARTS,noun,yoksulluk veya acı çekilen zor dönem,Many families faced hardship during the war.,Savaş sırasında birçok aile zor günler yaşadı.,5,,school-work
+c1-heighten,HEIGHTEN,H,STARTS,verb,bir duyguyu veya etkiyi artırmak,The news will heighten public fear.,Haber halkın korkusunu artıracak.,5,,school-work
+c1-hindsight,HINDSIGHT,H,STARTS,noun,olaydan sonra durumu anlama,"In hindsight, we should have left earlier.",Geriye bakınca daha erken çıkmalıydık.,5,,school-work
+c1-hostile,HOSTILE,H,STARTS,adj,düşmanca ve saldırgan,The crowd was hostile to the speaker.,Kalabalık konuşmacıya karşı düşmancaydı.,4,,school-work
+c1-humiliate,HUMILIATE,H,STARTS,verb,birini herkesin önünde küçük düşürmek,He did not mean to humiliate her.,Onu küçük düşürmek istemedi.,5,,school-work
+c1-hurdle,HURDLE,H,STARTS,noun,aşılması gereken engel,The first hurdle is to raise enough money.,İlk engel yeterli parayı toplamak.,5,,business
+c1-hybrid,HYBRID,H,STARTS,noun,iki farklı türün karışımı,The car is a hybrid of petrol and electric power.,Araba benzin ve elektrik gücünü birleştiren bir hibrittir.,4,,technology
+c1-hypothesis,HYPOTHESIS,H,STARTS,noun,kanıtlanmaya çalışılan varsayım,The scientist tested her hypothesis.,Bilim insanı hipotezini test etti.,5,,school-work
+c1-hypocrisy,HYPOCRISY,H,STARTS,noun,söylediği gibi yaşamayan ikiyüzlülük,People criticised the hypocrisy of the leaders.,İnsanlar liderlerin ikiyüzlülüğünü eleştirdi.,5,,school-work
+c1-harness,HARNESS,H,STARTS,verb,bir kaynağı faydalı olacak şekilde kullanmak,Scientists want to harness the power of the waves.,Bilim insanları dalga gücünden yararlanmak istiyor.,5,,technology
+c1-holistic,HOLISTIC,H,STARTS,adj,parçaya değil bütüne bakan,The clinic takes a holistic approach to health.,Klinik sağlığa bütüncül yaklaşıyor.,5,,school-work
+c1-hostage,HOSTAGE,H,STARTS,noun,rehin tutulan kişi,The hostage was released after two days.,Rehine iki gün sonra serbest bırakıldı.,4,,school-work
+c1-heartbreaking,HEARTBREAKING,H,STARTS,adj,yürek parçalayıcı,It was a heartbreaking story.,Yürek parçalayıcı bir hikâyeydi.,5,,film-tv

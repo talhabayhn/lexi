@@ -1,0 +1,76 @@
+id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
+c1-idle,IDLE,I,STARTS,adj,"çalışmayan, boş duran",The machines stood idle during the strike.,Makineler grev sırasında boş durdu.,4,,business
+c1-illusion,ILLUSION,I,STARTS,noun,gerçek olmayan yanıltıcı görüntü veya inanç,The mirrors create an illusion of space.,Aynalar geniş bir alan yanılsaması yaratır.,4,,school-work
+c1-imminent,IMMINENT,I,STARTS,adj,çok yakında olacak,A storm is imminent.,Fırtına çok yakında kopacak.,5,,school-work
+c1-immune,IMMUNE,I,STARTS,adj,hastalığa karşı bağışık,Most people are immune to the virus.,Çoğu insan virüse karşı bağışık.,4,,school-work
+c1-impair,IMPAIR,I,STARTS,verb,bir yeteneği veya işlevi zayıflatmak,Loud noise can impair your hearing.,Yüksek gürültü işitmenizi zayıflatabilir.,5,,school-work
+c1-impartial,IMPARTIAL,I,STARTS,adj,"taraf tutmayan, tarafsız",A judge must remain impartial.,Bir yargıç tarafsız kalmalıdır.,5,,school-work
+c1-imperative,IMPERATIVE,I,STARTS,adj,çok acil ve zorunlu,It is imperative that we act now.,Şimdi harekete geçmemiz şart.,5,,school-work
+c1-impetus,IMPETUS,I,STARTS,noun,bir şeyi hızlandıran itici güç,The prize gave new impetus to her research.,Ödül araştırmasına yeni bir ivme kazandırdı.,5,,school-work
+c1-implication,IMPLICATION,I,STARTS,noun,doğrudan söylenmeyen sonuç veya anlam,The implication was that he had lied.,"İma edilen, onun yalan söylediğiydi.",5,,school-work
+c1-implicit,IMPLICIT,I,STARTS,adj,açıkça söylenmeden anlaşılan,There was an implicit threat in his words.,Sözlerinde örtülü bir tehdit vardı.,5,,school-work
+c1-impulse,IMPULSE,I,STARTS,noun,ani ve düşünmeden gelen istek,She bought the hat on impulse.,Şapkayı bir anlık dürtüyle aldı.,4,,school-work
+c1-incentive,INCENTIVE,I,STARTS,noun,bir şeyi yapmaya teşvik eden ödül,Lower taxes are an incentive to invest.,Düşük vergiler yatırım için bir teşviktir.,4,,business
+c1-incidence,INCIDENCE,I,STARTS,noun,bir olayın görülme sıklığı,The incidence of the disease is falling.,Hastalığın görülme sıklığı azalıyor.,5,,school-work
+c1-inclination,INCLINATION,I,STARTS,noun,"bir şeye karşı eğilim, istek",She had no inclination to argue.,Tartışmaya hiç niyeti yoktu.,5,,school-work
+c1-inclusive,INCLUSIVE,I,STARTS,adj,herkesi kapsayan; her şey dahil,The school wants to be more inclusive.,Okul daha kapsayıcı olmak istiyor.,4,,school-work
+c1-incompatible,INCOMPATIBLE,I,STARTS,adj,birbiriyle uyumsuz,The two programs are incompatible.,İki program birbiriyle uyumsuz.,5,,technology
+c1-incorporate,INCORPORATE,I,STARTS,verb,bir şeyi bütünün içine katmak,Try to incorporate more fruit into your diet.,Beslenmene daha çok meyve katmaya çalış.,5,,school-work
+c1-incur,INCUR,I,STARTS,verb,istemeden bir masrafa veya zarara uğramak,The company will incur heavy losses.,Şirket ağır zarara uğrayacak.,5,,business
+c1-indefinite,INDEFINITE,I,STARTS,adj,bitiş zamanı belli olmayan,The match was postponed for an indefinite period.,Maç belirsiz bir süre için ertelendi.,5,,sports
+c1-indigenous,INDIGENOUS,I,STARTS,adj,bir bölgenin yerli halkı veya yerli türü,Indigenous people lived here for centuries.,Yerli halk burada yüzyıllarca yaşadı.,5,,school-work
+c1-indispensable,INDISPENSABLE,I,STARTS,adj,"olmadan olmaz, vazgeçilmez",A phone is indispensable these days.,Bu günlerde telefon vazgeçilmez.,5,,school-work
+c1-induce,INDUCE,I,STARTS,verb,bir sonuca neden olmak veya ikna etmek,Some drugs induce sleep.,Bazı ilaçlar uyku getirir.,5,,school-work
+c1-indulge,INDULGE,I,STARTS,verb,bir zevke kendini kaptırıp şımartmak,Let yourself indulge in a bit of chocolate.,Kendini biraz çikolatayla şımartmana izin ver.,5,,school-work
+c1-inequality,INEQUALITY,I,STARTS,noun,gelir veya haklar arasındaki eşitsizlik,Income inequality is growing.,Gelir eşitsizliği büyüyor.,4,,school-work
+c1-infamous,INFAMOUS,I,STARTS,adj,kötü şöhretli,He is infamous for his harsh methods.,Sert yöntemleriyle kötü şöhretli.,5,,school-work
+c1-inflict,INFLICT,I,STARTS,verb,acı veya zarar vermek,Storms can inflict heavy damage on the coast.,Fırtınalar kıyıya ağır zarar verebilir.,5,,school-work
+c1-infrastructure,INFRASTRUCTURE,I,STARTS,noun,"yol, enerji ve iletişim gibi temel yapılar",The country needs better infrastructure.,Ülkenin daha iyi altyapıya ihtiyacı var.,5,,business
+c1-ingenious,INGENIOUS,I,STARTS,adj,zekice ve yaratıcı,It was an ingenious way to save water.,Su tasarrufu için dahice bir yoldu.,5,,technology
+c1-inhibit,INHIBIT,I,STARTS,verb,bir süreci veya davranışı bastırıp kısıtlamak,Fear can inhibit learning.,Korku öğrenmeyi engelleyebilir.,5,,school-work
+c1-inherit,INHERIT,I,STARTS,verb,ölen birinden mal veya özellik devralmak,She will inherit the house from her aunt.,Teyzesinden evi miras alacak.,4,,school-work
+c1-insufficient,INSUFFICIENT,I,STARTS,adj,ihtiyacı karşılamayacak kadar az,The evidence was insufficient.,Kanıtlar yetersizdi.,4,,school-work
+c1-intact,INTACT,I,STARTS,adj,"zarar görmemiş, bozulmamış",The old vase arrived intact.,Eski vazo sağlam ulaştı.,4,,school-work
+c1-integrity,INTEGRITY,I,STARTS,noun,dürüstlük ve ilkelere bağlılık,He is a man of great integrity.,"O, büyük bir dürüstlük sahibi biri.",5,,school-work
+c1-intermittent,INTERMITTENT,I,STARTS,adj,aralıklarla gelip giden,There was intermittent rain all day.,Gün boyu aralıklı yağmur vardı.,5,,school-work
+c1-intervene,INTERVENE,I,STARTS,verb,bir olaya karışarak yön vermek,Police had to intervene in the fight.,Polis kavgaya müdahale etmek zorunda kaldı.,4,,school-work
+c1-intimate,INTIMATE,I,STARTS,adj,çok yakın ve samimi,They had an intimate dinner at home.,Evde samimi bir akşam yemeği yediler.,5,,school-work
+c1-intimidate,INTIMIDATE,I,STARTS,verb,korkutarak sindirmek,The big dog may intimidate small children.,Büyük köpek küçük çocukları korkutabilir.,5,,school-work
+c1-intricate,INTRICATE,I,STARTS,adj,çok ayrıntılı ve karmaşık,The song has an intricate melody.,Şarkının karmaşık bir melodisi var.,5,,music
+c1-intrigue,INTRIGUE,I,STARTS,verb,merak uyandırıp ilgi çekmek,The plot will intrigue viewers.,Konu izleyicilerin merakını uyandıracak.,5,,film-tv
+c1-intrinsic,INTRINSIC,I,STARTS,adj,bir şeyin doğasında bulunan,Honesty has intrinsic value.,Dürüstlüğün kendi başına bir değeri vardır.,5,,school-work
+c1-invoke,INVOKE,I,STARTS,verb,yasayı veya hakkı dayanak olarak öne sürmek,He may invoke the law to protect his rights.,Haklarını korumak için yasaya başvurabilir.,5,,school-work
+c1-irony,IRONY,I,STARTS,noun,söylenenin tersini kastetme; talihin cilvesi,The irony is that he missed his own party.,"İşin ironisi, kendi partisini kaçırmış olması.",5,,school-work
+c1-irreversible,IRREVERSIBLE,I,STARTS,adj,"geri alınamaz, eski haline dönmez",The damage may be irreversible.,Hasar geri döndürülemez olabilir.,5,,school-work
+c1-irrelevant,IRRELEVANT,I,STARTS,adj,konuyla ilgisi olmayan,Your question is irrelevant to this topic.,Sorun bu konuyla ilgisiz.,4,,school-work
+c1-itinerary,ITINERARY,I,STARTS,noun,seyahatin gün gün planı,The travel agent sent us a detailed itinerary.,Seyahat acentesi bize ayrıntılı bir gezi programı gönderdi.,5,,travel
+c1-interface,INTERFACE,I,STARTS,noun,kullanıcıyla sistem arasındaki ara yüz,The app has a simple interface.,Uygulamanın basit bir arayüzü var.,4,,technology
+c1-jargon,JARGON,J,STARTS,noun,belli bir mesleğin anlaşılması zor dili,The report is full of technical jargon.,Rapor teknik jargonla dolu.,4,,school-work
+c1-judicial,JUDICIAL,J,STARTS,adj,mahkemeler ve yargıyla ilgili,The country has an independent judicial system.,Ülkenin bağımsız bir yargı sistemi var.,5,,school-work
+c1-jurisdiction,JURISDICTION,J,STARTS,noun,bir mahkemenin yetki alanı,The case falls under federal jurisdiction.,Dava federal yargı yetkisine giriyor.,5,,school-work
+c1-juvenile,JUVENILE,J,STARTS,adj,gençlerle ilgili; çocukça,Juvenile crime has fallen this year.,Çocuk suçluluğu bu yıl azaldı.,5,,school-work
+c1-trajectory,TRAJECTORY,J,CONTAINS,noun,bir cismin veya sürecin izlediği yol,The ball followed a high trajectory.,Top yüksek bir yörünge izledi.,5,,sports
+c1-kinetic,KINETIC,K,STARTS,adj,hareketle ilgili,Kinetic energy depends on speed.,Kinetik enerji hıza bağlıdır.,5,,school-work
+c1-knack,KNACK,K,STARTS,noun,bir işi kolayca yapma yeteneği,She has a knack for languages.,Dillerde bir yeteneği var.,5,,school-work
+c1-keynote,KEYNOTE,K,STARTS,noun,etkinliğin ana konuşması,The CEO gave the keynote speech.,Genel müdür ana konuşmayı yaptı.,5,,business
+c1-kiosk,KIOSK,K,STARTS,noun,sokakta gazete satan küçük büfe,He bought a paper at the kiosk.,Büfeden bir gazete aldı.,4,,travel
+c1-stakeholder,STAKEHOLDER,K,CONTAINS,noun,bir işte çıkarı olan kişi veya grup,Every stakeholder was invited to the meeting.,Her paydaş toplantıya davet edildi.,5,,business
+c1-backlash,BACKLASH,K,CONTAINS,noun,bir olaya karşı sert toplumsal tepki,The new rule caused a public backlash.,Yeni kural toplumsal bir tepkiye yol açtı.,5,,school-work
+c1-spokesperson,SPOKESPERSON,K,CONTAINS,noun,bir kurum adına konuşan sözcü,A spokesperson denied the claim.,Bir sözcü iddiayı yalanladı.,5,,business
+c1-lapse,LAPSE,L,STARTS,noun,kısa süreli dikkat veya hafıza hatası,He had a lapse of memory.,Bir an hafıza kaybı yaşadı.,5,,school-work
+c1-lavish,LAVISH,L,STARTS,adj,aşırı bol ve gösterişli,They held a lavish wedding.,Gösterişli bir düğün yaptılar.,5,,school-work
+c1-legislation,LEGISLATION,L,STARTS,noun,"bir konudaki yasaların bütünü, mevzuat",New legislation protects renters.,Yeni mevzuat kiracıları koruyor.,5,,school-work
+c1-legitimate,LEGITIMATE,L,STARTS,adj,yasal ve haklı olan,Is this a legitimate business?,Bu meşru bir iş mi?,5,,business
+c1-lethal,LETHAL,L,STARTS,adj,öldürücü,The snake has a lethal bite.,Yılanın ölümcül bir ısırığı var.,5,,school-work
+c1-leverage,LEVERAGE,L,STARTS,noun,bir kişiye üstünlük sağlayan güç,His fame gave him leverage in the talks.,Ünü ona görüşmelerde üstünlük sağladı.,5,,business
+c1-liability,LIABILITY,L,STARTS,noun,yasal sorumluluk; yük olan şey,The company accepts no liability for lost items.,Şirket kayıp eşyalardan sorumluluk kabul etmez.,5,,business
+c1-liable,LIABLE,L,STARTS,adj,yasal olarak sorumlu veya yatkın,You are liable for any damage.,Her türlü zarardan siz sorumlusunuz.,5,,business
+c1-likelihood,LIKELIHOOD,L,STARTS,noun,bir şeyin olma ihtimali,There is a high likelihood of rain.,Yağmur ihtimali yüksek.,4,,school-work
+c1-linger,LINGER,L,STARTS,verb,"gitmeyip oyalanmak, sürüp gitmek",The smell of smoke would linger for days.,Duman kokusu günlerce sürerdi.,5,,school-work
+c1-literacy,LITERACY,L,STARTS,noun,okuma yazma bilme,The country has a high literacy rate.,Ülkenin okuryazarlık oranı yüksek.,4,,school-work
+c1-loophole,LOOPHOLE,L,STARTS,noun,yasadaki açıktan yararlanma boşluğu,The firm found a loophole in the tax law.,Firma vergi yasasında bir boşluk buldu.,5,,business
+c1-lure,LURE,L,STARTS,verb,çekici bir şeyle cezbetmek,Free gifts lure new customers.,Bedava hediyeler yeni müşterileri cezbeder.,5,,business
+c1-liberal,LIBERAL,L,STARTS,adj,özgürlükçü; hoşgörülü,The city has a liberal culture.,Şehrin özgürlükçü bir kültürü var.,4,,school-work
+c1-liberate,LIBERATE,L,STARTS,verb,esaretten kurtarmak,Troops came to liberate the town.,Askerler kasabayı kurtarmaya geldi.,5,,school-work
+c1-lifelong,LIFELONG,L,STARTS,adj,bir ömür boyu süren,They shared a lifelong friendship.,Ömür boyu süren bir arkadaşlık paylaştılar.,4,,school-work
+c1-livelihood,LIVELIHOOD,L,STARTS,noun,geçimini sağlayan iş veya gelir,Fishing is their main livelihood.,Balıkçılık onların asıl geçim kaynağı.,5,,school-work
