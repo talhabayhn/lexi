@@ -209,6 +209,36 @@ public fun EmptyState(message: String, modifier: Modifier = Modifier) {
     }
 }
 
+/**
+ * [EmptyState] with an action, for error and dead-end states (retry, go back). DESIGN-DEBT: no design shows an empty
+ * state with an action; built from the component library: the empty state over a full-width secondary [LexiButton]
+ * ([actionText]), gap 16, and an optional underlined [LexiTextLink] under it ([secondaryText]).
+ */
+@Composable
+public fun EmptyState(
+    message: String,
+    actionText: String,
+    onAction: () -> Unit,
+    modifier: Modifier = Modifier,
+    secondaryText: String? = null,
+    onSecondary: () -> Unit = {},
+) {
+    Column(
+        modifier = modifier,
+        verticalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap16),
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        EmptyState(message, Modifier.fillMaxWidth())
+        LexiButton(
+            text = actionText,
+            onClick = onAction,
+            variant = LexiButtonVariant.Secondary,
+            modifier = Modifier.fillMaxWidth(),
+        )
+        if (secondaryText != null) LexiTextLink(text = secondaryText, onClick = onSecondary)
+    }
+}
+
 // design sample, not user-facing
 @Preview(widthDp = 390, heightDp = 500)
 @Composable

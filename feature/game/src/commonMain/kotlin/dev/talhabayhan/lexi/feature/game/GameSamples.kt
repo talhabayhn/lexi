@@ -115,4 +115,13 @@ internal object GameSamples {
 
     /** Second step of the pause dialog: confirm giving up. */
     val quitConfirmation: GameUiState = paused.copy(isQuitConfirmation = true)
+
+    /** Practice (design debt): no clock ("SÜRESİZ"), the badge counts the 5 correct answers. */
+    val practice: GameUiState = design.copy(score = 0, correct = 5, isScored = false)
+
+    /** The content could not be read (design debt): retry or go back. */
+    val loadError: GameUiState = GameUiState(isLoading = false, loadError = GameLoadError.Unreadable)
+
+    /** The level / category has no card (design debt): go back. */
+    val noCards: GameUiState = GameUiState(isLoading = false, loadError = GameLoadError.NoCards)
 }

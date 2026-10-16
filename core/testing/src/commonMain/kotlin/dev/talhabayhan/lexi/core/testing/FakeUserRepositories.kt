@@ -16,11 +16,19 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.emitAll
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 
-/** In-memory [ProgressRepository]; [saveCalls] counts writes. */
+/**
+ * In-memory [ProgressRepository]; [saveCalls] counts writes. While [failing] is true, reads throw
+ * [IllegalStateException] ([observeAll] when collected).
+ */
 public class FakeProgressRepository(initial: Collection<CardProgress> = emptyList()) : ProgressRepository {
     private val state = MutableStateFlow(initial.associateBy { it.cardId })
+
+    /** Failure injection: reads throw while true. */
+    public var failing: Boolean = false
 
     /** Current progress by card id. */
     public val progress: Map<CardId, CardProgress> get() = state.value
@@ -28,9 +36,15 @@ public class FakeProgressRepository(initial: Collection<CardProgress> = emptyLis
     public var saveCalls: Int = 0
         private set
 
-    override fun observeAll(): Flow<List<CardProgress>> = state.map { it.values.sortedBy { p -> p.cardId.value } }
+    override fun observeAll(): Flow<List<CardProgress>> = flow {
+        check(!failing) { "injected progress read failure" }
+        emitAll(state.map { it.values.sortedBy { p -> p.cardId.value } })
+    }
 
-    override suspend fun get(ids: Collection<CardId>): Map<CardId, CardProgress> = state.value.filterKeys { it in ids }
+    override suspend fun get(ids: Collection<CardId>): Map<CardId, CardProgress> {
+        check(!failing) { "injected progress read failure" }
+        return state.value.filterKeys { it in ids }
+    }
 
     override suspend fun save(progress: Collection<CardProgress>) {
         saveCalls++

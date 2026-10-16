@@ -43,6 +43,8 @@ internal object GameUiMapper {
             isLoading = false,
             wheel = wheel,
             score = state.score,
+            correct = state.wheel.slots.count { it.state == SlotState.CORRECT },
+            isScored = state.mode.isScored,
             turn = turn,
             isPaused = state.isPaused,
             inputEnabled = state.status == GameStatus.PLAYING &&
@@ -54,11 +56,14 @@ internal object GameUiMapper {
         )
     }
 
-    /** The sheet's jokers in design order with inventory, cost in this mode and [GameEngine.canUseJoker]. */
+    /**
+     * The sheet's jokers in design order with inventory, cost in this mode and [GameEngine.canUseJoker]. A point cost
+     * in an unscored mode (Practice, Review) takes nothing (`GAME_RULES.md` §6, §7), so it is shown as free.
+     */
     private fun jokersOf(state: GameState, engine: GameEngine): ImmutableList<JokerUi> = SHEET_ORDER.map { type ->
         val cost = when (val cost = engine.config.jokerCost(type, state.mode)) {
             is JokerCost.Time -> JokerCostUi.Seconds((cost.ms / MS_PER_SECOND).toInt())
-            is JokerCost.Points -> JokerCostUi.Points(cost.points)
+            is JokerCost.Points -> if (state.mode.isScored) JokerCostUi.Points(cost.points) else JokerCostUi.Free
             JokerCost.Free -> JokerCostUi.Free
         }
         JokerUi(type, state.jokers.count(type), cost, engine.canUseJoker(state, type))

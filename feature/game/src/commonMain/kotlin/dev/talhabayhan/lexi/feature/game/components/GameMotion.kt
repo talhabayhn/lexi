@@ -124,6 +124,7 @@ internal class GameMotion(
             is GameEffect.TimeWarning,
             is GameEffect.NavigateToResult,
             GameEffect.Abandoned,
+            GameEffect.NavigateBack,
             -> Unit
         }
     }

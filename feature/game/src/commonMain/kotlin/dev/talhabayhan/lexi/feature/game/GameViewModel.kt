@@ -102,8 +102,11 @@ internal class GameViewModel(
     /** Joker inventory writes run one after another, each saving the latest inventory (ADR 0019). */
     private val jokerSaves = Mutex()
 
+    /** The running [load], so a double tap on "Tekrar dene" loads once. */
+    private var loading: Job? = null
+
     init {
-        viewModelScope.launch { load() }
+        loading = viewModelScope.launch { load() }
         viewModelScope.launch { settings.settings.collect { speakOnCorrect = it.speakOnCorrect } }
     }
 
@@ -133,6 +136,10 @@ internal class GameViewModel(
             GameIntent.Forfeit -> input(GameEvent.Forfeit)
 
             GameIntent.Back -> back()
+
+            GameIntent.Retry -> retry()
+
+            GameIntent.Leave -> if (state.value.loadError != null) emit(GameEffect.NavigateBack)
 
             GameIntent.Background -> {
                 foreground = false
@@ -173,7 +180,66 @@ internal class GameViewModel(
         if (finished) speech?.cancel() else stopSpeaking()
     }
 
+    /**
+     * Loads the wheel: restores the saved game or starts a new one. A read failure (content or user database) shows
+     * [GameLoadError.Unreadable] with a retry; a wheel without cards shows [GameLoadError.NoCards] and is never
+     * recorded. A saved game whose cards left the content and a review with nothing due are abandoned.
+     */
     private suspend fun load() {
+        val opened = try {
+            open()
+        } catch (e: CancellationException) {
+            throw e
+        } catch (e: Exception) {
+            // TODO(M7): report through the crash reporter (Crashlytics behind an interface).
+            log.e(e) { "game not loaded" }
+            Opened.Failed
+        }
+        when (opened) {
+            Opened.Abandoned -> effectChannel.send(GameEffect.Abandoned)
+
+            Opened.Failed -> showLoadError(GameLoadError.Unreadable)
+
+            Opened.NoCards -> showLoadError(GameLoadError.NoCards)
+
+            is Opened.Ready -> {
+                session = opened.session
+                val state = opened.session.state
+                publish(state)
+                when {
+                    state.status == GameStatus.FINISHED -> onGameOver()
+
+                    // ADR 0019: a restored running game always comes back paused.
+                    opened.restored && state.status == GameStatus.PLAYING -> dispatch(GameEvent.Pause)
+
+                    else -> startIfReady()
+                }
+            }
+        }
+    }
+
+    private fun showLoadError(error: GameLoadError) {
+        mutableState.value = GameUiState(isLoading = false, loadError = error)
+    }
+
+    /** "Tekrar dene": only after a read failure, and not while a load is running. */
+    private fun retry() {
+        if (state.value.loadError != GameLoadError.Unreadable || loading?.isActive == true) return
+        mutableState.value = GameUiState()
+        loading = viewModelScope.launch { load() }
+    }
+
+    private sealed interface Opened {
+        data class Ready(val session: GameSession, val restored: Boolean) : Opened
+
+        data object Abandoned : Opened
+
+        data object NoCards : Opened
+
+        data object Failed : Opened
+    }
+
+    private suspend fun open(): Opened {
         val current = settings.settings.first()
         val limit = handle.get<Int>(KEY_CLASSIC_LIMIT)
             ?: current.classicTimeLimitSeconds.takeIf { it in config.classicTimeLimitOptionsSeconds }
@@ -181,32 +247,18 @@ internal class GameViewModel(
         handle[KEY_CLASSIC_LIMIT] = limit
         val engine = GameEngine(config.copy(classicTimeLimitSeconds = limit)).also { engine = it }
         val saved = handle.get<String>(KEY_GAME)?.let(SavedGameCodec::decodeOrNull)
-        val restored = saved?.let { GameSession.restore(engine, it, cards.cards(it.cardIds)) }
-        if (saved != null && restored == null) {
+            ?: return newSession(engine)
+        // A read failure throws (retry keeps the saved game); null = a card left the content.
+        val restored = GameSession.restore(engine, saved, cards.cards(saved.cardIds))
+        if (restored == null) {
             handle.remove<String>(KEY_GAME)
-            effectChannel.send(GameEffect.Abandoned)
-            return
+            return Opened.Abandoned
         }
-        session = restored ?: newSession(engine)
-        if (session == null) {
-            // A review with nothing due (the notebook only offers it when something is).
-            effectChannel.send(GameEffect.Abandoned)
-            return
-        }
-        val state = checkNotNull(session).state
-        publish(state)
-        when {
-            state.status == GameStatus.FINISHED -> onGameOver()
-
-            // ADR 0019: a restored running game always comes back paused.
-            restored != null && state.status == GameStatus.PLAYING -> dispatch(GameEvent.Pause)
-
-            else -> startIfReady()
-        }
+        return Opened.Ready(restored, restored = true)
     }
 
-    /** Null when a review wheel has no due card. */
-    private suspend fun newSession(engine: GameEngine): GameSession? {
+    /** A new game; [Opened.Abandoned] when a review wheel has no due card, [Opened.NoCards] for an empty wheel. */
+    private suspend fun newSession(engine: GameEngine): Opened {
         val mode = route.gameMode
         val category = route.categoryId ?: CategoryId.MIXED
         val seed = seeds.nextSeed()
@@ -217,7 +269,7 @@ internal class GameViewModel(
             val today = appClock.epochDay(appClock.nowMs())
             val due = Srs.dueCards(progress.observeAll().first(), today)
             val reviewWheel = WheelGenerator.review(cards.cards(due), random)
-            level = reviewWheel.slots.firstNotNullOfOrNull { it.card?.level } ?: return null
+            level = reviewWheel.slots.firstNotNullOfOrNull { it.card?.level } ?: return Opened.Abandoned
             reviewWheel
         } else {
             val recentlySeen = if (mode.usesCardHistory) {
@@ -234,10 +286,12 @@ internal class GameViewModel(
                 recentlySeen = recentlySeen,
             )
         }
+        // The engine would end such a wheel at Start (EMPTY_WHEEL); it is not a game, so nothing is recorded.
+        if (wheel.playableSlots.isEmpty()) return Opened.NoCards
         jokers.grantStartPack(config.jokerStartPack)
         val inventory = jokers.observeInventory().first()
         val initial = engine.newGame(seed = seed, mode = mode, level = level, wheel = wheel, jokers = inventory)
-        return GameSession.start(engine, initial).also { save(it) }
+        return Opened.Ready(GameSession.start(engine, initial).also { save(it) }, restored = false)
     }
 
     /** `Start` once the wheel is loaded and the screen is resumed for the first time. */

@@ -51,7 +51,11 @@ before shipping.
 | Paywall (Lexi Pro) | M7 | ink card + yellow diamond from settings; 3 plans as level-card style |
 | Notification permission pre-prompt | M7 | onboarding layout |
 | Rating prompt | M8 | `ConfirmDialog` |
-| Offline / error / empty states | M5–M7 | `EmptyState` |
+| Untimed / unscored game HUD (Practice, Review) | M5 | built: the timer bar stays empty with "SÜRESİZ" in place of the clock; the score badge counts correct answers (unscored modes score 0, content description "Doğru: N"); point-cost jokers show "ücretsiz" |
+| Result of unscored modes (Practice, Review) | M5 | built: the hero number is the correct answers with "doğru" instead of "puan"; no "kalan süre" |
+| Game load errors | M5 | built: content or saved game unreadable ⇒ `EmptyState` with "Tekrar dene" (secondary button) and a "Geri dön" link at the top of the game screen (over the decor); a level / category without any card ⇒ the empty state with only "Geri dön" (nothing is recorded) |
+| Result: review list read failure | M5 | built: `EmptyState` with "Tekrar dene" in place of the "Tekrar edilecekler" list; the counts stay |
+| Offline / error / empty states | M5–M7 | `EmptyState`; with an action (retry / back) it is `EmptyState(message, actionText, onAction, secondaryText?)`: the empty state over a full-width secondary `LexiButton`, gap 16, optional `LexiTextLink` below |
 | Hot-seat duel: player setup, handover card, duel result | M8 | big ink handover card with player name |
 | Online rooms (v1.1) | — | see `MULTIPLAYER.md` §4 — **needs design** |
 | Store screenshots | M8 | frames of real screens + headline band |

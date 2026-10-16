@@ -202,11 +202,20 @@ class GameUiMapperTest {
     }
 
     @Test
-    fun `untimed modes show point costs instead of seconds`() {
+    fun `unscored modes show their point costs as free because there is no score to take from`() {
         val ui = GameUiMapper.map(started(jokers = pack, mode = GameMode.PRACTICE), engine)
 
-        assertEquals(JokerCostUi.Points(5), ui.jokers[0].cost)
-        assertEquals(JokerCostUi.Points(5), ui.jokers[1].cost)
+        assertEquals(List(4) { JokerCostUi.Free }, ui.jokers.map { it.cost })
+        assertFalse(ui.isScored)
+    }
+
+    @Test
+    fun `hardcore costs time like classic`() {
+        val ui = GameUiMapper.map(started(jokers = pack, mode = GameMode.HARDCORE), engine)
+
+        assertEquals(JokerCostUi.Seconds(10), ui.jokers[0].cost)
+        assertEquals(JokerCostUi.Points(5), ui.jokers[2].cost)
+        assertTrue(ui.isScored)
     }
 
     @Test

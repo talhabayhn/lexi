@@ -29,9 +29,17 @@ internal data class ResultUiState(
     val hiddenRows: Int = 0,
     /** True until the review cards are loaded. */
     val isLoading: Boolean = true,
+    /** The review cards could not be read; the list shows an empty state with "Tekrar dene". */
+    val reviewError: Boolean = false,
 ) {
     /** TEKRAR OYNA is offered; not after a Daily (one scored attempt per day, `GAME_RULES.md` §5). */
     val canPlayAgain: Boolean get() = mode != GameMode.DAILY
+
+    /**
+     * The mode counts points. Unscored modes (Practice, Review) score 0 everywhere (`GAME_RULES.md` §6), so the header
+     * shows the correct answers instead of "0 puan" (DESIGN-DEBT: no design for their result).
+     */
+    val isScored: Boolean get() = mode.isScored
 }
 
 @Immutable
@@ -59,4 +67,7 @@ internal sealed interface ResultIntent {
 
     /** Speaker button of a review row. */
     data class Speak(val word: String) : ResultIntent
+
+    /** "Tekrar dene" after the review cards could not be read. */
+    data object Retry : ResultIntent
 }

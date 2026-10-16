@@ -78,6 +78,16 @@ correct = blue circle, wrong = red square, passed = yellow leaf.
 | Level test | ⚙ 120 s | no | adaptive, see §9 |
 | Duel (hot-seat / online) | per-player clocks ⚙ 150 s each | yes | §8 |
 
+Practice and Hardcore in the app (M5): Practice has no clock and never times out; it scores 0 (§6), so the HUD
+badge and the result header count correct answers instead, and joker point costs are shown as free (they take
+nothing, §7). A Practice wheel is still stored like any other: SRS applies (§10) and it counts in the statistics
+(completed wheels, streak, words per day, §11). There is no leaderboard or personal best yet; when one comes, only
+`GameMode.isScored` modes submit to it. Hardcore always has ⚙ `hardcoreTimeLimitSeconds` (the Classic time setting
+doesn't apply), its time jokers cost seconds like Classic, and the first WRONG ends the game at once (no reveal,
+reason `WRONG_IN_HARDCORE`, ×1.5 on the final total); a pass doesn't end it.
+A wheel without any playable slot (a level or category without cards) is not started in the app: the game screen
+shows "no words" with a way back and records nothing (the engine's `EMPTY_WHEEL` stays as a guard).
+
 Timer runs while the joker sheet is open (design states "Süre işlemeye devam ediyor"); stops on Pause and when
 the app goes to background.
 

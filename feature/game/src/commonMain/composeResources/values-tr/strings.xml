@@ -7,6 +7,15 @@
     <!-- motion.md #7: combo badge at streak 3, 5 and 10 (15-motion: "×3 SERİ"). -->
     <string name="game_combo_badge">×%1$d SERİ</string>
     <string name="game_score_description">Puan: %1$d</string>
+    <!-- Unscored modes (Practice, Review): the score badge counts correct answers; the timer bar has no clock -->
+    <string name="game_correct_description">Doğru: %1$d</string>
+    <string name="game_timer_untimed">SÜRESİZ</string>
+
+    <!-- Load errors (design debt: EmptyState with actions) -->
+    <string name="game_error_unreadable">Kelimeler yüklenemedi. Tekrar dene; sorun sürerse uygulamayı yeniden başlat.</string>
+    <string name="game_error_no_cards">Bu seçim için henüz kelime yok. Başka bir seviye ya da kategori seç.</string>
+    <string name="game_error_retry">Tekrar dene</string>
+    <string name="game_error_back">Geri dön</string>
 
     <!-- Rule under the big letter in the wheel centre -->
     <string name="game_rule_starts">İLE BAŞLAR</string>
@@ -91,6 +100,8 @@
     <string name="result_outcome_passed">pas geçildi</string>
     <string name="result_speak">%1$s telaffuzunu dinle</string>
     <string name="result_empty">Hepsi doğru! Bu çarkta tekrar edilecek kelime yok.</string>
+    <string name="result_review_error">Tekrar edilecek kelimeler yüklenemedi.</string>
+    <string name="result_retry">Tekrar dene</string>
     <string name="result_play_again">TEKRAR OYNA</string>
     <string name="result_share">Paylaş</string>
     <string name="result_home">Ana menüye dön</string>

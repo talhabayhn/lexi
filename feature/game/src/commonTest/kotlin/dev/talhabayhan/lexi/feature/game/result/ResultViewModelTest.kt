@@ -136,6 +136,53 @@ class ResultViewModelTest {
     }
 
     @Test
+    fun `unscored modes show the correct answers instead of the score`() = runTest {
+        assertFalse(viewModel(route(mode = GameMode.PRACTICE, remainingMs = null)).state.value.isScored)
+        assertFalse(viewModel(route(mode = GameMode.REVIEW, remainingMs = null)).state.value.isScored)
+        assertTrue(viewModel(route(mode = GameMode.HARDCORE)).state.value.isScored)
+        assertTrue(viewModel(route(mode = GameMode.CLASSIC)).state.value.isScored)
+    }
+
+    @Test
+    fun `practice results still report the cards added to the notebook`() = runTest {
+        val state = viewModel(route(mode = GameMode.PRACTICE, remainingMs = null)).state.value
+
+        assertEquals(answers.size, state.addedToNotebook)
+        assertEquals(4, state.rows.size)
+    }
+
+    @Test
+    fun `a failed read of the review cards shows the error and retry loads them`() = runTest {
+        cards.failing = true
+        val vm = viewModel()
+
+        assertTrue(vm.state.value.reviewError)
+        assertFalse(vm.state.value.isLoading)
+        assertTrue(vm.state.value.rows.isEmpty())
+        // The counts are still shown.
+        assertEquals(19, vm.state.value.correct)
+
+        cards.failing = false
+        vm.onIntent(ResultIntent.Retry)
+        runCurrent()
+
+        assertFalse(vm.state.value.reviewError)
+        assertEquals(4, vm.state.value.rows.size)
+        assertEquals(3, vm.state.value.hiddenRows)
+    }
+
+    @Test
+    fun `retry does nothing when the review cards were read`() = runTest {
+        val vm = viewModel()
+        val reads = cards.reads
+
+        vm.onIntent(ResultIntent.Retry)
+        runCurrent()
+
+        assertEquals(reads, cards.reads)
+    }
+
+    @Test
     fun `cards that left the content are skipped`() = runTest {
         val state = viewModel(route(missed = listOf("a1-apple", "a1-gone", "a1-bread"))).state.value
 

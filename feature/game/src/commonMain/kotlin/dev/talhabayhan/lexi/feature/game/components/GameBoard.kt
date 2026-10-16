@@ -41,21 +41,35 @@ import dev.talhabayhan.lexi.feature.game.GameClockUi
 import dev.talhabayhan.lexi.feature.game.KeyUi
 import dev.talhabayhan.lexi.feature.game.generated.resources.Res
 import dev.talhabayhan.lexi.feature.game.generated.resources.game_button_pause
+import dev.talhabayhan.lexi.feature.game.generated.resources.game_correct_description
 import dev.talhabayhan.lexi.feature.game.generated.resources.game_score_description
+import dev.talhabayhan.lexi.feature.game.generated.resources.game_timer_untimed
 import kotlinx.collections.immutable.ImmutableList
 import org.jetbrains.compose.resources.stringResource
 
 /**
  * Top bar: pause (48dp square on cream), the timer and the score badge, gap 8. Only this composable reads the
  * clock (ADR 0019 §3): the fill in the draw phase, the counter and warning colour through derived state, i.e. once
- * per second.
+ * per second. Unscored modes ([isScored] false: Practice, Review) have no design (DESIGN-DEBT): the badge shows
+ * [correct] instead of the score (always 0 there), and an untimed bar stays empty with "SÜRESİZ" in place of the clock.
  */
 @Composable
-internal fun GameHudBar(score: Int, clock: () -> GameClockUi, onPause: () -> Unit, modifier: Modifier = Modifier) {
+internal fun GameHudBar(
+    score: Int,
+    correct: Int,
+    isScored: Boolean,
+    clock: () -> GameClockUi,
+    onPause: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
     val seconds by remember(clock) { derivedStateOf { clock().wholeSeconds } }
     val timed by remember(clock) { derivedStateOf { clock().isTimed } }
     val warning by remember(clock) { derivedStateOf { clock().isWarning } }
-    val scoreDescription = stringResource(Res.string.game_score_description, score)
+    val badge = if (isScored) score else correct
+    val badgeDescription = stringResource(
+        if (isScored) Res.string.game_score_description else Res.string.game_correct_description,
+        badge,
+    )
     Row(
         modifier = modifier.height(GameHudDefaults.BarHeight),
         horizontalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap8),
@@ -71,13 +85,13 @@ internal fun GameHudBar(score: Int, clock: () -> GameClockUi, onPause: () -> Uni
         TimerBar(
             // DESIGN-DEBT: untimed modes (Practice, Review) have no timer design; the bar stays empty.
             progress = { clock().fraction },
-            timeText = if (timed) formatClock(seconds) else "",
+            timeText = if (timed) formatClock(seconds) else stringResource(Res.string.game_timer_untimed),
             warning = warning,
             modifier = Modifier.weight(1f),
         )
         ScoreBadge(
-            score = score.toString(),
-            modifier = Modifier.clearAndSetSemantics { contentDescription = scoreDescription },
+            score = badge.toString(),
+            modifier = Modifier.clearAndSetSemantics { contentDescription = badgeDescription },
         )
     }
 }

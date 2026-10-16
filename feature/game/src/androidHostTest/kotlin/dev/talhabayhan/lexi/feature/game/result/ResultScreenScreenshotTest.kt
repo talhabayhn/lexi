@@ -63,4 +63,20 @@ class ResultScreenScreenshotTest {
             }
         }
     }
+
+    /** Design debt: Practice is unscored, so the header shows the correct answers instead of "0 puan"; no time left. */
+    @Test
+    fun practice() {
+        captureRoboImage("src/androidHostTest/screenshots/ResultScreenPractice.png") {
+            LexiTheme(reducedMotion = false) { ResultScreen(state = ResultSamples.practice, onIntent = {}) }
+        }
+    }
+
+    /** Design debt: the review cards could not be read; the list offers a retry. */
+    @Test
+    fun reviewError() {
+        captureRoboImage("src/androidHostTest/screenshots/ResultScreenReviewError.png") {
+            LexiTheme(reducedMotion = false) { ResultScreen(state = ResultSamples.reviewError, onIntent = {}) }
+        }
+    }
 }

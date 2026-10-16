@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
@@ -27,6 +28,7 @@ import dev.talhabayhan.lexi.core.designsystem.component.ActionCircleButton
 import dev.talhabayhan.lexi.core.designsystem.component.ClueCard
 import dev.talhabayhan.lexi.core.designsystem.component.DecorShape
 import dev.talhabayhan.lexi.core.designsystem.component.DecorShapeKind
+import dev.talhabayhan.lexi.core.designsystem.component.EmptyState
 import dev.talhabayhan.lexi.core.designsystem.component.GameScreenDefaults
 import dev.talhabayhan.lexi.core.designsystem.component.IconSquareButton
 import dev.talhabayhan.lexi.core.designsystem.component.LetterWheel
@@ -52,6 +54,10 @@ import dev.talhabayhan.lexi.feature.game.generated.resources.game_button_backspa
 import dev.talhabayhan.lexi.feature.game.generated.resources.game_button_joker
 import dev.talhabayhan.lexi.feature.game.generated.resources.game_button_pass
 import dev.talhabayhan.lexi.feature.game.generated.resources.game_clue_label
+import dev.talhabayhan.lexi.feature.game.generated.resources.game_error_back
+import dev.talhabayhan.lexi.feature.game.generated.resources.game_error_no_cards
+import dev.talhabayhan.lexi.feature.game.generated.resources.game_error_retry
+import dev.talhabayhan.lexi.feature.game.generated.resources.game_error_unreadable
 import dev.talhabayhan.lexi.feature.game.generated.resources.game_letter_count
 import dev.talhabayhan.lexi.feature.game.generated.resources.game_pos_adj
 import dev.talhabayhan.lexi.feature.game.generated.resources.game_pos_adv
@@ -88,7 +94,10 @@ internal fun GameScreen(
     val dimens = LexiTheme.dimens
     BoxWithConstraints(modifier.fillMaxSize().background(LexiTheme.colors.cream)) {
         GameDecor()
-        if (!state.isLoading) {
+        val loadError = state.loadError
+        if (loadError != null) {
+            GameLoadErrorContent(loadError, onIntent)
+        } else if (!state.isLoading) {
             val short = maxHeight < GameScreenDefaults.ShortScreenHeight
             val gapScale = if (short) GameScreenDefaults.SHORT_SCREEN_GAP_SCALE else 1f
             val turn = state.turn
@@ -98,8 +107,10 @@ internal fun GameScreen(
                 maxWheelSize = if (short) GameScreenDefaults.ShortScreenWheelSize else LetterWheelDefaults.Size,
                 hud = {
                     GameHudBar(
-                        state.score,
-                        clock,
+                        score = state.score,
+                        correct = state.correct,
+                        isScored = state.isScored,
+                        clock = clock,
                         onPause = { onIntent(GameIntent.Pause) },
                         modifier = Modifier.onPlaced(motion::onHudPlaced),
                     )
@@ -172,6 +183,42 @@ internal fun GameScreen(
             onIntent = onIntent,
         )
         if (state.isPaused) PauseDialog(quitConfirmation = state.isQuitConfirmation, onIntent = onIntent)
+    }
+}
+
+/**
+ * A game that could not be loaded (DESIGN-DEBT: no design; `EmptyState` with actions from the component library) at
+ * the top of the screen with the design paddings: unreadable content offers "Tekrar dene" and "Geri dön", a wheel
+ * without cards only "Geri dön".
+ */
+@Composable
+private fun GameLoadErrorContent(error: GameLoadError, onIntent: (GameIntent) -> Unit) {
+    val dimens = LexiTheme.dimens
+    val modifier = Modifier
+        .fillMaxWidth()
+        .windowInsetsPadding(WindowInsets.safeDrawing)
+        .padding(
+            start = dimens.screenPaddingHorizontal,
+            top = dimens.screenPaddingTop,
+            end = dimens.screenPaddingHorizontal,
+            bottom = dimens.screenPaddingBottom,
+        )
+    when (error) {
+        GameLoadError.Unreadable -> EmptyState(
+            message = stringResource(Res.string.game_error_unreadable),
+            actionText = stringResource(Res.string.game_error_retry),
+            onAction = { onIntent(GameIntent.Retry) },
+            secondaryText = stringResource(Res.string.game_error_back),
+            onSecondary = { onIntent(GameIntent.Leave) },
+            modifier = modifier,
+        )
+
+        GameLoadError.NoCards -> EmptyState(
+            message = stringResource(Res.string.game_error_no_cards),
+            actionText = stringResource(Res.string.game_error_back),
+            onAction = { onIntent(GameIntent.Leave) },
+            modifier = modifier,
+        )
     }
 }
 
@@ -268,6 +315,22 @@ private fun GameScreenWrongRevealPreview() {
 private fun GameScreenJokerSheetPreview() {
     LexiTheme(reducedMotion = false) {
         GameScreen(state = GameSamples.jokerSheet, clock = { GameSamples.jokerSheetClock }, onIntent = {})
+    }
+}
+
+@Preview(widthDp = 390, heightDp = 844)
+@Composable
+private fun GameScreenPracticePreview() {
+    LexiTheme(reducedMotion = false) {
+        GameScreen(state = GameSamples.practice, clock = { GameClockUi.Untimed }, onIntent = {})
+    }
+}
+
+@Preview(widthDp = 390, heightDp = 844)
+@Composable
+private fun GameScreenLoadErrorPreview() {
+    LexiTheme(reducedMotion = false) {
+        GameScreen(state = GameSamples.loadError, clock = { GameClockUi.Untimed }, onIntent = {})
     }
 }
 

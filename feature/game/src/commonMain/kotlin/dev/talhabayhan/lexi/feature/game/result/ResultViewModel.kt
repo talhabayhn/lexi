@@ -13,6 +13,7 @@ import dev.talhabayhan.lexi.core.domain.repository.CardRepository
 import dev.talhabayhan.lexi.feature.game.GameRoute
 import kotlinx.collections.immutable.toImmutableList
 import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -48,8 +49,11 @@ internal class ResultViewModel(
     private var allRows: List<ReviewRowUi> = emptyList()
     private var expanded = false
 
+    /** The running [load], so a double tap on "Tekrar dene" reads once. */
+    private var loading: Job? = null
+
     init {
-        viewModelScope.launch { load() }
+        loading = viewModelScope.launch { load() }
     }
 
     fun onIntent(intent: ResultIntent) {
@@ -60,6 +64,11 @@ internal class ResultViewModel(
             }
 
             is ResultIntent.Speak -> speaker.speak(intent.word)
+
+            ResultIntent.Retry -> if (mutableState.value.reviewError && loading?.isActive != true) {
+                mutableState.update { it.copy(isLoading = true, reviewError = false) }
+                loading = viewModelScope.launch { load() }
+            }
 
             // Navigation (route composable) and the share card (M6).
             ResultIntent.PlayAgain, ResultIntent.Share, ResultIntent.Home -> Unit
@@ -77,9 +86,10 @@ internal class ResultViewModel(
         } catch (e: CancellationException) {
             throw e
         } catch (e: Exception) {
-            // TODO(M7): report through the crash reporter. The counts are still shown, the list stays empty.
+            // TODO(M7): report through the crash reporter. The counts are still shown; the list offers a retry.
             log.e(e) { "review cards not loaded" }
-            emptyMap()
+            mutableState.update { it.copy(isLoading = false, reviewError = true) }
+            return
         }
         val passed = route.passedCards.toSet()
         // A card that left the content since the game is skipped (its progress is kept, CONTENT.md §8).

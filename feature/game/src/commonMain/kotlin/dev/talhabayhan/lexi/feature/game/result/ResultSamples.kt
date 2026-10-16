@@ -31,6 +31,12 @@ internal object ResultSamples {
         isLoading = false,
     )
 
+    /** Practice (design debt): unscored, untimed; the header shows the 19 correct answers instead of "0 puan". */
+    val practice: ResultUiState = design.copy(mode = GameMode.PRACTICE, score = 0, remainingSeconds = null)
+
+    /** The review cards could not be read (design debt): the list offers "Tekrar dene". */
+    val reviewError: ResultUiState = design.copy(rows = persistentListOf(), hiddenRows = 0, reviewError = true)
+
     /** Long texts (English UI): a B2 hardcore game lost on the first miss, multi-word answers, wrapping examples. */
     val longText: ResultUiState = ResultUiState(
         level = Level.B2,

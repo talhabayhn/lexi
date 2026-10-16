@@ -36,6 +36,7 @@ internal data class GameFeedback(val haptic: HapticKind?, val sound: SoundEffect
             is GameEffect.Advanced,
             is GameEffect.NavigateToResult,
             GameEffect.Abandoned,
+            GameEffect.NavigateBack,
             -> null
         }
     }

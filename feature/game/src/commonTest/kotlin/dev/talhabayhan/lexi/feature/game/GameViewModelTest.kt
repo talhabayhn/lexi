@@ -851,6 +851,176 @@ class GameViewModelTest {
         assertTrue(vm.state.value.inputEnabled)
     }
 
+    // region modes (GAME_RULES.md §5, §6)
+
+    private fun TestScope.startedIn(mode: GameMode): GameViewModel =
+        viewModel(gameRoute = GameRoute(Level.A1, mode)).also {
+            runCurrent()
+            it.onIntent(GameIntent.Foreground)
+        }
+
+    @Test
+    fun `practice has no clock and never runs out of time`() = runTest {
+        val vm = startedIn(GameMode.PRACTICE)
+        vm.effects.test {
+            awaitStart()
+            advance(30 * 60_000L)
+
+            assertEquals(GameClockUi.Untimed, vm.clock.value)
+            assertTrue(vm.state.value.inputEnabled)
+            assertEquals('A', vm.state.value.turn?.letter)
+            expectNoEvents()
+            vm.onIntent(GameIntent.Background)
+        }
+    }
+
+    @Test
+    fun `practice scores nothing but counts correct answers and still updates the notebook`() = runTest {
+        val vm = startedIn(GameMode.PRACTICE)
+        vm.effects.test {
+            vm.type("APPLE")
+            assertFalse(vm.state.value.isScored)
+            assertEquals(1, vm.state.value.correct)
+            assertEquals(0, vm.state.value.score)
+            vm.type("BRADE")
+            advance(config.revealMs)
+            vm.type("CHAIR")
+
+            val result = awaitResult()
+            assertEquals("PRACTICE", result.mode)
+            assertEquals("ALL_ANSWERED", result.reason)
+            assertEquals(0, result.score)
+            assertNull(result.remainingMs)
+            assertEquals(listOf(2, 1, 0), listOf(result.correct, result.wrong, result.passed))
+            assertTrue(result.recorded)
+            // Recorded like any wheel (stats count it, GAME_RULES.md §11), but with 0 points.
+            val session = sessions.sessions.single()
+            assertEquals(GameMode.PRACTICE, session.mode)
+            assertEquals(0, session.score)
+            assertTrue(session.completed)
+            // Still SRS (GAME_RULES.md §5): the wrong card goes into box 0.
+            assertEquals(0, progress.progress.getValue(CardId("a1-bread")).box)
+            cancelAndIgnoreRemainingEvents()
+        }
+    }
+
+    @Test
+    fun `hardcore ends at the first wrong answer and scores times 1_5`() = runTest {
+        val vm = startedIn(GameMode.HARDCORE)
+        assertEquals(config.hardcoreTimeLimitSeconds * 1_000L, vm.remainingMs)
+        assertTrue(vm.state.value.isScored)
+        vm.effects.test {
+            vm.type("APPLE")
+            assertEquals(10, vm.state.value.score)
+            vm.type("BRADE")
+
+            val result = awaitResult()
+            assertEquals("HARDCORE", result.mode)
+            assertEquals("WRONG_IN_HARDCORE", result.reason)
+            // 10 points × 1.5 on the final total.
+            assertEquals(15, result.score)
+            assertEquals(listOf(1, 1, 0), listOf(result.correct, result.wrong, result.passed))
+            assertEquals(listOf("a1-bread"), result.missedCards)
+            val session = sessions.sessions.single()
+            assertEquals(GameMode.HARDCORE, session.mode)
+            assertEquals(15, session.score)
+            assertFalse(session.completed)
+            assertEquals(0, progress.progress.getValue(CardId("a1-bread")).box)
+            // The game is over at once: no reveal, no ticker, nothing recorded twice.
+            advance(10_000L)
+            assertEquals(1, sessions.recordCalls)
+            expectNoEvents()
+        }
+    }
+
+    // endregion
+
+    // region load errors
+
+    @Test
+    fun `an unreadable content shows the load error and retry starts the game`() = runTest {
+        cards.failing = true
+        val vm = startedIn(GameMode.CLASSIC)
+
+        assertEquals(GameLoadError.Unreadable, vm.state.value.loadError)
+        assertFalse(vm.state.value.isLoading)
+        assertEquals(0, sessions.recordCalls)
+
+        cards.failing = false
+        vm.onIntent(GameIntent.Retry)
+        assertTrue(vm.state.value.isLoading)
+        runCurrent()
+
+        assertNull(vm.state.value.loadError)
+        assertFalse(vm.state.value.isLoading)
+        assertEquals('A', vm.state.value.turn?.letter)
+        assertEquals(180_000L, vm.remainingMs)
+        vm.onIntent(GameIntent.Background)
+    }
+
+    @Test
+    fun `a wheel without cards shows the no-cards error and records nothing and leave goes back`() = runTest {
+        val vm = viewModel(gameRoute = GameRoute(Level.B2, GameMode.CLASSIC))
+        vm.effects.test {
+            runCurrent()
+            vm.onIntent(GameIntent.Foreground)
+
+            assertEquals(GameLoadError.NoCards, vm.state.value.loadError)
+            assertEquals(0, sessions.recordCalls)
+            assertEquals(1, cards.reads)
+            // Nothing to retry: the content is there, it just has no card for this choice.
+            vm.onIntent(GameIntent.Retry)
+            runCurrent()
+            assertEquals(1, cards.reads)
+
+            vm.onIntent(GameIntent.Leave)
+            assertEquals(GameEffect.NavigateBack, awaitItem())
+        }
+    }
+
+    @Test
+    fun `leave does nothing while the game loads normally`() = runTest {
+        val vm = startedIn(GameMode.CLASSIC)
+        vm.effects.test {
+            awaitStart()
+            vm.onIntent(GameIntent.Leave)
+            vm.onIntent(GameIntent.Retry)
+            runCurrent()
+            expectNoEvents()
+            assertEquals(1, cards.reads)
+            vm.onIntent(GameIntent.Background)
+        }
+    }
+
+    @Test
+    fun `a saved game that cannot be read keeps its snapshot and retry restores it paused`() = runTest {
+        val handle = routeHandle()
+        val first = started(handle)
+        first.type("APPLE")
+        first.onIntent(GameIntent.Background)
+        val saved = assertNotNull(handle.get<String>(GameViewModel.KEY_GAME))
+
+        cards.failing = true
+        val restoredHandle = routeHandle(mapOf(GameViewModel.KEY_GAME to saved))
+        val restored = viewModel(restoredHandle).also {
+            runCurrent()
+            it.onIntent(GameIntent.Foreground)
+        }
+        assertEquals(GameLoadError.Unreadable, restored.state.value.loadError)
+        assertEquals(saved, restoredHandle.get<String>(GameViewModel.KEY_GAME))
+
+        cards.failing = false
+        restored.onIntent(GameIntent.Retry)
+        runCurrent()
+
+        assertNull(restored.state.value.loadError)
+        assertTrue(restored.state.value.isPaused)
+        assertEquals('B', restored.state.value.turn?.letter)
+        assertEquals(10, restored.state.value.score)
+    }
+
+    // endregion
+
     private fun decodeFinished(snapshot: String): GameStatus {
         val saved = checkNotNull(SavedGameCodec.decodeOrNull(snapshot))
         return checkNotNull(saved.restore(cards.cards, GameEngine(config))).status

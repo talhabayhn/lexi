@@ -71,6 +71,8 @@ import dev.talhabayhan.lexi.feature.game.generated.resources.result_reason_empty
 import dev.talhabayhan.lexi.feature.game.generated.resources.result_reason_forfeit
 import dev.talhabayhan.lexi.feature.game.generated.resources.result_reason_time_up
 import dev.talhabayhan.lexi.feature.game.generated.resources.result_reason_wrong_in_hardcore
+import dev.talhabayhan.lexi.feature.game.generated.resources.result_retry
+import dev.talhabayhan.lexi.feature.game.generated.resources.result_review_error
 import dev.talhabayhan.lexi.feature.game.generated.resources.result_review_title
 import dev.talhabayhan.lexi.feature.game.generated.resources.result_share
 import dev.talhabayhan.lexi.feature.game.generated.resources.result_speak
@@ -140,7 +142,7 @@ internal fun ResultScreen(state: ResultUiState, onIntent: (ResultIntent) -> Unit
 private fun Header(state: ResultUiState) {
     val typography = LexiTheme.typography
     val summary = buildList {
-        add(stringResource(Res.string.result_points))
+        add(stringResource(if (state.isScored) Res.string.result_points else Res.string.result_correct))
         if (state.longestStreak > 0) add(stringResource(Res.string.result_best_streak, state.longestStreak))
         state.remainingSeconds?.let { add(stringResource(Res.string.result_time_left, formatClock(it))) }
     }.joinToString(SEPARATOR)
@@ -154,7 +156,7 @@ private fun Header(state: ResultUiState) {
             ),
             style = typography.label13,
         )
-        Text(state.score.toString(), style = typography.scoreHero)
+        Text((if (state.isScored) state.score else state.correct).toString(), style = typography.scoreHero)
         Text(summary, style = typography.body15SemiBold)
     }
 }
@@ -210,6 +212,14 @@ private fun Review(state: ResultUiState, onIntent: (ResultIntent) -> Unit) {
         }
         when {
             state.isLoading -> Unit
+
+            // DESIGN-DEBT: no design for a failed read; the component library's empty state with a retry.
+            state.reviewError -> EmptyState(
+                message = stringResource(Res.string.result_review_error),
+                actionText = stringResource(Res.string.result_retry),
+                onAction = { onIntent(ResultIntent.Retry) },
+                modifier = Modifier.fillMaxWidth(),
+            )
 
             // DESIGN-DEBT: no design for a wheel without misses; the component library's empty state.
             state.rows.isEmpty() -> EmptyState(stringResource(Res.string.result_empty), Modifier.fillMaxWidth())

@@ -103,6 +103,7 @@ fun LexiNavHost(modifier: Modifier = Modifier) {
                 }
             },
             onAbandoned = { navController.backToHome() },
+            onBack = { navController.ifResumed { popBackStack() } },
         )
         resultScreen(
             onPlayAgain = { game ->

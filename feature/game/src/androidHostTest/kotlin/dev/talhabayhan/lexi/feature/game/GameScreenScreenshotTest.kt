@@ -109,4 +109,35 @@ class GameScreenScreenshotTest {
             }
         }
     }
+
+    /** Design debt: Practice has no clock ("SÜRESİZ") and the badge counts correct answers. */
+    @Test
+    fun practice() {
+        captureRoboImage("src/androidHostTest/screenshots/GameScreenPractice.png") {
+            LexiTheme(reducedMotion = false) {
+                GameScreen(state = GameSamples.practice, clock = { GameClockUi.Untimed }, onIntent = {})
+            }
+        }
+    }
+
+    /** Design debt: the content could not be read; retry or go back. */
+    @Test
+    fun loadError() {
+        captureRoboImage("src/androidHostTest/screenshots/GameScreenLoadError.png") {
+            LexiTheme(reducedMotion = false) {
+                GameScreen(state = GameSamples.loadError, clock = { GameClockUi.Untimed }, onIntent = {})
+            }
+        }
+    }
+
+    /** Design debt: no card for the chosen level / category; only back. English copy is longer. */
+    @Test
+    @Config(qualifiers = "en-w390dp-h844dp-xhdpi")
+    fun noCardsEnglish() {
+        captureRoboImage("src/androidHostTest/screenshots/GameScreenNoCardsEnglish.png") {
+            LexiTheme(reducedMotion = false) {
+                GameScreen(state = GameSamples.noCards, clock = { GameClockUi.Untimed }, onIntent = {})
+            }
+        }
+    }
 }

@@ -7,6 +7,15 @@
     <!-- motion.md #7: combo badge at streak 3, 5 and 10 (15-motion: "×3 SERİ"). -->
     <string name="game_combo_badge">×%1$d STREAK</string>
     <string name="game_score_description">Score: %1$d</string>
+    <!-- Unscored modes (Practice, Review): the score badge counts correct answers; the timer bar has no clock -->
+    <string name="game_correct_description">Correct: %1$d</string>
+    <string name="game_timer_untimed">NO TIMER</string>
+
+    <!-- Load errors (design debt: EmptyState with actions) -->
+    <string name="game_error_unreadable">The words could not be loaded. Try again; if it keeps happening, restart the app.</string>
+    <string name="game_error_no_cards">There are no words for this choice yet. Pick another level or category.</string>
+    <string name="game_error_retry">Try again</string>
+    <string name="game_error_back">Go back</string>
 
     <!-- Rule under the big letter in the wheel centre -->
     <string name="game_rule_starts">FIRST LETTER</string>
@@ -91,6 +100,8 @@
     <string name="result_outcome_passed">passed</string>
     <string name="result_speak">Listen to %1$s</string>
     <string name="result_empty">All correct! Nothing to review from this wheel.</string>
+    <string name="result_review_error">The words to review could not be loaded.</string>
+    <string name="result_retry">Try again</string>
     <string name="result_play_again">PLAY AGAIN</string>
     <string name="result_share">Share</string>
     <string name="result_home">Back to menu</string>

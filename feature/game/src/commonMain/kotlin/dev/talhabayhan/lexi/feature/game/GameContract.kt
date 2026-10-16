@@ -19,12 +19,18 @@ import kotlinx.collections.immutable.persistentListOf
  */
 @Immutable
 internal data class GameUiState(
-    /** True until the wheel is loaded and the game has started. */
+    /** True until the wheel is loaded and the game has started (false once [loadError] is set). */
     val isLoading: Boolean = true,
+    /** The game could not be loaded; the screen shows an empty state with retry / back instead of the board. */
+    val loadError: GameLoadError? = null,
     /** Playable wheel letters in A–Z order (SKIPPED letters are not shown, `GAME_RULES.md` §1). */
     val wheel: ImmutableList<WheelLetterUi> = persistentListOf(),
     /** Running score (without time bonus). */
     val score: Int = 0,
+    /** Correct answers so far; the score badge shows them in unscored modes (Practice, Review). */
+    val correct: Int = 0,
+    /** The mode counts points (`GameMode.isScored`); unscored modes score 0 everywhere (`GAME_RULES.md` §6). */
+    val isScored: Boolean = true,
     /** The current slot; after game over the last one stays visible until the screen leaves. */
     val turn: GameTurnUi? = null,
     val isPaused: Boolean = false,
@@ -41,6 +47,15 @@ internal data class GameUiState(
     /** The pause dialog asks to confirm giving up ("Bırak"). Only while [isPaused]. */
     val isQuitConfirmation: Boolean = false,
 )
+
+/** Why a game could not be loaded (design debt: `EmptyState` with actions, `screen-map.md`). */
+internal enum class GameLoadError {
+    /** The content or the saved game could not be read: retry or go back. */
+    Unreadable,
+
+    /** The level / category has no card for any letter: go back. */
+    NoCards,
+}
 
 /** One joker of the sheet. [enabled] = `GameEngine.canUseJoker` (inventory, one per slot, mode, level, cost). */
 @Immutable
@@ -133,6 +148,12 @@ internal sealed interface GameIntent {
      */
     data object Back : GameIntent
 
+    /** "Tekrar dene" of the load error: loads the game again. */
+    data object Retry : GameIntent
+
+    /** "Geri dön" of the load error: leaves the screen. */
+    data object Leave : GameIntent
+
     /** Screen left RESUMED (ON_PAUSE): charge the time so far, stop the clock, pause. */
     data object Background : GameIntent
 
@@ -168,4 +189,7 @@ internal sealed interface GameEffect {
 
     /** The game can't be played (a restored game's card is no longer in the content); leave the screen. */
     data object Abandoned : GameEffect
+
+    /** The player left a game that could not be loaded ([GameIntent.Leave]): back to the previous screen. */
+    data object NavigateBack : GameEffect
 }

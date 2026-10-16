@@ -34,7 +34,7 @@ each with a `@Preview` and a Roborazzi screenshot. Feature screens compose ONLY 
 | `BottomSheet` / `BottomSheetPanel` / `ModalScrim` | joker sheet | cream, 4dp top border, scrim 55%; overlays at the screen root |
 | `JokerRow` / `StatusPill` | enabled, disabled (50 %, no shadow) | joker sheet row: 40dp count chip, title 17/800, text 13/500, cost chip; white pill "Süre işlemeye devam ediyor · 1:31" (`05-joker-sheet`) |
 | `ReviewRow` / `ReviewMoreRow` | wrong (red square), passed (yellow leaf) | result list row: 34dp letter chip, word 19/800, "clue · *example*", 44dp speaker; "+N kelime daha · Tümünü gör →" (`06-result`) |
-| `EmptyState` | — | dashed 3dp border, overlapping circle+square illustration |
+| `EmptyState` | plain; with action (design debt: + full-width secondary button, gap 16, optional text link) | dashed 3dp border, overlapping circle+square illustration |
 | `LexiLogo` / `LexiWordmark` / `LexiLogoMark` / `LexiAppIcon` | full (4 blocks: Hero, Splash, Menu), compact wordmark, shape mark, icon option 1 | `13-logo-and-icon` |
 | `DecorShape` | circle, square, halfPill, leaf, diamond | markers and background decoration; size includes the border (HTML markers are content-box) |
 | `HardShadow` modifier | s3–s8, color | core primitive |

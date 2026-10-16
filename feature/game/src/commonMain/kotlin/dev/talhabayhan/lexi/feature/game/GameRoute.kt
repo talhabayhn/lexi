@@ -50,11 +50,12 @@ data class GameRoute(val level: String, val mode: String, val category: String? 
 
 /**
  * Registers the game screen. [onFinished] runs after the finished game is recorded, with the result to show;
- * [onAbandoned] when a restored game can no longer be played.
+ * [onAbandoned] when a restored game can no longer be played; [onBack] when the player leaves a game that could not
+ * be loaded ("Geri dön").
  */
-fun NavGraphBuilder.gameScreen(onFinished: (ResultRoute) -> Unit, onAbandoned: () -> Unit) {
+fun NavGraphBuilder.gameScreen(onFinished: (ResultRoute) -> Unit, onAbandoned: () -> Unit, onBack: () -> Unit) {
     composable<GameRoute> {
-        GameRoute(onFinished = onFinished, onAbandoned = onAbandoned)
+        GameRoute(onFinished = onFinished, onAbandoned = onAbandoned, onBack = onBack)
     }
 }
 
@@ -62,6 +63,7 @@ fun NavGraphBuilder.gameScreen(onFinished: (ResultRoute) -> Unit, onAbandoned: (
 internal fun GameRoute(
     onFinished: (ResultRoute) -> Unit,
     onAbandoned: () -> Unit,
+    onBack: () -> Unit,
     viewModel: GameViewModel = koinViewModel(),
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
@@ -70,6 +72,7 @@ internal fun GameRoute(
     val motion = rememberGameMotion(LexiTheme.motion)
     val currentOnFinished by rememberUpdatedState(onFinished)
     val currentOnAbandoned by rememberUpdatedState(onAbandoned)
+    val currentOnBack by rememberUpdatedState(onBack)
     val lifecycleOwner = LocalLifecycleOwner.current
     LaunchedEffect(viewModel, lifecycleOwner, motion) {
         lifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -77,14 +80,18 @@ internal fun GameRoute(
                 when (effect) {
                     is GameEffect.NavigateToResult -> currentOnFinished(effect.result)
                     GameEffect.Abandoned -> currentOnAbandoned()
+                    GameEffect.NavigateBack -> currentOnBack()
                     else -> launch { motion.play(effect) }
                 }
             }
         }
     }
-    // System back on both platforms: sheet → closed, running game → paused (GameIntent.Back). While loading, back
-    // leaves the screen as usual.
-    GameBackHandler(enabled = !state.isLoading, onBack = { viewModel.onIntent(GameIntent.Back) })
+    // System back on both platforms: sheet → closed, running game → paused (GameIntent.Back). While loading or after
+    // a load error, back leaves the screen as usual.
+    GameBackHandler(
+        enabled = !state.isLoading && state.loadError == null,
+        onBack = { viewModel.onIntent(GameIntent.Back) },
+    )
     val readClock = remember(clock) { { clock.value } }
     GameScreen(state = state, clock = readClock, onIntent = viewModel::onIntent, motion = motion)
 }
