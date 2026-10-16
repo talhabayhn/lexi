@@ -1,0 +1,96 @@
+id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
+nat-quaint,QUAINT,Q,STARTS,adj,"(dükkân, gelenek) eski usul ve sevimli",We found a quaint little shop.,"Eski usul, sevimli küçük bir dükkân bulduk.",4,,travel
+nat-quash,QUASH,Q,STARTS,verb,"(mahkeme kararını, söylentiyi) geçersiz kılıp bastırmak",The court decided to quash the verdict.,Mahkeme hükmü bozmaya karar verdi.,5,,school-work
+nat-quibble,QUIBBLE,Q,STARTS,verb,önemsiz ayrıntılar için itiraz edip tartışmak,Let's not quibble over a few pounds.,Birkaç sterlin için tartışmayalım.,5,,school-work
+nat-quintessential,QUINTESSENTIAL,Q,STARTS,adj,"bir şeyin en tipik, en saf örneği olan",Fish and chips is the quintessential British meal.,Balık ve patates kızartması en tipik İngiliz yemeğidir.,5,,school-work
+nat-quixotic,QUIXOTIC,Q,STARTS,adj,"hayalperest, gerçek dışı derecede idealist",It was a quixotic attempt to end all wars.,Tüm savaşları bitirmeye yönelik hayalperest bir girişimdi.,5,,school-work
+nat-quagmire,QUAGMIRE,Q,STARTS,noun,içinden çıkılmaz bataklık gibi durum,The war became a political quagmire.,Savaş siyasi bir bataklığa dönüştü.,5,,school-work
+nat-squander,SQUANDER,Q,CONTAINS,verb,"(para, fırsat) çarçur etmek, heba etmek",Don't squander this chance.,Bu fırsatı heba etme.,4,,school-work
+nat-squalid,SQUALID,Q,CONTAINS,adj,"(konut) pis, bakımsız ve sefil",They lived in squalid conditions.,Pis ve sefil koşullarda yaşıyorlardı.,5,,school-work
+nat-antiquated,ANTIQUATED,Q,CONTAINS,adj,"(yöntem, yasa) çağ dışı, köhne",The office uses antiquated computers.,Ofis köhne bilgisayarlar kullanıyor.,4,,technology
+nat-chequered,CHEQUERED,Q,CONTAINS,adj,"(geçmiş, kariyer) iniş çıkışlı ve lekeli",He has a chequered past.,"İnişli çıkışlı, lekeli bir geçmişi var.",5,,school-work
+nat-soliloquy,SOLILOQUY,Q,CONTAINS,noun,oyuncunun sahnede kendi kendine konuşması,Hamlet's soliloquy is famous.,Hamlet'in sahnede kendi kendine konuşması ünlüdür.,5,,film-tv
+nat-ubiquitous,UBIQUITOUS,Q,CONTAINS,adj,"her yerde karşına çıkan, her yerde bulunan",Smartphones are now ubiquitous.,Akıllı telefonlar artık her yerde.,4,,technology
+nat-equanimity,EQUANIMITY,Q,CONTAINS,noun,"zor anda bile bozulmayan soğukkanlılık, ruh dengesi",She accepted the bad news with equanimity.,Kötü haberi sükûnetle karşıladı.,5,,school-work
+nat-obsequious,OBSEQUIOUS,Q,CONTAINS,adj,"aşırı itaatkâr, dalkavukça",The obsequious waiter bowed again and again.,Dalkavuk garson tekrar tekrar eğildi.,5,,school-work
+nat-brusque,BRUSQUE,Q,CONTAINS,adj,kabalığa varacak kadar kısa ve ters,Her brusque reply hurt me.,Ters ve kısa cevabı beni kırdı.,5,,school-work
+nat-grotesque,GROTESQUE,Q,CONTAINS,adj,ürkütücü derecede çirkin ve biçimsiz,The mask had a grotesque face.,Maskenin ürkütücü derecede çirkin bir yüzü vardı.,4,,school-work
+nat-picturesque,PICTURESQUE,Q,CONTAINS,adj,"(köy, manzara) resim gibi güzel",We drove through picturesque villages.,Resim gibi güzel köylerin içinden geçtik.,4,,travel
+nat-exquisite,EXQUISITE,Q,CONTAINS,adj,olağanüstü zarif ve ince güzellikte,She has exquisite taste in jewellery.,Mücevher konusunda son derece zarif bir zevki var.,4,,school-work
+nat-loquacious,LOQUACIOUS,Q,CONTAINS,adj,"konuşmayı çok seven, dilli",Our loquacious guide told endless stories.,Konuşkan rehberimiz bitmek bilmeyen hikâyeler anlattı.,5,,school-work
+nat-pique,PIQUE,Q,CONTAINS,noun,gururu incinmiş birinin anlık öfkesi,She left the room in a fit of pique.,Gururu incinmiş bir öfkeyle odadan çıktı.,5,,school-work
+nat-relinquish,RELINQUISH,Q,CONTAINS,verb,"(hak, yetki) istemeyerek bırakmak, devretmek",He refused to relinquish control of the company.,Şirketin kontrolünü bırakmayı reddetti.,5,,business
+nat-ramble,RAMBLE,R,STARTS,verb,konudan konuya atlayıp uzun uzun konuşmak,Old men tend to ramble about the past.,Yaşlı adamlar geçmiş hakkında konudan konuya atlayıp durur.,4,,school-work
+nat-rancour,RANCOUR,R,STARTS,noun,taraflar arasında süregelen acı husumet,There was no rancour between the old rivals.,Eski rakipler arasında hiç kin kalmamıştı.,5,,school-work
+nat-rapacious,RAPACIOUS,R,STARTS,adj,"doymak bilmez açgözlü, yağmacı",The rapacious landlord raised the rent again.,Açgözlü ev sahibi kirayı yine artırdı.,5,,school-work
+nat-rapport,RAPPORT,R,STARTS,noun,iki kişi arasında kurulan sıcak uyum ve anlayış,The teacher has a good rapport with her pupils.,Öğretmenin öğrencileriyle arası çok iyi.,4,,school-work
+nat-raucous,RAUCOUS,R,STARTS,adj,"(kahkaha, ses) kulak tırmalayacak kadar gürültülü",We heard raucous laughter from the bar.,Bardan kulak tırmalayan kahkahalar duyduk.,5,,school-work
+nat-ravenous,RAVENOUS,R,STARTS,adj,kurt gibi aç,"After the hike, we were ravenous.",Yürüyüşten sonra kurt gibi açtık.,4,,school-work
+nat-recant,RECANT,R,STARTS,verb,"(inancından, görüşünden) baskıyla açıkça dönmek",He was forced to recant his views.,Görüşlerinden açıkça dönmeye zorlandı.,5,,school-work
+nat-recluse,RECLUSE,R,STARTS,noun,"insanlardan uzak, tek başına yaşayan kişi",The famous writer lived as a recluse.,"Ünlü yazar insanlardan uzak, tek başına yaşadı.",5,,school-work
+nat-refute,REFUTE,R,STARTS,verb,(iddiayı) kanıtla çürütmek,The data refute his theory.,Veriler onun kuramını çürütüyor.,5,,school-work
+nat-relegate,RELEGATE,R,STARTS,verb,(takımı) küme düşürmek; daha alt sıraya itmek,A loss could relegate the club.,Bir yenilgi kulübü küme düşürebilir.,5,,sports
+nat-reminisce,REMINISCE,R,STARTS,verb,eski günleri tatlı tatlı anıp konuşmak,We sat by the fire to reminisce about school.,Okul günlerini anıp konuşmak için ateşin başına oturduk.,5,,school-work
+nat-reticent,RETICENT,R,STARTS,adj,"(bir konuda) bilgi vermeye isteksiz, ağzı sıkı",He is reticent about his private life.,Özel hayatı konusunda ağzı sıkıdır.,5,,school-work
+nat-revel,REVEL,R,STARTS,verb,"(ilgi, alkış) içinde keyifle yüzmek",She seems to revel in the attention.,İlginin tadını doya doya çıkarıyor gibi.,5,,school-work
+nat-revere,REVERE,R,STARTS,verb,"tapınırcasına saygı duymak, ulu saymak",Many people revere him as a saint.,Pek çok kişi onu bir aziz gibi kutsal sayıyor.,5,,school-work
+nat-rife,RIFE,R,STARTS,adj,"(kötü şey) her yeri sarmış, kol gezen",The city was rife with crime.,Şehirde suç kol geziyordu.,5,,school-work
+nat-rigmarole,RIGMAROLE,R,STARTS,noun,gereksiz uzun ve zahmetli prosedür,Getting a visa is such a rigmarole.,Vize almak tam bir angarya.,5,,school-work
+nat-rueful,RUEFUL,R,STARTS,adj,"(gülümseme) buruk, hatasını kabullenen",She gave a rueful smile.,Pişman ve hüzünlü bir şekilde gülümsedi.,5,,school-work
+nat-ruminate,RUMINATE,R,STARTS,verb,aynı kaygıyı durmadan zihninde evirip çevirmek,I tend to ruminate on my mistakes.,Hatalarım üzerine uzun uzun kafa yorma eğilimindeyim.,5,,school-work
+nat-ruse,RUSE,R,STARTS,noun,"birini kandırmak için kurulan oyun, hile",The phone call was a ruse to get him out.,Telefon onu dışarı çıkarmak için kurulmuş bir oyundu.,5,,school-work
+nat-ramshackle,RAMSHACKLE,R,STARTS,adj,"(bina) derme çatma, yıkılmak üzere",They lived in a ramshackle hut.,Derme çatma bir kulübede yaşıyorlardı.,5,,school-work
+nat-recoil,RECOIL,R,STARTS,verb,dehşet ya da tiksintiyle irkilip geri sıçramak,Many people recoil at the sight of a snake.,Pek çok kişi yılanı görünce dehşetle geri çekilir.,5,,school-work
+nat-remiss,REMISS,R,STARTS,adj,"görevini ihmal etmiş, kusurlu",It would be remiss of me not to thank you.,Size teşekkür etmesem kusur etmiş olurum.,5,,school-work
+nat-riveting,RIVETING,R,STARTS,adj,"(dizi, kitap) insanı ekrana çivileyen, sürükleyici",The final episode was riveting.,Son bölüm insanı ekrana çiviledi.,4,,film-tv
+nat-rowdy,ROWDY,R,STARTS,adj,(kalabalık) gürültücü ve kavgacı,Rowdy fans were thrown out of the stadium.,Gürültücü ve kavgacı taraftarlar stattan atıldı.,4,,sports
+nat-sacrosanct,SACROSANCT,S,STARTS,adj,"(kural, alışkanlık) asla el sürülemez, dokunulmaz",My Sunday lie-in is sacrosanct.,Pazar sabahı geç kalkmam dokunulmaz.,5,,school-work
+nat-salient,SALIENT,S,STARTS,adj,"(rapordaki nokta) en can alıcı, esas",Here are the salient points of the report.,İşte raporun öne çıkan noktaları.,5,,school-work
+nat-sanctimonious,SANCTIMONIOUS,S,STARTS,adj,kendini ahlakça üstün görüp vaaz veren,I'm tired of his sanctimonious lectures.,Onun ahlak hocası tavırlı nutuklarından bıktım.,5,,school-work
+nat-sanguine,SANGUINE,S,STARTS,adj,zor durumda bile iyimser,She remains sanguine about the future.,Gelecek konusunda iyimserliğini koruyor.,5,,school-work
+nat-scathing,SCATHING,S,STARTS,adj,"(eleştiri) yerden yere vuran, acımasız",The film received a scathing review.,Film yerden yere vuran bir eleştiri aldı.,5,,film-tv
+nat-scorn,SCORN,S,STARTS,noun,aşağılayıcı küçümseme,She treated his idea with scorn.,Onun fikrini aşağılarcasına küçümsedi.,4,,school-work
+nat-scrupulous,SCRUPULOUS,S,STARTS,adj,"(dürüstlükte, işte) en küçük ayrıntıya özen gösteren",She is scrupulous about paying her debts.,Borçlarını ödeme konusunda son derece titizdir.,5,,school-work
+nat-sedentary,SEDENTARY,S,STARTS,adj,"(hayat, iş) hareketsiz, oturarak geçen",A sedentary lifestyle is bad for your health.,Hareketsiz bir yaşam sağlığa zararlıdır.,4,,school-work
+nat-serendipity,SERENDIPITY,S,STARTS,noun,"aranmadan bulunan güzel şey, mutlu tesadüf",We met by pure serendipity.,Tamamen güzel bir tesadüf sonucu tanıştık.,4,,school-work
+nat-serene,SERENE,S,STARTS,adj,"(yüz, göl) huzurlu, dingin",She had a serene smile.,Yüzünde huzurlu bir gülümseme vardı.,4,,school-work
+nat-smug,SMUG,S,STARTS,adj,"kendinden fazla memnun, burnu havada",He gave a smug grin after winning.,Kazandıktan sonra burnu havada bir sırıtış attı.,4,,school-work
+nat-snide,SNIDE,S,STARTS,adj,(söz) sinsice aşağılayıcı,She made a snide remark about my dress.,Elbisem hakkında sinsice aşağılayıcı bir laf etti.,5,,school-work
+nat-solace,SOLACE,S,STARTS,noun,"acı anlarda teselli, avuntu",He found solace in music.,Müzikte teselli buldu.,4,,music
+nat-sombre,SOMBRE,S,STARTS,adj,"(renk, hava) koyu, kasvetli ve hüzünlü",The funeral was a sombre occasion.,Cenaze kasvetli ve hüzünlü bir ortamdı.,4,,school-work
+nat-soporific,SOPORIFIC,S,STARTS,adj,"insana uyku getiren, uyutucu",The lecture had a soporific effect.,Ders insanı uyutacak cinstendi.,5,,school-work
+nat-staid,STAID,S,STARTS,adj,"(kurum, imaj) ağırbaşlı ve yeniliğe kapalı",The bank has a staid image.,Bankanın tutucu ve sıkıcı bir imajı var.,5,,school-work
+nat-staunch,STAUNCH,S,STARTS,adj,(destekçi) sadık ve sarsılmaz,He is a staunch supporter of the party.,Partinin sadık ve sarsılmaz bir destekçisi.,5,,school-work
+nat-stoic,STOIC,S,STARTS,adj,acıya ve zorluğa ses çıkarmadan katlanan,She remained stoic throughout her illness.,Hastalığı boyunca acısına ses çıkarmadan katlandı.,4,,school-work
+nat-strident,STRIDENT,S,STARTS,adj,"(ses, eleştiri) yüksek, sert ve ısrarlı",Strident voices called for change.,Yüksek ve ısrarlı sesler değişim çağrısında bulundu.,5,,school-work
+nat-stymie,STYMIE,S,STARTS,verb,(ilerlemeyi) önünü kesip tıkamak,Red tape can stymie new businesses.,Bürokrasi yeni işletmelerin önünü tıkayabilir.,5,,business
+nat-sublime,SUBLIME,S,STARTS,adj,"ruhu yücelten, olağanüstü güzel",The view from the top was sublime.,Tepeden manzara olağanüstü güzeldi.,4,,school-work
+nat-superfluous,SUPERFLUOUS,S,STARTS,adj,"gereksiz yere eklenmiş, lüzumsuz",Cut out any superfluous words.,Lüzumsuz sözcükleri çıkar.,5,,school-work
+nat-surly,SURLY,S,STARTS,adj,"kaba ve huysuz (garson, satıcı)",A surly waiter took our order.,Kaba ve huysuz bir garson siparişimizi aldı.,5,,school-work
+nat-sycophant,SYCOPHANT,S,STARTS,noun,"yağcı, dalkavuk kişi",Only a sycophant would praise such a bad plan.,Böyle kötü bir planı ancak bir dalkavuk över.,5,,school-work
+nat-shambles,SHAMBLES,S,STARTS,noun,"darmadağın, rezalet halinde durum",The meeting was a complete shambles.,Toplantı tam bir rezaletti.,4,,school-work
+nat-snub,SNUB,S,STARTS,verb,kasten görmezden gelip küçük düşürmek,She chose to snub me at the party.,Partide beni kasten görmezden gelmeyi seçti.,4,,school-work
+nat-spate,SPATE,S,STARTS,noun,"(soygun, saldırı) kısa sürede sel gibi patlak veren çokluk",There has been a spate of burglaries.,Ard arda bir dizi hırsızlık oldu.,5,,school-work
+nat-stupor,STUPOR,S,STARTS,noun,"sersemlik, kendinde olmama hali",He woke up in a drunken stupor.,Sarhoşluktan sersemlemiş halde uyandı.,5,,school-work
+nat-suave,SUAVE,S,STARTS,adj,"(erkek) cilalı tavırlı, nazik ve çekici",The suave actor charmed everyone.,Kibar ve şık oyuncu herkesi büyüledi.,5,,school-work
+nat-swindle,SWINDLE,S,STARTS,verb,"hileyle birinin parasını almak, dolandırmak",They tried to swindle old people out of their savings.,Yaşlıları dolandırıp birikimlerini almaya çalıştılar.,4,,school-work
+nat-tacit,TACIT,T,STARTS,adj,"söze dökülmeden anlaşılan, örtülü",They had a tacit agreement.,Aralarında sözsüz bir anlaşma vardı.,5,,school-work
+nat-taciturn,TACITURN,T,STARTS,adj,"az konuşan, içine kapalı",My taciturn grandfather rarely spoke.,Az konuşan dedem nadiren ağzını açardı.,5,,school-work
+nat-tantamount,TANTAMOUNT,T,STARTS,adj,"(bir şeye) eşdeğer, onunla aynı anlama gelen",His silence was tantamount to a confession.,Sessizliği itirafla eşdeğerdi.,5,,school-work
+nat-tedious,TEDIOUS,T,STARTS,adj,"bitmek bilmeyen, tekdüze ve sıkıcı (iş)",Filling in forms is tedious.,Form doldurmak bıktırıcı bir iş.,4,,school-work
+nat-temerity,TEMERITY,T,STARTS,noun,küstahça cüret,He had the temerity to ask for more money.,Daha fazla para isteme küstahlığında bulundu.,5,,school-work
+nat-tempestuous,TEMPESTUOUS,T,STARTS,adj,"(ilişki, mizaç) tutkulu ve sık sık patlayan",They had a tempestuous marriage.,Fırtınalı bir evlilikleri vardı.,5,,school-work
+nat-tenacious,TENACIOUS,T,STARTS,adj,"(hedefine) sıkı sıkıya tutunan, yılmaz",She is a tenacious defender.,"Pes etmeyen, yılmaz bir defans oyuncusu.",5,,sports
+nat-tenet,TENET,T,STARTS,noun,bir öğretinin temel ilkesi,Honesty is a central tenet of the club.,Dürüstlük kulübün temel ilkesidir.,5,,school-work
+nat-tenuous,TENUOUS,T,STARTS,adj,"(bağ, iddia) çok zayıf, pamuk ipliği gibi",The link between the two cases is tenuous.,İki dava arasındaki bağ çok zayıf.,5,,school-work
+nat-tepid,TEPID,T,STARTS,adj,"(tepki) gönülsüz, coşkusuz; (su) ılık",The film got a tepid response.,Film coşkusuz bir tepki aldı.,5,,film-tv
+nat-terse,TERSE,T,STARTS,adj,(cevap) kısa ve soğuk,He sent a terse email.,Kısa ve soğuk bir e-posta gönderdi.,4,,school-work
+nat-thwart,THWART,T,STARTS,verb,(planı) engelleyip boşa çıkarmak,Police acted to thwart the attack.,Polis saldırıyı engellemek için harekete geçti.,4,,school-work
+nat-tirade,TIRADE,T,STARTS,noun,"öfkeli, uzun suçlama konuşması",She launched into a tirade against her boss.,Patronuna karşı öfkeli bir suçlama konuşmasına girişti.,5,,school-work
+nat-tortuous,TORTUOUS,T,STARTS,adj,"(yol, süreç) dolambaçlı, kıvrımlı ve uzun",The road to peace will be tortuous.,Barışa giden yol dolambaçlı olacak.,5,,school-work
+nat-trepidation,TREPIDATION,T,STARTS,noun,yapılacak şeyden duyulan korku ve endişe,She entered the exam hall with trepidation.,Sınav salonuna korku ve endişeyle girdi.,5,,school-work
+nat-trite,TRITE,T,STARTS,adj,"(söz) bayat, basmakalıp",His advice sounded trite.,Tavsiyesi basmakalıp geldi.,5,,school-work
+nat-tumultuous,TUMULTUOUS,T,STARTS,adj,"(alkış, karşılama) coşkun ve gürültülü",The band received tumultuous applause.,Grup coşkun alkışlarla karşılandı.,5,,music
+nat-travesty,TRAVESTY,T,STARTS,noun,"(adaletin) gülünç bir taklidi, rezaleti",The trial was a travesty of justice.,Duruşma adaletin gülünç bir taklidiydi.,5,,school-work
+nat-truant,TRUANT,T,STARTS,noun,okulu kıran öğrenci,The police found the truant at the arcade.,Polis okulu kıran öğrenciyi oyun salonunda buldu.,5,,school-work
+nat-tryst,TRYST,T,STARTS,noun,âşıkların gizli buluşması,They arranged a secret tryst in Paris.,Paris'te gizli bir buluşma ayarladılar.,5,,school-work
