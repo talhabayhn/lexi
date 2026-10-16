@@ -14,13 +14,16 @@ private enum class GameColumnSlot { Hud, Wheel, Clue, Answer, Keys, Actions }
 /**
  * The game screen's column (`04-game.html`: flex column, [gap] between rows, [answerTopMargin] extra above the answer
  * slots, actions at the bottom with `margin-top: auto`). The game screen never scrolls (`screen-map.md`): the wheel
- * gets what is left, up to [maxWheelSize], so long answers (3 key rows), short phones and system bars shrink the wheel
- * instead of pushing the actions off screen. At the design size (390 × 844, 2 key rows) the wheel is 320dp.
+ * gets what is left, up to [maxWheelSize]. The keys always take [keysHeight] (three rows, reserved even when a turn
+ * has two) with at least [keysActionsGap] before the actions, so with fixed-height rows (the clue card has a fixed clue
+ * area) no row moves between turns. At the design size (390 × 844) the wheel is 320dp.
  */
 @Composable
 internal fun GameColumn(
     gap: Dp,
     answerTopMargin: Dp,
+    keysHeight: Dp,
+    keysActionsGap: Dp,
     maxWheelSize: Dp,
     hud: @Composable () -> Unit,
     wheel: @Composable (size: Dp) -> Unit,
@@ -45,10 +48,11 @@ internal fun GameColumn(
 
         val gapPx = gap.roundToPx()
         val answerGapPx = gapPx + answerTopMargin.roundToPx()
-        // hud | wheel | clue | answer | keys | actions: five gaps, the clue | answer one with the answer margin
-        // (keys | actions is the minimum gap before `margin-top: auto`).
-        val fixed = height(hudPlaceables) + height(cluePlaceables) + height(answerPlaceables) +
-            height(keyPlaceables) + height(actionPlaceables) + 4 * gapPx + answerGapPx
+        val keysPx = max(keysHeight.roundToPx(), height(keyPlaceables))
+        // hud | wheel | clue | answer | keys | actions: three gaps, the answer one with its margin, and the minimum gap
+        // between the keys and the actions (`margin-top: auto`).
+        val fixed = height(hudPlaceables) + height(cluePlaceables) + height(answerPlaceables) + keysPx +
+            height(actionPlaceables) + 3 * gapPx + answerGapPx + keysActionsGap.roundToPx()
         val maxWheelPx = min(maxWheelSize.roundToPx(), width)
         val wheelPx = if (constraints.hasBoundedHeight) {
             min(maxWheelPx, max(0, constraints.maxHeight - fixed))
@@ -78,7 +82,7 @@ internal fun GameColumn(
             answerPlaceables.forEach { it.place(0, y) }
             y += height(answerPlaceables) + gapPx
             keyPlaceables.forEach { it.place(0, y) }
-            y += height(keyPlaceables) + gapPx
+            y += keysPx + keysActionsGap.roundToPx()
             val actionsY = max(y, layoutHeight - height(actionPlaceables))
             actionPlaceables.forEach { it.place(0, actionsY) }
         }

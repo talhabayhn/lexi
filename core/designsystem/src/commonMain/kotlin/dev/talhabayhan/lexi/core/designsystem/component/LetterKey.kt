@@ -46,7 +46,7 @@ public object LetterKeyDefaults {
 }
 
 /**
- * A letter key: 50dp high, 3dp border, s3 shadow, 22sp/800; turns yellow while pressed. Width from [modifier].
+ * A letter key: 50dp high ([height]; the game's compact tier uses 44), 3dp border, s3 shadow, 22sp/800; turns yellow while pressed. Width from [modifier].
  * A Normal key that is not [enabled] (input blocked, e.g. during a wrong-answer reveal) is drawn at 50 % opacity
  * without shadow, like the joker sheet's disabled rows (no design of its own).
  */
@@ -57,6 +57,7 @@ public fun LetterKey(
     modifier: Modifier = Modifier,
     state: LetterKeyState = LetterKeyState.Normal,
     enabled: Boolean = true,
+    height: Dp = LetterKeyDefaults.Height,
 ) {
     val colors = LexiTheme.colors
     val border = LexiTheme.borders.regular
@@ -67,7 +68,7 @@ public fun LetterKey(
             PressableSurface(
                 onClick = onClick,
                 modifier = modifier
-                    .height(LetterKeyDefaults.Height)
+                    .height(height)
                     .alpha(if (enabled) 1f else JokerRowDefaults.DISABLED_ALPHA),
                 enabled = enabled,
                 color = if (pressed && enabled) colors.yellow else colors.white,
@@ -81,7 +82,7 @@ public fun LetterKey(
 
         LetterKeyState.Used -> Box(
             modifier = modifier
-                .height(LetterKeyDefaults.Height)
+                .height(height)
                 .semantics {
                     role = Role.Button
                     disabled()
@@ -94,7 +95,7 @@ public fun LetterKey(
 
         LetterKeyState.RemovedByJoker -> Box(
             modifier = modifier
-                .height(LetterKeyDefaults.Height)
+                .height(height)
                 .clearAndSetSemantics {}
                 .dashedBorder(border, colors.gridLine),
         )

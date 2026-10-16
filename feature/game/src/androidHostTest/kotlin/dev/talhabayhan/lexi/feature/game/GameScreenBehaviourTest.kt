@@ -112,6 +112,8 @@ class GameScreenBehaviourTest {
                 GameColumn(
                     gap = 16.dp,
                     answerTopMargin = 4.dp,
+                    keysHeight = 166.dp,
+                    keysActionsGap = 12.dp,
                     maxWheelSize = 320.dp,
                     hud = { Spacer(Modifier.height(48.dp)) },
                     wheel = { Spacer(Modifier.size(it)) },

@@ -63,9 +63,22 @@ before shipping.
 | Store screenshots | M8 | frames of real screens + headline band |
 
 ## Responsive rules
-- Phones narrower than 390dp: wheel size = `min(320, screenWidth − 40)`; scale wheel radius/chip proportionally;
-  everything else reflows (keys stay 5 columns).
+- Phones narrower than 390dp: wheel size = `min(320, screenWidth − 40)`; scale wheel radius/chip proportionally
+  (chip, centre letter and rule label texts too); everything else reflows (keys stay 5 columns).
 - Short phones (< 760dp height): reduce wheel to 280 and vertical gaps by 25%; never scroll the game screen.
-  The game column also shrinks the wheel below that whenever the rest does not fit (3 key rows, system bars).
+- **Game layout is computed once** (`gameLayout` in feature:game) from the space inside the safe-drawing insets and
+  the capped font scale, never from the turn, so a new clue, answer or key set moves nothing:
+  - Clue card: fixed height = chrome (borders, padding, one-line label) + a clue area of one 30sp line (the design).
+    The clue (max 3 lines) and the joker's example (max 2 lines, never larger than the clue) shrink in 1sp steps
+    down to 12sp / 11sp until they fit, centred vertically; below that they are cut with an ellipsis. Height left
+    over with the wheel at its maximum (tall phones, e.g. 412 × 915) widens the clue area by up to one more 30sp line.
+  - Keys: three rows (15 keys) are always reserved under the answer boxes, with at least 12dp (scaled with the gaps)
+    to the actions; a two-row turn leaves the third row empty. At 390 × 844 this is exactly the design's free space,
+    so the design stays pixel-identical (wheel 320, card 420–498, boxes 518, keys 582, actions 760).
+  - The wheel gets what is left, up to its maximum. Tiers: regular (≥ 760dp) → short → compact, each taken only when
+    the previous one leaves the wheel under 240dp. Compact (very short phones, e.g. 320 × 568, 360 × 640;
+    DESIGN-DEBT, derived from `04-game`): padding 12 top / 16 bottom, gaps 8, answer margin 2, HUD 44, answer boxes
+    40 high, keys 44 high with 6 gaps, actions 48. At 320 × 568 the wheel is ~144dp.
 - Tablets / landscape: center a 430dp-wide column; landscape-specific layouts later.
-- Font scale: honor system font size up to 1.3× on lists; game keys, slots and wheel are capped at 1.15×.
+- Font scale: honor system font size up to 1.3× on lists; the whole game board (HUD, wheel, clue, slots, keys,
+  actions) is capped at 1.15×; its fixed heights grow with the capped scale.

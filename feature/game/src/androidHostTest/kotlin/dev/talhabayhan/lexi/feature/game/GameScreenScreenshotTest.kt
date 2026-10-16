@@ -80,7 +80,7 @@ class GameScreenScreenshotTest {
         }
     }
 
-    /** Design debt: the blanked example of the "Örnek cümle" joker under the clue; the wheel shrinks to fit. */
+    /** Design debt: the blanked example of the "Örnek cümle" joker under the clue, shrunk into the fixed clue area. */
     @Test
     fun exampleJoker() {
         captureRoboImage("src/androidHostTest/screenshots/GameScreenExampleJoker.png") {

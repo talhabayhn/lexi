@@ -55,13 +55,14 @@ public object AnswerSlotDefaults {
     public val Gap: Dp = 6.dp
 }
 
-/** One answer box (40 × 48dp, letter 26sp/800). Empty states ignore [letter]. */
+/** One answer box (40 × 48dp, [height] 40 in the game's compact tier; letter 26sp/800). Empty states ignore [letter]. */
 @Composable
 public fun AnswerSlot(
     letter: Char?,
     state: AnswerSlotState,
     modifier: Modifier = Modifier,
     textStyle: TextStyle = LexiTheme.typography.slotLetter,
+    height: Dp = AnswerSlotDefaults.Height,
 ) {
     val colors = LexiTheme.colors
     val border = LexiTheme.borders.regular
@@ -96,7 +97,7 @@ public fun AnswerSlot(
     }
     Box(
         modifier = modifier
-            .size(AnswerSlotDefaults.Width, AnswerSlotDefaults.Height)
+            .size(AnswerSlotDefaults.Width, height)
             .clearAndSetSemantics { contentDescription = description }
             .lexiSurface(fill, borderStroke),
         contentAlignment = Alignment.Center,

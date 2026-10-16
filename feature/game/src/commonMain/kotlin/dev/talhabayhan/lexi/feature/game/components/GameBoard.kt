@@ -48,7 +48,7 @@ import kotlinx.collections.immutable.ImmutableList
 import org.jetbrains.compose.resources.stringResource
 
 /**
- * Top bar: pause (48dp square on cream), the timer and the score badge, gap 8. Only this composable reads the
+ * Top bar: pause (48dp square on cream), the timer and the score badge, gap 8; [height] 44 in the compact tier. Only this composable reads the
  * clock (ADR 0019 §3): the fill in the draw phase, the counter and warning colour through derived state, i.e. once
  * per second. Unscored modes ([isScored] false: Practice, Review) have no design (DESIGN-DEBT): the badge shows
  * [correct] instead of the score (always 0 there), and an untimed bar stays empty with "SÜRESİZ" in place of the clock.
@@ -61,6 +61,7 @@ internal fun GameHudBar(
     clock: () -> GameClockUi,
     onPause: () -> Unit,
     modifier: Modifier = Modifier,
+    height: Dp = GameHudDefaults.BarHeight,
 ) {
     val seconds by remember(clock) { derivedStateOf { clock().wholeSeconds } }
     val timed by remember(clock) { derivedStateOf { clock().isTimed } }
@@ -71,14 +72,14 @@ internal fun GameHudBar(
         badge,
     )
     Row(
-        modifier = modifier.height(GameHudDefaults.BarHeight),
+        modifier = modifier.height(height),
         horizontalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap8),
     ) {
         NavSquareButton(
             icon = LexiIcons.Pause,
             contentDescription = stringResource(Res.string.game_button_pause),
             onClick = onPause,
-            size = IconButtonDefaults.NavSizeLarge,
+            size = height,
             iconSize = IconButtonDefaults.IconSizeSmall,
             containerColor = LexiTheme.colors.cream,
         )
@@ -88,9 +89,11 @@ internal fun GameHudBar(
             timeText = if (timed) formatClock(seconds) else stringResource(Res.string.game_timer_untimed),
             warning = warning,
             modifier = Modifier.weight(1f),
+            height = height,
         )
         ScoreBadge(
             score = badge.toString(),
+            size = height,
             modifier = Modifier.clearAndSetSemantics { contentDescription = badgeDescription },
         )
     }
@@ -98,7 +101,8 @@ internal fun GameHudBar(
 
 /**
  * Answer boxes, centred, gap 6; words of a multi-word answer are separated by [GameScreenDefaults.AnswerWordGap].
- * Boxes keep 40dp up to the width of the column, then narrow (with the letter) so 14-letter answers still fit.
+ * Boxes keep 40dp up to the width of the column, then narrow (with the letter) so 14-letter answers still fit; the
+ * compact tier's lower boxes ([height]) shrink the letter too.
  * [offset] is the #4 shake, applied in the layer phase. [flyingCells] are cells whose letter is still in the air (#2):
  * they keep their look from before it lands, so the first of them is the red-bordered next box and the rest (with the
  * state's next box) stay empty. [onCellPlaced] reports each cell (letters only, in answer order) for the flight.
@@ -108,6 +112,7 @@ internal fun AnswerSlots(
     words: ImmutableList<ImmutableList<AnswerCellUi>>,
     offset: () -> Dp,
     modifier: Modifier = Modifier,
+    height: Dp = AnswerSlotDefaults.Height,
     flyingCells: () -> Set<Int> = { emptySet() },
     onCellPlaced: (index: Int, coordinates: LayoutCoordinates) -> Unit = { _, _ -> },
 ) {
@@ -118,8 +123,9 @@ internal fun AnswerSlots(
         val gaps = AnswerSlotDefaults.Gap * (cells - words.size) + GameScreenDefaults.AnswerWordGap * (words.size - 1)
         val slotWidth = min(AnswerSlotDefaults.Width, (maxWidth - gaps) / cells.coerceAtLeast(1))
         val baseStyle = LexiTheme.typography.slotLetter
-        val textStyle = if (slotWidth < AnswerSlotDefaults.Width) {
-            baseStyle.resized(baseStyle.fontSize * (slotWidth / AnswerSlotDefaults.Width))
+        val textScale = minOf(slotWidth / AnswerSlotDefaults.Width, height / AnswerSlotDefaults.Height)
+        val textStyle = if (textScale < 1f) {
+            baseStyle.resized(baseStyle.fontSize * textScale)
         } else {
             baseStyle
         }
@@ -143,6 +149,7 @@ internal fun AnswerSlots(
                             state = state,
                             modifier = Modifier.width(slotWidth).onPlaced { onCellPlaced(cellIndex, it) },
                             textStyle = textStyle,
+                            height = height,
                         )
                     }
                 }
@@ -152,7 +159,7 @@ internal fun AnswerSlots(
 }
 
 /**
- * Letter keys in rows of 5 (gap 8); keys keep their order for the whole slot (`GAME_RULES.md` §4). Not [enabled]
+ * Letter keys in rows of 5 (gap 8; [keyHeight] and [gap] 44 / 6 in the compact tier); keys keep their order for the whole slot (`GAME_RULES.md` §4). Not [enabled]
  * while input is blocked (wrong-answer reveal): the keys are disabled and drawn at 50 %. [onKeyPlaced] reports each
  * key for the #2 flight.
  */
@@ -162,17 +169,20 @@ internal fun KeyGrid(
     enabled: Boolean,
     onKey: (Int) -> Unit,
     modifier: Modifier = Modifier,
+    keyHeight: Dp = LetterKeyDefaults.Height,
+    gap: Dp = LetterKeyDefaults.GridGap,
     onKeyPlaced: (index: Int, coordinates: LayoutCoordinates) -> Unit = { _, _ -> },
 ) {
-    Column(modifier, verticalArrangement = Arrangement.spacedBy(LetterKeyDefaults.GridGap)) {
+    Column(modifier, verticalArrangement = Arrangement.spacedBy(gap)) {
         keys.indices.chunked(LetterKeyDefaults.COLUMNS).forEach { row ->
-            Row(horizontalArrangement = Arrangement.spacedBy(LetterKeyDefaults.GridGap)) {
+            Row(horizontalArrangement = Arrangement.spacedBy(gap)) {
                 row.forEach { index ->
                     LetterKey(
                         letter = keys[index].letter,
                         state = keys[index].state,
                         enabled = enabled,
                         onClick = { onKey(index) },
+                        height = keyHeight,
                         modifier = Modifier.weight(1f).onPlaced { onKeyPlaced(index, it) },
                     )
                 }

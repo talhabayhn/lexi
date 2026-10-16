@@ -23,6 +23,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.traversalIndex
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
@@ -30,6 +31,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
 import dev.talhabayhan.lexi.core.designsystem.icon.LexiIcons
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
+import dev.talhabayhan.lexi.core.designsystem.theme.resized
 import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.sin
@@ -68,6 +70,13 @@ public fun LetterWheel(
     val chip = WheelLetterDefaults.Size * scale
     val radius = LetterWheelDefaults.CHIP_RADIUS * scale
     val half = size.value / 2
+    val typography = LexiTheme.typography
+
+    // Smaller wheels (narrow / short phones) scale their texts with the geometry.
+    fun TextStyle.scaled(): TextStyle = if (scale < 1f) resized(fontSize * scale) else this
+    val letterStyle = typography.wheelLetter.scaled()
+    val ruleStyle = typography.wheelRule.scaled()
+    val chipStyle = typography.wheelChip.scaled()
     Box(modifier.size(size)) {
         Box(
             Modifier
@@ -99,9 +108,9 @@ public fun LetterWheel(
                 },
                 contentAlignment = Alignment.Center,
             ) { letter ->
-                Text(letter.toString(), style = LexiTheme.typography.wheelLetter)
+                Text(letter.toString(), style = letterStyle)
             }
-            Text(ruleLabel, style = LexiTheme.typography.wheelRule)
+            Text(ruleLabel, style = ruleStyle)
         }
         letters.forEachIndexed { i, item ->
             val angle = -PI / 2 + i * 2 * PI / letters.size
@@ -116,6 +125,7 @@ public fun LetterWheel(
                 letter = item.letter,
                 state = item.state,
                 size = chip,
+                textStyle = chipStyle,
                 motion = itemMotion,
                 modifier = Modifier
                     .offset((centerX - chip.value / 2).dp, (centerY - chip.value / 2).dp)
