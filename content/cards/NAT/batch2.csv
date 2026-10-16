@@ -1,0 +1,95 @@
+id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
+nat-dearth,DEARTH,D,STARTS,noun,"bir şeyin ciddi kıtlığı, yokluğu",There is a dearth of good teachers in the area.,Bölgede iyi öğretmen sıkıntısı çok ciddi.,5,,school-work
+nat-debacle,DEBACLE,D,STARTS,noun,herkesin gözü önünde rezil olunan fiyasko,The product launch was a complete debacle.,Ürün lansmanı tam bir rezaletti.,4,,school-work
+nat-decorum,DECORUM,D,STARTS,noun,"duruma yakışan ağırbaşlı davranış, adap",Please maintain decorum in the courtroom.,Lütfen mahkeme salonunda adaba uygun davranın.,5,,school-work
+nat-deft,DEFT,D,STARTS,adj,"(el hareketi) hızlı, zarif ve becerikli","With a deft move, she caught the falling glass.",Çevik bir hareketle düşen bardağı yakaladı.,4,,school-work
+nat-delineate,DELINEATE,D,STARTS,verb,bir şeyin sınırlarını ayrıntısıyla belirleyip çizmek,The contract should delineate each person's role.,Sözleşme herkesin rolünü açıkça tanımlamalı.,5,,school-work
+nat-demeanour,DEMEANOUR,D,STARTS,noun,"kişinin dışa yansıyan tavrı, duruşu",His calm demeanour hid his fear.,Sakin tavrı korkusunu gizliyordu.,4,,school-work
+nat-deride,DERIDE,D,STARTS,verb,alaya alıp küçümsemek,Critics deride the plan as unrealistic.,Eleştirmenler planı gerçek dışı diye alaya alıyor.,5,,school-work
+nat-despondent,DESPONDENT,D,STARTS,adj,"umudunu yitirmiş, karamsar ve bitkin","After weeks without work, he grew despondent.",Haftalarca işsiz kalınca umutsuzluğa kapıldı.,5,,school-work
+nat-devious,DEVIOUS,D,STARTS,adj,"hilekâr, dolambaçlı yollara başvuran",He used devious means to win the contract.,İhaleyi kazanmak için hileli yollara başvurdu.,4,,school-work
+nat-diatribe,DIATRIBE,D,STARTS,noun,birine karşı öfkeli ve uzun saldırı konuşması,He launched into a diatribe against the media.,Medyaya karşı öfkeli ve uzun bir saldırıya girişti.,5,,school-work
+nat-dichotomy,DICHOTOMY,D,STARTS,noun,birbirine karşıt iki şey arasındaki keskin ayrım,There is a false dichotomy between work and play.,İş ile oyun arasında yapay bir karşıtlık var.,5,,school-work
+nat-diffident,DIFFIDENT,D,STARTS,adj,"kendine güveni olmayan, çekingen",He was diffident about sharing his ideas.,Fikirlerini paylaşmakta çekingendi.,5,,school-work
+nat-dilapidated,DILAPIDATED,D,STARTS,adj,(bina) bakımsızlıktan harap olmuş,They bought a dilapidated farmhouse.,Harap bir çiftlik evi satın aldılar.,4,,school-work
+nat-dire,DIRE,D,STARTS,adj,"(ihtiyaç, sonuç) son derece vahim, acil",The consequences could be dire.,Sonuçları vahim olabilir.,4,,school-work
+nat-discern,DISCERN,D,STARTS,verb,gözle veya sezgiyle zorlukla seçebilmek,I could barely discern the path in the fog.,Siste patikayı zar zor seçebildim.,5,,school-work
+nat-disconcerting,DISCONCERTING,D,STARTS,adj,beklenmedik olduğu için insanı bocalatan,His long silence was disconcerting.,Uzun sessizliği tedirgin ediciydi.,4,,school-work
+nat-disdain,DISDAIN,D,STARTS,noun,değersiz görüp tepeden bakma duygusu,She looked at the cheap hotel with disdain.,Ucuz otele tepeden bakarak küçümsedi.,4,,school-work
+nat-disgruntled,DISGRUNTLED,D,STARTS,adj,haksızlığa uğradığını düşünüp içerlemiş (çalışan),A disgruntled employee leaked the files.,Hoşnutsuz bir çalışan dosyaları sızdırdı.,4,,school-work
+nat-dishevelled,DISHEVELLED,D,STARTS,adj,"(saç, kıyafet) dağınık, darmadağın",He arrived late and dishevelled.,Geç ve üstü başı darmadağın geldi.,5,,school-work
+nat-disingenuous,DISINGENUOUS,D,STARTS,adj,samimiymiş gibi görünüp gerçeği saklayan,It is disingenuous to claim you knew nothing.,Hiçbir şey bilmediğini iddia etmek samimiyetsizlik.,5,,school-work
+nat-disparity,DISPARITY,D,STARTS,noun,"(gelir, oran) büyük eşitsizlik, uçurum",The disparity between rich and poor is growing.,Zenginle yoksul arasındaki uçurum büyüyor.,4,,school-work
+nat-disseminate,DISSEMINATE,D,STARTS,verb,(bilgiyi) geniş kitlelere yaymak,We need to disseminate the results quickly.,Sonuçları hızla geniş kitlelere yaymalıyız.,5,,school-work
+nat-dissipate,DISSIPATE,D,STARTS,verb,"(sis, öfke) yavaş yavaş dağılıp yok olmak",The fog began to dissipate by noon.,Sis öğleye doğru dağılmaya başladı.,5,,school-work
+nat-docile,DOCILE,D,STARTS,adj,"uysal, kolay yönetilen",The horse is docile and safe for children.,At uysal ve çocuklar için güvenli.,4,,school-work
+nat-dogged,DOGGED,D,STARTS,adj,"(çaba, takip) bıkmadan usanmadan süren, inatçı",Her dogged determination paid off.,İnatçı kararlılığı karşılığını verdi.,4,,school-work
+nat-dogmatic,DOGMATIC,D,STARTS,adj,kendi fikirlerini sorgulanamaz doğru sayan,He is too dogmatic to listen to others.,Başkalarını dinlemeyecek kadar katı fikirli.,4,,school-work
+nat-doldrums,DOLDRUMS,D,STARTS,noun,durgunluk ve keyifsizlik dönemi,The market has been in the doldrums all year.,Piyasa bütün yıl durgunluk içindeydi.,5,,business
+nat-dour,DOUR,D,STARTS,adj,"asık suratlı, sert ve ciddi",The dour old man never smiled.,Asık suratlı yaşlı adam hiç gülümsemezdi.,5,,school-work
+nat-drudgery,DRUDGERY,D,STARTS,noun,"sıkıcı, ağır ve tekdüze iş, angarya",Washing dishes by hand is pure drudgery.,Elde bulaşık yıkamak tam bir angarya.,5,,school-work
+nat-dubious,DUBIOUS,D,STARTS,adj,"(yöntem, para) dürüstlüğü kuşku uyandıran, şaibeli",He made his money in dubious ways.,Parasını şüpheli yollarla kazandı.,4,,school-work
+nat-duplicity,DUPLICITY,D,STARTS,noun,"iki yüzlülükle aldatma, hilekârlık",She was shocked by his duplicity.,Onun ikiyüzlülüğü karşısında şok oldu.,5,,school-work
+nat-defunct,DEFUNCT,D,STARTS,adj,"(şirket, kurum) artık var olmayan, işlemeyen",The airline has been defunct since 2010.,Havayolu 2010'dan beri faaliyette değil.,4,,business
+nat-demise,DEMISE,D,STARTS,noun,"(şirket, akım) yavaş yavaş tarihe karışması",The internet led to the demise of many newspapers.,İnternet pek çok gazetenin sonunu getirdi.,4,,school-work
+nat-devoid,DEVOID,D,STARTS,adj,(bir şeyden) tamamen yoksun,The speech was devoid of emotion.,Konuşma duygudan tamamen yoksundu.,4,,school-work
+nat-desolate,DESOLATE,D,STARTS,adj,hem ıssız hem de iç karartıcı (yer),We drove along a desolate road.,Issız ve kasvetli bir yolda ilerledik.,4,,travel
+nat-digress,DIGRESS,D,STARTS,verb,konuşurken asıl konudan sapmak,But I digress.,"Neyse, konuyu dağıttım.",4,,school-work
+nat-eclectic,ECLECTIC,E,STARTS,adj,farklı kaynaklardan seçilip harmanlanmış,She has eclectic taste in music.,"Müzikte çok çeşitli, harman bir zevki var.",4,,music
+nat-epitaph,EPITAPH,E,STARTS,noun,mezar taşına yazılan söz,His epitaph says simply: he tried.,Mezar taşında sadece şu yazıyor: denedi.,4,,school-work
+nat-effusive,EFFUSIVE,E,STARTS,adj,"(övgü, teşekkür) taşkın, coşkulu ve bol",She was effusive in her praise.,Övgülerinde çok coşkuluydu.,5,,school-work
+nat-egregious,EGREGIOUS,E,STARTS,adj,(hata) apaçık ve son derece kötü,It was an egregious error.,Apaçık ve korkunç bir hataydı.,5,,school-work
+nat-elated,ELATED,E,STARTS,adj,(iyi haber üzerine) gururlu ve çok sevinçli,We were elated by the news.,Haber üzerine sevinçten havalara uçtuk.,4,,school-work
+nat-eloquent,ELOQUENT,E,STARTS,adj,"etkili ve akıcı konuşan, belagatli",She gave an eloquent speech.,Etkili ve akıcı bir konuşma yaptı.,4,,school-work
+nat-elucidate,ELUCIDATE,E,STARTS,verb,(resmi dilde) karmaşık bir konuya ışık tutmak,Could you elucidate your point?,Söylediğini biraz daha açar mısın?,5,,school-work
+nat-elude,ELUDE,E,STARTS,verb,"(başarı, uyku) bir türlü ele geçmemek",Success continued to elude him.,Başarı bir türlü ona nasip olmadı.,4,,school-work
+nat-embellish,EMBELLISH,E,STARTS,verb,(hikâyeye) uydurma ayrıntılar katıp süslemek,He likes to embellish his stories.,Hikâyelerini süsleyip püslemeyi sever.,4,,school-work
+nat-emulate,EMULATE,E,STARTS,verb,hayran olduğu birini örnek alıp ona benzemeye çalışmak,Young players try to emulate their heroes.,Genç oyuncular kahramanlarını örnek almaya çalışır.,4,,school-work
+nat-enamoured,ENAMOURED,E,STARTS,adj,"(bir şeye) vurgun, hayran",I'm not enamoured of the idea.,Bu fikre pek hayran değilim.,5,,school-work
+nat-encroach,ENCROACH,E,STARTS,verb,"başkasının alanına yavaş yavaş girmek, yayılmak",The city continues to encroach on the forest.,Şehir ormana doğru yayılmaya devam ediyor.,5,,school-work
+nat-endemic,ENDEMIC,E,STARTS,adj,"(sorun) bir yerde kökleşmiş, yerleşik",Corruption is endemic in the system.,Yolsuzluk sistemde kökleşmiş.,5,,school-work
+nat-engender,ENGENDER,E,STARTS,verb,"(duygu, durum) doğurmak, yol açmak",Such policies engender distrust.,Böyle politikalar güvensizlik doğurur.,5,,school-work
+nat-enigma,ENIGMA,E,STARTS,noun,"anlaşılmaz, esrarengiz kişi veya şey",My new neighbour remains an enigma to me.,Yeni komşum benim için hâlâ bir muamma.,4,,school-work
+nat-enmity,ENMITY,E,STARTS,noun,"köklü düşmanlık, husumet",There is old enmity between the two families.,İki aile arasında eski bir husumet var.,5,,school-work
+nat-ephemeral,EPHEMERAL,E,STARTS,adj,"çok kısa süren, gelip geçici",Fame is often ephemeral.,Şöhret çoğu zaman gelip geçicidir.,5,,school-work
+nat-epiphany,EPIPHANY,E,STARTS,noun,"aniden gelen aydınlanma, kavrayış anı",I had an epiphany in the shower.,Duşta aniden bir aydınlanma yaşadım.,4,,school-work
+nat-epitome,EPITOME,E,STARTS,noun,"bir niteliğin en mükemmel örneği, timsali",She is the epitome of elegance.,"O, zarafetin timsalidir.",4,,school-work
+nat-erroneous,ERRONEOUS,E,STARTS,adj,"(bilgi, varsayım) hatalı, yanlış",The report contained erroneous data.,Raporda hatalı veriler vardı.,4,,school-work
+nat-erudite,ERUDITE,E,STARTS,adj,"çok okumuş, engin kültürlü bilgin",He was an erudite and witty professor.,Çok bilgili ve esprili bir profesördü.,5,,school-work
+nat-eschew,ESCHEW,E,STARTS,verb,"bilerek kaçınmak, uzak durmak",Many chefs eschew frozen food.,Pek çok aşçı dondurulmuş yiyecekten bilerek kaçınır.,5,,school-work
+nat-esoteric,ESOTERIC,E,STARTS,adj,yalnızca küçük bir çevrenin anladığı,The book is full of esoteric jokes.,Kitap yalnızca az kişinin anlayacağı esprilerle dolu.,5,,school-work
+nat-espouse,ESPOUSE,E,STARTS,verb,"(fikri, davayı) benimseyip savunmak",He came to espouse radical views.,Radikal görüşleri benimseyip savunur hale geldi.,5,,school-work
+nat-ethereal,ETHEREAL,E,STARTS,adj,"dünyadışı, narin ve uçucu güzellikte",Her voice had an ethereal quality.,"Sesinde dünyadışı, uçucu bir güzellik vardı.",5,,music
+nat-euphemism,EUPHEMISM,E,STARTS,noun,acı ya da kaba bir şeyi yumuşatan dolaylı söz,"""Let go"" is a euphemism for ""fired"".","""Yollarını ayırmak"", ""kovulmak"" için yumuşatılmış bir sözdür.",4,,school-work
+nat-euphoria,EUPHORIA,E,STARTS,noun,"(zafer sonrası) toplu, sarhoş eden coşku",The euphoria after the win lasted for days.,Galibiyetin ardından gelen coşku günlerce sürdü.,4,,school-work
+nat-entice,ENTICE,E,STARTS,verb,"cazip bir şey sunarak çekmek, ayartmak",Shops use free gifts to entice customers.,Mağazalar müşterileri çekmek için bedava hediyeler kullanır.,4,,school-work
+nat-eyesore,EYESORE,E,STARTS,noun,göz zevkini bozan çirkin yapı veya şey,That old car park is an eyesore.,O eski otopark göze batan bir çirkinlik.,4,,school-work
+nat-facile,FACILE,F,STARTS,adj,"(fikir, cevap) yüzeysel, fazla basite indirgenmiş",That is a facile answer to a complex problem.,"Bu, karmaşık bir soruna yüzeysel bir cevap.",5,,school-work
+nat-fallacy,FALLACY,F,STARTS,noun,yaygın ama yanlış inanış; mantık hatası,It is a fallacy that money brings happiness.,Paranın mutluluk getirdiği yanlış bir inanıştır.,4,,school-work
+nat-fastidious,FASTIDIOUS,F,STARTS,adj,"her şeyin kusursuz olmasını isteyen, aşırı titiz",He is fastidious about cleanliness.,Temizlik konusunda son derece titizdir.,5,,school-work
+nat-fervent,FERVENT,F,STARTS,adj,"(destekçi, inanç) ateşli, coşkulu",She is a fervent supporter of the club.,Kulübün ateşli bir destekçisi.,4,,sports
+nat-fickle,FICKLE,F,STARTS,adj,"(sevgi, ilgi) çabuk değişen, vefasız",Football fans can be fickle.,Futbol taraftarları vefasız olabilir.,4,,sports
+nat-finesse,FINESSE,F,STARTS,noun,"incelikli ustalık, zarafet",She handled the crisis with finesse.,Krizi büyük bir incelik ve ustalıkla yönetti.,4,,school-work
+nat-flagrant,FLAGRANT,F,STARTS,adj,(kural ihlali) apaçık ve ağır,It was a flagrant violation of the rules.,Kuralların apaçık ve ağır bir ihlaliydi.,4,,school-work
+nat-flail,FLAIL,F,STARTS,verb,(kollarını) kontrolsüzce çırpmak,He began to flail in the deep water.,Derin suda kollarını çırpmaya başladı.,5,,school-work
+nat-flamboyant,FLAMBOYANT,F,STARTS,adj,abartılı derecede gösterişli ve kendinden emin,The singer is known for her flamboyant outfits.,Şarkıcı gösterişli ve renkli kıyafetleriyle tanınır.,4,,music
+nat-flippant,FLIPPANT,F,STARTS,adj,ciddi bir konuyu saygısızca hafife alan,Don't be flippant about her illness.,Onun hastalığını hafife alıp geçme.,5,,school-work
+nat-flounder,FLOUNDER,F,STARTS,verb,ne yapacağını bilemeyip bocalamak,The new manager began to flounder.,Yeni müdür bocalamaya başladı.,5,,business
+nat-flout,FLOUT,F,STARTS,verb,(kuralı) açıkça hiçe saymak,Some drivers flout the speed limit.,Bazı sürücüler hız sınırını açıkça hiçe sayar.,5,,school-work
+nat-foible,FOIBLE,F,STARTS,noun,insana sevimli gelen zararsız tuhaf huy,Being late is his only foible.,Geç kalmak onun tek küçük kusuru.,5,,school-work
+nat-foment,FOMENT,F,STARTS,verb,"(isyan, huzursuzluk) kışkırtmak",They tried to foment unrest in the city.,Şehirde huzursuzluk kışkırtmaya çalıştılar.,5,,school-work
+nat-foolhardy,FOOLHARDY,F,STARTS,adj,aptalca derecede gözü kara,It would be foolhardy to sail in this storm.,Bu fırtınada denize açılmak delilik olur.,5,,school-work
+nat-foray,FORAY,F,STARTS,noun,"yeni bir alana ilk adım, deneme",It was his first foray into politics.,Siyasete ilk adımıydı.,5,,school-work
+nat-forlorn,FORLORN,F,STARTS,adj,"terk edilmiş, kimsesiz ve umutsuz",A forlorn dog sat alone in the rain.,Kimsesiz bir köpek yağmurda tek başına oturuyordu.,5,,school-work
+nat-forthright,FORTHRIGHT,F,STARTS,adj,"düşüncesini kararlılıkla, dolaysızca ortaya koyan",She is forthright about her views.,Görüşleri konusunda dobradır.,4,,school-work
+nat-fortitude,FORTITUDE,F,STARTS,noun,acıya ve zorluğa karşı metanet,She showed great fortitude during her illness.,Hastalığı boyunca büyük bir metanet gösterdi.,5,,school-work
+nat-fortuitous,FORTUITOUS,F,STARTS,adj,tesadüfen olan ve şans getiren,Our meeting was entirely fortuitous.,Karşılaşmamız tamamen şanslı bir tesadüftü.,5,,school-work
+nat-fraught,FRAUGHT,F,STARTS,adj,"(ilişki, ortam) gergin, sorunlarla yüklü",Relations between the two countries are fraught.,İki ülke arasındaki ilişkiler gergin.,5,,school-work
+nat-foreboding,FOREBODING,F,STARTS,noun,kötü bir şey olacağına dair içe doğan his,She had a strange sense of foreboding.,"İçinde tuhaf, kötü bir his vardı.",5,,school-work
+nat-frugal,FRUGAL,F,STARTS,adj,"tutumlu, az ve dikkatli harcayan",My grandparents lived a frugal life.,Büyükannemle büyükbabam tutumlu bir hayat sürdü.,4,,school-work
+nat-furtive,FURTIVE,F,STARTS,adj,"kimseye fark ettirmeden yapılan, kaçamak",He cast a furtive glance at the door.,Kapıya kaçamak bir bakış attı.,5,,school-work
+nat-futile,FUTILE,F,STARTS,adj,"boşuna, hiçbir sonuç vermeyen",It is futile to argue with him.,Onunla tartışmak boşuna.,4,,school-work
+nat-flustered,FLUSTERED,F,STARTS,adj,baskı altında eli ayağına dolaşmış,She looked flustered when the boss walked in.,Patron içeri girince telaşla şaşkına döndü.,4,,school-work
+nat-frivolous,FRIVOLOUS,F,STARTS,adj,"(dava, harcama) ciddiye alınmayacak kadar boş",The judge rejected the frivolous lawsuit.,Hâkim gereksiz ve ciddiyetsiz davayı reddetti.,4,,school-work
+nat-flabbergasted,FLABBERGASTED,F,STARTS,adj,şaşkınlıktan dili tutulmuş,I was flabbergasted by the price.,Fiyat karşısında şaşkınlıktan dilim tutuldu.,4,,school-work
+nat-fidget,FIDGET,F,STARTS,verb,yerinde duramayıp kıpırdanmak,Children often fidget in long meetings.,Çocuklar uzun toplantılarda genelde yerinde duramaz.,4,,school-work
