@@ -1,0 +1,70 @@
+id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
+c1-adolescent,ADOLESCENT,A,STARTS,noun,çocukluk ile yetişkinlik arasındaki genç,Every adolescent needs plenty of sleep.,Her ergenin bol uykuya ihtiyacı vardır.,4,,school-work
+c1-automate,AUTOMATE,A,STARTS,verb,bir işi makineyle otomatik yapmak,The firm plans to automate the factory.,Firma fabrikayı otomatikleştirmeyi planlıyor.,5,,technology
+c1-biodiversity,BIODIVERSITY,B,STARTS,noun,bir bölgedeki canlı türlerinin çeşitliliği,Forests protect the biodiversity of the region.,Ormanlar bölgenin biyolojik çeşitliliğini korur.,5,,school-work
+c1-brainstorm,BRAINSTORM,B,STARTS,verb,grup olarak fikir üretmek,Let's brainstorm some names for the shop.,Dükkân için birkaç isim fikri üretelim.,5,,business
+c1-briefing,BRIEFING,B,STARTS,noun,bir konuda yapılan kısa bilgilendirme,The team had a briefing before the match.,Takım maçtan önce bir bilgilendirme toplantısı yaptı.,5,,sports
+c1-boycott,BOYCOTT,B,STARTS,verb,protesto için bir şeyi kullanmamak,Many fans will boycott the match.,Birçok taraftar maçı boykot edecek.,5,,sports
+c1-fanatic,FANATIC,F,STARTS,noun,bir şeye aşırı bağlı kimse,He is a football fanatic.,O bir futbol fanatiği.,5,,sports
+c1-footage,FOOTAGE,F,STARTS,noun,çekilmiş film görüntüsü,The news showed footage of the flood.,Haberler selin görüntülerini yayınladı.,5,,film-tv
+c1-freelance,FREELANCE,F,STARTS,adj,belirli bir işverene bağlı olmayan,She works as a freelance writer.,Serbest yazar olarak çalışıyor.,4,,business
+c1-friction,FRICTION,F,STARTS,noun,sürtünme; taraflar arası gerginlik,There is friction between the two partners.,İki ortak arasında sürtüşme var.,5,,business
+c1-frontier,FRONTIER,F,STARTS,noun,iki ülke arasındaki sınır,They crossed the frontier at night.,Geceleyin sınırı geçtiler.,4,,travel
+c1-fury,FURY,F,STARTS,noun,kontrolsüz büyük öfke,She shouted in fury.,Öfkeyle bağırdı.,5,,school-work
+c1-fusion,FUSION,F,STARTS,noun,farklı şeylerin birleşimi,The band plays a fusion of jazz and rock.,Grup caz ve rock karışımı çalıyor.,4,,music
+c1-generic,GENERIC,G,STARTS,adj,"marka değil, genel nitelikte",He bought a generic brand of aspirin.,Markasız bir aspirin aldı.,5,,business
+c1-graffiti,GRAFFITI,G,STARTS,noun,duvara yazılmış veya çizilmiş yazı,The wall was covered in graffiti.,Duvar grafitiyle kaplıydı.,4,,travel
+c1-grassroots,GRASSROOTS,G,STARTS,noun,"halkın tabanı, sıradan insanlar",Support for the plan came from the grassroots.,Plana destek tabandan geldi.,5,,school-work
+c1-greed,GREED,G,STARTS,noun,daha fazlasına duyulan aşırı hırs,Greed ruined the company.,Açgözlülük şirketi mahvetti.,4,,business
+c1-governance,GOVERNANCE,G,STARTS,noun,kurumların yönetilme ve denetlenme biçimi,Good governance builds public trust.,İyi yönetişim kamu güvenini artırır.,5,,business
+c1-haunt,HAUNT,H,STARTS,verb,hayalet gibi bir yere musallat olmak,They say a ghost will haunt the old house.,Eski eve bir hayaletin musallat olduğunu söylüyorlar.,5,,film-tv
+c1-hectic,HECTIC,H,STARTS,adj,çok yoğun ve telaşlı,It was a hectic week at work.,İşte çok yoğun bir hafta geçti.,4,,business
+c1-herald,HERALD,H,STARTS,verb,bir şeyin habercisi olmak,The report may herald a new era.,Rapor yeni bir dönemin habercisi olabilir.,5,,school-work
+c1-hierarchy,HIERARCHY,H,STARTS,noun,rütbe veya önem sıralaması,The company has a strict hierarchy.,Şirketin katı bir hiyerarşisi var.,5,,business
+c1-homeland,HOMELAND,H,STARTS,noun,insanın doğduğu yurt,She dreams of returning to her homeland.,Vatanına dönmeyi hayal ediyor.,4,,school-work
+c1-humanitarian,HUMANITARIAN,H,STARTS,adj,insanların acısını azaltmaya yönelik,The charity gives humanitarian aid.,Hayır kurumu insani yardım yapıyor.,5,,school-work
+c1-jeopardise,JEOPARDISE,J,STARTS,verb,bir şeyi tehlikeye atmak,Lying could jeopardise your career.,Yalan söylemek kariyerini tehlikeye atabilir.,5,,business
+c1-justification,JUSTIFICATION,J,STARTS,noun,bir davranışı haklı gösteren neden,There is no justification for such behaviour.,Böyle bir davranışı haklı gösteren bir neden yok.,5,,school-work
+c1-jackpot,JACKPOT,J,STARTS,noun,büyük ikramiye,She won the jackpot in the lottery.,Piyangoda büyük ikramiyeyi kazandı.,4,,school-work
+c1-majestic,MAJESTIC,J,CONTAINS,adj,görkemli ve etkileyici,The mountains look majestic at dawn.,Dağlar şafakta görkemli görünüyor.,5,,travel
+c1-conjecture,CONJECTURE,J,CONTAINS,noun,kanıtsız tahmin,Their theory is pure conjecture.,Teorileri tamamen tahminden ibaret.,5,,school-work
+c1-rejoice,REJOICE,J,CONTAINS,verb,büyük sevinç duymak,The nation will rejoice at the news.,Ulus bu habere çok sevinecek.,5,,school-work
+c1-keystone,KEYSTONE,K,STARTS,noun,bir yapıyı bir arada tutan temel öğe,The new stadium is the keystone of the city's plan.,Yeni stadyum şehir planının temel taşıdır.,5,,business
+c1-knowledgeable,KNOWLEDGEABLE,K,STARTS,adj,bilgisi geniş,The guide was friendly and knowledgeable.,Rehber güler yüzlü ve bilgiliydi.,4,,travel
+c1-crackdown,CRACKDOWN,K,CONTAINS,noun,suça karşı sert önlem,The police started a crackdown on speeding.,Polis hız yapanlara karşı sert önlem başlattı.,5,,school-work
+c1-framework,FRAMEWORK,K,CONTAINS,noun,bir sistemin temel yapısı,The law provides a framework for trade.,Yasa ticaret için bir çerçeve sunuyor.,5,,business
+c1-checkpoint,CHECKPOINT,K,CONTAINS,noun,kimlik denetim noktası,We were stopped at a checkpoint.,Bir kontrol noktasında durdurulduk.,4,,travel
+c1-backfire,BACKFIRE,K,CONTAINS,verb,beklenenin tersi sonuç verip zarar vermek,The plan could backfire badly.,Plan feci şekilde ters tepebilir.,5,,business
+c1-blackout,BLACKOUT,K,CONTAINS,noun,elektrik kesintisi,A storm caused a blackout in the city.,Fırtına şehirde elektrik kesintisine yol açtı.,4,,travel
+c1-landslide,LANDSLIDE,L,STARTS,noun,toprak kayması; ezici seçim zaferi,A landslide blocked the mountain road.,Bir heyelan dağ yolunu kapattı.,4,,travel
+c1-lawsuit,LAWSUIT,L,STARTS,noun,mahkemede açılan hukuk davası,The firm faces a lawsuit.,Firma bir dava ile karşı karşıya.,4,,business
+c1-logistics,LOGISTICS,L,STARTS,noun,malların taşınması ve düzenlenmesi,She works in logistics.,Lojistik alanında çalışıyor.,5,,business
+c1-linguistic,LINGUISTIC,L,STARTS,adj,dille veya dil bilimiyle ilgili,Linguistic skills matter in this job.,Bu işte dil becerileri önemlidir.,5,,school-work
+c1-newcomer,NEWCOMER,N,STARTS,noun,bir yere yeni gelen kişi,"As a newcomer, she felt lost.",Yeni gelen biri olarak kendini kaybolmuş hissetti.,4,,school-work
+c1-nonprofit,NONPROFIT,N,STARTS,adj,kâr amacı gütmeyen,She works for a nonprofit group.,Kâr amacı gütmeyen bir kuruluşta çalışıyor.,5,,business
+c1-numerical,NUMERICAL,N,STARTS,adj,sayılarla ilgili,Put the files in numerical order.,Dosyaları sayısal sıraya koy.,5,,school-work
+c1-nationwide,NATIONWIDE,N,STARTS,adj,ülkenin her yerinde,There was a nationwide strike.,Ülke çapında bir grev vardı.,4,,business
+c1-acquisition,ACQUISITION,Q,CONTAINS,noun,bir şeyi satın alma veya elde etme,The acquisition cost millions.,Satın alma milyonlara mal oldu.,5,,business
+c1-inadequate,INADEQUATE,Q,CONTAINS,adj,yetersiz,Their training was inadequate.,Eğitimleri yetersizdi.,4,,business
+c1-liquidity,LIQUIDITY,Q,CONTAINS,noun,paraya çevrilebilirlik,The bank has strong liquidity.,Bankanın güçlü bir likiditesi var.,5,,business
+c1-tranquil,TRANQUIL,Q,CONTAINS,adj,huzurlu ve sakin,It was a tranquil village.,Huzurlu bir köydü.,5,,travel
+c1-quantify,QUANTIFY,Q,STARTS,verb,bir şeyi sayısal olarak ölçmek,It is hard to quantify the damage.,Zararı ölçmek zor.,5,,school-work
+c1-quarterly,QUARTERLY,Q,STARTS,adj,üç ayda bir yapılan,The firm publishes a quarterly report.,Firma üç aylık rapor yayımlıyor.,5,,business
+c1-qualitative,QUALITATIVE,Q,STARTS,adj,"niteliğe ilişkin, sayısal olmayan",They did a qualitative study.,Niteliksel bir araştırma yaptılar.,5,,school-work
+c1-squeamish,SQUEAMISH,Q,CONTAINS,adj,kan veya kötü kokudan hemen tiksinen,I am too squeamish to watch the surgery.,Ameliyatı izlemeye midem dayanmaz.,5,,school-work
+c1-taxpayer,TAXPAYER,X,CONTAINS,noun,vergi veren kişi,Every taxpayer helps pay for public roads.,Her vergi mükellefi kamu yollarının parasına katkı yapar.,4,,business
+c1-proxy,PROXY,X,CONTAINS,noun,başkası adına hareket eden vekil,He voted by proxy.,Vekil aracılığıyla oy kullandı.,5,,business
+c1-hexagon,HEXAGON,X,CONTAINS,noun,altı kenarlı şekil,A hexagon has six sides.,Altıgenin altı kenarı vardır.,4,,school-work
+c1-complexity,COMPLEXITY,X,CONTAINS,noun,çok parçalı ve karışık olma durumu,The complexity of the case surprised everyone.,Davanın karmaşıklığı herkesi şaşırttı.,5,,school-work
+c1-synergy,SYNERGY,Y,CONTAINS,noun,birlikte çalışmanın daha büyük etkisi,The merger created real synergy.,Birleşme gerçek bir sinerji yarattı.,5,,business
+c1-synonym,SYNONYM,Y,CONTAINS,noun,eş anlamlı sözcük,"""Big"" is a synonym of ""large"".","""Big"", ""large"" kelimesinin eş anlamlısıdır.",4,,school-work
+c1-dynasty,DYNASTY,Y,CONTAINS,noun,aynı aileden gelen hükümdarlar zinciri,The dynasty ruled for two centuries.,Hanedan iki yüzyıl hüküm sürdü.,5,,school-work
+c1-hypothetical,HYPOTHETICAL,Y,CONTAINS,adj,"varsayıma dayanan, gerçek olmayan",It is only a hypothetical case.,Bu yalnızca varsayımsal bir durum.,5,,school-work
+c1-analytical,ANALYTICAL,Y,CONTAINS,adj,çözümlemeye dayalı,She has an analytical mind.,Analitik bir zihni var.,5,,school-work
+c1-physician,PHYSICIAN,Y,CONTAINS,noun,hekim,The physician examined the patient.,Hekim hastayı muayene etti.,5,,school-work
+c1-syllable,SYLLABLE,Y,CONTAINS,noun,bir sözcüğün hece birimi,Say the word one syllable at a time.,Kelimeyi hece hece söyle.,4,,school-work
+c1-skyline,SKYLINE,Y,CONTAINS,noun,şehrin gökyüzüne karşı silueti,The skyline looks beautiful at night.,Şehrin silueti geceleri çok güzel.,4,,travel
+c1-frenzy,FRENZY,Z,CONTAINS,noun,kontrolsüz aşırı heyecan,The crowd was in a frenzy.,Kalabalık çılgına dönmüştü.,5,,sports
+c1-craze,CRAZE,Z,CONTAINS,noun,kısa süreli moda furyası,The dance became a craze.,Dans bir moda furyasına dönüştü.,5,,music
+c1-capitalize,CAPITALIZE,Z,CONTAINS,verb,fırsattan yararlanmak,They hope to capitalize on the success.,Başarıdan yararlanmayı umuyorlar.,5,,business
+c1-drizzle,DRIZZLE,Z,CONTAINS,noun,ince ve hafif yağmur,A fine drizzle fell all morning.,Sabahtan beri ince bir çise yağdı.,4,,travel
