@@ -1,0 +1,40 @@
+<resources>
+    <!-- Header (09-stats) -->
+    <string name="stats_title">Statistics</string>
+    <string name="stats_back">Back</string>
+
+    <!-- Number grid -->
+    <string name="stats_learned">words learned</string>
+    <string name="stats_accuracy">accuracy</string>
+    <string name="stats_accuracy_none">–</string>
+    <string name="stats_percent">%1$d%</string>
+    <plurals name="stats_streak_value">
+        <item quantity="one">%1$d day</item>
+        <item quantity="other">%1$d days</item>
+    </plurals>
+    <string name="stats_streak_label">longest streak</string>
+    <string name="stats_wheels">wheels completed</string>
+
+    <!-- Weekly chart -->
+    <string name="stats_week_title">Words learned this week</string>
+    <string name="stats_week_total">%1$d in total</string>
+    <string name="stats_week_description">Words learned per day: %1$s</string>
+    <string name="stats_day_mon">Mon</string>
+    <string name="stats_day_tue">Tue</string>
+    <string name="stats_day_wed">Wed</string>
+    <string name="stats_day_thu">Thu</string>
+    <string name="stats_day_fri">Fri</string>
+    <string name="stats_day_sat">Sat</string>
+    <string name="stats_day_sun">Sun</string>
+
+    <!-- Level progress and hardest letters -->
+    <string name="stats_levels_title">LEVEL PROGRESS</string>
+    <string name="stats_level_count">%1$d / %2$d</string>
+    <string name="stats_letters_title">LETTERS YOU STRUGGLE WITH</string>
+    <string name="stats_letter_correct">correct</string>
+    <string name="stats_letters_empty">Your hardest letters show up here after a few more answers.</string>
+
+    <!-- Empty and error states (no design: EmptyState) -->
+    <string name="stats_empty">No wheel played yet. Play your first wheel and your statistics will appear here.</string>
+    <string name="stats_error">Your statistics could not be read. Please try again later.</string>
+</resources>

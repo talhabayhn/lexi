@@ -18,19 +18,26 @@ import org.koin.compose.viewmodel.koinViewModel
 data object HomeRoute
 
 /**
- * [onPlay] opens the level and mode select, [onOpenNotebook] the notebook (the graph in `shared` decides the routes).
+ * [onPlay] opens the level and mode select, [onOpenNotebook] the notebook, [onOpenStats] the statistics (the graph in
+ * `shared` decides the routes).
  */
-fun NavGraphBuilder.homeScreen(onPlay: () -> Unit, onOpenNotebook: () -> Unit) {
+fun NavGraphBuilder.homeScreen(onPlay: () -> Unit, onOpenNotebook: () -> Unit, onOpenStats: () -> Unit) {
     composable<HomeRoute> {
-        HomeRoute(onPlay = onPlay, onOpenNotebook = onOpenNotebook)
+        HomeRoute(onPlay = onPlay, onOpenNotebook = onOpenNotebook, onOpenStats = onOpenStats)
     }
 }
 
 @Composable
-internal fun HomeRoute(onPlay: () -> Unit, onOpenNotebook: () -> Unit, viewModel: HomeViewModel = koinViewModel()) {
+internal fun HomeRoute(
+    onPlay: () -> Unit,
+    onOpenNotebook: () -> Unit,
+    onOpenStats: () -> Unit,
+    viewModel: HomeViewModel = koinViewModel(),
+) {
     val state by viewModel.state.collectAsStateWithLifecycle()
     val currentOnPlay by rememberUpdatedState(onPlay)
     val currentOnOpenNotebook by rememberUpdatedState(onOpenNotebook)
+    val currentOnOpenStats by rememberUpdatedState(onOpenStats)
     val lifecycleOwner = LocalLifecycleOwner.current
     LaunchedEffect(viewModel, lifecycleOwner) {
         lifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -38,6 +45,7 @@ internal fun HomeRoute(onPlay: () -> Unit, onOpenNotebook: () -> Unit, viewModel
                 when (effect) {
                     HomeEffect.NavigateToLevelSelect -> currentOnPlay()
                     HomeEffect.NavigateToNotebook -> currentOnOpenNotebook()
+                    HomeEffect.NavigateToStats -> currentOnOpenStats()
                 }
             }
         }

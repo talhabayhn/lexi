@@ -25,6 +25,7 @@ kotlin {
             implementation(project(":feature:levels"))
             implementation(project(":feature:game"))
             implementation(project(":feature:notebook"))
+            implementation(project(":feature:stats"))
 
             implementation(libs.androidx.navigation.compose)
             implementation(libs.kotlinx.serialization.core)

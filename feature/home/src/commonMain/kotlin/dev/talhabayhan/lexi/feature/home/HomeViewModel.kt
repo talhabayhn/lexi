@@ -56,10 +56,11 @@ internal class HomeViewModel(progress: ProgressRepository, streaks: StreakReposi
 
             HomeIntent.OpenNotebook -> effectChannel.trySend(HomeEffect.NavigateToNotebook)
 
+            HomeIntent.OpenStats -> effectChannel.trySend(HomeEffect.NavigateToStats)
+
             // Destinations land with their milestones (see HomeIntent); until then the tiles are inert.
             HomeIntent.OpenDaily,
             HomeIntent.OpenSettings,
-            HomeIntent.OpenStats,
             HomeIntent.OpenPractice,
             HomeIntent.OpenExamPacks,
             -> Unit

@@ -28,6 +28,7 @@ each with a `@Preview` and a Roborazzi screenshot. Feature screens compose ONLY 
 | `WordRow` | notebook: word · tr, level · due, SRS bars (4), speaker | bars colored by box (red/yellow/blue) |
 | `StatTile` / `StatGrid` | 2×2 grid (2dp dividers), 1×3 on the result screen (3dp) | shape + big number 30sp + label |
 | `BarChart` | 7 bars, today outlined | see `09-stats` |
+| `LevelProgressRow` / `HardLetterChip` | stats: level name · 12dp ink bar · `learned / total`; red letter tile · accuracy | `09-stats` |
 | `Toast` | success (blue), info (white with undo link) | top, shadow s4 (16-components.html) |
 | `ConfirmDialog` | — | white, 3dp, shadow s8, red square icon, title 24/800, body, two buttons |
 | `BottomSheet` / `BottomSheetPanel` / `ModalScrim` | joker sheet | cream, 4dp top border, scrim 55%; overlays at the screen root |

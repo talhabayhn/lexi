@@ -45,6 +45,8 @@ before shipping.
 | Word detail sheet | M5 | built (stays as built, DESIGN-DEBT): `BottomSheet` over the notebook, opened by tapping a row: word as title, Turkish clue, level · category, example + translation, memory box and next review, seen / correct / wrong, ink "Dinle" button (speaker), white "Defterden çıkar" (no confirmation) |
 | Notebook empty states, review button | M5 | no design: `EmptyState` per tab / search; the blue "Tekrar çarkını başlat" button is hidden while nothing is due (the design always shows it); it shows on every tab |
 | Notebook: placeholder font weight | M5 | the design's search placeholder is a thinner (browser default 400) Jost; the app has no Regular, so it uses Medium and is ~5 % wider |
+| Stats empty / error states | M5 | no design: `EmptyState` in place of the cards when no wheel was played yet (no stored session and no answered card) or the read failed; the hardest-letters section shows an `EmptyState` until a letter has 5 answers; a level without cards is hidden |
+| Stats: hardest letters overflow | M5 | the design's four chips are wider than the screen (the 4th is cut at the edge); built as a sideways scrolling row, cut at the 20dp padding instead of the screen edge; no accuracy yet shows "–" |
 | Review wheel result | M5 | built: the normal result screen; its level badge shows the level of the first review card (a review mixes levels) |
 | Paywall (Lexi Pro) | M7 | ink card + yellow diamond from settings; 3 plans as level-card style |
 | Notification permission pre-prompt | M7 | onboarding layout |

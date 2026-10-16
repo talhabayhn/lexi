@@ -1,0 +1,40 @@
+<resources>
+    <!-- Başlık (09-stats) -->
+    <string name="stats_title">İstatistikler</string>
+    <string name="stats_back">Geri</string>
+
+    <!-- Sayı ızgarası -->
+    <string name="stats_learned">öğrenilen kelime</string>
+    <string name="stats_accuracy">doğruluk</string>
+    <string name="stats_accuracy_none">–</string>
+    <string name="stats_percent">%%1$d</string>
+    <plurals name="stats_streak_value">
+        <item quantity="one">%1$d gün</item>
+        <item quantity="other">%1$d gün</item>
+    </plurals>
+    <string name="stats_streak_label">en uzun seri</string>
+    <string name="stats_wheels">tamamlanan çark</string>
+
+    <!-- Haftalık grafik -->
+    <string name="stats_week_title">Bu hafta öğrenilen kelime</string>
+    <string name="stats_week_total">toplam %1$d</string>
+    <string name="stats_week_description">Günlük öğrenilen kelime: %1$s</string>
+    <string name="stats_day_mon">Pzt</string>
+    <string name="stats_day_tue">Sal</string>
+    <string name="stats_day_wed">Çar</string>
+    <string name="stats_day_thu">Per</string>
+    <string name="stats_day_fri">Cum</string>
+    <string name="stats_day_sat">Cmt</string>
+    <string name="stats_day_sun">Paz</string>
+
+    <!-- Seviye ilerlemesi ve en zor harfler -->
+    <string name="stats_levels_title">SEVİYE İLERLEMESİ</string>
+    <string name="stats_level_count">%1$d / %2$d</string>
+    <string name="stats_letters_title">EN ÇOK ZORLANDIĞIN HARFLER</string>
+    <string name="stats_letter_correct">doğru</string>
+    <string name="stats_letters_empty">En zorlandığın harfler birkaç cevap daha verince burada görünür.</string>
+
+    <!-- Boş ve hata durumları (tasarım yok: EmptyState) -->
+    <string name="stats_empty">Henüz oynanmış bir çark yok. İlk çarkını oyna, istatistiklerin burada görünsün.</string>
+    <string name="stats_error">İstatistikler okunamadı. Lütfen daha sonra tekrar dene.</string>
+</resources>

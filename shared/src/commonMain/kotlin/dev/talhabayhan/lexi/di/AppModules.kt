@@ -15,6 +15,7 @@ import dev.talhabayhan.lexi.feature.game.di.gameModule
 import dev.talhabayhan.lexi.feature.home.di.homeModule
 import dev.talhabayhan.lexi.feature.levels.di.levelsModule
 import dev.talhabayhan.lexi.feature.notebook.di.notebookModule
+import dev.talhabayhan.lexi.feature.stats.di.statsModule
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -47,6 +48,7 @@ val appModules: List<Module> = listOf(
     homeModule,
     levelsModule,
     notebookModule,
+    statsModule,
     gameModule,
 )
 

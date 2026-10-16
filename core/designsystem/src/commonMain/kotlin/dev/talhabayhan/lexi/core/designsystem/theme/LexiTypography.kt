@@ -140,6 +140,10 @@ public class LexiTypography internal constructor(
     public val button20Wide: TextStyle,
     /** 14 / 700: "+3 kelime daha · Tümünü gör →" (`06-result`). */
     public val bodyBold14: TextStyle,
+    /** 13 / 700, line height 1.1: hardest-letter chip accuracy (`09-stats`). */
+    public val letterChipValue: TextStyle,
+    /** 13 / 500, line height 1.1: hardest-letter chip label (`09-stats`). */
+    public val letterChipLabel: TextStyle,
 )
 
 /** Static Jost instances shipped in `composeResources/font` (OFL, `files/licenses/jost-ofl.txt`). */
@@ -266,5 +270,7 @@ internal fun lexiTypography(jost: FontFamily): LexiTypography {
         reviewWord = style(19, extraBold, lineHeight = 1.1),
         button20Wide = style(20, extraBold, letterSpacing = 0.08.em),
         bodyBold14 = style(14, FontWeight.Bold),
+        letterChipValue = style(13, FontWeight.Bold, lineHeight = 1.1),
+        letterChipLabel = style(13, FontWeight.Medium, lineHeight = 1.1),
     )
 }
