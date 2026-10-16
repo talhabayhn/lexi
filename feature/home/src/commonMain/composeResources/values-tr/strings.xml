@@ -47,4 +47,8 @@
     <string name="home_tile_practice_subtitle">Süresiz, baskısız</string>
     <string name="home_tile_exams">Sınav paketleri</string>
     <string name="home_tile_exams_subtitle">LGS · YKS-Dil · YDS</string>
+
+    <!-- Sınav paketleri sayfası (10-exam-packs, YAKINDA) -->
+    <string name="home_back">Geri</string>
+    <string name="home_exams_soon">YAKINDA: LGS, YKS-Dil ve YDS çarkları hazırlanıyor.</string>
 </resources>

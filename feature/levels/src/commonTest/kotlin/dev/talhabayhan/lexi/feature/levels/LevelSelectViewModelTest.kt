@@ -46,7 +46,8 @@ class LevelSelectViewModelTest {
         Dispatchers.resetMain()
     }
 
-    private fun viewModel() = LevelSelectViewModel(cards, progress, settings)
+    private fun viewModel(route: LevelSelectRoute = LevelSelectRoute()) =
+        LevelSelectViewModel(route, cards, progress, settings)
 
     private fun answered(id: String, correct: Int) = CardProgress(CardId(id), seen = 1, correct = correct)
 
@@ -63,6 +64,23 @@ class LevelSelectViewModelTest {
             assertEquals(LevelProgressUi(Level.NAT, learned = 0, total = 0), levels[5])
             assertEquals(0f, levels[5].fraction)
         }
+    }
+
+    @Test
+    fun `the route can preselect the practice mode and starting uses it`() = runTest {
+        val viewModel = viewModel(LevelSelectRoute(GameMode.PRACTICE))
+        assertEquals(GameMode.PRACTICE, viewModel.state.value.selectedMode)
+
+        viewModel.effects.test {
+            viewModel.onIntent(LevelSelectIntent.Start)
+
+            assertEquals(LevelSelectEffect.StartGame(Level.A1, GameMode.PRACTICE), awaitItem())
+        }
+    }
+
+    @Test
+    fun `an unknown route mode falls back to classic`() = runTest {
+        assertEquals(GameMode.CLASSIC, viewModel(LevelSelectRoute(mode = "NOPE")).state.value.selectedMode)
     }
 
     @Test

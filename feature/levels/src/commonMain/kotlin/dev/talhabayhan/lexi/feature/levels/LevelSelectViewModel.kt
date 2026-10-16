@@ -27,11 +27,12 @@ import kotlinx.coroutines.launch
  * settings, the selection, and the start of the game as an effect.
  */
 internal class LevelSelectViewModel(
+    route: LevelSelectRoute,
     private val cards: CardRepository,
     private val progress: ProgressRepository,
     private val settings: SettingsRepository,
 ) : ViewModel() {
-    private val mutableState = MutableStateFlow(LevelSelectUiState())
+    private val mutableState = MutableStateFlow(LevelSelectUiState(selectedMode = route.initialMode))
     val state: StateFlow<LevelSelectUiState> = mutableState.asStateFlow()
 
     private val effectChannel = Channel<LevelSelectEffect>(Channel.BUFFERED)

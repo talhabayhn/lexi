@@ -60,11 +60,12 @@ internal class HomeViewModel(progress: ProgressRepository, streaks: StreakReposi
 
             HomeIntent.OpenSettings -> effectChannel.trySend(HomeEffect.NavigateToSettings)
 
-            // Destinations land with their milestones (see HomeIntent); until then the tiles are inert.
-            HomeIntent.OpenDaily,
-            HomeIntent.OpenPractice,
-            HomeIntent.OpenExamPacks,
-            -> Unit
+            HomeIntent.OpenPractice -> effectChannel.trySend(HomeEffect.NavigateToPractice)
+
+            HomeIntent.OpenExamPacks -> effectChannel.trySend(HomeEffect.NavigateToExamPacks)
+
+            // TODO(M6): the daily wheel; the card is inert until then.
+            HomeIntent.OpenDaily -> Unit
         }
     }
 }

@@ -47,4 +47,8 @@
     <string name="home_tile_practice_subtitle">Untimed, no pressure</string>
     <string name="home_tile_exams">Exam packs</string>
     <string name="home_tile_exams_subtitle">LGS · YKS-Dil · YDS</string>
+
+    <!-- Exam packs page (10-exam-packs, SOON) -->
+    <string name="home_back">Back</string>
+    <string name="home_exams_soon">SOON: LGS, YKS-Dil and YDS wheels are on their way.</string>
 </resources>

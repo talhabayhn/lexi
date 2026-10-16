@@ -31,7 +31,7 @@ internal sealed interface HomeIntent {
     /** OYNA: opens the level and mode select. */
     data object Play : HomeIntent
 
-    /** TODO(M6): daily wheel. */
+    /** TODO(M6): daily wheel; inert until then. */
     data object OpenDaily : HomeIntent
 
     /** The gear icon. */
@@ -43,10 +43,10 @@ internal sealed interface HomeIntent {
     /** The Istatistikler tile. */
     data object OpenStats : HomeIntent
 
-    /** TODO(M5): practice mode. */
+    /** The practice tile: the level select on Practice mode. */
     data object OpenPractice : HomeIntent
 
-    /** TODO(M7): exam packs. */
+    /** The exam packs tile: a "coming soon" page until M7. */
     data object OpenExamPacks : HomeIntent
 }
 
@@ -58,4 +58,8 @@ internal sealed interface HomeEffect {
     data object NavigateToStats : HomeEffect
 
     data object NavigateToSettings : HomeEffect
+
+    data object NavigateToPractice : HomeEffect
+
+    data object NavigateToExamPacks : HomeEffect
 }

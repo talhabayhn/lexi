@@ -136,14 +136,31 @@ class HomeViewModelTest {
     }
 
     @Test
-    fun `tiles of later milestones are inert`() = runTest {
+    fun `the practice tile opens the practice select`() = runTest {
         val viewModel = viewModel()
         viewModel.effects.test {
-            listOf(
-                HomeIntent.OpenDaily,
-                HomeIntent.OpenPractice,
-                HomeIntent.OpenExamPacks,
-            ).forEach(viewModel::onIntent)
+            viewModel.onIntent(HomeIntent.OpenPractice)
+
+            assertEquals(HomeEffect.NavigateToPractice, awaitItem())
+        }
+    }
+
+    @Test
+    fun `the exam packs tile opens the exam packs page`() = runTest {
+        val viewModel = viewModel()
+        viewModel.effects.test {
+            viewModel.onIntent(HomeIntent.OpenExamPacks)
+
+            assertEquals(HomeEffect.NavigateToExamPacks, awaitItem())
+        }
+    }
+
+    // TODO(M6): the daily card opens the daily wheel; until then it is inert.
+    @Test
+    fun `the daily card is inert until the daily wheel arrives`() = runTest {
+        val viewModel = viewModel()
+        viewModel.effects.test {
+            viewModel.onIntent(HomeIntent.OpenDaily)
 
             expectNoEvents()
         }

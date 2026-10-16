@@ -19,13 +19,15 @@ data object HomeRoute
 
 /**
  * [onPlay] opens the level and mode select, [onOpenNotebook] the notebook, [onOpenStats] the statistics,
- * [onOpenSettings] the settings (the graph in `shared` decides the routes).
+ * [onOpenSettings] the settings, [onOpenPractice] the level select on Practice, [onOpenExamPacks] the exam packs page (the graph in `shared` decides the routes).
  */
 fun NavGraphBuilder.homeScreen(
     onPlay: () -> Unit,
     onOpenNotebook: () -> Unit,
     onOpenStats: () -> Unit,
     onOpenSettings: () -> Unit,
+    onOpenPractice: () -> Unit,
+    onOpenExamPacks: () -> Unit,
 ) {
     composable<HomeRoute> {
         HomeRoute(
@@ -33,6 +35,8 @@ fun NavGraphBuilder.homeScreen(
             onOpenNotebook = onOpenNotebook,
             onOpenStats = onOpenStats,
             onOpenSettings = onOpenSettings,
+            onOpenPractice = onOpenPractice,
+            onOpenExamPacks = onOpenExamPacks,
         )
     }
 }
@@ -43,6 +47,8 @@ internal fun HomeRoute(
     onOpenNotebook: () -> Unit,
     onOpenStats: () -> Unit,
     onOpenSettings: () -> Unit,
+    onOpenPractice: () -> Unit,
+    onOpenExamPacks: () -> Unit,
     viewModel: HomeViewModel = koinViewModel(),
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
@@ -50,6 +56,8 @@ internal fun HomeRoute(
     val currentOnOpenNotebook by rememberUpdatedState(onOpenNotebook)
     val currentOnOpenStats by rememberUpdatedState(onOpenStats)
     val currentOnOpenSettings by rememberUpdatedState(onOpenSettings)
+    val currentOnOpenPractice by rememberUpdatedState(onOpenPractice)
+    val currentOnOpenExamPacks by rememberUpdatedState(onOpenExamPacks)
     val lifecycleOwner = LocalLifecycleOwner.current
     LaunchedEffect(viewModel, lifecycleOwner) {
         lifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -59,6 +67,8 @@ internal fun HomeRoute(
                     HomeEffect.NavigateToNotebook -> currentOnOpenNotebook()
                     HomeEffect.NavigateToStats -> currentOnOpenStats()
                     HomeEffect.NavigateToSettings -> currentOnOpenSettings()
+                    HomeEffect.NavigateToPractice -> currentOnOpenPractice()
+                    HomeEffect.NavigateToExamPacks -> currentOnOpenExamPacks()
                 }
             }
         }

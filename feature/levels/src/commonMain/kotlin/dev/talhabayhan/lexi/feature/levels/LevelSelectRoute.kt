@@ -15,9 +15,16 @@ import dev.talhabayhan.lexi.core.domain.model.Level
 import kotlinx.serialization.Serializable
 import org.koin.compose.viewmodel.koinViewModel
 
-/** Type-safe navigation destination for the level and mode select. */
+/**
+ * Type-safe navigation destination for the level and mode select. [mode] is the mode that starts selected (an enum
+ * *name*, like `CategoriesRoute`): Home's OYNA opens it on Classic, the practice tile on Practice.
+ */
 @Serializable
-data object LevelSelectRoute
+data class LevelSelectRoute(val mode: String = GameMode.CLASSIC.name) {
+    constructor(mode: GameMode) : this(mode = mode.name)
+
+    internal val initialMode: GameMode get() = GameMode.entries.firstOrNull { it.name == mode } ?: GameMode.CLASSIC
+}
 
 /** [onStart] opens a game of the chosen level and mode (the graph in `shared` owns the game route). */
 fun NavGraphBuilder.levelSelectScreen(

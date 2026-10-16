@@ -8,6 +8,7 @@ import dev.talhabayhan.lexi.core.domain.feedback.Speaker
 import dev.talhabayhan.lexi.feature.game.GameRoute
 import dev.talhabayhan.lexi.feature.game.result.ResultRoute
 import dev.talhabayhan.lexi.feature.levels.CategoriesRoute
+import dev.talhabayhan.lexi.feature.levels.LevelSelectRoute
 import kotlinx.coroutines.CoroutineScope
 import org.koin.core.annotation.KoinExperimentalAPI
 import org.koin.dsl.module
@@ -30,6 +31,7 @@ class AppModulesTest {
                 GameRoute::class,
                 ResultRoute::class,
                 CategoriesRoute::class,
+                LevelSelectRoute::class,
                 CoroutineScope::class,
             ),
         )

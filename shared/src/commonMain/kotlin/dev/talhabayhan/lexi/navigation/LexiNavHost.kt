@@ -16,10 +16,13 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiMotion
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
+import dev.talhabayhan.lexi.core.domain.game.GameMode
 import dev.talhabayhan.lexi.feature.game.GameRoute
 import dev.talhabayhan.lexi.feature.game.gameScreen
 import dev.talhabayhan.lexi.feature.game.result.resultScreen
+import dev.talhabayhan.lexi.feature.home.ExamPacksRoute
 import dev.talhabayhan.lexi.feature.home.HomeRoute
+import dev.talhabayhan.lexi.feature.home.examPacksScreen
 import dev.talhabayhan.lexi.feature.home.homeScreen
 import dev.talhabayhan.lexi.feature.levels.CategoriesRoute
 import dev.talhabayhan.lexi.feature.levels.LevelSelectRoute
@@ -36,7 +39,7 @@ import dev.talhabayhan.lexi.splash.splashScreen
 
 /**
  * The app graph: `Splash → Home → LevelSelect [→ Categories] → Game → Result`, `Home → Notebook → Game (review)
- * → Result` and `Home → Stats` and `Home → Settings`. Onboarding (M6) will slot in after the splash. The
+ * → Result` and `Home → Stats`, `Home → Settings`, `Home → Practice` (level select preselected to Practice) and `Home → Exam packs`. Onboarding (M6) will slot in after the splash. The
  * result replaces everything above Home, so system back and "Ana menüye dön" both return to Home; TEKRAR OYNA starts
  * the next game in the same place (`Home → Game`).
  *
@@ -70,11 +73,16 @@ fun LexiNavHost(modifier: Modifier = Modifier) {
             },
         )
         homeScreen(
-            onPlay = { navController.ifResumed { navigate(LevelSelectRoute) { launchSingleTop = true } } },
+            onPlay = { navController.ifResumed { navigate(LevelSelectRoute()) { launchSingleTop = true } } },
             onOpenNotebook = { navController.ifResumed { navigate(NotebookRoute) { launchSingleTop = true } } },
             onOpenStats = { navController.ifResumed { navigate(StatsRoute) { launchSingleTop = true } } },
             onOpenSettings = { navController.ifResumed { navigate(SettingsRoute) { launchSingleTop = true } } },
+            onOpenPractice = {
+                navController.ifResumed { navigate(LevelSelectRoute(GameMode.PRACTICE)) { launchSingleTop = true } }
+            },
+            onOpenExamPacks = { navController.ifResumed { navigate(ExamPacksRoute) { launchSingleTop = true } } },
         )
+        examPacksScreen(onBack = { navController.ifResumed { popBackStack() } })
         settingsScreen(onBack = { navController.ifResumed { popBackStack() } })
         statsScreen(onBack = { navController.ifResumed { popBackStack() } })
         notebookScreen(
