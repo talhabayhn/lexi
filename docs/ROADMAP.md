@@ -63,7 +63,7 @@ Module mapping (replaces the earlier `composeApp`): `androidApp` = thin Android 
 
 ## M5 — Learning & progress
 - [x] Categories (`07-categories`) + category wheels
-- [ ] Notebook (`08-notebook`): tabs, search, rows, review wheel, word detail sheet (design debt)
+- [x] Notebook (`08-notebook`): tabs, search, rows, review wheel, word detail sheet (design debt)
 - [ ] Stats (`09-stats`)
 - [ ] Practice & Hardcore modes; empty/error states
 **Done when:** SRS loop works across days (test with fake clock).

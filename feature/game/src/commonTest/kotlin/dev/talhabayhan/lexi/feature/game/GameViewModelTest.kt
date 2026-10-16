@@ -22,6 +22,7 @@ import dev.talhabayhan.lexi.core.domain.repository.JokerRepository
 import dev.talhabayhan.lexi.core.domain.repository.SessionRepository
 import dev.talhabayhan.lexi.core.domain.session.FinishGame
 import dev.talhabayhan.lexi.core.domain.session.SessionResult
+import dev.talhabayhan.lexi.core.domain.srs.CardProgress
 import dev.talhabayhan.lexi.core.testing.FakeAppClock
 import dev.talhabayhan.lexi.core.testing.FakeCardRepository
 import dev.talhabayhan.lexi.core.testing.FakeJokerRepository
@@ -323,6 +324,43 @@ class GameViewModelTest {
         val vm = started()
 
         assertEquals(120_000L, vm.remainingMs)
+    }
+
+    @Test
+    fun `the review wheel holds one card per letter of the due notebook cards of any level`() = runTest {
+        val today = appClock.epochDay(appClock.nowMs())
+        cards.cards = listOf(
+            testCard("APPLE"),
+            testCard("BREAD", level = Level.B1),
+            testCard("CHAIR"),
+            testCard("DOG"),
+        )
+        progress.save(
+            listOf(
+                CardProgress(CardId("a1-apple"), box = 0, dueEpochDay = today),
+                CardProgress(CardId("b1-bread"), box = 1, dueEpochDay = today - 2),
+                // Not due yet, not in the notebook: both stay out of the wheel.
+                CardProgress(CardId("a1-chair"), box = 2, dueEpochDay = today + 3),
+                CardProgress(CardId("a1-dog"), box = null),
+            ),
+        )
+        val vm = viewModel(gameRoute = GameRoute(Level.A1, GameMode.REVIEW)).also {
+            runCurrent()
+            it.onIntent(GameIntent.Foreground)
+        }
+
+        assertEquals(listOf('A', 'B'), vm.state.value.wheel.map { it.letter })
+        // Stops the 100 ms ticker so the test's virtual time can end.
+        vm.onIntent(GameIntent.Background)
+    }
+
+    @Test
+    fun `a review without due cards is abandoned`() = runTest {
+        val vm = viewModel(gameRoute = GameRoute(Level.A1, GameMode.REVIEW))
+        vm.effects.test {
+            runCurrent()
+            assertEquals(GameEffect.Abandoned, awaitItem())
+        }
     }
 
     @Test

@@ -10,7 +10,7 @@
 | `04-game` | Oyun ekranı | `GameRoute(level, mode, category?)` / `GameScreen` | feature:game | M4 (done) |
 | `05-joker-sheet` | Joker seçimi | `JokerSheet` (bottom sheet inside GameScreen; ad button hidden behind `FeatureFlags.rewardedAdJokers` until M7) | feature:game | M4 (done) |
 | `06-result` | Oyun sonu | `ResultRoute(summary)` / `ResultScreen` (summary payload: ADR 0019 addendum; Paylaş inert until M6) | feature:game (`result`) | M4 (done) |
-| `08-notebook` | Kelime Defterim | `NotebookRoute` | feature:notebook | M5 |
+| `08-notebook` | Kelime Defterim | `NotebookRoute` / `NotebookScreen` (review wheel: `GameRoute.review()`) | feature:notebook | M5 (done) |
 | `09-stats` | İstatistikler | `StatsRoute` | feature:stats | M5 |
 | `10-exam-packs` | Sınav paketleri | `ExamPacksRoute` | feature:exams | M7 |
 | `11-settings` | Ayarlar | `SettingsRoute` | feature:settings | M7 |
@@ -42,8 +42,10 @@ before shipping.
 | Daily wheel intro / already-played state | M6 | home daily card enlarged |
 | Entry to the categories | M5 | the design has no way in (07's back arrow returns to level select): a small underlined "Kategoriler" link on the "OYUN MODU" label line of the level select (`LexiTypography.link12`; the touch target is widened by Compose). Starting a category starts `GameRoute(level, mode, category)`; the mixed card starts the level's regular wheel |
 | Categories: Pro lock, empty level | M5 | none in the design: no shipped category is Pro (TODO M7: lock behind the paywall); a level without categories shows `EmptyState` instead of the cards |
-| Word detail sheet | M5 | bottom sheet: word, tr, example, speaker, SRS box, remove |
-| Review wheel result | M5 | reuse result screen |
+| Word detail sheet | M5 | built (stays as built, DESIGN-DEBT): `BottomSheet` over the notebook, opened by tapping a row: word as title, Turkish clue, level · category, example + translation, memory box and next review, seen / correct / wrong, ink "Dinle" button (speaker), white "Defterden çıkar" (no confirmation) |
+| Notebook empty states, review button | M5 | no design: `EmptyState` per tab / search; the blue "Tekrar çarkını başlat" button is hidden while nothing is due (the design always shows it); it shows on every tab |
+| Notebook: placeholder font weight | M5 | the design's search placeholder is a thinner (browser default 400) Jost; the app has no Regular, so it uses Medium and is ~5 % wider |
+| Review wheel result | M5 | built: the normal result screen; its level badge shows the level of the first review card (a review mixes levels) |
 | Paywall (Lexi Pro) | M7 | ink card + yellow diamond from settings; 3 plans as level-card style |
 | Notification permission pre-prompt | M7 | onboarding layout |
 | Rating prompt | M8 | `ConfirmDialog` |

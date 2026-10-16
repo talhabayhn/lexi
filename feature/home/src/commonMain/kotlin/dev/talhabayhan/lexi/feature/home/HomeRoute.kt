@@ -17,23 +17,27 @@ import org.koin.compose.viewmodel.koinViewModel
 @Serializable
 data object HomeRoute
 
-/** [onPlay] opens the level and mode select (the graph in `shared` decides the route). */
-fun NavGraphBuilder.homeScreen(onPlay: () -> Unit) {
+/**
+ * [onPlay] opens the level and mode select, [onOpenNotebook] the notebook (the graph in `shared` decides the routes).
+ */
+fun NavGraphBuilder.homeScreen(onPlay: () -> Unit, onOpenNotebook: () -> Unit) {
     composable<HomeRoute> {
-        HomeRoute(onPlay = onPlay)
+        HomeRoute(onPlay = onPlay, onOpenNotebook = onOpenNotebook)
     }
 }
 
 @Composable
-internal fun HomeRoute(onPlay: () -> Unit, viewModel: HomeViewModel = koinViewModel()) {
+internal fun HomeRoute(onPlay: () -> Unit, onOpenNotebook: () -> Unit, viewModel: HomeViewModel = koinViewModel()) {
     val state by viewModel.state.collectAsStateWithLifecycle()
     val currentOnPlay by rememberUpdatedState(onPlay)
+    val currentOnOpenNotebook by rememberUpdatedState(onOpenNotebook)
     val lifecycleOwner = LocalLifecycleOwner.current
     LaunchedEffect(viewModel, lifecycleOwner) {
         lifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
             viewModel.effects.collect { effect ->
                 when (effect) {
                     HomeEffect.NavigateToLevelSelect -> currentOnPlay()
+                    HomeEffect.NavigateToNotebook -> currentOnOpenNotebook()
                 }
             }
         }

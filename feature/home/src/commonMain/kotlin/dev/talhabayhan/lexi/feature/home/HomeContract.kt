@@ -37,7 +37,7 @@ internal sealed interface HomeIntent {
     /** TODO(M7): settings. */
     data object OpenSettings : HomeIntent
 
-    /** TODO(M5): notebook. */
+    /** The Kelime Defterim tile. */
     data object OpenNotebook : HomeIntent
 
     /** TODO(M5): statistics. */
@@ -52,4 +52,6 @@ internal sealed interface HomeIntent {
 
 internal sealed interface HomeEffect {
     data object NavigateToLevelSelect : HomeEffect
+
+    data object NavigateToNotebook : HomeEffect
 }

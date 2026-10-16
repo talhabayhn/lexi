@@ -1,0 +1,43 @@
+<resources>
+    <!-- Başlık ve sekmeler (08-notebook) -->
+    <string name="notebook_title">Kelime Defterim</string>
+    <string name="notebook_back">Geri</string>
+    <string name="notebook_tab_due">Tekrar · %1$d</string>
+    <string name="notebook_tab_all">Tümü · %1$d</string>
+    <string name="notebook_tab_hard">Zor · %1$d</string>
+    <string name="notebook_search_placeholder">Kelime ara (İngilizce veya Türkçe)</string>
+
+    <!-- Tekrar çarkı düğmesi ve sayı etiketi -->
+    <string name="notebook_review_start">Tekrar çarkını başlat</string>
+    <plurals name="notebook_review_count">
+        <item quantity="one">%1$d kelime</item>
+        <item quantity="other">%1$d kelime</item>
+    </plurals>
+
+    <!-- Satır alt yazısı: "A1 · tekrar: bugün" -->
+    <string name="notebook_meta_today">%1$s · tekrar: bugün</string>
+    <string name="notebook_meta_tomorrow">%1$s · tekrar: yarın</string>
+    <string name="notebook_meta_days">%1$s · tekrar: %2$d gün sonra</string>
+    <string name="notebook_meta_mastered">%1$s · öğrenildi</string>
+    <string name="notebook_speak">%1$s telaffuzunu dinle</string>
+
+    <!-- Boş durumlar -->
+    <string name="notebook_empty_due">Bugün tekrar edilecek kelime yok. Yarın yine bekleriz!</string>
+    <string name="notebook_empty_all">Defterin boş. Oyunda kaçırdığın kelimeler buraya düşer.</string>
+    <string name="notebook_empty_hard">Henüz zor kelime yok. İki kez yanlış yaptığın kelimeler burada görünür.</string>
+    <string name="notebook_empty_search">Aramanla eşleşen kelime yok.</string>
+
+    <!-- Kelime detay sayfası (tasarımı yok) -->
+    <string name="notebook_sheet_close">Kapat</string>
+    <string name="notebook_sheet_level_category">%1$s · %2$s</string>
+    <string name="notebook_sheet_box">Hafıza kutusu %1$d / 4</string>
+    <string name="notebook_sheet_box_mastered">Öğrenildi</string>
+    <string name="notebook_sheet_next">Sonraki tekrar: %1$s</string>
+    <string name="notebook_sheet_next_today">bugün</string>
+    <string name="notebook_sheet_next_tomorrow">yarın</string>
+    <string name="notebook_sheet_next_days">%1$d gün sonra</string>
+    <string name="notebook_sheet_next_mastered">yok, öğrenildi</string>
+    <string name="notebook_sheet_stats">%1$d kez görüldü · %2$d doğru · %3$d yanlış</string>
+    <string name="notebook_sheet_speak">Dinle</string>
+    <string name="notebook_sheet_remove">Defterden çıkar</string>
+</resources>

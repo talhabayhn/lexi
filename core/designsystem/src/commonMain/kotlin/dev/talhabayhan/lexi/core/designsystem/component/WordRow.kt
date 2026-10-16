@@ -72,7 +72,6 @@ public fun WordRow(
             Text(
                 text = buildAnnotatedString {
                     append(word)
-                    append(' ')
                     withStyle(
                         SpanStyle(
                             fontSize = typography.caption14.fontSize,

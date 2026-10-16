@@ -38,6 +38,14 @@ data class GameRoute(val level: String, val mode: String, val category: String? 
     internal val gameMode: GameMode get() = GameMode.valueOf(mode)
 
     internal val categoryId: CategoryId? get() = category?.let(::CategoryId)
+
+    companion object {
+        /**
+         * The review wheel over the due notebook cards of every level (`GAME_RULES.md` §10); [level] is only a
+         * placeholder, the game takes the level of the wheel's first card.
+         */
+        fun review(): GameRoute = GameRoute(Level.A1, GameMode.REVIEW)
+    }
 }
 
 /**

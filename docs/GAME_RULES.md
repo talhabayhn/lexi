@@ -174,7 +174,13 @@ the app goes to background.
 - In any game: WRONG or PASSED (never answered later) ⇒ card enters/returns to box 0 and appears in
   "Tekrar edilecekler" on the result screen. Correct in a game for a card already in the notebook ⇒ box +1.
 - Review wheel: correct ⇒ box +1; wrong ⇒ box 0.
-- "Zor" tab: cards with ≥ 2 wrongs. "Tümü": all ever seen. Due count drives home & notebook badges.
+- "Zor" tab: notebook cards with ≥ 2 wrongs. "Tümü": every notebook card (box ≠ null; mastered ones last). "Tekrar": the
+  due cards, most overdue first. Due count drives home & notebook badges. Rows show 1–4 bars = box + 1 (box 4 and
+  mastered both 4; red at 1, yellow at 2, blue from 3). The word sheet's "Defterden çıkar" (`Srs.removeFromNotebook`)
+  clears box and due day, keeps the counters; a later wrong or passed answer brings the card back into box 0.
+- Review wheel (`GameMode.REVIEW`, started from the notebook as `GameRoute.review()`): the game reads the due cards at
+  start, `WheelGenerator.review` builds the wheel, the game's level is the first card's level; nothing due ⇒ the game
+  is abandoned (the notebook only offers it while something is due).
 - Engine (`Srs`, `CardProgress`): every answered card has a progress row; only missed cards are in the notebook
   (box ≠ null). A first-time correct card stays outside the notebook. PASSED counts as missed but not as wrong.
   Wrong/passed mastered cards return to box 0. Correct for a notebook card moves it up even if it wasn't due yet.

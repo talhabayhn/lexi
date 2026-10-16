@@ -24,6 +24,7 @@ import dev.talhabayhan.lexi.core.domain.repository.JokerRepository
 import dev.talhabayhan.lexi.core.domain.repository.ProgressRepository
 import dev.talhabayhan.lexi.core.domain.repository.SettingsRepository
 import dev.talhabayhan.lexi.core.domain.session.FinishGame
+import dev.talhabayhan.lexi.core.domain.srs.Srs
 import dev.talhabayhan.lexi.core.domain.time.AppClock
 import dev.talhabayhan.lexi.feature.game.GameSession.Companion.isIgnored
 import dev.talhabayhan.lexi.feature.game.result.ResultRoute
@@ -187,6 +188,11 @@ internal class GameViewModel(
             return
         }
         session = restored ?: newSession(engine)
+        if (session == null) {
+            // A review with nothing due (the notebook only offers it when something is).
+            effectChannel.send(GameEffect.Abandoned)
+            return
+        }
         val state = checkNotNull(session).state
         publish(state)
         when {
@@ -199,24 +205,35 @@ internal class GameViewModel(
         }
     }
 
-    private suspend fun newSession(engine: GameEngine): GameSession {
+    /** Null when a review wheel has no due card. */
+    private suspend fun newSession(engine: GameEngine): GameSession? {
         val mode = route.gameMode
-        val level = route.gameLevel
         val category = route.categoryId ?: CategoryId.MIXED
         val seed = seeds.nextSeed()
-        val recentlySeen = if (mode.usesCardHistory) {
-            WheelGenerator.recentlySeen(progress.lastSeenMs(), appClock.nowMs(), config)
+        val random = SeededRandom(seed).derive(WheelGenerator.SEED_PURPOSE)
+        var level = route.gameLevel
+        val wheel = if (mode == GameMode.REVIEW) {
+            // Review (GAME_RULES.md §1, §10): the due notebook cards of any level; the route's level is a placeholder.
+            val today = appClock.epochDay(appClock.nowMs())
+            val due = Srs.dueCards(progress.observeAll().first(), today)
+            val reviewWheel = WheelGenerator.review(cards.cards(due), random)
+            level = reviewWheel.slots.firstNotNullOfOrNull { it.card?.level } ?: return null
+            reviewWheel
         } else {
-            emptySet()
+            val recentlySeen = if (mode.usesCardHistory) {
+                WheelGenerator.recentlySeen(progress.lastSeenMs(), appClock.nowMs(), config)
+            } else {
+                emptySet()
+            }
+            WheelGenerator.generate(
+                pool = cards.wheelPool(level, category),
+                level = level,
+                category = category,
+                mode = mode,
+                random = random,
+                recentlySeen = recentlySeen,
+            )
         }
-        val wheel = WheelGenerator.generate(
-            pool = cards.wheelPool(level, category),
-            level = level,
-            category = category,
-            mode = mode,
-            random = SeededRandom(seed).derive(WheelGenerator.SEED_PURPOSE),
-            recentlySeen = recentlySeen,
-        )
         jokers.grantStartPack(config.jokerStartPack)
         val inventory = jokers.observeInventory().first()
         val initial = engine.newGame(seed = seed, mode = mode, level = level, wheel = wheel, jokers = inventory)

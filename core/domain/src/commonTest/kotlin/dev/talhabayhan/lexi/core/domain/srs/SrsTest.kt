@@ -221,4 +221,25 @@ class SrsTest {
             Srs.update(emptyMap(), play("APPLE").state, today, now, GameConfig())
         }
     }
+
+    @Test
+    fun `removing a card from the notebook keeps its counters and leaves every tab`() {
+        val removed = Srs.removeFromNotebook(inBox(box = 2, due = today + 3, wrong = 3).copy(mastered = false))
+
+        assertNull(removed.box)
+        assertNull(removed.dueEpochDay)
+        assertFalse(removed.inNotebook)
+        assertFalse(removed.mastered)
+        assertEquals(3, removed.wrong)
+        assertEquals(1, removed.seen)
+        assertFalse(removed.isDue(today + 10))
+    }
+
+    @Test
+    fun `a removed card enters the notebook again when it is missed`() {
+        val back = apply(Srs.removeFromNotebook(inBox(box = 3)), CardOutcome.WRONG)
+
+        assertEquals(0, back.box)
+        assertEquals(today, back.dueEpochDay)
+    }
 }

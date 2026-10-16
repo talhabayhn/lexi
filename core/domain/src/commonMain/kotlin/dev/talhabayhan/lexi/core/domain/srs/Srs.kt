@@ -115,6 +115,13 @@ public object Srs {
         }
     }
 
+    /**
+     * "Defterden çıkar": the card leaves the notebook (no box, not due, not mastered); its counters stay for the
+     * statistics. A later wrong or passed answer brings it back into box 0.
+     */
+    public fun removeFromNotebook(progress: CardProgress): CardProgress =
+        progress.copy(box = null, dueEpochDay = null, mastered = false)
+
     /** Due notebook cards, most overdue first (ties by id). */
     public fun dueCards(progress: Collection<CardProgress>, todayEpochDay: Long): List<CardId> = progress
         .filter { it.isDue(todayEpochDay) }

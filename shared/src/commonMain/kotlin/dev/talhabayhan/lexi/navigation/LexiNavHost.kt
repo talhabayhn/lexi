@@ -25,11 +25,13 @@ import dev.talhabayhan.lexi.feature.levels.CategoriesRoute
 import dev.talhabayhan.lexi.feature.levels.LevelSelectRoute
 import dev.talhabayhan.lexi.feature.levels.categoriesScreen
 import dev.talhabayhan.lexi.feature.levels.levelSelectScreen
+import dev.talhabayhan.lexi.feature.notebook.NotebookRoute
+import dev.talhabayhan.lexi.feature.notebook.notebookScreen
 import dev.talhabayhan.lexi.splash.SplashRoute
 import dev.talhabayhan.lexi.splash.splashScreen
 
 /**
- * The app graph: `Splash → Home → LevelSelect [→ Categories] → Game → Result`. Onboarding (M6) will slot in after the splash. The
+ * The app graph: `Splash → Home → LevelSelect [→ Categories] → Game → Result` and `Home → Notebook → Game (review) → Result`. Onboarding (M6) will slot in after the splash. The
  * result replaces everything above Home, so system back and "Ana menüye dön" both return to Home; TEKRAR OYNA starts
  * the next game in the same place (`Home → Game`).
  *
@@ -62,7 +64,16 @@ fun LexiNavHost(modifier: Modifier = Modifier) {
                 }
             },
         )
-        homeScreen(onPlay = { navController.ifResumed { navigate(LevelSelectRoute) { launchSingleTop = true } } })
+        homeScreen(
+            onPlay = { navController.ifResumed { navigate(LevelSelectRoute) { launchSingleTop = true } } },
+            onOpenNotebook = { navController.ifResumed { navigate(NotebookRoute) { launchSingleTop = true } } },
+        )
+        notebookScreen(
+            onBack = { navController.ifResumed { popBackStack() } },
+            onStartReview = {
+                navController.ifResumed { navigate(GameRoute.review()) { launchSingleTop = true } }
+            },
+        )
         levelSelectScreen(
             onBack = { navController.ifResumed { popBackStack() } },
             onStart = { level, mode ->

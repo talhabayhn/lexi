@@ -1,0 +1,43 @@
+<resources>
+    <!-- Header and tabs (08-notebook) -->
+    <string name="notebook_title">My Notebook</string>
+    <string name="notebook_back">Back</string>
+    <string name="notebook_tab_due">Review · %1$d</string>
+    <string name="notebook_tab_all">All · %1$d</string>
+    <string name="notebook_tab_hard">Hard · %1$d</string>
+    <string name="notebook_search_placeholder">Search words (English or Turkish)</string>
+
+    <!-- Review wheel button and its count chip -->
+    <string name="notebook_review_start">Start review wheel</string>
+    <plurals name="notebook_review_count">
+        <item quantity="one">%1$d word</item>
+        <item quantity="other">%1$d words</item>
+    </plurals>
+
+    <!-- Row meta: "A1 · review: today" -->
+    <string name="notebook_meta_today">%1$s · review: today</string>
+    <string name="notebook_meta_tomorrow">%1$s · review: tomorrow</string>
+    <string name="notebook_meta_days">%1$s · review: in %2$d days</string>
+    <string name="notebook_meta_mastered">%1$s · learned</string>
+    <string name="notebook_speak">Listen to %1$s</string>
+
+    <!-- Empty states -->
+    <string name="notebook_empty_due">Nothing to review today. Come back tomorrow!</string>
+    <string name="notebook_empty_all">Your notebook is empty. Words you miss in a game land here.</string>
+    <string name="notebook_empty_hard">No hard words yet. Words you get wrong twice show up here.</string>
+    <string name="notebook_empty_search">No word matches your search.</string>
+
+    <!-- Word detail sheet (design debt) -->
+    <string name="notebook_sheet_close">Close</string>
+    <string name="notebook_sheet_level_category">%1$s · %2$s</string>
+    <string name="notebook_sheet_box">Memory box %1$d of 4</string>
+    <string name="notebook_sheet_box_mastered">Learned</string>
+    <string name="notebook_sheet_next">Next review: %1$s</string>
+    <string name="notebook_sheet_next_today">today</string>
+    <string name="notebook_sheet_next_tomorrow">tomorrow</string>
+    <string name="notebook_sheet_next_days">in %1$d days</string>
+    <string name="notebook_sheet_next_mastered">none, learned</string>
+    <string name="notebook_sheet_stats">%1$d seen · %2$d correct · %3$d wrong</string>
+    <string name="notebook_sheet_speak">Listen</string>
+    <string name="notebook_sheet_remove">Remove from notebook</string>
+</resources>

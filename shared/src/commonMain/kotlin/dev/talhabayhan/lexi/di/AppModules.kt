@@ -14,6 +14,7 @@ import dev.talhabayhan.lexi.data.ResourcesBundledContentDb
 import dev.talhabayhan.lexi.feature.game.di.gameModule
 import dev.talhabayhan.lexi.feature.home.di.homeModule
 import dev.talhabayhan.lexi.feature.levels.di.levelsModule
+import dev.talhabayhan.lexi.feature.notebook.di.notebookModule
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -45,6 +46,7 @@ val appModules: List<Module> = listOf(
     dataModule,
     homeModule,
     levelsModule,
+    notebookModule,
     gameModule,
 )
 
