@@ -6,6 +6,8 @@ plugins {
 kotlin {
     sourceSets {
         commonMain.dependencies {
+            // Logging of storage failures until the crash reporter lands (M7); in the catalog by ADR 0015.
+            implementation(libs.kermit)
             implementation(libs.androidx.navigationevent.compose)
         }
         getByName("androidHostTest").dependencies {

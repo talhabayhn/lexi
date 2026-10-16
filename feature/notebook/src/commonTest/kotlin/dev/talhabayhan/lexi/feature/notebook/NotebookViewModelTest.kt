@@ -144,6 +144,18 @@ class NotebookViewModelTest {
     }
 
     @Test
+    fun `search folds the Turkish dotted and dotless i`() {
+        cards.cards = cards.cards.map { if (it.answer == "EGG") it.copy(clue = "İğne ılık") else it }
+        val vm = viewModel()
+        vm.onIntent(NotebookIntent.SelectTab(NotebookTab.All))
+
+        vm.onIntent(NotebookIntent.QueryChanged("iğne"))
+        assertEquals(listOf("a1-egg"), vm.ids)
+        vm.onIntent(NotebookIntent.QueryChanged("ILIK"))
+        assertEquals(listOf("a1-egg"), vm.ids)
+    }
+
+    @Test
     fun `a card that left the content is hidden`() {
         cards.cards = cards.cards.filter { it.answer != "EGG" }
 

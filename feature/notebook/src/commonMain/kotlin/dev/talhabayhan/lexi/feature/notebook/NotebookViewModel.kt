@@ -2,6 +2,7 @@ package dev.talhabayhan.lexi.feature.notebook
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import co.touchlab.kermit.Logger
 import dev.talhabayhan.lexi.core.domain.feedback.Speaker
 import dev.talhabayhan.lexi.core.domain.model.Card
 import dev.talhabayhan.lexi.core.domain.model.CardId
@@ -75,7 +76,8 @@ internal class NotebookViewModel(
             }
                 // A broken read (notebook or word content) shows the error: hidden words would look like an empty
                 // notebook. TODO(M7): report to the crash reporter once it is behind its interface.
-                .catch {
+                .catch { e ->
+                    log.e(e) { "notebook not loaded" }
                     mutableState.update {
                         it.copy(words = persistentListOf(), detail = null, isLoaded = true, hasError = true)
                     }
@@ -135,11 +137,11 @@ internal class NotebookViewModel(
             NotebookTab.All -> all
             NotebookTab.Hard -> hard
         }
-        val needle = query.trim().lowercase()
+        val needle = fold(query.trim())
         val matching = if (needle.isEmpty()) {
             shown
         } else {
-            shown.filter { it.card.answer.lowercase().contains(needle) || it.card.clue.lowercase().contains(needle) }
+            shown.filter { fold(it.card.answer).contains(needle) || fold(it.card.clue).contains(needle) }
         }
         val detail = open?.let { id -> entries.firstOrNull { it.card.id == id }?.let { detailOf(it, today) } }
         return NotebookUiState(
@@ -237,7 +239,7 @@ internal class NotebookViewModel(
             } catch (e: CancellationException) {
                 throw e
             } catch (@Suppress("TooGenericExceptionCaught") e: Exception) {
-                // TODO(M7): report to the crash reporter; the word simply stays in the notebook.
+                log.e(e) { "word not removed" }
             }
         }
     }
@@ -247,6 +249,11 @@ internal class NotebookViewModel(
     }
 
     private companion object {
+        private val log = Logger.withTag("NotebookViewModel")
+
+        /** Search folding: Turkish dotted/dotless i all match plain i, so "İstanbul" is found by "istanbul". */
+        fun fold(text: String): String = text.replace('İ', 'i').replace('I', 'i').replace('ı', 'i').lowercase()
+
         /** Memory-strength bars of a word row. */
         const val STRENGTH_STEPS = 4
     }
