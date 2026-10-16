@@ -1,0 +1,60 @@
+id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
+c1-debatable,DEBATABLE,D,STARTS,adj,doğruluğu tartışmaya açık olan,Whether the plan will work is debatable.,Planın işe yarayıp yaramayacağı tartışmalı.,5,,school-work
+c1-deceive,DECEIVE,D,STARTS,verb,"birini bilerek yanıltmak, kandırmak",He tried to deceive the customers with false prices.,Müşterileri sahte fiyatlarla kandırmaya çalıştı.,4,,business
+c1-decree,DECREE,D,STARTS,noun,yetkili birinin çıkardığı resmî emir,The king issued a decree against hunting.,Kral avlanmayı yasaklayan bir ferman çıkardı.,5,,school-work
+c1-dedicate,DEDICATE,D,STARTS,verb,zamanını veya emeğini bir işe adamak,She will dedicate her life to medicine.,Hayatını tıbba adayacak.,4,,school-work
+c1-deduce,DEDUCE,D,STARTS,verb,ipuçlarından mantık yürüterek sonuç çıkarmak,From the footprints we can deduce who was here.,Ayak izlerinden buraya kimin geldiğini çıkarabiliriz.,5,,school-work
+c1-defer,DEFER,D,STARTS,verb,bir şeyi daha sonraya ertelemek,The bank agreed to defer the payment for a month.,Banka ödemeyi bir ay ertelemeyi kabul etti.,5,,business
+c1-defiance,DEFIANCE,D,STARTS,noun,otoriteye açıkça karşı gelme,He stood in defiance of the order.,Emre meydan okuyarak karşı durdu.,5,,school-work
+c1-deficit,DEFICIT,D,STARTS,noun,"gelirin giderden az olması, açık",The country has a large budget deficit.,Ülkenin büyük bir bütçe açığı var.,5,,business
+c1-degrade,DEGRADE,D,STARTS,verb,değerini düşürmek veya aşağılamak,Dumping waste will degrade the beach.,Atık dökmek plajın kalitesini düşürür.,5,,school-work
+c1-delegate,DELEGATE,D,STARTS,verb,görevi veya yetkiyi başkasına devretmek,A good manager knows how to delegate.,İyi bir yönetici iş devretmeyi bilir.,5,,business
+c1-demolish,DEMOLISH,D,STARTS,verb,binayı tamamen yıkmak,They will demolish the old factory next spring.,Eski fabrikayı gelecek bahar yıkacaklar.,4,,school-work
+c1-denote,DENOTE,D,STARTS,verb,bir işaretin veya sözcüğün ifade ettiği anlam,A red light may denote danger.,Kırmızı ışık tehlikeyi gösterebilir.,5,,school-work
+c1-depict,DEPICT,D,STARTS,verb,bir şeyi resim veya sözle betimlemek,The painting seems to depict a stormy sea.,Resim fırtınalı bir denizi betimliyor gibi.,5,,music
+c1-deplete,DEPLETE,D,STARTS,verb,kaynakları azaltıp tüketmek,Overfishing may deplete the stock of fish.,Aşırı avlanma balık stokunu tüketebilir.,5,,school-work
+c1-deploy,DEPLOY,D,STARTS,verb,asker veya kaynağı bir yere konuşlandırmak,The army will deploy more troops to the border.,Ordu sınıra daha fazla asker konuşlandıracak.,5,,school-work
+c1-depreciate,DEPRECIATE,D,STARTS,verb,değer kaybetmek,A new car will depreciate quickly.,Sıfır bir araba hızla değer kaybeder.,5,,business
+c1-descent,DESCENT,D,STARTS,noun,aşağı iniş; soy,The plane began its descent into the city.,Uçak şehre doğru alçalmaya başladı.,5,,travel
+c1-designate,DESIGNATE,D,STARTS,verb,resmî olarak bir görev veya yer için belirlemek,The city will designate a new area for parking.,Şehir otopark için yeni bir alan belirleyecek.,5,,business
+c1-despair,DESPAIR,D,STARTS,noun,tamamen umudunu yitirme duygusu,She wept in despair at the news.,Habere karşı umutsuzluk içinde ağladı.,4,,school-work
+c1-detach,DETACH,D,STARTS,verb,bir parçayı bütünden ayırmak,Detach the form and send it back.,Formu koparıp geri gönderin.,4,,school-work
+c1-deter,DETER,D,STARTS,verb,birini vazgeçirerek bir şeyi yapmasını önlemek,High prices may deter new buyers.,Yüksek fiyatlar yeni alıcıları caydırabilir.,5,,business
+c1-deteriorate,DETERIORATE,D,STARTS,verb,giderek kötüleşmek,The weather will deteriorate during the night.,Hava gece boyunca kötüleşecek.,5,,school-work
+c1-detour,DETOUR,D,STARTS,noun,asıl yoldan ayrılıp yapılan dolambaçlı yol,We took a detour to avoid the traffic.,Trafikten kaçınmak için dolambaçlı bir yol tuttuk.,4,,travel
+c1-devastate,DEVASTATE,D,STARTS,verb,bir yeri veya kişiyi yıkıma uğratmak,The flood will devastate the village.,Sel köyü yerle bir edecek.,5,,school-work
+c1-deviate,DEVIATE,D,STARTS,verb,normal yoldan veya plandan sapmak,Never deviate from the original plan.,Asla asıl plandan sapma.,5,,business
+c1-devise,DEVISE,D,STARTS,verb,bir plan ya da sistem tasarlayıp bulmak,Engineers had to devise a new method.,Mühendisler yeni bir yöntem bulmak zorundaydı.,5,,technology
+c1-dictate,DICTATE,D,STARTS,verb,söyleyerek yazdırmak veya buyruk vermek,The boss would dictate a letter to his secretary.,Patron sekreterine bir mektup yazdırırdı.,5,,business
+c1-diminish,DIMINISH,D,STARTS,verb,giderek azalmak veya azaltmak,Our hopes began to diminish with each hour.,Umutlarımız her saat azalmaya başladı.,5,,school-work
+c1-diplomacy,DIPLOMACY,D,STARTS,noun,devletler arası ilişkileri yürütme sanatı,The crisis ended through quiet diplomacy.,Kriz sessiz diplomasiyle sona erdi.,5,,school-work
+c1-discern,DISCERN,D,STARTS,verb,zor fark edilen bir şeyi seçip anlamak,I could barely discern a figure in the fog.,Sisin içinde bir figürü zor seçebildim.,5,,school-work
+c1-disclose,DISCLOSE,D,STARTS,verb,gizli bilgiyi açığa vurmak,The bank refused to disclose the names.,Banka isimleri açıklamayı reddetti.,5,,business
+c1-discreet,DISCREET,D,STARTS,adj,dikkatli ve gizliliğe saygılı,Please be discreet about this matter.,Lütfen bu konuda ağzı sıkı ol.,5,,school-work
+c1-discrepancy,DISCREPANCY,D,STARTS,noun,"iki şey arasındaki tutarsızlık, fark",There is a discrepancy between the two reports.,İki rapor arasında bir tutarsızlık var.,5,,business
+c1-disguise,DISGUISE,D,STARTS,verb,görünüşünü değiştirip tanınmaz hâle getirmek,He tried to disguise his voice on the phone.,Telefonda sesini değiştirmeye çalıştı.,4,,film-tv
+c1-dispatch,DISPATCH,D,STARTS,verb,mesaj veya birini bir yere göndermek,They will dispatch a team to the scene.,Olay yerine bir ekip gönderecekler.,5,,business
+c1-disposal,DISPOSAL,D,STARTS,noun,"bir şeyden kurtulma, bertaraf etme",The disposal of waste is expensive.,Atıkların bertarafı pahalı.,5,,school-work
+c1-disrupt,DISRUPT,D,STARTS,verb,bir sürecin düzenini bozmak,Snow will disrupt flights across the country.,Kar ülke genelinde uçuşları aksatacak.,4,,travel
+c1-dissent,DISSENT,D,STARTS,noun,"çoğunluktan farklı düşünme, karşı çıkma",The leader did not accept any dissent.,Lider hiçbir karşı görüşü kabul etmedi.,5,,school-work
+c1-distort,DISTORT,D,STARTS,verb,gerçeği ya da görüntüyü çarpıtmak,The news can distort the truth.,Haberler gerçeği çarpıtabilir.,5,,film-tv
+c1-divert,DIVERT,D,STARTS,verb,yönünü veya dikkatini başka yere çevirmek,Police had to divert traffic to the side street.,Polis trafiği yan sokağa yönlendirmek zorunda kaldı.,5,,travel
+c1-dominate,DOMINATE,D,STARTS,verb,"bir şeye egemen olmak, hâkim olmak",One firm seems to dominate the market.,Bir firma pazara hâkim görünüyor.,4,,business
+c1-dormant,DORMANT,D,STARTS,adj,"şu an faaliyetsiz, uykuda",The volcano has been dormant for years.,Yanardağ yıllardır uykuda.,5,,school-work
+c1-drastic,DRASTIC,D,STARTS,adj,çok sert ve köklü,The company took drastic steps to save money.,Şirket para kazanmak için köklü adımlar attı.,4,,business
+c1-dread,DREAD,D,STARTS,verb,kötü bir şeyden çok korkmak,I dread meeting his family.,Ailesiyle tanışmaktan çok korkuyorum.,4,,school-work
+c1-dubious,DUBIOUS,D,STARTS,adj,"şüpheli, güvenilmez",The shop sold goods of dubious quality.,Dükkân şüpheli kalitede mallar satıyordu.,5,,business
+c1-duration,DURATION,D,STARTS,noun,bir şeyin sürdüğü zaman aralığı,Stay seated for the duration of the flight.,Uçuş süresince yerinizde oturun.,4,,travel
+c1-dwell,DWELL,D,STARTS,verb,bir yerde yaşamak; bir konuya takılıp kalmak,Try not to dwell on past mistakes.,Geçmiş hatalara takılıp kalmamaya çalış.,5,,school-work
+c1-daunting,DAUNTING,D,STARTS,adj,korkutucu ve gözünü yıldıran,The exam seemed a daunting task.,Sınav gözünü korkutan bir işe benziyordu.,5,,school-work
+c1-deflect,DEFLECT,D,STARTS,verb,bir şeyi başka yöne saptırmak,He tried to deflect the blame onto others.,Suçu başkalarına yöneltmeye çalıştı.,5,,school-work
+c1-delusion,DELUSION,D,STARTS,noun,gerçek olmayan bir şeye inanma yanılgısı,He lives in a delusion about his talent.,Yeteneği konusunda bir yanılgı içinde yaşıyor.,5,,school-work
+c1-denounce,DENOUNCE,D,STARTS,verb,birini veya bir şeyi herkesin önünde suçlamak,Leaders will denounce the violence.,Liderler şiddeti alenen kınayacak.,5,,school-work
+c1-default,DEFAULT,D,STARTS,noun,önceden ayarlı varsayılan seçenek,The default setting is English.,Varsayılan ayar İngilizce.,4,,technology
+c1-debris,DEBRIS,D,STARTS,noun,"yıkımdan kalan parçalar, enkaz",Workers removed the debris after the storm.,İşçiler fırtınadan sonra enkazı kaldırdı.,5,,school-work
+c1-deceptive,DECEPTIVE,D,STARTS,adj,"insanı yanıltan, görünüşte farklı",Appearances can be deceptive.,Görünüş yanıltıcı olabilir.,5,,school-work
+c1-distinctive,DISTINCTIVE,D,STARTS,adj,kolayca ayırt edilen kendine özgü,The bird has a distinctive call.,Kuşun kendine özgü bir ötüşü var.,5,,school-work
+c1-disparity,DISPARITY,D,STARTS,noun,iki şey arasındaki adaletsiz fark,There is a wide disparity in wages.,Ücretler arasında geniş bir eşitsizlik var.,5,,business
+c1-dissolve,DISSOLVE,D,STARTS,verb,bir madde sıvıda erimek,Sugar will dissolve in warm water.,Şeker ılık suda erir.,4,,school-work
+c1-discard,DISCARD,D,STARTS,verb,işe yaramaz diye atmak,Please discard the old documents.,Lütfen eski belgeleri atın.,4,,business
+c1-dependable,DEPENDABLE,D,STARTS,adj,"güvenilir, her zaman yanında olunan",He is a dependable friend.,Güvenilir bir arkadaştır.,4,,school-work

@@ -1,0 +1,71 @@
+id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
+c1-candid,CANDID,C,STARTS,adj,"düşündüğünü çekinmeden söyleyen, açık sözlü",She gave a candid opinion of the film.,Filmle ilgili açık sözlü bir görüş bildirdi.,4,,film-tv
+c1-captivate,CAPTIVATE,C,STARTS,verb,"birinin ilgisini tamamen çekmek, büyülemek",The story managed to captivate young readers.,Hikâye genç okurları büyülemeyi başardı.,5,,film-tv
+c1-catalyst,CATALYST,C,STARTS,noun,bir değişimi hızlandıran etken,The crisis was a catalyst for reform.,"Kriz, reform için bir hızlandırıcı oldu.",5,,business
+c1-cease,CEASE,C,STARTS,verb,bir şey sona ermek ya da durdurmak,The factory will cease production next month.,Fabrika gelecek ay üretimi durduracak.,5,,business
+c1-censor,CENSOR,C,STARTS,verb,yayından rahatsız edici kısımları çıkarmak,The government tried to censor the news.,Hükümet haberleri sansürlemeye çalıştı.,4,,film-tv
+c1-chronic,CHRONIC,C,STARTS,adj,"uzun süredir geçmeyen, kronik",He suffers from chronic back pain.,Kronik sırt ağrısı çekiyor.,4,,school-work
+c1-circulate,CIRCULATE,C,STARTS,verb,bir yerde dolaşmak veya dolaştırmak,Warm air will circulate better with the fan on.,Fan açıkken sıcak hava daha iyi dolaşır.,4,,school-work
+c1-climax,CLIMAX,C,STARTS,noun,bir hikâyenin ya da olayın en heyecanlı noktası,The film reaches its climax in the last scene.,"Film, son sahnede doruk noktasına ulaşıyor.",4,,film-tv
+c1-clutter,CLUTTER,C,STARTS,noun,"dağınık, gereksiz eşya yığını",I need to clear the clutter from my desk.,Masamdaki dağınık eşyaları toplamam gerek.,5,,school-work
+c1-coerce,COERCE,C,STARTS,verb,birini tehditle bir şeyi yapmaya zorlamak,They tried to coerce him into signing the deal.,Onu anlaşmayı imzalamaya zorlamaya çalıştılar.,5,,business
+c1-cognitive,COGNITIVE,C,STARTS,adj,düşünme ve öğrenme süreçleriyle ilgili,Reading helps children's cognitive development.,Okumak çocukların bilişsel gelişimine yardımcı olur.,5,,school-work
+c1-cohesion,COHESION,C,STARTS,noun,bir grubun parçalarının birbirine bağlılığı,Team cohesion is vital for success.,Takım bütünlüğü başarı için hayati önem taşır.,5,,business
+c1-coincide,COINCIDE,C,STARTS,verb,aynı zamana denk gelmek,The holiday will coincide with my birthday.,Tatil benim doğum günüme denk gelecek.,5,,school-work
+c1-collide,COLLIDE,C,STARTS,verb,araçlar ya da insanlar birbirine çarpmak,Two trains collide in the opening scene.,Açılış sahnesinde iki tren çarpışıyor.,4,,school-work
+c1-commemorate,COMMEMORATE,C,STARTS,verb,bir olayı anmak için tören yapmak,The monument will commemorate those who died.,"Anıt, hayatını kaybedenleri anacak.",5,,school-work
+c1-commence,COMMENCE,C,STARTS,verb,resmî olarak başlamak,The ceremony will commence at noon.,Tören öğlen başlayacak.,4,,business
+c1-compel,COMPEL,C,STARTS,verb,birini bir şeyi yapmaya mecbur bırakmak,The law will compel companies to publish their results.,Yasa şirketleri sonuçlarını yayımlamaya zorunlu kılacak.,5,,business
+c1-compile,COMPILE,C,STARTS,verb,bilgileri toplayıp bir liste veya rapor yapmak,She will compile a report from the survey data.,Anket verilerinden bir rapor hazırlayacak.,4,,business
+c1-complacent,COMPLACENT,C,STARTS,adj,başarısına güvenip çabasını bırakan,We cannot afford to be complacent now.,Şimdi gevşek davranmayı göze alamayız.,5,,sports
+c1-complement,COMPLEMENT,C,STARTS,verb,bir şeyi tamamlayıp daha iyi göstermek,A light salad will complement the fish well.,Hafif bir salata balığı güzel tamamlar.,5,,school-work
+c1-compliance,COMPLIANCE,C,STARTS,noun,"kurallara uygun davranma, uyum",The firm checks compliance with safety laws.,Firma güvenlik yasalarına uyumu denetler.,5,,business
+c1-composure,COMPOSURE,C,STARTS,noun,zor durumda soğukkanlılığını koruma,She kept her composure during the interview.,Mülakat sırasında soğukkanlılığını korudu.,5,,school-work
+c1-comprise,COMPRISE,C,STARTS,verb,bir bütünün parçalarından oluşmak,The team will comprise ten players.,Takım on oyuncudan oluşacak.,5,,sports
+c1-concede,CONCEDE,C,STARTS,verb,isteksizce haklı olduğunu kabul etmek,He had to concede that she was right.,Onun haklı olduğunu kabul etmek zorunda kaldı.,5,,school-work
+c1-conceive,CONCEIVE,C,STARTS,verb,bir fikri ya da planı akılda tasarlamak,It is hard to conceive of such a huge number.,Bu kadar büyük bir sayıyı tasavvur etmek zor.,5,,school-work
+c1-concise,CONCISE,C,STARTS,adj,kısa ama gereken her şeyi içeren,Please write a concise summary of the article.,Lütfen makalenin kısa ve öz bir özetini yaz.,4,,school-work
+c1-concur,CONCUR,C,STARTS,verb,başkasıyla aynı görüşte olmak,The second doctor will concur with the first.,İkinci doktor birincisiyle aynı görüşte olacak.,5,,business
+c1-condemn,CONDEMN,C,STARTS,verb,bir şeyi sert biçimde kınamak,Leaders will condemn the attack on the school.,Liderler okula yapılan saldırıyı kınayacak.,4,,school-work
+c1-conducive,CONDUCIVE,C,STARTS,adj,"bir sonuca elverişli, uygun",A quiet room is conducive to study.,Sessiz bir oda ders çalışmaya elverişlidir.,5,,school-work
+c1-confine,CONFINE,C,STARTS,verb,bir yerde ya da sınırda tutmak,Please confine your answer to two pages.,Lütfen cevabını iki sayfayla sınırla.,5,,school-work
+c1-confiscate,CONFISCATE,C,STARTS,verb,yetkili olarak birinin eşyasına el koymak,Teachers can confiscate phones in class.,Öğretmenler sınıfta telefonlara el koyabilir.,4,,school-work
+c1-conform,CONFORM,C,STARTS,verb,kurala ya da topluma uyum sağlamak,Children often feel pressure to conform.,Çocuklar sık sık uyum sağlama baskısı hisseder.,5,,school-work
+c1-connotation,CONNOTATION,C,STARTS,noun,kelimenin çağrıştırdığı ek anlam,The word has a negative connotation.,Kelimenin olumsuz bir çağrışımı var.,5,,school-work
+c1-conscience,CONSCIENCE,C,STARTS,noun,"doğru ile yanlışı ayıran iç ses, vicdan",He had a guilty conscience after the lie.,Yalandan sonra vicdanı rahat değildi.,5,,school-work
+c1-consensus,CONSENSUS,C,STARTS,noun,herkesin üzerinde uzlaştığı ortak görüş,The group reached a consensus after a long talk.,Grup uzun bir konuşmadan sonra ortak görüşe vardı.,5,,business
+c1-consolidate,CONSOLIDATE,C,STARTS,verb,pekiştirmek; birkaç şeyi tek yapıda birleştirmek,The firm plans to consolidate its small offices.,Firma küçük ofislerini birleştirmeyi planlıyor.,5,,business
+c1-conspicuous,CONSPICUOUS,C,STARTS,adj,"hemen göze çarpan, dikkat çeken",Her red hat was conspicuous in the crowd.,Kırmızı şapkası kalabalıkta hemen göze çarpıyordu.,5,,school-work
+c1-constitute,CONSTITUTE,C,STARTS,verb,bir bütünü oluşturmak ya da sayılmak,Women constitute half of the workforce.,Kadınlar işgücünün yarısını oluşturuyor.,5,,business
+c1-constraint,CONSTRAINT,C,STARTS,noun,"bir şeyi sınırlayan kısıt, engel",Lack of time is our main constraint.,Zaman azlığı en büyük kısıtımız.,5,,business
+c1-contemplate,CONTEMPLATE,C,STARTS,verb,uzun uzun düşünmek veya göz önünde bulundurmak,She began to contemplate a career change.,Kariyer değiştirmeyi düşünmeye başladı.,5,,school-work
+c1-contempt,CONTEMPT,C,STARTS,noun,"birini değersiz görme, küçümseme duygusu",He looked at the offer with contempt.,Teklife küçümsemeyle baktı.,5,,school-work
+c1-contend,CONTEND,C,STARTS,verb,rekabet etmek veya iddia etmek,Three teams contend for the title this year.,Bu yıl üç takım şampiyonluk için yarışıyor.,5,,sports
+c1-controversy,CONTROVERSY,C,STARTS,noun,insanları ikiye bölen tartışma,The new law caused controversy in the city.,Yeni yasa şehirde tartışma yarattı.,4,,school-work
+c1-convene,CONVENE,C,STARTS,verb,toplantı için bir araya gelmek veya toplamak,The board will convene on Monday.,Yönetim kurulu pazartesi toplanacak.,5,,business
+c1-convict,CONVICT,C,STARTS,verb,mahkemenin birini suçlu bulması,The jury could not convict him without proof.,Jüri kanıt olmadan onu mahkûm edemedi.,5,,school-work
+c1-correlate,CORRELATE,C,STARTS,verb,iki şey arasında ilişki bulunmak,Sleep and mood often correlate.,Uyku ve ruh hali çoğu zaman birbiriyle ilişkilidir.,5,,school-work
+c1-counterpart,COUNTERPART,C,STARTS,noun,başka yerdeki aynı konumdaki kişi veya şey,The minister met his French counterpart.,Bakan Fransız mevkidaşıyla görüştü.,5,,business
+c1-courteous,COURTEOUS,C,STARTS,adj,kibar ve saygılı davranan,The staff were courteous and helpful.,Personel kibar ve yardımseverdi.,4,,travel
+c1-covert,COVERT,C,STARTS,adj,"gizli yürütülen, açığa çıkmayan",The agency ran a covert operation abroad.,Kurum yurt dışında gizli bir operasyon yürüttü.,5,,film-tv
+c1-crave,CRAVE,C,STARTS,verb,bir şeyi aşırı derecede canı çekmek,I always crave something sweet after dinner.,Akşam yemeğinden sonra hep tatlı bir şey canım çeker.,4,,school-work
+c1-credible,CREDIBLE,C,STARTS,adj,güvenilir ve inandırıcı,There is no credible evidence of a fire.,Yangın olduğuna dair inandırıcı bir kanıt yok.,5,,school-work
+c1-criterion,CRITERION,C,STARTS,noun,karar vermek için kullanılan ölçüt,Experience is the main criterion for the job.,"Deneyim, bu iş için ana ölçüttür.",5,,business
+c1-crude,CRUDE,C,STARTS,adj,işlenmemiş; kaba ve basit yapılmış,They crossed the river on a crude raft.,Nehri kaba yapılmış bir sallayla geçtiler.,5,,travel
+c1-cumbersome,CUMBERSOME,C,STARTS,adj,büyüklüğü veya karmaşıklığı yüzünden kullanışsız,The old system is slow and cumbersome.,Eski sistem yavaş ve hantal.,5,,technology
+c1-cumulative,CUMULATIVE,C,STARTS,adj,"zamanla eklenerek artan, birikimli",The cumulative effect of stress harmed his health.,Stresin birikimli etkisi sağlığına zarar verdi.,5,,school-work
+c1-curb,CURB,C,STARTS,verb,bir şeyin artışını kontrol altına almak,The city wants to curb air pollution.,Şehir hava kirliliğini sınırlamak istiyor.,5,,school-work
+c1-curtail,CURTAIL,C,STARTS,verb,bir şeyi kısıp azaltmak,Lack of money forced them to curtail the project.,Para eksikliği onları projeyi kısmaya zorladı.,5,,business
+c1-cynical,CYNICAL,C,STARTS,adj,"insanlara kuşkuyla bakan, her şeye inanmayan",He is cynical about politicians.,Politikacılar konusunda kuşkucu.,5,,school-work
+c1-charitable,CHARITABLE,C,STARTS,adj,yardımsever; hayır işleriyle ilgili,She gave money to a charitable group.,Bir hayır kurumuna para bağışladı.,4,,school-work
+c1-cherish,CHERISH,C,STARTS,verb,çok değer verip sevgiyle korumak,I will always cherish these memories.,Bu anıları her zaman kıymetli tutacağım.,4,,school-work
+c1-commodity,COMMODITY,C,STARTS,noun,"alınıp satılan ürün, emtia",Oil is an important global commodity.,Petrol önemli bir küresel emtiadır.,5,,business
+c1-confidential,CONFIDENTIAL,C,STARTS,adj,gizli tutulması gereken,The files are strictly confidential.,Dosyalar kesinlikle gizlidir.,4,,business
+c1-constitution,CONSTITUTION,C,STARTS,noun,"bir ülkenin temel yasası, anayasa",The constitution protects free speech.,Anayasa ifade özgürlüğünü korur.,4,,school-work
+c1-categorical,CATEGORICAL,C,STARTS,adj,kesin ve hiçbir koşulu olmayan,He gave a categorical denial.,Kesin bir yalanlama yaptı.,5,,school-work
+c1-capitalism,CAPITALISM,C,STARTS,noun,özel mülkiyete dayalı ekonomik düzen,Many debates focus on the pros and cons of capitalism.,Birçok tartışma kapitalizmin artı ve eksilerine odaklanıyor.,4,,business
+c1-clumsy,CLUMSY,C,STARTS,adj,"beceriksiz, hareketleri hantal",He is clumsy and often drops things.,Beceriksiz ve sık sık bir şeyler düşürüyor.,4,,school-work
+c1-commuter,COMMUTER,C,STARTS,noun,işe düzenli gidip gelen kişi,Each commuter on the line was late today.,Hattaki her banliyö yolcusu bugün geç kaldı.,4,,travel
+c1-contaminate,CONTAMINATE,C,STARTS,verb,bir şeyi zararlı maddeyle kirletmek,Waste can contaminate the drinking water.,Atıklar içme suyunu kirletebilir.,4,,school-work
+c1-compound,COMPOUND,C,STARTS,noun,birkaç parçanın birleşiminden oluşan madde veya yapı,The compound is made of two natural elements.,"Bileşik, iki doğal elementten oluşuyor.",5,,school-work
+c1-chronological,CHRONOLOGICAL,C,STARTS,adj,olayların zaman sırasına göre dizilmiş,Put the events in chronological order.,Olayları kronolojik sıraya koy.,5,,school-work
