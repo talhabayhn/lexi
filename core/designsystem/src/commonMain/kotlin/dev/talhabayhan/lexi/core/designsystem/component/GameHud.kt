@@ -28,6 +28,7 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -94,8 +95,9 @@ public fun ClueCard(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
         ) {
-            Text(level, style = typography.heading20, color = colors.white)
-            Text(letterCount, style = typography.caption12Bold, color = colors.white)
+            Text(level, style = typography.heading20, color = colors.white, textAlign = TextAlign.Center)
+            // Centred also when a long label ("10 LETTERS") wraps onto two lines.
+            Text(letterCount, style = typography.caption12Bold, color = colors.white, textAlign = TextAlign.Center)
         }
     }
 }
