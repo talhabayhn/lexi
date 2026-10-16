@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
@@ -20,11 +19,13 @@ import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.Layout
+import androidx.compose.ui.layout.Placeable
 import androidx.compose.ui.layout.SubcomposeLayout
 import androidx.compose.ui.platform.LocalDensity
-import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.Density
@@ -99,8 +100,8 @@ internal fun HomeScreen(state: HomeUiState, onIntent: (HomeIntent) -> Unit, modi
         CompositionLocalProvider(LocalDensity provides LocalDensity.current.withCappedFontScale()) {
             FitToHeight(
                 Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing).lexiContentWidth(),
-            ) { tier, tileGrowth ->
-                HomeContent(tier, tileGrowth, state, onIntent)
+            ) { tier, tileGrowth, fit ->
+                HomeContent(tier, tileGrowth, fit, state, onIntent)
             }
         }
     }
@@ -155,82 +156,128 @@ private fun HomeTier.metrics(tileGrowth: Dp): HomeMetrics {
     }
 }
 
+/** Natural height of one tier's content, written by [HomeColumn] while it is measured. */
+private class HomeFit {
+    var naturalHeight: Int = 0
+}
+
 /**
- * Composes [content] for each tier in turn, measures its natural height and keeps the first tier that fits the
- * available height (the last one otherwise; the measured probes are hidden from accessibility), then lays it out to
- * exactly the available height: the home never scrolls. In the regular tier, height beyond the design's OYNA–tiles
- * space ([HomeDefaults.RegularMaxSpare]) is passed on as tile growth (per tile row) instead of widening that hole.
+ * Measures the content of each tier in turn (from regular) at exactly the available size and keeps the first whose
+ * natural height ([HomeColumn] reports it in the same measure pass) fits; the last one otherwise. The home never
+ * scrolls. Each tier is composed once and reused, so the usual case (regular fits) costs a single composition: no
+ * separate probe has to be composed on the first frame of a screen transition. Tiers measured but not chosen stay
+ * unplaced (hidden from accessibility). In the regular tier, height beyond the design's OYNA–tiles space
+ * ([HomeDefaults.RegularMaxSpare]) becomes tile growth (per tile row) instead of widening that hole.
  */
 @Composable
-private fun FitToHeight(modifier: Modifier, content: @Composable (HomeTier, Dp) -> Unit) {
+private fun FitToHeight(modifier: Modifier, content: @Composable (HomeTier, Dp, HomeFit) -> Unit) {
+    val fits = remember { HomeTier.entries.associateWith { HomeFit() } }
+    val grownFit = remember { HomeFit() }
+    // Stable slot lambdas: SubcomposeLayout recomposes a slot whenever it gets a new lambda instance.
+    val slots = remember(content) {
+        HomeTier.entries.associateWith { tier -> @Composable { content(tier, Dp(0f), fits.getValue(tier)) } }
+    }
     SubcomposeLayout(modifier) { constraints ->
         val width = constraints.maxWidth
         val height = constraints.maxHeight
-        val natural = Constraints(maxWidth = width)
-        var naturalHeight = 0
-        val tier = HomeTier.entries.firstOrNull { candidate ->
-            naturalHeight = subcompose(candidate to false) {
-                Box(Modifier.clearAndSetSemantics {}) { content(candidate, Dp(0f)) }
-            }.maxOf { it.measure(natural).height }
-            naturalHeight <= height
-        } ?: HomeTier.entries.last()
-        val excess = if (tier == HomeTier.Regular) {
-            (height - naturalHeight - HomeDefaults.RegularMaxSpare.roundToPx()).coerceAtLeast(0)
-        } else {
-            0
+        val fixed = Constraints.fixed(width, height)
+        var tier = HomeTier.entries.last()
+        var placeables = emptyList<Placeable>()
+        for (candidate in HomeTier.entries) {
+            placeables = subcompose(candidate, slots.getValue(candidate)).map { it.measure(fixed) }
+            tier = candidate
+            if (fits.getValue(candidate).naturalHeight <= height) break
         }
-        val growth = min(excess.toDp() / 2, HomeDefaults.TileMaxGrowth)
-        val placeables = subcompose(tier to true) { content(tier, growth) }
-            .map { it.measure(Constraints.fixed(width, height)) }
+        if (tier == HomeTier.Regular) {
+            val excess = height - fits.getValue(tier).naturalHeight - HomeDefaults.RegularMaxSpare.roundToPx()
+            if (excess > 0) {
+                val growth = min(excess.toDp() / 2, HomeDefaults.TileMaxGrowth)
+                placeables = subcompose(tier to growth) { content(tier, growth, grownFit) }.map { it.measure(fixed) }
+            }
+        }
         layout(width, height) { placeables.forEach { it.place(0, 0) } }
     }
 }
 
 @Composable
-private fun HomeContent(tier: HomeTier, tileGrowth: Dp, state: HomeUiState, onIntent: (HomeIntent) -> Unit) {
+private fun HomeContent(
+    tier: HomeTier,
+    tileGrowth: Dp,
+    fit: HomeFit,
+    state: HomeUiState,
+    onIntent: (HomeIntent) -> Unit,
+) {
     val dimens = LexiTheme.dimens
     val metrics = tier.metrics(tileGrowth)
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(
-                start = dimens.screenPaddingHorizontal,
-                top = metrics.paddingTop,
-                end = dimens.screenPaddingHorizontal,
-                bottom = metrics.paddingBottom,
-            ),
-        verticalArrangement = Arrangement.spacedBy(metrics.gap),
+    HomeColumn(
+        fit = fit,
+        paddingTop = metrics.paddingTop,
+        paddingBottom = metrics.paddingBottom,
+        gap = metrics.gap,
+        modifier = Modifier.fillMaxSize().padding(horizontal = dimens.screenPaddingHorizontal),
     ) {
-        TopBar(state, onIntent)
-        Column(
-            Modifier.padding(top = if (tier == HomeTier.Regular) dimens.gap8 else dimens.gap4),
-            verticalArrangement = Arrangement.spacedBy(dimens.gap6),
-        ) {
-            LexiLogo(size = metrics.logo)
-            Text(stringResource(Res.string.home_tagline), style = LexiTheme.typography.label15)
+        Column(verticalArrangement = Arrangement.spacedBy(metrics.gap)) {
+            TopBar(state, onIntent)
+            Column(
+                Modifier.padding(top = if (tier == HomeTier.Regular) dimens.gap8 else dimens.gap4),
+                verticalArrangement = Arrangement.spacedBy(dimens.gap6),
+            ) {
+                LexiLogo(size = metrics.logo)
+                Text(stringResource(Res.string.home_tagline), style = LexiTheme.typography.label15)
+            }
+            DailyCard(
+                day = state.dailyDay.toString(),
+                label = stringResource(
+                    Res.string.home_daily_label,
+                    stringArrayResource(Res.array.home_months)[state.dailyMonth - 1],
+                ),
+                title = stringResource(Res.string.home_daily_title),
+                onClick = { onIntent(HomeIntent.OpenDaily) },
+                compact = metrics.compactDaily,
+            )
+            PlayButton(
+                label = stringResource(Res.string.home_play),
+                badge = stringResource(
+                    Res.string.home_play_badge,
+                    state.playLevel.name,
+                    stringResource(state.playMode.nameRes()),
+                ),
+                onClick = { onIntent(HomeIntent.Play) },
+                height = metrics.playHeight,
+            )
         }
-        DailyCard(
-            day = state.dailyDay.toString(),
-            label = stringResource(
-                Res.string.home_daily_label,
-                stringArrayResource(Res.array.home_months)[state.dailyMonth - 1],
-            ),
-            title = stringResource(Res.string.home_daily_title),
-            onClick = { onIntent(HomeIntent.OpenDaily) },
-            compact = metrics.compactDaily,
-        )
-        PlayButton(
-            label = stringResource(Res.string.home_play),
-            badge = stringResource(
-                Res.string.home_play_badge,
-                state.playLevel.name,
-                stringResource(state.playMode.nameRes()),
-            ),
-            onClick = { onIntent(HomeIntent.Play) },
-            height = metrics.playHeight,
-        )
-        Spacer(Modifier.weight(1f))
         MenuGrid(state, onIntent, metrics)
+    }
+}
+
+/**
+ * `02-home`'s flex column: [top] (top bar, logo, daily card, OYNA) from [paddingTop], the tile grid at the bottom
+ * (`margin-top: auto`) with at least two [gap]s above it (the column gap around the free space). Writes the natural
+ * height (paddings, sections, gaps, grid) to [fit] while it is measured; content taller than the bounds overflows at
+ * the bottom.
+ */
+@Composable
+private fun HomeColumn(
+    fit: HomeFit,
+    paddingTop: Dp,
+    paddingBottom: Dp,
+    gap: Dp,
+    modifier: Modifier = Modifier,
+    content: @Composable () -> Unit,
+) {
+    Layout(content, modifier) { measurables, constraints ->
+        val natural = Constraints(maxWidth = constraints.maxWidth)
+        val top = measurables[0].measure(natural)
+        val grid = measurables[1].measure(natural)
+        val top0 = paddingTop.roundToPx()
+        val gaps = gap.roundToPx() * 2
+        val naturalHeight = top0 + top.height + gaps + grid.height + paddingBottom.roundToPx()
+        fit.naturalHeight = naturalHeight
+        val height = if (constraints.hasBoundedHeight) constraints.maxHeight else naturalHeight
+        layout(constraints.maxWidth, height) {
+            top.place(0, top0)
+            grid.place(0, maxOf(top0 + top.height + gaps, height - paddingBottom.roundToPx() - grid.height))
+        }
     }
 }
 
