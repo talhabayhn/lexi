@@ -29,6 +29,7 @@ import dev.talhabayhan.lexi.core.designsystem.component.Segment
 import dev.talhabayhan.lexi.core.designsystem.component.SegmentedControl
 import dev.talhabayhan.lexi.core.designsystem.icon.LexiIcons
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
+import dev.talhabayhan.lexi.core.designsystem.theme.lexiContentWidth
 import dev.talhabayhan.lexi.core.domain.model.CategoryId
 import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.feature.levels.generated.resources.Res
@@ -60,6 +61,7 @@ internal fun CategoriesScreen(
             .fillMaxSize()
             .background(LexiTheme.colors.cream)
             .windowInsetsPadding(WindowInsets.safeDrawing)
+            .lexiContentWidth()
             .verticalScroll(rememberScrollState())
             .padding(
                 start = dimens.screenPaddingHorizontal,

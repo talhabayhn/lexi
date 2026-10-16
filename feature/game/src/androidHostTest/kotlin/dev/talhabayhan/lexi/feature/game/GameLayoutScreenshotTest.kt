@@ -2,6 +2,7 @@ package dev.talhabayhan.lexi.feature.game
 
 import com.github.takahirom.roborazzi.captureRoboImage
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
+import dev.talhabayhan.lexi.core.designsystem.theme.LexiViewport
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
@@ -51,10 +52,30 @@ class GameLayoutScreenshotTest {
     @Config(qualifiers = "tr-w320dp-h568dp-xhdpi", fontScale = 1.3f)
     fun w320h568FontScale130() = capture("GameLayout_w320h568_fontScale130", GameLayoutFixtures.fifteenKeys)
 
+    /** Expanded tier (`LexiViewport`): large viewports ("smallest display size") draw the design scaled. */
+    @Test
+    @Config(qualifiers = "tr-w480dp-h1000dp-mdpi")
+    fun w480h1000() = capture("GameLayout_w480h1000", GameSamples.design)
+
+    @Test
+    @Config(qualifiers = "tr-w600dp-h1100dp-mdpi")
+    fun w600h1100() = capture("GameLayout_w600h1100", GameLayoutFixtures.twoLineClue)
+
+    @Test
+    @Config(qualifiers = "tr-w600dp-h960dp-mdpi")
+    fun w600h960() = capture("GameLayout_w600h960", GameLayoutFixtures.fifteenKeys)
+
+    /** Taller than the design's proportions: the gaps grow and the column is centred, actions stay on the keys. */
+    @Test
+    @Config(qualifiers = "tr-w400dp-h1000dp-mdpi")
+    fun w400h1000() = capture("GameLayout_w400h1000", GameSamples.design)
+
     private fun capture(name: String, state: GameUiState) {
         captureRoboImage("src/androidHostTest/screenshots/$name.png") {
             LexiTheme(reducedMotion = false) {
-                GameScreen(state = state, clock = { GameSamples.designClock }, onIntent = {})
+                LexiViewport {
+                    GameScreen(state = state, clock = { GameSamples.designClock }, onIntent = {})
+                }
             }
         }
     }

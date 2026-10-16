@@ -2,6 +2,7 @@ package dev.talhabayhan.lexi.feature.levels
 
 import com.github.takahirom.roborazzi.captureRoboImage
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
+import dev.talhabayhan.lexi.core.designsystem.theme.LexiViewport
 import dev.talhabayhan.lexi.core.domain.game.GameMode
 import dev.talhabayhan.lexi.core.domain.model.Level
 import org.junit.Test
@@ -59,6 +60,17 @@ class LevelSelectScreenshotTest {
         captureRoboImage("src/androidHostTest/screenshots/LevelSelectError.png") {
             LexiTheme(reducedMotion = false) {
                 LevelSelectScreen(state = LevelSelectUiState(hasError = true), onIntent = {})
+            }
+        }
+    }
+
+    /** Expanded tier (`LexiViewport`): the design scaled, the column centred and at most 430dp (× scale) wide. */
+    @Test
+    @Config(qualifiers = "tr-w600dp-h1100dp-mdpi")
+    fun expandedW600h1100() {
+        captureRoboImage("src/androidHostTest/screenshots/LevelSelect_w600h1100.png") {
+            LexiTheme(reducedMotion = false) {
+                LexiViewport { LevelSelectScreen(state = LevelSelectSampleState, onIntent = {}) }
             }
         }
     }

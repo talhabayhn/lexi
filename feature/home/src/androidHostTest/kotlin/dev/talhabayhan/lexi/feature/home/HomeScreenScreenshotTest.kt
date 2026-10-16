@@ -2,6 +2,7 @@ package dev.talhabayhan.lexi.feature.home
 
 import com.github.takahirom.roborazzi.captureRoboImage
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
+import dev.talhabayhan.lexi.core.designsystem.theme.LexiViewport
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
@@ -59,9 +60,22 @@ class HomeScreenScreenshotTest {
     @Config(qualifiers = "tr-w320dp-h568dp-xhdpi", fontScale = 1.3f)
     fun w320h568FontScale130() = capture("HomeLayout_w320h568_fontScale130")
 
+    /** Expanded tier (`LexiViewport`): large viewports ("smallest display size") draw the design scaled. */
+    @Test
+    @Config(qualifiers = "tr-w480dp-h1000dp-mdpi")
+    fun w480h1000() = capture("HomeLayout_w480h1000")
+
+    @Test
+    @Config(qualifiers = "tr-w600dp-h1100dp-mdpi")
+    fun w600h1100() = capture("HomeLayout_w600h1100")
+
+    @Test
+    @Config(qualifiers = "tr-w600dp-h960dp-mdpi")
+    fun w600h960() = capture("HomeLayout_w600h960")
+
     private fun capture(name: String) {
         captureRoboImage("src/androidHostTest/screenshots/$name.png") {
-            LexiTheme(reducedMotion = false) { HomeScreen(state = HomeSampleState, onIntent = {}) }
+            LexiTheme(reducedMotion = false) { LexiViewport { HomeScreen(state = HomeSampleState, onIntent = {}) } }
         }
     }
 }

@@ -13,6 +13,8 @@ import androidx.compose.ui.test.runComposeUiTest
 import androidx.compose.ui.unit.DpRect
 import androidx.compose.ui.unit.dp
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
+import dev.talhabayhan.lexi.core.designsystem.theme.LexiViewport
+import dev.talhabayhan.lexi.core.designsystem.theme.ViewportDefaults
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
@@ -61,6 +63,72 @@ class GameLayoutTest {
         assertEquals(816f, bounds(GameTestTags.ACTIONS).bottom.value, TOLERANCE)
     }
 
+    @Test
+    @Config(qualifiers = "tr-w480dp-h1000dp-mdpi")
+    fun `a 480 x 1000 viewport draws the design scaled`() = assertDesignScaled()
+
+    @Test
+    @Config(qualifiers = "tr-w600dp-h1100dp-mdpi")
+    fun `a 600 x 1100 viewport draws the design scaled`() = assertDesignScaled()
+
+    @Test
+    @Config(qualifiers = "tr-w600dp-h960dp-mdpi")
+    fun `a 600 x 960 viewport draws the design scaled`() = assertDesignScaled()
+
+    @Test
+    @Config(qualifiers = "tr-w600dp-h1100dp-mdpi")
+    fun `clues do not move the other rows at 600 x 1100`() = assertStableAcrossClues()
+
+    /** Taller than the design's proportions: the actions stay 12dp under the keys, the rest is shared out. */
+    @Test
+    @Config(qualifiers = "tr-w400dp-h1000dp-mdpi")
+    fun `the actions stay attached to the keys on a tall narrow viewport`() = runComposeUiTest {
+        setGame(GameSamples.design)
+        val scale = ViewportDefaults.scale(400.dp, 1000.dp)
+        val keys = screenBounds(GameTestTags.KEYS)
+        val actions = screenBounds(GameTestTags.ACTIONS)
+        val keysBottom = keys.top + (KEY_ROWS_HEIGHT * scale).dp
+        assertEquals(KEYS_ACTIONS_GAP, (actions.top - keysBottom).value / scale, SCALED_TOLERANCE)
+        val bottomSpace = onRoot().getBoundsInRoot().bottom - actions.bottom
+        val topSpace = screenBounds(GameTestTags.HUD).top
+        assertEquals(topSpace.value + BOTTOM_MINUS_TOP_PADDING * scale, bottomSpace.value, SCALED_TOLERANCE)
+    }
+
+    /**
+     * `04-game` × min(w / 390, h / 844), the column centred: every row at the design's top and height (scaled), the
+     * HUD inset by the design padding from the centred column.
+     */
+    private fun assertDesignScaled() = runComposeUiTest {
+        setGame(GameSamples.design)
+        val screen = onRoot().getBoundsInRoot()
+        val scale = ViewportDefaults.scale(screen.right - screen.left, screen.bottom - screen.top)
+        mapOf(
+            GameTestTags.HUD to (20f to 68f),
+            GameTestTags.WHEEL to (84f to 404f),
+            GameTestTags.ANSWER to (518f to 566f),
+            GameTestTags.ACTIONS to (760f to 816f),
+        ).forEach { (tag, rows) ->
+            val bounds = screenBounds(tag)
+            assertEquals(rows.first, bounds.top.value / scale, SCALED_TOLERANCE, "$tag top")
+            assertEquals(rows.second, bounds.bottom.value / scale, SCALED_TOLERANCE, "$tag bottom")
+        }
+        assertEquals(420f, screenBounds(GameTestTags.CLUE).top.value / scale, SCALED_TOLERANCE, "clue top")
+        assertEquals(582f, screenBounds(GameTestTags.KEYS).top.value / scale, SCALED_TOLERANCE, "keys top")
+        val hud = screenBounds(GameTestTags.HUD)
+        assertEquals(hud.left.value, (screen.right - hud.right).value, SCALED_TOLERANCE, "not centred")
+        val column = hud.right - hud.left + (40 * scale).dp
+        assertTrue(column <= ViewportDefaults.ContentMaxWidth * scale + 1.dp, "too wide: $column")
+        val wheel = screenBounds(GameTestTags.WHEEL)
+        assertEquals(320f, (wheel.right - wheel.left).value / scale, SCALED_TOLERANCE, "wheel size")
+    }
+
+    /** Bounds in screen dp (`getBoundsInRoot` reports a node in its own, scaled density). */
+    private fun ComposeUiTest.screenBounds(tag: String): DpRect {
+        val r = onNodeWithTag(tag).fetchSemanticsNode().boundsInRoot
+        val d = density.density
+        return DpRect((r.left / d).dp, (r.top / d).dp, (r.right / d).dp, (r.bottom / d).dp)
+    }
+
     private fun assertStableAcrossClues() = runComposeUiTest {
         var state by mutableStateOf(GameLayoutFixtures.withClue(GameLayoutFixtures.ONE_LINE))
         setGame { state }
@@ -101,7 +169,9 @@ class GameLayoutTest {
     private fun ComposeUiTest.setGame(state: () -> GameUiState) {
         setContent {
             LexiTheme(reducedMotion = true) {
-                GameScreen(state = state(), clock = { GameSamples.designClock }, onIntent = {})
+                LexiViewport {
+                    GameScreen(state = state(), clock = { GameSamples.designClock }, onIntent = {})
+                }
             }
         }
     }
@@ -117,6 +187,16 @@ class GameLayoutTest {
     private companion object {
         /** Positions within 1dp (`04-game.png` is a 2× raster). */
         const val TOLERANCE = 1f
+
+        /** 1dp, plus the pixel rounding of a scaled layout at mdpi. */
+        const val SCALED_TOLERANCE = 2f
+
+        /** Three key rows of 50 with two 8dp gaps, then the 12dp gap to the actions. */
+        const val KEY_ROWS_HEIGHT = 166f
+        const val KEYS_ACTIONS_GAP = 12f
+
+        /** Design paddings: 28 bottom − 20 top. */
+        const val BOTTOM_MINUS_TOP_PADDING = 8f
         const val RULE = "İLE BAŞLAR"
         const val LEVEL = "A1"
     }

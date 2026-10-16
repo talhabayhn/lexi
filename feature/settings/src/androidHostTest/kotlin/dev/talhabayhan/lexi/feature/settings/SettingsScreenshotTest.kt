@@ -2,6 +2,7 @@ package dev.talhabayhan.lexi.feature.settings
 
 import com.github.takahirom.roborazzi.captureRoboImage
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
+import dev.talhabayhan.lexi.core.designsystem.theme.LexiViewport
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
@@ -41,6 +42,17 @@ class SettingsScreenshotTest {
     fun english() {
         captureRoboImage("src/androidHostTest/screenshots/SettingsEn.png") {
             LexiTheme(reducedMotion = false) { SettingsScreen(state = SettingsUiState(), onIntent = {}) }
+        }
+    }
+
+    /** Expanded tier (`LexiViewport`): the design scaled, the column centred and at most 430dp (× scale) wide. */
+    @Test
+    @Config(qualifiers = "tr-w600dp-h1100dp-mdpi")
+    fun expandedW600h1100() {
+        captureRoboImage("src/androidHostTest/screenshots/Settings_w600h1100.png") {
+            LexiTheme(reducedMotion = false) {
+                LexiViewport { SettingsScreen(state = SettingsUiState(), onIntent = {}) }
+            }
         }
     }
 }

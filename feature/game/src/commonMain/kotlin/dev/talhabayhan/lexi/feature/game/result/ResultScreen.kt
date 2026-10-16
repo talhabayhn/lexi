@@ -44,6 +44,7 @@ import dev.talhabayhan.lexi.core.designsystem.component.StatGrid
 import dev.talhabayhan.lexi.core.designsystem.component.StatTile
 import dev.talhabayhan.lexi.core.designsystem.format.formatClock
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
+import dev.talhabayhan.lexi.core.designsystem.theme.lexiContentWidth
 import dev.talhabayhan.lexi.core.domain.game.GameMode
 import dev.talhabayhan.lexi.core.domain.game.GameOverReason
 import dev.talhabayhan.lexi.feature.game.generated.resources.Res
@@ -107,7 +108,9 @@ internal fun ResultScreen(state: ResultUiState, onIntent: (ResultIntent) -> Unit
                     .size(ResultDefaults.DecorCircleSize),
             )
         }
-        BoxWithConstraints(Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
+        BoxWithConstraints(
+            Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing).lexiContentWidth(),
+        ) {
             val screenHeight = maxHeight
             Column(
                 modifier = Modifier

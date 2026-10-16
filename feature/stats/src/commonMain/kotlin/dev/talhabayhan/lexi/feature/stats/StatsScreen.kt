@@ -32,6 +32,7 @@ import dev.talhabayhan.lexi.core.designsystem.component.StatsDefaults
 import dev.talhabayhan.lexi.core.designsystem.icon.LexiIcons
 import dev.talhabayhan.lexi.core.designsystem.modifier.lexiSurface
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
+import dev.talhabayhan.lexi.core.designsystem.theme.lexiContentWidth
 import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.feature.stats.generated.resources.Res
 import dev.talhabayhan.lexi.feature.stats.generated.resources.stats_accuracy
@@ -79,6 +80,7 @@ internal fun StatsScreen(state: StatsUiState, onIntent: (StatsIntent) -> Unit, m
             .fillMaxSize()
             .background(LexiTheme.colors.cream)
             .windowInsetsPadding(WindowInsets.safeDrawing)
+            .lexiContentWidth()
             .verticalScroll(rememberScrollState())
             .padding(
                 start = dimens.screenPaddingHorizontal,

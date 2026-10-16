@@ -29,6 +29,7 @@ import dev.talhabayhan.lexi.core.designsystem.component.NavSquareButton
 import dev.talhabayhan.lexi.core.designsystem.component.ProBanner
 import dev.talhabayhan.lexi.core.designsystem.icon.LexiIcons
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
+import dev.talhabayhan.lexi.core.designsystem.theme.lexiContentWidth
 import dev.talhabayhan.lexi.core.domain.AppInfo
 import dev.talhabayhan.lexi.feature.settings.generated.resources.Res
 import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_accent
@@ -66,6 +67,7 @@ internal fun SettingsScreen(state: SettingsUiState, onIntent: (SettingsIntent) -
             .fillMaxSize()
             .background(LexiTheme.colors.cream)
             .windowInsetsPadding(WindowInsets.safeDrawing)
+            .lexiContentWidth()
             .verticalScroll(rememberScrollState())
             .padding(
                 start = dimens.screenPaddingHorizontal,

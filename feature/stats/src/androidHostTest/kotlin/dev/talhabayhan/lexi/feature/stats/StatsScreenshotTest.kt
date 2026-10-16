@@ -2,6 +2,7 @@ package dev.talhabayhan.lexi.feature.stats
 
 import com.github.takahirom.roborazzi.captureRoboImage
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
+import dev.talhabayhan.lexi.core.designsystem.theme.LexiViewport
 import kotlinx.collections.immutable.persistentListOf
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -71,6 +72,15 @@ class StatsScreenshotTest {
                     onIntent = {},
                 )
             }
+        }
+    }
+
+    /** Expanded tier (`LexiViewport`): the design scaled, the column centred and at most 430dp (× scale) wide. */
+    @Test
+    @Config(qualifiers = "tr-w600dp-h1100dp-mdpi")
+    fun expandedW600h1100() {
+        captureRoboImage("src/androidHostTest/screenshots/Stats_w600h1100.png") {
+            LexiTheme(reducedMotion = false) { LexiViewport { StatsScreen(state = StatsSampleState, onIntent = {}) } }
         }
     }
 }

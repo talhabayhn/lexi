@@ -2,6 +2,7 @@ package dev.talhabayhan.lexi.feature.game.result
 
 import com.github.takahirom.roborazzi.captureRoboImage
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
+import dev.talhabayhan.lexi.core.designsystem.theme.LexiViewport
 import dev.talhabayhan.lexi.core.domain.game.GameMode
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -77,6 +78,17 @@ class ResultScreenScreenshotTest {
     fun reviewError() {
         captureRoboImage("src/androidHostTest/screenshots/ResultScreenReviewError.png") {
             LexiTheme(reducedMotion = false) { ResultScreen(state = ResultSamples.reviewError, onIntent = {}) }
+        }
+    }
+
+    /** Expanded tier (`LexiViewport`): the design scaled, the column centred and at most 430dp (× scale) wide. */
+    @Test
+    @Config(qualifiers = "tr-w600dp-h1100dp-mdpi")
+    fun expandedW600h1100() {
+        captureRoboImage("src/androidHostTest/screenshots/ResultScreen_w600h1100.png") {
+            LexiTheme(reducedMotion = false) {
+                LexiViewport { ResultScreen(state = ResultSamples.design, onIntent = {}) }
+            }
         }
     }
 }

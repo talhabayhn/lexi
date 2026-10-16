@@ -29,6 +29,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.min
 import dev.talhabayhan.lexi.core.designsystem.component.CardDefaults
 import dev.talhabayhan.lexi.core.designsystem.component.DailyCard
 import dev.talhabayhan.lexi.core.designsystem.component.DecorShape
@@ -43,6 +44,7 @@ import dev.talhabayhan.lexi.core.designsystem.component.PlayButton
 import dev.talhabayhan.lexi.core.designsystem.component.StreakChip
 import dev.talhabayhan.lexi.core.designsystem.icon.LexiIcons
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
+import dev.talhabayhan.lexi.core.designsystem.theme.lexiContentWidth
 import dev.talhabayhan.lexi.core.domain.game.GameMode
 import dev.talhabayhan.lexi.feature.home.generated.resources.Res
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_daily_label
@@ -95,8 +97,10 @@ internal fun HomeScreen(state: HomeUiState, onIntent: (HomeIntent) -> Unit, modi
                 .size(HomeDefaults.PillWidth, HomeDefaults.PillHeight),
         )
         CompositionLocalProvider(LocalDensity provides LocalDensity.current.withCappedFontScale()) {
-            FitToHeight(Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) { tier ->
-                HomeContent(tier, state, onIntent)
+            FitToHeight(
+                Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing).lexiContentWidth(),
+            ) { tier, tileGrowth ->
+                HomeContent(tier, tileGrowth, state, onIntent)
             }
         }
     }
@@ -118,7 +122,7 @@ private class HomeMetrics(
 )
 
 @Composable
-private fun HomeTier.metrics(): HomeMetrics {
+private fun HomeTier.metrics(tileGrowth: Dp): HomeMetrics {
     val dimens = LexiTheme.dimens
     return when (this) {
         HomeTier.Regular -> HomeMetrics(
@@ -127,7 +131,7 @@ private fun HomeTier.metrics(): HomeMetrics {
             dimens.gap20,
             LexiLogoSize.Menu,
             HomeDefaults.RegularPlayHeight,
-            CardDefaults.MenuTileHeight,
+            CardDefaults.MenuTileHeight + tileGrowth,
             dimens.gap12,
             compactDaily = false,
         )
@@ -153,29 +157,39 @@ private fun HomeTier.metrics(): HomeMetrics {
 
 /**
  * Composes [content] for each tier in turn, measures its natural height and keeps the first tier that fits the
- * available height (the last one otherwise; the measured probes are hidden from accessibility), then lays it out to exactly the available height: the home never scrolls.
+ * available height (the last one otherwise; the measured probes are hidden from accessibility), then lays it out to
+ * exactly the available height: the home never scrolls. In the regular tier, height beyond the design's OYNA–tiles
+ * space ([HomeDefaults.RegularMaxSpare]) is passed on as tile growth (per tile row) instead of widening that hole.
  */
 @Composable
-private fun FitToHeight(modifier: Modifier, content: @Composable (HomeTier) -> Unit) {
+private fun FitToHeight(modifier: Modifier, content: @Composable (HomeTier, Dp) -> Unit) {
     SubcomposeLayout(modifier) { constraints ->
         val width = constraints.maxWidth
         val height = constraints.maxHeight
         val natural = Constraints(maxWidth = width)
+        var naturalHeight = 0
         val tier = HomeTier.entries.firstOrNull { candidate ->
-            subcompose(candidate to false) {
-                Box(Modifier.clearAndSetSemantics {}) { content(candidate) }
-            }.maxOf { it.measure(natural).height } <=
-                height
+            naturalHeight = subcompose(candidate to false) {
+                Box(Modifier.clearAndSetSemantics {}) { content(candidate, Dp(0f)) }
+            }.maxOf { it.measure(natural).height }
+            naturalHeight <= height
         } ?: HomeTier.entries.last()
-        val placeables = subcompose(tier to true) { content(tier) }.map { it.measure(Constraints.fixed(width, height)) }
+        val excess = if (tier == HomeTier.Regular) {
+            (height - naturalHeight - HomeDefaults.RegularMaxSpare.roundToPx()).coerceAtLeast(0)
+        } else {
+            0
+        }
+        val growth = min(excess.toDp() / 2, HomeDefaults.TileMaxGrowth)
+        val placeables = subcompose(tier to true) { content(tier, growth) }
+            .map { it.measure(Constraints.fixed(width, height)) }
         layout(width, height) { placeables.forEach { it.place(0, 0) } }
     }
 }
 
 @Composable
-private fun HomeContent(tier: HomeTier, state: HomeUiState, onIntent: (HomeIntent) -> Unit) {
+private fun HomeContent(tier: HomeTier, tileGrowth: Dp, state: HomeUiState, onIntent: (HomeIntent) -> Unit) {
     val dimens = LexiTheme.dimens
-    val metrics = tier.metrics()
+    val metrics = tier.metrics(tileGrowth)
     Column(
         modifier = Modifier
             .fillMaxSize()

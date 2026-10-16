@@ -79,6 +79,14 @@ public object HomeDefaults {
     public val TightTileHeight: Dp = 0.dp
     public val TightTileGap: Dp = 8.dp
 
+    /**
+     * Regular tier on tall screens: the free space between OYNA and the tiles grows up to the design's (`02-home` at
+     * 390 × 844: 131dp, +5 for font metrics); beyond it each tile row grows by half the excess, up to [TileMaxGrowth],
+     * before the free space does.
+     */
+    public val RegularMaxSpare: Dp = 136.dp
+    public val TileMaxGrowth: Dp = 55.dp
+
     /** Smallest scale a CTA caption shrinks to before it is cut with an ellipsis. */
     internal const val CAPTION_MIN_SCALE: Float = 0.7f
     internal val CAPTION_STEP: TextUnit = 0.5.sp

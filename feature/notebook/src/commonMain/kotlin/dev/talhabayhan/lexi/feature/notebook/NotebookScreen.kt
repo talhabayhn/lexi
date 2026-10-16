@@ -46,6 +46,7 @@ import dev.talhabayhan.lexi.core.designsystem.component.WordRow
 import dev.talhabayhan.lexi.core.designsystem.icon.LexiIcons
 import dev.talhabayhan.lexi.core.designsystem.modifier.lexiSurface
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
+import dev.talhabayhan.lexi.core.designsystem.theme.lexiContentWidth
 import dev.talhabayhan.lexi.core.domain.model.CardId
 import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.feature.notebook.generated.resources.Res
@@ -102,6 +103,7 @@ internal fun NotebookScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .windowInsetsPadding(WindowInsets.safeDrawing)
+                .lexiContentWidth()
                 .padding(
                     start = dimens.screenPaddingHorizontal,
                     top = dimens.screenPaddingTop,

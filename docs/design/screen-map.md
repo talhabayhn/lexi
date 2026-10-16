@@ -63,6 +63,18 @@ before shipping.
 | Store screenshots | M8 | frames of real screens + headline band |
 
 ## Responsive rules
+- **Expanded tier (all screens, `LexiViewport` around the nav host):** when the space inside the system bars and cutout
+  is larger than the 390 × 844 design in **both** directions (e.g. Android "smallest display size": 480 × 1000dp at a
+  low density), every screen is drawn as the design scaled by `min(width / 390, height / 844)` (at most 1.6×) through
+  a scaled `LocalDensity`: wheel, keys, tiles, texts, gaps, borders, shadows and motion distances grow together, so no
+  hole opens between OYNA and the tiles or between the keys and the actions. Phones at or below the design size keep
+  scale 1 (390 × 844 stays pixel-identical); the IME never changes the scale. Every screen's content column is centred
+  and at most 430dp (× scale) wide (`Modifier.lexiContentWidth()`); decor shapes stay edge-to-edge. Roborazzi + bounds
+  tests at 480 × 1000, 600 × 1100, 600 × 960 (home, game) and 600 × 1100 (the other screens). On iOS the safe-area
+  insets are dp-based and grow with the scale (only on viewports above 390 × 844, i.e. iPads).
+- Taller than the design's proportions after scaling (scale limited by the width, e.g. 400 × 1000): the home's tile
+  rows grow (up to +55dp each) once the OYNA–tiles space exceeds the design's (131dp, cap 136); the game's four row
+  gaps grow up to 2× and the column is then centred, the actions staying 12dp under the reserved keys.
 - Phones narrower than 390dp: wheel size = `min(320, screenWidth − 40)`; scale wheel radius/chip proportionally
   (chip, centre letter and rule label texts too); everything else reflows (keys stay 5 columns).
 - Short phones (< 760dp height): reduce wheel to 280 and vertical gaps by 25%; never scroll the game screen.
@@ -80,12 +92,13 @@ before shipping.
     DESIGN-DEBT, derived from `04-game`): padding 12 top / 16 bottom, gaps 8, answer margin 2, HUD 44, answer boxes
     40 high, keys 44 high with 6 gaps, actions 48. At 320 × 568 the wheel is ~144dp.
 - **Home never scrolls.** `FitToHeight` (feature:home) measures the home for each tier (`HomeTier`) inside the safe-drawing
-  insets and keeps the first that fits: Regular (the design, 390 × 844 pixel-identical; the spacer absorbs spare height),
-  Compact (DESIGN-DEBT, derived from `02-home`: padding 12 / 16, gaps 12, logo blocks 46, daily card padding 12 with a
+  insets and keeps the first that fits: Regular (the design, 390 × 844 pixel-identical; the spacer absorbs spare height
+  up to the design's, then the tiles grow), Compact (DESIGN-DEBT, derived from `02-home`: padding 12 / 16, gaps 12, logo blocks 46, daily card padding 12 with a
   48 circle, OYNA 60, tiles min 84 with gap 10), Tight (padding 8 / 12, gaps 8, OYNA 52, tiles content-sized with
   16 / 12sp text). Both tile rows have equal heights. Font scale is capped at 1.15 on the home; decor shapes stay
   edge-to-edge decoration. `HomeLayoutTest` asserts all texts stay on screen at 320 × 568, 360 × 640, 360 × 780,
   390 × 844, 412 × 915 and font scale 1.15 / 1.3.
-- Tablets / landscape: center a 430dp-wide column; landscape-specific layouts later.
+- Tablets / landscape: the 430dp content column above (scaled in portrait by the Expanded tier); landscape-specific
+  layouts later.
 - Font scale: honor system font size up to 1.3× on lists; the whole game board (HUD, wheel, clue, slots, keys,
   actions) is capped at 1.15×; its fixed heights grow with the capped scale.

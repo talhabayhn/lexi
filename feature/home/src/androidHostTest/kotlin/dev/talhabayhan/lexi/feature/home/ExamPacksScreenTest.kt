@@ -8,6 +8,7 @@ import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.runComposeUiTest
 import com.github.takahirom.roborazzi.captureRoboImage
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
+import dev.talhabayhan.lexi.core.designsystem.theme.LexiViewport
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
@@ -36,6 +37,15 @@ class ExamPacksScreenTest {
     fun comingSoon() {
         captureRoboImage("src/androidHostTest/screenshots/ExamPacksSoon.png") {
             LexiTheme(reducedMotion = false) { ExamPacksScreen(onBack = {}) }
+        }
+    }
+
+    /** Expanded tier (`LexiViewport`): the design scaled, the column centred and at most 430dp (× scale) wide. */
+    @Test
+    @Config(qualifiers = "tr-w600dp-h1100dp-mdpi")
+    fun expandedW600h1100() {
+        captureRoboImage("src/androidHostTest/screenshots/ExamPacks_w600h1100.png") {
+            LexiTheme(reducedMotion = false) { LexiViewport { ExamPacksScreen(onBack = {}) } }
         }
     }
 }

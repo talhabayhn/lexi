@@ -58,7 +58,9 @@ internal data class GameLayout(
  * Lays the game screen out in [width] × [height] (the screen inside the safe-drawing insets). Tiers are tried from the
  * one the height allows (regular from 760dp) to compact until the wheel gets at least
  * [GameScreenDefaults.ComfortableWheelSize]; the wheel is `min(320 | 280, width − 40)` or what is left. Height left over
- * with the wheel at its maximum widens the clue area by up to one more clue line.
+ * with the wheel at its maximum widens the clue area by up to one more clue line; beyond that the row gaps grow (up to
+ * 2×) and the column is centred, so the actions stay attached to the keys. Large viewports are first scaled as a
+ * whole by `LexiViewport` (Expanded tier).
  */
 internal fun gameLayout(width: Dp, height: Dp, dimens: LexiDimens, clue: ClueCardMetrics): GameLayout {
     val tiers = if (height >= GameScreenDefaults.ShortScreenHeight) {
@@ -74,6 +76,9 @@ internal fun gameLayout(width: Dp, height: Dp, dimens: LexiDimens, clue: ClueCar
     }
     return layout
 }
+
+/** hud | wheel, wheel | clue, clue | answer and answer | keys. */
+private const val GROWING_GAPS = 4
 
 private fun GameLayoutTier.layout(columnWidth: Dp, height: Dp, dimens: LexiDimens, clue: ClueCardMetrics): GameLayout {
     val compact = this == GameLayoutTier.Compact
@@ -109,7 +114,15 @@ private fun GameLayoutTier.layout(columnWidth: Dp, height: Dp, dimens: LexiDimen
     val free = (height - fixed).coerceAtLeast(Dp(0f))
     val wheel = min(base.maxWheelSize, free)
     val extra = min(free - wheel, clue.clueLine)
+    // Still more height (taller than the design's proportions): the four row gaps grow up to twice their size, then
+    // the column is centred. The actions stay attached to the keys instead of leaving a hole above them.
+    val rest = free - wheel - extra
+    val gapGrowth = min(rest / GROWING_GAPS, base.gap)
+    val centring = (rest - gapGrowth * GROWING_GAPS) / 2
     return base.copy(
+        paddingTop = base.paddingTop + centring,
+        paddingBottom = base.paddingBottom + centring,
+        gap = base.gap + gapGrowth,
         wheelSize = wheel,
         clueAreaHeight = clue.clueLine + extra,
         clueCardHeight = clue.cardHeight(clue.clueLine + extra),

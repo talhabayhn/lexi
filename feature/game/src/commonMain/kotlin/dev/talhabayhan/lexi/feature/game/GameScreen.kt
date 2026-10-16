@@ -29,6 +29,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.LayoutDirection
+import androidx.compose.ui.unit.min
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.LifecycleEventEffect
 import dev.talhabayhan.lexi.core.designsystem.component.ActionCircleButton
@@ -44,6 +45,8 @@ import dev.talhabayhan.lexi.core.designsystem.component.LexiButtonVariant
 import dev.talhabayhan.lexi.core.designsystem.component.rememberClueCardMetrics
 import dev.talhabayhan.lexi.core.designsystem.icon.LexiIcons
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
+import dev.talhabayhan.lexi.core.designsystem.theme.ViewportDefaults
+import dev.talhabayhan.lexi.core.designsystem.theme.lexiContentWidth
 import dev.talhabayhan.lexi.core.domain.model.LetterRule
 import dev.talhabayhan.lexi.core.domain.model.PartOfSpeech
 import dev.talhabayhan.lexi.feature.game.components.AnswerSlots
@@ -144,8 +147,11 @@ private fun GameContent(
     val density = LocalDensity.current
     val insets = WindowInsets.safeDrawing
     val width = with(density) {
-        maxWidth - insets.getLeft(density, LayoutDirection.Ltr).toDp() -
-            insets.getRight(density, LayoutDirection.Ltr).toDp()
+        min(
+            maxWidth - insets.getLeft(density, LayoutDirection.Ltr).toDp() -
+                insets.getRight(density, LayoutDirection.Ltr).toDp(),
+            ViewportDefaults.ContentMaxWidth,
+        )
     }
     val height = with(density) { maxHeight - insets.getTop(density).toDp() - insets.getBottom(density).toDp() }
     val clueMetrics = rememberClueCardMetrics()
@@ -234,6 +240,7 @@ private fun GameContent(
         modifier = Modifier
             .fillMaxSize()
             .windowInsetsPadding(WindowInsets.safeDrawing)
+            .lexiContentWidth()
             .padding(
                 start = dimens.screenPaddingHorizontal,
                 top = layout.paddingTop,

@@ -19,6 +19,7 @@ import dev.talhabayhan.lexi.core.designsystem.component.EmptyState
 import dev.talhabayhan.lexi.core.designsystem.component.NavSquareButton
 import dev.talhabayhan.lexi.core.designsystem.icon.LexiIcons
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
+import dev.talhabayhan.lexi.core.designsystem.theme.lexiContentWidth
 import dev.talhabayhan.lexi.feature.home.generated.resources.Res
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_back
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_exams_soon
@@ -37,6 +38,7 @@ internal fun ExamPacksScreen(onBack: () -> Unit, modifier: Modifier = Modifier) 
             .fillMaxSize()
             .background(LexiTheme.colors.cream)
             .windowInsetsPadding(WindowInsets.safeDrawing)
+            .lexiContentWidth()
             .padding(
                 start = dimens.screenPaddingHorizontal,
                 top = dimens.screenPaddingTop,
