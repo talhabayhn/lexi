@@ -1,12 +1,15 @@
 #!/usr/bin/env python3
-"""Lexi sound set generator: warm, minimal sounds for a word-puzzle game, built from real recordings.
+"""Lexi sound set generator: soft, rounded, minimal sounds for a word-puzzle game.
 
-Concept: a Bauhaus letter board. Frequent UI sounds are real wood (woodblock, slit drum, claves played softly,
+Shipped set E "Damla" (water drop), chosen by the product owner in a listening round: clean rounded sine "blup"s
+that glide up into C major pentatonic notes, soft clicks for buttons and ticks, a low rounded "bonk" for
+mistakes. Alternative sets A-D (kept for comparison) are built from real recordings.
+Their concept: a Bauhaus letter board. Frequent UI sounds are real wood (woodblock, slit drum, claves played softly,
 pitched down and darkened); answers, rewards and the timer are short C major pentatonic gestures on one real
 acoustic instrument. Sources are CC0 recordings from VCSL (see fetch_samples.py), vendored as short tuned excerpts
 in tools/sound-gen/samples/, so this script runs offline and deterministically (seeded; only dependency: numpy):
 
-    python3 tools/sound-gen/generate.py                # render A-D, previews, install set A into the app
+    python3 tools/sound-gen/generate.py                # render all sets, previews, install set E into the app
     python3 tools/sound-gen/generate.py --install C    # install another candidate set
     python3 tools/sound-gen/generate.py --install none # render only
 
@@ -15,8 +18,8 @@ Outputs
   docs/design/sound-previews/<set>/*.ogg + _reel.ogg    listening copies (WAV if ffmpeg is missing)
   shared/src/commonMain/composeResources/files/sounds/  the installed set (mono 16-bit 22.05 kHz WAV)
 
-Processing is light on purpose: pitch by resampling (instrument notes at most a few semitones), velocity as level + brightness,
-optional damping, rolled chords and human timing, gentle EQ/low-pass, a small wooden room (synthetic IR), a
+Processing is light on purpose: pitch by resampling (instrument notes at most a few semitones),
+velocity as level + brightness, optional damping, rolled chords and human timing, gentle EQ/low-pass, a small wooden room (synthetic IR), a
 natural release and peak normalisation. See docs/design/sound.md for the sound list and intent.
 """
 import argparse
@@ -121,7 +124,28 @@ def wood(name, vel, n, semitones=0.0, lp=4000.0, decay=None):
     return y * vel
 
 
+class Drop:
+    """Damla (water drop) voice, the shipped family: a rounded sine that glides up into its note ("blup"),
+    a whisper of 2nd harmonic, 1.5 ms soft attack and a short exponential tail. `mute` scales the tail
+    (< 1 shorter, > 1 longer)."""
+
+    def __call__(self, note, vel, n, rng, mute=1.0, cents=0.0):
+        f = 440.0 * 2 ** ((midi(note) - 69) / 12 + cents / 1200)
+        return vel * glide_sine(f, n, -0.32, 0.012, 0.07 * mute, ((1, 1.0), (2, 0.08)))
+
+
+def glide_sine(f, n, glide, tau_glide, tau, harmonics):
+    """Sine voice whose pitch settles from f*(1+glide) to f; glide < 0 rises into the note, > 0 falls."""
+    t = np.arange(n) / SR
+    phase = 2 * np.pi * np.cumsum(f * (1 + glide * np.exp(-t / tau_glide))) / SR
+    y = sum(a * np.sin(k * phase) * np.exp(-t * k**0.6 / tau) for k, a in harmonics)
+    k = min(n, int(SR * 0.0015))
+    y[:k] *= 0.5 - 0.5 * np.cos(np.linspace(0, np.pi, k))
+    return y
+
+
 SETS = {
+    "E": ("e-damla", "damla", {"lp": 7000, "eq": [], "rt_scale": 1.0}),
     "A": ("a-piano", "piano", {"lp": 6500, "eq": [(250, 1.5, 0.8)], "rt_scale": 1.0}),
     "B": ("b-kalimba", "kalimba", {"lp": 6500, "eq": [(240, 2.0, 1.0)], "rt_scale": 1.0}),
     "C": ("c-marimba", "marimba", {"lp": 6000, "eq": [(200, 1.5, 0.9)], "rt_scale": 1.0}),
@@ -197,6 +221,36 @@ class Take:
                 self.x[start:] += self.instrument(nn, self._vel(vel), n, self.rng, mute, cents) * (0.8 if i else 1.0)
         return self
 
+    def click(self, t0, vel):
+        """Soft click: band-passed noise burst with a 3 ms decay (Damla buttons, ticks)."""
+        start, n = self._at(t0)
+        k = min(n, int(SR * 0.03))
+        if k > 0:
+            y = self.rng.standard_normal(k) * np.exp(-np.arange(k) / SR / 0.003)
+            y = biquad(biquad(y, "bp", 2200, 1.2), "lp", 4000)
+            y[: int(SR * 0.0003)] *= np.linspace(0, 1, int(SR * 0.0003))
+            self.x[start: start + k] += self._vel(vel) * y / (np.max(np.abs(y)) + 1e-12)
+        return self
+
+    def bonk(self, t0, note, vel):
+        """Soft low "bonk" for mistakes: rounded sine falling a little into the note, quick decay."""
+        assert midi(note) % 12 in PENTATONIC, note
+        start, n = self._at(t0)
+        if n > 0:
+            self.x[start:] += self._vel(vel) * glide_sine(440.0 * 2 ** ((midi(note) - 69) / 12), n, 0.35, 0.02,
+                                                          0.07, ((1, 1.0), (2, 0.2)))
+        return self
+
+    def fall(self, t0, note, vel, length=1.0):
+        """Bubble "pit": pitch drops onto the note (undo, close, remove)."""
+        assert midi(note) % 12 in PENTATONIC, note
+        start, n = self._at(t0)
+        if n > 0:
+            cents = self.rng.uniform(-4, 4) if self.variant else 0.0
+            f = 440.0 * 2 ** ((midi(note) - 69) / 12 + cents / 1200)
+            self.x[start:] += self._vel(vel) * glide_sine(f, n, 0.9, 0.006, 0.05 * length, ((1, 1.0), (2, 0.12)))
+        return self
+
     def wood(self, t0, name, vel, semitones=0.0, lp=4000.0, decay=None):
         if name == "block":  # round robin over the three real woodblock strokes
             name = f"block_{self.variant % 3 + 1}"
@@ -261,12 +315,60 @@ SOUNDS = {
                        lambda k: k.note(0, "G4", 0.45).note(0.09, "C5", 0.5).note(0.18, "E5", 0.55)
                        .note(0.27, "G5", 0.6).note(0.4, "C4 G4 E5 C6", 0.6)),
 }
+
+
+def _rise(k, t0, notes, step, vel, length, dv=0.0):
+    for i, nn in enumerate(notes.split()):
+        k.note(t0 + step * i, nn, vel + dv * i, length)
+    return k
+
+
+# Damla (shipped): the same events in the water-drop language; notes are sounding pitch.
+DAMLA_SOUNDS = {
+    "tap": (0.07, -19, 0.1, 0.06, True, lambda k: k.note(0, "G5", 0.5, 0.6)),
+    "place": (0.09, -21, 0.12, 0.08, True, lambda k: k.note(0, "E5", 0.4, 0.5)),
+    "correct": (0.28, -9, 0.3, 0.12, False, lambda k: k.note(0, "G5", 0.8, 0.8).note(0.085, "C6", 1.0)),
+    "wrong": (0.30, -14, 0.25, 0.1, False, lambda k: k.bonk(0, "E4", 0.7).bonk(0.12, "C4", 0.7)),
+    "pass": (0.26, -15, 0.2, 0.1, False, lambda k: k.note(0, "E6", 0.45, 0.5).note(0.07, "C6", 0.45, 0.5)),
+    "combo": (0.40, -9, 0.4, 0.12, False, lambda k: _rise(k, 0, "G5 C6 E6 G6", 0.055, 0.7, 0.8, 0.08)),
+    "tick": (0.12, -18, 0.15, 0.1, True, lambda k: k.click(0, 0.35).note(0, "G5", 0.35, 0.4)),
+    "win": (0.90, -8, 0.7, 0.13, False,
+            lambda k: _rise(k, 0, "C6 E6 G6", 0.11, 0.75, 0.9).note(0.36, "C6 E6 G6 C7", 0.75, 1.6)),
+    "lose": (0.80, -12, 0.6, 0.12, False,
+             lambda k: _rise(k, 0, "A5 G5 E5", 0.16, 0.55, 0.9).note(0.48, "C5 G5", 0.5, 1.4)),
+    "button": (0.09, -17, 0.12, 0.06, False, lambda k: k.click(0, 0.5)),
+    "backspace": (0.09, -21, 0.12, 0.08, True, lambda k: k.fall(0, "E5", 0.35, 0.5)),
+    "timer_tick": (0.09, -30, 0.12, 0.08, True, lambda k: k.click(0, 0.2)),
+    "warning_1": (0.14, -19, 0.18, 0.1, False, lambda k: k.click(0, 0.3).note(0, "G5", 0.3, 0.4)),
+    "warning_2": (0.14, -17, 0.18, 0.1, False, lambda k: k.click(0, 0.35).note(0, "A5", 0.4, 0.4)),
+    "warning_3": (0.18, -15, 0.18, 0.1, False,
+                  lambda k: k.click(0, 0.4).note(0, "C6", 0.45, 0.4).note(0.085, "C6", 0.3, 0.4)),
+    "time_up": (0.70, -12, 0.6, 0.12, False, lambda k: k.note(0, "G5", 0.45).note(0.16, "C5 G5", 0.4, 1.2)),
+    "joker": (0.38, -13, 0.35, 0.12, False, lambda k: _rise(k, 0, "E6 G6 A6", 0.045, 0.4, 0.6, 0.05)),
+    "gift": (0.65, -11, 0.55, 0.12, False, lambda k: _rise(k, 0, "C6 E6 G6 C7", 0.07, 0.45, 1.0, 0.05)),
+    "countdown": (0.22, -14, 0.25, 0.1, False, lambda k: k.note(0, "C6", 0.5, 0.5)),
+    "countdown_go": (0.38, -11, 0.35, 0.12, False, lambda k: k.note(0, "G5 C6 E6", 0.6, 0.9)),
+    "best": (0.85, -8, 0.7, 0.13, False,
+             lambda k: _rise(k, 0, "C6 E6 G6 A6", 0.07, 0.5, 0.8, 0.03).note(0.32, "C6 E6 G6 C7", 0.65, 1.6)),
+    "dialog_open": (0.18, -22, 0.2, 0.1, False, lambda k: k.click(0, 0.3).note(0, "D6", 0.25, 0.4)),
+    "dialog_close": (0.18, -23, 0.2, 0.1, False, lambda k: k.click(0, 0.3).fall(0, "D6", 0.25, 0.4)),
+    "toast": (0.25, -21, 0.25, 0.12, False, lambda k: k.note(0, "E6", 0.35)),
+    "notebook_add": (0.24, -18, 0.22, 0.1, False, lambda k: k.note(0, "E6", 0.4, 0.6).note(0.05, "A6", 0.45, 0.7)),
+    "notebook_remove": (0.22, -20, 0.2, 0.1, False, lambda k: k.fall(0, "A5", 0.35, 0.6)),
+    "daily_complete": (1.00, -8, 0.7, 0.13, False,
+                       lambda k: _rise(k, 0, "G5 C6 E6 G6", 0.09, 0.45, 1.0, 0.05).note(0.4, "C6 E6 G6 C7", 0.65, 1.8)),
+}
+assert DAMLA_SOUNDS.keys() == SOUNDS.keys()
 VARIANTS = 3
+
+
+def sounds_of(set_key):
+    return DAMLA_SOUNDS if SETS[set_key][1] == "damla" else SOUNDS
 
 
 def render(set_key, name, instrument, variant=0):
     spec = SETS[set_key][2]
-    dur, peak_db, rt, wet, _, score = SOUNDS[name]
+    dur, peak_db, rt, wet, _, score = sounds_of(set_key)[name]
     rng = np.random.default_rng(zlib.crc32(f"{set_key}/{name}/{variant}".encode()))
     take = score(Take(instrument, dur, rng, variant))
     return to_int16(master(take.x, spec, rt, wet, rng), peak_db, rng)
@@ -294,7 +396,7 @@ def check(name, pcm):
 def main():
     global WOOD
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--install", default="A", choices=[*SETS, "none"], help="set copied into the app")
+    ap.add_argument("--install", default="E", choices=[*SETS, "none"], help="set copied into the app")
     ap.add_argument("--no-previews", action="store_true")
     args = ap.parse_args()
 
@@ -307,10 +409,10 @@ def main():
     if not args.no_previews and PREVIEW_DIR.exists():
         shutil.rmtree(PREVIEW_DIR)
     for key, (label, folder, _) in SETS.items():
-        instrument = Sampler(folder)
+        instrument = Drop() if folder == "damla" else Sampler(folder)
         out = OUT_DIR / label
         mains, variants = [], []
-        for name, (*_, frequent, _score) in SOUNDS.items():
+        for name, (*_, frequent, _score) in sounds_of(key).items():
             for v in range(VARIANTS + 1 if frequent else 1):
                 fname = f"{name}.wav" if v == 0 else f"{name}_{v}.wav"
                 pcm = render(key, name, instrument, v)
