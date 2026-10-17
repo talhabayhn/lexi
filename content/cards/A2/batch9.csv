@@ -25,7 +25,7 @@ a2-beetle,BEETLE,B,STARTS,noun,sert kanatlı küçük böcek,A beetle crawled ov
 a2-chimney,CHIMNEY,C,STARTS,noun,evin çatısındaki duman çıkış borusu,Our house has a tall chimney.,Evimizin yüksek bir bacası var.,3,,home
 a2-dustbin,DUSTBIN,D,STARTS,noun,evin dışındaki büyük çöp kovası,The dustbin is outside the house.,Çöp kovası evin dışında.,3,,home
 a2-explorer,EXPLORER,E,STARTS,noun,bilinmeyen yerleri keşfeden kişi,The explorer crossed the mountains.,Kaşif dağları geçti.,3,,travel
-a2-fireman,FIREMAN,F,STARTS,noun,"yangın söndüren görevli, itfaiyeci",The fireman climbed the roof.,İtfaiyeci çatıya tırmandı.,2,,school-work
+a2-fireman,FLAG,F,STARTS,noun,"bir ülkeyi simgeleyen kumaş, bayrak",The flag is red and white.,Bayrak kırmızı ve beyaz.,2,,city-transport
 a2-fisherman,FISHERMAN,F,STARTS,noun,balık tutarak geçinen kişi,The fisherman sells fish at the market.,Balıkçı pazarda balık satıyor.,2,,school-work
 a2-ghost,GHOST,G,STARTS,noun,ölmüş birinin ruhu olduğuna inanılan görüntü,The children ran away from the ghost.,Çocuklar hayaletten kaçtı.,2,,daily-life
 a2-gorilla,GORILLA,G,STARTS,noun,Afrika ormanlarında yaşayan iri maymun,The gorilla is eating a banana.,Goril muz yiyor.,2,,animals

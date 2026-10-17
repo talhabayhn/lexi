@@ -13,7 +13,7 @@ a1-climb,CLIMB,C,STARTS,verb,eller ve ayaklarla yukarı tırmanmak,Ali can climb
 a1-count,COUNT,C,STARTS,verb,sayıları sırayla söyleyerek miktarı bulmak,Let us count the chairs.,Sandalyeleri sayalım.,2,,school-work
 a1-cartoon,CARTOON,C,STARTS,noun,çocukların televizyonda izlediği çizgi film,Ali is watching a cartoon.,Ali çizgi film izliyor.,2,,daily-life
 a1-canada,CANADA,C,STARTS,noun,başkenti Ottawa olan Kuzey Amerika ülkesi,Ayşe studies in Canada.,Ayşe Kanada'da okuyor.,2,,daily-life
-a1-dancer,DANCER,D,STARTS,noun,sahnede dans eden kişi,Selin's mum is a dancer.,Selin'in annesi dansçı.,2,,daily-life
+a1-dancer,DANCER,D,STARTS,noun,sahnede dans eden kişi,Selin's mom is a dancer.,Selin'in annesi dansçı.,2,,daily-life
 a1-famous,FAMOUS,F,STARTS,adj,herkesin tanıdığı ve adı duyulmuş,The painter is famous in Greece.,Ressam Yunanistan'da ünlü.,2,,daily-life
 a1-follow,FOLLOW,F,STARTS,verb,birinin ardından gitmek,"Follow me, Ali.","Beni takip et, Ali.",2,,daily-life
 a1-india,INDIA,I,STARTS,noun,başkenti Yeni Delhi olan Güney Asya ülkesi,Mert went to India alone.,Mert Hindistan'a tek başına gitti.,2,,daily-life

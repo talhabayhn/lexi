@@ -3,8 +3,8 @@ nat-dearth,DEARTH,D,STARTS,noun,"bir şeyin ciddi kıtlığı, yokluğu",There i
 nat-debacle,DEBACLE,D,STARTS,noun,herkesin gözü önünde rezil olunan fiyasko,The product launch was a complete debacle.,Ürün lansmanı tam bir rezaletti.,4,,general
 nat-decorum,DECORUM,D,STARTS,noun,"duruma yakışan ağırbaşlı davranış, adap",Please maintain decorum in the courtroom.,Lütfen mahkeme salonunda adaba uygun davranın.,5,,general
 nat-deft,DEFT,D,STARTS,adj,"(el hareketi) hızlı, zarif ve becerikli","With a deft move, she caught the falling glass.",Çevik bir hareketle düşen bardağı yakaladı.,4,,general
-nat-delineate,DELINEATE,D,STARTS,verb,bir şeyin sınırlarını ayrıntısıyla belirleyip çizmek,The contract should delineate each person's role.,Sözleşme herkesin rolünü açıkça tanımlamalı.,5,,general
-nat-demeanour,DEMEANOUR,D,STARTS,noun,"kişinin dışa yansıyan tavrı, duruşu",His calm demeanour hid his fear.,Sakin tavrı korkusunu gizliyordu.,4,,general
+nat-delineate,DELINEATE,D,STARTS,verb,"bir şeyin sınırlarını ayrıntılı çizmek, tanımlamak",The contract should delineate each person's role.,Sözleşme herkesin rolünü açıkça tanımlamalı.,5,,general
+nat-demeanour,DEMEANOR,D,STARTS,noun,"kişinin dışa yansıyan tavrı, duruşu",His calm demeanor hid his fear.,Sakin tavrı korkusunu gizliyordu.,4,,general
 nat-deride,DERIDE,D,STARTS,verb,alaya alıp küçümsemek,Critics deride the plan as unrealistic.,Eleştirmenler planı gerçek dışı diye alaya alıyor.,5,,general
 nat-despondent,DESPONDENT,D,STARTS,adj,"umudunu yitirmiş, karamsar ve bitkin","After weeks without work, he grew despondent.",Haftalarca işsiz kalınca umutsuzluğa kapıldı.,5,,general
 nat-devious,DEVIOUS,D,STARTS,adj,"hilekâr, dolambaçlı yollara başvuran",He used devious means to win the contract.,İhaleyi kazanmak için hileli yollara başvurdu.,4,,general
@@ -17,7 +17,7 @@ nat-discern,DISCERN,D,STARTS,verb,gözle veya sezgiyle zorlukla seçebilmek,I co
 nat-disconcerting,DISCONCERTING,D,STARTS,adj,beklenmedik olduğu için insanı bocalatan,His long silence was disconcerting.,Uzun sessizliği tedirgin ediciydi.,4,,general
 nat-disdain,DISDAIN,D,STARTS,noun,değersiz görüp tepeden bakma duygusu,She looked at the cheap hotel with disdain.,Ucuz otele tepeden bakarak küçümsedi.,4,,general
 nat-disgruntled,DISGRUNTLED,D,STARTS,adj,haksızlığa uğradığını düşünüp içerlemiş (çalışan),A disgruntled employee leaked the files.,Hoşnutsuz bir çalışan dosyaları sızdırdı.,4,,general
-nat-dishevelled,DISHEVELLED,D,STARTS,adj,"(saç, kıyafet) dağınık, darmadağın",He arrived late and dishevelled.,Geç ve üstü başı darmadağın geldi.,5,,general
+nat-dishevelled,DISHEVELED,D,STARTS,adj,"(saç, kıyafet) dağınık, darmadağın",He arrived late and disheveled.,Geç ve üstü başı darmadağın geldi.,5,,general
 nat-disingenuous,DISINGENUOUS,D,STARTS,adj,samimiymiş gibi görünüp gerçeği saklayan,It is disingenuous to claim you knew nothing.,Hiçbir şey bilmediğini iddia etmek samimiyetsizlik.,5,,general
 nat-disparity,DISPARITY,D,STARTS,noun,"(gelir, oran) büyük eşitsizlik, uçurum",The disparity between rich and poor is growing.,Zenginle yoksul arasındaki uçurum büyüyor.,4,,general
 nat-disseminate,DISSEMINATE,D,STARTS,verb,(bilgiyi) geniş kitlelere yaymak,We need to disseminate the results quickly.,Sonuçları hızla geniş kitlelere yaymalıyız.,5,,general
@@ -48,7 +48,7 @@ nat-enamoured,ENAMOURED,E,STARTS,adj,"(bir şeye) vurgun, hayran",I'm not enamou
 nat-encroach,ENCROACH,E,STARTS,verb,"başkasının alanına yavaş yavaş girmek, yayılmak",The city continues to encroach on the forest.,Şehir ormana doğru yayılmaya devam ediyor.,5,,general
 nat-endemic,ENDEMIC,E,STARTS,adj,"(sorun) bir yerde kökleşmiş, yerleşik",Corruption is endemic in the system.,Yolsuzluk sistemde kökleşmiş.,5,,general
 nat-engender,ENGENDER,E,STARTS,verb,"(duygu, durum) doğurmak, yol açmak",Such policies engender distrust.,Böyle politikalar güvensizlik doğurur.,5,,general
-nat-enigma,ENIGMA,E,STARTS,noun,"anlaşılmaz, esrarengiz kişi veya şey",My new neighbour remains an enigma to me.,Yeni komşum benim için hâlâ bir muamma.,4,,general
+nat-enigma,ENIGMA,E,STARTS,noun,"anlaşılmaz, esrarengiz kişi veya şey",My new neighbor remains an enigma to me.,Yeni komşum benim için hâlâ bir muamma.,4,,general
 nat-enmity,ENMITY,E,STARTS,noun,"köklü düşmanlık, husumet",There is old enmity between the two families.,İki aile arasında eski bir husumet var.,5,,general
 nat-ephemeral,EPHEMERAL,E,STARTS,adj,"çok kısa süren, gelip geçici",Fame is often ephemeral.,Şöhret çoğu zaman gelip geçicidir.,5,,general
 nat-epiphany,EPIPHANY,E,STARTS,noun,"aniden gelen aydınlanma, kavrayış anı",I had an epiphany in the shower.,Duşta aniden bir aydınlanma yaşadım.,4,,general

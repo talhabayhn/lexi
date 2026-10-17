@@ -62,8 +62,8 @@ nat-burly,BURLY,B,STARTS,adj,"iri yarı, kalın gövdeli (adam)",Two burly guard
 nat-befuddled,BEFUDDLED,B,STARTS,adj,"(içki, yorgunluk yüzünden) kafası bulanmış, sersem",He was befuddled after two glasses of wine.,İki kadeh şaraptan sonra kafası bulanmıştı.,5,,general
 nat-cacophony,CACOPHONY,C,STARTS,noun,kulak tırmalayan ses karmaşası,A cacophony of car horns woke me up.,Korna seslerinden oluşan bir gürültü karmaşası beni uyandırdı.,5,,general
 nat-callous,CALLOUS,C,STARTS,adj,"başkalarının acısına karşı duyarsız, katı yürekli",It was a callous remark.,"Duyarsız, katı yürekli bir sözdü.",4,,general
-nat-candour,CANDOUR,C,STARTS,noun,"açık sözlülük, içtenlik",I appreciate your candour.,Açık sözlülüğünü takdir ediyorum.,4,,general
-nat-cantankerous,CANTANKEROUS,C,STARTS,adj,huysuz ve geçimsiz (çoğunlukla yaşlı),Our cantankerous neighbour complains about everything.,Huysuz komşumuz her şeyden şikâyet eder.,5,,general
+nat-candour,CANDOR,C,STARTS,noun,"açık sözlülük, içtenlik",I appreciate your candor.,Açık sözlülüğünü takdir ediyorum.,4,,general
+nat-cantankerous,CANTANKEROUS,C,STARTS,adj,huysuz ve geçimsiz (çoğunlukla yaşlı),Our cantankerous neighbor complains about everything.,Huysuz komşumuz her şeyden şikâyet eder.,5,,general
 nat-capitulate,CAPITULATE,C,STARTS,verb,direnmeyi bırakıp teslim olmak,The government refused to capitulate.,Hükümet teslim olmayı reddetti.,5,,general
 nat-capricious,CAPRICIOUS,C,STARTS,adj,"kaprisli, ne yapacağı belli olmayan",The weather here is capricious.,Burada havanın ne yapacağı belli olmaz.,4,,general
 nat-castigate,CASTIGATE,C,STARTS,verb,birini herkesin önünde yerden yere vurmak,Critics were quick to castigate the director.,Eleştirmenler yönetmeni ağır bir dille eleştirmekte gecikmedi.,5,,general
@@ -73,7 +73,7 @@ nat-caveat,CAVEAT,C,STARTS,noun,"uyarı, çekince, dikkat edilecek şart",There 
 nat-chagrin,CHAGRIN,C,STARTS,noun,"hayal kırıklığıyla karışık sıkıntı, mahcubiyet","Much to my chagrin, I lost again.",Canımı çok sıksa da yine kaybettim.,5,,general
 nat-charlatan,CHARLATAN,C,STARTS,noun,bilgili gibi görünüp insanları kandıran kişi,The doctor turned out to be a charlatan.,Doktorun sahtekâr olduğu ortaya çıktı.,4,,general
 nat-circumspect,CIRCUMSPECT,C,STARTS,adj,"adım atmadan önce her sonucu tartan, ihtiyatlı",Be circumspect about what you post online.,İnternette paylaştıklarına karşı temkinli ol.,5,,general
-nat-clamour,CLAMOUR,C,STARTS,noun,"bir şey için yükselen yaygın, gürültülü talep",The clamour for reform grew louder.,Reform için yükselen talep sesi giderek arttı.,4,,general
+nat-clamour,CLAMOR,C,STARTS,noun,"bir şey için yükselen yaygın, gürültülü talep",The clamor for reform grew louder.,Reform için yükselen talep sesi giderek arttı.,4,,general
 nat-clandestine,CLANDESTINE,C,STARTS,adj,"gizli kapaklı, el altından (buluşma, ilişki)",They held clandestine meetings at night.,Geceleri gizli toplantılar yaptılar.,5,,general
 nat-coalesce,COALESCE,C,STARTS,verb,"(gruplar, fikirler) birleşip tek bütün olmak",The small groups began to coalesce into a movement.,Küçük gruplar birleşerek tek bir hareket olmaya başladı.,5,,general
 nat-coax,COAX,C,STARTS,verb,"sabırla, tatlılıkla bir yerden çıkarmak",She tried to coax the cat out of the tree.,Kediyi tatlılıkla ağaçtan indirmeye çalıştı.,4,,general

@@ -18,7 +18,7 @@ a2-chat,CHAT,C,STARTS,verb,biriyle rahat ve kısa konuşmak,We chat on the phone
 a2-check,CHECK,C,STARTS,verb,doğru olup olmadığına bakmak,Please check your answers.,Lütfen cevaplarını kontrol et.,3,,school-work
 a2-chess,CHESS,C,STARTS,noun,iki kişinin satranç tahtasında oynadığı oyun,My grandfather teaches me chess.,Büyükbabam bana satranç öğretiyor.,2,,daily-life
 a2-choose,CHOOSE,C,STARTS,verb,seçeneklerden birini seçmek,You can choose one cake.,Bir kek seçebilirsin.,2,,food-drink
-a2-chemistry,CHEMISTRY,C,STARTS,noun,maddeleri inceleyen okul dersi,Chemistry is my favourite lesson.,Kimya en sevdiğim ders.,3,,school-work
+a2-chemistry,CHEMISTRY,C,STARTS,noun,maddeleri inceleyen okul dersi,Chemistry is my favorite lesson.,Kimya en sevdiğim ders.,3,,school-work
 a2-circle,CIRCLE,C,STARTS,noun,"ortası boş yuvarlak şekil, daire",Draw a circle on the paper.,Kâğıda bir daire çiz.,2,,school-work
 a2-circus,CIRCUS,C,STARTS,noun,palyaço ve akrobatların gösteri yaptığı çadır,The children love the circus.,Çocuklar sirki seviyor.,2,,daily-life
 a2-clear,CLEAR,C,STARTS,adj,"bulutsuz, açık",The sky is clear tonight.,Gökyüzü bu gece açık.,3,,time-weather
@@ -50,7 +50,7 @@ a2-chef,CHEF,C,STARTS,noun,restoran mutfağını yöneten baş aşçı,The chef 
 a2-since,SINCE,C,CONTAINS,phrase,belirli bir zamandan beri,I have lived here since 2020.,2020'den beri burada yaşıyorum.,4,,time-weather
 a2-peace,PEACE,C,CONTAINS,noun,"savaşın olmadığı sakin durum, barış",Everyone wants peace.,Herkes barış ister.,3,,daily-life
 a2-twice,TWICE,C,CONTAINS,adv,iki kez,I call my mother twice a week.,Annemi haftada iki kez ararım.,2,,time-weather
-a2-practise,PRACTISE,C,CONTAINS,verb,iyi olmak için tekrar tekrar çalışmak,I practise the piano every day.,Her gün piyano çalışıyorum.,3,,music
+a2-practise,PRACTICE,C,CONTAINS,verb,iyi olmak için tekrar tekrar çalışmak,I practice the piano every day.,Her gün piyano çalışıyorum.,3,,music
 a2-decide,DECIDE,C,CONTAINS,verb,bir konuda kesin karara varmak,We cannot decide where to eat.,Nerede yemek yiyeceğimize karar veremiyoruz.,3,,daily-life
 a2-danger,DANGER,D,STARTS,noun,can ya da mal kaybı riski olan durum,The red light means danger.,Kırmızı ışık tehlike demek.,3,,city-transport
 a2-deep,DEEP,D,STARTS,adj,"yüzeyden aşağıya doğru uzun, derin",The lake is very deep.,Göl çok derin.,2,,travel
@@ -63,7 +63,7 @@ a2-diet,DIET,D,STARTS,noun,"sağlık için seçilen yeme düzeni, perhiz",My mot
 a2-dig,DIG,D,STARTS,verb,toprakta kazı yapmak,The dog likes to dig in the garden.,Köpek bahçede çukur kazmayı sever.,3,,animals
 a2-dinosaur,DINOSAUR,D,STARTS,noun,milyonlarca yıl önce yaşamış dev sürüngen,The film has a big dinosaur.,Filmde büyük bir dinozor var.,2,,animals
 a2-direction,DIRECTION,D,STARTS,noun,bir şeyin gittiği yön,Which direction is the station?,İstasyon hangi yönde?,3,,city-transport
-a2-distance,DISTANCE,D,STARTS,noun,iki yer arasındaki uzaklık,The distance to the airport is ten kilometres.,Havalimanına uzaklık on kilometre.,3,,city-transport
+a2-distance,DISTANCE,D,STARTS,noun,iki yer arasındaki uzaklık,The distance to the airport is ten kilometers.,Havalimanına uzaklık on kilometre.,3,,city-transport
 a2-double,DOUBLE,D,STARTS,adj,iki kat olan,I would like a double room.,Çift kişilik bir oda istiyorum.,3,,travel
 a2-download,DOWNLOAD,D,STARTS,verb,internetten bilgisayara dosya indirmek,I download songs on my phone.,Telefonuma şarkı indiriyorum.,3,,daily-life
 a2-dragon,DRAGON,D,STARTS,noun,"ateş püskürten, masallardaki kanatlı canavar",The dragon lives on a mountain.,Ejderha bir dağda yaşıyor.,2,,daily-life

@@ -1,6 +1,6 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
 b2-admission,ADMISSION,A,STARTS,noun,"okul, müze vb. yere kabul; giriş ücreti",Admission to the museum is free for students.,Müzeye giriş öğrenciler için ücretsiz.,4,,travel
-b2-adventurous,ADVENTUROUS,A,STARTS,adj,yeni ve riskli şeyleri denemeyi seven,He is an adventurous traveller.,O maceracı bir gezgin.,3,,travel
+b2-adventurous,ADVENTUROUS,A,STARTS,adj,yeni ve riskli şeyleri denemeyi seven,He is an adventurous traveler.,O maceracı bir gezgin.,3,,travel
 b2-alarming,ALARMING,A,STARTS,adj,korku veya endişe yaratan,The news was alarming.,Haber endişe vericiydi.,4,,daily-life
 b2-applaud,APPLAUD,A,STARTS,verb,alkışlamak,The audience began to applaud.,Seyirci alkışlamaya başladı.,3,,film-tv
 b2-assemble,ASSEMBLE,A,STARTS,verb,parçaları birleştirmek veya bir araya toplanmak,It takes an hour to assemble this shelf.,Bu rafı monte etmek bir saat sürer.,4,,daily-life
@@ -28,7 +28,7 @@ b2-headquarters,HEADQUARTERS,H,STARTS,noun,bir şirketin merkez binası,The comp
 b2-healthcare,HEALTHCARE,H,STARTS,noun,sağlık hizmetleri,Healthcare is free in some countries.,Bazı ülkelerde sağlık hizmeti ücretsizdir.,4,,body-health
 b2-humanity,HUMANITY,H,STARTS,noun,"insanlık, insan türü",The doctor served humanity all her life.,Doktor bütün hayatı boyunca insanlığa hizmet etti.,4,,daily-life
 b2-humorous,HUMOROUS,H,STARTS,adj,"komik, espriye yatkın",He wrote a humorous story.,Komik bir hikâye yazdı.,3,,daily-life
-b2-harmony,HARMONY,H,STARTS,noun,uyum ve ahenk,The neighbours live in harmony.,Komşular uyum içinde yaşıyor.,4,,daily-life
+b2-harmony,HARMONY,H,STARTS,noun,uyum ve ahenk,The neighbors live in harmony.,Komşular uyum içinde yaşıyor.,4,,daily-life
 b2-hold-out,HOLD OUT,H,STARTS,phrasal,direnip dayanmak; ele uzatmak,They cannot hold out much longer.,Daha fazla dayanamazlar.,4,,phrasal-verbs
 b2-hand-down,HAND DOWN,H,STARTS,phrasal,nesilden nesile aktarmak,I will hand down this ring to my daughter.,Bu yüzüğü kızıma miras bırakacağım.,4,,phrasal-verbs
 b2-head-off,HEAD OFF,H,STARTS,phrasal,yola çıkmak; yolunu kesmek,We head off early tomorrow.,Yarın erkenden yola çıkıyoruz.,4,,phrasal-verbs
@@ -37,7 +37,7 @@ b2-ignorant,IGNORANT,I,STARTS,adj,"bilgisiz, haberi olmayan",He is ignorant of t
 b2-immense,IMMENSE,I,STARTS,adj,"çok büyük, devasa",The ship was immense.,Gemi devasaydı.,4,,travel
 b2-infer,INFER,I,STARTS,verb,ipuçlarından sonuç çıkarmak,What can you infer from this text?,Bu metinden ne çıkarabilirsin?,4,,school-work
 b2-influential,INFLUENTIAL,I,STARTS,adj,başkalarını etkileyebilen,She is an influential writer.,O etkili bir yazar.,4,,film-tv
-b2-inhabit,INHABIT,I,STARTS,verb,bir yerde yaşamak,Penguins inhabit cold regions.,Penguenler soğuk bölgelerde yaşar.,4,,daily-life
+b2-inhabit,INHABIT,I,STARTS,verb,bir yerde canlı olarak barınmak,Penguins inhabit cold regions.,Penguenler soğuk bölgelerde yaşar.,4,,daily-life
 b2-instruct,INSTRUCT,I,STARTS,verb,talimat vermek veya öğretmek,The guard will instruct us what to do.,Görevli bize ne yapacağımızı söyleyecek.,4,,school-work
 b2-intentional,INTENTIONAL,I,STARTS,adj,bile bile yapılan,The damage was intentional.,Hasar kasıtlıydı.,4,,daily-life
 b2-interior,INTERIOR,I,STARTS,noun,bir yerin iç kısmı,The interior of the house is modern.,Evin iç kısmı modern.,4,,daily-life
@@ -64,13 +64,13 @@ b2-modest,MODEST,M,STARTS,adj,alçakgönüllü; küçük ölçekli,She is modest
 b2-noticeable,NOTICEABLE,N,STARTS,adj,kolayca fark edilen,The difference is clearly noticeable.,Fark açıkça fark ediliyor.,4,,daily-life
 b2-nuisance,NUISANCE,N,STARTS,noun,can sıkan kişi veya şey,The noise is a real nuisance.,Gürültü gerçekten rahatsız edici.,4,,daily-life
 b2-nominate,NOMINATE,N,STARTS,verb,aday göstermek,They will nominate her for the prize.,Onu ödül için aday gösterecekler.,4,,film-tv
-b2-origin,ORIGIN,O,STARTS,noun,bir şeyin çıktığı kaynak,The origin of this word is Greek.,Bu sözcüğün kökeni Yunanca.,4,,school-work
+b2-origin,ORIGIN,O,STARTS,noun,"bir şeyin ilk çıktığı yer, köken",The origin of this word is Greek.,Bu sözcüğün kökeni Yunanca.,4,,school-work
 b2-outbreak,OUTBREAK,O,STARTS,noun,hastalık ya da savaşın aniden başlaması,There was an outbreak of flu at school.,Okulda grip salgını çıktı.,4,,body-health
 b2-outdated,OUTDATED,O,STARTS,adj,"güncelliğini yitirmiş, yeni sürümü çıkmış",This software is outdated.,Bu yazılım eskimiş.,4,,technology
 b2-overcrowded,OVERCROWDED,O,STARTS,adj,aşırı kalabalık,The bus was overcrowded.,Otobüs aşırı kalabalıktı.,3,,daily-life
 b2-overdue,OVERDUE,O,STARTS,adj,zamanı geçmiş,The library book is overdue.,Kütüphane kitabının süresi geçmiş.,4,,school-work
 b2-underestimate,UNDERESTIMATE,U,STARTS,verb,bir şeyi olduğundan az değerlendirmek,Don't underestimate your opponent.,Rakibini hafife alma.,4,,sports
-b2-undermine,UNDERMINE,U,STARTS,verb,güveni veya gücü içten zayıflatmak,Rumours can undermine trust.,Söylentiler güveni zedeleyebilir.,4,,business
+b2-undermine,UNDERMINE,U,STARTS,verb,güveni veya gücü içten zayıflatmak,Rumors can undermine trust.,Söylentiler güveni zedeleyebilir.,4,,business
 b2-unaware,UNAWARE,U,STARTS,adj,bir şeyden haberi olmayan,He was unaware of the danger.,Tehlikeden habersizdi.,4,,daily-life
 b2-uneasy,UNEASY,U,STARTS,adj,"huzursuz, tedirgin",I felt uneasy in the dark street.,Karanlık sokakta tedirgin hissettim.,4,,daily-life
 b2-uncover,UNCOVER,U,STARTS,verb,gizli olanı ortaya çıkarmak,Reporters uncover the truth.,Muhabirler gerçeği ortaya çıkarır.,4,,film-tv
@@ -87,7 +87,7 @@ b2-virtually,VIRTUALLY,V,STARTS,adv,"neredeyse, hemen hemen",It is virtually imp
 b2-vivid,VIVID,V,STARTS,adj,"canlı, parlak",She has vivid memories of her childhood.,Çocukluğuna dair canlı anıları var.,4,,daily-life
 b2-vicious,VICIOUS,V,STARTS,adj,çok acımasız ve saldırgan,The dog looked vicious.,Köpek saldırgan görünüyordu.,4,,daily-life
 b2-warmth,WARMTH,W,STARTS,noun,sıcaklık veya sıcakkanlılık,I enjoyed the warmth of the fire.,Ateşin sıcaklığından keyif aldım.,3,,daily-life
-b2-widen,WIDEN,W,STARTS,verb,genişletmek veya genişlemek,They plan to widen the road.,Yolu genişletmeyi planlıyorlar.,3,,daily-life
+b2-widen,WIDEN,W,STARTS,verb,bir şeyin enini artırmak,They plan to widen the road.,Yolu genişletmeyi planlıyorlar.,3,,daily-life
 b2-wander,WANDER,W,STARTS,verb,amaçsızca dolaşmak,We like to wander through the old streets.,Eski sokaklarda dolaşmayı severiz.,3,,travel
 b2-walk-out,WALK OUT,W,STARTS,phrasal,öfkeyle ayrılmak,The audience started to walk out.,Seyirci salondan çıkmaya başladı.,4,,phrasal-verbs
 b2-wind-up,WIND UP,W,STARTS,phrasal,sonunda bir durumda bitirmek,We might wind up in a small village.,Sonunda kendimizi küçük bir köyde bulabiliriz.,4,,phrasal-verbs

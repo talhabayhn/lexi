@@ -11,7 +11,7 @@ c1-adverse,ADVERSE,A,STARTS,adj,olumsuz ve zarar verici nitelikte,Adverse weathe
 c1-advocate,ADVOCATE,A,STARTS,verb,bir fikri açıkça savunmak ve desteklemek,Doctors advocate a healthy diet for everyone.,Doktorlar herkes için sağlıklı beslenmeyi savunur.,4,,school-work
 c1-aesthetic,AESTHETIC,A,STARTS,adj,"güzellik anlayışıyla ilgili, estetik",The room has a simple but pleasing aesthetic design.,Odanın sade ama hoş bir estetik tasarımı var.,5,,school-work
 c1-agile,AGILE,A,STARTS,adj,"çevik, hızlı ve kolay hareket eden",The young goalkeeper was agile and quick.,Genç kaleci çevik ve hızlıydı.,4,,sports
-c1-allege,ALLEGE,A,STARTS,verb,kanıt göstermeden bir şeyi iddia etmek,Neighbours allege that the factory pollutes the river.,Komşular fabrikanın nehri kirlettiğini iddia ediyor.,5,,school-work
+c1-allege,ALLEGE,A,STARTS,verb,kanıt göstermeden bir şeyi iddia etmek,Neighbors allege that the factory pollutes the river.,Komşular fabrikanın nehri kirlettiğini iddia ediyor.,5,,school-work
 c1-alleviate,ALLEVIATE,A,STARTS,verb,acıyı ya da sorunu hafifletmek,Some tea can alleviate a sore throat.,Biraz çay boğaz ağrısını hafifletebilir.,5,,school-work
 c1-allocate,ALLOCATE,A,STARTS,verb,kaynağı ya da parayı bir amaca ayırmak,The council will allocate more money to schools.,Belediye okullara daha fazla para ayıracak.,4,,business
 c1-alliance,ALLIANCE,A,STARTS,noun,"ortak amaç için kurulan birlik, ittifak",The two parties formed an alliance before the vote.,İki parti oylamadan önce bir ittifak kurdu.,4,,business
@@ -32,7 +32,7 @@ c1-audit,AUDIT,A,STARTS,noun,hesapların resmî olarak denetlenmesi,The company 
 c1-assault,ASSAULT,A,STARTS,noun,birine yönelik fiziksel saldırı,The man was arrested for assault.,Adam saldırı suçundan tutuklandı.,4,,school-work
 c1-acquit,ACQUIT,A,STARTS,verb,mahkemede beraat ettirmek,The jury decided to acquit him.,Jüri onu beraat ettirmeye karar verdi.,5,,school-work
 c1-atrocity,ATROCITY,A,STARTS,noun,korkunç ve vahşi bir şiddet olayı,The army was accused of an atrocity against civilians.,"Ordu, sivillere karşı bir vahşetle suçlandı.",5,,school-work
-c1-artefact,ARTEFACT,A,STARTS,noun,tarihî değeri olan el yapımı eşya,The museum shows an artefact from ancient Rome.,Müze Antik Roma'dan kalma bir eser sergiliyor.,4,,travel
+c1-artefact,ARTIFACT,A,STARTS,noun,tarihî değeri olan el yapımı eşya,The museum shows an artifact from ancient Rome.,Müze Antik Roma'dan kalma bir eser sergiliyor.,4,,travel
 c1-affiliate,AFFILIATE,A,STARTS,noun,büyük bir kuruluşa bağlı şirket ya da kuruluş,The shop is an affiliate of a large chain.,Mağaza büyük bir zincire bağlı bir kuruluştur.,5,,business
 c1-appraisal,APPRAISAL,A,STARTS,noun,bir kişinin ya da şeyin değerlendirilmesi,Every employee has a yearly appraisal.,Her çalışanın yıllık bir performans değerlendirmesi var.,5,,business
 c1-arguably,ARGUABLY,A,STARTS,adv,"belki de, pek çok kişiye göre (en ...)",He is arguably the best chef in the city.,Belki de şehrin en iyi aşçısıdır.,5,,school-work

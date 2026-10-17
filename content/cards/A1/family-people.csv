@@ -7,11 +7,11 @@ a1-girl,GIRL,G,STARTS,noun,kız çocuğu,The girl is singing.,Kız şarkı söyl
 a1-uncle,UNCLE,U,STARTS,noun,"amca, dayı",My uncle lives in Ankara.,Amcam Ankara'da yaşıyor.,1,,family-people
 a1-sister,SISTER,S,STARTS,noun,kız kardeş,My sister is cheerful.,Kız kardeşim neşeli.,1,,family-people
 a1-young,YOUNG,Y,STARTS,adj,genç,My cousins are young.,Kuzenlerim genç.,1,,family-people
-a1-old,OLD,O,STARTS,adj,yaşlı,My neighbour is old but strong.,Komşum yaşlı ama güçlü.,1,,family-people
+a1-old,OLD,O,STARTS,adj,yaşlı,My neighbor is old but strong.,Komşum yaşlı ama güçlü.,1,,family-people
 a1-queen,QUEEN,Q,STARTS,noun,kraliçe,The queen is wise.,Kraliçe bilge.,2,,family-people
 a1-mother,MOTHER,M,STARTS,noun,"anne, valide",My mother works in a bakery.,Annem bir fırında çalışır.,1,,family-people
 a1-boy,BOY,B,STARTS,noun,erkek çocuk,The boy has a skateboard.,Çocuğun bir kaykayı var.,1,,family-people
-a1-man,MAN,M,STARTS,noun,"erkek, adam",That man is my neighbour.,O adam komşum.,1,,family-people
+a1-man,MAN,M,STARTS,noun,"erkek, adam",That man is my neighbor.,O adam komşum.,1,,family-people
 a1-woman,WOMAN,W,STARTS,noun,kadın,The woman is waiting patiently.,Kadın sabırla bekliyor.,1,,family-people
 a1-dad,DAD,D,STARTS,noun,babaya samimi hitap,My dad is strong.,Babam güçlü.,1,,family-people
 a1-friend,FRIEND,F,STARTS,noun,arkadaş,She is my best friend.,O benim en iyi arkadaşım.,1,,family-people
@@ -21,7 +21,7 @@ a1-wife,WIFE,W,STARTS,noun,"bir erkeğin eşi, karı",He and his wife are teache
 a1-king,KING,K,STARTS,noun,kral,The king wears a crown.,Kral taç takıyor.,1,,family-people
 a1-kind,KIND,K,STARTS,adj,"nazik, iyi kalpli",She is kind to animals.,O hayvanlara karşı nazik.,1,,family-people
 a1-kid,KID,K,STARTS,noun,"küçük çocuk, ufaklık",A kid is crying.,Bir çocuk ağlıyor.,1,,family-people
-a1-big,BIG,B,STARTS,adj,"iri, kocaman",He has a big moustache.,Büyük bir bıyığı var.,1,,family-people
+a1-big,BIG,B,STARTS,adj,"iri, kocaman",He has a big mustache.,Büyük bir bıyığı var.,1,,family-people
 a1-tall,TALL,T,STARTS,adj,uzun boylu,He is tall.,O uzun boylu.,1,,family-people
 a1-baby,BABY,B,STARTS,noun,yeni doğmuş bebek,The baby is sleeping.,Bebek uyuyor.,1,,family-people
 a1-parents,PARENTS,P,STARTS,noun,anne ve baba,My parents are in Izmir.,Anne babam İzmir'de.,1,,family-people

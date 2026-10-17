@@ -15,7 +15,7 @@ b1-fiction,FICTION,F,STARTS,noun,hayal gücüyle yazılmış roman ve hikâyeler
 b1-figure,FIGURE,F,STARTS,noun,rakam; bir kişinin dış hatları,Write the figure in the box.,Rakamı kutuya yaz.,4,,business
 b1-finance,FINANCE,F,STARTS,noun,paranın yönetimi ve parayla ilgili işler,She works in finance.,Finans alanında çalışıyor.,4,,business
 b1-fitness,FITNESS,F,STARTS,noun,vücudun sağlıklı ve güçlü olması,Swimming is good for your fitness.,Yüzmek zindeliğin için iyidir.,3,,body-health
-b1-flavour,FLAVOUR,F,STARTS,noun,yiyeceğin kendine özgü tadı,Which flavour of ice cream do you want?,Hangi çeşit dondurma istiyorsun?,3,,food-drink
+b1-flavour,FLAVOR,F,STARTS,noun,yiyeceğin kendine özgü tadı,Which flavor of ice cream do you want?,Hangi çeşit dondurma istiyorsun?,3,,food-drink
 b1-focus,FOCUS,F,STARTS,verb,dikkatini tek bir şeye yöneltmek,You must focus on your homework.,Ödevine odaklanmalısın.,3,,school-work
 b1-force,FORCE,F,STARTS,noun,güç ve zorlama,They opened the door by force.,Kapıyı zorla açtılar.,4,,daily-life
 b1-forehead,FOREHEAD,F,STARTS,noun,kaşlarla saç çizgisi arasındaki yüz bölümü,He wiped his forehead with a towel.,Alnını bir havluyla sildi.,3,,body-health
@@ -29,7 +29,7 @@ b1-frequently,FREQUENTLY,F,STARTS,adv,"çok sık, sıklıkla",He frequently visi
 b1-friendship,FRIENDSHIP,F,STARTS,noun,arkadaşlar arasındaki bağ,Their friendship began at school.,Arkadaşlıkları okulda başladı.,3,,family-people
 b1-frightened,FRIGHTENED,F,STARTS,adj,"korkmuş, ürkmüş",The frightened child hid under the bed.,Korkmuş çocuk yatağın altına saklandı.,3,,family-people
 b1-fuel,FUEL,F,STARTS,noun,araçlara güç veren yakıt,The car is out of fuel.,Arabanın yakıtı bitti.,3,,city-transport
-b1-fully,FULLY,F,STARTS,adv,"tamamen, bütünüyle",I fully agree with you.,Seninle tamamen aynı fikirdeyim.,4,,daily-life
+b1-fully,FULLY,F,STARTS,adv,"eksiksiz biçimde, sonuna kadar",I fully agree with you.,Seninle tamamen aynı fikirdeyim.,4,,daily-life
 b1-function,FUNCTION,F,STARTS,noun,bir şeyin görevi veya işlevi,What is the function of this button?,Bu düğmenin işlevi nedir?,4,,technology
 b1-further,FURTHER,F,STARTS,adv,"daha uzağa, daha ileriye",The station is further down the road.,İstasyon yolun biraz daha ilerisinde.,3,,city-transport
 b1-fascinating,FASCINATING,F,STARTS,adj,"çok ilgi çekici, büyüleyici",The story of the old city is fascinating.,Eski şehrin hikâyesi çok büyüleyici.,4,,travel
@@ -68,7 +68,7 @@ b1-hometown,HOMETOWN,H,STARTS,noun,insanın doğup büyüdüğü şehir,I miss m
 b1-hopeful,HOPEFUL,H,STARTS,adj,"iyi bir sonuç bekleyen, umutlu",We are hopeful about the result.,Sonuç konusunda umutluyuz.,3,,daily-life
 b1-host,HOST,H,STARTS,noun,konuk ağırlayan ev sahibi,The host welcomed everyone at the door.,Ev sahibi herkesi kapıda karşıladı.,3,,daily-life
 b1-household,HOUSEHOLD,H,STARTS,noun,bir evde birlikte yaşayan insanlar,There are five people in my household.,Evimde beş kişi yaşıyor.,4,,family-people
-b1-humour,HUMOUR,H,STARTS,noun,insanları güldürme yeteneği,I love his dry humour.,Onun kuru mizahını seviyorum.,3,,family-people
+b1-humour,HUMOR,H,STARTS,noun,insanları güldürme yeteneği,I love his dry humor.,Onun kuru mizahını seviyorum.,3,,family-people
 b1-hunt,HUNT,H,STARTS,verb,hayvanları yemek için avlamak,Lions hunt at night.,Aslanlar geceleri avlanır.,3,,animals
 b1-hygiene,HYGIENE,H,STARTS,noun,sağlığı korumak için temizliğe dikkat etme,Good hygiene stops germs.,İyi hijyen mikropları durdurur.,4,,body-health
 b1-ideal,IDEAL,I,STARTS,adj,"her yönden en uygun, mükemmel",This is an ideal place for a picnic.,Burası piknik için ideal bir yer.,3,,daily-life
@@ -96,7 +96,7 @@ b1-inspire,INSPIRE,I,STARTS,verb,birine yeni fikir ve heves vermek,Her story can
 b1-install,INSTALL,I,STARTS,verb,bir programı veya cihazı kurmak,I need to install a new program.,Yeni bir program kurmam gerekiyor.,3,,technology
 b1-instruction,INSTRUCTION,I,STARTS,noun,nasıl yapılacağını anlatan talimat,Read the instruction before you start.,Başlamadan önce talimatı oku.,3,,school-work
 b1-insurance,INSURANCE,I,STARTS,noun,olası zarara karşı yapılan sigorta,Do you have car insurance?,Araba sigortan var mı?,4,,business
-b1-intelligent,INTELLIGENT,I,STARTS,adj,"zeki, çabuk öğrenen",She is an intelligent girl.,Zeki bir kız.,3,,school-work
+b1-intelligent,INTELLIGENT,I,STARTS,adj,"zeki, öğrenme yeteneği yüksek",She is an intelligent girl.,Zeki bir kız.,3,,school-work
 b1-intention,INTENTION,I,STARTS,noun,bir şeyi yapmaya yönelik niyet,I have no intention of leaving.,Ayrılmaya hiç niyetim yok.,4,,daily-life
 b1-interrupt,INTERRUPT,I,STARTS,verb,konuşan birinin sözünü kesmek,Don't interrupt me while I'm speaking.,Ben konuşurken sözümü kesme.,3,,daily-life
 b1-investigate,INVESTIGATE,I,STARTS,verb,bir olayın nedenini araştırmak,The police will investigate the case.,Polis davayı araştıracak.,4,,daily-life

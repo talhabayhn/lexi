@@ -4,7 +4,7 @@ b1-aggressive,AGGRESSIVE,A,STARTS,adj,"saldırgan, kavgacı",The dog became aggr
 b1-annoying,ANNOYING,A,STARTS,adj,"insanı sinirlendiren, can sıkıcı",The noise from the street is annoying.,Sokaktaki gürültü can sıkıcı.,3,,daily-life
 b1-argument,ARGUMENT,A,STARTS,noun,iki kişi arasındaki sert tartışma; ileri sürülen gerekçe,They had an argument about the bill.,Hesap yüzünden bir tartışma yaşadılar.,3,,family-people
 b1-assignment,ASSIGNMENT,A,STARTS,noun,öğrencilere verilen ödev veya görev,The assignment is due on Monday.,Ödev pazartesi teslim edilecek.,3,,school-work
-b1-assume,ASSUME,A,STARTS,verb,kanıtı olmadan doğru kabul etmek,I assume you have eaten already.,Zaten yemek yediğini varsayıyorum.,4,,daily-life
+b1-assume,ASSUME,A,STARTS,verb,doğru olduğunu varsaymak,I assume you have eaten already.,Zaten yemek yediğini varsayıyorum.,4,,daily-life
 b1-automatic,AUTOMATIC,A,STARTS,adj,"kendiliğinden çalışan, otomatik",The door is automatic.,Kapı otomatik.,3,,technology
 b1-awkward,AWKWARD,A,STARTS,adj,rahatsız edici ve utandırıcı; beceriksiz,There was an awkward moment after his joke.,Şakasından sonra garip bir an yaşandı.,4,,daily-life
 b1-bookcase,BOOKCASE,B,STARTS,noun,"raflı, ayaklı kitap dolabı, kitaplık",The bookcase is full of old novels.,Kitaplık eski romanlarla dolu.,3,,daily-life
@@ -33,7 +33,7 @@ b1-link,LINK,L,STARTS,noun,iki şey arasındaki bağlantı; internet bağlantıs
 b1-logical,LOGICAL,L,STARTS,adj,mantığa uygun,That is a logical answer.,Bu mantıklı bir cevap.,4,,school-work
 b1-loss,LOSS,L,STARTS,noun,"kaybetme; bir işte para kaybı, zarar",The company reported a loss this year.,Şirket bu yıl zarar bildirdi.,3,,business
 b1-luckily,LUCKILY,L,STARTS,adv,"şans eseri, neyse ki","Luckily, nobody was hurt.",Neyse ki kimse yaralanmadı.,3,,daily-life
-b1-massive,MASSIVE,M,STARTS,adj,"çok büyük, kocaman",They built a massive bridge.,Kocaman bir köprü yaptılar.,4,,city-transport
+b1-massive,MASSIVE,M,STARTS,adj,"büyük ve ağır, heybetli",They built a massive bridge.,Kocaman bir köprü yaptılar.,4,,city-transport
 b1-membership,MEMBERSHIP,M,STARTS,noun,bir kulübe üye olma,A gym membership costs a lot.,Spor salonu üyeliği çok pahalı.,3,,sports
 b1-military,MILITARY,M,STARTS,adj,orduyla ilgili,He did his military service last year.,Askerliğini geçen yıl yaptı.,4,,daily-life
 b1-minister,MINISTER,M,STARTS,noun,"hükümette bir bakanlığı yöneten kişi, bakan",The minister spoke on television.,Bakan televizyonda konuştu.,4,,daily-life
@@ -48,9 +48,9 @@ b1-remain,REMAIN,R,STARTS,verb,aynı yerde ya da durumda kalmak,Please remain in
 b1-reporter,REPORTER,R,STARTS,noun,haber toplayıp yazan gazeteci,The reporter asked a difficult question.,Muhabir zor bir soru sordu.,3,,film-tv
 b1-resident,RESIDENT,R,STARTS,noun,bir yerde sürekli yaşayan kişi,Every resident received a letter.,Her sakin bir mektup aldı.,4,,city-transport
 b1-response,RESPONSE,R,STARTS,noun,"bir talebe, habere ya da duruma gösterilen tepki",I am waiting for his response.,Onun cevabını bekliyorum.,3,,business
-b1-revise,REVISE,R,STARTS,verb,sınava çalışırken konuyu tekrar etmek,I need to revise for tomorrow's exam.,Yarınki sınav için tekrar yapmam gerekiyor.,3,,school-work
+b1-revise,REVISE,R,STARTS,verb,sınava çalışırken konuyu tekrar etmek,I need to revise for tomorrow's exam.,Yarınki sınav için konuları tekrar etmem gerekiyor.,3,,school-work
 b1-scream,SCREAM,S,STARTS,verb,korku ya da acıyla çığlık atmak,The children scream on the roller coaster.,Çocuklar hız trenine bindiğinde çığlık atar.,3,,daily-life
-b1-select,SELECT,S,STARTS,verb,birçok şey arasından seçmek,Please select your favourite colour.,Lütfen en sevdiğiniz rengi seçin.,3,,technology
+b1-select,SELECT,S,STARTS,verb,birçok şey arasından seçmek,Please select your favorite color.,Lütfen en sevdiğiniz rengi seçin.,3,,technology
 b1-shame,SHAME,S,STARTS,noun,utanç; yazık,It is a shame that you cannot come.,Gelememen yazık.,3,,daily-life
 b1-sight,SIGHT,S,STARTS,noun,görme duyusu; görülecek yer,He lost his sight in the accident.,Kazada görme yetisini kaybetti.,3,,body-health
 b1-slightly,SLIGHTLY,S,STARTS,adv,"biraz, hafifçe",I am slightly tired today.,Bugün biraz yorgunum.,3,,daily-life
@@ -60,8 +60,8 @@ b1-spare,SPARE,S,STARTS,adj,"yedekte tutulan, fazla",Do you have a spare key?,Ye
 b1-storage,STORAGE,S,STARTS,noun,"eşyaların saklandığı yer, depo alanı",There is a lot of storage in the attic.,Çatı katında çok depolama alanı var.,4,,daily-life
 b1-sweat,SWEAT,S,STARTS,noun,sıcakta veya efordan vücuttan çıkan ter,Sweat ran down his face.,Yüzünden ter akıyordu.,3,,body-health
 b1-steady,STEADY,S,STARTS,adj,düzenli ve sabit,He walks at a steady pace.,Sabit bir hızla yürüyor.,4,,daily-life
-b1-totally,TOTALLY,T,STARTS,adv,"tamamen, bütünüyle",I totally forgot about the meeting.,Toplantıyı tamamen unuttum.,3,,daily-life
-b1-tutor,TUTOR,T,STARTS,noun,özel ders veren öğretmen,She has a tutor for maths.,Matematik için özel öğretmeni var.,4,,school-work
+b1-totally,TOTALLY,T,STARTS,adv,"tamamıyla, kesinlikle",I totally forgot about the meeting.,Toplantıyı tamamen unuttum.,3,,daily-life
+b1-tutor,TUTOR,T,STARTS,noun,özel ders veren öğretmen,She has a tutor for math.,Matematik için özel öğretmeni var.,4,,school-work
 b1-throat,THROAT,T,STARTS,noun,ağzın arkasındaki boğaz,I have a sore throat.,Boğazım ağrıyor.,3,,body-health
 b1-thumb,THUMB,T,STARTS,noun,"elin kalın ve kısa parmağı, başparmak",He hit his thumb with a hammer.,Çekiçle başparmağına vurdu.,3,,body-health
 b1-tournament,TOURNAMENT,T,STARTS,noun,birçok maçtan oluşan turnuva,Our team won the tournament.,Takımımız turnuvayı kazandı.,3,,sports
@@ -71,7 +71,7 @@ b1-unemployment,UNEMPLOYMENT,U,STARTS,noun,işsizlik,Unemployment is high in the
 b1-upper,UPPER,U,STARTS,adj,"iki şeyden üstte olanı, üst",The bedrooms are on the upper floor.,Yatak odaları üst katta.,3,,daily-life
 b1-upgrade,UPGRADE,U,STARTS,verb,daha iyi bir sürüme geçirmek,I want to upgrade my phone.,Telefonumu yükseltmek istiyorum.,4,,technology
 b1-unhealthy,UNHEALTHY,U,STARTS,adj,sağlığa zararlı veya hasta görünümlü,Chips are unhealthy if you eat them every day.,Her gün yersen cips sağlıksızdır.,3,,body-health
-b1-unclear,UNCLEAR,U,STARTS,adj,"net olmayan, belirsiz",The instructions are unclear.,Talimatlar belirsiz.,3,,school-work
+b1-unclear,UNCLEAR,U,STARTS,adj,"anlaşılmayan, açık olmayan",The instructions are unclear.,Talimatlar belirsiz.,3,,school-work
 b1-vary,VARY,V,STARTS,verb,zamanla veya yerden yere değişmek,Prices vary from shop to shop.,Fiyatlar dükkândan dükkâna değişir.,4,,business
 b1-visible,VISIBLE,V,STARTS,adj,gözle görülebilir,The mountain is visible from my window.,Dağ penceremden görülebiliyor.,4,,daily-life
 b1-wealth,WEALTH,W,STARTS,noun,çok miktarda para ve mal varlığı,Wealth does not always make people kind.,Zenginlik insanları her zaman nazik yapmaz.,4,,business

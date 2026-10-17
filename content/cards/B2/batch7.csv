@@ -18,7 +18,7 @@ b2-take-after,TAKE AFTER,T,STARTS,phrasal,anne babaya benzemek,She seems to take
 b2-take-on,TAKE ON,T,STARTS,phrasal,bir işi veya sorumluluğu üstlenmek,I cannot take on any more work.,Daha fazla iş üstlenemem.,4,,phrasal-verbs
 b2-turn-down,TURN DOWN,T,STARTS,phrasal,teklifi geri çevirmek; sesi kısmak,She will turn down the job offer.,İş teklifini reddedecek.,4,,phrasal-verbs
 b2-turn-out,TURN OUT,T,STARTS,phrasal,sonuçta ... olduğu ortaya çıkmak,I hope the party will turn out well.,Umarım parti iyi geçer.,4,,phrasal-verbs
-b2-turn-up,TURN UP,T,STARTS,phrasal,bir yere gelmek; sesi açmak,Only ten people will turn up.,Sadece on kişi gelecek.,4,,phrasal-verbs
+b2-turn-up,TURN UP,T,STARTS,phrasal,"bir yere gelmek, ortaya çıkmak",Only ten people will turn up.,Sadece on kişi gelecek.,4,,phrasal-verbs
 b2-top-up,TOP UP,T,STARTS,phrasal,"yarım kalanı doldurmak, yüklemek",I need to top up my phone credit.,Telefon kontörümü yüklemem gerekiyor.,4,,phrasal-verbs
 b2-time-flies,TIME FLIES,T,STARTS,idiom,zamanın hızla geçtiğini söyleyen deyiş,Time flies when you have fun.,Eğlenirken zaman uçar.,3,,idioms
 b2-tie-the-knot,TIE THE KNOT,T,STARTS,idiom,evlenmek,They plan to tie the knot in June.,Haziranda evlenmeyi planlıyorlar.,4,,idioms
@@ -38,7 +38,7 @@ b2-variable,VARIABLE,V,STARTS,adj,"değişken, sabit olmayan",The weather is var
 b2-variation,VARIATION,V,STARTS,noun,miktar ya da düzeyde görülen farklılık,There is little variation in temperature.,Sıcaklıkta çok az değişiklik var.,4,,food-drink
 b2-vast,VAST,V,STARTS,adj,"çok geniş, uçsuz bucaksız",A vast desert lies to the south.,Güneyde uçsuz bucaksız bir çöl uzanır.,4,,travel
 b2-verify,VERIFY,V,STARTS,verb,doğruluğunu kontrol etmek,Please verify your email address.,Lütfen e-posta adresinizi doğrulayın.,4,,technology
-b2-viewpoint,VIEWPOINT,V,STARTS,noun,bir konuya bakış açısı,Try to see it from her viewpoint.,Olaya onun bakış açısından bakmaya çalış.,4,,daily-life
+b2-viewpoint,VIEWPOINT,V,STARTS,noun,"kişisel görüş noktası, bakış açısı",Try to see it from her viewpoint.,Olaya onun bakış açısından bakmaya çalış.,4,,daily-life
 b2-visual,VISUAL,V,STARTS,adj,görme duyusuyla ilgili,Children enjoy visual learning.,Çocuklar görsel öğrenmeyi sever.,3,,school-work
 b2-vital,VITAL,V,STARTS,adj,hayati derecede önemli,Water is vital for life.,Su yaşam için hayatidir.,4,,body-health
 b2-voluntary,VOLUNTARY,V,STARTS,adj,"isteğe bağlı, zorunlu olmayan",The course is voluntary.,Kurs isteğe bağlı.,4,,school-work

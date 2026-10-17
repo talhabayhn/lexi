@@ -8,7 +8,7 @@ a2-equal,EQUAL,Q,CONTAINS,adj,miktarı ya da değeri birbirine denk olan,Two and
 a2-request,REQUEST,Q,CONTAINS,noun,"nazikçe istenen şey, rica",I have a small request for you.,Senden küçük bir ricam var.,3,,daily-life
 a2-equipment,EQUIPMENT,Q,CONTAINS,noun,bir iş ya da spor için gereken araç gereç,The gym has new equipment.,Spor salonunun yeni ekipmanları var.,3,,sports
 a2-mosque,MOSQUE,Q,CONTAINS,noun,Müslümanların ibadet ettiği yapı,The mosque is near the market.,Cami pazarın yakınında.,2,,city-transport
-a2-cheque,CHEQUE,Q,CONTAINS,noun,bankaya verilip para alınan yazılı belge,He paid by cheque.,Çekle ödeme yaptı.,4,,daily-life
+a2-cheque,QUILT,Q,STARTS,noun,"battaniye gibi, dikişli yatak örtüsü",Grandma made this quilt by hand.,Büyükannem bu yorganı elle yaptı.,4,,daily-life
 a2-extra,EXTRA,X,CONTAINS,adj,"olması gerekenden fazla, ek",We need an extra chair.,Fazladan bir sandalyeye ihtiyacımız var.,2,,daily-life
 a2-exactly,EXACTLY,X,CONTAINS,adv,"tam olarak, hiç eksiksiz",It is exactly ten o'clock.,Saat tam olarak on.,3,,daily-life
 a2-exciting,EXCITING,X,CONTAINS,adj,"insanı heyecanlandıran, sürükleyici",The film was very exciting.,Film çok heyecan vericiydi.,2,,daily-life
@@ -22,7 +22,7 @@ a2-boxing,BOXING,X,CONTAINS,noun,iki kişinin eldivenle dövüştüğü spor,My 
 a2-except,EXCEPT,X,CONTAINS,phrase,"dışında, hariç",Everyone came except Ali.,Ali dışında herkes geldi.,4,,daily-life
 a2-expert,EXPERT,X,CONTAINS,noun,bir konuyu çok iyi bilen kişi,She is an expert on birds.,Kuşlar konusunda bir uzman.,4,,school-work
 a2-explore,EXPLORE,X,CONTAINS,verb,bilinmeyen bir yeri gezip keşfetmek,We want to explore the old town.,Eski şehri keşfetmek istiyoruz.,4,,travel
-a2-exchange,EXCHANGE,X,CONTAINS,verb,bir şeyi başka bir şeyle değiştirmek,Can I exchange this shirt for a bigger one?,Bu gömleği daha büyüğüyle değiştirebilir miyim?,4,,daily-life
+a2-exchange,EXCHANGE,X,CONTAINS,verb,karşılıklı değiş tokuş etmek,Can I exchange this shirt for a bigger one?,Bu gömleği daha büyüğüyle değiştirebilir miyim?,4,,daily-life
 a2-zebra-crossing,ZEBRA CROSSING,Z,STARTS,noun,yayaların yolu geçtiği çizgili alan,Wait at the zebra crossing.,Yaya geçidinde bekle.,3,,city-transport
 a2-crazy,CRAZY,Z,CONTAINS,adj,"aklını kaçırmış gibi davranan, çılgın",That idea sounds crazy.,Bu fikir çılgınca geliyor.,2,,daily-life
 a2-dozen,DOZEN,Z,CONTAINS,noun,on iki tane,I bought a dozen eggs.,Bir düzine yumurta aldım.,2,,food-drink
@@ -43,7 +43,7 @@ a2-jumper,JUMPER,J,STARTS,noun,"yünden örülmüş, baştan geçirilen kazak",S
 a2-jogging,JOGGING,J,STARTS,noun,sağlık için hafif tempoda koşma,Jogging in the park is fun.,Parkta koşu yapmak eğlenceli.,2,,sports
 a2-jug,JUG,J,STARTS,noun,su ya da süt koymak için kulplu kap,There is a jug of water on the table.,Masada bir sürahi su var.,2,,home
 a2-jar,JAR,J,STARTS,noun,reçel gibi şeylerin konduğu ağzı geniş cam kap,Can you open this jar of jam?,Bu reçel kavanozunu açar mısın?,2,,home
-a2-jewellery,JEWELLERY,J,STARTS,noun,yüzük ve kolye gibi süs eşyaları,She keeps her jewellery in a box.,Takılarını bir kutuda saklıyor.,3,,daily-life
+a2-jewellery,JEWELRY,J,STARTS,noun,yüzük ve kolye gibi süs eşyaları,She keeps her jewelry in a box.,Takılarını bir kutuda saklıyor.,3,,daily-life
 a2-judo,JUDO,J,STARTS,noun,yere atma ve tutuş tekniklerine dayanan spor,He goes to judo class on Mondays.,Pazartesileri judo dersine gidiyor.,3,,sports
 a2-jelly,JELLY,J,STARTS,noun,"meyve sularından yapılan, sallanan tatlı",Children love strawberry jelly.,Çocuklar çilekli jöleyi sever.,3,,food-drink
 a2-jellyfish,JELLYFISH,J,STARTS,noun,"denizde yaşayan, şeffaf ve yumuşak canlı",A jellyfish floated near the boat.,Teknenin yanında bir denizanası yüzüyordu.,3,,animals
@@ -51,7 +51,7 @@ a2-jealous,JEALOUS,J,STARTS,adj,başkasının sahip olduğunu kıskanan,She is j
 a2-judge,JUDGE,J,STARTS,noun,mahkemede karar veren kişi,The judge listened carefully.,Hâkim dikkatle dinledi.,4,,daily-life
 a2-jail,JAIL,J,STARTS,noun,suç işleyenlerin kapatıldığı yer,He spent a year in jail.,Bir yıl hapiste kaldı.,3,,daily-life
 a2-joy,JOY,J,STARTS,noun,"çok büyük mutluluk, sevinç",The news filled her with joy.,Haber onu sevinçle doldurdu.,3,,daily-life
-a2-subject,SUBJECT,J,CONTAINS,noun,okulda okutulan ders,Maths is my favourite subject.,Matematik en sevdiğim ders.,2,,school-work
+a2-subject,SUBJECT,J,CONTAINS,noun,okulda okutulan ders,Math is my favorite subject.,Matematik en sevdiğim ders.,2,,school-work
 a2-project,PROJECT,J,CONTAINS,noun,üzerinde bir süre çalışılan ödev ya da plan,We have a history project this week.,Bu hafta bir tarih projemiz var.,2,,school-work
 a2-object,OBJECT,J,CONTAINS,noun,"elle tutulan, gözle görülen cisim",What is this object?,Bu cisim ne?,3,,daily-life
 a2-knock,KNOCK,K,STARTS,verb,kapıya vurarak geldiğini haber vermek,Please knock before you come in.,Lütfen girmeden önce kapıyı çal.,2,,daily-life

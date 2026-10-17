@@ -12,7 +12,7 @@ b1-certain,CERTAIN,C,STARTS,adj,"bir konuda hiç şüphesi olmayan, emin",I am c
 b1-certainly,CERTAINLY,C,STARTS,adv,"kuşkusuz, elbette",You can certainly borrow my bike.,Bisikletimi elbette ödünç alabilirsin.,3,,daily-life
 b1-certificate,CERTIFICATE,C,STARTS,noun,bir başarıyı belgeleyen resmî kâğıt,She received a certificate after the course.,Kurstan sonra bir sertifika aldı.,3,,school-work
 b1-challenge,CHALLENGE,C,STARTS,noun,güç ve cesaret gerektiren zor görev,Learning Chinese is a big challenge.,Çince öğrenmek büyük bir zorluk.,3,,school-work
-b1-character,CHARACTER,C,STARTS,noun,bir kitaptaki ya da filmdeki kişi; kişinin huyu,My favourite character in the film is the old man.,Filmdeki en sevdiğim karakter yaşlı adam.,3,,film-tv
+b1-character,CHARACTER,C,STARTS,noun,bir kitaptaki ya da filmdeki kişi; kişinin huyu,My favorite character in the film is the old man.,Filmdeki en sevdiğim karakter yaşlı adam.,3,,film-tv
 b1-charge,CHARGE,C,STARTS,verb,bir hizmet için belli bir ücret istemek,The hotel will charge you fifty euros a night.,Otel senden gecelik elli avro isteyecek.,4,,business
 b1-charity,CHARITY,C,STARTS,noun,yoksullara yardım eden kuruluş,They gave the money to charity.,Parayı hayır kurumuna verdiler.,3,,daily-life
 b1-cheat,CHEAT,C,STARTS,verb,oyunda veya sınavda hile yapmak,He tried to cheat in the exam.,Sınavda kopya çekmeye çalıştı.,3,,school-work
@@ -52,7 +52,7 @@ b1-control,CONTROL,C,STARTS,verb,bir şeyi yönetmek veya denetim altında tutma
 b1-courage,COURAGE,C,STARTS,noun,korkuya rağmen harekete geçebilme gücü,It takes courage to speak in public.,Topluluk önünde konuşmak cesaret ister.,3,,family-people
 b1-crime,CRIME,C,STARTS,noun,yasaya aykırı suç,Crime is a problem in big cities.,"Suç, büyük şehirlerde bir sorun.",3,,daily-life
 b1-criminal,CRIMINAL,C,STARTS,noun,suç işleyen kişi,The criminal was caught at the airport.,Suçlu havaalanında yakalandı.,3,,daily-life
-b1-criticise,CRITICISE,C,STARTS,verb,"bir şeyin kusurlarını söylemek, eleştirmek",Don't criticise her; she is trying.,Onu eleştirme; elinden geleni yapıyor.,4,,daily-life
+b1-criticise,CRITICIZE,C,STARTS,verb,"bir şeyin kusurlarını söylemek, eleştirmek",Don't criticize her; she is trying.,Onu eleştirme; elinden geleni yapıyor.,4,,daily-life
 b1-crowd,CROWD,C,STARTS,noun,bir yerde toplanmış kalabalık,A large crowd waited outside the stadium.,Stadyumun dışında büyük bir kalabalık bekliyordu.,3,,city-transport
 b1-culture,CULTURE,C,STARTS,noun,"bir toplumun sanatı, inançları ve yaşam biçimi",I love learning about this culture.,Bu kültürü öğrenmeyi seviyorum.,3,,travel
 b1-curious,CURIOUS,C,STARTS,adj,öğrenmeye meraklı,Children are curious about everything.,Çocuklar her şeyi merak eder.,3,,family-people
@@ -91,7 +91,7 @@ b1-divorce,DIVORCE,D,STARTS,noun,"evliliğin mahkemede sona ermesi, boşanma",Th
 b1-document,DOCUMENT,D,STARTS,noun,resmî bilgiler içeren yazılı belge,Please sign this document.,Lütfen bu belgeyi imzalayın.,3,,business
 b1-documentary,DOCUMENTARY,D,STARTS,noun,gerçek olayları anlatan film,I watched a documentary about whales.,Balinalar hakkında bir belgesel izledim.,3,,film-tv
 b1-drama,DRAMA,D,STARTS,noun,ciddi konuları işleyen oyun veya dizi,My sister loves a good drama.,Kız kardeşim iyi bir dramı çok sever.,3,,film-tv
-b1-duty,DUTY,D,STARTS,noun,yapılması gereken görev,It is your duty to help others.,Başkalarına yardım etmek senin görevin.,3,,school-work
+b1-duty,DUTY,D,STARTS,noun,"ahlaki ya da yasal görev, sorumluluk",It is your duty to help others.,Başkalarına yardım etmek senin görevin.,3,,school-work
 b1-economy,ECONOMY,E,STARTS,noun,bir ülkenin üretim ve ticaret düzeni,The economy is growing slowly.,Ekonomi yavaş büyüyor.,3,,business
 b1-editor,EDITOR,E,STARTS,noun,gazete veya kitabı hazırlayan yayın görevlisi,The editor changed the title of the article.,Editör makalenin başlığını değiştirdi.,4,,business
 b1-effect,EFFECT,E,STARTS,noun,bir şeyin yarattığı etki,The medicine had no effect.,İlacın hiçbir etkisi olmadı.,3,,body-health
@@ -109,7 +109,7 @@ b1-encourage,ENCOURAGE,E,STARTS,verb,birine cesaret ve destek vermek,Teachers sh
 b1-entertain,ENTERTAIN,E,STARTS,verb,insanları eğlendirmek veya konuk ağırlamak,The clown will entertain the children.,Palyaço çocukları eğlendirecek.,4,,film-tv
 b1-entertainment,ENTERTAINMENT,E,STARTS,noun,insanları eğlendiren gösteri ve etkinlikler,There is live entertainment every night.,Her gece canlı eğlence var.,3,,film-tv
 b1-enthusiastic,ENTHUSIASTIC,E,STARTS,adj,bir işe büyük heyecan duyan,The students were enthusiastic about the visit.,Öğrenciler ziyaret konusunda çok hevesliydi.,4,,school-work
-b1-entire,ENTIRE,E,STARTS,adj,"hiçbir parçası eksik olmayan, bütün",He read the entire book in one day.,Bütün kitabı bir günde okudu.,4,,school-work
+b1-entire,ENTIRE,E,STARTS,adj,"hiçbir kısmı dışarıda kalmayan, tamamı",He read the entire book in one day.,Bütün kitabı bir günde okudu.,4,,school-work
 b1-entry,ENTRY,E,STARTS,noun,bir yere girme hakkı veya izni,Entry to the museum is free on Sundays.,Müzeye giriş pazar günleri ücretsiz.,3,,travel
 b1-escape,ESCAPE,E,STARTS,verb,tutulduğu yerden kaçmak,Two prisoners tried to escape last night.,İki mahkûm dün gece kaçmaya çalıştı.,3,,daily-life
 b1-eventually,EVENTUALLY,E,STARTS,adv,"uzun bir sürenin sonunda, nihayet","Eventually, we found the right house.",Sonunda doğru evi bulduk.,4,,daily-life

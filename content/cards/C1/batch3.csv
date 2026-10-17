@@ -2,7 +2,7 @@ id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
 c1-debatable,DEBATABLE,D,STARTS,adj,doğruluğu tartışmaya açık olan,Whether the plan will work is debatable.,Planın işe yarayıp yaramayacağı tartışmalı.,5,,school-work
 c1-deceive,DECEIVE,D,STARTS,verb,"birini bilerek yanıltmak, kandırmak",He tried to deceive the customers with false prices.,Müşterileri sahte fiyatlarla kandırmaya çalıştı.,4,,business
 c1-decree,DECREE,D,STARTS,noun,yetkili birinin çıkardığı resmî emir,The king issued a decree against hunting.,Kral avlanmayı yasaklayan bir ferman çıkardı.,5,,school-work
-c1-dedicate,DEDICATE,D,STARTS,verb,zamanını veya emeğini bir işe adamak,She will dedicate her life to medicine.,Hayatını tıbba adayacak.,4,,school-work
+c1-dedicate,DEDICATE,D,STARTS,verb,kendini bir amaca adamak; ithaf etmek,She will dedicate her life to medicine.,Hayatını tıbba adayacak.,4,,school-work
 c1-deduce,DEDUCE,D,STARTS,verb,ipuçlarından mantık yürüterek sonuç çıkarmak,From the footprints we can deduce who was here.,Ayak izlerinden buraya kimin geldiğini çıkarabiliriz.,5,,school-work
 c1-defer,DEFER,D,STARTS,verb,bir şeyi daha sonraya ertelemek,The bank agreed to defer the payment for a month.,Banka ödemeyi bir ay ertelemeyi kabul etti.,5,,business
 c1-deficit,DEFICIT,D,STARTS,noun,"gelirin giderden az olması, açık",The country has a large budget deficit.,Ülkenin büyük bir bütçe açığı var.,5,,business
@@ -61,9 +61,9 @@ c1-empirical,EMPIRICAL,E,STARTS,adj,gözlem ve deneye dayanan,The theory needs e
 c1-enact,ENACT,E,STARTS,verb,bir yasayı resmen yürürlüğe koymak,Parliament will enact the new law in June.,Meclis yeni yasayı haziranda yürürlüğe koyacak.,5,,school-work
 c1-encompass,ENCOMPASS,E,STARTS,verb,çok sayıda şeyi kapsamak,The course will encompass history and art.,Ders tarihi ve sanatı kapsayacak.,5,,school-work
 c1-endorse,ENDORSE,E,STARTS,verb,bir kişiyi veya ürünü açıkça desteklemek,Several stars endorse this brand.,Birkaç ünlü bu markayı destekliyor.,4,,business
-c1-endeavour,ENDEAVOUR,E,STARTS,noun,ciddi ve kararlı çaba,The team's endeavour was finally rewarded.,Takımın çabası sonunda ödüllendirildi.,5,,school-work
+c1-endeavour,ENDEAVOR,E,STARTS,noun,ciddi ve kararlı çaba,The team's endeavor was finally rewarded.,Takımın çabası sonunda ödüllendirildi.,5,,school-work
 c1-enforce,ENFORCE,E,STARTS,verb,bir kuralı uygulamaya zorlamak,Police must enforce the law fairly.,Polis yasayı adil biçimde uygulamalıdır.,4,,school-work
-c1-enrol,ENROL,E,STARTS,verb,bir kursa kayıt olmak veya kaydetmek,You can enrol online before September.,Eylülden önce internetten kayıt olabilirsiniz.,4,,school-work
+c1-enrol,ENROLL,E,STARTS,verb,bir kursa kayıt olmak veya kaydetmek,You can enroll online before September.,Eylülden önce internetten kayıt olabilirsiniz.,4,,school-work
 c1-ensue,ENSUE,E,STARTS,verb,bir olayın ardından ortaya çıkmak,A long argument will ensue if you mention it.,Bundan söz edersen uzun bir tartışma çıkar.,5,,school-work
 c1-entail,ENTAIL,E,STARTS,verb,bir şeyin gereği olarak getirmek,The job will entail a lot of travel.,İş çok seyahat gerektirecek.,5,,business
 c1-entitle,ENTITLE,E,STARTS,verb,birine bir hak tanımak,This ticket will entitle you to a free drink.,Bu bilet size bedava bir içecek hakkı tanır.,5,,travel
@@ -82,7 +82,7 @@ c1-excerpt,EXCERPT,E,STARTS,noun,kitap veya filmden alınan kısa bölüm,The ma
 c1-exempt,EXEMPT,E,STARTS,adj,bir yükümlülükten muaf tutulan,Students are exempt from this fee.,Öğrenciler bu ücretten muaftır.,5,,business
 c1-exert,EXERT,E,STARTS,verb,güç veya etki uygulamak,The sun can exert a strong pull on the planets.,Güneş gezegenler üzerinde güçlü bir çekim uygulayabilir.,5,,school-work
 c1-explicit,EXPLICIT,E,STARTS,adj,"hiçbir yoruma yer bırakmayan açık, net",Her instructions were explicit.,Talimatları son derece açıktı.,5,,school-work
-c1-exploit,EXPLOIT,E,STARTS,verb,bir fırsatı veya kişiyi kendi çıkarına kullanmak,Some firms exploit cheap labour.,Bazı firmalar ucuz işgücünü sömürür.,5,,business
+c1-exploit,EXPLOIT,E,STARTS,verb,bir fırsatı veya kişiyi kendi çıkarına kullanmak,Some firms exploit cheap labor.,Bazı firmalar ucuz işgücünü sömürür.,5,,business
 c1-extinguish,EXTINGUISH,E,STARTS,verb,ateşi söndürmek,Firefighters worked to extinguish the flames.,İtfaiyeciler alevleri söndürmek için çalıştı.,4,,school-work
 c1-extract,EXTRACT,E,STARTS,verb,bir şeyi içinden çıkarıp almak,Dentists extract damaged teeth.,Diş hekimleri bozuk dişleri çeker.,4,,school-work
 c1-extravagant,EXTRAVAGANT,E,STARTS,adj,gereğinden fazla savurgan veya abartılı,The wedding was far too extravagant.,Düğün fazlasıyla gösterişliydi.,5,,school-work

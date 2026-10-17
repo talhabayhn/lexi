@@ -4,7 +4,7 @@ a1-walk,WALK,W,STARTS,verb,yürümek,Let us walk slowly.,Yavaş yürüyelim.,1,,
 a1-play,PLAY,P,STARTS,verb,oynamak,Do you play chess?,Satranç oynar mısın?,1,,daily-life
 a1-open,OPEN,O,STARTS,verb,açmak,Can you open this jar?,Bu kavanozu açabilir misin?,1,,daily-life
 a1-jump,JUMP,J,STARTS,verb,zıplamak,Frogs can jump.,Kurbağalar zıplayabilir.,2,,daily-life
-a1-visit,VISIT,V,STARTS,verb,ziyaret etmek,We visit our neighbours on Sundays.,Pazar günleri komşularımızı ziyaret ederiz.,2,,daily-life
+a1-visit,VISIT,V,STARTS,verb,ziyaret etmek,We visit our neighbors on Sundays.,Pazar günleri komşularımızı ziyaret ederiz.,2,,daily-life
 a1-money,MONEY,M,STARTS,noun,para,I don't have any money.,Hiç param yok.,1,,daily-life
 a1-happy,HAPPY,H,STARTS,adj,mutlu,You seem happy!,Mutlu görünüyorsun!,1,,daily-life
 a1-quiet,QUIET,Q,STARTS,adj,sessiz,"Be quiet, Ali!","Sessiz ol, Ali!",2,,daily-life
@@ -16,7 +16,7 @@ a1-next,NEXT,X,CONTAINS,adj,bir sonraki,Selin is next.,Sıra Selin'de.,2,,daily-
 a1-jacket,JACKET,J,STARTS,noun,"ceket, mont",Mert's jacket is thick.,Mert'in ceketi kalın.,1,,daily-life
 a1-jeans,JEANS,J,STARTS,noun,kot pantolon,These jeans are too tight.,Bu kot çok dar.,1,,daily-life
 a1-shirt,SHIRT,S,STARTS,noun,gömlek,His shirt is wet.,Gömleği ıslak.,1,,daily-life
-a1-hat,HAT,H,STARTS,noun,şapka,My hat is woollen.,Şapkam yünlü.,1,,daily-life
+a1-hat,HAT,H,STARTS,noun,şapka,My hat is woolen.,Şapkam yünlü.,1,,daily-life
 a1-dress,DRESS,D,STARTS,noun,elbise,She wears a silk dress.,İpek bir elbise giyiyor.,1,,daily-life
 a1-shoe,SHOE,S,STARTS,noun,tek ayakkabı,My shoe is wet.,Ayakkabım ıslak.,1,,daily-life
 a1-gift,GIFT,G,STARTS,noun,hediye,This is a gift for you.,Bu senin için bir hediye.,1,,daily-life
@@ -50,7 +50,7 @@ a1-hobby,HOBBY,H,STARTS,noun,boş zamanda yapılan sevilen iş,Reading is my hob
 a1-holiday,HOLIDAY,H,STARTS,noun,tatil,We are on holiday.,Tatildeyiz.,1,,daily-life
 a1-bike,BIKE,B,STARTS,noun,bisiklet,I have a bike.,Bir bisikletim var.,1,,daily-life
 a1-email,EMAIL,E,STARTS,noun,elektronik posta,Check your email.,E-postanı kontrol et.,1,,daily-life
-a1-colour,COLOUR,C,STARTS,noun,renk,Ali likes this colour.,Ali bu rengi seviyor.,1,,daily-life
+a1-colour,COLOR,C,STARTS,noun,renk,Ali likes this color.,Ali bu rengi seviyor.,1,,daily-life
 a1-guitar,GUITAR,G,STARTS,noun,altı telli çalgı,He plays the guitar.,O gitar çalıyor.,1,,daily-life
 a1-movie,MOVIE,M,STARTS,noun,sinema filmi,The movie is a comedy.,Film bir komedi.,1,,daily-life
 a1-travel,TRAVEL,T,STARTS,verb,uzak yerlere yolculuk etmek,We travel a lot.,Çok seyahat ederiz.,1,,daily-life
@@ -61,11 +61,11 @@ a1-wear,WEAR,W,STARTS,verb,giymek,Do you wear contact lenses?,Kontakt lens takı
 a1-wait,WAIT,W,STARTS,verb,beklemek,Wait for me!,Beni bekle!,1,,daily-life
 a1-learn,LEARN,L,STARTS,verb,öğrenmek,Children learn quickly.,Çocuklar hızlı öğrenir.,1,,daily-life
 a1-know,KNOW,K,STARTS,verb,bilmek,I do not know.,Bilmiyorum.,1,,daily-life
-a1-go,GO,G,STARTS,verb,gitmek,Let's go!,Hadi gidelim!,1,,daily-life
+a1-go,GO,G,STARTS,verb,gitmek,Let us go!,Hadi gidelim!,1,,daily-life
 a1-beautiful,BEAUTIFUL,B,STARTS,adj,"çok güzel, göz alıcı",She is beautiful.,O çok güzel.,1,,daily-life
 a1-difficult,DIFFICULT,D,STARTS,adj,kolay olmayan,This puzzle is difficult.,Bu bulmaca zor.,2,,daily-life
 a1-easy,EASY,E,STARTS,adj,zor olmayan,The test is easy.,Sınav kolay.,1,,daily-life
-a1-wrong,WRONG,W,STARTS,adj,yanlış,You are wrong.,Yanılıyorsun.,1,,daily-life
+a1-wrong,WRONG,W,STARTS,adj,yanlış,This answer is wrong.,Bu cevap yanlış.,1,,daily-life
 a1-lake,LAKE,L,STARTS,noun,etrafı karayla çevrili büyük su,The lake is calm.,Göl sakin.,1,,daily-life
 a1-mountain,MOUNTAIN,M,STARTS,noun,çok yüksek kayalık yer,The mountain is steep.,Dağ dik.,1,,daily-life
 a1-sea,SEA,S,STARTS,noun,deniz,The sea is calm.,Deniz sakin.,1,,daily-life

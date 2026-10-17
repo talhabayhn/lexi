@@ -1,7 +1,7 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
 a1-address,ADDRESS,A,STARTS,noun,evin sokak ve numara bilgisi,Is this your address?,Bu senin adresin mi?,2,,daily-life
 a1-age,AGE,A,STARTS,noun,kişinin kaç yaşında olduğu,Her age is a secret.,Yaşı bir sır.,2,,daily-life
-a1-angry,ANGRY,A,STARTS,adj,çok kızgın,My neighbour is angry with me.,Komşum bana kızgın.,2,,daily-life
+a1-angry,ANGRY,A,STARTS,adj,çok kızgın,My neighbor is angry with me.,Komşum bana kızgın.,2,,daily-life
 a1-arrive,ARRIVE,A,STARTS,verb,yolculuk sonunda bir yere varmak,The guests arrive by coach.,Misafirler otobüsle geliyor.,2,,daily-life
 a1-buy,BUY,B,STARTS,verb,parasını verip almak,I will buy some stamps.,Birkaç pul alacağım.,1,,daily-life
 a1-bank,BANK,B,STARTS,noun,paranı yatırdığın kurum,Is there a bank in this area?,Bu çevrede banka var mı?,2,,city-transport
@@ -31,7 +31,7 @@ a1-fly,FLY,F,STARTS,verb,kanatla ya da uçakla havada gitmek,Birds can fly.,Kuş
 a1-football,FOOTBALL,F,STARTS,noun,ayakla oynanan takım sporu,Football is popular in my area.,Futbol bölgemde çok sevilir.,1,,daily-life
 a1-finish,FINISH,F,STARTS,verb,"bitirmek, sona ermek",Ali can finish the puzzle.,Ali bulmacayı bitirebilir.,2,,daily-life
 a1-forest,FOREST,F,STARTS,noun,ağaçlarla kaplı geniş alan,We walked in the forest.,Ormanda yürüdük.,2,,daily-life
-a1-get,GET,G,STARTS,verb,eline geçirmek,Did you get my parcel?,Paketimi aldın mı?,1,,daily-life
+a1-get,GET,G,STARTS,verb,"elde etmek, almak",Did you get my parcel?,Paketimi aldın mı?,1,,daily-life
 a1-give,GIVE,G,STARTS,verb,bir şeyi başkasına vermek,Give me the remote.,Kumandayı bana ver.,1,,daily-life
 a1-goodbye,GOODBYE,G,STARTS,phrase,ayrılırken söylenen söz,She waved goodbye.,El sallayıp hoşça kal dedi.,1,,daily-life
 a1-garage,GARAGE,G,STARTS,noun,arabanın park edildiği kapalı yer,Our garage is tidy.,Garajımız derli toplu.,2,,home
@@ -49,7 +49,7 @@ a1-meet,MEET,M,STARTS,verb,biriyle buluşmak,Shall we meet at the gate?,Kapıda 
 a1-market,MARKET,M,STARTS,noun,sebze meyve satılan açık alan,The market is noisy.,Pazar gürültülü.,2,,city-transport
 a1-moon,MOON,M,STARTS,noun,geceleri parlayan gök cismi,The moon is round and bright.,Ay yuvarlak ve parlak.,1,,time-weather
 a1-message,MESSAGE,M,STARTS,noun,yazıyla iletilen kısa not,I sent you a message.,Sana bir mesaj gönderdim.,2,,daily-life
-a1-married,MARRIED,M,STARTS,adj,evlenmiş olan,My neighbour is married.,Komşum evli.,2,,family-people
+a1-married,MARRIED,M,STARTS,adj,evlenmiş olan,My neighbor is married.,Komşum evli.,2,,family-people
 a1-need,NEED,N,STARTS,verb,ihtiyaç duymak,Plants need sunlight.,Bitkilerin güneş ışığına ihtiyacı var.,1,,daily-life
 a1-newspaper,NEWSPAPER,N,STARTS,noun,her gün çıkan haber gazetesi,The newspaper is on the shelf.,Gazete rafta.,2,,daily-life
 a1-notebook,NOTEBOOK,N,STARTS,noun,not tutulan defter,Her notebook has lovely drawings.,Defterinde güzel çizimler var.,2,,school-work

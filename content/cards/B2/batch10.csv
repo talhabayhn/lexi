@@ -8,7 +8,7 @@ b2-projection,PROJECTION,J,CONTAINS,noun,gelecek hakkında yapılan hesap; yans�
 b2-keep-track,KEEP TRACK,K,STARTS,idiom,bir şeyin gidişatını izleyip kaydetmek,It is hard to keep track of all the dates.,Bütün tarihleri takip etmek zor.,4,,idioms
 b2-breakdown,BREAKDOWN,K,CONTAINS,noun,"bir toplamın ayrıntılı dökümü, kalemlere ayırma",Please send me a breakdown of the costs.,Lütfen bana maliyetlerin dökümünü gönderin.,4,,daily-life
 b2-clockwise,CLOCKWISE,K,CONTAINS,adv,saat yönünde,Turn the handle clockwise.,Kolu saat yönünde çevir.,3,,daily-life
-b2-skillful,SKILLFUL,K,CONTAINS,adj,"işinde ustalaşmış, becerikli",She is a skillful designer.,O becerikli bir tasarımcı.,4,,business
+b2-skillful,SKILLFUL,K,CONTAINS,adj,"ustaca davranan, hünerli",She is a skillful designer.,O becerikli bir tasarımcı.,4,,business
 b2-workplace,WORKPLACE,K,CONTAINS,noun,insanların çalıştığı yer,Safety is important in the workplace.,İş yerinde güvenlik önemlidir.,3,,business
 b2-checklist,CHECKLIST,K,CONTAINS,noun,yapılacak işlerin kontrol listesi,Use a checklist before the trip.,Gezi öncesi bir kontrol listesi kullan.,3,,travel
 b2-booklet,BOOKLET,K,CONTAINS,noun,"ince, kısa kitapçık",The hotel gave us a booklet about the city.,Otel bize şehir hakkında bir kitapçık verdi.,3,,travel
@@ -16,7 +16,7 @@ b2-unlock,UNLOCK,K,CONTAINS,verb,kilidi açmak,Use the key to unlock the door.,K
 b2-verbal,VERBAL,V,STARTS,adj,"sözlü, kelimelerle ilgili",They had a verbal agreement.,Sözlü bir anlaşmaları vardı.,4,,business
 b2-vertical,VERTICAL,V,STARTS,adj,"dikey, yukarı aşağı",Draw a vertical line on the page.,Sayfaya dikey bir çizgi çiz.,3,,school-work
 b2-vision,VISION,V,STARTS,noun,görme gücü; gelecek hayali,She has a clear vision for the company.,Şirket için net bir vizyonu var.,4,,business
-b2-advance,ADVANCE,V,CONTAINS,noun,"ilerleme, gelişme",Doctors announced a new advance in medicine.,Doktorlar tıpta yeni bir ilerleme duyurdu.,4,,technology
+b2-advance,ADVANCE,V,CONTAINS,noun,bilimde ya da teknolojide atılım,Doctors announced a new advance in medicine.,Doktorlar tıpta yeni bir ilerleme duyurdu.,4,,technology
 b2-convert,CONVERT,V,CONTAINS,verb,bir şeyi başka biçime dönüştürmek,You can convert the file to a PDF.,Dosyayı PDF'ye dönüştürebilirsin.,4,,technology
 b2-diversity,DIVERSITY,V,CONTAINS,noun,çeşitlilik,The city is proud of its cultural diversity.,Şehir kültürel çeşitliliğiyle gurur duyuyor.,4,,daily-life
 b2-division,DIVISION,V,CONTAINS,noun,bir şeyin bölümlere ayrılması; bölüm,The company has a division in Izmir.,Şirketin İzmir'de bir bölümü var.,4,,business

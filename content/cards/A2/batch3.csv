@@ -5,7 +5,7 @@ a2-accept,ACCEPT,A,STARTS,verb,önerilen bir şeyi kabul etmek,Please accept thi
 a2-accident,ACCIDENT,A,STARTS,noun,"istemeden olan, zarar veren kötü olay",There was an accident on the road.,Yolda bir kaza oldu.,2,,city-transport
 a2-across,ACROSS,A,STARTS,phrase,bir şeyin bir yanından öbür yanına,He swam across the river.,Nehri yüzerek geçti.,3,,city-transport
 a2-active,ACTIVE,A,STARTS,adj,"sürekli hareket eden, enerjik",My grandfather is still very active.,Büyükbabam hâlâ çok hareketli.,3,,body-health
-a2-activity,ACTIVITY,A,STARTS,noun,insanların yaptığı eğlenceli iş ya da etkinlik,Swimming is my favourite activity.,Yüzmek en sevdiğim etkinlik.,3,,sports
+a2-activity,ACTIVITY,A,STARTS,noun,insanların yaptığı eğlenceli iş ya da etkinlik,Swimming is my favorite activity.,Yüzmek en sevdiğim etkinlik.,3,,sports
 a2-adult,ADULT,A,STARTS,noun,"büyümüş, ergin kişi",Children must come with an adult.,Çocuklar bir yetişkinle gelmeli.,3,,family-people
 a2-adventure,ADVENTURE,V,CONTAINS,noun,"heyecan verici, bazen tehlikeli yolculuk",Our trip was a big adventure.,Gezimiz büyük bir maceraydı.,3,,travel
 a2-advice,ADVICE,A,STARTS,noun,birine verilen öğüt,Can you give me some advice?,Bana biraz öğüt verir misin?,3,,daily-life
@@ -21,7 +21,7 @@ a2-along,ALONG,A,STARTS,phrase,bir yolun ya da hattın boyunca,We walked along t
 a2-although,ALTHOUGH,A,STARTS,phrase,"-e rağmen, olmasına karşın","Although it was cold, we went out.",Hava soğuk olmasına rağmen dışarı çıktık.,4,,daily-life
 a2-ambulance,AMBULANCE,A,STARTS,noun,hastaları hastaneye taşıyan araç,The ambulance arrived in five minutes.,Ambulans beş dakikada geldi.,2,,city-transport
 a2-among,AMONG,A,STARTS,phrase,birçok kişi ya da şeyin arasında,He sat among his friends.,Arkadaşlarının arasında oturdu.,3,,daily-life
-a2-amount,AMOUNT,A,STARTS,noun,bir şeyin miktarı,Add a small amount of salt.,Biraz tuz ekle.,3,,daily-life
+a2-amount,AMOUNT,A,STARTS,noun,bir şeyin toplam miktarı (sayılamayan),Add a small amount of salt.,Biraz tuz ekle.,3,,daily-life
 a2-ankle,ANKLE,A,STARTS,noun,ayakla bacağı birleştiren eklem,I broke my ankle when I ran.,Koşarken ayak bileğimi kırdım.,3,,body-health
 a2-apply,APPLY,A,STARTS,verb,bir iş ya da okul için resmen başvurmak,He wants to apply for a job.,Bir işe başvurmak istiyor.,4,,school-work
 a2-argue,ARGUE,A,STARTS,verb,biriyle fikir ayrılığı yüzünden tartışmak,My parents never argue.,Annem ve babam asla tartışmaz.,3,,family-people
@@ -49,7 +49,7 @@ a2-biology,BIOLOGY,B,STARTS,noun,canlıları inceleyen bilim dalı,We have biolo
 a2-bite,BITE,B,STARTS,verb,dişleriyle ısırmak,Does your dog bite?,Köpeğin ısırır mı?,3,,animals
 a2-blood,BLOOD,B,STARTS,noun,damarlarda dolaşan kırmızı sıvı,The doctor took some blood.,Doktor biraz kan aldı.,3,,body-health
 a2-blow,BLOW,B,STARTS,verb,ağızdan hızla hava vermek,Blow out the candles.,Mumları üfle.,3,,daily-life
-a2-boil,BOIL,B,STARTS,verb,"kaynatmak, kaynar suda pişirmek",Boil the eggs for ten minutes.,Yumurtaları on dakika haşla.,2,,food-drink
+a2-boil,BOIL,B,STARTS,verb,"kaynatmak, kaynar suda pişirmek",Boil the eggs for ten minutes.,Yumurtaları on dakika kaynat.,2,,food-drink
 a2-boss,BOSS,B,STARTS,noun,"patron, işyerinde emir veren kişi",My boss is very kind.,Patronum çok nazik.,3,,school-work
 a2-bottom,BOTTOM,B,STARTS,noun,bir şeyin en alt kısmı,The key is at the bottom of the bag.,Anahtar çantanın dibinde.,3,,daily-life
 a2-brave,BRAVE,B,STARTS,adj,"korkusuz, cesur",The brave boy saved the cat.,Cesur çocuk kediyi kurtardı.,3,,daily-life

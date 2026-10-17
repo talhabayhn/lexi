@@ -8,7 +8,7 @@ c1-mediate,MEDIATE,M,STARTS,verb,iki taraf arasında arabuluculuk yapmak,A neutr
 c1-merit,MERIT,M,STARTS,noun,"bir şeyin sahip olduğu değer, artı yön",The idea has real merit.,Fikrin gerçekten değerli bir yanı var.,5,,school-work
 c1-memoir,MEMOIR,M,STARTS,noun,kişinin kendi hayatını anlattığı kitap,She wrote a memoir about her childhood.,Çocukluğu hakkında bir anı kitabı yazdı.,5,,film-tv
 c1-misconception,MISCONCEPTION,M,STARTS,noun,yaygın yanlış kanı,It is a common misconception that sugar makes children hyper.,Şekerin çocukları hareketlendirdiği yaygın bir yanlış kanıdır.,5,,school-work
-c1-mobilise,MOBILISE,M,STARTS,verb,insanları veya kaynakları harekete geçirmek,The party tried to mobilise young voters.,Parti genç seçmenleri harekete geçirmeye çalıştı.,5,,school-work
+c1-mobilise,MOBILIZE,M,STARTS,verb,insanları veya kaynakları harekete geçirmek,The party tried to mobilize young voters.,Parti genç seçmenleri harekete geçirmeye çalıştı.,5,,school-work
 c1-momentum,MOMENTUM,M,STARTS,noun,bir sürecin kazandığı hız ve ivme,The campaign is gaining momentum.,Kampanya ivme kazanıyor.,5,,sports
 c1-monopoly,MONOPOLY,M,STARTS,noun,bir pazarda tek satıcı olma durumu,The firm has a monopoly on rail travel.,Firmanın demiryolu ulaşımında tekeli var.,5,,business
 c1-morale,MORALE,M,STARTS,noun,bir grubun güveni ve şevki,Morale in the team was low after the defeat.,Yenilgiden sonra takımın morali düşüktü.,5,,sports
@@ -26,14 +26,14 @@ c1-negligence,NEGLIGENCE,N,STARTS,noun,dikkatsizlik yüzünden sorumluluğu ihma
 c1-negligible,NEGLIGIBLE,N,STARTS,adj,yok denecek kadar az,The difference in price is negligible.,Fiyat farkı yok denecek kadar az.,5,,business
 c1-niche,NICHE,N,STARTS,noun,küçük ve özel bir pazar veya uzmanlık alanı,They found a niche in the market.,Piyasada kendilerine özel bir alan buldular.,5,,business
 c1-nominal,NOMINAL,N,STARTS,adj,"çok düşük, sembolik düzeyde",A nominal fee is charged for entry.,Girişte sembolik bir ücret alınır.,5,,business
-c1-nonetheless,NONETHELESS,N,STARTS,adv,buna rağmen,"The test was hard; nonetheless, she passed.",Sınav zordu; yine de geçti.,5,,school-work
+c1-nonetheless,NONETHELESS,N,STARTS,adv,"bununla birlikte, yine de (daha resmî)","The test was hard; nonetheless, she passed.",Sınav zordu; yine de geçti.,5,,school-work
 c1-nostalgia,NOSTALGIA,N,STARTS,noun,geçmişi özleyiş duygusu,The old song filled him with nostalgia.,Eski şarkı onu nostaljiyle doldurdu.,4,,music
 c1-novice,NOVICE,N,STARTS,noun,"bir işte yeni başlayan, acemi","As a novice, he made many mistakes.",Acemi olarak çok hata yaptı.,4,,sports
 c1-nurture,NURTURE,N,STARTS,verb,bakıp gelişmesini desteklemek,Parents nurture their children's talents.,Anne babalar çocuklarının yeteneklerini besler.,5,,school-work
 c1-narrate,NARRATE,N,STARTS,verb,bir olayı sırayla anlatmak,The actor will narrate the documentary.,Oyuncu belgeseli seslendirecek.,5,,film-tv
 c1-nomad,NOMAD,N,STARTS,noun,yerleşik düzeni olmayan göçebe,The nomad moved with his sheep across the plain.,Göçebe koyunlarıyla ovayı aştı.,4,,travel
 c1-nominee,NOMINEE,N,STARTS,noun,bir ödül veya göreve aday gösterilen kişi,She is a nominee for best actress.,En iyi kadın oyuncu adaylarından biri.,4,,film-tv
-c1-oblige,OBLIGE,O,STARTS,verb,birini mecbur bırakmak veya bir iyilik yapmak,The law may oblige drivers to carry a licence.,Yasa sürücülerin ehliyet taşımasını zorunlu kılabilir.,5,,school-work
+c1-oblige,OBLIGE,O,STARTS,verb,birini mecbur bırakmak veya bir iyilik yapmak,The law may oblige drivers to carry a license.,Yasa sürücülerin ehliyet taşımasını zorunlu kılabilir.,5,,school-work
 c1-obscure,OBSCURE,O,STARTS,adj,az bilinen veya anlaşılması zor,The poet remains obscure outside her country.,Şair ülkesinin dışında az bilinen biri olarak kalıyor.,5,,school-work
 c1-obstruct,OBSTRUCT,O,STARTS,verb,yolu veya ilerlemeyi engellemek,Parked cars obstruct the narrow street.,Park etmiş arabalar dar sokağı tıkıyor.,5,,travel
 c1-offset,OFFSET,O,STARTS,verb,bir etkiyi dengeleyerek azaltmak,Savings will offset the higher rent.,Tasarruflar yüksek kirayı dengeleyecek.,5,,business
@@ -42,7 +42,7 @@ c1-omit,OMIT,O,STARTS,verb,bilerek veya unutarak dışarıda bırakmak,Do not om
 c1-ongoing,ONGOING,O,STARTS,adj,hâlâ süren,The ongoing talks may end soon.,Süren görüşmeler yakında bitebilir.,4,,business
 c1-onset,ONSET,O,STARTS,noun,kötü bir şeyin başlangıcı,Pain marked the onset of the illness.,Ağrı hastalığın başlangıcı oldu.,5,,school-work
 c1-optimum,OPTIMUM,O,STARTS,adj,"en uygun, ideal",Plants grow best at optimum temperature.,Bitkiler en uygun sıcaklıkta en iyi büyür.,5,,school-work
-c1-optimise,OPTIMISE,O,STARTS,verb,en verimli hâle getirmek,We can optimise the schedule to save time.,Zaman kazanmak için programı en verimli hâle getirebiliriz.,5,,technology
+c1-optimise,OPTIMIZE,O,STARTS,verb,en verimli hâle getirmek,We can optimize the schedule to save time.,Zaman kazanmak için programı en verimli hâle getirebiliriz.,5,,technology
 c1-ordeal,ORDEAL,O,STARTS,noun,çok zor ve acı veren yaşantı,Being trapped for three days was a terrible ordeal.,Üç gün mahsur kalmak korkunç bir çileydi.,5,,school-work
 c1-orthodox,ORTHODOX,O,STARTS,adj,geleneksel kurallara uyan,His methods were far from orthodox.,Yöntemleri geleneksel olmaktan uzaktı.,5,,school-work
 c1-outburst,OUTBURST,O,STARTS,noun,ani öfke veya duygu patlaması,His outburst surprised the whole room.,Öfke patlaması bütün odayı şaşırttı.,5,,school-work

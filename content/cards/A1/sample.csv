@@ -9,7 +9,7 @@ a1-green,GREEN,G,STARTS,adj,yeşil,The leaves are green.,Yapraklar yeşil.,1,,co
 a1-horse,HORSE,H,STARTS,noun,at,The horse runs in the meadow.,At çayırda koşuyor.,1,,animals
 a1-ice,ICE,I,STARTS,noun,buz,Ice melts quickly.,Buz çabuk erir.,1,,food-drink
 a1-juice,JUICE,J,STARTS,noun,meyve suyu,The juice is fresh.,Meyve suyu taze.,1,,food-drink
-a1-kitchen,KITCHEN,K,STARTS,noun,mutfak,Mum is cooking in the kitchen.,Annem mutfakta yemek yapıyor.,1,,home
+a1-kitchen,KITCHEN,K,STARTS,noun,mutfak,Mom is cooking in the kitchen.,Annem mutfakta yemek yapıyor.,1,,home
 a1-lemon,LEMON,L,STARTS,noun,limon,This lemon is sour.,Bu limon ekşi.,1,,food-drink
 a1-mirror,MIRROR,M,STARTS,noun,ayna,The mirror is round.,Ayna yuvarlak.,2,,home
 a1-nose,NOSE,N,STARTS,noun,burun,He has a pointed nose.,Sivri bir burnu var.,1,,body-health

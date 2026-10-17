@@ -42,7 +42,7 @@ c1-testimony,TESTIMONY,T,STARTS,noun,mahkemede verilen ifade,The witness gave he
 c1-thereby,THEREBY,T,STARTS,adv,"bu yolla, bunun sonucu olarak","He signed, thereby ending the dispute.",İmzaladı ve böylece anlaşmazlığı bitirdi.,5,,school-work
 c1-threshold,THRESHOLD,T,STARTS,noun,eşik veya bir sınır noktası,Sales passed the million threshold.,Satışlar milyon eşiğini aştı.,5,,business
 c1-timely,TIMELY,T,STARTS,adj,tam zamanında olan,Thanks for your timely help.,Zamanında yaptığınız yardım için teşekkürler.,5,,business
-c1-toll,TOLL,T,STARTS,noun,yol geçiş ücreti; zarar,The war took a heavy toll on the city.,Savaş şehre ağır bir bedel ödetti.,5,,school-work
+c1-toll,TOLL,T,STARTS,noun,"ağır bir bedel, zarar",The war took a heavy toll on the city.,Savaş şehre ağır bir bedel ödetti.,5,,school-work
 c1-transcript,TRANSCRIPT,T,STARTS,noun,konuşmanın yazıya geçirilmiş hâli,The court released a transcript of the call.,Mahkeme görüşmenin yazılı dökümünü yayımladı.,5,,school-work
 c1-transmit,TRANSMIT,T,STARTS,verb,iletmek veya yaymak,Mosquitoes can transmit the virus.,Sivrisinekler virüsü bulaştırabilir.,5,,school-work
 c1-trauma,TRAUMA,T,STARTS,noun,derin ruhsal yara,The accident left him with deep trauma.,Kaza onda derin bir travma bıraktı.,5,,school-work

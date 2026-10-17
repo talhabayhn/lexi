@@ -29,7 +29,7 @@ b1-weakness,WEAKNESS,K,CONTAINS,noun,zayıf olan yön,Shyness is her only weakne
 b1-sneaker,SNEAKER,K,CONTAINS,noun,spor için giyilen bağcıklı ayakkabı,She lost one sneaker on the beach.,Plajda bir spor ayakkabısını kaybetti.,3,,sports
 b1-skeleton,SKELETON,K,CONTAINS,noun,vücudu oluşturan kemiklerin bütünü,The museum has a dinosaur skeleton.,Müzede bir dinozor iskeleti var.,4,,body-health
 b1-feedback,FEEDBACK,K,CONTAINS,noun,yapılan işe dair verilen geri bildirim,Thanks for your feedback on my essay.,Kompozisyonuma geri bildirimin için teşekkürler.,4,,school-work
-b1-task,TASK,K,CONTAINS,noun,"yapılması gereken iş, görev",Cleaning the garden was a hard task.,Bahçeyi temizlemek zor bir görevdi.,3,,business
+b1-task,TASK,K,CONTAINS,noun,yapılacak belirli bir iş,Cleaning the garden was a hard task.,Bahçeyi temizlemek zor bir görevdi.,3,,business
 b1-risk,RISK,K,CONTAINS,noun,"zarar görme ihtimali, tehlike",Driving fast is a big risk.,Hızlı araba sürmek büyük bir risk.,3,,daily-life
 b1-disk,DISK,K,CONTAINS,noun,bilgi saklamak için kullanılan yuvarlak ortam,Save the file on a disk.,Dosyayı bir diske kaydet.,3,,technology
 b1-marketing,MARKETING,K,CONTAINS,noun,ürünlerin tanıtılıp satılması işi,She works in marketing.,Pazarlama alanında çalışıyor.,4,,business
@@ -46,13 +46,13 @@ b1-lecture,LECTURE,L,STARTS,noun,üniversitede hocanın salonda anlattığı kon
 b1-legal,LEGAL,L,STARTS,adj,yasalara uygun,It is legal to drive at eighteen.,On sekiz yaşında araba kullanmak yasaldır.,3,,daily-life
 b1-leisure,LEISURE,L,STARTS,noun,boş zaman,What do you do in your leisure time?,Boş zamanında ne yaparsın?,3,,daily-life
 b1-length,LENGTH,L,STARTS,noun,bir şeyin uzunluğu,What is the length of this room?,Bu odanın uzunluğu ne kadar?,3,,daily-life
-b1-licence,LICENCE,L,STARTS,noun,bir şeyi yapmaya izin veren resmî belge,You need a licence to drive a car.,Araba kullanmak için ehliyet gerekir.,3,,city-transport
+b1-licence,LICENSE,L,STARTS,noun,bir şeyi yapmaya izin veren resmî belge,You need a license to drive a car.,Araba kullanmak için ehliyet gerekir.,3,,city-transport
 b1-lifestyle,LIFESTYLE,L,STARTS,noun,bir kişinin günlük yaşam tarzı,A healthy lifestyle includes sport.,Sağlıklı bir yaşam tarzı spor içerir.,3,,body-health
 b1-limit,LIMIT,L,STARTS,noun,aşılmaması gereken sınır,The speed limit here is fifty.,Buradaki hız sınırı elli.,3,,city-transport
 b1-literature,LITERATURE,L,STARTS,noun,"roman, şiir ve oyunlardan oluşan edebiyat",She studies English literature.,İngiliz edebiyatı okuyor.,3,,school-work
 b1-litter,LITTER,L,STARTS,noun,yere atılmış küçük çöpler,Please do not drop litter in the park.,Lütfen parka çöp atmayın.,3,,city-transport
 b1-loan,LOAN,L,STARTS,noun,bankadan alınan borç,He took out a loan to buy a house.,Ev almak için bir kredi çekti.,4,,business
-b1-location,LOCATION,L,STARTS,noun,bir şeyin bulunduğu yer,The hotel is in a great location.,Otel harika bir konumda.,3,,travel
+b1-location,LOCATION,L,STARTS,noun,"bir şeyin bulunduğu yer, konum",The hotel is in a great location.,Otel harika bir konumda.,3,,travel
 b1-loose,LOOSE,L,STARTS,adj,"sıkı olmayan, bol",These trousers are too loose.,Bu pantolon çok bol.,3,,daily-life
 b1-luxury,LUXURY,L,STARTS,noun,"pahalı ve rahat yaşam, lüks",They stayed in a hotel full of luxury.,Lüks dolu bir otelde kaldılar.,4,,travel
 b1-lately,LATELY,L,STARTS,adv,son zamanlarda,I have been tired lately.,Son zamanlarda yorgunum.,3,,daily-life

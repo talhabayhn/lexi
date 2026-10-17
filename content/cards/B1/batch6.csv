@@ -8,7 +8,7 @@ b1-reaction,REACTION,R,STARTS,noun,bir olaya verilen tepki,What was her reaction
 b1-realistic,REALISTIC,R,STARTS,adj,"gerçeğe uygun, gerçekçi",Be realistic; you cannot finish by tomorrow.,Gerçekçi ol; yarına kadar bitiremezsin.,4,,daily-life
 b1-recent,RECENT,R,STARTS,adj,"çok önce olmayan, yakın zamandaki",Have you seen his recent photos?,Son fotoğraflarını gördün mü?,3,,daily-life
 b1-recently,RECENTLY,R,STARTS,adv,"yakın zamanda, geçenlerde",I have recently moved to a new flat.,Geçenlerde yeni bir daireye taşındım.,3,,daily-life
-b1-recognise,RECOGNISE,R,STARTS,verb,gördüğü birini daha önce tanıdığını anlamak,I did not recognise him with a beard.,Sakalıyla onu tanıyamadım.,3,,family-people
+b1-recognise,RELY,R,STARTS,verb,güvenip bel bağlamak,You can rely on me.,Bana güvenebilirsin.,3,,daily-life
 b1-recommend,RECOMMEND,R,STARTS,verb,bir şeyin iyi olduğunu söyleyerek önermek,Can you recommend a good restaurant?,İyi bir restoran önerebilir misin?,3,,travel
 b1-recycle,RECYCLE,R,STARTS,verb,kullanılmış maddeleri yeniden kullanıma kazandırmak,We recycle paper and glass at home.,Evde kâğıt ve camı geri dönüştürüyoruz.,3,,daily-life
 b1-reduce,REDUCE,R,STARTS,verb,miktarı veya fiyatı azaltmak,The shop will reduce its prices in January.,Dükkân ocak ayında fiyatlarını düşürecek.,3,,business
@@ -30,7 +30,7 @@ b1-review,REVIEW,R,STARTS,noun,bir film veya kitap hakkındaki eleştiri yazıs�
 b1-reward,REWARD,R,STARTS,noun,iyi bir iş için verilen ödül,The police offered a reward.,Polis bir ödül teklif etti.,3,,daily-life
 b1-rhythm,RHYTHM,R,STARTS,noun,müzikteki düzenli vuruş akışı,I love the rhythm of this song.,Bu şarkının ritmini seviyorum.,3,,music
 b1-romantic,ROMANTIC,R,STARTS,adj,aşk ve duygularla ilgili,We had a romantic dinner by the sea.,Deniz kenarında romantik bir akşam yemeği yedik.,3,,family-people
-b1-rough,ROUGH,R,STARTS,adj,pürüzlü; sert,The sea was rough that night.,O gece deniz dalgalıydı.,3,,daily-life
+b1-rough,ROUGH,R,STARTS,adj,pürüzlü; sert; dalgalı (deniz),The sea was rough that night.,O gece deniz dalgalıydı.,3,,daily-life
 b1-routine,ROUTINE,R,STARTS,noun,her gün tekrarlanan alışkanlıklar,My morning routine starts at seven.,Sabah rutinim yedide başlıyor.,3,,daily-life
 b1-rural,RURAL,R,STARTS,adj,köy ve kırsal bölgeyle ilgili,She grew up in a rural area.,Kırsal bir bölgede büyüdü.,4,,travel
 b1-receipt,RECEIPT,R,STARTS,noun,"alışverişte verilen ödeme belgesi, fiş",Keep the receipt in case you need to return it.,İade etmen gerekirse fişi sakla.,3,,business
@@ -41,7 +41,7 @@ b1-schedule,SCHEDULE,S,STARTS,noun,"zaman çizelgesi, program",I have a busy sch
 b1-security,SECURITY,S,STARTS,noun,güvenlik görevlileri; güvenlik önlemleri,Security checked our bags at the entrance.,Güvenlik girişte çantalarımızı kontrol etti.,3,,travel
 b1-selfish,SELFISH,S,STARTS,adj,"yalnızca kendini düşünen, bencil",Don't be so selfish; share your toys.,O kadar bencil olma; oyuncaklarını paylaş.,3,,family-people
 b1-sense,SENSE,S,STARTS,noun,"görme, duyma gibi duyu; mantık",Dogs have a good sense of smell.,Köpeklerin koku alma duyusu iyidir.,3,,body-health
-b1-series,SERIES,S,STARTS,noun,birbirini izleyen bölümlerden oluşan dizi,My favourite series starts again tonight.,En sevdiğim dizi bu gece yeniden başlıyor.,3,,film-tv
+b1-series,SERIES,S,STARTS,noun,birbirini izleyen bölümlerden oluşan dizi,My favorite series starts again tonight.,En sevdiğim dizi bu gece yeniden başlıyor.,3,,film-tv
 b1-settle,SETTLE,S,STARTS,verb,bir yere yerleşmek veya bir sorunu çözmek,They want to settle in Canada.,Kanada'ya yerleşmek istiyorlar.,4,,daily-life
 b1-shelter,SHELTER,S,STARTS,noun,yağmurdan ve soğuktan korunacak yer,We found shelter under a tree.,Bir ağacın altına sığındık.,4,,daily-life
 b1-shock,SHOCK,S,STARTS,noun,kötü bir haberin yarattığı ani sarsıntı,The news came as a shock.,Haber büyük bir şok oldu.,3,,daily-life
@@ -49,15 +49,15 @@ b1-shortage,SHORTAGE,S,STARTS,noun,"bir şeyin yetersiz kalması, kıtlık",Ther
 b1-signal,SIGNAL,S,STARTS,noun,haber veren işaret veya sinyal,I cannot get a signal on my phone here.,Burada telefonumda sinyal alamıyorum.,3,,technology
 b1-signature,SIGNATURE,S,STARTS,noun,bir kişinin kendi eliyle attığı imza,Please put your signature here.,Lütfen imzanızı buraya atın.,3,,business
 b1-silence,SILENCE,S,STARTS,noun,"hiç ses olmaması, sessizlik",There was silence in the room.,Odada sessizlik vardı.,3,,daily-life
-b1-skilled,SKILLED,S,STARTS,adj,"işinde ustalaşmış, becerikli",He is a skilled carpenter.,O usta bir marangoz.,3,,business
+b1-skilled,SKILLED,S,STARTS,adj,"eğitim görmüş, işinde usta",He is a skilled carpenter.,O usta bir marangoz.,3,,business
 b1-social,SOCIAL,S,STARTS,adj,toplumla veya insan ilişkileriyle ilgili,Teenagers need a good social life.,Gençlerin iyi bir sosyal hayata ihtiyacı var.,3,,family-people
 b1-society,SOCIETY,S,STARTS,noun,birlikte yaşayan insanların oluşturduğu toplum,Society changes over time.,Toplum zamanla değişir.,3,,school-work
 b1-software,SOFTWARE,S,STARTS,noun,bilgisayarda çalışan programlar,This software is free to download.,Bu yazılımı indirmek ücretsiz.,3,,technology
 b1-solution,SOLUTION,S,STARTS,noun,bir sorunun çözümü,We need a solution to this problem.,Bu soruna bir çözüm bulmamız gerekiyor.,3,,school-work
-b1-source,SOURCE,S,STARTS,noun,"bir şeyin çıktığı yer, kaynak",Milk is a good source of calcium.,Süt iyi bir kalsiyum kaynağıdır.,3,,food-drink
+b1-source,SOURCE,S,STARTS,noun,"bir şeyin elde edildiği yer, kaynak",Milk is a good source of calcium.,Süt iyi bir kalsiyum kaynağıdır.,3,,food-drink
 b1-species,SPECIES,S,STARTS,noun,biyolojide birbirine benzeyen canlı türü,This species of fish lives in warm water.,Bu balık türü ılık suda yaşar.,4,,animals
 b1-spelling,SPELLING,S,STARTS,noun,bir sözcüğün harflerle yazılışı,Her spelling is perfect.,Yazımı mükemmel.,3,,school-work
-b1-spirit,SPIRIT,S,STARTS,noun,ruh; canlılık ve cesaret,The team showed great spirit.,Takım büyük bir mücadele azmi gösterdi.,4,,sports
+b1-spirit,SPIRIT,S,STARTS,noun,ruh; canlılık ve cesaret,The team showed great spirit.,Takım büyük bir ruh gösterdi.,4,,sports
 b1-spoil,SPOIL,S,STARTS,verb,bir şeyi bozmak veya zevkini kaçırmak,Rain can spoil a picnic.,Yağmur pikniği berbat edebilir.,3,,daily-life
 b1-spread,SPREAD,S,STARTS,verb,yayılmak veya bir şeyi yaymak,News can spread quickly online.,Haberler internette hızla yayılabilir.,3,,daily-life
 b1-statement,STATEMENT,S,STARTS,noun,bir kişinin resmî olarak söylediği açıklama,The police asked him to make a statement.,Polis ondan ifade vermesini istedi.,4,,daily-life

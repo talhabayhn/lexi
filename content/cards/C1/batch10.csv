@@ -23,8 +23,8 @@ c1-herald,HERALD,H,STARTS,verb,bir şeyin habercisi olmak,The report may herald 
 c1-hierarchy,HIERARCHY,H,STARTS,noun,rütbe veya önem sıralaması,The company has a strict hierarchy.,Şirketin katı bir hiyerarşisi var.,5,,business
 c1-homeland,HOMELAND,H,STARTS,noun,insanın doğduğu yurt,She dreams of returning to her homeland.,Vatanına dönmeyi hayal ediyor.,4,,school-work
 c1-humanitarian,HUMANITARIAN,H,STARTS,adj,insanların acısını azaltmaya yönelik,The charity gives humanitarian aid.,Hayır kurumu insani yardım yapıyor.,5,,school-work
-c1-jeopardise,JEOPARDISE,J,STARTS,verb,bir şeyi tehlikeye atmak,Lying could jeopardise your career.,Yalan söylemek kariyerini tehlikeye atabilir.,5,,business
-c1-justification,JUSTIFICATION,J,STARTS,noun,bir davranışı haklı gösteren neden,There is no justification for such behaviour.,Böyle bir davranışı haklı gösteren bir neden yok.,5,,school-work
+c1-jeopardise,JEOPARDIZE,J,STARTS,verb,bir şeyi tehlikeye atmak,Lying could jeopardize your career.,Yalan söylemek kariyerini tehlikeye atabilir.,5,,business
+c1-justification,JUSTIFICATION,J,STARTS,noun,bir davranışı haklı gösteren neden,There is no justification for such behavior.,Böyle bir davranışı haklı gösteren bir neden yok.,5,,school-work
 c1-jackpot,JACKPOT,J,STARTS,noun,büyük ikramiye,She won the jackpot in the lottery.,Piyangoda büyük ikramiyeyi kazandı.,4,,school-work
 c1-majestic,MAJESTIC,J,CONTAINS,adj,görkemli ve etkileyici,The mountains look majestic at dawn.,Dağlar şafakta görkemli görünüyor.,5,,travel
 c1-conjecture,CONJECTURE,J,CONTAINS,noun,kanıtsız tahmin,Their theory is pure conjecture.,Teorileri tamamen tahminden ibaret.,5,,school-work
@@ -37,7 +37,7 @@ c1-checkpoint,CHECKPOINT,K,CONTAINS,noun,kimlik denetim noktası,We were stopped
 c1-backfire,BACKFIRE,K,CONTAINS,verb,beklenenin tersi sonuç verip zarar vermek,The plan could backfire badly.,Plan feci şekilde ters tepebilir.,5,,business
 c1-blackout,BLACKOUT,K,CONTAINS,noun,elektrik kesintisi,A storm caused a blackout in the city.,Fırtına şehirde elektrik kesintisine yol açtı.,4,,travel
 c1-landslide,LANDSLIDE,L,STARTS,noun,toprak kayması; ezici seçim zaferi,A landslide blocked the mountain road.,Bir heyelan dağ yolunu kapattı.,4,,travel
-c1-lawsuit,LAWSUIT,L,STARTS,noun,mahkemede açılan hukuk davası,The firm faces a lawsuit.,Firma bir dava ile karşı karşıya.,4,,business
+c1-lawsuit,LAWSUIT,L,STARTS,noun,mahkemede açılan hukuk davası,The firm faces a lawsuit.,Firma bir davayla karşı karşıya.,4,,business
 c1-logistics,LOGISTICS,L,STARTS,noun,malların taşınması ve düzenlenmesi,She works in logistics.,Lojistik alanında çalışıyor.,5,,business
 c1-linguistic,LINGUISTIC,L,STARTS,adj,dille veya dil bilimiyle ilgili,Linguistic skills matter in this job.,Bu işte dil becerileri önemlidir.,5,,school-work
 c1-newcomer,NEWCOMER,N,STARTS,noun,bir yere yeni gelen kişi,"As a newcomer, she felt lost.",Yeni gelen biri olarak kendini kaybolmuş hissetti.,4,,school-work

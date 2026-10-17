@@ -21,7 +21,7 @@ a1-dolphin,DOLPHIN,D,STARTS,noun,denizde yaşayan zeki ve sevimli memeli,A dolph
 a1-england,ENGLAND,E,STARTS,noun,başkenti Londra olan ülke,Ali studied in England.,Ali İngiltere'de okudu.,2,,daily-life
 a1-every,EVERY,E,STARTS,adj,tek tek hepsi; her bir,Every lamb is cute.,Her kuzu sevimli.,2,,daily-life
 a1-eighth,EIGHTH,E,STARTS,adj,sekizinci,Her seat is in the eighth row.,Koltuğu sekizinci sırada.,2,,colors-numbers
-a1-friendly,FRIENDLY,F,STARTS,adj,"sıcakkanlı, cana yakın",Our neighbours are friendly.,Komşularımız cana yakın.,2,,family-people
+a1-friendly,FRIENDLY,F,STARTS,adj,"sıcakkanlı, cana yakın",Our neighbors are friendly.,Komşularımız cana yakın.,2,,family-people
 a1-fall,FALL,F,STARTS,verb,yukarıdan aşağıya düşmek,"Be careful, or you will fall.","Dikkat et, yoksa düşeceksin.",2,,daily-life
 a1-foggy,FOGGY,F,STARTS,adj,sisin çöktüğü,It was foggy at the port.,Limanda hava sisliydi.,2,,time-weather
 a1-fourth,FOURTH,F,STARTS,adj,dördüncü,Ali sits in the fourth row.,Ali dördüncü sırada oturur.,2,,colors-numbers
@@ -29,7 +29,7 @@ a1-fifth,FIFTH,F,STARTS,adj,beşinci,The fifth bulb is broken.,Beşinci ampul bo
 a1-gym,GYM,G,STARTS,noun,spor yapılan salon,The gym has modern machines.,Spor salonunda modern makineler var.,2,,daily-life
 a1-hill,HILL,H,STARTS,noun,dağdan küçük yükselti,A tower stands on the hill.,Tepenin üstünde bir kule duruyor.,2,,city-transport
 a1-history,HISTORY,H,STARTS,noun,geçmiş olayları anlatan ders,Selin loves history.,Selin tarihi çok sever.,2,,school-work
-a1-kilometre,KILOMETRE,K,STARTS,noun,bin metreye eşit uzunluk birimi,The pharmacy is a kilometre from the bakery.,Eczane fırına bir kilometre uzaklıkta.,2,,city-transport
+a1-kilometre,KILOMETER,K,STARTS,noun,bin metreye eşit uzunluk birimi,The pharmacy is a kilometer from the bakery.,Eczane fırına bir kilometre uzaklıkta.,2,,city-transport
 a1-kick,KICK,K,STARTS,verb,ayakla vurmak,Do not kick the fence.,Çite tekme atma.,2,,daily-life
 a1-match,MATCH,M,STARTS,noun,iki takımın oynadığı karşılaşma,The match was exciting.,Maç heyecanlıydı.,2,,daily-life
 a1-move,MOVE,M,STARTS,verb,bulunduğu yerden başka yere kıpırdamak,Do not move!,Kıpırdama!,2,,daily-life
@@ -42,7 +42,7 @@ a1-problem,PROBLEM,P,STARTS,noun,çözülmesi gereken sorun,We have a problem wi
 a1-pound,POUND,P,STARTS,noun,İngiltere'de kullanılan para birimi,The tickets cost a pound.,Biletler bir pound.,2,,daily-life
 a1-policeman,POLICEMAN,P,STARTS,noun,polis teşkilatında çalışan erkek memur,The policeman stopped the traffic.,Polis memuru trafiği durdurdu.,2,,school-work
 a1-penguin,PENGUIN,P,STARTS,noun,buzullarda yaşayan uçamayan siyah beyaz kuş,A penguin swims quickly.,Penguen hızlı yüzer.,2,,animals
-a1-rubber,RUBBER,R,STARTS,noun,kurşun kalem izini silen küçük nesne,Ali needs a rubber.,Ali'nin bir silgiye ihtiyacı var.,2,,school-work
+a1-rubber,RING,R,STARTS,noun,"parmağa takılan halka biçimli takı, yüzük",She wears a gold ring.,Altın bir yüzük takıyor.,2,,daily-life
 a1-surname,SURNAME,S,STARTS,noun,adın yanına gelen aile adı,Is this your surname?,Bu senin soyadın mı?,2,,family-people
 a1-sweater,SWEATER,S,STARTS,noun,yünden örülmüş sıcak tutan üst giysi,Ayşe knitted a sweater.,Ayşe bir kazak ördü.,2,,daily-life
 a1-sausage,SAUSAGE,S,STARTS,noun,kıymadan yapılan ince uzun et ürünü,He fried a sausage.,O bir sosis kızarttı.,2,,food-drink
@@ -58,7 +58,7 @@ a1-seventh,SEVENTH,S,STARTS,adj,yedinci,My seat is in the seventh row.,Koltuğum
 a1-tennis,TENNIS,T,STARTS,noun,raketle file üzerinden oynanan spor,Ali plays tennis.,Ali tenis oynar.,1,,daily-life
 a1-thing,THING,T,STARTS,noun,"adı söylenmeyen nesne, şey",That is a strange thing.,Bu garip bir şey.,2,,daily-life
 a1-toast,TOAST,T,STARTS,noun,kızartılmış ekmek dilimi,Ayşe made some toast.,Ayşe biraz kızarmış ekmek yaptı.,2,,food-drink
-a1-theatre,THEATRE,T,STARTS,noun,oyunların sahnelendiği bina,Selin works at the theatre.,Selin tiyatroda çalışıyor.,2,,city-transport
+a1-theatre,THEATER,T,STARTS,noun,oyunların sahnelendiği bina,Selin works at the theater.,Selin tiyatroda çalışıyor.,2,,city-transport
 a1-toe,TOE,T,STARTS,noun,ayağın parmaklarından biri,My toe hurts.,Ayak parmağım ağrıyor.,2,,body-health
 a1-tenth,TENTH,T,STARTS,adj,onuncu,This is my tenth attempt.,Bu benim onuncu denemem.,2,,colors-numbers
 a1-wonderful,WONDERFUL,W,STARTS,adj,"olağanüstü güzel, muhteşem",That concert was wonderful.,O konser muhteşemdi.,2,,daily-life

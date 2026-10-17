@@ -19,12 +19,12 @@ a1-week,WEEK,W,STARTS,noun,hafta,I bake cookies once a week.,Haftada bir kurabiy
 a1-afternoon,AFTERNOON,A,STARTS,noun,öğleden sonra,I rest in the afternoon.,Öğleden sonra dinlenirim.,1,,time-weather
 a1-morning,MORNING,M,STARTS,noun,"günün ilk saatleri, sabah",The morning is calm.,Sabah sakin.,1,,time-weather
 a1-hour,HOUR,H,STARTS,noun,60 dakikalık süre,It takes an hour.,Bir saat sürer.,1,,time-weather
-a1-time,TIME,T,STARTS,noun,"zaman, vakit",Time flies.,Zaman uçuyor.,1,,time-weather
+a1-time,TIME,T,STARTS,noun,"zaman, vakit",What time is it?,Saat kaç?,1,,time-weather
 a1-early,EARLY,E,STARTS,adv,erken,Mehmet arrived early.,Mehmet erken geldi.,1,,time-weather
 a1-late,LATE,L,STARTS,adj,geç,We are late.,Geç kaldık.,1,,time-weather
 a1-sun,SUN,S,STARTS,noun,güneş,The sun is bright.,Güneş parlak.,1,,time-weather
 a1-summer,SUMMER,S,STARTS,noun,yaz mevsimi,Summer is coming.,Yaz geliyor.,1,,time-weather
-a1-january,JANUARY,J,STARTS,noun,yılın ilk ayı,Mum arrived in January.,Annem ocak ayında geldi.,1,,time-weather
+a1-january,JANUARY,J,STARTS,noun,yılın ilk ayı,Mom arrived in January.,Annem ocak ayında geldi.,1,,time-weather
 a1-always,ALWAYS,A,STARTS,adv,her zaman,She always smiles.,Her zaman gülümser.,1,,time-weather
 a1-april,APRIL,A,STARTS,noun,yılın dördüncü ayı,It rains a lot in April.,Nisanda çok yağmur yağar.,1,,time-weather
 a1-august,AUGUST,A,STARTS,noun,yılın sekizinci ayı,Grandpa comes in August.,Dede ağustosta gelir.,1,,time-weather

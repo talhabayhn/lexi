@@ -44,7 +44,7 @@ a2-outdoors,OUTDOORS,O,STARTS,adv,"açık havada, binanın dışında",The child
 a2-own,OWN,O,STARTS,adj,"başkasına değil, kişinin kendisine ait",She has her own room.,Kendine ait bir odası var.,3,,daily-life
 a2-owner,OWNER,O,STARTS,noun,bir şeye sahip olan kişi,The owner of the shop is kind.,Dükkânın sahibi nazik.,3,,daily-life
 a2-orchestra,ORCHESTRA,O,STARTS,noun,birçok çalgıcıdan oluşan müzik topluluğu,The orchestra plays tonight.,Orkestra bu gece çalıyor.,3,,music
-a2-organise,ORGANISE,O,STARTS,verb,bir işi düzenli biçimde ayarlamak,I will organise the party.,Partiyi ben düzenleyeceğim.,4,,daily-life
+a2-organise,ORGANIZE,O,STARTS,verb,bir işi düzenli biçimde ayarlamak,I will organize the party.,Partiyi ben düzenleyeceğim.,4,,daily-life
 a2-outfit,OUTFIT,O,STARTS,noun,birlikte giyilen kıyafetler,I like your outfit.,Kıyafetini beğendim.,3,,daily-life
 a2-once,ONCE,O,STARTS,adv,"bir kere, bir defa",I go swimming once a week.,Haftada bir kez yüzmeye giderim.,2,,time-weather
 a2-otherwise,OTHERWISE,O,STARTS,adv,"yoksa, aksi halde","Go now, otherwise the bus will leave.","Şimdi git, yoksa otobüs kalkacak.",4,,daily-life

@@ -21,7 +21,7 @@ b1-ambition,AMBITION,A,STARTS,noun,başarılı olmak için duyulan güçlü iste
 b1-announce,ANNOUNCE,A,STARTS,verb,önemli bir haberi herkese duyurmak,The school will announce the results today.,Okul sonuçları bugün açıklayacak.,3,,daily-life
 b1-annoy,ANNOY,A,STARTS,verb,birini sinirlendirmek veya rahatsız etmek,His loud music began to annoy me.,Yüksek sesli müziği beni rahatsız etmeye başladı.,3,,daily-life
 b1-annoyed,ANNOYED,A,STARTS,adj,"bir şeye canı sıkılmış, kızgın",She was annoyed because he was late.,Geç kaldığı için canı sıkıldı.,3,,daily-life
-b1-apologise,APOLOGISE,A,STARTS,verb,yaptığı şey için özür dilemek,I must apologise for being late.,Geç kaldığım için özür dilemeliyim.,3,,daily-life
+b1-apologise,APOLOGIZE,A,STARTS,verb,yaptığı şey için özür dilemek,I must apologize for being late.,Geç kaldığım için özür dilemeliyim.,3,,daily-life
 b1-appear,APPEAR,A,STARTS,verb,"görünür hale gelmek, ortaya çıkmak",A rainbow will appear after the rain.,Yağmurdan sonra bir gökkuşağı belirecek.,3,,daily-life
 b1-appearance,APPEARANCE,A,STARTS,noun,bir kişinin dışarıdan görünüşü,She cares a lot about her appearance.,Dış görünüşüne çok önem veriyor.,3,,family-people
 b1-application,APPLICATION,A,STARTS,noun,iş veya okul için yapılan resmî başvuru,I sent my application yesterday.,Başvurumu dün gönderdim.,3,,school-work
@@ -46,7 +46,7 @@ b1-balance,BALANCE,B,STARTS,noun,dengede durabilme hali,It is hard to keep your 
 b1-barbecue,BARBECUE,B,STARTS,noun,açık havada ateşte et pişirilen yemek,We had a barbecue in the garden.,Bahçede mangal yaptık.,3,,food-drink
 b1-bargain,BARGAIN,B,STARTS,noun,normal fiyatından çok ucuza alınan şey,This coat was a real bargain.,Bu mont gerçek bir kelepirdi.,3,,daily-life
 b1-behave,BEHAVE,B,STARTS,verb,belirli bir biçimde davranmak,The children know how to behave at a party.,Çocuklar partide nasıl davranılacağını biliyor.,3,,family-people
-b1-behaviour,BEHAVIOUR,B,STARTS,noun,bir kişinin davranış biçimi,His behaviour in class is very good.,Sınıftaki davranışı çok iyi.,3,,school-work
+b1-behaviour,BEHAVIOR,B,STARTS,noun,bir kişinin davranış biçimi,His behavior in class is very good.,Sınıftaki davranışı çok iyi.,3,,school-work
 b1-belong,BELONG,B,STARTS,verb,bir kişiye ait olmak,Does this bag belong to your sister?,Bu çanta kız kardeşine mi ait?,3,,daily-life
 b1-benefit,BENEFIT,B,STARTS,noun,bir şeyden sağlanan yarar,Exercise has a clear benefit for your health.,Egzersizin sağlığa açık bir yararı var.,3,,body-health
 b1-biography,BIOGRAPHY,B,STARTS,noun,bir kişinin hayatını anlatan kitap,I am reading a biography of Atatürk.,Atatürk'ün biyografisini okuyorum.,4,,school-work

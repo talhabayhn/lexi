@@ -1,5 +1,5 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
-b1-quantity,QUANTITY,Q,STARTS,noun,bir şeyin miktarı,A large quantity of rice was sold.,Büyük miktarda pirinç satıldı.,3,,business
+b1-quantity,QUANTITY,Q,STARTS,noun,sayılan ya da ölçülen nicelik,A large quantity of rice was sold.,Büyük miktarda pirinç satıldı.,3,,business
 b1-quit,QUIT,Q,STARTS,verb,bir işi veya alışkanlığı bırakmak,He wants to quit smoking.,Sigarayı bırakmak istiyor.,3,,body-health
 b1-quote,QUOTE,Q,STARTS,verb,bir kişinin sözlerini aynen aktarmak,The writer likes to quote famous poets.,Yazar ünlü şairlerden alıntı yapmayı sever.,4,,school-work
 b1-quarrel,QUARREL,Q,STARTS,noun,"iki kişi arasındaki sert tartışma, kavga",They had a quarrel about money.,Para yüzünden bir tartışma yaşadılar.,4,,family-people
@@ -15,7 +15,7 @@ b1-banquet,BANQUET,Q,CONTAINS,noun,"çok kişinin katıldığı resmî yemek, zi
 b1-conquer,CONQUER,Q,CONTAINS,verb,"bir ülkeyi savaşla ele geçirmek, fethetmek",The army wanted to conquer the city.,Ordu şehri fethetmek istedi.,4,,school-work
 b1-equality,EQUALITY,Q,CONTAINS,noun,"herkese aynı haklar verilmesi, eşitlik",Equality is important in a school.,Okulda eşitlik önemlidir.,4,,school-work
 b1-squash,SQUASH,Q,CONTAINS,noun,raket ve topla kapalı odada oynanan spor,She plays squash twice a week.,Haftada iki kez squash oynuyor.,4,,sports
-b1-enquire,ENQUIRE,Q,CONTAINS,verb,resmî olarak bilgi sormak,Please enquire at the front desk.,Lütfen danışmadan bilgi alın.,4,,travel
+b1-enquire,INQUIRE,Q,CONTAINS,verb,resmî olarak bilgi sormak,Please inquire at the front desk.,Lütfen danışmadan bilgi alın.,4,,travel
 b1-requirement,REQUIREMENT,Q,CONTAINS,noun,bir şey için gereken şart,A passport is a requirement for travel.,Pasaport seyahat için bir şarttır.,4,,travel
 b1-acquire,ACQUIRE,Q,CONTAINS,verb,çabayla bir beceri veya mal edinmek,Children acquire language quickly.,Çocuklar dili hızlı edinir.,4,,school-work
 b1-yell,YELL,Y,STARTS,verb,öfkeyle veya yüksek sesle bağırmak,Don't yell at your brother.,Kardeşine bağırma.,3,,family-people
@@ -33,7 +33,7 @@ b1-loyalty,LOYALTY,Y,CONTAINS,noun,birine sadakatle bağlı olma,Dogs are famous
 b1-enjoyment,ENJOYMENT,Y,CONTAINS,noun,bir şeyden alınan zevk,Reading gives me great enjoyment.,Okumak bana büyük zevk veriyor.,3,,daily-life
 b1-yearly,YEARLY,Y,STARTS,adj,yılda bir yapılan,We have a yearly meeting in June.,Haziranda yıllık bir toplantımız var.,3,,business
 b1-satisfy,SATISFY,Y,CONTAINS,verb,bir isteği veya ihtiyacı karşılamak,One sandwich will not satisfy him.,Bir sandviç onu doyurmaz.,4,,food-drink
-b1-pyjamas,PYJAMAS,Y,CONTAINS,noun,geceleri giyilen takım,She sleeps in blue pyjamas.,Mavi bir pijamayla uyur.,3,,daily-life
+b1-pyjamas,PAJAMAS,J,CONTAINS,noun,geceleri giyilen takım,She sleeps in blue pajamas.,Mavi bir pijamayla uyur.,3,,daily-life
 b1-cycle,CYCLE,Y,CONTAINS,noun,tekrar eden olaylar dizisi; döngü,The water cycle starts with rain.,Su döngüsü yağmurla başlar.,4,,school-work
 b1-youngster,YOUNGSTER,Y,STARTS,noun,"ufaklık, küçük çocuk",The youngster was happy to help.,Genç çocuk yardım etmekten memnundu.,4,,family-people
 b1-zipper,ZIPPER,Z,STARTS,noun,giysilerde kullanılan fermuar,The zipper on my bag is broken.,Çantamın fermuarı bozuk.,3,,daily-life
@@ -63,7 +63,7 @@ b1-growth,GROWTH,G,STARTS,noun,büyüme veya artış,The growth of the town is f
 b1-habitat,HABITAT,H,STARTS,noun,bir hayvanın doğal yaşam alanı,Forests are the habitat of many animals.,Ormanlar birçok hayvanın yaşam alanıdır.,4,,animals
 b1-happily,HAPPILY,H,STARTS,adv,mutlu bir şekilde,They lived happily in a small house.,Küçük bir evde mutlu yaşadılar.,3,,family-people
 b1-happiness,HAPPINESS,H,STARTS,noun,mutluluk,Money cannot buy happiness.,Para mutluluk satın alamaz.,3,,family-people
-b1-harbour,HARBOUR,H,STARTS,noun,gemilerin demirlediği liman,The boats are in the harbour.,Tekneler limanda.,3,,city-transport
+b1-harbour,HARBOR,H,STARTS,noun,gemilerin demirlediği liman,The boats are in the harbor.,Tekneler limanda.,3,,city-transport
 b1-heritage,HERITAGE,H,STARTS,noun,bir ülkenin geçmişten kalan kültürel mirası,The old town is part of our heritage.,Eski şehir mirasımızın bir parçası.,4,,travel
 b1-hidden,HIDDEN,H,STARTS,adj,"gizlenmiş, gözden saklı",The treasure was hidden in a cave.,Hazine bir mağarada saklıydı.,3,,daily-life
 b1-honestly,HONESTLY,H,STARTS,adv,"dürüstçe, açıkçası","Honestly, I did not like the film.",Açıkçası filmi beğenmedim.,3,,daily-life
@@ -75,7 +75,7 @@ b1-enthusiasm,ENTHUSIASM,E,STARTS,noun,"bir işe duyulan büyük istek, coşku",
 b1-error,ERROR,E,STARTS,noun,yapılan hata,The computer showed an error.,Bilgisayar bir hata gösterdi.,3,,technology
 b1-elsewhere,ELSEWHERE,E,STARTS,adv,başka bir yerde,"If it is full, let's eat elsewhere.",Doluysa başka yerde yiyelim.,4,,city-transport
 b1-embarrassing,EMBARRASSING,E,STARTS,adj,insanı utandıran,It was an embarrassing mistake.,Utanç verici bir hataydı.,4,,daily-life
-b1-enormous,ENORMOUS,E,STARTS,adj,"çok büyük, kocaman",They live in an enormous house.,Kocaman bir evde yaşıyorlar.,3,,daily-life
+b1-enormous,ENORMOUS,E,STARTS,adj,"olağanüstü büyük, devasa",They live in an enormous house.,Kocaman bir evde yaşıyorlar.,3,,daily-life
 b1-odd,ODD,O,STARTS,adj,tuhaf; tek sayı,That is an odd thing to say.,Bunu söylemek tuhaf.,3,,daily-life
 b1-operation,OPERATION,O,STARTS,noun,doktorun yaptığı ameliyat; bir makinenin çalışması,He had an operation on his knee.,Dizinden ameliyat oldu.,3,,body-health
 b1-opponent,OPPONENT,O,STARTS,noun,bir yarışta karşı taraftaki rakip,Our opponent was very strong.,Rakibimiz çok güçlüydü.,4,,sports
@@ -86,7 +86,7 @@ b1-outgoing,OUTGOING,O,STARTS,adj,"girişken, herkesle kolay arkadaş olan",She 
 b1-outline,OUTLINE,O,STARTS,noun,bir konunun kısa taslağı,Write an outline before your essay.,Kompozisyonundan önce bir taslak yaz.,4,,school-work
 b1-overtime,OVERTIME,O,STARTS,noun,normal mesai dışındaki fazla çalışma,He works overtime every Friday.,Her cuma fazla mesai yapıyor.,3,,business
 b1-exception,EXCEPTION,X,CONTAINS,noun,kuralın dışında kalan durum,There is one exception to this rule.,Bu kuralın tek bir istisnası var.,4,,school-work
-b1-expand,EXPAND,X,CONTAINS,verb,genişlemek veya genişletmek,The company wants to expand abroad.,Şirket yurt dışına açılmak istiyor.,4,,business
+b1-expand,EXPAND,X,CONTAINS,verb,"büyüyüp yayılmak, genişlemek",The company wants to expand abroad.,Şirket yurt dışına açılmak istiyor.,4,,business
 b1-complex,COMPLEX,X,CONTAINS,adj,"birçok parçası olan, karmaşık",The story has a complex plot.,Hikâyenin karmaşık bir olay örgüsü var.,4,,film-tv
 b1-index,INDEX,X,CONTAINS,noun,kitabın sonunda yer alan dizin,Look in the index for the page number.,Sayfa numarası için dizine bak.,4,,school-work
 b1-prefix,PREFIX,X,CONTAINS,noun,sözcüğün başına eklenen ek,"The prefix ""un"" changes the meaning of a word.","""un"" öneki sözcüğün anlamını değiştirir.",4,,school-work

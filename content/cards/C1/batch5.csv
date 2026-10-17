@@ -48,7 +48,7 @@ c1-interface,INTERFACE,I,STARTS,noun,kullanıcıyla sistem arasındaki ara yüz,
 c1-jargon,JARGON,J,STARTS,noun,belli bir mesleğin anlaşılması zor dili,The report is full of technical jargon.,Rapor teknik jargonla dolu.,4,,school-work
 c1-judicial,JUDICIAL,J,STARTS,adj,mahkemeler ve yargıyla ilgili,The country has an independent judicial system.,Ülkenin bağımsız bir yargı sistemi var.,5,,school-work
 c1-jurisdiction,JURISDICTION,J,STARTS,noun,bir mahkemenin yetki alanı,The case falls under federal jurisdiction.,Dava federal yargı yetkisine giriyor.,5,,school-work
-c1-juvenile,JUVENILE,J,STARTS,adj,gençlerle ilgili; çocukça,Juvenile crime has fallen this year.,Çocuk suçluluğu bu yıl azaldı.,5,,school-work
+c1-juvenile,JUVENILE,J,STARTS,adj,gençlerle ilgili,Juvenile crime has fallen this year.,Çocuk suçluluğu bu yıl azaldı.,5,,school-work
 c1-trajectory,TRAJECTORY,J,CONTAINS,noun,bir cismin veya sürecin izlediği yol,The ball followed a high trajectory.,Top yüksek bir yörünge izledi.,5,,sports
 c1-kinetic,KINETIC,K,STARTS,adj,hareketle ilgili,Kinetic energy depends on speed.,Kinetik enerji hıza bağlıdır.,5,,school-work
 c1-knack,KNACK,K,STARTS,noun,bir işi kolayca yapma yeteneği,She has a knack for languages.,Dillerde bir yeteneği var.,5,,school-work

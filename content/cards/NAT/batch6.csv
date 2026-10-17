@@ -2,7 +2,7 @@ id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
 nat-unabashed,UNABASHED,U,STARTS,adj,"(hayranlık, sevgi) hiç çekinmeden ortaya konan",She is an unabashed fan of reality TV.,"Realite şovlarına açıkça, hiç çekinmeden bayılıyor.",5,,general
 nat-unassuming,UNASSUMING,U,STARTS,adj,başarısına rağmen gösterişsiz ve sade,"Despite his fame, he is quiet and unassuming.",Ünlü olmasına rağmen sessiz ve gösterişsiz biri.,5,,general
 nat-uncanny,UNCANNY,U,STARTS,adj,"(benzerlik) ürkütücü derecede, doğaüstü gibi",She bears an uncanny resemblance to my sister.,Kız kardeşime ürkütücü derecede benziyor.,4,,general
-nat-uncouth,UNCOUTH,U,STARTS,adj,"kaba saba, görgüsüz",His uncouth behaviour embarrassed us.,Kaba saba davranışları bizi utandırdı.,5,,general
+nat-uncouth,UNCOUTH,U,STARTS,adj,"kaba saba, görgüsüz",His uncouth behavior embarrassed us.,Kaba saba davranışları bizi utandırdı.,5,,general
 nat-unequivocal,UNEQUIVOCAL,U,STARTS,adj,"(ret, destek) dolambaçsız, kesin ve net",The answer was an unequivocal no.,Cevap kesin bir hayırdı.,5,,general
 nat-unfathomable,UNFATHOMABLE,U,STARTS,adj,"akıl erdirilemeyen, derinliği ölçülemez",Her decision remains unfathomable to me.,Kararı benim için hâlâ akıl erdirilemez.,5,,general
 nat-unflappable,UNFLAPPABLE,U,STARTS,adj,hiçbir şey karşısında soğukkanlılığını yitirmeyen,The unflappable pilot landed safely.,Soğukkanlılığını hiç yitirmeyen pilot güvenle iniş yaptı.,5,,general
@@ -48,7 +48,7 @@ nat-woeful,WOEFUL,W,STARTS,adj,(performans) acınacak derecede kötü,The team's
 nat-wrangle,WRANGLE,W,STARTS,verb,uzun süre çekişip tartışmak,The heirs continue to wrangle over the will.,Mirasçılar vasiyet üzerine çekişmeye devam ediyor.,5,,general
 nat-wrath,WRATH,W,STARTS,noun,"korkunç, büyük öfke, gazap",He feared his father's wrath.,Babasının gazabından korkuyordu.,4,,general
 nat-writhe,WRITHE,W,STARTS,verb,(acıyla) kıvranmak,The injured player began to writhe in pain.,Sakatlanan oyuncu acıyla kıvranmaya başladı.,5,,general
-nat-wry,WRY,W,STARTS,adj,"(gülümseme, mizah) hafif alaycı ve buruk",He has a wry sense of humour.,"Hafif alaycı, buruk bir mizah anlayışı var.",5,,general
+nat-wry,WRY,W,STARTS,adj,"(gülümseme, mizah) hafif alaycı ve buruk",He has a wry sense of humor.,"Hafif alaycı, buruk bir mizah anlayışı var.",5,,general
 nat-wince,WINCE,W,STARTS,verb,"(acı, utançtan) yüzünü buruşturup irkilmek",I wince every time I hear my recorded voice.,Kayıttaki sesimi her duyduğumda irkilirim.,4,,general
 nat-woo,WOO,W,STARTS,verb,"(seçmen, müşteri) gönlünü kazanmaya çalışmak",Both parties are trying to woo young voters.,İki parti de genç seçmenlerin gönlünü kazanmaya çalışıyor.,4,,general
 nat-awry,AWRY,W,CONTAINS,adj,"(şapka, kravat) yamuk, çarpık duran",His tie was awry.,Kravatı yamuk duruyordu.,5,,general
@@ -81,7 +81,7 @@ nat-yoke,YOKE,Y,STARTS,noun,(baskı) boyunduruk,The people threw off the yoke of
 nat-doyen,DOYEN,Y,CONTAINS,noun,bir alanın en kıdemli ve saygın ismi,He is the doyen of sports writers.,Spor yazarlarının duayenidir.,5,,general
 nat-crony,CRONY,Y,CONTAINS,noun,(olumsuz) kayırılan yakın ahbap,The mayor gave the contract to an old crony.,Belediye başkanı ihaleyi eski bir yandaşına verdi.,5,,general
 nat-tycoon,TYCOON,Y,CONTAINS,noun,iş dünyasının kodamanı,The media tycoon owns ten newspapers.,Medya kodamanının on gazetesi var.,4,,general
-nat-buoyant,BUOYANT,Y,CONTAINS,adj,"(piyasa, ruh hali) canlı ve iyimser",The housing market remains buoyant.,Konut piyasası canlılığını koruyor.,5,,general
+nat-buoyant,BUOYANT,Y,CONTAINS,adj,(piyasa) canlı ve iyimser,The housing market remains buoyant.,Konut piyasası canlılığını koruyor.,5,,general
 nat-abysmal,ABYSMAL,Y,CONTAINS,adj,rezalet derecesinde kötü,The service was abysmal.,Hizmet rezalet derecesinde kötüydü.,5,,general
 nat-eponymous,EPONYMOUS,Y,CONTAINS,adj,"(albüm, kahraman) eserin adını veren",The band's eponymous first album was a hit.,Grubun kendi adını taşıyan ilk albümü hit oldu.,5,,general
 nat-odyssey,ODYSSEY,Y,CONTAINS,noun,(destansı) uzun ve olaylı serüven,Their trip became a three-month odyssey.,Gezileri üç aylık destansı bir serüvene dönüştü.,5,,general

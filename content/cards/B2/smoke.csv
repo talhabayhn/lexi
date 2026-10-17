@@ -20,7 +20,7 @@ b2-reluctant,RELUCTANT,R,STARTS,adj,bir şeyi yapmaya isteksiz,He was reluctant 
 b2-subtle,SUBTLE,S,STARTS,adj,"belli belirsiz, zor fark edilen",There is a subtle difference between them.,Aralarında ince bir fark var.,3,,daily-life
 b2-tolerate,TOLERATE,T,STARTS,verb,rahatsız edici bir şeye katlanmak,I cannot tolerate this noise.,Bu gürültüye katlanamıyorum.,3,,daily-life
 b2-unanimous,UNANIMOUS,U,STARTS,adj,herkesin aynı fikirde olduğu,The vote was unanimous.,Oylama oybirliğiyle sonuçlandı.,3,,business
-b2-vague,VAGUE,V,STARTS,adj,"net olmayan, belirsiz",His answer was vague.,Cevabı belirsizdi.,3,,daily-life
+b2-vague,VAGUE,V,STARTS,adj,"ayrıntısız, muğlak",His answer was vague.,Cevabı belirsizdi.,3,,daily-life
 b2-withdraw,WITHDRAW,W,STARTS,verb,hesaptan para çekmek,I need to withdraw some cash.,Biraz nakit çekmem gerek.,3,,business
 b2-anxious,ANXIOUS,X,CONTAINS,adj,kaygılı ve huzursuz,She felt anxious before the interview.,Mülakattan önce kaygılıydı.,3,,body-health
 b2-yield,YIELD,Y,STARTS,verb,"ürün vermek, verim sağlamak",These trees yield sweet fruit.,Bu ağaçlar tatlı meyve verir.,3,,daily-life

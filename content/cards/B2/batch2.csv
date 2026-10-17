@@ -62,7 +62,7 @@ b2-demonstrate,DEMONSTRATE,D,STARTS,verb,bir şeyi örnekle göstermek,The teach
 b2-deprive,DEPRIVE,D,STARTS,verb,birini bir şeyden yoksun bırakmak,Noise can deprive you of sleep.,Gürültü seni uykudan edebilir.,4,,body-health
 b2-derive,DERIVE,D,STARTS,verb,bir şeyin kaynağından çıkmak,Many English words derive from Latin.,Birçok İngilizce sözcük Latinceden gelir.,4,,school-work
 b2-detect,DETECT,D,STARTS,verb,"cihazla algılamak (duman, ses vb.)",The machine can detect smoke.,Makine dumanı algılayabilir.,4,,technology
-b2-devote,DEVOTE,D,STARTS,verb,zaman ve emeğini bir işe adamak,She wants to devote her life to music.,Hayatını müziğe adamak istiyor.,4,,music
+b2-devote,DEVOTE,D,STARTS,verb,zamanını ve emeğini bir işe ayırmak,She wants to devote her life to music.,Hayatını müziğe adamak istiyor.,4,,music
 b2-diagnose,DIAGNOSE,D,STARTS,verb,bir hastalığı belirtilerinden tanımak,The doctor will diagnose the problem.,Doktor sorunu teşhis edecek.,4,,body-health
 b2-discard,DISCARD,D,STARTS,verb,işe yaramayan bir şeyi atmak,Discard the old batteries safely.,Eski pilleri güvenli şekilde at.,4,,daily-life
 b2-discipline,DISCIPLINE,D,STARTS,noun,kurallara uyma ve kendini denetleme,The school is famous for its discipline.,Okul disipliniyle ünlü.,4,,school-work
@@ -91,7 +91,7 @@ b2-emerge,EMERGE,E,STARTS,verb,ortaya çıkmak,The sun will emerge from behind t
 b2-emphasis,EMPHASIS,E,STARTS,noun,bir şeye verilen özel önem,The school puts great emphasis on reading.,Okul okumaya büyük önem veriyor.,4,,school-work
 b2-enable,ENABLE,E,STARTS,verb,bir şeyi yapılabilir hale getirmek,This app will enable you to learn faster.,Bu uygulama daha hızlı öğrenmeni sağlayacak.,4,,technology
 b2-encounter,ENCOUNTER,E,STARTS,verb,beklenmedik biçimde karşılaşmak,We may encounter problems on the way.,Yolda sorunlarla karşılaşabiliriz.,4,,travel
-b2-endure,ENDURE,E,STARTS,verb,acıya veya zorluğa dayanmak,They had to endure a long winter.,Uzun bir kışa katlanmak zorunda kaldılar.,4,,daily-life
+b2-endure,ENDURE,E,STARTS,verb,uzun süre acıya katlanmak,They had to endure a long winter.,Uzun bir kışa katlanmak zorunda kaldılar.,4,,daily-life
 b2-engage,ENGAGE,E,STARTS,verb,dikkat çekmek; bir işe girişmek,A good teacher can engage the whole class.,İyi bir öğretmen bütün sınıfın ilgisini çekebilir.,4,,school-work
 b2-enhance,ENHANCE,E,STARTS,verb,bir şeyin kalitesini artırmak,Music can enhance your mood.,Müzik ruh halini iyileştirebilir.,4,,music
 b2-ensure,ENSURE,E,STARTS,verb,bir şeyin olacağından emin olmak,Please ensure that all windows are closed.,Lütfen tüm pencerelerin kapalı olduğundan emin olun.,3,,business
@@ -117,5 +117,5 @@ b2-come-down-with,COME DOWN WITH,C,STARTS,phrasal,bir hastalığa yakalanmak,I t
 b2-do-without,DO WITHOUT,D,STARTS,phrasal,bir şey olmadan idare etmek,We can do without a car.,Arabasız idare edebiliriz.,4,,phrasal-verbs
 b2-critical,CRITICAL,C,STARTS,adj,çok önemli; eleştirel,It is critical to arrive on time.,Zamanında varmak çok önemli.,4,,business
 b2-decline,DECLINE,D,STARTS,noun,azalma veya düşüş,There has been a decline in sales.,Satışlarda bir düşüş yaşandı.,4,,business
-b2-dispute,DISPUTE,D,STARTS,noun,tarafların uzun süren tartışması,The neighbours had a dispute about the fence.,Komşuların çit konusunda bir anlaşmazlığı oldu.,4,,daily-life
+b2-dispute,DISPUTE,D,STARTS,noun,tarafların uzun süren tartışması,The neighbors had a dispute about the fence.,Komşuların çit konusunda bir anlaşmazlığı oldu.,4,,daily-life
 b2-extent,EXTENT,E,STARTS,noun,bir şeyin kapsamı veya ölçüsü,Nobody knows the extent of the damage.,Hasarın boyutunu kimse bilmiyor.,4,,daily-life

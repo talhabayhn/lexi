@@ -6,7 +6,7 @@ a2-nationality,NATIONALITY,N,STARTS,noun,bir kişinin hangi ülkenin vatandaşı
 a2-nest,NEST,N,STARTS,noun,kuşun yumurtalarını koyduğu yuva,There are three eggs in the nest.,Yuvada üç yumurta var.,2,,animals
 a2-net,NET,N,STARTS,noun,iplerden örülmüş ağ,The ball went into the net.,Top fileye girdi.,3,,sports
 a2-navy,NAVY,N,STARTS,noun,"bir ülkenin denizdeki askerî gücü, donanma",His father is in the navy.,Babası donanmada.,3,,daily-life
-a2-neighbourhood,NEIGHBOURHOOD,N,STARTS,noun,insanın yaşadığı mahalle,This is a quiet neighbourhood.,Burası sessiz bir mahalle.,3,,city-transport
+a2-neighbourhood,NEIGHBORHOOD,N,STARTS,noun,insanın yaşadığı mahalle,This is a quiet neighborhood.,Burası sessiz bir mahalle.,3,,city-transport
 a2-officer,OFFICER,O,STARTS,noun,polis ya da orduda görevli yetkili kişi,A police officer stopped the car.,Bir polis memuru arabayı durdurdu.,3,,daily-life
 a2-omelette,OMELETTE,O,STARTS,noun,"çırpılmış yumurtadan yapılan yemek, omlet",I made an omelette for breakfast.,Kahvaltı için omlet yaptım.,2,,food-drink
 a2-opera,OPERA,O,STARTS,noun,şarkıyla anlatılan büyük sahne gösterisi,We went to the opera in Rome.,Roma'da operaya gittik.,3,,music
@@ -47,7 +47,7 @@ a2-runner,RUNNER,R,STARTS,noun,koşan kişi,The runner finished first.,Koşucu b
 a2-seaside,SEASIDE,S,STARTS,noun,deniz kıyısı,We spent the weekend at the seaside.,Hafta sonunu deniz kenarında geçirdik.,3,,travel
 a2-sleepy,SLEEPY,S,STARTS,adj,uykusu gelmiş,I feel sleepy after lunch.,Öğle yemeğinden sonra uykum geliyor.,2,,body-health
 a2-slide,SLIDE,S,STARTS,noun,"çocukların kayarak indiği oyun aleti, kaydırak",The little girl is on the slide.,Küçük kız kaydırakta.,2,,city-transport
-a2-sweatshirt,SWEATSHIRT,S,STARTS,noun,pamuktan yapılmış kalın spor üst,He wears a grey sweatshirt.,Gri bir sweatshirt giyiyor.,2,,daily-life
+a2-sweatshirt,SWEATSHIRT,S,STARTS,noun,pamuktan yapılmış kalın spor üst,He wears a gray sweatshirt.,Gri bir sweatshirt giyiyor.,2,,daily-life
 a2-skyscraper,SKYSCRAPER,S,STARTS,noun,"çok katlı çok yüksek bina, gökdelen",I work in a tall skyscraper.,Yüksek bir gökdelende çalışıyorum.,3,,city-transport
 a2-teapot,TEAPOT,T,STARTS,noun,"içinde çay demlenen kap, demlik",The teapot is on the table.,Demlik masanın üstünde.,2,,home
 a2-trophy,TROPHY,T,STARTS,noun,yarışmayı kazananlara verilen kupa,Our team won the trophy.,Takımımız kupayı kazandı.,3,,sports

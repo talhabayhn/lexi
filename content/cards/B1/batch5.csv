@@ -31,13 +31,13 @@ b1-range,RANGE,N,CONTAINS,noun,bir ürün grubu veya çeşit yelpazesi,The shop 
 b1-obey,OBEY,O,STARTS,verb,kurala veya emre uymak,Dogs must obey their owners.,Köpekler sahiplerine itaat etmeli.,3,,daily-life
 b1-occasion,OCCASION,O,STARTS,noun,belirli bir özel zaman veya olay,The wedding was a happy occasion.,Düğün mutlu bir vesileydi.,4,,daily-life
 b1-occupation,OCCUPATION,O,STARTS,noun,"insanın yaptığı iş, meslek",Please write your name and occupation.,Lütfen adınızı ve mesleğinizi yazın.,4,,school-work
-b1-occur,OCCUR,O,STARTS,verb,"meydana gelmek, olmak",Accidents often occur at night.,Kazalar sık sık geceleri meydana gelir.,4,,daily-life
+b1-occur,OCCUR,O,STARTS,verb,meydana gelmek (resmî dil),Accidents often occur at night.,Kazalar sık sık geceleri meydana gelir.,4,,daily-life
 b1-official,OFFICIAL,O,STARTS,adj,"resmî, yetkili makamlarca onaylanan",This is the official website of the city.,Bu şehrin resmî web sitesi.,3,,business
 b1-opening,OPENING,O,STARTS,noun,bir yerin ilk açılışı; boşluk,The opening of the new library is on Friday.,Yeni kütüphanenin açılışı cuma günü.,3,,daily-life
 b1-operate,OPERATE,O,STARTS,verb,bir makineyi çalıştırmak veya ameliyat etmek,Do you know how to operate this machine?,Bu makineyi nasıl çalıştıracağını biliyor musun?,4,,technology
 b1-option,OPTION,O,STARTS,noun,seçilebilecek yollardan biri,You have only one option.,Sadece bir seçeneğin var.,3,,daily-life
 b1-ordinary,ORDINARY,O,STARTS,adj,"sıradan, özel olmayan",It was an ordinary day at school.,Okulda sıradan bir gündü.,3,,daily-life
-b1-organisation,ORGANISATION,O,STARTS,noun,belli bir amaçla kurulmuş kuruluş,She works for a big organisation.,Büyük bir kuruluşta çalışıyor.,3,,business
+b1-organisation,ORGANIZATION,O,STARTS,noun,belli bir amaçla kurulmuş kuruluş,She works for a big organization.,Büyük bir kuruluşta çalışıyor.,3,,business
 b1-original,ORIGINAL,O,STARTS,adj,"ilk ve gerçek olan, özgün",This is the original painting.,"Bu, orijinal tablo.",3,,daily-life
 b1-overnight,OVERNIGHT,O,STARTS,adv,"bir geceyi geçirerek, gece boyunca",We stayed overnight in a small hotel.,Küçük bir otelde geceledik.,3,,travel
 b1-owe,OWE,O,STARTS,verb,birine borçlu olmak,I owe you ten pounds.,Sana on pound borcum var.,3,,business
@@ -77,10 +77,10 @@ b1-product,PRODUCT,P,STARTS,noun,satılmak üzere üretilen mal,This product is 
 b1-production,PRODUCTION,P,STARTS,noun,bir şeyin üretilmesi,Car production has fallen this year.,Araba üretimi bu yıl düştü.,4,,business
 b1-professional,PROFESSIONAL,P,STARTS,adj,işini para karşılığı ve uzmanca yapan,He is a professional footballer.,Profesyonel bir futbolcu.,3,,sports
 b1-profit,PROFIT,P,STARTS,noun,satıştan elde edilen kazanç,The shop made a small profit.,Dükkân küçük bir kâr elde etti.,4,,business
-b1-progress,PROGRESS,P,STARTS,noun,"ilerleme, gelişme",She is making good progress at school.,Okulda iyi ilerleme kaydediyor.,3,,school-work
+b1-progress,PROGRESS,P,STARTS,noun,"sürekli ilerleme, gelişme",She is making good progress at school.,Okulda iyi ilerleme kaydediyor.,3,,school-work
 b1-properly,PROPERLY,P,STARTS,adv,doğru ve uygun biçimde,The machine is not working properly.,Makine düzgün çalışmıyor.,3,,technology
 b1-property,PROPERTY,P,STARTS,noun,bir kişiye ait mal veya mülk,This land is my family's property.,Bu arazi ailemin mülkü.,4,,business
 b1-protect,PROTECT,P,STARTS,verb,zarardan korumak,Sunscreen will protect your skin.,Güneş kremi cildini koruyacak.,3,,body-health
-b1-protest,PROTEST,P,STARTS,noun,bir şeye karşı yapılan gösteri,There was a large protest in the city centre.,Şehir merkezinde büyük bir protesto vardı.,4,,daily-life
+b1-protest,PROTEST,P,STARTS,noun,bir şeye karşı yapılan gösteri,There was a large protest in the city center.,Şehir merkezinde büyük bir protesto vardı.,4,,daily-life
 b1-provide,PROVIDE,P,STARTS,verb,ihtiyacı olan şeyi sağlamak,The hotel will provide breakfast.,Otel kahvaltı sağlayacak.,3,,business
 b1-purpose,PURPOSE,P,STARTS,noun,bir şeyin yapılma amacı,What is the purpose of your visit?,Ziyaretinin amacı nedir?,3,,daily-life

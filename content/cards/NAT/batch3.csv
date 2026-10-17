@@ -14,7 +14,7 @@ nat-gratuitous,GRATUITOUS,G,STARTS,adj,"(şiddet, hakaret) hiçbir gerekçesi ol
 nat-gregarious,GREGARIOUS,G,STARTS,adj,kalabalığı ve insanlarla birlikte olmayı seven,She is gregarious and loves big parties.,İnsan canlısıdır ve büyük partileri sever.,5,,general
 nat-grimace,GRIMACE,G,STARTS,noun,acı ya da hoşnutsuzlukla yüz buruşturma,He made a grimace as he tasted the medicine.,İlacı tadınca yüzünü buruşturdu.,4,,general
 nat-grovel,GROVEL,G,STARTS,verb,affedilmek için yerlere kadar eğilip yalvarmak,I refuse to grovel for my job.,İşim için yerlere kadar eğilip yalvarmayı reddediyorum.,5,,general
-nat-gruelling,GRUELLING,G,STARTS,adj,"(maç, antrenman) insanı tüketen, çok yorucu","After a gruelling match, the players collapsed.",Tüketici bir maçın ardından oyuncular yere yığıldı.,4,,general
+nat-gruelling,GRUELING,G,STARTS,adj,"(maç, antrenman) insanı tüketen, çok yorucu","After a grueling match, the players collapsed.",Tüketici bir maçın ardından oyuncular yere yığıldı.,4,,general
 nat-gruff,GRUFF,G,STARTS,adj,"(ses, tavır) kaba, boğuk ve sert",He has a gruff voice but a kind heart.,Sesi sert ve boğuk ama kalbi iyidir.,4,,general
 nat-guile,GUILE,G,STARTS,noun,"kurnazlık, hile ustalığı",She won not by force but by guile.,Zorla değil kurnazlıkla kazandı.,5,,general
 nat-gusto,GUSTO,G,STARTS,noun,"büyük zevk, iştah ve şevk",He ate the meal with gusto.,Yemeği büyük bir iştahla yedi.,4,,general
@@ -30,7 +30,7 @@ nat-harbinger,HARBINGER,H,STARTS,noun,(genelde kötü) bir şeyin yaklaştığı
 nat-haughty,HAUGHTY,H,STARTS,adj,kendini üstün görüp herkese tepeden bakan,The haughty waiter ignored us.,Kendini beğenmiş garson bizi görmezden geldi.,4,,general
 nat-hedonism,HEDONISM,H,STARTS,noun,hayatı zevk ve keyif için yaşama anlayışı,Their holiday was pure hedonism.,Tatilleri tam bir zevk ve sefaydı.,4,,general
 nat-heinous,HEINOUS,H,STARTS,adj,"(suç) ahlaken son derece iğrenç, affedilmez",It was a heinous crime.,"Affedilmez, iğrenç bir suçtu.",5,,general
-nat-heresy,HERESY,H,STARTS,noun,yerleşik inanca ya da görüşe aykırı düşünce,"In this office, criticising the boss is heresy.",Bu ofiste patronu eleştirmek dinden çıkmak gibi bir şey.,5,,general
+nat-heresy,HERESY,H,STARTS,noun,yerleşik inanca ya da görüşe aykırı düşünce,"In this office, criticizing the boss is heresy.",Bu ofiste patronu eleştirmek dinden çıkmak gibi bir şey.,5,,general
 nat-hiatus,HIATUS,H,STARTS,noun,"(grup, dizi) çalışmalara verilen uzun ara",The band went on hiatus for five years.,Grup beş yıl ara verdi.,5,,general
 nat-hubris,HUBRIS,H,STARTS,noun,insanı felakete sürükleyen aşırı kibir,His hubris led to his downfall.,Aşırı kibri onun sonunu getirdi.,5,,general
 nat-humdrum,HUMDRUM,H,STARTS,adj,"tekdüze, renksiz ve sıkıcı",He was tired of his humdrum life.,Tekdüze hayatından bıkmıştı.,5,,general
@@ -66,7 +66,7 @@ nat-insipid,INSIPID,I,STARTS,adj,(yemek) tatsız tuzsuz; (kişi) yavan,The soup 
 nat-intransigent,INTRANSIGENT,I,STARTS,adj,"müzakerede tek adım geri atmayan, uzlaşmaz",Both sides remain intransigent.,İki taraf da uzlaşmaz tavrını koruyor.,5,,general
 nat-intrepid,INTREPID,I,STARTS,adj,"yılmaz, korkusuz (kâşif, gezgin)",The intrepid explorers crossed the ice.,Korkusuz kâşifler buzulu geçti.,5,,general
 nat-inundate,INUNDATE,I,STARTS,verb,"(mektup, talep) sel gibi yağdırıp boğmak",Viewers continue to inundate the station with complaints.,İzleyiciler kanalı şikâyet yağmuruna tutmaya devam ediyor.,5,,general
-nat-irreverent,IRREVERENT,I,STARTS,adj,"ciddi şeylere saygı göstermeyen, alaycı",He has an irreverent sense of humour.,Ciddi şeyleri tiye alan bir mizah anlayışı var.,4,,general
+nat-irreverent,IRREVERENT,I,STARTS,adj,"ciddi şeylere saygı göstermeyen, alaycı",He has an irreverent sense of humor.,Ciddi şeyleri tiye alan bir mizah anlayışı var.,4,,general
 nat-itinerant,ITINERANT,I,STARTS,adj,"işi gereği yerden yere dolaşan, gezgin",He worked as an itinerant musician.,Gezgin bir müzisyen olarak çalıştı.,5,,general
 nat-incumbent,INCUMBENT,I,STARTS,noun,şu anda görevde olan kişi (seçimde),The incumbent won the election again.,Görevdeki başkan seçimi yine kazandı.,4,,general
 nat-indignant,INDIGNANT,I,STARTS,adj,haksızlığa uğradığı için öfkeli,She was indignant at being blamed.,Suçlandığı için öfkeliydi.,4,,general
@@ -83,7 +83,7 @@ nat-juggernaut,JUGGERNAUT,J,STARTS,noun,önüne geçilemeyen dev güç,The compa
 nat-cajole,CAJOLE,J,CONTAINS,verb,tatlı dille kandırıp ikna etmek,She tried to cajole him into staying.,Kalması için onu tatlı dille ikna etmeye çalıştı.,5,,general
 nat-adjudicate,ADJUDICATE,J,CONTAINS,verb,bir davada ya da anlaşmazlıkta resmen hüküm vermek,A judge will adjudicate the dispute.,Anlaşmazlığa bir hâkim karar verecek.,5,,general
 nat-pejorative,PEJORATIVE,J,CONTAINS,adj,(sözcük) aşağılayıcı anlam taşıyan,The word is often used in a pejorative sense.,Sözcük çoğu zaman aşağılayıcı anlamda kullanılır.,5,,general
-nat-subjugate,SUBJUGATE,J,CONTAINS,verb,bir halkı boyunduruk altına almak,The empire tried to subjugate its neighbours.,İmparatorluk komşularını boyunduruk altına almaya çalıştı.,5,,general
+nat-subjugate,SUBJUGATE,J,CONTAINS,verb,bir halkı boyunduruk altına almak,The empire tried to subjugate its neighbors.,İmparatorluk komşularını boyunduruk altına almaya çalıştı.,5,,general
 nat-perjury,PERJURY,J,CONTAINS,noun,mahkemede yeminli yalan tanıklık,He was jailed for perjury.,Yalan yere yemin etmekten hapse girdi.,5,,general
 nat-dejected,DEJECTED,J,CONTAINS,adj,"keyfi kaçmış, morali bozuk ve yüzü asık",The dejected players left the pitch.,Morali bozuk oyuncular sahayı terk etti.,4,,general
 nat-disjointed,DISJOINTED,J,CONTAINS,adj,"(konuşma, film) kopuk kopuk, tutarsız",The film felt disjointed.,Film kopuk kopuk geldi.,5,,general

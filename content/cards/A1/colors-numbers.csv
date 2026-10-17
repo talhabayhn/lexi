@@ -14,9 +14,9 @@ a1-nine,NINE,N,STARTS,noun,dokuz,Ali has nine marbles.,Ali'nin dokuz misketi var
 a1-zero,ZERO,Z,STARTS,noun,sıfır,The code starts with zero.,Kod sıfırla başlıyor.,1,,colors-numbers
 a1-sixteen,SIXTEEN,X,CONTAINS,noun,on altı,The minibus has sixteen seats.,Minibüste on altı koltuk var.,2,,colors-numbers
 a1-one,ONE,O,STARTS,adj,"sayıların ilki, bir",I have one coin.,Bir bozuk param var.,1,,colors-numbers
-a1-number,NUMBER,N,STARTS,noun,"sayı, numara",Mert dialled the number.,Mert numarayı çevirdi.,1,,colors-numbers
+a1-number,NUMBER,N,STARTS,noun,"sayı, numara",Mert dialed the number.,Mert numarayı çevirdi.,1,,colors-numbers
 a1-brown,BROWN,B,STARTS,adj,toprak rengi,She has brown eyes.,Kahverengi gözleri var.,1,,colors-numbers
-a1-grey,GREY,G,STARTS,adj,bulut rengi,The pigeon is grey.,Güvercin gri.,1,,colors-numbers
+a1-grey,GRAY,G,STARTS,adj,bulut rengi,The pigeon is gray.,Güvercin gri.,1,,colors-numbers
 a1-three,THREE,T,STARTS,noun,üç,I have three cousins.,Üç kuzenim var.,1,,colors-numbers
 a1-four,FOUR,F,STARTS,noun,dört,I bought four eggs.,Dört yumurta aldım.,1,,colors-numbers
 a1-ten,TEN,T,STARTS,noun,on,The ferry leaves at ten.,Vapur ona kalkıyor.,1,,colors-numbers

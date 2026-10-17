@@ -3,16 +3,16 @@ a1-like,LIKE,L,STARTS,verb,hoşlanmak veya beğenmek,I like this song.,Bu şark�
 a1-want,WANT,W,STARTS,verb,bir şeye sahip olmayı dilemek,Do you want some olives?,Biraz zeytin ister misin?,1,,daily-life
 a1-please,PLEASE,P,STARTS,adv,rica ederken eklenen nazik söz,"Could you hurry, please?","Acele eder misiniz, lütfen?",1,,daily-life
 a1-take,TAKE,T,STARTS,verb,bir şeyi alıp başka yere götürmek,I will take these flowers to Ayşe.,Bu çiçekleri Ayşe'ye götüreceğim.,2,,daily-life
-a1-new,NEW,N,STARTS,adj,daha önce kullanılmamış,We have new neighbours.,Yeni komşularımız var.,1,,daily-life
+a1-new,NEW,N,STARTS,adj,daha önce kullanılmamış,We have new neighbors.,Yeni komşularımız var.,1,,daily-life
 a1-long,LONG,L,STARTS,adj,bir uçtan ötekine mesafesi ya da süresi fazla,It is a long journey.,Bu uzun bir yolculuk.,1,,daily-life
-a1-live,LIVE,L,STARTS,verb,bir yerde oturmak,My cousins live in Bursa.,Kuzenlerim Bursa'da yaşıyor.,1,,daily-life
+a1-live,LIVE,L,STARTS,verb,bir yerde yaşamak,My cousins live in Bursa.,Kuzenlerim Bursa'da yaşıyor.,1,,daily-life
 a1-clean,CLEAN,C,STARTS,adj,leke ya da toz olmayan,Your hands are clean.,Ellerin temiz.,1,,daily-life
 a1-look,LOOK,L,STARTS,verb,gözünü bir yöne çevirmek,"Look, it is snowing!","Bak, kar yağıyor!",1,,daily-life
 a1-outside,OUTSIDE,O,STARTS,adv,binanın dışında,The cats rest outside.,Kediler dışarıda dinleniyor.,2,,daily-life
 a1-again,AGAIN,A,STARTS,adv,bir kez daha,It is snowing again.,Yine kar yağıyor.,2,,daily-life
 a1-also,ALSO,A,STARTS,adv,bunun yanında,She also speaks Arabic.,"O, Arapça da konuşur.",2,,daily-life
 a1-birthday,BIRTHDAY,B,STARTS,noun,doğduğun günün her yılki kutlaması,Is it your birthday?,Bugün senin doğum günün mü?,1,,daily-life
-a1-boring,BORING,B,STARTS,adj,insanı sıkan,This programme is boring.,Bu program sıkıcı.,2,,daily-life
+a1-boring,BORING,B,STARTS,adj,insanı sıkan,This program is boring.,Bu program sıkıcı.,2,,daily-life
 a1-cheap,CHEAP,C,STARTS,adj,fiyatı düşük,These shoes are cheap.,Bu ayakkabılar ucuz.,1,,daily-life
 a1-country,COUNTRY,C,STARTS,noun,sınırları ve hükûmeti olan toprak parçası,This country has lovely beaches.,Bu ülkenin güzel plajları var.,2,,city-transport
 a1-different,DIFFERENT,D,STARTS,adj,birbirine benzemeyen,Cats and dogs are different.,Kediler ve köpekler birbirinden farklıdır.,2,,daily-life
@@ -30,19 +30,19 @@ a1-news,NEWS,N,STARTS,noun,yeni olaylar hakkında verilen bilgi,I have news for 
 a1-of-course,OF COURSE,O,STARTS,phrase,"tabii ki, elbette",Is Ali clever? Of course!,Ali akıllı mı? Tabii ki!,2,,daily-life
 a1-okay,OKAY,O,STARTS,adj,sorunu olmayan,Are you okay?,İyi misin?,1,,daily-life
 a1-photo,PHOTO,P,STARTS,noun,kamerayla çekilen görüntü,Her photo is in my purse.,Onun fotoğrafı çantamda.,1,,daily-life
-a1-place,PLACE,P,STARTS,noun,bir şeyin bulunduğu yer,This is a lovely place.,Burası güzel bir yer.,2,,city-transport
+a1-place,PLACE,P,STARTS,noun,"yer, mekân",This is a lovely place.,Burası güzel bir yer.,2,,city-transport
 a1-price,PRICE,P,STARTS,noun,bir şey için ödenecek para miktarı,The price is low.,Fiyat düşük.,2,,daily-life
 a1-really,REALLY,R,STARTS,adv,gerçekten,That is really lovely!,Bu gerçekten çok güzel!,2,,daily-life
 a1-rainy,RAINY,R,STARTS,adj,çok yağmur yağan,It is rainy in Rize.,Rize'de hava yağmurlu.,2,,time-weather
-a1-sometimes,SOMETIMES,S,STARTS,adv,ara sıra,Sometimes Ali cries.,Bazen Ali ağlar.,2,,time-weather
+a1-sometimes,SOMETIMES,S,STARTS,adv,"bazen, ara ara",Sometimes Ali cries.,Bazen Ali ağlar.,2,,time-weather
 a1-stop,STOP,S,STARTS,verb,hareketi bırakıp durmak,"Stop, thief!","Dur, hırsız!",1,,daily-life
 a1-talk,TALK,T,STARTS,verb,biriyle sohbet etmek,We talk for hours.,Saatlerce sohbet ederiz.,2,,daily-life
-a1-together,TOGETHER,T,STARTS,adv,birlikte,We practise together.,Birlikte pratik yapıyoruz.,2,,daily-life
+a1-together,TOGETHER,T,STARTS,adv,birlikte,We practice together.,Birlikte pratik yapıyoruz.,2,,daily-life
 a1-try,TRY,T,STARTS,verb,bir şeyi denemek,Can I try it on?,Bunu deneyebilir miyim?,1,,daily-life
 a1-welcome,WELCOME,W,STARTS,phrase,gelen birini karşılarken söylenen söz,Welcome to İzmir!,İzmir'e hoş geldin!,1,,daily-life
 a1-world,WORLD,W,STARTS,noun,yeryüzü ve üzerindeki her şey,She wants to see the world.,Dünyayı görmek istiyor.,2,,daily-life
 a1-excuse-me,EXCUSE ME,X,CONTAINS,phrase,dikkat çekerken söylenen kibar söz,"Excuse me, is this seat taken?","Afedersiniz, bu koltuk dolu mu?",2,,daily-life
-a1-favourite,FAVOURITE,F,STARTS,adj,en çok sevilen,That is my favourite song.,Bu benim en sevdiğim şarkı.,2,,daily-life
+a1-favourite,FAVORITE,F,STARTS,adj,en çok sevilen,That is my favorite song.,Bu benim en sevdiğim şarkı.,2,,daily-life
 a1-sheep,SHEEP,S,STARTS,noun,yünü için yetiştirilen çiftlik hayvanı,The sheep are in the field.,Koyunlar tarlada.,1,,animals
 a1-tiger,TIGER,T,STARTS,noun,siyah çizgili turuncu yırtıcı hayvan,The tiger is dangerous.,Kaplan tehlikelidir.,1,,animals
 a1-mouse,MOUSE,M,STARTS,noun,küçük ve uzun kuyruklu kemirgen,The mouse is hiding beside the wardrobe.,Fare gardırobun yanında saklanıyor.,1,,animals
@@ -66,7 +66,7 @@ a1-boat,BOAT,B,STARTS,noun,su üstünde giden küçük araç,The fishermen are i
 a1-bridge,BRIDGE,B,STARTS,noun,iki yakayı birbirine bağlayan yapı,The bridge is closed.,Köprü kapalı.,2,,city-transport
 a1-supermarket,SUPERMARKET,S,STARTS,noun,her türlü gıdanın satıldığı büyük mağaza,The supermarket is closed on Sundays.,Süpermarket pazar günleri kapalı.,2,,city-transport
 a1-lesson,LESSON,L,STARTS,noun,öğretmenin verdiği ders saati,The lesson is finished.,Ders bitti.,2,,school-work
-a1-maths,MATHS,M,STARTS,noun,sayılarla ilgilenen okul dersi,We have maths on Tuesdays.,Salı günleri matematiğimiz var.,2,,school-work
+a1-maths,MATH,M,STARTS,noun,sayılarla ilgilenen okul dersi,We have math on Tuesdays.,Salı günleri matematiğimiz var.,2,,school-work
 a1-grandparents,GRANDPARENTS,G,STARTS,noun,anne ve babanın anne babası,My grandparents are retired.,Büyükannem ve büyükbabam emekli.,2,,family-people
 a1-boyfriend,BOYFRIEND,B,STARTS,noun,bir kızın erkek sevgilisi,Her boyfriend is a chef.,Onun erkek arkadaşı aşçı.,2,,family-people
 a1-girlfriend,GIRLFRIEND,G,STARTS,noun,bir erkeğin kız sevgilisi,His girlfriend lives in Rome.,Onun kız arkadaşı Roma'da yaşıyor.,2,,family-people
@@ -93,5 +93,5 @@ a1-farmer,FARMER,F,STARTS,noun,tarlada ürün yetiştiren kişi,The farmer is in
 a1-waiter,WAITER,W,STARTS,noun,restoranda yemek servisi yapan kişi,The waiter is polite.,Garson kibar.,1,,school-work
 a1-tourist,TOURIST,T,STARTS,noun,gezmek için başka bir yere gelen kişi,The tourist is lost.,Turist yolunu kaybetmiş.,2,,city-transport
 a1-singer,SINGER,S,STARTS,noun,şarkı söylemeyi meslek edinmiş kişi,That singer is excellent.,O şarkıcı mükemmel.,2,,school-work
-a1-cafe,CAFE,C,STARTS,noun,kahve ve hafif yiyecek satılan küçük mekân,This cafe is cosy.,Bu kafe sıcak ve rahat.,2,,city-transport
+a1-cafe,CAFE,C,STARTS,noun,kahve ve hafif yiyecek satılan küçük mekân,This cafe is cozy.,Bu kafe sıcak ve rahat.,2,,city-transport
 a1-glove,GLOVE,G,STARTS,noun,parmakları saran ve eli koruyan giysi,I lost a glove.,Bir eldivenimi kaybettim.,1,,daily-life

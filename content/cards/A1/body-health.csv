@@ -8,7 +8,7 @@ a1-leg,LEG,L,STARTS,noun,bacak,He broke his leg.,Bacağını kırdı.,1,,body-he
 a1-mouth,MOUTH,M,STARTS,noun,ağız,Cover your mouth.,Ağzını kapat.,2,,body-health
 a1-tooth,TOOTH,T,STARTS,noun,tek bir diş,My tooth hurts.,Dişim ağrıyor.,2,,body-health
 a1-neck,NECK,N,STARTS,noun,boyun,My neck hurts.,Boynum ağrıyor.,2,,body-health
-a1-ill,ILL,I,STARTS,adj,hasta,My neighbour is ill.,Komşum hasta.,2,,body-health
+a1-ill,ILL,I,STARTS,adj,hasta,My neighbor is ill.,Komşum hasta.,2,,body-health
 a1-ear,EAR,E,STARTS,noun,kulak,My ear hurts.,Kulağım ağrıyor.,1,,body-health
 a1-finger,FINGER,F,STARTS,noun,parmak,I hurt my finger.,Parmağımı incittim.,1,,body-health
 a1-hungry,HUNGRY,H,STARTS,adj,"aç, yemek isteyen",The children are hungry.,Çocuklar aç.,1,,body-health

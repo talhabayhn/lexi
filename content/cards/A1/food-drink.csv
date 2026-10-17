@@ -12,7 +12,7 @@ a1-water,WATER,W,STARTS,noun,su,Can I have some water?,Biraz su alabilir miyim?,
 a1-drink,DRINK,D,STARTS,verb,içmek,I drink ayran.,Ayran içiyorum.,1,,food-drink
 a1-pizza,PIZZA,Z,CONTAINS,noun,fırında pişen yuvarlak İtalyan hamur yemeği,Let's order a pizza.,Bir pizza sipariş edelim.,1,,food-drink
 a1-banana,BANANA,B,STARTS,noun,muz,She eats a banana.,Muz yiyor.,1,,food-drink
-a1-cake,CAKE,C,STARTS,noun,"pasta, kek",Mum made a cake for the guests.,Annem misafirler için pasta yaptı.,1,,food-drink
+a1-cake,CAKE,C,STARTS,noun,"pasta, kek",Mom made a cake for the guests.,Annem misafirler için pasta yaptı.,1,,food-drink
 a1-coffee,COFFEE,C,STARTS,noun,kahve,Is the coffee strong?,Kahve koyu mu?,1,,food-drink
 a1-food,FOOD,F,STARTS,noun,yiyecek,The food smells lovely.,Yiyecekler güzel kokuyor.,1,,food-drink
 a1-fruit,FRUIT,F,STARTS,noun,meyve,Fruit is sold at the stall.,Meyve tezgâhta satılır.,1,,food-drink

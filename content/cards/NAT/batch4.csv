@@ -1,5 +1,5 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
-nat-lacklustre,LACKLUSTRE,L,STARTS,adj,"(performans) cansız, parlaklıktan yoksun",The team gave a lacklustre performance.,Takım cansız bir performans sergiledi.,4,,general
+nat-lacklustre,LACKLUSTER,L,STARTS,adj,"(performans) cansız, parlaklıktan yoksun",The team gave a lackluster performance.,Takım cansız bir performans sergiledi.,4,,general
 nat-laconic,LACONIC,L,STARTS,adj,"az ve öz konuşan, kısa cevaplar veren","He gave a laconic reply: ""No.""","Kısa ve öz bir cevap verdi: ""Hayır.""",5,,general
 nat-lament,LAMENT,L,STARTS,verb,(bir kaybın) yasını tutup hayıflanmak,Many fans lament the loss of the old stadium.,Pek çok taraftar eski stadın yok oluşuna hayıflanıyor.,4,,general
 nat-laud,LAUD,L,STARTS,verb,(resmi dilde) övgüler yağdırmak,Critics laud the film as a masterpiece.,Eleştirmenler filmi bir başyapıt diye göklere çıkarıyor.,5,,general
@@ -33,7 +33,7 @@ nat-moribund,MORIBUND,M,STARTS,adj,"(sektör, gelenek) can çekişen, ölmek üz
 nat-morose,MOROSE,M,STARTS,adj,"içine kapanmış, kasvetli ve asık suratlı",He has been morose since his wife left.,Karısı gittiğinden beri suskun ve somurtkan.,5,,general
 nat-motley,MOTLEY,M,STARTS,adj,"(grup) birbirine hiç benzemeyen, karmakarışık",A motley crew of artists lived in the house.,Evde birbirine hiç benzemeyen bir grup sanatçı yaşıyordu.,5,,general
 nat-muse,MUSE,M,STARTS,verb,dalgın dalgın derin düşüncelere dalmak,I like to sit by the sea and muse.,Deniz kenarında oturup dalgın dalgın düşünmeyi severim.,5,,general
-nat-meagre,MEAGRE,M,STARTS,adj,"(gelir, porsiyon) yetersiz, cılız",He lives on a meagre pension.,Cılız bir emekli maaşıyla geçiniyor.,4,,general
+nat-meagre,MEAGER,M,STARTS,adj,"(gelir, porsiyon) yetersiz, cılız",He lives on a meager pension.,Cılız bir emekli maaşıyla geçiniyor.,4,,general
 nat-menial,MENIAL,M,STARTS,adj,"(iş) vasıf gerektirmeyen, aşağı görülen",She took menial jobs to pay for college.,Okul parasını ödemek için vasıfsız işlerde çalıştı.,5,,general
 nat-maelstrom,MAELSTROM,M,STARTS,noun,insanı içine çeken kaos girdabı,They were caught in a maelstrom of war.,Savaşın kaos girdabına kapıldılar.,5,,general
 nat-minutiae,MINUTIAE,M,STARTS,noun,"bir işin en ince, küçük ayrıntıları",She loves the minutiae of planning.,Planlamanın en ince ayrıntılarına bayılır.,5,,general

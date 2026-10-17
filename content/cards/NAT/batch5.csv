@@ -8,7 +8,7 @@ nat-quagmire,QUAGMIRE,Q,STARTS,noun,içinden çıkılmaz bataklık gibi durum,Th
 nat-squander,SQUANDER,Q,CONTAINS,verb,"(para, fırsat) çarçur etmek, heba etmek",Don't squander this chance.,Bu fırsatı heba etme.,4,,general
 nat-squalid,SQUALID,Q,CONTAINS,adj,"(konut) pis, bakımsız ve sefil",They lived in squalid conditions.,Pis ve sefil koşullarda yaşıyorlardı.,5,,general
 nat-antiquated,ANTIQUATED,Q,CONTAINS,adj,"(yöntem, yasa) çağ dışı, köhne",The office uses antiquated computers.,Ofis köhne bilgisayarlar kullanıyor.,4,,general
-nat-chequered,CHEQUERED,Q,CONTAINS,adj,"(geçmiş, kariyer) iniş çıkışlı ve lekeli",He has a chequered past.,"İnişli çıkışlı, lekeli bir geçmişi var.",5,,general
+nat-chequered,CHECKERED,K,CONTAINS,adj,"(geçmiş, kariyer) iniş çıkışlı ve lekeli",He has a checkered past.,"İnişli çıkışlı, lekeli bir geçmişi var.",5,,general
 nat-soliloquy,SOLILOQUY,Q,CONTAINS,noun,oyuncunun sahnede kendi kendine konuşması,Hamlet's soliloquy is famous.,Hamlet'in sahnede kendi kendine konuşması ünlüdür.,5,,general
 nat-ubiquitous,UBIQUITOUS,Q,CONTAINS,adj,"her yerde karşına çıkan, her yerde bulunan",Smartphones are now ubiquitous.,Akıllı telefonlar artık her yerde.,4,,general
 nat-equanimity,EQUANIMITY,Q,CONTAINS,noun,"zor anda bile bozulmayan soğukkanlılık, ruh dengesi",She accepted the bad news with equanimity.,Kötü haberi sükûnetle karşıladı.,5,,general
@@ -16,12 +16,12 @@ nat-obsequious,OBSEQUIOUS,Q,CONTAINS,adj,"aşırı itaatkâr, dalkavukça",The o
 nat-brusque,BRUSQUE,Q,CONTAINS,adj,kabalığa varacak kadar kısa ve ters,Her brusque reply hurt me.,Ters ve kısa cevabı beni kırdı.,5,,general
 nat-grotesque,GROTESQUE,Q,CONTAINS,adj,ürkütücü derecede çirkin ve biçimsiz,The mask had a grotesque face.,Maskenin ürkütücü derecede çirkin bir yüzü vardı.,4,,general
 nat-picturesque,PICTURESQUE,Q,CONTAINS,adj,"(köy, manzara) resim gibi güzel",We drove through picturesque villages.,Resim gibi güzel köylerin içinden geçtik.,4,,general
-nat-exquisite,EXQUISITE,Q,CONTAINS,adj,olağanüstü zarif ve ince güzellikte,She has exquisite taste in jewellery.,Mücevher konusunda son derece zarif bir zevki var.,4,,general
+nat-exquisite,EXQUISITE,Q,CONTAINS,adj,olağanüstü zarif ve ince güzellikte,She has exquisite taste in jewelry.,Mücevher konusunda son derece zarif bir zevki var.,4,,general
 nat-loquacious,LOQUACIOUS,Q,CONTAINS,adj,"konuşmayı çok seven, dilli",Our loquacious guide told endless stories.,Konuşkan rehberimiz bitmek bilmeyen hikâyeler anlattı.,5,,general
 nat-pique,PIQUE,Q,CONTAINS,noun,gururu incinmiş birinin anlık öfkesi,She left the room in a fit of pique.,Gururu incinmiş bir öfkeyle odadan çıktı.,5,,general
 nat-relinquish,RELINQUISH,Q,CONTAINS,verb,"(hak, yetki) istemeyerek bırakmak, devretmek",He refused to relinquish control of the company.,Şirketin kontrolünü bırakmayı reddetti.,5,,general
 nat-ramble,RAMBLE,R,STARTS,verb,konudan konuya atlayıp uzun uzun konuşmak,Old men tend to ramble about the past.,Yaşlı adamlar geçmiş hakkında konudan konuya atlayıp durur.,4,,general
-nat-rancour,RANCOUR,R,STARTS,noun,taraflar arasında süregelen acı husumet,There was no rancour between the old rivals.,Eski rakipler arasında hiç kin kalmamıştı.,5,,general
+nat-rancour,RANCOR,R,STARTS,noun,taraflar arasında süregelen acı husumet,There was no rancor between the old rivals.,Eski rakipler arasında hiç kin kalmamıştı.,5,,general
 nat-rapacious,RAPACIOUS,R,STARTS,adj,"doymak bilmez açgözlü, yağmacı",The rapacious landlord raised the rent again.,Açgözlü ev sahibi kirayı yine artırdı.,5,,general
 nat-rapport,RAPPORT,R,STARTS,noun,iki kişi arasında kurulan sıcak uyum ve anlayış,The teacher has a good rapport with her pupils.,Öğretmenin öğrencileriyle arası çok iyi.,4,,general
 nat-raucous,RAUCOUS,R,STARTS,adj,"(kahkaha, ses) kulak tırmalayacak kadar gürültülü",We heard raucous laughter from the bar.,Bardan kulak tırmalayan kahkahalar duyduk.,5,,general
@@ -57,7 +57,7 @@ nat-serene,SERENE,S,STARTS,adj,"(yüz, göl) huzurlu, dingin",She had a serene s
 nat-smug,SMUG,S,STARTS,adj,"kendinden fazla memnun, burnu havada",He gave a smug grin after winning.,Kazandıktan sonra burnu havada bir sırıtış attı.,4,,general
 nat-snide,SNIDE,S,STARTS,adj,(söz) sinsice aşağılayıcı,She made a snide remark about my dress.,Elbisem hakkında sinsice aşağılayıcı bir laf etti.,5,,general
 nat-solace,SOLACE,S,STARTS,noun,"acı anlarda teselli, avuntu",He found solace in music.,Müzikte teselli buldu.,4,,general
-nat-sombre,SOMBRE,S,STARTS,adj,"(renk, hava) koyu, kasvetli ve hüzünlü",The funeral was a sombre occasion.,Cenaze kasvetli ve hüzünlü bir ortamdı.,4,,general
+nat-sombre,SOMBER,S,STARTS,adj,"(renk, hava) koyu, kasvetli ve hüzünlü",The funeral was a somber occasion.,Cenaze kasvetli ve hüzünlü bir ortamdı.,4,,general
 nat-soporific,SOPORIFIC,S,STARTS,adj,"insana uyku getiren, uyutucu",The lecture had a soporific effect.,Ders insanı uyutacak cinstendi.,5,,general
 nat-staid,STAID,S,STARTS,adj,"(kurum, imaj) ağırbaşlı ve yeniliğe kapalı",The bank has a staid image.,Bankanın tutucu ve sıkıcı bir imajı var.,5,,general
 nat-staunch,STAUNCH,S,STARTS,adj,(destekçi) sadık ve sarsılmaz,He is a staunch supporter of the party.,Partinin sadık ve sarsılmaz bir destekçisi.,5,,general
@@ -82,7 +82,7 @@ nat-tempestuous,TEMPESTUOUS,T,STARTS,adj,"(ilişki, mizaç) tutkulu ve sık sık
 nat-tenacious,TENACIOUS,T,STARTS,adj,"(hedefine) sıkı sıkıya tutunan, yılmaz",She is a tenacious defender.,"Pes etmeyen, yılmaz bir defans oyuncusu.",5,,general
 nat-tenet,TENET,T,STARTS,noun,bir öğretinin temel ilkesi,Honesty is a central tenet of the club.,Dürüstlük kulübün temel ilkesidir.,5,,general
 nat-tenuous,TENUOUS,T,STARTS,adj,"(bağ, iddia) çok zayıf, pamuk ipliği gibi",The link between the two cases is tenuous.,İki dava arasındaki bağ çok zayıf.,5,,general
-nat-tepid,TEPID,T,STARTS,adj,"(tepki) gönülsüz, coşkusuz; (su) ılık",The film got a tepid response.,Film coşkusuz bir tepki aldı.,5,,general
+nat-tepid,TEPID,T,STARTS,adj,"(tepki) coşkusuz, ilgisiz",The film got a tepid response.,Film coşkusuz bir tepki aldı.,5,,general
 nat-terse,TERSE,T,STARTS,adj,(cevap) kısa ve soğuk,He sent a terse email.,Kısa ve soğuk bir e-posta gönderdi.,4,,general
 nat-thwart,THWART,T,STARTS,verb,(planı) engelleyip boşa çıkarmak,Police acted to thwart the attack.,Polis saldırıyı engellemek için harekete geçti.,4,,general
 nat-tirade,TIRADE,T,STARTS,noun,"öfkeli, uzun suçlama konuşması",She launched into a tirade against her boss.,Patronuna karşı öfkeli bir suçlama konuşmasına girişti.,5,,general

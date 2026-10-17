@@ -16,7 +16,7 @@ b2-fortunate,FORTUNATE,F,STARTS,adj,"şanslı, talihli",We were fortunate to fin
 b2-fragile,FRAGILE,F,STARTS,adj,kolayca kırılabilen,Be careful; this glass is fragile.,Dikkatli ol; bu bardak kırılgan.,3,,daily-life
 b2-fraud,FRAUD,F,STARTS,noun,para kazanmak için yapılan dolandırıcılık,He went to prison for fraud.,Dolandırıcılıktan hapse girdi.,4,,business
 b2-frustration,FRUSTRATION,F,STARTS,noun,isteneni yapamamaktan doğan hayal kırıklığı,I could hear the frustration in his voice.,Sesindeki sıkıntıyı duyabiliyordum.,4,,daily-life
-b2-fulfil,FULFIL,F,STARTS,verb,bir isteği ya da görevi yerine getirmek,She worked hard to fulfil her dream.,Hayalini gerçekleştirmek için çok çalıştı.,4,,school-work
+b2-fulfil,FULFILL,F,STARTS,verb,bir isteği ya da görevi yerine getirmek,She worked hard to fulfill her dream.,Hayalini gerçekleştirmek için çok çalıştı.,4,,school-work
 b2-fundamental,FUNDAMENTAL,F,STARTS,adj,temel ve çok önemli,Reading is a fundamental skill.,Okumak temel bir beceridir.,4,,school-work
 b2-furnish,FURNISH,F,STARTS,verb,bir yeri mobilyalarla donatmak,They plan to furnish the flat with old pieces.,Daireyi eski eşyalarla döşemeyi planlıyorlar.,4,,daily-life
 b2-furthermore,FURTHERMORE,F,STARTS,adv,"dahası, bunun üzerine","Furthermore, the prices are very low.","Dahası, fiyatlar çok düşük.",4,,business
@@ -33,7 +33,7 @@ b2-genuinely,GENUINELY,G,STARTS,adv,"içtenlikle, gerçekten",She was genuinely 
 b2-grant,GRANT,G,STARTS,verb,resmen izin veya hak vermek,The school will grant him a place.,Okul ona bir yer verecek.,4,,school-work
 b2-grasp,GRASP,G,STARTS,verb,bir şeyi sıkıca tutmak; anlamak,I could not grasp the idea.,Fikri kavrayamadım.,4,,school-work
 b2-guideline,GUIDELINE,G,STARTS,noun,izlenmesi tavsiye edilen kural,Follow this safety guideline.,Bu güvenlik yönergesine uyun.,4,,business
-b2-get-along,GET ALONG,G,STARTS,phrasal,biriyle iyi anlaşmak,Do you get along with your neighbours?,Komşularınla iyi anlaşıyor musun?,3,,phrasal-verbs
+b2-get-along,GET ALONG,G,STARTS,phrasal,biriyle iyi anlaşmak,Do you get along with your neighbors?,Komşularınla iyi anlaşıyor musun?,3,,phrasal-verbs
 b2-get-away,GET AWAY,G,STARTS,phrasal,bir yerden kaçmak veya uzaklaşmak,The thief tried to get away.,Hırsız kaçmaya çalıştı.,3,,phrasal-verbs
 b2-get-by,GET BY,G,STARTS,phrasal,zar zor geçinmek,They get by on a small salary.,Küçük bir maaşla geçiniyorlar.,4,,phrasal-verbs
 b2-get-over,GET OVER,G,STARTS,phrasal,hastalık ya da üzüntüyü atlatmak,It took her weeks to get over the flu.,Gripten kurtulması haftalar aldı.,4,,phrasal-verbs
@@ -73,7 +73,7 @@ b2-interfere,INTERFERE,I,STARTS,verb,bir işe izinsiz karışmak,Please don't in
 b2-interpret,INTERPRET,I,STARTS,verb,bir şeyin anlamını yorumlamak; sözlü çevirmek,How do you interpret this poem?,Bu şiiri nasıl yorumluyorsun?,4,,school-work
 b2-interval,INTERVAL,I,STARTS,noun,iki olay arasındaki ara,There was a short interval in the middle of the play.,Oyunun ortasında kısa bir ara vardı.,3,,film-tv
 b2-invaluable,INVALUABLE,I,STARTS,adj,"paha biçilmez, çok değerli",Her advice was invaluable.,Tavsiyesi paha biçilmezdi.,4,,business
-b2-irritate,IRRITATE,I,STARTS,verb,rahatsız edip sinirlendirmek,Loud music can irritate the neighbours.,Yüksek sesli müzik komşuları rahatsız edebilir.,4,,daily-life
+b2-irritate,IRRITATE,I,STARTS,verb,rahatsız edip sinirlendirmek,Loud music can irritate the neighbors.,Yüksek sesli müzik komşuları rahatsız edebilir.,4,,daily-life
 b2-isolate,ISOLATE,I,STARTS,verb,bir şeyi diğerlerinden ayrı tutmak,Doctors isolate sick patients.,Doktorlar hasta kişileri ayrı tutar.,4,,body-health
 b2-in-the-long-run,IN THE LONG RUN,I,STARTS,idiom,"uzun vadede, sonunda",Saving money pays off in the long run.,Para biriktirmek uzun vadede kazandırır.,4,,idioms
 b2-fall-out,FALL OUT,F,STARTS,phrasal,biriyle tartışıp araları bozulmak,The brothers might fall out over money.,Kardeşlerin para yüzünden araları bozulabilir.,4,,phrasal-verbs

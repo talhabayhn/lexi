@@ -46,7 +46,7 @@ c1-horizon,HORIZON,Z,CONTAINS,noun,yer ile gökyüzünün birleştiği çizgi,Th
 c1-sizeable,SIZEABLE,Z,CONTAINS,adj,oldukça büyük,They won a sizeable amount of money.,Oldukça büyük bir miktar para kazandılar.,5,,business
 c1-synthesize,SYNTHESIZE,Z,CONTAINS,verb,parçaları birleştirip yeni bir bütün yapmak,Students must synthesize several sources.,Öğrenciler birkaç kaynağı sentezlemelidir.,5,,school-work
 c1-royalty,ROYALTY,Y,CONTAINS,noun,yazara ya da sanatçıya ödenen telif payı,The author earns a royalty on every copy.,Yazar her kopyadan telif payı alır.,5,,film-tv
-c1-synthetic,SYNTHETIC,Y,CONTAINS,adj,"doğal olmayan, yapay üretilmiş",The jacket is made of synthetic fibre.,Ceket sentetik elyaftan yapılmış.,5,,school-work
+c1-synthetic,SYNTHETIC,Y,CONTAINS,adj,"doğal olmayan, yapay üretilmiş",The jacket is made of synthetic fiber.,Ceket sentetik elyaftan yapılmış.,5,,school-work
 c1-syndicate,SYNDICATE,Y,CONTAINS,noun,ortak çıkar için kurulan iş birliği grubu,A syndicate of banks funded the project.,Bir banka grubu projeyi finanse etti.,5,,business
 c1-eyewitness,EYEWITNESS,Y,CONTAINS,noun,olayı gözüyle gören tanık,An eyewitness described the robber.,Bir görgü tanığı soyguncuyu tarif etti.,5,,school-work
 c1-youthful,YOUTHFUL,Y,STARTS,adj,"genç görünüşlü, dinç",She has a youthful face.,Genç görünüşlü bir yüzü var.,4,,school-work

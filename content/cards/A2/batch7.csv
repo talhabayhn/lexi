@@ -20,7 +20,7 @@ a2-reception,RECEPTION,R,STARTS,noun,otelde gelenleri karşılayan masa,Leave yo
 a2-reply,REPLY,R,STARTS,verb,bir soru ya da mesaja karşılık vermek,Please reply to my email.,Lütfen e-postama cevap ver.,3,,daily-life
 a2-surprise,SURPRISE,R,CONTAINS,noun,beklenmedik bir olay ya da hediye,The party was a nice surprise.,Parti güzel bir sürprizdi.,3,,daily-life
 a2-straight,STRAIGHT,R,CONTAINS,adv,"eğri olmayan biçimde, doğruca","Go straight on, then turn left.","Dümdüz git, sonra sola dön.",3,,city-transport
-a2-writer,WRITER,R,CONTAINS,noun,"yazmayı meslek edinen kişi (gazete, dizi vb.)",My favourite writer lives in London.,En sevdiğim yazar Londra'da yaşıyor.,3,,school-work
+a2-writer,WRITER,R,CONTAINS,noun,"yazmayı meslek edinen kişi (gazete, dizi vb.)",My favorite writer lives in London.,En sevdiğim yazar Londra'da yaşıyor.,3,,school-work
 a2-terrible,TERRIBLE,R,CONTAINS,adj,"dayanılmaz derecede kötü (ağrı, hata vb.)",I have a terrible headache.,Korkunç bir baş ağrım var.,3,,body-health
 a2-fairy,FAIRY,R,CONTAINS,noun,masallarda sihirli güçleri olan küçük kanatlı kız,The fairy waved her wand.,Peri değneğini salladı.,2,,daily-life
 a2-scary,SCARY,R,CONTAINS,adj,"korku veren, ürkütücü",The film was too scary for me.,Film benim için çok korkutucuydu.,2,,daily-life
@@ -30,7 +30,7 @@ a2-salary,SALARY,S,STARTS,noun,çalışanın her ay aldığı maaş,His salary i
 a2-sale,SALE,S,STARTS,noun,"ucuz fiyatla yapılan satış, indirim",There is a sale at the shoe shop.,Ayakkabı dükkânında indirim var.,2,,daily-life
 a2-sauce,SAUCE,S,STARTS,noun,yemeğin üstüne eklenen sıvı,I like tomato sauce on pasta.,Makarnanın üstüne domates sosunu severim.,2,,food-drink
 a2-score,SCORE,S,STARTS,noun,bir maçta atılan gol ya da kazanılan sayılar,What is the score?,Skor kaç?,2,,sports
-a2-season,SEASON,S,STARTS,noun,yılın dört bölümünden biri,Summer is my favourite season.,Yaz en sevdiğim mevsim.,2,,time-weather
+a2-season,SEASON,S,STARTS,noun,yılın dört bölümünden biri,Summer is my favorite season.,Yaz en sevdiğim mevsim.,2,,time-weather
 a2-seat,SEAT,S,STARTS,noun,"otobüs, sinema gibi yerlerde tek kişilik koltuk",Is this seat free?,Bu koltuk boş mu?,2,,city-transport
 a2-secret,SECRET,S,STARTS,noun,başkalarına söylenmemesi gereken bilgi,It is a big secret.,Bu büyük bir sır.,3,,daily-life
 a2-serious,SERIOUS,S,STARTS,adj,"şaka yapmayan, endişe verici ölçüde ciddi",This is a serious problem.,Bu ciddi bir sorun.,3,,daily-life
@@ -48,13 +48,13 @@ a2-silver,SILVER,S,STARTS,noun,"beyazımsı parlak değerli maden, gümüş",Thi
 a2-sink,SINK,S,STARTS,noun,mutfakta bulaşık yıkanan lavabo,There are dishes in the sink.,Lavaboda tabaklar var.,2,,home
 a2-slice,SLICE,S,STARTS,noun,ekmek ya da pastadan kesilen ince parça,Would you like a slice of cake?,Bir dilim kek ister misin?,2,,food-drink
 a2-slowly,SLOWLY,S,STARTS,adv,"acele etmeden, yavaş bir şekilde",Please speak slowly.,Lütfen yavaş konuşun.,2,,daily-life
-a2-smart,SMART,S,STARTS,adj,"zeki, çabuk öğrenen",Your sister is very smart.,Kız kardeşin çok akıllı.,2,,school-work
+a2-smart,SMART,S,STARTS,adj,"akıllı, çabuk kavrayan",Your sister is very smart.,Kız kardeşin çok akıllı.,2,,school-work
 a2-smoke,SMOKE,S,STARTS,noun,yanan şeyden çıkan gri gaz,There is smoke in the kitchen.,Mutfakta duman var.,2,,home
 a2-soldier,SOLDIER,S,STARTS,noun,orduda görev yapan asker,The soldier stood at the door.,Asker kapıda durdu.,3,,daily-life
 a2-solve,SOLVE,S,STARTS,verb,bir sorunun cevabını bulmak,Can you solve this problem?,Bu sorunu çözebilir misin?,3,,school-work
 a2-someone,SOMEONE,S,STARTS,noun,bilinmeyen bir kişi,Someone is at the door.,Kapıda biri var.,3,,daily-life
 a2-somewhere,SOMEWHERE,S,STARTS,adv,belirsiz bir yer,I left my keys somewhere.,Anahtarlarımı bir yerde bıraktım.,3,,daily-life
-a2-song,SONG,S,STARTS,noun,sözlü ve melodili müzik parçası,This is my favourite song.,Bu en sevdiğim şarkı.,2,,music
+a2-song,SONG,S,STARTS,noun,sözlü ve melodili müzik parçası,This is my favorite song.,Bu en sevdiğim şarkı.,2,,music
 a2-space,SPACE,S,STARTS,noun,dünyanın dışındaki sonsuz boşluk ya da boş yer,There is no space in my bag.,Çantamda yer yok.,3,,daily-life
 a2-speaker,SPEAKER,S,STARTS,noun,sesi yükselten hoparlör ya da konuşmacı,Turn on the speaker.,Hoparlörü aç.,3,,music
 a2-speech,SPEECH,S,STARTS,noun,topluluk önünde yapılan konuşma,The teacher gave a short speech.,Öğretmen kısa bir konuşma yaptı.,3,,school-work

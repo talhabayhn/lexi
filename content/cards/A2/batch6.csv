@@ -1,7 +1,7 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
 a2-mad,MAD,M,STARTS,adj,"birine kızmış, öfkelenmiş (günlük dil)",My mother was mad at me.,Annem bana çok kızdı.,3,,family-people
 a2-main,MAIN,M,STARTS,adj,"en önemli olan, ana",The main street is closed.,Ana cadde kapalı.,3,,city-transport
-a2-mark,MARK,M,STARTS,noun,okulda bir sınava verilen puan,She got a high mark in maths.,Matematikten yüksek bir not aldı.,3,,school-work
+a2-mark,MARK,M,STARTS,noun,okulda bir sınava verilen puan,She got a high mark in math.,Matematikten yüksek bir not aldı.,3,,school-work
 a2-marry,MARRY,M,STARTS,verb,biriyle evlenmek,They will marry in the spring.,İlkbaharda evlenecekler.,3,,family-people
 a2-mean,MEAN,M,STARTS,verb,"bir sözcüğün karşılığı olmak, anlamına gelmek",What does this word mean?,Bu sözcük ne anlama geliyor?,3,,school-work
 a2-medicine,MEDICINE,M,STARTS,noun,hastalığı iyileştirmek için alınan ilaç,Take this medicine at night.,Bu ilacı geceleri al.,2,,body-health
@@ -20,7 +20,7 @@ a2-medal,MEDAL,M,STARTS,noun,"boyna asılan altın, gümüş ya da bronz ödül"
 a2-medium,MEDIUM,M,STARTS,adj,"ne büyük ne küçük, orta boy",I wear a medium T-shirt.,Orta boy tişört giyiyorum.,3,,daily-life
 a2-mushroom,MUSHROOM,M,STARTS,noun,"ormanda biten, saplı şapkalı yenebilen bitki",We had mushroom soup for lunch.,Öğle yemeğinde mantar çorbası içtik.,2,,food-drink
 a2-mosquito,MOSQUITO,M,STARTS,noun,"insanı sokan, vızıldayan küçük böcek",A mosquito landed on my arm.,Koluma bir sivrisinek kondu.,3,,animals
-a2-moustache,MOUSTACHE,M,STARTS,noun,üst dudağın üzerindeki bıyık,My grandfather has a white moustache.,Dedemin beyaz bir bıyığı var.,3,,body-health
+a2-moustache,MUSTACHE,M,STARTS,noun,üst dudağın üzerindeki bıyık,My grandfather has a white mustache.,Dedemin beyaz bir bıyığı var.,3,,body-health
 a2-magician,MAGICIAN,M,STARTS,noun,sihir numaralarıyla insanları şaşırtan kişi,The magician pulled a rabbit out of a hat.,Sihirbaz şapkadan bir tavşan çıkardı.,3,,daily-life
 a2-promise,PROMISE,M,CONTAINS,verb,birine söz vermek,I promise to call you.,Seni arayacağıma söz veriyorum.,3,,daily-life
 a2-timetable,TIMETABLE,M,CONTAINS,noun,derslerin ya da seferlerin zaman çizelgesi,Look at the bus timetable.,Otobüs tarifesine bak.,3,,school-work
@@ -51,7 +51,7 @@ a2-prince,PRINCE,P,STARTS,noun,kralın oğlu,The prince is ten years old.,Prens 
 a2-princess,PRINCESS,P,STARTS,noun,kralın ya da kraliçenin kızı,The princess wore a long dress.,Prenses uzun bir elbise giydi.,2,,family-people
 a2-print,PRINT,P,STARTS,verb,yazıyı kâğıda basmak,Can you print this page?,Bu sayfayı yazdırabilir misin?,3,,school-work
 a2-probably,PROBABLY,P,STARTS,adv,büyük olasılıkla,It will probably rain tomorrow.,Yarın muhtemelen yağmur yağacak.,3,,time-weather
-a2-programme,PROGRAMME,P,STARTS,noun,televizyonda yayınlanan gösteri,My favourite TV programme starts at eight.,En sevdiğim televizyon programı sekizde başlıyor.,3,,daily-life
+a2-programme,PROGRAM,P,STARTS,noun,televizyonda yayınlanan gösteri,My favorite TV program starts at eight.,En sevdiğim televizyon programı sekizde başlıyor.,3,,daily-life
 a2-proud,PROUD,P,STARTS,adj,başarılarından dolayı gurur duyan,I am proud of my son.,Oğlumla gurur duyuyorum.,3,,family-people
 a2-pumpkin,PUMPKIN,P,STARTS,noun,"turuncu renkli büyük yuvarlak sebze, balkabağı",We made soup from a pumpkin.,Balkabağından çorba yaptık.,2,,food-drink
 a2-personal,PERSONAL,P,STARTS,adj,kişiye özel olan,This is a personal question.,Bu kişisel bir soru.,4,,daily-life

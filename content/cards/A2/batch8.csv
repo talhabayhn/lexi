@@ -12,7 +12,7 @@ a2-tiny,TINY,T,STARTS,adj,"çok küçük, minicik",A tiny spider sat on my hand.
 a2-tip,TIP,T,STARTS,noun,garsona bırakılan fazladan para ya da küçük öneri,We left a tip for the waiter.,Garson için bahşiş bıraktık.,3,,food-drink
 a2-title,TITLE,T,STARTS,noun,kitabın ya da filmin adı,What is the title of the book?,Kitabın adı ne?,3,,school-work
 a2-tool,TOOL,T,STARTS,noun,çekiç gibi iş yapmaya yarayan alet,A spade is a tool.,Kürek bir alettir.,3,,home
-a2-towards,TOWARDS,T,STARTS,phrase,bir yere doğru yönelerek,The boy ran towards the sea.,Çocuk denize doğru koştu.,3,,city-transport
+a2-towards,TOWARD,T,STARTS,phrase,bir yere doğru yönelerek,The boy ran toward the sea.,Çocuk denize doğru koştu.,3,,city-transport
 a2-traditional,TRADITIONAL,T,STARTS,adj,eski zamanlardan beri süren geleneksel,We cooked a traditional dish.,Geleneksel bir yemek pişirdik.,3,,food-drink
 a2-trainer,TRAINER,T,STARTS,noun,spor için giyilen rahat ayakkabı,My left trainer is dirty.,Sol spor ayakkabım kirli.,3,,sports
 a2-transport,TRANSPORT,T,STARTS,noun,insanları ya da malları taşıma sistemi,The city has good transport.,Şehirde ulaşım iyi.,3,,city-transport
@@ -23,12 +23,12 @@ a2-trouble,TROUBLE,T,STARTS,noun,"sıkıntı, güçlük",I had trouble with my b
 a2-true,TRUE,T,STARTS,adj,"gerçeğe uygun, doğru",Is this story true?,Bu hikâye gerçek mi?,2,,daily-life
 a2-tunnel,TUNNEL,T,STARTS,noun,dağın ya da yerin altından geçen yol,The train goes into a long tunnel.,Tren uzun bir tünele giriyor.,3,,city-transport
 a2-twin,TWIN,T,STARTS,noun,aynı anda doğan iki kardeşten biri,She has a twin brother.,Onun ikiz bir erkek kardeşi var.,3,,family-people
-a2-tyre,TYRE,T,STARTS,noun,aracın tekerleğini saran lastik,The car has a flat tyre.,Arabanın lastiği patlak.,3,,city-transport
+a2-tyre,TIRE,T,STARTS,noun,aracın tekerleğini saran lastik,The car has a flat tire.,Arabanın lastiği patlak.,3,,city-transport
 a2-takeaway,TAKEAWAY,T,STARTS,noun,dışarı alınıp evde yenen yemek,Let's get a takeaway tonight.,Bu akşam paket yemek alalım.,3,,food-drink
 a2-tap,TAP,T,STARTS,noun,suyun akmasını sağlayan musluk,Turn off the tap.,Musluğu kapat.,2,,home
 a2-thick,THICK,T,STARTS,adj,kalınlığı çok olan,The book is very thick.,Kitap çok kalın.,2,,school-work
 a2-tongue,TONGUE,T,STARTS,noun,"ağız içindeki tat alan organ, dil",The doctor looked at my tongue.,Doktor dilime baktı.,3,,body-health
-a2-traveller,TRAVELLER,T,STARTS,noun,uzak yerlere sık sık yolculuk eden kişi,The traveller carries a big bag.,Gezgin büyük bir çanta taşıyor.,3,,travel
+a2-traveller,TRAVELER,T,STARTS,noun,uzak yerlere sık sık yolculuk eden kişi,The traveler carries a big bag.,Gezgin büyük bir çanta taşıyor.,3,,travel
 a2-trumpet,TRUMPET,T,STARTS,noun,ağızdan üflenerek çalınan parlak metal çalgı,He plays the trumpet in a band.,Bir grupta trompet çalıyor.,3,,music
 a2-tube,TUBE,T,STARTS,noun,"boya ya da krem konan, sıkılarak boşaltılan kap",The paint comes in a tube.,Boya bir tüp içinde geliyor.,3,,daily-life
 a2-tune,TUNE,T,STARTS,noun,akılda kalan kısa ezgi,I know the tune but not the words.,Ezgiyi biliyorum ama sözleri bilmiyorum.,3,,music
