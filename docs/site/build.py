@@ -87,7 +87,8 @@ CSS = """
 @font-face{font-family:Jost;font-weight:600;src:url(Jost-SemiBold.ttf) format("truetype");font-display:swap}
 @font-face{font-family:Jost;font-weight:700;src:url(Jost-Bold.ttf) format("truetype");font-display:swap}
 @font-face{font-family:Jost;font-weight:800;src:url(Jost-ExtraBold.ttf) format("truetype");font-display:swap}
-:root{--cream:#F2EBDD;--ink:#111111;--red:#D9281C;--blue:#1F4FBF;--yellow:#F2C200;--white:#FFFFFF}
+/* LexiColors (docs/design/tokens.md); keep in sync with the app theme. */
+:root{--cream:#F7F4EE;--ink:#1F242D;--red:#E0534C;--blue:#3D68B2;--yellow:#E29E2E;--white:#FFFFFF}
 *{box-sizing:border-box}
 html{color-scheme:light}
 body{margin:0;background:var(--cream);color:var(--ink);font-family:Jost,system-ui,sans-serif;font-weight:500;
