@@ -59,3 +59,68 @@ b2-biotechnology,BIOTECHNOLOGY,B,STARTS,noun,canlıları kullanarak ürün geli�
 b2-semiconductor,SEMICONDUCTOR,S,STARTS,noun,"elektriği kısmen ileten madde, yarı iletken",Silicon is the most common semiconductor.,Silikon en yaygın yarı iletkendir.,5,exam:yokdil,technology
 b2-sensor,SENSOR,S,STARTS,noun,"ısı, ışık ya da hareketi algılayan aygıt",The lights turn on when the sensor detects movement.,Algılayıcı hareketi fark edince ışıklar yanar.,3,exam:yokdil,technology
 b2-ultraviolet,ULTRAVIOLET,U,STARTS,adj,morötesi; gözle görülmeyen güneş ışını türü,Ultraviolet light can damage your eyes.,Morötesi ışık gözlerine zarar verebilir.,4,exam:yokdil,technology
+b2-allergy,ALLERGY,Y,CONTAINS,noun,"vücudun bazı maddelere aşırı tepki vermesi, alerji",Dust allergy is common in old houses.,Eski evlerde toz alerjisi yaygındır.,3,exam:yokdil,body-health
+b2-cardiac,CARDIAC,C,STARTS,adj,kalple ilgili,He had cardiac surgery last year.,Geçen yıl kalp ameliyatı oldu.,4,exam:yokdil,body-health
+b2-chemotherapy,CHEMOTHERAPY,Y,CONTAINS,noun,kanseri ilaçla tedavi etme yöntemi,She lost her hair during chemotherapy.,Kemoterapi sırasında saçları döküldü.,4,exam:yokdil,body-health
+b2-contagious,CONTAGIOUS,C,STARTS,adj,"temasla kişiden kişiye geçen, bulaşıcı",Chickenpox is very contagious.,Su çiçeği çok bulaşıcıdır.,4,exam:yokdil,body-health
+b2-dental,DENTAL,D,STARTS,adj,dişlerle ilgili,Regular dental checks keep teeth healthy.,Düzenli diş kontrolleri dişleri sağlıklı tutar.,3,exam:yokdil,body-health
+b2-embryo,EMBRYO,Y,CONTAINS,noun,gelişiminin ilk evresindeki cenin,The embryo develops a heartbeat in the sixth week.,Embriyoda altıncı haftada kalp atışı başlar.,4,exam:yokdil,body-health
+b2-insomnia,INSOMNIA,I,STARTS,noun,uykusuzluk hastalığı,Stress is a common cause of insomnia.,Stres uykusuzluğun yaygın bir nedenidir.,4,exam:yokdil,body-health
+b2-medication,MEDICATION,M,STARTS,noun,tedavi için kullanılan ilaç,Take your medication after meals.,İlacını yemeklerden sonra al.,3,exam:yokdil,body-health
+b2-overdose,OVERDOSE,O,STARTS,noun,bir ilacın tehlikeli ölçüde fazla alınması,An overdose of painkillers can damage the liver.,Ağrı kesicinin aşırı dozu karaciğere zarar verebilir.,4,exam:yokdil,body-health
+b2-painkiller,PAINKILLER,P,STARTS,noun,ağrıyı dindiren ilaç,The doctor gave me a painkiller for my back.,Doktor sırtım için ağrı kesici verdi.,3,exam:yokdil,body-health
+b2-swollen,SWOLLEN,S,STARTS,adj,bir darbe ya da hastalık sonucu şişmiş,My ankle was swollen after the fall.,Düştükten sonra ayak bileğim şişmişti.,3,exam:yokdil,body-health
+b2-x-ray,X RAY,X,STARTS,noun,"kemikleri görüntülemek için çekilen ışın filmi, röntgen",The X ray showed a broken bone.,Röntgen kırık bir kemik gösterdi.,3,exam:yokdil,body-health
+b2-immunization,IMMUNIZATION,Z,CONTAINS,noun,aşıyla bağışıklık kazandırma,Immunization has wiped out smallpox.,Aşılama çiçek hastalığını yok etti.,5,exam:yokdil,body-health
+b2-germ,GERM,G,STARTS,noun,hastalık yapan mikrop,Wash your hands to kill every germ.,Her mikrobu öldürmek için ellerini yıka.,3,exam:yokdil,body-health
+b2-sterilize,STERILIZE,Z,CONTAINS,verb,mikroplardan arındırmak,Nurses sterilize the tools before surgery.,Hemşireler ameliyattan önce aletleri sterilize eder.,4,exam:yokdil,body-health
+b2-disinfect,DISINFECT,D,STARTS,verb,mikrop öldürücüyle temizlemek,Disinfect the table after you cut raw meat.,Çiğ et kestikten sonra masayı dezenfekte et.,4,exam:yokdil,body-health
+b2-antiseptic,ANTISEPTIC,A,STARTS,noun,yaralarda mikrop üremesini önleyen madde,Put some antiseptic on the cut.,Kesiğe biraz antiseptik sür.,4,exam:yokdil,body-health
+b2-heredity,HEREDITY,Y,CONTAINS,noun,"özelliklerin anne babadan çocuğa geçmesi, kalıtım",Heredity plays a role in many illnesses.,Kalıtım pek çok hastalıkta rol oynar.,5,exam:yokdil,body-health
+b2-prognosis,PROGNOSIS,P,STARTS,noun,bir hastalığın nasıl seyredeceğine dair tahmin,The prognosis for most patients is good.,Hastaların çoğu için öngörü iyi.,5,exam:yokdil,body-health
+b2-life-expectancy,LIFE EXPECTANCY,Y,CONTAINS,phrase,ortalama yaşam süresi beklentisi,Life expectancy in Japan is over eighty.,Japonya'da ortalama yaşam süresi sekseni aşıyor.,4,exam:yokdil,body-health
+b2-childbirth,CHILDBIRTH,C,STARTS,noun,doğum yapma,She was well prepared for childbirth.,Doğuma iyi hazırlanmıştı.,4,exam:yokdil,body-health
+b2-pregnancy,PREGNANCY,Y,CONTAINS,noun,hamilelik,Smoking during pregnancy harms the baby.,Hamilelikte sigara içmek bebeğe zarar verir.,3,exam:yokdil,body-health
+b2-lactose,LACTOSE,L,STARTS,noun,sütte bulunan şeker,Many adults cannot digest lactose well.,Pek çok yetişkin laktozu iyi sindiremez.,4,exam:yokdil,body-health
+b2-diabetic,DIABETIC,D,STARTS,adj,şeker hastası olan; şeker hastalığıyla ilgili,My uncle eats diabetic chocolate.,Amcam diyabetik çikolata yer.,4,exam:yokdil,body-health
+b2-anatomy,ANATOMY,Y,CONTAINS,noun,vücudun yapısını inceleyen bilim,Medical students study anatomy first.,Tıp öğrencileri önce anatomi okur.,4,exam:yokdil,body-health
+b2-antibiotic,ANTIBIOTIC,A,STARTS,noun,bakterileri öldüren ilaç,An antibiotic only kills bacteria.,Antibiyotik yalnızca bakterileri öldürür.,3,exam:yokdil,body-health
+b2-antibody,ANTIBODY,Y,CONTAINS,noun,vücudun mikroplara karşı ürettiği savunma proteini,The test looks for an antibody in the blood.,Test kanda bir antikor arar.,4,exam:yokdil,body-health
+b2-artery,ARTERY,Y,CONTAINS,noun,"kanı kalpten vücuda taşıyan damar, atardamar",A blocked artery can stop blood reaching the heart.,Tıkalı bir atardamar kanın kalbe ulaşmasını engelleyebilir.,4,exam:yokdil,body-health
+b2-cholesterol,CHOLESTEROL,C,STARTS,noun,kanda bulunan ve fazlası damarları tıkayan yağlı madde,Fried food raises cholesterol.,Kızartma kolesterolü yükseltir.,4,exam:yokdil,body-health
+b2-clinical,CLINICAL,C,STARTS,adj,"hastaların gözlem ve tedavisiyle ilgili, klinik",The drug is still in clinical trials.,İlaç hâlâ klinik deneme aşamasında.,4,exam:yokdil,body-health
+b2-congenital,CONGENITAL,C,STARTS,adj,doğuştan gelen (hastalık),She was born with a congenital heart problem.,Doğuştan bir kalp sorunuyla dünyaya geldi.,5,exam:yokdil,body-health
+b2-dehydration,DEHYDRATION,Y,CONTAINS,noun,vücudun aşırı su kaybetmesi,Drink water to avoid dehydration.,Susuz kalmamak için su iç.,4,exam:yokdil,body-health
+b2-dementia,DEMENTIA,D,STARTS,noun,"bellek ve düşünme yetisinin giderek kaybı, bunama",Dementia affects many old people.,Bunama pek çok yaşlıyı etkiler.,4,exam:yokdil,body-health
+b2-dosage,DOSAGE,D,STARTS,noun,bir ilacın ne kadar ve ne sıklıkla alınacağı,Check the dosage on the box.,Kutunun üstündeki kullanım dozunu kontrol et.,4,exam:yokdil,body-health
+b2-fracture,FRACTURE,F,STARTS,noun,kemik kırığı,The scan showed a small fracture.,Görüntüleme küçük bir kırık gösterdi.,4,exam:yokdil,body-health
+b2-gland,GLAND,G,STARTS,noun,"vücutta salgı üreten organ, bez",The thyroid gland is in the neck.,Tiroit bezi boyundadır.,4,exam:yokdil,body-health
+b2-inflammation,INFLAMMATION,I,STARTS,noun,"vücudun bir bölgesinin kızarıp şişmesi, iltihap",Ice can reduce inflammation.,Buz iltihabı azaltabilir.,4,exam:yokdil,body-health
+b2-lesion,LESION,L,STARTS,noun,"deride ya da bir organda oluşan hasar, lezyon",The scan showed a small lesion on the lung.,Tarama akciğerde küçük bir lezyon gösterdi.,5,exam:yokdil,body-health
+b2-migraine,MIGRAINE,M,STARTS,noun,çok şiddetli ve tekrarlayan baş ağrısı,Bright light can bring on a migraine.,Parlak ışık migreni başlatabilir.,3,exam:yokdil,body-health
+b2-neurological,NEUROLOGICAL,N,STARTS,adj,sinir sistemiyle ilgili,Parkinson's is a neurological illness.,Parkinson nörolojik bir hastalıktır.,5,exam:yokdil,body-health
+b2-outpatient,OUTPATIENT,O,STARTS,noun,hastanede yatmadan tedavi gören hasta,The clinic treats every outpatient within an hour.,Klinik her ayakta hastayı bir saat içinde tedavi ediyor.,4,exam:yokdil,body-health
+b2-paralysis,PARALYSIS,Y,CONTAINS,noun,"bir organın hareket yeteneğini yitirmesi, felç",The accident left him with paralysis in both legs.,Kaza onun iki bacağında felç bıraktı.,5,exam:yokdil,body-health
+b2-pediatric,PEDIATRIC,P,STARTS,adj,çocuk hastalıklarıyla ilgili,She works in a pediatric hospital.,Bir çocuk hastanesinde çalışıyor.,4,exam:yokdil,body-health
+b2-placebo,PLACEBO,P,STARTS,noun,etkisiz madde içeren sahte ilaç,Half of the patients got a placebo.,Hastaların yarısına plasebo verildi.,5,exam:yokdil,body-health
+b2-relapse,RELAPSE,R,STARTS,noun,"iyileşmeden sonra hastalığın yeniden kötüleşmesi, nüks",He had a relapse after a month.,Bir ay sonra hastalığı nüksetti.,5,exam:yokdil,body-health
+b2-remission,REMISSION,R,STARTS,noun,bir hastalığın belirtilerinin geçici olarak kaybolması,The cancer is in remission.,Kanser geriledi.,5,exam:yokdil,body-health
+b2-sedative,SEDATIVE,S,STARTS,noun,sakinleştirici ilaç,The doctor gave him a mild sedative.,Doktor ona hafif bir sakinleştirici verdi.,5,exam:yokdil,body-health
+b2-sterile,STERILE,S,STARTS,adj,"mikropsuz, steril",Use a sterile bandage on the cut.,Kesiğe steril bir sargı kullan.,4,exam:yokdil,body-health
+b2-surgeon,SURGEON,S,STARTS,noun,"ameliyat yapan doktor, cerrah",The surgeon washed her hands.,Cerrah ellerini yıkadı.,3,exam:yokdil,body-health
+b2-transplant,TRANSPLANT,T,STARTS,noun,organ nakli,She needs a kidney transplant.,Böbrek nakline ihtiyacı var.,4,exam:yokdil,body-health
+b2-vein,VEIN,V,STARTS,noun,"kanı kalbe taşıyan damar, toplardamar",The nurse could not find a vein.,Hemşire damar bulamadı.,3,exam:yokdil,body-health
+b2-anorexia,ANOREXIA,X,CONTAINS,noun,kilo alma korkusuyla aşırı az yeme bozukluğu,Anorexia is a serious eating problem.,Anoreksiya ciddi bir yeme sorunudur.,5,exam:yokdil,body-health
+b2-seizure,SEIZURE,Z,CONTAINS,noun,"ani nöbet, kasılma",The child had a seizure at school.,Çocuk okulda nöbet geçirdi.,4,exam:yokdil,body-health
+b2-skull,SKULL,K,CONTAINS,noun,"beyni koruyan kemik yapı, kafatası",A helmet protects your skull.,Kask kafatasını korur.,3,exam:yokdil,body-health
+b2-physiology,PHYSIOLOGY,Y,CONTAINS,noun,canlıların vücut işlevlerini inceleyen bilim,She teaches human physiology.,İnsan fizyolojisi dersi veriyor.,5,exam:yokdil,body-health
+b2-psychiatrist,PSYCHIATRIST,Y,CONTAINS,noun,ruh hastalıklarını tedavi eden doktor,He has been seeing a psychiatrist for a year.,Bir yıldır bir psikiyatriste gidiyor.,4,exam:yokdil,body-health
+b2-unconscious,UNCONSCIOUS,U,STARTS,adj,"bilinci yerinde olmayan, baygın",The driver was unconscious after the crash.,Sürücü kazadan sonra baygındı.,3,exam:yokdil,body-health
+b2-heart-attack,HEART ATTACK,H,STARTS,phrase,kalbe kan gitmemesiyle oluşan ani kriz,He had a heart attack at the age of fifty.,Elli yaşında kalp krizi geçirdi.,3,exam:yokdil,body-health
+b2-side-effect,SIDE EFFECT,S,STARTS,phrase,"bir ilacın istenmeyen ek etkisi, yan etki",Sleepiness is a side effect of this drug.,Uyku hâli bu ilacın bir yan etkisidir.,3,exam:yokdil,body-health
+b2-immune-system,IMMUNE SYSTEM,Y,CONTAINS,phrase,vücudu hastalıklara karşı koruyan sistem,Sleep keeps your immune system strong.,Uyku bağışıklık sistemini güçlü tutar.,3,exam:yokdil,body-health
+b2-nervous-system,NERVOUS SYSTEM,Y,CONTAINS,phrase,"beyin, omurilik ve sinirlerden oluşan sistem",The brain is part of the nervous system.,Beyin sinir sisteminin bir parçasıdır.,4,exam:yokdil,body-health
+b2-toxicity,TOXICITY,X,CONTAINS,noun,bir maddenin zehirlilik derecesi,The toxicity of the drug is low.,İlacın zehirlilik düzeyi düşük.,5,exam:yokdil,body-health
+b2-exhale,EXHALE,X,CONTAINS,verb,nefes vermek,Inhale through your nose and exhale slowly.,Burnundan nefes al ve yavaşça ver.,4,exam:yokdil,body-health
+b2-stem-cell,STEM CELL,S,STARTS,phrase,farklı hücrelere dönüşebilen kök hücre,Stem cell research may help treat some illnesses.,Kök hücre araştırmaları bazı hastalıkların tedavisine yardım edebilir.,5,exam:yokdil,body-health
+b2-wound,WOUND,W,STARTS,noun,vücutta kesik ya da delikle oluşan yara,The wound needed six stitches.,Yaraya altı dikiş atıldı.,3,exam:yokdil,body-health
