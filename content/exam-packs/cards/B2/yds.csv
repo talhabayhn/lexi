@@ -1,0 +1,54 @@
+id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
+b2-hence,HENCE,H,STARTS,adv,"bu nedenle, dolayısıyla (resmî)",The road was icy; hence the delay.,Yol buzluydu; gecikme bu yüzden.,3,exam:yds,school-work
+b2-therefore,THEREFORE,T,STARTS,adv,"bu sebeple, bundan dolayı","The data were incomplete; therefore, no clear conclusion was possible.",Veriler eksikti; bu nedenle net bir sonuca varmak mümkün değildi.,2,exam:yds,school-work
+b2-accordingly,ACCORDINGLY,A,STARTS,adv,buna uygun olarak; bu yüzden,"Prices rose, and demand fell accordingly.",Fiyatlar arttı ve talep buna bağlı olarak düştü.,4,exam:yds,school-work
+b2-conversely,CONVERSELY,C,STARTS,adv,"tersine, buna karşılık","Some drugs raise blood pressure; conversely, others lower it.",Bazı ilaçlar tansiyonu yükseltir; buna karşılık diğerleri düşürür.,4,exam:yds,school-work
+b2-due-to,DUE TO,D,STARTS,phrase,"-den dolayı, sebebiyle",The flight was cancelled due to fog.,Uçuş sis nedeniyle iptal edildi.,2,exam:yds,school-work
+b2-additionally,ADDITIONALLY,A,STARTS,adv,"bunun yanı sıra, ek olarak","Additionally, the study looked at sleep patterns.",Bunun yanı sıra çalışma uyku düzenlerini de inceledi.,3,exam:yds,school-work
+b2-alternatively,ALTERNATIVELY,A,STARTS,adv,"öbür seçenek olarak, ya da","You can travel by train; alternatively, you can fly.",Trenle gidebilirsin; diğer seçenek olarak uçabilirsin.,3,exam:yds,school-work
+b2-apparently,APPARENTLY,A,STARTS,adv,"görünüşe göre, anlaşılan","Apparently, the meeting has been moved to Friday.",Anlaşılan toplantı cumaya alınmış.,2,exam:yds,school-work
+b2-presumably,PRESUMABLY,P,STARTS,adv,"tahminen, büyük olasılıkla","The office is dark, so presumably everyone has left.","Ofis karanlık, yani büyük ihtimalle herkes çıkmış.",4,exam:yds,school-work
+b2-solely,SOLELY,S,STARTS,adv,"yalnızca, sadece ve sadece",The decision was based solely on cost.,Karar yalnızca maliyete dayanıyordu.,4,exam:yds,school-work
+b2-evidently,EVIDENTLY,E,STARTS,adv,açıkça görüldüğü üzere,"Evidently, the plan had not worked.",Açıkça görülüyordu ki plan işe yaramamıştı.,4,exam:yds,school-work
+b2-essentially,ESSENTIALLY,E,STARTS,adv,"özünde, temelde",The two theories are essentially the same.,İki kuram özünde aynıdır.,3,exam:yds,school-work
+b2-simultaneously,SIMULTANEOUSLY,S,STARTS,adv,"aynı anda, eş zamanlı olarak",The two events happened simultaneously.,İki olay eş zamanlı gerçekleşti.,4,exam:yds,school-work
+b2-respectively,RESPECTIVELY,R,STARTS,adv,sırasıyla (söylenen düzene göre),Ali and Ayşe came first and second respectively.,Ali ve Ayşe sırasıyla birinci ve ikinci oldu.,4,exam:yds,school-work
+b2-subsequently,SUBSEQUENTLY,Q,CONTAINS,adv,"daha sonra, ardından",He was arrested and subsequently released.,Tutuklandı ve ardından serbest bırakıldı.,4,exam:yds,school-work
+b2-invariably,INVARIABLY,I,STARTS,adv,"her zaman, istisnasız",The bus is invariably late on Mondays.,Otobüs pazartesileri istisnasız geç kalır.,4,exam:yds,school-work
+b2-predominantly,PREDOMINANTLY,P,STARTS,adv,"ağırlıklı olarak, çoğunlukla",The town is predominantly agricultural.,Kasaba ağırlıklı olarak tarımsaldır.,5,exam:yds,school-work
+b2-contrary,CONTRARY,C,STARTS,adj,"tam ters, karşıt","Contrary to popular belief, bats are not blind.",Yaygın inancın aksine yarasalar kör değildir.,3,exam:yds,school-work
+b2-prior,PRIOR,P,STARTS,adj,"önceki, daha önce olan",No prior experience is needed for this job.,Bu iş için önceden deneyim gerekmez.,3,exam:yds,school-work
+b2-previous,PREVIOUS,P,STARTS,adj,"bir öncekine ait, önceki",The previous owner left the house in poor condition.,Önceki sahibi evi kötü durumda bıraktı.,2,exam:yds,school-work
+b2-latter,LATTER,L,STARTS,noun,sözü edilen iki şeyden ikincisi,"Of tea and coffee, I prefer the latter.",Çay ve kahveden ikincisini tercih ederim.,3,exam:yds,school-work
+b2-amongst,AMONGST,A,STARTS,adv,arasında (resmî),The idea is popular amongst young voters.,Fikir genç seçmenler arasında popüler.,4,exam:yds,school-work
+b2-whereby,WHEREBY,W,STARTS,adv,"ki bununla, aracılığıyla",They set up a system whereby users can vote online.,Kullanıcıların çevrim içi oy verebileceği bir sistem kurdular.,5,exam:yds,school-work
+b2-assign,ASSIGN,A,STARTS,verb,birine bir görev ya da iş vermek,The teacher will assign each group a topic.,Öğretmen her gruba bir konu verecek.,3,exam:yds,school-work
+b2-assist,ASSIST,A,STARTS,verb,"yardım etmek, destek olmak (resmî)",Nurses assist doctors during operations.,Hemşireler ameliyatlarda doktorlara yardım eder.,2,exam:yds,school-work
+b2-calculate,CALCULATE,C,STARTS,verb,hesap yaparak bulmak,Calculate the total cost of the project.,Projenin toplam maliyetini hesapla.,2,exam:yds,school-work
+b2-capacity,CAPACITY,C,STARTS,noun,alabileceği en fazla miktar; yeterlik,The stadium has a capacity of fifty thousand.,Stadyumun elli bin kişilik kapasitesi var.,3,exam:yds,school-work
+b2-category,CATEGORY,C,STARTS,noun,"benzer özellikteki şeylerin oluşturduğu grup, sınıf",Put the words into the correct category.,Kelimeleri doğru gruba yerleştir.,2,exam:yds,school-work
+b2-classify,CLASSIFY,C,STARTS,verb,ortak özelliklerine göre gruplara ayırmak,Biologists classify animals by their features.,Biyologlar hayvanları özelliklerine göre sınıflandırır.,3,exam:yds,school-work
+b2-component,COMPONENT,C,STARTS,noun,bir bütünü oluşturan parçalardan biri,Trust is a key component of any friendship.,Güven her arkadaşlığın temel bir parçasıdır.,3,exam:yds,school-work
+b2-comprehend,COMPREHEND,C,STARTS,verb,bir şeyi tam olarak kavramak,It is hard to comprehend the size of the universe.,Evrenin büyüklüğünü kavramak zor.,4,exam:yds,school-work
+b2-concept,CONCEPT,C,STARTS,noun,"soyut düşünce, kavram",The concept of time is hard to explain.,Zaman kavramını açıklamak zordur.,2,exam:yds,school-work
+b2-decade,DECADE,D,STARTS,noun,on yıllık dönem,The city has grown a lot over the last decade.,Şehir son on yılda çok büyüdü.,2,exam:yds,school-work
+b2-definite,DEFINITE,D,STARTS,adj,"kesin, belirli, şüphe götürmez",We need a definite answer by Monday.,Pazartesiye kadar kesin bir cevaba ihtiyacımız var.,3,exam:yds,school-work
+b2-dimension,DIMENSION,D,STARTS,noun,"ölçü, boyut; bir konunun yönü",The problem has a moral dimension.,Sorunun ahlaki bir boyutu var.,3,exam:yds,school-work
+b2-distinction,DISTINCTION,D,STARTS,noun,"iki şey arasındaki belirgin fark, ayrım",Make a distinction between facts and opinions.,Gerçeklerle görüşler arasında ayrım yap.,3,exam:yds,school-work
+b2-efficient,EFFICIENT,E,STARTS,adj,"az kaynakla çok iş çıkaran, verimli",LED bulbs are more efficient than old ones.,LED ampuller eskilerinden daha verimlidir.,3,exam:yds,school-work
+b2-instance,INSTANCE,I,STARTS,noun,"bir şeyin tek bir örneği, vaka","In this instance, the rule does not apply.",Bu örnekte kural geçerli değil.,3,exam:yds,school-work
+b2-input,INPUT,I,STARTS,noun,"bir sürece verilen bilgi, emek ya da katkı",We would welcome your input on the report.,Rapor hakkındaki katkılarınızı memnuniyetle karşılarız.,3,exam:yds,school-work
+b2-mechanism,MECHANISM,M,STARTS,noun,"bir şeyin işleyiş düzeni, mekanizma",Scientists still study the mechanism of memory.,Bilim insanları hâlâ hafızanın işleyişini inceliyor.,4,exam:yds,school-work
+b2-multiple,MULTIPLE,M,STARTS,adj,"birden çok, çok sayıda",The patient had multiple injuries.,Hastanın birden fazla yarası vardı.,2,exam:yds,school-work
+b2-parallel,PARALLEL,P,STARTS,adj,aralarında eşit uzaklık olan; benzer,Draw two parallel lines on the page.,Sayfaya iki paralel çizgi çiz.,3,exam:yds,school-work
+b2-parameter,PARAMETER,P,STARTS,noun,bir şeyin sınırlarını belirleyen etken,Each test has one fixed parameter: time.,Her testin sabit bir parametresi vardır: zaman.,4,exam:yds,school-work
+b2-passive,PASSIVE,P,STARTS,adj,"edilgen, eylemsiz",Watching TV is a passive activity.,Televizyon izlemek pasif bir etkinliktir.,3,exam:yds,school-work
+b2-possess,POSSESS,P,STARTS,verb,sahip olmak (resmî),Few people possess such talent.,Pek az insan böyle bir yeteneğe sahiptir.,3,exam:yds,school-work
+b2-procedure,PROCEDURE,P,STARTS,noun,bir işin resmî ya da belirli yapılış yolu,Follow the safety procedure carefully.,Güvenlik prosedürünü dikkatle izle.,3,exam:yds,school-work
+b2-ratio,RATIO,R,STARTS,noun,iki miktar arasındaki oran,The ratio of boys to girls is two to one.,Erkeklerin kızlara oranı ikiye bir.,3,exam:yds,school-work
+b2-rational,RATIONAL,R,STARTS,adj,akla ve mantığa dayanan,There must be a rational explanation.,Mantıklı bir açıklaması olmalı.,3,exam:yds,school-work
+b2-status,STATUS,S,STARTS,noun,toplumdaki konum; bir şeyin o anki durumu,Doctors enjoy high status in society.,Doktorlar toplumda yüksek bir konuma sahiptir.,3,exam:yds,school-work
+b2-transition,TRANSITION,T,STARTS,noun,bir durumdan ötekine geçiş,The transition from school to work is hard for many.,Okuldan işe geçiş pek çok kişi için zordur.,3,exam:yds,school-work
+b2-minimal,MINIMAL,M,STARTS,adj,"olabilecek en az, asgari",The storm caused minimal damage.,Fırtına çok az hasara yol açtı.,3,exam:yds,school-work
+b2-integral,INTEGRAL,I,STARTS,adj,bir bütünün ayrılmaz parçası olan,Music is an integral part of the course.,Müzik dersin ayrılmaz bir parçasıdır.,4,exam:yds,school-work
+b2-inference,INFERENCE,I,STARTS,noun,"eldeki bilgiden çıkarılan sonuç, çıkarım",What inference can we draw from these figures?,Bu rakamlardan ne sonuç çıkarabiliriz?,4,exam:yds,school-work

@@ -1,0 +1,7 @@
+id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
+c1-attribute-to,ATTRIBUTE TO,A,STARTS,phrasal,bir sonucu bir nedene bağlamak,The success was hard to attribute to any single factor.,Başarıyı tek bir etkene bağlamak zordu.,4,exam:yds,school-work
+c1-exponential,EXPONENTIAL,X,CONTAINS,adj,katlanarak ve çok hızla artan,The internet saw exponential growth in the 1990s.,İnternet 1990'larda katlanarak büyüdü.,4,exam:yds,school-work
+c1-homogeneous,HOMOGENEOUS,H,STARTS,adj,"her parçası aynı nitelikte olan, türdeş",The group was not homogeneous in age.,Grup yaş bakımından türdeş değildi.,5,exam:yds,school-work
+c1-hypothesize,HYPOTHESIZE,Z,CONTAINS,verb,bir varsayım ortaya atmak,Researchers hypothesize that the virus came from bats.,Araştırmacılar virüsün yarasalardan geldiğini varsayıyor.,5,exam:yds,school-work
+c1-postulate,POSTULATE,P,STARTS,verb,kanıtlanmamış bir şeyi temel kabul etmek,Some scientists postulate that life began in the deep sea.,Bazı bilim insanları yaşamın derin denizde başladığını öne sürer.,5,exam:yds,school-work
+c1-intellectual,INTELLECTUAL,I,STARTS,adj,"zihinsel, düşünsel",Chess requires intellectual effort.,Satranç zihinsel çaba gerektirir.,4,exam:yds,school-work
