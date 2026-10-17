@@ -119,3 +119,51 @@ b2-circulation,CIRCULATION,C,STARTS,noun,kanın vücutta dolaşımı,Walking imp
 b2-donor,DONOR,D,STARTS,noun,kan ya da organ bağışlayan kişi,He became an organ donor after the accident.,Kazadan sonra organ bağışçısı oldu.,3,exam:yds,body-health
 b2-susceptible,SUSCEPTIBLE,S,STARTS,adj,"bir şeyden kolayca etkilenen, yatkın",Old people are more susceptible to infection.,Yaşlılar enfeksiyona daha yatkındır.,5,exam:yds,body-health
 b2-resistance,RESISTANCE,R,STARTS,noun,"direnç, karşı koyma",Bacteria can develop resistance to antibiotics.,Bakteriler antibiyotiklere direnç geliştirebilir.,4,exam:yds,body-health
+b2-emission,EMISSION,E,STARTS,noun,"havaya salınan gaz ya da madde, salım",Cars are a major source of carbon emission.,Arabalar karbon salımının önemli bir kaynağıdır.,3,exam:yds,school-work
+b2-renewable,RENEWABLE,R,STARTS,adj,"tükenmeyen, yenilenebilir",Solar power is a renewable source of energy.,Güneş enerjisi yenilenebilir bir enerji kaynağıdır.,3,exam:yds,school-work
+b2-sustainable,SUSTAINABLE,S,STARTS,adj,doğaya zarar vermeden uzun süre devam ettirilebilen,We need sustainable ways of farming.,Sürdürülebilir tarım yöntemlerine ihtiyacımız var.,3,exam:yds,school-work
+b2-conservation,CONSERVATION,C,STARTS,noun,doğal kaynakları ve canlıları koruma,The park was created for wildlife conservation.,Park yaban hayatını korumak için kuruldu.,3,exam:yds,school-work
+b2-depletion,DEPLETION,D,STARTS,noun,"bir kaynağın tükenmesi, azalması",The depletion of fish stocks worries scientists.,Balık stoklarının tükenmesi bilim insanlarını kaygılandırıyor.,4,exam:yds,school-work
+b2-erosion,EROSION,E,STARTS,noun,toprağın ya da kayanın su ve rüzgârla aşınması,Trees protect the soil from erosion.,Ağaçlar toprağı aşınmaya karşı korur.,3,exam:yds,school-work
+b2-landfill,LANDFILL,L,STARTS,noun,"çöplerin gömüldüğü alan, çöp döküm sahası",Most plastic ends up in a landfill.,Plastiğin çoğu bir çöp sahasında son bulur.,4,exam:yds,school-work
+b2-pollutant,POLLUTANT,P,STARTS,noun,"havayı, suyu ya da toprağı kirleten madde",Factories release pollutants into rivers; each pollutant harms fish.,Fabrikaların saldığı her kirletici balıklara zarar verir.,4,exam:yds,school-work
+b2-irrigation,IRRIGATION,I,STARTS,noun,tarlaların yapay yollarla sulanması,Irrigation turned the dry plain into farmland.,Sulama kurak ovayı tarım arazisine çevirdi.,4,exam:yds,school-work
+b2-overpopulation,OVERPOPULATION,O,STARTS,noun,bir yerde kaldırabileceğinden fazla insan yaşaması,Overpopulation puts pressure on water supplies.,Aşırı nüfus su kaynakları üzerinde baskı yaratır.,4,exam:yds,school-work
+b2-urbanization,URBANIZATION,Z,CONTAINS,noun,nüfusun kırdan kente göçüyle şehirlerin büyümesi,Rapid urbanization changed the coastline.,Hızlı kentleşme kıyı şeridini değiştirdi.,4,exam:yds,school-work
+b2-contamination,CONTAMINATION,C,STARTS,noun,zararlı bir maddeyle kirlenme,The water showed signs of contamination.,Suda kirlenme belirtileri vardı.,4,exam:yds,school-work
+b2-arid,ARID,A,STARTS,adj,"çok az yağış alan, kurak",Cacti grow well in arid regions.,Kaktüsler kurak bölgelerde iyi yetişir.,4,exam:yds,school-work
+b2-abundant,ABUNDANT,A,STARTS,adj,bol miktarda bulunan,Fish were once abundant in this lake.,Bu gölde bir zamanlar bol balık vardı.,3,exam:yds,school-work
+b2-scarcity,SCARCITY,S,STARTS,noun,"kıtlık, azlık",Water scarcity is a growing problem in the region.,Su kıtlığı bölgede giderek büyüyen bir sorundur.,4,exam:yds,school-work
+b2-ecological,ECOLOGICAL,E,STARTS,adj,canlılarla çevreleri arasındaki ilişkiyle ilgili,The oil spill was an ecological disaster.,Petrol sızıntısı ekolojik bir felaketti.,3,exam:yds,school-work
+b2-endanger,ENDANGER,E,STARTS,verb,tehlikeye atmak,New roads endanger rare plants.,Yeni yollar nadir bitkileri tehlikeye atıyor.,3,exam:yds,school-work
+b2-deforestation,DEFORESTATION,D,STARTS,noun,ormanların kesilerek yok edilmesi,Deforestation destroys the homes of many animals.,Orman tahribatı pek çok hayvanın yuvasını yok ediyor.,4,exam:yds,school-work
+b2-greenhouse-gas,GREENHOUSE GAS,G,STARTS,phrase,atmosferde ısıyı tutan gaz,Methane is a powerful greenhouse gas.,Metan güçlü bir sera gazıdır.,3,exam:yds,school-work
+b2-biodegradable,BIODEGRADABLE,B,STARTS,adj,doğada bakterilerle çözünüp yok olabilen,These bags are biodegradable.,Bu poşetler doğada çözünebilir.,4,exam:yds,school-work
+b2-glacier,GLACIER,G,STARTS,noun,dağlarda yavaşça hareket eden büyük buz kütlesi,The glacier has shrunk by half in fifty years.,Buzul elli yılda yarı yarıya küçüldü.,3,exam:yds,school-work
+b2-extinction,EXTINCTION,X,CONTAINS,noun,bir türün tamamen yok olması,Many frogs face extinction.,Pek çok kurbağa türü yok olma tehlikesiyle karşı karşıya.,3,exam:yds,school-work
+b2-expenditure,EXPENDITURE,E,STARTS,noun,bir kurumun ya da devletin yaptığı harcama,Public expenditure on health has risen.,Sağlığa yapılan kamu harcaması arttı.,4,exam:yds,business
+b2-fiscal,FISCAL,F,STARTS,adj,"devlet gelirleri ve vergiyle ilgili, mali",The new fiscal year starts in January.,Yeni mali yıl ocakta başlıyor.,4,exam:yds,business
+b2-monetary,MONETARY,M,STARTS,adj,parayla ve para politikasıyla ilgili,The central bank sets monetary policy.,Para politikasını merkez bankası belirler.,4,exam:yds,business
+b2-gross,GROSS,G,STARTS,adj,"vergi ve giderler düşülmeden önceki, brüt",Her gross salary is higher than her take-home pay.,Brüt maaşı eline geçenden daha yüksek.,3,exam:yds,business
+b2-surplus,SURPLUS,S,STARTS,noun,"ihtiyaçtan fazla olan miktar, fazlalık",The country has a trade surplus.,Ülkenin dış ticaret fazlası var.,4,exam:yds,business
+b2-tariff,TARIFF,T,STARTS,noun,ithal mallara uygulanan gümrük vergisi,The government raised the tariff on steel.,Hükümet çelik üzerindeki gümrük vergisini artırdı.,4,exam:yds,business
+b2-corporate,CORPORATE,C,STARTS,adj,"büyük şirketlerle ilgili, kurumsal",He left his corporate job to open a café.,Kafe açmak için kurumsal işinden ayrıldı.,3,exam:yds,business
+b2-sector,SECTOR,S,STARTS,noun,"ekonominin belirli bir kolu, sektör",Tourism is a key sector in Antalya.,Turizm Antalya'da kilit bir sektördür.,3,exam:yds,business
+b2-affluent,AFFLUENT,A,STARTS,adj,"varlıklı, zengin",They live in an affluent suburb.,Varlıklı bir banliyöde yaşıyorlar.,4,exam:yds,business
+b2-prosperity,PROSPERITY,P,STARTS,noun,"refah, bolluk ve zenginlik içinde olma",Trade brought prosperity to the port city.,Ticaret liman kentine refah getirdi.,4,exam:yds,business
+b2-fluctuation,FLUCTUATION,F,STARTS,noun,"sürekli inip çıkma, dalgalanma",Fluctuation in oil prices hurts airlines.,Petrol fiyatlarındaki dalgalanma havayollarına zarar verir.,4,exam:yds,business
+b2-funding,FUNDING,F,STARTS,noun,"bir projeye sağlanan para, fon",The project lost its funding last year.,Proje geçen yıl fonunu kaybetti.,3,exam:yds,business
+b2-utility,UTILITY,U,STARTS,noun,"elektrik, su, doğalgaz gibi temel hizmet",Utility bills go up in winter.,Faturalar kışın artar.,4,exam:yds,business
+b2-deposit,DEPOSIT,D,STARTS,noun,bankaya yatırılan para; kaparo,You need to pay a deposit to rent the flat.,Daireyi kiralamak için depozito ödemen gerekiyor.,3,exam:yds,business
+b2-labour,LABOUR,L,STARTS,noun,"bedensel ya da zihinsel iş gücü, emek",The factory moved abroad to find cheap labour.,Fabrika ucuz iş gücü bulmak için yurt dışına taşındı.,3,exam:yds,business
+b2-agriculture,AGRICULTURE,A,STARTS,noun,"toprak işleme ve hayvancılık, tarım",Agriculture employs a third of the population.,Tarım nüfusun üçte birine iş sağlıyor.,3,exam:yds,business
+b2-industrial,INDUSTRIAL,I,STARTS,adj,sanayiyle ilgili,Bursa is an industrial city.,Bursa bir sanayi kentidir.,3,exam:yds,business
+b2-domestic,DOMESTIC,D,STARTS,adj,"ülke içi, yurt içi; evle ilgili",Domestic flights leave from Terminal 2.,İç hat uçuşları Terminal 2'den kalkar.,3,exam:yds,business
+b2-aggregate,AGGREGATE,A,STARTS,adj,"toplam, bütün parçaların toplandığı",Aggregate demand fell during the crisis.,Kriz döneminde toplam talep düştü.,5,exam:yds,business
+b2-consumption,CONSUMPTION,C,STARTS,noun,"tüketim, kullanılıp bitirme",Meat consumption has doubled since 1990.,Et tüketimi 1990'dan beri iki katına çıktı.,3,exam:yds,business
+b2-consumer,CONSUMER,C,STARTS,noun,"mal ya da hizmeti satın alıp kullanan kişi, tüketici",Every consumer has the right to a refund.,Her tüketicinin para iadesi hakkı vardır.,2,exam:yds,business
+b2-interest-rate,INTEREST RATE,I,STARTS,phrase,borç alınan para için ödenen yüzde,The bank cut its interest rate to two percent.,Banka faiz oranını yüzde ikiye düşürdü.,3,exam:yds,business
+b2-stock-market,STOCK MARKET,S,STARTS,phrase,"şirket hisselerinin alınıp satıldığı piyasa, borsa",The stock market fell sharply on Monday.,Borsa pazartesi sert düştü.,3,exam:yds,business
+b2-globalization,GLOBALIZATION,Z,CONTAINS,noun,dünya ekonomilerinin ve kültürlerinin bütünleşmesi,Globalization has created winners and losers.,Küreselleşme kazananlar ve kaybedenler yarattı.,4,exam:yds,business
+b2-wholesale,WHOLESALE,W,STARTS,adj,perakendeciye büyük miktarda yapılan satışla ilgili,Shops buy goods at wholesale prices.,Dükkânlar malları toptan fiyata alır.,4,exam:yds,business
+b2-import,IMPORT,I,STARTS,verb,"yurt dışından mal getirmek, ithal etmek",Türkiye has to import most of its gas.,Türkiye gazının çoğunu ithal etmek zorunda.,2,exam:yds,business

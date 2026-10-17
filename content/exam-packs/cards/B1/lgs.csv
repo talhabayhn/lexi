@@ -58,7 +58,7 @@ b1-disaster,DISASTER,D,STARTS,noun,"büyük zarara ve kayba yol açan olay, fela
 b1-tsunami,TSUNAMI,T,STARTS,noun,deniz altındaki depremden doğan dev dalga,The tsunami hit the coast an hour after the earthquake.,Dev dalga depremden bir saat sonra kıyıya ulaştı.,3,exam:lgs,school-work
 b1-erupt,ERUPT,E,STARTS,verb,yanardağın lav ve kül püskürtmesi,Scientists think the volcano will erupt soon.,Bilim insanları yanardağın yakında püskürteceğini düşünüyor.,4,exam:lgs,school-work
 b1-avalanche,AVALANCHE,A,STARTS,noun,"dağdan hızla kayan büyük kar kütlesi, çığ",The road is closed because of an avalanche.,Yol bir çığ nedeniyle kapalı.,3,exam:lgs,school-work
-b1-drought,DROUGHT,D,STARTS,noun,"uzun süre yağmur yağmaması, kuraklık",The drought killed many crops this year.,Kuraklık bu yıl pek çok ürünü kuruttu.,4,exam:lgs,school-work
+b1-drought,DROUGHT,D,STARTS,noun,"uzun süre yağmur yağmaması, kuraklık",The drought killed many crops this year.,Kuraklık bu yıl pek çok ürünü kuruttu.,4,exam:lgs|exam:yds,school-work
 b1-wildfire,WILDFIRE,W,STARTS,noun,kırsalda kontrolsüz yayılan yangın,The wildfire burned the forest for three days.,Yangın ormanı üç gün boyunca yaktı.,3,exam:lgs,school-work
 b1-heatwave,HEATWAVE,H,STARTS,noun,günlerce süren aşırı sıcak hava dönemi,"During the heatwave, people stayed indoors.",Sıcak hava dalgası boyunca insanlar evde kaldı.,3,exam:lgs,school-work
 b1-survivor,SURVIVOR,S,STARTS,noun,bir felaketten sağ kurtulan kişi,The team found a survivor under the building.,Ekip binanın altında bir hayatta kalan buldu.,3,exam:lgs,school-work
@@ -66,9 +66,9 @@ b1-evacuate,EVACUATE,E,STARTS,verb,tehlike yüzünden insanları bir yerden çı
 b1-precaution,PRECAUTION,P,STARTS,noun,kötü bir şey olmasın diye önceden alınan önlem,Take every precaution before an earthquake.,Depremden önce her önlemi al.,4,exam:lgs,school-work
 b1-tremble,TREMBLE,T,STARTS,verb,korkudan ya da sarsıntıdan titremek,I saw the windows tremble during the earthquake.,Deprem sırasında camların titrediğini gördüm.,4,exam:lgs,school-work
 b1-rainfall,RAINFALL,R,STARTS,noun,belli bir sürede yağan yağmur miktarı,Heavy rainfall caused floods in the city.,Şiddetli yağış şehirde sellere yol açtı.,4,exam:lgs,school-work
-b1-carbon,CARBON,C,STARTS,noun,kömürde ve tüm canlılarda bulunan element,Cars send carbon into the air.,Arabalar havaya karbon salar.,4,exam:lgs,school-work
+b1-carbon,CARBON,C,STARTS,noun,kömürde ve tüm canlılarda bulunan element,Cars send carbon into the air.,Arabalar havaya karbon salar.,4,exam:lgs|exam:yds,school-work
 b1-sea-level,SEA LEVEL,S,STARTS,phrase,denizin yüksekliği; yükseklik ölçümünde başlangıç noktası,The sea level is rising because ice is melting.,Buzlar eridiği için deniz seviyesi yükseliyor.,4,exam:lgs,school-work
-b1-endangered,ENDANGERED,E,STARTS,adj,soyu tükenme tehlikesinde olan,Sea turtles are an endangered animal in Türkiye.,Deniz kaplumbağaları Türkiye'de nesli tehlikedeki bir hayvandır.,4,exam:lgs,animals
+b1-endangered,ENDANGERED,E,STARTS,adj,soyu tükenme tehlikesinde olan,Sea turtles are an endangered animal in Türkiye.,Deniz kaplumbağaları Türkiye'de nesli tehlikedeki bir hayvandır.,4,exam:lgs|exam:yds,animals
 b1-donate,DONATE,D,STARTS,verb,bir amaç için para ya da eşya bağışlamak,Many people donate blankets after an earthquake.,Depremden sonra birçok kişi battaniye bağışlar.,3,exam:lgs,daily-life
 b1-trapped,TRAPPED,T,STARTS,adj,bir yerde sıkışıp çıkamayan,A cat was trapped under the stairs.,Bir kedi merdivenin altında sıkışıp kalmıştı.,3,exam:lgs,daily-life
 b1-aftershock,AFTERSHOCK,A,STARTS,noun,büyük depremden sonra gelen daha küçük sarsıntı,We felt a strong aftershock at night.,Gece güçlü bir artçı sarsıntı hissettik.,4,exam:lgs,school-work
