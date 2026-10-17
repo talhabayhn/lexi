@@ -64,6 +64,16 @@ class MainTest {
     }
 
     @Test
+    fun `packs default to content exam-packs directory when present`() {
+        val packsFixture = copyFixture("packs")
+        val packsTarget = content.resolve("exam-packs")
+        packsFixture.toFile().copyRecursively(packsTarget.toFile())
+
+        assertEquals(0, run("--content", "$content", "--out", "$output"), stderr)
+        assertTrue("test-pack-one" in stdout, stdout)
+    }
+
+    @Test
     fun `compiling twice gives byte-identical output`() {
         val second = output.resolveSibling("second.db")
 

@@ -119,6 +119,14 @@ class ContentRepositoriesTest {
         val packs = ExamPackRepositoryImpl(db.databases, io)
 
         assertEquals(listOf("yds", "lgs"), packs.packs().map { it.id.value })
+        val yds = packs.packs().first()
+        assertEquals("yds", yds.id.value)
+        assertEquals("YDS", yds.name)
+        assertEquals("YDS", yds.titleTr)
+        assertEquals("YDS", yds.titleEn)
+        assertEquals("A1-B1", yds.levelRange)
+        assertEquals(100, yds.cardTarget)
+        assertEquals(true, yds.isPro)
         val lgs = packs.cards(ExamPackId("lgs"))
         assertEquals(listOf("a1-apple" to "Ünite 1", "b1-exam" to "Ünite 2"), lgs.map { it.card.id.value to it.unit })
     }

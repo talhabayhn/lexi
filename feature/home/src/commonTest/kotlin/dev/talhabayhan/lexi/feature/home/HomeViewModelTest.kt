@@ -16,6 +16,7 @@ import dev.talhabayhan.lexi.core.testing.FakeStreakRepository
 import dev.talhabayhan.lexi.core.testing.testAlphabetPool
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.TestScope
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.advanceTimeBy
 import kotlinx.coroutines.test.resetMain
@@ -37,6 +38,7 @@ class HomeViewModelTest {
     private val daily = FakeDailyRepository()
     private val getStreakStatus = GetStreakStatus(streaks, clock)
     private val getDailyWheel = GetDailyWheel(cards, contentVersion, daily, clock)
+    private val viewModels = mutableListOf<HomeViewModel>()
 
     @BeforeTest
     fun setUp() {
@@ -49,13 +51,23 @@ class HomeViewModelTest {
         Dispatchers.resetMain()
     }
 
-    private fun viewModel() = HomeViewModel(progress, getStreakStatus, getDailyWheel, daily, clock)
+    private fun viewModel(): HomeViewModel =
+        HomeViewModel(progress, getStreakStatus, getDailyWheel, daily, clock).also { viewModels += it }
+
+    private fun runHomeTest(block: suspend TestScope.() -> Unit) = runTest {
+        try {
+            block()
+        } finally {
+            viewModels.forEach { it.cancelJobs() }
+            viewModels.clear()
+        }
+    }
 
     private fun card(id: String, box: Int? = null, due: Long? = null, correct: Int = 0) =
         CardProgress(CardId(id), box = box, dueEpochDay = due, seen = 1, correct = correct)
 
     @Test
-    fun `nothing played yet shows real zeros and today's date`() = runTest {
+    fun `nothing played yet shows real zeros and today's date`() = runHomeTest {
         viewModel().state.test {
             val state = awaitItem()
             assertEquals(0, state.streakDays)
@@ -68,7 +80,7 @@ class HomeViewModelTest {
     }
 
     @Test
-    fun `numbers come from the repositories and follow their changes`() = runTest {
+    fun `numbers come from the repositories and follow their changes`() = runHomeTest {
         progress.save(
             listOf(
                 card("a", correct = 2),
@@ -90,7 +102,7 @@ class HomeViewModelTest {
     }
 
     @Test
-    fun `numbers move on to the new day when the screen is resumed after midnight`() = runTest {
+    fun `numbers move on to the new day when the screen is resumed after midnight`() = runHomeTest {
         progress.save(listOf(card("b", box = 0, due = today + 1, correct = 1)))
         streaks.days = listOf(today)
         val viewModel = viewModel()
@@ -112,7 +124,7 @@ class HomeViewModelTest {
     }
 
     @Test
-    fun `streak and daily card recompute automatically when midnight passes while app is open`() = runTest {
+    fun `streak and daily card recompute automatically when midnight passes while app is open`() = runHomeTest {
         streaks.days = listOf(today)
         daily.record(DailyResult(today, Level.A1, score = 150, timeMs = 45000))
         val viewModel = viewModel()
@@ -135,7 +147,7 @@ class HomeViewModelTest {
     }
 
     @Test
-    fun `streak badge resets on resume after a missed day`() = runTest {
+    fun `streak badge resets on resume after a missed day`() = runHomeTest {
         // Played today - 1 (alive), then advance 2 days without playing (missed)
         streaks.days = listOf(today)
         val viewModel = viewModel()
@@ -152,7 +164,7 @@ class HomeViewModelTest {
     }
 
     @Test
-    fun `daily wheel state is available when ready and sends NavigateToDaily on OpenDaily`() = runTest {
+    fun `daily wheel state is available when ready and sends NavigateToDaily on OpenDaily`() = runHomeTest {
         val viewModel = viewModel()
         viewModel.state.test {
             assertEquals(DailyCardState.Available, awaitItem().dailyState)
@@ -164,7 +176,7 @@ class HomeViewModelTest {
     }
 
     @Test
-    fun `daily wheel state is already played with score when recorded and OpenDaily is inert`() = runTest {
+    fun `daily wheel state is already played with score when recorded and OpenDaily is inert`() = runHomeTest {
         daily.record(DailyResult(today, Level.A1, score = 320, timeMs = 85000))
         val viewModel = viewModel()
         viewModel.state.test {
@@ -184,7 +196,7 @@ class HomeViewModelTest {
     }
 
     @Test
-    fun `daily wheel state is unavailable when no cards exist and OpenDaily is inert`() = runTest {
+    fun `daily wheel state is unavailable when no cards exist and OpenDaily is inert`() = runHomeTest {
         cards.cards = emptyList()
         val viewModel = viewModel()
         viewModel.state.test {
@@ -197,7 +209,7 @@ class HomeViewModelTest {
     }
 
     @Test
-    fun `play opens the level select`() = runTest {
+    fun `play opens the level select`() = runHomeTest {
         val viewModel = viewModel()
         viewModel.effects.test {
             viewModel.onIntent(HomeIntent.Play)
@@ -207,7 +219,7 @@ class HomeViewModelTest {
     }
 
     @Test
-    fun `the notebook tile opens the notebook`() = runTest {
+    fun `the notebook tile opens the notebook`() = runHomeTest {
         val viewModel = viewModel()
         viewModel.effects.test {
             viewModel.onIntent(HomeIntent.OpenNotebook)
@@ -217,7 +229,7 @@ class HomeViewModelTest {
     }
 
     @Test
-    fun `the statistics tile opens the statistics`() = runTest {
+    fun `the statistics tile opens the statistics`() = runHomeTest {
         val viewModel = viewModel()
         viewModel.effects.test {
             viewModel.onIntent(HomeIntent.OpenStats)
@@ -227,7 +239,7 @@ class HomeViewModelTest {
     }
 
     @Test
-    fun `the gear opens the settings`() = runTest {
+    fun `the gear opens the settings`() = runHomeTest {
         val viewModel = viewModel()
         viewModel.effects.test {
             viewModel.onIntent(HomeIntent.OpenSettings)
@@ -237,7 +249,7 @@ class HomeViewModelTest {
     }
 
     @Test
-    fun `the practice tile opens the practice select`() = runTest {
+    fun `the practice tile opens the practice select`() = runHomeTest {
         val viewModel = viewModel()
         viewModel.effects.test {
             viewModel.onIntent(HomeIntent.OpenPractice)
@@ -247,7 +259,7 @@ class HomeViewModelTest {
     }
 
     @Test
-    fun `the exam packs tile opens the exam packs page`() = runTest {
+    fun `the exam packs tile opens the exam packs page`() = runHomeTest {
         val viewModel = viewModel()
         viewModel.effects.test {
             viewModel.onIntent(HomeIntent.OpenExamPacks)

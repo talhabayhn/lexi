@@ -260,4 +260,52 @@ class ExamPackTest {
         packs.resolve("packs.csv").deleteExisting()
         validate().assertError("packs.csv", null, "missing")
     }
+
+    @Test
+    fun `pack card example leaking an answer of its level is rejected`() {
+        packs.writeCards(
+            "cards/B1/leaking.csv",
+            cardRow(
+                id = "b1-snack",
+                answer = "SNACK",
+                letter = "S",
+                exampleEn = "Have some ZEST with this snack.",
+            ),
+        )
+        val result = validate()
+
+        result.assertError("leaking.csv", 2, "example_en of 'b1-snack' contains the answer 'ZEST' of 'b1-zest'")
+    }
+
+    @Test
+    fun `base card example leaking a pack card answer is rejected`() {
+        content.writeCards(
+            "cards/B1/base_leaker.csv",
+            cardRow(
+                id = "b1-snack",
+                answer = "SNACK",
+                letter = "S",
+                exampleEn = "Add some zest to the snack.",
+            ),
+        )
+        val result = validate()
+
+        result.assertError("base_leaker.csv", 2, "example_en of 'b1-snack' contains the answer 'ZEST' of 'b1-zest'")
+    }
+
+    @Test
+    fun `pack card clue leaking its own answer is rejected`() {
+        packs.writeCards(
+            "cards/B1/clue_leak.csv",
+            cardRow(
+                id = "b1-leaker",
+                answer = "LEAKER",
+                letter = "L",
+                clueTr = "leaker kelimesi",
+            ),
+        )
+        val result = validate()
+
+        result.assertError("clue_leak.csv", 2, "clue_tr contains the answer 'LEAKER'")
+    }
 }

@@ -11,6 +11,7 @@ import dev.talhabayhan.lexi.core.domain.streak.GetStreakStatus
 import dev.talhabayhan.lexi.core.domain.time.AppClock
 import dev.talhabayhan.lexi.core.domain.time.civilDateOfEpochDay
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
@@ -96,6 +97,10 @@ internal class HomeViewModel(
                 }
             }
         }
+    }
+
+    internal fun cancelJobs() {
+        viewModelScope.cancel()
     }
 
     private fun AppClock.currentDay(): Long = epochDay(nowMs())
