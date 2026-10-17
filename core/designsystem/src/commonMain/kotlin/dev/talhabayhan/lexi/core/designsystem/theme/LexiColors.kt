@@ -35,18 +35,18 @@ public class LexiColors internal constructor(
     public val scrim: Color,
 )
 
-private val Ink = Color(0xFF111111)
+private val Ink = Color(0xFF1F242D)
 
 internal val LightLexiColors: LexiColors = LexiColors(
-    cream = Color(0xFFF2EBDD),
+    cream = Color(0xFFF7F4EE),
     white = Color(0xFFFFFFFF),
     ink = Ink,
-    red = Color(0xFFD9281C),
-    blue = Color(0xFF1F4FBF),
-    yellow = Color(0xFFF2C200),
-    inkMuted = Color(0xFF5A5A5A),
-    borderMuted = Color(0xFF7A7468),
-    disabledFill = Color(0xFFE2DACB),
-    gridLine = Color(0xFFB8B0A0),
+    red = Color(0xFFE0534C),
+    blue = Color(0xFF3D68B2),
+    yellow = Color(0xFFE29E2E),
+    inkMuted = Color(0xFF606673),
+    borderMuted = Color(0xFF8A8F9B),
+    disabledFill = Color(0xFFEAE6DF),
+    gridLine = Color(0xFFC8C4BC),
     scrim = Ink.copy(alpha = 0.55f),
 )

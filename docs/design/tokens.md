@@ -6,17 +6,17 @@ Unit mapping: **1 CSS px in the design HTML = 1.dp in Compose; font-size px = sp
 ## Colors (`LexiColors`)
 | Token | Hex | Use |
 |---|---|---|
-| `cream` | `#F2EBDD` | app background, "todo" wheel letters, secondary chips |
+| `cream` | `#F7F4EE` | app background, "todo" wheel letters, secondary chips |
 | `white` | `#FFFFFF` | cards, keys, inputs, list rows |
-| `ink` | `#111111` | text, all borders, hard shadows, "current" letter, selected segment |
-| `red` | `#D9281C` | primary CTA (OYNA, BAŞLA), **wrong** state, active answer-slot border |
-| `blue` | `#1F4FBF` | **correct** state, score badge, progress fill, toggle on |
-| `yellow` | `#F2C200` | **pass** state, timer bar, highlights, selected-segment text on ink |
-| `inkMuted` | `#5A5A5A` | placeholder, disabled text |
-| `borderMuted` | `#7A7468` | dashed border of disabled button / used key |
-| `disabledFill` | `#E2DACB` | disabled button fill |
-| `gridLine` | `#B8B0A0` | chart guide lines (dashed 1dp) |
-| `scrim` | `#111111` @ 55% | behind bottom sheets / dialogs |
+| `ink` | `#1F242D` | text, all borders, hard shadows, "current" letter, selected segment |
+| `red` | `#E0534C` | primary CTA (OYNA, BAŞLA), **wrong** state, active answer-slot border |
+| `blue` | `#3D68B2` | **correct** state, score badge, progress fill, toggle on |
+| `yellow` | `#E29E2E` | **pass** state, timer bar, highlights, selected-segment text on ink |
+| `inkMuted` | `#606673` | placeholder, disabled text |
+| `borderMuted` | `#8A8F9B` | dashed border of disabled button / used key |
+| `disabledFill` | `#EAE6DF` | disabled button fill |
+| `gridLine` | `#C8C4BC` | chart guide lines (dashed 1dp) |
+| `scrim` | `#1F242D` @ 55% | behind bottom sheets / dialogs |
 
 Text on colors: on `red`/`blue`/`ink` → `white` or `cream`; on `yellow`/`white`/`cream` → `ink`.
 State is never color-only: correct = circle, wrong = square, pass = leaf, current = black square.
