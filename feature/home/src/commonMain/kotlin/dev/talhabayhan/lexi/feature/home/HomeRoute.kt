@@ -78,9 +78,15 @@ internal fun HomeRoute(
             }
         }
     }
-    // "Today" (daily card, streak, due reviews) is read again whenever the home comes back to the foreground.
+    // Periodic refresh (daily card state, streak badge, countdown) on resume and once per minute while STARTED.
     LaunchedEffect(viewModel, lifecycleOwner) {
-        lifecycleOwner.repeatOnLifecycle(Lifecycle.State.RESUMED) { viewModel.onIntent(HomeIntent.Resumed) }
+        lifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+            viewModel.onIntent(HomeIntent.Refresh)
+            while (true) {
+                kotlinx.coroutines.delay(60_000L)
+                viewModel.onIntent(HomeIntent.Refresh)
+            }
+        }
     }
     HomeScreen(state = state, onIntent = viewModel::onIntent)
 }

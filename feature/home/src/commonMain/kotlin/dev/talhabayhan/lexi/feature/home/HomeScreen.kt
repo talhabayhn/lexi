@@ -53,8 +53,8 @@ import dev.talhabayhan.lexi.core.domain.game.GameMode
 import dev.talhabayhan.lexi.feature.home.generated.resources.Res
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_daily_completed_score
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_daily_label
-import dev.talhabayhan.lexi.feature.home.generated.resources.home_daily_next_wheel_hours
-import dev.talhabayhan.lexi.feature.home.generated.resources.home_daily_next_wheel_less_than_hour
+import dev.talhabayhan.lexi.feature.home.generated.resources.home_daily_next_wheel_hours_minutes
+import dev.talhabayhan.lexi.feature.home.generated.resources.home_daily_next_wheel_minutes
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_daily_title
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_daily_unavailable
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_mode_classic
@@ -250,13 +250,16 @@ private fun HomeContent(
 
                 is DailyCardState.AlreadyPlayed -> {
                     val nextWheelSubtitle = if (daily.hoursUntilNext > 0) {
-                        pluralStringResource(
-                            Res.plurals.home_daily_next_wheel_hours,
+                        stringResource(
+                            Res.string.home_daily_next_wheel_hours_minutes,
                             daily.hoursUntilNext,
-                            daily.hoursUntilNext,
+                            daily.minutesUntilNext,
                         )
                     } else {
-                        stringResource(Res.string.home_daily_next_wheel_less_than_hour)
+                        stringResource(
+                            Res.string.home_daily_next_wheel_minutes,
+                            daily.minutesUntilNext,
+                        )
                     }
                     DailyCard(
                         day = state.dailyDay.toString(),

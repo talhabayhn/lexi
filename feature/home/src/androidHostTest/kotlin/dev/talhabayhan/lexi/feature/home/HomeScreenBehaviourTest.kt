@@ -69,7 +69,7 @@ class HomeScreenBehaviourTest {
                 }
             }
             onNodeWithText("Tamamlandı · 310 puan").performClick()
-            onNodeWithText("Yeni çark 6 saat sonra").assertExists()
+            onNodeWithText("Yeni çark: 6 sa 0 dk").assertExists()
         }
         assertEquals(emptyList(), intents)
     }

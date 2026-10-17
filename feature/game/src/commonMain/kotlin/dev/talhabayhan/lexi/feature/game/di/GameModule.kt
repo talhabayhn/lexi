@@ -46,6 +46,8 @@ val gameModule: Module = module {
             cards = get(),
             speaker = get(),
             config = get(),
+            progress = get(),
+            clock = get(),
         )
     }
 }

@@ -102,8 +102,16 @@
         <item quantity="one">+%1$d kelime daha · Tümünü gör →</item>
         <item quantity="other">+%1$d kelime daha · Tümünü gör →</item>
     </plurals>
+    <string name="result_group_correct">Doğru</string>
+    <string name="result_group_wrong">Yanlış</string>
+    <string name="result_group_passed">Pas</string>
+    <string name="result_group_time_up">Süre bitti</string>
+    <string name="result_outcome_correct">doğru</string>
     <string name="result_outcome_wrong">yanlış</string>
     <string name="result_outcome_passed">pas geçildi</string>
+    <string name="result_outcome_time_up">süre bitti</string>
+    <string name="result_add_to_notebook">Deftere ekle</string>
+    <string name="result_added_to_notebook">Eklendi</string>
     <string name="result_speak">%1$s telaffuzunu dinle</string>
     <string name="result_empty">Hepsi doğru! Bu çarkta tekrar edilecek kelime yok.</string>
     <string name="result_review_error">Tekrar edilecek kelimeler yüklenemedi.</string>

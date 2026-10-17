@@ -31,6 +31,66 @@ internal object ResultSamples {
         isLoading = false,
     )
 
+    /** Game ending by time-up with all four review groups: Doğru, Yanlış, Pas, Süre bitti. */
+    val allFourGroups: ResultUiState = ResultUiState(
+        level = Level.A1,
+        mode = GameMode.CLASSIC,
+        reason = GameOverReason.TIME_UP,
+        score = 280,
+        longestStreak = 5,
+        remainingSeconds = 0,
+        correct = 19,
+        wrong = 2,
+        passed = 3,
+        addedToNotebook = 5,
+        groups = persistentListOf(
+            ReviewGroupUi(
+                outcome = ReviewOutcome.Correct,
+                rows = persistentListOf(
+                    ReviewRowUi('A', "apple", "elma", "An apple a day.", ReviewOutcome.Correct, Level.A1),
+                ),
+            ),
+            ReviewGroupUi(
+                outcome = ReviewOutcome.Wrong,
+                rows = persistentListOf(
+                    ReviewRowUi('E', "egg", "yumurta", "I eat an egg.", ReviewOutcome.Wrong, Level.A1),
+                ),
+            ),
+            ReviewGroupUi(
+                outcome = ReviewOutcome.Passed,
+                rows = persistentListOf(
+                    ReviewRowUi('C', "chair", "sandalye", "Sit on the chair.", ReviewOutcome.Passed, Level.A1),
+                ),
+            ),
+            ReviewGroupUi(
+                outcome = ReviewOutcome.TimeUp,
+                rows = persistentListOf(
+                    ReviewRowUi(
+                        letter = 'W',
+                        word = "window",
+                        clue = "pencere",
+                        example = "Open the window.",
+                        outcome = ReviewOutcome.TimeUp,
+                        level = Level.A1,
+                        cardId = "a1-window",
+                        isAddedToNotebook = false,
+                    ),
+                    ReviewRowUi(
+                        letter = 'Z',
+                        word = "zebra",
+                        clue = "zebra",
+                        example = "A wild zebra.",
+                        outcome = ReviewOutcome.TimeUp,
+                        level = Level.A1,
+                        cardId = "a1-zebra",
+                        isAddedToNotebook = true,
+                    ),
+                ),
+            ),
+        ),
+        isLoading = false,
+    )
+
     /** Practice (design debt): unscored, untimed; the header shows the 19 correct answers instead of "0 puan". */
     val practice: ResultUiState = design.copy(mode = GameMode.PRACTICE, score = 0, remainingSeconds = null)
 

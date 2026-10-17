@@ -23,8 +23,10 @@ internal data class ResultUiState(
     val passed: Int,
     /** Cards that went into box 0 of the notebook ("7 kelime defterine eklendi"); 0 when nothing was stored. */
     val addedToNotebook: Int,
-    /** "Tekrar edilecekler" rows to show (wrong and passed cards in wheel order). */
+    /** "Tekrar edilecekler" rows to show (all review rows in wheel order). */
     val rows: ImmutableList<ReviewRowUi> = persistentListOf(),
+    /** Rows grouped by outcome: Doğru, Yanlış, Pas, Süre bitti. */
+    val groups: ImmutableList<ReviewGroupUi> = persistentListOf(),
     /** Rows behind "+N kelime daha · Tümünü gör →". */
     val hiddenRows: Int = 0,
     /** True until the review cards are loaded. */
@@ -43,6 +45,9 @@ internal data class ResultUiState(
 }
 
 @Immutable
+internal data class ReviewGroupUi(val outcome: ReviewOutcome, val rows: ImmutableList<ReviewRowUi>)
+
+@Immutable
 internal data class ReviewRowUi(
     val letter: Char,
     /** The answer as shown and spoken ("chair"). */
@@ -51,6 +56,8 @@ internal data class ReviewRowUi(
     val example: String,
     val outcome: ReviewOutcome,
     val level: Level? = null,
+    val cardId: String = "",
+    val isAddedToNotebook: Boolean = false,
 )
 
 internal sealed interface ResultIntent {
@@ -71,4 +78,7 @@ internal sealed interface ResultIntent {
 
     /** "Tekrar dene" after the review cards could not be read. */
     data object Retry : ResultIntent
+
+    /** Per-row "Deftere ekle" for time-up words. */
+    data class AddToNotebook(val cardId: String) : ResultIntent
 }

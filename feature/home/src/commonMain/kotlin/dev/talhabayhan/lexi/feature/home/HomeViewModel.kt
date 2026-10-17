@@ -11,9 +11,7 @@ import dev.talhabayhan.lexi.core.domain.streak.GetStreakStatus
 import dev.talhabayhan.lexi.core.domain.time.AppClock
 import dev.talhabayhan.lexi.core.domain.time.civilDateOfEpochDay
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.cancel
 import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -69,14 +67,15 @@ internal class HomeViewModel(
             @OptIn(ExperimentalCoroutinesApi::class)
             today.flatMapLatest { day ->
                 daily.observe(day).map { played ->
+                    val (hours, minutes) = calculateTimeUntilNext()
                     if (played != null) {
-                        DailyCardState.AlreadyPlayed(played.score, calculateHoursUntilNext())
+                        DailyCardState.AlreadyPlayed(played.score, hours, minutes)
                     } else {
                         when (val playState = getDailyWheel(day)) {
                             is DailyPlayState.Ready -> DailyCardState.Available
 
                             is DailyPlayState.AlreadyPlayed ->
-                                DailyCardState.AlreadyPlayed(playState.result.score, calculateHoursUntilNext())
+                                DailyCardState.AlreadyPlayed(playState.result.score, hours, minutes)
 
                             is DailyPlayState.NoCards -> DailyCardState.Unavailable
                         }
@@ -86,35 +85,35 @@ internal class HomeViewModel(
                 mutableState.update { it.copy(dailyState = cardState) }
             }
         }
-
-        viewModelScope.launch {
-            while (true) {
-                val delayMs = appClock.msUntilNextDay().coerceAtLeast(1000L)
-                delay(delayMs + 50L)
-                val nextDay = appClock.currentDay()
-                if (today.value != nextDay) {
-                    today.value = nextDay
-                }
-            }
-        }
-    }
-
-    internal fun cancelJobs() {
-        viewModelScope.cancel()
     }
 
     private fun AppClock.currentDay(): Long = epochDay(nowMs())
 
-    private fun calculateHoursUntilNext(): Int = (appClock.msUntilNextDay() / 3_600_000L).toInt()
+    private fun calculateTimeUntilNext(): Pair<Int, Int> {
+        val ms = appClock.msUntilNextDay().coerceAtLeast(0L)
+        val totalMinutes = ms / 60_000L
+        val hours = (totalMinutes / 60).toInt()
+        val minutes = (totalMinutes % 60).toInt()
+        return hours to minutes
+    }
 
     fun onIntent(intent: HomeIntent) {
         when (intent) {
-            HomeIntent.Resumed -> {
-                today.value = appClock.currentDay()
-                val currentDaily = mutableState.value.dailyState
-                if (currentDaily is DailyCardState.AlreadyPlayed) {
-                    mutableState.update {
-                        it.copy(dailyState = currentDaily.copy(hoursUntilNext = calculateHoursUntilNext()))
+            HomeIntent.Refresh, HomeIntent.Resumed -> {
+                val nextDay = appClock.currentDay()
+                if (today.value != nextDay) {
+                    today.value = nextDay
+                } else {
+                    val currentDaily = mutableState.value.dailyState
+                    if (currentDaily is DailyCardState.AlreadyPlayed) {
+                        val (hours, minutes) = calculateTimeUntilNext()
+                        if (currentDaily.hoursUntilNext != hours || currentDaily.minutesUntilNext != minutes) {
+                            val updatedDaily = currentDaily.copy(
+                                hoursUntilNext = hours,
+                                minutesUntilNext = minutes,
+                            )
+                            mutableState.update { it.copy(dailyState = updatedDaily) }
+                        }
                     }
                 }
             }

@@ -11,6 +11,8 @@
     <string name="home_daily_label">GÜNÜN ÇARKI · %1$s</string>
     <string name="home_daily_title">Herkesle aynı çark: bildiğin kadarını çöz</string>
     <string name="home_daily_completed_score">Tamamlandı · %1$d puan</string>
+    <string name="home_daily_next_wheel_hours_minutes">Yeni çark: %1$d sa %2$d dk</string>
+    <string name="home_daily_next_wheel_minutes">Yeni çark: %1$d dk</string>
     <plurals name="home_daily_next_wheel_hours">
         <item quantity="one">Yeni çark %1$d saat sonra</item>
         <item quantity="other">Yeni çark %1$d saat sonra</item>

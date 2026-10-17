@@ -37,11 +37,17 @@ import dev.talhabayhan.lexi.core.domain.feedback.SoundEffect
 
 /** How a card ended in the game; the chip shape tells it apart without colour (tokens.md). */
 public enum class ReviewOutcome {
+    /** Blue circle. */
+    Correct,
+
     /** Red square. */
     Wrong,
 
     /** Yellow leaf. */
     Passed,
+
+    /** Cream circle. */
+    TimeUp,
 }
 
 /** Result screen geometry (`06-result.html`). */
@@ -71,8 +77,8 @@ public object ResultDefaults {
 }
 
 /**
- * A row of the "Tekrar edilecekler" list (inside a [ListCard]): letter chip (red square = wrong, yellow leaf =
- * passed), the word (19/800), "clue · *example*" (13/500) and the 44dp speaker button.
+ * A row of the review list (inside a [ListCard]): letter chip (blue circle = correct, red square = wrong, yellow leaf =
+ * passed, cream circle = time-up), the word (19/800), "clue · *example*" (13/500) and the 44dp speaker button.
  */
 @Composable
 public fun ReviewRow(
@@ -86,6 +92,9 @@ public fun ReviewRow(
     onSpeak: () -> Unit,
     modifier: Modifier = Modifier,
     level: String? = null,
+    onAddToNotebook: (() -> Unit)? = null,
+    addToNotebookText: String? = null,
+    isAddedToNotebook: Boolean = false,
 ) {
     val colors = LexiTheme.colors
     val typography = LexiTheme.typography
@@ -100,14 +109,19 @@ public fun ReviewRow(
                 .clearAndSetSemantics { contentDescription = outcomeDescription },
             contentAlignment = Alignment.Center,
         ) {
-            val wrong = outcome == ReviewOutcome.Wrong
+            val (shape, fill, textColor) = when (outcome) {
+                ReviewOutcome.Correct -> Triple(DecorShapeKind.Circle, colors.blue, colors.white)
+                ReviewOutcome.Wrong -> Triple(DecorShapeKind.Square, colors.red, colors.white)
+                ReviewOutcome.Passed -> Triple(DecorShapeKind.Leaf, colors.yellow, colors.ink)
+                ReviewOutcome.TimeUp -> Triple(DecorShapeKind.Circle, colors.cream, colors.ink)
+            }
             DecorShape(
-                kind = if (wrong) DecorShapeKind.Square else DecorShapeKind.Leaf,
-                color = if (wrong) colors.red else colors.yellow,
+                kind = shape,
+                color = fill,
                 modifier = Modifier.fillMaxSize(),
                 border = BorderStroke(LexiTheme.borders.thin, colors.ink),
             )
-            Text(letter.toString(), style = typography.bodyStrong15, color = if (wrong) colors.white else colors.ink)
+            Text(letter.toString(), style = typography.bodyStrong15, color = textColor)
         }
         Column(Modifier.weight(1f).semantics(mergeDescendants = true) {}) {
             Row(
@@ -127,6 +141,41 @@ public fun ReviewRow(
                 },
                 style = typography.caption13,
             )
+        }
+        if (addToNotebookText != null) {
+            if (!isAddedToNotebook && onAddToNotebook != null) {
+                PressableSurface(
+                    onClick = onAddToNotebook,
+                    color = colors.cream,
+                    border = BorderStroke(LexiTheme.borders.thin, colors.ink),
+                    shadow = null,
+                    shape = LexiTheme.shapes.square,
+                ) {
+                    Text(
+                        text = addToNotebookText,
+                        style = typography.caption12SemiBold,
+                        color = colors.ink,
+                        modifier = Modifier.padding(horizontal = 8.dp, vertical = 6.dp),
+                    )
+                }
+            } else {
+                Box(
+                    modifier = Modifier
+                        .lexiSurface(
+                            color = colors.disabledFill,
+                            border = BorderStroke(LexiTheme.borders.thin, colors.borderMuted),
+                            shape = LexiTheme.shapes.square,
+                        )
+                        .padding(horizontal = 8.dp, vertical = 6.dp),
+                    contentAlignment = Alignment.Center,
+                ) {
+                    Text(
+                        text = addToNotebookText,
+                        style = typography.caption12SemiBold,
+                        color = colors.inkMuted,
+                    )
+                }
+            }
         }
         IconSquareButton(
             icon = LexiIcons.Speaker,

@@ -12,8 +12,9 @@ internal sealed interface DailyCardState {
     /** The daily wheel is available to play today. */
     data object Available : DailyCardState
 
-    /** The daily wheel has already been played today (shows today's score and hours until next wheel). */
-    data class AlreadyPlayed(val score: Int, val hoursUntilNext: Int = 0) : DailyCardState
+    /** The daily wheel has already been played today (shows today's score and hours and minutes until next wheel). */
+    data class AlreadyPlayed(val score: Int, val hoursUntilNext: Int = 0, val minutesUntilNext: Int = 0) :
+        DailyCardState
 
     /** No playable cards exist for this level in the pool. */
     data object Unavailable : DailyCardState
@@ -42,6 +43,9 @@ internal data class HomeUiState(
 )
 
 internal sealed interface HomeIntent {
+    /** Periodic refresh (on resume and once per minute while STARTED). */
+    data object Refresh : HomeIntent
+
     /** The screen is in the foreground again: "today" may have changed since the last time. */
     data object Resumed : HomeIntent
 

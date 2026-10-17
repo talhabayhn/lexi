@@ -23,6 +23,14 @@ class ResultScreenScreenshotTest {
         }
     }
 
+    /** Result screen with all four groups: Doğru, Yanlış, Pas, Süre bitti. */
+    @Test
+    fun allFourGroups() {
+        captureRoboImage("src/androidHostTest/screenshots/ResultScreenAllFourGroups.png") {
+            LexiTheme(reducedMotion = false) { ResultScreen(state = ResultSamples.allFourGroups, onIntent = {}) }
+        }
+    }
+
     /** English UI with long answers, clues and examples: rows wrap, the screen scrolls instead of clipping. */
     @Test
     @Config(qualifiers = "en-w390dp-h844dp-xhdpi")

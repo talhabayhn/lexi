@@ -42,6 +42,9 @@ data class ResultRoute(
     val passedCards: List<String> = emptyList(),
     /** `FinishGame` stored the session and the notebook update (false after a storage failure). */
     val recorded: Boolean = true,
+    val correctCards: List<String> = emptyList(),
+    val wrongCards: List<String> = emptyList(),
+    val timeUpCards: List<String> = emptyList(),
 ) {
     internal val gameLevel: Level get() = Level.valueOf(level)
 
@@ -55,9 +58,19 @@ data class ResultRoute(
         /** The result of the finished [state]; [category] is the route's category of the game. */
         fun of(state: GameState, category: CategoryId?, recorded: Boolean): ResultRoute {
             val summary = checkNotNull(state.summary) { "the game is not finished" }
-            val passed = state.wheel.slots
+            val passedCardsList = state.wheel.slots
                 .filter { it.state == SlotState.PASSED }
-                .mapNotNullTo(mutableSetOf()) { it.card?.id }
+                .mapNotNull { it.card?.id?.value }
+            val correctCardsList = state.wheel.slots
+                .filter { it.state == SlotState.CORRECT }
+                .mapNotNull { it.card?.id?.value }
+            val wrongCardsList = state.wheel.slots
+                .filter { it.state == SlotState.WRONG }
+                .mapNotNull { it.card?.id?.value }
+            val timeUpCardsList = state.wheel.slots
+                .filter { it.state == SlotState.TODO || it.state == SlotState.CURRENT }
+                .mapNotNull { it.card?.id?.value }
+            val passedSet = passedCardsList.toSet()
             return ResultRoute(
                 level = state.level.name,
                 mode = state.mode.name,
@@ -70,8 +83,11 @@ data class ResultRoute(
                 longestStreak = summary.longestStreak,
                 remainingMs = summary.remainingMs,
                 missedCards = summary.missedCards.map(CardId::value),
-                passedCards = summary.missedCards.filter { it in passed }.map(CardId::value),
+                passedCards = summary.missedCards.filter { it.value in passedSet }.map(CardId::value),
                 recorded = recorded,
+                correctCards = correctCardsList,
+                wrongCards = wrongCardsList,
+                timeUpCards = timeUpCardsList,
             )
         }
     }

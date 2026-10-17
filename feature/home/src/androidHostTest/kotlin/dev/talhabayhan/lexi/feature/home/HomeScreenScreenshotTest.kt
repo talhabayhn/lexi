@@ -35,7 +35,11 @@ class HomeScreenScreenshotTest {
             LexiTheme(reducedMotion = false) {
                 HomeScreen(
                     state = HomeSampleState.copy(
-                        dailyState = DailyCardState.AlreadyPlayed(score = 310, hoursUntilNext = 6),
+                        dailyState = DailyCardState.AlreadyPlayed(
+                            score = 310,
+                            hoursUntilNext = 6,
+                            minutesUntilNext = 42,
+                        ),
                     ),
                     onIntent = {},
                 )

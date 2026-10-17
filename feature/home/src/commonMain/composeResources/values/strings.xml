@@ -11,6 +11,8 @@
     <string name="home_daily_label">DAILY WHEEL · %1$s</string>
     <string name="home_daily_title">Same wheel for everyone: solve what you know</string>
     <string name="home_daily_completed_score">Completed · %1$d pts</string>
+    <string name="home_daily_next_wheel_hours_minutes">Next wheel: %1$d h %2$d min</string>
+    <string name="home_daily_next_wheel_minutes">Next wheel: %1$d min</string>
     <plurals name="home_daily_next_wheel_hours">
         <item quantity="one">Next wheel in %1$d hour</item>
         <item quantity="other">Next wheel in %1$d hours</item>

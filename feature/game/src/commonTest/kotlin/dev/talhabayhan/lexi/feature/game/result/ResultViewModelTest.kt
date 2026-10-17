@@ -5,8 +5,11 @@ import dev.talhabayhan.lexi.core.designsystem.component.ReviewOutcome
 import dev.talhabayhan.lexi.core.domain.game.GameConfig
 import dev.talhabayhan.lexi.core.domain.game.GameMode
 import dev.talhabayhan.lexi.core.domain.game.GameOverReason
+import dev.talhabayhan.lexi.core.domain.model.CardId
 import dev.talhabayhan.lexi.core.domain.model.Level
+import dev.talhabayhan.lexi.core.testing.FakeAppClock
 import dev.talhabayhan.lexi.core.testing.FakeCardRepository
+import dev.talhabayhan.lexi.core.testing.FakeProgressRepository
 import dev.talhabayhan.lexi.core.testing.FakeSpeaker
 import dev.talhabayhan.lexi.core.testing.testCard
 import dev.talhabayhan.lexi.feature.game.GameRoute
@@ -32,6 +35,8 @@ class ResultViewModelTest {
     private val cards = FakeCardRepository(answers.map { testCard(it) })
     private val speaker = FakeSpeaker()
     private val config = GameConfig()
+    private val progress = FakeProgressRepository()
+    private val clock = FakeAppClock()
 
     @BeforeTest
     fun setUp() {
@@ -66,7 +71,7 @@ class ResultViewModelTest {
     )
 
     private fun TestScope.viewModel(route: ResultRoute = route()) =
-        ResultViewModel(route, cards, speaker, config).also { runCurrent() }
+        ResultViewModel(route, cards, speaker, config, progress, clock).also { runCurrent() }
 
     @Test
     fun `the header and stats come from the route`() = runTest {
@@ -84,36 +89,81 @@ class ResultViewModelTest {
 
     @Test
     fun `review rows keep the wheel order with word and clue and example and outcome`() = runTest {
-        val rows = viewModel().state.value.rows
+        val groups = viewModel().state.value.groups
 
-        assertEquals(listOf("apple", "bread", "chair", "dog"), rows.map { it.word })
-        assertEquals(listOf('A', 'B', 'C', 'D'), rows.map { it.letter })
-        assertEquals(
-            listOf(ReviewOutcome.Passed, ReviewOutcome.Wrong, ReviewOutcome.Passed, ReviewOutcome.Wrong),
-            rows.map { it.outcome },
-        )
-        assertEquals("ipucu", rows.first().clue)
-        assertEquals("An example with APPLE.", rows.first().example)
+        assertEquals(2, groups.size)
+        assertEquals(ReviewOutcome.Wrong, groups[0].outcome)
+        assertEquals(listOf("bread", "dog", "egg", "fish", "goat"), groups[0].rows.map { it.word })
+        assertEquals(ReviewOutcome.Passed, groups[1].outcome)
+        assertEquals(listOf("apple", "chair"), groups[1].rows.map { it.word })
+        assertEquals("ipucu", groups[1].rows.first().clue)
+        assertEquals("An example with APPLE.", groups[1].rows.first().example)
     }
 
     @Test
-    fun `seven rows show four and the rest behind see all`() = runTest {
+    fun `words are listed in all four groups in order Dogru Yanlis Pas Sure bitti`() = runTest {
+        val fourGroupsRoute = ResultRoute(
+            level = "A1",
+            mode = GameMode.CLASSIC.name,
+            reason = GameOverReason.TIME_UP.name,
+            score = 280,
+            correct = 2,
+            wrong = 2,
+            passed = 2,
+            longestStreak = 2,
+            correctCards = listOf("a1-apple", "a1-bread"),
+            wrongCards = listOf("a1-egg", "a1-fish"),
+            passedCards = listOf("a1-chair", "a1-dog"),
+            timeUpCards = listOf("a1-goat"),
+        )
+        val state = viewModel(fourGroupsRoute).state.value
+        val groups = state.groups
+        assertEquals(4, groups.size)
+        assertEquals(ReviewOutcome.Correct, groups[0].outcome)
+        assertEquals(listOf("apple", "bread"), groups[0].rows.map { it.word })
+        assertEquals(ReviewOutcome.Wrong, groups[1].outcome)
+        assertEquals(listOf("egg", "fish"), groups[1].rows.map { it.word })
+        assertEquals(ReviewOutcome.Passed, groups[2].outcome)
+        assertEquals(listOf("chair", "dog"), groups[2].rows.map { it.word })
+        assertEquals(ReviewOutcome.TimeUp, groups[3].outcome)
+        assertEquals(listOf("goat"), groups[3].rows.map { it.word })
+        assertFalse(groups[3].rows.first().isAddedToNotebook)
+    }
+
+    @Test
+    fun `time-up cards get added to notebook via AddToNotebook intent`() = runTest {
+        val vm = viewModel(
+            ResultRoute(
+                level = "A1",
+                mode = GameMode.CLASSIC.name,
+                reason = GameOverReason.TIME_UP.name,
+                score = 280,
+                correct = 0,
+                wrong = 0,
+                passed = 0,
+                longestStreak = 0,
+                timeUpCards = listOf("a1-goat"),
+            ),
+        )
+        var state = vm.state.value
+        assertFalse(state.groups.first().rows.first().isAddedToNotebook)
+        assertEquals(0, state.addedToNotebook)
+
+        vm.onIntent(ResultIntent.AddToNotebook("a1-goat"))
+        runCurrent()
+
+        state = vm.state.value
+        assertTrue(state.groups.first().rows.first().isAddedToNotebook)
+        assertEquals(1, state.addedToNotebook)
+        val stored = progress.get(listOf(CardId("a1-goat")))[CardId("a1-goat")]
+        assertEquals(0, stored?.box)
+    }
+
+    @Test
+    fun `all review rows are shown without hiding`() = runTest {
         val vm = viewModel()
-        assertEquals(4, vm.state.value.rows.size)
-        assertEquals(3, vm.state.value.hiddenRows)
-
-        vm.onIntent(ResultIntent.ShowAll)
-
         assertEquals(7, vm.state.value.rows.size)
         assertEquals(0, vm.state.value.hiddenRows)
-    }
-
-    @Test
-    fun `five rows are all shown because a see-all row would take the same place`() = runTest {
-        val state = viewModel(route(missed = answers.take(5).map { "a1-${it.lowercase()}" })).state.value
-
-        assertEquals(5, state.rows.size)
-        assertEquals(0, state.hiddenRows)
     }
 
     @Test
@@ -148,7 +198,7 @@ class ResultViewModelTest {
         val state = viewModel(route(mode = GameMode.PRACTICE, remainingMs = null)).state.value
 
         assertEquals(answers.size, state.addedToNotebook)
-        assertEquals(4, state.rows.size)
+        assertEquals(7, state.rows.size)
     }
 
     @Test
@@ -167,8 +217,8 @@ class ResultViewModelTest {
         runCurrent()
 
         assertFalse(vm.state.value.reviewError)
-        assertEquals(4, vm.state.value.rows.size)
-        assertEquals(3, vm.state.value.hiddenRows)
+        assertEquals(7, vm.state.value.rows.size)
+        assertEquals(0, vm.state.value.hiddenRows)
     }
 
     @Test
@@ -184,9 +234,13 @@ class ResultViewModelTest {
 
     @Test
     fun `cards that left the content are skipped`() = runTest {
-        val state = viewModel(route(missed = listOf("a1-apple", "a1-gone", "a1-bread"))).state.value
+        val gameRoute = route(
+            missed = listOf("a1-apple", "a1-gone", "a1-bread"),
+            passed = listOf("a1-apple"),
+        )
+        val state = viewModel(gameRoute).state.value
 
-        assertEquals(listOf("apple", "bread"), state.rows.map { it.word })
+        assertEquals(listOf("bread", "apple"), state.rows.map { it.word })
     }
 
     @Test

@@ -7,6 +7,7 @@ import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.core.domain.session.DailyResult
 import dev.talhabayhan.lexi.core.domain.srs.CardProgress
 import dev.talhabayhan.lexi.core.domain.streak.GetStreakStatus
+import dev.talhabayhan.lexi.core.domain.time.AppClock
 import dev.talhabayhan.lexi.core.testing.FakeAppClock
 import dev.talhabayhan.lexi.core.testing.FakeCardRepository
 import dev.talhabayhan.lexi.core.testing.FakeContentVersionRepository
@@ -38,7 +39,6 @@ class HomeViewModelTest {
     private val daily = FakeDailyRepository()
     private val getStreakStatus = GetStreakStatus(streaks, clock)
     private val getDailyWheel = GetDailyWheel(cards, contentVersion, daily, clock)
-    private val viewModels = mutableListOf<HomeViewModel>()
 
     @BeforeTest
     fun setUp() {
@@ -51,16 +51,10 @@ class HomeViewModelTest {
         Dispatchers.resetMain()
     }
 
-    private fun viewModel(): HomeViewModel =
-        HomeViewModel(progress, getStreakStatus, getDailyWheel, daily, clock).also { viewModels += it }
+    private fun viewModel(): HomeViewModel = HomeViewModel(progress, getStreakStatus, getDailyWheel, daily, clock)
 
     private fun runHomeTest(block: suspend TestScope.() -> Unit) = runTest {
-        try {
-            block()
-        } finally {
-            viewModels.forEach { it.cancelJobs() }
-            viewModels.clear()
-        }
+        block()
     }
 
     private fun card(id: String, box: Int? = null, due: Long? = null, correct: Int = 0) =
@@ -113,7 +107,7 @@ class HomeViewModelTest {
             assertEquals(1, before.streakDays)
 
             clock.advanceBy(FakeAppClock.MS_PER_DAY)
-            viewModel.onIntent(HomeIntent.Resumed)
+            viewModel.onIntent(HomeIntent.Refresh)
 
             val after = expectMostRecentItem()
             assertEquals(16, after.dailyDay)
@@ -124,7 +118,7 @@ class HomeViewModelTest {
     }
 
     @Test
-    fun `streak and daily card recompute automatically when midnight passes while app is open`() = runHomeTest {
+    fun `streak and daily card recompute on refresh when midnight passes while app is open`() = runHomeTest {
         streaks.days = listOf(today)
         daily.record(DailyResult(today, Level.A1, score = 150, timeMs = 45000))
         val viewModel = viewModel()
@@ -132,12 +126,15 @@ class HomeViewModelTest {
             val before = expectMostRecentItem()
             assertEquals(1, before.streakDays)
             assertEquals(15, before.dailyDay)
-            assertEquals(DailyCardState.AlreadyPlayed(150, hoursUntilNext = 12), before.dailyState)
+            assertEquals(
+                DailyCardState.AlreadyPlayed(150, hoursUntilNext = 12, minutesUntilNext = 0),
+                before.dailyState,
+            )
 
-            // Advance past midnight while app is open
+            // Advance past midnight and drive periodic refresh
             val msToMidnight = clock.msUntilNextDay()
             clock.advanceBy(msToMidnight + 1000L)
-            advanceTimeBy(msToMidnight + 1050L)
+            viewModel.onIntent(HomeIntent.Refresh)
 
             val after = expectMostRecentItem()
             assertEquals(16, after.dailyDay)
@@ -156,7 +153,7 @@ class HomeViewModelTest {
             assertEquals(1, before.streakDays)
 
             clock.advanceBy(FakeAppClock.MS_PER_DAY * 2)
-            viewModel.onIntent(HomeIntent.Resumed)
+            viewModel.onIntent(HomeIntent.Refresh)
 
             val after = expectMostRecentItem()
             assertEquals(0, after.streakDays) // missed day resets streak
@@ -176,22 +173,63 @@ class HomeViewModelTest {
     }
 
     @Test
-    fun `daily wheel state is already played with score when recorded and OpenDaily is inert`() = runHomeTest {
+    fun `daily wheel state is already played with score and minute resolution countdown`() = runHomeTest {
         daily.record(DailyResult(today, Level.A1, score = 320, timeMs = 85000))
         val viewModel = viewModel()
         viewModel.state.test {
-            assertEquals(DailyCardState.AlreadyPlayed(320, hoursUntilNext = 12), awaitItem().dailyState)
+            assertEquals(
+                DailyCardState.AlreadyPlayed(320, hoursUntilNext = 12, minutesUntilNext = 0),
+                awaitItem().dailyState,
+            )
         }
         viewModel.effects.test {
             viewModel.onIntent(HomeIntent.OpenDaily)
             expectNoEvents()
         }
 
-        // Advance 2 hours, resume screen -> hoursUntilNext should update to 10
-        clock.advanceBy(2 * 3_600_000L)
-        viewModel.onIntent(HomeIntent.Resumed)
+        // Advance 2 hours 15 minutes, refresh -> 9 hours 45 minutes
+        clock.advanceBy(2 * 3_600_000L + 15 * 60_000L)
+        viewModel.onIntent(HomeIntent.Refresh)
         viewModel.state.test {
-            assertEquals(DailyCardState.AlreadyPlayed(320, hoursUntilNext = 10), awaitItem().dailyState)
+            assertEquals(
+                DailyCardState.AlreadyPlayed(320, hoursUntilNext = 9, minutesUntilNext = 45),
+                awaitItem().dailyState,
+            )
+        }
+    }
+
+    @Test
+    fun `daily card countdown under one hour shows minute resolution`() = runHomeTest {
+        daily.record(DailyResult(today, Level.A1, score = 200, timeMs = 30000))
+        val viewModel = viewModel()
+        val msUntilMidnight = clock.msUntilNextDay()
+        clock.advanceBy(msUntilMidnight - 45 * 60_000L)
+        viewModel.onIntent(HomeIntent.Refresh)
+
+        viewModel.state.test {
+            assertEquals(
+                DailyCardState.AlreadyPlayed(200, hoursUntilNext = 0, minutesUntilNext = 45),
+                expectMostRecentItem().dailyState,
+            )
+        }
+    }
+
+    @Test
+    fun `daily card countdown handles day with DST transition`() = runHomeTest {
+        val dstClock = object : AppClock {
+            var now = 10_000_000L
+            override fun nowMs(): Long = now
+            override fun epochDay(atMs: Long): Long = 100L
+            override fun msUntilNextDay(atMs: Long): Long = 82_800_000L - atMs // 23h DST spring day
+        }
+        val getDaily = GetDailyWheel(cards, contentVersion, daily, dstClock)
+        daily.record(DailyResult(100L, Level.A1, score = 180, timeMs = 20000))
+        val vm = HomeViewModel(progress, GetStreakStatus(streaks, dstClock), getDaily, daily, dstClock)
+        vm.state.test {
+            val state = awaitItem()
+            val dailyState = state.dailyState as DailyCardState.AlreadyPlayed
+            assertEquals(20, dailyState.hoursUntilNext)
+            assertEquals(13, dailyState.minutesUntilNext)
         }
     }
 

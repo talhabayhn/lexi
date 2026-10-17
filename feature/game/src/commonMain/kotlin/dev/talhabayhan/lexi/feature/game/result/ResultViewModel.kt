@@ -10,6 +10,9 @@ import dev.talhabayhan.lexi.core.domain.game.GameConfig
 import dev.talhabayhan.lexi.core.domain.model.Card
 import dev.talhabayhan.lexi.core.domain.model.CardId
 import dev.talhabayhan.lexi.core.domain.repository.CardRepository
+import dev.talhabayhan.lexi.core.domain.repository.ProgressRepository
+import dev.talhabayhan.lexi.core.domain.srs.CardProgress
+import dev.talhabayhan.lexi.core.domain.time.AppClock
 import dev.talhabayhan.lexi.feature.game.GameRoute
 import kotlinx.collections.immutable.toImmutableList
 import kotlinx.coroutines.CancellationException
@@ -22,8 +25,8 @@ import kotlinx.coroutines.launch
 
 /**
  * The result of one finished game (`06-result`, ADR 0019 addendum): counts come from the [route], the review rows
- * ("Tekrar edilecekler") are the route's missed cards read from the content. They are exactly the cards `FinishGame`
- * put into box 0 (`GAME_RULES.md` §10): wrong and passed slots, nothing unanswered. Navigation intents are handled by
+ * are listed in 4 groups (Doğru, Yanlış, Pas, Süre bitti). Wrong and Passed are automatically in the notebook;
+ * Süre bitti cards can be added manually via [ResultIntent.AddToNotebook]. Navigation intents are handled by
  * the route composable.
  */
 internal class ResultViewModel(
@@ -31,6 +34,8 @@ internal class ResultViewModel(
     private val cards: CardRepository,
     private val speaker: Speaker,
     config: GameConfig,
+    private val progress: ProgressRepository,
+    private val clock: AppClock,
 ) : ViewModel() {
     private val mutableState = MutableStateFlow(initialState(route, config))
     val state: StateFlow<ResultUiState> = mutableState.asStateFlow()
@@ -46,8 +51,8 @@ internal class ResultViewModel(
             null
         }
 
+    private var allGroups: List<ReviewGroupUi> = emptyList()
     private var allRows: List<ReviewRowUi> = emptyList()
-    private var expanded = false
 
     /** The running [load], so a double tap on "Tekrar dene" reads once. */
     private var loading: Job? = null
@@ -58,16 +63,63 @@ internal class ResultViewModel(
 
     fun onIntent(intent: ResultIntent) {
         when (intent) {
-            ResultIntent.ShowAll -> {
-                expanded = true
-                publishRows()
-            }
+            ResultIntent.ShowAll -> publishRows()
 
             is ResultIntent.Speak -> speaker.speak(intent.word)
 
             ResultIntent.Retry -> if (mutableState.value.reviewError && loading?.isActive != true) {
                 mutableState.update { it.copy(isLoading = true, reviewError = false) }
                 loading = viewModelScope.launch { load() }
+            }
+
+            is ResultIntent.AddToNotebook -> {
+                viewModelScope.launch {
+                    val cardId = CardId(intent.cardId)
+                    val today = clock.epochDay(clock.nowMs())
+                    val existing = try {
+                        progress.get(listOf(cardId))[cardId]
+                    } catch (e: CancellationException) {
+                        throw e
+                    } catch (e: Exception) {
+                        null
+                    }
+                    val updated = (existing ?: CardProgress(cardId)).copy(
+                        box = 0,
+                        dueEpochDay = today,
+                        mastered = false,
+                    )
+                    try {
+                        progress.save(listOf(updated))
+                    } catch (e: CancellationException) {
+                        throw e
+                    } catch (e: Exception) {
+                        log.e(e) { "could not save progress for ${intent.cardId}" }
+                        return@launch
+                    }
+                    allGroups = allGroups.map { group ->
+                        if (group.outcome == ReviewOutcome.TimeUp) {
+                            group.copy(
+                                rows = group.rows.map { row ->
+                                    if (row.cardId == intent.cardId) {
+                                        row.copy(isAddedToNotebook = true)
+                                    } else {
+                                        row
+                                    }
+                                }.toImmutableList(),
+                            )
+                        } else {
+                            group
+                        }
+                    }
+                    allRows = allGroups.flatMap { it.rows }
+                    mutableState.update { current ->
+                        current.copy(
+                            groups = allGroups.toImmutableList(),
+                            rows = allRows.toImmutableList(),
+                            addedToNotebook = current.addedToNotebook + 1,
+                        )
+                    }
+                }
             }
 
             // Navigation (route composable) and the share card (M6).
@@ -80,9 +132,27 @@ internal class ResultViewModel(
     }
 
     private suspend fun load() {
-        val ids = route.missedCards.map(::CardId)
+        val passedSet = route.passedCards.toSet()
+        val correctList = route.correctCards
+        val wrongList = if (route.wrongCards.isNotEmpty()) {
+            route.wrongCards
+        } else {
+            route.missedCards.filter { it !in passedSet }
+        }
+        val passedList = route.passedCards
+        val timeUpList = route.timeUpCards
+
+        val allIds = (correctList + wrongList + passedList + timeUpList).ifEmpty {
+            route.missedCards
+        }.map(::CardId)
+
+        if (allIds.isEmpty()) {
+            mutableState.update { it.copy(isLoading = false) }
+            return
+        }
+
         val byId = try {
-            cards.cards(ids).associateBy { it.id }
+            cards.cards(allIds).associateBy { it.id }
         } catch (e: CancellationException) {
             throw e
         } catch (e: Exception) {
@@ -91,20 +161,55 @@ internal class ResultViewModel(
             mutableState.update { it.copy(isLoading = false, reviewError = true) }
             return
         }
-        val passed = route.passedCards.toSet()
-        // A card that left the content since the game is skipped (its progress is kept, CONTENT.md §8).
-        allRows = ids.mapNotNull { id -> byId[id]?.toRow(passed = id.value in passed) }
+
+        val timeUpProgress = if (timeUpList.isNotEmpty()) {
+            try {
+                progress.get(timeUpList.map(::CardId))
+            } catch (e: CancellationException) {
+                throw e
+            } catch (e: Exception) {
+                log.w(e) { "could not read progress for time-up cards" }
+                emptyMap()
+            }
+        } else {
+            emptyMap()
+        }
+
+        val correctRows = correctList.mapNotNull { id ->
+            byId[CardId(id)]?.toRow(ReviewOutcome.Correct)
+        }
+        val wrongRows = wrongList.mapNotNull { id ->
+            byId[CardId(id)]?.toRow(ReviewOutcome.Wrong)
+        }
+        val passedRows = passedList.mapNotNull { id ->
+            byId[CardId(id)]?.toRow(ReviewOutcome.Passed)
+        }
+        val timeUpRows = timeUpList.mapNotNull { id ->
+            val cardId = CardId(id)
+            val inNotebook = timeUpProgress[cardId]?.inNotebook == true
+            byId[cardId]?.toRow(ReviewOutcome.TimeUp, isAddedToNotebook = inNotebook)
+        }
+
+        val groupList = buildList {
+            if (correctRows.isNotEmpty()) add(ReviewGroupUi(ReviewOutcome.Correct, correctRows.toImmutableList()))
+            if (wrongRows.isNotEmpty()) add(ReviewGroupUi(ReviewOutcome.Wrong, wrongRows.toImmutableList()))
+            if (passedRows.isNotEmpty()) add(ReviewGroupUi(ReviewOutcome.Passed, passedRows.toImmutableList()))
+            if (timeUpRows.isNotEmpty()) add(ReviewGroupUi(ReviewOutcome.TimeUp, timeUpRows.toImmutableList()))
+        }
+
+        allGroups = groupList
+        allRows = groupList.flatMap { it.rows }
         publishRows()
     }
 
     private fun publishRows() {
-        val visible = if (expanded || allRows.size <= ResultDefaults.COLLAPSED_REVIEW_ROWS + 1) {
-            allRows
-        } else {
-            allRows.take(ResultDefaults.COLLAPSED_REVIEW_ROWS)
-        }
         mutableState.update {
-            it.copy(rows = visible.toImmutableList(), hiddenRows = allRows.size - visible.size, isLoading = false)
+            it.copy(
+                groups = allGroups.toImmutableList(),
+                rows = allRows.toImmutableList(),
+                hiddenRows = 0,
+                isLoading = false,
+            )
         }
     }
 
@@ -129,13 +234,15 @@ internal class ResultViewModel(
             )
         }
 
-        fun Card.toRow(passed: Boolean) = ReviewRowUi(
+        fun Card.toRow(outcome: ReviewOutcome, isAddedToNotebook: Boolean = false) = ReviewRowUi(
             letter = letter,
             word = answer.lowercase(),
             clue = clue,
             example = example,
-            outcome = if (passed) ReviewOutcome.Passed else ReviewOutcome.Wrong,
+            outcome = outcome,
             level = level,
+            cardId = id.value,
+            isAddedToNotebook = isAddedToNotebook,
         )
     }
 }

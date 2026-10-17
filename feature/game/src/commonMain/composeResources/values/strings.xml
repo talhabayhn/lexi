@@ -102,8 +102,16 @@
         <item quantity="one">+%1$d more word · See all →</item>
         <item quantity="other">+%1$d more words · See all →</item>
     </plurals>
+    <string name="result_group_correct">Correct</string>
+    <string name="result_group_wrong">Wrong</string>
+    <string name="result_group_passed">Passed</string>
+    <string name="result_group_time_up">Time up</string>
+    <string name="result_outcome_correct">correct</string>
     <string name="result_outcome_wrong">wrong</string>
     <string name="result_outcome_passed">passed</string>
+    <string name="result_outcome_time_up">time up</string>
+    <string name="result_add_to_notebook">Add to notebook</string>
+    <string name="result_added_to_notebook">Added</string>
     <string name="result_speak">Listen to %1$s</string>
     <string name="result_empty">All correct! Nothing to review from this wheel.</string>
     <string name="result_review_error">The words to review could not be loaded.</string>
