@@ -53,7 +53,7 @@ Fits `docs/PRODUCT.md`: Pro = no ads, exam packs, +3 jokers refill, unlimited re
 
 ### Three TRY price options (proposals, not market data)
 
-Reasoning anchors: WordUp ~₺70/₺400 (S, unverified), Duolingo yearly ~₺840 (S, conflicting) as ceiling, exam apps at USD $1–4/mo (low floor), plus end-of-"psychological" prices at .99.
+Reasoning anchors: WordUp ~₺70/₺400 (S, unverified), Duolingo yearly ~₺840 (S, conflicting) as ceiling, exam apps at USD $1–4/mo (low floor), plus .99 price endings.
 
 | Option | Monthly | Yearly | Lifetime | Yearly vs 12×monthly | Reasoning | Risk |
 |---|---|---|---|---|---|---|
@@ -72,7 +72,7 @@ Recommendation: **A at launch, with TR localisations of the paywall copy anchore
 ### Regional notes (diaspora DE/NL/US)
 - Don't hand-set EUR/USD at launch: use each store's equalised conversion from your base storefront, then override only where it looks off. Suggested *starting guesses* to compare against the equalised output (not market data): monthly €2.99–3.99 / $3.99; yearly €19.99–24.99 / $24.99; lifetime €39.99–49.99 / $49.99. Check these against what the stores generate before accepting any.
 - Diaspora users are the higher-ARPU segment; TR price + equalised EU price means price discrimination by storefront, which is standard and allowed. Decide whether to base-price in TRY (Apple warns auto-adjusts won't apply to the base storefront for IAP) or in EUR/USD with TR overridden — recommend **USD/EUR base, TR manually managed**, because lifetime IAP in TR then won't silently drift.
-- Playing store region ≠ language; a user with a TR clue UI in Berlin is billed in EUR. Never infer price from UI language.
+- Store region ≠ language; a user with a TR clue UI in Berlin is billed in EUR. Never infer price from UI language.
 
 ### Revisiting TRY pricing
 1. Calendar review monthly for first 3 months, then quarterly.
