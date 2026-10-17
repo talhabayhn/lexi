@@ -65,7 +65,7 @@ a1-go,GO,G,STARTS,verb,gitmek,Let us go!,Hadi gidelim!,1,,daily-life
 a1-beautiful,BEAUTIFUL,B,STARTS,adj,"çok güzel, göz alıcı",She is beautiful.,O çok güzel.,1,,daily-life
 a1-difficult,DIFFICULT,D,STARTS,adj,kolay olmayan,This puzzle is difficult.,Bu bulmaca zor.,2,,daily-life
 a1-easy,EASY,E,STARTS,adj,zor olmayan,The test is easy.,Sınav kolay.,1,,daily-life
-a1-wrong,WRONG,W,STARTS,adj,yanlış,This answer is wrong.,Bu cevap yanlış.,1,,daily-life
+a1-wrong,WRONG,W,STARTS,adj,yanlış,It is the wrong way.,Bu yanlış yol.,1,,daily-life
 a1-lake,LAKE,L,STARTS,noun,etrafı karayla çevrili büyük su,The lake is calm.,Göl sakin.,1,,daily-life
 a1-mountain,MOUNTAIN,M,STARTS,noun,çok yüksek kayalık yer,The mountain is steep.,Dağ dik.,1,,daily-life
 a1-sea,SEA,S,STARTS,noun,deniz,The sea is calm.,Deniz sakin.,1,,daily-life
