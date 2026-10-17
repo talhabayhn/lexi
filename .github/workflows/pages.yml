@@ -1,0 +1,51 @@
+name: pages
+
+# Website (landing, privacy, terms, support; TR + EN) on GitHub Pages, built by docs/site/build.py from the
+# store drafts in docs/store. One-time setup: Settings → Pages → Source: "GitHub Actions" (docs/RELEASE.md).
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/site/**'
+      - 'docs/store/privacy-policy-*.md'
+      - 'docs/store/terms-*.md'
+      - 'docs/store/graphics/play/icon-512.png'
+      - 'docs/design/fonts/**'
+      - '.github/workflows/pages.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+      - name: Build site
+        run: python3 docs/site/build.py --out _site
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
