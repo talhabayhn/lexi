@@ -72,7 +72,7 @@ Module mapping (replaces the earlier `composeApp`): `androidApp` = thin Android 
 
 ## M6 — Daily, sharing, onboarding
 - [x] Daily wheel (seed per date+level, one scored attempt, already-played state)
-- [ ] Streak logic + home badge
+- [x] Streak logic + home badge
 - [ ] Share card (`12-share-card`) rendered to image + system share sheet
 - [ ] Onboarding 3 steps (`01-onboarding` + design debt), level test, level-test result
 **Done when:** two devices get the identical daily wheel for the same date and level.

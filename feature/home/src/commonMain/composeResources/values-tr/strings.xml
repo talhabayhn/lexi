@@ -10,6 +10,8 @@
     <!-- Günün çarkı kartı: ay büyük harfle, "GÜNÜN ÇARKI · EKİM" -->
     <string name="home_daily_label">GÜNÜN ÇARKI · %1$s</string>
     <string name="home_daily_title">Herkes aynı çarkı çözüyor</string>
+    <string name="home_daily_completed_score">Tamamlandı · %1$d puan</string>
+    <string name="home_daily_unavailable">Kullanılamıyor</string>
     <string-array name="home_months">
         <item>OCAK</item>
         <item>ŞUBAT</item>

@@ -1,11 +1,19 @@
 package dev.talhabayhan.lexi.feature.home
 
 import app.cash.turbine.test
+import dev.talhabayhan.lexi.core.domain.daily.GetDailyWheel
 import dev.talhabayhan.lexi.core.domain.model.CardId
+import dev.talhabayhan.lexi.core.domain.model.Level
+import dev.talhabayhan.lexi.core.domain.session.DailyResult
 import dev.talhabayhan.lexi.core.domain.srs.CardProgress
+import dev.talhabayhan.lexi.core.domain.streak.GetStreakStatus
 import dev.talhabayhan.lexi.core.testing.FakeAppClock
+import dev.talhabayhan.lexi.core.testing.FakeCardRepository
+import dev.talhabayhan.lexi.core.testing.FakeContentVersionRepository
+import dev.talhabayhan.lexi.core.testing.FakeDailyRepository
 import dev.talhabayhan.lexi.core.testing.FakeProgressRepository
 import dev.talhabayhan.lexi.core.testing.FakeStreakRepository
+import dev.talhabayhan.lexi.core.testing.testAlphabetPool
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
@@ -23,10 +31,16 @@ class HomeViewModelTest {
     private val today = clock.epochDay(clock.nowMs())
     private val progress = FakeProgressRepository()
     private val streaks = FakeStreakRepository()
+    private val cards = FakeCardRepository()
+    private val contentVersion = FakeContentVersionRepository()
+    private val daily = FakeDailyRepository()
+    private val getStreakStatus = GetStreakStatus(streaks, clock)
+    private val getDailyWheel = GetDailyWheel(cards, contentVersion, daily, clock)
 
     @BeforeTest
     fun setUp() {
         Dispatchers.setMain(UnconfinedTestDispatcher())
+        cards.cards = testAlphabetPool(Level.A1)
     }
 
     @AfterTest
@@ -34,7 +48,7 @@ class HomeViewModelTest {
         Dispatchers.resetMain()
     }
 
-    private fun viewModel() = HomeViewModel(progress, streaks, clock)
+    private fun viewModel() = HomeViewModel(progress, getStreakStatus, getDailyWheel, daily, clock)
 
     private fun card(id: String, box: Int? = null, due: Long? = null, correct: Int = 0) =
         CardProgress(CardId(id), box = box, dueEpochDay = due, seen = 1, correct = correct)
@@ -48,6 +62,7 @@ class HomeViewModelTest {
             assertEquals(0, state.learnedWords)
             assertEquals(15, state.dailyDay)
             assertEquals(10, state.dailyMonth)
+            assertEquals(DailyCardState.Available, state.dailyState)
         }
     }
 
@@ -92,6 +107,44 @@ class HomeViewModelTest {
             assertEquals(1, after.dueReviews)
             // Yesterday was played, today is still open: the streak is alive.
             assertEquals(1, after.streakDays)
+        }
+    }
+
+    @Test
+    fun `daily wheel state is available when ready and sends NavigateToDaily on OpenDaily`() = runTest {
+        val viewModel = viewModel()
+        viewModel.state.test {
+            assertEquals(DailyCardState.Available, awaitItem().dailyState)
+        }
+        viewModel.effects.test {
+            viewModel.onIntent(HomeIntent.OpenDaily)
+            assertEquals(HomeEffect.NavigateToDaily, awaitItem())
+        }
+    }
+
+    @Test
+    fun `daily wheel state is already played with score when recorded and OpenDaily is inert`() = runTest {
+        daily.record(DailyResult(today, Level.A1, score = 320, timeMs = 85000))
+        val viewModel = viewModel()
+        viewModel.state.test {
+            assertEquals(DailyCardState.AlreadyPlayed(320), awaitItem().dailyState)
+        }
+        viewModel.effects.test {
+            viewModel.onIntent(HomeIntent.OpenDaily)
+            expectNoEvents()
+        }
+    }
+
+    @Test
+    fun `daily wheel state is unavailable when no cards exist and OpenDaily is inert`() = runTest {
+        cards.cards = emptyList()
+        val viewModel = viewModel()
+        viewModel.state.test {
+            assertEquals(DailyCardState.Unavailable, awaitItem().dailyState)
+        }
+        viewModel.effects.test {
+            viewModel.onIntent(HomeIntent.OpenDaily)
+            expectNoEvents()
         }
     }
 
@@ -152,17 +205,6 @@ class HomeViewModelTest {
             viewModel.onIntent(HomeIntent.OpenExamPacks)
 
             assertEquals(HomeEffect.NavigateToExamPacks, awaitItem())
-        }
-    }
-
-    // TODO(M6): the daily card opens the daily wheel; until then it is inert.
-    @Test
-    fun `the daily card is inert until the daily wheel arrives`() = runTest {
-        val viewModel = viewModel()
-        viewModel.effects.test {
-            viewModel.onIntent(HomeIntent.OpenDaily)
-
-            expectNoEvents()
         }
     }
 }

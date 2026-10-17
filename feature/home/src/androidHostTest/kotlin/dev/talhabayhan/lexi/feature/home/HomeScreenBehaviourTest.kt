@@ -57,6 +57,40 @@ class HomeScreenBehaviourTest {
     }
 
     @Test
+    fun `the daily card is inert when already played`() {
+        val intents = mutableListOf<HomeIntent>()
+        runComposeUiTest {
+            setContent {
+                LexiTheme(reducedMotion = true) {
+                    HomeScreen(
+                        HomeSampleState.copy(dailyState = DailyCardState.AlreadyPlayed(310)),
+                        onIntent = { intents += it },
+                    )
+                }
+            }
+            onNodeWithText("Tamamlandı · 310 puan").performClick()
+        }
+        assertEquals(emptyList(), intents)
+    }
+
+    @Test
+    fun `the daily card is inert when unavailable`() {
+        val intents = mutableListOf<HomeIntent>()
+        runComposeUiTest {
+            setContent {
+                LexiTheme(reducedMotion = true) {
+                    HomeScreen(
+                        HomeSampleState.copy(dailyState = DailyCardState.Unavailable),
+                        onIntent = { intents += it },
+                    )
+                }
+            }
+            onNodeWithText("Kullanılamıyor").performClick()
+        }
+        assertEquals(emptyList(), intents)
+    }
+
+    @Test
     fun `the menu tiles send their intents`() {
         assertEquals(
             listOf(

@@ -17,6 +17,7 @@ import androidx.navigation.compose.rememberNavController
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiMotion
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.core.domain.game.GameMode
+import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.feature.game.GameRoute
 import dev.talhabayhan.lexi.feature.game.gameScreen
 import dev.talhabayhan.lexi.feature.game.result.resultScreen
@@ -74,6 +75,11 @@ fun LexiNavHost(modifier: Modifier = Modifier) {
         )
         homeScreen(
             onPlay = { navController.ifResumed { navigate(LevelSelectRoute()) { launchSingleTop = true } } },
+            onOpenDaily = {
+                navController.ifResumed {
+                    navigate(GameRoute(Level.A1, GameMode.DAILY)) { launchSingleTop = true }
+                }
+            },
             onOpenNotebook = { navController.ifResumed { navigate(NotebookRoute) { launchSingleTop = true } } },
             onOpenStats = { navController.ifResumed { navigate(StatsRoute) { launchSingleTop = true } } },
             onOpenSettings = { navController.ifResumed { navigate(SettingsRoute) { launchSingleTop = true } } },

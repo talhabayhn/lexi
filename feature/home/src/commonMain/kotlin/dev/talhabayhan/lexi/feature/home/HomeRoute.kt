@@ -18,11 +18,12 @@ import org.koin.compose.viewmodel.koinViewModel
 data object HomeRoute
 
 /**
- * [onPlay] opens the level and mode select, [onOpenNotebook] the notebook, [onOpenStats] the statistics,
+ * [onPlay] opens the level and mode select, [onOpenDaily] the daily wheel, [onOpenNotebook] the notebook, [onOpenStats] the statistics,
  * [onOpenSettings] the settings, [onOpenPractice] the level select on Practice, [onOpenExamPacks] the exam packs page (the graph in `shared` decides the routes).
  */
 fun NavGraphBuilder.homeScreen(
     onPlay: () -> Unit,
+    onOpenDaily: () -> Unit,
     onOpenNotebook: () -> Unit,
     onOpenStats: () -> Unit,
     onOpenSettings: () -> Unit,
@@ -32,6 +33,7 @@ fun NavGraphBuilder.homeScreen(
     composable<HomeRoute> {
         HomeRoute(
             onPlay = onPlay,
+            onOpenDaily = onOpenDaily,
             onOpenNotebook = onOpenNotebook,
             onOpenStats = onOpenStats,
             onOpenSettings = onOpenSettings,
@@ -44,6 +46,7 @@ fun NavGraphBuilder.homeScreen(
 @Composable
 internal fun HomeRoute(
     onPlay: () -> Unit,
+    onOpenDaily: () -> Unit,
     onOpenNotebook: () -> Unit,
     onOpenStats: () -> Unit,
     onOpenSettings: () -> Unit,
@@ -53,6 +56,7 @@ internal fun HomeRoute(
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
     val currentOnPlay by rememberUpdatedState(onPlay)
+    val currentOnOpenDaily by rememberUpdatedState(onOpenDaily)
     val currentOnOpenNotebook by rememberUpdatedState(onOpenNotebook)
     val currentOnOpenStats by rememberUpdatedState(onOpenStats)
     val currentOnOpenSettings by rememberUpdatedState(onOpenSettings)
@@ -64,6 +68,7 @@ internal fun HomeRoute(
             viewModel.effects.collect { effect ->
                 when (effect) {
                     HomeEffect.NavigateToLevelSelect -> currentOnPlay()
+                    HomeEffect.NavigateToDaily -> currentOnOpenDaily()
                     HomeEffect.NavigateToNotebook -> currentOnOpenNotebook()
                     HomeEffect.NavigateToStats -> currentOnOpenStats()
                     HomeEffect.NavigateToSettings -> currentOnOpenSettings()

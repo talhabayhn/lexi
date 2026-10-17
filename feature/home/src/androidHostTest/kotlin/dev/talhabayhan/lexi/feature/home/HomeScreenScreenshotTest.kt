@@ -30,6 +30,30 @@ class HomeScreenScreenshotTest {
     }
 
     @Test
+    fun dailyAlreadyPlayed() {
+        captureRoboImage("src/androidHostTest/screenshots/HomeScreenDailyPlayed.png") {
+            LexiTheme(reducedMotion = false) {
+                HomeScreen(
+                    state = HomeSampleState.copy(dailyState = DailyCardState.AlreadyPlayed(score = 310)),
+                    onIntent = {},
+                )
+            }
+        }
+    }
+
+    @Test
+    fun dailyUnavailable() {
+        captureRoboImage("src/androidHostTest/screenshots/HomeScreenDailyUnavailable.png") {
+            LexiTheme(reducedMotion = false) {
+                HomeScreen(
+                    state = HomeSampleState.copy(dailyState = DailyCardState.Unavailable),
+                    onIntent = {},
+                )
+            }
+        }
+    }
+
+    @Test
     @Config(qualifiers = "tr-w320dp-h568dp-xhdpi")
     fun w320h568() = capture("HomeLayout_w320h568")
 

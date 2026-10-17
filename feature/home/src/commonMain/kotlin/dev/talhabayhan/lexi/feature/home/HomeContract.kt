@@ -5,12 +5,27 @@ import dev.talhabayhan.lexi.core.domain.game.GameMode
 import dev.talhabayhan.lexi.core.domain.model.Level
 
 /**
+ * State of the daily wheel card on the home screen.
+ */
+@Immutable
+internal sealed interface DailyCardState {
+    /** The daily wheel is available to play today. */
+    data object Available : DailyCardState
+
+    /** The daily wheel has already been played today (shows today's score). */
+    data class AlreadyPlayed(val score: Int) : DailyCardState
+
+    /** No playable cards exist for this level in the pool. */
+    data object Unavailable : DailyCardState
+}
+
+/**
  * What `02-home` shows. The zero values are real ones (nothing played yet); they are replaced as the repositories
  * emit.
  */
 @Immutable
 internal data class HomeUiState(
-    /** Consecutive days with a completed wheel, ending today (or yesterday while today is still open). */
+    /** Consecutive days with a completed wheel, ending today (or yesterday while today is still open). 0 hides badge. */
     val streakDays: Int = 0,
     /** Notebook cards due today ("N tekrar bekliyor"). */
     val dueReviews: Int = 0,
@@ -19,6 +34,8 @@ internal data class HomeUiState(
     /** Day of the month and month (1–12) of today, for the daily card. */
     val dailyDay: Int = 1,
     val dailyMonth: Int = 1,
+    /** State of the daily wheel card (Available, AlreadyPlayed, Unavailable). */
+    val dailyState: DailyCardState = DailyCardState.Available,
     /** Level and mode on the OYNA badge. TODO(M5): the last played choice, once it is persisted. */
     val playLevel: Level = Level.A1,
     val playMode: GameMode = GameMode.CLASSIC,
@@ -31,7 +48,7 @@ internal sealed interface HomeIntent {
     /** OYNA: opens the level and mode select. */
     data object Play : HomeIntent
 
-    /** TODO(M6): daily wheel; inert until then. */
+    /** The daily wheel card: opens the daily wheel when available. */
     data object OpenDaily : HomeIntent
 
     /** The gear icon. */
@@ -52,6 +69,8 @@ internal sealed interface HomeIntent {
 
 internal sealed interface HomeEffect {
     data object NavigateToLevelSelect : HomeEffect
+
+    data object NavigateToDaily : HomeEffect
 
     data object NavigateToNotebook : HomeEffect
 

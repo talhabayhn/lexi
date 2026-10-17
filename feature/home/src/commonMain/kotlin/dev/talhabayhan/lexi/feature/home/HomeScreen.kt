@@ -6,11 +6,13 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
@@ -30,6 +32,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.min
 import dev.talhabayhan.lexi.core.designsystem.component.CardDefaults
 import dev.talhabayhan.lexi.core.designsystem.component.DailyCard
@@ -48,8 +51,10 @@ import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.core.designsystem.theme.lexiContentWidth
 import dev.talhabayhan.lexi.core.domain.game.GameMode
 import dev.talhabayhan.lexi.feature.home.generated.resources.Res
+import dev.talhabayhan.lexi.feature.home.generated.resources.home_daily_completed_score
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_daily_label
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_daily_title
+import dev.talhabayhan.lexi.feature.home.generated.resources.home_daily_unavailable
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_mode_classic
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_mode_hardcore
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_mode_practice
@@ -225,16 +230,46 @@ private fun HomeContent(
                 LexiLogo(size = metrics.logo)
                 Text(stringResource(Res.string.home_tagline), style = LexiTheme.typography.label15)
             }
-            DailyCard(
-                day = state.dailyDay.toString(),
-                label = stringResource(
-                    Res.string.home_daily_label,
-                    stringArrayResource(Res.array.home_months)[state.dailyMonth - 1],
-                ),
-                title = stringResource(Res.string.home_daily_title),
-                onClick = { onIntent(HomeIntent.OpenDaily) },
-                compact = metrics.compactDaily,
-            )
+            val months = stringArrayResource(Res.array.home_months)
+            val monthName = months.getOrNull(state.dailyMonth - 1).orEmpty()
+            val dailyLabel = stringResource(Res.string.home_daily_label, monthName)
+            when (val daily = state.dailyState) {
+                is DailyCardState.Available -> {
+                    DailyCard(
+                        day = state.dailyDay.toString(),
+                        label = dailyLabel,
+                        title = stringResource(Res.string.home_daily_title),
+                        onClick = { onIntent(HomeIntent.OpenDaily) },
+                        compact = metrics.compactDaily,
+                        enabled = true,
+                        showChevron = true,
+                    )
+                }
+
+                is DailyCardState.AlreadyPlayed -> {
+                    DailyCard(
+                        day = state.dailyDay.toString(),
+                        label = dailyLabel,
+                        title = stringResource(Res.string.home_daily_completed_score, daily.score),
+                        onClick = {},
+                        compact = metrics.compactDaily,
+                        enabled = false,
+                        showChevron = false,
+                    )
+                }
+
+                is DailyCardState.Unavailable -> {
+                    DailyCard(
+                        day = state.dailyDay.toString(),
+                        label = dailyLabel,
+                        title = stringResource(Res.string.home_daily_unavailable),
+                        onClick = {},
+                        compact = metrics.compactDaily,
+                        enabled = false,
+                        showChevron = false,
+                    )
+                }
+            }
             PlayButton(
                 label = stringResource(Res.string.home_play),
                 badge = stringResource(
@@ -291,11 +326,15 @@ private fun Density.withCappedFontScale(): Density = if (fontScale <= HomeDefaul
 @Composable
 private fun TopBar(state: HomeUiState, onIntent: (HomeIntent) -> Unit) {
     Row(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier.fillMaxWidth().heightIn(min = HomeDefaults.StreakChipHeight),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        StreakChip(pluralStringResource(Res.plurals.home_streak, state.streakDays, state.streakDays))
+        if (state.streakDays > 0) {
+            StreakChip(pluralStringResource(Res.plurals.home_streak, state.streakDays, state.streakDays))
+        } else {
+            Spacer(Modifier.size(0.dp))
+        }
         NavSquareButton(
             icon = LexiIcons.Settings,
             contentDescription = stringResource(Res.string.home_settings),

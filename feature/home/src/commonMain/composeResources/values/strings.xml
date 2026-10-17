@@ -10,6 +10,8 @@
     <!-- Daily wheel card: month in capitals, "DAILY WHEEL · OCTOBER" -->
     <string name="home_daily_label">DAILY WHEEL · %1$s</string>
     <string name="home_daily_title">Everyone solves the same wheel</string>
+    <string name="home_daily_completed_score">Completed · %1$d pts</string>
+    <string name="home_daily_unavailable">Unavailable</string>
     <string-array name="home_months">
         <item>JANUARY</item>
         <item>FEBRUARY</item>

@@ -2,11 +2,15 @@ package dev.talhabayhan.lexi.feature.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import dev.talhabayhan.lexi.core.domain.daily.DailyPlayState
+import dev.talhabayhan.lexi.core.domain.daily.GetDailyWheel
+import dev.talhabayhan.lexi.core.domain.repository.DailyRepository
 import dev.talhabayhan.lexi.core.domain.repository.ProgressRepository
-import dev.talhabayhan.lexi.core.domain.repository.StreakRepository
 import dev.talhabayhan.lexi.core.domain.stats.Stats
+import dev.talhabayhan.lexi.core.domain.streak.GetStreakStatus
 import dev.talhabayhan.lexi.core.domain.time.AppClock
 import dev.talhabayhan.lexi.core.domain.time.civilDateOfEpochDay
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -14,12 +18,20 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.receiveAsFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-/** Home (`02-home`): streak, notebook and statistics numbers from the repositories; navigation as effects. */
-internal class HomeViewModel(progress: ProgressRepository, streaks: StreakRepository, private val appClock: AppClock) :
-    ViewModel() {
+/** Home (`02-home`): streak, daily card, notebook and statistics numbers from the repositories; navigation as effects. */
+internal class HomeViewModel(
+    progress: ProgressRepository,
+    getStreakStatus: GetStreakStatus,
+    private val getDailyWheel: GetDailyWheel,
+    private val daily: DailyRepository,
+    private val appClock: AppClock,
+) : ViewModel() {
     private val mutableState = MutableStateFlow(HomeUiState())
     val state: StateFlow<HomeUiState> = mutableState.asStateFlow()
 
@@ -30,19 +42,45 @@ internal class HomeViewModel(progress: ProgressRepository, streaks: StreakReposi
 
     init {
         viewModelScope.launch {
-            combine(progress.observeAll(), streaks.observeDays(), today) { cards, days, day ->
+            combine(progress.observeAll(), getStreakStatus.observe(), today) { cards, streak, day ->
                 val date = civilDateOfEpochDay(day)
-                mutableState.value.copy(
-                    streakDays = Stats.currentStreak(days, day),
-                    dueReviews = cards.count { it.isDue(day) },
-                    learnedWords = Stats.learnedWords(cards),
-                    dailyDay = date.day,
-                    dailyMonth = date.month,
-                )
+                cards to (streak to date)
             }
                 // A broken read keeps the last numbers (zeros at first); the menu itself still works.
                 .catch { }
-                .collect { mutableState.value = it }
+                .collect { (cards, streakAndDate) ->
+                    val (streak, date) = streakAndDate
+                    mutableState.update { current ->
+                        current.copy(
+                            streakDays = streak.currentStreak,
+                            dueReviews = cards.count { it.isDue(today.value) },
+                            learnedWords = Stats.learnedWords(cards),
+                            dailyDay = date.day,
+                            dailyMonth = date.month,
+                        )
+                    }
+                }
+        }
+
+        viewModelScope.launch {
+            @OptIn(ExperimentalCoroutinesApi::class)
+            today.flatMapLatest { day ->
+                daily.observe(day, mutableState.value.playLevel).map { played ->
+                    if (played != null) {
+                        DailyCardState.AlreadyPlayed(played.score)
+                    } else {
+                        when (val playState = getDailyWheel(mutableState.value.playLevel, day)) {
+                            is DailyPlayState.Ready -> DailyCardState.Available
+                            is DailyPlayState.AlreadyPlayed -> DailyCardState.AlreadyPlayed(playState.result.score)
+                            is DailyPlayState.NoCards -> DailyCardState.Unavailable
+                        }
+                    }
+                }
+            }
+                .catch { emit(DailyCardState.Unavailable) }
+                .collect { cardState ->
+                    mutableState.update { it.copy(dailyState = cardState) }
+                }
         }
     }
 
@@ -54,6 +92,12 @@ internal class HomeViewModel(progress: ProgressRepository, streaks: StreakReposi
 
             HomeIntent.Play -> effectChannel.trySend(HomeEffect.NavigateToLevelSelect)
 
+            HomeIntent.OpenDaily -> {
+                if (mutableState.value.dailyState is DailyCardState.Available) {
+                    effectChannel.trySend(HomeEffect.NavigateToDaily)
+                }
+            }
+
             HomeIntent.OpenNotebook -> effectChannel.trySend(HomeEffect.NavigateToNotebook)
 
             HomeIntent.OpenStats -> effectChannel.trySend(HomeEffect.NavigateToStats)
@@ -63,9 +107,6 @@ internal class HomeViewModel(progress: ProgressRepository, streaks: StreakReposi
             HomeIntent.OpenPractice -> effectChannel.trySend(HomeEffect.NavigateToPractice)
 
             HomeIntent.OpenExamPacks -> effectChannel.trySend(HomeEffect.NavigateToExamPacks)
-
-            // TODO(M6): the daily wheel; the card is inert until then.
-            HomeIntent.OpenDaily -> Unit
         }
     }
 }

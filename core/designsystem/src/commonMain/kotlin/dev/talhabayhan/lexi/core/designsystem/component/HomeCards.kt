@@ -122,10 +122,13 @@ public fun DailyCard(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     compact: Boolean = false,
+    enabled: Boolean = true,
+    showChevron: Boolean = true,
 ) {
     val colors = LexiTheme.colors
     PressableSurface(
         onClick = onClick,
+        enabled = enabled,
         modifier = modifier.fillMaxWidth(),
         color = colors.yellow,
         shadow = LexiTheme.shadows.s6,
@@ -154,11 +157,13 @@ public fun DailyCard(
                 Text(label, style = LexiTheme.typography.label12)
                 Text(title, style = LexiTheme.typography.heading22)
             }
-            Icon(
-                LexiIcons.ChevronRight,
-                contentDescription = null,
-                modifier = Modifier.size(HomeDefaults.DailyChevronSize),
-            )
+            if (showChevron) {
+                Icon(
+                    LexiIcons.ChevronRight,
+                    contentDescription = null,
+                    modifier = Modifier.size(HomeDefaults.DailyChevronSize),
+                )
+            }
         }
     }
 }

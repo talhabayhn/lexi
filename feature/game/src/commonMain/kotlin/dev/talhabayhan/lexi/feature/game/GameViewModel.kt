@@ -5,6 +5,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import co.touchlab.kermit.Logger
 import dev.talhabayhan.lexi.core.domain.config.FeatureFlags
+import dev.talhabayhan.lexi.core.domain.daily.DailyPlayState
+import dev.talhabayhan.lexi.core.domain.daily.GetDailyWheel
 import dev.talhabayhan.lexi.core.domain.feedback.Speaker
 import dev.talhabayhan.lexi.core.domain.game.EngineEffect
 import dev.talhabayhan.lexi.core.domain.game.GameConfig
@@ -76,6 +78,7 @@ internal class GameViewModel(
     private val timeSource: TimeSource.WithComparableMarks,
     private val seeds: SeedSource,
     private val flags: FeatureFlags = FeatureFlags(),
+    private val getDailyWheel: GetDailyWheel? = null,
 ) : ViewModel() {
     private val mutableState = MutableStateFlow(GameUiState())
     val state: StateFlow<GameUiState> = mutableState.asStateFlow()
@@ -303,30 +306,47 @@ internal class GameViewModel(
     private suspend fun newSession(engine: GameEngine): Opened {
         val mode = route.gameMode
         val category = route.categoryId ?: CategoryId.MIXED
-        val seed = seeds.nextSeed()
+        var seed = seeds.nextSeed()
         val random = SeededRandom(seed).derive(WheelGenerator.SEED_PURPOSE)
         var level = route.gameLevel
-        val wheel = if (mode == GameMode.REVIEW) {
-            // Review (GAME_RULES.md §1, §10): the due notebook cards of any level; the route's level is a placeholder.
-            val today = appClock.epochDay(appClock.nowMs())
-            val due = Srs.dueCards(progress.observeAll().first(), today)
-            val reviewWheel = WheelGenerator.review(cards.cards(due), random)
-            level = reviewWheel.slots.firstNotNullOfOrNull { it.card?.level } ?: return Opened.Abandoned
-            reviewWheel
-        } else {
-            val recentlySeen = if (mode.usesCardHistory) {
-                WheelGenerator.recentlySeen(progress.lastSeenMs(), appClock.nowMs(), config)
-            } else {
-                emptySet()
+        val wheel = when {
+            mode == GameMode.REVIEW -> {
+                // Review (GAME_RULES.md §1, §10): the due notebook cards of any level; the route's level is a placeholder.
+                val today = appClock.epochDay(appClock.nowMs())
+                val due = Srs.dueCards(progress.observeAll().first(), today)
+                val reviewWheel = WheelGenerator.review(cards.cards(due), random)
+                level = reviewWheel.slots.firstNotNullOfOrNull { it.card?.level } ?: return Opened.Abandoned
+                reviewWheel
             }
-            WheelGenerator.generate(
-                pool = cards.wheelPool(level, category),
-                level = level,
-                category = category,
-                mode = mode,
-                random = random,
-                recentlySeen = recentlySeen,
-            )
+
+            mode == GameMode.DAILY && getDailyWheel != null -> {
+                when (val dailyState = getDailyWheel(level)) {
+                    is DailyPlayState.Ready -> {
+                        seed = dailyState.seed
+                        dailyState.wheel
+                    }
+
+                    is DailyPlayState.AlreadyPlayed -> return Opened.Abandoned
+
+                    DailyPlayState.NoCards -> return Opened.NoCards
+                }
+            }
+
+            else -> {
+                val recentlySeen = if (mode.usesCardHistory) {
+                    WheelGenerator.recentlySeen(progress.lastSeenMs(), appClock.nowMs(), config)
+                } else {
+                    emptySet()
+                }
+                WheelGenerator.generate(
+                    pool = cards.wheelPool(level, category),
+                    level = level,
+                    category = category,
+                    mode = mode,
+                    random = random,
+                    recentlySeen = recentlySeen,
+                )
+            }
         }
         // The engine would end such a wheel at Start (EMPTY_WHEEL); it is not a game, so nothing is recorded.
         if (wheel.playableSlots.isEmpty()) return Opened.NoCards
