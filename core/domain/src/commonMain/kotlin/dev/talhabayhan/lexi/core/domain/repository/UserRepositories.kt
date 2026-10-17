@@ -4,6 +4,7 @@ import dev.talhabayhan.lexi.core.domain.game.JokerInventory
 import dev.talhabayhan.lexi.core.domain.game.JokerType
 import dev.talhabayhan.lexi.core.domain.joker.JokerWallet
 import dev.talhabayhan.lexi.core.domain.model.CardId
+import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.core.domain.session.DailyResult
 import dev.talhabayhan.lexi.core.domain.session.SessionResult
 import dev.talhabayhan.lexi.core.domain.srs.CardProgress
@@ -46,11 +47,21 @@ public interface StreakRepository {
     public fun observeDays(): Flow<List<Long>>
 }
 
-/** The Daily wheel's one scored attempt per day (`GAME_RULES.md` §5). */
+/** The Daily wheel's one scored attempt per day per level (`GAME_RULES.md` §5). */
 public interface DailyRepository {
+    /** Observes the daily attempt for [epochDay] and [level], or null if not yet played. */
+    public fun observe(epochDay: Long, level: Level): Flow<DailyResult?>
+
+    /** Observes all daily attempts for [epochDay]. */
+    public fun observeDay(epochDay: Long): Flow<List<DailyResult>>
+
+    /** Observes the first daily attempt of [epochDay] (or null if none). */
     public fun observe(epochDay: Long): Flow<DailyResult?>
 
-    /** Stores the day's attempt; returns false and changes nothing when the day was already played. */
+    /** Gets the stored attempt for [epochDay] and [level], or null if not yet played. */
+    public suspend fun get(epochDay: Long, level: Level): DailyResult?
+
+    /** Stores the day's attempt; returns false and changes nothing when the day was already played for [result.level]. */
     public suspend fun record(result: DailyResult): Boolean
 }
 

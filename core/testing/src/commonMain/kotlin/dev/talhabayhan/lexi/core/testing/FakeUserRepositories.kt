@@ -5,10 +5,13 @@ import dev.talhabayhan.lexi.core.domain.game.JokerInventory
 import dev.talhabayhan.lexi.core.domain.game.JokerType
 import dev.talhabayhan.lexi.core.domain.joker.JokerWallet
 import dev.talhabayhan.lexi.core.domain.model.CardId
+import dev.talhabayhan.lexi.core.domain.model.Level
+import dev.talhabayhan.lexi.core.domain.repository.DailyRepository
 import dev.talhabayhan.lexi.core.domain.repository.JokerRepository
 import dev.talhabayhan.lexi.core.domain.repository.ProgressRepository
 import dev.talhabayhan.lexi.core.domain.repository.SessionRepository
 import dev.talhabayhan.lexi.core.domain.repository.StreakRepository
+import dev.talhabayhan.lexi.core.domain.session.DailyResult
 import dev.talhabayhan.lexi.core.domain.session.SessionResult
 import dev.talhabayhan.lexi.core.domain.srs.CardProgress
 import dev.talhabayhan.lexi.core.domain.stats.SessionRecord
@@ -132,4 +135,25 @@ public class FakeStreakRepository(days: Collection<Long> = emptyList()) : Streak
         }
 
     override fun observeDays(): Flow<List<Long>> = state
+}
+
+/** In-memory [DailyRepository]. */
+public class FakeDailyRepository(initial: Collection<DailyResult> = emptyList()) : DailyRepository {
+    private val state = MutableStateFlow(initial.associateBy { it.epochDay to it.level })
+
+    override fun observe(epochDay: Long, level: Level): Flow<DailyResult?> = state.map { it[epochDay to level] }
+
+    override fun observeDay(epochDay: Long): Flow<List<DailyResult>> =
+        state.map { map -> map.filterKeys { it.first == epochDay }.values.toList() }
+
+    override fun observe(epochDay: Long): Flow<DailyResult?> = observeDay(epochDay).map { it.firstOrNull() }
+
+    override suspend fun get(epochDay: Long, level: Level): DailyResult? = state.value[epochDay to level]
+
+    override suspend fun record(result: DailyResult): Boolean {
+        val key = result.epochDay to result.level
+        if (key in state.value) return false
+        state.value += (key to result)
+        return true
+    }
 }

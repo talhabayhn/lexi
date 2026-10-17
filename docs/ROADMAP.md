@@ -71,7 +71,7 @@ Module mapping (replaces the earlier `composeApp`): `androidApp` = thin Android 
 **Done when:** SRS loop works across days (test with fake clock).
 
 ## M6 — Daily, sharing, onboarding
-- [ ] Daily wheel (seed per date+level, one scored attempt, already-played state)
+- [x] Daily wheel (seed per date+level, one scored attempt, already-played state)
 - [ ] Streak logic + home badge
 - [ ] Share card (`12-share-card`) rendered to image + system share sheet
 - [ ] Onboarding 3 steps (`01-onboarding` + design debt), level test, level-test result

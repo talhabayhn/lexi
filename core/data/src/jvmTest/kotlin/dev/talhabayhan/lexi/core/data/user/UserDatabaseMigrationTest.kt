@@ -56,6 +56,29 @@ class UserDatabaseMigrationTest {
         }
     }
 
+    @Test
+    fun `daily_result rows survive migration to current schema`() {
+        (1..current).forEach { version ->
+            val driver = driverAt(version)
+            driver.execute(
+                null,
+                "INSERT INTO daily_result(epoch_day, level, score, time_ms, share_code) " +
+                    "VALUES (20000, 'B1', 310, 95000, 'share-123')",
+                0,
+            )
+
+            UserDatabase.Schema.migrate(driver, version, current)
+
+            val row = UserDatabase(driver).dailyResultQueries.byDayAndLevel(20000, "B1").executeAsOne()
+            assertEquals(20000L, row.epoch_day)
+            assertEquals("B1", row.level)
+            assertEquals(310L, row.score)
+            assertEquals(95000L, row.time_ms)
+            assertEquals("share-123", row.share_code)
+            driver.close()
+        }
+    }
+
     private fun snapshot(version: Long): String? = javaClass.getResource("/user-db/$version.sql")?.readText()
 
     private fun driverAt(version: Long): SqlDriver {
@@ -96,6 +119,8 @@ class UserDatabaseMigrationTest {
             .lines().joinToString(" ") { it.substringBefore("--") }
             .replace(Regex("""\s+"""), " ")
             .replace(Regex("""\s*([(),])\s*"""), "$1")
+            .replace("\"", "")
+            .replace("`", "")
             .trim()
 
     private fun SqlDriver.strings(sql: String): List<String> = executeQuery(

@@ -39,3 +39,10 @@ public fun testWheel(cards: Collection<Card>): Wheel =
 /** [testWheel] of one STARTS card per answer (answers must start with distinct letters). */
 public fun testWheel(vararg answers: String, level: Level = Level.A1): Wheel =
     testWheel(answers.map { testCard(it, level = level) })
+
+/** One STARTS card per letter A–Z with answer `<letter><suffix>`. */
+public fun testAlphabetPool(
+    level: Level = Level.A1,
+    category: String = "food-drink",
+    suffix: String = "XY",
+): List<Card> = ('A'..'Z').map { letter -> testCard("$letter$suffix", level = level, category = category) }

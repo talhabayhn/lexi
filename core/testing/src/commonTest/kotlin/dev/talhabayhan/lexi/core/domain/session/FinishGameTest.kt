@@ -11,6 +11,7 @@ import dev.talhabayhan.lexi.core.domain.model.CategoryId
 import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.core.domain.srs.CardProgress
 import dev.talhabayhan.lexi.core.testing.FakeAppClock
+import dev.talhabayhan.lexi.core.testing.FakeDailyRepository
 import dev.talhabayhan.lexi.core.testing.FakeProgressRepository
 import dev.talhabayhan.lexi.core.testing.FakeSessionRepository
 import dev.talhabayhan.lexi.core.testing.testWheel
@@ -174,6 +175,21 @@ class FinishGameTest {
         val result = FinishGame(sessions, progress, istanbul, config)(finishedGame(), category = null)
 
         assertEquals(20_741L, result.epochDay)
+    }
+
+    @Test
+    fun `finishing a daily game records the daily result in DailyRepository`() = runTest {
+        val daily = FakeDailyRepository()
+        val finish = FinishGame(sessions, progress, clock, config, daily = daily)
+
+        val game = finishedGame(GameMode.DAILY)
+        val result = finish(game, category = null)
+
+        val stored = daily.get(result.epochDay, result.level)
+        assertTrue(stored != null)
+        assertEquals(result.epochDay, stored.epochDay)
+        assertEquals(result.level, stored.level)
+        assertEquals(result.score, stored.score)
     }
 
     private companion object {

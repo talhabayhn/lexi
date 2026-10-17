@@ -1,0 +1,16 @@
+-- v2 -> v3: daily_result primary key becomes (epoch_day, level) for one attempt per local day per level.
+CREATE TABLE daily_result_new(
+    epoch_day INTEGER NOT NULL,
+    level TEXT NOT NULL,
+    score INTEGER NOT NULL,
+    time_ms INTEGER NOT NULL,
+    share_code TEXT,
+    PRIMARY KEY (epoch_day, level)
+);
+
+INSERT INTO daily_result_new(epoch_day, level, score, time_ms, share_code)
+SELECT epoch_day, level, score, time_ms, share_code FROM daily_result;
+
+DROP TABLE daily_result;
+
+ALTER TABLE daily_result_new RENAME TO daily_result;

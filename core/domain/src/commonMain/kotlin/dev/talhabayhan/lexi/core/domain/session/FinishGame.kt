@@ -1,9 +1,11 @@
 package dev.talhabayhan.lexi.core.domain.session
 
 import dev.talhabayhan.lexi.core.domain.game.GameConfig
+import dev.talhabayhan.lexi.core.domain.game.GameMode
 import dev.talhabayhan.lexi.core.domain.game.GameState
 import dev.talhabayhan.lexi.core.domain.game.GameStatus
 import dev.talhabayhan.lexi.core.domain.model.CategoryId
+import dev.talhabayhan.lexi.core.domain.repository.DailyRepository
 import dev.talhabayhan.lexi.core.domain.repository.ProgressRepository
 import dev.talhabayhan.lexi.core.domain.repository.SessionRepository
 import dev.talhabayhan.lexi.core.domain.srs.Srs
@@ -26,12 +28,14 @@ public class FinishGame(
     private val progress: ProgressRepository,
     private val clock: AppClock,
     private val config: GameConfig,
+    private val daily: DailyRepository? = null,
 ) {
     private val mutex = Mutex()
     private var game: GameState? = null
     private var session: SessionResult? = null
     private var recorded = false
     private var srsApplied = false
+    private var dailyRecorded = false
 
     /**
      * Records [finished] (status FINISHED) once. [category] is the wheel's category (null for review, daily and
@@ -51,6 +55,17 @@ public class FinishGame(
         if (!srsApplied) {
             applySrs(finished, result)
             srsApplied = true
+        }
+        if (!dailyRecorded && result.mode == GameMode.DAILY && daily != null) {
+            val dailyResult = DailyResult(
+                epochDay = result.epochDay,
+                level = result.level,
+                score = result.score,
+                timeMs = result.endedAtMs - result.startedAtMs,
+                shareCode = null,
+            )
+            daily.record(dailyResult)
+            dailyRecorded = true
         }
         result
     }

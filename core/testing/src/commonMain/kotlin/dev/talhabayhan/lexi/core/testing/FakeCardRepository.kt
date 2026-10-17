@@ -5,6 +5,7 @@ import dev.talhabayhan.lexi.core.domain.model.CardId
 import dev.talhabayhan.lexi.core.domain.model.CategoryId
 import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.core.domain.repository.CardRepository
+import dev.talhabayhan.lexi.core.domain.repository.ContentVersionRepository
 
 /**
  * In-memory [CardRepository] over level [cards] (no exam-pack-only cards); results are sorted by id. While [failing]
@@ -40,4 +41,8 @@ public class FakeCardRepository(cards: Collection<Card> = emptyList()) : CardRep
 
     override suspend fun categoryOfCards(level: Level): Map<CardId, CategoryId> =
         read().let { cards }.filter { it.level == level }.associate { it.id to it.category }
+}
+
+public class FakeContentVersionRepository(public var version: Long = 1L) : ContentVersionRepository {
+    override suspend fun contentVersion(): Long = version
 }

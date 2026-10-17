@@ -145,17 +145,39 @@ class UserRepositoriesTest {
     // Daily
 
     @Test
-    fun `only the first daily attempt of a day is stored`() = runTest(io) {
+    fun `only the first daily attempt of a day per level is stored`() = runTest(io) {
         val daily = DailyRepositoryImpl(db.databases, io)
-        val first = DailyResult(epochDay = 20_000, level = Level.B1, score = 310, timeMs = 95_000, shareCode = null)
+        val b1First = DailyResult(epochDay = 20_000, level = Level.B1, score = 310, timeMs = 95_000, shareCode = null)
+        val a1First = DailyResult(epochDay = 20_000, level = Level.A1, score = 250, timeMs = 80_000, shareCode = null)
 
-        daily.observe(20_000).test {
+        daily.observe(20_000, Level.B1).test {
             assertNull(awaitItem())
-            assertTrue(daily.record(first))
-            assertEquals(first, awaitItem())
-            assertFalse(daily.record(first.copy(score = 999)))
+            assertTrue(daily.record(b1First))
+            assertEquals(b1First, awaitItem())
+            assertFalse(daily.record(b1First.copy(score = 999)))
             expectNoEvents()
         }
+
+        // Another level on the same day can also be played and stored
+        daily.observe(20_000, Level.A1).test {
+            assertNull(awaitItem())
+            assertTrue(daily.record(a1First))
+            assertEquals(a1First, awaitItem())
+            assertFalse(daily.record(a1First.copy(score = 888)))
+            expectNoEvents()
+        }
+
+        // observeDay lists all levels played for the day
+        daily.observeDay(20_000).test {
+            val list = awaitItem()
+            assertEquals(2, list.size)
+            assertTrue(b1First in list)
+            assertTrue(a1First in list)
+        }
+
+        assertEquals(b1First, daily.get(20_000, Level.B1))
+        assertEquals(a1First, daily.get(20_000, Level.A1))
+        assertNull(daily.get(20_000, Level.B2))
     }
 
     // Jokers

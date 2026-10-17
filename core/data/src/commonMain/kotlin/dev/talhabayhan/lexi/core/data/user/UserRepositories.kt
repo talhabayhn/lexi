@@ -88,8 +88,7 @@ internal class ProgressRepositoryImpl(databases: Databases, io: CoroutineDispatc
         return write {
             progressQueries.lastSeen().executeAsList()
                 .filter { it.card_id in known }
-                .mapNotNull { row -> row.last_seen_ms?.let { CardId(row.card_id) to it } }
-                .toMap()
+                .associate { CardId(it.card_id) to it.last_seen_ms }
         }
     }
 
@@ -152,18 +151,34 @@ internal class StreakRepositoryImpl(databases: Databases, io: CoroutineDispatche
 internal class DailyRepositoryImpl(databases: Databases, io: CoroutineDispatcher) :
     UserStore(databases, io),
     DailyRepository {
-    override fun observe(epochDay: Long): Flow<DailyResult?> = observe {
-        dailyResultQueries.byDay(epochDay).asFlow().mapToOneOrNull(io).map { row ->
+    override fun observe(epochDay: Long, level: Level): Flow<DailyResult?> = observe {
+        dailyResultQueries.byDayAndLevel(epochDay, level.name).asFlow().mapToOneOrNull(io).map { row ->
             row?.let { r ->
+                DailyResult(r.epoch_day, level, r.score.toInt(), r.time_ms, r.share_code)
+            }
+        }
+    }
+
+    override fun observeDay(epochDay: Long): Flow<List<DailyResult>> = observe {
+        dailyResultQueries.byDay(epochDay).asFlow().mapToList(io).map { rows ->
+            rows.mapNotNull { r ->
                 Level.entries.firstOrNull { it.name == r.level }
                     ?.let { DailyResult(r.epoch_day, it, r.score.toInt(), r.time_ms, r.share_code) }
             }
         }
     }
 
+    override fun observe(epochDay: Long): Flow<DailyResult?> = observeDay(epochDay).map { it.firstOrNull() }
+
+    override suspend fun get(epochDay: Long, level: Level): DailyResult? = write {
+        dailyResultQueries.byDayAndLevel(epochDay, level.name).executeAsOneOrNull()?.let { r ->
+            DailyResult(r.epoch_day, level, r.score.toInt(), r.time_ms, r.share_code)
+        }
+    }
+
     override suspend fun record(result: DailyResult): Boolean = write {
         dailyResultQueries.transactionWithResult {
-            if (dailyResultQueries.byDay(result.epochDay).executeAsOneOrNull() != null) {
+            if (dailyResultQueries.byDayAndLevel(result.epochDay, result.level.name).executeAsOneOrNull() != null) {
                 return@transactionWithResult false
             }
             dailyResultQueries.insertIfAbsent(

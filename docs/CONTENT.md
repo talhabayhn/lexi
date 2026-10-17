@@ -187,7 +187,7 @@ CREATE INDEX card_level_letter ON card(level, letter);
 CREATE INDEX card_level_category ON card(level, category_id);
 ```
 
-## 8. user.db (schema v2)
+## 8. user.db (schema v3)
 Source of truth: `core/data/src/commonMain/sqldelight/dev/talhabayhan/lexi/core/data/user/db/*.sq`. Summary:
 ```sql
 progress(card_id TEXT PK, box INTEGER NULL,           -- NULL = not in the notebook; Leitner 0-4 (GAME_RULES.md §10)
@@ -195,7 +195,7 @@ progress(card_id TEXT PK, box INTEGER NULL,           -- NULL = not in the noteb
 session(id INTEGER PK AUTOINCREMENT, mode, level, category NULL, seed, started_ms, ended_ms,
   epoch_day,                                          -- player's time zone, for stats and streak
   score, correct, wrong, passed, completed 0/1)       -- never written for hot-seat duel (srsExcludedModes)
-daily_result(epoch_day PK, level, score, time_ms, share_code NULL)   -- the one scored Daily attempt per day
+daily_result(epoch_day, level, score, time_ms, share_code NULL, PK(epoch_day, level))   -- one scored Daily attempt per day per level
 streak(epoch_day PK)                                  -- days with ≥ 1 completed wheel, written with the session
 joker(type PK, count ≥ 0)                             -- JokerType name → inventory
 joker_grant(kind PK, epoch_day)                       -- v2: JokerGrantReason name → last gift day (GAME_RULES.md §7)
@@ -204,5 +204,6 @@ joker_grant(kind PK, epoch_day)                       -- v2: JokerGrantReason na
 - Changes only through `<from-version>.sqm` migrations in `core/data/src/commonMain/sqldelight/migrations/` plus a
   frozen snapshot `core/data/src/jvmTest/resources/user-db/<version>.sql` (`UserDatabaseMigrationTest`, ADR 0018).
 - v2 (`1.sqm`): `joker_grant` for the daily gift and streak bonus, written with the inventory in one transaction.
+- v3 (`2.sqm`): `daily_result` composite PK `(epoch_day, level)` for one attempt per day per level.
 - Later, when their features land: Pro refill bookkeeping (M7, a `joker_grant` kind), `achievement(id PK,
   unlocked_ms)` (v1.2), the share-card payload format (M6).
