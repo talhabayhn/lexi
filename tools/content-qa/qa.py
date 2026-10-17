@@ -177,7 +177,9 @@ def main():
             err(c["_src"], f"duplicate answer '{c['answer']}' in {c['_level']} (also {seen[key]['_src']})")
         seen.setdefault(key, c)
 
-    # Example leaks, per level, only where a pack card is involved (base-only leaks are the compiler's job).
+    # Example leaks, same rule as the content compiler (ContentCompiler.checkExampleLeaks): within a level, base
+    # and pack cards alike, an answer must not appear as whole word(s) in another card's example. Cards sharing
+    # the same answer are exempt.
     by_level = defaultdict(list)
     for c in cards:
         by_level[c["_level"]].append(c)
@@ -188,7 +190,7 @@ def main():
             for o, p in pats:
                 if o is c or o["answer"] == c["answer"]:
                     continue
-                if (c.get("_pack") or o.get("_pack")) and p.search(ex):
+                if p.search(ex):
                     err(c["_src"], f"example_en of '{c['id']}' contains the answer '{o['answer']}' of '{o['id']}'")
 
     packs = read_table(packs_dir / "packs.csv", PACK_COLUMNS) if (packs_dir / "packs.csv").is_file() else []

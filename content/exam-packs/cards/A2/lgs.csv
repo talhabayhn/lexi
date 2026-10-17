@@ -40,7 +40,7 @@ a2-melt,MELT,M,STARTS,verb,ısıyla katı hâlden sıvı hâle getirmek,Melt the
 a2-raw,RAW,R,STARTS,adj,"pişmemiş, çiğ",Some people eat raw fish in Japan.,Japonya'da bazı insanlar çiğ balık yer.,3,exam:lgs,food-drink
 a2-bitter,BITTER,B,STARTS,adj,"tadı acı ve keskin, şekersiz kahve gibi",Black coffee tastes bitter to me.,Sade kahvenin tadı bana acı gelir.,3,exam:lgs,food-drink
 a2-salty,SALTY,S,STARTS,adj,içinde çok tuz olan,These crisps are too salty.,Bu cipsler fazla tuzlu.,2,exam:lgs,food-drink
-a2-mint,MINT,M,STARTS,noun,ferahlatıcı kokulu yeşil yapraklı bitki,My mum puts mint leaves in the lemonade.,Annem limonataya nane yaprakları koyar.,2,exam:lgs,food-drink
+a2-mint,MINT,M,STARTS,noun,ferahlatıcı kokulu yeşil yapraklı bitki,My mom puts mint leaves in the lemonade.,Annem limonataya nane yaprakları koyar.,2,exam:lgs,food-drink
 a2-dough,DOUGH,D,STARTS,noun,"un ve sudan yoğrulan, ekmek ya da pide yapılan karışım",Grandma makes the dough for the bread.,Ekmeğin hamurunu büyükannem yapar.,3,exam:lgs,food-drink
 a2-roast,ROAST,R,STARTS,verb,fırında ya da ateşte kızartarak pişirmek,We roast chestnuts in winter.,Kışın kestane kebap yaparız.,3,exam:lgs,food-drink
 a2-blender,BLENDER,B,STARTS,noun,meyveleri ezip karıştıran elektrikli mutfak aleti,Put the bananas and milk in the blender.,Muzları ve sütü blendere koy.,2,exam:lgs,food-drink
@@ -51,7 +51,7 @@ a2-parsley,PARSLEY,P,STARTS,noun,yemeklerin üstüne serpilen yeşil maydanoz ot
 a2-yeast,YEAST,Y,STARTS,noun,hamuru kabartan madde,Bread needs yeast to rise.,Ekmeğin kabarması için maya gerekir.,3,exam:lgs,food-drink
 a2-pastry,PASTRY,P,STARTS,noun,börek ya da tart yapılan yağlı hamur işi,This shop sells cheese pastry.,Bu dükkân peynirli börek satıyor.,3,exam:lgs,food-drink
 a2-stew,STEW,S,STARTS,noun,et ve sebzeyle ağır ateşte pişen sulu yemek,We had a hot stew for dinner.,Akşam yemeğinde sıcak bir güveç yedik.,3,exam:lgs,food-drink
-a2-meatball,MEATBALL,M,STARTS,noun,kıymadan yapılan küçük yuvarlak köfte,Selin's favourite food is meatball and rice.,Selin'in en sevdiği yemek köfte pilav.,2,exam:lgs,food-drink
+a2-meatball,MEATBALL,M,STARTS,noun,kıymadan yapılan küçük yuvarlak köfte,Selin's favorite food is meatball and rice.,Selin'in en sevdiği yemek köfte pilav.,2,exam:lgs,food-drink
 a2-teaspoon,TEASPOON,T,STARTS,noun,çaya şeker karıştırmak için kullanılan küçük kaşık,Add a teaspoon of sugar to your tea.,Çayına bir çay kaşığı şeker ekle.,2,exam:lgs,food-drink
 a2-pinch,PINCH,P,STARTS,noun,iki parmak arasına sığacak kadar az miktar,Add a pinch of salt to the eggs.,Yumurtalara bir tutam tuz ekle.,3,exam:lgs,food-drink
 a2-steam,STEAM,S,STARTS,noun,kaynayan sudan yükselen sıcak buhar,Steam is rising from the hot soup.,Sıcak çorbadan buhar yükseliyor.,3,exam:lgs,food-drink
@@ -64,14 +64,14 @@ a2-protein,PROTEIN,P,STARTS,noun,"et, yumurta ve baklagillerde bulunan besin ö�
 a2-calorie,CALORIE,C,STARTS,noun,besinlerin verdiği enerjiyi ölçen birim,Look at the calorie count on the label.,Etiketteki kalori miktarına bak.,3,exam:lgs,food-drink
 a2-vegan,VEGAN,V,STARTS,noun,hiçbir hayvansal ürün yemeyen kişi,"My cousin is a vegan, so she does not eat cheese.","Kuzenim vegan, bu yüzden peynir yemiyor.",3,exam:lgs,food-drink
 a2-apron,APRON,A,STARTS,noun,yemek yaparken kıyafeti korumak için takılan önlük,Put on an apron before you cook.,Yemek yapmadan önce önlük tak.,3,exam:lgs,food-drink
-a2-cookbook,COOKBOOK,C,STARTS,noun,yemek tariflerini toplayan kitap,Mum found that cake in an old cookbook.,Annem o keki eski bir yemek kitabında buldu.,2,exam:lgs,food-drink
+a2-cookbook,COOKBOOK,C,STARTS,noun,yemek tariflerini toplayan kitap,Mom found that cake in an old cookbook.,Annem o keki eski bir yemek kitabında buldu.,2,exam:lgs,food-drink
 a2-spinach,SPINACH,S,STARTS,noun,"koyu yeşil yapraklı, demir açısından zengin sebze",Popeye eats spinach to get big muscles.,Temel Reis kaslarını büyütmek için ıspanak yer.,2,exam:lgs,food-drink
 a2-lentil,LENTIL,L,STARTS,noun,çorbası yapılan küçük yuvarlak baklagil,We often have red lentil soup in winter.,Kışın sık sık kırmızı mercimek çorbası içeriz.,3,exam:lgs,food-drink
 a2-walnut,WALNUT,W,STARTS,noun,"sert kabuklu, beyin şeklinde iç meyve",Grandma puts walnut pieces in the cake.,Büyükannem keke ceviz parçaları koyar.,3,exam:lgs,food-drink
 a2-leftovers,LEFTOVERS,L,STARTS,noun,yemekten sonra artan yiyecekler,We had the leftovers from the party for lunch.,Öğle yemeğinde partiden artan yemekleri yedik.,3,exam:lgs,food-drink
 a2-wipe,WIPE,W,STARTS,verb,bezle silerek temizlemek,Please wipe the table after breakfast.,Lütfen kahvaltıdan sonra masayı sil.,2,exam:lgs,home
 a2-utensil,UTENSIL,U,STARTS,noun,"kaşık, spatula gibi mutfak gereci",A spoon is a basic kitchen utensil.,Kaşık temel bir mutfak gerecidir.,4,exam:lgs,food-drink
-a2-mixer,MIXER,X,CONTAINS,noun,hamuru ya da kremayı çırpan elektrikli alet,Mum uses the mixer to make cake.,Annem kek yapmak için mikseri kullanır.,3,exam:lgs,food-drink
+a2-mixer,MIXER,X,CONTAINS,noun,hamuru ya da kremayı çırpan elektrikli alet,Mom uses the mixer to make cake.,Annem kek yapmak için mikseri kullanır.,3,exam:lgs,food-drink
 a2-dial,DIAL,D,STARTS,verb,telefonda bir numarayı tuşlamak,Dial 112 in an emergency.,Acil bir durumda 112'yi ara.,3,exam:lgs,daily-life
 a2-charger,CHARGER,C,STARTS,noun,telefonun pilini dolduran kablolu alet,I forgot my phone charger at home.,Telefon şarj aletimi evde unuttum.,2,exam:lgs,daily-life
 a2-available,AVAILABLE,A,STARTS,adj,o anda konuşmaya ya da görüşmeye uygun olan,Is Mr Yılmaz available now?,Yılmaz Bey şu an müsait mi?,3,exam:lgs,daily-life
@@ -101,7 +101,7 @@ a2-wifi,WIFI,W,STARTS,noun,kablosuz internet bağlantısı,Is there free wifi in
 a2-hardware,HARDWARE,H,STARTS,noun,bilgisayarın elle tutulur fiziksel parçaları,A keyboard is computer hardware.,Klavye bir bilgisayar donanımıdır.,4,exam:lgs,daily-life
 a2-hacker,HACKER,H,STARTS,noun,başkalarının bilgisayarına izinsiz giren kişi,A hacker stole the passwords of the users.,Bir bilgisayar korsanı kullanıcıların şifrelerini çaldı.,3,exam:lgs,daily-life
 a2-cyberbullying,CYBERBULLYING,C,STARTS,noun,internette birine sürekli zarar verip korkutma,Our teacher talked to us about cyberbullying.,Öğretmenimiz bizimle siber zorbalık hakkında konuştu.,4,exam:lgs,daily-life
-a2-blog,BLOG,B,STARTS,noun,kişinin düzenli yazılar paylaştığı internet sayfası,Elif writes a blog about her favourite books.,Elif en sevdiği kitaplar hakkında bir blog yazıyor.,2,exam:lgs,daily-life
+a2-blog,BLOG,B,STARTS,noun,kişinin düzenli yazılar paylaştığı internet sayfası,Elif writes a blog about her favorite books.,Elif en sevdiği kitaplar hakkında bir blog yazıyor.,2,exam:lgs,daily-life
 a2-blogger,BLOGGER,B,STARTS,noun,düzenli olarak internette yazı yazan kişi,My cousin is a food blogger.,Kuzenim yemek blogu yazarı.,3,exam:lgs,daily-life
 a2-follower,FOLLOWER,F,STARTS,noun,sosyal medyada birinin paylaşımlarını takip eden kişi,This singer has a new follower: me!,Bu şarkıcının yeni bir takipçisi var: ben!,3,exam:lgs,daily-life
 a2-subscribe,SUBSCRIBE,S,STARTS,verb,bir kanala ya da dergiye düzenli üye olmak,Subscribe to our channel for new videos.,Yeni videolar için kanalımıza abone ol.,3,exam:lgs,daily-life
@@ -135,7 +135,7 @@ a2-paragliding,PARAGLIDING,P,STARTS,noun,kanat biçimli paraşütle dağdan süz
 a2-skydiving,SKYDIVING,S,STARTS,noun,uçaktan atlayıp paraşütle inme sporu,My uncle tried skydiving on his fortieth birthday.,Amcam kırkıncı doğum gününde paraşütle atlamayı denedi.,3,exam:lgs,sports
 a2-rafting,RAFTING,R,STARTS,noun,şişme botla hızlı akan nehirde ilerleme sporu,We went rafting on the Köprüçay River.,Köprüçay'da rafting yaptık.,3,exam:lgs,sports
 a2-scuba-diving,SCUBA DIVING,S,STARTS,phrase,oksijen tüpüyle suyun derinliklerine dalma,Scuba diving lets you see fish up close.,Tüplü dalış balıkları yakından görmeni sağlar.,3,exam:lgs,sports
-a2-surfing,SURFING,S,STARTS,noun,dalgaların üstünde tahtayla kayma sporu,Surfing is a favourite sport in Alaçatı.,Alaçatı'da sörf sevilen bir spordur.,2,exam:lgs,sports
+a2-surfing,SURFING,S,STARTS,noun,dalgaların üstünde tahtayla kayma sporu,Surfing is a favorite sport in Alaçatı.,Alaçatı'da sörf sevilen bir spordur.,2,exam:lgs,sports
 a2-skiing,SKIING,S,STARTS,noun,karlı dağdan kayaklarla kayma sporu,We go skiing on Uludağ every winter.,Her kış Uludağ'da kayak yaparız.,2,exam:lgs,sports
 a2-caving,CAVING,C,STARTS,noun,mağaraları keşfetme etkinliği,Caving is my uncle's hobby.,Mağaracılık amcamın hobisi.,4,exam:lgs,sports
 a2-kayaking,KAYAKING,K,STARTS,noun,tek kişilik dar teknede kürek çekme sporu,Kayaking on the lake was fun.,Gölde kano yapmak eğlenceliydi.,3,exam:lgs,sports
@@ -145,7 +145,7 @@ a2-thrilling,THRILLING,T,STARTS,adj,"insanı heyecandan titreten, çok heyecanl�
 a2-frightening,FRIGHTENING,F,STARTS,adj,"korku veren, ürkütücü","The film was frightening, so I closed my eyes.","Film ürkütücüydü, bu yüzden gözlerimi kapattım.",3,exam:lgs,daily-life
 a2-terrifying,TERRIFYING,T,STARTS,adj,"insanı dehşete düşüren, çok korkutucu",That big dog is terrifying.,O büyük köpek çok korkutucu.,3,exam:lgs,daily-life
 a2-scared,SCARED,S,STARTS,adj,"korkmuş, ürkmüş",My little brother is scared of the dark.,Küçük erkek kardeşim karanlıktan korkar.,1,exam:lgs,daily-life
-a2-parachute,PARACHUTE,P,STARTS,noun,havadan yavaşça inmeye yarayan büyük şemsiye biçimli kumaş,The parachute opened at two thousand metres.,Paraşüt iki bin metrede açıldı.,3,exam:lgs,sports
+a2-parachute,PARACHUTE,P,STARTS,noun,havadan yavaşça inmeye yarayan büyük şemsiye biçimli kumaş,The parachute opened at two thousand meters.,Paraşüt iki bin metrede açıldı.,3,exam:lgs,sports
 a2-instructor,INSTRUCTOR,I,STARTS,noun,bir sporu ya da beceriyi öğreten eğitmen,Our diving instructor checked our tanks.,Dalış eğitmenimiz tüplerimizi kontrol etti.,3,exam:lgs,sports
 a2-challenging,CHALLENGING,C,STARTS,adj,zor ama insanı geliştiren,The last part of the trek was challenging.,Yürüyüşün son bölümü zorlayıcıydı.,4,exam:lgs,sports
 a2-adrenaline,ADRENALINE,A,STARTS,noun,heyecan ve korku anında salgılanan hormon,Extreme sports give you a rush of adrenaline.,Ekstrem sporlar insana adrenalin patlaması yaşatır.,4,exam:lgs,sports
@@ -157,7 +157,7 @@ a2-gear,GEAR,G,STARTS,noun,bir etkinlik için gereken alet ve giysiler,Mert forg
 a2-unforgettable,UNFORGETTABLE,U,STARTS,adj,hiç unutulmayacak kadar etkileyici,Our trip to Cappadocia was unforgettable.,Kapadokya gezimiz unutulmazdı.,3,exam:lgs,travel
 a2-trekking,TREKKING,T,STARTS,noun,dağlık bölgelerde uzun yürüyüş yapma,Trekking on the Lycian Way takes many days.,Likya Yolu'nda doğa yürüyüşü günlerce sürer.,4,exam:lgs,travel
 a2-sightseeing,SIGHTSEEING,S,STARTS,noun,bir yerin ünlü yerlerini gezip görme,We went sightseeing in Rome.,Roma'da şehri gezdik.,2,exam:lgs,travel
-a2-monument,MONUMENT,M,STARTS,noun,önemli bir olayı ya da kişiyi anmak için dikilen yapı,There is a famous monument in the city centre.,Şehir merkezinde ünlü bir anıt var.,3,exam:lgs,travel
+a2-monument,MONUMENT,M,STARTS,noun,önemli bir olayı ya da kişiyi anmak için dikilen yapı,There is a famous monument in the city center.,Şehir merkezinde ünlü bir anıt var.,3,exam:lgs,travel
 a2-historical,HISTORICAL,H,STARTS,adj,"tarihle ilgili, tarihî",Istanbul has many historical buildings.,İstanbul'da pek çok tarihî bina var.,2,exam:lgs,travel
 a2-ruins,RUINS,R,STARTS,noun,yıkılmış eski yapılardan kalan kalıntılar,We visited the ruins of Ephesus.,Efes'in kalıntılarını ziyaret ettik.,3,exam:lgs,travel
 a2-souvenir,SOUVENIR,S,STARTS,noun,bir geziden hatıra olarak alınan küçük eşya,I bought a small souvenir for my teacher.,Öğretmenime küçük bir hatıra eşyası aldım.,2,exam:lgs,travel
@@ -176,7 +176,7 @@ a2-cruise,CRUISE,C,STARTS,noun,lüks bir gemiyle yapılan deniz tatili,My grandp
 a2-backpacker,BACKPACKER,B,STARTS,noun,sırt çantasıyla ucuza gezen gezgin,A backpacker often sleeps in cheap hostels.,Sırt çantalı gezgin çoğu zaman ucuz pansiyonlarda kalır.,3,exam:lgs,travel
 a2-travel-agency,TRAVEL AGENCY,T,STARTS,phrase,bilet ve tatil satan işletme,We booked our holiday at a travel agency.,Tatilimizi bir seyahat acentesinden ayarladık.,3,exam:lgs,travel
 a2-do-the-dishes,DO THE DISHES,D,STARTS,phrase,yemekten sonra tabakları yıkamak,It is my turn to do the dishes tonight.,Bu akşam bulaşığı yıkama sırası bende.,2,exam:lgs,home
-a2-chore,CHORE,C,STARTS,noun,evde düzenli yapılması gereken sıkıcı iş,Washing the car is my least favourite chore.,Araba yıkamak en sevmediğim ev işi.,3,exam:lgs,home
+a2-chore,CHORE,C,STARTS,noun,evde düzenli yapılması gereken sıkıcı iş,Washing the car is my least favorite chore.,Araba yıkamak en sevmediğim ev işi.,3,exam:lgs,home
 a2-dishwasher,DISHWASHER,D,STARTS,noun,tabakları yıkayan elektrikli makine,"Put the plates in the dishwasher, please.",Lütfen tabakları bulaşık makinesine koy.,2,exam:lgs,home
 a2-ironing,IRONING,I,STARTS,noun,giysileri ütüleme işi,My dad does the ironing on Sundays.,Ütüyü pazar günleri babam yapar.,3,exam:lgs,home
 a2-vacuum,VACUUM,V,STARTS,verb,elektrikli süpürgeyle temizlemek,I vacuum my room every Saturday.,Her cumartesi odamı elektrikli süpürgeyle temizlerim.,3,exam:lgs,home
