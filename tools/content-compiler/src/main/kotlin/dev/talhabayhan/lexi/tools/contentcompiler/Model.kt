@@ -71,6 +71,12 @@ data class PackEntry(
     val description: String,
     val isPro: Boolean,
     val sort: Int,
+    val titleTr: String,
+    val titleEn: String,
+    val descriptionTr: String,
+    val targetLevelRange: String,
+    val cardTarget: Int,
+    val freePreviewLetters: String,
     val source: Source,
 )
 

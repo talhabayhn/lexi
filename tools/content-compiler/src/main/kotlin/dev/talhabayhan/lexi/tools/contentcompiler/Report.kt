@@ -51,12 +51,22 @@ object Report {
             appendLine("Exam packs: none (no --packs directory given)")
         } else {
             appendLine("Exam packs from $packsDir: ${content.packs.size}")
+            val cardsById = content.cards.associateBy { it.id }
             for (pack in content.packs) {
                 val members = content.packCards.filter { it.packId == pack.id }
+                val memberCards = members.mapNotNull { cardsById[it.cardId] }
+                val packOnlyCount = memberCards.count { it.fromPack }
+                val refCount = memberCards.size - packOnlyCount
                 val units = members.mapNotNull { it.unit }.distinct().size
+                val letterCounts = ('A'..'Z').joinToString(" ") { letter ->
+                    val count = memberCards.count { it.letter == letter }
+                    "$letter$count"
+                }
                 appendLine(
-                    "  ${pack.id.padEnd(20)} ${members.size} cards, $units units${if (pack.isPro) ", Pro" else ""}",
+                    "  ${pack.id.padEnd(12)} ${members.size} cards ($packOnlyCount pack-only, $refCount referenced), " +
+                        "$units units${if (pack.isPro) ", Pro" else ""}",
                 )
+                appendLine("    $letterCounts")
             }
         }
         appendLine()

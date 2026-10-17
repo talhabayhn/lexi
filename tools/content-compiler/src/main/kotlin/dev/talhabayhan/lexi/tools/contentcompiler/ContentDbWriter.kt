@@ -63,7 +63,19 @@ object ContentDbWriter {
                         queries.insertClue(it.id, CLUE_LANG_TR, it.clueTr, it.exampleTr)
                     }
                     content.packs.forEach {
-                        queries.insertExamPack(it.id, it.name, it.description, if (it.isPro) 1 else 0, it.sort.toLong())
+                        queries.insertExamPack(
+                            id = it.id,
+                            name = it.name,
+                            description = it.description,
+                            is_pro = if (it.isPro) 1 else 0,
+                            sort = it.sort.toLong(),
+                            title_tr = it.titleTr,
+                            title_en = it.titleEn,
+                            description_tr = it.descriptionTr,
+                            level_range = it.targetLevelRange,
+                            card_target = it.cardTarget.toLong(),
+                            free_preview_letters = it.freePreviewLetters,
+                        )
                     }
                     content.packCards.forEach { queries.insertExamPackCard(it.packId, it.cardId, it.unit) }
                 }

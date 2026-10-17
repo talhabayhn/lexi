@@ -14,7 +14,8 @@ insertClue:
 INSERT INTO clue(card_id, lang, clue, example_translation) VALUES (?, ?, ?, ?);
 
 insertExamPack:
-INSERT INTO exam_pack(id, name, description, is_pro, sort) VALUES (?, ?, ?, ?, ?);
+INSERT INTO exam_pack(id, name, description, is_pro, sort, title_tr, title_en, description_tr, level_range, card_target, free_preview_letters)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
 
 insertExamPackCard:
 INSERT INTO exam_pack_card(pack_id, card_id, unit) VALUES (?, ?, ?);

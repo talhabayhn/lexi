@@ -81,8 +81,8 @@ Module mapping (replaces the earlier `composeApp`): `androidApp` = thin Android 
 - [ ] Settings (`11-settings`) remaining options functional (classic time, goal, languages, accent, Pro card); reminders (notification permission pre-prompt)
 - [ ] RevenueCat: Pro entitlement, paywall (design debt), restore purchases
 - [ ] AdMob rewarded (+1 joker) with UMP consent; interstitial policy from `PRODUCT.md`
-- [ ] Exam packs (`10-exam-packs`) gated by Pro; LGS pack content. Owner decision: pack content lives in a separate
-  private repo, never in this one; the compiler reads it via `--packs <dir>` / `LEXI_PACKS_DIR` (`CONTENT.md` §1)
+- [ ] Exam packs (`10-exam-packs`) gated by Pro (UI & RevenueCat wiring pending); content compiler pipeline integrated
+  with in-repo `content/exam-packs/` (LGS + YDS/YÖKDİL metadata, schema, validation in `content.db`)
 - [ ] Firebase Analytics + Crashlytics behind interfaces; event list in `docs/ANALYTICS.md`
 **Done when:** sandbox purchase unlocks Pro on both platforms; ads only where allowed.
 

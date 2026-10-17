@@ -87,8 +87,32 @@ internal class ExamPackRepositoryImpl(
 ) : ContentReader(databases, io),
     ExamPackRepository {
     override suspend fun packs(): List<ExamPack> = read {
-        examPacks { id, name, description, isPro, sort ->
-            ExamPack(ExamPackId(id), name, description, isPro != 0L, sort.toInt())
+        examPacks {
+                id,
+                name,
+                description,
+                isPro,
+                sort,
+                titleTr,
+                titleEn,
+                descriptionTr,
+                levelRange,
+                cardTarget,
+                freePreviewLetters,
+            ->
+            ExamPack(
+                id = ExamPackId(id),
+                name = name,
+                description = description,
+                isPro = isPro != 0L,
+                sort = sort.toInt(),
+                titleTr = titleTr,
+                titleEn = titleEn,
+                descriptionTr = descriptionTr,
+                levelRange = levelRange,
+                cardTarget = cardTarget.toInt(),
+                freePreviewLetters = freePreviewLetters,
+            )
         }.executeAsList()
     }
 

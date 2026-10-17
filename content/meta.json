@@ -1,1 +1,6 @@
-{ "contentVersion": 18, "shippedLevels": ["A1", "A2", "B1", "B2", "C1", "NAT"], "smokeLevels": [] }
+{
+  "contentVersion": 19,
+  "shippedLevels": ["A1", "A2", "B1", "B2", "C1", "NAT"],
+  "shippedPacks": ["lgs", "yds-yokdil"],
+  "smokeLevels": []
+}

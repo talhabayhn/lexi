@@ -55,7 +55,10 @@ object ContentFixture {
             driver.insert("INSERT INTO clue VALUES (?, ?, ?, ?)", it.id, "tr", it.clue, it.exampleTr)
         }
         packs.forEach { pack ->
-            driver.insert("INSERT INTO exam_pack VALUES (?, ?, ?, ?, ?)", pack.id, pack.name, "", 1, pack.sort)
+            driver.insert(
+                "INSERT INTO exam_pack VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                pack.id, pack.name, "", 1, pack.sort, pack.name, pack.name, "", "A1-B1", 100, "",
+            )
             pack.cards.forEach { (cardId, unit) ->
                 driver.insert("INSERT INTO exam_pack_card VALUES (?, ?, ?)", pack.id, cardId, unit)
             }

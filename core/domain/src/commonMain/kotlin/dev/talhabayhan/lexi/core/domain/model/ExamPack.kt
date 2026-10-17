@@ -16,6 +16,12 @@ public data class ExamPack(
     val description: String,
     val isPro: Boolean,
     val sort: Int,
+    val titleTr: String = name,
+    val titleEn: String = name,
+    val descriptionTr: String = description,
+    val levelRange: String = "",
+    val cardTarget: Int = 0,
+    val freePreviewLetters: String = "",
 )
 
 /** A card of an exam pack with its optional unit (e.g. "Ünite 3"). */

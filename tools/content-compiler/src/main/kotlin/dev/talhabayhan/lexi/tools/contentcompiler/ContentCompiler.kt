@@ -29,7 +29,25 @@ object ContentCompiler {
 
     private val CATEGORY_COLUMNS = listOf("id", "name_tr", "name_en", "levels", "sort", "is_pro")
     private val PACK_COLUMNS = listOf("id", "name", "description", "is_pro", "sort")
+    private val PACK_META_COLUMNS = listOf(
+        "id",
+        "title_tr",
+        "title_en",
+        "description_tr",
+        "target_level_range",
+        "card_target",
+        "free_preview_letters",
+    )
     private val UNIT_COLUMNS = listOf("card_id", "unit")
+
+    fun parseLevelRange(range: String): Pair<Level, Level>? {
+        val parts = range.split('-')
+        if (parts.size != 2) return null
+        val start = Level.entries.firstOrNull { it.name == parts[0] } ?: return null
+        val end = Level.entries.firstOrNull { it.name == parts[1] } ?: return null
+        if (start.ordinal > end.ordinal) return null
+        return start to end
+    }
 
     /** Default location for the temporary DB file, relative to the working directory (repo root via Gradle). */
     val DEFAULT_TEMP_DIR: Path = Path("build/content-compiler")
@@ -82,7 +100,7 @@ object ContentCompiler {
             if (!packsDir.isDirectory()) {
                 diagnostics.error(packsDir, null, "exam pack directory does not exist")
             } else {
-                packs = readPacks(packsDir.resolve("packs.csv"), diagnostics)
+                packs = readPacks(packsDir.resolve("packs.csv"), packsDir.resolve("packs-meta.csv"), diagnostics)
                 val extraCards = packsDir.resolve("cards")
                 if (extraCards.isDirectory()) packCards = readCards(extraCards, fromPack = true)
                 packCardRows = readUnitRows(packsDir, packs, diagnostics)
@@ -90,10 +108,15 @@ object ContentCompiler {
         }
 
         val cards = baseCards + packCards
+        val cardsById = cards.associateBy { it.id }
         checkDuplicates(cards, diagnostics)
         checkExampleLeaks(cards, diagnostics)
         val packMembership = checkPackMembership(packs, packCardRows, packCards, seenIds, diagnostics)
         checkCoverage(baseCards, meta.shippedLevels, meta.smokeLevels, metaFile, diagnostics)
+        val effectiveShippedPacks = meta.shippedPacks
+            ?: (if (meta.shippedLevels.isEmpty()) emptySet() else packs.map { it.id }.toSet())
+        checkPackCoverage(packs, packMembership, cardsById, effectiveShippedPacks, packsDir, diagnostics)
+        checkPackDuplicateAnswers(packs, packMembership, cardsById, diagnostics)
 
         val content = CompiledContent(
             contentVersion = meta.contentVersion,
@@ -107,28 +130,57 @@ object ContentCompiler {
         return ValidationResult(content, diagnostics.all)
     }
 
-    private data class Meta(val contentVersion: Int, val shippedLevels: Set<Level>, val smokeLevels: Set<Level>)
+    private data class Meta(
+        val contentVersion: Int,
+        val shippedLevels: Set<Level>,
+        val smokeLevels: Set<Level>,
+        val shippedPacks: Set<String>?,
+    )
 
     private fun readMeta(file: Path, diagnostics: Diagnostics): Meta {
         if (!file.isRegularFile()) {
             diagnostics.error(file, null, "meta.json is missing")
-            return Meta(0, emptySet(), emptySet())
+            return Meta(0, emptySet(), emptySet(), null)
         }
-        val text = CsvFiles.readUtf8(file, diagnostics) ?: return Meta(0, emptySet(), emptySet())
+        val text = CsvFiles.readUtf8(file, diagnostics) ?: return Meta(0, emptySet(), emptySet(), null)
         val root = runCatching { Json.parseToJsonElement(text).jsonObject }.getOrElse {
             diagnostics.error(file, null, "not a JSON object: ${it.message?.lineSequence()?.first()}")
-            return Meta(0, emptySet(), emptySet())
+            return Meta(0, emptySet(), emptySet(), null)
         }
         val version = (root["contentVersion"] as? JsonPrimitive)?.takeIf { !it.isString }?.intOrNull
         if (version == null || version < 1) diagnostics.error(file, null, "contentVersion must be a positive integer")
 
         val shipped = readLevelList(root, "shippedLevels", file, diagnostics)
         val smoke = readLevelList(root, "smokeLevels", file, diagnostics)
+        val shippedPacks = readPackList(root, "shippedPacks", file, diagnostics)
         (shipped intersect smoke).forEach {
             diagnostics.error(file, null, "${it.name} cannot be both in shippedLevels and smokeLevels")
         }
-        return Meta(version ?: 0, shipped, smoke)
+        return Meta(version ?: 0, shipped, smoke, shippedPacks)
     }
+
+    private fun readPackList(root: JsonObject, key: String, file: Path, diagnostics: Diagnostics): Set<String>? =
+        when (val list = root[key]) {
+            null -> null
+
+            is JsonArray -> {
+                val packs = mutableSetOf<String>()
+                list.forEach { element ->
+                    val name = (element as? JsonPrimitive)?.takeIf { it.isString }?.content
+                    if (name == null) {
+                        diagnostics.error(file, null, "$key: expected pack id string, got $element")
+                    } else {
+                        packs += name
+                    }
+                }
+                packs
+            }
+
+            else -> {
+                diagnostics.error(file, null, "$key must be an array of pack id strings")
+                emptySet()
+            }
+        }
 
     private fun readLevelList(root: JsonObject, key: String, file: Path, diagnostics: Diagnostics): Set<Level> {
         val levels = mutableSetOf<Level>()
@@ -220,29 +272,95 @@ object ContentCompiler {
             }
         }
 
-    private fun readPacks(file: Path, diagnostics: Diagnostics): List<PackEntry> {
-        if (!file.isRegularFile()) {
-            diagnostics.error(file, null, "packs.csv is missing in the exam pack directory")
-            return emptyList()
-        }
-        val rows = CsvFiles.readTable(file, PACK_COLUMNS, diagnostics) ?: return emptyList()
-        val seen = mutableSetOf<String>()
-        return rows.mapNotNull { row ->
+    private fun readPacks(packsFile: Path, metaFile: Path, diagnostics: Diagnostics): List<PackEntry> {
+        val packsExist = packsFile.isRegularFile()
+        val metaExists = metaFile.isRegularFile()
+        if (!packsExist) diagnostics.error(packsFile, null, "packs.csv is missing in the exam pack directory")
+        if (!metaExists) diagnostics.error(metaFile, null, "packs-meta.csv is missing in the exam pack directory")
+        if (!packsExist || !metaExists) return emptyList()
+
+        val packRows = CsvFiles.readTable(packsFile, PACK_COLUMNS, diagnostics) ?: return emptyList()
+        val metaRows = CsvFiles.readTable(metaFile, PACK_META_COLUMNS, diagnostics) ?: return emptyList()
+
+        val seenPackIds = mutableSetOf<String>()
+        val packsById = packRows.mapNotNull { row ->
             var ok = true
             fun error(message: String) {
                 ok = false
-                diagnostics.error(file, row.line, message)
+                diagnostics.error(packsFile, row.line, message)
             }
             val id = row["id"]
             if (!CardRules.SLUG.matches(id)) error("pack id '$id' must be a lowercase slug")
-            if (!seen.add(id)) error("duplicate pack id '$id'")
+            if (!seenPackIds.add(id)) error("duplicate pack id '$id'")
             if (row["name"].isEmpty()) error("name must not be empty")
             val isPro = parseFlag(row["is_pro"])
             if (isPro == null) error("is_pro '${row["is_pro"]}' must be 0 or 1")
             val sort = row["sort"].toIntOrNull()
             if (sort == null) error("sort '${row["sort"]}' must be an integer")
             if (!ok || isPro == null || sort == null) return@mapNotNull null
-            PackEntry(id, row["name"], row["description"], isPro, sort, Source(file, row.line))
+            id to (row to Source(packsFile, row.line))
+        }.toMap()
+
+        val seenMetaIds = mutableSetOf<String>()
+        val metaById = metaRows.mapNotNull { row ->
+            var ok = true
+            fun error(message: String) {
+                ok = false
+                diagnostics.error(metaFile, row.line, message)
+            }
+            val id = row["id"]
+            if (!CardRules.SLUG.matches(id)) error("pack id '$id' must be a lowercase slug")
+            if (!seenMetaIds.add(id)) error("duplicate pack id '$id'")
+            if (row["title_tr"].isEmpty()) error("title_tr must not be empty")
+            if (row["title_en"].isEmpty()) error("title_en must not be empty")
+            val range = parseLevelRange(row["target_level_range"])
+            if (range == null) {
+                error("target_level_range '${row["target_level_range"]}' must be <LEVEL>-<LEVEL> (e.g. A2-B1)")
+            }
+            val cardTarget = row["card_target"].toIntOrNull()
+            if (cardTarget == null || cardTarget <= 0) {
+                error("card_target '${row["card_target"]}' must be a positive integer")
+            }
+            val preview = row["free_preview_letters"]
+            if (preview.isNotEmpty()) {
+                if (preview.any { it !in 'A'..'Z' }) {
+                    error("free_preview_letters '$preview' must be uppercase A-Z letters")
+                }
+                if (preview.toSet().size != preview.length) {
+                    error("free_preview_letters '$preview' must not contain duplicate letters")
+                }
+            }
+            if (!ok || range == null || cardTarget == null) return@mapNotNull null
+            id to row
+        }.toMap()
+
+        val allPackIds = packsById.keys
+        val allMetaIds = metaById.keys
+        (allPackIds - allMetaIds).forEach { id ->
+            diagnostics.error(metaFile, null, "pack '$id' is missing from packs-meta.csv")
+        }
+        (allMetaIds - allPackIds).forEach { id ->
+            val metaRow = metaById.getValue(id)
+            diagnostics.error(metaFile, metaRow.line, "pack '$id' in packs-meta.csv is not declared in packs.csv")
+        }
+
+        return packsById.mapNotNull { (id, pair) ->
+            val (packRow, source) = pair
+            val metaRow = metaById[id] ?: return@mapNotNull null
+            PackEntry(
+                id = id,
+                name = packRow["name"],
+                description = packRow["description"],
+                isPro = parseFlag(packRow["is_pro"])!!,
+                sort = packRow["sort"].toInt(),
+                titleTr = metaRow["title_tr"],
+                titleEn = metaRow["title_en"],
+                descriptionTr = metaRow["description_tr"],
+                targetLevelRange = metaRow["target_level_range"],
+                cardTarget = metaRow["card_target"].toInt(),
+                freePreviewLetters = metaRow["free_preview_letters"],
+                source = source,
+            )
         }
     }
 
@@ -371,6 +489,73 @@ object ContentCompiler {
                         null,
                         "${level.name} (not shipped yet): ${thin.size} letter(s) below $MIN_CARDS_PER_LETTER cards: " +
                             thin.joinToString(""),
+                    )
+                }
+            }
+        }
+    }
+
+    private fun checkPackCoverage(
+        packs: List<PackEntry>,
+        packCards: List<PackCardEntry>,
+        cardsById: Map<String, CardEntry>,
+        shippedPacks: Set<String>,
+        packsDir: Path?,
+        diagnostics: Diagnostics,
+    ) {
+        val byPack = packCards.groupBy { it.packId }
+        for (pack in packs) {
+            val members = byPack[pack.id].orEmpty().mapNotNull { cardsById[it.cardId] }
+            val unitFile = packsDir?.resolve("units")?.resolve("${pack.id}.csv")?.takeIf { it.isRegularFile() }
+                ?: pack.source.file
+            val counts = ('A'..'Z').associateWith { letter -> members.count { it.letter == letter } }
+            if (pack.id in shippedPacks) {
+                counts.forEach { (letter, count) ->
+                    if (count < MIN_CARDS_PER_LETTER) {
+                        diagnostics.error(
+                            unitFile,
+                            null,
+                            "pack '${pack.id}' letter $letter has $count card(s), minimum $MIN_CARDS_PER_LETTER",
+                        )
+                    } else if (count < RECOMMENDED_CARDS_PER_LETTER) {
+                        diagnostics.warning(
+                            unitFile,
+                            null,
+                            "pack '${pack.id}' letter $letter has $count card(s), recommended $RECOMMENDED_CARDS_PER_LETTER",
+                        )
+                    }
+                }
+            } else {
+                val thin = counts.filterValues { it < MIN_CARDS_PER_LETTER }.keys
+                if (thin.isNotEmpty()) {
+                    diagnostics.warning(
+                        unitFile,
+                        null,
+                        "pack '${pack.id}' (not shipped yet): ${thin.size} letter(s) below " +
+                            "$MIN_CARDS_PER_LETTER cards: " + thin.joinToString(""),
+                    )
+                }
+            }
+        }
+    }
+
+    private fun checkPackDuplicateAnswers(
+        packs: List<PackEntry>,
+        packCards: List<PackCardEntry>,
+        cardsById: Map<String, CardEntry>,
+        diagnostics: Diagnostics,
+    ) {
+        val byPack = packCards.groupBy { it.packId }
+        for (pack in packs) {
+            val members = byPack[pack.id].orEmpty().mapNotNull { cardsById[it.cardId] }
+            val groups = members.groupBy { it.answer }.filterValues { it.size > 1 }
+            groups.values.forEach { duplicates ->
+                duplicates.forEach { card ->
+                    val others = (duplicates - card).joinToString { "${it.source.file.name}:${it.source.line}" }
+                    diagnostics.error(
+                        card.source.file,
+                        card.source.line,
+                        "duplicate answer '${card.answer}' in pack '${pack.id}' (also at $others)",
                     )
                 }
             }

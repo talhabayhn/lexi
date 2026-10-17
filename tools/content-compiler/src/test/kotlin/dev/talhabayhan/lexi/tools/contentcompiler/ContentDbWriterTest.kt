@@ -90,8 +90,13 @@ class ContentDbWriterTest {
         result.validation.assertNoErrors()
         withDb { db ->
             assertEquals(
-                listOf(listOf("test-pack-one", "Test Pack One", "Synthetic fixture pack", "1", "0")),
-                db.rows("SELECT * FROM exam_pack WHERE id = 'test-pack-one'").map { it.take(5) },
+                listOf(
+                    listOf(
+                        "test-pack-one", "Test Pack One", "Synthetic fixture pack", "1", "0",
+                        "Test Pack One", "Test Pack One", "Synthetic fixture pack", "A1-B1", "10", "ABC",
+                    ),
+                ),
+                db.rows("SELECT * FROM exam_pack WHERE id = 'test-pack-one'").map { it.take(11) },
             )
             assertEquals(4, db.rows("SELECT card_id FROM exam_pack_card").size)
             assertEquals(1, db.rows("SELECT id FROM card WHERE id = 'b1-zest'").size)
@@ -123,6 +128,6 @@ class ContentDbWriterTest {
     }
 
     private companion object {
-        const val COLUMNS = 10
+        const val COLUMNS = 11
     }
 }

@@ -1,5 +1,8 @@
 package dev.talhabayhan.lexi.tools.contentcompiler
 
+import app.cash.sqldelight.db.QueryResult
+import app.cash.sqldelight.driver.jdbc.sqlite.JdbcSqliteDriver
+import dev.talhabayhan.lexi.tools.contentcompiler.db.ContentDatabase
 import java.nio.file.Path
 import kotlin.io.path.deleteExisting
 import kotlin.io.path.writeText
@@ -23,11 +26,21 @@ class ExamPackTest {
     }
 
     @Test
-    fun `fixture packs load with their units and extra cards`() {
+    fun `fixture packs load with their units, metadata and extra cards`() {
         val result = validate()
 
         result.assertNoErrors()
         assertEquals(listOf("test-pack-one", "test-pack-two"), result.content.packs.map { it.id })
+        val packOne = result.content.packs.single { it.id == "test-pack-one" }
+        assertEquals("Test Pack One", packOne.name)
+        assertEquals("Test Pack One", packOne.titleTr)
+        assertEquals("Test Pack One", packOne.titleEn)
+        assertEquals("Synthetic fixture pack", packOne.descriptionTr)
+        assertEquals("A1-B1", packOne.targetLevelRange)
+        assertEquals(10, packOne.cardTarget)
+        assertEquals("ABC", packOne.freePreviewLetters)
+        assertTrue(packOne.isPro)
+
         assertEquals(4, result.content.packCards.size)
         assertEquals("Ünite 1", result.content.packCards.single { it.packId == "test-pack-two" }.unit)
         assertEquals(null, result.content.packCards.single { it.cardId == "b1-zest" }.unit)
@@ -65,6 +78,168 @@ class ExamPackTest {
         result.assertError("packs.csv", 3, "is_pro 'yes'")
         result.assertError("packs.csv", 3, "sort 'z'")
         result.assertError("packs.csv", 4, "duplicate pack id 'test-pack-two'")
+    }
+
+    @Test
+    fun `missing packs-meta csv is an error`() {
+        packs.resolve("packs-meta.csv").deleteExisting()
+        val result = validate()
+
+        result.assertError("packs-meta.csv", null, "missing in the exam pack directory")
+    }
+
+    @Test
+    fun `packs-meta csv ids must match packs csv exactly`() {
+        packs.resolve("packs-meta.csv").writeText(
+            "id,title_tr,title_en,description_tr,target_level_range,card_target,free_preview_letters\n" +
+                "test-pack-one,One,One,Desc,A1-B1,10,ABC\n" +
+                "test-pack-three,Three,Three,Desc,A1-B1,10,\n",
+        )
+        val result = validate()
+
+        result.assertError("packs-meta.csv", null, "pack 'test-pack-two' is missing from packs-meta.csv")
+        result.assertError("packs-meta.csv", 3, "pack 'test-pack-three' in packs-meta.csv is not declared in packs.csv")
+    }
+
+    @Test
+    fun `packs-meta csv fields are validated`() {
+        packs.resolve("packs-meta.csv").writeText(
+            "id,title_tr,title_en,description_tr,target_level_range,card_target,free_preview_letters\n" +
+                "test-pack-one,,English,,A1-B1,10,ABC\n" +
+                "test-pack-two,Türkçe,,,B1-A1,0,abc\n",
+        )
+        val result = validate()
+
+        result.assertError("packs-meta.csv", 2, "title_tr must not be empty")
+        result.assertError("packs-meta.csv", 3, "title_en must not be empty")
+        result.assertError("packs-meta.csv", 3, "target_level_range 'B1-A1' must be <LEVEL>-<LEVEL>")
+        result.assertError("packs-meta.csv", 3, "card_target '0' must be a positive integer")
+        result.assertError("packs-meta.csv", 3, "free_preview_letters 'abc' must be uppercase A-Z letters")
+    }
+
+    @Test
+    fun `free_preview_letters cannot contain duplicate letters`() {
+        packs.resolve("packs-meta.csv").writeText(
+            "id,title_tr,title_en,description_tr,target_level_range,card_target,free_preview_letters\n" +
+                "test-pack-one,One,One,,A1-B1,10,ABA\n" +
+                "test-pack-two,Two,Two,,A1-B1,10,\n",
+        )
+        val result = validate()
+
+        result.assertError("packs-meta.csv", 2, "free_preview_letters 'ABA' must not contain duplicate letters")
+    }
+
+    private fun aCard(id: String, answer: String): String =
+        cardRow(id = id, answer = answer, letter = "A", exampleEn = "Have an $answer.")
+
+    @Test
+    fun `duplicate answers within a pack are rejected`() {
+        content.writeCards("cards/A1/dup.csv", aCard("a1-apple-clone", "APPLE"))
+        packs.resolve("units/test-pack-one.csv").writeText(
+            "card_id,unit\na1-apple,1\na1-apple-clone,1\nb1-zest,\n",
+        )
+        val result = validate()
+
+        result.assertError("dup.csv", 2, "duplicate answer 'APPLE' in pack 'test-pack-one'")
+    }
+
+    @Test
+    fun `per-pack letter coverage below 3 is an error for shipped packs`() {
+        content.resolve("meta.json").writeText(
+            """{ "contentVersion": 7, "shippedLevels": [], "shippedPacks": ["test-pack-one"] }""",
+        )
+        val result = validate()
+
+        result.assertError("test-pack-one.csv", null, "pack 'test-pack-one' letter A has 1 card(s), minimum 3")
+        result.assertError("test-pack-one.csv", null, "pack 'test-pack-one' letter C has 0 card(s), minimum 3")
+    }
+
+    @Test
+    fun `per-pack letter coverage warns below 5 for shipped packs`() {
+        content.resolve("meta.json").writeText(
+            """{ "contentVersion": 7, "shippedLevels": [], "shippedPacks": ["test-pack-one"] }""",
+        )
+        content.writeCards(
+            "cards/A1/a_cards.csv",
+            aCard("a1-avocado", "AVOCADO"),
+            aCard("a1-almond", "ALMOND"),
+            aCard("a1-apricot", "APRICOT"),
+        )
+        packs.resolve("units/test-pack-one.csv").writeText(
+            "card_id,unit\na1-apple,1\na1-avocado,1\na1-almond,1\na1-apricot,1\n",
+        )
+        val result = validate()
+
+        result.assertWarning("test-pack-one.csv", null, "pack 'test-pack-one' letter A has 4 card(s), recommended 5")
+    }
+
+    @Test
+    fun `unshipped packs skip coverage error and emit thin coverage warning`() {
+        val result = validate()
+
+        result.assertNoErrors()
+        result.assertWarning("test-pack-one.csv", null, "pack 'test-pack-one' (not shipped yet):")
+    }
+
+    @Test
+    fun `pack loading into in-memory sqlite database`() {
+        val result = validate()
+        result.assertNoErrors()
+
+        JdbcSqliteDriver(JdbcSqliteDriver.IN_MEMORY).use { driver ->
+            ContentDatabase.Schema.create(driver)
+            val queries = ContentDatabase(driver).contentWritesQueries
+            result.content.packs.forEach {
+                queries.insertExamPack(
+                    id = it.id,
+                    name = it.name,
+                    description = it.description,
+                    is_pro = if (it.isPro) 1L else 0L,
+                    sort = it.sort.toLong(),
+                    title_tr = it.titleTr,
+                    title_en = it.titleEn,
+                    description_tr = it.descriptionTr,
+                    level_range = it.targetLevelRange,
+                    card_target = it.cardTarget.toLong(),
+                    free_preview_letters = it.freePreviewLetters,
+                )
+            }
+            result.content.packCards.forEach { queries.insertExamPackCard(it.packId, it.cardId, it.unit) }
+
+            val rows = driver.executeQuery(
+                identifier = null,
+                sql = "SELECT id, title_tr, title_en, level_range, card_target, free_preview_letters " +
+                    "FROM exam_pack ORDER BY sort",
+                mapper = { cursor ->
+                    val list = mutableListOf<List<String?>>()
+                    while (cursor.next().value) {
+                        list += (0 until 6).map { cursor.getString(it) }
+                    }
+                    QueryResult.Value(list)
+                },
+                parameters = 0,
+            ).value
+
+            assertEquals(2, rows.size)
+            assertEquals(listOf("test-pack-one", "Test Pack One", "Test Pack One", "A1-B1", "10", "ABC"), rows[0])
+            assertEquals(listOf("test-pack-two", "Test Pack Two", "Test Pack Two", "A1-B1", "10", ""), rows[1])
+
+            val cardRows = driver.executeQuery(
+                identifier = null,
+                sql = "SELECT pack_id, card_id, unit FROM exam_pack_card ORDER BY pack_id, card_id",
+                mapper = { cursor ->
+                    val list = mutableListOf<List<String?>>()
+                    while (cursor.next().value) {
+                        list += (0 until 3).map { cursor.getString(it) }
+                    }
+                    QueryResult.Value(list)
+                },
+                parameters = 0,
+            ).value
+
+            assertEquals(4, cardRows.size)
+            assertEquals(listOf("test-pack-one", "a1-apple", "Unit 1"), cardRows[0])
+        }
     }
 
     @Test

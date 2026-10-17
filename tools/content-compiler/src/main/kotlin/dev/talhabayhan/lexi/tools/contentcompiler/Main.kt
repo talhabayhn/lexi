@@ -10,6 +10,7 @@ import java.sql.SQLException
 import java.time.Instant
 import kotlin.io.path.Path
 import kotlin.io.path.deleteIfExists
+import kotlin.io.path.isDirectory
 import kotlin.system.exitProcess
 
 /** Environment variable for the external (private) exam pack directory; `--packs` wins over it. */
@@ -26,14 +27,14 @@ private const val DEFAULT_CONTENT = "content"
 
 // The app build generates its own copy (`generateContentDb`, docs/CONTENT.md §1); a manual run writes here.
 private const val DEFAULT_OUTPUT = "build/content/content.db"
+private const val DEFAULT_PACKS = "content/exam-packs"
 private val OPTIONS = setOf("--content", "--out", "--packs", "--tmp", "--version-file")
 
 private val USAGE = """
     Usage: content-compiler [--content <dir>] [--out <file>] [--packs <dir>] [--tmp <dir>] [--version-file <file>]
       --content <dir>  content source directory (default: $DEFAULT_CONTENT)
       --out <file>     content.db to write (default: $DEFAULT_OUTPUT)
-      --packs <dir>    external exam pack directory (default: ${'$'}$PACKS_ENV, else none).
-                       Exam pack content never lives in this repository (docs/CONTENT.md §1).
+      --packs <dir>    exam pack directory (default: ${'$'}$PACKS_ENV, else $DEFAULT_PACKS if present, else none).
       --tmp <dir>      where the DB is built before the atomic move (default: ${ContentCompiler.DEFAULT_TEMP_DIR})
       --version-file <file>  also write meta.contentVersion as plain text (read by the app's copy check)
     ${'$'}$SOURCE_DATE_EPOCH_ENV (seconds) sets meta.builtAt; without it builtAt is omitted (byte-identical output).
@@ -83,10 +84,17 @@ fun runCompiler(args: Array<String>, env: Map<String, String>, out: PrintStream,
         return EXIT_USAGE
     }
 
-    val packsArg = options["--packs"] ?: env[PACKS_ENV]?.takeIf { it.isNotBlank() }
     val output: Path
+    val packsArg: String?
     val result = try {
         val contentDir = Path(options["--content"] ?: DEFAULT_CONTENT)
+        val defaultPacks = contentDir.resolve("exam-packs").takeIf { it.isDirectory() }?.toString()
+            ?: Path(DEFAULT_PACKS).takeIf { it.isDirectory() && options["--content"] == null }?.toString()
+        packsArg = if (options.containsKey("--packs")) {
+            options["--packs"]?.takeIf { it.isNotBlank() && it != "none" }
+        } else {
+            env[PACKS_ENV]?.takeIf { it.isNotBlank() } ?: defaultPacks
+        }
         output = Path(options["--out"] ?: DEFAULT_OUTPUT)
         val tempDir = options["--tmp"]?.let { Path(it) } ?: ContentCompiler.DEFAULT_TEMP_DIR
         val packsDir = packsArg?.let { Path(it) }

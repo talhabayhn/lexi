@@ -49,11 +49,17 @@ val generateContentDb by tasks.registering(JavaExec::class) {
     val contentDir = rootProject.layout.projectDirectory.dir("content").asFile
     val outputDir = contentDbDir
     val tempDir = layout.buildDirectory.dir("content-compiler")
+    val defaultPacksDir = rootProject.layout.projectDirectory.dir("content/exam-packs").asFile
     val packsDir = providers.environmentVariable("LEXI_PACKS_DIR")
+        .orElse(providers.provider { if (defaultPacksDir.isDirectory) defaultPacksDir.path else "" })
 
     inputs.dir(contentDir).withPathSensitivity(PathSensitivity.RELATIVE).withPropertyName("content")
     inputs.property("packsDir", packsDir.orElse(""))
-    inputs.files(packsDir.map { listOf(File(it).takeIf(File::isAbsolute) ?: File(root, it)) }.orElse(emptyList()))
+    inputs.files(
+        packsDir.map { p ->
+            if (p.isEmpty()) emptyList() else listOf(File(p).takeIf(File::isAbsolute) ?: File(root, p))
+        }.orElse(emptyList()),
+    )
         .withPathSensitivity(PathSensitivity.RELATIVE)
         .withPropertyName("packs")
         .optional()
@@ -63,7 +69,8 @@ val generateContentDb by tasks.registering(JavaExec::class) {
     argumentProviders.add(
         CommandLineArgumentProvider {
             val files = outputDir.get().dir("files").asFile
-            listOf(
+            val packs = packsDir.get().takeIf { it.isNotEmpty() }
+            listOfNotNull(
                 "--content",
                 contentDir.path,
                 "--out",
@@ -72,6 +79,8 @@ val generateContentDb by tasks.registering(JavaExec::class) {
                 files.resolve("content-version.txt").path,
                 "--tmp",
                 tempDir.get().asFile.path,
+                packs?.let { "--packs" },
+                packs,
             )
         },
     )
