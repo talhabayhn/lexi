@@ -1,0 +1,41 @@
+name: author-check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  author-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Reject AI attribution in commits after the base SHA
+        run: |
+          base=$(tr -d '[:space:]' < .github/author-check-base)
+          if ! git cat-file -e "$base^{commit}" 2>/dev/null; then
+            echo "Base SHA $base not found in history"; exit 1
+          fi
+          bad=0
+          for sha in $(git rev-list --no-merges "$base..HEAD"); do
+            ident=$(git log -1 --format='%an <%ae>%n%cn <%ce>' "$sha")
+            msg=$(git log -1 --format=%B "$sha")
+            reason=""
+            if printf '%s\n' "$ident" | grep -qiE 'claude|anthropic'; then
+              reason="author/committer matches claude|anthropic"
+            fi
+            if printf '%s\n' "$msg" | grep -qiE 'co-authored-by|generated with'; then
+              reason="${reason:+$reason; }message contains Co-Authored-By / Generated with"
+            fi
+            if [ -n "$reason" ]; then
+              bad=1
+              echo "::error::$sha: $reason"
+              git log -1 --format='  %h  author: %an <%ae>  committer: %cn <%ce>  %s' "$sha"
+            fi
+          done
+          exit $bad
