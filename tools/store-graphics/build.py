@@ -13,7 +13,9 @@ current theme, captures the gameplay footage (StoreFootageCapture), runs both sc
 Sources (never invented UI):
   * Roborazzi screenshots under feature/*/src/androidHostTest/screenshots, rendered from the app's Compose code at
     390x844 dp @2x with LexiTheme (so they carry the current palette once re-recorded).
-  * build/store-footage/<lang>/frame_*.png from StoreFootageCapture (EN game screen with English chrome).
+  * build/store-footage/<lang>/frame_*.png from StoreFootageCapture, and feature/*/build/store-screens/en/*.png from
+    the StoreScreensCapture tests: the English set uses the English UI with English clues and meanings (owner's
+    decision 2026-10-17: English listings show no Turkish text; the app itself has Turkish clues only for now).
   * The launcher icon geometry (androidApp/src/main/res/drawable/ic_launcher_*.xml, design 13-logo-and-icon
     option 1) in the current LexiColors, drawn here so the store icon always matches the app.
 
@@ -72,14 +74,15 @@ SCREENS = {
         ("feature/game/JokerSheet.png", INK, "Takıldın mı?\nJoker kullan"),
     ],
     "en": [
-        ("footage:frame_0044.png|feature/game/GameScreen.png", RED, "Turkish clue,\nEnglish word"),
-        ("feature/levels/LevelSelectNatPracticeEn.png", BLUE, "Six levels,\nA1 to native"),
-        ("feature/game/ResultScreenLongTextEnglish.png", YELLOW, "Review every\nword you missed"),
-        ("feature/notebook/NotebookWordSheetEn.png", INK, "A notebook with\nspaced repetition"),
-        ("feature/stats/StatsEn.png", RED, "Watch your\nprogress grow"),
-        ("feature/game/JokerSheetEnglish.png", BLUE, "Stuck?\nUse a joker"),
-        ("feature/levels/CategoriesLongNamesEn.png", YELLOW, "Pick a topic\nyou like"),
-        ("feature/settings/SettingsEn.png", INK, "Sound, haptics,\nyour way"),
+        # English UI with English clues/meanings (StoreScreensCapture): English listings show no Turkish text.
+        ("store:game/Game.png", RED, "Find the word,\nletter by letter"),
+        ("footage:frame_0207.png", BLUE, "Build streaks,\nscore more"),
+        ("store:home/Home.png", YELLOW, "A new Daily Wheel\nevery day"),
+        ("feature/levels/LevelSelectNatPracticeEn.png", INK, "Six levels,\nA1 to native"),
+        ("store:game/Result.png", RED, "Review every\nword you missed"),
+        ("store:notebook/Notebook.png", BLUE, "A notebook with\nspaced repetition"),
+        ("feature/stats/StatsEn.png", YELLOW, "Watch your\nprogress grow"),
+        ("store:game/JokerSheet.png", INK, "Stuck?\nUse a joker"),
     ],
 }
 
@@ -98,6 +101,9 @@ def resolve(name: str, screens_dir: Path | None, lang: str = "tr") -> Path:
     for option in name.split("|"):
         if option.startswith("footage:"):
             path = FOOTAGE / lang / option.removeprefix("footage:")
+        elif option.startswith("store:"):
+            module, file = option.removeprefix("store:").split("/")
+            path = ROOT / "feature" / module / "build" / "store-screens" / lang / file
         else:
             module, file = option.removeprefix("feature/").split("/")
             path = ROOT / "feature" / module / "src" / "androidHostTest" / "screenshots" / file
@@ -264,6 +270,8 @@ def main() -> None:
 
     save(app_icon(512), OUT / "play" / "icon-512.png")
     save(app_icon(1024), OUT / "appstore" / "app-icon-1024.png")
+    # The iOS app icon is the same art, so iOS and Android show the same icon in the current palette.
+    save(app_icon(1024), ROOT / "iosApp" / "iosApp" / "Assets.xcassets" / "AppIcon.appiconset" / "app-icon-1024.png")
     for lang in ("tr", "en"):
         save(feature_graphic(lang), OUT / "play" / f"feature-graphic-{lang}.png")
         for i, (name, band, headline) in enumerate(SCREENS[lang], start=1):

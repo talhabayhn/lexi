@@ -48,14 +48,14 @@ SCENES = {
         ],
     },
     "en": {
-        "game": "Turkish clue,\nEnglish word",
+        "game": "Find the word,\nletter by letter",
         "end": "Play\nnow",
         "stills": [
+            ("store:home/Home.png", YELLOW, "A new Daily Wheel\nevery day"),
             ("feature/levels/LevelSelectNatPracticeEn.png", BLUE, "Six levels,\nA1 to native"),
-            ("feature/game/ResultScreenLongTextEnglish.png", RED, "Review every\nword you missed"),
-            ("feature/notebook/NotebookWordSheetEn.png", INK, "A notebook with\nspaced repetition"),
+            ("store:game/Result.png", RED, "Review every\nword you missed"),
+            ("store:notebook/Notebook.png", INK, "A notebook with\nspaced repetition"),
             ("feature/stats/StatsEn.png", YELLOW, "Watch your\nprogress grow"),
-            ("feature/game/JokerSheetEnglish.png", BLUE, "Stuck?\nUse a joker"),
         ],
     },
 }
