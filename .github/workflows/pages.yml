@@ -41,7 +41,7 @@ jobs:
         uses: actions/configure-pages@v5
         continue-on-error: true
       - if: steps.pages.outcome != 'success'
-        run: echo "::warning::GitHub Pages is not enabled yet (Settings → Pages → Source: GitHub Actions); skipping deploy."
+        run: echo "::warning::GitHub Pages is not enabled yet (Settings > Pages > Source = GitHub Actions); skipping deploy."
       - uses: actions/upload-pages-artifact@v4
         with:
           path: _site
