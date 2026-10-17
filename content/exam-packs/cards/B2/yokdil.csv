@@ -157,3 +157,32 @@ b2-birth-rate,BIRTH RATE,B,STARTS,phrase,belli bir sürede doğan bebek sayısı
 b2-belief-system,BELIEF SYSTEM,Y,CONTAINS,phrase,bir kişinin ya da toplumun inandığı ilkeler bütünü,Every culture has its own belief system.,Her kültürün kendine ait bir inanç sistemi vardır.,4,exam:yokdil,school-work
 b2-underclass,UNDERCLASS,U,STARTS,noun,toplumun en yoksul ve dışlanmış kesimi,Economists warn of a growing urban underclass.,Ekonomistler büyüyen bir kentsel alt sınıfa dikkat çekiyor.,5,exam:yokdil,school-work
 b2-westernization,WESTERNIZATION,Z,CONTAINS,noun,Batı kültürünü ve yaşam biçimini benimseme,Westernization began in the late Ottoman period.,Batılılaşma geç Osmanlı döneminde başladı.,5,exam:yokdil,school-work
+b2-sample,SAMPLE,S,STARTS,noun,"bir bütünü temsil etmek için seçilen küçük grup, örneklem",The sample included five hundred students.,Örneklem beş yüz öğrenciden oluşuyordu.,3,exam:yokdil,school-work
+b2-case-study,CASE STUDY,C,STARTS,phrase,tek bir olayın ya da kişinin derinlemesine incelenmesi,The book is a case study of one village.,Kitap tek bir köyün vaka çalışması.,4,exam:yokdil,school-work
+b2-thesis,THESIS,T,STARTS,noun,bir derece için yazılan bilimsel tez,She wrote her thesis on climate policy.,Tezini iklim politikası üzerine yazdı.,4,exam:yokdil,school-work
+b2-dissertation,DISSERTATION,D,STARTS,noun,doktora için yazılan uzun araştırma metni,His dissertation took four years.,Doktora tezi dört yıl sürdü.,5,exam:yokdil,school-work
+b2-citation,CITATION,C,STARTS,noun,bir kaynaktan yapılan alıntı ya da atıf,Every citation must include the page number.,Her atıf sayfa numarasını içermeli.,4,exam:yokdil,school-work
+b2-footnote,FOOTNOTE,F,STARTS,noun,"sayfanın altına düşülen açıklama notu, dipnot",The source is given in a footnote.,Kaynak bir dipnotta verilmiş.,4,exam:yokdil,school-work
+b2-appendix,APPENDIX,X,CONTAINS,noun,bir kitabın ya da raporun sonundaki ek bölüm,The full data are in the appendix.,Verilerin tamamı ek bölümde.,4,exam:yokdil,school-work
+b2-bibliography,BIBLIOGRAPHY,Y,CONTAINS,noun,"bir çalışmada kullanılan kaynakların listesi, kaynakça",Add the book to your bibliography.,Kitabı kaynakçana ekle.,4,exam:yokdil,school-work
+b2-methodology,METHODOLOGY,Y,CONTAINS,noun,"bir araştırmada izlenen yöntemler bütünü, yöntem bilim",The methodology section explains how data were collected.,Yöntem bölümü verilerin nasıl toplandığını açıklıyor.,4,exam:yokdil,school-work
+b2-participant,PARTICIPANT,P,STARTS,noun,bir araştırmaya ya da etkinliğe katılan kişi,Each participant filled in a form.,Her katılımcı bir form doldurdu.,3,exam:yokdil,school-work
+b2-respondent,RESPONDENT,R,STARTS,noun,bir ankete ya da soruya cevap veren kişi,One respondent was over eighty.,Yanıtlayanlardan biri seksenin üzerindeydi.,4,exam:yokdil,school-work
+b2-findings,FINDINGS,F,STARTS,noun,"bir araştırmanın ortaya koyduğu sonuçlar, bulgular",The findings surprised the research team.,Bulgular araştırma ekibini şaşırttı.,3,exam:yokdil,school-work
+b2-statistical,STATISTICAL,S,STARTS,adj,"istatistikle ilgili, sayısal veriye dayanan",The difference was not statistical noise.,Fark istatistiksel bir gürültü değildi.,4,exam:yokdil,school-work
+b2-significance,SIGNIFICANCE,S,STARTS,noun,"önem, anlamlılık",The study has great significance for teachers.,Çalışmanın öğretmenler için büyük önemi var.,4,exam:yokdil,school-work
+b2-correlation,CORRELATION,C,STARTS,noun,"iki şey arasındaki karşılıklı ilişki, bağıntı",There is a strong correlation between sleep and grades.,Uyku ile notlar arasında güçlü bir ilişki var.,4,exam:yokdil,school-work
+b2-causation,CAUSATION,C,STARTS,noun,"nedensellik, bir şeyin başka bir şeye neden olması",A link between two events does not prove causation.,İki olay arasındaki bağ nedenselliği kanıtlamaz.,5,exam:yokdil,school-work
+b2-validity,VALIDITY,Y,CONTAINS,noun,"geçerlilik, doğruluk",Critics questioned the validity of the test.,Eleştirmenler testin geçerliliğini sorguladı.,4,exam:yokdil,school-work
+b2-reliability,RELIABILITY,Y,CONTAINS,noun,"güvenilirlik, tutarlılık",The reliability of the data is high.,Verilerin güvenilirliği yüksek.,4,exam:yokdil,school-work
+b2-replicate,REPLICATE,R,STARTS,verb,bir deneyi aynı sonuçları almak için tekrarlamak,Other teams could not replicate the results.,Başka ekipler sonuçları tekrarlayamadı.,5,exam:yokdil,school-work
+b2-accuracy,ACCURACY,Y,CONTAINS,noun,"doğruluk, kesinlik",Check the accuracy of your figures.,Rakamlarının doğruluğunu kontrol et.,3,exam:yokdil,school-work
+b2-precision,PRECISION,P,STARTS,noun,"çok ince ayrıntıya kadar kesinlik, hassasiyet",Surgeons work with great precision.,Cerrahlar büyük bir hassasiyetle çalışır.,4,exam:yokdil,school-work
+b2-measurement,MEASUREMENT,M,STARTS,noun,ölçme ya da ölçüm sonucu,Take one measurement every hour.,Her saat bir ölçüm al.,3,exam:yokdil,school-work
+b2-calibrate,CALIBRATE,C,STARTS,verb,bir ölçüm aletini doğru gösterecek şekilde ayarlamak,Calibrate the device before each test.,Her testten önce cihazı ayarla.,5,exam:yokdil,school-work
+b2-prototype,PROTOTYPE,Y,CONTAINS,noun,bir ürünün denenmek üzere yapılan ilk örneği,The engineers built a prototype of the car.,Mühendisler arabanın bir prototipini yaptı.,4,exam:yokdil,school-work
+b2-engineering,ENGINEERING,E,STARTS,noun,mühendislik,He wants to study engineering at university.,Üniversitede mühendislik okumak istiyor.,3,exam:yokdil,school-work
+b2-mechanical,MECHANICAL,M,STARTS,adj,"makinelerle ilgili, mekanik",The delay was caused by a mechanical problem.,Gecikmeye mekanik bir sorun neden oldu.,3,exam:yokdil,school-work
+b2-electrical,ELECTRICAL,E,STARTS,adj,elektrikle ilgili,Do not touch the electrical wires.,Elektrik kablolarına dokunma.,3,exam:yokdil,school-work
+b2-robotics,ROBOTICS,R,STARTS,noun,"robot tasarımı ve yapımıyla ilgili bilim, robotik",Robotics is changing car factories.,Robotik araba fabrikalarını değiştiriyor.,4,exam:yokdil,school-work
+b2-automation,AUTOMATION,A,STARTS,noun,"işlerin makinelerle otomatik yapılması, otomasyon",Automation may replace many jobs.,Otomasyon pek çok işin yerini alabilir.,4,exam:yokdil,school-work

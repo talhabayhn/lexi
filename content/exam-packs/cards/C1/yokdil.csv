@@ -5,3 +5,7 @@ c1-digest,DIGEST,D,STARTS,verb,besinleri sindirmek,Cows digest grass slowly.,İn
 c1-asthma,ASTHMA,A,STARTS,noun,nefes darlığı nöbetleriyle seyreden akciğer hastalığı,Dust can trigger asthma.,Toz astımı tetikleyebilir.,3,exam:yokdil,school-work
 c1-insulin,INSULIN,I,STARTS,noun,kan şekerini düzenleyen hormon,Diabetics often need insulin.,Şeker hastalarının çoğu zaman insüline ihtiyacı olur.,4,exam:yokdil,school-work
 c1-blood-pressure,BLOOD PRESSURE,B,STARTS,phrase,"kanın damar duvarlarına yaptığı basınç, tansiyon",Too much salt raises blood pressure.,Fazla tuz tansiyonu yükseltir.,3,exam:yokdil,school-work
+c1-control-group,CONTROL GROUP,C,STARTS,phrase,deneyde değişkene maruz bırakılmayan karşılaştırma grubu,The control group received no treatment.,Kontrol grubuna tedavi uygulanmadı.,4,exam:yokdil,school-work
+c1-clinical-trial,CLINICAL TRIAL,C,STARTS,phrase,yeni bir ilacın insanlar üzerinde denendiği çalışma,The vaccine passed its final clinical trial.,Aşı son klinik denemesini geçti.,4,exam:yokdil,school-work
+c1-peer-review,PEER REVIEW,P,STARTS,phrase,bir çalışmanın alanındaki uzmanlarca değerlendirilmesi,The article went through peer review.,Makale hakem değerlendirmesinden geçti.,5,exam:yokdil,school-work
+c1-sample-size,SAMPLE SIZE,S,STARTS,phrase,bir araştırmadaki örneklemin büyüklüğü,A larger sample size gives more reliable results.,Daha büyük bir örneklem daha güvenilir sonuçlar verir.,4,exam:yokdil,school-work

@@ -1,8 +1,8 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
-b2-hence,HENCE,H,STARTS,adv,"bu nedenle, dolayısıyla (resmî)",The road was icy; hence the delay.,Yol buzluydu; gecikme bu yüzden.,3,exam:yds,school-work
-b2-therefore,THEREFORE,T,STARTS,adv,"bu sebeple, bundan dolayı","The data were incomplete; therefore, no clear conclusion was possible.",Veriler eksikti; bu nedenle net bir sonuca varmak mümkün değildi.,2,exam:yds,school-work
-b2-accordingly,ACCORDINGLY,A,STARTS,adv,buna uygun olarak; bu yüzden,"Prices rose, and demand fell accordingly.",Fiyatlar arttı ve talep buna bağlı olarak düştü.,4,exam:yds,school-work
-b2-conversely,CONVERSELY,C,STARTS,adv,"tersine, buna karşılık","Some drugs raise blood pressure; conversely, others lower it.",Bazı ilaçlar tansiyonu yükseltir; buna karşılık diğerleri düşürür.,4,exam:yds,school-work
+b2-hence,HENCE,H,STARTS,adv,"bu nedenle, dolayısıyla (resmî)",The road was icy; hence the delay.,Yol buzluydu; gecikme bu yüzden.,3,exam:yds|exam:yokdil,school-work
+b2-therefore,THEREFORE,T,STARTS,adv,"bu sebeple, bundan dolayı","The data were incomplete; therefore, no clear conclusion was possible.",Veriler eksikti; bu nedenle net bir sonuca varmak mümkün değildi.,2,exam:yds|exam:yokdil,school-work
+b2-accordingly,ACCORDINGLY,A,STARTS,adv,buna uygun olarak; bu yüzden,"Prices rose, and demand fell accordingly.",Fiyatlar arttı ve talep buna bağlı olarak düştü.,4,exam:yds|exam:yokdil,school-work
+b2-conversely,CONVERSELY,C,STARTS,adv,"tersine, buna karşılık","Some drugs raise blood pressure; conversely, others lower it.",Bazı ilaçlar tansiyonu yükseltir; buna karşılık diğerleri düşürür.,4,exam:yds|exam:yokdil,school-work
 b2-due-to,DUE TO,D,STARTS,phrase,"-den dolayı, sebebiyle",The flight was cancelled due to fog.,Uçuş sis nedeniyle iptal edildi.,2,exam:yds,school-work
 b2-additionally,ADDITIONALLY,A,STARTS,adv,"bunun yanı sıra, ek olarak","Additionally, the study looked at sleep patterns.",Bunun yanı sıra çalışma uyku düzenlerini de inceledi.,3,exam:yds,school-work
 b2-alternatively,ALTERNATIVELY,A,STARTS,adv,"öbür seçenek olarak, ya da","You can travel by train; alternatively, you can fly.",Trenle gidebilirsin; diğer seçenek olarak uçabilirsin.,3,exam:yds,school-work
@@ -12,16 +12,16 @@ b2-solely,SOLELY,S,STARTS,adv,"yalnızca, sadece ve sadece",The decision was bas
 b2-evidently,EVIDENTLY,E,STARTS,adv,açıkça görüldüğü üzere,"Evidently, the plan had not worked.",Açıkça görülüyordu ki plan işe yaramamıştı.,4,exam:yds,school-work
 b2-essentially,ESSENTIALLY,E,STARTS,adv,"özünde, temelde",The two theories are essentially the same.,İki kuram özünde aynıdır.,3,exam:yds,school-work
 b2-simultaneously,SIMULTANEOUSLY,S,STARTS,adv,"aynı anda, eş zamanlı olarak",The two events happened simultaneously.,İki olay eş zamanlı gerçekleşti.,4,exam:yds,school-work
-b2-respectively,RESPECTIVELY,R,STARTS,adv,sırasıyla (söylenen düzene göre),Ali and Ayşe came first and second respectively.,Ali ve Ayşe sırasıyla birinci ve ikinci oldu.,4,exam:yds,school-work
-b2-subsequently,SUBSEQUENTLY,Q,CONTAINS,adv,"daha sonra, ardından",He was arrested and subsequently released.,Tutuklandı ve ardından serbest bırakıldı.,4,exam:yds,school-work
+b2-respectively,RESPECTIVELY,R,STARTS,adv,sırasıyla (söylenen düzene göre),Ali and Ayşe came first and second respectively.,Ali ve Ayşe sırasıyla birinci ve ikinci oldu.,4,exam:yds|exam:yokdil,school-work
+b2-subsequently,SUBSEQUENTLY,Q,CONTAINS,adv,"daha sonra, ardından",He was arrested and subsequently released.,Tutuklandı ve ardından serbest bırakıldı.,4,exam:yds|exam:yokdil,school-work
 b2-invariably,INVARIABLY,I,STARTS,adv,"her zaman, istisnasız",The bus is invariably late on Mondays.,Otobüs pazartesileri istisnasız geç kalır.,4,exam:yds,school-work
-b2-predominantly,PREDOMINANTLY,P,STARTS,adv,"ağırlıklı olarak, çoğunlukla",The town is predominantly agricultural.,Kasaba ağırlıklı olarak tarımsaldır.,5,exam:yds,school-work
+b2-predominantly,PREDOMINANTLY,P,STARTS,adv,"ağırlıklı olarak, çoğunlukla",The town is predominantly agricultural.,Kasaba ağırlıklı olarak tarımsaldır.,5,exam:yds|exam:yokdil,school-work
 b2-contrary,CONTRARY,C,STARTS,adj,"tam ters, karşıt","Contrary to popular belief, bats are not blind.",Yaygın inancın aksine yarasalar kör değildir.,3,exam:yds,school-work
 b2-prior,PRIOR,P,STARTS,adj,"önceki, daha önce olan",No prior experience is needed for this job.,Bu iş için önceden deneyim gerekmez.,3,exam:yds,school-work
 b2-previous,PREVIOUS,P,STARTS,adj,"bir öncekine ait, önceki",The previous owner left the house in poor condition.,Önceki sahibi evi kötü durumda bıraktı.,2,exam:yds,school-work
 b2-latter,LATTER,L,STARTS,noun,sözü edilen iki şeyden ikincisi,"Of tea and coffee, I prefer the latter.",Çay ve kahveden ikincisini tercih ederim.,3,exam:yds,school-work
 b2-amongst,AMONGST,A,STARTS,adv,arasında (resmî),The idea is popular amongst young voters.,Fikir genç seçmenler arasında popüler.,4,exam:yds,school-work
-b2-whereby,WHEREBY,W,STARTS,adv,"ki bununla, aracılığıyla",They set up a system whereby users can vote online.,Kullanıcıların çevrim içi oy verebileceği bir sistem kurdular.,5,exam:yds,school-work
+b2-whereby,WHEREBY,W,STARTS,adv,"ki bununla, aracılığıyla",They set up a system whereby users can vote online.,Kullanıcıların çevrim içi oy verebileceği bir sistem kurdular.,5,exam:yds|exam:yokdil,school-work
 b2-assign,ASSIGN,A,STARTS,verb,birine bir görev ya da iş vermek,The teacher will assign each group a topic.,Öğretmen her gruba bir konu verecek.,3,exam:yds,school-work
 b2-assist,ASSIST,A,STARTS,verb,"yardım etmek, destek olmak (resmî)",Nurses assist doctors during operations.,Hemşireler ameliyatlarda doktorlara yardım eder.,2,exam:yds,school-work
 b2-calculate,CALCULATE,C,STARTS,verb,hesap yaparak bulmak,Calculate the total cost of the project.,Projenin toplam maliyetini hesapla.,2,exam:yds,school-work
@@ -51,7 +51,7 @@ b2-status,STATUS,S,STARTS,noun,toplumdaki konum; bir şeyin o anki durumu,Doctor
 b2-transition,TRANSITION,T,STARTS,noun,bir durumdan ötekine geçiş,The transition from school to work is hard for many.,Okuldan işe geçiş pek çok kişi için zordur.,3,exam:yds,school-work
 b2-minimal,MINIMAL,M,STARTS,adj,"olabilecek en az, asgari",The storm caused minimal damage.,Fırtına çok az hasara yol açtı.,3,exam:yds,school-work
 b2-integral,INTEGRAL,I,STARTS,adj,bir bütünün ayrılmaz parçası olan,Music is an integral part of the course.,Müzik dersin ayrılmaz bir parçasıdır.,4,exam:yds,school-work
-b2-inference,INFERENCE,I,STARTS,noun,"eldeki bilgiden çıkarılan sonuç, çıkarım",What inference can we draw from these figures?,Bu rakamlardan ne sonuç çıkarabiliriz?,4,exam:yds,school-work
+b2-inference,INFERENCE,I,STARTS,noun,"eldeki bilgiden çıkarılan sonuç, çıkarım",What inference can we draw from these figures?,Bu rakamlardan ne sonuç çıkarabiliriz?,4,exam:yds|exam:yokdil,school-work
 b2-acid,ACID,A,STARTS,noun,"limon suyu gibi ekşi, aşındırıcı kimyasal madde",Some acid can burn through metal.,Bazı asitler metali aşındırabilir.,2,exam:yds|exam:yokdil,school-work
 b2-adaptation,ADAPTATION,A,STARTS,noun,bir canlının çevresine uyum sağlama süreci,Thick fur is an adaptation to cold climates.,Kalın kürk soğuk iklimlere bir uyumdur.,3,exam:yds|exam:yokdil,school-work
 b2-accumulation,ACCUMULATION,A,STARTS,noun,"zamanla birikme, yığılma",The accumulation of dust can damage machines.,Toz birikmesi makinelere zarar verebilir.,4,exam:yds,school-work
@@ -138,7 +138,7 @@ b2-ecological,ECOLOGICAL,E,STARTS,adj,canlılarla çevreleri arasındaki ilişki
 b2-endanger,ENDANGER,E,STARTS,verb,tehlikeye atmak,New roads endanger rare plants.,Yeni yollar nadir bitkileri tehlikeye atıyor.,3,exam:yds,school-work
 b2-deforestation,DEFORESTATION,D,STARTS,noun,ormanların kesilerek yok edilmesi,Deforestation destroys the homes of many animals.,Orman tahribatı pek çok hayvanın yuvasını yok ediyor.,4,exam:yds,school-work
 b2-greenhouse-gas,GREENHOUSE GAS,G,STARTS,phrase,atmosferde ısıyı tutan gaz,Methane is a powerful greenhouse gas.,Metan güçlü bir sera gazıdır.,3,exam:yds|exam:yokdil,school-work
-b2-biodegradable,BIODEGRADABLE,B,STARTS,adj,doğada bakterilerle çözünüp yok olabilen,These bags are biodegradable.,Bu poşetler doğada çözünebilir.,4,exam:yds,school-work
+b2-biodegradable,BIODEGRADABLE,B,STARTS,adj,doğada bakterilerle çözünüp yok olabilen,These bags are biodegradable.,Bu poşetler doğada çözünebilir.,4,exam:yds|exam:yokdil,school-work
 b2-glacier,GLACIER,G,STARTS,noun,dağlarda yavaşça hareket eden büyük buz kütlesi,The glacier has shrunk by half in fifty years.,Buzul elli yılda yarı yarıya küçüldü.,3,exam:yds,school-work
 b2-extinction,EXTINCTION,X,CONTAINS,noun,bir türün tamamen yok olması,Many frogs face extinction.,Pek çok kurbağa türü yok olma tehlikesiyle karşı karşıya.,3,exam:yds,school-work
 b2-expenditure,EXPENDITURE,E,STARTS,noun,bir kurumun ya da devletin yaptığı harcama,Public expenditure on health has risen.,Sağlığa yapılan kamu harcaması arttı.,4,exam:yds,business
@@ -221,9 +221,9 @@ b2-hostility,HOSTILITY,Y,CONTAINS,noun,"düşmanca tutum, husumet",There was ope
 b2-kinship,KINSHIP,K,STARTS,noun,akrabalık bağı,Kinship ties are strong in rural areas.,Kırsal bölgelerde akrabalık bağları güçlüdür.,4,exam:yds|exam:yokdil,school-work
 b2-gender,GENDER,G,STARTS,noun,toplumsal cinsiyet; kadın ya da erkek olma durumu,"The job is open to all, regardless of gender.","İş, cinsiyet ayrımı olmaksızın herkese açık.",3,exam:yds|exam:yokdil,school-work
 b2-socialize,SOCIALIZE,Z,CONTAINS,verb,başkalarıyla vakit geçirip kaynaşmak,Children learn to socialize at nursery.,Çocuklar kreşte sosyalleşmeyi öğrenir.,3,exam:yds|exam:yokdil,school-work
-b2-account-for,ACCOUNT FOR,A,STARTS,phrasal,bir şeyin nedenini açıklamak; belli bir oranını oluşturmak,Women account for half of all doctors in Türkiye.,Türkiye'de doktorların yarısını kadınlar oluşturuyor.,3,exam:yds,phrasal-verbs
+b2-account-for,ACCOUNT FOR,A,STARTS,phrasal,bir şeyin nedenini açıklamak; belli bir oranını oluşturmak,Women account for half of all doctors in Türkiye.,Türkiye'de doktorların yarısını kadınlar oluşturuyor.,3,exam:yds|exam:yokdil,phrasal-verbs
 b2-bring-about,BRING ABOUT,B,STARTS,phrasal,bir değişikliğe ya da duruma yol açmak,The internet helped bring about huge social change.,İnternet büyük bir toplumsal değişime yol açtı.,3,exam:yds,phrasal-verbs
-b2-point-out,POINT OUT,P,STARTS,phrasal,"dikkat çekmek, belirtmek",The author is right to point out the cost.,Yazar maliyete dikkat çekmekte haklı.,3,exam:yds,phrasal-verbs
+b2-point-out,POINT OUT,P,STARTS,phrasal,"dikkat çekmek, belirtmek",The author is right to point out the cost.,Yazar maliyete dikkat çekmekte haklı.,3,exam:yds|exam:yokdil,phrasal-verbs
 b2-figure-out,FIGURE OUT,F,STARTS,phrasal,uğraşarak anlamak ya da çözmek,I cannot figure out how this machine works.,Bu makinenin nasıl çalıştığını çözemiyorum.,2,exam:yds,phrasal-verbs
 b2-lead-to,LEAD TO,L,STARTS,phrasal,sonuç olarak bir şeye yol açmak,Too little sleep can lead to poor health.,Az uyumak sağlığın bozulmasına yol açabilir.,2,exam:yds,phrasal-verbs
 b2-result-in,RESULT IN,R,STARTS,phrasal,sonucunda bir şey doğurmak,The storm could result in power cuts.,Fırtına elektrik kesintilerine neden olabilir.,3,exam:yds,phrasal-verbs
@@ -255,22 +255,22 @@ b2-pass-on,PASS ON,P,STARTS,phrasal,"bir şeyi başkasına aktarmak, iletmek",Pl
 b2-weed-out,WEED OUT,W,STARTS,phrasal,istenmeyenleri ayıklamak,The test helps weed out weak candidates.,Sınav zayıf adayları elemeye yarar.,4,exam:yds,phrasal-verbs
 b2-lay-down,LAY DOWN,L,STARTS,phrasal,kuralları resmî olarak belirlemek,The law will lay down strict limits on noise.,Yasa gürültüye sıkı sınırlar koyacak.,4,exam:yds,phrasal-verbs
 b2-single-out,SINGLE OUT,S,STARTS,phrasal,bir grubun içinden birini ayrıca seçmek,The teacher did not want to single out any pupil.,Öğretmen hiçbir öğrenciyi ayrı tutmak istemedi.,4,exam:yds,phrasal-verbs
-b2-in-terms-of,IN TERMS OF,I,STARTS,phrase,"bakımından, açısından","In terms of cost, the plan is a success.",Maliyet açısından plan bir başarı.,3,exam:yds,idioms
+b2-in-terms-of,IN TERMS OF,I,STARTS,phrase,"bakımından, açısından","In terms of cost, the plan is a success.",Maliyet açısından plan bir başarı.,3,exam:yds|exam:yokdil,idioms
 b2-by-means-of,BY MEANS OF,B,STARTS,phrase,"aracılığıyla, yoluyla",They crossed the river by means of a rope bridge.,Nehri bir halat köprü aracılığıyla geçtiler.,4,exam:yds,idioms
-b2-as-opposed-to,AS OPPOSED TO,A,STARTS,phrase,"-in aksine, -e karşıt olarak",Students prefer online lessons as opposed to classroom ones.,Öğrenciler sınıf derslerinin aksine çevrim içi dersleri tercih ediyor.,4,exam:yds,idioms
-b2-in-light-of,IN LIGHT OF,I,STARTS,phrase,"-i göz önünde bulundurarak, ışığında","In light of new evidence, the case was reopened.",Yeni kanıtlar ışığında dava yeniden açıldı.,4,exam:yds,idioms
+b2-as-opposed-to,AS OPPOSED TO,A,STARTS,phrase,"-in aksine, -e karşıt olarak",Students prefer online lessons as opposed to classroom ones.,Öğrenciler sınıf derslerinin aksine çevrim içi dersleri tercih ediyor.,4,exam:yds|exam:yokdil,idioms
+b2-in-light-of,IN LIGHT OF,I,STARTS,phrase,"-i göz önünde bulundurarak, ışığında","In light of new evidence, the case was reopened.",Yeni kanıtlar ışığında dava yeniden açıldı.,4,exam:yds|exam:yokdil,idioms
 b2-owing-to,OWING TO,O,STARTS,phrase,"-den dolayı, nedeniyle (resmî)","Owing to heavy snow, the school is closed.",Yoğun kar nedeniyle okul kapalı.,4,exam:yds,idioms
 b2-provided-that,PROVIDED THAT,P,STARTS,phrase,-mek şartıyla,You can borrow the car provided that you return it today.,Bugün geri getirmen şartıyla arabayı ödünç alabilirsin.,4,exam:yds,idioms
 b2-in-spite-of,IN SPITE OF,I,STARTS,phrase,-e rağmen,"In spite of the rain, the match went ahead.",Yağmura rağmen maç oynandı.,2,exam:yds,idioms
 b2-at-the-expense-of,AT THE EXPENSE OF,A,STARTS,phrase,"-in zararına, pahasına",He finished early at the expense of quality.,İşi kalite pahasına erken bitirdi.,5,exam:yds,idioms
 b2-in-favour-of,IN FAVOUR OF,I,STARTS,phrase,"-den yana, lehine",Most members voted in favour of the plan.,Üyelerin çoğu planın lehine oy kullandı.,3,exam:yds,idioms
-b2-play-a-role,PLAY A ROLE,P,STARTS,phrase,bir şeyde payı ya da etkisi olmak,Genes play a role in many diseases.,Genlerin pek çok hastalıkta payı vardır.,3,exam:yds,idioms
+b2-play-a-role,PLAY A ROLE,P,STARTS,phrase,bir şeyde payı ya da etkisi olmak,Genes play a role in many diseases.,Genlerin pek çok hastalıkta payı vardır.,3,exam:yds|exam:yokdil,idioms
 b2-pay-attention,PAY ATTENTION,P,STARTS,phrase,dikkatini bir şeye vermek,Pay attention to the instructions.,Talimatlara dikkat et.,2,exam:yds,idioms
 b2-take-place,TAKE PLACE,T,STARTS,phrase,"gerçekleşmek, meydana gelmek",The final will take place in Istanbul.,Final İstanbul'da gerçekleşecek.,2,exam:yds,idioms
 b2-make-progress,MAKE PROGRESS,M,STARTS,phrase,ilerleme kaydetmek,The talks did not make progress.,Görüşmelerde ilerleme kaydedilmedi.,2,exam:yds,idioms
 b2-meet-demand,MEET DEMAND,M,STARTS,phrase,talebi karşılamak,Farmers cannot meet demand for fresh eggs.,Çiftçiler taze yumurta talebini karşılayamıyor.,4,exam:yds,idioms
 b2-pose-a-threat,POSE A THREAT,P,STARTS,phrase,bir tehlike oluşturmak,Rising seas pose a threat to coastal towns.,Yükselen denizler kıyı kasabaları için tehdit oluşturuyor.,4,exam:yds,idioms
-b2-shed-light-on,SHED LIGHT ON,S,STARTS,phrase,"bir konuyu aydınlatmak, açıklığa kavuşturmak",The study may shed light on the causes of autism.,Çalışma otizmin nedenlerine ışık tutabilir.,4,exam:yds,idioms
+b2-shed-light-on,SHED LIGHT ON,S,STARTS,phrase,"bir konuyu aydınlatmak, açıklığa kavuşturmak",The study may shed light on the causes of autism.,Çalışma otizmin nedenlerine ışık tutabilir.,4,exam:yds|exam:yokdil,idioms
 b2-bear-in-mind,BEAR IN MIND,B,STARTS,phrase,"bir şeyi akılda tutmak, hesaba katmak",Bear in mind that the shop closes at six.,Dükkânın altıda kapandığını aklında tut.,3,exam:yds,idioms
 b2-come-into-effect,COME INTO EFFECT,C,STARTS,phrase,bir yasanın ya da kuralın yürürlüğe girmesi,The new rules come into effect in May.,Yeni kurallar mayısta yürürlüğe giriyor.,4,exam:yds,idioms
 b2-take-measures,TAKE MEASURES,T,STARTS,phrase,bir soruna karşı önlem almak,The city must take measures against air pollution.,Belediye hava kirliliğine karşı önlem almalı.,3,exam:yds,idioms
@@ -283,9 +283,9 @@ b2-cooperation,COOPERATION,C,STARTS,noun,"ortak bir amaç için birlikte çalı�
 b2-coordinate,COORDINATE,C,STARTS,verb,farklı kişi ya da işleri uyum içinde düzenlemek,A manager will coordinate the rescue teams.,Bir yönetici kurtarma ekiplerini koordine edecek.,3,exam:yds,school-work
 b2-correspondence,CORRESPONDENCE,C,STARTS,noun,yazışma; iki şey arasındaki uygunluk,All correspondence should go to the head office.,Bütün yazışmalar merkez ofise gönderilmeli.,4,exam:yds,school-work
 b2-counteract,COUNTERACT,C,STARTS,verb,bir etkiyi karşı bir etkiyle gidermek,This drug can counteract the poison.,Bu ilaç zehrin etkisini giderebilir.,4,exam:yds,school-work
-b2-criteria,CRITERIA,C,STARTS,noun,bir şeyi değerlendirmede kullanılan ölçütler,The judges explained their criteria.,Jüri ölçütlerini açıkladı.,4,exam:yds,school-work
+b2-criteria,CRITERIA,C,STARTS,noun,bir şeyi değerlendirmede kullanılan ölçütler,The judges explained their criteria.,Jüri ölçütlerini açıkladı.,4,exam:yds|exam:yokdil,school-work
 b2-cultivate,CULTIVATE,C,STARTS,verb,toprağı ekip biçmek; bir ilişkiyi ya da beceriyi geliştirmek,Farmers here cultivate rice and cotton.,Buradaki çiftçiler pirinç ve pamuk yetiştirir.,4,exam:yds,school-work
-b2-deduction,DEDUCTION,D,STARTS,noun,eldeki bilgiden mantıkla sonuç çıkarma; kesinti,Sherlock Holmes is famous for his deduction.,Sherlock Holmes tümdengelimiyle ünlüdür.,4,exam:yds,school-work
+b2-deduction,DEDUCTION,D,STARTS,noun,eldeki bilgiden mantıkla sonuç çıkarma; kesinti,Sherlock Holmes is famous for his deduction.,Sherlock Holmes tümdengelimiyle ünlüdür.,4,exam:yds|exam:yokdil,school-work
 b2-determinant,DETERMINANT,D,STARTS,noun,bir sonucu belirleyen etken,Income is a key determinant of health.,Gelir sağlığın temel belirleyicilerinden biridir.,5,exam:yds,school-work
 b2-diverge,DIVERGE,D,STARTS,verb,farklı yönlere ayrılmak; birbirinden ayrışmak,The two paths diverge after the bridge.,İki patika köprüden sonra ayrılır.,5,exam:yds,school-work
 b2-disperse,DISPERSE,D,STARTS,verb,dağılmak ya da dağıtmak,Police used water to disperse the crowd.,Polis kalabalığı dağıtmak için su kullandı.,4,exam:yds,school-work
@@ -308,7 +308,7 @@ b2-preceding,PRECEDING,P,STARTS,adj,bir öncekinden hemen önce gelen,See the ta
 b2-proficiency,PROFICIENCY,Y,CONTAINS,noun,"bir alanda yüksek beceri, yeterlik",You need a certificate of English proficiency.,İngilizce yeterlik belgesine ihtiyacın var.,4,exam:yds,school-work
 b2-proponent,PROPONENT,P,STARTS,noun,"bir fikri savunan kişi, taraftar",He is a strong proponent of free education.,Ücretsiz eğitimin güçlü bir savunucusudur.,5,exam:yds,school-work
 b2-publication,PUBLICATION,P,STARTS,noun,yayımlama; yayımlanmış eser,The book is ready for publication.,Kitap yayımlanmaya hazır.,3,exam:yds,school-work
-b2-quantitative,QUANTITATIVE,Q,STARTS,adj,"miktarla ve sayılarla ilgili, nicel",We used quantitative methods in the study.,Çalışmada nicel yöntemler kullandık.,5,exam:yds,school-work
+b2-quantitative,QUANTITATIVE,Q,STARTS,adj,"miktarla ve sayılarla ilgili, nicel",We used quantitative methods in the study.,Çalışmada nicel yöntemler kullandık.,5,exam:yds|exam:yokdil,school-work
 b2-reciprocal,RECIPROCAL,R,STARTS,adj,karşılıklı,The two schools have a reciprocal agreement.,İki okulun karşılıklı bir anlaşması var.,5,exam:yds,school-work
 b2-reliance,RELIANCE,R,STARTS,noun,"bir şeye bağımlı olma, güvenme",Our reliance on oil must end.,Petrole bağımlılığımız sona ermeli.,4,exam:yds,school-work
 b2-reluctance,RELUCTANCE,R,STARTS,noun,"isteksizlik, gönülsüzlük",He showed some reluctance to accept the offer.,Teklifi kabul etmekte biraz isteksiz davrandı.,4,exam:yds,school-work
@@ -318,7 +318,7 @@ b2-alternative,ALTERNATIVE,A,STARTS,noun,başka bir seçenek,Is there an alterna
 b2-applicable,APPLICABLE,A,STARTS,adj,bir durum için geçerli ya da uygulanabilir,The rule is not applicable to children.,Kural çocuklar için geçerli değil.,4,exam:yds,school-work
 b2-autonomous,AUTONOMOUS,A,STARTS,adj,"kendi kendini yöneten, özerk",The region became autonomous in 1990.,Bölge 1990'da özerk oldu.,5,exam:yds,school-work
 b2-avert,AVERT,A,STARTS,verb,kötü bir olayı önlemek,Quick action helped avert a disaster.,Hızlı müdahale bir felaketi önledi.,5,exam:yds,school-work
-b2-biased,BIASED,B,STARTS,adj,"taraflı, önyargılı",The report was biased against women.,Rapor kadınlara karşı önyargılıydı.,4,exam:yds,school-work
+b2-biased,BIASED,B,STARTS,adj,"taraflı, önyargılı",The report was biased against women.,Rapor kadınlara karşı önyargılıydı.,4,exam:yds|exam:yokdil,school-work
 b2-byproduct,BYPRODUCT,Y,CONTAINS,noun,bir üretim sürecinde ortaya çıkan ikincil ürün,Sawdust is a byproduct of the timber industry.,Talaş kereste sanayisinin bir yan ürünüdür.,4,exam:yds,business
 b2-impact,IMPACT,I,STARTS,noun,bir şeyin güçlü etkisi,The new road had a huge impact on the village.,Yeni yol köy üzerinde büyük bir etki bıraktı.,2,exam:yds,school-work
 b2-detection,DETECTION,D,STARTS,noun,"bir şeyi fark edip ortaya çıkarma, tespit",Early detection of cancer saves lives.,Kanserin erken tespiti hayat kurtarır.,3,exam:yds,school-work
