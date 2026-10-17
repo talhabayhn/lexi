@@ -1,21 +1,18 @@
-# Add project specific ProGuard rules here.
-# You can control the set of applied configuration files using the
-# proguardFiles setting in build.gradle.
-#
-# For more details, see
-#   http://developer.android.com/guide/developing/tools/proguard.html
+# Lexi release (R8) rules. Most libraries ship their own consumer rules (kotlinx.serialization, Koin,
+# SQLDelight, Compose, Kermit); only what R8 cannot see is listed here. Extend from CI output.
 
-# If your project uses WebView with JS, uncomment the following
-# and specify the fully qualified class name to the JavaScript interface
-# class:
-#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
-#   public *;
-#}
+# Readable crash stack traces (mapping.txt is uploaded as a CI artifact).
+-keepattributes SourceFile,LineNumberTable,*Annotation*,InnerClasses,Signature,EnclosingMethod
+-renamesourcefileattribute SourceFile
 
-# Uncomment this to preserve the line number information for
-# debugging stack traces.
-#-keepattributes SourceFile,LineNumberTable
+# kotlinx.serialization: type-safe Navigation routes and DTOs look up `Companion.serializer()` reflectively.
+-keepclassmembers @kotlinx.serialization.Serializable class dev.talhabayhan.lexi.** {
+    *** Companion;
+    kotlinx.serialization.KSerializer serializer(...);
+}
+-keepclasseswithmembers class dev.talhabayhan.lexi.** {
+    kotlinx.serialization.KSerializer serializer(...);
+}
 
-# If you keep the line number information, uncomment this to
-# hide the original source file name.
-#-renamesourcefileattribute SourceFile
+# SQLDelight Android driver uses the framework SQLite API only; nothing to keep.
+# Compose resources are read from assets by path; resource shrinking does not touch assets.
