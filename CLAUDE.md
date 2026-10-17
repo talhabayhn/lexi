@@ -125,6 +125,8 @@ Use them for their area; run `code-reviewer` before pushing a feature.
 - Haiku · low: `chores` (doc updates after a decision, ROADMAP ticks, changelog, one-off CI checks).
 - Escalate: when the same problem fails twice, hand it to `debugger` (Opus · high) instead of retrying.
 - Parallel agents only for independent tasks with ≥ 4 GB free RAM; never two Gradle builds at once.
+- Antigravity CLI equivalents: Claude Opus 4.6 (Thinking) for architecture/game-screen wiring/hard debugging/review;
+  Gemini 3.8 Flash (High) for routine implementation/content/tests/docs.
 
 ## Language
 
