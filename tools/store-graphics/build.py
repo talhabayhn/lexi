@@ -60,7 +60,8 @@ SIZES = {
     "appstore/iphone-6.5": (1284, 2778),
 }
 
-# (source, band colour, headline). "feature/<module>/<file>" = Roborazzi shot, "footage:<frame>" = footage frame
+# (source, band colour, headline). "feature/<module>/<file>" = Roborazzi shot, "footage:<frame>" = footage frame,
+# "footage:combo" = the footage frame at the combo burst
 # (falls back to the second entry when the footage was not captured).
 SCREENS = {
     "tr": [
@@ -76,7 +77,7 @@ SCREENS = {
     "en": [
         # English UI with English clues/meanings (StoreScreensCapture): English listings show no Turkish text.
         ("store:game/Game.png", RED, "Find the word,\nletter by letter"),
-        ("footage:frame_0207.png", BLUE, "Build streaks,\nscore more"),
+        ("footage:combo", BLUE, "Build streaks,\nscore more"),
         ("store:home/Home.png", YELLOW, "A new Daily Wheel\nevery day"),
         ("feature/levels/LevelSelectNatPracticeEn.png", INK, "Six levels,\nA1 to native"),
         ("store:game/Result.png", RED, "Review every\nword you missed"),
@@ -99,7 +100,9 @@ def font(weight: str, size: int) -> ImageFont.FreeTypeFont:
 def resolve(name: str, screens_dir: Path | None, lang: str = "tr") -> Path:
     """Path of a source screen; `a|b` tries a first."""
     for option in name.split("|"):
-        if option.startswith("footage:"):
+        if option == "footage:combo":
+            path = combo_frame(lang)
+        elif option.startswith("footage:"):
             path = FOOTAGE / lang / option.removeprefix("footage:")
         elif option.startswith("store:"):
             module, file = option.removeprefix("store:").split("/")
@@ -112,6 +115,15 @@ def resolve(name: str, screens_dir: Path | None, lang: str = "tr") -> Path:
         if path.exists():
             return path
     raise SystemExit(f"missing source screen: {name}")
+
+
+def combo_frame(lang: str) -> Path:
+    """Footage frame with the combo burst at its middle keyframe (timeline.txt "combo" + 210 ms, motion.md #7)."""
+    timeline = FOOTAGE / lang / "timeline.txt"
+    if not timeline.exists():
+        return FOOTAGE / lang / "missing"
+    ms = next(int(line.split()[0]) for line in timeline.read_text().splitlines() if line.endswith(" combo"))
+    return FOOTAGE / lang / f"frame_{(ms + 210) // 33:04d}.png"
 
 
 def source(name: str, screens_dir: Path | None, lang: str = "tr") -> Image.Image:
