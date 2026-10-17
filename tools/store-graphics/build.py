@@ -89,7 +89,7 @@ SCREENS = {
 
 FEATURE = {
     "tr": ("A'dan Z'ye İngilizce", "Türkçe ipucu, İngilizce kelime. A1'den ana dile."),
-    "en": ("From A to Z in English", "Turkish clues, English words. A1 to native."),
+    "en": ("From A to Z in English", "Learn English words with an A–Z wheel. A1 to native."),
 }
 
 
