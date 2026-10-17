@@ -56,12 +56,11 @@ level-wheel/category query must filter `pack_only = 0`, and they are reachable o
 ### Exam packs (current content)
 | pack | cards | pack-only | levels | units |
 |---|---|---|---|---|
-| `lgs` | 573 | 297 (A2, B1) | A2–B1 | 10 MEB 8th-grade themes (friendship … natural-forces) |
-| `yds` | 720 | 345 (B2, C1) | B2–C1 | connectors, general-academic, science, health, environment, economy, law-politics, social-science, phrasal-verbs, collocations |
-| `yokdil` | 500 | 209 (B1–C1) | B2–C1 | sciences, health, social-sciences, research-methods |
+| `lgs` (free) | 573 | 297 (A2, B1) | A2–B1 | 10 MEB 8th-grade themes (friendship … natural-forces) |
+| `yds-yokdil` (Pro) | 990 | 554 (B1–C1) | B2–C1 | connectors, general-academic, science(s), health, environment, economy, law-politics, social-science(s), research-methods, phrasal-verbs, collocations |
 
-- A word that exists anywhere (base or another pack) is referenced by id in `units/<pack>.csv`, never re-created;
-  YÖKDİL shares 114 cards with YDS. Every pack has ≥ 5 cards per letter.
+- A word that exists anywhere (base or another pack) is referenced by id in `units/<pack>.csv`, never re-created.
+  Every pack has ≥ 5 cards per letter.
 - `packs-meta.csv` holds title_tr/title_en, level range, card target and free preview letters (not read by the
   compiler yet). Open compiler work and owner decisions: `docs/content/EXAM_PACKS.md`; review notes:
   `docs/content-review/EXAM-*-summary.md`.

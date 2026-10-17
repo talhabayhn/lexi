@@ -1,4 +1,3 @@
 id,name,description,is_pro,sort
-lgs,LGS İngilizce,8. sınıf · ünite bazlı,1,0
-yds,YDS,Akademik ve genel sınav kelimeleri,1,1
-yokdil,YÖKDİL,"Fen, sağlık ve sosyal bilimler",1,2
+lgs,LGS İngilizce,8. sınıf · ünite bazlı,0,0
+yds-yokdil,YDS / YÖKDİL,Akademik metin kelimeleri,1,1

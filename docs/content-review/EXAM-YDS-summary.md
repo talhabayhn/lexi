@@ -1,5 +1,8 @@
 # Exam pack review — YDS
 
+> Merged (owner decision 2026-10): YDS is now part of the single pack `yds-yokdil` (990 cards after
+> de-duplication, ≥ 15 per letter). Counts below are the pre-merge source counts; the uncertain items still apply.
+
 720 cards: 345 pack-only (`content/exam-packs/cards/B2/yds.csv` 324, `cards/C1/yds.csv` 21) + 375 references
 (371 base cards, 4 LGS cards: DROUGHT, ENDANGERED, CARBON, VACCINE). Referenced levels: B2 530 · C1 145 · B1 40 ·
 A2 4 · NAT 1.

@@ -1,0 +1,512 @@
+id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
+b2-hence,HENCE,H,STARTS,adv,"bu nedenle, dolayısıyla (resmî)",The road was icy; hence the delay.,Yol buzluydu; gecikme bu yüzden.,3,exam:yds-yokdil,school-work
+b2-therefore,THEREFORE,T,STARTS,adv,"bu sebeple, bundan dolayı","The data were incomplete; therefore, no clear conclusion was possible.",Veriler eksikti; bu nedenle net bir sonuca varmak mümkün değildi.,2,exam:yds-yokdil,school-work
+b2-accordingly,ACCORDINGLY,A,STARTS,adv,buna uygun olarak; bu yüzden,"Prices rose, and demand fell accordingly.",Fiyatlar arttı ve talep buna bağlı olarak düştü.,4,exam:yds-yokdil,school-work
+b2-conversely,CONVERSELY,C,STARTS,adv,"tersine, buna karşılık","Some drugs raise blood pressure; conversely, others lower it.",Bazı ilaçlar tansiyonu yükseltir; buna karşılık diğerleri düşürür.,4,exam:yds-yokdil,school-work
+b2-due-to,DUE TO,D,STARTS,phrase,"-den dolayı, sebebiyle",The flight was cancelled due to fog.,Uçuş sis nedeniyle iptal edildi.,2,exam:yds-yokdil,school-work
+b2-additionally,ADDITIONALLY,A,STARTS,adv,"bunun yanı sıra, ek olarak","Additionally, the study looked at sleep patterns.",Bunun yanı sıra çalışma uyku düzenlerini de inceledi.,3,exam:yds-yokdil,school-work
+b2-alternatively,ALTERNATIVELY,A,STARTS,adv,"öbür seçenek olarak, ya da","You can travel by train; alternatively, you can fly.",Trenle gidebilirsin; diğer seçenek olarak uçabilirsin.,3,exam:yds-yokdil,school-work
+b2-apparently,APPARENTLY,A,STARTS,adv,"görünüşe göre, anlaşılan","Apparently, the meeting has been moved to Friday.",Anlaşılan toplantı cumaya alınmış.,2,exam:yds-yokdil,school-work
+b2-presumably,PRESUMABLY,P,STARTS,adv,"tahminen, büyük olasılıkla","The office is dark, so presumably everyone has left.","Ofis karanlık, yani büyük ihtimalle herkes çıkmış.",4,exam:yds-yokdil,school-work
+b2-solely,SOLELY,S,STARTS,adv,"yalnızca, sadece ve sadece",The decision was based solely on cost.,Karar yalnızca maliyete dayanıyordu.,4,exam:yds-yokdil,school-work
+b2-evidently,EVIDENTLY,E,STARTS,adv,açıkça görüldüğü üzere,"Evidently, the plan had not worked.",Açıkça görülüyordu ki plan işe yaramamıştı.,4,exam:yds-yokdil,school-work
+b2-essentially,ESSENTIALLY,E,STARTS,adv,"özünde, temelde",The two theories are essentially the same.,İki kuram özünde aynıdır.,3,exam:yds-yokdil,school-work
+b2-simultaneously,SIMULTANEOUSLY,S,STARTS,adv,"aynı anda, eş zamanlı olarak",The two events happened simultaneously.,İki olay eş zamanlı gerçekleşti.,4,exam:yds-yokdil,school-work
+b2-respectively,RESPECTIVELY,R,STARTS,adv,sırasıyla (söylenen düzene göre),Ali and Ayşe came first and second respectively.,Ali ve Ayşe sırasıyla birinci ve ikinci oldu.,4,exam:yds-yokdil,school-work
+b2-subsequently,SUBSEQUENTLY,Q,CONTAINS,adv,"daha sonra, ardından",He was arrested and subsequently released.,Tutuklandı ve ardından serbest bırakıldı.,4,exam:yds-yokdil,school-work
+b2-invariably,INVARIABLY,I,STARTS,adv,"her zaman, istisnasız",The bus is invariably late on Mondays.,Otobüs pazartesileri istisnasız geç kalır.,4,exam:yds-yokdil,school-work
+b2-predominantly,PREDOMINANTLY,P,STARTS,adv,"ağırlıklı olarak, çoğunlukla",The town is predominantly agricultural.,Kasaba ağırlıklı olarak tarımsaldır.,5,exam:yds-yokdil,school-work
+b2-contrary,CONTRARY,C,STARTS,adj,"tam ters, karşıt","Contrary to popular belief, bats are not blind.",Yaygın inancın aksine yarasalar kör değildir.,3,exam:yds-yokdil,school-work
+b2-prior,PRIOR,P,STARTS,adj,"önceki, daha önce olan",No prior experience is needed for this job.,Bu iş için önceden deneyim gerekmez.,3,exam:yds-yokdil,school-work
+b2-previous,PREVIOUS,P,STARTS,adj,"bir öncekine ait, önceki",The previous owner left the house in poor condition.,Önceki sahibi evi kötü durumda bıraktı.,2,exam:yds-yokdil,school-work
+b2-latter,LATTER,L,STARTS,noun,sözü edilen iki şeyden ikincisi,"Of tea and coffee, I prefer the latter.",Çay ve kahveden ikincisini tercih ederim.,3,exam:yds-yokdil,school-work
+b2-amongst,AMONGST,A,STARTS,adv,arasında (resmî),The idea is popular amongst young voters.,Fikir genç seçmenler arasında popüler.,4,exam:yds-yokdil,school-work
+b2-whereby,WHEREBY,W,STARTS,adv,"ki bununla, aracılığıyla",They set up a system whereby users can vote online.,Kullanıcıların çevrim içi oy verebileceği bir sistem kurdular.,5,exam:yds-yokdil,school-work
+b2-assign,ASSIGN,A,STARTS,verb,birine bir görev ya da iş vermek,The teacher will assign each group a topic.,Öğretmen her gruba bir konu verecek.,3,exam:yds-yokdil,school-work
+b2-assist,ASSIST,A,STARTS,verb,"yardım etmek, destek olmak (resmî)",Nurses assist doctors during operations.,Hemşireler ameliyatlarda doktorlara yardım eder.,2,exam:yds-yokdil,school-work
+b2-calculate,CALCULATE,C,STARTS,verb,hesap yaparak bulmak,Calculate the total cost of the project.,Projenin toplam maliyetini hesapla.,2,exam:yds-yokdil,school-work
+b2-capacity,CAPACITY,C,STARTS,noun,alabileceği en fazla miktar; yeterlik,The stadium has a capacity of fifty thousand.,Stadyumun elli bin kişilik kapasitesi var.,3,exam:yds-yokdil,school-work
+b2-category,CATEGORY,C,STARTS,noun,"benzer özellikteki şeylerin oluşturduğu grup, sınıf",Put the words into the correct category.,Kelimeleri doğru gruba yerleştir.,2,exam:yds-yokdil,school-work
+b2-classify,CLASSIFY,C,STARTS,verb,ortak özelliklerine göre gruplara ayırmak,Biologists classify animals by their features.,Biyologlar hayvanları özelliklerine göre sınıflandırır.,3,exam:yds-yokdil,school-work
+b2-component,COMPONENT,C,STARTS,noun,bir bütünü oluşturan parçalardan biri,Trust is a key component of any friendship.,Güven her arkadaşlığın temel bir parçasıdır.,3,exam:yds-yokdil,school-work
+b2-comprehend,COMPREHEND,C,STARTS,verb,bir şeyi tam olarak kavramak,It is hard to comprehend the size of the universe.,Evrenin büyüklüğünü kavramak zor.,4,exam:yds-yokdil,school-work
+b2-concept,CONCEPT,C,STARTS,noun,"soyut düşünce, kavram",The concept of time is hard to explain.,Zaman kavramını açıklamak zordur.,2,exam:yds-yokdil,school-work
+b2-decade,DECADE,D,STARTS,noun,on yıllık dönem,The city has grown a lot over the last decade.,Şehir son on yılda çok büyüdü.,2,exam:yds-yokdil,school-work
+b2-definite,DEFINITE,D,STARTS,adj,"kesin, belirli, şüphe götürmez",We need a definite answer by Monday.,Pazartesiye kadar kesin bir cevaba ihtiyacımız var.,3,exam:yds-yokdil,school-work
+b2-dimension,DIMENSION,D,STARTS,noun,"ölçü, boyut; bir konunun yönü",The problem has a moral dimension.,Sorunun ahlaki bir boyutu var.,3,exam:yds-yokdil,school-work
+b2-distinction,DISTINCTION,D,STARTS,noun,"iki şey arasındaki belirgin fark, ayrım",Make a distinction between facts and opinions.,Gerçeklerle görüşler arasında ayrım yap.,3,exam:yds-yokdil,school-work
+b2-efficient,EFFICIENT,E,STARTS,adj,"az kaynakla çok iş çıkaran, verimli",LED bulbs are more efficient than old ones.,LED ampuller eskilerinden daha verimlidir.,3,exam:yds-yokdil,school-work
+b2-instance,INSTANCE,I,STARTS,noun,"bir şeyin tek bir örneği, vaka","In this instance, the rule does not apply.",Bu örnekte kural geçerli değil.,3,exam:yds-yokdil,school-work
+b2-input,INPUT,I,STARTS,noun,"bir sürece verilen bilgi, emek ya da katkı",We would welcome your input on the report.,Rapor hakkındaki katkılarınızı memnuniyetle karşılarız.,3,exam:yds-yokdil,school-work
+b2-mechanism,MECHANISM,M,STARTS,noun,"bir şeyin işleyiş düzeni, mekanizma",Scientists still study the mechanism of memory.,Bilim insanları hâlâ hafızanın işleyişini inceliyor.,4,exam:yds-yokdil,school-work
+b2-multiple,MULTIPLE,M,STARTS,adj,"birden çok, çok sayıda",The patient had multiple injuries.,Hastanın birden fazla yarası vardı.,2,exam:yds-yokdil,school-work
+b2-parallel,PARALLEL,P,STARTS,adj,aralarında eşit uzaklık olan; benzer,Draw two parallel lines on the page.,Sayfaya iki paralel çizgi çiz.,3,exam:yds-yokdil,school-work
+b2-parameter,PARAMETER,P,STARTS,noun,bir şeyin sınırlarını belirleyen etken,Each test has one fixed parameter: time.,Her testin sabit bir parametresi vardır: zaman.,4,exam:yds-yokdil,school-work
+b2-passive,PASSIVE,P,STARTS,adj,"edilgen, eylemsiz",Watching TV is a passive activity.,Televizyon izlemek pasif bir etkinliktir.,3,exam:yds-yokdil,school-work
+b2-possess,POSSESS,P,STARTS,verb,sahip olmak (resmî),Few people possess such talent.,Pek az insan böyle bir yeteneğe sahiptir.,3,exam:yds-yokdil,school-work
+b2-procedure,PROCEDURE,P,STARTS,noun,bir işin resmî ya da belirli yapılış yolu,Follow the safety procedure carefully.,Güvenlik prosedürünü dikkatle izle.,3,exam:yds-yokdil,school-work
+b2-ratio,RATIO,R,STARTS,noun,iki miktar arasındaki oran,The ratio of boys to girls is two to one.,Erkeklerin kızlara oranı ikiye bir.,3,exam:yds-yokdil,school-work
+b2-rational,RATIONAL,R,STARTS,adj,akla ve mantığa dayanan,There must be a rational explanation.,Mantıklı bir açıklaması olmalı.,3,exam:yds-yokdil,school-work
+b2-status,STATUS,S,STARTS,noun,toplumdaki konum; bir şeyin o anki durumu,Doctors enjoy high status in society.,Doktorlar toplumda yüksek bir konuma sahiptir.,3,exam:yds-yokdil,school-work
+b2-transition,TRANSITION,T,STARTS,noun,bir durumdan ötekine geçiş,The transition from school to work is hard for many.,Okuldan işe geçiş pek çok kişi için zordur.,3,exam:yds-yokdil,school-work
+b2-minimal,MINIMAL,M,STARTS,adj,"olabilecek en az, asgari",The storm caused minimal damage.,Fırtına çok az hasara yol açtı.,3,exam:yds-yokdil,school-work
+b2-integral,INTEGRAL,I,STARTS,adj,bir bütünün ayrılmaz parçası olan,Music is an integral part of the course.,Müzik dersin ayrılmaz bir parçasıdır.,4,exam:yds-yokdil,school-work
+b2-inference,INFERENCE,I,STARTS,noun,"eldeki bilgiden çıkarılan sonuç, çıkarım",What inference can we draw from these figures?,Bu rakamlardan ne sonuç çıkarabiliriz?,4,exam:yds-yokdil,school-work
+b2-acid,ACID,A,STARTS,noun,"limon suyu gibi ekşi, aşındırıcı kimyasal madde",Some acid can burn through metal.,Bazı asitler metali aşındırabilir.,2,exam:yds-yokdil,school-work
+b2-adaptation,ADAPTATION,A,STARTS,noun,bir canlının çevresine uyum sağlama süreci,Thick fur is an adaptation to cold climates.,Kalın kürk soğuk iklimlere bir uyumdur.,3,exam:yds-yokdil,school-work
+b2-accumulation,ACCUMULATION,A,STARTS,noun,"zamanla birikme, yığılma",The accumulation of dust can damage machines.,Toz birikmesi makinelere zarar verebilir.,4,exam:yds-yokdil,school-work
+b2-composition,COMPOSITION,C,STARTS,noun,bir şeyi oluşturan parçalar ve bunların oranı,Scientists studied the composition of the soil.,Bilim insanları toprağın bileşimini inceledi.,3,exam:yds-yokdil,school-work
+b2-density,DENSITY,D,STARTS,noun,"birim hacimdeki kütle, yoğunluk",Water has a higher density than oil.,Suyun yoğunluğu yağınkinden fazladır.,3,exam:yds-yokdil,school-work
+b2-dense,DENSE,D,STARTS,adj,"sık, yoğun; içinden geçilmesi zor",The plane could not land in the dense fog.,Uçak yoğun siste inemedi.,3,exam:yds-yokdil,school-work
+b2-enzyme,ENZYME,Z,CONTAINS,noun,vücuttaki kimyasal tepkimeleri hızlandıran protein,This enzyme helps the body digest sugar.,Bu enzim vücudun şekeri sindirmesine yardım eder.,4,exam:yds-yokdil,school-work
+b2-gene,GENE,G,STARTS,noun,kalıtsal özellikleri taşıyan DNA birimi,Eye colour is controlled by more than one gene.,Göz rengini birden fazla gen belirler.,3,exam:yds-yokdil,school-work
+b2-genetic,GENETIC,G,STARTS,adj,genlerle ve kalıtımla ilgili,The illness has a genetic cause.,Hastalığın genetik bir nedeni var.,3,exam:yds-yokdil,school-work
+b2-geology,GEOLOGY,Y,CONTAINS,noun,yerkürenin yapısını inceleyen bilim,She studied geology at university.,Üniversitede jeoloji okudu.,3,exam:yds-yokdil,school-work
+b2-hormone,HORMONE,H,STARTS,noun,vücut işlevlerini düzenleyen kimyasal ileti maddesi,Insulin is a hormone made in the pancreas.,İnsülin pankreasta üretilen bir hormondur.,3,exam:yds-yokdil,school-work
+b2-molecule,MOLECULE,M,STARTS,noun,atomların birleşmesiyle oluşan en küçük madde birimi,A water molecule has two hydrogen atoms.,Bir su molekülünde iki hidrojen atomu vardır.,3,exam:yds-yokdil,school-work
+b2-mutation,MUTATION,M,STARTS,noun,genlerde kendiliğinden ya da dış etkiyle oluşan değişim,A single mutation can change how a virus spreads.,Tek bir mutasyon bir virüsün yayılma biçimini değiştirebilir.,4,exam:yds-yokdil,school-work
+b2-neuron,NEURON,N,STARTS,noun,beyindeki ve sinirlerdeki uyarıyı ileten hücre,Each neuron sends signals to thousands of others.,Her sinir hücresi binlercesine sinyal gönderir.,4,exam:yds-yokdil,school-work
+b2-organism,ORGANISM,O,STARTS,noun,"bitki, hayvan ya da mikrop gibi tek bir canlı",A bacterium is a tiny organism with one cell.,Bakteri tek hücreli küçük bir canlıdır.,3,exam:yds-yokdil,school-work
+b2-particle,PARTICLE,P,STARTS,noun,"maddenin çok küçük parçacığı, zerre",A dust particle is smaller than a hair.,Bir toz zerresi bir saç telinden daha küçüktür.,3,exam:yds-yokdil,school-work
+b2-receptor,RECEPTOR,R,STARTS,noun,vücutta uyarıyı ya da maddeyi algılayan yapı,Pain receptor cells are found all over the skin.,Ağrı alıcı hücreleri derinin her yerinde bulunur.,5,exam:yds-yokdil,school-work
+b2-reproduce,REPRODUCE,R,STARTS,verb,"üremek, çoğalmak; aynısını yeniden yapmak",Rabbits reproduce very quickly.,Tavşanlar çok hızlı ürer.,3,exam:yds-yokdil,school-work
+b2-residue,RESIDUE,R,STARTS,noun,"bir işlemden sonra geriye kalan madde, kalıntı",Wash fruit to remove pesticide residue.,Tarım ilacı kalıntısını gidermek için meyveyi yıka.,4,exam:yds-yokdil,school-work
+b2-sediment,SEDIMENT,S,STARTS,noun,sıvının dibine çöken tortu,Rivers carry sediment to the sea.,Nehirler tortuyu denize taşır.,4,exam:yds-yokdil,school-work
+b2-soluble,SOLUBLE,S,STARTS,adj,bir sıvıda çözünebilen,Sugar is soluble in water.,Şeker suda çözünür.,4,exam:yds-yokdil,school-work
+b2-specimen,SPECIMEN,S,STARTS,noun,incelenmek üzere alınan örnek,The lab tested a blood specimen.,Laboratuvar bir kan örneğini test etti.,4,exam:yds-yokdil,school-work
+b2-stimulus,STIMULUS,S,STARTS,noun,bir tepkiye yol açan uyaran,Light is a strong stimulus for the eye.,Işık göz için güçlü bir uyarandır.,4,exam:yds-yokdil,school-work
+b2-substance,SUBSTANCE,S,STARTS,noun,belirli özellikleri olan madde,Lead is a dangerous substance.,Kurşun tehlikeli bir maddedir.,3,exam:yds-yokdil,school-work
+b2-tissue,TISSUE,T,STARTS,noun,benzer hücrelerden oluşan vücut dokusu,Muscle tissue repairs itself after exercise.,Kas dokusu egzersizden sonra kendini onarır.,3,exam:yds-yokdil,school-work
+b2-toxin,TOXIN,X,CONTAINS,noun,canlıların ürettiği zehirli madde,Some mushrooms contain a deadly toxin.,Bazı mantarlar ölümcül bir zehir içerir.,4,exam:yds-yokdil,school-work
+b2-innate,INNATE,I,STARTS,adj,"doğuştan gelen, sonradan öğrenilmeyen",Babies have an innate fear of falling.,Bebeklerin doğuştan gelen bir düşme korkusu vardır.,4,exam:yds-yokdil,school-work
+b2-hereditary,HEREDITARY,Y,CONTAINS,adj,"anne babadan çocuğa geçen, kalıtsal",Colour blindness is often hereditary.,Renk körlüğü çoğunlukla kalıtsaldır.,4,exam:yds-yokdil,school-work
+b2-fossil-fuel,FOSSIL FUEL,F,STARTS,phrase,kömür ve petrol gibi milyonlarca yılda oluşan yakıt,Burning fossil fuel adds carbon to the air.,Fosil yakıt yakmak havaya karbon ekler.,3,exam:yds-yokdil,school-work
+b2-predator,PREDATOR,P,STARTS,noun,başka hayvanları avlayıp yiyen hayvan,The lion is a top predator.,Aslan besin zincirinin tepesindeki avcıdır.,3,exam:yds-yokdil,school-work
+b2-archaeology,ARCHAEOLOGY,Y,CONTAINS,noun,eski uygarlıkları kalıntılardan inceleyen bilim,Göbeklitepe changed the history of archaeology.,Göbeklitepe arkeoloji tarihini değiştirdi.,4,exam:yds-yokdil,school-work
+b2-marine,MARINE,M,STARTS,adj,denizle ve denizdeki yaşamla ilgili,Plastic harms marine life.,Plastik deniz yaşamına zarar verir.,3,exam:yds-yokdil,school-work
+b2-precipitation,PRECIPITATION,P,STARTS,noun,"yağmur, kar gibi yağış",Annual precipitation here is very low.,Burada yıllık yağış çok düşüktür.,5,exam:yds-yokdil,school-work
+b2-diabetes,DIABETES,D,STARTS,noun,"kandaki şekerin yükseldiği kronik hastalık, şeker hastalığı","My grandfather has diabetes, so he avoids sugar.","Büyükbabam şeker hastası, bu yüzden şekerden uzak duruyor.",3,exam:yds-yokdil,body-health
+b2-diagnosis,DIAGNOSIS,D,STARTS,noun,"hastalığın ne olduğunun belirlenmesi, teşhis",Early diagnosis saves lives.,Erken teşhis hayat kurtarır.,3,exam:yds-yokdil,body-health
+b2-digestion,DIGESTION,D,STARTS,noun,besinlerin vücutta sindirilmesi,Fibre helps digestion.,Lif sindirime yardımcı olur.,3,exam:yds-yokdil,body-health
+b2-disease,DISEASE,D,STARTS,noun,"vücudun bir bölümünün hasta olması, hastalık",Heart disease is common in older people.,Kalp hastalığı yaşlılarda yaygındır.,2,exam:yds-yokdil,body-health
+b2-disorder,DISORDER,D,STARTS,noun,bir organın ya da zihnin işleyişindeki bozukluk,She suffers from a sleep disorder.,Uyku bozukluğu çekiyor.,3,exam:yds-yokdil,body-health
+b2-dose,DOSE,D,STARTS,noun,bir seferde alınan ilaç miktarı,Do not take more than the stated dose.,Belirtilen dozdan fazlasını alma.,3,exam:yds-yokdil,body-health
+b2-epidemic,EPIDEMIC,E,STARTS,noun,bir bölgede hızla yayılan salgın hastalık,A flu epidemic closed many schools.,Bir grip salgını pek çok okulu kapattı.,3,exam:yds-yokdil,body-health
+b2-immunity,IMMUNITY,I,STARTS,noun,"vücudun hastalığa karşı direnci, bağışıklık",Vaccines give long-term immunity.,Aşılar uzun süreli bağışıklık sağlar.,4,exam:yds-yokdil,body-health
+b2-infectious,INFECTIOUS,I,STARTS,adj,"bir kişiden diğerine geçen, bulaşıcı",Measles is highly infectious.,Kızamık son derece bulaşıcıdır.,3,exam:yds-yokdil,body-health
+b2-infant,INFANT,I,STARTS,noun,çok küçük bebek,Infant deaths have fallen sharply.,Bebek ölümleri büyük ölçüde azaldı.,3,exam:yds-yokdil,body-health
+b2-malnutrition,MALNUTRITION,M,STARTS,noun,yetersiz ya da dengesiz beslenme,Malnutrition affects millions of children.,Yetersiz beslenme milyonlarca çocuğu etkiliyor.,4,exam:yds-yokdil,body-health
+b2-metabolism,METABOLISM,M,STARTS,noun,vücuttaki enerji üretimi ve kimyasal süreçler,Exercise speeds up your metabolism.,Egzersiz metabolizmanı hızlandırır.,4,exam:yds-yokdil,body-health
+b2-obesity,OBESITY,Y,CONTAINS,noun,sağlığı tehdit edecek ölçüde kilolu olma,Childhood obesity is rising worldwide.,Çocukluk çağı obezitesi dünya çapında artıyor.,3,exam:yds-yokdil,body-health
+b2-pandemic,PANDEMIC,P,STARTS,noun,dünyanın pek çok ülkesine yayılan salgın,The pandemic changed how we work.,Pandemi çalışma biçimimizi değiştirdi.,3,exam:yds-yokdil,body-health
+b2-pathogen,PATHOGEN,P,STARTS,noun,hastalık yapan mikrop,Hand washing stops a pathogen from spreading.,El yıkamak bir hastalık etkeninin yayılmasını engeller.,5,exam:yds-yokdil,body-health
+b2-prescription,PRESCRIPTION,P,STARTS,noun,"doktorun yazdığı ilaç kâğıdı, reçete",You need a prescription for this medicine.,Bu ilaç için reçete gerekiyor.,3,exam:yds-yokdil,body-health
+b2-practitioner,PRACTITIONER,P,STARTS,noun,hekim gibi bir mesleği icra eden kişi,See a medical practitioner if the pain continues.,Ağrı sürerse bir hekime görün.,4,exam:yds-yokdil,body-health
+b2-premature,PREMATURE,P,STARTS,adj,"olması gereken zamandan önce olan, erken",The baby was born premature.,Bebek erken doğdu.,4,exam:yds-yokdil,body-health
+b2-prevalence,PREVALENCE,P,STARTS,noun,bir hastalığın ya da durumun yaygınlığı,The prevalence of asthma is higher in cities.,Astımın yaygınlığı şehirlerde daha fazladır.,5,exam:yds-yokdil,body-health
+b2-respiratory,RESPIRATORY,Y,CONTAINS,adj,solunumla ilgili,Smoking causes respiratory problems.,Sigara solunum sorunlarına yol açar.,4,exam:yds-yokdil,body-health
+b2-symptom,SYMPTOM,Y,CONTAINS,noun,bir hastalığı belli eden belirti,A high fever is a common symptom of flu.,Yüksek ateş gribin yaygın bir belirtisidir.,3,exam:yds-yokdil,body-health
+b2-syndrome,SYNDROME,Y,CONTAINS,noun,"birlikte görülen belirtiler bütünü, sendrom",Burnout syndrome is common among nurses.,Tükenmişlik sendromu hemşireler arasında yaygındır.,4,exam:yds-yokdil,body-health
+b2-therapy,THERAPY,Y,CONTAINS,noun,"bir hastalığı ya da sorunu iyileştirme yöntemi, tedavi",She is having therapy for her back pain.,Sırt ağrısı için fizik tedavi görüyor.,3,exam:yds-yokdil,body-health
+b2-tumour,TUMOUR,T,STARTS,noun,hücrelerin kontrolsüz çoğalmasıyla oluşan kitle,The doctors removed the tumour.,Doktorlar tümörü aldı.,4,exam:yds-yokdil,body-health
+b2-vaccination,VACCINATION,V,STARTS,noun,aşı yapma ya da aşılanma,Vaccination is free for children.,Çocuklar için aşılama ücretsizdir.,3,exam:yds-yokdil,body-health
+b2-depression,DEPRESSION,D,STARTS,noun,uzun süren derin keder ve isteksizlik hâli,Depression is a serious illness.,Depresyon ciddi bir hastalıktır.,3,exam:yds-yokdil,body-health
+b2-cure,CURE,C,STARTS,noun,bir hastalığı tamamen iyileştiren çare,There is still no cure for the common cold.,Soğuk algınlığının hâlâ bir çaresi yok.,2,exam:yds-yokdil,body-health
+b2-longevity,LONGEVITY,L,STARTS,noun,uzun ömürlülük,Diet plays a role in longevity.,Beslenme uzun ömürde rol oynar.,5,exam:yds-yokdil,body-health
+b2-sanitation,SANITATION,S,STARTS,noun,temiz su ve atık sistemleriyle sağlanan sağlık koşulları,Poor sanitation spreads illness.,Kötü sağlık koşulları hastalık yayar.,5,exam:yds-yokdil,body-health
+b2-deficiency,DEFICIENCY,Y,CONTAINS,noun,vücutta bir maddenin eksikliği,Vitamin D deficiency is common in winter.,D vitamini eksikliği kışın yaygındır.,4,exam:yds-yokdil,body-health
+b2-circulation,CIRCULATION,C,STARTS,noun,kanın vücutta dolaşımı,Walking improves circulation.,Yürümek kan dolaşımını iyileştirir.,3,exam:yds-yokdil,body-health
+b2-donor,DONOR,D,STARTS,noun,kan ya da organ bağışlayan kişi,He became an organ donor after the accident.,Kazadan sonra organ bağışçısı oldu.,3,exam:yds-yokdil,body-health
+b2-susceptible,SUSCEPTIBLE,S,STARTS,adj,"bir şeyden kolayca etkilenen, yatkın",Old people are more susceptible to infection.,Yaşlılar enfeksiyona daha yatkındır.,5,exam:yds-yokdil,body-health
+b2-resistance,RESISTANCE,R,STARTS,noun,"direnç, karşı koyma",Bacteria can develop resistance to antibiotics.,Bakteriler antibiyotiklere direnç geliştirebilir.,4,exam:yds-yokdil,body-health
+b2-emission,EMISSION,E,STARTS,noun,"havaya salınan gaz ya da madde, salım",Cars are a major source of carbon emission.,Arabalar karbon salımının önemli bir kaynağıdır.,3,exam:yds-yokdil,school-work
+b2-renewable,RENEWABLE,R,STARTS,adj,"tükenmeyen, yenilenebilir",Solar power is a renewable source of energy.,Güneş enerjisi yenilenebilir bir enerji kaynağıdır.,3,exam:yds-yokdil,school-work
+b2-sustainable,SUSTAINABLE,S,STARTS,adj,doğaya zarar vermeden uzun süre devam ettirilebilen,We need sustainable ways of farming.,Sürdürülebilir tarım yöntemlerine ihtiyacımız var.,3,exam:yds-yokdil,school-work
+b2-conservation,CONSERVATION,C,STARTS,noun,doğal kaynakları ve canlıları koruma,The park was created for wildlife conservation.,Park yaban hayatını korumak için kuruldu.,3,exam:yds-yokdil,school-work
+b2-depletion,DEPLETION,D,STARTS,noun,"bir kaynağın tükenmesi, azalması",The depletion of fish stocks worries scientists.,Balık stoklarının tükenmesi bilim insanlarını kaygılandırıyor.,4,exam:yds-yokdil,school-work
+b2-erosion,EROSION,E,STARTS,noun,toprağın ya da kayanın su ve rüzgârla aşınması,Trees protect the soil from erosion.,Ağaçlar toprağı aşınmaya karşı korur.,3,exam:yds-yokdil,school-work
+b2-landfill,LANDFILL,L,STARTS,noun,"çöplerin gömüldüğü alan, çöp döküm sahası",Most plastic ends up in a landfill.,Plastiğin çoğu bir çöp sahasında son bulur.,4,exam:yds-yokdil,school-work
+b2-pollutant,POLLUTANT,P,STARTS,noun,"havayı, suyu ya da toprağı kirleten madde",Each pollutant in the river harms fish.,Nehirdeki her kirletici balıklara zarar verir.,4,exam:yds-yokdil,school-work
+b2-irrigation,IRRIGATION,I,STARTS,noun,tarlaların yapay yollarla sulanması,Irrigation turned the dry plain into farmland.,Sulama kurak ovayı tarım arazisine çevirdi.,4,exam:yds-yokdil,school-work
+b2-overpopulation,OVERPOPULATION,O,STARTS,noun,bir yerde kaldırabileceğinden fazla insan yaşaması,Overpopulation puts pressure on water supplies.,Aşırı nüfus su kaynakları üzerinde baskı yaratır.,4,exam:yds-yokdil,school-work
+b2-urbanization,URBANIZATION,Z,CONTAINS,noun,nüfusun kırdan kente göçüyle şehirlerin büyümesi,Rapid urbanization changed the coastline.,Hızlı kentleşme kıyı şeridini değiştirdi.,4,exam:yds-yokdil,school-work
+b2-contamination,CONTAMINATION,C,STARTS,noun,zararlı bir maddeyle kirlenme,The water showed signs of contamination.,Suda kirlenme belirtileri vardı.,4,exam:yds-yokdil,school-work
+b2-arid,ARID,A,STARTS,adj,"çok az yağış alan, kurak",Cacti grow well in arid regions.,Kaktüsler kurak bölgelerde iyi yetişir.,4,exam:yds-yokdil,school-work
+b2-abundant,ABUNDANT,A,STARTS,adj,bol miktarda bulunan,Fish were once abundant in this lake.,Bu gölde bir zamanlar bol balık vardı.,3,exam:yds-yokdil,school-work
+b2-scarcity,SCARCITY,S,STARTS,noun,"kıtlık, azlık",Water scarcity is a growing problem in the region.,Su kıtlığı bölgede giderek büyüyen bir sorundur.,4,exam:yds-yokdil,school-work
+b2-ecological,ECOLOGICAL,E,STARTS,adj,canlılarla çevreleri arasındaki ilişkiyle ilgili,The oil spill was an ecological disaster.,Petrol sızıntısı ekolojik bir felaketti.,3,exam:yds-yokdil,school-work
+b2-endanger,ENDANGER,E,STARTS,verb,tehlikeye atmak,New roads endanger rare plants.,Yeni yollar nadir bitkileri tehlikeye atıyor.,3,exam:yds-yokdil,school-work
+b2-deforestation,DEFORESTATION,D,STARTS,noun,ormanların kesilerek yok edilmesi,Deforestation destroys the homes of many animals.,Orman tahribatı pek çok hayvanın yuvasını yok ediyor.,4,exam:yds-yokdil,school-work
+b2-greenhouse-gas,GREENHOUSE GAS,G,STARTS,phrase,atmosferde ısıyı tutan gaz,Methane is a powerful greenhouse gas.,Metan güçlü bir sera gazıdır.,3,exam:yds-yokdil,school-work
+b2-biodegradable,BIODEGRADABLE,B,STARTS,adj,doğada bakterilerle çözünüp yok olabilen,These bags are biodegradable.,Bu poşetler doğada çözünebilir.,4,exam:yds-yokdil,school-work
+b2-glacier,GLACIER,G,STARTS,noun,dağlarda yavaşça hareket eden büyük buz kütlesi,The glacier has shrunk by half in fifty years.,Buzul elli yılda yarı yarıya küçüldü.,3,exam:yds-yokdil,school-work
+b2-extinction,EXTINCTION,X,CONTAINS,noun,bir türün tamamen yok olması,Many frogs face extinction.,Pek çok kurbağa türü yok olma tehlikesiyle karşı karşıya.,3,exam:yds-yokdil,school-work
+b2-expenditure,EXPENDITURE,E,STARTS,noun,bir kurumun ya da devletin yaptığı harcama,Public expenditure on health has risen.,Sağlığa yapılan kamu harcaması arttı.,4,exam:yds-yokdil,business
+b2-fiscal,FISCAL,F,STARTS,adj,"devlet gelirleri ve vergiyle ilgili, mali",The new fiscal year starts in January.,Yeni mali yıl ocakta başlıyor.,4,exam:yds-yokdil,business
+b2-monetary,MONETARY,M,STARTS,adj,parayla ve para politikasıyla ilgili,The central bank sets monetary policy.,Para politikasını merkez bankası belirler.,4,exam:yds-yokdil,business
+b2-gross,GROSS,G,STARTS,adj,"vergi ve giderler düşülmeden önceki, brüt",Her gross salary is higher than her take-home pay.,Brüt maaşı eline geçenden daha yüksek.,3,exam:yds-yokdil,business
+b2-surplus,SURPLUS,S,STARTS,noun,"ihtiyaçtan fazla olan miktar, fazlalık",The country has a trade surplus.,Ülkenin dış ticaret fazlası var.,4,exam:yds-yokdil,business
+b2-tariff,TARIFF,T,STARTS,noun,ithal mallara uygulanan gümrük vergisi,The government raised the tariff on steel.,Hükümet çelik üzerindeki gümrük vergisini artırdı.,4,exam:yds-yokdil,business
+b2-corporate,CORPORATE,C,STARTS,adj,"büyük şirketlerle ilgili, kurumsal",He left his corporate job to open a café.,Kafe açmak için kurumsal işinden ayrıldı.,3,exam:yds-yokdil,business
+b2-sector,SECTOR,S,STARTS,noun,"ekonominin belirli bir kolu, sektör",Tourism is a key sector in Antalya.,Turizm Antalya'da kilit bir sektördür.,3,exam:yds-yokdil,business
+b2-affluent,AFFLUENT,A,STARTS,adj,"varlıklı, zengin",They live in an affluent suburb.,Varlıklı bir banliyöde yaşıyorlar.,4,exam:yds-yokdil,business
+b2-prosperity,PROSPERITY,P,STARTS,noun,"refah, bolluk ve zenginlik içinde olma",Trade brought prosperity to the port city.,Ticaret liman kentine refah getirdi.,4,exam:yds-yokdil,business
+b2-fluctuation,FLUCTUATION,F,STARTS,noun,"sürekli inip çıkma, dalgalanma",Fluctuation in oil prices hurts airlines.,Petrol fiyatlarındaki dalgalanma havayollarına zarar verir.,4,exam:yds-yokdil,business
+b2-funding,FUNDING,F,STARTS,noun,"bir projeye sağlanan para, fon",The project lost its funding last year.,Proje geçen yıl fonunu kaybetti.,3,exam:yds-yokdil,business
+b2-utility,UTILITY,U,STARTS,noun,"elektrik, su, doğalgaz gibi temel hizmet",Utility bills go up in winter.,Faturalar kışın artar.,4,exam:yds-yokdil,business
+b2-deposit,DEPOSIT,D,STARTS,noun,bankaya yatırılan para; kaparo,You need to pay a deposit to rent the flat.,Daireyi kiralamak için depozito ödemen gerekiyor.,3,exam:yds-yokdil,business
+b2-labour,LABOUR,L,STARTS,noun,"bedensel ya da zihinsel iş gücü, emek",The factory moved abroad to find cheap labour.,Fabrika ucuz iş gücü bulmak için yurt dışına taşındı.,3,exam:yds-yokdil,business
+b2-agriculture,AGRICULTURE,A,STARTS,noun,"toprak işleme ve hayvancılık, tarım",Agriculture employs a third of the population.,Tarım nüfusun üçte birine iş sağlıyor.,3,exam:yds-yokdil,business
+b2-industrial,INDUSTRIAL,I,STARTS,adj,sanayiyle ilgili,Bursa is an industrial city.,Bursa bir sanayi kentidir.,3,exam:yds-yokdil,business
+b2-domestic,DOMESTIC,D,STARTS,adj,"ülke içi, yurt içi; evle ilgili",Domestic flights leave from Terminal 2.,İç hat uçuşları Terminal 2'den kalkar.,3,exam:yds-yokdil,business
+b2-aggregate,AGGREGATE,A,STARTS,adj,"toplam, bütün parçaların toplandığı",Aggregate demand fell during the crisis.,Kriz döneminde toplam talep düştü.,5,exam:yds-yokdil,business
+b2-consumption,CONSUMPTION,C,STARTS,noun,"tüketim, kullanılıp bitirme",Meat consumption has doubled since 1990.,Et tüketimi 1990'dan beri iki katına çıktı.,3,exam:yds-yokdil,business
+b2-consumer,CONSUMER,C,STARTS,noun,"mal ya da hizmeti satın alıp kullanan kişi, tüketici",Every consumer has the right to a refund.,Her tüketicinin para iadesi hakkı vardır.,2,exam:yds-yokdil,business
+b2-interest-rate,INTEREST RATE,I,STARTS,phrase,borç alınan para için ödenen yüzde,The bank cut its interest rate to two percent.,Banka faiz oranını yüzde ikiye düşürdü.,3,exam:yds-yokdil,business
+b2-stock-market,STOCK MARKET,S,STARTS,phrase,"şirket hisselerinin alınıp satıldığı piyasa, borsa",The stock market fell sharply on Monday.,Borsa pazartesi sert düştü.,3,exam:yds-yokdil,business
+b2-globalization,GLOBALIZATION,Z,CONTAINS,noun,dünya ekonomilerinin ve kültürlerinin bütünleşmesi,Globalization has created winners and losers.,Küreselleşme kazananlar ve kaybedenler yarattı.,4,exam:yds-yokdil,business
+b2-wholesale,WHOLESALE,W,STARTS,adj,perakendeciye büyük miktarda yapılan satışla ilgili,Shops buy goods at wholesale prices.,Dükkânlar malları toptan fiyata alır.,4,exam:yds-yokdil,business
+b2-import,IMPORT,I,STARTS,verb,"yurt dışından mal getirmek, ithal etmek",Türkiye has to import most of its gas.,Türkiye gazının çoğunu ithal etmek zorunda.,2,exam:yds-yokdil,business
+b2-prosecute,PROSECUTE,P,STARTS,verb,"birini mahkemede resmî olarak suçlamak, kovuşturmak",The store will prosecute anyone who steals.,Mağaza hırsızlık yapan herkesi dava edecek.,4,exam:yds-yokdil,school-work
+b2-plaintiff,PLAINTIFF,P,STARTS,noun,"mahkemede dava açan taraf, davacı",The plaintiff asked for compensation.,Davacı tazminat talep etti.,5,exam:yds-yokdil,school-work
+b2-litigation,LITIGATION,L,STARTS,noun,"bir anlaşmazlığın mahkemede görülmesi, dava süreci",The case ended in years of litigation.,Dava yıllar süren bir yargı sürecine dönüştü.,5,exam:yds-yokdil,school-work
+b2-clause,CLAUSE,C,STARTS,noun,"bir sözleşme ya da yasadaki madde, hüküm",Read every clause before you sign.,İmzalamadan önce her maddeyi oku.,4,exam:yds-yokdil,school-work
+b2-consent,CONSENT,C,STARTS,noun,"bir şeye resmî izin verme, onay",Doctors need your consent before the operation.,Doktorların ameliyattan önce onayına ihtiyacı var.,3,exam:yds-yokdil,school-work
+b2-constitution,CONSTITUTION,C,STARTS,noun,"bir devletin temel yasası, anayasa",The constitution protects free speech.,Anayasa ifade özgürlüğünü korur.,3,exam:yds-yokdil,school-work
+b2-democracy,DEMOCRACY,Y,CONTAINS,noun,halkın seçtiği temsilcilerle yönetilen sistem,"In a democracy, people choose their leaders.",Demokraside halk liderlerini seçer.,2,exam:yds-yokdil,school-work
+b2-doctrine,DOCTRINE,D,STARTS,noun,"bir grubun benimsediği ilkeler bütünü, öğreti",The party changed its economic doctrine.,Parti ekonomik öğretisini değiştirdi.,5,exam:yds-yokdil,school-work
+b2-federal,FEDERAL,F,STARTS,adj,eyaletlerden oluşan bir devletin merkezî yönetimiyle ilgili,Germany has a federal system of government.,Almanya'nın federal bir yönetim sistemi var.,3,exam:yds-yokdil,school-work
+b2-treaty,TREATY,Y,CONTAINS,noun,devletler arasında imzalanan resmî antlaşma,The Treaty of Lausanne was signed in 1923.,Lozan Antlaşması 1923'te imzalandı.,3,exam:yds-yokdil,school-work
+b2-reform,REFORM,R,STARTS,noun,bir sistemi iyileştirmek için yapılan değişiklik,The government promised tax reform.,Hükümet vergi reformu sözü verdi.,3,exam:yds-yokdil,school-work
+b2-penalty,PENALTY,Y,CONTAINS,noun,kurala ya da yasaya uymamanın cezası,The penalty for late payment is ten percent.,Geç ödemenin cezası yüzde on.,3,exam:yds-yokdil,school-work
+b2-impose,IMPOSE,I,STARTS,verb,"bir kuralı, vergiyi ya da cezayı zorla uygulamak",The city will impose a fine on noisy bars.,Belediye gürültülü barlara para cezası uygulayacak.,3,exam:yds-yokdil,school-work
+b2-prohibit,PROHIBIT,P,STARTS,verb,yasayla yasaklamak,The law will prohibit smoking in cars with children.,Yasa çocuklu araçlarda sigara içmeyi yasaklayacak.,4,exam:yds-yokdil,school-work
+b2-declare,DECLARE,D,STARTS,verb,"resmî olarak ilan etmek, açıklamak",The country will declare its independence.,Ülke bağımsızlığını ilan edecek.,3,exam:yds-yokdil,school-work
+b2-eligible,ELIGIBLE,E,STARTS,adj,bir hakka ya da göreve sahip olabilecek koşulları taşıyan,You are eligible to vote at eighteen.,On sekiz yaşında oy kullanma hakkın olur.,4,exam:yds-yokdil,school-work
+b2-regulate,REGULATE,R,STARTS,verb,kurallarla düzenlemek ve denetlemek,Agencies regulate the use of drones closely.,Kurumlar insansız hava araçlarının kullanımını yakından denetler.,4,exam:yds-yokdil,school-work
+b2-regulation,REGULATION,R,STARTS,noun,"resmî kural, yönetmelik",The new regulation applies to all restaurants.,Yeni yönetmelik bütün restoranlar için geçerli.,3,exam:yds-yokdil,school-work
+b2-territory,TERRITORY,Y,CONTAINS,noun,bir devletin egemenliğindeki toprak,The island is Greek territory.,Ada Yunan toprağıdır.,3,exam:yds-yokdil,school-work
+b2-refugee,REFUGEE,R,STARTS,noun,"savaş ya da baskı yüzünden ülkesinden kaçan kişi, mülteci",The camp gives shelter to every refugee.,Kamp her mülteciye barınak sağlıyor.,3,exam:yds-yokdil,school-work
+b2-immigration,IMMIGRATION,I,STARTS,noun,"başka bir ülkeye yerleşmek için gelme, göç",Immigration laws became stricter.,Göç yasaları sıkılaştı.,3,exam:yds-yokdil,school-work
+b2-civil,CIVIL,C,STARTS,adj,vatandaşlarla ilgili; askerî olmayan,Civil servants asked for higher wages.,Devlet memurları daha yüksek maaş istedi.,3,exam:yds-yokdil,school-work
+b2-assembly,ASSEMBLY,Y,CONTAINS,noun,yasa yapan seçilmiş meclis; toplantı,The national assembly met to discuss the budget.,Millet meclisi bütçeyi görüşmek için toplandı.,3,exam:yds-yokdil,school-work
+b2-representative,REPRESENTATIVE,R,STARTS,noun,"bir grup adına konuşan ya da karar veren kişi, temsilci",Each class elects a representative.,Her sınıf bir temsilci seçer.,3,exam:yds-yokdil,school-work
+b2-conviction,CONVICTION,C,STARTS,noun,mahkûmiyet kararı; güçlü inanç,He has no earlier conviction.,Daha önce hiç mahkûmiyeti yok.,4,exam:yds-yokdil,school-work
+b2-human-rights,HUMAN RIGHTS,H,STARTS,phrase,her insanın doğuştan sahip olduğu temel haklar,Freedom of speech is one of our human rights.,İfade özgürlüğü temel insan haklarımızdan biridir.,3,exam:yds-yokdil,school-work
+b2-voter,VOTER,V,STARTS,noun,"seçimde oy kullanan kişi, seçmen",Every voter must show an ID card.,Her seçmen kimlik kartı göstermeli.,2,exam:yds-yokdil,school-work
+b2-coup,COUP,C,STARTS,noun,"yönetimi zorla ele geçirme girişimi, darbe",The army tried to stage a coup.,Ordu bir darbe yapmaya kalkıştı.,4,exam:yds-yokdil,school-work
+b2-demographic,DEMOGRAPHIC,D,STARTS,adj,nüfusun yapısı ve istatistikleriyle ilgili,Japan faces serious demographic change.,Japonya ciddi bir nüfus değişimiyle karşı karşıya.,4,exam:yds-yokdil,school-work
+b2-ethnic,ETHNIC,E,STARTS,adj,"ortak soy, dil ya da kültürle ilgili, etnik",The city is home to many ethnic groups.,Şehir pek çok etnik gruba ev sahipliği yapıyor.,3,exam:yds-yokdil,school-work
+b2-ideology,IDEOLOGY,Y,CONTAINS,noun,bir grubun siyasi ya da toplumsal düşünce sistemi,The two parties share the same ideology.,İki parti aynı ideolojiyi paylaşıyor.,4,exam:yds-yokdil,school-work
+b2-migration,MIGRATION,M,STARTS,noun,insanların ya da hayvanların bir yerden başka yere göçü,Bird migration starts in autumn.,Kuş göçü sonbaharda başlar.,3,exam:yds-yokdil,school-work
+b2-segregation,SEGREGATION,S,STARTS,noun,insanları ırk ya da dine göre ayırma,Segregation in schools ended in the 1950s.,Okullardaki ayrımcılık 1950'lerde sona erdi.,5,exam:yds-yokdil,school-work
+b2-discrimination,DISCRIMINATION,D,STARTS,noun,"bir gruba haksız ve farklı davranma, ayrımcılık",The law bans discrimination at work.,Yasa iş yerinde ayrımcılığı yasaklıyor.,4,exam:yds-yokdil,school-work
+b2-peasant,PEASANT,P,STARTS,noun,eski dönemlerde toprak işleyen yoksul köylü,The peasant worked on the lord's land.,Köylü ağanın toprağında çalışırdı.,4,exam:yds-yokdil,school-work
+b2-empire,EMPIRE,E,STARTS,noun,"bir hükümdarın yönettiği çok sayıda ülke, imparatorluk",The Ottoman Empire lasted six centuries.,Osmanlı İmparatorluğu altı yüzyıl sürdü.,3,exam:yds-yokdil,school-work
+b2-era,ERA,E,STARTS,noun,"belirli özellikleri olan tarihsel dönem, çağ",We live in the digital era.,Dijital çağda yaşıyoruz.,3,exam:yds-yokdil,school-work
+b2-medieval,MEDIEVAL,M,STARTS,adj,Orta Çağ'a ait,The town still has its medieval walls.,Kasabanın Orta Çağ surları hâlâ duruyor.,4,exam:yds-yokdil,school-work
+b2-colony,COLONY,Y,CONTAINS,noun,"başka bir devletin yönettiği ülke ya da bölge, sömürge",India was once a British colony.,Hindistan bir zamanlar İngiliz sömürgesiydi.,3,exam:yds-yokdil,school-work
+b2-revolution,REVOLUTION,R,STARTS,noun,köklü ve hızlı değişim; devrim,The French Revolution began in 1789.,Fransız Devrimi 1789'da başladı.,3,exam:yds-yokdil,school-work
+b2-ancestor,ANCESTOR,A,STARTS,noun,"aileden gelen uzak geçmişteki kişi, ata",One ancestor of mine was a sailor from Rize.,Atalarımdan biri Rizeli bir denizciydi.,3,exam:yds-yokdil,school-work
+b2-settlement,SETTLEMENT,S,STARTS,noun,insanların yerleşip yaşadığı yer; uzlaşma,Çatalhöyük is a very old settlement.,Çatalhöyük çok eski bir yerleşim yeridir.,3,exam:yds-yokdil,school-work
+b2-inhabitant,INHABITANT,I,STARTS,noun,"bir yerde yaşayan kişi, sakin",Every inhabitant of the village knows the others.,Köyün her sakini diğerlerini tanır.,4,exam:yds-yokdil,school-work
+b2-customary,CUSTOMARY,Y,CONTAINS,adj,"geleneğe uygun, alışılmış",It is customary to remove your shoes indoors.,Evde ayakkabı çıkarmak âdettir.,4,exam:yds-yokdil,school-work
+b2-communal,COMMUNAL,C,STARTS,adj,bir topluluğun ortak kullandığı,The students share a communal kitchen.,Öğrenciler ortak bir mutfağı paylaşıyor.,4,exam:yds-yokdil,school-work
+b2-conservative,CONSERVATIVE,C,STARTS,adj,"değişime karşı olan, gelenekçi",My grandparents have conservative views.,Büyükannemlerin muhafazakâr görüşleri var.,3,exam:yds-yokdil,school-work
+b2-behavioural,BEHAVIOURAL,B,STARTS,adj,davranışla ilgili,The child has some behavioural problems.,Çocuğun bazı davranış sorunları var.,4,exam:yds-yokdil,school-work
+b2-psychological,PSYCHOLOGICAL,Y,CONTAINS,adj,zihinle ve ruh hâliyle ilgili,Bullying can cause psychological harm.,Zorbalık psikolojik zarara yol açabilir.,3,exam:yds-yokdil,school-work
+b2-perception,PERCEPTION,P,STARTS,noun,"bir şeyi algılama biçimi, algı",Social media shapes our perception of beauty.,Sosyal medya güzellik algımızı şekillendirir.,3,exam:yds-yokdil,school-work
+b2-adolescence,ADOLESCENCE,A,STARTS,noun,"çocukluk ile yetişkinlik arasındaki dönem, ergenlik",Adolescence is a time of rapid change.,Ergenlik hızlı bir değişim dönemidir.,4,exam:yds-yokdil,school-work
+b2-hostility,HOSTILITY,Y,CONTAINS,noun,"düşmanca tutum, husumet",There was open hostility between the two groups.,İki grup arasında açık bir düşmanlık vardı.,4,exam:yds-yokdil,school-work
+b2-kinship,KINSHIP,K,STARTS,noun,akrabalık bağı,Kinship ties are strong in rural areas.,Kırsal bölgelerde akrabalık bağları güçlüdür.,4,exam:yds-yokdil,school-work
+b2-gender,GENDER,G,STARTS,noun,toplumsal cinsiyet; kadın ya da erkek olma durumu,"The job is open to all, regardless of gender.","İş, cinsiyet ayrımı olmaksızın herkese açık.",3,exam:yds-yokdil,school-work
+b2-socialize,SOCIALIZE,Z,CONTAINS,verb,başkalarıyla vakit geçirip kaynaşmak,Children learn to socialize at nursery.,Çocuklar kreşte sosyalleşmeyi öğrenir.,3,exam:yds-yokdil,school-work
+b2-account-for,ACCOUNT FOR,A,STARTS,phrasal,bir şeyin nedenini açıklamak; belli bir oranını oluşturmak,Women account for half of all doctors in Türkiye.,Türkiye'de doktorların yarısını kadınlar oluşturuyor.,3,exam:yds-yokdil,phrasal-verbs
+b2-bring-about,BRING ABOUT,B,STARTS,phrasal,bir değişikliğe ya da duruma yol açmak,The internet helped bring about huge social change.,İnternet büyük bir toplumsal değişime yol açtı.,3,exam:yds-yokdil,phrasal-verbs
+b2-point-out,POINT OUT,P,STARTS,phrasal,"dikkat çekmek, belirtmek",The author is right to point out the cost.,Yazar maliyete dikkat çekmekte haklı.,3,exam:yds-yokdil,phrasal-verbs
+b2-figure-out,FIGURE OUT,F,STARTS,phrasal,uğraşarak anlamak ya da çözmek,I cannot figure out how this machine works.,Bu makinenin nasıl çalıştığını çözemiyorum.,2,exam:yds-yokdil,phrasal-verbs
+b2-lead-to,LEAD TO,L,STARTS,phrasal,sonuç olarak bir şeye yol açmak,Too little sleep can lead to poor health.,Az uyumak sağlığın bozulmasına yol açabilir.,2,exam:yds-yokdil,phrasal-verbs
+b2-result-in,RESULT IN,R,STARTS,phrasal,sonucunda bir şey doğurmak,The storm could result in power cuts.,Fırtına elektrik kesintilerine neden olabilir.,3,exam:yds-yokdil,phrasal-verbs
+b2-stem-from,STEM FROM,S,STARTS,phrasal,bir kaynaktan ya da nedenden kaynaklanmak,Many of his problems stem from childhood.,Sorunlarının çoğu çocukluğundan kaynaklanıyor.,4,exam:yds-yokdil,phrasal-verbs
+b2-consist-of,CONSIST OF,C,STARTS,phrasal,-den oluşmak,The team will consist of five experts.,Ekip beş uzmandan oluşacak.,3,exam:yds-yokdil,phrasal-verbs
+b2-depend-on,DEPEND ON,D,STARTS,phrasal,bir şeye bağlı olmak; birine güvenmek,Our plans depend on the weather.,Planlarımız havaya bağlı.,2,exam:yds-yokdil,phrasal-verbs
+b2-call-for,CALL FOR,C,STARTS,phrasal,bir şeyi açıkça talep etmek; gerektirmek,The union will call for a pay rise.,Sendika maaş artışı talep edecek.,3,exam:yds-yokdil,phrasal-verbs
+b2-phase-out,PHASE OUT,P,STARTS,phrasal,bir şeyi adım adım kullanımdan kaldırmak,The EU plans to phase out petrol cars.,AB benzinli arabaları aşamalı olarak kaldırmayı planlıyor.,4,exam:yds-yokdil,phrasal-verbs
+b2-result-from,RESULT FROM,R,STARTS,phrasal,bir nedenin sonucu olarak ortaya çıkmak,Most accidents result from human error.,Kazaların çoğu insan hatasından kaynaklanır.,3,exam:yds-yokdil,phrasal-verbs
+b2-give-rise-to,GIVE RISE TO,G,STARTS,phrasal,bir şeyin ortaya çıkmasına neden olmak,The new law may give rise to protests.,Yeni yasa protestolara yol açabilir.,4,exam:yds-yokdil,phrasal-verbs
+b2-set-aside,SET ASIDE,S,STARTS,phrasal,"bir amaç için ayırmak, bir kenara koymak",Set aside an hour a day for reading.,Okumaya günde bir saat ayır.,3,exam:yds-yokdil,phrasal-verbs
+b2-turn-into,TURN INTO,T,STARTS,phrasal,bir şeye dönüşmek ya da dönüştürmek,The old factory will turn into a museum.,Eski fabrika bir müzeye dönüşecek.,2,exam:yds-yokdil,phrasal-verbs
+b2-come-across,COME ACROSS,C,STARTS,phrasal,tesadüfen karşılaşmak ya da bulmak,I may come across old letters in the attic.,Tavan arasında eski mektuplara rastlayabilirim.,3,exam:yds-yokdil,phrasal-verbs
+b2-bring-down,BRING DOWN,B,STARTS,phrasal,"düşürmek, azaltmak; devirmek",The new policy should bring down prices.,Yeni politika fiyatları düşürmeli.,3,exam:yds-yokdil,phrasal-verbs
+b2-put-off,PUT OFF,P,STARTS,phrasal,ertelemek; birinin hevesini kaçırmak,Do not put off your homework until Sunday.,Ödevini pazara kadar erteleme.,2,exam:yds-yokdil,phrasal-verbs
+b2-give-up,GIVE UP,G,STARTS,phrasal,bir alışkanlığı ya da çabayı bırakmak,My father decided to give up smoking.,Babam sigarayı bırakmaya karar verdi.,2,exam:yds-yokdil,phrasal-verbs
+b2-point-to,POINT TO,P,STARTS,phrasal,bir şeyin kanıtı ya da işareti olmak,The data point to a rise in childhood illness.,Veriler çocukluk çağı hastalıklarında bir artışa işaret ediyor.,4,exam:yds-yokdil,phrasal-verbs
+b2-speed-up,SPEED UP,S,STARTS,phrasal,hızlandırmak,New machines will speed up production.,Yeni makineler üretimi hızlandıracak.,2,exam:yds-yokdil,phrasal-verbs
+b2-step-up,STEP UP,S,STARTS,phrasal,"bir çabayı artırmak, yoğunlaştırmak",Police will step up patrols at night.,Polis geceleri devriyeleri artıracak.,3,exam:yds-yokdil,phrasal-verbs
+b2-draw-on,DRAW ON,D,STARTS,phrasal,bilgi ya da deneyimden yararlanmak,Writers often draw on their own lives.,Yazarlar çoğunlukla kendi hayatlarından yararlanır.,4,exam:yds-yokdil,phrasal-verbs
+b2-build-on,BUILD ON,B,STARTS,phrasal,önceki bir başarının üzerine bir şey eklemek,We want to build on last year's results.,Geçen yılın sonuçlarının üzerine inşa etmek istiyoruz.,4,exam:yds-yokdil,phrasal-verbs
+b2-invest-in,INVEST IN,I,STARTS,phrasal,para ya da zaman yatırmak,Smart firms invest in training.,Akıllı şirketler eğitime yatırım yapar.,3,exam:yds-yokdil,phrasal-verbs
+b2-participate-in,PARTICIPATE IN,P,STARTS,phrasal,"bir etkinliğe katılmak, yer almak",Over two thousand students will participate in the survey.,Ankete iki binden fazla öğrenci katılacak.,3,exam:yds-yokdil,phrasal-verbs
+b2-suffer-from,SUFFER FROM,S,STARTS,phrasal,bir hastalık ya da sorun çekmek,Millions suffer from back pain.,Milyonlarca kişi sırt ağrısı çekiyor.,2,exam:yds-yokdil,phrasal-verbs
+b2-differ-from,DIFFER FROM,D,STARTS,phrasal,-den farklı olmak,British English can differ from American English.,İngiliz İngilizcesi Amerikan İngilizcesinden farklı olabilir.,3,exam:yds-yokdil,phrasal-verbs
+b2-refer-to,REFER TO,R,STARTS,phrasal,bir şeyden söz etmek; başvurmak,Please refer to the guide for details.,Ayrıntılar için lütfen kılavuza başvurun.,3,exam:yds-yokdil,phrasal-verbs
+b2-resort-to,RESORT TO,R,STARTS,phrasal,başka çare kalmayınca bir yola başvurmak,They had to resort to selling their car.,Arabalarını satmaya başvurmak zorunda kaldılar.,4,exam:yds-yokdil,phrasal-verbs
+b2-pass-on,PASS ON,P,STARTS,phrasal,"bir şeyi başkasına aktarmak, iletmek",Please pass on the news to Ali.,Lütfen haberi Ali'ye ilet.,3,exam:yds-yokdil,phrasal-verbs
+b2-weed-out,WEED OUT,W,STARTS,phrasal,istenmeyenleri ayıklamak,The test helps weed out weak candidates.,Sınav zayıf adayları elemeye yarar.,4,exam:yds-yokdil,phrasal-verbs
+b2-lay-down,LAY DOWN,L,STARTS,phrasal,kuralları resmî olarak belirlemek,The law will lay down strict limits on noise.,Yasa gürültüye sıkı sınırlar koyacak.,4,exam:yds-yokdil,phrasal-verbs
+b2-single-out,SINGLE OUT,S,STARTS,phrasal,bir grubun içinden birini ayrıca seçmek,The teacher did not want to single out any pupil.,Öğretmen hiçbir öğrenciyi ayrı tutmak istemedi.,4,exam:yds-yokdil,phrasal-verbs
+b2-in-terms-of,IN TERMS OF,I,STARTS,phrase,"bakımından, açısından","In terms of cost, the plan is a success.",Maliyet açısından plan bir başarı.,3,exam:yds-yokdil,idioms
+b2-by-means-of,BY MEANS OF,B,STARTS,phrase,"aracılığıyla, yoluyla",They crossed the river by means of a rope bridge.,Nehri bir halat köprü aracılığıyla geçtiler.,4,exam:yds-yokdil,idioms
+b2-as-opposed-to,AS OPPOSED TO,A,STARTS,phrase,"-in aksine, -e karşıt olarak",Students prefer online lessons as opposed to classroom ones.,Öğrenciler sınıf derslerinin aksine çevrim içi dersleri tercih ediyor.,4,exam:yds-yokdil,idioms
+b2-in-light-of,IN LIGHT OF,I,STARTS,phrase,"-i göz önünde bulundurarak, ışığında","In light of new evidence, the case was reopened.",Yeni kanıtlar ışığında dava yeniden açıldı.,4,exam:yds-yokdil,idioms
+b2-owing-to,OWING TO,O,STARTS,phrase,"-den dolayı, nedeniyle (resmî)","Owing to heavy snow, the school is closed.",Yoğun kar nedeniyle okul kapalı.,4,exam:yds-yokdil,idioms
+b2-provided-that,PROVIDED THAT,P,STARTS,phrase,-mek şartıyla,You can borrow the car provided that you return it today.,Bugün geri getirmen şartıyla arabayı ödünç alabilirsin.,4,exam:yds-yokdil,idioms
+b2-in-spite-of,IN SPITE OF,I,STARTS,phrase,-e rağmen,"In spite of the rain, the match went ahead.",Yağmura rağmen maç oynandı.,2,exam:yds-yokdil,idioms
+b2-at-the-expense-of,AT THE EXPENSE OF,A,STARTS,phrase,"-in zararına, pahasına",He finished early at the expense of quality.,İşi kalite pahasına erken bitirdi.,5,exam:yds-yokdil,idioms
+b2-in-favour-of,IN FAVOUR OF,I,STARTS,phrase,"-den yana, lehine",Most members voted in favour of the plan.,Üyelerin çoğu planın lehine oy kullandı.,3,exam:yds-yokdil,idioms
+b2-play-a-role,PLAY A ROLE,P,STARTS,phrase,bir şeyde payı ya da etkisi olmak,Genes play a role in many diseases.,Genlerin pek çok hastalıkta payı vardır.,3,exam:yds-yokdil,idioms
+b2-pay-attention,PAY ATTENTION,P,STARTS,phrase,dikkatini bir şeye vermek,Pay attention to the instructions.,Talimatlara dikkat et.,2,exam:yds-yokdil,idioms
+b2-take-place,TAKE PLACE,T,STARTS,phrase,"gerçekleşmek, meydana gelmek",The final will take place in Istanbul.,Final İstanbul'da gerçekleşecek.,2,exam:yds-yokdil,idioms
+b2-make-progress,MAKE PROGRESS,M,STARTS,phrase,ilerleme kaydetmek,The talks did not make progress.,Görüşmelerde ilerleme kaydedilmedi.,2,exam:yds-yokdil,idioms
+b2-meet-demand,MEET DEMAND,M,STARTS,phrase,talebi karşılamak,Farmers cannot meet demand for fresh eggs.,Çiftçiler taze yumurta talebini karşılayamıyor.,4,exam:yds-yokdil,idioms
+b2-pose-a-threat,POSE A THREAT,P,STARTS,phrase,bir tehlike oluşturmak,Rising seas pose a threat to coastal towns.,Yükselen denizler kıyı kasabaları için tehdit oluşturuyor.,4,exam:yds-yokdil,idioms
+b2-shed-light-on,SHED LIGHT ON,S,STARTS,phrase,"bir konuyu aydınlatmak, açıklığa kavuşturmak",The study may shed light on the causes of autism.,Çalışma otizmin nedenlerine ışık tutabilir.,4,exam:yds-yokdil,idioms
+b2-bear-in-mind,BEAR IN MIND,B,STARTS,phrase,"bir şeyi akılda tutmak, hesaba katmak",Bear in mind that the shop closes at six.,Dükkânın altıda kapandığını aklında tut.,3,exam:yds-yokdil,idioms
+b2-come-into-effect,COME INTO EFFECT,C,STARTS,phrase,bir yasanın ya da kuralın yürürlüğe girmesi,The new rules come into effect in May.,Yeni kurallar mayısta yürürlüğe giriyor.,4,exam:yds-yokdil,idioms
+b2-take-measures,TAKE MEASURES,T,STARTS,phrase,bir soruna karşı önlem almak,The city must take measures against air pollution.,Belediye hava kirliliğine karşı önlem almalı.,3,exam:yds-yokdil,idioms
+b2-ambiguity,AMBIGUITY,Y,CONTAINS,noun,"birden fazla anlama gelebilme, belirsizlik",The ambiguity of the question confused students.,Sorunun belirsizliği öğrencilerin kafasını karıştırdı.,4,exam:yds-yokdil,school-work
+b2-compatible,COMPATIBLE,C,STARTS,adj,birbiriyle uyumlu çalışabilen,This charger is not compatible with my phone.,Bu şarj aleti telefonumla uyumlu değil.,3,exam:yds-yokdil,school-work
+b2-concurrent,CONCURRENT,C,STARTS,adj,aynı anda gerçekleşen,The two studies were concurrent.,İki çalışma eş zamanlı yürütüldü.,5,exam:yds-yokdil,school-work
+b2-conducive,CONDUCIVE,C,STARTS,adj,bir şeyin olmasına elverişli ortam sağlayan,A quiet room is conducive to study.,Sessiz bir oda ders çalışmaya elverişlidir.,5,exam:yds-yokdil,school-work
+b2-constrain,CONSTRAIN,C,STARTS,verb,"kısıtlamak, sınırlamak",A small budget will constrain our research.,Küçük bir bütçe araştırmamızı kısıtlayacak.,4,exam:yds-yokdil,school-work
+b2-cooperation,COOPERATION,C,STARTS,noun,"ortak bir amaç için birlikte çalışma, iş birliği",The project needs cooperation between countries.,Proje ülkeler arası iş birliği gerektiriyor.,3,exam:yds-yokdil,school-work
+b2-coordinate,COORDINATE,C,STARTS,verb,farklı kişi ya da işleri uyum içinde düzenlemek,A manager will coordinate the rescue teams.,Bir yönetici kurtarma ekiplerini koordine edecek.,3,exam:yds-yokdil,school-work
+b2-correspondence,CORRESPONDENCE,C,STARTS,noun,yazışma; iki şey arasındaki uygunluk,All correspondence should go to the head office.,Bütün yazışmalar merkez ofise gönderilmeli.,4,exam:yds-yokdil,school-work
+b2-counteract,COUNTERACT,C,STARTS,verb,bir etkiyi karşı bir etkiyle gidermek,This drug can counteract the poison.,Bu ilaç zehrin etkisini giderebilir.,4,exam:yds-yokdil,school-work
+b2-criteria,CRITERIA,C,STARTS,noun,bir şeyi değerlendirmede kullanılan ölçütler,The judges explained their criteria.,Jüri ölçütlerini açıkladı.,4,exam:yds-yokdil,school-work
+b2-cultivate,CULTIVATE,C,STARTS,verb,toprağı ekip biçmek; bir ilişkiyi ya da beceriyi geliştirmek,Farmers here cultivate rice and cotton.,Buradaki çiftçiler pirinç ve pamuk yetiştirir.,4,exam:yds-yokdil,school-work
+b2-deduction,DEDUCTION,D,STARTS,noun,eldeki bilgiden mantıkla sonuç çıkarma; kesinti,Sherlock Holmes is famous for his deduction.,Sherlock Holmes tümdengelimiyle ünlüdür.,4,exam:yds-yokdil,school-work
+b2-determinant,DETERMINANT,D,STARTS,noun,bir sonucu belirleyen etken,Income is a key determinant of health.,Gelir sağlığın temel belirleyicilerinden biridir.,5,exam:yds-yokdil,school-work
+b2-diverge,DIVERGE,D,STARTS,verb,farklı yönlere ayrılmak; birbirinden ayrışmak,The two paths diverge after the bridge.,İki patika köprüden sonra ayrılır.,5,exam:yds-yokdil,school-work
+b2-disperse,DISPERSE,D,STARTS,verb,dağılmak ya da dağıtmak,Police used water to disperse the crowd.,Polis kalabalığı dağıtmak için su kullandı.,4,exam:yds-yokdil,school-work
+b2-displace,DISPLACE,D,STARTS,verb,birini ya da bir şeyi yerinden etmek,The dam will displace thousands of people.,Baraj binlerce kişiyi yerinden edecek.,4,exam:yds-yokdil,school-work
+b2-dispose,DISPOSE,D,STARTS,verb,"bir şeyden kurtulmak, atmak",How should we dispose of old batteries?,Eski pilleri nasıl atmalıyız?,4,exam:yds-yokdil,school-work
+b2-distortion,DISTORTION,D,STARTS,noun,"gerçeği ya da biçimi bozarak değiştirme, çarpıtma",The article was a distortion of the facts.,Makale gerçeklerin çarpıtılmasıydı.,4,exam:yds-yokdil,school-work
+b2-efficiency,EFFICIENCY,Y,CONTAINS,noun,"az kaynakla çok iş görme, verimlilik",The new engine improves fuel efficiency.,Yeni motor yakıt verimliliğini artırıyor.,3,exam:yds-yokdil,school-work
+b2-equate,EQUATE,Q,CONTAINS,verb,iki şeyi eşit ya da aynı saymak,Many people equate money with happiness.,Pek çok kişi parayı mutlulukla bir tutar.,4,exam:yds-yokdil,school-work
+b2-excessive,EXCESSIVE,X,CONTAINS,adj,"aşırı, gereğinden fazla",Excessive screen time harms children's sleep.,Aşırı ekran süresi çocukların uykusuna zarar verir.,3,exam:yds-yokdil,school-work
+b2-exclusion,EXCLUSION,X,CONTAINS,noun,"dışarıda bırakma, dışlama",Social exclusion makes people feel lonely.,Toplumsal dışlanma insanları yalnız hissettirir.,4,exam:yds-yokdil,school-work
+b2-faulty,FAULTY,Y,CONTAINS,adj,"kusurlu, arızalı",The fire was caused by faulty wiring.,Yangına arızalı kablolar neden oldu.,3,exam:yds-yokdil,school-work
+b2-inconsistent,INCONSISTENT,I,STARTS,adj,"tutarsız, birbirini tutmayan",His story was inconsistent with the evidence.,Anlattıkları kanıtlarla tutarsızdı.,4,exam:yds-yokdil,school-work
+b2-inevitably,INEVITABLY,Y,CONTAINS,adv,kaçınılmaz olarak,Prices will inevitably rise.,Fiyatlar kaçınılmaz olarak artacak.,4,exam:yds-yokdil,school-work
+b2-innovative,INNOVATIVE,I,STARTS,adj,"yenilikçi, yeni fikirler getiren",The company is known for innovative design.,Şirket yenilikçi tasarımıyla tanınır.,3,exam:yds-yokdil,school-work
+b2-inverse,INVERSE,I,STARTS,adj,"ters orantılı, tersine olan",There is an inverse relationship between price and demand.,Fiyat ile talep arasında ters bir ilişki vardır.,5,exam:yds-yokdil,school-work
+b2-investigation,INVESTIGATION,I,STARTS,noun,"bir olayın ayrıntılı biçimde araştırılması, soruşturma",The police opened an investigation into the fire.,Polis yangınla ilgili soruşturma başlattı.,3,exam:yds-yokdil,school-work
+b2-occurrence,OCCURRENCE,O,STARTS,noun,bir olayın meydana gelmesi; vaka,Floods are a common occurrence here.,Seller burada sık görülen bir olaydır.,4,exam:yds-yokdil,school-work
+b2-persistent,PERSISTENT,P,STARTS,adj,"sürüp giden, inatçı",She had a persistent cough for weeks.,Haftalarca geçmeyen bir öksürüğü vardı.,4,exam:yds-yokdil,school-work
+b2-preceding,PRECEDING,P,STARTS,adj,bir öncekinden hemen önce gelen,See the table on the preceding page.,Önceki sayfadaki tabloya bakın.,4,exam:yds-yokdil,school-work
+b2-proficiency,PROFICIENCY,Y,CONTAINS,noun,"bir alanda yüksek beceri, yeterlik",You need a certificate of English proficiency.,İngilizce yeterlik belgesine ihtiyacın var.,4,exam:yds-yokdil,school-work
+b2-proponent,PROPONENT,P,STARTS,noun,"bir fikri savunan kişi, taraftar",He is a strong proponent of free education.,Ücretsiz eğitimin güçlü bir savunucusudur.,5,exam:yds-yokdil,school-work
+b2-publication,PUBLICATION,P,STARTS,noun,yayımlama; yayımlanmış eser,The book is ready for publication.,Kitap yayımlanmaya hazır.,3,exam:yds-yokdil,school-work
+b2-quantitative,QUANTITATIVE,Q,STARTS,adj,"miktarla ve sayılarla ilgili, nicel",We used quantitative methods in the study.,Çalışmada nicel yöntemler kullandık.,5,exam:yds-yokdil,school-work
+b2-reciprocal,RECIPROCAL,R,STARTS,adj,karşılıklı,The two schools have a reciprocal agreement.,İki okulun karşılıklı bir anlaşması var.,5,exam:yds-yokdil,school-work
+b2-reliance,RELIANCE,R,STARTS,noun,"bir şeye bağımlı olma, güvenme",Our reliance on oil must end.,Petrole bağımlılığımız sona ermeli.,4,exam:yds-yokdil,school-work
+b2-reluctance,RELUCTANCE,R,STARTS,noun,"isteksizlik, gönülsüzlük",He showed some reluctance to accept the offer.,Teklifi kabul etmekte biraz isteksiz davrandı.,4,exam:yds-yokdil,school-work
+b2-shortcoming,SHORTCOMING,S,STARTS,noun,"eksiklik, kusur",Its main shortcoming is the price.,Başlıca eksikliği fiyatı.,4,exam:yds-yokdil,school-work
+b2-analogous,ANALOGOUS,A,STARTS,adj,"benzer, karşılaştırılabilir",The heart is analogous to a pump.,Kalp bir pompaya benzer.,5,exam:yds-yokdil,school-work
+b2-alternative,ALTERNATIVE,A,STARTS,noun,başka bir seçenek,Is there an alternative to surgery?,Ameliyata bir alternatif var mı?,3,exam:yds-yokdil,school-work
+b2-applicable,APPLICABLE,A,STARTS,adj,bir durum için geçerli ya da uygulanabilir,The rule is not applicable to children.,Kural çocuklar için geçerli değil.,4,exam:yds-yokdil,school-work
+b2-autonomous,AUTONOMOUS,A,STARTS,adj,"kendi kendini yöneten, özerk",The region became autonomous in 1990.,Bölge 1990'da özerk oldu.,5,exam:yds-yokdil,school-work
+b2-avert,AVERT,A,STARTS,verb,kötü bir olayı önlemek,Quick action helped avert a disaster.,Hızlı müdahale bir felaketi önledi.,5,exam:yds-yokdil,school-work
+b2-biased,BIASED,B,STARTS,adj,"taraflı, önyargılı",The report was biased against women.,Rapor kadınlara karşı önyargılıydı.,4,exam:yds-yokdil,school-work
+b2-byproduct,BYPRODUCT,Y,CONTAINS,noun,bir üretim sürecinde ortaya çıkan ikincil ürün,Sawdust is a byproduct of the timber industry.,Talaş kereste sanayisinin bir yan ürünüdür.,4,exam:yds-yokdil,business
+b2-impact,IMPACT,I,STARTS,noun,bir şeyin güçlü etkisi,The new road had a huge impact on the village.,Yeni yol köy üzerinde büyük bir etki bıraktı.,2,exam:yds-yokdil,school-work
+b2-detection,DETECTION,D,STARTS,noun,"bir şeyi fark edip ortaya çıkarma, tespit",Early detection of cancer saves lives.,Kanserin erken tespiti hayat kurtarır.,3,exam:yds-yokdil,school-work
+b2-deterioration,DETERIORATION,D,STARTS,noun,"giderek kötüleşme, bozulma",We saw a deterioration in air quality.,Hava kalitesinde bir kötüleşme gördük.,4,exam:yds-yokdil,school-work
+b2-algorithm,ALGORITHM,A,STARTS,noun,bir sorunu çözmek için izlenen adım adım kurallar dizisi,The app uses an algorithm to suggest songs.,Uygulama şarkı önermek için bir algoritma kullanıyor.,3,exam:yds-yokdil,technology
+b2-amplitude,AMPLITUDE,A,STARTS,noun,"bir dalganın en yüksek noktasının yüksekliği, genlik",Louder sounds have a greater amplitude.,Daha yüksek seslerin genliği daha büyüktür.,5,exam:yds-yokdil,technology
+b2-asteroid,ASTEROID,A,STARTS,noun,Güneş'in çevresinde dönen kayalık küçük gök cismi,An asteroid may have killed the dinosaurs.,Dinozorları bir asteroit öldürmüş olabilir.,3,exam:yds-yokdil,technology
+b2-axis,AXIS,X,CONTAINS,noun,"bir cismin çevresinde döndüğü hayalî çizgi, eksen",The Earth spins on its axis once a day.,Dünya günde bir kez kendi ekseni çevresinde döner.,4,exam:yds-yokdil,technology
+b2-biomass,BIOMASS,B,STARTS,noun,enerji kaynağı olarak kullanılan bitkisel ve hayvansal madde,Wood chips are a common biomass fuel.,Odun yongaları yaygın bir biyokütle yakıtıdır.,5,exam:yds-yokdil,technology
+b2-carbohydrate,CARBOHYDRATE,Y,CONTAINS,noun,şeker ve nişasta gibi enerji veren besin öğesi,Rice is rich in carbohydrate.,Pirinç karbonhidrat açısından zengindir.,4,exam:yds-yokdil,technology
+b2-chromosome,CHROMOSOME,C,STARTS,noun,hücre çekirdeğinde genleri taşıyan yapı,Each chromosome carries thousands of genes.,Her kromozom binlerce gen taşır.,5,exam:yds-yokdil,technology
+b2-conductor,CONDUCTOR,C,STARTS,noun,"ısıyı ya da elektriği ileten madde, iletken",Copper is a good conductor of electricity.,Bakır elektriği iyi iletir.,3,exam:yds-yokdil,technology
+b2-convection,CONVECTION,V,CONTAINS,noun,sıvı ya da gazda ısının akımla taşınması,Warm air rises because of convection.,Sıcak hava ısı akımı nedeniyle yükselir.,5,exam:yds-yokdil,technology
+b2-corrosion,CORROSION,C,STARTS,noun,"metalin kimyasal etkiyle aşınması, korozyon",Salt water causes corrosion of the hull.,Tuzlu su gövdenin aşınmasına yol açar.,4,exam:yds-yokdil,technology
+b2-decay,DECAY,Y,CONTAINS,verb,"çürümek, bozulmak",Leaves decay and enrich the soil.,Yapraklar çürüyüp toprağı zenginleştirir.,3,exam:yds-yokdil,technology
+b2-diameter,DIAMETER,D,STARTS,noun,"bir dairenin merkezinden geçen kiriş, çap",The pipe is ten centimetres in diameter.,Borunun çapı on santimetredir.,3,exam:yds-yokdil,technology
+b2-dilute,DILUTE,D,STARTS,verb,"bir sıvıya su katarak yoğunluğunu azaltmak, seyreltmek",Dilute the juice with cold water.,Meyve suyunu soğuk suyla seyrelt.,4,exam:yds-yokdil,technology
+b2-electron,ELECTRON,E,STARTS,noun,atom çekirdeği çevresinde dönen eksi yüklü parçacık,An electron has a negative charge.,Elektron negatif yüklüdür.,4,exam:yds-yokdil,technology
+b2-equator,EQUATOR,Q,CONTAINS,noun,Dünya'yı kuzey ve güney diye ikiye ayıran hayalî çizgi,Countries near the equator are hot all year.,Ekvatora yakın ülkeler yıl boyu sıcaktır.,3,exam:yds-yokdil,technology
+b2-eruption,ERUPTION,E,STARTS,noun,yanardağın lav ve kül püskürtmesi,The eruption buried the town in ash.,Patlama kasabayı küle gömdü.,3,exam:yds-yokdil,technology
+b2-evaporation,EVAPORATION,E,STARTS,noun,"sıvının buhara dönüşmesi, buharlaşma",Evaporation is faster on hot days.,Buharlaşma sıcak günlerde daha hızlıdır.,3,exam:yds-yokdil,technology
+b2-fermentation,FERMENTATION,F,STARTS,noun,"mayalanma, bakteri ya da mayayla kimyasal dönüşüm",Yogurt is made by fermentation.,Yoğurt mayalanma yoluyla yapılır.,5,exam:yds-yokdil,technology
+b2-filter,FILTER,F,STARTS,noun,bir sıvı ya da gazdaki parçacıkları tutan süzgeç,Change the water filter every month.,Su filtresini her ay değiştir.,3,exam:yds-yokdil,technology
+b2-genome,GENOME,G,STARTS,noun,bir canlının tüm genetik bilgisi,Scientists mapped the human genome in 2003.,Bilim insanları insan genomunu 2003'te haritaladı.,5,exam:yds-yokdil,technology
+b2-geothermal,GEOTHERMAL,G,STARTS,adj,"yerin içindeki ısıyla ilgili, jeotermal",Iceland uses geothermal energy for heating.,İzlanda ısınma için jeotermal enerji kullanır.,5,exam:yds-yokdil,technology
+b2-hemisphere,HEMISPHERE,H,STARTS,noun,yerkürenin ya da beynin iki yarısından biri,It is winter in the southern hemisphere now.,Güney yarımkürede şu an kış.,4,exam:yds-yokdil,technology
+b2-inertia,INERTIA,I,STARTS,noun,"bir cismin hareket durumunu koruma eğilimi, eylemsizlik",Inertia keeps a moving ball rolling.,Eylemsizlik hareket eden topun yuvarlanmaya devam etmesini sağlar.,5,exam:yds-yokdil,technology
+b2-insulation,INSULATION,I,STARTS,noun,"ısı, ses ya da elektrik geçişini önleyen yalıtım",Good insulation keeps the house warm.,İyi yalıtım evi sıcak tutar.,4,exam:yds-yokdil,technology
+b2-isotope,ISOTOPE,I,STARTS,noun,aynı elementin farklı nötron sayılı türü,Carbon dating uses a rare isotope of carbon.,Karbon tarihlendirmesi karbonun nadir bir izotopunu kullanır.,5,exam:yds-yokdil,technology
+b2-latitude,LATITUDE,L,STARTS,noun,"ekvatora göre kuzey ya da güney uzaklık, enlem",Istanbul lies at a latitude of 41 degrees.,İstanbul 41 derece enlemde yer alır.,4,exam:yds-yokdil,technology
+b2-longitude,LONGITUDE,L,STARTS,noun,"başlangıç meridyenine göre doğu ya da batı uzaklık, boylam",Ships use longitude to find their position.,Gemiler konumlarını bulmak için boylamı kullanır.,4,exam:yds-yokdil,technology
+b2-magnetic,MAGNETIC,M,STARTS,adj,mıknatıs özelliği taşıyan,The Earth has a magnetic field.,Dünya'nın manyetik bir alanı vardır.,3,exam:yds-yokdil,technology
+b2-mammal,MAMMAL,M,STARTS,noun,"yavrusunu sütle besleyen sıcakkanlı hayvan, memeli",The whale is the largest mammal.,Balina en büyük memelidir.,3,exam:yds-yokdil,technology
+b2-mantle,MANTLE,M,STARTS,noun,yer kabuğu ile çekirdek arasındaki katman,The mantle lies below the Earth's crust.,Manto yer kabuğunun altında bulunur.,5,exam:yds-yokdil,technology
+b2-mineral,MINERAL,M,STARTS,noun,topraktan elde edilen ya da besinlerde bulunan doğal madde,Iron is an important mineral for the blood.,Demir kan için önemli bir mineraldir.,3,exam:yds-yokdil,technology
+b2-nucleus,NUCLEUS,N,STARTS,noun,atomun ya da hücrenin çekirdeği,The nucleus controls the cell.,Çekirdek hücreyi yönetir.,4,exam:yds-yokdil,technology
+b2-oscillate,OSCILLATE,O,STARTS,verb,"iki nokta arasında düzenli olarak gidip gelmek, salınmak",A pendulum will oscillate for hours.,Bir sarkaç saatlerce salınabilir.,5,exam:yds-yokdil,technology
+b2-oxide,OXIDE,X,CONTAINS,noun,bir elementin oksijenle oluşturduğu bileşik,Rust is a type of iron oxide.,Pas bir tür demir oksittir.,5,exam:yds-yokdil,technology
+b2-photosynthesis,PHOTOSYNTHESIS,Y,CONTAINS,noun,bitkilerin güneş ışığıyla besin üretmesi,Leaves make sugar through photosynthesis.,Yapraklar fotosentezle şeker üretir.,4,exam:yds-yokdil,technology
+b2-pigment,PIGMENT,P,STARTS,noun,bir şeye rengini veren madde,Melanin is the pigment in our skin.,Melanin derimizdeki renk maddesidir.,5,exam:yds-yokdil,technology
+b2-pollen,POLLEN,P,STARTS,noun,"çiçeklerin ürettiği ince toz, çiçek tozu",Bees carry pollen from flower to flower.,Arılar çiçek tozunu çiçekten çiçeğe taşır.,3,exam:yds-yokdil,technology
+b2-prism,PRISM,P,STARTS,noun,ışığı renklere ayıran üçgen cam,A prism splits white light into colours.,Prizma beyaz ışığı renklere ayırır.,4,exam:yds-yokdil,technology
+b2-proton,PROTON,P,STARTS,noun,atom çekirdeğindeki artı yüklü parçacık,A proton has a positive charge.,Proton pozitif yüklüdür.,4,exam:yds-yokdil,technology
+b2-radiation,RADIATION,R,STARTS,noun,ışınım; zararlı olabilen enerji yayılımı,Workers wear suits to block radiation.,İşçiler radyasyonu engellemek için özel giysi giyer.,3,exam:yds-yokdil,technology
+b2-radius,RADIUS,R,STARTS,noun,"bir dairenin merkezinden çevresine uzaklık, yarıçap",The circle has a radius of five centimetres.,Dairenin yarıçapı beş santimetredir.,3,exam:yds-yokdil,technology
+b2-reflection,REFLECTION,R,STARTS,noun,"ışığın ya da sesin bir yüzeyden geri dönmesi, yansıma",We saw our reflection in the lake.,Göldeki yansımamızı gördük.,3,exam:yds-yokdil,technology
+b2-refraction,REFRACTION,R,STARTS,noun,ışığın bir ortamdan diğerine geçerken kırılması,Refraction makes a straw look bent in water.,"Kırılma, suda pipetin eğri görünmesine yol açar.",5,exam:yds-yokdil,technology
+b2-seismic,SEISMIC,S,STARTS,adj,depremlerle ve yer sarsıntısıyla ilgili,Seismic activity has increased in the region.,Bölgedeki sismik hareketlilik arttı.,4,exam:yds-yokdil,technology
+b2-sulphur,SULPHUR,S,STARTS,noun,"yanınca keskin kokan sarı element, kükürt",Volcanoes release sulphur gases.,Yanardağlar kükürt gazları salar.,5,exam:yds-yokdil,technology
+b2-tectonic,TECTONIC,T,STARTS,adj,yer kabuğunun levhalarıyla ilgili,Earthquakes happen at tectonic plate boundaries.,Depremler tektonik levha sınırlarında olur.,5,exam:yds-yokdil,technology
+b2-thermal,THERMAL,T,STARTS,adj,"ısıyla ilgili, ısıl",Thermal springs are popular in Pamukkale.,Pamukkale'de kaplıcalar çok ilgi görür.,4,exam:yds-yokdil,technology
+b2-velocity,VELOCITY,Y,CONTAINS,noun,belirli bir yöndeki hız,Light travels at a fixed velocity.,Işık sabit bir hızla yol alır.,4,exam:yds-yokdil,technology
+b2-voltage,VOLTAGE,V,STARTS,noun,elektrik gerilimi,High voltage can kill.,Yüksek gerilim öldürebilir.,4,exam:yds-yokdil,technology
+b2-wavelength,WAVELENGTH,W,STARTS,noun,bir dalganın ardışık iki tepesi arasındaki uzaklık,Red light has a longer wavelength than blue light.,Kırmızı ışığın dalga boyu mavininkinden uzundur.,5,exam:yds-yokdil,technology
+b2-zoology,ZOOLOGY,Z,STARTS,noun,hayvanları inceleyen bilim dalı,She has a degree in zoology.,Zooloji diploması var.,4,exam:yds-yokdil,technology
+b2-absorption,ABSORPTION,A,STARTS,noun,"emme, soğurma; bir maddenin içine çekilmesi",Vitamin C helps the absorption of iron.,C vitamini demirin emilimine yardım eder.,4,exam:yds-yokdil,technology
+b2-alloy,ALLOY,Y,CONTAINS,noun,"iki ya da daha fazla metalin karışımı, alaşım",Bronze is an alloy of copper and tin.,Bronz bakır ve kalay alaşımıdır.,5,exam:yds-yokdil,technology
+b2-cellular,CELLULAR,C,STARTS,adj,"hücrelerle ilgili, hücresel",The drug works at a cellular level.,İlaç hücresel düzeyde etki eder.,4,exam:yds-yokdil,technology
+b2-quantum,QUANTUM,Q,STARTS,adj,"atom altı parçacıkların fiziğiyle ilgili, kuantum",Quantum computers could solve problems in seconds.,Kuantum bilgisayarlar sorunları saniyeler içinde çözebilir.,5,exam:yds-yokdil,technology
+b2-nanotechnology,NANOTECHNOLOGY,Y,CONTAINS,noun,atom ve molekül ölçeğinde malzeme tasarlama teknolojisi,Nanotechnology is used in new medicines.,Nanoteknoloji yeni ilaçlarda kullanılıyor.,5,exam:yds-yokdil,technology
+b2-biotechnology,BIOTECHNOLOGY,B,STARTS,noun,canlıları kullanarak ürün geliştiren teknoloji,Biotechnology helps farmers grow stronger crops.,Biyoteknoloji çiftçilerin daha dayanıklı ürün yetiştirmesine yardım eder.,5,exam:yds-yokdil,technology
+b2-semiconductor,SEMICONDUCTOR,S,STARTS,noun,"elektriği kısmen ileten madde, yarı iletken",Silicon is the most common semiconductor.,Silikon en yaygın yarı iletkendir.,5,exam:yds-yokdil,technology
+b2-sensor,SENSOR,S,STARTS,noun,"ısı, ışık ya da hareketi algılayan aygıt",The lights turn on when the sensor detects movement.,Algılayıcı hareketi fark edince ışıklar yanar.,3,exam:yds-yokdil,technology
+b2-ultraviolet,ULTRAVIOLET,U,STARTS,adj,morötesi; gözle görülmeyen güneş ışını türü,Ultraviolet light can damage your eyes.,Morötesi ışık gözlerine zarar verebilir.,4,exam:yds-yokdil,technology
+b2-allergy,ALLERGY,Y,CONTAINS,noun,"vücudun bazı maddelere aşırı tepki vermesi, alerji",Dust allergy is common in old houses.,Eski evlerde toz alerjisi yaygındır.,3,exam:yds-yokdil,body-health
+b2-cardiac,CARDIAC,C,STARTS,adj,kalple ilgili,He had cardiac surgery last year.,Geçen yıl kalp ameliyatı oldu.,4,exam:yds-yokdil,body-health
+b2-chemotherapy,CHEMOTHERAPY,Y,CONTAINS,noun,kanseri ilaçla tedavi etme yöntemi,She lost her hair during chemotherapy.,Kemoterapi sırasında saçları döküldü.,4,exam:yds-yokdil,body-health
+b2-contagious,CONTAGIOUS,C,STARTS,adj,"temasla kişiden kişiye geçen, bulaşıcı",Chickenpox is very contagious.,Su çiçeği çok bulaşıcıdır.,4,exam:yds-yokdil,body-health
+b2-dental,DENTAL,D,STARTS,adj,dişlerle ilgili,Regular dental checks keep teeth healthy.,Düzenli diş kontrolleri dişleri sağlıklı tutar.,3,exam:yds-yokdil,body-health
+b2-embryo,EMBRYO,Y,CONTAINS,noun,gelişiminin ilk evresindeki cenin,The embryo develops a heartbeat in the sixth week.,Embriyoda altıncı haftada kalp atışı başlar.,4,exam:yds-yokdil,body-health
+b2-insomnia,INSOMNIA,I,STARTS,noun,uykusuzluk hastalığı,Stress is a common cause of insomnia.,Stres uykusuzluğun yaygın bir nedenidir.,4,exam:yds-yokdil,body-health
+b2-medication,MEDICATION,M,STARTS,noun,tedavi için kullanılan ilaç,Take your medication after meals.,İlacını yemeklerden sonra al.,3,exam:yds-yokdil,body-health
+b2-overdose,OVERDOSE,O,STARTS,noun,bir ilacın tehlikeli ölçüde fazla alınması,An overdose of painkillers can damage the liver.,Ağrı kesicinin aşırı dozu karaciğere zarar verebilir.,4,exam:yds-yokdil,body-health
+b2-painkiller,PAINKILLER,P,STARTS,noun,ağrıyı dindiren ilaç,The doctor gave me a painkiller for my back.,Doktor sırtım için ağrı kesici verdi.,3,exam:yds-yokdil,body-health
+b2-swollen,SWOLLEN,S,STARTS,adj,bir darbe ya da hastalık sonucu şişmiş,My ankle was swollen after the fall.,Düştükten sonra ayak bileğim şişmişti.,3,exam:yds-yokdil,body-health
+b2-x-ray,X RAY,X,STARTS,noun,"kemikleri görüntülemek için çekilen ışın filmi, röntgen",The X ray showed a broken bone.,Röntgen kırık bir kemik gösterdi.,3,exam:yds-yokdil,body-health
+b2-immunization,IMMUNIZATION,Z,CONTAINS,noun,aşıyla bağışıklık kazandırma,Immunization has wiped out smallpox.,Aşılama çiçek hastalığını yok etti.,5,exam:yds-yokdil,body-health
+b2-germ,GERM,G,STARTS,noun,hastalık yapan mikrop,Wash your hands to kill every germ.,Her mikrobu öldürmek için ellerini yıka.,3,exam:yds-yokdil,body-health
+b2-sterilize,STERILIZE,Z,CONTAINS,verb,mikroplardan arındırmak,Nurses sterilize the tools before surgery.,Hemşireler ameliyattan önce aletleri sterilize eder.,4,exam:yds-yokdil,body-health
+b2-disinfect,DISINFECT,D,STARTS,verb,mikrop öldürücüyle temizlemek,Disinfect the table after you cut raw meat.,Çiğ et kestikten sonra masayı dezenfekte et.,4,exam:yds-yokdil,body-health
+b2-antiseptic,ANTISEPTIC,A,STARTS,noun,yaralarda mikrop üremesini önleyen madde,Put some antiseptic on the cut.,Kesiğe biraz antiseptik sür.,4,exam:yds-yokdil,body-health
+b2-heredity,HEREDITY,Y,CONTAINS,noun,"özelliklerin anne babadan çocuğa geçmesi, kalıtım",Heredity plays a role in many illnesses.,Kalıtım pek çok hastalıkta rol oynar.,5,exam:yds-yokdil,body-health
+b2-prognosis,PROGNOSIS,P,STARTS,noun,bir hastalığın nasıl seyredeceğine dair tahmin,The prognosis for most patients is good.,Hastaların çoğu için öngörü iyi.,5,exam:yds-yokdil,body-health
+b2-life-expectancy,LIFE EXPECTANCY,Y,CONTAINS,phrase,ortalama yaşam süresi beklentisi,Life expectancy in Japan is over eighty.,Japonya'da ortalama yaşam süresi sekseni aşıyor.,4,exam:yds-yokdil,body-health
+b2-childbirth,CHILDBIRTH,C,STARTS,noun,doğum yapma,She was well prepared for childbirth.,Doğuma iyi hazırlanmıştı.,4,exam:yds-yokdil,body-health
+b2-pregnancy,PREGNANCY,Y,CONTAINS,noun,hamilelik,Smoking during pregnancy harms the baby.,Hamilelikte sigara içmek bebeğe zarar verir.,3,exam:yds-yokdil,body-health
+b2-lactose,LACTOSE,L,STARTS,noun,sütte bulunan şeker,Many adults cannot digest lactose well.,Pek çok yetişkin laktozu iyi sindiremez.,4,exam:yds-yokdil,body-health
+b2-diabetic,DIABETIC,D,STARTS,adj,şeker hastası olan; şeker hastalığıyla ilgili,My uncle eats diabetic chocolate.,Amcam diyabetik çikolata yer.,4,exam:yds-yokdil,body-health
+b2-anatomy,ANATOMY,Y,CONTAINS,noun,vücudun yapısını inceleyen bilim,Medical students study anatomy first.,Tıp öğrencileri önce anatomi okur.,4,exam:yds-yokdil,body-health
+b2-antibiotic,ANTIBIOTIC,A,STARTS,noun,bakterileri öldüren ilaç,An antibiotic only kills bacteria.,Antibiyotik yalnızca bakterileri öldürür.,3,exam:yds-yokdil,body-health
+b2-antibody,ANTIBODY,Y,CONTAINS,noun,vücudun mikroplara karşı ürettiği savunma proteini,The test looks for an antibody in the blood.,Test kanda bir antikor arar.,4,exam:yds-yokdil,body-health
+b2-artery,ARTERY,Y,CONTAINS,noun,"kanı kalpten vücuda taşıyan damar, atardamar",A blocked artery can stop blood reaching the heart.,Tıkalı bir atardamar kanın kalbe ulaşmasını engelleyebilir.,4,exam:yds-yokdil,body-health
+b2-cholesterol,CHOLESTEROL,C,STARTS,noun,kanda bulunan ve fazlası damarları tıkayan yağlı madde,Fried food raises cholesterol.,Kızartma kolesterolü yükseltir.,4,exam:yds-yokdil,body-health
+b2-clinical,CLINICAL,C,STARTS,adj,"hastaların gözlem ve tedavisiyle ilgili, klinik",The drug is still in clinical trials.,İlaç hâlâ klinik deneme aşamasında.,4,exam:yds-yokdil,body-health
+b2-congenital,CONGENITAL,C,STARTS,adj,doğuştan gelen (hastalık),She was born with a congenital heart problem.,Doğuştan bir kalp sorunuyla dünyaya geldi.,5,exam:yds-yokdil,body-health
+b2-dehydration,DEHYDRATION,Y,CONTAINS,noun,vücudun aşırı su kaybetmesi,Drink water to avoid dehydration.,Susuz kalmamak için su iç.,4,exam:yds-yokdil,body-health
+b2-dementia,DEMENTIA,D,STARTS,noun,"bellek ve düşünme yetisinin giderek kaybı, bunama",Dementia affects many old people.,Bunama pek çok yaşlıyı etkiler.,4,exam:yds-yokdil,body-health
+b2-dosage,DOSAGE,D,STARTS,noun,bir ilacın ne kadar ve ne sıklıkla alınacağı,Check the dosage on the box.,Kutunun üstündeki kullanım dozunu kontrol et.,4,exam:yds-yokdil,body-health
+b2-fracture,FRACTURE,F,STARTS,noun,kemik kırığı,The scan showed a small fracture.,Görüntüleme küçük bir kırık gösterdi.,4,exam:yds-yokdil,body-health
+b2-gland,GLAND,G,STARTS,noun,"vücutta salgı üreten organ, bez",The thyroid gland is in the neck.,Tiroit bezi boyundadır.,4,exam:yds-yokdil,body-health
+b2-inflammation,INFLAMMATION,I,STARTS,noun,"vücudun bir bölgesinin kızarıp şişmesi, iltihap",Ice can reduce inflammation.,Buz iltihabı azaltabilir.,4,exam:yds-yokdil,body-health
+b2-lesion,LESION,L,STARTS,noun,"deride ya da bir organda oluşan hasar, lezyon",The scan showed a small lesion on the lung.,Tarama akciğerde küçük bir lezyon gösterdi.,5,exam:yds-yokdil,body-health
+b2-migraine,MIGRAINE,M,STARTS,noun,çok şiddetli ve tekrarlayan baş ağrısı,Bright light can bring on a migraine.,Parlak ışık migreni başlatabilir.,3,exam:yds-yokdil,body-health
+b2-neurological,NEUROLOGICAL,N,STARTS,adj,sinir sistemiyle ilgili,Parkinson's is a neurological illness.,Parkinson nörolojik bir hastalıktır.,5,exam:yds-yokdil,body-health
+b2-outpatient,OUTPATIENT,O,STARTS,noun,hastanede yatmadan tedavi gören hasta,The clinic treats every outpatient within an hour.,Klinik her ayakta hastayı bir saat içinde tedavi ediyor.,4,exam:yds-yokdil,body-health
+b2-paralysis,PARALYSIS,Y,CONTAINS,noun,"bir organın hareket yeteneğini yitirmesi, felç",The accident left him with paralysis in both legs.,Kaza onun iki bacağında felç bıraktı.,5,exam:yds-yokdil,body-health
+b2-pediatric,PEDIATRIC,P,STARTS,adj,çocuk hastalıklarıyla ilgili,She works in a pediatric hospital.,Bir çocuk hastanesinde çalışıyor.,4,exam:yds-yokdil,body-health
+b2-placebo,PLACEBO,P,STARTS,noun,etkisiz madde içeren sahte ilaç,Half of the patients got a placebo.,Hastaların yarısına plasebo verildi.,5,exam:yds-yokdil,body-health
+b2-relapse,RELAPSE,R,STARTS,noun,"iyileşmeden sonra hastalığın yeniden kötüleşmesi, nüks",He had a relapse after a month.,Bir ay sonra hastalığı nüksetti.,5,exam:yds-yokdil,body-health
+b2-remission,REMISSION,R,STARTS,noun,bir hastalığın belirtilerinin geçici olarak kaybolması,The cancer is in remission.,Kanser geriledi.,5,exam:yds-yokdil,body-health
+b2-sedative,SEDATIVE,S,STARTS,noun,sakinleştirici ilaç,The doctor gave him a mild sedative.,Doktor ona hafif bir sakinleştirici verdi.,5,exam:yds-yokdil,body-health
+b2-sterile,STERILE,S,STARTS,adj,"mikropsuz, steril",Use a sterile bandage on the cut.,Kesiğe steril bir sargı kullan.,4,exam:yds-yokdil,body-health
+b2-surgeon,SURGEON,S,STARTS,noun,"ameliyat yapan doktor, cerrah",The surgeon washed her hands.,Cerrah ellerini yıkadı.,3,exam:yds-yokdil,body-health
+b2-transplant,TRANSPLANT,T,STARTS,noun,organ nakli,She needs a kidney transplant.,Böbrek nakline ihtiyacı var.,4,exam:yds-yokdil,body-health
+b2-vein,VEIN,V,STARTS,noun,"kanı kalbe taşıyan damar, toplardamar",The nurse could not find a vein.,Hemşire damar bulamadı.,3,exam:yds-yokdil,body-health
+b2-anorexia,ANOREXIA,X,CONTAINS,noun,kilo alma korkusuyla aşırı az yeme bozukluğu,Anorexia is a serious eating problem.,Anoreksiya ciddi bir yeme sorunudur.,5,exam:yds-yokdil,body-health
+b2-seizure,SEIZURE,Z,CONTAINS,noun,"ani nöbet, kasılma",The child had a seizure at school.,Çocuk okulda nöbet geçirdi.,4,exam:yds-yokdil,body-health
+b2-skull,SKULL,K,CONTAINS,noun,"beyni koruyan kemik yapı, kafatası",A helmet protects your skull.,Kask kafatasını korur.,3,exam:yds-yokdil,body-health
+b2-physiology,PHYSIOLOGY,Y,CONTAINS,noun,canlıların vücut işlevlerini inceleyen bilim,She teaches human physiology.,İnsan fizyolojisi dersi veriyor.,5,exam:yds-yokdil,body-health
+b2-psychiatrist,PSYCHIATRIST,Y,CONTAINS,noun,ruh hastalıklarını tedavi eden doktor,He has been seeing a psychiatrist for a year.,Bir yıldır bir psikiyatriste gidiyor.,4,exam:yds-yokdil,body-health
+b2-unconscious,UNCONSCIOUS,U,STARTS,adj,"bilinci yerinde olmayan, baygın",The driver was unconscious after the crash.,Sürücü kazadan sonra baygındı.,3,exam:yds-yokdil,body-health
+b2-heart-attack,HEART ATTACK,H,STARTS,phrase,kalbe kan gitmemesiyle oluşan ani kriz,He had a heart attack at the age of fifty.,Elli yaşında kalp krizi geçirdi.,3,exam:yds-yokdil,body-health
+b2-side-effect,SIDE EFFECT,S,STARTS,phrase,"bir ilacın istenmeyen ek etkisi, yan etki",Sleepiness is a side effect of this drug.,Uyku hâli bu ilacın bir yan etkisidir.,3,exam:yds-yokdil,body-health
+b2-immune-system,IMMUNE SYSTEM,Y,CONTAINS,phrase,vücudu hastalıklara karşı koruyan sistem,Sleep keeps your immune system strong.,Uyku bağışıklık sistemini güçlü tutar.,3,exam:yds-yokdil,body-health
+b2-nervous-system,NERVOUS SYSTEM,Y,CONTAINS,phrase,"beyin, omurilik ve sinirlerden oluşan sistem",The brain is part of the nervous system.,Beyin sinir sisteminin bir parçasıdır.,4,exam:yds-yokdil,body-health
+b2-toxicity,TOXICITY,X,CONTAINS,noun,bir maddenin zehirlilik derecesi,The toxicity of the drug is low.,İlacın zehirlilik düzeyi düşük.,5,exam:yds-yokdil,body-health
+b2-exhale,EXHALE,X,CONTAINS,verb,nefes vermek,Inhale through your nose and exhale slowly.,Burnundan nefes al ve yavaşça ver.,4,exam:yds-yokdil,body-health
+b2-stem-cell,STEM CELL,S,STARTS,phrase,farklı hücrelere dönüşebilen kök hücre,Stem cell research may help treat some illnesses.,Kök hücre araştırmaları bazı hastalıkların tedavisine yardım edebilir.,5,exam:yds-yokdil,body-health
+b2-wound,WOUND,W,STARTS,noun,vücutta kesik ya da delikle oluşan yara,The wound needed six stitches.,Yaraya altı dikiş atıldı.,3,exam:yds-yokdil,body-health
+b2-anthropology,ANTHROPOLOGY,Y,CONTAINS,noun,insanı ve kültürleri inceleyen bilim,She studied the anthropology of nomadic tribes.,Göçebe kabilelerin antropolojisini inceledi.,4,exam:yds-yokdil,school-work
+b2-census,CENSUS,C,STARTS,noun,resmî nüfus sayımı,The last census counted eighty million people.,Son nüfus sayımı seksen milyon kişi saydı.,4,exam:yds-yokdil,school-work
+b2-cognition,COGNITION,C,STARTS,noun,"bilme, algılama ve düşünme süreçleri, biliş",Sleep affects memory and cognition.,Uyku belleği ve bilişi etkiler.,5,exam:yds-yokdil,school-work
+b2-colonial,COLONIAL,C,STARTS,adj,sömürgecilikle ya da sömürge dönemiyle ilgili,The city still has many colonial buildings.,Şehirde hâlâ pek çok sömürge dönemi binası var.,4,exam:yds-yokdil,school-work
+b2-demography,DEMOGRAPHY,Y,CONTAINS,noun,nüfusun yapısını inceleyen bilim,Demography helps planners predict school needs.,Demografi planlamacıların okul ihtiyacını öngörmesine yardım eder.,5,exam:yds-yokdil,school-work
+b2-diaspora,DIASPORA,D,STARTS,noun,anavatanının dışında dağılmış yaşayan topluluk,The Turkish diaspora in Germany is large.,Almanya'daki Türk diasporası büyüktür.,5,exam:yds-yokdil,school-work
+b2-discourse,DISCOURSE,D,STARTS,noun,bir konudaki söylem; yazılı ya da sözlü iletişim,Political discourse has become more aggressive.,Siyasi söylem daha saldırgan hâle geldi.,5,exam:yds-yokdil,school-work
+b2-ethics,ETHICS,E,STARTS,noun,"doğru ve yanlışı inceleyen ahlak ilkeleri, etik",Medical ethics do not allow doctors to share patient data.,Tıp etiği doktorların hasta bilgilerini paylaşmasına izin vermez.,4,exam:yds-yokdil,school-work
+b2-feminism,FEMINISM,F,STARTS,noun,kadın ve erkek eşitliğini savunan düşünce,Feminism changed the law on equal pay.,Feminizm eşit ücret yasasını değiştirdi.,4,exam:yds-yokdil,school-work
+b2-feudal,FEUDAL,F,STARTS,adj,derebeylik düzeniyle ilgili,"In feudal times, peasants worked for lords.",Derebeylik döneminde köylüler beyler için çalışırdı.,5,exam:yds-yokdil,school-work
+b2-hegemony,HEGEMONY,Y,CONTAINS,noun,bir grubun ya da devletin ötekiler üzerindeki egemenliği,Rome kept its hegemony for centuries.,Roma egemenliğini yüzyıllarca korudu.,5,exam:yds-yokdil,school-work
+b2-humanities,HUMANITIES,H,STARTS,noun,"tarih, edebiyat ve felsefe gibi insan bilimleri",She chose humanities over science.,Fen yerine beşerî bilimleri seçti.,4,exam:yds-yokdil,school-work
+b2-linguistics,LINGUISTICS,L,STARTS,noun,"dilin yapısını inceleyen bilim, dilbilim",He has a degree in linguistics.,Dilbilim diploması var.,4,exam:yds-yokdil,school-work
+b2-monarchy,MONARCHY,Y,CONTAINS,noun,bir kral ya da kraliçenin yönettiği sistem,Britain is a constitutional monarchy.,Birleşik Krallık anayasal bir monarşidir.,4,exam:yds-yokdil,school-work
+b2-morality,MORALITY,Y,CONTAINS,noun,"doğru ve yanlış davranışla ilgili ilkeler, ahlak",Religion often shapes ideas of morality.,Din çoğu zaman ahlak anlayışını şekillendirir.,4,exam:yds-yokdil,school-work
+b2-nationalism,NATIONALISM,N,STARTS,noun,"ulusuna aşırı bağlılık ve onu üstün tutma, milliyetçilik",Nationalism grew across Europe in the 1800s.,Milliyetçilik 1800'lerde Avrupa'da yükseldi.,4,exam:yds-yokdil,school-work
+b2-normative,NORMATIVE,V,CONTAINS,adj,"ne olması gerektiğini belirten, kural koyucu",Law is a normative field.,Hukuk kural koyucu bir alandır.,5,exam:yds-yokdil,school-work
+b2-patriarchal,PATRIARCHAL,P,STARTS,adj,erkeklerin egemen olduğu toplum düzeniyle ilgili,They grew up in a patriarchal family.,Ataerkil bir ailede büyüdüler.,5,exam:yds-yokdil,school-work
+b2-philosopher,PHILOSOPHER,P,STARTS,noun,felsefeyle uğraşan düşünür,Farabi was a great philosopher.,Farabi büyük bir filozoftu.,3,exam:yds-yokdil,school-work
+b2-propaganda,PROPAGANDA,P,STARTS,noun,bir görüşü yaymak için yapılan tek yanlı tanıtım,The posters were wartime propaganda.,Afişler savaş dönemi propagandasıydı.,4,exam:yds-yokdil,school-work
+b2-secular,SECULAR,S,STARTS,adj,"dinî olmayan; din ile devlet işlerini ayıran, laik",Türkiye is a secular republic.,Türkiye laik bir cumhuriyettir.,4,exam:yds-yokdil,school-work
+b2-sociology,SOCIOLOGY,Y,CONTAINS,noun,toplumu ve toplumsal ilişkileri inceleyen bilim,My sister studies sociology at university.,Kız kardeşim üniversitede sosyoloji okuyor.,3,exam:yds-yokdil,school-work
+b2-suffrage,SUFFRAGE,S,STARTS,noun,seçimlerde oy kullanma hakkı,Turkish women gained suffrage in 1934.,Türk kadınları 1934'te seçme hakkı kazandı.,5,exam:yds-yokdil,school-work
+b2-taboo,TABOO,T,STARTS,noun,toplumca konuşulması ya da yapılması yasak sayılan şey,Death is a taboo subject in many cultures.,Ölüm pek çok kültürde konuşulmayan bir konudur.,4,exam:yds-yokdil,school-work
+b2-utopia,UTOPIA,U,STARTS,noun,"her şeyin kusursuz olduğu hayalî toplum, ütopya",Thomas More wrote about an island utopia.,Thomas More bir ada ütopyası hakkında yazdı.,4,exam:yds-yokdil,school-work
+b2-xenophobia,XENOPHOBIA,X,STARTS,noun,"yabancılardan korkma ve onlara düşmanlık, yabancı düşmanlığı",The campaign fights racism and xenophobia.,Kampanya ırkçılık ve yabancı düşmanlığıyla mücadele ediyor.,5,exam:yds-yokdil,school-work
+b2-worldview,WORLDVIEW,W,STARTS,noun,"kişinin dünyayı ve hayatı algılayış biçimi, dünya görüşü",Travel can change your worldview.,Seyahat dünya görüşünü değiştirebilir.,4,exam:yds-yokdil,school-work
+b2-working-class,WORKING CLASS,W,STARTS,phrase,"el emeğiyle geçinen toplumsal sınıf, işçi sınıfı",The novel describes working class life in Manchester.,Roman Manchester'daki işçi sınıfı yaşamını anlatıyor.,4,exam:yds-yokdil,school-work
+b2-upward-mobility,UPWARD MOBILITY,Y,CONTAINS,phrase,bir kişinin toplumsal ya da ekonomik olarak yükselmesi,Education is the key to upward mobility.,Eğitim toplumsal yükselmenin anahtarıdır.,5,exam:yds-yokdil,school-work
+b2-birth-rate,BIRTH RATE,B,STARTS,phrase,belli bir sürede doğan bebek sayısının oranı,The birth rate has fallen in Europe.,Avrupa'da doğum oranı düştü.,4,exam:yds-yokdil,school-work
+b2-belief-system,BELIEF SYSTEM,Y,CONTAINS,phrase,bir kişinin ya da toplumun inandığı ilkeler bütünü,Every culture has its own belief system.,Her kültürün kendine ait bir inanç sistemi vardır.,4,exam:yds-yokdil,school-work
+b2-underclass,UNDERCLASS,U,STARTS,noun,toplumun en yoksul ve dışlanmış kesimi,Economists warn of a growing urban underclass.,Ekonomistler büyüyen bir kentsel alt sınıfa dikkat çekiyor.,5,exam:yds-yokdil,school-work
+b2-westernization,WESTERNIZATION,Z,CONTAINS,noun,Batı kültürünü ve yaşam biçimini benimseme,Westernization began in the late Ottoman period.,Batılılaşma geç Osmanlı döneminde başladı.,5,exam:yds-yokdil,school-work
+b2-sample,SAMPLE,S,STARTS,noun,"bir bütünü temsil etmek için seçilen küçük grup, örneklem",The sample included five hundred students.,Örneklem beş yüz öğrenciden oluşuyordu.,3,exam:yds-yokdil,school-work
+b2-case-study,CASE STUDY,C,STARTS,phrase,tek bir olayın ya da kişinin derinlemesine incelenmesi,The book is a case study of one village.,Kitap tek bir köyün vaka çalışması.,4,exam:yds-yokdil,school-work
+b2-thesis,THESIS,T,STARTS,noun,bir derece için yazılan bilimsel tez,She wrote her thesis on climate policy.,Tezini iklim politikası üzerine yazdı.,4,exam:yds-yokdil,school-work
+b2-dissertation,DISSERTATION,D,STARTS,noun,doktora için yazılan uzun araştırma metni,His dissertation took four years.,Doktora tezi dört yıl sürdü.,5,exam:yds-yokdil,school-work
+b2-citation,CITATION,C,STARTS,noun,bir kaynaktan yapılan alıntı ya da atıf,Every citation must include the page number.,Her atıf sayfa numarasını içermeli.,4,exam:yds-yokdil,school-work
+b2-footnote,FOOTNOTE,F,STARTS,noun,"sayfanın altına düşülen açıklama notu, dipnot",The source is given in a footnote.,Kaynak bir dipnotta verilmiş.,4,exam:yds-yokdil,school-work
+b2-appendix,APPENDIX,X,CONTAINS,noun,bir kitabın ya da raporun sonundaki ek bölüm,The full data are in the appendix.,Verilerin tamamı ek bölümde.,4,exam:yds-yokdil,school-work
+b2-bibliography,BIBLIOGRAPHY,Y,CONTAINS,noun,"bir çalışmada kullanılan kaynakların listesi, kaynakça",Add the book to your bibliography.,Kitabı kaynakçana ekle.,4,exam:yds-yokdil,school-work
+b2-methodology,METHODOLOGY,Y,CONTAINS,noun,"bir araştırmada izlenen yöntemler bütünü, yöntem bilim",The methodology section explains how data were collected.,Yöntem bölümü verilerin nasıl toplandığını açıklıyor.,4,exam:yds-yokdil,school-work
+b2-participant,PARTICIPANT,P,STARTS,noun,bir araştırmaya ya da etkinliğe katılan kişi,Each participant filled in a form.,Her katılımcı bir form doldurdu.,3,exam:yds-yokdil,school-work
+b2-respondent,RESPONDENT,R,STARTS,noun,bir ankete ya da soruya cevap veren kişi,One respondent was over eighty.,Yanıtlayanlardan biri seksenin üzerindeydi.,4,exam:yds-yokdil,school-work
+b2-findings,FINDINGS,F,STARTS,noun,"bir araştırmanın ortaya koyduğu sonuçlar, bulgular",The findings surprised the research team.,Bulgular araştırma ekibini şaşırttı.,3,exam:yds-yokdil,school-work
+b2-statistical,STATISTICAL,S,STARTS,adj,"istatistikle ilgili, sayısal veriye dayanan",The difference was not statistical noise.,Fark istatistiksel bir gürültü değildi.,4,exam:yds-yokdil,school-work
+b2-significance,SIGNIFICANCE,S,STARTS,noun,"önem, anlamlılık",The study has great significance for teachers.,Çalışmanın öğretmenler için büyük önemi var.,4,exam:yds-yokdil,school-work
+b2-correlation,CORRELATION,C,STARTS,noun,"iki şey arasındaki karşılıklı ilişki, bağıntı",There is a strong correlation between sleep and grades.,Uyku ile notlar arasında güçlü bir ilişki var.,4,exam:yds-yokdil,school-work
+b2-causation,CAUSATION,C,STARTS,noun,"nedensellik, bir şeyin başka bir şeye neden olması",A link between two events does not prove causation.,İki olay arasındaki bağ nedenselliği kanıtlamaz.,5,exam:yds-yokdil,school-work
+b2-validity,VALIDITY,Y,CONTAINS,noun,"geçerlilik, doğruluk",Critics questioned the validity of the test.,Eleştirmenler testin geçerliliğini sorguladı.,4,exam:yds-yokdil,school-work
+b2-reliability,RELIABILITY,Y,CONTAINS,noun,"güvenilirlik, tutarlılık",The reliability of the data is high.,Verilerin güvenilirliği yüksek.,4,exam:yds-yokdil,school-work
+b2-replicate,REPLICATE,R,STARTS,verb,bir deneyi aynı sonuçları almak için tekrarlamak,Other teams could not replicate the results.,Başka ekipler sonuçları tekrarlayamadı.,5,exam:yds-yokdil,school-work
+b2-accuracy,ACCURACY,Y,CONTAINS,noun,"doğruluk, kesinlik",Check the accuracy of your figures.,Rakamlarının doğruluğunu kontrol et.,3,exam:yds-yokdil,school-work
+b2-precision,PRECISION,P,STARTS,noun,"çok ince ayrıntıya kadar kesinlik, hassasiyet",Surgeons work with great precision.,Cerrahlar büyük bir hassasiyetle çalışır.,4,exam:yds-yokdil,school-work
+b2-measurement,MEASUREMENT,M,STARTS,noun,ölçme ya da ölçüm sonucu,Take one measurement every hour.,Her saat bir ölçüm al.,3,exam:yds-yokdil,school-work
+b2-calibrate,CALIBRATE,C,STARTS,verb,bir ölçüm aletini doğru gösterecek şekilde ayarlamak,Calibrate the device before each test.,Her testten önce cihazı ayarla.,5,exam:yds-yokdil,school-work
+b2-prototype,PROTOTYPE,Y,CONTAINS,noun,bir ürünün denenmek üzere yapılan ilk örneği,The engineers built a prototype of the car.,Mühendisler arabanın bir prototipini yaptı.,4,exam:yds-yokdil,school-work
+b2-engineering,ENGINEERING,E,STARTS,noun,mühendislik,He wants to study engineering at university.,Üniversitede mühendislik okumak istiyor.,3,exam:yds-yokdil,school-work
+b2-mechanical,MECHANICAL,M,STARTS,adj,"makinelerle ilgili, mekanik",The delay was caused by a mechanical problem.,Gecikmeye mekanik bir sorun neden oldu.,3,exam:yds-yokdil,school-work
+b2-electrical,ELECTRICAL,E,STARTS,adj,elektrikle ilgili,Do not touch the electrical wires.,Elektrik kablolarına dokunma.,3,exam:yds-yokdil,school-work
+b2-robotics,ROBOTICS,R,STARTS,noun,"robot tasarımı ve yapımıyla ilgili bilim, robotik",Robotics is changing car factories.,Robotik araba fabrikalarını değiştiriyor.,4,exam:yds-yokdil,school-work
+b2-automation,AUTOMATION,A,STARTS,noun,"işlerin makinelerle otomatik yapılması, otomasyon",Automation may replace many jobs.,Otomasyon pek çok işin yerini alabilir.,4,exam:yds-yokdil,school-work

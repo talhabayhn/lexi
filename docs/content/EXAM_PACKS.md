@@ -15,7 +15,7 @@ content/exam-packs/
 ```
 - A pack lists every card it plays in `units/<pack-id>.csv`: its own pack-only cards and **references** to base
   cards (`content/cards`, any level) or to another pack's cards. A word that already exists anywhere is always
-  referenced, never re-created (no copied clues). YDS and YÖKDİL share academic cards this way.
+  referenced, never re-created (no copied clues). LGS and YDS / YÖKDİL share a few cards this way.
 - Pack-only cards carry `tags = exam:<pack>` (plus `exam:<other>` when another pack references them) and a normal
   category; they are `pack_only = 1` in `content.db`, so they never appear in free level/category wheels.
 - `unit` values are English slugs (`friendship`, `science`, `health`, …). The app must map them to string
@@ -51,9 +51,10 @@ truth; run it after the script.
    `target_level_range`.
 5. Report: cards per pack × letter and pack-only vs referenced counts.
 
-## Product decisions still open (owner)
-- `free_preview_letters` is a placeholder (`ABCDE`): what a free user can try from a Pro pack. The design shows
-  LGS without a PRO badge (progress `%34`); `packs.csv` marks every pack `is_pro = 1` per `PRODUCT.md`.
-- The design (`10-exam-packs`) has one row "YDS / YÖKDİL"; the content has two packs (`yds`, `yokdil`). The UI
-  can show them as one row with two wheels, or as two rows.
-- Row subtitles in the design ("600 kelime", "2000") are design placeholders; use the real card counts.
+## Owner decisions (2026-10)
+- `lgs` is free (`is_pro = 0`, no preview letters), matching the design (no PRO badge).
+- YDS and YÖKDİL are ONE Pro pack, `yds-yokdil` (one row in the design), `free_preview_letters = ABCDE`: what a
+  free user can try from it. Its units keep both source themes (YDS: connectors … collocations; YÖKDİL: sciences,
+  health, social-sciences, research-methods); a card shared by both appears once, under its first unit.
+- Row subtitles in the design ("600 kelime", "2000") are placeholders; show the real card counts.
+- TEAM is not added (no edits to base cards).

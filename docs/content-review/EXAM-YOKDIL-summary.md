@@ -1,5 +1,8 @@
 # Exam pack review — YÖKDİL
 
+> Merged (owner decision 2026-10): YÖKDİL is now part of the single pack `yds-yokdil` (990 cards after
+> de-duplication, ≥ 15 per letter). Counts below are the pre-merge source counts; the uncertain items still apply.
+
 500 cards: 209 own pack-only cards (`content/exam-packs/cards/B1/yokdil.csv` 12, `B2/yokdil.csv` 187,
 `C1/yokdil.csv` 10) + 114 references to YDS/LGS pack cards + 177 references to base cards. Referenced/own levels:
 B2 369 · C1 85 · B1 45 · A2 1.

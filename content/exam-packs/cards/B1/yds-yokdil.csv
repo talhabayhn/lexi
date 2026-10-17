@@ -1,0 +1,13 @@
+id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
+b1-hydrogen,HYDROGEN,Y,CONTAINS,noun,en hafif ve en yaygın element,Water is made of hydrogen and oxygen.,Su hidrojen ve oksijenden oluşur.,3,exam:yds-yokdil,technology
+b1-cancer,CANCER,C,STARTS,noun,hücrelerin kontrolsüz çoğaldığı ağır hastalık,Smoking is the main reason for many types of cancer.,Sigara pek çok kanser türünün başlıca nedenidir.,3,exam:yds-yokdil,body-health
+b1-clinic,CLINIC,C,STARTS,noun,belirli hastalıklara bakan sağlık merkezi,The eye clinic opens at nine.,Göz kliniği dokuzda açılır.,2,exam:yds-yokdil,body-health
+b1-organ,ORGAN,O,STARTS,noun,kalp ya da karaciğer gibi belli işi olan vücut parçası,The heart is a vital organ.,Kalp hayati bir organdır.,3,exam:yds-yokdil,body-health
+b1-kidney,KIDNEY,K,STARTS,noun,"kanı süzüp idrar üreten organ, böbrek",Drinking water is good for your kidney health.,Su içmek böbrek sağlığına iyi gelir.,3,exam:yds-yokdil,body-health
+b1-liver,LIVER,L,STARTS,noun,"kanı temizleyen büyük iç organ, karaciğer",Too much fat is bad for the liver.,Fazla yağ karaciğere kötü gelir.,3,exam:yds-yokdil,body-health
+b1-lung,LUNG,L,STARTS,noun,"nefes almayı sağlayan organ, akciğer",Smoking harms the lung tissue.,Sigara akciğer dokusuna zarar verir.,3,exam:yds-yokdil,body-health
+b1-spine,SPINE,S,STARTS,noun,"sırttaki kemik dizisi, omurga",Sit up straight to keep your spine healthy.,Omurganı sağlıklı tutmak için dik otur.,3,exam:yds-yokdil,body-health
+b1-pill,PILL,P,STARTS,noun,"yutulan küçük ilaç, hap",Take one pill every morning.,Her sabah bir hap al.,2,exam:yds-yokdil,body-health
+b1-pulse,PULSE,P,STARTS,noun,"kalp atışının bilekte hissedilmesi, nabız",The nurse checked my pulse.,Hemşire nabzımı kontrol etti.,3,exam:yds-yokdil,body-health
+b1-heal,HEAL,H,STARTS,verb,bir yaranın ya da kırığın iyileşmesi,The cut will heal in a week.,Kesik bir haftada iyileşir.,2,exam:yds-yokdil,body-health
+b1-recover,RECOVER,R,STARTS,verb,hastalıktan sonra eski sağlığına kavuşmak,It took me a month to recover from flu.,Gripten iyileşmem bir ay sürdü.,2,exam:yds-yokdil,body-health
