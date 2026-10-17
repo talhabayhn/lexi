@@ -38,3 +38,37 @@ b1-washing-machine,WASHING MACHINE,W,STARTS,phrase,çamaşırları yıkayan elek
 b1-vacuum-cleaner,VACUUM CLEANER,V,STARTS,phrase,tozları emerek temizleyen elektrikli süpürge,Our vacuum cleaner is very noisy.,Elektrikli süpürgemiz çok gürültülü.,3,exam:lgs,daily-life
 b1-tidy-up,TIDY UP,T,STARTS,phrasal,bir yeri toplayıp düzenlemek,Tidy up your room before your friends come.,Arkadaşların gelmeden önce odanı topla.,2,exam:lgs,daily-life
 b1-clear-the-table,CLEAR THE TABLE,C,STARTS,phrase,yemekten sonra masadaki tabakları kaldırmak,Can you clear the table after dinner?,Akşam yemeğinden sonra sofrayı kaldırır mısın?,2,exam:lgs,daily-life
+b1-discovery,DISCOVERY,D,STARTS,noun,"daha önce bilinmeyen bir şeyi ortaya çıkarma, keşif",The discovery of penicillin saved many lives.,Penisilinin keşfi pek çok hayat kurtardı.,3,exam:lgs,school-work
+b1-atom,ATOM,A,STARTS,noun,maddenin en küçük yapı taşı,"Everything around us is made of atoms, and each atom is tiny.",Etrafımızdaki her şey atomlardan oluşur ve her atom çok küçüktür.,3,exam:lgs,school-work
+b1-cell,CELL,C,STARTS,noun,canlıları oluşturan en küçük yapı birimi,A cell is too small to see with your eyes.,Bir hücre gözle görülemeyecek kadar küçüktür.,3,exam:lgs,school-work
+b1-evaporate,EVAPORATE,E,STARTS,verb,ısınan suyun buhara dönüşüp havaya karışması,The sun makes the water in the pool evaporate.,Güneş havuzdaki suyun buharlaşmasını sağlar.,4,exam:lgs,school-work
+b1-orbit,ORBIT,O,STARTS,noun,bir gök cisminin başka birinin çevresinde izlediği yol,The Moon moves in an orbit around the Earth.,"Ay, Dünya'nın çevresinde bir yörüngede döner.",4,exam:lgs,school-work
+b1-satellite,SATELLITE,S,STARTS,noun,bir gezegenin çevresinde dönen yapay ya da doğal cisim,Türksat is a Turkish satellite.,Türksat bir Türk uydusudur.,3,exam:lgs,school-work
+b1-patent,PATENT,P,STARTS,noun,bir buluşun sahibine verilen resmî hak belgesi,The inventor got a patent for her new machine.,Mucit yeni makinesi için patent aldı.,4,exam:lgs,school-work
+b1-vaccine,VACCINE,V,STARTS,noun,hastalıklara karşı bağışıklık kazandıran aşı,Doctors gave the children a vaccine against measles.,Doktorlar çocuklara kızamığa karşı aşı yaptı.,3,exam:lgs,body-health
+b1-lens,LENS,L,STARTS,noun,ışığı kırarak görüntüyü büyüten cam parça,The camera has a very good lens.,Kameranın çok iyi bir merceği var.,3,exam:lgs,school-work
+b1-circuit,CIRCUIT,C,STARTS,noun,"elektriğin içinden geçtiği kapalı yol, devre",We made a simple circuit with a battery.,Bir pille basit bir devre yaptık.,4,exam:lgs,school-work
+b1-fossil,FOSSIL,F,STARTS,noun,taşlaşmış çok eski canlı kalıntısı,They found a dinosaur fossil in the desert.,Çölde bir dinozor fosili buldular.,3,exam:lgs,school-work
+b1-evolution,EVOLUTION,E,STARTS,noun,canlıların uzun zamanda yavaş yavaş değişmesi,Darwin wrote about the evolution of animals.,Darwin hayvanların evrimi hakkında yazdı.,4,exam:lgs,school-work
+b1-curiosity,CURIOSITY,C,STARTS,noun,"bir şeyi öğrenme isteği, merak",Curiosity is the first step in science.,Merak bilimin ilk adımıdır.,3,exam:lgs,school-work
+b1-scientific,SCIENTIFIC,S,STARTS,adj,"bilimle ilgili, bilimsel",This is a scientific magazine for kids.,"Bu, çocuklar için bir bilim dergisi.",3,exam:lgs,school-work
+b1-steam-engine,STEAM ENGINE,S,STARTS,phrase,buharın gücüyle çalışan makine,The steam engine changed transport forever.,Buhar makinesi ulaşımı sonsuza dek değiştirdi.,4,exam:lgs,school-work
+b1-test-tube,TEST TUBE,T,STARTS,phrase,laboratuvarda kullanılan ince uzun cam tüp,Pour the liquid into the test tube.,Sıvıyı deney tüpüne dök.,3,exam:lgs,school-work
+b1-disaster,DISASTER,D,STARTS,noun,"büyük zarara ve kayba yol açan olay, felaket",The flood was a disaster for the village.,Sel köy için bir felaketti.,3,exam:lgs,school-work
+b1-tsunami,TSUNAMI,T,STARTS,noun,deniz altındaki depremden doğan dev dalga,The tsunami hit the coast an hour after the earthquake.,Dev dalga depremden bir saat sonra kıyıya ulaştı.,3,exam:lgs,school-work
+b1-erupt,ERUPT,E,STARTS,verb,yanardağın lav ve kül püskürtmesi,Scientists think the volcano will erupt soon.,Bilim insanları yanardağın yakında püskürteceğini düşünüyor.,4,exam:lgs,school-work
+b1-avalanche,AVALANCHE,A,STARTS,noun,"dağdan hızla kayan büyük kar kütlesi, çığ",The road is closed because of an avalanche.,Yol bir çığ nedeniyle kapalı.,3,exam:lgs,school-work
+b1-drought,DROUGHT,D,STARTS,noun,"uzun süre yağmur yağmaması, kuraklık",The drought killed many crops this year.,Kuraklık bu yıl pek çok ürünü kuruttu.,4,exam:lgs,school-work
+b1-wildfire,WILDFIRE,W,STARTS,noun,kırsalda kontrolsüz yayılan yangın,The wildfire burned the forest for three days.,Yangın ormanı üç gün boyunca yaktı.,3,exam:lgs,school-work
+b1-heatwave,HEATWAVE,H,STARTS,noun,günlerce süren aşırı sıcak hava dönemi,"During the heatwave, people stayed indoors.",Sıcak hava dalgası boyunca insanlar evde kaldı.,3,exam:lgs,school-work
+b1-survivor,SURVIVOR,S,STARTS,noun,bir felaketten sağ kurtulan kişi,The team found a survivor under the building.,Ekip binanın altında bir hayatta kalan buldu.,3,exam:lgs,school-work
+b1-evacuate,EVACUATE,E,STARTS,verb,tehlike yüzünden insanları bir yerden çıkarmak,The police had to evacuate the village.,Polis köyü boşaltmak zorunda kaldı.,4,exam:lgs,school-work
+b1-precaution,PRECAUTION,P,STARTS,noun,kötü bir şey olmasın diye önceden alınan önlem,Take every precaution before an earthquake.,Depremden önce her önlemi al.,4,exam:lgs,school-work
+b1-tremble,TREMBLE,T,STARTS,verb,korkudan ya da sarsıntıdan titremek,I saw the windows tremble during the earthquake.,Deprem sırasında camların titrediğini gördüm.,4,exam:lgs,school-work
+b1-rainfall,RAINFALL,R,STARTS,noun,belli bir sürede yağan yağmur miktarı,Heavy rainfall caused floods in the city.,Şiddetli yağış şehirde sellere yol açtı.,4,exam:lgs,school-work
+b1-carbon,CARBON,C,STARTS,noun,kömürde ve tüm canlılarda bulunan element,Cars send carbon into the air.,Arabalar havaya karbon salar.,4,exam:lgs,school-work
+b1-sea-level,SEA LEVEL,S,STARTS,phrase,denizin yüksekliği; yükseklik ölçümünde başlangıç noktası,The sea level is rising because ice is melting.,Buzlar eridiği için deniz seviyesi yükseliyor.,4,exam:lgs,school-work
+b1-endangered,ENDANGERED,E,STARTS,adj,soyu tükenme tehlikesinde olan,Sea turtles are an endangered animal in Türkiye.,Deniz kaplumbağaları Türkiye'de nesli tehlikedeki bir hayvandır.,4,exam:lgs,animals
+b1-donate,DONATE,D,STARTS,verb,bir amaç için para ya da eşya bağışlamak,Many people donate blankets after an earthquake.,Depremden sonra birçok kişi battaniye bağışlar.,3,exam:lgs,daily-life
+b1-trapped,TRAPPED,T,STARTS,adj,bir yerde sıkışıp çıkamayan,A cat was trapped under the stairs.,Bir kedi merdivenin altında sıkışıp kalmıştı.,3,exam:lgs,daily-life
+b1-aftershock,AFTERSHOCK,A,STARTS,noun,büyük depremden sonra gelen daha küçük sarsıntı,We felt a strong aftershock at night.,Gece güçlü bir artçı sarsıntı hissettik.,4,exam:lgs,school-work

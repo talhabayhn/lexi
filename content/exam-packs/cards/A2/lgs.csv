@@ -205,3 +205,21 @@ a2-do-the-shopping,DO THE SHOPPING,D,STARTS,phrase,evin alışverişini yapmak,W
 a2-shopping-list,SHOPPING LIST,S,STARTS,phrase,alınacak şeylerin yazıldığı kâğıt,Add milk to the shopping list.,Alışveriş listesine süt ekle.,2,exam:lgs,home
 a2-walk-the-dog,WALK THE DOG,W,STARTS,phrase,köpeği dışarıda gezdirmek,It is my turn to walk the dog.,Köpeği gezdirme sırası bende.,2,exam:lgs,home
 a2-lawnmower,LAWNMOWER,L,STARTS,noun,çim biçme makinesi,"Our lawnmower is old, but it works.",Çim biçme makinemiz eski ama çalışıyor.,4,exam:lgs,home
+a2-invention,INVENTION,I,STARTS,noun,"daha önce olmayan yeni bir alet ya da fikir, buluş",The telephone was a great invention.,Telefon büyük bir buluştu.,2,exam:lgs,school-work
+a2-inventor,INVENTOR,I,STARTS,noun,"yeni bir şey bulan, mucit",Thomas Edison was a famous inventor.,Thomas Edison ünlü bir mucitti.,2,exam:lgs,school-work
+a2-microscope,MICROSCOPE,M,STARTS,noun,çok küçük şeyleri büyüterek gösteren alet,We looked at a leaf under the microscope.,Mikroskop altında bir yaprağa baktık.,2,exam:lgs,school-work
+a2-magnet,MAGNET,M,STARTS,noun,demiri kendine çeken metal parça,The magnet picked up all the nails.,Mıknatıs bütün çivileri çekti.,2,exam:lgs,school-work
+a2-thermometer,THERMOMETER,T,STARTS,noun,sıcaklığı ölçen alet,The thermometer shows thirty degrees.,Termometre otuz dereceyi gösteriyor.,3,exam:lgs,school-work
+a2-weigh,WEIGH,W,STARTS,verb,bir şeyin kaç kilo olduğunu ölçmek,We weigh the apples before we buy them.,Elmaları almadan önce tartarız.,3,exam:lgs,school-work
+a2-solar-system,SOLAR SYSTEM,S,STARTS,phrase,Güneş ve çevresinde dönen gezegenlerin bütünü,Jupiter is the biggest planet in our solar system.,Jüpiter Güneş sistemimizdeki en büyük gezegendir.,3,exam:lgs,school-work
+a2-nobel-prize,NOBEL PRIZE,N,STARTS,phrase,bilim ve barış alanında verilen dünyaca ünlü ödül,Aziz Sancar won the Nobel Prize in 2015.,Aziz Sancar 2015'te Nobel Ödülü'nü kazandı.,3,exam:lgs,school-work
+a2-tornado,TORNADO,T,STARTS,noun,huni biçiminde dönen çok güçlü rüzgâr,A tornado damaged the small town last night.,Dün gece bir hortum küçük kasabaya zarar verdi.,3,exam:lgs,time-weather
+a2-forest-fire,FOREST FIRE,F,STARTS,phrase,ormanda çıkan büyük yangın,Firefighters worked all night to stop the forest fire.,İtfaiyeciler orman yangınını durdurmak için bütün gece çalıştı.,2,exam:lgs,time-weather
+a2-global-warming,GLOBAL WARMING,G,STARTS,phrase,dünyanın ortalama sıcaklığının artması,Global warming makes summers hotter.,Küresel ısınma yazları daha sıcak yapıyor.,3,exam:lgs,time-weather
+a2-climate-change,CLIMATE CHANGE,C,STARTS,phrase,dünyanın iklim düzeninin uzun sürede değişmesi,Climate change affects every country.,İklim değişikliği her ülkeyi etkiler.,3,exam:lgs,time-weather
+a2-first-aid,FIRST AID,F,STARTS,phrase,yaralıya doktor gelmeden yapılan ilk yardım,Every teacher at our school knows first aid.,Okulumuzdaki her öğretmen ilk yardım bilir.,2,exam:lgs,body-health
+a2-emergency-kit,EMERGENCY KIT,E,STARTS,phrase,"afet anı için hazırlanan su, fener ve ilaç çantası",Put an emergency kit near the door.,Kapının yanına bir afet çantası koy.,3,exam:lgs,daily-life
+a2-drill,DRILL,D,STARTS,noun,tehlike anında ne yapılacağını öğreten tatbikat,We had a fire drill at school today.,Bugün okulda yangın tatbikatı yaptık.,3,exam:lgs,school-work
+a2-crack,CRACK,C,STARTS,noun,"bir yüzeyde oluşan ince yarık, çatlak",There is a long crack in the wall.,Duvarda uzun bir çatlak var.,3,exam:lgs,home
+a2-forecast,FORECAST,F,STARTS,noun,havanın nasıl olacağına dair tahmin,The forecast says it will rain tomorrow.,Hava tahmini yarın yağmur yağacağını söylüyor.,2,exam:lgs,time-weather
+a2-injured,INJURED,I,STARTS,adj,bir kazada ya da afette yaralanmış,Two players were injured in the match.,Maçta iki oyuncu yaralandı.,2,exam:lgs,body-health
