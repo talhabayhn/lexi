@@ -1,0 +1,5 @@
+id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
+b1-best-friend,BEST FRIEND,B,STARTS,phrase,"insanın en yakın, en sevdiği arkadaşı",Elif has been my best friend for six years.,Elif altı yıldır en iyi arkadaşım.,1,exam:lgs,family-people
+b1-keep-in-touch,KEEP IN TOUCH,K,STARTS,phrase,uzakta olsa da biriyle iletişimi sürdürmek,"We moved to İzmir, but we keep in touch online.",İzmir'e taşındık ama internetten iletişimi sürdürüyoruz.,3,exam:lgs,family-people
+b1-surprise-party,SURPRISE PARTY,S,STARTS,phrase,kutlanan kişinin haberi olmadan hazırlanan eğlence,We had a surprise party for Elif on Friday.,Cuma günü Elif için sürpriz parti düzenledik.,2,exam:lgs,daily-life
+b1-pocket-money,POCKET MONEY,P,STARTS,phrase,ailenin çocuğa düzenli verdiği harçlık,I keep my pocket money in a small box.,Harçlığımı küçük bir kutuda saklarım.,2,exam:lgs,daily-life

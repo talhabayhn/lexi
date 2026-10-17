@@ -1,0 +1,34 @@
+id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
+a2-caring,CARING,C,STARTS,adj,"başkalarını önemseyen, şefkatli",My aunt is a caring person and she helps everyone.,Teyzem şefkatli biridir ve herkese yardım eder.,2,exam:lgs,family-people
+a2-supportive,SUPPORTIVE,S,STARTS,adj,"zor anlarda arkasında duran, destek olan",Deniz was very supportive before my big exam.,Deniz büyük sınavımdan önce bana çok destek oldu.,3,exam:lgs,family-people
+a2-trustworthy,TRUSTWORTHY,T,STARTS,adj,sırrını rahatça emanet edebileceğin,"Zeynep is trustworthy, so I tell her everything.","Zeynep güvenilir biri, bu yüzden ona her şeyi anlatırım.",3,exam:lgs,family-people
+a2-get-on-well,GET ON WELL,G,STARTS,phrase,"biriyle iyi anlaşmak, uyum içinde olmak",I get on well with my cousin Mert.,Kuzenim Mert ile iyi anlaşırım.,2,exam:lgs,family-people
+a2-make-friends,MAKE FRIENDS,M,STARTS,phrase,yeni insanlarla arkadaşlık kurmak,It is easy to make friends at summer camp.,Yaz kampında arkadaş edinmek kolaydır.,2,exam:lgs,family-people
+a2-apology,APOLOGY,A,STARTS,noun,"özür, hatanı kabul edip üzgün olduğunu söyleme",Ali gave Elif a sincere apology.,"Ali, Elif'ten içtenlikle özür diledi.",3,exam:lgs,family-people
+a2-excuse,EXCUSE,E,STARTS,noun,bir hatayı açıklamak için öne sürülen sebep,Emre always has an excuse for being late.,Emre'nin geç kalmak için her zaman bir bahanesi vardır.,2,exam:lgs,daily-life
+a2-rely-on,RELY ON,R,STARTS,phrasal,birine güvenip ondan yardım beklemek,You can rely on Ayşe; she never lets you down.,Ayşe'ye güvenebilirsin; seni asla yarı yolda bırakmaz.,3,exam:lgs,family-people
+a2-penfriend,PENFRIEND,P,STARTS,noun,mektupla ya da e-postayla yazıştığın uzak arkadaş,My penfriend from Spain sends me postcards.,İspanya'daki mektup arkadaşım bana kartpostal gönderir.,3,exam:lgs,family-people
+a2-moody,MOODY,M,STARTS,adj,ruh hâli sık sık ve aniden değişen,My brother is moody in the mornings.,Erkek kardeşim sabahları huysuz olur.,3,exam:lgs,family-people
+a2-bully,BULLY,B,STARTS,noun,kendinden güçsüzlere sürekli eziyet eden kişi,The teacher talked to the bully after the break.,Öğretmen teneffüsten sonra zorbayla konuştu.,3,exam:lgs,school-work
+a2-fan,FAN,F,STARTS,noun,bir şarkıcıya ya da takıma tutkuyla bağlı hayran,Mert is a big fan of that football club.,Mert o futbol kulübünün büyük bir hayranı.,1,exam:lgs,daily-life
+a2-mall,MALL,M,STARTS,noun,içinde pek çok mağaza bulunan büyük kapalı çarşı,We met at the mall on Saturday afternoon.,Cumartesi öğleden sonra alışveriş merkezinde buluştuk.,1,exam:lgs,city-transport
+a2-comic,COMIC,C,STARTS,noun,resimli konuşma balonlarıyla anlatılan hikâye dergisi,Emre reads a comic before he goes to sleep.,Emre uyumadan önce bir çizgi roman okur.,2,exam:lgs,daily-life
+a2-sporty,SPORTY,S,STARTS,adj,spor yapmayı seven ve formda olan,Zeynep is very sporty; she runs every morning.,Zeynep çok sportif; her sabah koşar.,2,exam:lgs,sports
+a2-hardworking,HARDWORKING,H,STARTS,adj,işine ya da derslerine çok emek veren,Selin is a hardworking student.,Selin çalışkan bir öğrencidir.,2,exam:lgs,school-work
+a2-sociable,SOCIABLE,S,STARTS,adj,başkalarıyla vakit geçirmekten hoşlanan,Deniz is sociable and talks to everyone at parties.,Deniz girişkendir ve partilerde herkesle konuşur.,3,exam:lgs,family-people
+a2-awesome,AWESOME,A,STARTS,adj,"günlük dilde: harika, müthiş",Your new bike is awesome!,Yeni bisikletin müthiş!,2,exam:lgs,daily-life
+a2-dislike,DISLIKE,D,STARTS,verb,bir şeyden hoşlanmamak,"I dislike cold weather, so I love summer.","Soğuk havadan hoşlanmam, bu yüzden yazı severim.",2,exam:lgs,daily-life
+a2-fond,FOND,F,STARTS,adj,"bir şeye ya da birine düşkün, sevgi besleyen",My grandma is fond of old songs.,Büyükannem eski şarkılara düşkündür.,3,exam:lgs,daily-life
+a2-interested,INTERESTED,I,STARTS,adj,bir konuya merak ve ilgi duyan,Elif is interested in photography.,Elif fotoğrafçılıkla ilgileniyor.,1,exam:lgs,daily-life
+a2-choir,CHOIR,C,STARTS,noun,birlikte şarkı söyleyen kişilerden oluşan grup,Ayşe sings in the school choir.,Ayşe okul korosunda şarkı söylüyor.,3,exam:lgs,music
+a2-teammate,TEAMMATE,T,STARTS,noun,aynı takımda oynadığın kişi,My teammate passed me the ball and I scored.,Takım arkadaşım bana pas verdi ve gol attım.,2,exam:lgs,sports
+a2-video-game,VIDEO GAME,V,STARTS,phrase,ekranda oynanan elektronik oyun,Mert plays a video game after his homework.,Mert ödevinden sonra bir video oyunu oynar.,1,exam:lgs,daily-life
+a2-sitcom,SITCOM,S,STARTS,noun,aynı karakterlerle süren komik televizyon dizisi,We watch a funny sitcom every Friday evening.,Her cuma akşamı komik bir durum komedisi izleriz.,3,exam:lgs,daily-life
+a2-thriller,THRILLER,T,STARTS,noun,izleyeni gerilimde tutan heyecanlı film ya da kitap,Ali stayed up late to finish the thriller.,Ali gerilim romanını bitirmek için geç saate kadar oturdu.,3,exam:lgs,daily-life
+a2-classical,CLASSICAL,C,STARTS,adj,Mozart gibi bestecilerin geleneksel müziği için,My dad listens to classical music in the car.,Babam arabada klasik müzik dinler.,2,exam:lgs,music
+a2-playlist,PLAYLIST,P,STARTS,noun,sırayla çalınmak üzere seçilmiş şarkı listesi,I made a playlist for our road trip.,Yol gezimiz için bir çalma listesi hazırladım.,2,exam:lgs,music
+a2-lyrics,LYRICS,L,STARTS,noun,bir şarkının sözleri,Deniz learned the lyrics in one day.,Deniz şarkı sözlerini bir günde öğrendi.,3,exam:lgs,music
+a2-karaoke,KARAOKE,K,STARTS,noun,ekrandaki sözlere bakarak müzik eşliğinde şarkı söyleme,We sang karaoke at Selin's birthday party.,Selin'in doğum günü partisinde karaoke yaptık.,2,exam:lgs,music
+a2-knitting,KNITTING,K,STARTS,noun,şiş ve yünle örgü örme işi,My aunt taught me knitting last winter.,Teyzem geçen kış bana örgü örmeyi öğretti.,3,exam:lgs,daily-life
+a2-junk-food,JUNK FOOD,J,STARTS,phrase,"yağlı, şekerli ve besleyici olmayan hazır yiyecek",Teenagers should not eat junk food every day.,Gençler her gün abur cubur yememeli.,2,exam:lgs,food-drink
+a2-social-media,SOCIAL MEDIA,S,STARTS,phrase,insanların paylaşım yaptığı internet platformları,Zeynep spends an hour on social media every day.,Zeynep her gün bir saatini sosyal ağlarda geçiriyor.,2,exam:lgs,daily-life

@@ -19,11 +19,12 @@ content/blocklist.txt                   │                                  (bu
   all six before v1.0 release).
 - Production flow: open word lists → AI drafts Turkish clues/examples → **human review** (product owner) →
   CSV → compiler validation → playtest.
-- **Exam packs are not in this repo** (owner decision): level content (A1–NAT) is public here; Pro exam pack
-  content lives in a separate private repo and is passed to the compiler only as an external directory
-  (`--packs <dir>` or env `LEXI_PACKS_DIR`; the flag wins; the app build reads the env). `content/exam_packs/` is
-  gitignored so a local copy is never committed by accident. Without packs the compiler still writes a valid `content.db` with empty
-  `exam_pack*` tables. Test fixtures under `tools/content-compiler/src/test/resources/fixtures/` are synthetic.
+- **Exam packs live in `content/exam-packs/`** (owner decision 2026-10, replaces the earlier private-repo plan; the
+  repo goes private before release). They are passed to the compiler as the external pack directory
+  (`--packs content/exam-packs` or env `LEXI_PACKS_DIR`; the flag wins; the app build reads the env). Format and the
+  open compiler work: `docs/content/EXAM_PACKS.md`. `content/exam_packs/` (underscore) stays gitignored. Without
+  packs the compiler still writes a valid `content.db` with empty `exam_pack*` tables. Test fixtures under
+  `tools/content-compiler/src/test/resources/fixtures/` are synthetic.
 
 Run by hand for the report (from the repo root; exit 0 = written, 1 = validation errors and nothing written,
 2 = usage/I-O error):
@@ -42,7 +43,7 @@ Output is reproducible: the same input gives a byte-identical `content.db`. `met
 The report lists cards per level × letter (`!` = below the minimum), cards per category × level, exam packs,
 then warnings (stdout) and errors (stderr) as clickable `file:line: error: message`.
 
-### Exam pack directory layout (private repo)
+### Exam pack directory layout (`content/exam-packs/`)
 ```
 packs.csv               id,name,description,is_pro,sort        (id = slug, is_pro 0/1)
 units/<pack-id>.csv     card_id,unit                           (references any card id; unit may be empty)
