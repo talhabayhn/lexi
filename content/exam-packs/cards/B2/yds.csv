@@ -82,7 +82,7 @@ b2-innate,INNATE,I,STARTS,adj,"doğuştan gelen, sonradan öğrenilmeyen",Babies
 b2-hereditary,HEREDITARY,Y,CONTAINS,adj,"anne babadan çocuğa geçen, kalıtsal",Colour blindness is often hereditary.,Renk körlüğü çoğunlukla kalıtsaldır.,4,exam:yds|exam:yokdil,school-work
 b2-fossil-fuel,FOSSIL FUEL,F,STARTS,phrase,kömür ve petrol gibi milyonlarca yılda oluşan yakıt,Burning fossil fuel adds carbon to the air.,Fosil yakıt yakmak havaya karbon ekler.,3,exam:yds|exam:yokdil,school-work
 b2-predator,PREDATOR,P,STARTS,noun,başka hayvanları avlayıp yiyen hayvan,The lion is a top predator.,Aslan besin zincirinin tepesindeki avcıdır.,3,exam:yds,school-work
-b2-archaeology,ARCHAEOLOGY,Y,CONTAINS,noun,eski uygarlıkları kalıntılardan inceleyen bilim,Göbeklitepe changed the history of archaeology.,Göbeklitepe arkeoloji tarihini değiştirdi.,4,exam:yds,school-work
+b2-archaeology,ARCHAEOLOGY,Y,CONTAINS,noun,eski uygarlıkları kalıntılardan inceleyen bilim,Göbeklitepe changed the history of archaeology.,Göbeklitepe arkeoloji tarihini değiştirdi.,4,exam:yds|exam:yokdil,school-work
 b2-marine,MARINE,M,STARTS,adj,denizle ve denizdeki yaşamla ilgili,Plastic harms marine life.,Plastik deniz yaşamına zarar verir.,3,exam:yds|exam:yokdil,school-work
 b2-precipitation,PRECIPITATION,P,STARTS,noun,"yağmur, kar gibi yağış",Annual precipitation here is very low.,Burada yıllık yağış çok düşüktür.,5,exam:yds|exam:yokdil,school-work
 b2-diabetes,DIABETES,D,STARTS,noun,"kandaki şekerin yükseldiği kronik hastalık, şeker hastalığı","My grandfather has diabetes, so he avoids sugar.","Büyükbabam şeker hastası, bu yüzden şekerden uzak duruyor.",3,exam:yds|exam:yokdil,body-health
@@ -129,7 +129,7 @@ b2-landfill,LANDFILL,L,STARTS,noun,"çöplerin gömüldüğü alan, çöp dökü
 b2-pollutant,POLLUTANT,P,STARTS,noun,"havayı, suyu ya da toprağı kirleten madde",Each pollutant in the river harms fish.,Nehirdeki her kirletici balıklara zarar verir.,4,exam:yds,school-work
 b2-irrigation,IRRIGATION,I,STARTS,noun,tarlaların yapay yollarla sulanması,Irrigation turned the dry plain into farmland.,Sulama kurak ovayı tarım arazisine çevirdi.,4,exam:yds,school-work
 b2-overpopulation,OVERPOPULATION,O,STARTS,noun,bir yerde kaldırabileceğinden fazla insan yaşaması,Overpopulation puts pressure on water supplies.,Aşırı nüfus su kaynakları üzerinde baskı yaratır.,4,exam:yds,school-work
-b2-urbanization,URBANIZATION,Z,CONTAINS,noun,nüfusun kırdan kente göçüyle şehirlerin büyümesi,Rapid urbanization changed the coastline.,Hızlı kentleşme kıyı şeridini değiştirdi.,4,exam:yds,school-work
+b2-urbanization,URBANIZATION,Z,CONTAINS,noun,nüfusun kırdan kente göçüyle şehirlerin büyümesi,Rapid urbanization changed the coastline.,Hızlı kentleşme kıyı şeridini değiştirdi.,4,exam:yds|exam:yokdil,school-work
 b2-contamination,CONTAMINATION,C,STARTS,noun,zararlı bir maddeyle kirlenme,The water showed signs of contamination.,Suda kirlenme belirtileri vardı.,4,exam:yds,school-work
 b2-arid,ARID,A,STARTS,adj,"çok az yağış alan, kurak",Cacti grow well in arid regions.,Kaktüsler kurak bölgelerde iyi yetişir.,4,exam:yds,school-work
 b2-abundant,ABUNDANT,A,STARTS,adj,bol miktarda bulunan,Fish were once abundant in this lake.,Bu gölde bir zamanlar bol balık vardı.,3,exam:yds,school-work
@@ -186,7 +186,7 @@ b2-eligible,ELIGIBLE,E,STARTS,adj,bir hakka ya da göreve sahip olabilecek koşu
 b2-regulate,REGULATE,R,STARTS,verb,kurallarla düzenlemek ve denetlemek,Agencies regulate the use of drones closely.,Kurumlar insansız hava araçlarının kullanımını yakından denetler.,4,exam:yds,school-work
 b2-regulation,REGULATION,R,STARTS,noun,"resmî kural, yönetmelik",The new regulation applies to all restaurants.,Yeni yönetmelik bütün restoranlar için geçerli.,3,exam:yds,school-work
 b2-territory,TERRITORY,Y,CONTAINS,noun,bir devletin egemenliğindeki toprak,The island is Greek territory.,Ada Yunan toprağıdır.,3,exam:yds,school-work
-b2-refugee,REFUGEE,R,STARTS,noun,"savaş ya da baskı yüzünden ülkesinden kaçan kişi, mülteci",The camp gives shelter to every refugee.,Kamp her mülteciye barınak sağlıyor.,3,exam:yds,school-work
+b2-refugee,REFUGEE,R,STARTS,noun,"savaş ya da baskı yüzünden ülkesinden kaçan kişi, mülteci",The camp gives shelter to every refugee.,Kamp her mülteciye barınak sağlıyor.,3,exam:yds|exam:yokdil,school-work
 b2-immigration,IMMIGRATION,I,STARTS,noun,"başka bir ülkeye yerleşmek için gelme, göç",Immigration laws became stricter.,Göç yasaları sıkılaştı.,3,exam:yds,school-work
 b2-civil,CIVIL,C,STARTS,adj,vatandaşlarla ilgili; askerî olmayan,Civil servants asked for higher wages.,Devlet memurları daha yüksek maaş istedi.,3,exam:yds,school-work
 b2-assembly,ASSEMBLY,Y,CONTAINS,noun,yasa yapan seçilmiş meclis; toplantı,The national assembly met to discuss the budget.,Millet meclisi bütçeyi görüşmek için toplandı.,3,exam:yds,school-work
@@ -195,32 +195,32 @@ b2-conviction,CONVICTION,C,STARTS,noun,mahkûmiyet kararı; güçlü inanç,He h
 b2-human-rights,HUMAN RIGHTS,H,STARTS,phrase,her insanın doğuştan sahip olduğu temel haklar,Freedom of speech is one of our human rights.,İfade özgürlüğü temel insan haklarımızdan biridir.,3,exam:yds,school-work
 b2-voter,VOTER,V,STARTS,noun,"seçimde oy kullanan kişi, seçmen",Every voter must show an ID card.,Her seçmen kimlik kartı göstermeli.,2,exam:yds,school-work
 b2-coup,COUP,C,STARTS,noun,"yönetimi zorla ele geçirme girişimi, darbe",The army tried to stage a coup.,Ordu bir darbe yapmaya kalkıştı.,4,exam:yds,school-work
-b2-demographic,DEMOGRAPHIC,D,STARTS,adj,nüfusun yapısı ve istatistikleriyle ilgili,Japan faces serious demographic change.,Japonya ciddi bir nüfus değişimiyle karşı karşıya.,4,exam:yds,school-work
-b2-ethnic,ETHNIC,E,STARTS,adj,"ortak soy, dil ya da kültürle ilgili, etnik",The city is home to many ethnic groups.,Şehir pek çok etnik gruba ev sahipliği yapıyor.,3,exam:yds,school-work
-b2-ideology,IDEOLOGY,Y,CONTAINS,noun,bir grubun siyasi ya da toplumsal düşünce sistemi,The two parties share the same ideology.,İki parti aynı ideolojiyi paylaşıyor.,4,exam:yds,school-work
-b2-migration,MIGRATION,M,STARTS,noun,insanların ya da hayvanların bir yerden başka yere göçü,Bird migration starts in autumn.,Kuş göçü sonbaharda başlar.,3,exam:yds,school-work
-b2-segregation,SEGREGATION,S,STARTS,noun,insanları ırk ya da dine göre ayırma,Segregation in schools ended in the 1950s.,Okullardaki ayrımcılık 1950'lerde sona erdi.,5,exam:yds,school-work
-b2-discrimination,DISCRIMINATION,D,STARTS,noun,"bir gruba haksız ve farklı davranma, ayrımcılık",The law bans discrimination at work.,Yasa iş yerinde ayrımcılığı yasaklıyor.,4,exam:yds,school-work
+b2-demographic,DEMOGRAPHIC,D,STARTS,adj,nüfusun yapısı ve istatistikleriyle ilgili,Japan faces serious demographic change.,Japonya ciddi bir nüfus değişimiyle karşı karşıya.,4,exam:yds|exam:yokdil,school-work
+b2-ethnic,ETHNIC,E,STARTS,adj,"ortak soy, dil ya da kültürle ilgili, etnik",The city is home to many ethnic groups.,Şehir pek çok etnik gruba ev sahipliği yapıyor.,3,exam:yds|exam:yokdil,school-work
+b2-ideology,IDEOLOGY,Y,CONTAINS,noun,bir grubun siyasi ya da toplumsal düşünce sistemi,The two parties share the same ideology.,İki parti aynı ideolojiyi paylaşıyor.,4,exam:yds|exam:yokdil,school-work
+b2-migration,MIGRATION,M,STARTS,noun,insanların ya da hayvanların bir yerden başka yere göçü,Bird migration starts in autumn.,Kuş göçü sonbaharda başlar.,3,exam:yds|exam:yokdil,school-work
+b2-segregation,SEGREGATION,S,STARTS,noun,insanları ırk ya da dine göre ayırma,Segregation in schools ended in the 1950s.,Okullardaki ayrımcılık 1950'lerde sona erdi.,5,exam:yds|exam:yokdil,school-work
+b2-discrimination,DISCRIMINATION,D,STARTS,noun,"bir gruba haksız ve farklı davranma, ayrımcılık",The law bans discrimination at work.,Yasa iş yerinde ayrımcılığı yasaklıyor.,4,exam:yds|exam:yokdil,school-work
 b2-peasant,PEASANT,P,STARTS,noun,eski dönemlerde toprak işleyen yoksul köylü,The peasant worked on the lord's land.,Köylü ağanın toprağında çalışırdı.,4,exam:yds,school-work
-b2-empire,EMPIRE,E,STARTS,noun,"bir hükümdarın yönettiği çok sayıda ülke, imparatorluk",The Ottoman Empire lasted six centuries.,Osmanlı İmparatorluğu altı yüzyıl sürdü.,3,exam:yds,school-work
+b2-empire,EMPIRE,E,STARTS,noun,"bir hükümdarın yönettiği çok sayıda ülke, imparatorluk",The Ottoman Empire lasted six centuries.,Osmanlı İmparatorluğu altı yüzyıl sürdü.,3,exam:yds|exam:yokdil,school-work
 b2-era,ERA,E,STARTS,noun,"belirli özellikleri olan tarihsel dönem, çağ",We live in the digital era.,Dijital çağda yaşıyoruz.,3,exam:yds,school-work
-b2-medieval,MEDIEVAL,M,STARTS,adj,Orta Çağ'a ait,The town still has its medieval walls.,Kasabanın Orta Çağ surları hâlâ duruyor.,4,exam:yds,school-work
-b2-colony,COLONY,Y,CONTAINS,noun,"başka bir devletin yönettiği ülke ya da bölge, sömürge",India was once a British colony.,Hindistan bir zamanlar İngiliz sömürgesiydi.,3,exam:yds,school-work
-b2-revolution,REVOLUTION,R,STARTS,noun,köklü ve hızlı değişim; devrim,The French Revolution began in 1789.,Fransız Devrimi 1789'da başladı.,3,exam:yds,school-work
-b2-ancestor,ANCESTOR,A,STARTS,noun,"aileden gelen uzak geçmişteki kişi, ata",One ancestor of mine was a sailor from Rize.,Atalarımdan biri Rizeli bir denizciydi.,3,exam:yds,school-work
-b2-settlement,SETTLEMENT,S,STARTS,noun,insanların yerleşip yaşadığı yer; uzlaşma,Çatalhöyük is a very old settlement.,Çatalhöyük çok eski bir yerleşim yeridir.,3,exam:yds,school-work
-b2-inhabitant,INHABITANT,I,STARTS,noun,"bir yerde yaşayan kişi, sakin",Every inhabitant of the village knows the others.,Köyün her sakini diğerlerini tanır.,4,exam:yds,school-work
-b2-customary,CUSTOMARY,Y,CONTAINS,adj,"geleneğe uygun, alışılmış",It is customary to remove your shoes indoors.,Evde ayakkabı çıkarmak âdettir.,4,exam:yds,school-work
+b2-medieval,MEDIEVAL,M,STARTS,adj,Orta Çağ'a ait,The town still has its medieval walls.,Kasabanın Orta Çağ surları hâlâ duruyor.,4,exam:yds|exam:yokdil,school-work
+b2-colony,COLONY,Y,CONTAINS,noun,"başka bir devletin yönettiği ülke ya da bölge, sömürge",India was once a British colony.,Hindistan bir zamanlar İngiliz sömürgesiydi.,3,exam:yds|exam:yokdil,school-work
+b2-revolution,REVOLUTION,R,STARTS,noun,köklü ve hızlı değişim; devrim,The French Revolution began in 1789.,Fransız Devrimi 1789'da başladı.,3,exam:yds|exam:yokdil,school-work
+b2-ancestor,ANCESTOR,A,STARTS,noun,"aileden gelen uzak geçmişteki kişi, ata",One ancestor of mine was a sailor from Rize.,Atalarımdan biri Rizeli bir denizciydi.,3,exam:yds|exam:yokdil,school-work
+b2-settlement,SETTLEMENT,S,STARTS,noun,insanların yerleşip yaşadığı yer; uzlaşma,Çatalhöyük is a very old settlement.,Çatalhöyük çok eski bir yerleşim yeridir.,3,exam:yds|exam:yokdil,school-work
+b2-inhabitant,INHABITANT,I,STARTS,noun,"bir yerde yaşayan kişi, sakin",Every inhabitant of the village knows the others.,Köyün her sakini diğerlerini tanır.,4,exam:yds|exam:yokdil,school-work
+b2-customary,CUSTOMARY,Y,CONTAINS,adj,"geleneğe uygun, alışılmış",It is customary to remove your shoes indoors.,Evde ayakkabı çıkarmak âdettir.,4,exam:yds|exam:yokdil,school-work
 b2-communal,COMMUNAL,C,STARTS,adj,bir topluluğun ortak kullandığı,The students share a communal kitchen.,Öğrenciler ortak bir mutfağı paylaşıyor.,4,exam:yds,school-work
-b2-conservative,CONSERVATIVE,C,STARTS,adj,"değişime karşı olan, gelenekçi",My grandparents have conservative views.,Büyükannemlerin muhafazakâr görüşleri var.,3,exam:yds,school-work
-b2-behavioural,BEHAVIOURAL,B,STARTS,adj,davranışla ilgili,The child has some behavioural problems.,Çocuğun bazı davranış sorunları var.,4,exam:yds,school-work
-b2-psychological,PSYCHOLOGICAL,Y,CONTAINS,adj,zihinle ve ruh hâliyle ilgili,Bullying can cause psychological harm.,Zorbalık psikolojik zarara yol açabilir.,3,exam:yds,school-work
-b2-perception,PERCEPTION,P,STARTS,noun,"bir şeyi algılama biçimi, algı",Social media shapes our perception of beauty.,Sosyal medya güzellik algımızı şekillendirir.,3,exam:yds,school-work
-b2-adolescence,ADOLESCENCE,A,STARTS,noun,"çocukluk ile yetişkinlik arasındaki dönem, ergenlik",Adolescence is a time of rapid change.,Ergenlik hızlı bir değişim dönemidir.,4,exam:yds,school-work
+b2-conservative,CONSERVATIVE,C,STARTS,adj,"değişime karşı olan, gelenekçi",My grandparents have conservative views.,Büyükannemlerin muhafazakâr görüşleri var.,3,exam:yds|exam:yokdil,school-work
+b2-behavioural,BEHAVIOURAL,B,STARTS,adj,davranışla ilgili,The child has some behavioural problems.,Çocuğun bazı davranış sorunları var.,4,exam:yds|exam:yokdil,school-work
+b2-psychological,PSYCHOLOGICAL,Y,CONTAINS,adj,zihinle ve ruh hâliyle ilgili,Bullying can cause psychological harm.,Zorbalık psikolojik zarara yol açabilir.,3,exam:yds|exam:yokdil,school-work
+b2-perception,PERCEPTION,P,STARTS,noun,"bir şeyi algılama biçimi, algı",Social media shapes our perception of beauty.,Sosyal medya güzellik algımızı şekillendirir.,3,exam:yds|exam:yokdil,school-work
+b2-adolescence,ADOLESCENCE,A,STARTS,noun,"çocukluk ile yetişkinlik arasındaki dönem, ergenlik",Adolescence is a time of rapid change.,Ergenlik hızlı bir değişim dönemidir.,4,exam:yds|exam:yokdil,school-work
 b2-hostility,HOSTILITY,Y,CONTAINS,noun,"düşmanca tutum, husumet",There was open hostility between the two groups.,İki grup arasında açık bir düşmanlık vardı.,4,exam:yds,school-work
-b2-kinship,KINSHIP,K,STARTS,noun,akrabalık bağı,Kinship ties are strong in rural areas.,Kırsal bölgelerde akrabalık bağları güçlüdür.,4,exam:yds,school-work
-b2-gender,GENDER,G,STARTS,noun,toplumsal cinsiyet; kadın ya da erkek olma durumu,"The job is open to all, regardless of gender.","İş, cinsiyet ayrımı olmaksızın herkese açık.",3,exam:yds,school-work
-b2-socialize,SOCIALIZE,Z,CONTAINS,verb,başkalarıyla vakit geçirip kaynaşmak,Children learn to socialize at nursery.,Çocuklar kreşte sosyalleşmeyi öğrenir.,3,exam:yds,school-work
+b2-kinship,KINSHIP,K,STARTS,noun,akrabalık bağı,Kinship ties are strong in rural areas.,Kırsal bölgelerde akrabalık bağları güçlüdür.,4,exam:yds|exam:yokdil,school-work
+b2-gender,GENDER,G,STARTS,noun,toplumsal cinsiyet; kadın ya da erkek olma durumu,"The job is open to all, regardless of gender.","İş, cinsiyet ayrımı olmaksızın herkese açık.",3,exam:yds|exam:yokdil,school-work
+b2-socialize,SOCIALIZE,Z,CONTAINS,verb,başkalarıyla vakit geçirip kaynaşmak,Children learn to socialize at nursery.,Çocuklar kreşte sosyalleşmeyi öğrenir.,3,exam:yds|exam:yokdil,school-work
 b2-account-for,ACCOUNT FOR,A,STARTS,phrasal,bir şeyin nedenini açıklamak; belli bir oranını oluşturmak,Women account for half of all doctors in Türkiye.,Türkiye'de doktorların yarısını kadınlar oluşturuyor.,3,exam:yds,phrasal-verbs
 b2-bring-about,BRING ABOUT,B,STARTS,phrasal,bir değişikliğe ya da duruma yol açmak,The internet helped bring about huge social change.,İnternet büyük bir toplumsal değişime yol açtı.,3,exam:yds,phrasal-verbs
 b2-point-out,POINT OUT,P,STARTS,phrasal,"dikkat çekmek, belirtmek",The author is right to point out the cost.,Yazar maliyete dikkat çekmekte haklı.,3,exam:yds,phrasal-verbs

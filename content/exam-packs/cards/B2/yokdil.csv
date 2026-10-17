@@ -124,3 +124,36 @@ b2-toxicity,TOXICITY,X,CONTAINS,noun,bir maddenin zehirlilik derecesi,The toxici
 b2-exhale,EXHALE,X,CONTAINS,verb,nefes vermek,Inhale through your nose and exhale slowly.,Burnundan nefes al ve yavaşça ver.,4,exam:yokdil,body-health
 b2-stem-cell,STEM CELL,S,STARTS,phrase,farklı hücrelere dönüşebilen kök hücre,Stem cell research may help treat some illnesses.,Kök hücre araştırmaları bazı hastalıkların tedavisine yardım edebilir.,5,exam:yokdil,body-health
 b2-wound,WOUND,W,STARTS,noun,vücutta kesik ya da delikle oluşan yara,The wound needed six stitches.,Yaraya altı dikiş atıldı.,3,exam:yokdil,body-health
+b2-anthropology,ANTHROPOLOGY,Y,CONTAINS,noun,insanı ve kültürleri inceleyen bilim,She studied the anthropology of nomadic tribes.,Göçebe kabilelerin antropolojisini inceledi.,4,exam:yokdil,school-work
+b2-census,CENSUS,C,STARTS,noun,resmî nüfus sayımı,The last census counted eighty million people.,Son nüfus sayımı seksen milyon kişi saydı.,4,exam:yokdil,school-work
+b2-cognition,COGNITION,C,STARTS,noun,"bilme, algılama ve düşünme süreçleri, biliş",Sleep affects memory and cognition.,Uyku belleği ve bilişi etkiler.,5,exam:yokdil,school-work
+b2-colonial,COLONIAL,C,STARTS,adj,sömürgecilikle ya da sömürge dönemiyle ilgili,The city still has many colonial buildings.,Şehirde hâlâ pek çok sömürge dönemi binası var.,4,exam:yokdil,school-work
+b2-demography,DEMOGRAPHY,Y,CONTAINS,noun,nüfusun yapısını inceleyen bilim,Demography helps planners predict school needs.,Demografi planlamacıların okul ihtiyacını öngörmesine yardım eder.,5,exam:yokdil,school-work
+b2-diaspora,DIASPORA,D,STARTS,noun,anavatanının dışında dağılmış yaşayan topluluk,The Turkish diaspora in Germany is large.,Almanya'daki Türk diasporası büyüktür.,5,exam:yokdil,school-work
+b2-discourse,DISCOURSE,D,STARTS,noun,bir konudaki söylem; yazılı ya da sözlü iletişim,Political discourse has become more aggressive.,Siyasi söylem daha saldırgan hâle geldi.,5,exam:yokdil,school-work
+b2-ethics,ETHICS,E,STARTS,noun,"doğru ve yanlışı inceleyen ahlak ilkeleri, etik",Medical ethics do not allow doctors to share patient data.,Tıp etiği doktorların hasta bilgilerini paylaşmasına izin vermez.,4,exam:yokdil,school-work
+b2-feminism,FEMINISM,F,STARTS,noun,kadın ve erkek eşitliğini savunan düşünce,Feminism changed the law on equal pay.,Feminizm eşit ücret yasasını değiştirdi.,4,exam:yokdil,school-work
+b2-feudal,FEUDAL,F,STARTS,adj,derebeylik düzeniyle ilgili,"In feudal times, peasants worked for lords.",Derebeylik döneminde köylüler beyler için çalışırdı.,5,exam:yokdil,school-work
+b2-hegemony,HEGEMONY,Y,CONTAINS,noun,bir grubun ya da devletin ötekiler üzerindeki egemenliği,Rome kept its hegemony for centuries.,Roma egemenliğini yüzyıllarca korudu.,5,exam:yokdil,school-work
+b2-humanities,HUMANITIES,H,STARTS,noun,"tarih, edebiyat ve felsefe gibi insan bilimleri",She chose humanities over science.,Fen yerine beşerî bilimleri seçti.,4,exam:yokdil,school-work
+b2-linguistics,LINGUISTICS,L,STARTS,noun,"dilin yapısını inceleyen bilim, dilbilim",He has a degree in linguistics.,Dilbilim diploması var.,4,exam:yokdil,school-work
+b2-monarchy,MONARCHY,Y,CONTAINS,noun,bir kral ya da kraliçenin yönettiği sistem,Britain is a constitutional monarchy.,Birleşik Krallık anayasal bir monarşidir.,4,exam:yokdil,school-work
+b2-morality,MORALITY,Y,CONTAINS,noun,"doğru ve yanlış davranışla ilgili ilkeler, ahlak",Religion often shapes ideas of morality.,Din çoğu zaman ahlak anlayışını şekillendirir.,4,exam:yokdil,school-work
+b2-nationalism,NATIONALISM,N,STARTS,noun,"ulusuna aşırı bağlılık ve onu üstün tutma, milliyetçilik",Nationalism grew across Europe in the 1800s.,Milliyetçilik 1800'lerde Avrupa'da yükseldi.,4,exam:yokdil,school-work
+b2-normative,NORMATIVE,V,CONTAINS,adj,"ne olması gerektiğini belirten, kural koyucu",Law is a normative field.,Hukuk kural koyucu bir alandır.,5,exam:yokdil,school-work
+b2-patriarchal,PATRIARCHAL,P,STARTS,adj,erkeklerin egemen olduğu toplum düzeniyle ilgili,They grew up in a patriarchal family.,Ataerkil bir ailede büyüdüler.,5,exam:yokdil,school-work
+b2-philosopher,PHILOSOPHER,P,STARTS,noun,felsefeyle uğraşan düşünür,Farabi was a great philosopher.,Farabi büyük bir filozoftu.,3,exam:yokdil,school-work
+b2-propaganda,PROPAGANDA,P,STARTS,noun,bir görüşü yaymak için yapılan tek yanlı tanıtım,The posters were wartime propaganda.,Afişler savaş dönemi propagandasıydı.,4,exam:yokdil,school-work
+b2-secular,SECULAR,S,STARTS,adj,"dinî olmayan; din ile devlet işlerini ayıran, laik",Türkiye is a secular republic.,Türkiye laik bir cumhuriyettir.,4,exam:yokdil,school-work
+b2-sociology,SOCIOLOGY,Y,CONTAINS,noun,toplumu ve toplumsal ilişkileri inceleyen bilim,My sister studies sociology at university.,Kız kardeşim üniversitede sosyoloji okuyor.,3,exam:yokdil,school-work
+b2-suffrage,SUFFRAGE,S,STARTS,noun,seçimlerde oy kullanma hakkı,Turkish women gained suffrage in 1934.,Türk kadınları 1934'te seçme hakkı kazandı.,5,exam:yokdil,school-work
+b2-taboo,TABOO,T,STARTS,noun,toplumca konuşulması ya da yapılması yasak sayılan şey,Death is a taboo subject in many cultures.,Ölüm pek çok kültürde konuşulmayan bir konudur.,4,exam:yokdil,school-work
+b2-utopia,UTOPIA,U,STARTS,noun,"her şeyin kusursuz olduğu hayalî toplum, ütopya",Thomas More wrote about an island utopia.,Thomas More bir ada ütopyası hakkında yazdı.,4,exam:yokdil,school-work
+b2-xenophobia,XENOPHOBIA,X,STARTS,noun,"yabancılardan korkma ve onlara düşmanlık, yabancı düşmanlığı",The campaign fights racism and xenophobia.,Kampanya ırkçılık ve yabancı düşmanlığıyla mücadele ediyor.,5,exam:yokdil,school-work
+b2-worldview,WORLDVIEW,W,STARTS,noun,"kişinin dünyayı ve hayatı algılayış biçimi, dünya görüşü",Travel can change your worldview.,Seyahat dünya görüşünü değiştirebilir.,4,exam:yokdil,school-work
+b2-working-class,WORKING CLASS,W,STARTS,phrase,"el emeğiyle geçinen toplumsal sınıf, işçi sınıfı",The novel describes working class life in Manchester.,Roman Manchester'daki işçi sınıfı yaşamını anlatıyor.,4,exam:yokdil,school-work
+b2-upward-mobility,UPWARD MOBILITY,Y,CONTAINS,phrase,bir kişinin toplumsal ya da ekonomik olarak yükselmesi,Education is the key to upward mobility.,Eğitim toplumsal yükselmenin anahtarıdır.,5,exam:yokdil,school-work
+b2-birth-rate,BIRTH RATE,B,STARTS,phrase,belli bir sürede doğan bebek sayısının oranı,The birth rate has fallen in Europe.,Avrupa'da doğum oranı düştü.,4,exam:yokdil,school-work
+b2-belief-system,BELIEF SYSTEM,Y,CONTAINS,phrase,bir kişinin ya da toplumun inandığı ilkeler bütünü,Every culture has its own belief system.,Her kültürün kendine ait bir inanç sistemi vardır.,4,exam:yokdil,school-work
+b2-underclass,UNDERCLASS,U,STARTS,noun,toplumun en yoksul ve dışlanmış kesimi,Economists warn of a growing urban underclass.,Ekonomistler büyüyen bir kentsel alt sınıfa dikkat çekiyor.,5,exam:yokdil,school-work
+b2-westernization,WESTERNIZATION,Z,CONTAINS,noun,Batı kültürünü ve yaşam biçimini benimseme,Westernization began in the late Ottoman period.,Batılılaşma geç Osmanlı döneminde başladı.,5,exam:yokdil,school-work
