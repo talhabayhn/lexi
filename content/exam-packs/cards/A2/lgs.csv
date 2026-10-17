@@ -32,3 +32,62 @@ a2-karaoke,KARAOKE,K,STARTS,noun,ekrandaki sözlere bakarak müzik eşliğinde �
 a2-knitting,KNITTING,K,STARTS,noun,şiş ve yünle örgü örme işi,My aunt taught me knitting last winter.,Teyzem geçen kış bana örgü örmeyi öğretti.,3,exam:lgs,daily-life
 a2-junk-food,JUNK FOOD,J,STARTS,phrase,"yağlı, şekerli ve besleyici olmayan hazır yiyecek",Teenagers should not eat junk food every day.,Gençler her gün abur cubur yememeli.,2,exam:lgs,food-drink
 a2-social-media,SOCIAL MEDIA,S,STARTS,phrase,insanların paylaşım yaptığı internet platformları,Zeynep spends an hour on social media every day.,Zeynep her gün bir saatini sosyal ağlarda geçiriyor.,2,exam:lgs,daily-life
+a2-chop,CHOP,C,STARTS,verb,bıçakla küçük parçalara doğramak,Chop the onions into small pieces.,Soğanları küçük parçalara doğra.,2,exam:lgs,food-drink
+a2-peel,PEEL,P,STARTS,verb,meyvenin ya da sebzenin kabuğunu soymak,Can you peel the potatoes for the soup?,Çorba için patatesleri soyabilir misin?,2,exam:lgs,food-drink
+a2-stir,STIR,S,STARTS,verb,kaşıkla çevirerek karıştırmak,Stir the milk with a wooden spoon.,Sütü tahta kaşıkla karıştır.,2,exam:lgs,food-drink
+a2-pour,POUR,P,STARTS,verb,"bir sıvıyı kaptan akıtmak, dökmek",Pour the water into the big bowl.,Suyu büyük kâseye dök.,2,exam:lgs,food-drink
+a2-melt,MELT,M,STARTS,verb,ısıyla katı hâlden sıvı hâle getirmek,Melt the chocolate in a small bowl.,Çikolatayı küçük bir kâsede erit.,2,exam:lgs,food-drink
+a2-raw,RAW,R,STARTS,adj,"pişmemiş, çiğ",Some people eat raw fish in Japan.,Japonya'da bazı insanlar çiğ balık yer.,3,exam:lgs,food-drink
+a2-bitter,BITTER,B,STARTS,adj,"tadı acı ve keskin, şekersiz kahve gibi",Black coffee tastes bitter to me.,Sade kahvenin tadı bana acı gelir.,3,exam:lgs,food-drink
+a2-salty,SALTY,S,STARTS,adj,içinde çok tuz olan,These crisps are too salty.,Bu cipsler fazla tuzlu.,2,exam:lgs,food-drink
+a2-mint,MINT,M,STARTS,noun,ferahlatıcı kokulu yeşil yapraklı bitki,My mum puts mint leaves in the lemonade.,Annem limonataya nane yaprakları koyar.,2,exam:lgs,food-drink
+a2-dough,DOUGH,D,STARTS,noun,"un ve sudan yoğrulan, ekmek ya da pide yapılan karışım",Grandma makes the dough for the bread.,Ekmeğin hamurunu büyükannem yapar.,3,exam:lgs,food-drink
+a2-roast,ROAST,R,STARTS,verb,fırında ya da ateşte kızartarak pişirmek,We roast chestnuts in winter.,Kışın kestane kebap yaparız.,3,exam:lgs,food-drink
+a2-blender,BLENDER,B,STARTS,noun,meyveleri ezip karıştıran elektrikli mutfak aleti,Put the bananas and milk in the blender.,Muzları ve sütü blendere koy.,2,exam:lgs,food-drink
+a2-grate,GRATE,G,STARTS,verb,rendeyle küçük parçalara ayırmak,Grate some cheese on top of the pasta.,Makarnanın üstüne biraz peynir rendele.,3,exam:lgs,food-drink
+a2-whisk,WHISK,W,STARTS,verb,yumurtayı ya da kremayı hızla çırpmak,Whisk the eggs with a fork.,Yumurtaları çatalla çırp.,3,exam:lgs,food-drink
+a2-vinegar,VINEGAR,V,STARTS,noun,salatalara eklenen ekşi sıvı,Add a little vinegar to the salad.,Salataya biraz sirke ekle.,3,exam:lgs,food-drink
+a2-parsley,PARSLEY,P,STARTS,noun,yemeklerin üstüne serpilen yeşil maydanoz otu,Put some parsley on the rice.,Pilavın üstüne biraz maydanoz koy.,3,exam:lgs,food-drink
+a2-yeast,YEAST,Y,STARTS,noun,hamuru kabartan madde,Bread needs yeast to rise.,Ekmeğin kabarması için maya gerekir.,3,exam:lgs,food-drink
+a2-pastry,PASTRY,P,STARTS,noun,börek ya da tart yapılan yağlı hamur işi,This shop sells cheese pastry.,Bu dükkân peynirli börek satıyor.,3,exam:lgs,food-drink
+a2-stew,STEW,S,STARTS,noun,et ve sebzeyle ağır ateşte pişen sulu yemek,We had a hot stew for dinner.,Akşam yemeğinde sıcak bir güveç yedik.,3,exam:lgs,food-drink
+a2-meatball,MEATBALL,M,STARTS,noun,kıymadan yapılan küçük yuvarlak köfte,Selin's favourite food is meatball and rice.,Selin'in en sevdiği yemek köfte pilav.,2,exam:lgs,food-drink
+a2-teaspoon,TEASPOON,T,STARTS,noun,çaya şeker karıştırmak için kullanılan küçük kaşık,Add a teaspoon of sugar to your tea.,Çayına bir çay kaşığı şeker ekle.,2,exam:lgs,food-drink
+a2-pinch,PINCH,P,STARTS,noun,iki parmak arasına sığacak kadar az miktar,Add a pinch of salt to the eggs.,Yumurtalara bir tutam tuz ekle.,3,exam:lgs,food-drink
+a2-steam,STEAM,S,STARTS,noun,kaynayan sudan yükselen sıcak buhar,Steam is rising from the hot soup.,Sıcak çorbadan buhar yükseliyor.,3,exam:lgs,food-drink
+a2-drain,DRAIN,D,STARTS,verb,suyunu süzerek akıtmak,Drain the pasta and put it on a plate.,Makarnanın suyunu süz ve tabağa koy.,3,exam:lgs,food-drink
+a2-rinse,RINSE,R,STARTS,verb,bir şeyi temiz suyla çalkalamak,Rinse the rice before you cook it.,Pirinci pişirmeden önce suyla çalkala.,3,exam:lgs,food-drink
+a2-simmer,SIMMER,S,STARTS,verb,çok kısık ateşte yavaş yavaş kaynatmak,Let the soup simmer for twenty minutes.,Çorbayı yirmi dakika kısık ateşte kaynat.,4,exam:lgs,food-drink
+a2-portion,PORTION,P,STARTS,noun,bir kişiye verilen yemek miktarı,This portion is too big for a child.,Bu porsiyon bir çocuk için çok büyük.,3,exam:lgs,food-drink
+a2-nutritious,NUTRITIOUS,N,STARTS,adj,vücudun ihtiyaç duyduğu besinleri bolca içeren,Fish soup is cheap and nutritious.,Balık çorbası ucuz ve besleyicidir.,4,exam:lgs,food-drink
+a2-protein,PROTEIN,P,STARTS,noun,"et, yumurta ve baklagillerde bulunan besin öğesi",Eggs are full of protein.,Yumurtalar proteinle doludur.,3,exam:lgs,food-drink
+a2-calorie,CALORIE,C,STARTS,noun,besinlerin verdiği enerjiyi ölçen birim,Look at the calorie count on the label.,Etiketteki kalori miktarına bak.,3,exam:lgs,food-drink
+a2-vegan,VEGAN,V,STARTS,noun,hiçbir hayvansal ürün yemeyen kişi,"My cousin is a vegan, so she does not eat cheese.","Kuzenim vegan, bu yüzden peynir yemiyor.",3,exam:lgs,food-drink
+a2-apron,APRON,A,STARTS,noun,yemek yaparken kıyafeti korumak için takılan önlük,Put on an apron before you cook.,Yemek yapmadan önce önlük tak.,3,exam:lgs,food-drink
+a2-cookbook,COOKBOOK,C,STARTS,noun,yemek tariflerini toplayan kitap,Mum found that cake in an old cookbook.,Annem o keki eski bir yemek kitabında buldu.,2,exam:lgs,food-drink
+a2-spinach,SPINACH,S,STARTS,noun,"koyu yeşil yapraklı, demir açısından zengin sebze",Popeye eats spinach to get big muscles.,Temel Reis kaslarını büyütmek için ıspanak yer.,2,exam:lgs,food-drink
+a2-lentil,LENTIL,L,STARTS,noun,çorbası yapılan küçük yuvarlak baklagil,We often have red lentil soup in winter.,Kışın sık sık kırmızı mercimek çorbası içeriz.,3,exam:lgs,food-drink
+a2-walnut,WALNUT,W,STARTS,noun,"sert kabuklu, beyin şeklinde iç meyve",Grandma puts walnut pieces in the cake.,Büyükannem keke ceviz parçaları koyar.,3,exam:lgs,food-drink
+a2-leftovers,LEFTOVERS,L,STARTS,noun,yemekten sonra artan yiyecekler,We had the leftovers from the party for lunch.,Öğle yemeğinde partiden artan yemekleri yedik.,3,exam:lgs,food-drink
+a2-wipe,WIPE,W,STARTS,verb,bezle silerek temizlemek,Please wipe the table after breakfast.,Lütfen kahvaltıdan sonra masayı sil.,2,exam:lgs,home
+a2-utensil,UTENSIL,U,STARTS,noun,"kaşık, spatula gibi mutfak gereci",A spoon is a basic kitchen utensil.,Kaşık temel bir mutfak gerecidir.,4,exam:lgs,food-drink
+a2-mixer,MIXER,X,CONTAINS,noun,hamuru ya da kremayı çırpan elektrikli alet,Mum uses the mixer to make cake.,Annem kek yapmak için mikseri kullanır.,3,exam:lgs,food-drink
+a2-dial,DIAL,D,STARTS,verb,telefonda bir numarayı tuşlamak,Dial 112 in an emergency.,Acil bir durumda 112'yi ara.,3,exam:lgs,daily-life
+a2-charger,CHARGER,C,STARTS,noun,telefonun pilini dolduran kablolu alet,I forgot my phone charger at home.,Telefon şarj aletimi evde unuttum.,2,exam:lgs,daily-life
+a2-available,AVAILABLE,A,STARTS,adj,o anda konuşmaya ya da görüşmeye uygun olan,Is Mr Yılmaz available now?,Yılmaz Bey şu an müsait mi?,3,exam:lgs,daily-life
+a2-silent,SILENT,S,STARTS,adj,"sesi kapalı, hiç ses çıkarmayan",Put your phone on silent in the library.,Kütüphanede telefonunu sessize al.,3,exam:lgs,daily-life
+a2-selfie,SELFIE,S,STARTS,noun,insanın telefonla kendi kendini çektiği fotoğraf,We took a selfie in front of the tower.,Kulenin önünde bir özçekim yaptık.,2,exam:lgs,daily-life
+a2-emoji,EMOJI,E,STARTS,noun,mesajlarda duyguyu gösteren küçük simge,Elif sent me a laughing emoji.,Elif bana gülen bir emoji gönderdi.,2,exam:lgs,daily-life
+a2-pardon,PARDON,P,STARTS,noun,duyamadığında tekrar istemek için: efendim?,Pardon? Can you say that again?,Efendim? Bunu tekrar söyler misin?,2,exam:lgs,daily-life
+a2-caller,CALLER,C,STARTS,noun,telefonla arayan kişi,The caller did not give his name.,Arayan kişi adını vermedi.,3,exam:lgs,daily-life
+a2-voicemail,VOICEMAIL,V,STARTS,noun,cevap verilmeyen aramada bırakılan sesli kayıt,I listened to your voicemail this morning.,Sesli mesajını bu sabah dinledim.,3,exam:lgs,daily-life
+a2-landline,LANDLINE,L,STARTS,noun,evdeki kablolu sabit telefon hattı,My grandparents still use a landline.,Büyükannemle büyükbabam hâlâ sabit hat kullanıyor.,3,exam:lgs,daily-life
+a2-connection,CONNECTION,C,STARTS,noun,iki cihaz ya da kişi arasındaki iletişim bağı,"The connection was bad, so I called again.","Bağlantı kötüydü, bu yüzden tekrar aradım.",3,exam:lgs,daily-life
+a2-ringtone,RINGTONE,R,STARTS,noun,telefon çaldığında duyulan melodi,I love your new ringtone!,Yeni zil sesine bayıldım!,2,exam:lgs,daily-life
+a2-vibrate,VIBRATE,V,STARTS,verb,hafif ve hızlı titremek,Phones vibrate when a message arrives.,Mesaj gelince telefonlar titrer.,3,exam:lgs,daily-life
+a2-helpline,HELPLINE,H,STARTS,noun,yardım ve bilgi için aranan telefon hattı,Call the helpline if you have a problem with the app.,Uygulamayla ilgili bir sorunun varsa yardım hattını ara.,4,exam:lgs,daily-life
+a2-engaged,ENGAGED,E,STARTS,adj,"telefon hattı için: o anda başkasıyla konuşan, meşgul","I tried to call, but the number was engaged.",Aramayı denedim ama numara meşguldü.,4,exam:lgs,daily-life
+a2-operator,OPERATOR,O,STARTS,noun,telefon santralinde aramaları bağlayan görevli,The operator connected me to the hotel.,Santral görevlisi beni otele bağladı.,4,exam:lgs,daily-life
+a2-extension,EXTENSION,X,CONTAINS,noun,büyük bir binadaki dahili telefon numarası,Please call extension 204.,Lütfen 204 numaralı dahiliyi arayın.,4,exam:lgs,daily-life
+a2-texting,TEXTING,X,CONTAINS,noun,telefonla kısa yazılı mesajlaşma,Texting in class is not allowed.,Derste mesajlaşmak yasaktır.,3,exam:lgs,daily-life
+a2-smartphone,SMARTPHONE,S,STARTS,noun,internete bağlanabilen dokunmatik cep telefonu,My sister got a smartphone for her birthday.,Kız kardeşime doğum gününde akıllı telefon alındı.,2,exam:lgs,daily-life

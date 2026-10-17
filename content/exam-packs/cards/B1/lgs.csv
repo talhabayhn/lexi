@@ -3,3 +3,19 @@ b1-best-friend,BEST FRIEND,B,STARTS,phrase,"insanın en yakın, en sevdiği arka
 b1-keep-in-touch,KEEP IN TOUCH,K,STARTS,phrase,uzakta olsa da biriyle iletişimi sürdürmek,"We moved to İzmir, but we keep in touch online.",İzmir'e taşındık ama internetten iletişimi sürdürüyoruz.,3,exam:lgs,family-people
 b1-surprise-party,SURPRISE PARTY,S,STARTS,phrase,kutlanan kişinin haberi olmadan hazırlanan eğlence,We had a surprise party for Elif on Friday.,Cuma günü Elif için sürpriz parti düzenledik.,2,exam:lgs,daily-life
 b1-pocket-money,POCKET MONEY,P,STARTS,phrase,ailenin çocuğa düzenli verdiği harçlık,I keep my pocket money in a small box.,Harçlığımı küçük bir kutuda saklarım.,2,exam:lgs,daily-life
+b1-cutting-board,CUTTING BOARD,C,STARTS,phrase,üzerinde sebze ve et doğranan tahta,Put the bread on the cutting board.,Ekmeği kesme tahtasının üstüne koy.,3,exam:lgs,food-drink
+b1-oven-glove,OVEN GLOVE,O,STARTS,phrase,sıcak tepsiyi tutmak için giyilen kalın eldiven,Use an oven glove to take out the tray.,Tepsiyi çıkarmak için fırın eldiveni kullan.,3,exam:lgs,food-drink
+b1-stuffed-peppers,STUFFED PEPPERS,S,STARTS,phrase,içi pirinçle doldurulmuş biber yemeği,Grandma cooks stuffed peppers on Sundays.,Büyükannem pazar günleri biber dolması pişirir.,3,exam:lgs,food-drink
+b1-sour,SOUR,S,STARTS,adj,limon gibi ekşi tadı olan,This green apple is very sour.,Bu yeşil elma çok ekşi.,2,exam:lgs,food-drink
+b1-pan,PAN,P,STARTS,noun,yumurta kızartılan sapı olan yayvan kap,Heat some oil in a pan.,Bir tavada biraz yağ ısıt.,2,exam:lgs,food-drink
+b1-hang-up,HANG UP,H,STARTS,phrasal,konuşmayı bitirip telefonu kapatmak,Please do not hang up; I have one more question.,Lütfen kapatma; bir sorum daha var.,3,exam:lgs,daily-life
+b1-call-back,CALL BACK,C,STARTS,phrasal,seni arayan birini sonra geri aramak,I am in class now; I will call back later.,Şu an dersteyim; seni sonra geri ararım.,2,exam:lgs,daily-life
+b1-pick-up,PICK UP,P,STARTS,phrasal,çalan telefonu açmak,Please pick up the phone; it is Grandma!,Lütfen telefonu aç; arayan büyükannem!,3,exam:lgs,daily-life
+b1-leave-a-message,LEAVE A MESSAGE,L,STARTS,phrase,aranan kişi yokken not ya da kayıt bırakmak,Mert is out; would you like to leave a message?,Mert dışarıda; mesaj bırakmak ister misiniz?,3,exam:lgs,daily-life
+b1-take-a-message,TAKE A MESSAGE,T,STARTS,phrase,başkası adına gelen bilgiyi not almak,Can you take a message for my dad?,Babam için not alabilir misin?,3,exam:lgs,daily-life
+b1-speak-up,SPEAK UP,S,STARTS,phrasal,duyulması için daha yüksek sesle konuşmak,Can you speak up? I cannot hear you.,Daha yüksek sesle konuşur musun? Seni duyamıyorum.,3,exam:lgs,daily-life
+b1-mobile-phone,MOBILE PHONE,M,STARTS,phrase,yanında taşıdığın kablosuz telefon,Turn off your mobile phone in the cinema.,Sinemada cep telefonunu kapat.,2,exam:lgs,daily-life
+b1-video-call,VIDEO CALL,V,STARTS,phrase,karşındakini ekranda görerek yaptığın görüşme,I have a video call with my aunt in Germany.,Almanya'daki teyzemle görüntülü görüşmem var.,2,exam:lgs,technology
+b1-wrong-number,WRONG NUMBER,W,STARTS,phrase,yanlışlıkla aranan başka birinin numarası,"Sorry, you have the wrong number.","Üzgünüm, yanlış numarayı aradınız.",3,exam:lgs,daily-life
+b1-fire-brigade,FIRE BRIGADE,F,STARTS,phrase,yangınları söndüren ekip,Call the fire brigade!,İtfaiyeyi ara!,3,exam:lgs,city-transport
+b1-put-through,PUT THROUGH,P,STARTS,phrasal,telefondaki kişiyi başka bir hatta bağlamak,The receptionist will put through your call.,Resepsiyonist aramanızı bağlayacak.,4,exam:lgs,daily-life
