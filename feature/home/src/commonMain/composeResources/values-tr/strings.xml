@@ -9,8 +9,13 @@
 
     <!-- Günün çarkı kartı: ay büyük harfle, "GÜNÜN ÇARKI · EKİM" -->
     <string name="home_daily_label">GÜNÜN ÇARKI · %1$s</string>
-    <string name="home_daily_title">Herkes aynı çarkı çözüyor</string>
+    <string name="home_daily_title">Herkesle aynı çark: bildiğin kadarını çöz</string>
     <string name="home_daily_completed_score">Tamamlandı · %1$d puan</string>
+    <plurals name="home_daily_next_wheel_hours">
+        <item quantity="one">Yeni çark %1$d saat sonra</item>
+        <item quantity="other">Yeni çark %1$d saat sonra</item>
+    </plurals>
+    <string name="home_daily_next_wheel_less_than_hour">Yeni çark 1 saatten az kaldı</string>
     <string name="home_daily_unavailable">Kullanılamıyor</string>
     <string-array name="home_months">
         <item>OCAK</item>

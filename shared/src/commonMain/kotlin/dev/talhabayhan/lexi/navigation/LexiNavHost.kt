@@ -77,7 +77,7 @@ fun LexiNavHost(modifier: Modifier = Modifier) {
             onPlay = { navController.ifResumed { navigate(LevelSelectRoute()) { launchSingleTop = true } } },
             onOpenDaily = {
                 navController.ifResumed {
-                    navigate(GameRoute(Level.A1, GameMode.DAILY)) { launchSingleTop = true }
+                    navigate(GameRoute.daily()) { launchSingleTop = true }
                 }
             },
             onOpenNotebook = { navController.ifResumed { navigate(NotebookRoute) { launchSingleTop = true } } },

@@ -30,6 +30,7 @@ import androidx.compose.ui.unit.dp
 import dev.talhabayhan.lexi.core.designsystem.feedback.LocalHaptics
 import dev.talhabayhan.lexi.core.designsystem.feedback.LocalSoundPlayer
 import dev.talhabayhan.lexi.core.designsystem.icon.LexiIcons
+import dev.talhabayhan.lexi.core.designsystem.modifier.lexiSurface
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.core.domain.feedback.HapticKind
 import dev.talhabayhan.lexi.core.domain.feedback.SoundEffect
@@ -84,6 +85,7 @@ public fun ReviewRow(
     speakContentDescription: String,
     onSpeak: () -> Unit,
     modifier: Modifier = Modifier,
+    level: String? = null,
 ) {
     val colors = LexiTheme.colors
     val typography = LexiTheme.typography
@@ -108,7 +110,15 @@ public fun ReviewRow(
             Text(letter.toString(), style = typography.bodyStrong15, color = if (wrong) colors.white else colors.ink)
         }
         Column(Modifier.weight(1f).semantics(mergeDescendants = true) {}) {
-            Text(word, style = typography.reviewWord)
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap6),
+            ) {
+                Text(word, style = typography.reviewWord)
+                if (level != null) {
+                    SmallLevelChip(level)
+                }
+            }
             Text(
                 text = buildAnnotatedString {
                     append(clue)
@@ -146,6 +156,28 @@ public fun ReviewMoreRow(text: String, onClick: () -> Unit, modifier: Modifier =
                 onClick()
             }
             .padding(ResultDefaults.RowPadding),
+    )
+}
+
+/** Small level chip next to a reviewed word in Daily mode (A1..NAT). */
+@Composable
+public fun SmallLevelChip(level: String, modifier: Modifier = Modifier) {
+    val colors = LexiTheme.colors
+    val (fill, content) = when (level.uppercase()) {
+        "A1" -> colors.red to colors.white
+        "A2", "C1" -> colors.white to colors.ink
+        "B1" -> colors.yellow to colors.ink
+        "B2" -> colors.blue to colors.white
+        "NAT", "NATIVE" -> colors.ink to colors.yellow
+        else -> colors.white to colors.ink
+    }
+    Text(
+        text = level,
+        style = LexiTheme.typography.label12,
+        color = content,
+        modifier = modifier
+            .lexiSurface(fill, BorderStroke(LexiTheme.borders.thin, colors.ink))
+            .padding(horizontal = 6.dp, vertical = 2.dp),
     )
 }
 

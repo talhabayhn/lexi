@@ -6,16 +6,16 @@ import dev.talhabayhan.lexi.core.domain.session.DailyResult
 import dev.talhabayhan.lexi.core.domain.time.AppClock
 
 /**
- * Stores the one scored daily attempt for [level] on the current local day (`GAME_RULES.md` §5).
- * Returns true if recorded, false if already played for this day and level.
+ * Stores the one scored daily attempt on the current local day (`GAME_RULES.md` §5).
+ * Returns true if recorded, false if already played for this day.
  */
 public class RecordDailyResult(private val daily: DailyRepository, private val clock: AppClock) {
     public suspend operator fun invoke(
-        level: Level,
         score: Int,
         timeMs: Long,
         epochDay: Long = clock.epochDay(clock.nowMs()),
         shareCode: String? = null,
+        level: Level? = null,
     ): Boolean {
         val result = DailyResult(
             epochDay = epochDay,
@@ -26,4 +26,13 @@ public class RecordDailyResult(private val daily: DailyRepository, private val c
         )
         return daily.record(result)
     }
+
+    /** Backward-compatible overload. */
+    public suspend operator fun invoke(
+        level: Level,
+        score: Int,
+        timeMs: Long,
+        epochDay: Long = clock.epochDay(clock.nowMs()),
+        shareCode: String? = null,
+    ): Boolean = invoke(score, timeMs, epochDay, shareCode, level)
 }

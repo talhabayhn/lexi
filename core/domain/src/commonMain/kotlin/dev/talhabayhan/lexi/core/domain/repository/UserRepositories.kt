@@ -47,22 +47,25 @@ public interface StreakRepository {
     public fun observeDays(): Flow<List<Long>>
 }
 
-/** The Daily wheel's one scored attempt per day per level (`GAME_RULES.md` §5). */
+/** The Daily wheel's one scored attempt per day (`GAME_RULES.md` §5). */
 public interface DailyRepository {
-    /** Observes the daily attempt for [epochDay] and [level], or null if not yet played. */
-    public fun observe(epochDay: Long, level: Level): Flow<DailyResult?>
+    /** Observes the daily attempt for [epochDay], or null if not yet played. */
+    public fun observe(epochDay: Long): Flow<DailyResult?>
+
+    /** Gets the stored attempt for [epochDay], or null if not yet played. */
+    public suspend fun get(epochDay: Long): DailyResult?
+
+    /** Stores the day's attempt; returns false and changes nothing when the day was already played. */
+    public suspend fun record(result: DailyResult): Boolean
 
     /** Observes all daily attempts for [epochDay]. */
     public fun observeDay(epochDay: Long): Flow<List<DailyResult>>
 
-    /** Observes the first daily attempt of [epochDay] (or null if none). */
-    public fun observe(epochDay: Long): Flow<DailyResult?>
+    /** Backward-compatible overload observing [epochDay] (ignoring level). */
+    public fun observe(epochDay: Long, level: Level): Flow<DailyResult?> = observe(epochDay)
 
-    /** Gets the stored attempt for [epochDay] and [level], or null if not yet played. */
-    public suspend fun get(epochDay: Long, level: Level): DailyResult?
-
-    /** Stores the day's attempt; returns false and changes nothing when the day was already played for [result.level]. */
-    public suspend fun record(result: DailyResult): Boolean
+    /** Backward-compatible overload getting [epochDay] (ignoring level). */
+    public suspend fun get(epochDay: Long, level: Level): DailyResult? = get(epochDay)
 }
 
 /** Persisted joker inventory (`GAME_RULES.md` §7). */

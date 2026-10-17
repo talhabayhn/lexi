@@ -34,7 +34,9 @@ class HomeScreenScreenshotTest {
         captureRoboImage("src/androidHostTest/screenshots/HomeScreenDailyPlayed.png") {
             LexiTheme(reducedMotion = false) {
                 HomeScreen(
-                    state = HomeSampleState.copy(dailyState = DailyCardState.AlreadyPlayed(score = 310)),
+                    state = HomeSampleState.copy(
+                        dailyState = DailyCardState.AlreadyPlayed(score = 310, hoursUntilNext = 6),
+                    ),
                     onIntent = {},
                 )
             }

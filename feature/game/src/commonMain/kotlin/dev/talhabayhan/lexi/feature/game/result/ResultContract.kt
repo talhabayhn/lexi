@@ -50,6 +50,7 @@ internal data class ReviewRowUi(
     val clue: String,
     val example: String,
     val outcome: ReviewOutcome,
+    val level: Level? = null,
 )
 
 internal sealed interface ResultIntent {

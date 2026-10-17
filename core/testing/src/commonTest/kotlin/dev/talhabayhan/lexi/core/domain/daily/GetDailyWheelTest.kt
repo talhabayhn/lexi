@@ -14,7 +14,7 @@ import kotlin.test.assertIs
 
 class GetDailyWheelTest {
     private val clock = FakeAppClock()
-    private val cards = FakeCardRepository(testAlphabetPool(Level.A1))
+    private val cards = FakeCardRepository(Level.entries.flatMap { testAlphabetPool(it) })
     private val contentVersion = FakeContentVersionRepository(1L)
     private val daily = FakeDailyRepository()
     private val getDailyWheel = GetDailyWheel(cards, contentVersion, daily, clock)
@@ -22,46 +22,44 @@ class GetDailyWheelTest {
     @Test
     fun `returns Ready with deterministic seed and wheel when unplayed`() = runTest {
         val today = clock.epochDay(clock.nowMs())
-        val state = getDailyWheel(Level.A1)
+        val state = getDailyWheel()
 
         assertIs<DailyPlayState.Ready>(state)
         assertEquals(today, state.epochDay)
-        assertEquals(Level.A1, state.level)
-        assertEquals(DailySeed.seed(today, Level.A1, 1L), state.seed)
+        assertEquals(DailySeed.seed(today, 1L), state.seed)
         assertEquals(26, state.wheel.playableSlots.size)
     }
 
     @Test
-    fun `returns AlreadyPlayed when daily attempt was recorded for that level`() = runTest {
+    fun `returns AlreadyPlayed when daily attempt was recorded today`() = runTest {
         val today = clock.epochDay(clock.nowMs())
-        val result = DailyResult(epochDay = today, level = Level.A1, score = 250, timeMs = 90_000)
+        val result = DailyResult(epochDay = today, level = null, score = 250, timeMs = 90_000)
         daily.record(result)
 
-        val state = getDailyWheel(Level.A1)
+        val state = getDailyWheel()
 
         assertIs<DailyPlayState.AlreadyPlayed>(state)
         assertEquals(today, state.epochDay)
-        assertEquals(Level.A1, state.level)
         assertEquals(result, state.result)
     }
 
     @Test
-    fun `returns Ready for another level even if one level was already played`() = runTest {
+    fun `returns Ready for next day after today was played`() = runTest {
         val today = clock.epochDay(clock.nowMs())
-        val resultA1 = DailyResult(epochDay = today, level = Level.A1, score = 250, timeMs = 90_000)
-        daily.record(resultA1)
+        val result = DailyResult(epochDay = today, level = null, score = 250, timeMs = 90_000)
+        daily.record(result)
 
-        cards.cards = testAlphabetPool(Level.A1) + testAlphabetPool(Level.B1)
-        val stateB1 = getDailyWheel(Level.B1)
+        clock.advanceBy(FakeAppClock.MS_PER_DAY)
+        val state = getDailyWheel()
 
-        assertIs<DailyPlayState.Ready>(stateB1)
-        assertEquals(Level.B1, stateB1.level)
+        assertIs<DailyPlayState.Ready>(state)
+        assertEquals(today + 1, state.epochDay)
     }
 
     @Test
-    fun `returns NoCards when pool is empty for that level`() = runTest {
+    fun `returns NoCards when pool is empty`() = runTest {
         cards.cards = emptyList()
-        val state = getDailyWheel(Level.A1)
+        val state = getDailyWheel()
         assertEquals(DailyPlayState.NoCards, state)
     }
 }

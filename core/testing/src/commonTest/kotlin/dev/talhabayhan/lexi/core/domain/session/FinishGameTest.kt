@@ -185,10 +185,9 @@ class FinishGameTest {
         val game = finishedGame(GameMode.DAILY)
         val result = finish(game, category = null)
 
-        val stored = daily.get(result.epochDay, result.level)
+        val stored = daily.get(result.epochDay)
         assertTrue(stored != null)
         assertEquals(result.epochDay, stored.epochDay)
-        assertEquals(result.level, stored.level)
         assertEquals(result.score, stored.score)
     }
 

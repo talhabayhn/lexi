@@ -135,6 +135,7 @@ internal class ResultViewModel(
             clue = clue,
             example = example,
             outcome = if (passed) ReviewOutcome.Passed else ReviewOutcome.Wrong,
+            level = level,
         )
     }
 }

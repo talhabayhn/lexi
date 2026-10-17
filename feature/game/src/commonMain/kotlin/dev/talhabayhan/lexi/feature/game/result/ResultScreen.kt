@@ -244,6 +244,7 @@ private fun Review(state: ResultUiState, onIntent: (ResultIntent) -> Unit) {
                         ),
                         speakContentDescription = stringResource(Res.string.result_speak, row.word),
                         onSpeak = { onIntent(ResultIntent.Speak(row.word)) },
+                        level = if (state.mode == GameMode.DAILY) row.level?.name else null,
                     )
                 }
                 if (state.hiddenRows > 0) {

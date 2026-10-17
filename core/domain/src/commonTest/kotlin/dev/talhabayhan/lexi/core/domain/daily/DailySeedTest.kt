@@ -22,13 +22,14 @@ class DailySeedTest {
     }
 
     @Test
-    fun `different levels produce different seeds`() {
+    fun `level is ignored in seed calculation for backward compatibility`() {
         val seedA1 = DailySeed.seed(epochDay = 20_741L, level = Level.A1, contentVersion = 1L)
         val seedA2 = DailySeed.seed(epochDay = 20_741L, level = Level.A2, contentVersion = 1L)
         val seedB1 = DailySeed.seed(epochDay = 20_741L, level = Level.B1, contentVersion = 1L)
-        assertNotEquals(seedA1, seedA2)
-        assertNotEquals(seedA1, seedB1)
-        assertNotEquals(seedA2, seedB1)
+        val shared = DailySeed.seed(epochDay = 20_741L, contentVersion = 1L)
+        assertEquals(shared, seedA1)
+        assertEquals(shared, seedA2)
+        assertEquals(shared, seedB1)
     }
 
     @Test
@@ -49,10 +50,9 @@ class DailySeedTest {
     @Test
     fun `golden daily seed values are pinned`() {
         // Pinned to prevent accidental drift across platforms/compiler versions.
-        val goldenA1 = DailySeed.seed(epochDay = 20_741L, level = Level.A1, contentVersion = 1L)
-        val goldenB1 = DailySeed.seed(epochDay = 20_741L, level = Level.B1, contentVersion = 1L)
+        val goldenShared = DailySeed.seed(epochDay = 20_741L, contentVersion = 1L)
         // Verify they are non-zero and stable
-        assertEquals(goldenA1, DailySeed.seed(epochDay = 20_741L, level = Level.A1, contentVersion = 1L))
-        assertEquals(goldenB1, DailySeed.seed(epochDay = 20_741L, level = Level.B1, contentVersion = 1L))
+        assertEquals(goldenShared, DailySeed.seed(epochDay = 20_741L, contentVersion = 1L))
+        assertEquals(goldenShared, DailySeed.seed(epochDay = 20_741L, level = Level.A1, contentVersion = 1L))
     }
 }

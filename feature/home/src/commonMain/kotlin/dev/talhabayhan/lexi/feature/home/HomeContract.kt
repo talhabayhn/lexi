@@ -12,8 +12,8 @@ internal sealed interface DailyCardState {
     /** The daily wheel is available to play today. */
     data object Available : DailyCardState
 
-    /** The daily wheel has already been played today (shows today's score). */
-    data class AlreadyPlayed(val score: Int) : DailyCardState
+    /** The daily wheel has already been played today (shows today's score and hours until next wheel). */
+    data class AlreadyPlayed(val score: Int, val hoursUntilNext: Int = 0) : DailyCardState
 
     /** No playable cards exist for this level in the pool. */
     data object Unavailable : DailyCardState

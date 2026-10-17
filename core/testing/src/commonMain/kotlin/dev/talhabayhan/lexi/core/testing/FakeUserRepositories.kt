@@ -139,21 +139,19 @@ public class FakeStreakRepository(days: Collection<Long> = emptyList()) : Streak
 
 /** In-memory [DailyRepository]. */
 public class FakeDailyRepository(initial: Collection<DailyResult> = emptyList()) : DailyRepository {
-    private val state = MutableStateFlow(initial.associateBy { it.epochDay to it.level })
+    private val state = MutableStateFlow(initial.toList())
 
-    override fun observe(epochDay: Long, level: Level): Flow<DailyResult?> = state.map { it[epochDay to level] }
+    override fun observe(epochDay: Long): Flow<DailyResult?> =
+        state.map { list -> list.firstOrNull { it.epochDay == epochDay } }
 
     override fun observeDay(epochDay: Long): Flow<List<DailyResult>> =
-        state.map { map -> map.filterKeys { it.first == epochDay }.values.toList() }
+        state.map { list -> list.filter { it.epochDay == epochDay } }
 
-    override fun observe(epochDay: Long): Flow<DailyResult?> = observeDay(epochDay).map { it.firstOrNull() }
-
-    override suspend fun get(epochDay: Long, level: Level): DailyResult? = state.value[epochDay to level]
+    override suspend fun get(epochDay: Long): DailyResult? = state.value.firstOrNull { it.epochDay == epochDay }
 
     override suspend fun record(result: DailyResult): Boolean {
-        val key = result.epochDay to result.level
-        if (key in state.value) return false
-        state.value += (key to result)
+        if (state.value.any { it.epochDay == result.epochDay }) return false
+        state.value += result
         return true
     }
 }

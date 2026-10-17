@@ -40,7 +40,7 @@ class HomeViewModelTest {
     @BeforeTest
     fun setUp() {
         Dispatchers.setMain(UnconfinedTestDispatcher())
-        cards.cards = testAlphabetPool(Level.A1)
+        cards.cards = Level.entries.flatMap { testAlphabetPool(it) }
     }
 
     @AfterTest
@@ -127,11 +127,18 @@ class HomeViewModelTest {
         daily.record(DailyResult(today, Level.A1, score = 320, timeMs = 85000))
         val viewModel = viewModel()
         viewModel.state.test {
-            assertEquals(DailyCardState.AlreadyPlayed(320), awaitItem().dailyState)
+            assertEquals(DailyCardState.AlreadyPlayed(320, hoursUntilNext = 12), awaitItem().dailyState)
         }
         viewModel.effects.test {
             viewModel.onIntent(HomeIntent.OpenDaily)
             expectNoEvents()
+        }
+
+        // Advance 2 hours, resume screen -> hoursUntilNext should update to 10
+        clock.advanceBy(2 * 3_600_000L)
+        viewModel.onIntent(HomeIntent.Resumed)
+        viewModel.state.test {
+            assertEquals(DailyCardState.AlreadyPlayed(320, hoursUntilNext = 10), awaitItem().dailyState)
         }
     }
 

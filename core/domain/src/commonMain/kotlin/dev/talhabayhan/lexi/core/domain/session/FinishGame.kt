@@ -59,7 +59,7 @@ public class FinishGame(
         if (!dailyRecorded && result.mode == GameMode.DAILY && daily != null) {
             val dailyResult = DailyResult(
                 epochDay = result.epochDay,
-                level = result.level,
+                level = null,
                 score = result.score,
                 timeMs = result.endedAtMs - result.startedAtMs,
                 shareCode = null,

@@ -16,37 +16,47 @@ class RecordDailyResultTest {
     private val recordDaily = RecordDailyResult(daily, clock)
 
     @Test
-    fun `records first daily attempt of the day for a level`() = runTest {
+    fun `records first daily attempt of the day`() = runTest {
         val today = clock.epochDay(clock.nowMs())
-        val recorded = recordDaily(Level.A1, score = 300, timeMs = 75_000)
+        val recorded = recordDaily(score = 300, timeMs = 75_000)
 
         assertTrue(recorded)
-        val stored = daily.get(today, Level.A1)
+        val stored = daily.get(today)
         assertNotNull(stored)
         assertEquals(today, stored.epochDay)
-        assertEquals(Level.A1, stored.level)
         assertEquals(300, stored.score)
         assertEquals(75_000L, stored.timeMs)
     }
 
     @Test
-    fun `rejects second daily attempt of the same day for the same level`() = runTest {
-        assertTrue(recordDaily(Level.A1, score = 300, timeMs = 75_000))
-        assertFalse(recordDaily(Level.A1, score = 999, timeMs = 50_000))
+    fun `rejects second daily attempt of the same day`() = runTest {
+        assertTrue(recordDaily(score = 300, timeMs = 75_000))
+        assertFalse(recordDaily(score = 999, timeMs = 50_000))
 
         val today = clock.epochDay(clock.nowMs())
-        val stored = daily.get(today, Level.A1)
+        val stored = daily.get(today)
         assertNotNull(stored)
         assertEquals(300, stored.score) // Unchanged
     }
 
     @Test
-    fun `allows recording different levels on the same day`() = runTest {
+    fun `rejects second daily attempt even when level differs`() = runTest {
         assertTrue(recordDaily(Level.A1, score = 300, timeMs = 75_000))
-        assertTrue(recordDaily(Level.B1, score = 320, timeMs = 80_000))
+        assertFalse(recordDaily(Level.B1, score = 320, timeMs = 80_000))
 
         val today = clock.epochDay(clock.nowMs())
-        assertNotNull(daily.get(today, Level.A1))
-        assertNotNull(daily.get(today, Level.B1))
+        assertNotNull(daily.get(today))
+    }
+
+    @Test
+    fun `allows recording daily attempt on the next day`() = runTest {
+        assertTrue(recordDaily(score = 300, timeMs = 75_000))
+        clock.advanceBy(FakeAppClock.MS_PER_DAY)
+        assertTrue(recordDaily(score = 400, timeMs = 80_000))
+
+        val yesterday = clock.epochDay(clock.nowMs()) - 1
+        val today = clock.epochDay(clock.nowMs())
+        assertNotNull(daily.get(yesterday))
+        assertNotNull(daily.get(today))
     }
 }

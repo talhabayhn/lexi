@@ -45,6 +45,12 @@ data class GameRoute(val level: String, val mode: String, val category: String? 
          * placeholder, the game takes the level of the wheel's first card.
          */
         fun review(): GameRoute = GameRoute(Level.A1, GameMode.REVIEW)
+
+        /**
+         * The shared mixed-level daily wheel (`GAME_RULES.md` §5); [level] is only a placeholder,
+         * the game takes the level of the wheel's first card.
+         */
+        fun daily(): GameRoute = GameRoute(Level.A1, GameMode.DAILY)
     }
 }
 

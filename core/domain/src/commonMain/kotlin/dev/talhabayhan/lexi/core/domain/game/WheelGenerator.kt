@@ -47,6 +47,52 @@ public object WheelGenerator {
     }
 
     /**
+     * Fixed distribution of card levels across the 26 letters for Daily mode (`GAME_RULES.md` §5).
+     * Easy to tune named constant: A1 x6, A2 x5, B1 x5, B2 x4, C1 x3, NAT x3.
+     */
+    public val DAILY_LEVEL_DISTRIBUTION: Map<Level, Int> = mapOf(
+        Level.A1 to 6,
+        Level.A2 to 5,
+        Level.B1 to 5,
+        Level.B2 to 4,
+        Level.C1 to 3,
+        Level.NAT to 3,
+    )
+
+    /**
+     * Shared mixed-level 26-slot Daily wheel:
+     * - Deterministically assigns a level to each letter A–Z by shuffling [distribution] with [random].
+     * - For each letter, picks one card from that level's candidates in [pool] using [random].
+     * - Ignores history so every player receives the identical wheel for the same date + contentVersion.
+     */
+    public fun daily(
+        pool: List<Card>,
+        random: SeededRandom,
+        distribution: Map<Level, Int> = DAILY_LEVEL_DISTRIBUTION,
+    ): Wheel {
+        require(pool.distinctBy { it.id }.size == pool.size) { "card ids in a pool must be unique" }
+        require(distribution.values.sum() == 26) {
+            "distribution must sum to 26 slots, was ${distribution.values.sum()}"
+        }
+        val levels = distribution.flatMap { (level, count) -> List(count) { level } }
+        val assignedLevels = random.shuffled(levels)
+        val byLevelAndLetter = pool
+            .sortedBy { it.id.value }
+            .groupBy { it.level to it.letter }
+
+        val slots = ('A'..'Z').mapIndexed { index, letter ->
+            val assignedLevel = assignedLevels[index]
+            val candidates = byLevelAndLetter[assignedLevel to letter].orEmpty()
+            if (candidates.isEmpty()) {
+                Slot(letter, card = null, state = SlotState.SKIPPED)
+            } else {
+                Slot(letter, random.pick(candidates), SlotState.TODO)
+            }
+        }
+        return Wheel(slots)
+    }
+
+    /**
      * Review wheel from SRS-due cards (any level/category): only letters that have due cards, A–Z order, one card
      * per letter picked with [random]. Empty when nothing is due.
      */

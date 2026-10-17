@@ -148,7 +148,7 @@ class HomeLayoutTest {
 
     private companion object {
         /** `02-home` at 390 × 844: OYNA's bottom edge to the tiles (the 20dp gap and the free space). */
-        const val DESIGN_PLAY_TO_TILES = 171f
+        const val DESIGN_PLAY_TO_TILES = 161f
         const val TILE_HEIGHT = 110f
         const val TILE_GROWTH = 55f
         const val SCREEN_PADDING = 20

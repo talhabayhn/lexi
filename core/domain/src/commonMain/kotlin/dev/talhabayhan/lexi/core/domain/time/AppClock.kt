@@ -11,4 +11,7 @@ public interface AppClock {
 
     /** Epoch day (days since 1970-01-01) of the instant [atMs] in the player's current time zone. */
     public fun epochDay(atMs: Long): Long
+
+    /** Milliseconds until the next local day starts (local midnight) from instant [atMs]. */
+    public fun msUntilNextDay(atMs: Long = nowMs()): Long
 }

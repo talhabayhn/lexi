@@ -33,6 +33,15 @@ public data class GameConfig(
         Level.C1 to 150,
         Level.NAT to 170,
     ),
+    /** §6: base points per correct answer in Daily mode by card level (named constants). */
+    val dailyBasePointsByLevel: Map<Level, Int> = mapOf(
+        Level.A1 to 5,
+        Level.A2 to 7,
+        Level.B1 to 10,
+        Level.B2 to 13,
+        Level.C1 to 16,
+        Level.NAT to 20,
+    ),
     /** §6: streak bonus `step × (streak − 1)`, capped. */
     val streakBonusStep: Int = 2,
     val streakBonusCap: Int = 10,
@@ -82,6 +91,8 @@ public data class GameConfig(
     }?.let { it * MS_PER_SECOND }
 
     public fun levelMultiplierPercent(level: Level): Int = levelMultipliersPercent[level] ?: PERCENT
+
+    public fun dailyBasePoints(level: Level): Int = dailyBasePointsByLevel[level] ?: baseCorrectPoints
 
     /** Cost of [type] in [mode]; time costs become point costs (or free) in untimed modes. */
     public fun jokerCost(type: JokerType, mode: GameMode): JokerCost {

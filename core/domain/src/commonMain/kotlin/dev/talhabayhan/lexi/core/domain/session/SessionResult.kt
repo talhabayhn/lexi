@@ -29,7 +29,7 @@ public data class SessionResult(
 /** The one scored Daily wheel attempt of a day (`GAME_RULES.md` §5). [shareCode] is the share-card payload (M6). */
 public data class DailyResult(
     val epochDay: Long,
-    val level: Level,
+    val level: Level? = null,
     val score: Int,
     val timeMs: Long,
     val shareCode: String? = null,

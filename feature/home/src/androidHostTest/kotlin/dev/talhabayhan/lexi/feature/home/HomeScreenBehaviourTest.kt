@@ -52,7 +52,7 @@ class HomeScreenBehaviourTest {
     fun `the daily card sends open daily`() {
         assertEquals(
             listOf<HomeIntent>(HomeIntent.OpenDaily),
-            clicking { onNodeWithText("Herkes aynı çarkı çözüyor").performClick() },
+            clicking { onNodeWithText("Herkesle aynı çark: bildiğin kadarını çöz").performClick() },
         )
     }
 
@@ -63,12 +63,13 @@ class HomeScreenBehaviourTest {
             setContent {
                 LexiTheme(reducedMotion = true) {
                     HomeScreen(
-                        HomeSampleState.copy(dailyState = DailyCardState.AlreadyPlayed(310)),
+                        HomeSampleState.copy(dailyState = DailyCardState.AlreadyPlayed(310, hoursUntilNext = 6)),
                         onIntent = { intents += it },
                     )
                 }
             }
             onNodeWithText("Tamamlandı · 310 puan").performClick()
+            onNodeWithText("Yeni çark 6 saat sonra").assertExists()
         }
         assertEquals(emptyList(), intents)
     }

@@ -6,6 +6,7 @@ import app.cash.sqldelight.coroutines.mapToOneOrNull
 import dev.talhabayhan.lexi.core.data.content.MAX_SQL_VARIABLES
 import dev.talhabayhan.lexi.core.data.db.Databases
 import dev.talhabayhan.lexi.core.data.db.SuspendLazy
+import dev.talhabayhan.lexi.core.data.user.db.Daily_result
 import dev.talhabayhan.lexi.core.data.user.db.Joker
 import dev.talhabayhan.lexi.core.data.user.db.Progress
 import dev.talhabayhan.lexi.core.data.user.db.UserDatabase
@@ -151,45 +152,55 @@ internal class StreakRepositoryImpl(databases: Databases, io: CoroutineDispatche
 internal class DailyRepositoryImpl(databases: Databases, io: CoroutineDispatcher) :
     UserStore(databases, io),
     DailyRepository {
-    override fun observe(epochDay: Long, level: Level): Flow<DailyResult?> = observe {
-        dailyResultQueries.byDayAndLevel(epochDay, level.name).asFlow().mapToOneOrNull(io).map { row ->
-            row?.let { r ->
-                DailyResult(r.epoch_day, level, r.score.toInt(), r.time_ms, r.share_code)
-            }
+    override fun observe(epochDay: Long): Flow<DailyResult?> = observe {
+        dailyResultQueries.byDay(epochDay).asFlow().mapToList(io).map { rows ->
+            rows.firstOrNull()?.toModel()
         }
     }
+
+    override fun observe(epochDay: Long, level: Level): Flow<DailyResult?> = observe(epochDay)
 
     override fun observeDay(epochDay: Long): Flow<List<DailyResult>> = observe {
         dailyResultQueries.byDay(epochDay).asFlow().mapToList(io).map { rows ->
-            rows.mapNotNull { r ->
-                Level.entries.firstOrNull { it.name == r.level }
-                    ?.let { DailyResult(r.epoch_day, it, r.score.toInt(), r.time_ms, r.share_code) }
-            }
+            rows.map { it.toModel() }
         }
     }
 
-    override fun observe(epochDay: Long): Flow<DailyResult?> = observeDay(epochDay).map { it.firstOrNull() }
+    override suspend fun get(epochDay: Long): DailyResult? = write {
+        dailyResultQueries.byDay(epochDay).executeAsList().firstOrNull()?.toModel()
+    }
 
     override suspend fun get(epochDay: Long, level: Level): DailyResult? = write {
-        dailyResultQueries.byDayAndLevel(epochDay, level.name).executeAsOneOrNull()?.let { r ->
-            DailyResult(r.epoch_day, level, r.score.toInt(), r.time_ms, r.share_code)
-        }
+        dailyResultQueries.byDayAndLevel(epochDay, level.name).executeAsOneOrNull()?.toModel()
+            ?: dailyResultQueries.byDayAndLevel(epochDay, SHARED_SENTINEL).executeAsOneOrNull()?.toModel()
     }
 
     override suspend fun record(result: DailyResult): Boolean = write {
         dailyResultQueries.transactionWithResult {
-            if (dailyResultQueries.byDayAndLevel(result.epochDay, result.level.name).executeAsOneOrNull() != null) {
+            if (dailyResultQueries.byDay(result.epochDay).executeAsList().isNotEmpty()) {
                 return@transactionWithResult false
             }
             dailyResultQueries.insertIfAbsent(
                 epoch_day = result.epochDay,
-                level = result.level.name,
+                level = result.level?.name ?: SHARED_SENTINEL,
                 score = result.score.toLong(),
                 time_ms = result.timeMs,
                 share_code = result.shareCode,
             )
             true
         }
+    }
+
+    private companion object {
+        const val SHARED_SENTINEL = "SHARED"
+
+        fun Daily_result.toModel(): DailyResult = DailyResult(
+            epochDay = epoch_day,
+            level = Level.entries.firstOrNull { it.name == level },
+            score = score.toInt(),
+            timeMs = time_ms,
+            shareCode = share_code,
+        )
     }
 }
 

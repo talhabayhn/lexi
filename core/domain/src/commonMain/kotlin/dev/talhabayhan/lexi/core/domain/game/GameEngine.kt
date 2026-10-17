@@ -213,8 +213,10 @@ public class GameEngine(public val config: GameConfig = GameConfig()) {
             ).advance()
         }
 
-        private fun basePoints(level: Level): Int =
-            percentOf(config.baseCorrectPoints, config.levelMultiplierPercent(level))
+        private fun GameState.basePoints(level: Level): Int = when (mode) {
+            GameMode.DAILY -> config.dailyBasePoints(level)
+            else -> percentOf(config.baseCorrectPoints, config.levelMultiplierPercent(level))
+        }
 
         private fun streakBonus(streak: Int): Int = minOf(config.streakBonusStep * (streak - 1), config.streakBonusCap)
 

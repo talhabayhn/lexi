@@ -121,6 +121,7 @@ public fun DailyCard(
     title: String,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
+    subtitle: String? = null,
     compact: Boolean = false,
     enabled: Boolean = true,
     showChevron: Boolean = true,
@@ -155,7 +156,29 @@ public fun DailyCard(
             }
             Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap2)) {
                 Text(label, style = LexiTheme.typography.label12)
-                Text(title, style = LexiTheme.typography.heading22)
+                val titleStyle = if (compact) LexiTheme.typography.heading18 else LexiTheme.typography.heading20
+                val maxFont = titleStyle.fontSize
+                val minFont = 13.sp
+                BasicText(
+                    text = title,
+                    style = titleStyle,
+                    color = { colors.ink },
+                    maxLines = 2,
+                    overflow = TextOverflow.Clip,
+                    autoSize = TextAutoSize.StepBased(
+                        minFontSize = minFont,
+                        maxFontSize = maxFont,
+                        stepSize = 0.5.sp,
+                    ),
+                )
+                if (subtitle != null) {
+                    Text(
+                        text = subtitle,
+                        style = LexiTheme.typography.caption13SemiBold,
+                        color = colors.ink,
+                        maxLines = 1,
+                    )
+                }
             }
             if (showChevron) {
                 Icon(
@@ -254,7 +277,7 @@ private fun HomeCardsPreview() {
             verticalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap12),
         ) {
             StreakChip("7 gün seri")
-            DailyCard("14", "GÜNÜN ÇARKI · EKİM", "Herkes aynı çarkı çözüyor", onClick = {})
+            DailyCard("14", "GÜNÜN ÇARKI · EKİM", "Herkesle aynı çark: bildiğin kadarını çöz", onClick = {})
             PlayButton("OYNA", "A1 · KLASİK", onClick = {})
             StartButton("BAŞLA", "A1 · KLASİK · 26 HARF", onClick = {})
         }

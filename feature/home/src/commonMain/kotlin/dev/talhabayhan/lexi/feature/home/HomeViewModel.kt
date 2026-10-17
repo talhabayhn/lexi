@@ -65,13 +65,16 @@ internal class HomeViewModel(
         viewModelScope.launch {
             @OptIn(ExperimentalCoroutinesApi::class)
             today.flatMapLatest { day ->
-                daily.observe(day, mutableState.value.playLevel).map { played ->
+                daily.observe(day).map { played ->
                     if (played != null) {
-                        DailyCardState.AlreadyPlayed(played.score)
+                        DailyCardState.AlreadyPlayed(played.score, calculateHoursUntilNext())
                     } else {
-                        when (val playState = getDailyWheel(mutableState.value.playLevel, day)) {
+                        when (val playState = getDailyWheel(day)) {
                             is DailyPlayState.Ready -> DailyCardState.Available
-                            is DailyPlayState.AlreadyPlayed -> DailyCardState.AlreadyPlayed(playState.result.score)
+
+                            is DailyPlayState.AlreadyPlayed ->
+                                DailyCardState.AlreadyPlayed(playState.result.score, calculateHoursUntilNext())
+
                             is DailyPlayState.NoCards -> DailyCardState.Unavailable
                         }
                     }
@@ -86,9 +89,19 @@ internal class HomeViewModel(
 
     private fun AppClock.currentDay(): Long = epochDay(nowMs())
 
+    private fun calculateHoursUntilNext(): Int = (appClock.msUntilNextDay() / 3_600_000L).toInt()
+
     fun onIntent(intent: HomeIntent) {
         when (intent) {
-            HomeIntent.Resumed -> today.value = appClock.currentDay()
+            HomeIntent.Resumed -> {
+                today.value = appClock.currentDay()
+                val currentDaily = mutableState.value.dailyState
+                if (currentDaily is DailyCardState.AlreadyPlayed) {
+                    mutableState.update {
+                        it.copy(dailyState = currentDaily.copy(hoursUntilNext = calculateHoursUntilNext()))
+                    }
+                }
+            }
 
             HomeIntent.Play -> effectChannel.trySend(HomeEffect.NavigateToLevelSelect)
 

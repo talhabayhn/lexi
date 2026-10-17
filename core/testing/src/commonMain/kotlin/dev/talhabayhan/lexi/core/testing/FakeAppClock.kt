@@ -11,6 +11,11 @@ public class FakeAppClock(public var currentMs: Long = DEFAULT_NOW_MS, public va
 
     override fun epochDay(atMs: Long): Long = (atMs + utcOffsetMs).floorDiv(MS_PER_DAY)
 
+    override fun msUntilNextDay(atMs: Long): Long {
+        val msInDay = (atMs + utcOffsetMs).mod(MS_PER_DAY)
+        return (MS_PER_DAY - msInDay).coerceAtLeast(0L)
+    }
+
     public fun advanceBy(ms: Long) {
         currentMs += ms
     }
