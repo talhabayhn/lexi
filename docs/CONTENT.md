@@ -53,6 +53,22 @@ Pack-only cards are validated like level cards (unique id/answer per level) but 
 Owner decision: they are excluded from free level wheels too. They are written with `card.pack_only = 1`; every
 level-wheel/category query must filter `pack_only = 0`, and they are reachable only through `exam_pack_card`.
 
+### Exam packs (current content)
+| pack | cards | pack-only | levels | units |
+|---|---|---|---|---|
+| `lgs` | 573 | 297 (A2, B1) | A2–B1 | 10 MEB 8th-grade themes (friendship … natural-forces) |
+| `yds` | 720 | 345 (B2, C1) | B2–C1 | connectors, general-academic, science, health, environment, economy, law-politics, social-science, phrasal-verbs, collocations |
+| `yokdil` | 500 | 209 (B1–C1) | B2–C1 | sciences, health, social-sciences, research-methods |
+
+- A word that exists anywhere (base or another pack) is referenced by id in `units/<pack>.csv`, never re-created;
+  YÖKDİL shares 114 cards with YDS. Every pack has ≥ 5 cards per letter.
+- `packs-meta.csv` holds title_tr/title_en, level range, card target and free preview letters (not read by the
+  compiler yet). Open compiler work and owner decisions: `docs/content/EXAM_PACKS.md`; review notes:
+  `docs/content-review/EXAM-*-summary.md`.
+- QA without Gradle: `python3 tools/content-qa/qa.py` (charset, letter rule, leaks, duplicates, per-pack letters).
+- Pack answers count in the per-level example leak check: a new base example must not contain a pack answer of
+  its level either (the compiler reports it like any other leak).
+
 ## 2. Card CSV schema (`content/cards/<level>/*.csv`, UTF-8, comma, header row; any file name, e.g. one file per category)
 | column | type | rule |
 |---|---|---|
