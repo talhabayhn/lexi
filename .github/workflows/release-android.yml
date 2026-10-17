@@ -25,7 +25,9 @@ on:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: ${{ github.ref_type != 'tag' }}
+  # Never cancel: on a busy main the verification would otherwise never finish; GitHub keeps only
+  # the newest pending run, so at most one extra run is queued.
+  cancel-in-progress: false
 
 permissions:
   contents: read
