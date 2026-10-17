@@ -127,14 +127,28 @@ Before the store submission: fill the `[PLACEHOLDERS]` and remove the DRAFT bann
 `docs/store/*.md` (lawyer review, `owner-checklist.md`), and drop `noindex` in `docs/site/build.py`.
 Local preview: `python docs/site/build.py --out _site` and open `_site/index.html`.
 
-## 9. Store graphics
+## 9. Store graphics and videos
 
-```bash
-pip install pillow
-python tools/store-graphics/build.py
-```
-Writes `docs/store/graphics/`: `play/icon-512.png`, `play/feature-graphic-{tr,en}.png`,
-`play/phone/{tr,en}-NN.png` (1080×1920), `appstore/iphone-6.9/` (1320×2868) and `appstore/iphone-6.5/`
-(1284×2778). After a UI change: refresh the Roborazzi screenshots (`./gradlew recordRoborazziAndroidHostTest`,
-commit) and re-run the script; `--screens-dir <folder>` takes fresher PNGs, e.g. from
-`gh run download <run-id> -D shots`. Current required sizes are listed in the script header.
+**Regenerate (after any UI or colour change):** GitHub → **Actions → store-graphics → Run workflow** (~20 min).
+It re-records every Roborazzi screenshot with the current `LexiTheme`, records real gameplay footage
+(`StoreFootageCapture`), builds all images and videos, and uploads the **`store-graphics`** artifact
+(run page → Summary → Artifacts → download zip). The same files are committed under `docs/store/graphics/`.
+Locally (needs footage from CI for the videos): `pip install pillow numpy`, then
+`python tools/store-graphics/build.py` and `python tools/store-graphics/video.py` (ffmpeg on PATH).
+Required sizes are listed in the `build.py` header.
+
+| File | Store | Where to upload |
+|---|---|---|
+| `play/icon-512.png` | Play | Play Console → Grow users → Store presence → Main store listing → App icon |
+| `play/feature-graphic-{tr,en}.png` (1024×500) | Play | same page → Feature graphic (per language: Translations / Manage translations) |
+| `play/phone/{tr,en}-01…08.png` (1080×1920) | Play | same page → Phone screenshots (2–8, in this order) |
+| `play/promo-video-{tr,en}-1920x1080.mp4` | Play | upload to **YouTube** (Public or Unlisted, ads/monetisation off, embeddable), paste the video URL into Main store listing → Video |
+| `appstore/iphone-6.9/{tr,en}-01…08.png` (1320×2868) | App Store | App Store Connect → app → version page → Previews and Screenshots → iPhone 6.9" Display (per localization: Turkish / English) |
+| `appstore/iphone-6.5/…` (1284×2778) | App Store | only if App Store Connect asks for the 6.5" set |
+| `appstore/preview/{tr,en}-886x1920.mp4` | App Store | same section, drag into the 6.9" slot as App Preview (15–30 s, H.264, ≤ 500 MB). Optional: choose the poster frame |
+| `appstore/app-icon-1024.png` | App Store | not uploaded: the icon comes from the build (`iosApp/.../AppIcon.appiconset`); the file is for reference/marketing |
+
+Upload from Windows: open the files from the downloaded artifact (or the repo folder) and drag them into the
+browser pages above. Play accepts PNG/JPEG without alpha (all files here are RGB); App Store accepts PNG/JPEG
+screenshots and .mp4 previews. Apple requires app previews to show the app itself; these videos use only
+real app frames and the app's own sounds.
