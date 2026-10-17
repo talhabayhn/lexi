@@ -25,6 +25,8 @@ jobs:
     timeout-minutes: 60
     steps:
       - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0  # the commit step rebases onto the latest main
 
       - uses: actions/setup-java@v6
         with:
