@@ -14,8 +14,8 @@ Sources (never invented UI):
   * Roborazzi screenshots under feature/*/src/androidHostTest/screenshots, rendered from the app's Compose code at
     390x844 dp @2x with LexiTheme (so they carry the current palette once re-recorded).
   * build/store-footage/<lang>/frame_*.png from StoreFootageCapture, and feature/*/build/store-screens/en/*.png from
-    the StoreScreensCapture tests: the English set uses the English UI with English clues and meanings (owner's
-    decision 2026-10-17: English listings show no Turkish text; the app itself has Turkish clues only for now).
+    the StoreScreensCapture tests: the English set shows the English UI with the real Turkish clues and meanings
+    (owner's decision 2026-10-17: store images show real app states; only captions are translated).
   * The launcher icon geometry (androidApp/src/main/res/drawable/ic_launcher_*.xml, design 13-logo-and-icon
     option 1) in the current LexiColors, drawn here so the store icon always matches the app.
 
@@ -75,21 +75,21 @@ SCREENS = {
         ("feature/game/JokerSheet.png", INK, "Takıldın mı?\nJoker kullan"),
     ],
     "en": [
-        # English UI with English clues/meanings (StoreScreensCapture): English listings show no Turkish text.
-        ("store:game/Game.png", RED, "Find the word,\nletter by letter"),
+        # English UI, real app states: clues and meanings stay Turkish as in the app; only the captions are English.
+        ("store:game/Game.png", RED, "A Turkish clue.\nAn English answer."),
         ("footage:combo", BLUE, "Build streaks,\nscore more"),
         ("store:home/Home.png", YELLOW, "A new Daily Wheel\nevery day"),
         ("feature/levels/LevelSelectNatPracticeEn.png", INK, "Six levels,\nA1 to native"),
         ("store:game/Result.png", RED, "Review every\nword you missed"),
         ("store:notebook/Notebook.png", BLUE, "A notebook with\nspaced repetition"),
         ("feature/stats/StatsEn.png", YELLOW, "Watch your\nprogress grow"),
-        ("store:game/JokerSheet.png", INK, "Stuck?\nUse a joker"),
+        ("feature/game/JokerSheetEnglish.png", INK, "Stuck?\nUse a joker"),
     ],
 }
 
 FEATURE = {
     "tr": ("A'dan Z'ye İngilizce", "Türkçe ipucu, İngilizce kelime. A1'den ana dile."),
-    "en": ("From A to Z in English", "Learn English words with an A–Z wheel. A1 to native."),
+    "en": ("From A to Z in English", "Turkish clues, English words. A1 to native."),
 }
 
 

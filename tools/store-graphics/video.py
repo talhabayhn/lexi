@@ -48,7 +48,7 @@ SCENES = {
         ],
     },
     "en": {
-        "game": "Find the word,\nletter by letter",
+        "game": "A Turkish clue.\nAn English answer.",
         "end": "Play\nnow",
         "stills": [
             ("store:home/Home.png", YELLOW, "A new Daily Wheel\nevery day"),

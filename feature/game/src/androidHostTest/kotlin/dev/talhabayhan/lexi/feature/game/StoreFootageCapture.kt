@@ -77,14 +77,11 @@ class StoreFootageCapture {
 
     private fun capture(lang: String) {
         assumeTrue(System.getenv("LEXI_STORE_FOOTAGE") == "1")
-        runComposeUiTest { Footage(this, File("build/store-footage/$lang"), lang).play() }
+        runComposeUiTest { Footage(this, File("build/store-footage/$lang")).play() }
     }
 
-    private class Footage(private val test: ComposeUiTest, private val dir: File, lang: String) {
-        private val kitchen = KITCHEN.localized(lang)
-        private val lemon = LEMON.localized(lang)
-        private val mirror = MIRROR.localized(lang)
-        private var state by mutableStateOf(turnState('K', kitchen, typed = 0, score = 120, passedSoFar = PASSED))
+    private class Footage(private val test: ComposeUiTest, private val dir: File) {
+        private var state by mutableStateOf(turnState('K', KITCHEN, typed = 0, score = 120, passedSoFar = PASSED))
         private var clock by mutableStateOf(clockAt(START_MS))
         private val harness = MotionHarness()
         private val timeline = StringBuilder()
@@ -108,11 +105,11 @@ class StoreFootageCapture {
                 }
             }
             hold(IDLE_MS)
-            type('K', kitchen, score = 120, passedSoFar = PASSED)
-            answer('K', next = 'L', nextWord = lemon, score = 130, passedSoFar = PASSED)
+            type('K', KITCHEN, score = 120, passedSoFar = PASSED)
+            answer('K', next = 'L', nextWord = LEMON, score = 130, passedSoFar = PASSED)
             hold(IDLE_MS)
-            type('L', lemon, score = 130, passedSoFar = PASSED)
-            answer('L', next = 'M', nextWord = mirror, score = 140, passedSoFar = PASSED)
+            type('L', LEMON, score = 130, passedSoFar = PASSED)
+            answer('L', next = 'M', nextWord = MIRROR, score = 140, passedSoFar = PASSED)
             effect(GameEffect.ComboReached(3), "combo")
             hold(COMBO_MS)
             File(dir, "timeline.txt").writeText(timeline.toString())
@@ -170,26 +167,15 @@ class StoreFootageCapture {
         }
     }
 
-    /**
-     * [clue] is the app's Turkish clue; [clueEn] an English definition used only for the English store set (the
-     * owner's choice: English listings show no Turkish text).
-     */
-    private data class Word(
-        val clue: String,
-        val clueEn: String,
-        val answer: String,
-        val keys: String,
-        val pos: PartOfSpeech,
-    ) {
-        fun localized(lang: String): Word = if (lang == "en") copy(clue = clueEn) else this
-    }
+    /** A sample card; the clue stays Turkish in every locale, exactly as the game shows it. */
+    private data class Word(val clue: String, val answer: String, val keys: String, val pos: PartOfSpeech)
 
     private companion object {
         // Sample cards (not user-facing strings of the app); clues are Turkish in every locale, like the game.
-        val KITCHEN = Word("mutfak", "the room where you cook", "KITCHEN", "CKHENSITOR", PartOfSpeech.NOUN)
-        val LEMON = Word("limon", "a sour yellow fruit", "LEMON", "OALMRTEISN", PartOfSpeech.NOUN)
+        val KITCHEN = Word("mutfak", "KITCHEN", "CKHENSITOR", PartOfSpeech.NOUN)
+        val LEMON = Word("limon", "LEMON", "OALMRTEISN", PartOfSpeech.NOUN)
         val PASSED = setOf('C', 'H')
-        val MIRROR = Word("ayna", "you see yourself in it", "MIRROR", "RIMAOTRSEL", PartOfSpeech.NOUN)
+        val MIRROR = Word("ayna", "MIRROR", "RIMAOTRSEL", PartOfSpeech.NOUN)
 
         const val STEP_MS = 33L
         const val START_MS = 112_000L
