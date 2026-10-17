@@ -28,3 +28,13 @@ b1-rock-climbing,ROCK CLIMBING,R,STARTS,phrase,ip ve kaskla kayalık duvarlara t
 b1-horse-riding,HORSE RIDING,H,STARTS,phrase,ata binme etkinliği,We went horse riding in Cappadocia.,Kapadokya'da ata bindik.,2,exam:lgs,sports
 b1-life-jacket,LIFE JACKET,L,STARTS,phrase,suda batmamak için giyilen şişirilmiş yelek,Put on a life jacket before rafting.,Rafting öncesi can yeleği giy.,3,exam:lgs,sports
 b1-sleeping-bag,SLEEPING BAG,S,STARTS,phrase,kampta içine girilerek uyunan sıcak tulum,"It was cold, so I slept in a thick sleeping bag.","Hava soğuktu, bu yüzden kalın bir uyku tulumunda uyudum.",3,exam:lgs,travel
+b1-tour-guide,TOUR GUIDE,T,STARTS,phrase,turistlere geziyi anlatan rehber,Our tour guide spoke four languages.,Tur rehberimiz dört dil konuşuyordu.,2,exam:lgs,travel
+b1-check-in,CHECK IN,C,STARTS,phrasal,otele ya da havalimanına varınca kayıt yaptırmak,We can check in at the hotel after two o'clock.,Otele saat ikiden sonra giriş yapabiliriz.,3,exam:lgs,travel
+b1-round-trip,ROUND TRIP,R,STARTS,phrase,gidiş ve dönüşü içeren yolculuk,A round trip ticket to Ankara costs less.,Ankara'ya gidiş dönüş bilet daha ucuza gelir.,3,exam:lgs,travel
+b1-boarding-pass,BOARDING PASS,B,STARTS,phrase,uçağa binmek için gösterilen kart,Show your boarding pass at the gate.,Kapıda biniş kartını göster.,3,exam:lgs,travel
+b1-hot-air-balloon,HOT AIR BALLOON,H,STARTS,phrase,sıcak havayla yükselen sepetli büyük balon,We flew in a hot air balloon over Cappadocia.,Kapadokya üzerinde sıcak hava balonuyla uçtuk.,3,exam:lgs,travel
+b1-fairy-chimney,FAIRY CHIMNEY,F,STARTS,phrase,Kapadokya'daki külah biçimli doğal kaya oluşumu,Every fairy chimney in Göreme looks different.,Göreme'deki her peribacası farklı görünür.,4,exam:lgs,travel
+b1-washing-machine,WASHING MACHINE,W,STARTS,phrase,çamaşırları yıkayan elektrikli makine,Put the dirty socks in the washing machine.,Kirli çorapları çamaşır makinesine koy.,2,exam:lgs,daily-life
+b1-vacuum-cleaner,VACUUM CLEANER,V,STARTS,phrase,tozları emerek temizleyen elektrikli süpürge,Our vacuum cleaner is very noisy.,Elektrikli süpürgemiz çok gürültülü.,3,exam:lgs,daily-life
+b1-tidy-up,TIDY UP,T,STARTS,phrasal,bir yeri toplayıp düzenlemek,Tidy up your room before your friends come.,Arkadaşların gelmeden önce odanı topla.,2,exam:lgs,daily-life
+b1-clear-the-table,CLEAR THE TABLE,C,STARTS,phrase,yemekten sonra masadaki tabakları kaldırmak,Can you clear the table after dinner?,Akşam yemeğinden sonra sofrayı kaldırır mısın?,2,exam:lgs,daily-life

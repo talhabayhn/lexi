@@ -156,3 +156,52 @@ a2-peak,PEAK,P,STARTS,noun,"bir dağın en yüksek noktası, zirve",The climbers
 a2-gear,GEAR,G,STARTS,noun,bir etkinlik için gereken alet ve giysiler,Mert forgot his football gear at home.,Mert futbol malzemelerini evde unuttu.,4,exam:lgs,sports
 a2-unforgettable,UNFORGETTABLE,U,STARTS,adj,hiç unutulmayacak kadar etkileyici,Our trip to Cappadocia was unforgettable.,Kapadokya gezimiz unutulmazdı.,3,exam:lgs,travel
 a2-trekking,TREKKING,T,STARTS,noun,dağlık bölgelerde uzun yürüyüş yapma,Trekking on the Lycian Way takes many days.,Likya Yolu'nda doğa yürüyüşü günlerce sürer.,4,exam:lgs,travel
+a2-sightseeing,SIGHTSEEING,S,STARTS,noun,bir yerin ünlü yerlerini gezip görme,We went sightseeing in Rome.,Roma'da şehri gezdik.,2,exam:lgs,travel
+a2-monument,MONUMENT,M,STARTS,noun,önemli bir olayı ya da kişiyi anmak için dikilen yapı,There is a famous monument in the city centre.,Şehir merkezinde ünlü bir anıt var.,3,exam:lgs,travel
+a2-historical,HISTORICAL,H,STARTS,adj,"tarihle ilgili, tarihî",Istanbul has many historical buildings.,İstanbul'da pek çok tarihî bina var.,2,exam:lgs,travel
+a2-ruins,RUINS,R,STARTS,noun,yıkılmış eski yapılardan kalan kalıntılar,We visited the ruins of Ephesus.,Efes'in kalıntılarını ziyaret ettik.,3,exam:lgs,travel
+a2-souvenir,SOUVENIR,S,STARTS,noun,bir geziden hatıra olarak alınan küçük eşya,I bought a small souvenir for my teacher.,Öğretmenime küçük bir hatıra eşyası aldım.,2,exam:lgs,travel
+a2-accommodation,ACCOMMODATION,A,STARTS,noun,"tatilde kalınacak yer, konaklama",The price includes accommodation and breakfast.,Fiyata konaklama ve kahvaltı dahil.,4,exam:lgs,travel
+a2-reservation,RESERVATION,R,STARTS,noun,otelde ya da restoranda önceden yer ayırtma,We have a reservation for four people.,Dört kişilik rezervasyonumuz var.,3,exam:lgs,travel
+a2-guidebook,GUIDEBOOK,G,STARTS,noun,bir şehir ya da ülke hakkında gezginlere bilgi veren kitap,The guidebook has a good map of the old town.,Rehber kitapta eski şehrin iyi bir haritası var.,3,exam:lgs,travel
+a2-tour,TOUR,T,STARTS,noun,bir yeri gezip görmek için yapılan düzenli gezi,We took a boat tour of the Bosphorus.,Boğaz'da bir tekne turuna katıldık.,2,exam:lgs,travel
+a2-attraction,ATTRACTION,A,STARTS,noun,turistlerin görmek istediği ilgi çekici yer,The Galata Tower is a big tourist attraction.,Galata Kulesi büyük bir turistik mekândır.,3,exam:lgs,travel
+a2-hospitable,HOSPITABLE,H,STARTS,adj,misafirlerine sıcak ve cömert davranan,People in this village are very hospitable.,Bu köydeki insanlar çok misafirperver.,4,exam:lgs,travel
+a2-cuisine,CUISINE,C,STARTS,noun,bir ülkeye ya da bölgeye özgü yemek kültürü,Turkish cuisine is famous all over the world.,Türk mutfağı bütün dünyada ünlüdür.,4,exam:lgs,food-drink
+a2-breathtaking,BREATHTAKING,B,STARTS,adj,insanın nefesini kesecek kadar güzel,The sunrise over Cappadocia was breathtaking.,Kapadokya'da gün doğumu nefes kesiciydi.,4,exam:lgs,travel
+a2-magnificent,MAGNIFICENT,M,STARTS,adj,"görkemli, çok etkileyici",The old bridge looks magnificent at night.,Eski köprü geceleri görkemli görünür.,4,exam:lgs,travel
+a2-arrival,ARRIVAL,A,STARTS,noun,bir yere varış,Our arrival time in Antalya is ten o'clock.,Antalya'ya varış saatimiz saat on.,3,exam:lgs,travel
+a2-pottery,POTTERY,P,STARTS,noun,"kilden yapılan çanak çömlek, seramik işi",Avanos is famous for its pottery.,Avanos çömlekçiliğiyle ünlüdür.,4,exam:lgs,travel
+a2-cruise,CRUISE,C,STARTS,noun,lüks bir gemiyle yapılan deniz tatili,My grandparents went on a cruise to Greece.,Büyükannemle büyükbabam Yunanistan'a gemi turuna çıktı.,3,exam:lgs,travel
+a2-backpacker,BACKPACKER,B,STARTS,noun,sırt çantasıyla ucuza gezen gezgin,A backpacker often sleeps in cheap hostels.,Sırt çantalı gezgin çoğu zaman ucuz pansiyonlarda kalır.,3,exam:lgs,travel
+a2-travel-agency,TRAVEL AGENCY,T,STARTS,phrase,bilet ve tatil satan işletme,We booked our holiday at a travel agency.,Tatilimizi bir seyahat acentesinden ayarladık.,3,exam:lgs,travel
+a2-do-the-dishes,DO THE DISHES,D,STARTS,phrase,yemekten sonra tabakları yıkamak,It is my turn to do the dishes tonight.,Bu akşam bulaşığı yıkama sırası bende.,2,exam:lgs,home
+a2-chore,CHORE,C,STARTS,noun,evde düzenli yapılması gereken sıkıcı iş,Washing the car is my least favourite chore.,Araba yıkamak en sevmediğim ev işi.,3,exam:lgs,home
+a2-dishwasher,DISHWASHER,D,STARTS,noun,tabakları yıkayan elektrikli makine,"Put the plates in the dishwasher, please.",Lütfen tabakları bulaşık makinesine koy.,2,exam:lgs,home
+a2-ironing,IRONING,I,STARTS,noun,giysileri ütüleme işi,My dad does the ironing on Sundays.,Ütüyü pazar günleri babam yapar.,3,exam:lgs,home
+a2-vacuum,VACUUM,V,STARTS,verb,elektrikli süpürgeyle temizlemek,I vacuum my room every Saturday.,Her cumartesi odamı elektrikli süpürgeyle temizlerim.,3,exam:lgs,home
+a2-sweep,SWEEP,S,STARTS,verb,yeri süpürgeyle süpürmek,Can you sweep the kitchen floor?,Mutfağın yerini süpürebilir misin?,2,exam:lgs,home
+a2-mop,MOP,M,STARTS,verb,yeri ıslak paspasla silmek,Please mop the kitchen floor.,Lütfen mutfağın yerini paspasla.,3,exam:lgs,home
+a2-broom,BROOM,B,STARTS,noun,uzun saplı yer süpürgesi,The broom is behind the kitchen door.,Süpürge mutfak kapısının arkasında.,3,exam:lgs,home
+a2-sponge,SPONGE,S,STARTS,noun,bulaşık yıkamaya yarayan yumuşak süngerimsi parça,Use a sponge and warm water.,Sünger ve ılık su kullan.,2,exam:lgs,home
+a2-detergent,DETERGENT,D,STARTS,noun,çamaşır ya da bulaşık yıkamak için kullanılan deterjan,We need more detergent for the washing.,Çamaşır için daha fazla deterjana ihtiyacımız var.,3,exam:lgs,home
+a2-polish,POLISH,P,STARTS,verb,bir yüzeyi parlatmak,Polish the mirror with a soft cloth.,Aynayı yumuşak bir bezle parlat.,3,exam:lgs,home
+a2-scrub,SCRUB,S,STARTS,verb,sert bir fırçayla ovarak temizlemek,We had to scrub the bathroom floor.,Banyo zeminini ovarak temizlemek zorunda kaldık.,4,exam:lgs,home
+a2-messy,MESSY,M,STARTS,adj,dağınık ve düzensiz,Your desk is so messy!,Masan çok dağınık!,2,exam:lgs,home
+a2-neat,NEAT,N,STARTS,adj,"derli toplu, tertipli",Selin keeps her notebooks neat.,Selin defterlerini tertipli tutar.,3,exam:lgs,home
+a2-responsibility,RESPONSIBILITY,R,STARTS,noun,"bir işi yapmakla yükümlü olma, sorumluluk",Feeding the fish is my responsibility.,Balıkları beslemek benim sorumluluğum.,4,exam:lgs,home
+a2-groceries,GROCERIES,G,STARTS,noun,bakkaldan ya da marketten alınan yiyecek ve ev ihtiyaçları,Help me carry the groceries upstairs.,Market alışverişini yukarı taşımama yardım et.,3,exam:lgs,home
+a2-mow,MOW,M,STARTS,verb,çimleri biçmek,Can you mow the lawn this weekend?,Bu hafta sonu çimleri biçebilir misin?,4,exam:lgs,home
+a2-weed,WEED,W,STARTS,noun,bahçede istenmeden biten yabani ot,Pull out every weed in the garden.,Bahçedeki her yabani otu sök.,3,exam:lgs,home
+a2-cage,CAGE,C,STARTS,noun,kuşların ya da hayvanların tutulduğu telli kafes,Clean the bird's cage every week.,Kuşun kafesini her hafta temizle.,2,exam:lgs,home
+a2-spotless,SPOTLESS,S,STARTS,adj,"tertemiz, tek bir leke bile olmayan","After the party, we made the house spotless.",Partiden sonra evi tertemiz yaptık.,4,exam:lgs,home
+a2-dustpan,DUSTPAN,D,STARTS,noun,süpürülen tozları toplamak için kullanılan faraş,"Bring me the dustpan, please.",Faraşı bana getirir misin lütfen?,4,exam:lgs,home
+a2-trash,TRASH,T,STARTS,noun,Amerikan İngilizcesinde: çöp,"Take the trash outside, please.",Lütfen çöpü dışarı çıkar.,2,exam:lgs,home
+a2-make-the-bed,MAKE THE BED,M,STARTS,phrase,kalktıktan sonra çarşaf ve yorganı düzeltmek,I make the bed every morning.,Her sabah yatağımı toplarım.,1,exam:lgs,home
+a2-lay-the-table,LAY THE TABLE,L,STARTS,phrase,yemekten önce tabak ve çatalları masaya dizmek,Can you lay the table for dinner?,Akşam yemeği için sofrayı kurar mısın?,2,exam:lgs,home
+a2-water-the-plants,WATER THE PLANTS,W,STARTS,phrase,çiçeklere su vermek,I water the plants on Mondays.,Pazartesileri çiçekleri sularım.,2,exam:lgs,home
+a2-help-out,HELP OUT,H,STARTS,phrasal,birine bir işte el uzatmak,My cousins help out on the farm in summer.,Kuzenlerim yazın çiftlikte yardım eder.,3,exam:lgs,home
+a2-do-the-shopping,DO THE SHOPPING,D,STARTS,phrase,evin alışverişini yapmak,Who will do the shopping this week?,Bu hafta evin alışverişini kim yapacak?,2,exam:lgs,home
+a2-shopping-list,SHOPPING LIST,S,STARTS,phrase,alınacak şeylerin yazıldığı kâğıt,Add milk to the shopping list.,Alışveriş listesine süt ekle.,2,exam:lgs,home
+a2-walk-the-dog,WALK THE DOG,W,STARTS,phrase,köpeği dışarıda gezdirmek,It is my turn to walk the dog.,Köpeği gezdirme sırası bende.,2,exam:lgs,home
+a2-lawnmower,LAWNMOWER,L,STARTS,noun,çim biçme makinesi,"Our lawnmower is old, but it works.",Çim biçme makinemiz eski ama çalışıyor.,4,exam:lgs,home
