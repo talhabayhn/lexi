@@ -1,0 +1,61 @@
+id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
+b2-algorithm,ALGORITHM,A,STARTS,noun,bir sorunu çözmek için izlenen adım adım kurallar dizisi,The app uses an algorithm to suggest songs.,Uygulama şarkı önermek için bir algoritma kullanıyor.,3,exam:yokdil,technology
+b2-amplitude,AMPLITUDE,A,STARTS,noun,"bir dalganın en yüksek noktasının yüksekliği, genlik",Louder sounds have a greater amplitude.,Daha yüksek seslerin genliği daha büyüktür.,5,exam:yokdil,technology
+b2-asteroid,ASTEROID,A,STARTS,noun,Güneş'in çevresinde dönen kayalık küçük gök cismi,An asteroid may have killed the dinosaurs.,Dinozorları bir asteroit öldürmüş olabilir.,3,exam:yokdil,technology
+b2-axis,AXIS,X,CONTAINS,noun,"bir cismin çevresinde döndüğü hayalî çizgi, eksen",The Earth spins on its axis once a day.,Dünya günde bir kez kendi ekseni çevresinde döner.,4,exam:yokdil,technology
+b2-biomass,BIOMASS,B,STARTS,noun,enerji kaynağı olarak kullanılan bitkisel ve hayvansal madde,Wood chips are a common biomass fuel.,Odun yongaları yaygın bir biyokütle yakıtıdır.,5,exam:yokdil,technology
+b2-carbohydrate,CARBOHYDRATE,Y,CONTAINS,noun,şeker ve nişasta gibi enerji veren besin öğesi,Rice is rich in carbohydrate.,Pirinç karbonhidrat açısından zengindir.,4,exam:yokdil,technology
+b2-chromosome,CHROMOSOME,C,STARTS,noun,hücre çekirdeğinde genleri taşıyan yapı,Each chromosome carries thousands of genes.,Her kromozom binlerce gen taşır.,5,exam:yokdil,technology
+b2-conductor,CONDUCTOR,C,STARTS,noun,"ısıyı ya da elektriği ileten madde, iletken",Copper is a good conductor of electricity.,Bakır elektriği iyi iletir.,3,exam:yokdil,technology
+b2-convection,CONVECTION,V,CONTAINS,noun,sıvı ya da gazda ısının akımla taşınması,Warm air rises because of convection.,Sıcak hava ısı akımı nedeniyle yükselir.,5,exam:yokdil,technology
+b2-corrosion,CORROSION,C,STARTS,noun,"metalin kimyasal etkiyle aşınması, korozyon",Salt water causes corrosion of the hull.,Tuzlu su gövdenin aşınmasına yol açar.,4,exam:yokdil,technology
+b2-decay,DECAY,Y,CONTAINS,verb,"çürümek, bozulmak",Leaves decay and enrich the soil.,Yapraklar çürüyüp toprağı zenginleştirir.,3,exam:yokdil,technology
+b2-diameter,DIAMETER,D,STARTS,noun,"bir dairenin merkezinden geçen kiriş, çap",The pipe is ten centimetres in diameter.,Borunun çapı on santimetredir.,3,exam:yokdil,technology
+b2-dilute,DILUTE,D,STARTS,verb,"bir sıvıya su katarak yoğunluğunu azaltmak, seyreltmek",Dilute the juice with cold water.,Meyve suyunu soğuk suyla seyrelt.,4,exam:yokdil,technology
+b2-electron,ELECTRON,E,STARTS,noun,atom çekirdeği çevresinde dönen eksi yüklü parçacık,An electron has a negative charge.,Elektron negatif yüklüdür.,4,exam:yokdil,technology
+b2-equator,EQUATOR,Q,CONTAINS,noun,Dünya'yı kuzey ve güney diye ikiye ayıran hayalî çizgi,Countries near the equator are hot all year.,Ekvatora yakın ülkeler yıl boyu sıcaktır.,3,exam:yokdil,technology
+b2-eruption,ERUPTION,E,STARTS,noun,yanardağın lav ve kül püskürtmesi,The eruption buried the town in ash.,Patlama kasabayı küle gömdü.,3,exam:yokdil,technology
+b2-evaporation,EVAPORATION,E,STARTS,noun,"sıvının buhara dönüşmesi, buharlaşma",Evaporation is faster on hot days.,Buharlaşma sıcak günlerde daha hızlıdır.,3,exam:yokdil,technology
+b2-fermentation,FERMENTATION,F,STARTS,noun,"mayalanma, bakteri ya da mayayla kimyasal dönüşüm",Yogurt is made by fermentation.,Yoğurt mayalanma yoluyla yapılır.,5,exam:yokdil,technology
+b2-filter,FILTER,F,STARTS,noun,bir sıvı ya da gazdaki parçacıkları tutan süzgeç,Change the water filter every month.,Su filtresini her ay değiştir.,3,exam:yokdil,technology
+b2-genome,GENOME,G,STARTS,noun,bir canlının tüm genetik bilgisi,Scientists mapped the human genome in 2003.,Bilim insanları insan genomunu 2003'te haritaladı.,5,exam:yokdil,technology
+b2-geothermal,GEOTHERMAL,G,STARTS,adj,"yerin içindeki ısıyla ilgili, jeotermal",Iceland uses geothermal energy for heating.,İzlanda ısınma için jeotermal enerji kullanır.,5,exam:yokdil,technology
+b2-hemisphere,HEMISPHERE,H,STARTS,noun,yerkürenin ya da beynin iki yarısından biri,It is winter in the southern hemisphere now.,Güney yarımkürede şu an kış.,4,exam:yokdil,technology
+b2-inertia,INERTIA,I,STARTS,noun,"bir cismin hareket durumunu koruma eğilimi, eylemsizlik",Inertia keeps a moving ball rolling.,Eylemsizlik hareket eden topun yuvarlanmaya devam etmesini sağlar.,5,exam:yokdil,technology
+b2-insulation,INSULATION,I,STARTS,noun,"ısı, ses ya da elektrik geçişini önleyen yalıtım",Good insulation keeps the house warm.,İyi yalıtım evi sıcak tutar.,4,exam:yokdil,technology
+b2-isotope,ISOTOPE,I,STARTS,noun,aynı elementin farklı nötron sayılı türü,Carbon dating uses a rare isotope of carbon.,Karbon tarihlendirmesi karbonun nadir bir izotopunu kullanır.,5,exam:yokdil,technology
+b2-latitude,LATITUDE,L,STARTS,noun,"ekvatora göre kuzey ya da güney uzaklık, enlem",Istanbul lies at a latitude of 41 degrees.,İstanbul 41 derece enlemde yer alır.,4,exam:yokdil,technology
+b2-longitude,LONGITUDE,L,STARTS,noun,"başlangıç meridyenine göre doğu ya da batı uzaklık, boylam",Ships use longitude to find their position.,Gemiler konumlarını bulmak için boylamı kullanır.,4,exam:yokdil,technology
+b2-magnetic,MAGNETIC,M,STARTS,adj,mıknatıs özelliği taşıyan,The Earth has a magnetic field.,Dünya'nın manyetik bir alanı vardır.,3,exam:yokdil,technology
+b2-mammal,MAMMAL,M,STARTS,noun,"yavrusunu sütle besleyen sıcakkanlı hayvan, memeli",The whale is the largest mammal.,Balina en büyük memelidir.,3,exam:yokdil,technology
+b2-mantle,MANTLE,M,STARTS,noun,yer kabuğu ile çekirdek arasındaki katman,The mantle lies below the Earth's crust.,Manto yer kabuğunun altında bulunur.,5,exam:yokdil,technology
+b2-mineral,MINERAL,M,STARTS,noun,topraktan elde edilen ya da besinlerde bulunan doğal madde,Iron is an important mineral for the blood.,Demir kan için önemli bir mineraldir.,3,exam:yokdil,technology
+b2-nucleus,NUCLEUS,N,STARTS,noun,atomun ya da hücrenin çekirdeği,The nucleus controls the cell.,Çekirdek hücreyi yönetir.,4,exam:yokdil,technology
+b2-oscillate,OSCILLATE,O,STARTS,verb,"iki nokta arasında düzenli olarak gidip gelmek, salınmak",A pendulum will oscillate for hours.,Bir sarkaç saatlerce salınabilir.,5,exam:yokdil,technology
+b2-oxide,OXIDE,X,CONTAINS,noun,bir elementin oksijenle oluşturduğu bileşik,Rust is a type of iron oxide.,Pas bir tür demir oksittir.,5,exam:yokdil,technology
+b2-photosynthesis,PHOTOSYNTHESIS,Y,CONTAINS,noun,bitkilerin güneş ışığıyla besin üretmesi,Leaves make sugar through photosynthesis.,Yapraklar fotosentezle şeker üretir.,4,exam:yokdil,technology
+b2-pigment,PIGMENT,P,STARTS,noun,bir şeye rengini veren madde,Melanin is the pigment in our skin.,Melanin derimizdeki renk maddesidir.,5,exam:yokdil,technology
+b2-pollen,POLLEN,P,STARTS,noun,"çiçeklerin ürettiği ince toz, çiçek tozu",Bees carry pollen from flower to flower.,Arılar çiçek tozunu çiçekten çiçeğe taşır.,3,exam:yokdil,technology
+b2-prism,PRISM,P,STARTS,noun,ışığı renklere ayıran üçgen cam,A prism splits white light into colours.,Prizma beyaz ışığı renklere ayırır.,4,exam:yokdil,technology
+b2-proton,PROTON,P,STARTS,noun,atom çekirdeğindeki artı yüklü parçacık,A proton has a positive charge.,Proton pozitif yüklüdür.,4,exam:yokdil,technology
+b2-radiation,RADIATION,R,STARTS,noun,ışınım; zararlı olabilen enerji yayılımı,Workers wear suits to block radiation.,İşçiler radyasyonu engellemek için özel giysi giyer.,3,exam:yokdil,technology
+b2-radius,RADIUS,R,STARTS,noun,"bir dairenin merkezinden çevresine uzaklık, yarıçap",The circle has a radius of five centimetres.,Dairenin yarıçapı beş santimetredir.,3,exam:yokdil,technology
+b2-reflection,REFLECTION,R,STARTS,noun,"ışığın ya da sesin bir yüzeyden geri dönmesi, yansıma",We saw our reflection in the lake.,Göldeki yansımamızı gördük.,3,exam:yokdil,technology
+b2-refraction,REFRACTION,R,STARTS,noun,ışığın bir ortamdan diğerine geçerken kırılması,Refraction makes a straw look bent in water.,"Kırılma, suda pipetin eğri görünmesine yol açar.",5,exam:yokdil,technology
+b2-seismic,SEISMIC,S,STARTS,adj,depremlerle ve yer sarsıntısıyla ilgili,Seismic activity has increased in the region.,Bölgedeki sismik hareketlilik arttı.,4,exam:yokdil,technology
+b2-sulphur,SULPHUR,S,STARTS,noun,"yanınca keskin kokan sarı element, kükürt",Volcanoes release sulphur gases.,Yanardağlar kükürt gazları salar.,5,exam:yokdil,technology
+b2-tectonic,TECTONIC,T,STARTS,adj,yer kabuğunun levhalarıyla ilgili,Earthquakes happen at tectonic plate boundaries.,Depremler tektonik levha sınırlarında olur.,5,exam:yokdil,technology
+b2-thermal,THERMAL,T,STARTS,adj,"ısıyla ilgili, ısıl",Thermal springs are popular in Pamukkale.,Pamukkale'de kaplıcalar çok ilgi görür.,4,exam:yokdil,technology
+b2-velocity,VELOCITY,Y,CONTAINS,noun,belirli bir yöndeki hız,Light travels at a fixed velocity.,Işık sabit bir hızla yol alır.,4,exam:yokdil,technology
+b2-voltage,VOLTAGE,V,STARTS,noun,elektrik gerilimi,High voltage can kill.,Yüksek gerilim öldürebilir.,4,exam:yokdil,technology
+b2-wavelength,WAVELENGTH,W,STARTS,noun,bir dalganın ardışık iki tepesi arasındaki uzaklık,Red light has a longer wavelength than blue light.,Kırmızı ışığın dalga boyu mavininkinden uzundur.,5,exam:yokdil,technology
+b2-zoology,ZOOLOGY,Z,STARTS,noun,hayvanları inceleyen bilim dalı,She has a degree in zoology.,Zooloji diploması var.,4,exam:yokdil,technology
+b2-absorption,ABSORPTION,A,STARTS,noun,"emme, soğurma; bir maddenin içine çekilmesi",Vitamin C helps the absorption of iron.,C vitamini demirin emilimine yardım eder.,4,exam:yokdil,technology
+b2-alloy,ALLOY,Y,CONTAINS,noun,"iki ya da daha fazla metalin karışımı, alaşım",Bronze is an alloy of copper and tin.,Bronz bakır ve kalay alaşımıdır.,5,exam:yokdil,technology
+b2-cellular,CELLULAR,C,STARTS,adj,"hücrelerle ilgili, hücresel",The drug works at a cellular level.,İlaç hücresel düzeyde etki eder.,4,exam:yokdil,technology
+b2-quantum,QUANTUM,Q,STARTS,adj,"atom altı parçacıkların fiziğiyle ilgili, kuantum",Quantum computers could solve problems in seconds.,Kuantum bilgisayarlar sorunları saniyeler içinde çözebilir.,5,exam:yokdil,technology
+b2-nanotechnology,NANOTECHNOLOGY,Y,CONTAINS,noun,atom ve molekül ölçeğinde malzeme tasarlama teknolojisi,Nanotechnology is used in new medicines.,Nanoteknoloji yeni ilaçlarda kullanılıyor.,5,exam:yokdil,technology
+b2-biotechnology,BIOTECHNOLOGY,B,STARTS,noun,canlıları kullanarak ürün geliştiren teknoloji,Biotechnology helps farmers grow stronger crops.,Biyoteknoloji çiftçilerin daha dayanıklı ürün yetiştirmesine yardım eder.,5,exam:yokdil,technology
+b2-semiconductor,SEMICONDUCTOR,S,STARTS,noun,"elektriği kısmen ileten madde, yarı iletken",Silicon is the most common semiconductor.,Silikon en yaygın yarı iletkendir.,5,exam:yokdil,technology
+b2-sensor,SENSOR,S,STARTS,noun,"ısı, ışık ya da hareketi algılayan aygıt",The lights turn on when the sensor detects movement.,Algılayıcı hareketi fark edince ışıklar yanar.,3,exam:yokdil,technology
+b2-ultraviolet,ULTRAVIOLET,U,STARTS,adj,morötesi; gözle görülmeyen güneş ışını türü,Ultraviolet light can damage your eyes.,Morötesi ışık gözlerine zarar verebilir.,4,exam:yokdil,technology

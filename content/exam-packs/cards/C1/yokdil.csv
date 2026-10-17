@@ -1,0 +1,3 @@
+id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
+c1-solar,SOLAR,S,STARTS,adj,"Güneş'le ilgili, güneşten gelen",Solar panels cover the roof of the school.,Güneş panelleri okulun çatısını kaplıyor.,3,exam:yokdil,technology
+c1-bacteria,BACTERIA,B,STARTS,noun,tek hücreli mikroskobik canlılar,Some bacteria live in our stomach and help digestion.,Bazı bakteriler midemizde yaşar ve sindirime yardım eder.,3,exam:yokdil,technology

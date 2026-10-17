@@ -41,13 +41,13 @@ b1-clear-the-table,CLEAR THE TABLE,C,STARTS,phrase,yemekten sonra masadaki tabak
 b1-discovery,DISCOVERY,D,STARTS,noun,"daha önce bilinmeyen bir şeyi ortaya çıkarma, keşif",The discovery of penicillin saved many lives.,Penisilinin keşfi pek çok hayat kurtardı.,3,exam:lgs,school-work
 b1-atom,ATOM,A,STARTS,noun,maddenin en küçük yapı taşı,"Everything around us is made of atoms, and each atom is tiny.",Etrafımızdaki her şey atomlardan oluşur ve her atom çok küçüktür.,3,exam:lgs,school-work
 b1-cell,CELL,C,STARTS,noun,canlıları oluşturan en küçük yapı birimi,A cell is too small to see with your eyes.,Bir hücre gözle görülemeyecek kadar küçüktür.,3,exam:lgs,school-work
-b1-evaporate,EVAPORATE,E,STARTS,verb,ısınan suyun buhara dönüşüp havaya karışması,The sun makes the water in the pool evaporate.,Güneş havuzdaki suyun buharlaşmasını sağlar.,4,exam:lgs,school-work
-b1-orbit,ORBIT,O,STARTS,noun,bir gök cisminin başka birinin çevresinde izlediği yol,The Moon moves in an orbit around the Earth.,"Ay, Dünya'nın çevresinde bir yörüngede döner.",4,exam:lgs,school-work
-b1-satellite,SATELLITE,S,STARTS,noun,bir gezegenin çevresinde dönen yapay ya da doğal cisim,Türksat is a Turkish satellite.,Türksat bir Türk uydusudur.,3,exam:lgs,school-work
+b1-evaporate,EVAPORATE,E,STARTS,verb,ısınan suyun buhara dönüşüp havaya karışması,The sun makes the water in the pool evaporate.,Güneş havuzdaki suyun buharlaşmasını sağlar.,4,exam:lgs|exam:yokdil,school-work
+b1-orbit,ORBIT,O,STARTS,noun,bir gök cisminin başka birinin çevresinde izlediği yol,The Moon moves in an orbit around the Earth.,"Ay, Dünya'nın çevresinde bir yörüngede döner.",4,exam:lgs|exam:yokdil,school-work
+b1-satellite,SATELLITE,S,STARTS,noun,bir gezegenin çevresinde dönen yapay ya da doğal cisim,Türksat is a Turkish satellite.,Türksat bir Türk uydusudur.,3,exam:lgs|exam:yokdil,school-work
 b1-patent,PATENT,P,STARTS,noun,bir buluşun sahibine verilen resmî hak belgesi,The inventor got a patent for her new machine.,Mucit yeni makinesi için patent aldı.,4,exam:lgs,school-work
 b1-vaccine,VACCINE,V,STARTS,noun,hastalıklara karşı bağışıklık kazandıran aşı,Doctors gave the children a vaccine against measles.,Doktorlar çocuklara kızamığa karşı aşı yaptı.,3,exam:lgs|exam:yds,body-health
-b1-lens,LENS,L,STARTS,noun,ışığı kırarak görüntüyü büyüten cam parça,The camera has a very good lens.,Kameranın çok iyi bir merceği var.,3,exam:lgs,school-work
-b1-circuit,CIRCUIT,C,STARTS,noun,"elektriğin içinden geçtiği kapalı yol, devre",We made a simple circuit with a battery.,Bir pille basit bir devre yaptık.,4,exam:lgs,school-work
+b1-lens,LENS,L,STARTS,noun,ışığı kırarak görüntüyü büyüten cam parça,The camera has a very good lens.,Kameranın çok iyi bir merceği var.,3,exam:lgs|exam:yokdil,school-work
+b1-circuit,CIRCUIT,C,STARTS,noun,"elektriğin içinden geçtiği kapalı yol, devre",We made a simple circuit with a battery.,Bir pille basit bir devre yaptık.,4,exam:lgs|exam:yokdil,school-work
 b1-fossil,FOSSIL,F,STARTS,noun,taşlaşmış çok eski canlı kalıntısı,They found a dinosaur fossil in the desert.,Çölde bir dinozor fosili buldular.,3,exam:lgs,school-work
 b1-evolution,EVOLUTION,E,STARTS,noun,canlıların uzun zamanda yavaş yavaş değişmesi,Darwin wrote about the evolution of animals.,Darwin hayvanların evrimi hakkında yazdı.,4,exam:lgs,school-work
 b1-curiosity,CURIOSITY,C,STARTS,noun,"bir şeyi öğrenme isteği, merak",Curiosity is the first step in science.,Merak bilimin ilk adımıdır.,3,exam:lgs,school-work
