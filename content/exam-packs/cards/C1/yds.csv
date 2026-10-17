@@ -6,3 +6,4 @@ c1-hypothesize,HYPOTHESIZE,Z,CONTAINS,verb,bir varsayım ortaya atmak,Researcher
 c1-postulate,POSTULATE,P,STARTS,verb,kanıtlanmamış bir şeyi temel kabul etmek,Some scientists postulate that life began in the deep sea.,Bazı bilim insanları yaşamın derin denizde başladığını öne sürer.,5,exam:yds,school-work
 c1-intellectual,INTELLECTUAL,I,STARTS,adj,"zihinsel, düşünsel",Chess requires intellectual effort.,Satranç zihinsel çaba gerektirir.,4,exam:yds,school-work
 c1-pesticide,PESTICIDE,P,STARTS,noun,tarımda böcekleri öldürmek için kullanılan ilaç,Farmers sprayed pesticide on the crops.,Çiftçiler ekinlere böcek ilacı püskürttü.,4,exam:yds,school-work
+c1-compulsory,COMPULSORY,Y,CONTAINS,adj,yasa ya da kural gereği zorunlu,Education is compulsory until the age of eighteen.,Eğitim on sekiz yaşına kadar zorunludur.,3,exam:yds,school-work

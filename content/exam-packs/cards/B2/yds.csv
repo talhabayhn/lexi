@@ -66,7 +66,7 @@ b2-hormone,HORMONE,H,STARTS,noun,vücut işlevlerini düzenleyen kimyasal ileti 
 b2-molecule,MOLECULE,M,STARTS,noun,atomların birleşmesiyle oluşan en küçük madde birimi,A water molecule has two hydrogen atoms.,Bir su molekülünde iki hidrojen atomu vardır.,3,exam:yds,school-work
 b2-mutation,MUTATION,M,STARTS,noun,genlerde kendiliğinden ya da dış etkiyle oluşan değişim,A single mutation can change how a virus spreads.,Tek bir mutasyon bir virüsün yayılma biçimini değiştirebilir.,4,exam:yds,school-work
 b2-neuron,NEURON,N,STARTS,noun,beyindeki ve sinirlerdeki uyarıyı ileten hücre,Each neuron sends signals to thousands of others.,Her sinir hücresi binlercesine sinyal gönderir.,4,exam:yds,school-work
-b2-organism,ORGANISM,O,STARTS,noun,"bitki, hayvan ya da mikrop gibi tek bir canlı",Bacteria are tiny living organisms; each organism has one cell.,Her bakteri tek hücreli bir canlıdır.,3,exam:yds,school-work
+b2-organism,ORGANISM,O,STARTS,noun,"bitki, hayvan ya da mikrop gibi tek bir canlı",A bacterium is a tiny organism with one cell.,Bakteri tek hücreli küçük bir canlıdır.,3,exam:yds,school-work
 b2-particle,PARTICLE,P,STARTS,noun,"maddenin çok küçük parçacığı, zerre",A dust particle is smaller than a hair.,Bir toz zerresi bir saç telinden daha küçüktür.,3,exam:yds,school-work
 b2-receptor,RECEPTOR,R,STARTS,noun,vücutta uyarıyı ya da maddeyi algılayan yapı,Pain receptor cells are found all over the skin.,Ağrı alıcı hücreleri derinin her yerinde bulunur.,5,exam:yds,school-work
 b2-reproduce,REPRODUCE,R,STARTS,verb,"üremek, çoğalmak; aynısını yeniden yapmak",Rabbits reproduce very quickly.,Tavşanlar çok hızlı ürer.,3,exam:yds,school-work
@@ -99,7 +99,7 @@ b2-malnutrition,MALNUTRITION,M,STARTS,noun,yetersiz ya da dengesiz beslenme,Maln
 b2-metabolism,METABOLISM,M,STARTS,noun,vücuttaki enerji üretimi ve kimyasal süreçler,Exercise speeds up your metabolism.,Egzersiz metabolizmanı hızlandırır.,4,exam:yds,body-health
 b2-obesity,OBESITY,Y,CONTAINS,noun,sağlığı tehdit edecek ölçüde kilolu olma,Childhood obesity is rising worldwide.,Çocukluk çağı obezitesi dünya çapında artıyor.,3,exam:yds,body-health
 b2-pandemic,PANDEMIC,P,STARTS,noun,dünyanın pek çok ülkesine yayılan salgın,The pandemic changed how we work.,Pandemi çalışma biçimimizi değiştirdi.,3,exam:yds,body-health
-b2-pathogen,PATHOGEN,P,STARTS,noun,hastalık yapan mikrop,Washing hands removes many a pathogen.,El yıkamak pek çok hastalık etkenini giderir.,5,exam:yds,body-health
+b2-pathogen,PATHOGEN,P,STARTS,noun,hastalık yapan mikrop,Hand washing stops a pathogen from spreading.,El yıkamak bir hastalık etkeninin yayılmasını engeller.,5,exam:yds,body-health
 b2-prescription,PRESCRIPTION,P,STARTS,noun,"doktorun yazdığı ilaç kâğıdı, reçete",You need a prescription for this medicine.,Bu ilaç için reçete gerekiyor.,3,exam:yds,body-health
 b2-practitioner,PRACTITIONER,P,STARTS,noun,hekim gibi bir mesleği icra eden kişi,See a medical practitioner if the pain continues.,Ağrı sürerse bir hekime görün.,4,exam:yds,body-health
 b2-premature,PREMATURE,P,STARTS,adj,"olması gereken zamandan önce olan, erken",The baby was born premature.,Bebek erken doğdu.,4,exam:yds,body-health
@@ -126,7 +126,7 @@ b2-conservation,CONSERVATION,C,STARTS,noun,doğal kaynakları ve canlıları kor
 b2-depletion,DEPLETION,D,STARTS,noun,"bir kaynağın tükenmesi, azalması",The depletion of fish stocks worries scientists.,Balık stoklarının tükenmesi bilim insanlarını kaygılandırıyor.,4,exam:yds,school-work
 b2-erosion,EROSION,E,STARTS,noun,toprağın ya da kayanın su ve rüzgârla aşınması,Trees protect the soil from erosion.,Ağaçlar toprağı aşınmaya karşı korur.,3,exam:yds,school-work
 b2-landfill,LANDFILL,L,STARTS,noun,"çöplerin gömüldüğü alan, çöp döküm sahası",Most plastic ends up in a landfill.,Plastiğin çoğu bir çöp sahasında son bulur.,4,exam:yds,school-work
-b2-pollutant,POLLUTANT,P,STARTS,noun,"havayı, suyu ya da toprağı kirleten madde",Factories release pollutants into rivers; each pollutant harms fish.,Fabrikaların saldığı her kirletici balıklara zarar verir.,4,exam:yds,school-work
+b2-pollutant,POLLUTANT,P,STARTS,noun,"havayı, suyu ya da toprağı kirleten madde",Each pollutant in the river harms fish.,Nehirdeki her kirletici balıklara zarar verir.,4,exam:yds,school-work
 b2-irrigation,IRRIGATION,I,STARTS,noun,tarlaların yapay yollarla sulanması,Irrigation turned the dry plain into farmland.,Sulama kurak ovayı tarım arazisine çevirdi.,4,exam:yds,school-work
 b2-overpopulation,OVERPOPULATION,O,STARTS,noun,bir yerde kaldırabileceğinden fazla insan yaşaması,Overpopulation puts pressure on water supplies.,Aşırı nüfus su kaynakları üzerinde baskı yaratır.,4,exam:yds,school-work
 b2-urbanization,URBANIZATION,Z,CONTAINS,noun,nüfusun kırdan kente göçüyle şehirlerin büyümesi,Rapid urbanization changed the coastline.,Hızlı kentleşme kıyı şeridini değiştirdi.,4,exam:yds,school-work
@@ -167,3 +167,57 @@ b2-stock-market,STOCK MARKET,S,STARTS,phrase,"şirket hisselerinin alınıp sat�
 b2-globalization,GLOBALIZATION,Z,CONTAINS,noun,dünya ekonomilerinin ve kültürlerinin bütünleşmesi,Globalization has created winners and losers.,Küreselleşme kazananlar ve kaybedenler yarattı.,4,exam:yds,business
 b2-wholesale,WHOLESALE,W,STARTS,adj,perakendeciye büyük miktarda yapılan satışla ilgili,Shops buy goods at wholesale prices.,Dükkânlar malları toptan fiyata alır.,4,exam:yds,business
 b2-import,IMPORT,I,STARTS,verb,"yurt dışından mal getirmek, ithal etmek",Türkiye has to import most of its gas.,Türkiye gazının çoğunu ithal etmek zorunda.,2,exam:yds,business
+b2-prosecute,PROSECUTE,P,STARTS,verb,"birini mahkemede resmî olarak suçlamak, kovuşturmak",The store will prosecute anyone who steals.,Mağaza hırsızlık yapan herkesi dava edecek.,4,exam:yds,school-work
+b2-plaintiff,PLAINTIFF,P,STARTS,noun,"mahkemede dava açan taraf, davacı",The plaintiff asked for compensation.,Davacı tazminat talep etti.,5,exam:yds,school-work
+b2-litigation,LITIGATION,L,STARTS,noun,"bir anlaşmazlığın mahkemede görülmesi, dava süreci",The case ended in years of litigation.,Dava yıllar süren bir yargı sürecine dönüştü.,5,exam:yds,school-work
+b2-clause,CLAUSE,C,STARTS,noun,"bir sözleşme ya da yasadaki madde, hüküm",Read every clause before you sign.,İmzalamadan önce her maddeyi oku.,4,exam:yds,school-work
+b2-consent,CONSENT,C,STARTS,noun,"bir şeye resmî izin verme, onay",Doctors need your consent before the operation.,Doktorların ameliyattan önce onayına ihtiyacı var.,3,exam:yds,school-work
+b2-constitution,CONSTITUTION,C,STARTS,noun,"bir devletin temel yasası, anayasa",The constitution protects free speech.,Anayasa ifade özgürlüğünü korur.,3,exam:yds,school-work
+b2-democracy,DEMOCRACY,Y,CONTAINS,noun,halkın seçtiği temsilcilerle yönetilen sistem,"In a democracy, people choose their leaders.",Demokraside halk liderlerini seçer.,2,exam:yds,school-work
+b2-doctrine,DOCTRINE,D,STARTS,noun,"bir grubun benimsediği ilkeler bütünü, öğreti",The party changed its economic doctrine.,Parti ekonomik öğretisini değiştirdi.,5,exam:yds,school-work
+b2-federal,FEDERAL,F,STARTS,adj,eyaletlerden oluşan bir devletin merkezî yönetimiyle ilgili,Germany has a federal system of government.,Almanya'nın federal bir yönetim sistemi var.,3,exam:yds,school-work
+b2-treaty,TREATY,Y,CONTAINS,noun,devletler arasında imzalanan resmî antlaşma,The Treaty of Lausanne was signed in 1923.,Lozan Antlaşması 1923'te imzalandı.,3,exam:yds,school-work
+b2-reform,REFORM,R,STARTS,noun,bir sistemi iyileştirmek için yapılan değişiklik,The government promised tax reform.,Hükümet vergi reformu sözü verdi.,3,exam:yds,school-work
+b2-penalty,PENALTY,Y,CONTAINS,noun,kurala ya da yasaya uymamanın cezası,The penalty for late payment is ten percent.,Geç ödemenin cezası yüzde on.,3,exam:yds,school-work
+b2-impose,IMPOSE,I,STARTS,verb,"bir kuralı, vergiyi ya da cezayı zorla uygulamak",The city will impose a fine on noisy bars.,Belediye gürültülü barlara para cezası uygulayacak.,3,exam:yds,school-work
+b2-prohibit,PROHIBIT,P,STARTS,verb,yasayla yasaklamak,The law will prohibit smoking in cars with children.,Yasa çocuklu araçlarda sigara içmeyi yasaklayacak.,4,exam:yds,school-work
+b2-declare,DECLARE,D,STARTS,verb,"resmî olarak ilan etmek, açıklamak",The country will declare its independence.,Ülke bağımsızlığını ilan edecek.,3,exam:yds,school-work
+b2-eligible,ELIGIBLE,E,STARTS,adj,bir hakka ya da göreve sahip olabilecek koşulları taşıyan,You are eligible to vote at eighteen.,On sekiz yaşında oy kullanma hakkın olur.,4,exam:yds,school-work
+b2-regulate,REGULATE,R,STARTS,verb,kurallarla düzenlemek ve denetlemek,Agencies regulate the use of drones closely.,Kurumlar insansız hava araçlarının kullanımını yakından denetler.,4,exam:yds,school-work
+b2-regulation,REGULATION,R,STARTS,noun,"resmî kural, yönetmelik",The new regulation applies to all restaurants.,Yeni yönetmelik bütün restoranlar için geçerli.,3,exam:yds,school-work
+b2-territory,TERRITORY,Y,CONTAINS,noun,bir devletin egemenliğindeki toprak,The island is Greek territory.,Ada Yunan toprağıdır.,3,exam:yds,school-work
+b2-refugee,REFUGEE,R,STARTS,noun,"savaş ya da baskı yüzünden ülkesinden kaçan kişi, mülteci",The camp gives shelter to every refugee.,Kamp her mülteciye barınak sağlıyor.,3,exam:yds,school-work
+b2-immigration,IMMIGRATION,I,STARTS,noun,"başka bir ülkeye yerleşmek için gelme, göç",Immigration laws became stricter.,Göç yasaları sıkılaştı.,3,exam:yds,school-work
+b2-civil,CIVIL,C,STARTS,adj,vatandaşlarla ilgili; askerî olmayan,Civil servants asked for higher wages.,Devlet memurları daha yüksek maaş istedi.,3,exam:yds,school-work
+b2-assembly,ASSEMBLY,Y,CONTAINS,noun,yasa yapan seçilmiş meclis; toplantı,The national assembly met to discuss the budget.,Millet meclisi bütçeyi görüşmek için toplandı.,3,exam:yds,school-work
+b2-representative,REPRESENTATIVE,R,STARTS,noun,"bir grup adına konuşan ya da karar veren kişi, temsilci",Each class elects a representative.,Her sınıf bir temsilci seçer.,3,exam:yds,school-work
+b2-conviction,CONVICTION,C,STARTS,noun,mahkûmiyet kararı; güçlü inanç,He has no earlier conviction.,Daha önce hiç mahkûmiyeti yok.,4,exam:yds,school-work
+b2-human-rights,HUMAN RIGHTS,H,STARTS,phrase,her insanın doğuştan sahip olduğu temel haklar,Freedom of speech is one of our human rights.,İfade özgürlüğü temel insan haklarımızdan biridir.,3,exam:yds,school-work
+b2-voter,VOTER,V,STARTS,noun,"seçimde oy kullanan kişi, seçmen",Every voter must show an ID card.,Her seçmen kimlik kartı göstermeli.,2,exam:yds,school-work
+b2-coup,COUP,C,STARTS,noun,"yönetimi zorla ele geçirme girişimi, darbe",The army tried to stage a coup.,Ordu bir darbe yapmaya kalkıştı.,4,exam:yds,school-work
+b2-demographic,DEMOGRAPHIC,D,STARTS,adj,nüfusun yapısı ve istatistikleriyle ilgili,Japan faces serious demographic change.,Japonya ciddi bir nüfus değişimiyle karşı karşıya.,4,exam:yds,school-work
+b2-ethnic,ETHNIC,E,STARTS,adj,"ortak soy, dil ya da kültürle ilgili, etnik",The city is home to many ethnic groups.,Şehir pek çok etnik gruba ev sahipliği yapıyor.,3,exam:yds,school-work
+b2-ideology,IDEOLOGY,Y,CONTAINS,noun,bir grubun siyasi ya da toplumsal düşünce sistemi,The two parties share the same ideology.,İki parti aynı ideolojiyi paylaşıyor.,4,exam:yds,school-work
+b2-migration,MIGRATION,M,STARTS,noun,insanların ya da hayvanların bir yerden başka yere göçü,Bird migration starts in autumn.,Kuş göçü sonbaharda başlar.,3,exam:yds,school-work
+b2-segregation,SEGREGATION,S,STARTS,noun,insanları ırk ya da dine göre ayırma,Segregation in schools ended in the 1950s.,Okullardaki ayrımcılık 1950'lerde sona erdi.,5,exam:yds,school-work
+b2-discrimination,DISCRIMINATION,D,STARTS,noun,"bir gruba haksız ve farklı davranma, ayrımcılık",The law bans discrimination at work.,Yasa iş yerinde ayrımcılığı yasaklıyor.,4,exam:yds,school-work
+b2-peasant,PEASANT,P,STARTS,noun,eski dönemlerde toprak işleyen yoksul köylü,The peasant worked on the lord's land.,Köylü ağanın toprağında çalışırdı.,4,exam:yds,school-work
+b2-empire,EMPIRE,E,STARTS,noun,"bir hükümdarın yönettiği çok sayıda ülke, imparatorluk",The Ottoman Empire lasted six centuries.,Osmanlı İmparatorluğu altı yüzyıl sürdü.,3,exam:yds,school-work
+b2-era,ERA,E,STARTS,noun,"belirli özellikleri olan tarihsel dönem, çağ",We live in the digital era.,Dijital çağda yaşıyoruz.,3,exam:yds,school-work
+b2-medieval,MEDIEVAL,M,STARTS,adj,Orta Çağ'a ait,The town still has its medieval walls.,Kasabanın Orta Çağ surları hâlâ duruyor.,4,exam:yds,school-work
+b2-colony,COLONY,Y,CONTAINS,noun,"başka bir devletin yönettiği ülke ya da bölge, sömürge",India was once a British colony.,Hindistan bir zamanlar İngiliz sömürgesiydi.,3,exam:yds,school-work
+b2-revolution,REVOLUTION,R,STARTS,noun,köklü ve hızlı değişim; devrim,The French Revolution began in 1789.,Fransız Devrimi 1789'da başladı.,3,exam:yds,school-work
+b2-ancestor,ANCESTOR,A,STARTS,noun,"aileden gelen uzak geçmişteki kişi, ata",One ancestor of mine was a sailor from Rize.,Atalarımdan biri Rizeli bir denizciydi.,3,exam:yds,school-work
+b2-settlement,SETTLEMENT,S,STARTS,noun,insanların yerleşip yaşadığı yer; uzlaşma,Çatalhöyük is a very old settlement.,Çatalhöyük çok eski bir yerleşim yeridir.,3,exam:yds,school-work
+b2-inhabitant,INHABITANT,I,STARTS,noun,"bir yerde yaşayan kişi, sakin",Every inhabitant of the village knows the others.,Köyün her sakini diğerlerini tanır.,4,exam:yds,school-work
+b2-customary,CUSTOMARY,Y,CONTAINS,adj,"geleneğe uygun, alışılmış",It is customary to remove your shoes indoors.,Evde ayakkabı çıkarmak âdettir.,4,exam:yds,school-work
+b2-communal,COMMUNAL,C,STARTS,adj,bir topluluğun ortak kullandığı,The students share a communal kitchen.,Öğrenciler ortak bir mutfağı paylaşıyor.,4,exam:yds,school-work
+b2-conservative,CONSERVATIVE,C,STARTS,adj,"değişime karşı olan, gelenekçi",My grandparents have conservative views.,Büyükannemlerin muhafazakâr görüşleri var.,3,exam:yds,school-work
+b2-behavioural,BEHAVIOURAL,B,STARTS,adj,davranışla ilgili,The child has some behavioural problems.,Çocuğun bazı davranış sorunları var.,4,exam:yds,school-work
+b2-psychological,PSYCHOLOGICAL,Y,CONTAINS,adj,zihinle ve ruh hâliyle ilgili,Bullying can cause psychological harm.,Zorbalık psikolojik zarara yol açabilir.,3,exam:yds,school-work
+b2-perception,PERCEPTION,P,STARTS,noun,"bir şeyi algılama biçimi, algı",Social media shapes our perception of beauty.,Sosyal medya güzellik algımızı şekillendirir.,3,exam:yds,school-work
+b2-adolescence,ADOLESCENCE,A,STARTS,noun,"çocukluk ile yetişkinlik arasındaki dönem, ergenlik",Adolescence is a time of rapid change.,Ergenlik hızlı bir değişim dönemidir.,4,exam:yds,school-work
+b2-hostility,HOSTILITY,Y,CONTAINS,noun,"düşmanca tutum, husumet",There was open hostility between the two groups.,İki grup arasında açık bir düşmanlık vardı.,4,exam:yds,school-work
+b2-kinship,KINSHIP,K,STARTS,noun,akrabalık bağı,Kinship ties are strong in rural areas.,Kırsal bölgelerde akrabalık bağları güçlüdür.,4,exam:yds,school-work
+b2-gender,GENDER,G,STARTS,noun,toplumsal cinsiyet; kadın ya da erkek olma durumu,"The job is open to all, regardless of gender.","İş, cinsiyet ayrımı olmaksızın herkese açık.",3,exam:yds,school-work
+b2-socialize,SOCIALIZE,Z,CONTAINS,verb,başkalarıyla vakit geçirip kaynaşmak,Children learn to socialize at nursery.,Çocuklar kreşte sosyalleşmeyi öğrenir.,3,exam:yds,school-work
