@@ -73,7 +73,7 @@ correct = blue circle, wrong = red square, passed = yellow leaf.
 | Classic | ⚙ 180 s total (settings: 120/180/240/300) | yes | default |
 | Practice | none | no leaderboard, still SRS | "süresiz, baskısız" |
 | Hardcore | ⚙ 180 s | yes ×1.5 | first wrong ends the game |
-| Daily | ⚙ 180 s | yes | seed per date+level, **one scored attempt per day** (owner decision: per day, not per level), shareable |
+| Daily | ⚙ 180 s | yes | ONE shared mixed-level wheel for all players, one scored attempt per local day, resets at local midnight, shareable |
 | Review | none | no | SRS-due cards |
 | Level test | ⚙ 120 s | no | adaptive, see §9 |
 | Duel (hot-seat / online) | per-player clocks ⚙ 150 s each | yes | §8 |
@@ -85,6 +85,9 @@ nothing, §7). A Practice wheel is still stored like any other: SRS applies (§1
 `GameMode.isScored` modes submit to it. Hardcore always has ⚙ `hardcoreTimeLimitSeconds` (the Classic time setting
 doesn't apply), its time jokers cost seconds like Classic, and the first WRONG ends the game at once (no reveal,
 reason `WRONG_IN_HARDCORE`, ×1.5 on the final total); a pass doesn't end it.
+Daily in the app (M6): ONE shared mixed-level wheel for all players (26 slots, fixed distribution: A1 ×6, A2 ×5,
+B1 ×5, B2 ×4, C1 ×3, NAT ×3, deterministically shuffled by seed). One scored attempt per local day, resetting at
+local midnight. Passes have no penalty in Daily mode.
 A wheel without any playable slot (a level or category without cards) is not started in the app: the game screen
 shows "no words" with a way back and records nothing (the engine's `EMPTY_WHEEL` stays as a guard).
 
@@ -93,6 +96,7 @@ the app goes to background.
 
 ## 6. Scoring
 - Correct: ⚙ `base = 10` × level multiplier (A1 1.0, A2 1.1, B1 1.2, B2 1.3, C1 1.5, NAT 1.7), rounded.
+- In Daily mode, base points per correct answer are determined by the card's level: A1 5, A2 7, B1 10, B2 13, C1 16, NAT 20. Pass has no penalty.
 - Streak bonus on each correct: ⚙ `+2 × (streak − 1)`, capped at +10. Combo celebrations at streak 3, 5, 10.
 - Wrong / pass: 0. Passed-then-correct on a later lap: full points, but streak was broken by the pass.
 - Time bonus at the end if the wheel is completed: ⚙ 1 point per remaining second.

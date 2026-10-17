@@ -160,12 +160,6 @@ internal class DailyRepositoryImpl(databases: Databases, io: CoroutineDispatcher
 
     override fun observe(epochDay: Long, level: Level): Flow<DailyResult?> = observe(epochDay)
 
-    override fun observeDay(epochDay: Long): Flow<List<DailyResult>> = observe {
-        dailyResultQueries.byDay(epochDay).asFlow().mapToList(io).map { rows ->
-            rows.map { it.toModel() }
-        }
-    }
-
     override suspend fun get(epochDay: Long): DailyResult? = write {
         dailyResultQueries.byDay(epochDay).executeAsList().firstOrNull()?.toModel()
     }

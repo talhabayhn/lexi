@@ -17,6 +17,7 @@ import dev.talhabayhan.lexi.core.testing.testAlphabetPool
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
+import kotlinx.coroutines.test.advanceTimeBy
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
@@ -107,6 +108,46 @@ class HomeViewModelTest {
             assertEquals(1, after.dueReviews)
             // Yesterday was played, today is still open: the streak is alive.
             assertEquals(1, after.streakDays)
+        }
+    }
+
+    @Test
+    fun `streak and daily card recompute automatically when midnight passes while app is open`() = runTest {
+        streaks.days = listOf(today)
+        daily.record(DailyResult(today, Level.A1, score = 150, timeMs = 45000))
+        val viewModel = viewModel()
+        viewModel.state.test {
+            val before = expectMostRecentItem()
+            assertEquals(1, before.streakDays)
+            assertEquals(15, before.dailyDay)
+            assertEquals(DailyCardState.AlreadyPlayed(150, hoursUntilNext = 12), before.dailyState)
+
+            // Advance past midnight while app is open
+            val msToMidnight = clock.msUntilNextDay()
+            clock.advanceBy(msToMidnight + 1000L)
+            advanceTimeBy(msToMidnight + 1050L)
+
+            val after = expectMostRecentItem()
+            assertEquals(16, after.dailyDay)
+            assertEquals(1, after.streakDays) // streak alive from yesterday
+            assertEquals(DailyCardState.Available, after.dailyState) // new daily available!
+        }
+    }
+
+    @Test
+    fun `streak badge resets on resume after a missed day`() = runTest {
+        // Played today - 1 (alive), then advance 2 days without playing (missed)
+        streaks.days = listOf(today)
+        val viewModel = viewModel()
+        viewModel.state.test {
+            val before = expectMostRecentItem()
+            assertEquals(1, before.streakDays)
+
+            clock.advanceBy(FakeAppClock.MS_PER_DAY * 2)
+            viewModel.onIntent(HomeIntent.Resumed)
+
+            val after = expectMostRecentItem()
+            assertEquals(0, after.streakDays) // missed day resets streak
         }
     }
 

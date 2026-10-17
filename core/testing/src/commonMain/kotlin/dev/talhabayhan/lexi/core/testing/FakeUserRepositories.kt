@@ -144,9 +144,6 @@ public class FakeDailyRepository(initial: Collection<DailyResult> = emptyList())
     override fun observe(epochDay: Long): Flow<DailyResult?> =
         state.map { list -> list.firstOrNull { it.epochDay == epochDay } }
 
-    override fun observeDay(epochDay: Long): Flow<List<DailyResult>> =
-        state.map { list -> list.filter { it.epochDay == epochDay } }
-
     override suspend fun get(epochDay: Long): DailyResult? = state.value.firstOrNull { it.epochDay == epochDay }
 
     override suspend fun record(result: DailyResult): Boolean {

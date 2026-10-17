@@ -109,8 +109,8 @@ MatchEvent stream ─▶ MatchEngine(config).reduce(match, event) ─▶ Transit
 - Randomness: `SeededRandom` (SplitMix64, own implementation — do not rely on `kotlin.random` internals) derived
   from `seed`. Sub-seeds per purpose: `Seeds.derive(seed, purpose)` = `mix64(seed xor fnv1a64(purpose))`
   (`GAME_RULES.md` §13: `wheel`, `keys:<letter>`, `level-test:<index>`, `player:<n>`).
-- Seeds: solo = random 64-bit; daily = `Seeds.stableHash("daily:" + yyyy-MM-dd + ":" + level + ":" +
-  contentVersion)`; challenge/online = carried in link/room.
+- Seeds: solo = random 64-bit; daily = `Seeds.mix64(Seeds.stableHash("daily:" + epochDay + ":" + contentVersion))`;
+  challenge/online = carried in link/room.
 - `MatchState` wraps one `GameState` per player + turn info → hot-seat and online duel reuse it.
 - `EngineEffect` (LetterPlaced, Correct, Wrong, Passed, Advanced, ComboReached, TimeWarning, JokerApplied,
   TurnChanged, GameOver, MatchOver) are mapped by the ViewModel to sound/haptic/animation effects. The engine never

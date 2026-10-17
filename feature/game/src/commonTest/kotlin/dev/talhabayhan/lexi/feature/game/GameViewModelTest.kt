@@ -7,6 +7,7 @@ import app.cash.turbine.test
 import dev.talhabayhan.lexi.core.designsystem.component.AnswerSlotState
 import dev.talhabayhan.lexi.core.designsystem.component.WheelLetterState
 import dev.talhabayhan.lexi.core.domain.config.FeatureFlags
+import dev.talhabayhan.lexi.core.domain.daily.GetDailyWheel
 import dev.talhabayhan.lexi.core.domain.game.GameConfig
 import dev.talhabayhan.lexi.core.domain.game.GameEngine
 import dev.talhabayhan.lexi.core.domain.game.GameMode
@@ -25,6 +26,8 @@ import dev.talhabayhan.lexi.core.domain.session.SessionResult
 import dev.talhabayhan.lexi.core.domain.srs.CardProgress
 import dev.talhabayhan.lexi.core.testing.FakeAppClock
 import dev.talhabayhan.lexi.core.testing.FakeCardRepository
+import dev.talhabayhan.lexi.core.testing.FakeContentVersionRepository
+import dev.talhabayhan.lexi.core.testing.FakeDailyRepository
 import dev.talhabayhan.lexi.core.testing.FakeJokerRepository
 import dev.talhabayhan.lexi.core.testing.FakeProgressRepository
 import dev.talhabayhan.lexi.core.testing.FakeSessionRepository
@@ -84,6 +87,7 @@ class GameViewModelTest {
         sessionRepository: SessionRepository = sessions,
         flags: FeatureFlags = FeatureFlags(),
         seeds: SeedSource = SeedSource { SEED },
+        getDailyWheel: GetDailyWheel? = null,
     ): GameViewModel = GameViewModel(
         route = gameRoute,
         handle = handle,
@@ -98,6 +102,7 @@ class GameViewModelTest {
         timeSource = testScheduler.timeSource,
         seeds = seeds,
         flags = flags,
+        getDailyWheel = getDailyWheel,
     )
 
     /** Loaded and resumed: the game has started (A is current). */
@@ -970,11 +975,23 @@ class GameViewModelTest {
 
     // region modes (GAME_RULES.md §5, §6)
 
-    private fun TestScope.startedIn(mode: GameMode): GameViewModel =
-        viewModel(gameRoute = GameRoute(Level.A1, mode)).also {
+    private fun TestScope.startedIn(mode: GameMode): GameViewModel {
+        val dailyWheel = if (mode == GameMode.DAILY) {
+            val allCards = Level.entries.flatMap { dev.talhabayhan.lexi.core.testing.testAlphabetPool(it) }
+            GetDailyWheel(
+                cards = FakeCardRepository(allCards),
+                contentVersion = FakeContentVersionRepository(1),
+                daily = FakeDailyRepository(),
+                clock = appClock,
+            )
+        } else {
+            null
+        }
+        return viewModel(gameRoute = GameRoute(Level.A1, mode), getDailyWheel = dailyWheel).also {
             runCurrent()
             it.onIntent(GameIntent.Foreground)
         }
+    }
 
     @Test
     fun `practice has no clock and never runs out of time`() = runTest {
@@ -1134,6 +1151,73 @@ class GameViewModelTest {
         assertTrue(restored.state.value.isPaused)
         assertEquals('B', restored.state.value.turn?.letter)
         assertEquals(10, restored.state.value.score)
+    }
+
+    // region DAILY mode tests
+
+    @Test
+    fun `daily mode without GetDailyWheel fails with Unreadable load error`() = runTest {
+        val dailyRoute = GameRoute(Level.A1, GameMode.DAILY)
+        val vm = viewModel(
+            handle = routeHandle(mapOf("mode" to "DAILY")),
+            gameRoute = dailyRoute,
+            getDailyWheel = null,
+        )
+        runCurrent()
+        assertEquals(GameLoadError.Unreadable, vm.state.value.loadError)
+    }
+
+    @Test
+    fun `daily mode when already played sends Abandoned effect`() = runTest {
+        val dailyRepo = FakeDailyRepository()
+        val today = appClock.epochDay(appClock.nowMs())
+        dailyRepo.record(dev.talhabayhan.lexi.core.domain.session.DailyResult(today, Level.A1, 200, 60000))
+        val getDailyWheel = GetDailyWheel(cards, FakeContentVersionRepository(1), dailyRepo, appClock)
+
+        val dailyRoute = GameRoute(Level.A1, GameMode.DAILY)
+        val vm = viewModel(
+            handle = routeHandle(mapOf("mode" to "DAILY")),
+            gameRoute = dailyRoute,
+            getDailyWheel = getDailyWheel,
+        )
+        vm.effects.test {
+            runCurrent()
+            assertEquals(GameEffect.Abandoned, awaitItem())
+        }
+    }
+
+    @Test
+    fun `daily mode when no cards available shows NoCards load error`() = runTest {
+        val emptyCards = FakeCardRepository(emptyList())
+        val getDailyWheel = GetDailyWheel(emptyCards, FakeContentVersionRepository(1), FakeDailyRepository(), appClock)
+
+        val dailyRoute = GameRoute(Level.A1, GameMode.DAILY)
+        val vm = viewModel(
+            handle = routeHandle(mapOf("mode" to "DAILY")),
+            gameRoute = dailyRoute,
+            getDailyWheel = getDailyWheel,
+        )
+        runCurrent()
+        assertEquals(GameLoadError.NoCards, vm.state.value.loadError)
+    }
+
+    @Test
+    fun `daily mode when ready loads wheel and starts successfully`() = runTest {
+        val alphabetCards = Level.entries.flatMap { dev.talhabayhan.lexi.core.testing.testAlphabetPool(it) }
+        val poolRepo = FakeCardRepository(alphabetCards)
+        val getDailyWheel = GetDailyWheel(poolRepo, FakeContentVersionRepository(1), FakeDailyRepository(), appClock)
+
+        val dailyRoute = GameRoute(Level.A1, GameMode.DAILY)
+        val vm = viewModel(
+            handle = routeHandle(mapOf("mode" to "DAILY")),
+            gameRoute = dailyRoute,
+            getDailyWheel = getDailyWheel,
+        )
+        runCurrent()
+        vm.onIntent(GameIntent.Foreground)
+        assertNull(vm.state.value.loadError)
+        assertFalse(vm.state.value.isLoading)
+        assertEquals(26, vm.state.value.wheel.size)
     }
 
     // endregion

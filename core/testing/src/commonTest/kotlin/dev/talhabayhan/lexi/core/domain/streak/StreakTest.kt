@@ -3,6 +3,7 @@ package dev.talhabayhan.lexi.core.domain.streak
 import dev.talhabayhan.lexi.core.domain.stats.Stats
 import dev.talhabayhan.lexi.core.testing.FakeAppClock
 import dev.talhabayhan.lexi.core.testing.FakeStreakRepository
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.runTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -20,24 +21,23 @@ class StreakTest {
 
         // Initial: 0 streak
         assertEquals(0, Stats.currentStreak(streaks.days, today))
-        assertEquals(0, StreakSemantics.homeBadgeStreak(streaks.days, today))
 
         // First game on today
         streaks.days = listOf(today)
-        val status1 = getStreakStatus.current()
+        val status1 = getStreakStatus.observe().first()
         assertEquals(1, status1.currentStreak)
         assertTrue(status1.playedToday)
 
         // Second game on today does not double-increment
         streaks.days = listOf(today) // idempotent
-        val status2 = getStreakStatus.current()
+        val status2 = getStreakStatus.observe().first()
         assertEquals(1, status2.currentStreak)
 
         // Next day completed
         val tomorrow = today + 1
         clock.advanceBy(FakeAppClock.MS_PER_DAY)
         streaks.days = listOf(today, tomorrow)
-        val status3 = getStreakStatus.current()
+        val status3 = getStreakStatus.observe().first()
         assertEquals(2, status3.currentStreak)
         assertTrue(status3.playedToday)
     }
@@ -50,20 +50,20 @@ class StreakTest {
         streaks.days = listOf(today - 2, today - 1)
 
         // Today is not played yet: streak is still alive from yesterday
-        val statusToday = getStreakStatus.current()
+        val statusToday = getStreakStatus.observe().first()
         assertEquals(2, statusToday.currentStreak)
         assertFalse(statusToday.playedToday)
 
         // Two days pass with no game played (today was missed)
         clock.advanceBy(FakeAppClock.MS_PER_DAY * 2)
-        val afterMissed = getStreakStatus.current()
+        val afterMissed = getStreakStatus.observe().first()
         assertEquals(0, afterMissed.currentStreak)
         assertFalse(afterMissed.playedToday)
 
         // Playing now starts a new streak of 1
         val newToday = clock.epochDay(clock.nowMs())
         streaks.days = streaks.days + newToday
-        val statusRecovered = getStreakStatus.current()
+        val statusRecovered = getStreakStatus.observe().first()
         assertEquals(1, statusRecovered.currentStreak)
         assertTrue(statusRecovered.playedToday)
     }
@@ -71,19 +71,11 @@ class StreakTest {
     @Test
     fun `home badge displays correct streak value`() = runTest {
         val today = 20_000L
-        assertEquals(0, StreakSemantics.homeBadgeStreak(emptyList(), today))
-        assertEquals(1, StreakSemantics.homeBadgeStreak(listOf(today), today))
-        assertEquals(1, StreakSemantics.homeBadgeStreak(listOf(today - 1), today), "yesterday was played, today open")
-        assertEquals(0, StreakSemantics.homeBadgeStreak(listOf(today - 2), today), "missed yesterday and today")
-        assertEquals(7, StreakSemantics.homeBadgeStreak((today - 6..today).toList(), today))
-    }
-
-    @Test
-    fun `combo celebration and badge text semantics from GAME_RULES`() {
-        assertEquals(setOf(3, 5, 10), StreakSemantics.COMBO_CELEBRATIONS)
-        assertEquals("×3 SERİ", StreakSemantics.comboBadgeText(3))
-        assertEquals("×5 SERİ", StreakSemantics.comboBadgeText(5))
-        assertEquals("×10 SERİ", StreakSemantics.comboBadgeText(10))
+        assertEquals(0, Stats.currentStreak(emptyList(), today))
+        assertEquals(1, Stats.currentStreak(listOf(today), today))
+        assertEquals(1, Stats.currentStreak(listOf(today - 1), today), "yesterday was played, today open")
+        assertEquals(0, Stats.currentStreak(listOf(today - 2), today), "missed yesterday and today")
+        assertEquals(7, Stats.currentStreak((today - 6..today).toList(), today))
     }
 
     @Test
@@ -104,7 +96,7 @@ class StreakTest {
         assertEquals(dayD + 1, epochAfter)
         streaks.days = listOf(epochBefore, epochAfter)
 
-        val status = getStreakStatus.current()
+        val status = getStreakStatus.observe().first()
         assertEquals(2, status.currentStreak)
         assertTrue(status.playedToday)
     }
@@ -133,7 +125,7 @@ class StreakTest {
         assertEquals(20_743L, londonLocalDay1)
 
         // Playing again on the same local date in London is recognized as same day (no duplicate streak increment)
-        val londonStatus1 = GetStreakStatus(streakRepo, londonClock).current()
+        val londonStatus1 = GetStreakStatus(streakRepo, londonClock).observe().first()
         assertEquals(1, londonStatus1.currentStreak)
         assertTrue(londonStatus1.playedToday)
 
@@ -145,7 +137,7 @@ class StreakTest {
 
         // Player completes a game in London next morning: consecutive local days -> streak increments to 2
         streakRepo.days = streakRepo.days + londonLocalDay2
-        val londonStatus2 = GetStreakStatus(streakRepo, londonClock).current()
+        val londonStatus2 = GetStreakStatus(streakRepo, londonClock).observe().first()
         assertEquals(2, londonStatus2.currentStreak)
         assertTrue(londonStatus2.playedToday)
     }

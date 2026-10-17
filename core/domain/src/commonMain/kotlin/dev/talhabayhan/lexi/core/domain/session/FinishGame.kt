@@ -56,15 +56,17 @@ public class FinishGame(
             applySrs(finished, result)
             srsApplied = true
         }
-        if (!dailyRecorded && result.mode == GameMode.DAILY && daily != null) {
+        if (!dailyRecorded && result.mode == GameMode.DAILY) {
+            val dailyRepo = checkNotNull(daily) { "DailyRepository is required for DAILY mode" }
+            val dailyEpochDay = clock.epochDay(result.startedAtMs)
             val dailyResult = DailyResult(
-                epochDay = result.epochDay,
+                epochDay = dailyEpochDay,
                 level = null,
                 score = result.score,
                 timeMs = result.endedAtMs - result.startedAtMs,
                 shareCode = null,
             )
-            daily.record(dailyResult)
+            dailyRepo.record(dailyResult)
             dailyRecorded = true
         }
         result

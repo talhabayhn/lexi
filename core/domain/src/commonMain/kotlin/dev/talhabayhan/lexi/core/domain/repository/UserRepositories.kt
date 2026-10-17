@@ -58,9 +58,6 @@ public interface DailyRepository {
     /** Stores the day's attempt; returns false and changes nothing when the day was already played. */
     public suspend fun record(result: DailyResult): Boolean
 
-    /** Observes all daily attempts for [epochDay]. */
-    public fun observeDay(epochDay: Long): Flow<List<DailyResult>>
-
     /** Backward-compatible overload observing [epochDay] (ignoring level). */
     public fun observe(epochDay: Long, level: Level): Flow<DailyResult?> = observe(epochDay)
 

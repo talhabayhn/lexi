@@ -342,11 +342,7 @@ private fun TopBar(state: HomeUiState, onIntent: (HomeIntent) -> Unit) {
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        if (state.streakDays > 0) {
-            StreakChip(pluralStringResource(Res.plurals.home_streak, state.streakDays, state.streakDays))
-        } else {
-            Spacer(Modifier.size(0.dp))
-        }
+        StreakChip(pluralStringResource(Res.plurals.home_streak, state.streakDays, state.streakDays))
         NavSquareButton(
             icon = LexiIcons.Settings,
             contentDescription = stringResource(Res.string.home_settings),

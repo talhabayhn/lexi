@@ -12,6 +12,7 @@ import dev.talhabayhan.lexi.core.domain.time.AppClock
 import dev.talhabayhan.lexi.core.domain.time.civilDateOfEpochDay
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -42,18 +43,19 @@ internal class HomeViewModel(
 
     init {
         viewModelScope.launch {
-            combine(progress.observeAll(), getStreakStatus.observe(), today) { cards, streak, day ->
+            combine(progress.observeAll(), getStreakStatus.observe(today), today) { cards, streak, day ->
                 val date = civilDateOfEpochDay(day)
-                cards to (streak to date)
+                cards to (streak to (date to day))
             }
                 // A broken read keeps the last numbers (zeros at first); the menu itself still works.
                 .catch { }
                 .collect { (cards, streakAndDate) ->
-                    val (streak, date) = streakAndDate
+                    val (streak, dateAndDay) = streakAndDate
+                    val (date, day) = dateAndDay
                     mutableState.update { current ->
                         current.copy(
                             streakDays = streak.currentStreak,
-                            dueReviews = cards.count { it.isDue(today.value) },
+                            dueReviews = cards.count { it.isDue(day) },
                             learnedWords = Stats.learnedWords(cards),
                             dailyDay = date.day,
                             dailyMonth = date.month,
@@ -78,12 +80,21 @@ internal class HomeViewModel(
                             is DailyPlayState.NoCards -> DailyCardState.Unavailable
                         }
                     }
+                }.catch { emit(DailyCardState.Unavailable) }
+            }.collect { cardState ->
+                mutableState.update { it.copy(dailyState = cardState) }
+            }
+        }
+
+        viewModelScope.launch {
+            while (true) {
+                val delayMs = appClock.msUntilNextDay().coerceAtLeast(1000L)
+                delay(delayMs + 50L)
+                val nextDay = appClock.currentDay()
+                if (today.value != nextDay) {
+                    today.value = nextDay
                 }
             }
-                .catch { emit(DailyCardState.Unavailable) }
-                .collect { cardState ->
-                    mutableState.update { it.copy(dailyState = cardState) }
-                }
         }
     }
 

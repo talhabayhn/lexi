@@ -39,7 +39,7 @@ before shipping.
 | Disabled game inputs (wrong-answer reveal) | M4 | keys / backspace / joker at 50 % without shadow (joker sheet's disabled rows), PAS = `LexiButton` disabled |
 | Onboarding steps 1 & 3 | M6 | same layout as step 2, different shapes & copy |
 | Level test result ("Seviyen: B1") | M6 | result screen header style + level badge |
-| Daily wheel intro / already-played state | M6 | home daily card enlarged |
+| Daily wheel intro / already-played state (stays as built, DESIGN-DEBT) | M6 | home daily card enlarged. The 3 home daily-card states (Available, AlreadyPlayed with score and countdown to next wheel, Unavailable) were built from `16-components` without dedicated Figma screens; flagged as DESIGN-DEBT (needs design). |
 | Entry to the categories | M5 | the design has no way in (07's back arrow returns to level select): a small underlined "Kategoriler" link on the "OYUN MODU" label line of the level select (`LexiTypography.link12`; the touch target is widened by Compose). Starting a category starts `GameRoute(level, mode, category)`; the mixed card starts the level's regular wheel |
 | Categories: Pro lock, empty level, read failure | M5 | none in the design: no shipped category is Pro (TODO M7: lock behind the paywall); a level without categories shows `EmptyState` instead of the cards; unreadable content shows the `EmptyState` with "Tekrar dene" instead (no card can be started) |
 | Word detail sheet | M5 | built (stays as built, DESIGN-DEBT): `BottomSheet` over the notebook, opened by tapping a row: word as title, Turkish clue, level · category, example + translation, memory box and next review, seen / correct / wrong, ink "Dinle" button (speaker), white "Defterden çıkar" (no confirmation) |

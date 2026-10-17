@@ -319,8 +319,9 @@ internal class GameViewModel(
                 reviewWheel
             }
 
-            mode == GameMode.DAILY && getDailyWheel != null -> {
-                when (val dailyState = getDailyWheel(level)) {
+            mode == GameMode.DAILY -> {
+                val dailyWheelLoader = getDailyWheel ?: return Opened.Failed
+                when (val dailyState = dailyWheelLoader(level)) {
                     is DailyPlayState.Ready -> {
                         seed = dailyState.seed
                         dailyState.wheel

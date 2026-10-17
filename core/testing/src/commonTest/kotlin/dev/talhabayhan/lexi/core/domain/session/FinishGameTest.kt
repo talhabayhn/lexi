@@ -178,17 +178,40 @@ class FinishGameTest {
     }
 
     @Test
-    fun `finishing a daily game records the daily result in DailyRepository`() = runTest {
+    fun `finishing a daily game that crossed midnight saves under the start date`() = runTest {
+        val startDay = 20_740L
+        val finishDay = 20_741L
+        val startMs = startDay * FakeAppClock.MS_PER_DAY + FakeAppClock.MS_PER_DAY - 60_000L // 23:59
+        val endMs = finishDay * FakeAppClock.MS_PER_DAY + 60_000L // 00:01 next day
+
+        clock.currentMs = endMs
         val daily = FakeDailyRepository()
         val finish = FinishGame(sessions, progress, clock, config, daily = daily)
 
-        val game = finishedGame(GameMode.DAILY)
-        val result = finish(game, category = null)
+        // Game started before midnight
+        var state = engine.newGame(SEED, GameMode.DAILY, Level.A1, testWheel("APPLE", "BREAD", "CHAIR"))
+        state = engine.reduce(state, GameEvent.Start(timestampMs = startMs)).state
+        // End the game
+        state = engine.reduce(state, GameEvent.Forfeit).state
 
-        val stored = daily.get(result.epochDay)
-        assertTrue(stored != null)
-        assertEquals(result.epochDay, stored.epochDay)
-        assertEquals(result.score, stored.score)
+        val result = finish(state, category = null)
+        assertEquals(finishDay, result.epochDay) // session ended on finishDay
+
+        // But daily result must be saved under startDay
+        val dailyAtStart = daily.get(startDay)
+        val dailyAtFinish = daily.get(finishDay)
+        assertTrue(dailyAtStart != null, "daily must be saved under start day")
+        assertEquals(startDay, dailyAtStart.epochDay)
+        assertEquals(null, dailyAtFinish, "daily must not be saved under finish day")
+    }
+
+    @Test
+    fun `finishing a daily game without DailyRepository fails loudly`() = runTest {
+        val finish = FinishGame(sessions, progress, clock, config, daily = null)
+        val game = finishedGame(GameMode.DAILY)
+        assertFailsWith<IllegalStateException> {
+            finish(game, category = null)
+        }
     }
 
     private companion object {

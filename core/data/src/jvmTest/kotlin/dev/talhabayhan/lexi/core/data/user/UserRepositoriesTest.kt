@@ -166,12 +166,6 @@ class UserRepositoriesTest {
             expectNoEvents()
         }
 
-        daily.observeDay(20_000).test {
-            val list = awaitItem()
-            assertEquals(1, list.size)
-            assertEquals(sharedFirst, list.first())
-        }
-
         assertEquals(sharedFirst, daily.get(20_000))
         assertEquals(sharedFirst, daily.get(20_000, Level.A1))
         assertNull(daily.get(20_001))

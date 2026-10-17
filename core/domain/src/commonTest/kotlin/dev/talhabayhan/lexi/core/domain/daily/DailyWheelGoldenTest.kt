@@ -63,6 +63,53 @@ class DailyWheelGoldenTest {
     }
 
     @Test
+    fun `golden pinned 26 card ids and level assignment for 2 fixed dates`() {
+        val contentVersion = 1L
+
+        // Date 1: 2026-10-15 (epochDay = 20_741L)
+        val s1 = DailySeed.seed(20_741L, contentVersion)
+        assertEquals(6034053112182483930L, s1)
+        val w1 = WheelGenerator.daily(pool, SeededRandom(s1).derive(WheelGenerator.SEED_PURPOSE))
+        val expectedLevels1 = listOf(
+            Level.A2, Level.B1, Level.B2, Level.A1, Level.C1, Level.NAT,
+            Level.A2, Level.A1, Level.A2, Level.C1, Level.A2, Level.B1,
+            Level.A1, Level.C1, Level.NAT, Level.B1, Level.A1, Level.A2,
+            Level.NAT, Level.B2, Level.B1, Level.B2, Level.B1, Level.A1,
+            Level.A1, Level.B2,
+        )
+        val expectedCards1 = listOf(
+            "a2-atwo", "b1-btwo", "b2-ctwo", "a1-dtwo", "c1-etwo", "nat-fone",
+            "a2-gtwo", "a1-hone", "a2-ione", "c1-jone", "a2-kone", "b1-ltwo",
+            "a1-mtwo", "c1-ntwo", "nat-oone", "b1-ptwo", "a1-qtwo", "a2-rtwo",
+            "nat-sone", "b2-tone", "b1-utwo", "b2-vone", "b1-wtwo", "a1-xtwo",
+            "a1-ytwo", "b2-zone",
+        )
+        assertEquals(expectedLevels1, w1.slots.map { it.card?.level })
+        assertEquals(expectedCards1, w1.slots.map { it.card?.id?.value })
+
+        // Date 2: 2026-10-16 (epochDay = 20_742L)
+        val s2 = DailySeed.seed(20_742L, contentVersion)
+        assertEquals(5975572613751024269L, s2)
+        val w2 = WheelGenerator.daily(pool, SeededRandom(s2).derive(WheelGenerator.SEED_PURPOSE))
+        val expectedLevels2 = listOf(
+            Level.A1, Level.C1, Level.B1, Level.B1, Level.A2, Level.B2,
+            Level.B2, Level.NAT, Level.B1, Level.NAT, Level.A1, Level.A2,
+            Level.B2, Level.A2, Level.NAT, Level.B1, Level.A1, Level.C1,
+            Level.C1, Level.A2, Level.A1, Level.B2, Level.A2, Level.A1,
+            Level.B1, Level.A1,
+        )
+        val expectedCards2 = listOf(
+            "a1-atwo", "c1-btwo", "b1-cone", "b1-done", "a2-eone", "b2-ftwo",
+            "b2-gtwo", "nat-hone", "b1-itwo", "nat-jone", "a1-ktwo", "a2-lone",
+            "b2-mtwo", "a2-none", "nat-oone", "b1-pone", "a1-qone", "c1-rone",
+            "c1-stwo", "a2-ttwo", "a1-utwo", "b2-vtwo", "a2-wone", "a1-xone",
+            "b1-ytwo", "a1-ztwo",
+        )
+        assertEquals(expectedLevels2, w2.slots.map { it.card?.level })
+        assertEquals(expectedCards2, w2.slots.map { it.card?.id?.value })
+    }
+
+    @Test
     fun `distribution counts exactly 6 5 5 4 3 3`() {
         val epochDay = 20_741L
         val contentVersion = 1L

@@ -61,9 +61,9 @@ level-wheel/category query must filter `pack_only = 0`, and they are reachable o
 
 - A word that exists anywhere (base or another pack) is referenced by id in `units/<pack>.csv`, never re-created.
   Every pack has ≥ 5 cards per letter.
-- `packs-meta.csv` holds title_tr/title_en, level range, card target and free preview letters (not read by the
-  compiler yet). Open compiler work and owner decisions: `docs/content/EXAM_PACKS.md`; review notes:
-  `docs/content-review/EXAM-*-summary.md`.
+- `packs-meta.csv` holds title_tr/title_en, level range, card target and free preview letters (compiled and
+  validated into `content.db` `exam_pack` / `exam_pack_card` tables). Open compiler work and owner decisions:
+  `docs/content/EXAM_PACKS.md`; review notes: `docs/content-review/EXAM-*-summary.md`.
 - QA without Gradle: `python3 tools/content-qa/qa.py` (charset, letter rule, leaks, duplicates, per-pack letters).
 - Pack answers count in the per-level example leak check: a new base example must not contain a pack answer of
   its level either (the compiler reports it like any other leak).
