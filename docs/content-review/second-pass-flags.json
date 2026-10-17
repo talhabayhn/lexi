@@ -1,0 +1,758 @@
+{
+"a1-stop": [
+[
+"example_too_short",
+"Stop, thief!"
+]
+],
+"a1-start": [
+[
+"example_tr_missing_or_short",
+"Başlayalım!"
+]
+],
+"a1-move": [
+[
+"example_tr_missing_or_short",
+"Kıpırdama!"
+]
+],
+"a1-smile": [
+[
+"example_too_short",
+"Smile, Ayşe!"
+]
+],
+"a1-yes": [
+[
+"example_too_short",
+"Yes, sure."
+]
+],
+"a1-holiday": [
+[
+"example_tr_missing_or_short",
+"Tatildeyiz."
+]
+],
+"a1-swim": [
+[
+"example_tr_missing_or_short",
+"Yüzebilirim."
+]
+],
+"a1-know": [
+[
+"example_tr_missing_or_short",
+"Bilmiyorum."
+]
+],
+"a1-go": [
+[
+"example_too_short",
+"Let's go!"
+]
+],
+"a1-wrong": [
+[
+"example_tr_missing_or_short",
+"Yanılıyorsun."
+]
+],
+"a1-understand": [
+[
+"example_tr_missing_or_short",
+"Anlamıyorum."
+]
+],
+"a1-time": [
+[
+"example_too_short",
+"Time flies."
+]
+],
+"a2-sandals": [
+[
+"answer_in_clue",
+"yazın giyilen açık ayakkabı, sandalet"
+]
+],
+"a2-unless": [
+[
+"tr_punct_spacing",
+"clue_tr"
+]
+],
+"a2-silly": [
+[
+"example_tr_missing_or_short",
+"Saçmalama."
+]
+],
+"a2-switch": [
+[
+"tr_casing_dotless_I",
+"Işık anahtarı nerede?"
+]
+],
+"b1-neither": [
+[
+"tr_punct_spacing",
+"clue_tr"
+]
+],
+"b1-worth": [
+[
+"tr_punct_spacing",
+"clue_tr"
+]
+],
+"b2-statistics": [
+[
+"answer_in_clue",
+"sayısal veriler, istatistik"
+]
+],
+"b2-turn-out": [
+[
+"tr_punct_spacing",
+"clue_tr"
+]
+],
+"c1-arguably": [
+[
+"tr_punct_spacing",
+"clue_tr"
+]
+],
+"c1-albeit": [
+[
+"tr_punct_spacing",
+"clue_tr"
+]
+],
+"nat-pandemonium": [
+[
+"tr_casing_dotless_I",
+"Işıklar sönünce kıyamet koptu."
+]
+],
+"a1-live": [
+[
+"same_clue_diff_answer",
+"bir yerde oturmak -> LIVE,RESIDE"
+],
+[
+"similar_clue",
+"bir yerde oturmak ~ bir yerde oturmak (RESIDE)"
+]
+],
+"c1-reside": [
+[
+"same_clue_diff_answer",
+"bir yerde oturmak -> LIVE,RESIDE"
+],
+[
+"similar_clue",
+"bir yerde oturmak ~ bir yerde oturmak (LIVE)"
+]
+],
+"a1-place": [
+[
+"same_clue_diff_answer",
+"bir şeyin bulunduğu yer -> PLACE,LOCATION"
+],
+[
+"similar_clue",
+"bir şeyin bulunduğu yer ~ bir şeyin bulunduğu yer (LOCATION)"
+]
+],
+"b1-location": [
+[
+"same_clue_diff_answer",
+"bir şeyin bulunduğu yer -> PLACE,LOCATION"
+],
+[
+"similar_clue",
+"bir şeyin bulunduğu yer ~ bir şeyin bulunduğu yer (PLACE)"
+]
+],
+"a1-sometimes": [
+[
+"same_clue_diff_answer",
+"ara sıra -> SOMETIMES,ONCE IN A WHILE"
+]
+],
+"b2-once-in-a-while": [
+[
+"same_clue_diff_answer",
+"ara sıra -> SOMETIMES,ONCE IN A WHILE"
+]
+],
+"a1-change": [
+[
+"same_clue_diff_answer",
+"bir şeyi başka bir şeyle değiştirmek -> CHANGE,EXCHANGE"
+],
+[
+"similar_clue",
+"bir şeyi başka bir şeyle değiştirmek ~ bir şeyi başka bir şeyle değiştirmek (EXCHANGE)"
+]
+],
+"a2-exchange": [
+[
+"same_clue_diff_answer",
+"bir şeyi başka bir şeyle değiştirmek -> CHANGE,EXCHANGE"
+],
+[
+"similar_clue",
+"bir şeyi başka bir şeyle değiştirmek ~ bir şeyi başka bir şeyle değiştirmek (CHANGE)"
+]
+],
+"a1-rubber": [
+[
+"same_clue_diff_answer",
+"kurşun kalem izini silen küçük nesne -> RUBBER,ERASER"
+],
+[
+"similar_clue",
+"kurşun kalem izini silen küçük nesne ~ kurşun kalem izini silen küçük nesne (ERASER)"
+]
+],
+"a2-eraser": [
+[
+"same_clue_diff_answer",
+"kurşun kalem izini silen küçük nesne -> RUBBER,ERASER"
+],
+[
+"similar_clue",
+"kurşun kalem izini silen küçük nesne ~ kurşun kalem izini silen küçük nesne (RUBBER)"
+]
+],
+"a2-huge": [
+[
+"same_clue_diff_answer",
+"çok büyük kocaman -> HUGE,ENORMOUS,MASSIVE"
+],
+[
+"similar_clue",
+"çok büyük, kocaman ~ çok büyük, kocaman (ENORMOUS)"
+],
+[
+"similar_clue",
+"çok büyük, kocaman ~ çok büyük, kocaman (MASSIVE)"
+]
+],
+"b1-enormous": [
+[
+"same_clue_diff_answer",
+"çok büyük kocaman -> HUGE,ENORMOUS,MASSIVE"
+],
+[
+"similar_clue",
+"çok büyük, kocaman ~ çok büyük, kocaman (HUGE)"
+],
+[
+"similar_clue",
+"çok büyük, kocaman ~ çok büyük, kocaman (MASSIVE)"
+]
+],
+"b1-massive": [
+[
+"same_clue_diff_answer",
+"çok büyük kocaman -> HUGE,ENORMOUS,MASSIVE"
+],
+[
+"similar_clue",
+"çok büyük, kocaman ~ çok büyük, kocaman (HUGE)"
+],
+[
+"similar_clue",
+"çok büyük, kocaman ~ çok büyük, kocaman (ENORMOUS)"
+]
+],
+"a2-amount": [
+[
+"same_clue_diff_answer",
+"bir şeyin miktarı -> AMOUNT,QUANTITY"
+],
+[
+"similar_clue",
+"bir şeyin miktarı ~ bir şeyin miktarı (QUANTITY)"
+]
+],
+"b1-quantity": [
+[
+"same_clue_diff_answer",
+"bir şeyin miktarı -> AMOUNT,QUANTITY"
+],
+[
+"similar_clue",
+"bir şeyin miktarı ~ bir şeyin miktarı (AMOUNT)"
+]
+],
+"a2-happen": [
+[
+"same_clue_diff_answer",
+"meydana gelmek olmak -> HAPPEN,OCCUR"
+],
+[
+"similar_clue",
+"meydana gelmek, olmak ~ meydana gelmek, olmak (OCCUR)"
+]
+],
+"b1-occur": [
+[
+"same_clue_diff_answer",
+"meydana gelmek olmak -> HAPPEN,OCCUR"
+],
+[
+"similar_clue",
+"meydana gelmek, olmak ~ meydana gelmek, olmak (HAPPEN)"
+]
+],
+"a2-whole": [
+[
+"same_clue_diff_answer",
+"hiçbir parçası eksik olmayan bütün -> WHOLE,ENTIRE"
+],
+[
+"similar_clue",
+"hiçbir parçası eksik olmayan, bütün ~ hiçbir parçası eksik olmayan, bütün (ENTIRE)"
+]
+],
+"b1-entire": [
+[
+"same_clue_diff_answer",
+"hiçbir parçası eksik olmayan bütün -> WHOLE,ENTIRE"
+],
+[
+"similar_clue",
+"hiçbir parçası eksik olmayan, bütün ~ hiçbir parçası eksik olmayan, bütün (WHOLE)"
+]
+],
+"a2-smart": [
+[
+"same_clue_diff_answer",
+"zeki çabuk öğrenen -> SMART,INTELLIGENT"
+],
+[
+"similar_clue",
+"zeki, çabuk öğrenen ~ zeki, çabuk öğrenen (INTELLIGENT)"
+]
+],
+"b1-intelligent": [
+[
+"same_clue_diff_answer",
+"zeki çabuk öğrenen -> SMART,INTELLIGENT"
+],
+[
+"similar_clue",
+"zeki, çabuk öğrenen ~ zeki, çabuk öğrenen (SMART)"
+]
+],
+"b1-fully": [
+[
+"same_clue_diff_answer",
+"tamamen bütünüyle -> FULLY,TOTALLY"
+],
+[
+"similar_clue",
+"tamamen, bütünüyle ~ tamamen, bütünüyle (TOTALLY)"
+]
+],
+"b1-totally": [
+[
+"same_clue_diff_answer",
+"tamamen bütünüyle -> FULLY,TOTALLY"
+],
+[
+"similar_clue",
+"tamamen, bütünüyle ~ tamamen, bütünüyle (FULLY)"
+]
+],
+"b1-progress": [
+[
+"same_clue_diff_answer",
+"ilerleme gelişme -> PROGRESS,ADVANCE"
+],
+[
+"similar_clue",
+"ilerleme, gelişme ~ ilerleme, gelişme (ADVANCE)"
+]
+],
+"b2-advance": [
+[
+"same_clue_diff_answer",
+"ilerleme gelişme -> PROGRESS,ADVANCE"
+],
+[
+"similar_clue",
+"ilerleme, gelişme ~ ilerleme, gelişme (PROGRESS)"
+]
+],
+"b1-skilled": [
+[
+"same_clue_diff_answer",
+"işinde ustalaşmış becerikli -> SKILLED,SKILLFUL"
+],
+[
+"similar_clue",
+"işinde ustalaşmış, becerikli ~ işinde ustalaşmış, becerikli (SKILLFUL)"
+]
+],
+"b2-skillful": [
+[
+"same_clue_diff_answer",
+"işinde ustalaşmış becerikli -> SKILLED,SKILLFUL"
+],
+[
+"similar_clue",
+"işinde ustalaşmış, becerikli ~ işinde ustalaşmış, becerikli (SKILLED)"
+]
+],
+"b1-unclear": [
+[
+"same_clue_diff_answer",
+"net olmayan belirsiz -> UNCLEAR,VAGUE"
+],
+[
+"similar_clue",
+"net olmayan, belirsiz ~ net olmayan, belirsiz (VAGUE)"
+]
+],
+"b2-vague": [
+[
+"same_clue_diff_answer",
+"net olmayan belirsiz -> UNCLEAR,VAGUE"
+],
+[
+"similar_clue",
+"net olmayan, belirsiz ~ net olmayan, belirsiz (UNCLEAR)"
+]
+],
+"b2-alter": [
+[
+"same_clue_diff_answer",
+"bir şeyi biraz değiştirmek -> ALTER,MODIFY"
+],
+[
+"similar_clue",
+"bir şeyi biraz değiştirmek ~ bir şeyi biraz değiştirmek (MODIFY)"
+]
+],
+"b2-modify": [
+[
+"same_clue_diff_answer",
+"bir şeyi biraz değiştirmek -> ALTER,MODIFY"
+],
+[
+"similar_clue",
+"bir şeyi biraz değiştirmek ~ bir şeyi biraz değiştirmek (ALTER)"
+]
+],
+"b2-nevertheless": [
+[
+"same_clue_diff_answer",
+"buna rağmen -> NEVERTHELESS,NONETHELESS"
+],
+[
+"similar_clue",
+"buna rağmen ~ buna rağmen (NONETHELESS)"
+]
+],
+"c1-nonetheless": [
+[
+"same_clue_diff_answer",
+"buna rağmen -> NEVERTHELESS,NONETHELESS"
+],
+[
+"similar_clue",
+"buna rağmen ~ buna rağmen (NEVERTHELESS)"
+]
+],
+"b2-perspective": [
+[
+"same_clue_diff_answer",
+"bir konuya bakış açısı -> PERSPECTIVE,VIEWPOINT"
+],
+[
+"similar_clue",
+"bir konuya bakış açısı ~ bir konuya bakış açısı (VIEWPOINT)"
+]
+],
+"b2-viewpoint": [
+[
+"same_clue_diff_answer",
+"bir konuya bakış açısı -> PERSPECTIVE,VIEWPOINT"
+],
+[
+"similar_clue",
+"bir konuya bakış açısı ~ bir konuya bakış açısı (PERSPECTIVE)"
+]
+],
+"b1-assume": [
+[
+"similar_clue",
+"kanıtı olmadan doğru kabul etmek ~ kanıt olmadan doğru diye kabul etmek (PRESUME)"
+]
+],
+"c1-presume": [
+[
+"similar_clue",
+"kanıt olmadan doğru diye kabul etmek ~ kanıtı olmadan doğru kabul etmek (ASSUME)"
+]
+],
+"a2-niece": [
+[
+"similar_clue",
+"kardeşin ya da eşin kardeşinin kız çocuğu ~ kardeşin ya da eşin kardeşinin erkek çocuğu (NEPHEW)"
+]
+],
+"a2-nephew": [
+[
+"similar_clue",
+"kardeşin ya da eşin kardeşinin erkek çocuğu ~ kardeşin ya da eşin kardeşinin kız çocuğu (NIECE)"
+]
+],
+"a1-football": [
+[
+"similar_clue",
+"ayakla oynanan takım sporu ~ sopayla oynanan takım sporu (HOCKEY)"
+]
+],
+"a2-hockey": [
+[
+"similar_clue",
+"sopayla oynanan takım sporu ~ ayakla oynanan takım sporu (FOOTBALL)"
+]
+],
+"a1-give": [
+[
+"similar_clue",
+"bir şeyi başkasına vermek ~ bir şeyi başkasına göstermek (SHOW)"
+]
+],
+"a1-show": [
+[
+"similar_clue",
+"bir şeyi başkasına göstermek ~ bir şeyi başkasına vermek (GIVE)"
+]
+],
+"a2-enough": [
+[
+"similar_clue",
+"ihtiyacı karşılayacak kadar ~ ihtiyacı karşılamayacak kadar az (INSUFFICIENT)"
+]
+],
+"c1-insufficient": [
+[
+"similar_clue",
+"ihtiyacı karşılamayacak kadar az ~ ihtiyacı karşılayacak kadar (ENOUGH)"
+]
+],
+"a1-china": [
+[
+"similar_clue",
+"başkenti Pekin olan ülke ~ başkenti Berlin olan ülke (GERMANY)"
+]
+],
+"a1-germany": [
+[
+"similar_clue",
+"başkenti Berlin olan ülke ~ başkenti Pekin olan ülke (CHINA)"
+]
+],
+"a1-france": [
+[
+"similar_clue",
+"başkenti Paris olan ülke ~ başkenti Madrid olan ülke (SPAIN)"
+]
+],
+"a1-spain": [
+[
+"similar_clue",
+"başkenti Madrid olan ülke ~ başkenti Paris olan ülke (FRANCE)"
+]
+],
+"a1-turkey": [
+[
+"similar_clue",
+"başkenti Ankara olan ülke ~ başkenti Londra olan ülke (ENGLAND)"
+]
+],
+"a1-england": [
+[
+"similar_clue",
+"başkenti Londra olan ülke ~ başkenti Ankara olan ülke (TURKEY)"
+]
+],
+"a1-top": [
+[
+"similar_clue",
+"bir şeyin en üst kısmı ~ bir şeyin en alt kısmı (BOTTOM)"
+]
+],
+"a2-bottom": [
+[
+"similar_clue",
+"bir şeyin en alt kısmı ~ bir şeyin en üst kısmı (TOP)"
+]
+],
+"a1-agree": [
+[
+"similar_clue",
+"aynı fikirde olmak ~ aynı fikirde olmamak (DISAGREE)"
+]
+],
+"b1-disagree": [
+[
+"similar_clue",
+"aynı fikirde olmamak ~ aynı fikirde olmak (AGREE)"
+]
+],
+"a1-french": [
+[
+"similar_clue",
+"Fransa'da konuşulan dil ~ Rusya'da konuşulan dil (RUSSIAN)"
+]
+],
+"a1-russian": [
+[
+"similar_clue",
+"Rusya'da konuşulan dil ~ Fransa'da konuşulan dil (FRENCH)"
+]
+],
+"a1-italian": [
+[
+"similar_clue",
+"İtalya'da konuşulan dil ~ İspanya'da konuşulan dil (SPANISH)"
+]
+],
+"a1-spanish": [
+[
+"similar_clue",
+"İspanya'da konuşulan dil ~ İtalya'da konuşulan dil (ITALIAN)"
+]
+],
+"b1-duty": [
+[
+"similar_clue",
+"yapılması gereken görev ~ yapılması gereken iş, görev (TASK)"
+]
+],
+"b1-task": [
+[
+"similar_clue",
+"yapılması gereken iş, görev ~ yapılması gereken görev (DUTY)"
+]
+],
+"a2-firefighter": [
+[
+"similar_clue",
+"yangınları söndüren görevli, itfaiyeci ~ yangın söndüren görevli, itfaiyeci (FIREMAN)"
+]
+],
+"a2-fireman": [
+[
+"similar_clue",
+"yangın söndüren görevli, itfaiyeci ~ yangınları söndüren görevli, itfaiyeci (FIREFIGHTER)"
+]
+],
+"a2-online": [
+[
+"similar_clue",
+"internete bağlı olarak ~ internete bağlı olmayan (OFFLINE)"
+]
+],
+"b1-offline": [
+[
+"similar_clue",
+"internete bağlı olmayan ~ internete bağlı olarak (ONLINE)"
+]
+],
+"b1-source": [
+[
+"similar_clue",
+"bir şeyin çıktığı yer, kaynak ~ bir şeyin çıktığı kaynak (ORIGIN)"
+]
+],
+"b2-origin": [
+[
+"similar_clue",
+"bir şeyin çıktığı kaynak ~ bir şeyin çıktığı yer, kaynak (SOURCE)"
+]
+],
+"b1-criminal": [
+[
+"similar_clue",
+"suç işleyen kişi ~ suçu işleyen kişi (PERPETRATOR)"
+]
+],
+"c1-perpetrator": [
+[
+"similar_clue",
+"suçu işleyen kişi ~ suç işleyen kişi (CRIMINAL)"
+]
+],
+"b1-wherever": [
+[
+"similar_clue",
+"nerede olursa olsun ~ ne olursa olsun (NO MATTER)"
+]
+],
+"b2-no-matter": [
+[
+"similar_clue",
+"ne olursa olsun ~ nerede olursa olsun (WHEREVER)"
+]
+],
+"b1-expand": [
+[
+"similar_clue",
+"genişlemek veya genişletmek ~ genişletmek veya genişlemek (WIDEN)"
+]
+],
+"b2-widen": [
+[
+"similar_clue",
+"genişletmek veya genişlemek ~ genişlemek veya genişletmek (EXPAND)"
+]
+],
+"b2-evaluate": [
+[
+"similar_clue",
+"bir şeyin değerini ölçerek değerlendirmek ~ bir şeyin derecesini ölçerek değerlendirmek (GAUGE)"
+]
+],
+"c1-gauge": [
+[
+"similar_clue",
+"bir şeyin derecesini ölçerek değerlendirmek ~ bir şeyin değerini ölçerek değerlendirmek (EVALUATE)"
+]
+],
+"b2-endure": [
+[
+"similar_clue",
+"acıya veya zorluğa dayanmak ~ baskıya veya zorluğa dayanmak (WITHSTAND)"
+]
+],
+"c1-withstand": [
+[
+"similar_clue",
+"baskıya veya zorluğa dayanmak ~ acıya veya zorluğa dayanmak (ENDURE)"
+]
+],
+"b2-devote": [
+[
+"similar_clue",
+"zaman ve emeğini bir işe adamak ~ zamanını veya emeğini bir işe adamak (DEDICATE)"
+]
+],
+"c1-dedicate": [
+[
+"similar_clue",
+"zamanını veya emeğini bir işe adamak ~ zaman ve emeğini bir işe adamak (DEVOTE)"
+]
+]
+}
