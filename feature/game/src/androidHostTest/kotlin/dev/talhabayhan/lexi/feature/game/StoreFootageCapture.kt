@@ -12,8 +12,8 @@ import androidx.compose.ui.test.onRoot
 import androidx.compose.ui.test.runComposeUiTest
 import com.github.takahirom.roborazzi.captureRoboImage
 import dev.talhabayhan.lexi.core.designsystem.component.AnswerSlotState
-import dev.talhabayhan.lexi.core.designsystem.component.LexiSplash
 import dev.talhabayhan.lexi.core.designsystem.component.LetterKeyState
+import dev.talhabayhan.lexi.core.designsystem.component.LexiSplash
 import dev.talhabayhan.lexi.core.designsystem.component.WheelLetterState
 import dev.talhabayhan.lexi.core.designsystem.component.WheelLetterUi
 import dev.talhabayhan.lexi.core.designsystem.feedback.LocalHaptics

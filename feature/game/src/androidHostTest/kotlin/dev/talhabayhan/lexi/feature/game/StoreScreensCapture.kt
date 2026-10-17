@@ -3,8 +3,8 @@ package dev.talhabayhan.lexi.feature.game
 import com.github.takahirom.roborazzi.captureRoboImage
 import dev.talhabayhan.lexi.core.designsystem.component.ReviewOutcome
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
-import dev.talhabayhan.lexi.feature.game.result.ResultScreen
 import dev.talhabayhan.lexi.feature.game.result.ResultSamples
+import dev.talhabayhan.lexi.feature.game.result.ResultScreen
 import dev.talhabayhan.lexi.feature.game.result.ReviewRowUi
 import kotlinx.collections.immutable.persistentListOf
 import org.junit.Assume.assumeTrue
