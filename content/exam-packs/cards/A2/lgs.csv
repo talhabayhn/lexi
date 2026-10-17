@@ -91,3 +91,68 @@ a2-operator,OPERATOR,O,STARTS,noun,telefon santralinde aramaları bağlayan gör
 a2-extension,EXTENSION,X,CONTAINS,noun,büyük bir binadaki dahili telefon numarası,Please call extension 204.,Lütfen 204 numaralı dahiliyi arayın.,4,exam:lgs,daily-life
 a2-texting,TEXTING,X,CONTAINS,noun,telefonla kısa yazılı mesajlaşma,Texting in class is not allowed.,Derste mesajlaşmak yasaktır.,3,exam:lgs,daily-life
 a2-smartphone,SMARTPHONE,S,STARTS,noun,internete bağlanabilen dokunmatik cep telefonu,My sister got a smartphone for her birthday.,Kız kardeşime doğum gününde akıllı telefon alındı.,2,exam:lgs,daily-life
+a2-username,USERNAME,U,STARTS,noun,bir sitede seni tanıtan hesap adı,Write a username for the new game.,Yeni oyun için bir kullanıcı adı yaz.,2,exam:lgs,daily-life
+a2-log-in,LOG IN,L,STARTS,phrasal,şifreyle bir hesaba ya da siteye girmek,You need to log in to see your marks.,Notlarını görmek için giriş yapman gerekiyor.,2,exam:lgs,daily-life
+a2-log-out,LOG OUT,L,STARTS,phrasal,bir hesaptan güvenli şekilde çıkmak,Always log out on a school computer.,Okul bilgisayarında her zaman oturumu kapat.,2,exam:lgs,daily-life
+a2-browser,BROWSER,B,STARTS,noun,internet sayfalarını açmaya yarayan program,Open the browser and go to the school website.,Tarayıcıyı aç ve okulun sitesine gir.,3,exam:lgs,daily-life
+a2-click,CLICK,C,STARTS,verb,fareyle ya da parmakla bir şeye basmak,Click the blue icon to start the video.,Videoyu başlatmak için mavi simgeye tıkla.,1,exam:lgs,daily-life
+a2-scroll,SCROLL,S,STARTS,verb,ekrandaki sayfayı aşağı ya da yukarı kaydırmak,Scroll down to read the comments.,Yorumları okumak için aşağı kaydır.,2,exam:lgs,daily-life
+a2-wifi,WIFI,W,STARTS,noun,kablosuz internet bağlantısı,Is there free wifi in this café?,Bu kafede ücretsiz kablosuz internet var mı?,1,exam:lgs,daily-life
+a2-hardware,HARDWARE,H,STARTS,noun,bilgisayarın elle tutulur fiziksel parçaları,A keyboard is computer hardware.,Klavye bir bilgisayar donanımıdır.,4,exam:lgs,daily-life
+a2-hacker,HACKER,H,STARTS,noun,başkalarının bilgisayarına izinsiz giren kişi,A hacker stole the passwords of the users.,Bir bilgisayar korsanı kullanıcıların şifrelerini çaldı.,3,exam:lgs,daily-life
+a2-cyberbullying,CYBERBULLYING,C,STARTS,noun,internette birine sürekli zarar verip korkutma,Our teacher talked to us about cyberbullying.,Öğretmenimiz bizimle siber zorbalık hakkında konuştu.,4,exam:lgs,daily-life
+a2-blog,BLOG,B,STARTS,noun,kişinin düzenli yazılar paylaştığı internet sayfası,Elif writes a blog about her favourite books.,Elif en sevdiği kitaplar hakkında bir blog yazıyor.,2,exam:lgs,daily-life
+a2-blogger,BLOGGER,B,STARTS,noun,düzenli olarak internette yazı yazan kişi,My cousin is a food blogger.,Kuzenim yemek blogu yazarı.,3,exam:lgs,daily-life
+a2-follower,FOLLOWER,F,STARTS,noun,sosyal medyada birinin paylaşımlarını takip eden kişi,This singer has a new follower: me!,Bu şarkıcının yeni bir takipçisi var: ben!,3,exam:lgs,daily-life
+a2-subscribe,SUBSCRIBE,S,STARTS,verb,bir kanala ya da dergiye düzenli üye olmak,Subscribe to our channel for new videos.,Yeni videolar için kanalımıza abone ol.,3,exam:lgs,daily-life
+a2-profile,PROFILE,P,STARTS,noun,bir hesaptaki kişisel bilgi ve fotoğraf sayfası,Zeynep changed her profile picture.,Zeynep profil fotoğrafını değiştirdi.,3,exam:lgs,daily-life
+a2-addiction,ADDICTION,A,STARTS,noun,bir şeyi bırakamayacak kadar ona bağlanma,Game addiction is a big problem for some teens.,Oyun bağımlılığı bazı gençler için büyük bir sorundur.,4,exam:lgs,daily-life
+a2-attachment,ATTACHMENT,A,STARTS,noun,bir e-postaya iliştirilen dosya,I sent the photos as an attachment.,Fotoğrafları ek olarak gönderdim.,4,exam:lgs,daily-life
+a2-inbox,INBOX,I,STARTS,noun,gelen e-postaların toplandığı klasör,I have twenty new emails in my inbox.,Gelen kutumda yirmi yeni e-posta var.,3,exam:lgs,daily-life
+a2-spam,SPAM,S,STARTS,noun,istenmeden toplu gönderilen reklam e-postaları,Most of my emails are spam.,E-postalarımın çoğu istenmeyen posta.,3,exam:lgs,daily-life
+a2-delete,DELETE,D,STARTS,verb,bir dosyayı ya da yazıyı silip yok etmek,"Mert, please delete that photo of me!","Mert, lütfen o fotoğrafımı sil!",2,exam:lgs,daily-life
+a2-folder,FOLDER,F,STARTS,noun,bilgisayarda dosyaların saklandığı bölme,Put all your homework in one folder.,Bütün ödevlerini bir klasöre koy.,2,exam:lgs,daily-life
+a2-digital,DIGITAL,D,STARTS,adj,"bilgisayar teknolojisine dayanan, sayısal",We read digital books on the tablet.,Tablette dijital kitaplar okuyoruz.,3,exam:lgs,daily-life
+a2-stream,STREAM,S,STARTS,verb,bir videoyu indirmeden internetten canlı izlemek,You can stream the match on your phone.,Maçı telefonundan canlı izleyebilirsin.,4,exam:lgs,daily-life
+a2-podcast,PODCAST,P,STARTS,noun,internetten dinlenen bölüm bölüm sesli program,I listen to a science podcast on the bus.,Otobüste bir bilim podcast'i dinliyorum.,3,exam:lgs,daily-life
+a2-avatar,AVATAR,A,STARTS,noun,oyunlarda ya da sitelerde seni temsil eden figür,My avatar in the game has blue hair.,Oyundaki karakterimin mavi saçları var.,3,exam:lgs,daily-life
+a2-nickname,NICKNAME,N,STARTS,noun,"birine asıl adı yerine takılan ad, lakap",Ali's nickname at school is Ace.,Ali'nin okuldaki lakabı As.,2,exam:lgs,family-people
+a2-screenshot,SCREENSHOT,S,STARTS,noun,ekranın o anki görüntüsünün kaydı,Take a screenshot of the error.,Hatanın ekran görüntüsünü al.,3,exam:lgs,daily-life
+a2-hashtag,HASHTAG,H,STARTS,noun,başında # işareti olan etiket kelime,Use this hashtag for photos of the trip.,Gezi fotoğrafları için bu etiketi kullan.,3,exam:lgs,daily-life
+a2-viral,VIRAL,V,STARTS,adj,internette çok hızlı yayılan,Her cat video went viral last week.,Kedi videosu geçen hafta çok hızlı yayıldı.,4,exam:lgs,daily-life
+a2-ebook,EBOOK,E,STARTS,noun,ekranda okunan elektronik kitap,I read an ebook on my tablet every night.,Her gece tabletimde bir e-kitap okurum.,2,exam:lgs,daily-life
+a2-encyclopedia,ENCYCLOPEDIA,E,STARTS,noun,pek çok konuda bilgi veren kapsamlı başvuru kitabı,We found the answer in an old encyclopedia.,Cevabı eski bir ansiklopedide bulduk.,4,exam:lgs,school-work
+a2-fake,FAKE,F,STARTS,adj,"gerçek olmayan, sahte",That photo of a pink lion is fake.,O pembe aslan fotoğrafı sahte.,3,exam:lgs,daily-life
+a2-data,DATA,D,STARTS,noun,"bilgisayarda saklanan bilgiler, veri",The app collects data about your sleep.,Uygulama uykunla ilgili veri topluyor.,3,exam:lgs,daily-life
+a2-backup,BACKUP,B,STARTS,noun,kaybolmasın diye dosyaların alınan yedeği,Make a backup of your photos.,Fotoğraflarının yedeğini al.,4,exam:lgs,daily-life
+a2-reset,RESET,R,STARTS,verb,bir cihazı ya da şifreyi baştan yeniden ayarlamak,I had to reset my phone because it was slow.,"Telefonum yavaştı, bu yüzden sıfırlamak zorunda kaldım.",4,exam:lgs,daily-life
+a2-webcam,WEBCAM,W,STARTS,noun,bilgisayara bağlı küçük kamera,Turn on your webcam for the lesson.,Ders için kameranı aç.,3,exam:lgs,daily-life
+a2-microphone,MICROPHONE,M,STARTS,noun,sesi kaydeden ya da yükselten alet,"The microphone is not working, so we cannot hear you.","Mikrofon çalışmıyor, bu yüzden seni duyamıyoruz.",2,exam:lgs,daily-life
+a2-browse,BROWSE,B,STARTS,verb,internette sayfaları rastgele gezmek,I like to browse music websites at the weekend.,Hafta sonu müzik sitelerinde gezinmeyi severim.,4,exam:lgs,daily-life
+a2-headset,HEADSET,H,STARTS,noun,mikrofonlu kulaklık,Gamers wear a headset to talk to their team.,Oyuncular takımlarıyla konuşmak için mikrofonlu kulaklık takar.,3,exam:lgs,daily-life
+a2-bungee-jumping,BUNGEE JUMPING,B,STARTS,phrase,ayağa bağlı lastik iple yüksekten atlama sporu,Bungee jumping from a bridge is not for me.,Köprüden lastik iple atlamak bana göre değil.,3,exam:lgs,sports
+a2-paragliding,PARAGLIDING,P,STARTS,noun,kanat biçimli paraşütle dağdan süzülme sporu,We watched people paragliding over Ölüdeniz.,Ölüdeniz üzerinde yamaç paraşütü yapan insanları izledik.,3,exam:lgs,sports
+a2-skydiving,SKYDIVING,S,STARTS,noun,uçaktan atlayıp paraşütle inme sporu,My uncle tried skydiving on his fortieth birthday.,Amcam kırkıncı doğum gününde paraşütle atlamayı denedi.,3,exam:lgs,sports
+a2-rafting,RAFTING,R,STARTS,noun,şişme botla hızlı akan nehirde ilerleme sporu,We went rafting on the Köprüçay River.,Köprüçay'da rafting yaptık.,3,exam:lgs,sports
+a2-scuba-diving,SCUBA DIVING,S,STARTS,phrase,oksijen tüpüyle suyun derinliklerine dalma,Scuba diving lets you see fish up close.,Tüplü dalış balıkları yakından görmeni sağlar.,3,exam:lgs,sports
+a2-surfing,SURFING,S,STARTS,noun,dalgaların üstünde tahtayla kayma sporu,Surfing is a favourite sport in Alaçatı.,Alaçatı'da sörf sevilen bir spordur.,2,exam:lgs,sports
+a2-skiing,SKIING,S,STARTS,noun,karlı dağdan kayaklarla kayma sporu,We go skiing on Uludağ every winter.,Her kış Uludağ'da kayak yaparız.,2,exam:lgs,sports
+a2-caving,CAVING,C,STARTS,noun,mağaraları keşfetme etkinliği,Caving is my uncle's hobby.,Mağaracılık amcamın hobisi.,4,exam:lgs,sports
+a2-kayaking,KAYAKING,K,STARTS,noun,tek kişilik dar teknede kürek çekme sporu,Kayaking on the lake was fun.,Gölde kano yapmak eğlenceliydi.,3,exam:lgs,sports
+a2-sailing,SAILING,S,STARTS,noun,rüzgârla ilerleyen teknede yol alma sporu,Sailing in the Aegean is a great summer hobby.,Ege'de yelken açmak harika bir yaz hobisidir.,3,exam:lgs,sports
+a2-risky,RISKY,R,STARTS,adj,tehlike ya da kayıp ihtimali taşıyan,It is risky to swim in a rough sea.,Dalgalı denizde yüzmek risklidir.,3,exam:lgs,sports
+a2-thrilling,THRILLING,T,STARTS,adj,"insanı heyecandan titreten, çok heyecanlı",The roller coaster ride was thrilling.,Hız treni yolculuğu çok heyecanlıydı.,3,exam:lgs,sports
+a2-frightening,FRIGHTENING,F,STARTS,adj,"korku veren, ürkütücü","The film was frightening, so I closed my eyes.","Film ürkütücüydü, bu yüzden gözlerimi kapattım.",3,exam:lgs,daily-life
+a2-terrifying,TERRIFYING,T,STARTS,adj,"insanı dehşete düşüren, çok korkutucu",That big dog is terrifying.,O büyük köpek çok korkutucu.,3,exam:lgs,daily-life
+a2-scared,SCARED,S,STARTS,adj,"korkmuş, ürkmüş",My little brother is scared of the dark.,Küçük erkek kardeşim karanlıktan korkar.,1,exam:lgs,daily-life
+a2-parachute,PARACHUTE,P,STARTS,noun,havadan yavaşça inmeye yarayan büyük şemsiye biçimli kumaş,The parachute opened at two thousand metres.,Paraşüt iki bin metrede açıldı.,3,exam:lgs,sports
+a2-instructor,INSTRUCTOR,I,STARTS,noun,bir sporu ya da beceriyi öğreten eğitmen,Our diving instructor checked our tanks.,Dalış eğitmenimiz tüplerimizi kontrol etti.,3,exam:lgs,sports
+a2-challenging,CHALLENGING,C,STARTS,adj,zor ama insanı geliştiren,The last part of the trek was challenging.,Yürüyüşün son bölümü zorlayıcıydı.,4,exam:lgs,sports
+a2-adrenaline,ADRENALINE,A,STARTS,noun,heyecan ve korku anında salgılanan hormon,Extreme sports give you a rush of adrenaline.,Ekstrem sporlar insana adrenalin patlaması yaşatır.,4,exam:lgs,sports
+a2-goggles,GOGGLES,G,STARTS,noun,suda ya da karda gözü koruyan özel gözlük,Wear goggles in the swimming pool.,Yüzme havuzunda deniz gözlüğü tak.,3,exam:lgs,sports
+a2-cliff,CLIFF,C,STARTS,noun,denize ya da vadiye bakan dik kaya yüzü,The house stands on top of a cliff.,Ev bir uçurumun tepesinde duruyor.,3,exam:lgs,travel
+a2-canyon,CANYON,C,STARTS,noun,iki yanı dik yamaçlı derin vadi,We visited Saklıkent Canyon in July.,Temmuzda Saklıkent Kanyonu'nu ziyaret ettik.,3,exam:lgs,travel
+a2-peak,PEAK,P,STARTS,noun,"bir dağın en yüksek noktası, zirve",The climbers reached the peak at noon.,Dağcılar öğlen zirveye ulaştı.,3,exam:lgs,travel
+a2-gear,GEAR,G,STARTS,noun,bir etkinlik için gereken alet ve giysiler,Mert forgot his football gear at home.,Mert futbol malzemelerini evde unuttu.,4,exam:lgs,sports
+a2-unforgettable,UNFORGETTABLE,U,STARTS,adj,hiç unutulmayacak kadar etkileyici,Our trip to Cappadocia was unforgettable.,Kapadokya gezimiz unutulmazdı.,3,exam:lgs,travel
+a2-trekking,TREKKING,T,STARTS,noun,dağlık bölgelerde uzun yürüyüş yapma,Trekking on the Lycian Way takes many days.,Likya Yolu'nda doğa yürüyüşü günlerce sürer.,4,exam:lgs,travel

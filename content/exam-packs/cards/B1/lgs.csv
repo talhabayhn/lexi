@@ -19,3 +19,12 @@ b1-video-call,VIDEO CALL,V,STARTS,phrase,karşındakini ekranda görerek yaptı�
 b1-wrong-number,WRONG NUMBER,W,STARTS,phrase,yanlışlıkla aranan başka birinin numarası,"Sorry, you have the wrong number.","Üzgünüm, yanlış numarayı aradınız.",3,exam:lgs,daily-life
 b1-fire-brigade,FIRE BRIGADE,F,STARTS,phrase,yangınları söndüren ekip,Call the fire brigade!,İtfaiyeyi ara!,3,exam:lgs,city-transport
 b1-put-through,PUT THROUGH,P,STARTS,phrasal,telefondaki kişiyi başka bir hatta bağlamak,The receptionist will put through your call.,Resepsiyonist aramanızı bağlayacak.,4,exam:lgs,daily-life
+b1-password,PASSWORD,P,STARTS,noun,bir hesaba girmek için kullanılan gizli kelime,Never tell your password to your classmates.,Şifreni asla sınıf arkadaşlarına söyleme.,2,exam:lgs,daily-life
+b1-sign-up,SIGN UP,S,STARTS,phrasal,bir siteye ya da kursa kaydolmak,You must sign up to join the online club.,Çevrim içi kulübe katılmak için kaydolmalısın.,3,exam:lgs,daily-life
+b1-search-engine,SEARCH ENGINE,S,STARTS,phrase,internette bilgi arattığın site,Type the question into a search engine.,Soruyu bir arama motoruna yaz.,3,exam:lgs,technology
+b1-online-shopping,ONLINE SHOPPING,O,STARTS,phrase,internetten mal satın alma,"Online shopping is easy, but be careful.",İnternetten alışveriş kolay ama dikkatli ol.,3,exam:lgs,daily-life
+b1-zip-line,ZIP LINE,Z,STARTS,phrase,yüksek bir telden makarayla kayarak geçme,The zip line goes over the river.,Zipline nehrin üstünden geçiyor.,3,exam:lgs,sports
+b1-rock-climbing,ROCK CLIMBING,R,STARTS,phrase,ip ve kaskla kayalık duvarlara tırmanma,Rock climbing needs strong arms.,Kaya tırmanışı güçlü kollar ister.,3,exam:lgs,sports
+b1-horse-riding,HORSE RIDING,H,STARTS,phrase,ata binme etkinliği,We went horse riding in Cappadocia.,Kapadokya'da ata bindik.,2,exam:lgs,sports
+b1-life-jacket,LIFE JACKET,L,STARTS,phrase,suda batmamak için giyilen şişirilmiş yelek,Put on a life jacket before rafting.,Rafting öncesi can yeleği giy.,3,exam:lgs,sports
+b1-sleeping-bag,SLEEPING BAG,S,STARTS,phrase,kampta içine girilerek uyunan sıcak tulum,"It was cold, so I slept in a thick sleeping bag.","Hava soğuktu, bu yüzden kalın bir uyku tulumunda uyudum.",3,exam:lgs,travel
