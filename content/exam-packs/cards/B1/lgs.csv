@@ -45,7 +45,7 @@ b1-evaporate,EVAPORATE,E,STARTS,verb,ısınan suyun buhara dönüşüp havaya ka
 b1-orbit,ORBIT,O,STARTS,noun,bir gök cisminin başka birinin çevresinde izlediği yol,The Moon moves in an orbit around the Earth.,"Ay, Dünya'nın çevresinde bir yörüngede döner.",4,exam:lgs,school-work
 b1-satellite,SATELLITE,S,STARTS,noun,bir gezegenin çevresinde dönen yapay ya da doğal cisim,Türksat is a Turkish satellite.,Türksat bir Türk uydusudur.,3,exam:lgs,school-work
 b1-patent,PATENT,P,STARTS,noun,bir buluşun sahibine verilen resmî hak belgesi,The inventor got a patent for her new machine.,Mucit yeni makinesi için patent aldı.,4,exam:lgs,school-work
-b1-vaccine,VACCINE,V,STARTS,noun,hastalıklara karşı bağışıklık kazandıran aşı,Doctors gave the children a vaccine against measles.,Doktorlar çocuklara kızamığa karşı aşı yaptı.,3,exam:lgs,body-health
+b1-vaccine,VACCINE,V,STARTS,noun,hastalıklara karşı bağışıklık kazandıran aşı,Doctors gave the children a vaccine against measles.,Doktorlar çocuklara kızamığa karşı aşı yaptı.,3,exam:lgs|exam:yds,body-health
 b1-lens,LENS,L,STARTS,noun,ışığı kırarak görüntüyü büyüten cam parça,The camera has a very good lens.,Kameranın çok iyi bir merceği var.,3,exam:lgs,school-work
 b1-circuit,CIRCUIT,C,STARTS,noun,"elektriğin içinden geçtiği kapalı yol, devre",We made a simple circuit with a battery.,Bir pille basit bir devre yaptık.,4,exam:lgs,school-work
 b1-fossil,FOSSIL,F,STARTS,noun,taşlaşmış çok eski canlı kalıntısı,They found a dinosaur fossil in the desert.,Çölde bir dinozor fosili buldular.,3,exam:lgs,school-work

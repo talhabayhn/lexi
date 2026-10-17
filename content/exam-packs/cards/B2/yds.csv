@@ -52,3 +52,70 @@ b2-transition,TRANSITION,T,STARTS,noun,bir durumdan ötekine geçiş,The transit
 b2-minimal,MINIMAL,M,STARTS,adj,"olabilecek en az, asgari",The storm caused minimal damage.,Fırtına çok az hasara yol açtı.,3,exam:yds,school-work
 b2-integral,INTEGRAL,I,STARTS,adj,bir bütünün ayrılmaz parçası olan,Music is an integral part of the course.,Müzik dersin ayrılmaz bir parçasıdır.,4,exam:yds,school-work
 b2-inference,INFERENCE,I,STARTS,noun,"eldeki bilgiden çıkarılan sonuç, çıkarım",What inference can we draw from these figures?,Bu rakamlardan ne sonuç çıkarabiliriz?,4,exam:yds,school-work
+b2-acid,ACID,A,STARTS,noun,"limon suyu gibi ekşi, aşındırıcı kimyasal madde",Some acid can burn through metal.,Bazı asitler metali aşındırabilir.,2,exam:yds,school-work
+b2-adaptation,ADAPTATION,A,STARTS,noun,bir canlının çevresine uyum sağlama süreci,Thick fur is an adaptation to cold climates.,Kalın kürk soğuk iklimlere bir uyumdur.,3,exam:yds,school-work
+b2-accumulation,ACCUMULATION,A,STARTS,noun,"zamanla birikme, yığılma",The accumulation of dust can damage machines.,Toz birikmesi makinelere zarar verebilir.,4,exam:yds,school-work
+b2-composition,COMPOSITION,C,STARTS,noun,bir şeyi oluşturan parçalar ve bunların oranı,Scientists studied the composition of the soil.,Bilim insanları toprağın bileşimini inceledi.,3,exam:yds,school-work
+b2-density,DENSITY,D,STARTS,noun,"birim hacimdeki kütle, yoğunluk",Water has a higher density than oil.,Suyun yoğunluğu yağınkinden fazladır.,3,exam:yds,school-work
+b2-dense,DENSE,D,STARTS,adj,"sık, yoğun; içinden geçilmesi zor",The plane could not land in the dense fog.,Uçak yoğun siste inemedi.,3,exam:yds,school-work
+b2-enzyme,ENZYME,Z,CONTAINS,noun,vücuttaki kimyasal tepkimeleri hızlandıran protein,This enzyme helps the body digest sugar.,Bu enzim vücudun şekeri sindirmesine yardım eder.,4,exam:yds,school-work
+b2-gene,GENE,G,STARTS,noun,kalıtsal özellikleri taşıyan DNA birimi,Eye colour is controlled by more than one gene.,Göz rengini birden fazla gen belirler.,3,exam:yds,school-work
+b2-genetic,GENETIC,G,STARTS,adj,genlerle ve kalıtımla ilgili,The illness has a genetic cause.,Hastalığın genetik bir nedeni var.,3,exam:yds,school-work
+b2-geology,GEOLOGY,Y,CONTAINS,noun,yerkürenin yapısını inceleyen bilim,She studied geology at university.,Üniversitede jeoloji okudu.,3,exam:yds,school-work
+b2-hormone,HORMONE,H,STARTS,noun,vücut işlevlerini düzenleyen kimyasal ileti maddesi,Insulin is a hormone made in the pancreas.,İnsülin pankreasta üretilen bir hormondur.,3,exam:yds,school-work
+b2-molecule,MOLECULE,M,STARTS,noun,atomların birleşmesiyle oluşan en küçük madde birimi,A water molecule has two hydrogen atoms.,Bir su molekülünde iki hidrojen atomu vardır.,3,exam:yds,school-work
+b2-mutation,MUTATION,M,STARTS,noun,genlerde kendiliğinden ya da dış etkiyle oluşan değişim,A single mutation can change how a virus spreads.,Tek bir mutasyon bir virüsün yayılma biçimini değiştirebilir.,4,exam:yds,school-work
+b2-neuron,NEURON,N,STARTS,noun,beyindeki ve sinirlerdeki uyarıyı ileten hücre,Each neuron sends signals to thousands of others.,Her sinir hücresi binlercesine sinyal gönderir.,4,exam:yds,school-work
+b2-organism,ORGANISM,O,STARTS,noun,"bitki, hayvan ya da mikrop gibi tek bir canlı",Bacteria are tiny living organisms; each organism has one cell.,Her bakteri tek hücreli bir canlıdır.,3,exam:yds,school-work
+b2-particle,PARTICLE,P,STARTS,noun,"maddenin çok küçük parçacığı, zerre",A dust particle is smaller than a hair.,Bir toz zerresi bir saç telinden daha küçüktür.,3,exam:yds,school-work
+b2-receptor,RECEPTOR,R,STARTS,noun,vücutta uyarıyı ya da maddeyi algılayan yapı,Pain receptor cells are found all over the skin.,Ağrı alıcı hücreleri derinin her yerinde bulunur.,5,exam:yds,school-work
+b2-reproduce,REPRODUCE,R,STARTS,verb,"üremek, çoğalmak; aynısını yeniden yapmak",Rabbits reproduce very quickly.,Tavşanlar çok hızlı ürer.,3,exam:yds,school-work
+b2-residue,RESIDUE,R,STARTS,noun,"bir işlemden sonra geriye kalan madde, kalıntı",Wash fruit to remove pesticide residue.,Tarım ilacı kalıntısını gidermek için meyveyi yıka.,4,exam:yds,school-work
+b2-sediment,SEDIMENT,S,STARTS,noun,sıvının dibine çöken tortu,Rivers carry sediment to the sea.,Nehirler tortuyu denize taşır.,4,exam:yds,school-work
+b2-soluble,SOLUBLE,S,STARTS,adj,bir sıvıda çözünebilen,Sugar is soluble in water.,Şeker suda çözünür.,4,exam:yds,school-work
+b2-specimen,SPECIMEN,S,STARTS,noun,incelenmek üzere alınan örnek,The lab tested a blood specimen.,Laboratuvar bir kan örneğini test etti.,4,exam:yds,school-work
+b2-stimulus,STIMULUS,S,STARTS,noun,bir tepkiye yol açan uyaran,Light is a strong stimulus for the eye.,Işık göz için güçlü bir uyarandır.,4,exam:yds,school-work
+b2-substance,SUBSTANCE,S,STARTS,noun,belirli özellikleri olan madde,Lead is a dangerous substance.,Kurşun tehlikeli bir maddedir.,3,exam:yds,school-work
+b2-tissue,TISSUE,T,STARTS,noun,benzer hücrelerden oluşan vücut dokusu,Muscle tissue repairs itself after exercise.,Kas dokusu egzersizden sonra kendini onarır.,3,exam:yds,school-work
+b2-toxin,TOXIN,X,CONTAINS,noun,canlıların ürettiği zehirli madde,Some mushrooms contain a deadly toxin.,Bazı mantarlar ölümcül bir zehir içerir.,4,exam:yds,school-work
+b2-innate,INNATE,I,STARTS,adj,"doğuştan gelen, sonradan öğrenilmeyen",Babies have an innate fear of falling.,Bebeklerin doğuştan gelen bir düşme korkusu vardır.,4,exam:yds,school-work
+b2-hereditary,HEREDITARY,Y,CONTAINS,adj,"anne babadan çocuğa geçen, kalıtsal",Colour blindness is often hereditary.,Renk körlüğü çoğunlukla kalıtsaldır.,4,exam:yds,school-work
+b2-fossil-fuel,FOSSIL FUEL,F,STARTS,phrase,kömür ve petrol gibi milyonlarca yılda oluşan yakıt,Burning fossil fuel adds carbon to the air.,Fosil yakıt yakmak havaya karbon ekler.,3,exam:yds,school-work
+b2-predator,PREDATOR,P,STARTS,noun,başka hayvanları avlayıp yiyen hayvan,The lion is a top predator.,Aslan besin zincirinin tepesindeki avcıdır.,3,exam:yds,school-work
+b2-archaeology,ARCHAEOLOGY,Y,CONTAINS,noun,eski uygarlıkları kalıntılardan inceleyen bilim,Göbeklitepe changed the history of archaeology.,Göbeklitepe arkeoloji tarihini değiştirdi.,4,exam:yds,school-work
+b2-marine,MARINE,M,STARTS,adj,denizle ve denizdeki yaşamla ilgili,Plastic harms marine life.,Plastik deniz yaşamına zarar verir.,3,exam:yds,school-work
+b2-precipitation,PRECIPITATION,P,STARTS,noun,"yağmur, kar gibi yağış",Annual precipitation here is very low.,Burada yıllık yağış çok düşüktür.,5,exam:yds,school-work
+b2-diabetes,DIABETES,D,STARTS,noun,"kandaki şekerin yükseldiği kronik hastalık, şeker hastalığı","My grandfather has diabetes, so he avoids sugar.","Büyükbabam şeker hastası, bu yüzden şekerden uzak duruyor.",3,exam:yds,body-health
+b2-diagnosis,DIAGNOSIS,D,STARTS,noun,"hastalığın ne olduğunun belirlenmesi, teşhis",Early diagnosis saves lives.,Erken teşhis hayat kurtarır.,3,exam:yds,body-health
+b2-digestion,DIGESTION,D,STARTS,noun,besinlerin vücutta sindirilmesi,Fibre helps digestion.,Lif sindirime yardımcı olur.,3,exam:yds,body-health
+b2-disease,DISEASE,D,STARTS,noun,"vücudun bir bölümünün hasta olması, hastalık",Heart disease is common in older people.,Kalp hastalığı yaşlılarda yaygındır.,2,exam:yds,body-health
+b2-disorder,DISORDER,D,STARTS,noun,bir organın ya da zihnin işleyişindeki bozukluk,She suffers from a sleep disorder.,Uyku bozukluğu çekiyor.,3,exam:yds,body-health
+b2-dose,DOSE,D,STARTS,noun,bir seferde alınan ilaç miktarı,Do not take more than the stated dose.,Belirtilen dozdan fazlasını alma.,3,exam:yds,body-health
+b2-epidemic,EPIDEMIC,E,STARTS,noun,bir bölgede hızla yayılan salgın hastalık,A flu epidemic closed many schools.,Bir grip salgını pek çok okulu kapattı.,3,exam:yds,body-health
+b2-immunity,IMMUNITY,I,STARTS,noun,"vücudun hastalığa karşı direnci, bağışıklık",Vaccines give long-term immunity.,Aşılar uzun süreli bağışıklık sağlar.,4,exam:yds,body-health
+b2-infectious,INFECTIOUS,I,STARTS,adj,"bir kişiden diğerine geçen, bulaşıcı",Measles is highly infectious.,Kızamık son derece bulaşıcıdır.,3,exam:yds,body-health
+b2-infant,INFANT,I,STARTS,noun,çok küçük bebek,Infant deaths have fallen sharply.,Bebek ölümleri büyük ölçüde azaldı.,3,exam:yds,body-health
+b2-malnutrition,MALNUTRITION,M,STARTS,noun,yetersiz ya da dengesiz beslenme,Malnutrition affects millions of children.,Yetersiz beslenme milyonlarca çocuğu etkiliyor.,4,exam:yds,body-health
+b2-metabolism,METABOLISM,M,STARTS,noun,vücuttaki enerji üretimi ve kimyasal süreçler,Exercise speeds up your metabolism.,Egzersiz metabolizmanı hızlandırır.,4,exam:yds,body-health
+b2-obesity,OBESITY,Y,CONTAINS,noun,sağlığı tehdit edecek ölçüde kilolu olma,Childhood obesity is rising worldwide.,Çocukluk çağı obezitesi dünya çapında artıyor.,3,exam:yds,body-health
+b2-pandemic,PANDEMIC,P,STARTS,noun,dünyanın pek çok ülkesine yayılan salgın,The pandemic changed how we work.,Pandemi çalışma biçimimizi değiştirdi.,3,exam:yds,body-health
+b2-pathogen,PATHOGEN,P,STARTS,noun,hastalık yapan mikrop,Washing hands removes many a pathogen.,El yıkamak pek çok hastalık etkenini giderir.,5,exam:yds,body-health
+b2-prescription,PRESCRIPTION,P,STARTS,noun,"doktorun yazdığı ilaç kâğıdı, reçete",You need a prescription for this medicine.,Bu ilaç için reçete gerekiyor.,3,exam:yds,body-health
+b2-practitioner,PRACTITIONER,P,STARTS,noun,hekim gibi bir mesleği icra eden kişi,See a medical practitioner if the pain continues.,Ağrı sürerse bir hekime görün.,4,exam:yds,body-health
+b2-premature,PREMATURE,P,STARTS,adj,"olması gereken zamandan önce olan, erken",The baby was born premature.,Bebek erken doğdu.,4,exam:yds,body-health
+b2-prevalence,PREVALENCE,P,STARTS,noun,bir hastalığın ya da durumun yaygınlığı,The prevalence of asthma is higher in cities.,Astımın yaygınlığı şehirlerde daha fazladır.,5,exam:yds,body-health
+b2-respiratory,RESPIRATORY,Y,CONTAINS,adj,solunumla ilgili,Smoking causes respiratory problems.,Sigara solunum sorunlarına yol açar.,4,exam:yds,body-health
+b2-symptom,SYMPTOM,Y,CONTAINS,noun,bir hastalığı belli eden belirti,A high fever is a common symptom of flu.,Yüksek ateş gribin yaygın bir belirtisidir.,3,exam:yds,body-health
+b2-syndrome,SYNDROME,Y,CONTAINS,noun,"birlikte görülen belirtiler bütünü, sendrom",Burnout syndrome is common among nurses.,Tükenmişlik sendromu hemşireler arasında yaygındır.,4,exam:yds,body-health
+b2-therapy,THERAPY,Y,CONTAINS,noun,"bir hastalığı ya da sorunu iyileştirme yöntemi, tedavi",She is having therapy for her back pain.,Sırt ağrısı için fizik tedavi görüyor.,3,exam:yds,body-health
+b2-tumour,TUMOUR,T,STARTS,noun,hücrelerin kontrolsüz çoğalmasıyla oluşan kitle,The doctors removed the tumour.,Doktorlar tümörü aldı.,4,exam:yds,body-health
+b2-vaccination,VACCINATION,V,STARTS,noun,aşı yapma ya da aşılanma,Vaccination is free for children.,Çocuklar için aşılama ücretsizdir.,3,exam:yds,body-health
+b2-depression,DEPRESSION,D,STARTS,noun,uzun süren derin keder ve isteksizlik hâli,Depression is a serious illness.,Depresyon ciddi bir hastalıktır.,3,exam:yds,body-health
+b2-cure,CURE,C,STARTS,noun,bir hastalığı tamamen iyileştiren çare,There is still no cure for the common cold.,Soğuk algınlığının hâlâ bir çaresi yok.,2,exam:yds,body-health
+b2-longevity,LONGEVITY,L,STARTS,noun,uzun ömürlülük,Diet plays a role in longevity.,Beslenme uzun ömürde rol oynar.,5,exam:yds,body-health
+b2-sanitation,SANITATION,S,STARTS,noun,temiz su ve atık sistemleriyle sağlanan sağlık koşulları,Poor sanitation spreads illness.,Kötü sağlık koşulları hastalık yayar.,5,exam:yds,body-health
+b2-deficiency,DEFICIENCY,Y,CONTAINS,noun,vücutta bir maddenin eksikliği,Vitamin D deficiency is common in winter.,D vitamini eksikliği kışın yaygındır.,4,exam:yds,body-health
+b2-circulation,CIRCULATION,C,STARTS,noun,kanın vücutta dolaşımı,Walking improves circulation.,Yürümek kan dolaşımını iyileştirir.,3,exam:yds,body-health
+b2-donor,DONOR,D,STARTS,noun,kan ya da organ bağışlayan kişi,He became an organ donor after the accident.,Kazadan sonra organ bağışçısı oldu.,3,exam:yds,body-health
+b2-susceptible,SUSCEPTIBLE,S,STARTS,adj,"bir şeyden kolayca etkilenen, yatkın",Old people are more susceptible to infection.,Yaşlılar enfeksiyona daha yatkındır.,5,exam:yds,body-health
+b2-resistance,RESISTANCE,R,STARTS,noun,"direnç, karşı koyma",Bacteria can develop resistance to antibiotics.,Bakteriler antibiyotiklere direnç geliştirebilir.,4,exam:yds,body-health
