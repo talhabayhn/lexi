@@ -20,12 +20,14 @@ import dev.talhabayhan.lexi.core.domain.feedback.HapticKind
 import dev.talhabayhan.lexi.core.domain.feedback.SoundEffect
 import dev.talhabayhan.lexi.core.domain.joker.GrantDailyJokers
 import dev.talhabayhan.lexi.core.domain.repository.ContentVersionRepository
+import dev.talhabayhan.lexi.core.domain.repository.OnboardingRepository
 import dev.talhabayhan.lexi.shared.generated.resources.Res
 import dev.talhabayhan.lexi.shared.generated.resources.splash_tagline
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.serialization.Serializable
 import org.jetbrains.compose.resources.stringResource
@@ -35,8 +37,8 @@ import org.koin.compose.koinInject
 @Serializable
 data object SplashRoute
 
-/** [onFinished] runs when the logo animation is over and the content database is ready: the graph moves on to Home. */
-fun NavGraphBuilder.splashScreen(onFinished: () -> Unit) {
+/** [onFinished] runs when the logo animation is over and the content database is ready: the graph moves on to Onboarding or Home. */
+fun NavGraphBuilder.splashScreen(onFinished: (onboardingCompleted: Boolean) -> Unit) {
     composable<SplashRoute> {
         SplashRoute(onFinished = onFinished)
     }
@@ -52,19 +54,27 @@ fun NavGraphBuilder.splashScreen(onFinished: () -> Unit) {
  */
 @Composable
 internal fun SplashRoute(
-    onFinished: () -> Unit,
+    onFinished: (Boolean) -> Unit,
     content: ContentVersionRepository = koinInject(),
     grantDailyJokers: GrantDailyJokers = koinInject(),
+    onboarding: OnboardingRepository = koinInject(),
 ) {
     val motion = LexiTheme.motion
     val haptics = LocalHaptics.current
     val sounds = LocalSoundPlayer.current
     val currentOnFinished by rememberUpdatedState(onFinished)
     val progress = remember { Animatable(if (motion.reducedMotion) 1f else 0f) }
-    LaunchedEffect(content, grantDailyJokers, motion) {
-        coroutineScope {
+    LaunchedEffect(content, grantDailyJokers, onboarding, motion) {
+        val completed = coroutineScope {
             val ready = async { content.warmUp() }
             val gifted = async { grantDailyJokers.giveQuietly() }
+            val isCompleted = async {
+                try {
+                    onboarding.onboardingCompleted.first()
+                } catch (@Suppress("TooGenericExceptionCaught") e: Exception) {
+                    false
+                }
+            }
             if (motion.reducedMotion) {
                 delay(motion.splashReducedHoldMillis.toLong())
             } else {
@@ -85,8 +95,9 @@ internal fun SplashRoute(
             }
             ready.await()
             gifted.await()
+            isCompleted.await()
         }
-        currentOnFinished()
+        currentOnFinished(completed)
     }
     SplashScreen(progress = { progress.value })
 }

@@ -39,6 +39,7 @@ before shipping.
 | Daily joker gift notice | M4 | none yet: `GrantDailyJokers` returns the grants (type + reason) for a later toast; today only the joker counts change |
 | Disabled game inputs (wrong-answer reveal) | M4 | keys / backspace / joker at 50 % without shadow (joker sheet's disabled rows), PAS = `LexiButton` disabled |
 | Onboarding steps 1 & 3 | M6 | same layout as step 2, different shapes & copy |
+| Level-choice screen & picker (DESIGN-DEBT) | M6 | built from 16-components (D4/D5 area): level choice with single CTA when test button is hidden behind LEVEL_TEST_AVAILABLE = false (TODO B5), simple A1..NAT picker built from existing level-select components (2×3 LevelCard grid) |
 | Level test result ("Seviyen: B1") | M6 | result screen header style + level badge |
 | Daily wheel intro / already-played state (stays as built, DESIGN-DEBT) | M6 | home daily card enlarged. The 3 home daily-card states (Available, AlreadyPlayed with score and countdown to next wheel, Unavailable) were built from `16-components` without dedicated Figma screens; flagged as DESIGN-DEBT (needs design). |
 | Entry to the categories | M5 | the design has no way in (07's back arrow returns to level select): a small underlined "Kategoriler" link on the "OYUN MODU" label line of the level select (`LexiTypography.link12`; the touch target is widened by Compose). Starting a category starts `GameRoute(level, mode, category)`; the mixed card starts the level's regular wheel |

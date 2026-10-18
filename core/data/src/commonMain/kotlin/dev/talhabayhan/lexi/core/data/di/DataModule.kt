@@ -8,6 +8,7 @@ import dev.talhabayhan.lexi.core.data.content.ContentVersionRepositoryImpl
 import dev.talhabayhan.lexi.core.data.content.ExamPackRepositoryImpl
 import dev.talhabayhan.lexi.core.data.db.DatabaseFiles
 import dev.talhabayhan.lexi.core.data.db.Databases
+import dev.talhabayhan.lexi.core.data.settings.OnboardingRepositoryImpl
 import dev.talhabayhan.lexi.core.data.settings.SettingsRepositoryImpl
 import dev.talhabayhan.lexi.core.data.settings.createSettingsDataStore
 import dev.talhabayhan.lexi.core.data.user.DailyRepositoryImpl
@@ -21,6 +22,7 @@ import dev.talhabayhan.lexi.core.domain.repository.ContentVersionRepository
 import dev.talhabayhan.lexi.core.domain.repository.DailyRepository
 import dev.talhabayhan.lexi.core.domain.repository.ExamPackRepository
 import dev.talhabayhan.lexi.core.domain.repository.JokerRepository
+import dev.talhabayhan.lexi.core.domain.repository.OnboardingRepository
 import dev.talhabayhan.lexi.core.domain.repository.ProgressRepository
 import dev.talhabayhan.lexi.core.domain.repository.SessionRepository
 import dev.talhabayhan.lexi.core.domain.repository.SettingsRepository
@@ -62,4 +64,5 @@ public val dataModule: Module = module {
         createSettingsDataStore(get<DatabaseFiles>().settingsFilePath(), CoroutineScope(SupervisorJob() + io))
     }
     single<SettingsRepository> { SettingsRepositoryImpl(get(), get()) }
+    single<OnboardingRepository> { OnboardingRepositoryImpl(get()) }
 }

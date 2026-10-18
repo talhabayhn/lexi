@@ -1,0 +1,31 @@
+<resources>
+    <!-- Onboarding 3 steps (01-onboarding) -->
+    <string name="onboarding_step_counter">%1$d/3</string>
+    <string name="onboarding_1_title">A Turkish clue, an English word</string>
+    <string name="onboarding_1_body">Read the clue and find the word that starts with — or contains — the letter.</string>
+    <string name="onboarding_2_title">A wheel from A to Z</string>
+    <string name="onboarding_2_body">Not sure? Pass — the wheel brings you back around.</string>
+    <string name="onboarding_3_title">A little every day</string>
+    <string name="onboarding_3_body">Track progress with the daily wheel, your streak and your notebook.</string>
+    <string name="onboarding_next">Next</string>
+    <string name="onboarding_skip">Skip</string>
+    <string name="onboarding_start">Let's start</string>
+
+    <!-- Level choice screen (COPY.md section 4) -->
+    <string name="leveltest_choice_title">Let's find your level</string>
+    <string name="leveltest_choice_body">A quick 2-minute test, or pick your level yourself.</string>
+    <string name="onboarding_level_pick_body">Pick your level. You can change it any time.</string>
+    <string name="leveltest_choice_test">Start the test</string>
+    <string name="leveltest_choice_pick">I'll pick myself</string>
+    <string name="leveltest_choice_skip">Skip</string>
+
+    <!-- Level picker (DESIGN-DEBT built from 16-components) -->
+    <string name="leveltest_picker_title">Choose your level</string>
+    <string name="leveltest_picker_back">Go back</string>
+    <string name="onboarding_level_a1">Beginner</string>
+    <string name="onboarding_level_a2">Elementary</string>
+    <string name="onboarding_level_b1">Intermediate</string>
+    <string name="onboarding_level_b2">Upper intermediate</string>
+    <string name="onboarding_level_c1">Advanced</string>
+    <string name="onboarding_level_nat">Idioms · phrasals</string>
+</resources>

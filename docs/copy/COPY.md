@@ -95,6 +95,7 @@ Pre-prompt (before the OS permission dialog, onboarding layout — design debt):
 |---|---|---|---|
 | `leveltest_choice_title` | Seviyeni bulalım | Let's find your level | 30 |
 | `leveltest_choice_body` | 2 dakikalık kısa bir test ya da seviyeni kendin seç. | A quick 2-minute test, or pick your level yourself. | 64 |
+| `onboarding_level_pick_body` | Seviyeni seç, istediğin zaman değiştirebilirsin. | Pick your level. You can change it any time. *(Used until the level test ships)* | 64 |
 | `leveltest_choice_test` | Testi başlat | Start the test | 18 |
 | `leveltest_choice_pick` | Kendim seçeceğim | I'll pick myself | 22 |
 | `leveltest_intro_title` | Seviye testi | Level test | 20 |

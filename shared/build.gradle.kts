@@ -21,6 +21,7 @@ kotlin {
             implementation(project(":core:data"))
             implementation(project(":core:designsystem"))
             implementation(project(":core:platform"))
+            implementation(project(":feature:onboarding"))
             implementation(project(":feature:home"))
             implementation(project(":feature:levels"))
             implementation(project(":feature:game"))

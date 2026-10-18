@@ -31,6 +31,8 @@ import dev.talhabayhan.lexi.feature.levels.categoriesScreen
 import dev.talhabayhan.lexi.feature.levels.levelSelectScreen
 import dev.talhabayhan.lexi.feature.notebook.NotebookRoute
 import dev.talhabayhan.lexi.feature.notebook.notebookScreen
+import dev.talhabayhan.lexi.feature.onboarding.OnboardingRoute
+import dev.talhabayhan.lexi.feature.onboarding.onboardingScreen
 import dev.talhabayhan.lexi.feature.settings.SettingsRoute
 import dev.talhabayhan.lexi.feature.settings.settingsScreen
 import dev.talhabayhan.lexi.feature.stats.StatsRoute
@@ -66,10 +68,19 @@ fun LexiNavHost(modifier: Modifier = Modifier) {
         splashScreen(
             // Not RESUMED-guarded: this fires once from the splash's LaunchedEffect, possibly while the app is in the
             // background (first-run DB copy); a dropped call would leave the app stuck on the splash.
-            onFinished = {
-                navController.navigate(HomeRoute) {
+            onFinished = { completed ->
+                val destination = if (completed) HomeRoute else OnboardingRoute
+                navController.navigate(destination) {
                     launchSingleTop = true
                     popUpTo(SplashRoute) { inclusive = true }
+                }
+            },
+        )
+        onboardingScreen(
+            onFinish = {
+                navController.navigate(HomeRoute) {
+                    launchSingleTop = true
+                    popUpTo(OnboardingRoute) { inclusive = true }
                 }
             },
         )
