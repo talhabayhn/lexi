@@ -8,7 +8,6 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-
 import dev.talhabayhan.lexi.core.platform.language.AndroidPlatformLanguage
 
 class MainActivity : ComponentActivity() {

@@ -3,6 +3,7 @@ package dev.talhabayhan.lexi.feature.settings
 import com.github.takahirom.roborazzi.captureRoboImage
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiViewport
+import dev.talhabayhan.lexi.core.domain.settings.AppLanguage
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
@@ -26,6 +27,24 @@ class SettingsScreenshotTest {
     }
 
     @Test
+    fun languageTurkish() {
+        captureRoboImage("src/androidHostTest/screenshots/SettingsLanguageTr.png") {
+            LexiTheme(reducedMotion = false) {
+                SettingsScreen(state = SettingsUiState(appLanguage = AppLanguage.TR), onIntent = {})
+            }
+        }
+    }
+
+    @Test
+    fun languageEnglish() {
+        captureRoboImage("src/androidHostTest/screenshots/SettingsLanguageEn.png") {
+            LexiTheme(reducedMotion = false) {
+                SettingsScreen(state = SettingsUiState(appLanguage = AppLanguage.EN), onIntent = {})
+            }
+        }
+    }
+
+    @Test
     fun switchesOff() {
         captureRoboImage("src/androidHostTest/screenshots/SettingsOff.png") {
             LexiTheme(reducedMotion = false) {
@@ -42,6 +61,26 @@ class SettingsScreenshotTest {
     fun english() {
         captureRoboImage("src/androidHostTest/screenshots/SettingsEn.png") {
             LexiTheme(reducedMotion = false) { SettingsScreen(state = SettingsUiState(), onIntent = {}) }
+        }
+    }
+
+    @Test
+    @Config(qualifiers = "en-w390dp-h844dp-xhdpi")
+    fun englishLanguageTurkish() {
+        captureRoboImage("src/androidHostTest/screenshots/SettingsEnLanguageTr.png") {
+            LexiTheme(reducedMotion = false) {
+                SettingsScreen(state = SettingsUiState(appLanguage = AppLanguage.TR), onIntent = {})
+            }
+        }
+    }
+
+    @Test
+    @Config(qualifiers = "en-w390dp-h844dp-xhdpi")
+    fun englishLanguageEnglish() {
+        captureRoboImage("src/androidHostTest/screenshots/SettingsEnLanguageEn.png") {
+            LexiTheme(reducedMotion = false) {
+                SettingsScreen(state = SettingsUiState(appLanguage = AppLanguage.EN), onIntent = {})
+            }
         }
     }
 

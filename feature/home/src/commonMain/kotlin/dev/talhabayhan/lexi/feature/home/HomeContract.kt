@@ -32,10 +32,7 @@ internal enum class DailyGiftNoticeType {
 }
 
 @Immutable
-internal data class DailyGiftNotice(
-    val type: DailyGiftNoticeType,
-    val amount: Int,
-)
+internal data class DailyGiftNotice(val type: DailyGiftNoticeType, val amount: Int)
 
 /**
  * What `02-home` shows. The zero values are real ones (nothing played yet); they are replaced as the repositories

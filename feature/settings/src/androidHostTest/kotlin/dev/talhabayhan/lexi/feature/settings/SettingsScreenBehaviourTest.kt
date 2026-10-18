@@ -71,10 +71,10 @@ class SettingsScreenBehaviourTest {
             LexiTheme(reducedMotion = true) { SettingsScreen(SettingsUiState(), onIntent = { intents += it }) }
         }
 
-        // Pro card + reminder, review reminders, ui language, clue language.
-        assertEquals(5, onAllNodesWithText("YAKINDA", useUnmergedTree = true).fetchSemanticsNodes().size)
+        // Pro card + reminder, review reminders, clue language.
+        assertEquals(4, onAllNodesWithText("YAKINDA", useUnmergedTree = true).fetchSemanticsNodes().size)
         onNodeWithText("Günlük hatırlatma").performClick()
-        onNodeWithText("Arayüz dili").performClick()
+        onNodeWithText("Kelime defteri tekrarları").performClick()
 
         assertEquals(emptyList<SettingsIntent>(), intents)
     }
@@ -88,12 +88,14 @@ class SettingsScreenBehaviourTest {
 
         onNodeWithText("Klasik mod süresi").performClick()
         onNodeWithText("Günlük hedef").performClick()
+        onNodeWithText("Arayüz dili").performClick()
         onNodeWithText("İngilizce aksanı").performClick()
 
         assertEquals(
             listOf(
                 SettingsIntent.CycleClassicTime,
                 SettingsIntent.CycleDailyGoal,
+                SettingsIntent.CycleAppLanguage,
                 SettingsIntent.CycleAccent,
             ),
             intents,

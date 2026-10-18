@@ -62,10 +62,6 @@ import dev.talhabayhan.lexi.core.domain.game.GameMode
 import dev.talhabayhan.lexi.core.domain.goal.DailyGoalProgress
 import dev.talhabayhan.lexi.feature.home.generated.resources.Res
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_daily_completed_score
-import dev.talhabayhan.lexi.feature.home.generated.resources.home_joker_gift_combined
-import dev.talhabayhan.lexi.feature.home.generated.resources.home_joker_gift_daily
-import dev.talhabayhan.lexi.feature.home.generated.resources.home_joker_gift_streak
-import kotlinx.coroutines.delay
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_daily_goal_desc
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_daily_goal_desc_reached
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_daily_goal_progress
@@ -74,6 +70,9 @@ import dev.talhabayhan.lexi.feature.home.generated.resources.home_daily_next_whe
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_daily_next_wheel_minutes
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_daily_title
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_daily_unavailable
+import dev.talhabayhan.lexi.feature.home.generated.resources.home_joker_gift_combined
+import dev.talhabayhan.lexi.feature.home.generated.resources.home_joker_gift_daily
+import dev.talhabayhan.lexi.feature.home.generated.resources.home_joker_gift_streak
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_mode_classic
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_mode_hardcore
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_mode_practice
@@ -94,6 +93,7 @@ import dev.talhabayhan.lexi.feature.home.generated.resources.home_tile_stats_lea
 import org.jetbrains.compose.resources.pluralStringResource
 import org.jetbrains.compose.resources.stringArrayResource
 import org.jetbrains.compose.resources.stringResource
+import kotlinx.coroutines.delay
 
 /**
  * `02-home`: streak chip and settings, the logo, the daily card, OYNA and the 2 × 2 menu tiles. The blue circle and

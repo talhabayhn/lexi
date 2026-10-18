@@ -2,6 +2,7 @@ package dev.talhabayhan.lexi.feature.settings
 
 import app.cash.turbine.test
 import dev.talhabayhan.lexi.core.domain.platform.AppLinks
+import dev.talhabayhan.lexi.core.domain.settings.AppLanguage
 import dev.talhabayhan.lexi.core.domain.settings.Settings
 import dev.talhabayhan.lexi.core.testing.FakeSettingsRepository
 import kotlinx.coroutines.Dispatchers
@@ -41,6 +42,7 @@ class SettingsViewModelTest {
                 speakOnCorrect = false,
                 classicTimeLimitSeconds = 240,
                 dailyGoalWheels = 3,
+                appLanguage = AppLanguage.TR,
                 accent = dev.talhabayhan.lexi.core.domain.settings.Accent.UK,
             )
         }
@@ -52,6 +54,7 @@ class SettingsViewModelTest {
         assertFalse(state.speakOnCorrect)
         assertEquals(240, state.classicTimeLimitSeconds)
         assertEquals(3, state.dailyGoalWheels)
+        assertEquals(AppLanguage.TR, state.appLanguage)
         assertEquals(dev.talhabayhan.lexi.core.domain.settings.Accent.UK, state.accent)
     }
 
@@ -135,6 +138,44 @@ class SettingsViewModelTest {
     }
 
     @Test
+    fun `language defaults to SYSTEM`() = runTest {
+        val viewModel = viewModel()
+        assertEquals(AppLanguage.SYSTEM, viewModel.state.value.appLanguage)
+        assertEquals(AppLanguage.SYSTEM, repository.settings.value.appLanguage)
+    }
+
+    @Test
+    fun `cycle app language cycles through SYSTEM, TR, EN, and back to SYSTEM`() = runTest {
+        val viewModel = viewModel()
+        assertEquals(AppLanguage.SYSTEM, viewModel.state.value.appLanguage)
+
+        viewModel.onIntent(SettingsIntent.CycleAppLanguage)
+        assertEquals(AppLanguage.TR, viewModel.state.value.appLanguage)
+        assertEquals(AppLanguage.TR, repository.settings.value.appLanguage)
+
+        viewModel.onIntent(SettingsIntent.CycleAppLanguage)
+        assertEquals(AppLanguage.EN, viewModel.state.value.appLanguage)
+        assertEquals(AppLanguage.EN, repository.settings.value.appLanguage)
+
+        viewModel.onIntent(SettingsIntent.CycleAppLanguage)
+        assertEquals(AppLanguage.SYSTEM, viewModel.state.value.appLanguage)
+        assertEquals(AppLanguage.SYSTEM, repository.settings.value.appLanguage)
+    }
+
+    @Test
+    fun `set app language persists and updates state`() = runTest {
+        val viewModel = viewModel()
+
+        viewModel.onIntent(SettingsIntent.SetAppLanguage(AppLanguage.TR))
+        assertEquals(AppLanguage.TR, repository.settings.value.appLanguage)
+        assertEquals(AppLanguage.TR, viewModel.state.value.appLanguage)
+
+        viewModel.onIntent(SettingsIntent.SetAppLanguage(AppLanguage.EN))
+        assertEquals(AppLanguage.EN, repository.settings.value.appLanguage)
+        assertEquals(AppLanguage.EN, viewModel.state.value.appLanguage)
+    }
+
+    @Test
     fun `explicit setters write to settings and update state`() = runTest {
         val viewModel = viewModel()
 
@@ -145,6 +186,10 @@ class SettingsViewModelTest {
         viewModel.onIntent(SettingsIntent.SetDailyGoalWheels(5))
         assertEquals(5, repository.settings.value.dailyGoalWheels)
         assertEquals(5, viewModel.state.value.dailyGoalWheels)
+
+        viewModel.onIntent(SettingsIntent.SetAppLanguage(AppLanguage.EN))
+        assertEquals(AppLanguage.EN, repository.settings.value.appLanguage)
+        assertEquals(AppLanguage.EN, viewModel.state.value.appLanguage)
 
         viewModel.onIntent(SettingsIntent.SetAccent(dev.talhabayhan.lexi.core.domain.settings.Accent.UK))
         assertEquals(dev.talhabayhan.lexi.core.domain.settings.Accent.UK, repository.settings.value.accent)

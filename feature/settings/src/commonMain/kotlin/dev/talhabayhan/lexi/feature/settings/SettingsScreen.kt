@@ -147,7 +147,30 @@ internal fun SettingsScreen(state: SettingsUiState, onIntent: (SettingsIntent) -
             SoonRow(Res.string.settings_review_reminders)
         }
         Section(Res.string.settings_section_language) {
-            SoonRow(Res.string.settings_language)
+            ListRow(
+                onClick = { onIntent(SettingsIntent.CycleAppLanguage) },
+            ) {
+                Column(modifier = Modifier.weight(1f)) {
+                    Text(
+                        text = stringResource(Res.string.settings_language),
+                        style = LexiTheme.typography.body16SemiBold,
+                    )
+                    if (isIos) {
+                        Text(
+                            text = stringResource(Res.string.settings_language_ios_restart_hint),
+                            style = LexiTheme.typography.caption12,
+                            color = LexiTheme.colors.inkMuted,
+                        )
+                    }
+                }
+                ListRowValue(
+                    when (state.appLanguage) {
+                        AppLanguage.SYSTEM -> stringResource(Res.string.settings_language_system)
+                        AppLanguage.TR -> stringResource(Res.string.settings_language_tr)
+                        AppLanguage.EN -> stringResource(Res.string.settings_language_en)
+                    },
+                )
+            }
             SoonRow(Res.string.settings_clue_language)
             ListRow(
                 label = stringResource(Res.string.settings_accent),
