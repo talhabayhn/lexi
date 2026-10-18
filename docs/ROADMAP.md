@@ -85,6 +85,7 @@ Module mapping (replaces the earlier `composeApp`): `androidApp` = thin Android 
   **Data safety** (draft: `docs/store/data-safety-google.md`), **Login credentials** (test account / Pro access path),
   **Target audience / content rating** (user interaction), privacy policy (SDKs, account data, deletion link),
   Apple App Privacy + ATT (`docs/store/app-privacy-apple.md`). Current declarations match the SDK-free test build.
+  Store listing: the test-track text omits Pro/ads/analytics paragraphs (`docs/store/listing-*.md`); restore them when those ship.
 - [ ] AdMob rewarded (+1 joker) with UMP consent; interstitial policy from `PRODUCT.md`
 - [ ] Exam packs (`10-exam-packs`) gated by Pro (UI & RevenueCat wiring pending); content compiler pipeline integrated
   with in-repo `content/exam-packs/` (LGS + YDS/YÖKDİL metadata, schema, validation in `content.db`)
