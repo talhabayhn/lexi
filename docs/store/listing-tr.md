@@ -58,8 +58,8 @@ GİZLİLİK
 
 Arayüz Türkçe ve İngilizce olarak kullanılabilir.
 
-Soru ve geri bildirim: [CONTACT EMAIL]
-[WEBSITE]
+Soru ve geri bildirim: talhabayhan.aps@gmail.com
+https://talhabayhn.github.io/lexi
 ```
 
 **Yenilikler (v1.0)**
@@ -124,11 +124,11 @@ Aylık ya da yıllık otomatik yenilenen abonelik veya tek seferlik ömür boyu 
 
 Abonelik koşulları: Ödeme, satın alma onayında Apple ID hesabınızdan tahsil edilir. Abonelik, mevcut dönemin bitiminden en az 24 saat önce iptal edilmedikçe otomatik olarak yenilenir. Yenileme ücreti, mevcut dönemin bitiminden önceki 24 saat içinde hesabınızdan tahsil edilir. Satın aldıktan sonra abonelikleri Apple ID hesap ayarlarınızdan yönetebilir veya iptal edebilirsiniz. Ücretsiz deneme sunulursa, kullanılmayan kısmı abonelik satın alındığında geçersiz olur.
 
-Gizlilik Politikası: [WEBSITE]/privacy
-Kullanım Koşulları: [WEBSITE]/terms
+Gizlilik Politikası: https://talhabayhn.github.io/lexi/privacy
+Kullanım Koşulları: https://talhabayhn.github.io/lexi/terms
 
 Arayüz Türkçe ve İngilizce olarak kullanılabilir.
-Soru ve geri bildirim: [CONTACT EMAIL]
+Soru ve geri bildirim: talhabayhan.aps@gmail.com
 ```
 
 **Anahtar kelimeler (≤100, virgüller dahil)**
@@ -138,7 +138,7 @@ kelime,ingilizce,öğren,oyun,sözcük,bilgi yarışması,alfabe,harf,çevrimdı
 
 **Yenilikler (v1.0)**: Google Play ile aynı metin.
 
-**Destek URL**: [WEBSITE]/support · **Pazarlama URL**: [WEBSITE] · **Telif**: © 2026 [DEVELOPER NAME]
+**Destek URL**: https://talhabayhn.github.io/lexi/support · **Pazarlama URL**: https://talhabayhn.github.io/lexi · **Telif**: © 2026 Hüseyin Talha Bayhan
 
 ## Notlar
 - Apple, ad/alt başlıkta geçen kelimeleri anahtar kelimelerde tekrar saymaz; "ingilizce", "kelime" başlıkta da var — VERIFY: tekrarı kaldırıp yeni terim ekleyin (ör. "tekrar", "defter").
