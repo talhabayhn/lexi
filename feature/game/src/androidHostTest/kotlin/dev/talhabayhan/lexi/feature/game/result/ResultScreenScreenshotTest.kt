@@ -64,6 +64,7 @@ class ResultScreenScreenshotTest {
                         passed = 0,
                         correct = 26,
                         addedToNotebook = 0,
+                        groups = kotlinx.collections.immutable.persistentListOf(),
                         rows = kotlinx.collections.immutable.persistentListOf(),
                         hiddenRows = 0,
                     ),
