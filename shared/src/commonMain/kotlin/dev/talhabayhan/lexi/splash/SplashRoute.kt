@@ -18,7 +18,6 @@ import dev.talhabayhan.lexi.core.designsystem.feedback.LocalSoundPlayer
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.core.domain.feedback.HapticKind
 import dev.talhabayhan.lexi.core.domain.feedback.SoundEffect
-import dev.talhabayhan.lexi.core.domain.joker.GrantDailyJokers
 import dev.talhabayhan.lexi.core.domain.repository.ContentVersionRepository
 import dev.talhabayhan.lexi.core.domain.repository.OnboardingRepository
 import dev.talhabayhan.lexi.shared.generated.resources.Res
@@ -46,17 +45,14 @@ fun NavGraphBuilder.splashScreen(onFinished: (onboardingCompleted: Boolean) -> U
 
 /**
  * Plays the splash (`docs/design/motion.md` #9: bg shapes, L, E, X, I, tagline, 1.2 s) while the bundled content
- * database is installed or version-checked in the background (the first read opens it) and today's free jokers are
- * given ([GrantDailyJokers], `GAME_RULES.md` §7; the splash runs once per cold start, the use case is idempotent per
- * day). The app moves on when all are done, so a fast start is never held up beyond the animation and a slow first-run
- * copy is waited for. With reduced motion the logo is shown statically for a short hold. Each landing gives a light
- * haptic and a "tık".
+ * database is installed or version-checked in the background (the first read opens it). The app moves on when all are
+ * done, so a fast start is never held up beyond the animation and a slow first-run copy is waited for. With reduced
+ * motion the logo is shown statically for a short hold. Each landing gives a light haptic and a "tık".
  */
 @Composable
 internal fun SplashRoute(
     onFinished: (Boolean) -> Unit,
     content: ContentVersionRepository = koinInject(),
-    grantDailyJokers: GrantDailyJokers = koinInject(),
     onboarding: OnboardingRepository = koinInject(),
 ) {
     val motion = LexiTheme.motion
@@ -64,10 +60,9 @@ internal fun SplashRoute(
     val sounds = LocalSoundPlayer.current
     val currentOnFinished by rememberUpdatedState(onFinished)
     val progress = remember { Animatable(if (motion.reducedMotion) 1f else 0f) }
-    LaunchedEffect(content, grantDailyJokers, onboarding, motion) {
+    LaunchedEffect(content, onboarding, motion) {
         val completed = coroutineScope {
             val ready = async { content.warmUp() }
-            val gifted = async { grantDailyJokers.giveQuietly() }
             val isCompleted = async {
                 try {
                     onboarding.onboardingCompleted.first()
@@ -94,7 +89,6 @@ internal fun SplashRoute(
                 landings.cancel()
             }
             ready.await()
-            gifted.await()
             isCompleted.await()
         }
         currentOnFinished(completed)
@@ -106,21 +100,6 @@ internal fun SplashRoute(
 @Composable
 internal fun SplashScreen(progress: () -> Float, modifier: Modifier = Modifier) {
     LexiSplash(progress = progress, tagline = stringResource(Res.string.splash_tagline), modifier = modifier)
-}
-
-/**
- * Gives today's jokers; the gift has no notice yet (design debt), the joker counts show it. A failure changes nothing
- * (one transaction) and is retried on the next start.
- */
-private suspend fun GrantDailyJokers.giveQuietly() {
-    try {
-        invoke()
-    } catch (e: CancellationException) {
-        throw e
-    } catch (@Suppress("TooGenericExceptionCaught") e: Exception) {
-        // Never block the start on a gift.
-        // TODO(M7): report as a non-fatal once Crashlytics is behind its interface.
-    }
 }
 
 /** Opens (installs or version-checks) the content database; a failure is left to the screens that read content. */

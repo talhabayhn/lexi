@@ -6,7 +6,9 @@ import dev.talhabayhan.lexi.core.domain.game.GameConfig
 import dev.talhabayhan.lexi.core.domain.platform.AppLinks
 import dev.talhabayhan.lexi.core.domain.repository.SettingsRepository
 import dev.talhabayhan.lexi.core.domain.settings.Accent
+import dev.talhabayhan.lexi.core.domain.settings.AppLanguage
 import dev.talhabayhan.lexi.core.domain.settings.Settings
+import dev.talhabayhan.lexi.core.platform.language.syncPlatformAppLanguage
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
@@ -43,6 +45,7 @@ internal class SettingsViewModel(
                         speakOnCorrect = it.speakOnCorrect,
                         classicTimeLimitSeconds = it.classicTimeLimitSeconds,
                         dailyGoalWheels = it.dailyGoalWheels,
+                        appLanguage = it.appLanguage,
                         accent = it.accent,
                     )
                 }
@@ -76,6 +79,14 @@ internal class SettingsViewModel(
                 current.copy(dailyGoalWheels = next)
             }
 
+            SettingsIntent.CycleAppLanguage -> write { current ->
+                val options = AppLanguage.entries
+                val idx = options.indexOf(current.appLanguage)
+                val next = if (idx >= 0) options[(idx + 1) % options.size] else options.first()
+                syncPlatformAppLanguage(next)
+                current.copy(appLanguage = next)
+            }
+
             SettingsIntent.CycleAccent -> write { current ->
                 val next = if (current.accent == Accent.US) Accent.UK else Accent.US
                 current.copy(accent = next)
@@ -84,6 +95,11 @@ internal class SettingsViewModel(
             is SettingsIntent.SetClassicTimeLimit -> write { it.copy(classicTimeLimitSeconds = intent.seconds) }
 
             is SettingsIntent.SetDailyGoalWheels -> write { it.copy(dailyGoalWheels = intent.wheels) }
+
+            is SettingsIntent.SetAppLanguage -> write { current ->
+                syncPlatformAppLanguage(intent.language)
+                current.copy(appLanguage = intent.language)
+            }
 
             is SettingsIntent.SetAccent -> write { it.copy(accent = intent.accent) }
 

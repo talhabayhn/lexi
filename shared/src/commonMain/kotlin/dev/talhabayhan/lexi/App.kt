@@ -13,15 +13,27 @@ import org.koin.compose.KoinApplication
 import org.koin.compose.koinInject
 import org.koin.dsl.koinConfiguration
 
+import androidx.compose.runtime.LaunchedEffect
+import dev.talhabayhan.lexi.core.domain.repository.SettingsRepository
+import dev.talhabayhan.lexi.core.domain.settings.AppLanguage
+
 /**
  * Root composable for Android (`MainActivity`) and iOS (`MainViewController`): starts Koin and hosts the nav graph
  * inside [LexiTheme] (light only, ADR 0010) and [LexiViewport] (the Expanded tier: large viewports draw the designs
  * scaled, `screen-map.md`).
  */
 @Composable
-fun App() {
+fun App(onLanguageChanged: ((AppLanguage) -> Unit)? = null) {
     val platformModule = rememberPlatformModule()
     KoinApplication(configuration = koinConfiguration { modules(appModules + platformModule) }) {
+        if (onLanguageChanged != null) {
+            val settingsRepository = koinInject<SettingsRepository>()
+            LaunchedEffect(settingsRepository) {
+                settingsRepository.settings.collect {
+                    onLanguageChanged(it.appLanguage)
+                }
+            }
+        }
         CompositionLocalProvider(
             LocalHaptics provides koinInject(),
             LocalSoundPlayer provides koinInject(),

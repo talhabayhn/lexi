@@ -26,7 +26,7 @@ class ResultScreenBehaviourTest {
     }
 
     @Test
-    fun `tekrar oyna is hidden after a daily and share stays`() = runComposeUiTest {
+    fun `tekrar oyna is hidden after a daily and share is hidden when unavailable`() = runComposeUiTest {
         setContent {
             LexiTheme(reducedMotion = true) {
                 ResultScreen(ResultSamples.design.copy(mode = GameMode.DAILY), onIntent = {})
@@ -34,6 +34,10 @@ class ResultScreenBehaviourTest {
         }
 
         onNodeWithText("TEKRAR OYNA").assertDoesNotExist()
-        onNodeWithText("Paylaş").assertIsDisplayed()
+        if (SHARE_AVAILABLE) {
+            onNodeWithText("Paylaş").assertIsDisplayed()
+        } else {
+            onNodeWithText("Paylaş").assertDoesNotExist()
+        }
     }
 }

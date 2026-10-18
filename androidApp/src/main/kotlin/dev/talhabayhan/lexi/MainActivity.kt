@@ -9,8 +9,13 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 
+import dev.talhabayhan.lexi.core.platform.language.AndroidPlatformLanguage
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        val currentLanguage = AndroidPlatformLanguage.getStoredLanguage(this)
+        AndroidPlatformLanguage.applyLanguage(this, currentLanguage)
+
         // Light only (ADR 0010): dark system-bar icons even when the system is in dark mode.
         enableEdgeToEdge(
             statusBarStyle = SystemBarStyle.light(Color.TRANSPARENT, Color.TRANSPARENT),
@@ -19,7 +24,15 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-            App()
+            App(
+                onLanguageChanged = { newLanguage ->
+                    if (newLanguage != currentLanguage) {
+                        AndroidPlatformLanguage.setStoredLanguage(this, newLanguage)
+                        AndroidPlatformLanguage.applyLanguage(this, newLanguage)
+                        recreate()
+                    }
+                },
+            )
         }
     }
 }

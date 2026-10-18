@@ -40,6 +40,8 @@ import dev.talhabayhan.lexi.core.designsystem.icon.LexiIcons
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.core.designsystem.theme.lexiContentWidth
 import dev.talhabayhan.lexi.core.domain.AppInfo
+import dev.talhabayhan.lexi.core.domain.settings.AppLanguage
+import dev.talhabayhan.lexi.core.platform.language.isIos
 import dev.talhabayhan.lexi.feature.settings.generated.resources.Res
 import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_accent
 import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_back
@@ -55,6 +57,10 @@ import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_footer
 import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_footer_terms
 import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_haptics
 import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_language
+import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_language_en
+import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_language_ios_restart_hint
+import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_language_system
+import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_language_tr
 import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_pro_subtitle
 import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_pro_title
 import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_review_reminders

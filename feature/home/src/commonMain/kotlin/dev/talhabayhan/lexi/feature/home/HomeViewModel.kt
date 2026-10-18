@@ -5,6 +5,8 @@ import androidx.lifecycle.viewModelScope
 import dev.talhabayhan.lexi.core.domain.daily.DailyPlayState
 import dev.talhabayhan.lexi.core.domain.daily.GetDailyWheel
 import dev.talhabayhan.lexi.core.domain.goal.GetDailyGoalProgress
+import dev.talhabayhan.lexi.core.domain.joker.GrantDailyJokers
+import dev.talhabayhan.lexi.core.domain.joker.JokerGrantReason
 import dev.talhabayhan.lexi.core.domain.repository.DailyRepository
 import dev.talhabayhan.lexi.core.domain.repository.ProgressRepository
 import dev.talhabayhan.lexi.core.domain.stats.Stats
@@ -33,6 +35,7 @@ internal class HomeViewModel(
     private val daily: DailyRepository,
     private val appClock: AppClock,
     getDailyGoalProgress: GetDailyGoalProgress,
+    private val grantDailyJokers: GrantDailyJokers,
 ) : ViewModel() {
     private val mutableState = MutableStateFlow(HomeUiState())
     val state: StateFlow<HomeUiState> = mutableState.asStateFlow()
@@ -95,6 +98,10 @@ internal class HomeViewModel(
                 mutableState.update { it.copy(dailyState = cardState) }
             }
         }
+
+        viewModelScope.launch {
+            checkDailyGift()
+        }
     }
 
     private fun AppClock.currentDay(): Long = epochDay(nowMs())
@@ -107,12 +114,32 @@ internal class HomeViewModel(
         return hours to minutes
     }
 
+    private suspend fun checkDailyGift() {
+        try {
+            val grants = grantDailyJokers()
+            if (grants.isNotEmpty()) {
+                val hasDaily = grants.any { it.reason == JokerGrantReason.DAILY_GIFT }
+                val hasStreak = grants.any { it.reason == JokerGrantReason.STREAK_BONUS }
+                val type = when {
+                    hasDaily && hasStreak -> DailyGiftNoticeType.Combined
+                    hasStreak -> DailyGiftNoticeType.Streak
+                    else -> DailyGiftNoticeType.Daily
+                }
+                val amount = grants.size
+                mutableState.update { it.copy(dailyGiftNotice = DailyGiftNotice(type, amount)) }
+            }
+        } catch (@Suppress("TooGenericExceptionCaught") e: Exception) {
+            // A gift error never blocks the home screen.
+        }
+    }
+
     fun onIntent(intent: HomeIntent) {
         when (intent) {
             HomeIntent.Refresh, HomeIntent.Resumed -> {
                 val nextDay = appClock.currentDay()
                 if (today.value != nextDay) {
                     today.value = nextDay
+                    viewModelScope.launch { checkDailyGift() }
                 } else {
                     val currentDaily = mutableState.value.dailyState
                     if (currentDaily is DailyCardState.AlreadyPlayed) {
@@ -126,6 +153,10 @@ internal class HomeViewModel(
                         }
                     }
                 }
+            }
+
+            HomeIntent.DismissNotice -> {
+                mutableState.update { it.copy(dailyGiftNotice = null) }
             }
 
             HomeIntent.Play -> effectChannel.trySend(HomeEffect.NavigateToLevelSelect)

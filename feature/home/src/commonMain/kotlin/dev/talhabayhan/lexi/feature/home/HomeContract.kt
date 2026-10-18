@@ -22,6 +22,22 @@ internal sealed interface DailyCardState {
 }
 
 /**
+ * Type of free joker gift notice shown on home (`GAME_RULES.md` §7, D10).
+ */
+@Immutable
+internal enum class DailyGiftNoticeType {
+    Daily,
+    Streak,
+    Combined,
+}
+
+@Immutable
+internal data class DailyGiftNotice(
+    val type: DailyGiftNoticeType,
+    val amount: Int,
+)
+
+/**
  * What `02-home` shows. The zero values are real ones (nothing played yet); they are replaced as the repositories
  * emit.
  */
@@ -43,11 +59,16 @@ internal data class HomeUiState(
     val playMode: GameMode = GameMode.CLASSIC,
     /** Daily goal progress for today ("Bugün {done}/{goal}"). */
     val dailyGoalProgress: DailyGoalProgress? = null,
+    /** Daily joker gift notice (toast) when GrantDailyJokers gives a gift or streak bonus. */
+    val dailyGiftNotice: DailyGiftNotice? = null,
 )
 
 internal sealed interface HomeIntent {
     /** Periodic refresh (on resume and once per minute while STARTED). */
     data object Refresh : HomeIntent
+
+    /** Dismisses the daily joker gift notice. */
+    data object DismissNotice : HomeIntent
 
     /** The screen is in the foreground again: "today" may have changed since the last time. */
     data object Resumed : HomeIntent

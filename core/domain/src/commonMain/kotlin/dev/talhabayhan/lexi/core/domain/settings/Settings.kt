@@ -19,10 +19,12 @@ public data class Settings(
     val dailyGoalWheels: Int = 1,
     /** "Kelime defteri tekrarları": remind about due notebook cards. */
     val reviewReminders: Boolean = true,
-    val uiLanguage: UiLanguage = UiLanguage.SYSTEM,
+    val appLanguage: AppLanguage = AppLanguage.SYSTEM,
     val clueLanguage: ClueLanguage = ClueLanguage.TR,
     val accent: Accent = Accent.US,
 ) {
+    public val uiLanguage: AppLanguage get() = appLanguage
+
     init {
         require(reminderMinuteOfDay in 0 until MINUTES_PER_DAY) { "reminderMinuteOfDay $reminderMinuteOfDay" }
         require(dailyGoalWheels >= 1) { "dailyGoalWheels $dailyGoalWheels must be at least 1" }
@@ -36,7 +38,13 @@ public data class Settings(
 }
 
 /** App UI language; [SYSTEM] follows the device (Turkish or English, `CLAUDE.md`). */
-public enum class UiLanguage { SYSTEM, TR, EN }
+public enum class AppLanguage(public val localeTag: String?) {
+    SYSTEM(null),
+    TR("tr"),
+    EN("en"),
+}
+
+public typealias UiLanguage = AppLanguage
 
 /** Language of clues and example translations; Turkish only in v1 (`PRODUCT.md`: Spanish later). */
 public enum class ClueLanguage(public val code: String) { TR("tr"), }

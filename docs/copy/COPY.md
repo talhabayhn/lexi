@@ -185,5 +185,9 @@ hides low ratings from the store.
 | `home_daily_goal_progress` | Bugün {done}/{goal} | Today {done}/{goal} | 16 |
 | `home_daily_goal_reached` | Hedefe ulaşıldı | Goal reached | 20 |
 | `game_combo_badge` | x{n} SERİ | x{n} COMBO | 10 |
+| `home_joker_gift_daily` | Günün hediyesi: +{n} joker | Daily gift: +{n} joker | 36 |
+| `home_joker_gift_streak` | 7 günlük seri bonusu: +{n} joker | 7-day streak bonus: +{n} joker | 42 |
+| `home_joker_gift_combined` | Günün hediyesi ve seri bonusu: +{n} joker | Daily gift & streak bonus: +{n} jokers | 48 |
 
 Home badge hidden at 0; distinct from the in-game combo (see `DECISIONS.md`).
+

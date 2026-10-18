@@ -304,12 +304,27 @@ private fun Review(state: ResultUiState, onIntent: (ResultIntent) -> Unit) {
     }
 }
 
+internal const val SHARE_AVAILABLE: Boolean = false // TODO(B3): share card (`12-share-card`) rendered to bitmap + system share sheet
+
 /**
- * 3-column grid, gap 10: TEKRAR OYNA spans two columns, Paylaş one (both 60dp, s5). Without [canPlayAgain] (a finished
- * Daily, deviation from the design) Paylaş takes the whole row.
+ * Action buttons: behind [SHARE_AVAILABLE] = false (TODO(B3)), TEKRAR OYNA is full width and Paylaş is hidden.
+ * When enabled, 3-column grid, gap 10: TEKRAR OYNA spans two columns, Paylaş one (both 60dp, s5). Without [canPlayAgain]
+ * (a finished Daily, deviation from the design) Paylaş takes the whole row.
  */
 @Composable
 private fun Actions(canPlayAgain: Boolean, onIntent: (ResultIntent) -> Unit) {
+    if (!SHARE_AVAILABLE) {
+        if (canPlayAgain) {
+            LexiButton(
+                text = stringResource(Res.string.result_play_again),
+                onClick = { onIntent(ResultIntent.PlayAgain) },
+                textStyle = LexiTheme.typography.button20Wide,
+                height = LexiButtonDefaults.LargerHeight,
+                modifier = Modifier.fillMaxWidth(),
+            )
+        }
+        return
+    }
     val gap = LexiTheme.dimens.gap10
     BoxWithConstraints(Modifier.fillMaxWidth()) {
         val column = (maxWidth - gap * (ResultDefaults.CTA_COLUMNS - 1)) / ResultDefaults.CTA_COLUMNS

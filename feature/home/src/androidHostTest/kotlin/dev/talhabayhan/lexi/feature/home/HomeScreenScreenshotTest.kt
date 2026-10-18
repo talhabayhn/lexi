@@ -118,6 +118,35 @@ class HomeScreenScreenshotTest {
     }
 
     @Test
+    fun dailyGiftNotice() {
+        captureRoboImage("src/androidHostTest/screenshots/HomeScreenDailyGiftNotice.png") {
+            LexiTheme(reducedMotion = false) {
+                HomeScreen(
+                    state = HomeSampleState.copy(
+                        dailyGiftNotice = DailyGiftNotice(DailyGiftNoticeType.Daily, 1),
+                    ),
+                    onIntent = {},
+                )
+            }
+        }
+    }
+
+    @Test
+    @Config(qualifiers = "en-w390dp-h844dp-xhdpi")
+    fun dailyGiftNoticeEnglish() {
+        captureRoboImage("src/androidHostTest/screenshots/HomeScreenDailyGiftNoticeEnglish.png") {
+            LexiTheme(reducedMotion = false) {
+                HomeScreen(
+                    state = HomeSampleState.copy(
+                        dailyGiftNotice = DailyGiftNotice(DailyGiftNoticeType.Daily, 1),
+                    ),
+                    onIntent = {},
+                )
+            }
+        }
+    }
+
+    @Test
     @Config(qualifiers = "tr-w320dp-h568dp-xhdpi")
     fun w320h568() = capture("HomeLayout_w320h568")
 

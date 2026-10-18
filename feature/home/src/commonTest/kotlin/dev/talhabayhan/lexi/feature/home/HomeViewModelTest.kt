@@ -2,9 +2,11 @@ package dev.talhabayhan.lexi.feature.home
 
 import app.cash.turbine.test
 import dev.talhabayhan.lexi.core.domain.daily.GetDailyWheel
+import dev.talhabayhan.lexi.core.domain.game.GameConfig
 import dev.talhabayhan.lexi.core.domain.game.GameMode
 import dev.talhabayhan.lexi.core.domain.goal.DailyGoalProgress
 import dev.talhabayhan.lexi.core.domain.goal.GetDailyGoalProgress
+import dev.talhabayhan.lexi.core.domain.joker.GrantDailyJokers
 import dev.talhabayhan.lexi.core.domain.model.CardId
 import dev.talhabayhan.lexi.core.domain.model.CategoryId
 import dev.talhabayhan.lexi.core.domain.model.Level
@@ -18,6 +20,7 @@ import dev.talhabayhan.lexi.core.testing.FakeAppClock
 import dev.talhabayhan.lexi.core.testing.FakeCardRepository
 import dev.talhabayhan.lexi.core.testing.FakeContentVersionRepository
 import dev.talhabayhan.lexi.core.testing.FakeDailyRepository
+import dev.talhabayhan.lexi.core.testing.FakeJokerRepository
 import dev.talhabayhan.lexi.core.testing.FakeProgressRepository
 import dev.talhabayhan.lexi.core.testing.FakeSessionRepository
 import dev.talhabayhan.lexi.core.testing.FakeSettingsRepository
@@ -44,6 +47,7 @@ class HomeViewModelTest {
     private val today = clock.epochDay(clock.nowMs())
     private val progress = FakeProgressRepository()
     private val streaks = FakeStreakRepository()
+    private val jokers = FakeJokerRepository()
     private val cards = FakeCardRepository()
     private val contentVersion = FakeContentVersionRepository()
     private val daily = FakeDailyRepository()
@@ -52,6 +56,7 @@ class HomeViewModelTest {
     private val getStreakStatus = GetStreakStatus(streaks, clock)
     private val getDailyWheel = GetDailyWheel(cards, contentVersion, daily, clock)
     private val getDailyGoalProgress = GetDailyGoalProgress(sessions, settings, clock)
+    private val grantDailyJokers = GrantDailyJokers(jokers, streaks, clock, GameConfig())
 
     @BeforeTest
     fun setUp() {
@@ -65,7 +70,7 @@ class HomeViewModelTest {
     }
 
     private fun viewModel(): HomeViewModel =
-        HomeViewModel(progress, getStreakStatus, getDailyWheel, daily, clock, getDailyGoalProgress)
+        HomeViewModel(progress, getStreakStatus, getDailyWheel, daily, clock, getDailyGoalProgress, grantDailyJokers)
 
     private fun runHomeTest(block: suspend TestScope.() -> Unit) = runTest {
         block()
@@ -245,6 +250,7 @@ class HomeViewModelTest {
             daily,
             dstClock,
             GetDailyGoalProgress(sessions, settings, dstClock),
+            GrantDailyJokers(jokers, streaks, dstClock, GameConfig()),
         )
         vm.state.test {
             val state = awaitItem()
@@ -391,6 +397,48 @@ class HomeViewModelTest {
 
             val after = expectMostRecentItem()
             assertEquals(DailyGoalProgress(done = 0, goal = 2, reached = false), after.dailyGoalProgress)
+        }
+    }
+
+    @Test
+    fun `daily gift notice shows once when grant is returned and dismisses on intent`() = runHomeTest {
+        val vm = viewModel()
+        vm.state.test {
+            val state = expectMostRecentItem()
+            assertEquals(DailyGiftNotice(DailyGiftNoticeType.Daily, 1), state.dailyGiftNotice)
+
+            vm.onIntent(HomeIntent.DismissNotice)
+            val dismissed = expectMostRecentItem()
+            assertEquals(null, dismissed.dailyGiftNotice)
+        }
+    }
+
+    @Test
+    fun `no grant shows no daily gift notice`() = runHomeTest {
+        // Pre-grant for today so GrantDailyJokers returns emptyList()
+        grantDailyJokers()
+        val vm = viewModel()
+        vm.state.test {
+            val state = expectMostRecentItem()
+            assertEquals(null, state.dailyGiftNotice)
+        }
+    }
+
+    @Test
+    fun `daily gift notice is not re-shown on the same day after refresh`() = runHomeTest {
+        val vm = viewModel()
+        vm.state.test {
+            val state = expectMostRecentItem()
+            assertEquals(DailyGiftNotice(DailyGiftNoticeType.Daily, 1), state.dailyGiftNotice)
+
+            // Dismiss the notice
+            vm.onIntent(HomeIntent.DismissNotice)
+            assertEquals(null, expectMostRecentItem().dailyGiftNotice)
+
+            // Refresh on the same day: should not re-show
+            vm.onIntent(HomeIntent.Refresh)
+            expectNoEvents()
+            assertEquals(null, vm.state.value.dailyGiftNotice)
         }
     }
 }

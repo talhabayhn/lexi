@@ -2,6 +2,7 @@ package dev.talhabayhan.lexi.feature.settings
 
 import androidx.compose.runtime.Immutable
 import dev.talhabayhan.lexi.core.domain.settings.Accent
+import dev.talhabayhan.lexi.core.domain.settings.AppLanguage
 import dev.talhabayhan.lexi.core.domain.settings.Settings
 
 /** What `11-settings` shows: the live settings and the placeholders for rows arriving later in M7. */
@@ -12,6 +13,7 @@ internal data class SettingsUiState(
     val speakOnCorrect: Boolean = true,
     val classicTimeLimitSeconds: Int = Settings.DEFAULT_CLASSIC_TIME_LIMIT_SECONDS,
     val dailyGoalWheels: Int = 1,
+    val appLanguage: AppLanguage = AppLanguage.SYSTEM,
     val accent: Accent = Accent.US,
 )
 
@@ -28,11 +30,15 @@ internal sealed interface SettingsIntent {
 
     data object CycleDailyGoal : SettingsIntent
 
+    data object CycleAppLanguage : SettingsIntent
+
     data object CycleAccent : SettingsIntent
 
     data class SetClassicTimeLimit(val seconds: Int) : SettingsIntent
 
     data class SetDailyGoalWheels(val wheels: Int) : SettingsIntent
+
+    data class SetAppLanguage(val language: AppLanguage) : SettingsIntent
 
     data class SetAccent(val accent: Accent) : SettingsIntent
 

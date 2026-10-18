@@ -51,7 +51,7 @@ internal class SettingsRepositoryImpl(private val dataStore: DataStore<Preferenc
                 ?: defaults.reminderMinuteOfDay,
             dailyGoalWheels = this[DAILY_GOAL]?.takeIf { it >= 1 } ?: defaults.dailyGoalWheels,
             reviewReminders = this[REVIEW_REMINDERS] ?: defaults.reviewReminders,
-            uiLanguage = enumOrNull<UiLanguage>(this[UI_LANGUAGE]) ?: defaults.uiLanguage,
+            appLanguage = enumOrNull<UiLanguage>(this[UI_LANGUAGE]) ?: defaults.appLanguage,
             clueLanguage = enumOrNull<ClueLanguage>(this[CLUE_LANGUAGE]) ?: defaults.clueLanguage,
             accent = enumOrNull<Accent>(this[ACCENT]) ?: defaults.accent,
         )

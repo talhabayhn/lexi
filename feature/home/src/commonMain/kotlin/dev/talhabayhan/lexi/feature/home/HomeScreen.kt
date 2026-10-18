@@ -2,6 +2,7 @@ package dev.talhabayhan.lexi.feature.home
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -23,6 +24,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -50,6 +52,8 @@ import dev.talhabayhan.lexi.core.designsystem.component.MenuTile
 import dev.talhabayhan.lexi.core.designsystem.component.NavSquareButton
 import dev.talhabayhan.lexi.core.designsystem.component.PlayButton
 import dev.talhabayhan.lexi.core.designsystem.component.StreakChip
+import dev.talhabayhan.lexi.core.designsystem.component.Toast
+import dev.talhabayhan.lexi.core.designsystem.component.ToastStyle
 import dev.talhabayhan.lexi.core.designsystem.icon.LexiIcons
 import dev.talhabayhan.lexi.core.designsystem.modifier.lexiSurface
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
@@ -58,6 +62,10 @@ import dev.talhabayhan.lexi.core.domain.game.GameMode
 import dev.talhabayhan.lexi.core.domain.goal.DailyGoalProgress
 import dev.talhabayhan.lexi.feature.home.generated.resources.Res
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_daily_completed_score
+import dev.talhabayhan.lexi.feature.home.generated.resources.home_joker_gift_combined
+import dev.talhabayhan.lexi.feature.home.generated.resources.home_joker_gift_daily
+import dev.talhabayhan.lexi.feature.home.generated.resources.home_joker_gift_streak
+import kotlinx.coroutines.delay
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_daily_goal_desc
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_daily_goal_desc_reached
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_daily_goal_progress
@@ -234,6 +242,24 @@ private fun HomeContent(
     ) {
         Column(verticalArrangement = Arrangement.spacedBy(metrics.gap)) {
             TopBar(state, onIntent)
+            state.dailyGiftNotice?.let { notice ->
+                LaunchedEffect(notice) {
+                    delay(2500L)
+                    onIntent(HomeIntent.DismissNotice)
+                }
+                val message = when (notice.type) {
+                    DailyGiftNoticeType.Daily -> stringResource(Res.string.home_joker_gift_daily, notice.amount)
+                    DailyGiftNoticeType.Streak -> stringResource(Res.string.home_joker_gift_streak, notice.amount)
+                    DailyGiftNoticeType.Combined -> stringResource(Res.string.home_joker_gift_combined, notice.amount)
+                }
+                Toast(
+                    message = message,
+                    style = ToastStyle.Info,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable { onIntent(HomeIntent.DismissNotice) },
+                )
+            }
             Column(
                 Modifier.padding(top = if (tier == HomeTier.Regular) dimens.gap8 else dimens.gap4),
                 verticalArrangement = Arrangement.spacedBy(dimens.gap6),
