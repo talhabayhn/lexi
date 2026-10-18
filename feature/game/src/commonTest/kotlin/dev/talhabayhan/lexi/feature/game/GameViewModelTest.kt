@@ -333,6 +333,24 @@ class GameViewModelTest {
     }
 
     @Test
+    fun `the daily wheel ignores classic time setting and uses daily limit`() = runTest {
+        settings.update { it.copy(classicTimeLimitSeconds = 120) }
+
+        val vm = startedIn(GameMode.DAILY)
+
+        assertEquals(config.dailyTimeLimitSeconds * 1_000L, vm.remainingMs)
+    }
+
+    @Test
+    fun `the hardcore wheel ignores classic time setting and uses hardcore limit`() = runTest {
+        settings.update { it.copy(classicTimeLimitSeconds = 120) }
+
+        val vm = startedIn(GameMode.HARDCORE)
+
+        assertEquals(config.hardcoreTimeLimitSeconds * 1_000L, vm.remainingMs)
+    }
+
+    @Test
     fun `the review wheel holds one card per letter of the due notebook cards of any level`() = runTest {
         val today = appClock.epochDay(appClock.nowMs())
         cards.cards = listOf(

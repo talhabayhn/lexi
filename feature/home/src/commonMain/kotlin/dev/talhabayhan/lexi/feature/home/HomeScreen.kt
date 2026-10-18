@@ -1,5 +1,6 @@
 package dev.talhabayhan.lexi.feature.home
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -18,6 +19,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
@@ -28,6 +30,8 @@ import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.layout.Placeable
 import androidx.compose.ui.layout.SubcomposeLayout
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.Density
@@ -47,11 +51,16 @@ import dev.talhabayhan.lexi.core.designsystem.component.NavSquareButton
 import dev.talhabayhan.lexi.core.designsystem.component.PlayButton
 import dev.talhabayhan.lexi.core.designsystem.component.StreakChip
 import dev.talhabayhan.lexi.core.designsystem.icon.LexiIcons
+import dev.talhabayhan.lexi.core.designsystem.modifier.lexiSurface
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.core.designsystem.theme.lexiContentWidth
 import dev.talhabayhan.lexi.core.domain.game.GameMode
+import dev.talhabayhan.lexi.core.domain.goal.DailyGoalProgress
 import dev.talhabayhan.lexi.feature.home.generated.resources.Res
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_daily_completed_score
+import dev.talhabayhan.lexi.feature.home.generated.resources.home_daily_goal_desc
+import dev.talhabayhan.lexi.feature.home.generated.resources.home_daily_goal_desc_reached
+import dev.talhabayhan.lexi.feature.home.generated.resources.home_daily_goal_progress
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_daily_label
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_daily_next_wheel_hours_minutes
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_daily_next_wheel_minutes
@@ -235,53 +244,63 @@ private fun HomeContent(
             val months = stringArrayResource(Res.array.home_months)
             val monthName = months.getOrNull(state.dailyMonth - 1).orEmpty()
             val dailyLabel = stringResource(Res.string.home_daily_label, monthName)
-            when (val daily = state.dailyState) {
-                is DailyCardState.Available -> {
-                    DailyCard(
-                        day = state.dailyDay.toString(),
-                        label = dailyLabel,
-                        title = stringResource(Res.string.home_daily_title),
-                        onClick = { onIntent(HomeIntent.OpenDaily) },
-                        compact = metrics.compactDaily,
-                        enabled = true,
-                        showChevron = true,
-                    )
-                }
-
-                is DailyCardState.AlreadyPlayed -> {
-                    val nextWheelSubtitle = if (daily.hoursUntilNext > 0) {
-                        stringResource(
-                            Res.string.home_daily_next_wheel_hours_minutes,
-                            daily.hoursUntilNext,
-                            daily.minutesUntilNext,
-                        )
-                    } else {
-                        stringResource(
-                            Res.string.home_daily_next_wheel_minutes,
-                            daily.minutesUntilNext,
+            Column(
+                verticalArrangement = Arrangement.spacedBy(if (metrics.compactDaily) dimens.gap4 else dimens.gap8),
+            ) {
+                when (val daily = state.dailyState) {
+                    is DailyCardState.Available -> {
+                        DailyCard(
+                            day = state.dailyDay.toString(),
+                            label = dailyLabel,
+                            title = stringResource(Res.string.home_daily_title),
+                            onClick = { onIntent(HomeIntent.OpenDaily) },
+                            compact = metrics.compactDaily,
+                            enabled = true,
+                            showChevron = true,
                         )
                     }
-                    DailyCard(
-                        day = state.dailyDay.toString(),
-                        label = dailyLabel,
-                        title = stringResource(Res.string.home_daily_completed_score, daily.score),
-                        subtitle = nextWheelSubtitle,
-                        onClick = {},
-                        compact = metrics.compactDaily,
-                        enabled = false,
-                        showChevron = false,
-                    )
-                }
 
-                is DailyCardState.Unavailable -> {
-                    DailyCard(
-                        day = state.dailyDay.toString(),
-                        label = dailyLabel,
-                        title = stringResource(Res.string.home_daily_unavailable),
-                        onClick = {},
+                    is DailyCardState.AlreadyPlayed -> {
+                        val nextWheelSubtitle = if (daily.hoursUntilNext > 0) {
+                            stringResource(
+                                Res.string.home_daily_next_wheel_hours_minutes,
+                                daily.hoursUntilNext,
+                                daily.minutesUntilNext,
+                            )
+                        } else {
+                            stringResource(
+                                Res.string.home_daily_next_wheel_minutes,
+                                daily.minutesUntilNext,
+                            )
+                        }
+                        DailyCard(
+                            day = state.dailyDay.toString(),
+                            label = dailyLabel,
+                            title = stringResource(Res.string.home_daily_completed_score, daily.score),
+                            subtitle = nextWheelSubtitle,
+                            onClick = {},
+                            compact = metrics.compactDaily,
+                            enabled = false,
+                            showChevron = false,
+                        )
+                    }
+
+                    is DailyCardState.Unavailable -> {
+                        DailyCard(
+                            day = state.dailyDay.toString(),
+                            label = dailyLabel,
+                            title = stringResource(Res.string.home_daily_unavailable),
+                            onClick = {},
+                            compact = metrics.compactDaily,
+                            enabled = false,
+                            showChevron = false,
+                        )
+                    }
+                }
+                state.dailyGoalProgress?.let { goal ->
+                    DailyGoalChip(
+                        progress = goal,
                         compact = metrics.compactDaily,
-                        enabled = false,
-                        showChevron = false,
                     )
                 }
             }
@@ -416,6 +435,61 @@ private fun GameMode.nameRes() = when (this) {
     GameMode.PRACTICE -> Res.string.home_mode_practice
     GameMode.HARDCORE -> Res.string.home_mode_hardcore
     else -> Res.string.home_mode_classic
+}
+
+/**
+ * Daily goal progress chip ("Bugün {done}/{goal}", DESIGN-DEBT).
+ * Reached (done >= goal): yellow filled chip with checkmark icon.
+ * In-progress: white chip with blue circle marker.
+ */
+@Composable
+private fun DailyGoalChip(progress: DailyGoalProgress, compact: Boolean, modifier: Modifier = Modifier) {
+    val colors = LexiTheme.colors
+    val text = stringResource(Res.string.home_daily_goal_progress, progress.done, progress.goal)
+    val reached = progress.reached
+    val bg = if (reached) colors.yellow else colors.white
+    val description = if (reached) {
+        stringResource(Res.string.home_daily_goal_desc_reached, progress.done, progress.goal)
+    } else {
+        stringResource(Res.string.home_daily_goal_desc, progress.done, progress.goal)
+    }
+    Row(
+        modifier = modifier
+            .semantics(mergeDescendants = true) {
+                contentDescription = description
+            }
+            .lexiSurface(
+                color = bg,
+                border = BorderStroke(LexiTheme.borders.regular, colors.ink),
+            )
+            .padding(
+                horizontal = if (compact) LexiTheme.dimens.gap8 else LexiTheme.dimens.gap10,
+                vertical = if (compact) LexiTheme.dimens.gap4 else LexiTheme.dimens.gap6,
+            ),
+        horizontalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap6),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        if (reached) {
+            Icon(
+                imageVector = LexiIcons.Check,
+                contentDescription = null,
+                tint = colors.ink,
+                modifier = Modifier.size(if (compact) LexiTheme.dimens.gap14 else LexiTheme.dimens.gap16),
+            )
+        } else {
+            DecorShape(
+                kind = DecorShapeKind.Circle,
+                color = colors.blue,
+                border = BorderStroke(LexiTheme.borders.thin, colors.ink),
+                modifier = Modifier.size(if (compact) LexiTheme.dimens.gap10 else LexiTheme.dimens.gap12),
+            )
+        }
+        Text(
+            text = text,
+            style = if (compact) LexiTheme.typography.caption13SemiBold else LexiTheme.typography.bodyStrong15,
+            color = colors.ink,
+        )
+    }
 }
 
 // design sample, not user-facing

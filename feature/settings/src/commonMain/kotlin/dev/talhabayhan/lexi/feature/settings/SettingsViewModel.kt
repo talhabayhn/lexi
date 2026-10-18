@@ -2,7 +2,9 @@ package dev.talhabayhan.lexi.feature.settings
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import dev.talhabayhan.lexi.core.domain.game.GameConfig
 import dev.talhabayhan.lexi.core.domain.repository.SettingsRepository
+import dev.talhabayhan.lexi.core.domain.settings.Accent
 import dev.talhabayhan.lexi.core.domain.settings.Settings
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.channels.Channel
@@ -15,11 +17,13 @@ import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 
 /**
- * Settings (`11-settings`): the three working switches read from and written to the [SettingsRepository]. The state
- * is always the stored value, so a switch only moves once the write has landed; `SoundPlayer`, `Haptics` and the
- * game's speech read the same store.
+ * Settings (`11-settings`): settings read from and written to [SettingsRepository]. The state is always the stored
+ * value, so controls only move once the write has landed; game, feedback and TTS services read the same store.
  */
-internal class SettingsViewModel(private val settings: SettingsRepository) : ViewModel() {
+internal class SettingsViewModel(
+    private val settings: SettingsRepository,
+    private val config: GameConfig = GameConfig(),
+) : ViewModel() {
     private val mutableState = MutableStateFlow(SettingsUiState())
     val state: StateFlow<SettingsUiState> = mutableState.asStateFlow()
 
@@ -36,6 +40,9 @@ internal class SettingsViewModel(private val settings: SettingsRepository) : Vie
                         soundEffects = it.soundEffects,
                         haptics = it.haptics,
                         speakOnCorrect = it.speakOnCorrect,
+                        classicTimeLimitSeconds = it.classicTimeLimitSeconds,
+                        dailyGoalWheels = it.dailyGoalWheels,
+                        accent = it.accent,
                     )
                 }
         }
@@ -44,9 +51,40 @@ internal class SettingsViewModel(private val settings: SettingsRepository) : Vie
     fun onIntent(intent: SettingsIntent) {
         when (intent) {
             SettingsIntent.Back -> effectChannel.trySend(SettingsEffect.NavigateBack)
+
             is SettingsIntent.SetSoundEffects -> write { it.copy(soundEffects = intent.enabled) }
+
             is SettingsIntent.SetHaptics -> write { it.copy(haptics = intent.enabled) }
+
             is SettingsIntent.SetSpeakOnCorrect -> write { it.copy(speakOnCorrect = intent.enabled) }
+
+            SettingsIntent.CycleClassicTime -> write { current ->
+                val options = config.classicTimeLimitOptionsSeconds
+                val idx = options.indexOf(current.classicTimeLimitSeconds)
+                val next = if (idx >= 0) options[(idx + 1) % options.size] else options.first()
+                current.copy(classicTimeLimitSeconds = next)
+            }
+
+            SettingsIntent.CycleDailyGoal -> write { current ->
+                val idx = DAILY_GOAL_OPTIONS.indexOf(current.dailyGoalWheels)
+                val next = if (idx >= 0) {
+                    DAILY_GOAL_OPTIONS[(idx + 1) % DAILY_GOAL_OPTIONS.size]
+                } else {
+                    DAILY_GOAL_OPTIONS.first()
+                }
+                current.copy(dailyGoalWheels = next)
+            }
+
+            SettingsIntent.CycleAccent -> write { current ->
+                val next = if (current.accent == Accent.US) Accent.UK else Accent.US
+                current.copy(accent = next)
+            }
+
+            is SettingsIntent.SetClassicTimeLimit -> write { it.copy(classicTimeLimitSeconds = intent.seconds) }
+
+            is SettingsIntent.SetDailyGoalWheels -> write { it.copy(dailyGoalWheels = intent.wheels) }
+
+            is SettingsIntent.SetAccent -> write { it.copy(accent = intent.accent) }
         }
     }
 
@@ -60,5 +98,9 @@ internal class SettingsViewModel(private val settings: SettingsRepository) : Vie
                 // The switch stays where it was (the state follows the store). TODO(M7): report it.
             }
         }
+    }
+
+    internal companion object {
+        val DAILY_GOAL_OPTIONS: List<Int> = listOf(1, 2, 3, 5)
     }
 }

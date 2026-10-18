@@ -3,6 +3,7 @@ package dev.talhabayhan.lexi.feature.home
 import com.github.takahirom.roborazzi.captureRoboImage
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiViewport
+import dev.talhabayhan.lexi.core.domain.goal.DailyGoalProgress
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
@@ -53,6 +54,63 @@ class HomeScreenScreenshotTest {
             LexiTheme(reducedMotion = false) {
                 HomeScreen(
                     state = HomeSampleState.copy(dailyState = DailyCardState.Unavailable),
+                    onIntent = {},
+                )
+            }
+        }
+    }
+
+    @Test
+    fun goalProgress0Of3() {
+        captureRoboImage("src/androidHostTest/screenshots/HomeScreenGoal0Of3.png") {
+            LexiTheme(reducedMotion = false) {
+                HomeScreen(
+                    state = HomeSampleState.copy(
+                        dailyGoalProgress = DailyGoalProgress(done = 0, goal = 3, reached = false),
+                    ),
+                    onIntent = {},
+                )
+            }
+        }
+    }
+
+    @Test
+    fun goalProgress2Of3() {
+        captureRoboImage("src/androidHostTest/screenshots/HomeScreenGoal2Of3.png") {
+            LexiTheme(reducedMotion = false) {
+                HomeScreen(
+                    state = HomeSampleState.copy(
+                        dailyGoalProgress = DailyGoalProgress(done = 2, goal = 3, reached = false),
+                    ),
+                    onIntent = {},
+                )
+            }
+        }
+    }
+
+    @Test
+    fun goalProgressReached() {
+        captureRoboImage("src/androidHostTest/screenshots/HomeScreenGoalReached.png") {
+            LexiTheme(reducedMotion = false) {
+                HomeScreen(
+                    state = HomeSampleState.copy(
+                        dailyGoalProgress = DailyGoalProgress(done = 3, goal = 3, reached = true),
+                    ),
+                    onIntent = {},
+                )
+            }
+        }
+    }
+
+    @Test
+    @Config(fontScale = 1.3f)
+    fun goalProgressLargeFont() {
+        captureRoboImage("src/androidHostTest/screenshots/HomeScreenGoalLargeFont.png") {
+            LexiTheme(reducedMotion = false) {
+                HomeScreen(
+                    state = HomeSampleState.copy(
+                        dailyGoalProgress = DailyGoalProgress(done = 2, goal = 3, reached = false),
+                    ),
                     onIntent = {},
                 )
             }

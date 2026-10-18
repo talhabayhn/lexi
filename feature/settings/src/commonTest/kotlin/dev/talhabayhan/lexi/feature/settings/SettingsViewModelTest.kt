@@ -33,14 +33,25 @@ class SettingsViewModelTest {
     private fun viewModel() = SettingsViewModel(repository)
 
     @Test
-    fun `the switches show the stored values`() = runTest {
-        repository.update { it.copy(soundEffects = false, speakOnCorrect = false) }
+    fun `the settings show the stored values`() = runTest {
+        repository.update {
+            it.copy(
+                soundEffects = false,
+                speakOnCorrect = false,
+                classicTimeLimitSeconds = 240,
+                dailyGoalWheels = 3,
+                accent = dev.talhabayhan.lexi.core.domain.settings.Accent.UK,
+            )
+        }
 
         val state = viewModel().state.value
 
         assertFalse(state.soundEffects)
         assertTrue(state.haptics)
         assertFalse(state.speakOnCorrect)
+        assertEquals(240, state.classicTimeLimitSeconds)
+        assertEquals(3, state.dailyGoalWheels)
+        assertEquals(dev.talhabayhan.lexi.core.domain.settings.Accent.UK, state.accent)
     }
 
     @Test
@@ -62,6 +73,81 @@ class SettingsViewModelTest {
         viewModel.onIntent(SettingsIntent.SetHaptics(true))
         assertTrue(repository.settings.value.haptics)
         assertTrue(viewModel.state.value.haptics)
+    }
+
+    @Test
+    fun `cycle classic time cycles through allowed options`() = runTest {
+        val viewModel = viewModel()
+        assertEquals(180, viewModel.state.value.classicTimeLimitSeconds)
+
+        viewModel.onIntent(SettingsIntent.CycleClassicTime)
+        assertEquals(240, viewModel.state.value.classicTimeLimitSeconds)
+        assertEquals(240, repository.settings.value.classicTimeLimitSeconds)
+
+        viewModel.onIntent(SettingsIntent.CycleClassicTime)
+        assertEquals(300, viewModel.state.value.classicTimeLimitSeconds)
+        assertEquals(300, repository.settings.value.classicTimeLimitSeconds)
+
+        viewModel.onIntent(SettingsIntent.CycleClassicTime)
+        assertEquals(120, viewModel.state.value.classicTimeLimitSeconds)
+        assertEquals(120, repository.settings.value.classicTimeLimitSeconds)
+
+        viewModel.onIntent(SettingsIntent.CycleClassicTime)
+        assertEquals(180, viewModel.state.value.classicTimeLimitSeconds)
+        assertEquals(180, repository.settings.value.classicTimeLimitSeconds)
+    }
+
+    @Test
+    fun `cycle daily goal cycles through allowed options`() = runTest {
+        val viewModel = viewModel()
+        assertEquals(1, viewModel.state.value.dailyGoalWheels)
+
+        viewModel.onIntent(SettingsIntent.CycleDailyGoal)
+        assertEquals(2, viewModel.state.value.dailyGoalWheels)
+        assertEquals(2, repository.settings.value.dailyGoalWheels)
+
+        viewModel.onIntent(SettingsIntent.CycleDailyGoal)
+        assertEquals(3, viewModel.state.value.dailyGoalWheels)
+        assertEquals(3, repository.settings.value.dailyGoalWheels)
+
+        viewModel.onIntent(SettingsIntent.CycleDailyGoal)
+        assertEquals(5, viewModel.state.value.dailyGoalWheels)
+        assertEquals(5, repository.settings.value.dailyGoalWheels)
+
+        viewModel.onIntent(SettingsIntent.CycleDailyGoal)
+        assertEquals(1, viewModel.state.value.dailyGoalWheels)
+        assertEquals(1, repository.settings.value.dailyGoalWheels)
+    }
+
+    @Test
+    fun `cycle accent toggles between US and UK`() = runTest {
+        val viewModel = viewModel()
+        assertEquals(dev.talhabayhan.lexi.core.domain.settings.Accent.US, viewModel.state.value.accent)
+
+        viewModel.onIntent(SettingsIntent.CycleAccent)
+        assertEquals(dev.talhabayhan.lexi.core.domain.settings.Accent.UK, viewModel.state.value.accent)
+        assertEquals(dev.talhabayhan.lexi.core.domain.settings.Accent.UK, repository.settings.value.accent)
+
+        viewModel.onIntent(SettingsIntent.CycleAccent)
+        assertEquals(dev.talhabayhan.lexi.core.domain.settings.Accent.US, viewModel.state.value.accent)
+        assertEquals(dev.talhabayhan.lexi.core.domain.settings.Accent.US, repository.settings.value.accent)
+    }
+
+    @Test
+    fun `explicit setters write to settings and update state`() = runTest {
+        val viewModel = viewModel()
+
+        viewModel.onIntent(SettingsIntent.SetClassicTimeLimit(300))
+        assertEquals(300, repository.settings.value.classicTimeLimitSeconds)
+        assertEquals(300, viewModel.state.value.classicTimeLimitSeconds)
+
+        viewModel.onIntent(SettingsIntent.SetDailyGoalWheels(5))
+        assertEquals(5, repository.settings.value.dailyGoalWheels)
+        assertEquals(5, viewModel.state.value.dailyGoalWheels)
+
+        viewModel.onIntent(SettingsIntent.SetAccent(dev.talhabayhan.lexi.core.domain.settings.Accent.UK))
+        assertEquals(dev.talhabayhan.lexi.core.domain.settings.Accent.UK, repository.settings.value.accent)
+        assertEquals(dev.talhabayhan.lexi.core.domain.settings.Accent.UK, viewModel.state.value.accent)
     }
 
     @Test

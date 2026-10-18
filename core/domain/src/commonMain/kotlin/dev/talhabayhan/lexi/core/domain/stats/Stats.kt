@@ -1,5 +1,6 @@
 package dev.talhabayhan.lexi.core.domain.stats
 
+import dev.talhabayhan.lexi.core.domain.game.GameMode
 import dev.talhabayhan.lexi.core.domain.model.CardId
 import dev.talhabayhan.lexi.core.domain.model.CategoryId
 import dev.talhabayhan.lexi.core.domain.model.Level
@@ -8,7 +9,12 @@ import kotlinx.serialization.Serializable
 
 /** What statistics need of a played session (`session` table); [epochDay] is in the player's time zone. */
 @Serializable
-public data class SessionRecord(val epochDay: Long, val completed: Boolean, val correct: Int)
+public data class SessionRecord(
+    val epochDay: Long,
+    val completed: Boolean,
+    val correct: Int,
+    val mode: GameMode? = null,
+)
 
 /** [percent] is rounded half up; null when nothing was answered. */
 public data class Accuracy(val correct: Int, val answered: Int) {

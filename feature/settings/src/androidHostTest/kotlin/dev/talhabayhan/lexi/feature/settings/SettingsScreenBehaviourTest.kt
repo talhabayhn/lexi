@@ -67,11 +67,32 @@ class SettingsScreenBehaviourTest {
             LexiTheme(reducedMotion = true) { SettingsScreen(SettingsUiState(), onIntent = { intents += it }) }
         }
 
-        // Pro card + classic time, 3 learning rows, 3 language rows.
-        assertEquals(8, onAllNodesWithText("YAKINDA", useUnmergedTree = true).fetchSemanticsNodes().size)
-        onNodeWithText("Klasik mod süresi").performClick()
+        // Pro card + reminder, review reminders, ui language, clue language.
+        assertEquals(5, onAllNodesWithText("YAKINDA", useUnmergedTree = true).fetchSemanticsNodes().size)
+        onNodeWithText("Günlük hatırlatma").performClick()
         onNodeWithText("Arayüz dili").performClick()
 
         assertEquals(emptyList<SettingsIntent>(), intents)
+    }
+
+    @Test
+    fun `live value rows emit cycle intents when tapped`() = runComposeUiTest {
+        val intents = mutableListOf<SettingsIntent>()
+        setContent {
+            LexiTheme(reducedMotion = true) { SettingsScreen(SettingsUiState(), onIntent = { intents += it }) }
+        }
+
+        onNodeWithText("Klasik mod süresi").performClick()
+        onNodeWithText("Günlük hedef").performClick()
+        onNodeWithText("İngilizce aksanı").performClick()
+
+        assertEquals(
+            listOf(
+                SettingsIntent.CycleClassicTime,
+                SettingsIntent.CycleDailyGoal,
+                SettingsIntent.CycleAccent,
+            ),
+            intents,
+        )
     }
 }

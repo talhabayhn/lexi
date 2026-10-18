@@ -2,6 +2,7 @@ package dev.talhabayhan.lexi.feature.home
 
 import androidx.compose.runtime.Immutable
 import dev.talhabayhan.lexi.core.domain.game.GameMode
+import dev.talhabayhan.lexi.core.domain.goal.DailyGoalProgress
 import dev.talhabayhan.lexi.core.domain.model.Level
 
 /**
@@ -40,6 +41,8 @@ internal data class HomeUiState(
     /** Level and mode on the OYNA badge. TODO(M5): the last played choice, once it is persisted. */
     val playLevel: Level = Level.A1,
     val playMode: GameMode = GameMode.CLASSIC,
+    /** Daily goal progress for today ("Bugün {done}/{goal}"). */
+    val dailyGoalProgress: DailyGoalProgress? = null,
 )
 
 internal sealed interface HomeIntent {

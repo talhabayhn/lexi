@@ -182,6 +182,8 @@ hides low ratings from the store.
 | Key | TR | EN | Budget |
 |---|---|---|---|
 | `home_streak_badge` | {n} gün seri | {n}-day streak | 14 |
+| `home_daily_goal_progress` | Bugün {done}/{goal} | Today {done}/{goal} | 16 |
+| `home_daily_goal_reached` | Hedefe ulaşıldı | Goal reached | 20 |
 | `game_combo_badge` | x{n} SERİ | x{n} COMBO | 10 |
 
 Home badge hidden at 0; distinct from the in-game combo (see `DECISIONS.md`).

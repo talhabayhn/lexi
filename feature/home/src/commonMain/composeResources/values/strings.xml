@@ -60,4 +60,10 @@
     <!-- Exam packs page (10-exam-packs, SOON) -->
     <string name="home_back">Back</string>
     <string name="home_exams_soon">SOON: LGS, YKS-Dil and YDS wheels are on their way.</string>
+
+    <!-- Daily goal progress chip -->
+    <string name="home_daily_goal_progress">Today %1$d/%2$d</string>
+    <string name="home_daily_goal_reached">Goal reached</string>
+    <string name="home_daily_goal_desc">Daily goal: %1$d of %2$d wheels completed</string>
+    <string name="home_daily_goal_desc_reached">Daily goal completed: %1$d of %2$d wheels</string>
 </resources>

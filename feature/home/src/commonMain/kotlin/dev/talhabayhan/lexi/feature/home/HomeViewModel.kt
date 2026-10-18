@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dev.talhabayhan.lexi.core.domain.daily.DailyPlayState
 import dev.talhabayhan.lexi.core.domain.daily.GetDailyWheel
+import dev.talhabayhan.lexi.core.domain.goal.GetDailyGoalProgress
 import dev.talhabayhan.lexi.core.domain.repository.DailyRepository
 import dev.talhabayhan.lexi.core.domain.repository.ProgressRepository
 import dev.talhabayhan.lexi.core.domain.stats.Stats
@@ -31,6 +32,7 @@ internal class HomeViewModel(
     private val getDailyWheel: GetDailyWheel,
     private val daily: DailyRepository,
     private val appClock: AppClock,
+    getDailyGoalProgress: GetDailyGoalProgress,
 ) : ViewModel() {
     private val mutableState = MutableStateFlow(HomeUiState())
     val state: StateFlow<HomeUiState> = mutableState.asStateFlow()
@@ -60,6 +62,14 @@ internal class HomeViewModel(
                             dailyMonth = date.month,
                         )
                     }
+                }
+        }
+
+        viewModelScope.launch {
+            getDailyGoalProgress.observe(today)
+                .catch { }
+                .collect { goalProgress ->
+                    mutableState.update { it.copy(dailyGoalProgress = goalProgress) }
                 }
         }
 

@@ -2,9 +2,15 @@ package dev.talhabayhan.lexi.feature.home
 
 import app.cash.turbine.test
 import dev.talhabayhan.lexi.core.domain.daily.GetDailyWheel
+import dev.talhabayhan.lexi.core.domain.game.GameMode
+import dev.talhabayhan.lexi.core.domain.goal.DailyGoalProgress
+import dev.talhabayhan.lexi.core.domain.goal.GetDailyGoalProgress
 import dev.talhabayhan.lexi.core.domain.model.CardId
+import dev.talhabayhan.lexi.core.domain.model.CategoryId
 import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.core.domain.session.DailyResult
+import dev.talhabayhan.lexi.core.domain.session.SessionResult
+import dev.talhabayhan.lexi.core.domain.settings.Settings
 import dev.talhabayhan.lexi.core.domain.srs.CardProgress
 import dev.talhabayhan.lexi.core.domain.streak.GetStreakStatus
 import dev.talhabayhan.lexi.core.domain.time.AppClock
@@ -13,6 +19,8 @@ import dev.talhabayhan.lexi.core.testing.FakeCardRepository
 import dev.talhabayhan.lexi.core.testing.FakeContentVersionRepository
 import dev.talhabayhan.lexi.core.testing.FakeDailyRepository
 import dev.talhabayhan.lexi.core.testing.FakeProgressRepository
+import dev.talhabayhan.lexi.core.testing.FakeSessionRepository
+import dev.talhabayhan.lexi.core.testing.FakeSettingsRepository
 import dev.talhabayhan.lexi.core.testing.FakeStreakRepository
 import dev.talhabayhan.lexi.core.testing.testAlphabetPool
 import kotlinx.coroutines.Dispatchers
@@ -27,6 +35,8 @@ import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertFalse
+import kotlin.test.assertTrue
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class HomeViewModelTest {
@@ -37,8 +47,11 @@ class HomeViewModelTest {
     private val cards = FakeCardRepository()
     private val contentVersion = FakeContentVersionRepository()
     private val daily = FakeDailyRepository()
+    private val sessions = FakeSessionRepository()
+    private val settings = FakeSettingsRepository()
     private val getStreakStatus = GetStreakStatus(streaks, clock)
     private val getDailyWheel = GetDailyWheel(cards, contentVersion, daily, clock)
+    private val getDailyGoalProgress = GetDailyGoalProgress(sessions, settings, clock)
 
     @BeforeTest
     fun setUp() {
@@ -51,7 +64,8 @@ class HomeViewModelTest {
         Dispatchers.resetMain()
     }
 
-    private fun viewModel(): HomeViewModel = HomeViewModel(progress, getStreakStatus, getDailyWheel, daily, clock)
+    private fun viewModel(): HomeViewModel =
+        HomeViewModel(progress, getStreakStatus, getDailyWheel, daily, clock, getDailyGoalProgress)
 
     private fun runHomeTest(block: suspend TestScope.() -> Unit) = runTest {
         block()
@@ -224,7 +238,14 @@ class HomeViewModelTest {
         }
         val getDaily = GetDailyWheel(cards, contentVersion, daily, dstClock)
         daily.record(DailyResult(100L, Level.A1, score = 180, timeMs = 20000))
-        val vm = HomeViewModel(progress, GetStreakStatus(streaks, dstClock), getDaily, daily, dstClock)
+        val vm = HomeViewModel(
+            progress,
+            GetStreakStatus(streaks, dstClock),
+            getDaily,
+            daily,
+            dstClock,
+            GetDailyGoalProgress(sessions, settings, dstClock),
+        )
         vm.state.test {
             val state = awaitItem()
             val dailyState = state.dailyState as DailyCardState.AlreadyPlayed
@@ -303,6 +324,73 @@ class HomeViewModelTest {
             viewModel.onIntent(HomeIntent.OpenExamPacks)
 
             assertEquals(HomeEffect.NavigateToExamPacks, awaitItem())
+        }
+    }
+
+    private fun session(mode: GameMode = GameMode.CLASSIC, day: Long = today, completed: Boolean = true) =
+        SessionResult(
+            mode = mode,
+            level = Level.A1,
+            category = CategoryId("basics"),
+            seed = 1L,
+            startedAtMs = clock.nowMs() - 60_000L,
+            endedAtMs = clock.nowMs(),
+            epochDay = day,
+            score = 200,
+            correct = 20,
+            wrong = 3,
+            passed = 3,
+            completed = completed,
+        )
+
+    @Test
+    fun `daily goal progress reflects completed wheels and updates on session record`() = runHomeTest {
+        settings.update { it.copy(dailyGoalWheels = 2) }
+        val viewModel = viewModel()
+        viewModel.state.test {
+            val initial = expectMostRecentItem()
+            assertEquals(DailyGoalProgress(done = 0, goal = 2, reached = false), initial.dailyGoalProgress)
+
+            sessions.record(session(completed = true))
+            val afterOne = expectMostRecentItem()
+            assertEquals(DailyGoalProgress(done = 1, goal = 2, reached = false), afterOne.dailyGoalProgress)
+
+            sessions.record(session(completed = true))
+            val reached = expectMostRecentItem()
+            assertEquals(DailyGoalProgress(done = 2, goal = 2, reached = true), reached.dailyGoalProgress)
+        }
+    }
+
+    @Test
+    fun `daily goal progress updates when settings goal is changed`() = runHomeTest {
+        sessions.record(session(completed = true))
+        val viewModel = viewModel()
+        viewModel.state.test {
+            val initial = expectMostRecentItem()
+            assertEquals(DailyGoalProgress(done = 1, goal = 1, reached = true), initial.dailyGoalProgress)
+
+            settings.update { it.copy(dailyGoalWheels = 3) }
+            val updated = expectMostRecentItem()
+            assertEquals(DailyGoalProgress(done = 1, goal = 3, reached = false), updated.dailyGoalProgress)
+        }
+    }
+
+    @Test
+    fun `daily goal progress resets today count after midnight refresh`() = runHomeTest {
+        settings.update { it.copy(dailyGoalWheels = 2) }
+        sessions.record(session(day = today, completed = true))
+        val viewModel = viewModel()
+        viewModel.state.test {
+            val before = expectMostRecentItem()
+            assertEquals(DailyGoalProgress(done = 1, goal = 2, reached = false), before.dailyGoalProgress)
+
+            // Advance past midnight and trigger refresh
+            val msToMidnight = clock.msUntilNextDay()
+            clock.advanceBy(msToMidnight + 1000L)
+            viewModel.onIntent(HomeIntent.Refresh)
+
+            val after = expectMostRecentItem()
+            assertEquals(DailyGoalProgress(done = 0, goal = 2, reached = false), after.dailyGoalProgress)
         }
     }
 }

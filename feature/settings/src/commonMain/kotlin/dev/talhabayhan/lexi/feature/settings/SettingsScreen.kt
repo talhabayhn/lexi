@@ -25,8 +25,10 @@ import dev.talhabayhan.lexi.core.designsystem.component.CountChip
 import dev.talhabayhan.lexi.core.designsystem.component.JokerRowDefaults
 import dev.talhabayhan.lexi.core.designsystem.component.ListCard
 import dev.talhabayhan.lexi.core.designsystem.component.ListRow
+import dev.talhabayhan.lexi.core.designsystem.component.ListRowValue
 import dev.talhabayhan.lexi.core.designsystem.component.NavSquareButton
 import dev.talhabayhan.lexi.core.designsystem.component.ProBanner
+import dev.talhabayhan.lexi.core.designsystem.format.formatClock
 import dev.talhabayhan.lexi.core.designsystem.icon.LexiIcons
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.core.designsystem.theme.lexiContentWidth
@@ -37,6 +39,7 @@ import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_back
 import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_classic_time
 import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_clue_language
 import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_daily_goal
+import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_daily_goal_wheels
 import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_daily_reminder
 import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_footer
 import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_haptics
@@ -52,12 +55,14 @@ import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_sound
 import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_speak_on_correct
 import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_title
 import org.jetbrains.compose.resources.StringResource
+import org.jetbrains.compose.resources.pluralStringResource
 import org.jetbrains.compose.resources.stringResource
 
 /**
- * `11-settings`: back button and title, the Lexi Pro card, then the OYUN, ÖĞRENME and DİL cards. The sound, haptics and
- * speak-on-correct switches work; every other row (Pro, reminders, goal, languages, accent, classic time) is shown
- * faded with a "YAKINDA" chip until M7. The page scrolls on small screens; the footer links wait for M7 too.
+ * `11-settings`: back button and title, the Lexi Pro card, then the OYUN, ÖĞRENME and DİL cards. The switches
+ * (sound, haptics, speak-on-correct), classic time, daily goal and accent rows are live; the Pro card, reminder,
+ * notebook review reminders, UI language and clue language are shown with a "YAKINDA" chip. The page scrolls on small
+ * screens; the footer links wait for M7 too.
  */
 @Composable
 internal fun SettingsScreen(state: SettingsUiState, onIntent: (SettingsIntent) -> Unit, modifier: Modifier = Modifier) {
@@ -101,17 +106,38 @@ internal fun SettingsScreen(state: SettingsUiState, onIntent: (SettingsIntent) -
                 checked = state.speakOnCorrect,
                 onCheckedChange = { onIntent(SettingsIntent.SetSpeakOnCorrect(it)) },
             )
-            SoonRow(Res.string.settings_classic_time)
+            ListRow(
+                label = stringResource(Res.string.settings_classic_time),
+                onClick = { onIntent(SettingsIntent.CycleClassicTime) },
+            ) {
+                ListRowValue(formatClock(state.classicTimeLimitSeconds))
+            }
         }
         Section(Res.string.settings_section_learning) {
             SoonRow(Res.string.settings_daily_reminder)
-            SoonRow(Res.string.settings_daily_goal)
+            ListRow(
+                label = stringResource(Res.string.settings_daily_goal),
+                onClick = { onIntent(SettingsIntent.CycleDailyGoal) },
+            ) {
+                ListRowValue(
+                    pluralStringResource(
+                        Res.plurals.settings_daily_goal_wheels,
+                        state.dailyGoalWheels,
+                        state.dailyGoalWheels,
+                    ),
+                )
+            }
             SoonRow(Res.string.settings_review_reminders)
         }
         Section(Res.string.settings_section_language) {
             SoonRow(Res.string.settings_language)
             SoonRow(Res.string.settings_clue_language)
-            SoonRow(Res.string.settings_accent)
+            ListRow(
+                label = stringResource(Res.string.settings_accent),
+                onClick = { onIntent(SettingsIntent.CycleAccent) },
+            ) {
+                ListRowValue(state.accent.name)
+            }
         }
         Text(
             text = stringResource(Res.string.settings_footer, AppInfo.NAME),

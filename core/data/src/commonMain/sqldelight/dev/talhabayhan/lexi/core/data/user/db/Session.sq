@@ -24,4 +24,4 @@ INSERT INTO session(mode, level, category, seed, started_ms, ended_ms, epoch_day
 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
 
 records:
-SELECT epoch_day, completed, correct FROM session ORDER BY id;
+SELECT epoch_day, completed, correct, mode FROM session ORDER BY id;

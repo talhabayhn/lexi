@@ -45,6 +45,14 @@ class SettingsScreenshotTest {
         }
     }
 
+    @Test
+    @Config(fontScale = 1.3f)
+    fun largeFont() {
+        captureRoboImage("src/androidHostTest/screenshots/SettingsLargeFont.png") {
+            LexiTheme(reducedMotion = false) { SettingsScreen(state = SettingsUiState(), onIntent = {}) }
+        }
+    }
+
     /** Expanded tier (`LexiViewport`): the design scaled, the column centred and at most 430dp (× scale) wide. */
     @Test
     @Config(qualifiers = "tr-w600dp-h1100dp-mdpi")

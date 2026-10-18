@@ -6,6 +6,7 @@ import dev.talhabayhan.lexi.core.data.di.dataModule
 import dev.talhabayhan.lexi.core.domain.config.FeatureFlags
 import dev.talhabayhan.lexi.core.domain.daily.GetDailyWheel
 import dev.talhabayhan.lexi.core.domain.game.GameConfig
+import dev.talhabayhan.lexi.core.domain.goal.GetDailyGoalProgress
 import dev.talhabayhan.lexi.core.domain.joker.GrantDailyJokers
 import dev.talhabayhan.lexi.core.domain.session.FinishGame
 import dev.talhabayhan.lexi.core.domain.streak.GetStreakStatus
@@ -40,6 +41,7 @@ internal val appCoreModule: Module = module {
     factory { GrantDailyJokers(jokers = get(), streaks = get(), clock = get(), config = get()) }
     factory { GetDailyWheel(cards = get(), contentVersion = get(), daily = get(), clock = get()) }
     factory { GetStreakStatus(streaks = get(), clock = get()) }
+    factory { GetDailyGoalProgress(sessions = get(), settings = get(), clock = get()) }
     // Haptics, SoundPlayer and Speaker are bound per platform (rememberPlatformModule) on top of this snapshot.
     single { LiveSettings(get(), CoroutineScope(SupervisorJob() + Dispatchers.Default)) } onClose { it?.close() }
 }

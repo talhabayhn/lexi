@@ -60,4 +60,10 @@
     <!-- Sınav paketleri sayfası (10-exam-packs, YAKINDA) -->
     <string name="home_back">Geri</string>
     <string name="home_exams_soon">YAKINDA: LGS, YKS-Dil ve YDS çarkları hazırlanıyor.</string>
+
+    <!-- Günlük hedef ilerleme rozeti -->
+    <string name="home_daily_goal_progress">Bugün %1$d/%2$d</string>
+    <string name="home_daily_goal_reached">Hedefe ulaşıldı</string>
+    <string name="home_daily_goal_desc">Günlük hedef: %1$d / %2$d çark tamamlandı</string>
+    <string name="home_daily_goal_desc_reached">Günlük hedef tamamlandı: %1$d / %2$d çark</string>
 </resources>

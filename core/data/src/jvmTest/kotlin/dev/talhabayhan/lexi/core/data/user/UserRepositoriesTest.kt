@@ -122,9 +122,9 @@ class UserRepositoriesTest {
         sessions.observeRecords().test {
             assertEquals(
                 listOf(
-                    SessionRecord(20_000, true, 20),
-                    SessionRecord(20_001, false, 7),
-                    SessionRecord(20_000, true, 22),
+                    SessionRecord(20_000, true, 20, GameMode.CLASSIC),
+                    SessionRecord(20_001, false, 7, GameMode.CLASSIC),
+                    SessionRecord(20_000, true, 22, GameMode.CLASSIC),
                 ),
                 awaitItem(),
             )

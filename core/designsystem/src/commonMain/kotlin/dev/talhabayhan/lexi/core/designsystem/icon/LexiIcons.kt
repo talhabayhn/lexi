@@ -70,6 +70,9 @@ public object LexiIcons {
     public val Search: ImageVector by lazy {
         strokeIcon("Search", 2.6f, "M4.5 11a6.5 6.5 0 1 0 13 0a6.5 6.5 0 1 0-13 0z", "M16 16l5 5")
     }
+
+    /** Check mark (✓): completed goals and selection. */
+    public val Check: ImageVector by lazy { strokeIcon("Check", 3f, "M5 13l4 4L19 7") }
 }
 
 private const val VIEWPORT = 24f
