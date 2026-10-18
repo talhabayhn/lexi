@@ -34,7 +34,9 @@ public object AndroidPlatformLanguage {
                 val systemLocales = Resources.getSystem().configuration.locales
                 if (!systemLocales.isEmpty) systemLocales[0] else Locale.getDefault()
             }
+
             AppLanguage.TR -> Locale.forLanguageTag("tr")
+
             AppLanguage.EN -> Locale.forLanguageTag("en")
         }
         Locale.setDefault(locale)

@@ -90,10 +90,10 @@ import dev.talhabayhan.lexi.feature.home.generated.resources.home_tile_practice
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_tile_practice_subtitle
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_tile_stats
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_tile_stats_learned
+import kotlinx.coroutines.delay
 import org.jetbrains.compose.resources.pluralStringResource
 import org.jetbrains.compose.resources.stringArrayResource
 import org.jetbrains.compose.resources.stringResource
-import kotlinx.coroutines.delay
 
 /**
  * `02-home`: streak chip and settings, the logo, the daily card, OYNA and the 2 × 2 menu tiles. The blue circle and

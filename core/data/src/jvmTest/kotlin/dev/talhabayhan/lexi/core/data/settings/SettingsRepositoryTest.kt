@@ -46,7 +46,7 @@ class SettingsRepositoryTest {
             reminderMinuteOfDay = 7 * 60 + 30,
             dailyGoalWheels = 3,
             reviewReminders = false,
-            uiLanguage = UiLanguage.EN,
+            appLanguage = UiLanguage.EN,
             accent = Accent.UK,
         )
 

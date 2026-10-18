@@ -17,10 +17,7 @@ import dev.talhabayhan.lexi.core.domain.time.AppClock
  * - After 3 refusals stop permanently
  * - Once user rated, stop permanently
  */
-public class RatingPromptPolicy(
-    private val clock: AppClock,
-    private val enabled: Boolean = RATING_PROMPT_ENABLED,
-) {
+public class RatingPromptPolicy(private val clock: AppClock, private val enabled: Boolean = RATING_PROMPT_ENABLED) {
     public fun shouldPrompt(
         state: RatingPromptState,
         sessionCount: Int,

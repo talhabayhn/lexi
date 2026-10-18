@@ -145,7 +145,7 @@ class SettingsViewModelTest {
     }
 
     @Test
-    fun `cycle app language cycles through SYSTEM, TR, EN, and back to SYSTEM`() = runTest {
+    fun `cycle app language cycles through SYSTEM TR EN and back to SYSTEM`() = runTest {
         val viewModel = viewModel()
         assertEquals(AppLanguage.SYSTEM, viewModel.state.value.appLanguage)
 

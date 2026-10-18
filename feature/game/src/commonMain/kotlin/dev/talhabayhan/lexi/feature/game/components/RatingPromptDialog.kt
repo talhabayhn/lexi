@@ -24,11 +24,7 @@ import org.jetbrains.compose.resources.stringResource
  * "Enjoying Lexi?" / "Lexi hoşuna gidiyor mu?".
  */
 @Composable
-internal fun RatingPromptDialog(
-    onRate: () -> Unit,
-    onLater: () -> Unit,
-    modifier: Modifier = Modifier,
-) {
+internal fun RatingPromptDialog(onRate: () -> Unit, onLater: () -> Unit, modifier: Modifier = Modifier) {
     Box(modifier.fillMaxSize()) {
         ModalScrim(onDismissRequest = onLater)
         ConfirmDialog(
