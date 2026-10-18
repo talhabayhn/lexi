@@ -47,6 +47,6 @@
     <string name="about_link_terms">Terms of Use</string>
     <string name="about_link_support">Support</string>
     <string name="about_section_sources">SOURCES</string>
-    <string name="about_sources_content">Word clues and example sentences are our original content.</string>
+    <string name="about_sources_content">Clues and example sentences are written for Lexi.</string>
     <string name="about_section_licenses">LICENSES</string>
 </resources>
