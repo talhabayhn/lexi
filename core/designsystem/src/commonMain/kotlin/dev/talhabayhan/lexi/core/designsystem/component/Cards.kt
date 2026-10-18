@@ -148,7 +148,7 @@ public fun LevelCard(
     val lines = if (inverted) colors.cream else colors.ink
     PressableSurface(
         onClick = onClick,
-        modifier = modifier.height(CardDefaults.LevelCardHeight).semantics { this.selected = selected },
+        modifier = modifier.heightIn(min = CardDefaults.LevelCardHeight).semantics { this.selected = selected },
         color = fill,
         shadow = if (selected) LexiTheme.shadows.s6 else LexiTheme.shadows.s3,
         role = Role.RadioButton,

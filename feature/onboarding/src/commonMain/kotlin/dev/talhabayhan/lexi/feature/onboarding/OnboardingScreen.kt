@@ -6,9 +6,11 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -426,7 +428,7 @@ private fun LevelPickerContent(
         ) {
             Level.entries.chunked(2).forEach { row ->
                 Row(
-                    modifier = Modifier.fillMaxWidth(),
+                    modifier = Modifier.fillMaxWidth().height(IntrinsicSize.Max),
                     horizontalArrangement = Arrangement.spacedBy(gap),
                 ) {
                     row.forEach { level ->
@@ -449,7 +451,7 @@ private fun LevelPickerContent(
                                 level == Level.NAT -> LevelCardStyle.Inverted
                                 else -> LevelCardStyle.Normal
                             },
-                            modifier = Modifier.weight(1f),
+                            modifier = Modifier.weight(1f).fillMaxHeight(),
                         )
                     }
                 }

@@ -213,13 +213,13 @@ private fun Review(state: ResultUiState, onIntent: (ResultIntent) -> Unit) {
             Text(
                 text = stringResource(Res.string.result_review_title),
                 style = typography.heading20,
-                modifier = Modifier.alignByBaseline(),
+                modifier = Modifier.weight(1f, fill = false).alignByBaseline(),
             )
             if (state.addedToNotebook > 0) {
                 Text(
                     text = pluralStringResource(Res.plurals.result_added, state.addedToNotebook, state.addedToNotebook),
                     style = typography.caption13SemiBold,
-                    modifier = Modifier.alignByBaseline(),
+                    modifier = Modifier.padding(start = LexiTheme.dimens.gap8).alignByBaseline(),
                 )
             }
         }

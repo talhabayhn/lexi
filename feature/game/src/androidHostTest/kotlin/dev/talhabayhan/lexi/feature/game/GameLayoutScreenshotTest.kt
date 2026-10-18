@@ -70,11 +70,75 @@ class GameLayoutScreenshotTest {
     @Config(qualifiers = "tr-w400dp-h1000dp-mdpi")
     fun w400h1000() = capture("GameLayout_w400h1000", GameSamples.design)
 
-    private fun capture(name: String, state: GameUiState) {
+    @Test
+    @Config(qualifiers = "tr-w360dp-h640dp-xhdpi", fontScale = 1.3f)
+    fun w360h640FontScale130() = capture("GameLayout_w360h640_fontScale130", GameLayoutFixtures.twoLineClue)
+
+    @Test
+    @Config(qualifiers = "tr-w600dp-h960dp-mdpi", fontScale = 1.3f)
+    fun w600h960FontScale130() = capture("GameLayout_w600h960_fontScale130", GameLayoutFixtures.fifteenKeys)
+
+    // Joker sheet layout tests
+    @Test
+    @Config(qualifiers = "tr-w320dp-h568dp-xhdpi")
+    fun jokerSheet_w320h568() =
+        capture("JokerSheet_w320h568", GameSamples.jokerSheet, clock = { GameSamples.jokerSheetClock })
+
+    @Test
+    @Config(qualifiers = "tr-w320dp-h568dp-xhdpi", fontScale = 1.3f)
+    fun jokerSheet_w320h568FontScale130() =
+        capture("JokerSheet_w320h568_fontScale130", GameSamples.jokerSheet, clock = { GameSamples.jokerSheetClock })
+
+    @Test
+    @Config(qualifiers = "tr-w360dp-h640dp-xhdpi")
+    fun jokerSheet_w360h640() =
+        capture("JokerSheet_w360h640", GameSamples.jokerSheet, clock = { GameSamples.jokerSheetClock })
+
+    @Test
+    @Config(qualifiers = "tr-w360dp-h640dp-xhdpi", fontScale = 1.3f)
+    fun jokerSheet_w360h640FontScale130() =
+        capture("JokerSheet_w360h640_fontScale130", GameSamples.jokerSheet, clock = { GameSamples.jokerSheetClock })
+
+    @Test
+    @Config(qualifiers = "tr-w600dp-h960dp-mdpi")
+    fun jokerSheet_w600h960() =
+        capture("JokerSheet_w600h960", GameSamples.jokerSheet, clock = { GameSamples.jokerSheetClock })
+
+    @Test
+    @Config(qualifiers = "tr-w600dp-h960dp-mdpi", fontScale = 1.3f)
+    fun jokerSheet_w600h960FontScale130() =
+        capture("JokerSheet_w600h960_fontScale130", GameSamples.jokerSheet, clock = { GameSamples.jokerSheetClock })
+
+    // Pause dialog layout tests
+    @Test
+    @Config(qualifiers = "tr-w320dp-h568dp-xhdpi")
+    fun pauseDialog_w320h568() = capture("GamePauseDialog_w320h568", GameSamples.paused)
+
+    @Test
+    @Config(qualifiers = "tr-w320dp-h568dp-xhdpi", fontScale = 1.3f)
+    fun pauseDialog_w320h568FontScale130() = capture("GamePauseDialog_w320h568_fontScale130", GameSamples.paused)
+
+    @Test
+    @Config(qualifiers = "tr-w360dp-h640dp-xhdpi")
+    fun pauseDialog_w360h640() = capture("GamePauseDialog_w360h640", GameSamples.paused)
+
+    @Test
+    @Config(qualifiers = "tr-w360dp-h640dp-xhdpi", fontScale = 1.3f)
+    fun pauseDialog_w360h640FontScale130() = capture("GamePauseDialog_w360h640_fontScale130", GameSamples.paused)
+
+    @Test
+    @Config(qualifiers = "tr-w600dp-h960dp-mdpi")
+    fun pauseDialog_w600h960() = capture("GamePauseDialog_w600h960", GameSamples.paused)
+
+    @Test
+    @Config(qualifiers = "tr-w600dp-h960dp-mdpi", fontScale = 1.3f)
+    fun pauseDialog_w600h960FontScale130() = capture("GamePauseDialog_w600h960_fontScale130", GameSamples.paused)
+
+    private fun capture(name: String, state: GameUiState, clock: () -> GameClockUi = { GameSamples.designClock }) {
         captureRoboImage("src/androidHostTest/screenshots/$name.png") {
             LexiTheme(reducedMotion = false) {
                 LexiViewport {
-                    GameScreen(state = state, clock = { GameSamples.designClock }, onIntent = {})
+                    GameScreen(state = state, clock = clock, onIntent = {})
                 }
             }
         }

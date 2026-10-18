@@ -190,6 +190,14 @@ class HomeScreenScreenshotTest {
     @Config(qualifiers = "tr-w600dp-h960dp-mdpi")
     fun w600h960() = capture("HomeLayout_w600h960")
 
+    @Test
+    @Config(qualifiers = "tr-w360dp-h640dp-xhdpi", fontScale = 1.3f)
+    fun w360h640FontScale130() = capture("HomeLayout_w360h640_fontScale130")
+
+    @Test
+    @Config(qualifiers = "tr-w600dp-h960dp-mdpi", fontScale = 1.3f)
+    fun w600h960FontScale130() = capture("HomeLayout_w600h960_fontScale130")
+
     private fun capture(name: String) {
         captureRoboImage("src/androidHostTest/screenshots/$name.png") {
             LexiTheme(reducedMotion = false) { LexiViewport { HomeScreen(state = HomeSampleState, onIntent = {}) } }

@@ -27,6 +27,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -43,6 +45,7 @@ import dev.talhabayhan.lexi.core.designsystem.icon.LexiIcons
 import dev.talhabayhan.lexi.core.designsystem.modifier.dashedBorder
 import dev.talhabayhan.lexi.core.designsystem.modifier.lexiSurface
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
+import dev.talhabayhan.lexi.core.designsystem.theme.lexiContentWidth
 import dev.talhabayhan.lexi.core.designsystem.theme.withCssLineHeight
 
 /** Sheet and empty-state geometry (`05-joker-sheet.html`, `16-components.html`). */
@@ -110,7 +113,9 @@ public fun BottomSheet(
         }
         AnimatedVisibility(
             visible = visible,
-            modifier = Modifier.align(Alignment.BottomCenter),
+            modifier = Modifier
+                .align(Alignment.BottomCenter)
+                .lexiContentWidth(),
             enter = if (motion.reducedMotion) {
                 EnterTransition.None
             } else {
@@ -158,7 +163,8 @@ public fun BottomSheetPanel(
             .drawBehind { drawRect(colors.ink, size = Size(size.width, topBorder.toPx())) }
             .padding(top = topBorder)
             .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Bottom + WindowInsetsSides.Horizontal))
-            .padding(OverlayDefaults.SheetPadding),
+            .padding(OverlayDefaults.SheetPadding)
+            .verticalScroll(rememberScrollState()),
         verticalArrangement = Arrangement.spacedBy(OverlayDefaults.SheetGap),
     ) {
         Row(

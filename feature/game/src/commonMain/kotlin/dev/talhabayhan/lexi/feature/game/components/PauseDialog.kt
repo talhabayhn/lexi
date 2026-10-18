@@ -18,6 +18,7 @@ import dev.talhabayhan.lexi.core.designsystem.component.DialogPanel
 import dev.talhabayhan.lexi.core.designsystem.component.FeedbackDefaults
 import dev.talhabayhan.lexi.core.designsystem.component.ModalScrim
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
+import dev.talhabayhan.lexi.core.designsystem.theme.lexiContentWidth
 import dev.talhabayhan.lexi.feature.game.GameIntent
 import dev.talhabayhan.lexi.feature.game.generated.resources.Res
 import dev.talhabayhan.lexi.feature.game.generated.resources.game_pause_message
@@ -57,6 +58,7 @@ internal fun PauseDialog(
         val dialogModifier = Modifier
             .align(Alignment.Center)
             .windowInsetsPadding(WindowInsets.safeDrawing)
+            .lexiContentWidth()
             .padding(horizontal = LexiTheme.dimens.screenPaddingHorizontal)
         when {
             quitConfirmation -> ConfirmDialog(

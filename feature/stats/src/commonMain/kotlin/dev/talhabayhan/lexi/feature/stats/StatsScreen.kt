@@ -178,12 +178,12 @@ private fun WeekCard(state: StatsUiState) {
             Text(
                 stringResource(Res.string.stats_week_title),
                 style = typography.bodyStrong16,
-                modifier = Modifier.alignByBaseline(),
+                modifier = Modifier.weight(1f, fill = false).alignByBaseline(),
             )
             Text(
                 stringResource(Res.string.stats_week_total, state.weekTotal),
                 style = typography.caption13SemiBold,
-                modifier = Modifier.alignByBaseline(),
+                modifier = Modifier.padding(start = LexiTheme.dimens.gap8).alignByBaseline(),
             )
         }
         BarChart(

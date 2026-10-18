@@ -12,6 +12,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
@@ -164,7 +166,8 @@ public fun DialogPanel(
         modifier = modifier
             .semantics { paneTitle = title }
             .lexiSurface(colors.white, BorderStroke(LexiTheme.borders.regular, colors.ink), LexiTheme.shadows.s8)
-            .padding(FeedbackDefaults.DialogPadding),
+            .padding(FeedbackDefaults.DialogPadding)
+            .verticalScroll(rememberScrollState()),
         verticalArrangement = Arrangement.spacedBy(FeedbackDefaults.DialogGap),
     ) {
         Box(

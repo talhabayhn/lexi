@@ -3,11 +3,14 @@ package dev.talhabayhan.lexi.feature.levels
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.windowInsetsPadding
@@ -125,7 +128,10 @@ private fun CategoryGrid(state: CategoriesUiState, onIntent: (CategoriesIntent) 
     val turkish = Locale.current.language == TURKISH
     Column(verticalArrangement = Arrangement.spacedBy(gap)) {
         state.categories.withIndex().chunked(CATEGORY_COLUMNS).forEach { row ->
-            Row(horizontalArrangement = Arrangement.spacedBy(gap)) {
+            Row(
+                modifier = Modifier.fillMaxWidth().height(IntrinsicSize.Max),
+                horizontalArrangement = Arrangement.spacedBy(gap),
+            ) {
                 row.forEach { (index, category) ->
                     val look = lookOf(index)
                     CategoryCard(
@@ -144,7 +150,7 @@ private fun CategoryGrid(state: CategoriesUiState, onIntent: (CategoriesIntent) 
                         markerColor = look.color,
                         onClick = { onIntent(CategoriesIntent.OpenCategory(category.id)) },
                         complete = category.isComplete,
-                        modifier = Modifier.weight(1f),
+                        modifier = Modifier.weight(1f).fillMaxHeight(),
                     )
                 }
                 // An odd last row keeps its card at half width.

@@ -4,11 +4,14 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
@@ -140,7 +143,10 @@ private fun LevelGrid(state: LevelSelectUiState, onIntent: (LevelSelectIntent) -
     val gap = LexiTheme.dimens.gap12
     Column(Modifier.selectableGroup(), verticalArrangement = Arrangement.spacedBy(gap)) {
         state.levels.chunked(LEVEL_COLUMNS).forEach { row ->
-            Row(horizontalArrangement = Arrangement.spacedBy(gap)) {
+            Row(
+                modifier = Modifier.fillMaxWidth().height(IntrinsicSize.Max),
+                horizontalArrangement = Arrangement.spacedBy(gap),
+            ) {
                 row.forEach { progress ->
                     val selected = progress.level == state.selectedLevel
                     val look = progress.level.look()
@@ -162,7 +168,7 @@ private fun LevelGrid(state: LevelSelectUiState, onIntent: (LevelSelectIntent) -
                             progress.level == Level.NAT -> LevelCardStyle.Inverted
                             else -> LevelCardStyle.Normal
                         },
-                        modifier = Modifier.weight(1f),
+                        modifier = Modifier.weight(1f).fillMaxHeight(),
                     )
                 }
             }

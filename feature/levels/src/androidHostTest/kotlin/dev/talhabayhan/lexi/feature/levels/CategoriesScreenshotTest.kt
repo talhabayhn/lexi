@@ -91,4 +91,36 @@ class CategoriesScreenshotTest {
             }
         }
     }
+
+    @Test
+    @Config(qualifiers = "tr-w320dp-h568dp-xhdpi")
+    fun w320h568() = capture("Categories_w320h568")
+
+    @Test
+    @Config(qualifiers = "tr-w320dp-h568dp-xhdpi", fontScale = 1.3f)
+    fun w320h568FontScale130() = capture("Categories_w320h568_fontScale130")
+
+    @Test
+    @Config(qualifiers = "tr-w360dp-h640dp-xhdpi")
+    fun w360h640() = capture("Categories_w360h640")
+
+    @Test
+    @Config(qualifiers = "tr-w360dp-h640dp-xhdpi", fontScale = 1.3f)
+    fun w360h640FontScale130() = capture("Categories_w360h640_fontScale130")
+
+    @Test
+    @Config(qualifiers = "tr-w600dp-h960dp-mdpi")
+    fun w600h960() = capture("Categories_w600h960")
+
+    @Test
+    @Config(qualifiers = "tr-w600dp-h960dp-mdpi", fontScale = 1.3f)
+    fun w600h960FontScale130() = capture("Categories_w600h960_fontScale130")
+
+    private fun capture(name: String) {
+        captureRoboImage("src/androidHostTest/screenshots/$name.png") {
+            LexiTheme(reducedMotion = false) {
+                LexiViewport { CategoriesScreen(state = CategoriesSampleState, onIntent = {}) }
+            }
+        }
+    }
 }

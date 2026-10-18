@@ -10,9 +10,11 @@ import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.windowInsetsPadding
@@ -39,6 +41,7 @@ import dev.talhabayhan.lexi.core.designsystem.component.LexiButton
 import dev.talhabayhan.lexi.core.designsystem.component.LexiButtonDefaults
 import dev.talhabayhan.lexi.core.designsystem.component.LexiButtonVariant
 import dev.talhabayhan.lexi.core.designsystem.component.NavSquareButton
+import dev.talhabayhan.lexi.core.designsystem.component.PressableSurface
 import dev.talhabayhan.lexi.core.designsystem.component.SearchField
 import dev.talhabayhan.lexi.core.designsystem.component.Segment
 import dev.talhabayhan.lexi.core.designsystem.component.SegmentedControl
@@ -174,24 +177,35 @@ private fun Tabs(state: NotebookUiState, onIntent: (NotebookIntent) -> Unit) {
 
 @Composable
 private fun ReviewButton(dueCount: Int, onClick: () -> Unit) {
-    LexiButton(
+    PressableSurface(
         onClick = onClick,
-        variant = LexiButtonVariant.Blue,
-        height = LexiButtonDefaults.LargerHeight,
-        contentPadding = PaddingValues(horizontal = LexiTheme.dimens.gap16),
-        horizontalArrangement = Arrangement.SpaceBetween,
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier
+            .fillMaxWidth()
+            .heightIn(min = LexiButtonDefaults.LargerHeight),
+        color = LexiTheme.colors.blue,
+        border = BorderStroke(LexiTheme.borders.regular, LexiTheme.colors.ink),
+        shadow = LexiTheme.shadows.s5,
+        role = Role.Button,
+        propagateMinConstraints = true,
     ) {
-        Text(
-            stringResource(Res.string.notebook_review_start),
-            style = LexiTheme.typography.heading18,
-            color = LexiTheme.colors.white,
-            modifier = Modifier.weight(1f, fill = false),
-        )
-        CountChip(
-            pluralStringResource(Res.plurals.notebook_review_count, dueCount, dueCount),
-            Modifier.padding(start = LexiTheme.dimens.gap8),
-        )
+        Row(
+            modifier = Modifier
+                .defaultMinSize(minHeight = LexiButtonDefaults.LargerHeight)
+                .padding(horizontal = LexiTheme.dimens.gap16),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Text(
+                stringResource(Res.string.notebook_review_start),
+                style = LexiTheme.typography.heading18,
+                color = LexiTheme.colors.white,
+                modifier = Modifier.weight(1f, fill = false),
+            )
+            CountChip(
+                pluralStringResource(Res.plurals.notebook_review_count, dueCount, dueCount),
+                Modifier.padding(start = LexiTheme.dimens.gap8),
+            )
+        }
     }
 }
 
