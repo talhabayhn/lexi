@@ -80,6 +80,9 @@ Module mapping (replaces the earlier `composeApp`): `androidApp` = thin Android 
 ## M7 — Monetisation, settings, exam packs, telemetry
 - [ ] Settings (`11-settings`) remaining options functional (classic time, goal, languages, accent, Pro card); reminders (notification permission pre-prompt)
 - [ ] RevenueCat: Pro entitlement, paywall (design debt), restore purchases
+- [ ] Play Console re-check when Pro/paywall (M7) or login/online rooms (v1.1) ship: update **App content → Login credentials**
+  (currently "no restricted sections"; give reviewers a test account or Pro access path), **Data safety**, privacy policy
+  (account data + deletion link) and age rating / target audience, before sending the release to production
 - [ ] AdMob rewarded (+1 joker) with UMP consent; interstitial policy from `PRODUCT.md`
 - [ ] Exam packs (`10-exam-packs`) gated by Pro (UI & RevenueCat wiring pending); content compiler pipeline integrated
   with in-repo `content/exam-packs/` (LGS + YDS/YÖKDİL metadata, schema, validation in `content.db`)
