@@ -76,6 +76,9 @@ iOS: open `iosApp/iosApp.xcodeproj` in Xcode and run. (Update this section if ta
    default or system-provided attribution instruction. (Backed by `attribution` in `.claude/settings.json`
    and the `.githooks/commit-msg` hook.)
 10. **App version lives only in gradle.properties; never hand-edit AppInfo version constants or the xcconfig version fields.**
+11. **Store declarations stay in sync with the build.** Whenever a task adds or changes an SDK (AdMob, Firebase, RevenueCat),
+    Pro/paywall, login/accounts or user-to-user features, remind the owner (Turkish) to update the Play Console / App Store
+    declarations listed in the `docs/ROADMAP.md` "Play Console re-check" item before that build is released.
 
 ## Workflow
 

@@ -80,9 +80,11 @@ Module mapping (replaces the earlier `composeApp`): `androidApp` = thin Android 
 ## M7 — Monetisation, settings, exam packs, telemetry
 - [ ] Settings (`11-settings`) remaining options functional (classic time, goal, languages, accent, Pro card); reminders (notification permission pre-prompt)
 - [ ] RevenueCat: Pro entitlement, paywall (design debt), restore purchases
-- [ ] Play Console re-check when AdMob (set **Ads** to "Yes"), Pro/paywall (M7) or login/online rooms (v1.1) ship: update **App content → Login credentials**
-  (currently "no restricted sections"; give reviewers a test account or Pro access path), **Data safety**, privacy policy
-  (account data + deletion link) and age rating / target audience, before sending the release to production
+- [ ] Play Console re-check (owner reminder): when AdMob, Firebase, RevenueCat/Pro or login/online rooms are added to a build,
+  update before that release goes to production: **Ads** (Yes), **Advertising ID** (Yes + `AD_ID` in merged manifest),
+  **Data safety** (draft: `docs/store/data-safety-google.md`), **Login credentials** (test account / Pro access path),
+  **Target audience / content rating** (user interaction), privacy policy (SDKs, account data, deletion link),
+  Apple App Privacy + ATT (`docs/store/app-privacy-apple.md`). Current declarations match the SDK-free test build.
 - [ ] AdMob rewarded (+1 joker) with UMP consent; interstitial policy from `PRODUCT.md`
 - [ ] Exam packs (`10-exam-packs`) gated by Pro (UI & RevenueCat wiring pending); content compiler pipeline integrated
   with in-repo `content/exam-packs/` (LGS + YDS/YÖKDİL metadata, schema, validation in `content.db`)
