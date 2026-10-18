@@ -1,11 +1,9 @@
-> **TASLAK — NİHAİ DEĞİL. Yayımlanmadan önce sahibi ve yetkin bir avukat tarafından incelenmelidir. Hukuki tavsiye değildir. Her "VERIFY" notu, hukuken belirsiz bir noktayı ya da son sürümde doğrulanacak bir bilgiyi gösterir.**
-
 # Lexi — Gizlilik Politikası ve KVKK Aydınlatma Metni
 
-**Son güncelleme:** [TARİH] · **Kapsam:** Android ve iOS için Lexi uygulaması (uygulama kimliği `dev.talhabayhan.lexi`)
+**Son güncelleme:** 18 Ekim 2026 · **Kapsam:** Android ve iOS için Lexi uygulaması (uygulama kimliği `dev.talhabayhan.lexi`)
 
 ## 1. Veri sorumlusu
-Veri sorumlusu **[DEVELOPER NAME]**'dir ("biz"). İletişim: **[CONTACT EMAIL]** · **[WEBSITE]**. VERIFY: adres, VERBİS yükümlülüğü ve gerekiyorsa AB temsilcisi (bkz. §12).
+Veri sorumlusu **Hüseyin Talha Bayhan**'dir ("biz"). İletişim: **talhabayhan.aps@gmail.com** · **https://talhabayhn.github.io/lexi**. VERIFY: adres, VERBİS yükümlülüğü ve gerekiyorsa AB temsilcisi (bkz. §12).
 
 ## 2. Özet
 - Lexi çevrimdışı çalışır. 1.0 sürümünde **hesap yoktur**, kayıt gerekmez.
@@ -48,7 +46,7 @@ Günlük hatırlatıcıyı açarsanız bildirimler **cihazınızda yerel olarak*
 Google ve RevenueCat verileri yurt dışında (ör. ABD) işleyebilir. Sağlayıcıların standart sözleşme maddeleri ve/veya yeterlilik mekanizmalarına dayanırız. VERIFY: KVKK m.9 (2024 değişikliği sonrası) ve GDPR Bölüm V.
 
 ## 9. Haklarınız
-**KVKK m.11** uyarınca: verilerin işlenip işlenmediğini öğrenme, bilgi talep etme, amacını öğrenme, aktarılan üçüncü kişileri bilme, düzeltme/silme isteme, otomatik analiz sonucuna itiraz, zararın giderilmesini talep etme. **GDPR** uyarınca: erişim, düzeltme, silme, kısıtlama, taşınabilirlik, itiraz, rızayı dilediğiniz zaman geri çekme ve denetim otoritesine şikâyet. Başvuru: **[CONTACT EMAIL]**; 30 gün içinde yanıtlarız (VERIFY: KVKK başvuru usulü, Veri Sorumlusuna Başvuru Usul ve Esasları Tebliği). Hesap ve oyun verisi tutmadığımız için reklam kimliğinizi / RevenueCat kullanıcı kimliğinizi (Ayarlar → Hakkında; VERIFY gösterilecek mi) istemek zorunda kalabiliriz. Google/RevenueCat'te tutulan veriye ilişkin talepler bu sağlayıcılara yönlendirilebilir. Şikâyet: Kişisel Verileri Koruma Kurumu (KVKK).
+**KVKK m.11** uyarınca: verilerin işlenip işlenmediğini öğrenme, bilgi talep etme, amacını öğrenme, aktarılan üçüncü kişileri bilme, düzeltme/silme isteme, otomatik analiz sonucuna itiraz, zararın giderilmesini talep etme. **GDPR** uyarınca: erişim, düzeltme, silme, kısıtlama, taşınabilirlik, itiraz, rızayı dilediğiniz zaman geri çekme ve denetim otoritesine şikâyet. Başvuru: **talhabayhan.aps@gmail.com**; 30 gün içinde yanıtlarız (VERIFY: KVKK başvuru usulü, Veri Sorumlusuna Başvuru Usul ve Esasları Tebliği). Hesap ve oyun verisi tutmadığımız için reklam kimliğinizi / RevenueCat kullanıcı kimliğinizi (Ayarlar → Hakkında; VERIFY gösterilecek mi) istemek zorunda kalabiliriz. Google/RevenueCat'te tutulan veriye ilişkin talepler bu sağlayıcılara yönlendirilebilir. Şikâyet: Kişisel Verileri Koruma Kurumu (KVKK).
 
 ## 10. Çocuklar
 Lexi **çocuklara yönelik değildir**; 13 yaşın (veya ülkenizdeki dijital rıza yaşının) altındaki çocuklardan bilerek kişisel veri toplamayız. VERIFY: Türkiye'de yaş eşiği ve reşit olmayanlar için açık rıza (veli onayı) konusu. Bir çocuğun veri verdiğini düşünüyorsanız bize yazın, silinmesine yardımcı oluruz. VERIFY: bkz. `app-privacy-apple.md` hedef kitle kararı.

@@ -64,7 +64,7 @@ Why: Lexi is a vocabulary game that will appeal to teens and students (LGS/YKS a
 ## 5. Google Play "App content" checklist
 | Item | Answer / action |
 |---|---|
-| Privacy policy | URL [WEBSITE]/privacy (live, no login, TR+EN) |
+| Privacy policy | URL https://talhabayhn.github.io/lexi/privacy (live, no login, TR+EN) |
 | Ads | Yes, contains ads |
 | App access | All functionality available without login/special access |
 | Content rating | Complete IARC (§3) |
@@ -77,7 +77,7 @@ Why: Lexi is a vocabulary game that will appeal to teens and students (LGS/YKS a
 | Photo & video permissions / Exact alarms | Declare if reminder uses exact alarms (VERIFY; prefer inexact WorkManager to avoid `SCHEDULE_EXACT_ALARM`) |
 | Subscriptions | Configure products (monthly, yearly, lifetime as one-time in-app product) + free-trial offers; prices set in Play Console |
 | Store listing | `listing-*.md`; graphics owned elsewhere |
-| App category / tags / contact details | Game → Word; email [CONTACT EMAIL]; website [WEBSITE]; phone optional |
+| App category / tags / contact details | Game → Word; email talhabayhan.aps@gmail.com; website https://talhabayhn.github.io/lexi; phone optional |
 
 ## 6. Export compliance (Apple + US EAR)
 - **App Store Connect → "Does your app use encryption?"** The app uses encryption only through the OS (HTTPS/TLS via URLSession/system libraries; SDKs use platform TLS). Answer **Yes → exempt**: set `ITSAppUsesNonExemptEncryption = NO` in `Info.plist` (VERIFY: no proprietary/non-standard cryptography; SQLite content DB is not encrypted; Firebase/AdMob/RevenueCat use standard TLS — Apple says encryption limited to HTTPS/OS-provided is exempt).
@@ -88,10 +88,10 @@ Why: Lexi is a vocabulary game that will appeal to teens and students (LGS/YKS a
 Use in the App Store description (already in `listing-*.md`), on the in-app paywall (near the Subscribe button) and link both in App Store Connect:
 
 **EN**
-> Lexi Pro is available as a monthly or yearly auto-renewing subscription, or as a one-time lifetime purchase. Payment is charged to your Apple ID account at confirmation of purchase. The subscription renews automatically unless it is cancelled at least 24 hours before the end of the current period. Your account will be charged for renewal within 24 hours before the end of the current period. You can manage or cancel your subscription in your Apple ID account settings. Any unused portion of a free trial period, if offered, is forfeited when you purchase a subscription. Privacy Policy: [WEBSITE]/privacy · Terms of Use: [WEBSITE]/terms
+> Lexi Pro is available as a monthly or yearly auto-renewing subscription, or as a one-time lifetime purchase. Payment is charged to your Apple ID account at confirmation of purchase. The subscription renews automatically unless it is cancelled at least 24 hours before the end of the current period. Your account will be charged for renewal within 24 hours before the end of the current period. You can manage or cancel your subscription in your Apple ID account settings. Any unused portion of a free trial period, if offered, is forfeited when you purchase a subscription. Privacy Policy: https://talhabayhn.github.io/lexi/privacy · Terms of Use: https://talhabayhn.github.io/lexi/terms
 
 **TR**
-> Lexi Pro aylık veya yıllık otomatik yenilenen abonelik ya da tek seferlik ömür boyu satın alma olarak sunulur. Ödeme, satın alma onayında Apple ID hesabınızdan tahsil edilir. Abonelik, mevcut dönemin bitiminden en az 24 saat önce iptal edilmedikçe otomatik yenilenir. Yenileme ücreti, mevcut dönemin bitiminden önceki 24 saat içinde hesabınızdan tahsil edilir. Aboneliğinizi Apple ID hesap ayarlarınızdan yönetebilir veya iptal edebilirsiniz. Ücretsiz deneme sunulursa kullanılmayan kısmı, abonelik satın alındığında geçersiz olur. Gizlilik Politikası: [WEBSITE]/privacy · Kullanım Koşulları: [WEBSITE]/terms
+> Lexi Pro aylık veya yıllık otomatik yenilenen abonelik ya da tek seferlik ömür boyu satın alma olarak sunulur. Ödeme, satın alma onayında Apple ID hesabınızdan tahsil edilir. Abonelik, mevcut dönemin bitiminden en az 24 saat önce iptal edilmedikçe otomatik yenilenir. Yenileme ücreti, mevcut dönemin bitiminden önceki 24 saat içinde hesabınızdan tahsil edilir. Aboneliğinizi Apple ID hesap ayarlarınızdan yönetebilir veya iptal edebilirsiniz. Ücretsiz deneme sunulursa kullanılmayan kısmı, abonelik satın alındığında geçersiz olur. Gizlilik Politikası: https://talhabayhn.github.io/lexi/privacy · Kullanım Koşulları: https://talhabayhn.github.io/lexi/terms
 
 Apple requirements (Guideline 3.1.2): paywall must show subscription title, length, price (localised, price per period), Restore Purchases button, links to Privacy Policy and Terms (or Apple EULA link in the metadata). VERIFY: paywall (currently design debt in `ROADMAP.md`) satisfies these.
 

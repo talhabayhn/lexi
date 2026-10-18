@@ -7,10 +7,10 @@
 |---|---|
 | Does the app collect or share any of the required user data types? | **Yes** |
 | Is all of the user data collected by your app encrypted in transit? | **Yes** (HTTPS/TLS only; VERIFY no cleartext traffic — `usesCleartextTraffic=false`) |
-| Do you provide a way for users to request that their data is deleted? | **Yes** — by email ([CONTACT EMAIL]) for data held by us/SDKs; on-device data is deleted by uninstalling or clearing app data. VERIFY: Play wants a deletion URL when there are accounts; there are none in v1.0, still provide the policy URL |
+| Do you provide a way for users to request that their data is deleted? | **Yes** — by email (talhabayhan.aps@gmail.com) for data held by us/SDKs; on-device data is deleted by uninstalling or clearing app data. VERIFY: Play wants a deletion URL when there are accounts; there are none in v1.0, still provide the policy URL |
 | Account creation | None (no account) — in the "account creation" section choose "My app does not allow users to create an account" |
 | Independent security review (optional badge) | No |
-| Privacy policy URL | [WEBSITE]/privacy |
+| Privacy policy URL | https://talhabayhn.github.io/lexi/privacy |
 
 ## 2. Data types
 "Collected" = transmitted off the device to us or a third party (SDK providers count). "Shared" = transferred to a third party; Google excludes service providers acting on your behalf and data sent for legal reasons — VERIFY which SDKs count as service providers (Google's guidance: Firebase/RevenueCat processing for you is *not* sharing; AdMob ad-serving *is* sharing).

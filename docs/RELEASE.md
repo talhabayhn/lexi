@@ -131,7 +131,7 @@ One-time: repo **Settings → Pages → Build and deployment → Source: GitHub 
 URL: `https://talhabayhn.github.io/lexi/` — EN at the root, TR under `/tr/`; privacy at `privacy/`,
 terms at `terms/`, support at `support/`. Use these as the store Privacy Policy / Support URLs.
 Before the store submission: fill the `[PLACEHOLDERS]` and remove the DRAFT banners in
-`docs/store/*.md` (lawyer review, `owner-checklist.md`), and drop `noindex` in `docs/site/build.py`.
+`docs/store/*.md` (lawyer review, `owner-checklist.md`).
 Local preview: `python docs/site/build.py --out _site` and open `_site/index.html`.
 
 ## 9. Store graphics and videos

@@ -1,11 +1,9 @@
-> **DRAFT — NOT FINAL. This document must be reviewed by the owner and a qualified lawyer before publication. It is not legal advice. Every "VERIFY" marks a legally uncertain point or a fact to confirm against the final build.**
-
 # Lexi — Privacy Policy
 
-**Last updated:** [DATE] · **Applies to:** the Lexi app for Android and iOS (app ID `dev.talhabayhan.lexi`)
+**Last updated:** 18 October 2026 · **Applies to:** the Lexi app for Android and iOS (app ID `dev.talhabayhan.lexi`)
 
 ## 1. Who we are
-The data controller is **[DEVELOPER NAME]** ("we"). Contact: **[CONTACT EMAIL]** · **[WEBSITE]**. VERIFY: add postal address / VERBİS or EU representative if required (see §12).
+The data controller is **Hüseyin Talha Bayhan** ("we"). Contact: **talhabayhan.aps@gmail.com** · **https://talhabayhn.github.io/lexi**. VERIFY: add postal address / VERBİS or EU representative if required (see §12).
 
 ## 2. Summary
 - Lexi works offline. There is **no account** and no sign-up in version 1.0.
@@ -48,7 +46,7 @@ If you enable the daily reminder, notifications are scheduled **locally on your 
 Google and RevenueCat may process data outside your country (e.g. USA). We rely on the providers' safeguards such as standard contractual clauses and/or adequacy mechanisms. VERIFY: KVKK Art. 9 cross-border transfer rules (as amended 2024) and GDPR Chapter V.
 
 ## 9. Your rights
-Under **GDPR** (access, rectification, erasure, restriction, portability, objection, withdraw consent at any time, complaint to your supervisory authority) and **KVKK Art. 11** (learn whether data is processed, request information, learn the purpose, know third parties to which data is transferred, request correction/deletion, object to automated outcomes, claim compensation). Contact **[CONTACT EMAIL]**; we reply within 30 days. Because we do not hold your game data and have no accounts, we may need your advertising ID / RevenueCat user ID (shown in Settings → About; VERIFY it will be exposed) to find data about you. Requests about Google/RevenueCat-held data may be forwarded to those providers.
+Under **GDPR** (access, rectification, erasure, restriction, portability, objection, withdraw consent at any time, complaint to your supervisory authority) and **KVKK Art. 11** (learn whether data is processed, request information, learn the purpose, know third parties to which data is transferred, request correction/deletion, object to automated outcomes, claim compensation). Contact **talhabayhan.aps@gmail.com**; we reply within 30 days. Because we do not hold your game data and have no accounts, we may need your advertising ID / RevenueCat user ID (shown in Settings → About; VERIFY it will be exposed) to find data about you. Requests about Google/RevenueCat-held data may be forwarded to those providers.
 
 ## 10. Children
 Lexi is **not directed to children** and we do not knowingly collect personal data from children under 13 (or the age of digital consent in your country). VERIFY: the applicable age threshold in Türkiye and how consent capacity of minors is handled under KVKK. If you believe a child gave us data, contact us and we will help delete it. VERIFY: see target-audience decision in `app-privacy-apple.md`.

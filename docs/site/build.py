@@ -4,8 +4,7 @@
 Usage:  python3 docs/site/build.py [--out _site]
 
 Legal pages are generated from docs/store/privacy-policy-*.md and terms-*.md on every build, so the
-site never drifts from the store drafts. DRAFT banners and [PLACEHOLDERS] are kept on purpose until
-the owner finalises the texts (docs/RELEASE.md). Standard library only; deployed by .github/workflows/pages.yml.
+site never drifts from the store drafts. Standard library only; deployed by .github/workflows/pages.yml.
 """
 from __future__ import annotations
 
@@ -41,7 +40,7 @@ T = {
         "other": "Türkçe",
         "support_title": "Support",
         "support": [
-            ("Contact", "Questions, feedback or a wrong clue? Write to **[CONTACT EMAIL]**. "
+            ("Contact", "Questions, feedback or a wrong clue? Write to **talhabayhan.aps@gmail.com**. "
              "Please include your device model and app version (Settings)."),
             ("Restore purchases", "On a new or reinstalled device open **Settings → Restore purchases**, signed in "
              "to the same store account. Purchases belong to your store account; Lexi has no accounts."),
@@ -69,7 +68,7 @@ T = {
         "other": "English",
         "support_title": "Destek",
         "support": [
-            ("İletişim", "Soru, öneri ya da hatalı bir ipucu mu? **[CONTACT EMAIL]** adresine yazın. "
+            ("İletişim", "Soru, öneri ya da hatalı bir ipucu mu? **talhabayhan.aps@gmail.com** adresine yazın. "
              "Lütfen cihaz modelinizi ve uygulama sürümünü (Ayarlar) ekleyin."),
             ("Satın alımları geri yükleme", "Yeni ya da yeniden kurulan cihazda, aynı mağaza hesabıyla "
              "**Ayarlar → Satın alımları geri yükle**'yi açın. Satın alımlar mağaza hesabınıza bağlıdır; Lexi'de hesap yoktur."),
@@ -216,7 +215,6 @@ def page(lang: str, key: str, title: str, body: str, depth: int) -> str:
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{html.escape(full_title)}</title>
 <meta name="description" content="{html.escape(t['hero'])}">
-<meta name="robots" content="noindex">
 <link rel="alternate" hreflang="en" href="{up}{sub}">
 <link rel="alternate" hreflang="tr" href="{up}tr/{sub}">
 <link rel="icon" href="{up}assets/icon.png">
@@ -231,7 +229,7 @@ def page(lang: str, key: str, title: str, body: str, depth: int) -> str:
 <main><div class="wrap">
 {body}
 </div></main>
-<footer><div class="wrap"><span>© 2026 [DEVELOPER NAME]</span><span>{NAME} · {t['tagline']}</span></div></footer>
+<footer><div class="wrap"><span>© 2026 Hüseyin Talha Bayhan</span><span>{NAME} · {t['tagline']}</span></div></footer>
 </body>
 </html>
 """
@@ -240,8 +238,7 @@ def page(lang: str, key: str, title: str, body: str, depth: int) -> str:
 def landing(lang: str) -> str:
     t = T[lang]
     cards = "".join(f'<div class="card"><h3>{inline(h)}</h3><p>{inline(p)}</p></div>' for h, p in t["features"])
-    return f"""<div class="draft" role="note">{t['draft']}</div>
-<section class="hero">
+    return f"""<section class="hero">
 <div><h1>{inline(t['hero'])}</h1><p>{inline(t['lead'])}</p><span class="soon">{t['soon']}</span></div>
 <div class="logo" role="img" aria-label="Lexi"><span class="sq">L</span><span class="ci">E</span><span class="lf">X</span><span class="bk">I</span></div>
 </section>
@@ -251,7 +248,7 @@ def landing(lang: str) -> str:
 def support(lang: str) -> str:
     t = T[lang]
     items = "".join(f"<h2>{inline(h)}</h2><p>{inline(p)}</p>" for h, p in t["support"])
-    return f'<div class="doc"><div class="draft" role="note">{t["draft"]}</div><h1>{t["support_title"]}</h1>{items}</div>'
+    return f'<div class="doc"><h1>{t["support_title"]}</h1>{items}</div>'
 
 
 def build(out: Path) -> None:

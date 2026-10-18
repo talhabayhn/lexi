@@ -58,8 +58,8 @@ Your progress stays on your device. The app uses ads and analytics services as d
 
 The interface is available in Turkish and English.
 
-Questions or feedback: [CONTACT EMAIL]
-[WEBSITE]
+Questions or feedback: talhabayhan.aps@gmail.com
+https://talhabayhn.github.io/lexi
 ```
 
 **What's new (v1.0)**
@@ -124,11 +124,11 @@ Available as a monthly or yearly auto-renewing subscription or a one-time lifeti
 
 Subscription terms: payment is charged to your Apple ID account at confirmation of purchase. The subscription renews automatically unless it is cancelled at least 24 hours before the end of the current period. Your account is charged for renewal within 24 hours before the end of the current period. You can manage or cancel subscriptions in your Apple ID account settings after purchase. Any unused part of a free trial, if offered, is forfeited when you purchase a subscription.
 
-Privacy Policy: [WEBSITE]/privacy
-Terms of Use: [WEBSITE]/terms
+Privacy Policy: https://talhabayhn.github.io/lexi/privacy
+Terms of Use: https://talhabayhn.github.io/lexi/terms
 
 The interface is available in Turkish and English.
-Questions or feedback: [CONTACT EMAIL]
+Questions or feedback: talhabayhan.aps@gmail.com
 ```
 
 **Keywords (≤100 incl. commas)**
@@ -138,7 +138,7 @@ vocabulary,word game,learn english,words,quiz,alphabet,offline,flashcards,letter
 
 **What's new (v1.0)**: same text as Google Play.
 
-**Support URL**: [WEBSITE]/support · **Marketing URL**: [WEBSITE] · **Copyright**: © 2026 [DEVELOPER NAME]
+**Support URL**: https://talhabayhn.github.io/lexi/support · **Marketing URL**: https://talhabayhn.github.io/lexi · **Copyright**: © 2026 Hüseyin Talha Bayhan
 
 ## Notes
 - VERIFY: "Native" level wording and exam packs — only mention exam pack names (LGS, YKS-Dil, YDS, IELTS, TOEFL…) after confirming trademark/affiliation rules; they are intentionally not named here.
