@@ -92,6 +92,13 @@ VERIFY the current wording in Play Console Help before starting; the rule has ch
 
 ## 6. Versioning and releasing
 
+### Versioning
+- App version lives only in `gradle.properties` (`lexi.versionName` and `lexi.versionCode`); never edit `AppInfo.kt` version fields by hand (they are generated at build time).
+- To bump for a Play upload, increase `lexi.versionCode` and update `lexi.versionName` in `gradle.properties`. `versionCode` must increase on every upload and can never go down.
+- CI release workflows override it from the git tag (`versionCode = major*10000 + minor*100 + patch`), so do not mix local uploads with tag-based uploads without making sure the code only goes up.
+- iOS `MARKETING_VERSION` and `CURRENT_PROJECT_VERSION` in `iosApp/Configuration/Config.xcconfig` are separate and overridden in CI.
+
+### Releasing
 - Tags `vMAJOR.MINOR.PATCH`; `versionCode = major*10000 + minor*100 + patch` (`docs/CONVENTIONS.md`).
   CI sets Android `versionName`/`versionCode` and iOS `MARKETING_VERSION` from the tag; the iOS build
   number is `versionCode.runNumber`, so re-running a tag still uploads.

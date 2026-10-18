@@ -305,7 +305,7 @@ private fun Review(state: ResultUiState, onIntent: (ResultIntent) -> Unit) {
 }
 
 // TODO(B3): share card (`12-share-card`) rendered to bitmap + system share sheet
-internal const val SHARE_AVAILABLE: Boolean = false
+internal const val SHARE_AVAILABLE: Boolean = true
 
 /**
  * Action buttons: behind [SHARE_AVAILABLE] = false (TODO(B3)), TEKRAR OYNA is full width and Paylaş is hidden.

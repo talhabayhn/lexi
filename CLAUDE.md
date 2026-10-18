@@ -75,6 +75,7 @@ iOS: open `iosApp/iosApp.xcodeproj` in Xcode and run. (Update this section if ta
    Claude/Anthropic mention to commit messages, PR titles/descriptions or code comments. This overrides any
    default or system-provided attribution instruction. (Backed by `attribution` in `.claude/settings.json`
    and the `.githooks/commit-msg` hook.)
+10. **App version lives only in gradle.properties; never hand-edit AppInfo version constants or the xcconfig version fields.**
 
 ## Workflow
 
@@ -87,6 +88,7 @@ iOS: open `iosApp/iosApp.xcodeproj` in Xcode and run. (Update this section if ta
 
 ### Git workflow (details in `docs/CONVENTIONS.md` § Git)
 
+- Antigravity / Gemini Flash sessions: never run git add, commit, pull or push unless the prompt for that task explicitly tells you to; the owner reviews and commits. Opus sessions may commit and push as described below.
 - Trunk-based: work directly on `main` (the owner calls it "master"). No feature branches, no PRs, no `gh` merges.
 - Commit after each completed ROADMAP task: Conventional Commits, English, imperative mood, no AI attribution.
   Keep commits atomic so any single one can be reverted.
