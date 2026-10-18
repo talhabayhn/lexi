@@ -1,13 +1,17 @@
 package dev.talhabayhan.lexi.feature.settings
 
 import androidx.compose.ui.test.ExperimentalTestApi
+import androidx.compose.ui.test.assertHeightIsAtLeast
 import androidx.compose.ui.test.assertIsOff
 import androidx.compose.ui.test.assertIsOn
+import androidx.compose.ui.test.assertWidthIsAtLeast
 import androidx.compose.ui.test.onAllNodesWithText
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
+import androidx.compose.ui.test.performScrollTo
 import androidx.compose.ui.test.runComposeUiTest
+import dev.talhabayhan.lexi.core.designsystem.theme.DefaultLexiDimens
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -94,5 +98,70 @@ class SettingsScreenBehaviourTest {
             ),
             intents,
         )
+    }
+
+    @Test
+    fun `footer links emit navigation intents when tapped`() = runComposeUiTest {
+        val intents = mutableListOf<SettingsIntent>()
+        val minTarget = DefaultLexiDimens.minTouchTargetAccessible
+        setContent {
+            LexiTheme(reducedMotion = true) { SettingsScreen(SettingsUiState(), onIntent = { intents += it }) }
+        }
+
+        onNodeWithText(
+            "Lexi 1.0.0",
+        ).performScrollTo().assertHeightIsAtLeast(minTarget).assertWidthIsAtLeast(minTarget).performClick()
+        onNodeWithText(
+            "Hakkında",
+        ).performScrollTo().assertHeightIsAtLeast(minTarget).assertWidthIsAtLeast(minTarget).performClick()
+        onNodeWithText(
+            "Gizlilik",
+        ).performScrollTo().assertHeightIsAtLeast(minTarget).assertWidthIsAtLeast(minTarget).performClick()
+        onNodeWithText(
+            "Kullanım koşulları",
+        ).performScrollTo().assertHeightIsAtLeast(minTarget).assertWidthIsAtLeast(minTarget).performClick()
+
+        assertEquals(
+            listOf(
+                SettingsIntent.OpenAbout,
+                SettingsIntent.OpenAbout,
+                SettingsIntent.OpenPrivacy,
+                SettingsIntent.OpenTerms,
+            ),
+            intents,
+        )
+    }
+
+    @Test
+    @Config(qualifiers = "en-w390dp-h844dp-xhdpi")
+    fun `about link in english emits open about intent`() = runComposeUiTest {
+        val intents = mutableListOf<SettingsIntent>()
+        val minTarget = DefaultLexiDimens.minTouchTargetAccessible
+        setContent {
+            LexiTheme(reducedMotion = true) { SettingsScreen(SettingsUiState(), onIntent = { intents += it }) }
+        }
+
+        onNodeWithText(
+            "About",
+        ).performScrollTo().assertHeightIsAtLeast(minTarget).assertWidthIsAtLeast(minTarget).performClick()
+
+        assertEquals(listOf<SettingsIntent>(SettingsIntent.OpenAbout), intents)
+    }
+
+    @Test
+    @Config(qualifiers = "tr-w320dp-h600dp-xhdpi", fontScale = 1.3f)
+    fun `footer wraps cleanly on 320dp width with large font`() = runComposeUiTest {
+        val minTarget = DefaultLexiDimens.minTouchTargetAccessible
+        setContent {
+            LexiTheme(reducedMotion = true) { SettingsScreen(SettingsUiState(), onIntent = {}) }
+        }
+
+        onNodeWithText("Lexi 1.0.0").performScrollTo().assertHeightIsAtLeast(minTarget).assertWidthIsAtLeast(minTarget)
+        onNodeWithText("Hakkında").performScrollTo().assertHeightIsAtLeast(minTarget).assertWidthIsAtLeast(minTarget)
+        onNodeWithText("Gizlilik").performScrollTo().assertHeightIsAtLeast(minTarget).assertWidthIsAtLeast(minTarget)
+        onNodeWithText(
+            "Kullanım koşulları",
+        ).performScrollTo().assertHeightIsAtLeast(minTarget).assertWidthIsAtLeast(minTarget)
+        onNodeWithText("Satın alımları geri yükle").performScrollTo().assertExists()
     }
 }

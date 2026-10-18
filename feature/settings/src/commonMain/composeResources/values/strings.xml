@@ -31,5 +31,22 @@
     <!-- Badge of the rows that arrive in a later release -->
     <string name="settings_soon">SOON</string>
 
-    <string name="settings_footer">%1$s 1.0.0 · Privacy · Terms of use · Restore purchases</string>
+    <string name="settings_footer_about">%1$s %2$s</string>
+    <string name="settings_footer_about_link">About</string>
+    <string name="settings_footer_privacy">Privacy</string>
+    <string name="settings_footer_terms">Terms of use</string>
+    <string name="settings_footer_restore">Restore purchases</string>
+
+    <!-- About screen (M8.5) -->
+    <string name="about_title">About</string>
+    <string name="about_back">Back</string>
+    <string name="about_version_format">Version %1$s (%2$d)</string>
+    <string name="about_description">English vocabulary game from A to Z.</string>
+    <string name="about_section_legal">LEGAL &amp; SUPPORT</string>
+    <string name="about_link_privacy">Privacy Policy</string>
+    <string name="about_link_terms">Terms of Use</string>
+    <string name="about_link_support">Support</string>
+    <string name="about_section_sources">SOURCES</string>
+    <string name="about_sources_content">Word clues and example sentences are our original content.</string>
+    <string name="about_section_licenses">LICENSES</string>
 </resources>

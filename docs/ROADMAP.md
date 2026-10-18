@@ -90,7 +90,7 @@ Module mapping (replaces the earlier `composeApp`): `androidApp` = thin Android 
 - [ ] Hot-seat duel: setup, handover card, per-player clocks, duel result (design debt)
 - [ ] Accessibility pass (TalkBack/VoiceOver labels, font scale caps, contrast, reduced motion)
 - [ ] Small-screen & tablet layout rules (`screen-map.md`)
-- [ ] Rating prompt, About/licenses (Jost OFL, word-list attributions)
+- [ ] Rating prompt, About/licenses (licences done; word-list attributions pending owner confirmation in docs/store/ATTRIBUTION-TODO.md)
 - [ ] Performance: cold start < 1.5 s mid-range Android; 60 fps game screen
 - [ ] Store listing TR/EN, screenshots, privacy policy, data safety / privacy nutrition labels
 - [ ] Release: Play internal testing + TestFlight

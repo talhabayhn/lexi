@@ -18,6 +18,7 @@ import dev.talhabayhan.lexi.core.designsystem.theme.LexiMotion
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.core.domain.game.GameMode
 import dev.talhabayhan.lexi.core.domain.model.Level
+import dev.talhabayhan.lexi.core.domain.platform.UrlOpener
 import dev.talhabayhan.lexi.feature.game.GameRoute
 import dev.talhabayhan.lexi.feature.game.gameScreen
 import dev.talhabayhan.lexi.feature.game.result.resultScreen
@@ -34,11 +35,14 @@ import dev.talhabayhan.lexi.feature.notebook.notebookScreen
 import dev.talhabayhan.lexi.feature.onboarding.OnboardingRoute
 import dev.talhabayhan.lexi.feature.onboarding.onboardingScreen
 import dev.talhabayhan.lexi.feature.settings.SettingsRoute
+import dev.talhabayhan.lexi.feature.settings.about.AboutRoute
+import dev.talhabayhan.lexi.feature.settings.about.aboutScreen
 import dev.talhabayhan.lexi.feature.settings.settingsScreen
 import dev.talhabayhan.lexi.feature.stats.StatsRoute
 import dev.talhabayhan.lexi.feature.stats.statsScreen
 import dev.talhabayhan.lexi.splash.SplashRoute
 import dev.talhabayhan.lexi.splash.splashScreen
+import org.koin.compose.koinInject
 
 /**
  * The app graph: `Splash → Home → LevelSelect [→ Categories] → Game → Result`, `Home → Notebook → Game (review)
@@ -56,6 +60,7 @@ fun LexiNavHost(modifier: Modifier = Modifier) {
     val density = LocalDensity.current
     val distancePx = with(density) { motion.screenTransitionSlideDistance.roundToPx() }
     val transitions = remember(motion, distancePx) { ScreenTransitions(motion, distancePx) }
+    val urlOpener = koinInject<UrlOpener>()
     NavHost(
         navController = navController,
         startDestination = SplashRoute,
@@ -100,7 +105,15 @@ fun LexiNavHost(modifier: Modifier = Modifier) {
             onOpenExamPacks = { navController.ifResumed { navigate(ExamPacksRoute) { launchSingleTop = true } } },
         )
         examPacksScreen(onBack = { navController.ifResumed { popBackStack() } })
-        settingsScreen(onBack = { navController.ifResumed { popBackStack() } })
+        settingsScreen(
+            onBack = { navController.ifResumed { popBackStack() } },
+            onOpenAbout = { navController.ifResumed { navigate(AboutRoute) { launchSingleTop = true } } },
+            onOpenUrl = { url -> urlOpener.openUrl(url) },
+        )
+        aboutScreen(
+            onBack = { navController.ifResumed { popBackStack() } },
+            onOpenUrl = { url -> urlOpener.openUrl(url) },
+        )
         statsScreen(onBack = { navController.ifResumed { popBackStack() } })
         notebookScreen(
             onBack = { navController.ifResumed { popBackStack() } },

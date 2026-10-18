@@ -31,5 +31,22 @@
     <!-- Sonraki sürümde gelecek satırların rozeti -->
     <string name="settings_soon">YAKINDA</string>
 
-    <string name="settings_footer">%1$s 1.0.0 · Gizlilik · Kullanım koşulları · Satın alımları geri yükle</string>
+    <string name="settings_footer_about">%1$s %2$s</string>
+    <string name="settings_footer_about_link">Hakkında</string>
+    <string name="settings_footer_privacy">Gizlilik</string>
+    <string name="settings_footer_terms">Kullanım koşulları</string>
+    <string name="settings_footer_restore">Satın alımları geri yükle</string>
+
+    <!-- Hakkında ekranı (M8.5) -->
+    <string name="about_title">Hakkında</string>
+    <string name="about_back">Geri</string>
+    <string name="about_version_format">Sürüm %1$s (%2$d)</string>
+    <string name="about_description">A'dan Z'ye İngilizce kelime oyunu.</string>
+    <string name="about_section_legal">YASAL VE DESTEK</string>
+    <string name="about_link_privacy">Gizlilik Politikası</string>
+    <string name="about_link_terms">Kullanım Koşulları</string>
+    <string name="about_link_support">Destek</string>
+    <string name="about_section_sources">KAYNAKLAR</string>
+    <string name="about_sources_content">Kelime ipuçları ve örnek cümleler özgün içeriğimizdir.</string>
+    <string name="about_section_licenses">LİSANSLAR</string>
 </resources>

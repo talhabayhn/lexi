@@ -7,4 +7,6 @@ package dev.talhabayhan.lexi.core.domain
  */
 public object AppInfo {
     public const val NAME: String = "Lexi"
+    public const val VERSION_NAME: String = "1.0.0"
+    public const val BUILD_NUMBER: Int = 1
 }

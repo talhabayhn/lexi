@@ -18,22 +18,39 @@ import org.koin.compose.viewmodel.koinViewModel
 data object SettingsRoute
 
 /** Registers the settings screen. */
-fun NavGraphBuilder.settingsScreen(onBack: () -> Unit) {
+fun NavGraphBuilder.settingsScreen(
+    onBack: () -> Unit,
+    onOpenAbout: () -> Unit = {},
+    onOpenUrl: (String) -> Unit = {},
+) {
     composable<SettingsRoute> {
-        SettingsRoute(onBack = onBack)
+        SettingsRoute(
+            onBack = onBack,
+            onOpenAbout = onOpenAbout,
+            onOpenUrl = onOpenUrl,
+        )
     }
 }
 
 @Composable
-internal fun SettingsRoute(onBack: () -> Unit, viewModel: SettingsViewModel = koinViewModel()) {
+internal fun SettingsRoute(
+    onBack: () -> Unit,
+    onOpenAbout: () -> Unit,
+    onOpenUrl: (String) -> Unit,
+    viewModel: SettingsViewModel = koinViewModel(),
+) {
     val state by viewModel.state.collectAsStateWithLifecycle()
     val currentOnBack by rememberUpdatedState(onBack)
+    val currentOnOpenAbout by rememberUpdatedState(onOpenAbout)
+    val currentOnOpenUrl by rememberUpdatedState(onOpenUrl)
     val lifecycleOwner = LocalLifecycleOwner.current
     LaunchedEffect(viewModel, lifecycleOwner) {
         lifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
             viewModel.effects.collect { effect ->
                 when (effect) {
                     SettingsEffect.NavigateBack -> currentOnBack()
+                    SettingsEffect.NavigateToAbout -> currentOnOpenAbout()
+                    is SettingsEffect.OpenUrl -> currentOnOpenUrl(effect.url)
                 }
             }
         }

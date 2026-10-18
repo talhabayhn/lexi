@@ -1,6 +1,7 @@
 package dev.talhabayhan.lexi.feature.settings
 
 import app.cash.turbine.test
+import dev.talhabayhan.lexi.core.domain.platform.AppLinks
 import dev.talhabayhan.lexi.core.domain.settings.Settings
 import dev.talhabayhan.lexi.core.testing.FakeSettingsRepository
 import kotlinx.coroutines.Dispatchers
@@ -157,6 +158,36 @@ class SettingsViewModelTest {
             viewModel.onIntent(SettingsIntent.Back)
 
             assertEquals(SettingsEffect.NavigateBack, awaitItem())
+        }
+    }
+
+    @Test
+    fun `open about asks to navigate to about`() = runTest {
+        val viewModel = viewModel()
+        viewModel.effects.test {
+            viewModel.onIntent(SettingsIntent.OpenAbout)
+
+            assertEquals(SettingsEffect.NavigateToAbout, awaitItem())
+        }
+    }
+
+    @Test
+    fun `open privacy emits open url effect with privacy link`() = runTest {
+        val viewModel = viewModel()
+        viewModel.effects.test {
+            viewModel.onIntent(SettingsIntent.OpenPrivacy)
+
+            assertEquals(SettingsEffect.OpenUrl(AppLinks.PRIVACY_POLICY), awaitItem())
+        }
+    }
+
+    @Test
+    fun `open terms emits open url effect with terms link`() = runTest {
+        val viewModel = viewModel()
+        viewModel.effects.test {
+            viewModel.onIntent(SettingsIntent.OpenTerms)
+
+            assertEquals(SettingsEffect.OpenUrl(AppLinks.TERMS_OF_SERVICE), awaitItem())
         }
     }
 }

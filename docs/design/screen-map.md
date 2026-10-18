@@ -14,6 +14,7 @@
 | `09-stats` | İstatistikler | `StatsRoute` | feature:stats | M5 |
 | `10-exam-packs` | Sınav paketleri | `ExamPacksRoute` / `ExamPacksScreen` (M5: header + "YAKINDA" `EmptyState` only, in feature:home until feature:exams is wired) | feature:home → feature:exams | M7 |
 | `11-settings` | Ayarlar | `SettingsRoute` / `SettingsScreen` (Home gear icon; back pops) | feature:settings | M5 (switches), M7 (rest) |
+| — | Hakkında | `AboutRoute` / `AboutScreen` (Settings footer link; back pops) | feature:settings | M8 (done) |
 | `12-share-card` | Paylaşım kartı (432×540) | `ShareCardRenderer` (renders to bitmap) | feature:home / core:designsystem | M6 |
 | `13-logo-and-icon` | Logo ve uygulama ikonu — use **option 1** for app icon | `LexiLogo`, launcher icons | designsystem, platform res | M1 |
 | `15-motion` | Animasyonlar | `LexiMotion`, effects | designsystem | M1/M4 |
@@ -63,6 +64,7 @@ before shipping.
 | Hot-seat duel: player setup, handover card, duel result | M8 | big ink handover card with player name |
 | Online rooms (v1.1) | — | see `MULTIPLAYER.md` §4 — **needs design** |
 | Store screenshots | M8 | frames of real screens + headline band |
+| About / licences screen (DESIGN-DEBT) | M8 | built from 16-components: app identity, version name + build number, neutral tagline, legal & support links, in-house content source statement, and open-source licenses list |
 
 ## Responsive rules
 - **Expanded tier (all screens, `LexiViewport` around the nav host):** when the space inside the system bars and cutout

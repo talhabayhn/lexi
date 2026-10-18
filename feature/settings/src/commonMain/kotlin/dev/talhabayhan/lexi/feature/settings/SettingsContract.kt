@@ -35,8 +35,18 @@ internal sealed interface SettingsIntent {
     data class SetDailyGoalWheels(val wheels: Int) : SettingsIntent
 
     data class SetAccent(val accent: Accent) : SettingsIntent
+
+    data object OpenAbout : SettingsIntent
+
+    data object OpenPrivacy : SettingsIntent
+
+    data object OpenTerms : SettingsIntent
 }
 
 internal sealed interface SettingsEffect {
     data object NavigateBack : SettingsEffect
+
+    data object NavigateToAbout : SettingsEffect
+
+    data class OpenUrl(val url: String) : SettingsEffect
 }

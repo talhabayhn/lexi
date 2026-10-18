@@ -8,4 +8,10 @@ class AppInfoTest {
     fun `brand name is Lexi`() {
         assertEquals("Lexi", AppInfo.NAME)
     }
+
+    @Test
+    fun `version info is present`() {
+        assertEquals("1.0.0", AppInfo.VERSION_NAME)
+        assertEquals(1, AppInfo.BUILD_NUMBER)
+    }
 }

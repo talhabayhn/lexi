@@ -30,9 +30,11 @@ public class LexiDimens internal constructor(
     public val gap24: Dp,
     /** Minimum touch target edge (44 × 44). */
     public val minTouchTarget: Dp,
+    /** Accessible touch target edge (48 × 48) for small links/buttons. */
+    public val minTouchTargetAccessible: Dp,
 )
 
-internal val DefaultLexiDimens: LexiDimens = LexiDimens(
+public val DefaultLexiDimens: LexiDimens = LexiDimens(
     screenPaddingHorizontal = 20.dp,
     screenPaddingTop = 24.dp,
     screenPaddingTopGame = 20.dp,
@@ -50,6 +52,7 @@ internal val DefaultLexiDimens: LexiDimens = LexiDimens(
     gap20 = 20.dp,
     gap24 = 24.dp,
     minTouchTarget = 44.dp,
+    minTouchTargetAccessible = 48.dp,
 )
 
 /** Border widths (`docs/design/tokens.md` § Borders). All borders are ink unless stated (active slot = red). */

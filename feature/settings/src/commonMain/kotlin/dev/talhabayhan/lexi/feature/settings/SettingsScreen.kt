@@ -1,12 +1,17 @@
 package dev.talhabayhan.lexi.feature.settings
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.windowInsetsPadding
@@ -17,6 +22,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.disabled
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextAlign
@@ -41,7 +48,11 @@ import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_clue_l
 import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_daily_goal
 import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_daily_goal_wheels
 import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_daily_reminder
-import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_footer
+import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_footer_about
+import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_footer_about_link
+import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_footer_privacy
+import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_footer_restore
+import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_footer_terms
 import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_haptics
 import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_language
 import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_pro_subtitle
@@ -139,11 +150,93 @@ internal fun SettingsScreen(state: SettingsUiState, onIntent: (SettingsIntent) -
                 ListRowValue(state.accent.name)
             }
         }
+        SettingsFooter(
+            onOpenAbout = { onIntent(SettingsIntent.OpenAbout) },
+            onOpenPrivacy = { onIntent(SettingsIntent.OpenPrivacy) },
+            onOpenTerms = { onIntent(SettingsIntent.OpenTerms) },
+        )
+    }
+}
+
+@Composable
+private fun SettingsFooter(onOpenAbout: () -> Unit, onOpenPrivacy: () -> Unit, onOpenTerms: () -> Unit) {
+    FlowRow(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.Center,
+        verticalArrangement = Arrangement.Center,
+    ) {
+        FooterLink(
+            text = stringResource(Res.string.settings_footer_about, AppInfo.NAME, AppInfo.VERSION_NAME),
+            onClick = onOpenAbout,
+        )
+        FooterSeparator()
+        FooterLink(
+            text = stringResource(Res.string.settings_footer_about_link),
+            onClick = onOpenAbout,
+        )
+        FooterSeparator()
+        FooterLink(
+            text = stringResource(Res.string.settings_footer_privacy),
+            onClick = onOpenPrivacy,
+        )
+        FooterSeparator()
+        FooterLink(
+            text = stringResource(Res.string.settings_footer_terms),
+            onClick = onOpenTerms,
+        )
+        FooterSeparator()
+        FooterStatic(
+            text = stringResource(Res.string.settings_footer_restore),
+        )
+    }
+}
+
+@Composable
+private fun FooterLink(text: String, onClick: () -> Unit, modifier: Modifier = Modifier) {
+    val dimens = LexiTheme.dimens
+    Box(
+        modifier = modifier
+            .defaultMinSize(
+                minWidth = dimens.minTouchTargetAccessible,
+                minHeight = dimens.minTouchTargetAccessible,
+            )
+            .clickable(role = Role.Button, onClick = onClick),
+        contentAlignment = Alignment.Center,
+    ) {
         Text(
-            text = stringResource(Res.string.settings_footer, AppInfo.NAME),
+            text = text,
             style = LexiTheme.typography.caption12,
-            textAlign = TextAlign.Center,
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.padding(horizontal = dimens.gap4),
+        )
+    }
+}
+
+@Composable
+private fun FooterSeparator(modifier: Modifier = Modifier) {
+    Box(
+        modifier = modifier
+            .heightIn(min = LexiTheme.dimens.minTouchTargetAccessible)
+            .clearAndSetSemantics { },
+        contentAlignment = Alignment.Center,
+    ) {
+        Text(
+            text = "·",
+            style = LexiTheme.typography.caption12,
+        )
+    }
+}
+
+@Composable
+private fun FooterStatic(text: String, modifier: Modifier = Modifier) {
+    val dimens = LexiTheme.dimens
+    Box(
+        modifier = modifier.heightIn(min = dimens.minTouchTargetAccessible),
+        contentAlignment = Alignment.Center,
+    ) {
+        Text(
+            text = text,
+            style = LexiTheme.typography.caption12,
+            modifier = Modifier.padding(horizontal = dimens.gap4),
         )
     }
 }

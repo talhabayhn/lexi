@@ -3,6 +3,7 @@ package dev.talhabayhan.lexi.feature.settings
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dev.talhabayhan.lexi.core.domain.game.GameConfig
+import dev.talhabayhan.lexi.core.domain.platform.AppLinks
 import dev.talhabayhan.lexi.core.domain.repository.SettingsRepository
 import dev.talhabayhan.lexi.core.domain.settings.Accent
 import dev.talhabayhan.lexi.core.domain.settings.Settings
@@ -85,6 +86,12 @@ internal class SettingsViewModel(
             is SettingsIntent.SetDailyGoalWheels -> write { it.copy(dailyGoalWheels = intent.wheels) }
 
             is SettingsIntent.SetAccent -> write { it.copy(accent = intent.accent) }
+
+            SettingsIntent.OpenAbout -> effectChannel.trySend(SettingsEffect.NavigateToAbout)
+
+            SettingsIntent.OpenPrivacy -> effectChannel.trySend(SettingsEffect.OpenUrl(AppLinks.PRIVACY_POLICY))
+
+            SettingsIntent.OpenTerms -> effectChannel.trySend(SettingsEffect.OpenUrl(AppLinks.TERMS_OF_SERVICE))
         }
     }
 
