@@ -31,6 +31,33 @@ class ResultScreenScreenshotTest {
         }
     }
 
+    /** A group longer than 5 rows shows its first 5 and "Daha fazla göster" (tall viewport: the whole list). */
+    @Test
+    @Config(qualifiers = "tr-w390dp-h1400dp-xhdpi")
+    fun longGroupCollapsed() {
+        captureRoboImage("src/androidHostTest/screenshots/ResultScreenLongGroup.png") {
+            LexiTheme(reducedMotion = false) { ResultScreen(state = ResultSamples.longGroup, onIntent = {}) }
+        }
+    }
+
+    /** The long group opened: all 8 rows and "Daha az göster"; the actions stay at the end of the list. */
+    @Test
+    @Config(qualifiers = "tr-w390dp-h1400dp-xhdpi")
+    fun longGroupExpanded() {
+        captureRoboImage("src/androidHostTest/screenshots/ResultScreenLongGroupExpanded.png") {
+            LexiTheme(reducedMotion = false) {
+                ResultScreen(
+                    state = ResultSamples.longGroup.copy(
+                        expandedGroups = kotlinx.collections.immutable.persistentSetOf(
+                            dev.talhabayhan.lexi.core.designsystem.component.ReviewOutcome.Correct,
+                        ),
+                    ),
+                    onIntent = {},
+                )
+            }
+        }
+    }
+
     /** English UI with long answers, clues and examples: rows wrap, the screen scrolls instead of clipping. */
     @Test
     @Config(qualifiers = "en-w390dp-h844dp-xhdpi")
@@ -66,7 +93,6 @@ class ResultScreenScreenshotTest {
                         addedToNotebook = 0,
                         groups = kotlinx.collections.immutable.persistentListOf(),
                         rows = kotlinx.collections.immutable.persistentListOf(),
-                        hiddenRows = 0,
                     ),
                     onIntent = {},
                 )

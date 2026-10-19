@@ -160,10 +160,26 @@ class ResultViewModelTest {
     }
 
     @Test
-    fun `all review rows are shown without hiding`() = runTest {
+    fun `every review row stays in its group and every group starts collapsed`() = runTest {
         val vm = viewModel()
         assertEquals(7, vm.state.value.rows.size)
-        assertEquals(0, vm.state.value.hiddenRows)
+        assertEquals(7, vm.state.value.groups.sumOf { it.rows.size })
+        assertTrue(vm.state.value.expandedGroups.isEmpty())
+    }
+
+    @Test
+    fun `show more opens one group and show less closes it again`() = runTest {
+        val vm = viewModel()
+
+        vm.onIntent(ResultIntent.ToggleGroup(ReviewOutcome.Wrong))
+        assertEquals(setOf(ReviewOutcome.Wrong), vm.state.value.expandedGroups)
+        vm.onIntent(ResultIntent.ToggleGroup(ReviewOutcome.Passed))
+        assertEquals(setOf(ReviewOutcome.Wrong, ReviewOutcome.Passed), vm.state.value.expandedGroups)
+
+        vm.onIntent(ResultIntent.ToggleGroup(ReviewOutcome.Wrong))
+
+        assertEquals(setOf(ReviewOutcome.Passed), vm.state.value.expandedGroups)
+        assertEquals(7, vm.state.value.rows.size, "toggling never changes the rows or counts")
     }
 
     @Test
@@ -218,7 +234,6 @@ class ResultViewModelTest {
 
         assertFalse(vm.state.value.reviewError)
         assertEquals(7, vm.state.value.rows.size)
-        assertEquals(0, vm.state.value.hiddenRows)
     }
 
     @Test

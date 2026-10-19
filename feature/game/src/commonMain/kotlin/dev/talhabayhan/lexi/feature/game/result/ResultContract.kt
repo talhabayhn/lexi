@@ -6,7 +6,9 @@ import dev.talhabayhan.lexi.core.domain.game.GameMode
 import dev.talhabayhan.lexi.core.domain.game.GameOverReason
 import dev.talhabayhan.lexi.core.domain.model.Level
 import kotlinx.collections.immutable.ImmutableList
+import kotlinx.collections.immutable.ImmutableSet
 import kotlinx.collections.immutable.persistentListOf
+import kotlinx.collections.immutable.persistentSetOf
 
 /** The result screen (`06-result`): the finished game from [ResultRoute] plus the review cards read by id. */
 @Immutable
@@ -27,8 +29,8 @@ internal data class ResultUiState(
     val rows: ImmutableList<ReviewRowUi> = persistentListOf(),
     /** Rows grouped by outcome: Doğru, Yanlış, Pas, Süre bitti. */
     val groups: ImmutableList<ReviewGroupUi> = persistentListOf(),
-    /** Rows behind "+N kelime daha · Tümünü gör →". */
-    val hiddenRows: Int = 0,
+    /** Groups opened with "Daha fazla göster" (all their rows shown); the others show [ReviewGroupUi.PREVIEW_ROWS]. */
+    val expandedGroups: ImmutableSet<ReviewOutcome> = persistentSetOf(),
     /** True until the review cards are loaded. */
     val isLoading: Boolean = true,
     /** The review cards could not be read; the list shows an empty state with "Tekrar dene". */
@@ -45,7 +47,12 @@ internal data class ResultUiState(
 }
 
 @Immutable
-internal data class ReviewGroupUi(val outcome: ReviewOutcome, val rows: ImmutableList<ReviewRowUi>)
+internal data class ReviewGroupUi(val outcome: ReviewOutcome, val rows: ImmutableList<ReviewRowUi>) {
+    companion object {
+        /** Rows a collapsed group shows; the rest are behind "Daha fazla göster". */
+        const val PREVIEW_ROWS: Int = 5
+    }
+}
 
 @Immutable
 internal data class ReviewRowUi(
@@ -70,8 +77,8 @@ internal sealed interface ResultIntent {
     /** "Ana menüye dön". */
     data object Home : ResultIntent
 
-    /** "+N kelime daha · Tümünü gör →": shows every review row. */
-    data object ShowAll : ResultIntent
+    /** "Daha fazla göster" / "Daha az göster" under a group: shows all its rows, or only the first ones again. */
+    data class ToggleGroup(val outcome: ReviewOutcome) : ResultIntent
 
     /** Speaker button of a review row. */
     data class Speak(val word: String) : ResultIntent

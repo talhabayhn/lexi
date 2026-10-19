@@ -99,9 +99,10 @@
         <item quantity="other">%1$d words added to your notebook</item>
     </plurals>
     <plurals name="result_more">
-        <item quantity="one">+%1$d more word · See all →</item>
-        <item quantity="other">+%1$d more words · See all →</item>
+        <item quantity="one">+%1$d more word · Show more →</item>
+        <item quantity="other">+%1$d more words · Show more →</item>
     </plurals>
+    <string name="result_show_less">Show less ↑</string>
     <string name="result_group_correct">Correct</string>
     <string name="result_group_wrong">Wrong</string>
     <string name="result_group_passed">Passed</string>

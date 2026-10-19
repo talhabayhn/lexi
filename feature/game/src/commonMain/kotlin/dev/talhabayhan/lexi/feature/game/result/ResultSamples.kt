@@ -43,7 +43,6 @@ internal object ResultSamples {
             addedToNotebook = addedCount,
             groups = groups,
             rows = allRows,
-            hiddenRows = 0,
             isLoading = isLoading,
             reviewError = reviewError,
         )
@@ -74,6 +73,39 @@ internal object ResultSamples {
                 outcome = ReviewOutcome.Passed,
                 rows = persistentListOf(
                     ReviewRowUi('C', "chair", "sandalye", "Sit on the chair.", ReviewOutcome.Passed, Level.A1),
+                ),
+            ),
+        ),
+    )
+
+    /** A long Doğru group (8 rows): the first 5 and "+3 kelime daha · Daha fazla göster →" while collapsed. */
+    val longGroup: ResultUiState = sampleState(
+        level = Level.A1,
+        mode = GameMode.CLASSIC,
+        reason = GameOverReason.ALL_ANSWERED,
+        score = 410,
+        longestStreak = 8,
+        remainingSeconds = 20,
+        groups = persistentListOf(
+            ReviewGroupUi(
+                outcome = ReviewOutcome.Correct,
+                rows = listOf(
+                    Triple("apple", "elma", "An apple a day."),
+                    Triple("bread", "ekmek", "Fresh bread."),
+                    Triple("chair", "sandalye", "Sit on the chair."),
+                    Triple("dog", "köpek", "The dog barks."),
+                    Triple("fish", "balık", "A big fish."),
+                    Triple("green", "yeşil", "A green leaf."),
+                    Triple("house", "ev", "Our house is old."),
+                    Triple("key", "anahtar", "Where is the key?"),
+                ).map { (word, clue, example) ->
+                    ReviewRowUi(word.first().uppercaseChar(), word, clue, example, ReviewOutcome.Correct, Level.A1)
+                }.toPersistentList(),
+            ),
+            ReviewGroupUi(
+                outcome = ReviewOutcome.Wrong,
+                rows = persistentListOf(
+                    ReviewRowUi('E', "egg", "yumurta", "I eat an egg.", ReviewOutcome.Wrong, Level.A1),
                 ),
             ),
         ),
@@ -141,7 +173,6 @@ internal object ResultSamples {
     val reviewError: ResultUiState = design.copy(
         groups = persistentListOf(),
         rows = persistentListOf(),
-        hiddenRows = 0,
         reviewError = true,
     )
 

@@ -99,9 +99,10 @@
         <item quantity="other">%1$d kelime defterine eklendi</item>
     </plurals>
     <plurals name="result_more">
-        <item quantity="one">+%1$d kelime daha · Tümünü gör →</item>
-        <item quantity="other">+%1$d kelime daha · Tümünü gör →</item>
+        <item quantity="one">+%1$d kelime daha · Daha fazla göster →</item>
+        <item quantity="other">+%1$d kelime daha · Daha fazla göster →</item>
     </plurals>
+    <string name="result_show_less">Daha az göster ↑</string>
     <string name="result_group_correct">Doğru</string>
     <string name="result_group_wrong">Yanlış</string>
     <string name="result_group_passed">Pas</string>

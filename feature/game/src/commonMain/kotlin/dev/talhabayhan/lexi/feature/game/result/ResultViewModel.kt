@@ -15,6 +15,7 @@ import dev.talhabayhan.lexi.core.domain.srs.CardProgress
 import dev.talhabayhan.lexi.core.domain.time.AppClock
 import dev.talhabayhan.lexi.feature.game.GameRoute
 import kotlinx.collections.immutable.toImmutableList
+import kotlinx.collections.immutable.toImmutableSet
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -63,7 +64,11 @@ internal class ResultViewModel(
 
     fun onIntent(intent: ResultIntent) {
         when (intent) {
-            ResultIntent.ShowAll -> publishRows()
+            is ResultIntent.ToggleGroup -> mutableState.update {
+                val expanded = it.expandedGroups
+                val toggled = if (intent.outcome in expanded) expanded - intent.outcome else expanded + intent.outcome
+                it.copy(expandedGroups = toggled.toImmutableSet())
+            }
 
             is ResultIntent.Speak -> speaker.speak(intent.word)
 
@@ -207,7 +212,6 @@ internal class ResultViewModel(
             it.copy(
                 groups = allGroups.toImmutableList(),
                 rows = allRows.toImmutableList(),
-                hiddenRows = 0,
                 isLoading = false,
             )
         }

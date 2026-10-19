@@ -84,6 +84,7 @@ import dev.talhabayhan.lexi.feature.game.generated.resources.result_retry
 import dev.talhabayhan.lexi.feature.game.generated.resources.result_review_error
 import dev.talhabayhan.lexi.feature.game.generated.resources.result_review_title
 import dev.talhabayhan.lexi.feature.game.generated.resources.result_share
+import dev.talhabayhan.lexi.feature.game.generated.resources.result_show_less
 import dev.talhabayhan.lexi.feature.game.generated.resources.result_speak
 import dev.talhabayhan.lexi.feature.game.generated.resources.result_time_left
 import dev.talhabayhan.lexi.feature.game.generated.resources.result_wrong
@@ -98,7 +99,7 @@ private const val SEPARATOR = " · "
 
 /**
  * `06-result`, stateless: header (level · mode · outcome, the score, best streak and time left), the 1 × 3 stats, the
- * "Tekrar edilecekler" list (first rows + "Tümünü gör") and the CTAs at the bottom (`margin-top: auto`). The yellow
+ * "Tekrar edilecekler" list (groups of the first [ReviewGroupUi.PREVIEW_ROWS] rows + "Daha fazla göster") and the CTAs at the bottom (`margin-top: auto`). The yellow
  * circle is edge-to-edge decoration moving with the top inset; the content keeps the design paddings inside the
  * safe-drawing insets and scrolls when it is taller than the screen (all rows shown, large fonts).
  */
@@ -262,8 +263,10 @@ private fun Review(state: ResultUiState, onIntent: (ResultIntent) -> Unit) {
                             text = stringResource(group.outcome.titleRes()),
                             style = typography.heading18,
                         )
+                        val expanded = group.outcome in state.expandedGroups
+                        val hidden = group.rows.size - ReviewGroupUi.PREVIEW_ROWS
                         ListCard(Modifier.fillMaxWidth(), shadow = LexiTheme.shadows.s6) {
-                            group.rows.forEach { row ->
+                            (if (expanded) group.rows else group.rows.take(ReviewGroupUi.PREVIEW_ROWS)).forEach { row ->
                                 ReviewRow(
                                     letter = row.letter,
                                     word = row.word,
@@ -294,6 +297,16 @@ private fun Review(state: ResultUiState, onIntent: (ResultIntent) -> Unit) {
                                         null
                                     },
                                     isAddedToNotebook = row.isAddedToNotebook,
+                                )
+                            }
+                            if (hidden > 0) {
+                                ReviewMoreRow(
+                                    text = if (expanded) {
+                                        stringResource(Res.string.result_show_less)
+                                    } else {
+                                        pluralStringResource(Res.plurals.result_more, hidden, hidden)
+                                    },
+                                    onClick = { onIntent(ResultIntent.ToggleGroup(group.outcome)) },
                                 )
                             }
                         }
