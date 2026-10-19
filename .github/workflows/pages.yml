@@ -36,6 +36,8 @@ jobs:
           python-version: '3.13'
       - name: Build site
         run: python3 docs/site/build.py --out _site
+      - name: Check links
+        run: python3 docs/site/check_links.py
       # Until Pages is enabled (Source: GitHub Actions) only the build is checked and deploy is skipped.
       - id: pages
         uses: actions/configure-pages@v5
