@@ -8,6 +8,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
@@ -193,6 +194,18 @@ internal fun TextStyle.withCssNormalLineHeight(): TextStyle {
         lineHeight = lineHeight.sp,
         lineHeightStyle = cssLineHeightStyle(lineHeight.toDouble() / fontSize.value),
     )
+}
+
+/**
+ * How far (in px) Jost's descender reaches below the line box of a single line in this style: a unitless line height
+ * under the natural one ([withCssLineHeight]) trims half the difference off the bottom, so descenders (J, Q, Y, G, P)
+ * hang out of the box by that much. Zero for any other line height. In px of the rendered font size, because Android's
+ * non-linear font scaling does not grow every sp size by the same factor.
+ */
+internal fun TextStyle.descenderOverflowPx(density: Density): Float {
+    val factor = if (lineHeight.isEm) lineHeight.value else return 0f
+    val trimmed = (JOST_NATURAL_LINE_HEIGHT.toFloat() - factor).coerceAtLeast(0f) / 2
+    return with(density) { fontSize.toPx() } * trimmed
 }
 
 /**

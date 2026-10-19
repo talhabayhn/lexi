@@ -18,12 +18,15 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.traversalIndex
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
@@ -31,9 +34,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
 import dev.talhabayhan.lexi.core.designsystem.icon.LexiIcons
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
+import dev.talhabayhan.lexi.core.designsystem.theme.descenderOverflowPx
 import dev.talhabayhan.lexi.core.designsystem.theme.resized
 import kotlin.math.PI
 import kotlin.math.cos
+import kotlin.math.hypot
 import kotlin.math.sin
 
 /** Wheel geometry from `04-game.html` / `source/04-game.dc.html` for the 320dp wheel; everything scales with size. */
@@ -48,7 +53,10 @@ public object LetterWheelDefaults {
 
 /**
  * Passaparola wheel: N [letters] on a circle (angle = −90° + i·360°/N, radius 144 of 320), a 288dp ring (3dp) and the
- * 180dp yellow centre with the big current letter and the rule label ("İLE BAŞLAR" / "İÇİNDE GEÇER").
+ * 180dp yellow centre with the big current letter and the rule label ("İLE BAŞLAR" / "İÇİNDE GEÇER"). The letter's
+ * line box is tighter than the font (line-height .9), so the space its descender (J, Q, Y, G, P) hangs into is reserved
+ * under it and never overlaps the label. When large font sizes make that stack (letter, reserve, label) too big for the
+ * centre, i.e. its bounding box's corners leave the circle, letter and label shrink together until they touch it.
  *
  * Motion (`motion.md`): #6 the black current square jumps with the state (a step, no easing); the centre letter slides
  * down and the next one follows from above (`wheelAdvanceDurationMillis`, no fade; in place under reduced motion).
@@ -74,9 +82,28 @@ public fun LetterWheel(
 
     // Smaller wheels (narrow / short phones) scale their texts with the geometry.
     fun TextStyle.scaled(): TextStyle = if (scale < 1f) resized(fontSize * scale) else this
-    val letterStyle = typography.wheelLetter.scaled()
-    val ruleStyle = typography.wheelRule.scaled()
     val chipStyle = typography.wheelChip.scaled()
+    val centerSize = (LetterWheelDefaults.CENTER_SIZE * scale).dp
+    val measurer = rememberTextMeasurer()
+    val density = LocalDensity.current
+    val letterBase = typography.wheelLetter.scaled()
+    val ruleBase = typography.wheelRule.scaled()
+    val fit = remember(measurer, density, centerLetter, ruleLabel, letterBase, ruleBase, centerSize) {
+        with(density) {
+            val letter = measurer.measure(centerLetter.toString(), letterBase).size
+            val rule = measurer.measure(ruleLabel, ruleBase).size
+            val width = maxOf(letter.width, rule.width).toFloat()
+            val height = letter.height + letterBase.descenderOverflowPx(density) + rule.height
+            minOf(1f, centerSize.toPx() / hypot(width, height))
+        }
+    }
+
+    // Shrunk in px, then back to sp: non-linear font scaling would not shrink every size by the same factor.
+    fun TextStyle.fitted(): TextStyle =
+        if (fit < 1f) resized(with(density) { (fontSize.toPx() * fit).toSp() }) else this
+    val letterStyle = letterBase.fitted()
+    val ruleStyle = ruleBase.fitted()
+    val descenderReserve = with(density) { letterStyle.descenderOverflowPx(density).toDp() }
     Box(modifier.size(size)) {
         Box(
             Modifier
@@ -84,7 +111,6 @@ public fun LetterWheel(
                 .size(size - (2 * LetterWheelDefaults.RING_INSET * scale).dp)
                 .border(LexiTheme.borders.regular, colors.ink, LexiTheme.shapes.circle),
         )
-        val centerSize = (LetterWheelDefaults.CENTER_SIZE * scale).dp
         Column(
             modifier = Modifier
                 .align(Alignment.Center)
@@ -108,9 +134,9 @@ public fun LetterWheel(
                 },
                 contentAlignment = Alignment.Center,
             ) { letter ->
-                Text(letter.toString(), style = letterStyle)
+                Text(letter.toString(), style = letterStyle, modifier = Modifier.padding(bottom = descenderReserve))
             }
-            Text(ruleLabel, style = ruleStyle)
+            Text(ruleLabel, style = ruleStyle, maxLines = 1)
         }
         letters.forEachIndexed { i, item ->
             val angle = -PI / 2 + i * 2 * PI / letters.size
