@@ -26,11 +26,17 @@ import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.serialization.Serializable
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.koinInject
+
+/** Whether the splash has finished in this process: work that is not needed for it waits for this (App). */
+internal object SplashState {
+    val finished: MutableStateFlow<Boolean> = MutableStateFlow(false)
+}
 
 /** Type-safe navigation destination of the splash, the start destination of the app. */
 @Serializable
@@ -91,6 +97,7 @@ internal fun SplashRoute(
             ready.await()
             isCompleted.await()
         }
+        SplashState.finished.value = true
         currentOnFinished(completed)
     }
     SplashScreen(progress = { progress.value })

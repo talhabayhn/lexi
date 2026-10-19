@@ -6,6 +6,7 @@ import android.speech.tts.UtteranceProgressListener
 import dev.talhabayhan.lexi.core.domain.feedback.Speaker
 import dev.talhabayhan.lexi.core.domain.settings.Accent
 import java.util.Locale
+import java.util.concurrent.Executors
 import kotlin.time.TimeSource
 
 /** The slice of `TextToSpeech` the speaker uses; a seam for host tests. */
@@ -84,6 +85,7 @@ public class AndroidSpeaker internal constructor(
     private val factory: SpeechEngineFactory,
     private val accent: () -> Accent,
     private val timingLog: ((String) -> Unit)? = null,
+    private val background: (Runnable) -> Unit = BackgroundExecutor::execute,
 ) : Speaker,
     AutoCloseable {
     public constructor(context: Context, accent: () -> Accent, timingLog: ((String) -> Unit)? = null) :
@@ -146,8 +148,16 @@ public class AndroidSpeaker internal constructor(
         }
     }
 
-    @Synchronized
+    /**
+     * TextToSpeech reports on the main thread; setting the language is a binder call that can take tens of ms, so the
+     * rest runs on [background] and never costs the UI a frame.
+     */
     private fun onInit(success: Boolean) {
+        background { onInitOffMain(success) }
+    }
+
+    @Synchronized
+    private fun onInitOffMain(success: Boolean) {
         val current = engine
         if (!success || current == null) {
             failed = true
@@ -175,4 +185,13 @@ public class AndroidSpeaker internal constructor(
         language = locale
         return true
     }
+}
+
+/** One daemon thread for the speech engine's slow calls (language setup). */
+private object BackgroundExecutor {
+    private val executor = Executors.newSingleThreadExecutor { runnable ->
+        Thread(runnable, "lexi-speech").apply { isDaemon = true }
+    }
+
+    fun execute(runnable: Runnable) = executor.execute(runnable)
 }

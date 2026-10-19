@@ -43,6 +43,7 @@ class AndroidSpeakerTest {
                 engine
             },
             accent = { accent },
+            background = { it.run() },
         )
     }
 
@@ -123,10 +124,14 @@ class AndroidSpeakerTest {
         var accent = Accent.US
         val engine = FakeEngine()
         lateinit var init: (Boolean) -> Unit
-        val speaker = AndroidSpeaker(factory = {
-            init = it
-            engine
-        }, accent = { accent })
+        val speaker = AndroidSpeaker(
+            factory = {
+                init = it
+                engine
+            },
+            accent = { accent },
+            background = { it.run() },
+        )
         speaker.warmUp()
         init(true)
 
