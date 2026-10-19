@@ -22,6 +22,7 @@ import dev.talhabayhan.lexi.core.domain.repository.ContentVersionRepository
 import dev.talhabayhan.lexi.core.domain.repository.OnboardingRepository
 import dev.talhabayhan.lexi.shared.generated.resources.Res
 import dev.talhabayhan.lexi.shared.generated.resources.splash_tagline
+import dev.talhabayhan.lexi.startup.StartupTrace
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
@@ -68,7 +69,7 @@ internal fun SplashRoute(
     val progress = remember { Animatable(if (motion.reducedMotion) 1f else 0f) }
     LaunchedEffect(content, onboarding, motion) {
         val completed = coroutineScope {
-            val ready = async { content.warmUp() }
+            val ready = async { StartupTrace.measureSuspend("content warm-up") { content.warmUp() } }
             val isCompleted = async {
                 try {
                     onboarding.onboardingCompleted.first()
@@ -97,6 +98,7 @@ internal fun SplashRoute(
             ready.await()
             isCompleted.await()
         }
+        StartupTrace.mark("splash finished")
         SplashState.finished.value = true
         currentOnFinished(completed)
     }

@@ -3,6 +3,7 @@ package dev.talhabayhan.lexi
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.withFrameNanos
 import dev.talhabayhan.lexi.core.designsystem.feedback.LocalHaptics
 import dev.talhabayhan.lexi.core.designsystem.feedback.LocalSoundPlayer
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
@@ -14,6 +15,7 @@ import dev.talhabayhan.lexi.di.appModules
 import dev.talhabayhan.lexi.di.rememberPlatformModule
 import dev.talhabayhan.lexi.navigation.LexiNavHost
 import dev.talhabayhan.lexi.splash.SplashState
+import dev.talhabayhan.lexi.startup.StartupTrace
 import kotlinx.coroutines.flow.first
 import org.koin.compose.KoinApplication
 import org.koin.compose.koinInject
@@ -27,6 +29,11 @@ import org.koin.dsl.koinConfiguration
  */
 @Composable
 fun App(onLanguageChanged: ((AppLanguage) -> Unit)? = null) {
+    StartupTrace.mark("app composition")
+    LaunchedEffect(Unit) {
+        withFrameNanos { }
+        StartupTrace.mark("first frame")
+    }
     val platformModule = rememberPlatformModule()
     KoinApplication(configuration = koinConfiguration { modules(appModules + platformModule) }) {
         val settingsRepository = koinInject<SettingsRepository>()
