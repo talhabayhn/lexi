@@ -2,7 +2,6 @@ package dev.talhabayhan.lexi.core.platform.time
 
 import dev.talhabayhan.lexi.core.domain.time.AppClock
 import kotlinx.datetime.DateTimeUnit
-import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.LocalTime
 import kotlinx.datetime.TimeZone
@@ -10,6 +9,7 @@ import kotlinx.datetime.plus
 import kotlinx.datetime.toInstant
 import kotlinx.datetime.toLocalDateTime
 import kotlin.time.Clock
+import kotlin.time.Instant
 
 /**
  * [AppClock] on the device clock (ADR 0019). The time zone is read on every call, so a zone change while the app
