@@ -30,6 +30,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import dev.talhabayhan.lexi.core.designsystem.component.DecorShapeKind
@@ -361,6 +362,8 @@ private fun OnboardingStepContent(
                     Text(
                         text = stringResource(Res.string.leveltest_choice_test),
                         style = LexiTheme.typography.button20,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis,
                     )
                 }
             }
@@ -379,6 +382,8 @@ private fun OnboardingStepContent(
                 Text(
                     text = stringResource(ctaTextRes),
                     style = LexiTheme.typography.button20,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
                 )
             }
         }

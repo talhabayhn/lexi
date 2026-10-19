@@ -5,6 +5,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
@@ -54,6 +55,7 @@ import dev.talhabayhan.lexi.core.designsystem.component.PlayButton
 import dev.talhabayhan.lexi.core.designsystem.component.StreakChip
 import dev.talhabayhan.lexi.core.designsystem.component.Toast
 import dev.talhabayhan.lexi.core.designsystem.component.ToastStyle
+import dev.talhabayhan.lexi.core.designsystem.component.menuTileMinWidth
 import dev.talhabayhan.lexi.core.designsystem.icon.LexiIcons
 import dev.talhabayhan.lexi.core.designsystem.modifier.lexiSurface
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
@@ -404,20 +406,28 @@ private fun TopBar(state: HomeUiState, onIntent: (HomeIntent) -> Unit) {
 private fun MenuGrid(state: HomeUiState, onIntent: (HomeIntent) -> Unit, metrics: HomeMetrics) {
     val colors = LexiTheme.colors
     val gap = metrics.tileGap
-    Column(verticalArrangement = Arrangement.spacedBy(gap)) {
-        Row(Modifier.height(IntrinsicSize.Min), horizontalArrangement = Arrangement.spacedBy(gap)) {
+    val titles = listOf(
+        stringResource(Res.string.home_tile_notebook),
+        stringResource(Res.string.home_tile_stats),
+        stringResource(Res.string.home_tile_practice),
+        stringResource(Res.string.home_tile_exams),
+    )
+    val tiles: List<@Composable (Modifier) -> Unit> = listOf(
+        { modifier ->
             MenuTile(
-                title = stringResource(Res.string.home_tile_notebook),
+                title = titles[0],
                 subtitle = pluralStringResource(Res.plurals.home_tile_notebook_due, state.dueReviews, state.dueReviews),
                 marker = DecorShapeKind.Circle,
                 markerColor = colors.blue,
                 onClick = { onIntent(HomeIntent.OpenNotebook) },
-                modifier = Modifier.weight(1f).fillMaxHeight(),
+                modifier = modifier,
                 minHeight = metrics.tileHeight,
                 compact = metrics.compactTiles,
             )
+        },
+        { modifier ->
             MenuTile(
-                title = stringResource(Res.string.home_tile_stats),
+                title = titles[1],
                 subtitle = pluralStringResource(
                     Res.plurals.home_tile_stats_learned,
                     state.learnedWords,
@@ -426,33 +436,47 @@ private fun MenuGrid(state: HomeUiState, onIntent: (HomeIntent) -> Unit, metrics
                 marker = DecorShapeKind.Square,
                 markerColor = colors.red,
                 onClick = { onIntent(HomeIntent.OpenStats) },
-                modifier = Modifier.weight(1f).fillMaxHeight(),
+                modifier = modifier,
                 minHeight = metrics.tileHeight,
                 compact = metrics.compactTiles,
             )
-        }
-        Row(Modifier.height(IntrinsicSize.Min), horizontalArrangement = Arrangement.spacedBy(gap)) {
+        },
+        { modifier ->
             MenuTile(
-                title = stringResource(Res.string.home_tile_practice),
+                title = titles[2],
                 subtitle = stringResource(Res.string.home_tile_practice_subtitle),
                 marker = DecorShapeKind.Leaf,
                 markerColor = colors.yellow,
                 onClick = { onIntent(HomeIntent.OpenPractice) },
-                modifier = Modifier.weight(1f).fillMaxHeight(),
+                modifier = modifier,
                 minHeight = metrics.tileHeight,
                 compact = metrics.compactTiles,
             )
+        },
+        { modifier ->
             MenuTile(
-                title = stringResource(Res.string.home_tile_exams),
+                title = titles[3],
                 subtitle = stringResource(Res.string.home_tile_exams_subtitle),
                 marker = DecorShapeKind.Diamond,
                 markerColor = colors.yellow,
                 onClick = { onIntent(HomeIntent.OpenExamPacks) },
-                modifier = Modifier.weight(1f).fillMaxHeight(),
+                modifier = modifier,
                 minHeight = metrics.tileHeight,
                 compact = metrics.compactTiles,
                 inverted = true,
             )
+        },
+    )
+    val minTileWidth = menuTileMinWidth(titles, metrics.compactTiles)
+    BoxWithConstraints {
+        // 2 × 2 as designed; one tile per row when a title word would not fit a half-width tile (large font sizes).
+        val columns = if ((maxWidth - gap) / 2 < minTileWidth) 1 else 2
+        Column(verticalArrangement = Arrangement.spacedBy(gap)) {
+            tiles.chunked(columns).forEach { row ->
+                Row(Modifier.height(IntrinsicSize.Min), horizontalArrangement = Arrangement.spacedBy(gap)) {
+                    row.forEach { tile -> tile(Modifier.weight(1f).fillMaxHeight()) }
+                }
+            }
         }
     }
 }

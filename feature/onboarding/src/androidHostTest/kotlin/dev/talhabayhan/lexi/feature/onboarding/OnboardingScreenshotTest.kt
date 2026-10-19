@@ -232,6 +232,14 @@ class OnboardingScreenshotTest {
     @Config(qualifiers = "tr-w600dp-h960dp-mdpi", fontScale = 1.3f)
     fun levelPicker_w600h960FontScale130() = capture("OnboardingLevelPicker_w600h960_fontScale130", levelPicker)
 
+    @Test
+    @Config(qualifiers = "tr-w390dp-h844dp-xhdpi", fontScale = 2.0f)
+    fun levelChoiceFontScale200() = capture("OnboardingLevelChoice_fontScale200", levelChoice)
+
+    @Test
+    @Config(qualifiers = "tr-w320dp-h568dp-xhdpi", fontScale = 2.0f)
+    fun levelChoice_w320h568FontScale200() = capture("OnboardingLevelChoice_w320h568_fontScale200", levelChoice)
+
     private fun capture(name: String, state: OnboardingUiState) {
         captureRoboImage("src/androidHostTest/screenshots/$name.png") {
             LexiTheme(reducedMotion = false) {

@@ -99,16 +99,26 @@ public fun JokerRow(
                 )
                 Text(count, style = typography.bodyStrong17, color = markerContentColor)
             }
-            Column(Modifier.weight(1f)) {
-                Text(title, style = typography.bodyStrong17)
-                Text(description, style = typography.caption13)
-            }
-            Text(
-                text = cost,
-                style = typography.bodyStrong14,
-                modifier = Modifier
-                    .lexiSurface(colors.cream, BorderStroke(LexiTheme.borders.thin, colors.ink))
-                    .padding(JokerRowDefaults.CostPadding),
+            // Large fonts on narrow screens: the cost chip moves under the text instead of breaking words.
+            AdaptiveTrailingRow(
+                gap = JokerRowDefaults.Gap,
+                stackedGap = LexiTheme.dimens.gap6,
+                modifier = Modifier.weight(1f),
+                main = {
+                    Column {
+                        Text(title, style = typography.bodyStrong17)
+                        Text(description, style = typography.caption13)
+                    }
+                },
+                trailing = {
+                    Text(
+                        text = cost,
+                        style = typography.bodyStrong14,
+                        modifier = Modifier
+                            .lexiSurface(colors.cream, BorderStroke(LexiTheme.borders.thin, colors.ink))
+                            .padding(JokerRowDefaults.CostPadding),
+                    )
+                },
             )
         }
     }

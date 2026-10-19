@@ -126,6 +126,14 @@ class SettingsScreenshotTest {
     @Config(qualifiers = "tr-w600dp-h960dp-mdpi", fontScale = 1.3f)
     fun w600h960FontScale130() = capture("Settings_w600h960_fontScale130")
 
+    @Test
+    @Config(qualifiers = "tr-w390dp-h844dp-xhdpi", fontScale = 2.0f)
+    fun fontScale200() = capture("Settings_fontScale200")
+
+    @Test
+    @Config(qualifiers = "tr-w320dp-h568dp-xhdpi", fontScale = 2.0f)
+    fun w320h568FontScale200() = capture("Settings_w320h568_fontScale200")
+
     private fun capture(name: String) {
         captureRoboImage("src/androidHostTest/screenshots/$name.png") {
             LexiTheme(reducedMotion = false) {

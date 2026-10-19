@@ -163,8 +163,9 @@ public fun DailyCard(
                     text = title,
                     style = titleStyle,
                     color = { colors.ink },
+                    // At the minimum size and still too long (large font sizes on narrow screens): an ellipsis, not a cut.
                     maxLines = 2,
-                    overflow = TextOverflow.Clip,
+                    overflow = TextOverflow.Ellipsis,
                     autoSize = TextAutoSize.StepBased(
                         minFontSize = minFont,
                         maxFontSize = maxFont,

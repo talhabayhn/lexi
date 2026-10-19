@@ -27,6 +27,7 @@ import androidx.compose.ui.semantics.disabled
 import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -194,7 +195,13 @@ public fun LexiButton(
         if (leadingIcon != null) {
             Icon(leadingIcon, contentDescription = null, modifier = Modifier.size(LexiButtonDefaults.IconSize))
         }
-        Text(text = text, style = textStyle, color = LocalContentColor.current, maxLines = 1)
+        Text(
+            text = text,
+            style = textStyle,
+            color = LocalContentColor.current,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+        )
     }
 }
 

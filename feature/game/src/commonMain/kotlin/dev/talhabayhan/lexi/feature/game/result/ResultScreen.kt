@@ -28,6 +28,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
+import dev.talhabayhan.lexi.core.designsystem.component.AdaptiveTrailingRow
 import dev.talhabayhan.lexi.core.designsystem.component.DecorShape
 import dev.talhabayhan.lexi.core.designsystem.component.DecorShapeKind
 import dev.talhabayhan.lexi.core.designsystem.component.EmptyState
@@ -210,20 +211,26 @@ private fun Stats(state: ResultUiState) {
 private fun Review(state: ResultUiState, onIntent: (ResultIntent) -> Unit) {
     val typography = LexiTheme.typography
     Column(verticalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap8)) {
-        Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-            Text(
-                text = stringResource(Res.string.result_review_title),
-                style = typography.heading20,
-                modifier = Modifier.weight(1f, fill = false).alignByBaseline(),
-            )
-            if (state.addedToNotebook > 0) {
-                Text(
-                    text = pluralStringResource(Res.plurals.result_added, state.addedToNotebook, state.addedToNotebook),
-                    style = typography.caption13SemiBold,
-                    modifier = Modifier.padding(start = LexiTheme.dimens.gap8).alignByBaseline(),
-                )
-            }
-        }
+        // Large fonts on narrow screens: the "added" caption moves under the title instead of squeezing it.
+        AdaptiveTrailingRow(
+            gap = LexiTheme.dimens.gap8,
+            stackedGap = LexiTheme.dimens.gap4,
+            alignBaselines = true,
+            modifier = Modifier.fillMaxWidth(),
+            main = { Text(text = stringResource(Res.string.result_review_title), style = typography.heading20) },
+            trailing = {
+                if (state.addedToNotebook > 0) {
+                    Text(
+                        text = pluralStringResource(
+                            Res.plurals.result_added,
+                            state.addedToNotebook,
+                            state.addedToNotebook,
+                        ),
+                        style = typography.caption13SemiBold,
+                    )
+                }
+            },
+        )
         val groups = when {
             state.groups.isNotEmpty() -> state.groups
 

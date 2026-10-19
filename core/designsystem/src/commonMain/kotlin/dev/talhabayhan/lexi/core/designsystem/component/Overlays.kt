@@ -90,7 +90,8 @@ public fun ModalScrim(onDismissRequest: () -> Unit, modifier: Modifier = Modifie
  * Modal bottom sheet host (motion.md #10): the scrim fades to 55 % and the sheet slides up from the bottom in 220 ms
  * (`mechanical`); under reduced motion the sheet appears without sliding. Fills its parent; [content] is laid out in
  * a cream panel with a 4dp ink top edge, padding 20/20/28 plus the bottom/side safe-drawing insets, gap 12, under a
- * title row with the close button.
+ * title row with the close button. [topReserved] is kept free above the sheet (e.g. for a status pill over the
+ * scrim): a taller sheet (large font sizes) stops below it and scrolls instead of covering it.
  */
 @Composable
 public fun BottomSheet(
@@ -99,6 +100,7 @@ public fun BottomSheet(
     title: String,
     closeContentDescription: String,
     modifier: Modifier = Modifier,
+    topReserved: Dp = 0.dp,
     content: @Composable ColumnScope.() -> Unit,
 ) {
     val motion = LexiTheme.motion
@@ -115,6 +117,7 @@ public fun BottomSheet(
             visible = visible,
             modifier = Modifier
                 .align(Alignment.BottomCenter)
+                .padding(top = topReserved)
                 .lexiContentWidth(),
             enter = if (motion.reducedMotion) {
                 EnterTransition.None

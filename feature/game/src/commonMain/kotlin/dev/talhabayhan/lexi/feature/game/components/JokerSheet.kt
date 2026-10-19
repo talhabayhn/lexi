@@ -16,10 +16,16 @@ import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.boundsInParent
+import androidx.compose.ui.layout.onPlaced
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.unit.dp
 import dev.talhabayhan.lexi.core.designsystem.component.BottomSheet
 import dev.talhabayhan.lexi.core.designsystem.component.DecorShapeKind
 import dev.talhabayhan.lexi.core.designsystem.component.JokerRow
@@ -27,6 +33,7 @@ import dev.talhabayhan.lexi.core.designsystem.component.JokerRowDefaults
 import dev.talhabayhan.lexi.core.designsystem.component.LexiButton
 import dev.talhabayhan.lexi.core.designsystem.component.LexiButtonDefaults
 import dev.talhabayhan.lexi.core.designsystem.component.LexiButtonVariant
+import dev.talhabayhan.lexi.core.designsystem.component.OverlayDefaults
 import dev.talhabayhan.lexi.core.designsystem.component.StatusPill
 import dev.talhabayhan.lexi.core.designsystem.format.formatClock
 import dev.talhabayhan.lexi.core.designsystem.icon.LexiIcons
@@ -59,6 +66,7 @@ import kotlinx.collections.immutable.ImmutableList
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.pluralStringResource
 import org.jetbrains.compose.resources.stringResource
+import kotlin.math.roundToInt
 
 /**
  * The joker sheet (`05-joker-sheet`): bottom sheet (motion.md #10) with the four jokers and the ad button, plus the
@@ -77,12 +85,17 @@ internal fun JokerSheet(
 ) {
     val motion = LexiTheme.motion
     val dimens = LexiTheme.dimens
+    // Bottom of the clock pill in the sheet's coordinates: a tall sheet (large font sizes) stays below it.
+    var pillBottom by remember { mutableStateOf(0) }
+    val timed by remember(clock) { derivedStateOf { clock().isTimed } }
+    val density = LocalDensity.current
     Box(modifier.fillMaxSize()) {
         BottomSheet(
             visible = visible,
             onDismissRequest = { onIntent(GameIntent.CloseJokers) },
             title = stringResource(Res.string.game_jokers_title),
             closeContentDescription = stringResource(Res.string.game_jokers_close),
+            topReserved = if (timed) with(density) { pillBottom.toDp() } + OverlayDefaults.SheetGap else 0.dp,
         ) {
             jokers.forEach { joker -> JokerOption(joker, onClick = { onIntent(GameIntent.UseJoker(joker.type)) }) }
             if (adReward != null) {
@@ -98,7 +111,6 @@ internal fun JokerSheet(
                 )
             }
         }
-        val timed by remember(clock) { derivedStateOf { clock().isTimed } }
         val fade = tween<Float>(motion.bottomSheetDurationMillis, easing = motion.mechanical)
         AnimatedVisibility(
             visible = visible && timed,
@@ -106,6 +118,8 @@ internal fun JokerSheet(
             exit = fadeOut(fade),
             modifier = Modifier
                 .align(Alignment.TopCenter)
+                // First in the chain: bounds in the Box, including the insets and padding above the pill.
+                .onPlaced { pillBottom = it.boundsInParent().bottom.roundToInt() }
                 .windowInsetsPadding(
                     WindowInsets.safeDrawing.only(WindowInsetsSides.Top + WindowInsetsSides.Horizontal),
                 )

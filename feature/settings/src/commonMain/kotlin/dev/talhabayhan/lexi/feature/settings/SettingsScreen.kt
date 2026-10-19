@@ -28,9 +28,11 @@ import androidx.compose.ui.semantics.disabled
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import dev.talhabayhan.lexi.core.designsystem.component.AdaptiveTrailingRow
 import dev.talhabayhan.lexi.core.designsystem.component.CountChip
 import dev.talhabayhan.lexi.core.designsystem.component.JokerRowDefaults
 import dev.talhabayhan.lexi.core.designsystem.component.ListCard
+import dev.talhabayhan.lexi.core.designsystem.component.ListDefaults
 import dev.talhabayhan.lexi.core.designsystem.component.ListRow
 import dev.talhabayhan.lexi.core.designsystem.component.ListRowValue
 import dev.talhabayhan.lexi.core.designsystem.component.NavSquareButton
@@ -150,24 +152,33 @@ internal fun SettingsScreen(state: SettingsUiState, onIntent: (SettingsIntent) -
             ListRow(
                 onClick = { onIntent(SettingsIntent.CycleAppLanguage) },
             ) {
-                Column(modifier = Modifier.weight(1f)) {
-                    Text(
-                        text = stringResource(Res.string.settings_language),
-                        style = LexiTheme.typography.body16SemiBold,
-                    )
-                    if (isIos) {
-                        Text(
-                            text = stringResource(Res.string.settings_language_ios_restart_hint),
-                            style = LexiTheme.typography.caption12,
-                            color = LexiTheme.colors.inkMuted,
+                AdaptiveTrailingRow(
+                    gap = ListDefaults.RowGap,
+                    stackedGap = LexiTheme.dimens.gap4,
+                    modifier = Modifier.weight(1f),
+                    main = {
+                        Column {
+                            Text(
+                                text = stringResource(Res.string.settings_language),
+                                style = LexiTheme.typography.body16SemiBold,
+                            )
+                            if (isIos) {
+                                Text(
+                                    text = stringResource(Res.string.settings_language_ios_restart_hint),
+                                    style = LexiTheme.typography.caption12,
+                                    color = LexiTheme.colors.inkMuted,
+                                )
+                            }
+                        }
+                    },
+                    trailing = {
+                        ListRowValue(
+                            when (state.appLanguage) {
+                                AppLanguage.SYSTEM -> stringResource(Res.string.settings_language_system)
+                                AppLanguage.TR -> stringResource(Res.string.settings_language_tr)
+                                AppLanguage.EN -> stringResource(Res.string.settings_language_en)
+                            },
                         )
-                    }
-                }
-                ListRowValue(
-                    when (state.appLanguage) {
-                        AppLanguage.SYSTEM -> stringResource(Res.string.settings_language_system)
-                        AppLanguage.TR -> stringResource(Res.string.settings_language_tr)
-                        AppLanguage.EN -> stringResource(Res.string.settings_language_en)
                     },
                 )
             }
@@ -297,12 +308,19 @@ private fun Section(title: StringResource, rows: @Composable () -> Unit) {
 @Composable
 private fun SoonRow(label: StringResource) {
     ListRow(modifier = Modifier.semantics { disabled() }) {
-        Text(
-            text = stringResource(label),
-            style = LexiTheme.typography.body16SemiBold,
-            modifier = Modifier.weight(1f).alpha(JokerRowDefaults.DISABLED_ALPHA),
+        AdaptiveTrailingRow(
+            gap = ListDefaults.RowGap,
+            stackedGap = LexiTheme.dimens.gap4,
+            modifier = Modifier.weight(1f),
+            main = {
+                Text(
+                    text = stringResource(label),
+                    style = LexiTheme.typography.body16SemiBold,
+                    modifier = Modifier.alpha(JokerRowDefaults.DISABLED_ALPHA),
+                )
+            },
+            trailing = { CountChip(stringResource(Res.string.settings_soon)) },
         )
-        CountChip(stringResource(Res.string.settings_soon))
     }
 }
 

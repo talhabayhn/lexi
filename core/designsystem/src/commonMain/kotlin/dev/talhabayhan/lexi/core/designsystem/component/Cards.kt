@@ -14,14 +14,18 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.layout.layout
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.selected
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.Dp
@@ -226,13 +230,7 @@ public fun MenuTile(
                 border = BorderStroke(LexiTheme.borders.thin, if (inverted) colors.cream else colors.ink),
             )
             Column {
-                Text(
-                    title,
-                    style = typography.heading18
-                        .let { if (compact) it.resized(CardDefaults.CompactTileTitle) else it }
-                        .withCssLineHeight(CardDefaults.TILE_TITLE_LINE_HEIGHT),
-                    color = content,
-                )
+                Text(title, style = menuTileTitleStyle(compact), color = content)
                 Text(
                     subtitle,
                     style = typography.caption14
@@ -242,6 +240,31 @@ public fun MenuTile(
                 )
             }
         }
+    }
+}
+
+@Composable
+private fun menuTileTitleStyle(compact: Boolean): TextStyle = LexiTheme.typography.heading18
+    .let { if (compact) it.resized(CardDefaults.CompactTileTitle) else it }
+    .withCssLineHeight(CardDefaults.TILE_TITLE_LINE_HEIGHT)
+
+/**
+ * The narrowest [MenuTile] whose title column still holds the longest word of every one of [titles] on one line. A grid
+ * whose columns are narrower (large font sizes on narrow screens) should stack its tiles instead of breaking words.
+ */
+@Composable
+public fun menuTileMinWidth(titles: List<String>, compact: Boolean = false): Dp {
+    val measurer = rememberTextMeasurer()
+    val style = menuTileTitleStyle(compact)
+    val padding = if (compact) CardDefaults.CompactPadding else CardDefaults.Padding
+    val density = LocalDensity.current
+    val border = LexiTheme.borders.regular
+    return remember(titles, style, padding, border, density, measurer) {
+        val widest = titles.flatMap { it.split(' ') }.maxOfOrNull { word ->
+            measurer.measure(word, style, softWrap = false, maxLines = 1).size.width
+        } ?: 0
+        // Text column = tile width − padding − the surface's border on both sides.
+        with(density) { widest.toDp() } + padding * 2 + border * 2
     }
 }
 

@@ -26,6 +26,7 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -91,7 +92,15 @@ public fun SearchField(
                     modifier = Modifier.weight(1f).padding(horizontal = SearchFieldDefaults.InputInset),
                     contentAlignment = Alignment.CenterStart,
                 ) {
-                    if (state.text.isEmpty()) Text(placeholder, style = style, color = colors.inkMuted, maxLines = 1)
+                    if (state.text.isEmpty()) {
+                        Text(
+                            placeholder,
+                            style = style,
+                            color = colors.inkMuted,
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis,
+                        )
+                    }
                     inner()
                 }
             }

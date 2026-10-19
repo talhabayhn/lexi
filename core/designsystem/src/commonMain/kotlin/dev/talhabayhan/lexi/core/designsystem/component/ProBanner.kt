@@ -52,10 +52,17 @@ public fun ProBanner(
         verticalAlignment = Alignment.CenterVertically,
     ) {
         DecorShape(DecorShapeKind.Diamond, colors.yellow, Modifier.size(ProBannerDefaults.DiamondSize))
-        Column(Modifier.weight(1f)) {
-            Text(title, style = LexiTheme.typography.heading18, color = colors.cream)
-            Text(subtitle, style = LexiTheme.typography.caption13, color = colors.cream)
-        }
-        trailing()
+        AdaptiveTrailingRow(
+            gap = dimens.gap12,
+            stackedGap = dimens.gap6,
+            modifier = Modifier.weight(1f),
+            main = {
+                Column {
+                    Text(title, style = LexiTheme.typography.heading18, color = colors.cream)
+                    Text(subtitle, style = LexiTheme.typography.caption13, color = colors.cream)
+                }
+            },
+            trailing = { Row(content = trailing) },
+        )
     }
 }

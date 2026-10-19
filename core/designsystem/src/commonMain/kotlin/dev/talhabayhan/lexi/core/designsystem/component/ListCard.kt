@@ -93,8 +93,14 @@ public fun ListRow(
     trailing: @Composable RowScope.() -> Unit = {},
 ) {
     ListRow(modifier = modifier, onClick = onClick) {
-        Text(label, style = LexiTheme.typography.body16SemiBold, modifier = Modifier.weight(1f))
-        trailing()
+        // Large fonts on narrow screens: the value or chip moves under the label instead of breaking words.
+        AdaptiveTrailingRow(
+            gap = ListDefaults.RowGap,
+            stackedGap = LexiTheme.dimens.gap4,
+            modifier = Modifier.weight(1f),
+            main = { Text(label, style = LexiTheme.typography.body16SemiBold) },
+            trailing = { Row(verticalAlignment = Alignment.CenterVertically, content = trailing) },
+        )
     }
 }
 

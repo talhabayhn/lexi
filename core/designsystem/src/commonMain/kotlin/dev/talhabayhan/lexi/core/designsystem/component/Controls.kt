@@ -5,10 +5,12 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -28,6 +30,7 @@ import androidx.compose.ui.semantics.ProgressBarRangeInfo
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.progressBarRangeInfo
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -85,8 +88,10 @@ public fun SegmentedControl(
     val typography = LexiTheme.typography
     val haptics = LocalHaptics.current
     val sounds = LocalSoundPlayer.current
+    // At least [height]; a title that does not fit its segment (large font sizes) wraps and every segment grows with it.
     Row(
         modifier = modifier
+            .height(IntrinsicSize.Min)
             .lexiSurface(colors.white, BorderStroke(LexiTheme.borders.regular, colors.ink))
             .selectableGroup(),
     ) {
@@ -95,7 +100,8 @@ public fun SegmentedControl(
             Column(
                 modifier = Modifier
                     .weight(1f)
-                    .height(height)
+                    .fillMaxHeight()
+                    .heightIn(min = height)
                     .then(if (index > 0) Modifier.leftBorder(dividerWidth, colors.ink) else Modifier)
                     .background(if (selected) colors.ink else colors.white)
                     .selectable(selected = selected, role = Role.Tab, interactionSource = null, indication = null) {
@@ -108,7 +114,11 @@ public fun SegmentedControl(
             ) {
                 val titleColor = if (selected) colors.yellow else colors.ink
                 if (segment.subtitle == null) {
-                    Text(segment.title, style = typography.bodyStrong14, color = titleColor, maxLines = 1)
+                    Text(
+                        segment.title,
+                        style = typography.bodyStrong14,
+                        color = titleColor,
+                    )
                 } else {
                     val lineHeight = ControlDefaults.SEGMENT_TWO_LINE_HEIGHT
                     Text(

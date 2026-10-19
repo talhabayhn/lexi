@@ -134,6 +134,19 @@ class GameLayoutScreenshotTest {
     @Config(qualifiers = "tr-w600dp-h960dp-mdpi", fontScale = 1.3f)
     fun pauseDialog_w600h960FontScale130() = capture("GamePauseDialog_w600h960_fontScale130", GameSamples.paused)
 
+    @Test
+    @Config(qualifiers = "tr-w390dp-h844dp-xhdpi", fontScale = 2.0f)
+    fun jokerSheetFontScale200() = capture("JokerSheet_fontScale200", GameSamples.jokerSheet, clock = {
+        GameSamples.jokerSheetClock
+    })
+
+    @Test
+    @Config(qualifiers = "tr-w320dp-h568dp-xhdpi", fontScale = 2.0f)
+    fun jokerSheet_w320h568FontScale200() =
+        capture("JokerSheet_w320h568_fontScale200", GameSamples.jokerSheet, clock = {
+            GameSamples.jokerSheetClock
+        })
+
     private fun capture(name: String, state: GameUiState, clock: () -> GameClockUi = { GameSamples.designClock }) {
         captureRoboImage("src/androidHostTest/screenshots/$name.png") {
             LexiTheme(reducedMotion = false) {
