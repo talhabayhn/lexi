@@ -53,11 +53,18 @@ public fun DecorShape(
     modifier: Modifier = Modifier,
     border: BorderStroke? = null,
 ) {
-    val rotation = if (kind == DecorShapeKind.Diamond) DIAMOND_ROTATION else 0f
+    // Only the diamond needs a layer (its rotation); the other shapes draw straight into their parent.
+    val rotation = if (kind ==
+        DecorShapeKind.Diamond
+    ) {
+        Modifier.graphicsLayer { rotationZ = DIAMOND_ROTATION }
+    } else {
+        Modifier
+    }
     Box(
         modifier
             .clearAndSetSemantics {}
-            .graphicsLayer { rotationZ = rotation }
+            .then(rotation)
             .lexiSurface(color = color, border = border, shape = kind.shape()),
     )
 }

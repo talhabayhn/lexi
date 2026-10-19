@@ -50,26 +50,62 @@ public object SplashDefaults {
     internal const val SCALE_OVERSHOOT = 1.08f
 }
 
-private class Stop(val at: Float, val value: Float)
-
-private fun stop(at: Float, value: Float) = Stop(at, value)
-
 /**
- * CSS keyframes at [progress] (0..1): between two stops the value is interpolated with [easing] (CSS applies the
- * `animation-timing-function` per keyframe interval); before the first / after the last stop it holds.
+ * CSS keyframes (`at` fractions 0..1 and their values), built once: sampling them every frame allocates nothing.
+ * Between two stops the value is interpolated with the easing (CSS applies the `animation-timing-function` per
+ * keyframe interval); before the first / after the last stop it holds.
  */
-private fun sample(progress: Float, easing: Easing, vararg stops: Stop): Float {
-    val first = stops.first()
-    if (progress <= first.at) return first.value
-    for (i in 1 until stops.size) {
-        val from = stops[i - 1]
-        val to = stops[i]
-        if (progress <= to.at) {
-            val t = easing.transform((progress - from.at) / (to.at - from.at))
-            return from.value + (to.value - from.value) * t
+private class Keyframes(vararg stops: Pair<Float, Float>) {
+    private val at = FloatArray(stops.size) { stops[it].first }
+    private val values = FloatArray(stops.size) { stops[it].second }
+
+    /** The value at [progress]; [scale] multiplies every stop first (dp → px), as `stop(at, value.toPx())` did. */
+    fun sample(progress: Float, easing: Easing, scale: Float = 1f): Float {
+        if (progress <= at[0]) return values[0] * scale
+        for (i in 1 until at.size) {
+            if (progress <= at[i]) {
+                val t = easing.transform((progress - at[i - 1]) / (at[i] - at[i - 1]))
+                val from = values[i - 1] * scale
+                return from + (values[i] * scale - from) * t
+            }
         }
+        return values[values.size - 1] * scale
     }
-    return stops.last().value
+}
+
+private object SplashKeyframes {
+    val ShapeScale = Keyframes(0f to 0f, 0.18f to 1f)
+    val TaglineAlpha = Keyframes(0f to 0f, 0.48f to 0f, 0.58f to 1f)
+
+    /** × the tagline rise in px. */
+    val TaglineRise = Keyframes(0f to 1f, 0.48f to 1f, 0.58f to 0f)
+
+    // Block tracks in dp (× density) or degrees / scale factors.
+    val L = Keyframes(
+        0f to SplashDefaults.LeftStart.value,
+        0.04f to SplashDefaults.LeftStart.value,
+        0.20f to SplashDefaults.LeftOvershoot.value,
+        0.26f to 0f,
+    )
+    val E = Keyframes(
+        0f to SplashDefaults.TopStart.value,
+        0.10f to SplashDefaults.TopStart.value,
+        0.26f to SplashDefaults.TopBounce.value,
+        0.32f to 0f,
+    )
+    val XSpin = Keyframes(
+        0f to SplashDefaults.SPIN_START,
+        0.16f to SplashDefaults.SPIN_START,
+        0.34f to SplashDefaults.SPIN_OVERSHOOT,
+        0.40f to 0f,
+    )
+    val XScale = Keyframes(0f to 0f, 0.16f to 0f, 0.34f to SplashDefaults.SCALE_OVERSHOOT, 0.40f to 1f)
+    val I = Keyframes(
+        0f to SplashDefaults.BottomStart.value,
+        0.22f to SplashDefaults.BottomStart.value,
+        0.40f to SplashDefaults.BottomOvershoot.value,
+        0.46f to 0f,
+    )
 }
 
 /**
@@ -92,7 +128,7 @@ public fun LexiSplash(progress: () -> Float, tagline: String, modifier: Modifier
                 .offset(SplashDefaults.SunOffset, SplashDefaults.SunOffset)
                 .size(SplashDefaults.SunSize)
                 .graphicsLayer {
-                    val scale = sample(progress(), mechanical, stop(0f, 0f), stop(0.18f, 1f))
+                    val scale = SplashKeyframes.ShapeScale.sample(progress(), mechanical)
                     scaleX = scale
                     scaleY = scale
                 },
@@ -105,7 +141,7 @@ public fun LexiSplash(progress: () -> Float, tagline: String, modifier: Modifier
                 .offset(-SplashDefaults.BlueOffset, -SplashDefaults.BlueOffset)
                 .size(SplashDefaults.BlueSize)
                 .graphicsLayer {
-                    val scale = sample(progress(), mechanical, stop(0f, 0f), stop(0.18f, 1f))
+                    val scale = SplashKeyframes.ShapeScale.sample(progress(), mechanical)
                     scaleX = scale
                     scaleY = scale
                 },
@@ -121,14 +157,8 @@ public fun LexiSplash(progress: () -> Float, tagline: String, modifier: Modifier
                 style = LexiTheme.typography.label15Wide,
                 modifier = Modifier.graphicsLayer {
                     val p = progress()
-                    alpha = sample(p, easeOut, stop(0f, 0f), stop(0.48f, 0f), stop(0.58f, 1f))
-                    translationY = sample(
-                        p,
-                        easeOut,
-                        stop(0f, SplashDefaults.TaglineRise.toPx()),
-                        stop(0.48f, SplashDefaults.TaglineRise.toPx()),
-                        stop(0.58f, 0f),
-                    )
+                    alpha = SplashKeyframes.TaglineAlpha.sample(p, easeOut)
+                    translationY = SplashKeyframes.TaglineRise.sample(p, easeOut, SplashDefaults.TaglineRise.toPx())
                 },
             )
         }
@@ -137,53 +167,18 @@ public fun LexiSplash(progress: () -> Float, tagline: String, modifier: Modifier
 
 private fun GraphicsLayerScope.animateBlock(index: Int, p: Float, easing: Easing) {
     when (index) {
-        0 -> translationX = sample(
-            p,
-            easing,
-            stop(0f, SplashDefaults.LeftStart.toPx()),
-            stop(0.04f, SplashDefaults.LeftStart.toPx()),
-            stop(0.20f, SplashDefaults.LeftOvershoot.toPx()),
-            stop(0.26f, 0f),
-        )
+        0 -> translationX = SplashKeyframes.L.sample(p, easing, density)
 
-        1 -> translationY = sample(
-            p,
-            easing,
-            stop(0f, SplashDefaults.TopStart.toPx()),
-            stop(0.10f, SplashDefaults.TopStart.toPx()),
-            stop(0.26f, SplashDefaults.TopBounce.toPx()),
-            stop(0.32f, 0f),
-        )
+        1 -> translationY = SplashKeyframes.E.sample(p, easing, density)
 
         2 -> {
-            rotationZ = sample(
-                p,
-                easing,
-                stop(0f, SplashDefaults.SPIN_START),
-                stop(0.16f, SplashDefaults.SPIN_START),
-                stop(0.34f, SplashDefaults.SPIN_OVERSHOOT),
-                stop(0.40f, 0f),
-            )
-            val scale = sample(
-                p,
-                easing,
-                stop(0f, 0f),
-                stop(0.16f, 0f),
-                stop(0.34f, SplashDefaults.SCALE_OVERSHOOT),
-                stop(0.40f, 1f),
-            )
+            rotationZ = SplashKeyframes.XSpin.sample(p, easing)
+            val scale = SplashKeyframes.XScale.sample(p, easing)
             scaleX = scale
             scaleY = scale
         }
 
-        else -> translationY = sample(
-            p,
-            easing,
-            stop(0f, SplashDefaults.BottomStart.toPx()),
-            stop(0.22f, SplashDefaults.BottomStart.toPx()),
-            stop(0.40f, SplashDefaults.BottomOvershoot.toPx()),
-            stop(0.46f, 0f),
-        )
+        else -> translationY = SplashKeyframes.I.sample(p, easing, density)
     }
 }
 
