@@ -15,6 +15,11 @@ public class FakeSpeaker : Speaker {
     public var warmUpCount: Int = 0
         private set
 
+    /** What [isReady] reports; false simulates an engine still starting or without a voice. */
+    public var ready: Boolean = true
+
+    override val isReady: Boolean get() = ready
+
     override fun warmUp() {
         warmUpCount++
     }

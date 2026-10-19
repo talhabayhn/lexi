@@ -23,6 +23,9 @@ public class IosSpeaker(private val accent: () -> Accent, timingLog: ((String) -
     // The synthesizer's delegate is weak: the speaker keeps it alive.
     private val timing = timingLog?.let(::TimingDelegate)?.also { synthesizer.delegate = it }
 
+    /** The synthesizer needs no start-up; it can speak once the accent has a voice. */
+    override val isReady: Boolean get() = voice() != null
+
     override fun warmUp() {
         if (warmedUp) return
         warmedUp = true

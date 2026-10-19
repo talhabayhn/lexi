@@ -296,6 +296,22 @@ class GameViewModelTest {
     }
 
     @Test
+    fun `an engine that is not ready or has no voice keeps the correct sound and says nothing`() = runTest {
+        speaker.ready = false
+        val vm = started()
+        vm.effects.test {
+            awaitStart()
+
+            vm.type("APPLE")
+
+            val correct = cancelAndConsumeRemainingEvents().mapNotNull { (it as? Event.Item)?.value }
+                .filterIsInstance<GameEffect.Correct>().single()
+            assertFalse(correct.spoken, "the correct sound plays")
+            assertTrue(speaker.spoken.isEmpty(), "no late word over the sound")
+        }
+    }
+
+    @Test
     fun `the speech engine is warmed up while the setting is on`() = runTest {
         started()
         assertTrue(speaker.warmUpCount > 0)

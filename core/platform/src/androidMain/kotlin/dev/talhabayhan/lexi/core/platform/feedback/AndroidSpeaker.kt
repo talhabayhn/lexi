@@ -96,6 +96,12 @@ public class AndroidSpeaker internal constructor(
     private var language: Locale? = null
     private var startedAt: TimeSource.Monotonic.ValueTimeMark? = null
 
+    override val isReady: Boolean
+        @Synchronized get() {
+            val current = engine
+            return ready && !failed && current != null && applyLanguage(current)
+        }
+
     @Synchronized
     override fun warmUp() {
         if (failed || engine != null) return

@@ -12,6 +12,13 @@ public interface Speaker {
      */
     public fun warmUp() {}
 
+    /**
+     * True when [speak] starts at once: the engine is up and has a voice for the accent. False while it is still
+     * starting, or when it failed or has no voice; callers that must not stay silent (the correct answer) then fall
+     * back to a sound.
+     */
+    public val isReady: Boolean get() = true
+
     /** Speaks [word] at once, interrupting anything still being spoken. */
     public fun speak(word: String)
 

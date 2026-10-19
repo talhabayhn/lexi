@@ -432,8 +432,9 @@ internal class GameViewModel(
 
             is EngineEffect.Correct -> {
                 val answer = state.wheel.slots.firstOrNull { it.card?.id == effect.card }?.card?.answer
-                val spoken = speakOnCorrect && answer != null
-                // motion.md #3: the word is spoken the moment the answer is judged, in place of the correct sound.
+                // motion.md #3: the word is spoken the moment the answer is judged, in place of the correct sound. Speech
+                // off, an engine still starting or without a voice: the correct sound plays as before.
+                val spoken = speakOnCorrect && answer != null && speaker.isReady
                 if (spoken) speaker.speak(checkNotNull(answer).lowercase())
                 emit(GameEffect.Correct(effect.letter, effect.points, spoken))
             }

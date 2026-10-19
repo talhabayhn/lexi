@@ -100,3 +100,13 @@ Built from `16-components` today; an owner design request is optional unless mar
 | D11 | Pause dialog, word detail sheet, stats/notebook/game empty and error states, result without misses, joker sheet clock pill, combo badge position, compact layouts | M4–M5 | Owner | S | shipped "as built, DESIGN-DEBT"; ask for a design only if you want pixel parity |
 | D12 | Settings M7 rows (design values/chevrons replace "YAKINDA") | M7 | AG | S | with M7.1 |
 | D13 | Notebook placeholder font weight (needs a Regular weight of Jost) | M5 | Owner | S | optional |
+
+## 9. Polish leftovers (2026-10-19 pass)
+| ID | Item | Owner | Size | Notes |
+|---|---|---|---|---|
+| P1 | Wheel centre letter sits ~13dp higher than `04-game` (descender space reserved under it) | Owner → AG | S | decide: accept, or shrink the letter/label gap so the rest of the stack keeps the design position |
+| P2 | Words longer than the whole column still split at 320dp + fontScale 2.0 (e.g. a joker title in the stacked layout) | AG | S | needs hyphenation (`Hyphens.Auto`) or a local auto-size; no global shrinking |
+| P3 | SegmentedControl: wrapped segment titles are start-aligned (centring them moved the design-size text 1px) | AG | S | centre per line without changing the one-line case |
+| P4 | `docs/design/sound-previews` still holds the old `time_up` preview | AG | S | rerun `tools/sound-gen/generate.py` with previews (needs ffmpeg) |
+| P5 | 14 goldens differ beyond the palette (ComponentGallery, LevelSelectComponents, LexiIcons, RatingPromptDialog + En, 9 Notebook screens) | AG | S | review each change, then re-record |
+| P6 | `TokensColors` screenshot still labels the pre-9fcd32d hex values | AG | S | labels are hard-coded in `ThemeScreenshotTest` |

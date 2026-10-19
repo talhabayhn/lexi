@@ -45,7 +45,8 @@ Implemented in `feature:game` (`GameMotion`, `GameMotionLayer`, `GameFeedback`) 
   are buttons: their press plays #1, which is also #2's light haptic, so a placed letter adds none; the effect a press
   causes (#3/#4 after the last letter, #5 after PAS) follows right after it. TTS (#3, setting "Doğru cevapta
   telaffuz") starts the moment the answer is judged (QUEUE_FLUSH, so it cuts off the previous word) and replaces the
-  two notes, which would clash with it; the success haptic stays. The engine and voice are warmed up at app start
+  two notes, which would clash with it; the success haptic stays. With the setting off, or while the engine is
+  still starting or has no voice for the accent, the two notes play and nothing is spoken. The engine and voice are warmed up at app start
   while the setting is on (debug builds log the speak-to-audio latency, tag `Speech`). The Listen joker speaks at once.
 - #2: a copy of the key (white, s3) travels on `fly` for 5/7 of the time while growing to 1.15, then settles to 1 on
   the cell; it changes size from the key's to the cell's and lands exactly on it. Until then the cell keeps its look

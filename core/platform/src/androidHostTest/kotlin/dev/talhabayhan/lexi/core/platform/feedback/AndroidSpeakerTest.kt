@@ -4,6 +4,7 @@ import dev.talhabayhan.lexi.core.domain.settings.Accent
 import java.util.Locale
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
 class AndroidSpeakerTest {
@@ -95,6 +96,26 @@ class AndroidSpeakerTest {
 
         assertEquals(listOf("apple", "pear"), h.engine.spoken)
         assertEquals(listOf(Locale.US), h.engine.locales, "the language is set once, not per word")
+    }
+
+    @Test
+    fun readyOnlyOnceStartedAndWithAVoice() {
+        val h = Harness()
+        assertFalse(h.speaker.isReady)
+        h.speaker.warmUp()
+        assertFalse(h.speaker.isReady, "still starting")
+        h.init(true)
+        assertTrue(h.speaker.isReady)
+
+        val silent = Harness(hasVoice = false)
+        silent.speaker.warmUp()
+        silent.init(true)
+        assertFalse(silent.speaker.isReady, "no voice for the accent")
+
+        val failed = Harness()
+        failed.speaker.warmUp()
+        failed.init(false)
+        assertFalse(failed.speaker.isReady)
     }
 
     @Test
