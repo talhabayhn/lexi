@@ -17,8 +17,9 @@ internal data class GameFeedback(val haptic: HapticKind?, val sound: SoundEffect
     companion object {
         /** The feedback of [effect], or null when it has none (#2, #6, navigation). */
         fun of(effect: GameEffect): GameFeedback? = when (effect) {
-            // #3: success + two rising notes (the word is spoken after them by the ViewModel).
-            is GameEffect.Correct -> GameFeedback(HapticKind.Success, SoundEffect.Correct)
+            // #3: success + two rising notes, or only the haptic while the ViewModel speaks the word at once (the
+            // notes would clash with it).
+            is GameEffect.Correct -> GameFeedback(HapticKind.Success, SoundEffect.Correct.takeUnless { effect.spoken })
 
             // #4: error + descending "bzzt".
             is GameEffect.Wrong -> GameFeedback(HapticKind.Error, SoundEffect.Wrong)

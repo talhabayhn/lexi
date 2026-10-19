@@ -23,6 +23,14 @@ class GameFeedbackTest {
     }
 
     @Test
+    fun `correct answer that is spoken keeps the haptic but drops the notes so they do not clash`() {
+        assertEquals(
+            GameFeedback(HapticKind.Success, sound = null),
+            GameFeedback.of(GameEffect.Correct('A', 10, spoken = true)),
+        )
+    }
+
+    @Test
     fun `wrong answer plays error and bzzt`() {
         assertEquals(GameFeedback(HapticKind.Error, SoundEffect.Wrong), GameFeedback.of(GameEffect.Wrong('A')))
     }

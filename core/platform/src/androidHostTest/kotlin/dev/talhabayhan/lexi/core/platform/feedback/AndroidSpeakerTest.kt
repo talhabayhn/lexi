@@ -82,6 +82,41 @@ class AndroidSpeakerTest {
     }
 
     @Test
+    fun warmUpStartsTheEngineAndSetsTheLanguageBeforeTheFirstWord() {
+        val h = Harness()
+        h.speaker.warmUp()
+        h.speaker.warmUp()
+        assertEquals(1, h.created)
+        h.init(true)
+        assertEquals(listOf(Locale.US), h.engine.locales)
+
+        h.speaker.speak("apple")
+        h.speaker.speak("pear")
+
+        assertEquals(listOf("apple", "pear"), h.engine.spoken)
+        assertEquals(listOf(Locale.US), h.engine.locales, "the language is set once, not per word")
+    }
+
+    @Test
+    fun accentChangeSetsTheNewLanguageOnTheNextWord() {
+        var accent = Accent.US
+        val engine = FakeEngine()
+        lateinit var init: (Boolean) -> Unit
+        val speaker = AndroidSpeaker(factory = {
+            init = it
+            engine
+        }, accent = { accent })
+        speaker.warmUp()
+        init(true)
+
+        accent = Accent.UK
+        speaker.speak("colour")
+
+        assertEquals(listOf(Locale.US, Locale.UK), engine.locales)
+        assertEquals(listOf("colour"), engine.spoken)
+    }
+
+    @Test
     fun stopDropsPendingWordAndCloseShutsTheEngineDown() {
         val h = Harness()
         h.speaker.speak("apple")

@@ -2,6 +2,7 @@ package dev.talhabayhan.lexi.feature.game
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModelStore
+import app.cash.turbine.Event
 import app.cash.turbine.ReceiveTurbine
 import app.cash.turbine.test
 import dev.talhabayhan.lexi.core.designsystem.component.AnswerSlotState
@@ -262,40 +263,68 @@ class GameViewModelTest {
     }
 
     @Test
-    fun `a correct answer scores and speaks the word after the correct sound and moves on`() = runTest {
+    fun `a correct answer scores and speaks the word the moment it is judged and moves on`() = runTest {
         val vm = started()
+        vm.effects.test {
+            awaitStart()
 
-        vm.type("APPLE")
+            vm.type("APPLE")
 
-        assertEquals(10, vm.state.value.score)
-        assertEquals('B', vm.state.value.turn?.letter)
-        // motion.md #3: two rising notes, then the word.
-        advance(GameViewModel.CORRECT_SOUND_DURATION.inWholeMilliseconds - 1)
-        assertTrue(speaker.spoken.isEmpty())
-        advance(1L)
-        assertEquals(listOf("apple"), speaker.spoken)
+            // motion.md #3: spoken at once, without waiting for a sound or the scheduler.
+            assertEquals(listOf("apple"), speaker.spoken)
+            assertEquals(10, vm.state.value.score)
+            assertEquals('B', vm.state.value.turn?.letter)
+            val correct = cancelAndConsumeRemainingEvents().mapNotNull { (it as? Event.Item)?.value }
+                .filterIsInstance<GameEffect.Correct>().single()
+            assertTrue(correct.spoken, "the correct sound gives way to the word")
+        }
     }
 
     @Test
-    fun `a word waiting for the correct sound is dropped when the game goes to the background`() = runTest {
+    fun `with speech off the correct effect keeps its sound`() = runTest {
+        settings.update { it.copy(speakOnCorrect = false) }
+        val vm = started()
+        vm.effects.test {
+            awaitStart()
+
+            vm.type("APPLE")
+
+            val correct = cancelAndConsumeRemainingEvents().mapNotNull { (it as? Event.Item)?.value }
+                .filterIsInstance<GameEffect.Correct>().single()
+            assertFalse(correct.spoken)
+        }
+    }
+
+    @Test
+    fun `the speech engine is warmed up while the setting is on`() = runTest {
+        started()
+        assertTrue(speaker.warmUpCount > 0)
+    }
+
+    @Test
+    fun `the speech engine is not warmed up while the setting is off`() = runTest {
+        settings.update { it.copy(speakOnCorrect = false) }
+        started()
+        assertEquals(0, speaker.warmUpCount)
+    }
+
+    @Test
+    fun `going to the background stops the word being spoken`() = runTest {
         val vm = started()
         vm.type("APPLE")
 
         vm.onIntent(GameIntent.Background)
-        advance(1_000L)
 
-        assertTrue(speaker.spoken.isEmpty())
+        assertEquals(listOf("apple"), speaker.spoken)
         assertEquals(1, speaker.stopCount)
     }
 
     @Test
-    fun `the last word of a game is spoken at once because the screen leaves for the result`() = runTest {
+    fun `every correct word is spoken, the last one too`() = runTest {
         val vm = started()
-        vm.type("APPLE")
-        advance(GameViewModel.CORRECT_SOUND_DURATION.inWholeMilliseconds)
-        vm.type("BREAD")
-        advance(GameViewModel.CORRECT_SOUND_DURATION.inWholeMilliseconds)
 
+        vm.type("APPLE")
+        vm.type("BREAD")
         vm.type("CHAIR")
 
         assertEquals(listOf("apple", "bread", "chair"), speaker.spoken)

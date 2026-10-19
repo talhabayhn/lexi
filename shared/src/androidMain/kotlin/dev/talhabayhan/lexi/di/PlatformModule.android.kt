@@ -1,9 +1,11 @@
 package dev.talhabayhan.lexi.di
 
 import android.content.Context
+import android.content.pm.ApplicationInfo
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
+import co.touchlab.kermit.Logger
 import dev.talhabayhan.lexi.core.data.db.AndroidDatabaseFiles
 import dev.talhabayhan.lexi.core.data.db.DatabaseFiles
 import dev.talhabayhan.lexi.core.domain.feedback.Haptics
@@ -43,7 +45,15 @@ internal fun androidPlatformModule(context: Context): Module = module {
     } onClose { (it as? AutoCloseable)?.close() }
     single<Speaker> {
         val settings = get<LiveSettings>()
-        AndroidSpeaker(context) { settings.current.accent }
+        val debuggable = context.applicationInfo.flags and ApplicationInfo.FLAG_DEBUGGABLE != 0
+        val timingLog = if (debuggable) {
+            Logger.withTag("Speech").let { log ->
+                { message: String -> log.d(message) }
+            }
+        } else {
+            null
+        }
+        AndroidSpeaker(context, accent = { settings.current.accent }, timingLog = timingLog)
     } onClose { (it as? AutoCloseable)?.close() }
     single<UrlOpener> { AndroidUrlOpener(context) }
 }

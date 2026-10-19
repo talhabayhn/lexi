@@ -6,7 +6,13 @@ package dev.talhabayhan.lexi.core.domain.feedback
  * silently when no voice is available.
  */
 public interface Speaker {
-    /** Speaks [word], interrupting anything still being spoken. */
+    /**
+     * Starts the engine and prepares the voice ahead of the first [speak] (app start), so a correct answer is spoken
+     * without the engine's start-up delay. Calling it again does nothing.
+     */
+    public fun warmUp() {}
+
+    /** Speaks [word] at once, interrupting anything still being spoken. */
     public fun speak(word: String)
 
     /** Stops speaking at once (pause, leaving the screen). */

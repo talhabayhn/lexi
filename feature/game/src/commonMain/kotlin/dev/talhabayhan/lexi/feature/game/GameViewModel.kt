@@ -96,8 +96,6 @@ internal class GameViewModel(
     private var finished = false
     private var ticker: Job? = null
 
-    /** The word of the last correct answer, spoken after the correct sound (motion.md #3). */
-    private var speech: Job? = null
     private var lastMark: ComparableTimeMark? = null
     private var jokerSheetOpen = false
     private var quitConfirmation = false
@@ -111,7 +109,13 @@ internal class GameViewModel(
 
     init {
         loading = viewModelScope.launch { load() }
-        viewModelScope.launch { settings.settings.collect { speakOnCorrect = it.speakOnCorrect } }
+        viewModelScope.launch {
+            settings.settings.collect {
+                speakOnCorrect = it.speakOnCorrect
+                // Normally done at app start; also here when the setting was just turned on.
+                if (speakOnCorrect) speaker.warmUp()
+            }
+        }
     }
 
     fun onIntent(intent: GameIntent) {
@@ -222,7 +226,7 @@ internal class GameViewModel(
 
     /** Leaving a running game silences it; the last word of a finished game may still play over the result. */
     override fun onCleared() {
-        if (finished) speech?.cancel() else stopSpeaking()
+        if (!finished) speaker.stop()
     }
 
     /**
@@ -426,9 +430,11 @@ internal class GameViewModel(
             }
 
             is EngineEffect.Correct -> {
-                emit(GameEffect.Correct(effect.letter, effect.points))
                 val answer = state.wheel.slots.firstOrNull { it.card?.id == effect.card }?.card?.answer
-                if (speakOnCorrect && answer != null) speakAfterCorrectSound(answer.lowercase(), state)
+                val spoken = speakOnCorrect && answer != null
+                // motion.md #3: the word is spoken the moment the answer is judged, in place of the correct sound.
+                if (spoken) speaker.speak(checkNotNull(answer).lowercase())
+                emit(GameEffect.Correct(effect.letter, effect.points, spoken))
             }
 
             is EngineEffect.Wrong -> emit(GameEffect.Wrong(effect.letter))
@@ -445,10 +451,7 @@ internal class GameViewModel(
                 saveJokers()
                 // "Telaffuzu dinle": the answer is spoken (whatever the speak-on-correct setting).
                 if (effect.type == JokerType.LISTEN) {
-                    state.currentSlot?.card?.answer?.let {
-                        speech?.cancel()
-                        speaker.speak(it.lowercase())
-                    }
+                    state.currentSlot?.card?.answer?.let { speaker.speak(it.lowercase()) }
                 }
             }
 
@@ -459,25 +462,7 @@ internal class GameViewModel(
         }
     }
 
-    /**
-     * motion.md #3: "two rising notes, then the word", so the word waits for the correct sound to end. The last answer
-     * of a game is spoken at once: the screen leaves for the result (and this scope ends) before the sound is over.
-     */
-    private fun speakAfterCorrectSound(word: String, state: GameState) {
-        speech?.cancel()
-        if (state.status == GameStatus.FINISHED) {
-            speaker.speak(word)
-            return
-        }
-        speech = viewModelScope.launch {
-            delay(CORRECT_SOUND_DURATION)
-            speaker.speak(word)
-        }
-    }
-
     private fun stopSpeaking() {
-        speech?.cancel()
-        speech = null
         speaker.stop()
     }
 
@@ -585,9 +570,6 @@ internal class GameViewModel(
     companion object {
         /** Technical tick rate, not a game rule: keeps the 1200 ms reveal and the timer bar precise. */
         val TICK_INTERVAL = 100.milliseconds
-
-        /** Length of the correct sound (`files/sounds/correct.wav`, two notes of 110 + 170 ms); TTS starts after it. */
-        val CORRECT_SOUND_DURATION = 280.milliseconds
 
         /** A failed [FinishGame] is retried once. */
         private const val FINISH_ATTEMPTS = 2

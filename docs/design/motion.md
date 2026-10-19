@@ -21,7 +21,7 @@ scale or rotation; splash shows the logo statically.
 |---|---|---|---|---|---|
 | 1 | Any button press | element translates (+shadow offset), shadow → 0; release returns | 80 ms out / 80 ms back | light | "tık" |
 | 2 | Letter key tapped | key letter flies to first empty slot (≈ translate + scale 1.15 at midpoint → 1), slot turns ink with cream letter; key becomes "used" (dashed) | 220 ms, `fly` | light | — |
-| 3 | Correct answer | wheel chip: cream circle → blue circle with scale 1 → 1.45 → 1; blue ring (4dp) expands from 0.6 → 1.8 and fades | 320 ms, `pop` | success | two rising notes, then TTS word (if enabled) |
+| 3 | Correct answer | wheel chip: cream circle → blue circle with scale 1 → 1.45 → 1; blue ring (4dp) expands from 0.6 → 1.8 and fades | 320 ms, `pop` | success | two rising notes; with TTS on, the word instead (spoken at once) |
 | 4 | Wrong answer | answer slots shake horizontally (−12, 12, −9, 9, −4, 0 dp) and flash red, then correct answer shown; chip → red square | 360 ms | error | descending "bzzt" |
 | 5 | Pass | chip rotates 90° while morphing circle → leaf, turns yellow; small arrow slides 70dp right | 260 ms, `turn` | soft | "vınn" |
 | 6 | Wheel advance | black "current" square jumps to next slot (step, no easing between slots); centre letter slides down and is replaced | 140 ms | — | — |
@@ -44,8 +44,9 @@ Implemented in `feature:game` (`GameMotion`, `GameMotionLayer`, `GameFeedback`) 
 - Feedback starts with the animation, from the screen (`LocalHaptics` / `LocalSoundPlayer`). Keys, PAS and joker rows
   are buttons: their press plays #1, which is also #2's light haptic, so a placed letter adds none; the effect a press
   causes (#3/#4 after the last letter, #5 after PAS) follows right after it. TTS (#3, setting "Doğru cevapta
-  telaffuz") starts after the correct sound (280 ms); the last answer of a game is spoken at once because the screen
-  leaves for the result. The Listen joker speaks at once.
+  telaffuz") starts the moment the answer is judged (QUEUE_FLUSH, so it cuts off the previous word) and replaces the
+  two notes, which would clash with it; the success haptic stays. The engine and voice are warmed up at app start
+  while the setting is on (debug builds log the speak-to-audio latency, tag `Speech`). The Listen joker speaks at once.
 - #2: a copy of the key (white, s3) travels on `fly` for 5/7 of the time while growing to 1.15, then settles to 1 on
   the cell; it changes size from the key's to the cell's and lands exactly on it. Until then the cell keeps its look
   from before (red "next" border). Finishing an answer (#3/#4/#5/#6) ends letters still in the air.

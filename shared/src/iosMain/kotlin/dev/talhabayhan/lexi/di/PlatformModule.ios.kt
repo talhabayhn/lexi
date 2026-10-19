@@ -1,7 +1,10 @@
+@file:OptIn(ExperimentalNativeApi::class)
+
 package dev.talhabayhan.lexi.di
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import co.touchlab.kermit.Logger
 import dev.talhabayhan.lexi.core.data.db.DatabaseFiles
 import dev.talhabayhan.lexi.core.data.db.IosDatabaseFiles
 import dev.talhabayhan.lexi.core.domain.feedback.Haptics
@@ -20,6 +23,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import org.koin.core.module.Module
 import org.koin.dsl.module
+import kotlin.experimental.ExperimentalNativeApi
+import kotlin.native.Platform
 
 @Composable
 internal actual fun rememberPlatformModule(): Module = remember {
@@ -36,7 +41,12 @@ internal actual fun rememberPlatformModule(): Module = remember {
         }
         single<Speaker> {
             val settings = get<LiveSettings>()
-            IosSpeaker { settings.current.accent }
+            val timingLog = if (Platform.isDebugBinary) {
+                Logger.withTag("Speech").let { log -> { message: String -> log.d(message) } }
+            } else {
+                null
+            }
+            IosSpeaker(accent = { settings.current.accent }, timingLog = timingLog)
         }
         single<UrlOpener> { IosUrlOpener() }
     }

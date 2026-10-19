@@ -194,7 +194,8 @@ internal sealed interface GameEffect {
      */
     data class LetterPlaced(val cellIndex: Int, val keyIndex: Int, val letter: Char) : GameEffect
 
-    data class Correct(val letter: Char, val points: Int) : GameEffect
+    /** [spoken]: the word is being spoken ("Doğru cevapta telaffuz"), which takes the place of the correct sound. */
+    data class Correct(val letter: Char, val points: Int, val spoken: Boolean = false) : GameEffect
 
     data class Wrong(val letter: Char) : GameEffect
 

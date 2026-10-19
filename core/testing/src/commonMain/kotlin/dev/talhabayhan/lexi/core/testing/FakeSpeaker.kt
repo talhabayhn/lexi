@@ -12,6 +12,13 @@ public class FakeSpeaker : Speaker {
     public var stopCount: Int = 0
         private set
 
+    public var warmUpCount: Int = 0
+        private set
+
+    override fun warmUp() {
+        warmUpCount++
+    }
+
     override fun speak(word: String) {
         _spoken += word
     }

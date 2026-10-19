@@ -35,6 +35,8 @@ kotlin {
             implementation(libs.kotlinx.coroutines.core)
             implementation(libs.koin.compose)
             implementation(libs.koin.compose.viewmodel)
+            // Debug-only speech timing logs (ADR 0015).
+            implementation(libs.kermit)
         }
         getByName("androidHostTest").dependencies {
             implementation(libs.koin.test)
