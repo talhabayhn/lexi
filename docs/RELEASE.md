@@ -73,6 +73,11 @@ CI uploads as **draft** to the internal track; open the release in Play Console 
 4. Export compliance: the app uses only standard HTTPS. Answer the encryption question in App Store
    Connect once per build, or add `ITSAppUsesNonExemptEncryption = NO` to Info.plist later.
 
+Local iOS signing:
+- Copy `iosApp/Configuration/Local.xcconfig.example` to `Local.xcconfig` (git-ignored) and put your Team ID in it.
+- Never pick the team in Xcode's Signing UI: it rewrites `project.pbxproj`.
+- CI takes the team from the `TEAM_ID` secret.
+
 Without the secrets the workflow still produces an unsigned archive (proof that Release builds on CI).
 This path is experimental: if signing fails, the job log names the missing certificate/profile; a Mac is
 not required to fix it, but the API key must have the Admin role.

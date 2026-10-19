@@ -1,4 +1,5 @@
 TEAM_ID=
+#include? "Local.xcconfig"
 
 PRODUCT_NAME=Lexi
 PRODUCT_BUNDLE_IDENTIFIER=dev.talhabayhan.lexi

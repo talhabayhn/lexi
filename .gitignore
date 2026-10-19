@@ -19,3 +19,4 @@ DerivedData/
 # Content pipeline: content.db is a build output (docs/CONTENT.md §1); private exam pack content
 content.db
 content/exam_packs/
+iosApp/Configuration/Local.xcconfig
