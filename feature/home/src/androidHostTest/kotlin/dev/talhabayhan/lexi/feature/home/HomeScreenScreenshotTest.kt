@@ -102,6 +102,21 @@ class HomeScreenScreenshotTest {
         }
     }
 
+    /** More wheels than the goal (5 of 3): the chip stays "3/3" with the reached look; the stored count is 5. */
+    @Test
+    fun goalProgressExceeded() {
+        captureRoboImage("src/androidHostTest/screenshots/HomeScreenGoalExceeded.png") {
+            LexiTheme(reducedMotion = false) {
+                HomeScreen(
+                    state = HomeSampleState.copy(
+                        dailyGoalProgress = DailyGoalProgress(done = 5, goal = 3, reached = true),
+                    ),
+                    onIntent = {},
+                )
+            }
+        }
+    }
+
     @Test
     @Config(fontScale = 1.3f)
     fun goalProgressLargeFont() {

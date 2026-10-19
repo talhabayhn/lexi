@@ -464,20 +464,20 @@ private fun GameMode.nameRes() = when (this) {
 }
 
 /**
- * Daily goal progress chip ("Bugün {done}/{goal}", DESIGN-DEBT).
+ * Daily goal progress chip ("Bugün {shown}/{goal}", DESIGN-DEBT); extra wheels after the goal keep it at goal/goal.
  * Reached (done >= goal): yellow filled chip with checkmark icon.
  * In-progress: white chip with blue circle marker.
  */
 @Composable
 private fun DailyGoalChip(progress: DailyGoalProgress, compact: Boolean, modifier: Modifier = Modifier) {
     val colors = LexiTheme.colors
-    val text = stringResource(Res.string.home_daily_goal_progress, progress.done, progress.goal)
+    val text = stringResource(Res.string.home_daily_goal_progress, progress.shown, progress.goal)
     val reached = progress.reached
     val bg = if (reached) colors.yellow else colors.white
     val description = if (reached) {
-        stringResource(Res.string.home_daily_goal_desc_reached, progress.done, progress.goal)
+        stringResource(Res.string.home_daily_goal_desc_reached, progress.shown, progress.goal)
     } else {
-        stringResource(Res.string.home_daily_goal_desc, progress.done, progress.goal)
+        stringResource(Res.string.home_daily_goal_desc, progress.shown, progress.goal)
     }
     Row(
         modifier = modifier

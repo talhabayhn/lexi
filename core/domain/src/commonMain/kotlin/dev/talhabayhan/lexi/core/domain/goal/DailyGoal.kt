@@ -15,7 +15,10 @@ import kotlinx.coroutines.flow.first
  * [goal] is the target wheels per day from settings.
  * [reached] is true when [done] >= [goal].
  */
-public data class DailyGoalProgress(val done: Int, val goal: Int, val reached: Boolean)
+public data class DailyGoalProgress(val done: Int, val goal: Int, val reached: Boolean) {
+    /** The count to show next to [goal]: wheels beyond the goal still count in [done] but never show as "4/3". */
+    val shown: Int get() = minOf(done, goal)
+}
 
 /**
  * Pure calculation for the daily goal (GAME_RULES.md stats/streak rules, owner decision).
