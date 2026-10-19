@@ -47,8 +47,9 @@ jobs:
           key: konan-${{ runner.os }}-${{ hashFiles('gradle/libs.versions.toml') }}
           restore-keys: konan-${{ runner.os }}-
 
-      # Same scheme as Android: MARKETING_VERSION from the tag, build number = versionCode.run so a re-run
-      # of the same tag still gets a unique CFBundleVersion.
+      # Same scheme as Android: MARKETING_VERSION from the tag, build number = versionCode (same formula as
+      # gradle.properties / Version.xcconfig). To re-upload the same tag, bump the patch version: App Store
+      # Connect rejects a repeated build number for the same version.
       - name: Version
         env:
           INPUT_VERSION: ${{ inputs.version }}
@@ -59,8 +60,8 @@ jobs:
           if ! [[ "$v" =~ ^([0-9]+)\.([0-9]+)\.([0-9]+)$ ]]; then echo "::error::Version '$v' is not x.y.z"; exit 1; fi
           code=$(( BASH_REMATCH[1] * 10000 + BASH_REMATCH[2] * 100 + BASH_REMATCH[3] ))
           echo "VERSION_NAME=$v" >> "$GITHUB_ENV"
-          echo "BUILD_NUMBER=$code.$GITHUB_RUN_NUMBER" >> "$GITHUB_ENV"
-          echo "iOS $v ($code.$GITHUB_RUN_NUMBER)" >> "$GITHUB_STEP_SUMMARY"
+          echo "BUILD_NUMBER=$code" >> "$GITHUB_ENV"
+          echo "iOS $v ($code)" >> "$GITHUB_STEP_SUMMARY"
 
       - name: Check App Store Connect credentials
         env:

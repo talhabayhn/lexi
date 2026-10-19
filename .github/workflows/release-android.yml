@@ -51,7 +51,8 @@ jobs:
         with:
           cache-read-only: ${{ github.ref != 'refs/heads/main' }}
 
-      # versionName from the tag (v1.2.3 -> 1.2.3), versionCode = major*10000 + minor*100 + patch.
+      # versionName from the tag (v1.2.3 -> 1.2.3), versionCode = major*10000 + minor*100 + patch
+      # (same formula as gradle.properties, checked by checkIosVersionSync).
       - name: Version
         env:
           INPUT_VERSION: ${{ inputs.version }}
