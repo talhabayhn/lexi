@@ -510,6 +510,52 @@ class GameViewModelTest {
     }
 
     @Test
+    fun `running out of time sends time up exactly once, after the last warning and before the result`() = runTest {
+        val vm = started()
+        vm.effects.test {
+            awaitStart()
+            advance(179_000L)
+            skipUntil(GameEffect.TimeWarning(1))
+
+            advance(1_000L)
+            advance(5_000L)
+
+            val rest = buildList {
+                while (true) {
+                    val effect = awaitItem()
+                    add(effect)
+                    if (effect is GameEffect.NavigateToResult) break
+                }
+            }
+            assertEquals(GameEffect.TimeUp, rest.first())
+            assertEquals(1, rest.count { it == GameEffect.TimeUp })
+            assertTrue(rest.none { it is GameEffect.TimeWarning }, "no tick with the buzzer")
+            cancelAndIgnoreRemainingEvents()
+        }
+    }
+
+    @Test
+    fun `a game that ends before the time runs out sends no time up`() = runTest {
+        val vm = started()
+        vm.effects.test {
+            awaitStart()
+            vm.type("APPLE")
+            vm.type("BREAD")
+            vm.type("CHAIR")
+
+            val effects = buildList {
+                while (true) {
+                    val effect = awaitItem()
+                    add(effect)
+                    if (effect is GameEffect.NavigateToResult) break
+                }
+            }
+            assertTrue(GameEffect.TimeUp !in effects)
+            cancelAndIgnoreRemainingEvents()
+        }
+    }
+
+    @Test
     fun `a game restored from the SavedStateHandle comes back paused with the same board and time`() = runTest {
         val handle = routeHandle()
         val first = started(handle)

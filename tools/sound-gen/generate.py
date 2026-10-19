@@ -241,6 +241,19 @@ class Take:
                                                           0.07, ((1, 1.0), (2, 0.2)))
         return self
 
+    def buzz(self, t0, note, vel, length):
+        """Soft buzzer tone (time up): a rounded square wave (odd harmonics 1/3/5/7 falling off fast, no edge above
+        2 kHz) held for `length` s with a 12 ms attack and a 60 ms release, so it reads as a buzzer, never harsh."""
+        assert midi(note) % 12 in PENTATONIC, note
+        start, n = self._at(t0)
+        if n > 0:
+            f = 440.0 * 2 ** ((midi(note) - 69) / 12)
+            t = np.arange(n) / SR
+            y = sum(a * np.sin(2 * np.pi * k * f * t) for k, a in ((1, 1.0), (3, 0.28), (5, 0.1), (7, 0.04)))
+            env = np.clip(t / 0.012, 0, 1) * np.clip((length - t) / 0.06, 0, 1) * (0.85 + 0.15 * np.exp(-t / 0.08))
+            self.x[start:] += self._vel(vel) * y * env
+        return self
+
     def fall(self, t0, note, vel, length=1.0):
         """Bubble "pit": pitch drops onto the note (undo, close, remove)."""
         assert midi(note) % 12 in PENTATONIC, note
@@ -343,7 +356,8 @@ DAMLA_SOUNDS = {
     "warning_2": (0.14, -17, 0.18, 0.1, False, lambda k: k.click(0, 0.35).note(0, "A5", 0.4, 0.4)),
     "warning_3": (0.18, -15, 0.18, 0.1, False,
                   lambda k: k.click(0, 0.4).note(0, "C6", 0.45, 0.4).note(0.085, "C6", 0.3, 0.4)),
-    "time_up": (0.70, -12, 0.6, 0.12, False, lambda k: k.note(0, "G5", 0.45).note(0.16, "C5 G5", 0.4, 1.2)),
+    # Descending two-tone buzzer (E4 -> C4), played once when the time runs out; original synthesis, no samples.
+    "time_up": (0.75, -12, 0.3, 0.06, False, lambda k: k.buzz(0, "E4", 0.6, 0.26).buzz(0.3, "C4", 0.6, 0.4)),
     "joker": (0.38, -13, 0.35, 0.12, False, lambda k: _rise(k, 0, "E6 G6 A6", 0.045, 0.4, 0.6, 0.05)),
     "gift": (0.65, -11, 0.55, 0.12, False, lambda k: _rise(k, 0, "C6 E6 G6 C7", 0.07, 0.45, 1.0, 0.05)),
     "countdown": (0.22, -14, 0.25, 0.1, False, lambda k: k.note(0, "C6", 0.5, 0.5)),

@@ -39,6 +39,7 @@ class GatedFeedbackTest {
     @Test
     fun assetPathsAreLowercaseWavNames() {
         assertEquals("files/sounds/correct.wav", SoundEffect.Correct.assetPath)
+        assertEquals("files/sounds/time_up.wav", SoundEffect.TimeUp.assetPath)
         assertEquals(SoundEffect.entries.size, SoundEffect.entries.map { it.assetPath }.toSet().size)
     }
 }

@@ -31,6 +31,11 @@ class GameFeedbackTest {
     }
 
     @Test
+    fun `time up plays the two-tone buzzer`() {
+        assertEquals(GameFeedback(haptic = null, sound = SoundEffect.TimeUp), GameFeedback.of(GameEffect.TimeUp))
+    }
+
+    @Test
     fun `wrong answer plays error and bzzt`() {
         assertEquals(GameFeedback(HapticKind.Error, SoundEffect.Wrong), GameFeedback.of(GameEffect.Wrong('A')))
     }

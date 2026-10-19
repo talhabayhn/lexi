@@ -22,6 +22,9 @@ public enum class SoundEffect {
 
     /** "tik" each second of the time warning. */
     Tick,
+
+    /** Descending two-tone buzzer, once when the time runs out (`time_up.wav`). */
+    TimeUp,
     Win,
     Lose,
 }

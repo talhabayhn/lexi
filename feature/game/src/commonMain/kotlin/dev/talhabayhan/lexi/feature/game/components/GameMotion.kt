@@ -122,6 +122,7 @@ internal class GameMotion(
             is GameEffect.ComboReached -> showCombo(effect.streak)
 
             is GameEffect.TimeWarning,
+            GameEffect.TimeUp,
             is GameEffect.NavigateToResult,
             GameEffect.Abandoned,
             GameEffect.NavigateBack,

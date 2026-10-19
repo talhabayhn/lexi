@@ -14,7 +14,8 @@ in `motion.md`.
 - **Frequent sounds** (tap, place, backspace, ticks) are 70–140 ms and quiet (peak −18 to −30 dBFS), with 3 subtle
   round-robin variants each (`name_1..3.wav`: a few cents, ±10 % velocity, timing).
 - **Rewards** (correct, combo, win, best, daily) are 2–5 rising pentatonic drops; correct, win, best and daily end on C or a rolled C chord.
-- **Mistakes are gentle**: `wrong` is two low rounded bonks (E4 → C4); `lose` and `time_up` settle down onto C.
+- **Mistakes are gentle**: `wrong` is two low rounded bonks (E4 → C4); `lose` settles down onto C; `time_up` is a soft
+  descending two-tone buzzer (E4 → C4, rounded square wave, no edge above 2 kHz).
 - Format: mono 16-bit 22.05 kHz WAV (unchanged), in `shared/src/commonMain/composeResources/files/sounds/`.
 
 ## Generator (`tools/sound-gen/generate.py`)
@@ -43,7 +44,7 @@ Wired = played today through `SoundEffect` (`core:domain`); file name = `SoundEf
 |---|---|---|---|
 | `tap` | Letter key tap and every button press (`PressableSurface`) — the most frequent sound | small drop G5, 70 ms, −19 dB | wired |
 | `place` | Letter lands in its slot | smaller drop E5, 90 ms | wired (enum, not played yet) |
-| `correct` | Right answer; TTS starts after 280 ms | drops G5 → C6, 280 ms (matches `CORRECT_SOUND_DURATION`) | wired |
+| `correct` | Right answer (not played while the word is spoken: TTS replaces it) | drops G5 → C6, 280 ms | wired |
 | `wrong` | Wrong answer — soft, never punishing | low bonks E4 → C4, 300 ms | wired |
 | `pass` | Pass / skip — neutral, light | drops E6 → C6, 260 ms | wired |
 | `combo` | Streak milestone (×3/×5/×10) | rising drops G5 C6 E6 G6, 400 ms | wired |
@@ -54,7 +55,7 @@ Wired = played today through `SoundEffect` (`core:domain`); file name = `SoundEf
 | `backspace` | Delete a letter | falling "pit" E5, 90 ms | ready to wire |
 | `timer_tick` | Quiet per-second timer pulse | very soft click, 90 ms, −30 dB | ready to wire |
 | `warning_1..3` | Rising urgency for the last 10 s: 10–7 s, 6–4 s, 3–1 s | click + G5 → A5 → C6 double, louder per stage | ready to wire |
-| `time_up` | Timer ran out | G5 then rolled C5/G5, 700 ms | ready to wire |
+| `time_up` | Timer ran out, once (`SoundEffect.TimeUp`) | buzzer E4 260 ms → C4 400 ms, 750 ms, −12 dBFS | wired |
 | `joker` | Joker used | quick E6 G6 A6, 380 ms | ready to wire |
 | `gift` | Joker gift / daily gift | C6 E6 G6 C7, 650 ms | ready to wire |
 | `countdown` | Level start 3-2-1 beat | drop C6, 220 ms | ready to wire |

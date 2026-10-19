@@ -207,6 +207,9 @@ internal sealed interface GameEffect {
 
     data class TimeWarning(val secondsLeft: Int) : GameEffect
 
+    /** The clock ran out: the game is over (sent once, before [NavigateToResult]). */
+    data object TimeUp : GameEffect
+
     /** The finished game is recorded (`FinishGame`); show the result. */
     data class NavigateToResult(val result: ResultRoute) : GameEffect
 

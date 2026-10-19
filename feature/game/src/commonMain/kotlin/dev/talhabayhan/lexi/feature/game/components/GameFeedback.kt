@@ -33,6 +33,9 @@ internal data class GameFeedback(val haptic: HapticKind?, val sound: SoundEffect
             // #8: tick + "tik" each second of the last ten.
             is GameEffect.TimeWarning -> GameFeedback(HapticKind.Tick, SoundEffect.Tick)
 
+            // Time up: the descending two-tone buzzer, once (no tick is sent with it: warnings stop at 1 s).
+            GameEffect.TimeUp -> GameFeedback(haptic = null, sound = SoundEffect.TimeUp)
+
             is GameEffect.LetterPlaced,
             is GameEffect.Advanced,
             is GameEffect.NavigateToResult,

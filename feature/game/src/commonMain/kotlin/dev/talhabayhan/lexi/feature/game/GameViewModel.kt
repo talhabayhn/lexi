@@ -13,6 +13,7 @@ import dev.talhabayhan.lexi.core.domain.game.GameConfig
 import dev.talhabayhan.lexi.core.domain.game.GameEngine
 import dev.talhabayhan.lexi.core.domain.game.GameEvent
 import dev.talhabayhan.lexi.core.domain.game.GameMode
+import dev.talhabayhan.lexi.core.domain.game.GameOverReason
 import dev.talhabayhan.lexi.core.domain.game.GameState
 import dev.talhabayhan.lexi.core.domain.game.GameStatus
 import dev.talhabayhan.lexi.core.domain.game.JokerType
@@ -455,7 +456,10 @@ internal class GameViewModel(
                 }
             }
 
-            is EngineEffect.GameOver -> onGameOver()
+            is EngineEffect.GameOver -> {
+                if (effect.summary.reason == GameOverReason.TIME_UP) emit(GameEffect.TimeUp)
+                onGameOver()
+            }
 
             // Duel only (M8).
             is EngineEffect.TurnChanged, is EngineEffect.MatchOver -> Unit
