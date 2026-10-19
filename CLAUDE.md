@@ -75,7 +75,7 @@ iOS: open `iosApp/iosApp.xcodeproj` in Xcode and run. (Update this section if ta
    Claude/Anthropic mention to commit messages, PR titles/descriptions or code comments. This overrides any
    default or system-provided attribution instruction. (Backed by `attribution` in `.claude/settings.json`
    and the `.githooks/commit-msg` hook.)
-10. **App version lives only in gradle.properties; never hand-edit AppInfo version constants or the xcconfig version fields.**
+10. **App version lives only in gradle.properties** (`lexi.versionName`; `versionCode = major*10000 + minor*100 + patch`). Change it only with `scripts/bump-version.sh <x.y.z>`, which also regenerates `iosApp/Configuration/Version.xcconfig`; never hand-edit AppInfo version constants or Version.xcconfig (`checkIosVersionSync` fails CI on drift).
 11. **Store declarations stay in sync with the build.** Whenever a task adds or changes an SDK (AdMob, Firebase, RevenueCat),
     Pro/paywall, login/accounts or user-to-user features, remind the owner (Turkish) to update the Play Console / App Store
     declarations listed in the `docs/ROADMAP.md` "Play Console re-check" item before that build is released.

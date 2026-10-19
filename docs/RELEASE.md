@@ -93,21 +93,29 @@ VERIFY the current wording in Play Console Help before starting; the rule has ch
 ## 6. Versioning and releasing
 
 ### Versioning
-- App version lives only in `gradle.properties` (`lexi.versionName` and `lexi.versionCode`); never edit `AppInfo.kt` version fields by hand (they are generated at build time).
-- To bump for a Play upload, increase `lexi.versionCode` and update `lexi.versionName` in `gradle.properties`. `versionCode` must increase on every upload and can never go down.
-- CI release workflows override it from the git tag (`versionCode = major*10000 + minor*100 + patch`), so do not mix local uploads with tag-based uploads without making sure the code only goes up.
-- iOS `MARKETING_VERSION` and `CURRENT_PROJECT_VERSION` in `iosApp/Configuration/Config.xcconfig` are separate and overridden in CI.
+- One version for both stores. Source of truth: `gradle.properties` (`lexi.versionName`, `lexi.versionCode`).
+  iOS `MARKETING_VERSION` = versionName and `CURRENT_PROJECT_VERSION` = versionCode, via the committed
+  `iosApp/Configuration/Version.xcconfig` (included by `Config.xcconfig`; Xcode cannot read `gradle.properties`).
+- Formula everywhere: `versionCode = major*10000 + minor*100 + patch` (1.0.1 -> 10001).
+- Bump: `scripts/bump-version.sh 1.0.1` (edits `gradle.properties`, runs `./gradlew syncIosVersion`, never commits).
+- `./gradlew checkIosVersionSync` (part of `check`/`build`, so CI) fails if the code breaks the formula or
+  `Version.xcconfig` is stale. Never hand-edit `AppInfo.kt` versions or `Version.xcconfig`.
+- Numbers are never reused or lowered; skipping a number is fine. Each store may roll out at its own pace
+  with the same number.
+- Uploading a higher versionCode to the Play closed-test track keeps its 14-day clock running.
 
 ### Releasing
-- Tags `vMAJOR.MINOR.PATCH`; `versionCode = major*10000 + minor*100 + patch` (`docs/CONVENTIONS.md`).
-  CI sets Android `versionName`/`versionCode` and iOS `MARKETING_VERSION` from the tag; the iOS build
-  number is `versionCode.runNumber`, so re-running a tag still uploads.
-- Every upload needs a higher versionCode than any previous one on Play: bump PATCH for a re-release.
+- Owner flow: bump -> commit -> push -> either tag `vX.Y.Z` (CI builds and uploads both stores) or a manual
+  Xcode Archive + Play upload from the same commit.
+- CI release workflows derive name and code from the tag with the same formula; the iOS build number is
+  exactly versionCode (no run-number suffix). Re-releasing needs a new patch version, since both stores
+  reject a repeated number.
 - Release:
   ```bash
   git pull
-  git tag v1.0.0
-  git push origin v1.0.0
+  scripts/bump-version.sh 1.0.1   # then commit and push
+  git tag v1.0.1
+  git push origin v1.0.1
   ```
   Both release workflows start. Artifacts (AAB, R8 `mapping.txt`, iOS archive) are under the run's
   **Summary → Artifacts**. Keep `mapping.txt` (Crashlytics/Play de-obfuscation; CI also uploads it to Play).
