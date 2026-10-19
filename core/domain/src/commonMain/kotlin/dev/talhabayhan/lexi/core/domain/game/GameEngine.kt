@@ -1,6 +1,7 @@
 package dev.talhabayhan.lexi.core.domain.game
 
 import dev.talhabayhan.lexi.core.domain.model.Card
+import dev.talhabayhan.lexi.core.domain.model.LetterRule
 import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.core.domain.random.SeededRandom
 
@@ -16,7 +17,15 @@ public class GameEngine(public val config: GameConfig = GameConfig()) {
         level: Level,
         wheel: Wheel,
         jokers: JokerInventory = JokerInventory(),
-    ): GameState = GameState(seed = seed, mode = mode, level = level, wheel = wheel, jokers = jokers)
+        prefillsFirstLetter: Boolean = true,
+    ): GameState = GameState(
+        seed = seed,
+        mode = mode,
+        level = level,
+        wheel = wheel,
+        jokers = jokers,
+        prefillsFirstLetter = prefillsFirstLetter,
+    )
 
     /**
      * Whether `UseJoker(type)` would be applied to [state] right now (`GAME_RULES.md` §7): the game is playing and
@@ -98,9 +107,21 @@ public class GameEngine(public val config: GameConfig = GameConfig()) {
         private fun GameState.newInput(slot: Slot): SlotInput {
             val card = checkNotNull(slot.card) { "slot ${slot.letter} is not playable" }
             val random = SeededRandom(seed).derive(KeyboardGenerator.seedPurpose(slot.letter))
-            return SlotInput(
+            val input = SlotInput(
                 keys = KeyboardGenerator.generate(card.answer, random),
                 cells = List(card.answerLetters) { null },
+            )
+            val prefill = prefillsFirstLetter && card.rule == LetterRule.STARTS && card.answerLetters > 1
+            return if (prefill) input.withGivenFirstLetter(card) else input
+        }
+
+        /** Locks the answer's first letter in cell 0, using the first key with that letter (the key set is unchanged). */
+        private fun SlotInput.withGivenFirstLetter(card: Card): SlotInput {
+            val letter = card.answer.first()
+            val keyIndex = keys.indices.first { keys[it].letter == letter }
+            return copy(
+                keys = keys.replaced(keyIndex, keys[keyIndex].copy(state = KeyState.USED)),
+                cells = cells.replaced(0, PlacedLetter(letter, keyIndex, revealed = false, given = true)),
             )
         }
 
@@ -327,8 +348,9 @@ public class GameEngine(public val config: GameConfig = GameConfig()) {
         }
 
         /**
-         * Puts the correct letter into the first cell that is empty or wrong; typed letters from that cell on are
-         * returned to their keys first. The revealed letter is locked.
+         * Puts the correct letter into the first cell that is empty or wrong (never the given first letter, which is
+         * already correct); typed letters from that cell on are returned to their keys first. The revealed letter is
+         * locked.
          */
         private fun GameState.revealLetter(card: Card): GameState {
             val input = checkNotNull(currentInput)
@@ -338,7 +360,7 @@ public class GameEngine(public val config: GameConfig = GameConfig()) {
             val cells = input.cells.toMutableList()
             for (index in cell until cells.size) {
                 val placed = cells[index]
-                if (placed != null && !placed.revealed) {
+                if (placed != null && !placed.isLocked) {
                     keys[placed.keyIndex] = keys[placed.keyIndex].copy(state = KeyState.AVAILABLE)
                     cells[index] = null
                 }
@@ -353,7 +375,7 @@ public class GameEngine(public val config: GameConfig = GameConfig()) {
                 input.copy(
                     keys = keys,
                     cells = cells,
-                    placementOrder = input.placementOrder.filter { cells[it]?.revealed == false },
+                    placementOrder = input.placementOrder.filter { cells[it]?.isLocked == false },
                 ),
             ).submitIfFull()
         }
@@ -386,13 +408,14 @@ internal fun percentOf(value: Int, percent: Int): Int = (value * percent + PERCE
 
 /**
  * Typed letters go back to their keys (owner decision: a passed slot comes back empty). Joker effects are paid and
- * survive: revealed letters stay locked in their cells and disabled distractor keys stay disabled.
+ * survive: revealed letters stay locked in their cells and disabled distractor keys stay disabled; the given first
+ * letter stays too.
  */
 private fun SlotInput.clearedTyping(): SlotInput {
     val typed = placementOrder.mapTo(mutableSetOf()) { checkNotNull(cells[it]).keyIndex }
     return copy(
         keys = keys.mapIndexed { index, key -> if (index in typed) key.copy(state = KeyState.AVAILABLE) else key },
-        cells = cells.map { placed -> placed?.takeIf { it.revealed } },
+        cells = cells.map { placed -> placed?.takeIf { it.isLocked } },
         placementOrder = emptyList(),
     )
 }

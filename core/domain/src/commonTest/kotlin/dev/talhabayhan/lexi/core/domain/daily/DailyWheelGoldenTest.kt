@@ -192,7 +192,7 @@ class DailyWheelGoldenTest {
             var state = engine.newGame(seed = 42L, mode = GameMode.DAILY, level = level, wheel = wheel)
             state = engine.reduce(state, GameEvent.Start(1_000L)).state
             val input = checkNotNull(state.currentInput)
-            "WORD".forEach { char ->
+            "ORD".forEach { char ->
                 val keyIndex = input.keys.indices.first {
                     input.keys[it].letter == char && input.keys[it].state == KeyState.AVAILABLE
                 }
@@ -221,7 +221,7 @@ class DailyWheelGoldenTest {
         assertTrue(passTransition.effects.any { it is EngineEffect.Passed && it.letter == 'A' })
 
         // 2. Answer slot B correctly: base points for B1 is 10, streak becomes 1 (bonus 0) -> score = 10
-        "BREAD".forEach { char ->
+        "READ".forEach { char ->
             val input = checkNotNull(state.currentInput)
             val keyIndex = input.keys.indices.first {
                 input.keys[it].letter == char && input.keys[it].state == KeyState.AVAILABLE
@@ -234,7 +234,7 @@ class DailyWheelGoldenTest {
         // 3. Lap 2: Slot A comes back (passed-then-correct). Answer correctly: base points for A1 is 5.
         // Streak was 1, now becomes 2. Streak bonus = 2 * (2 - 1) = 2. Points = 5 + 2 = 7.
         // Total score = 10 + 7 = 17.
-        "APPLE".forEach { char ->
+        "PPLE".forEach { char ->
             val input = checkNotNull(state.currentInput)
             val keyIndex = input.keys.indices.first {
                 input.keys[it].letter == char && input.keys[it].state == KeyState.AVAILABLE

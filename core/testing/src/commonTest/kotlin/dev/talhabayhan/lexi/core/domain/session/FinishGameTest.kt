@@ -46,11 +46,11 @@ class FinishGameTest {
             send(GameEvent.KeyTapped(index))
         }
         send(GameEvent.Start(timestampMs = START_MS))
-        type("APPLE")
+        type("PPLE") // A, B and C are given (STARTS slots).
         send(GameEvent.Tick(10_000L))
         send(GameEvent.Pass)
-        type("CHAIR")
-        type("DREAB")
+        type("HAIR")
+        type("RDEA")
         send(GameEvent.Tick(config.revealMs))
         return state
     }

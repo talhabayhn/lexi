@@ -46,8 +46,13 @@ internal object GameSamples {
         words = persistentListOf(
             ANSWER.mapIndexed { index, letter ->
                 when {
+                    // STARTS slot: the slot letter is given in the first box (GAME_RULES.md §3).
+                    index == 0 -> AnswerCellUi(letter, AnswerSlotState.Given)
+
                     index < TYPED -> AnswerCellUi(letter, AnswerSlotState.Filled)
+
                     index == TYPED -> AnswerCellUi(null, AnswerSlotState.Active)
+
                     else -> AnswerCellUi(null, AnswerSlotState.Empty)
                 }
             }.toImmutableList(),

@@ -43,14 +43,24 @@ class Play(var state: GameState, private val engine: GameEngine) {
         return this
     }
 
-    /** Types the current answer correctly. */
-    fun answer(): Play = type(checkNotNull(state.currentSlot?.card).answer)
+    /** Types the current answer correctly (cells already locked, like the given first letter, are skipped). */
+    fun answer(): Play = type(openLetters())
 
-    /** Types a wrong word: the current answer with its letters rotated by one (answers must not be uniform). */
+    /**
+     * Types a wrong word: the open letters of the current answer rotated by one, or a distractor first when they are
+     * uniform (e.g. the "GG" left of EGG after the given E).
+     */
     fun answerWrong(): Play {
-        val letters = checkNotNull(state.currentSlot?.card).answer.filter { it != ' ' }
-        return type(letters.drop(1) + letters.first())
+        val letters = openLetters()
+        val rotated = letters.drop(1) + letters.first()
+        if (rotated != letters) return type(rotated)
+        val distractor = input.keys.first { it.isDistractor && it.state == KeyState.AVAILABLE }.letter
+        return type(distractor + letters.drop(1))
     }
+
+    /** Letters of the current answer whose cells are not locked (given first letter, revealed letters). */
+    private fun openLetters(): String = checkNotNull(state.currentSlot?.card).answer.filter { it != ' ' }
+        .filterIndexed { index, _ -> input.cells[index]?.isLocked != true }
 
     /** Wrong answer plus the reveal pause, so the next slot is current. */
     fun answerWrongAndWait(): Play = answerWrong().send(GameEvent.Tick(engine.config.revealMs))

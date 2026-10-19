@@ -11,7 +11,9 @@ import kotlinx.serialization.json.Json
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
+import kotlin.test.assertFalse
 import kotlin.test.assertNull
+import kotlin.test.assertTrue
 
 /** Process-death snapshot (ADR 0019): seed + slots + jokers + coalesced events ⇒ the same state after replay. */
 class SavedGameTest {
@@ -29,7 +31,15 @@ class SavedGameTest {
             mode = GameMode.CLASSIC,
             random = SeededRandom(seed).derive(WheelGenerator.SEED_PURPOSE),
         )
-        return engine.newGame(seed, GameMode.CLASSIC, Level.A1, wheel, GameConfig().jokerStartPack)
+        // The golden log was recorded before the given first letter (GAME_RULES.md §3).
+        return engine.newGame(
+            seed,
+            GameMode.CLASSIC,
+            Level.A1,
+            wheel,
+            GameConfig().jokerStartPack,
+            prefillsFirstLetter = false,
+        )
     }
 
     /** Live play of the golden event log with a 100 ms ticker in front of every event, as the ViewModel does. */
@@ -72,6 +82,40 @@ class SavedGameTest {
         val restored = SavedGameCodec.decodeOrNull(SavedGameCodec.encode(saved))?.restore(pool, engine)
 
         assertEquals(Json.decodeFromString(GameState.serializer(), GOLDEN_CLASSIC), restored)
+    }
+
+    @Test
+    fun `snapshot saved before the given letter rule has no rule field and replays with the old rule`() {
+        val saved = GoldenTest.CLASSIC_EVENTS.fold(SavedGame.of(goldenInitial())) { s, event -> s.append(event) }
+        val text = SavedGameCodec.encode(saved)
+
+        val decoded = checkNotNull(SavedGameCodec.decodeOrNull(text))
+
+        assertFalse("prefillsFirstLetter" in text)
+        assertFalse(decoded.prefillsFirstLetter)
+        val restored = checkNotNull(decoded.restore(pool, engine))
+        assertFalse(restored.prefillsFirstLetter)
+        assertEquals(Json.decodeFromString(GameState.serializer(), GOLDEN_CLASSIC), restored)
+    }
+
+    @Test
+    fun `snapshot with the given letter rule survives the codec and replays to the live state`() {
+        val live = play("APPLE", "BREAD", start = false)
+        var saved = SavedGame.of(live.state)
+        fun send(event: GameEvent) {
+            live.send(event)
+            saved = saved.append(event)
+        }
+        send(GameEvent.Start(1_000L))
+        send(GameEvent.KeyTapped(live.input.keys.indexOfFirst { it.letter == 'P' }))
+        send(GameEvent.Tick(300L))
+
+        val decoded = checkNotNull(SavedGameCodec.decodeOrNull(SavedGameCodec.encode(saved)))
+
+        assertTrue(decoded.prefillsFirstLetter)
+        val restored = decoded.restore(listOf(card("APPLE"), card("BREAD")), engine)
+        assertEquals(live.state, restored)
+        assertEquals("AP", restored?.currentInput?.typed)
     }
 
     @Test

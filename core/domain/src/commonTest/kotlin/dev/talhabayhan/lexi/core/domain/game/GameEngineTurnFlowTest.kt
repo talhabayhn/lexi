@@ -1,6 +1,9 @@
 package dev.talhabayhan.lexi.core.domain.game
 
+import dev.talhabayhan.lexi.core.domain.card
 import dev.talhabayhan.lexi.core.domain.model.CardId
+import dev.talhabayhan.lexi.core.domain.model.LetterRule
+import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.core.domain.random.SeededRandom
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -67,25 +70,26 @@ class GameEngineTurnFlowTest {
         val game = play("APPLE", seed = 77L)
 
         val expected = KeyboardGenerator.generate("APPLE", SeededRandom(77L).derive(KeyboardGenerator.seedPurpose('A')))
-        assertEquals(expected, game.input.keys)
+        assertEquals(expected.map { it.letter }, game.input.keys.map { it.letter })
+        assertEquals(expected.map { it.isDistractor }, game.input.keys.map { it.isDistractor })
         assertEquals(5, game.input.cells.size)
     }
 
     @Test
     fun `tapping a key places its letter in the first empty cell and marks the key used`() {
         val game = play("APPLE")
-        val index = game.input.keys.indexOfFirst { it.letter == 'A' }
+        val index = game.input.keys.indexOfFirst { it.letter == 'P' }
 
         game.send(GameEvent.KeyTapped(index))
 
-        assertEquals(PlacedLetter('A', keyIndex = index, revealed = false), game.input.cells[0])
+        assertEquals(PlacedLetter('P', keyIndex = index, revealed = false), game.input.cells[1])
         assertEquals(KeyState.USED, game.input.keys[index].state)
-        assertEquals(listOf<EngineEffect>(EngineEffect.LetterPlaced(cellIndex = 0, letter = 'A')), game.lastEffects)
+        assertEquals(listOf<EngineEffect>(EngineEffect.LetterPlaced(cellIndex = 1, letter = 'P')), game.lastEffects)
     }
 
     @Test
     fun `tapping a used or unknown key is ignored`() {
-        val game = play("APPLE").type("A")
+        val game = play("APPLE").type("P")
         val used = game.input.keys.indexOfFirst { it.state == KeyState.USED }
         val before = game.state
 
@@ -96,14 +100,14 @@ class GameEngineTurnFlowTest {
 
     @Test
     fun `backspace returns the last placed letter to its key`() {
-        val game = play("APPLE").type("AP")
-        val keyOfP = checkNotNull(game.input.cells[1]).keyIndex
+        val game = play("APPLE").type("PP")
+        val keyOfP = checkNotNull(game.input.cells[2]).keyIndex
 
         game.send(GameEvent.Backspace)
 
-        assertNull(game.input.cells[1])
+        assertNull(game.input.cells[2])
         assertEquals(KeyState.AVAILABLE, game.input.keys[keyOfP].state)
-        assertEquals('A', game.input.cells[0]?.letter)
+        assertEquals('P', game.input.cells[1]?.letter)
     }
 
     @Test
@@ -121,7 +125,7 @@ class GameEngineTurnFlowTest {
         val game = play("APPLE")
         val order = game.input.keys.map { it.letter }
 
-        game.type("APP").send(GameEvent.Backspace).type("P")
+        game.type("PPL").send(GameEvent.Backspace).type("L")
 
         assertEquals(order, game.input.keys.map { it.letter })
     }
@@ -141,7 +145,7 @@ class GameEngineTurnFlowTest {
         val game = play("GIVE UP")
 
         assertEquals(6, game.input.cells.size)
-        game.type("GIVEUP")
+        game.type("IVEUP")
 
         assertEquals(SlotState.CORRECT, game.state.wheel.slots[0].state)
     }
@@ -215,12 +219,13 @@ class GameEngineTurnFlowTest {
 
     @Test
     fun `typed letters are cleared by a pass so the slot comes back empty`() {
-        val game = play("APPLE", "BREAD").type("AP").pass().answer()
+        val game = play("APPLE", "BREAD").type("PP").pass().answer()
 
         assertEquals('A', game.currentLetter)
-        assertTrue(game.input.cells.all { it == null })
+        assertTrue(game.input.cells.drop(1).all { it == null })
+        assertEquals(true, game.input.cells[0]?.given)
         assertTrue(game.input.placementOrder.isEmpty())
-        assertTrue(game.input.keys.none { it.state == KeyState.USED })
+        assertEquals(1, game.input.keys.count { it.state == KeyState.USED })
     }
 
     @Test
@@ -305,9 +310,61 @@ class GameEngineTurnFlowTest {
     @Test
     fun `same seed and events give the same state`() {
         fun run() = play("APPLE", "BREAD", "CHAIR", seed = 5L)
-            .type("AP").pass().answerWrong().send(GameEvent.Tick(2_000L)).answer().state
+            .type("PP").pass().answerWrong().send(GameEvent.Tick(2_000L)).answer().state
 
         assertEquals(run(), run())
+    }
+
+    @Test
+    fun `starts slot opens with its letter locked in the first cell and its key used`() {
+        val game = play("APPLE")
+
+        val given = checkNotNull(game.input.cells[0])
+        assertEquals(PlacedLetter('A', keyIndex = given.keyIndex, revealed = false, given = true), given)
+        assertEquals(KeyState.USED, game.input.keys[given.keyIndex].state)
+        assertEquals(given.keyIndex, game.input.keys.indexOfFirst { it.letter == 'A' })
+        assertTrue(game.input.cells.drop(1).all { it == null })
+        assertTrue(game.input.placementOrder.isEmpty())
+    }
+
+    @Test
+    fun `backspace never removes the given first letter`() {
+        val game = play("APPLE").type("P").send(GameEvent.Backspace)
+        val before = game.state
+
+        game.send(GameEvent.Backspace)
+
+        assertSame(before, game.state)
+        assertEquals(true, game.input.cells[0]?.given)
+    }
+
+    @Test
+    fun `guess with the given first letter is judged on the full word`() {
+        val right = play("APPLE", "BREAD").type("PPLE")
+        assertEquals(SlotState.CORRECT, right.state.wheel.slots[0].state)
+
+        val wrong = play("APPLE", "BREAD").type("PPEL")
+        assertEquals(SlotState.WRONG, wrong.state.wheel.slots[0].state)
+    }
+
+    @Test
+    fun `contains slot opens with empty cells`() {
+        val card = card("CAT", letter = 'A', rule = LetterRule.CONTAINS)
+        val game = play(wheel = Wheel(listOf(Slot('A', card, SlotState.TODO))))
+
+        assertTrue(game.input.cells.all { it == null })
+        assertTrue(game.input.keys.none { it.state == KeyState.USED })
+    }
+
+    @Test
+    fun `games without the given letter rule open with empty cells`() {
+        val engine = GameEngine()
+        val initial = engine.newGame(1L, GameMode.CLASSIC, Level.A1, wheelOf("APPLE"), prefillsFirstLetter = false)
+        val game = Play(initial, engine).send(GameEvent.Start(0L))
+
+        assertTrue(game.input.cells.all { it == null })
+        game.type("APPLE")
+        assertEquals(SlotState.CORRECT, game.state.wheel.slots[0].state)
     }
 
     private fun Play.pass(): Play = send(GameEvent.Pass)

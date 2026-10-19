@@ -59,7 +59,7 @@ class GameUiMapperTest {
     }
 
     @Test
-    fun `the current slot shows its clue and rule with empty boxes and unused keys`() {
+    fun `the current slot shows its clue and rule with the given letter, empty boxes and unused keys`() {
         val ui = GameUiMapper.map(started(), engine)
 
         val turn = checkNotNull(ui.turn)
@@ -74,11 +74,12 @@ class GameUiMapperTest {
         assertEquals(Level.A1, turn.level)
         assertEquals(5, turn.letterCount)
         assertEquals(
-            listOf(AnswerSlotState.Active) + List(4) { AnswerSlotState.Empty },
+            listOf(AnswerSlotState.Given, AnswerSlotState.Active) + List(3) { AnswerSlotState.Empty },
             turn.words.single().map { it.state },
         )
+        assertEquals('A', turn.words.single().first().letter)
         assertEquals(10, turn.keys.size)
-        assertTrue(turn.keys.all { it.state == LetterKeyState.Normal })
+        assertEquals(1, turn.keys.count { it.state == LetterKeyState.Used })
     }
 
     @Test
@@ -88,7 +89,7 @@ class GameUiMapperTest {
         val cells = checkNotNull(ui.turn).words.single()
         assertEquals(listOf('A', 'P', null, null, null), cells.map { it.letter })
         assertEquals(
-            listOf(AnswerSlotState.Filled, AnswerSlotState.Filled, AnswerSlotState.Active) +
+            listOf(AnswerSlotState.Given, AnswerSlotState.Filled, AnswerSlotState.Active) +
                 List(2) { AnswerSlotState.Empty },
             cells.map { it.state },
         )

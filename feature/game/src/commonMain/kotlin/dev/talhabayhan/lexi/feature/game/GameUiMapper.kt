@@ -111,6 +111,7 @@ internal object GameUiMapper {
                 state.isRevealing -> AnswerCellUi(answer[index], AnswerSlotState.Wrong)
                 placed == null && index == firstEmpty -> AnswerCellUi(null, AnswerSlotState.Active)
                 placed == null -> AnswerCellUi(null, AnswerSlotState.Empty)
+                placed.given -> AnswerCellUi(placed.letter, AnswerSlotState.Given)
                 placed.revealed -> AnswerCellUi(placed.letter, AnswerSlotState.JokerFilled)
                 else -> AnswerCellUi(placed.letter, AnswerSlotState.Filled)
             }

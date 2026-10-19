@@ -29,6 +29,13 @@ correct = blue circle, wrong = red square, passed = yellow leaf.
 1. `Start` → first slot becomes CURRENT, timer starts (if mode has one).
 2. Player fills answer slots with letter keys. When all slots are filled → automatic submit.
    - Match is case-insensitive; spaces in multi-word answers are fixed (pre-rendered gaps, no key needed).
+   - Owner decision (given first letter): on a `STARTS` slot the first answer cell already holds the slot letter,
+     locked and drawn distinct (yellow box); its key (the first key with that letter) is USED from the start, so the
+     key set itself is unchanged. The player types from the second cell; Backspace never removes it; a pass keeps
+     it; the guess is judged on the full word. `CONTAINS` slots and one-letter answers start empty. Scoring, pass
+     and notebook are unchanged. `GameState.prefillsFirstLetter` (set by `newGame`) marks the rule; games saved or
+     recorded without that field (before the rule) replay with empty first cells, so old snapshots stay
+     deterministic (`SavedGame.prefillsFirstLetter`, golden `CLASSIC_EVENTS` / `GIVEN_LETTER_EVENTS`).
    - Correct → CORRECT, effects `Correct`, advance.
    - Wrong → WRONG, correct answer revealed for ⚙`revealMs = 1200`, advance.
 3. `Pass` → PASSED, advance.
@@ -64,7 +71,7 @@ correct = blue circle, wrong = red square, passed = yellow leaf.
   - Near pairs (symmetric): CK CS CG KQ QG KX IE EY IY EA AO OU OQ UV VW UW WM MN NH BP BD DP DT TF FV FP GJ SZ
     XZ LI LR RP JY.
 - Tapping a key places its letter in the first empty slot and marks the key USED; `Backspace` returns the last
-  placed letter to its key.
+  placed letter to its key (locked letters, §3 and §7, are skipped).
 - Keys are never reordered during a slot.
 
 ## 5. Modes
@@ -141,7 +148,7 @@ the app goes to background.
 - Owner decision: one joker per letter in total, of any type. After any joker on a slot, every further joker is
   refused for that slot, also on later laps.
 - Engine decisions: Reveal letter fills the first
-  cell that is empty or wrong; typed letters from there on go back to their keys; the revealed letter is locked
+  cell that is empty or wrong (never the given first letter, §3, which is already right); typed letters from there on go back to their keys; the revealed letter is locked
   (Backspace skips it); filling the last cell submits. Remove distractors also returns distractor letters already
   typed, and is refused when the slot has no distractors (10-letter answers). Time jokers are refused when the
   cost is ≥ the remaining time. Inventory is part of the game state; the app persists it after `JokerApplied`.

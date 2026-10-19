@@ -19,9 +19,20 @@ public enum class GameOverReason {
     EMPTY_WHEEL,
 }
 
-/** A letter in an answer cell. Revealed letters (Reveal letter joker) are locked: Backspace skips them. */
+/**
+ * A letter in an answer cell. Revealed letters (Reveal letter joker) and the [given] first letter of a STARTS slot
+ * are locked: Backspace skips them and they survive a pass.
+ */
 @Serializable
-public data class PlacedLetter(val letter: Char, val keyIndex: Int, val revealed: Boolean)
+public data class PlacedLetter(
+    val letter: Char,
+    val keyIndex: Int,
+    val revealed: Boolean,
+    /** Pre-filled slot letter of a STARTS slot (`GAME_RULES.md` §3); its key is USED from the start. */
+    val given: Boolean = false,
+) {
+    public val isLocked: Boolean get() = revealed || given
+}
 
 /**
  * Input of one slot. A pass clears the typed letters; revealed letters, disabled keys and used jokers are still
@@ -32,7 +43,7 @@ public data class SlotInput(
     val keys: List<LetterKey>,
     /** One cell per answer letter (spaces excluded); null = empty. */
     val cells: List<PlacedLetter?>,
-    /** Cell indices of non-revealed letters, in placement order (Backspace removes the last one). */
+    /** Cell indices of typed (not locked) letters, in placement order (Backspace removes the last one). */
     val placementOrder: List<Int> = emptyList(),
     val jokersUsed: Set<JokerType> = emptySet(),
     /** The slot was passed before; if the game ends while it is CURRENT again, it still counts as PASSED. */
@@ -89,6 +100,11 @@ public data class GameState(
     val streak: Int = 0,
     val longestStreak: Int = 0,
     val summary: GameSummary? = null,
+    /**
+     * STARTS slots open with their letter locked in the first cell (`GAME_RULES.md` §3). [GameEngine.newGame] sets it;
+     * false = the rule before that change, kept so games saved or recorded without the field replay identically.
+     */
+    val prefillsFirstLetter: Boolean = false,
 ) {
     public val currentSlot: Slot? get() = currentIndex?.let(wheel.slots::get)
 

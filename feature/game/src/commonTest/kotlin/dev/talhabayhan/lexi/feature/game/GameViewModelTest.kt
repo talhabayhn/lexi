@@ -239,20 +239,24 @@ class GameViewModelTest {
         vm.effects.test {
             awaitStart()
             val keys = checkNotNull(vm.state.value.turn).keys.map { it.letter }
-            vm.type("AP")
-            assertEquals(
-                GameEffect.LetterPlaced(cellIndex = 0, keyIndex = keys.indexOf('A'), letter = 'A'),
-                awaitItem(),
-            )
+            vm.type("APP")
             assertEquals(
                 GameEffect.LetterPlaced(cellIndex = 1, keyIndex = keys.indexOf('P'), letter = 'P'),
                 awaitItem(),
             )
+            assertEquals(
+                GameEffect.LetterPlaced(cellIndex = 2, keyIndex = keys.lastIndexOf('P'), letter = 'P'),
+                awaitItem(),
+            )
 
             vm.onIntent(GameIntent.Backspace)
+            vm.onIntent(GameIntent.Backspace)
+            vm.onIntent(GameIntent.Backspace)
 
+            // Backspace never removes the given first letter.
             val cells = checkNotNull(vm.state.value.turn).words.single()
             assertEquals(listOf('A', null, null, null, null), cells.map { it.letter })
+            assertEquals(AnswerSlotState.Given, cells[0].state)
             assertEquals(AnswerSlotState.Active, cells[1].state)
         }
     }
@@ -307,7 +311,7 @@ class GameViewModelTest {
             vm.onIntent(GameIntent.UseJoker(JokerType.REVEAL_LETTER))
 
             assertEquals(
-                GameEffect.LetterPlaced(cellIndex = 0, keyIndex = keys.indexOf('A'), letter = 'A'),
+                GameEffect.LetterPlaced(cellIndex = 1, keyIndex = keys.indexOf('P'), letter = 'P'),
                 awaitItem(),
             )
         }
@@ -578,8 +582,9 @@ class GameViewModelTest {
 
         val ui = vm.state.value
         assertFalse(ui.isJokerSheetOpen)
-        assertEquals('A', checkNotNull(ui.turn).words.single().first().letter)
-        assertEquals(AnswerSlotState.JokerFilled, checkNotNull(ui.turn).words.single().first().state)
+        // The given first letter (GAME_RULES.md §3) is never revealed; the joker fills the second box.
+        assertEquals('P', checkNotNull(ui.turn).words.single()[1].letter)
+        assertEquals(AnswerSlotState.JokerFilled, checkNotNull(ui.turn).words.single()[1].state)
         assertEquals(170_000L, vm.remainingMs)
         assertEquals(1, ui.jokers.first { it.type == JokerType.REVEAL_LETTER }.count)
         assertTrue(ui.jokers.none { it.enabled }, "one joker per slot")

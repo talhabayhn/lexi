@@ -15,7 +15,7 @@ class GameEngineJokerTest {
 
     @Test
     fun `reveal letter puts the correct letter into the next empty cell for 10 s`() {
-        val game = play("APPLE", "BREAD").type("A").joker(JokerType.REVEAL_LETTER)
+        val game = play("APPLE", "BREAD").joker(JokerType.REVEAL_LETTER)
 
         assertEquals("AP___", game.typed())
         assertEquals(true, game.input.cells[1]?.revealed)
@@ -28,8 +28,23 @@ class GameEngineJokerTest {
     }
 
     @Test
+    fun `reveal letter never uses the given first letter`() {
+        val game = play("APPLE", "BREAD").joker(JokerType.REVEAL_LETTER)
+
+        assertEquals(true, game.input.cells[0]?.given)
+        assertEquals(1, game.lastEffects.filterIsInstance<EngineEffect.LetterPlaced>().single().cellIndex)
+    }
+
+    @Test
+    fun `reveal letter on a two-letter starts answer fills the last cell and submits`() {
+        val game = play("GO", "HAT").joker(JokerType.REVEAL_LETTER)
+
+        assertEquals(SlotState.CORRECT, game.state.wheel.slots[0].state)
+    }
+
+    @Test
     fun `reveal letter replaces typed letters from the first mistake`() {
-        val game = play("APPLE", "BREAD").type("ALE").joker(JokerType.REVEAL_LETTER)
+        val game = play("APPLE", "BREAD").type("LE").joker(JokerType.REVEAL_LETTER)
 
         assertEquals("AP___", game.typed())
         val available = game.input.keys.filter { it.state == KeyState.AVAILABLE }.map { it.letter }
@@ -39,7 +54,7 @@ class GameEngineJokerTest {
     @Test
     fun `revealed letter cannot be removed with backspace`() {
         val game = play("APPLE", "BREAD").joker(JokerType.REVEAL_LETTER).type("P").send(GameEvent.Backspace)
-        assertEquals("A____", game.typed())
+        assertEquals("AP___", game.typed())
         val before = game.state
 
         game.send(GameEvent.Backspace)
@@ -49,7 +64,7 @@ class GameEngineJokerTest {
 
     @Test
     fun `reveal letter in the last empty cell submits a correct answer`() {
-        val game = play("APPLE", "BREAD").type("APPL").joker(JokerType.REVEAL_LETTER)
+        val game = play("APPLE", "BREAD").type("PPL").joker(JokerType.REVEAL_LETTER)
 
         assertEquals(SlotState.CORRECT, game.state.wheel.slots[0].state)
         assertEquals('B', game.currentLetter)
@@ -65,18 +80,18 @@ class GameEngineJokerTest {
 
     @Test
     fun `remove distractors disables every distractor key for 15 s and returns placed ones`() {
-        val game = play("APPLE", "BREAD").type("A")
+        val game = play("APPLE", "BREAD").type("P")
         val distractor = game.input.keys.indexOfFirst { it.isDistractor }
         game.send(GameEvent.KeyTapped(distractor))
 
         game.joker(JokerType.REMOVE_DISTRACTORS)
 
-        assertEquals("A____", game.typed())
+        assertEquals("AP___", game.typed())
         assertTrue(game.input.keys.filter { it.isDistractor }.all { it.state == KeyState.DISABLED })
         assertTrue(game.input.keys.filterNot { it.isDistractor }.none { it.state == KeyState.DISABLED })
         assertEquals(165_000L, game.state.remainingMs)
         game.send(GameEvent.KeyTapped(distractor))
-        assertEquals("A____", game.typed())
+        assertEquals("AP___", game.typed())
     }
 
     @Test
@@ -141,21 +156,22 @@ class GameEngineJokerTest {
 
     @Test
     fun `revealed letter survives a pass while typed letters are cleared`() {
-        val game = play("APPLE", "BREAD").joker(JokerType.REVEAL_LETTER).type("PP").send(GameEvent.Pass).answer()
+        val game = play("APPLE", "BREAD").joker(JokerType.REVEAL_LETTER).type("PL").send(GameEvent.Pass).answer()
 
         assertEquals('A', game.currentLetter)
-        assertEquals("A____", game.typed())
-        assertEquals(true, game.input.cells[0]?.revealed)
-        assertEquals(1, game.input.keys.count { it.state == KeyState.USED })
-        game.type("PPLE")
+        assertEquals("AP___", game.typed())
+        assertEquals(true, game.input.cells[0]?.given)
+        assertEquals(true, game.input.cells[1]?.revealed)
+        assertEquals(2, game.input.keys.count { it.state == KeyState.USED })
+        game.type("PLE")
         assertEquals(SlotState.CORRECT, game.state.wheel.slots[0].state)
     }
 
     @Test
     fun `disabled distractor keys stay disabled after a pass`() {
-        val game = play("APPLE", "BREAD").joker(JokerType.REMOVE_DISTRACTORS).type("A").send(GameEvent.Pass).answer()
+        val game = play("APPLE", "BREAD").joker(JokerType.REMOVE_DISTRACTORS).type("P").send(GameEvent.Pass).answer()
 
-        assertEquals("_____", game.typed())
+        assertEquals("A____", game.typed())
         assertTrue(game.input.keys.filter { it.isDistractor }.all { it.state == KeyState.DISABLED })
     }
 
@@ -199,7 +215,7 @@ class GameEngineJokerTest {
         for (mode in listOf(GameMode.PRACTICE, GameMode.REVIEW)) {
             val game = play("APPLE", "BREAD", mode = mode).joker(JokerType.REVEAL_LETTER)
 
-            assertEquals("A____", game.typed(), "$mode")
+            assertEquals("AP___", game.typed(), "$mode")
             assertNull(game.state.remainingMs)
             assertEquals(0, game.state.score)
         }

@@ -33,12 +33,39 @@ class GoldenTest {
             random = SeededRandom(seed).derive(WheelGenerator.SEED_PURPOSE),
         )
         val engine = GameEngine()
-        val initial = engine.newGame(seed, GameMode.CLASSIC, Level.A1, wheel, GameConfig().jokerStartPack)
+        // Recorded before the given first letter (GAME_RULES.md §3): replays with the old rule.
+        val initial = engine.newGame(
+            seed,
+            GameMode.CLASSIC,
+            Level.A1,
+            wheel,
+            GameConfig().jokerStartPack,
+            prefillsFirstLetter = false,
+        )
 
         val final = CLASSIC_EVENTS.fold(initial) { state, event -> engine.reduce(state, event).state }
 
         assertGolden("classic", GOLDEN_CLASSIC, json.encodeToString(GameState.serializer(), final))
         assertEquals(final, json.decodeFromString(GameState.serializer(), GOLDEN_CLASSIC))
+    }
+
+    @Test
+    fun `classic game with the given first letter matches the golden snapshot`() {
+        val seed = 2024L
+        val wheel = WheelGenerator.generate(
+            pool = pool,
+            level = Level.A1,
+            category = CategoryId.MIXED,
+            mode = GameMode.CLASSIC,
+            random = SeededRandom(seed).derive(WheelGenerator.SEED_PURPOSE),
+        )
+        val engine = GameEngine()
+        val initial = engine.newGame(seed, GameMode.CLASSIC, Level.A1, wheel, GameConfig().jokerStartPack)
+
+        val final = GIVEN_LETTER_EVENTS.fold(initial) { state, event -> engine.reduce(state, event).state }
+
+        assertGolden("given-letter", GOLDEN_GIVEN_LETTER, json.encodeToString(GameState.serializer(), final))
+        assertEquals(final, json.decodeFromString(GameState.serializer(), GOLDEN_GIVEN_LETTER))
     }
 
     @Test
@@ -54,7 +81,8 @@ class GoldenTest {
             )
         }
         val engine = MatchEngine()
-        val initial = engine.newMatch(seed, Level.A1, wheels)
+        // Recorded before the given first letter (GAME_RULES.md §3): replays with the old rule.
+        val initial = engine.newMatch(seed, Level.A1, wheels, prefillsFirstLetter = false)
 
         val final = DUEL_EVENTS.fold(initial) { state, event -> engine.reduce(state, event).state }
 
@@ -112,6 +140,46 @@ class GoldenTest {
             // B (lap 2): Remove distractors, B, pause (tick ignored), pass (clears the typed B) → lap 3, time up.
             GameEvent.UseJoker(JokerType.REMOVE_DISTRACTORS),
             GameEvent.KeyTapped(2),
+            GameEvent.Pause,
+            GameEvent.Tick(3_000L),
+            GameEvent.Resume,
+            GameEvent.Tick(500L),
+            GameEvent.Pass,
+            GameEvent.Tick(200_000L),
+        )
+
+        /**
+         * Same wheel and keys as [CLASSIC_EVENTS], with the given first letter (A, B, D, E are STARTS slots; key 6 A,
+         * 2 B, 7 D and 5 E are used from the start).
+         */
+        val GIVEN_LETTER_EVENTS: List<GameEvent> = listOf(
+            GameEvent.Start(timestampMs = 1_000L),
+            // A: P, distractor R, Backspace, Reveal letter (second P, key 8), L, E → correct with joker.
+            GameEvent.KeyTapped(0),
+            GameEvent.KeyTapped(1),
+            GameEvent.Backspace,
+            GameEvent.UseJoker(JokerType.REVEAL_LETTER),
+            GameEvent.KeyTapped(9),
+            GameEvent.KeyTapped(5),
+            // B: pass.
+            GameEvent.Tick(4_000L),
+            GameEvent.Pass,
+            // C: "CTA" → wrong, reveal.
+            GameEvent.KeyTapped(7),
+            GameEvent.KeyTapped(0),
+            GameEvent.Tick(1_200L),
+            // D: Example joker, OG → correct.
+            GameEvent.UseJoker(JokerType.EXAMPLE),
+            GameEvent.KeyTapped(2),
+            GameEvent.KeyTapped(6),
+            // E: GG → correct, streak 2; wraps to B on lap 2.
+            GameEvent.KeyTapped(4),
+            GameEvent.KeyTapped(8),
+            // B (lap 2): Remove distractors, R, Backspace, Backspace on the given B (ignored), pause, pass → time up.
+            GameEvent.UseJoker(JokerType.REMOVE_DISTRACTORS),
+            GameEvent.KeyTapped(6),
+            GameEvent.Backspace,
+            GameEvent.Backspace,
             GameEvent.Pause,
             GameEvent.Tick(3_000L),
             GameEvent.Resume,

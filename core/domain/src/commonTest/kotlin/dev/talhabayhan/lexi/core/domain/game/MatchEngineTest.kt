@@ -36,8 +36,16 @@ class MatchEngineTest {
         val active: GameState get() = state.players[state.activePlayer]
 
         fun answer(wrong: Boolean = false): Duel {
+            // Locked cells (the given first letter) need no key; a uniform rest ("GG" of EGG) starts with a distractor.
+            val start = checkNotNull(active.currentInput)
             val letters = checkNotNull(active.currentSlot?.card).answer.filter { it != ' ' }
-            val word = if (wrong) letters.drop(1) + letters.first() else letters
+                .filterIndexed { index, _ -> start.cells[index]?.isLocked != true }
+            val rotated = letters.drop(1) + letters.first()
+            val word = when {
+                !wrong -> letters
+                rotated != letters -> rotated
+                else -> start.keys.first { it.isDistractor }.letter + letters.drop(1)
+            }
             for (letter in word) {
                 val input = checkNotNull(active.currentInput)
                 play(

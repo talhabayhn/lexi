@@ -10,7 +10,7 @@ import kotlin.test.assertEquals
 class GameEngineSerializationTest {
     @Test
     fun `game state survives a JSON round trip mid-game`() {
-        val state = play("APPLE", "BREAD", "CHAIR").type("AP").send(GameEvent.Pass).answerWrong().state
+        val state = play("APPLE", "BREAD", "CHAIR").type("PP").send(GameEvent.Pass).answerWrong().state
 
         val json = Json.encodeToString(GameState.serializer(), state)
 

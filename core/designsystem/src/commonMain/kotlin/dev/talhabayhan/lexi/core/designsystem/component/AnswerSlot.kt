@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.dp
 import dev.talhabayhan.lexi.core.designsystem.generated.resources.Res
 import dev.talhabayhan.lexi.core.designsystem.generated.resources.answer_slot_active
 import dev.talhabayhan.lexi.core.designsystem.generated.resources.answer_slot_empty
+import dev.talhabayhan.lexi.core.designsystem.generated.resources.answer_slot_given
 import dev.talhabayhan.lexi.core.designsystem.generated.resources.answer_slot_joker
 import dev.talhabayhan.lexi.core.designsystem.generated.resources.wheel_letter_description
 import dev.talhabayhan.lexi.core.designsystem.generated.resources.wheel_letter_state_wrong
@@ -44,6 +45,9 @@ public enum class AnswerSlotState {
 
     /** Blue box, white letter (opened by the "Harf aç" joker). */
     JokerFilled,
+
+    /** Yellow box with an ink border, ink letter: the slot letter given in the first box of a STARTS slot (locked). */
+    Given,
 }
 
 /** Answer box geometry (`04-game.html`). */
@@ -72,6 +76,7 @@ public fun AnswerSlot(
         AnswerSlotState.Empty -> Triple(colors.white, Color.Unspecified, BorderStroke(border, colors.ink))
         AnswerSlotState.Wrong -> Triple(colors.red, colors.white, null)
         AnswerSlotState.JokerFilled -> Triple(colors.blue, colors.white, null)
+        AnswerSlotState.Given -> Triple(colors.yellow, colors.ink, BorderStroke(border, colors.ink))
     }
     val shown = letter?.takeIf { content != Color.Unspecified }?.toString()
     val description = when (state) {
@@ -93,6 +98,13 @@ public fun AnswerSlot(
                 Res.string.wheel_letter_description,
                 shown.orEmpty(),
                 stringResource(Res.string.answer_slot_joker),
+            )
+
+        AnswerSlotState.Given ->
+            stringResource(
+                Res.string.wheel_letter_description,
+                shown.orEmpty(),
+                stringResource(Res.string.answer_slot_given),
             )
     }
     Box(
@@ -120,6 +132,7 @@ private fun AnswerSlotPreview() {
             AnswerSlot(null, AnswerSlotState.Empty)
             AnswerSlot('S', AnswerSlotState.Wrong)
             AnswerSlot('N', AnswerSlotState.JokerFilled)
+            AnswerSlot('A', AnswerSlotState.Given)
         }
     }
 }

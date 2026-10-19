@@ -25,6 +25,8 @@ public data class SavedGame(
     val slots: List<SavedSlot>,
     val jokers: JokerInventory,
     val events: List<GameEvent> = emptyList(),
+    /** [GameState.prefillsFirstLetter]; missing in snapshots saved before that rule, which then replay without it. */
+    val prefillsFirstLetter: Boolean = false,
 ) {
     /** Card ids to load before [restore]. */
     public val cardIds: List<CardId> get() = slots.mapNotNull { it.cardId }
@@ -58,7 +60,14 @@ public data class SavedGame(
         } catch (e: IllegalArgumentException) {
             return null
         }
-        val initial = engine.newGame(seed = seed, mode = mode, level = level, wheel = wheel, jokers = jokers)
+        val initial = engine.newGame(
+            seed = seed,
+            mode = mode,
+            level = level,
+            wheel = wheel,
+            jokers = jokers,
+            prefillsFirstLetter = prefillsFirstLetter,
+        )
         return events.fold(initial) { state, event -> engine.reduce(state, event).state }
     }
 
@@ -72,6 +81,7 @@ public data class SavedGame(
                 level = initial.level,
                 slots = initial.wheel.slots.map { SavedSlot(it.letter, it.rule, it.card?.id, it.state) },
                 jokers = initial.jokers,
+                prefillsFirstLetter = initial.prefillsFirstLetter,
             )
         }
     }
