@@ -71,12 +71,8 @@ internal class StatsViewModel(
     )
 
     private suspend fun loadContent(): Content? = try {
-        val levelCards = cards.levelCards()
-        Content(
-            totals = cards.levelTotals(),
-            levelOf = levelCards.associate { it.id to it.level },
-            letterOf = levelCards.associate { it.id to it.letter },
-        )
+        val index = cards.contentIndex()
+        Content(totals = index.totals, levelOf = index.levelOf, letterOf = index.letterOf)
     } catch (e: CancellationException) {
         throw e
     } catch (@Suppress("TooGenericExceptionCaught") e: Exception) {

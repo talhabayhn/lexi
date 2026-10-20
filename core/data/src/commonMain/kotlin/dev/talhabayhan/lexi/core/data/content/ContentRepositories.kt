@@ -7,6 +7,7 @@ import dev.talhabayhan.lexi.core.domain.model.Card
 import dev.talhabayhan.lexi.core.domain.model.CardId
 import dev.talhabayhan.lexi.core.domain.model.Category
 import dev.talhabayhan.lexi.core.domain.model.CategoryId
+import dev.talhabayhan.lexi.core.domain.model.ContentIndex
 import dev.talhabayhan.lexi.core.domain.model.ExamPack
 import dev.talhabayhan.lexi.core.domain.model.ExamPackCard
 import dev.talhabayhan.lexi.core.domain.model.ExamPackId
@@ -17,6 +18,8 @@ import dev.talhabayhan.lexi.core.domain.repository.ContentVersionRepository
 import dev.talhabayhan.lexi.core.domain.repository.ExamPackRepository
 import dev.talhabayhan.lexi.core.domain.settings.ClueLanguage
 import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
 
 /** Shared plumbing: content queries, and the mapping of their rows, on the IO dispatcher (never on the main thread). */
@@ -37,6 +40,8 @@ internal class CardRepositoryImpl(
 ) : ContentReader(databases, io),
     CardRepository {
     private val lang get() = clueLanguage.code
+    private val indexLock = Mutex()
+    private var index: ContentIndex? = null
 
     override suspend fun wheelPool(level: Level, category: CategoryId): List<Card> = read {
         if (category == CategoryId.MIXED) {
@@ -54,11 +59,25 @@ internal class CardRepositoryImpl(
         }.valid().sortedBy { it.id.value }
     }
 
-    override suspend fun levelTotals(): Map<Level, Int> = read {
-        levelCardCounts().executeAsList().mapNotNull { row ->
-            Level.entries.firstOrNull { it.name == row.level }?.let { it to row.total.toInt() }
-        }.toMap()
+    // The content DB never changes while the app runs, so the index is read once and kept (a failed read is retried).
+    override suspend fun contentIndex(): ContentIndex = indexLock.withLock {
+        index ?: read {
+            val levelOf = HashMap<CardId, Level>()
+            val letterOf = HashMap<CardId, Char>()
+            val totals = HashMap<Level, Int>()
+            cardIndex().executeAsList().forEach { row ->
+                val level = Level.entries.firstOrNull { it.name == row.level } ?: return@forEach
+                val letter = row.letter.singleOrNull() ?: return@forEach
+                val id = CardId(row.id)
+                levelOf[id] = level
+                letterOf[id] = letter
+                totals[level] = (totals[level] ?: 0) + 1
+            }
+            ContentIndex(totals, levelOf, letterOf)
+        }.also { index = it }
     }
+
+    override suspend fun levelTotals(): Map<Level, Int> = contentIndex().totals
 
     override suspend fun categoryOfCards(level: Level): Map<CardId, CategoryId> = read {
         levelCardCategories(level.name).executeAsList().associate { CardId(it.id) to CategoryId(it.category_id) }

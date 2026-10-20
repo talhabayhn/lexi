@@ -14,6 +14,7 @@ import kotlinx.coroutines.test.runTest
 import kotlin.test.AfterTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertSame
 
 class ContentRepositoriesTest {
     private val io = StandardTestDispatcher()
@@ -74,6 +75,26 @@ class ContentRepositoriesTest {
             },
         )
         assertEquals(mapOf(Level.A1 to 5, Level.B1 to 1), cards.levelTotals())
+    }
+
+    @Test
+    fun `content index holds level and letter of every level card without exam-pack-only cards`() = runTest(io) {
+        val index = cards.contentIndex()
+
+        assertEquals(mapOf(Level.A1 to 5, Level.B1 to 1), index.totals)
+        assertEquals(Level.A1, index.levelOf[CardId("a1-cup")])
+        assertEquals(Level.B1, index.levelOf[CardId("b1-bill")])
+        assertEquals('X', index.letterOf[CardId("a1-six")])
+        assertEquals(6, index.levelOf.size)
+        assertEquals(null, index.levelOf[CardId("b1-exam")])
+    }
+
+    @Test
+    fun `content index is read once and kept in memory`() = runTest(io) {
+        val first = cards.contentIndex()
+
+        assertSame(first, cards.contentIndex())
+        assertEquals(first.totals, cards.levelTotals())
     }
 
     @Test

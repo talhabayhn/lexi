@@ -3,6 +3,7 @@ package dev.talhabayhan.lexi.core.testing
 import dev.talhabayhan.lexi.core.domain.model.Card
 import dev.talhabayhan.lexi.core.domain.model.CardId
 import dev.talhabayhan.lexi.core.domain.model.CategoryId
+import dev.talhabayhan.lexi.core.domain.model.ContentIndex
 import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.core.domain.repository.CardRepository
 import dev.talhabayhan.lexi.core.domain.repository.ContentVersionRepository
@@ -36,6 +37,14 @@ public class FakeCardRepository(cards: Collection<Card> = emptyList()) : CardRep
     override suspend fun levelCards(): List<Card> = read().let { cards }
 
     override suspend fun cards(ids: Collection<CardId>): List<Card> = read().let { cards }.filter { it.id in ids }
+
+    override suspend fun contentIndex(): ContentIndex = read().let { cards }.let { all ->
+        ContentIndex(
+            totals = all.groupingBy { it.level }.eachCount(),
+            levelOf = all.associate { it.id to it.level },
+            letterOf = all.associate { it.id to it.letter },
+        )
+    }
 
     override suspend fun levelTotals(): Map<Level, Int> = read().let { cards }.groupingBy { it.level }.eachCount()
 

@@ -4,6 +4,7 @@ import dev.talhabayhan.lexi.core.domain.model.Card
 import dev.talhabayhan.lexi.core.domain.model.CardId
 import dev.talhabayhan.lexi.core.domain.model.Category
 import dev.talhabayhan.lexi.core.domain.model.CategoryId
+import dev.talhabayhan.lexi.core.domain.model.ContentIndex
 import dev.talhabayhan.lexi.core.domain.model.ExamPack
 import dev.talhabayhan.lexi.core.domain.model.ExamPackCard
 import dev.talhabayhan.lexi.core.domain.model.ExamPackId
@@ -25,6 +26,12 @@ public interface CardRepository {
 
     /** Cards by id of any kind (notebook, review wheel, exam packs), sorted by id; unknown ids are skipped. */
     public suspend fun cards(ids: Collection<CardId>): List<Card>
+
+    /**
+     * Level and letter of every level card plus the card count per level, read with one slim query (no clues) and
+     * kept in memory: the content is read-only at runtime. Prefer this over [levelCards] when only ids are needed.
+     */
+    public suspend fun contentIndex(): ContentIndex
 
     /** Level card count per level (no exam-pack-only cards), for `Stats.levelProgress`. */
     public suspend fun levelTotals(): Map<Level, Int>

@@ -16,8 +16,12 @@ import dev.talhabayhan.lexi.core.domain.settings.Settings
 import dev.talhabayhan.lexi.core.domain.settings.UiLanguage
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.stateIn
 import okio.Path.Companion.toPath
 
 /** DataStore Preferences file at [path] (absolute; see `DatabaseFiles.settingsFilePath`). One per process. */
@@ -28,9 +32,16 @@ public fun createSettingsDataStore(path: String, scope: CoroutineScope): DataSto
  * [Settings] in DataStore Preferences. Keys are stable (renaming one loses the stored value); invalid stored values
  * (e.g. a removed time option or enum entry) read as the default.
  */
-internal class SettingsRepositoryImpl(private val dataStore: DataStore<Preferences>, private val config: GameConfig) :
-    SettingsRepository {
+internal class SettingsRepositoryImpl(
+    private val dataStore: DataStore<Preferences>,
+    private val config: GameConfig,
+    scope: CoroutineScope,
+) : SettingsRepository {
     override val settings: Flow<Settings> = dataStore.data.map { it.toSettings() }.distinctUntilChanged()
+
+    // Collected eagerly in the app-scoped [scope] so the stored values are ready before the first screen needs them.
+    override val loaded: StateFlow<Settings?> = settings.catch {
+    }.stateIn<Settings?>(scope, SharingStarted.Eagerly, null)
 
     override suspend fun update(transform: (Settings) -> Settings) {
         dataStore.edit { prefs -> prefs.write(transform(prefs.toSettings())) }

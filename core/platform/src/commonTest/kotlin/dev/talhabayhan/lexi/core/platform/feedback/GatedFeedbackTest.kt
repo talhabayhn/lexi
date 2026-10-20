@@ -6,10 +6,9 @@ import dev.talhabayhan.lexi.core.domain.feedback.SoundEffect
 import dev.talhabayhan.lexi.core.domain.feedback.SoundPlayer
 import dev.talhabayhan.lexi.core.domain.repository.SettingsRepository
 import dev.talhabayhan.lexi.core.domain.settings.Settings
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
@@ -48,6 +47,7 @@ class LiveSettingsFeedbackTest {
     private class Store : SettingsRepository {
         val state = MutableStateFlow(Settings())
         override val settings: Flow<Settings> = state
+        override val loaded: StateFlow<Settings?> = state
 
         override suspend fun update(transform: (Settings) -> Settings) {
             state.value = transform(state.value)
@@ -57,7 +57,7 @@ class LiveSettingsFeedbackTest {
     @Test
     fun `sound and haptics follow the stored switches as they change`() {
         val store = Store()
-        val live = LiveSettings(store, CoroutineScope(Dispatchers.Unconfined))
+        val live = LiveSettings(store)
         val sounds = mutableListOf<SoundEffect>()
         val haptics = mutableListOf<HapticKind>()
         val player = GatedSoundPlayer(SoundPlayer { sounds += it }) { live.current.soundEffects }
@@ -71,7 +71,6 @@ class LiveSettingsFeedbackTest {
         store.state.value = store.state.value.copy(soundEffects = true, haptics = false)
         player.play(SoundEffect.Correct)
         feedback.perform(HapticKind.Heavy)
-        live.close()
 
         assertEquals(listOf(SoundEffect.Tap, SoundEffect.Correct), sounds)
         assertEquals(listOf(HapticKind.Light, HapticKind.Error), haptics)

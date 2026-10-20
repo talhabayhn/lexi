@@ -170,11 +170,12 @@ class RepositoryScenariosTest {
         val dir: File = createTempDirectory("lexi-settings-").toFile()
         val path = File(dir, "datastore/settings.preferences_pb").path
         val firstJob = Job()
-        SettingsRepositoryImpl(createSettingsDataStore(path, CoroutineScope(firstJob + io)), config)
+        val firstScope = CoroutineScope(firstJob + io)
+        SettingsRepositoryImpl(createSettingsDataStore(path, firstScope), config, firstScope)
             .update { it.copy(classicTimeLimitSeconds = 300, haptics = false) }
         firstJob.cancelAndJoin()
 
-        val reopened = SettingsRepositoryImpl(createSettingsDataStore(path, backgroundScope), config)
+        val reopened = SettingsRepositoryImpl(createSettingsDataStore(path, backgroundScope), config, backgroundScope)
 
         assertEquals(Settings(classicTimeLimitSeconds = 300, haptics = false), reopened.settings.first())
         dir.deleteRecursively()

@@ -27,7 +27,8 @@ internal class SettingsViewModel(
     private val settings: SettingsRepository,
     private val config: GameConfig = GameConfig(),
 ) : ViewModel() {
-    private val mutableState = MutableStateFlow(SettingsUiState())
+    // Starts from the stored values when they are already loaded, so the screen composes once with the real ones.
+    private val mutableState = MutableStateFlow(settings.loaded.value?.toUiState() ?: SettingsUiState())
     val state: StateFlow<SettingsUiState> = mutableState.asStateFlow()
 
     private val effectChannel = Channel<SettingsEffect>(Channel.BUFFERED)
@@ -38,17 +39,7 @@ internal class SettingsViewModel(
             settings.settings
                 // A broken read keeps the defaults shown; the switches still try to write. TODO(M7): report it.
                 .catch { }
-                .collect {
-                    mutableState.value = SettingsUiState(
-                        soundEffects = it.soundEffects,
-                        haptics = it.haptics,
-                        speakOnCorrect = it.speakOnCorrect,
-                        classicTimeLimitSeconds = it.classicTimeLimitSeconds,
-                        dailyGoalWheels = it.dailyGoalWheels,
-                        appLanguage = it.appLanguage,
-                        accent = it.accent,
-                    )
-                }
+                .collect { mutableState.value = it.toUiState() }
         }
     }
 
@@ -127,3 +118,13 @@ internal class SettingsViewModel(
         val DAILY_GOAL_OPTIONS: List<Int> = listOf(1, 2, 3, 5)
     }
 }
+
+private fun Settings.toUiState() = SettingsUiState(
+    soundEffects = soundEffects,
+    haptics = haptics,
+    speakOnCorrect = speakOnCorrect,
+    classicTimeLimitSeconds = classicTimeLimitSeconds,
+    dailyGoalWheels = dailyGoalWheels,
+    appLanguage = appLanguage,
+    accent = accent,
+)

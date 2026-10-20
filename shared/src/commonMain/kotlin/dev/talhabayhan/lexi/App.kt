@@ -17,6 +17,7 @@ import dev.talhabayhan.lexi.navigation.LexiNavHost
 import dev.talhabayhan.lexi.perf.PerfTourConfig
 import dev.talhabayhan.lexi.splash.SplashState
 import dev.talhabayhan.lexi.startup.StartupTrace
+import dev.talhabayhan.lexi.startup.preloadAllStrings
 import kotlinx.coroutines.flow.first
 import org.koin.compose.KoinApplication
 import org.koin.compose.koinInject
@@ -27,7 +28,8 @@ import org.koin.dsl.koinConfiguration
  * inside [LexiTheme] (light only, ADR 0010) and [LexiViewport] (the Expanded tier: large viewports draw the designs
  * scaled, `screen-map.md`).
  * [perfTour] (launch flag only, `docs/PERF.md`) runs the scripted perf tour. With "Doğru cevapta telaffuz" on,
- * the speech engine and voice are warmed up right after the splash so the first correct answer is spoken at once.
+ * the speech engine and voice are warmed up right after the splash so the first correct answer is spoken at once, and
+ * every module's strings are preloaded into the resource cache on a background dispatcher.
  */
 @Composable
 fun App(onLanguageChanged: ((AppLanguage) -> Unit)? = null, perfTour: PerfTourConfig? = null) {
@@ -51,6 +53,11 @@ fun App(onLanguageChanged: ((AppLanguage) -> Unit)? = null, perfTour: PerfTourCo
             // After the splash: the engine's start-up would otherwise compete with its animation for the main thread.
             SplashState.finished.first { it }
             if (settingsRepository.settings.first().speakOnCorrect) speaker.warmUp()
+        }
+        LaunchedEffect(Unit) {
+            // Off the main thread and after the splash, so it never competes with the splash or a transition.
+            SplashState.finished.first { it }
+            preloadAllStrings()
         }
         CompositionLocalProvider(
             LocalHaptics provides koinInject(),

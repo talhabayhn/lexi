@@ -63,6 +63,9 @@ public val dataModule: Module = module {
         val io = get<CoroutineDispatcher>(IoDispatcher)
         createSettingsDataStore(get<DatabaseFiles>().settingsFilePath(), CoroutineScope(SupervisorJob() + io))
     }
-    single<SettingsRepository> { SettingsRepositoryImpl(get(), get()) }
+    single<SettingsRepository> {
+        val io = get<CoroutineDispatcher>(IoDispatcher)
+        SettingsRepositoryImpl(get(), get(), CoroutineScope(SupervisorJob() + io))
+    }
     single<OnboardingRepository> { OnboardingRepositoryImpl(get()) }
 }

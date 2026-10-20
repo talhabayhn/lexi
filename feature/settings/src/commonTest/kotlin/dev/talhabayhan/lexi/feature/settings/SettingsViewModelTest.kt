@@ -7,6 +7,7 @@ import dev.talhabayhan.lexi.core.domain.settings.Settings
 import dev.talhabayhan.lexi.core.testing.FakeSettingsRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runTest
@@ -33,6 +34,21 @@ class SettingsViewModelTest {
     }
 
     private fun viewModel() = SettingsViewModel(repository)
+
+    @Test
+    fun `the first state is the stored settings when the store is already loaded`() = runTest {
+        repository.update { it.copy(soundEffects = false, dailyGoalWheels = 5, classicTimeLimitSeconds = 240) }
+        // The collector is never started: the very first state must already hold the stored values.
+        Dispatchers.setMain(StandardTestDispatcher())
+
+        viewModel().state.test {
+            val first = awaitItem()
+            assertFalse(first.soundEffects)
+            assertEquals(5, first.dailyGoalWheels)
+            assertEquals(240, first.classicTimeLimitSeconds)
+            cancelAndIgnoreRemainingEvents()
+        }
+    }
 
     @Test
     fun `the settings show the stored values`() = runTest {

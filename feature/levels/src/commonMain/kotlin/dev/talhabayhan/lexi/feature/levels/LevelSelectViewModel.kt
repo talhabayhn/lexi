@@ -73,8 +73,8 @@ internal class LevelSelectViewModel(
      * once; null when the content cannot be read.
      */
     private suspend fun loadContent(): Pair<Map<Level, Int>, Map<CardId, Level>>? = try {
-        val totals = cards.levelTotals()
-        totals to cards.levelCards().associate { it.id to it.level }
+        val index = cards.contentIndex()
+        index.totals to index.levelOf
     } catch (e: CancellationException) {
         throw e
     } catch (@Suppress("TooGenericExceptionCaught") e: Exception) {

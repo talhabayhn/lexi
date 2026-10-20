@@ -5,6 +5,7 @@ import dev.talhabayhan.lexi.core.domain.game.GameMode
 import dev.talhabayhan.lexi.core.domain.model.Card
 import dev.talhabayhan.lexi.core.domain.model.CardId
 import dev.talhabayhan.lexi.core.domain.model.CategoryId
+import dev.talhabayhan.lexi.core.domain.model.ContentIndex
 import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.core.domain.repository.CardRepository
 import dev.talhabayhan.lexi.core.domain.session.SessionResult
@@ -185,6 +186,8 @@ class StatsViewModelTest {
             override suspend fun levelCards(): List<Card> = error("broken")
 
             override suspend fun cards(ids: Collection<CardId>): List<Card> = error("broken")
+
+            override suspend fun contentIndex(): ContentIndex = error("broken")
 
             override suspend fun levelTotals(): Map<Level, Int> = error("broken")
 

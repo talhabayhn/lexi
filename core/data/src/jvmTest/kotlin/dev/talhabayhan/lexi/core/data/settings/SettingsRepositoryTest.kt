@@ -27,7 +27,8 @@ class SettingsRepositoryTest {
 
     @Test
     fun `defaults come from the design until something is stored`() = runTest {
-        val repository = SettingsRepositoryImpl(createSettingsDataStore(path, backgroundScope), GameConfig())
+        val repository =
+            SettingsRepositoryImpl(createSettingsDataStore(path, backgroundScope), GameConfig(), backgroundScope)
 
         assertEquals(Settings(), repository.settings.first())
         assertEquals(180, Settings().classicTimeLimitSeconds)
@@ -35,8 +36,18 @@ class SettingsRepositoryTest {
     }
 
     @Test
+    fun `loaded holds the stored value once the store has delivered`() = runTest {
+        val repository =
+            SettingsRepositoryImpl(createSettingsDataStore(path, backgroundScope), GameConfig(), backgroundScope)
+        repository.update { it.copy(dailyGoalWheels = 5) }
+
+        assertEquals(Settings(dailyGoalWheels = 5), repository.loaded.first { it != null })
+    }
+
+    @Test
     fun `updates are stored and emitted`() = runTest {
-        val repository = SettingsRepositoryImpl(createSettingsDataStore(path, backgroundScope), GameConfig())
+        val repository =
+            SettingsRepositoryImpl(createSettingsDataStore(path, backgroundScope), GameConfig(), backgroundScope)
         val changed = Settings(
             soundEffects = false,
             haptics = false,
@@ -70,7 +81,7 @@ class SettingsRepositoryTest {
             it[stringPreferencesKey("accent")] = "UK"
         }
 
-        val settings = SettingsRepositoryImpl(dataStore, GameConfig()).settings.first()
+        val settings = SettingsRepositoryImpl(dataStore, GameConfig(), backgroundScope).settings.first()
 
         assertEquals(Settings(accent = Accent.UK), settings)
     }

@@ -21,9 +21,6 @@ import dev.talhabayhan.lexi.feature.notebook.di.notebookModule
 import dev.talhabayhan.lexi.feature.onboarding.di.onboardingModule
 import dev.talhabayhan.lexi.feature.settings.di.settingsModule
 import dev.talhabayhan.lexi.feature.stats.di.statsModule
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.SupervisorJob
 import org.koin.core.module.Module
 import org.koin.dsl.module
 import org.koin.dsl.onClose
@@ -43,7 +40,7 @@ internal val appCoreModule: Module = module {
     factory { GetStreakStatus(streaks = get(), clock = get()) }
     factory { GetDailyGoalProgress(sessions = get(), settings = get(), clock = get()) }
     // Haptics, SoundPlayer and Speaker are bound per platform (rememberPlatformModule) on top of this snapshot.
-    single { LiveSettings(get(), CoroutineScope(SupervisorJob() + Dispatchers.Default)) } onClose { it?.close() }
+    single { LiveSettings(get()) }
 }
 
 /**

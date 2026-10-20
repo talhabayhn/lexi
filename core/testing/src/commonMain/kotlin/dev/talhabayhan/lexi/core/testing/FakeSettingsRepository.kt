@@ -13,6 +13,8 @@ public class FakeSettingsRepository(initial: Settings = Settings()) : SettingsRe
 
     override val settings: StateFlow<Settings> = state.asStateFlow()
 
+    override val loaded: StateFlow<Settings?> = settings
+
     override suspend fun update(transform: (Settings) -> Settings) {
         state.update(transform)
     }
