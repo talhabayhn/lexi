@@ -408,4 +408,19 @@ class ResultViewModelTest {
             assertTrue(vm.state.value.isSharing)
         }
     }
+
+    @Test
+    fun `a share tapped before the card is built waits for the card instead of failing`() = runTest {
+        val vm = ResultViewModel(route(), cards, speaker, config, progress, clock, streaks, shareService)
+        vm.effects.test {
+            vm.onIntent(ResultIntent.Share)
+
+            assertTrue(vm.state.value.isSharing)
+            assertNull(vm.state.value.shareCard)
+            runCurrent()
+            assertNotNull(vm.state.value.shareCard)
+            assertTrue(vm.state.value.isSharing)
+            expectNoEvents()
+        }
+    }
 }

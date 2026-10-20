@@ -17,6 +17,7 @@ import platform.UIKit.UIApplication
 import platform.UIKit.UIImage
 import platform.UIKit.UIViewController
 import platform.UIKit.UIWindow
+import platform.UIKit.UIWindowScene
 import platform.UIKit.popoverPresentationController
 
 /** Shares the card with a `UIActivityViewController` presented from the top-most view controller of the key window. */
@@ -24,8 +25,11 @@ public class IosShareService : ShareService {
     @OptIn(ExperimentalForeignApi::class)
     override suspend fun sharePng(png: ByteArray, text: String): Boolean = withContext(Dispatchers.Main) {
         val image = UIImage(data = png.toNSData())
-        val windows = UIApplication.sharedApplication.windows.filterIsInstance<UIWindow>()
-        val window = windows.firstOrNull { it.isKeyWindow() }
+        // UIApplication.windows is deprecated since iOS 15: find the key window through the connected scenes.
+        val window = UIApplication.sharedApplication.connectedScenes
+            .filterIsInstance<UIWindowScene>()
+            .flatMap { scene -> scene.windows.filterIsInstance<UIWindow>() }
+            .firstOrNull { it.isKeyWindow() }
         var top: UIViewController? = window?.rootViewController
         while (top?.presentedViewController != null) top = top.presentedViewController
         val presenter = top ?: return@withContext false

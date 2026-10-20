@@ -65,10 +65,10 @@ data class ResultRoute(
 
     internal val categoryId: CategoryId? get() = category?.let(::CategoryId)
 
-    /** The share card's cells; letters without a matching outcome are left out. */
+    /** The share card's cells; letters without a matching or known outcome (e.g. from an older build) are left out. */
     internal val shareCells: List<ShareCell>
-        get() = wheelLetters.toList().zip(wheelOutcomes) { letter, outcome ->
-            ShareCell(letter, SlotOutcome.valueOf(outcome))
+        get() = wheelLetters.toList().zip(wheelOutcomes).mapNotNull { (letter, outcome) ->
+            SlotOutcome.entries.firstOrNull { it.name == outcome }?.let { ShareCell(letter, it) }
         }
 
     internal companion object {

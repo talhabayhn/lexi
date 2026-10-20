@@ -85,4 +85,22 @@ class ResultRouteTest {
 
         assertEquals(emptyList(), route.shareCells)
     }
+
+    @Test
+    fun `an unknown outcome is left out instead of crashing`() {
+        val route = ResultRoute(
+            level = "A1",
+            mode = "CLASSIC",
+            reason = "TIME_UP",
+            score = 0,
+            correct = 0,
+            wrong = 0,
+            passed = 0,
+            longestStreak = 0,
+            wheelLetters = "AB",
+            wheelOutcomes = listOf("SKIPPED", "CORRECT"),
+        )
+
+        assertEquals(listOf(ShareCell('B', SlotOutcome.CORRECT)), route.shareCells)
+    }
 }

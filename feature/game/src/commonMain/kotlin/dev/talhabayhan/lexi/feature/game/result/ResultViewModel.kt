@@ -38,7 +38,8 @@ import kotlinx.coroutines.launch
  * Süre bitti cards can be added manually via [ResultIntent.AddToNotebook]. Navigation intents are handled by
  * the route composable. Sharing (`12-share-card`, ADR 0020): [ResultIntent.Share] sets [ResultUiState.isSharing], the
  * screen captures [ResultUiState.shareCard] and sends [ResultIntent.SharePng], which goes to the [shareService]; a
- * failure emits [ResultEffect.ShareFailed]. Taps while a share runs are ignored.
+ * failure emits [ResultEffect.ShareFailed]. Taps while a share runs are ignored; a tap before the card is built
+ * waits for it.
  */
 internal class ResultViewModel(
     private val route: ResultRoute,
@@ -146,13 +147,9 @@ internal class ResultViewModel(
                 }
             }
 
-            ResultIntent.Share -> {
-                val current = mutableState.value
-                when {
-                    current.isSharing -> Unit
-                    current.shareCard == null -> effectChannel.trySend(ResultEffect.ShareFailed)
-                    else -> mutableState.update { it.copy(isSharing = true) }
-                }
+            // An early tap (card not built yet) waits: the screen captures once `shareCard` is set.
+            ResultIntent.Share -> if (!mutableState.value.isSharing) {
+                mutableState.update { it.copy(isSharing = true) }
             }
 
             is ResultIntent.SharePng -> if (mutableState.value.isSharing && sharing?.isActive != true) {
@@ -197,15 +194,24 @@ internal class ResultViewModel(
             log.w(e) { "streak not read for the share card" }
             emptyList()
         }
-        val card = ShareCardBuilder.build(
-            mode = route.gameMode,
-            level = route.gameLevel,
-            reason = route.gameOverReason,
-            remainingMs = route.remainingMs,
-            cells = route.shareCells,
-            epochDay = today,
-            streakDays = Stats.currentStreak(days, today),
-        )
+        val card = try {
+            ShareCardBuilder.build(
+                mode = route.gameMode,
+                level = route.gameLevel,
+                reason = route.gameOverReason,
+                remainingMs = route.remainingMs,
+                cells = route.shareCells,
+                epochDay = today,
+                streakDays = Stats.currentStreak(days, today),
+            )
+        } catch (e: CancellationException) {
+            throw e
+        } catch (e: Exception) {
+            // An early tap is waiting for the card: release it instead of leaving the share stuck.
+            log.e(e) { "share card not built" }
+            if (mutableState.value.isSharing) finishShare(shown = false)
+            return
+        }
         mutableState.update { it.copy(shareCard = card) }
     }
 
