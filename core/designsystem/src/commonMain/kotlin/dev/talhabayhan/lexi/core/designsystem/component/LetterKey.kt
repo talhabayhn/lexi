@@ -17,14 +17,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.disabled
 import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import dev.talhabayhan.lexi.core.designsystem.generated.resources.Res
+import dev.talhabayhan.lexi.core.designsystem.generated.resources.letter_key_description
+import dev.talhabayhan.lexi.core.designsystem.generated.resources.letter_key_description_used
 import dev.talhabayhan.lexi.core.designsystem.modifier.dashedBorder
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
+import org.jetbrains.compose.resources.stringResource
 
 /** State of a letter key. Pressed (yellow) is not a state: it follows the touch. */
 public enum class LetterKeyState {
@@ -61,13 +66,16 @@ public fun LetterKey(
 ) {
     val colors = LexiTheme.colors
     val border = LexiTheme.borders.regular
+    val usedDescription = stringResource(Res.string.letter_key_description_used, letter.toString())
     when (state) {
         LetterKeyState.Normal -> {
             val source = remember { MutableInteractionSource() }
             val pressed = source.isPressedOrForced()
+            val description = stringResource(Res.string.letter_key_description, letter.toString())
             PressableSurface(
                 onClick = onClick,
                 modifier = modifier
+                    .semantics { contentDescription = description }
                     .height(height)
                     .alpha(if (enabled) 1f else JokerRowDefaults.DISABLED_ALPHA),
                 enabled = enabled,
@@ -83,9 +91,10 @@ public fun LetterKey(
         LetterKeyState.Used -> Box(
             modifier = modifier
                 .height(height)
-                .semantics {
+                .semantics(mergeDescendants = true) {
                     role = Role.Button
                     disabled()
+                    contentDescription = usedDescription
                 }
                 .dashedBorder(border, colors.borderMuted),
             contentAlignment = Alignment.Center,

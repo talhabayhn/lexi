@@ -28,8 +28,10 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.semantics.ProgressBarRangeInfo
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.progressBarRangeInfo
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
@@ -144,10 +146,11 @@ private fun Modifier.leftBorder(width: Dp, color: Color): Modifier = this
 
 /**
  * Bauhaus switch, 54 × 30 with a 3dp border: on = blue track, yellow knob right; off = cream track, ink knob left.
- * Give it a label through `Modifier.semantics { contentDescription = … }`, or use the toggle [ListRow], which makes the
- * whole row the switch (pass `onCheckedChange = null` for such display-only use). Compose extends the touch bounds
- * of small pointer targets to the platform minimum (48dp ≥ `minTouchTarget`), so the 30dp-high switch is tappable
- * on a 48dp band without growing.
+ * Standalone use needs a [label] (read as the switch's name; the on/off state is announced by its switch role, or
+ * by [stateDescription] when given). The toggle [ListRow] makes the whole row the switch instead (pass
+ * `onCheckedChange = null` for such display-only use). Compose extends the touch and accessibility bounds of small
+ * pointer targets to the platform minimum (48dp ≥ `minTouchTarget`), so the 30dp-high switch is tappable and
+ * focusable on a 48dp band without growing.
  */
 @Composable
 public fun LexiSwitch(
@@ -155,6 +158,8 @@ public fun LexiSwitch(
     onCheckedChange: ((Boolean) -> Unit)?,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
+    label: String? = null,
+    stateDescription: String? = null,
 ) {
     val colors = LexiTheme.colors
     val haptics = LocalHaptics.current
@@ -170,17 +175,22 @@ public fun LexiSwitch(
             .size(ControlDefaults.SwitchWidth, ControlDefaults.SwitchHeight)
             .then(
                 if (onCheckedChange != null) {
-                    Modifier.toggleable(
-                        value = checked,
-                        enabled = enabled,
-                        role = Role.Switch,
-                        interactionSource = null,
-                        indication = null,
-                    ) {
-                        haptics.perform(HapticKind.Light)
-                        sounds.play(SoundEffect.Tap)
-                        onCheckedChange(it)
-                    }
+                    Modifier
+                        .semantics {
+                            if (label != null) contentDescription = label
+                            if (stateDescription != null) this.stateDescription = stateDescription
+                        }
+                        .toggleable(
+                            value = checked,
+                            enabled = enabled,
+                            role = Role.Switch,
+                            interactionSource = null,
+                            indication = null,
+                        ) {
+                            haptics.perform(HapticKind.Light)
+                            sounds.play(SoundEffect.Tap)
+                            onCheckedChange(it)
+                        }
                 } else {
                     Modifier
                 },
@@ -206,6 +216,8 @@ public fun LexiSwitch(
 /**
  * Progress bar with a CSS content-box: [height] is the track, the [borderWidth] frame comes on top (8 + 2 + 2 on the
  * level cards, 12 + 2 + 2 in stats). [fillEdge] adds the timer-style ink right edge to the fill (`16-components`).
+ * [contentDescription] names the bar and [stateDescription] replaces the spoken value (e.g. "48 percent, 12 of 25
+ * words"); without it the screen reader derives the percentage from the range info.
  */
 @Composable
 public fun ProgressBar(
@@ -217,12 +229,18 @@ public fun ProgressBar(
     trackColor: Color = LexiTheme.colors.white,
     fillColor: Color = LexiTheme.colors.blue,
     fillEdge: Boolean = false,
+    contentDescription: String? = null,
+    stateDescription: String? = null,
 ) {
     val fraction = progress.coerceIn(0f, 1f)
     Box(
         modifier = modifier
             .height(height + borderWidth * 2)
-            .semantics { progressBarRangeInfo = ProgressBarRangeInfo(fraction, 0f..1f) }
+            .semantics {
+                progressBarRangeInfo = ProgressBarRangeInfo(fraction, 0f..1f)
+                if (contentDescription != null) this.contentDescription = contentDescription
+                if (stateDescription != null) this.stateDescription = stateDescription
+            }
             .lexiSurface(trackColor, BorderStroke(borderWidth, borderColor)),
     ) {
         if (fraction > 0f) {

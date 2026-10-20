@@ -17,4 +17,8 @@
 
     <!-- Word row memory strength (Leitner box), e.g. "Memory strength 2 of 4" -->
     <string name="word_row_strength">Memory strength %1$d of 4</string>
+
+    <!-- Letter keys of the on-screen keyboard -->
+    <string name="letter_key_description">Letter %1$s</string>
+    <string name="letter_key_description_used">Letter %1$s, used</string>
 </resources>

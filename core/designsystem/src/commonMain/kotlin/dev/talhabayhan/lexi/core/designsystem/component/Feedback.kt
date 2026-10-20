@@ -22,12 +22,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.semantics.LiveRegionMode
 import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.ui.semantics.isTraversalGroup
 import androidx.compose.ui.semantics.liveRegion
 import androidx.compose.ui.semantics.paneTitle
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import dev.talhabayhan.lexi.core.designsystem.modifier.lexiHeading
 import dev.talhabayhan.lexi.core.designsystem.modifier.lexiSurface
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 
@@ -111,6 +113,7 @@ public fun Toast(
             PressableSurface(
                 onClick = action.onClick,
                 modifier = Modifier.height(FeedbackDefaults.ToastActionHeight),
+                onClickLabel = action.label,
                 color = Color.Transparent,
                 border = null,
                 shadow = null,
@@ -164,7 +167,10 @@ public fun DialogPanel(
     val typography = LexiTheme.typography
     Column(
         modifier = modifier
-            .semantics { paneTitle = title }
+            .semantics {
+                paneTitle = title
+                isTraversalGroup = true
+            }
             .lexiSurface(colors.white, BorderStroke(LexiTheme.borders.regular, colors.ink), LexiTheme.shadows.s8)
             .padding(FeedbackDefaults.DialogPadding)
             .verticalScroll(rememberScrollState()),
@@ -176,7 +182,7 @@ public fun DialogPanel(
                 .clearAndSetSemantics {}
                 .lexiSurface(colors.red, BorderStroke(LexiTheme.borders.regular, colors.ink)),
         )
-        Text(title, style = typography.heading22)
+        Text(title, style = typography.heading22, modifier = Modifier.lexiHeading())
         Text(message, style = typography.body14)
         actions()
     }

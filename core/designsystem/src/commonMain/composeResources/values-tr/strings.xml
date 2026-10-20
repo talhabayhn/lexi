@@ -17,4 +17,8 @@
 
     <!-- Kelime satırı hafıza gücü (Leitner kutusu) -->
     <string name="word_row_strength">Hafıza gücü 4 üzerinden %1$d</string>
+
+    <!-- Ekran klavyesindeki harf tuşları -->
+    <string name="letter_key_description">Harf %1$s</string>
+    <string name="letter_key_description_used">Harf %1$s, kullanıldı</string>
 </resources>

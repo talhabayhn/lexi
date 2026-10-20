@@ -11,6 +11,7 @@ import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -35,7 +36,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.ui.semantics.isTraversalGroup
 import androidx.compose.ui.semantics.paneTitle
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
@@ -43,6 +46,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import dev.talhabayhan.lexi.core.designsystem.icon.LexiIcons
 import dev.talhabayhan.lexi.core.designsystem.modifier.dashedBorder
+import dev.talhabayhan.lexi.core.designsystem.modifier.lexiHeading
 import dev.talhabayhan.lexi.core.designsystem.modifier.lexiSurface
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.core.designsystem.theme.lexiContentWidth
@@ -166,8 +170,12 @@ public fun BottomSheetPanel(
     Column(
         modifier = modifier
             .fillMaxWidth()
-            .semantics { paneTitle = title }
-            .clickable(interactionSource = null, indication = null) {}
+            .semantics {
+                paneTitle = title
+                isTraversalGroup = true
+            }
+            // Swallows taps so they do not reach the scrim; pointer input only, so the panel is no accessibility target.
+            .pointerInput(Unit) { detectTapGestures { } }
             .background(colors.cream)
             .drawBehind { drawRect(colors.ink, size = Size(size.width, topBorder.toPx())) }
             .padding(top = topBorder)
@@ -181,7 +189,7 @@ public fun BottomSheetPanel(
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            Text(title, style = LexiTheme.typography.heading24)
+            Text(title, style = LexiTheme.typography.heading24, modifier = Modifier.lexiHeading())
             trailing()
         }
         content()
