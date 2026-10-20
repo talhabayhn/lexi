@@ -209,6 +209,14 @@ class SrsTest {
     }
 
     @Test
+    fun `level test answers do not change the notebook`() {
+        val game = play("APPLE", "BREAD", mode = GameMode.LEVEL_TEST).answerWrongAndWait().answer()
+
+        assertEquals(setOf(GameMode.DUEL, GameMode.LEVEL_TEST), GameConfig().srsExcludedModes)
+        assertEquals(emptyMap(), Srs.update(emptyMap(), game.state, today, now, GameConfig()))
+    }
+
+    @Test
     fun `practice still feeds the notebook`() {
         val game = play("APPLE", "BREAD", mode = GameMode.PRACTICE).answerWrongAndWait().answer()
 

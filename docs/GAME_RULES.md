@@ -176,24 +176,46 @@ the app goes to background.
   Level handicap (optional room setting): each player plays own level; score = normalized points.
 
 ## 9. Level test (onboarding)
-- 10–14 slots (owner decision: at most 14 questions, with early stop), adaptive staircase: start at A2; 2 correct
-  in a row at a level → go up; 1 wrong/pass → go down.
-- Result = highest level with ≥ 60% correct among its asked cards (min 3 asked), else the level below. Shown on
-  a result card ("Seviyen: B1") with the option to change.
-- Engine (`LevelTest`): the test ends after 10 answers once the current level has ≥ 3 asked cards (so it can be
-  judged), and always after 14. The early-stop threshold moved from 12 to 10 with the cap: it keeps the old
-  4-answer window between early stop and cap, so a test that has just changed level still has room to ask the 3
-  cards needed to judge the new level; with 12 the window would be 2 answers and most tests would just hit the cap.
-  An all-correct run ends after 11 answers at NAT. "Else the level below" = the level below the start level (A1); owner decision:
-  a test that starts at A2 with too few correct answers places the player at A1. Level stays within
-  A1…NAT. Each card is a seeded pick (sub-seed `level-test:<index>`) of an unasked card of the current level,
-  preferring unused letters. If the pool has no unasked card of the current level, the test ends early and the
-  result judges what was answered (`LevelTest.isFinished(state, pool)`).
-- Integration (M6): the level test can't use a pre-built wheel, because each card depends on the previous answer.
-  The onboarding ViewModel owns `LevelTestState` and runs one `GameEngine` game per card (mode `LEVEL_TEST`, a
-  one-slot `Wheel` with the card from `nextCard`, seed = the test seed), feeds its CORRECT/WRONG/PASSED result to
-  `LevelTest.record`, and carries the remaining time of the ⚙ 120 s clock into the next one-slot game (time up
-  ⇒ `LevelTest.result` on the answers so far). The wheel UI shows the asked letters as they come.
+- **Staircase.** 10–14 questions (owner decision: at most 14, with early stop): start at A2; 2 correct in a row at
+  a level → one level up; 1 wrong or pass → one level down; the level stays within A1…NAT. Each card is a seeded
+  pick (sub-seed `level-test:<index>`) of an unasked card of the current level, preferring unused letters
+  (`LevelTest.nextCard`).
+- **End.** After 10 answers once the current level has ≥ 3 asked cards (so it can be judged), always after 14
+  (`LevelTest.isFinished`). The early-stop threshold moved from 12 to 10 with the cap: it keeps the old 4-answer
+  window between early stop and cap, so a test that has just changed level still has room to ask the 3 cards needed
+  to judge the new level; with 12 the window would be 2 answers and most tests would just hit the cap. An
+  all-correct run ends after 11 answers at NAT. If the pool has no unasked card of the current level, the test ends
+  early and the result judges what was answered. The test also ends when the shared clock runs out (below).
+- **Result** (`LevelTest.result`) = the highest level with ≥ 60 % correct among ≥ 3 asked cards; if none qualifies,
+  the level below the start level (owner decision: A1). Answers so far count on time up; a card cut short by time
+  up counts as not asked.
+- **Question flow** (`LevelTestRunner`, state `LevelTestRun`). The test can't use a pre-built wheel, because each
+  card depends on the previous answer: every card is one `GameEngine` game of mode `LEVEL_TEST` on a one-slot
+  `Wheel` (seed = the test seed, so its keys come from `keys:<letter>` of that seed; no jokers). A correct answer
+  goes straight to the next card; a wrong one waits for its answer reveal (⚙ `revealMs`, the clock stands still),
+  then continues; a pass ends the card at once (no second lap, unlike a regular wheel). Each answer goes to
+  `LevelTest.record` and its slot (CORRECT/WRONG/PASSED) to `LevelTestRun.asked`, which the runner keeps because
+  `LevelTestAnswer` only stores `correct`. Jokers are refused (⚙ `jokerFreeModes`); `Start`, `Forfeit` and
+  `UseJoker` events are ignored by the runner. Per-card `GameOver` effects are not passed on; the run is over when
+  `LevelTestRun.result` is set (then `game` is null). Same seed + same pool + same events ⇒ same run.
+- **Shared clock.** One ⚙ 120 s clock (`levelTestTimeLimitSeconds`) for the whole test: each card's game starts
+  with the remaining time through `Start(timestampMs, remainingMs)` (§12); tick time left over after a reveal that
+  ended a card is charged to the next card, so ticks stay additive. Time up mid-card ⇒ `LevelTest.result` on the
+  answers so far.
+- **No cards.** If the pool has no card of the start level, `LevelTestRunner.start` asks nothing:
+  `LevelTestRun.isUnavailable` (no game, no result); the UI shows `leveltest_error` and falls back to the manual
+  level pick.
+- **Integration.** The level-test ViewModel (feature:game) owns the run: it feeds ticks and input to
+  `LevelTestRunner.reduce` and renders the current card's `GameState`. Owner decisions:
+  1. The test records nothing: no notebook/SRS (⚙ `srsExcludedModes` contains `LEVEL_TEST`, §10), no stats, streak,
+     recently-seen history or `SessionRecord`.
+  2. "Pes et" returns to LevelChoice; nothing is saved.
+  3. The result card ("Seviyen: B1", COPY.md §4) shows a flavour line only for A1 (`leveltest_result_a1`) and for
+     C1/NAT (`leveltest_result_high`).
+  4. "{level} ile başla" saves the level and goes Home; it starts no game. "Seviyeyi değiştir" opens the picker.
+  5. LevelChoice uses the design's button and label, with the COPY.md title and body (`leveltest_choice_*`).
+  6. The wheel grows with each asked letter (from `asked` plus the current card); the HUD badge shows "TEST"
+     instead of the card's level (DESIGN-DEBT).
 
 ## 10. SRS — Kelime Defterim (Leitner)
 - Boxes 0–4 (the 4 bars in the notebook UI = box 1–4; box 0 = red/new). Intervals: box0 = today, 1 = 1 d,
@@ -212,9 +234,9 @@ the app goes to background.
   (box ≠ null). A first-time correct card stays outside the notebook. PASSED counts as missed but not as wrong.
   Wrong/passed mastered cards return to box 0. Correct for a notebook card moves it up even if it wasn't due yet.
   Results come from the final slot states (`Srs.results`); unanswered cards are left out. Owner decision: hot-seat
-  duel answers don't change the notebook (⚙ `srsExcludedModes = {DUEL}`): `Srs.update` returns no changes, so `seen`,
-  `correct`, `wrong` and `lastSeenMs` stay untouched and duel answers count neither in Stats (§11) nor in the
-  recently-seen window (§1). Days are epoch days in the player's time zone.
+  duel answers don't change the notebook (⚙ `srsExcludedModes = {DUEL, LEVEL_TEST}`; level test: owner decision,
+  §9): `Srs.update` returns no changes, so `seen`, `correct`, `wrong` and `lastSeenMs` stay untouched and those
+  answers count neither in Stats (§11) nor in the recently-seen window (§1). Days are epoch days in the player's time zone.
 
 ## 11. Statistics
 Learned words (= cards ever answered correctly), accuracy (correct / answered), longest streak (days with ≥1
@@ -222,14 +244,14 @@ completed wheel), completed wheels, words per day (last 7 days), per-level progr
 letters (lowest accuracy, min 5 attempts).
 Engine (`Stats`): "words per day" = correct answers per day (all sessions); percentages are rounded half up;
 hardest letters are sorted by exact accuracy, ties by letter; per-level progress needs the card totals per level.
-Card-based stats read `CardProgress`, which duel answers don't touch (⚙ `srsExcludedModes`); the data layer
+Card-based stats read `CardProgress`, which duel and level-test answers don't touch (⚙ `srsExcludedModes`); the data layer
 records no `SessionRecord` for those modes either, so streaks and words per day exclude them too.
 Current streak (`Stats.currentStreak`, home and the joker streak bonus §7) = the run of consecutive streak days
 ending today, or yesterday while today's wheel isn't done yet.
 
 ## 12. Engine events & effects (contract)
 ```
-Events:  Start(timestampMs) | KeyTapped(keyIndex) | Backspace | Pass | UseJoker(type) |
+Events:  Start(timestampMs, remainingMs?) | KeyTapped(keyIndex) | Backspace | Pass | UseJoker(type) |
          Tick(elapsedMs) | Pause | Resume | Forfeit
 Effects: LetterPlaced(cellIndex, letter) | Correct(letter, card, points) | Wrong(letter, card) | Passed(letter) |
          Advanced(toLetter, lap) | ComboReached(streak) | TimeWarning(secondsLeft ≤ 10, lowest per step) |
@@ -244,6 +266,9 @@ Duel:    BeginTurn(timestampMs) | Play(gameEvent)   (events of the active player
   most one per transition (a big tick or a time joker that skips seconds emits only the lowest one); none at 0.
 - `LetterPlaced`: cells are answer letters only (spaces are not cells). `Advanced.lap` starts at 1.
 - `Start.timestampMs` is only recorded (`startedAtMs`); it never influences rules.
+- `Start.remainingMs` (optional; omitted from JSON when null, so older event logs and goldens are unchanged): null =
+  the mode's full limit; a value is clamped to `0..limit` and replaces it; 0 ends the game at Start with `TIME_UP`.
+  Untimed modes ignore it. Used by the level test to carry its shared clock from card to card (§9).
 
 Every rule above must have a unit test named after the rule, e.g. `pass_endsTurn_inDuel()`.
 

@@ -82,14 +82,21 @@ public class GameEngine(public val config: GameConfig = GameConfig()) {
 
         // region turn flow (§3)
 
+        /** [GameEvent.Start.remainingMs] (clamped to the limit) replaces the full clock of a timed mode; 0 = time up. */
         private fun GameState.start(event: GameEvent.Start): GameState {
+            val limit = config.timeLimitMs(mode)
+            val remaining = limit?.let { event.remainingMs?.coerceIn(0L, it) ?: it }
             val started = copy(
                 status = GameStatus.PLAYING,
                 startedAtMs = event.timestampMs,
-                remainingMs = config.timeLimitMs(mode),
+                remainingMs = remaining,
             )
             val first = wheel.slots.indexOfFirst { it.state.isOpen }
-            return if (first < 0) started.finish(GameOverReason.EMPTY_WHEEL) else started.makeCurrent(first, lap = 1)
+            return when {
+                remaining == 0L -> started.finish(GameOverReason.TIME_UP)
+                first < 0 -> started.finish(GameOverReason.EMPTY_WHEEL)
+                else -> started.makeCurrent(first, lap = 1)
+            }
         }
 
         private fun GameState.makeCurrent(index: Int, lap: Int): GameState {

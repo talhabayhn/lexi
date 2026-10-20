@@ -9,10 +9,15 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 public sealed interface GameEvent {
-    /** Starts the game; [timestampMs] is only recorded (wall clock for the session record). */
+    /**
+     * Starts the game; [timestampMs] is only recorded (wall clock for the session record). [remainingMs] sets the
+     * clock of a timed mode (clamped to `0..GameConfig.timeLimitMs(mode)`; 0 ends the game at once with TIME_UP);
+     * null = the mode's full limit. The level test uses it to carry its shared clock from card to card
+     * (`GAME_RULES.md` §9). Untimed modes ignore it. Omitted from JSON when null, so older event logs are unchanged.
+     */
     @Serializable
     @SerialName("start")
-    public data class Start(val timestampMs: Long) : GameEvent
+    public data class Start(val timestampMs: Long, val remainingMs: Long? = null) : GameEvent
 
     /** Index into the current slot's keys. */
     @Serializable

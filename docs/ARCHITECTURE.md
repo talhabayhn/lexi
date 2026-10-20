@@ -26,10 +26,10 @@ lexi/
 │   ├── platform/                implementations: TTS, haptics, sound player, ads, purchases, analytics, share
 │   └── testing/                 fakes, test rules, fixtures (test-only dependency)
 ├── feature/
-│   ├── onboarding/              onboarding + level test
+│   ├── onboarding/              onboarding + level choice
 │   ├── home/                    main menu, daily wheel card, streak
 │   ├── levels/                  level & mode select, categories
-│   ├── game/                    game screen, joker sheet, pause, result, duel (hot-seat)
+│   ├── game/                    game screen, joker sheet, pause, result, duel (hot-seat), level test
 │   ├── notebook/                Kelime Defterim, review wheel entry, word detail
 │   ├── stats/
 │   ├── exams/                   exam packs
@@ -115,7 +115,7 @@ MatchEvent stream ─▶ MatchEngine(config).reduce(match, event) ─▶ Transit
 - `EngineEffect` (LetterPlaced, Correct, Wrong, Passed, Advanced, ComboReached, TimeWarning, JokerApplied,
   TurnChanged, GameOver, MatchOver) are mapped by the ViewModel to sound/haptic/animation effects. The engine never
   plays sounds.
-- Learning on top of the engine, also pure: `Srs` (Leitner notebook), `LevelTest` (onboarding staircase), `Stats`.
+- Learning on top of the engine, also pure: `Srs` (Leitner notebook), `LevelTest` (onboarding staircase) + `LevelTestRunner` (one one-slot game per card, shared clock), `Stats`.
   Days come in as epoch days in the player's time zone.
 - `GameConfig` holds every ⚙ number; events, effects and states are `@Serializable` (golden tests:
   `GoldenTest` + `GoldenSnapshots.kt`, seed + event log ⇒ exact JSON).

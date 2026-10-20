@@ -75,8 +75,11 @@ public data class GameConfig(
     val jokerGifts: JokerGiftConfig = JokerGiftConfig(),
     val rewardedAdJokerReward: Int = 1,
     val proDailyJokerRefill: Int = 3,
-    /** §10: modes whose answers don't change the notebook (hot-seat duel: the second player isn't the owner). */
-    val srsExcludedModes: Set<GameMode> = setOf(GameMode.DUEL),
+    /**
+     * §10: modes whose answers don't change the notebook and record no session (hot-seat duel: the second player
+     * isn't the owner; level test: owner decision, the test records nothing, §9).
+     */
+    val srsExcludedModes: Set<GameMode> = setOf(GameMode.DUEL, GameMode.LEVEL_TEST),
     /** §1: cards last seen within this window are avoided by solo wheels (7 days: owner decision). */
     val recentlySeenWindowDays: Int = 7,
 ) {
