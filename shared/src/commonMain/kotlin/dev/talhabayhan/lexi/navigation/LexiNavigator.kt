@@ -1,0 +1,112 @@
+package dev.talhabayhan.lexi.navigation
+
+import androidx.lifecycle.Lifecycle
+import androidx.navigation.NavDestination.Companion.hasRoute
+import androidx.navigation.NavHostController
+import dev.talhabayhan.lexi.core.domain.game.GameMode
+import dev.talhabayhan.lexi.core.domain.model.CategoryId
+import dev.talhabayhan.lexi.core.domain.model.Level
+import dev.talhabayhan.lexi.feature.game.GameRoute
+import dev.talhabayhan.lexi.feature.game.result.ResultRoute
+import dev.talhabayhan.lexi.feature.home.ExamPacksRoute
+import dev.talhabayhan.lexi.feature.home.HomeRoute
+import dev.talhabayhan.lexi.feature.levels.CategoriesRoute
+import dev.talhabayhan.lexi.feature.levels.LevelSelectRoute
+import dev.talhabayhan.lexi.feature.notebook.NotebookRoute
+import dev.talhabayhan.lexi.feature.onboarding.OnboardingRoute
+import dev.talhabayhan.lexi.feature.settings.SettingsRoute
+import dev.talhabayhan.lexi.feature.settings.about.AboutRoute
+import dev.talhabayhan.lexi.feature.stats.StatsRoute
+import dev.talhabayhan.lexi.splash.SplashRoute
+import kotlin.reflect.KClass
+
+/**
+ * Every navigation action of the app, shared by the screens (via [LexiNavHost]) and the perf tour, so both run the
+ * same code. The `open…`/`back`/`start…` actions are dropped unless the current destination is RESUMED, so one tap
+ * gives one navigation (entries never stack, the graph never empties); they return whether they navigated.
+ */
+internal class LexiNavigator(private val navController: NavHostController) {
+    /** True while the current destination is [route] and fully shown (RESUMED). */
+    fun isResumedOn(route: KClass<*>): Boolean {
+        val entry = navController.currentBackStackEntry ?: return false
+        return entry.lifecycle.currentState == Lifecycle.State.RESUMED && entry.destination.hasRoute(route)
+    }
+
+    // Not RESUMED-guarded: fires once from the splash's LaunchedEffect, possibly while the app is in the background
+    // (first-run DB copy); a dropped call would leave the app stuck on the splash.
+    fun finishSplash(completed: Boolean) {
+        val destination = if (completed) HomeRoute else OnboardingRoute
+        navController.navigate(destination) {
+            launchSingleTop = true
+            popUpTo(SplashRoute) { inclusive = true }
+        }
+    }
+
+    fun finishOnboarding() {
+        navController.navigate(HomeRoute) {
+            launchSingleTop = true
+            popUpTo(OnboardingRoute) { inclusive = true }
+        }
+    }
+
+    fun openLevelSelect(mode: GameMode? = null): Boolean = ifResumed {
+        navigate(if (mode == null) LevelSelectRoute() else LevelSelectRoute(mode)) { launchSingleTop = true }
+    }
+
+    fun openCategories(level: Level, mode: GameMode): Boolean = ifResumed {
+        navigate(CategoriesRoute(level, mode)) { launchSingleTop = true }
+    }
+
+    fun startGame(level: Level, mode: GameMode, category: CategoryId? = null): Boolean = ifResumed {
+        navigate(GameRoute(level, mode, category)) { launchSingleTop = true }
+    }
+
+    fun startDaily(): Boolean = ifResumed { navigate(GameRoute.daily()) { launchSingleTop = true } }
+
+    fun startReview(): Boolean = ifResumed { navigate(GameRoute.review()) { launchSingleTop = true } }
+
+    /** TEKRAR OYNA: the next game replaces everything above Home. */
+    fun playAgain(game: GameRoute): Boolean = ifResumed {
+        navigate(game) {
+            launchSingleTop = true
+            popUpTo(HomeRoute) { inclusive = false }
+        }
+    }
+
+    fun openNotebook(): Boolean = ifResumed { navigate(NotebookRoute) { launchSingleTop = true } }
+
+    fun openStats(): Boolean = ifResumed { navigate(StatsRoute) { launchSingleTop = true } }
+
+    /** Also the pause dialog's "Ayarlar": the game stays on the back stack, paused. */
+    fun openSettings(): Boolean = ifResumed { navigate(SettingsRoute) { launchSingleTop = true } }
+
+    fun openAbout(): Boolean = ifResumed { navigate(AboutRoute) { launchSingleTop = true } }
+
+    fun openExamPacks(): Boolean = ifResumed { navigate(ExamPacksRoute) { launchSingleTop = true } }
+
+    fun back(): Boolean = ifResumed { popBackStack() }
+
+    /** Ana menüye dön. */
+    fun home(): Boolean = ifResumed { backToHome() }
+
+    // Not RESUMED-guarded: fired once from the game's effects (while STARTED) after the game is recorded.
+    fun finishGame(result: ResultRoute) {
+        navController.navigate(result) {
+            launchSingleTop = true
+            popUpTo(HomeRoute) { inclusive = false }
+        }
+    }
+
+    /** A restored game that can no longer be played (never recorded); not guarded, see [finishGame]. */
+    fun abandonGame() = navController.backToHome()
+
+    private inline fun ifResumed(action: NavHostController.() -> Unit): Boolean {
+        if (navController.currentBackStackEntry?.lifecycle?.currentState != Lifecycle.State.RESUMED) return false
+        navController.action()
+        return true
+    }
+
+    private fun NavHostController.backToHome() {
+        popBackStack(HomeRoute, inclusive = false)
+    }
+}

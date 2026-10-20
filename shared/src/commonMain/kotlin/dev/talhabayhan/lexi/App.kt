@@ -14,6 +14,7 @@ import dev.talhabayhan.lexi.core.domain.settings.AppLanguage
 import dev.talhabayhan.lexi.di.appModules
 import dev.talhabayhan.lexi.di.rememberPlatformModule
 import dev.talhabayhan.lexi.navigation.LexiNavHost
+import dev.talhabayhan.lexi.perf.PerfTourConfig
 import dev.talhabayhan.lexi.splash.SplashState
 import dev.talhabayhan.lexi.startup.StartupTrace
 import kotlinx.coroutines.flow.first
@@ -24,11 +25,12 @@ import org.koin.dsl.koinConfiguration
 /**
  * Root composable for Android (`MainActivity`) and iOS (`MainViewController`): starts Koin and hosts the nav graph
  * inside [LexiTheme] (light only, ADR 0010) and [LexiViewport] (the Expanded tier: large viewports draw the designs
- * scaled, `screen-map.md`). With "Doğru cevapta telaffuz" on, the speech engine and voice are warmed up right after the
- * splash so the first correct answer is spoken at once.
+ * scaled, `screen-map.md`).
+ * [perfTour] (launch flag only, `docs/PERF.md`) runs the scripted perf tour. With "Doğru cevapta telaffuz" on,
+ * the speech engine and voice are warmed up right after the splash so the first correct answer is spoken at once.
  */
 @Composable
-fun App(onLanguageChanged: ((AppLanguage) -> Unit)? = null) {
+fun App(onLanguageChanged: ((AppLanguage) -> Unit)? = null, perfTour: PerfTourConfig? = null) {
     StartupTrace.mark("app composition")
     LaunchedEffect(Unit) {
         withFrameNanos { }
@@ -56,7 +58,7 @@ fun App(onLanguageChanged: ((AppLanguage) -> Unit)? = null) {
         ) {
             LexiTheme {
                 LexiViewport {
-                    LexiNavHost()
+                    LexiNavHost(perfTour = perfTour)
                 }
             }
         }

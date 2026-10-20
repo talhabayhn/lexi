@@ -10,36 +10,25 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.IntOffset
-import androidx.lifecycle.Lifecycle
-import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiMotion
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.core.domain.game.GameMode
-import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.core.domain.platform.UrlOpener
-import dev.talhabayhan.lexi.feature.game.GameRoute
 import dev.talhabayhan.lexi.feature.game.gameScreen
 import dev.talhabayhan.lexi.feature.game.result.resultScreen
-import dev.talhabayhan.lexi.feature.home.ExamPacksRoute
-import dev.talhabayhan.lexi.feature.home.HomeRoute
 import dev.talhabayhan.lexi.feature.home.examPacksScreen
 import dev.talhabayhan.lexi.feature.home.homeScreen
-import dev.talhabayhan.lexi.feature.levels.CategoriesRoute
-import dev.talhabayhan.lexi.feature.levels.LevelSelectRoute
 import dev.talhabayhan.lexi.feature.levels.categoriesScreen
 import dev.talhabayhan.lexi.feature.levels.levelSelectScreen
-import dev.talhabayhan.lexi.feature.notebook.NotebookRoute
 import dev.talhabayhan.lexi.feature.notebook.notebookScreen
-import dev.talhabayhan.lexi.feature.onboarding.OnboardingRoute
 import dev.talhabayhan.lexi.feature.onboarding.onboardingScreen
-import dev.talhabayhan.lexi.feature.settings.SettingsRoute
-import dev.talhabayhan.lexi.feature.settings.about.AboutRoute
 import dev.talhabayhan.lexi.feature.settings.about.aboutScreen
 import dev.talhabayhan.lexi.feature.settings.settingsScreen
-import dev.talhabayhan.lexi.feature.stats.StatsRoute
 import dev.talhabayhan.lexi.feature.stats.statsScreen
+import dev.talhabayhan.lexi.perf.PerfTour
+import dev.talhabayhan.lexi.perf.PerfTourConfig
 import dev.talhabayhan.lexi.splash.SplashRoute
 import dev.talhabayhan.lexi.splash.splashScreen
 import org.koin.compose.koinInject
@@ -54,8 +43,9 @@ import org.koin.compose.koinInject
  * 24dp the other way, 220 ms, no fade; back plays it in reverse. Reduced motion: screens switch in place.
  */
 @Composable
-fun LexiNavHost(modifier: Modifier = Modifier) {
+fun LexiNavHost(modifier: Modifier = Modifier, perfTour: PerfTourConfig? = null) {
     val navController = rememberNavController()
+    val navigator = remember(navController) { LexiNavigator(navController) }
     val motion = LexiTheme.motion
     val density = LocalDensity.current
     val distancePx = with(density) { motion.screenTransitionSlideDistance.roundToPx() }
@@ -70,97 +60,53 @@ fun LexiNavHost(modifier: Modifier = Modifier) {
         popEnterTransition = { transitions.enter(forward = false) },
         popExitTransition = { transitions.exit(forward = false) },
     ) {
-        splashScreen(
-            // Not RESUMED-guarded: this fires once from the splash's LaunchedEffect, possibly while the app is in the
-            // background (first-run DB copy); a dropped call would leave the app stuck on the splash.
-            onFinished = { completed ->
-                val destination = if (completed) HomeRoute else OnboardingRoute
-                navController.navigate(destination) {
-                    launchSingleTop = true
-                    popUpTo(SplashRoute) { inclusive = true }
-                }
-            },
-        )
-        onboardingScreen(
-            onFinish = {
-                navController.navigate(HomeRoute) {
-                    launchSingleTop = true
-                    popUpTo(OnboardingRoute) { inclusive = true }
-                }
-            },
-        )
+        splashScreen(onFinished = navigator::finishSplash)
+        onboardingScreen(onFinish = navigator::finishOnboarding)
         homeScreen(
-            onPlay = { navController.ifResumed { navigate(LevelSelectRoute()) { launchSingleTop = true } } },
-            onOpenDaily = {
-                navController.ifResumed {
-                    navigate(GameRoute.daily()) { launchSingleTop = true }
-                }
-            },
-            onOpenNotebook = { navController.ifResumed { navigate(NotebookRoute) { launchSingleTop = true } } },
-            onOpenStats = { navController.ifResumed { navigate(StatsRoute) { launchSingleTop = true } } },
-            onOpenSettings = { navController.ifResumed { navigate(SettingsRoute) { launchSingleTop = true } } },
-            onOpenPractice = {
-                navController.ifResumed { navigate(LevelSelectRoute(GameMode.PRACTICE)) { launchSingleTop = true } }
-            },
-            onOpenExamPacks = { navController.ifResumed { navigate(ExamPacksRoute) { launchSingleTop = true } } },
+            onPlay = { navigator.openLevelSelect() },
+            onOpenDaily = { navigator.startDaily() },
+            onOpenNotebook = { navigator.openNotebook() },
+            onOpenStats = { navigator.openStats() },
+            onOpenSettings = { navigator.openSettings() },
+            onOpenPractice = { navigator.openLevelSelect(GameMode.PRACTICE) },
+            onOpenExamPacks = { navigator.openExamPacks() },
         )
-        examPacksScreen(onBack = { navController.ifResumed { popBackStack() } })
+        examPacksScreen(onBack = { navigator.back() })
         settingsScreen(
-            onBack = { navController.ifResumed { popBackStack() } },
-            onOpenAbout = { navController.ifResumed { navigate(AboutRoute) { launchSingleTop = true } } },
+            onBack = { navigator.back() },
+            onOpenAbout = { navigator.openAbout() },
             onOpenUrl = { url -> urlOpener.openUrl(url) },
         )
         aboutScreen(
-            onBack = { navController.ifResumed { popBackStack() } },
+            onBack = { navigator.back() },
             onOpenUrl = { url -> urlOpener.openUrl(url) },
         )
-        statsScreen(onBack = { navController.ifResumed { popBackStack() } })
+        statsScreen(onBack = { navigator.back() })
         notebookScreen(
-            onBack = { navController.ifResumed { popBackStack() } },
-            onStartReview = {
-                navController.ifResumed { navigate(GameRoute.review()) { launchSingleTop = true } }
-            },
+            onBack = { navigator.back() },
+            onStartReview = { navigator.startReview() },
         )
         levelSelectScreen(
-            onBack = { navController.ifResumed { popBackStack() } },
-            onStart = { level, mode ->
-                navController.ifResumed { navigate(GameRoute(level, mode)) { launchSingleTop = true } }
-            },
-            onOpenCategories = { level, mode ->
-                navController.ifResumed { navigate(CategoriesRoute(level, mode)) { launchSingleTop = true } }
-            },
+            onBack = { navigator.back() },
+            onStart = { level, mode -> navigator.startGame(level, mode) },
+            onOpenCategories = { level, mode -> navigator.openCategories(level, mode) },
         )
         categoriesScreen(
-            onBack = { navController.ifResumed { popBackStack() } },
-            onStart = { level, mode, category ->
-                navController.ifResumed { navigate(GameRoute(level, mode, category)) { launchSingleTop = true } }
-            },
+            onBack = { navigator.back() },
+            onStart = { level, mode, category -> navigator.startGame(level, mode, category) },
         )
         gameScreen(
-            // Not RESUMED-guarded: fired once from the game's effects (while STARTED) after the game is recorded.
-            onFinished = { result ->
-                navController.navigate(result) {
-                    launchSingleTop = true
-                    popUpTo(HomeRoute) { inclusive = false }
-                }
-            },
-            onAbandoned = { navController.backToHome() },
-            onBack = { navController.ifResumed { popBackStack() } },
-            // The game stays on the back stack, paused; Settings' back returns to the pause dialog.
-            onOpenSettings = { navController.ifResumed { navigate(SettingsRoute) { launchSingleTop = true } } },
+            onFinished = navigator::finishGame,
+            onAbandoned = navigator::abandonGame,
+            onBack = { navigator.back() },
+            onOpenSettings = { navigator.openSettings() },
         )
         resultScreen(
-            onPlayAgain = { game ->
-                navController.ifResumed {
-                    navigate(game) {
-                        launchSingleTop = true
-                        popUpTo(HomeRoute) { inclusive = false }
-                    }
-                }
-            },
-            onHome = { navController.ifResumed { backToHome() } },
+            onPlayAgain = { game -> navigator.playAgain(game) },
+            onHome = { navigator.home() },
         )
     }
+    if (perfTour != null) PerfTour(navigator = navigator, config = perfTour)
 }
 
 /** #12: forward = the new screen comes from the right (end) and the old one leaves to the left; back mirrors it. */
@@ -178,16 +124,4 @@ private class ScreenTransitions(private val motion: LexiMotion, private val dist
     } else {
         slideOutHorizontally(spec) { if (forward) -distancePx else distancePx }
     }
-}
-
-/**
- * Runs [action] only while the current destination is fully shown (RESUMED). A second tap on OYNA, BAŞLA or Back
- * during the transition finds the entry no longer resumed and is dropped, so entries never stack or the graph empty.
- */
-private inline fun NavHostController.ifResumed(action: NavHostController.() -> Unit) {
-    if (currentBackStackEntry?.lifecycle?.currentState == Lifecycle.State.RESUMED) action()
-}
-
-private fun NavHostController.backToHome() {
-    popBackStack(HomeRoute, inclusive = false)
 }

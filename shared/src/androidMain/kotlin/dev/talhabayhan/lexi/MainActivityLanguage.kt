@@ -6,6 +6,7 @@ import android.os.Process
 import android.os.SystemClock
 import androidx.compose.runtime.Composable
 import dev.talhabayhan.lexi.core.platform.language.AndroidPlatformLanguage
+import dev.talhabayhan.lexi.perf.PerfTourConfig
 import dev.talhabayhan.lexi.startup.StartupTrace
 
 /**
@@ -21,9 +22,14 @@ public object MainActivityLanguage {
     }
 
     @Composable
-    public fun LexiApp(activity: Activity) {
+    public fun LexiApp(
+        activity: Activity,
+        perfTour: Boolean = false,
+        perfTourLoops: Int = PerfTourConfig.DEFAULT_LOOPS,
+    ) {
         val currentLanguage = AndroidPlatformLanguage.getStoredLanguage(activity)
         App(
+            perfTour = if (perfTour) PerfTourConfig(perfTourLoops) else null,
             onLanguageChanged = { newLanguage ->
                 if (newLanguage != currentLanguage) {
                     AndroidPlatformLanguage.setStoredLanguage(activity, newLanguage)

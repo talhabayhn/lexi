@@ -20,11 +20,23 @@ class MainActivity : ComponentActivity() {
         )
         super.onCreate(savedInstanceState)
 
+        // Perf tour (docs/PERF.md): `adb shell am start ... --ez lexi.perfTour true [--ei lexi.perfTourLoops N]`.
+        val perfTour = savedInstanceState == null && intent.getBooleanExtra(EXTRA_PERF_TOUR, false)
+        val perfTourLoops = intent.getIntExtra(EXTRA_PERF_TOUR_LOOPS, DEFAULT_PERF_TOUR_LOOPS)
+
         setContent {
-            MainActivityLanguage.LexiApp(this)
+            MainActivityLanguage.LexiApp(
+                activity = this,
+                perfTour = perfTour,
+                perfTourLoops = perfTourLoops,
+            )
         }
     }
 }
+
+private const val EXTRA_PERF_TOUR = "lexi.perfTour"
+private const val EXTRA_PERF_TOUR_LOOPS = "lexi.perfTourLoops"
+private const val DEFAULT_PERF_TOUR_LOOPS = 5
 
 @Preview
 @Composable
