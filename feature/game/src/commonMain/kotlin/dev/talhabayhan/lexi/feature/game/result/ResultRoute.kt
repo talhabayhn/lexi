@@ -1,7 +1,11 @@
 package dev.talhabayhan.lexi.feature.game.result
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
@@ -12,6 +16,9 @@ import dev.talhabayhan.lexi.core.domain.game.SlotState
 import dev.talhabayhan.lexi.core.domain.model.CardId
 import dev.talhabayhan.lexi.core.domain.model.CategoryId
 import dev.talhabayhan.lexi.core.domain.model.Level
+import dev.talhabayhan.lexi.core.domain.share.ShareCardBuilder
+import dev.talhabayhan.lexi.core.domain.share.ShareCell
+import dev.talhabayhan.lexi.core.domain.share.SlotOutcome
 import dev.talhabayhan.lexi.feature.game.GameRoute
 import kotlinx.serialization.Serializable
 import org.koin.compose.viewmodel.koinViewModel
@@ -45,6 +52,10 @@ data class ResultRoute(
     val correctCards: List<String> = emptyList(),
     val wrongCards: List<String> = emptyList(),
     val timeUpCards: List<String> = emptyList(),
+    /** The playable letters in wheel order (`ShareCardBuilder.cellsOf`), one per share-card cell. */
+    val wheelLetters: String = "",
+    /** The `SlotOutcome` name of each of [wheelLetters], same order. */
+    val wheelOutcomes: List<String> = emptyList(),
 ) {
     internal val gameLevel: Level get() = Level.valueOf(level)
 
@@ -53,6 +64,12 @@ data class ResultRoute(
     internal val gameOverReason: GameOverReason get() = GameOverReason.valueOf(reason)
 
     internal val categoryId: CategoryId? get() = category?.let(::CategoryId)
+
+    /** The share card's cells; letters without a matching outcome are left out. */
+    internal val shareCells: List<ShareCell>
+        get() = wheelLetters.toList().zip(wheelOutcomes) { letter, outcome ->
+            ShareCell(letter, SlotOutcome.valueOf(outcome))
+        }
 
     internal companion object {
         /** The result of the finished [state]; [category] is the route's category of the game. */
@@ -71,6 +88,7 @@ data class ResultRoute(
                 .filter { it.state == SlotState.TODO || it.state == SlotState.CURRENT }
                 .mapNotNull { it.card?.id?.value }
             val passedSet = passedCardsList.toSet()
+            val cells = ShareCardBuilder.cellsOf(state.wheel.slots)
             return ResultRoute(
                 level = state.level.name,
                 mode = state.mode.name,
@@ -88,6 +106,8 @@ data class ResultRoute(
                 correctCards = correctCardsList,
                 wrongCards = wrongCardsList,
                 timeUpCards = timeUpCardsList,
+                wheelLetters = cells.map { it.letter }.joinToString(""),
+                wheelOutcomes = cells.map { it.outcome.name },
             )
         }
     }
@@ -110,19 +130,24 @@ internal fun ResultRoute(
     viewModel: ResultViewModel = koinViewModel(),
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
+    var shareErrorVisible by remember { mutableStateOf(false) }
+    LaunchedEffect(viewModel) {
+        viewModel.effects.collect { effect ->
+            when (effect) {
+                ResultEffect.ShareFailed -> shareErrorVisible = true
+            }
+        }
+    }
     ResultScreen(
         state = state,
         onIntent = { intent ->
             when (intent) {
                 ResultIntent.PlayAgain -> viewModel.playAgain?.let(onPlayAgain)
-
                 ResultIntent.Home -> onHome()
-
-                // TODO(M6): share card (`12-share-card`) rendered to an image + system share sheet.
-                ResultIntent.Share -> Unit
-
                 else -> viewModel.onIntent(intent)
             }
         },
+        shareErrorVisible = shareErrorVisible,
+        onShareErrorDismissed = { shareErrorVisible = false },
     )
 }

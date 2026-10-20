@@ -52,12 +52,19 @@ public enum class LexiLogoSize(
     MenuCompact(46.dp, 3.dp, 28.dp, 5.dp),
 }
 
+/** Sizes of the horizontal wordmark ([LexiWordmark]): its three shapes, their gap and the gap before "lexi". */
+public enum class LexiWordmarkSize(internal val shape: Dp, internal val shapeGap: Dp, internal val gap: Dp) {
+    /** 22dp shapes, gap 4, "lexi" 40/800 +0.02em after a gap of 14 (`13-logo-and-icon`). */
+    Board(22.dp, 4.dp, 14.dp),
+
+    /** 16dp shapes, gap 3, "lexi" 24/800 after a gap of 8: the share card's footer (`12-share-card`). */
+    ShareCard(16.dp, 3.dp, 8.dp),
+}
+
 /** Logo geometry that is not a size preset (`13-logo-and-icon.html`). */
 public object LexiLogoDefaults {
-    /** Wordmark: three 22dp shapes, gap 4, then "lexi" with gap 14. */
-    internal val WordmarkShape: Dp = 22.dp
-    internal val WordmarkShapeGap: Dp = 4.dp
-    public val WordmarkGap: Dp = 14.dp
+    /** Wordmark: three 22dp shapes, gap 4, then "lexi" with gap 14 ([LexiWordmarkSize.Board]). */
+    public val WordmarkGap: Dp = LexiWordmarkSize.Board.gap
 
     /** Shape-only mark for sizes below 24dp: four 26dp shapes with 2dp borders, gap 3. */
     internal val MarkShape: Dp = 26.dp
@@ -138,24 +145,31 @@ private fun logoBlock(index: Int): Triple<DecorShapeKind, Color, Color> {
     }
 }
 
-/** Compact horizontal wordmark: red square, yellow circle, blue leaf (22dp, no border) and "lexi" (40/800). */
+/**
+ * Compact horizontal wordmark: red square, yellow circle, blue leaf (no border) and "lexi"; [size] sets the shapes,
+ * gaps and type (22dp and 40/800 on the logo board, 16dp and 24/800 on the share card).
+ */
 @Composable
-public fun LexiWordmark(modifier: Modifier = Modifier) {
+public fun LexiWordmark(modifier: Modifier = Modifier, size: LexiWordmarkSize = LexiWordmarkSize.Board) {
     Row(
         modifier = modifier.clearAndSetSemantics {
             contentDescription = AppInfo.NAME
             role = Role.Image
         },
-        horizontalArrangement = Arrangement.spacedBy(LexiLogoDefaults.WordmarkGap),
+        horizontalArrangement = Arrangement.spacedBy(size.gap),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        Row(horizontalArrangement = Arrangement.spacedBy(LexiLogoDefaults.WordmarkShapeGap)) {
+        Row(horizontalArrangement = Arrangement.spacedBy(size.shapeGap)) {
             repeat(3) { i ->
                 val (kind, fill) = logoBlock(i)
-                DecorShape(kind, fill, Modifier.size(LexiLogoDefaults.WordmarkShape))
+                DecorShape(kind, fill, Modifier.size(size.shape))
             }
         }
-        Text(AppInfo.NAME.lowercase(), style = LexiTheme.typography.wordmark)
+        val style = when (size) {
+            LexiWordmarkSize.Board -> LexiTheme.typography.wordmark
+            LexiWordmarkSize.ShareCard -> LexiTheme.typography.heading24
+        }
+        Text(AppInfo.NAME.lowercase(), style = style)
     }
 }
 

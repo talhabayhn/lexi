@@ -17,4 +17,10 @@ public object StoreLinks {
 
     /** Single constant store link for the app target. */
     public const val STORE_URL: String = ANDROID_STORE_URL
+
+    /**
+     * The link printed on the share card's footer and appended to the share text (`12-share-card` "[MAĞAZA LİNKİ]").
+     * Blank until a public landing link exists: the card and the share text then leave the link out.
+     */
+    public const val SHARE_LINK_LABEL: String = ""
 }

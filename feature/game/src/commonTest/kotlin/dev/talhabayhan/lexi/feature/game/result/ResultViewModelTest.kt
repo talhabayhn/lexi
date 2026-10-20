@@ -1,16 +1,23 @@
 package dev.talhabayhan.lexi.feature.game.result
 
 import androidx.lifecycle.ViewModelStore
+import app.cash.turbine.test
 import dev.talhabayhan.lexi.core.designsystem.component.ReviewOutcome
 import dev.talhabayhan.lexi.core.domain.game.GameConfig
 import dev.talhabayhan.lexi.core.domain.game.GameMode
 import dev.talhabayhan.lexi.core.domain.game.GameOverReason
 import dev.talhabayhan.lexi.core.domain.model.CardId
 import dev.talhabayhan.lexi.core.domain.model.Level
+import dev.talhabayhan.lexi.core.domain.share.ShareCaption
+import dev.talhabayhan.lexi.core.domain.share.ShareCell
+import dev.talhabayhan.lexi.core.domain.share.SlotOutcome
+import dev.talhabayhan.lexi.core.domain.time.civilDateOfEpochDay
 import dev.talhabayhan.lexi.core.testing.FakeAppClock
 import dev.talhabayhan.lexi.core.testing.FakeCardRepository
 import dev.talhabayhan.lexi.core.testing.FakeProgressRepository
+import dev.talhabayhan.lexi.core.testing.FakeShareService
 import dev.talhabayhan.lexi.core.testing.FakeSpeaker
+import dev.talhabayhan.lexi.core.testing.FakeStreakRepository
 import dev.talhabayhan.lexi.core.testing.testCard
 import dev.talhabayhan.lexi.feature.game.GameRoute
 import kotlinx.coroutines.Dispatchers
@@ -24,8 +31,10 @@ import kotlinx.coroutines.test.setMain
 import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
+import kotlin.test.assertContentEquals
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
+import kotlin.test.assertNotNull
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
@@ -37,6 +46,9 @@ class ResultViewModelTest {
     private val config = GameConfig()
     private val progress = FakeProgressRepository()
     private val clock = FakeAppClock()
+    private val today = clock.epochDay(clock.nowMs())
+    private val streaks = FakeStreakRepository(listOf(today - 2, today - 1, today))
+    private var shareService = FakeShareService()
 
     @BeforeTest
     fun setUp() {
@@ -54,11 +66,12 @@ class ResultViewModelTest {
         mode: GameMode = GameMode.CLASSIC,
         remainingMs: Long? = 11_200L,
         recorded: Boolean = true,
+        reason: GameOverReason = GameOverReason.TIME_UP,
     ) = ResultRoute(
         level = "A1",
         mode = mode.name,
         category = "food-drink",
-        reason = GameOverReason.TIME_UP.name,
+        reason = reason.name,
         score = 340,
         correct = 19,
         wrong = 3,
@@ -68,10 +81,12 @@ class ResultViewModelTest {
         missedCards = missed,
         passedCards = passed,
         recorded = recorded,
+        wheelLetters = "ABCD",
+        wheelOutcomes = listOf("CORRECT", "WRONG", "PASSED", "TIME_UP"),
     )
 
     private fun TestScope.viewModel(route: ResultRoute = route()) =
-        ResultViewModel(route, cards, speaker, config, progress, clock).also { runCurrent() }
+        ResultViewModel(route, cards, speaker, config, progress, clock, streaks, shareService).also { runCurrent() }
 
     @Test
     fun `the header and stats come from the route`() = runTest {
@@ -289,6 +304,108 @@ class ResultViewModelTest {
     fun `other modes can be played again`() = runTest {
         GameMode.entries.filter { it != GameMode.DAILY }.forEach { mode ->
             assertTrue(viewModel(route(mode = mode)).state.value.canPlayAgain, mode.name)
+        }
+    }
+
+    @Test
+    fun `the share card comes from the wheel of the route and the current streak`() = runTest {
+        val card = assertNotNull(viewModel().state.value.shareCard)
+
+        assertEquals(
+            listOf(
+                ShareCell('A', SlotOutcome.CORRECT),
+                ShareCell('B', SlotOutcome.WRONG),
+                ShareCell('C', SlotOutcome.PASSED),
+                ShareCell('D', SlotOutcome.TIME_UP),
+            ),
+            card.cells,
+        )
+        assertEquals(1 to 4, card.correct to card.total)
+        assertEquals(Level.A1, card.level)
+        assertEquals(civilDateOfEpochDay(today), card.date)
+        assertEquals(12, card.remainingSeconds)
+        assertTrue(card.timeUp)
+        assertEquals(3, card.streakDays)
+        assertEquals(ShareCaption.Streak(3), card.caption)
+    }
+
+    @Test
+    fun `a daily share card has no level and the daily caption`() = runTest {
+        val card = assertNotNull(viewModel(route(mode = GameMode.DAILY)).state.value.shareCard)
+
+        assertNull(card.level)
+        assertEquals(ShareCaption.Daily(1), card.caption)
+    }
+
+    @Test
+    fun `share asks for the capture and hands the png and text to the share sheet`() = runTest {
+        val vm = viewModel()
+        vm.effects.test {
+            vm.onIntent(ResultIntent.Share)
+            assertTrue(vm.state.value.isSharing)
+
+            val png = byteArrayOf(1, 2, 3)
+            vm.onIntent(ResultIntent.SharePng(png, "caption and message"))
+            runCurrent()
+
+            val (sharedPng, sharedText) = shareService.shared.single()
+            assertContentEquals(png, sharedPng)
+            assertEquals("caption and message", sharedText)
+            assertFalse(vm.state.value.isSharing)
+            expectNoEvents()
+        }
+    }
+
+    @Test
+    fun `a double tap on share shares once`() = runTest {
+        shareService = FakeShareService()
+        val vm = viewModel()
+
+        vm.onIntent(ResultIntent.Share)
+        vm.onIntent(ResultIntent.Share)
+        vm.onIntent(ResultIntent.SharePng(byteArrayOf(1), "text"))
+        vm.onIntent(ResultIntent.SharePng(byteArrayOf(1), "text"))
+        runCurrent()
+
+        assertEquals(1, shareService.shared.size)
+        assertFalse(vm.state.value.isSharing)
+    }
+
+    @Test
+    fun `an image without a running share is ignored`() = runTest {
+        val vm = viewModel()
+
+        vm.onIntent(ResultIntent.SharePng(byteArrayOf(1), "text"))
+        runCurrent()
+
+        assertTrue(shareService.shared.isEmpty())
+    }
+
+    @Test
+    fun `a share sheet that could not open reports the failure`() = runTest {
+        shareService = FakeShareService(result = false)
+        val vm = viewModel()
+        vm.effects.test {
+            vm.onIntent(ResultIntent.Share)
+            vm.onIntent(ResultIntent.SharePng(byteArrayOf(1), "text"))
+            runCurrent()
+
+            assertEquals(ResultEffect.ShareFailed, awaitItem())
+            assertFalse(vm.state.value.isSharing)
+        }
+    }
+
+    @Test
+    fun `a card that could not be captured reports the failure and allows a new try`() = runTest {
+        val vm = viewModel()
+        vm.effects.test {
+            vm.onIntent(ResultIntent.Share)
+            vm.onIntent(ResultIntent.ShareCaptureFailed)
+
+            assertEquals(ResultEffect.ShareFailed, awaitItem())
+            assertFalse(vm.state.value.isSharing)
+            vm.onIntent(ResultIntent.Share)
+            assertTrue(vm.state.value.isSharing)
         }
     }
 }

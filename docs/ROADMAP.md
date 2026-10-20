@@ -73,7 +73,7 @@ Module mapping (replaces the earlier `composeApp`): `androidApp` = thin Android 
 ## M6 — Daily, sharing, onboarding
 - [x] Daily wheel (seed per date+level, one scored attempt, already-played state)
 - [x] Streak logic + home badge
-- [ ] Share card (`12-share-card`) rendered to image + system share sheet
+- [x] Share card (`12-share-card`) rendered to image + system share sheet (Android FileProvider; iOS sheet unverified until Mac/TestFlight). Note: add the public store link to `StoreLinks.SHARE_LINK_LABEL` before the production release (blank hides the footer link line).
 - [ ] Onboarding 3 steps (`01-onboarding` + design debt), level test, level-test result
 **Done when:** two devices get the identical daily wheel for the same date and level.
 
@@ -98,6 +98,7 @@ Module mapping (replaces the earlier `composeApp`): `androidApp` = thin Android 
 - [x] Small-screen & tablet layout rules (`screen-map.md`)
 - [ ] Rating prompt, About/licenses (licences done; word-list attributions pending owner confirmation in docs/store/ATTRIBUTION-TODO.md)
 - [ ] Performance: cold start < 1.5 s mid-range Android; 60 fps game screen
+  - Landed so far: perf tour, T1–T4 (see `docs/PERF.md`); iOS numbers pending a Mac measurement.
 - [ ] Store listing TR/EN, screenshots, privacy policy, data safety / privacy nutrition labels
 - [ ] Release: Play internal testing + TestFlight
 **Done when:** v1.0 submitted.

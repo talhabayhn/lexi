@@ -64,7 +64,8 @@ Implemented in `feature:game` (`GameMotion`, `GameMotionLayer`, `GameFeedback`) 
   and shrinks to 0 in 240 ms (`aCombo`). Reduced motion: the badge rests at −4° for 420 + 720 ms, no burst.
 - #8: `TimerBar` pulses whenever the counter changes (and when the warning starts), not on first composition, so a
   paused or restored warning does not pulse.
-- #11: no toast is shown anywhere yet (`Toast` exists in `16-components`); the slide-in is built with the first use.
+- #11: the result screen's share error toast slides down 16dp in 180 ms (`mechanical`) and goes after 2.5 s; reduced
+  motion: shown in place, no slide. (The home daily-gift notice shows the toast without the slide.)
 - `win` / `lose` have no catalogue row, so they are not played yet (to be decided with the result screen's motion).
 
 #12 is set on `LexiNavHost` (all destinations): enter slides from +24dp over 260 ms and fades in over 200 ms from

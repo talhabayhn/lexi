@@ -9,13 +9,13 @@
 | `07-categories` | Seviye kategorileri | `CategoriesRoute(level, mode)` / `CategoriesScreen` (`mode` = the level select's mode, passed on to the game) | feature:levels | M5 (done) |
 | `04-game` | Oyun ekranı | `GameRoute(level, mode, category?)` / `GameScreen` | feature:game | M4 (done) |
 | `05-joker-sheet` | Joker seçimi | `JokerSheet` (bottom sheet inside GameScreen; ad button hidden behind `FeatureFlags.rewardedAdJokers` until M7) | feature:game | M4 (done) |
-| `06-result` | Oyun sonu | `ResultRoute(summary)` / `ResultScreen` (summary payload: ADR 0019 addendum; Paylaş hidden behind SHARE_AVAILABLE = false until B3) | feature:game (`result`) | M4 (done) |
+| `06-result` | Oyun sonu | `ResultRoute(summary)` / `ResultScreen` (summary payload: ADR 0019 addendum, incl. the wheel letters and outcomes for the share card) | feature:game (`result`) | M4 (done) |
 | `08-notebook` | Kelime Defterim | `NotebookRoute` / `NotebookScreen` (review wheel: `GameRoute.review()`) | feature:notebook | M5 (done) |
 | `09-stats` | İstatistikler | `StatsRoute` | feature:stats | M5 |
 | `10-exam-packs` | Sınav paketleri | `ExamPacksRoute` / `ExamPacksScreen` (M5: header + "YAKINDA" `EmptyState` only, in feature:home until feature:exams is wired) | feature:home → feature:exams | M7 |
 | `11-settings` | Ayarlar | `SettingsRoute` / `SettingsScreen` (Home gear icon; back pops) | feature:settings | M5 (switches), M7 (rest) |
 | — | Hakkında | `AboutRoute` / `AboutScreen` (Settings footer link; back pops) | feature:settings | M8 (done) |
-| `12-share-card` | Paylaşım kartı (432×540) | `ShareCardRenderer` (renders to bitmap) | feature:home / core:designsystem | M6 |
+| `12-share-card` | Paylaşım kartı (432×540) | `ShareCard` + `ShareCardCapture` (off-screen capture via `OffscreenCapture` in core:designsystem, 1080×1350 PNG, ADR 0020); entry: Paylaş on the result screen | feature:game (`result/share`) / core:designsystem | M6 |
 | `13-logo-and-icon` | Logo ve uygulama ikonu — use **option 1** for app icon | `LexiLogo`, launcher icons | designsystem, platform res | M1 |
 | `15-motion` | Animasyonlar | `LexiMotion`, effects | designsystem | M1/M4 |
 | `16-components` | Bileşen kütüphanesi | components.md | designsystem | M1 |
@@ -34,7 +34,9 @@ before shipping.
 | Result screen grouped review (DESIGN-DEBT) | M6 | `06-result` was extended with grouped review: lists all 26 words grouped as Doğru / Yanlış / Pas / Süre bitti with a per-row notebook button for "Süre bitti" words; each group shows its first 5 rows, then the design's more-row reads "+N kelime daha · Daha fazla göster →" and toggles to "Daha az göster ↑" |
 | Joker sheet clock pill over the live game | M4 | `05-joker-sheet` shows the pill on a dimmed screen; in the app it is drawn above the scrim at the top, over the dimmed but still running HUD timer, so the time is shown twice |
 | Combo badge position in the game | M4 | `15-motion` #7 shows badge + burst alone; in the game they sit in the HUD row, vertically centred on it and right-aligned next to the score circle (over the empty end of the timer bar; the strip under the HUD is too thin), so the badge never covers the centre letter or wheel chips (product owner decision); badge at its resting −4°. The burst shapes (±100dp) may briefly pass over the top chips |
-| Result after a Daily (no TEKRAR OYNA) | M4 | deviation: the Daily allows one scored attempt per day, so TEKRAR OYNA is hidden (with SHARE_AVAILABLE = false, no actions row) |
+| Result after a Daily (no TEKRAR OYNA) | M4 | deviation: the Daily allows one scored attempt per day, so TEKRAR OYNA is hidden and Paylaş fills the row |
+| Share card details (DESIGN-DEBT) | M6 | the design mixes "GÜNÜN ÇARKI" with "A1": a Daily card has no level segment, other modes show their mode label in the header (KLASİK · 14 EKİM 2026); the time segment reads "süre bitti" after a time-up and is dropped in untimed modes, the streak segment at 0 days; the footer link is left out while `StoreLinks.SHARE_LINK_LABEL` is blank (wordmark only, same height); English months are short (OCT) so the header fits beside the circle |
+| Share failed (DESIGN-DEBT, needs design) | M6 | no design: the result screen shows the `Toast` (ToastStyle.Info) "Paylaşım başlatılamadı." at the top for 2.5 s (motion #11) |
 | Result TEKRAR OYNA target | M4 | deviation: the design sends TEKRAR OYNA to level select; the app starts a new game at once with the same level, mode and category (product owner decision) |
 | Joker sheet ad button | M4 | shipped look has no "Kısa reklam izle · +1 joker" button (`FeatureFlags.rewardedAdJokers`, off until M7); `05-joker-sheet.png` shows it |
 | Daily joker gift notice (DESIGN-DEBT) | M7 | built from 16-components: Toast (ToastStyle.Info) shown below top bar when GrantDailyJokers grants daily gift or streak bonus; dismissible and once per day |

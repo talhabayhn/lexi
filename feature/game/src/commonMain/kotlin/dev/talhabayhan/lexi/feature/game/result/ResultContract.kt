@@ -5,6 +5,7 @@ import dev.talhabayhan.lexi.core.designsystem.component.ReviewOutcome
 import dev.talhabayhan.lexi.core.domain.game.GameMode
 import dev.talhabayhan.lexi.core.domain.game.GameOverReason
 import dev.talhabayhan.lexi.core.domain.model.Level
+import dev.talhabayhan.lexi.core.domain.share.ShareCard
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.ImmutableSet
 import kotlinx.collections.immutable.persistentListOf
@@ -35,6 +36,10 @@ internal data class ResultUiState(
     val isLoading: Boolean = true,
     /** The review cards could not be read; the list shows an empty state with "Tekrar dene". */
     val reviewError: Boolean = false,
+    /** The share card (`12-share-card`) of this game; null until the streak is read. */
+    val shareCard: ShareCard? = null,
+    /** A share is running: the card is being captured or handed to the share sheet; further taps are ignored. */
+    val isSharing: Boolean = false,
 ) {
     /** TEKRAR OYNA is offered; not after a Daily (one scored attempt per day, `GAME_RULES.md` §5). */
     val canPlayAgain: Boolean get() = mode != GameMode.DAILY
@@ -71,8 +76,14 @@ internal sealed interface ResultIntent {
     /** TEKRAR OYNA: a new game with the same level, mode and category. */
     data object PlayAgain : ResultIntent
 
-    /** Paylaş: the share card is M6. */
+    /** Paylaş: starts a share; the screen then captures the card ([SharePng] or [ShareCaptureFailed]). */
     data object Share : ResultIntent
+
+    /** The captured card ([png]) and the share text, for the system share sheet. */
+    class SharePng(val png: ByteArray, val text: String) : ResultIntent
+
+    /** The card could not be rendered to an image. */
+    data object ShareCaptureFailed : ResultIntent
 
     /** "Ana menüye dön". */
     data object Home : ResultIntent
@@ -88,4 +99,9 @@ internal sealed interface ResultIntent {
 
     /** Per-row "Deftere ekle" for time-up words. */
     data class AddToNotebook(val cardId: String) : ResultIntent
+}
+
+internal sealed interface ResultEffect {
+    /** The share sheet could not be opened ("Paylaşım başlatılamadı."). */
+    data object ShareFailed : ResultEffect
 }

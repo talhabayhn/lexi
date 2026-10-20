@@ -95,6 +95,12 @@ reason `WRONG_IN_HARDCORE`, ×1.5 on the final total); a pass doesn't end it.
 Daily in the app (M6): ONE shared mixed-level wheel for all players (26 slots, fixed distribution: A1 ×6, A2 ×5,
 B1 ×5, B2 ×4, C1 ×3, NAT ×3, deterministically shuffled by seed). One scored attempt per local day, resetting at
 local midnight. Passes have no penalty in Daily mode.
+Share card (M6, `ShareCardBuilder`): score = correct / playable slots (SKIPPED left out, so a review wheel scores
+against fewer than 26); one cell per playable slot in wheel order (CORRECT, WRONG, PASSED; TODO/CURRENT = TIME_UP,
+i.e. never answered, also after a Hardcore wrong or a forfeit). Remaining seconds round up like the result screen;
+the time segment is dropped in untimed modes, the streak segment at 0 days. A Daily card shows no level. Caption:
+Daily mode → Daily(correct); a completed (ALL_ANSWERED) timed wheel → Time(seconds); otherwise Streak(days) from 2
+days; otherwise (decision) Score(correct, total).
 A wheel without any playable slot (a level or category without cards) is not started in the app: the game screen
 shows "no words" with a way back and records nothing (the engine's `EMPTY_WHEEL` stays as a guard).
 

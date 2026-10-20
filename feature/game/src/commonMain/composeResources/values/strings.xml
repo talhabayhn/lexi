@@ -128,4 +128,38 @@
     <string name="rate_later">Not now</string>
     <string name="rate_feedback">Send feedback</string>
     <string name="rate_feedback_body">You can send us your thoughts by email.</string>
+
+    <!-- Share card (`12-share-card`, COPY.md §7) -->
+    <string name="share_caption_time">A to Z with %1$ds to spare. Can you beat it?</string>
+    <string name="share_caption_daily">Today's wheel: %1$d/%2$d. What's your score?</string>
+    <string name="share_caption_streak">A wheel a day for %1$d days. Join in.</string>
+    <string name="share_caption_score">%1$d/%2$d on the A to Z wheel. What's your score?</string>
+    <string name="share_message">Playing on Lexi.</string>
+    <string name="share_message_link">Playing on Lexi: %1$s</string>
+    <string name="share_error">Couldn't open sharing.</string>
+    <string name="share_card_header">%1$s · %3$s %2$d, %4$d</string>
+    <string name="share_mode_daily">TODAY'S WHEEL</string>
+    <string name="share_card_score">%1$d/%2$d</string>
+    <string name="share_card_time_left">finished with %1$ds left</string>
+    <string name="share_card_time_up">time's up</string>
+    <plurals name="share_card_streak">
+        <item quantity="one">%1$d-day streak</item>
+        <item quantity="other">%1$d-day streak</item>
+    </plurals>
+    <!-- Short month names: the header fits beside the circle like the Turkish one. -->
+    <string-array name="share_months">
+        <item>JAN</item>
+        <item>FEB</item>
+        <item>MAR</item>
+        <item>APR</item>
+        <item>MAY</item>
+        <item>JUN</item>
+        <item>JUL</item>
+        <item>AUG</item>
+        <item>SEP</item>
+        <item>OCT</item>
+        <item>NOV</item>
+        <item>DEC</item>
+    </string-array>
+    <string name="share_card_content_description">Share card: %1$d of %2$d correct</string>
 </resources>

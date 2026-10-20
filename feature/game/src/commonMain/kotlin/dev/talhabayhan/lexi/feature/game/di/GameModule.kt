@@ -65,6 +65,8 @@ val gameModule: Module = module {
             config = get(),
             progress = get(),
             clock = get(),
+            streaks = get(),
+            shareService = get(),
         )
     }
 }

@@ -145,6 +145,8 @@ public class LexiTypography internal constructor(
     public val letterChipValue: TextStyle,
     /** 13 / 500, line height 1.1: hardest-letter chip label (`09-stats`). */
     public val letterChipLabel: TextStyle,
+    /** 64 / 800, line-height 0.95: share card score "21/26" (`12-share-card`). */
+    public val shareScore: TextStyle,
 )
 
 /** Static Jost instances shipped in `composeResources/font` (OFL, `files/licenses/jost-ofl.txt`). */
@@ -285,5 +287,6 @@ internal fun lexiTypography(jost: FontFamily): LexiTypography {
         bodyBold14 = style(14, FontWeight.Bold),
         letterChipValue = style(13, FontWeight.Bold, lineHeight = 1.1),
         letterChipLabel = style(13, FontWeight.Medium, lineHeight = 1.1),
+        shareScore = style(64, extraBold, lineHeight = 0.95),
     )
 }

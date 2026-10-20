@@ -5,6 +5,7 @@ import dev.talhabayhan.lexi.core.data.db.DatabaseFiles
 import dev.talhabayhan.lexi.core.domain.feedback.Haptics
 import dev.talhabayhan.lexi.core.domain.feedback.SoundPlayer
 import dev.talhabayhan.lexi.core.domain.feedback.Speaker
+import dev.talhabayhan.lexi.core.domain.platform.ShareService
 import dev.talhabayhan.lexi.core.domain.platform.UrlOpener
 import dev.talhabayhan.lexi.feature.game.GameRoute
 import dev.talhabayhan.lexi.feature.game.result.ResultRoute
@@ -27,6 +28,7 @@ class AppModulesTest {
                 DatabaseFiles::class,
                 Speaker::class,
                 UrlOpener::class,
+                ShareService::class,
                 Haptics::class,
                 SoundPlayer::class,
                 SavedStateHandle::class,

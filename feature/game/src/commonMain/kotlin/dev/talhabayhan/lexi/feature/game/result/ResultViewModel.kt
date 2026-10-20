@@ -9,18 +9,26 @@ import dev.talhabayhan.lexi.core.domain.feedback.Speaker
 import dev.talhabayhan.lexi.core.domain.game.GameConfig
 import dev.talhabayhan.lexi.core.domain.model.Card
 import dev.talhabayhan.lexi.core.domain.model.CardId
+import dev.talhabayhan.lexi.core.domain.platform.ShareService
 import dev.talhabayhan.lexi.core.domain.repository.CardRepository
 import dev.talhabayhan.lexi.core.domain.repository.ProgressRepository
+import dev.talhabayhan.lexi.core.domain.repository.StreakRepository
+import dev.talhabayhan.lexi.core.domain.share.ShareCardBuilder
 import dev.talhabayhan.lexi.core.domain.srs.CardProgress
+import dev.talhabayhan.lexi.core.domain.stats.Stats
 import dev.talhabayhan.lexi.core.domain.time.AppClock
 import dev.talhabayhan.lexi.feature.game.GameRoute
 import kotlinx.collections.immutable.toImmutableList
 import kotlinx.collections.immutable.toImmutableSet
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
@@ -28,7 +36,9 @@ import kotlinx.coroutines.launch
  * The result of one finished game (`06-result`, ADR 0019 addendum): counts come from the [route], the review rows
  * are listed in 4 groups (Doğru, Yanlış, Pas, Süre bitti). Wrong and Passed are automatically in the notebook;
  * Süre bitti cards can be added manually via [ResultIntent.AddToNotebook]. Navigation intents are handled by
- * the route composable.
+ * the route composable. Sharing (`12-share-card`, ADR 0020): [ResultIntent.Share] sets [ResultUiState.isSharing], the
+ * screen captures [ResultUiState.shareCard] and sends [ResultIntent.SharePng], which goes to the [shareService]; a
+ * failure emits [ResultEffect.ShareFailed]. Taps while a share runs are ignored.
  */
 internal class ResultViewModel(
     private val route: ResultRoute,
@@ -37,9 +47,17 @@ internal class ResultViewModel(
     config: GameConfig,
     private val progress: ProgressRepository,
     private val clock: AppClock,
+    private val streaks: StreakRepository,
+    private val shareService: ShareService,
 ) : ViewModel() {
     private val mutableState = MutableStateFlow(initialState(route, config))
     val state: StateFlow<ResultUiState> = mutableState.asStateFlow()
+
+    private val effectChannel = Channel<ResultEffect>(Channel.BUFFERED)
+    val effects: Flow<ResultEffect> = effectChannel.receiveAsFlow()
+
+    /** The running hand-over to the share sheet, so a second [ResultIntent.SharePng] is ignored. */
+    private var sharing: Job? = null
 
     /**
      * The game behind TEKRAR OYNA: same level, mode and category. Null for a finished Daily: it allows one scored
@@ -60,6 +78,7 @@ internal class ResultViewModel(
 
     init {
         loading = viewModelScope.launch { load() }
+        viewModelScope.launch { buildShareCard() }
     }
 
     fun onIntent(intent: ResultIntent) {
@@ -127,9 +146,67 @@ internal class ResultViewModel(
                 }
             }
 
-            // Navigation (route composable) and the share card (M6).
-            ResultIntent.PlayAgain, ResultIntent.Share, ResultIntent.Home -> Unit
+            ResultIntent.Share -> {
+                val current = mutableState.value
+                when {
+                    current.isSharing -> Unit
+                    current.shareCard == null -> effectChannel.trySend(ResultEffect.ShareFailed)
+                    else -> mutableState.update { it.copy(isSharing = true) }
+                }
+            }
+
+            is ResultIntent.SharePng -> if (mutableState.value.isSharing && sharing?.isActive != true) {
+                sharing = viewModelScope.launch { share(intent.png, intent.text) }
+            }
+
+            ResultIntent.ShareCaptureFailed -> if (mutableState.value.isSharing && sharing?.isActive != true) {
+                log.w { "share card not captured" }
+                finishShare(shown = false)
+            }
+
+            // Navigation: handled by the route composable.
+            ResultIntent.PlayAgain, ResultIntent.Home -> Unit
         }
+    }
+
+    private suspend fun share(png: ByteArray, text: String) {
+        val shown = try {
+            shareService.sharePng(png, text)
+        } catch (e: CancellationException) {
+            throw e
+        } catch (e: Exception) {
+            log.e(e) { "share sheet not shown" }
+            false
+        }
+        finishShare(shown)
+    }
+
+    private fun finishShare(shown: Boolean) {
+        mutableState.update { it.copy(isSharing = false) }
+        if (!shown) effectChannel.trySend(ResultEffect.ShareFailed)
+    }
+
+    /** The share card with the current streak (read once; an unreadable streak counts as none). */
+    private suspend fun buildShareCard() {
+        val today = clock.epochDay(clock.nowMs())
+        val days = try {
+            streaks.observeDays().first()
+        } catch (e: CancellationException) {
+            throw e
+        } catch (e: Exception) {
+            log.w(e) { "streak not read for the share card" }
+            emptyList()
+        }
+        val card = ShareCardBuilder.build(
+            mode = route.gameMode,
+            level = route.gameLevel,
+            reason = route.gameOverReason,
+            remainingMs = route.remainingMs,
+            cells = route.shareCells,
+            epochDay = today,
+            streakDays = Stats.currentStreak(days, today),
+        )
+        mutableState.update { it.copy(shareCard = card) }
     }
 
     override fun onCleared() {

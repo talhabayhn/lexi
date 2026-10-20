@@ -1,21 +1,27 @@
 package dev.talhabayhan.lexi.feature.game.result
 
+import android.graphics.BitmapFactory
 import androidx.compose.ui.test.ExperimentalTestApi
 import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.captureToImage
 import androidx.compose.ui.test.getBoundsInRoot
 import androidx.compose.ui.test.onNodeWithText
+import androidx.compose.ui.test.onRoot
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performScrollTo
 import androidx.compose.ui.test.runComposeUiTest
 import dev.talhabayhan.lexi.core.designsystem.component.ReviewOutcome
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.core.domain.game.GameMode
+import dev.talhabayhan.lexi.feature.game.result.share.ShareCardSamples
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
 import org.robolectric.annotation.GraphicsMode
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertIs
+import kotlin.test.assertNotNull
 import kotlin.test.assertTrue
 
 @OptIn(ExperimentalTestApi::class)
@@ -91,5 +97,53 @@ class ResultScreenBehaviourTest {
         onNodeWithText("key").assertExists()
         onNodeWithText("Daha az göster ↑").assertExists()
         onNodeWithText("TEKRAR OYNA").performScrollTo().assertIsDisplayed()
+    }
+
+    @Test
+    fun `tapping share asks to share`() = runComposeUiTest {
+        val intents = mutableListOf<ResultIntent>()
+        setContent {
+            LexiTheme(reducedMotion = true) { ResultScreen(ResultSamples.design, onIntent = { intents += it }) }
+        }
+
+        onNodeWithText("Paylaş").performClick()
+
+        assertEquals(listOf<ResultIntent>(ResultIntent.Share), intents)
+    }
+
+    @Test
+    fun `a running share renders the card off screen to a 1080 x 1350 png with the share text`() = runComposeUiTest {
+        val intents = mutableListOf<ResultIntent>()
+        setContent {
+            LexiTheme(reducedMotion = true) {
+                ResultScreen(
+                    ResultSamples.design.copy(shareCard = ShareCardSamples.design, isSharing = true),
+                    onIntent = { intents += it },
+                )
+            }
+        }
+
+        // Robolectric draws the window only when asked (a device draws every frame): draw it while waiting.
+        waitUntil(timeoutMillis = 5_000) {
+            onRoot().captureToImage()
+            intents.isNotEmpty()
+        }
+        val shared = assertIs<ResultIntent.SharePng>(intents.single())
+        val bitmap = assertNotNull(BitmapFactory.decodeByteArray(shared.png, 0, shared.png.size))
+        assertEquals(1080 to 1350, bitmap.width to bitmap.height)
+        assertEquals("A'dan Z'ye 34 sn kala bitirdim. Yenebilir misin?\nLexi'de oynuyorum.", shared.text)
+        // Never visible and not in the accessibility tree.
+        onNodeWithText("21/26").assertDoesNotExist()
+    }
+
+    @Test
+    fun `a failed share shows the error toast`() = runComposeUiTest {
+        setContent {
+            LexiTheme(reducedMotion = true) {
+                ResultScreen(ResultSamples.design, onIntent = {}, shareErrorVisible = true)
+            }
+        }
+
+        onNodeWithText("Paylaşım başlatılamadı.").assertIsDisplayed()
     }
 }

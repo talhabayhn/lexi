@@ -150,14 +150,20 @@ Pre-prompt (before the OS permission dialog, onboarding layout — design debt):
 | `consent_title` | Reklam tercihlerin | Your ad choices | 24 |
 | `consent_body` | Ödüllü reklamlar için tercihini sorarız. Ayarlar'dan değiştirebilirsin. | We ask your preference for rewarded ads. You can change it in Settings. | 90 |
 
-## 7. Share-card captions (432×540 card; caption sits under the score)
+## 7. Share-card captions (432×540 card)
+
+The share text sent with the card image: caption (`ShareCaption` from `ShareCardBuilder`) + new line + message;
+`share_message_link` only when `StoreLinks.SHARE_LINK_LABEL` is set. `{n}` of `share_caption_time` is the seconds left
+on the clock (what the card shows), not the playing time.
 
 | Key | TR | EN | Budget |
 |---|---|---|---|
-| `share_caption_time` | A'dan Z'ye {time}'de bitirdim. Yenebilir misin? | A to Z in {time}. Can you beat it? | 52 |
-| `share_caption_daily` | Günün Çarkı: {correct}/26 doğru. Sen kaç yaparsın? | Today's wheel: {correct}/26. What's your score? | 56 |
+| `share_caption_time` | A'dan Z'ye {n} sn kala bitirdim. Yenebilir misin? | A to Z with {n}s to spare. Can you beat it? | 52 |
+| `share_caption_daily` | Günün Çarkı: {correct}/{total} doğru. Sen kaç yaparsın? | Today's wheel: {correct}/{total}. What's your score? | 56 |
 | `share_caption_streak` | {n} gündür her gün bir çark. Sen de dene. | A wheel a day for {n} days. Join in. | 52 |
-| `share_message` | Lexi'de oynuyorum: {link} | Playing on Lexi: {link} | 60 |
+| `share_caption_score` | A'dan Z'ye {correct}/{total} doğru. Sen kaç yaparsın? | {correct}/{total} on the A to Z wheel. What's your score? | 56 |
+| `share_message` | Lexi'de oynuyorum. | Playing on Lexi. | 60 |
+| `share_message_link` | Lexi'de oynuyorum: {link} | Playing on Lexi: {link} | 60 |
 | `share_cta` | Paylaş | Share | 14 |
 | `share_error` | Paylaşım başlatılamadı. | Couldn't open sharing. | 34 |
 

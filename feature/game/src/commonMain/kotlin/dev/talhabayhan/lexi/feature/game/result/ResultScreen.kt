@@ -1,5 +1,7 @@
 package dev.talhabayhan.lexi.feature.game.result
 
+import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -24,8 +26,14 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import dev.talhabayhan.lexi.core.designsystem.component.AdaptiveTrailingRow
@@ -43,6 +51,8 @@ import dev.talhabayhan.lexi.core.designsystem.component.ReviewOutcome
 import dev.talhabayhan.lexi.core.designsystem.component.ReviewRow
 import dev.talhabayhan.lexi.core.designsystem.component.StatGrid
 import dev.talhabayhan.lexi.core.designsystem.component.StatTile
+import dev.talhabayhan.lexi.core.designsystem.component.Toast
+import dev.talhabayhan.lexi.core.designsystem.component.ToastStyle
 import dev.talhabayhan.lexi.core.designsystem.format.formatClock
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.core.designsystem.theme.lexiContentWidth
@@ -89,8 +99,11 @@ import dev.talhabayhan.lexi.feature.game.generated.resources.result_show_less
 import dev.talhabayhan.lexi.feature.game.generated.resources.result_speak
 import dev.talhabayhan.lexi.feature.game.generated.resources.result_time_left
 import dev.talhabayhan.lexi.feature.game.generated.resources.result_wrong
+import dev.talhabayhan.lexi.feature.game.generated.resources.share_error
+import dev.talhabayhan.lexi.feature.game.result.share.ShareCardCapture
 import kotlinx.collections.immutable.persistentListOf
 import kotlinx.collections.immutable.toImmutableList
+import kotlinx.coroutines.delay
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.pluralStringResource
 import org.jetbrains.compose.resources.stringResource
@@ -103,12 +116,23 @@ private const val SEPARATOR = " · "
  * "Tekrar edilecekler" list (groups of the first [ReviewGroupUi.PREVIEW_ROWS] rows + "Daha fazla göster") and the CTAs at the bottom (`margin-top: auto`). The yellow
  * circle is edge-to-edge decoration moving with the top inset; the content keeps the design paddings inside the
  * safe-drawing insets and scrolls when it is taller than the screen (all rows shown, large fonts).
+ *
+ * While [ResultUiState.isSharing], the share card is captured off screen ([ShareCardCapture]); [shareErrorVisible]
+ * shows "Paylaşım başlatılamadı." as an info toast at the top (motion #11) until [onShareErrorDismissed].
  */
 @Composable
-internal fun ResultScreen(state: ResultUiState, onIntent: (ResultIntent) -> Unit, modifier: Modifier = Modifier) {
+internal fun ResultScreen(
+    state: ResultUiState,
+    onIntent: (ResultIntent) -> Unit,
+    modifier: Modifier = Modifier,
+    shareErrorVisible: Boolean = false,
+    onShareErrorDismissed: () -> Unit = {},
+) {
     val colors = LexiTheme.colors
     val dimens = LexiTheme.dimens
     Box(modifier.fillMaxSize().background(colors.cream)) {
+        val shareCard = state.shareCard
+        if (state.isSharing && shareCard != null) ShareCardCapture(shareCard, onIntent)
         Box(Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Top))) {
             DecorShape(
                 kind = DecorShapeKind.Circle,
@@ -150,7 +174,36 @@ internal fun ResultScreen(state: ResultUiState, onIntent: (ResultIntent) -> Unit
                 )
             }
         }
+        if (shareErrorVisible) {
+            // DESIGN-DEBT: no design for a failed share; the component library's info toast at the top.
+            ShareErrorToast(
+                onDismissed = onShareErrorDismissed,
+                modifier = Modifier
+                    .windowInsetsPadding(WindowInsets.safeDrawing)
+                    .lexiContentWidth()
+                    .padding(horizontal = dimens.screenPaddingHorizontal, vertical = dimens.screenPaddingTop),
+            )
+        }
     }
+}
+
+/** Info toast "Paylaşım başlatılamadı.": slides down 16dp in 180 ms (no slide with reduced motion), gone after 2.5 s. */
+@Composable
+private fun ShareErrorToast(onDismissed: () -> Unit, modifier: Modifier = Modifier) {
+    val motion = LexiTheme.motion
+    val slidePx = with(LocalDensity.current) { motion.toastSlideDistance.toPx() }
+    val offset = remember { Animatable(if (motion.reducedMotion) 0f else -slidePx) }
+    val latestOnDismissed by rememberUpdatedState(onDismissed)
+    LaunchedEffect(Unit) {
+        offset.animateTo(0f, tween(motion.toastDurationMillis, easing = motion.mechanical))
+        delay(motion.toastVisibleMillis.toLong())
+        latestOnDismissed()
+    }
+    Toast(
+        message = stringResource(Res.string.share_error),
+        style = ToastStyle.Info,
+        modifier = modifier.fillMaxWidth().graphicsLayer { translationY = offset.value },
+    )
 }
 
 @Composable
@@ -324,28 +377,12 @@ private fun Review(state: ResultUiState, onIntent: (ResultIntent) -> Unit) {
     }
 }
 
-// TODO(B3): share card (`12-share-card`) rendered to bitmap + system share sheet
-internal const val SHARE_AVAILABLE: Boolean = true
-
 /**
- * Action buttons: behind [SHARE_AVAILABLE] = false (TODO(B3)), TEKRAR OYNA is full width and Paylaş is hidden.
- * When enabled, 3-column grid, gap 10: TEKRAR OYNA spans two columns, Paylaş one (both 60dp, s5). Without [canPlayAgain]
- * (a finished Daily, deviation from the design) Paylaş takes the whole row.
+ * Action buttons: 3-column grid, gap 10: TEKRAR OYNA spans two columns, Paylaş one (both 60dp, s5). Without
+ * [canPlayAgain] (a finished Daily, deviation from the design) Paylaş takes the whole row.
  */
 @Composable
 private fun Actions(canPlayAgain: Boolean, onIntent: (ResultIntent) -> Unit) {
-    if (!SHARE_AVAILABLE) {
-        if (canPlayAgain) {
-            LexiButton(
-                text = stringResource(Res.string.result_play_again),
-                onClick = { onIntent(ResultIntent.PlayAgain) },
-                textStyle = LexiTheme.typography.button20Wide,
-                height = LexiButtonDefaults.LargerHeight,
-                modifier = Modifier.fillMaxWidth(),
-            )
-        }
-        return
-    }
     val gap = LexiTheme.dimens.gap10
     BoxWithConstraints(Modifier.fillMaxWidth()) {
         val column = (maxWidth - gap * (ResultDefaults.CTA_COLUMNS - 1)) / ResultDefaults.CTA_COLUMNS
@@ -372,7 +409,7 @@ private fun Actions(canPlayAgain: Boolean, onIntent: (ResultIntent) -> Unit) {
     }
 }
 
-private fun GameMode.label(): StringResource = when (this) {
+internal fun GameMode.label(): StringResource = when (this) {
     GameMode.CLASSIC -> Res.string.result_mode_classic
     GameMode.PRACTICE -> Res.string.result_mode_practice
     GameMode.HARDCORE -> Res.string.result_mode_hardcore

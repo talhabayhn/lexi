@@ -11,6 +11,7 @@ import dev.talhabayhan.lexi.core.data.db.DatabaseFiles
 import dev.talhabayhan.lexi.core.domain.feedback.Haptics
 import dev.talhabayhan.lexi.core.domain.feedback.SoundPlayer
 import dev.talhabayhan.lexi.core.domain.feedback.Speaker
+import dev.talhabayhan.lexi.core.domain.platform.ShareService
 import dev.talhabayhan.lexi.core.domain.platform.UrlOpener
 import dev.talhabayhan.lexi.core.platform.feedback.AndroidHaptics
 import dev.talhabayhan.lexi.core.platform.feedback.AndroidSoundPlayer
@@ -18,6 +19,7 @@ import dev.talhabayhan.lexi.core.platform.feedback.AndroidSpeaker
 import dev.talhabayhan.lexi.core.platform.feedback.GatedHaptics
 import dev.talhabayhan.lexi.core.platform.feedback.GatedSoundPlayer
 import dev.talhabayhan.lexi.core.platform.feedback.LiveSettings
+import dev.talhabayhan.lexi.core.platform.share.AndroidShareService
 import dev.talhabayhan.lexi.core.platform.uri.AndroidUrlOpener
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -56,4 +58,5 @@ internal fun androidPlatformModule(context: Context): Module = module {
         AndroidSpeaker(context, accent = { settings.current.accent }, timingLog = timingLog)
     } onClose { (it as? AutoCloseable)?.close() }
     single<UrlOpener> { AndroidUrlOpener(context) }
+    single<ShareService> { AndroidShareService(context) }
 }
