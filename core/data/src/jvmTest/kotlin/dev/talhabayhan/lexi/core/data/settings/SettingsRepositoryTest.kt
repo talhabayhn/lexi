@@ -1,5 +1,6 @@
 package dev.talhabayhan.lexi.core.data.settings
 
+import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
@@ -54,7 +55,8 @@ class SettingsRepositoryTest {
             speakOnCorrect = false,
             classicTimeLimitSeconds = 240,
             dailyReminder = true,
-            reminderMinuteOfDay = 7 * 60 + 30,
+            reminderMinuteOfDay = 21 * 60 + 30,
+            reminderPrePromptShown = true,
             dailyGoalWheels = 3,
             reviewReminders = false,
             appLanguage = UiLanguage.EN,
@@ -75,7 +77,7 @@ class SettingsRepositoryTest {
         val dataStore = createSettingsDataStore(path, backgroundScope)
         dataStore.edit {
             it[intPreferencesKey("classic_time_limit_seconds")] = 999
-            it[intPreferencesKey("reminder_minute_of_day")] = -5
+            it[intPreferencesKey("reminder_minute_of_day")] = 7 * 60 + 15
             it[intPreferencesKey("daily_goal_wheels")] = 0
             it[stringPreferencesKey("ui_language")] = "KLINGON"
             it[stringPreferencesKey("accent")] = "UK"
@@ -84,5 +86,26 @@ class SettingsRepositoryTest {
         val settings = SettingsRepositoryImpl(dataStore, GameConfig(), backgroundScope).settings.first()
 
         assertEquals(Settings(accent = Accent.UK), settings)
+    }
+
+    @Test
+    fun `reminder time outside the 08_00-21_30 options falls back to the default`() = runTest {
+        val dataStore = createSettingsDataStore(path, backgroundScope)
+        dataStore.edit { it[intPreferencesKey("reminder_minute_of_day")] = 22 * 60 }
+
+        val settings = SettingsRepositoryImpl(dataStore, GameConfig(), backgroundScope).settings.first()
+
+        assertEquals(Settings.DEFAULT_REMINDER_MINUTE_OF_DAY, settings.reminderMinuteOfDay)
+    }
+
+    @Test
+    fun `reminder pre-prompt flag is stored under reminder_preprompt_shown`() = runTest {
+        val dataStore = createSettingsDataStore(path, backgroundScope)
+        val repository = SettingsRepositoryImpl(dataStore, GameConfig(), backgroundScope)
+
+        repository.setReminderPrePromptShown()
+
+        assertEquals(true, dataStore.data.first()[booleanPreferencesKey("reminder_preprompt_shown")])
+        assertEquals(true, repository.settings.first().reminderPrePromptShown)
     }
 }

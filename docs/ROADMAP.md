@@ -78,13 +78,15 @@ Module mapping (replaces the earlier `composeApp`): `androidApp` = thin Android 
 **Done when:** two devices get the identical daily wheel for the same date and level.
 
 ## M7 — Monetisation, settings, exam packs, telemetry
-- [ ] Settings (`11-settings`) remaining options functional (classic time, goal, languages, accent, Pro card); reminders (notification permission pre-prompt)
-- [ ] RevenueCat: Pro entitlement, paywall (design debt), restore purchases
+- [x] Settings (`11-settings`) remaining options functional (classic time, goal, languages, accent, clue language display, review reminders); daily reminder (local one-shot notifications, ADR 0021) with notification permission pre-prompt (sheet + pre-prompt are design debt)
+- [ ] RevenueCat: Pro entitlement, paywall (design debt), restore purchases, Pro card + footer restore link → do the Play Console re-check below before releasing
 - [ ] Play Console re-check (owner reminder): when AdMob, Firebase, RevenueCat/Pro or login/online rooms are added to a build,
   update before that release goes to production: **Ads** (Yes), **Advertising ID** (Yes + `AD_ID` in merged manifest),
   **Data safety** (draft: `docs/store/data-safety-google.md`), **Login credentials** (test account / Pro access path),
   **Target audience / content rating** (user interaction), privacy policy (SDKs, account data, deletion link),
-  Apple App Privacy + ATT (`docs/store/app-privacy-apple.md`). Current declarations match the SDK-free test build.
+  Apple App Privacy + ATT (`docs/store/app-privacy-apple.md`). Notifications: POST_NOTIFICATIONS (runtime, Android 13+) +
+  RECEIVE_BOOT_COMPLETED for local reminders; no exact alarms; data safety unchanged (local only).
+  Current declarations match the SDK-free test build.
   Store listing: the test-track text omits Pro/ads/analytics paragraphs (`docs/store/listing-*.md`); restore them when those ship.
 - [ ] AdMob rewarded (+1 joker) with UMP consent; interstitial policy from `PRODUCT.md`
 - [ ] Exam packs (`10-exam-packs`) gated by Pro (UI & RevenueCat wiring pending); content compiler pipeline integrated

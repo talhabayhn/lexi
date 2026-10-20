@@ -53,4 +53,16 @@
     <string name="about_section_sources">SOURCES</string>
     <string name="about_sources_content">Clues and example sentences are written for Lexi.</string>
     <string name="about_section_licenses">LICENSES</string>
+
+    <!-- Daily reminder: row value, sheet, pre-prompt (COPY.md section 1) -->
+    <string name="settings_reminder_off">Off</string>
+    <string name="settings_reminder_close">Close</string>
+    <string name="settings_reminder_open_settings">Open settings</string>
+    <string name="settings_reminder_denied_hint">Notifications are off. You can turn them on in Settings.</string>
+    <string name="settings_clue_language_value">Turkish</string>
+    <string name="settings_clue_language_description">Turkish, clue language</string>
+    <string name="reminder_preprompt_title">Want a reminder?</string>
+    <string name="reminder_preprompt_body">At most one a day, at the time you choose.</string>
+    <string name="reminder_preprompt_yes">Yes, remind me</string>
+    <string name="reminder_preprompt_no">Not now</string>
 </resources>

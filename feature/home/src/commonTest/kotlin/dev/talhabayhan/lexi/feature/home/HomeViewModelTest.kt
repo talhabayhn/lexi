@@ -10,6 +10,8 @@ import dev.talhabayhan.lexi.core.domain.joker.GrantDailyJokers
 import dev.talhabayhan.lexi.core.domain.model.CardId
 import dev.talhabayhan.lexi.core.domain.model.CategoryId
 import dev.talhabayhan.lexi.core.domain.model.Level
+import dev.talhabayhan.lexi.core.domain.reminder.PermissionStatus
+import dev.talhabayhan.lexi.core.domain.reminder.ShouldShowReminderPrePrompt
 import dev.talhabayhan.lexi.core.domain.session.DailyResult
 import dev.talhabayhan.lexi.core.domain.session.SessionResult
 import dev.talhabayhan.lexi.core.domain.settings.Settings
@@ -21,6 +23,7 @@ import dev.talhabayhan.lexi.core.testing.FakeCardRepository
 import dev.talhabayhan.lexi.core.testing.FakeContentVersionRepository
 import dev.talhabayhan.lexi.core.testing.FakeDailyRepository
 import dev.talhabayhan.lexi.core.testing.FakeJokerRepository
+import dev.talhabayhan.lexi.core.testing.FakeNotificationPermission
 import dev.talhabayhan.lexi.core.testing.FakeProgressRepository
 import dev.talhabayhan.lexi.core.testing.FakeSessionRepository
 import dev.talhabayhan.lexi.core.testing.FakeSettingsRepository
@@ -57,6 +60,8 @@ class HomeViewModelTest {
     private val getDailyWheel = GetDailyWheel(cards, contentVersion, daily, clock)
     private val getDailyGoalProgress = GetDailyGoalProgress(sessions, settings, clock)
     private val grantDailyJokers = GrantDailyJokers(jokers, streaks, clock, GameConfig())
+    private val permission = FakeNotificationPermission(PermissionStatus.CAN_ASK)
+    private val shouldShowPrePrompt = ShouldShowReminderPrePrompt(settings, sessions, permission)
 
     @BeforeTest
     fun setUp() {
@@ -69,8 +74,16 @@ class HomeViewModelTest {
         Dispatchers.resetMain()
     }
 
-    private fun viewModel(): HomeViewModel =
-        HomeViewModel(progress, getStreakStatus, getDailyWheel, daily, clock, getDailyGoalProgress, grantDailyJokers)
+    private fun viewModel(): HomeViewModel = HomeViewModel(
+        progress,
+        getStreakStatus,
+        getDailyWheel,
+        daily,
+        clock,
+        getDailyGoalProgress,
+        grantDailyJokers,
+        shouldShowPrePrompt,
+    )
 
     private fun runHomeTest(block: suspend TestScope.() -> Unit) = runTest {
         block()
@@ -251,6 +264,7 @@ class HomeViewModelTest {
             dstClock,
             GetDailyGoalProgress(sessions, settings, dstClock),
             GrantDailyJokers(jokers, streaks, dstClock, GameConfig()),
+            shouldShowPrePrompt,
         )
         vm.state.test {
             val state = awaitItem()
@@ -332,6 +346,73 @@ class HomeViewModelTest {
             assertEquals(HomeEffect.NavigateToExamPacks, awaitItem())
         }
     }
+
+    @Test
+    fun `the first time home is shown never opens the reminder pre-prompt`() = runHomeTest {
+        sessions.record(session())
+        val vm = viewModel()
+        vm.effects.test {
+            vm.onIntent(HomeIntent.Entered)
+            expectNoEvents()
+        }
+    }
+
+    @Test
+    fun `returning to home after a real game opens the reminder pre-prompt`() = runHomeTest {
+        val vm = viewModel()
+        vm.effects.test {
+            vm.onIntent(HomeIntent.Entered)
+            sessions.record(session())
+            vm.onIntent(HomeIntent.Entered)
+            assertEquals(HomeEffect.NavigateToReminderPrePrompt, awaitItem())
+            cancelAndIgnoreRemainingEvents()
+        }
+    }
+
+    @Test
+    fun `an app foreground or a return from another screen without a new game never opens the pre-prompt`() =
+        runHomeTest {
+            // Regression: every STARTED (app foreground included) counted as a return to Home.
+            sessions.record(session())
+            val vm = viewModel()
+            vm.effects.test {
+                repeat(3) { vm.onIntent(HomeIntent.Entered) }
+                expectNoEvents()
+            }
+        }
+
+    @Test
+    fun `returning to home after a level test does not open the reminder pre-prompt`() = runHomeTest {
+        val vm = viewModel()
+        vm.effects.test {
+            vm.onIntent(HomeIntent.Entered)
+            sessions.record(session(mode = GameMode.LEVEL_TEST))
+            vm.onIntent(HomeIntent.Entered)
+            expectNoEvents()
+        }
+    }
+
+    @Test
+    fun `the reminder pre-prompt is skipped once shown or with the reminder on or the permission granted`() =
+        runHomeTest {
+            val vm = viewModel()
+            vm.effects.test {
+                vm.onIntent(HomeIntent.Entered)
+                settings.update { it.copy(reminderPrePromptShown = true) }
+                sessions.record(session())
+                vm.onIntent(HomeIntent.Entered)
+                expectNoEvents()
+                settings.update { it.copy(reminderPrePromptShown = false, dailyReminder = true) }
+                sessions.record(session())
+                vm.onIntent(HomeIntent.Entered)
+                expectNoEvents()
+                settings.update { it.copy(dailyReminder = false) }
+                permission.current = PermissionStatus.GRANTED
+                sessions.record(session())
+                vm.onIntent(HomeIntent.Entered)
+                expectNoEvents()
+            }
+        }
 
     private fun session(mode: GameMode = GameMode.CLASSIC, day: Long = today, completed: Boolean = true) =
         SessionResult(

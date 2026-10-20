@@ -2,8 +2,11 @@ package dev.talhabayhan.lexi.feature.settings
 
 import app.cash.turbine.test
 import dev.talhabayhan.lexi.core.domain.platform.AppLinks
+import dev.talhabayhan.lexi.core.domain.reminder.PermissionStatus
+import dev.talhabayhan.lexi.core.domain.reminder.ReminderTimes
 import dev.talhabayhan.lexi.core.domain.settings.AppLanguage
 import dev.talhabayhan.lexi.core.domain.settings.Settings
+import dev.talhabayhan.lexi.core.testing.FakeNotificationPermission
 import dev.talhabayhan.lexi.core.testing.FakeSettingsRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -22,6 +25,7 @@ import kotlin.test.assertTrue
 @OptIn(ExperimentalCoroutinesApi::class)
 class SettingsViewModelTest {
     private val repository = FakeSettingsRepository()
+    private val permission = FakeNotificationPermission(PermissionStatus.GRANTED)
 
     @BeforeTest
     fun setUp() {
@@ -33,7 +37,7 @@ class SettingsViewModelTest {
         Dispatchers.resetMain()
     }
 
-    private fun viewModel() = SettingsViewModel(repository)
+    private fun viewModel() = SettingsViewModel(repository, permission)
 
     @Test
     fun `the first state is the stored settings when the store is already loaded`() = runTest {
@@ -250,5 +254,143 @@ class SettingsViewModelTest {
 
             assertEquals(SettingsEffect.OpenUrl(AppLinks.TERMS_OF_SERVICE), awaitItem())
         }
+    }
+
+    @Test
+    fun `the reminder state follows the store`() = runTest {
+        repository.update { it.copy(dailyReminder = true, reminderMinuteOfDay = 9 * 60 + 30, reviewReminders = false) }
+
+        val state = viewModel().state.value
+
+        assertTrue(state.dailyReminder)
+        assertEquals(9 * 60 + 30, state.reminderMinuteOfDay)
+        assertFalse(state.reviewReminders)
+    }
+
+    @Test
+    fun `review reminders switch writes the setting`() = runTest {
+        val viewModel = viewModel()
+
+        viewModel.onIntent(SettingsIntent.SetReviewReminders(false))
+
+        assertFalse(repository.settings.value.reviewReminders)
+        assertFalse(viewModel.state.value.reviewReminders)
+        viewModel.onIntent(SettingsIntent.SetReviewReminders(true))
+        assertTrue(repository.settings.value.reviewReminders)
+    }
+
+    @Test
+    fun `the reminder sheet opens and closes`() = runTest {
+        val viewModel = viewModel()
+
+        viewModel.onIntent(SettingsIntent.OpenReminderSheet)
+        assertTrue(viewModel.state.value.reminderSheetVisible)
+
+        viewModel.onIntent(SettingsIntent.CloseReminderSheet)
+        assertFalse(viewModel.state.value.reminderSheetVisible)
+    }
+
+    @Test
+    fun `opening the sheet reads the permission and a blocked one shows the hint state`() = runTest {
+        permission.current = PermissionStatus.BLOCKED
+        val viewModel = viewModel()
+
+        viewModel.onIntent(SettingsIntent.OpenReminderSheet)
+
+        assertTrue(viewModel.state.value.notificationsBlocked)
+    }
+
+    @Test
+    fun `refreshing the permission follows the system settings`() = runTest {
+        permission.current = PermissionStatus.BLOCKED
+        val viewModel = viewModel()
+        viewModel.onIntent(SettingsIntent.RefreshNotificationPermission)
+        assertTrue(viewModel.state.value.notificationsBlocked)
+
+        permission.current = PermissionStatus.GRANTED
+        viewModel.onIntent(SettingsIntent.RefreshNotificationPermission)
+
+        assertFalse(viewModel.state.value.notificationsBlocked)
+    }
+
+    @Test
+    fun `turning the reminder on with the permission granted enables it`() = runTest {
+        val viewModel = viewModel()
+
+        viewModel.onIntent(SettingsIntent.SetReminderEnabled(true))
+
+        assertTrue(repository.settings.value.dailyReminder)
+        assertEquals(ReminderTimes.DEFAULT_MINUTE, repository.settings.value.reminderMinuteOfDay)
+        assertEquals(0, permission.requestCalls)
+    }
+
+    @Test
+    fun `turning the reminder on while the OS can ask shows the pre-prompt first and stays off`() = runTest {
+        permission.current = PermissionStatus.CAN_ASK
+        val viewModel = viewModel()
+        viewModel.effects.test {
+            viewModel.onIntent(SettingsIntent.SetReminderEnabled(true))
+
+            assertEquals(SettingsEffect.NavigateToReminderPrePrompt, awaitItem())
+        }
+        assertFalse(repository.settings.value.dailyReminder)
+        assertEquals(0, permission.requestCalls)
+    }
+
+    @Test
+    fun `turning the reminder on while blocked stays off and shows the hint`() = runTest {
+        permission.current = PermissionStatus.BLOCKED
+        val viewModel = viewModel()
+        viewModel.effects.test {
+            viewModel.onIntent(SettingsIntent.SetReminderEnabled(true))
+
+            expectNoEvents()
+        }
+        assertFalse(repository.settings.value.dailyReminder)
+        assertTrue(viewModel.state.value.notificationsBlocked)
+    }
+
+    @Test
+    fun `turning the reminder off writes the setting without asking the OS`() = runTest {
+        repository.update { it.copy(dailyReminder = true) }
+        permission.current = PermissionStatus.BLOCKED
+        val viewModel = viewModel()
+
+        viewModel.onIntent(SettingsIntent.SetReminderEnabled(false))
+
+        assertFalse(repository.settings.value.dailyReminder)
+    }
+
+    @Test
+    fun `picking a time writes it and a time outside the list is ignored`() = runTest {
+        val viewModel = viewModel()
+
+        viewModel.onIntent(SettingsIntent.SetReminderTime(9 * 60))
+        assertEquals(9 * 60, repository.settings.value.reminderMinuteOfDay)
+        assertEquals(9 * 60, viewModel.state.value.reminderMinuteOfDay)
+
+        viewModel.onIntent(SettingsIntent.SetReminderTime(22 * 60))
+        viewModel.onIntent(SettingsIntent.SetReminderTime(9 * 60 + 10))
+        assertEquals(9 * 60, repository.settings.value.reminderMinuteOfDay)
+    }
+
+    @Test
+    fun `open notification settings goes to the system settings`() = runTest {
+        val viewModel = viewModel()
+
+        viewModel.onIntent(SettingsIntent.OpenNotificationSettings)
+
+        assertEquals(1, permission.settingsOpened)
+    }
+
+    @Test
+    fun `a stored change keeps the sheet open`() = runTest {
+        val viewModel = viewModel()
+        viewModel.onIntent(SettingsIntent.OpenReminderSheet)
+
+        repository.update { it.copy(soundEffects = false) }
+
+        assertTrue(viewModel.state.value.reminderSheetVisible)
+        assertFalse(viewModel.state.value.soundEffects)
     }
 }

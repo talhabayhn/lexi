@@ -42,6 +42,7 @@ import dev.talhabayhan.lexi.feature.notebook.notebookScreen
 import dev.talhabayhan.lexi.feature.onboarding.onboardingScreen
 import dev.talhabayhan.lexi.feature.onboarding.result.levelTestResultScreen
 import dev.talhabayhan.lexi.feature.settings.about.aboutScreen
+import dev.talhabayhan.lexi.feature.settings.reminder.reminderPrePromptScreen
 import dev.talhabayhan.lexi.feature.settings.settingsScreen
 import dev.talhabayhan.lexi.feature.stats.statsScreen
 import dev.talhabayhan.lexi.perf.PerfTour
@@ -53,7 +54,8 @@ import org.koin.compose.koinInject
 /**
  * The app graph: `Splash → Home → LevelSelect [→ Categories] → Game → Result`, `Home → Notebook → Game (review)
  * → Result` and `Home → Stats`, `Home → Settings`, `Home → Practice` (level select preselected to Practice) and
- * `Home → Exam packs`. First run: `Splash → Onboarding → Home`, or `Onboarding → LevelTest → LevelTestResult → Home`
+ * `Home → Exam packs`, and `Home → Reminder pre-prompt` (once, after the first real game) or `Settings → Reminder
+ * pre-prompt` (turning the reminder on). First run: `Splash → Onboarding → Home`, or `Onboarding → LevelTest → LevelTestResult → Home`
  * (the result replaces the test; "Pes et" and back from the result return to the onboarding). The
  * result replaces everything above Home, so system back and "Ana menüye dön" both return to Home; TEKRAR OYNA starts
  * the next game in the same place (`Home → Game`). Every navigation to the game first prepares it
@@ -136,13 +138,16 @@ private fun LexiNavGraph(
             onOpenSettings = { navigator.openSettings() },
             onOpenPractice = { navigator.openLevelSelect(GameMode.PRACTICE) },
             onOpenExamPacks = { navigator.openExamPacks() },
+            onOpenReminderPrePrompt = { navigator.openReminderPrePrompt() },
         )
         examPacksScreen(onBack = { navigator.back() })
         settingsScreen(
             onBack = { navigator.back() },
             onOpenAbout = { navigator.openAbout() },
             onOpenUrl = { url -> urlOpener.openUrl(url) },
+            onOpenReminderPrePrompt = { navigator.openReminderPrePrompt() },
         )
+        reminderPrePromptScreen(onDone = { navigator.closeReminderPrePrompt() })
         aboutScreen(
             onBack = { navigator.back() },
             onOpenUrl = { url -> urlOpener.openUrl(url) },

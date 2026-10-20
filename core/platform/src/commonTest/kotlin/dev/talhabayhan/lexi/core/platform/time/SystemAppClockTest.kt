@@ -30,6 +30,22 @@ class SystemAppClockTest {
         assertEquals(-1L, SystemAppClock(fixed) { TimeZone.UTC }.epochDay(-1L))
     }
 
+    @Test
+    fun `minuteOfDay is the local wall-clock minute`() {
+        val atMs = Instant.parse("2026-10-14T22:30:00Z").toEpochMilliseconds()
+
+        assertEquals(22 * 60 + 30, SystemAppClock(fixed) { TimeZone.UTC }.minuteOfDay(atMs))
+        assertEquals(1 * 60 + 30, SystemAppClock(fixed) { TimeZone.of("Europe/Istanbul") }.minuteOfDay(atMs))
+    }
+
+    @Test
+    fun `minuteOfDay follows the DST shift`() {
+        // 2026-03-29 01:00Z: Berlin jumps from 02:00 to 03:00 local; 01:30Z is 03:30 local.
+        val atMs = Instant.parse("2026-03-29T01:30:00Z").toEpochMilliseconds()
+
+        assertEquals(3 * 60 + 30, SystemAppClock(fixed) { TimeZone.of("Europe/Berlin") }.minuteOfDay(atMs))
+    }
+
     private companion object {
         const val NOW_MS = 1_792_000_000_000L
 

@@ -9,6 +9,7 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import dev.talhabayhan.lexi.core.domain.game.GameConfig
+import dev.talhabayhan.lexi.core.domain.reminder.ReminderTimes
 import dev.talhabayhan.lexi.core.domain.repository.SettingsRepository
 import dev.talhabayhan.lexi.core.domain.settings.Accent
 import dev.talhabayhan.lexi.core.domain.settings.ClueLanguage
@@ -58,8 +59,9 @@ internal class SettingsRepositoryImpl(
                 ?: defaults.classicTimeLimitSeconds,
             dailyReminder = this[DAILY_REMINDER] ?: defaults.dailyReminder,
             reminderMinuteOfDay = this[REMINDER_MINUTE]
-                ?.takeIf { it in 0 until Settings.MINUTES_PER_DAY }
+                ?.takeIf { it in ReminderTimes.optionsMinuteOfDay }
                 ?: defaults.reminderMinuteOfDay,
+            reminderPrePromptShown = this[REMINDER_PREPROMPT_SHOWN] ?: defaults.reminderPrePromptShown,
             dailyGoalWheels = this[DAILY_GOAL]?.takeIf { it >= 1 } ?: defaults.dailyGoalWheels,
             reviewReminders = this[REVIEW_REMINDERS] ?: defaults.reviewReminders,
             appLanguage = enumOrNull<UiLanguage>(this[UI_LANGUAGE]) ?: defaults.appLanguage,
@@ -75,6 +77,7 @@ internal class SettingsRepositoryImpl(
         this[CLASSIC_TIME_LIMIT] = settings.classicTimeLimitSeconds
         this[DAILY_REMINDER] = settings.dailyReminder
         this[REMINDER_MINUTE] = settings.reminderMinuteOfDay
+        this[REMINDER_PREPROMPT_SHOWN] = settings.reminderPrePromptShown
         this[DAILY_GOAL] = settings.dailyGoalWheels
         this[REVIEW_REMINDERS] = settings.reviewReminders
         this[UI_LANGUAGE] = settings.uiLanguage.name
@@ -92,6 +95,7 @@ internal class SettingsRepositoryImpl(
         val CLASSIC_TIME_LIMIT = intPreferencesKey("classic_time_limit_seconds")
         val DAILY_REMINDER = booleanPreferencesKey("daily_reminder")
         val REMINDER_MINUTE = intPreferencesKey("reminder_minute_of_day")
+        val REMINDER_PREPROMPT_SHOWN = booleanPreferencesKey("reminder_preprompt_shown")
         val DAILY_GOAL = intPreferencesKey("daily_goal_wheels")
         val REVIEW_REMINDERS = booleanPreferencesKey("review_reminders")
         val UI_LANGUAGE = stringPreferencesKey("ui_language")

@@ -32,4 +32,9 @@ public class SystemAppClock internal constructor(private val clock: Clock, priva
         val nextMidnight = LocalDateTime(tomorrow, LocalTime(0, 0, 0, 0))
         return (nextMidnight.toInstant(tz).toEpochMilliseconds() - atMs).coerceAtLeast(0L)
     }
+
+    override fun minuteOfDay(atMs: Long): Int {
+        val time = Instant.fromEpochMilliseconds(atMs).toLocalDateTime(timeZone()).time
+        return time.hour * 60 + time.minute
+    }
 }

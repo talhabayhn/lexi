@@ -21,6 +21,7 @@ import dev.talhabayhan.lexi.feature.onboarding.OnboardingRoute
 import dev.talhabayhan.lexi.feature.onboarding.result.LevelTestResultRoute
 import dev.talhabayhan.lexi.feature.settings.SettingsRoute
 import dev.talhabayhan.lexi.feature.settings.about.AboutRoute
+import dev.talhabayhan.lexi.feature.settings.reminder.ReminderPrePromptRoute
 import dev.talhabayhan.lexi.feature.stats.StatsRoute
 import dev.talhabayhan.lexi.splash.SplashRoute
 import kotlinx.coroutines.CoroutineScope
@@ -127,6 +128,23 @@ internal class LexiNavigator(
 
     /** Also the pause dialog's "Ayarlar": the game stays on the back stack, paused. */
     fun openSettings(): Boolean = ifResumed { navigate(SettingsRoute) { launchSingleTop = true } }
+
+    /**
+     * The reminder pre-prompt, from Home (proactive, back from a game) or from the settings (turning the reminder on).
+     * Only above one of those two, and no second copy. Not RESUMED-guarded: Home's effect fires while it is still
+     * finishing its return transition, and a dropped call would lose the one-time prompt.
+     */
+    fun openReminderPrePrompt(): Boolean {
+        val destination = navController.currentBackStackEntry?.destination ?: return false
+        if (!destination.hasRoute(HomeRoute::class) && !destination.hasRoute(SettingsRoute::class)) return false
+        navController.navigate(ReminderPrePromptRoute) { launchSingleTop = true }
+        return true
+    }
+
+    /** Either answer of the pre-prompt: back to where it came from (Home or the settings). */
+    fun closeReminderPrePrompt() {
+        navController.popBackStack(ReminderPrePromptRoute, inclusive = true)
+    }
 
     fun openAbout(): Boolean = ifResumed { navigate(AboutRoute) { launchSingleTop = true } }
 

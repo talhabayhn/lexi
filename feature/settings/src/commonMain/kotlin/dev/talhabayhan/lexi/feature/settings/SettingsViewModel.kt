@@ -4,6 +4,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dev.talhabayhan.lexi.core.domain.game.GameConfig
 import dev.talhabayhan.lexi.core.domain.platform.AppLinks
+import dev.talhabayhan.lexi.core.domain.reminder.NotificationPermission
+import dev.talhabayhan.lexi.core.domain.reminder.PermissionStatus
+import dev.talhabayhan.lexi.core.domain.reminder.ReminderTimes
 import dev.talhabayhan.lexi.core.domain.repository.SettingsRepository
 import dev.talhabayhan.lexi.core.domain.settings.Accent
 import dev.talhabayhan.lexi.core.domain.settings.AppLanguage
@@ -17,6 +20,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.receiveAsFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 /**
@@ -25,10 +29,11 @@ import kotlinx.coroutines.launch
  */
 internal class SettingsViewModel(
     private val settings: SettingsRepository,
+    private val permission: NotificationPermission,
     private val config: GameConfig = GameConfig(),
 ) : ViewModel() {
     // Starts from the stored values when they are already loaded, so the screen composes once with the real ones.
-    private val mutableState = MutableStateFlow(settings.loaded.value?.toUiState() ?: SettingsUiState())
+    private val mutableState = MutableStateFlow(settings.loaded.value?.let { withStored(it) } ?: SettingsUiState())
     val state: StateFlow<SettingsUiState> = mutableState.asStateFlow()
 
     private val effectChannel = Channel<SettingsEffect>(Channel.BUFFERED)
@@ -39,7 +44,7 @@ internal class SettingsViewModel(
             settings.settings
                 // A broken read keeps the defaults shown; the switches still try to write. TODO(M7): report it.
                 .catch { }
-                .collect { mutableState.value = it.toUiState() }
+                .collect { value -> mutableState.update { current -> withStored(value, current) } }
         }
     }
 
@@ -94,11 +99,49 @@ internal class SettingsViewModel(
 
             is SettingsIntent.SetAccent -> write { it.copy(accent = intent.accent) }
 
+            is SettingsIntent.SetReviewReminders -> write { it.copy(reviewReminders = intent.enabled) }
+
+            SettingsIntent.OpenReminderSheet -> {
+                mutableState.update { it.copy(reminderSheetVisible = true) }
+                refreshPermission()
+            }
+
+            SettingsIntent.CloseReminderSheet -> mutableState.update { it.copy(reminderSheetVisible = false) }
+
+            is SettingsIntent.SetReminderEnabled ->
+                if (intent.enabled) turnReminderOn() else write { it.copy(dailyReminder = false) }
+
+            is SettingsIntent.SetReminderTime -> if (intent.minuteOfDay in ReminderTimes.optionsMinuteOfDay) {
+                write { it.copy(reminderMinuteOfDay = intent.minuteOfDay) }
+            }
+
+            SettingsIntent.RefreshNotificationPermission -> refreshPermission()
+
+            SettingsIntent.OpenNotificationSettings -> permission.openSystemSettings()
+
             SettingsIntent.OpenAbout -> effectChannel.trySend(SettingsEffect.NavigateToAbout)
 
             SettingsIntent.OpenPrivacy -> effectChannel.trySend(SettingsEffect.OpenUrl(AppLinks.PRIVACY_POLICY))
 
             SettingsIntent.OpenTerms -> effectChannel.trySend(SettingsEffect.OpenUrl(AppLinks.TERMS_OF_SERVICE))
+        }
+    }
+
+    /** Granted: on. Can ask: our pre-prompt (it asks the OS and turns the reminder on). Blocked: stays off, hint. */
+    private fun turnReminderOn() {
+        viewModelScope.launch {
+            when (permission.status()) {
+                PermissionStatus.GRANTED -> write { it.copy(dailyReminder = true) }
+                PermissionStatus.CAN_ASK -> effectChannel.trySend(SettingsEffect.NavigateToReminderPrePrompt)
+                PermissionStatus.BLOCKED -> mutableState.update { it.copy(notificationsBlocked = true) }
+            }
+        }
+    }
+
+    private fun refreshPermission() {
+        viewModelScope.launch {
+            val blocked = permission.status() == PermissionStatus.BLOCKED
+            mutableState.update { it.copy(notificationsBlocked = blocked) }
         }
     }
 
@@ -119,12 +162,16 @@ internal class SettingsViewModel(
     }
 }
 
-private fun Settings.toUiState() = SettingsUiState(
-    soundEffects = soundEffects,
-    haptics = haptics,
-    speakOnCorrect = speakOnCorrect,
-    classicTimeLimitSeconds = classicTimeLimitSeconds,
-    dailyGoalWheels = dailyGoalWheels,
-    appLanguage = appLanguage,
-    accent = accent,
+/** The stored values on top of the sheet state, which isn't stored. */
+private fun withStored(settings: Settings, current: SettingsUiState = SettingsUiState()) = current.copy(
+    soundEffects = settings.soundEffects,
+    haptics = settings.haptics,
+    speakOnCorrect = settings.speakOnCorrect,
+    classicTimeLimitSeconds = settings.classicTimeLimitSeconds,
+    dailyGoalWheels = settings.dailyGoalWheels,
+    dailyReminder = settings.dailyReminder,
+    reminderMinuteOfDay = settings.reminderMinuteOfDay,
+    reviewReminders = settings.reviewReminders,
+    appLanguage = settings.appLanguage,
+    accent = settings.accent,
 )

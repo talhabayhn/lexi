@@ -7,12 +7,14 @@ import dev.talhabayhan.lexi.core.domain.daily.GetDailyWheel
 import dev.talhabayhan.lexi.core.domain.goal.GetDailyGoalProgress
 import dev.talhabayhan.lexi.core.domain.joker.GrantDailyJokers
 import dev.talhabayhan.lexi.core.domain.joker.JokerGrantReason
+import dev.talhabayhan.lexi.core.domain.reminder.ShouldShowReminderPrePrompt
 import dev.talhabayhan.lexi.core.domain.repository.DailyRepository
 import dev.talhabayhan.lexi.core.domain.repository.ProgressRepository
 import dev.talhabayhan.lexi.core.domain.stats.Stats
 import dev.talhabayhan.lexi.core.domain.streak.GetStreakStatus
 import dev.talhabayhan.lexi.core.domain.time.AppClock
 import dev.talhabayhan.lexi.core.domain.time.civilDateOfEpochDay
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
@@ -26,6 +28,8 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 
 /** Home (`02-home`): streak, daily card, notebook and statistics numbers from the repositories; navigation as effects. */
 internal class HomeViewModel(
@@ -36,6 +40,7 @@ internal class HomeViewModel(
     private val appClock: AppClock,
     getDailyGoalProgress: GetDailyGoalProgress,
     private val grantDailyJokers: GrantDailyJokers,
+    private val shouldShowReminderPrePrompt: ShouldShowReminderPrePrompt,
 ) : ViewModel() {
     private val mutableState = MutableStateFlow(HomeUiState())
     val state: StateFlow<HomeUiState> = mutableState.asStateFlow()
@@ -44,6 +49,13 @@ internal class HomeViewModel(
     val effects: Flow<HomeEffect> = effectChannel.receiveAsFlow()
 
     private val today = MutableStateFlow(appClock.currentDay())
+
+    /**
+     * Completed real games when Home was last shown; null before its first appearance (app start or the end of the
+     * onboarding), which is never a return from a game. [entryMutex] keeps two quick appearances in order.
+     */
+    private var realGamesSeen: Int? = null
+    private val entryMutex = Mutex()
 
     init {
         viewModelScope.launch {
@@ -114,6 +126,30 @@ internal class HomeViewModel(
         return hours to minutes
     }
 
+    /**
+     * Home appeared. Only when a real game was completed since its last appearance (back from a game's result) may the
+     * pre-prompt open, at most once ever: an app start, an app foreground or a return from settings, notebook or stats
+     * leaves the count unchanged.
+     */
+    private fun onEntered() {
+        viewModelScope.launch {
+            try {
+                entryMutex.withLock {
+                    val count = shouldShowReminderPrePrompt.realGameCount()
+                    val previous = realGamesSeen
+                    realGamesSeen = count
+                    if (previous != null && count > previous && shouldShowReminderPrePrompt()) {
+                        effectChannel.trySend(HomeEffect.NavigateToReminderPrePrompt)
+                    }
+                }
+            } catch (e: CancellationException) {
+                throw e
+            } catch (@Suppress("TooGenericExceptionCaught") e: Exception) {
+                // No prompt is better than a broken home screen.
+            }
+        }
+    }
+
     private suspend fun checkDailyGift() {
         try {
             val grants = grantDailyJokers()
@@ -154,6 +190,8 @@ internal class HomeViewModel(
                     }
                 }
             }
+
+            HomeIntent.Entered -> onEntered()
 
             HomeIntent.DismissNotice -> {
                 mutableState.update { it.copy(dailyGiftNotice = null) }

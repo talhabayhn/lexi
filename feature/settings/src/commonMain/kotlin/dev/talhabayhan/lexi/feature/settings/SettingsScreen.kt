@@ -21,16 +21,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.clearAndSetSemantics
-import androidx.compose.ui.semantics.disabled
-import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import dev.talhabayhan.lexi.core.designsystem.component.AdaptiveTrailingRow
 import dev.talhabayhan.lexi.core.designsystem.component.CountChip
-import dev.talhabayhan.lexi.core.designsystem.component.JokerRowDefaults
 import dev.talhabayhan.lexi.core.designsystem.component.ListCard
 import dev.talhabayhan.lexi.core.designsystem.component.ListDefaults
 import dev.talhabayhan.lexi.core.designsystem.component.ListRow
@@ -38,17 +35,21 @@ import dev.talhabayhan.lexi.core.designsystem.component.ListRowValue
 import dev.talhabayhan.lexi.core.designsystem.component.NavSquareButton
 import dev.talhabayhan.lexi.core.designsystem.component.ProBanner
 import dev.talhabayhan.lexi.core.designsystem.format.formatClock
+import dev.talhabayhan.lexi.core.designsystem.format.formatTimeOfDay
 import dev.talhabayhan.lexi.core.designsystem.icon.LexiIcons
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.core.designsystem.theme.lexiContentWidth
 import dev.talhabayhan.lexi.core.domain.AppInfo
 import dev.talhabayhan.lexi.core.domain.settings.AppLanguage
 import dev.talhabayhan.lexi.core.platform.language.isIos
+import dev.talhabayhan.lexi.feature.settings.components.ReminderSheet
 import dev.talhabayhan.lexi.feature.settings.generated.resources.Res
 import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_accent
 import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_back
 import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_classic_time
 import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_clue_language
+import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_clue_language_description
+import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_clue_language_value
 import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_daily_goal
 import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_daily_goal_wheels
 import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_daily_reminder
@@ -65,6 +66,7 @@ import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_langua
 import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_language_tr
 import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_pro_subtitle
 import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_pro_title
+import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_reminder_off
 import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_review_reminders
 import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_section_game
 import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_section_language
@@ -78,16 +80,31 @@ import org.jetbrains.compose.resources.pluralStringResource
 import org.jetbrains.compose.resources.stringResource
 
 /**
- * `11-settings`: back button and title, the Lexi Pro card, then the OYUN, ÖĞRENME and DİL cards. The switches
- * (sound, haptics, speak-on-correct), classic time, daily goal and accent rows are live; the Pro card, reminder,
- * notebook review reminders, UI language and clue language are shown with a "YAKINDA" chip. The page scrolls on small
- * screens; the footer links wait for M7 too.
+ * `11-settings`: back button and title, the Lexi Pro card, then the OYUN, ÖĞRENME and DİL cards. Every row is live
+ * except the Pro card (a "YAKINDA" chip until the store arrives) and the clue language, which is fixed to Turkish
+ * (no chevron, read as "Türkçe, ipucu dili", not clickable). The reminder row shows its time ("20:00", "Kapalı" when
+ * off) and opens the [ReminderSheet]. The page scrolls on small screens; the footer links open About, privacy and
+ * terms.
  */
 @Composable
 internal fun SettingsScreen(state: SettingsUiState, onIntent: (SettingsIntent) -> Unit, modifier: Modifier = Modifier) {
+    Box(modifier.fillMaxSize()) {
+        SettingsPage(state, onIntent)
+        ReminderSheet(
+            visible = state.reminderSheetVisible,
+            enabled = state.dailyReminder,
+            minuteOfDay = state.reminderMinuteOfDay,
+            blocked = state.notificationsBlocked,
+            onIntent = onIntent,
+        )
+    }
+}
+
+@Composable
+private fun SettingsPage(state: SettingsUiState, onIntent: (SettingsIntent) -> Unit) {
     val dimens = LexiTheme.dimens
     Column(
-        modifier = modifier
+        modifier = Modifier
             .fillMaxSize()
             .background(LexiTheme.colors.cream)
             .windowInsetsPadding(WindowInsets.safeDrawing)
@@ -133,7 +150,18 @@ internal fun SettingsScreen(state: SettingsUiState, onIntent: (SettingsIntent) -
             }
         }
         Section(Res.string.settings_section_learning) {
-            SoonRow(Res.string.settings_daily_reminder)
+            ListRow(
+                label = stringResource(Res.string.settings_daily_reminder),
+                onClick = { onIntent(SettingsIntent.OpenReminderSheet) },
+            ) {
+                ListRowValue(
+                    if (state.dailyReminder) {
+                        formatTimeOfDay(state.reminderMinuteOfDay)
+                    } else {
+                        stringResource(Res.string.settings_reminder_off)
+                    },
+                )
+            }
             ListRow(
                 label = stringResource(Res.string.settings_daily_goal),
                 onClick = { onIntent(SettingsIntent.CycleDailyGoal) },
@@ -146,7 +174,11 @@ internal fun SettingsScreen(state: SettingsUiState, onIntent: (SettingsIntent) -
                     ),
                 )
             }
-            SoonRow(Res.string.settings_review_reminders)
+            ListRow(
+                label = stringResource(Res.string.settings_review_reminders),
+                checked = state.reviewReminders,
+                onCheckedChange = { onIntent(SettingsIntent.SetReviewReminders(it)) },
+            )
         }
         Section(Res.string.settings_section_language) {
             ListRow(
@@ -182,7 +214,7 @@ internal fun SettingsScreen(state: SettingsUiState, onIntent: (SettingsIntent) -
                     },
                 )
             }
-            SoonRow(Res.string.settings_clue_language)
+            ClueLanguageRow()
             ListRow(
                 label = stringResource(Res.string.settings_accent),
                 onClick = { onIntent(SettingsIntent.CycleAccent) },
@@ -304,23 +336,15 @@ private fun Section(title: StringResource, rows: @Composable () -> Unit) {
     }
 }
 
-/** A row that arrives in M7: faded label (the disabled look of the game inputs), full-strength "YAKINDA" chip. */
+/** Turkish is the only clue language in v1: the value without a chevron, one non-clickable node. */
 @Composable
-private fun SoonRow(label: StringResource) {
-    ListRow(modifier = Modifier.semantics { disabled() }) {
-        AdaptiveTrailingRow(
-            gap = ListDefaults.RowGap,
-            stackedGap = LexiTheme.dimens.gap4,
-            modifier = Modifier.weight(1f),
-            main = {
-                Text(
-                    text = stringResource(label),
-                    style = LexiTheme.typography.body16SemiBold,
-                    modifier = Modifier.alpha(JokerRowDefaults.DISABLED_ALPHA),
-                )
-            },
-            trailing = { CountChip(stringResource(Res.string.settings_soon)) },
-        )
+private fun ClueLanguageRow() {
+    val description = stringResource(Res.string.settings_clue_language_description)
+    ListRow(
+        label = stringResource(Res.string.settings_clue_language),
+        modifier = Modifier.clearAndSetSemantics { contentDescription = description },
+    ) {
+        Text(stringResource(Res.string.settings_clue_language_value), style = LexiTheme.typography.bodyStrong15)
     }
 }
 

@@ -3,6 +3,10 @@
     <!-- Haptics (normal permission, no prompt). -->
     <uses-permission android:name="android.permission.VIBRATE" />
 
+    <!-- Daily reminder (ADR 0021): local notifications; inexact alarms need no SCHEDULE_EXACT_ALARM. -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
     <!-- TextToSpeech engine discovery (package visibility, Android 11+). -->
     <queries>
         <intent>
@@ -31,6 +35,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Reminder receivers are declared in core:platform's manifest and merged in (ADR 0021). -->
 
         <!-- Share card: exposes only cache/share/ to the chooser target (ADR 0020). -->
         <provider

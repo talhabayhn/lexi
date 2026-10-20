@@ -1,6 +1,6 @@
 # Lexi — copy deck (TR primary, EN secondary)
 
-> DRAFT for owner review. Nothing here is wired into the app; strings.xml is untouched. Keys follow the existing
+> DRAFT for owner review. Only §1 (reminders) is wired (M7, ADR 0021); the rest is not. Keys follow the existing
 > resource naming (`feature_screen_element`); rename freely when wiring. Budget = max characters, **both languages**
 > (verified by script; Turkish runs ~15 % longer, so write it first). `{n}` / `{name}` are placeholders.
 > Exam names appear only where marked **(EXAM)** — see `DECISIONS.md` → Open decisions before shipping them in store text.
@@ -12,9 +12,14 @@ Numbers and facts over adjectives. Bauhaus-clean = few words, one idea per line.
 ## 1. Reminder notifications
 
 Rules: **max 1 per day**, only when the user enabled the reminder (off until the pre-prompt), never inside **quiet
-hours** (default 22:00–08:00 local, user-configurable; a reminder due inside quiet hours moves to the end of them),
+hours** (22:00–08:00; the time list stops at 21:30, so quiet hours can't be hit),
 never twice for the same reason in a row, stop the comeback series after the 14-day message (no more after that
 until the user returns). Title = app name by default on iOS; the title below is the Android/iOS title.
+
+**Wired (M7, ADR 0021):** time options 08:00–21:30 in 30-min steps, default 20:00, reminder off by default. Quiet-hours
+row (`reminder_quiet_hours_*`) deferred until it has a design. Planner: play = completed wheel or streak day; from 3 days
+without play only comeback 3/7/14, then stop; daily priority streak > review > daily (`epochDay % 3`); no same key on
+consecutive days; never-played user treated as played yesterday; `notif_goal` not used yet.
 
 | Key | Trigger | TR title | TR body | EN title | EN body | Budget (title/body) |
 |---|---|---|---|---|---|---|
@@ -39,7 +44,7 @@ Pre-prompt (before the OS permission dialog, onboarding layout — design debt):
 | `reminder_preprompt_body` | Günde en fazla bir bildirim göndeririz. İstediğin saati sen seçersin. | At most one a day, at the time you choose. | 80 |
 | `reminder_preprompt_yes` | Evet, hatırlat | Yes, remind me | 18 |
 | `reminder_preprompt_no` | Şimdi değil | Not now | 18 |
-| `reminder_denied_hint` | Bildirimler kapalı. Ayarlar'dan açabilirsin. | Notifications are off. You can turn them on in Settings. | 70 |
+| `settings_reminder_denied_hint` | Bildirimler kapalı. Ayarlar'dan açabilirsin. | Notifications are off. You can turn them on in Settings. | 70 |
 | `reminder_quiet_hours_label` | Sessiz saatler | Quiet hours | 24 |
 | `reminder_quiet_hours_hint` | Bu saatlerde bildirim göndermeyiz. | We won't send notifications during these hours. | 60 |
 

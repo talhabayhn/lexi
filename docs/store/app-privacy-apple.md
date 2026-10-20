@@ -74,7 +74,7 @@ Why: Lexi is a vocabulary game that will appeal to teens and students (LGS/YKS a
 | News app | No |
 | Advertising ID | Yes (AdMob); declare in the Advertising ID form; keep AD_ID permission |
 | Account deletion | N/A (no accounts) |
-| Photo & video permissions / Exact alarms | Declare if reminder uses exact alarms (VERIFY; prefer inexact WorkManager to avoid `SCHEDULE_EXACT_ALARM`) |
+| Photo & video permissions / Exact alarms | None: reminders are inexact (Android) and local calendar notifications (iOS, ADR 0021); no exact-alarm permission |
 | Subscriptions | Configure products (monthly, yearly, lifetime as one-time in-app product) + free-trial offers; prices set in Play Console |
 | Store listing | `listing-*.md`; graphics owned elsewhere |
 | App category / tags / contact details | Game → Word; email talhabayhan.aps@gmail.com; website https://talhabayhn.github.io/lexi; phone optional |

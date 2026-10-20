@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application>
+        <!-- Reminder alarm (fired by our own AlarmManager PendingIntent) and re-arm after boot, clock/zone change and
+             update (system broadcasts, which can reach a non-exported receiver). Declared here, next to the classes,
+             so the app manifest merges them (ADR 0021). -->
+        <receiver
+            android:name="dev.talhabayhan.lexi.core.platform.reminder.ReminderAlarmReceiver"
+            android:exported="false" />
+        <receiver
+            android:name="dev.talhabayhan.lexi.core.platform.reminder.ReminderRescheduleReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+            </intent-filter>
+        </receiver>
+    </application>
+</manifest>

@@ -1,9 +1,11 @@
 package dev.talhabayhan.lexi.core.domain.settings
 
 import dev.talhabayhan.lexi.core.domain.game.GameConfig
+import dev.talhabayhan.lexi.core.domain.reminder.ReminderTimes
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
+import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
 class SettingsTest {
@@ -17,6 +19,15 @@ class SettingsTest {
         assertEquals(1, settings.dailyGoalWheels)
         assertEquals(ClueLanguage.TR, settings.clueLanguage)
         assertEquals(Accent.US, settings.accent)
+    }
+
+    @Test
+    fun reminder_isOffAndPrePromptNotShownByDefault() {
+        val settings = Settings()
+
+        assertFalse(settings.dailyReminder)
+        assertFalse(settings.reminderPrePromptShown)
+        assertTrue(settings.reminderMinuteOfDay in ReminderTimes.optionsMinuteOfDay)
     }
 
     @Test

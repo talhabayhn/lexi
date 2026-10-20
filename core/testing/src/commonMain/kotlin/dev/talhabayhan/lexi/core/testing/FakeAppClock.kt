@@ -16,12 +16,15 @@ public class FakeAppClock(public var currentMs: Long = DEFAULT_NOW_MS, public va
         return (MS_PER_DAY - msInDay).coerceAtLeast(0L)
     }
 
+    override fun minuteOfDay(atMs: Long): Int = ((atMs + utcOffsetMs).mod(MS_PER_DAY) / MS_PER_MINUTE).toInt()
+
     public fun advanceBy(ms: Long) {
         currentMs += ms
     }
 
     public companion object {
         public const val MS_PER_DAY: Long = 86_400_000L
+        public const val MS_PER_MINUTE: Long = 60_000L
 
         /** 2026-10-15T12:00:00Z (epoch day 20 741). */
         public const val DEFAULT_NOW_MS: Long = 20_741L * MS_PER_DAY + MS_PER_DAY / 2

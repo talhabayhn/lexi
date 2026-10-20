@@ -29,6 +29,7 @@ fun NavGraphBuilder.homeScreen(
     onOpenSettings: () -> Unit,
     onOpenPractice: () -> Unit,
     onOpenExamPacks: () -> Unit,
+    onOpenReminderPrePrompt: () -> Unit = {},
 ) {
     composable<HomeRoute> {
         HomeRoute(
@@ -39,6 +40,7 @@ fun NavGraphBuilder.homeScreen(
             onOpenSettings = onOpenSettings,
             onOpenPractice = onOpenPractice,
             onOpenExamPacks = onOpenExamPacks,
+            onOpenReminderPrePrompt = onOpenReminderPrePrompt,
         )
     }
 }
@@ -52,6 +54,7 @@ internal fun HomeRoute(
     onOpenSettings: () -> Unit,
     onOpenPractice: () -> Unit,
     onOpenExamPacks: () -> Unit,
+    onOpenReminderPrePrompt: () -> Unit,
     viewModel: HomeViewModel = koinViewModel(),
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
@@ -62,6 +65,7 @@ internal fun HomeRoute(
     val currentOnOpenSettings by rememberUpdatedState(onOpenSettings)
     val currentOnOpenPractice by rememberUpdatedState(onOpenPractice)
     val currentOnOpenExamPacks by rememberUpdatedState(onOpenExamPacks)
+    val currentOnOpenReminderPrePrompt by rememberUpdatedState(onOpenReminderPrePrompt)
     val lifecycleOwner = LocalLifecycleOwner.current
     LaunchedEffect(viewModel, lifecycleOwner) {
         lifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -74,6 +78,7 @@ internal fun HomeRoute(
                     HomeEffect.NavigateToSettings -> currentOnOpenSettings()
                     HomeEffect.NavigateToPractice -> currentOnOpenPractice()
                     HomeEffect.NavigateToExamPacks -> currentOnOpenExamPacks()
+                    HomeEffect.NavigateToReminderPrePrompt -> currentOnOpenReminderPrePrompt()
                 }
             }
         }
@@ -81,6 +86,7 @@ internal fun HomeRoute(
     // Periodic refresh (daily card state, streak badge, countdown) on resume and once per minute while STARTED.
     LaunchedEffect(viewModel, lifecycleOwner) {
         lifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+            viewModel.onIntent(HomeIntent.Entered)
             viewModel.onIntent(HomeIntent.Refresh)
             while (true) {
                 kotlinx.coroutines.delay(60_000L)

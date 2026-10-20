@@ -17,4 +17,9 @@ public interface SettingsRepository {
 
     /** Atomically applies [transform] to the stored settings. */
     public suspend fun update(transform: (Settings) -> Settings)
+
+    /** Stores `Settings.reminderPrePromptShown` (the one-time reminder pre-prompt). */
+    public suspend fun setReminderPrePromptShown(shown: Boolean = true) {
+        update { it.copy(reminderPrePromptShown = shown) }
+    }
 }

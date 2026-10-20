@@ -7,6 +7,8 @@ import dev.talhabayhan.lexi.core.domain.feedback.SoundPlayer
 import dev.talhabayhan.lexi.core.domain.feedback.Speaker
 import dev.talhabayhan.lexi.core.domain.platform.ShareService
 import dev.talhabayhan.lexi.core.domain.platform.UrlOpener
+import dev.talhabayhan.lexi.core.domain.reminder.NotificationPermission
+import dev.talhabayhan.lexi.core.domain.reminder.ReminderScheduler
 import dev.talhabayhan.lexi.feature.game.GameRoute
 import dev.talhabayhan.lexi.feature.game.result.ResultRoute
 import dev.talhabayhan.lexi.feature.levels.CategoriesRoute
@@ -30,6 +32,8 @@ class AppModulesTest {
                 Speaker::class,
                 UrlOpener::class,
                 ShareService::class,
+                ReminderScheduler::class,
+                NotificationPermission::class,
                 Haptics::class,
                 SoundPlayer::class,
                 SavedStateHandle::class,

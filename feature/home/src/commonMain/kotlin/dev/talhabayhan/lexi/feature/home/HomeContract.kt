@@ -70,6 +70,13 @@ internal sealed interface HomeIntent {
     /** The screen is in the foreground again: "today" may have changed since the last time. */
     data object Resumed : HomeIntent
 
+    /**
+     * Home came to the foreground (every STARTED, app foreground included). Only when a real game was completed since
+     * the previous one, i.e. back from a game's result, may the one-time reminder pre-prompt open
+     * ([HomeEffect.NavigateToReminderPrePrompt]).
+     */
+    data object Entered : HomeIntent
+
     /** OYNA: opens the level and mode select. */
     data object Play : HomeIntent
 
@@ -106,4 +113,7 @@ internal sealed interface HomeEffect {
     data object NavigateToPractice : HomeEffect
 
     data object NavigateToExamPacks : HomeEffect
+
+    /** The proactive reminder pre-prompt: after the first real game, back on Home (`ShouldShowReminderPrePrompt`). */
+    data object NavigateToReminderPrePrompt : HomeEffect
 }

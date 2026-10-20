@@ -68,6 +68,11 @@ wheel; streak = consecutive local days with ≥ 1 completed wheel (Practice/duel
 | D13 | Daylight-saving change night (TR has none; test a device set to a DST zone) | Day lengths 23/25 h do not break day rollover |
 | D14 | Auto time zone off, manual clock wrong, then fixed | No crash; document |
 | D15 | Reminder (after M7): daily not played at reminder time | Max 1 notification/day, none in quiet hours |
+| D16 | Android 13+: turn reminder on (or pre-prompt "Evet, hatırlat") | System notification dialog once; none at app start |
+| D17 | Deny the permission | Switch stays off; sheet shows `settings_reminder_denied_hint` and an "open settings" button |
+| D18 | Reboot with reminder on | Reminder still fires at the chosen time (re-armed on boot) |
+| D19 | Change time zone (manual, then back) | Reminder re-armed; fires at the chosen local time |
+| D20 | iOS (needs Mac): permission prompt, delivery | Prompt once; notification arrives at the chosen time with the app closed |
 
 ## 4. Content checks
 1. Spot-check 30 random cards per level (A1…NAT): Turkish clue unambiguous, answer correct, **American spelling**

@@ -8,6 +8,7 @@ row when a decision is made; change `Status` instead of deleting rows (`Accepted
 
 | Date | Decision | Why | Alternatives | Status |
 |---|---|---|---|---|
+| 2026-10-20 | **M7 settings & reminders**: reminder row opens a ReminderSheet bottom sheet (design debt) with on/off + times 08:00–21:30 in 30-min steps, default 20:00 (quiet hours 22–08 can't be hit; configurable quiet-hours row waits for a design); notification pre-prompt from Settings and once on Home after the first completed wheel (never during onboarding); reminder content per `COPY.md` §1 without `notif_goal`, after 3 days without play only the 3/7/14-day comeback messages, the same message key never two days in a row; Pro card keeps "YAKINDA" and moves to the RevenueCat/paywall item; clue language row shows "Türkçe" with no chevron until a second language exists | No design for quiet hours, time picker or paywall; no dead ends; local-only planned notifications | Configurable quiet hours now; paywall stub route; proactive prompt in onboarding | Accepted (owner; ADR 0021) |
 | 2026-10 | **Shared mixed-level daily wheel**: 26 slots with fixed counts A1×6, A2×5, B1×5, B2×4, C1×3, NAT×3; stored with `level = "SHARED"` sentinel | One identical wheel for everybody on a date (shareable, comparable); every player meets their level and a stretch | Wheel per level (4 wheels/day to play and verify); player-level only wheel | Accepted |
 | 2026-10 | **Per-level points for the daily wheel**: A1 5, A2 7, B1 10, B2 13, C1 16, NAT 20 per correct answer | A mixed wheel must reward harder words fairly; flat 10 would favour easy letters | Level multiplier ×1.0–1.7 of `GAME_RULES.md` §6; flat points | Accepted |
 | 2026-10 | **Pass has no penalty** (0 points, returns next lap); wrong = 0 too | Matches the TV-show feel and keeps learners from guessing; time is the real cost | Negative points for pass/wrong | Accepted |
@@ -20,6 +21,8 @@ row when a decision is made; change `Status` instead of deleting rows (`Accepted
 | 2026-10 | **Duel answers don't touch notebook/stats** (`srsExcludedModes = {DUEL}`) | Hot-seat words are not personal progress | Count them | Accepted |
 | 2026-10 | **Light theme only**, no dynamic colour | Bauhaus palette must be exact | Dark mode | Accepted (ADR 0010) |
 | 2026-10 | Reminders **off until the M7 pre-prompt**; UI language follows the system language | Respect permission and defaults | On by default | Accepted (`PRODUCT.md`) |
+| 2026-10-20 | **Daily reminder = local one-shot notifications planned 15 days ahead** (`ReminderPlanner`); inexact Android alarms, iOS calendar triggers; no exact alarms, no server | Texts must be known at schedule time on iOS; no new dependency | WorkManager; repeating trigger; exact alarms; push | Accepted (ADR 0021) |
+| 2026-10-21 | **Notification permission only on user action** (reminder switch or pre-prompt "Evet"); pre-prompt shown at most once per app lifetime; "Şimdi değil" = never asked proactively again | Respect the OS prompt; no cold ask | Ask at launch or onboarding | Accepted (M7 owner rules) |
 
 ## Content
 
@@ -70,6 +73,7 @@ row when a decision is made; change `Status` instead of deleting rows (`Accepted
 | 2026-10-14 | 0017 | Compose UI tests for design-system behaviour | Accepted |
 | 2026-10-15 | 0018 | Content DB build wiring and database lifecycle | Accepted |
 | 2026-10-15 | 0019 | Game screen runtime: timer, lifecycle, effects | Accepted |
+| 2026-10-20 | 0021 | Local reminders as planned one-shot notifications | Accepted |
 
 ## Open decisions
 

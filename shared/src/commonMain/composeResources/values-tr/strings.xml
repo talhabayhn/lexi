@@ -1,4 +1,29 @@
 <resources>
     <!-- Splash (14-splash) -->
     <string name="splash_tagline">A'DAN Z'YE İNGİLİZCE</string>
+
+    <!-- Reminder notifications (COPY.md section 1); {n} is filled in code -->
+    <string name="notif_channel_name">Hatırlatmalar</string>
+    <string name="notif_daily_1_title">Günün Çarkı hazır</string>
+    <string name="notif_daily_1_body">Bugünün 26 harfi seni bekliyor. 3 dakikan var mı?</string>
+    <string name="notif_daily_2_title">Bugünkü çark</string>
+    <string name="notif_daily_2_body">Herkesle aynı çark, senin hızın. Hadi bir bak.</string>
+    <string name="notif_daily_3_title">A'dan Z'ye, bir tur</string>
+    <string name="notif_daily_3_body">Günlük çarkın hazır; tek deneme hakkın var.</string>
+    <string name="notif_streak_1_title">{n} günlük serin sürüyor</string>
+    <string name="notif_streak_1_body">Bugünkü çarkı oynarsan seri devam eder.</string>
+    <string name="notif_streak_2_title">Seriyi korumak için bir tur</string>
+    <string name="notif_streak_2_body">Gece yarısına kadar bir çark yeter.</string>
+    <string name="notif_streak_3_title">Yarın {n}. gün</string>
+    <string name="notif_streak_3_body">Bir çark daha, bonus jokerin yolda.</string>
+    <string name="notif_review_1_title">{n} kelime tekrar bekliyor</string>
+    <string name="notif_review_1_body">Defterindeki kelimeler tazelenmeye hazır.</string>
+    <string name="notif_review_2_title">Tekrar Çarkı hazır</string>
+    <string name="notif_review_2_body">Unutmadan pekiştir: {n} kelime sırada.</string>
+    <string name="notif_comeback_3d_title">Küçük bir mola mı?</string>
+    <string name="notif_comeback_3d_body">Hazır olduğunda 5 dakikalık bir çark seni bekliyor.</string>
+    <string name="notif_comeback_7d_title">Çark yerinde duruyor</string>
+    <string name="notif_comeback_7d_body">Yeni bir Günün Çarkı var. Kaldığın yerden devam et.</string>
+    <string name="notif_comeback_14d_title">Tekrar görüşmek güzel olur</string>
+    <string name="notif_comeback_14d_body">Kelimelerin defterinde saklı; istediğinde devam.</string>
 </resources>

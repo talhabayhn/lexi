@@ -1,4 +1,29 @@
 <resources>
     <!-- Splash (14-splash) -->
     <string name="splash_tagline">FROM A TO Z IN ENGLISH</string>
+
+    <!-- Reminder notifications (COPY.md section 1); {n} is filled in code -->
+    <string name="notif_channel_name">Reminders</string>
+    <string name="notif_daily_1_title">Today's wheel is ready</string>
+    <string name="notif_daily_1_body">26 letters for today. Got 3 minutes?</string>
+    <string name="notif_daily_2_title">Today's wheel</string>
+    <string name="notif_daily_2_body">Same wheel for everyone, at your pace.</string>
+    <string name="notif_daily_3_title">A to Z, one lap</string>
+    <string name="notif_daily_3_body">Your daily wheel is ready — one try today.</string>
+    <string name="notif_streak_1_title">Your {n}-day streak is on</string>
+    <string name="notif_streak_1_body">Play today's wheel to keep it going.</string>
+    <string name="notif_streak_2_title">One lap keeps your streak</string>
+    <string name="notif_streak_2_body">Any wheel before midnight counts.</string>
+    <string name="notif_streak_3_title">Day {n} is tomorrow</string>
+    <string name="notif_streak_3_body">One more wheel and a bonus joker is yours.</string>
+    <string name="notif_review_1_title">{n} words ready to review</string>
+    <string name="notif_review_1_body">Your notebook words are due a refresher.</string>
+    <string name="notif_review_2_title">Review wheel is ready</string>
+    <string name="notif_review_2_body">Lock them in before they fade: {n} words.</string>
+    <string name="notif_comeback_3d_title">Taking a short break?</string>
+    <string name="notif_comeback_3d_body">A 5-minute wheel is here when you are.</string>
+    <string name="notif_comeback_7d_title">The wheel is still here</string>
+    <string name="notif_comeback_7d_body">There's a fresh daily wheel. Pick up where you left off.</string>
+    <string name="notif_comeback_14d_title">Come back whenever</string>
+    <string name="notif_comeback_14d_body">Your words are safe in your notebook.</string>
 </resources>

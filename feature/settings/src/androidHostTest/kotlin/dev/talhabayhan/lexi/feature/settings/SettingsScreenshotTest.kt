@@ -22,7 +22,9 @@ class SettingsScreenshotTest {
     @Test
     fun designSample() {
         captureRoboImage("src/androidHostTest/screenshots/Settings.png") {
-            LexiTheme(reducedMotion = false) { SettingsScreen(state = SettingsUiState(), onIntent = {}) }
+            LexiTheme(reducedMotion = false) {
+                SettingsScreen(state = SettingsUiState(dailyReminder = true), onIntent = {})
+            }
         }
     }
 
@@ -60,7 +62,9 @@ class SettingsScreenshotTest {
     @Config(qualifiers = "en-w390dp-h844dp-xhdpi")
     fun english() {
         captureRoboImage("src/androidHostTest/screenshots/SettingsEn.png") {
-            LexiTheme(reducedMotion = false) { SettingsScreen(state = SettingsUiState(), onIntent = {}) }
+            LexiTheme(reducedMotion = false) {
+                SettingsScreen(state = SettingsUiState(dailyReminder = true), onIntent = {})
+            }
         }
     }
 

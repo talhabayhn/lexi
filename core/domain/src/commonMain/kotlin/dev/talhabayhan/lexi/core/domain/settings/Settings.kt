@@ -1,5 +1,7 @@
 package dev.talhabayhan.lexi.core.domain.settings
 
+import dev.talhabayhan.lexi.core.domain.reminder.ReminderTimes
+
 /**
  * Player settings (`11-settings` design, `PRODUCT.md`). Defaults are the design's values; stored in DataStore by
  * `SettingsRepository`.
@@ -11,10 +13,12 @@ public data class Settings(
     val speakOnCorrect: Boolean = true,
     /** Classic total time; one of `GameConfig.classicTimeLimitOptionsSeconds` (120/180/240/300). */
     val classicTimeLimitSeconds: Int = DEFAULT_CLASSIC_TIME_LIMIT_SECONDS,
-    /** Daily reminder notification; scheduling and the permission pre-prompt come in M7. */
+    /** Daily reminder notification; off until the player turns it on or accepts the pre-prompt (`ReminderPlanner`). */
     val dailyReminder: Boolean = false,
-    /** Reminder time as minutes after local midnight (design: 20:00). */
+    /** Reminder time as minutes after local midnight (design: 20:00); one of `ReminderTimes.optionsMinuteOfDay`. */
     val reminderMinuteOfDay: Int = DEFAULT_REMINDER_MINUTE_OF_DAY,
+    /** The one-time reminder pre-prompt was shown (any answer); never shown again (`ShouldShowReminderPrePrompt`). */
+    val reminderPrePromptShown: Boolean = false,
     /** "Günlük hedef": wheels per day, at least 1. */
     val dailyGoalWheels: Int = 1,
     /** "Kelime defteri tekrarları": remind about due notebook cards. */
@@ -32,7 +36,7 @@ public data class Settings(
 
     public companion object {
         public const val DEFAULT_CLASSIC_TIME_LIMIT_SECONDS: Int = 180
-        public const val DEFAULT_REMINDER_MINUTE_OF_DAY: Int = 20 * 60
+        public const val DEFAULT_REMINDER_MINUTE_OF_DAY: Int = ReminderTimes.DEFAULT_MINUTE
         public const val MINUTES_PER_DAY: Int = 24 * 60
     }
 }

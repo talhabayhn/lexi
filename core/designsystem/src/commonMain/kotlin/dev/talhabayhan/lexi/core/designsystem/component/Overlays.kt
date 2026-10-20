@@ -62,6 +62,12 @@ public object OverlayDefaults {
         }
     public val SheetGap: Dp = 12.dp
 
+    /** DESIGN-DEBT (reminder sheet): the scrolling option list stops at 4.5 rows of 52 + 2 dividers, so the last row peeks. */
+    public val SheetListMaxHeight: Dp = 236.dp
+
+    /** DESIGN-DEBT (reminder pre-prompt): the three Bauhaus shapes above the title. */
+    public val PrePromptShapeSize: Dp = 80.dp
+
     /** Empty state: padding 14, gap 14, 56dp illustration (circle 36 + 2 × 2, square 30 + 2 × 2). */
     public val EmptyPadding: Dp = 14.dp
     public val EmptyGap: Dp = 14.dp

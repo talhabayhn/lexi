@@ -17,6 +17,12 @@ kotlin {
         }
         getByName("androidHostTest").dependencies {
             implementation(libs.kotlin.testJunit)
+            implementation(libs.robolectric)
         }
     }
+}
+
+// Robolectric (SDK 36) touches FileDescriptor internals that JDK 17+ hides; see ADR 0013.
+tasks.withType<Test>().configureEach {
+    jvmArgs("--add-exports=java.base/jdk.internal.access=ALL-UNNAMED")
 }

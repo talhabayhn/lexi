@@ -182,7 +182,7 @@ the platform `DatabaseFiles` (`rememberPlatformModule()`, Android needs the `Con
 | `PurchaseService` | RevenueCat KMP | RevenueCat KMP |
 | `Analytics`, `CrashReporter` | Firebase Android | Firebase iOS via Swift bridge (provider set from `iOSApp.swift`) |
 | `ShareService` | share sheet with PNG | `UIActivityViewController` |
-| `ReminderScheduler` | WorkManager / AlarmManager + notification | `UNUserNotificationCenter` |
+| `ReminderScheduler` | AlarmManager inexact + receivers (boot/time/tz/package replaced) | `UNUserNotificationCenter` calendar triggers; ADR 0021 |
 
 Swift-implemented services are injected into Koin at startup through a `PlatformServices` holder
 created in Swift and passed to `MainViewController(services)`.

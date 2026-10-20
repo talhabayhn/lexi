@@ -14,4 +14,16 @@ public interface AppClock {
 
     /** Milliseconds until the next local day starts (local midnight) from instant [atMs]. */
     public fun msUntilNextDay(atMs: Long = nowMs()): Long
+
+    /**
+     * Local wall-clock minute after midnight (0..1439) of the instant [atMs] (reminder planning). The default derives
+     * it from [msUntilNextDay], which is off by the DST shift on a 23/25-hour day; real clocks override it.
+     */
+    public fun minuteOfDay(atMs: Long = nowMs()): Int {
+        val msIntoDay = (MS_PER_DAY - msUntilNextDay(atMs)).coerceIn(0L, MS_PER_DAY - 1)
+        return (msIntoDay / MS_PER_MINUTE).toInt()
+    }
 }
+
+private const val MS_PER_DAY: Long = 86_400_000L
+private const val MS_PER_MINUTE: Long = 60_000L

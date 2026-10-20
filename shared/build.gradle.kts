@@ -35,11 +35,19 @@ kotlin {
             implementation(libs.kotlinx.coroutines.core)
             implementation(libs.koin.compose)
             implementation(libs.koin.compose.viewmodel)
+            // Re-plan the reminders on app start/resume (ON_START).
+            implementation(libs.androidx.lifecycle.runtimeCompose)
             // Debug-only speech timing logs (ADR 0015).
             implementation(libs.kermit)
         }
+        androidMain.dependencies {
+            // POST_NOTIFICATIONS ActivityResult bridge and NotificationManagerCompat (ADR 0021); catalog entries only.
+            implementation(libs.androidx.activity.compose)
+            implementation(libs.androidx.core.ktx)
+        }
         getByName("androidHostTest").dependencies {
             implementation(libs.koin.test)
+            implementation(libs.robolectric)
         }
     }
 }
@@ -74,4 +82,9 @@ run {
     compose.resources {
         customDirectory(sourceSetName = "commonMain", directoryProvider = composeResourcesWithContent.map { dir.get() })
     }
+}
+
+// Robolectric (SDK 36) touches FileDescriptor internals that JDK 17+ hides; see ADR 0013.
+tasks.withType<Test>().configureEach {
+    jvmArgs("--add-exports=java.base/jdk.internal.access=ALL-UNNAMED")
 }

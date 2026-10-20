@@ -53,4 +53,16 @@
     <string name="about_section_sources">KAYNAKLAR</string>
     <string name="about_sources_content">Kelime ipuçları ve örnek cümleler Lexi için hazırlanmıştır.</string>
     <string name="about_section_licenses">LİSANSLAR</string>
+
+    <!-- Günlük hatırlatma: satır değeri, alt panel, ön izin ekranı (COPY.md bölüm 1) -->
+    <string name="settings_reminder_off">Kapalı</string>
+    <string name="settings_reminder_close">Kapat</string>
+    <string name="settings_reminder_open_settings">Ayarları aç</string>
+    <string name="settings_reminder_denied_hint">Bildirimler kapalı. Ayarlar'dan açabilirsin.</string>
+    <string name="settings_clue_language_value">Türkçe</string>
+    <string name="settings_clue_language_description">Türkçe, ipucu dili</string>
+    <string name="reminder_preprompt_title">Hatırlatıcı ister misin?</string>
+    <string name="reminder_preprompt_body">Günde en fazla bir bildirim göndeririz. İstediğin saati sen seçersin.</string>
+    <string name="reminder_preprompt_yes">Evet, hatırlat</string>
+    <string name="reminder_preprompt_no">Şimdi değil</string>
 </resources>
