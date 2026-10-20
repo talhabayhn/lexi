@@ -120,8 +120,20 @@ public class LexiMotion internal constructor(
     /** #11 toast auto-dismiss delay. */
     public val toastVisibleMillis: Int = 2500
 
-    /** #12 screen transitions. */
-    public val screenTransitionDurationMillis: Int = 220
+    /** #12 screen transitions: slide duration of both the incoming and the outgoing screen. */
+    public val screenTransitionDurationMillis: Int = 260
+
+    /** #12 the incoming screen fades in 0 → 1 over this long... */
+    public val screenTransitionFadeInMillis: Int = 200
+
+    /** #12 ...starting this long after the transition begins (the outgoing screen is already mostly gone). */
+    public val screenTransitionFadeInDelayMillis: Int = 60
+
+    /** #12 the outgoing screen fades out 1 → 0 over its first this-many ms. */
+    public val screenTransitionFadeOutMillis: Int = 90
+
+    /** #12 with reduced motion: a plain crossfade of this duration, no translation. */
+    public val screenTransitionReducedCrossfadeMillis: Int = 150
 
     /** #8 time warning: one counter pulse 1 → 1.12 → 1, played each second (with the tick) while the warning lasts. */
     public val timeWarningPulseMillis: Int = 600
@@ -138,6 +150,6 @@ public class LexiMotion internal constructor(
     /** #11 toast slides down from the top by this distance. */
     public val toastSlideDistance: Dp = 16.dp
 
-    /** #12 horizontal slide of screen transitions (no fade). */
+    /** #12 horizontal slide distance of screen transitions (fade-through, see the durations above). */
     public val screenTransitionSlideDistance: Dp = 24.dp
 }

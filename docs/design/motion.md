@@ -2,7 +2,7 @@
 
 Reference: `screens/15-motion.png` and the exact keyframes in `source/15-motion.dc.html` / `source/14-splash.dc.html`.
 
-**Rule:** movements are short and *mechanical* — shapes slide, collapse, rotate. No soft fades for state changes,
+**Rule:** movements are short and *mechanical* — shapes slide, collapse, rotate. No soft fades for state changes (screen transitions, #12, are the exception),
 no blur, no spring wobble beyond the specified overshoot. All 80–420 ms.
 **Reduced motion** (Android "remove animations" / iOS "Reduce Motion"): only color/shape changes, no translation,
 scale or rotation; splash shows the logo statically.
@@ -30,7 +30,7 @@ scale or rotation; splash shows the logo statically.
 | 9 | Splash | bg yellow circle (top-left) & blue square (bottom-right) scale 0 → 1; L slides from left (overshoot 8dp), E drops from top & bounces 10dp, X rotates −270° → 10° → 0 with scale 0 → 1.08 → 1, I rises from bottom (overshoot −8dp); tagline fades up 12dp | total ≈ 1.2 s in app (demo is 3.6 s looped), `mechanical` | light on each landing | "tık" per landing |
 | 10 | Bottom sheet (joker) | slides up from bottom, scrim fades to 55% | 220 ms | — | — |
 | 11 | Toast | slides down from top 16dp, auto-dismiss 2.5 s | 180 ms | — | — |
-| 12 | Screen transitions | horizontal slide 24dp + no fade (forward), reverse on back | 220 ms | — | — |
+| 12 | Screen transitions | slide + fade-through: incoming slides in from +24dp (260 ms) and fades 0 → 1 (200 ms, starts at 60 ms); outgoing slides to −24dp (260 ms) and fades 1 → 0 over its first 90 ms; reverse on back; reduced motion: 150 ms crossfade, no translation | 260 ms, `mechanical` | — | — |
 
 #1 is implemented once in `PressableSurface` (`core:designsystem`): CSS `ease-out` per direction (`.lx-press` in
 `source/15-motion.dc.html`); a quick tap still plays the full 80 ms press before returning; haptic and sound fire on
@@ -67,8 +67,10 @@ Implemented in `feature:game` (`GameMotion`, `GameMotionLayer`, `GameFeedback`) 
 - #11: no toast is shown anywhere yet (`Toast` exists in `16-components`); the slide-in is built with the first use.
 - `win` / `lose` have no catalogue row, so they are not played yet (to be decided with the result screen's motion).
 
-#12 is set on `LexiNavHost` (all destinations): enter slides from +24dp, the old screen moves −24dp, back mirrors it,
-`mechanical`, no fade; reduced motion switches in place.
+#12 is set on `LexiNavHost` (all destinations): enter slides from +24dp over 260 ms and fades in over 200 ms from
+60 ms, the old screen moves −24dp and fades out over its first 90 ms, back mirrors it, `mechanical`; the host is filled
+with `cream` so the mid-fade never shows the window background. Reduced motion: 150 ms crossfade, no translation
+(opacity is allowed). All values are `LexiMotion` tokens (`screenTransition*`).
 
 Splash timing in app (scale the demo keyframe percentages from 3.6 s to 1.2 s; keep order and overshoots):
 bg 0–216 ms, L 48–312 ms, E 120–384 ms, X 192–480 ms, I 264–552 ms, tagline 576–696 ms, hold to 1200 ms.

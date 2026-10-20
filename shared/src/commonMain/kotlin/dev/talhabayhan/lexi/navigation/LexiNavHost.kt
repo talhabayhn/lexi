@@ -3,8 +3,11 @@ package dev.talhabayhan.lexi.navigation
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
 import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
+import androidx.compose.foundation.background
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -39,8 +42,10 @@ import org.koin.compose.koinInject
  * result replaces everything above Home, so system back and "Ana menüye dön" both return to Home; TEKRAR OYNA starts
  * the next game in the same place (`Home → Game`).
  *
- * Transitions (`motion.md` #12): the new screen slides in horizontally by 24dp over the old one and the old one moves
- * 24dp the other way, 220 ms, no fade; back plays it in reverse. Reduced motion: screens switch in place.
+ * Transitions (`motion.md` #12, slide + fade-through): the new screen slides in horizontally by 24dp over 260 ms and
+ * fades in over 200 ms starting at 60 ms; the old one slides 24dp the other way and fades out over its first 90 ms;
+ * back plays it in reverse. The host is filled with `cream` so the mid-fade never shows the window background.
+ * Reduced motion: a 150 ms crossfade, no translation.
  */
 @Composable
 fun LexiNavHost(modifier: Modifier = Modifier, perfTour: PerfTourConfig? = null) {
@@ -54,7 +59,7 @@ fun LexiNavHost(modifier: Modifier = Modifier, perfTour: PerfTourConfig? = null)
     NavHost(
         navController = navController,
         startDestination = SplashRoute,
-        modifier = modifier,
+        modifier = modifier.background(LexiTheme.colors.cream),
         enterTransition = { transitions.enter(forward = true) },
         exitTransition = { transitions.exit(forward = true) },
         popEnterTransition = { transitions.enter(forward = false) },
@@ -111,17 +116,24 @@ fun LexiNavHost(modifier: Modifier = Modifier, perfTour: PerfTourConfig? = null)
 
 /** #12: forward = the new screen comes from the right (end) and the old one leaves to the left; back mirrors it. */
 private class ScreenTransitions(private val motion: LexiMotion, private val distancePx: Int) {
-    private val spec = tween<IntOffset>(motion.screenTransitionDurationMillis, easing = motion.mechanical)
+    private val slide = tween<IntOffset>(motion.screenTransitionDurationMillis, easing = motion.mechanical)
+    private val fadeInSpec = tween<Float>(
+        durationMillis = motion.screenTransitionFadeInMillis,
+        delayMillis = motion.screenTransitionFadeInDelayMillis,
+        easing = motion.mechanical,
+    )
+    private val fadeOutSpec = tween<Float>(motion.screenTransitionFadeOutMillis, easing = motion.mechanical)
+    private val crossfade = tween<Float>(motion.screenTransitionReducedCrossfadeMillis, easing = motion.mechanical)
 
     fun enter(forward: Boolean): EnterTransition = if (motion.reducedMotion) {
-        EnterTransition.None
+        fadeIn(crossfade)
     } else {
-        slideInHorizontally(spec) { if (forward) distancePx else -distancePx }
+        slideInHorizontally(slide) { if (forward) distancePx else -distancePx } + fadeIn(fadeInSpec)
     }
 
     fun exit(forward: Boolean): ExitTransition = if (motion.reducedMotion) {
-        ExitTransition.None
+        fadeOut(crossfade)
     } else {
-        slideOutHorizontally(spec) { if (forward) -distancePx else distancePx }
+        slideOutHorizontally(slide) { if (forward) -distancePx else distancePx } + fadeOut(fadeOutSpec)
     }
 }
