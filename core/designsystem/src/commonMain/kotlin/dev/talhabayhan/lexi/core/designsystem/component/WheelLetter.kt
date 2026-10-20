@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.Stable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
@@ -44,7 +45,6 @@ import dev.talhabayhan.lexi.core.designsystem.generated.resources.wheel_letter_s
 import dev.talhabayhan.lexi.core.designsystem.generated.resources.wheel_letter_state_todo
 import dev.talhabayhan.lexi.core.designsystem.generated.resources.wheel_letter_state_wrong
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
-import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
 
 /** State of one letter on the wheel; never color-only (shape carries it too). */
@@ -68,6 +68,47 @@ public enum class WheelLetterState {
 /** One letter of the wheel with its state. */
 @Immutable
 public data class WheelLetterUi(val letter: Char, val state: WheelLetterState)
+
+/**
+ * The chips' accessibility texts ("K, doğru"), resolved once for a whole wheel ([rememberWheelLetterLabels]) instead of
+ * two string lookups per chip. [describe] is exactly `wheel_letter_description` formatted with letter and state label.
+ */
+@Immutable
+public class WheelLetterLabels internal constructor(
+    private val template: String,
+    private val states: Map<WheelLetterState, String>,
+) {
+    public fun describe(letter: Char, state: WheelLetterState): String =
+        template.replace(LETTER_ARG, letter.toString()).replace(STATE_ARG, states.getValue(state))
+
+    private companion object {
+        const val LETTER_ARG = "%1\$s"
+        const val STATE_ARG = "%2\$s"
+    }
+}
+
+/** [WheelLetterLabels] in the current language. */
+@Composable
+public fun rememberWheelLetterLabels(): WheelLetterLabels {
+    val template = stringResource(Res.string.wheel_letter_description)
+    val todo = stringResource(Res.string.wheel_letter_state_todo)
+    val current = stringResource(Res.string.wheel_letter_state_current)
+    val correct = stringResource(Res.string.wheel_letter_state_correct)
+    val wrong = stringResource(Res.string.wheel_letter_state_wrong)
+    val passed = stringResource(Res.string.wheel_letter_state_passed)
+    return remember(template, todo, current, correct, wrong, passed) {
+        WheelLetterLabels(
+            template,
+            mapOf(
+                WheelLetterState.Todo to todo,
+                WheelLetterState.Current to current,
+                WheelLetterState.Correct to correct,
+                WheelLetterState.Wrong to wrong,
+                WheelLetterState.Passed to passed,
+            ),
+        )
+    }
+}
 
 /** Wheel chip geometry (`04-game.html`). */
 public object WheelLetterDefaults {
@@ -122,6 +163,7 @@ public interface WheelChipMotion {
  *
  * @param scaleCurrent draw the [WheelLetterState.Current] chip at 1.3× (on the wheel; not in legends).
  * @param motion transient #3 pop + ring and #5 turn + morph, or null at rest.
+ * @param labels the accessibility texts, resolved once by a wheel; null resolves them here.
  */
 @Composable
 public fun WheelLetter(
@@ -132,10 +174,20 @@ public fun WheelLetter(
     textStyle: TextStyle = LexiTheme.typography.wheelChip,
     scaleCurrent: Boolean = true,
     motion: WheelChipMotion? = null,
+    labels: WheelLetterLabels? = null,
 ) {
     val look = state.look()
-    val description = stringResource(Res.string.wheel_letter_description, letter.toString(), stringResource(look.label))
+    val resolvedLabels = labels ?: rememberWheelLetterLabels()
     val scale = if (state == WheelLetterState.Current && scaleCurrent) WheelLetterDefaults.CURRENT_SCALE else 1f
+    // A layer only where it scales (the current chip) or a motion runs; resting chips draw without one.
+    val scaleLayer = if (scale != 1f || motion != null) {
+        Modifier.graphicsLayer {
+            scaleX = scale
+            scaleY = scale
+        }
+    } else {
+        Modifier
+    }
     val border = LexiTheme.borders.thin
     val ink = LexiTheme.colors.ink
     val surface = if (motion == null) {
@@ -156,11 +208,8 @@ public fun WheelLetter(
     Box(
         modifier = modifier
             .size(size)
-            .graphicsLayer {
-                scaleX = scale
-                scaleY = scale
-            }
-            .clearAndSetSemantics { contentDescription = description }
+            .then(scaleLayer)
+            .clearAndSetSemantics { contentDescription = resolvedLabels.describe(letter, state) }
             .then(surface),
         contentAlignment = Alignment.Center,
     ) {
@@ -168,7 +217,7 @@ public fun WheelLetter(
     }
 }
 
-private class WheelLetterLook(val fill: Color, val content: Color, val shape: Shape, val label: StringResource)
+private class WheelLetterLook(val fill: Color, val content: Color, val shape: Shape)
 
 /** #3: the blue ring around the chip centre (stroke inside its diameter, like the CSS border). */
 private fun DrawScope.drawCorrectRing(motion: WheelChipMotion, color: Color, chipScale: Float) {
@@ -228,28 +277,11 @@ private fun WheelLetterState.look(): WheelLetterLook {
     val colors = LexiTheme.colors
     val shapes = LexiTheme.shapes
     return when (this) {
-        WheelLetterState.Todo -> WheelLetterLook(
-            colors.cream,
-            colors.ink,
-            shapes.circle,
-            Res.string.wheel_letter_state_todo,
-        )
-
-        WheelLetterState.Current ->
-            WheelLetterLook(colors.ink, colors.yellow, shapes.square, Res.string.wheel_letter_state_current)
-
-        WheelLetterState.Correct ->
-            WheelLetterLook(colors.blue, colors.white, shapes.circle, Res.string.wheel_letter_state_correct)
-
-        WheelLetterState.Wrong -> WheelLetterLook(
-            colors.red,
-            colors.white,
-            shapes.square,
-            Res.string.wheel_letter_state_wrong,
-        )
-
-        WheelLetterState.Passed ->
-            WheelLetterLook(colors.yellow, colors.ink, shapes.leaf, Res.string.wheel_letter_state_passed)
+        WheelLetterState.Todo -> WheelLetterLook(colors.cream, colors.ink, shapes.circle)
+        WheelLetterState.Current -> WheelLetterLook(colors.ink, colors.yellow, shapes.square)
+        WheelLetterState.Correct -> WheelLetterLook(colors.blue, colors.white, shapes.circle)
+        WheelLetterState.Wrong -> WheelLetterLook(colors.red, colors.white, shapes.square)
+        WheelLetterState.Passed -> WheelLetterLook(colors.yellow, colors.ink, shapes.leaf)
     }
 }
 

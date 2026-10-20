@@ -33,12 +33,24 @@ import androidx.compose.ui.test.runComposeUiTest
 import androidx.compose.ui.unit.dp
 import dev.talhabayhan.lexi.core.designsystem.feedback.LocalHaptics
 import dev.talhabayhan.lexi.core.designsystem.feedback.LocalSoundPlayer
+import dev.talhabayhan.lexi.core.designsystem.generated.resources.Res
+import dev.talhabayhan.lexi.core.designsystem.generated.resources.answer_slot_active
+import dev.talhabayhan.lexi.core.designsystem.generated.resources.answer_slot_empty
+import dev.talhabayhan.lexi.core.designsystem.generated.resources.answer_slot_given
+import dev.talhabayhan.lexi.core.designsystem.generated.resources.answer_slot_joker
+import dev.talhabayhan.lexi.core.designsystem.generated.resources.wheel_letter_description
+import dev.talhabayhan.lexi.core.designsystem.generated.resources.wheel_letter_state_correct
+import dev.talhabayhan.lexi.core.designsystem.generated.resources.wheel_letter_state_current
+import dev.talhabayhan.lexi.core.designsystem.generated.resources.wheel_letter_state_passed
+import dev.talhabayhan.lexi.core.designsystem.generated.resources.wheel_letter_state_todo
+import dev.talhabayhan.lexi.core.designsystem.generated.resources.wheel_letter_state_wrong
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.core.designsystem.theme.LightLexiColors
 import dev.talhabayhan.lexi.core.domain.feedback.HapticKind
 import dev.talhabayhan.lexi.core.domain.feedback.Haptics
 import dev.talhabayhan.lexi.core.domain.feedback.SoundEffect
 import dev.talhabayhan.lexi.core.domain.feedback.SoundPlayer
+import org.jetbrains.compose.resources.stringResource
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
@@ -277,6 +289,51 @@ class ComponentBehaviourTest {
         onNodeWithTag("key")
             .assertIsNotEnabled()
             .assert(SemanticsMatcher.expectValue(SemanticsProperties.Role, Role.Button))
+    }
+
+    @Test
+    fun `labels resolved once announce exactly the formatted resource texts`() = runComposeUiTest {
+        val expected = mutableListOf<String>()
+        val actual = mutableListOf<String>()
+        setLexiContent {
+            val wheel = rememberWheelLetterLabels()
+            val stateLabels = listOf(
+                Res.string.wheel_letter_state_todo,
+                Res.string.wheel_letter_state_current,
+                Res.string.wheel_letter_state_correct,
+                Res.string.wheel_letter_state_wrong,
+                Res.string.wheel_letter_state_passed,
+            )
+            WheelLetterState.entries.zip(stateLabels).forEach { (state, label) ->
+                expected += stringResource(Res.string.wheel_letter_description, "K", stringResource(label))
+                actual += wheel.describe('K', state)
+            }
+            val slots = rememberAnswerSlotLabels()
+            expected += stringResource(Res.string.answer_slot_empty)
+            expected += stringResource(Res.string.answer_slot_active)
+            expected += "E"
+            expected += stringResource(
+                Res.string.wheel_letter_description,
+                "E",
+                stringResource(Res.string.wheel_letter_state_wrong),
+            )
+            expected +=
+                stringResource(Res.string.wheel_letter_description, "E", stringResource(Res.string.answer_slot_joker))
+            expected +=
+                stringResource(Res.string.wheel_letter_description, "E", stringResource(Res.string.answer_slot_given))
+            listOf(
+                AnswerSlotState.Empty,
+                AnswerSlotState.Active,
+                AnswerSlotState.Filled,
+                AnswerSlotState.Wrong,
+                AnswerSlotState.JokerFilled,
+                AnswerSlotState.Given,
+            ).forEach { actual += slots.describe("E", it) }
+        }
+
+        waitForIdle()
+        assertEquals(expected, actual)
+        assertEquals("K, correct", actual[2])
     }
 
     @Test

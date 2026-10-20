@@ -9,6 +9,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.Immutable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -59,7 +61,56 @@ public object AnswerSlotDefaults {
     public val Gap: Dp = 6.dp
 }
 
-/** One answer box (40 × 48dp, [height] 40 in the game's compact tier; letter 26sp/800). Empty states ignore [letter]. */
+/**
+ * The answer boxes' accessibility texts, resolved once for a whole answer row ([rememberAnswerSlotLabels]) instead of
+ * up to two string lookups per box; the texts are exactly those of `answer_slot_*` and `wheel_letter_description`.
+ */
+@Immutable
+public class AnswerSlotLabels internal constructor(
+    private val template: String,
+    private val empty: String,
+    private val active: String,
+    private val wrong: String,
+    private val joker: String,
+    private val given: String,
+) {
+    /** [letter] is the shown letter ("" when none). */
+    public fun describe(letter: String, state: AnswerSlotState): String = when (state) {
+        AnswerSlotState.Empty -> empty
+        AnswerSlotState.Active -> active
+        AnswerSlotState.Filled -> letter
+        AnswerSlotState.Wrong -> format(letter, wrong)
+        AnswerSlotState.JokerFilled -> format(letter, joker)
+        AnswerSlotState.Given -> format(letter, given)
+    }
+
+    private fun format(letter: String, label: String): String =
+        template.replace(LETTER_ARG, letter).replace(STATE_ARG, label)
+
+    private companion object {
+        const val LETTER_ARG = "%1\$s"
+        const val STATE_ARG = "%2\$s"
+    }
+}
+
+/** [AnswerSlotLabels] in the current language. */
+@Composable
+public fun rememberAnswerSlotLabels(): AnswerSlotLabels {
+    val template = stringResource(Res.string.wheel_letter_description)
+    val empty = stringResource(Res.string.answer_slot_empty)
+    val active = stringResource(Res.string.answer_slot_active)
+    val wrong = stringResource(Res.string.wheel_letter_state_wrong)
+    val joker = stringResource(Res.string.answer_slot_joker)
+    val given = stringResource(Res.string.answer_slot_given)
+    return remember(template, empty, active, wrong, joker, given) {
+        AnswerSlotLabels(template, empty, active, wrong, joker, given)
+    }
+}
+
+/**
+ * One answer box (40 × 48dp, [height] 40 in the game's compact tier; letter 26sp/800). Empty states ignore [letter].
+ * [labels]: the accessibility texts, resolved once by an answer row; null resolves them here.
+ */
 @Composable
 public fun AnswerSlot(
     letter: Char?,
@@ -67,6 +118,7 @@ public fun AnswerSlot(
     modifier: Modifier = Modifier,
     textStyle: TextStyle = LexiTheme.typography.slotLetter,
     height: Dp = AnswerSlotDefaults.Height,
+    labels: AnswerSlotLabels? = null,
 ) {
     val colors = LexiTheme.colors
     val border = LexiTheme.borders.regular
@@ -79,38 +131,11 @@ public fun AnswerSlot(
         AnswerSlotState.Given -> Triple(colors.yellow, colors.ink, BorderStroke(border, colors.ink))
     }
     val shown = letter?.takeIf { content != Color.Unspecified }?.toString()
-    val description = when (state) {
-        AnswerSlotState.Empty -> stringResource(Res.string.answer_slot_empty)
-
-        AnswerSlotState.Active -> stringResource(Res.string.answer_slot_active)
-
-        AnswerSlotState.Filled -> shown.orEmpty()
-
-        AnswerSlotState.Wrong ->
-            stringResource(
-                Res.string.wheel_letter_description,
-                shown.orEmpty(),
-                stringResource(Res.string.wheel_letter_state_wrong),
-            )
-
-        AnswerSlotState.JokerFilled ->
-            stringResource(
-                Res.string.wheel_letter_description,
-                shown.orEmpty(),
-                stringResource(Res.string.answer_slot_joker),
-            )
-
-        AnswerSlotState.Given ->
-            stringResource(
-                Res.string.wheel_letter_description,
-                shown.orEmpty(),
-                stringResource(Res.string.answer_slot_given),
-            )
-    }
+    val resolvedLabels = labels ?: rememberAnswerSlotLabels()
     Box(
         modifier = modifier
             .size(AnswerSlotDefaults.Width, height)
-            .clearAndSetSemantics { contentDescription = description }
+            .clearAndSetSemantics { contentDescription = resolvedLabels.describe(shown.orEmpty(), state) }
             .lexiSurface(fill, borderStroke),
         contentAlignment = Alignment.Center,
     ) {

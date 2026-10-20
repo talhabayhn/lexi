@@ -23,7 +23,11 @@ import dev.talhabayhan.lexi.feature.stats.StatsRoute
 import dev.talhabayhan.lexi.splash.SplashRoute
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.CoroutineStart
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.launch
 import kotlin.reflect.KClass
 
@@ -45,6 +49,16 @@ internal class LexiNavigator(
     fun isResumedOn(route: KClass<*>): Boolean {
         val entry = navController.currentBackStackEntry ?: return false
         return entry.lifecycle.currentState == Lifecycle.State.RESUMED && entry.destination.hasRoute(route)
+    }
+
+    /** Suspends until [route] is the current destination and RESUMED (follows the back stack, no frame polling). */
+    @OptIn(ExperimentalCoroutinesApi::class)
+    suspend fun awaitResumedOn(route: KClass<*>) {
+        navController.currentBackStackEntryFlow
+            .flatMapLatest { entry ->
+                if (entry.destination.hasRoute(route)) entry.lifecycle.currentStateFlow else flowOf(null)
+            }
+            .first { it == Lifecycle.State.RESUMED }
     }
 
     // Not RESUMED-guarded: fires once from the splash's LaunchedEffect, possibly while the app is in the background

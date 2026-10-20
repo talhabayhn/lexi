@@ -104,6 +104,7 @@ public fun LetterWheel(
     val letterStyle = letterBase.fitted()
     val ruleStyle = ruleBase.fitted()
     val descenderReserve = with(density) { letterStyle.descenderOverflowPx(density).toDp() }
+    val chipLabels = rememberWheelLetterLabels()
     Box(modifier.size(size)) {
         Box(
             Modifier
@@ -153,6 +154,7 @@ public fun LetterWheel(
                 size = chip,
                 textStyle = chipStyle,
                 motion = itemMotion,
+                labels = chipLabels,
                 modifier = Modifier
                     .offset((centerX - chip.value / 2).dp, (centerY - chip.value / 2).dp)
                     .zIndex(if (itemMotion != null) 1f else 0f),

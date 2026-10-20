@@ -8,12 +8,20 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
+import androidx.compose.runtime.withFrameNanos
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.IntOffset
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiMotion
@@ -21,8 +29,10 @@ import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.core.domain.game.GameMode
 import dev.talhabayhan.lexi.core.domain.platform.UrlOpener
 import dev.talhabayhan.lexi.feature.game.GamePreparer
+import dev.talhabayhan.lexi.feature.game.GameWarmUp
 import dev.talhabayhan.lexi.feature.game.gameScreen
 import dev.talhabayhan.lexi.feature.game.result.resultScreen
+import dev.talhabayhan.lexi.feature.home.HomeRoute
 import dev.talhabayhan.lexi.feature.home.examPacksScreen
 import dev.talhabayhan.lexi.feature.home.homeScreen
 import dev.talhabayhan.lexi.feature.levels.categoriesScreen
@@ -43,7 +53,8 @@ import org.koin.compose.koinInject
  * → Result` and `Home → Stats`, `Home → Settings`, `Home → Practice` (level select preselected to Practice) and `Home → Exam packs`. Onboarding (M6) will slot in after the splash. The
  * result replaces everything above Home, so system back and "Ana menüye dön" both return to Home; TEKRAR OYNA starts
  * the next game in the same place (`Home → Game`). Every navigation to the game first prepares it
- * ([LexiNavigator.startGame], at most 250 ms), so the game slides in with its board already drawn.
+ * ([LexiNavigator.startGame], at most 250 ms), so the game slides in with its board already drawn. Once Home is first
+ * RESUMED, the game board is warmed up behind the host for two frames ([GameWarmUp]); the perf tour starts after it.
  *
  * Transitions (`motion.md` #12, slide + fade-through): the new screen slides in horizontally by 24dp over 260 ms and
  * fades in over 200 ms starting at 60 ms; the old one slides 24dp the other way and fades out over its first 90 ms;
@@ -61,10 +72,39 @@ fun LexiNavHost(modifier: Modifier = Modifier, perfTour: PerfTourConfig? = null)
     val distancePx = with(density) { motion.screenTransitionSlideDistance.roundToPx() }
     val transitions = remember(motion, distancePx) { ScreenTransitions(motion, distancePx) }
     val urlOpener = koinInject<UrlOpener>()
+    var warmingUp by remember { mutableStateOf(false) }
+    var warmedUp by remember { mutableStateOf(false) }
+    LaunchedEffect(navigator) {
+        // After the splash (Home only resumes once its transition is over), never during its animation.
+        navigator.awaitResumedOn(HomeRoute::class)
+        warmingUp = true
+        // One more wait: the flag is cleared before the recomposition of the frame it resumes in.
+        repeat(GAME_WARM_UP_FRAMES + 1) { withFrameNanos { } }
+        warmingUp = false
+        warmedUp = true
+    }
+    Box(modifier.fillMaxSize()) {
+        // Behind the NavHost and its opaque cream background, so it is never seen.
+        if (warmingUp) GameWarmUp(Modifier.matchParentSize())
+        LexiNavGraph(navController, navigator, transitions, urlOpener)
+    }
+    if (perfTour != null && warmedUp) PerfTour(navigator = navigator, config = perfTour)
+}
+
+/** Frames the game board warm-up ([GameWarmUp]) stays composed. */
+private const val GAME_WARM_UP_FRAMES = 2
+
+@Composable
+private fun LexiNavGraph(
+    navController: NavHostController,
+    navigator: LexiNavigator,
+    transitions: ScreenTransitions,
+    urlOpener: UrlOpener,
+) {
     NavHost(
         navController = navController,
         startDestination = SplashRoute,
-        modifier = modifier.background(LexiTheme.colors.cream),
+        modifier = Modifier.fillMaxSize().background(LexiTheme.colors.cream),
         enterTransition = { transitions.enter(forward = true) },
         exitTransition = { transitions.exit(forward = true) },
         popEnterTransition = { transitions.enter(forward = false) },
@@ -116,7 +156,6 @@ fun LexiNavHost(modifier: Modifier = Modifier, perfTour: PerfTourConfig? = null)
             onHome = { navigator.home() },
         )
     }
-    if (perfTour != null) PerfTour(navigator = navigator, config = perfTour)
 }
 
 /** #12: forward = the new screen comes from the right (end) and the old one leaves to the left; back mirrors it. */

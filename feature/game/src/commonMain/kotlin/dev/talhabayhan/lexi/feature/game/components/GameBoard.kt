@@ -32,6 +32,7 @@ import dev.talhabayhan.lexi.core.designsystem.component.LetterKeyDefaults
 import dev.talhabayhan.lexi.core.designsystem.component.NavSquareButton
 import dev.talhabayhan.lexi.core.designsystem.component.ScoreBadge
 import dev.talhabayhan.lexi.core.designsystem.component.TimerBar
+import dev.talhabayhan.lexi.core.designsystem.component.rememberAnswerSlotLabels
 import dev.talhabayhan.lexi.core.designsystem.format.formatClock
 import dev.talhabayhan.lexi.core.designsystem.icon.LexiIcons
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
@@ -128,6 +129,7 @@ internal fun AnswerSlots(
             minOf(AnswerSlotDefaults.Width.roundToPx(), (constraints.maxWidth - gaps) / cells.coerceAtLeast(1)).toDp()
         }
         val baseStyle = LexiTheme.typography.slotLetter
+        val labels = rememberAnswerSlotLabels()
         val textScale = minOf(slotWidth / AnswerSlotDefaults.Width, height / AnswerSlotDefaults.Height)
         val textStyle = if (textScale < 1f) {
             baseStyle.resized(baseStyle.fontSize * textScale)
@@ -154,6 +156,7 @@ internal fun AnswerSlots(
                             state = state,
                             modifier = Modifier.width(slotWidth).onPlaced { onCellPlaced(cellIndex, it) },
                             textStyle = textStyle,
+                            labels = labels,
                             height = height,
                         )
                     }
