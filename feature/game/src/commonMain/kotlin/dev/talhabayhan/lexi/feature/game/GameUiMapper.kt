@@ -5,6 +5,7 @@ import dev.talhabayhan.lexi.core.designsystem.component.LetterKeyState
 import dev.talhabayhan.lexi.core.designsystem.component.WheelLetterState
 import dev.talhabayhan.lexi.core.designsystem.component.WheelLetterUi
 import dev.talhabayhan.lexi.core.domain.game.GameEngine
+import dev.talhabayhan.lexi.core.domain.game.GameEvent
 import dev.talhabayhan.lexi.core.domain.game.GameMode
 import dev.talhabayhan.lexi.core.domain.game.GameState
 import dev.talhabayhan.lexi.core.domain.game.GameStatus
@@ -41,7 +42,7 @@ internal object GameUiMapper {
             .filter { it.isPlayable }
             .map { WheelLetterUi(it.letter, it.state.toWheelState()) }
             .toImmutableList()
-        if (state.status == GameStatus.NOT_STARTED) return GameUiState(isLoading = true, wheel = wheel)
+        if (state.status == GameStatus.NOT_STARTED) return beforeStart(state, engine, wheel)
         val turn = turnOf(state) ?: previous?.turn
         return GameUiState(
             isLoading = false,
@@ -59,6 +60,17 @@ internal object GameUiMapper {
             jokers = jokersOf(state, engine),
             jokerAdReward = engine.config.rewardedAdJokerReward,
         )
+    }
+
+    /**
+     * Before `Start`: the board as `Start` will show it, so starting on resume changes nothing on screen. The first
+     * turn depends only on the seed (not on the start time), so a throwaway `Start` gives exactly that turn; it is
+     * never logged. Input stays off until the real `Start`. A wheel that would end at `Start` stays loading.
+     */
+    private fun beforeStart(state: GameState, engine: GameEngine, wheel: ImmutableList<WheelLetterUi>): GameUiState {
+        val started = engine.reduce(state, GameEvent.Start(timestampMs = 0L)).state
+        if (started.status != GameStatus.PLAYING) return GameUiState(isLoading = true, wheel = wheel)
+        return map(started, engine).copy(isStarting = true, inputEnabled = false)
     }
 
     /**

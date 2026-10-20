@@ -31,6 +31,7 @@ One line per segment (trigger until the destination is RESUMED, plus 400 ms):
 
 - `dropped`: gaps > 1.5 × refresh interval; `long`: gaps > 50 ms.
 - `firstGapMs`: the first gap after the trigger, i.e. the cost of the destination's first frame.
+- Game segments include the preparation before the navigation (`GamePreparer`, at most 250 ms of idle frames).
 
 At the end: `LexiPerf SUMMARY {…}` (per label: median and max of `maxGapMs`, sums of `dropped` and `long`; refresh
 interval, platform, reduced-motion flag), then `LexiPerf DONE`. `LexiPerf ABORT …` means a trigger was dropped or a

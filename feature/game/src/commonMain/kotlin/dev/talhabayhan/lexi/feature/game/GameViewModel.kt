@@ -5,8 +5,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import co.touchlab.kermit.Logger
 import dev.talhabayhan.lexi.core.domain.config.FeatureFlags
-import dev.talhabayhan.lexi.core.domain.daily.DailyPlayState
-import dev.talhabayhan.lexi.core.domain.daily.GetDailyWheel
 import dev.talhabayhan.lexi.core.domain.feedback.Speaker
 import dev.talhabayhan.lexi.core.domain.game.EngineEffect
 import dev.talhabayhan.lexi.core.domain.game.GameConfig
@@ -19,30 +17,29 @@ import dev.talhabayhan.lexi.core.domain.game.GameStatus
 import dev.talhabayhan.lexi.core.domain.game.JokerType
 import dev.talhabayhan.lexi.core.domain.game.SavedGame
 import dev.talhabayhan.lexi.core.domain.game.SavedGameCodec
-import dev.talhabayhan.lexi.core.domain.game.WheelGenerator
 import dev.talhabayhan.lexi.core.domain.model.CategoryId
-import dev.talhabayhan.lexi.core.domain.random.SeededRandom
-import dev.talhabayhan.lexi.core.domain.repository.CardRepository
 import dev.talhabayhan.lexi.core.domain.repository.JokerRepository
-import dev.talhabayhan.lexi.core.domain.repository.ProgressRepository
 import dev.talhabayhan.lexi.core.domain.repository.SettingsRepository
 import dev.talhabayhan.lexi.core.domain.session.FinishGame
-import dev.talhabayhan.lexi.core.domain.srs.Srs
 import dev.talhabayhan.lexi.core.domain.time.AppClock
 import dev.talhabayhan.lexi.feature.game.GameSession.Companion.isIgnored
 import dev.talhabayhan.lexi.feature.game.result.ResultRoute
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineStart
+import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.receiveAsFlow
+import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
@@ -57,7 +54,8 @@ internal fun interface SeedSource {
 }
 
 /**
- * Runs one game (ADR 0019): loads or restores the wheel, owns time (a 100 ms ticker over the injected [timeSource]
+ * Runs one game (ADR 0019): takes the game prepared before the navigation ([GamePreparer]) or loads / restores it
+ * through the [GameLoader], owns time (a 100 ms ticker over the injected [timeSource]
  * that runs only while playing, unpaused and in the foreground), feeds intents to the [GameSession] and maps the
  * engine's state and effects. Background ⇒ final tick + Pause; foreground keeps the game paused. The applied events
  * are kept in [SavedStateHandle] for process-death restore until the finished game is recorded once by [FinishGame].
@@ -68,8 +66,7 @@ internal class GameViewModel(
     /** Navigation arguments, `handle.toRoute<GameRoute>()` (see `gameModule`). */
     private val route: GameRoute,
     private val handle: SavedStateHandle,
-    private val cards: CardRepository,
-    private val progress: ProgressRepository,
+    private val loader: GameLoader,
     private val jokers: JokerRepository,
     private val settings: SettingsRepository,
     private val finishGame: FinishGame,
@@ -77,9 +74,9 @@ internal class GameViewModel(
     private val speaker: Speaker,
     private val config: GameConfig,
     private val timeSource: TimeSource.WithComparableMarks,
-    private val seeds: SeedSource,
     private val flags: FeatureFlags = FeatureFlags(),
-    private val getDailyWheel: GetDailyWheel? = null,
+    /** A new game prepared before the navigation ([GamePreparer]); taken once, unless a saved game is restored. */
+    preparer: GamePreparer? = null,
 ) : ViewModel() {
     private val mutableState = MutableStateFlow(GameUiState())
     val state: StateFlow<GameUiState> = mutableState.asStateFlow()
@@ -109,7 +106,19 @@ internal class GameViewModel(
     private var loading: Job? = null
 
     init {
-        loading = viewModelScope.launch { load() }
+        val prepared = if (handle.contains(KEY_GAME)) null else preparer?.take(route)
+        loading = when {
+            prepared == null || prepared.isCancelled -> viewModelScope.launch { load() }
+
+            // Ready before the navigation: published now, so the first composition already shows the board.
+            prepared.isCompleted -> {
+                @OptIn(ExperimentalCoroutinesApi::class)
+                show(prepared.getCompleted())
+                null
+            }
+
+            else -> viewModelScope.launch { awaitPrepared(prepared) }
+        }
         viewModelScope.launch {
             settings.settings.collect {
                 speakOnCorrect = it.speakOnCorrect
@@ -237,7 +246,9 @@ internal class GameViewModel(
      */
     private suspend fun load() {
         val opened = try {
-            open()
+            val limit = loader.classicLimit(handle.get<Int>(KEY_CLASSIC_LIMIT))
+            handle[KEY_CLASSIC_LIMIT] = limit
+            loader.open(route, limit, handle.get<String>(KEY_GAME))
         } catch (e: CancellationException) {
             throw e
         } catch (e: Exception) {
@@ -245,17 +256,41 @@ internal class GameViewModel(
             log.e(e) { "game not loaded" }
             Opened.Failed
         }
+        show(opened)
+    }
+
+    /** A preparation that was still running when the screen opened (it navigated after the cap); loading until then. */
+    private suspend fun awaitPrepared(prepared: Deferred<Opened>) {
+        val opened = try {
+            prepared.await()
+        } catch (e: CancellationException) {
+            // This screen was cleared: nobody needs the preparation any more.
+            if (!currentCoroutineContext().isActive) prepared.cancel()
+            currentCoroutineContext().ensureActive()
+            // Only the preparation was cancelled: load as without one.
+            null
+        }
+        if (opened == null) load() else show(opened)
+    }
+
+    private fun show(opened: Opened) {
         when (opened) {
-            Opened.Abandoned -> effectChannel.send(GameEffect.Abandoned)
+            Opened.Abandoned -> {
+                handle.remove<String>(KEY_GAME)
+                effectChannel.trySend(GameEffect.Abandoned)
+            }
 
             Opened.Failed -> showLoadError(GameLoadError.Unreadable)
 
             Opened.NoCards -> showLoadError(GameLoadError.NoCards)
 
             is Opened.Ready -> {
+                engine = opened.engine
                 session = opened.session
+                handle[KEY_CLASSIC_LIMIT] = opened.engine.config.classicTimeLimitSeconds
+                opened.snapshot?.let { handle[KEY_GAME] = it }
                 val state = opened.session.state
-                publish(state)
+                publish(state, opened.ui)
                 when {
                     state.status == GameStatus.FINISHED -> onGameOver()
 
@@ -277,89 +312,6 @@ internal class GameViewModel(
         if (state.value.loadError != GameLoadError.Unreadable || loading?.isActive == true) return
         mutableState.value = GameUiState()
         loading = viewModelScope.launch { load() }
-    }
-
-    private sealed interface Opened {
-        data class Ready(val session: GameSession, val restored: Boolean) : Opened
-
-        data object Abandoned : Opened
-
-        data object NoCards : Opened
-
-        data object Failed : Opened
-    }
-
-    private suspend fun open(): Opened {
-        val current = settings.settings.first()
-        val limit = handle.get<Int>(KEY_CLASSIC_LIMIT)
-            ?: current.classicTimeLimitSeconds.takeIf { it in config.classicTimeLimitOptionsSeconds }
-            ?: config.classicTimeLimitSeconds
-        handle[KEY_CLASSIC_LIMIT] = limit
-        val engine = GameEngine(config.copy(classicTimeLimitSeconds = limit)).also { engine = it }
-        val saved = handle.get<String>(KEY_GAME)?.let(SavedGameCodec::decodeOrNull)
-            ?: return newSession(engine)
-        // A read failure throws (retry keeps the saved game); null = a card left the content.
-        val restored = GameSession.restore(engine, saved, cards.cards(saved.cardIds))
-        if (restored == null) {
-            handle.remove<String>(KEY_GAME)
-            return Opened.Abandoned
-        }
-        return Opened.Ready(restored, restored = true)
-    }
-
-    /** A new game; [Opened.Abandoned] when a review wheel has no due card, [Opened.NoCards] for an empty wheel. */
-    private suspend fun newSession(engine: GameEngine): Opened {
-        val mode = route.gameMode
-        val category = route.categoryId ?: CategoryId.MIXED
-        var seed = seeds.nextSeed()
-        val random = SeededRandom(seed).derive(WheelGenerator.SEED_PURPOSE)
-        var level = route.gameLevel
-        val wheel = when {
-            mode == GameMode.REVIEW -> {
-                // Review (GAME_RULES.md §1, §10): the due notebook cards of any level; the route's level is a placeholder.
-                val today = appClock.epochDay(appClock.nowMs())
-                val due = Srs.dueCards(progress.observeAll().first(), today)
-                val reviewWheel = WheelGenerator.review(cards.cards(due), random)
-                level = reviewWheel.slots.firstNotNullOfOrNull { it.card?.level } ?: return Opened.Abandoned
-                reviewWheel
-            }
-
-            mode == GameMode.DAILY -> {
-                val dailyWheelLoader = getDailyWheel ?: return Opened.Failed
-                when (val dailyState = dailyWheelLoader(level)) {
-                    is DailyPlayState.Ready -> {
-                        seed = dailyState.seed
-                        dailyState.wheel
-                    }
-
-                    is DailyPlayState.AlreadyPlayed -> return Opened.Abandoned
-
-                    DailyPlayState.NoCards -> return Opened.NoCards
-                }
-            }
-
-            else -> {
-                val recentlySeen = if (mode.usesCardHistory) {
-                    WheelGenerator.recentlySeen(progress.lastSeenMs(), appClock.nowMs(), config)
-                } else {
-                    emptySet()
-                }
-                WheelGenerator.generate(
-                    pool = cards.wheelPool(level, category),
-                    level = level,
-                    category = category,
-                    mode = mode,
-                    random = random,
-                    recentlySeen = recentlySeen,
-                )
-            }
-        }
-        // The engine would end such a wheel at Start (EMPTY_WHEEL); it is not a game, so nothing is recorded.
-        if (wheel.playableSlots.isEmpty()) return Opened.NoCards
-        jokers.grantStartPack(config.jokerStartPack)
-        val inventory = jokers.observeInventory().first()
-        val initial = engine.newGame(seed = seed, mode = mode, level = level, wheel = wheel, jokers = inventory)
-        return Opened.Ready(GameSession.start(engine, initial).also { save(it) }, restored = false)
     }
 
     /** `Start` once the wheel is loaded and the screen is resumed for the first time. */
@@ -399,8 +351,11 @@ internal class GameViewModel(
     private fun acceptsInput(state: GameState): Boolean =
         state.status == GameStatus.PLAYING && !state.isPaused && !state.isRevealing && state.currentInput != null
 
-    private fun publish(state: GameState) {
-        mutableState.value = GameUiMapper.map(state, checkNotNull(engine), mutableState.value).copy(
+    private fun publish(
+        state: GameState,
+        mapped: GameUiState = GameUiMapper.map(state, checkNotNull(engine), mutableState.value),
+    ) {
+        mutableState.value = mapped.copy(
             isJokerSheetOpen = jokerSheetOpen,
             isQuitConfirmation = quitConfirmation,
             isRestartConfirmation = restartConfirmation,

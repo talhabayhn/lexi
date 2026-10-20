@@ -49,13 +49,24 @@ class GameUiMapperTest {
     private fun GameState.typed(word: String): GameState = after(*keyTaps(this, word).toTypedArray())
 
     @Test
-    fun `a game that has not started is loading and shows only playable letters`() {
+    fun `a game that has not started shows the first turn as Start will without input`() {
         val ui = GameUiMapper.map(engine.newGame(SEED, GameMode.CLASSIC, Level.A1, wheel), engine)
 
-        assertTrue(ui.isLoading)
-        assertEquals(listOf('A', 'C'), ui.wheel.map { it.letter })
-        assertNull(ui.turn)
+        assertFalse(ui.isLoading)
+        assertTrue(ui.isStarting)
         assertFalse(ui.inputEnabled)
+        assertEquals(listOf('A', 'C'), ui.wheel.map { it.letter })
+        assertEquals(GameUiMapper.map(started(), engine).turn, ui.turn)
+        assertEquals(WheelLetterState.Current, ui.wheel[0].state)
+    }
+
+    @Test
+    fun `a game that would end at Start stays loading`() {
+        val empty = Wheel(wheel.slots.map { it.copy(card = null, state = SlotState.SKIPPED) })
+        val ui = GameUiMapper.map(engine.newGame(SEED, GameMode.CLASSIC, Level.A1, empty), engine)
+
+        assertTrue(ui.isLoading)
+        assertNull(ui.turn)
     }
 
     @Test

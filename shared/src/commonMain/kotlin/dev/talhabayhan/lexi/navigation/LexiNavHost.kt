@@ -10,6 +10,7 @@ import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.foundation.background
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.IntOffset
@@ -19,6 +20,7 @@ import dev.talhabayhan.lexi.core.designsystem.theme.LexiMotion
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.core.domain.game.GameMode
 import dev.talhabayhan.lexi.core.domain.platform.UrlOpener
+import dev.talhabayhan.lexi.feature.game.GamePreparer
 import dev.talhabayhan.lexi.feature.game.gameScreen
 import dev.talhabayhan.lexi.feature.game.result.resultScreen
 import dev.talhabayhan.lexi.feature.home.examPacksScreen
@@ -40,7 +42,8 @@ import org.koin.compose.koinInject
  * The app graph: `Splash → Home → LevelSelect [→ Categories] → Game → Result`, `Home → Notebook → Game (review)
  * → Result` and `Home → Stats`, `Home → Settings`, `Home → Practice` (level select preselected to Practice) and `Home → Exam packs`. Onboarding (M6) will slot in after the splash. The
  * result replaces everything above Home, so system back and "Ana menüye dön" both return to Home; TEKRAR OYNA starts
- * the next game in the same place (`Home → Game`).
+ * the next game in the same place (`Home → Game`). Every navigation to the game first prepares it
+ * ([LexiNavigator.startGame], at most 250 ms), so the game slides in with its board already drawn.
  *
  * Transitions (`motion.md` #12, slide + fade-through): the new screen slides in horizontally by 24dp over 260 ms and
  * fades in over 200 ms starting at 60 ms; the old one slides 24dp the other way and fades out over its first 90 ms;
@@ -50,7 +53,9 @@ import org.koin.compose.koinInject
 @Composable
 fun LexiNavHost(modifier: Modifier = Modifier, perfTour: PerfTourConfig? = null) {
     val navController = rememberNavController()
-    val navigator = remember(navController) { LexiNavigator(navController) }
+    val gamePreparer = koinInject<GamePreparer>()
+    val scope = rememberCoroutineScope()
+    val navigator = remember(navController, gamePreparer, scope) { LexiNavigator(navController, gamePreparer, scope) }
     val motion = LexiTheme.motion
     val density = LocalDensity.current
     val distancePx = with(density) { motion.screenTransitionSlideDistance.roundToPx() }

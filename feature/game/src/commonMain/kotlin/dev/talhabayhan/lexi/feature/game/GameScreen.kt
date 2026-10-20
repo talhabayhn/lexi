@@ -218,9 +218,10 @@ private fun GameContent(
         },
         keys = {
             if (turn != null) {
+                // Before the start the keys already look ready (no dimming flash on resume); the game ignores them.
                 KeyGrid(
                     keys = turn.keys,
-                    enabled = state.inputEnabled,
+                    enabled = state.inputEnabled || state.isStarting,
                     onKey = { onIntent(GameIntent.KeyTapped(it)) },
                     keyHeight = layout.keyHeight,
                     gap = layout.keyGap,
@@ -231,7 +232,7 @@ private fun GameContent(
         },
         actions = {
             GameActions(
-                enabled = state.inputEnabled,
+                enabled = state.inputEnabled || state.isStarting,
                 size = layout.actionSize,
                 onIntent = onIntent,
                 modifier = Modifier.testTag(GameTestTags.ACTIONS),

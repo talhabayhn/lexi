@@ -100,10 +100,10 @@ internal fun GameRoute(
             }
         }
     }
-    // System back on both platforms: sheet → closed, running game → paused (GameIntent.Back). While loading or after
-    // a load error, back leaves the screen as usual.
+    // System back on both platforms: sheet → closed, running game → paused (GameIntent.Back). While loading, before
+    // the start or after a load error, back leaves the screen as usual.
     GameBackHandler(
-        enabled = !state.isLoading && state.loadError == null,
+        enabled = !state.isLoading && !state.isStarting && state.loadError == null,
         onBack = { viewModel.onIntent(GameIntent.Back) },
     )
     val readClock = remember(clock) { { clock.value } }

@@ -20,7 +20,11 @@ empty module; `LetterWheel`/`WheelLetter`/`GameHud` already exist in `core:desig
   `TICK_INTERVAL = 100.milliseconds` (VM constant, technical, not a rule) it dispatches `Tick(elapsedMs)` measured
   from the last mark; the mark advances by exactly the dispatched whole ms, so there is no drift. 100 ms keeps the
   1200 ms reveal and the timer bar precise; the engine is interval-agnostic, so golden tests are unaffected.
-- `Start` is dispatched once the wheel is loaded and the screen is first RESUMED.
+- `Start` is dispatched once the wheel is loaded and the screen is first RESUMED. New games are opened by `GameLoader`
+  (CPU work on `Dispatchers.Default`) and, for every navigation to the game, prepared before it by `GamePreparer`
+  (navigation after ready or 250 ms); until `Start` the board already shows the first turn without input
+  (`GameUiState.isStarting`, a throwaway `Start` that is never logged), so starting changes nothing on screen.
+  Keys and actions already look enabled then; a tap in that window (the enter transition) gives press feedback only.
 - Lifecycle: `GameScreen` forwards `LifecycleEventEffect(ON_PAUSE/ON_RESUME)` (lifecycle-runtime-compose) as
   `GameIntent.Background` / `GameIntent.Foreground`. Background ⇒ flush a final `Tick` for the time since the last
   tick, stop the ticker, dispatch `Pause`. ON_PAUSE covers screen lock, incoming call, app switcher, iOS
@@ -118,7 +122,7 @@ kotlinx-datetime.
 - **Back / pause:** system back (both platforms, `NavigationBackHandler` in common code; `navigationevent-compose`
   is declared through a catalog alias of the version navigation-compose already resolves, not a new library) closes
   the joker sheet, leaves a confirmation, or pauses a running game; on the pause dialog it does nothing, so
-  only "Devam et" restarts the clock. While loading, back leaves the screen. The pause dialog (design debt) has a
+  only "Devam et" restarts the clock. While loading or before `Start`, back leaves the screen. The pause dialog (design debt) has a
   first step with a button stack (DEVAM ET / YENİDEN BAŞLAT / AYARLAR / PES ET) and, since restarting and giving up
   can't be undone, a `ConfirmDialog` for each (Başlat / Vazgeç; Pes et = `Forfeit` / Vazgeç). Restart drops the paused
   game unrecorded (its snapshot too; used jokers stay used) and loads a new wheel for the same route with a new seed

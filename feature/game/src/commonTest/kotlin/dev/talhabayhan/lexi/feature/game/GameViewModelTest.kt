@@ -36,8 +36,11 @@ import dev.talhabayhan.lexi.core.testing.FakeSettingsRepository
 import dev.talhabayhan.lexi.core.testing.FakeSpeaker
 import dev.talhabayhan.lexi.core.testing.testCard
 import dev.talhabayhan.lexi.feature.game.result.ResultRoute
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.TestScope
@@ -54,6 +57,7 @@ import kotlin.test.assertFalse
 import kotlin.test.assertNotNull
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
+import kotlin.time.Duration
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class GameViewModelTest {
@@ -89,11 +93,11 @@ class GameViewModelTest {
         flags: FeatureFlags = FeatureFlags(),
         seeds: SeedSource = SeedSource { SEED },
         getDailyWheel: GetDailyWheel? = null,
+        preparer: GamePreparer? = null,
     ): GameViewModel = GameViewModel(
         route = gameRoute,
         handle = handle,
-        cards = cards,
-        progress = progress,
+        loader = loader(jokerRepository, seeds, getDailyWheel),
         jokers = jokerRepository,
         settings = settings,
         finishGame = FinishGame(sessionRepository, progress, appClock, config),
@@ -101,10 +105,29 @@ class GameViewModelTest {
         speaker = speaker,
         config = config,
         timeSource = testScheduler.timeSource,
-        seeds = seeds,
         flags = flags,
-        getDailyWheel = getDailyWheel,
+        preparer = preparer,
     )
+
+    /** The loader's CPU work runs on the test scheduler too, so `runCurrent` completes a load. */
+    private fun TestScope.loader(
+        jokerRepository: JokerRepository = jokers,
+        seeds: SeedSource = SeedSource { SEED },
+        getDailyWheel: GetDailyWheel? = null,
+    ) = GameLoader(
+        cards = cards,
+        progress = progress,
+        jokers = jokerRepository,
+        settings = settings,
+        appClock = appClock,
+        config = config,
+        seeds = seeds,
+        getDailyWheel = getDailyWheel,
+        cpu = StandardTestDispatcher(testScheduler),
+    )
+
+    private fun TestScope.preparer(seeds: SeedSource = SeedSource { SEED }) =
+        GamePreparer(loader(seeds = seeds), backgroundScope)
 
     /** Loaded and resumed: the game has started (A is current). */
     private fun TestScope.started(handle: SavedStateHandle = routeHandle()): GameViewModel = viewModel(handle).also {
@@ -138,13 +161,24 @@ class GameViewModelTest {
 
     @Test
     fun `the game starts when the loaded screen is resumed`() = runTest {
-        val vm = viewModel()
-        runCurrent()
+        val handle = routeHandle()
+        val vm = viewModel(handle)
         assertTrue(vm.state.value.isLoading)
+        runCurrent()
+        // Loaded, not resumed yet: the board shows the first turn but takes no input.
+        assertFalse(vm.state.value.isLoading)
+        assertTrue(vm.state.value.isStarting)
+        assertEquals('A', vm.state.value.turn?.letter)
+        assertFalse(vm.state.value.inputEnabled)
+        val notStarted = handle.get<String>(GameViewModel.KEY_GAME)
+        vm.onIntent(GameIntent.KeyTapped(0))
+        assertEquals(notStarted, handle.get<String>(GameViewModel.KEY_GAME))
 
         vm.onIntent(GameIntent.Foreground)
 
         assertFalse(vm.state.value.isLoading)
+        assertFalse(vm.state.value.isStarting)
+        assertTrue(vm.state.value.inputEnabled)
         assertEquals('A', vm.state.value.turn?.letter)
         assertEquals(listOf('A', 'B', 'C'), vm.state.value.wheel.map { it.letter })
         assertEquals(180_000L, vm.remainingMs)
@@ -1266,6 +1300,147 @@ class GameViewModelTest {
         assertEquals('B', restored.state.value.turn?.letter)
         assertEquals(10, restored.state.value.score)
     }
+
+    // region prepared before the navigation (GamePreparer)
+
+    @Test
+    fun `a prepared game is shown in the first state and starts on resume`() = runTest {
+        val preparer = preparer()
+        preparer.prepare(route)
+        val handle = routeHandle()
+
+        val vm = viewModel(handle = handle, preparer = preparer)
+
+        vm.state.test {
+            val first = awaitItem()
+            assertFalse(first.isLoading)
+            assertTrue(first.isStarting)
+            assertEquals('A', first.turn?.letter)
+            assertNotNull(handle.get<String>(GameViewModel.KEY_GAME))
+            assertEquals(config.classicTimeLimitSeconds, handle.get<Int>(GameViewModel.KEY_CLASSIC_LIMIT))
+
+            vm.onIntent(GameIntent.Foreground)
+            assertTrue(awaitItem().inputEnabled)
+            vm.onIntent(GameIntent.Background)
+            cancelAndIgnoreRemainingEvents()
+        }
+    }
+
+    @Test
+    fun `a prepared game is the same game as a loaded one`() = runTest {
+        val preparer = preparer()
+        preparer.prepare(route)
+        val prepared = viewModel(handle = routeHandle(), preparer = preparer)
+        val loaded = viewModel(handle = routeHandle()).also { runCurrent() }
+
+        assertEquals(loaded.state.value, prepared.state.value)
+    }
+
+    @Test
+    fun `without a preparation the game loads as before`() = runTest {
+        val preparer = preparer()
+
+        val vm = viewModel(preparer = preparer)
+
+        vm.state.test {
+            assertTrue(awaitItem().isLoading)
+            runCurrent()
+            assertTrue(awaitItem().isStarting)
+            cancelAndIgnoreRemainingEvents()
+        }
+    }
+
+    @Test
+    fun `a failed preparation shows the read error`() = runTest {
+        cards.failing = true
+        val preparer = preparer()
+        preparer.prepare(route)
+
+        val vm = viewModel(preparer = preparer)
+
+        vm.state.test {
+            assertEquals(GameLoadError.Unreadable, awaitItem().loadError)
+            cancelAndIgnoreRemainingEvents()
+        }
+    }
+
+    @Test
+    fun `a preparation still running after the cap is awaited with loading`() = runTest {
+        val preparer = preparer()
+        preparer.prepare(route, cap = Duration.ZERO)
+
+        val vm = viewModel(preparer = preparer)
+
+        vm.state.test {
+            assertTrue(awaitItem().isLoading)
+            runCurrent()
+            assertTrue(awaitItem().isStarting)
+            cancelAndIgnoreRemainingEvents()
+        }
+        assertNull(preparer.take(route))
+    }
+
+    @Test
+    fun `a second preparation replaces a stale one`() = runTest {
+        var seed = 1L
+        val preparer = preparer(seeds = SeedSource { seed++ })
+        val practice = GameRoute(Level.A1, GameMode.PRACTICE)
+        preparer.prepare(practice)
+        preparer.prepare(route)
+
+        assertNull(preparer.take(practice))
+        val handle = routeHandle()
+        viewModel(handle = handle, preparer = preparer).state.test {
+            assertTrue(awaitItem().isStarting)
+            cancelAndIgnoreRemainingEvents()
+        }
+        assertEquals(2L, SavedGameCodec.decodeOrNull(checkNotNull(handle.get<String>(GameViewModel.KEY_GAME)))?.seed)
+    }
+
+    @Test
+    fun `discard drops only the preparation of its route`() = runTest {
+        val preparer = preparer()
+        preparer.prepare(route)
+
+        preparer.discard(GameRoute(Level.A1, GameMode.PRACTICE))
+        assertNotNull(preparer.take(route))
+
+        preparer.prepare(route)
+        preparer.discard(route)
+        assertNull(preparer.take(route))
+    }
+
+    @Test
+    fun `a cancelled preparation falls back to loading the game`() = runTest {
+        val scope = CoroutineScope(backgroundScope.coroutineContext + Job())
+        val preparer = GamePreparer(loader(), scope)
+        preparer.prepare(route, cap = Duration.ZERO)
+        val vm = viewModel(preparer = preparer)
+
+        scope.cancel()
+        runCurrent()
+
+        assertTrue(vm.state.value.isStarting)
+        assertEquals('A', vm.state.value.turn?.letter)
+    }
+
+    @Test
+    fun `a saved game is restored even when a preparation for the route is waiting`() = runTest {
+        val firstHandle = routeHandle()
+        val first = started(firstHandle)
+        val snapshot = checkNotNull(firstHandle.get<String>(GameViewModel.KEY_GAME))
+        first.onIntent(GameIntent.Background)
+        val preparer = preparer()
+        preparer.prepare(route)
+
+        val restored = viewModel(handle = routeHandle(mapOf(GameViewModel.KEY_GAME to snapshot)), preparer = preparer)
+        runCurrent()
+
+        assertTrue(restored.state.value.isPaused)
+        assertNotNull(preparer.take(route))
+    }
+
+    // endregion
 
     // region DAILY mode tests
 

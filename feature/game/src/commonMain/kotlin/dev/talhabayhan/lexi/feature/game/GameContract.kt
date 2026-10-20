@@ -19,8 +19,13 @@ import kotlinx.collections.immutable.persistentListOf
  */
 @Immutable
 internal data class GameUiState(
-    /** True until the wheel is loaded and the game has started (false once [loadError] is set). */
+    /** True until the wheel is loaded (false once [loadError] is set). */
     val isLoading: Boolean = true,
+    /**
+     * Loaded but not started yet (the screen is still coming in): the board already shows the first turn as `Start`
+     * will show it and looks ready, but input is ignored until the game starts on resume.
+     */
+    val isStarting: Boolean = false,
     /** The game could not be loaded; the screen shows an empty state with retry / back instead of the board. */
     val loadError: GameLoadError? = null,
     /** Playable wheel letters in A–Z order (SKIPPED letters are not shown, `GAME_RULES.md` §1). */
