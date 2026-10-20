@@ -37,7 +37,7 @@ class GameScreenBehaviourTest {
 
     /** Regression (review of 30c4bbf): `inputEnabled` was mapped but the controls stayed tappable during a reveal. */
     @Test
-    fun `keys, backspace, pass and joker are disabled during the reveal`() = runComposeUiTest {
+    fun `keys and backspace and pass and joker are disabled during the reveal`() = runComposeUiTest {
         val intents = mutableListOf<GameIntent>()
         setContent {
             LexiTheme(reducedMotion = true) {
@@ -90,7 +90,7 @@ class GameScreenBehaviourTest {
     }
 
     @Test
-    fun `the pause dialog resumes, restarts, opens the settings or asks to confirm giving up`() = runComposeUiTest {
+    fun `the pause dialog resumes and restarts and opens settings or confirms giving up`() = runComposeUiTest {
         val intents = mutableListOf<GameIntent>()
         setContent {
             LexiTheme(reducedMotion = true) {

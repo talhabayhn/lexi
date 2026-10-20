@@ -59,7 +59,7 @@ class GameUiMapperTest {
     }
 
     @Test
-    fun `the current slot shows its clue and rule with the given letter, empty boxes and unused keys`() {
+    fun `the current slot shows its clue and rule with the given letter and empty boxes and unused keys`() {
         val ui = GameUiMapper.map(started(), engine)
 
         val turn = checkNotNull(ui.turn)

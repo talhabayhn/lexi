@@ -13,6 +13,7 @@ import androidx.compose.ui.test.performScrollTo
 import androidx.compose.ui.test.runComposeUiTest
 import dev.talhabayhan.lexi.core.designsystem.theme.DefaultLexiDimens
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
+import dev.talhabayhan.lexi.core.domain.AppInfo
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
@@ -25,6 +26,7 @@ import kotlin.test.assertEquals
 @GraphicsMode(GraphicsMode.Mode.NATIVE)
 @Config(sdk = [36], qualifiers = "tr-w390dp-h844dp-xhdpi")
 class SettingsScreenBehaviourTest {
+    private val aboutFooter = "${AppInfo.NAME} ${AppInfo.VERSION_NAME}"
 
     @Test
     fun `switches show their state and tapping a row asks for the opposite`() = runComposeUiTest {
@@ -111,7 +113,7 @@ class SettingsScreenBehaviourTest {
         }
 
         onNodeWithText(
-            "Lexi 1.0.0",
+            aboutFooter,
         ).performScrollTo().assertHeightIsAtLeast(minTarget).assertWidthIsAtLeast(minTarget).performClick()
         onNodeWithText(
             "Hakkında",
@@ -158,7 +160,7 @@ class SettingsScreenBehaviourTest {
             LexiTheme(reducedMotion = true) { SettingsScreen(SettingsUiState(), onIntent = {}) }
         }
 
-        onNodeWithText("Lexi 1.0.0").performScrollTo().assertHeightIsAtLeast(minTarget).assertWidthIsAtLeast(minTarget)
+        onNodeWithText(aboutFooter).performScrollTo().assertHeightIsAtLeast(minTarget).assertWidthIsAtLeast(minTarget)
         onNodeWithText("Hakkında").performScrollTo().assertHeightIsAtLeast(minTarget).assertWidthIsAtLeast(minTarget)
         onNodeWithText("Gizlilik").performScrollTo().assertHeightIsAtLeast(minTarget).assertWidthIsAtLeast(minTarget)
         onNodeWithText(

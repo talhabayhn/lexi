@@ -102,7 +102,7 @@ class GameMotionTest {
     }
 
     @Test
-    fun `the combo badge pops, holds and leaves`() = runComposeUiTest {
+    fun `the combo badge pops and holds and leaves`() = runComposeUiTest {
         val harness = setGameScreen(GameSamples.design)
 
         play(harness, GameEffect.ComboReached(5))

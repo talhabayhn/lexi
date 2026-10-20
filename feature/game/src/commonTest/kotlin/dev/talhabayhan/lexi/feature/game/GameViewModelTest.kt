@@ -336,7 +336,7 @@ class GameViewModelTest {
     }
 
     @Test
-    fun `every correct word is spoken, the last one too`() = runTest {
+    fun `every correct word is spoken and the last one too`() = runTest {
         val vm = started()
 
         vm.type("APPLE")
@@ -526,7 +526,7 @@ class GameViewModelTest {
     }
 
     @Test
-    fun `running out of time sends time up exactly once, after the last warning and before the result`() = runTest {
+    fun `running out of time sends time up exactly once after the last warning and before the result`() = runTest {
         val vm = started()
         vm.effects.test {
             awaitStart()

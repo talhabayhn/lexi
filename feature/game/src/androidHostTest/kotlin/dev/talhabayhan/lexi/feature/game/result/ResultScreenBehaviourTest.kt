@@ -76,7 +76,7 @@ class ResultScreenBehaviourTest {
     }
 
     @Test
-    fun `an open group shows every row, show less and the actions below`() = runComposeUiTest {
+    fun `an open group shows every row and show less and the actions below`() = runComposeUiTest {
         setContent {
             LexiTheme(reducedMotion = true) {
                 ResultScreen(
