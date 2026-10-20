@@ -95,14 +95,14 @@ Pre-prompt (before the OS permission dialog, onboarding layout — design debt):
 |---|---|---|---|
 | `leveltest_choice_title` | Seviyeni bulalım | Let's find your level | 30 |
 | `leveltest_choice_body` | 2 dakikalık kısa bir test ya da seviyeni kendin seç. | A quick 2-minute test, or pick your level yourself. | 64 |
-| `onboarding_level_pick_body` | Seviyeni seç, istediğin zaman değiştirebilirsin. | Pick your level. You can change it any time. *(Used until the level test ships)* | 64 |
-| `leveltest_choice_test` | Testi başlat | Start the test | 18 |
-| `leveltest_choice_pick` | Kendim seçeceğim | I'll pick myself | 22 |
+| `leveltest_choice_test` | SEVİYE TESTİNE BAŞLA *(design `01-onboarding`)* | START THE LEVEL TEST | 20 |
+| `leveltest_choice_pick` | YA DA SEVİYENİ SEÇ *(label over the level chips)* | OR PICK YOUR LEVEL | 22 |
+| `leveltest_choice_chip` | {level}, {name} *(screen reader label of a chip)* | {level}, {name} | — |
 | `leveltest_intro_title` | Seviye testi | Level test | 20 |
 | `leveltest_intro_body` | En fazla 14 soru. Joker yok, doğru ya da yanlış puanı etkilemez. Kolay başlar, cevapladıkça zorlaşır. | Up to 14 questions. No jokers, and nothing counts toward your score. It starts easy and adapts as you go. | 110 |
 | `leveltest_intro_hint` | Bilmediğini pas geçebilirsin. | You can pass on anything you don't know. | 44 |
 | `leveltest_intro_cta` | Başla | Start | 12 |
-| `leveltest_result_label` | Seviyen | Your level | 16 |
+| `leveltest_result_label` | SEVİYEN | YOUR LEVEL | 16 |
 | `leveltest_result_level` | Seviyen: {level} | Your level: {level} | 24 |
 | `leveltest_result_body` | Bu seviyeden başlamanı öneriyoruz. İstediğin zaman değiştirebilirsin. | We suggest starting here. You can change it any time. | 76 |
 | `leveltest_result_cta` | {level} ile başla | Start at {level} | 24 |

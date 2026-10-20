@@ -1,5 +1,6 @@
 package dev.talhabayhan.lexi.feature.onboarding
 
+import androidx.compose.runtime.Composable
 import com.github.takahirom.roborazzi.captureRoboImage
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiViewport
@@ -11,7 +12,7 @@ import org.robolectric.annotation.Config
 import org.robolectric.annotation.GraphicsMode
 
 /**
- * Onboarding screenshots: 3 steps, level choice, level picker, step 2 in English, and large font.
+ * Onboarding screenshots: 3 steps, level choice (`01-onboarding`), the level picker, step 2 in English, and large font.
  */
 @RunWith(RobolectricTestRunner::class)
 @GraphicsMode(GraphicsMode.Mode.NATIVE)
@@ -66,17 +67,12 @@ class OnboardingScreenshotTest {
         }
     }
 
+    // The former onboarding picker step, now the level test result's picker (`LevelPickerContent`) with "Atla".
     @Test
     fun onboardingLevelPicker() {
         captureRoboImage("src/androidHostTest/screenshots/OnboardingLevelPicker.png") {
             LexiTheme(reducedMotion = false) {
-                OnboardingScreen(
-                    state = OnboardingUiState(
-                        currentStep = OnboardingStep.LevelPicker,
-                        selectedLevel = Level.A1,
-                    ),
-                    onIntent = {},
-                )
+                LevelPicker()
             }
         }
     }
@@ -240,13 +236,20 @@ class OnboardingScreenshotTest {
     @Config(qualifiers = "tr-w320dp-h568dp-xhdpi", fontScale = 2.0f)
     fun levelChoice_w320h568FontScale200() = capture("OnboardingLevelChoice_w320h568_fontScale200", levelChoice)
 
-    private fun capture(name: String, state: OnboardingUiState) {
+    private fun capture(name: String, state: OnboardingUiState?) {
         captureRoboImage("src/androidHostTest/screenshots/$name.png") {
             LexiTheme(reducedMotion = false) {
                 LexiViewport {
-                    OnboardingScreen(state = state, onIntent = {})
+                    if (state == null) LevelPicker() else OnboardingScreen(state = state, onIntent = {})
                 }
             }
+        }
+    }
+
+    @Composable
+    private fun LevelPicker() {
+        OnboardingFrame {
+            LevelPickerContent(selectedLevel = Level.A1, onBack = {}, onPick = {}, onSkip = {})
         }
     }
 
@@ -255,6 +258,6 @@ class OnboardingScreenshotTest {
         val step2 = OnboardingUiState(currentStep = OnboardingStep.Step2)
         val step3 = OnboardingUiState(currentStep = OnboardingStep.Step3)
         val levelChoice = OnboardingUiState(currentStep = OnboardingStep.LevelChoice)
-        val levelPicker = OnboardingUiState(currentStep = OnboardingStep.LevelPicker, selectedLevel = Level.A1)
+        val levelPicker: OnboardingUiState? = null
     }
 }

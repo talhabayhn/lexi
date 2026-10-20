@@ -5,6 +5,13 @@ plugins {
 
 kotlin {
     sourceSets {
+        commonMain.dependencies {
+            // SavedStateHandle: the level test result's route args (as in feature:game).
+            implementation(libs.androidx.lifecycle.viewmodelSavedstate)
+            // System back of the level test intro and result; already a transitive dependency of
+            // navigation-compose, declared explicitly at the same version (as in feature:game).
+            implementation(libs.androidx.navigationevent.compose)
+        }
         getByName("androidHostTest").dependencies {
             implementation(libs.junit)
             implementation(libs.robolectric)

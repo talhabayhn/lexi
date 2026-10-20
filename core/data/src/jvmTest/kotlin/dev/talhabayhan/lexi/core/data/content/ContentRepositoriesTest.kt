@@ -98,6 +98,13 @@ class ContentRepositoriesTest {
     }
 
     @Test
+    fun `level cards are read once and kept in memory`() = runTest(io) {
+        val first = cards.levelCards()
+
+        assertSame(first, cards.levelCards())
+    }
+
+    @Test
     fun `category of cards covers one level without exam-pack-only cards`() = runTest(io) {
         val a1 = cards.categoryOfCards(Level.A1)
 

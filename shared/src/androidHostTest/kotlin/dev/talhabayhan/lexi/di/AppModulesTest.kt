@@ -11,6 +11,7 @@ import dev.talhabayhan.lexi.feature.game.GameRoute
 import dev.talhabayhan.lexi.feature.game.result.ResultRoute
 import dev.talhabayhan.lexi.feature.levels.CategoriesRoute
 import dev.talhabayhan.lexi.feature.levels.LevelSelectRoute
+import dev.talhabayhan.lexi.feature.onboarding.result.LevelTestResultRoute
 import kotlinx.coroutines.CoroutineScope
 import org.koin.core.annotation.KoinExperimentalAPI
 import org.koin.dsl.module
@@ -36,6 +37,7 @@ class AppModulesTest {
                 ResultRoute::class,
                 CategoriesRoute::class,
                 LevelSelectRoute::class,
+                LevelTestResultRoute::class,
                 CoroutineScope::class,
             ),
         )

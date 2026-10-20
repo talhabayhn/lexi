@@ -10,6 +10,7 @@ import dev.talhabayhan.lexi.core.domain.model.CategoryId
 import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.feature.game.GamePreparer
 import dev.talhabayhan.lexi.feature.game.GameRoute
+import dev.talhabayhan.lexi.feature.game.LevelTestRoute
 import dev.talhabayhan.lexi.feature.game.result.ResultRoute
 import dev.talhabayhan.lexi.feature.home.ExamPacksRoute
 import dev.talhabayhan.lexi.feature.home.HomeRoute
@@ -17,6 +18,7 @@ import dev.talhabayhan.lexi.feature.levels.CategoriesRoute
 import dev.talhabayhan.lexi.feature.levels.LevelSelectRoute
 import dev.talhabayhan.lexi.feature.notebook.NotebookRoute
 import dev.talhabayhan.lexi.feature.onboarding.OnboardingRoute
+import dev.talhabayhan.lexi.feature.onboarding.result.LevelTestResultRoute
 import dev.talhabayhan.lexi.feature.settings.SettingsRoute
 import dev.talhabayhan.lexi.feature.settings.about.AboutRoute
 import dev.talhabayhan.lexi.feature.stats.StatsRoute
@@ -76,6 +78,26 @@ internal class LexiNavigator(
             launchSingleTop = true
             popUpTo(OnboardingRoute) { inclusive = true }
         }
+    }
+
+    /** "Başla" of the level test intro: the test runs above the onboarding (`GAME_RULES.md` §9). */
+    fun startLevelTest(): Boolean = ifResumed { navigate(LevelTestRoute) { launchSingleTop = true } }
+
+    // Not RESUMED-guarded: fired once from the level test's effects (while STARTED), like [finishGame]. The result
+    // replaces the test, so back from the result returns to the onboarding.
+    fun finishLevelTest(level: Level) {
+        navController.navigate(LevelTestResultRoute(level.name)) {
+            launchSingleTop = true
+            popUpTo(LevelTestRoute) { inclusive = true }
+        }
+    }
+
+    /**
+     * "Pes et", "Geri dön" of a test that can't start, and back from the result: back to the onboarding (its level
+     * choice); nothing is saved. Not guarded, see [finishLevelTest]; a second call finds the onboarding on top.
+     */
+    fun quitLevelTest() {
+        navController.popBackStack(OnboardingRoute, inclusive = false)
     }
 
     fun openLevelSelect(mode: GameMode? = null): Boolean = ifResumed {

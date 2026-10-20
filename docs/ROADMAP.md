@@ -74,7 +74,7 @@ Module mapping (replaces the earlier `composeApp`): `androidApp` = thin Android 
 - [x] Daily wheel (seed per date+level, one scored attempt, already-played state)
 - [x] Streak logic + home badge
 - [x] Share card (`12-share-card`) rendered to image + system share sheet (Android FileProvider; iOS sheet unverified until Mac/TestFlight). Note: add the public store link to `StoreLinks.SHARE_LINK_LABEL` before the production release (blank hides the footer link line).
-- [ ] Onboarding 3 steps (`01-onboarding` + design debt), level test, level-test result
+- [x] Onboarding 3 steps (`01-onboarding` + design debt), level test, level-test result (intro, test HUD and result are DESIGN-DEBT, see screen-map)
 **Done when:** two devices get the identical daily wheel for the same date and level.
 
 ## M7 — Monetisation, settings, exam packs, telemetry

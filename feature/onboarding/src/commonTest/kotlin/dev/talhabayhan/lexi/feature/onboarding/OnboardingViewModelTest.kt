@@ -2,6 +2,7 @@ package dev.talhabayhan.lexi.feature.onboarding
 
 import app.cash.turbine.test
 import dev.talhabayhan.lexi.core.domain.model.Level
+import dev.talhabayhan.lexi.core.testing.FakeCardRepository
 import dev.talhabayhan.lexi.core.testing.FakeOnboardingRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -20,6 +21,7 @@ import kotlin.test.assertTrue
 @OptIn(ExperimentalCoroutinesApi::class)
 class OnboardingViewModelTest {
     private val onboarding = FakeOnboardingRepository()
+    private val cards = FakeCardRepository()
 
     @BeforeTest
     fun setUp() {
@@ -31,7 +33,12 @@ class OnboardingViewModelTest {
         Dispatchers.resetMain()
     }
 
-    private fun viewModel() = OnboardingViewModel(onboarding)
+    private fun viewModel() = OnboardingViewModel(onboarding, cards)
+
+    private fun levelChoice() = viewModel().apply {
+        repeat(3) { onIntent(OnboardingIntent.Next) }
+        assertEquals(OnboardingStep.LevelChoice, state.value.currentStep)
+    }
 
     @Test
     fun `step navigation progresses forward and backward through steps`() = runTest {
@@ -47,8 +54,11 @@ class OnboardingViewModelTest {
         vm.onIntent(OnboardingIntent.Next)
         assertEquals(OnboardingStep.LevelChoice, vm.state.value.currentStep)
 
-        vm.onIntent(OnboardingIntent.OpenLevelPicker)
-        assertEquals(OnboardingStep.LevelPicker, vm.state.value.currentStep)
+        vm.onIntent(OnboardingIntent.Next)
+        assertEquals(OnboardingStep.LevelChoice, vm.state.value.currentStep)
+
+        vm.onIntent(OnboardingIntent.StartLevelTest)
+        assertEquals(OnboardingStep.LevelTestIntro, vm.state.value.currentStep)
 
         vm.onIntent(OnboardingIntent.Back)
         assertEquals(OnboardingStep.LevelChoice, vm.state.value.currentStep)
@@ -124,13 +134,9 @@ class OnboardingViewModelTest {
     }
 
     @Test
-    fun `skip from level picker finishes with A1 and sets completed flag`() = runTest {
-        val vm = viewModel()
-        vm.onIntent(OnboardingIntent.Next)
-        vm.onIntent(OnboardingIntent.Next)
-        vm.onIntent(OnboardingIntent.Next)
-        vm.onIntent(OnboardingIntent.OpenLevelPicker)
-        assertEquals(OnboardingStep.LevelPicker, vm.state.value.currentStep)
+    fun `skip from the level test intro finishes with A1 and sets completed flag`() = runTest {
+        val vm = levelChoice()
+        vm.onIntent(OnboardingIntent.StartLevelTest)
 
         vm.effects.test {
             vm.onIntent(OnboardingIntent.Skip)
@@ -142,12 +148,8 @@ class OnboardingViewModelTest {
     }
 
     @Test
-    fun `manual pick saves the level and sets completed flag and navigates home`() = runTest {
-        val vm = viewModel()
-        vm.onIntent(OnboardingIntent.Next)
-        vm.onIntent(OnboardingIntent.Next)
-        vm.onIntent(OnboardingIntent.Next)
-        vm.onIntent(OnboardingIntent.OpenLevelPicker)
+    fun `a level chip saves the level and sets completed flag and navigates home`() = runTest {
+        val vm = levelChoice()
 
         vm.effects.test {
             vm.onIntent(OnboardingIntent.PickLevel(Level.B2))
@@ -160,9 +162,109 @@ class OnboardingViewModelTest {
     }
 
     @Test
+    fun `a second tap while finishing saves and navigates once`() = runTest {
+        val vm = levelChoice()
+
+        vm.effects.test {
+            vm.onIntent(OnboardingIntent.PickLevel(Level.B2))
+            vm.onIntent(OnboardingIntent.PickLevel(Level.C1))
+
+            assertEquals(OnboardingEffect.NavigateToHome, awaitItem())
+            expectNoEvents()
+            assertEquals(Level.B2, onboarding.selectedLevel.first())
+        }
+    }
+
+    @Test
+    fun `the level test button opens the intro and warms up the level cards`() = runTest {
+        val vm = levelChoice()
+
+        vm.effects.test {
+            vm.onIntent(OnboardingIntent.StartLevelTest)
+
+            assertEquals(OnboardingStep.LevelTestIntro, vm.state.value.currentStep)
+            assertEquals(1, cards.reads)
+            expectNoEvents()
+        }
+        // Once per screen: back and in again reads nothing more.
+        vm.onIntent(OnboardingIntent.Back)
+        assertEquals(OnboardingStep.LevelChoice, vm.state.value.currentStep)
+        vm.onIntent(OnboardingIntent.StartLevelTest)
+        assertEquals(1, cards.reads)
+        assertFalse(onboarding.onboardingCompleted.first())
+    }
+
+    @Test
+    fun `a failed warm-up is ignored`() = runTest {
+        cards.failing = true
+        val vm = levelChoice()
+
+        vm.onIntent(OnboardingIntent.StartLevelTest)
+
+        assertEquals(OnboardingStep.LevelTestIntro, vm.state.value.currentStep)
+        assertEquals(1, cards.reads)
+    }
+
+    @Test
+    fun `begin starts the level test without saving anything`() = runTest {
+        val vm = levelChoice()
+        vm.onIntent(OnboardingIntent.StartLevelTest)
+
+        vm.effects.test {
+            vm.onIntent(OnboardingIntent.BeginLevelTest)
+
+            assertEquals(OnboardingEffect.StartLevelTest, awaitItem())
+            assertEquals(OnboardingStep.LevelTestIntro, vm.state.value.currentStep)
+            assertFalse(onboarding.onboardingCompleted.first())
+        }
+    }
+
+    @Test
+    fun `begin outside the intro does nothing`() = runTest {
+        val vm = levelChoice()
+
+        vm.effects.test {
+            vm.onIntent(OnboardingIntent.BeginLevelTest)
+
+            expectNoEvents()
+        }
+    }
+
+    @Test
+    fun `once the level test covers the screen it returns to the level choice`() = runTest {
+        val vm = levelChoice()
+        vm.onIntent(OnboardingIntent.StartLevelTest)
+        vm.onIntent(OnboardingIntent.BeginLevelTest)
+
+        vm.onIntent(OnboardingIntent.ScreenStopped)
+
+        assertEquals(OnboardingStep.LevelChoice, vm.state.value.currentStep)
+    }
+
+    @Test
+    fun `going to the background on the intro keeps the intro`() = runTest {
+        val vm = levelChoice()
+        vm.onIntent(OnboardingIntent.StartLevelTest)
+
+        vm.onIntent(OnboardingIntent.ScreenStopped)
+
+        assertEquals(OnboardingStep.LevelTestIntro, vm.state.value.currentStep)
+    }
+
+    @Test
+    fun `the level test button only works on the level choice`() = runTest {
+        val vm = viewModel()
+
+        vm.onIntent(OnboardingIntent.StartLevelTest)
+
+        assertEquals(OnboardingStep.Step1, vm.state.value.currentStep)
+        assertEquals(0, cards.reads)
+    }
+
+    @Test
     fun `first-run routing navigates to home when already completed`() = runTest {
         val completedRepo = FakeOnboardingRepository(initialCompleted = true)
-        val vm = OnboardingViewModel(completedRepo)
+        val vm = OnboardingViewModel(completedRepo, cards)
 
         vm.effects.test {
             assertEquals(OnboardingEffect.NavigateToHome, awaitItem())
@@ -172,7 +274,7 @@ class OnboardingViewModelTest {
     @Test
     fun `first-run routing does not navigate away when not completed`() = runTest {
         val freshRepo = FakeOnboardingRepository(initialCompleted = false)
-        val vm = OnboardingViewModel(freshRepo)
+        val vm = OnboardingViewModel(freshRepo, cards)
 
         assertFalse(freshRepo.onboardingCompleted.first())
         assertEquals(OnboardingStep.Step1, vm.state.value.currentStep)

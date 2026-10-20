@@ -31,6 +31,7 @@ import dev.talhabayhan.lexi.core.domain.platform.UrlOpener
 import dev.talhabayhan.lexi.feature.game.GamePreparer
 import dev.talhabayhan.lexi.feature.game.GameWarmUp
 import dev.talhabayhan.lexi.feature.game.gameScreen
+import dev.talhabayhan.lexi.feature.game.levelTestScreen
 import dev.talhabayhan.lexi.feature.game.result.resultScreen
 import dev.talhabayhan.lexi.feature.home.HomeRoute
 import dev.talhabayhan.lexi.feature.home.examPacksScreen
@@ -39,6 +40,7 @@ import dev.talhabayhan.lexi.feature.levels.categoriesScreen
 import dev.talhabayhan.lexi.feature.levels.levelSelectScreen
 import dev.talhabayhan.lexi.feature.notebook.notebookScreen
 import dev.talhabayhan.lexi.feature.onboarding.onboardingScreen
+import dev.talhabayhan.lexi.feature.onboarding.result.levelTestResultScreen
 import dev.talhabayhan.lexi.feature.settings.about.aboutScreen
 import dev.talhabayhan.lexi.feature.settings.settingsScreen
 import dev.talhabayhan.lexi.feature.stats.statsScreen
@@ -50,7 +52,9 @@ import org.koin.compose.koinInject
 
 /**
  * The app graph: `Splash → Home → LevelSelect [→ Categories] → Game → Result`, `Home → Notebook → Game (review)
- * → Result` and `Home → Stats`, `Home → Settings`, `Home → Practice` (level select preselected to Practice) and `Home → Exam packs`. Onboarding (M6) will slot in after the splash. The
+ * → Result` and `Home → Stats`, `Home → Settings`, `Home → Practice` (level select preselected to Practice) and
+ * `Home → Exam packs`. First run: `Splash → Onboarding → Home`, or `Onboarding → LevelTest → LevelTestResult → Home`
+ * (the result replaces the test; "Pes et" and back from the result return to the onboarding). The
  * result replaces everything above Home, so system back and "Ana menüye dön" both return to Home; TEKRAR OYNA starts
  * the next game in the same place (`Home → Game`). Every navigation to the game first prepares it
  * ([LexiNavigator.startGame], at most 250 ms), so the game slides in with its board already drawn. Once Home is first
@@ -111,7 +115,19 @@ private fun LexiNavGraph(
         popExitTransition = { transitions.exit(forward = false) },
     ) {
         splashScreen(onFinished = navigator::finishSplash)
-        onboardingScreen(onFinish = navigator::finishOnboarding)
+        onboardingScreen(
+            onFinish = navigator::finishOnboarding,
+            onStartLevelTest = { navigator.startLevelTest() },
+        )
+        levelTestScreen(
+            onFinished = navigator::finishLevelTest,
+            onQuit = navigator::quitLevelTest,
+            onOpenSettings = { navigator.openSettings() },
+        )
+        levelTestResultScreen(
+            onFinish = navigator::finishOnboarding,
+            onBack = navigator::quitLevelTest,
+        )
         homeScreen(
             onPlay = { navigator.openLevelSelect() },
             onOpenDaily = { navigator.startDaily() },

@@ -42,6 +42,8 @@ internal class CardRepositoryImpl(
     private val lang get() = clueLanguage.code
     private val indexLock = Mutex()
     private var index: ContentIndex? = null
+    private val levelCardsLock = Mutex()
+    private var cachedLevelCards: List<Card>? = null
 
     override suspend fun wheelPool(level: Level, category: CategoryId): List<Card> = read {
         if (category == CategoryId.MIXED) {
@@ -51,7 +53,11 @@ internal class CardRepositoryImpl(
         }.valid()
     }
 
-    override suspend fun levelCards(): List<Card> = read { allLevelCards(lang, ::cardRow).executeAsList().valid() }
+    // Read once and kept like the index: the Daily and the level test (warmed up by its intro) share the list.
+    override suspend fun levelCards(): List<Card> = levelCardsLock.withLock {
+        cachedLevelCards
+            ?: read { allLevelCards(lang, ::cardRow).executeAsList().valid() }.also { cachedLevelCards = it }
+    }
 
     override suspend fun cards(ids: Collection<CardId>): List<Card> = read {
         ids.map { it.value }.distinct().chunked(MAX_SQL_VARIABLES).flatMap { chunk ->

@@ -11,15 +11,30 @@
     <string name="onboarding_skip">Atla</string>
     <string name="onboarding_start">Başlayalım</string>
 
-    <!-- Level choice screen (COPY.md section 4) -->
+    <!-- Level choice screen (01-onboarding; title and body from COPY.md section 4) -->
     <string name="leveltest_choice_title">Seviyeni bulalım</string>
     <string name="leveltest_choice_body">2 dakikalık kısa bir test ya da seviyeni kendin seç.</string>
-    <string name="onboarding_level_pick_body">Seviyeni seç, istediğin zaman değiştirebilirsin.</string>
-    <string name="leveltest_choice_test">Testi başlat</string>
-    <string name="leveltest_choice_pick">Kendim seçeceğim</string>
-    <string name="leveltest_choice_skip">Atla</string>
+    <string name="leveltest_choice_test">SEVİYE TESTİNE BAŞLA</string>
+    <string name="leveltest_choice_pick">YA DA SEVİYENİ SEÇ</string>
+    <!-- Screen reader label of a level chip: level, level name -->
+    <string name="leveltest_choice_chip">%1$s, %2$s</string>
 
-    <!-- Level picker (DESIGN-DEBT built from 16-components) -->
+    <!-- Level test intro (DESIGN-DEBT built from 16-components) -->
+    <string name="leveltest_intro_title">Seviye testi</string>
+    <string name="leveltest_intro_body">En fazla 14 soru. Joker yok, doğru ya da yanlış puanı etkilemez. Kolay başlar, cevapladıkça zorlaşır.</string>
+    <string name="leveltest_intro_hint">Bilmediğini pas geçebilirsin.</string>
+    <string name="leveltest_intro_cta">Başla</string>
+
+    <!-- Level test result (DESIGN-DEBT, 06-result header style) -->
+    <string name="leveltest_result_label">SEVİYEN</string>
+    <string name="leveltest_result_level">Seviyen: %1$s</string>
+    <string name="leveltest_result_body">Bu seviyeden başlamanı öneriyoruz. İstediğin zaman değiştirebilirsin.</string>
+    <string name="leveltest_result_cta">%1$s ile başla</string>
+    <string name="leveltest_result_change">Seviyeyi değiştir</string>
+    <string name="leveltest_result_a1">Temelden başlıyoruz; güzel bir yol seni bekliyor.</string>
+    <string name="leveltest_result_high">Güçlü bir başlangıç! Zorlu kelimeler seni bekliyor.</string>
+
+    <!-- Level picker of the level test result (DESIGN-DEBT built from 16-components) -->
     <string name="leveltest_picker_title">Seviyeni seç</string>
     <string name="leveltest_picker_back">Geri dön</string>
     <string name="onboarding_level_a1">Başlangıç</string>

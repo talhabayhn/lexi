@@ -196,7 +196,8 @@ their tests construct it directly. The graph today is `Splash → Home → Level
 everything above Home (back returns Home, TEKRAR OYNA starts the next game from there); its route carries the
 finished game's summary (ADR 0019 addendum). `core:domain` keeps its own small `civilDateOfEpochDay` (day/month of the home daily card) instead of adding kotlinx-datetime to the pure module. Splash (`shared/splash`) plays the logo animation while the content DB is
 installed/version-checked and `GrantDailyJokers` gives today's free jokers (`GAME_RULES.md` §7), then pops itself. Flows:
-`Splash → Onboarding? → Home`; `Home → LevelSelect [→ Categories] → Game → Result`; `Home → Notebook | Stats | Exams | Settings | Daily`;
+`Splash → Onboarding? → Home`; `Onboarding → LevelTest → LevelTestResult → Home` (the result replaces the test;
+"Pes et" and back from the result pop to the onboarding's level choice, nothing saved); `Home → LevelSelect [→ Categories] → Game → Result`; `Home → Notebook | Stats | Exams | Settings | Daily`;
 `Game → JokerSheet (bottom sheet) | Pause (dialog)`; `Settings → Paywall`.
 Screen ↔ design map: `docs/design/screen-map.md`.
 

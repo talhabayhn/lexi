@@ -12,8 +12,8 @@ when done. Sources: `ROADMAP.md`, `screen-map.md`, `DECISIONS.md`, `store/owner-
 | B2 | Grouped result review (group "Tekrar edilecekler" by missed / passed) | AG | M | — |
 | B3 | Share card renderer (`12-share-card`, 432×540 bitmap) + system share sheet (Android + iOS) | AG | L | `COPY.md` §7, platform share bridge |
 | B4 | Onboarding 3 steps (`01-onboarding` + steps 1 & 3 design debt) | AG | M | `COPY.md` §3 |
-| B5 | Level test flow (one-slot games, carried clock) + intro | AG (Opus·high for engine wiring) | L | B4, `GAME_RULES.md` §9 |
-| B6 | Level test result screen ("Seviyen: B1", change level, start) | AG | M | B5, `COPY.md` §4 |
+| B5 | Level test flow (one-slot games, carried clock) + intro (DESIGN-DEBT), level choice to `01-onboarding` | AG (Opus·high for engine wiring) | L | B4, `GAME_RULES.md` §9 |
+| B6 | Level test result screen ("Seviyen: B1", change level, start; DESIGN-DEBT, `06-result` header style) | AG | M | B5, `COPY.md` §4 |
 | B7 | Daily wheel intro / already-played state polish | AG | S | B1 |
 | B8 | Verify "two devices get the identical daily wheel" on real devices | Owner | S | B1–B7, `TEST_PLAN.md` §3 |
 

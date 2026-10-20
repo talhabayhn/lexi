@@ -6,69 +6,57 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.IntrinsicSize
+import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
-import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import dev.talhabayhan.lexi.core.designsystem.component.DecorShapeKind
-import dev.talhabayhan.lexi.core.designsystem.component.LevelCard
-import dev.talhabayhan.lexi.core.designsystem.component.LevelCardStyle
 import dev.talhabayhan.lexi.core.designsystem.component.LexiButton
 import dev.talhabayhan.lexi.core.designsystem.component.LexiButtonDefaults
+import dev.talhabayhan.lexi.core.designsystem.component.LexiButtonVariant
 import dev.talhabayhan.lexi.core.designsystem.component.LexiTextLink
 import dev.talhabayhan.lexi.core.designsystem.component.NavSquareButton
 import dev.talhabayhan.lexi.core.designsystem.icon.LexiIcons
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
-import dev.talhabayhan.lexi.core.designsystem.theme.lexiContentWidth
 import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.feature.onboarding.generated.resources.Res
 import dev.talhabayhan.lexi.feature.onboarding.generated.resources.leveltest_choice_body
+import dev.talhabayhan.lexi.feature.onboarding.generated.resources.leveltest_choice_chip
 import dev.talhabayhan.lexi.feature.onboarding.generated.resources.leveltest_choice_pick
 import dev.talhabayhan.lexi.feature.onboarding.generated.resources.leveltest_choice_test
 import dev.talhabayhan.lexi.feature.onboarding.generated.resources.leveltest_choice_title
+import dev.talhabayhan.lexi.feature.onboarding.generated.resources.leveltest_intro_body
+import dev.talhabayhan.lexi.feature.onboarding.generated.resources.leveltest_intro_cta
+import dev.talhabayhan.lexi.feature.onboarding.generated.resources.leveltest_intro_hint
+import dev.talhabayhan.lexi.feature.onboarding.generated.resources.leveltest_intro_title
 import dev.talhabayhan.lexi.feature.onboarding.generated.resources.leveltest_picker_back
-import dev.talhabayhan.lexi.feature.onboarding.generated.resources.leveltest_picker_title
 import dev.talhabayhan.lexi.feature.onboarding.generated.resources.onboarding_1_body
 import dev.talhabayhan.lexi.feature.onboarding.generated.resources.onboarding_1_title
 import dev.talhabayhan.lexi.feature.onboarding.generated.resources.onboarding_2_body
 import dev.talhabayhan.lexi.feature.onboarding.generated.resources.onboarding_2_title
 import dev.talhabayhan.lexi.feature.onboarding.generated.resources.onboarding_3_body
 import dev.talhabayhan.lexi.feature.onboarding.generated.resources.onboarding_3_title
-import dev.talhabayhan.lexi.feature.onboarding.generated.resources.onboarding_level_a1
-import dev.talhabayhan.lexi.feature.onboarding.generated.resources.onboarding_level_a2
-import dev.talhabayhan.lexi.feature.onboarding.generated.resources.onboarding_level_b1
-import dev.talhabayhan.lexi.feature.onboarding.generated.resources.onboarding_level_b2
-import dev.talhabayhan.lexi.feature.onboarding.generated.resources.onboarding_level_c1
-import dev.talhabayhan.lexi.feature.onboarding.generated.resources.onboarding_level_nat
-import dev.talhabayhan.lexi.feature.onboarding.generated.resources.onboarding_level_pick_body
 import dev.talhabayhan.lexi.feature.onboarding.generated.resources.onboarding_next
 import dev.talhabayhan.lexi.feature.onboarding.generated.resources.onboarding_skip
 import dev.talhabayhan.lexi.feature.onboarding.generated.resources.onboarding_start
 import dev.talhabayhan.lexi.feature.onboarding.generated.resources.onboarding_step_counter
-import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
@@ -77,30 +65,20 @@ internal fun OnboardingScreen(
     onIntent: (OnboardingIntent) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    Box(
-        modifier = modifier
-            .fillMaxSize()
-            .background(LexiTheme.colors.cream)
-            .windowInsetsPadding(WindowInsets.safeDrawing),
-        contentAlignment = Alignment.TopCenter,
+    val dimens = LexiTheme.dimens
+    val step = state.currentStep
+    val choicePage = step == OnboardingStep.LevelChoice || step == OnboardingStep.LevelTestIntro
+    OnboardingFrame(
+        modifier = modifier,
+        bottomPadding = if (choicePage) dimens.screenPaddingBottom else dimens.screenPaddingTop,
     ) {
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .lexiContentWidth()
-                .padding(horizontal = 20.dp, vertical = 24.dp),
-        ) {
-            if (state.currentStep == OnboardingStep.LevelPicker) {
-                LevelPickerContent(
-                    selectedLevel = state.selectedLevel,
-                    onIntent = onIntent,
-                )
-            } else {
-                OnboardingStepContent(
-                    step = state.currentStep,
-                    onIntent = onIntent,
-                )
-            }
+        when (step) {
+            OnboardingStep.Step1, OnboardingStep.Step2, OnboardingStep.Step3 ->
+                OnboardingStepContent(step = step, onIntent = onIntent)
+
+            OnboardingStep.LevelChoice -> LevelChoiceContent(onIntent = onIntent)
+
+            OnboardingStep.LevelTestIntro -> LevelTestIntroContent(onIntent = onIntent)
         }
     }
 }
@@ -191,7 +169,7 @@ private fun OnboardingIllustration(step: OnboardingStep, modifier: Modifier = Mo
                 }
             }
 
-            OnboardingStep.Step2, OnboardingStep.LevelChoice -> {
+            OnboardingStep.Step2, OnboardingStep.LevelChoice, OnboardingStep.LevelTestIntro -> {
                 Box(
                     modifier = Modifier
                         .offset(x = 30.dp, y = 20.dp)
@@ -252,8 +230,6 @@ private fun OnboardingIllustration(step: OnboardingStep, modifier: Modifier = Mo
                     )
                 }
             }
-
-            OnboardingStep.LevelPicker -> Unit
         }
     }
 }
@@ -264,48 +240,108 @@ private fun OnboardingStepContent(
     onIntent: (OnboardingIntent) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    val titleRes: StringResource
-    val bodyRes: StringResource
-    val ctaTextRes: StringResource
-    val stepIndex: Int?
+    val (titleRes, bodyRes, ctaTextRes) = when (step) {
+        OnboardingStep.Step1 -> Triple(
+            Res.string.onboarding_1_title,
+            Res.string.onboarding_1_body,
+            Res.string.onboarding_next,
+        )
 
-    when (step) {
-        OnboardingStep.Step1 -> {
-            titleRes = Res.string.onboarding_1_title
-            bodyRes = Res.string.onboarding_1_body
-            ctaTextRes = Res.string.onboarding_next
-            stepIndex = 1
-        }
+        OnboardingStep.Step2 -> Triple(
+            Res.string.onboarding_2_title,
+            Res.string.onboarding_2_body,
+            Res.string.onboarding_next,
+        )
 
-        OnboardingStep.Step2 -> {
-            titleRes = Res.string.onboarding_2_title
-            bodyRes = Res.string.onboarding_2_body
-            ctaTextRes = Res.string.onboarding_next
-            stepIndex = 2
-        }
-
-        OnboardingStep.Step3 -> {
-            titleRes = Res.string.onboarding_3_title
-            bodyRes = Res.string.onboarding_3_body
-            ctaTextRes = Res.string.onboarding_start
-            stepIndex = 3
-        }
-
-        OnboardingStep.LevelChoice -> {
-            titleRes = Res.string.leveltest_choice_title
-            bodyRes = if (LEVEL_TEST_AVAILABLE) {
-                // TODO(B5): Wire level test once implemented
-                Res.string.leveltest_choice_body
-            } else {
-                Res.string.onboarding_level_pick_body
-            }
-            ctaTextRes = Res.string.leveltest_choice_pick
-            stepIndex = null
-        }
-
-        OnboardingStep.LevelPicker -> return
+        else -> Triple(Res.string.onboarding_3_title, Res.string.onboarding_3_body, Res.string.onboarding_start)
     }
+    OnboardingPage(
+        illustration = step,
+        title = stringResource(titleRes),
+        body = stringResource(bodyRes),
+        onSkip = { onIntent(OnboardingIntent.Skip) },
+        modifier = modifier,
+        topStart = { StepIndicators(step = step.ordinal + 1) },
+    ) {
+        // Plain one-line label (ellipsis), as before the level test landed.
+        HeroButton(text = stringResource(ctaTextRes), onClick = { onIntent(OnboardingIntent.Next) }, fitted = false)
+    }
+}
 
+/**
+ * `01-onboarding`: the red "SEVİYE TESTİNE BAŞLA", the "YA DA SEVİYENİ SEÇ" label 10dp lower and the six level
+ * chips; title and body from `COPY.md` §4 (`GAME_RULES.md` §9, owner decision 5). A chip saves the level.
+ */
+@Composable
+private fun LevelChoiceContent(onIntent: (OnboardingIntent) -> Unit, modifier: Modifier = Modifier) {
+    OnboardingPage(
+        illustration = OnboardingStep.LevelChoice,
+        title = stringResource(Res.string.leveltest_choice_title),
+        body = stringResource(Res.string.leveltest_choice_body),
+        onSkip = { onIntent(OnboardingIntent.Skip) },
+        modifier = modifier,
+        topStart = { Spacer(Modifier.size(28.dp)) },
+    ) {
+        HeroButton(
+            text = stringResource(Res.string.leveltest_choice_test),
+            onClick = { onIntent(OnboardingIntent.StartLevelTest) },
+        )
+        Text(
+            text = stringResource(Res.string.leveltest_choice_pick),
+            style = LexiTheme.typography.wheelRule,
+            color = LexiTheme.colors.ink,
+            modifier = Modifier.padding(top = LexiTheme.dimens.gap10),
+        )
+        LevelChips(onPick = { onIntent(OnboardingIntent.PickLevel(it)) })
+    }
+}
+
+/**
+ * DESIGN-DEBT (no design; built from `16-components` on the onboarding layout): what the level test is
+ * (`COPY.md` §4 intro), back to the level choice, "Atla", and "Başla".
+ */
+@Composable
+private fun LevelTestIntroContent(onIntent: (OnboardingIntent) -> Unit, modifier: Modifier = Modifier) {
+    OnboardingPage(
+        illustration = OnboardingStep.LevelTestIntro,
+        title = stringResource(Res.string.leveltest_intro_title),
+        body = stringResource(Res.string.leveltest_intro_body),
+        onSkip = { onIntent(OnboardingIntent.Skip) },
+        modifier = modifier,
+        topStart = {
+            NavSquareButton(
+                icon = LexiIcons.Back,
+                contentDescription = stringResource(Res.string.leveltest_picker_back),
+                onClick = { onIntent(OnboardingIntent.Back) },
+            )
+        },
+        extra = {
+            Text(
+                text = stringResource(Res.string.leveltest_intro_hint),
+                style = LexiTheme.typography.bodyBold15,
+                color = LexiTheme.colors.ink,
+            )
+        },
+    ) {
+        HeroButton(
+            text = stringResource(Res.string.leveltest_intro_cta),
+            onClick = { onIntent(OnboardingIntent.BeginLevelTest) },
+        )
+    }
+}
+
+/** Top row ([topStart] + "Atla"), illustration, title + body (+ [extra]), then [actions] pushed to the bottom. */
+@Composable
+private fun OnboardingPage(
+    illustration: OnboardingStep,
+    title: String,
+    body: String,
+    onSkip: () -> Unit,
+    topStart: @Composable () -> Unit,
+    modifier: Modifier = Modifier,
+    extra: (@Composable () -> Unit)? = null,
+    actions: @Composable ColumnScope.() -> Unit,
+) {
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -317,33 +353,19 @@ private fun OnboardingStepContent(
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            if (stepIndex != null) {
-                StepIndicators(step = stepIndex)
-            } else {
-                Spacer(Modifier.size(28.dp))
-            }
-            LexiTextLink(
-                text = stringResource(Res.string.onboarding_skip),
-                onClick = { onIntent(OnboardingIntent.Skip) },
-            )
+            topStart()
+            LexiTextLink(text = stringResource(Res.string.onboarding_skip), onClick = onSkip)
         }
 
-        OnboardingIllustration(step = step)
+        OnboardingIllustration(step = illustration)
 
         Column(
             modifier = Modifier.fillMaxWidth(),
             verticalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap10),
         ) {
-            Text(
-                text = stringResource(titleRes),
-                style = LexiTheme.typography.display,
-                color = LexiTheme.colors.ink,
-            )
-            Text(
-                text = stringResource(bodyRes),
-                style = LexiTheme.typography.body16,
-                color = LexiTheme.colors.ink,
-            )
+            Text(text = title, style = LexiTheme.typography.display, color = LexiTheme.colors.ink)
+            Text(text = body, style = LexiTheme.typography.body16, color = LexiTheme.colors.ink)
+            extra?.invoke()
         }
 
         Spacer(Modifier.weight(1f))
@@ -351,140 +373,61 @@ private fun OnboardingStepContent(
         Column(
             modifier = Modifier.fillMaxWidth(),
             verticalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap10),
-        ) {
-            if (step == OnboardingStep.LevelChoice && LEVEL_TEST_AVAILABLE) {
-                LexiButton(
-                    onClick = { onIntent(OnboardingIntent.StartLevelTest) },
-                    height = LexiButtonDefaults.HeroHeight,
-                    shadow = LexiTheme.shadows.s6,
-                    modifier = Modifier.fillMaxWidth(),
-                ) {
-                    Text(
-                        text = stringResource(Res.string.leveltest_choice_test),
-                        style = LexiTheme.typography.button20,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis,
-                    )
-                }
-            }
+            content = actions,
+        )
+    }
+}
 
+/**
+ * The six level chips of `01-onboarding`: equal columns, gap 6, 48dp, 3dp border, no shadow; white with 15/800 ink
+ * text, NAT ink with 13/800 cream text. Each is read as the level and its name ("NAT, Deyim · phrasal verb").
+ */
+@Composable
+private fun LevelChips(onPick: (Level) -> Unit, modifier: Modifier = Modifier) {
+    val colors = LexiTheme.colors
+    val typography = LexiTheme.typography
+    Row(
+        modifier = modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap6),
+    ) {
+        Level.entries.forEach { level ->
+            val native = level == Level.NAT
+            val description = stringResource(
+                Res.string.leveltest_choice_chip,
+                level.name,
+                stringResource(level.subtitleRes()),
+            )
             LexiButton(
-                onClick = {
-                    when (step) {
-                        OnboardingStep.LevelChoice -> onIntent(OnboardingIntent.OpenLevelPicker)
-                        else -> onIntent(OnboardingIntent.Next)
-                    }
-                },
-                height = LexiButtonDefaults.HeroHeight,
-                shadow = LexiTheme.shadows.s6,
-                modifier = Modifier.fillMaxWidth(),
+                onClick = { onPick(level) },
+                variant = if (native) LexiButtonVariant.Ink else LexiButtonVariant.Secondary,
+                height = LexiButtonDefaults.SmallHeight,
+                shadow = null,
+                contentColor = if (native) colors.cream else colors.ink,
+                contentPadding = PaddingValues(),
+                modifier = Modifier.weight(1f),
             ) {
-                Text(
-                    text = stringResource(ctaTextRes),
-                    style = LexiTheme.typography.button20,
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis,
+                FittedLabel(
+                    text = level.name,
+                    style = if (native) typography.wheelChip else typography.bodyStrong15,
+                    modifier = Modifier.semantics { contentDescription = description },
                 )
             }
         }
     }
 }
 
+@Preview(widthDp = 390, heightDp = 844)
 @Composable
-private fun LevelPickerContent(
-    selectedLevel: Level,
-    onIntent: (OnboardingIntent) -> Unit,
-    modifier: Modifier = Modifier,
-) {
-    val gap = LexiTheme.dimens.gap12
-    Column(
-        modifier = modifier
-            .fillMaxSize()
-            .verticalScroll(rememberScrollState()),
-        verticalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap20),
-    ) {
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            NavSquareButton(
-                icon = LexiIcons.Back,
-                contentDescription = stringResource(Res.string.leveltest_picker_back),
-                onClick = { onIntent(OnboardingIntent.Back) },
-            )
-            LexiTextLink(
-                text = stringResource(Res.string.onboarding_skip),
-                onClick = { onIntent(OnboardingIntent.Skip) },
-            )
-        }
-
-        Text(
-            text = stringResource(Res.string.leveltest_picker_title),
-            style = LexiTheme.typography.display,
-            color = LexiTheme.colors.ink,
-        )
-
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .selectableGroup(),
-            verticalArrangement = Arrangement.spacedBy(gap),
-        ) {
-            Level.entries.chunked(2).forEach { row ->
-                Row(
-                    modifier = Modifier.fillMaxWidth().height(IntrinsicSize.Max),
-                    horizontalArrangement = Arrangement.spacedBy(gap),
-                ) {
-                    row.forEach { level ->
-                        val selected = level == selectedLevel
-                        val look = level.look()
-                        LevelCard(
-                            title = level.name,
-                            subtitle = stringResource(level.subtitleRes()),
-                            progress = 0f,
-                            progressLabel = "",
-                            marker = look.marker,
-                            markerColor = if (selected && look.color == LexiTheme.colors.red) {
-                                LexiTheme.colors.yellow
-                            } else {
-                                look.color
-                            },
-                            onClick = { onIntent(OnboardingIntent.PickLevel(level)) },
-                            style = when {
-                                selected -> LevelCardStyle.Selected
-                                level == Level.NAT -> LevelCardStyle.Inverted
-                                else -> LevelCardStyle.Normal
-                            },
-                            modifier = Modifier.weight(1f).fillMaxHeight(),
-                        )
-                    }
-                }
-            }
-        }
+private fun LevelChoicePreview() {
+    LexiTheme(reducedMotion = false) {
+        OnboardingScreen(state = OnboardingUiState(currentStep = OnboardingStep.LevelChoice), onIntent = {})
     }
 }
 
-private data class LevelLook(val marker: DecorShapeKind, val color: Color)
-
+@Preview(widthDp = 390, heightDp = 844)
 @Composable
-private fun Level.look(): LevelLook {
-    val colors = LexiTheme.colors
-    return when (this) {
-        Level.A1 -> LevelLook(DecorShapeKind.Square, colors.red)
-        Level.A2 -> LevelLook(DecorShapeKind.Circle, colors.yellow)
-        Level.B1 -> LevelLook(DecorShapeKind.Leaf, colors.blue)
-        Level.B2 -> LevelLook(DecorShapeKind.Square, colors.yellow)
-        Level.C1 -> LevelLook(DecorShapeKind.Circle, colors.blue)
-        Level.NAT -> LevelLook(DecorShapeKind.Leaf, colors.red)
+private fun LevelTestIntroPreview() {
+    LexiTheme(reducedMotion = false) {
+        OnboardingScreen(state = OnboardingUiState(currentStep = OnboardingStep.LevelTestIntro), onIntent = {})
     }
-}
-
-private fun Level.subtitleRes(): StringResource = when (this) {
-    Level.A1 -> Res.string.onboarding_level_a1
-    Level.A2 -> Res.string.onboarding_level_a2
-    Level.B1 -> Res.string.onboarding_level_b1
-    Level.B2 -> Res.string.onboarding_level_b2
-    Level.C1 -> Res.string.onboarding_level_c1
-    Level.NAT -> Res.string.onboarding_level_nat
 }
