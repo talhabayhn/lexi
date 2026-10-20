@@ -80,9 +80,10 @@ internal class OnboardingViewModel(private val onboarding: OnboardingRepository,
 
             OnboardingIntent.BeginLevelTest -> {
                 if (state.value.currentStep != OnboardingStep.LevelTestIntro || finishing) return
-                levelTestStarted = true
                 effectChannel.trySend(OnboardingEffect.StartLevelTest)
             }
+
+            OnboardingIntent.LevelTestOpened -> levelTestStarted = true
 
             OnboardingIntent.ScreenStopped -> if (levelTestStarted) {
                 levelTestStarted = false

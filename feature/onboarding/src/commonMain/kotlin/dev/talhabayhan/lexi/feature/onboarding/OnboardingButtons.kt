@@ -9,11 +9,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.unit.sp
 import dev.talhabayhan.lexi.core.designsystem.component.LexiButton
 import dev.talhabayhan.lexi.core.designsystem.component.LexiButtonDefaults
 import dev.talhabayhan.lexi.core.designsystem.component.LexiButtonVariant
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiShadow
+import dev.talhabayhan.lexi.core.designsystem.theme.LexiTextFit
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 
 /**
@@ -62,11 +62,10 @@ internal fun FittedLabel(text: String, style: TextStyle, modifier: Modifier = Mo
         autoSize = TextAutoSize.StepBased(
             minFontSize = style.fontSize * FITTED_LABEL_MIN_SCALE,
             maxFontSize = style.fontSize,
-            stepSize = FITTED_LABEL_STEP,
+            stepSize = LexiTextFit.LabelStep,
         ),
         modifier = modifier,
     )
 }
 
 private const val FITTED_LABEL_MIN_SCALE = 0.5f
-private val FITTED_LABEL_STEP = 0.5.sp

@@ -235,10 +235,22 @@ class OnboardingViewModelTest {
         val vm = levelChoice()
         vm.onIntent(OnboardingIntent.StartLevelTest)
         vm.onIntent(OnboardingIntent.BeginLevelTest)
+        vm.onIntent(OnboardingIntent.LevelTestOpened)
 
         vm.onIntent(OnboardingIntent.ScreenStopped)
 
         assertEquals(OnboardingStep.LevelChoice, vm.state.value.currentStep)
+    }
+
+    @Test
+    fun `a refused level test navigation keeps the intro when the screen stops later`() = runTest {
+        val vm = levelChoice()
+        vm.onIntent(OnboardingIntent.StartLevelTest)
+        vm.onIntent(OnboardingIntent.BeginLevelTest)
+
+        vm.onIntent(OnboardingIntent.ScreenStopped)
+
+        assertEquals(OnboardingStep.LevelTestIntro, vm.state.value.currentStep)
     }
 
     @Test

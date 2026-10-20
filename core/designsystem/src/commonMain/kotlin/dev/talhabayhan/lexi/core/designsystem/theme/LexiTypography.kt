@@ -290,3 +290,8 @@ internal fun lexiTypography(jost: FontFamily): LexiTypography {
         shareScore = style(64, extraBold, lineHeight = 0.95),
     )
 }
+
+/** Auto-fit steps for labels that shrink to stay on one line (see `FittedLabel`). */
+public object LexiTextFit {
+    public val LabelStep: TextUnit = 0.5.sp
+}

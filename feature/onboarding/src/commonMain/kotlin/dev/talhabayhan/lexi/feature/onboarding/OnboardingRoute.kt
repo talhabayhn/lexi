@@ -25,9 +25,10 @@ public data object OnboardingRoute
 
 /**
  * Adds the onboarding screen to the navigation graph. [onFinish] is invoked when onboarding finishes (a level chip,
- * or skip); [onStartLevelTest] by "Başla" of the level test intro (the onboarding stays below the test).
+ * or skip); [onStartLevelTest] by "Başla" of the level test intro, returns whether it navigated (the onboarding
+ * stays below the test).
  */
-public fun NavGraphBuilder.onboardingScreen(onFinish: () -> Unit, onStartLevelTest: () -> Unit) {
+public fun NavGraphBuilder.onboardingScreen(onFinish: () -> Unit, onStartLevelTest: () -> Boolean) {
     composable<OnboardingRoute> {
         OnboardingRoute(onFinish = onFinish, onStartLevelTest = onStartLevelTest)
     }
@@ -36,7 +37,7 @@ public fun NavGraphBuilder.onboardingScreen(onFinish: () -> Unit, onStartLevelTe
 @Composable
 internal fun OnboardingRoute(
     onFinish: () -> Unit,
-    onStartLevelTest: () -> Unit,
+    onStartLevelTest: () -> Boolean,
     viewModel: OnboardingViewModel = koinViewModel(),
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
@@ -49,7 +50,10 @@ internal fun OnboardingRoute(
             viewModel.effects.collect { effect ->
                 when (effect) {
                     OnboardingEffect.NavigateToHome -> currentOnFinish()
-                    OnboardingEffect.StartLevelTest -> currentOnStartLevelTest()
+
+                    OnboardingEffect.StartLevelTest -> if (currentOnStartLevelTest()) {
+                        viewModel.onIntent(OnboardingIntent.LevelTestOpened)
+                    }
                 }
             }
         }

@@ -36,6 +36,9 @@ internal sealed interface OnboardingIntent {
     /** "Başla" of the intro: starts the level test run. */
     data object BeginLevelTest : OnboardingIntent
 
+    /** The navigator opened the level test (a refused navigation never sends this). */
+    data object LevelTestOpened : OnboardingIntent
+
     /** The screen is no longer visible (the level test covers it, or the app went to the background). */
     data object ScreenStopped : OnboardingIntent
 }

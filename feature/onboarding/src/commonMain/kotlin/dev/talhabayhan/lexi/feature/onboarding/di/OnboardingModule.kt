@@ -14,9 +14,11 @@ import org.koin.dsl.module
 public val onboardingModule: Module = module {
     viewModelOf(::OnboardingViewModel)
     viewModel {
+        val handle = get<SavedStateHandle>()
         LevelTestResultViewModel(
-            route = get<SavedStateHandle>().toRoute<LevelTestResultRoute>(),
+            route = handle.toRoute<LevelTestResultRoute>(),
             onboarding = get(),
+            savedState = handle,
         )
     }
 }

@@ -1,5 +1,6 @@
 package dev.talhabayhan.lexi.feature.onboarding.result
 
+import androidx.lifecycle.SavedStateHandle
 import app.cash.turbine.test
 import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.core.testing.FakeOnboardingRepository
@@ -40,6 +41,29 @@ class LevelTestResultViewModelTest {
 
         assertEquals(Level.C1, state.level)
         assertEquals(LevelTestResultPage.Result, state.page)
+    }
+
+    @Test
+    fun `the picker page survives process death through the saved state`() {
+        val handle = SavedStateHandle()
+        val first = LevelTestResultViewModel(LevelTestResultRoute("B1"), onboarding, handle)
+        first.onIntent(LevelTestResultIntent.ChangeLevel)
+
+        val restored = LevelTestResultViewModel(LevelTestResultRoute("B1"), onboarding, handle)
+
+        assertEquals(LevelTestResultPage.Picker, restored.state.value.page)
+    }
+
+    @Test
+    fun `going back from the picker is saved too`() {
+        val handle = SavedStateHandle()
+        val first = LevelTestResultViewModel(LevelTestResultRoute("B1"), onboarding, handle)
+        first.onIntent(LevelTestResultIntent.ChangeLevel)
+        first.onIntent(LevelTestResultIntent.Back)
+
+        val restored = LevelTestResultViewModel(LevelTestResultRoute("B1"), onboarding, handle)
+
+        assertEquals(LevelTestResultPage.Result, restored.state.value.page)
     }
 
     @Test
