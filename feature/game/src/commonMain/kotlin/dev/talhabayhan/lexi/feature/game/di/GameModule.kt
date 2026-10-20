@@ -6,6 +6,7 @@ import dev.talhabayhan.lexi.feature.game.GameLoader
 import dev.talhabayhan.lexi.feature.game.GamePreparer
 import dev.talhabayhan.lexi.feature.game.GameRoute
 import dev.talhabayhan.lexi.feature.game.GameViewModel
+import dev.talhabayhan.lexi.feature.game.LevelTestViewModel
 import dev.talhabayhan.lexi.feature.game.SeedSource
 import dev.talhabayhan.lexi.feature.game.result.ResultRoute
 import dev.talhabayhan.lexi.feature.game.result.ResultViewModel
@@ -55,6 +56,18 @@ val gameModule: Module = module {
             timeSource = get(),
             flags = get(),
             preparer = get(),
+        )
+    }
+    viewModel {
+        LevelTestViewModel(
+            handle = get(),
+            cards = get(),
+            settings = get(),
+            appClock = get(),
+            speaker = get(),
+            config = get(),
+            timeSource = get(),
+            seeds = get(),
         )
     }
     viewModel {

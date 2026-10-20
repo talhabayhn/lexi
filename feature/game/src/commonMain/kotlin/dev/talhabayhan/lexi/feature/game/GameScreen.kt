@@ -78,6 +78,8 @@ import dev.talhabayhan.lexi.feature.game.generated.resources.game_pos_phrase
 import dev.talhabayhan.lexi.feature.game.generated.resources.game_pos_verb
 import dev.talhabayhan.lexi.feature.game.generated.resources.game_rule_contains
 import dev.talhabayhan.lexi.feature.game.generated.resources.game_rule_starts
+import dev.talhabayhan.lexi.feature.game.generated.resources.leveltest_badge
+import dev.talhabayhan.lexi.feature.game.generated.resources.leveltest_error
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.pluralStringResource
 import org.jetbrains.compose.resources.stringResource
@@ -192,7 +194,8 @@ private fun GameContent(
                         stringResource(turn.partOfSpeech.label()),
                     ),
                     clue = turn.clue,
-                    level = turn.level.name,
+                    // DESIGN-DEBT: the level test shows "TEST", never the card's level (GAME_RULES.md §9).
+                    level = if (state.isLevelTest) stringResource(Res.string.leveltest_badge) else turn.level.name,
                     letterCount = pluralStringResource(
                         Res.plurals.game_letter_count,
                         turn.letterCount,
@@ -233,6 +236,7 @@ private fun GameContent(
         actions = {
             GameActions(
                 enabled = state.inputEnabled || state.isStarting,
+                showJoker = !state.isLevelTest,
                 size = layout.actionSize,
                 onIntent = onIntent,
                 modifier = Modifier.testTag(GameTestTags.ACTIONS),
@@ -271,7 +275,7 @@ private fun Density.withCappedFontScale(): Density = if (fontScale <= GameScreen
 /**
  * A game that could not be loaded (DESIGN-DEBT: no design; `EmptyState` with actions from the component library) at
  * the top of the screen with the design paddings: unreadable content offers "Tekrar dene" and "Geri dön", a wheel
- * without cards only "Geri dön".
+ * without cards and a level test that can't start only "Geri dön".
  */
 @Composable
 private fun GameLoadErrorContent(error: GameLoadError, onIntent: (GameIntent) -> Unit) {
@@ -297,6 +301,13 @@ private fun GameLoadErrorContent(error: GameLoadError, onIntent: (GameIntent) ->
 
         GameLoadError.NoCards -> EmptyState(
             message = stringResource(Res.string.game_error_no_cards),
+            actionText = stringResource(Res.string.game_error_back),
+            onAction = { onIntent(GameIntent.Leave) },
+            modifier = modifier,
+        )
+
+        GameLoadError.LevelTestUnavailable -> EmptyState(
+            message = stringResource(Res.string.leveltest_error),
             actionText = stringResource(Res.string.game_error_back),
             onAction = { onIntent(GameIntent.Leave) },
             modifier = modifier,
@@ -330,21 +341,30 @@ private fun GameDecor() {
 /**
  * Joker (red circle), backspace (square) and PAS, gap 10, [size] high (56; 48 in the compact tier). Not [enabled] while input is blocked (wrong-answer reveal):
  * disabled for touch and accessibility and drawn disabled (PAS: the button's disabled state; the others at 50 %).
+ * Without [showJoker] (level test, no jokers; DESIGN-DEBT) the row starts with backspace and PAS takes the rest.
  */
 @Composable
-private fun GameActions(enabled: Boolean, size: Dp, onIntent: (GameIntent) -> Unit, modifier: Modifier = Modifier) {
+private fun GameActions(
+    enabled: Boolean,
+    showJoker: Boolean,
+    size: Dp,
+    onIntent: (GameIntent) -> Unit,
+    modifier: Modifier = Modifier,
+) {
     Row(
         modifier = modifier,
         horizontalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap10),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        ActionCircleButton(
-            icon = LexiIcons.Bulb,
-            contentDescription = stringResource(Res.string.game_button_joker),
-            onClick = { onIntent(GameIntent.OpenJokers) },
-            size = size,
-            enabled = enabled,
-        )
+        if (showJoker) {
+            ActionCircleButton(
+                icon = LexiIcons.Bulb,
+                contentDescription = stringResource(Res.string.game_button_joker),
+                onClick = { onIntent(GameIntent.OpenJokers) },
+                size = size,
+                enabled = enabled,
+            )
+        }
         IconSquareButton(
             icon = LexiIcons.Backspace,
             contentDescription = stringResource(Res.string.game_button_backspace),

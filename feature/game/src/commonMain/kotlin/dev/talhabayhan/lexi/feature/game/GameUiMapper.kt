@@ -99,9 +99,13 @@ internal object GameUiMapper {
     }
 
     /** Clock for the HUD; before `Start` the full [timeLimitMs] is shown. Null limit = untimed mode. */
-    fun clock(state: GameState, timeLimitMs: Long?, warningSeconds: Int): GameClockUi {
+    fun clock(state: GameState, timeLimitMs: Long?, warningSeconds: Int): GameClockUi =
+        clock(state.remainingMs, timeLimitMs, warningSeconds)
+
+    /** Clock for the HUD from the [remainingMs] of a clock (null = the full [timeLimitMs], before `Start`). */
+    fun clock(remainingMs: Long?, timeLimitMs: Long?, warningSeconds: Int): GameClockUi {
         if (timeLimitMs == null || timeLimitMs <= 0) return GameClockUi.Untimed
-        val remaining = (state.remainingMs ?: timeLimitMs).coerceIn(0L, timeLimitMs)
+        val remaining = (remainingMs ?: timeLimitMs).coerceIn(0L, timeLimitMs)
         val seconds = ((remaining + MS_PER_SECOND - 1) / MS_PER_SECOND).toInt()
         return GameClockUi(
             isTimed = true,
@@ -149,17 +153,18 @@ internal object GameUiMapper {
         }.toImmutableList()
     }
 
-    private fun SlotState.toWheelState(): WheelLetterState = when (this) {
-        SlotState.TODO, SlotState.SKIPPED -> WheelLetterState.Todo
-        SlotState.CURRENT -> WheelLetterState.Current
-        SlotState.CORRECT -> WheelLetterState.Correct
-        SlotState.WRONG -> WheelLetterState.Wrong
-        SlotState.PASSED -> WheelLetterState.Passed
-    }
-
     private fun KeyState.toKeyState(): LetterKeyState = when (this) {
         KeyState.AVAILABLE -> LetterKeyState.Normal
         KeyState.USED -> LetterKeyState.Used
         KeyState.DISABLED -> LetterKeyState.RemovedByJoker
     }
+}
+
+/** Wheel chip look of a slot state (`GAME_RULES.md` §2). */
+internal fun SlotState.toWheelState(): WheelLetterState = when (this) {
+    SlotState.TODO, SlotState.SKIPPED -> WheelLetterState.Todo
+    SlotState.CURRENT -> WheelLetterState.Current
+    SlotState.CORRECT -> WheelLetterState.Correct
+    SlotState.WRONG -> WheelLetterState.Wrong
+    SlotState.PASSED -> WheelLetterState.Passed
 }

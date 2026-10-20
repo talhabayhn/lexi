@@ -110,6 +110,7 @@ Pre-prompt (before the OS permission dialog, onboarding layout — design debt):
 | `leveltest_result_a1` | Temelden başlıyoruz; güzel bir yol seni bekliyor. | We start from the basics — a good road ahead. | 60 |
 | `leveltest_result_high` | Güçlü bir başlangıç! Zorlu kelimeler seni bekliyor. | A strong start! Tougher words await. | 60 |
 | `leveltest_error` | Test başlatılamadı. Seviyeni elle seçebilirsin. | The test couldn't start. You can pick a level manually. | 64 |
+| `leveltest_badge` | TEST | TEST | 4 |
 
 ## 5. Empty and error states (use with `EmptyState`)
 

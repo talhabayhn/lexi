@@ -58,6 +58,11 @@ internal data class GameUiState(
      * the result's TEKRAR OYNA.
      */
     val canRestart: Boolean = true,
+    /**
+     * The level test run (`GAME_RULES.md` §9, [LevelTestUiMapper]): the clue card's level badge reads "TEST" instead of
+     * the card's level and the joker button is hidden (DESIGN-DEBT, `screen-map.md`).
+     */
+    val isLevelTest: Boolean = false,
 )
 
 /** Why a game could not be loaded (design debt: `EmptyState` with actions, `screen-map.md`). */
@@ -67,6 +72,9 @@ internal enum class GameLoadError {
 
     /** The level / category has no card for any letter: go back. */
     NoCards,
+
+    /** The level test can't start (no card of the start level, `GAME_RULES.md` §9): go back to the level pick. */
+    LevelTestUnavailable,
 }
 
 /** One joker of the sheet. [enabled] = `GameEngine.canUseJoker` (inventory, one per slot, mode, level, cost). */

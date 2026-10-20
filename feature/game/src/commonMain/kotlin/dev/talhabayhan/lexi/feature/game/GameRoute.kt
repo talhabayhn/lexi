@@ -115,7 +115,7 @@ internal fun GameRoute(
  * navigation-event handler (`navigationevent-compose`, declared explicitly in the catalog).
  */
 @Composable
-private fun GameBackHandler(enabled: Boolean, onBack: () -> Unit) {
+internal fun GameBackHandler(enabled: Boolean, onBack: () -> Unit) {
     NavigationBackHandler(
         state = rememberNavigationEventState(NavigationEventInfo.None),
         isBackEnabled = enabled,

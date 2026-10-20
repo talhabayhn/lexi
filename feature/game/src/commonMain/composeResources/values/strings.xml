@@ -162,4 +162,8 @@
         <item>DEC</item>
     </string-array>
     <string name="share_card_content_description">Share card: %1$d of %2$d correct</string>
+
+    <!-- Level test run (GAME_RULES.md §9, COPY.md §4): clue card badge (DESIGN-DEBT) and the start error -->
+    <string name="leveltest_badge">TEST</string>
+    <string name="leveltest_error">The test couldn't start. You can pick a level manually.</string>
 </resources>

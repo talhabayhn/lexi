@@ -161,4 +161,8 @@
         <item>ARALIK</item>
     </string-array>
     <string name="share_card_content_description">Paylaşım kartı: %1$d/%2$d doğru</string>
+
+    <!-- Level test run (GAME_RULES.md §9, COPY.md §4): clue card badge (DESIGN-DEBT) and the start error -->
+    <string name="leveltest_badge">TEST</string>
+    <string name="leveltest_error">Test başlatılamadı. Seviyeni elle seçebilirsin.</string>
 </resources>
