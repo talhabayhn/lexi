@@ -23,6 +23,7 @@ concurrency:
 
 permissions:
   contents: write
+  actions: write  # dispatches the screenshots workflow; pushes with GITHUB_TOKEN start no push workflows
 
 jobs:
   record:
@@ -68,7 +69,11 @@ jobs:
         if: inputs.commit
         env:
           ACCEPT: ${{ inputs.accept }}
+          GH_TOKEN: ${{ github.token }}
         run: |
+          for path in $ACCEPT; do
+            grep -qxF -- "$path" build/golden-review/suspects.txt || echo "::warning::accept entry is not a suspect: $path"
+          done
           blocked=""
           while IFS= read -r path; do
             [ -z "$path" ] && continue
@@ -85,12 +90,18 @@ jobs:
             git commit -q -m "test(screenshots): re-record goldens on Linux CI" \
               -m "Recorded by the screenshots-record workflow from $GITHUB_SHA."
             git checkout -- . && git clean -fdq -- '*/src/androidHostTest/screenshots'
+            git fetch -q origin main
+            if ! git diff --quiet "$GITHUB_SHA" origin/main -- . ':!*/src/androidHostTest/screenshots/*.png'; then
+              echo "::warning::main moved past $GITHUB_SHA with other changes; the screenshots run will show if they need new goldens"
+            fi
             pushed=0
             for i in 1 2 3 4; do
               if git pull -q --rebase origin main && git push -q origin HEAD:main; then pushed=1; break; fi
+              git rebase --abort 2>/dev/null || true
               sleep $((i * 5))
             done
-            [ "$pushed" = 1 ] || exit 1
+            if [ "$pushed" != 1 ]; then echo "::error::could not rebase and push the goldens onto main"; exit 1; fi
+            gh workflow run screenshots.yml --ref main || echo "::warning::start the screenshots workflow by hand"
           fi
           if [ -n "$blocked" ]; then
             for path in $blocked; do echo "::error::not recorded, needs review: $path"; done
