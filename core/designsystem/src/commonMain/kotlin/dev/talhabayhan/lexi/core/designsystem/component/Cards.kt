@@ -71,6 +71,18 @@ public enum class LevelCardStyle {
     Inverted,
 }
 
+/** Level select layout tiers (DESIGN-DEBT, scaled from `03-level-select`; `screen-map.md`). */
+public object LevelSelectDefaults {
+    public val CompactPaddingTop: Dp = 12.dp
+    public val CompactPaddingBottom: Dp = 16.dp
+    public val CompactCardHeight: Dp = 112.dp
+
+    /** 48: the category row's touch target in every tier. */
+    public val CategoryHeight: Dp = 48.dp
+    public val TightSegmentHeight: Dp = 48.dp
+    public val IconSize: Dp = 20.dp
+}
+
 /** Card and tile geometry from `03-level-select`, `02-home` and `16-components`. */
 public object CardDefaults {
     /** Level badge: `padding: 4px 10px`, 2dp border. */

@@ -29,19 +29,20 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.layout.Placeable
 import androidx.compose.ui.layout.SubcomposeLayout
+import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.dp
 import dev.talhabayhan.lexi.core.designsystem.component.CardDefaults
 import dev.talhabayhan.lexi.core.designsystem.component.ControlDefaults
 import dev.talhabayhan.lexi.core.designsystem.component.DecorShapeKind
 import dev.talhabayhan.lexi.core.designsystem.component.EmptyState
 import dev.talhabayhan.lexi.core.designsystem.component.LevelCard
 import dev.talhabayhan.lexi.core.designsystem.component.LevelCardStyle
+import dev.talhabayhan.lexi.core.designsystem.component.LevelSelectDefaults
 import dev.talhabayhan.lexi.core.designsystem.component.ListDefaults
 import dev.talhabayhan.lexi.core.designsystem.component.NavSquareButton
 import dev.talhabayhan.lexi.core.designsystem.component.PressableSurface
@@ -142,7 +143,7 @@ private fun LevelSelectTier.metrics(): LevelSelectMetrics {
             dimens.gap12,
             dimens.gap10,
             LevelSelectDefaults.CompactCardHeight,
-            LevelSelectDefaults.CompactCategoryHeight,
+            LevelSelectDefaults.CategoryHeight,
             CardDefaults.CompactPadding,
             ControlDefaults.SegmentHeightWithSubtitle,
         )
@@ -152,8 +153,8 @@ private fun LevelSelectTier.metrics(): LevelSelectMetrics {
             dimens.gap12,
             dimens.gap8,
             dimens.gap8,
-            0.dp,
-            LevelSelectDefaults.TightCategoryHeight,
+            Dp.Unspecified,
+            LevelSelectDefaults.CategoryHeight,
             dimens.gap8,
             LevelSelectDefaults.TightSegmentHeight,
         )
@@ -379,21 +380,12 @@ private fun CategoryRow(onClick: () -> Unit, height: Dp) {
                 style = LexiTheme.typography.caption14SemiBold,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
-                modifier = Modifier.weight(1f),
+                // The row's description already says it; the label would be read twice.
+                modifier = Modifier.weight(1f).clearAndSetSemantics {},
             )
             Icon(LexiIcons.ChevronRight, contentDescription = null, modifier = Modifier.size(ListDefaults.ChevronSize))
         }
     }
-}
-
-private object LevelSelectDefaults {
-    val CompactPaddingTop = 12.dp
-    val CompactPaddingBottom = 16.dp
-    val CompactCardHeight = 112.dp
-    val CompactCategoryHeight = 44.dp
-    val TightCategoryHeight = 40.dp
-    val TightSegmentHeight = 48.dp
-    val IconSize = 20.dp
 }
 
 private const val LEVEL_COLUMNS = 2

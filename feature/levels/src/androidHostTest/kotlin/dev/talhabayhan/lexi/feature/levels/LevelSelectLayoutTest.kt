@@ -8,14 +8,18 @@ import androidx.compose.ui.test.ExperimentalTestApi
 import androidx.compose.ui.test.SemanticsMatcher
 import androidx.compose.ui.test.hasContentDescription
 import androidx.compose.ui.test.hasText
+import androidx.compose.ui.test.onFirst
 import androidx.compose.ui.test.onRoot
+import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.runComposeUiTest
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
+import dev.talhabayhan.lexi.core.domain.model.Level
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
 import org.robolectric.annotation.GraphicsMode
+import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
 /**
@@ -52,6 +56,25 @@ class LevelSelectLayoutTest {
         val screen = onRoot().fetchSemanticsNode().boundsInRoot
         val start = bounds(hasText("BAŞLA"))
         assertTrue(start.top >= 0f && start.bottom <= screen.bottom + 1f, "BAŞLA $start outside $screen")
+    }
+
+    @Test
+    fun categoryRowOpensCategories() = runComposeUiTest {
+        val intents = mutableListOf<LevelSelectIntent>()
+        setContent { LexiTheme(reducedMotion = true) { LevelSelectScreen(LevelSelectSampleState, intents::add) } }
+        // A tier measured but not chosen stays composed, unplaced; the placed one is listed first.
+        onAllNodes(hasContentDescription("Kategori seç", substring = true)).onFirst().performClick()
+        assertEquals(listOf<LevelSelectIntent>(LevelSelectIntent.OpenCategories), intents)
+    }
+
+    @Test
+    fun natHasNoCategoryRow() = runComposeUiTest {
+        setContent {
+            LexiTheme(reducedMotion = true) {
+                LevelSelectScreen(LevelSelectSampleState.copy(selectedLevel = Level.NAT), onIntent = {})
+            }
+        }
+        onNode(hasContentDescription("Kategori seç", substring = true)).assertDoesNotExist()
     }
 
     private fun ComposeUiTest.setScreen() {
