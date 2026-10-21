@@ -34,6 +34,7 @@ import dev.talhabayhan.lexi.core.designsystem.component.LexiButtonVariant
 import dev.talhabayhan.lexi.core.designsystem.component.LexiTextLink
 import dev.talhabayhan.lexi.core.designsystem.component.NavSquareButton
 import dev.talhabayhan.lexi.core.designsystem.icon.LexiIcons
+import dev.talhabayhan.lexi.core.designsystem.modifier.lexiHeading
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.feature.onboarding.generated.resources.Res
@@ -88,7 +89,7 @@ private fun StepIndicators(step: Int, totalSteps: Int = 3, modifier: Modifier = 
     val description = stringResource(Res.string.onboarding_step_counter, step)
     val colors = LexiTheme.colors
     Row(
-        modifier = modifier.semantics { contentDescription = description },
+        modifier = modifier.clearAndSetSemantics { contentDescription = description },
         horizontalArrangement = Arrangement.spacedBy(6.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
@@ -363,7 +364,12 @@ private fun OnboardingPage(
             modifier = Modifier.fillMaxWidth(),
             verticalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap10),
         ) {
-            Text(text = title, style = LexiTheme.typography.display, color = LexiTheme.colors.ink)
+            Text(
+                text = title,
+                style = LexiTheme.typography.display,
+                color = LexiTheme.colors.ink,
+                modifier = Modifier.lexiHeading(),
+            )
             Text(text = body, style = LexiTheme.typography.body16, color = LexiTheme.colors.ink)
             extra?.invoke()
         }

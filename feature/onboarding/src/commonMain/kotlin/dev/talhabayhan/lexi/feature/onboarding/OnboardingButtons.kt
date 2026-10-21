@@ -7,7 +7,9 @@ import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import dev.talhabayhan.lexi.core.designsystem.component.LexiButton
 import dev.talhabayhan.lexi.core.designsystem.component.LexiButtonDefaults
@@ -17,8 +19,9 @@ import dev.talhabayhan.lexi.core.designsystem.theme.LexiTextFit
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 
 /**
- * Full-width CTA of `01-onboarding`: 64dp, red, s6, 20/800 +0.06em. [fitted] labels shrink to stay on one line
- * (narrow phones, large fonts: "SEVİYE TESTİNE BAŞLA"); otherwise the label is cut with an ellipsis.
+ * Full-width CTA of `01-onboarding`: 64dp, red, s6, 20/800 +0.06em. At the system font size [fitted] labels shrink to
+ * stay on one line (narrow phones: "SEVİYE TESTİNE BAŞLA"); otherwise the label is cut with an ellipsis. With a larger
+ * system font the label wraps instead (up to 3 lines, centred) and the button grows, so the text keeps its size.
  */
 @Composable
 internal fun HeroButton(
@@ -29,6 +32,20 @@ internal fun HeroButton(
     shadow: LexiShadow? = LexiTheme.shadows.s6,
     fitted: Boolean = true,
 ) {
+    if (LocalDensity.current.fontScale > 1f) {
+        LexiButton(
+            text = text,
+            onClick = onClick,
+            modifier = modifier.fillMaxWidth(),
+            variant = variant,
+            textStyle = LexiTheme.typography.button20,
+            height = LexiButtonDefaults.HeroHeight,
+            shadow = shadow,
+            maxLines = HERO_MAX_LINES,
+            textAlign = TextAlign.Center,
+        )
+        return
+    }
     LexiButton(
         onClick = onClick,
         variant = variant,
@@ -69,3 +86,4 @@ internal fun FittedLabel(text: String, style: TextStyle, modifier: Modifier = Mo
 }
 
 private const val FITTED_LABEL_MIN_SCALE = 0.5f
+private const val HERO_MAX_LINES = 3

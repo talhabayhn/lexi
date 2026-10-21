@@ -1,6 +1,6 @@
 <resources>
     <!-- Onboarding 3 steps (01-onboarding) -->
-    <string name="onboarding_step_counter">%1$d/3</string>
+    <string name="onboarding_step_counter">Step %1$d of 3</string>
     <string name="onboarding_1_title">A Turkish clue, an English word</string>
     <string name="onboarding_1_body">Read the clue and find the word that starts with — or contains — the letter.</string>
     <string name="onboarding_2_title">A wheel from A to Z</string>

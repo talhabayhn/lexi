@@ -1,6 +1,6 @@
 <resources>
     <!-- Onboarding 3 steps (01-onboarding) -->
-    <string name="onboarding_step_counter">%1$d/3</string>
+    <string name="onboarding_step_counter">Adım %1$d/3</string>
     <string name="onboarding_1_title">Türkçe ipucu, İngilizce kelime</string>
     <string name="onboarding_1_body">İpucunu oku, harfle başlayan (ya da harfi içeren) kelimeyi bul.</string>
     <string name="onboarding_2_title">A'dan Z'ye bir çark</string>

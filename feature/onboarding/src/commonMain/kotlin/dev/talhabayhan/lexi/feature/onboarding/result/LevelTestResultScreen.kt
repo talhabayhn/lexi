@@ -157,6 +157,7 @@ private fun ResultPage(
                         onClick = { onIntent(LevelTestResultIntent.ChangeLevel) },
                         variant = LexiButtonVariant.Secondary,
                         modifier = Modifier.fillMaxWidth(),
+                        maxLines = 2,
                     )
                 }
             }

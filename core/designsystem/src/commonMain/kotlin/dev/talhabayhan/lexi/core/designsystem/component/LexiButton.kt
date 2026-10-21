@@ -27,6 +27,7 @@ import androidx.compose.ui.semantics.disabled
 import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
@@ -178,7 +179,8 @@ public fun LexiButton(
 
 /**
  * [LexiButton] with a text label (style e.g. `button16`…`button30`) and an optional leading icon. With [maxLines] above
- * 1 the label wraps (large font sizes) and the button grows with it; at 1 it is cut with an ellipsis.
+ * 1 the label wraps (large font sizes; [textAlign] centres the lines) and the button grows with it; at 1 it is cut
+ * with an ellipsis.
  */
 @Composable
 public fun LexiButton(
@@ -194,6 +196,7 @@ public fun LexiButton(
     leadingIcon: ImageVector? = null,
     contentPadding: PaddingValues = LexiButtonDefaults.ContentPadding,
     maxLines: Int = 1,
+    textAlign: TextAlign = TextAlign.Unspecified,
 ) {
     LexiButton(
         onClick = onClick,
@@ -213,6 +216,7 @@ public fun LexiButton(
         Text(
             text = text,
             style = textStyle,
+            textAlign = textAlign,
             color = LocalContentColor.current,
             maxLines = maxLines,
             overflow = TextOverflow.Ellipsis,

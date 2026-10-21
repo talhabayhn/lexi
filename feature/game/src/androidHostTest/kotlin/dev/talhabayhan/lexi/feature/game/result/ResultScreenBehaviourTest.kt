@@ -1,7 +1,9 @@
 package dev.talhabayhan.lexi.feature.game.result
 
 import android.graphics.BitmapFactory
+import androidx.compose.ui.semantics.SemanticsProperties
 import androidx.compose.ui.test.ExperimentalTestApi
+import androidx.compose.ui.test.SemanticsMatcher
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.captureToImage
 import androidx.compose.ui.test.getBoundsInRoot
@@ -10,6 +12,7 @@ import androidx.compose.ui.test.onRoot
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performScrollTo
 import androidx.compose.ui.test.runComposeUiTest
+import androidx.compose.ui.unit.dp
 import dev.talhabayhan.lexi.core.designsystem.component.ReviewOutcome
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.core.domain.game.GameMode
@@ -145,5 +148,22 @@ class ResultScreenBehaviourTest {
         }
 
         onNodeWithText("Paylaşım başlatılamadı.").assertIsDisplayed()
+    }
+
+    fun `the review title and the header are headings`() = runComposeUiTest {
+        setContent { LexiTheme(reducedMotion = true) { ResultScreen(ResultSamples.design, onIntent = {}) } }
+
+        val headings = onAllNodes(SemanticsMatcher.keyIsDefined(SemanticsProperties.Heading)).fetchSemanticsNodes()
+        assertTrue(headings.size >= 2, "result headings: $headings")
+    }
+
+    fun `the home link and the show-more row keep a touch target of at least 44dp`() = runComposeUiTest {
+        setContent { LexiTheme(reducedMotion = true) { ResultScreen(ResultSamples.longGroup, onIntent = {}) } }
+
+        val min = with(density) { 44.dp.toPx() }
+        listOf("Ana menüye dön", "+3 kelime daha · Daha fazla göster →").forEach { text ->
+            val node = onNodeWithText(text).performScrollTo().fetchSemanticsNode()
+            assertTrue(node.touchBoundsInRoot.height >= min, "$text touch bounds ${node.touchBoundsInRoot}")
+        }
     }
 }

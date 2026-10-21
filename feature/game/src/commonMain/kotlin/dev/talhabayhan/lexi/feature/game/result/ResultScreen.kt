@@ -54,6 +54,7 @@ import dev.talhabayhan.lexi.core.designsystem.component.StatTile
 import dev.talhabayhan.lexi.core.designsystem.component.Toast
 import dev.talhabayhan.lexi.core.designsystem.component.ToastStyle
 import dev.talhabayhan.lexi.core.designsystem.format.formatClock
+import dev.talhabayhan.lexi.core.designsystem.modifier.lexiHeading
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.core.designsystem.theme.lexiContentWidth
 import dev.talhabayhan.lexi.core.domain.game.GameMode
@@ -223,6 +224,7 @@ private fun Header(state: ResultUiState) {
                 stringResource(state.reason.label()),
             ),
             style = typography.label13,
+            modifier = Modifier.lexiHeading(),
         )
         Text((if (state.isScored) state.score else state.correct).toString(), style = typography.scoreHero)
         Text(summary, style = typography.body15SemiBold)
@@ -270,7 +272,13 @@ private fun Review(state: ResultUiState, onIntent: (ResultIntent) -> Unit) {
             stackedGap = LexiTheme.dimens.gap4,
             alignBaselines = true,
             modifier = Modifier.fillMaxWidth(),
-            main = { Text(text = stringResource(Res.string.result_review_title), style = typography.heading20) },
+            main = {
+                Text(
+                    text = stringResource(Res.string.result_review_title),
+                    style = typography.heading20,
+                    modifier = Modifier.lexiHeading(),
+                )
+            },
             trailing = {
                 if (state.addedToNotebook > 0) {
                     Text(
