@@ -54,6 +54,23 @@ class GameSampleScreenshotTest {
             }
         }
     }
+
+    /** Warning counter with the red fill under it (ink there, darker red on the white track): readable at any progress. */
+    @Test
+    fun timerWarningOverFill() {
+        captureRoboImage("src/androidHostTest/screenshots/TimerBarWarningOverFill.png") {
+            LexiTheme(reducedMotion = true) {
+                Column(
+                    modifier = Modifier.background(LexiTheme.colors.cream).padding(20.dp),
+                    verticalArrangement = Arrangement.spacedBy(16.dp),
+                ) {
+                    TimerBar(progress = 0.9f, timeText = "0:09", warning = true, modifier = Modifier.width(260.dp))
+                    TimerBar(progress = 0.2f, timeText = "0:09", warning = true, modifier = Modifier.width(260.dp))
+                    TimerBar(progress = 0.12f, timeText = "0:09", warning = true, modifier = Modifier.width(260.dp))
+                }
+            }
+        }
+    }
 }
 
 internal val GameWheelLetters: List<WheelLetterUi> = ('A'..'Z').mapIndexed { i, c ->

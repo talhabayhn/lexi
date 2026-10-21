@@ -18,6 +18,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.tooling.preview.Preview
 import dev.talhabayhan.lexi.core.designsystem.component.BarChart
 import dev.talhabayhan.lexi.core.designsystem.component.BarChartDefaults
@@ -42,6 +43,13 @@ import dev.talhabayhan.lexi.feature.stats.generated.resources.stats_back
 import dev.talhabayhan.lexi.feature.stats.generated.resources.stats_day_fri
 import dev.talhabayhan.lexi.feature.stats.generated.resources.stats_day_mon
 import dev.talhabayhan.lexi.feature.stats.generated.resources.stats_day_sat
+import dev.talhabayhan.lexi.feature.stats.generated.resources.stats_day_short_fri
+import dev.talhabayhan.lexi.feature.stats.generated.resources.stats_day_short_mon
+import dev.talhabayhan.lexi.feature.stats.generated.resources.stats_day_short_sat
+import dev.talhabayhan.lexi.feature.stats.generated.resources.stats_day_short_sun
+import dev.talhabayhan.lexi.feature.stats.generated.resources.stats_day_short_thu
+import dev.talhabayhan.lexi.feature.stats.generated.resources.stats_day_short_tue
+import dev.talhabayhan.lexi.feature.stats.generated.resources.stats_day_short_wed
 import dev.talhabayhan.lexi.feature.stats.generated.resources.stats_day_sun
 import dev.talhabayhan.lexi.feature.stats.generated.resources.stats_day_thu
 import dev.talhabayhan.lexi.feature.stats.generated.resources.stats_day_tue
@@ -171,6 +179,12 @@ private fun WeekCard(state: StatsUiState) {
     val colors = LexiTheme.colors
     val typography = LexiTheme.typography
     val labels = state.week.map { stringResource(it.weekday.dayRes()) }
+    // Three-letter names run into each other at large font sizes: one letter each there (the description keeps the full names).
+    val chartLabels = if (LocalDensity.current.fontScale >= SHORT_DAY_FONT_SCALE) {
+        state.week.map { stringResource(it.weekday.shortDayRes()) }
+    } else {
+        labels
+    }
     val values = state.week.map { it.words }
     Column(
         modifier = Modifier
@@ -193,7 +207,7 @@ private fun WeekCard(state: StatsUiState) {
         }
         BarChart(
             values = values,
-            labels = labels,
+            labels = chartLabels,
             highlightIndex = values.lastIndex,
             contentDescription = stringResource(
                 Res.string.stats_week_description,
@@ -249,6 +263,19 @@ private fun HardestLetters(state: StatsUiState) {
             }
         }
     }
+}
+
+/** System font scale from which the chart's weekday names shrink to one letter. */
+private const val SHORT_DAY_FONT_SCALE = 1.5f
+
+private fun Int.shortDayRes(): StringResource = when (this) {
+    0 -> Res.string.stats_day_short_mon
+    1 -> Res.string.stats_day_short_tue
+    2 -> Res.string.stats_day_short_wed
+    3 -> Res.string.stats_day_short_thu
+    4 -> Res.string.stats_day_short_fri
+    5 -> Res.string.stats_day_short_sat
+    else -> Res.string.stats_day_short_sun
 }
 
 private fun Int.dayRes(): StringResource = when (this) {

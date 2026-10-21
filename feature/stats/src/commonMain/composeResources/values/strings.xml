@@ -26,6 +26,13 @@
     <string name="stats_day_fri">Fri</string>
     <string name="stats_day_sat">Sat</string>
     <string name="stats_day_sun">Sun</string>
+    <string name="stats_day_short_mon">M</string>
+    <string name="stats_day_short_tue">T</string>
+    <string name="stats_day_short_wed">W</string>
+    <string name="stats_day_short_thu">T</string>
+    <string name="stats_day_short_fri">F</string>
+    <string name="stats_day_short_sat">S</string>
+    <string name="stats_day_short_sun">S</string>
 
     <!-- Level progress and hardest letters -->
     <string name="stats_levels_title">LEVEL PROGRESS</string>

@@ -114,3 +114,8 @@ before shipping.
   layouts later.
 - Font scale: honor system font size up to 1.3× on lists; the whole game board (HUD, wheel, clue, slots, keys,
   actions) is capped at 1.15×; its fixed heights grow with the capped scale.
+
+## Accepted contrast exceptions
+
+- White text on a `red` fill (wrong wheel letter, selected level card, mixed-wheel card, wrong slot): below 4.5:1 but kept as designed; small red text on light backgrounds uses `redText` instead.
+- Used key letter in `borderMuted` (2.95:1) and disabled/inactive elements: inactive UI is WCAG-exempt.

@@ -2,6 +2,7 @@ package dev.talhabayhan.lexi.core.designsystem.component
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -15,17 +16,23 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.relocation.BringIntoViewRequester
+import androidx.compose.foundation.relocation.bringIntoViewRequester
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.foundation.selection.toggleable
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.semantics.ProgressBarRangeInfo
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.contentDescription
@@ -71,11 +78,16 @@ public object ControlDefaults {
 
     /** Line height of a segment with a subtitle (`line-height: 1.1`). */
     internal const val SEGMENT_TWO_LINE_HEIGHT: Double = 1.1
+
+    /** System font scale above which a control that opted in ([SegmentedControl] `scrollable`) scrolls sideways. */
+    public const val SCROLL_FONT_SCALE: Float = 1.75f
 }
 
 /**
  * Segmented control: 3dp ink frame on white, equal segments separated by [dividerWidth] ink lines (part of the
  * segment, as the CSS `border-left`); selected = ink with yellow title (cream subtitle). Light haptic + tap on select.
+ * With [scrollable], font scales above [ControlDefaults.SCROLL_FONT_SCALE] let the segments keep their natural width
+ * and the row scroll sideways (the selected one is brought into view) instead of squeezing them against each other.
  */
 @Composable
 public fun SegmentedControl(
@@ -85,8 +97,15 @@ public fun SegmentedControl(
     modifier: Modifier = Modifier,
     height: Dp = ControlDefaults.SegmentHeight,
     dividerWidth: Dp = LexiTheme.borders.thin,
+    scrollable: Boolean = false,
 ) {
     val colors = LexiTheme.colors
+    val scrolling = scrollable && LocalDensity.current.fontScale > ControlDefaults.SCROLL_FONT_SCALE
+    val scrollState = rememberScrollState()
+    val requesters = remember(segments.size) { List(segments.size) { BringIntoViewRequester() } }
+    if (scrolling) {
+        LaunchedEffect(selectedIndex) { requesters.getOrNull(selectedIndex)?.bringIntoView() }
+    }
     val typography = LexiTheme.typography
     val haptics = LocalHaptics.current
     val sounds = LocalSoundPlayer.current
@@ -95,13 +114,15 @@ public fun SegmentedControl(
         modifier = modifier
             .height(IntrinsicSize.Min)
             .lexiSurface(colors.white, BorderStroke(LexiTheme.borders.regular, colors.ink))
-            .selectableGroup(),
+            .selectableGroup()
+            .then(if (scrolling) Modifier.horizontalScroll(scrollState) else Modifier),
     ) {
         segments.forEachIndexed { index, segment ->
             val selected = index == selectedIndex
             Column(
                 modifier = Modifier
-                    .weight(1f)
+                    .then(if (scrolling) Modifier else Modifier.weight(1f))
+                    .bringIntoViewRequester(requesters[index])
                     .fillMaxHeight()
                     .heightIn(min = height)
                     .then(if (index > 0) Modifier.leftBorder(dividerWidth, colors.ink) else Modifier)
@@ -110,7 +131,8 @@ public fun SegmentedControl(
                         haptics.perform(HapticKind.Light)
                         sounds.play(SoundEffect.Tap)
                         onSelect(index)
-                    },
+                    }
+                    .then(if (scrolling) Modifier.padding(horizontal = LexiTheme.dimens.gap12) else Modifier),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center,
             ) {

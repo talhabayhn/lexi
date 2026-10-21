@@ -95,6 +95,7 @@ internal fun CategoriesScreen(
             selectedIndex = Level.entries.indexOf(state.level),
             onSelect = { onIntent(CategoriesIntent.SelectLevel(Level.entries[it])) },
             modifier = Modifier.fillMaxWidth(),
+            scrollable = true,
         )
         if (state.isLoaded) {
             if (state.hasError) {

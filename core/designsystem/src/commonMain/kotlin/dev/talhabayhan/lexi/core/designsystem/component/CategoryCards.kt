@@ -79,7 +79,14 @@ public fun CategoryCard(
             verticalArrangement = Arrangement.SpaceBetween,
         ) {
             Row(
-                modifier = Modifier.fillMaxWidth(),
+                // Keeps a tall name off the progress bar at the largest font sizes only; the design size is unchanged.
+                modifier = Modifier.fillMaxWidth().padding(
+                    bottom = if (LocalDensity.current.fontScale > CategoryCardDefaults.WRAP_FONT_SCALE) {
+                        LexiTheme.dimens.gap6
+                    } else {
+                        0.dp
+                    },
+                ),
                 horizontalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap8),
                 verticalAlignment = Alignment.CenterVertically,
             ) {

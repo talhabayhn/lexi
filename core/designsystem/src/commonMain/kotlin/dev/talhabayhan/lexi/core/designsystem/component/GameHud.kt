@@ -25,8 +25,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.graphics.drawscope.clipRect
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.semantics.clearAndSetSemantics
@@ -328,17 +330,37 @@ public fun TimerBar(
                 }
             },
         )
+        val counterModifier = Modifier
+            .padding(start = GameHudDefaults.TimerTextInset)
+            .graphicsLayer {
+                scaleX = pulse.value
+                scaleY = pulse.value
+            }
+        // Warning: the counter is the darker red on the white track and ink where the red fill runs under it (two
+        // layers, the second clipped to the fill), so it stays readable at any progress.
         Text(
             text = timeText,
             style = LexiTheme.typography.heading18,
-            color = if (warning) colors.red else colors.ink,
-            modifier = Modifier
-                .padding(start = GameHudDefaults.TimerTextInset)
-                .graphicsLayer {
-                    scaleX = pulse.value
-                    scaleY = pulse.value
-                },
+            color = if (warning) colors.redText else colors.ink,
+            modifier = counterModifier,
         )
+        if (warning) {
+            Box(
+                Modifier.fillMaxSize().clearAndSetSemantics {}.drawWithContent {
+                    val width = (size.width * progress().coerceIn(0f, 1f)).roundToInt().toFloat()
+                    val edge = minOf(border.toPx().roundToInt().toFloat(), width)
+                    clipRect(right = width - edge) { this@drawWithContent.drawContent() }
+                },
+                contentAlignment = Alignment.CenterStart,
+            ) {
+                Text(
+                    text = timeText,
+                    style = LexiTheme.typography.heading18,
+                    color = colors.ink,
+                    modifier = counterModifier,
+                )
+            }
+        }
     }
 }
 

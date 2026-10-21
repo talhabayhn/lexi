@@ -26,6 +26,13 @@
     <string name="stats_day_fri">Cum</string>
     <string name="stats_day_sat">Cmt</string>
     <string name="stats_day_sun">Paz</string>
+    <string name="stats_day_short_mon">P</string>
+    <string name="stats_day_short_tue">S</string>
+    <string name="stats_day_short_wed">Ç</string>
+    <string name="stats_day_short_thu">P</string>
+    <string name="stats_day_short_fri">C</string>
+    <string name="stats_day_short_sat">C</string>
+    <string name="stats_day_short_sun">P</string>
 
     <!-- Seviye ilerlemesi ve en zor harfler -->
     <string name="stats_levels_title">SEVİYE İLERLEMESİ</string>

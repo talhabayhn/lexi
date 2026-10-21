@@ -19,6 +19,8 @@ public class LexiColors internal constructor(
     public val ink: Color,
     /** Primary CTA, **wrong** state, active answer-slot border. */
     public val red: Color,
+    /** Small red TEXT on white/cream (>= 4.5:1 on both); [red] itself is for fills only. */
+    public val redText: Color,
     /** **Correct** state, score badge, progress fill, toggle on. */
     public val blue: Color,
     /** **Pass** state, timer bar, highlights, selected-segment text on ink. */
@@ -42,6 +44,7 @@ internal val LightLexiColors: LexiColors = LexiColors(
     white = Color(0xFFFFFFFF),
     ink = Ink,
     red = Color(0xFFE0534C),
+    redText = Color(0xFFD42D25),
     blue = Color(0xFF3D68B2),
     yellow = Color(0xFFE29E2E),
     inkMuted = Color(0xFF606673),

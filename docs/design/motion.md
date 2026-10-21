@@ -62,7 +62,7 @@ Implemented in `feature:game` (`GameMotion`, `GameMotionLayer`, `GameFeedback`) 
   from above (`mechanical`).
 - #7: burst and badge sit in the HUD row next to the score circle (design debt, `screen-map.md`); the badge pops in 420 ms, holds 720 ms
   and shrinks to 0 in 240 ms (`aCombo`). Reduced motion: the badge rests at −4° for 420 + 720 ms, no burst.
-- #8: `TimerBar` pulses whenever the counter changes (and when the warning starts), not on first composition, so a
+- #8: in the warning the counter is `redText` on the white track and ink where the red fill runs under it (clipped second layer), so it is readable at any progress. `TimerBar` pulses whenever the counter changes (and when the warning starts), not on first composition, so a
   paused or restored warning does not pulse.
 - #11: the result screen's share error toast slides down 16dp in 180 ms (`mechanical`) and goes after 2.5 s (the home daily-gift notice stays 6 s so screen-reader users can reach it); reduced
   motion: shown in place, no slide. (The home daily-gift notice shows the toast without the slide.)
