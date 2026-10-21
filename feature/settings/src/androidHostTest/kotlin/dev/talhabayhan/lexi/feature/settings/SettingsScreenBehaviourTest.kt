@@ -3,8 +3,13 @@ package dev.talhabayhan.lexi.feature.settings
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.SemanticsProperties
 import androidx.compose.ui.test.ComposeUiTest
 import androidx.compose.ui.test.ExperimentalTestApi
+import androidx.compose.ui.test.SemanticsMatcher
+import androidx.compose.ui.test.assert
+import androidx.compose.ui.test.assertAny
 import androidx.compose.ui.test.assertHasNoClickAction
 import androidx.compose.ui.test.assertHeightIsAtLeast
 import androidx.compose.ui.test.assertIsNotEnabled
@@ -284,5 +289,45 @@ class SettingsScreenBehaviourTest {
             "Kullanım koşulları",
         ).performScrollTo().assertHeightIsAtLeast(minTarget).assertWidthIsAtLeast(minTarget)
         onNodeWithText("Satın alımları geri yükle").performScrollTo().assertExists()
+    }
+
+    private fun ComposeUiTest.headings() = onAllNodes(SemanticsMatcher.keyIsDefined(SemanticsProperties.Heading))
+
+    @Test
+    fun `title and section labels are headings`() = runComposeUiTest {
+        setContent { LexiTheme(reducedMotion = true) { SettingsScreen(SettingsUiState(), onIntent = {}) } }
+
+        headings().assertAny(hasText("Ayarlar"))
+        headings().assertAny(hasText("OYUN", ignoreCase = true))
+    }
+
+    @Test
+    fun `toggle rows are switches named by their label`() = runComposeUiTest {
+        setContent { LexiTheme(reducedMotion = true) { SettingsScreen(SettingsUiState(), onIntent = {}) } }
+
+        listOf("Ses efektleri", "Titreşim", "Doğru cevapta telaffuzu çal").forEach { label ->
+            onNodeWithText(label).assert(SemanticsMatcher.expectValue(SemanticsProperties.Role, Role.Switch))
+        }
+    }
+
+    @Test
+    fun `the inert restore link is announced as a disabled button`() = runComposeUiTest {
+        setContent { LexiTheme(reducedMotion = true) { SettingsScreen(SettingsUiState(), onIntent = {}) } }
+
+        onNodeWithText("Satın alımları geri yükle").performScrollTo()
+            .assert(SemanticsMatcher.expectValue(SemanticsProperties.Role, Role.Button))
+            .assertIsNotEnabled()
+    }
+
+    @Test
+    fun `the open reminder sheet is modal and its title is a heading`() = runComposeUiTest {
+        setContent {
+            LexiTheme(reducedMotion = true) {
+                SettingsScreen(SettingsUiState(reminderSheetVisible = true), onIntent = {})
+            }
+        }
+
+        onNodeWithText("Ses efektleri").assertDoesNotExist()
+        headings().assertAny(hasText("Günlük hatırlatma"))
     }
 }

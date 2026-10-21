@@ -30,6 +30,7 @@ import dev.talhabayhan.lexi.core.designsystem.component.StatGrid
 import dev.talhabayhan.lexi.core.designsystem.component.StatTile
 import dev.talhabayhan.lexi.core.designsystem.component.StatsDefaults
 import dev.talhabayhan.lexi.core.designsystem.icon.LexiIcons
+import dev.talhabayhan.lexi.core.designsystem.modifier.lexiHeading
 import dev.talhabayhan.lexi.core.designsystem.modifier.lexiSurface
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.core.designsystem.theme.lexiContentWidth
@@ -125,7 +126,11 @@ private fun Header(onBack: () -> Unit) {
             contentDescription = stringResource(Res.string.stats_back),
             onClick = onBack,
         )
-        Text(stringResource(Res.string.stats_title), style = LexiTheme.typography.title)
+        Text(
+            stringResource(Res.string.stats_title),
+            style = LexiTheme.typography.title,
+            modifier = Modifier.lexiHeading(),
+        )
     }
 }
 
@@ -204,7 +209,11 @@ private fun WeekCard(state: StatsUiState) {
 private fun Levels(state: StatsUiState) {
     if (state.levels.isEmpty()) return
     Column(verticalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap8)) {
-        Text(stringResource(Res.string.stats_levels_title), style = LexiTheme.typography.label12)
+        Text(
+            stringResource(Res.string.stats_levels_title),
+            style = LexiTheme.typography.label12,
+            modifier = Modifier.lexiHeading(),
+        )
         state.levels.forEach { entry ->
             LevelProgressRow(
                 level = entry.level.name,
@@ -218,7 +227,11 @@ private fun Levels(state: StatsUiState) {
 @Composable
 private fun HardestLetters(state: StatsUiState) {
     Column(verticalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap8)) {
-        Text(stringResource(Res.string.stats_letters_title), style = LexiTheme.typography.label12)
+        Text(
+            stringResource(Res.string.stats_letters_title),
+            style = LexiTheme.typography.label12,
+            modifier = Modifier.lexiHeading(),
+        )
         if (state.hardLetters.isEmpty()) {
             EmptyState(stringResource(Res.string.stats_letters_empty), Modifier.fillMaxWidth())
         } else {

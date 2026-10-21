@@ -21,6 +21,7 @@ import androidx.compose.ui.graphics.PathEffect
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -124,6 +125,10 @@ public fun BarChart(
                     label,
                     style = if (i == highlightIndex) typography.caption12ExtraBold else typography.caption12,
                     textAlign = TextAlign.Center,
+                    // Never break a weekday letter by letter at large font sizes (it may overhang its column a little).
+                    softWrap = false,
+                    maxLines = 1,
+                    overflow = TextOverflow.Visible,
                     modifier = Modifier.weight(1f),
                 )
             }

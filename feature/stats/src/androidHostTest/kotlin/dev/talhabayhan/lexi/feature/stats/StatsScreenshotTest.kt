@@ -107,6 +107,11 @@ class StatsScreenshotTest {
     @Config(qualifiers = "tr-w600dp-h960dp-mdpi", fontScale = 1.3f)
     fun w600h960FontScale130() = capture("Stats_w600h960_fontScale130")
 
+    /** Largest system font size (accessibility): nothing may clip or overlap. */
+    @Test
+    @Config(qualifiers = "tr-w390dp-h844dp-xhdpi", fontScale = 2.0f)
+    fun fontScale200() = capture("Stats_fontScale200")
+
     private fun capture(name: String) {
         captureRoboImage("src/androidHostTest/screenshots/$name.png") {
             LexiTheme(reducedMotion = false) {

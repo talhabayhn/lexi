@@ -47,6 +47,7 @@ import dev.talhabayhan.lexi.core.designsystem.component.Segment
 import dev.talhabayhan.lexi.core.designsystem.component.SegmentedControl
 import dev.talhabayhan.lexi.core.designsystem.component.WordRow
 import dev.talhabayhan.lexi.core.designsystem.icon.LexiIcons
+import dev.talhabayhan.lexi.core.designsystem.modifier.lexiHeading
 import dev.talhabayhan.lexi.core.designsystem.modifier.lexiSurface
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.core.designsystem.theme.lexiContentWidth
@@ -156,7 +157,11 @@ private fun Header(onBack: () -> Unit) {
             contentDescription = stringResource(Res.string.notebook_back),
             onClick = onBack,
         )
-        Text(stringResource(Res.string.notebook_title), style = LexiTheme.typography.title)
+        Text(
+            stringResource(Res.string.notebook_title),
+            style = LexiTheme.typography.title,
+            modifier = Modifier.lexiHeading(),
+        )
     }
 }
 

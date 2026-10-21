@@ -25,6 +25,7 @@ import dev.talhabayhan.lexi.core.designsystem.component.ListDefaults
 import dev.talhabayhan.lexi.core.designsystem.component.ListRow
 import dev.talhabayhan.lexi.core.designsystem.component.NavSquareButton
 import dev.talhabayhan.lexi.core.designsystem.icon.LexiIcons
+import dev.talhabayhan.lexi.core.designsystem.modifier.lexiHeading
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.core.designsystem.theme.lexiContentWidth
 import dev.talhabayhan.lexi.core.domain.platform.AppLinks
@@ -174,14 +175,18 @@ private fun Header(onBack: () -> Unit) {
             contentDescription = stringResource(Res.string.about_back),
             onClick = onBack,
         )
-        Text(stringResource(Res.string.about_title), style = LexiTheme.typography.title)
+        Text(
+            stringResource(Res.string.about_title),
+            style = LexiTheme.typography.title,
+            modifier = Modifier.lexiHeading(),
+        )
     }
 }
 
 @Composable
 private fun AboutSection(title: StringResource, rows: @Composable () -> Unit) {
     Column(verticalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap6)) {
-        Text(stringResource(title), style = LexiTheme.typography.label12)
+        Text(stringResource(title), style = LexiTheme.typography.label12, modifier = Modifier.lexiHeading())
         ListCard(Modifier.fillMaxWidth(), content = rows)
     }
 }

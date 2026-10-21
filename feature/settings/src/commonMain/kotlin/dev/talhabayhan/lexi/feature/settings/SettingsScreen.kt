@@ -24,6 +24,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.disabled
+import androidx.compose.ui.semantics.role
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import dev.talhabayhan.lexi.core.designsystem.component.AdaptiveTrailingRow
@@ -37,6 +40,7 @@ import dev.talhabayhan.lexi.core.designsystem.component.ProBanner
 import dev.talhabayhan.lexi.core.designsystem.format.formatClock
 import dev.talhabayhan.lexi.core.designsystem.format.formatTimeOfDay
 import dev.talhabayhan.lexi.core.designsystem.icon.LexiIcons
+import dev.talhabayhan.lexi.core.designsystem.modifier.lexiHeading
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.core.designsystem.theme.lexiContentWidth
 import dev.talhabayhan.lexi.core.domain.AppInfo
@@ -89,7 +93,19 @@ import org.jetbrains.compose.resources.stringResource
 @Composable
 internal fun SettingsScreen(state: SettingsUiState, onIntent: (SettingsIntent) -> Unit, modifier: Modifier = Modifier) {
     Box(modifier.fillMaxSize()) {
-        SettingsPage(state, onIntent)
+        // The reminder sheet is modal: screen readers can't reach the page behind it.
+        Box(
+            Modifier.fillMaxSize().then(
+                if (state.reminderSheetVisible) {
+                    Modifier.clearAndSetSemantics {
+                    }
+                } else {
+                    Modifier
+                },
+            ),
+        ) {
+            SettingsPage(state, onIntent)
+        }
         ReminderSheet(
             visible = state.reminderSheetVisible,
             enabled = state.dailyReminder,
@@ -302,7 +318,13 @@ private fun FooterSeparator(modifier: Modifier = Modifier) {
 private fun FooterStatic(text: String, modifier: Modifier = Modifier) {
     val dimens = LexiTheme.dimens
     Box(
-        modifier = modifier.heightIn(min = dimens.minTouchTargetAccessible),
+        modifier = modifier
+            .heightIn(min = dimens.minTouchTargetAccessible)
+            // Inert until the store arrives (M7): announced as an unavailable button.
+            .semantics(mergeDescendants = true) {
+                role = Role.Button
+                disabled()
+            },
         contentAlignment = Alignment.Center,
     ) {
         Text(
@@ -324,14 +346,18 @@ private fun Header(onBack: () -> Unit) {
             contentDescription = stringResource(Res.string.settings_back),
             onClick = onBack,
         )
-        Text(stringResource(Res.string.settings_title), style = LexiTheme.typography.title)
+        Text(
+            stringResource(Res.string.settings_title),
+            style = LexiTheme.typography.title,
+            modifier = Modifier.lexiHeading(),
+        )
     }
 }
 
 @Composable
 private fun Section(title: StringResource, rows: @Composable () -> Unit) {
     Column(verticalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap6)) {
-        Text(stringResource(title), style = LexiTheme.typography.label12)
+        Text(stringResource(title), style = LexiTheme.typography.label12, modifier = Modifier.lexiHeading())
         ListCard(Modifier.fillMaxWidth(), content = rows)
     }
 }
