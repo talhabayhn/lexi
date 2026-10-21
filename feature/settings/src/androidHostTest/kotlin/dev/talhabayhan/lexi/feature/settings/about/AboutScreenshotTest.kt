@@ -16,12 +16,14 @@ import org.robolectric.annotation.GraphicsMode
 @GraphicsMode(GraphicsMode.Mode.NATIVE)
 @Config(sdk = [36], qualifiers = "tr-w390dp-h844dp-xhdpi")
 class AboutScreenshotTest {
+    /** Fixed version, so a version bump (gradle.properties) never changes the goldens. */
+    private val sample = AboutUiState(versionName = "1.0.0", buildNumber = 10000)
 
     @Test
     fun designSample() {
         captureRoboImage("src/androidHostTest/screenshots/About.png") {
             LexiTheme(reducedMotion = false) {
-                AboutScreen(state = AboutUiState(), onIntent = {})
+                AboutScreen(state = sample, onIntent = {})
             }
         }
     }
@@ -31,7 +33,7 @@ class AboutScreenshotTest {
     fun english() {
         captureRoboImage("src/androidHostTest/screenshots/AboutEn.png") {
             LexiTheme(reducedMotion = false) {
-                AboutScreen(state = AboutUiState(), onIntent = {})
+                AboutScreen(state = sample, onIntent = {})
             }
         }
     }
@@ -41,7 +43,7 @@ class AboutScreenshotTest {
     fun largeFont() {
         captureRoboImage("src/androidHostTest/screenshots/AboutLargeFont.png") {
             LexiTheme(reducedMotion = false) {
-                AboutScreen(state = AboutUiState(), onIntent = {})
+                AboutScreen(state = sample, onIntent = {})
             }
         }
     }
@@ -52,7 +54,7 @@ class AboutScreenshotTest {
         captureRoboImage("src/androidHostTest/screenshots/About_w600h1100.png") {
             LexiTheme(reducedMotion = false) {
                 LexiViewport {
-                    AboutScreen(state = AboutUiState(), onIntent = {})
+                    AboutScreen(state = sample, onIntent = {})
                 }
             }
         }
@@ -86,7 +88,7 @@ class AboutScreenshotTest {
         captureRoboImage("src/androidHostTest/screenshots/$name.png") {
             LexiTheme(reducedMotion = false) {
                 LexiViewport {
-                    AboutScreen(state = AboutUiState(), onIntent = {})
+                    AboutScreen(state = sample, onIntent = {})
                 }
             }
         }
