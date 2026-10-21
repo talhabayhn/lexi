@@ -6,9 +6,11 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -252,7 +254,12 @@ private fun LevelSelectSample() {
         }
         Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
             levels.chunked(2).forEachIndexed { row, pair ->
-                Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                // Like LevelSelectScreen: a row as tall as its taller card, both cards filling it (LevelCard fills
+                // the height it is given, so an unbounded row would stretch it to the page).
+                Row(
+                    modifier = Modifier.fillMaxWidth().height(IntrinsicSize.Max),
+                    horizontalArrangement = Arrangement.spacedBy(12.dp),
+                ) {
                     pair.forEachIndexed { column, level ->
                         val index = row * 2 + column
                         LevelCard(
@@ -268,7 +275,7 @@ private fun LevelSelectSample() {
                                 5 -> LevelCardStyle.Inverted
                                 else -> LevelCardStyle.Normal
                             },
-                            modifier = Modifier.weight(1f),
+                            modifier = Modifier.weight(1f).fillMaxHeight(),
                         )
                     }
                 }
