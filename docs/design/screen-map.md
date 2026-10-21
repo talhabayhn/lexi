@@ -119,3 +119,4 @@ before shipping.
 
 - White text on a `red` fill (wrong wheel letter, selected level card, mixed-wheel card, wrong slot): below 4.5:1 but kept as designed; small red text on light backgrounds uses `redText` instead.
 - Used key letter in `borderMuted` (2.95:1) and disabled/inactive elements: inactive UI is WCAG-exempt.
+- Timer warning counter: ink over the red fill (~4.1:1) and `redText` over the white track; best available pairing, bold 18sp.
