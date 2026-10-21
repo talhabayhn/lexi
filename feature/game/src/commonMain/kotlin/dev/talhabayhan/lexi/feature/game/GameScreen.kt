@@ -25,6 +25,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.onPlaced
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.Dp
@@ -90,6 +91,10 @@ import org.jetbrains.compose.resources.stringResource
  * in [GameMotionLayer] above the content and below the sheet and dialog. Lifecycle ON_PAUSE / ON_RESUME are forwarded
  * as background / foreground intents (ADR 0019). Insets: `safeDrawing` on top of the design paddings; the background
  * shapes reach the screen edges. Overlays: the joker sheet (`05-joker-sheet`) and the pause dialog (design debt).
+ *
+ * Accessibility: the board is read HUD, clue, wheel, answer, keys, actions ([GameColumn]); game events are announced
+ * by [GameAnnouncer]; while an overlay is open the board is removed from the accessibility tree, so the overlay's
+ * title is the first thing a screen reader reaches.
  */
 @Composable
 internal fun GameScreen(
@@ -103,17 +108,25 @@ internal fun GameScreen(
     LifecycleEventEffect(Lifecycle.Event.ON_PAUSE) { currentOnIntent(GameIntent.Background) }
     LifecycleEventEffect(Lifecycle.Event.ON_RESUME) { currentOnIntent(GameIntent.Foreground) }
 
+    // The joker sheet and the pause dialog are modal: screen readers can't reach the board behind them.
+    val modal = state.isPaused || state.isJokerSheetOpen
     BoxWithConstraints(modifier.fillMaxSize().background(LexiTheme.colors.cream)) {
-        CompositionLocalProvider(LocalDensity provides LocalDensity.current.withCappedFontScale()) {
-            GameDecor()
-            val loadError = state.loadError
-            if (loadError != null) {
-                GameLoadErrorContent(loadError, onIntent)
-            } else if (!state.isLoading) {
-                GameContent(state, clock, onIntent, motion, maxWidth, maxHeight)
+        val screenWidth = maxWidth
+        val screenHeight = maxHeight
+        Box(Modifier.fillMaxSize().then(if (modal) Modifier.clearAndSetSemantics {} else Modifier)) {
+            // The board only; the sheet and the dialog below follow the system font size in full (and scroll).
+            CompositionLocalProvider(LocalDensity provides LocalDensity.current.withCappedFontScale()) {
+                GameDecor()
+                val loadError = state.loadError
+                if (loadError != null) {
+                    GameLoadErrorContent(loadError, onIntent)
+                } else if (!state.isLoading) {
+                    GameContent(state, clock, onIntent, motion, screenWidth, screenHeight)
+                }
+                GameMotionLayer(motion)
             }
-            GameMotionLayer(motion)
         }
+        GameAnnouncer(state, clock, modal = modal, modifier = Modifier.testTag(GameTestTags.ANNOUNCEMENT))
         JokerSheet(
             visible = state.isJokerSheetOpen,
             jokers = state.jokers,
@@ -255,7 +268,7 @@ private fun GameContent(
     )
 }
 
-/** Test tags of the game board's rows (layout tests). */
+/** Test tags of the game board's rows (layout tests) and of the screen-reader announcements. */
 internal object GameTestTags {
     const val HUD: String = "game_hud"
     const val WHEEL: String = "game_wheel"
@@ -263,6 +276,7 @@ internal object GameTestTags {
     const val ANSWER: String = "game_answer"
     const val KEYS: String = "game_keys"
     const val ACTIONS: String = "game_actions"
+    const val ANNOUNCEMENT: String = "game_announcement"
 }
 
 /** The game screen honours the system font size up to [GameScreenDefaults.MAX_FONT_SCALE] (`screen-map.md`). */

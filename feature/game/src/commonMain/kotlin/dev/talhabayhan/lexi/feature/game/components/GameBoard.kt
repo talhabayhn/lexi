@@ -41,11 +41,16 @@ import dev.talhabayhan.lexi.feature.game.AnswerCellUi
 import dev.talhabayhan.lexi.feature.game.GameClockUi
 import dev.talhabayhan.lexi.feature.game.KeyUi
 import dev.talhabayhan.lexi.feature.game.generated.resources.Res
+import dev.talhabayhan.lexi.feature.game.generated.resources.game_answer_description
+import dev.talhabayhan.lexi.feature.game.generated.resources.game_answer_description_letters
 import dev.talhabayhan.lexi.feature.game.generated.resources.game_button_pause
 import dev.talhabayhan.lexi.feature.game.generated.resources.game_correct_description
 import dev.talhabayhan.lexi.feature.game.generated.resources.game_score_description
+import dev.talhabayhan.lexi.feature.game.generated.resources.game_timer_description_minutes
+import dev.talhabayhan.lexi.feature.game.generated.resources.game_timer_description_seconds
 import dev.talhabayhan.lexi.feature.game.generated.resources.game_timer_untimed
 import kotlinx.collections.immutable.ImmutableList
+import org.jetbrains.compose.resources.pluralStringResource
 import org.jetbrains.compose.resources.stringResource
 
 /**
@@ -72,6 +77,19 @@ internal fun GameHudBar(
         if (isScored) Res.string.game_score_description else Res.string.game_correct_description,
         badge,
     )
+    // "Kalan süre: 1 dakika 47 saniye": updated with the counter but never announced by itself (no live region); the
+    // warning and the time-up are announced once each by the screen.
+    val timerDescription = when {
+        !timed -> null
+
+        seconds >= SECONDS_PER_MINUTE -> stringResource(
+            Res.string.game_timer_description_minutes,
+            seconds / SECONDS_PER_MINUTE,
+            seconds % SECONDS_PER_MINUTE,
+        )
+
+        else -> stringResource(Res.string.game_timer_description_seconds, seconds)
+    }
     Row(
         modifier = modifier.height(height),
         horizontalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap8),
@@ -91,6 +109,7 @@ internal fun GameHudBar(
             warning = warning,
             modifier = Modifier.weight(1f),
             height = height,
+            contentDescription = timerDescription,
         )
         ScoreBadge(
             score = badge.toString(),
@@ -100,6 +119,11 @@ internal fun GameHudBar(
     }
 }
 
+private const val SECONDS_PER_MINUTE = 60
+
+/** Between the typed letters of the answer's accessibility text ("K I T"): screen readers spell them one by one. */
+private const val SPOKEN_LETTER_SEPARATOR = " "
+
 /**
  * Answer boxes, centred, gap 6; words of a multi-word answer are separated by [GameScreenDefaults.AnswerWordGap].
  * Boxes keep 40dp up to the width of the column, then narrow (with the letter) so 14-letter answers still fit; the
@@ -107,6 +131,7 @@ internal fun GameHudBar(
  * [offset] is the #4 shake, applied in the layer phase. [flyingCells] are cells whose letter is still in the air (#2):
  * they keep their look from before it lands, so the first of them is the red-bordered next box and the rest (with the
  * state's next box) stay empty. [onCellPlaced] reports each cell (letters only, in answer order) for the flight.
+ * Screen readers get the row as one node: "Cevap, 7 harf, 3 dolu: K I T" instead of a stop on every box.
  */
 @Composable
 internal fun AnswerSlots(
@@ -119,7 +144,11 @@ internal fun AnswerSlots(
 ) {
     val flying = flyingCells()
     val firstFlying = flying.minOrNull()
-    BoxWithConstraints(modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
+    val description = answerDescription(words)
+    BoxWithConstraints(
+        modifier = modifier.fillMaxWidth().clearAndSetSemantics { contentDescription = description },
+        contentAlignment = Alignment.Center,
+    ) {
         val cells = words.sumOf { it.size }
         // In whole pixels, as the row places them: rounded slot widths must never add up to more than the row.
         val density = LocalDensity.current
@@ -165,6 +194,21 @@ internal fun AnswerSlots(
         }
     }
 }
+
+/** "Cevap, 7 harf, 3 dolu: K I T"; without a letter only the counts. */
+@Composable
+private fun answerDescription(words: ImmutableList<ImmutableList<AnswerCellUi>>): String {
+    val shown = words.flatten().mapNotNull { cell -> cell.letter?.takeIf { cell.state.showsLetter() } }
+    val total = words.sumOf { it.size }
+    val counts = pluralStringResource(Res.plurals.game_answer_description, total, total, shown.size)
+    return if (shown.isEmpty()) {
+        counts
+    } else {
+        stringResource(Res.string.game_answer_description_letters, counts, shown.joinToString(SPOKEN_LETTER_SEPARATOR))
+    }
+}
+
+private fun AnswerSlotState.showsLetter(): Boolean = this != AnswerSlotState.Empty && this != AnswerSlotState.Active
 
 /**
  * Letter keys in rows of 5 (gap 8; [keyHeight] and [gap] 44 / 6 in the compact tier); keys keep their order for the whole slot (`GAME_RULES.md` §4). Not [enabled]

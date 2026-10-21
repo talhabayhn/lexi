@@ -8,6 +8,9 @@
     <string name="wheel_letter_state_wrong">wrong</string>
     <string name="wheel_letter_state_passed">passed</string>
     <string name="wheel_letter_description">%1$s, %2$s</string>
+    <!-- The wheel as one accessibility node: "Letter K, STARTS WITH. 26 letters: 7 correct, 1 wrong, 2 passed, 16 left" -->
+    <string name="wheel_summary">Letter %1$s, %2$s. %3$s</string>
+    <string name="wheel_summary_counts">%1$d letters: %2$d correct, %3$d wrong, %4$d passed, %5$d left</string>
 
     <!-- Answer slots -->
     <string name="answer_slot_empty">empty</string>

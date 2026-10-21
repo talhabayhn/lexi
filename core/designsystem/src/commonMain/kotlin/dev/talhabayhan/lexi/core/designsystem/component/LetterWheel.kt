@@ -23,8 +23,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.hideFromAccessibility
 import androidx.compose.ui.semantics.semantics
-import androidx.compose.ui.semantics.traversalIndex
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.tooling.preview.Preview
@@ -32,10 +33,14 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
+import dev.talhabayhan.lexi.core.designsystem.generated.resources.Res
+import dev.talhabayhan.lexi.core.designsystem.generated.resources.wheel_summary
+import dev.talhabayhan.lexi.core.designsystem.generated.resources.wheel_summary_counts
 import dev.talhabayhan.lexi.core.designsystem.icon.LexiIcons
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.core.designsystem.theme.descenderOverflowPx
 import dev.talhabayhan.lexi.core.designsystem.theme.resized
+import org.jetbrains.compose.resources.stringResource
 import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.hypot
@@ -62,6 +67,9 @@ public object LetterWheelDefaults {
  * down and the next one follows from above (`wheelAdvanceDurationMillis`, no fade; in place under reduced motion).
  * [chipMotion] gives a chip's transient #3 / #5 motion; a moving chip is drawn above its neighbours and its #5 arrow
  * slides clockwise along the wheel, towards the next letter.
+ *
+ * Accessibility: the wheel is one node, the centre, read as a summary (current letter, rule, how many letters are
+ * correct, wrong, passed and left); the chips are hidden from screen readers.
  */
 @Composable
 public fun LetterWheel(
@@ -105,6 +113,7 @@ public fun LetterWheel(
     val ruleStyle = ruleBase.fitted()
     val descenderReserve = with(density) { letterStyle.descenderOverflowPx(density).toDp() }
     val chipLabels = rememberWheelLetterLabels()
+    val summary = rememberWheelSummary(letters, centerLetter, ruleLabel)
     Box(modifier.size(size)) {
         Box(
             Modifier
@@ -116,7 +125,8 @@ public fun LetterWheel(
             modifier = Modifier
                 .align(Alignment.Center)
                 .size(centerSize)
-                .semantics(mergeDescendants = true) { traversalIndex = -1f }
+                // The wheel's only accessibility node: the summary replaces the letter and rule texts.
+                .semantics(mergeDescendants = true) { contentDescription = summary }
                 .background(colors.yellow, LexiTheme.shapes.circle)
                 .border(LexiTheme.borders.regular, colors.ink, LexiTheme.shapes.circle),
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -157,9 +167,34 @@ public fun LetterWheel(
                 labels = chipLabels,
                 modifier = Modifier
                     .offset((centerX - chip.value / 2).dp, (centerY - chip.value / 2).dp)
-                    .zIndex(if (itemMotion != null) 1f else 0f),
+                    .zIndex(if (itemMotion != null) 1f else 0f)
+                    // Read in the centre's summary: 26 chips in geometric order would be a scrambled list to swipe.
+                    .semantics { hideFromAccessibility() },
             )
         }
+    }
+}
+
+/**
+ * The wheel's accessibility text: "Harf K, İLE BAŞLAR. 26 harf: 7 doğru, 1 yanlış, 2 pas, 16 kalan" (the current and
+ * waiting letters are "kalan"). Without a current letter (before the start) only the counts.
+ */
+@Composable
+private fun rememberWheelSummary(letters: List<WheelLetterUi>, centerLetter: Char, ruleLabel: String): String {
+    val counts = letters.groupingBy { it.state }.eachCount()
+    fun count(vararg states: WheelLetterState) = states.sumOf { counts[it] ?: 0 }
+    val countsText = stringResource(
+        Res.string.wheel_summary_counts,
+        letters.size,
+        count(WheelLetterState.Correct),
+        count(WheelLetterState.Wrong),
+        count(WheelLetterState.Passed),
+        count(WheelLetterState.Current, WheelLetterState.Todo),
+    )
+    return if (centerLetter.isWhitespace()) {
+        countsText
+    } else {
+        stringResource(Res.string.wheel_summary, centerLetter.toString(), ruleLabel, countsText)
     }
 }
 

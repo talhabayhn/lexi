@@ -107,6 +107,8 @@ internal fun JokerSheet(
                     shadow = null,
                     leadingIcon = LexiIcons.Play,
                     height = LexiButtonDefaults.LargeHeight,
+                    // Large font sizes: the label wraps and the button grows (the sheet scrolls) instead of an ellipsis.
+                    maxLines = Int.MAX_VALUE,
                     modifier = Modifier.fillMaxWidth().padding(top = JokerRowDefaults.AdButtonTopMargin),
                 )
             }
@@ -175,6 +177,9 @@ private class JokerLook(
     val color: (LexiColors) -> Color,
     val inkText: Boolean,
 )
+
+/** The joker's name in the sheet ("Harf aç"), also used to announce it. */
+internal fun JokerType.title(): StringResource = look().title
 
 private fun JokerType.look(): JokerLook = when (this) {
     JokerType.REVEAL_LETTER -> JokerLook(

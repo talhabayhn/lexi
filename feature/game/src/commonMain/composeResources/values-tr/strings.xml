@@ -11,6 +11,31 @@
     <string name="game_correct_description">Doğru: %1$d</string>
     <string name="game_timer_untimed">SÜRESİZ</string>
 
+    <!-- Screen reader texts (TalkBack / VoiceOver), never shown. The timer label is not a live region. -->
+    <string name="game_timer_description_minutes">Kalan süre: %1$d dakika %2$d saniye</string>
+    <string name="game_timer_description_seconds">Kalan süre: %1$d saniye</string>
+    <plurals name="game_answer_description">
+        <item quantity="one">Cevap, %1$d harf, %2$d dolu</item>
+        <item quantity="other">Cevap, %1$d harf, %2$d dolu</item>
+    </plurals>
+    <!-- "Cevap, 7 harf, 3 dolu: K I T" -->
+    <string name="game_answer_description_letters">%1$s: %2$s</string>
+    <!-- Bir kez, kibarca okunur: "K: doğru", "K: yanlış. Cevap: KITCHEN" -->
+    <string name="game_announce_correct">%1$s: doğru</string>
+    <string name="game_announce_wrong">%1$s: yanlış</string>
+    <string name="game_announce_wrong_answer">%1$s: yanlış. Cevap: %2$s</string>
+    <string name="game_announce_passed">%1$s: pas</string>
+    <string name="game_announce_joker">Joker kullanıldı: %1$s</string>
+    <string name="game_announce_lap">Yeni tur: pas geçilen harfler</string>
+    <string name="game_announce_game_over">Oyun bitti</string>
+    <plurals name="game_announce_time_warning">
+        <item quantity="one">%1$d saniye kaldı</item>
+        <item quantity="other">%1$d saniye kaldı</item>
+    </plurals>
+    <string name="game_announce_time_up">Süre doldu</string>
+    <!-- Aynı andaki iki olay: "K: pas. Yeni tur: pas geçilen harfler" -->
+    <string name="game_announce_join">%1$s. %2$s</string>
+
     <!-- Load errors (design debt: EmptyState with actions) -->
     <string name="game_error_unreadable">Kelimeler yüklenemedi. Tekrar dene; sorun sürerse uygulamayı yeniden başlat.</string>
     <string name="game_error_no_cards">Bu seçim için henüz kelime yok. Başka bir seviye ya da kategori seç.</string>

@@ -188,7 +188,10 @@ public fun DialogPanel(
     }
 }
 
-/** A 48dp dialog button (15/800): [primary] = red Primary with s4, else flat Secondary. Width from [modifier]. */
+/**
+ * A 48dp dialog button (15/800): [primary] = red Primary with s4, else flat Secondary. Width from [modifier]. At large
+ * font sizes the label wraps and the button grows instead of cutting it (dialogs scroll).
+ */
 @Composable
 public fun DialogButton(text: String, onClick: () -> Unit, primary: Boolean, modifier: Modifier = Modifier) {
     LexiButton(
@@ -198,6 +201,7 @@ public fun DialogButton(text: String, onClick: () -> Unit, primary: Boolean, mod
         textStyle = LexiTheme.typography.bodyStrong15,
         height = LexiButtonDefaults.SmallHeight,
         shadow = if (primary) LexiTheme.shadows.s4 else null,
+        maxLines = Int.MAX_VALUE,
         modifier = modifier,
     )
 }

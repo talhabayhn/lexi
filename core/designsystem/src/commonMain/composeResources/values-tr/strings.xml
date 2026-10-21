@@ -8,6 +8,9 @@
     <string name="wheel_letter_state_wrong">yanlış</string>
     <string name="wheel_letter_state_passed">pas</string>
     <string name="wheel_letter_description">%1$s, %2$s</string>
+    <!-- Çark tek erişilebilirlik düğümü olarak: "Harf K, İLE BAŞLAR. 26 harf: 7 doğru, 1 yanlış, 2 pas, 16 kalan" -->
+    <string name="wheel_summary">Harf %1$s, %2$s. %3$s</string>
+    <string name="wheel_summary_counts">%1$d harf: %2$d doğru, %3$d yanlış, %4$d pas, %5$d kalan</string>
 
     <!-- Cevap kutuları -->
     <string name="answer_slot_empty">boş</string>

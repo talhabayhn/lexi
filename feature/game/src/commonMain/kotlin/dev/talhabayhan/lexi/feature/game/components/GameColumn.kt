@@ -1,15 +1,23 @@
 package dev.talhabayhan.lexi.feature.game.components
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.Placeable
 import androidx.compose.ui.layout.SubcomposeLayout
+import androidx.compose.ui.semantics.isTraversalGroup
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.traversalIndex
 import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.Dp
 import kotlin.math.max
 import kotlin.math.min
 
-private enum class GameColumnSlot { Hud, Wheel, Clue, Answer, Keys, Actions }
+/**
+ * The rows in screen-reader order (TalkBack / VoiceOver): the clue is read before the wheel, the question before its
+ * context; then answer, keys and actions. The ordinal is the row's traversal index.
+ */
+private enum class GameColumnSlot { Hud, Clue, Wheel, Answer, Keys, Actions }
 
 /**
  * The game screen's column (`04-game.html`: flex column, [gap] between rows, [answerTopMargin] extra above the answer
@@ -17,6 +25,9 @@ private enum class GameColumnSlot { Hud, Wheel, Clue, Answer, Keys, Actions }
  * gets what is left, up to [maxWheelSize]. The keys always take [keysHeight] (three rows, reserved even when a turn
  * has two) with at least [keysActionsGap] before the actions, so with fixed-height rows (the clue card has a fixed clue
  * area) no row moves between turns. At the design size (390 × 844) the wheel is 320dp.
+ *
+ * Screen readers go through the rows in [GameColumnSlot] order (HUD, clue, wheel, answer, keys, actions), not top to
+ * bottom: the column is a traversal group and each row a group with its index.
  */
 @Composable
 internal fun GameColumn(
@@ -33,11 +44,11 @@ internal fun GameColumn(
     actions: @Composable () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    SubcomposeLayout(modifier) { constraints ->
+    SubcomposeLayout(modifier.semantics { isTraversalGroup = true }) { constraints ->
         val width = constraints.maxWidth
         val stretch = Constraints(minWidth = width, maxWidth = width)
         fun measure(slot: GameColumnSlot, content: @Composable () -> Unit) =
-            subcompose(slot, content).map { it.measure(stretch) }
+            subcompose(slot) { ReadingOrderGroup(slot, content) }.map { it.measure(stretch) }
 
         val hudPlaceables = measure(GameColumnSlot.Hud, hud)
         val cluePlaceables = measure(GameColumnSlot.Clue, clue)
@@ -60,8 +71,9 @@ internal fun GameColumn(
             maxWheelPx
         }
         val wheelSize = wheelPx.toDp()
-        val wheelPlaceables = subcompose(GameColumnSlot.Wheel) { wheel(wheelSize) }
-            .map { it.measure(Constraints.fixed(wheelPx, wheelPx)) }
+        val wheelPlaceables = subcompose(GameColumnSlot.Wheel) {
+            ReadingOrderGroup(GameColumnSlot.Wheel) { wheel(wheelSize) }
+        }.map { it.measure(Constraints.fixed(wheelPx, wheelPx)) }
 
         val contentHeight = fixed + wheelPx
         // The column fills its bounded height (actions at the bottom) and never reports more than the constraints
@@ -86,5 +98,19 @@ internal fun GameColumn(
             val actionsY = max(y, layoutHeight - height(actionPlaceables))
             actionPlaceables.forEach { it.place(0, actionsY) }
         }
+    }
+}
+
+/** One row as a traversal group at its [slot]'s place in the reading order; the layout passes through unchanged. */
+@Composable
+private fun ReadingOrderGroup(slot: GameColumnSlot, content: @Composable () -> Unit) {
+    Box(
+        modifier = Modifier.semantics {
+            isTraversalGroup = true
+            traversalIndex = slot.ordinal.toFloat()
+        },
+        propagateMinConstraints = true,
+    ) {
+        content()
     }
 }

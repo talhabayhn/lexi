@@ -80,6 +80,12 @@ public object LexiButtonDefaults {
     /** `padding: 0 20px`. */
     public val ContentPadding: PaddingValues = PaddingValues(horizontal = 20.dp)
 
+    /**
+     * No design: a button whose label may wrap (large font sizes) keeps at least this much space above and below it
+     * once it grows beyond its height; at the design sizes the label fits on one line and the button keeps its height.
+     */
+    public val WrapPaddingVertical: Dp = 4.dp
+
     /** Gap between a leading icon and the label. */
     public val IconGap: Dp = 10.dp
 
@@ -111,7 +117,8 @@ private fun LexiButtonVariant.defaultContentColor(): Color = when (this) {
  * Bauhaus button: square, 3dp ink border, hard shadow (s5; s6 for hero CTAs, `null` for flat dialog buttons), press
  * per `PressableSurface`. Disabled: `disabledFill`, dashed `borderMuted` border, `inkMuted` content, no shadow.
  * [content] is laid out in a row (centered by default; `Arrangement.SpaceBetween` for OYNA-style CTAs) and inherits
- * the content color.
+ * the content color. Without [fixedHeight] [height] is a minimum: content that needs more (a wrapped label at large
+ * font sizes) makes the button taller instead of being cut.
  */
 @Composable
 public fun LexiButton(
@@ -124,13 +131,16 @@ public fun LexiButton(
     contentColor: Color = variant.defaultContentColor(),
     contentPadding: PaddingValues = LexiButtonDefaults.ContentPadding,
     horizontalArrangement: Arrangement.Horizontal = Arrangement.Center,
+    fixedHeight: Boolean = true,
     content: @Composable RowScope.() -> Unit,
 ) {
     val colors = LexiTheme.colors
     val border = LexiTheme.borders.regular
+    val size = if (fixedHeight) Modifier.height(height) else Modifier.heightIn(min = height)
+    val wrapPadding = if (fixedHeight) Modifier else Modifier.padding(vertical = LexiButtonDefaults.WrapPaddingVertical)
     val row: @Composable () -> Unit = {
         Row(
-            modifier = Modifier.fillMaxHeight().padding(contentPadding),
+            modifier = Modifier.fillMaxHeight().padding(contentPadding).then(wrapPadding),
             horizontalArrangement = horizontalArrangement,
             verticalAlignment = Alignment.CenterVertically,
             content = content,
@@ -139,7 +149,7 @@ public fun LexiButton(
     if (enabled) {
         PressableSurface(
             onClick = onClick,
-            modifier = modifier.height(height),
+            modifier = modifier.then(size),
             color = variant.containerColor(),
             border = BorderStroke(border, colors.ink),
             shadow = shadow,
@@ -150,7 +160,7 @@ public fun LexiButton(
     } else {
         Box(
             modifier = modifier
-                .height(height)
+                .then(size)
                 // One node like the enabled button, so the label is read as a disabled button.
                 .semantics(mergeDescendants = true) {
                     role = Role.Button
@@ -166,7 +176,10 @@ public fun LexiButton(
     }
 }
 
-/** [LexiButton] with a text label (style e.g. `button16`…`button30`) and an optional leading icon. */
+/**
+ * [LexiButton] with a text label (style e.g. `button16`…`button30`) and an optional leading icon. With [maxLines] above
+ * 1 the label wraps (large font sizes) and the button grows with it; at 1 it is cut with an ellipsis.
+ */
 @Composable
 public fun LexiButton(
     text: String,
@@ -180,6 +193,7 @@ public fun LexiButton(
     contentColor: Color = variant.defaultContentColor(),
     leadingIcon: ImageVector? = null,
     contentPadding: PaddingValues = LexiButtonDefaults.ContentPadding,
+    maxLines: Int = 1,
 ) {
     LexiButton(
         onClick = onClick,
@@ -191,6 +205,7 @@ public fun LexiButton(
         contentColor = contentColor,
         contentPadding = contentPadding,
         horizontalArrangement = Arrangement.spacedBy(LexiButtonDefaults.IconGap, Alignment.CenterHorizontally),
+        fixedHeight = maxLines == 1,
     ) {
         if (leadingIcon != null) {
             Icon(leadingIcon, contentDescription = null, modifier = Modifier.size(LexiButtonDefaults.IconSize))
@@ -199,7 +214,7 @@ public fun LexiButton(
             text = text,
             style = textStyle,
             color = LocalContentColor.current,
-            maxLines = 1,
+            maxLines = maxLines,
             overflow = TextOverflow.Ellipsis,
         )
     }

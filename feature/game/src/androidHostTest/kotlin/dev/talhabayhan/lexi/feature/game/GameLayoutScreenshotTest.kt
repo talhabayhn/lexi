@@ -134,6 +134,11 @@ class GameLayoutScreenshotTest {
     @Config(qualifiers = "tr-w600dp-h960dp-mdpi", fontScale = 1.3f)
     fun pauseDialog_w600h960FontScale130() = capture("GamePauseDialog_w600h960_fontScale130", GameSamples.paused)
 
+    /** 200 % font size: the dialog is not capped like the board; labels wrap and the panel scrolls. */
+    @Test
+    @Config(qualifiers = "tr-w390dp-h844dp-xhdpi", fontScale = 2.0f)
+    fun pauseDialogFontScale200() = capture("GamePauseDialog_fontScale200", GameSamples.paused)
+
     @Test
     @Config(qualifiers = "tr-w390dp-h844dp-xhdpi", fontScale = 2.0f)
     fun jokerSheetFontScale200() = capture("JokerSheet_fontScale200", GameSamples.jokerSheet, clock = {

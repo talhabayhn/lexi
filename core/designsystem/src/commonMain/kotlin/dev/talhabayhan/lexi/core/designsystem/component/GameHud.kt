@@ -29,6 +29,8 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.TextMeasurer
 import androidx.compose.ui.text.TextStyle
@@ -274,7 +276,8 @@ public fun TimerBar(progress: Float, timeText: String, modifier: Modifier = Modi
 
 /**
  * [TimerBar] whose fill reads [progress] only in the draw phase (ADR 0019): a running clock redraws the bar on every
- * tick without recomposing it.
+ * tick without recomposing it. [contentDescription] replaces the counter for screen readers ("Kalan süre: 42 sn");
+ * it is never a live region, so a ticking clock is not read out every second.
  */
 @Composable
 public fun TimerBar(
@@ -283,6 +286,7 @@ public fun TimerBar(
     modifier: Modifier = Modifier,
     warning: Boolean = false,
     height: Dp = GameHudDefaults.BarHeight,
+    contentDescription: String? = null,
 ) {
     val colors = LexiTheme.colors
     val motion = LexiTheme.motion
@@ -300,9 +304,15 @@ public fun TimerBar(
         pulse.animateTo(motion.timeWarningPulseScale, half)
         pulse.animateTo(1f, half)
     }
+    val description = if (contentDescription != null) {
+        Modifier.clearAndSetSemantics { this.contentDescription = contentDescription }
+    } else {
+        Modifier
+    }
     Box(
         modifier = modifier
             .height(height)
+            .then(description)
             .lexiSurface(colors.white, BorderStroke(border, colors.ink)),
         contentAlignment = Alignment.CenterStart,
     ) {

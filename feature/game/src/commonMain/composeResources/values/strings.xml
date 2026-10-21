@@ -11,6 +11,31 @@
     <string name="game_correct_description">Correct: %1$d</string>
     <string name="game_timer_untimed">NO TIMER</string>
 
+    <!-- Screen reader texts (TalkBack / VoiceOver), never shown. The timer label is not a live region. -->
+    <string name="game_timer_description_minutes">Time left: %1$d min %2$d sec</string>
+    <string name="game_timer_description_seconds">Time left: %1$d sec</string>
+    <plurals name="game_answer_description">
+        <item quantity="one">Answer, %1$d letter, %2$d filled</item>
+        <item quantity="other">Answer, %1$d letters, %2$d filled</item>
+    </plurals>
+    <!-- "Answer, 7 letters, 3 filled: K I T" -->
+    <string name="game_answer_description_letters">%1$s: %2$s</string>
+    <!-- Announced politely, once per event: "K: correct", "K: wrong. Answer: KITCHEN" -->
+    <string name="game_announce_correct">%1$s: correct</string>
+    <string name="game_announce_wrong">%1$s: wrong</string>
+    <string name="game_announce_wrong_answer">%1$s: wrong. Answer: %2$s</string>
+    <string name="game_announce_passed">%1$s: passed</string>
+    <string name="game_announce_joker">Joker used: %1$s</string>
+    <string name="game_announce_lap">New lap: the passed letters</string>
+    <string name="game_announce_game_over">Game over</string>
+    <plurals name="game_announce_time_warning">
+        <item quantity="one">%1$d second left</item>
+        <item quantity="other">%1$d seconds left</item>
+    </plurals>
+    <string name="game_announce_time_up">Time is up</string>
+    <!-- Two events of the same moment, e.g. "K: passed. New lap: the passed letters" -->
+    <string name="game_announce_join">%1$s. %2$s</string>
+
     <!-- Load errors (design debt: EmptyState with actions) -->
     <string name="game_error_unreadable">The words could not be loaded. Try again; if it keeps happening, restart the app.</string>
     <string name="game_error_no_cards">There are no words for this choice yet. Pick another level or category.</string>
