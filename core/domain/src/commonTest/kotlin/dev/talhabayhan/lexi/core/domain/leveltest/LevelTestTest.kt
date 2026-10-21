@@ -174,6 +174,21 @@ class LevelTestTest {
     }
 
     @Test
+    fun `next card prefers starts cards and asks contains cards only when no starts card is left`() {
+        val starts = listOf(card("APPLE", level = Level.A2), card("MILK", level = Level.A2))
+        val contains = listOf(
+            card("CAT", letter = 'A', level = Level.A2),
+            card("BOX", letter = 'X', level = Level.A2),
+        )
+
+        val picks = (1L..40L).map { LevelTest.nextCard(LevelTest.start(it), starts + contains) }.toSet()
+        assertEquals(starts.toSet(), picks)
+
+        val onlyContains = (1L..40L).map { LevelTest.nextCard(LevelTest.start(it), contains) }.toSet()
+        assertEquals(contains.toSet(), onlyContains)
+    }
+
+    @Test
     fun `next card is null when the level has no unasked card`() {
         assertNull(LevelTest.nextCard(LevelTest.start(1L), listOf(card("APPLE", level = Level.B2))))
     }

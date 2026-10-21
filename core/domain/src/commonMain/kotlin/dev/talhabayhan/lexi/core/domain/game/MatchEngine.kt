@@ -14,14 +14,15 @@ public class MatchEngine(public val config: GameConfig = GameConfig()) {
 
     /**
      * [wheels] are the players' wheels, generated with `SeededRandom(playerSeed(seed, i)).derive("wheel")`. Jokers
-     * are not allowed in the duel, so players start with an empty inventory. [prefillsFirstLetter]: see
-     * [GameState.prefillsFirstLetter] (false only to replay matches recorded before that rule).
+     * are not allowed in the duel, so players start with an empty inventory. [prefillsFirstLetter] and
+     * [prefillsContainsLetter]: see [GameState] (false only to replay matches recorded before those rules).
      */
     public fun newMatch(
         seed: Long,
         level: Level,
         wheels: List<Wheel>,
         prefillsFirstLetter: Boolean = true,
+        prefillsContainsLetter: Boolean = true,
     ): MatchState {
         require(wheels.size == PLAYERS) { "a duel has $PLAYERS players, got ${wheels.size} wheels" }
         val players = wheels.mapIndexed { index, wheel ->
@@ -31,6 +32,7 @@ public class MatchEngine(public val config: GameConfig = GameConfig()) {
                 level = level,
                 wheel = wheel,
                 prefillsFirstLetter = prefillsFirstLetter,
+                prefillsContainsLetter = prefillsContainsLetter,
             )
         }
         return MatchState(seed = seed, players = players)

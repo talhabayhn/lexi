@@ -348,13 +348,99 @@ class GameEngineTurnFlowTest {
     }
 
     @Test
-    fun `contains slot opens with empty cells`() {
-        val card = card("CAT", letter = 'A', rule = LetterRule.CONTAINS)
-        val game = play(wheel = Wheel(listOf(Slot('A', card, SlotState.TODO))))
+    fun `contains slot opens with its letter locked at the first occurrence and its key used`() {
+        val game = play(wheel = containsWheel("BANANA", 'N'))
+
+        val given = checkNotNull(game.input.cells[2])
+        assertEquals(PlacedLetter('N', keyIndex = given.keyIndex, revealed = false, given = true), given)
+        assertEquals(given.keyIndex, game.input.keys.indexOfFirst { it.letter == 'N' })
+        assertEquals(KeyState.USED, game.input.keys[given.keyIndex].state)
+        assertEquals(1, game.input.keys.count { it.state == KeyState.USED })
+        assertTrue(game.input.cells.filterIndexed { index, _ -> index != 2 }.all { it == null })
+        assertTrue(game.input.placementOrder.isEmpty())
+    }
+
+    @Test
+    fun `contains slot typing fills around the given letter and is judged on the full word`() {
+        val right = play(wheel = containsWheel("CAT", 'A')).type("CT")
+        assertEquals(SlotState.CORRECT, right.state.wheel.slots[0].state)
+
+        val wrong = play(wheel = containsWheel("CAT", 'A')).type("TC")
+        assertEquals(SlotState.WRONG, wrong.state.wheel.slots[0].state)
+    }
+
+    @Test
+    fun `contains slot letter in a multi-word answer is given at its letter cell`() {
+        val game = play(wheel = containsWheel("ICE CREAM", 'R'))
+
+        assertEquals('R', game.input.cells[4]?.letter)
+        assertEquals(true, game.input.cells[4]?.given)
+    }
+
+    @Test
+    fun `backspace and pass keep the given contains letter`() {
+        val game = play(wheel = containsWheel("CAT", 'A'), start = false)
+        game.send(GameEvent.Start(1_000L)).type("C").send(GameEvent.Backspace, GameEvent.Backspace)
+
+        assertEquals(true, game.input.cells[1]?.given)
+        assertTrue(game.input.cells[0] == null)
+
+        val passed = play(wheel = Wheel(containsWheel("CAT", 'A').slots + Slot('B', card("BREAD"), SlotState.TODO)))
+            .type("C").send(GameEvent.Pass, GameEvent.Pass)
+        assertEquals('A', passed.currentLetter)
+        assertEquals(true, passed.input.cells[1]?.given)
+        assertTrue(passed.input.cells[0] == null && passed.input.cells[2] == null)
+    }
+
+    @Test
+    fun `games without the contains letter rule open contains slots with empty cells`() {
+        val engine = GameEngine()
+        val initial = engine.newGame(
+            1L,
+            GameMode.CLASSIC,
+            Level.A1,
+            containsWheel("CAT", 'A'),
+            prefillsContainsLetter = false,
+        )
+        val game = Play(initial, engine).send(GameEvent.Start(0L))
 
         assertTrue(game.input.cells.all { it == null })
         assertTrue(game.input.keys.none { it.state == KeyState.USED })
+        game.type("CAT")
+        assertEquals(SlotState.CORRECT, game.state.wheel.slots[0].state)
     }
+
+    @Test
+    fun `property - contains slots are solvable with the given letter at its first occurrence`() {
+        val answers = listOf("CAT", "BANANA", "ICE CREAM", "TAXI", "BOX", "PIZZA", "QUEEN", "MAJOR", "ALLOW", "KIWI")
+        for (answer in answers) {
+            val letters = answer.replace(" ", "")
+            for (letter in letters.drop(1).toSet() - letters.first()) {
+                for (seed in 1L..20L) {
+                    val game = play(wheel = containsWheel(answer, letter), seed = seed)
+                    val first = letters.indexOf(letter)
+                    assertEquals(
+                        PlacedLetter(letter, game.input.cells[first]!!.keyIndex, revealed = false, given = true),
+                        game.input.cells[first],
+                        "$answer/$letter/$seed",
+                    )
+                    assertEquals(1, game.input.cells.count { it != null }, "$answer/$letter/$seed")
+                    val open = letters.filterIndexed { index, _ -> index != first }
+                    val available = game.input.keys.filter { it.state == KeyState.AVAILABLE }.map { it.letter }
+                    assertEquals(
+                        open.groupingBy { it }.eachCount(),
+                        available.filter { it in open }.groupingBy { it }.eachCount(),
+                        "$answer/$letter/$seed",
+                    )
+                    game.answer()
+                    assertEquals(SlotState.CORRECT, game.state.wheel.slots[0].state, "$answer/$letter/$seed")
+                }
+            }
+        }
+    }
+
+    private fun containsWheel(answer: String, letter: Char): Wheel =
+        Wheel(listOf(Slot(letter, card(answer, letter = letter, rule = LetterRule.CONTAINS), SlotState.TODO)))
 
     @Test
     fun `games without the given letter rule open with empty cells`() {

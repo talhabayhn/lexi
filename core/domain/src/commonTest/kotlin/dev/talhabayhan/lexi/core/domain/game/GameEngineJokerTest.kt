@@ -1,5 +1,7 @@
 package dev.talhabayhan.lexi.core.domain.game
 
+import dev.talhabayhan.lexi.core.domain.card
+import dev.talhabayhan.lexi.core.domain.model.LetterRule
 import dev.talhabayhan.lexi.core.domain.model.Level
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -164,6 +166,20 @@ class GameEngineJokerTest {
         assertEquals(true, game.input.cells[1]?.revealed)
         assertEquals(2, game.input.keys.count { it.state == KeyState.USED })
         game.type("PLE")
+        assertEquals(SlotState.CORRECT, game.state.wheel.slots[0].state)
+    }
+
+    @Test
+    fun `reveal letter on a contains slot skips the given letter`() {
+        val cat = card("CAT", letter = 'A', rule = LetterRule.CONTAINS)
+        val game = play(wheel = Wheel(listOf(Slot('A', cat, SlotState.TODO)))).joker(JokerType.REVEAL_LETTER)
+
+        assertEquals("CA_", game.typed())
+        assertEquals(true, game.input.cells[0]?.revealed)
+        assertEquals(true, game.input.cells[1]?.given)
+        game.joker(JokerType.REVEAL_LETTER)
+        assertEquals("CA_", game.typed())
+        game.type("T")
         assertEquals(SlotState.CORRECT, game.state.wheel.slots[0].state)
     }
 

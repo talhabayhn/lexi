@@ -5,6 +5,7 @@ import dev.talhabayhan.lexi.core.domain.fullAlphabetPool
 import dev.talhabayhan.lexi.core.domain.model.Card
 import dev.talhabayhan.lexi.core.domain.model.CardId
 import dev.talhabayhan.lexi.core.domain.model.CategoryId
+import dev.talhabayhan.lexi.core.domain.model.LetterRule
 import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.core.domain.random.SeededRandom
 import kotlin.test.Test
@@ -205,5 +206,111 @@ class WheelGeneratorTest {
     @Test
     fun `review wheel without due cards is empty`() {
         assertTrue(WheelGenerator.review(emptyList(), wheelRandom(1L)).slots.isEmpty())
+    }
+
+    /** Per letter: one STARTS card `<L>START` plus two CONTAINS cards `Q<L>`/`QQ<L>` (letter Q: `A<L>`/`AA<L>`). */
+    private val mixedRulePool: List<Card> = ('A'..'Z').flatMap { letter ->
+        val prefix = if (letter == 'Q') 'A' else 'Q'
+        listOf(
+            card("${letter}START"),
+            card("$prefix$letter", letter = letter),
+            card("$prefix$prefix$letter", letter = letter),
+        )
+    }
+
+    @Test
+    fun `a letter with a starts card never gets a contains card`() {
+        for (seed in 1L..50L) {
+            val wheel = generate(pool = mixedRulePool, seed = seed)
+            assertTrue(wheel.slots.all { it.rule == LetterRule.STARTS }, "seed $seed")
+        }
+    }
+
+    @Test
+    fun `a letter without a starts card gets a contains card`() {
+        val pool = mixedRulePool.filterNot { it.letter == 'J' && it.rule == LetterRule.STARTS }
+
+        val picks = (1L..30L).map { generate(pool = pool, seed = it).slots[9].card?.answer }.toSet()
+
+        assertEquals(setOf("QJ", "QQJ"), picks)
+    }
+
+    @Test
+    fun `contains cards are used when every starts card of the letter was seen recently`() {
+        val seen = mixedRulePool.filter { it.letter == 'J' && it.rule == LetterRule.STARTS }.toSet()
+
+        val wheel = generate(pool = mixedRulePool, recentlySeen = seen)
+
+        assertEquals(LetterRule.CONTAINS, wheel.slots[9].rule)
+        assertTrue(wheel.slots.filter { it.letter != 'J' }.all { it.rule == LetterRule.STARTS })
+    }
+
+    @Test
+    fun `minimum starts candidates comes from the config`() {
+        val config = GameConfig(minStartsCandidates = 2)
+        fun ruleOfA(seed: Long) = WheelGenerator.generate(
+            mixedRulePool,
+            Level.A1,
+            CategoryId.MIXED,
+            GameMode.CLASSIC,
+            wheelRandom(seed),
+            config = config,
+        ).slots.first().rule
+
+        // One STARTS card is below the minimum of 2, so all three cards of the letter are candidates.
+        assertEquals(setOf(LetterRule.STARTS, LetterRule.CONTAINS), (1L..40L).map(::ruleOfA).toSet())
+    }
+
+    @Test
+    fun `property - contains only when the eligible starts candidates are fewer than the minimum`() {
+        for (seed in 1L..200L) {
+            val random = SeededRandom(seed).derive("pool")
+            val pool = mixedRulePool.filter { random.nextInt(3) != 0 }
+            val seen = pool.filter { random.nextInt(4) == 0 }.map { it.id }.toSet()
+            val wheel = WheelGenerator.generate(
+                pool,
+                Level.A1,
+                CategoryId.MIXED,
+                GameMode.CLASSIC,
+                wheelRandom(seed),
+                seen,
+            )
+            for (slot in wheel.slots) {
+                val candidates = pool.filter { it.letter == slot.letter }
+                val eligible = candidates.filter { it.id !in seen }.ifEmpty { candidates }
+                val eligibleStarts = eligible.count { it.rule == LetterRule.STARTS }
+                when {
+                    candidates.isEmpty() -> assertEquals(SlotState.SKIPPED, slot.state, "seed $seed ${slot.letter}")
+
+                    eligibleStarts >= GameConfig().minStartsCandidates ->
+                        assertEquals(LetterRule.STARTS, slot.rule, "seed $seed ${slot.letter}")
+
+                    else -> assertTrue(slot.card in eligible, "seed $seed ${slot.letter}")
+                }
+            }
+        }
+    }
+
+    @Test
+    fun `daily prefers starts cards`() {
+        val pool = Level.entries.flatMap { level ->
+            mixedRulePool.map { card(it.answer, letter = it.letter, level = level) }
+        }
+        for (seed in 1L..30L) {
+            val wheel = WheelGenerator.daily(pool, wheelRandom(seed))
+            assertTrue(wheel.slots.all { it.rule == LetterRule.STARTS }, "seed $seed")
+        }
+        val noStartsJ = pool.filterNot { it.letter == 'J' && it.rule == LetterRule.STARTS }
+        assertEquals(LetterRule.CONTAINS, WheelGenerator.daily(noStartsJ, wheelRandom(1L)).slots[9].rule)
+    }
+
+    @Test
+    fun `review prefers due starts cards`() {
+        val due = listOf(card("BOX", letter = 'X'), card("XRAY"), card("TAXI", letter = 'X'))
+
+        val picks = (1L..30L).map { WheelGenerator.review(due, wheelRandom(it)).slots.single().card?.answer }.toSet()
+
+        assertEquals(setOf("XRAY"), picks)
+        assertEquals("BOX", WheelGenerator.review(due.take(1), wheelRandom(1L)).slots.single().card?.answer)
     }
 }

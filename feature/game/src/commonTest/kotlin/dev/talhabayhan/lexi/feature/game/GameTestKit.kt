@@ -8,7 +8,7 @@ import dev.talhabayhan.lexi.core.domain.game.KeyState
 
 /**
  * Key-tap events that type [word] on the current slot of [state] (first available key per letter). A whole word on a
- * slot that opens with its given first letter (STARTS, GAME_RULES.md §3) skips that letter.
+ * slot that opens with its given letter (GAME_RULES.md §3) skips that letter's cell.
  */
 internal fun keyTaps(state: GameState, word: String): List<GameEvent> {
     val input = checkNotNull(state.currentInput)
@@ -16,9 +16,8 @@ internal fun keyTaps(state: GameState, word: String): List<GameEvent> {
     val used = mutableSetOf<Int>()
     return withoutGivenLetter(
         word,
-        input.cells.firstOrNull()?.takeIf {
-            it.given
-        }?.letter,
+        input.cells.indexOfFirst { it?.given == true },
+        input.cells.firstOrNull { it?.given == true }?.letter,
         input.placementOrder.isEmpty(),
     )
         .map { letter ->
@@ -31,15 +30,19 @@ internal fun keyTaps(state: GameState, word: String): List<GameEvent> {
         }
 }
 
-private fun withoutGivenLetter(word: String, given: Char?, nothingTyped: Boolean): String =
-    if (given != null && nothingTyped && word.firstOrNull() == given) word.drop(1) else word
+/** [word] without the [given] letter at its cell [givenCell] (-1 = none), when [word] has it there. */
+private fun withoutGivenLetter(word: String, givenCell: Int, given: Char?, nothingTyped: Boolean): String {
+    val letters = word.replace(" ", "")
+    val skip = given != null && nothingTyped && letters.getOrNull(givenCell) == given
+    return if (skip) letters.removeRange(givenCell, givenCell + 1) else letters
+}
 
 /** Types [word] through the ViewModel, using the key indices of the UI state. */
 internal fun GameViewModel.type(word: String) {
     val cells = checkNotNull(state.value.turn).words.flatten()
-    val given = cells.firstOrNull()?.takeIf { it.state == AnswerSlotState.Given }?.letter
+    val givenCell = cells.indexOfFirst { it.state == AnswerSlotState.Given }
     val nothingTyped = cells.none { it.state == AnswerSlotState.Filled || it.state == AnswerSlotState.JokerFilled }
-    withoutGivenLetter(word, given, nothingTyped).forEach { letter ->
+    withoutGivenLetter(word, givenCell, cells.getOrNull(givenCell)?.letter, nothingTyped).forEach { letter ->
         val keys = checkNotNull(state.value.turn).keys
         val index = keys.indices.first { keys[it].letter == letter && keys[it].state == LetterKeyState.Normal }
         onIntent(GameIntent.KeyTapped(index))

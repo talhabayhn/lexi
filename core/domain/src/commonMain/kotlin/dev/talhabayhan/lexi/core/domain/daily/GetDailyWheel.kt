@@ -29,6 +29,7 @@ public class GetDailyWheel(
         val seed = DailySeed.seed(epochDay, version)
         val pool = cards.levelCards()
         val random = SeededRandom(seed).derive(WheelGenerator.SEED_PURPOSE)
+        // Shipped GameConfig defaults on purpose (no Remote Config override): every player gets the same wheel.
         val wheel = WheelGenerator.daily(pool = pool, random = random)
         if (wheel.playableSlots.isEmpty()) return DailyPlayState.NoCards
         return DailyPlayState.Ready(epochDay = epochDay, seed = seed, wheel = wheel)

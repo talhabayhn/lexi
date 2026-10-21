@@ -3,6 +3,7 @@ package dev.talhabayhan.lexi.core.domain.game
 import dev.talhabayhan.lexi.core.domain.model.Card
 import dev.talhabayhan.lexi.core.domain.model.CardId
 import dev.talhabayhan.lexi.core.domain.model.CategoryId
+import dev.talhabayhan.lexi.core.domain.model.LetterRule
 import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.core.domain.random.SeededRandom
 
@@ -18,8 +19,9 @@ public object WheelGenerator {
     /**
      * Regular 26-slot wheel: for each letter A–Z one card of [level] (and [category], unless
      * [CategoryId.MIXED]) is picked with [random]. Cards in [recentlySeen] are avoided when the letter has other
-     * cards and [mode] uses card history; letters without any card become [SlotState.SKIPPED] slots.
-     * Exactly one `nextInt` is drawn per non-skipped letter, in A–Z order.
+     * cards and [mode] uses card history; of the remaining cards, STARTS cards are preferred ([preferStarts]).
+     * Letters without any card become [SlotState.SKIPPED] slots. Exactly one `nextInt` is drawn per non-skipped
+     * letter, in A–Z order.
      */
     public fun generate(
         pool: List<Card>,
@@ -28,6 +30,7 @@ public object WheelGenerator {
         mode: GameMode,
         random: SeededRandom,
         recentlySeen: Set<CardId> = emptySet(),
+        config: GameConfig = GameConfig(),
     ): Wheel {
         require(mode != GameMode.REVIEW) { "use review() for the review wheel" }
         val avoid = if (mode.usesCardHistory) recentlySeen else emptySet()
@@ -40,7 +43,7 @@ public object WheelGenerator {
                 Slot(letter, card = null, state = SlotState.SKIPPED)
             } else {
                 val unseen = candidates.filter { it.id !in avoid }
-                Slot(letter, random.pick(unseen.ifEmpty { candidates }), SlotState.TODO)
+                Slot(letter, random.pick(unseen.ifEmpty { candidates }.preferStarts(config)), SlotState.TODO)
             }
         }
         return Wheel(slots)
@@ -62,13 +65,15 @@ public object WheelGenerator {
     /**
      * Shared mixed-level 26-slot Daily wheel:
      * - Deterministically assigns a level to each letter A–Z by shuffling [distribution] with [random].
-     * - For each letter, picks one card from that level's candidates in [pool] using [random].
+     * - For each letter, picks one card from that level's candidates in [pool] using [random], preferring STARTS
+     *   cards ([preferStarts]).
      * - Ignores history so every player receives the identical wheel for the same date + contentVersion.
      */
     public fun daily(
         pool: List<Card>,
         random: SeededRandom,
         distribution: Map<Level, Int> = DAILY_LEVEL_DISTRIBUTION,
+        config: GameConfig = GameConfig(),
     ): Wheel {
         require(pool.distinctBy { it.id }.size == pool.size) { "card ids in a pool must be unique" }
         require(distribution.values.sum() == 26) {
@@ -86,7 +91,7 @@ public object WheelGenerator {
             if (candidates.isEmpty()) {
                 Slot(letter, card = null, state = SlotState.SKIPPED)
             } else {
-                Slot(letter, random.pick(candidates), SlotState.TODO)
+                Slot(letter, random.pick(candidates.preferStarts(config)), SlotState.TODO)
             }
         }
         return Wheel(slots)
@@ -94,12 +99,12 @@ public object WheelGenerator {
 
     /**
      * Review wheel from SRS-due cards (any level/category): only letters that have due cards, A–Z order, one card
-     * per letter picked with [random]. Empty when nothing is due.
+     * per letter picked with [random], preferring STARTS cards ([preferStarts]). Empty when nothing is due.
      */
-    public fun review(dueCards: List<Card>, random: SeededRandom): Wheel {
+    public fun review(dueCards: List<Card>, random: SeededRandom, config: GameConfig = GameConfig()): Wheel {
         val byLetter = dueCards.candidatesByLetter()
         val slots = byLetter.keys.sorted().map { letter ->
-            Slot(letter, random.pick(byLetter.getValue(letter)), SlotState.TODO)
+            Slot(letter, random.pick(byLetter.getValue(letter).preferStarts(config)), SlotState.TODO)
         }
         return Wheel(slots)
     }
@@ -120,4 +125,14 @@ public object WheelGenerator {
         require(distinctBy { it.id }.size == size) { "card ids in a pool must be unique" }
         return sortedBy { it.id.value }.groupBy { it.letter }
     }
+}
+
+/**
+ * The STARTS cards of eligible candidates when there are at least [GameConfig.minStartsCandidates] of them, else all
+ * candidates (CONTAINS only when needed, `GAME_RULES.md` §1). Keeps the order, so a pick stays one `nextInt` on the
+ * same sorted list.
+ */
+internal fun List<Card>.preferStarts(config: GameConfig): List<Card> {
+    val starts = filter { it.rule == LetterRule.STARTS }
+    return if (starts.size >= config.minStartsCandidates) starts else this
 }

@@ -2102,3 +2102,910 @@ internal const val GOLDEN_GIVEN_LETTER: String = """{
     },
     "prefillsFirstLetter": true
 }"""
+
+/** Final state of `GoldenTest.CONTAINS_LETTER_EVENTS` (seed 2025, STARTS preference, given contains letter). */
+internal const val GOLDEN_CONTAINS_LETTER: String = """{
+    "seed": 2025,
+    "mode": "CLASSIC",
+    "level": "A1",
+    "wheel": {
+        "slots": [
+            {
+                "letter": "A",
+                "card": {
+                    "id": "a1-apple",
+                    "level": "A1",
+                    "category": "food-drink",
+                    "answer": "APPLE",
+                    "letter": "A",
+                    "rule": "STARTS",
+                    "partOfSpeech": "NOUN",
+                    "clue": "ipucu",
+                    "example": "An example with APPLE.",
+                    "exampleTranslation": "Bir örnek.",
+                    "difficulty": 1
+                },
+                "state": "CORRECT"
+            },
+            {
+                "letter": "B",
+                "card": {
+                    "id": "a1-bread",
+                    "level": "A1",
+                    "category": "food-drink",
+                    "answer": "BREAD",
+                    "letter": "B",
+                    "rule": "STARTS",
+                    "partOfSpeech": "NOUN",
+                    "clue": "ipucu",
+                    "example": "An example with BREAD.",
+                    "exampleTranslation": "Bir örnek.",
+                    "difficulty": 1
+                },
+                "state": "CORRECT"
+            },
+            {
+                "letter": "C",
+                "card": {
+                    "id": "a1-chair",
+                    "level": "A1",
+                    "category": "food-drink",
+                    "answer": "CHAIR",
+                    "letter": "C",
+                    "rule": "STARTS",
+                    "partOfSpeech": "NOUN",
+                    "clue": "ipucu",
+                    "example": "An example with CHAIR.",
+                    "exampleTranslation": "Bir örnek.",
+                    "difficulty": 1
+                },
+                "state": "WRONG"
+            },
+            {
+                "letter": "D",
+                "card": {
+                    "id": "a1-dog",
+                    "level": "A1",
+                    "category": "food-drink",
+                    "answer": "DOG",
+                    "letter": "D",
+                    "rule": "STARTS",
+                    "partOfSpeech": "NOUN",
+                    "clue": "ipucu",
+                    "example": "An example with DOG.",
+                    "exampleTranslation": "Bir örnek.",
+                    "difficulty": 1
+                },
+                "state": "CORRECT"
+            },
+            {
+                "letter": "E",
+                "card": {
+                    "id": "a1-egg",
+                    "level": "A1",
+                    "category": "food-drink",
+                    "answer": "EGG",
+                    "letter": "E",
+                    "rule": "STARTS",
+                    "partOfSpeech": "NOUN",
+                    "clue": "ipucu",
+                    "example": "An example with EGG.",
+                    "exampleTranslation": "Bir örnek.",
+                    "difficulty": 1
+                },
+                "state": "CORRECT"
+            },
+            {
+                "letter": "F",
+                "card": null,
+                "state": "SKIPPED"
+            },
+            {
+                "letter": "G",
+                "card": null,
+                "state": "SKIPPED"
+            },
+            {
+                "letter": "H",
+                "card": null,
+                "state": "SKIPPED"
+            },
+            {
+                "letter": "I",
+                "card": null,
+                "state": "SKIPPED"
+            },
+            {
+                "letter": "J",
+                "card": null,
+                "state": "SKIPPED"
+            },
+            {
+                "letter": "K",
+                "card": null,
+                "state": "SKIPPED"
+            },
+            {
+                "letter": "L",
+                "card": null,
+                "state": "SKIPPED"
+            },
+            {
+                "letter": "M",
+                "card": {
+                    "id": "a1-lemon",
+                    "level": "A1",
+                    "category": "food-drink",
+                    "answer": "LEMON",
+                    "letter": "M",
+                    "rule": "CONTAINS",
+                    "partOfSpeech": "NOUN",
+                    "clue": "ipucu",
+                    "example": "An example with LEMON.",
+                    "exampleTranslation": "Bir örnek.",
+                    "difficulty": 1
+                },
+                "state": "CORRECT"
+            },
+            {
+                "letter": "N",
+                "card": null,
+                "state": "SKIPPED"
+            },
+            {
+                "letter": "O",
+                "card": null,
+                "state": "SKIPPED"
+            },
+            {
+                "letter": "P",
+                "card": null,
+                "state": "SKIPPED"
+            },
+            {
+                "letter": "Q",
+                "card": null,
+                "state": "SKIPPED"
+            },
+            {
+                "letter": "R",
+                "card": null,
+                "state": "SKIPPED"
+            },
+            {
+                "letter": "S",
+                "card": null,
+                "state": "SKIPPED"
+            },
+            {
+                "letter": "T",
+                "card": null,
+                "state": "SKIPPED"
+            },
+            {
+                "letter": "U",
+                "card": null,
+                "state": "SKIPPED"
+            },
+            {
+                "letter": "V",
+                "card": null,
+                "state": "SKIPPED"
+            },
+            {
+                "letter": "W",
+                "card": null,
+                "state": "SKIPPED"
+            },
+            {
+                "letter": "X",
+                "card": {
+                    "id": "a1-box",
+                    "level": "A1",
+                    "category": "food-drink",
+                    "answer": "BOX",
+                    "letter": "X",
+                    "rule": "CONTAINS",
+                    "partOfSpeech": "NOUN",
+                    "clue": "ipucu",
+                    "example": "An example with BOX.",
+                    "exampleTranslation": "Bir örnek.",
+                    "difficulty": 1
+                },
+                "state": "CORRECT"
+            },
+            {
+                "letter": "Y",
+                "card": null,
+                "state": "SKIPPED"
+            },
+            {
+                "letter": "Z",
+                "card": {
+                    "id": "a1-pizza",
+                    "level": "A1",
+                    "category": "food-drink",
+                    "answer": "PIZZA",
+                    "letter": "Z",
+                    "rule": "CONTAINS",
+                    "partOfSpeech": "NOUN",
+                    "clue": "ipucu",
+                    "example": "An example with PIZZA.",
+                    "exampleTranslation": "Bir örnek.",
+                    "difficulty": 1
+                },
+                "state": "WRONG"
+            }
+        ]
+    },
+    "jokers": {
+        "counts": {
+            "REVEAL_LETTER": 1,
+            "REMOVE_DISTRACTORS": 1,
+            "EXAMPLE": 3,
+            "LISTEN": 1
+        }
+    },
+    "status": "FINISHED",
+    "startedAtMs": 1000,
+    "lap": 2,
+    "inputs": {
+        "0": {
+            "keys": [
+                {
+                    "letter": "P",
+                    "isDistractor": false,
+                    "state": "USED"
+                },
+                {
+                    "letter": "S",
+                    "isDistractor": true
+                },
+                {
+                    "letter": "F",
+                    "isDistractor": true
+                },
+                {
+                    "letter": "P",
+                    "isDistractor": false,
+                    "state": "USED"
+                },
+                {
+                    "letter": "A",
+                    "isDistractor": false,
+                    "state": "USED"
+                },
+                {
+                    "letter": "E",
+                    "isDistractor": false,
+                    "state": "USED"
+                },
+                {
+                    "letter": "I",
+                    "isDistractor": true
+                },
+                {
+                    "letter": "H",
+                    "isDistractor": true
+                },
+                {
+                    "letter": "L",
+                    "isDistractor": false,
+                    "state": "USED"
+                },
+                {
+                    "letter": "N",
+                    "isDistractor": true
+                }
+            ],
+            "cells": [
+                {
+                    "letter": "A",
+                    "keyIndex": 4,
+                    "revealed": false,
+                    "given": true
+                },
+                {
+                    "letter": "P",
+                    "keyIndex": 0,
+                    "revealed": false
+                },
+                {
+                    "letter": "P",
+                    "keyIndex": 3,
+                    "revealed": false
+                },
+                {
+                    "letter": "L",
+                    "keyIndex": 8,
+                    "revealed": false
+                },
+                {
+                    "letter": "E",
+                    "keyIndex": 5,
+                    "revealed": false
+                }
+            ],
+            "placementOrder": [
+                1,
+                2,
+                3,
+                4
+            ]
+        },
+        "1": {
+            "keys": [
+                {
+                    "letter": "A",
+                    "isDistractor": false,
+                    "state": "USED"
+                },
+                {
+                    "letter": "P",
+                    "isDistractor": true
+                },
+                {
+                    "letter": "E",
+                    "isDistractor": false,
+                    "state": "USED"
+                },
+                {
+                    "letter": "L",
+                    "isDistractor": true
+                },
+                {
+                    "letter": "I",
+                    "isDistractor": true
+                },
+                {
+                    "letter": "N",
+                    "isDistractor": true
+                },
+                {
+                    "letter": "B",
+                    "isDistractor": false,
+                    "state": "USED"
+                },
+                {
+                    "letter": "W",
+                    "isDistractor": true
+                },
+                {
+                    "letter": "D",
+                    "isDistractor": false,
+                    "state": "USED"
+                },
+                {
+                    "letter": "R",
+                    "isDistractor": false,
+                    "state": "USED"
+                }
+            ],
+            "cells": [
+                {
+                    "letter": "B",
+                    "keyIndex": 6,
+                    "revealed": false,
+                    "given": true
+                },
+                {
+                    "letter": "R",
+                    "keyIndex": 9,
+                    "revealed": false
+                },
+                {
+                    "letter": "E",
+                    "keyIndex": 2,
+                    "revealed": false
+                },
+                {
+                    "letter": "A",
+                    "keyIndex": 0,
+                    "revealed": false
+                },
+                {
+                    "letter": "D",
+                    "keyIndex": 8,
+                    "revealed": false
+                }
+            ],
+            "placementOrder": [
+                1,
+                2,
+                3,
+                4
+            ],
+            "wasPassed": true
+        },
+        "2": {
+            "keys": [
+                {
+                    "letter": "E",
+                    "isDistractor": true
+                },
+                {
+                    "letter": "N",
+                    "isDistractor": true
+                },
+                {
+                    "letter": "I",
+                    "isDistractor": false,
+                    "state": "USED"
+                },
+                {
+                    "letter": "T",
+                    "isDistractor": true
+                },
+                {
+                    "letter": "A",
+                    "isDistractor": false,
+                    "state": "USED"
+                },
+                {
+                    "letter": "H",
+                    "isDistractor": false,
+                    "state": "USED"
+                },
+                {
+                    "letter": "R",
+                    "isDistractor": false,
+                    "state": "USED"
+                },
+                {
+                    "letter": "L",
+                    "isDistractor": true
+                },
+                {
+                    "letter": "C",
+                    "isDistractor": false,
+                    "state": "USED"
+                },
+                {
+                    "letter": "Y",
+                    "isDistractor": true
+                }
+            ],
+            "cells": [
+                {
+                    "letter": "C",
+                    "keyIndex": 8,
+                    "revealed": false,
+                    "given": true
+                },
+                {
+                    "letter": "H",
+                    "keyIndex": 5,
+                    "revealed": false
+                },
+                {
+                    "letter": "I",
+                    "keyIndex": 2,
+                    "revealed": false
+                },
+                {
+                    "letter": "A",
+                    "keyIndex": 4,
+                    "revealed": false
+                },
+                {
+                    "letter": "R",
+                    "keyIndex": 6,
+                    "revealed": false
+                }
+            ],
+            "placementOrder": [
+                1,
+                2,
+                3,
+                4
+            ]
+        },
+        "3": {
+            "keys": [
+                {
+                    "letter": "G",
+                    "isDistractor": false,
+                    "state": "USED"
+                },
+                {
+                    "letter": "O",
+                    "isDistractor": false,
+                    "state": "USED"
+                },
+                {
+                    "letter": "D",
+                    "isDistractor": false,
+                    "state": "USED"
+                },
+                {
+                    "letter": "N",
+                    "isDistractor": true
+                },
+                {
+                    "letter": "A",
+                    "isDistractor": true
+                },
+                {
+                    "letter": "F",
+                    "isDistractor": true
+                },
+                {
+                    "letter": "T",
+                    "isDistractor": true
+                },
+                {
+                    "letter": "L",
+                    "isDistractor": true
+                },
+                {
+                    "letter": "S",
+                    "isDistractor": true
+                },
+                {
+                    "letter": "W",
+                    "isDistractor": true
+                }
+            ],
+            "cells": [
+                {
+                    "letter": "D",
+                    "keyIndex": 2,
+                    "revealed": false,
+                    "given": true
+                },
+                {
+                    "letter": "O",
+                    "keyIndex": 1,
+                    "revealed": false
+                },
+                {
+                    "letter": "G",
+                    "keyIndex": 0,
+                    "revealed": false
+                }
+            ],
+            "placementOrder": [
+                1,
+                2
+            ]
+        },
+        "4": {
+            "keys": [
+                {
+                    "letter": "E",
+                    "isDistractor": false,
+                    "state": "USED"
+                },
+                {
+                    "letter": "G",
+                    "isDistractor": false,
+                    "state": "USED"
+                },
+                {
+                    "letter": "R",
+                    "isDistractor": true
+                },
+                {
+                    "letter": "O",
+                    "isDistractor": true
+                },
+                {
+                    "letter": "N",
+                    "isDistractor": true
+                },
+                {
+                    "letter": "C",
+                    "isDistractor": true
+                },
+                {
+                    "letter": "H",
+                    "isDistractor": true
+                },
+                {
+                    "letter": "I",
+                    "isDistractor": true
+                },
+                {
+                    "letter": "A",
+                    "isDistractor": true
+                },
+                {
+                    "letter": "G",
+                    "isDistractor": false,
+                    "state": "USED"
+                }
+            ],
+            "cells": [
+                {
+                    "letter": "E",
+                    "keyIndex": 0,
+                    "revealed": false,
+                    "given": true
+                },
+                {
+                    "letter": "G",
+                    "keyIndex": 1,
+                    "revealed": false
+                },
+                {
+                    "letter": "G",
+                    "keyIndex": 9,
+                    "revealed": false
+                }
+            ],
+            "placementOrder": [
+                1,
+                2
+            ]
+        },
+        "12": {
+            "keys": [
+                {
+                    "letter": "E",
+                    "isDistractor": false,
+                    "state": "USED"
+                },
+                {
+                    "letter": "R",
+                    "isDistractor": true
+                },
+                {
+                    "letter": "N",
+                    "isDistractor": false,
+                    "state": "USED"
+                },
+                {
+                    "letter": "D",
+                    "isDistractor": true
+                },
+                {
+                    "letter": "U",
+                    "isDistractor": true
+                },
+                {
+                    "letter": "M",
+                    "isDistractor": false,
+                    "state": "USED"
+                },
+                {
+                    "letter": "L",
+                    "isDistractor": false,
+                    "state": "USED"
+                },
+                {
+                    "letter": "O",
+                    "isDistractor": false,
+                    "state": "USED"
+                },
+                {
+                    "letter": "V",
+                    "isDistractor": true
+                },
+                {
+                    "letter": "A",
+                    "isDistractor": true
+                }
+            ],
+            "cells": [
+                {
+                    "letter": "L",
+                    "keyIndex": 6,
+                    "revealed": true
+                },
+                {
+                    "letter": "E",
+                    "keyIndex": 0,
+                    "revealed": false
+                },
+                {
+                    "letter": "M",
+                    "keyIndex": 5,
+                    "revealed": false,
+                    "given": true
+                },
+                {
+                    "letter": "O",
+                    "keyIndex": 7,
+                    "revealed": false
+                },
+                {
+                    "letter": "N",
+                    "keyIndex": 2,
+                    "revealed": false
+                }
+            ],
+            "placementOrder": [
+                1,
+                3,
+                4
+            ],
+            "jokersUsed": [
+                "REVEAL_LETTER"
+            ]
+        },
+        "23": {
+            "keys": [
+                {
+                    "letter": "B",
+                    "isDistractor": false,
+                    "state": "USED"
+                },
+                {
+                    "letter": "O",
+                    "isDistractor": false,
+                    "state": "USED"
+                },
+                {
+                    "letter": "S",
+                    "isDistractor": true
+                },
+                {
+                    "letter": "N",
+                    "isDistractor": true
+                },
+                {
+                    "letter": "T",
+                    "isDistractor": true
+                },
+                {
+                    "letter": "A",
+                    "isDistractor": true
+                },
+                {
+                    "letter": "E",
+                    "isDistractor": true
+                },
+                {
+                    "letter": "X",
+                    "isDistractor": false,
+                    "state": "USED"
+                },
+                {
+                    "letter": "Y",
+                    "isDistractor": true
+                },
+                {
+                    "letter": "D",
+                    "isDistractor": true
+                }
+            ],
+            "cells": [
+                {
+                    "letter": "B",
+                    "keyIndex": 0,
+                    "revealed": false
+                },
+                {
+                    "letter": "O",
+                    "keyIndex": 1,
+                    "revealed": false
+                },
+                {
+                    "letter": "X",
+                    "keyIndex": 7,
+                    "revealed": false,
+                    "given": true
+                }
+            ],
+            "placementOrder": [
+                0,
+                1
+            ],
+            "wasPassed": true
+        },
+        "25": {
+            "keys": [
+                {
+                    "letter": "P",
+                    "isDistractor": false,
+                    "state": "USED"
+                },
+                {
+                    "letter": "Z",
+                    "isDistractor": false,
+                    "state": "USED"
+                },
+                {
+                    "letter": "I",
+                    "isDistractor": false,
+                    "state": "USED"
+                },
+                {
+                    "letter": "E",
+                    "isDistractor": true
+                },
+                {
+                    "letter": "Z",
+                    "isDistractor": false,
+                    "state": "USED"
+                },
+                {
+                    "letter": "O",
+                    "isDistractor": true
+                },
+                {
+                    "letter": "G",
+                    "isDistractor": true
+                },
+                {
+                    "letter": "A",
+                    "isDistractor": false,
+                    "state": "USED"
+                },
+                {
+                    "letter": "D",
+                    "isDistractor": true
+                },
+                {
+                    "letter": "S",
+                    "isDistractor": true
+                }
+            ],
+            "cells": [
+                {
+                    "letter": "P",
+                    "keyIndex": 0,
+                    "revealed": false
+                },
+                {
+                    "letter": "I",
+                    "keyIndex": 2,
+                    "revealed": false
+                },
+                {
+                    "letter": "Z",
+                    "keyIndex": 1,
+                    "revealed": false,
+                    "given": true
+                },
+                {
+                    "letter": "A",
+                    "keyIndex": 7,
+                    "revealed": false
+                },
+                {
+                    "letter": "Z",
+                    "keyIndex": 4,
+                    "revealed": false
+                }
+            ],
+            "placementOrder": [
+                0,
+                1,
+                3,
+                4
+            ]
+        }
+    },
+    "remainingMs": 168000,
+    "score": 64,
+    "streak": 2,
+    "longestStreak": 3,
+    "summary": {
+        "reason": "ALL_ANSWERED",
+        "score": 232,
+        "timeBonus": 168,
+        "completed": true,
+        "correct": 6,
+        "wrong": 2,
+        "passed": 0,
+        "skipped": 18,
+        "unanswered": 0,
+        "longestStreak": 3,
+        "remainingMs": 168000,
+        "correctCards": [
+            "a1-apple",
+            "a1-bread",
+            "a1-dog",
+            "a1-egg",
+            "a1-lemon",
+            "a1-box"
+        ],
+        "missedCards": [
+            "a1-chair",
+            "a1-pizza"
+        ]
+    },
+    "prefillsFirstLetter": true,
+    "prefillsContainsLetter": true
+}"""

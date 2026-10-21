@@ -18,6 +18,7 @@ public class GameEngine(public val config: GameConfig = GameConfig()) {
         wheel: Wheel,
         jokers: JokerInventory = JokerInventory(),
         prefillsFirstLetter: Boolean = true,
+        prefillsContainsLetter: Boolean = true,
     ): GameState = GameState(
         seed = seed,
         mode = mode,
@@ -25,6 +26,7 @@ public class GameEngine(public val config: GameConfig = GameConfig()) {
         wheel = wheel,
         jokers = jokers,
         prefillsFirstLetter = prefillsFirstLetter,
+        prefillsContainsLetter = prefillsContainsLetter,
     )
 
     /**
@@ -118,17 +120,23 @@ public class GameEngine(public val config: GameConfig = GameConfig()) {
                 keys = KeyboardGenerator.generate(card.answer, random),
                 cells = List(card.answerLetters) { null },
             )
-            val prefill = prefillsFirstLetter && card.rule == LetterRule.STARTS && card.answerLetters > 1
-            return if (prefill) input.withGivenFirstLetter(card) else input
+            val prefill = when (card.rule) {
+                LetterRule.STARTS -> prefillsFirstLetter && card.answerLetters > 1
+                LetterRule.CONTAINS -> prefillsContainsLetter
+            }
+            return if (prefill) input.withGivenLetter(card) else input
         }
 
-        /** Locks the answer's first letter in cell 0, using the first key with that letter (the key set is unchanged). */
-        private fun SlotInput.withGivenFirstLetter(card: Card): SlotInput {
-            val letter = card.answer.first()
-            val keyIndex = keys.indices.first { keys[it].letter == letter }
+        /**
+         * Locks the slot letter in the cell of its first occurrence in the answer (cell 0 for STARTS), using the first
+         * key with that letter (the key set is unchanged).
+         */
+        private fun SlotInput.withGivenLetter(card: Card): SlotInput {
+            val cell = card.answer.replace(" ", "").indexOf(card.letter)
+            val keyIndex = keys.indices.first { keys[it].letter == card.letter }
             return copy(
                 keys = keys.replaced(keyIndex, keys[keyIndex].copy(state = KeyState.USED)),
-                cells = cells.replaced(0, PlacedLetter(letter, keyIndex, revealed = false, given = true)),
+                cells = cells.replaced(cell, PlacedLetter(card.letter, keyIndex, revealed = false, given = true)),
             )
         }
 
@@ -355,8 +363,8 @@ public class GameEngine(public val config: GameConfig = GameConfig()) {
         }
 
         /**
-         * Puts the correct letter into the first cell that is empty or wrong (never the given first letter, which is
-         * already correct); typed letters from that cell on are returned to their keys first. The revealed letter is
+         * Puts the correct letter into the first cell that is empty or wrong (never the given letter, which is already
+         * correct); typed letters from that cell on are returned to their keys first. The revealed letter is
          * locked.
          */
         private fun GameState.revealLetter(card: Card): GameState {
@@ -415,8 +423,8 @@ internal fun percentOf(value: Int, percent: Int): Int = (value * percent + PERCE
 
 /**
  * Typed letters go back to their keys (owner decision: a passed slot comes back empty). Joker effects are paid and
- * survive: revealed letters stay locked in their cells and disabled distractor keys stay disabled; the given first
- * letter stays too.
+ * survive: revealed letters stay locked in their cells and disabled distractor keys stay disabled; the given letter
+ * stays too.
  */
 private fun SlotInput.clearedTyping(): SlotInput {
     val typed = placementOrder.mapTo(mutableSetOf()) { checkNotNull(cells[it]).keyIndex }

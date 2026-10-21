@@ -59,7 +59,7 @@ public class LevelTestRunner(private val engine: GameEngine = GameEngine()) {
     public fun start(seed: Long, pool: List<Card>, timestampMs: Long): Transition<LevelTestRun> {
         val test = LevelTest.start(seed)
         val empty = LevelTestRun(test = test, game = null, asked = emptyList(), remainingMs = limitMs, result = null)
-        val card = LevelTest.nextCard(test, pool) ?: return Transition(empty, emptyList())
+        val card = LevelTest.nextCard(test, pool, engine.config) ?: return Transition(empty, emptyList())
         val effects = mutableListOf<EngineEffect>()
         val run = empty.startCard(card, timestampMs, effects)
         return Transition(run, effects)
@@ -119,7 +119,11 @@ public class LevelTestRunner(private val engine: GameEngine = GameEngine()) {
             test = LevelTest.record(test, card, correct = state == SlotState.CORRECT),
             asked = asked + Slot(card.letter, card, state),
         )
-        val next = if (LevelTest.isFinished(recorded.test, pool)) null else LevelTest.nextCard(recorded.test, pool)
+        val next = if (LevelTest.isFinished(recorded.test, pool)) {
+            null
+        } else {
+            LevelTest.nextCard(recorded.test, pool, engine.config)
+        }
         if (next == null) return recorded.finish()
         val started = recorded.startCard(next, game.startedAtMs ?: 0L, effects)
         return if (leftoverMs > 0L) started.tick(leftoverMs, pool, effects) else started

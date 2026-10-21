@@ -37,6 +37,9 @@ class GameLayoutScreenshotTest {
     fun w390h844FifteenKeys() = capture("GameLayout_w390h844_15keys", GameLayoutFixtures.fifteenKeys)
 
     @Test
+    fun w390h844ContainsGiven() = capture("GameLayout_w390h844_containsGiven", GameLayoutFixtures.containsGiven)
+
+    @Test
     @Config(qualifiers = "tr-w412dp-h915dp-xhdpi")
     fun w412h915() = capture("GameLayout_w412h915", GameLayoutFixtures.threeLineClue)
 

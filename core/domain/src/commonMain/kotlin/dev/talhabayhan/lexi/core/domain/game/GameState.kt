@@ -20,15 +20,18 @@ public enum class GameOverReason {
 }
 
 /**
- * A letter in an answer cell. Revealed letters (Reveal letter joker) and the [given] first letter of a STARTS slot
- * are locked: Backspace skips them and they survive a pass.
+ * A letter in an answer cell. Revealed letters (Reveal letter joker) and the [given] slot letter are locked: Backspace
+ * skips them and they survive a pass.
  */
 @Serializable
 public data class PlacedLetter(
     val letter: Char,
     val keyIndex: Int,
     val revealed: Boolean,
-    /** Pre-filled slot letter of a STARTS slot (`GAME_RULES.md` §3); its key is USED from the start. */
+    /**
+     * Pre-filled slot letter (`GAME_RULES.md` §3): cell 0 of a STARTS slot, the letter's first occurrence in a
+     * CONTAINS slot; its key is USED from the start.
+     */
     val given: Boolean = false,
 ) {
     public val isLocked: Boolean get() = revealed || given
@@ -105,6 +108,11 @@ public data class GameState(
      * false = the rule before that change, kept so games saved or recorded without the field replay identically.
      */
     val prefillsFirstLetter: Boolean = false,
+    /**
+     * CONTAINS slots open with their letter locked at its first occurrence in the answer (`GAME_RULES.md` §3).
+     * [GameEngine.newGame] sets it; false = the rule before that change, so older saved games replay identically.
+     */
+    val prefillsContainsLetter: Boolean = false,
 ) {
     public val currentSlot: Slot? get() = currentIndex?.let(wheel.slots::get)
 

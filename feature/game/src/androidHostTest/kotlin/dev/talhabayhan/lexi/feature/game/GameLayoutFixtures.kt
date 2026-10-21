@@ -2,6 +2,7 @@ package dev.talhabayhan.lexi.feature.game
 
 import dev.talhabayhan.lexi.core.designsystem.component.AnswerSlotState
 import dev.talhabayhan.lexi.core.designsystem.component.LetterKeyState
+import dev.talhabayhan.lexi.core.domain.model.LetterRule
 import kotlinx.collections.immutable.persistentListOf
 import kotlinx.collections.immutable.toImmutableList
 
@@ -44,6 +45,36 @@ internal object GameLayoutFixtures {
                 }.toImmutableList(),
             ),
             keys = LONG_KEYS.map { KeyUi(it, LetterKeyState.Normal) }.toImmutableList(),
+        ),
+    )
+
+    /**
+     * CONTAINS slot (GAME_RULES.md §3): BANANA with the slot letter N given in its first occurrence, B typed. Only the
+     * answer row and keyboard matter; the wheel is the design sample's.
+     */
+    private const val CONTAINS_ANSWER = "BANANA"
+    private const val CONTAINS_GIVEN = 2
+    private const val CONTAINS_KEYS = "BANANARMTE"
+
+    val containsGiven: GameUiState = GameSamples.design.copy(
+        turn = turn.copy(
+            letter = 'N',
+            rule = LetterRule.CONTAINS,
+            clue = "muz",
+            letterCount = CONTAINS_ANSWER.length,
+            words = persistentListOf(
+                CONTAINS_ANSWER.mapIndexed { index, letter ->
+                    when {
+                        index == 0 -> AnswerCellUi(letter, AnswerSlotState.Filled)
+                        index == 1 -> AnswerCellUi(null, AnswerSlotState.Active)
+                        index == CONTAINS_GIVEN -> AnswerCellUi(letter, AnswerSlotState.Given)
+                        else -> AnswerCellUi(null, AnswerSlotState.Empty)
+                    }
+                }.toImmutableList(),
+            ),
+            keys = CONTAINS_KEYS.mapIndexed { index, letter ->
+                KeyUi(letter, if (index == 0 || index == CONTAINS_GIVEN) LetterKeyState.Used else LetterKeyState.Normal)
+            }.toImmutableList(),
         ),
     )
 }

@@ -7,6 +7,10 @@ exact defaults.
 - 26 slots, letters A–Z in order. Each slot = `(letter, rule, card)`.
 - `rule`: `STARTS` ("K ile başlar") or `CONTAINS` ("içinde X geçer"). Content decides per card; Q, X, Z and
   rare letters at low levels are usually `CONTAINS`.
+- Owner decision (CONTAINS only when needed): `CONTAINS` is harder, so a letter gets a `CONTAINS` card only when its
+  eligible candidates (after the recently-seen filter below) hold fewer than ⚙ `minStartsCandidates = 1` `STARTS`
+  cards; otherwise the pick is among its eligible `STARTS` cards only (`preferStarts`, still one `nextInt` on a list
+  sorted by id). Applies to the regular, daily and review wheels and the level test (§9).
 - Generation (`WheelGenerator`): for each letter pick one card from the pool (level [+ category]) using the
   seeded RNG, preferring cards the player hasn't seen recently (solo only — daily, duel, review and level test
   ignore history so all players get the same wheel; `GameMode.usesCardHistory`). If no card exists for a letter,
@@ -14,11 +18,13 @@ exact defaults.
   this at 0 for shipped levels.
 - Pick: per letter A–Z, candidates = pool cards of that level (+ category unless `mixed`) and letter, sorted by
   card id (pool order never matters; card ids in a pool must be unique); drop recently seen cards unless that
-  leaves none; `pick` = one `nextInt(size)` on the `wheel` sub-seed (§13). Recently seen = last seen within
+  leaves none; keep only the `STARTS` cards when there are ≥ ⚙ `minStartsCandidates` of them; `pick` = one
+  `nextInt(size)` on the `wheel` sub-seed (§13). Recently seen = last seen within
   ⚙ `recentlySeenWindowDays = 7` (`WheelGenerator.recentlySeen(lastSeenMs, nowMs, config)`). Owner decision:
   the window stays at 7 days.
 - Review wheel: built from SRS-due cards (any level/category); may have fewer than 26 slots (only letters that
-  have due cards), in A–Z order; one card per letter, picked the same way. Other due cards wait for the next review.
+  have due cards), in A–Z order; one card per letter, picked the same way (`STARTS` preferred). Other due cards wait
+  for the next review.
 
 ## 2. Slot states
 `TODO → CURRENT → (CORRECT | WRONG | PASSED)`; `PASSED → CURRENT` again on the next lap.
@@ -29,13 +35,17 @@ correct = blue circle, wrong = red square, passed = yellow leaf.
 1. `Start` → first slot becomes CURRENT, timer starts (if mode has one).
 2. Player fills answer slots with letter keys. When all slots are filled → automatic submit.
    - Match is case-insensitive; spaces in multi-word answers are fixed (pre-rendered gaps, no key needed).
-   - Owner decision (given first letter): on a `STARTS` slot the first answer cell already holds the slot letter,
-     locked and drawn distinct (yellow box); its key (the first key with that letter) is USED from the start, so the
-     key set itself is unchanged. The player types from the second cell; Backspace never removes it; a pass keeps
-     it; the guess is judged on the full word. `CONTAINS` slots and one-letter answers start empty. Scoring, pass
-     and notebook are unchanged. `GameState.prefillsFirstLetter` (set by `newGame`) marks the rule; games saved or
-     recorded without that field (before the rule) replay with empty first cells, so old snapshots stay
-     deterministic (`SavedGame.prefillsFirstLetter`, golden `CLASSIC_EVENTS` / `GIVEN_LETTER_EVENTS`).
+   - Owner decision (given letter): on a `STARTS` slot the first answer cell already holds the slot letter,
+     locked and drawn distinct (yellow box); on a `CONTAINS` slot the slot letter is given the same way in the cell
+     of its FIRST occurrence in the answer (spaces don't count; e.g. BANANA / N ⇒ cell 2). Its key (the first key
+     with that letter) is USED from the start, so the key set itself is unchanged. The player types into the other
+     cells (a key fills the first empty cell, skipping the given one); Backspace never removes it; a pass keeps it;
+     Reveal letter skips it; the guess is judged on the full word. Scoring, jokers,
+     pass and notebook are unchanged. `GameState.prefillsFirstLetter` (STARTS) and
+     `GameState.prefillsContainsLetter` (CONTAINS, added later), both set by `newGame`, mark the rules; games saved
+     or recorded without a field (before that rule) replay without it, so old snapshots stay deterministic
+     (`SavedGame.prefillsFirstLetter` / `prefillsContainsLetter`; golden `CLASSIC_EVENTS`, `GIVEN_LETTER_EVENTS`,
+     `CONTAINS_LETTER_EVENTS`).
    - Correct → CORRECT, effects `Correct`, advance.
    - Wrong → WRONG, correct answer revealed for ⚙`revealMs = 1200`, advance.
 3. `Pass` → PASSED, advance.
@@ -94,7 +104,12 @@ doesn't apply), its time jokers cost seconds like Classic, and the first WRONG e
 reason `WRONG_IN_HARDCORE`, ×1.5 on the final total); a pass doesn't end it.
 Daily in the app (M6): ONE shared mixed-level wheel for all players (26 slots, fixed distribution: A1 ×6, A2 ×5,
 B1 ×5, B2 ×4, C1 ×3, NAT ×3, deterministically shuffled by seed). One scored attempt per local day, resetting at
-local midnight. Passes have no penalty in Daily mode.
+local midnight. Passes have no penalty in Daily mode. Rule changes to wheel generation (e.g. the `STARTS`
+preference, §1) are not versioned in the daily seed: a started daily game is saved with its card ids and an
+already played day is stored, so only not-yet-started days get the new wheel, the same for every player on that
+app version (like a `contentVersion` change). Players on older app versions get a different wheel that day; daily
+scores are only compared through share cards, so this is accepted (bump `contentVersion` with a release if
+same-day parity is ever needed, e.g. for leaderboards).
 Share card (M6, `ShareCardBuilder`): score = correct / playable slots (SKIPPED left out, so a review wheel scores
 against fewer than 26); one cell per playable slot in wheel order (CORRECT, WRONG, PASSED; TODO/CURRENT = TIME_UP,
 i.e. never answered, also after a Hardcore wrong or a forfeit). Remaining seconds round up like the result screen;
@@ -178,8 +193,9 @@ the app goes to background.
 ## 9. Level test (onboarding)
 - **Staircase.** 10–14 questions (owner decision: at most 14, with early stop): start at A2; 2 correct in a row at
   a level → one level up; 1 wrong or pass → one level down; the level stays within A1…NAT. Each card is a seeded
-  pick (sub-seed `level-test:<index>`) of an unasked card of the current level, preferring unused letters
-  (`LevelTest.nextCard`).
+  pick (sub-seed `level-test:<index>`) of an unasked card of the current level, preferring unused letters, then
+  `STARTS` cards like the wheel (§1; `LevelTest.nextCard`). Each card is one slot of the regular engine, so it gets
+  the given letter (§3). The test is never saved, so this needs no versioning.
 - **End.** After 10 answers once the current level has ≥ 3 asked cards (so it can be judged), always after 14
   (`LevelTest.isFinished`). The early-stop threshold moved from 12 to 10 with the cap: it keeps the old 4-answer
   window between early stop and cap, so a test that has just changed level still has room to ask the 3 cards needed

@@ -39,6 +39,7 @@ class SavedGameTest {
             wheel,
             GameConfig().jokerStartPack,
             prefillsFirstLetter = false,
+            prefillsContainsLetter = false,
         )
     }
 
@@ -92,6 +93,7 @@ class SavedGameTest {
         val decoded = checkNotNull(SavedGameCodec.decodeOrNull(text))
 
         assertFalse("prefillsFirstLetter" in text)
+        assertFalse("prefillsContainsLetter" in text)
         assertFalse(decoded.prefillsFirstLetter)
         val restored = checkNotNull(decoded.restore(pool, engine))
         assertFalse(restored.prefillsFirstLetter)
@@ -116,6 +118,42 @@ class SavedGameTest {
         val restored = decoded.restore(listOf(card("APPLE"), card("BREAD")), engine)
         assertEquals(live.state, restored)
         assertEquals("AP", restored?.currentInput?.typed)
+    }
+
+    @Test
+    fun `snapshot saved before the contains letter rule replays contains slots with empty cells`() {
+        // JSON as written by the app before the contains letter rule: given first letter, no contains field.
+        val text = """{"seed":1,"mode":"CLASSIC","level":"A1",""" +
+            """"slots":[{"letter":"A","rule":"CONTAINS","cardId":"a1-cat","state":"TODO"}],""" +
+            """"jokers":{},"events":[{"type":"start","timestampMs":1000}],"prefillsFirstLetter":true}"""
+        val cat = card("CAT", letter = 'A', rule = LetterRule.CONTAINS)
+
+        val decoded = checkNotNull(SavedGameCodec.decodeOrNull(text))
+        val restored = checkNotNull(decoded.restore(listOf(cat), engine))
+
+        assertFalse(decoded.prefillsContainsLetter)
+        assertFalse(restored.prefillsContainsLetter)
+        assertTrue(checkNotNull(restored.currentInput).cells.all { it == null })
+    }
+
+    @Test
+    fun `snapshot with the contains letter rule survives the codec and replays to the live state`() {
+        val cat = card("CAT", letter = 'A', rule = LetterRule.CONTAINS)
+        val live = play(wheel = Wheel(listOf(Slot('A', cat, SlotState.TODO))), start = false)
+        var saved = SavedGame.of(live.state)
+        fun send(event: GameEvent) {
+            live.send(event)
+            saved = saved.append(event)
+        }
+        send(GameEvent.Start(1_000L))
+        send(GameEvent.KeyTapped(live.input.keys.indexOfFirst { it.letter == 'C' }))
+
+        val decoded = checkNotNull(SavedGameCodec.decodeOrNull(SavedGameCodec.encode(saved)))
+
+        assertTrue(decoded.prefillsContainsLetter)
+        val restored = decoded.restore(listOf(cat), engine)
+        assertEquals(live.state, restored)
+        assertEquals("CA", restored?.currentInput?.typed)
     }
 
     @Test

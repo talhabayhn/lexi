@@ -1,5 +1,7 @@
 package dev.talhabayhan.lexi.core.domain.leveltest
 
+import dev.talhabayhan.lexi.core.domain.game.GameConfig
+import dev.talhabayhan.lexi.core.domain.game.preferStarts
 import dev.talhabayhan.lexi.core.domain.model.Card
 import dev.talhabayhan.lexi.core.domain.model.CardId
 import dev.talhabayhan.lexi.core.domain.model.Level
@@ -56,9 +58,10 @@ public object LevelTest {
 
     /**
      * Seeded pick of an unasked card of the current level, preferring letters not used yet (candidates sorted by
-     * id, one `nextInt` on the `level-test:<index>` sub-seed). Null when the level has no unasked card.
+     * id, then STARTS cards like the wheel, `GAME_RULES.md` §1; one `nextInt` on the `level-test:<index>` sub-seed).
+     * Null when the level has no unasked card.
      */
-    public fun nextCard(state: LevelTestState, pool: List<Card>): Card? {
+    public fun nextCard(state: LevelTestState, pool: List<Card>, config: GameConfig = GameConfig()): Card? {
         val asked = state.answers.mapTo(mutableSetOf()) { it.cardId }
         val usedLetters = state.answers.mapTo(mutableSetOf()) { it.letter }
         val candidates = pool
@@ -67,7 +70,7 @@ public object LevelTest {
         if (candidates.isEmpty()) return null
         val fresh = candidates.filter { it.letter !in usedLetters }
         val random = SeededRandom(state.seed).derive(seedPurpose(state.answers.size))
-        return random.pick(fresh.ifEmpty { candidates })
+        return random.pick(fresh.ifEmpty { candidates }.preferStarts(config))
     }
 
     /** 2 correct in a row at a level ⇒ one level up; a wrong answer or pass ⇒ one level down (A1…NAT). */

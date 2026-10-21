@@ -105,7 +105,7 @@ internal class GameLoader(
                 // Review (GAME_RULES.md §1, §10): the due notebook cards of any level; the route's level is a placeholder.
                 val today = appClock.epochDay(appClock.nowMs())
                 val due = Srs.dueCards(progress.observeAll().first(), today)
-                val reviewWheel = WheelGenerator.review(cards.cards(due), random)
+                val reviewWheel = WheelGenerator.review(cards.cards(due), random, config)
                 level = reviewWheel.slots.firstNotNullOfOrNull { it.card?.level } ?: return Opened.Abandoned
                 reviewWheel
             }
@@ -137,6 +137,7 @@ internal class GameLoader(
                     mode = mode,
                     random = random,
                     recentlySeen = recentlySeen,
+                    config = config,
                 )
             }
         }

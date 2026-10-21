@@ -82,7 +82,16 @@ public data class GameConfig(
     val srsExcludedModes: Set<GameMode> = setOf(GameMode.DUEL, GameMode.LEVEL_TEST),
     /** §1: cards last seen within this window are avoided by solo wheels (7 days: owner decision). */
     val recentlySeenWindowDays: Int = 7,
+    /**
+     * §1: a letter gets a CONTAINS card only when it has fewer eligible STARTS cards than this (eligible = after the
+     * recently-seen filter); otherwise the pick is among its STARTS cards (owner decision: CONTAINS is harder).
+     */
+    val minStartsCandidates: Int = 1,
 ) {
+    init {
+        require(minStartsCandidates >= 1) { "minStartsCandidates must be at least 1, was $minStartsCandidates" }
+    }
+
     /** Total time for [mode] in ms (per player for [GameMode.DUEL]); null when the mode has no timer. */
     public fun timeLimitMs(mode: GameMode): Long? = when (mode) {
         GameMode.CLASSIC -> classicTimeLimitSeconds

@@ -27,6 +27,8 @@ public data class SavedGame(
     val events: List<GameEvent> = emptyList(),
     /** [GameState.prefillsFirstLetter]; missing in snapshots saved before that rule, which then replay without it. */
     val prefillsFirstLetter: Boolean = false,
+    /** [GameState.prefillsContainsLetter]; missing in snapshots saved before that rule, which then replay without it. */
+    val prefillsContainsLetter: Boolean = false,
 ) {
     /** Card ids to load before [restore]. */
     public val cardIds: List<CardId> get() = slots.mapNotNull { it.cardId }
@@ -67,6 +69,7 @@ public data class SavedGame(
             wheel = wheel,
             jokers = jokers,
             prefillsFirstLetter = prefillsFirstLetter,
+            prefillsContainsLetter = prefillsContainsLetter,
         )
         return events.fold(initial) { state, event -> engine.reduce(state, event).state }
     }
@@ -82,6 +85,7 @@ public data class SavedGame(
                 slots = initial.wheel.slots.map { SavedSlot(it.letter, it.rule, it.card?.id, it.state) },
                 jokers = initial.jokers,
                 prefillsFirstLetter = initial.prefillsFirstLetter,
+                prefillsContainsLetter = initial.prefillsContainsLetter,
             )
         }
     }

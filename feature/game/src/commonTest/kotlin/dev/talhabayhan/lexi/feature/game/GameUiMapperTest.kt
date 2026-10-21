@@ -108,6 +108,20 @@ class GameUiMapperTest {
     }
 
     @Test
+    fun `a contains slot shows its letter given at the first occurrence and the first cell active`() {
+        val ui = GameUiMapper.map(started().after(GameEvent.Pass), engine)
+
+        val words = checkNotNull(ui.turn).words
+        assertEquals(listOf(null, 'C', null), words[0].map { it.letter })
+        assertEquals(
+            listOf(AnswerSlotState.Active, AnswerSlotState.Given, AnswerSlotState.Empty),
+            words[0].map { it.state },
+        )
+        assertTrue(words[1].all { it.state == AnswerSlotState.Empty })
+        assertEquals(1, checkNotNull(ui.turn).keys.count { it.state == LetterKeyState.Used })
+    }
+
+    @Test
     fun `a wrong answer shows the correct one in red and blocks input`() {
         val ui = GameUiMapper.map(started().typed("APPEL"), engine)
 

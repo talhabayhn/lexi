@@ -22,6 +22,16 @@ class GoldenTest {
     private val pool: List<Card> =
         listOf("APPLE", "ARM", "BREAD", "BOOK", "CHAIR", "CAT", "DOG", "DESK", "EGG", "EYE").map { card(it) }
 
+    /** STARTS cards for A–E plus CONTAINS cards; A also has CAT (CONTAINS), which the STARTS preference never picks. */
+    private val containsPool: List<Card> = listOf("APPLE", "BREAD", "CHAIR", "DOG", "EGG").map { card(it) } +
+        listOf(
+            card("CAT", letter = 'A'),
+            card("LEMON", letter = 'M'),
+            card("BOX", letter = 'X'),
+            card("TAXI", letter = 'X'),
+            card("PIZZA", letter = 'Z'),
+        )
+
     @Test
     fun `classic game with passes laps jokers wrong answers and time up matches the golden snapshot`() {
         val seed = 2024L
@@ -41,6 +51,7 @@ class GoldenTest {
             wheel,
             GameConfig().jokerStartPack,
             prefillsFirstLetter = false,
+            prefillsContainsLetter = false,
         )
 
         val final = CLASSIC_EVENTS.fold(initial) { state, event -> engine.reduce(state, event).state }
@@ -60,12 +71,39 @@ class GoldenTest {
             random = SeededRandom(seed).derive(WheelGenerator.SEED_PURPOSE),
         )
         val engine = GameEngine()
-        val initial = engine.newGame(seed, GameMode.CLASSIC, Level.A1, wheel, GameConfig().jokerStartPack)
+        // Recorded before the given contains letter (GAME_RULES.md §3): replays with that old rule.
+        val initial = engine.newGame(
+            seed,
+            GameMode.CLASSIC,
+            Level.A1,
+            wheel,
+            GameConfig().jokerStartPack,
+            prefillsContainsLetter = false,
+        )
 
         val final = GIVEN_LETTER_EVENTS.fold(initial) { state, event -> engine.reduce(state, event).state }
 
         assertGolden("given-letter", GOLDEN_GIVEN_LETTER, json.encodeToString(GameState.serializer(), final))
         assertEquals(final, json.decodeFromString(GameState.serializer(), GOLDEN_GIVEN_LETTER))
+    }
+
+    @Test
+    fun `classic game with starts preference and the given contains letter matches the golden snapshot`() {
+        val seed = 2025L
+        val wheel = WheelGenerator.generate(
+            pool = containsPool,
+            level = Level.A1,
+            category = CategoryId.MIXED,
+            mode = GameMode.CLASSIC,
+            random = SeededRandom(seed).derive(WheelGenerator.SEED_PURPOSE),
+        )
+        val engine = GameEngine()
+        val initial = engine.newGame(seed, GameMode.CLASSIC, Level.A1, wheel, GameConfig().jokerStartPack)
+
+        val final = CONTAINS_LETTER_EVENTS.fold(initial) { state, event -> engine.reduce(state, event).state }
+
+        assertGolden("contains-letter", GOLDEN_CONTAINS_LETTER, json.encodeToString(GameState.serializer(), final))
+        assertEquals(final, json.decodeFromString(GameState.serializer(), GOLDEN_CONTAINS_LETTER))
     }
 
     @Test
@@ -82,7 +120,13 @@ class GoldenTest {
         }
         val engine = MatchEngine()
         // Recorded before the given first letter (GAME_RULES.md §3): replays with the old rule.
-        val initial = engine.newMatch(seed, Level.A1, wheels, prefillsFirstLetter = false)
+        val initial = engine.newMatch(
+            seed,
+            Level.A1,
+            wheels,
+            prefillsFirstLetter = false,
+            prefillsContainsLetter = false,
+        )
 
         val final = DUEL_EVENTS.fold(initial) { state, event -> engine.reduce(state, event).state }
 
@@ -233,5 +277,57 @@ class GoldenTest {
         )
 
         private fun play(event: GameEvent): MatchEvent = MatchEvent.Play(event)
+
+        /**
+         * Wheel (seed 2025, [containsPool]): A=APPLE, B=BREAD, C=CHAIR, D=DOG, E=EGG (STARTS, given first letter),
+         * M=LEMON (given M in cell 2), X=BOX (given X in cell 2), Z=PIZZA (given Z in cell 2), the rest skipped.
+         */
+        val CONTAINS_LETTER_EVENTS: List<GameEvent> = listOf(
+            GameEvent.Start(timestampMs = 1_000L),
+            // A: PPLE → correct.
+            GameEvent.KeyTapped(0),
+            GameEvent.KeyTapped(3),
+            GameEvent.KeyTapped(8),
+            GameEvent.KeyTapped(5),
+            // B: pass.
+            GameEvent.Tick(2_000L),
+            GameEvent.Pass,
+            // C: "HIAR" → wrong, reveal.
+            GameEvent.KeyTapped(5),
+            GameEvent.KeyTapped(2),
+            GameEvent.KeyTapped(4),
+            GameEvent.KeyTapped(6),
+            GameEvent.Tick(1_200L),
+            // D: OG → correct.
+            GameEvent.KeyTapped(1),
+            GameEvent.KeyTapped(0),
+            // E: GG → correct.
+            GameEvent.KeyTapped(1),
+            GameEvent.KeyTapped(9),
+            // M: L, Backspace, Reveal letter (L in cell 0, the given M stays), E, O, N → correct.
+            GameEvent.KeyTapped(6),
+            GameEvent.Backspace,
+            GameEvent.UseJoker(JokerType.REVEAL_LETTER),
+            GameEvent.KeyTapped(0),
+            GameEvent.KeyTapped(7),
+            GameEvent.KeyTapped(2),
+            // X: B, pass (the B goes back to its key, the given X stays).
+            GameEvent.KeyTapped(0),
+            GameEvent.Pass,
+            // Z: "PIAZ" around the given Z → wrong, reveal; wraps to B on lap 2.
+            GameEvent.KeyTapped(0),
+            GameEvent.KeyTapped(2),
+            GameEvent.KeyTapped(7),
+            GameEvent.KeyTapped(4),
+            GameEvent.Tick(1_200L),
+            // B (lap 2): READ → correct.
+            GameEvent.KeyTapped(9),
+            GameEvent.KeyTapped(2),
+            GameEvent.KeyTapped(0),
+            GameEvent.KeyTapped(8),
+            // X (lap 2): BO → correct, all answered.
+            GameEvent.KeyTapped(0),
+            GameEvent.KeyTapped(1),
+        )
     }
 }
