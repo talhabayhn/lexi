@@ -140,8 +140,8 @@ public fun Toast(
 /**
  * A [Toast] as an overlay (motion.md #11): slides down [LexiTheme.motion] `toastSlideDistance` in `toastDurationMillis`
  * (appears in place with reduced motion) and calls [onDismissed] after [visibleMillis]. It is meant to float: place it
- * in a `Box` above the content, never in the content's own column, so it takes none of the content's space. The slide is a draw
- * transform, so the toast's bounds and hit area move with it.
+ * in a `Box` above the content, never in the content's own column, so it takes none of the content's
+ * space. The slide is a draw transform: a caller modifier placed before it (e.g. `clickable`) keeps the final position for hit testing.
  */
 @Composable
 public fun SlidingToast(
