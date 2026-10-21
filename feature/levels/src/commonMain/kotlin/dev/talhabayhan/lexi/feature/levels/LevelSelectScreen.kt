@@ -233,12 +233,13 @@ private fun LevelSelectContent(
         fit = fit,
         paddingTop = metrics.paddingTop,
         paddingBottom = metrics.paddingBottom,
-        gap = metrics.gap,
+        // The design's free space above BAŞLA (82dp at 390 × 844) holds the category row: at least 12dp to it.
+        gap = minOf(metrics.gap, dimens.gap12),
         modifier = Modifier.fillMaxSize().padding(horizontal = dimens.screenPaddingHorizontal),
     ) {
         Column(
             // The room under the last row keeps its hard shadow out of the scroll clip.
-            modifier = Modifier.verticalScroll(rememberScrollState()).padding(bottom = LexiTheme.shadows.s6.offset),
+            modifier = Modifier.verticalScroll(rememberScrollState()).padding(bottom = LexiTheme.shadows.s3.offset),
             verticalArrangement = Arrangement.spacedBy(metrics.gap),
         ) {
             Row(
@@ -267,13 +268,17 @@ private fun LevelSelectContent(
                 )
             }
             LevelGrid(state, onIntent, metrics)
-            ModePicker(state, onIntent, metrics.segmentHeight)
-            // NAT has no category selection (CONTENT.md §5): no row.
-            if (state.selectedLevel != Level.NAT) {
-                CategoryRow(
-                    onClick = { onIntent(LevelSelectIntent.OpenCategories) },
-                    height = metrics.categoryHeight,
-                )
+            // The category row sits closer to the mode picker than the design's sections: it has to fit the free space
+            // the old link left above BAŞLA at 390 × 844.
+            Column(verticalArrangement = Arrangement.spacedBy(minOf(metrics.gap, dimens.gap12))) {
+                ModePicker(state, onIntent, metrics.segmentHeight)
+                // NAT has no category selection (CONTENT.md §5): no row.
+                if (state.selectedLevel != Level.NAT) {
+                    CategoryRow(
+                        onClick = { onIntent(LevelSelectIntent.OpenCategories) },
+                        height = metrics.categoryHeight,
+                    )
+                }
             }
         }
         StartButton(

@@ -1,17 +1,21 @@
 package dev.talhabayhan.lexi.feature.levels
 
 import androidx.compose.ui.geometry.Rect
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.SemanticsProperties
 import androidx.compose.ui.semantics.getOrNull
 import androidx.compose.ui.test.ComposeUiTest
 import androidx.compose.ui.test.ExperimentalTestApi
 import androidx.compose.ui.test.SemanticsMatcher
 import androidx.compose.ui.test.hasContentDescription
+import androidx.compose.ui.test.hasScrollAction
 import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.onFirst
 import androidx.compose.ui.test.onRoot
 import androidx.compose.ui.test.performClick
+import androidx.compose.ui.test.performTouchInput
 import androidx.compose.ui.test.runComposeUiTest
+import androidx.compose.ui.test.swipeUp
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.core.domain.model.Level
 import org.junit.Test
@@ -56,6 +60,43 @@ class LevelSelectLayoutTest {
         val screen = onRoot().fetchSemanticsNode().boundsInRoot
         val start = bounds(hasText("BAŞLA"))
         assertTrue(start.top >= 0f && start.bottom <= screen.bottom + 1f, "BAŞLA $start outside $screen")
+    }
+
+    /** `03-level-select` at 390 × 844: the Regular tier, 150dp cards, the design's top offset, the row above BAŞLA. */
+    @Test
+    fun w390h844IsTheDesign() = runComposeUiTest {
+        setScreen()
+        val d = density.density
+        val cards = onAllNodes(
+            SemanticsMatcher("radio") {
+                it.config.getOrNull(SemanticsProperties.Role) ==
+                    Role.RadioButton
+            },
+        )
+            .fetchSemanticsNodes().filter { it.boundsInRoot.top > 0f }
+        assertEquals(6, cards.size, "placed level cards")
+        cards.forEach { assertEquals(150f, it.boundsInRoot.height / d, 1f, "card height") }
+        assertEquals(86f, cards.minOf { it.boundsInRoot.top } / d, 1f, "grid top (24 + 44 + 18)")
+        val category = bounds(hasContentDescription("Kategori seç", substring = true))
+        assertTrue(category.height / d >= 48f - 1f, "touch target ${category.height / d}")
+        assertTrue(bounds(hasText("BAŞLA")).top - category.bottom >= 12f * d - 1f, "gap to BAŞLA")
+    }
+
+    /** Tiny screen: scrolled to the end, the mode picker and the category row clear BAŞLA. */
+    @Test
+    @Config(qualifiers = "tr-w320dp-h568dp-xhdpi")
+    fun w320h568ScrollsToTheCategoryRow() = runComposeUiTest {
+        setScreen()
+        val scrollables = onAllNodes(hasScrollAction())
+        val nodes = scrollables.fetchSemanticsNodes()
+        val placed = nodes.indexOf(nodes.maxBy { it.boundsInRoot.bottom })
+        scrollables[placed].performTouchInput { swipeUp() }
+        waitForIdle()
+        val start = bounds(hasText("BAŞLA"))
+        val modeLabel = bounds(hasText("OYUN MODU"))
+        val category = bounds(hasContentDescription("Kategori seç", substring = true))
+        assertTrue(modeLabel.bottom <= start.top, "mode label under BAŞLA: $modeLabel / $start")
+        assertTrue(category.bottom <= start.top && category.top >= 0f, "category row not reachable: $category / $start")
     }
 
     @Test
