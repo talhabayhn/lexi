@@ -3,7 +3,7 @@ name: release-android
 # Release AAB for Google Play (runbook: docs/RELEASE.md).
 # - push to main: unsigned R8 release build only (no secrets) to catch shrinker problems early.
 # - tag v*.*.* or manual dispatch: signed AAB from the ANDROID_KEYSTORE_* secrets, uploaded as an artifact
-#   and, when PLAY_SERVICE_ACCOUNT_JSON is set, to the Play internal track.
+#   and, when PLAY_SERVICE_ACCOUNT_JSON is set, to the Play closed testing track (alpha).
 on:
   push:
     branches: [main]
@@ -19,7 +19,7 @@ on:
         required: false
         default: ''
       upload:
-        description: 'Upload to Play internal track (needs PLAY_SERVICE_ACCOUNT_JSON)'
+        description: 'Upload to Play closed testing track (needs PLAY_SERVICE_ACCOUNT_JSON)'
         type: boolean
         default: true
 
@@ -91,7 +91,7 @@ jobs:
       - name: Upload AAB + R8 mapping
         uses: actions/upload-artifact@v7
         with:
-          name: lexi-android-${{ env.VERSION_NAME }}${{ env.SIGNED == 'true' && '' || '-unsigned' }}
+          name: lexi-android-${{ env.VERSION_NAME }}${{ env.SIGNED != 'true' && '-unsigned' || '' }}
           path: |
             androidApp/build/outputs/bundle/release/*.aab
             androidApp/build/outputs/apk/release/*.apk
@@ -108,7 +108,7 @@ jobs:
           else echo "::notice::PLAY_SERVICE_ACCOUNT_JSON not set; upload the AAB artifact manually."; fi
 
       # A brand-new app must get its first AAB uploaded by hand in Play Console before the API accepts uploads.
-      - name: Upload to Play internal track
+      - name: Upload to Play closed testing track
         if: steps.play.outputs.ok == 'true'
         uses: r0adkll/upload-google-play@v1.1.3
         with:
@@ -116,7 +116,7 @@ jobs:
           packageName: dev.talhabayhan.lexi
           releaseFiles: androidApp/build/outputs/bundle/release/androidApp-release.aab
           mappingFile: androidApp/build/outputs/mapping/release/mapping.txt
-          track: internal
+          track: alpha
           status: draft
 
       - name: Upload reports

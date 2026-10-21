@@ -7,7 +7,7 @@ needs a Mac runs on GitHub Actions. Store texts and legal drafts: `docs/store/` 
 | Workflow | Trigger | Needs secrets | Output |
 |---|---|---|---|
 | `release-android.yml` | every push to `main` | no | unsigned R8 release AAB/APK (shrinker check) |
-| `release-android.yml` | tag `v*` or manual run | `ANDROID_*` (+ optional `PLAY_SERVICE_ACCOUNT_JSON`) | signed AAB artifact, Play internal track (draft) |
+| `release-android.yml` | tag `v*` or manual run | `ANDROID_*` (+ optional `PLAY_SERVICE_ACCOUNT_JSON`) | signed AAB artifact, Play closed testing track `alpha` (draft) |
 | `release-ios.yml` (experimental) | tag `v*` or manual run | `APPSTORE_*`, `TEAM_ID` (else unsigned archive) | TestFlight build |
 | `pages.yml` | changes to `docs/site`, legal drafts | no (Pages must be enabled) | website with privacy/terms/support |
 
@@ -59,7 +59,8 @@ Secrets are never printed in logs and are not available to forks.
 
 **A brand-new app must get its very first AAB uploaded by hand** (Play Console → Internal testing →
 Create release → upload the AAB from the workflow artifact). Only after that does the API accept uploads.
-CI uploads as **draft** to the internal track; open the release in Play Console and roll it out.
+CI uploads as **draft** to the closed testing track (`track: alpha`, Play's default closed track; if the closed
+track was created under another name, set its id in `release-android.yml`); open the release in Play Console and roll it out.
 
 ## 4. App Store Connect API key + TestFlight (experimental)
 
