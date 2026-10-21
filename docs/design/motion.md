@@ -29,7 +29,7 @@ scale or rotation; splash shows the logo statically.
 | 8 | Time warning (last 10 s) | timer fill `yellow` → `red` and counter `ink` → `red`, switched at once (no fade); counter pulses scale 1 → 1.12 → 1 (linear) each second, with the tick; reduced motion: colours only | 600 ms per pulse | tick each second | "tik"; at 0 s once the descending two-tone buzzer (`time_up`, no tick with it) |
 | 9 | Splash | bg yellow circle (top-left) & blue square (bottom-right) scale 0 → 1; L slides from left (overshoot 8dp), E drops from top & bounces 10dp, X rotates −270° → 10° → 0 with scale 0 → 1.08 → 1, I rises from bottom (overshoot −8dp); tagline fades up 12dp | total ≈ 1.2 s in app (demo is 3.6 s looped), `mechanical` | light on each landing | "tık" per landing |
 | 10 | Bottom sheet (joker) | slides up from bottom, scrim fades to 55% | 220 ms | — | — |
-| 11 | Toast | slides down from top 16dp, auto-dismiss 2.5 s | 180 ms | — | — |
+| 11 | Toast | slides down from top 16dp, auto-dismiss 2.5 s (home notice: 6 s, a11y) | 180 ms | — | — |
 | 12 | Screen transitions | slide + fade-through: incoming slides in from +24dp (260 ms) and fades 0 → 1 (200 ms, starts at 60 ms); outgoing slides to −24dp (260 ms) and fades 1 → 0 over its first 90 ms; reverse on back; reduced motion: 150 ms crossfade, no translation | 260 ms, `mechanical` | — | — |
 
 #1 is implemented once in `PressableSurface` (`core:designsystem`): CSS `ease-out` per direction (`.lx-press` in
@@ -64,7 +64,7 @@ Implemented in `feature:game` (`GameMotion`, `GameMotionLayer`, `GameFeedback`) 
   and shrinks to 0 in 240 ms (`aCombo`). Reduced motion: the badge rests at −4° for 420 + 720 ms, no burst.
 - #8: `TimerBar` pulses whenever the counter changes (and when the warning starts), not on first composition, so a
   paused or restored warning does not pulse.
-- #11: the result screen's share error toast slides down 16dp in 180 ms (`mechanical`) and goes after 2.5 s; reduced
+- #11: the result screen's share error toast slides down 16dp in 180 ms (`mechanical`) and goes after 2.5 s (the home daily-gift notice stays 6 s so screen-reader users can reach it); reduced
   motion: shown in place, no slide. (The home daily-gift notice shows the toast without the slide.)
 - `win` / `lose` have no catalogue row, so they are not played yet (to be decided with the result screen's motion).
 

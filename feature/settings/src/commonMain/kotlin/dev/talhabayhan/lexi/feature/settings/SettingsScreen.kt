@@ -97,8 +97,7 @@ internal fun SettingsScreen(state: SettingsUiState, onIntent: (SettingsIntent) -
         Box(
             Modifier.fillMaxSize().then(
                 if (state.reminderSheetVisible) {
-                    Modifier.clearAndSetSemantics {
-                    }
+                    Modifier.clearAndSetSemantics {}
                 } else {
                     Modifier
                 },

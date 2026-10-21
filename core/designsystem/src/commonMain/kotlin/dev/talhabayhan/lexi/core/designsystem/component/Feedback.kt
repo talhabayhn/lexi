@@ -113,7 +113,6 @@ public fun Toast(
             PressableSurface(
                 onClick = action.onClick,
                 modifier = Modifier.height(FeedbackDefaults.ToastActionHeight),
-                onClickLabel = action.label,
                 color = Color.Transparent,
                 border = null,
                 shadow = null,

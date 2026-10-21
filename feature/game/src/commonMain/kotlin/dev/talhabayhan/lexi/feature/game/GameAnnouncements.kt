@@ -107,7 +107,7 @@ private fun GameUiState.revealedAnswer(): String? {
 private const val ANSWER_WORD_SEPARATOR = " "
 
 /** Makes an identical follow-up announcement differ (screen readers skip silent characters), so it is read again. */
-private const val REPEAT_MARK = "​"
+private const val REPEAT_MARK = "\u200B"
 
 /** The latest announcement; [serial] counts announcements so a repeated text still changes the live region. */
 @Immutable
