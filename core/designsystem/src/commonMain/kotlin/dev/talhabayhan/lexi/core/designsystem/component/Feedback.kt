@@ -1,5 +1,7 @@
 package dev.talhabayhan.lexi.core.designsystem.component
 
+import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -17,9 +19,15 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.semantics.LiveRegionMode
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.isTraversalGroup
@@ -32,6 +40,7 @@ import androidx.compose.ui.unit.dp
 import dev.talhabayhan.lexi.core.designsystem.modifier.lexiHeading
 import dev.talhabayhan.lexi.core.designsystem.modifier.lexiSurface
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
+import kotlinx.coroutines.delay
 
 /** Toast colors (`16-components` § BİLDİRİMLER). */
 public enum class ToastStyle {
@@ -126,6 +135,36 @@ public fun Toast(
             }
         }
     }
+}
+
+/**
+ * A [Toast] as an overlay (motion.md #11): slides down [LexiTheme.motion] `toastSlideDistance` in `toastDurationMillis`
+ * (appears in place with reduced motion) and calls [onDismissed] after [visibleMillis]. It is meant to float: place it
+ * in a `Box` above the content, never in the content's own column, so it takes none of the content's space. The slide is a draw
+ * transform, so the toast's bounds and hit area move with it.
+ */
+@Composable
+public fun SlidingToast(
+    message: String,
+    onDismissed: () -> Unit,
+    modifier: Modifier = Modifier,
+    style: ToastStyle = ToastStyle.Info,
+    visibleMillis: Long = LexiTheme.motion.toastVisibleMillis.toLong(),
+) {
+    val motion = LexiTheme.motion
+    val slidePx = with(LocalDensity.current) { motion.toastSlideDistance.toPx() }
+    val offset = remember { Animatable(if (motion.reducedMotion) 0f else -slidePx) }
+    val latestOnDismissed by rememberUpdatedState(onDismissed)
+    LaunchedEffect(message) {
+        offset.animateTo(0f, tween(motion.toastDurationMillis, easing = motion.mechanical))
+        delay(visibleMillis)
+        latestOnDismissed()
+    }
+    Toast(
+        message = message,
+        style = style,
+        modifier = modifier.graphicsLayer { translationY = offset.value },
+    )
 }
 
 /**

@@ -1,7 +1,5 @@
 package dev.talhabayhan.lexi.feature.game.result
 
-import androidx.compose.animation.core.Animatable
-import androidx.compose.animation.core.tween
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -26,14 +24,8 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.graphicsLayer
-import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import dev.talhabayhan.lexi.core.designsystem.component.AdaptiveTrailingRow
@@ -49,10 +41,9 @@ import dev.talhabayhan.lexi.core.designsystem.component.ResultDefaults
 import dev.talhabayhan.lexi.core.designsystem.component.ReviewMoreRow
 import dev.talhabayhan.lexi.core.designsystem.component.ReviewOutcome
 import dev.talhabayhan.lexi.core.designsystem.component.ReviewRow
+import dev.talhabayhan.lexi.core.designsystem.component.SlidingToast
 import dev.talhabayhan.lexi.core.designsystem.component.StatGrid
 import dev.talhabayhan.lexi.core.designsystem.component.StatTile
-import dev.talhabayhan.lexi.core.designsystem.component.Toast
-import dev.talhabayhan.lexi.core.designsystem.component.ToastStyle
 import dev.talhabayhan.lexi.core.designsystem.format.formatClock
 import dev.talhabayhan.lexi.core.designsystem.modifier.lexiHeading
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
@@ -104,7 +95,6 @@ import dev.talhabayhan.lexi.feature.game.generated.resources.share_error
 import dev.talhabayhan.lexi.feature.game.result.share.ShareCardCapture
 import kotlinx.collections.immutable.persistentListOf
 import kotlinx.collections.immutable.toImmutableList
-import kotlinx.coroutines.delay
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.pluralStringResource
 import org.jetbrains.compose.resources.stringResource
@@ -191,19 +181,10 @@ internal fun ResultScreen(
 /** Info toast "Paylaşım başlatılamadı.": slides down 16dp in 180 ms (no slide with reduced motion), gone after 2.5 s. */
 @Composable
 private fun ShareErrorToast(onDismissed: () -> Unit, modifier: Modifier = Modifier) {
-    val motion = LexiTheme.motion
-    val slidePx = with(LocalDensity.current) { motion.toastSlideDistance.toPx() }
-    val offset = remember { Animatable(if (motion.reducedMotion) 0f else -slidePx) }
-    val latestOnDismissed by rememberUpdatedState(onDismissed)
-    LaunchedEffect(Unit) {
-        offset.animateTo(0f, tween(motion.toastDurationMillis, easing = motion.mechanical))
-        delay(motion.toastVisibleMillis.toLong())
-        latestOnDismissed()
-    }
-    Toast(
+    SlidingToast(
         message = stringResource(Res.string.share_error),
-        style = ToastStyle.Info,
-        modifier = modifier.fillMaxWidth().graphicsLayer { translationY = offset.value },
+        onDismissed = onDismissed,
+        modifier = modifier.fillMaxWidth(),
     )
 }
 

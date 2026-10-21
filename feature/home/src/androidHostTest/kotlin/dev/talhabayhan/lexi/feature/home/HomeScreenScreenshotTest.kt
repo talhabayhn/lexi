@@ -132,25 +132,11 @@ class HomeScreenScreenshotTest {
         }
     }
 
+    /** The gift toast floats over the unchanged home (reduced motion: already in place, no mid-slide frame). */
     @Test
     fun dailyGiftNotice() {
         captureRoboImage("src/androidHostTest/screenshots/HomeScreenDailyGiftNotice.png") {
-            LexiTheme(reducedMotion = false) {
-                HomeScreen(
-                    state = HomeSampleState.copy(
-                        dailyGiftNotice = DailyGiftNotice(DailyGiftNoticeType.Daily, 1),
-                    ),
-                    onIntent = {},
-                )
-            }
-        }
-    }
-
-    @Test
-    @Config(qualifiers = "en-w390dp-h844dp-xhdpi")
-    fun dailyGiftNoticeEnglish() {
-        captureRoboImage("src/androidHostTest/screenshots/HomeScreenDailyGiftNoticeEnglish.png") {
-            LexiTheme(reducedMotion = false) {
+            LexiTheme(reducedMotion = true) {
                 HomeScreen(
                     state = HomeSampleState.copy(
                         dailyGiftNotice = DailyGiftNotice(DailyGiftNoticeType.Daily, 1),

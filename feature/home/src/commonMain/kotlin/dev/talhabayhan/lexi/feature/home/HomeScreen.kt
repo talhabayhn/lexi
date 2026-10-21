@@ -25,7 +25,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -53,9 +52,8 @@ import dev.talhabayhan.lexi.core.designsystem.component.LexiLogoSize
 import dev.talhabayhan.lexi.core.designsystem.component.MenuTile
 import dev.talhabayhan.lexi.core.designsystem.component.NavSquareButton
 import dev.talhabayhan.lexi.core.designsystem.component.PlayButton
+import dev.talhabayhan.lexi.core.designsystem.component.SlidingToast
 import dev.talhabayhan.lexi.core.designsystem.component.StreakChip
-import dev.talhabayhan.lexi.core.designsystem.component.Toast
-import dev.talhabayhan.lexi.core.designsystem.component.ToastStyle
 import dev.talhabayhan.lexi.core.designsystem.component.menuTileMinWidth
 import dev.talhabayhan.lexi.core.designsystem.icon.LexiIcons
 import dev.talhabayhan.lexi.core.designsystem.modifier.lexiSurface
@@ -94,7 +92,6 @@ import dev.talhabayhan.lexi.feature.home.generated.resources.home_tile_practice
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_tile_practice_subtitle
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_tile_stats
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_tile_stats_learned
-import kotlinx.coroutines.delay
 import org.jetbrains.compose.resources.pluralStringResource
 import org.jetbrains.compose.resources.stringArrayResource
 import org.jetbrains.compose.resources.stringResource
@@ -102,10 +99,16 @@ import org.jetbrains.compose.resources.stringResource
 /**
  * `02-home`: streak chip and settings, the logo, the daily card, OYNA and the 2 × 2 menu tiles. The blue circle and
  * red half-pill behind are edge-to-edge decoration at 210dp from the top / bottom of the screen; the content keeps the
- * design paddings inside the system-bar insets and never scrolls: on short phones it steps down [HomeTier]s.
+ * design paddings inside the system-bar insets and never scrolls: on short phones it steps down [HomeTier]s. The daily
+ * gift is a floating toast shown only while [noticeVisible] (the screen is resumed); it never affects the layout.
  */
 @Composable
-internal fun HomeScreen(state: HomeUiState, onIntent: (HomeIntent) -> Unit, modifier: Modifier = Modifier) {
+internal fun HomeScreen(
+    state: HomeUiState,
+    onIntent: (HomeIntent) -> Unit,
+    modifier: Modifier = Modifier,
+    noticeVisible: Boolean = true,
+) {
     val colors = LexiTheme.colors
     val dimens = LexiTheme.dimens
     Box(modifier.fillMaxSize().background(colors.cream)) {
@@ -131,8 +134,47 @@ internal fun HomeScreen(state: HomeUiState, onIntent: (HomeIntent) -> Unit, modi
             ) { tier, tileGrowth, fit ->
                 HomeContent(tier, tileGrowth, fit, state, onIntent)
             }
+            // Floats above the content: it takes no layout space, so the gift never resizes or moves Home's parts.
+            val notice = state.dailyGiftNotice
+            if (notice != null && noticeVisible) {
+                GiftToast(
+                    notice = notice,
+                    onDismiss = { onIntent(HomeIntent.DismissNotice) },
+                    modifier = Modifier
+                        .align(Alignment.TopCenter)
+                        .windowInsetsPadding(WindowInsets.safeDrawing)
+                        .lexiContentWidth()
+                        .padding(
+                            start = dimens.screenPaddingHorizontal,
+                            end = dimens.screenPaddingHorizontal,
+                            top = dimens.screenPaddingTop + HomeDefaults.StreakChipHeight + dimens.gap8,
+                        ),
+                )
+            }
         }
     }
+}
+
+/** The daily joker gift as an info toast below the top bar (never over the streak chip or the gear); tap to dismiss. */
+@Composable
+private fun GiftToast(notice: DailyGiftNotice, onDismiss: () -> Unit, modifier: Modifier = Modifier) {
+    val message = when (notice.type) {
+        DailyGiftNoticeType.Daily -> stringResource(Res.string.home_joker_gift_daily, notice.amount)
+        DailyGiftNoticeType.Streak -> stringResource(Res.string.home_joker_gift_streak, notice.amount)
+        DailyGiftNoticeType.Combined -> stringResource(Res.string.home_joker_gift_combined, notice.amount)
+    }
+    SlidingToast(
+        message = message,
+        onDismissed = onDismiss,
+        visibleMillis = NOTICE_VISIBLE_MILLIS,
+        modifier = modifier
+            .fillMaxWidth()
+            .clickable(
+                onClickLabel = stringResource(Res.string.home_notice_dismiss),
+                role = Role.Button,
+                onClick = onDismiss,
+            ),
+    )
 }
 
 /** Heights of one layout tier (`screen-map.md`): regular is the design, the others are DESIGN-DEBT scalings of it. */
@@ -246,27 +288,6 @@ private fun HomeContent(
     ) {
         Column(verticalArrangement = Arrangement.spacedBy(metrics.gap)) {
             TopBar(state, onIntent)
-            state.dailyGiftNotice?.let { notice ->
-                LaunchedEffect(notice) {
-                    delay(NOTICE_VISIBLE_MILLIS)
-                    onIntent(HomeIntent.DismissNotice)
-                }
-                val message = when (notice.type) {
-                    DailyGiftNoticeType.Daily -> stringResource(Res.string.home_joker_gift_daily, notice.amount)
-                    DailyGiftNoticeType.Streak -> stringResource(Res.string.home_joker_gift_streak, notice.amount)
-                    DailyGiftNoticeType.Combined -> stringResource(Res.string.home_joker_gift_combined, notice.amount)
-                }
-                Toast(
-                    message = message,
-                    style = ToastStyle.Info,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .clickable(
-                            onClickLabel = stringResource(Res.string.home_notice_dismiss),
-                            role = Role.Button,
-                        ) { onIntent(HomeIntent.DismissNotice) },
-                )
-            }
             Column(
                 Modifier.padding(top = if (tier == HomeTier.Regular) dimens.gap8 else dimens.gap4),
                 verticalArrangement = Arrangement.spacedBy(dimens.gap6),

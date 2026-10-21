@@ -7,6 +7,7 @@ import androidx.compose.runtime.rememberUpdatedState
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.compose.currentStateAsState
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
@@ -94,5 +95,11 @@ internal fun HomeRoute(
             }
         }
     }
-    HomeScreen(state = state, onIntent = viewModel::onIntent)
+    // A gift granted while Home is still entering (onboarding → Home) waits in the state and shows once resumed.
+    val lifecycleState by lifecycleOwner.lifecycle.currentStateAsState()
+    HomeScreen(
+        state = state,
+        onIntent = viewModel::onIntent,
+        noticeVisible = lifecycleState.isAtLeast(Lifecycle.State.RESUMED),
+    )
 }

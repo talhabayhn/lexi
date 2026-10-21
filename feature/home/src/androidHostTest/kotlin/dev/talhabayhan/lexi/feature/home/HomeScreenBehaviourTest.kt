@@ -1,5 +1,8 @@
 package dev.talhabayhan.lexi.feature.home
 
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.semantics.LiveRegionMode
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.SemanticsProperties
@@ -7,6 +10,7 @@ import androidx.compose.ui.test.ComposeUiTest
 import androidx.compose.ui.test.ExperimentalTestApi
 import androidx.compose.ui.test.SemanticsMatcher
 import androidx.compose.ui.test.assert
+import androidx.compose.ui.test.getBoundsInRoot
 import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
@@ -133,5 +137,42 @@ class HomeScreenBehaviourTest {
             .performClick()
 
         assertEquals(listOf<HomeIntent>(HomeIntent.DismissNotice), intents)
+    }
+
+    @Test
+    fun `the gift toast floats and leaves home's sizes and positions unchanged`() = runComposeUiTest {
+        var notice by mutableStateOf<DailyGiftNotice?>(null)
+        setContent {
+            LexiTheme(reducedMotion = true) {
+                HomeScreen(HomeSampleState.copy(dailyGiftNotice = notice), onIntent = {})
+            }
+        }
+        fun bounds() = listOf("OYNA", "Herkesle aynı çark: bildiğin kadarını çöz", "Kelime Defterim")
+            .map { onNodeWithText(it).getBoundsInRoot() }
+
+        val before = bounds()
+        notice = DailyGiftNotice(DailyGiftNoticeType.Daily, 1)
+        waitForIdle()
+        onNode(hasText("Günün hediyesi", substring = true)).assertExists()
+        assertEquals(before, bounds())
+
+        notice = null
+        waitForIdle()
+        onNode(hasText("Günün hediyesi", substring = true)).assertDoesNotExist()
+        assertEquals(before, bounds())
+    }
+
+    @Test
+    fun `the gift toast waits until the screen is resumed`() = runComposeUiTest {
+        setContent {
+            LexiTheme(reducedMotion = true) {
+                HomeScreen(
+                    HomeSampleState.copy(dailyGiftNotice = DailyGiftNotice(DailyGiftNoticeType.Daily, 1)),
+                    onIntent = {},
+                    noticeVisible = false,
+                )
+            }
+        }
+        onNode(hasText("Günün hediyesi", substring = true)).assertDoesNotExist()
     }
 }

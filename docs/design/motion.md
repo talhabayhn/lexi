@@ -65,7 +65,8 @@ Implemented in `feature:game` (`GameMotion`, `GameMotionLayer`, `GameFeedback`) 
 - #8: in the warning the counter is `redText` on the white track and ink where the red fill runs under it (clipped second layer), so it is readable at any progress. `TimerBar` pulses whenever the counter changes (and when the warning starts), not on first composition, so a
   paused or restored warning does not pulse.
 - #11: the result screen's share error toast slides down 16dp in 180 ms (`mechanical`) and goes after 2.5 s (the home daily-gift notice stays 6 s so screen-reader users can reach it); reduced
-  motion: shown in place, no slide. (The home daily-gift notice shows the toast without the slide.)
+  motion: shown in place, no slide. Both use `SlidingToast` (core:designsystem): a floating overlay that takes no layout
+  space; the home gift sits below the top bar, is dismissible by tap ("Kapat") and waits until Home is resumed.
 - `win` / `lose` have no catalogue row, so they are not played yet (to be decided with the result screen's motion).
 
 #12 is set on `LexiNavHost` (all destinations): enter slides from +24dp over 260 ms and fades in over 200 ms from
