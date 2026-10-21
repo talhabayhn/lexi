@@ -23,6 +23,21 @@
 - Strings: `stringResource(Res.string.xxx)`; keys `screen_element_purpose` (e.g. `game_button_pass`).
 - Accessibility: every icon-only button has `contentDescription`; wheel letters announce state ("K, doğru").
 
+## Accessibility checklist (every new or changed screen)
+- Icon-only buttons have `contentDescription`; keys read their letter; wheel letters announce state.
+- Titles and section labels use `Modifier.lexiHeading()`.
+- Decorative shapes are hidden (`clearAndSetSemantics` or null description).
+- Expose roles (Button, Switch, RadioButton, Tab) and state (selected, checked, disabled).
+- Semantic touch bounds are at least `LexiTheme.dimens.minTouchTarget`.
+- Traversal order via `isTraversalGroup`/`traversalIndex`; game: HUD → clue → wheel → answer → keys → actions.
+- Sheets and dialogs are modal (hide background), with the title as heading.
+- Announcements go through `LiveAnnouncement`/`GameAnnouncer`: polite, once per event, never per tick.
+- Font scale: scrollable layouts, `minHeight` not fixed height, buttons wrap via `maxLines`; game board and Home are capped at 1.15 by design.
+- Reduced motion via `LexiMotion.reducedMotion` (fades allowed).
+- Contrast: WCAG AA; never change the palette without owner approval. Known failing pairs: white/cream on
+  red `E0534C` small text (3.81 / 3.47); TimerBar red counter on red fill; `borderMuted` Used key letter (2.95).
+- Tests: `*A11yTest` semantics tests, plus fontScale 2.0 goldens for new screens.
+
 ## Packages
 `dev.talhabayhan.lexi.<module>.<area>` e.g. `dev.talhabayhan.lexi.feature.game.components`.
 
