@@ -2,6 +2,23 @@
 
 > DRAFT. Not legal advice. Re-verify against the final binary (SDK privacy manifests `PrivacyInfo.xcprivacy`) and Apple's current guidelines. Marked VERIFY = uncertain.
 
+## 0. Next release: Firebase Analytics + Crashlytics only (ADR 0023)
+Use this until AdMob / RevenueCat ship (§1 is the full v1.0 set). "Do you or your third-party partners collect data?" → **Yes**.
+No account and no user ID ⇒ nothing is linked to the user; no IDFA (`FirebaseAnalyticsCore`), no ad networks, Google
+signals off ⇒ nothing is used for tracking; **no ATT prompt**.
+
+| Data type | Collected | Linked to user | Tracking | Purpose |
+|---|---|---|---|---|
+| Identifiers → Device ID | Yes (Firebase app-instance ID, IDFV) | No | No | Analytics |
+| Usage Data → Product Interaction | Yes (`docs/ANALYTICS.md` events, sessions) | No | No | Analytics |
+| Diagnostics → Crash Data | Yes (Crashlytics) | No | No | App Functionality, Analytics |
+| Diagnostics → Other Diagnostic Data | Yes (device/OS/app version, app state at crash) | No | No | Analytics |
+| Location → Coarse Location | Yes, unless GA4 "Granular location and device data collection" is off (IP-derived city) | No | No | Analytics |
+| Everything else | No | – | – | – |
+
+Firebase 13 ships its privacy manifests; nothing extra in `PrivacyInfo.xcprivacy` for this SDK set (VERIFY in the
+archive's privacy report: Xcode → Organizer → Generate Privacy Report).
+
 ## 1. App Privacy ("nutrition labels") — App Store Connect → App Privacy
 **Do you or your third-party partners collect data from this app?** Yes.
 

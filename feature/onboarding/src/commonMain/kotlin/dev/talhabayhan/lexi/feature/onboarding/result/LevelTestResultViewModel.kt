@@ -5,6 +5,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.core.domain.repository.OnboardingRepository
+import dev.talhabayhan.lexi.core.domain.telemetry.AnalyticsEvent
+import dev.talhabayhan.lexi.core.domain.telemetry.AnalyticsTracker
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -22,6 +24,7 @@ import kotlinx.coroutines.launch
 internal class LevelTestResultViewModel(
     route: LevelTestResultRoute,
     private val onboarding: OnboardingRepository,
+    private val analytics: AnalyticsTracker,
     private val savedState: SavedStateHandle = SavedStateHandle(),
 ) : ViewModel() {
     private val mutableState = MutableStateFlow(
@@ -73,6 +76,7 @@ internal class LevelTestResultViewModel(
         viewModelScope.launch {
             onboarding.saveSelectedLevel(level)
             onboarding.setOnboardingCompleted(true)
+            analytics.track(AnalyticsEvent.OnboardingComplete)
             effectChannel.send(LevelTestResultEffect.NavigateToHome)
         }
     }

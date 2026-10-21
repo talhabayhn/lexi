@@ -5,6 +5,7 @@ package dev.talhabayhan.lexi.di
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import co.touchlab.kermit.Logger
+import dev.talhabayhan.lexi.IosPlatformServices
 import dev.talhabayhan.lexi.core.data.db.DatabaseFiles
 import dev.talhabayhan.lexi.core.data.db.IosDatabaseFiles
 import dev.talhabayhan.lexi.core.domain.feedback.Haptics
@@ -14,6 +15,8 @@ import dev.talhabayhan.lexi.core.domain.platform.ShareService
 import dev.talhabayhan.lexi.core.domain.platform.UrlOpener
 import dev.talhabayhan.lexi.core.domain.reminder.NotificationPermission
 import dev.talhabayhan.lexi.core.domain.reminder.ReminderScheduler
+import dev.talhabayhan.lexi.core.domain.telemetry.AnalyticsTracker
+import dev.talhabayhan.lexi.core.domain.telemetry.CrashReporter
 import dev.talhabayhan.lexi.core.platform.feedback.GatedHaptics
 import dev.talhabayhan.lexi.core.platform.feedback.GatedSoundPlayer
 import dev.talhabayhan.lexi.core.platform.feedback.IosHaptics
@@ -24,6 +27,8 @@ import dev.talhabayhan.lexi.core.platform.reminder.IosNotificationPermission
 import dev.talhabayhan.lexi.core.platform.reminder.IosReminderScheduler
 import dev.talhabayhan.lexi.core.platform.share.IosShareService
 import dev.talhabayhan.lexi.core.platform.uri.IosUrlOpener
+import dev.talhabayhan.lexi.telemetry.IosAnalyticsTracker
+import dev.talhabayhan.lexi.telemetry.IosCrashReporter
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -58,5 +63,8 @@ internal actual fun rememberPlatformModule(): Module = remember {
         single<ShareService> { IosShareService() }
         single<ReminderScheduler> { IosReminderScheduler() }
         single<NotificationPermission> { IosNotificationPermission() }
+        // Firebase through the Swift bridge (ADR 0023).
+        single<AnalyticsTracker> { IosAnalyticsTracker(IosPlatformServices.services.telemetry) }
+        single<CrashReporter> { IosCrashReporter(IosPlatformServices.services.telemetry) }
     }
 }

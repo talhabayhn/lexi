@@ -8,6 +8,7 @@ import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.core.domain.srs.CardProgress
 import dev.talhabayhan.lexi.core.testing.FakeCardRepository
 import dev.talhabayhan.lexi.core.testing.FakeCategoryRepository
+import dev.talhabayhan.lexi.core.testing.FakeCrashReporter
 import dev.talhabayhan.lexi.core.testing.FakeProgressRepository
 import dev.talhabayhan.lexi.core.testing.testCard
 import dev.talhabayhan.lexi.core.testing.testCategory
@@ -26,6 +27,7 @@ import kotlin.test.assertTrue
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class CategoriesViewModelTest {
+    private val crashReporter = FakeCrashReporter()
     private val cards = FakeCardRepository(
         listOf(
             testCard("APPLE", category = "food-drink"),
@@ -58,7 +60,7 @@ class CategoriesViewModelTest {
     }
 
     private fun viewModel(level: Level = Level.A1, mode: GameMode = GameMode.CLASSIC) =
-        CategoriesViewModel(CategoriesRoute(level, mode), cards, categories, progress)
+        CategoriesViewModel(CategoriesRoute(level, mode), cards, categories, progress, crashReporter)
 
     private fun answered(id: String, correct: Int) = CardProgress(CardId(id), seen = 1, correct = correct)
 
@@ -175,6 +177,7 @@ class CategoriesViewModelTest {
         assertTrue(failed.isLoaded)
         assertTrue(failed.hasError)
         assertTrue(failed.categories.isEmpty())
+        assertEquals(listOf("category content not read"), crashReporter.recorded.map { it.second })
 
         cards.failing = false
         viewModel.onIntent(CategoriesIntent.Retry)

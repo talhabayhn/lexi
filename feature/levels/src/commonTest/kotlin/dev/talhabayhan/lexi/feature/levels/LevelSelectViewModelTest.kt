@@ -6,6 +6,7 @@ import dev.talhabayhan.lexi.core.domain.model.CardId
 import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.core.domain.srs.CardProgress
 import dev.talhabayhan.lexi.core.testing.FakeCardRepository
+import dev.talhabayhan.lexi.core.testing.FakeCrashReporter
 import dev.talhabayhan.lexi.core.testing.FakeProgressRepository
 import dev.talhabayhan.lexi.core.testing.FakeSettingsRepository
 import dev.talhabayhan.lexi.core.testing.testCard
@@ -24,6 +25,7 @@ import kotlin.test.assertTrue
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class LevelSelectViewModelTest {
+    private val crashReporter = FakeCrashReporter()
     private val cards = FakeCardRepository(
         listOf(
             testCard("APPLE"),
@@ -47,7 +49,7 @@ class LevelSelectViewModelTest {
     }
 
     private fun viewModel(route: LevelSelectRoute = LevelSelectRoute()) =
-        LevelSelectViewModel(route, cards, progress, settings)
+        LevelSelectViewModel(route, cards, progress, settings, crashReporter)
 
     private fun answered(id: String, correct: Int) = CardProgress(CardId(id), seen = 1, correct = correct)
 
@@ -156,6 +158,7 @@ class LevelSelectViewModelTest {
         val failed = viewModel.state.value
         assertTrue(failed.hasError)
         assertTrue(failed.levels.all { it.total == 0 })
+        assertEquals(listOf("level content not read"), crashReporter.recorded.map { it.second })
 
         cards.failing = false
         viewModel.onIntent(LevelSelectIntent.Retry)

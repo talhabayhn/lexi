@@ -5,6 +5,8 @@ import androidx.lifecycle.viewModelScope
 import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.core.domain.repository.CardRepository
 import dev.talhabayhan.lexi.core.domain.repository.OnboardingRepository
+import dev.talhabayhan.lexi.core.domain.telemetry.AnalyticsEvent
+import dev.talhabayhan.lexi.core.domain.telemetry.AnalyticsTracker
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.channels.Channel
@@ -24,8 +26,11 @@ import kotlinx.coroutines.launch
  * covers this screen ([OnboardingIntent.ScreenStopped]) the step goes back to the level choice, where "Pes et" and a
  * test that can't start return to (`GAME_RULES.md` §9, owner decision 2).
  */
-internal class OnboardingViewModel(private val onboarding: OnboardingRepository, private val cards: CardRepository) :
-    ViewModel() {
+internal class OnboardingViewModel(
+    private val onboarding: OnboardingRepository,
+    private val cards: CardRepository,
+    private val analytics: AnalyticsTracker,
+) : ViewModel() {
     private val mutableState = MutableStateFlow(OnboardingUiState())
     val state: StateFlow<OnboardingUiState> = mutableState.asStateFlow()
 
@@ -98,6 +103,7 @@ internal class OnboardingViewModel(private val onboarding: OnboardingRepository,
         viewModelScope.launch {
             onboarding.saveSelectedLevel(level)
             onboarding.setOnboardingCompleted(true)
+            analytics.track(AnalyticsEvent.OnboardingComplete)
             effectChannel.trySend(OnboardingEffect.NavigateToHome)
         }
     }

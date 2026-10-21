@@ -11,6 +11,9 @@ import dev.talhabayhan.lexi.core.domain.repository.SettingsRepository
 import dev.talhabayhan.lexi.core.domain.settings.Accent
 import dev.talhabayhan.lexi.core.domain.settings.AppLanguage
 import dev.talhabayhan.lexi.core.domain.settings.Settings
+import dev.talhabayhan.lexi.core.domain.telemetry.AnalyticsEvent
+import dev.talhabayhan.lexi.core.domain.telemetry.AnalyticsTracker
+import dev.talhabayhan.lexi.core.domain.telemetry.CrashReporter
 import dev.talhabayhan.lexi.core.platform.language.syncPlatformAppLanguage
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.channels.Channel
@@ -30,6 +33,8 @@ import kotlinx.coroutines.launch
 internal class SettingsViewModel(
     private val settings: SettingsRepository,
     private val permission: NotificationPermission,
+    private val analytics: AnalyticsTracker,
+    private val crashReporter: CrashReporter,
     private val config: GameConfig = GameConfig(),
 ) : ViewModel() {
     // Starts from the stored values when they are already loaded, so the screen composes once with the real ones.
@@ -42,8 +47,8 @@ internal class SettingsViewModel(
     init {
         viewModelScope.launch {
             settings.settings
-                // A broken read keeps the defaults shown; the switches still try to write. TODO(M7): report it.
-                .catch { }
+                // A broken read keeps the defaults shown; the switches still try to write.
+                .catch { e -> crashReporter.recordException(e, "settings not read") }
                 .collect { value -> mutableState.update { current -> withStored(value, current) } }
         }
     }
@@ -131,8 +136,12 @@ internal class SettingsViewModel(
     private fun turnReminderOn() {
         viewModelScope.launch {
             when (permission.status()) {
-                PermissionStatus.GRANTED -> write { it.copy(dailyReminder = true) }
+                PermissionStatus.GRANTED -> write(onWritten = { analytics.track(AnalyticsEvent.ReminderEnabled) }) {
+                    it.copy(dailyReminder = true)
+                }
+
                 PermissionStatus.CAN_ASK -> effectChannel.trySend(SettingsEffect.NavigateToReminderPrePrompt)
+
                 PermissionStatus.BLOCKED -> mutableState.update { it.copy(notificationsBlocked = true) }
             }
         }
@@ -145,15 +154,18 @@ internal class SettingsViewModel(
         }
     }
 
-    private fun write(transform: (Settings) -> Settings) {
+    private fun write(onWritten: () -> Unit = {}, transform: (Settings) -> Settings) {
         viewModelScope.launch {
             try {
                 settings.update(transform)
             } catch (e: CancellationException) {
                 throw e
             } catch (@Suppress("TooGenericExceptionCaught") e: Exception) {
-                // The switch stays where it was (the state follows the store). TODO(M7): report it.
+                // The switch stays where it was (the state follows the store).
+                crashReporter.recordException(e, "settings not written")
+                return@launch
             }
+            onWritten()
         }
     }
 

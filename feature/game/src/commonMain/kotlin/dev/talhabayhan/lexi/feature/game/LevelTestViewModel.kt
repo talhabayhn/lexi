@@ -21,6 +21,9 @@ import dev.talhabayhan.lexi.core.domain.model.Card
 import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.core.domain.repository.CardRepository
 import dev.talhabayhan.lexi.core.domain.repository.SettingsRepository
+import dev.talhabayhan.lexi.core.domain.telemetry.AnalyticsEvent
+import dev.talhabayhan.lexi.core.domain.telemetry.AnalyticsTracker
+import dev.talhabayhan.lexi.core.domain.telemetry.CrashReporter
 import dev.talhabayhan.lexi.core.domain.time.AppClock
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineDispatcher
@@ -63,7 +66,7 @@ internal sealed interface LevelTestEffect {
  * Records nothing (owner decision 1): no `FinishGame`, `SessionRecord`, SRS, stats, streak or recently-seen history —
  * the only state written is the process-death snapshot in [handle] ([KEY_RUN]: the seed and the applied events as a
  * [SavedGame] without slots, the first event being the run's `Start`, consecutive ticks coalesced). Jokers and the
- * restart are not offered; "Pes et" leaves with [LevelTestEffect.Quit].
+ * restart are not offered; "Pes et" leaves with [LevelTestEffect.Quit]. The placement is sent as `level_test_complete`.
  */
 internal class LevelTestViewModel(
     private val handle: SavedStateHandle,
@@ -74,6 +77,8 @@ internal class LevelTestViewModel(
     private val config: GameConfig,
     private val timeSource: TimeSource.WithComparableMarks,
     private val seeds: SeedSource,
+    private val analytics: AnalyticsTracker,
+    private val crashReporter: CrashReporter,
     /** The restore replay and first mapping run here, never on the main thread. */
     private val cpu: CoroutineDispatcher = Dispatchers.Default,
 ) : ViewModel() {
@@ -205,8 +210,8 @@ internal class LevelTestViewModel(
         } catch (e: CancellationException) {
             throw e
         } catch (e: Exception) {
-            // TODO(M7): report through the crash reporter (Crashlytics behind an interface).
             log.e(e) { "level test not loaded" }
+            crashReporter.recordException(e, "level test not loaded")
             null
         }
         if (loaded == null) showLoadError(GameLoadError.Unreadable) else show(loaded)
@@ -262,9 +267,10 @@ internal class LevelTestViewModel(
                 startIfReady()
             }
 
+            // Restored after the process died at the end: level_test_complete was already sent.
             current.isFinished -> {
                 publish(current)
-                finish(timeUp = false)
+                finish(timeUp = false, track = false)
             }
 
             else -> {
@@ -376,8 +382,8 @@ internal class LevelTestViewModel(
         }
     }
 
-    /** The test is over: time up (motion) and the placement, sent once and never dropped. */
-    private fun finish(timeUp: Boolean) {
+    /** The test is over: time up (motion) and the placement, sent once and never dropped; [track]: analytics. */
+    private fun finish(timeUp: Boolean, track: Boolean = true) {
         if (done) return
         done = true
         quitConfirmation = false
@@ -386,6 +392,7 @@ internal class LevelTestViewModel(
         publish(current)
         if (timeUp) emitMotion(GameEffect.TimeUp)
         val level = checkNotNull(current.result)
+        if (track) analytics.track(AnalyticsEvent.LevelTestComplete(level))
         viewModelScope.launch { effectChannel.send(LevelTestEffect.Finished(level)) }
     }
 

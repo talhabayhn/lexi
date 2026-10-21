@@ -10,6 +10,7 @@ import dev.talhabayhan.lexi.core.domain.repository.SessionRepository
 import dev.talhabayhan.lexi.core.domain.srs.CardProgress
 import dev.talhabayhan.lexi.core.domain.stats.SessionRecord
 import dev.talhabayhan.lexi.core.domain.stats.Stats
+import dev.talhabayhan.lexi.core.domain.telemetry.CrashReporter
 import dev.talhabayhan.lexi.core.domain.time.AppClock
 import kotlinx.collections.immutable.toImmutableList
 import kotlinx.coroutines.CancellationException
@@ -34,6 +35,7 @@ internal class StatsViewModel(
     private val sessions: SessionRepository,
     private val cards: CardRepository,
     private val appClock: AppClock,
+    private val crashReporter: CrashReporter,
 ) : ViewModel() {
     private val mutableState = MutableStateFlow(StatsUiState())
     val state: StateFlow<StatsUiState> = mutableState.asStateFlow()
@@ -59,7 +61,10 @@ internal class StatsViewModel(
                 present(content, answered, records, appClock.epochDay(appClock.nowMs()))
             }
                 // A broken read ends in the error state: there is nothing sensible to show without the numbers.
-                .catch { mutableState.value = StatsUiState(isLoaded = true, hasError = true) } // TODO(M7): report it.
+                .catch { e ->
+                    crashReporter.recordException(e, "stats not read")
+                    mutableState.value = StatsUiState(isLoaded = true, hasError = true)
+                }
                 .collect { mutableState.value = it }
         }
     }
@@ -76,6 +81,7 @@ internal class StatsViewModel(
     } catch (e: CancellationException) {
         throw e
     } catch (@Suppress("TooGenericExceptionCaught") e: Exception) {
+        crashReporter.recordException(e, "stats content not read")
         null
     }
 

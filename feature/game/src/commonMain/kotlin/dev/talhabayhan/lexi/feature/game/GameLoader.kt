@@ -15,6 +15,7 @@ import dev.talhabayhan.lexi.core.domain.repository.JokerRepository
 import dev.talhabayhan.lexi.core.domain.repository.ProgressRepository
 import dev.talhabayhan.lexi.core.domain.repository.SettingsRepository
 import dev.talhabayhan.lexi.core.domain.srs.Srs
+import dev.talhabayhan.lexi.core.domain.telemetry.CrashReporter
 import dev.talhabayhan.lexi.core.domain.time.AppClock
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineDispatcher
@@ -57,6 +58,7 @@ internal class GameLoader(
     private val appClock: AppClock,
     private val config: GameConfig,
     private val seeds: SeedSource,
+    private val crashReporter: CrashReporter,
     private val getDailyWheel: GetDailyWheel? = null,
     private val cpu: CoroutineDispatcher = Dispatchers.Default,
 ) {
@@ -88,8 +90,8 @@ internal class GameLoader(
     } catch (e: CancellationException) {
         throw e
     } catch (e: Exception) {
-        // TODO(M7): report through the crash reporter (Crashlytics behind an interface).
         log.e(e) { "game not prepared" }
+        crashReporter.recordException(e, "game not prepared")
         Opened.Failed
     }
 

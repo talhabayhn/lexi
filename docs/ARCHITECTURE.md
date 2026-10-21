@@ -180,7 +180,7 @@ the platform `DatabaseFiles` (`rememberPlatformModule()`, Android needs the `Con
 | `SoundPlayer` | `SoundPool` | `AVAudioPlayer` (preloaded) |
 | `AdsService` | AdMob rewarded + UMP consent | AdMob iOS SDK via Swift bridge |
 | `PurchaseService` | RevenueCat KMP | RevenueCat KMP |
-| `Analytics`, `CrashReporter` | Firebase Android | Firebase iOS via Swift bridge (provider set from `iOSApp.swift`) |
+| `AnalyticsTracker`, `CrashReporter` | Firebase Android (`core:platform`) | Firebase iOS (SPM) in Swift: `FirebaseTelemetry` implements `IosTelemetry` (`shared` iosMain); ADR 0023 |
 | `ShareService` | share sheet with PNG | `UIActivityViewController` |
 | `ReminderScheduler` | AlarmManager inexact + receivers (boot/time/tz/package replaced) | `UNUserNotificationCenter` calendar triggers; ADR 0021 |
 
@@ -232,10 +232,13 @@ Tokens and components: `docs/design/tokens.md`, `docs/design/components.md`.
   lint, tests, Android assemble, iOS klib compile); `ios.yml` on macOS, path-filtered (framework link +
   `iosSimulatorArm64Test` per push, `xcodebuild` of `iosApp` + simulator launch screenshot artifact nightly or when
   `iosApp/` changes).
-- Secrets (RevenueCat, AdMob, Supabase, Firebase files) via `local.properties` / CI secrets → BuildConfig (BuildKonfig). Never committed.
+- Secrets (RevenueCat, AdMob, Supabase) via `local.properties` / CI secrets → BuildConfig (BuildKonfig). Never committed.
+  Firebase client config (`androidApp/google-services.json`, `iosApp/iosApp/GoogleService-Info.plist`) is committed: it
+  is not secret; its API keys are restricted to the app ids in Google Cloud (ADR 0023).
 
 ## 13. Security & privacy
-- KVKK/GDPR: UMP consent before ads; analytics only after consent where required; privacy policy URL in settings.
+- KVKK/GDPR: UMP consent before ads; Firebase Analytics/Crashlytics run in release without a consent form until UMP ships
+  with AdMob (no ad ID, ADR 0023); privacy policy URL in settings.
 - No account in v1.0. v1.1 anonymous auth; nickname only.
 - Online answers: clients validate locally; room events signed by Supabase auth; cheating in private
   friend rooms is accepted risk (documented in `MULTIPLAYER.md`).

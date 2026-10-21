@@ -13,6 +13,8 @@ plugins {
     alias(libs.plugins.sqldelight) apply false
     alias(libs.plugins.roborazzi) apply false
     alias(libs.plugins.ktlint) apply false
+    alias(libs.plugins.googleServices) apply false
+    alias(libs.plugins.firebaseCrashlytics) apply false
 }
 
 // Root lifecycle tasks so `./gradlew build` also runs the build-logic unit tests (module rules).

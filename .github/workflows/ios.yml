@@ -95,6 +95,16 @@ jobs:
           xcodebuild -project iosApp/iosApp.xcodeproj -target iosApp -configuration Debug \
             -sdk iphonesimulator -arch arm64 CODE_SIGNING_ALLOWED=NO SYMROOT="$PWD/build/xcode" build
 
+      # The SPM resolve result (ADR 0023): commit it when it is missing or changed, so transitive versions are pinned.
+      - name: Upload Package.resolved
+        if: needs.changes.outputs.xcode == 'true'
+        uses: actions/upload-artifact@v7
+        with:
+          name: ios-package-resolved
+          path: iosApp/iosApp.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved
+          if-no-files-found: warn
+          retention-days: 7
+
       # tar keeps the executable bit and symlinks, which upload-artifact drops.
       - name: Package Lexi.app for the screenshot job
         if: needs.changes.outputs.xcode == 'true'

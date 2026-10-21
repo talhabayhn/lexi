@@ -2,6 +2,8 @@ package dev.talhabayhan.lexi.feature.onboarding
 
 import app.cash.turbine.test
 import dev.talhabayhan.lexi.core.domain.model.Level
+import dev.talhabayhan.lexi.core.domain.telemetry.AnalyticsEvent
+import dev.talhabayhan.lexi.core.testing.FakeAnalyticsTracker
 import dev.talhabayhan.lexi.core.testing.FakeCardRepository
 import dev.talhabayhan.lexi.core.testing.FakeOnboardingRepository
 import kotlinx.coroutines.Dispatchers
@@ -20,6 +22,7 @@ import kotlin.test.assertTrue
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class OnboardingViewModelTest {
+    private val analytics = FakeAnalyticsTracker()
     private val onboarding = FakeOnboardingRepository()
     private val cards = FakeCardRepository()
 
@@ -33,7 +36,7 @@ class OnboardingViewModelTest {
         Dispatchers.resetMain()
     }
 
-    private fun viewModel() = OnboardingViewModel(onboarding, cards)
+    private fun viewModel() = OnboardingViewModel(onboarding, cards, analytics)
 
     private fun levelChoice() = viewModel().apply {
         repeat(3) { onIntent(OnboardingIntent.Next) }
@@ -82,6 +85,7 @@ class OnboardingViewModelTest {
             assertEquals(OnboardingEffect.NavigateToHome, awaitItem())
             assertTrue(onboarding.onboardingCompleted.first())
             assertEquals(Level.A1, onboarding.selectedLevel.first())
+            assertEquals(listOf<AnalyticsEvent>(AnalyticsEvent.OnboardingComplete), analytics.events)
         }
     }
 
@@ -158,6 +162,7 @@ class OnboardingViewModelTest {
             assertTrue(onboarding.onboardingCompleted.first())
             assertEquals(Level.B2, onboarding.selectedLevel.first())
             assertEquals(Level.B2, vm.state.value.selectedLevel)
+            assertEquals(listOf<AnalyticsEvent>(AnalyticsEvent.OnboardingComplete), analytics.events)
         }
     }
 
@@ -172,6 +177,7 @@ class OnboardingViewModelTest {
             assertEquals(OnboardingEffect.NavigateToHome, awaitItem())
             expectNoEvents()
             assertEquals(Level.B2, onboarding.selectedLevel.first())
+            assertEquals(1, analytics.events.size)
         }
     }
 
@@ -276,7 +282,7 @@ class OnboardingViewModelTest {
     @Test
     fun `first-run routing navigates to home when already completed`() = runTest {
         val completedRepo = FakeOnboardingRepository(initialCompleted = true)
-        val vm = OnboardingViewModel(completedRepo, cards)
+        val vm = OnboardingViewModel(completedRepo, cards, analytics)
 
         vm.effects.test {
             assertEquals(OnboardingEffect.NavigateToHome, awaitItem())
@@ -286,7 +292,7 @@ class OnboardingViewModelTest {
     @Test
     fun `first-run routing does not navigate away when not completed`() = runTest {
         val freshRepo = FakeOnboardingRepository(initialCompleted = false)
-        val vm = OnboardingViewModel(freshRepo, cards)
+        val vm = OnboardingViewModel(freshRepo, cards, analytics)
 
         assertFalse(freshRepo.onboardingCompleted.first())
         assertEquals(OnboardingStep.Step1, vm.state.value.currentStep)

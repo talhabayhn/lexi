@@ -2,6 +2,24 @@
 
 > DRAFT. Not legal advice. Answers assume the planned SDKs only (AdMob + UMP, Firebase Analytics + Crashlytics, RevenueCat, Play Billing). **VERIFY every row against the final build's merged manifest and each SDK's current "Play data disclosure" guidance** (Google AdMob, Firebase, RevenueCat each publish one) before submitting. Play Console → App content → Data safety.
 
+## 0. Next release: Firebase Analytics + Crashlytics only (ADR 0023)
+Use this section until AdMob / RevenueCat ship; §1–§5 describe the full v1.0 set. Changes against the SDK-free answers:
+
+| Item | Answer |
+|---|---|
+| Does the app collect or share any of the required user data types? | **Yes** (was No) |
+| Encrypted in transit | Yes (Firebase uses HTTPS/TLS) |
+| Deletion | Yes: email request; Firebase data per its retention (set 2 months in Analytics) |
+| **App activity → App interactions** | Collected · not shared · required (no in-app opt-out) · Analytics · events of `docs/ANALYTICS.md` + Firebase sessions/screens |
+| **App info and performance → Crash logs** | Collected · not shared · required · Analytics (stability) · Crashlytics |
+| **App info and performance → Diagnostics** | Collected · not shared · required · Analytics · device/OS/app version, app state at crash |
+| **Device or other IDs** | Collected · not shared · required · Analytics · Firebase app-instance ID, Crashlytics installation UUID (no advertising ID) |
+| **Location → Approximate location** | Collected · not shared · required · Analytics · Google Analytics derives the city from the IP. Answer **No** only if "Granular location and device data collection" is turned off for all regions in GA4 (country only) |
+| Ephemeral processing | No |
+| Advertising ID declaration | **No** — `AD_ID`, `ACCESS_ADSERVICES_AD_ID`, `ACCESS_ADSERVICES_ATTRIBUTION` are removed from the merged manifest (`tools:node="remove"`); verify in the release AAB's manifest |
+| Contains ads | No (unchanged) |
+| "Shared" | No: Firebase processes the data for us (service provider); Google signals and Ads linking stay off |
+
 ## 1. Overview questions
 | Question | Answer |
 |---|---|

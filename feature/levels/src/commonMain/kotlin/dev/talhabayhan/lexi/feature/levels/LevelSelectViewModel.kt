@@ -8,6 +8,7 @@ import dev.talhabayhan.lexi.core.domain.repository.CardRepository
 import dev.talhabayhan.lexi.core.domain.repository.ProgressRepository
 import dev.talhabayhan.lexi.core.domain.repository.SettingsRepository
 import dev.talhabayhan.lexi.core.domain.stats.Stats
+import dev.talhabayhan.lexi.core.domain.telemetry.CrashReporter
 import kotlinx.collections.immutable.toImmutableList
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.channels.Channel
@@ -31,6 +32,7 @@ internal class LevelSelectViewModel(
     private val cards: CardRepository,
     private val progress: ProgressRepository,
     private val settings: SettingsRepository,
+    private val crashReporter: CrashReporter,
 ) : ViewModel() {
     private val mutableState = MutableStateFlow(LevelSelectUiState(selectedMode = route.initialMode))
     val state: StateFlow<LevelSelectUiState> = mutableState.asStateFlow()
@@ -78,7 +80,7 @@ internal class LevelSelectViewModel(
     } catch (e: CancellationException) {
         throw e
     } catch (@Suppress("TooGenericExceptionCaught") e: Exception) {
-        // TODO(M7): report to the crash reporter once it is behind its interface.
+        crashReporter.recordException(e, "level content not read")
         null
     }
 

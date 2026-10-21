@@ -86,7 +86,11 @@ Module mapping (replaces the earlier `composeApp`): `androidApp` = thin Android 
   **Target audience / content rating** (user interaction), privacy policy (SDKs, account data, deletion link),
   Apple App Privacy + ATT (`docs/store/app-privacy-apple.md`). Notifications: POST_NOTIFICATIONS (runtime, Android 13+) +
   RECEIVE_BOOT_COMPLETED for local reminders; no exact alarms; data safety unchanged (local only).
-  Current declarations match the SDK-free test build.
+  **Firebase is in the build since M7 (ADR 0023)**: before the next public release update Play Data safety per
+  `data-safety-google.md` §0 (app interactions, crash logs, diagnostics, device or other IDs, approximate location;
+  collected, not shared, analytics) with Advertising ID still **No** (AD_ID removed from the manifest until AdMob), and
+  Apple App Privacy per `app-privacy-apple.md` §0 (not linked, no tracking, no ATT). The consoles still show the
+  SDK-free answers.
   Store listing: the test-track text omits Pro/ads/analytics paragraphs (`docs/store/listing-*.md`); restore them when those ship.
 - [ ] AdMob rewarded (+1 joker) with UMP consent (13+, G/PG); no interstitials in v1; iOS: no ATT prompt, SKAdNetwork IDs
   in `Info.plist` (`PRODUCT.md` Monetisation rules)
@@ -94,7 +98,8 @@ Module mapping (replaces the earlier `composeApp`): `androidApp` = thin Android 
   reminder 2 days before it ends
 - [ ] Exam packs (`10-exam-packs`) gated by Pro (UI & RevenueCat wiring pending); content compiler pipeline integrated
   with in-repo `content/exam-packs/` (LGS + YDS/YÖKDİL metadata, schema, validation in `content.db`)
-- [ ] Firebase Analytics + Crashlytics behind interfaces; event list in `docs/ANALYTICS.md`
+- [x] Firebase Analytics + Crashlytics behind interfaces; event list in `docs/ANALYTICS.md` (ADR 0023; iOS verified by
+  macOS CI only; console declarations pending, see the re-check item)
 **Done when:** sandbox purchase unlocks Pro on both platforms; ads only where allowed.
 
 ## M8 — Same-device duel, polish, release

@@ -25,9 +25,12 @@ import dev.talhabayhan.lexi.core.domain.repository.SessionRepository
 import dev.talhabayhan.lexi.core.domain.session.FinishGame
 import dev.talhabayhan.lexi.core.domain.session.SessionResult
 import dev.talhabayhan.lexi.core.domain.srs.CardProgress
+import dev.talhabayhan.lexi.core.domain.telemetry.AnalyticsEvent
+import dev.talhabayhan.lexi.core.testing.FakeAnalyticsTracker
 import dev.talhabayhan.lexi.core.testing.FakeAppClock
 import dev.talhabayhan.lexi.core.testing.FakeCardRepository
 import dev.talhabayhan.lexi.core.testing.FakeContentVersionRepository
+import dev.talhabayhan.lexi.core.testing.FakeCrashReporter
 import dev.talhabayhan.lexi.core.testing.FakeDailyRepository
 import dev.talhabayhan.lexi.core.testing.FakeJokerRepository
 import dev.talhabayhan.lexi.core.testing.FakeProgressRepository
@@ -69,6 +72,8 @@ class GameViewModelTest {
     private val settings = FakeSettingsRepository()
     private val appClock = FakeAppClock()
     private val speaker = FakeSpeaker()
+    private val analytics = FakeAnalyticsTracker()
+    private val crashReporter = FakeCrashReporter()
 
     @BeforeTest
     fun setUp() {
@@ -105,6 +110,8 @@ class GameViewModelTest {
         speaker = speaker,
         config = config,
         timeSource = testScheduler.timeSource,
+        analytics = analytics,
+        crashReporter = crashReporter,
         flags = flags,
         preparer = preparer,
     )
@@ -122,6 +129,7 @@ class GameViewModelTest {
         appClock = appClock,
         config = config,
         seeds = seeds,
+        crashReporter = crashReporter,
         getDailyWheel = getDailyWheel,
         cpu = StandardTestDispatcher(testScheduler),
     )
@@ -173,8 +181,10 @@ class GameViewModelTest {
         val notStarted = handle.get<String>(GameViewModel.KEY_GAME)
         vm.onIntent(GameIntent.KeyTapped(0))
         assertEquals(notStarted, handle.get<String>(GameViewModel.KEY_GAME))
+        assertTrue(analytics.events.isEmpty())
 
         vm.onIntent(GameIntent.Foreground)
+        assertEquals(listOf<AnalyticsEvent>(AnalyticsEvent.GameStart(GameMode.CLASSIC, Level.A1)), analytics.events)
 
         assertFalse(vm.state.value.isLoading)
         assertFalse(vm.state.value.isStarting)
@@ -530,6 +540,30 @@ class GameViewModelTest {
     }
 
     @Test
+    fun `game finish is tracked once with mode level correct answers and wall-clock seconds`() = runTest {
+        val vm = started()
+        vm.effects.test {
+            appClock.advanceBy(42_500L)
+            vm.type("APPLE")
+            vm.type("BREAD")
+            vm.type("CHAIR")
+            runCurrent()
+            awaitResult()
+
+            vm.onIntent(GameIntent.Forfeit)
+            advance(10_000L)
+            cancelAndIgnoreRemainingEvents()
+        }
+        assertEquals(
+            listOf(
+                AnalyticsEvent.GameStart(GameMode.CLASSIC, Level.A1),
+                AnalyticsEvent.GameFinish(GameMode.CLASSIC, Level.A1, correct = 3, durationSeconds = 42),
+            ),
+            analytics.events,
+        )
+    }
+
+    @Test
     fun `time up finishes the game once and stops the ticker`() = runTest {
         val vm = started()
         vm.effects.test {
@@ -637,6 +671,8 @@ class GameViewModelTest {
         restored.type("EAD")
         assertEquals('C', restored.state.value.turn?.letter)
         assertEquals(0, sessions.recordCalls)
+        // Only the first screen started a wheel: the restored game is the same one.
+        assertEquals(1, analytics.events.count { it is AnalyticsEvent.GameStart })
     }
 
     @Test
@@ -715,6 +751,7 @@ class GameViewModelTest {
         assertTrue(ui.jokers.none { it.enabled }, "one joker per slot")
         // Saved without waiting for the scheduler (undispatched, NonCancellable).
         assertEquals(1, jokers.inventory.value?.count(JokerType.REVEAL_LETTER))
+        assertEquals(AnalyticsEvent.JokerUsed(JokerType.REVEAL_LETTER), analytics.events.last())
     }
 
     @Test
@@ -856,6 +893,10 @@ class GameViewModelTest {
             val result = awaitResult()
             assertEquals("FORFEIT", result.reason)
             assertEquals(1, result.correct)
+            assertEquals(
+                AnalyticsEvent.GameFinish(GameMode.CLASSIC, Level.A1, correct = 1, durationSeconds = 0),
+                analytics.events.last(),
+            )
             assertEquals(2, result.wrong)
             assertEquals(listOf("a1-bread", "a1-chair"), result.missedCards)
             assertEquals(1, sessions.recordCalls)
@@ -945,6 +986,9 @@ class GameViewModelTest {
             assertEquals(config.classicTimeLimitSeconds * 1_000L - 1_000L, vm.remainingMs)
             cancelAndIgnoreRemainingEvents()
         }
+        // A new wheel: a second game_start, and the dropped game sends no game_finish.
+        assertEquals(2, analytics.events.count { it is AnalyticsEvent.GameStart })
+        assertTrue(analytics.events.none { it is AnalyticsEvent.GameFinish })
     }
 
     @Test
@@ -1053,6 +1097,7 @@ class GameViewModelTest {
             assertTrue(result.recorded)
             assertEquals(2, sessions.recordCalls)
             assertEquals(1, sessions.sessions.size)
+            assertEquals(listOf("finishing the game failed"), crashReporter.recorded.map { it.second })
             assertNull(handle.get<String>(GameViewModel.KEY_GAME))
             cancelAndIgnoreRemainingEvents()
         }
@@ -1099,6 +1144,8 @@ class GameViewModelTest {
             assertEquals(3, result.correct)
             assertEquals(1, sessions.sessions.size)
             assertNull(restoredHandle.get<String>(GameViewModel.KEY_GAME))
+            // game_finish went out when the first screen finished the game; the restore doesn't send it again.
+            assertEquals(1, analytics.events.count { it is AnalyticsEvent.GameFinish })
         }
     }
 
@@ -1227,6 +1274,7 @@ class GameViewModelTest {
         assertEquals(GameLoadError.Unreadable, vm.state.value.loadError)
         assertFalse(vm.state.value.isLoading)
         assertEquals(0, sessions.recordCalls)
+        assertEquals(listOf("game not loaded"), crashReporter.recorded.map { it.second })
 
         cards.failing = false
         vm.onIntent(GameIntent.Retry)

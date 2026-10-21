@@ -37,7 +37,7 @@ when done. Sources: `ROADMAP.md`, `screen-map.md`, `DECISIONS.md`, `store/owner-
 | M7.5 | Paywall screen (design debt) | AG, design from Owner | M | M7.4, `COPY.md` §2 |
 | M7.6 | AdMob rewarded (+1 joker) with UMP consent; enable `FeatureFlags.rewardedAdJokers` | AG | L | M7.3, AdMob account (R2) |
 | M7.7 | Exam packs screen `10-exam-packs` wired with Pro lock and A–E preview | AG | M | C3, M7.4 |
-| M7.8 | Firebase Analytics + Crashlytics behind interfaces; events per `ANALYTICS.md`, consent-gated | AG | M | M7.6 consent, Firebase project (R3) |
+| M7.8 | Firebase Analytics + Crashlytics behind interfaces; events per `ANALYTICS.md`; no consent form until M7.6 (owner, ADR 0023) | AG | M | Firebase project (R3) |
 | M7.9 | Category Pro lock hook (no shipped category is Pro today) | AG | S | M7.4 |
 | M7.10 | Sandbox test pass for purchases/ads/consent | Owner | M | M7.4–M7.8, `TEST_PLAN.md` §5 |
 

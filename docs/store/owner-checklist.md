@@ -19,7 +19,7 @@
 | 2 | ATT on iOS | Yes, with UMP first (`app-privacy-apple.md` §2) | ASC → App Privacy, `Info.plist` |
 | 3 | Target audience | 13+, not Made for Kids | Play → App content → Target audience; ASC Age Rating |
 | 4 | Interstitial ads | `PRODUCT.md` allows one every 3 games; privacy/data-safety text says rewarded only — decide and align | Docs + AdMob units |
-| 5 | Analytics/Crashlytics behind consent | Consent-gate Analytics; Crashlytics optional (VERIFY) | UMP config, Firebase settings |
+| 5 | Analytics/Crashlytics behind consent | Decided 2026-10-21: on in release without a consent form until UMP ships with AdMob (ADR 0023); revisit then | UMP config, Firebase settings |
 | 6 | Data retention in Firebase | Event data 2 months (min) unless you need 14 | Firebase Console → Analytics → Data settings |
 | 7 | Pro price points & trial | Set per country; lifetime as non-consumable | Play → Monetize → Subscriptions / In-app products; ASC → Subscriptions + In-App Purchases; RevenueCat offerings |
 | 8 | Exam pack names in listings | Left out until trademark/affiliation checked | Listing files |

@@ -10,8 +10,11 @@ import dev.talhabayhan.lexi.core.domain.game.JokerType
 import dev.talhabayhan.lexi.core.domain.model.Card
 import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.core.domain.settings.Settings
+import dev.talhabayhan.lexi.core.domain.telemetry.AnalyticsEvent
+import dev.talhabayhan.lexi.core.testing.FakeAnalyticsTracker
 import dev.talhabayhan.lexi.core.testing.FakeAppClock
 import dev.talhabayhan.lexi.core.testing.FakeCardRepository
+import dev.talhabayhan.lexi.core.testing.FakeCrashReporter
 import dev.talhabayhan.lexi.core.testing.FakeSettingsRepository
 import dev.talhabayhan.lexi.core.testing.FakeSpeaker
 import dev.talhabayhan.lexi.core.testing.testCard
@@ -36,6 +39,8 @@ import kotlin.test.assertTrue
 /** GAME_RULES.md §9: the level test run on the game screen (LevelTestRunner behind a ViewModel; records nothing). */
 @OptIn(ExperimentalCoroutinesApi::class)
 class LevelTestViewModelTest {
+    private val analytics = FakeAnalyticsTracker()
+    private val crashReporter = FakeCrashReporter()
     private val config = GameConfig()
 
     /** Every level has a "<letter>ON" card per letter: "ON" typed after the given letter is right, "NO" is wrong. */
@@ -70,6 +75,8 @@ class LevelTestViewModelTest {
             seedsDrawn++
             SEED
         },
+        analytics = analytics,
+        crashReporter = crashReporter,
         cpu = StandardTestDispatcher(testScheduler),
     )
 
@@ -276,6 +283,7 @@ class LevelTestViewModelTest {
         val vm = viewModel()
         runCurrent()
         assertEquals(GameLoadError.Unreadable, vm.state.value.loadError)
+        assertEquals(listOf("level test not loaded"), crashReporter.recorded.map { it.second })
         cards.failing = false
         vm.onIntent(GameIntent.Retry)
         runCurrent()
@@ -324,7 +332,8 @@ class LevelTestViewModelTest {
 
     @Test
     fun `a whole test ends with its level and records nothing`() = runTest {
-        val vm = started()
+        val handle = SavedStateHandle()
+        val vm = started(handle)
         vm.effects.test {
             // All correct: up two levels per two answers until NAT, then the early stop (GAME_RULES.md §9).
             var finished: LevelTestEffect.Finished? = null
@@ -347,6 +356,17 @@ class LevelTestViewModelTest {
         assertEquals(1, cards.reads)
         assertEquals(Settings(), settings.settings.value)
         assertEquals(11, speaker.spoken.size)
+        assertEquals(listOf<AnalyticsEvent>(AnalyticsEvent.LevelTestComplete(Level.NAT)), analytics.events)
+
+        // Restored after the process died at the end: the placement is sent again, the analytics event is not.
+        val saved = assertNotNull(handle.get<String>(LevelTestViewModel.KEY_RUN))
+        val restored = viewModel(SavedStateHandle(mapOf(LevelTestViewModel.KEY_RUN to saved)))
+        restored.effects.test {
+            runCurrent()
+            assertEquals(LevelTestEffect.Finished(Level.NAT), awaitItem())
+            cancelAndIgnoreRemainingEvents()
+        }
+        assertEquals(1, analytics.events.size)
     }
 
     private companion object {

@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		D04DBC9722E4BBDEAF74EB25 /* FirebaseAnalyticsCore in Frameworks */ = {isa = PBXBuildFile; productRef = 281B771B9A7CDD85FC57BF34 /* FirebaseAnalyticsCore */; };
+		E53119840C664E17ABECCEA1 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 983DE947F798B08624E4F629 /* FirebaseCrashlytics */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		FC8D3DD8E37B872A3F8ABEE3 /* Lexi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lexi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -41,6 +46,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D04DBC9722E4BBDEAF74EB25 /* FirebaseAnalyticsCore in Frameworks */,
+				E53119840C664E17ABECCEA1 /* FirebaseCrashlytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,6 +82,7 @@
 				A04DD42BC4D7B29E4603859A /* Sources */,
 				EBF6593D53965680BF76718E /* Frameworks */,
 				772EF06203CB66D6BC057E72 /* Resources */,
+				3B00711846BBD505F0FD0C60 /* Upload Crashlytics dSYMs */,
 			);
 			buildRules = (
 			);
@@ -85,6 +93,8 @@
 			);
 			name = iosApp;
 			packageProductDependencies = (
+				281B771B9A7CDD85FC57BF34 /* FirebaseAnalyticsCore */,
+				983DE947F798B08624E4F629 /* FirebaseCrashlytics */,
 			);
 			productName = iosApp;
 			productReference = FC8D3DD8E37B872A3F8ABEE3 /* Lexi.app */;
@@ -114,6 +124,9 @@
 			);
 			mainGroup = 08964963BF408F4EFD714F1E;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				611762EF7DDDA91E4D45FE48 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 5E583611BB50B2F2B0461DF5 /* Products */;
 			projectDirPath = "";
@@ -153,6 +166,30 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if [ \"YES\" = \"$OVERRIDE_KOTLIN_BUILD_IDE_SUPPORTED\" ]; then\n  echo \"Skipping Gradle build task invocation due to OVERRIDE_KOTLIN_BUILD_IDE_SUPPORTED environment variable set to \\\"YES\\\"\"\n  exit 0\nfi\ncd \"$SRCROOT/..\"\n./gradlew :shared:embedAndSignAppleFrameworkForXcode\n";
+		};
+		3B00711846BBD505F0FD0C60 /* Upload Crashlytics dSYMs */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${PRODUCT_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist",
+				"$(TARGET_BUILD_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/GoogleService-Info.plist",
+				"$(TARGET_BUILD_DIR)/$(EXECUTABLE_PATH)",
+			);
+			name = "Upload Crashlytics dSYMs";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Crashlytics dSYM upload (ADR 0023): Release archives only (ACTION=install); other builds skip it.\nif [ \"$CONFIGURATION\" != \"Release\" ] || [ \"$ACTION\" != \"install\" ]; then\n  exit 0\nfi\nRUN=\"${BUILD_DIR%Build/*}SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\nif [ ! -f \"$RUN\" ]; then\n  echo \"warning: Crashlytics run script not found ($RUN); dSYMs not uploaded\"\n  exit 0\nfi\nsh \"$RUN\" || echo \"warning: Crashlytics dSYM upload failed\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -368,6 +405,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		611762EF7DDDA91E4D45FE48 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = exactVersion;
+				version = 13.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		281B771B9A7CDD85FC57BF34 /* FirebaseAnalyticsCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 611762EF7DDDA91E4D45FE48 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsCore;
+		};
+		983DE947F798B08624E4F629 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 611762EF7DDDA91E4D45FE48 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1DB69EE7E4B6C981437859A4 /* Project object */;
 }

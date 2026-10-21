@@ -7,6 +7,7 @@ import dev.talhabayhan.lexi.core.domain.srs.CardProgress
 import dev.talhabayhan.lexi.core.testing.FakeAppClock
 import dev.talhabayhan.lexi.core.testing.FakeCardRepository
 import dev.talhabayhan.lexi.core.testing.FakeCategoryRepository
+import dev.talhabayhan.lexi.core.testing.FakeCrashReporter
 import dev.talhabayhan.lexi.core.testing.FakeProgressRepository
 import dev.talhabayhan.lexi.core.testing.FakeSpeaker
 import dev.talhabayhan.lexi.core.testing.testCard
@@ -28,6 +29,7 @@ import kotlin.test.assertTrue
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class NotebookViewModelTest {
+    private val crashReporter = FakeCrashReporter()
     private val clock = FakeAppClock()
     private val today = clock.epochDay(clock.nowMs())
     private val cards = FakeCardRepository(
@@ -67,7 +69,7 @@ class NotebookViewModelTest {
         Dispatchers.resetMain()
     }
 
-    private fun viewModel() = NotebookViewModel(progress, cards, categories, clock, speaker)
+    private fun viewModel() = NotebookViewModel(progress, cards, categories, clock, speaker, crashReporter)
 
     private val NotebookViewModel.ids: List<String> get() = state.value.words.map { it.id.value }
 
@@ -170,7 +172,7 @@ class NotebookViewModelTest {
             assertEquals(NotebookEffect.StartReview, awaitItem())
         }
 
-        val none = NotebookViewModel(FakeProgressRepository(), cards, categories, clock, speaker)
+        val none = NotebookViewModel(FakeProgressRepository(), cards, categories, clock, speaker, crashReporter)
         none.effects.test {
             none.onIntent(NotebookIntent.StartReview)
             expectNoEvents()
@@ -225,7 +227,7 @@ class NotebookViewModelTest {
 
     @Test
     fun `an empty notebook is loaded and empty`() {
-        val vm = NotebookViewModel(FakeProgressRepository(), cards, categories, clock, speaker)
+        val vm = NotebookViewModel(FakeProgressRepository(), cards, categories, clock, speaker, crashReporter)
 
         assertTrue(vm.state.value.isLoaded)
         assertTrue(vm.state.value.words.isEmpty())
@@ -249,6 +251,7 @@ class NotebookViewModelTest {
         assertTrue(viewModel.state.value.isLoaded)
         assertTrue(viewModel.state.value.hasError)
         assertTrue(viewModel.state.value.words.isEmpty())
+        assertEquals(listOf("notebook not loaded"), crashReporter.recorded.map { it.second })
 
         progress.failing = false
         viewModel.onIntent(NotebookIntent.Retry)

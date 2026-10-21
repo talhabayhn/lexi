@@ -11,9 +11,12 @@ import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.core.domain.share.ShareCaption
 import dev.talhabayhan.lexi.core.domain.share.ShareCell
 import dev.talhabayhan.lexi.core.domain.share.SlotOutcome
+import dev.talhabayhan.lexi.core.domain.telemetry.AnalyticsEvent
 import dev.talhabayhan.lexi.core.domain.time.civilDateOfEpochDay
+import dev.talhabayhan.lexi.core.testing.FakeAnalyticsTracker
 import dev.talhabayhan.lexi.core.testing.FakeAppClock
 import dev.talhabayhan.lexi.core.testing.FakeCardRepository
+import dev.talhabayhan.lexi.core.testing.FakeCrashReporter
 import dev.talhabayhan.lexi.core.testing.FakeProgressRepository
 import dev.talhabayhan.lexi.core.testing.FakeShareService
 import dev.talhabayhan.lexi.core.testing.FakeSpeaker
@@ -40,6 +43,8 @@ import kotlin.test.assertTrue
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class ResultViewModelTest {
+    private val analytics = FakeAnalyticsTracker()
+    private val crashReporter = FakeCrashReporter()
     private val answers = listOf("APPLE", "BREAD", "CHAIR", "DOG", "EGG", "FISH", "GOAT")
     private val cards = FakeCardRepository(answers.map { testCard(it) })
     private val speaker = FakeSpeaker()
@@ -85,8 +90,10 @@ class ResultViewModelTest {
         wheelOutcomes = listOf("CORRECT", "WRONG", "PASSED", "TIME_UP"),
     )
 
-    private fun TestScope.viewModel(route: ResultRoute = route()) =
-        ResultViewModel(route, cards, speaker, config, progress, clock, streaks, shareService).also { runCurrent() }
+    private fun newViewModel(route: ResultRoute = route()) =
+        ResultViewModel(route, cards, speaker, config, progress, clock, streaks, shareService, analytics, crashReporter)
+
+    private fun TestScope.viewModel(route: ResultRoute = route()) = newViewModel(route).also { runCurrent() }
 
     @Test
     fun `the header and stats come from the route`() = runTest {
@@ -242,6 +249,7 @@ class ResultViewModelTest {
         assertTrue(vm.state.value.rows.isEmpty())
         // The counts are still shown.
         assertEquals(19, vm.state.value.correct)
+        assertEquals(listOf("review cards not loaded"), crashReporter.recorded.map { it.second })
 
         cards.failing = false
         vm.onIntent(ResultIntent.Retry)
@@ -352,6 +360,7 @@ class ResultViewModelTest {
             assertContentEquals(png, sharedPng)
             assertEquals("caption and message", sharedText)
             assertFalse(vm.state.value.isSharing)
+            assertEquals(listOf<AnalyticsEvent>(AnalyticsEvent.Share), analytics.events)
             expectNoEvents()
         }
     }
@@ -392,6 +401,7 @@ class ResultViewModelTest {
 
             assertEquals(ResultEffect.ShareFailed, awaitItem())
             assertFalse(vm.state.value.isSharing)
+            assertTrue(analytics.events.isEmpty())
         }
     }
 
@@ -411,7 +421,7 @@ class ResultViewModelTest {
 
     @Test
     fun `a share tapped before the card is built waits for the card instead of failing`() = runTest {
-        val vm = ResultViewModel(route(), cards, speaker, config, progress, clock, streaks, shareService)
+        val vm = newViewModel()
         vm.effects.test {
             vm.onIntent(ResultIntent.Share)
 

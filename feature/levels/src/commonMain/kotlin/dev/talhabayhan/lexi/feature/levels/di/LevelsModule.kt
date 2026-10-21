@@ -17,6 +17,7 @@ val levelsModule: Module = module {
             cards = get(),
             progress = get(),
             settings = get(),
+            crashReporter = get(),
         )
     }
     viewModel {
@@ -25,6 +26,7 @@ val levelsModule: Module = module {
             cards = get(),
             categories = get(),
             progress = get(),
+            crashReporter = get(),
         )
     }
 }

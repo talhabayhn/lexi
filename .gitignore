@@ -8,8 +8,7 @@ local.properties
 captures/
 *.apk
 *.aab
-**/google-services.json
-**/GoogleService-Info.plist
+# Firebase client config (google-services.json, GoogleService-Info.plist) is committed on purpose: not secret (ADR 0023).
 iosApp/Pods/
 xcuserdata/
 DerivedData/

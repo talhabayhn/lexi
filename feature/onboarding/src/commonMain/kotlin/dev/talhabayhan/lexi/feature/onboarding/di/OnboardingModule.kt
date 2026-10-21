@@ -18,6 +18,7 @@ public val onboardingModule: Module = module {
         LevelTestResultViewModel(
             route = handle.toRoute<LevelTestResultRoute>(),
             onboarding = get(),
+            analytics = get(),
             savedState = handle,
         )
     }

@@ -124,7 +124,9 @@ VERIFY the current wording in Play Console Help before starting; the rule has ch
   git push origin v1.0.1
   ```
   Both release workflows start. Artifacts (AAB, R8 `mapping.txt`, iOS archive) are under the run's
-  **Summary → Artifacts**. Keep `mapping.txt` (Crashlytics/Play de-obfuscation; CI also uploads it to Play).
+  **Summary → Artifacts**. Keep `mapping.txt` (Crashlytics/Play de-obfuscation; CI also uploads it to Play, and signed
+  builds upload it to Crashlytics via `-Plexi.crashlyticsUpload=true`). The iOS archive uploads its dSYMs to Crashlytics
+  in the "Upload Crashlytics dSYMs" build phase (ADR 0023).
 - Manual run without a tag: **Actions → release-android → Run workflow**, enter a version.
 
 ## 7. Rollback

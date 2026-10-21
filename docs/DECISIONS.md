@@ -13,6 +13,7 @@ row when a decision is made; change `Status` instead of deleting rows (`Accepted
 | 2026-10-21 | **Trial**: 7-day free trial on yearly only, reminder notification 2 days before it ends; later A/B test 3 vs 7 days in RevenueCat | Trust and fewer refunds; yearly is the target plan | Trial on all plans; no trial | Accepted (owner) |
 | 2026-10-21 | **No interstitials in v1** (rewarded only). Later experiment: from day 3, after the user leaves the result screen, max 1 per 3 games, never in daily/level test/during a wheel | Calm game, simpler consent and store forms | Interstitial every 3rd game in v1 | Accepted (owner; closes O1) |
 | 2026-10-21 | **iOS: no ATT prompt in v1**, SKAdNetwork IDs in Info.plist; **audience 13+**, ad content rating G/PG, UMP consent | Fewer drop-offs, simpler privacy label; teen-safe ads | ATT after UMP | Accepted (owner; closes O2) |
+| 2026-10-21 | **Telemetry (M7)**: Firebase Analytics + Crashlytics on in release builds, off in debug (opt-in flag); v1 event list in `ANALYTICS.md`; no advertising ID, ad-personalisation signals off, no ATT; no consent form until UMP ships with AdMob; Firebase config files committed (not secret; API keys restricted in Google Cloud) | Crash data and product numbers from the first public build; simplest privacy labels | Consent-gate analytics now; secrets via CI | Accepted (owner; ADR 0023) |
 | 2026-10-21 | **Multi-language roadmap** after the v1.0 TR launch: X→English, then English→English (B1+), then X→Y | Global growth without an engine rewrite first | TR only; jump to X→Y | Accepted (owner; ADR 0022) |
 | 2026-10-20 | **M7 settings & reminders**: reminder row opens a ReminderSheet bottom sheet (design debt) with on/off + times 08:00–21:30 in 30-min steps, default 20:00 (quiet hours 22–08 can't be hit; configurable quiet-hours row waits for a design); notification pre-prompt from Settings and once on Home after the first completed wheel (never during onboarding); reminder content per `COPY.md` §1 without `notif_goal`, after 3 days without play only the 3/7/14-day comeback messages, the same message key never two days in a row; Pro card keeps "YAKINDA" and moves to the RevenueCat/paywall item; clue language row shows "Türkçe" with no chevron until a second language exists | No design for quiet hours, time picker or paywall; no dead ends; local-only planned notifications | Configurable quiet hours now; paywall stub route; proactive prompt in onboarding | Accepted (owner; ADR 0021) |
 | 2026-10 | **Shared mixed-level daily wheel**: 26 slots with fixed counts A1×6, A2×5, B1×5, B2×4, C1×3, NAT×3; stored with `level = "SHARED"` sentinel | One identical wheel for everybody on a date (shareable, comparable); every player meets their level and a stretch | Wheel per level (4 wheels/day to play and verify); player-level only wheel | Accepted |
@@ -65,7 +66,7 @@ row when a decision is made; change `Status` instead of deleting rows (`Accepted
 | 2026-10-14 | 0003 | MVI/UDF with androidx ViewModel (KMP) and Koin | Accepted |
 | 2026-10-14 | 0004 | SQLDelight with separate read-only content DB and user DB | Accepted |
 | 2026-10-14 | 0005 | Offline-first v1.0; Supabase for online features from v1.1 | Accepted |
-| 2026-10-14 | 0006 | Firebase Analytics/Crashlytics behind interfaces | Accepted |
+| 2026-10-14 | 0006 | Firebase Analytics/Crashlytics behind interfaces | Accepted (amended by 0023) |
 | 2026-10-14 | 0007 | Freemium: rewarded ads + Lexi Pro via RevenueCat | Accepted |
 | 2026-10-14 | 0008 | Open word lists, AI-drafted clues, human review | Accepted |
 | 2026-10-14 | 0009 | Multi-module Gradle with convention plugins | Accepted |
@@ -81,6 +82,7 @@ row when a decision is made; change `Status` instead of deleting rows (`Accepted
 | 2026-10-15 | 0019 | Game screen runtime: timer, lifecycle, effects | Accepted |
 | 2026-10-20 | 0021 | Local reminders as planned one-shot notifications | Accepted |
 | 2026-10-21 | 0022 | Multi-language roadmap (X→EN, EN→EN, X→Y) | Accepted |
+| 2026-10-21 | 0023 | Firebase SDK integration (Android Gradle, iOS SPM) and telemetry privacy defaults | Accepted |
 
 ## Open decisions
 

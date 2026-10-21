@@ -1,5 +1,10 @@
+import com.google.firebase.crashlytics.buildtools.gradle.CrashlyticsExtension
+
 plugins {
     id("lexi.android.application")
+    // Firebase (ADR 0023): google-services.json -> resources; Crashlytics build id + R8 mapping upload.
+    alias(libs.plugins.googleServices)
+    alias(libs.plugins.firebaseCrashlytics)
 }
 
 dependencies {
@@ -14,6 +19,13 @@ dependencies {
 // Release signing comes only from the environment (CI writes the keystore from a secret, see docs/RELEASE.md).
 // Without LEXI_KEYSTORE_FILE the release build is left unsigned, so it still builds on any machine.
 val releaseKeystore = providers.environmentVariable("LEXI_KEYSTORE_FILE").orNull
+
+// Telemetry (ADR 0023, docs/ANALYTICS.md): release builds collect; debug builds only with -Plexi.telemetry=true.
+val telemetryInDebug = providers.gradleProperty("lexi.telemetry").orNull == "true"
+
+// The R8 mapping goes to Crashlytics only for store builds (release-android passes -Plexi.crashlyticsUpload=true), so
+// `./gradlew build` and the push CI never need the network.
+val crashlyticsUpload = providers.gradleProperty("lexi.crashlyticsUpload").orNull == "true"
 
 android {
     namespace = "dev.talhabayhan.lexi"
@@ -40,7 +52,14 @@ android {
         }
     }
     buildTypes {
+        debug {
+            manifestPlaceholders["telemetryEnabled"] = telemetryInDebug.toString()
+        }
         release {
+            manifestPlaceholders["telemetryEnabled"] = "true"
+            configure<CrashlyticsExtension> {
+                mappingFileUploadEnabled = crashlyticsUpload
+            }
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(

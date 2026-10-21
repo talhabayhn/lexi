@@ -37,6 +37,7 @@ val gameModule: Module = module {
             appClock = get(),
             config = get(),
             seeds = get(),
+            crashReporter = get(),
             getDailyWheel = get(),
         )
     }
@@ -54,6 +55,8 @@ val gameModule: Module = module {
             speaker = get(),
             config = get(),
             timeSource = get(),
+            analytics = get(),
+            crashReporter = get(),
             flags = get(),
             preparer = get(),
         )
@@ -68,6 +71,8 @@ val gameModule: Module = module {
             config = get(),
             timeSource = get(),
             seeds = get(),
+            analytics = get(),
+            crashReporter = get(),
         )
     }
     viewModel {
@@ -80,6 +85,8 @@ val gameModule: Module = module {
             clock = get(),
             streaks = get(),
             shareService = get(),
+            analytics = get(),
+            crashReporter = get(),
         )
     }
 }

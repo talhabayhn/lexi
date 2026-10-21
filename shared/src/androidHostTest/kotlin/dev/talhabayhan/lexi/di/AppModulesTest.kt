@@ -9,6 +9,8 @@ import dev.talhabayhan.lexi.core.domain.platform.ShareService
 import dev.talhabayhan.lexi.core.domain.platform.UrlOpener
 import dev.talhabayhan.lexi.core.domain.reminder.NotificationPermission
 import dev.talhabayhan.lexi.core.domain.reminder.ReminderScheduler
+import dev.talhabayhan.lexi.core.domain.telemetry.AnalyticsTracker
+import dev.talhabayhan.lexi.core.domain.telemetry.CrashReporter
 import dev.talhabayhan.lexi.feature.game.GameRoute
 import dev.talhabayhan.lexi.feature.game.result.ResultRoute
 import dev.talhabayhan.lexi.feature.levels.CategoriesRoute
@@ -34,6 +36,8 @@ class AppModulesTest {
                 ShareService::class,
                 ReminderScheduler::class,
                 NotificationPermission::class,
+                AnalyticsTracker::class,
+                CrashReporter::class,
                 Haptics::class,
                 SoundPlayer::class,
                 SavedStateHandle::class,

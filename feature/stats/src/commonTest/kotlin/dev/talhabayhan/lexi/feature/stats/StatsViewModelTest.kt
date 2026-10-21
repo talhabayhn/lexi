@@ -12,6 +12,7 @@ import dev.talhabayhan.lexi.core.domain.session.SessionResult
 import dev.talhabayhan.lexi.core.domain.srs.CardProgress
 import dev.talhabayhan.lexi.core.testing.FakeAppClock
 import dev.talhabayhan.lexi.core.testing.FakeCardRepository
+import dev.talhabayhan.lexi.core.testing.FakeCrashReporter
 import dev.talhabayhan.lexi.core.testing.FakeProgressRepository
 import dev.talhabayhan.lexi.core.testing.FakeSessionRepository
 import dev.talhabayhan.lexi.core.testing.testCard
@@ -31,6 +32,7 @@ import kotlin.test.assertTrue
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class StatsViewModelTest {
+    private val crashReporter = FakeCrashReporter()
     private val clock = FakeAppClock()
     private val today = clock.epochDay(clock.nowMs())
     private val cards = FakeCardRepository(
@@ -78,7 +80,7 @@ class StatsViewModelTest {
         progress: FakeProgressRepository = FakeProgressRepository(),
         sessions: FakeSessionRepository = FakeSessionRepository(),
         cards: CardRepository = this.cards,
-    ) = StatsViewModel(progress, sessions, cards, clock)
+    ) = StatsViewModel(progress, sessions, cards, clock, crashReporter)
 
     private val played = listOf(
         progress("a1-egg", correct = 4, wrong = 1),
@@ -248,6 +250,7 @@ class StatsViewModelTest {
         store.failing = true
         val viewModel = viewModel(store)
         assertTrue(viewModel.state.value.hasError)
+        assertEquals(listOf("stats not read"), crashReporter.recorded.map { it.second })
 
         store.failing = false
         viewModel.onIntent(StatsIntent.Retry)

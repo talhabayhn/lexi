@@ -14,6 +14,10 @@ kotlin {
         androidMain.dependencies {
             // FileProvider + ShareCompat-free chooser intents for AndroidShareService (ADR 0020).
             implementation(libs.androidx.core.ktx)
+            // Firebase Analytics + Crashlytics behind AnalyticsTracker / CrashReporter (ADR 0023).
+            implementation(project.dependencies.platform(libs.firebase.bom))
+            implementation(libs.firebase.analytics)
+            implementation(libs.firebase.crashlytics)
         }
         getByName("androidHostTest").dependencies {
             implementation(libs.kotlin.testJunit)

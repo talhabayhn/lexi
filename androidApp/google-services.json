@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "30382170902",
+    "project_id": "lexi-ff9c9",
+    "storage_bucket": "lexi-ff9c9.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:30382170902:android:497063086e1558b0bb6637",
+        "android_client_info": {
+          "package_name": "dev.talhabayhan.lexi"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJlLnqIBkEBgyLv1Zq6SUEuNkMOaKnz4U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

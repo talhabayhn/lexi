@@ -75,6 +75,7 @@ jobs:
           echo "$KEYSTORE_B64" | base64 --decode > "$RUNNER_TEMP/release.jks"
           echo "LEXI_KEYSTORE_FILE=$RUNNER_TEMP/release.jks" >> "$GITHUB_ENV"
 
+      # Signed builds also upload the R8 mapping to Crashlytics (ADR 0023); unsigned push builds stay offline.
       - name: Build release AAB (R8)
         env:
           LEXI_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
@@ -83,6 +84,7 @@ jobs:
         run: >-
           ./gradlew :androidApp:bundleRelease :androidApp:assembleRelease
           -Plexi.versionName="$VERSION_NAME" -Plexi.versionCode="$VERSION_CODE"
+          -Plexi.crashlyticsUpload="$SIGNED"
 
       - name: Verify signature
         if: env.SIGNED == 'true'

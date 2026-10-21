@@ -12,6 +12,7 @@ import dev.talhabayhan.lexi.core.domain.repository.CategoryRepository
 import dev.talhabayhan.lexi.core.domain.repository.ProgressRepository
 import dev.talhabayhan.lexi.core.domain.srs.CardProgress
 import dev.talhabayhan.lexi.core.domain.srs.Srs
+import dev.talhabayhan.lexi.core.domain.telemetry.CrashReporter
 import dev.talhabayhan.lexi.core.domain.time.AppClock
 import kotlinx.collections.immutable.persistentListOf
 import kotlinx.collections.immutable.toImmutableList
@@ -40,6 +41,7 @@ internal class NotebookViewModel(
     private val categories: CategoryRepository,
     private val appClock: AppClock,
     private val speaker: Speaker,
+    private val crashReporter: CrashReporter,
 ) : ViewModel() {
     private val mutableState = MutableStateFlow(NotebookUiState())
     val state: StateFlow<NotebookUiState> = mutableState.asStateFlow()
@@ -74,10 +76,11 @@ internal class NotebookViewModel(
             ) { entries, tab, query, open ->
                 present(entries, tab, query, open, appClock.epochDay(appClock.nowMs()))
             }
-                // A broken read (notebook or word content) shows the error: hidden words would look like an empty
-                // notebook. TODO(M7): report to the crash reporter once it is behind its interface.
+                // A broken read (notebook or word content) is reported and shows the error: hidden words would look
+                // like an empty notebook.
                 .catch { e ->
                     log.e(e) { "notebook not loaded" }
+                    crashReporter.recordException(e, "notebook not loaded")
                     mutableState.update {
                         it.copy(words = persistentListOf(), detail = null, isLoaded = true, hasError = true)
                     }

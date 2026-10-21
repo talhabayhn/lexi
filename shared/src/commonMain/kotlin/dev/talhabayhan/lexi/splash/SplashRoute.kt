@@ -20,6 +20,8 @@ import dev.talhabayhan.lexi.core.domain.feedback.HapticKind
 import dev.talhabayhan.lexi.core.domain.feedback.SoundEffect
 import dev.talhabayhan.lexi.core.domain.repository.ContentVersionRepository
 import dev.talhabayhan.lexi.core.domain.repository.OnboardingRepository
+import dev.talhabayhan.lexi.core.domain.telemetry.AnalyticsEvent
+import dev.talhabayhan.lexi.core.domain.telemetry.AnalyticsTracker
 import dev.talhabayhan.lexi.shared.generated.resources.Res
 import dev.talhabayhan.lexi.shared.generated.resources.splash_tagline
 import dev.talhabayhan.lexi.startup.StartupTrace
@@ -61,13 +63,14 @@ internal fun SplashRoute(
     onFinished: (Boolean) -> Unit,
     content: ContentVersionRepository = koinInject(),
     onboarding: OnboardingRepository = koinInject(),
+    analytics: AnalyticsTracker = koinInject(),
 ) {
     val motion = LexiTheme.motion
     val haptics = LocalHaptics.current
     val sounds = LocalSoundPlayer.current
     val currentOnFinished by rememberUpdatedState(onFinished)
     val progress = remember { Animatable(if (motion.reducedMotion) 1f else 0f) }
-    LaunchedEffect(content, onboarding, motion) {
+    LaunchedEffect(content, onboarding, analytics, motion) {
         val completed = coroutineScope {
             val ready = async { StartupTrace.measureSuspend("content warm-up") { content.warmUp() } }
             val isCompleted = async {
@@ -100,6 +103,8 @@ internal fun SplashRoute(
         }
         StartupTrace.mark("splash finished")
         SplashState.finished.value = true
+        // The splash runs once per cold start (docs/ANALYTICS.md).
+        analytics.track(AnalyticsEvent.AppOpen)
         currentOnFinished(completed)
     }
     SplashScreen(progress = { progress.value })

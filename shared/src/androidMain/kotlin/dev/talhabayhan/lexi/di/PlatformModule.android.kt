@@ -15,6 +15,8 @@ import dev.talhabayhan.lexi.core.domain.platform.ShareService
 import dev.talhabayhan.lexi.core.domain.platform.UrlOpener
 import dev.talhabayhan.lexi.core.domain.reminder.NotificationPermission
 import dev.talhabayhan.lexi.core.domain.reminder.ReminderScheduler
+import dev.talhabayhan.lexi.core.domain.telemetry.AnalyticsTracker
+import dev.talhabayhan.lexi.core.domain.telemetry.CrashReporter
 import dev.talhabayhan.lexi.core.platform.feedback.AndroidHaptics
 import dev.talhabayhan.lexi.core.platform.feedback.AndroidSoundPlayer
 import dev.talhabayhan.lexi.core.platform.feedback.AndroidSpeaker
@@ -23,6 +25,8 @@ import dev.talhabayhan.lexi.core.platform.feedback.GatedSoundPlayer
 import dev.talhabayhan.lexi.core.platform.feedback.LiveSettings
 import dev.talhabayhan.lexi.core.platform.reminder.AndroidReminderScheduler
 import dev.talhabayhan.lexi.core.platform.share.AndroidShareService
+import dev.talhabayhan.lexi.core.platform.telemetry.FirebaseAnalyticsTracker
+import dev.talhabayhan.lexi.core.platform.telemetry.FirebaseCrashReporter
 import dev.talhabayhan.lexi.core.platform.uri.AndroidUrlOpener
 import dev.talhabayhan.lexi.reminder.AndroidNotificationPermission
 import dev.talhabayhan.lexi.reminder.ComposeReminderTextProvider
@@ -69,4 +73,6 @@ internal fun androidPlatformModule(context: Context): Module = module {
         AndroidReminderScheduler(context, clock = get(), channelName = texts::channelName)
     }
     single<NotificationPermission> { AndroidNotificationPermission(context) }
+    single<AnalyticsTracker> { FirebaseAnalyticsTracker(context) }
+    single<CrashReporter> { FirebaseCrashReporter() }
 }

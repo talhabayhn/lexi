@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
     <!-- Haptics (normal permission, no prompt). -->
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <!-- Daily reminder (ADR 0021): local notifications; inexact alarms need no SCHEDULE_EXACT_ALARM. -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <!-- No advertising ID (ADR 0023): Firebase Analytics brings these in; revisit when AdMob ships. -->
+    <uses-permission
+        android:name="com.google.android.gms.permission.AD_ID"
+        tools:node="remove" />
+    <uses-permission
+        android:name="android.permission.ACCESS_ADSERVICES_AD_ID"
+        tools:node="remove" />
+    <uses-permission
+        android:name="android.permission.ACCESS_ADSERVICES_ATTRIBUTION"
+        tools:node="remove" />
 
     <!-- TextToSpeech engine discovery (package visibility, Android 11+). -->
     <queries>
@@ -35,6 +47,30 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Firebase (ADR 0023, docs/ANALYTICS.md): collection follows the build type (telemetryEnabled); no ad ID,
+             Consent Mode defaults deny every ad purpose, analytics storage only. -->
+        <meta-data
+            android:name="firebase_analytics_collection_enabled"
+            android:value="${telemetryEnabled}" />
+        <meta-data
+            android:name="firebase_crashlytics_collection_enabled"
+            android:value="${telemetryEnabled}" />
+        <meta-data
+            android:name="google_analytics_adid_collection_enabled"
+            android:value="false" />
+        <meta-data
+            android:name="google_analytics_default_allow_analytics_storage"
+            android:value="true" />
+        <meta-data
+            android:name="google_analytics_default_allow_ad_storage"
+            android:value="false" />
+        <meta-data
+            android:name="google_analytics_default_allow_ad_user_data"
+            android:value="false" />
+        <meta-data
+            android:name="google_analytics_default_allow_ad_personalization_signals"
+            android:value="false" />
 
         <!-- Reminder receivers are declared in core:platform's manifest and merged in (ADR 0021). -->
 

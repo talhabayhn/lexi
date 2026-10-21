@@ -6,6 +6,9 @@ import dev.talhabayhan.lexi.core.domain.reminder.PermissionStatus
 import dev.talhabayhan.lexi.core.domain.reminder.ReminderTimes
 import dev.talhabayhan.lexi.core.domain.settings.AppLanguage
 import dev.talhabayhan.lexi.core.domain.settings.Settings
+import dev.talhabayhan.lexi.core.domain.telemetry.AnalyticsEvent
+import dev.talhabayhan.lexi.core.testing.FakeAnalyticsTracker
+import dev.talhabayhan.lexi.core.testing.FakeCrashReporter
 import dev.talhabayhan.lexi.core.testing.FakeNotificationPermission
 import dev.talhabayhan.lexi.core.testing.FakeSettingsRepository
 import kotlinx.coroutines.Dispatchers
@@ -24,6 +27,8 @@ import kotlin.test.assertTrue
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class SettingsViewModelTest {
+    private val analytics = FakeAnalyticsTracker()
+    private val crashReporter = FakeCrashReporter()
     private val repository = FakeSettingsRepository()
     private val permission = FakeNotificationPermission(PermissionStatus.GRANTED)
 
@@ -37,7 +42,7 @@ class SettingsViewModelTest {
         Dispatchers.resetMain()
     }
 
-    private fun viewModel() = SettingsViewModel(repository, permission)
+    private fun viewModel() = SettingsViewModel(repository, permission, analytics, crashReporter)
 
     @Test
     fun `the first state is the stored settings when the store is already loaded`() = runTest {
@@ -322,6 +327,7 @@ class SettingsViewModelTest {
         assertTrue(repository.settings.value.dailyReminder)
         assertEquals(ReminderTimes.DEFAULT_MINUTE, repository.settings.value.reminderMinuteOfDay)
         assertEquals(0, permission.requestCalls)
+        assertEquals(listOf<AnalyticsEvent>(AnalyticsEvent.ReminderEnabled), analytics.events)
     }
 
     @Test
@@ -335,6 +341,7 @@ class SettingsViewModelTest {
         }
         assertFalse(repository.settings.value.dailyReminder)
         assertEquals(0, permission.requestCalls)
+        assertTrue(analytics.events.isEmpty())
     }
 
     @Test
@@ -348,6 +355,7 @@ class SettingsViewModelTest {
         }
         assertFalse(repository.settings.value.dailyReminder)
         assertTrue(viewModel.state.value.notificationsBlocked)
+        assertTrue(analytics.events.isEmpty())
     }
 
     @Test

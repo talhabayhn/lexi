@@ -10,6 +10,7 @@ import dev.talhabayhan.lexi.core.domain.repository.CardRepository
 import dev.talhabayhan.lexi.core.domain.repository.CategoryRepository
 import dev.talhabayhan.lexi.core.domain.repository.ProgressRepository
 import dev.talhabayhan.lexi.core.domain.stats.Stats
+import dev.talhabayhan.lexi.core.domain.telemetry.CrashReporter
 import kotlinx.collections.immutable.persistentListOf
 import kotlinx.collections.immutable.toImmutableList
 import kotlinx.coroutines.CancellationException
@@ -34,6 +35,7 @@ internal class CategoriesViewModel(
     private val cards: CardRepository,
     private val categories: CategoryRepository,
     progress: ProgressRepository,
+    private val crashReporter: CrashReporter,
 ) : ViewModel() {
     private val mutableState = MutableStateFlow(CategoriesUiState(level = route.startLevel))
     val state: StateFlow<CategoriesUiState> = mutableState.asStateFlow()
@@ -65,7 +67,7 @@ internal class CategoriesViewModel(
                 }
                 progress.observeAll()
                     // A broken read keeps the last numbers; the screen itself still works.
-                    .catch { } // TODO(M7): report to the crash reporter once it is behind its interface.
+                    .catch { e -> crashReporter.recordException(e, "category progress not read") }
                     .collect { answered ->
                         val byCategory = Stats.categoryProgress(answered, content.categoryOf)
                         val ui = content.categories.mapNotNull { category ->
@@ -100,7 +102,7 @@ internal class CategoriesViewModel(
     } catch (e: CancellationException) {
         throw e
     } catch (@Suppress("TooGenericExceptionCaught") e: Exception) {
-        // TODO(M7): report to the crash reporter once it is behind its interface.
+        crashReporter.recordException(e, "category content not read")
         null
     }
 

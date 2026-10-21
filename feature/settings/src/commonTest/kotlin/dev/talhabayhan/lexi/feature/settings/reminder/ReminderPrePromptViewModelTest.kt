@@ -5,6 +5,8 @@ import dev.talhabayhan.lexi.core.domain.reminder.AnswerReminderPrePrompt
 import dev.talhabayhan.lexi.core.domain.reminder.PermissionStatus
 import dev.talhabayhan.lexi.core.domain.reminder.ReminderTimes
 import dev.talhabayhan.lexi.core.domain.reminder.RescheduleReminders
+import dev.talhabayhan.lexi.core.domain.telemetry.AnalyticsEvent
+import dev.talhabayhan.lexi.core.testing.FakeAnalyticsTracker
 import dev.talhabayhan.lexi.core.testing.FakeAppClock
 import dev.talhabayhan.lexi.core.testing.FakeNotificationPermission
 import dev.talhabayhan.lexi.core.testing.FakeProgressRepository
@@ -27,6 +29,7 @@ import kotlin.test.assertTrue
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class ReminderPrePromptViewModelTest {
+    private val analytics = FakeAnalyticsTracker()
     private val settings = FakeSettingsRepository()
     private val permission = FakeNotificationPermission(PermissionStatus.CAN_ASK)
     private val scheduler = FakeReminderScheduler()
@@ -51,7 +54,11 @@ class ReminderPrePromptViewModelTest {
             texts = FakeReminderTextProvider(),
             clock = FakeAppClock(),
         )
-        return ReminderPrePromptViewModel(settings, AnswerReminderPrePrompt(settings, permission, reschedule))
+        return ReminderPrePromptViewModel(
+            settings,
+            AnswerReminderPrePrompt(settings, permission, reschedule),
+            analytics,
+        )
     }
 
     @Test
@@ -74,6 +81,7 @@ class ReminderPrePromptViewModelTest {
         assertEquals(1, permission.requestCalls)
         assertTrue(settings.settings.value.dailyReminder)
         assertEquals(ReminderTimes.DEFAULT_MINUTE, settings.settings.value.reminderMinuteOfDay)
+        assertEquals(listOf<AnalyticsEvent>(AnalyticsEvent.ReminderEnabled), analytics.events)
     }
 
     @Test
@@ -87,6 +95,7 @@ class ReminderPrePromptViewModelTest {
         }
         assertEquals(1, permission.requestCalls)
         assertFalse(settings.settings.value.dailyReminder)
+        assertTrue(analytics.events.isEmpty())
     }
 
     @Test

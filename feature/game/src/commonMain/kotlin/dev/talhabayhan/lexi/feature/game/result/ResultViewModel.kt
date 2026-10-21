@@ -16,6 +16,9 @@ import dev.talhabayhan.lexi.core.domain.repository.StreakRepository
 import dev.talhabayhan.lexi.core.domain.share.ShareCardBuilder
 import dev.talhabayhan.lexi.core.domain.srs.CardProgress
 import dev.talhabayhan.lexi.core.domain.stats.Stats
+import dev.talhabayhan.lexi.core.domain.telemetry.AnalyticsEvent
+import dev.talhabayhan.lexi.core.domain.telemetry.AnalyticsTracker
+import dev.talhabayhan.lexi.core.domain.telemetry.CrashReporter
 import dev.talhabayhan.lexi.core.domain.time.AppClock
 import dev.talhabayhan.lexi.feature.game.GameRoute
 import kotlinx.collections.immutable.toImmutableList
@@ -50,6 +53,8 @@ internal class ResultViewModel(
     private val clock: AppClock,
     private val streaks: StreakRepository,
     private val shareService: ShareService,
+    private val analytics: AnalyticsTracker,
+    private val crashReporter: CrashReporter,
 ) : ViewModel() {
     private val mutableState = MutableStateFlow(initialState(route, config))
     val state: StateFlow<ResultUiState> = mutableState.asStateFlow()
@@ -180,7 +185,7 @@ internal class ResultViewModel(
 
     private fun finishShare(shown: Boolean) {
         mutableState.update { it.copy(isSharing = false) }
-        if (!shown) effectChannel.trySend(ResultEffect.ShareFailed)
+        if (shown) analytics.track(AnalyticsEvent.Share) else effectChannel.trySend(ResultEffect.ShareFailed)
     }
 
     /** The share card with the current streak (read once; an unreadable streak counts as none). */
@@ -244,8 +249,9 @@ internal class ResultViewModel(
         } catch (e: CancellationException) {
             throw e
         } catch (e: Exception) {
-            // TODO(M7): report through the crash reporter. The counts are still shown; the list offers a retry.
+            // The counts are still shown; the list offers a retry.
             log.e(e) { "review cards not loaded" }
+            crashReporter.recordException(e, "review cards not loaded")
             mutableState.update { it.copy(isLoading = false, reviewError = true) }
             return
         }

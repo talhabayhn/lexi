@@ -21,6 +21,9 @@ import dev.talhabayhan.lexi.core.domain.model.CategoryId
 import dev.talhabayhan.lexi.core.domain.repository.JokerRepository
 import dev.talhabayhan.lexi.core.domain.repository.SettingsRepository
 import dev.talhabayhan.lexi.core.domain.session.FinishGame
+import dev.talhabayhan.lexi.core.domain.telemetry.AnalyticsEvent
+import dev.talhabayhan.lexi.core.domain.telemetry.AnalyticsTracker
+import dev.talhabayhan.lexi.core.domain.telemetry.CrashReporter
 import dev.talhabayhan.lexi.core.domain.time.AppClock
 import dev.talhabayhan.lexi.feature.game.GameSession.Companion.isIgnored
 import dev.talhabayhan.lexi.feature.game.result.ResultRoute
@@ -74,6 +77,8 @@ internal class GameViewModel(
     private val speaker: Speaker,
     private val config: GameConfig,
     private val timeSource: TimeSource.WithComparableMarks,
+    private val analytics: AnalyticsTracker,
+    private val crashReporter: CrashReporter,
     private val flags: FeatureFlags = FeatureFlags(),
     /** A new game prepared before the navigation ([GamePreparer]); taken once, unless a saved game is restored. */
     preparer: GamePreparer? = null,
@@ -252,8 +257,8 @@ internal class GameViewModel(
         } catch (e: CancellationException) {
             throw e
         } catch (e: Exception) {
-            // TODO(M7): report through the crash reporter (Crashlytics behind an interface).
             log.e(e) { "game not loaded" }
+            crashReporter.recordException(e, "game not loaded")
             Opened.Failed
         }
         show(opened)
@@ -292,7 +297,8 @@ internal class GameViewModel(
                 val state = opened.session.state
                 publish(state, opened.ui)
                 when {
-                    state.status == GameStatus.FINISHED -> onGameOver()
+                    // Only a restored game can be finished here; its game_finish was sent before the process died.
+                    state.status == GameStatus.FINISHED -> onGameOver(track = false)
 
                     // ADR 0019: a restored running game always comes back paused.
                     opened.restored && state.status == GameStatus.PLAYING -> dispatch(GameEvent.Pause)
@@ -319,6 +325,10 @@ internal class GameViewModel(
         val current = session ?: return
         if (foreground && current.state.status == GameStatus.NOT_STARTED) {
             dispatch(GameEvent.Start(timestampMs = appClock.nowMs()))
+            val started = current.state
+            if (started.status == GameStatus.PLAYING) {
+                analytics.track(AnalyticsEvent.GameStart(started.mode, started.level))
+            }
         }
     }
 
@@ -406,6 +416,7 @@ internal class GameViewModel(
 
             is EngineEffect.JokerApplied -> {
                 saveJokers()
+                analytics.track(AnalyticsEvent.JokerUsed(effect.type))
                 // "Telaffuzu dinle": the answer is spoken (whatever the speak-on-correct setting).
                 if (effect.type == JokerType.LISTEN) {
                     state.currentSlot?.card?.answer?.let { speaker.speak(it.lowercase()) }
@@ -445,8 +456,8 @@ internal class GameViewModel(
                     } catch (e: CancellationException) {
                         throw e
                     } catch (e: Exception) {
-                        // TODO(M7): report through the crash reporter (Crashlytics behind an interface).
                         log.e(e) { "joker inventory not saved" }
+                        crashReporter.recordException(e, "joker inventory not saved")
                     }
                 }
             }
@@ -455,9 +466,9 @@ internal class GameViewModel(
 
     /**
      * Records the game exactly once (one retry after a storage failure), then leaves for the result. The saved
-     * snapshot is removed only after [FinishGame] succeeded.
+     * snapshot is removed only after [FinishGame] succeeded. [track] sends `game_finish` (`docs/ANALYTICS.md`).
      */
-    private fun onGameOver() {
+    private fun onGameOver(track: Boolean = true) {
         if (finished) return
         finished = true
         jokerSheetOpen = false
@@ -466,6 +477,7 @@ internal class GameViewModel(
         syncTicker()
         val final = checkNotNull(session).state
         publish(final)
+        if (track) trackFinish(final)
         val category = sessionCategory()
         viewModelScope.launch {
             val recorded = withContext(NonCancellable) { record(final, category) }
@@ -483,11 +495,24 @@ internal class GameViewModel(
             } catch (e: CancellationException) {
                 throw e
             } catch (e: Exception) {
-                // TODO(M7): report through the crash reporter (Crashlytics behind an interface).
                 log.e(e) { "finishing the game failed (attempt ${attempt + 1} of $FINISH_ATTEMPTS)" }
+                crashReporter.recordException(e, "finishing the game failed")
             }
         }
         return false
+    }
+
+    /** Wall-clock duration like the recorded session's (`FinishGame`): start to now. */
+    private fun trackFinish(final: GameState) {
+        val durationMs = final.startedAtMs?.let { appClock.nowMs() - it } ?: 0L
+        analytics.track(
+            AnalyticsEvent.GameFinish(
+                mode = final.mode,
+                level = final.level,
+                correct = final.summary?.correct ?: 0,
+                durationSeconds = durationMs / MS_PER_SECOND,
+            ),
+        )
     }
 
     /** `SessionResult.category`: null for wheels without a category (review, daily, level test). */
@@ -533,6 +558,8 @@ internal class GameViewModel(
 
         /** A failed [FinishGame] is retried once. */
         private const val FINISH_ATTEMPTS = 2
+
+        private const val MS_PER_SECOND = 1000L
 
         private val log = Logger.withTag("GameViewModel")
 

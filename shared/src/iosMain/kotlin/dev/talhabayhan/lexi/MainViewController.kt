@@ -3,16 +3,22 @@ package dev.talhabayhan.lexi
 import androidx.compose.ui.window.ComposeUIViewController
 import dev.talhabayhan.lexi.perf.PerfTourConfig
 import dev.talhabayhan.lexi.startup.StartupTrace
+import dev.talhabayhan.lexi.telemetry.installUncaughtExceptionReporting
 import platform.Foundation.NSProcessInfo
 import platform.UIKit.UIViewController
 import kotlin.experimental.ExperimentalNativeApi
 import kotlin.native.Platform
 
-/** Entry point called from Swift (`MainViewControllerKt.MainViewController()`); the name is part of that API. */
+/**
+ * Entry point called from Swift (`MainViewControllerKt.MainViewController(services:)`); the name is part of that API.
+ * [services] are the Swift-implemented platform services (Firebase telemetry, ADR 0023).
+ */
 @Suppress("ktlint:standard:function-naming", "FunctionName")
 @OptIn(ExperimentalNativeApi::class)
-fun MainViewController(): UIViewController {
+fun MainViewController(services: PlatformServices): UIViewController {
     StartupTrace.start(enabled = Platform.isDebugBinary)
+    IosPlatformServices.install(services)
+    installUncaughtExceptionReporting(services.telemetry)
     val perfTour = perfTourConfig()
     return ComposeUIViewController { App(perfTour = perfTour) }
 }

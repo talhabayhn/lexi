@@ -1,6 +1,6 @@
 # ADR 0006: Firebase Analytics + Crashlytics behind interfaces
 
-- Status: Accepted
+- Status: Accepted (amended by 0023: interfaces live in `core:domain`; SDK integration and privacy defaults)
 - Date: 2026-10-14
 
 ## Context

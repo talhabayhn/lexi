@@ -6,4 +6,5 @@ PRODUCT_BUNDLE_IDENTIFIER=dev.talhabayhan.lexi
 
 #include "Version.xcconfig"
 // Shared is a static framework; SQLDelight's native driver (SQLiter) needs the system SQLite at link time.
-OTHER_LDFLAGS=$(inherited) -lsqlite3
+// -ObjC: Firebase Analytics (Swift Package) needs its Objective-C categories loaded (ADR 0023).
+OTHER_LDFLAGS=$(inherited) -lsqlite3 -ObjC
