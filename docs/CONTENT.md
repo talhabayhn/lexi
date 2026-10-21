@@ -19,6 +19,10 @@ content/blocklist.txt                   │                                  (bu
   all six before v1.0 release).
 - Production flow: open word lists → AI drafts Turkish clues/examples → **human review** (product owner) →
   CSV → compiler validation → playtest.
+- **Other clue languages (ADR 0022, after v1.0):** `content/clues/<lang>/*.csv` keyed by card `id` (clue, example
+  translation) → AI draft from the English answer + example (not from the Turkish clue) → **native-speaker review**
+  per batch (same clue rules as §2) → compiler validates per language (coverage, length, answer leak, blocklist).
+  A language ships only when its coverage check passes for every shipped level.
 - **Exam packs live in `content/exam-packs/`** (owner decision 2026-10, replaces the earlier private-repo plan; the
   repo goes private before release). They are passed to the compiler as the external pack directory
   (`--packs content/exam-packs` or env `LEXI_PACKS_DIR`; the flag wins; the app build reads the env). Format and the

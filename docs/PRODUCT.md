@@ -40,13 +40,20 @@ Level handicap in Race (each player on own level, normalized score). Anonymous a
 **Teams** mode, **async challenge links** ("I did this wheel in 1:42 — beat me"), achievements, cloud backup.
 
 ### Later
-Teacher/classroom mode, Spanish clues, tablet-optimised layouts, widgets.
+Teacher/classroom mode, more clue/answer languages (ADR 0022), tablet-optimised layouts, widgets.
 
 ## Monetisation rules
-- Free: all levels playable, ads only as **rewarded** (opt-in, for jokers) plus at most one interstitial
-  every 3 completed games, never during a wheel, never in the first session.
-- Pro: no ads, exam packs, +3 jokers daily refill, unlimited review wheels, create online rooms (v1.1).
-- Prices: `[TBD]` — set in RevenueCat; never hardcode.
+Model: Free + rewarded ads + Lexi Pro (RevenueCat, ADR 0007; decisions in `DECISIONS.md`, 2026-10-21).
+- Free: all levels playable; ads only as **rewarded** (opt-in, for jokers); 1 review wheel per day.
+- **No interstitials in v1.** Later experiment only: from day 3, after the user leaves the result screen, max 1 per
+  3 games, never in Daily, Level test or during a wheel.
+- Pro: exam packs, no ads, +3 jokers daily, unlimited review wheels, create online rooms (v1.1).
+- Prices: TR ₺89 monthly / ₺449 yearly / ₺1.199 lifetime. Store base country USA $4.99 / $29.99 / $59.99; the Turkey
+  price is set manually in both stores. iOS Family Sharing on. Set in the stores + RevenueCat; never hardcode.
+- Trial: 7-day free trial on yearly only, local reminder notification 2 days before it ends. Later: A/B test 3 vs 7
+  days in RevenueCat.
+- Privacy/ads: audience 13+, ad content rating G/PG, UMP consent; iOS: no ATT prompt in v1 (non-personalised ads),
+  SKAdNetwork IDs in `Info.plist`.
 
 ## Success metrics
 D1 ≥ 40%, D7 ≥ 15%, wheels/DAU ≥ 2, Pro conversion ≥ 2%, crash-free sessions ≥ 99.5%.

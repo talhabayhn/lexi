@@ -88,7 +88,10 @@ Module mapping (replaces the earlier `composeApp`): `androidApp` = thin Android 
   RECEIVE_BOOT_COMPLETED for local reminders; no exact alarms; data safety unchanged (local only).
   Current declarations match the SDK-free test build.
   Store listing: the test-track text omits Pro/ads/analytics paragraphs (`docs/store/listing-*.md`); restore them when those ship.
-- [ ] AdMob rewarded (+1 joker) with UMP consent; interstitial policy from `PRODUCT.md`
+- [ ] AdMob rewarded (+1 joker) with UMP consent (13+, G/PG); no interstitials in v1; iOS: no ATT prompt, SKAdNetwork IDs
+  in `Info.plist` (`PRODUCT.md` Monetisation rules)
+- [ ] Pro limits: free = 1 review wheel per day, Pro unlimited; Pro +3 jokers daily; yearly 7-day trial with a
+  reminder 2 days before it ends
 - [ ] Exam packs (`10-exam-packs`) gated by Pro (UI & RevenueCat wiring pending); content compiler pipeline integrated
   with in-repo `content/exam-packs/` (LGS + YDS/YÖKDİL metadata, schema, validation in `content.db`)
 - [ ] Firebase Analytics + Crashlytics behind interfaces; event list in `docs/ANALYTICS.md`
@@ -114,6 +117,15 @@ Module mapping (replaces the earlier `composeApp`): `androidApp` = thin Android 
 - [ ] A1 gap: 787 of the 850 target (strict A1 word lists exhausted; thin letters Q, Z, V, Y, I, J) — extend or accept
 - [ ] **Release checklist:** do not ship a level that only has a smoke set; either complete it or mark it "coming soon"
   in the level select (product decision pending)
+
+## Global languages (after the v1.0 TR launch, ADR 0022)
+- [ ] Prerequisites: remove hardcoded Turkish clue language from code paths (list in ADR 0022), content translation +
+  native review pipeline (`CONTENT.md` §1), store listing localisation, brand-name check per market,
+  per-language content packs if `content.db` grows too much
+- [ ] Step 1 — X→English: new clue + UI languages, engine unchanged; candidates ES, PT-BR, DE, ID; RTL later
+- [ ] Step 2 — English→English clues for B1+
+- [ ] Step 3 — X→Y: new answer alphabets (wheel, keyboard, letter rules, answer normalisation, TTS), per-language
+  word lists; own ADR first
 
 ## v1.1 — Online rooms (`MULTIPLAYER.md`)
 Design online screens → Supabase project & RLS → anonymous auth + nickname → `SupabaseRealtimeTransport` →

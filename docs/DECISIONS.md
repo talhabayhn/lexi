@@ -8,6 +8,12 @@ row when a decision is made; change `Status` instead of deleting rows (`Accepted
 
 | Date | Decision | Why | Alternatives | Status |
 |---|---|---|---|---|
+| 2026-10-21 | **Monetisation model**: Free + rewarded ads + Lexi Pro. Pro = exam packs, no ads, +3 jokers daily, unlimited review wheels (free: 1 review wheel per day) | Calm game, clear value for Pro | Ads-only; subscription-only | Accepted (owner; ADR 0007, `PRODUCT.md`) |
+| 2026-10-21 | **Prices**: TR ₺89 monthly / ₺449 yearly / ₺1.199 lifetime; store base country USA $4.99 / $29.99 / $59.99, Turkey price set manually; iOS Family Sharing on | Local purchasing power; one base price for other countries | Auto-converted TR prices | Accepted (owner) |
+| 2026-10-21 | **Trial**: 7-day free trial on yearly only, reminder notification 2 days before it ends; later A/B test 3 vs 7 days in RevenueCat | Trust and fewer refunds; yearly is the target plan | Trial on all plans; no trial | Accepted (owner) |
+| 2026-10-21 | **No interstitials in v1** (rewarded only). Later experiment: from day 3, after the user leaves the result screen, max 1 per 3 games, never in daily/level test/during a wheel | Calm game, simpler consent and store forms | Interstitial every 3rd game in v1 | Accepted (owner; closes O1) |
+| 2026-10-21 | **iOS: no ATT prompt in v1**, SKAdNetwork IDs in Info.plist; **audience 13+**, ad content rating G/PG, UMP consent | Fewer drop-offs, simpler privacy label; teen-safe ads | ATT after UMP | Accepted (owner; closes O2) |
+| 2026-10-21 | **Multi-language roadmap** after the v1.0 TR launch: X→English, then English→English (B1+), then X→Y | Global growth without an engine rewrite first | TR only; jump to X→Y | Accepted (owner; ADR 0022) |
 | 2026-10-20 | **M7 settings & reminders**: reminder row opens a ReminderSheet bottom sheet (design debt) with on/off + times 08:00–21:30 in 30-min steps, default 20:00 (quiet hours 22–08 can't be hit; configurable quiet-hours row waits for a design); notification pre-prompt from Settings and once on Home after the first completed wheel (never during onboarding); reminder content per `COPY.md` §1 without `notif_goal`, after 3 days without play only the 3/7/14-day comeback messages, the same message key never two days in a row; Pro card keeps "YAKINDA" and moves to the RevenueCat/paywall item; clue language row shows "Türkçe" with no chevron until a second language exists | No design for quiet hours, time picker or paywall; no dead ends; local-only planned notifications | Configurable quiet hours now; paywall stub route; proactive prompt in onboarding | Accepted (owner; ADR 0021) |
 | 2026-10 | **Shared mixed-level daily wheel**: 26 slots with fixed counts A1×6, A2×5, B1×5, B2×4, C1×3, NAT×3; stored with `level = "SHARED"` sentinel | One identical wheel for everybody on a date (shareable, comparable); every player meets their level and a stretch | Wheel per level (4 wheels/day to play and verify); player-level only wheel | Accepted |
 | 2026-10 | **Per-level points for the daily wheel**: A1 5, A2 7, B1 10, B2 13, C1 16, NAT 20 per correct answer | A mixed wheel must reward harder words fairly; flat 10 would favour easy letters | Level multiplier ×1.0–1.7 of `GAME_RULES.md` §6; flat points | Accepted |
@@ -74,16 +80,16 @@ row when a decision is made; change `Status` instead of deleting rows (`Accepted
 | 2026-10-15 | 0018 | Content DB build wiring and database lifecycle | Accepted |
 | 2026-10-15 | 0019 | Game screen runtime: timer, lifecycle, effects | Accepted |
 | 2026-10-20 | 0021 | Local reminders as planned one-shot notifications | Accepted |
+| 2026-10-21 | 0022 | Multi-language roadmap (X→EN, EN→EN, X→Y) | Accepted |
 
 ## Open decisions
 
+O1 (interstitials), O2 (ATT) and O8 (prices/trial) were decided on 2026-10-21; see Product & game.
+
 | # | Question | Options | Recommendation | Needed by |
 |---|---|---|---|---|
-| O1 | **Rewarded only vs interstitial in v1.0** (`PRODUCT.md` allows one interstitial per 3 games; privacy/data-safety drafts say rewarded only) | Rewarded only / + interstitial every 3rd game after session 1 | **Rewarded only.** Keeps the game calm, simplifies consent, store forms and reviews; revisit after retention data | Before M7 ads work and store forms |
-| O2 | **ATT (iOS) vs non-personalized ads** | Show ATT after UMP / serve non-personalized only, no ATT prompt | **Non-personalized ads, no ATT prompt.** Fewer drop-offs, simpler privacy label; accept lower eCPM. Revisit if revenue matters | Before M7 / App Privacy answers |
 | O3 | **Exam names (LGS, YKS, YDS, YÖKDİL, IELTS, TOEFL) in store text** | Use names / generic wording ("sınav hazırlığı") | **Generic wording in store listings** until the trademark/affiliation check is done; names may appear in-app as descriptive labels (decide with lawyer). Copy deck marks every **(EXAM)** string | Before store submission |
 | O4 | **Repo visibility and exam-pack private repo** (repo planned to go private before release; packs now in-repo) | Keep public with packs / go private / split packs into a private repo | **Make the repo private before release** and keep packs in-repo (one pipeline). Confirm sources' licences allow redistribution in a shipped DB regardless | Before release; before any wider sharing |
 | O5 | **Rewrite history for the 2 commits authored as Claude** (4204be7, da166c2) | Leave as is (author-check only guards new commits) / rewrite and force-push | **Leave pushed history alone** (rules: never rewrite pushed history; the guard starts after them) unless the owner explicitly wants a rewrite — destructive, owner decision only | Owner |
 | O6 | **Coop mode** — no spec exists (closest: v1.2 Teams, `MULTIPLAYER.md`) | Fold into Teams / separate "co-op wheel" (players share one wheel and clock) / drop | Treat as part of v1.2 Teams; write a one-page spec before any design | After v1.0 |
 | O7 | A1 content gap (787/850) and levels still on smoke sets: ship, complete, or mark "coming soon" | — | Complete or hide anything on a smoke set; accept 787 for A1 | Release checklist |
-| O8 | Prices and trial length for monthly/yearly/lifetime | — | Set in stores + RevenueCat; copy uses placeholders | Before M7 sandbox tests |

@@ -11,3 +11,5 @@ AdMob rewarded ads for jokers (+ at most one interstitial per 3 finished games, 
 
 ## Consequences
 RevenueCat handles receipts and cross-platform entitlements; small revenue share above free tier.
+
+Update 2026-10-21 (owner): no interstitials in v1 (later experiment only); prices, trial and Pro scope in `PRODUCT.md` "Monetisation rules".
