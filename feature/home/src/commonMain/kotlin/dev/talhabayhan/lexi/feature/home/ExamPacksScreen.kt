@@ -18,6 +18,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import dev.talhabayhan.lexi.core.designsystem.component.EmptyState
 import dev.talhabayhan.lexi.core.designsystem.component.NavSquareButton
 import dev.talhabayhan.lexi.core.designsystem.icon.LexiIcons
+import dev.talhabayhan.lexi.core.designsystem.modifier.lexiHeading
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.core.designsystem.theme.lexiContentWidth
 import dev.talhabayhan.lexi.feature.home.generated.resources.Res
@@ -56,7 +57,11 @@ internal fun ExamPacksScreen(onBack: () -> Unit, modifier: Modifier = Modifier) 
                 contentDescription = stringResource(Res.string.home_back),
                 onClick = onBack,
             )
-            Text(stringResource(Res.string.home_tile_exams), style = LexiTheme.typography.title)
+            Text(
+                stringResource(Res.string.home_tile_exams),
+                style = LexiTheme.typography.title,
+                modifier = Modifier.lexiHeading(),
+            )
         }
         EmptyState(stringResource(Res.string.home_exams_soon), Modifier.fillMaxWidth())
     }

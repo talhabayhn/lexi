@@ -71,4 +71,5 @@
     <string name="home_joker_gift_daily">Günün hediyesi: +%1$d joker</string>
     <string name="home_joker_gift_streak">7 günlük seri bonusu: +%1$d joker</string>
     <string name="home_joker_gift_combined">Günün hediyesi ve seri bonusu: +%1$d joker</string>
+    <string name="home_notice_dismiss">Kapat</string>
 </resources>

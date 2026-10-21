@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -17,6 +16,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
@@ -41,6 +42,10 @@ public object CategoryCardDefaults {
 
     /** 64: the mixed-wheel banner; its circle is CSS content-box 30 + 2 × 2 border. */
     public val MixedHeight: Dp = 64.dp
+
+    /** System font scale above which a category name may wrap onto more than two lines. */
+    public const val WRAP_FONT_SCALE: Float = 1.5f
+
     internal val MixedPadding: Dp = 14.dp
     internal val MixedMarkerSize: Dp = 34.dp
 }
@@ -87,7 +92,8 @@ public fun CategoryCard(
                 Text(
                     title,
                     style = typography.bodyStrong15.withCssLineHeight(CategoryCardDefaults.NAME_LINE_HEIGHT),
-                    maxLines = 2,
+                    // Two lines at the design and moderate font sizes; at the largest sizes the name may use more.
+                    maxLines = if (LocalDensity.current.fontScale > CategoryCardDefaults.WRAP_FONT_SCALE) 4 else 2,
                     overflow = TextOverflow.Ellipsis,
                     modifier = Modifier.weight(1f),
                 )
@@ -98,7 +104,7 @@ public fun CategoryCard(
             ) {
                 ProgressBar(
                     progress = progress,
-                    modifier = Modifier.fillMaxWidth(),
+                    modifier = Modifier.fillMaxWidth().clearAndSetSemantics {},
                     height = ControlDefaults.ProgressHeightCompact,
                     fillColor = if (complete) colors.blue else colors.ink,
                 )
@@ -110,7 +116,7 @@ public fun CategoryCard(
 
 /**
  * The red "mixed wheel" banner above the category grid: yellow circle, [title] (18/800) with its [subtitle] (13/500)
- * and the [trailing] count (14/800). s5 shadow, 64dp high.
+ * and the [trailing] count (14/800). s5 shadow, 64dp high (at least: it grows with large fonts).
  */
 @Composable
 public fun MixedWheelCard(
@@ -125,14 +131,16 @@ public fun MixedWheelCard(
     val typography = LexiTheme.typography
     PressableSurface(
         onClick = onClick,
-        modifier = modifier.fillMaxWidth().height(CategoryCardDefaults.MixedHeight),
+        modifier = modifier.fillMaxWidth().heightIn(min = CategoryCardDefaults.MixedHeight),
         enabled = enabled,
         color = colors.red,
         shadow = LexiTheme.shadows.s5,
         propagateMinConstraints = true,
     ) {
         Row(
-            modifier = Modifier.fillMaxSize().padding(horizontal = CategoryCardDefaults.MixedPadding),
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(horizontal = CategoryCardDefaults.MixedPadding, vertical = LexiTheme.dimens.gap4),
             horizontalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap12),
             verticalAlignment = Alignment.CenterVertically,
         ) {

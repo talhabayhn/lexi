@@ -71,4 +71,5 @@
     <string name="home_joker_gift_daily">Daily gift: +%1$d joker</string>
     <string name="home_joker_gift_streak">7-day streak bonus: +%1$d joker</string>
     <string name="home_joker_gift_combined">Daily gift &amp; streak bonus: +%1$d jokers</string>
+    <string name="home_notice_dismiss">Dismiss</string>
 </resources>

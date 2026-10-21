@@ -22,6 +22,7 @@ import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.layout.layout
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.selected
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.TextStyle
@@ -173,9 +174,10 @@ public fun LevelCard(
             }
             Text(subtitle, style = typography.caption14SemiBold, color = content)
             Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap4)) {
+                // Decorative: the progress label below says the same in words and the card is one radio button.
                 ProgressBar(
                     progress = progress,
-                    modifier = Modifier.fillMaxWidth().borderOverflow(LexiTheme.borders.thin),
+                    modifier = Modifier.fillMaxWidth().borderOverflow(LexiTheme.borders.thin).clearAndSetSemantics {},
                     borderColor = lines,
                     trackColor = if (selected) colors.white else Color.Transparent,
                     fillColor = if (selected) colors.ink else colors.blue,

@@ -33,6 +33,7 @@ import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.layout.Placeable
 import androidx.compose.ui.layout.SubcomposeLayout
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
@@ -79,6 +80,7 @@ import dev.talhabayhan.lexi.feature.home.generated.resources.home_mode_classic
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_mode_hardcore
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_mode_practice
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_months
+import dev.talhabayhan.lexi.feature.home.generated.resources.home_notice_dismiss
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_play
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_play_badge
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_settings
@@ -246,7 +248,7 @@ private fun HomeContent(
             TopBar(state, onIntent)
             state.dailyGiftNotice?.let { notice ->
                 LaunchedEffect(notice) {
-                    delay(2500L)
+                    delay(NOTICE_VISIBLE_MILLIS)
                     onIntent(HomeIntent.DismissNotice)
                 }
                 val message = when (notice.type) {
@@ -259,7 +261,10 @@ private fun HomeContent(
                     style = ToastStyle.Info,
                     modifier = Modifier
                         .fillMaxWidth()
-                        .clickable { onIntent(HomeIntent.DismissNotice) },
+                        .clickable(
+                            onClickLabel = stringResource(Res.string.home_notice_dismiss),
+                            role = Role.Button,
+                        ) { onIntent(HomeIntent.DismissNotice) },
                 )
             }
             Column(
@@ -377,6 +382,12 @@ private fun HomeColumn(
         }
     }
 }
+
+/**
+ * How long the daily-gift notice stays. Longer than the design's 2.5 s toast: a screen reader needs time to speak it
+ * (the notice is a live region) and the user can still dismiss it with a tap.
+ */
+private const val NOTICE_VISIBLE_MILLIS = 6_000L
 
 /** The home honours the system font size up to [HomeDefaults.MAX_FONT_SCALE] (`screen-map.md`). */
 private fun Density.withCappedFontScale(): Density = if (fontScale <= HomeDefaults.MAX_FONT_SCALE) {

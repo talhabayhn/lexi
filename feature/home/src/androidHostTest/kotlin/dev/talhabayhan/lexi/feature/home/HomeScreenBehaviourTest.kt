@@ -1,7 +1,13 @@
 package dev.talhabayhan.lexi.feature.home
 
+import androidx.compose.ui.semantics.LiveRegionMode
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.SemanticsProperties
 import androidx.compose.ui.test.ComposeUiTest
 import androidx.compose.ui.test.ExperimentalTestApi
+import androidx.compose.ui.test.SemanticsMatcher
+import androidx.compose.ui.test.assert
+import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
@@ -107,5 +113,25 @@ class HomeScreenBehaviourTest {
                 onNodeWithText("Sınav paketleri").performClick()
             },
         )
+    }
+
+    @Test
+    fun `the gift notice is a dismiss button with a label`() = runComposeUiTest {
+        val intents = mutableListOf<HomeIntent>()
+        setContent {
+            LexiTheme(reducedMotion = true) {
+                HomeScreen(
+                    HomeSampleState.copy(dailyGiftNotice = DailyGiftNotice(DailyGiftNoticeType.Daily, 1)),
+                    onIntent = { intents += it },
+                )
+            }
+        }
+
+        onNode(hasText("Günün hediyesi", substring = true))
+            .assert(SemanticsMatcher.expectValue(SemanticsProperties.Role, Role.Button))
+            .assert(SemanticsMatcher.expectValue(SemanticsProperties.LiveRegion, LiveRegionMode.Polite))
+            .performClick()
+
+        assertEquals(listOf<HomeIntent>(HomeIntent.DismissNotice), intents)
     }
 }

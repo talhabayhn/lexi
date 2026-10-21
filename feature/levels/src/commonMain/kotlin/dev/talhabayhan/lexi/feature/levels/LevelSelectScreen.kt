@@ -37,6 +37,7 @@ import dev.talhabayhan.lexi.core.designsystem.component.SegmentedControl
 import dev.talhabayhan.lexi.core.designsystem.component.StartButton
 import dev.talhabayhan.lexi.core.designsystem.format.formatClock
 import dev.talhabayhan.lexi.core.designsystem.icon.LexiIcons
+import dev.talhabayhan.lexi.core.designsystem.modifier.lexiHeading
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.core.designsystem.theme.lexiContentWidth
 import dev.talhabayhan.lexi.core.domain.game.GameMode
@@ -109,7 +110,11 @@ internal fun LevelSelectScreen(
                     contentDescription = stringResource(Res.string.levels_back),
                     onClick = { onIntent(LevelSelectIntent.Back) },
                 )
-                Text(stringResource(Res.string.levels_title), style = LexiTheme.typography.title)
+                Text(
+                    stringResource(Res.string.levels_title),
+                    style = LexiTheme.typography.title,
+                    modifier = Modifier.lexiHeading(),
+                )
             }
             if (state.hasError) {
                 // DESIGN-DEBT: no design for a failed read; the component library's empty state with a retry above
@@ -184,7 +189,11 @@ private fun ModePicker(state: LevelSelectUiState, onIntent: (LevelSelectIntent) 
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            Text(stringResource(Res.string.levels_mode_label), style = LexiTheme.typography.label12)
+            Text(
+                stringResource(Res.string.levels_mode_label),
+                style = LexiTheme.typography.label12,
+                modifier = Modifier.lexiHeading(),
+            )
             // DESIGN-DEBT: the design has no entry to the categories; a small link on the mode label's line, which
             // keeps every designed element where it is. Compose widens its touch target to the platform minimum.
             // NAT has no category selection (CONTENT.md §5): no link.

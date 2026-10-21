@@ -31,6 +31,7 @@ import dev.talhabayhan.lexi.core.designsystem.component.NavSquareButton
 import dev.talhabayhan.lexi.core.designsystem.component.Segment
 import dev.talhabayhan.lexi.core.designsystem.component.SegmentedControl
 import dev.talhabayhan.lexi.core.designsystem.icon.LexiIcons
+import dev.talhabayhan.lexi.core.designsystem.modifier.lexiHeading
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.core.designsystem.theme.lexiContentWidth
 import dev.talhabayhan.lexi.core.domain.model.CategoryId
@@ -83,7 +84,11 @@ internal fun CategoriesScreen(
                 contentDescription = stringResource(Res.string.levels_back),
                 onClick = { onIntent(CategoriesIntent.Back) },
             )
-            Text(stringResource(Res.string.categories_title), style = LexiTheme.typography.title)
+            Text(
+                stringResource(Res.string.categories_title),
+                style = LexiTheme.typography.title,
+                modifier = Modifier.lexiHeading(),
+            )
         }
         SegmentedControl(
             segments = Level.entries.map { Segment(it.name) },
