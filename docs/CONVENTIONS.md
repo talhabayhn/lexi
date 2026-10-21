@@ -50,6 +50,14 @@
   `GoldenSnapshots.kt`. A diff there changes behaviour for every device and stored replay: update it only on purpose
   (paste the "actual" JSON from the failure) and explain the rule change in the commit.
 - Screenshot tests: Roborazzi, Robolectric host tests in `src/androidHostTest`, goldens under `src/androidHostTest/screenshots`, reviewed in the commit diff. Use `@Config(sdk = [36])` until Robolectric ships an SDK 37 runtime (ADR 0013).
+  Goldens are recorded and verified on Linux CI; local Windows runs are informative only (font rendering differs).
+  The `build` workflow's `screenshots` job runs `verifyRoborazziAndroidHostTest` on every push (diff images in the
+  `roborazzi-diffs` artifact on failure). To change goldens, push the UI change, then run the manual
+  `screenshots-record` workflow: first without `commit` (report on the Summary page, images in `golden-review`), then
+  with `commit`. It commits only font/antialiasing-only changes (`tools/screenshots/classify_goldens.py`); SUSPECT
+  ones (size, color, moved/missing element, new/deleted) need a person's review and are passed via `accept`. A UI
+  change (or a new screenshot test with its locally recorded golden) turns `screenshots` red until that run commits
+  the Linux goldens, so start it right after the push.
 - Component behaviour (clicks, haptics/sounds, timing): `runComposeUiTest` + `mainClock` in the same Robolectric
   host tests, fakes via `LocalHaptics`/`LocalSoundPlayer` (ADR 0017).
 
