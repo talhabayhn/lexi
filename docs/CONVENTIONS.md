@@ -58,9 +58,15 @@
 - Commit after each completed ROADMAP task. Keep commits atomic so any single one can be reverted.
 - Conventional Commits, English, imperative mood: `feat`, `fix`, `refactor`, `test`, `docs`, `chore`, `build`, `ci`;
   scope = module/area.
-- Before every push: `./gradlew build` and `./gradlew :androidApp:assembleDebug` green, and the `code-reviewer`
-  agent (it reviews `git diff origin/main`, i.e. all unpushed work) ends with APPROVE; then `git pull --rebase`.
-  Push to `origin/main` after each task or small group of tasks.
+- Before every push: `./gradlew build` and `./gradlew :androidApp:assembleDebug` green (Tiny changes: only the
+  checks the change can affect) and the review the effort tier requires is done (`code-reviewer` reviews
+  `git diff origin/main`); then `git pull --rebase`. Push to `origin/main` after each task or small group of tasks.
+- Effort tiers: **Tiny** (docs, CI/config, copy/strings, constants, ≤ ~30 lines, no logic) = no subagents, no
+  `code-reviewer`, only the affected checks. **Normal** (a screen, component, bug fix with tests, one module) = main
+  session, one `code-reviewer` pass at the end, full build once before push. **Risky** (GameEngine/domain rules,
+  concurrency/navigation lifecycle, persistence/migrations, payments, ads, auth, permissions, release/signing, > 2
+  modules) = plan first, subagents allowed, `code-reviewer` until APPROVE. Pick the lowest tier that fits (or the one
+  the prompt names) and state it in the final report; CI green after push in every tier.
 - If a push turns CI red, fix it immediately before starting new work.
 - Never force-push and never rewrite pushed history.
 - A change that makes a doc outdated updates that doc in the same commit (or the same task).
@@ -71,4 +77,4 @@
 
 ## Definition of done
 Acceptance criteria met · tests added & green · `./gradlew build` green · UI matches design screenshot ·
-strings in TR+EN · no new warnings · docs/ROADMAP updated · `code-reviewer` agent passed.
+strings in TR+EN · no new warnings · docs/ROADMAP updated · `code-reviewer` passed when the effort tier requires it.

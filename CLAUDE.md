@@ -95,9 +95,9 @@ iOS: open `iosApp/iosApp.xcodeproj` in Xcode and run. (Update this section if ta
 - Trunk-based: work directly on `main` (the owner calls it "master"). No feature branches, no PRs, no `gh` merges.
 - Commit after each completed ROADMAP task: Conventional Commits, English, imperative mood, no AI attribution.
   Keep commits atomic so any single one can be reverted.
-- Before every push: `./gradlew build` and `./gradlew :androidApp:assembleDebug` green, `code-reviewer` (reviews
-  `git diff origin/main`) ends with APPROVE, then `git pull --rebase`, then push to `origin/main` after each task
-  or small group of tasks.
+- Before every push: `./gradlew build` and `./gradlew :androidApp:assembleDebug` green (Tiny changes: only the
+  affected checks) and the review required by the effort tier (below; `code-reviewer` reviews `git diff origin/main`)
+  is done, then `git pull --rebase`, then push to `origin/main` after each task or small group of tasks.
 - If a push turns CI red, fix it immediately before starting new work.
 - Never force-push and never rewrite pushed history.
 - Don't enable or suggest branch protection that requires PRs.
@@ -116,7 +116,19 @@ iOS: open `iosApp/iosApp.xcodeproj` in Xcode and run. (Update this section if ta
 
 `architect` · `game-engine-engineer` · `ui-implementer` · `data-engineer` · `platform-integrator` ·
 `content-curator` · `test-engineer` · `code-reviewer` · `multiplayer-engineer` (v1.1) · `debugger` · `chores`.
-Use them for their area; run `code-reviewer` before pushing a feature.
+Use them for their area; how much review and delegation a change gets follows the effort tier.
+
+### Effort tiers (reviews and subagents)
+
+- **Tiny** (docs, CI/config, copy/strings, constants, ≤ ~30 changed lines with no logic): no subagents, no
+  `code-reviewer`; run only the checks the change can affect (ktlint / the touched module's tests); push.
+- **Normal** (a screen, a component, a bug fix with tests, one module): do it in the main session; one `code-reviewer`
+  pass at the end (not per step); full build once before push.
+- **Risky** (GameEngine/domain rules, concurrency/navigation lifecycle, persistence/migrations, payments, ads, auth,
+  permissions, release/signing, anything touching more than two modules): plan first, subagents allowed,
+  `code-reviewer` required, iterate until APPROVE.
+- The prompt may name the tier; otherwise pick the lowest tier that fits and say which one in the final report.
+- CI green after push is required in every tier.
 
 ### Model routing (set via `model`/`effort` in each agent's frontmatter)
 
