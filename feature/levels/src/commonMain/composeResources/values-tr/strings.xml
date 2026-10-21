@@ -28,7 +28,9 @@
     <string name="levels_caption_hardcore">HARDCORE</string>
 
     <!-- Seviye seçimden giriş (tasarımı yok: docs/design/screen-map.md) -->
-    <string name="levels_open_categories">Kategoriler</string>
+    <string name="levels_open_categories">Kategori seç, şu an %1$s</string>
+    <string name="levels_category_row">Kategori: %1$s</string>
+    <string name="levels_category_mixed">Karışık</string>
 
     <!-- Kategoriler (07-categories) -->
     <string name="categories_title">Kategoriler</string>

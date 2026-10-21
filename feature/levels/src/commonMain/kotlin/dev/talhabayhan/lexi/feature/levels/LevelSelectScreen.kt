@@ -2,11 +2,10 @@ package dev.talhabayhan.lexi.feature.levels
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
@@ -15,21 +14,35 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.Layout
+import androidx.compose.ui.layout.Placeable
+import androidx.compose.ui.layout.SubcomposeLayout
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Constraints
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
+import dev.talhabayhan.lexi.core.designsystem.component.CardDefaults
 import dev.talhabayhan.lexi.core.designsystem.component.ControlDefaults
 import dev.talhabayhan.lexi.core.designsystem.component.DecorShapeKind
 import dev.talhabayhan.lexi.core.designsystem.component.EmptyState
 import dev.talhabayhan.lexi.core.designsystem.component.LevelCard
 import dev.talhabayhan.lexi.core.designsystem.component.LevelCardStyle
+import dev.talhabayhan.lexi.core.designsystem.component.ListDefaults
 import dev.talhabayhan.lexi.core.designsystem.component.NavSquareButton
 import dev.talhabayhan.lexi.core.designsystem.component.PressableSurface
 import dev.talhabayhan.lexi.core.designsystem.component.Segment
@@ -52,6 +65,8 @@ import dev.talhabayhan.lexi.feature.levels.generated.resources.levels_c1
 import dev.talhabayhan.lexi.feature.levels.generated.resources.levels_caption_classic
 import dev.talhabayhan.lexi.feature.levels.generated.resources.levels_caption_hardcore
 import dev.talhabayhan.lexi.feature.levels.generated.resources.levels_caption_practice
+import dev.talhabayhan.lexi.feature.levels.generated.resources.levels_category_mixed
+import dev.talhabayhan.lexi.feature.levels.generated.resources.levels_category_row
 import dev.talhabayhan.lexi.feature.levels.generated.resources.levels_error
 import dev.talhabayhan.lexi.feature.levels.generated.resources.levels_mode_classic
 import dev.talhabayhan.lexi.feature.levels.generated.resources.levels_mode_hardcore
@@ -71,8 +86,9 @@ import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
 
 /**
- * `03-level-select`: back button and title, the 2 × 3 level cards (the selected one red), the mode picker and the
- * BAŞLA button, pinned to the bottom. Scrolls only when the screen is too short for the content.
+ * `03-level-select`: back button and title, the 2 × 3 level cards (the selected one red), the mode picker, the
+ * category row and the BAŞLA button, pinned to the bottom. It steps down [LevelSelectTier]s on short phones; only when
+ * even the tightest tier does not fit (huge font) the part above BAŞLA scrolls, BAŞLA stays visible.
  */
 @Composable
 internal fun LevelSelectScreen(
@@ -80,26 +96,149 @@ internal fun LevelSelectScreen(
     onIntent: (LevelSelectIntent) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    val dimens = LexiTheme.dimens
-    BoxWithConstraints(
+    Box(
         modifier
             .fillMaxSize()
             .background(LexiTheme.colors.cream)
             .windowInsetsPadding(WindowInsets.safeDrawing)
             .lexiContentWidth(),
     ) {
-        val screenHeight = maxHeight
+        FitToHeight(Modifier.fillMaxSize()) { tier, fit -> LevelSelectContent(tier, fit, state, onIntent) }
+    }
+}
+
+/** Heights of one layout tier (`screen-map.md`): regular is the design, the others are DESIGN-DEBT scalings of it. */
+internal enum class LevelSelectTier { Regular, Compact, Tight }
+
+private class LevelSelectMetrics(
+    val paddingTop: Dp,
+    val paddingBottom: Dp,
+    val gap: Dp,
+    val gridGap: Dp,
+    val cardMinHeight: Dp,
+    val categoryHeight: Dp,
+    val cardPadding: Dp,
+    val segmentHeight: Dp,
+)
+
+@Composable
+private fun LevelSelectTier.metrics(): LevelSelectMetrics {
+    val dimens = LexiTheme.dimens
+    return when (this) {
+        LevelSelectTier.Regular -> LevelSelectMetrics(
+            dimens.screenPaddingTop,
+            dimens.screenPaddingBottom,
+            dimens.gap18,
+            dimens.gap12,
+            CardDefaults.LevelCardHeight,
+            ListDefaults.RowMinHeight,
+            CardDefaults.Padding,
+            ControlDefaults.SegmentHeightWithSubtitle,
+        )
+
+        LevelSelectTier.Compact -> LevelSelectMetrics(
+            LevelSelectDefaults.CompactPaddingTop,
+            LevelSelectDefaults.CompactPaddingBottom,
+            dimens.gap12,
+            dimens.gap10,
+            LevelSelectDefaults.CompactCardHeight,
+            LevelSelectDefaults.CompactCategoryHeight,
+            CardDefaults.CompactPadding,
+            ControlDefaults.SegmentHeightWithSubtitle,
+        )
+
+        LevelSelectTier.Tight -> LevelSelectMetrics(
+            dimens.gap8,
+            dimens.gap12,
+            dimens.gap8,
+            dimens.gap8,
+            0.dp,
+            LevelSelectDefaults.TightCategoryHeight,
+            dimens.gap8,
+            LevelSelectDefaults.TightSegmentHeight,
+        )
+    }
+}
+
+/** Natural height of one tier's content, written by [LevelSelectColumn] while it is measured. */
+private class LevelSelectFit {
+    var naturalHeight: Int = 0
+}
+
+/**
+ * Measures each tier in turn (from regular) at exactly the available size and keeps the first whose natural height
+ * fits; the last one otherwise. Each tier is composed once; those measured but not chosen stay unplaced.
+ */
+@Composable
+private fun FitToHeight(modifier: Modifier, content: @Composable (LevelSelectTier, LevelSelectFit) -> Unit) {
+    val fits = remember { LevelSelectTier.entries.associateWith { LevelSelectFit() } }
+    // Stable slot lambdas: SubcomposeLayout recomposes a slot whenever it gets a new lambda instance.
+    val slots = remember(content) {
+        LevelSelectTier.entries.associateWith { tier -> @Composable { content(tier, fits.getValue(tier)) } }
+    }
+    SubcomposeLayout(modifier) { constraints ->
+        val width = constraints.maxWidth
+        val height = constraints.maxHeight
+        val fixed = Constraints.fixed(width, height)
+        var placeables = emptyList<Placeable>()
+        for (candidate in LevelSelectTier.entries) {
+            placeables = subcompose(candidate, slots.getValue(candidate)).map { it.measure(fixed) }
+            if (fits.getValue(candidate).naturalHeight <= height) break
+        }
+        layout(width, height) { placeables.forEach { it.place(0, 0) } }
+    }
+}
+
+/**
+ * The flex column: the first child (scrolls when it does not fit) from the top padding, the second (BAŞLA) pinned above
+ * the bottom padding with at least one [gap] to the first. Writes the natural height to [fit] while it is measured.
+ */
+@Composable
+private fun LevelSelectColumn(
+    fit: LevelSelectFit,
+    paddingTop: Dp,
+    paddingBottom: Dp,
+    gap: Dp,
+    modifier: Modifier = Modifier,
+    content: @Composable () -> Unit,
+) {
+    Layout(content, modifier) { measurables, constraints ->
+        val width = constraints.maxWidth
+        val bottom = measurables[1].measure(Constraints(maxWidth = width))
+        val top = paddingTop.roundToPx()
+        val gapPx = gap.roundToPx()
+        val bottomPad = paddingBottom.roundToPx()
+        fit.naturalHeight = top + measurables[0].maxIntrinsicHeight(width) + gapPx + bottom.height + bottomPad
+        val height = if (constraints.hasBoundedHeight) constraints.maxHeight else fit.naturalHeight
+        val room = (height - top - gapPx - bottom.height - bottomPad).coerceAtLeast(0)
+        val middle = measurables[0].measure(Constraints(maxWidth = width, maxHeight = room))
+        layout(width, height) {
+            middle.place(0, top)
+            bottom.place(0, height - bottomPad - bottom.height)
+        }
+    }
+}
+
+@Composable
+private fun LevelSelectContent(
+    tier: LevelSelectTier,
+    fit: LevelSelectFit,
+    state: LevelSelectUiState,
+    onIntent: (LevelSelectIntent) -> Unit,
+) {
+    val dimens = LexiTheme.dimens
+    val metrics = tier.metrics()
+    LevelSelectColumn(
+        fit = fit,
+        paddingTop = metrics.paddingTop,
+        paddingBottom = metrics.paddingBottom,
+        gap = metrics.gap,
+        modifier = Modifier.fillMaxSize().padding(horizontal = dimens.screenPaddingHorizontal),
+    ) {
         Column(
-            modifier = Modifier
-                .verticalScroll(rememberScrollState())
-                .heightIn(min = screenHeight)
-                .padding(
-                    start = dimens.screenPaddingHorizontal,
-                    top = dimens.screenPaddingTop,
-                    end = dimens.screenPaddingHorizontal,
-                    bottom = dimens.screenPaddingBottom,
-                ),
-            verticalArrangement = Arrangement.spacedBy(dimens.gap18),
+            // The room under the last row keeps its hard shadow out of the scroll clip.
+            modifier = Modifier.verticalScroll(rememberScrollState()).padding(bottom = LexiTheme.shadows.s6.offset),
+            verticalArrangement = Arrangement.spacedBy(metrics.gap),
         ) {
             Row(
                 horizontalArrangement = Arrangement.spacedBy(dimens.gap12),
@@ -126,26 +265,32 @@ internal fun LevelSelectScreen(
                     modifier = Modifier.fillMaxWidth(),
                 )
             }
-            LevelGrid(state, onIntent)
-            ModePicker(state, onIntent)
-            Spacer(Modifier.weight(1f))
-            StartButton(
-                label = stringResource(Res.string.levels_start),
-                caption = stringResource(
-                    Res.string.levels_start_caption,
-                    state.selectedLevel.name,
-                    stringResource(state.selectedMode.captionRes()),
-                    state.letterCount,
-                ),
-                onClick = { onIntent(LevelSelectIntent.Start) },
-            )
+            LevelGrid(state, onIntent, metrics)
+            ModePicker(state, onIntent, metrics.segmentHeight)
+            // NAT has no category selection (CONTENT.md §5): no row.
+            if (state.selectedLevel != Level.NAT) {
+                CategoryRow(
+                    onClick = { onIntent(LevelSelectIntent.OpenCategories) },
+                    height = metrics.categoryHeight,
+                )
+            }
         }
+        StartButton(
+            label = stringResource(Res.string.levels_start),
+            caption = stringResource(
+                Res.string.levels_start_caption,
+                state.selectedLevel.name,
+                stringResource(state.selectedMode.captionRes()),
+                state.letterCount,
+            ),
+            onClick = { onIntent(LevelSelectIntent.Start) },
+        )
     }
 }
 
 @Composable
-private fun LevelGrid(state: LevelSelectUiState, onIntent: (LevelSelectIntent) -> Unit) {
-    val gap = LexiTheme.dimens.gap12
+private fun LevelGrid(state: LevelSelectUiState, onIntent: (LevelSelectIntent) -> Unit, metrics: LevelSelectMetrics) {
+    val gap = metrics.gridGap
     Column(Modifier.selectableGroup(), verticalArrangement = Arrangement.spacedBy(gap)) {
         state.levels.chunked(LEVEL_COLUMNS).forEach { row ->
             Row(
@@ -174,6 +319,8 @@ private fun LevelGrid(state: LevelSelectUiState, onIntent: (LevelSelectIntent) -
                             else -> LevelCardStyle.Normal
                         },
                         modifier = Modifier.weight(1f).fillMaxHeight(),
+                        minHeight = metrics.cardMinHeight,
+                        padding = metrics.cardPadding,
                     )
                 }
             }
@@ -182,44 +329,71 @@ private fun LevelGrid(state: LevelSelectUiState, onIntent: (LevelSelectIntent) -
 }
 
 @Composable
-private fun ModePicker(state: LevelSelectUiState, onIntent: (LevelSelectIntent) -> Unit) {
+private fun ModePicker(state: LevelSelectUiState, onIntent: (LevelSelectIntent) -> Unit, segmentHeight: Dp) {
     Column(verticalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap8)) {
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            Text(
-                stringResource(Res.string.levels_mode_label),
-                style = LexiTheme.typography.label12,
-                modifier = Modifier.lexiHeading(),
-            )
-            // DESIGN-DEBT: the design has no entry to the categories; a small link on the mode label's line, which
-            // keeps every designed element where it is. Compose widens its touch target to the platform minimum.
-            // NAT has no category selection (CONTENT.md §5): no link.
-            if (state.selectedLevel != Level.NAT) {
-                CategoriesLink(onClick = { onIntent(LevelSelectIntent.OpenCategories) })
-            }
-        }
+        Text(
+            stringResource(Res.string.levels_mode_label),
+            style = LexiTheme.typography.label12,
+            modifier = Modifier.lexiHeading(),
+        )
         SegmentedControl(
             segments = SelectableModes.map { mode ->
                 Segment(stringResource(mode.titleRes()), mode.hint(state.classicTimeLimitSeconds))
             },
             selectedIndex = SelectableModes.indexOf(state.selectedMode),
             onSelect = { onIntent(LevelSelectIntent.SelectMode(SelectableModes[it])) },
-            height = ControlDefaults.SegmentHeightWithSubtitle,
+            height = segmentHeight,
             dividerWidth = LexiTheme.borders.regular,
             modifier = Modifier.fillMaxWidth(),
         )
     }
 }
 
-/** Underlined "Kategoriler" link: transparent, no frame or shadow, so it does not move when pressed. */
+/**
+ * DESIGN-DEBT (needs design, `screen-map.md`): the full-width "Kategori: Karışık" row under the mode picker, built from
+ * the component library's pressable white surface with a list row's padding, icon and chevron. BAŞLA always plays the
+ * mixed wheel; the row opens the category list.
+ */
 @Composable
-private fun CategoriesLink(onClick: () -> Unit) {
-    PressableSurface(onClick = onClick, color = Color.Transparent, border = null, shadow = null) {
-        Text(stringResource(Res.string.levels_open_categories), style = LexiTheme.typography.link12)
+private fun CategoryRow(onClick: () -> Unit, height: Dp) {
+    val current = stringResource(Res.string.levels_category_mixed)
+    val description = stringResource(Res.string.levels_open_categories, current)
+    PressableSurface(
+        onClick = onClick,
+        modifier = Modifier.fillMaxWidth().heightIn(min = height).semantics { contentDescription = description },
+        shadow = LexiTheme.shadows.s3,
+        contentAlignment = Alignment.CenterStart,
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth().padding(ListDefaults.RowPadding),
+            horizontalArrangement = Arrangement.spacedBy(ListDefaults.RowGap),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Icon(
+                LexiIcons.Categories,
+                contentDescription = null,
+                modifier = Modifier.size(LevelSelectDefaults.IconSize),
+            )
+            Text(
+                stringResource(Res.string.levels_category_row, current),
+                style = LexiTheme.typography.caption14SemiBold,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+                modifier = Modifier.weight(1f),
+            )
+            Icon(LexiIcons.ChevronRight, contentDescription = null, modifier = Modifier.size(ListDefaults.ChevronSize))
+        }
     }
+}
+
+private object LevelSelectDefaults {
+    val CompactPaddingTop = 12.dp
+    val CompactPaddingBottom = 16.dp
+    val CompactCardHeight = 112.dp
+    val CompactCategoryHeight = 44.dp
+    val TightCategoryHeight = 40.dp
+    val TightSegmentHeight = 48.dp
+    val IconSize = 20.dp
 }
 
 private const val LEVEL_COLUMNS = 2

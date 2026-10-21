@@ -135,6 +135,8 @@ public fun LevelCard(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     style: LevelCardStyle = LevelCardStyle.Normal,
+    minHeight: Dp = CardDefaults.LevelCardHeight,
+    padding: Dp = CardDefaults.Padding,
 ) {
     val colors = LexiTheme.colors
     val typography = LexiTheme.typography
@@ -153,14 +155,14 @@ public fun LevelCard(
     val lines = if (inverted) colors.cream else colors.ink
     PressableSurface(
         onClick = onClick,
-        modifier = modifier.heightIn(min = CardDefaults.LevelCardHeight).semantics { this.selected = selected },
+        modifier = modifier.heightIn(min = minHeight).semantics { this.selected = selected },
         color = fill,
         shadow = if (selected) LexiTheme.shadows.s6 else LexiTheme.shadows.s3,
         role = Role.RadioButton,
         propagateMinConstraints = true,
     ) {
         Column(
-            modifier = Modifier.fillMaxSize().padding(CardDefaults.Padding),
+            modifier = Modifier.fillMaxSize().padding(padding),
             verticalArrangement = Arrangement.SpaceBetween,
         ) {
             Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {

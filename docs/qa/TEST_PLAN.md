@@ -34,7 +34,7 @@ Compare each screen with its PNG in `docs/design/screens/` side by side (spacing
 | Splash `14` | Plays once, ≤ ~2 s, no white flash; reduced-motion shows a static logo |
 | Onboarding `01` | 3 steps, progress indicator, skip, back; level test vs pick-myself; result card "Seviyen: X", change level; interrupted test (home button) restarts cleanly |
 | Home `02` | Streak badge "N gün seri" hidden at 0, shown from 1; due-count badge; daily card state (new / played); tiles inert vs live as in screen-map; never scrolls at 320×568 |
-| Level select `03` | Each level selectable; mode chips (Classic / Practice / Hardcore); "Kategoriler" link; level without full content marked/behaves per release decision |
+| Level select `03` | Each level selectable; mode chips (Classic / Practice / Hardcore); "Kategori: Karışık" row; level without full content marked/behaves per release decision |
 | Categories `07` | Cards list, mixed wheel, empty level shows `EmptyState`, read failure retry |
 | Game `04` | Wheel states (todo/current/correct/wrong/passed); keys place/remove letters; backspace; multi-word answers (fixed gaps); pass → returns next lap; wrong → reveal ~1.2 s, input blocked; timer, pause, background stops clock; combo badge at 3/5/10; Hardcore ends on first wrong; Practice shows "SÜRESİZ" |
 | Joker sheet `05` | Each joker works once per slot; one joker per letter total; refused when cost ≥ time left; Listen disabled at C1/NAT; none in Daily and level test; inventory counts update |

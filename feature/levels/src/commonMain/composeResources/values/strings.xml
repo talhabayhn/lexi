@@ -28,7 +28,9 @@
     <string name="levels_caption_hardcore">HARDCORE</string>
 
     <!-- Entry from the level select (no design: see docs/design/screen-map.md) -->
-    <string name="levels_open_categories">Categories</string>
+    <string name="levels_open_categories">Choose category, currently %1$s</string>
+    <string name="levels_category_row">Category: %1$s</string>
+    <string name="levels_category_mixed">Mixed</string>
 
     <!-- Categories (07-categories) -->
     <string name="categories_title">Categories</string>
