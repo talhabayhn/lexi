@@ -210,8 +210,10 @@ public fun DialogPanel(
                 isTraversalGroup = true
             }
             .lexiSurface(colors.white, BorderStroke(LexiTheme.borders.regular, colors.ink), LexiTheme.shadows.s8)
-            .padding(FeedbackDefaults.DialogPadding)
-            .verticalScroll(rememberScrollState()),
+            // Scroll outside the padding: the scroll viewport clips, and the primary button's hard shadow lies in
+            // the padding (below and right of the button).
+            .verticalScroll(rememberScrollState())
+            .padding(FeedbackDefaults.DialogPadding),
         verticalArrangement = Arrangement.spacedBy(FeedbackDefaults.DialogGap),
     ) {
         Box(
