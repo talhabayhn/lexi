@@ -27,6 +27,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.withFrameNanos
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
@@ -81,6 +82,9 @@ public object ControlDefaults {
 
     /** System font scale above which a control that opted in ([SegmentedControl] `scrollable`) scrolls sideways. */
     public const val SCROLL_FONT_SCALE: Float = 1.75f
+
+    /** System font scale from which compact labels (the stats chart's weekday names) shrink to one letter. */
+    public const val SHORT_LABEL_FONT_SCALE: Float = 1.5f
 }
 
 /**
@@ -104,7 +108,11 @@ public fun SegmentedControl(
     val scrollState = rememberScrollState()
     val requesters = remember(segments.size) { List(segments.size) { BringIntoViewRequester() } }
     if (scrolling) {
-        LaunchedEffect(selectedIndex) { requesters.getOrNull(selectedIndex)?.bringIntoView() }
+        LaunchedEffect(selectedIndex) {
+            // Wait for the first layout pass, otherwise the segment has no position to scroll to yet.
+            withFrameNanos { }
+            requesters.getOrNull(selectedIndex)?.bringIntoView()
+        }
     }
     val typography = LexiTheme.typography
     val haptics = LocalHaptics.current

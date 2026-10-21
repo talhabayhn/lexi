@@ -22,6 +22,7 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.tooling.preview.Preview
 import dev.talhabayhan.lexi.core.designsystem.component.BarChart
 import dev.talhabayhan.lexi.core.designsystem.component.BarChartDefaults
+import dev.talhabayhan.lexi.core.designsystem.component.ControlDefaults
 import dev.talhabayhan.lexi.core.designsystem.component.DecorShapeKind
 import dev.talhabayhan.lexi.core.designsystem.component.EmptyState
 import dev.talhabayhan.lexi.core.designsystem.component.HardLetterChip
@@ -180,7 +181,7 @@ private fun WeekCard(state: StatsUiState) {
     val typography = LexiTheme.typography
     val labels = state.week.map { stringResource(it.weekday.dayRes()) }
     // Three-letter names run into each other at large font sizes: one letter each there (the description keeps the full names).
-    val chartLabels = if (LocalDensity.current.fontScale >= SHORT_DAY_FONT_SCALE) {
+    val chartLabels = if (LocalDensity.current.fontScale >= ControlDefaults.SHORT_LABEL_FONT_SCALE) {
         state.week.map { stringResource(it.weekday.shortDayRes()) }
     } else {
         labels
@@ -264,9 +265,6 @@ private fun HardestLetters(state: StatsUiState) {
         }
     }
 }
-
-/** System font scale from which the chart's weekday names shrink to one letter. */
-private const val SHORT_DAY_FONT_SCALE = 1.5f
 
 private fun Int.shortDayRes(): StringResource = when (this) {
     0 -> Res.string.stats_day_short_mon
