@@ -15,6 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import com.github.takahirom.roborazzi.captureRoboImage
@@ -24,6 +25,7 @@ import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
 import org.robolectric.annotation.GraphicsMode
+import kotlin.math.roundToInt
 
 @RunWith(RobolectricTestRunner::class)
 @GraphicsMode(GraphicsMode.Mode.NATIVE)
@@ -114,33 +116,39 @@ private fun TypographySheet() {
 @Composable
 private fun ColorSheet() {
     val c = LexiTheme.colors
-    val swatches: List<Triple<String, String, Color>> = listOf(
-        Triple("cream", "#F2EBDD", c.cream),
-        Triple("white", "#FFFFFF", c.white),
-        Triple("ink", "#111111", c.ink),
-        Triple("red", "#D9281C", c.red),
-        Triple("blue", "#1F4FBF", c.blue),
-        Triple("yellow", "#F2C200", c.yellow),
-        Triple("inkMuted", "#5A5A5A", c.inkMuted),
-        Triple("borderMuted", "#7A7468", c.borderMuted),
-        Triple("disabledFill", "#E2DACB", c.disabledFill),
-        Triple("gridLine", "#B8B0A0", c.gridLine),
-        Triple("scrim", "#111111 @ 55%", c.scrim),
+    val swatches: List<Pair<String, Color>> = listOf(
+        "cream" to c.cream,
+        "white" to c.white,
+        "ink" to c.ink,
+        "red" to c.red,
+        "blue" to c.blue,
+        "yellow" to c.yellow,
+        "inkMuted" to c.inkMuted,
+        "borderMuted" to c.borderMuted,
+        "disabledFill" to c.disabledFill,
+        "gridLine" to c.gridLine,
+        "scrim" to c.scrim,
     )
     Column(
         modifier = Modifier.fillMaxSize().background(c.cream).padding(20.dp),
         verticalArrangement = Arrangement.spacedBy(10.dp),
     ) {
-        swatches.forEach { (name, hex, color) ->
+        swatches.forEach { (name, color) ->
             Row(horizontalArrangement = Arrangement.spacedBy(12.dp), verticalAlignment = Alignment.CenterVertically) {
                 Box(Modifier.size(96.dp, 48.dp).background(c.white).border(2.dp, c.ink)) {
                     Box(Modifier.fillMaxSize().padding(2.dp).background(color))
                 }
                 Column(Modifier.fillMaxWidth()) {
                     Text(name, style = LexiTheme.typography.bodyStrong15)
-                    Text(hex, style = LexiTheme.typography.caption13)
+                    Text(color.hexLabel(), style = LexiTheme.typography.caption13)
                 }
             }
         }
     }
+}
+
+private fun Color.hexLabel(): String {
+    val rgb = toArgb() and 0xFFFFFF
+    val hex = "#" + rgb.toString(16).uppercase().padStart(6, '0')
+    return if (alpha < 1f) "$hex @ ${(alpha * 100).roundToInt()}%" else hex
 }

@@ -121,9 +121,8 @@ Module mapping (replaces the earlier `composeApp`): `androidApp` = thin Android 
 - [x] Full B2 set (729 cards, `docs/content-review/B2-*.md`; Q, X, Y, J thin at true B2)
 - [x] Full C1 set (664 cards, `docs/content-review/C1-*.md`; W, U, V, Z, X thin at true C1)
 - [x] Full NAT set (622 cards, `docs/content-review/NAT-*.md`; native-level words, Q/X/Y/Z/K mostly CONTAINS)
-- [ ] A1 gap: 787 of the 850 target (strict A1 word lists exhausted; thin letters Q, Z, V, Y, I, J) — extend or accept
-- [ ] **Release checklist:** do not ship a level that only has a smoke set; either complete it or mark it "coming soon"
-  in the level select (product decision pending)
+- [x] A1 gap: 787 of the 850 target — owner decision: accepted, A1 stays at the current count
+- [x] **Release checklist:** no level ships with only a smoke set — satisfied, all levels have full sets
 
 ## Global languages (after the v1.0 TR launch, ADR 0022)
 - [ ] Prerequisites: remove hardcoded Turkish clue language from code paths (list in ADR 0022), content translation +

@@ -20,6 +20,7 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.text.style.Hyphens
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -106,7 +107,7 @@ public fun JokerRow(
                 modifier = Modifier.weight(1f),
                 main = {
                     Column {
-                        Text(title, style = typography.bodyStrong17)
+                        Text(title, style = typography.bodyStrong17.copy(hyphens = Hyphens.Auto))
                         Text(description, style = typography.caption13)
                     }
                 },

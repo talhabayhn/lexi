@@ -8,36 +8,36 @@ when done. Sources: `ROADMAP.md`, `screen-map.md`, `DECISIONS.md`, `store/owner-
 ## 1. M6 remainder
 | ID | Item | Owner | Size | Depends on |
 |---|---|---|---|---|
-| B1 | Countdown label on daily card/result ("Yeni çark: {time}") + already-played state | AG | S | `COPY.md` §5 |
+| B1 | ~~Countdown label on daily card/result ("Yeni çark: {time}") + already-played state~~ — done | AG | S | `COPY.md` §5 |
 | B2 | Grouped result review (group "Tekrar edilecekler" by missed / passed) | AG | M | — |
-| B3 | Share card renderer (`12-share-card`, 432×540 bitmap) + system share sheet (Android + iOS) | AG | L | `COPY.md` §7, platform share bridge |
-| B4 | Onboarding 3 steps (`01-onboarding` + steps 1 & 3 design debt) | AG | M | `COPY.md` §3 |
-| B5 | Level test flow (one-slot games, carried clock) + intro (DESIGN-DEBT), level choice to `01-onboarding` | AG (Opus·high for engine wiring) | L | B4, `GAME_RULES.md` §9 |
-| B6 | Level test result screen ("Seviyen: B1", change level, start; DESIGN-DEBT, `06-result` header style) | AG | M | B5, `COPY.md` §4 |
-| B7 | Daily wheel intro / already-played state polish | AG | S | B1 |
+| B3 | ~~Share card renderer (`12-share-card`, 432×540 bitmap) + system share sheet (Android + iOS)~~ — done | AG | L | `COPY.md` §7, platform share bridge |
+| B4 | ~~Onboarding 3 steps (`01-onboarding` + steps 1 & 3 design debt)~~ — done | AG | M | `COPY.md` §3 |
+| B5 | ~~Level test flow (one-slot games, carried clock) + intro (DESIGN-DEBT), level choice to `01-onboarding`~~ — done | AG (Opus·high for engine wiring) | L | B4, `GAME_RULES.md` §9 |
+| B6 | ~~Level test result screen ("Seviyen: B1", change level, start; DESIGN-DEBT, `06-result` header style)~~ — done | AG | M | B5, `COPY.md` §4 |
+| B7 | ~~Daily wheel intro / already-played state polish~~ — done | AG | S | B1 |
 | B8 | Verify "two devices get the identical daily wheel" on real devices | Owner | S | B1–B7, `TEST_PLAN.md` §3 |
 
 ## 2. Content
 | ID | Item | Owner | Size | Depends on |
 |---|---|---|---|---|
-| C1 | Compile content, bump `contentVersion` so installed apps refresh `content.db` | AG | S | — |
-| C2 | Compiler: pick up `content/exam-packs/` by default, widen pack metadata, per-pack coverage + level-window checks (`docs/content/EXAM_PACKS.md`) | AG | M | C1 |
-| C3 | Exam-pack tables used at runtime (pack query path with `pack_only = 0` filter on normal wheels) | AG | M | C2 |
-| C4 | Release decision: A1 at 787/850, levels with smoke sets (complete or "coming soon") | Owner | S | O7 in `DECISIONS.md` |
-| C5 | Spot-check content per `TEST_PLAN.md` §4 (30 cards/level) and log into `content-review/` | Cloud | M | C1 |
-| C6 | Finish thin letters (A1 Q, Z, V, Y, I, J; others per review notes) if the owner wants 850 | Cloud | L | C4 |
+| C1 | ~~Compile content, bump `contentVersion` so installed apps refresh `content.db`~~ — done | AG | S | — |
+| C2 | ~~Compiler: pick up `content/exam-packs/` by default, widen pack metadata, per-pack coverage + level-window checks (`docs/content/EXAM_PACKS.md`)~~ — done | AG | M | C1 |
+| C3 | ~~Exam-pack tables used at runtime (pack query path with `pack_only = 0` filter on normal wheels)~~ — done | AG | M | C2 |
+| C4 | ~~Release decision: A1 at 787/850, levels with smoke sets~~ — decided: A1 stays at the current count (accepted); every level has a full set, so no "coming soon" | Owner | S | O7 in `DECISIONS.md` |
+| C5 | ~~Spot-check content per `TEST_PLAN.md` §4 (30 cards/level) and log into `content-review/`~~ — done | Cloud | M | C1 |
+| C6 | (not needed, A1 accepted as is) Finish thin letters (A1 Q, Z, V, Y, I, J; others per review notes) if the owner wants 850 | Cloud | L | C4 |
 
 ## 3. M7 — monetisation, settings, telemetry
 | ID | Item | Owner | Size | Depends on |
 |---|---|---|---|---|
-| M7.1 | Settings: classic time, goal, languages, accent, reminder rows live; remove "YAKINDA" chips | AG | M | — |
-| M7.2 | Notification pre-prompt + reminder scheduler (1/day, quiet hours, 12 variants) | AG | L | M7.1, `COPY.md` §1 |
+| M7.1 | ~~Settings: classic time, goal, languages, accent, reminder rows live; remove "YAKINDA" chips~~ — done | AG | M | — |
+| M7.2 | ~~Notification pre-prompt + reminder scheduler (1/day, quiet hours, 12 variants)~~ — done | AG | L | M7.1, `COPY.md` §1 |
 | M7.3 | Decide O1 (ad policy) and O2 (ATT) | Owner | S | — |
 | M7.4 | RevenueCat: products in stores, Pro entitlement, restore | Owner (stores) + AG | L | Dev accounts (R1), O8 prices |
 | M7.5 | Paywall screen (design debt) | AG, design from Owner | M | M7.4, `COPY.md` §2 |
 | M7.6 | AdMob rewarded (+1 joker) with UMP consent; enable `FeatureFlags.rewardedAdJokers` | AG | L | M7.3, AdMob account (R2) |
-| M7.7 | Exam packs screen `10-exam-packs` wired with Pro lock and A–E preview | AG | M | C3, M7.4 |
-| M7.8 | Firebase Analytics + Crashlytics behind interfaces; events per `ANALYTICS.md`; no consent form until M7.6 (owner, ADR 0023) | AG | M | Firebase project (R3) |
+| M7.7 | ~~Exam packs screen `10-exam-packs` wired with Pro lock and A–E preview~~ — done | AG | M | C3, M7.4 |
+| M7.8 | ~~Firebase Analytics + Crashlytics behind interfaces; events per `ANALYTICS.md`; no consent form until M7.6 (owner, ADR 0023)~~ — done | AG | M | Firebase project (R3) |
 | M7.9 | Category Pro lock hook (no shipped category is Pro today) | AG | S | M7.4 |
 | M7.10 | Sandbox test pass for purchases/ads/consent | Owner | M | M7.4–M7.8, `TEST_PLAN.md` §5 |
 
@@ -45,10 +45,10 @@ when done. Sources: `ROADMAP.md`, `screen-map.md`, `DECISIONS.md`, `store/owner-
 | ID | Item | Owner | Size | Depends on |
 |---|---|---|---|---|
 | M8.1 | Hot-seat duel: setup, handover card, per-player clocks, result (design needed first) | AG (Opus·high) | L | Design (D9) |
-| M8.2 | Accessibility pass (labels, font caps, contrast, reduced motion) | AG | M | `TEST_PLAN.md` §8 |
+| M8.2 | ~~Accessibility pass (labels, font caps, contrast, reduced motion)~~ — done | AG | M | `TEST_PLAN.md` §8 |
 | M8.3 | Small-screen/tablet checks and fixes | AG | M | `TEST_PLAN.md` §7 |
-| M8.4 | Rating prompt (`ConfirmDialog`) with trigger rules | AG | S | `COPY.md` §8 |
-| M8.5 | About/licences screen (Jost OFL, word-list attributions) | AG | S | — |
+| M8.4 | ~~Rating prompt (`ConfirmDialog`) with trigger rules~~ — done | AG | S | `COPY.md` §8 |
+| M8.5 | ~~About/licences screen (Jost OFL, word-list attributions)~~ — done | AG | S | — |
 | M8.6 | Performance work: cold start < 1.5 s, 60 fps game | AG | M | `TEST_PLAN.md` §9 |
 | M8.7 | Store listing text finalised (O3 exam names), screenshots, privacy/data-safety/nutrition labels | Cloud + Owner | M | O1–O3 |
 | M8.8 | Real-device test pass on both platforms | Owner | M | `TEST_PLAN.md` |
@@ -104,9 +104,9 @@ Built from `16-components` today; an owner design request is optional unless mar
 ## 9. Polish leftovers (2026-10-19 pass)
 | ID | Item | Owner | Size | Notes |
 |---|---|---|---|---|
-| P1 | Wheel centre letter sits ~13dp higher than `04-game` (descender space reserved under it) | Owner → AG | S | decide: accept, or shrink the letter/label gap so the rest of the stack keeps the design position |
-| P2 | Words longer than the whole column still split at 320dp + fontScale 2.0 (e.g. a joker title in the stacked layout) | AG | S | needs hyphenation (`Hyphens.Auto`) or a local auto-size; no global shrinking |
-| P3 | SegmentedControl: wrapped segment titles are start-aligned (centring them moved the design-size text 1px) | AG | S | centre per line without changing the one-line case |
+| P1 | ~~Wheel centre letter sits ~13dp higher than `04-game`~~ — accepted by the owner, documented in `screen-map.md` | Owner | S | done |
+| P2 | ~~Words longer than the whole column still split at 320dp + fontScale 2.0 (e.g. a joker title in the stacked layout)~~ | AG | S | done: JokerRow title uses `Hyphens.Auto` |
+| P3 | ~~SegmentedControl: wrapped segment titles are start-aligned (centring them moved the design-size text 1px)~~ | AG | S | done: wrapped titles centred per line, one-line case unchanged |
 | P4 | `docs/design/sound-previews` still holds the old `time_up` preview | AG | S | rerun `tools/sound-gen/generate.py` with previews (needs ffmpeg) |
 | P5 | 14 goldens differ beyond the palette (ComponentGallery, LevelSelectComponents, LexiIcons, RatingPromptDialog + En, 9 Notebook screens) | AG | S | review each change, then re-record |
-| P6 | `TokensColors` screenshot still labels the pre-9fcd32d hex values | AG | S | labels are hard-coded in `ThemeScreenshotTest` |
+| P6 | ~~`TokensColors` screenshot still labels the pre-9fcd32d hex values~~ | AG | S | done: labels derived from the tokens |

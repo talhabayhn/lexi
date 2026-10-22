@@ -27,7 +27,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.runtime.withFrameNanos
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -151,11 +154,16 @@ public fun SegmentedControl(
                 verticalArrangement = Arrangement.Center,
             ) {
                 val titleColor = if (selected) colors.yellow else colors.ink
+                // Wrapped lines are centred per line; the one-line case keeps the default alignment (design pixels).
+                var titleWrapped by remember { mutableStateOf(false) }
+                val wrapAlign = if (titleWrapped) TextAlign.Center else TextAlign.Unspecified
                 if (segment.subtitle == null) {
                     Text(
                         segment.title,
                         style = typography.bodyStrong14,
                         color = titleColor,
+                        textAlign = wrapAlign,
+                        onTextLayout = { titleWrapped = it.lineCount > 1 },
                     )
                 } else {
                     val lineHeight = ControlDefaults.SEGMENT_TWO_LINE_HEIGHT
@@ -163,6 +171,8 @@ public fun SegmentedControl(
                         segment.title,
                         style = typography.bodyStrong16.withCssLineHeight(lineHeight),
                         color = titleColor,
+                        textAlign = wrapAlign,
+                        onTextLayout = { titleWrapped = it.lineCount > 1 },
                     )
                     Text(
                         segment.subtitle,
