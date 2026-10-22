@@ -1,5 +1,5 @@
 {
-  "contentVersion": 21,
+  "contentVersion": 22,
   "shippedLevels": ["A1", "A2", "B1", "B2", "C1", "NAT"],
   "shippedPacks": ["lgs", "yds-yokdil"],
   "smokeLevels": []

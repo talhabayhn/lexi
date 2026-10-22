@@ -70,3 +70,5 @@ Errors fail the compiler and therefore the app build (`generateContentDb`, nothi
   health, social-sciences, research-methods); a card shared by both appears once, under its first unit.
 - Row subtitles in the design ("600 kelime", "2000") are placeholders; show the real card counts.
 - TEAM is not added (no edits to base cards).
+- `yds-yokdil` level window is B1–C1 (was B2–C1, contentVersion 22): the exam's health and science vocabulary is
+  taught from B1, so its 12 B1 cards stay in the pack and the level-window warnings are gone.

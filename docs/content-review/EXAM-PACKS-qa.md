@@ -1,12 +1,12 @@
-# Exam packs — compiler QA numbers (contentVersion 21, 2026-10-22)
+# Exam packs — compiler QA numbers (contentVersion 22, 2026-10-22)
 
 Source: `./gradlew :tools:content-compiler:run` (packs from `content/exam-packs` by default) and the compiled
-`build/content/content.db`. 0 errors; pack warnings: 12 level-window warnings (below), no coverage warning.
+`build/content/content.db`. 0 errors; 0 pack warnings after the level window was widened to B1-C1 (contentVersion 22).
 
 | pack | cards | pack-only | referenced | units | min cards / letter | STARTS / CONTAINS |
 |---|---|---|---|---|---|---|
 | `lgs` (free, A2-B1, target 600) | 573 | 297 | 276 | 10 | 6 (J) | 522 / 51 |
-| `yds-yokdil` (Pro, B2-C1, target 1000, preview ABCDE) | 990 | 563 | 427 | 13 | 15 (Z) | 858 / 132 |
+| `yds-yokdil` (Pro, B1-C1, target 1000, preview ABCDE) | 990 | 563 | 427 | 13 | 15 (Z) | 858 / 132 |
 
 ## Cards per level (all members / pack-only)
 | pack | A1 | A2 | B1 | B2 | C1 | NAT |
@@ -30,7 +30,7 @@ level. Of the 21 B1 pack-only cards in `yds-yokdil`, 9 are LGS cards it referenc
   social-science 67, science 63, research-methods 59, environment 47, connectors 46, social-sciences 45,
   collocations 35.
 
-## Level-window warnings (owner review)
-`yds-yokdil` pack-only B1 cards below its B2-C1 range (`content/exam-packs/cards/B1/yds-yokdil.csv`): CANCER,
-CLINIC, HEAL, HYDROGEN, KIDNEY, LIVER, LUNG, ORGAN, PILL, PULSE, RECOVER, SPINE. They sit at B1 because of the
-per-level answer/leak rules; either keep them (warnings stay) or widen the range to B1-C1 in `packs-meta.csv`.
+## Level window (widened)
+`yds-yokdil` is B1-C1 (was B2-C1). Exam vocabulary covers health and science topics that are taught at B1
+(CANCER, CLINIC, HEAL, HYDROGEN, KIDNEY, LIVER, LUNG, ORGAN, PILL, PULSE, RECOVER, SPINE), so their 12 B1 cards
+stay and the compiler reports 0 level-window warnings.

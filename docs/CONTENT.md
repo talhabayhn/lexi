@@ -61,7 +61,7 @@ level-wheel/category query must filter `pack_only = 0`, and they are reachable o
 | pack | cards | pack-only | levels | units |
 |---|---|---|---|---|
 | `lgs` (free) | 573 | 297 (A2, B1) | A2–B1 | 10 MEB 8th-grade themes (friendship … natural-forces) |
-| `yds-yokdil` (Pro) | 990 | 563 (B1–C1) | B2–C1 | connectors, general-academic, science(s), health, environment, economy, law-politics, social-science(s), research-methods, phrasal-verbs, collocations |
+| `yds-yokdil` (Pro) | 990 | 563 (B1–C1) | B1–C1 | connectors, general-academic, science(s), health, environment, economy, law-politics, social-science(s), research-methods, phrasal-verbs, collocations |
 
 - A word that exists anywhere (base or another pack) is referenced by id in `units/<pack>.csv`, never re-created.
   Every pack has ≥ 5 cards per letter.
