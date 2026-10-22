@@ -23,6 +23,10 @@ val releaseKeystore = providers.environmentVariable("LEXI_KEYSTORE_FILE").orNull
 // Telemetry (ADR 0023, docs/ANALYTICS.md): release builds collect; debug builds only with -Plexi.telemetry=true.
 val telemetryInDebug = providers.gradleProperty("lexi.telemetry").orNull == "true"
 
+// Pro content (exam packs) is unlocked in debug builds for testing until RevenueCat; -Plexi.debugUnlockPro=false shows
+// the locked state. Release builds are never unlocked (StaticEntitlementRepository also requires a debuggable app).
+val debugUnlockPro = providers.gradleProperty("lexi.debugUnlockPro").orNull != "false"
+
 // The R8 mapping goes to Crashlytics only for store builds (release-android passes -Plexi.crashlyticsUpload=true), so
 // `./gradlew build` and the push CI never need the network.
 val crashlyticsUpload = providers.gradleProperty("lexi.crashlyticsUpload").orNull == "true"
@@ -54,9 +58,11 @@ android {
     buildTypes {
         debug {
             manifestPlaceholders["telemetryEnabled"] = telemetryInDebug.toString()
+            manifestPlaceholders["debugUnlockPro"] = debugUnlockPro.toString()
         }
         release {
             manifestPlaceholders["telemetryEnabled"] = "true"
+            manifestPlaceholders["debugUnlockPro"] = "false"
             configure<CrashlyticsExtension> {
                 mappingFileUploadEnabled = crashlyticsUpload
             }

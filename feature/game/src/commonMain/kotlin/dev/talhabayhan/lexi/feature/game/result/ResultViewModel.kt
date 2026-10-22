@@ -66,12 +66,12 @@ internal class ResultViewModel(
     private var sharing: Job? = null
 
     /**
-     * The game behind TEKRAR OYNA: same level, mode and category. Null for a finished Daily: it allows one scored
+     * The game behind TEKRAR OYNA: same level, mode, category and exam pack. Null for a finished Daily: it allows one scored
      * attempt per day (`GAME_RULES.md` §5), so the button is hidden ([ResultUiState.canPlayAgain]).
      */
     val playAgain: GameRoute?
         get() = if (mutableState.value.canPlayAgain) {
-            GameRoute(route.gameLevel, route.gameMode, route.categoryId)
+            GameRoute(route.gameLevel, route.gameMode, route.categoryId, route.packId)
         } else {
             null
         }

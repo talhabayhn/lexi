@@ -12,7 +12,7 @@
 | `06-result` | Oyun sonu | `ResultRoute(summary)` / `ResultScreen` (summary payload: ADR 0019 addendum, incl. the wheel letters and outcomes for the share card) | feature:game (`result`) | M4 (done) |
 | `08-notebook` | Kelime Defterim | `NotebookRoute` / `NotebookScreen` (review wheel: `GameRoute.review()`) | feature:notebook | M5 (done) |
 | `09-stats` | İstatistikler | `StatsRoute` | feature:stats | M5 |
-| `10-exam-packs` | Sınav paketleri | `ExamPacksRoute` / `ExamPacksScreen` (M5: header + "YAKINDA" `EmptyState` only, in feature:home until feature:exams is wired) | feature:home → feature:exams | M7 |
+| `10-exam-packs` | Sınav paketleri | `ExamPacksRoute` / `ExamPacksScreen`: intro banner, one row per pack with real card count; free/unlocked = learned % and starts the pack wheel; locked Pro = PRO + "Yakında" (DESIGN-DEBT) and a toast; empty/error states from `16-components` (DESIGN-DEBT; nothing below the banner while loading) | feature:exams | M7 |
 | `11-settings` | Ayarlar | `SettingsRoute` / `SettingsScreen` (Home gear icon; back pops) | feature:settings | M5 (switches), M7 (rest) |
 | — | Hakkında | `AboutRoute` / `AboutScreen` (Settings footer link; back pops) | feature:settings | M8 (done) |
 | `12-share-card` | Paylaşım kartı (432×540) | `ShareCard` + `ShareCardCapture` (off-screen capture via `OffscreenCapture` in core:designsystem, 1080×1350 PNG, ADR 0020); entry: Paylaş on the result screen | feature:game (`result/share`) / core:designsystem | M6 |

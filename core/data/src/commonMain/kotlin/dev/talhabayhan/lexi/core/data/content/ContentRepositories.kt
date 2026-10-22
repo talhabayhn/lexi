@@ -159,6 +159,10 @@ internal class ExamPackRepositoryImpl(
             ).map { ExamPackCard(it, row.unit) }.onFailure(onBrokenCard).getOrNull()
         }
     }
+
+    override suspend fun cardIds(pack: ExamPackId): List<CardId> = read {
+        examPackCardIds(pack.value).executeAsList().map(::CardId)
+    }
 }
 
 internal class ContentVersionRepositoryImpl(databases: Databases, io: CoroutineDispatcher) :

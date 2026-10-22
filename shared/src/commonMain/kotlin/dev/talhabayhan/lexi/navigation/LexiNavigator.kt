@@ -7,12 +7,13 @@ import androidx.navigation.NavHostController
 import androidx.navigation.NavOptionsBuilder
 import dev.talhabayhan.lexi.core.domain.game.GameMode
 import dev.talhabayhan.lexi.core.domain.model.CategoryId
+import dev.talhabayhan.lexi.core.domain.model.ExamPackId
 import dev.talhabayhan.lexi.core.domain.model.Level
+import dev.talhabayhan.lexi.feature.exams.ExamPacksRoute
 import dev.talhabayhan.lexi.feature.game.GamePreparer
 import dev.talhabayhan.lexi.feature.game.GameRoute
 import dev.talhabayhan.lexi.feature.game.LevelTestRoute
 import dev.talhabayhan.lexi.feature.game.result.ResultRoute
-import dev.talhabayhan.lexi.feature.home.ExamPacksRoute
 import dev.talhabayhan.lexi.feature.home.HomeRoute
 import dev.talhabayhan.lexi.feature.levels.CategoriesRoute
 import dev.talhabayhan.lexi.feature.levels.LevelSelectRoute
@@ -115,6 +116,9 @@ internal class LexiNavigator(
     fun startDaily(): Boolean = openGame(GameRoute.daily()) { launchSingleTop = true }
 
     fun startReview(): Boolean = openGame(GameRoute.review()) { launchSingleTop = true }
+
+    /** A wheel of an unlocked exam pack (`10-exam-packs`). */
+    fun startExamPack(pack: ExamPackId): Boolean = openGame(GameRoute.examPack(pack)) { launchSingleTop = true }
 
     /** TEKRAR OYNA: the next game replaces everything above Home. */
     fun playAgain(game: GameRoute): Boolean = openGame(game) {

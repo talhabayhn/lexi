@@ -15,6 +15,7 @@ import dev.talhabayhan.lexi.core.domain.game.GameState
 import dev.talhabayhan.lexi.core.domain.game.SlotState
 import dev.talhabayhan.lexi.core.domain.model.CardId
 import dev.talhabayhan.lexi.core.domain.model.CategoryId
+import dev.talhabayhan.lexi.core.domain.model.ExamPackId
 import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.core.domain.share.ShareCardBuilder
 import dev.talhabayhan.lexi.core.domain.share.ShareCell
@@ -34,6 +35,8 @@ data class ResultRoute(
     val level: String,
     val mode: String,
     val category: String? = null,
+    /** The exam pack of a pack wheel (`GameRoute.pack`), so TEKRAR OYNA plays the same pack. */
+    val pack: String? = null,
     val reason: String,
     /** Final score (time bonus and Hardcore multiplier included). */
     val score: Int,
@@ -65,6 +68,8 @@ data class ResultRoute(
 
     internal val categoryId: CategoryId? get() = category?.let(::CategoryId)
 
+    internal val packId: ExamPackId? get() = pack?.let(::ExamPackId)
+
     /** The share card's cells; letters without a matching or known outcome (e.g. from an older build) are left out. */
     internal val shareCells: List<ShareCell>
         get() = wheelLetters.toList().zip(wheelOutcomes).mapNotNull { (letter, outcome) ->
@@ -72,8 +77,8 @@ data class ResultRoute(
         }
 
     internal companion object {
-        /** The result of the finished [state]; [category] is the route's category of the game. */
-        fun of(state: GameState, category: CategoryId?, recorded: Boolean): ResultRoute {
+        /** The result of the finished [state]; [category] and [pack] are the game route's. */
+        fun of(state: GameState, category: CategoryId?, recorded: Boolean, pack: ExamPackId? = null): ResultRoute {
             val summary = checkNotNull(state.summary) { "the game is not finished" }
             val passedCardsList = state.wheel.slots
                 .filter { it.state == SlotState.PASSED }
@@ -93,6 +98,7 @@ data class ResultRoute(
                 level = state.level.name,
                 mode = state.mode.name,
                 category = category?.value,
+                pack = pack?.value,
                 reason = summary.reason.name,
                 score = summary.score,
                 correct = summary.correct,

@@ -24,18 +24,18 @@ content/blocklist.txt                   │                                  (bu
   per batch (same clue rules as §2) → compiler validates per language (coverage, length, answer leak, blocklist).
   A language ships only when its coverage check passes for every shipped level.
 - **Exam packs live in `content/exam-packs/`** (owner decision 2026-10, replaces the earlier private-repo plan; the
-  repo goes private before release). They are passed to the compiler as the external pack directory
-  (`--packs content/exam-packs` or env `LEXI_PACKS_DIR`; the flag wins; the app build reads the env). Format and the
-  open compiler work: `docs/content/EXAM_PACKS.md`. `content/exam_packs/` (underscore) stays gitignored. Without
+  repo goes private before release). The compiler and the app build (`generateContentDb`) read them by default;
+  `--packs <dir>` or env `LEXI_PACKS_DIR` override it (the flag wins; `--packs none` compiles without packs). Format,
+  validation and owner decisions: `docs/content/EXAM_PACKS.md`. `content/exam_packs/` (underscore) stays gitignored. Without
   packs the compiler still writes a valid `content.db` with empty `exam_pack*` tables. Test fixtures under
   `tools/content-compiler/src/test/resources/fixtures/` are synthetic.
 
 Run by hand for the report (from the repo root; exit 0 = written, 1 = validation errors and nothing written,
 2 = usage/I-O error):
 ```bash
-./gradlew :tools:content-compiler:run                                   # content/ → build/content/content.db, no packs
-./gradlew :tools:content-compiler:run --args="--packs ../lexi-packs"    # with the private pack checkout
-LEXI_PACKS_DIR=../lexi-packs ./gradlew :tools:content-compiler:run      # same, via env
+./gradlew :tools:content-compiler:run                                   # content/ + content/exam-packs → build/content/content.db
+./gradlew :tools:content-compiler:run --args="--packs none"             # without packs
+LEXI_PACKS_DIR=../other-packs ./gradlew :tools:content-compiler:run     # another pack directory, via env
 # options: --content <dir> (default content), --out <file> (default build/content/content.db),
 #          --tmp <dir> (default build/content-compiler; the DB is built there, then moved atomically),
 #          --version-file <file> (also write contentVersion as text), --help
@@ -61,13 +61,14 @@ level-wheel/category query must filter `pack_only = 0`, and they are reachable o
 | pack | cards | pack-only | levels | units |
 |---|---|---|---|---|
 | `lgs` (free) | 573 | 297 (A2, B1) | A2–B1 | 10 MEB 8th-grade themes (friendship … natural-forces) |
-| `yds-yokdil` (Pro) | 990 | 554 (B1–C1) | B2–C1 | connectors, general-academic, science(s), health, environment, economy, law-politics, social-science(s), research-methods, phrasal-verbs, collocations |
+| `yds-yokdil` (Pro) | 990 | 563 (B1–C1) | B2–C1 | connectors, general-academic, science(s), health, environment, economy, law-politics, social-science(s), research-methods, phrasal-verbs, collocations |
 
 - A word that exists anywhere (base or another pack) is referenced by id in `units/<pack>.csv`, never re-created.
   Every pack has ≥ 5 cards per letter.
 - `packs-meta.csv` holds title_tr/title_en, level range, card target and free preview letters (compiled and
-  validated into `content.db` `exam_pack` / `exam_pack_card` tables). Open compiler work and owner decisions:
-  `docs/content/EXAM_PACKS.md`; review notes: `docs/content-review/EXAM-*-summary.md`.
+  validated into `content.db` `exam_pack` / `exam_pack_card` tables). Rules and owner decisions:
+  `docs/content/EXAM_PACKS.md`; review notes: `docs/content-review/EXAM-*-summary.md`; compiler numbers per pack:
+  `docs/content-review/EXAM-PACKS-qa.md`.
 - QA without Gradle: `python3 tools/content-qa/qa.py` (charset, letter rule, leaks, duplicates, per-pack letters).
 - Pack answers count in the per-level example leak check: a new base example must not contain a pack answer of
   its level either (the compiler reports it like any other leak).

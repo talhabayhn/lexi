@@ -96,8 +96,10 @@ Module mapping (replaces the earlier `composeApp`): `androidApp` = thin Android 
   in `Info.plist` (`PRODUCT.md` Monetisation rules)
 - [ ] Pro limits: free = 1 review wheel per day, Pro unlimited; Pro +3 jokers daily; yearly 7-day trial with a
   reminder 2 days before it ends
-- [ ] Exam packs (`10-exam-packs`) gated by Pro (UI & RevenueCat wiring pending); content compiler pipeline integrated
-  with in-repo `content/exam-packs/` (LGS + YDS/YÖKDİL metadata, schema, validation in `content.db`)
+- [x] Exam packs (`10-exam-packs`): compiler pipeline on in-repo `content/exam-packs/` (metadata, per-pack coverage,
+  level window), pack wheel (Classic rules), screen, Pro gate behind `EntitlementRepository` (never Pro in release,
+  unlocked in debug). Locked Pro packs show PRO + "Yakında"; purchase/paywall and the YDS free preview letters come
+  with the RevenueCat item above (only the entitlement binding changes)
 - [x] Firebase Analytics + Crashlytics behind interfaces; event list in `docs/ANALYTICS.md` (ADR 0023; iOS verified by
   macOS CI only; console declarations pending, see the re-check item)
 **Done when:** sandbox purchase unlocks Pro on both platforms; ads only where allowed.

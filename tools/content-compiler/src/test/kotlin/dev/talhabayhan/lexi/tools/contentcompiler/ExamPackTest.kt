@@ -308,4 +308,48 @@ class ExamPackTest {
 
         result.assertError("clue_leak.csv", 2, "clue_tr contains the answer 'LEAKER'")
     }
+
+    @Test
+    fun `a pack-only card outside its pack's level range is a warning`() {
+        packs.writeCards(
+            "cards/C1/test-pack-one.csv",
+            cardRow(id = "c1-zenith", answer = "ZENITH", exampleEn = "The sun is at its zenith."),
+        )
+        packs.resolve("units/test-pack-one.csv").writeText("card_id,unit\na1-apple,1\nb1-zest,\nc1-zenith,1\n")
+        val result = validate()
+
+        result.assertNoErrors()
+        result.assertWarning(
+            "test-pack-one.csv",
+            2,
+            "pack card 'c1-zenith' is C1, outside the level range A1-B1 of pack 'test-pack-one'",
+        )
+        assertTrue(result.warnings.none { "b1-zest" in it.message && "level range" in it.message })
+    }
+
+    @Test
+    fun `referenced base cards and cards of another pack skip the level-window check`() {
+        // b1-zest lives in extra.csv (no owner pack): it is checked against every pack that uses it.
+        packs.resolve("packs-meta.csv").writeText(
+            "id,title_tr,title_en,description_tr,target_level_range,card_target,free_preview_letters\n" +
+                "test-pack-one,Test Pack One,Test Pack One,Synthetic fixture pack,A1-A2,10,ABC\n" +
+                "test-pack-two,Test Pack Two,Test Pack Two,,C1-NAT,10,\n",
+        )
+        packs.writeCards(
+            "cards/C1/test-pack-two.csv",
+            cardRow(id = "c1-zenith", answer = "ZENITH", exampleEn = "The sun is at its zenith."),
+        )
+        packs.resolve("units/test-pack-one.csv").writeText("card_id,unit\na1-apple,1\nb1-zest,\nc1-zenith,1\n")
+        packs.resolve("units/test-pack-two.csv").writeText("card_id,unit\na1-tea,1\nc1-zenith,1\n")
+        val result = validate()
+
+        result.assertNoErrors()
+        result.assertWarning(
+            "extra.csv",
+            2,
+            "pack card 'b1-zest' is B1, outside the level range A1-A2 of pack 'test-pack-one'",
+        )
+        val windowWarnings = result.warnings.filter { "level range" in it.message }
+        assertEquals(1, windowWarnings.size, windowWarnings.joinToString("\n"))
+    }
 }

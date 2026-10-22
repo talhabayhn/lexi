@@ -8,6 +8,7 @@ import co.touchlab.kermit.Logger
 import dev.talhabayhan.lexi.IosPlatformServices
 import dev.talhabayhan.lexi.core.data.db.DatabaseFiles
 import dev.talhabayhan.lexi.core.data.db.IosDatabaseFiles
+import dev.talhabayhan.lexi.core.data.entitlement.StaticEntitlementRepository
 import dev.talhabayhan.lexi.core.domain.feedback.Haptics
 import dev.talhabayhan.lexi.core.domain.feedback.SoundPlayer
 import dev.talhabayhan.lexi.core.domain.feedback.Speaker
@@ -15,6 +16,7 @@ import dev.talhabayhan.lexi.core.domain.platform.ShareService
 import dev.talhabayhan.lexi.core.domain.platform.UrlOpener
 import dev.talhabayhan.lexi.core.domain.reminder.NotificationPermission
 import dev.talhabayhan.lexi.core.domain.reminder.ReminderScheduler
+import dev.talhabayhan.lexi.core.domain.repository.EntitlementRepository
 import dev.talhabayhan.lexi.core.domain.telemetry.AnalyticsTracker
 import dev.talhabayhan.lexi.core.domain.telemetry.CrashReporter
 import dev.talhabayhan.lexi.core.platform.feedback.GatedHaptics
@@ -74,5 +76,7 @@ internal actual fun rememberPlatformModule(): Module = remember {
             )
         }
         single<CrashReporter> { IosCrashReporter(IosPlatformServices.services.telemetry) }
+        // Never Pro until RevenueCat replaces this binding; debug binaries unlock Pro content for testing.
+        single<EntitlementRepository> { StaticEntitlementRepository(isPro = Platform.isDebugBinary) }
     }
 }

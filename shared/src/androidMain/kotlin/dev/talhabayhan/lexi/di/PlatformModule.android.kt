@@ -9,6 +9,7 @@ import androidx.compose.ui.platform.LocalContext
 import co.touchlab.kermit.Logger
 import dev.talhabayhan.lexi.core.data.db.AndroidDatabaseFiles
 import dev.talhabayhan.lexi.core.data.db.DatabaseFiles
+import dev.talhabayhan.lexi.core.data.entitlement.StaticEntitlementRepository
 import dev.talhabayhan.lexi.core.domain.feedback.Haptics
 import dev.talhabayhan.lexi.core.domain.feedback.SoundPlayer
 import dev.talhabayhan.lexi.core.domain.feedback.Speaker
@@ -16,6 +17,7 @@ import dev.talhabayhan.lexi.core.domain.platform.ShareService
 import dev.talhabayhan.lexi.core.domain.platform.UrlOpener
 import dev.talhabayhan.lexi.core.domain.reminder.NotificationPermission
 import dev.talhabayhan.lexi.core.domain.reminder.ReminderScheduler
+import dev.talhabayhan.lexi.core.domain.repository.EntitlementRepository
 import dev.talhabayhan.lexi.core.domain.telemetry.AnalyticsTracker
 import dev.talhabayhan.lexi.core.domain.telemetry.CrashReporter
 import dev.talhabayhan.lexi.core.platform.feedback.AndroidHaptics
@@ -89,4 +91,15 @@ internal fun androidPlatformModule(context: Context): Module = module {
         )
     }
     single<CrashReporter> { FirebaseCrashReporter() }
+    // Never Pro until RevenueCat replaces this binding; debug builds unlock Pro content unless built with
+    // -Plexi.debugUnlockPro=false (manifest flag, see androidApp/build.gradle.kts).
+    single<EntitlementRepository> {
+        val debuggable = context.applicationInfo.flags and ApplicationInfo.FLAG_DEBUGGABLE != 0
+        val unlock = runCatching {
+            context.packageManager
+                .getApplicationInfo(context.packageName, PackageManager.GET_META_DATA)
+                .metaData?.getBoolean("dev.talhabayhan.lexi.debug_unlock_pro", false)
+        }.getOrNull() == true
+        StaticEntitlementRepository(isPro = debuggable && unlock)
+    }
 }

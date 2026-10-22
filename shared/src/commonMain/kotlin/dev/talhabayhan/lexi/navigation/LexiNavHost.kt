@@ -28,13 +28,13 @@ import dev.talhabayhan.lexi.core.designsystem.theme.LexiMotion
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.core.domain.game.GameMode
 import dev.talhabayhan.lexi.core.domain.platform.UrlOpener
+import dev.talhabayhan.lexi.feature.exams.examPacksScreen
 import dev.talhabayhan.lexi.feature.game.GamePreparer
 import dev.talhabayhan.lexi.feature.game.GameWarmUp
 import dev.talhabayhan.lexi.feature.game.gameScreen
 import dev.talhabayhan.lexi.feature.game.levelTestScreen
 import dev.talhabayhan.lexi.feature.game.result.resultScreen
 import dev.talhabayhan.lexi.feature.home.HomeRoute
-import dev.talhabayhan.lexi.feature.home.examPacksScreen
 import dev.talhabayhan.lexi.feature.home.homeScreen
 import dev.talhabayhan.lexi.feature.levels.categoriesScreen
 import dev.talhabayhan.lexi.feature.levels.levelSelectScreen
@@ -141,7 +141,7 @@ private fun LexiNavGraph(
             onOpenExamPacks = { navigator.openExamPacks() },
             onOpenReminderPrePrompt = { navigator.openReminderPrePrompt() },
         )
-        examPacksScreen(onBack = { navigator.back() })
+        examPacksScreen(onBack = { navigator.back() }, onStartPack = { pack -> navigator.startExamPack(pack) })
         settingsScreen(
             onBack = { navigator.back() },
             onOpenAbout = { navigator.openAbout() },

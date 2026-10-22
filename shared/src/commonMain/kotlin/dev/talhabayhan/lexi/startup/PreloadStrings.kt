@@ -1,6 +1,7 @@
 package dev.talhabayhan.lexi.startup
 
 import dev.talhabayhan.lexi.core.designsystem.preloadDesignStrings
+import dev.talhabayhan.lexi.feature.exams.preloadExamsStrings
 import dev.talhabayhan.lexi.feature.game.preloadGameStrings
 import dev.talhabayhan.lexi.feature.home.preloadHomeStrings
 import dev.talhabayhan.lexi.feature.levels.preloadLevelsStrings
@@ -27,6 +28,7 @@ internal suspend fun preloadAllStrings() = withContext(Dispatchers.Default) {
         "shared" to ::preloadSharedStrings,
         "designsystem" to ::preloadDesignStrings,
         "home" to ::preloadHomeStrings,
+        "exams" to ::preloadExamsStrings,
         "levels" to ::preloadLevelsStrings,
         "game" to ::preloadGameStrings,
         "settings" to ::preloadSettingsStrings,

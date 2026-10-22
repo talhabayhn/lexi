@@ -34,9 +34,25 @@ public object WheelGenerator {
     ): Wheel {
         require(mode != GameMode.REVIEW) { "use review() for the review wheel" }
         val avoid = if (mode.usesCardHistory) recentlySeen else emptySet()
-        val byLetter = pool
-            .filter { it.level == level && (category == CategoryId.MIXED || it.category == category) }
-            .candidatesByLetter()
+        val cards = pool.filter { it.level == level && (category == CategoryId.MIXED || it.category == category) }
+        return alphabetWheel(cards, random, avoid, config)
+    }
+
+    /**
+     * Exam pack wheel (`GAME_RULES.md` §1): 26 slots A–Z over every card of the pack, whatever its level or
+     * category, picked exactly like [generate] (recently seen avoided, STARTS preferred, one `nextInt` per non-skipped
+     * letter in A–Z order). Letters without a pack card become [SlotState.SKIPPED]. The pack is played with Classic
+     * rules, so [recentlySeen] always applies.
+     */
+    public fun pack(
+        pool: List<Card>,
+        random: SeededRandom,
+        recentlySeen: Set<CardId> = emptySet(),
+        config: GameConfig = GameConfig(),
+    ): Wheel = alphabetWheel(pool, random, recentlySeen, config)
+
+    private fun alphabetWheel(cards: List<Card>, random: SeededRandom, avoid: Set<CardId>, config: GameConfig): Wheel {
+        val byLetter = cards.candidatesByLetter()
         val slots = ('A'..'Z').map { letter ->
             val candidates = byLetter[letter].orEmpty()
             if (candidates.isEmpty()) {

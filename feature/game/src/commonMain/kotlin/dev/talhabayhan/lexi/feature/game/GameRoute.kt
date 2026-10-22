@@ -17,6 +17,7 @@ import androidx.navigationevent.compose.rememberNavigationEventState
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.core.domain.game.GameMode
 import dev.talhabayhan.lexi.core.domain.model.CategoryId
+import dev.talhabayhan.lexi.core.domain.model.ExamPackId
 import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.feature.game.components.rememberGameMotion
 import dev.talhabayhan.lexi.feature.game.result.ResultRoute
@@ -29,15 +30,17 @@ import org.koin.compose.viewmodel.koinViewModel
  * (`parseEnum()` is unsupported outside Android), so strings keep the route identical on both platforms.
  */
 @Serializable
-data class GameRoute(val level: String, val mode: String, val category: String? = null) {
-    constructor(level: Level, mode: GameMode, category: CategoryId? = null) :
-        this(level = level.name, mode = mode.name, category = category?.value)
+data class GameRoute(val level: String, val mode: String, val category: String? = null, val pack: String? = null) {
+    constructor(level: Level, mode: GameMode, category: CategoryId? = null, pack: ExamPackId? = null) :
+        this(level = level.name, mode = mode.name, category = category?.value, pack = pack?.value)
 
     internal val gameLevel: Level get() = Level.valueOf(level)
 
     internal val gameMode: GameMode get() = GameMode.valueOf(mode)
 
     internal val categoryId: CategoryId? get() = category?.let(::CategoryId)
+
+    internal val packId: ExamPackId? get() = pack?.let(::ExamPackId)
 
     companion object {
         /**
@@ -51,6 +54,12 @@ data class GameRoute(val level: String, val mode: String, val category: String? 
          * the game takes the level of the wheel's first card.
          */
         fun daily(): GameRoute = GameRoute(Level.A1, GameMode.DAILY)
+
+        /**
+         * An exam pack wheel (`GAME_RULES.md` §1, §5): the pack's cards of any level, played with Classic rules; [level]
+         * is only a placeholder, the game takes the level of the wheel's first card.
+         */
+        fun examPack(pack: ExamPackId): GameRoute = GameRoute(Level.A1, GameMode.CLASSIC, pack = pack)
     }
 }
 

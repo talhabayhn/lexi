@@ -11,6 +11,8 @@ import dev.talhabayhan.lexi.core.domain.game.WheelGenerator
 import dev.talhabayhan.lexi.core.domain.model.CategoryId
 import dev.talhabayhan.lexi.core.domain.random.SeededRandom
 import dev.talhabayhan.lexi.core.domain.repository.CardRepository
+import dev.talhabayhan.lexi.core.domain.repository.EntitlementRepository
+import dev.talhabayhan.lexi.core.domain.repository.ExamPackRepository
 import dev.talhabayhan.lexi.core.domain.repository.JokerRepository
 import dev.talhabayhan.lexi.core.domain.repository.ProgressRepository
 import dev.talhabayhan.lexi.core.domain.repository.SettingsRepository
@@ -60,6 +62,8 @@ internal class GameLoader(
     private val seeds: SeedSource,
     private val crashReporter: CrashReporter,
     private val getDailyWheel: GetDailyWheel? = null,
+    private val examPacks: ExamPackRepository? = null,
+    private val entitlements: EntitlementRepository? = null,
     private val cpu: CoroutineDispatcher = Dispatchers.Default,
 ) {
     /** The Classic time limit of a game: the one it started with ([stored]), else the setting if it is an option. */
@@ -124,6 +128,19 @@ internal class GameLoader(
 
                     DailyPlayState.NoCards -> return Opened.NoCards
                 }
+            }
+
+            route.packId != null -> {
+                // Exam pack (GAME_RULES.md §1): the pack's cards of any level; a locked Pro pack never loads.
+                val packs = examPacks ?: return Opened.Failed
+                val pack = packs.packs().firstOrNull { it.id == route.packId } ?: return Opened.NoCards
+                val hasPro = entitlements?.isPro?.first() ?: false
+                if (pack.isLocked(hasPro)) return Opened.Failed
+                val recentlySeen = WheelGenerator.recentlySeen(progress.lastSeenMs(), appClock.nowMs(), config)
+                val pool = packs.cards(pack.id).map { it.card }.distinctBy { it.id }
+                val packWheel = WheelGenerator.pack(pool, random, recentlySeen, config)
+                level = packWheel.slots.firstNotNullOfOrNull { it.card?.level } ?: return Opened.NoCards
+                packWheel
             }
 
             else -> {

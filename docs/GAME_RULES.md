@@ -25,6 +25,12 @@ exact defaults.
 - Review wheel: built from SRS-due cards (any level/category); may have fewer than 26 slots (only letters that
   have due cards), in A–Z order; one card per letter, picked the same way (`STARTS` preferred). Other due cards wait
   for the next review.
+- Exam pack wheel (M7, `WheelGenerator.pack`): pool = every card of the pack (`exam_pack_card`: its pack-only
+  cards and the base/other-pack cards it references), any level and category, the whole pack (no unit choice yet).
+  26 slots A–Z picked exactly like the regular wheel (recently seen avoided, `STARTS` preferred, so `CONTAINS` only
+  when a letter has no eligible `STARTS` card; one `nextInt` on the `wheel` sub-seed per non-skipped letter); a letter
+  without a pack card is `SKIPPED` (content keeps ≥ 5 per letter, `EXAM_PACKS.md`). Over a single-level pool it
+  gives the same wheel as `generate` for the same seed.
 
 ## 2. Slot states
 `TODO → CURRENT → (CORRECT | WRONG | PASSED)`; `PASSED → CURRENT` again on the next lap.
@@ -116,6 +122,10 @@ i.e. never answered, also after a Hardcore wrong or a forfeit). Remaining second
 the time segment is dropped in untimed modes, the streak segment at 0 days. A Daily card shows no level. Caption:
 Daily mode → Daily(correct); a completed (ALL_ANSWERED) timed wheel → Time(seconds); otherwise Streak(days) from 2
 days; otherwise (decision) Score(correct, total).
+Exam pack wheels (M7): Classic rules (timer from the Classic setting, scoring, jokers, SRS, history), no own
+`GameMode`. Like review and daily, the game's level is its first card's and points use each card's level (§6); the
+session has no category. TEKRAR OYNA plays the same pack. A Pro pack only starts with Pro (`EntitlementRepository`);
+the loader refuses a locked pack even if a route reaches it.
 A wheel without any playable slot (a level or category without cards) is not started in the app: the game screen
 shows "no words" with a way back and records nothing (the engine's `EMPTY_WHEEL` stays as a guard).
 

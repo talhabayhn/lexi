@@ -49,11 +49,14 @@ public interface CategoryRepository {
 }
 
 public interface ExamPackRepository {
-    /** Packs in display order (empty in builds without the private pack content). */
+    /** Packs in display order (empty when content.db was compiled without packs). */
     public suspend fun packs(): List<ExamPack>
 
     /** Cards of [pack] by unit, then id; includes the pack's exam-pack-only cards. */
     public suspend fun cards(pack: ExamPackId): List<ExamPackCard>
+
+    /** Ids of every card of [pack] (light: no clues), for its card count and the player's progress in it. */
+    public suspend fun cardIds(pack: ExamPackId): List<CardId>
 }
 
 public interface ContentVersionRepository {

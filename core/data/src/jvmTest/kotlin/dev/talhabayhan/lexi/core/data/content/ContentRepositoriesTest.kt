@@ -160,6 +160,14 @@ class ContentRepositoriesTest {
     }
 
     @Test
+    fun `exam pack card ids include pack-only cards and an unknown pack has none`() = runTest(io) {
+        val packs = ExamPackRepositoryImpl(db.databases, io)
+
+        assertEquals(listOf("a1-apple", "b1-exam"), packs.cardIds(ExamPackId("lgs")).map { it.value })
+        assertEquals(emptyList(), packs.cardIds(ExamPackId("nope")))
+    }
+
+    @Test
     fun `content version comes from meta`() = runTest(io) {
         assertEquals(4L, ContentVersionRepositoryImpl(db.databases, io).contentVersion())
     }

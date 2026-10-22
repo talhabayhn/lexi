@@ -9,6 +9,7 @@ import dev.talhabayhan.lexi.core.domain.platform.ShareService
 import dev.talhabayhan.lexi.core.domain.platform.UrlOpener
 import dev.talhabayhan.lexi.core.domain.reminder.NotificationPermission
 import dev.talhabayhan.lexi.core.domain.reminder.ReminderScheduler
+import dev.talhabayhan.lexi.core.domain.repository.EntitlementRepository
 import dev.talhabayhan.lexi.core.domain.telemetry.AnalyticsTracker
 import dev.talhabayhan.lexi.core.domain.telemetry.CrashReporter
 import dev.talhabayhan.lexi.feature.game.GameRoute
@@ -26,7 +27,7 @@ class AppModulesTest {
     @OptIn(KoinExperimentalAPI::class)
     @Test
     fun `koin graph resolves every definition`() {
-        // DatabaseFiles and the feedback services come from the platform module created at the composition root;
+        // DatabaseFiles, the feedback services and EntitlementRepository (debug unlock) come from the platform module created at the composition root;
         // SavedStateHandle and the routes read from it come from the navigation back-stack entry.
         module { includes(appModules) }.verify(
             extraTypes = listOf(
@@ -38,6 +39,7 @@ class AppModulesTest {
                 NotificationPermission::class,
                 AnalyticsTracker::class,
                 CrashReporter::class,
+                EntitlementRepository::class,
                 Haptics::class,
                 SoundPlayer::class,
                 SavedStateHandle::class,

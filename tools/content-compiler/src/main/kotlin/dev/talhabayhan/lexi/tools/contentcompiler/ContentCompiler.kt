@@ -117,6 +117,7 @@ object ContentCompiler {
             ?: (if (meta.shippedLevels.isEmpty()) emptySet() else packs.map { it.id }.toSet())
         checkPackCoverage(packs, packMembership, cardsById, effectiveShippedPacks, packsDir, diagnostics)
         checkPackDuplicateAnswers(packs, packMembership, cardsById, diagnostics)
+        checkPackLevelWindow(packs, packMembership, cardsById, diagnostics)
 
         val content = CompiledContent(
             contentVersion = meta.contentVersion,
@@ -559,6 +560,35 @@ object ContentCompiler {
                     )
                 }
             }
+        }
+    }
+
+    /**
+     * `EXAM_PACKS.md` compiler change 4 (warning): a pack-only card whose level is outside the `target_level_range`
+     * of its owner pack (the pack its file `cards/<LEVEL>/<pack-id>.csv` is named after). A pack-only card in a file
+     * not named after a pack is checked against every pack that uses it; base cards and another pack's cards are
+     * references and never checked.
+     */
+    private fun checkPackLevelWindow(
+        packs: List<PackEntry>,
+        packCards: List<PackCardEntry>,
+        cardsById: Map<String, CardEntry>,
+        diagnostics: Diagnostics,
+    ) {
+        val packsById = packs.associateBy { it.id }
+        for (entry in packCards) {
+            val pack = packsById[entry.packId] ?: continue
+            val card = cardsById[entry.cardId]?.takeIf { it.fromPack } ?: continue
+            val owner = card.source.file.name.removeSuffix(".csv").takeIf { it in packsById }
+            if (owner != null && owner != pack.id) continue
+            val (start, end) = parseLevelRange(pack.targetLevelRange) ?: continue
+            if (card.level.ordinal in start.ordinal..end.ordinal) continue
+            diagnostics.warning(
+                card.source.file,
+                card.source.line,
+                "pack card '${card.id}' is ${card.level.name}, outside the level range ${pack.targetLevelRange} " +
+                    "of pack '${pack.id}'",
+            )
         }
     }
 

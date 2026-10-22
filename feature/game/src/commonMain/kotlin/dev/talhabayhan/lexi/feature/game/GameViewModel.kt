@@ -482,7 +482,8 @@ internal class GameViewModel(
         viewModelScope.launch {
             val recorded = withContext(NonCancellable) { record(final, category) }
             if (recorded) handle.remove<String>(KEY_GAME)
-            effectChannel.send(GameEffect.NavigateToResult(ResultRoute.of(final, route.categoryId, recorded)))
+            val result = ResultRoute.of(final, route.categoryId, recorded, route.packId)
+            effectChannel.send(GameEffect.NavigateToResult(result))
         }
     }
 
@@ -515,9 +516,11 @@ internal class GameViewModel(
         )
     }
 
-    /** `SessionResult.category`: null for wheels without a category (review, daily, level test). */
-    private fun sessionCategory(): CategoryId? = when (route.gameMode) {
-        GameMode.REVIEW, GameMode.DAILY, GameMode.LEVEL_TEST -> null
+    /** `SessionResult.category`: null for wheels without a category (review, daily, level test, exam pack). */
+    private fun sessionCategory(): CategoryId? = when {
+        route.packId != null -> null
+        route.gameMode == GameMode.REVIEW || route.gameMode == GameMode.DAILY -> null
+        route.gameMode == GameMode.LEVEL_TEST -> null
         else -> route.categoryId ?: CategoryId.MIXED
     }
 

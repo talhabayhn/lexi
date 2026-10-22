@@ -1,0 +1,19 @@
+<resources>
+    <!-- 10-exam-packs -->
+    <string name="exams_title">Sınav paketleri</string>
+    <string name="exams_back">Geri</string>
+    <string name="exams_intro_title">Sınava çark çevirerek hazırlan</string>
+    <string name="exams_intro_text">Her paket, sınavın resmi kelime listesine göre seviyelendirilmiş çarklardan oluşur.</string>
+    <string name="exams_subtitle">%1$s · %2$d</string>
+    <string name="exams_subtitle_count">%1$d kelime</string>
+    <string name="exams_progress">%%1$d</string>
+    <string name="exams_progress_description">Yüzde %1$d öğrenildi</string>
+    <string name="exams_pro">PRO</string>
+    <string name="exams_soon">Yakında</string>
+    <string name="exams_locked_description">Pro paket, yakında</string>
+    <string name="exams_locked_toast">Pro paketler çok yakında geliyor. Şimdilik ücretsiz paketlerle çalışabilirsin.</string>
+    <string name="exams_play_action">çarkı başlat</string>
+    <string name="exams_empty">Bu sürümde sınav paketi yok.</string>
+    <string name="exams_error">Sınav paketleri okunamadı.</string>
+    <string name="exams_retry">Tekrar dene</string>
+</resources>

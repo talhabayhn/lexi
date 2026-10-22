@@ -1,0 +1,19 @@
+<resources>
+    <!-- 10-exam-packs -->
+    <string name="exams_title">Exam packs</string>
+    <string name="exams_back">Back</string>
+    <string name="exams_intro_title">Prepare for your exam with a spin</string>
+    <string name="exams_intro_text">Each pack is made of wheels levelled from the exam's official word list.</string>
+    <string name="exams_subtitle">%1$s · %2$d</string>
+    <string name="exams_subtitle_count">%1$d words</string>
+    <string name="exams_progress">%1$d%</string>
+    <string name="exams_progress_description">%1$d percent learned</string>
+    <string name="exams_pro">PRO</string>
+    <string name="exams_soon">Soon</string>
+    <string name="exams_locked_description">Pro pack, coming soon</string>
+    <string name="exams_locked_toast">Pro packs are coming very soon. Until then, practise with the free packs.</string>
+    <string name="exams_play_action">start the wheel</string>
+    <string name="exams_empty">No exam packs in this version.</string>
+    <string name="exams_error">The exam packs could not be read.</string>
+    <string name="exams_retry">Try again</string>
+</resources>

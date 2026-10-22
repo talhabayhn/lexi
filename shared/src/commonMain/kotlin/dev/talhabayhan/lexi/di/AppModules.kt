@@ -18,6 +18,7 @@ import dev.talhabayhan.lexi.core.domain.time.AppClock
 import dev.talhabayhan.lexi.core.platform.feedback.LiveSettings
 import dev.talhabayhan.lexi.core.platform.time.SystemAppClock
 import dev.talhabayhan.lexi.data.ResourcesBundledContentDb
+import dev.talhabayhan.lexi.feature.exams.di.examsModule
 import dev.talhabayhan.lexi.feature.game.di.gameModule
 import dev.talhabayhan.lexi.feature.home.di.homeModule
 import dev.talhabayhan.lexi.feature.levels.di.levelsModule
@@ -74,6 +75,7 @@ val appModules: List<Module> = listOf(
     dataModule,
     onboardingModule,
     homeModule,
+    examsModule,
     levelsModule,
     notebookModule,
     statsModule,

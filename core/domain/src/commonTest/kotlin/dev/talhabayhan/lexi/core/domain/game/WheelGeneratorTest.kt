@@ -313,4 +313,65 @@ class WheelGeneratorTest {
         assertEquals(setOf("XRAY"), picks)
         assertEquals("BOX", WheelGenerator.review(due.take(1), wheelRandom(1L)).slots.single().card?.answer)
     }
+
+    // region exam pack wheel (GAME_RULES.md §1)
+
+    private fun pack(pool: List<Card>, seed: Long = 42L, recentlySeen: Set<Card> = emptySet()): Wheel =
+        WheelGenerator.pack(pool, wheelRandom(seed), recentlySeen.map { it.id }.toSet())
+
+    @Test
+    fun `pack wheel picks exactly like a regular wheel over the same single-level pool`() {
+        for (seed in 1L..20L) {
+            assertEquals(generate(seed = seed), pack(triplePool, seed), "seed $seed")
+        }
+    }
+
+    @Test
+    fun `pack wheel mixes the levels of its cards`() {
+        val pool = fullAlphabetPool(level = Level.A2).filter { it.letter < 'N' } +
+            fullAlphabetPool(level = Level.C1, suffix = "OC").filter { it.letter >= 'N' }
+
+        val wheel = pack(pool)
+
+        assertEquals(26, wheel.playableSlots.size)
+        assertEquals(setOf(Level.A2, Level.C1), wheel.playableSlots.mapNotNull { it.card?.level }.toSet())
+    }
+
+    @Test
+    fun `pack wheel is deterministic and ignores the pool order`() {
+        val pool = fullAlphabetPool(level = Level.B1) + fullAlphabetPool(level = Level.B2, suffix = "OB")
+
+        assertEquals(pack(pool), pack(pool.reversed()))
+        assertEquals(pack(pool), pack(SeededRandom(7L).shuffled(pool)))
+        assertNotEquals(pack(pool, seed = 1L), pack(pool, seed = 2L))
+    }
+
+    @Test
+    fun `pack wheel skips letters without a pack card`() {
+        val wheel = pack(triplePool.filterNot { it.letter == 'X' })
+
+        assertEquals(SlotState.SKIPPED, wheel.slots[wheel.indexOf('X')].state)
+        assertEquals(25, wheel.playableSlots.size)
+    }
+
+    @Test
+    fun `pack wheel avoids recently seen cards and prefers starts cards`() {
+        val seen = triplePool.filterNot { it.answer.endsWith("TWO") }.toSet()
+        for (seed in 1L..20L) {
+            assertTrue(
+                pack(triplePool, seed, seen).slots.all {
+                    it.card?.answer?.endsWith("TWO") == true
+                },
+                "seed $seed",
+            )
+            assertTrue(pack(mixedRulePool, seed).slots.all { it.rule == LetterRule.STARTS }, "seed $seed")
+        }
+    }
+
+    @Test
+    fun `pack pool card ids must be unique`() {
+        assertFailsWith<IllegalArgumentException> { pack(triplePool + triplePool.first()) }
+    }
+
+    // endregion
 }

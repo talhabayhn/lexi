@@ -160,7 +160,8 @@ Settings: DataStore Preferences (`SettingsRepository` exposes `Flow<Settings>`).
 ### Repositories (interfaces in domain)
 `CardRepository`, `CategoryRepository`, `ExamPackRepository`, `ProgressRepository` (SRS),
 `SessionRepository`, `DailyRepository`, `StreakRepository`, `JokerRepository`, `SettingsRepository`,
-`EntitlementRepository` (Pro, M7 with RevenueCat), `ContentVersionRepository`.
+`EntitlementRepository` (Pro: `isPro: Flow<Boolean>`; until RevenueCat `StaticEntitlementRepository`, never Pro in
+release, unlocked in debug builds, bound in `shared`'s platform modules), `ContentVersionRepository`.
 
 Interfaces: `core/domain/.../repository`; implementations (internal) and `dataModule` (Koin): `core:data`.
 Content reads are one-shot `suspend` functions (content never changes while the app runs); user data is observed as

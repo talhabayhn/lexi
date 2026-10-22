@@ -39,7 +39,7 @@ val contentDbDir: Provider<Directory> = layout.buildDirectory.dir("generated/con
 
 val generateContentDb by tasks.registering(JavaExec::class) {
     group = "build"
-    description = "Validates content/ (+ \$LEXI_PACKS_DIR) and writes content.db as a Compose resource for shared."
+    description = "Validates content/ + exam packs and writes content.db as a Compose resource for shared."
     classpath = sourceSets.main.get().runtimeClasspath
     mainClass.set(application.mainClass)
     workingDir = rootDir

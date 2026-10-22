@@ -51,3 +51,6 @@ JOIN card ON card.id = exam_pack_card.card_id
 JOIN clue ON clue.card_id = card.id AND clue.lang = :lang
 WHERE exam_pack_card.pack_id = :packId
 ORDER BY exam_pack_card.unit, card.id;
+
+examPackCardIds:
+SELECT card_id FROM exam_pack_card WHERE pack_id = :packId ORDER BY card_id;

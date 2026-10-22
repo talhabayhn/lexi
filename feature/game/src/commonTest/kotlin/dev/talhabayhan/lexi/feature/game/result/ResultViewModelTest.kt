@@ -301,6 +301,13 @@ class ResultViewModelTest {
     }
 
     @Test
+    fun `play again after an exam pack wheel plays the same pack`() = runTest {
+        val packRoute = route().copy(category = null, pack = "lgs")
+
+        assertEquals(GameRoute(level = "A1", mode = "CLASSIC", pack = "lgs"), viewModel(packRoute).playAgain)
+    }
+
+    @Test
     fun `a finished daily cannot be played again`() = runTest {
         val vm = viewModel(route(mode = GameMode.DAILY))
 

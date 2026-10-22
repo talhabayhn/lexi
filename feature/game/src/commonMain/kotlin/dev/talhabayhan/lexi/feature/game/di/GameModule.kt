@@ -39,6 +39,8 @@ val gameModule: Module = module {
             seeds = get(),
             crashReporter = get(),
             getDailyWheel = get(),
+            examPacks = get(),
+            entitlements = get(),
         )
     }
     single { GamePreparer(loader = get(), scope = CoroutineScope(SupervisorJob() + Dispatchers.Default)) }

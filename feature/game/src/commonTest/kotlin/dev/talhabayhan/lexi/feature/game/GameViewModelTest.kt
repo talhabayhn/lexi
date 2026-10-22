@@ -19,6 +19,7 @@ import dev.talhabayhan.lexi.core.domain.game.SavedGameCodec
 import dev.talhabayhan.lexi.core.domain.game.SlotState
 import dev.talhabayhan.lexi.core.domain.model.CardId
 import dev.talhabayhan.lexi.core.domain.model.CategoryId
+import dev.talhabayhan.lexi.core.domain.model.ExamPackId
 import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.core.domain.repository.JokerRepository
 import dev.talhabayhan.lexi.core.domain.repository.SessionRepository
@@ -32,12 +33,16 @@ import dev.talhabayhan.lexi.core.testing.FakeCardRepository
 import dev.talhabayhan.lexi.core.testing.FakeContentVersionRepository
 import dev.talhabayhan.lexi.core.testing.FakeCrashReporter
 import dev.talhabayhan.lexi.core.testing.FakeDailyRepository
+import dev.talhabayhan.lexi.core.testing.FakeEntitlementRepository
+import dev.talhabayhan.lexi.core.testing.FakeExamPackRepository
 import dev.talhabayhan.lexi.core.testing.FakeJokerRepository
 import dev.talhabayhan.lexi.core.testing.FakeProgressRepository
 import dev.talhabayhan.lexi.core.testing.FakeSessionRepository
 import dev.talhabayhan.lexi.core.testing.FakeSettingsRepository
 import dev.talhabayhan.lexi.core.testing.FakeSpeaker
+import dev.talhabayhan.lexi.core.testing.packCards
 import dev.talhabayhan.lexi.core.testing.testCard
+import dev.talhabayhan.lexi.core.testing.testExamPack
 import dev.talhabayhan.lexi.feature.game.result.ResultRoute
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -74,6 +79,8 @@ class GameViewModelTest {
     private val speaker = FakeSpeaker()
     private val analytics = FakeAnalyticsTracker()
     private val crashReporter = FakeCrashReporter()
+    private val examPacks = FakeExamPackRepository()
+    private val entitlements = FakeEntitlementRepository()
 
     @BeforeTest
     fun setUp() {
@@ -131,6 +138,8 @@ class GameViewModelTest {
         seeds = seeds,
         crashReporter = crashReporter,
         getDailyWheel = getDailyWheel,
+        examPacks = examPacks,
+        entitlements = entitlements,
         cpu = StandardTestDispatcher(testScheduler),
     )
 
@@ -1486,6 +1495,73 @@ class GameViewModelTest {
 
         assertTrue(restored.state.value.isPaused)
         assertNotNull(preparer.take(route))
+    }
+
+    // endregion
+
+    // region exam pack wheel (GAME_RULES.md §1, §5)
+
+    private val lgs = GameRoute.examPack(ExamPackId("lgs"))
+
+    @Test
+    fun `a pack wheel plays the pack cards of any level with classic rules and keeps the pack for the result`() =
+        runTest {
+            examPacks.packs = listOf(testExamPack("lgs"))
+            examPacks.cards = mapOf(
+                ExamPackId("lgs") to packCards(
+                    listOf(testCard("APPLE", level = Level.B1), testCard("BREAD", level = Level.A2)),
+                    unit = "friendship",
+                ),
+            )
+            val vm = viewModel(gameRoute = lgs).also {
+                runCurrent()
+                it.onIntent(GameIntent.Foreground)
+            }
+
+            assertEquals(listOf('A', 'B'), vm.state.value.wheel.map { it.letter })
+            assertTrue(vm.state.value.isScored)
+            vm.effects.test {
+                vm.type("APPLE")
+                vm.type("BREAD")
+                runCurrent()
+
+                val result = awaitResult()
+                assertEquals("lgs", result.pack)
+                assertNull(result.category)
+                // The level of a mixed-level wheel is its first card's, like review.
+                assertEquals(Level.B1.name, result.level)
+                val session = sessions.sessions.single()
+                assertNull(session.category)
+                assertTrue(session.completed)
+            }
+        }
+
+    @Test
+    fun `a pro pack does not load without pro and loads with it`() = runTest {
+        examPacks.packs = listOf(testExamPack("yds", isPro = true))
+        examPacks.cards = mapOf(ExamPackId("yds") to packCards(listOf(testCard("APPLE", level = Level.B2))))
+        val yds = GameRoute.examPack(ExamPackId("yds"))
+
+        val locked = viewModel(gameRoute = yds)
+        runCurrent()
+        assertEquals(GameLoadError.Unreadable, locked.state.value.loadError)
+        assertTrue(sessions.sessions.isEmpty())
+
+        entitlements.pro.value = true
+        val unlocked = viewModel(gameRoute = yds).also {
+            runCurrent()
+            it.onIntent(GameIntent.Foreground)
+        }
+        assertNull(unlocked.state.value.loadError)
+        assertEquals(listOf('A'), unlocked.state.value.wheel.map { it.letter })
+        unlocked.onIntent(GameIntent.Background)
+    }
+
+    @Test
+    fun `an unknown pack shows the no-cards error`() = runTest {
+        val vm = viewModel(gameRoute = GameRoute.examPack(ExamPackId("nope")))
+        runCurrent()
+        assertEquals(GameLoadError.NoCards, vm.state.value.loadError)
     }
 
     // endregion
