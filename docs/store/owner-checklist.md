@@ -47,3 +47,26 @@
 - Firebase: link Play/ASC? (leave ad-personalisation linking off, VERIFY), set retention.
 - RevenueCat: project, API keys in secrets (never committed).
 - Legal: lawyer review of privacy-policy-*.md and terms-*.md; publish at [WEBSITE]/privacy and /terms; add links in app Settings (privacy policy URL is required in-app per `ARCHITECTURE.md` §13) and paywall.
+
+## D. Pending owner actions (2026-10-22)
+
+### 1.0.5 verification
+- [ ] Publish 1.0.5 to Play closed testing and add it to the TestFlight group.
+- [ ] Eyeball the 7 OnboardingStep3 goldens (screenshots workflow, golden-review artifact).
+- [ ] Test the analytics consent checkbox + Settings switch; check Firebase Realtime (on = events, off = none).
+- [ ] Confirm Firebase "Granular location" is off; check iOS Crashlytics stack traces are symbolicated (app dSYM).
+
+### Before the public release
+- [ ] App Store Connect App Privacy per `app-privacy-apple.md` §0; Play Data safety already submitted.
+- [ ] Store listing TR/EN, screenshots.
+- [ ] Designs for the consent block, reminder sheet, level-test intro/result.
+
+### Payments
+- [ ] W-8BEN status.
+- [ ] Bank account (GVK 20/B).
+- [ ] Paid Apps agreement Active.
+- [ ] RevenueCat project + iOS products.
+- [ ] Android products after the first SDK build.
+
+### When a Mac is available
+- [ ] iOS perf measurement (`docs/PERF.md`, compare mode).
