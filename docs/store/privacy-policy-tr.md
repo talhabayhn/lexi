@@ -19,7 +19,7 @@ Veri sorumlusu **Hüseyin Talha Bayhan**'dir ("biz"). İletişim: **talhabayhan.
 |---|---|---|---|
 | Google AdMob | Reklam kimliği (GAID / izin verilirse IDFA), IP adresi, cihaz ve uygulama bilgisi, reklam etkileşimi | Ödüllü reklam gösterme ve ölçme, sahteciliği önleme | Açık rıza (KVKK m.5/1, m.6; GDPR m.6/1(a)) |
 | Google UMP | Onay tercihi, tercihi saklamak için gereken cihaz tanımlayıcıları | Rıza toplama ve kaydetme | Hukuki yükümlülük / meşru menfaat |
-| Firebase Analytics | Uygulama örnek kimliği, cihaz/işletim sistemi/uygulama sürümü, IP adresinden türetilen yaklaşık (şehir düzeyi) konum, uygulama içi olaylar (uygulama açıldı, tanıtım bitti, seviye testi sonucu, oyun başladı/bitti — seviye, mod, doğru sayısı ve süre —, joker kullanıldı, paylaşım, hatırlatıcı açıldı; serbest metin yok). Reklam kimliği yok; reklam için kullanılmaz | Kullanımı anlama, uygulamayı geliştirme | Meşru menfaat; VERIFY (rıza gerekir mi) |
+| Firebase Analytics (**yalnızca onay verirseniz**) | Uygulama örnek kimliği, cihaz/işletim sistemi/uygulama sürümü, ülke düzeyinde konum, uygulama içi olaylar (uygulama açıldı, tanıtım bitti, seviye testi sonucu, oyun başladı/bitti — seviye, mod, doğru sayısı ve süre —, joker kullanıldı, paylaşım, hatırlatıcı açıldı; serbest metin yok). Reklam kimliği yok; reklam için kullanılmaz | Kullanımı anlama, uygulamayı geliştirme | Açık rıza (KVKK; GDPR m.6/1(a)); rızanızı istediğiniz zaman geri çekebilirsiniz |
 | Firebase Crashlytics | Çökme kayıtları, cihaz modeli/OS, uygulama sürümü, kurulum kimliği | Çökmeleri giderme, kararlılık | Meşru menfaat; VERIFY (rıza gerekir mi) |
 | RevenueCat | Anonim kullanıcı kimliği, satın alma/hak durumu, mağaza makbuz verisi, ülke | Lexi Pro satın almalarını doğrulama ve geri yükleme | Sözleşmenin ifası |
 | Apple / Google ödeme | Mağaza tarafından işlenir; kart bilgilerinizi görmeyiz | Satın alma ve iade | Sözleşmenin ifası |
@@ -28,7 +28,7 @@ Firebase ve AdMob Google LLC / Google Ireland Limited tarafından, RevenueCat is
 
 ## 5. Reklam kimliği ve onay
 - Reklamlar **ödüllü**dür (joker kazanmak için izleyip izlemeyeceğinize siz karar verirsiniz). VERIFY: 1.0'da geçiş (interstitial) reklam varsa bu bölümü güncelleyin.
-- Firebase Analytics ve Crashlytics onay formu olmadan çalışır; reklam kimliğini hiç kullanmaz ve reklam için kullanılmaz. Analiz verisi 2 ay saklanır.
+- **Firebase Analytics varsayılan olarak kapalıdır.** Yalnızca son tanıtım adımındaki "Anonim kullanım istatistiklerini paylaş" kutusunu işaretlerseniz ya da **Ayarlar → Kullanım istatistikleri** anahtarını açarsanız veri toplar; istediğiniz zaman kapatabilirsiniz, kapatınca toplama durur. Firebase Crashlytics (çökme raporları) çökmeleri giderebilmemiz için her zaman çalışır. İkisi de reklam kimliğini kullanmaz ve reklam için kullanılmaz. Analiz verisi 2 ay saklanır.
 - Reklamlar eklendiğinde: AEA, Birleşik Krallık ve Türkiye'de (VERIFY kapsam) ilk açılışta onay formu (Google UMP) gösterilir; kişiselleştirilmiş reklamlar yalnızca tercihinize göre çalışır. Tercihinizi **Ayarlar → Gizlilik** bölümünden değiştirebilirsiniz. VERIFY: bu menü sürümde olmalıdır.
 - iOS'ta kişiselleştirilmiş reklam etkinse uygulama izleme izni (ATT) ister. VERIFY: bkz. `app-privacy-apple.md`.
 - Reklam kimliğinizi cihaz ayarlarından sıfırlayabilir veya silebilirsiniz. Kişiselleştirilmiş reklamı reddederseniz kişiselleştirilmemiş reklam görebilirsiniz.

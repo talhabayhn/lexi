@@ -51,6 +51,10 @@ audience 13+, no ad ID, no ATT, no telemetry from debug builds. The owner create
   in Google Cloud Console to the Android package + signing SHA-1s and the iOS bundle id (owner).
 - Play Data safety and Apple App Privacy change before the next public release (`docs/store/*`, ROADMAP re-check).
 - When AdMob ships, the `AD_ID` removal and the ad Consent Mode defaults are revisited with UMP (its own ADR step).
+- Update (1.0.5, KVKK, audience 13+): Analytics became opt-in, Crashlytics stays always on. `ConsentGatedAnalyticsTracker`
+  (`core:platform`) wraps the platform sink: no event and no SDK collection without `Settings.analyticsConsent`;
+  the manifest/Info.plist keep Analytics collection off, the iOS bridge switches it off on every launch and the
+  tracker enables it after consent. The consent is asked on the last onboarding step and mirrored in Settings.
 - The iOS CI depends on GitHub/Google downloads for the SPM resolve; a release-ios archive also needs the Crashlytics
   upload endpoint (failures only warn).
 - Swapping vendors (e.g. Sentry) touches `core:platform`, `shared` iosMain and the Swift bridge only.

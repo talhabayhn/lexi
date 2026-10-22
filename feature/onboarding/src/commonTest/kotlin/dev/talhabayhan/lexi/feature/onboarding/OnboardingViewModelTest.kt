@@ -2,10 +2,12 @@ package dev.talhabayhan.lexi.feature.onboarding
 
 import app.cash.turbine.test
 import dev.talhabayhan.lexi.core.domain.model.Level
+import dev.talhabayhan.lexi.core.domain.platform.AppLinks
 import dev.talhabayhan.lexi.core.domain.telemetry.AnalyticsEvent
 import dev.talhabayhan.lexi.core.testing.FakeAnalyticsTracker
 import dev.talhabayhan.lexi.core.testing.FakeCardRepository
 import dev.talhabayhan.lexi.core.testing.FakeOnboardingRepository
+import dev.talhabayhan.lexi.core.testing.FakeSettingsRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.first
@@ -25,6 +27,7 @@ class OnboardingViewModelTest {
     private val analytics = FakeAnalyticsTracker()
     private val onboarding = FakeOnboardingRepository()
     private val cards = FakeCardRepository()
+    private val settings = FakeSettingsRepository()
 
     @BeforeTest
     fun setUp() {
@@ -36,7 +39,7 @@ class OnboardingViewModelTest {
         Dispatchers.resetMain()
     }
 
-    private fun viewModel() = OnboardingViewModel(onboarding, cards, analytics)
+    private fun viewModel() = OnboardingViewModel(onboarding, cards, settings, analytics)
 
     private fun levelChoice() = viewModel().apply {
         repeat(3) { onIntent(OnboardingIntent.Next) }
@@ -280,9 +283,49 @@ class OnboardingViewModelTest {
     }
 
     @Test
+    fun `the analytics checkbox starts unchecked and nothing is stored`() = runTest {
+        val vm = viewModel()
+
+        assertFalse(vm.state.value.analyticsConsent)
+        assertFalse(settings.settings.value.analyticsConsent)
+    }
+
+    @Test
+    fun `finishing without ticking the checkbox keeps analytics off`() = runTest {
+        val vm = levelChoice()
+
+        vm.onIntent(OnboardingIntent.PickLevel(Level.B1))
+
+        assertFalse(settings.settings.value.analyticsConsent)
+    }
+
+    @Test
+    fun `ticking the checkbox stores the consent and unticking withdraws it`() = runTest {
+        val vm = viewModel()
+
+        vm.onIntent(OnboardingIntent.SetAnalyticsConsent(true))
+        assertTrue(vm.state.value.analyticsConsent)
+        assertTrue(settings.settings.value.analyticsConsent)
+
+        vm.onIntent(OnboardingIntent.SetAnalyticsConsent(false))
+        assertFalse(vm.state.value.analyticsConsent)
+        assertFalse(settings.settings.value.analyticsConsent)
+    }
+
+    @Test
+    fun `the privacy link opens the policy`() = runTest {
+        val vm = viewModel()
+
+        vm.effects.test {
+            vm.onIntent(OnboardingIntent.OpenPrivacy)
+            assertEquals(OnboardingEffect.OpenUrl(AppLinks.PRIVACY_POLICY), awaitItem())
+        }
+    }
+
+    @Test
     fun `first-run routing navigates to home when already completed`() = runTest {
         val completedRepo = FakeOnboardingRepository(initialCompleted = true)
-        val vm = OnboardingViewModel(completedRepo, cards, analytics)
+        val vm = OnboardingViewModel(completedRepo, cards, settings, analytics)
 
         vm.effects.test {
             assertEquals(OnboardingEffect.NavigateToHome, awaitItem())
@@ -292,7 +335,7 @@ class OnboardingViewModelTest {
     @Test
     fun `first-run routing does not navigate away when not completed`() = runTest {
         val freshRepo = FakeOnboardingRepository(initialCompleted = false)
-        val vm = OnboardingViewModel(freshRepo, cards, analytics)
+        val vm = OnboardingViewModel(freshRepo, cards, settings, analytics)
 
         assertFalse(freshRepo.onboardingCompleted.first())
         assertEquals(OnboardingStep.Step1, vm.state.value.currentStep)

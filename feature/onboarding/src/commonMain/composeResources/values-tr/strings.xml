@@ -10,6 +10,10 @@
     <string name="onboarding_next">Devam</string>
     <string name="onboarding_skip">Atla</string>
     <string name="onboarding_start">Başlayalım</string>
+    <!-- Analytics opt-in on the last step (needs design, built from 16-components) -->
+    <string name="onboarding_analytics_label">Anonim kullanım istatistiklerini paylaş</string>
+    <string name="onboarding_analytics_notice">İsteğe bağlı. Lexi'yi geliştirmemize yardım eder, kişisel veri içermez. Ayarlar'dan istediğin zaman değiştirebilirsin.</string>
+    <string name="onboarding_analytics_privacy">Gizlilik politikası</string>
 
     <!-- Level choice screen (01-onboarding; title and body from COPY.md section 4) -->
     <string name="leveltest_choice_title">Seviyeni bulalım</string>

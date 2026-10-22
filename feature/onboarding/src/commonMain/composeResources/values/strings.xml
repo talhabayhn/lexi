@@ -10,6 +10,10 @@
     <string name="onboarding_next">Next</string>
     <string name="onboarding_skip">Skip</string>
     <string name="onboarding_start">Let's start</string>
+    <!-- Analytics opt-in on the last step (needs design, built from 16-components) -->
+    <string name="onboarding_analytics_label">Share anonymous usage statistics</string>
+    <string name="onboarding_analytics_notice">Optional. Helps us improve Lexi and contains no personal data. You can change it any time in Settings.</string>
+    <string name="onboarding_analytics_privacy">Privacy policy</string>
 
     <!-- Level choice screen (01-onboarding; title and body from COPY.md section 4) -->
     <string name="leveltest_choice_title">Let's find your level</string>

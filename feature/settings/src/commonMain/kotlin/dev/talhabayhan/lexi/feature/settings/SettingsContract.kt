@@ -24,6 +24,8 @@ internal data class SettingsUiState(
     val notificationsBlocked: Boolean = false,
     val appLanguage: AppLanguage = AppLanguage.SYSTEM,
     val accent: Accent = Accent.US,
+    /** "Kullanım istatistikleri": the opt-in to anonymous analytics. */
+    val analyticsConsent: Boolean = false,
 )
 
 internal sealed interface SettingsIntent {
@@ -52,6 +54,8 @@ internal sealed interface SettingsIntent {
     data class SetAccent(val accent: Accent) : SettingsIntent
 
     data class SetReviewReminders(val enabled: Boolean) : SettingsIntent
+
+    data class SetAnalyticsConsent(val enabled: Boolean) : SettingsIntent
 
     /** The reminder row: opens the sheet (and re-reads the OS permission). */
     data object OpenReminderSheet : SettingsIntent

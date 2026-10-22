@@ -26,6 +26,7 @@ import dev.talhabayhan.lexi.core.platform.feedback.LiveSettings
 import dev.talhabayhan.lexi.core.platform.reminder.IosNotificationPermission
 import dev.talhabayhan.lexi.core.platform.reminder.IosReminderScheduler
 import dev.talhabayhan.lexi.core.platform.share.IosShareService
+import dev.talhabayhan.lexi.core.platform.telemetry.ConsentGatedAnalyticsTracker
 import dev.talhabayhan.lexi.core.platform.uri.IosUrlOpener
 import dev.talhabayhan.lexi.telemetry.IosAnalyticsTracker
 import dev.talhabayhan.lexi.telemetry.IosCrashReporter
@@ -64,7 +65,14 @@ internal actual fun rememberPlatformModule(): Module = remember {
         single<ReminderScheduler> { IosReminderScheduler() }
         single<NotificationPermission> { IosNotificationPermission() }
         // Firebase through the Swift bridge (ADR 0023).
-        single<AnalyticsTracker> { IosAnalyticsTracker(IosPlatformServices.services.telemetry) }
+        // Analytics only after the player's opt-in; Crashlytics always.
+        single<AnalyticsTracker> {
+            ConsentGatedAnalyticsTracker(
+                sink = IosAnalyticsTracker(IosPlatformServices.services.telemetry),
+                settings = get(),
+                scope = CoroutineScope(SupervisorJob() + Dispatchers.Default),
+            )
+        }
         single<CrashReporter> { IosCrashReporter(IosPlatformServices.services.telemetry) }
     }
 }

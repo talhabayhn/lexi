@@ -3,8 +3,10 @@ package dev.talhabayhan.lexi.feature.onboarding
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dev.talhabayhan.lexi.core.domain.model.Level
+import dev.talhabayhan.lexi.core.domain.platform.AppLinks
 import dev.talhabayhan.lexi.core.domain.repository.CardRepository
 import dev.talhabayhan.lexi.core.domain.repository.OnboardingRepository
+import dev.talhabayhan.lexi.core.domain.repository.SettingsRepository
 import dev.talhabayhan.lexi.core.domain.telemetry.AnalyticsEvent
 import dev.talhabayhan.lexi.core.domain.telemetry.AnalyticsTracker
 import kotlinx.coroutines.CancellationException
@@ -29,9 +31,11 @@ import kotlinx.coroutines.launch
 internal class OnboardingViewModel(
     private val onboarding: OnboardingRepository,
     private val cards: CardRepository,
+    private val settings: SettingsRepository,
     private val analytics: AnalyticsTracker,
 ) : ViewModel() {
-    private val mutableState = MutableStateFlow(OnboardingUiState())
+    private val mutableState =
+        MutableStateFlow(OnboardingUiState(analyticsConsent = settings.loaded.value?.analyticsConsent == true))
     val state: StateFlow<OnboardingUiState> = mutableState.asStateFlow()
 
     private val effectChannel = Channel<OnboardingEffect>(Channel.BUFFERED)
@@ -61,6 +65,10 @@ internal class OnboardingViewModel(
             }
 
             OnboardingIntent.Skip -> finish(Level.A1)
+
+            is OnboardingIntent.SetAnalyticsConsent -> setAnalyticsConsent(intent.enabled)
+
+            OnboardingIntent.OpenPrivacy -> effectChannel.trySend(OnboardingEffect.OpenUrl(AppLinks.PRIVACY_POLICY))
 
             OnboardingIntent.Back -> mutableState.update { current ->
                 when (current.currentStep) {
@@ -93,6 +101,20 @@ internal class OnboardingViewModel(
             OnboardingIntent.ScreenStopped -> if (levelTestStarted) {
                 levelTestStarted = false
                 mutableState.update { it.copy(currentStep = OnboardingStep.LevelChoice) }
+            }
+        }
+    }
+
+    private fun setAnalyticsConsent(enabled: Boolean) {
+        mutableState.update { it.copy(analyticsConsent = enabled) }
+        viewModelScope.launch {
+            try {
+                settings.update { it.copy(analyticsConsent = enabled) }
+            } catch (e: CancellationException) {
+                throw e
+            } catch (@Suppress("TooGenericExceptionCaught") e: Exception) {
+                // Not stored: the checkbox shows what is stored.
+                mutableState.update { it.copy(analyticsConsent = settings.loaded.value?.analyticsConsent == true) }
             }
         }
     }

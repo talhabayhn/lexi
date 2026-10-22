@@ -5,15 +5,20 @@ import android.os.Bundle
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.crashlytics.FirebaseCrashlytics
 import dev.talhabayhan.lexi.core.domain.telemetry.AnalyticsEvent
-import dev.talhabayhan.lexi.core.domain.telemetry.AnalyticsTracker
 import dev.talhabayhan.lexi.core.domain.telemetry.CrashReporter
 
 /**
- * Firebase Analytics (ADR 0023). Collection (release on, debug off) and the privacy defaults come from the app
- * manifest; the SDK is looked up on the first event, so building the Koin graph never touches Firebase.
+ * Firebase Analytics (ADR 0023). The manifest keeps collection off and carries the privacy defaults; it is switched on
+ * only after the player's opt-in ([ConsentGatedAnalyticsTracker]) and only when [buildEnabled] (release builds). The
+ * SDK is looked up on first use, so building the Koin graph never touches Firebase.
  */
-public class FirebaseAnalyticsTracker(private val context: Context) : AnalyticsTracker {
+public class FirebaseAnalyticsTracker(private val context: Context, private val buildEnabled: Boolean) :
+    AnalyticsSink {
     private val analytics by lazy { FirebaseAnalytics.getInstance(context) }
+
+    override fun setCollectionEnabled(enabled: Boolean) {
+        runCatching { analytics.setAnalyticsCollectionEnabled(enabled && buildEnabled) }
+    }
 
     override fun track(event: AnalyticsEvent) {
         runCatching { analytics.logEvent(event.name, event.toBundle()) }

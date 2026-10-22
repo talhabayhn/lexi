@@ -285,6 +285,19 @@ class SettingsViewModelTest {
     }
 
     @Test
+    fun `usage statistics are off by default and the switch writes the consent`() = runTest {
+        val viewModel = viewModel()
+        assertFalse(viewModel.state.value.analyticsConsent)
+
+        viewModel.onIntent(SettingsIntent.SetAnalyticsConsent(true))
+
+        assertTrue(repository.settings.value.analyticsConsent)
+        assertTrue(viewModel.state.value.analyticsConsent)
+        viewModel.onIntent(SettingsIntent.SetAnalyticsConsent(false))
+        assertFalse(repository.settings.value.analyticsConsent)
+    }
+
+    @Test
     fun `the reminder sheet opens and closes`() = runTest {
         val viewModel = viewModel()
 

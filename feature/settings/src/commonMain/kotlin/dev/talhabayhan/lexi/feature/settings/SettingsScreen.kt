@@ -49,6 +49,7 @@ import dev.talhabayhan.lexi.core.platform.language.isIos
 import dev.talhabayhan.lexi.feature.settings.components.ReminderSheet
 import dev.talhabayhan.lexi.feature.settings.generated.resources.Res
 import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_accent
+import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_analytics
 import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_back
 import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_classic_time
 import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_clue_language
@@ -75,6 +76,7 @@ import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_review
 import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_section_game
 import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_section_language
 import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_section_learning
+import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_section_privacy
 import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_soon
 import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_sound
 import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_speak_on_correct
@@ -236,6 +238,13 @@ private fun SettingsPage(state: SettingsUiState, onIntent: (SettingsIntent) -> U
             ) {
                 ListRowValue(state.accent.name)
             }
+        }
+        Section(Res.string.settings_section_privacy) {
+            ListRow(
+                label = stringResource(Res.string.settings_analytics),
+                checked = state.analyticsConsent,
+                onCheckedChange = { onIntent(SettingsIntent.SetAnalyticsConsent(it)) },
+            )
         }
         SettingsFooter(
             onOpenAbout = { onIntent(SettingsIntent.OpenAbout) },

@@ -120,6 +120,7 @@ private fun LexiNavGraph(
         onboardingScreen(
             onFinish = navigator::finishOnboarding,
             onStartLevelTest = { navigator.startLevelTest() },
+            onOpenUrl = { url -> urlOpener.openUrl(url) },
         )
         levelTestScreen(
             onFinished = navigator::finishLevelTest,

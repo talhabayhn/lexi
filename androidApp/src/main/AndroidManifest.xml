@@ -48,11 +48,12 @@
             </intent-filter>
         </activity>
 
-        <!-- Firebase (ADR 0023, docs/ANALYTICS.md): collection follows the build type (telemetryEnabled); no ad ID,
-             Consent Mode defaults deny every ad purpose, analytics storage only. -->
+        <!-- Firebase (ADR 0023, docs/ANALYTICS.md): Crashlytics follows the build type (telemetryEnabled); Analytics is
+             off until the player opts in (ConsentGatedAnalyticsTracker); no ad ID, Consent Mode defaults deny every
+             ad purpose, analytics storage only. -->
         <meta-data
             android:name="firebase_analytics_collection_enabled"
-            android:value="${telemetryEnabled}" />
+            android:value="false" />
         <meta-data
             android:name="firebase_crashlytics_collection_enabled"
             android:value="${telemetryEnabled}" />

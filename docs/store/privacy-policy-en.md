@@ -19,7 +19,7 @@ Progress, scores, streaks, joker inventory, word notebook, statistics, settings 
 |---|---|---|---|
 | Google AdMob | Advertising ID (GAID / IDFA where permitted), IP address, device and app info, ad interaction data | Show and measure rewarded ads, fraud prevention | Consent (GDPR Art. 6(1)(a); KVKK explicit consent) |
 | Google UMP | Consent choice, device identifiers needed to store your choice | Collect and record your consent | Legal obligation / legitimate interest |
-| Firebase Analytics | App instance ID, device/OS/app version, approximate (city-level) location derived from the IP address, in-app events (app opened, onboarding finished, level test result, game started/finished with level, mode, correct answers and duration, joker used, share, reminder turned on — no free text). No advertising ID; not used for ads | Understand usage, improve the app | Legitimate interest; VERIFY whether consent is needed |
+| Firebase Analytics (**only if you opt in**) | App instance ID, device/OS/app version, country-level location, in-app events (app opened, onboarding finished, level test result, game started/finished with level, mode, correct answers and duration, joker used, share, reminder turned on — no free text). No advertising ID; not used for ads | Understand usage, improve the app | Explicit consent (KVKK; GDPR Art. 6(1)(a)); you can withdraw it at any time |
 | Firebase Crashlytics | Crash traces, device model/OS, app version, installation ID | Fix crashes, keep the app stable | Legitimate interest; VERIFY whether consent is needed |
 | RevenueCat | Anonymous app user ID, purchase/entitlement status, store receipt data, country | Validate and restore Lexi Pro purchases | Contract performance |
 | Apple / Google payments | Handled by the store; we never see your card details | Process purchases and refunds | Contract performance |
@@ -28,7 +28,7 @@ Firebase and AdMob may be processed by Google LLC / Google Ireland Limited; Reve
 
 ## 5. Advertising ID and consent
 - Ads are **rewarded** (you choose to watch one to earn a joker). VERIFY: if interstitial ads ship in v1.0, update this section.
-- Firebase Analytics and Crashlytics run without a consent form; they never use the advertising ID and are not used for advertising. Analytics data is kept for 2 months.
+- **Firebase Analytics is off by default.** It collects data only if you tick "Share anonymous usage statistics" in the last onboarding step or turn on **Settings → Usage statistics**; you can turn it off again at any time, which stops collection. Firebase Crashlytics (crash reports) always runs so we can fix crashes. Neither uses the advertising ID or is used for advertising. Analytics data is kept for 2 months.
 - Once ads are added: in the EEA, UK and Türkiye (VERIFY scope), a consent form (Google UMP) is shown at first launch; personalised ads run only according to your choices. You can change your choice at any time in **Settings → Privacy**. VERIFY: the settings entry must exist in the build.
 - On iOS, the app asks for tracking permission (App Tracking Transparency) only if personalised ads are enabled. VERIFY: see `app-privacy-apple.md`.
 - You can reset or delete your advertising ID in your device settings. If you decline personalised ads, you may still see non-personalised ads.

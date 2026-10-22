@@ -11,6 +11,8 @@
     <string name="settings_section_game">OYUN</string>
     <string name="settings_section_learning">ÖĞRENME</string>
     <string name="settings_section_language">DİL</string>
+    <string name="settings_section_privacy">GİZLİLİK</string>
+    <string name="settings_analytics">Kullanım istatistikleri</string>
 
     <!-- Satırlar -->
     <string name="settings_sound">Ses efektleri</string>

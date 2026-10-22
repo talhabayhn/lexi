@@ -3,8 +3,8 @@
 package dev.talhabayhan.lexi.telemetry
 
 import dev.talhabayhan.lexi.core.domain.telemetry.AnalyticsEvent
-import dev.talhabayhan.lexi.core.domain.telemetry.AnalyticsTracker
 import dev.talhabayhan.lexi.core.domain.telemetry.CrashReporter
+import dev.talhabayhan.lexi.core.platform.telemetry.AnalyticsSink
 import kotlin.experimental.ExperimentalNativeApi
 import kotlin.native.setUnhandledExceptionHook
 import kotlin.native.terminateWithUnhandledException
@@ -17,6 +17,9 @@ interface IosTelemetry {
     /** `Analytics.logEvent`; [params] values are `String` or `Long` (`AnalyticsEvent`). */
     fun logEvent(name: String, params: Map<String, Any>)
 
+    /** `Analytics.setAnalyticsCollectionEnabled`; Swift keeps it off whenever the build disallows telemetry. */
+    fun setAnalyticsCollectionEnabled(enabled: Boolean)
+
     /** A Crashlytics log line, attached to the next report. */
     fun log(message: String)
 
@@ -24,9 +27,13 @@ interface IosTelemetry {
     fun recordException(type: String, message: String, stackTrace: List<String>)
 }
 
-internal class IosAnalyticsTracker(private val telemetry: IosTelemetry) : AnalyticsTracker {
+internal class IosAnalyticsTracker(private val telemetry: IosTelemetry) : AnalyticsSink {
     override fun track(event: AnalyticsEvent) {
         telemetry.logEvent(event.name, event.params)
+    }
+
+    override fun setCollectionEnabled(enabled: Boolean) {
+        telemetry.setAnalyticsCollectionEnabled(enabled)
     }
 }
 

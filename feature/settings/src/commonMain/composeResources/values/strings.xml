@@ -11,6 +11,8 @@
     <string name="settings_section_game">GAME</string>
     <string name="settings_section_learning">LEARNING</string>
     <string name="settings_section_language">LANGUAGE</string>
+    <string name="settings_section_privacy">PRIVACY</string>
+    <string name="settings_analytics">Usage statistics</string>
 
     <!-- Rows -->
     <string name="settings_sound">Sound effects</string>

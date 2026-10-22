@@ -2,6 +2,7 @@ package dev.talhabayhan.lexi.di
 
 import android.content.Context
 import android.content.pm.ApplicationInfo
+import android.content.pm.PackageManager
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
@@ -25,6 +26,7 @@ import dev.talhabayhan.lexi.core.platform.feedback.GatedSoundPlayer
 import dev.talhabayhan.lexi.core.platform.feedback.LiveSettings
 import dev.talhabayhan.lexi.core.platform.reminder.AndroidReminderScheduler
 import dev.talhabayhan.lexi.core.platform.share.AndroidShareService
+import dev.talhabayhan.lexi.core.platform.telemetry.ConsentGatedAnalyticsTracker
 import dev.talhabayhan.lexi.core.platform.telemetry.FirebaseAnalyticsTracker
 import dev.talhabayhan.lexi.core.platform.telemetry.FirebaseCrashReporter
 import dev.talhabayhan.lexi.core.platform.uri.AndroidUrlOpener
@@ -73,6 +75,18 @@ internal fun androidPlatformModule(context: Context): Module = module {
         AndroidReminderScheduler(context, clock = get(), channelName = texts::channelName)
     }
     single<NotificationPermission> { AndroidNotificationPermission(context) }
-    single<AnalyticsTracker> { FirebaseAnalyticsTracker(context) }
+    single<AnalyticsTracker> {
+        // The manifest's Crashlytics flag is the build type's telemetry switch (release on, debug opt-in).
+        val buildEnabled = runCatching {
+            context.packageManager
+                .getApplicationInfo(context.packageName, PackageManager.GET_META_DATA)
+                .metaData?.getBoolean("firebase_crashlytics_collection_enabled", false)
+        }.getOrNull() == true
+        ConsentGatedAnalyticsTracker(
+            sink = FirebaseAnalyticsTracker(context, buildEnabled),
+            settings = get(),
+            scope = CoroutineScope(SupervisorJob() + Dispatchers.Default),
+        )
+    }
     single<CrashReporter> { FirebaseCrashReporter() }
 }

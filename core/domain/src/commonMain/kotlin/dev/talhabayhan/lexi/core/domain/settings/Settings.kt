@@ -26,6 +26,8 @@ public data class Settings(
     val appLanguage: AppLanguage = AppLanguage.SYSTEM,
     val clueLanguage: ClueLanguage = ClueLanguage.TR,
     val accent: Accent = Accent.US,
+    /** Opt-in to anonymous usage statistics (Firebase Analytics, KVKK); off until the player agrees. */
+    val analyticsConsent: Boolean = false,
 ) {
     public val uiLanguage: AppLanguage get() = appLanguage
 

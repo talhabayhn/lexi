@@ -6,18 +6,30 @@ import Shared
 
 /// Firebase Analytics + Crashlytics behind the Kotlin `IosTelemetry` bridge (ADR 0023, docs/ANALYTICS.md).
 final class FirebaseTelemetry: NSObject, IosTelemetry {
-    /// Configures Firebase once at launch. Info.plist keeps collection off; Release builds turn it on, Debug builds
-    /// only with the `-LexiTelemetry` launch argument. Both setters persist, so they are set on every launch.
+    private let telemetryAllowed: Bool
+
+    private init(telemetryAllowed: Bool) {
+        self.telemetryAllowed = telemetryAllowed
+        super.init()
+    }
+
+    /// Configures Firebase once at launch. Info.plist keeps collection off; Release builds turn Crashlytics on, Debug
+    /// builds only with the `-LexiTelemetry` launch argument. Analytics is switched off on every launch (the setter
+    /// persists) and on only after the player's opt-in (`setAnalyticsCollectionEnabled`, called from Kotlin).
     static func start() -> FirebaseTelemetry {
         FirebaseApp.configure()
         #if DEBUG
-        let enabled = ProcessInfo.processInfo.arguments.contains("-LexiTelemetry")
+        let allowed = ProcessInfo.processInfo.arguments.contains("-LexiTelemetry")
         #else
-        let enabled = true
+        let allowed = true
         #endif
-        Analytics.setAnalyticsCollectionEnabled(enabled)
-        Crashlytics.crashlytics().setCrashlyticsCollectionEnabled(enabled)
-        return FirebaseTelemetry()
+        Analytics.setAnalyticsCollectionEnabled(false)
+        Crashlytics.crashlytics().setCrashlyticsCollectionEnabled(allowed)
+        return FirebaseTelemetry(telemetryAllowed: allowed)
+    }
+
+    func setAnalyticsCollectionEnabled(enabled: Bool) {
+        Analytics.setAnalyticsCollectionEnabled(enabled && telemetryAllowed)
     }
 
     func logEvent(name: String, params: [String: Any]) {

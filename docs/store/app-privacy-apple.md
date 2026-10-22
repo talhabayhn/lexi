@@ -10,11 +10,10 @@ signals off ⇒ nothing is used for tracking; **no ATT prompt**.
 | Data type | Collected | Linked to user | Tracking | Purpose |
 |---|---|---|---|---|
 | Identifiers → Device ID | Yes (Firebase app-instance ID, IDFV) | No | No | Analytics |
-| Usage Data → Product Interaction | Yes (`docs/ANALYTICS.md` events, sessions) | No | No | Analytics |
+| Usage Data → Product Interaction | Yes, **only if the user opts in** (`docs/ANALYTICS.md` events, sessions; off by default) | No | No | Analytics |
 | Diagnostics → Crash Data | Yes (Crashlytics) | No | No | App Functionality, Analytics |
 | Diagnostics → Other Diagnostic Data | Yes (device/OS/app version, app state at crash) | No | No | Analytics |
-| Location → Coarse Location | Yes, unless GA4 "Granular location and device data collection" is off (IP-derived city) | No | No | Analytics |
-| Everything else | No | – | – | – |
+| Everything else (incl. Location: "Granular location and device data collection" is off in the Firebase console) | No | – | – | – |
 
 Firebase 13 ships its privacy manifests; nothing extra in `PrivacyInfo.xcprivacy` for this SDK set (VERIFY in the
 archive's privacy report: Xcode → Organizer → Generate Privacy Report).

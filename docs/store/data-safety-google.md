@@ -10,11 +10,11 @@ Use this section until AdMob / RevenueCat ship; §1–§5 describe the full v1.0
 | Does the app collect or share any of the required user data types? | **Yes** (was No) |
 | Encrypted in transit | Yes (Firebase uses HTTPS/TLS) |
 | Deletion | Yes: email request; Firebase data per its retention (set 2 months in Analytics) |
-| **App activity → App interactions** | Collected · not shared · required (no in-app opt-out) · Analytics · events of `docs/ANALYTICS.md` + Firebase sessions/screens |
+| **App activity → App interactions** | Collected · not shared · **optional** (analytics is off until the user opts in on the last onboarding step or in Settings) · Analytics · events of `docs/ANALYTICS.md` + Firebase sessions/screens |
 | **App info and performance → Crash logs** | Collected · not shared · required · Analytics (stability) · Crashlytics |
-| **App info and performance → Diagnostics** | Collected · not shared · required · Analytics · device/OS/app version, app state at crash |
-| **Device or other IDs** | Collected · not shared · required · Analytics · Firebase app-instance ID, Crashlytics installation UUID (no advertising ID) |
-| **Location → Approximate location** | Collected · not shared · required · Analytics · Google Analytics derives the city from the IP. Answer **No** only if "Granular location and device data collection" is turned off for all regions in GA4 (country only) |
+| **App info and performance → Diagnostics** | Collected · not shared · required (Crashlytics) · Analytics · device/OS/app version, app state at crash |
+| **Device or other IDs** | Collected · not shared · required (Crashlytics installation UUID; the Firebase app-instance ID only with analytics opt-in) · Analytics · no advertising ID |
+| **Location → Approximate location** | **Not declared**: "Granular location and device data collection" is turned off in the Firebase console (owner), so only country-level data remains |
 | Ephemeral processing | No |
 | Advertising ID declaration | **No** — `AD_ID`, `ACCESS_ADSERVICES_AD_ID`, `ACCESS_ADSERVICES_ATTRIBUTION` are removed from the merged manifest (`tools:node="remove"`); verify in the release AAB's manifest |
 | Contains ads | No (unchanged) |

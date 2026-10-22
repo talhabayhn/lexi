@@ -6,7 +6,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.semantics.SemanticsProperties
 import androidx.compose.ui.test.ExperimentalTestApi
 import androidx.compose.ui.test.SemanticsMatcher
+import androidx.compose.ui.test.assertIsOff
 import androidx.compose.ui.test.onNodeWithContentDescription
+import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.runComposeUiTest
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import org.junit.Test
@@ -46,5 +48,32 @@ class OnboardingA11yTest {
             val headings = onAllNodes(SemanticsMatcher.keyIsDefined(SemanticsProperties.Heading))
             assertEquals(1, headings.fetchSemanticsNodes().size, "headings on $page")
         }
+    }
+
+    @Test
+    fun `the analytics checkbox on the last step is unchecked and toggles the consent`() = runComposeUiTest {
+        val intents = mutableListOf<OnboardingIntent>()
+        setContent {
+            LexiTheme(reducedMotion = true) {
+                OnboardingScreen(OnboardingUiState(currentStep = OnboardingStep.Step3), onIntent = { intents += it })
+            }
+        }
+
+        val checkbox = onNodeWithContentDescription("Anonim kullanım istatistiklerini paylaş")
+        checkbox.assertIsOff()
+        checkbox.performClick()
+
+        assertEquals(listOf<OnboardingIntent>(OnboardingIntent.SetAnalyticsConsent(true)), intents)
+    }
+
+    @Test
+    fun `the earlier steps have no analytics checkbox`() = runComposeUiTest {
+        setContent {
+            LexiTheme(reducedMotion = true) {
+                OnboardingScreen(OnboardingUiState(currentStep = OnboardingStep.Step1), onIntent = {})
+            }
+        }
+
+        onNodeWithContentDescription("Anonim kullanım istatistiklerini paylaş").assertDoesNotExist()
     }
 }

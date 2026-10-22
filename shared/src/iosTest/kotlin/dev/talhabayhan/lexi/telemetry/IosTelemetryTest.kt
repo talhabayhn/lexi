@@ -16,6 +16,8 @@ class IosTelemetryTest {
             events += name to params
         }
 
+        override fun setAnalyticsCollectionEnabled(enabled: Boolean) = Unit
+
         override fun log(message: String) {
             logs += message
         }

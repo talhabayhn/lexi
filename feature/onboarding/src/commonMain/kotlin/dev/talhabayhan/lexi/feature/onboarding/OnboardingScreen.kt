@@ -3,6 +3,7 @@ package dev.talhabayhan.lexi.feature.onboarding
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -31,6 +32,7 @@ import androidx.compose.ui.unit.sp
 import dev.talhabayhan.lexi.core.designsystem.component.LexiButton
 import dev.talhabayhan.lexi.core.designsystem.component.LexiButtonDefaults
 import dev.talhabayhan.lexi.core.designsystem.component.LexiButtonVariant
+import dev.talhabayhan.lexi.core.designsystem.component.LexiCheckbox
 import dev.talhabayhan.lexi.core.designsystem.component.LexiTextLink
 import dev.talhabayhan.lexi.core.designsystem.component.NavSquareButton
 import dev.talhabayhan.lexi.core.designsystem.icon.LexiIcons
@@ -54,6 +56,9 @@ import dev.talhabayhan.lexi.feature.onboarding.generated.resources.onboarding_2_
 import dev.talhabayhan.lexi.feature.onboarding.generated.resources.onboarding_2_title
 import dev.talhabayhan.lexi.feature.onboarding.generated.resources.onboarding_3_body
 import dev.talhabayhan.lexi.feature.onboarding.generated.resources.onboarding_3_title
+import dev.talhabayhan.lexi.feature.onboarding.generated.resources.onboarding_analytics_label
+import dev.talhabayhan.lexi.feature.onboarding.generated.resources.onboarding_analytics_notice
+import dev.talhabayhan.lexi.feature.onboarding.generated.resources.onboarding_analytics_privacy
 import dev.talhabayhan.lexi.feature.onboarding.generated.resources.onboarding_next
 import dev.talhabayhan.lexi.feature.onboarding.generated.resources.onboarding_skip
 import dev.talhabayhan.lexi.feature.onboarding.generated.resources.onboarding_start
@@ -75,7 +80,7 @@ internal fun OnboardingScreen(
     ) {
         when (step) {
             OnboardingStep.Step1, OnboardingStep.Step2, OnboardingStep.Step3 ->
-                OnboardingStepContent(step = step, onIntent = onIntent)
+                OnboardingStepContent(step = step, analyticsConsent = state.analyticsConsent, onIntent = onIntent)
 
             OnboardingStep.LevelChoice -> LevelChoiceContent(onIntent = onIntent)
 
@@ -238,6 +243,7 @@ private fun OnboardingIllustration(step: OnboardingStep, modifier: Modifier = Mo
 @Composable
 private fun OnboardingStepContent(
     step: OnboardingStep,
+    analyticsConsent: Boolean,
     onIntent: (OnboardingIntent) -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -263,9 +269,57 @@ private fun OnboardingStepContent(
         onSkip = { onIntent(OnboardingIntent.Skip) },
         modifier = modifier,
         topStart = { StepIndicators(step = step.ordinal + 1) },
+        extra = if (step == OnboardingStep.Step3) {
+            { AnalyticsConsent(checked = analyticsConsent, onIntent = onIntent) }
+        } else {
+            null
+        },
     ) {
         // Plain one-line label (ellipsis), as before the level test landed.
         HeroButton(text = stringResource(ctaTextRes), onClick = { onIntent(OnboardingIntent.Next) }, fitted = false)
+    }
+}
+
+/**
+ * Needs design (built from `16-components`): the unchecked-by-default analytics opt-in of the last step, with the
+ * short notice and a link to the privacy policy. Continuing without ticking it means no analytics.
+ */
+@Composable
+private fun AnalyticsConsent(checked: Boolean, onIntent: (OnboardingIntent) -> Unit, modifier: Modifier = Modifier) {
+    val label = stringResource(Res.string.onboarding_analytics_label)
+    Column(
+        modifier = modifier.fillMaxWidth().padding(top = LexiTheme.dimens.gap10),
+        verticalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap6),
+    ) {
+        Row(
+            horizontalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap12),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            LexiCheckbox(
+                checked = checked,
+                onCheckedChange = { onIntent(OnboardingIntent.SetAnalyticsConsent(it)) },
+                label = label,
+            )
+            Text(
+                text = label,
+                style = LexiTheme.typography.bodyBold15,
+                color = LexiTheme.colors.ink,
+                modifier = Modifier
+                    .clearAndSetSemantics {}
+                    .clickable(interactionSource = null, indication = null) {
+                        onIntent(OnboardingIntent.SetAnalyticsConsent(!checked))
+                    },
+            )
+        }
+        Text(
+            text = stringResource(Res.string.onboarding_analytics_notice),
+            style = LexiTheme.typography.caption12,
+            color = LexiTheme.colors.inkMuted,
+        )
+        LexiTextLink(
+            text = stringResource(Res.string.onboarding_analytics_privacy),
+            onClick = { onIntent(OnboardingIntent.OpenPrivacy) },
+        )
     }
 }
 

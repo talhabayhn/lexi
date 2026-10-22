@@ -22,6 +22,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.foundation.selection.toggleable
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
@@ -46,6 +47,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import dev.talhabayhan.lexi.core.designsystem.feedback.LocalHaptics
 import dev.talhabayhan.lexi.core.designsystem.feedback.LocalSoundPlayer
+import dev.talhabayhan.lexi.core.designsystem.icon.LexiIcons
 import dev.talhabayhan.lexi.core.designsystem.modifier.lexiSurface
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.core.designsystem.theme.withCssLineHeight
@@ -69,6 +71,10 @@ public object ControlDefaults {
     public val SwitchHeight: Dp = 30.dp
     internal val KnobSize: Dp = 18.dp
     internal val KnobInset: Dp = 3.dp
+
+    /** Checkbox: 28 square, check icon 18 (needs design). */
+    public val CheckboxSize: Dp = 28.dp
+    internal val CheckboxIconSize: Dp = 18.dp
 
     /** Progress bar content heights (borders come on top, CSS content-box). */
     public val ProgressHeightThin: Dp = 8.dp
@@ -240,6 +246,52 @@ public fun LexiSwitch(
                     shape = LexiTheme.shapes.circle,
                 ),
         )
+    }
+}
+
+/**
+ * Bauhaus checkbox (needs design: built from the [LexiSwitch] vocabulary): 28dp square with a 3dp ink border, white
+ * when off, blue with a yellow check when on. The caller labels the row (its text toggles too); [label] only names the
+ * control for screen readers. Compose extends the touch bounds of the 28dp box to the platform minimum.
+ */
+@Composable
+public fun LexiCheckbox(
+    checked: Boolean,
+    onCheckedChange: (Boolean) -> Unit,
+    modifier: Modifier = Modifier,
+    label: String? = null,
+) {
+    val colors = LexiTheme.colors
+    val haptics = LocalHaptics.current
+    val sounds = LocalSoundPlayer.current
+    Box(
+        modifier = modifier
+            .size(ControlDefaults.CheckboxSize)
+            .semantics { if (label != null) contentDescription = label }
+            .toggleable(
+                value = checked,
+                role = Role.Checkbox,
+                interactionSource = null,
+                indication = null,
+            ) {
+                haptics.perform(HapticKind.Light)
+                sounds.play(SoundEffect.Tap)
+                onCheckedChange(it)
+            }
+            .lexiSurface(
+                if (checked) colors.blue else colors.white,
+                BorderStroke(LexiTheme.borders.regular, colors.ink),
+            ),
+        contentAlignment = Alignment.Center,
+    ) {
+        if (checked) {
+            Icon(
+                imageVector = LexiIcons.Check,
+                contentDescription = null,
+                tint = colors.yellow,
+                modifier = Modifier.size(ControlDefaults.CheckboxIconSize),
+            )
+        }
     }
 }
 

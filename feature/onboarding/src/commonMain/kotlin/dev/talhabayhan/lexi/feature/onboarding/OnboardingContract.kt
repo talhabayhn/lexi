@@ -20,12 +20,19 @@ internal enum class OnboardingStep {
 internal data class OnboardingUiState(
     val currentStep: OnboardingStep = OnboardingStep.Step1,
     val selectedLevel: Level = Level.A1,
+    /** The unchecked-by-default analytics opt-in of the last step (`Settings.analyticsConsent`, KVKK). */
+    val analyticsConsent: Boolean = false,
 )
 
 internal sealed interface OnboardingIntent {
     data object Next : OnboardingIntent
     data object Skip : OnboardingIntent
     data object Back : OnboardingIntent
+
+    /** The last step's checkbox: stored right away, so every way out of the onboarding keeps the choice. */
+    data class SetAnalyticsConsent(val enabled: Boolean) : OnboardingIntent
+
+    data object OpenPrivacy : OnboardingIntent
 
     /** A level chip of the level choice: saves the level and finishes the onboarding. */
     data class PickLevel(val level: Level) : OnboardingIntent
@@ -45,6 +52,8 @@ internal sealed interface OnboardingIntent {
 
 internal sealed interface OnboardingEffect {
     data object NavigateToHome : OnboardingEffect
+
+    data class OpenUrl(val url: String) : OnboardingEffect
 
     /** Open the level test run (`GAME_RULES.md` §9); nothing is saved before its result. */
     data object StartLevelTest : OnboardingEffect

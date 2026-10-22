@@ -7,7 +7,7 @@ The event list is closed: a new event or parameter is added here first, then to 
 - No personal data, no free text, no IDs of our own. Parameter values are enum codes or counts only.
 - No advertising ID (Android `AD_ID` removed, iOS without IDFA support), ad-personalisation signals off, no ATT.
   Firebase's own defaults (app-instance ID, session and `first_open` events, device/OS/app version) stay.
-- Audience 13+. Release builds collect; debug builds don't (see "Debug" below).
+- Audience 13+. Analytics is **opt-in** (KVKK): collection is off until the player ticks the unchecked checkbox on the last onboarding step or turns on Settings → Gizlilik → Kullanım istatistikleri (`Settings.analyticsConsent`, DataStore). Existing users start off. `ConsentGatedAnalyticsTracker` drops every event and keeps the SDK collection disabled without consent (Crashlytics always runs). Release builds only; debug builds never collect (see "Debug" below).
 - Firebase names: snake_case, ≤ 40 chars; we stay clear of reserved names (`first_open`, `session_start`, `error`, …).
 
 ## Events
@@ -48,4 +48,4 @@ The event list is closed: a new event or parameter is added here first, then to 
 
 ## Firebase console settings (owner)
 Data retention 2 months; Google signals off; no Google Ads / AdMob linking until ads ship; ads personalisation off;
-"Granular location and device data collection" off if Play/Apple should not list approximate location (`docs/store`).
+"Granular location and device data collection" is turned off by the owner, so approximate location is not declared (`docs/store`).

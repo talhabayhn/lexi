@@ -106,6 +106,8 @@ internal class SettingsViewModel(
 
             is SettingsIntent.SetReviewReminders -> write { it.copy(reviewReminders = intent.enabled) }
 
+            is SettingsIntent.SetAnalyticsConsent -> write { it.copy(analyticsConsent = intent.enabled) }
+
             SettingsIntent.OpenReminderSheet -> {
                 mutableState.update { it.copy(reminderSheetVisible = true) }
                 refreshPermission()
@@ -186,4 +188,5 @@ private fun withStored(settings: Settings, current: SettingsUiState = SettingsUi
     reviewReminders = settings.reviewReminders,
     appLanguage = settings.appLanguage,
     accent = settings.accent,
+    analyticsConsent = settings.analyticsConsent,
 )

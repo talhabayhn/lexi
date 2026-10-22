@@ -26,11 +26,15 @@ public data object OnboardingRoute
 /**
  * Adds the onboarding screen to the navigation graph. [onFinish] is invoked when onboarding finishes (a level chip,
  * or skip); [onStartLevelTest] by "Başla" of the level test intro, returns whether it navigated (the onboarding
- * stays below the test).
+ * stays below the test); [onOpenUrl] opens the privacy policy.
  */
-public fun NavGraphBuilder.onboardingScreen(onFinish: () -> Unit, onStartLevelTest: () -> Boolean) {
+public fun NavGraphBuilder.onboardingScreen(
+    onFinish: () -> Unit,
+    onStartLevelTest: () -> Boolean,
+    onOpenUrl: (String) -> Unit,
+) {
     composable<OnboardingRoute> {
-        OnboardingRoute(onFinish = onFinish, onStartLevelTest = onStartLevelTest)
+        OnboardingRoute(onFinish = onFinish, onStartLevelTest = onStartLevelTest, onOpenUrl = onOpenUrl)
     }
 }
 
@@ -38,11 +42,13 @@ public fun NavGraphBuilder.onboardingScreen(onFinish: () -> Unit, onStartLevelTe
 internal fun OnboardingRoute(
     onFinish: () -> Unit,
     onStartLevelTest: () -> Boolean,
+    onOpenUrl: (String) -> Unit,
     viewModel: OnboardingViewModel = koinViewModel(),
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
     val currentOnFinish by rememberUpdatedState(onFinish)
     val currentOnStartLevelTest by rememberUpdatedState(onStartLevelTest)
+    val currentOnOpenUrl by rememberUpdatedState(onOpenUrl)
     val lifecycleOwner = LocalLifecycleOwner.current
 
     LaunchedEffect(viewModel, lifecycleOwner) {
@@ -50,6 +56,8 @@ internal fun OnboardingRoute(
             viewModel.effects.collect { effect ->
                 when (effect) {
                     OnboardingEffect.NavigateToHome -> currentOnFinish()
+
+                    is OnboardingEffect.OpenUrl -> currentOnOpenUrl(effect.url)
 
                     OnboardingEffect.StartLevelTest -> if (currentOnStartLevelTest()) {
                         viewModel.onIntent(OnboardingIntent.LevelTestOpened)

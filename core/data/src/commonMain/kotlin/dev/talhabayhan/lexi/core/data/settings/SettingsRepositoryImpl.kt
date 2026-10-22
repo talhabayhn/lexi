@@ -67,6 +67,7 @@ internal class SettingsRepositoryImpl(
             appLanguage = enumOrNull<UiLanguage>(this[UI_LANGUAGE]) ?: defaults.appLanguage,
             clueLanguage = enumOrNull<ClueLanguage>(this[CLUE_LANGUAGE]) ?: defaults.clueLanguage,
             accent = enumOrNull<Accent>(this[ACCENT]) ?: defaults.accent,
+            analyticsConsent = this[ANALYTICS_CONSENT] ?: defaults.analyticsConsent,
         )
     }
 
@@ -83,6 +84,7 @@ internal class SettingsRepositoryImpl(
         this[UI_LANGUAGE] = settings.uiLanguage.name
         this[CLUE_LANGUAGE] = settings.clueLanguage.name
         this[ACCENT] = settings.accent.name
+        this[ANALYTICS_CONSENT] = settings.analyticsConsent
     }
 
     private inline fun <reified E : Enum<E>> enumOrNull(name: String?): E? =
@@ -101,5 +103,6 @@ internal class SettingsRepositoryImpl(
         val UI_LANGUAGE = stringPreferencesKey("ui_language")
         val CLUE_LANGUAGE = stringPreferencesKey("clue_language")
         val ACCENT = stringPreferencesKey("accent")
+        val ANALYTICS_CONSENT = booleanPreferencesKey("analytics_consent")
     }
 }
