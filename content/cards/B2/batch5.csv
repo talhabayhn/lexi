@@ -4,7 +4,7 @@ b2-navigate,NAVIGATE,N,STARTS,verb,harita ya da uygulamayla yolu bulmak,Can you 
 b2-necessity,NECESSITY,N,STARTS,noun,vazgeçilmez gereksinim,Water is a basic necessity.,Su temel bir ihtiyaçtır.,4,,daily-life
 b2-negotiate,NEGOTIATE,N,STARTS,verb,anlaşmaya varmak için görüşmek,They will negotiate a new contract.,Yeni bir sözleşme için pazarlık yapacaklar.,4,,business
 b2-neutral,NEUTRAL,N,STARTS,adj,taraf tutmayan; renk olarak sade,The judge must stay neutral.,Hâkim tarafsız kalmalı.,4,,daily-life
-b2-nevertheless,NEVERTHELESS,N,STARTS,adv,buna rağmen (günlük kullanımda yaygın),"It rained; nevertheless, we went out.",Yağmur yağdı; yine de dışarı çıktık.,4,,daily-life
+b2-nevertheless,NEVERTHELESS,N,STARTS,adv,"buna rağmen, yine de","It rained; nevertheless, we went out.",Yağmur yağdı; yine de dışarı çıktık.,4,,daily-life
 b2-norm,NORM,N,STARTS,noun,toplumda kabul gören davranış kuralı,Shaking hands is the norm here.,Burada el sıkışmak normdur.,4,,daily-life
 b2-notable,NOTABLE,N,STARTS,adj,dikkat çekecek ölçüde önemli,She is a notable artist.,O tanınmış bir sanatçı.,4,,music
 b2-notion,NOTION,N,STARTS,noun,bir konudaki kabaca fikir,The notion of free time is new to him.,Boş zaman kavramı onun için yeni.,4,,school-work
