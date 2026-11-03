@@ -137,11 +137,13 @@ private fun SettingsPage(state: SettingsUiState, onIntent: (SettingsIntent) -> U
     ) {
         Header(onBack = { onIntent(SettingsIntent.Back) })
         // DESIGN-DEBT: the price needs the store (M7); the card shows the "soon" chip in its place.
-        ProBanner(
-            title = stringResource(Res.string.settings_pro_title),
-            subtitle = stringResource(Res.string.settings_pro_subtitle),
-        ) {
-            CountChip(stringResource(Res.string.settings_soon))
+        if (state.showProCard) {
+            ProBanner(
+                title = stringResource(Res.string.settings_pro_title),
+                subtitle = stringResource(Res.string.settings_pro_subtitle),
+            ) {
+                CountChip(stringResource(Res.string.settings_soon))
+            }
         }
         Section(Res.string.settings_section_game) {
             ListRow(

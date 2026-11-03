@@ -79,6 +79,10 @@ Module mapping (replaces the earlier `composeApp`): `androidApp` = thin Android 
 
 ## M7 — Monetisation, settings, exam packs, telemetry
 - [x] Settings (`11-settings`) remaining options functional (classic time, goal, languages, accent, clue language display, review reminders); daily reminder (local one-shot notifications, ADR 0021) with notification permission pre-prompt (sheet + pre-prompt are design debt)
+- [x] v1.0 is free, no ads, no Pro: `FeatureFlags.proEnabled` (on in debug, off in release; bound per platform in
+  `PlatformModule`) hides the Settings Pro card and the Pro exam packs, so no "YAKINDA"/"Soon" shows in release
+  (App Store 2.1). Store listings carry no ads/Pro/subscription text. Enabling Pro later: bind `proEnabled = true`
+  together with RevenueCat/AdMob and restore the listing text from git history
 - [ ] RevenueCat: Pro entitlement, paywall (design debt), restore purchases, Pro card + footer restore link → do the Play Console re-check below before releasing
 - [ ] Play Console re-check (owner reminder): when AdMob, Firebase, RevenueCat/Pro or login/online rooms are added to a build,
   update before that release goes to production: **Ads** (Yes), **Advertising ID** (Yes + `AD_ID` in merged manifest),

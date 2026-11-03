@@ -1,5 +1,7 @@
 # Owner checklist — store & legal (v1.0)
 
+> **v1.0 is free: no ads, no Pro, no subscriptions or in-app purchases, no Pro exam packs / "coming soon" UI (the free LGS pack stays)** (release builds have `FeatureFlags.proEnabled` off). Consequences: Play data safety / App Store privacy answers and listings declare no ads and no purchases; do not create subscription/IAP products or an AdMob app for this release; skip B4 and B7 and the AdMob/RevenueCat lines below until Pro ships.
+
 > Everything here needs the owner. Drafts are NOT legal advice; get a lawyer to review privacy/terms (KVKK/GDPR). `VERIFY` items are in the draft files; grep: `grep -rn VERIFY docs/store`.
 
 ## A. Placeholders to fill
@@ -32,20 +34,20 @@
 1. Create app (name, default language TR or EN, App, Free) → declarations.
 2. Store settings: category Game → Word; contact email/website.
 3. Main store listing: paste `listing-*.md` (default + other language), upload graphics.
-4. App content: privacy policy URL, ads = yes, app access, content rating (IARC, `app-privacy-apple.md` §3), target audience (§4), data safety (`data-safety-google.md`), advertising ID = yes.
-5. Monetize: subscriptions (monthly, yearly), in-app product (lifetime); link to RevenueCat via service credentials.
+4. App content: privacy policy URL, ads = no, app access, content rating (IARC, `app-privacy-apple.md` §3), target audience (§4), data safety (`data-safety-google.md`), advertising ID per the merged manifest (Firebase Analytics may add AD_ID).
+5. Monetize: SKIP for v1.0 (free). Later: subscriptions (monthly, yearly), in-app product (lifetime); link to RevenueCat via service credentials.
 6. Testing: internal → closed (personal accounts need the 12-testers/14-day rule — VERIFY current requirement) → production.
 ### App Store Connect
 1. Agreements, Tax, Banking (Paid Apps) complete.
 2. App Information: name, subtitle, category (Games → Word), privacy policy URL, license.
 3. Version page: promo text, description, keywords, support/marketing URL, what's new, screenshots, review notes, sign-in not required.
 4. App Privacy (`app-privacy-apple.md` §1), Age Rating (§3), Export compliance (§6), IDFA/ATT answers.
-5. In-App Purchases/Subscriptions: group, localisations (TR, EN), prices, review screenshot of paywall.
+5. In-App Purchases/Subscriptions: SKIP for v1.0 (free). Later: group, localisations (TR, EN), prices, review screenshot of paywall.
 6. TestFlight external testing, then submit.
 ### Other
-- AdMob: add app, ad unit, app-ads.txt on [WEBSITE] (VERIFY), UMP consent message (GDPR + US states if wished) in AdMob → Privacy & messaging.
+- SKIP for v1.0 (no ads/Pro): AdMob: add app, ad unit, app-ads.txt on [WEBSITE] (VERIFY), UMP consent message (GDPR + US states if wished) in AdMob → Privacy & messaging.
 - Firebase: link Play/ASC? (leave ad-personalisation linking off, VERIFY), set retention.
-- RevenueCat: project, API keys in secrets (never committed).
+- SKIP for v1.0: RevenueCat: project, API keys in secrets (never committed).
 - Legal: lawyer review of privacy-policy-*.md and terms-*.md; publish at [WEBSITE]/privacy and /terms; add links in app Settings (privacy policy URL is required in-app per `ARCHITECTURE.md` §13) and paywall.
 
 ## D. Pending owner actions (2026-10-22)

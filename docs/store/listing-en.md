@@ -42,19 +42,16 @@ LEARN, NOT JUST PLAY
 • Stats: learned words, accuracy, streaks, weekly progress, hardest letters
 
 JOKERS
-Stuck? Use a joker: reveal a letter, remove distractor keys, see an example sentence or listen to the word. Earn jokers daily, with streaks, or by watching an optional rewarded ad.
+Stuck? Use a joker: reveal a letter, remove distractor keys, see an example sentence or listen to the word. Earn jokers daily and with streaks.
 
 WORKS OFFLINE
 All word content is stored on your device. You do not need an account or an internet connection to play.
 
-LEXI PRO (optional)
-• No ads
-• Exam preparation packs
-• Daily joker refill and unlimited review wheels
-Available as a monthly or yearly subscription or a one-time lifetime purchase. Prices are shown in the app before you buy. Subscriptions renew automatically unless cancelled in your store account settings at least 24 hours before the period ends.
+FREE, NO ADS
+Lexi is completely free, with no ads and no in-app purchases.
 
 PRIVACY
-Your progress stays on your device. No account and no ads. Anonymous usage statistics are sent only if you agree (you can change this in Settings); crash reports help us fix bugs. Details in our privacy policy.
+Your progress stays on your device. No account needed. Anonymous usage statistics are sent only if you agree (you can change this in Settings); crash reports help us fix bugs. Details in our privacy policy.
 
 The interface is available in Turkish and English.
 
@@ -111,18 +108,13 @@ LEARN, NOT JUST PLAY
 • Stats: learned words, accuracy, streaks, weekly progress, hardest letters
 
 JOKERS
-Stuck? Use a joker: reveal a letter, remove distractor keys, see an example sentence or listen to the word. Earn jokers daily, with streaks, or by watching an optional rewarded ad.
+Stuck? Use a joker: reveal a letter, remove distractor keys, see an example sentence or listen to the word. Earn jokers daily and with streaks.
 
 WORKS OFFLINE
 All word content is stored on your device. You do not need an account or an internet connection to play.
 
-LEXI PRO (optional)
-• No ads
-• Exam preparation packs
-• Daily joker refill and unlimited review wheels
-Available as a monthly or yearly auto-renewing subscription or a one-time lifetime purchase. Prices are shown in the app before you buy.
-
-Subscription terms: payment is charged to your Apple ID account at confirmation of purchase. The subscription renews automatically unless it is cancelled at least 24 hours before the end of the current period. Your account is charged for renewal within 24 hours before the end of the current period. You can manage or cancel subscriptions in your Apple ID account settings after purchase. Any unused part of a free trial, if offered, is forfeited when you purchase a subscription.
+FREE, NO ADS
+Lexi is completely free, with no ads and no in-app purchases.
 
 Privacy Policy: https://talhabayhn.github.io/lexi/privacy
 Terms of Use: https://talhabayhn.github.io/lexi/terms
@@ -141,6 +133,6 @@ vocabulary,word game,learn english,words,quiz,alphabet,offline,flashcards,letter
 **Support URL**: https://talhabayhn.github.io/lexi/support · **Marketing URL**: https://talhabayhn.github.io/lexi · **Copyright**: © 2026 Hüseyin Talha Bayhan
 
 ## Notes
-- VERIFY: "Native" level wording and exam packs — only mention exam pack names (LGS, YKS-Dil, YDS, IELTS, TOEFL…) after confirming trademark/affiliation rules; they are intentionally not named here.
-- VERIFY: all shipped features (daily wheel, same-device duel, notebook, exam packs) exist in the v1.0 build before submission. Remove any that slip.
+- v1.0 is free: no ads, no Pro, no subscriptions, no exam packs in the listing (flag `FeatureFlags.proEnabled` is off in release). Re-add the Pro/ad text only together with those features.
+- VERIFY: all shipped features (daily wheel, same-device duel, notebook) exist in the v1.0 build before submission. Remove any that slip.
 - `docs/PRODUCT.md` store-positioning title uses a prohibited word; this listing uses the neutral titles above (see `owner-checklist.md`).

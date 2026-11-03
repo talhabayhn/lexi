@@ -2,6 +2,7 @@ package dev.talhabayhan.lexi.di
 
 import androidx.lifecycle.SavedStateHandle
 import dev.talhabayhan.lexi.core.data.db.DatabaseFiles
+import dev.talhabayhan.lexi.core.domain.config.FeatureFlags
 import dev.talhabayhan.lexi.core.domain.feedback.Haptics
 import dev.talhabayhan.lexi.core.domain.feedback.SoundPlayer
 import dev.talhabayhan.lexi.core.domain.feedback.Speaker
@@ -27,7 +28,7 @@ class AppModulesTest {
     @OptIn(KoinExperimentalAPI::class)
     @Test
     fun `koin graph resolves every definition`() {
-        // DatabaseFiles, the feedback services and EntitlementRepository (debug unlock) come from the platform module created at the composition root;
+        // DatabaseFiles, the feedback services, EntitlementRepository and FeatureFlags (debug-only Pro) come from the platform module created at the composition root;
         // SavedStateHandle and the routes read from it come from the navigation back-stack entry.
         module { includes(appModules) }.verify(
             extraTypes = listOf(
@@ -40,6 +41,7 @@ class AppModulesTest {
                 AnalyticsTracker::class,
                 CrashReporter::class,
                 EntitlementRepository::class,
+                FeatureFlags::class,
                 Haptics::class,
                 SoundPlayer::class,
                 SavedStateHandle::class,

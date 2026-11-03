@@ -2,6 +2,7 @@ package dev.talhabayhan.lexi.feature.exams
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import dev.talhabayhan.lexi.core.domain.config.FeatureFlags
 import dev.talhabayhan.lexi.core.domain.model.CardId
 import dev.talhabayhan.lexi.core.domain.model.ExamPack
 import dev.talhabayhan.lexi.core.domain.repository.EntitlementRepository
@@ -27,13 +28,15 @@ import kotlinx.coroutines.launch
 /**
  * Exam packs (`10-exam-packs`): the packs with their card counts and the player's progress, locked while a Pro pack
  * meets a player without Pro ([EntitlementRepository]). A tap on an unlocked pack starts its wheel; on a locked one it
- * shows a polite "coming soon" toast (no paywall until RevenueCat).
+ * shows a polite "coming soon" toast (no paywall until RevenueCat). Without [FeatureFlags.proEnabled] (release builds)
+ * the Pro packs are not listed at all.
  */
 internal class ExamPacksViewModel(
     private val examPacks: ExamPackRepository,
     private val entitlements: EntitlementRepository,
     private val progress: ProgressRepository,
     private val crashReporter: CrashReporter,
+    private val flags: FeatureFlags,
 ) : ViewModel() {
     private val mutableState = MutableStateFlow(ExamPacksUiState())
     val state: StateFlow<ExamPacksUiState> = mutableState.asStateFlow()
@@ -71,7 +74,9 @@ internal class ExamPacksViewModel(
 
     /** Content never changes while the app runs; null when it cannot be read. */
     private suspend fun loadContent(): List<PackContent>? = try {
-        examPacks.packs().map { PackContent(it, examPacks.cardIds(it.id).toSet()) }
+        examPacks.packs().filter {
+            flags.proEnabled || !it.isPro
+        }.map { PackContent(it, examPacks.cardIds(it.id).toSet()) }
     } catch (e: CancellationException) {
         throw e
     } catch (@Suppress("TooGenericExceptionCaught") e: Exception) {

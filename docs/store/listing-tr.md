@@ -42,19 +42,16 @@ SADECE OYNAMA, ÖĞREN
 • İstatistikler: öğrenilen kelimeler, doğruluk, seri, haftalık ilerleme, en zor harfler
 
 JOKERLER
-Takıldınız mı? Joker kullanın: harf aç, çeldirici tuşları temizle, örnek cümleyi gör ya da kelimeyi dinle. Jokerleri her gün, seri yaparak ya da isteğe bağlı ödüllü reklam izleyerek kazanın.
+Takıldınız mı? Joker kullanın: harf aç, çeldirici tuşları temizle, örnek cümleyi gör ya da kelimeyi dinle. Jokerleri her gün ve seri yaparak kazanın.
 
 ÇEVRİMDIŞI ÇALIŞIR
 Tüm kelime içeriği cihazınızda saklanır. Oynamak için hesap ya da internet bağlantısı gerekmez.
 
-LEXI PRO (isteğe bağlı)
-• Reklamsız
-• Sınav hazırlık paketleri
-• Günlük joker yenileme ve sınırsız tekrar çarkı
-Aylık ya da yıllık abonelik veya tek seferlik ömür boyu satın alma olarak sunulur. Fiyatlar satın almadan önce uygulamada gösterilir. Abonelikler, dönem bitiminden en az 24 saat önce mağaza hesap ayarlarınızdan iptal edilmedikçe otomatik yenilenir.
+ÜCRETSİZ, REKLAMSIZ
+Lexi tamamen ücretsizdir; reklam ve uygulama içi satın alma yoktur.
 
 GİZLİLİK
-İlerlemeniz cihazınızda kalır. Hesap ve reklam yoktur. Anonim kullanım istatistikleri yalnızca siz onaylarsanız gönderilir (Ayarlar'dan değiştirebilirsiniz); çökme raporları hataları düzeltmemize yardım eder. Ayrıntılar gizlilik politikamızda.
+İlerlemeniz cihazınızda kalır. Hesap gerekmez. Anonim kullanım istatistikleri yalnızca siz onaylarsanız gönderilir (Ayarlar'dan değiştirebilirsiniz); çökme raporları hataları düzeltmemize yardım eder. Ayrıntılar gizlilik politikamızda.
 
 Arayüz Türkçe ve İngilizce olarak kullanılabilir.
 
@@ -111,18 +108,13 @@ SADECE OYNAMA, ÖĞREN
 • İstatistikler: öğrenilen kelimeler, doğruluk, seri, haftalık ilerleme, en zor harfler
 
 JOKERLER
-Takıldınız mı? Joker kullanın: harf aç, çeldirici tuşları temizle, örnek cümleyi gör ya da kelimeyi dinle. Jokerleri her gün, seri yaparak ya da isteğe bağlı ödüllü reklam izleyerek kazanın.
+Takıldınız mı? Joker kullanın: harf aç, çeldirici tuşları temizle, örnek cümleyi gör ya da kelimeyi dinle. Jokerleri her gün ve seri yaparak kazanın.
 
 ÇEVRİMDIŞI ÇALIŞIR
 Tüm kelime içeriği cihazınızda saklanır. Oynamak için hesap ya da internet bağlantısı gerekmez.
 
-LEXI PRO (isteğe bağlı)
-• Reklamsız
-• Sınav hazırlık paketleri
-• Günlük joker yenileme ve sınırsız tekrar çarkı
-Aylık ya da yıllık otomatik yenilenen abonelik veya tek seferlik ömür boyu satın alma olarak sunulur. Fiyatlar satın almadan önce uygulamada gösterilir.
-
-Abonelik koşulları: Ödeme, satın alma onayında Apple ID hesabınızdan tahsil edilir. Abonelik, mevcut dönemin bitiminden en az 24 saat önce iptal edilmedikçe otomatik olarak yenilenir. Yenileme ücreti, mevcut dönemin bitiminden önceki 24 saat içinde hesabınızdan tahsil edilir. Satın aldıktan sonra abonelikleri Apple ID hesap ayarlarınızdan yönetebilir veya iptal edebilirsiniz. Ücretsiz deneme sunulursa, kullanılmayan kısmı abonelik satın alındığında geçersiz olur.
+ÜCRETSİZ, REKLAMSIZ
+Lexi tamamen ücretsizdir; reklam ve uygulama içi satın alma yoktur.
 
 Gizlilik Politikası: https://talhabayhn.github.io/lexi/privacy
 Kullanım Koşulları: https://talhabayhn.github.io/lexi/terms
@@ -133,7 +125,7 @@ Soru ve geri bildirim: talhabayhan.aps@gmail.com
 
 **Anahtar kelimeler (≤100, virgüller dahil)**
 ```
-kelime,ingilizce,öğren,oyun,sözcük,bilgi yarışması,alfabe,harf,çevrimdışı,sınav,quiz,eğitim,cefr
+kelime,ingilizce,öğren,oyun,sözcük,bilgi yarışması,alfabe,harf,çevrimdışı,defter,quiz,eğitim,cefr
 ```
 
 **Yenilikler (v1.0)**: Google Play ile aynı metin.
@@ -142,5 +134,5 @@ kelime,ingilizce,öğren,oyun,sözcük,bilgi yarışması,alfabe,harf,çevrimdı
 
 ## Notlar
 - Apple, ad/alt başlıkta geçen kelimeleri anahtar kelimelerde tekrar saymaz; "ingilizce", "kelime" başlıkta da var — VERIFY: tekrarı kaldırıp yeni terim ekleyin (ör. "tekrar", "defter").
-- VERIFY: v1.0 yapısında olmayan özellikleri (günlük çark, düello, defter, sınav paketleri) gönderimden önce metinden çıkarın.
-- Sınav adları (LGS, YKS, YDS, IELTS, TOEFL) marka/ilişki kuralları netleşmeden bilerek yazılmadı.
+- v1.0 ücretsizdir: listede reklam, Pro, abonelik ve sınav paketi yok (`FeatureFlags.proEnabled` release'te kapalı). Bunları yalnızca özelliklerle birlikte geri ekleyin.
+- VERIFY: v1.0 yapısında olmayan özellikleri (günlük çark, düello, defter) gönderimden önce metinden çıkarın.

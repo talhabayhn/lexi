@@ -1,6 +1,7 @@
 package dev.talhabayhan.lexi.feature.exams
 
 import app.cash.turbine.test
+import dev.talhabayhan.lexi.core.domain.config.FeatureFlags
 import dev.talhabayhan.lexi.core.domain.model.CardId
 import dev.talhabayhan.lexi.core.domain.model.ExamPackId
 import dev.talhabayhan.lexi.core.domain.model.Level
@@ -53,7 +54,8 @@ class ExamPacksViewModelTest {
         Dispatchers.resetMain()
     }
 
-    private fun viewModel() = ExamPacksViewModel(examPacks, entitlements, progress, crashReporter)
+    private fun viewModel(proEnabled: Boolean = true) =
+        ExamPacksViewModel(examPacks, entitlements, progress, crashReporter, FeatureFlags(proEnabled = proEnabled))
 
     @Test
     fun `lists the packs with real card counts and learned share and design badges`() = runTest {
@@ -88,6 +90,12 @@ class ExamPacksViewModelTest {
             vm.onIntent(ExamPacksIntent.DismissNotice)
             assertFalse(vm.state.value.lockedNotice)
         }
+    }
+
+    @Test
+    fun `without the pro flag the pro pack is not listed`() = runTest {
+        val vm = viewModel(proEnabled = false)
+        assertEquals(listOf(lgs), vm.state.value.packs.map { it.id })
     }
 
     @Test

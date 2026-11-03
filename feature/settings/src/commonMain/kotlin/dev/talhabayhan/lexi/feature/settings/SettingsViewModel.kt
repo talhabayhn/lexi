@@ -2,6 +2,7 @@ package dev.talhabayhan.lexi.feature.settings
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import dev.talhabayhan.lexi.core.domain.config.FeatureFlags
 import dev.talhabayhan.lexi.core.domain.game.GameConfig
 import dev.talhabayhan.lexi.core.domain.platform.AppLinks
 import dev.talhabayhan.lexi.core.domain.reminder.NotificationPermission
@@ -36,9 +37,14 @@ internal class SettingsViewModel(
     private val analytics: AnalyticsTracker,
     private val crashReporter: CrashReporter,
     private val config: GameConfig = GameConfig(),
+    flags: FeatureFlags = FeatureFlags(),
 ) : ViewModel() {
     // Starts from the stored values when they are already loaded, so the screen composes once with the real ones.
-    private val mutableState = MutableStateFlow(settings.loaded.value?.let { withStored(it) } ?: SettingsUiState())
+    private val mutableState = MutableStateFlow(
+        SettingsUiState(showProCard = flags.proEnabled).let { initial ->
+            settings.loaded.value?.let { withStored(it, initial) } ?: initial
+        },
+    )
     val state: StateFlow<SettingsUiState> = mutableState.asStateFlow()
 
     private val effectChannel = Channel<SettingsEffect>(Channel.BUFFERED)

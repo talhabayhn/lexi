@@ -26,6 +26,8 @@ internal data class SettingsUiState(
     val accent: Accent = Accent.US,
     /** "Kullanım istatistikleri": the opt-in to anonymous analytics. */
     val analyticsConsent: Boolean = false,
+    /** The Pro card (`FeatureFlags.proEnabled`); hidden in release builds until purchases exist. */
+    val showProCard: Boolean = true,
 )
 
 internal sealed interface SettingsIntent {

@@ -1,6 +1,7 @@
 package dev.talhabayhan.lexi.feature.settings
 
 import app.cash.turbine.test
+import dev.talhabayhan.lexi.core.domain.config.FeatureFlags
 import dev.talhabayhan.lexi.core.domain.platform.AppLinks
 import dev.talhabayhan.lexi.core.domain.reminder.PermissionStatus
 import dev.talhabayhan.lexi.core.domain.reminder.ReminderTimes
@@ -43,6 +44,15 @@ class SettingsViewModelTest {
     }
 
     private fun viewModel() = SettingsViewModel(repository, permission, analytics, crashReporter)
+
+    @Test
+    fun `the pro card follows the pro flag`() = runTest {
+        assertFalse(SettingsViewModel(repository, permission, analytics, crashReporter).state.value.showProCard)
+        val flags = FeatureFlags(proEnabled = true)
+        assertTrue(
+            SettingsViewModel(repository, permission, analytics, crashReporter, flags = flags).state.value.showProCard,
+        )
+    }
 
     @Test
     fun `the first state is the stored settings when the store is already loaded`() = runTest {
