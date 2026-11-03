@@ -54,7 +54,7 @@ LEXI PRO (isteğe bağlı)
 Aylık ya da yıllık abonelik veya tek seferlik ömür boyu satın alma olarak sunulur. Fiyatlar satın almadan önce uygulamada gösterilir. Abonelikler, dönem bitiminden en az 24 saat önce mağaza hesap ayarlarınızdan iptal edilmedikçe otomatik yenilenir.
 
 GİZLİLİK
-İlerlemeniz cihazınızda kalır. Uygulama, gizlilik politikamızda anlatılan reklam ve analiz hizmetlerini kullanır ve gereken yerlerde onayınızı ister.
+İlerlemeniz cihazınızda kalır. Hesap ve reklam yoktur. Anonim kullanım istatistikleri yalnızca siz onaylarsanız gönderilir (Ayarlar'dan değiştirebilirsiniz); çökme raporları hataları düzeltmemize yardım eder. Ayrıntılar gizlilik politikamızda.
 
 Arayüz Türkçe ve İngilizce olarak kullanılabilir.
 

@@ -42,12 +42,9 @@ T = {
         "support": [
             ("Contact", "Questions, feedback or a wrong clue? Write to **talhabayhan.aps@gmail.com**. "
              "Please include your device model and app version (Settings)."),
-            ("Restore purchases", "On a new or reinstalled device open **Settings → Restore purchases**, signed in "
-             "to the same store account. Purchases belong to your store account; Lexi has no accounts."),
-            ("Manage or cancel a subscription", "Subscriptions are managed by the store: Google Play → Payments & "
-             "subscriptions, or iPhone Settings → your name → Subscriptions."),
             ("Your data", "Progress, notebook and settings are stored only on your device. Deleting the app or "
-             "its data removes them. See the [privacy policy](../privacy/)."),
+             "its data removes them. Anonymous usage statistics are sent only if you agree (Settings → Usage statistics); "
+             "crash reports are always sent. See the [privacy policy](../privacy/)."),
         ],
         "draft": "DRAFT — this page is not final.",
     },
@@ -70,12 +67,9 @@ T = {
         "support": [
             ("İletişim", "Soru, öneri ya da hatalı bir ipucu mu? **talhabayhan.aps@gmail.com** adresine yazın. "
              "Lütfen cihaz modelinizi ve uygulama sürümünü (Ayarlar) ekleyin."),
-            ("Satın alımları geri yükleme", "Yeni ya da yeniden kurulan cihazda, aynı mağaza hesabıyla "
-             "**Ayarlar → Satın alımları geri yükle**'yi açın. Satın alımlar mağaza hesabınıza bağlıdır; Lexi'de hesap yoktur."),
-            ("Aboneliği yönetme ya da iptal", "Abonelikleri mağaza yönetir: Google Play → Ödemeler ve abonelikler "
-             "ya da iPhone Ayarlar → adınız → Abonelikler."),
             ("Verileriniz", "İlerleme, defter ve ayarlar yalnızca cihazınızda saklanır. Uygulamayı ya da verilerini "
-             "silmek bunları kaldırır. Bkz. [gizlilik politikası](../privacy/)."),
+             "silmek bunları kaldırır. Anonim kullanım istatistikleri yalnızca siz onaylarsanız gönderilir (Ayarlar → Kullanım "
+             "istatistikleri); çökme raporları her zaman gönderilir. Bkz. [gizlilik politikası](../privacy/)."),
         ],
         "draft": "TASLAK — bu sayfa nihai değil.",
     },

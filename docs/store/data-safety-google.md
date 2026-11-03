@@ -1,26 +1,37 @@
 # Google Play — Data safety form (v1.0 draft)
 
-> DRAFT. Not legal advice. Answers assume the planned SDKs only (AdMob + UMP, Firebase Analytics + Crashlytics, RevenueCat, Play Billing). **VERIFY every row against the final build's merged manifest and each SDK's current "Play data disclosure" guidance** (Google AdMob, Firebase, RevenueCat each publish one) before submitting. Play Console → App content → Data safety.
+> DRAFT. Not legal advice. §0 matches the 1.0.5 binary; §1–§5 assume the planned SDKs (AdMob + UMP, Firebase Analytics + Crashlytics, RevenueCat, Play Billing) and apply only when they ship. **VERIFY every row against the final build's merged manifest and each SDK's current "Play data disclosure" guidance** (Google AdMob, Firebase, RevenueCat each publish one) before submitting. Play Console → App content → Data safety.
 
-## 0. Next release: Firebase Analytics + Crashlytics only (ADR 0023)
-Use this section until AdMob / RevenueCat ship; §1–§5 describe the full v1.0 set. Changes against the SDK-free answers:
+## 0. Version 1.0.5 (Firebase Analytics + Crashlytics only) — USE THIS for Play Console → Data safety
+Facts (code): `androidApp/src/main/AndroidManifest.xml` (analytics collection `false`; Crashlytics follows `telemetryEnabled` = true for
+release; `AD_ID`, `ACCESS_ADSERVICES_AD_ID`, `ACCESS_ADSERVICES_ATTRIBUTION` removed; ad Consent Mode defaults denied),
+`ConsentGatedAnalyticsTracker`, `FirebaseTelemetry.kt`, ADR 0023. No AdMob, no Play Billing, no RevenueCat, no account, no location
+permission, no HTTP client of our own. §1–§5 below are the *future* full set and do **not** apply to this binary.
 
-| Item | Answer |
+| Form question | Answer |
 |---|---|
-| Does the app collect or share any of the required user data types? | **Yes** (was No) |
-| Encrypted in transit | Yes (Firebase uses HTTPS/TLS) |
-| Deletion | Yes: email request; Firebase data per its retention (set 2 months in Analytics) |
-| **App activity → App interactions** | Collected · not shared · **optional** (analytics is off until the user opts in on the last onboarding step or in Settings) · Analytics · events of `docs/ANALYTICS.md` + Firebase sessions/screens |
-| **App info and performance → Crash logs** | Collected · not shared · required · Analytics (stability) · Crashlytics |
-| **App info and performance → Diagnostics** | Collected · not shared · required (Crashlytics) · Analytics · device/OS/app version, app state at crash |
-| **Device or other IDs** | Collected · not shared · required (Crashlytics installation UUID; the Firebase app-instance ID only with analytics opt-in) · Analytics · no advertising ID |
-| **Location → Approximate location** | **Not declared**: "Granular location and device data collection" is turned off in the Firebase console (owner), so only country-level data remains |
-| Ephemeral processing | No |
-| Advertising ID declaration | **No** — `AD_ID`, `ACCESS_ADSERVICES_AD_ID`, `ACCESS_ADSERVICES_ATTRIBUTION` are removed from the merged manifest (`tools:node="remove"`); verify in the release AAB's manifest |
-| Contains ads | No (unchanged) |
-| "Shared" | No: Firebase processes the data for us (service provider); Google signals and Ads linking stay off |
+| Does the app collect or share any of the required user data types? | **Yes** |
+| All collected data encrypted in transit? | **Yes** |
+| Users can request data deletion? | **Yes** — by email (`talhabayhan.aps@gmail.com`); privacy policy URL as the deletion link; no accounts |
+| Account creation | App does not allow account creation |
+| Advertising ID (App content → Advertising ID) | **No**, app does not use it (verify the release AAB's merged manifest has no `AD_ID`) |
+| Contains ads | **No** |
+| Data shared with third parties | **None** (Firebase acts as our service provider) |
 
-## 1. Overview questions
+| Category → data type | Collected | Shared | Processed ephemerally | Required or optional | Purposes to tick |
+|---|---|---|---|---|---|
+| App activity → App interactions | Yes | No | No | **Optional** (off until the user opts in) | Analytics |
+| App info and performance → Crash logs | Yes | No | No | Required | Analytics |
+| App info and performance → Diagnostics | Yes | No | No | Required | Analytics |
+| App info and performance → Other app performance data | No | – | – | – | – |
+| Device or other IDs | Yes | No | No | Required (Crashlytics installation ID; Firebase app-instance ID only after opt-in) | Analytics |
+| Location → Approximate location | Yes (VERIFY, see `privacy-verify.md`) | No | No | Optional (country level, derived by Firebase only after opt-in) | Analytics |
+| Location → Precise location | No | – | – | – | – |
+| Personal info (all), Financial info (all), Health and fitness, Messages, Photos and videos, Audio, Files and docs, Calendar, Contacts, Web browsing, App activity → other types | No | – | – | – | – |
+
+"Required" for crash logs, diagnostics and device IDs because Crashlytics runs in release builds without an in-app switch.
+
+## 1. FUTURE (AdMob + RevenueCat, not in 1.0.5): Overview questions
 | Question | Answer |
 |---|---|
 | Does the app collect or share any of the required user data types? | **Yes** |

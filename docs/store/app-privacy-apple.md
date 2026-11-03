@@ -2,23 +2,31 @@
 
 > DRAFT. Not legal advice. Re-verify against the final binary (SDK privacy manifests `PrivacyInfo.xcprivacy`) and Apple's current guidelines. Marked VERIFY = uncertain.
 
-## 0. Next release: Firebase Analytics + Crashlytics only (ADR 0023)
-Use this until AdMob / RevenueCat ship (§1 is the full v1.0 set). "Do you or your third-party partners collect data?" → **Yes**.
-No account and no user ID ⇒ nothing is linked to the user; no IDFA (`FirebaseAnalyticsCore`), no ad networks, Google
-signals off ⇒ nothing is used for tracking; **no ATT prompt**.
+## 0. Version 1.0.5 (Firebase Analytics + Crashlytics only) — USE THIS for App Store Connect → App Privacy
+Facts (code): `iosApp/iosApp/FirebaseTelemetry.swift`, `Info.plist`, ADR 0023, `docs/ANALYTICS.md`. SPM products `FirebaseAnalyticsCore`
+(no IDFA) + `FirebaseCrashlytics`. No ads, no purchases, no account, no ATT, no location, no other network calls. Analytics
+collection is switched off at every launch and on only after the in-app opt-in; Crashlytics is on in Release builds, not gated.
+Sections 1–2 below are the *future* AdMob/RevenueCat set and do **not** apply to this binary.
 
-| Data type | Collected | Linked to user | Tracking | Purpose |
-|---|---|---|---|---|
-| Identifiers → Device ID | Yes (Firebase app-instance ID, IDFV) | No | No | Analytics |
-| Usage Data → Product Interaction | Yes, **only if the user opts in** (`docs/ANALYTICS.md` events, sessions; off by default) | No | No | Analytics |
-| Diagnostics → Crash Data | Yes (Crashlytics) | No | No | App Functionality, Analytics |
-| Diagnostics → Other Diagnostic Data | Yes (device/OS/app version, app state at crash) | No | No | Analytics |
-| Everything else (incl. Location: "Granular location and device data collection" is off in the Firebase console) | No | – | – | – |
+**"Do you or your third-party partners collect data from this app?" → Yes.** **Tracking** (any type) → **No**. `NSUserTrackingUsageDescription`: none.
 
-Firebase 13 ships its privacy manifests; nothing extra in `PrivacyInfo.xcprivacy` for this SDK set (VERIFY in the
-archive's privacy report: Xcode → Organizer → Generate Privacy Report).
+| Data type (Apple category → item) | Collected | Linked to user | Used to track | Purposes to tick | Source |
+|---|---|---|---|---|---|
+| Identifiers → Device ID | Yes | Yes | No | Analytics, App Functionality | Crashlytics installation ID (always); Firebase app-instance ID / IDFV (only after opt-in) |
+| Usage Data → Product Interaction | Yes | Yes | No | Analytics | Opt-in only (`docs/ANALYTICS.md` events, sessions) |
+| Diagnostics → Crash Data | Yes | Yes | No | App Functionality, Analytics | Crashlytics (always, Release) |
+| Diagnostics → Performance Data | No | – | – | – | Firebase Performance is not linked |
+| Diagnostics → Other Diagnostic Data | Yes | Yes | No | App Functionality, Analytics | Device model, OS and app version, app state at crash |
+| Location → Coarse Location | Yes (VERIFY, see `privacy-verify.md`) | Yes | No | Analytics | Country level, derived by Firebase from the IP, only after opt-in; granular collection off in console |
+| Contact Info, Health & Fitness, Financial Info, Sensitive Info, Contacts, User Content, Browsing History, Search History, Purchases, Surroundings, Body, Other Data | No | – | – | – | – |
 
-## 1. App Privacy ("nutrition labels") — App Store Connect → App Privacy
+Why "Linked = Yes": Apple counts data tied to a device identifier as linked; the draft said No before, over-declaring is the
+safe direction. Why "Tracking = No": no IDFA, no ad network, Google signals off, no data broker, no combination with
+third-party data for advertising.
+`PrivacyInfo.xcprivacy`: the app target has none; Firebase 13 ships its own manifests. VERIFY with Xcode → Organizer →
+Generate Privacy Report on the archive (and whether the app itself needs a manifest for required-reason APIs).
+
+## 1. FUTURE (AdMob + RevenueCat, not in 1.0.5): App Privacy ("nutrition labels")
 **Do you or your third-party partners collect data from this app?** Yes.
 
 | Data type | Collected | Linked to user? | Used for tracking? | Purposes | Source |
@@ -39,7 +47,7 @@ Answer notes:
 - Keep Firebase Analytics free of IDFA: do not link `FirebaseAnalytics/IdentitySupport` (VERIFY) and set `GOOGLE_ANALYTICS_IDFV_COLLECTION_ENABLED` as appropriate.
 - SDKs must ship privacy manifests and required-reason API declarations; use SDK versions that include them (VERIFY at build time).
 
-## 2. ATT (App Tracking Transparency) — decision
+## 2. FUTURE (AdMob, not in 1.0.5): ATT (App Tracking Transparency) — decision
 **Recommendation: YES, ask for ATT permission** when AdMob serves personalised ads on iOS.
 
 Why:

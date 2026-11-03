@@ -1,62 +1,56 @@
 # Lexi — Gizlilik Politikası ve KVKK Aydınlatma Metni
 
-**Son güncelleme:** 21 Ekim 2026 · **Kapsam:** Android ve iOS için Lexi uygulaması (uygulama kimliği `dev.talhabayhan.lexi`)
+**Son güncelleme:** 3 Kasım 2026 · **Kapsam:** Android ve iOS için Lexi uygulaması, 1.0.5 ve sonrası sürümler (uygulama kimliği `dev.talhabayhan.lexi`)
 
 ## 1. Veri sorumlusu
-Veri sorumlusu **Hüseyin Talha Bayhan**'dir ("biz"). İletişim: **talhabayhan.aps@gmail.com** · **https://talhabayhn.github.io/lexi**. VERIFY: adres, VERBİS yükümlülüğü ve gerekiyorsa AB temsilcisi (bkz. §12).
+Veri sorumlusu **Hüseyin Talha Bayhan**'dır ("biz"). İletişim: **talhabayhan.aps@gmail.com** · **https://talhabayhn.github.io/lexi**.
 
 ## 2. Özet
-- Lexi çevrimdışı çalışır. 1.0 sürümünde **hesap yoktur**, kayıt gerekmez.
+- Lexi çevrimdışı çalışır. **Hesap yoktur**, kayıt gerekmez.
 - Oyun ilerlemeniz, ayarlarınız ve kelime defteriniz **yalnızca cihazınızda** saklanır; bize iletilmez.
-- Kullandığımız üçüncü taraf hizmetler: **Google AdMob** (ödüllü reklam), **Google User Messaging Platform** (onay), **Firebase Analytics ve Crashlytics**, **RevenueCat** (satın alma) ve Apple App Store / Google Play ödeme sistemleri.
+- Uygulamadaki tek üçüncü taraf hizmet **Google Firebase**'dir: **Crashlytics** (çökme raporları, her zaman açık) ve **Analytics** (kullanım istatistikleri, **siz onaylayana kadar kapalı**).
+- Hiçbir veri satılmaz. Hiçbir veri reklam için ya da sizi diğer uygulama ve sitelerde izlemek için kullanılmaz. Uygulamada **reklam yoktur**, **reklam kimliği** ve **konum** kullanılmaz.
 - Uygulama **çocuklara yönelik değildir**.
 
 ## 3. Yalnızca cihazınızda tutulan veriler
-İlerleme, puanlar, seriler, joker envanteri, kelime defteri, istatistikler, ayarlar (dil, ses, titreşim, hatırlatıcı, günlük hedef) ve Pro durumu önbelleği. Bu verilere erişmeyiz. Uygulamayı silmek (veya uygulama verisini temizlemek) bunları siler. VERIFY: Google/Apple cihaz yedekleri, kendi yedekleme ayarlarınıza göre uygulama verisini kopyalayabilir.
+İlerleme, puanlar, seriler, joker envanteri, kelime defteri, istatistikler ve ayarlar (dil, ses, titreşim, hatırlatıcı, günlük hedef). Bu verilere erişmeyiz. Uygulamayı silmek (veya uygulama verisini temizlemek) bunları siler. Android'de cihazın kendi yedeği (örneğin Google yedeği), yedekleme ayarlarınıza göre uygulama verisini kopyalayabilir.
 
-## 4. Üçüncü taraf hizmetlerce işlenen veriler
-| Hizmet | Veri (genellikle) | Amaç | Hukuki sebep (VERIFY) |
+## 4. Firebase'e gönderilen veriler
+| Hizmet | Veri | Amaç | Ne zaman |
 |---|---|---|---|
-| Google AdMob | Reklam kimliği (GAID / izin verilirse IDFA), IP adresi, cihaz ve uygulama bilgisi, reklam etkileşimi | Ödüllü reklam gösterme ve ölçme, sahteciliği önleme | Açık rıza (KVKK m.5/1, m.6; GDPR m.6/1(a)) |
-| Google UMP | Onay tercihi, tercihi saklamak için gereken cihaz tanımlayıcıları | Rıza toplama ve kaydetme | Hukuki yükümlülük / meşru menfaat |
-| Firebase Analytics (**yalnızca onay verirseniz**) | Uygulama örnek kimliği, cihaz/işletim sistemi/uygulama sürümü, ülke düzeyinde konum, uygulama içi olaylar (uygulama açıldı, tanıtım bitti, seviye testi sonucu, oyun başladı/bitti — seviye, mod, doğru sayısı ve süre —, joker kullanıldı, paylaşım, hatırlatıcı açıldı; serbest metin yok). Reklam kimliği yok; reklam için kullanılmaz | Kullanımı anlama, uygulamayı geliştirme | Açık rıza (KVKK; GDPR m.6/1(a)); rızanızı istediğiniz zaman geri çekebilirsiniz |
-| Firebase Crashlytics | Çökme kayıtları, cihaz modeli/OS, uygulama sürümü, kurulum kimliği | Çökmeleri giderme, kararlılık | Meşru menfaat; VERIFY (rıza gerekir mi) |
-| RevenueCat | Anonim kullanıcı kimliği, satın alma/hak durumu, mağaza makbuz verisi, ülke | Lexi Pro satın almalarını doğrulama ve geri yükleme | Sözleşmenin ifası |
-| Apple / Google ödeme | Mağaza tarafından işlenir; kart bilgilerinizi görmeyiz | Satın alma ve iade | Sözleşmenin ifası |
+| Firebase Analytics | Rastgele bir uygulama örnek kimliği (iOS'ta ayrıca satıcı tanımlayıcısı), cihaz modeli, işletim sistemi ve uygulama sürümü, dil, ülke düzeyinde konum ve uygulama içi olaylar: uygulama açıldı, tanıtım bitti, seviye testi sonucu, oyun başladı/bitti (mod, seviye, doğru sayısı, süre), joker kullanıldı (tür), sonuç paylaşıldı, hatırlatıcı açıldı. Oturum ve ilk açılış sayımını Firebase kendisi yapar. Ad, serbest metin ya da reklam kimliği yoktur. | Uygulamanın nasıl kullanıldığını anlama ve geliştirme | **Yalnızca siz onaylarsanız**: son tanıtım adımındaki "Anonim kullanım istatistiklerini paylaş" kutusunu işaretlerseniz ya da **Ayarlar → Kullanım istatistikleri** anahtarını açarsanız. O zamana kadar hiçbir şey gönderilmez. Anahtarı istediğiniz zaman kapatabilirsiniz; toplama durur. |
+| Firebase Crashlytics | Çökme ve hata kayıtları, neyin başarısız olduğuna dair kısa sabit bir açıklama (sizin girdiğiniz metin asla), cihaz modeli, işletim sistemi sürümü, uygulama sürümü, çökme anındaki uygulama durumu ve rastgele bir kurulum kimliği | Çökmeleri bulma ve giderme, kararlılık | Mağaza sürümünde her zaman. Kullanım istatistikleri anahtarıyla kontrol edilmez. |
 
-Firebase ve AdMob Google LLC / Google Ireland Limited tarafından, RevenueCat ise RevenueCat, Inc. (ABD) tarafından kendi şartlarıyla işlenir. VERIFY: nihai SDK sürümleri ve veri işleme şartları.
+Firebase, Google LLC / Google Ireland Limited tarafından kendi şartlarıyla işletilir. Uygulama Google'a bağlandığında Google sunucuları bağlantının doğası gereği IP adresinizi alır.
 
-## 5. Reklam kimliği ve onay
-- Reklamlar **ödüllü**dür (joker kazanmak için izleyip izlemeyeceğinize siz karar verirsiniz). VERIFY: 1.0'da geçiş (interstitial) reklam varsa bu bölümü güncelleyin.
-- **Firebase Analytics varsayılan olarak kapalıdır.** Yalnızca son tanıtım adımındaki "Anonim kullanım istatistiklerini paylaş" kutusunu işaretlerseniz ya da **Ayarlar → Kullanım istatistikleri** anahtarını açarsanız veri toplar; istediğiniz zaman kapatabilirsiniz, kapatınca toplama durur. Firebase Crashlytics (çökme raporları) çökmeleri giderebilmemiz için her zaman çalışır. İkisi de reklam kimliğini kullanmaz ve reklam için kullanılmaz. Analiz verisi 2 ay saklanır.
-- Reklamlar eklendiğinde: AEA, Birleşik Krallık ve Türkiye'de (VERIFY kapsam) ilk açılışta onay formu (Google UMP) gösterilir; kişiselleştirilmiş reklamlar yalnızca tercihinize göre çalışır. Tercihinizi **Ayarlar → Gizlilik** bölümünden değiştirebilirsiniz. VERIFY: bu menü sürümde olmalıdır.
-- iOS'ta kişiselleştirilmiş reklam etkinse uygulama izleme izni (ATT) ister. VERIFY: bkz. `app-privacy-apple.md`.
-- Reklam kimliğinizi cihaz ayarlarından sıfırlayabilir veya silebilirsiniz. Kişiselleştirilmiş reklamı reddederseniz kişiselleştirilmemiş reklam görebilirsiniz.
-- Lexi Pro reklamları kaldırır.
+## 5. Yapmadıklarımız
+- Reklam kimliği okunmaz (Android'de reklam kimliği izni uygulamadan çıkarılmıştır; iOS'ta reklam tanımlayıcısı kullanılmaz ve uygulama izleme izni istemez).
+- Reklam kişiselleştirme ve reklam depolama, uygulamanın Firebase ayarlarında kapatılmıştır. Analytics verisi reklam hizmetleriyle paylaşılmaz ve reklam profili oluşturmak için kullanılmaz.
+- Uygulama konum izni istemez, kişileri, fotoğrafları ya da dosyaları okumaz, ses kaydetmez.
+- Hiçbir veri kimseye satılmaz veya kiralanmaz.
 
 ## 6. Bildirimler
-Günlük hatırlatıcıyı açarsanız bildirimler **cihazınızda yerel olarak** planlanır. 1.0'da push sunucusu kullanmayız. İzni sistem ayarlarından geri alabilirsiniz.
+Günlük hatırlatıcıyı açarsanız bildirimler **cihazınızda yerel olarak** planlanır. Push sunucusu kullanmayız. İzni sistem ayarlarından geri alabilirsiniz.
 
 ## 7. Saklama süresi
 - Cihazdaki veriler: uygulamayı veya verisini silene kadar.
-- Analiz/çökme verileri: Firebase ayarlarımıza göre Google tarafından saklanır (VERIFY: olay verisi için 2 veya 14 ay; Crashlytics yaklaşık 90 gün).
-- RevenueCat: silme talebi olmadıkça müşteri kaydı süresince. VERIFY.
-- Reklam verisi: Google politikalarına göre.
+- Firebase Analytics olay verisi: Firebase ayarlarımızda 2 ay saklanır, ardından Google tarafından silinir.
+- Crashlytics çökme verisi: Google tarafından yaklaşık 90 gün saklanır.
 
 ## 8. Yurt dışına aktarım
-Google ve RevenueCat verileri yurt dışında (ör. ABD) işleyebilir. Sağlayıcıların standart sözleşme maddeleri ve/veya yeterlilik mekanizmalarına dayanırız. VERIFY: KVKK m.9 (2024 değişikliği sonrası) ve GDPR Bölüm V.
+Google verileri yurt dışında (ör. ABD) işleyebilir. Google, standart sözleşme maddeleri ve/veya yeterlilik kararları gibi güvencelere dayanır.
 
-## 9. Haklarınız
-**KVKK m.11** uyarınca: verilerin işlenip işlenmediğini öğrenme, bilgi talep etme, amacını öğrenme, aktarılan üçüncü kişileri bilme, düzeltme/silme isteme, otomatik analiz sonucuna itiraz, zararın giderilmesini talep etme. **GDPR** uyarınca: erişim, düzeltme, silme, kısıtlama, taşınabilirlik, itiraz, rızayı dilediğiniz zaman geri çekme ve denetim otoritesine şikâyet. Başvuru: **talhabayhan.aps@gmail.com**; 30 gün içinde yanıtlarız (VERIFY: KVKK başvuru usulü, Veri Sorumlusuna Başvuru Usul ve Esasları Tebliği). Hesap ve oyun verisi tutmadığımız için reklam kimliğinizi / RevenueCat kullanıcı kimliğinizi (Ayarlar → Hakkında; VERIFY gösterilecek mi) istemek zorunda kalabiliriz. Google/RevenueCat'te tutulan veriye ilişkin talepler bu sağlayıcılara yönlendirilebilir. Şikâyet: Kişisel Verileri Koruma Kurumu (KVKK).
+## 9. Haklarınız ve silme talebi
+**KVKK m.11** uyarınca: verilerin işlenip işlenmediğini öğrenme, bilgi talep etme, amacını ve alıcıları öğrenme, düzeltme/silme isteme, sonuca itiraz, zararın giderilmesini talep etme. **GDPR** uyarınca: erişim, düzeltme, silme, kısıtlama, taşınabilirlik, itiraz, rızayı dilediğiniz zaman geri çekme ve denetim otoritesine şikâyet. Başvuru: **talhabayhan.aps@gmail.com**; 30 gün içinde yanıtlarız.
+- **Rızayı geri çekme:** Ayarlar → Kullanım istatistikleri anahtarını kapatın. Bu, sonraki analiz toplamasını durdurur.
+- **Silme:** bize e-posta yazın. Sizinle ilgili ad, e-posta ya da hesap tutmuyoruz; yukarıdaki kimlikler rastgeledir ve uygulamada gösterilmez, bu yüzden sizi tek başına bulamayız. Uygulamayı silmek toplamayı sonlandırır; Firebase veriyi 7. bölümdeki sürelerden sonra siler.
+- Kişisel Verileri Koruma Kurumu'na (KVKK) veya bulunduğunuz yerdeki denetim otoritesine de şikâyet edebilirsiniz.
 
 ## 10. Çocuklar
-Lexi **çocuklara yönelik değildir**; 13 yaşın (veya ülkenizdeki dijital rıza yaşının) altındaki çocuklardan bilerek kişisel veri toplamayız. VERIFY: Türkiye'de yaş eşiği ve reşit olmayanlar için açık rıza (veli onayı) konusu. Bir çocuğun veri verdiğini düşünüyorsanız bize yazın, silinmesine yardımcı oluruz. VERIFY: bkz. `app-privacy-apple.md` hedef kitle kararı.
+Lexi **çocuklara yönelik değildir**; 13 yaşın (veya ülkenizdeki dijital rıza yaşının) altındaki çocuklardan bilerek kişisel veri toplamayız. Bir çocuğun veri verdiğini düşünüyorsanız bize yazın, silinmesine yardımcı oluruz.
 
 ## 11. Güvenlik
-Uygulama ile üçüncü taraf hizmetler arasındaki aktarım HTTPS/TLS kullanır. Cihaz verisi uygulamanın özel alanında durur. Hiçbir yöntem tamamen güvenli değildir.
+Firebase'e gönderilen veri aktarım sırasında şifrelenir (HTTPS/TLS). Cihaz verisi uygulamanın özel alanında durur. Hiçbir yöntem tamamen güvenli değildir.
 
-## 12. Veri sorumlusu bilgileri (KVKK / GDPR)
-VERIFY: KVKK m.10 aydınlatma yükümlülüğü (sorumlunun kimliği, amaç, alıcılar, toplama yöntemi ve hukuki sebep, haklar) bu metinle karşılanıyor mu; VERBİS kayıt eşiği; AB'de yerleşik değilseniz GDPR m.27 temsilcisi.
-
-## 13. Değişiklikler
-Bu politikayı güncelleyebiliriz; yukarıdaki tarih değişir, önemli değişikliklerde uygulama içinde bildiririz.
+## 12. Değişiklikler
+Bu politikayı güncelleyebiliriz; yukarıdaki tarih değişir. Önemli değişikliklerde (ör. reklam ya da satın alma gibi yeni hizmetler) bunlar yürürlüğe girmeden önce uygulama içinde bildiririz.

@@ -54,7 +54,7 @@ LEXI PRO (optional)
 Available as a monthly or yearly subscription or a one-time lifetime purchase. Prices are shown in the app before you buy. Subscriptions renew automatically unless cancelled in your store account settings at least 24 hours before the period ends.
 
 PRIVACY
-Your progress stays on your device. The app uses ads and analytics services as described in our privacy policy, and asks for your consent where required.
+Your progress stays on your device. No account and no ads. Anonymous usage statistics are sent only if you agree (you can change this in Settings); crash reports help us fix bugs. Details in our privacy policy.
 
 The interface is available in Turkish and English.
 
