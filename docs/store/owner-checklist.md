@@ -59,6 +59,7 @@
 - [ ] Confirm Firebase "Granular location" is off; check iOS Crashlytics stack traces are symbolicated (app dSYM).
 
 ### Before the public release
+- [ ] Site still says "Yakında Google Play ve App Store'da": change it to the store link when each store goes live.
 - [ ] App Store Connect App Privacy per `app-privacy-apple.md` §0; Play Data safety already submitted.
 - [ ] Store listing TR/EN, screenshots.
 - [ ] Designs for the consent block, reminder sheet, level-test intro/result.

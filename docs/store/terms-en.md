@@ -11,27 +11,20 @@ We grant you a personal, non-exclusive, non-transferable, revocable licence to u
 ## 3. Content and accuracy
 Word clues, translations and example sentences are provided for learning. We aim for accuracy but do not guarantee it is error-free or suitable for any exam. The App is not affiliated with any exam body or institution. Report mistakes to talhabayhan.aps@gmail.com.
 
-## 4. Free use, ads and jokers
-The App is free to play. Rewarded ads are optional. Jokers and in-game items have no cash value and cannot be transferred.
+## 4. Free use and jokers
+The App is free to play. It contains no ads and no purchases or subscriptions. Jokers and in-game items have no cash value and cannot be transferred.
 
-## 5. Lexi Pro
-- **What it includes** (VERIFY against the final build): no ads, exam packs, daily joker refill, unlimited review wheels.
-- **Options:** monthly subscription, yearly subscription, and a one-time lifetime purchase. Prices and any free trial are shown in the App before purchase and are set in the store; they may vary by country and taxes.
-- **Payment:** charged to your Apple ID or Google Play account at confirmation.
-- **Auto-renewal:** subscriptions renew automatically at the same price (unless notified of a change) unless cancelled at least 24 hours before the current period ends. Manage or cancel in your store account settings (iOS: Settings → Apple ID → Subscriptions; Android: Google Play → Payments & subscriptions). Deleting the App does not cancel a subscription.
-- **Lifetime purchase:** a one-time payment for Pro features for as long as the App offers Pro, on the platform account used. VERIFY: define "lifetime" as lifetime of the product, not of the user; state that we may discontinue the App with reasonable notice.
-- **Restore purchases:** use **Settings → Restore purchases** on a new or reinstalled device, signed in to the same store account. Purchases are tied to the store account, not to a Lexi account.
-- **Refunds:** all payments and refunds are handled by Apple or Google under their policies; we cannot issue refunds directly. Request through the App Store (reportaproblem.apple.com) or Google Play order history. VERIFY: EU/TR statutory withdrawal rights for digital content — the store flow normally records the consumer's waiver on immediate delivery; Turkish Distance Contracts Regulation exemptions for digital content.
-- **Free trial/intro offers**, if any: unused portion is forfeited on purchase.
+## 5. Changes to paid features
+If we later add paid features, these Terms will be updated first and you will be told in the App before they take effect.
 
 ## 6. Acceptable use
-Do not cheat the App through tampering, automation, modified clients, or abuse of purchase/ad systems. Same-device duel is for personal, lawful use.
+Do not cheat the App through tampering, automation or modified clients. Same-device duel is for personal, lawful use.
 
 ## 7. Privacy
 See our Privacy Policy at https://talhabayhn.github.io/lexi/privacy.
 
 ## 8. Availability and changes
-The App works offline, but some features (ads, purchases, restore) need internet. We may update, change or discontinue features, with notice where reasonable. VERIFY: statutory update/availability duties for digital products (EU Directive 2019/770; Turkish Consumer Law No. 6502).
+The App works offline, but some features (such as optional analytics and crash reports) need internet. We may update, change or discontinue features, with notice where reasonable. VERIFY: statutory update/availability duties for digital products (EU Directive 2019/770; Turkish Consumer Law No. 6502).
 
 ## 9. Disclaimer and liability
 The App is provided "as is" to the extent permitted by law. We do not exclude liability that cannot be excluded by law (e.g. wilful misconduct, gross negligence, death or personal injury, mandatory consumer rights). Otherwise our total liability is limited to the amount you paid for the App in the 12 months before the claim. VERIFY: enforceability of limitation per jurisdiction.
