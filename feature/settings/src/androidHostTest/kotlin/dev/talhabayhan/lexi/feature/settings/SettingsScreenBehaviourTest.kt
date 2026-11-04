@@ -10,6 +10,7 @@ import androidx.compose.ui.test.ExperimentalTestApi
 import androidx.compose.ui.test.SemanticsMatcher
 import androidx.compose.ui.test.assert
 import androidx.compose.ui.test.assertAny
+import androidx.compose.ui.test.assertCountEquals
 import androidx.compose.ui.test.assertHasNoClickAction
 import androidx.compose.ui.test.assertHeightIsAtLeast
 import androidx.compose.ui.test.assertIsNotEnabled
@@ -308,6 +309,16 @@ class SettingsScreenBehaviourTest {
         listOf("Ses efektleri", "Titreşim", "Doğru cevapta telaffuzu çal").forEach { label ->
             onNodeWithText(label).assert(SemanticsMatcher.expectValue(SemanticsProperties.Role, Role.Switch))
         }
+    }
+
+    @Test
+    fun `release build without Pro has no restore purchases link`() = runComposeUiTest {
+        setContent {
+            LexiTheme(reducedMotion = true) { SettingsScreen(SettingsUiState(showProCard = false), onIntent = {}) }
+        }
+
+        onNodeWithText("Gizlilik").performScrollTo().assertExists()
+        onAllNodesWithText("Satın alımları geri yükle").assertCountEquals(0)
     }
 
     @Test
