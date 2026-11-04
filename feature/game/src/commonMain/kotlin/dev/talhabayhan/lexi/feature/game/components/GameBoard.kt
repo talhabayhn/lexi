@@ -20,6 +20,7 @@ import androidx.compose.ui.layout.onPlaced
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.Dp
 import dev.talhabayhan.lexi.core.designsystem.component.AnswerSlot
 import dev.talhabayhan.lexi.core.designsystem.component.AnswerSlotDefaults
@@ -41,6 +42,7 @@ import dev.talhabayhan.lexi.feature.game.AnswerCellUi
 import dev.talhabayhan.lexi.feature.game.GameClockUi
 import dev.talhabayhan.lexi.feature.game.KeyUi
 import dev.talhabayhan.lexi.feature.game.generated.resources.Res
+import dev.talhabayhan.lexi.feature.game.generated.resources.game_answer_delete
 import dev.talhabayhan.lexi.feature.game.generated.resources.game_answer_description
 import dev.talhabayhan.lexi.feature.game.generated.resources.game_answer_description_letters
 import dev.talhabayhan.lexi.feature.game.generated.resources.game_button_pause
@@ -141,12 +143,14 @@ internal fun AnswerSlots(
     height: Dp = AnswerSlotDefaults.Height,
     flyingCells: () -> Set<Int> = { emptySet() },
     onCellPlaced: (index: Int, coordinates: LayoutCoordinates) -> Unit = { _, _ -> },
+    deleteEnabled: Boolean = false,
+    onDelete: () -> Unit = {},
 ) {
     val flying = flyingCells()
     val firstFlying = flying.minOrNull()
     val description = answerDescription(words)
     BoxWithConstraints(
-        modifier = modifier.fillMaxWidth().clearAndSetSemantics { contentDescription = description },
+        modifier = modifier.fillMaxWidth().semantics { contentDescription = description },
         contentAlignment = Alignment.Center,
     ) {
         val cells = words.sumOf { it.size }
@@ -159,6 +163,7 @@ internal fun AnswerSlots(
         }
         val baseStyle = LexiTheme.typography.slotLetter
         val labels = rememberAnswerSlotLabels()
+        val deleteLabel = stringResource(Res.string.game_answer_delete)
         val textScale = minOf(slotWidth / AnswerSlotDefaults.Width, height / AnswerSlotDefaults.Height)
         val textStyle = if (textScale < 1f) {
             baseStyle.resized(baseStyle.fontSize * textScale)
@@ -180,13 +185,18 @@ internal fun AnswerSlots(
                             cellIndex in flying || cell.state == AnswerSlotState.Active -> AnswerSlotState.Empty
                             else -> cell.state
                         }
+                        val deletable = deleteEnabled && cell.deletable && firstFlying == null
                         AnswerSlot(
                             letter = cell.letter,
                             state = state,
-                            modifier = Modifier.width(slotWidth).onPlaced { onCellPlaced(cellIndex, it) },
+                            // The row speaks as one node (above); only the deletable cell is a node of its own.
+                            modifier = Modifier.width(slotWidth).onPlaced { onCellPlaced(cellIndex, it) }
+                                .then(if (deletable) Modifier else Modifier.clearAndSetSemantics {}),
                             textStyle = textStyle,
                             labels = labels,
                             height = height,
+                            onClick = if (deletable) onDelete else null,
+                            onClickLabel = if (deletable) deleteLabel else null,
                         )
                     }
                 }

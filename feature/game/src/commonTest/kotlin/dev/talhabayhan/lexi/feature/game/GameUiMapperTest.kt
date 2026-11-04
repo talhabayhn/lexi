@@ -108,6 +108,31 @@ class GameUiMapperTest {
     }
 
     @Test
+    fun `only the last typed letter is deletable and it moves back as letters are removed`() {
+        fun deletable(state: GameState) =
+            checkNotNull(GameUiMapper.map(state, engine).turn).words.single().map { it.deletable }
+
+        val typed = started().typed("APP")
+        assertEquals(listOf(false, false, true, false, false), deletable(typed))
+        val oneBack = typed.after(GameEvent.Backspace)
+        assertEquals(listOf(false, true, false, false, false), deletable(oneBack))
+        // Only the locked given letter is left: nothing to delete, exactly like Backspace.
+        assertEquals(List(5) { false }, deletable(oneBack.after(GameEvent.Backspace)))
+    }
+
+    @Test
+    fun `revealed letters are never deletable and no cell is deletable during the wrong answer reveal`() {
+        val pack = JokerInventory(mapOf(JokerType.REVEAL_LETTER to 1))
+        val revealed = started(jokers = pack).typed("A").after(GameEvent.UseJoker(JokerType.REVEAL_LETTER))
+        val cells = checkNotNull(GameUiMapper.map(revealed, engine).turn).words.single()
+        assertTrue(cells.none { it.deletable && it.state != AnswerSlotState.Filled })
+        assertTrue(cells.filter { it.state == AnswerSlotState.JokerFilled }.none { it.deletable })
+
+        val revealing = checkNotNull(GameUiMapper.map(started().typed("APPEL"), engine).turn)
+        assertTrue(revealing.words.single().none { it.deletable })
+    }
+
+    @Test
     fun `a contains slot shows its letter given at the first occurrence and the first cell active`() {
         val ui = GameUiMapper.map(started().after(GameEvent.Pass), engine)
 

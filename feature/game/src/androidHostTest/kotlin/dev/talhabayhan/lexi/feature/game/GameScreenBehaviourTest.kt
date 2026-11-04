@@ -64,6 +64,40 @@ import kotlin.test.assertTrue
 @Config(sdk = [36], qualifiers = "tr-w390dp-h844dp-xhdpi")
 class GameScreenBehaviourTest {
 
+    private val deleteAction = SemanticsMatcher("has the Sil click action") {
+        it.config.getOrNull(SemanticsActions.OnClick)?.label == "Sil"
+    }
+
+    @Test
+    fun `tapping the last typed letter sends Backspace and no other box is tappable`() = runComposeUiTest {
+        val intents = mutableListOf<GameIntent>()
+        setContent {
+            LexiTheme(reducedMotion = true) {
+                GameScreen(GameSamples.design, clock = { GameSamples.designClock }, onIntent = { intents += it })
+            }
+        }
+
+        // "KIT": only the T (index 2) carries the "Sil" click action.
+        onAllNodes(deleteAction).assertCountEquals(1)
+        onNode(deleteAction).assertContentDescriptionEquals("T").performClick()
+        assertEquals(listOf<GameIntent>(GameIntent.Backspace), intents.filter { it == GameIntent.Backspace })
+    }
+
+    @Test
+    fun `no answer box is tappable while input is blocked`() = runComposeUiTest {
+        setContent {
+            LexiTheme(reducedMotion = true) {
+                GameScreen(
+                    GameSamples.design.copy(inputEnabled = false),
+                    clock = { GameSamples.designClock },
+                    onIntent = {},
+                )
+            }
+        }
+
+        onAllNodes(deleteAction).assertCountEquals(0)
+    }
+
     /** Regression (review of 30c4bbf): `inputEnabled` was mapped but the controls stayed tappable during a reveal. */
     @Test
     fun `keys and backspace and pass and joker are disabled during the reveal`() = runComposeUiTest {
@@ -345,10 +379,13 @@ class GameScreenBehaviourTest {
         setGame(GameSamples.design)
 
         val controls = onAllNodes(hasClickAction()).fetchSemanticsNodes()
-        // Pause, 10 keys, joker, backspace, PAS.
-        assertEquals(14, controls.size)
+        // Pause, 10 keys, joker, backspace, PAS, and the last typed answer box (a shortcut of backspace that keeps the
+        // design's box size, so it is not held to the minimum).
+        assertEquals(15, controls.size)
         val min = with(density) { DefaultLexiDimens.minTouchTarget.toPx() }
-        controls.forEach { node ->
+        controls.filter {
+            SemanticsActions.OnClick !in it.config || it.config[SemanticsActions.OnClick].label != "Sil"
+        }.forEach { node ->
             val size = node.size
             assertTrue(size.width >= min && size.height >= min, "${node.config} is ${size.width} x ${size.height}")
         }

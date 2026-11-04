@@ -49,7 +49,7 @@ internal object GameSamples {
                     // STARTS slot: the slot letter is given in the first box (GAME_RULES.md §3).
                     index == 0 -> AnswerCellUi(letter, AnswerSlotState.Given)
 
-                    index < TYPED -> AnswerCellUi(letter, AnswerSlotState.Filled)
+                    index < TYPED -> AnswerCellUi(letter, AnswerSlotState.Filled, deletable = index == TYPED - 1)
 
                     index == TYPED -> AnswerCellUi(null, AnswerSlotState.Active)
 

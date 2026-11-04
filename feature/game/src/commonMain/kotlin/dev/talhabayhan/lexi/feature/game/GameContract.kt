@@ -110,7 +110,12 @@ internal data class GameTurnUi(
 )
 
 @Immutable
-internal data class AnswerCellUi(val letter: Char?, val state: AnswerSlotState)
+internal data class AnswerCellUi(
+    val letter: Char?,
+    val state: AnswerSlotState,
+    /** The last typed letter: the only cell a tap deletes (what Backspace removes); locked cells never are. */
+    val deletable: Boolean = false,
+)
 
 @Immutable
 internal data class KeyUi(val letter: Char, val state: LetterKeyState)

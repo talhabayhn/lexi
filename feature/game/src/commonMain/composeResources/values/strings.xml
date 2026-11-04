@@ -2,6 +2,7 @@
     <!-- HUD and actions (04-game) -->
     <string name="game_button_pause">Pause</string>
     <string name="game_button_joker">Use joker</string>
+    <string name="game_answer_delete">Delete</string>
     <string name="game_button_backspace">Delete letter</string>
     <string name="game_button_pass">PASS</string>
     <!-- motion.md #7: combo badge at streak 3, 5 and 10 (15-motion: "×3 SERİ"). -->

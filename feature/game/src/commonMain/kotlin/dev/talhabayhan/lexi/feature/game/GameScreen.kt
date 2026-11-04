@@ -228,6 +228,8 @@ private fun GameContent(
                     height = layout.slotHeight,
                     flyingCells = motion::flyingCells,
                     onCellPlaced = motion::onCellPlaced,
+                    deleteEnabled = state.inputEnabled || state.isStarting,
+                    onDelete = { onIntent(GameIntent.Backspace) },
                     modifier = Modifier.testTag(GameTestTags.ANSWER),
                 )
             }

@@ -122,6 +122,7 @@ internal object GameUiMapper {
         val input = state.currentInput ?: return null
         val answer = card.answer.replace(" ", "")
         val firstEmpty = input.cells.indexOf(null)
+        val lastTyped = input.placementOrder.lastOrNull()
         val cells = input.cells.mapIndexed { index, placed ->
             when {
                 state.isRevealing -> AnswerCellUi(answer[index], AnswerSlotState.Wrong)
@@ -129,7 +130,7 @@ internal object GameUiMapper {
                 placed == null -> AnswerCellUi(null, AnswerSlotState.Empty)
                 placed.given -> AnswerCellUi(placed.letter, AnswerSlotState.Given)
                 placed.revealed -> AnswerCellUi(placed.letter, AnswerSlotState.JokerFilled)
-                else -> AnswerCellUi(placed.letter, AnswerSlotState.Filled)
+                else -> AnswerCellUi(placed.letter, AnswerSlotState.Filled, deletable = index == lastTyped)
             }
         }
         return GameTurnUi(
