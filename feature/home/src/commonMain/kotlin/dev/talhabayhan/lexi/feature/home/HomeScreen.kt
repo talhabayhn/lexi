@@ -488,7 +488,11 @@ private fun MenuGrid(state: HomeUiState, onIntent: (HomeIntent) -> Unit, metrics
         { modifier ->
             MenuTile(
                 title = titles[3],
-                subtitle = stringResource(Res.string.home_tile_exams_subtitle),
+                subtitle = if (state.examPackNames.isEmpty()) {
+                    stringResource(Res.string.home_tile_exams_subtitle)
+                } else {
+                    state.examPackNames.joinToString(" · ")
+                },
                 marker = DecorShapeKind.Diamond,
                 markerColor = colors.yellow,
                 onClick = { onIntent(HomeIntent.OpenExamPacks) },
@@ -581,6 +585,7 @@ internal val HomeSampleState = HomeUiState(
     learnedWords = 412,
     dailyDay = 14,
     dailyMonth = 10,
+    examPackNames = listOf("LGS"),
 )
 
 @Preview(widthDp = 390, heightDp = 844)

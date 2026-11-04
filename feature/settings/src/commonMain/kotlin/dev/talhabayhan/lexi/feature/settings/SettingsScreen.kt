@@ -249,6 +249,7 @@ private fun SettingsPage(state: SettingsUiState, onIntent: (SettingsIntent) -> U
             )
         }
         SettingsFooter(
+            showRestore = state.showProCard,
             onOpenAbout = { onIntent(SettingsIntent.OpenAbout) },
             onOpenPrivacy = { onIntent(SettingsIntent.OpenPrivacy) },
             onOpenTerms = { onIntent(SettingsIntent.OpenTerms) },
@@ -257,7 +258,12 @@ private fun SettingsPage(state: SettingsUiState, onIntent: (SettingsIntent) -> U
 }
 
 @Composable
-private fun SettingsFooter(onOpenAbout: () -> Unit, onOpenPrivacy: () -> Unit, onOpenTerms: () -> Unit) {
+private fun SettingsFooter(
+    showRestore: Boolean,
+    onOpenAbout: () -> Unit,
+    onOpenPrivacy: () -> Unit,
+    onOpenTerms: () -> Unit,
+) {
     FlowRow(
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.Center,
@@ -282,10 +288,13 @@ private fun SettingsFooter(onOpenAbout: () -> Unit, onOpenPrivacy: () -> Unit, o
             text = stringResource(Res.string.settings_footer_terms),
             onClick = onOpenTerms,
         )
-        FooterSeparator()
-        FooterStatic(
-            text = stringResource(Res.string.settings_footer_restore),
-        )
+        // No purchases exist in a release build (v1.0 is free), so there is nothing to restore.
+        if (showRestore) {
+            FooterSeparator()
+            FooterStatic(
+                text = stringResource(Res.string.settings_footer_restore),
+            )
+        }
     }
 }
 

@@ -55,7 +55,7 @@
     <string name="home_tile_practice">Pratik modu</string>
     <string name="home_tile_practice_subtitle">Süresiz, baskısız</string>
     <string name="home_tile_exams">Sınav paketleri</string>
-    <string name="home_tile_exams_subtitle">LGS · YKS-Dil · YDS</string>
+    <string name="home_tile_exams_subtitle">Sınav kelime listeleri</string>
 
     <!-- Günlük hedef ilerleme rozeti -->
     <string name="home_daily_goal_progress">Bugün %1$d/%2$d</string>

@@ -58,6 +58,8 @@ internal data class HomeUiState(
     val dailyGoalProgress: DailyGoalProgress? = null,
     /** Daily joker gift notice (toast) when GrantDailyJokers gives a gift or streak bonus. */
     val dailyGiftNotice: DailyGiftNotice? = null,
+    /** Names of the exam packs playable in this build, in display order; the "Sınav paketleri" tile lists them. */
+    val examPackNames: List<String> = emptyList(),
 )
 
 internal sealed interface HomeIntent {

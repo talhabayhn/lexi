@@ -33,13 +33,14 @@ GAME MODES
 • Hardcore – one mistake ends the game
 • Daily Wheel – a new wheel every day, the same for everyone
 • Review Wheel – replay the words you need to practise
-• Same-device duel – take turns with a friend on one phone
 
 LEARN, NOT JUST PLAY
 • Review list at the end of every game
 • Personal word notebook with spaced repetition
+• LGS exam word pack (8th grade English), unit by unit
 • Listen to pronunciation with your device's text-to-speech voice
 • Stats: learned words, accuracy, streaks, weekly progress, hardest letters
+• Daily goal, optional daily and review reminders, and a share card for your results
 
 JOKERS
 Stuck? Use a joker: reveal a letter, remove distractor keys, see an example sentence or listen to the word. Earn jokers daily and with streaks.
@@ -61,7 +62,7 @@ https://talhabayhn.github.io/lexi
 
 **What's new (v1.0)**
 ```
-Welcome to Lexi! Play the A–Z word wheel in six levels, practise offline, take on the daily wheel and challenge a friend on the same device.
+Welcome to Lexi! Play the A–Z word wheel in six levels, practise offline, take on the daily wheel and share your results.
 ```
 
 ## App Store
@@ -78,7 +79,7 @@ Learn words, A to Z
 
 **Promotional text (≤170)**
 ```
-A new Daily Wheel every day. Turkish clues, English answers, six levels from A1 to native. Play offline, keep your streak and challenge a friend.
+A new Daily Wheel every day. Turkish clues, English answers, six levels from A1 to native. Play offline, keep your streak and share your score.
 ```
 
 **Description**
@@ -99,13 +100,14 @@ GAME MODES
 • Hardcore – one mistake ends the game
 • Daily Wheel – a new wheel every day, the same for everyone
 • Review Wheel – replay the words you need to practise
-• Same-device duel – take turns with a friend on one iPhone
 
 LEARN, NOT JUST PLAY
 • Review list at the end of every game
 • Personal word notebook with spaced repetition
+• LGS exam word pack (8th grade English), unit by unit
 • Listen to pronunciation with your device's speech voice
 • Stats: learned words, accuracy, streaks, weekly progress, hardest letters
+• Daily goal, optional daily and review reminders, and a share card for your results
 
 JOKERS
 Stuck? Use a joker: reveal a letter, remove distractor keys, see an example sentence or listen to the word. Earn jokers daily and with streaks.
@@ -125,7 +127,7 @@ Questions or feedback: talhabayhan.aps@gmail.com
 
 **Keywords (≤100 incl. commas)**
 ```
-vocabulary,word game,learn english,words,quiz,alphabet,offline,flashcards,letters,clues,study,cefr
+vocabulary,word game,cefr,flashcards,offline,letters,clues,spaced repetition,notebook,turkish,lgs
 ```
 
 **What's new (v1.0)**: same text as Google Play.
@@ -133,6 +135,7 @@ vocabulary,word game,learn english,words,quiz,alphabet,offline,flashcards,letter
 **Support URL**: https://talhabayhn.github.io/lexi/support · **Marketing URL**: https://talhabayhn.github.io/lexi · **Copyright**: © 2026 Hüseyin Talha Bayhan
 
 ## Notes
-- v1.0 is free: no ads, no Pro, no subscriptions, no exam packs in the listing (flag `FeatureFlags.proEnabled` is off in release). Re-add the Pro/ad text only together with those features.
-- VERIFY: all shipped features (daily wheel, same-device duel, notebook) exist in the v1.0 build before submission. Remove any that slip.
+- v1.0 is free: no ads, no Pro, no subscriptions, only the free LGS pack (flag `FeatureFlags.proEnabled` is off in release). Re-add the Pro/ad text only together with those features.
+- Audited against the release build in `submission-audit.md`. Same-device duel is NOT in v1.0 (no entry point; M8) — do not list it until it ships.
+- Apple keywords must not repeat words of the name/subtitle (name: english, alphabet, quiz; subtitle: learn, words).
 - `docs/PRODUCT.md` store-positioning title uses a prohibited word; this listing uses the neutral titles above (see `owner-checklist.md`).

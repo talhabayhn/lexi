@@ -1,6 +1,7 @@
 package dev.talhabayhan.lexi.feature.home
 
 import app.cash.turbine.test
+import dev.talhabayhan.lexi.core.domain.config.FeatureFlags
 import dev.talhabayhan.lexi.core.domain.daily.GetDailyWheel
 import dev.talhabayhan.lexi.core.domain.game.GameConfig
 import dev.talhabayhan.lexi.core.domain.game.GameMode
@@ -22,6 +23,7 @@ import dev.talhabayhan.lexi.core.testing.FakeAppClock
 import dev.talhabayhan.lexi.core.testing.FakeCardRepository
 import dev.talhabayhan.lexi.core.testing.FakeContentVersionRepository
 import dev.talhabayhan.lexi.core.testing.FakeDailyRepository
+import dev.talhabayhan.lexi.core.testing.FakeExamPackRepository
 import dev.talhabayhan.lexi.core.testing.FakeJokerRepository
 import dev.talhabayhan.lexi.core.testing.FakeNotificationPermission
 import dev.talhabayhan.lexi.core.testing.FakeProgressRepository
@@ -29,6 +31,7 @@ import dev.talhabayhan.lexi.core.testing.FakeSessionRepository
 import dev.talhabayhan.lexi.core.testing.FakeSettingsRepository
 import dev.talhabayhan.lexi.core.testing.FakeStreakRepository
 import dev.talhabayhan.lexi.core.testing.testAlphabetPool
+import dev.talhabayhan.lexi.core.testing.testExamPack
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.TestScope
@@ -60,6 +63,7 @@ class HomeViewModelTest {
     private val getDailyWheel = GetDailyWheel(cards, contentVersion, daily, clock)
     private val getDailyGoalProgress = GetDailyGoalProgress(sessions, settings, clock)
     private val grantDailyJokers = GrantDailyJokers(jokers, streaks, clock, GameConfig())
+    private val examPacks = FakeExamPackRepository()
     private val permission = FakeNotificationPermission(PermissionStatus.CAN_ASK)
     private val shouldShowPrePrompt = ShouldShowReminderPrePrompt(settings, sessions, permission)
 
@@ -83,6 +87,8 @@ class HomeViewModelTest {
         getDailyGoalProgress,
         grantDailyJokers,
         shouldShowPrePrompt,
+        examPacks,
+        FeatureFlags(),
     )
 
     private fun runHomeTest(block: suspend TestScope.() -> Unit) = runTest {
@@ -102,6 +108,16 @@ class HomeViewModelTest {
             assertEquals(15, state.dailyDay)
             assertEquals(10, state.dailyMonth)
             assertEquals(DailyCardState.Available, state.dailyState)
+        }
+    }
+
+    @Test
+    fun `exam tile lists only packs playable in this build`() = runHomeTest {
+        examPacks.packs = listOf(testExamPack("lgs", sort = 0), testExamPack("yds", isPro = true, sort = 1))
+        viewModel().state.test {
+            var state = awaitItem()
+            while (state.examPackNames.isEmpty()) state = awaitItem()
+            assertEquals(listOf("lgs"), state.examPackNames)
         }
     }
 
@@ -265,6 +281,8 @@ class HomeViewModelTest {
             GetDailyGoalProgress(sessions, settings, dstClock),
             GrantDailyJokers(jokers, streaks, dstClock, GameConfig()),
             shouldShowPrePrompt,
+            examPacks,
+            FeatureFlags(),
         )
         vm.state.test {
             val state = awaitItem()

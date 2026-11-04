@@ -33,13 +33,14 @@ OYUN MODLARI
 • Hardcore – tek hatada oyun biter
 • Günün Çarkı – her gün yeni çark, herkes için aynı
 • Tekrar Çarkı – pratik yapman gereken kelimeleri yeniden oyna
-• Aynı cihazda düello – arkadaşınla tek telefonda sırayla oynayın
 
 SADECE OYNAMA, ÖĞREN
 • Her oyunun sonunda tekrar listesi
 • Aralıklı tekrarlı kişisel kelime defteri
+• LGS İngilizce kelime paketi (8. sınıf), ünite ünite
 • Cihazınızın metin okuma sesiyle telaffuzu dinleyin
 • İstatistikler: öğrenilen kelimeler, doğruluk, seri, haftalık ilerleme, en zor harfler
+• Günlük hedef, isteğe bağlı günlük ve tekrar hatırlatıcıları, sonuçların için paylaşım kartı
 
 JOKERLER
 Takıldınız mı? Joker kullanın: harf aç, çeldirici tuşları temizle, örnek cümleyi gör ya da kelimeyi dinle. Jokerleri her gün ve seri yaparak kazanın.
@@ -61,7 +62,7 @@ https://talhabayhn.github.io/lexi
 
 **Yenilikler (v1.0)**
 ```
-Lexi'ye hoş geldiniz! Altı seviyede A–Z kelime çarkını oynayın, çevrimdışı çalışın, Günün Çarkı'na katılın ve aynı cihazda arkadaşınıza meydan okuyun.
+Lexi'ye hoş geldiniz! Altı seviyede A–Z kelime çarkını oynayın, çevrimdışı çalışın, Günün Çarkı'na katılın ve sonuçlarınızı paylaşın.
 ```
 
 ## App Store
@@ -78,7 +79,7 @@ A'dan Z'ye kelime öğren
 
 **Tanıtım metni (≤170)**
 ```
-Her gün yeni bir Günün Çarkı. Türkçe ipuçları, İngilizce cevaplar, A1'den ana dile altı seviye. Çevrimdışı oyna, serini koru, arkadaşına meydan oku.
+Her gün yeni bir Günün Çarkı. Türkçe ipuçları, İngilizce cevaplar, A1'den ana dile altı seviye. Çevrimdışı oyna, serini koru, skorunu paylaş.
 ```
 
 **Açıklama**
@@ -99,13 +100,14 @@ OYUN MODLARI
 • Hardcore – tek hatada oyun biter
 • Günün Çarkı – her gün yeni çark, herkes için aynı
 • Tekrar Çarkı – pratik yapman gereken kelimeleri yeniden oyna
-• Aynı cihazda düello – arkadaşınla tek iPhone'da sırayla oynayın
 
 SADECE OYNAMA, ÖĞREN
 • Her oyunun sonunda tekrar listesi
 • Aralıklı tekrarlı kişisel kelime defteri
+• LGS İngilizce kelime paketi (8. sınıf), ünite ünite
 • Cihazınızın konuşma sesiyle telaffuzu dinleyin
 • İstatistikler: öğrenilen kelimeler, doğruluk, seri, haftalık ilerleme, en zor harfler
+• Günlük hedef, isteğe bağlı günlük ve tekrar hatırlatıcıları, sonuçların için paylaşım kartı
 
 JOKERLER
 Takıldınız mı? Joker kullanın: harf aç, çeldirici tuşları temizle, örnek cümleyi gör ya da kelimeyi dinle. Jokerleri her gün ve seri yaparak kazanın.
@@ -125,7 +127,7 @@ Soru ve geri bildirim: talhabayhan.aps@gmail.com
 
 **Anahtar kelimeler (≤100, virgüller dahil)**
 ```
-kelime,ingilizce,öğren,oyun,sözcük,bilgi yarışması,alfabe,harf,çevrimdışı,defter,quiz,eğitim,cefr
+oyun,sözcük,bilgi yarışması,alfabe,harf,çevrimdışı,defter,quiz,eğitim,cefr,lgs,tekrar,sınav
 ```
 
 **Yenilikler (v1.0)**: Google Play ile aynı metin.
@@ -133,6 +135,6 @@ kelime,ingilizce,öğren,oyun,sözcük,bilgi yarışması,alfabe,harf,çevrimdı
 **Destek URL**: https://talhabayhn.github.io/lexi/support · **Pazarlama URL**: https://talhabayhn.github.io/lexi · **Telif**: © 2026 Hüseyin Talha Bayhan
 
 ## Notlar
-- Apple, ad/alt başlıkta geçen kelimeleri anahtar kelimelerde tekrar saymaz; "ingilizce", "kelime" başlıkta da var — VERIFY: tekrarı kaldırıp yeni terim ekleyin (ör. "tekrar", "defter").
-- v1.0 ücretsizdir: listede reklam, Pro, abonelik ve sınav paketi yok (`FeatureFlags.proEnabled` release'te kapalı). Bunları yalnızca özelliklerle birlikte geri ekleyin.
-- VERIFY: v1.0 yapısında olmayan özellikleri (günlük çark, düello, defter) gönderimden önce metinden çıkarın.
+- Anahtar kelimeler ad/alt başlıktaki sözcükleri (ingilizce, kelime, çark, öğren) tekrar etmez.
+- v1.0 ücretsizdir: reklam, Pro, abonelik yok; yalnızca ücretsiz LGS paketi var (`FeatureFlags.proEnabled` release'te kapalı). Bunları yalnızca özelliklerle birlikte geri ekleyin.
+- Release yapısına karşı denetim: `submission-audit.md`. Aynı cihazda düello v1.0'da YOK (giriş noktası yok; M8) — çıkana kadar listeye eklemeyin.

@@ -2,6 +2,7 @@ package dev.talhabayhan.lexi.feature.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import dev.talhabayhan.lexi.core.domain.config.FeatureFlags
 import dev.talhabayhan.lexi.core.domain.daily.DailyPlayState
 import dev.talhabayhan.lexi.core.domain.daily.GetDailyWheel
 import dev.talhabayhan.lexi.core.domain.goal.GetDailyGoalProgress
@@ -9,6 +10,7 @@ import dev.talhabayhan.lexi.core.domain.joker.GrantDailyJokers
 import dev.talhabayhan.lexi.core.domain.joker.JokerGrantReason
 import dev.talhabayhan.lexi.core.domain.reminder.ShouldShowReminderPrePrompt
 import dev.talhabayhan.lexi.core.domain.repository.DailyRepository
+import dev.talhabayhan.lexi.core.domain.repository.ExamPackRepository
 import dev.talhabayhan.lexi.core.domain.repository.ProgressRepository
 import dev.talhabayhan.lexi.core.domain.stats.Stats
 import dev.talhabayhan.lexi.core.domain.streak.GetStreakStatus
@@ -41,6 +43,8 @@ internal class HomeViewModel(
     getDailyGoalProgress: GetDailyGoalProgress,
     private val grantDailyJokers: GrantDailyJokers,
     private val shouldShowReminderPrePrompt: ShouldShowReminderPrePrompt,
+    private val examPacks: ExamPackRepository,
+    private val flags: FeatureFlags,
 ) : ViewModel() {
     private val mutableState = MutableStateFlow(HomeUiState())
     val state: StateFlow<HomeUiState> = mutableState.asStateFlow()
@@ -109,6 +113,19 @@ internal class HomeViewModel(
             }.collect { cardState ->
                 mutableState.update { it.copy(dailyState = cardState) }
             }
+        }
+
+        viewModelScope.launch {
+            // Only packs the player can open in this build (Pro packs stay out of release builds); a read failure keeps
+            // the generic subtitle.
+            val names = try {
+                examPacks.packs().filter { flags.proEnabled || !it.isPro }.map { it.name }
+            } catch (e: CancellationException) {
+                throw e
+            } catch (@Suppress("TooGenericExceptionCaught") e: Exception) {
+                emptyList()
+            }
+            mutableState.update { it.copy(examPackNames = names) }
         }
 
         viewModelScope.launch {

@@ -18,7 +18,7 @@ The App is free to play. It contains no ads and no purchases or subscriptions. J
 If we later add paid features, these Terms will be updated first and you will be told in the App before they take effect.
 
 ## 6. Acceptable use
-Do not cheat the App through tampering, automation or modified clients. Same-device duel is for personal, lawful use.
+Do not cheat the App through tampering, automation or modified clients.
 
 ## 7. Privacy
 See our Privacy Policy at https://talhabayhn.github.io/lexi/privacy.

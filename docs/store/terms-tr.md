@@ -18,7 +18,7 @@ Uygulama ücretsiz oynanır. Reklam, satın alma ve abonelik içermez. Jokerleri
 İleride ücretli özellikler eklenirse bu Koşullar önce güncellenir ve yürürlüğe girmeden önce Uygulama içinde bilgilendirilirsiniz.
 
 ## 6. Kabul edilebilir kullanım
-Müdahale, otomasyon, değiştirilmiş istemci yoluyla hile yapmayın. Aynı cihazda düello kişisel ve hukuka uygun kullanım içindir.
+Müdahale, otomasyon, değiştirilmiş istemci yoluyla hile yapmayın.
 
 ## 7. Gizlilik
 Gizlilik Politikamız: https://talhabayhn.github.io/lexi/privacy.

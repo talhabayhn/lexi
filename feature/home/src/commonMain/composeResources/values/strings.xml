@@ -55,7 +55,7 @@
     <string name="home_tile_practice">Practice mode</string>
     <string name="home_tile_practice_subtitle">Untimed, no pressure</string>
     <string name="home_tile_exams">Exam packs</string>
-    <string name="home_tile_exams_subtitle">LGS · YKS-Dil · YDS</string>
+    <string name="home_tile_exams_subtitle">Exam word lists</string>
 
     <!-- Daily goal progress chip -->
     <string name="home_daily_goal_progress">Today %1$d/%2$d</string>
