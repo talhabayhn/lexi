@@ -40,7 +40,7 @@
 ### App Store Connect
 1. Agreements, Tax, Banking (Paid Apps) complete.
 2. App Information: name, subtitle, category (Games → Word), privacy policy URL, license.
-3. Version page: promo text, description, keywords, support/marketing URL, what's new, screenshots, review notes, sign-in not required.
+3. Version page: promo text, description, keywords, support/marketing URL, what's new, screenshots, review notes, sign-in not required. **Screenshots: upload `docs/store/graphics/appstore/iphone-6.3/` (1206×2622); the 6.9" 1320×2868 files are rejected.**
 4. App Privacy (`app-privacy-apple.md` §1), Age Rating (§3), Export compliance (§6), IDFA/ATT answers.
 5. In-App Purchases/Subscriptions: SKIP for v1.0 (free). Later: group, localisations (TR, EN), prices, review screenshot of paywall.
 6. TestFlight external testing, then submit.

@@ -29,6 +29,7 @@ specifications" / "App preview specifications"):
     - Preview video: a YouTube URL only (public or unlisted, ads off) -> play/promo-video-*.mp4 to upload there.
   App Store (iPhone only: TARGETED_DEVICE_FAMILY = 1, so no iPad set is needed)
     - 6.9" display: 1320 x 2868 portrait (primary; Apple scales it down for smaller iPhones).
+    - 6.3" display: 1206 x 2622 portrait (the set App Store Connect's single iPhone slot accepts; upload this one).
     - 6.5" display: 1284 x 2778 portrait (only needed if 6.9" is missing; generated as a fallback).
     - 1-10 per localization, PNG/JPEG, RGB, no alpha.
     - App preview: 886 x 1920 portrait, 15-30 s, <= 30 fps, H.264 .mp4, <= 500 MB, up to 3 per localization.
@@ -58,6 +59,7 @@ SIZES = {
     "play/phone": (1080, 1920),
     "appstore/iphone-6.9": (1320, 2868),
     "appstore/iphone-6.5": (1284, 2778),
+    "appstore/iphone-6.3": (1206, 2622),
 }
 
 # (source, band colour, headline). "feature/<module>/<file>" = Roborazzi shot, "footage:<frame>" = footage frame,

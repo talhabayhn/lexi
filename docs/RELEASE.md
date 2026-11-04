@@ -167,6 +167,7 @@ Required sizes are listed in the `build.py` header.
 | `play/phone/{tr,en}-01…08.png` (1080×1920) | Play | same page → Phone screenshots (2–8, in this order) |
 | `play/promo-video-{tr,en}-1920x1080.mp4` | Play | upload to **YouTube** (Public or Unlisted, ads/monetisation off, embeddable), paste the video URL into Main store listing → Video |
 | `appstore/iphone-6.9/{tr,en}-01…08.png` (1320×2868) | App Store | App Store Connect → app → version page → Previews and Screenshots → iPhone 6.9" Display (per localization: Turkish / English) |
+| `appstore/iphone-6.3/{tr,en}-01…08.png` (1206×2622) | App Store | **upload set**: App Store Connect rejects the 1320×2868 files ("File dimensions are invalid") and accepts 1206×2622 in its single iPhone slot |
 | `appstore/iphone-6.5/…` (1284×2778) | App Store | only if App Store Connect asks for the 6.5" set |
 | `appstore/preview/{tr,en}-886x1920.mp4` | App Store | same section, drag into the 6.9" slot as App Preview (15–30 s, H.264, ≤ 500 MB). Optional: choose the poster frame |
 | `appstore/app-icon-1024.png` | App Store | not uploaded: the icon comes from the build (`iosApp/.../AppIcon.appiconset`); the file is for reference/marketing |
