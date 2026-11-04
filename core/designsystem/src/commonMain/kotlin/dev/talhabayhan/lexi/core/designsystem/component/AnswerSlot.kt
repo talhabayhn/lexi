@@ -16,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
@@ -119,6 +120,8 @@ public fun AnswerSlot(
     textStyle: TextStyle = LexiTheme.typography.slotLetter,
     height: Dp = AnswerSlotDefaults.Height,
     labels: AnswerSlotLabels? = null,
+    onClick: (() -> Unit)? = null,
+    onClickLabel: String? = null,
 ) {
     val colors = LexiTheme.colors
     val border = LexiTheme.borders.regular
@@ -132,14 +135,34 @@ public fun AnswerSlot(
     }
     val shown = letter?.takeIf { content != Color.Unspecified }?.toString()
     val resolvedLabels = labels ?: rememberAnswerSlotLabels()
-    Box(
-        modifier = modifier
-            .size(AnswerSlotDefaults.Width, height)
-            .clearAndSetSemantics { contentDescription = resolvedLabels.describe(shown.orEmpty(), state) }
-            .lexiSurface(fill, borderStroke),
-        contentAlignment = Alignment.Center,
-    ) {
-        if (shown != null) Text(shown, style = textStyle, color = content)
+    val description = resolvedLabels.describe(shown.orEmpty(), state)
+    if (onClick == null) {
+        Box(
+            modifier = modifier
+                .size(AnswerSlotDefaults.Width, height)
+                .clearAndSetSemantics { contentDescription = description }
+                .lexiSurface(fill, borderStroke),
+            contentAlignment = Alignment.Center,
+        ) {
+            if (shown != null) Text(shown, style = textStyle, color = content)
+        }
+    } else {
+        // Tappable (the last typed letter): same look, no shadow so the box does not move; press feedback and the light
+        // haptic come from PressableSurface.
+        PressableSurface(
+            onClick = onClick,
+            modifier = modifier
+                .size(AnswerSlotDefaults.Width, height)
+                .semantics(mergeDescendants = true) { contentDescription = description },
+            color = fill,
+            border = borderStroke,
+            shadow = null,
+            onClickLabel = onClickLabel,
+        ) {
+            if (shown != null) {
+                Text(shown, style = textStyle, color = content, modifier = Modifier.clearAndSetSemantics {})
+            }
+        }
     }
 }
 

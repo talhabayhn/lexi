@@ -35,13 +35,13 @@ public object LexiIcons {
     /** Play (filled triangle). */
     public val Play: ImageVector by lazy { filledIcon("Play", "M7 4v16l13-8z") }
 
-    /** Settings (hub with eight spokes). */
+    /** Settings (gear: toothed outline with a centre hole). */
     public val Settings: ImageVector by lazy {
         strokeIcon(
             "Settings",
-            2.4f,
-            "M8.5 12a3.5 3.5 0 1 0 7 0a3.5 3.5 0 1 0-7 0z",
-            "M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1",
+            2f,
+            "M10.3 3h3.4l.5 2.4 1.5.7 2.1-1.3 2.4 2.4-1.3 2.1.7 1.5 2.4.5v3.4l-2.4.5-.7 1.5 1.3 2.1-2.4 2.4-2.1-1.3-1.5.7-.5 2.4h-3.4l-.5-2.4-1.5-.7-2.1 1.3-2.4-2.4 1.3-2.1-.7-1.5L3 13.7v-3.4l2.4-.5.7-1.5-1.3-2.1 2.4-2.4 2.1 1.3 1.5-.7z",
+            "M9.5 12a2.5 2.5 0 1 0 5 0a2.5 2.5 0 1 0-5 0z",
         )
     }
 
