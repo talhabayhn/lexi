@@ -540,4 +540,47 @@ class HomeViewModelTest {
             assertEquals(null, vm.state.value.dailyGiftNotice)
         }
     }
+
+    @Test
+    fun `shown gift notice stays while visible and is gone after leaving and returning`() = runHomeTest {
+        val vm = viewModel()
+        vm.state.test {
+            assertEquals(DailyGiftNotice(DailyGiftNoticeType.Daily, 1), expectMostRecentItem().dailyGiftNotice)
+            vm.onIntent(HomeIntent.NoticeShown)
+            expectNoEvents()
+            assertEquals(DailyGiftNotice(DailyGiftNoticeType.Daily, 1), vm.state.value.dailyGiftNotice)
+
+            vm.onIntent(HomeIntent.Left)
+            assertEquals(null, expectMostRecentItem().dailyGiftNotice)
+
+            vm.onIntent(HomeIntent.Entered)
+            vm.onIntent(HomeIntent.Refresh)
+            assertEquals(null, vm.state.value.dailyGiftNotice)
+        }
+    }
+
+    @Test
+    fun `leaving before the notice was shown keeps it`() = runHomeTest {
+        val vm = viewModel()
+        vm.state.test {
+            expectMostRecentItem()
+            vm.onIntent(HomeIntent.Left)
+            assertEquals(DailyGiftNotice(DailyGiftNoticeType.Daily, 1), vm.state.value.dailyGiftNotice)
+        }
+    }
+
+    @Test
+    fun `next day gift shows again after the previous one was consumed`() = runHomeTest {
+        val vm = viewModel()
+        vm.state.test {
+            expectMostRecentItem()
+            vm.onIntent(HomeIntent.NoticeShown)
+            vm.onIntent(HomeIntent.Left)
+            assertEquals(null, expectMostRecentItem().dailyGiftNotice)
+
+            clock.advanceBy(clock.msUntilNextDay() + 1000L)
+            vm.onIntent(HomeIntent.Refresh)
+            assertEquals(DailyGiftNotice(DailyGiftNoticeType.Daily, 1), expectMostRecentItem().dailyGiftNotice)
+        }
+    }
 }

@@ -69,6 +69,12 @@ internal sealed interface HomeIntent {
     /** Dismisses the daily joker gift notice. */
     data object DismissNotice : HomeIntent
 
+    /** The gift toast is on screen: it counts as consumed once Home is left. */
+    data object NoticeShown : HomeIntent
+
+    /** Home stopped being resumed: a shown gift notice is dropped so it never re-appears. */
+    data object Left : HomeIntent
+
     /** The screen is in the foreground again: "today" may have changed since the last time. */
     data object Resumed : HomeIntent
 

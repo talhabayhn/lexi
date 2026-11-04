@@ -60,6 +60,7 @@ internal class HomeViewModel(
      */
     private var realGamesSeen: Int? = null
     private val entryMutex = Mutex()
+    private var noticeShown = false
 
     init {
         viewModelScope.launch {
@@ -179,6 +180,7 @@ internal class HomeViewModel(
                     else -> DailyGiftNoticeType.Daily
                 }
                 val amount = grants.size
+                noticeShown = false
                 mutableState.update { it.copy(dailyGiftNotice = DailyGiftNotice(type, amount)) }
             }
         } catch (@Suppress("TooGenericExceptionCaught") e: Exception) {
@@ -211,6 +213,14 @@ internal class HomeViewModel(
             HomeIntent.Entered -> onEntered()
 
             HomeIntent.DismissNotice -> {
+                noticeShown = false
+                mutableState.update { it.copy(dailyGiftNotice = null) }
+            }
+
+            HomeIntent.NoticeShown -> noticeShown = mutableState.value.dailyGiftNotice != null
+
+            HomeIntent.Left -> if (noticeShown) {
+                noticeShown = false
                 mutableState.update { it.copy(dailyGiftNotice = null) }
             }
 

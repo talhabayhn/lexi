@@ -11,6 +11,7 @@ import androidx.lifecycle.compose.currentStateAsState
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
+import kotlinx.coroutines.awaitCancellation
 import kotlinx.serialization.Serializable
 import org.koin.compose.viewmodel.koinViewModel
 
@@ -97,6 +98,20 @@ internal fun HomeRoute(
     }
     // A gift granted while Home is still entering (onboarding → Home) waits in the state and shows once resumed.
     val lifecycleState by lifecycleOwner.lifecycle.currentStateAsState()
+    // The gift counts as consumed once it is on screen; leaving Home drops it (a new day's gift shows again).
+    val hasNotice = state.dailyGiftNotice != null
+    LaunchedEffect(viewModel, lifecycleOwner, hasNotice) {
+        if (hasNotice) {
+            lifecycleOwner.repeatOnLifecycle(Lifecycle.State.RESUMED) {
+                viewModel.onIntent(HomeIntent.NoticeShown)
+                try {
+                    awaitCancellation()
+                } finally {
+                    viewModel.onIntent(HomeIntent.Left)
+                }
+            }
+        }
+    }
     HomeScreen(
         state = state,
         onIntent = viewModel::onIntent,
