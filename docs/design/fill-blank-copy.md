@@ -1,6 +1,6 @@
 # Fill the blank ("Boşluk doldurma") copy — screens 21–24 (PROPOSED)
 
-Status: **proposed, not approved.** Keys follow `feature_screen_element`; `{n}`, `{c}`, `{w}`, `{level}` are placeholders.
+Status: **proposed; owner decisions applied (see proposal §9).** Home tile keys (`home_tile_*`) are **LATER**, not v1. Keys follow `feature_screen_element`; `{n}`, `{c}`, `{w}`, `{level}` are placeholders.
 Existing keys to reuse are marked **reuse**. Length class: EN ≤ TR + 10 %. Max = characters that fit the design's width at the
 given size (labels are uppercase in the resource, never via `uppercase()`).
 
@@ -28,6 +28,7 @@ given size (labels are uppercase in the resource, never via `uppercase()`).
 | `result_play_again` | TEKRAR OYNA | PLAY AGAIN | 24 CTA | 12 | **reuse** |
 | `result_back_home` | Ana menüye dön | Back to home | 24 link | 18 | **reuse** |
 | `result_word_listen_a11y` | {word} telaffuzunu dinle | Listen to {word} | 24 row speaker | — | **reuse** |
+| `stats_fillblank_rounds` | Boşluk turları | Blank rounds | stats card row (needs design) | 16 | value = finished rounds; 0 until one is played |
 | `settings_fillblank_*` | — | — | — | — | none: no settings in v1 |
 | `leveltest_*`/`pause_*` | — | — | — | — | pause dialog, "Pes et", errors: **reuse** unchanged |
 | `fillblank_empty` | Bu seviyede henüz yeterli cümle yok. | Not enough sentences at this level yet. | `EmptyState` when < 10 usable cards / < 10 letters | 44 | secondary action "Geri dön" (**reuse**) |
