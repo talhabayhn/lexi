@@ -1,6 +1,6 @@
 # Lexi — Gizlilik Politikası ve KVKK Aydınlatma Metni
 
-**Son güncelleme:** 3 Kasım 2026 · **Kapsam:** Android ve iOS için Lexi uygulaması, 1.0.5 ve sonrası sürümler (uygulama kimliği `dev.talhabayhan.lexi`)
+**Son güncelleme:** 7 Kasım 2026 · **Kapsam:** Android ve iOS için Lexi uygulaması, 1.0.5 ve sonrası sürümler (uygulama kimliği `dev.talhabayhan.lexi`)
 
 ## 1. Veri sorumlusu
 Veri sorumlusu **Hüseyin Talha Bayhan**'dır ("biz"). İletişim: **talhabayhan.aps@gmail.com** · **https://talhabayhn.github.io/lexi**.
@@ -18,7 +18,7 @@ Veri sorumlusu **Hüseyin Talha Bayhan**'dır ("biz"). İletişim: **talhabayhan
 ## 4. Firebase'e gönderilen veriler
 | Hizmet | Veri | Amaç | Ne zaman |
 |---|---|---|---|
-| Firebase Analytics | Rastgele bir uygulama örnek kimliği (iOS'ta ayrıca satıcı tanımlayıcısı), cihaz modeli, işletim sistemi ve uygulama sürümü, dil, ülke düzeyinde konum ve uygulama içi olaylar: uygulama açıldı, tanıtım bitti, seviye testi sonucu, oyun başladı/bitti (mod, seviye, doğru sayısı, süre), joker kullanıldı (tür), sonuç paylaşıldı, hatırlatıcı açıldı. Oturum ve ilk açılış sayımını Firebase kendisi yapar. Ad, serbest metin ya da reklam kimliği yoktur. | Uygulamanın nasıl kullanıldığını anlama ve geliştirme | **Yalnızca siz onaylarsanız**: son tanıtım adımındaki "Anonim kullanım istatistiklerini paylaş" kutusunu işaretlerseniz ya da **Ayarlar → Kullanım istatistikleri** anahtarını açarsanız. O zamana kadar hiçbir şey gönderilmez. Anahtarı istediğiniz zaman kapatabilirsiniz; toplama durur. |
+| Firebase Analytics | Rastgele bir uygulama örnek kimliği (iOS'ta ayrıca satıcı tanımlayıcısı), cihaz modeli, işletim sistemi ve uygulama sürümü, dil, ülke düzeyinde konum ve uygulama içi olaylar: uygulama açıldı, tanıtım bitti, seviye testi sonucu, oyun başladı/bitti (mod, seviye, doğru sayısı, süre), joker kullanıldı (tür), sonuç paylaşıldı, hatırlatıcı açıldı, aynı cihazda düello başladı (süre) ve bitti (galibiyet, beraberlik ya da pes; oyuncu adları asla) ve mağazanın puanlama isteğinin yapıldığı (puan ve yanıt yok). Oturum ve ilk açılış sayımını Firebase kendisi yapar. Ad, serbest metin ya da reklam kimliği yoktur. | Uygulamanın nasıl kullanıldığını anlama ve geliştirme | **Yalnızca siz onaylarsanız**: son tanıtım adımındaki "Anonim kullanım istatistiklerini paylaş" kutusunu işaretlerseniz ya da **Ayarlar → Kullanım istatistikleri** anahtarını açarsanız. O zamana kadar hiçbir şey gönderilmez. Anahtarı istediğiniz zaman kapatabilirsiniz; toplama durur. |
 | Firebase Crashlytics | Çökme ve hata kayıtları, neyin başarısız olduğuna dair kısa sabit bir açıklama (sizin girdiğiniz metin asla), cihaz modeli, işletim sistemi sürümü, uygulama sürümü, çökme anındaki uygulama durumu ve rastgele bir kurulum kimliği | Çökmeleri bulma ve giderme, kararlılık | Mağaza sürümünde her zaman. Kullanım istatistikleri anahtarıyla kontrol edilmez. |
 
 Firebase, Google LLC / Google Ireland Limited tarafından kendi şartlarıyla işletilir. Uygulama Google'a bağlandığında Google sunucuları bağlantının doğası gereği IP adresinizi alır.
@@ -30,7 +30,9 @@ Firebase, Google LLC / Google Ireland Limited tarafından kendi şartlarıyla i�
 - Hiçbir veri kimseye satılmaz veya kiralanmaz.
 
 ## 6. Bildirimler
-Günlük hatırlatıcıyı açarsanız bildirimler **cihazınızda yerel olarak** planlanır. Push sunucusu kullanmayız. İzni sistem ayarlarından geri alabilirsiniz.
+Günlük hatırlatıcıyı açarsanız bildirimler **cihazınızda yerel olarak** planlanır. Push sunucusu kullanmayız. Günlük ve tekrar hatırlatıcıları bir kelimeyi ve anlamını gösterebilir (uygulamanın kendi kelime listesinden ve defterinizden cihazınızda seçilir; bu metin cihazdan çıkmaz). İzni sistem ayarlarından geri alabilirsiniz.
+
+Birkaç oyun bittikten sonra uygulama, mağazanın kendi puanlama penceresini göstermesini isteyebilir (Google Play In-App Review / Apple puanlama penceresi). Pencereyi mağaza gösterir ve yönetir; puanınızı ya da pencereyi görüp görmediğinizi almayız. Aynı cihazda düello tek telefonda oynanır, cihazlar arasında hiçbir şey göndermez; oyuncu adları yalnızca cihazda tutulur.
 
 ## 7. Saklama süresi
 - Cihazdaki veriler: uygulamayı veya verisini silene kadar.

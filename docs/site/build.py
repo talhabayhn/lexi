@@ -31,7 +31,7 @@ T = {
         "letter keys. Six levels, from A1 to native.",
         "features": [
             ("Six levels", "A1, A2, B1, B2, C1 and Native (idioms, phrasal verbs)."),
-            ("Game modes", "Classic, Practice, Hardcore, Daily Wheel and Review Wheel."),
+            ("Game modes", "Classic, Practice, Hardcore, Daily Wheel, Review Wheel and a same-device duel."),
             ("Learn, not just play", "Review list after every game, word notebook with spaced repetition, stats."),
             ("Works offline", "All words are stored on your device. No account needed."),
         ],
@@ -57,7 +57,7 @@ T = {
         "A1'den ana dil seviyesine altı seviye.",
         "features": [
             ("Altı seviye", "A1, A2, B1, B2, C1 ve Native (deyimler, phrasal verb'ler)."),
-            ("Oyun modları", "Klasik, Alıştırma, Hardcore, Günün Çarkı ve Tekrar Çarkı."),
+            ("Oyun modları", "Klasik, Alıştırma, Hardcore, Günün Çarkı, Tekrar Çarkı ve aynı cihazda düello."),
             ("Sadece oynama, öğren", "Her oyundan sonra tekrar listesi, aralıklı tekrarlı kelime defteri, istatistikler."),
             ("Çevrimdışı çalışır", "Tüm kelimeler cihazında saklanır. Hesap gerekmez."),
         ],

@@ -1,4 +1,4 @@
-# Privacy — facts from code and open VERIFY items (1.0.5)
+# Privacy — facts from code and open VERIFY items (1.0.5–1.0.10)
 
 Not published on the site. Owner reads this before the App Store submission and the Android production rollout.
 
@@ -16,7 +16,10 @@ Not published on the site. Owner reads this before the App Store submission and 
 | Android `allowBackup=true`, no backup rules. | `AndroidManifest.xml` |
 | No `PrivacyInfo.xcprivacy` in the app target. | `find` |
 
+| Rating request: Play In-App Review (`review` 2.0.2, no permission) / `SKStoreReviewController`; we never learn the rating; only `rating_prompt_requested` (opt-in). Duel events carry the clock and result type only. | `PlayReviewRequester.kt`, `IosReviewRequester.kt`, `RequestInAppReview.kt`, `DuelViewModel.kt` |
+
 ## Mismatches found and fixed
+0. (1.0.9/1.0.10 audit) Policy §4/§6 now list the duel and rating events, word reminders and the store rating prompt; submission audit duel row, owner checklist duel note and the website game-modes line were stale.
 1. Policy TR/EN described AdMob, UMP, RevenueCat, ATT and purchases that the binary does not contain; Crashlytics legal-basis column and many VERIFY notes were published on the site. Rewritten for the real binary, VERIFY notes moved here. The old text is in git history for when ads or purchases ship.
 2. `app-privacy-apple.md` §0 said Linked = No and listed IDFV as always collected; now ready-to-click, Linked = Yes (conservative), Tracking = No. §1–§2 marked FUTURE.
 3. `data-safety-google.md` §0 now a click table; Approximate location now declared conservatively (was "not declared"); §1–§5 marked FUTURE.

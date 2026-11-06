@@ -10,7 +10,7 @@
 | Classic / Practice / Hardcore | Yes | Yes |
 | Daily Wheel | Yes | Yes |
 | Review Wheel (from notebook) | Yes | Yes |
-| **Same-device duel** | **No** (no setup UI/entry point; ROADMAP M8 open) | Was claimed → **removed** (listings, what's new, promo text, terms, website) |
+| **Same-device duel** | Yes since 1.0.9 (Home entry) | Yes (listings); website line added 2026-11-07 |
 | Notebook with spaced repetition | Yes | Yes |
 | TTS pronunciation, accent setting | Yes | Yes |
 | Stats (learned, accuracy, streak, weekly, hardest letters) | Yes | Yes |
@@ -39,5 +39,5 @@
 ## 5. Owner must do by hand
 - App Store Connect: paste the new description, promo text, keywords, what's new (EN + TR) from `listing-*.md`; upload new screenshots from `docs/store/graphics/appstore/*` after the store-graphics run is committed.
 - Play Console: same text from the Play sections; replace phone screenshots and the promo videos if re-generated.
-- Re-publish the website (pages workflow) so the game-modes line and terms no longer mention the duel; terms text lives in `terms-*.md`.
+- Re-publish the website (pages workflow) so the privacy policy (duel and rating events, word reminders) and the game-modes line match 1.0.9/1.0.10.
 - App Privacy answers: no change.

@@ -1,12 +1,12 @@
 # Google Play — Data safety form (v1.0 draft)
 
-> DRAFT. Not legal advice. §0 matches the 1.0.5 binary; §1–§5 assume the planned SDKs (AdMob + UMP, Firebase Analytics + Crashlytics, RevenueCat, Play Billing) and apply only when they ship. **VERIFY every row against the final build's merged manifest and each SDK's current "Play data disclosure" guidance** (Google AdMob, Firebase, RevenueCat each publish one) before submitting. Play Console → App content → Data safety.
+> DRAFT. Not legal advice. §0 matches the 1.0.5–1.0.10 binaries; §1–§5 assume the planned SDKs (AdMob + UMP, Firebase Analytics + Crashlytics, RevenueCat, Play Billing) and apply only when they ship. **VERIFY every row against the final build's merged manifest and each SDK's current "Play data disclosure" guidance** (Google AdMob, Firebase, RevenueCat each publish one) before submitting. Play Console → App content → Data safety.
 
-## 0. Version 1.0.5 (Firebase Analytics + Crashlytics only) — USE THIS for Play Console → Data safety
+## 0. Versions 1.0.5–1.0.10 (Firebase Analytics + Crashlytics only) — USE THIS for Play Console → Data safety
 Facts (code): `androidApp/src/main/AndroidManifest.xml` (analytics collection `false`; Crashlytics follows `telemetryEnabled` = true for
 release; `AD_ID`, `ACCESS_ADSERVICES_AD_ID`, `ACCESS_ADSERVICES_ATTRIBUTION` removed; ad Consent Mode defaults denied),
 `ConsentGatedAnalyticsTracker`, `FirebaseTelemetry.kt`, ADR 0023. No AdMob, no Play Billing, no RevenueCat, no account, no location
-permission, no HTTP client of our own. §1–§5 below are the *future* full set and do **not** apply to this binary.
+permission, no HTTP client of our own. Added since 1.0.5, no change to the answers: same-device duel (events `duel_start`/`duel_finish`, no names), word reminders (local notifications only), Google Play In-App Review library `com.google.android.play:review` 2.0.2 (no permission added, no data collected by us; the event `rating_prompt_requested` is opt-in analytics). Release merged manifest permissions: INTERNET, ACCESS_NETWORK_STATE, WAKE_LOCK, VIBRATE, POST_NOTIFICATIONS, RECEIVE_BOOT_COMPLETED, Play install-referrer bind (Firebase), the app's own dynamic-receiver permission; no AD_ID. §1–§5 below are the *future* full set and do **not** apply to this binary.
 
 | Form question | Answer |
 |---|---|

@@ -1,6 +1,6 @@
 # Lexi — Privacy Policy
 
-**Last updated:** 3 November 2026 · **Applies to:** the Lexi app for Android and iOS, version 1.0.5 and later (app ID `dev.talhabayhan.lexi`)
+**Last updated:** 7 November 2026 · **Applies to:** the Lexi app for Android and iOS, version 1.0.5 and later (app ID `dev.talhabayhan.lexi`)
 
 ## 1. Who we are
 The data controller is **Hüseyin Talha Bayhan** ("we"). Contact: **talhabayhan.aps@gmail.com** · **https://talhabayhn.github.io/lexi**.
@@ -18,7 +18,7 @@ Progress, scores, streaks, joker inventory, word notebook, statistics and settin
 ## 4. Data sent to Firebase
 | Service | Data | Purpose | When |
 |---|---|---|---|
-| Firebase Analytics | A random app-instance ID (on iOS also the vendor identifier), device model, OS and app version, language, country-level location, and in-app events: app opened, onboarding finished, level test result, game started and finished (mode, level, correct answers, duration), joker used (type), result shared, reminder turned on. Sessions and first-open are counted by Firebase itself. No names, no free text, no advertising ID. | Understand how the app is used and improve it | **Only after you agree**: tick "Share anonymous usage statistics" on the last onboarding step, or turn on **Settings → Usage statistics**. Until then nothing is sent. Turn the switch off at any time and collection stops. |
+| Firebase Analytics | A random app-instance ID (on iOS also the vendor identifier), device model, OS and app version, language, country-level location, and in-app events: app opened, onboarding finished, level test result, game started and finished (mode, level, correct answers, duration), joker used (type), result shared, reminder turned on, same-device duel started (clock length) and finished (win, draw or forfeit; never the players' names), and that the store's rating request was made (no rating, no answer). Sessions and first-open are counted by Firebase itself. No names, no free text, no advertising ID. | Understand how the app is used and improve it | **Only after you agree**: tick "Share anonymous usage statistics" on the last onboarding step, or turn on **Settings → Usage statistics**. Until then nothing is sent. Turn the switch off at any time and collection stops. |
 | Firebase Crashlytics | Crash and error traces, a short fixed description of what failed (never your input), device model, OS version, app version, app state at the crash, and a random installation ID | Find and fix crashes, keep the app stable | In the store version of the app, always. It is not controlled by the usage-statistics switch. |
 
 Firebase is operated by Google LLC / Google Ireland Limited under its own terms. When the app contacts Google, Google's servers receive your IP address as part of the connection.
@@ -30,7 +30,9 @@ Firebase is operated by Google LLC / Google Ireland Limited under its own terms.
 - Nothing is sold or rented to anyone.
 
 ## 6. Notifications
-If you enable the daily reminder, notifications are scheduled **locally on your device**. We do not use push servers. Permission can be revoked in system settings.
+If you enable the daily reminder, notifications are scheduled **locally on your device**. We do not use push servers. Daily and review reminders can show a word and its meaning (chosen on your device from the app's own word list and your notebook; this text never leaves the device). Permission can be revoked in system settings.
+
+After several finished games the app may ask the store's own rating prompt to appear (Google Play In-App Review / Apple's rating prompt). The store shows and handles it; we do not receive your rating or whether you saw it. The same-device duel is played on one phone and sends nothing between devices; player names are kept on the device only.
 
 ## 7. Retention
 - On-device data: until you delete the app or its data.

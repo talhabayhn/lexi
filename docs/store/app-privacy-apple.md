@@ -2,11 +2,11 @@
 
 > DRAFT. Not legal advice. Re-verify against the final binary (SDK privacy manifests `PrivacyInfo.xcprivacy`) and Apple's current guidelines. Marked VERIFY = uncertain.
 
-## 0. Version 1.0.5 (Firebase Analytics + Crashlytics only) — USE THIS for App Store Connect → App Privacy
+## 0. Versions 1.0.5–1.0.10 (Firebase Analytics + Crashlytics only) — USE THIS for App Store Connect → App Privacy
 Facts (code): `iosApp/iosApp/FirebaseTelemetry.swift`, `Info.plist`, ADR 0023, `docs/ANALYTICS.md`. SPM products `FirebaseAnalyticsCore`
 (no IDFA) + `FirebaseCrashlytics`. No ads, no purchases, no account, no ATT, no location, no other network calls. Analytics
 collection is switched off at every launch and on only after the in-app opt-in; Crashlytics is on in Release builds, not gated.
-Sections 1–2 below are the *future* AdMob/RevenueCat set and do **not** apply to this binary.
+Added since 1.0.5, no change to the answers: same-device duel (events `duel_start`/`duel_finish`), word reminders (local), `SKStoreReviewController` (system StoreKit prompt, no data to us, no Info.plist key; event `rating_prompt_requested` is opt-in analytics). Sections 1–2 below are the *future* AdMob/RevenueCat set and do **not** apply to this binary.
 
 **"Do you or your third-party partners collect data from this app?" → Yes.** **Tracking** (any type) → **No**. `NSUserTrackingUsageDescription`: none.
 
