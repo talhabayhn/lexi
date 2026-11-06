@@ -112,6 +112,8 @@ internal class SettingsViewModel(
 
             is SettingsIntent.SetReviewReminders -> write { it.copy(reviewReminders = intent.enabled) }
 
+            is SettingsIntent.SetReminderShowWord -> write { it.copy(reminderShowWord = intent.enabled) }
+
             is SettingsIntent.SetAnalyticsConsent -> write { it.copy(analyticsConsent = intent.enabled) }
 
             SettingsIntent.OpenReminderSheet -> {
@@ -192,6 +194,7 @@ private fun withStored(settings: Settings, current: SettingsUiState = SettingsUi
     dailyReminder = settings.dailyReminder,
     reminderMinuteOfDay = settings.reminderMinuteOfDay,
     reviewReminders = settings.reviewReminders,
+    reminderShowWord = settings.reminderShowWord,
     appLanguage = settings.appLanguage,
     accent = settings.accent,
     analyticsConsent = settings.analyticsConsent,

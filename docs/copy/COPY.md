@@ -36,6 +36,20 @@ consecutive days; never-played user treated as played yesterday; `notif_goal` no
 | `notif_comeback_14d_title/_body` | 14 days without play (last one) | Tekrar görüşmek güzel olur | Kelimelerin defterinde saklı; istediğinde devam. | Come back whenever | Your words are safe in your notebook. | 40 / 70 |
 | `notif_goal_title/_body` | Daily goal 1 step left (optional) | Hedefe az kaldı | Bugünkü hedefin için {n} doğru cevap yeter. | Almost at your goal | {n} more correct answers hit today's goal. | 40 / 70 |
 
+**Word in the reminder** (wired; setting `Settings.reminderShowWord`, default on, switch "Hatırlatmada kelime göster" in the
+reminder sheet). Daily/review reminders of the next 7 days show one word instead of their text: a due notebook word, else
+a word the player already answered, seeded per day, never repeated in the window, cards tagged `sensitive`/`mature` left
+out (content.db is already blocklist-checked at build). Streak/comeback texts are unchanged. Body is the same in all
+variants, `{word}` = lowercase English answer, `{meaning}` = clue cut to 48 chars with "…"; the title rotates.
+
+| Key | TR | EN | Budget |
+|---|---|---|---|
+| `notif_word_1_title` | Günün kelimesi | Word of the day | 40 |
+| `notif_word_2_title` | Küçük bir tekrar | A quick refresher | 40 |
+| `notif_word_3_title` | Bunu hatırlıyor musun? | Remember this one? | 40 |
+| `notif_word_body` | {word} — {meaning} | {word} — {meaning} | 70 |
+| `settings_reminder_show_word` | Hatırlatmada kelime göster | Show a word in the reminder | 40 |
+
 Pre-prompt (before the OS permission dialog, onboarding layout — design debt). Shown on Home after returning from the
 **2nd completed real game** (never the 1st; level test and duel don't count, never during onboarding). "Şimdi değil" (or
 closing it) allows **one more** ask 7 days later, only while the OS dialog can still be shown; **max two in total**

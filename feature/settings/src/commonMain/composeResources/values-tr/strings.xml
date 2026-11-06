@@ -20,6 +20,7 @@
     <string name="settings_speak_on_correct">Doğru cevapta telaffuzu çal</string>
     <string name="settings_classic_time">Klasik mod süresi</string>
     <string name="settings_daily_reminder">Günlük hatırlatma</string>
+    <string name="settings_reminder_show_word">Hatırlatmada kelime göster</string>
     <string name="settings_daily_goal">Günlük hedef</string>
     <plurals name="settings_daily_goal_wheels">
         <item quantity="one">%1$d çark</item>

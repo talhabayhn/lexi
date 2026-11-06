@@ -9,4 +9,10 @@ public data class ReminderText(val title: String, val body: String)
  */
 public interface ReminderTextProvider {
     public suspend fun text(variant: ReminderVariant, count: Int?): ReminderText
+
+    /**
+     * "Word in the reminder" copy (`notif_word_<n>`, COPY.md §1): [word] and [meaning] fill `{word}` / `{meaning}`;
+     * [index] rotates through the title variants.
+     */
+    public suspend fun wordText(word: String, meaning: String, index: Int): ReminderText
 }

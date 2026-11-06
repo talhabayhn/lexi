@@ -84,6 +84,7 @@ Module mapping (replaces the earlier `composeApp`): `androidApp` = thin Android 
   (App Store 2.1). Store listings carry no ads/Pro/subscription text. Enabling Pro later: bind `proEnabled = true`
   together with RevenueCat/AdMob and restore the listing text from git history
 - [ ] RevenueCat: Pro entitlement, paywall (design debt), restore purchases, Pro card + footer restore link → do the Play Console re-check below before releasing
+- [x] Word in the reminder: daily/review reminders of the next 7 days teach one distinct word ("kitchen — mutfak"; due notebook words first, else answered words; seeded, re-planned on open/boot); switch "Hatırlatmada kelime göster" (default on) in the reminder sheet; local only, no store declaration change
 - [ ] Play Console re-check (owner reminder): when AdMob, Firebase, RevenueCat/Pro or login/online rooms are added to a build,
   update before that release goes to production: **Ads** (Yes), **Advertising ID** (Yes + `AD_ID` in merged manifest),
   **Data safety** (draft: `docs/store/data-safety-google.md`), **Login credentials** (test account / Pro access path),

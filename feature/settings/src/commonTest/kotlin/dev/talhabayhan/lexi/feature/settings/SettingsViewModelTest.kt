@@ -295,6 +295,17 @@ class SettingsViewModelTest {
     }
 
     @Test
+    fun `reminder word switch is on by default and writes the setting`() = runTest {
+        val viewModel = viewModel()
+        assertTrue(viewModel.state.value.reminderShowWord)
+
+        viewModel.onIntent(SettingsIntent.SetReminderShowWord(false))
+
+        assertFalse(repository.settings.value.reminderShowWord)
+        assertFalse(viewModel.state.value.reminderShowWord)
+    }
+
+    @Test
     fun `usage statistics are off by default and the switch writes the consent`() = runTest {
         val viewModel = viewModel()
         assertFalse(viewModel.state.value.analyticsConsent)

@@ -10,6 +10,10 @@
     <string name="notif_daily_2_body">Herkesle aynı çark, senin hızın. Hadi bir bak.</string>
     <string name="notif_daily_3_title">A'dan Z'ye, bir tur</string>
     <string name="notif_daily_3_body">Günlük çarkın hazır; tek deneme hakkın var.</string>
+    <string name="notif_word_1_title">Günün kelimesi</string>
+    <string name="notif_word_2_title">Küçük bir tekrar</string>
+    <string name="notif_word_3_title">Bunu hatırlıyor musun?</string>
+    <string name="notif_word_body">{word} — {meaning}</string>
     <string name="notif_streak_1_title">{n} günlük serin sürüyor</string>
     <string name="notif_streak_1_body">Bugünkü çarkı oynarsan seri devam eder.</string>
     <string name="notif_streak_2_title">Seriyi korumak için bir tur</string>

@@ -70,6 +70,7 @@ internal class SettingsRepositoryImpl(
             reminderPrePromptLastAskMs = this[REMINDER_PREPROMPT_LAST_ASK] ?: defaults.reminderPrePromptLastAskMs,
             dailyGoalWheels = this[DAILY_GOAL]?.takeIf { it >= 1 } ?: defaults.dailyGoalWheels,
             reviewReminders = this[REVIEW_REMINDERS] ?: defaults.reviewReminders,
+            reminderShowWord = this[REMINDER_SHOW_WORD] ?: defaults.reminderShowWord,
             appLanguage = enumOrNull<UiLanguage>(this[UI_LANGUAGE]) ?: defaults.appLanguage,
             clueLanguage = enumOrNull<ClueLanguage>(this[CLUE_LANGUAGE]) ?: defaults.clueLanguage,
             accent = enumOrNull<Accent>(this[ACCENT]) ?: defaults.accent,
@@ -96,6 +97,7 @@ internal class SettingsRepositoryImpl(
         this[REMINDER_PREPROMPT_LAST_ASK] = settings.reminderPrePromptLastAskMs
         this[DAILY_GOAL] = settings.dailyGoalWheels
         this[REVIEW_REMINDERS] = settings.reviewReminders
+        this[REMINDER_SHOW_WORD] = settings.reminderShowWord
         this[UI_LANGUAGE] = settings.uiLanguage.name
         this[CLUE_LANGUAGE] = settings.clueLanguage.name
         this[ACCENT] = settings.accent.name
@@ -120,6 +122,7 @@ internal class SettingsRepositoryImpl(
         val REMINDER_PREPROMPT_LAST_ASK = longPreferencesKey("reminder_preprompt_last_ask_ms")
         val DAILY_GOAL = intPreferencesKey("daily_goal_wheels")
         val REVIEW_REMINDERS = booleanPreferencesKey("review_reminders")
+        val REMINDER_SHOW_WORD = booleanPreferencesKey("reminder_show_word")
         val UI_LANGUAGE = stringPreferencesKey("ui_language")
         val CLUE_LANGUAGE = stringPreferencesKey("clue_language")
         val ACCENT = stringPreferencesKey("accent")

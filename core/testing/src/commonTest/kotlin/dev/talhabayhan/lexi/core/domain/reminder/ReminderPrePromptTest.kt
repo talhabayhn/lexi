@@ -6,6 +6,7 @@ import dev.talhabayhan.lexi.core.domain.session.SessionResult
 import dev.talhabayhan.lexi.core.domain.settings.Settings
 import dev.talhabayhan.lexi.core.domain.stats.SessionRecord
 import dev.talhabayhan.lexi.core.testing.FakeAppClock
+import dev.talhabayhan.lexi.core.testing.FakeCardRepository
 import dev.talhabayhan.lexi.core.testing.FakeNotificationPermission
 import dev.talhabayhan.lexi.core.testing.FakeProgressRepository
 import dev.talhabayhan.lexi.core.testing.FakeReminderScheduler
@@ -182,6 +183,7 @@ class ReminderPrePromptTest {
             scheduler = scheduler,
             texts = FakeReminderTextProvider(),
             clock = clock,
+            cards = FakeCardRepository(),
         )
         val answer = AnswerReminderPrePrompt(settings, permission, reschedule, clock)
     }

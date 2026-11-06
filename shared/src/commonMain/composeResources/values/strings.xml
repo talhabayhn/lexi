@@ -10,6 +10,10 @@
     <string name="notif_daily_2_body">Same wheel for everyone, at your pace.</string>
     <string name="notif_daily_3_title">A to Z, one lap</string>
     <string name="notif_daily_3_body">Your daily wheel is ready — one try today.</string>
+    <string name="notif_word_1_title">Word of the day</string>
+    <string name="notif_word_2_title">A quick refresher</string>
+    <string name="notif_word_3_title">Remember this one?</string>
+    <string name="notif_word_body">{word} — {meaning}</string>
     <string name="notif_streak_1_title">Your {n}-day streak is on</string>
     <string name="notif_streak_1_body">Play today's wheel to keep it going.</string>
     <string name="notif_streak_2_title">One lap keeps your streak</string>

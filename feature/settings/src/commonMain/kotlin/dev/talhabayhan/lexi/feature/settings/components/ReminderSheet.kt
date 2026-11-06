@@ -56,6 +56,7 @@ import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_daily_
 import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_reminder_close
 import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_reminder_denied_hint
 import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_reminder_open_settings
+import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_reminder_show_word
 import kotlinx.coroutines.flow.first
 import org.jetbrains.compose.resources.stringResource
 
@@ -70,6 +71,7 @@ internal fun ReminderSheet(
     visible: Boolean,
     enabled: Boolean,
     minuteOfDay: Int,
+    showWord: Boolean,
     blocked: Boolean,
     onIntent: (SettingsIntent) -> Unit,
     modifier: Modifier = Modifier,
@@ -86,6 +88,11 @@ internal fun ReminderSheet(
                     label = stringResource(Res.string.settings_daily_reminder),
                     checked = enabled,
                     onCheckedChange = { onIntent(SettingsIntent.SetReminderEnabled(it)) },
+                )
+                ListRow(
+                    label = stringResource(Res.string.settings_reminder_show_word),
+                    checked = showWord,
+                    onCheckedChange = { onIntent(SettingsIntent.SetReminderShowWord(it)) },
                 )
             }
             if (blocked) {
@@ -209,6 +216,13 @@ private const val NOT_PLACED = -1
 @Composable
 private fun ReminderSheetPreview() {
     LexiTheme(reducedMotion = false) {
-        ReminderSheet(visible = true, enabled = true, minuteOfDay = 20 * 60, blocked = false, onIntent = {})
+        ReminderSheet(
+            visible = true,
+            enabled = true,
+            minuteOfDay = 20 * 60,
+            showWord = true,
+            blocked = false,
+            onIntent = {},
+        )
     }
 }

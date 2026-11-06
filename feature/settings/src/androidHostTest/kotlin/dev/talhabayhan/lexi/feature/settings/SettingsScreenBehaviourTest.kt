@@ -292,6 +292,27 @@ class SettingsScreenBehaviourTest {
         onNodeWithText("Satın alımları geri yükle").performScrollTo().assertExists()
     }
 
+    @Test
+    @Config(qualifiers = "tr-w320dp-h568dp-xhdpi", fontScale = 1.3f)
+    fun `denied hint and open-settings button stay reachable in the reminder sheet on a small screen`() =
+        runComposeUiTest {
+            val intents = mutableListOf<SettingsIntent>()
+            val minTarget = DefaultLexiDimens.minTouchTargetAccessible
+            setContent {
+                LexiTheme(reducedMotion = true) {
+                    SettingsScreen(
+                        SettingsUiState(reminderSheetVisible = true, notificationsBlocked = true),
+                        onIntent = { intents += it },
+                    )
+                }
+            }
+
+            onNodeWithText("Bildirimler kapalı", substring = true).performScrollTo().assertExists()
+            onNodeWithText("Ayarları aç").performScrollTo().assertHeightIsAtLeast(minTarget).performClick()
+
+            assertEquals(listOf<SettingsIntent>(SettingsIntent.OpenNotificationSettings), intents)
+        }
+
     private fun ComposeUiTest.headings() = onAllNodes(SemanticsMatcher.keyIsDefined(SemanticsProperties.Heading))
 
     @Test

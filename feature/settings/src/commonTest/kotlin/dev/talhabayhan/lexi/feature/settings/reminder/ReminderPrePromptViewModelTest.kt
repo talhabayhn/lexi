@@ -8,6 +8,7 @@ import dev.talhabayhan.lexi.core.domain.reminder.RescheduleReminders
 import dev.talhabayhan.lexi.core.domain.telemetry.AnalyticsEvent
 import dev.talhabayhan.lexi.core.testing.FakeAnalyticsTracker
 import dev.talhabayhan.lexi.core.testing.FakeAppClock
+import dev.talhabayhan.lexi.core.testing.FakeCardRepository
 import dev.talhabayhan.lexi.core.testing.FakeNotificationPermission
 import dev.talhabayhan.lexi.core.testing.FakeProgressRepository
 import dev.talhabayhan.lexi.core.testing.FakeReminderScheduler
@@ -54,6 +55,7 @@ class ReminderPrePromptViewModelTest {
             scheduler = scheduler,
             texts = FakeReminderTextProvider(),
             clock = clock,
+            cards = FakeCardRepository(),
         )
         return ReminderPrePromptViewModel(
             settings,

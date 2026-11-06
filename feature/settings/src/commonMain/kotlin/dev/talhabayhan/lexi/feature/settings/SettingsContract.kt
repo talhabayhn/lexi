@@ -19,6 +19,8 @@ internal data class SettingsUiState(
     val reminderMinuteOfDay: Int = ReminderTimes.DEFAULT_MINUTE,
     /** "Kelime defteri tekrarları". */
     val reviewReminders: Boolean = true,
+    /** "Hatırlatmada kelime göster" in the reminder sheet. */
+    val reminderShowWord: Boolean = true,
     val reminderSheetVisible: Boolean = false,
     /** The OS refuses notifications for good: the sheet shows the hint and "Ayarları aç". */
     val notificationsBlocked: Boolean = false,
@@ -56,6 +58,8 @@ internal sealed interface SettingsIntent {
     data class SetAccent(val accent: Accent) : SettingsIntent
 
     data class SetReviewReminders(val enabled: Boolean) : SettingsIntent
+
+    data class SetReminderShowWord(val enabled: Boolean) : SettingsIntent
 
     data class SetAnalyticsConsent(val enabled: Boolean) : SettingsIntent
 

@@ -111,6 +111,7 @@ internal fun SettingsScreen(state: SettingsUiState, onIntent: (SettingsIntent) -
             visible = state.reminderSheetVisible,
             enabled = state.dailyReminder,
             minuteOfDay = state.reminderMinuteOfDay,
+            showWord = state.reminderShowWord,
             blocked = state.notificationsBlocked,
             onIntent = onIntent,
         )

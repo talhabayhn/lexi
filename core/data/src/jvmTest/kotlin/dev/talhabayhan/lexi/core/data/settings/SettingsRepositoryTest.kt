@@ -62,6 +62,7 @@ class SettingsRepositoryTest {
             reminderPrePromptLastAskMs = 1_700_000_000_000L,
             dailyGoalWheels = 3,
             reviewReminders = false,
+            reminderShowWord = false,
             appLanguage = UiLanguage.EN,
             accent = Accent.UK,
             duelPlayerNames = listOf("Ayşe", ""),

@@ -32,6 +32,11 @@ has to be known when the notification is scheduled. `ARCHITECTURE.md` §7 alread
   quiet-hours row waits for a design.
 - **No new dependency**: only framework APIs plus `core-ktx` / `activity`, which are already in the catalog.
 
+## Addendum: word in the reminder
+Because texts are fixed when scheduled, the daily/review reminders of the next 7 days get one word each, picked by
+`ReminderWordPicker` (due notebook words first, then answered words, seeded by the day, no repeats) inside
+`RescheduleReminders`, which already re-runs on open and boot. No new permission, SDK or data leaves the device.
+
 ## Alternatives considered
 - **WorkManager** (periodic or one-time workers that build the text at fire time). Rejected: it is a new dependency
   plus App Startup init, it only helps Android (iOS still needs pre-planned texts, so we would keep two models), and

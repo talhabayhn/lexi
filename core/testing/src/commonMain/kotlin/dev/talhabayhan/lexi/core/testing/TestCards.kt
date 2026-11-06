@@ -18,6 +18,8 @@ public fun testCard(
     level: Level = Level.A1,
     category: String = "food-drink",
     id: String = "${level.name.lowercase()}-${answer.lowercase().replace(' ', '-')}",
+    tags: Set<String> = emptySet(),
+    clue: String = "ipucu",
 ): Card = Card(
     id = CardId(id),
     level = level,
@@ -26,10 +28,11 @@ public fun testCard(
     letter = letter,
     rule = rule,
     partOfSpeech = PartOfSpeech.NOUN,
-    clue = "ipucu",
+    clue = clue,
     example = "An example with $answer.",
     exampleTranslation = "Bir örnek.",
     difficulty = 1,
+    tags = tags,
 )
 
 /** Wheel with one TODO slot per card, in A–Z order; the cards must serve distinct letters. */

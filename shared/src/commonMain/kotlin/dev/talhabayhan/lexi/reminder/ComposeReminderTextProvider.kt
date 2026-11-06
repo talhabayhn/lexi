@@ -27,6 +27,10 @@ import dev.talhabayhan.lexi.shared.generated.resources.notif_streak_2_body
 import dev.talhabayhan.lexi.shared.generated.resources.notif_streak_2_title
 import dev.talhabayhan.lexi.shared.generated.resources.notif_streak_3_body
 import dev.talhabayhan.lexi.shared.generated.resources.notif_streak_3_title
+import dev.talhabayhan.lexi.shared.generated.resources.notif_word_1_title
+import dev.talhabayhan.lexi.shared.generated.resources.notif_word_2_title
+import dev.talhabayhan.lexi.shared.generated.resources.notif_word_3_title
+import dev.talhabayhan.lexi.shared.generated.resources.notif_word_body
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.getString
 
@@ -38,6 +42,18 @@ internal class ComposeReminderTextProvider : ReminderTextProvider {
         return ReminderText(
             title = getString(title).replace(COUNT_TOKEN, n),
             body = getString(body).replace(COUNT_TOKEN, n),
+        )
+    }
+
+    override suspend fun wordText(word: String, meaning: String, index: Int): ReminderText {
+        val title = when (index.mod(WORD_VARIANTS)) {
+            0 -> Res.string.notif_word_1_title
+            1 -> Res.string.notif_word_2_title
+            else -> Res.string.notif_word_3_title
+        }
+        return ReminderText(
+            title = getString(title),
+            body = getString(Res.string.notif_word_body).replace(WORD_TOKEN, word).replace(MEANING_TOKEN, meaning),
         )
     }
 
@@ -60,5 +76,8 @@ internal class ComposeReminderTextProvider : ReminderTextProvider {
 
     private companion object {
         const val COUNT_TOKEN = "{n}"
+        const val WORD_TOKEN = "{word}"
+        const val MEANING_TOKEN = "{meaning}"
+        const val WORD_VARIANTS = 3
     }
 }

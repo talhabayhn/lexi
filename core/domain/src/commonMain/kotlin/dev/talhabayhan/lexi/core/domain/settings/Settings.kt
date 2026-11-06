@@ -26,6 +26,8 @@ public data class Settings(
     val dailyGoalWheels: Int = 1,
     /** "Kelime defteri tekrarları": remind about due notebook cards. */
     val reviewReminders: Boolean = true,
+    /** "Hatırlatmada kelime göster": daily/review reminders teach a notebook or answered word ("kitchen — mutfak"). */
+    val reminderShowWord: Boolean = true,
     val appLanguage: AppLanguage = AppLanguage.SYSTEM,
     val clueLanguage: ClueLanguage = ClueLanguage.TR,
     val accent: Accent = Accent.US,

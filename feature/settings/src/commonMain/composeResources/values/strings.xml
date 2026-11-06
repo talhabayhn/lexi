@@ -20,6 +20,7 @@
     <string name="settings_speak_on_correct">Play pronunciation on a correct answer</string>
     <string name="settings_classic_time">Classic mode time</string>
     <string name="settings_daily_reminder">Daily reminder</string>
+    <string name="settings_reminder_show_word">Show a word in the reminder</string>
     <string name="settings_daily_goal">Daily goal</string>
     <plurals name="settings_daily_goal_wheels">
         <item quantity="one">%1$d wheel</item>

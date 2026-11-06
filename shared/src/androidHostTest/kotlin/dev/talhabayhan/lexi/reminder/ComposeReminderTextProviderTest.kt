@@ -9,6 +9,7 @@ import org.robolectric.RobolectricTestRunner
 import java.util.Locale
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
+import kotlin.test.assertNotEquals
 import kotlin.test.assertTrue
 
 @RunWith(RobolectricTestRunner::class)
@@ -46,6 +47,19 @@ class ComposeReminderTextProviderTest {
         assertTrue(provider.text(ReminderVariant.STREAK_3, 12).title.contains("12"))
         assertTrue(provider.text(ReminderVariant.REVIEW_1, 12).title.contains("12"))
         assertTrue(provider.text(ReminderVariant.REVIEW_2, 12).body.contains("12"))
+    }
+
+    @Test
+    fun wordVariantsFillWordAndMeaningInBothLanguages() = runBlocking {
+        for (language in listOf("tr", "en")) {
+            Locale.setDefault(Locale.forLanguageTag(language))
+            for (index in 0..3) {
+                val text = provider.wordText("kitchen", "mutfak", index)
+                assertTrue(text.title.isNotBlank(), "$language $index title blank")
+                assertEquals("kitchen — mutfak", text.body)
+            }
+            assertNotEquals(provider.wordText("a", "b", 0).title, provider.wordText("a", "b", 1).title)
+        }
     }
 
     @Test

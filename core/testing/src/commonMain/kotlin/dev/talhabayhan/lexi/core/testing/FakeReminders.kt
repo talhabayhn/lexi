@@ -65,4 +65,11 @@ public class FakeNotificationPermission(
 public class FakeReminderTextProvider : ReminderTextProvider {
     override suspend fun text(variant: ReminderVariant, count: Int?): ReminderText =
         ReminderText(title = "${variant.key}_title", body = "${variant.key}_body" + (count?.let { ":$it" } ?: ""))
+
+    override suspend fun wordText(word: String, meaning: String, index: Int): ReminderText =
+        ReminderText(title = "notif_word_${index % WORD_VARIANTS + 1}_title", body = "$word — $meaning")
+
+    private companion object {
+        const val WORD_VARIANTS = 3
+    }
 }

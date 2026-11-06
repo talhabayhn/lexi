@@ -1,6 +1,10 @@
 package dev.talhabayhan.lexi.core.domain.reminder
 
 import dev.talhabayhan.lexi.core.domain.joker.JokerGiftConfig
+import dev.talhabayhan.lexi.core.domain.model.Card
+import dev.talhabayhan.lexi.core.domain.model.CardId
+import dev.talhabayhan.lexi.core.domain.random.Seeds
+import dev.talhabayhan.lexi.core.domain.repository.CardRepository
 import dev.talhabayhan.lexi.core.domain.repository.ProgressRepository
 import dev.talhabayhan.lexi.core.domain.repository.SettingsRepository
 import dev.talhabayhan.lexi.core.domain.repository.StreakRepository
@@ -35,6 +39,7 @@ public class RescheduleReminders(
     private val scheduler: ReminderScheduler,
     private val texts: ReminderTextProvider,
     private val clock: AppClock,
+    private val cards: CardRepository,
     private val streakBonusEvery: Int = JokerGiftConfig().streakBonusEvery,
 ) {
     private val mutex = Mutex()
@@ -101,8 +106,21 @@ public class RescheduleReminders(
                 streakBonusEvery = streakBonusEvery,
             ),
         )
+        val today = clock.epochDay(now)
+        val wordSlots = plan.withIndex().filter { (_, p) -> p.carriesWord(today) }.map { it.index }
+        val words = if (inputs.showWord) pickWords(inputs, today, wordSlots.size) else emptyList()
         return plan.mapIndexed { index, planned ->
-            val text = texts.text(planned.variant, planned.count)
+            val slot = wordSlots.indexOf(index)
+            val word = slot.takeIf { it >= 0 }?.let(words::getOrNull)
+            val text = if (word != null) {
+                texts.wordText(
+                    word = ReminderWordPicker.displayWord(word.answer),
+                    meaning = ReminderWordPicker.displayMeaning(word.clue),
+                    index = slot,
+                )
+            } else {
+                texts.text(planned.variant, planned.count)
+            }
             ScheduledReminder(
                 id = ScheduledReminder.FIRST_ID + index,
                 epochDay = planned.epochDay,
@@ -113,6 +131,34 @@ public class RescheduleReminders(
         }
     }
 
+    /** Daily and review reminders of the next [ReminderWordPicker.WINDOW_DAYS] days show a word. */
+    private fun PlannedReminder.carriesWord(today: Long): Boolean =
+        (variant.isDaily || variant.isReview) && epochDay < today + ReminderWordPicker.WINDOW_DAYS
+
+    /**
+     * Up to [slots] showable cards, due notebook cards first, none twice. The seed depends on [today] only, so
+     * rebuilding on the same day with the same progress gives the same words. A failing content read shows no words
+     * (the regular texts are used).
+     */
+    private suspend fun pickWords(inputs: Inputs, today: Long, slots: Int): List<Card> {
+        if (slots == 0 || inputs.answeredIds.isEmpty()) return emptyList()
+        val due = inputs.dueWords.filter { it.second <= today }.map { it.first }
+        val ids = ReminderWordPicker.pick(
+            due = due,
+            answered = inputs.answeredIds,
+            count = slots + ReminderWordPicker.SPARE_CANDIDATES,
+            seed = Seeds.stableHash("reminder-words:$today"),
+        )
+        val order = ids.withIndex().associate { (i, id) -> id to i }
+        return try {
+            cards.cards(ids).filter(ReminderWordPicker::isShowable).sortedBy { order[it.id] }.take(slots)
+        } catch (e: CancellationException) {
+            throw e
+        } catch (@Suppress("TooGenericExceptionCaught") e: Exception) {
+            emptyList()
+        }
+    }
+
     /** Only what the plan depends on, so unrelated setting or progress changes don't reschedule. */
     private data class Inputs(
         val enabled: Boolean,
@@ -120,6 +166,11 @@ public class RescheduleReminders(
         val reviewReminders: Boolean,
         val playDays: List<Long>,
         val dueDays: List<Long>,
+        val showWord: Boolean,
+        /** Ids of answered cards (`seen > 0`) when [showWord], else empty: only a new word reschedules. */
+        val answeredIds: List<CardId>,
+        /** Notebook cards that can fall due, with their due day, when [showWord]. */
+        val dueWords: List<Pair<CardId, Long>>,
     ) {
         constructor(settings: Settings, playDays: List<Long>, cards: List<CardProgress>) : this(
             enabled = settings.dailyReminder,
@@ -127,6 +178,18 @@ public class RescheduleReminders(
             reviewReminders = settings.reviewReminders,
             playDays = playDays,
             dueDays = cards.dueDays(),
+            showWord = settings.reminderShowWord,
+            answeredIds = if (settings.reminderShowWord) {
+                cards.filter { it.seen > 0 }.map { it.cardId }.sortedBy { it.value }
+            } else {
+                emptyList()
+            },
+            dueWords = if (settings.reminderShowWord) {
+                cards.mapNotNull { p -> p.dueEpochDay?.takeIf { p.box != null && !p.mastered }?.let { p.cardId to it } }
+                    .sortedBy { it.first.value }
+            } else {
+                emptyList()
+            },
         )
     }
 

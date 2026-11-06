@@ -60,6 +60,7 @@ internal val appCoreModule: Module = module {
             scheduler = get(),
             texts = get(),
             clock = get(),
+            cards = get(),
         )
     }
 }

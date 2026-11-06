@@ -5,12 +5,14 @@ import dev.talhabayhan.lexi.core.domain.repository.SettingsRepository
 import dev.talhabayhan.lexi.core.domain.settings.Settings
 import dev.talhabayhan.lexi.core.domain.srs.CardProgress
 import dev.talhabayhan.lexi.core.testing.FakeAppClock
+import dev.talhabayhan.lexi.core.testing.FakeCardRepository
 import dev.talhabayhan.lexi.core.testing.FakeNotificationPermission
 import dev.talhabayhan.lexi.core.testing.FakeProgressRepository
 import dev.talhabayhan.lexi.core.testing.FakeReminderScheduler
 import dev.talhabayhan.lexi.core.testing.FakeReminderTextProvider
 import dev.talhabayhan.lexi.core.testing.FakeSettingsRepository
 import dev.talhabayhan.lexi.core.testing.FakeStreakRepository
+import dev.talhabayhan.lexi.core.testing.testCard
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.emitAll
 import kotlinx.coroutines.flow.flow
@@ -31,6 +33,10 @@ class RescheduleRemindersTest {
     private val progress = FakeProgressRepository()
     private val permission = FakeNotificationPermission(current = PermissionStatus.GRANTED)
     private val scheduler = FakeReminderScheduler()
+    private val cards = FakeCardRepository(
+        (0 until 12).map { testCard("WORD${'A' + it}", id = "a$it", clue = "anlam$it") } +
+            testCard("RUDE", id = "rude", tags = setOf("sensitive")),
+    )
     private val reschedule = RescheduleReminders(
         settings = settings,
         streaks = streaks,
@@ -39,6 +45,7 @@ class RescheduleRemindersTest {
         scheduler = scheduler,
         texts = FakeReminderTextProvider(),
         clock = clock,
+        cards = cards,
     )
 
     @Test
@@ -228,6 +235,7 @@ class RescheduleRemindersTest {
         scheduler = scheduler,
         texts = FakeReminderTextProvider(),
         clock = clock,
+        cards = cards,
     )
 
     private fun TestScope.startRun() {
@@ -245,5 +253,89 @@ class RescheduleRemindersTest {
             }
             emitAll(delegate.settings)
         }
+    }
+
+    private suspend fun answered(vararg ids: String, due: Boolean = false) = progress.save(
+        ids.map {
+            CardProgress(CardId(it), box = if (due) 1 else null, dueEpochDay = if (due) today else null, seen = 2)
+        },
+    )
+
+    private fun wordReminders() = scheduler.scheduled.filter { it.title.startsWith("notif_word") }
+
+    @Test
+    fun `daily reminders in the next 7 days teach distinct words with due words first`() = runTest {
+        streaks.days = emptyList()
+        answered("a0", "a1", due = true)
+        answered("a2", "a3", "a4", "a5", "a6", "a7", "a8", "a9")
+
+        reschedule()
+
+        val words = wordReminders()
+        assertTrue(words.isNotEmpty())
+        assertTrue(words.all { it.epochDay < today + ReminderWordPicker.WINDOW_DAYS })
+        assertEquals(words.map { it.body }.distinct(), words.map { it.body })
+        assertTrue(words.take(2).all { it.body.startsWith("worda — ") || it.body.startsWith("wordb — ") })
+    }
+
+    @Test
+    fun `same day and data give the same schedule`() = runTest {
+        answered("a0", "a1", "a2", "a3", "a4", "a5", "a6", "a7")
+        reschedule()
+        val first = scheduler.scheduled
+
+        reschedule()
+
+        assertEquals(first, scheduler.scheduled)
+    }
+
+    @Test
+    fun `switch off keeps the regular texts`() = runTest {
+        answered("a0", "a1", "a2", "a3")
+        settings.update { it.copy(reminderShowWord = false) }
+
+        reschedule()
+
+        assertTrue(wordReminders().isEmpty())
+        assertTrue(scheduler.scheduled.isNotEmpty())
+    }
+
+    @Test
+    fun `no answered words falls back to the regular texts`() = runTest {
+        reschedule()
+
+        assertTrue(wordReminders().isEmpty())
+        assertEquals("notif_daily_3_title", scheduler.scheduled.first().title)
+    }
+
+    @Test
+    fun `sensitive and unknown cards are skipped`() = runTest {
+        answered("rude", "gone")
+
+        reschedule()
+
+        assertTrue(wordReminders().isEmpty())
+    }
+
+    @Test
+    fun `a failing content read keeps the regular texts`() = runTest {
+        answered("a0", "a1")
+        cards.failing = true
+
+        reschedule()
+
+        assertTrue(wordReminders().isEmpty())
+        assertTrue(scheduler.scheduled.isNotEmpty())
+    }
+
+    @Test
+    fun `streak and comeback reminders keep their own texts`() = runTest {
+        streaks.days = listOf(today - 5, today - 4)
+        answered("a0", "a1", "a2", "a3", "a4", "a5", "a6", "a7", "a8", "a9")
+
+        reschedule()
+
+        assertTrue(scheduler.scheduled.filter { it.title.startsWith("notif_comeback") }.isNotEmpty())
+        assertTrue(scheduler.scheduled.filter { it.title.startsWith("notif_comeback") }.none { "—" in it.body })
     }
 }

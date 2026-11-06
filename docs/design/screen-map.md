@@ -65,6 +65,7 @@ before shipping.
 | Paywall (Lexi Pro) | M7 | ink card + yellow diamond from settings; 3 plans as level-card style |
 | Notification permission pre-prompt | M7 | onboarding layout; shown at most once after the first real game (not over the result), never at app start |
 | Reminder sheet (`ReminderSheet`, Settings bottom sheet) | M7 | built from `16-components`: time list 08:00–21:30 in 30-min steps (scrollable, selected time visible on open); denied hint `settings_reminder_denied_hint` + "open settings" button |
+| Reminder sheet: "Hatırlatmada kelime göster" switch row — **needs design** | M7 | built from `16-components` (`ListRow` switch) as a second row under "Günlük hatırlatma" in the sheet's `ListCard`; stored in `Settings.reminderShowWord` (default on) |
 | Reminder row value "Kapalı" (off) | M7 | built: the reminder row shows "Kapalı" when off, else the time; no design for the off value |
 | Clue language row without chevron | M7 | built: only TR content, so no chevron and not clickable (screen reader: "Türkçe, ipucu dili") |
 | Rating prompt | M8 | `ConfirmDialog` |

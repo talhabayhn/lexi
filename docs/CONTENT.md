@@ -85,7 +85,7 @@ level-wheel/category query must filter `pack_only = 0`, and they are reachable o
 | `example_en` | text | natural sentence containing the answer (used blanked for the Example joker) |
 | `example_tr` | text | translation of the example |
 | `difficulty` | 1–5 | within the level |
-| `tags` | `a|b` | optional (e.g. `false-friend`, `exam:lgs`) |
+| `tags` | `a|b` | optional (e.g. `false-friend`, `exam:lgs`; `sensitive`/`mature` keep a card out of reminder notifications) |
 | `category` | category id | must exist in `content/categories.csv` (§4) |
 
 Level comes from the folder name (`A1`, `A2`, `B1`, `B2`, `C1`, `NAT`). See `content/cards/A1/sample.csv`. Clues for other languages (v2) go in `content/clues/<lang>/…` keyed by `id`.
