@@ -1,0 +1,76 @@
+id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
+b1-giggle,GIGGLE,G,STARTS,verb,hafif sesle ve kıkır kıkır gülmek,The children began to giggle during the film.,Çocuklar film sırasında kıkır kıkır gülmeye başladı.,3,,daily-life
+b1-grammar,GRAMMAR,G,STARTS,noun,bir dilin cümle kurma kuralları,My teacher explains English grammar very clearly.,Öğretmenim İngilizce dil bilgisini çok net anlatıyor.,3,,school-work
+b1-grin,GRIN,G,STARTS,noun,"yüzde beliren geniş, neşeli gülümseme",He had a big grin on his face after the game.,Maçtan sonra yüzünde kocaman bir sırıtış vardı.,3,,daily-life
+b1-goldfish,GOLDFISH,G,STARTS,noun,akvaryumda beslenen turuncu küçük balık,Our goldfish lives in a small bowl.,Japon balığımız küçük bir fanusta yaşıyor.,3,,animals
+b1-gown,GOWN,G,STARTS,noun,uzun ve şık kadın elbisesi ya da mezuniyet cübbesi,She wore a long blue gown to the party.,Partiye uzun mavi bir elbise giydi.,3,,daily-life
+b1-greenhouse,GREENHOUSE,G,STARTS,noun,bitki yetiştirilen camdan yapılmış sıcak yapı,We grow tomatoes in the greenhouse.,Domatesleri serada yetiştiriyoruz.,3,,daily-life
+b1-grasshopper,GRASSHOPPER,G,STARTS,noun,uzun bacaklarıyla zıplayan yeşil böcek,A grasshopper jumped onto my shoe.,Bir çekirge ayakkabımın üstüne zıpladı.,3,,animals
+b1-guitarist,GUITARIST,G,STARTS,noun,gitar çalan müzisyen,The guitarist played a slow song.,Gitarist yavaş bir şarkı çaldı.,3,,music
+b1-gasoline,GASOLINE,G,STARTS,noun,arabanın deposuna doldurulan yakıt,We stopped to buy gasoline on the way.,Yolda benzin almak için durduk.,3,,city-transport
+b1-hedgehog,HEDGEHOG,H,STARTS,noun,sırtı dikenlerle kaplı küçük hayvan,A hedgehog was sleeping under the bush.,Bir kirpi çalının altında uyuyordu.,3,,animals
+b1-herb,HERB,H,STARTS,noun,yemeğe lezzet katan yeşil yapraklı bitki (nane vb.),She added fresh herb leaves to the soup.,Çorbaya taze ot yaprakları ekledi.,3,,food-drink
+b1-hike,HIKE,H,STARTS,noun,doğada yapılan uzun yürüyüş,We went on a long hike in the mountains.,Dağlarda uzun bir doğa yürüyüşüne çıktık.,3,,travel
+b1-hood,HOOD,H,STARTS,noun,montun başı örten kısmı,"It was raining, so she put up her hood.","Yağmur yağıyordu, o yüzden kapüşonunu taktı.",3,,daily-life
+b1-horn,HORN,H,STARTS,noun,arabada uyarı sesi çıkaran düğme ya da cihaz,The driver pressed the horn twice.,Sürücü kornaya iki kez bastı.,3,,city-transport
+b1-hunter,HUNTER,H,STARTS,noun,hayvan avlamak için ormanda dolaşan kişi,The hunter walked quietly through the forest.,Avcı ormanda sessizce yürüdü.,3,,daily-life
+b1-heartbeat,HEARTBEAT,H,STARTS,noun,kalbin düzenli atışı,You can hear your heartbeat after running.,Koştuktan sonra kalp atışını duyabilirsin.,3,,body-health
+b1-headlight,HEADLIGHT,H,STARTS,noun,"arabanın önündeki, geceyi aydınlatan lamba",One headlight of the car is broken.,Arabanın bir farı bozuk.,3,,city-transport
+b1-nearby,NEARBY,N,STARTS,adv,yakın bir yerde (zarf; ardından isim almaz),"Is there an ATM or a pharmacy nearby, please?","Yakınlarda bir ATM ya da eczane var mı, lütfen?",3,,city-transport
+b1-nasty,NASTY,N,STARTS,adj,"tadı, kokusu ya da davranışı iğrenç (sıfat)",This medicine has a nasty taste.,Bu ilacın berbat bir tadı var.,3,,daily-life
+b1-necktie,NECKTIE,N,STARTS,noun,gömleğin yakasına bağlanan uzun şerit,He wore a red necktie to the interview.,Mülakata kırmızı bir kravat taktı.,3,,daily-life
+b1-newborn,NEWBORN,N,STARTS,noun,yeni doğmuş bebek,The newborn slept all afternoon.,Yeni doğan bebek öğleden sonra boyunca uyudu.,3,,family-people
+b1-noun,NOUN,N,STARTS,noun,"isim; kişi, yer ya da şeyin adı olan sözcük türü","'Book' is a noun, not a verb.","'Book' bir fiil değil, isimdir.",3,,school-work
+b1-normally,NORMALLY,N,STARTS,adv,"olağan koşullarda, istisna yoksa (zarf)",I normally wake up at seven.,Genellikle yedide uyanırım.,3,,daily-life
+b1-nosebleed,NOSEBLEED,N,STARTS,noun,burundan kan gelmesi,He had a nosebleed in the hot classroom.,Sıcak sınıfta burnu kanadı.,3,,body-health
+b1-obese,OBESE,O,STARTS,adj,sağlığı tehlikeye atacak kadar çok kilolu,The doctor told him he was obese.,Doktor ona obez olduğunu söyledi.,3,,body-health
+b1-oily,OILY,O,STARTS,adj,yağ içeren ya da yağ bulaşmış,I don't like oily food at night.,Geceleri yağlı yemek sevmem.,3,,food-drink
+b1-outer,OUTER,O,STARTS,adj,en dışta bulunan (sıfat; isimden önce gelir),The outer door was painted green.,Dış kapı yeşile boyanmıştı.,3,,daily-life
+b1-oversleep,OVERSLEEP,O,STARTS,verb,alarma rağmen planladığından geç uyanmak,I often oversleep on Sundays.,Pazar günleri sık sık fazla uyurum.,3,,daily-life
+b1-occasionally,OCCASIONALLY,O,STARTS,adv,"düzensiz aralıklarla, arada bir (zarf)",We occasionally eat out on Sundays.,Pazar günleri ara sıra dışarıda yeriz.,3,,daily-life
+b1-optimist,OPTIMIST,O,STARTS,noun,olayların iyi biteceğine inanan kişi (isim),My brother is an optimist and never worries.,Kardeşim iyimserdir ve hiç endişelenmez.,3,,family-people
+b1-outing,OUTING,O,STARTS,noun,eğlenmek için yapılan kısa gezi,The class had an outing to the zoo.,Sınıf hayvanat bahçesine bir gezi yaptı.,3,,travel
+b1-teamwork,TEAMWORK,T,STARTS,noun,bir hedef için birlikte çalışma,Good teamwork helped us win the game.,İyi bir takım çalışması maçı kazanmamıza yardım etti.,3,,school-work
+b1-tangerine,TANGERINE,T,STARTS,noun,"portakala benzeyen küçük, kolay soyulan meyve",She peeled a tangerine for dessert.,Tatlı olarak bir mandalina soydu.,3,,food-drink
+b1-thunderstorm,THUNDERSTORM,T,STARTS,noun,"şimşek, gök gürültüsü ve yağmurlu fırtına",We stayed inside during the thunderstorm.,Gök gürültülü fırtına sırasında içeride kaldık.,3,,daily-life
+b1-toddler,TODDLER,T,STARTS,noun,yeni yürümeye başlayan 1-3 yaş arası çocuk,The toddler is learning to walk.,Küçük çocuk yürümeyi öğreniyor.,3,,family-people
+b1-unfortunately,UNFORTUNATELY,U,STARTS,adv,ne yazık ki; kötü haber verirken (zarf),"Unfortunately, the store was closed.",Maalesef mağaza kapalıydı.,3,,daily-life
+b1-underwater,UNDERWATER,U,STARTS,adj,suyun altında olan,We took photos of underwater fish.,Su altındaki balıkların fotoğraflarını çektik.,3,,travel
+b1-undo,UNDO,U,STARTS,verb,yapılmış bir işlemi geri almak,Click this button to undo the last change.,Son değişikliği geri almak için bu tuşa bas.,3,,daily-life
+b1-uneven,UNEVEN,U,STARTS,adj,"düz olmayan, engebeli",The road was uneven and full of holes.,Yol engebeliydi ve çukurlarla doluydu.,3,,daily-life
+b1-unlimited,UNLIMITED,U,STARTS,adj,sınırı olmayan,The plan includes unlimited internet.,Pakette sınırsız internet var.,3,,technology
+b1-unnecessary,UNNECESSARY,U,STARTS,adj,"gerekli olmayan, lüzumsuz",Do not buy unnecessary things.,Gereksiz şeyler satın alma.,3,,daily-life
+b1-unsafe,UNSAFE,U,STARTS,adj,"insanı tehlikeye atabilecek, güvenli olmayan",The old bridge is unsafe to cross.,Eski köprüden geçmek güvenli değil.,3,,daily-life
+b1-unwrap,UNWRAP,U,STARTS,verb,paketin sarmalını açmak,The kids unwrap their gifts on New Year's Day.,Çocuklar yılbaşında hediyelerini açar.,3,,daily-life
+b1-wallpaper,WALLPAPER,W,STARTS,noun,odanın duvarına yapıştırılan desenli kâğıt,Mom peeled the old wallpaper off the hallway wall.,Annem koridor duvarındaki eski duvar kâğıdını söktü.,3,,technology
+b1-waterproof,WATERPROOF,W,STARTS,adj,su geçirmeyen,"My jacket is waterproof, so I stay dry.","Montum su geçirmez, o yüzden kuru kalırım.",3,,daily-life
+b1-weekly,WEEKLY,W,STARTS,adj,haftada bir olan,We have a weekly meeting on Mondays.,Pazartesi günleri haftalık toplantımız var.,3,,daily-life
+b1-western,WESTERN,W,STARTS,adj,"batıda olan, batıya ait",They live in the western part of the city.,Şehrin batı kesiminde yaşıyorlar.,3,,travel
+b1-witch,WITCH,W,STARTS,noun,"masallarda süpürgeyle uçan, büyü yapan kadın",The witch in the story had a black cat.,Hikâyedeki cadının kara bir kedisi vardı.,3,,film-tv
+b1-worm,WORM,W,STARTS,noun,"toprakta yaşayan uzun, ayaksız hayvan",A bird pulled a worm out of the ground.,Bir kuş yerden bir solucan çıkardı.,3,,animals
+b1-earphones,EARPHONES,E,STARTS,noun,kulağa takılan küçük müzik dinleme aygıtı,I forgot my earphones at home.,Kulaklıklarımı evde unuttum.,3,,technology
+b1-eastern,EASTERN,E,STARTS,adj,"doğuda olan, doğuya ait",They live in the eastern part of the city.,Şehrin doğu kesiminde yaşıyorlar.,3,,travel
+b1-echo,ECHO,E,STARTS,noun,dağda bağırınca duyulan geri dönen ses,We heard our echo in the cave.,Mağarada kendi yankımızı duyduk.,3,,daily-life
+b1-edition,EDITION,E,STARTS,noun,bir kitabın belirli basımı,This is the second edition of the book.,"Bu, kitabın ikinci baskısı.",3,,school-work
+b1-eggplant,EGGPLANT,E,STARTS,noun,"mor renkli, uzun sebze",My mother cooks eggplant with tomatoes.,Annem patlıcanı domatesle pişirir.,3,,food-drink
+b1-emotional,EMOTIONAL,E,STARTS,adj,çabuk duygulanan ya da duygu yüklü (sıfat),It was an emotional goodbye at the airport.,Havalimanında duygusal bir veda oldu.,3,,daily-life
+b1-energetic,ENERGETIC,E,STARTS,adj,"çok enerjisi olan, hareketli",My grandfather is still very energetic.,Dedem hâlâ çok enerjik.,3,,body-health
+b1-episode,EPISODE,E,STARTS,noun,bir dizinin tek bölümü,I stayed up late to watch the final episode of the show.,Programın son bölümünü izlemek için geç saate kadar uyanık kaldım.,3,,film-tv
+b1-ladybug,LADYBUG,L,STARTS,noun,kırmızı üzerine siyah benekli küçük böcek,A ladybug landed on the leaf.,Yaprağın üstüne bir uğur böceği kondu.,3,,animals
+b1-lantern,LANTERN,L,STARTS,noun,"kamp yaparken taşınan, mum ya da ampullü fener",They lit a lantern in the tent.,Çadırda bir fener yaktılar.,3,,travel
+b1-lamb,LAMB,L,STARTS,noun,yavru koyun; eti de böyle anılır,We had roast lamb for dinner.,Akşam yemeğinde kuzu kızartması yedik.,3,,food-drink
+b1-lasagna,LASAGNA,L,STARTS,noun,"kat kat makarna, kıyma ve peynirle yapılan İtalyan yemeği",My dad makes great lasagna.,Babam harika lazanya yapar.,3,,food-drink
+b1-leak,LEAK,L,STARTS,noun,borudan ya da çatıdan sıvının sızması,There is a leak under the kitchen sink.,Mutfak lavabosunun altında bir sızıntı var.,3,,daily-life
+b1-leopard,LEOPARD,L,STARTS,noun,benekli tüylü büyük yırtıcı kedi,The leopard climbed up a tree.,Leopar bir ağaca tırmandı.,3,,animals
+b1-leggings,LEGGINGS,L,STARTS,noun,bacağa tam oturan esnek spor tayt,She wears leggings to the gym.,Spor salonuna tayt giyer.,3,,daily-life
+b1-lightbulb,LIGHTBULB,L,STARTS,noun,"lambaya takılan, ışık veren cam parça",We need a new lightbulb in the hall.,Koridora yeni bir ampul lazım.,3,,daily-life
+b1-loaf,LOAF,L,STARTS,noun,bir bütün halinde pişmiş ekmek,She bought a loaf of bread.,Bir somun ekmek aldı.,3,,food-drink
+b1-laughter,LAUGHTER,L,STARTS,noun,gülen insanların çıkardığı ses,The room was full of laughter.,Oda kahkahayla doluydu.,3,,daily-life
+b1-librarian,LIBRARIAN,L,STARTS,noun,kütüphanede çalışan görevli,The librarian helped me find the book.,Kütüphaneci kitabı bulmama yardım etti.,3,,school-work
+b1-macaroni,MACARONI,M,STARTS,noun,"kısa, içi boş kıvrık makarna",We had macaroni and cheese for lunch.,Öğle yemeğinde peynirli makarna yedik.,3,,food-drink
+b1-mailbox,MAILBOX,M,STARTS,noun,postacının mektup bıraktığı kutu,There was a letter in the mailbox.,Posta kutusunda bir mektup vardı.,3,,daily-life
+b1-makeup,MAKEUP,M,STARTS,noun,"yüze sürülen ruj, far gibi güzellik ürünleri",She put on some makeup before the party.,Partiden önce biraz makyaj yaptı.,3,,daily-life
+b1-marble,MARBLE,M,STARTS,noun,heykel ve yer döşemesinde kullanılan parlak taş,The floor of the hotel was made of marble.,Otelin zemini mermerden yapılmıştı.,3,,daily-life
+b1-mermaid,MERMAID,M,STARTS,noun,masallarda yarı insan yarı balık deniz kızı,The film is about a young mermaid.,Film genç bir deniz kızı hakkında.,3,,film-tv
+b1-midnight,MIDNIGHT,M,STARTS,noun,gece saat on iki,We watched the fireworks at midnight.,Havai fişekleri gece yarısı izledik.,3,,daily-life
+b1-mitten,MITTEN,M,STARTS,noun,parmakları ayrı olmayan kış eldiveni,She lost one mitten in the snow.,Karda tek eldivenini kaybetti.,3,,daily-life
