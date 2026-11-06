@@ -1,0 +1,17 @@
+id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
+b2-jackal,JACKAL,J,STARTS,noun,"kurda benzeyen, leşle beslenen yabani hayvan","A jackal howled somewhere in the dark, far from the camp.","Karanlıkta, kampın çok uzağında bir yerde bir çakal uludu.",3,,daily-life
+b2-knuckle,KNUCKLE,K,STARTS,noun,parmak eklemlerinin çıkıntılı yeri,He scraped a knuckle while repairing the engine.,Motoru tamir ederken parmak eklemini sıyırdı.,3,,body-health
+b2-quartet,QUARTET,Q,STARTS,noun,dört müzisyenin birlikte çaldığı topluluk,The jazz quartet performed every Friday in the old hotel.,Caz dörtlüsü her cuma eski otelde sahne aldı.,3,,music
+b2-xylophone,XYLOPHONE,X,STARTS,noun,çubuklara küçük tokmakla vurularak çalınan çalgı,She practiced the xylophone for months before the concert.,Konserden önce aylarca ksilofon çalıştı.,3,,music
+b2-zinc,ZINC,Z,STARTS,noun,paslanmayı önleyen gümüşi mavi metal,Workers coat the steel with zinc to protect it from rust.,İşçiler çeliği paslanmadan korumak için çinkoyla kaplar.,3,,daily-life
+b2-mozzarella,MOZZARELLA,Z,CONTAINS,noun,pizzada eriyen İtalyan beyaz peyniri,The chef recommended fresh mozzarella with tomatoes and basil.,Aşçı domates ve fesleğenle taze mozzarella önerdi.,3,,food-drink
+b2-topaz,TOPAZ,Z,CONTAINS,noun,sarı renkli değerli bir taş,The museum displayed a huge topaz found in the mountains.,Müze dağlarda bulunan kocaman bir topazı sergiledi.,3,,daily-life
+b2-umpire,UMPIRE,U,STARTS,noun,tenis ve kriket maçını yöneten hakem,The umpire warned both players about their behavior.,Hakem iki oyuncuyu da davranışları konusunda uyardı.,3,,sports
+b2-oasis,OASIS,O,STARTS,noun,çölde su ve ağaç bulunan yer,"After days in the desert, the travelers finally reached an oasis.",Çölde günler geçirdikten sonra yolcular sonunda bir vahaya ulaştı.,3,,travel
+b2-orphan,ORPHAN,O,STARTS,noun,anne babasını yitirmiş çocuk,The charity helps every orphan find a safe home.,Hayır kurumu her yetimin güvenli bir yuva bulmasına yardım ediyor.,3,,daily-life
+b2-otter,OTTER,O,STARTS,noun,suda yüzen kahverengi kürklü hayvan,An otter carried a fish up onto the river bank.,Bir su samuru nehir kıyısına bir balık taşıdı.,3,,daily-life
+b2-oyster,OYSTER,O,STARTS,noun,kabuğunun içinde inci yapabilen deniz hayvanı,The pearl was hidden inside a single oyster.,İnci tek bir istiridyenin içinde saklıydı.,3,,food-drink
+b2-gallon,GALLON,G,STARTS,noun,yaklaşık dört litre ölçü birimi,The old car uses a gallon of fuel every thirty miles.,Eski araba her otuz milde bir galon yakıt harcıyor.,3,,food-drink
+b2-hedge,HEDGE,H,STARTS,noun,"bahçeyi çeviren, düzenli kesilen sık çalı sırası",A tall hedge separates our garden from the road.,Yüksek bir çit bahçemizi yoldan ayırıyor.,3,,daily-life
+b2-nibble,NIBBLE,N,STARTS,verb,ufak ufak ısırarak yemek,Guests like to nibble on olives while they wait for dinner.,Konuklar akşam yemeğini beklerken zeytin atıştırmayı sever.,3,,food-drink
+b2-tortoise,TORTOISE,T,STARTS,noun,sırtında kabuğu olan yavaş hayvan,A tortoise can live for more than a hundred years.,Bir kaplumbağa yüz yıldan fazla yaşayabilir.,3,,daily-life
