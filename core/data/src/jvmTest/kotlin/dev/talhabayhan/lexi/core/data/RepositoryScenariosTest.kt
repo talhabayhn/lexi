@@ -8,6 +8,7 @@ import dev.talhabayhan.lexi.core.data.testing.TestDatabases
 import dev.talhabayhan.lexi.core.data.user.ProgressRepositoryImpl
 import dev.talhabayhan.lexi.core.data.user.SessionRepositoryImpl
 import dev.talhabayhan.lexi.core.data.user.StreakRepositoryImpl
+import dev.talhabayhan.lexi.core.domain.game.CardHistory
 import dev.talhabayhan.lexi.core.domain.game.GameConfig
 import dev.talhabayhan.lexi.core.domain.game.GameMode
 import dev.talhabayhan.lexi.core.domain.game.SlotState
@@ -81,14 +82,15 @@ class RepositoryScenariosTest {
             },
         )
 
-        val recentlySeen = WheelGenerator.recentlySeen(progress.lastSeenMs(), now, config)
+        val lastSeen = progress.lastSeenMs()
+        val recentlySeen = WheelGenerator.recentlySeen(lastSeen, now, config)
         val wheel = WheelGenerator.generate(
             pool = CardRepositoryImpl(db.databases, io).wheelPool(Level.A1),
             level = Level.A1,
             category = CategoryId.MIXED,
             mode = GameMode.CLASSIC,
             random = SeededRandom(7).derive(WheelGenerator.SEED_PURPOSE),
-            recentlySeen = recentlySeen,
+            history = CardHistory(lastSeen, now),
         )
 
         assertEquals(26, recentlySeen.size)

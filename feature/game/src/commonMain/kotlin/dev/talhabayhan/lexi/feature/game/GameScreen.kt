@@ -131,6 +131,7 @@ internal fun GameScreen(
             visible = state.isJokerSheetOpen,
             jokers = state.jokers,
             adReward = state.jokerAdReward.takeIf { state.showJokerAd },
+            help = state.jokerHelp,
             clock = clock,
             onIntent = onIntent,
         )

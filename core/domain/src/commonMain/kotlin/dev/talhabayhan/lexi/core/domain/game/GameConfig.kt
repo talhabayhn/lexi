@@ -87,9 +87,17 @@ public data class GameConfig(
      * recently-seen filter); otherwise the pick is among its STARTS cards (owner decision: CONTAINS is harder).
      */
     val minStartsCandidates: Int = 1,
+    /**
+     * §1: once every eligible card of a letter has been seen, the seeded pick is among this many cards seen longest
+     * ago (never-seen cards always come first), so cards rotate through the whole pool while wheels still vary.
+     */
+    val leastRecentlySeenCandidates: Int = 3,
 ) {
     init {
         require(minStartsCandidates >= 1) { "minStartsCandidates must be at least 1, was $minStartsCandidates" }
+        require(leastRecentlySeenCandidates >= 1) {
+            "leastRecentlySeenCandidates must be at least 1, was $leastRecentlySeenCandidates"
+        }
     }
 
     /** Total time for [mode] in ms (per player for [GameMode.DUEL]); null when the mode has no timer. */

@@ -12,16 +12,28 @@ exact defaults.
   cards; otherwise the pick is among its eligible `STARTS` cards only (`preferStarts`, still one `nextInt` on a list
   sorted by id). Applies to the regular, daily and review wheels and the level test (§9).
 - Generation (`WheelGenerator`): for each letter pick one card from the pool (level [+ category]) using the
-  seeded RNG, preferring cards the player hasn't seen recently (solo only — daily, duel, review and level test
-  ignore history so all players get the same wheel; `GameMode.usesCardHistory`). If no card exists for a letter,
+  seeded RNG, preferring never-seen cards, then the least recently seen (solo only — daily, duel, review and level
+  test ignore history so all players get the same wheel; `GameMode.usesCardHistory`). If no card exists for a letter,
   the slot is `SKIPPED` (not shown as playable; counts as neither right nor wrong). Content validation must keep
   this at 0 for shipped levels.
 - Pick: per letter A–Z, candidates = pool cards of that level (+ category unless `mixed`) and letter, sorted by
-  card id (pool order never matters; card ids in a pool must be unique); drop recently seen cards unless that
-  leaves none; keep only the `STARTS` cards when there are ≥ ⚙ `minStartsCandidates` of them; `pick` = one
-  `nextInt(size)` on the `wheel` sub-seed (§13). Recently seen = last seen within
+  card id (pool order never matters; card ids in a pool must be unique); drop a card whose answer is already on
+  this wheel unless that leaves none (a safety net only: content validation already forbids a repeated answer
+  within a level or a pack); drop recently
+  seen cards unless that leaves none; keep only the `STARTS` cards when there are ≥ ⚙ `minStartsCandidates` of
+  them; then keep the never-seen cards if there are any, else the ⚙ `leastRecentlySeenCandidates = 3` cards seen
+  longest ago (stable by id on equal times), but never the most recently seen one while the list has others;
+  `pick` = one `nextInt(size)` on the `wheel` sub-seed (§13). Recently seen = last seen within
   ⚙ `recentlySeenWindowDays = 7` (`WheelGenerator.recentlySeen(lastSeenMs, nowMs, config)`). Owner decision:
-  the window stays at 7 days.
+  the window stays at 7 days. History = `CardHistory(lastSeenMs, nowMs)` from `ProgressRepository.lastSeenMs()`
+  (only answered cards — correct, wrong, passed — get a `lastSeenMs`, §10) and the clock, passed in (never read
+  inside the generator), so the same seed + the same history give the same wheel; saved games store their cards,
+  so resuming never regenerates.
+- Rotation (owner decision: heavy players saw the same cards within days): a letter's cards are all shown
+  before any of them repeats (within the `STARTS`/`CONTAINS` rule above: `CONTAINS` cards still come only when no
+  eligible `STARTS` card is left); after that a card comes back only once at least `max(pool − 3, 1)` other cards
+  of the letter were shown, so never twice in a row (a 2-card letter alternates, a 1-card letter repeats). With no history the steps reduce to
+  the previous rule, so history-free wheels (daily, duel, level test, the goldens) are unchanged.
 - Review wheel: built from SRS-due cards (any level/category); may have fewer than 26 slots (only letters that
   have due cards), in A–Z order; one card per letter, picked the same way (`STARTS` preferred). Other due cards wait
   for the next review.
@@ -175,6 +187,8 @@ the app goes to background.
 - Owner decision: Remove distractors costs points in untimed modes like Reveal letter (⚙
   `removeDistractorsUntimedCostPoints = 5`; 0 = free). Untimed modes are unscored today, so point costs only
   matter if one becomes scored.
+- The joker sheet's "Jokerler nasıl çalışır?" help names the timed-mode costs from ⚙ `GameConfig`
+  (`JokerHelpUi.from`), so a cost change needs no copy change.
 - A slot answered with a joker still counts as correct but its streak bonus is 0 (the streak itself goes on).
 - Owner decision: one joker per letter in total, of any type. After any joker on a slot, every further joker is
   refused for that slot, also on later laps.

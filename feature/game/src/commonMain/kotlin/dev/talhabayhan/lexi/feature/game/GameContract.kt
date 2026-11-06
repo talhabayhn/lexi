@@ -4,6 +4,7 @@ import androidx.compose.runtime.Immutable
 import dev.talhabayhan.lexi.core.designsystem.component.AnswerSlotState
 import dev.talhabayhan.lexi.core.designsystem.component.LetterKeyState
 import dev.talhabayhan.lexi.core.designsystem.component.WheelLetterUi
+import dev.talhabayhan.lexi.core.domain.game.GameConfig
 import dev.talhabayhan.lexi.core.domain.game.JokerType
 import dev.talhabayhan.lexi.core.domain.model.LetterRule
 import dev.talhabayhan.lexi.core.domain.model.Level
@@ -45,6 +46,8 @@ internal data class GameUiState(
     val jokers: ImmutableList<JokerUi> = persistentListOf(),
     /** Jokers one rewarded ad grants (`GameConfig.rewardedAdJokerReward`), for the sheet's ad button. */
     val jokerAdReward: Int = 0,
+    /** The joker costs the sheet's "Jokerler nasıl çalışır?" help names (from `GameConfig`). */
+    val jokerHelp: JokerHelpUi = JokerHelpUi.from(GameConfig()),
     /** The ad button is shown (`FeatureFlags.rewardedAdJokers`, off until M7). */
     val showJokerAd: Boolean = false,
     /** The joker sheet is open; the clock keeps running (`GAME_RULES.md` §5). */
@@ -104,6 +107,26 @@ internal enum class JokerDisabledReason {
 
     /** Everything else (not enough time left, no distractors left, paused or revealing): "Şu an kullanılamaz". */
     Unavailable,
+}
+
+/** The timed-mode joker costs (`GAME_RULES.md` §7) the joker help text names, so it never drifts from `GameConfig`. */
+@Immutable
+internal data class JokerHelpUi(
+    val revealLetterSeconds: Int,
+    val removeDistractorsSeconds: Int,
+    val examplePoints: Int,
+    val listenPoints: Int,
+) {
+    companion object {
+        private const val MS_PER_SECOND = 1_000L
+
+        fun from(config: GameConfig): JokerHelpUi = JokerHelpUi(
+            revealLetterSeconds = (config.revealLetterCostMs / MS_PER_SECOND).toInt(),
+            removeDistractorsSeconds = (config.removeDistractorsCostMs / MS_PER_SECOND).toInt(),
+            examplePoints = config.exampleCostPoints,
+            listenPoints = config.listenCostPoints,
+        )
+    }
 }
 
 /** What a joker costs in the current mode (`GameConfig.jokerCost`): "−10 sn", "−5 puan" or free. */

@@ -90,7 +90,7 @@ class GameViewModel(...) : ViewModel() {
 ## 4. GameEngine (core:domain)
 
 ```
-WheelGenerator.generate(pool, level, category, mode, random, recentlySeen) ─▶ Wheel (26 slots: letter, rule, card)
+WheelGenerator.generate(pool, level, category, mode, random, history) ─▶ Wheel (26 slots: letter, rule, card)
 WheelGenerator.review(dueCards, random)                                    ─▶ Wheel (letters with due cards)
                                                           │
 GameEvent stream ─▶ GameEngine(config).reduce(state, event) ─▶ Transition(GameState, List<EngineEffect>)

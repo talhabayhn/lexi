@@ -52,6 +52,7 @@ import dev.talhabayhan.lexi.feature.game.GameClockUi
 import dev.talhabayhan.lexi.feature.game.GameIntent
 import dev.talhabayhan.lexi.feature.game.JokerCostUi
 import dev.talhabayhan.lexi.feature.game.JokerDisabledReason
+import dev.talhabayhan.lexi.feature.game.JokerHelpUi
 import dev.talhabayhan.lexi.feature.game.JokerUi
 import dev.talhabayhan.lexi.feature.game.generated.resources.Res
 import dev.talhabayhan.lexi.feature.game.generated.resources.game_joker_cost_free
@@ -98,6 +99,7 @@ internal fun JokerSheet(
     visible: Boolean,
     jokers: ImmutableList<JokerUi>,
     adReward: Int?,
+    help: JokerHelpUi,
     clock: () -> GameClockUi,
     onIntent: (GameIntent) -> Unit,
     modifier: Modifier = Modifier,
@@ -117,7 +119,7 @@ internal fun JokerSheet(
             topReserved = if (timed) with(density) { pillBottom.toDp() } + OverlayDefaults.SheetGap else 0.dp,
         ) {
             jokers.forEach { joker -> JokerOption(joker, onClick = { onIntent(GameIntent.UseJoker(joker.type)) }) }
-            JokerHelp()
+            JokerHelp(help)
             if (adReward != null) {
                 LexiButton(
                     text = stringResource(Res.string.game_jokers_ad, adReward),
@@ -165,7 +167,7 @@ private fun ClockPill(clock: () -> GameClockUi) {
 
 /** "Jokerler nasıl çalışır?": a link that unfolds the rules in place (needs design: built from 16-components). */
 @Composable
-private fun JokerHelp() {
+private fun JokerHelp(help: JokerHelpUi) {
     var open by remember { mutableStateOf(false) }
     val typography = LexiTheme.typography
     val colors = LexiTheme.colors
@@ -182,11 +184,17 @@ private fun JokerHelp() {
     if (open) {
         Column(verticalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap6)) {
             listOf(
-                Res.string.game_joker_help_cost,
-                Res.string.game_joker_help_limit,
-                Res.string.game_joker_help_earn,
-                Res.string.game_joker_help_none,
-            ).forEach { Text(stringResource(it), style = typography.caption13, color = colors.ink) }
+                stringResource(
+                    Res.string.game_joker_help_cost,
+                    help.revealLetterSeconds,
+                    help.removeDistractorsSeconds,
+                    help.examplePoints,
+                    help.listenPoints,
+                ),
+                stringResource(Res.string.game_joker_help_limit),
+                stringResource(Res.string.game_joker_help_earn),
+                stringResource(Res.string.game_joker_help_none),
+            ).forEach { Text(it, style = typography.caption13, color = colors.ink) }
         }
     }
 }

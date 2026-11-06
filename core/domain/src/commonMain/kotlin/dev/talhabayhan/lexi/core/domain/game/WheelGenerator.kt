@@ -8,6 +8,17 @@ import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.core.domain.random.SeededRandom
 
 /**
+ * The player's card history for a solo wheel (`GAME_RULES.md` §1): `lastSeenMs` per card (`ProgressRepository`) and
+ * the time the wheel is built (passed in, never read from a clock).
+ */
+public data class CardHistory(val lastSeenMs: Map<CardId, Long>, val nowMs: Long) {
+    public companion object {
+        /** No history: every card counts as never seen. */
+        public val NONE: CardHistory = CardHistory(emptyMap(), 0L)
+    }
+}
+
+/**
  * Builds wheels from a card pool (`GAME_RULES.md` §1). Pure: the result depends only on the arguments, and the
  * pool order does not matter (candidates are sorted by card id before the seeded pick).
  *
@@ -18,10 +29,9 @@ public object WheelGenerator {
 
     /**
      * Regular 26-slot wheel: for each letter A–Z one card of [level] (and [category], unless
-     * [CategoryId.MIXED]) is picked with [random]. Cards in [recentlySeen] are avoided when the letter has other
-     * cards and [mode] uses card history; of the remaining cards, STARTS cards are preferred ([preferStarts]).
-     * Letters without any card become [SlotState.SKIPPED] slots. Exactly one `nextInt` is drawn per non-skipped
-     * letter, in A–Z order.
+     * [CategoryId.MIXED]) is picked with [random]. When [mode] uses card history, [history] steers the pick
+     * ([pickFresh]); otherwise it is ignored. Letters without any card become [SlotState.SKIPPED] slots. Exactly one
+     * `nextInt` is drawn per non-skipped letter, in A–Z order.
      */
     public fun generate(
         pool: List<Card>,
@@ -29,40 +39,72 @@ public object WheelGenerator {
         category: CategoryId,
         mode: GameMode,
         random: SeededRandom,
-        recentlySeen: Set<CardId> = emptySet(),
+        history: CardHistory = CardHistory.NONE,
         config: GameConfig = GameConfig(),
     ): Wheel {
         require(mode != GameMode.REVIEW) { "use review() for the review wheel" }
-        val avoid = if (mode.usesCardHistory) recentlySeen else emptySet()
+        val used = if (mode.usesCardHistory) history else CardHistory.NONE
         val cards = pool.filter { it.level == level && (category == CategoryId.MIXED || it.category == category) }
-        return alphabetWheel(cards, random, avoid, config)
+        return alphabetWheel(cards, random, used, config)
     }
 
     /**
      * Exam pack wheel (`GAME_RULES.md` §1): 26 slots A–Z over every card of the pack, whatever its level or
-     * category, picked exactly like [generate] (recently seen avoided, STARTS preferred, one `nextInt` per non-skipped
-     * letter in A–Z order). Letters without a pack card become [SlotState.SKIPPED]. The pack is played with Classic
-     * rules, so [recentlySeen] always applies.
+     * category, picked exactly like [generate] ([pickFresh], one `nextInt` per non-skipped letter in A–Z order).
+     * Letters without a pack card become [SlotState.SKIPPED]. The pack is played with Classic rules, so [history]
+     * always applies.
      */
     public fun pack(
         pool: List<Card>,
         random: SeededRandom,
-        recentlySeen: Set<CardId> = emptySet(),
+        history: CardHistory = CardHistory.NONE,
         config: GameConfig = GameConfig(),
-    ): Wheel = alphabetWheel(pool, random, recentlySeen, config)
+    ): Wheel = alphabetWheel(pool, random, history, config)
 
-    private fun alphabetWheel(cards: List<Card>, random: SeededRandom, avoid: Set<CardId>, config: GameConfig): Wheel {
+    private fun alphabetWheel(
+        cards: List<Card>,
+        random: SeededRandom,
+        history: CardHistory,
+        config: GameConfig,
+    ): Wheel {
         val byLetter = cards.candidatesByLetter()
+        val recent = recentlySeen(history.lastSeenMs, history.nowMs, config)
+        // A word already on the wheel is not shown again. Safety net only: content validation forbids a repeated
+        // answer within a level or a pack.
+        val usedAnswers = mutableSetOf<String>()
         val slots = ('A'..'Z').map { letter ->
             val candidates = byLetter[letter].orEmpty()
             if (candidates.isEmpty()) {
                 Slot(letter, card = null, state = SlotState.SKIPPED)
             } else {
-                val unseen = candidates.filter { it.id !in avoid }
-                Slot(letter, random.pick(unseen.ifEmpty { candidates }.preferStarts(config)), SlotState.TODO)
+                val fresh = candidates.filter { it.answer !in usedAnswers }.ifEmpty { candidates }
+                val card = random.pick(fresh.pickFresh(history.lastSeenMs, recent, config))
+                usedAnswers += card.answer
+                Slot(letter, card, SlotState.TODO)
             }
         }
         return Wheel(slots)
+    }
+
+    /**
+     * The candidates of one letter that the seeded pick chooses from (`GAME_RULES.md` §1), from a list sorted by id:
+     * 1. eligible = not [recent] (seen within [GameConfig.recentlySeenWindowDays]), or all when that leaves none;
+     * 2. STARTS preferred among the eligible ([preferStarts], the CONTAINS fallback);
+     * 3. of those, the never-seen cards if any, else the [GameConfig.leastRecentlySeenCandidates] cards seen longest
+     *    ago (ties by id), never the most recently seen one while there are others (no back-to-back repeats).
+     * With no history this is exactly the step-2 list, so history-free wheels pick as before.
+     */
+    internal fun List<Card>.pickFresh(
+        lastSeenMs: Map<CardId, Long>,
+        recent: Set<CardId>,
+        config: GameConfig,
+    ): List<Card> {
+        val eligible = filter { it.id !in recent }.ifEmpty { this }.preferStarts(config)
+        val neverSeen = eligible.filter { it.id !in lastSeenMs }
+        if (neverSeen.isNotEmpty()) return neverSeen
+        // Stable sort: equal times keep the id order.
+        val count = minOf(config.leastRecentlySeenCandidates, eligible.size - 1).coerceAtLeast(1)
+        return eligible.sortedBy { lastSeenMs.getValue(it.id) }.take(count)
     }
 
     /**

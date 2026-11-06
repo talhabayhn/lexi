@@ -22,7 +22,7 @@ public interface ProgressRepository {
     /** Inserts or replaces the given entries (e.g. the changes returned by `Srs.update`) in one transaction. */
     public suspend fun save(progress: Collection<CardProgress>)
 
-    /** `lastSeenMs` per card, for `WheelGenerator.recentlySeen`. */
+    /** `lastSeenMs` per card, for the wheel's `CardHistory` (`GAME_RULES.md` §1). */
     public suspend fun lastSeenMs(): Map<CardId, Long>
 }
 

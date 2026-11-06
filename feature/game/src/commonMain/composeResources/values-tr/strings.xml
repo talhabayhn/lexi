@@ -104,7 +104,7 @@
     <string name="game_joker_reason_level">C1 ve üstünde kapalı</string>
     <string name="game_joker_reason_unavailable">Şu an kullanılamaz</string>
     <string name="game_joker_help_link">Jokerler nasıl çalışır?</string>
-    <string name="game_joker_help_cost">Bedel: Harf aç −10 sn, Çeldiricileri temizle −15 sn, Örnek cümle −5 puan, Telaffuzu dinle −10 puan. Süresiz modlarda puan bedeli yoktur.</string>
+    <string name="game_joker_help_cost">Bedel: Harf aç −%1$d sn, Çeldiricileri temizle −%2$d sn, Örnek cümle −%3$d puan, Telaffuzu dinle −%4$d puan. Süresiz modlarda puan bedeli yoktur.</string>
     <string name="game_joker_help_limit">Her harf için tek joker, hangi türden olursa olsun.</string>
     <string name="game_joker_help_earn">Nasıl kazanılır: başlangıç paketi, günlük hediye, her 7 günlük seri için +1. Hediyeler her türde 5'te durur.</string>
     <string name="game_joker_help_none">Günlük ve seviye testinde joker yok.</string>

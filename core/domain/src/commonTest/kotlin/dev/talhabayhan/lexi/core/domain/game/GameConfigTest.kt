@@ -4,6 +4,7 @@ import dev.talhabayhan.lexi.core.domain.model.Level
 import kotlinx.serialization.json.Json
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
 import kotlin.test.assertFalse
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
@@ -114,6 +115,12 @@ class GameConfigTest {
     @Test
     fun `recently seen window is 7 days`() {
         assertEquals(7, config.recentlySeenWindowDays)
+    }
+
+    @Test
+    fun `least recently seen pick is among 3 cards and needs at least 1`() {
+        assertEquals(3, config.leastRecentlySeenCandidates)
+        assertFailsWith<IllegalArgumentException> { GameConfig(leastRecentlySeenCandidates = 0) }
     }
 
     @Test

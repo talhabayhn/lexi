@@ -59,6 +59,7 @@ internal object GameUiMapper {
                 state.currentInput != null,
             jokers = jokersOf(state, engine),
             jokerAdReward = engine.config.rewardedAdJokerReward,
+            jokerHelp = JokerHelpUi.from(engine.config),
         )
     }
 

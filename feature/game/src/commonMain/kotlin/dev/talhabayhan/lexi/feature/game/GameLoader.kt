@@ -3,6 +3,7 @@ package dev.talhabayhan.lexi.feature.game
 import co.touchlab.kermit.Logger
 import dev.talhabayhan.lexi.core.domain.daily.DailyPlayState
 import dev.talhabayhan.lexi.core.domain.daily.GetDailyWheel
+import dev.talhabayhan.lexi.core.domain.game.CardHistory
 import dev.talhabayhan.lexi.core.domain.game.GameConfig
 import dev.talhabayhan.lexi.core.domain.game.GameEngine
 import dev.talhabayhan.lexi.core.domain.game.GameMode
@@ -136,18 +137,18 @@ internal class GameLoader(
                 val pack = packs.packs().firstOrNull { it.id == route.packId } ?: return Opened.NoCards
                 val hasPro = entitlements?.isPro?.first() ?: false
                 if (pack.isLocked(hasPro)) return Opened.Failed
-                val recentlySeen = WheelGenerator.recentlySeen(progress.lastSeenMs(), appClock.nowMs(), config)
+                val history = CardHistory(progress.lastSeenMs(), appClock.nowMs())
                 val pool = packs.cards(pack.id).map { it.card }.distinctBy { it.id }
-                val packWheel = WheelGenerator.pack(pool, random, recentlySeen, config)
+                val packWheel = WheelGenerator.pack(pool, random, history, config)
                 level = packWheel.slots.firstNotNullOfOrNull { it.card?.level } ?: return Opened.NoCards
                 packWheel
             }
 
             else -> {
-                val recentlySeen = if (mode.usesCardHistory) {
-                    WheelGenerator.recentlySeen(progress.lastSeenMs(), appClock.nowMs(), config)
+                val history = if (mode.usesCardHistory) {
+                    CardHistory(progress.lastSeenMs(), appClock.nowMs())
                 } else {
-                    emptySet()
+                    CardHistory.NONE
                 }
                 WheelGenerator.generate(
                     pool = cards.wheelPool(level, category),
@@ -155,7 +156,7 @@ internal class GameLoader(
                     category = category,
                     mode = mode,
                     random = random,
-                    recentlySeen = recentlySeen,
+                    history = history,
                     config = config,
                 )
             }

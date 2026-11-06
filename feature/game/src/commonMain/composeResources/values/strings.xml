@@ -104,7 +104,7 @@
     <string name="game_joker_reason_level">Off at C1 and above</string>
     <string name="game_joker_reason_unavailable">Not available right now</string>
     <string name="game_joker_help_link">How do jokers work?</string>
-    <string name="game_joker_help_cost">Cost: Reveal a letter −10 s, Clear distractors −15 s, Example sentence −5 pts, Hear it −10 pts. Untimed modes: points are free.</string>
+    <string name="game_joker_help_cost">Cost: Reveal a letter −%1$d s, Clear distractors −%2$d s, Example sentence −%3$d pts, Hear it −%4$d pts. Untimed modes: points are free.</string>
     <string name="game_joker_help_limit">One joker per letter, of any type.</string>
     <string name="game_joker_help_earn">Earn them: start pack, a daily gift, +1 for every 7-day streak. Gifts stop at 5 of each type.</string>
     <string name="game_joker_help_none">No jokers in Daily and the level test.</string>

@@ -253,6 +253,19 @@ class GameUiMapperTest {
     }
 
     @Test
+    fun `the joker help names the configured costs`() {
+        val custom = GameConfig(
+            revealLetterCostMs = 12_000L,
+            removeDistractorsCostMs = 20_000L,
+            exampleCostPoints = 7,
+            listenCostPoints = 9,
+        )
+
+        assertEquals(JokerHelpUi(10, 15, 5, 10), GameUiMapper.map(started(), engine).jokerHelp)
+        assertEquals(JokerHelpUi(12, 20, 7, 9), GameUiMapper.map(started(), GameEngine(custom)).jokerHelp)
+    }
+
+    @Test
     fun `unscored modes show their point costs as free because there is no score to take from`() {
         val ui = GameUiMapper.map(started(jokers = pack, mode = GameMode.PRACTICE), engine)
 

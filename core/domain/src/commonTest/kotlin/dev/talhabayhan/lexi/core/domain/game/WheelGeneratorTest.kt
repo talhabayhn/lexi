@@ -34,8 +34,11 @@ class WheelGeneratorTest {
         category = category,
         mode = mode,
         random = wheelRandom(seed),
-        recentlySeen = recentlySeen.map { it.id }.toSet(),
+        history = recentHistory(recentlySeen),
     )
+
+    /** [cards] seen one day before [NOW] (inside the recently-seen window). */
+    private fun recentHistory(cards: Collection<Card>) = CardHistory(cards.associate { it.id to NOW - DAY }, NOW)
 
     @Test
     fun `wheel has 26 slots A to Z all TODO`() {
@@ -119,11 +122,23 @@ class WheelGeneratorTest {
     }
 
     @Test
-    fun `recently seen cards are used when a letter has no unseen card`() {
-        val wheel = generate(recentlySeen = triplePool.toSet())
+    fun `recently seen cards are used when a letter has no unseen card and the most recent one comes last`() {
+        val daysAgo = mapOf("ONE" to 3, "SIX" to 2, "TWO" to 1)
+        val history =
+            CardHistory(triplePool.associate { it.id to NOW - daysAgo.getValue(it.answer.drop(1)) * DAY }, NOW)
 
-        assertEquals(26, wheel.playableSlots.size)
-        assertEquals(generate(recentlySeen = emptySet()), wheel)
+        for (seed in 1L..20L) {
+            val wheel = WheelGenerator.generate(
+                triplePool,
+                Level.A1,
+                CategoryId.MIXED,
+                GameMode.CLASSIC,
+                wheelRandom(seed),
+                history,
+            )
+            assertEquals(26, wheel.playableSlots.size)
+            assertTrue(wheel.slots.none { it.card!!.answer.endsWith("TWO") }, "seed $seed")
+        }
     }
 
     @Test
@@ -273,7 +288,7 @@ class WheelGeneratorTest {
                 CategoryId.MIXED,
                 GameMode.CLASSIC,
                 wheelRandom(seed),
-                seen,
+                CardHistory(seen.associateWith { NOW - DAY }, NOW),
             )
             for (slot in wheel.slots) {
                 val candidates = pool.filter { it.letter == slot.letter }
@@ -317,7 +332,7 @@ class WheelGeneratorTest {
     // region exam pack wheel (GAME_RULES.md §1)
 
     private fun pack(pool: List<Card>, seed: Long = 42L, recentlySeen: Set<Card> = emptySet()): Wheel =
-        WheelGenerator.pack(pool, wheelRandom(seed), recentlySeen.map { it.id }.toSet())
+        WheelGenerator.pack(pool, wheelRandom(seed), recentHistory(recentlySeen))
 
     @Test
     fun `pack wheel picks exactly like a regular wheel over the same single-level pool`() {
@@ -374,4 +389,9 @@ class WheelGeneratorTest {
     }
 
     // endregion
+
+    private companion object {
+        const val DAY = 86_400_000L
+        const val NOW = 1_000 * DAY
+    }
 }
