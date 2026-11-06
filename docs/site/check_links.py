@@ -17,7 +17,7 @@ from urllib.parse import unquote, urldefrag, urlparse
 import build
 
 PAGES = ("", "privacy/", "terms/", "support/")
-ALLOWED_HOSTS = {"talhabayhn.github.io"}
+ALLOWED_HOSTS = {"talhabayhn.github.io", "play.google.com"}
 
 
 class Refs(HTMLParser):

@@ -113,6 +113,7 @@ main{padding:8px 0 56px}
 .card h3{margin:0 0 6px;font-size:20px;font-weight:700}.card p{margin:0}
 .card:nth-child(1){box-shadow:6px 6px 0 var(--red)}.card:nth-child(2){box-shadow:6px 6px 0 var(--yellow)}
 .card:nth-child(3){box-shadow:6px 6px 0 var(--blue)}.card:nth-child(4){box-shadow:6px 6px 0 var(--ink)}
+.hero p.ios{font-size:15px;margin-top:10px}
 .soon{display:inline-block;text-decoration:none;background:var(--ink);color:var(--cream);font-weight:700;padding:12px 18px;margin-top:16px}
 .doc h1{font-size:36px;line-height:1.15;font-weight:800;margin:32px 0 12px}
 .doc h2{font-size:22px;font-weight:700;margin:32px 0 8px;padding-top:12px;border-top:3px solid var(--ink)}
