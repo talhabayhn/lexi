@@ -1,0 +1,17 @@
+id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
+b1-custard,CUSTARD,U,CONTAINS,noun,"sütlü, yumurtalı sarı tatlı sos",The apple pie was served with warm custard.,Elmalı turta sıcak muhallebi sosuyla servis edildi.,3,,food-drink
+b1-bruise,BRUISE,U,CONTAINS,noun,çarpınca deride oluşan mor leke,I got a bruise on my knee when I fell.,Düşünce dizimde bir morluk oluştu.,3,,body-health
+b1-quiche,QUICHE,Q,STARTS,noun,yumurtalı ve peynirli tuzlu Fransız turtası,She baked a quiche with spinach for lunch.,Öğle yemeği için ıspanaklı bir kiş pişirdi.,3,,food-drink
+b1-squeak,SQUEAK,Q,CONTAINS,noun,farenin çıkardığı ince ses,The door made a loud squeak when I opened it.,Kapıyı açtığımda yüksek bir gıcırtı çıkardı.,3,,animals
+b1-squint,SQUINT,Q,CONTAINS,verb,güneşte gözleri kısmak,I had to squint because the sun was so bright.,Güneş çok parlak olduğu için gözlerimi kısmak zorunda kaldım.,3,,body-health
+b1-turquoise,TURQUOISE,Q,CONTAINS,adj,deniz mavisi ile yeşil arası renk,The water near the island was a bright turquoise.,Adanın yakınındaki su parlak bir turkuaz renkteydi.,3,,travel
+b1-pixel,PIXEL,X,CONTAINS,noun,ekrandaki resmi oluşturan en küçük nokta,On a very large screen you can see every pixel.,Çok büyük bir ekranda her pikseli görebilirsin.,3,,daily-life
+b1-fax,FAX,X,CONTAINS,noun,belgeyi telefon hattıyla gönderen makine,The company still sends a fax to some clients.,Şirket hâlâ bazı müşterilerine faks gönderiyor.,3,,school-work
+b1-tuxedo,TUXEDO,X,CONTAINS,noun,düğünde erkeğin giydiği siyah resmi takım,He rented a tuxedo for the party.,Parti için bir smokin kiraladı.,3,,daily-life
+b1-waltz,WALTZ,Z,CONTAINS,noun,üç zamanlı zarif bir dans,They learned to waltz before their wedding.,Düğünlerinden önce vals yapmayı öğrendiler.,3,,music
+b1-zodiac,ZODIAC,Z,STARTS,noun,burçların oluşturduğu on iki işaretli sistem,My sister reads about her zodiac sign every morning.,Kız kardeşim her sabah burcunu okur.,3,,daily-life
+b1-javelin,JAVELIN,J,STARTS,noun,atletizmde uzağa atılan ince mızrak,The athlete threw the javelin farther than ever.,Atlet cirit gibi mızrağı hiç olmadığı kadar uzağa attı.,3,,sports
+b1-freckle,FRECKLE,K,CONTAINS,noun,yüzde bulunan küçük kahverengi benek,He has a small freckle under his left eye.,Sol gözünün altında küçük bir çil var.,3,,body-health
+b1-kennel,KENNEL,K,STARTS,noun,köpeğin içinde yattığı küçük ev,We built a wooden kennel for our new puppy.,Yeni yavru köpeğimiz için ahşap bir kulübe yaptık.,3,,animals
+b1-oval,OVAL,O,STARTS,adj,yumurta gibi uzun yuvarlak şekilli,They bought an oval mirror for the hall.,Koridor için oval bir ayna aldılar.,3,,daily-life
+b1-ostrich,OSTRICH,O,STARTS,noun,uçamayan çok uzun boylu büyük kuş,The ostrich is the biggest bird in the world.,Deve kuşu dünyanın en büyük kuşudur.,3,,animals

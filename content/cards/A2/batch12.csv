@@ -1,0 +1,82 @@
+id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
+a2-pyjamas,PYJAMAS,J,CONTAINS,noun,gece yatarken giyilen giysi takımı,Ali wears blue pyjamas at night.,Ali geceleri mavi pijama giyiyor.,3,,daily-life
+a2-bicycle,BICYCLE,Y,CONTAINS,noun,pedalla giden iki tekerlekli taşıt,Selin goes to school by bicycle.,Selin okula bisikletle gidiyor.,2,,city-transport
+a2-quack,QUACK,Q,STARTS,noun,ördeğin çıkardığı ses,The duck gives a quack.,Ördek vak diye ses çıkarıyor.,3,,animals
+a2-squid,SQUID,Q,CONTAINS,noun,"kalamar, denizde yaşayan yumuşakça hayvan",We eat fried squid by the sea.,Denizin kenarında kızarmış kalamar yiyoruz.,3,,animals
+a2-aquarium,AQUARIUM,Q,CONTAINS,noun,balıkların yaşadığı cam fanus,The fish swim in the aquarium.,Balıklar akvaryumda yüzüyor.,3,,home
+a2-extremely,EXTREMELY,X,CONTAINS,adv,"aşırı derecede, çok çok",The soup is extremely hot.,Çorba aşırı sıcak.,3,,daily-life
+a2-explode,EXPLODE,X,CONTAINS,verb,büyük bir sesle patlamak,The balloon can explode.,Balon patlayabilir.,3,,daily-life
+a2-zombie,ZOMBIE,Z,STARTS,noun,filmlerde ölüden dirilen korkunç yaratık,The zombie in the film is ugly.,Filmdeki zombi çirkin.,3,,daily-life
+a2-bronze,BRONZE,Z,CONTAINS,noun,"madalyada üçüncülük rengi, kırmızımsı kahverengi metal",Ali gets a bronze prize.,Ali bronz bir ödül alıyor.,3,,sports
+a2-sneakers,SNEAKERS,K,CONTAINS,noun,spor yapmak için giyilen rahat ayakkabılar,Mert wears white sneakers.,Mert beyaz spor ayakkabı giyiyor.,3,,daily-life
+a2-milkshake,MILKSHAKE,K,CONTAINS,noun,dondurma ve sütle yapılan soğuk içecek,Mert orders a banana milkshake.,Mert muzlu bir milkshake sipariş ediyor.,3,,food-drink
+a2-icy,ICY,I,STARTS,adj,çok soğuk ve buz gibi,The road is icy this morning.,Yol bu sabah buz tutmuş.,3,,time-weather
+a2-ink,INK,I,STARTS,noun,kalemle yazmak için kullanılan renkli sıvı,My pen has no ink.,Kalemimde mürekkep yok.,3,,school-work
+a2-driving,DRIVING,I,CONTAINS,noun,araba kullanma işi,Driving at night is hard for Dad.,Gece araba kullanmak babam için zor.,3,,city-transport
+a2-lipstick,LIPSTICK,I,CONTAINS,noun,dudaklara sürülen renkli makyaj ürünü,Her lipstick is red.,Rujunun rengi kırmızı.,3,,daily-life
+a2-shrimp,SHRIMP,I,CONTAINS,noun,kabuklu küçük pembe deniz ürünü,Mert does not like shrimp.,Mert karidesi sevmez.,3,,food-drink
+a2-bikini,BIKINI,I,CONTAINS,noun,plajda giyilen iki parçalı kadın mayosu,She has a new bikini for the beach.,Plaj için yeni bir bikinisi var.,3,,daily-life
+a2-pin,PIN,I,CONTAINS,noun,"kumaşları tutturan ince, sivri uçlu metal",Mum puts a pin in the cloth.,Annem kumaşa bir toplu iğne takıyor.,3,,daily-life
+a2-lid,LID,I,CONTAINS,noun,tencerenin üstünü kapatan kapak,Put the lid on the pan.,Kapağı tavanın üstüne koy.,3,,home
+a2-skinny,SKINNY,I,CONTAINS,adj,çok zayıf ve ince,The cat is small and skinny.,Kedi küçük ve sıska.,3,,body-health
+a2-shiny,SHINY,I,CONTAINS,adj,ışıkta parlayan,She wears shiny shoes.,Parlak ayakkabılar giyiyor.,3,,daily-life
+a2-spice,SPICE,I,CONTAINS,noun,yemeğe tat veren baharat,Dad puts spice in the soup.,Babam çorbaya baharat koyuyor.,3,,food-drink
+a2-stripe,STRIPE,I,CONTAINS,noun,zebranın sırtındaki gibi uzun çizgi,The shirt has a white stripe.,Gömlekte beyaz bir çizgi var.,3,,daily-life
+a2-swing,SWING,I,CONTAINS,noun,çocuk parkında iki ipten sarkan salıncak,The child plays on the swing.,Çocuk salıncakta oynuyor.,3,,daily-life
+a2-turtle,TURTLE,U,CONTAINS,noun,sırtında sert kabuk taşıyan yavaş hayvan,A turtle walks on the beach.,Bir kaplumbağa plajda yürüyor.,3,,animals
+a2-plum,PLUM,U,CONTAINS,noun,mor veya kırmızı kabuklu yuvarlak yaz meyvesi,Ali eats a plum.,Ali bir erik yiyor.,3,,food-drink
+a2-gum,GUM,U,CONTAINS,noun,ağızda çiğnenen tatlı şey,Don't chew gum in class.,Derste sakız çiğneme.,3,,food-drink
+a2-mug,MUG,U,CONTAINS,noun,kulplu büyük çay veya kahve bardağı,Mert drinks tea from a big mug.,Mert büyük bir kupadan çay içiyor.,3,,home
+a2-rug,RUG,U,CONTAINS,noun,odanın zeminine serilen küçük halı,The cat sleeps on the rug.,Kedi küçük halının üstünde uyuyor.,3,,home
+a2-plug,PLUG,U,CONTAINS,noun,elektrik kablosunun prize takılan ucu,Put the plug into the wall.,Fişi duvara tak.,3,,home
+a2-mustard,MUSTARD,U,CONTAINS,noun,sosislerle yenen sarı acı sos,Dad puts mustard on his sausage.,Babam sosisine hardal sürüyor.,3,,food-drink
+a2-sunshine,SUNSHINE,U,CONTAINS,noun,güneşin verdiği ışık ve sıcaklık,We sit in the sunshine.,Güneş ışığında oturuyoruz.,3,,time-weather
+a2-sunburn,SUNBURN,U,CONTAINS,noun,güneşte kalınca derinin kızarması,Selin has sunburn on her nose.,Selin'in burnunda güneş yanığı var.,3,,body-health
+a2-trunk,TRUNK,U,CONTAINS,noun,filin uzun burnu,The elephant lifts its trunk.,Fil hortumunu kaldırıyor.,3,,animals
+a2-puddle,PUDDLE,U,CONTAINS,noun,yağmurdan sonra yerde biriken küçük su,The boy jumps in a puddle.,Çocuk su birikintisine atlıyor.,3,,time-weather
+a2-pump,PUMP,U,CONTAINS,noun,su veya havayı basan alet,Ali uses a pump for the bike tyre.,Ali bisiklet lastiği için pompa kullanıyor.,3,,city-transport
+a2-weekday,WEEKDAY,Y,CONTAINS,noun,cumartesi ve pazar dışındaki herhangi bir gün,I work every weekday.,Her hafta içi günü çalışıyorum.,3,,time-weather
+a2-subway,SUBWAY,Y,CONTAINS,noun,yerin altında giden şehir treni,Mert takes the subway to work.,Mert işe metroyla gidiyor.,3,,city-transport
+a2-doorway,DOORWAY,Y,CONTAINS,noun,kapının bulunduğu açıklık,A cat sits in the doorway.,Bir kedi kapı aralığında oturuyor.,3,,home
+a2-anyway,ANYWAY,Y,CONTAINS,adv,"her neyse, ne olursa olsun","It rains, but we go anyway.",Yağmur yağıyor ama yine de gidiyoruz.,3,,daily-life
+a2-cherry,CHERRY,Y,CONTAINS,noun,"küçük, kırmızı, çekirdekli yaz meyvesi",Selin puts a cherry on the cake.,Selin kekin üstüne bir kiraz koyuyor.,2,,food-drink
+a2-curry,CURRY,Y,CONTAINS,noun,Hint mutfağında baharatlı soslu yemek,Mert loves hot curry.,Mert acı körüyü çok seviyor.,3,,food-drink
+a2-dairy,DAIRY,Y,CONTAINS,noun,süt ve peynir gibi süt ürünleri,Cheese is a dairy product.,Peynir bir süt ürünüdür.,3,,food-drink
+a2-vanilla,VANILLA,V,STARTS,noun,dondurmaya tat veren beyaz aromalı bitki,Ali likes vanilla cake.,Ali vanilyalı keki sever.,3,,food-drink
+a2-vine,VINE,V,STARTS,noun,üzüm yetiştiren sarmaşık bitki,Grapes hang from a vine.,Üzümler asmadan sarkıyor.,3,,daily-life
+a2-shovel,SHOVEL,V,CONTAINS,noun,toprağı kazmak için kullanılan geniş uçlu alet,Dad digs with a shovel.,Babam kürekle kazıyor.,3,,home
+a2-curve,CURVE,V,CONTAINS,noun,dümdüz olmayan yay biçimli yol,The car slows down at the curve.,Araba virajda yavaşlıyor.,3,,city-transport
+a2-relaxed,RELAXED,X,CONTAINS,adj,"stresi olmayan, rahatlamış",Dad feels relaxed on holiday.,Babam tatilde kendini rahat hissediyor.,3,,daily-life
+a2-zucchini,ZUCCHINI,Z,STARTS,noun,yeşil uzun yazlık sebze,Mum cooks zucchini for dinner.,Annem akşam yemeği için kabak pişiriyor.,3,,food-drink
+a2-buzz,BUZZ,Z,CONTAINS,noun,arıların çıkardığı uğultu,I hear the buzz of a bee.,Bir arının vızıltısını duyuyorum.,3,,animals
+a2-jaguar,JAGUAR,J,STARTS,noun,Güney Amerika'da yaşayan benekli büyük kedi,The jaguar hides in the forest.,Jaguar ormanda saklanıyor.,3,,animals
+a2-jersey,JERSEY,J,STARTS,noun,sporcuların giydiği forma,Ali wears a red jersey.,Ali kırmızı bir forma giyiyor.,3,,sports
+a2-jolly,JOLLY,J,STARTS,adj,"şen, keyfi yerinde",Grandpa is a jolly man.,Dedem şen biri.,3,,family-people
+a2-jumpsuit,JUMPSUIT,J,STARTS,noun,tek parça pantolonlu giysi,Selin wears a blue jumpsuit.,Selin mavi bir tulum giyiyor.,3,,daily-life
+a2-chalk,CHALK,K,CONTAINS,noun,tahtaya yazmak için kullanılan beyaz çubuk,The teacher writes with chalk.,Öğretmen tebeşirle yazıyor.,3,,school-work
+a2-bark,BARK,K,CONTAINS,verb,köpeğin yüksek sesle ses çıkarması,The dog starts to bark.,Köpek havlamaya başlıyor.,3,,animals
+a2-pickle,PICKLE,K,CONTAINS,noun,sirkede bekletilmiş salatalık,Ali puts a pickle on his plate.,Ali tabağına bir turşu koyuyor.,3,,food-drink
+a2-chick,CHICK,K,CONTAINS,noun,yumurtadan yeni çıkmış tavuk yavrusu,The chick is yellow.,Civciv sarı.,3,,animals
+a2-kindly,KINDLY,K,STARTS,adv,nazik bir şekilde,He kindly helps the old man.,Yaşlı adama nazikçe yardım ediyor.,3,,daily-life
+a2-nation,NATION,N,STARTS,noun,aynı topraklarda yaşayan büyük halk,The nation loves its team.,Ulus takımını seviyor.,3,,city-transport
+a2-nod,NOD,N,STARTS,verb,kafayı aşağı yukarı sallamak,Ali gives a nod and smiles.,Ali başını sallayıp gülümsüyor.,3,,daily-life
+a2-nowhere,NOWHERE,N,STARTS,adv,"hiçbir yerde, hiçbir yere",There is nowhere to sit.,Oturacak hiçbir yer yok.,3,,daily-life
+a2-oak,OAK,O,STARTS,noun,palamut veren büyük orman ağacı,An old oak stands in the park.,Parkta yaşlı bir meşe duruyor.,3,,animals
+a2-outdoor,OUTDOOR,O,STARTS,adj,"binanın dışında, açık havada yapılan",Mert loves outdoor sports.,Mert açık hava sporlarını seviyor.,3,,sports
+a2-goose,GOOSE,G,STARTS,noun,çiftlikte yaşayan büyük beyaz su kuşu,A goose swims on the lake.,Bir kaz gölde yüzüyor.,3,,animals
+a2-indoor,INDOOR,I,STARTS,adj,binanın içinde yapılan veya bulunan,Selin likes indoor games on rainy days.,Selin yağmurlu günlerde kapalı alan oyunlarını sever.,3,,sports
+a2-bride,BRIDE,I,CONTAINS,noun,düğünde evlenen kadın,The bride wears a white dress.,Gelin beyaz bir elbise giyiyor.,3,,family-people
+a2-unkind,UNKIND,U,STARTS,adj,başkalarına karşı nazik olmayan,That was an unkind thing to say.,Bu söylenecek nazik olmayan bir şeydi.,3,,family-people
+a2-unwell,UNWELL,U,STARTS,adj,"biraz hasta, kendini iyi hissetmeyen",Mum feels unwell today.,Annem bugün kendini iyi hissetmiyor.,3,,body-health
+a2-unpack,UNPACK,U,STARTS,verb,bavuldaki eşyaları çıkarıp yerleştirmek,We unpack our bags at the hotel.,Otelde çantalarımızı açıp eşyaları yerleştiriyoruz.,3,,travel
+a2-pudding,PUDDING,U,CONTAINS,noun,sütle yapılan yumuşak tatlı,Mum makes chocolate pudding.,Annem çikolatalı puding yapıyor.,3,,food-drink
+a2-burger,BURGER,U,CONTAINS,noun,iki ekmek arasında köfteli yemek,Mert eats a burger for lunch.,Mert öğle yemeğinde bir burger yiyor.,2,,food-drink
+a2-cushion,CUSHION,U,CONTAINS,noun,koltuğa konan yumuşak yastık,The cat sleeps on the cushion.,Kedi minderin üstünde uyuyor.,3,,home
+a2-vitamin,VITAMIN,V,STARTS,noun,meyve ve sebzelerdeki sağlıklı besin maddesi,Oranges have a lot of vitamin C.,Portakallarda çok C vitamini var.,3,,body-health
+a2-axe,AXE,X,CONTAINS,noun,odun kesmek için kullanılan aletin adı,He cuts a tree with an axe.,Bir ağacı baltayla kesiyor.,3,,home
+a2-wax,WAX,X,CONTAINS,noun,mumun yapıldığı yumuşak madde,Wax is soft when it is warm.,Balmumu ısınınca yumuşar.,3,,home
+a2-jeep,JEEP,J,STARTS,noun,bozuk yollarda giden dört çeker araç,They drive a jeep in the mountains.,Dağlarda bir cip kullanıyorlar.,3,,city-transport
+a2-jog,JOG,J,STARTS,verb,yavaş tempoda koşmak,Mum likes to jog in the park.,Annem parkta hafif tempoyla koşmayı seviyor.,3,,sports
+a2-koala,KOALA,K,STARTS,noun,okaliptüs yaprağı yiyen Avustralya hayvanı,The koala sleeps all day.,Koala bütün gün uyuyor.,2,,animals
+a2-kneel,KNEEL,K,STARTS,verb,dizlerinin üstüne çökmek,Ali has to kneel to find his pen.,Ali kalemini bulmak için diz çökmek zorunda.,3,,daily-life
+a2-goalkeeper,GOALKEEPER,G,STARTS,noun,futbolda kaleyi koruyan oyuncu,The goalkeeper catches the ball.,Kaleci topu yakalıyor.,3,,sports

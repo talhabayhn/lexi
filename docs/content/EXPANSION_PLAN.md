@@ -3,7 +3,7 @@
 Status: in progress. Snapshot of `content/cards/**` at contentVersion 23 (counted from the CSVs, base content,
 without exam-pack-only cards): **4,592 cards**
 (A1 847 · A2 881 · B1 849 · B2 729 · C1 675 · NAT 611).
-Landed so far: A1 batch 10 (60 cards) and A2 batch 11 (3 cards). Update this file when a batch lands.
+Landed so far: A1 batch 10 (60 cards), A2 batch 11 (3 cards), A2 batch 12 (81 cards), B1 batch 10 (16 cards). Update this file when a batch lands.
 
 ## 1. Current counts per level × letter (STARTS / CONTAINS)
 
