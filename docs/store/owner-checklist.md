@@ -33,7 +33,7 @@
 ### Google Play Console
 1. Create app (name, default language TR or EN, App, Free) → declarations.
 2. Store settings: category Game → Word; contact email/website.
-3. Main store listing: paste `listing-*.md` (default + other language), upload graphics.
+3. Main store listing: paste `listing-*.md` (default + other language), upload graphics. **Play Console → Main store listing → Graphics:** phone screenshots `docs/store/graphics/play/phone/{tr,en}-01…08.png` are now **2160×3840** (rendered from 4× sources, RGB, no alpha, < 1 MB each; re-upload them so the store page is sharp), feature graphic `play/feature-graphic-{tr,en}.png` 1024×500 (drawn at 2× and downsampled), icon `play/icon-512.png`.
 4. App content: privacy policy URL, ads = no, app access, content rating (IARC, `app-privacy-apple.md` §3), target audience (§4), data safety (`data-safety-google.md`), advertising ID per the merged manifest (Firebase Analytics may add AD_ID).
 5. Monetize: SKIP for v1.0 (free). Later: subscriptions (monthly, yearly), in-app product (lifetime); link to RevenueCat via service credentials.
 6. Testing: internal → closed (personal accounts need the 12-testers/14-day rule — VERIFY current requirement) → production.
