@@ -190,21 +190,11 @@ on the clock (what the card shows), not the playing time.
 | `share_cta` | Paylaş | Share | 14 |
 | `share_error` | Paylaşım başlatılamadı. | Couldn't open sharing. | 34 |
 
-## 8. Rating prompt (`ConfirmDialog`, design debt)
+## 8. Rating request
 
-Ask only after a **good moment**: ≥ 3 completed wheels, a result with ≥ 18 correct or a 3+ day streak, never in the
-first session, never right after a wrong answer, never twice within 120 days. "Not now" = ask again no sooner than
-30 days; after 3 refusals stop. The native review dialog follows the "Yes" button; there is no star pre-filter that
-hides low ratings from the store.
-
-| Key | TR | EN | Budget |
-|---|---|---|---|
-| `rate_title` | Lexi hoşuna gidiyor mu? | Enjoying Lexi? | 30 |
-| `rate_body` | Bir yorum bırakırsan başkalarının da bizi bulmasına yardım edersin. | A quick review helps other learners find us. | 76 |
-| `rate_yes` | Puan ver | Rate Lexi | 16 |
-| `rate_later` | Şimdi değil | Not now | 16 |
-| `rate_feedback` | Önerim var | Send feedback | 20 |
-| `rate_feedback_body` | Görüşlerini e-postayla iletebilirsin. | You can send us your thoughts by email. | 56 |
+No app copy: the store shows its own review prompt (`docs/GAME_RULES.md` §14, ADR 0024). The old pre-question dialog
+("Enjoying Lexi?", `rate_*`) is gone because both stores forbid gating a review request on sentiment. The only copy is the
+About row `about_link_rate` (TR "Uygulamayı puanla", EN "Rate the app"), which opens the store listing (needs design).
 
 ## 9. Streak and daily vocabulary (reference)
 

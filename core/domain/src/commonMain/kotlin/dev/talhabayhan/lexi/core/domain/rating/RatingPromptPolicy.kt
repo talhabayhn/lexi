@@ -1,97 +1,43 @@
 package dev.talhabayhan.lexi.core.domain.rating
 
 import dev.talhabayhan.lexi.core.domain.game.GameMode
-import dev.talhabayhan.lexi.core.domain.game.GameOverReason
-import dev.talhabayhan.lexi.core.domain.time.AppClock
+import dev.talhabayhan.lexi.core.domain.stats.SessionRecord
 
 /**
- * Trigger policy for the rating prompt (`COPY.md` §8).
+ * When the app may ask the OS for a rating (`docs/GAME_RULES.md` §14, ADR 0024). Pure: "today" is a parameter.
  *
- * Rules:
- * - Ask only after a good moment: >= 3 completed wheels, a result with >= 18 correct or a 3+ day streak
- * - Never in the first session (sessionCount >= 2)
- * - Never right after a wrong answer (GameOverReason.WRONG_IN_HARDCORE)
- * - Never during Daily, level test or duel
- * - Never twice within 120 days
- * - "Not now" = ask again no sooner than 30 days
- * - After 3 refusals stop permanently
- * - Once user rated, stop permanently
+ * - at least [MIN_REAL_GAMES] completed real games (level test and duel are not real games)
+ * - at least [MIN_DAYS_SINCE_INSTALL] days since install; this also rules out the first session
+ * - the latest real game was a success: the wheel was completed (a forfeit, time-up or Hardcore failure isn't)
+ * - at least [PERIOD_DAYS] days since our last request (the OS limits it as well)
  */
-public class RatingPromptPolicy(private val clock: AppClock, private val enabled: Boolean = RATING_PROMPT_ENABLED) {
-    public fun shouldPrompt(
-        state: RatingPromptState,
-        sessionCount: Int,
-        completedWheels: Int,
-        mode: GameMode,
-        reason: GameOverReason,
-        correct: Int,
-        streakDays: Int,
-    ): Boolean = shouldPrompt(
-        state = state,
-        sessionCount = sessionCount,
-        completedWheels = completedWheels,
-        mode = mode,
-        reason = reason,
-        correct = correct,
-        streakDays = streakDays,
-        todayEpochDay = clock.epochDay(clock.nowMs()),
-        enabled = enabled,
-    )
+public object RatingPromptPolicy {
+    public const val MIN_REAL_GAMES: Int = 5
+    public const val MIN_DAYS_SINCE_INSTALL: Long = 3L
+    public const val PERIOD_DAYS: Long = 120L
 
-    public companion object {
-        /**
-         * Rating prompt is disabled in this build because the store listing does not exist yet.
-         * Tests exercise the trigger logic with this flag set to true.
-         */
-        public const val RATING_PROMPT_ENABLED: Boolean = false
+    private val NOT_REAL = setOf(GameMode.LEVEL_TEST, GameMode.DUEL)
 
-        public const val MIN_COMPLETED_WHEELS: Int = 3
-        public const val MIN_CORRECT_FOR_GOOD_MOMENT: Int = 18
-        public const val MIN_STREAK_FOR_GOOD_MOMENT: Int = 3
-        public const val MIN_SESSIONS: Int = 2
-        public const val PERIOD_DAYS: Long = 120L
-        public const val REFUSAL_PERIOD_DAYS: Long = 30L
-        public const val MAX_REFUSALS: Int = 3
+    /** A wheel that counts towards the rating rules: a real mode, played to the end. */
+    public fun isCompletedRealGame(record: SessionRecord): Boolean =
+        record.completed && record.mode != null && record.mode !in NOT_REAL
 
-        public fun shouldPrompt(
-            state: RatingPromptState,
-            sessionCount: Int,
-            completedWheels: Int,
-            mode: GameMode,
-            reason: GameOverReason,
-            correct: Int,
-            streakDays: Int,
-            todayEpochDay: Long,
-            enabled: Boolean = RATING_PROMPT_ENABLED,
-        ): Boolean {
-            if (!enabled) return false
-            if (state.hasRated) return false
-            if (state.refusalCount >= MAX_REFUSALS) return false
+    private fun isRealGame(record: SessionRecord): Boolean = record.mode != null && record.mode !in NOT_REAL
 
-            // Never during Daily, level test, or duel
-            if (mode == GameMode.DAILY || mode == GameMode.LEVEL_TEST || mode == GameMode.DUEL) return false
-
-            // Never in the first session
-            if (sessionCount < MIN_SESSIONS) return false
-
-            // Must have completed at least 3 wheels
-            if (completedWheels < MIN_COMPLETED_WHEELS) return false
-
-            // Never right after a wrong answer
-            if (reason == GameOverReason.WRONG_IN_HARDCORE) return false
-
-            // Good moment: >= 18 correct or >= 3 day streak
-            val isGoodMoment = correct >= MIN_CORRECT_FOR_GOOD_MOMENT || streakDays >= MIN_STREAK_FOR_GOOD_MOMENT
-            if (!isGoodMoment) return false
-
-            // Period checks
-            val lastPrompt = state.lastPromptDay
-            if (lastPrompt != null && (todayEpochDay - lastPrompt) < PERIOD_DAYS) return false
-
-            val lastRefusal = state.lastRefusalDay
-            if (lastRefusal != null && (todayEpochDay - lastRefusal) < REFUSAL_PERIOD_DAYS) return false
-
-            return true
-        }
+    /**
+     * [sessions] oldest first. [installDay] is the epoch day of the first launch (null = unknown, never asks);
+     * [lastRequestDay] the epoch day of our last request, null if none.
+     */
+    public fun shouldRequest(
+        sessions: List<SessionRecord>,
+        installDay: Long?,
+        lastRequestDay: Long?,
+        todayEpochDay: Long,
+    ): Boolean {
+        if (installDay == null || todayEpochDay - installDay < MIN_DAYS_SINCE_INSTALL) return false
+        if (lastRequestDay != null && todayEpochDay - lastRequestDay < PERIOD_DAYS) return false
+        if (sessions.count(::isCompletedRealGame) < MIN_REAL_GAMES) return false
+        val latest = sessions.lastOrNull(::isRealGame) ?: return false
+        return latest.completed
     }
 }

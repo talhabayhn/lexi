@@ -10,6 +10,8 @@ internal data class AboutUiState(
     val appName: String = AppInfo.NAME,
     val versionName: String = AppInfo.VERSION_NAME,
     val buildNumber: Int = AppInfo.BUILD_NUMBER,
+    /** The store listing for "Rate"; blank hides the row (previews). */
+    val storePageUrl: String = "",
     val licenses: ImmutableList<OpenSourceLicense> = OPEN_SOURCE_LICENSES.toImmutableList(),
 )
 

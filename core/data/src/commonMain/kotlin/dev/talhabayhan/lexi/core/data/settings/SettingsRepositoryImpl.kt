@@ -82,6 +82,8 @@ internal class SettingsRepositoryImpl(
             duelClockSeconds = this[DUEL_CLOCK]
                 ?.takeIf { it in config.duelClockOptionsSeconds }
                 ?: defaults.duelClockSeconds,
+            firstLaunchMs = this[FIRST_LAUNCH] ?: defaults.firstLaunchMs,
+            ratingLastRequestMs = this[RATING_LAST_REQUEST] ?: defaults.ratingLastRequestMs,
         )
     }
 
@@ -105,6 +107,8 @@ internal class SettingsRepositoryImpl(
         DUEL_NAMES.forEachIndexed { index, key -> this[key] = settings.duelPlayerNames[index] }
         this[DUEL_LEVEL] = settings.duelLevel.name
         this[DUEL_CLOCK] = settings.duelClockSeconds
+        this[FIRST_LAUNCH] = settings.firstLaunchMs
+        this[RATING_LAST_REQUEST] = settings.ratingLastRequestMs
     }
 
     private inline fun <reified E : Enum<E>> enumOrNull(name: String?): E? =
@@ -130,5 +134,7 @@ internal class SettingsRepositoryImpl(
         val DUEL_NAMES = listOf(stringPreferencesKey("duel_player_1_name"), stringPreferencesKey("duel_player_2_name"))
         val DUEL_LEVEL = stringPreferencesKey("duel_level")
         val DUEL_CLOCK = intPreferencesKey("duel_clock_seconds")
+        val FIRST_LAUNCH = longPreferencesKey("first_launch_ms")
+        val RATING_LAST_REQUEST = longPreferencesKey("rating_last_request_ms")
     }
 }

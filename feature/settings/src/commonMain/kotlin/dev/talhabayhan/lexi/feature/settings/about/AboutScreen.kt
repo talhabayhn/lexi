@@ -33,6 +33,7 @@ import dev.talhabayhan.lexi.feature.settings.generated.resources.Res
 import dev.talhabayhan.lexi.feature.settings.generated.resources.about_back
 import dev.talhabayhan.lexi.feature.settings.generated.resources.about_description
 import dev.talhabayhan.lexi.feature.settings.generated.resources.about_link_privacy
+import dev.talhabayhan.lexi.feature.settings.generated.resources.about_link_rate
 import dev.talhabayhan.lexi.feature.settings.generated.resources.about_link_support
 import dev.talhabayhan.lexi.feature.settings.generated.resources.about_link_terms
 import dev.talhabayhan.lexi.feature.settings.generated.resources.about_section_legal
@@ -93,6 +94,19 @@ internal fun AboutScreen(state: AboutUiState, onIntent: (AboutIntent) -> Unit, m
         }
 
         AboutSection(Res.string.about_section_legal) {
+            // Needs design: a plain list row built from the existing ListRow (rating goes through the store, ADR 0024).
+            if (state.storePageUrl.isNotBlank()) {
+                ListRow(
+                    label = stringResource(Res.string.about_link_rate),
+                    onClick = { onIntent(AboutIntent.OpenUrl(state.storePageUrl)) },
+                ) {
+                    Icon(
+                        imageVector = LexiIcons.ChevronRight,
+                        contentDescription = null,
+                        modifier = Modifier.size(ListDefaults.ChevronSize),
+                    )
+                }
+            }
             ListRow(
                 label = stringResource(Res.string.about_link_privacy),
                 onClick = { onIntent(AboutIntent.OpenUrl(AppLinks.PRIVACY_POLICY)) },

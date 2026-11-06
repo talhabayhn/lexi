@@ -2,6 +2,7 @@ package dev.talhabayhan.lexi.feature.settings.about
 
 import app.cash.turbine.test
 import dev.talhabayhan.lexi.core.domain.AppInfo
+import dev.talhabayhan.lexi.core.testing.FakeReviewRequester
 import kotlinx.coroutines.test.runTest
 import org.junit.Test
 import kotlin.test.assertEquals
@@ -54,7 +55,7 @@ class OpenSourceLicensesTest {
 
     @Test
     fun `about viewmodel emits navigate back on back intent`() = runTest {
-        val viewModel = AboutViewModel()
+        val viewModel = AboutViewModel(FakeReviewRequester())
         viewModel.effects.test {
             viewModel.onIntent(AboutIntent.Back)
             assertEquals(AboutEffect.NavigateBack, awaitItem())
@@ -64,7 +65,7 @@ class OpenSourceLicensesTest {
 
     @Test
     fun `about viewmodel emits open url on open url intent`() = runTest {
-        val viewModel = AboutViewModel()
+        val viewModel = AboutViewModel(FakeReviewRequester())
         viewModel.effects.test {
             viewModel.onIntent(AboutIntent.OpenUrl("https://example.com"))
             assertEquals(AboutEffect.OpenUrl("https://example.com"), awaitItem())

@@ -15,6 +15,7 @@ import dev.talhabayhan.lexi.core.domain.feedback.SoundPlayer
 import dev.talhabayhan.lexi.core.domain.feedback.Speaker
 import dev.talhabayhan.lexi.core.domain.platform.ShareService
 import dev.talhabayhan.lexi.core.domain.platform.UrlOpener
+import dev.talhabayhan.lexi.core.domain.rating.ReviewRequester
 import dev.talhabayhan.lexi.core.domain.reminder.NotificationPermission
 import dev.talhabayhan.lexi.core.domain.reminder.ReminderScheduler
 import dev.talhabayhan.lexi.core.domain.repository.EntitlementRepository
@@ -26,6 +27,7 @@ import dev.talhabayhan.lexi.core.platform.feedback.IosHaptics
 import dev.talhabayhan.lexi.core.platform.feedback.IosSoundPlayer
 import dev.talhabayhan.lexi.core.platform.feedback.IosSpeaker
 import dev.talhabayhan.lexi.core.platform.feedback.LiveSettings
+import dev.talhabayhan.lexi.core.platform.rating.IosReviewRequester
 import dev.talhabayhan.lexi.core.platform.reminder.IosNotificationPermission
 import dev.talhabayhan.lexi.core.platform.reminder.IosReminderScheduler
 import dev.talhabayhan.lexi.core.platform.share.IosShareService
@@ -65,6 +67,7 @@ internal actual fun rememberPlatformModule(): Module = remember {
         }
         single<UrlOpener> { IosUrlOpener() }
         single<ShareService> { IosShareService() }
+        single<ReviewRequester> { IosReviewRequester() }
         single<ReminderScheduler> { IosReminderScheduler() }
         single<NotificationPermission> { IosNotificationPermission() }
         // Firebase through the Swift bridge (ADR 0023).

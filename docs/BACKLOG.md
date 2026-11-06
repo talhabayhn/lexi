@@ -108,5 +108,5 @@ Built from `16-components` today; an owner design request is optional unless mar
 | P2 | ~~Words longer than the whole column still split at 320dp + fontScale 2.0 (e.g. a joker title in the stacked layout)~~ | AG | S | done: JokerRow title uses `Hyphens.Auto` |
 | P3 | ~~SegmentedControl: wrapped segment titles are start-aligned (centring them moved the design-size text 1px)~~ | AG | S | done: wrapped titles centred per line, one-line case unchanged |
 | P4 | `docs/design/sound-previews` still holds the old `time_up` preview | AG | S | rerun `tools/sound-gen/generate.py` with previews (needs ffmpeg) |
-| P5 | 14 goldens differ beyond the palette (ComponentGallery, LevelSelectComponents, LexiIcons, RatingPromptDialog + En, 9 Notebook screens) | AG | S | review each change, then re-record |
+| P5 | 14 goldens differ beyond the palette (ComponentGallery, LevelSelectComponents, LexiIcons, 9 Notebook screens) | AG | S | review each change, then re-record |
 | P6 | ~~`TokensColors` screenshot still labels the pre-9fcd32d hex values~~ | AG | S | done: labels derived from the tokens |

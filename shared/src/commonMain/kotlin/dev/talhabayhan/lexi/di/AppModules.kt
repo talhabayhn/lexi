@@ -7,6 +7,7 @@ import dev.talhabayhan.lexi.core.domain.daily.GetDailyWheel
 import dev.talhabayhan.lexi.core.domain.game.GameConfig
 import dev.talhabayhan.lexi.core.domain.goal.GetDailyGoalProgress
 import dev.talhabayhan.lexi.core.domain.joker.GrantDailyJokers
+import dev.talhabayhan.lexi.core.domain.rating.RequestInAppReview
 import dev.talhabayhan.lexi.core.domain.reminder.AnswerReminderPrePrompt
 import dev.talhabayhan.lexi.core.domain.reminder.ReminderTextProvider
 import dev.talhabayhan.lexi.core.domain.reminder.RescheduleReminders
@@ -50,6 +51,9 @@ internal val appCoreModule: Module = module {
     single { ComposeReminderTextProvider() }
     single<ReminderTextProvider> { get<ComposeReminderTextProvider>() }
     factory { ShouldShowReminderPrePrompt(settings = get(), sessions = get(), permission = get(), clock = get()) }
+    factory {
+        RequestInAppReview(settings = get(), sessions = get(), requester = get(), analytics = get(), clock = get())
+    }
     factory { AnswerReminderPrePrompt(settings = get(), permission = get(), reschedule = get(), clock = get()) }
     single {
         RescheduleReminders(

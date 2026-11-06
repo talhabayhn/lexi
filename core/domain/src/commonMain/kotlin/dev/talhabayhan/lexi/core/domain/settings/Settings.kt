@@ -42,6 +42,10 @@ public data class Settings(
     val duelLevel: Level = Level.A1,
     /** The clock per player of the last duel setup; one of `GameConfig.duelClockOptionsSeconds`. */
     val duelClockSeconds: Int = DEFAULT_DUEL_CLOCK_SECONDS,
+    /** Epoch ms of the first launch (0 = not recorded yet); the rating request waits 3 days after it. */
+    val firstLaunchMs: Long = 0L,
+    /** Epoch ms of our last rating request (0 = never); the next one waits 120 days. */
+    val ratingLastRequestMs: Long = 0L,
 ) {
     public val uiLanguage: AppLanguage get() = appLanguage
 

@@ -41,6 +41,9 @@ public sealed class AnalyticsEvent(public val name: String) {
 
     public data object Share : AnalyticsEvent("share")
 
+    /** The store's rating request was invoked (the OS decides whether the player sees it); `RequestInAppReview`. */
+    public data object RatingPromptRequested : AnalyticsEvent("rating_prompt_requested")
+
     public data object ReminderEnabled : AnalyticsEvent("reminder_enabled")
 
     public data class JokerUsed(val type: JokerType) : AnalyticsEvent("joker_used") {

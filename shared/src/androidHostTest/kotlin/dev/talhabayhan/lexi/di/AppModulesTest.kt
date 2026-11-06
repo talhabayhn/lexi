@@ -8,6 +8,7 @@ import dev.talhabayhan.lexi.core.domain.feedback.SoundPlayer
 import dev.talhabayhan.lexi.core.domain.feedback.Speaker
 import dev.talhabayhan.lexi.core.domain.platform.ShareService
 import dev.talhabayhan.lexi.core.domain.platform.UrlOpener
+import dev.talhabayhan.lexi.core.domain.rating.ReviewRequester
 import dev.talhabayhan.lexi.core.domain.reminder.NotificationPermission
 import dev.talhabayhan.lexi.core.domain.reminder.ReminderScheduler
 import dev.talhabayhan.lexi.core.domain.repository.EntitlementRepository
@@ -36,6 +37,7 @@ class AppModulesTest {
                 DatabaseFiles::class,
                 Speaker::class,
                 UrlOpener::class,
+                ReviewRequester::class,
                 ShareService::class,
                 ReminderScheduler::class,
                 NotificationPermission::class,

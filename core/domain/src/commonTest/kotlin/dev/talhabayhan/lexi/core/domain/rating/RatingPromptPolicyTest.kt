@@ -1,124 +1,85 @@
 package dev.talhabayhan.lexi.core.domain.rating
 
 import dev.talhabayhan.lexi.core.domain.game.GameMode
-import dev.talhabayhan.lexi.core.domain.game.GameOverReason
-import dev.talhabayhan.lexi.core.domain.time.AppClock
+import dev.talhabayhan.lexi.core.domain.stats.SessionRecord
 import kotlin.test.Test
+import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
 class RatingPromptPolicyTest {
-    private val defaultToday = 1000L
+    private val today = 1000L
+    private val installed = today - 3
 
-    private class FakeClock(var epochDay: Long = 1000L) : AppClock {
-        override fun nowMs(): Long = epochDay * 86_400_000L
-        override fun epochDay(atMs: Long): Long = epochDay
-        override fun msUntilNextDay(atMs: Long): Long = 86_400_000L
-    }
+    private fun game(mode: GameMode? = GameMode.CLASSIC, completed: Boolean = true) =
+        SessionRecord(epochDay = installed, completed = completed, correct = 10, mode = mode)
+
+    private val five = List(5) { game() }
 
     private fun check(
-        state: RatingPromptState = RatingPromptState(),
-        sessionCount: Int = 5,
-        completedWheels: Int = 3,
-        mode: GameMode = GameMode.CLASSIC,
-        reason: GameOverReason = GameOverReason.ALL_ANSWERED,
-        correct: Int = 20,
-        streakDays: Int = 3,
-        todayEpochDay: Long = defaultToday,
-        enabled: Boolean = true,
-    ): Boolean {
-        val clock = FakeClock(todayEpochDay)
-        val policy = RatingPromptPolicy(clock, enabled = enabled)
-        return policy.shouldPrompt(
-            state = state,
-            sessionCount = sessionCount,
-            completedWheels = completedWheels,
-            mode = mode,
-            reason = reason,
-            correct = correct,
-            streakDays = streakDays,
-        )
+        sessions: List<SessionRecord> = five,
+        installDay: Long? = installed,
+        lastRequestDay: Long? = null,
+        todayEpochDay: Long = today,
+    ) = RatingPromptPolicy.shouldRequest(sessions, installDay, lastRequestDay, todayEpochDay)
+
+    @Test
+    fun `thresholds are five real games three days and 120 days`() {
+        assertEquals(5, RatingPromptPolicy.MIN_REAL_GAMES)
+        assertEquals(3L, RatingPromptPolicy.MIN_DAYS_SINCE_INSTALL)
+        assertEquals(120L, RatingPromptPolicy.PERIOD_DAYS)
     }
 
     @Test
-    fun `default enabled flag is false`() {
-        assertFalse(RatingPromptPolicy.RATING_PROMPT_ENABLED)
-        assertFalse(check(enabled = RatingPromptPolicy.RATING_PROMPT_ENABLED))
+    fun `happy path asks`() {
+        assertTrue(check())
     }
 
     @Test
-    fun `happy path with good moment prompts when enabled`() {
-        assertTrue(check(correct = 18, streakDays = 0))
-        assertTrue(check(correct = 10, streakDays = 3))
+    fun `needs five completed real games`() {
+        assertFalse(check(sessions = five.drop(1)))
+        assertTrue(check(sessions = five + game(completed = false) + game()))
     }
 
     @Test
-    fun `never in the first session`() {
-        assertFalse(check(sessionCount = 1))
-        assertTrue(check(sessionCount = 2))
+    fun `level test and duel games do not count`() {
+        val fillers = List(3) { game(GameMode.LEVEL_TEST) } + List(3) { game(GameMode.DUEL) } + game(mode = null)
+        assertFalse(check(sessions = five.drop(1) + fillers))
     }
 
     @Test
-    fun `never with fewer than 3 completed wheels`() {
-        assertFalse(check(completedWheels = 2))
-        assertTrue(check(completedWheels = 3))
+    fun `never in the first days after install`() {
+        assertFalse(check(installDay = today)) // first session
+        assertFalse(check(installDay = today - 2))
+        assertTrue(check(installDay = today - 3))
     }
 
     @Test
-    fun `never during Daily wheel`() {
-        assertFalse(check(mode = GameMode.DAILY))
+    fun `unknown install day never asks`() {
+        assertFalse(check(installDay = null))
     }
 
     @Test
-    fun `never during level test`() {
-        assertFalse(check(mode = GameMode.LEVEL_TEST))
+    fun `not right after a failure or forfeit`() {
+        assertFalse(check(sessions = five + game(completed = false)))
+        assertTrue(check(sessions = five + game(completed = false) + game()))
     }
 
     @Test
-    fun `never during duel`() {
-        assertFalse(check(mode = GameMode.DUEL))
+    fun `a trailing level test or duel does not decide the latest game`() {
+        assertFalse(check(sessions = five + game(completed = false) + game(GameMode.LEVEL_TEST)))
+        assertTrue(check(sessions = five + game(GameMode.DUEL, completed = false)))
     }
 
     @Test
-    fun `never right after wrong answer in hardcore`() {
-        assertFalse(check(reason = GameOverReason.WRONG_IN_HARDCORE))
+    fun `at most once per 120 days`() {
+        assertFalse(check(lastRequestDay = today))
+        assertFalse(check(lastRequestDay = today - 119))
+        assertTrue(check(lastRequestDay = today - 120))
     }
 
     @Test
-    fun `not a good moment when correct under 18 and streak under 3`() {
-        assertFalse(check(correct = 17, streakDays = 2))
-    }
-
-    @Test
-    fun `never twice within 120 days`() {
-        val state = RatingPromptState(lastPromptDay = defaultToday - 60)
-        assertFalse(check(state = state, todayEpochDay = defaultToday))
-
-        val stateAfter120 = RatingPromptState(lastPromptDay = defaultToday - 120)
-        assertTrue(check(state = stateAfter120, todayEpochDay = defaultToday))
-    }
-
-    @Test
-    fun `not now asks again no sooner than 30 days`() {
-        val state = RatingPromptState(lastRefusalDay = defaultToday - 10)
-        assertFalse(check(state = state, todayEpochDay = defaultToday))
-
-        val stateAfter30 = RatingPromptState(lastRefusalDay = defaultToday - 30)
-        assertTrue(check(state = stateAfter30, todayEpochDay = defaultToday))
-    }
-
-    @Test
-    fun `stops permanently after 3 refusals`() {
-        val state2 = RatingPromptState(refusalCount = 2, lastRefusalDay = defaultToday - 40)
-        assertTrue(check(state = state2, todayEpochDay = defaultToday))
-
-        val state3 = RatingPromptState(refusalCount = 3, lastRefusalDay = defaultToday - 40)
-        assertFalse(check(state = state3, todayEpochDay = defaultToday))
-    }
-
-    @Test
-    fun `never again after user rated`() {
-        val state = RatingPromptState(hasRated = true)
-        assertFalse(check(state = state))
+    fun `no games no request`() {
+        assertFalse(check(sessions = emptyList()))
     }
 }

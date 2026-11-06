@@ -11,6 +11,7 @@ import dev.talhabayhan.lexi.core.domain.joker.GrantDailyJokers
 import dev.talhabayhan.lexi.core.domain.model.CardId
 import dev.talhabayhan.lexi.core.domain.model.CategoryId
 import dev.talhabayhan.lexi.core.domain.model.Level
+import dev.talhabayhan.lexi.core.domain.rating.RequestInAppReview
 import dev.talhabayhan.lexi.core.domain.reminder.PermissionStatus
 import dev.talhabayhan.lexi.core.domain.reminder.ReminderPrePromptPolicy
 import dev.talhabayhan.lexi.core.domain.reminder.ShouldShowReminderPrePrompt
@@ -20,6 +21,7 @@ import dev.talhabayhan.lexi.core.domain.settings.Settings
 import dev.talhabayhan.lexi.core.domain.srs.CardProgress
 import dev.talhabayhan.lexi.core.domain.streak.GetStreakStatus
 import dev.talhabayhan.lexi.core.domain.time.AppClock
+import dev.talhabayhan.lexi.core.testing.FakeAnalyticsTracker
 import dev.talhabayhan.lexi.core.testing.FakeAppClock
 import dev.talhabayhan.lexi.core.testing.FakeCardRepository
 import dev.talhabayhan.lexi.core.testing.FakeContentVersionRepository
@@ -28,6 +30,7 @@ import dev.talhabayhan.lexi.core.testing.FakeExamPackRepository
 import dev.talhabayhan.lexi.core.testing.FakeJokerRepository
 import dev.talhabayhan.lexi.core.testing.FakeNotificationPermission
 import dev.talhabayhan.lexi.core.testing.FakeProgressRepository
+import dev.talhabayhan.lexi.core.testing.FakeReviewRequester
 import dev.talhabayhan.lexi.core.testing.FakeSessionRepository
 import dev.talhabayhan.lexi.core.testing.FakeSettingsRepository
 import dev.talhabayhan.lexi.core.testing.FakeStreakRepository
@@ -48,6 +51,8 @@ import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
+private const val DAY_MS = 86_400_000L
+
 @OptIn(ExperimentalCoroutinesApi::class)
 class HomeViewModelTest {
     private val clock = FakeAppClock()
@@ -67,6 +72,9 @@ class HomeViewModelTest {
     private val examPacks = FakeExamPackRepository()
     private val permission = FakeNotificationPermission(PermissionStatus.CAN_ASK)
     private val shouldShowPrePrompt = ShouldShowReminderPrePrompt(settings, sessions, permission, clock)
+    private val reviewRequester = FakeReviewRequester()
+    private val requestInAppReview =
+        RequestInAppReview(settings, sessions, reviewRequester, FakeAnalyticsTracker(), clock)
 
     @BeforeTest
     fun setUp() {
@@ -88,6 +96,7 @@ class HomeViewModelTest {
         getDailyGoalProgress,
         grantDailyJokers,
         shouldShowPrePrompt,
+        requestInAppReview,
         examPacks,
         FeatureFlags(),
     )
@@ -282,6 +291,7 @@ class HomeViewModelTest {
             GetDailyGoalProgress(sessions, settings, dstClock),
             GrantDailyJokers(jokers, streaks, dstClock, GameConfig()),
             shouldShowPrePrompt,
+            requestInAppReview,
             examPacks,
             FeatureFlags(),
         )
@@ -438,6 +448,53 @@ class HomeViewModelTest {
                 expectNoEvents()
             }
         }
+
+    @Test
+    fun `returning to home after the fifth real game asks the store for a rating once per window`() = runHomeTest {
+        settings.update { it.copy(reminderPrePromptAsks = 2, firstLaunchMs = clock.nowMs() - 5 * DAY_MS) }
+        val vm = viewModel()
+        vm.effects.test {
+            vm.onIntent(HomeIntent.Entered)
+            repeat(4) { sessions.record(session()) }
+            vm.onIntent(HomeIntent.Entered)
+            assertEquals(0, reviewRequester.requests)
+            sessions.record(session())
+            vm.onIntent(HomeIntent.Entered)
+            assertEquals(1, reviewRequester.requests)
+            sessions.record(session())
+            vm.onIntent(HomeIntent.Entered)
+            assertEquals(1, reviewRequester.requests)
+            expectNoEvents()
+        }
+    }
+
+    @Test
+    fun `an app foreground or a failed game never asks for a rating`() = runHomeTest {
+        settings.update { it.copy(reminderPrePromptAsks = 2, firstLaunchMs = clock.nowMs() - 5 * DAY_MS) }
+        repeat(5) { sessions.record(session()) }
+        val vm = viewModel()
+        vm.effects.test {
+            repeat(3) { vm.onIntent(HomeIntent.Entered) }
+            sessions.record(session(completed = false))
+            vm.onIntent(HomeIntent.Entered)
+            assertEquals(0, reviewRequester.requests)
+        }
+    }
+
+    @Test
+    fun `the reminder pre-prompt takes precedence over the rating request`() = runHomeTest {
+        settings.update { it.copy(firstLaunchMs = clock.nowMs() - 5 * DAY_MS) }
+        repeat(4) { sessions.record(session()) }
+        val vm = viewModel()
+        vm.effects.test {
+            vm.onIntent(HomeIntent.Entered)
+            sessions.record(session())
+            vm.onIntent(HomeIntent.Entered)
+            assertEquals(HomeEffect.NavigateToReminderPrePrompt, awaitItem())
+            assertEquals(0, reviewRequester.requests)
+            cancelAndIgnoreRemainingEvents()
+        }
+    }
 
     @Test
     fun `returning to home after a level test does not open the reminder pre-prompt`() = runHomeTest {

@@ -339,3 +339,18 @@ Every rule above must have a unit test named after the rule, e.g. `pass_endsTurn
   | `player:<n>` | duel player n's (1-based) game seed; their `wheel` and `keys:<letter>` derive from it |
   | `joker-gift:daily` | daily joker gift type picks; base seed = today's epoch day, not a game seed (`JokerGifts`) |
   | `joker-gift:streak` | streak bonus type picks; base seed = the milestone's epoch day (`JokerGifts`) |
+
+## 14. Rating request (ADR 0024)
+
+The app asks the OS for its own rating prompt (Play In-App Review / `SKStoreReviewController`); there is no custom
+"Enjoying Lexi?" question and no sentiment filter. `RatingPromptPolicy` + `RequestInAppReview` (pure, tested):
+
+- >= 5 completed real games (`mode` not level test or duel; `completed` = the wheel was finished, so a forfeit, time-up
+  or Hardcore failure never counts)
+- >= 3 days since install (`Settings.firstLaunchMs`, set on the first splash; an upgrader's oldest game is used when
+  it is older). This also means never in the first session.
+- the latest real game was completed (never during or right after a failure/forfeit)
+- >= 120 days since our last request (`Settings.ratingLastRequestMs`); the OS limits it as well
+- asked from Home, only when the player returns from a real game, and only when the reminder pre-prompt did not open
+  that time (never two prompts at once; the onboarding consent screens and the level test are not on this path)
+- the request is remembered only when the OS API was invoked; analytics `rating_prompt_requested` (consent-gated)

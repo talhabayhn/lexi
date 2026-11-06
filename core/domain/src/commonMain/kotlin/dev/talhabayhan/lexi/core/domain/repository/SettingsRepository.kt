@@ -34,6 +34,11 @@ public interface SettingsRepository {
         }
     }
 
+    /** Remembers the first launch once (no-op when already recorded). */
+    public suspend fun recordFirstLaunch(nowMs: Long) {
+        update { if (it.firstLaunchMs > 0) it else it.copy(firstLaunchMs = nowMs) }
+    }
+
     private companion object {
         const val PRE_PROMPT_SAME_ASK_MS = 60 * 60 * 1000L
     }

@@ -8,6 +8,7 @@ import dev.talhabayhan.lexi.core.domain.daily.GetDailyWheel
 import dev.talhabayhan.lexi.core.domain.goal.GetDailyGoalProgress
 import dev.talhabayhan.lexi.core.domain.joker.GrantDailyJokers
 import dev.talhabayhan.lexi.core.domain.joker.JokerGrantReason
+import dev.talhabayhan.lexi.core.domain.rating.RequestInAppReview
 import dev.talhabayhan.lexi.core.domain.reminder.ShouldShowReminderPrePrompt
 import dev.talhabayhan.lexi.core.domain.repository.DailyRepository
 import dev.talhabayhan.lexi.core.domain.repository.ExamPackRepository
@@ -43,6 +44,7 @@ internal class HomeViewModel(
     getDailyGoalProgress: GetDailyGoalProgress,
     private val grantDailyJokers: GrantDailyJokers,
     private val shouldShowReminderPrePrompt: ShouldShowReminderPrePrompt,
+    private val requestInAppReview: RequestInAppReview,
     private val examPacks: ExamPackRepository,
     private val flags: FeatureFlags,
 ) : ViewModel() {
@@ -156,8 +158,13 @@ internal class HomeViewModel(
                     val count = shouldShowReminderPrePrompt.realGameCount()
                     val previous = realGamesSeen
                     realGamesSeen = count
-                    if (previous != null && count > previous && shouldShowReminderPrePrompt()) {
-                        effectChannel.trySend(HomeEffect.NavigateToReminderPrePrompt)
+                    if (previous != null && count > previous) {
+                        if (shouldShowReminderPrePrompt()) {
+                            effectChannel.trySend(HomeEffect.NavigateToReminderPrePrompt)
+                        } else {
+                            // The store's own prompt (ADR 0024), never together with the reminder pre-prompt.
+                            requestInAppReview()
+                        }
                     }
                 }
             } catch (e: CancellationException) {

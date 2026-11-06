@@ -20,6 +20,7 @@ The event list is closed: a new event or parameter is added here first, then to 
 | `game_finish` | `mode`, `level`, `correct`, `duration_s` | A wheel ends for any reason (all answered, time up, Hardcore wrong, forfeit) (`GameViewModel`) |
 | `share` | – | The share sheet was shown for the result card (`ResultViewModel`) |
 | `reminder_enabled` | – | The daily reminder was turned on: Settings switch with permission, or pre-prompt accepted and granted |
+| `rating_prompt_requested` | – | The store rating API was invoked (`RequestInAppReview`, `GAME_RULES.md` §14); the OS decides whether the player sees it, so it says nothing about a rating |
 | `joker_used` | `type` | A joker was applied (`GameViewModel`) |
 | `duel_start` | `clock_s` | A hot-seat duel is loaded and its first handover card shows (`DuelViewModel`) |
 | `duel_finish` | `result_type` | A hot-seat duel ends (`DuelViewModel`); never the players' names |

@@ -16,6 +16,7 @@ import dev.talhabayhan.lexi.core.domain.feedback.SoundPlayer
 import dev.talhabayhan.lexi.core.domain.feedback.Speaker
 import dev.talhabayhan.lexi.core.domain.platform.ShareService
 import dev.talhabayhan.lexi.core.domain.platform.UrlOpener
+import dev.talhabayhan.lexi.core.domain.rating.ReviewRequester
 import dev.talhabayhan.lexi.core.domain.reminder.NotificationPermission
 import dev.talhabayhan.lexi.core.domain.reminder.ReminderScheduler
 import dev.talhabayhan.lexi.core.domain.repository.EntitlementRepository
@@ -27,6 +28,7 @@ import dev.talhabayhan.lexi.core.platform.feedback.AndroidSpeaker
 import dev.talhabayhan.lexi.core.platform.feedback.GatedHaptics
 import dev.talhabayhan.lexi.core.platform.feedback.GatedSoundPlayer
 import dev.talhabayhan.lexi.core.platform.feedback.LiveSettings
+import dev.talhabayhan.lexi.core.platform.rating.PlayReviewRequester
 import dev.talhabayhan.lexi.core.platform.reminder.AndroidReminderScheduler
 import dev.talhabayhan.lexi.core.platform.share.AndroidShareService
 import dev.talhabayhan.lexi.core.platform.telemetry.ConsentGatedAnalyticsTracker
@@ -35,6 +37,7 @@ import dev.talhabayhan.lexi.core.platform.telemetry.FirebaseCrashReporter
 import dev.talhabayhan.lexi.core.platform.uri.AndroidUrlOpener
 import dev.talhabayhan.lexi.reminder.AndroidNotificationPermission
 import dev.talhabayhan.lexi.reminder.ComposeReminderTextProvider
+import dev.talhabayhan.lexi.reminder.NotificationPermissionHost
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -73,6 +76,7 @@ internal fun androidPlatformModule(context: Context): Module = module {
     } onClose { (it as? AutoCloseable)?.close() }
     single<UrlOpener> { AndroidUrlOpener(context) }
     single<ShareService> { AndroidShareService(context) }
+    single<ReviewRequester> { PlayReviewRequester(context, activity = NotificationPermissionHost::currentActivity) }
     single<ReminderScheduler> {
         val texts = get<ComposeReminderTextProvider>()
         AndroidReminderScheduler(context, clock = get(), channelName = texts::channelName)

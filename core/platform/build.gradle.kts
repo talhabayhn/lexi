@@ -18,6 +18,8 @@ kotlin {
             implementation(project.dependencies.platform(libs.firebase.bom))
             implementation(libs.firebase.analytics)
             implementation(libs.firebase.crashlytics)
+            // Google Play In-App Review behind ReviewRequester (ADR 0024).
+            implementation(libs.play.review)
         }
         getByName("androidHostTest").dependencies {
             implementation(libs.kotlin.testJunit)

@@ -1,6 +1,7 @@
 package dev.talhabayhan.lexi.feature.settings.about
 
 import androidx.lifecycle.ViewModel
+import dev.talhabayhan.lexi.core.domain.rating.ReviewRequester
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -8,8 +9,8 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
 
-internal class AboutViewModel : ViewModel() {
-    private val mutableState = MutableStateFlow(AboutUiState())
+internal class AboutViewModel(reviewRequester: ReviewRequester) : ViewModel() {
+    private val mutableState = MutableStateFlow(AboutUiState(storePageUrl = reviewRequester.storePageUrl))
     val state: StateFlow<AboutUiState> = mutableState.asStateFlow()
 
     private val effectChannel = Channel<AboutEffect>(Channel.BUFFERED)

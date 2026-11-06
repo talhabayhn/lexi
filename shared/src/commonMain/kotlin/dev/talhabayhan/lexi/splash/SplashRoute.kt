@@ -20,8 +20,10 @@ import dev.talhabayhan.lexi.core.domain.feedback.HapticKind
 import dev.talhabayhan.lexi.core.domain.feedback.SoundEffect
 import dev.talhabayhan.lexi.core.domain.repository.ContentVersionRepository
 import dev.talhabayhan.lexi.core.domain.repository.OnboardingRepository
+import dev.talhabayhan.lexi.core.domain.repository.SettingsRepository
 import dev.talhabayhan.lexi.core.domain.telemetry.AnalyticsEvent
 import dev.talhabayhan.lexi.core.domain.telemetry.AnalyticsTracker
+import dev.talhabayhan.lexi.core.domain.time.AppClock
 import dev.talhabayhan.lexi.shared.generated.resources.Res
 import dev.talhabayhan.lexi.shared.generated.resources.splash_tagline
 import dev.talhabayhan.lexi.startup.StartupTrace
@@ -64,6 +66,8 @@ internal fun SplashRoute(
     content: ContentVersionRepository = koinInject(),
     onboarding: OnboardingRepository = koinInject(),
     analytics: AnalyticsTracker = koinInject(),
+    settings: SettingsRepository = koinInject(),
+    clock: AppClock = koinInject(),
 ) {
     val motion = LexiTheme.motion
     val haptics = LocalHaptics.current
@@ -105,6 +109,14 @@ internal fun SplashRoute(
         SplashState.finished.value = true
         // The splash runs once per cold start (docs/ANALYTICS.md).
         analytics.track(AnalyticsEvent.AppOpen)
+        // The install date for the rating request rules (RequestInAppReview); a failed write only delays it.
+        try {
+            settings.recordFirstLaunch(clock.nowMs())
+        } catch (e: CancellationException) {
+            throw e
+        } catch (@Suppress("TooGenericExceptionCaught") _: Exception) {
+            // Ignored: the rating request then simply waits for the next launch.
+        }
         currentOnFinished(completed)
     }
     SplashScreen(progress = { progress.value })

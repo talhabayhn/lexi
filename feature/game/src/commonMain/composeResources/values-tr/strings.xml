@@ -157,13 +157,6 @@
     <string name="result_share">Paylaş</string>
     <string name="result_home">Ana menüye dön</string>
 
-    <!-- Değerlendirme istemi (M8.4, COPY.md §8) -->
-    <string name="rate_title">Lexi hoşuna gidiyor mu?</string>
-    <string name="rate_body">Bir yorum bırakırsan başkalarının da bizi bulmasına yardım edersin.</string>
-    <string name="rate_yes">Puan ver</string>
-    <string name="rate_later">Şimdi değil</string>
-    <string name="rate_feedback">Önerim var</string>
-    <string name="rate_feedback_body">Görüşlerini e-postayla iletebilirsin.</string>
 
     <!-- Paylaşım kartı (`12-share-card`, COPY.md §7) -->
     <string name="share_caption_time">A'dan Z'ye %1$d sn kala bitirdim. Yenebilir misin?</string>
