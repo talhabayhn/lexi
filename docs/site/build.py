@@ -35,7 +35,8 @@ T = {
             ("Learn, not just play", "Review list after every game, word notebook with spaced repetition, stats."),
             ("Works offline", "All words are stored on your device. No account needed."),
         ],
-        "soon": "Coming soon to Google Play and the App Store.",
+        "soon": "Get it on Google Play",
+        "soon_ios": "App Store: coming soon.",
         "nav": {"home": "Home", "privacy": "Privacy", "terms": "Terms", "support": "Support"},
         "other": "Türkçe",
         "support_title": "Support",
@@ -60,7 +61,8 @@ T = {
             ("Sadece oynama, öğren", "Her oyundan sonra tekrar listesi, aralıklı tekrarlı kelime defteri, istatistikler."),
             ("Çevrimdışı çalışır", "Tüm kelimeler cihazında saklanır. Hesap gerekmez."),
         ],
-        "soon": "Yakında Google Play ve App Store'da.",
+        "soon": "Google Play'den indir",
+        "soon_ios": "App Store: yakında.",
         "nav": {"home": "Ana sayfa", "privacy": "Gizlilik", "terms": "Koşullar", "support": "Destek"},
         "other": "English",
         "support_title": "Destek",
@@ -111,7 +113,7 @@ main{padding:8px 0 56px}
 .card h3{margin:0 0 6px;font-size:20px;font-weight:700}.card p{margin:0}
 .card:nth-child(1){box-shadow:6px 6px 0 var(--red)}.card:nth-child(2){box-shadow:6px 6px 0 var(--yellow)}
 .card:nth-child(3){box-shadow:6px 6px 0 var(--blue)}.card:nth-child(4){box-shadow:6px 6px 0 var(--ink)}
-.soon{display:inline-block;background:var(--ink);color:var(--cream);font-weight:700;padding:12px 18px;margin-top:16px}
+.soon{display:inline-block;text-decoration:none;background:var(--ink);color:var(--cream);font-weight:700;padding:12px 18px;margin-top:16px}
 .doc h1{font-size:36px;line-height:1.15;font-weight:800;margin:32px 0 12px}
 .doc h2{font-size:22px;font-weight:700;margin:32px 0 8px;padding-top:12px;border-top:3px solid var(--ink)}
 .doc h3{font-size:18px;font-weight:700;margin:20px 0 6px}
@@ -233,7 +235,7 @@ def landing(lang: str) -> str:
     t = T[lang]
     cards = "".join(f'<div class="card"><h3>{inline(h)}</h3><p>{inline(p)}</p></div>' for h, p in t["features"])
     return f"""<section class="hero">
-<div><h1>{inline(t['hero'])}</h1><p>{inline(t['lead'])}</p><span class="soon">{t['soon']}</span></div>
+<div><h1>{inline(t['hero'])}</h1><p>{inline(t['lead'])}</p><a class="soon" href="https://play.google.com/store/apps/details?id=dev.talhabayhan.lexi">{t['soon']}</a><p class="ios">{t['soon_ios']}</p></div>
 <div class="logo" role="img" aria-label="Lexi"><span class="sq">L</span><span class="ci">E</span><span class="lf">X</span><span class="bk">I</span></div>
 </section>
 <section class="grid">{cards}</section>"""

@@ -59,10 +59,16 @@
 - [ ] Confirm Firebase "Granular location" is off; check iOS Crashlytics stack traces are symbolicated (app dSYM).
 
 ### Before the public release
-- [ ] Site still says "Yakında Google Play ve App Store'da": change it to the store link when each store goes live.
+- [x] Play production live (https://play.google.com/store/apps/details?id=dev.talhabayhan.lexi); site links Google Play.
+- [ ] iOS: pending App Store review; when approved, replace the site's "App Store: coming soon" note with the store link.
 - [ ] App Store Connect App Privacy per `app-privacy-apple.md` §0; Play Data safety already submitted.
 - [ ] Store listing TR/EN, screenshots.
 - [ ] Designs for the consent block, reminder sheet, level-test intro/result.
+
+### 1.0.8
+- [ ] Share card link: set `StoreLinks.SHARE_LINK_LABEL` to the website URL https://talhabayhn.github.io/lexi (one link offering both stores).
+- [ ] Check that the in-app rating prompt uses the official Play In-App Review API and iOS `requestReview`.
+- [ ] Play Data safety: add approximate location (optional, analytics) for consistency with App Privacy.
 
 ### Payments
 - [ ] W-8BEN status.
