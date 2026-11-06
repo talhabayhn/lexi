@@ -17,8 +17,10 @@ public data class Settings(
     val dailyReminder: Boolean = false,
     /** Reminder time as minutes after local midnight (design: 20:00); one of `ReminderTimes.optionsMinuteOfDay`. */
     val reminderMinuteOfDay: Int = DEFAULT_REMINDER_MINUTE_OF_DAY,
-    /** The one-time reminder pre-prompt was shown (any answer); never shown again (`ShouldShowReminderPrePrompt`). */
-    val reminderPrePromptShown: Boolean = false,
+    /** How often the proactive reminder pre-prompt was shown (max two, `ReminderPrePromptPolicy`). */
+    val reminderPrePromptAsks: Int = 0,
+    /** Epoch ms of the latest pre-prompt (0 = never); the second one waits 7 days after it. */
+    val reminderPrePromptLastAskMs: Long = 0L,
     /** "Günlük hedef": wheels per day, at least 1. */
     val dailyGoalWheels: Int = 1,
     /** "Kelime defteri tekrarları": remind about due notebook cards. */
@@ -30,6 +32,9 @@ public data class Settings(
     val analyticsConsent: Boolean = false,
 ) {
     public val uiLanguage: AppLanguage get() = appLanguage
+
+    /** The pre-prompt was shown at least once. */
+    public val reminderPrePromptShown: Boolean get() = reminderPrePromptAsks > 0
 
     init {
         require(reminderMinuteOfDay in 0 until MINUTES_PER_DAY) { "reminderMinuteOfDay $reminderMinuteOfDay" }

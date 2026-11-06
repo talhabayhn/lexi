@@ -20,7 +20,7 @@ public object StoreLinks {
 
     /**
      * The link printed on the share card's footer and appended to the share text (`12-share-card` "[MAĞAZA LİNKİ]").
-     * Blank until a public landing link exists: the card and the share text then leave the link out.
+     * One landing page for both stores; a blank value would leave the link out of the card and the share text.
      */
-    public const val SHARE_LINK_LABEL: String = ""
+    public const val SHARE_LINK_LABEL: String = "https://talhabayhn.github.io/lexi"
 }

@@ -10,7 +10,7 @@ import dev.talhabayhan.lexi.core.domain.time.CivilDate
 
 /** The design's sample data (`12-share-card.html`) for previews and screenshot tests; content, not UI copy. */
 internal object ShareCardSamples {
-    /** The design's footer placeholder; the app shows `StoreLinks.SHARE_LINK_LABEL` (blank for now). */
+    /** The design's footer placeholder; the app shows `StoreLinks.SHARE_LINK_LABEL` . */
     const val DESIGN_LINK: String = "[MAĞAZA LİNKİ]"
 
     private val passed = setOf('C', 'H', 'X')

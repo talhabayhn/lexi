@@ -83,8 +83,35 @@ internal object GameUiMapper {
             is JokerCost.Points -> if (state.mode.isScored) JokerCostUi.Points(cost.points) else JokerCostUi.Free
             JokerCost.Free -> JokerCostUi.Free
         }
-        JokerUi(type, state.jokers.count(type), cost, engine.canUseJoker(state, type))
+        val enabled = engine.canUseJoker(state, type)
+        JokerUi(
+            type,
+            state.jokers.count(type),
+            cost,
+            enabled,
+            if (enabled) null else disabledReason(state, engine, type),
+        )
     }.toImmutableList()
+
+    /** Why [type] can't be used now; precedence = [JokerDisabledReason] order. */
+    internal fun disabledReason(state: GameState, engine: GameEngine, type: JokerType): JokerDisabledReason {
+        val level = state.currentSlot?.card?.level
+        return when {
+            state.jokers.count(type) <= 0 -> JokerDisabledReason.NoneLeft
+
+            state.currentInput?.jokersUsed?.isNotEmpty() == true -> JokerDisabledReason.UsedForLetter
+
+            state.mode in engine.config.jokerFreeModes -> JokerDisabledReason.ModeNotAllowed
+
+            level != null && !engine.config.isJokerAllowed(
+                type,
+                state.mode,
+                level,
+            ) -> JokerDisabledReason.LevelNotAllowed
+
+            else -> JokerDisabledReason.Unavailable
+        }
+    }
 
     /**
      * [example] with every occurrence of [answer] (whole words, any case) blanked letter by letter; the spaces of a

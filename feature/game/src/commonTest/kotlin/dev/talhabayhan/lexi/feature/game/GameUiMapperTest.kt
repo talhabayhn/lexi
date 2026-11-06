@@ -245,7 +245,7 @@ class GameUiMapperTest {
                 JokerUi(JokerType.REVEAL_LETTER, 2, JokerCostUi.Seconds(10), enabled = true),
                 JokerUi(JokerType.REMOVE_DISTRACTORS, 1, JokerCostUi.Seconds(15), enabled = true),
                 JokerUi(JokerType.EXAMPLE, 3, JokerCostUi.Points(5), enabled = true),
-                JokerUi(JokerType.LISTEN, 0, JokerCostUi.Points(10), enabled = false),
+                JokerUi(JokerType.LISTEN, 0, JokerCostUi.Points(10), false, JokerDisabledReason.NoneLeft),
             ),
             ui.jokers,
         )
@@ -290,6 +290,51 @@ class GameUiMapperTest {
         ).state
 
         assertFalse(GameUiMapper.map(state, engine).jokers.single { it.type == JokerType.LISTEN }.enabled)
+    }
+
+    @Test
+    fun `an enabled joker has no reason and an empty inventory says none left first`() {
+        val ui = GameUiMapper.map(started(jokers = JokerInventory(mapOf(JokerType.EXAMPLE to 1))), engine)
+
+        assertNull(ui.jokers.single { it.type == JokerType.EXAMPLE }.disabledReason)
+        assertEquals(JokerDisabledReason.NoneLeft, ui.jokers.single { it.type == JokerType.LISTEN }.disabledReason)
+    }
+
+    @Test
+    fun `a joker used on the letter makes the others with stock say used for letter`() {
+        val used = started(jokers = pack).after(GameEvent.UseJoker(JokerType.EXAMPLE))
+        val reasons = GameUiMapper.map(used, engine).jokers.map { it.disabledReason }
+
+        assertEquals(List(3) { JokerDisabledReason.UsedForLetter } + JokerDisabledReason.NoneLeft, reasons)
+    }
+
+    @Test
+    fun `daily has no jokers and listen is off at C1`() {
+        val daily = GameUiMapper.map(started(jokers = pack, mode = GameMode.DAILY), engine)
+        assertEquals(
+            List(3) {
+                JokerDisabledReason.ModeNotAllowed
+            } + JokerDisabledReason.NoneLeft,
+            daily.jokers.map { it.disabledReason },
+        )
+
+        val c1Wheel = Wheel(listOf(Slot('A', testCard("APPLE", level = Level.C1), SlotState.TODO)))
+        val c1 = engine.reduce(
+            engine.newGame(SEED, GameMode.CLASSIC, Level.C1, c1Wheel, JokerInventory(mapOf(JokerType.LISTEN to 1))),
+            GameEvent.Start(0L),
+        ).state
+        val listen = GameUiMapper.map(c1, engine).jokers.single { it.type == JokerType.LISTEN }
+        assertEquals(JokerDisabledReason.LevelNotAllowed, listen.disabledReason)
+    }
+
+    @Test
+    fun `a paused game falls back to unavailable`() {
+        val paused = started(jokers = pack).after(GameEvent.Pause)
+
+        assertEquals(
+            List(3) { JokerDisabledReason.Unavailable } + JokerDisabledReason.NoneLeft,
+            GameUiMapper.map(paused, engine).jokers.map { it.disabledReason },
+        )
     }
 
     @Test

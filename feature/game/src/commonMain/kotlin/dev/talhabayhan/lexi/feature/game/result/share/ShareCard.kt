@@ -19,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import dev.talhabayhan.lexi.core.designsystem.component.DecorShape
 import dev.talhabayhan.lexi.core.designsystem.component.DecorShapeKind
@@ -183,7 +184,16 @@ private fun Footer(link: String) {
         verticalAlignment = Alignment.CenterVertically,
     ) {
         LexiWordmark(size = LexiWordmarkSize.ShareCard)
-        if (link.isNotBlank()) Text(link, style = LexiTheme.typography.caption14SemiBold)
+        if (link.isNotBlank()) {
+            // Shares the row with the wordmark: never wraps, gives way (clipped) rather than push the wordmark off.
+            Text(
+                link,
+                style = LexiTheme.typography.caption14SemiBold,
+                maxLines = 1,
+                overflow = TextOverflow.Clip,
+                modifier = Modifier.weight(1f, fill = false).padding(start = LexiTheme.dimens.gap12),
+            )
+        }
     }
 }
 

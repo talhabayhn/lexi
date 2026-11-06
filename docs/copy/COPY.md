@@ -36,7 +36,10 @@ consecutive days; never-played user treated as played yesterday; `notif_goal` no
 | `notif_comeback_14d_title/_body` | 14 days without play (last one) | Tekrar görüşmek güzel olur | Kelimelerin defterinde saklı; istediğinde devam. | Come back whenever | Your words are safe in your notebook. | 40 / 70 |
 | `notif_goal_title/_body` | Daily goal 1 step left (optional) | Hedefe az kaldı | Bugünkü hedefin için {n} doğru cevap yeter. | Almost at your goal | {n} more correct answers hit today's goal. | 40 / 70 |
 
-Pre-prompt (before the OS permission dialog, onboarding layout — design debt):
+Pre-prompt (before the OS permission dialog, onboarding layout — design debt). Shown on Home after returning from the
+**2nd completed real game** (never the 1st; level test and duel don't count, never during onboarding). "Şimdi değil" (or
+closing it) allows **one more** ask 7 days later, only while the OS dialog can still be shown; **max two in total**
+(`ReminderPrePromptPolicy`):
 
 | Key | TR | EN | Budget |
 |---|---|---|---|

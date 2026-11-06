@@ -4,15 +4,21 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
@@ -25,6 +31,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.boundsInParent
 import androidx.compose.ui.layout.onPlaced
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import dev.talhabayhan.lexi.core.designsystem.component.BottomSheet
 import dev.talhabayhan.lexi.core.designsystem.component.DecorShapeKind
@@ -43,6 +51,7 @@ import dev.talhabayhan.lexi.core.domain.game.JokerType
 import dev.talhabayhan.lexi.feature.game.GameClockUi
 import dev.talhabayhan.lexi.feature.game.GameIntent
 import dev.talhabayhan.lexi.feature.game.JokerCostUi
+import dev.talhabayhan.lexi.feature.game.JokerDisabledReason
 import dev.talhabayhan.lexi.feature.game.JokerUi
 import dev.talhabayhan.lexi.feature.game.generated.resources.Res
 import dev.talhabayhan.lexi.feature.game.generated.resources.game_joker_cost_free
@@ -52,8 +61,18 @@ import dev.talhabayhan.lexi.feature.game.generated.resources.game_joker_count
 import dev.talhabayhan.lexi.feature.game.generated.resources.game_joker_count_none
 import dev.talhabayhan.lexi.feature.game.generated.resources.game_joker_example
 import dev.talhabayhan.lexi.feature.game.generated.resources.game_joker_example_text
+import dev.talhabayhan.lexi.feature.game.generated.resources.game_joker_help_cost
+import dev.talhabayhan.lexi.feature.game.generated.resources.game_joker_help_earn
+import dev.talhabayhan.lexi.feature.game.generated.resources.game_joker_help_limit
+import dev.talhabayhan.lexi.feature.game.generated.resources.game_joker_help_link
+import dev.talhabayhan.lexi.feature.game.generated.resources.game_joker_help_none
 import dev.talhabayhan.lexi.feature.game.generated.resources.game_joker_listen
 import dev.talhabayhan.lexi.feature.game.generated.resources.game_joker_listen_text
+import dev.talhabayhan.lexi.feature.game.generated.resources.game_joker_reason_level
+import dev.talhabayhan.lexi.feature.game.generated.resources.game_joker_reason_mode
+import dev.talhabayhan.lexi.feature.game.generated.resources.game_joker_reason_none_left
+import dev.talhabayhan.lexi.feature.game.generated.resources.game_joker_reason_unavailable
+import dev.talhabayhan.lexi.feature.game.generated.resources.game_joker_reason_used
 import dev.talhabayhan.lexi.feature.game.generated.resources.game_joker_remove
 import dev.talhabayhan.lexi.feature.game.generated.resources.game_joker_remove_text
 import dev.talhabayhan.lexi.feature.game.generated.resources.game_joker_reveal
@@ -98,6 +117,7 @@ internal fun JokerSheet(
             topReserved = if (timed) with(density) { pillBottom.toDp() } + OverlayDefaults.SheetGap else 0.dp,
         ) {
             jokers.forEach { joker -> JokerOption(joker, onClick = { onIntent(GameIntent.UseJoker(joker.type)) }) }
+            JokerHelp()
             if (adReward != null) {
                 LexiButton(
                     text = stringResource(Res.string.game_jokers_ad, adReward),
@@ -143,8 +163,59 @@ private fun ClockPill(clock: () -> GameClockUi) {
     StatusPill(stringResource(Res.string.game_jokers_clock_running, formatClock(seconds)))
 }
 
+/** "Jokerler nasıl çalışır?": a link that unfolds the rules in place (needs design: built from 16-components). */
+@Composable
+private fun JokerHelp() {
+    var open by remember { mutableStateOf(false) }
+    val typography = LexiTheme.typography
+    val colors = LexiTheme.colors
+    Text(
+        text = stringResource(Res.string.game_joker_help_link),
+        style = typography.bodyStrong14.copy(textDecoration = TextDecoration.Underline),
+        color = colors.ink,
+        modifier = Modifier
+            .fillMaxWidth()
+            .heightIn(min = LexiTheme.dimens.minTouchTarget)
+            .clickable(role = Role.Button) { open = !open }
+            .wrapContentHeight(Alignment.CenterVertically),
+    )
+    if (open) {
+        Column(verticalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap6)) {
+            listOf(
+                Res.string.game_joker_help_cost,
+                Res.string.game_joker_help_limit,
+                Res.string.game_joker_help_earn,
+                Res.string.game_joker_help_none,
+            ).forEach { Text(stringResource(it), style = typography.caption13, color = colors.ink) }
+        }
+    }
+}
+
 @Composable
 private fun JokerOption(joker: JokerUi, onClick: () -> Unit) {
+    Column(verticalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap6)) {
+        JokerRowContent(joker, onClick)
+        joker.disabledReason?.let { reason ->
+            Text(
+                text = stringResource(reason.text()),
+                style = LexiTheme.typography.caption13,
+                color = LexiTheme.colors.inkMuted,
+                modifier = Modifier.padding(horizontal = JokerRowDefaults.Gap),
+            )
+        }
+    }
+}
+
+private fun JokerDisabledReason.text(): StringResource = when (this) {
+    JokerDisabledReason.NoneLeft -> Res.string.game_joker_reason_none_left
+    JokerDisabledReason.UsedForLetter -> Res.string.game_joker_reason_used
+    JokerDisabledReason.ModeNotAllowed -> Res.string.game_joker_reason_mode
+    JokerDisabledReason.LevelNotAllowed -> Res.string.game_joker_reason_level
+    JokerDisabledReason.Unavailable -> Res.string.game_joker_reason_unavailable
+}
+
+@Composable
+private fun JokerRowContent(joker: JokerUi, onClick: () -> Unit) {
     val colors = LexiTheme.colors
     val look = joker.type.look()
     JokerRow(

@@ -79,7 +79,32 @@ internal enum class GameLoadError {
 
 /** One joker of the sheet. [enabled] = `GameEngine.canUseJoker` (inventory, one per slot, mode, level, cost). */
 @Immutable
-internal data class JokerUi(val type: JokerType, val count: Int, val cost: JokerCostUi, val enabled: Boolean)
+internal data class JokerUi(
+    val type: JokerType,
+    val count: Int,
+    val cost: JokerCostUi,
+    val enabled: Boolean,
+    /** Why the joker is off (one line under its row); null while [enabled]. */
+    val disabledReason: JokerDisabledReason? = null,
+)
+
+/** The one-line reason under a disabled joker row; the first matching reason wins, in this order. */
+internal enum class JokerDisabledReason {
+    /** Inventory is empty: "Hakkın bitti". */
+    NoneLeft,
+
+    /** A joker was already used on this letter (one per letter, any type): "Bu harf için joker kullandın". */
+    UsedForLetter,
+
+    /** The mode has no jokers (Daily, Duel, level test): "Bu modda joker yok". */
+    ModeNotAllowed,
+
+    /** Listen is off at C1 and above: "C1 ve üstünde kapalı". */
+    LevelNotAllowed,
+
+    /** Everything else (not enough time left, no distractors left, paused or revealing): "Şu an kullanılamaz". */
+    Unavailable,
+}
 
 /** What a joker costs in the current mode (`GameConfig.jokerCost`): "−10 sn", "−5 puan" or free. */
 @Immutable

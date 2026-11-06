@@ -7,6 +7,7 @@ import dev.talhabayhan.lexi.core.domain.reminder.PermissionStatus
 import dev.talhabayhan.lexi.core.domain.repository.SettingsRepository
 import dev.talhabayhan.lexi.core.domain.telemetry.AnalyticsEvent
 import dev.talhabayhan.lexi.core.domain.telemetry.AnalyticsTracker
+import dev.talhabayhan.lexi.core.domain.time.AppClock
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
@@ -25,6 +26,7 @@ internal class ReminderPrePromptViewModel(
     private val settings: SettingsRepository,
     private val answer: AnswerReminderPrePrompt,
     private val analytics: AnalyticsTracker,
+    private val clock: AppClock,
 ) : ViewModel() {
     private val mutableState = MutableStateFlow(ReminderPrePromptUiState())
     val state: StateFlow<ReminderPrePromptUiState> = mutableState.asStateFlow()
@@ -35,7 +37,7 @@ internal class ReminderPrePromptViewModel(
     init {
         viewModelScope.launch {
             try {
-                settings.setReminderPrePromptShown()
+                settings.recordReminderPrePromptAsked(clock.nowMs())
             } catch (e: CancellationException) {
                 throw e
             } catch (@Suppress("TooGenericExceptionCaught") e: Exception) {

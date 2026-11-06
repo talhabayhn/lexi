@@ -18,8 +18,23 @@ public interface SettingsRepository {
     /** Atomically applies [transform] to the stored settings. */
     public suspend fun update(transform: (Settings) -> Settings)
 
-    /** Stores `Settings.reminderPrePromptShown` (the one-time reminder pre-prompt). */
-    public suspend fun setReminderPrePromptShown(shown: Boolean = true) {
-        update { it.copy(reminderPrePromptShown = shown) }
+    /**
+     * Counts one reminder pre-prompt at [nowMs]. Idempotent within [PRE_PROMPT_SAME_ASK_MS]: the screen records the ask
+     * when it opens and the answer records it again, which must stay one ask.
+     */
+    public suspend fun recordReminderPrePromptAsked(nowMs: Long) {
+        update {
+            if (it.reminderPrePromptAsks > 0 &&
+                nowMs - it.reminderPrePromptLastAskMs in 0 until PRE_PROMPT_SAME_ASK_MS
+            ) {
+                it
+            } else {
+                it.copy(reminderPrePromptAsks = it.reminderPrePromptAsks + 1, reminderPrePromptLastAskMs = nowMs)
+            }
+        }
+    }
+
+    private companion object {
+        const val PRE_PROMPT_SAME_ASK_MS = 60 * 60 * 1000L
     }
 }

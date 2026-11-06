@@ -56,7 +56,8 @@ class SettingsRepositoryTest {
             classicTimeLimitSeconds = 240,
             dailyReminder = true,
             reminderMinuteOfDay = 21 * 60 + 30,
-            reminderPrePromptShown = true,
+            reminderPrePromptAsks = 2,
+            reminderPrePromptLastAskMs = 1_700_000_000_000L,
             dailyGoalWheels = 3,
             reviewReminders = false,
             appLanguage = UiLanguage.EN,
@@ -99,13 +100,27 @@ class SettingsRepositoryTest {
     }
 
     @Test
-    fun `reminder pre-prompt flag is stored under reminder_preprompt_shown`() = runTest {
+    fun `reminder pre-prompt asks are counted and stored`() = runTest {
         val dataStore = createSettingsDataStore(path, backgroundScope)
         val repository = SettingsRepositoryImpl(dataStore, GameConfig(), backgroundScope)
 
-        repository.setReminderPrePromptShown()
+        repository.recordReminderPrePromptAsked(5_000L)
+        repository.recordReminderPrePromptAsked(6_000L)
 
-        assertEquals(true, dataStore.data.first()[booleanPreferencesKey("reminder_preprompt_shown")])
+        assertEquals(1, repository.settings.first().reminderPrePromptAsks)
         assertEquals(true, repository.settings.first().reminderPrePromptShown)
+        assertEquals(true, dataStore.data.first()[booleanPreferencesKey("reminder_preprompt_shown")])
+    }
+
+    @Test
+    fun `a v1_0 shown flag counts as one earlier ask`() = runTest {
+        val dataStore = createSettingsDataStore(path, backgroundScope)
+        dataStore.edit { it[booleanPreferencesKey("reminder_preprompt_shown")] = true }
+        val repository = SettingsRepositoryImpl(dataStore, GameConfig(), backgroundScope)
+
+        val settings = repository.settings.first { it.reminderPrePromptAsks > 0 }
+
+        assertEquals(1, settings.reminderPrePromptAsks)
+        assertEquals(0L, settings.reminderPrePromptLastAskMs)
     }
 }

@@ -100,7 +100,7 @@ internal object GameSamples {
             JokerUi(JokerType.REVEAL_LETTER, 2, JokerCostUi.Seconds(10), enabled = true),
             JokerUi(JokerType.REMOVE_DISTRACTORS, 1, JokerCostUi.Seconds(15), enabled = true),
             JokerUi(JokerType.EXAMPLE, 3, JokerCostUi.Points(5), enabled = true),
-            JokerUi(JokerType.LISTEN, 0, JokerCostUi.Points(10), enabled = false),
+            JokerUi(JokerType.LISTEN, 0, JokerCostUi.Points(10), false, JokerDisabledReason.NoneLeft),
         ),
         jokerAdReward = 1,
         isJokerSheetOpen = true,

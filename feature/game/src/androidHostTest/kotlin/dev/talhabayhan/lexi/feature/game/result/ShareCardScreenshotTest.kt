@@ -2,6 +2,7 @@ package dev.talhabayhan.lexi.feature.game.result
 
 import com.github.takahirom.roborazzi.captureRoboImage
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
+import dev.talhabayhan.lexi.core.domain.platform.StoreLinks
 import dev.talhabayhan.lexi.core.domain.share.ShareCard
 import dev.talhabayhan.lexi.feature.game.result.share.ShareCard
 import dev.talhabayhan.lexi.feature.game.result.share.ShareCardSamples
@@ -21,13 +22,13 @@ class ShareCardScreenshotTest {
     @Test
     fun designSample() = capture("ShareCard", ShareCardSamples.design, ShareCardSamples.DESIGN_LINK)
 
-    /** Daily: "GÜNÜN ÇARKI", no level segment; no link yet (`StoreLinks.SHARE_LINK_LABEL` is blank). */
+    /** Daily: "GÜNÜN ÇARKI", no level segment; the real footer link (`StoreLinks.SHARE_LINK_LABEL`). */
     @Test
-    fun dailyWithoutLink() = capture("ShareCardDaily", ShareCardSamples.daily, link = "")
+    fun daily() = capture("ShareCardDaily", ShareCardSamples.daily, link = StoreLinks.SHARE_LINK_LABEL)
 
     /** Time up without a streak: "süre bitti", unanswered letters as cream circles. */
     @Test
-    fun timeUp() = capture("ShareCardTimeUp", ShareCardSamples.timeUp, link = "")
+    fun timeUp() = capture("ShareCardTimeUp", ShareCardSamples.timeUp, link = StoreLinks.SHARE_LINK_LABEL)
 
     @Test
     @Config(qualifiers = "en-w432dp-h540dp-xhdpi")
@@ -35,7 +36,7 @@ class ShareCardScreenshotTest {
 
     @Test
     @Config(qualifiers = "en-w432dp-h540dp-xhdpi")
-    fun dailyEnglish() = capture("ShareCardDailyEnglish", ShareCardSamples.daily, link = "")
+    fun dailyEnglish() = capture("ShareCardDailyEnglish", ShareCardSamples.daily, link = StoreLinks.SHARE_LINK_LABEL)
 
     private fun capture(name: String, card: ShareCard, link: String) {
         captureRoboImage("src/androidHostTest/screenshots/$name.png") {

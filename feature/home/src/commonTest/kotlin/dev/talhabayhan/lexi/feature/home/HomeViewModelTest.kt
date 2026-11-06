@@ -12,6 +12,7 @@ import dev.talhabayhan.lexi.core.domain.model.CardId
 import dev.talhabayhan.lexi.core.domain.model.CategoryId
 import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.core.domain.reminder.PermissionStatus
+import dev.talhabayhan.lexi.core.domain.reminder.ReminderPrePromptPolicy
 import dev.talhabayhan.lexi.core.domain.reminder.ShouldShowReminderPrePrompt
 import dev.talhabayhan.lexi.core.domain.session.DailyResult
 import dev.talhabayhan.lexi.core.domain.session.SessionResult
@@ -65,7 +66,7 @@ class HomeViewModelTest {
     private val grantDailyJokers = GrantDailyJokers(jokers, streaks, clock, GameConfig())
     private val examPacks = FakeExamPackRepository()
     private val permission = FakeNotificationPermission(PermissionStatus.CAN_ASK)
-    private val shouldShowPrePrompt = ShouldShowReminderPrePrompt(settings, sessions, permission)
+    private val shouldShowPrePrompt = ShouldShowReminderPrePrompt(settings, sessions, permission, clock)
 
     @BeforeTest
     fun setUp() {
@@ -376,14 +377,43 @@ class HomeViewModelTest {
     }
 
     @Test
-    fun `returning to home after a real game opens the reminder pre-prompt`() = runHomeTest {
+    fun `returning to home after the second real game opens the reminder pre-prompt and not after the first`() =
+        runHomeTest {
+            val vm = viewModel()
+            vm.effects.test {
+                vm.onIntent(HomeIntent.Entered)
+                sessions.record(session())
+                vm.onIntent(HomeIntent.Entered)
+                expectNoEvents()
+                sessions.record(session())
+                vm.onIntent(HomeIntent.Entered)
+                assertEquals(HomeEffect.NavigateToReminderPrePrompt, awaitItem())
+                cancelAndIgnoreRemainingEvents()
+            }
+        }
+
+    @Test
+    fun `after not now the pre-prompt comes once more after seven days and then never`() = runHomeTest {
+        sessions.record(session())
+        sessions.record(session())
+        settings.recordReminderPrePromptAsked(clock.nowMs())
         val vm = viewModel()
         vm.effects.test {
             vm.onIntent(HomeIntent.Entered)
             sessions.record(session())
             vm.onIntent(HomeIntent.Entered)
+            expectNoEvents()
+
+            clock.advanceBy(ReminderPrePromptPolicy.SECOND_ASK_DELAY_MS)
+            sessions.record(session())
+            vm.onIntent(HomeIntent.Entered)
             assertEquals(HomeEffect.NavigateToReminderPrePrompt, awaitItem())
-            cancelAndIgnoreRemainingEvents()
+
+            settings.recordReminderPrePromptAsked(clock.nowMs())
+            clock.advanceBy(ReminderPrePromptPolicy.SECOND_ASK_DELAY_MS)
+            sessions.record(session())
+            vm.onIntent(HomeIntent.Entered)
+            expectNoEvents()
         }
     }
 
@@ -416,11 +446,12 @@ class HomeViewModelTest {
             val vm = viewModel()
             vm.effects.test {
                 vm.onIntent(HomeIntent.Entered)
-                settings.update { it.copy(reminderPrePromptShown = true) }
+                settings.update { it.copy(reminderPrePromptAsks = 2) }
+                sessions.record(session())
                 sessions.record(session())
                 vm.onIntent(HomeIntent.Entered)
                 expectNoEvents()
-                settings.update { it.copy(reminderPrePromptShown = false, dailyReminder = true) }
+                settings.update { it.copy(reminderPrePromptAsks = 0, dailyReminder = true) }
                 sessions.record(session())
                 vm.onIntent(HomeIntent.Entered)
                 expectNoEvents()

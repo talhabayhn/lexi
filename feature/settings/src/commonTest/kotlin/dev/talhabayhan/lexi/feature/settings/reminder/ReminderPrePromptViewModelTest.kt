@@ -45,6 +45,7 @@ class ReminderPrePromptViewModelTest {
     }
 
     private fun viewModel(): ReminderPrePromptViewModel {
+        val clock = FakeAppClock()
         val reschedule = RescheduleReminders(
             settings = settings,
             streaks = FakeStreakRepository(),
@@ -52,12 +53,13 @@ class ReminderPrePromptViewModelTest {
             permission = permission,
             scheduler = scheduler,
             texts = FakeReminderTextProvider(),
-            clock = FakeAppClock(),
+            clock = clock,
         )
         return ReminderPrePromptViewModel(
             settings,
-            AnswerReminderPrePrompt(settings, permission, reschedule),
+            AnswerReminderPrePrompt(settings, permission, reschedule, clock),
             analytics,
+            clock,
         )
     }
 

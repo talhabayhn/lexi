@@ -49,8 +49,8 @@ internal val appCoreModule: Module = module {
     // remembers the last plan it scheduled.
     single { ComposeReminderTextProvider() }
     single<ReminderTextProvider> { get<ComposeReminderTextProvider>() }
-    factory { ShouldShowReminderPrePrompt(settings = get(), sessions = get(), permission = get()) }
-    factory { AnswerReminderPrePrompt(settings = get(), permission = get(), reschedule = get()) }
+    factory { ShouldShowReminderPrePrompt(settings = get(), sessions = get(), permission = get(), clock = get()) }
+    factory { AnswerReminderPrePrompt(settings = get(), permission = get(), reschedule = get(), clock = get()) }
     single {
         RescheduleReminders(
             settings = get(),

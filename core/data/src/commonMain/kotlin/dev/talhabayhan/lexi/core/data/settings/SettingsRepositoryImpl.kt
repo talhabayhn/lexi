@@ -7,6 +7,7 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.intPreferencesKey
+import androidx.datastore.preferences.core.longPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import dev.talhabayhan.lexi.core.domain.game.GameConfig
 import dev.talhabayhan.lexi.core.domain.reminder.ReminderTimes
@@ -61,7 +62,10 @@ internal class SettingsRepositoryImpl(
             reminderMinuteOfDay = this[REMINDER_MINUTE]
                 ?.takeIf { it in ReminderTimes.optionsMinuteOfDay }
                 ?: defaults.reminderMinuteOfDay,
-            reminderPrePromptShown = this[REMINDER_PREPROMPT_SHOWN] ?: defaults.reminderPrePromptShown,
+            // v1.0 stored a boolean: shown once, at an unknown time (0 = long ago, so the second ask may follow).
+            reminderPrePromptAsks = this[REMINDER_PREPROMPT_ASKS]
+                ?: if (this[REMINDER_PREPROMPT_SHOWN] == true) 1 else defaults.reminderPrePromptAsks,
+            reminderPrePromptLastAskMs = this[REMINDER_PREPROMPT_LAST_ASK] ?: defaults.reminderPrePromptLastAskMs,
             dailyGoalWheels = this[DAILY_GOAL]?.takeIf { it >= 1 } ?: defaults.dailyGoalWheels,
             reviewReminders = this[REVIEW_REMINDERS] ?: defaults.reviewReminders,
             appLanguage = enumOrNull<UiLanguage>(this[UI_LANGUAGE]) ?: defaults.appLanguage,
@@ -79,6 +83,8 @@ internal class SettingsRepositoryImpl(
         this[DAILY_REMINDER] = settings.dailyReminder
         this[REMINDER_MINUTE] = settings.reminderMinuteOfDay
         this[REMINDER_PREPROMPT_SHOWN] = settings.reminderPrePromptShown
+        this[REMINDER_PREPROMPT_ASKS] = settings.reminderPrePromptAsks
+        this[REMINDER_PREPROMPT_LAST_ASK] = settings.reminderPrePromptLastAskMs
         this[DAILY_GOAL] = settings.dailyGoalWheels
         this[REVIEW_REMINDERS] = settings.reviewReminders
         this[UI_LANGUAGE] = settings.uiLanguage.name
@@ -98,6 +104,8 @@ internal class SettingsRepositoryImpl(
         val DAILY_REMINDER = booleanPreferencesKey("daily_reminder")
         val REMINDER_MINUTE = intPreferencesKey("reminder_minute_of_day")
         val REMINDER_PREPROMPT_SHOWN = booleanPreferencesKey("reminder_preprompt_shown")
+        val REMINDER_PREPROMPT_ASKS = intPreferencesKey("reminder_preprompt_asks")
+        val REMINDER_PREPROMPT_LAST_ASK = longPreferencesKey("reminder_preprompt_last_ask_ms")
         val DAILY_GOAL = intPreferencesKey("daily_goal_wheels")
         val REVIEW_REMINDERS = booleanPreferencesKey("review_reminders")
         val UI_LANGUAGE = stringPreferencesKey("ui_language")

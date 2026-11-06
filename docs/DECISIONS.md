@@ -29,6 +29,7 @@ row when a decision is made; change `Status` instead of deleting rows (`Accepted
 | 2026-10 | **Light theme only**, no dynamic colour | Bauhaus palette must be exact | Dark mode | Accepted (ADR 0010) |
 | 2026-10 | Reminders **off until the M7 pre-prompt**; UI language follows the system language | Respect permission and defaults | On by default | Accepted (`PRODUCT.md`) |
 | 2026-10-20 | **Daily reminder = local one-shot notifications planned 15 days ahead** (`ReminderPlanner`); inexact Android alarms, iOS calendar triggers; no exact alarms, no server | Texts must be known at schedule time on iOS; no new dependency | WorkManager; repeating trigger; exact alarms; push | Accepted (ADR 0021) |
+| 2026-11-06 | **Reminder pre-prompt budget**: first ask after the 2nd completed real game (was: the 1st); "Şimdi değil" allows one more proactive ask after 7 days (only while the OS dialog can still be shown); max two in total, never in onboarding or the level test. Supersedes "once per app lifetime" below; a v1.0 "shown" flag counts as the first ask | One early ask is too cold; a single retry respects the player | Ask every launch; ask at the 1st game | Accepted (owner) |
 | 2026-10-21 | **Notification permission only on user action** (reminder switch or pre-prompt "Evet"); pre-prompt shown at most once per app lifetime; "Şimdi değil" = never asked proactively again | Respect the OS prompt; no cold ask | Ask at launch or onboarding | Accepted (M7 owner rules) |
 
 ## Content

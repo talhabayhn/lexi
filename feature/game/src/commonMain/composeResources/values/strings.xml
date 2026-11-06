@@ -98,6 +98,16 @@
         <item quantity="other">%1$d left</item>
     </plurals>
     <string name="game_joker_count_none">none left</string>
+    <string name="game_joker_reason_none_left">No jokers left</string>
+    <string name="game_joker_reason_used">You used a joker on this letter</string>
+    <string name="game_joker_reason_mode">No jokers in this mode</string>
+    <string name="game_joker_reason_level">Off at C1 and above</string>
+    <string name="game_joker_reason_unavailable">Not available right now</string>
+    <string name="game_joker_help_link">How do jokers work?</string>
+    <string name="game_joker_help_cost">Cost: Reveal a letter −10 s, Clear distractors −15 s, Example sentence −5 pts, Hear it −10 pts. Untimed modes: points are free.</string>
+    <string name="game_joker_help_limit">One joker per letter, of any type.</string>
+    <string name="game_joker_help_earn">Earn them: start pack, a daily gift, +1 for every 7-day streak. Gifts stop at 5 of each type.</string>
+    <string name="game_joker_help_none">No jokers in Daily and the level test.</string>
 
     <!-- Result (06-result) -->
     <string name="result_header">%1$s · %2$s · %3$s</string>

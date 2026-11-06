@@ -98,6 +98,16 @@
         <item quantity="other">%1$d hakkın var</item>
     </plurals>
     <string name="game_joker_count_none">hakkın kalmadı</string>
+    <string name="game_joker_reason_none_left">Hakkın bitti</string>
+    <string name="game_joker_reason_used">Bu harf için joker kullandın</string>
+    <string name="game_joker_reason_mode">Bu modda joker yok</string>
+    <string name="game_joker_reason_level">C1 ve üstünde kapalı</string>
+    <string name="game_joker_reason_unavailable">Şu an kullanılamaz</string>
+    <string name="game_joker_help_link">Jokerler nasıl çalışır?</string>
+    <string name="game_joker_help_cost">Bedel: Harf aç −10 sn, Çeldiricileri temizle −15 sn, Örnek cümle −5 puan, Telaffuzu dinle −10 puan. Süresiz modlarda puan bedeli yoktur.</string>
+    <string name="game_joker_help_limit">Her harf için tek joker, hangi türden olursa olsun.</string>
+    <string name="game_joker_help_earn">Nasıl kazanılır: başlangıç paketi, günlük hediye, her 7 günlük seri için +1. Hediyeler her türde 5'te durur.</string>
+    <string name="game_joker_help_none">Günlük ve seviye testinde joker yok.</string>
 
     <!-- Result (06-result) -->
     <string name="result_header">%1$s · %2$s · %3$s</string>
