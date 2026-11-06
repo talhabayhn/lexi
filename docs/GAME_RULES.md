@@ -211,6 +211,18 @@ the app goes to background.
   second player's game starts on their first turn. Owner decision: `Forfeit` (also during the handover, even
   before the forfeiting player's first turn) ends the whole match, the other player wins, and the forfeiting
   player's remaining letters count as wrong.
+- Same-device app flow (M8.1, `feature:game` `duel`): setup with two names (owner decision: free text, trimmed, max
+  ⚙ `duelNameMaxLength = 12`, empty ⇒ "1. Oyuncu"/"2. Oyuncu"; the last match's names, level and clock are kept in
+  the settings), one shared level and a clock per player from ⚙ `duelClockOptionsSeconds` (1:30 / 2:30 default / 4:00;
+  the match engine gets it as `duelClockSeconds`). Both wheels: mixed category, no card history, `Seeds.derive(seed,
+  "player:<n>")`. No jokers, no restart; nothing is recorded (no session, notebook, streak, last-seen). The app
+  going to the background pauses the active clock (the pause dialog shows on return); system back pauses a running
+  board and asks "Pes etmek istiyor musun?" on the handover card. Process death: the match is not restored — it is
+  dropped and the app returns to Home (decision: a hot-seat match is short and both players are present; restoring
+  would need a saved match log).
+- Result: winner headline (or "Berabere"), the score line always, then one explanation line: fewer wrong / more time
+  left when the winner was decided by a tie-break, "<name> pes etti" after a forfeit. Header reason: ÇARK TAMAM (both
+  wheels completed), SÜRE BİTTİ (otherwise), PES ETTİ (forfeit; the same reason text in every mode).
 - Race (online): same wheel, simultaneous, no turns; first to finish all slots wins, else most correct at time-up.
   Level handicap (optional room setting): each player plays own level; score = normalized points.
 

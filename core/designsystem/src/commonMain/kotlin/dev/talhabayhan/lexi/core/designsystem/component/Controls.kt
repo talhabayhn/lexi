@@ -44,6 +44,7 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.progressBarRangeInfo
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.stateDescription
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
@@ -111,6 +112,8 @@ public fun SegmentedControl(
     height: Dp = ControlDefaults.SegmentHeight,
     dividerWidth: Dp = LexiTheme.borders.thin,
     scrollable: Boolean = false,
+    /** Style of a one-line title; the default is `bodyStrong14` (`17-duel-setup` uses 16/800). */
+    titleStyle: TextStyle? = null,
 ) {
     val colors = LexiTheme.colors
     val scrolling = scrollable && LocalDensity.current.fontScale > ControlDefaults.SCROLL_FONT_SCALE
@@ -160,7 +163,7 @@ public fun SegmentedControl(
                 if (segment.subtitle == null) {
                     Text(
                         segment.title,
-                        style = typography.bodyStrong14,
+                        style = titleStyle ?: typography.bodyStrong14,
                         color = titleColor,
                         textAlign = wrapAlign,
                         onTextLayout = { titleWrapped = it.lineCount > 1 },

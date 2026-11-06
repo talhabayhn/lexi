@@ -30,6 +30,13 @@ class AnalyticsEventTest {
             mapOf<String, Any>("type" to "remove_distractors"),
             AnalyticsEvent.JokerUsed(JokerType.REMOVE_DISTRACTORS).params,
         )
+        assertEquals("duel_start", AnalyticsEvent.DuelStart(150).name)
+        assertEquals(mapOf<String, Any>("clock_s" to 90L), AnalyticsEvent.DuelStart(90).params)
+        assertEquals("duel_finish", AnalyticsEvent.DuelFinish(AnalyticsEvent.DuelResultType.WIN).name)
+        assertEquals(
+            listOf("win", "draw", "forfeit"),
+            AnalyticsEvent.DuelResultType.entries.map { AnalyticsEvent.DuelFinish(it).params["result_type"] },
+        )
     }
 
     @Test

@@ -9,7 +9,9 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.longPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
+import dev.talhabayhan.lexi.core.domain.game.DuelNames
 import dev.talhabayhan.lexi.core.domain.game.GameConfig
+import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.core.domain.reminder.ReminderTimes
 import dev.talhabayhan.lexi.core.domain.repository.SettingsRepository
 import dev.talhabayhan.lexi.core.domain.settings.Accent
@@ -72,6 +74,13 @@ internal class SettingsRepositoryImpl(
             clueLanguage = enumOrNull<ClueLanguage>(this[CLUE_LANGUAGE]) ?: defaults.clueLanguage,
             accent = enumOrNull<Accent>(this[ACCENT]) ?: defaults.accent,
             analyticsConsent = this[ANALYTICS_CONSENT] ?: defaults.analyticsConsent,
+            duelPlayerNames = DUEL_NAMES.map { key ->
+                DuelNames.sanitize(this[key].orEmpty(), config.duelNameMaxLength)
+            },
+            duelLevel = enumOrNull<Level>(this[DUEL_LEVEL]) ?: defaults.duelLevel,
+            duelClockSeconds = this[DUEL_CLOCK]
+                ?.takeIf { it in config.duelClockOptionsSeconds }
+                ?: defaults.duelClockSeconds,
         )
     }
 
@@ -91,6 +100,9 @@ internal class SettingsRepositoryImpl(
         this[CLUE_LANGUAGE] = settings.clueLanguage.name
         this[ACCENT] = settings.accent.name
         this[ANALYTICS_CONSENT] = settings.analyticsConsent
+        DUEL_NAMES.forEachIndexed { index, key -> this[key] = settings.duelPlayerNames[index] }
+        this[DUEL_LEVEL] = settings.duelLevel.name
+        this[DUEL_CLOCK] = settings.duelClockSeconds
     }
 
     private inline fun <reified E : Enum<E>> enumOrNull(name: String?): E? =
@@ -112,5 +124,8 @@ internal class SettingsRepositoryImpl(
         val CLUE_LANGUAGE = stringPreferencesKey("clue_language")
         val ACCENT = stringPreferencesKey("accent")
         val ANALYTICS_CONSENT = booleanPreferencesKey("analytics_consent")
+        val DUEL_NAMES = listOf(stringPreferencesKey("duel_player_1_name"), stringPreferencesKey("duel_player_2_name"))
+        val DUEL_LEVEL = stringPreferencesKey("duel_level")
+        val DUEL_CLOCK = intPreferencesKey("duel_clock_seconds")
     }
 }

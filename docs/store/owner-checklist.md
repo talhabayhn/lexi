@@ -79,3 +79,6 @@
 
 ### When a Mac is available
 - [ ] iOS perf measurement (`docs/PERF.md`, compare mode).
+
+## Duel (M8.1)
+- The same-device duel ("İki kişi, tek telefon") is built but **not yet in the store listings**. Add the duel line to the listings (`listing-tr.md`, `listing-en.md`) and the release notes only in the release that actually ships it.

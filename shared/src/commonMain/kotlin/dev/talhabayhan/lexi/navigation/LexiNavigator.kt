@@ -13,6 +13,9 @@ import dev.talhabayhan.lexi.feature.exams.ExamPacksRoute
 import dev.talhabayhan.lexi.feature.game.GamePreparer
 import dev.talhabayhan.lexi.feature.game.GameRoute
 import dev.talhabayhan.lexi.feature.game.LevelTestRoute
+import dev.talhabayhan.lexi.feature.game.duel.DuelResultRoute
+import dev.talhabayhan.lexi.feature.game.duel.DuelRoute
+import dev.talhabayhan.lexi.feature.game.duel.DuelSetupRoute
 import dev.talhabayhan.lexi.feature.game.result.ResultRoute
 import dev.talhabayhan.lexi.feature.home.HomeRoute
 import dev.talhabayhan.lexi.feature.levels.CategoriesRoute
@@ -124,6 +127,27 @@ internal class LexiNavigator(
     fun playAgain(game: GameRoute): Boolean = openGame(game) {
         launchSingleTop = true
         popUpTo(HomeRoute) { inclusive = false }
+    }
+
+    fun openDuelSetup(): Boolean = ifResumed { navigate(DuelSetupRoute) { launchSingleTop = true } }
+
+    /** From the duel setup; the setup stays below the match ("Geri dön" after a load error returns to it). */
+    fun startDuel(duel: DuelRoute): Boolean = ifResumed { navigate(duel) { launchSingleTop = true } }
+
+    /** TEKRAR OYNA on the duel result: the same setup with a new seed, right above Home. */
+    fun playDuelAgain(duel: DuelRoute): Boolean = ifResumed {
+        navigate(duel) {
+            launchSingleTop = true
+            popUpTo(HomeRoute) { inclusive = false }
+        }
+    }
+
+    // Not RESUMED-guarded: fired once from the duel's effects (while STARTED) when the match ends.
+    fun finishDuel(result: DuelResultRoute) {
+        navController.navigate(result) {
+            launchSingleTop = true
+            popUpTo(HomeRoute) { inclusive = false }
+        }
     }
 
     fun openNotebook(): Boolean = ifResumed { navigate(NotebookRoute) { launchSingleTop = true } }

@@ -1,6 +1,6 @@
 # Duel (hot-seat) copy — screens 17–20 and 02b
 
-Status: **owner-approved copy, design partly open (see screen-map.md)**, not wired. Keys follow `feature_screen_element`; `{name}`, `{n}` are placeholders. Names are free
+Status: **owner-approved copy, wired (M8.1)**; the name dialog still needs a design (see screen-map.md). Keys follow `feature_screen_element`; `{name}`, `{n}` are placeholders. Names are free
 text, so TR never inflects them (no `'a/'ya` suffixes). Existing keys to reuse are marked **reuse**.
 Length class: EN ≤ TR + 10 %. **DECISION** = needs the owner.
 

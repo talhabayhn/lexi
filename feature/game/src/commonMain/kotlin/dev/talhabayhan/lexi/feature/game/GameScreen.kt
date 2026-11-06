@@ -51,6 +51,8 @@ import dev.talhabayhan.lexi.core.designsystem.theme.lexiContentWidth
 import dev.talhabayhan.lexi.core.domain.model.LetterRule
 import dev.talhabayhan.lexi.core.domain.model.PartOfSpeech
 import dev.talhabayhan.lexi.feature.game.components.AnswerSlots
+import dev.talhabayhan.lexi.feature.game.components.DuelHudBar
+import dev.talhabayhan.lexi.feature.game.components.DuelHudUi
 import dev.talhabayhan.lexi.feature.game.components.GameColumn
 import dev.talhabayhan.lexi.feature.game.components.GameHudBar
 import dev.talhabayhan.lexi.feature.game.components.GameMotion
@@ -103,6 +105,8 @@ internal fun GameScreen(
     onIntent: (GameIntent) -> Unit,
     modifier: Modifier = Modifier,
     motion: GameMotion = rememberGameMotion(LexiTheme.motion),
+    /** A duel board (`19-duel-game`): the player cards replace the timer and score badge; no joker button. */
+    duelHud: DuelHudUi? = null,
 ) {
     val currentOnIntent by rememberUpdatedState(onIntent)
     LifecycleEventEffect(Lifecycle.Event.ON_PAUSE) { currentOnIntent(GameIntent.Background) }
@@ -121,7 +125,7 @@ internal fun GameScreen(
                 if (loadError != null) {
                     GameLoadErrorContent(loadError, onIntent)
                 } else if (!state.isLoading) {
-                    GameContent(state, clock, onIntent, motion, screenWidth, screenHeight)
+                    GameContent(state, clock, onIntent, motion, screenWidth, screenHeight, duelHud)
                 }
                 GameMotionLayer(motion)
             }
@@ -158,6 +162,7 @@ private fun GameContent(
     motion: GameMotion,
     maxWidth: Dp,
     maxHeight: Dp,
+    duelHud: DuelHudUi?,
 ) {
     val dimens = LexiTheme.dimens
     val density = LocalDensity.current
@@ -171,7 +176,10 @@ private fun GameContent(
     }
     val height = with(density) { maxHeight - insets.getTop(density).toDp() - insets.getBottom(density).toDp() }
     val clueMetrics = rememberClueCardMetrics()
-    val layout = remember(width, height, dimens, clueMetrics) { gameLayout(width, height, dimens, clueMetrics) }
+    val duel = duelHud != null
+    val layout = remember(width, height, dimens, clueMetrics, duel) {
+        gameLayout(width, height, dimens, clueMetrics, duel)
+    }
     val turn = state.turn
     GameColumn(
         gap = layout.gap,
@@ -180,15 +188,25 @@ private fun GameContent(
         keysActionsGap = layout.keysActionsGap,
         maxWheelSize = layout.maxWheelSize,
         hud = {
-            GameHudBar(
-                score = state.score,
-                correct = state.correct,
-                isScored = state.isScored,
-                clock = clock,
-                onPause = { onIntent(GameIntent.Pause) },
-                modifier = Modifier.testTag(GameTestTags.HUD).onPlaced(motion::onHudPlaced),
-                height = layout.hudHeight,
-            )
+            if (duelHud != null) {
+                DuelHudBar(
+                    hud = duelHud,
+                    clock = clock,
+                    onPause = { onIntent(GameIntent.Pause) },
+                    modifier = Modifier.testTag(GameTestTags.HUD).onPlaced(motion::onHudPlaced),
+                    height = layout.hudHeight,
+                )
+            } else {
+                GameHudBar(
+                    score = state.score,
+                    correct = state.correct,
+                    isScored = state.isScored,
+                    clock = clock,
+                    onPause = { onIntent(GameIntent.Pause) },
+                    modifier = Modifier.testTag(GameTestTags.HUD).onPlaced(motion::onHudPlaced),
+                    height = layout.hudHeight,
+                )
+            }
         },
         wheel = { size ->
             LetterWheel(
@@ -252,7 +270,7 @@ private fun GameContent(
         actions = {
             GameActions(
                 enabled = state.inputEnabled || state.isStarting,
-                showJoker = !state.isLevelTest,
+                showJoker = !state.isLevelTest && !duel,
                 size = layout.actionSize,
                 onIntent = onIntent,
                 modifier = Modifier.testTag(GameTestTags.ACTIONS),

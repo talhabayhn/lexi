@@ -54,6 +54,8 @@
     </plurals>
     <string name="home_tile_practice">Pratik modu</string>
     <string name="home_tile_practice_subtitle">Süresiz, baskısız</string>
+    <string name="home_tile_duel">İki kişi, tek telefon</string>
+    <string name="home_tile_duel_subtitle">Arkadaşınla sırayla yarış</string>
     <string name="home_tile_exams">Sınav paketleri</string>
     <string name="home_tile_exams_subtitle">Sınav kelime listeleri</string>
 

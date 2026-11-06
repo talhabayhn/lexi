@@ -45,6 +45,8 @@ import dev.talhabayhan.lexi.core.designsystem.component.CardDefaults
 import dev.talhabayhan.lexi.core.designsystem.component.DailyCard
 import dev.talhabayhan.lexi.core.designsystem.component.DecorShape
 import dev.talhabayhan.lexi.core.designsystem.component.DecorShapeKind
+import dev.talhabayhan.lexi.core.designsystem.component.DuelDefaults
+import dev.talhabayhan.lexi.core.designsystem.component.DuelHomeBox
 import dev.talhabayhan.lexi.core.designsystem.component.HomeDefaults
 import dev.talhabayhan.lexi.core.designsystem.component.IconButtonDefaults
 import dev.talhabayhan.lexi.core.designsystem.component.LexiLogo
@@ -84,6 +86,8 @@ import dev.talhabayhan.lexi.feature.home.generated.resources.home_play_badge
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_settings
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_streak
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_tagline
+import dev.talhabayhan.lexi.feature.home.generated.resources.home_tile_duel
+import dev.talhabayhan.lexi.feature.home.generated.resources.home_tile_duel_subtitle
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_tile_exams
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_tile_exams_subtitle
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_tile_notebook
@@ -97,7 +101,7 @@ import org.jetbrains.compose.resources.stringArrayResource
 import org.jetbrains.compose.resources.stringResource
 
 /**
- * `02-home`: streak chip and settings, the logo, the daily card, OYNA and the 2 × 2 menu tiles. The blue circle and
+ * `02-home`: streak chip and settings, the logo, the daily card, OYNA, the duel box (`02b-home-duel`) and the 2 × 2 menu tiles. The blue circle and
  * red half-pill behind are edge-to-edge decoration at 210dp from the top / bottom of the screen; the content keeps the
  * design paddings inside the system-bar insets and never scrolls: on short phones it steps down [HomeTier]s. The daily
  * gift is a floating toast shown only while [noticeVisible] (the screen is resumed); it never affects the layout.
@@ -186,6 +190,7 @@ private class HomeMetrics(
     val gap: Dp,
     val logo: LexiLogoSize,
     val playHeight: Dp,
+    val duelHeight: Dp,
     val tileHeight: Dp,
     val tileGap: Dp,
     val compactDaily: Boolean,
@@ -202,6 +207,7 @@ private fun HomeTier.metrics(tileGrowth: Dp): HomeMetrics {
             dimens.gap20,
             LexiLogoSize.Menu,
             HomeDefaults.RegularPlayHeight,
+            DuelDefaults.HomeBoxHeight,
             CardDefaults.MenuTileHeight + tileGrowth,
             dimens.gap12,
             compactDaily = false,
@@ -213,6 +219,7 @@ private fun HomeTier.metrics(tileGrowth: Dp): HomeMetrics {
             HomeDefaults.CompactGap,
             LexiLogoSize.MenuCompact,
             HomeDefaults.CompactPlayHeight,
+            DuelDefaults.HomeBoxCompactHeight,
             HomeDefaults.CompactTileHeight,
             HomeDefaults.CompactTileGap,
             compactDaily = true,
@@ -220,7 +227,8 @@ private fun HomeTier.metrics(tileGrowth: Dp): HomeMetrics {
 
         HomeTier.Tight -> HomeMetrics(
             HomeDefaults.TightPaddingTop, HomeDefaults.TightPaddingBottom, HomeDefaults.TightGap,
-            LexiLogoSize.MenuCompact, HomeDefaults.TightPlayHeight, HomeDefaults.TightTileHeight,
+            LexiLogoSize.MenuCompact, HomeDefaults.TightPlayHeight, DuelDefaults.HomeBoxTightHeight,
+            HomeDefaults.TightTileHeight,
             HomeDefaults.TightTileGap, compactDaily = true, compactTiles = true,
         )
     }
@@ -368,6 +376,15 @@ private fun HomeContent(
                 onClick = { onIntent(HomeIntent.Play) },
                 height = metrics.playHeight,
             )
+            val duelTitle = stringResource(Res.string.home_tile_duel)
+            DuelHomeBox(
+                title = duelTitle,
+                subtitle = stringResource(Res.string.home_tile_duel_subtitle),
+                onClick = { onIntent(HomeIntent.OpenDuel) },
+                onClickLabel = duelTitle,
+                height = metrics.duelHeight,
+                showSubtitle = tier != HomeTier.Tight,
+            )
         }
         MenuGrid(state, onIntent, metrics)
     }
@@ -375,7 +392,7 @@ private fun HomeContent(
 
 /**
  * `02-home`'s flex column: [top] (top bar, logo, daily card, OYNA) from [paddingTop], the tile grid at the bottom
- * (`margin-top: auto`) with at least two [gap]s above it (the column gap around the free space). Writes the natural
+ * (`margin-top: auto`) with at least one [gap] above it (`02b-home-duel`: 20dp between the duel box and the tiles). Writes the natural
  * height (paddings, sections, gaps, grid) to [fit] while it is measured; content taller than the bounds overflows at
  * the bottom.
  */
@@ -393,7 +410,7 @@ private fun HomeColumn(
         val top = measurables[0].measure(natural)
         val grid = measurables[1].measure(natural)
         val top0 = paddingTop.roundToPx()
-        val gaps = gap.roundToPx() * 2
+        val gaps = gap.roundToPx()
         val naturalHeight = top0 + top.height + gaps + grid.height + paddingBottom.roundToPx()
         fit.naturalHeight = naturalHeight
         val height = if (constraints.hasBoundedHeight) constraints.maxHeight else naturalHeight

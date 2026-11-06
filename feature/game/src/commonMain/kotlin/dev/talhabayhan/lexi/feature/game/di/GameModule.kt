@@ -8,6 +8,10 @@ import dev.talhabayhan.lexi.feature.game.GameRoute
 import dev.talhabayhan.lexi.feature.game.GameViewModel
 import dev.talhabayhan.lexi.feature.game.LevelTestViewModel
 import dev.talhabayhan.lexi.feature.game.SeedSource
+import dev.talhabayhan.lexi.feature.game.duel.DuelLoader
+import dev.talhabayhan.lexi.feature.game.duel.DuelRoute
+import dev.talhabayhan.lexi.feature.game.duel.DuelSetupViewModel
+import dev.talhabayhan.lexi.feature.game.duel.DuelViewModel
 import dev.talhabayhan.lexi.feature.game.result.ResultRoute
 import dev.talhabayhan.lexi.feature.game.result.ResultViewModel
 import kotlinx.coroutines.CoroutineScope
@@ -20,7 +24,7 @@ import kotlin.random.Random
 import kotlin.time.TimeSource
 
 /**
- * Game and result screens: the ViewModels plus the game clock (monotonic, ADR 0019), solo seed source, the game
+ * Game, duel and result screens: the ViewModels plus the game clock (monotonic, ADR 0019), solo seed source, the game
  * loader and the app-wide [GamePreparer] (one preparation before a navigation to the game). Route args
  * come from the back-stack entry's `SavedStateHandle` (`toRoute`); the game's handle also keeps the process-death
  * snapshot.
@@ -73,6 +77,22 @@ val gameModule: Module = module {
             config = get(),
             timeSource = get(),
             seeds = get(),
+            analytics = get(),
+            crashReporter = get(),
+        )
+    }
+    single { DuelLoader(cards = get(), config = get(), seeds = get()) }
+    viewModel { DuelSetupViewModel(settings = get(), config = get(), crashReporter = get()) }
+    viewModel {
+        val handle = get<SavedStateHandle>()
+        DuelViewModel(
+            route = handle.toRoute<DuelRoute>(),
+            handle = handle,
+            loader = get(),
+            settings = get(),
+            appClock = get(),
+            speaker = get(),
+            timeSource = get(),
             analytics = get(),
             crashReporter = get(),
         )

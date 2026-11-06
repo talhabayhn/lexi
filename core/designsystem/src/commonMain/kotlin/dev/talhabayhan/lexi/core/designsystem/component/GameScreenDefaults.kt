@@ -1,7 +1,9 @@
 package dev.talhabayhan.lexi.core.designsystem.component
 
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 /**
  * Screen-level geometry of `04-game.html` that is not part of a single component, plus the responsive rules of
@@ -59,4 +61,21 @@ public object GameScreenDefaults {
 
     /** Rows of keys the layout reserves (15 keys at most, rows of 5). */
     public const val RESERVED_KEY_ROWS: Int = 3
+}
+
+/**
+ * The duel HUD (`19-duel-game`): pause 48 × 64 and two player cards (64 high, `padding: 6px 10px`, 14dp marker with a
+ * 2dp border, gap 6). The compact tier (very short phones) is DESIGN-DEBT, scaled like the solo HUD.
+ */
+public object DuelHudDefaults {
+    public val Height: Dp = 64.dp
+    public val CompactHeight: Dp = 52.dp
+    public val CardPaddingHorizontal: Dp = 10.dp
+    public val CardPaddingVertical: Dp = 6.dp
+    public val CompactCardPaddingVertical: Dp = 3.dp
+    public val MarkerSize: Dp = 14.dp
+    public val MarkerBorder: Dp = 2.dp
+
+    /** "SIRA": 11 / 700, +0.14em (the HTML overrides the 13px label size). */
+    public val TurnLabelSize: TextUnit = 11.sp
 }

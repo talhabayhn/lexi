@@ -240,6 +240,8 @@ internal class HomeViewModel(
 
             HomeIntent.OpenPractice -> effectChannel.trySend(HomeEffect.NavigateToPractice)
 
+            HomeIntent.OpenDuel -> effectChannel.trySend(HomeEffect.NavigateToDuel)
+
             HomeIntent.OpenExamPacks -> effectChannel.trySend(HomeEffect.NavigateToExamPacks)
         }
     }

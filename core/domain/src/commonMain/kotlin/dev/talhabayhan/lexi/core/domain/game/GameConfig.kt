@@ -18,8 +18,12 @@ public data class GameConfig(
     val hardcoreTimeLimitSeconds: Int = 180,
     val dailyTimeLimitSeconds: Int = 180,
     val levelTestTimeLimitSeconds: Int = 120,
-    /** §5/§8: each duel player's own clock. */
+    /** §5/§8: each duel player's own clock; the duel setup picks one of [duelClockOptionsSeconds] per match. */
     val duelClockSeconds: Int = 150,
+    /** §8: the duel setup's clock choices per player (owner decision: 1:30 / 2:30 / 4:00). */
+    val duelClockOptionsSeconds: List<Int> = listOf(90, 150, 240),
+    /** §8: longest duel player name (characters); longer input is cut. */
+    val duelNameMaxLength: Int = 12,
     /** §12: `TimeWarning` is emitted every second while seconds left ≤ this. */
     val timeWarningSeconds: Int = 10,
     /** §6: points for a correct answer before the level multiplier. */

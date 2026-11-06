@@ -199,7 +199,7 @@ finished game's summary (ADR 0019 addendum). `core:domain` keeps its own small `
 installed/version-checked and `GrantDailyJokers` gives today's free jokers (`GAME_RULES.md` §7), then pops itself. Flows:
 `Splash → Onboarding? → Home`; `Onboarding → LevelTest → LevelTestResult → Home` (the result replaces the test;
 "Pes et" and back from the result pop to the onboarding's level choice, nothing saved); `Home → LevelSelect [→ Categories] → Game → Result`; `Home → Notebook | Stats | Exams | Settings | Daily`;
-`Game → JokerSheet (bottom sheet) | Pause (dialog)`; `Settings → Paywall`.
+`Game → JokerSheet (bottom sheet) | Pause (dialog)`; `Home → DuelSetup → Duel (handover card ↔ board) → DuelResult` (the result pops everything above Home; a duel is never restored after a process death, it returns Home); `Settings → Paywall`.
 Screen ↔ design map: `docs/design/screen-map.md`.
 
 ## 9. Design system

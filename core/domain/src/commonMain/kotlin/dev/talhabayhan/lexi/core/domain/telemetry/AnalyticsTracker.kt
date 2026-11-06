@@ -47,6 +47,23 @@ public sealed class AnalyticsEvent(public val name: String) {
         override val params: Map<String, Any> get() = mapOf("type" to type.name.lowercase())
     }
 
+    /** A hot-seat duel starts (the first handover card); [clockSeconds] is the clock per player. */
+    public data class DuelStart(val clockSeconds: Int) : AnalyticsEvent("duel_start") {
+        override val params: Map<String, Any> get() = mapOf("clock_s" to clockSeconds.toLong())
+    }
+
+    /** A hot-seat duel ends; never carries the players' names. */
+    public data class DuelFinish(val result: DuelResultType) : AnalyticsEvent("duel_finish") {
+        override val params: Map<String, Any> get() = mapOf("result_type" to result.code)
+    }
+
+    /** `duel_finish.result_type`: a winner on the rules, a draw, or a player gave up. */
+    public enum class DuelResultType(public val code: String) {
+        WIN("win"),
+        DRAW("draw"),
+        FORFEIT("forfeit"),
+    }
+
     private companion object {
         const val PARAM_MODE = "mode"
         const val PARAM_LEVEL = "level"

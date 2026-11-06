@@ -21,6 +21,8 @@ The event list is closed: a new event or parameter is added here first, then to 
 | `share` | – | The share sheet was shown for the result card (`ResultViewModel`) |
 | `reminder_enabled` | – | The daily reminder was turned on: Settings switch with permission, or pre-prompt accepted and granted |
 | `joker_used` | `type` | A joker was applied (`GameViewModel`) |
+| `duel_start` | `clock_s` | A hot-seat duel is loaded and its first handover card shows (`DuelViewModel`) |
+| `duel_finish` | `result_type` | A hot-seat duel ends (`DuelViewModel`); never the players' names |
 | `paywall_view` | `source` | Reserved (RevenueCat item) |
 | `purchase` | `product`, `result` | Reserved (RevenueCat item) |
 
@@ -31,6 +33,8 @@ The event list is closed: a new event or parameter is added here first, then to 
 | `correct` | int | correct answers of the wheel |
 | `duration_s` | int | wall-clock seconds from the start to the end of the wheel |
 | `type` | string | `reveal_letter`, `remove_distractors`, `example`, `listen` |
+| `clock_s` | int | the duel's clock per player in seconds: `90`, `150`, `240` |
+| `result_type` | string | `win` (decided by the §8 rules), `draw`, `forfeit` |
 
 ## Crash reporting
 - Uncaught crashes are reported by Crashlytics itself. On iOS an uncaught Kotlin exception is also recorded with its

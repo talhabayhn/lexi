@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="tr"><!-- PROPOSED (not approved): fill-the-blank round. Source with logic; screens/23-... is the rendered export. -->
+<head><meta charset="utf-8"><title>Lexi – Boşluk doldurma: tur (ÖNERİ)</title>
+<style>
+@font-face{font-family:Jost;font-weight:500;src:url('../fonts/Jost-Medium.ttf')}
+@font-face{font-family:Jost;font-weight:600;src:url('../fonts/Jost-SemiBold.ttf')}
+@font-face{font-family:Jost;font-weight:700;src:url('../fonts/Jost-Bold.ttf')}
+@font-face{font-family:Jost;font-weight:800;src:url('../fonts/Jost-ExtraBold.ttf')}
+body{margin:0}
+</style>
+</head><body>
+<div style="position:relative;width:390px;height:844px;box-sizing:border-box;padding:20px 20px 28px;background:#F7F4EE;color:#1F242D;font-family:Jost,sans-serif;display:flex;flex-direction:column;gap:16px;overflow:hidden">
+  <div aria-hidden="true" style="position:absolute;right:-60px;top:120px;width:120px;height:120px;border-radius:50%;background:#E0534C"></div>
+  <div aria-hidden="true" style="position:absolute;left:-40px;top:430px;width:80px;height:160px;background:#3D68B2;border-radius:0 80px 80px 0"></div>
+
+  <!-- HUD: as 04-game (pause, timer bar, score badge) -->
+  <div style="position:relative;display:flex;align-items:stretch;gap:8px;height:48px">
+    <button aria-label="Duraklat" style="width:48px;height:48px;border:3px solid #1F242D;background:#F7F4EE;color:#1F242D;display:flex;align-items:center;justify-content:center;padding:0;box-sizing:border-box"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"><line x1="8" y1="5" x2="8" y2="19"></line><line x1="16" y1="5" x2="16" y2="19"></line></svg></button>
+    <div style="flex:1;border:3px solid #1F242D;box-sizing:border-box;display:flex;align-items:center;background:#fff"><div style="width:63%;height:100%;background:#E29E2E;border-right:3px solid #1F242D;box-sizing:border-box;display:flex;align-items:center;padding-left:10px;font-weight:800;font-size:18px">1:34</div></div>
+    <div style="width:48px;height:48px;border-radius:50%;background:#3D68B2;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;border:3px solid #1F242D;box-sizing:border-box">70</div>
+  </div>
+
+  <!-- Progress strip replaces the wheel: 10 chips, same state encoding as the wheel -->
+  <div id="strip" aria-label="Cümle 6 / 10" style="position:relative;display:flex;justify-content:space-between;align-items:center;height:36px;padding:0 4px"></div>
+
+  <!-- Sentence card: label + sentence with the blank + level panel (as the clue card of 04-game) -->
+  <div style="position:relative;background:#fff;border:3px solid #1F242D;box-shadow:6px 6px 0 #1F242D;display:flex;flex:1;min-height:204px">
+    <div style="flex:1;padding:12px 14px;display:flex;flex-direction:column;gap:6px;min-width:0">
+      <span style="font-size:12px;font-weight:700;letter-spacing:.14em">BOŞLUĞU DOLDUR · İSİM</span>
+      <div style="flex:1;display:flex;align-items:center"><p id="sentence" style="margin:0;font-size:30px;font-weight:800;line-height:1.2"></p></div>
+    </div>
+    <div style="width:64px;background:#3D68B2;color:#fff;border-left:3px solid #1F242D;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:800"><span style="font-size:20px">A1</span><span style="font-size:12px;font-weight:700">4 HARF</span></div>
+  </div>
+
+  <!-- Turkish translation: the clue (white, thin border, no shadow) -->
+  <div style="position:relative;background:#fff;border:2px solid #1F242D;padding:10px 14px;display:flex;flex-direction:column;gap:2px">
+    <span style="font-size:12px;font-weight:700;letter-spacing:.14em">TÜRKÇESİ</span>
+    <span id="tr" style="font-size:19px;font-weight:700;line-height:1.25"></span>
+  </div>
+
+  <!-- Answer cells: first letter given (yellow box), typed = ink, next = red border -->
+  <div id="cells" style="position:relative;display:flex;justify-content:center;gap:6px;margin-top:2px"></div>
+
+  <!-- Keys: 10 (2 rows reserved up to 3 like 04-game). Used keys are dashed -->
+  <div id="keys" style="position:relative;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px"></div>
+
+  <div style="position:relative;display:flex;gap:10px;margin-top:auto;align-items:center">
+    <button aria-label="Joker kullan" style="width:56px;height:56px;border-radius:50%;border:3px solid #1F242D;background:#E0534C;color:#fff;display:flex;align-items:center;justify-content:center;padding:0"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"><path d="M9 18h6"></path><path d="M10 21h4"></path><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"></path></svg></button>
+    <button aria-label="Harf sil" style="width:56px;height:56px;border:3px solid #1F242D;background:#fff;color:#1F242D;display:flex;align-items:center;justify-content:center;padding:0"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"><path d="M21 5H9l-6 7 6 7h12z"></path><line x1="13" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="13" y2="15"></line></svg></button>
+    <button style="flex:1;height:56px;border:3px solid #1F242D;background:#E29E2E;color:#1F242D;box-shadow:5px 5px 0 #1F242D;font-family:Jost,sans-serif;font-weight:800;font-size:22px;letter-spacing:.12em">PAS</button>
+  </div>
+</div>
+<script>
+
+// Mirrors GameUiMapper.blankExample (feature:game): whole-word, case-insensitive, spaces of multi-word answers stay.
+function blankRegex(answer){const w=answer.trim().split(' ').filter(Boolean);return new RegExp('\\b'+w.join('\\s+')+'\\b','i');}
+function splitSentence(example,answer){const m=blankRegex(answer).exec(example);return {before:example.slice(0,m.index),after:example.slice(m.index+m[0].length),len:answer.replace(/ /g,'').length};}
+const CHIP={ // wheel-chip look per state (04-game / tokens): correct circle blue, wrong square red, passed leaf yellow, current ink square, todo cream circle
+ correct:'background:#3D68B2;color:#fff;border-radius:50%;border:2px solid #1F242D;',
+ wrong:'background:#E0534C;color:#fff;border-radius:0;border:2px solid #1F242D;',
+ pass:'background:#E29E2E;color:#1F242D;border-radius:50% 0 50% 0;border:2px solid #1F242D;',
+ current:'background:#1F242D;color:#E29E2E;border-radius:0;transform:scale(1.3);',
+ todo:'background:#F7F4EE;color:#1F242D;border-radius:50%;border:2px solid #1F242D;'};
+
+const card={answer:'BIRD',example:'A tiny bird is singing nearby.',exampleTr:'Yakınlarda minik bir kuş ötüyor.'};
+const states=['correct','correct','correct','wrong','pass','current','todo','todo','todo','todo'];
+document.getElementById('strip').innerHTML=states.map((s,i)=>`<div style="width:28px;height:28px;box-sizing:border-box;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;${CHIP[s]}">${i+1}</div>`).join('');
+const sp=splitSentence(card.example,card.answer);
+const bw=Math.max(56,sp.len*20);
+document.getElementById('sentence').innerHTML=sp.before+`<span aria-label="boşluk, ${sp.len} harf" style="display:inline-block;width:${bw}px;height:.95em;vertical-align:-.12em;background:#F7F4EE;border-bottom:4px solid #E0534C;box-sizing:border-box"></span>`+sp.after;
+document.getElementById('tr').textContent=card.exampleTr;
+// cells: B given (yellow), I typed, 2 empty (first empty = red border)
+const typed=['B','I'];
+document.getElementById('cells').innerHTML=card.answer.split('').map((c,i)=>i==0?`<div style="width:40px;height:48px;background:#E29E2E;color:#1F242D;border:3px solid #1F242D;box-sizing:border-box;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:26px">${c}</div>`:i<typed.length?`<div style="width:40px;height:48px;background:#1F242D;color:#F7F4EE;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:26px">${c}</div>`:`<div style="width:40px;height:48px;border:3px solid ${i==typed.length?'#E0534C':'#1F242D'};box-sizing:border-box;background:#fff"></div>`).join('');
+const keys=['D','A','R','S','I','B','E','T','O','L'], used=['B','I'];
+document.getElementById('keys').innerHTML=keys.map(k=>used.includes(k)?`<button style="height:50px;border:3px dashed #8A8F9B;background:#F7F4EE;color:#8A8F9B;font-family:Jost,sans-serif;font-weight:800;font-size:22px">${k}</button>`:`<button style="height:50px;border:3px solid #1F242D;background:#fff;color:#1F242D;box-shadow:3px 3px 0 #1F242D;font-family:Jost,sans-serif;font-weight:800;font-size:22px">${k}</button>`).join('');
+</script></body></html>

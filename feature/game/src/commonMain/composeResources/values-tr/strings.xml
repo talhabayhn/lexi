@@ -121,7 +121,7 @@
     <string name="result_reason_all_answered">ÇARK TAMAM</string>
     <string name="result_reason_time_up">SÜRE BİTTİ</string>
     <string name="result_reason_wrong_in_hardcore">İLK HATA</string>
-    <string name="result_reason_forfeit">BIRAKILDI</string>
+    <string name="result_reason_forfeit">PES ETTİ</string>
     <string name="result_reason_empty_wheel">ÇARK BOŞ</string>
     <string name="result_points">puan</string>
     <string name="result_best_streak">en iyi serin ×%1$d</string>
@@ -201,4 +201,40 @@
     <!-- Level test run (GAME_RULES.md §9, COPY.md §4): clue card badge (DESIGN-DEBT) and the start error -->
     <string name="leveltest_badge">TEST</string>
     <string name="leveltest_error">Test başlatılamadı. Seviyeni elle seçebilirsin.</string>
+    <!-- Hot-seat duel (docs/design/duel-copy.md; screens 17–20) -->
+    <string name="duel_setup_eyebrow">İKİ KİŞİ · TEK TELEFON</string>
+    <string name="duel_setup_title">Sırayla\nyarışın</string>
+    <string name="duel_setup_subtitle">Herkesin kendi çarkı ve kendi süresi var.</string>
+    <string name="duel_setup_back">Geri</string>
+    <string name="duel_player_label">%1$d. OYUNCU</string>
+    <string name="duel_player_default">%1$d. Oyuncu</string>
+    <string name="duel_player_change">Değiştir</string>
+    <string name="duel_player_change_description">%1$s: adı değiştir</string>
+    <string name="duel_level_label">SEVİYE</string>
+    <string name="duel_time_label">HER OYUNCUNUN SÜRESİ</string>
+    <string name="duel_rules_note">Doğru bildikçe sıra sende kalır. Yanlış ya da pas sırayı rakibe geçirir. Bu modda joker yok.</string>
+    <string name="duel_start">BAŞLA</string>
+    <string name="duel_name_title">Oyuncu adı</string>
+    <string name="duel_name_hint">Adın</string>
+    <string name="duel_name_save">Kaydet</string>
+    <string name="duel_name_cancel">Vazgeç</string>
+    <string name="duel_handover_eyebrow">DÜELLO</string>
+    <string name="duel_handover_turn">SIRA</string>
+    <string name="duel_handover_body">Telefonu sıradaki oyuncuya ver. Hazır olunca dokun, süre o zaman başlar.</string>
+    <string name="duel_handover_time">KALAN SÜRE</string>
+    <string name="duel_handover_letters">KALAN HARF</string>
+    <string name="duel_handover_previous">Önceki oyuncu: %1$s · %2$d doğru · %3$d yanlış</string>
+    <string name="duel_handover_ready">HAZIRIM</string>
+    <string name="duel_game_turn">SIRA</string>
+    <string name="duel_game_player_description">%1$s: %2$d doğru, kalan süre %3$d dakika %4$d saniye</string>
+    <string name="duel_game_player_active">sıra bu oyuncuda</string>
+    <string name="duel_announce_turn">Sıra: %1$s</string>
+    <string name="duel_result_winner">%1$s kazandı</string>
+    <string name="duel_result_draw">Berabere</string>
+    <string name="duel_result_score">%1$d – %2$d doğru</string>
+    <string name="duel_result_tiebreak_wrong">Doğrular eşit: yanlışı az olan kazandı</string>
+    <string name="duel_result_tiebreak_time">Doğru ve yanlış eşit: kalan süresi çok olan kazandı</string>
+    <string name="duel_result_forfeit">%1$s pes etti</string>
+    <string name="duel_result_winner_badge">KAZANAN</string>
+    <string name="duel_result_time_left">kalan süre</string>
 </resources>

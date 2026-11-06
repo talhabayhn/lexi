@@ -147,6 +147,24 @@ public class LexiTypography internal constructor(
     public val letterChipLabel: TextStyle,
     /** 64 / 800, line-height 0.95: share card score "21/26" (`12-share-card`). */
     public val shareScore: TextStyle,
+    /** 28 / 800, +0.1em: BAŞLA (`17-duel-setup`), HAZIRIM (`18-duel-handover`). */
+    public val button28: TextStyle,
+    /** 13 / 700, +0.1em: "PES ET" link (`18-duel-handover`). */
+    public val button13: TextStyle,
+    /** 64 / 800, line-height 0.95: the player name of the handover card (`18-duel-handover`). */
+    public val display64: TextStyle,
+    /** 46 / 800, line-height 1: duel result headline (`20-duel-result`). */
+    public val display46: TextStyle,
+    /** 22 / 800, CSS normal line height: player name on the duel result cards (`20-duel-result`). */
+    public val heading22Plain: TextStyle,
+    /** 12 / 800, +0.14em: KAZANAN badge (`20-duel-result`). */
+    public val label12ExtraBold: TextStyle,
+    /** 56 / 800, line-height 0.9: correct count on a duel result card (`20-duel-result`). */
+    public val statHero56: TextStyle,
+    /** 28 / 800, line-height 1: wrong / passed / time left on a duel result card (`20-duel-result`). */
+    public val statValue28: TextStyle,
+    /** 16 / 700, underlined: "Ana menüye dön" on the duel result (`20-duel-result`). */
+    public val link16: TextStyle,
 )
 
 /** Static Jost instances shipped in `composeResources/font` (OFL, `files/licenses/jost-ofl.txt`). */
@@ -288,6 +306,15 @@ internal fun lexiTypography(jost: FontFamily): LexiTypography {
         letterChipValue = style(13, FontWeight.Bold, lineHeight = 1.1),
         letterChipLabel = style(13, FontWeight.Medium, lineHeight = 1.1),
         shareScore = style(64, extraBold, lineHeight = 0.95),
+        button28 = style(28, extraBold, letterSpacing = 0.1.em),
+        button13 = style(13, FontWeight.Bold, letterSpacing = 0.1.em),
+        display64 = style(64, extraBold, lineHeight = 0.95),
+        display46 = style(46, extraBold, lineHeight = 1.0),
+        heading22Plain = style(22, extraBold),
+        label12ExtraBold = style(12, extraBold, letterSpacing = 0.14.em),
+        statHero56 = style(56, extraBold, lineHeight = 0.9),
+        statValue28 = style(28, extraBold, lineHeight = 1.0),
+        link16 = style(16, FontWeight.Bold).copy(textDecoration = TextDecoration.Underline),
     )
 }
 

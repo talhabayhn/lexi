@@ -357,6 +357,16 @@ class HomeViewModelTest {
     }
 
     @Test
+    fun `the duel box opens the duel setup`() = runHomeTest {
+        val viewModel = viewModel()
+        viewModel.effects.test {
+            viewModel.onIntent(HomeIntent.OpenDuel)
+
+            assertEquals(HomeEffect.NavigateToDuel, awaitItem())
+        }
+    }
+
+    @Test
     fun `the exam packs tile opens the exam packs page`() = runHomeTest {
         val viewModel = viewModel()
         viewModel.effects.test {

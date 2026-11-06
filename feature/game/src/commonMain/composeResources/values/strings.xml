@@ -202,4 +202,40 @@
     <!-- Level test run (GAME_RULES.md §9, COPY.md §4): clue card badge (DESIGN-DEBT) and the start error -->
     <string name="leveltest_badge">TEST</string>
     <string name="leveltest_error">The test couldn't start. You can pick a level manually.</string>
+    <!-- Hot-seat duel (docs/design/duel-copy.md; screens 17–20) -->
+    <string name="duel_setup_eyebrow">TWO PLAYERS · ONE PHONE</string>
+    <string name="duel_setup_title">Take\nturns</string>
+    <string name="duel_setup_subtitle">Everyone gets their own wheel and clock.</string>
+    <string name="duel_setup_back">Back</string>
+    <string name="duel_player_label">PLAYER %1$d</string>
+    <string name="duel_player_default">Player %1$d</string>
+    <string name="duel_player_change">Change</string>
+    <string name="duel_player_change_description">%1$s: change name</string>
+    <string name="duel_level_label">LEVEL</string>
+    <string name="duel_time_label">TIME PER PLAYER</string>
+    <string name="duel_rules_note">Keep answering right and the turn stays yours. A wrong answer or a pass hands it over. No jokers in this mode.</string>
+    <string name="duel_start">START</string>
+    <string name="duel_name_title">Player name</string>
+    <string name="duel_name_hint">Name</string>
+    <string name="duel_name_save">Save</string>
+    <string name="duel_name_cancel">Cancel</string>
+    <string name="duel_handover_eyebrow">DUEL</string>
+    <string name="duel_handover_turn">UP NEXT</string>
+    <string name="duel_handover_body">Pass the phone to the next player. Tap when ready: the clock starts then.</string>
+    <string name="duel_handover_time">TIME LEFT</string>
+    <string name="duel_handover_letters">LETTERS LEFT</string>
+    <string name="duel_handover_previous">Last player: %1$s · %2$d correct · %3$d wrong</string>
+    <string name="duel_handover_ready">I\'M READY</string>
+    <string name="duel_game_turn">TURN</string>
+    <string name="duel_game_player_description">%1$s: %2$d correct, time left %3$d min %4$d sec</string>
+    <string name="duel_game_player_active">this player\'s turn</string>
+    <string name="duel_announce_turn">Up next: %1$s</string>
+    <string name="duel_result_winner">%1$s wins</string>
+    <string name="duel_result_draw">It\'s a draw</string>
+    <string name="duel_result_score">%1$d – %2$d correct</string>
+    <string name="duel_result_tiebreak_wrong">Tied on correct: fewer wrong answers wins</string>
+    <string name="duel_result_tiebreak_time">Tied on correct and wrong: more time left wins</string>
+    <string name="duel_result_forfeit">%1$s gave up</string>
+    <string name="duel_result_winner_badge">WINNER</string>
+    <string name="duel_result_time_left">time left</string>
 </resources>

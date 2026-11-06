@@ -6,6 +6,7 @@ import androidx.compose.ui.unit.coerceAtLeast
 import androidx.compose.ui.unit.min
 import dev.talhabayhan.lexi.core.designsystem.component.AnswerSlotDefaults
 import dev.talhabayhan.lexi.core.designsystem.component.ClueCardMetrics
+import dev.talhabayhan.lexi.core.designsystem.component.DuelHudDefaults
 import dev.talhabayhan.lexi.core.designsystem.component.GameHudDefaults
 import dev.talhabayhan.lexi.core.designsystem.component.GameScreenDefaults
 import dev.talhabayhan.lexi.core.designsystem.component.IconButtonDefaults
@@ -60,19 +61,25 @@ internal data class GameLayout(
  * [GameScreenDefaults.ComfortableWheelSize]; the wheel is `min(320 | 280, width − 40)` or what is left. Height left over
  * with the wheel at its maximum widens the clue area by up to one more clue line; beyond that the row gaps grow (up to
  * 2×) and the column is centred, so the actions stay attached to the keys. Large viewports are first scaled as a
- * whole by `LexiViewport` (Expanded tier).
+ * whole by `LexiViewport` (Expanded tier). A [duel] board has the taller duel HUD (`19-duel-game`).
  */
-internal fun gameLayout(width: Dp, height: Dp, dimens: LexiDimens, clue: ClueCardMetrics): GameLayout {
+internal fun gameLayout(
+    width: Dp,
+    height: Dp,
+    dimens: LexiDimens,
+    clue: ClueCardMetrics,
+    duel: Boolean = false,
+): GameLayout {
     val tiers = if (height >= GameScreenDefaults.ShortScreenHeight) {
         GameLayoutTier.entries
     } else {
         listOf(GameLayoutTier.Short, GameLayoutTier.Compact)
     }
     val columnWidth = width - dimens.screenPaddingHorizontal * 2
-    var layout = tiers.first().layout(columnWidth, height, dimens, clue)
+    var layout = tiers.first().layout(columnWidth, height, dimens, clue, duel)
     for (tier in tiers.drop(1)) {
         if (layout.wheelSize >= GameScreenDefaults.ComfortableWheelSize) break
-        layout = tier.layout(columnWidth, height, dimens, clue)
+        layout = tier.layout(columnWidth, height, dimens, clue, duel)
     }
     return layout
 }
@@ -80,14 +87,25 @@ internal fun gameLayout(width: Dp, height: Dp, dimens: LexiDimens, clue: ClueCar
 /** hud | wheel, wheel | clue, clue | answer and answer | keys. */
 private const val GROWING_GAPS = 4
 
-private fun GameLayoutTier.layout(columnWidth: Dp, height: Dp, dimens: LexiDimens, clue: ClueCardMetrics): GameLayout {
+private fun GameLayoutTier.layout(
+    columnWidth: Dp,
+    height: Dp,
+    dimens: LexiDimens,
+    clue: ClueCardMetrics,
+    duel: Boolean,
+): GameLayout {
     val compact = this == GameLayoutTier.Compact
     val gapScale = if (this == GameLayoutTier.Short) GameScreenDefaults.SHORT_SCREEN_GAP_SCALE else 1f
     val base = GameLayout(
         tier = this,
         paddingTop = if (compact) GameScreenDefaults.CompactPaddingTop else dimens.screenPaddingTopGame,
         paddingBottom = if (compact) GameScreenDefaults.CompactPaddingBottom else dimens.screenPaddingBottom,
-        hudHeight = if (compact) GameScreenDefaults.CompactHudHeight else GameHudDefaults.BarHeight,
+        hudHeight = when {
+            duel && compact -> DuelHudDefaults.CompactHeight
+            duel -> DuelHudDefaults.Height
+            compact -> GameScreenDefaults.CompactHudHeight
+            else -> GameHudDefaults.BarHeight
+        },
         gap = if (compact) GameScreenDefaults.CompactGap else dimens.gap16 * gapScale,
         answerTopMargin = if (compact) GameScreenDefaults.CompactAnswerTopMargin else dimens.gap4 * gapScale,
         keysActionsGap = if (compact) {

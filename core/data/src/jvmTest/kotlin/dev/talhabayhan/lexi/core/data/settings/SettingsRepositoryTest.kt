@@ -6,6 +6,7 @@ import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import app.cash.turbine.test
 import dev.talhabayhan.lexi.core.domain.game.GameConfig
+import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.core.domain.settings.Accent
 import dev.talhabayhan.lexi.core.domain.settings.Settings
 import dev.talhabayhan.lexi.core.domain.settings.UiLanguage
@@ -33,6 +34,7 @@ class SettingsRepositoryTest {
 
         assertEquals(Settings(), repository.settings.first())
         assertEquals(180, Settings().classicTimeLimitSeconds)
+        assertEquals(GameConfig().duelClockSeconds, Settings().duelClockSeconds)
         assertEquals(20 * 60, Settings().reminderMinuteOfDay)
     }
 
@@ -62,6 +64,9 @@ class SettingsRepositoryTest {
             reviewReminders = false,
             appLanguage = UiLanguage.EN,
             accent = Accent.UK,
+            duelPlayerNames = listOf("Ayşe", ""),
+            duelLevel = Level.B2,
+            duelClockSeconds = 240,
         )
 
         repository.settings.test {
@@ -82,11 +87,26 @@ class SettingsRepositoryTest {
             it[intPreferencesKey("daily_goal_wheels")] = 0
             it[stringPreferencesKey("ui_language")] = "KLINGON"
             it[stringPreferencesKey("accent")] = "UK"
+            it[intPreferencesKey("duel_clock_seconds")] = 100
+            it[stringPreferencesKey("duel_level")] = "Z9"
         }
 
         val settings = SettingsRepositoryImpl(dataStore, GameConfig(), backgroundScope).settings.first()
 
         assertEquals(Settings(accent = Accent.UK), settings)
+    }
+
+    @Test
+    fun `duel names are stored per player and cut to the maximum length`() = runTest {
+        val dataStore = createSettingsDataStore(path, backgroundScope)
+        dataStore.edit {
+            it[stringPreferencesKey("duel_player_1_name")] = "  Bir çok uzun isim burada  "
+            it[stringPreferencesKey("duel_player_2_name")] = "Can"
+        }
+
+        val settings = SettingsRepositoryImpl(dataStore, GameConfig(), backgroundScope).settings.first()
+
+        assertEquals(listOf("Bir çok uzun", "Can"), settings.duelPlayerNames)
     }
 
     @Test

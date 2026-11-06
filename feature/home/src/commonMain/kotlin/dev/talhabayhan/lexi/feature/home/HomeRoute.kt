@@ -21,7 +21,7 @@ data object HomeRoute
 
 /**
  * [onPlay] opens the level and mode select, [onOpenDaily] the daily wheel, [onOpenNotebook] the notebook, [onOpenStats] the statistics,
- * [onOpenSettings] the settings, [onOpenPractice] the level select on Practice, [onOpenExamPacks] the exam packs page (the graph in `shared` decides the routes).
+ * [onOpenSettings] the settings, [onOpenPractice] the level select on Practice, [onOpenExamPacks] the exam packs page, [onOpenDuel] the hot-seat duel setup (the graph in `shared` decides the routes).
  */
 fun NavGraphBuilder.homeScreen(
     onPlay: () -> Unit,
@@ -31,6 +31,7 @@ fun NavGraphBuilder.homeScreen(
     onOpenSettings: () -> Unit,
     onOpenPractice: () -> Unit,
     onOpenExamPacks: () -> Unit,
+    onOpenDuel: () -> Unit,
     onOpenReminderPrePrompt: () -> Unit = {},
 ) {
     composable<HomeRoute> {
@@ -42,6 +43,7 @@ fun NavGraphBuilder.homeScreen(
             onOpenSettings = onOpenSettings,
             onOpenPractice = onOpenPractice,
             onOpenExamPacks = onOpenExamPacks,
+            onOpenDuel = onOpenDuel,
             onOpenReminderPrePrompt = onOpenReminderPrePrompt,
         )
     }
@@ -56,6 +58,7 @@ internal fun HomeRoute(
     onOpenSettings: () -> Unit,
     onOpenPractice: () -> Unit,
     onOpenExamPacks: () -> Unit,
+    onOpenDuel: () -> Unit,
     onOpenReminderPrePrompt: () -> Unit,
     viewModel: HomeViewModel = koinViewModel(),
 ) {
@@ -67,6 +70,7 @@ internal fun HomeRoute(
     val currentOnOpenSettings by rememberUpdatedState(onOpenSettings)
     val currentOnOpenPractice by rememberUpdatedState(onOpenPractice)
     val currentOnOpenExamPacks by rememberUpdatedState(onOpenExamPacks)
+    val currentOnOpenDuel by rememberUpdatedState(onOpenDuel)
     val currentOnOpenReminderPrePrompt by rememberUpdatedState(onOpenReminderPrePrompt)
     val lifecycleOwner = LocalLifecycleOwner.current
     LaunchedEffect(viewModel, lifecycleOwner) {
@@ -80,6 +84,7 @@ internal fun HomeRoute(
                     HomeEffect.NavigateToSettings -> currentOnOpenSettings()
                     HomeEffect.NavigateToPractice -> currentOnOpenPractice()
                     HomeEffect.NavigateToExamPacks -> currentOnOpenExamPacks()
+                    HomeEffect.NavigateToDuel -> currentOnOpenDuel()
                     HomeEffect.NavigateToReminderPrePrompt -> currentOnOpenReminderPrePrompt()
                 }
             }

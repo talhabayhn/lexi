@@ -109,7 +109,7 @@ Module mapping (replaces the earlier `composeApp`): `androidApp` = thin Android 
 **Done when:** sandbox purchase unlocks Pro on both platforms; ads only where allowed.
 
 ## M8 — Same-device duel, polish, release
-- [ ] Hot-seat duel: setup, handover card, per-player clocks, duel result (design debt)
+- [x] Hot-seat duel: setup, handover card, per-player clocks, duel result (name dialog: needs design)
 - [x] Accessibility pass (TalkBack/VoiceOver labels, font scale caps, contrast, reduced motion)
 - [x] Small-screen & tablet layout rules (`screen-map.md`)
 - [ ] Rating prompt, About/licenses (licences done; word-list attributions pending owner confirmation in docs/store/ATTRIBUTION-TODO.md)

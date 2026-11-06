@@ -31,6 +31,7 @@ import dev.talhabayhan.lexi.core.domain.platform.UrlOpener
 import dev.talhabayhan.lexi.feature.exams.examPacksScreen
 import dev.talhabayhan.lexi.feature.game.GamePreparer
 import dev.talhabayhan.lexi.feature.game.GameWarmUp
+import dev.talhabayhan.lexi.feature.game.duel.duelScreens
 import dev.talhabayhan.lexi.feature.game.gameScreen
 import dev.talhabayhan.lexi.feature.game.levelTestScreen
 import dev.talhabayhan.lexi.feature.game.result.resultScreen
@@ -139,6 +140,7 @@ private fun LexiNavGraph(
             onOpenSettings = { navigator.openSettings() },
             onOpenPractice = { navigator.openLevelSelect(GameMode.PRACTICE) },
             onOpenExamPacks = { navigator.openExamPacks() },
+            onOpenDuel = { navigator.openDuelSetup() },
             onOpenReminderPrePrompt = { navigator.openReminderPrePrompt() },
         )
         examPacksScreen(onBack = { navigator.back() }, onStartPack = { pack -> navigator.startExamPack(pack) })
@@ -172,6 +174,15 @@ private fun LexiNavGraph(
             onAbandoned = navigator::abandonGame,
             onBack = { navigator.back() },
             onOpenSettings = { navigator.openSettings() },
+        )
+        duelScreens(
+            onStartDuel = { duel -> navigator.startDuel(duel) },
+            onFinished = navigator::finishDuel,
+            onAbandoned = navigator::abandonGame,
+            onBack = { navigator.back() },
+            onOpenSettings = { navigator.openSettings() },
+            onPlayAgain = { duel -> navigator.playDuelAgain(duel) },
+            onHome = { navigator.home() },
         )
         resultScreen(
             onPlayAgain = { game -> navigator.playAgain(game) },

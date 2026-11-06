@@ -105,6 +105,9 @@ internal sealed interface HomeIntent {
 
     /** The exam packs tile: a "coming soon" page until M7. */
     data object OpenExamPacks : HomeIntent
+
+    /** The "İki kişi, tek telefon" box: the hot-seat duel setup. */
+    data object OpenDuel : HomeIntent
 }
 
 internal sealed interface HomeEffect {
@@ -119,6 +122,8 @@ internal sealed interface HomeEffect {
     data object NavigateToSettings : HomeEffect
 
     data object NavigateToPractice : HomeEffect
+
+    data object NavigateToDuel : HomeEffect
 
     data object NavigateToExamPacks : HomeEffect
 

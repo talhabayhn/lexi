@@ -59,6 +59,19 @@ class HomeScreenBehaviourTest {
     }
 
     @Test
+    fun `the duel box sends open duel and is one button`() {
+        assertEquals(
+            listOf<HomeIntent>(HomeIntent.OpenDuel),
+            clicking {
+                onNodeWithText("İki kişi, tek telefon", substring = true).assert(
+                    SemanticsMatcher.expectValue(SemanticsProperties.Role, Role.Button),
+                )
+                onNodeWithText("İki kişi, tek telefon", substring = true).performClick()
+            },
+        )
+    }
+
+    @Test
     fun `the daily card sends open daily`() {
         assertEquals(
             listOf<HomeIntent>(HomeIntent.OpenDaily),

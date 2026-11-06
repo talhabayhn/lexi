@@ -80,11 +80,11 @@ class HomeLayoutTest {
 
     /** Taller than the design's proportions (scaled by the width): the tiles grow before the OYNA–tiles hole. */
     @Test
-    @Config(qualifiers = "tr-w400dp-h1000dp-mdpi")
-    fun w400h1000() = runComposeUiTest {
+    @Config(qualifiers = "tr-w400dp-h1100dp-mdpi")
+    fun w400h1100() = runComposeUiTest {
         setHome()
         assertContentOnScreen()
-        val scale = ViewportDefaults.scale(400.dp, 1000.dp)
+        val scale = ViewportDefaults.scale(400.dp, 1100.dp)
         val tile = bounds(hasText("Kelime Defterim", substring = true))
         assertEquals(TILE_HEIGHT + TILE_GROWTH, (tile.bottom - tile.top).value / scale, SCALED_TOLERANCE)
     }
@@ -144,6 +144,10 @@ class HomeLayoutTest {
             )
         }
         assertTrue(texts >= 8, "texts missing: $texts")
+        assertTrue(
+            onAllNodes(hasText("İki kişi, tek telefon", substring = true)).fetchSemanticsNodes().isNotEmpty(),
+            "duel box missing",
+        )
     }
 
     private companion object {

@@ -54,6 +54,8 @@
     </plurals>
     <string name="home_tile_practice">Practice mode</string>
     <string name="home_tile_practice_subtitle">Untimed, no pressure</string>
+    <string name="home_tile_duel">Two players, one phone</string>
+    <string name="home_tile_duel_subtitle">Take turns against a friend</string>
     <string name="home_tile_exams">Exam packs</string>
     <string name="home_tile_exams_subtitle">Exam word lists</string>
 

@@ -57,6 +57,8 @@ public fun NavSquareButton(
     size: Dp = IconButtonDefaults.NavSize,
     iconSize: Dp = IconButtonDefaults.IconSize,
     containerColor: Color = LexiTheme.colors.white,
+    /** Taller than wide when set (the duel HUD's 48 × 64 pause button, `19-duel-game`). */
+    height: Dp = size,
 ) {
     IconButtonBase(
         icon = icon,
@@ -64,6 +66,7 @@ public fun NavSquareButton(
         onClick = onClick,
         modifier = modifier,
         size = size,
+        height = height,
         iconSize = iconSize,
         shape = LexiTheme.shapes.square,
         containerColor = containerColor,
@@ -140,6 +143,7 @@ private fun IconButtonBase(
     size: Dp,
     iconSize: Dp,
     shape: Shape,
+    height: Dp = size,
     containerColor: Color,
     contentColor: Color,
     border: BorderStroke,
@@ -149,7 +153,10 @@ private fun IconButtonBase(
     PressableSurface(
         onClick = onClick,
         // Disabled (input blocked): 50 % opacity like the joker sheet's disabled rows (no design of its own).
-        modifier = modifier.size(size).alpha(if (enabled) 1f else JokerRowDefaults.DISABLED_ALPHA),
+        modifier = modifier.size(
+            width = size,
+            height = height,
+        ).alpha(if (enabled) 1f else JokerRowDefaults.DISABLED_ALPHA),
         enabled = enabled,
         shape = shape,
         color = containerColor,

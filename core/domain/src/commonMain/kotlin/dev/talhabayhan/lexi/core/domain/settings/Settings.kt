@@ -1,5 +1,6 @@
 package dev.talhabayhan.lexi.core.domain.settings
 
+import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.core.domain.reminder.ReminderTimes
 
 /**
@@ -30,6 +31,15 @@ public data class Settings(
     val accent: Accent = Accent.US,
     /** Opt-in to anonymous usage statistics (Firebase Analytics, KVKK); off until the player agrees. */
     val analyticsConsent: Boolean = false,
+    /**
+     * The duel players' names from the last match (`GAME_RULES.md` §8), two entries; "" = the default name
+     * ("1. Oyuncu"). Never sent anywhere (no analytics, no crash keys).
+     */
+    val duelPlayerNames: List<String> = listOf("", ""),
+    /** The level of the last duel setup. */
+    val duelLevel: Level = Level.A1,
+    /** The clock per player of the last duel setup; one of `GameConfig.duelClockOptionsSeconds`. */
+    val duelClockSeconds: Int = DEFAULT_DUEL_CLOCK_SECONDS,
 ) {
     public val uiLanguage: AppLanguage get() = appLanguage
 
@@ -39,10 +49,12 @@ public data class Settings(
     init {
         require(reminderMinuteOfDay in 0 until MINUTES_PER_DAY) { "reminderMinuteOfDay $reminderMinuteOfDay" }
         require(dailyGoalWheels >= 1) { "dailyGoalWheels $dailyGoalWheels must be at least 1" }
+        require(duelPlayerNames.size == 2) { "duelPlayerNames needs 2 entries, was ${duelPlayerNames.size}" }
     }
 
     public companion object {
         public const val DEFAULT_CLASSIC_TIME_LIMIT_SECONDS: Int = 180
+        public const val DEFAULT_DUEL_CLOCK_SECONDS: Int = 150
         public const val DEFAULT_REMINDER_MINUTE_OF_DAY: Int = ReminderTimes.DEFAULT_MINUTE
         public const val MINUTES_PER_DAY: Int = 24 * 60
     }
