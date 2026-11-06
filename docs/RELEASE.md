@@ -164,7 +164,7 @@ Required sizes are listed in the `build.py` header.
 |---|---|---|
 | `play/icon-512.png` | Play | Play Console → Grow users → Store presence → Main store listing → App icon |
 | `play/feature-graphic-{tr,en}.png` (1024×500) | Play | same page → Feature graphic (per language: Translations / Manage translations) |
-| `play/phone/{tr,en}-01…08.png` (1080×1920) | Play | same page → Phone screenshots (2–8, in this order) |
+| `play/phone/{tr,en}-01…08.png` (2160×3840) | Play | same page → Phone screenshots (2–8, in this order) |
 | `play/promo-video-{tr,en}-1920x1080.mp4` | Play | upload to **YouTube** (Public or Unlisted, ads/monetisation off, embeddable), paste the video URL into Main store listing → Video |
 | `appstore/iphone-6.9/{tr,en}-01…08.png` (1320×2868) | App Store | App Store Connect → app → version page → Previews and Screenshots → iPhone 6.9" Display (per localization: Turkish / English) |
 | `appstore/iphone-6.3/{tr,en}-01…08.png` (1206×2622) | App Store | **upload set**: App Store Connect rejects the 1320×2868 files ("File dimensions are invalid") and accepts 1206×2622 in its single iPhone slot |

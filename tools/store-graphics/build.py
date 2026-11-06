@@ -10,6 +10,11 @@ The normal way is CI: Actions -> store-graphics -> Run workflow. It re-records e
 current theme, captures the gameplay footage (StoreFootageCapture), runs both scripts and uploads everything as the
 `store-graphics` artifact (docs/RELEASE.md §9). Output is deterministic for the same inputs.
 
+High-resolution sources: feature/*/StoreHiResCapture.kt re-renders every screen used here at xxxhdpi (4x, 1560 x 3376)
+into feature/<module>/build/store-hires/<lang>/, so every store size is a downsample (nothing is upscaled). The 2x
+goldens below are only a fallback for local runs without the capture. The feature graphic is drawn at 2x and
+downsampled with Lanczos.
+
 Sources (never invented UI):
   * Roborazzi screenshots under feature/*/src/androidHostTest/screenshots, rendered from the app's Compose code at
     390x844 dp @2x with LexiTheme (so they carry the current palette once re-recorded).
@@ -24,8 +29,8 @@ specifications" / "App preview specifications"):
   Google Play
     - App icon: 512 x 512, 32-bit PNG, <= 1 MB, full square (Play applies the mask; no own rounding/shadow).
     - Feature graphic: 1024 x 500, JPEG or 24-bit PNG (no alpha). Required to publish; also the video cover.
-    - Phone screenshots: 2-8, PNG/JPEG no alpha, each side 320-3840 px, long side <= 2x short side;
-      1080 x 1920 (9:16) here (meets the >= 1080 px recommendation for promotion).
+    - Phone screenshots: 2-8, PNG/JPEG no alpha, <= 8 MB, each side 320-3840 px, long side <= 2x short side;
+      2160 x 3840 (9:16) here, the largest allowed, so the Play web page stays sharp.
     - Preview video: a YouTube URL only (public or unlisted, ads off) -> play/promo-video-*.mp4 to upload there.
   App Store (iPhone only: TARGETED_DEVICE_FAMILY = 1, so no iPad set is needed)
     - 6.9" display: 1320 x 2868 portrait (primary; Apple scales it down for smaller iPhones).
@@ -56,7 +61,7 @@ YELLOW = (0xE2, 0x9E, 0x2E)
 WHITE = (0xFF, 0xFF, 0xFF)
 
 SIZES = {
-    "play/phone": (1080, 1920),
+    "play/phone": (2160, 3840),
     "appstore/iphone-6.9": (1320, 2868),
     "appstore/iphone-6.5": (1284, 2778),
     "appstore/iphone-6.3": (1206, 2622),
@@ -99,9 +104,29 @@ def font(weight: str, size: int) -> ImageFont.FreeTypeFont:
     return ImageFont.truetype(str(FONTS / f"Jost-{weight}.ttf"), size)
 
 
+def hires_path(option: str, lang: str) -> Path | None:
+    """The 4x capture of a source (StoreHiResCapture), or None for sources without one."""
+    if option == "footage:combo":
+        stem, module = "GameMotionComboBurst", "game"
+    elif option.startswith("store:"):
+        module, file = option.removeprefix("store:").split("/")
+        stem = file.removesuffix(".png")
+    elif option.startswith("feature/"):
+        module, file = option.removeprefix("feature/").split("/")
+        stem = file.removesuffix(".png")
+    else:
+        return None
+    return ROOT / "feature" / module / "build" / "store-hires" / lang / f"{stem}.png"
+
+
 def resolve(name: str, screens_dir: Path | None, lang: str = "tr") -> Path:
-    """Path of a source screen; `a|b` tries a first."""
+    """Path of a source screen (the 4x capture when present); `a|b` tries a first."""
     for option in name.split("|"):
+        hi = hires_path(option, lang)
+        if hi is not None and hi.exists():
+            return hi
+        if hi is not None:
+            print(f"warning: no 4x capture for {option} ({lang}); falling back to the 2x source")
         if option == "footage:combo":
             path = combo_frame(lang)
         elif option.startswith("footage:"):
@@ -188,6 +213,15 @@ def phone_layout(size: tuple[int, int], src_size: tuple[int, int]) -> tuple[int,
     return band_h, (w - screen_w) // 2, top, screen_w, screen_h
 
 
+def aa_ellipse(img: Image.Image, box: tuple[int, int, int, int], fill) -> None:
+    """Ellipse with smooth edges (4x supersampled mask)."""
+    x0, y0, x1, y1 = box
+    w, h = x1 - x0, y1 - y0
+    mask = Image.new("L", (w * 4, h * 4), 0)
+    ImageDraw.Draw(mask).ellipse((0, 0, w * 4 - 1, h * 4 - 1), fill=255)
+    img.paste(fill, (x0, y0), mask.resize((w, h), Image.LANCZOS))
+
+
 def portrait_background(size: tuple[int, int], band, headline: str, src_size=(780, 1688)) -> Image.Image:
     """Cream canvas, headline band and Bauhaus accents (circle, square) behind the screen slot."""
     w, h = size
@@ -196,8 +230,8 @@ def portrait_background(size: tuple[int, int], band, headline: str, src_size=(78
     d = ImageDraw.Draw(img)
     band_h, x, top, screen_w, screen_h = phone_layout(size, src_size)
     r = int(170 * u)
-    d.ellipse((w - r - int(40 * u), band_h + int(120 * u), w + r - int(40 * u), band_h + int(120 * u) + 2 * r),
-              fill=YELLOW if band != YELLOW else BLUE)
+    aa_ellipse(img, (w - r - int(40 * u), band_h + int(120 * u), w + r - int(40 * u), band_h + int(120 * u) + 2 * r),
+               YELLOW if band != YELLOW else BLUE)
     d.rectangle((-int(60 * u), h - int(520 * u), int(150 * u), h - int(310 * u)), fill=BLUE if band != BLUE else RED)
     headline_band(img, (0, 0, w, band_h), band, headline, u)
     d.rectangle((0, band_h, w, band_h + int(8 * u)), fill=INK)
@@ -243,20 +277,21 @@ def logo_tiles(img: Image.Image, x0: int, y0: int, tile: int, gap: int) -> None:
                font=letter_font, fill=fg)
 
 
-def feature_graphic(lang: str) -> Image.Image:
-    w, h = 1024, 500
+def feature_graphic(lang: str, s: int = 2) -> Image.Image:
+    """Drawn at s x 1024 x 500 and downsampled with Lanczos, so text and shapes are anti-aliased."""
+    w, h = 1024 * s, 500 * s
     img = Image.new("RGB", (w, h), CREAM)
     d = ImageDraw.Draw(img)
     # Left part echoes the app icon: red field with the yellow "L" disc on the seam.
-    d.rectangle((0, 0, 299, h), fill=RED)
-    img.paste(app_icon(260), (170, 120))
-    logo_tiles(img, 490, 92, 96, 12)
+    d.rectangle((0, 0, 300 * s - 1, h), fill=RED)
+    img.paste(app_icon(260 * s), (170 * s, 120 * s))
+    logo_tiles(img, 490 * s, 92 * s, 96 * s, 12 * s)
     title, sub = FEATURE[lang]
-    d.text((490, 236), title.upper(), font=fit_text(d, title.upper(), w - 530, 50, 34), fill=INK)
-    sub_font = fit_text(d, sub, w - 530, 120, 30)
-    d.multiline_text((490, 296), wrap(d, sub, sub_font, w - 530), font=sub_font, fill=INK, spacing=8)
-    d.rectangle((490, 420, 610, 432), fill=INK)
-    return img
+    d.text((490 * s, 236 * s), title.upper(), font=fit_text(d, title.upper(), w - 530 * s, 50 * s, 34 * s), fill=INK)
+    sub_font = fit_text(d, sub, w - 530 * s, 120 * s, 30 * s)
+    d.multiline_text((490 * s, 296 * s), wrap(d, sub, sub_font, w - 530 * s), font=sub_font, fill=INK, spacing=8 * s)
+    d.rectangle((490 * s, 420 * s, 610 * s, 432 * s), fill=INK)
+    return img.resize((1024, 500), Image.LANCZOS)
 
 
 def wrap(d: ImageDraw.ImageDraw, text: str, f: ImageFont.FreeTypeFont, max_w: int) -> str:
@@ -273,6 +308,7 @@ def wrap(d: ImageDraw.ImageDraw, text: str, f: ImageFont.FreeTypeFont, max_w: in
 
 def save(img: Image.Image, path: Path) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
+    img = img.convert("RGB")  # stores reject alpha on screenshots and the feature graphic
     img.save(path, optimize=True)
     print(path.relative_to(ROOT), img.size)
 
