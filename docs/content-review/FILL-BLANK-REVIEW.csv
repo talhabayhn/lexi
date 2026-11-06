@@ -1,0 +1,1821 @@
+id,level,sentence,translation,failing_rules,suggested_action
+a1-cat,A1,Our cat sleeps in a basket.,Kedimiz sepette uyur.,R4,exclude
+a1-elephant,A1,The elephant has huge ears.,Filin kocaman kulakları var.,R6,rewrite
+a1-fish,A1,I have a tiny fish.,Küçücük bir balığım var.,R5,rewrite
+a1-pig,A1,The pig is fat.,Domuz şişman.,R3 R4 R5,exclude
+a1-zebra,A1,A zebra has stripes.,Zebranın çizgileri var.,R3 R5,rewrite
+a1-cow,A1,There is a cow by the barn.,Ahırın arkasında bir inek var.,R4,exclude
+a1-monkey,A1,The monkey is clever.,Maymun akıllı.,R3 R5,rewrite
+a1-bear,A1,The bear is huge.,Ayı kocaman.,R3 R5,rewrite
+a1-important,A1,Health is important for us.,Sağlık bizim için önemlidir.,R5,rewrite
+a1-iron,A1,Mum has an iron.,Annemin bir ütüsü var.,R3 R5,rewrite
+a1-skin,A1,Her skin is soft.,Cildi yumuşak.,R1 R3 R5,exclude
+a1-chin,A1,Ali has a beard on his chin.,Ali'nin çenesinde sakal var.,R1,exclude
+a1-life,A1,Selin loves her life.,Selin hayatını seviyor.,R1 R3,exclude
+a1-piece,A1,Ali wants a piece of watermelon.,Ali bir parça karpuz istiyor.,R1,exclude
+a1-spicy,A1,Mert likes spicy sauce.,Mert acılı sosu sever.,R1 R3,exclude
+a1-rich,A1,Mr Aksoy is rich.,Bay Aksoy zengin.,R1 R3,exclude
+a1-sign,A1,Ali reads the sign.,Ali levhayı okuyor.,R1 R3,exclude
+a1-uniform,A1,Selin wears a uniform.,Selin üniforma giyiyor.,R3,rewrite
+a1-unhappy,A1,Mert is unhappy.,Mert mutsuz.,R2 R5,rewrite
+a1-sound,A1,Ali likes the sound of birds.,Ali kuşların sesini seviyor.,R1,exclude
+a1-button,A1,Ali has a button on his sleeve.,Ali'nin kolunda bir düğme var.,R1,exclude
+a1-museum,A1,Selin goes to the museum with Mert.,Selin Mert'le müzeye gidiyor.,R1,exclude
+a1-bug,A1,Mert sees a bug on his pillow.,Mert yastığında bir böcek görüyor.,R1 R4,exclude
+a1-nut,A1,Selin eats a nut.,Selin bir fındık yiyor.,R1 R3 R4,exclude
+a1-plus,A1,3 plus 4 is 7.,"3 artı 4, 7 eder.",R1 R2 R5,exclude
+a1-hug,A1,Ali wants a hug.,Ali bir sarılma istiyor.,R1 R3 R4,exclude
+a1-oil,A1,Mum cooks with oil.,Annem yağ ile yemek yapıyor.,R3 R4,exclude
+a1-own,A1,Selin has her own diary.,Selin'in kendi günlüğü var.,R4,exclude
+a1-olive,A1,Ali eats an olive.,Ali bir zeytin yiyor.,R3,rewrite
+a1-soccer,A1,Mert plays soccer with Ali.,"Mert, Ali'yle futbol oynuyor.",R1,exclude
+a1-rose,A1,Ali gives Selin a rose.,Ali Selin'e bir gül veriyor.,R1,exclude
+a1-stone,A1,Mert throws a stone.,Mert bir taş atıyor.,R1 R3,exclude
+a1-wood,A1,The shelf is made of wood.,Raf ahşaptan yapılmış.,R1,exclude
+a1-broom,A1,Mum has a broom.,Annemin bir süpürgesi var.,R1 R3 R5,exclude
+a1-van,A1,A van stops.,Bir minibüs duruyor.,R2 R4 R5,exclude
+a1-view,A1,Ali loves the view.,Ali manzarayı çok seviyor.,R3,rewrite
+a1-yogurt,A1,Ali eats yogurt.,Ali yoğurt yiyor.,R2,rewrite
+a1-yoga,A1,Mum does yoga.,Annem yoga yapıyor.,R2 R5,rewrite
+a1-yummy,A1,This dessert is yummy!,Bu tatlı çok lezzetli!,R3 R5,rewrite
+a1-candy,A1,Selin gets candy.,Selin şeker alıyor.,R1 R2,exclude
+a1-lucky,A1,Ali is lucky.,Ali şanslı.,R1 R2 R5,exclude
+a1-teddy,A1,Ayşe sleeps with her teddy.,Ayşe oyuncak ayısıyla uyuyor.,R1,exclude
+a1-copy,A1,"Ali, copy the sentence.","Ali, cümleyi kopyala.",R1 R3,exclude
+a1-squirrel,A1,A squirrel eats an acorn.,Bir sincap meşe palamudu yiyor.,R1,exclude
+a1-fox,A1,A fox sleeps.,Bir tilki uyuyor.,R1 R2 R4 R5,exclude
+a1-mix,A1,Mix the flour and the eggs.,Unu ve yumurtaları karıştır.,R1 R4,exclude
+a1-exit,A1,The exit is there.,Çıkış orada.,R1 R3 R5,exclude
+a1-extra,A1,Selin has an extra coin.,Selin'in fazladan bir bozuk parası var.,R1,exclude
+a1-fix,A1,Mert can fix it.,Mert onu tamir edebilir.,R1 R3 R4 R5,exclude
+a1-size,A1,My size is 38.,Bedenim 38.,R1 R2 R5,exclude
+a1-lazy,A1,The hamster is lazy.,Hamster tembel.,R1 R3 R5,exclude
+a1-crazy,A1,That plan is crazy!,O plan çılgınca!,R1 R3 R5,exclude
+a1-dozen,A1,Ali buys a dozen eggs.,Ali bir düzine yumurta alıyor.,R1,exclude
+a1-dust,A1,Dust is on the shelf.,Rafta toz var.,R1 R5,exclude
+a1-suit,A1,Ali wears a suit.,Ali takım elbise giyiyor.,R1 R3,exclude
+a1-jungle,A1,Ali sees tigers in the jungle.,Ali tropik ormanda kaplanlar görüyor.,R1,exclude
+a1-mud,A1,Ali has mud on his shoes.,Ali'nin ayakkabılarında çamur var.,R1 R4,exclude
+a1-popcorn,A1,Ali eats popcorn at the movies.,Ali sinemada patlamış mısır yiyor.,R1,exclude
+a1-jelly,A1,Selin loves jelly.,Selin jöleyi çok seviyor.,R1 R2,exclude
+a1-bunny,A1,The bunny jumps.,Tavşan zıplıyor.,R1 R2 R5,exclude
+a1-snowman,A1,Ali builds a snowman.,Ali bir kardan adam yapıyor.,R1 R3,exclude
+a1-comb,A1,Ayşe has a comb.,Ayşe'nin bir tarağı var.,R1,exclude
+a1-owner,A1,Mert is the owner.,Mert sahibi.,R3 R5,rewrite
+a1-address,A1,Is this your address?,Bu senin adresin mi?,R3 R5,rewrite
+a1-age,A1,Her age is a secret.,Yaşı bir sır.,R4 R5,exclude
+a1-buy,A1,I will buy some stamps.,Birkaç pul alacağım.,R4 R5,exclude
+a1-close,A1,"Close the gate, Ali.","Ali, bahçe kapısını kapat.",R3,rewrite
+a1-child,A1,This child is shy.,Bu çocuk utangaç.,R3 R5,rewrite
+a1-cinema,A1,We went to the cinema.,Sinemaya gittik.,R5,rewrite
+a1-camera,A1,Her camera is silver.,Fotoğraf makinesi gümüş rengi.,R3 R5,rewrite
+a1-clothes,A1,My clothes are wet.,Kıyafetlerim ıslak.,R3 R5 R6,rewrite
+a1-drive,A1,He can drive a truck.,Kamyon kullanabilir.,R5,rewrite
+a1-dirty,A1,Your shoes are dirty.,Ayakkabıların kirli.,R3 R5 R6,rewrite
+a1-dark,A1,The tunnel is dark.,Tünel karanlık.,R3 R5 R6,rewrite
+a1-delicious,A1,The lasagne is delicious.,Lazanya çok lezzetli.,R3 R5,rewrite
+a1-dictionary,A1,Her dictionary is thick.,Onun sözlüğü kalın.,R3 R5,rewrite
+a1-downstairs,A1,The children are downstairs.,Çocuklar alt katta.,R3 R5,rewrite
+a1-enjoy,A1,They enjoy swimming.,Yüzmekten zevk alırlar.,R2 R5,rewrite
+a1-exam,A1,I passed the exam.,Sınavı geçtim.,R3 R5,rewrite
+a1-exercise,A1,Exercise makes you strong.,Egzersiz seni güçlendirir.,R3,rewrite
+a1-expensive,A1,These shoes are too expensive.,Bu ayakkabılar çok pahalı.,R5,rewrite
+a1-fast,A1,He is a fast runner.,O hızlı bir koşucu.,R5,rewrite
+a1-flower,A1,The flower smells lovely.,Çiçek çok güzel kokuyor.,R3,rewrite
+a1-fly,A1,Birds can fly.,Kuşlar uçabilir.,R2 R4 R5,exclude
+a1-forest,A1,We walked in the forest.,Ormanda yürüdük.,R5,rewrite
+a1-get,A1,Did you get my parcel?,Paketimi aldın mı?,R4 R5,exclude
+a1-give,A1,Give me the remote.,Kumandayı bana ver.,R3 R5,rewrite
+a1-goodbye,A1,She waved goodbye.,El sallayıp hoşça kal dedi.,R2 R5,rewrite
+a1-garage,A1,Our garage is tidy.,Garajımız derli toplu.,R3 R5,rewrite
+a1-hear,A1,I cannot hear you.,Seni duyamıyorum.,R3 R5,rewrite
+a1-heavy,A1,This suitcase is heavy.,Bu bavul ağır.,R3 R5,rewrite
+a1-hamburger,A1,He ordered a hamburger.,Bir hamburger sipariş etti.,R3 R5 R6,rewrite
+a1-interesting,A1,This article is interesting.,Bu makale ilginç.,R3 R5,rewrite
+a1-keyboard,A1,The keyboard is broken.,Klavye bozuk.,R3 R5,rewrite
+a1-kiss,A1,He wants to kiss her.,Onu öpmek istiyor.,R5,rewrite
+a1-light,A1,This suitcase is light.,Bu valiz hafif.,R3 R5 R6,rewrite
+a1-market,A1,The market is noisy.,Pazar gürültülü.,R3 R5,rewrite
+a1-message,A1,I sent you a message.,Sana bir mesaj gönderdim.,R5,rewrite
+a1-married,A1,My neighbor is married.,Komşum evli.,R3 R5 R6,rewrite
+a1-need,A1,Plants need sunlight.,Bitkilerin güneş ışığına ihtiyacı var.,R2,rewrite
+a1-newspaper,A1,The newspaper is on the shelf.,Gazete rafta.,R6,rewrite
+a1-never,A1,He never shouts.,Asla bağırmaz.,R2 R5 R6,rewrite
+a1-often,A1,She often calls me.,Beni sık sık arar.,R3 R5,rewrite
+a1-picture,A1,That picture is lovely.,Şu resim çok güzel.,R3 R5,rewrite
+a1-plane,A1,The plane is landing.,Uçak iniyor.,R3 R5,rewrite
+a1-pool,A1,The pool is deep.,Havuz derin.,R3 R5,rewrite
+a1-party,A1,The party was lovely.,Parti çok güzeldi.,R3 R5,rewrite
+a1-police,A1,The police are on the way.,Polis yolda.,R6,rewrite
+a1-quick,A1,"Be quick, Ali!","Çabuk ol, Ali!",R2 R5,rewrite
+a1-run,A1,Do not run in the corridor.,Koridorda koşma.,R4 R6,exclude
+a1-ride,A1,Can you ride a scooter?,Scooter'a binebilir misin?,R5,rewrite
+a1-remember,A1,Do you remember me?,Beni hatırlıyor musun?,R3 R5,rewrite
+a1-relax,A1,I relax in a hammock.,Hamakta dinleniyorum.,R5 R6,rewrite
+a1-speak,A1,I speak some Arabic.,Biraz Arapça konuşurum.,R3 R5,rewrite
+a1-slow,A1,The lift is slow.,Asansör yavaş.,R3 R5 R6,rewrite
+a1-think,A1,"Do you think so, Selin?","Sen de öyle mi düşünüyorsun, Selin?",R5,rewrite
+a1-ugly,A1,The monster is ugly.,Canavar çirkin.,R3 R5,rewrite
+a1-useful,A1,This app is useful.,Bu uygulama çok faydalı.,R3 R5 R6,rewrite
+a1-upstairs,A1,The bedrooms are upstairs.,Yatak odaları üst katta.,R3 R5,rewrite
+a1-warm,A1,This jumper is warm.,Bu kazak sıcak tutuyor.,R3 R5,rewrite
+a1-watch,A1,They watch cartoons.,Çizgi film izlerler.,R2 R5,rewrite
+a1-melon,A1,This melon is juicy.,Bu kavun sulu.,R3 R5,rewrite
+a1-towel,A1,My towel is wet.,Havlum ıslak.,R3 R5,rewrite
+a1-sandwich,A1,He made a sandwich.,Bir sandviç yaptı.,R3 R5,rewrite
+a1-stamp,A1,This stamp is rare.,Bu pul nadir.,R3 R5,rewrite
+a1-joke,A1,Mert told a joke.,Mert bir fıkra anlattı.,R3,rewrite
+a1-computer,A1,The computer is broken.,Bilgisayar bozuk.,R3 R5,rewrite
+a1-sorry,A1,"Sorry, I forgot.","Üzgünüm, unuttum.",R2 R5,rewrite
+a1-thanks,A1,Thanks for the invitation!,Davet için teşekkürler!,R3 R5,rewrite
+a1-like,A1,I like this song.,Bu şarkıyı beğeniyorum.,R3 R5,rewrite
+a1-want,A1,Do you want some olives?,Biraz zeytin ister misin?,R5,rewrite
+a1-please,A1,"Could you hurry, please?","Acele eder misiniz, lütfen?",R3 R5,rewrite
+a1-new,A1,We have new neighbors.,Yeni komşularımız var.,R3 R4 R5,exclude
+a1-long,A1,It is a long journey.,Bu uzun bir yolculuk.,R5,rewrite
+a1-clean,A1,Your hands are clean.,Ellerin temiz.,R3 R5,rewrite
+a1-look,A1,"Look, it is snowing!","Bak, kar yağıyor!",R3 R5,rewrite
+a1-outside,A1,The cats rest outside.,Kediler dışarıda dinleniyor.,R3 R6,rewrite
+a1-again,A1,It is snowing again.,Yine kar yağıyor.,R3 R5,rewrite
+a1-also,A1,She also speaks Arabic.,"O, Arapça da konuşur.",R3 R6,rewrite
+a1-birthday,A1,Is it your birthday?,Bugün senin doğum günün mü?,R3 R5,rewrite
+a1-boring,A1,This program is boring.,Bu program sıkıcı.,R3 R5 R6,rewrite
+a1-cheap,A1,These shoes are cheap.,Bu ayakkabılar ucuz.,R3 R5 R6,rewrite
+a1-east,A1,Erzurum is in the east.,Erzurum doğudadır.,R5,rewrite
+a1-empty,A1,The shelves are empty.,Raflar boş.,R3 R5,rewrite
+a1-later,A1,See you later!,Sonra görüşürüz!,R2 R5,rewrite
+a1-maybe,A1,Maybe Ali knows.,Belki Ali bilir.,R2,rewrite
+a1-meal,A1,The meal was tasty.,Yemek lezzetliydi.,R3 R5,rewrite
+a1-now,A1,Do it now!,Şimdi yap!,R2 R4 R5 R6,exclude
+a1-news,A1,I have news for you.,Sana bir haberim var.,R5,rewrite
+a1-okay,A1,Are you okay?,İyi misin?,R2 R5 R6,rewrite
+a1-place,A1,This is a lovely place.,Burası güzel bir yer.,R5,rewrite
+a1-price,A1,The price is low.,Fiyat düşük.,R3 R5,rewrite
+a1-really,A1,That is really lovely!,Bu gerçekten çok güzel!,R3 R5,rewrite
+a1-rainy,A1,It is rainy in Rize.,Rize'de hava yağmurlu.,R5,rewrite
+a1-sometimes,A1,Sometimes Ali cries.,Bazen Ali ağlar.,R2,rewrite
+a1-stop,A1,"Stop, thief!","Dur, hırsız!",R2 R5,rewrite
+a1-talk,A1,We talk for hours.,Saatlerce sohbet ederiz.,R3 R5,rewrite
+a1-together,A1,We practice together.,Birlikte pratik yapıyoruz.,R2 R5,rewrite
+a1-try,A1,Can I try it on?,Bunu deneyebilir miyim?,R4 R5,exclude
+a1-welcome,A1,Welcome to İzmir!,İzmir'e hoş geldin!,R2 R5,rewrite
+a1-excuse-me,A1,"Excuse me, is this seat taken?","Afedersiniz, bu koltuk dolu mu?",R1,exclude
+a1-favourite,A1,That is my favorite song.,Bu benim en sevdiğim şarkı.,R5,rewrite
+a1-sheep,A1,The sheep are in the field.,Koyunlar tarlada.,R6,rewrite
+a1-tiger,A1,The tiger is dangerous.,Kaplan tehlikelidir.,R3 R5,rewrite
+a1-snake,A1,I see a snake!,Bir yılan görüyorum!,R3 R5,rewrite
+a1-headache,A1,I have a headache.,Başım ağrıyor.,R3 R5 R7,rewrite
+a1-bottle,A1,The bottle is on the shelf.,Şişe rafta.,R6,rewrite
+a1-twenty,A1,Ali is twenty.,Ali yirmi yaşında.,R2 R5,rewrite
+a1-thirty,A1,Ali has thirty books.,Ali'nin otuz kitabı var.,R3,rewrite
+a1-fifteen,A1,He paid fifteen lira.,On beş lira ödedi.,R3,rewrite
+a1-sunny,A1,It is sunny in Antalya.,Antalya'da hava güneşli.,R5,rewrite
+a1-windy,A1,The summit is windy.,Zirve rüzgârlı.,R3 R5,rewrite
+a1-cloudy,A1,It is cloudy in Bursa.,Bursa'da hava bulutlu.,R5,rewrite
+a1-sugar,A1,Do we have sugar?,Şekerimiz var mı?,R3 R5,rewrite
+a1-honey,A1,Bees collect honey.,Arılar bal toplar.,R2,rewrite
+a1-biscuit,A1,This biscuit is crunchy.,Bu bisküvi çıtır.,R3 R5,rewrite
+a1-strawberry,A1,This strawberry is sour.,Bu çilek ekşi.,R3 R5,rewrite
+a1-boat,A1,The fishermen are in the boat.,Balıkçılar teknede.,R6,rewrite
+a1-bridge,A1,The bridge is closed.,Köprü kapalı.,R3 R5,rewrite
+a1-lesson,A1,The lesson is finished.,Ders bitti.,R3 R5,rewrite
+a1-maths,A1,We have math on Tuesdays.,Salı günleri matematiğimiz var.,R5,rewrite
+a1-grandparents,A1,My grandparents are retired.,Büyükannem ve büyükbabam emekli.,R3 R5,rewrite
+a1-boyfriend,A1,Her boyfriend is a chef.,Onun erkek arkadaşı aşçı.,R5,rewrite
+a1-forget,A1,Do not forget your passport.,Pasaportunu unutma.,R5 R6,rewrite
+a1-pay,A1,I pay in cash.,Nakit ödüyorum.,R3 R4 R5,exclude
+a1-start,A1,Let us start!,Başlayalım!,R2 R5 R6,rewrite
+a1-teach,A1,Can you teach me?,Bana öğretir misin?,R3 R5,rewrite
+a1-tell,A1,Tell me the truth.,Bana doğruyu söyle.,R3 R5,rewrite
+a1-win,A1,Our team will win.,Takımımız kazanacak.,R3 R4 R5,exclude
+a1-send,A1,Send me the file.,Dosyayı bana gönder.,R3 R5,rewrite
+a1-bad,A1,I had a bad dream.,Kötü bir rüya gördüm.,R4 R5 R6,exclude
+a1-hard,A1,The ground is hard.,Zemin sert.,R3 R5 R6,rewrite
+a1-sad,A1,Ali looks sad.,Ali üzgün görünüyor.,R2 R4 R6,exclude
+a1-thirsty,A1,Are you thirsty?,Susadın mı?,R2 R5,rewrite
+a1-bring,A1,Bring your friends.,Arkadaşlarını getir.,R2 R5,rewrite
+a1-word,A1,Selin knows this word.,Selin bu sözcüğü biliyor.,R3,rewrite
+a1-farmer,A1,The farmer is in the field.,Çiftçi tarlada.,R6,rewrite
+a1-waiter,A1,The waiter is polite.,Garson kibar.,R3 R5,rewrite
+a1-tourist,A1,The tourist is lost.,Turist yolunu kaybetmiş.,R3 R5,rewrite
+a1-singer,A1,That singer is excellent.,O şarkıcı mükemmel.,R3 R5,rewrite
+a1-cafe,A1,This cafe is cozy.,Bu kafe sıcak ve rahat.,R3 R5,rewrite
+a1-glove,A1,I lost a glove.,Bir eldivenimi kaybettim.,R3 R5,rewrite
+a1-away,A1,The thief ran away.,Hırsız koşarak kaçtı.,R3,rewrite
+a1-art,A1,He is interested in modern art.,"O, modern sanatla ilgileniyor.",R4,exclude
+a1-alphabet,A1,The alphabet starts with A.,Alfabe A ile başlar.,R5,rewrite
+a1-america,A1,She studied in America.,"O, Amerika'da okudu.",R3 R5,rewrite
+a1-american,A1,Grace is American.,Grace Amerikalı.,R2 R5,rewrite
+a1-africa,A1,Lions hunt in Africa.,Aslanlar Afrika'da avlanır.,R3,rewrite
+a1-beer,A1,He ordered a beer.,Bir bira sipariş etti.,R3 R5,rewrite
+a1-before,A1,I have seen this before.,Bunu daha önce gördüm.,R5,rewrite
+a1-boots,A1,Her boots are muddy.,Çizmeleri çamurlu.,R3 R5,rewrite
+a1-british,A1,Tom is British.,Tom İngiliz.,R2 R5,rewrite
+a1-cool,A1,It is cool in the shade.,Gölgede serin.,R6,rewrite
+a1-classroom,A1,The pupils are in the classroom.,Öğrenciler sınıfta.,R6,rewrite
+a1-classmate,A1,Selin is my classmate.,Selin benim sınıf arkadaşım.,R3 R5,rewrite
+a1-cap,A1,This cap is too tight.,Bu şapka çok dar.,R4 R5,exclude
+a1-change,A1,She will change her plans.,Planlarını değiştirecek.,R5,rewrite
+a1-doll,A1,She hugged her doll.,Bebeğine sarıldı.,R3 R5,rewrite
+a1-eighteen,A1,Selin is eighteen.,Selin on sekiz yaşında.,R2 R5,rewrite
+a1-eighty,A1,Our neighbor is eighty.,Komşumuz seksen yaşında.,R3 R5,rewrite
+a1-fourteen,A1,There are fourteen chairs.,On dört sandalye var.,R3 R5,rewrite
+a1-fifty,A1,It costs fifty lira.,Elli lira tutuyor.,R3,rewrite
+a1-first,A1,This is my first trip.,Bu benim ilk gezim.,R5,rewrite
+a1-feel,A1,I feel better.,Daha iyi hissediyorum.,R2 R5,rewrite
+a1-fine,A1,"I am fine, thank you.","İyiyim, teşekkür ederim.",R5,rewrite
+a1-french,A1,Ali is learning French.,Ali Fransızca öğreniyor.,R3,rewrite
+a1-glasses,A1,Ali cleaned his glasses.,Ali gözlüğünü sildi.,R3,rewrite
+a1-germany,A1,Selin works in Germany.,Selin Almanya'da çalışıyor.,R3,rewrite
+a1-german,A1,Selin studies German online.,Selin internetten Almanca çalışıyor.,R3,rewrite
+a1-italy,A1,Rome is in Italy.,Roma İtalya'dadır.,R3 R5,rewrite
+a1-japanese,A1,Selin is learning Japanese.,Selin Japonca öğreniyor.,R3,rewrite
+a1-laugh,A1,We laugh at his jokes.,Onun şakalarına gülüyoruz.,R5,rewrite
+a1-motorbike,A1,Ali rides a motorbike.,Ali motosiklet sürüyor.,R3,rewrite
+a1-ninety,A1,Mr Aksoy is ninety.,Bay Aksoy doksan yaşında.,R3,rewrite
+a1-page,A1,A page is missing.,Bir sayfa eksik.,R3 R5,rewrite
+a1-pear,A1,She ate a pear.,O bir armut yedi.,R3 R5,rewrite
+a1-pet,A1,A canary is her pet.,Kanarya onun evcil hayvanı.,R4 R5,exclude
+a1-piano,A1,She plays the piano.,O piyano çalar.,R3 R5,rewrite
+a1-person,A1,A person needs friends.,Bir insanın arkadaşlara ihtiyacı vardır.,R3,rewrite
+a1-repeat,A1,"Can you repeat that, Ali?","Bunu tekrar eder misin, Ali?",R5,rewrite
+a1-russian,A1,Ali's neighbor speaks Russian.,Ali'nin komşusu Rusça konuşur.,R3,rewrite
+a1-sixty,A1,She waited sixty seconds.,Altmış saniye bekledi.,R3,rewrite
+a1-south,A1,Antalya is in the south.,Antalya güneyde.,R5,rewrite
+a1-science,A1,Ali enjoys science.,Ali fen bilgisinden hoşlanır.,R2,rewrite
+a1-spell,A1,Can you spell that?,Bunu harf harf söyler misin?,R3 R5,rewrite
+a1-star,A1,A star is shining.,Bir yıldız parlıyor.,R3 R5,rewrite
+a1-say,A1,Mert did not say anything.,Mert hiçbir şey söylemedi.,R4,exclude
+a1-spanish,A1,Our guide teaches Spanish.,Rehberimiz İspanyolca öğretiyor.,R3,rewrite
+a1-stay,A1,Stay with me.,Benimle kal.,R2 R5,rewrite
+a1-shopping,A1,Ali hates shopping.,Ali alışverişten nefret eder.,R2,rewrite
+a1-trousers,A1,Ali bought trousers.,Ali pantolon aldı.,R2,rewrite
+a1-toy,A1,This toy is for children.,Bu oyuncak çocuklar için.,R4 R5,exclude
+a1-television,A1,The television is broken.,Televizyon bozuk.,R3 R5,rewrite
+a1-telephone,A1,The telephone is ringing.,Telefon çalıyor.,R3 R5,rewrite
+a1-third,A1,It is on the third shelf.,Üçüncü rafta.,R6,rewrite
+a1-toothache,A1,Ali has a toothache.,Ali'nin dişi ağrıyor.,R3 R5,rewrite
+a1-turkish,A1,Selin writes in Turkish.,Selin Türkçe yazar.,R3,rewrite
+a1-west,A1,Izmir is in the west.,İzmir batıdadır.,R5,rewrite
+a1-website,A1,Ali made a website.,Ali bir web sitesi yaptı.,R3,rewrite
+a1-ago,A1,Ayşe arrived a few minutes ago.,Ayşe birkaç dakika önce geldi.,R4,exclude
+a1-brush,A1,The brush is in the drawer.,Fırça çekmecede.,R6,rewrite
+a1-bee,A1,A bee stung Ali.,Ali'yi bir arı soktu.,R3 R4,exclude
+a1-break,A1,Do not break the vase.,Vazoyu kırma.,R5,rewrite
+a1-carpet,A1,The carpet is wet.,Halı ıslak.,R3 R5,rewrite
+a1-cupboard,A1,The plates are in the cupboard.,Tabaklar dolapta.,R6,rewrite
+a1-curtain,A1,Selin washed the curtain.,Selin perdeyi yıkadı.,R3,rewrite
+a1-catch,A1,Catch the rope!,İpi yakala!,R2 R5,rewrite
+a1-cry,A1,Selin began to cry.,Selin ağlamaya başladı.,R3 R4 R6,exclude
+a1-date,A1,Ali forgot the date.,Ali tarihi unuttu.,R3,rewrite
+a1-england,A1,Ali studied in England.,Ali İngiltere'de okudu.,R3,rewrite
+a1-every,A1,Every lamb is cute.,Her kuzu sevimli.,R3,rewrite
+a1-friendly,A1,Our neighbors are friendly.,Komşularımız cana yakın.,R3 R5,rewrite
+a1-foggy,A1,It was foggy at the port.,Limanda hava sisliydi.,R6,rewrite
+a1-gym,A1,The gym has modern machines.,Spor salonunda modern makineler var.,R4,exclude
+a1-history,A1,Selin loves history.,Selin tarihi çok sever.,R2,rewrite
+a1-kick,A1,Do not kick the fence.,Çite tekme atma.,R5 R6,rewrite
+a1-match,A1,The match was exciting.,Maç heyecanlıydı.,R3 R5,rewrite
+a1-move,A1,Do not move!,Kıpırdama!,R2 R5 R6,rewrite
+a1-noodles,A1,The noodles are tasty.,Erişteler lezzetli.,R3 R5,rewrite
+a1-oven,A1,The pie is in the oven.,Turta fırında.,R6,rewrite
+a1-pretty,A1,The cottage is pretty.,Kulübe şirin.,R3 R5,rewrite
+a1-penguin,A1,A penguin swims quickly.,Penguen hızlı yüzer.,R3,rewrite
+a1-surname,A1,Is this your surname?,Bu senin soyadın mı?,R3 R5,rewrite
+a1-sausage,A1,He fried a sausage.,O bir sosis kızarttı.,R3 R5,rewrite
+a1-stand,A1,Pupils must stand.,Öğrenciler ayakta durmalı.,R2 R5,rewrite
+a1-stairs,A1,The stairs are steep.,Merdivenler dik.,R3 R5,rewrite
+a1-snowy,A1,The path is snowy.,Patika karlı.,R3 R5,rewrite
+a1-scissors,A1,The scissors are sharp.,Makas keskin.,R3 R5,rewrite
+a1-tennis,A1,Ali plays tennis.,Ali tenis oynar.,R2,rewrite
+a1-thing,A1,That is a strange thing.,Bu garip bir şey.,R5,rewrite
+a1-toe,A1,My toe hurts.,Ayak parmağım ağrıyor.,R2 R4 R5 R7,exclude
+a1-tenth,A1,This is my tenth attempt.,Bu benim onuncu denemem.,R5,rewrite
+a1-wonderful,A1,That concert was wonderful.,O konser muhteşemdi.,R3 R5,rewrite
+a1-soap,A1,Ali bought some soap.,Ali biraz sabun aldı.,R3,rewrite
+a1-toothbrush,A1,My toothbrush is electric.,Diş fırçam elektrikli.,R3 R5,rewrite
+a1-tie,A1,Mr Demir wears a tie.,Bay Demir kravat takar.,R4,exclude
+a1-wallet,A1,Ali lost his wallet.,Ali cüzdanını kaybetti.,R3,rewrite
+a1-air,A1,The air is fresh in the mountains.,Dağlarda hava taze.,R4,exclude
+a1-board,A1,Selin cleaned the board.,Selin tahtayı sildi.,R3,rewrite
+a1-follow,A1,"Follow me, Ali.","Beni takip et, Ali.",R2 R5,rewrite
+a1-kite,A1,Mert's kite is bright.,Mert'in uçurtması parlak renkli.,R3,rewrite
+a1-list,A1,"Check the list, Ali.","Listeyi kontrol et, Ali.",R3,rewrite
+a1-nothing,A1,Ali has nothing to do.,Ali'nin yapacak bir şeyi yok.,R5 R6,rewrite
+a1-text,A1,The text is too tiny.,Yazı çok ufak.,R1 R5,exclude
+a1-add,A1,"Can you add these numbers, Selin?","Bu sayıları toplayabilir misin, Selin?",R4,exclude
+a1-all,A1,Ali ate all the cookies.,Ali bütün kurabiyeleri yedi.,R4,exclude
+a1-about,A1,We talked about Selin.,Selin hakkında konuştuk.,R3,rewrite
+a1-ball,A1,Selin throws the ball.,Selin topu atıyor.,R3,rewrite
+a1-begin,A1,"Let's begin, Mert.","Başlayalım, Mert.",R2,rewrite
+a1-cut,A1,Can you cut this ribbon?,Bu kurdeleyi kesebilir misin?,R4 R5,exclude
+a1-dry,A1,The soil is dry.,Toprak kuru.,R3 R4 R5 R6,exclude
+a1-end,A1,Ali is at the end of the queue.,Ali sıranın sonunda.,R4 R6,exclude
+a1-everyone,A1,Everyone clapped for Selin.,Herkes Selin için alkışladı.,R3,rewrite
+a1-everything,A1,Ali ate everything.,Ali her şeyi yedi.,R2,rewrite
+a1-far,A1,"Is it far, Ali?","Uzak mı, Ali?",R3 R4 R5,exclude
+a1-free,A1,This concert is free.,Bu konser ücretsiz.,R3 R5 R6,rewrite
+a1-fun,A1,The children had fun.,Çocuklar eğlendi.,R3 R4 R5,exclude
+a1-funny,A1,The clown is funny.,Palyaço komik.,R3 R5 R6,rewrite
+a1-great,A1,The concert was great.,Konser harikaydı.,R3 R5,rewrite
+a1-here,A1,"Selin is here, Ali.","Selin burada, Ali.",R3,rewrite
+a1-high,A1,The ceiling is high.,Tavan yüksek.,R3 R5,rewrite
+a1-how,A1,"How are you, Ali?","Nasılsın, Ali?",R3 R4 R5,exclude
+a1-kitten,A1,The kitten is asleep.,Yavru kedi uyuyor.,R3 R5,rewrite
+a1-lemonade,A1,Ayşe likes lemonade.,Ayşe limonata seviyor.,R3,rewrite
+a1-little,A1,The little lamb is sleeping.,Küçük kuzu uyuyor.,R6,rewrite
+a1-many,A1,Selin has many friends.,Selin'in çok arkadaşı var.,R3,rewrite
+a1-off,A1,Mert switched off the TV.,Mert televizyonu kapattı.,R4,exclude
+a1-owl,A1,An owl sat on the branch.,Bir baykuş dala kondu.,R4,exclude
+a1-pull,A1,"Pull the rope, Mert.","Halatı çek, Mert.",R3,rewrite
+a1-push,A1,"Push the cart, Ali.","Arabayı it, Ali.",R3,rewrite
+a1-put,A1,Ali put the keys in his pocket.,Ali anahtarları cebine koydu.,R4,exclude
+a1-rainbow,A1,We saw a rainbow.,Bir gökkuşağı gördük.,R3 R5,rewrite
+a1-ready,A1,"Are you ready, Ali?","Hazır mısın, Ali?",R3 R5,rewrite
+a1-sky,A1,Ali looks at the sky.,Ali gökyüzüne bakıyor.,R4,exclude
+a1-small,A1,The ant is small.,Karınca küçük.,R3 R5,rewrite
+a1-smile,A1,"Smile, Ayşe!","Gülümse, Ayşe!",R2,rewrite
+a1-sweet,A1,The grapes are sweet.,Üzümler tatlı.,R3 R5,rewrite
+a1-their,A1,Their song is lovely.,Onların şarkısı çok güzel.,R3,rewrite
+a1-thin,A1,The string is thin.,İp ince.,R3 R5,rewrite
+a1-tomorrow,A1,We have a quiz tomorrow.,Yarın bir sınavımız var.,R5,rewrite
+a1-tonight,A1,Ali watches TV tonight.,Ali bu akşam televizyon izliyor.,R3,rewrite
+a1-top,A1,Ali is at the top of the ladder.,Ali merdivenin tepesinde.,R4 R6,exclude
+a1-turn,A1,"Turn the handle, Ali.","Kolu çevir, Ali.",R3,rewrite
+a1-well,A1,Selin sings well.,Selin iyi şarkı söylüyor.,R2,rewrite
+a1-what,A1,"What is that, Ali?","Bu ne, Ali?",R3 R5,rewrite
+a1-when,A1,When is Selin's concert?,Selin'in konseri ne zaman?,R3,rewrite
+a1-where,A1,Where is Ali?,Ali nerede?,R2 R5,rewrite
+a1-which,A1,Which song is Ali's?,Hangi şarkı Ali'nin?,R3,rewrite
+a1-who,A1,Who called Selin?,Selin'i kim aradı?,R2 R4,exclude
+a1-why,A1,Why is Ali crying?,Ali neden ağlıyor?,R3 R4,exclude
+a1-arm,A1,My arm hurts.,Kolum ağrıyor.,R2 R4 R5 R6 R7,exclude
+a1-eye,A1,My eye hurts.,Gözüm ağrıyor.,R2 R4 R5 R6 R7,exclude
+a1-foot,A1,My foot hurts.,Ayağım ağrıyor.,R2 R5 R7,rewrite
+a1-hand,A1,Raise your hand.,Elini kaldır.,R2 R5,rewrite
+a1-hair,A1,She has curly hair.,Kıvırcık saçları var.,R3 R5 R6,rewrite
+a1-leg,A1,He broke his leg.,Bacağını kırdı.,R3 R4 R5,exclude
+a1-mouth,A1,Cover your mouth.,Ağzını kapat.,R2 R5 R6,rewrite
+a1-tooth,A1,My tooth hurts.,Dişim ağrıyor.,R2 R5 R7,rewrite
+a1-neck,A1,My neck hurts.,Boynum ağrıyor.,R2 R5 R6 R7,rewrite
+a1-ill,A1,My neighbor is ill.,Komşum hasta.,R3 R4 R5,exclude
+a1-ear,A1,My ear hurts.,Kulağım ağrıyor.,R2 R4 R5 R7,exclude
+a1-finger,A1,I hurt my finger.,Parmağımı incittim.,R3 R5,rewrite
+a1-hungry,A1,The children are hungry.,Çocuklar aç.,R3 R5,rewrite
+a1-head,A1,My head hurts.,Başım ağrıyor.,R2 R5 R7,rewrite
+a1-face,A1,He has a round face.,Yuvarlak bir yüzü var.,R5,rewrite
+a1-back,A1,My back hurts.,Sırtım ağrıyor.,R2 R5 R7,rewrite
+a1-knee,A1,My knee hurts.,Dizim ağrıyor.,R2 R5 R7,rewrite
+a1-body,A1,She has a strong body.,Güçlü bir vücudu var.,R5,rewrite
+a1-healthy,A1,We are healthy.,Biz sağlıklıyız.,R2 R5,rewrite
+a1-airport,A1,The airport is huge.,Havalimanı çok büyük.,R3 R5,rewrite
+a1-car,A1,This car is electric.,Bu araba elektrikli.,R3 R4 R5,exclude
+a1-island,A1,There are lots of trees on the island.,Adada çok ağaç var.,R6,rewrite
+a1-bus,A1,The bus stops at the gate.,Otobüs kapıda duruyor.,R4,exclude
+a1-road,A1,The road is wet.,Yol ıslak.,R3 R5,rewrite
+a1-train,A1,The train is crowded.,Tren kalabalık.,R3 R5,rewrite
+a1-ticket,A1,I lost my ticket.,Biletimi kaybettim.,R3 R5,rewrite
+a1-map,A1,This is a map of Greece.,Bu Yunanistan'ın haritası.,R4,exclude
+a1-hotel,A1,We rest at a hotel.,Bir otelde dinleniyoruz.,R5,rewrite
+a1-park,A1,The park is lovely.,Park çok güzel.,R3 R5,rewrite
+a1-shop,A1,The shop is closed.,Dükkân kapalı.,R3 R5,rewrite
+a1-street,A1,This street is noisy.,Bu sokak gürültülü.,R3 R5,rewrite
+a1-taxi,A1,The taxi is waiting.,Taksi bekliyor.,R1 R3 R5,exclude
+a1-station,A1,The station is closed.,İstasyon kapalı.,R3 R5 R6,rewrite
+a1-north,A1,Trabzon is in the north.,Trabzon kuzeydedir.,R5,rewrite
+a1-left,A1,The pharmacy is on the left.,Eczane solda.,R6,rewrite
+a1-right,A1,The stadium is on the right.,Stadyum sağda.,R6,rewrite
+a1-near,A1,Is it near?,Yakın mı?,R2 R5 R6,rewrite
+a1-town,A1,My town is tiny.,Kasabam çok küçük.,R3 R5,rewrite
+a1-blue,A1,The bucket is blue.,Kova mavi.,R3 R5,rewrite
+a1-pink,A1,She has a pink ribbon.,Pembe bir kurdelesi var.,R5,rewrite
+a1-red,A1,The red shoes are on sale.,Kırmızı ayakkabılar indirimde.,R4,exclude
+a1-white,A1,My socks are white.,Çoraplarım beyaz.,R3 R5,rewrite
+a1-black,A1,My shoes are black.,Ayakkabılarım siyah.,R1 R3 R5,exclude
+a1-two,A1,I have two brothers.,İki erkek kardeşim var.,R3 R4 R5,exclude
+a1-five,A1,We have five apples.,Beş elmamız var.,R3 R5,rewrite
+a1-six,A1,The bakery opens at six.,Fırın altıda açılır.,R1 R4,exclude
+a1-nine,A1,Ali has nine marbles.,Ali'nin dokuz misketi var.,R3,rewrite
+a1-sixteen,A1,The minibus has sixteen seats.,Minibüste on altı koltuk var.,R1,exclude
+a1-one,A1,I have one coin.,Bir bozuk param var.,R3 R4 R5,exclude
+a1-number,A1,Mert dialed the number.,Mert numarayı çevirdi.,R3,rewrite
+a1-brown,A1,She has brown eyes.,Kahverengi gözleri var.,R3 R5 R6,rewrite
+a1-grey,A1,The pigeon is gray.,Güvercin gri.,R3 R5 R6,rewrite
+a1-three,A1,I have three cousins.,Üç kuzenim var.,R3 R5,rewrite
+a1-four,A1,I bought four eggs.,Dört yumurta aldım.,R3,rewrite
+a1-ten,A1,The ferry leaves at ten.,Vapur ona kalkıyor.,R4,exclude
+a1-eleven,A1,He is eleven.,O on bir yaşında.,R2 R5,rewrite
+a1-twelve,A1,She is twelve.,O on iki yaşında.,R2 R5,rewrite
+a1-sleep,A1,Babies sleep a lot.,Bebekler çok uyur.,R3 R6,rewrite
+a1-walk,A1,Let us walk slowly.,Yavaş yürüyelim.,R3,rewrite
+a1-play,A1,Do you play chess?,Satranç oynar mısın?,R3 R5,rewrite
+a1-open,A1,Can you open this jar?,Bu kavanozu açabilir misin?,R5 R6,rewrite
+a1-jump,A1,Frogs can jump.,Kurbağalar zıplayabilir.,R2 R5,rewrite
+a1-money,A1,I don't have any money.,Hiç param yok.,R5,rewrite
+a1-happy,A1,You seem happy!,Mutlu görünüyorsun!,R2 R5,rewrite
+a1-quiet,A1,"Be quiet, Ali!","Sessiz ol, Ali!",R2 R5,rewrite
+a1-use,A1,Can I use your charger?,Şarj aletini kullanabilir miyim?,R4 R5,exclude
+a1-idea,A1,I have an idea!,Bir fikrim var!,R3 R5 R6,rewrite
+a1-good,A1,This is a good song.,Bu iyi bir şarkı.,R5,rewrite
+a1-next,A1,Selin is next.,Sıra Selin'de.,R1 R2 R5 R6,exclude
+a1-jacket,A1,Mert's jacket is thick.,Mert'in ceketi kalın.,R3,rewrite
+a1-jeans,A1,These jeans are too tight.,Bu kot çok dar.,R5,rewrite
+a1-shirt,A1,His shirt is wet.,Gömleği ıslak.,R3 R5,rewrite
+a1-hat,A1,My hat is woolen.,Şapkam yünlü.,R3 R4 R5,exclude
+a1-shoe,A1,My shoe is wet.,Ayakkabım ıslak.,R3 R5,rewrite
+a1-game,A1,This game is exciting.,Bu oyun heyecan verici.,R3 R5,rewrite
+a1-internet,A1,The internet is not working.,İnternet çalışmıyor.,R5,rewrite
+a1-video,A1,Let's see the video.,Videoyu izleyelim.,R3,rewrite
+a1-music,A1,Ali loves music.,Ali müziği çok sever.,R2,rewrite
+a1-radio,A1,The radio is noisy.,Radyo çok gürültülü.,R3 R5,rewrite
+a1-hello,A1,Hello! I am Ali.,Merhaba! Ben Ali.,R3 R5,rewrite
+a1-ocean,A1,The ocean is deep.,Okyanus derin.,R3 R5,rewrite
+a1-inside,A1,Is she inside?,O içeride mi?,R2 R5,rewrite
+a1-up,A1,"Hurry up, Ali.","Çabuk ol, Ali.",R2 R4 R6,exclude
+a1-usually,A1,Usually I have porridge.,Genellikle yulaf lapası yerim.,R3 R5,rewrite
+a1-sit,A1,"Sit with me, Ali.","Benimle otur, Ali.",R3 R4 R5,exclude
+a1-wash,A1,I wash my hands.,Ellerimi yıkıyorum.,R3 R5 R6,rewrite
+a1-love,A1,I love you.,Seni seviyorum.,R2 R5,rewrite
+a1-dance,A1,They dance at the festival.,Festivalde dans ederler.,R5,rewrite
+a1-beach,A1,The beach is crowded.,Plaj kalabalık.,R3 R5,rewrite
+a1-name,A1,My name is Mert.,Adım Mert.,R3 R5 R6,rewrite
+a1-yes,A1,"Yes, sure.","Evet, tabii.",R2 R4 R5,exclude
+a1-grass,A1,The grass is wet.,Çimen ıslak.,R3 R5,rewrite
+a1-help,A1,Can you help me?,Bana yardım edebilir misin?,R3 R5,rewrite
+a1-nice,A1,She has a nice necklace.,Güzel bir kolyesi var.,R5,rewrite
+a1-coat,A1,My coat is in the hall.,Paltom koridorda.,R6,rewrite
+a1-skirt,A1,Her skirt is lovely.,Eteği çok şirin.,R3 R5 R6,rewrite
+a1-phone,A1,My phone rang.,Telefonum çaldı.,R2 R5,rewrite
+a1-hobby,A1,Reading is my hobby.,Okumak benim hobim.,R3 R5,rewrite
+a1-holiday,A1,We are on holiday.,Tatildeyiz.,R3 R5 R6,rewrite
+a1-bike,A1,I have a bike.,Bir bisikletim var.,R3 R5 R7,rewrite
+a1-email,A1,Check your email.,E-postanı kontrol et.,R2 R5,rewrite
+a1-colour,A1,Ali likes this color.,Ali bu rengi seviyor.,R3 R6,rewrite
+a1-guitar,A1,He plays the guitar.,O gitar çalıyor.,R3 R5,rewrite
+a1-movie,A1,The movie is a comedy.,Film bir komedi.,R5,rewrite
+a1-travel,A1,We travel a lot.,Çok seyahat ederiz.,R3 R5,rewrite
+a1-swim,A1,I can swim.,Yüzebilirim.,R2 R5 R6,rewrite
+a1-write,A1,"Write a poem, Selin.","Bir şiir yaz, Selin.",R3 R6,rewrite
+a1-wear,A1,Do you wear contact lenses?,Kontakt lens takıyor musun?,R6,rewrite
+a1-wait,A1,Wait for me!,Beni bekle!,R2 R5,rewrite
+a1-learn,A1,Children learn quickly.,Çocuklar hızlı öğrenir.,R2,rewrite
+a1-know,A1,I do not know.,Bilmiyorum.,R3 R5 R6,rewrite
+a1-go,A1,Let us go!,Hadi gidelim!,R2 R4 R5 R6,exclude
+a1-beautiful,A1,She is beautiful.,O çok güzel.,R2 R5,rewrite
+a1-difficult,A1,This puzzle is difficult.,Bu bulmaca zor.,R3 R5 R6,rewrite
+a1-easy,A1,The test is easy.,Sınav kolay.,R3 R5 R6,rewrite
+a1-wrong,A1,It is the wrong way.,Bu yanlış yol.,R5,rewrite
+a1-lake,A1,The lake is calm.,Göl sakin.,R3 R5,rewrite
+a1-mountain,A1,The mountain is steep.,Dağ dik.,R3 R5,rewrite
+a1-sea,A1,The sea is calm.,Deniz sakin.,R3 R4 R5,exclude
+a1-farm,A1,We have a farm.,Bir çiftliğimiz var.,R3 R5,rewrite
+a1-short,A1,The poem is short.,Şiir kısa.,R3 R5,rewrite
+a1-prize,A1,The winner gets a prize.,Kazanan bir ödül alır.,R1,exclude
+a1-brother,A1,I have a brother.,Bir erkek kardeşim var.,R3 R5 R7,rewrite
+a1-daughter,A1,Our daughter is a vet.,Kızımız veteriner.,R5 R6,rewrite
+a1-father,A1,My father likes fishing.,Babam balık tutmayı sever.,R3,rewrite
+a1-girl,A1,The girl is singing.,Kız şarkı söylüyor.,R3 R5,rewrite
+a1-sister,A1,My sister is cheerful.,Kız kardeşim neşeli.,R3 R5,rewrite
+a1-young,A1,My cousins are young.,Kuzenlerim genç.,R3 R5,rewrite
+a1-old,A1,My neighbor is old but strong.,Komşum yaşlı ama güçlü.,R4,exclude
+a1-queen,A1,The queen is wise.,Kraliçe bilge.,R3 R5,rewrite
+a1-boy,A1,The boy has a skateboard.,Çocuğun bir kaykayı var.,R4 R5,exclude
+a1-man,A1,That man is my neighbor.,O adam komşum.,R4 R5,exclude
+a1-dad,A1,My dad is strong.,Babam güçlü.,R3 R4 R5,exclude
+a1-friend,A1,She is my best friend.,O benim en iyi arkadaşım.,R5,rewrite
+a1-grandmother,A1,My grandmother is gentle.,Büyükannem nazik.,R3 R5,rewrite
+a1-kind,A1,She is kind to animals.,O hayvanlara karşı nazik.,R5,rewrite
+a1-kid,A1,A kid is crying.,Bir çocuk ağlıyor.,R3 R4 R5,exclude
+a1-big,A1,He has a big mustache.,Büyük bir bıyığı var.,R4 R5 R6,exclude
+a1-tall,A1,He is tall.,O uzun boylu.,R2 R5,rewrite
+a1-baby,A1,The baby is sleeping.,Bebek uyuyor.,R3 R5,rewrite
+a1-parents,A1,My parents are in Izmir.,Anne babam İzmir'de.,R5,rewrite
+a1-husband,A1,Her husband is a baker.,Kocası fırıncı.,R5,rewrite
+a1-son,A1,Our son is shy.,Oğlumuz utangaç.,R3 R4 R5 R6,exclude
+a1-cheese,A1,Is there any cheese?,Peynir var mı?,R3 R5,rewrite
+a1-milk,A1,The milk is fresh.,Süt taze.,R3 R5,rewrite
+a1-onion,A1,Peel the onion.,Soğanı soy.,R2 R5,rewrite
+a1-vegetable,A1,Spinach is a vegetable.,Ispanak bir sebzedir.,R3 R5,rewrite
+a1-lunch,A1,We have lunch outdoors.,Öğle yemeğini açık havada yeriz.,R3 R5,rewrite
+a1-chicken,A1,We cooked chicken.,Tavuk pişirdik.,R2 R5,rewrite
+a1-soup,A1,This soup is salty.,Bu çorba tuzlu.,R3 R5,rewrite
+a1-dinner,A1,Dinner is waiting!,Akşam yemeği bekliyor!,R2 R5,rewrite
+a1-water,A1,Can I have some water?,Biraz su alabilir miyim?,R5,rewrite
+a1-drink,A1,I drink ayran.,Ayran içiyorum.,R2 R5 R6,rewrite
+a1-pizza,A1,Let's order a pizza.,Bir pizza sipariş edelim.,R1 R3,exclude
+a1-banana,A1,She eats a banana.,Muz yiyor.,R3 R5,rewrite
+a1-coffee,A1,Is the coffee strong?,Kahve koyu mu?,R3 R5,rewrite
+a1-food,A1,The food smells lovely.,Yiyecekler güzel kokuyor.,R3,rewrite
+a1-meat,A1,He avoids meat.,O et yemekten kaçınır.,R2 R5,rewrite
+a1-potato,A1,She peeled the potato.,Patatesi soydu.,R3 R5,rewrite
+a1-tea,A1,Ali pours the tea.,Ali çayı dolduruyor.,R3 R4 R6,exclude
+a1-tomato,A1,Slice the tomato.,Domatesi dilimle.,R2 R5,rewrite
+a1-cup,A1,Can I have a cup?,Bir fincan alabilir miyim?,R4 R5,exclude
+a1-cook,A1,Can you cook?,Yemek yapabilir misin?,R2 R5 R6,rewrite
+a1-jam,A1,Grandma makes plum jam.,Anneannem erik reçeli yapar.,R3 R4,exclude
+a1-eat,A1,"Let us eat, Ayşe.","Yemek yiyelim, Ayşe.",R4,exclude
+a1-breakfast,A1,Breakfast is waiting for us.,Kahvaltı bizi bekliyor.,R5 R6,rewrite
+a1-butter,A1,The butter is soft.,Tereyağı yumuşak.,R3 R5,rewrite
+a1-salad,A1,This salad is fresh.,Bu salata taze.,R3 R5,rewrite
+a1-chocolate,A1,He likes chocolate.,Çikolatayı sever.,R2 R5,rewrite
+a1-grape,A1,This grape is sour.,Bu üzüm ekşi.,R3 R5,rewrite
+a1-salt,A1,Pass the salt.,Tuzu uzat.,R2 R5 R6,rewrite
+a1-restaurant,A1,This restaurant is closed.,Bu restoran kapalı.,R3 R5,rewrite
+a1-fork,A1,I dropped my fork.,Çatalımı düşürdüm.,R3 R5,rewrite
+a1-bed,A1,My bed is soft.,Yatağım yumuşak.,R3 R4 R5,exclude
+a1-door,A1,Knock on the door.,Kapıyı çal.,R3 R5,rewrite
+a1-glass,A1,This glass is broken.,Bu bardak kırık.,R3 R5,rewrite
+a1-key,A1,I lost my key.,Anahtarımı kaybettim.,R3 R4 R5,exclude
+a1-plate,A1,The plate is in the sink.,Tabak evyede.,R6,rewrite
+a1-house,A1,They have a wooden house.,Ahşap bir evleri var.,R5,rewrite
+a1-home,A1,This is my home.,Burası benim evim.,R3 R5,rewrite
+a1-room,A1,This room is bright.,Bu oda aydınlık.,R3 R5,rewrite
+a1-lamp,A1,The lamp is broken.,Lamba bozuk.,R3 R5,rewrite
+a1-bag,A1,Her bag is leather.,Çantası deri.,R3 R4 R5,exclude
+a1-bedroom,A1,My bedroom is tidy.,Yatak odam derli toplu.,R3 R5 R6,rewrite
+a1-bathroom,A1,The bathroom is tiny.,Banyo minicik.,R3 R5,rewrite
+a1-floor,A1,The floor is wet.,Zemin ıslak.,R3 R5,rewrite
+a1-shower,A1,I have a shower daily.,Her gün duş alırım.,R5,rewrite
+a1-bath,A1,I have a bath.,Banyo yapıyorum.,R3 R5 R6 R7,rewrite
+a1-fridge,A1,The fridge is noisy.,Buzdolabı gürültülü.,R3 R5,rewrite
+a1-clock,A1,The clock is on the shelf.,Saat rafta.,R6,rewrite
+a1-apple,A1,This apple is crunchy.,Bu elma çıtır çıtır.,R3 R5,rewrite
+a1-bread,A1,Fresh bread smells lovely.,Taze ekmeğin kokusu çok güzel.,R3,rewrite
+a1-chair,A1,This chair is comfortable.,Bu sandalye rahat.,R3 R5,rewrite
+a1-dog,A1,My dog likes bones.,Köpeğim kemik sever.,R3 R4,exclude
+a1-egg,A1,I boil an egg.,Bir yumurta haşlıyorum.,R3 R4 R5,exclude
+a1-green,A1,The leaves are green.,Yapraklar yeşil.,R3 R5,rewrite
+a1-ice,A1,Ice melts quickly.,Buz çabuk erir.,R2 R4,exclude
+a1-juice,A1,The juice is fresh.,Meyve suyu taze.,R3 R5,rewrite
+a1-lemon,A1,This lemon is sour.,Bu limon ekşi.,R3 R5,rewrite
+a1-mirror,A1,The mirror is round.,Ayna yuvarlak.,R3 R5,rewrite
+a1-nose,A1,He has a pointed nose.,Sivri bir burnu var.,R5 R6,rewrite
+a1-pencil,A1,Can I borrow your pencil?,Kurşun kalemini ödünç alabilir miyim?,R5,rewrite
+a1-question,A1,I have a question.,Bir sorum var.,R3 R5 R7,rewrite
+a1-river,A1,The river is wide.,Nehir geniş.,R3 R5,rewrite
+a1-school,A1,Our school is modern.,Okulumuz modern.,R3 R5,rewrite
+a1-village,A1,Our village is on a slope.,Köyümüz bir yamaçta.,R6,rewrite
+a1-window,A1,Wipe the window.,Pencereyi sil.,R2 R5,rewrite
+a1-box,A1,The toys are in the box.,Oyuncaklar kutunun içinde.,R1 R4,exclude
+a1-yellow,A1,My raincoat is yellow.,Yağmurluğum sarı.,R3 R5,rewrite
+a1-zoo,A1,We saw lions at the zoo.,Hayvanat bahçesinde aslan gördük.,R4,exclude
+a1-teacher,A1,Our teacher is strict.,Öğretmenimiz disiplinli.,R3 R5,rewrite
+a1-student,A1,I am a student.,Ben öğrenciyim.,R3 R5,rewrite
+a1-job,A1,She loves her job.,İşini seviyor.,R3 R4 R5 R6,exclude
+a1-book,A1,This book is thick.,Bu kitap kalın.,R3 R5,rewrite
+a1-ask,A1,Let us ask the guide.,Rehbere soralım.,R4 R6,exclude
+a1-answer,A1,"Is this the answer, Mert?","Bu cevap mı, Mert?",R5,rewrite
+a1-office,A1,My office is bright.,Ofisim aydınlık.,R3 R5 R6,rewrite
+a1-pen,A1,Can I borrow your pen?,Kalemini ödünç alabilir miyim?,R4 R5,exclude
+a1-read,A1,I read stories.,Hikâyeler okurum.,R2 R5 R6,rewrite
+a1-work,A1,They work in a factory.,Bir fabrikada çalışıyorlar.,R5,rewrite
+a1-english,A1,She speaks English.,İngilizce konuşur.,R2 R5,rewrite
+a1-listen,A1,Listen to this song.,Bu şarkıyı dinle.,R3 R5,rewrite
+a1-university,A1,She studies at university.,Üniversitede okuyor.,R3 R5,rewrite
+a1-understand,A1,I do not understand.,Anlamıyorum.,R3 R5 R6,rewrite
+a1-homework,A1,Do you have homework?,Ödevin var mı?,R3 R5,rewrite
+a1-autumn,A1,Leaves drop in autumn.,Yapraklar sonbaharda dökülür.,R3,rewrite
+a1-cold,A1,My feet are cold.,Ayaklarım soğuk.,R3 R5,rewrite
+a1-hot,A1,The pan is hot.,Tava sıcak.,R3 R4 R5,exclude
+a1-day,A1,Have a lovely day!,Güzel bir gün geçir!,R3 R4 R5,exclude
+a1-evening,A1,See you this evening.,Bu akşam görüşürüz.,R3 R5,rewrite
+a1-rain,A1,Rain is coming.,Yağmur geliyor.,R2 R5,rewrite
+a1-snow,A1,Children slide in the snow.,Çocuklar karda kayıyor.,R6,rewrite
+a1-today,A1,I am sleepy today.,Bugün uykuluyum.,R3 R5,rewrite
+a1-winter,A1,It snows a lot in winter.,Kışın çok kar yağar.,R6,rewrite
+a1-monday,A1,The test is on Monday.,Sınav pazartesi.,R5,rewrite
+a1-july,A1,Our trip is in July.,Gezimiz temmuzda.,R5,rewrite
+a1-october,A1,Leaves drop in October.,Ekimde yapraklar dökülür.,R3,rewrite
+a1-yesterday,A1,I saw Ali yesterday.,Dün Ali'yi gördüm.,R3,rewrite
+a1-afternoon,A1,I rest in the afternoon.,Öğleden sonra dinlenirim.,R5,rewrite
+a1-morning,A1,The morning is calm.,Sabah sakin.,R3 R5,rewrite
+a1-hour,A1,It takes an hour.,Bir saat sürer.,R3 R5,rewrite
+a1-time,A1,I had no time for it.,Buna hiç vaktim olmadı.,R6,rewrite
+a1-early,A1,Mehmet arrived early.,Mehmet erken geldi.,R2,rewrite
+a1-late,A1,We are late.,Geç kaldık.,R2 R5,rewrite
+a1-sun,A1,The sun is bright.,Güneş parlak.,R3 R4 R5,exclude
+a1-summer,A1,Summer is coming.,Yaz geliyor.,R2 R5,rewrite
+a1-january,A1,Mom arrived in January.,Annem ocak ayında geldi.,R3,rewrite
+a1-always,A1,She always smiles.,Her zaman gülümser.,R2 R5,rewrite
+a1-august,A1,Grandpa comes in August.,Dede ağustosta gelir.,R3,rewrite
+a1-september,A1,Ali travels in September.,Ali Eylül'de seyahat ediyor.,R3,rewrite
+a1-november,A1,It is misty in November.,Kasımda hava sisli olur.,R5,rewrite
+a1-december,A1,It snows in December.,Aralıkta kar yağar.,R3 R5,rewrite
+a1-february,A1,We ski in February.,Şubatta kayak yaparız.,R3 R5,rewrite
+a1-june,A1,Schools shut in June.,Okullar Haziran'da kapanır.,R3,rewrite
+a1-march,A1,Flowers bloom in March.,Mart ayında çiçekler açar.,R3,rewrite
+a1-may,A1,We have a trip in May.,Mayıs ayında bir gezimiz var.,R4,exclude
+a1-weather,A1,The weather is lovely.,Hava çok güzel.,R3 R5,rewrite
+a1-wind,A1,The wind is strong.,Rüzgâr güçlü.,R3 R5,rewrite
+a1-noon,A1,He arrives at noon.,Öğlen gelir.,R3 R5,rewrite
+a1-month,A1,This month is cooler.,Bu ay daha serin.,R3 R5,rewrite
+a2-quietly,A2,The baby sleeps quietly.,Bebek sessizce uyuyor.,R3,rewrite
+a2-square,A2,Draw a square on the paper.,Kâğıda bir kare çiz.,R1,exclude
+a2-equal,A2,Two and two is equal to four.,İki artı iki dörde eşittir.,R1,exclude
+a2-request,A2,I have a small request for you.,Senden küçük bir ricam var.,R1,exclude
+a2-equipment,A2,The gym has new equipment.,Spor salonunun yeni ekipmanları var.,R1,exclude
+a2-mosque,A2,The mosque is near the market.,Cami pazarın yakınında.,R1,exclude
+a2-extra,A2,We need an extra chair.,Fazladan bir sandalyeye ihtiyacımız var.,R1,exclude
+a2-exactly,A2,It is exactly ten o'clock.,Saat tam olarak on.,R1,exclude
+a2-exciting,A2,The film was very exciting.,Film çok heyecan vericiydi.,R1 R5,exclude
+a2-excited,A2,The children are excited about the trip.,Çocuklar gezi için heyecanlı.,R1,exclude
+a2-explain,A2,Can you explain this word?,Bu sözcüğü açıklayabilir misin?,R1 R5,exclude
+a2-expect,A2,I expect good news tomorrow.,Yarın iyi haber bekliyorum.,R1,exclude
+a2-exit,A2,The exit is on your left.,Çıkış solunda.,R1 R6,exclude
+a2-mix,A2,Mix the eggs and the sugar.,Yumurtaları ve şekeri karıştır.,R1 R4,exclude
+a2-fix,A2,Can you fix my bike?,Bisikletimi onarabilir misin?,R1 R4 R5,exclude
+a2-boxing,A2,My brother loves boxing.,Kardeşim boksa bayılıyor.,R1 R3,exclude
+a2-except,A2,Everyone came except Ali.,Ali dışında herkes geldi.,R1 R3,exclude
+a2-expert,A2,She is an expert on birds.,Kuşlar konusunda bir uzman.,R1,exclude
+a2-explore,A2,We want to explore the old town.,Eski şehri keşfetmek istiyoruz.,R1,exclude
+a2-exchange,A2,Can I exchange this shirt for a bigger one?,Bu gömleği daha büyüğüyle değiştirebilir miyim?,R1,exclude
+a2-zebra-crossing,A2,Wait at the zebra crossing.,Yaya geçidinde bekle.,R5,rewrite
+a2-crazy,A2,That idea sounds crazy.,Bu fikir çılgınca geliyor.,R1 R3,exclude
+a2-dozen,A2,I bought a dozen eggs.,Bir düzine yumurta aldım.,R1,exclude
+a2-freeze,A2,The lake will freeze tonight.,Göl bu gece donacak.,R1,exclude
+a2-frozen,A2,The lake is frozen in winter.,Göl kışın buz tutar.,R1,exclude
+a2-puzzle,A2,This puzzle has a hundred pieces.,Bu yapbozun yüz parçası var.,R1,exclude
+a2-breeze,A2,A cool breeze came into the room.,Odaya serin bir esinti girdi.,R1,exclude
+a2-sneeze,A2,Use a tissue when you sneeze.,Hapşırırken mendil kullan.,R1,exclude
+a2-realize,A2,I did not realize it was so late.,Bu kadar geç olduğunu fark etmedim.,R1,exclude
+a2-dizzy,A2,I feel dizzy after the ride.,Gezintiden sonra başım dönüyor.,R1,exclude
+a2-jazz,A2,He plays jazz on the piano.,Piyanoda caz çalıyor.,R1,exclude
+a2-wizard,A2,The wizard lives in a tall tower.,Büyücü uzun bir kulede yaşıyor.,R1,exclude
+a2-lizard,A2,A lizard sat on the warm wall.,Sıcak duvarın üstünde bir kertenkele duruyordu.,R1,exclude
+a2-jug,A2,There is a jug of water on the table.,Masada bir sürahi su var.,R4,exclude
+a2-jar,A2,Can you open this jar of jam?,Bu reçel kavanozunu açar mısın?,R4,exclude
+a2-jelly,A2,Children love strawberry jelly.,Çocuklar çilekli jöleyi sever.,R3,rewrite
+a2-judge,A2,The judge listened carefully.,Hâkim dikkatle dinledi.,R3,rewrite
+a2-joy,A2,The news filled her with joy.,Haber onu sevinçle doldurdu.,R4,exclude
+a2-subject,A2,Math is my favorite subject.,Matematik en sevdiğim ders.,R1,exclude
+a2-project,A2,We have a history project this week.,Bu hafta bir tarih projemiz var.,R1,exclude
+a2-object,A2,What is this object?,Bu cisim ne?,R1 R3 R5,exclude
+a2-karate,A2,My cousin learns karate.,Kuzenim karate öğreniyor.,R3,rewrite
+a2-knot,A2,Can you tie a knot?,Bir düğüm atabilir misin?,R5,rewrite
+a2-pocket,A2,He put his keys in his pocket.,Anahtarlarını cebine koydu.,R1,exclude
+a2-ski,A2,We ski in the mountains every winter.,Her kış dağlarda kayak yaparız.,R1 R4,exclude
+a2-skate,A2,Can you skate on ice?,Buzda patenle kayabilir misin?,R1 R5,exclude
+a2-skin,A2,Her skin is smooth.,Cildi pürüzsüz.,R1 R3 R5,exclude
+a2-skill,A2,Cooking is a useful skill.,Yemek yapmak yararlı bir beceri.,R1,exclude
+a2-necklace,A2,She wears a long necklace.,Uzun bir kolye takıyor.,R1,exclude
+a2-truck,A2,The truck is full of apples.,Kamyon elmalarla dolu.,R1,exclude
+a2-snack,A2,I eat a snack after school.,Okuldan sonra bir atıştırmalık yerim.,R1,exclude
+a2-backpack,A2,My backpack is full of books.,Sırt çantam kitap dolu.,R1,exclude
+a2-vet,A2,Take the dog to the vet.,Köpeği veterinere götür.,R4,exclude
+a2-verb,A2,Run is a verb.,Koşmak bir fiildir.,R3 R5,rewrite
+a2-several,A2,I waited for several hours.,Birkaç saat bekledim.,R1,exclude
+a2-nervous,A2,I am nervous before exams.,Sınavlardan önce gergin oluyorum.,R1,exclude
+a2-believe,A2,I believe you.,Sana inanıyorum.,R1 R2 R5,exclude
+a2-cave,A2,Bats sleep in the cave.,Yarasalar mağarada uyur.,R1,exclude
+a2-save,A2,I save ten lira every week.,Her hafta on lira biriktiriyorum.,R1,exclude
+a2-wave,A2,Wave to your friends.,Arkadaşlarına el salla.,R1 R3 R5,exclude
+a2-yet,A2,I have not finished my homework yet.,Ödevimi henüz bitirmedim.,R4,exclude
+a2-yoga,A2,She does yoga every morning.,Her sabah yoga yapıyor.,R5,rewrite
+a2-yummy,A2,This soup is yummy.,Bu çorba nefis.,R3 R5,rewrite
+a2-type,A2,What type of music do you like?,Ne tür müzik seversin?,R1,exclude
+a2-style,A2,I like your style.,Tarzını beğeniyorum.,R1 R3 R5,exclude
+a2-guy,A2,He is a really nice guy.,O gerçekten iyi bir adam.,R1 R4,exclude
+a2-spicy,A2,I do not like spicy food.,Acılı yemek sevmem.,R1,exclude
+a2-copy,A2,Please copy the words from the board.,Lütfen sözcükleri tahtadan kopyala.,R1,exclude
+a2-daily,A2,I take a daily walk in the park.,Parkta günlük yürüyüşümü yaparım.,R1,exclude
+a2-candy,A2,The boy ate too much candy.,Çocuk çok fazla şekerleme yedi.,R1,exclude
+a2-royal,A2,The royal family lives in a big house.,Kraliyet ailesi büyük bir evde yaşıyor.,R1,exclude
+a2-plenty,A2,We have plenty of time.,Bol bol zamanımız var.,R1 R5,exclude
+a2-anyone,A2,Is anyone at home?,Evde kimse var mı?,R1 R3 R5,exclude
+a2-anything,A2,I cannot see anything.,Hiçbir şey göremiyorum.,R1 R3,exclude
+a2-anywhere,A2,You can sit anywhere.,İstediğin yere oturabilirsin.,R1 R3 R5,exclude
+a2-worry,A2,Do not worry about the test.,Sınav için endişelenme.,R1,exclude
+a2-nationality,A2,What is your nationality?,Uyruğun nedir?,R3 R5,rewrite
+a2-net,A2,The ball went into the net.,Top fileye girdi.,R4,exclude
+a2-navy,A2,His father is in the navy.,Babası donanmada.,R6,rewrite
+a2-neighbourhood,A2,This is a quiet neighborhood.,Burası sessiz bir mahalle.,R5,rewrite
+a2-popcorn,A2,We ate popcorn at the cinema.,Sinemada patlamış mısır yedik.,R1,exclude
+a2-coconut,A2,The monkey climbed the tree for a coconut.,Maymun hindistan cevizi için ağaca tırmandı.,R1,exclude
+a2-paragraph,A2,Read the first paragraph.,İlk paragrafı oku.,R1 R3,exclude
+a2-drawer,A2,The keys are in the drawer.,Anahtarlar çekmecede.,R6,rewrite
+a2-disco,A2,We danced at the disco.,Diskoda dans ettik.,R5,rewrite
+a2-plural,A2,The plural of child is children.,Child'ın çoğulu children'dır.,R1,exclude
+a2-dive,A2,He likes to dive into the sea.,Denize dalmayı sever.,R1,exclude
+a2-sleeve,A2,The sleeve of my shirt is short.,Gömleğimin kolu kısa.,R1,exclude
+a2-divide,A2,Divide the cake into eight parts.,Keki sekiz parçaya böl.,R1,exclude
+a2-shave,A2,My father must shave every morning.,Babam her sabah tıraş olmalı.,R1,exclude
+a2-eyebrow,A2,He raised one eyebrow.,Bir kaşını kaldırdı.,R1 R3 R5,exclude
+a2-tray,A2,The waiter carries a tray.,Garson bir tepsi taşıyor.,R1,exclude
+a2-adjective,A2,"""Big"" is an adjective.","""Big"" bir sıfattır.",R1 R3 R5,exclude
+a2-phrase,A2,Learn this new phrase.,Bu yeni kalıbı öğren.,R1 R3,exclude
+a2-glue,A2,Do you have any glue?,Hiç yapıştırıcın var mı?,R1 R5,exclude
+a2-plus,A2,Two plus two is four.,İki artı iki dört eder.,R1 R5,exclude
+a2-plumber,A2,We called a plumber.,Bir tesisatçı çağırdık.,R1 R3 R5,exclude
+a2-runner,A2,The runner finished first.,Koşucu birinci bitirdi.,R3 R6,rewrite
+a2-corridor,A2,The classroom is at the end of the corridor.,Sınıf koridorun sonunda.,R6,rewrite
+a2-cheerful,A2,He is always cheerful.,O her zaman neşeli.,R3 R5,rewrite
+a2-peach,A2,This peach is very sweet.,Bu şeftali çok tatlı.,R5,rewrite
+a2-mattress,A2,This mattress is very hard.,Bu şilte çok sert.,R5,rewrite
+a2-freezer,A2,The fish is in the freezer.,Balık dondurucuda.,R6,rewrite
+a2-unit,A2,Ali reads unit 9.,Ali 9. üniteyi okuyor.,R2,rewrite
+a2-vowel,A2,A is a vowel.,A bir sesli harftir.,R3 R5,rewrite
+a2-vest,A2,Mert wears a vest.,Mert yelek giyiyor.,R3,rewrite
+a2-pyjamas,A2,Ali wears blue pyjamas at night.,Ali geceleri mavi pijama giyiyor.,R1,exclude
+a2-bicycle,A2,Selin goes to school by bicycle.,Selin okula bisikletle gidiyor.,R1,exclude
+a2-squid,A2,We eat fried squid by the sea.,Denizin kenarında kızarmış kalamar yiyoruz.,R1,exclude
+a2-aquarium,A2,The fish swim in the aquarium.,Balıklar akvaryumda yüzüyor.,R1,exclude
+a2-extremely,A2,The soup is extremely hot.,Çorba aşırı sıcak.,R1,exclude
+a2-explode,A2,The balloon can explode.,Balon patlayabilir.,R1 R3 R5,exclude
+a2-bronze,A2,Ali gets a bronze prize.,Ali bronz bir ödül alıyor.,R1,exclude
+a2-sneakers,A2,Mert wears white sneakers.,Mert beyaz spor ayakkabı giyiyor.,R1 R3,exclude
+a2-milkshake,A2,Mert orders a banana milkshake.,Mert muzlu bir milkshake sipariş ediyor.,R1,exclude
+a2-icy,A2,The road is icy this morning.,Yol bu sabah buz tutmuş.,R4,exclude
+a2-ink,A2,My pen has no ink.,Kalemimde mürekkep yok.,R4 R5,exclude
+a2-driving,A2,Driving at night is hard for Dad.,Gece araba kullanmak babam için zor.,R1,exclude
+a2-lipstick,A2,Her lipstick is red.,Rujunun rengi kırmızı.,R1 R3 R5,exclude
+a2-shrimp,A2,Mert does not like shrimp.,Mert karidesi sevmez.,R1,exclude
+a2-bikini,A2,She has a new bikini for the beach.,Plaj için yeni bir bikinisi var.,R1,exclude
+a2-pin,A2,Mum puts a pin in the cloth.,Annem kumaşa bir toplu iğne takıyor.,R1 R4,exclude
+a2-lid,A2,Put the lid on the pan.,Kapağı tavanın üstüne koy.,R1 R4,exclude
+a2-skinny,A2,The cat is small and skinny.,Kedi küçük ve sıska.,R1,exclude
+a2-shiny,A2,She wears shiny shoes.,Parlak ayakkabılar giyiyor.,R1 R3,exclude
+a2-spice,A2,Dad puts spice in the soup.,Babam çorbaya baharat koyuyor.,R1,exclude
+a2-stripe,A2,The shirt has a white stripe.,Gömlekte beyaz bir çizgi var.,R1,exclude
+a2-swing,A2,The child plays on the swing.,Çocuk salıncakta oynuyor.,R1,exclude
+a2-turtle,A2,A turtle walks on the beach.,Bir kaplumbağa plajda yürüyor.,R1,exclude
+a2-plum,A2,Ali eats a plum.,Ali bir erik yiyor.,R1 R3,exclude
+a2-gum,A2,Don't chew gum in class.,Derste sakız çiğneme.,R1 R4,exclude
+a2-mug,A2,Mert drinks tea from a big mug.,Mert büyük bir kupadan çay içiyor.,R1 R4,exclude
+a2-rug,A2,The cat sleeps on the rug.,Kedi küçük halının üstünde uyuyor.,R1 R4,exclude
+a2-plug,A2,Put the plug into the wall.,Fişi duvara tak.,R1,exclude
+a2-mustard,A2,Dad puts mustard on his sausage.,Babam sosisine hardal sürüyor.,R1,exclude
+a2-sunshine,A2,We sit in the sunshine.,Güneş ışığında oturuyoruz.,R1 R5,exclude
+a2-sunburn,A2,Selin has sunburn on her nose.,Selin'in burnunda güneş yanığı var.,R1,exclude
+a2-trunk,A2,The elephant lifts its trunk.,Fil hortumunu kaldırıyor.,R1,exclude
+a2-puddle,A2,The boy jumps in a puddle.,Çocuk su birikintisine atlıyor.,R1,exclude
+a2-pump,A2,Ali uses a pump for the bike tyre.,Ali bisiklet lastiği için pompa kullanıyor.,R1,exclude
+a2-weekday,A2,I work every weekday.,Her hafta içi günü çalışıyorum.,R1 R3 R5,exclude
+a2-subway,A2,Mert takes the subway to work.,Mert işe metroyla gidiyor.,R1,exclude
+a2-doorway,A2,A cat sits in the doorway.,Bir kedi kapı aralığında oturuyor.,R1,exclude
+a2-anyway,A2,"It rains, but we go anyway.",Yağmur yağıyor ama yine de gidiyoruz.,R1,exclude
+a2-cherry,A2,Selin puts a cherry on the cake.,Selin kekin üstüne bir kiraz koyuyor.,R1,exclude
+a2-curry,A2,Mert loves hot curry.,Mert acı körüyü çok seviyor.,R1 R3,exclude
+a2-dairy,A2,Cheese is a dairy product.,Peynir bir süt ürünüdür.,R1,exclude
+a2-vanilla,A2,Ali likes vanilla cake.,Ali vanilyalı keki sever.,R3,rewrite
+a2-shovel,A2,Dad digs with a shovel.,Babam kürekle kazıyor.,R1,exclude
+a2-curve,A2,The car slows down at the curve.,Araba virajda yavaşlıyor.,R1,exclude
+a2-relaxed,A2,Dad feels relaxed on holiday.,Babam tatilde kendini rahat hissediyor.,R1,exclude
+a2-buzz,A2,I hear the buzz of a bee.,Bir arının vızıltısını duyuyorum.,R1,exclude
+a2-chalk,A2,The teacher writes with chalk.,Öğretmen tebeşirle yazıyor.,R1,exclude
+a2-bark,A2,The dog starts to bark.,Köpek havlamaya başlıyor.,R1,exclude
+a2-pickle,A2,Ali puts a pickle on his plate.,Ali tabağına bir turşu koyuyor.,R1,exclude
+a2-chick,A2,The chick is yellow.,Civciv sarı.,R1 R3 R5,exclude
+a2-nod,A2,Ali gives a nod and smiles.,Ali başını sallayıp gülümsüyor.,R4,exclude
+a2-nowhere,A2,There is nowhere to sit.,Oturacak hiçbir yer yok.,R5,rewrite
+a2-oak,A2,An old oak stands in the park.,Parkta yaşlı bir meşe duruyor.,R4,exclude
+a2-outdoor,A2,Mert loves outdoor sports.,Mert açık hava sporlarını seviyor.,R3,rewrite
+a2-bride,A2,The bride wears a white dress.,Gelin beyaz bir elbise giyiyor.,R1,exclude
+a2-unwell,A2,Mum feels unwell today.,Annem bugün kendini iyi hissetmiyor.,R3,rewrite
+a2-pudding,A2,Mum makes chocolate pudding.,Annem çikolatalı puding yapıyor.,R1 R3,exclude
+a2-burger,A2,Mert eats a burger for lunch.,Mert öğle yemeğinde bir burger yiyor.,R1,exclude
+a2-cushion,A2,The cat sleeps on the cushion.,Kedi minderin üstünde uyuyor.,R1,exclude
+a2-axe,A2,He cuts a tree with an axe.,Bir ağacı baltayla kesiyor.,R1 R4,exclude
+a2-wax,A2,Wax is soft when it is warm.,Balmumu ısınınca yumuşar.,R1 R4,exclude
+a2-jog,A2,Mum likes to jog in the park.,Annem parkta hafif tempoyla koşmayı seviyor.,R4,exclude
+a2-unhappy,A2,He looks unhappy today.,Bugün keyifsiz görünüyor.,R3,rewrite
+a2-untidy,A2,My room is untidy.,Odam dağınık.,R3 R5 R6,rewrite
+a2-unlucky,A2,He was unlucky in the match.,Maçta şanssızdı.,R6,rewrite
+a2-underwear,A2,Take some underwear with you.,Yanına iç çamaşırı al.,R5,rewrite
+a2-underline,A2,Underline the new words.,Yeni sözcüklerin altını çiz.,R3,rewrite
+a2-button,A2,A button fell off my coat.,Paltomdan bir düğme düştü.,R1,exclude
+a2-rubbish,A2,"Put the rubbish outside, please.",Çöpü lütfen dışarı koy.,R1,exclude
+a2-purse,A2,She keeps coins in her purse.,Bozuk paraları para cüzdanında tutuyor.,R1,exclude
+a2-pupil,A2,Every pupil has a desk.,Her öğrencinin bir sırası var.,R1 R5,exclude
+a2-huge,A2,They live in a huge house.,Kocaman bir evde yaşıyorlar.,R1,exclude
+a2-stupid,A2,That was a stupid answer.,O aptalca bir cevaptı.,R1 R5,exclude
+a2-hurt,A2,Did you hurt your leg?,Bacağını incittin mi?,R1 R5,exclude
+a2-sound,A2,I heard a strange sound.,Garip bir ses duydum.,R1,exclude
+a2-touch,A2,Do not touch the hot oven.,Sıcak fırına dokunma.,R1,exclude
+a2-round,A2,The table is round.,Masa yuvarlak.,R1 R3 R5,exclude
+a2-public,A2,This is a public park.,Bu herkese açık bir park.,R1 R5,exclude
+a2-countryside,A2,We live in the countryside.,Kırsal bölgede yaşıyoruz.,R1 R5,exclude
+a2-instrument,A2,Can you play an instrument?,Bir çalgı çalar mısın?,R5,rewrite
+a2-indoors,A2,We play indoors when it rains.,Yağmur yağınca içeride oynarız.,R6,rewrite
+a2-international,A2,It is an international school.,Burası uluslararası bir okul.,R5,rewrite
+a2-immediately,A2,Call me immediately.,Beni hemen ara.,R2 R5,rewrite
+a2-outdoors,A2,The children play outdoors.,Çocuklar dışarıda oynuyor.,R3,rewrite
+a2-own,A2,She has her own room.,Kendine ait bir odası var.,R4 R5,exclude
+a2-orchestra,A2,The orchestra plays tonight.,Orkestra bu gece çalıyor.,R3,rewrite
+a2-organise,A2,I will organize the party.,Partiyi ben düzenleyeceğim.,R5,rewrite
+a2-outfit,A2,I like your outfit.,Kıyafetini beğendim.,R3 R5,rewrite
+a2-online,A2,I shop online.,Çevrimiçi alışveriş yaparım.,R2 R5,rewrite
+a2-hockey,A2,My cousin plays hockey.,Kuzenim hokey oynuyor.,R1 R3,exclude
+a2-polite,A2,The waiter is very polite.,Garson çok kibar.,R1 R5,exclude
+a2-cookie,A2,Would you like a cookie?,Bir kurabiye ister misin?,R1 R5,exclude
+a2-broken,A2,The window is broken.,Pencere kırık.,R1 R3 R5,exclude
+a2-wood,A2,The table is made of wood.,Masa tahtadan yapılmış.,R1,exclude
+a2-wool,A2,This scarf is made of wool.,Bu atkı yünden yapılmış.,R1,exclude
+a2-goal,A2,He scored a goal in the last minute.,Son dakikada bir gol attı.,R1,exclude
+a2-narrow,A2,The street is narrow.,Sokak dar.,R3 R5,rewrite
+a2-nearly,A2,It is nearly midnight.,Neredeyse gece yarısı.,R3 R5,rewrite
+a2-nobody,A2,Nobody knows the answer.,Cevabı kimse bilmiyor.,R3,rewrite
+a2-normal,A2,It was a normal day.,Sıradan bir gündü.,R5,rewrite
+a2-note,A2,I left you a note.,Sana bir not bıraktım.,R5,rewrite
+a2-naughty,A2,The puppy is naughty.,Köpek yavrusu yaramaz.,R3 R5,rewrite
+a2-nephew,A2,My nephew plays football.,Erkek yeğenim futbol oynuyor.,R3,rewrite
+a2-nut,A2,There is a nut in the cake.,Kekin içinde bir fındık var.,R4,exclude
+a2-novel,A2,She is reading a novel.,Bir roman okuyor.,R5,rewrite
+a2-bone,A2,The dog has a bone.,Köpeğin bir kemiği var.,R1 R5,exclude
+a2-stone,A2,He threw a stone into the lake.,Göle bir taş attı.,R1,exclude
+a2-brain,A2,The brain controls the body.,Beyin vücudu yönetir.,R1,exclude
+a2-sentence,A2,Write a sentence with this word.,Bu sözcükle bir cümle yaz.,R1,exclude
+a2-earn,A2,How much do you earn?,Ne kadar kazanıyorsun?,R5,rewrite
+a2-earring,A2,She lost an earring.,Bir küpesini kaybetti.,R3 R5,rewrite
+a2-electricity,A2,We have no electricity tonight.,Bu gece elektrik yok.,R5,rewrite
+a2-energy,A2,I have no energy today.,Bugün hiç enerjim yok.,R5,rewrite
+a2-engineer,A2,My father is an engineer.,Babam mühendis.,R5,rewrite
+a2-enough,A2,We have enough food.,Yeterince yiyeceğimiz var.,R3 R5,rewrite
+a2-enter,A2,Do not enter the kitchen.,Mutfağa girme.,R5,rewrite
+a2-entrance,A2,The entrance is at the back.,Giriş arkada.,R6,rewrite
+a2-easily,A2,She won easily.,Kolayca kazandı.,R2 R5,rewrite
+a2-eraser,A2,I need an eraser.,Bir silgiye ihtiyacım var.,R3 R5,rewrite
+a2-shelf,A2,The books are on the shelf.,Kitaplar rafta.,R1 R6,exclude
+a2-speed,A2,The car was moving at high speed.,Araba yüksek hızla gidiyordu.,R1,exclude
+a2-screen,A2,The screen is very big.,Ekran çok büyük.,R1 R5,exclude
+a2-teenager,A2,My sister is a teenager.,Kız kardeşim bir ergen.,R1 R5,exclude
+a2-helmet,A2,Wear a helmet when you ride.,Bisiklete binerken kask tak.,R1,exclude
+a2-gentleman,A2,He is a real gentleman.,O tam bir beyefendi.,R5,rewrite
+a2-giant,A2,The giant was very tall.,Dev çok uzundu.,R5,rewrite
+a2-ground,A2,He sat on the ground.,Yere oturdu.,R5,rewrite
+a2-grow,A2,Plants grow in spring.,Bitkiler ilkbaharda büyür.,R3,rewrite
+a2-guess,A2,Guess my age!,Yaşımı tahmin et!,R2 R5,rewrite
+a2-gas,A2,Turn off the gas.,Gazı kapat.,R3 R4 R5,exclude
+a2-foreign,A2,She speaks three foreign languages.,Üç yabancı dil konuşuyor.,R1,exclude
+a2-strong,A2,He is very strong.,O çok güçlü.,R1 R3 R5,exclude
+a2-single,A2,I did not eat a single biscuit.,Tek bir bisküvi bile yemedim.,R1,exclude
+a2-magic,A2,The story is full of magic.,Hikâye sihirle dolu.,R1,exclude
+a2-sign,A2,Read the sign on the door.,Kapıdaki tabelayı oku.,R1,exclude
+a2-adventure,A2,Our trip was a big adventure.,Gezimiz büyük bir maceraydı.,R1,exclude
+a2-afraid,A2,Are you afraid of dogs?,Köpeklerden korkar mısın?,R5,rewrite
+a2-alive,A2,The fish is still alive.,Balık hâlâ canlı.,R6,rewrite
+a2-allow,A2,They do not allow dogs in the shop.,Dükkâna köpek sokmuyorlar.,R6,rewrite
+a2-almost,A2,We are almost home.,Neredeyse eve geldik.,R3 R5,rewrite
+a2-argue,A2,My parents never argue.,Annem ve babam asla tartışmaz.,R3,rewrite
+a2-army,A2,His brother is in the army.,Ağabeyi orduda.,R6,rewrite
+a2-asleep,A2,The baby is asleep.,Bebek uyuyor.,R3 R5,rewrite
+a2-average,A2,She is an average student.,Ortalama bir öğrenci.,R5,rewrite
+a2-awful,A2,The food was awful.,Yemek berbattı.,R3 R5,rewrite
+a2-awake,A2,I was awake all night.,Bütün gece uyanıktım.,R5,rewrite
+a2-bell,A2,The school bell rang.,Okul zili çaldı.,R3,rewrite
+a2-bin,A2,Put it in the bin.,Onu çöp kutusuna koy.,R4 R5,exclude
+a2-biology,A2,We have biology on Wednesdays.,Çarşamba günleri biyolojimiz var.,R5,rewrite
+a2-bite,A2,Does your dog bite?,Köpeğin ısırır mı?,R3 R5,rewrite
+a2-blow,A2,Blow out the candles.,Mumları üfle.,R3 R5,rewrite
+a2-boss,A2,My boss is very kind.,Patronum çok nazik.,R5,rewrite
+a2-bottom,A2,The key is at the bottom of the bag.,Anahtar çantanın dibinde.,R6,rewrite
+a2-beef,A2,We had beef with rice.,Pilavla dana eti yedik.,R5,rewrite
+a2-bracelet,A2,She gave me a bracelet.,Bana bir bilezik verdi.,R5,rewrite
+a2-beside,A2,Sit beside me.,Yanıma otur.,R2 R5,rewrite
+a2-candle,A2,She lit a candle.,Bir mum yaktı.,R3 R5,rewrite
+a2-check,A2,Please check your answers.,Lütfen cevaplarını kontrol et.,R3,rewrite
+a2-choose,A2,You can choose one cake.,Bir kek seçebilirsin.,R5,rewrite
+a2-clever,A2,She is a clever girl.,O zeki bir kız.,R5,rewrite
+a2-coach,A2,Our coach is very tough.,Antrenörümüz çok sert.,R5,rewrite
+a2-coast,A2,We drove by the coast.,Kıyının yanından arabayla gittik.,R5,rewrite
+a2-comb,A2,Her comb is in her bag.,Tarağı çantasında.,R6,rewrite
+a2-comfortable,A2,This sofa is very comfortable.,Bu kanepe çok rahat.,R5,rewrite
+a2-continue,A2,Please continue reading.,Lütfen okumaya devam edin.,R2,rewrite
+a2-correct,A2,Your answer is correct.,Cevabın doğru.,R3 R5,rewrite
+a2-since,A2,I have lived here since 2020.,2020'den beri burada yaşıyorum.,R1 R5,exclude
+a2-peace,A2,Everyone wants peace.,Herkes barış ister.,R1 R2,exclude
+a2-twice,A2,I call my mother twice a week.,Annemi haftada iki kez ararım.,R1,exclude
+a2-practise,A2,I practice the piano every day.,Her gün piyano çalışıyorum.,R1,exclude
+a2-decide,A2,We cannot decide where to eat.,Nerede yemek yiyeceğimize karar veremiyoruz.,R1,exclude
+a2-deep,A2,The lake is very deep.,Göl çok derin.,R5,rewrite
+a2-describe,A2,Can you describe your teacher?,Öğretmenini anlatabilir misin?,R5,rewrite
+a2-diet,A2,My mother is on a diet.,Annem diyette.,R6,rewrite
+a2-dig,A2,The dog likes to dig in the garden.,Köpek bahçede çukur kazmayı sever.,R4,exclude
+a2-direction,A2,Which direction is the station?,İstasyon hangi yönde?,R5,rewrite
+a2-drop,A2,Do not drop the glass.,Bardağı düşürme.,R5,rewrite
+a2-dead,A2,The flowers are dead.,Çiçekler ölmüş.,R3 R5,rewrite
+a2-dessert,A2,We had fruit for dessert.,Tatlı olarak meyve yedik.,R5,rewrite
+a2-wedding,A2,Their wedding is in June.,Düğünleri haziranda.,R1 R5,exclude
+a2-middle,A2,Stand in the middle of the room.,Odanın ortasında dur.,R1,exclude
+a2-wide,A2,The river is very wide here.,Nehir burada çok geniş.,R1,exclude
+a2-sand,A2,The children play in the sand.,Çocuklar kumda oynuyor.,R1,exclude
+a2-field,A2,The cows are in the field.,İnekler tarlada.,R1 R6,exclude
+a2-ladder,A2,He climbed the ladder to the roof.,Merdivenle çatıya tırmandı.,R1,exclude
+a2-shoulder,A2,My shoulder hurts.,Omzum ağrıyor.,R1 R2 R5,exclude
+a2-fashion,A2,She loves fashion magazines.,Moda dergilerini seviyor.,R3,rewrite
+a2-fat,A2,The cat is very fat.,Kedi çok şişman.,R4 R5,exclude
+a2-final,A2,This is the final question.,Bu son soru.,R5,rewrite
+a2-finally,A2,The bus finally arrived.,Otobüs sonunda geldi.,R3,rewrite
+a2-flu,A2,I have the flu.,Grip oldum.,R3 R4 R5,exclude
+a2-fog,A2,The fog was heavy this morning.,Bu sabah sis yoğundu.,R4,exclude
+a2-fresh,A2,The bread is fresh.,Ekmek taze.,R3 R5,rewrite
+a2-fry,A2,Fry the onions in a pan.,Soğanları tavada kızart.,R4,exclude
+a2-life,A2,Life is beautiful.,Hayat güzeldir.,R1 R2 R5,exclude
+a2-wolf,A2,The wolf howled at the moon.,Kurt aya doğru uludu.,R1,exclude
+a2-traffic,A2,There is a lot of traffic today.,Bugün trafik çok yoğun.,R1,exclude
+a2-perfect,A2,Your English is perfect.,İngilizcen kusursuz.,R1 R3 R5,exclude
+a2-handsome,A2,Her brother is very handsome.,Ağabeyi çok yakışıklı.,R5,rewrite
+a2-happen,A2,What will happen next?,Sırada ne olacak?,R3 R5 R6,rewrite
+a2-height,A2,What is your height?,Boyun kaç?,R3 R5 R6,rewrite
+a2-hit,A2,He hit the ball very hard.,Topa çok sert vurdu.,R4,exclude
+a2-hug,A2,Please hug your little brother.,Lütfen küçük kardeşine sarıl.,R4,exclude
+a2-human,A2,Every human needs water.,Her insanın suya ihtiyacı var.,R3,rewrite
+a2-hamster,A2,My sister has a hamster.,Kız kardeşimin bir hamsteri var.,R5,rewrite
+a2-while,A2,I read while I eat breakfast.,Kahvaltı yaparken okurum.,R1,exclude
+a2-whole,A2,He ate the whole cake.,Bütün keki yedi.,R1,exclude
+a2-wheel,A2,The bike has a flat wheel.,Bisikletin tekerleği patlak.,R1,exclude
+a2-fishing,A2,My uncle goes fishing at weekends.,Amcam hafta sonları balık avına gider.,R1,exclude
+a2-shampoo,A2,I need new shampoo.,Yeni şampuana ihtiyacım var.,R1 R3,exclude
+a2-shape,A2,The cake has the shape of a star.,Kek yıldız şeklinde.,R1 R6,exclude
+a2-share,A2,Please share your sweets.,Lütfen şekerlerini paylaş.,R1 R3,exclude
+a2-machine,A2,The machine is very old.,Makine çok eski.,R1 R5,exclude
+a2-law,A2,Everyone must follow the law.,Herkes yasaya uymalı.,R4,exclude
+a2-lawyer,A2,My aunt is a lawyer.,Teyzem avukat.,R5,rewrite
+a2-lip,A2,He cut his lip.,Dudağını kesti.,R3 R4 R5,exclude
+a2-lucky,A2,You are so lucky!,Çok şanslısın!,R3 R5,rewrite
+a2-smell,A2,I like the smell of bread.,Ekmeğin kokusunu severim.,R1,exclude
+a2-shell,A2,I found a shell on the beach.,Plajda bir deniz kabuğu buldum.,R1,exclude
+a2-special,A2,Today is a special day.,Bugün özel bir gün.,R1,exclude
+a2-pillow,A2,I need another pillow.,Bir yastığa daha ihtiyacım var.,R1 R3,exclude
+a2-balcony,A2,We drink tea on the balcony.,Balkonda çay içiyoruz.,R1,exclude
+a2-plastic,A2,This bottle is made of plastic.,Bu şişe plastikten yapılmış.,R1,exclude
+a2-excellent,A2,Her marks are excellent.,Notları mükemmel.,R1 R3 R5,exclude
+a2-model,A2,She wants to be a model.,Manken olmak istiyor.,R1,exclude
+a2-slippers,A2,My slippers are by the bed.,Terliklerim yatağın yanında.,R1,exclude
+a2-bubble,A2,The child blew a big bubble.,Çocuk büyük bir baloncuk üfledi.,R1,exclude
+a2-mad,A2,My mother was mad at me.,Annem bana çok kızdı.,R4,exclude
+a2-marry,A2,They will marry in the spring.,İlkbaharda evlenecekler.,R6,rewrite
+a2-mean,A2,What does this word mean?,Bu sözcük ne anlama geliyor?,R5,rewrite
+a2-member,A2,He is a member of the music club.,Müzik kulübünün üyesi.,R6,rewrite
+a2-mess,A2,My room is a mess.,Odam çok dağınık.,R5,rewrite
+a2-moment,A2,"Wait a moment, please.",Bir an bekleyin lütfen.,R3,rewrite
+a2-mud,A2,The boots are full of mud.,Botlar çamurla dolu.,R4,exclude
+a2-promise,A2,I promise to call you.,Seni arayacağıma söz veriyorum.,R1 R5,exclude
+a2-timetable,A2,Look at the bus timetable.,Otobüs tarifesine bak.,R1,exclude
+a2-stomach,A2,My stomach hurts.,Midem ağrıyor.,R1 R2 R5,exclude
+a2-pick,A2,Pick a card.,Bir kart seç.,R2 R5,rewrite
+a2-point,A2,We won by one point.,Bir puanla kazandık.,R5,rewrite
+a2-popular,A2,This game is popular.,Bu oyun çok seviliyor.,R3 R5,rewrite
+a2-pot,A2,Put the pot on the cooker.,Tencereyi ocağa koy.,R4,exclude
+a2-power,A2,The king has a lot of power.,Kralın çok gücü var.,R6,rewrite
+a2-prince,A2,The prince is ten years old.,Prens on yaşında.,R6,rewrite
+a2-print,A2,Can you print this page?,Bu sayfayı yazdırabilir misin?,R5,rewrite
+a2-probably,A2,It will probably rain tomorrow.,Yarın muhtemelen yağmur yağacak.,R6,rewrite
+a2-personal,A2,This is a personal question.,Bu kişisel bir soru.,R5,rewrite
+a2-spend,A2,I spend too much money on books.,Kitaplara çok para harcıyorum.,R1,exclude
+a2-ship,A2,The ship leaves at noon.,Gemi öğlen kalkıyor.,R1,exclude
+a2-tape,A2,I need some tape for this box.,Bu kutu için biraz bant lazım.,R1,exclude
+a2-simple,A2,The rules are simple.,Kurallar basit.,R1 R3 R5,exclude
+a2-especially,A2,"I love fruit, especially grapes.","Meyveyi severim, özellikle üzümü.",R1,exclude
+a2-rope,A2,He tied the boat with a rope.,Tekneyi bir halatla bağladı.,R1,exclude
+a2-race,A2,He won the race.,Yarışı o kazandı.,R3 R5,rewrite
+a2-reason,A2,Tell me the reason.,Bana nedenini söyle.,R3 R5,rewrite
+a2-rule,A2,Please follow this rule.,Lütfen bu kurala uy.,R3,rewrite
+a2-raincoat,A2,Take your raincoat today.,Bugün yağmurluğunu al.,R3,rewrite
+a2-surprise,A2,The party was a nice surprise.,Parti güzel bir sürprizdi.,R1,exclude
+a2-straight,A2,"Go straight on, then turn left.","Dümdüz git, sonra sola dön.",R1,exclude
+a2-writer,A2,My favorite writer lives in London.,En sevdiğim yazar Londra'da yaşıyor.,R1,exclude
+a2-terrible,A2,I have a terrible headache.,Korkunç bir baş ağrım var.,R1 R5,exclude
+a2-fairy,A2,The fairy waved her wand.,Peri değneğini salladı.,R1,exclude
+a2-scary,A2,The film was too scary for me.,Film benim için çok korkutucuydu.,R1,exclude
+a2-salary,A2,His salary is good.,Maaşı iyi.,R3 R5,rewrite
+a2-score,A2,What is the score?,Skor kaç?,R3 R5,rewrite
+a2-seat,A2,Is this seat free?,Bu koltuk boş mu?,R3 R5,rewrite
+a2-secret,A2,It is a big secret.,Bu büyük bir sır.,R5,rewrite
+a2-serious,A2,This is a serious problem.,Bu ciddi bir sorun.,R5,rewrite
+a2-sharp,A2,The knife is very sharp.,Bıçak çok keskin.,R5,rewrite
+a2-shy,A2,The new girl is shy.,Yeni kız utangaç.,R4,exclude
+a2-silly,A2,Do not be silly.,Saçmalama.,R3 R5 R6,rewrite
+a2-slowly,A2,Please speak slowly.,Lütfen yavaş konuşun.,R2,rewrite
+a2-smart,A2,Your sister is very smart.,Kız kardeşin çok akıllı.,R5,rewrite
+a2-solve,A2,Can you solve this problem?,Bu sorunu çözebilir misin?,R5,rewrite
+a2-someone,A2,Someone is at the door.,Kapıda biri var.,R5,rewrite
+a2-song,A2,This is my favorite song.,Bu en sevdiğim şarkı.,R5,rewrite
+a2-speaker,A2,Turn on the speaker.,Hoparlörü aç.,R3 R5,rewrite
+a2-step,A2,Take one step back.,Bir adım geri çekil.,R3,rewrite
+a2-suitcase,A2,My suitcase is very heavy.,Bavulum çok ağır.,R5,rewrite
+a2-sunglasses,A2,Wear your sunglasses today.,Bugün güneş gözlüğünü tak.,R3,rewrite
+a2-sunset,A2,The sunset was beautiful.,Gün batımı çok güzeldi.,R3 R5,rewrite
+a2-tasty,A2,The cake is very tasty.,Kek çok lezzetli.,R5,rewrite
+a2-thief,A2,The thief ran away.,Hırsız kaçtı.,R3,rewrite
+a2-throw,A2,Throw the ball to me.,Topu bana at.,R5,rewrite
+a2-tight,A2,These shoes are too tight.,Bu ayakkabılar çok dar.,R5,rewrite
+a2-tip,A2,We left a tip for the waiter.,Garson için bahşiş bıraktık.,R4,exclude
+a2-tool,A2,A spade is a tool.,Kürek bir alettir.,R5,rewrite
+a2-trouble,A2,I had trouble with my bike.,Bisikletimle sorun yaşadım.,R6,rewrite
+a2-true,A2,Is this story true?,Bu hikâye gerçek mi?,R3 R5,rewrite
+a2-twin,A2,She has a twin brother.,Onun ikiz bir erkek kardeşi var.,R5,rewrite
+a2-tap,A2,Turn off the tap.,Musluğu kapat.,R3 R4 R5,exclude
+a2-thick,A2,The book is very thick.,Kitap çok kalın.,R5,rewrite
+a2-torch,A2,Take a torch with you.,Yanına bir el feneri al.,R5,rewrite
+a2-total,A2,What is the total?,Toplam ne kadar?,R3 R5,rewrite
+a2-statue,A2,There is a statue in the park.,Parkta bir heykel var.,R1,exclude
+a2-waitress,A2,The waitress brought our tea.,Kadın garson çayımızı getirdi.,R1,exclude
+a2-lettuce,A2,Put some lettuce in the sandwich.,Sandviçe biraz marul koy.,R1,exclude
+a2-hostel,A2,We stayed in a cheap hostel.,Ucuz bir hostelde kaldık.,R1,exclude
+a2-watermelon,A2,We ate watermelon on the beach.,Plajda karpuz yedik.,R1,exclude
+a2-waste,A2,Do not waste water.,Su israf etme.,R3 R5,rewrite
+a2-waterfall,A2,The waterfall is very high.,Şelale çok yüksek.,R5,rewrite
+a2-whisper,A2,Do not whisper in class.,Derste fısıldaşma.,R5,rewrite
+a2-whose,A2,Whose bag is this?,Bu kimin çantası?,R3 R5,rewrite
+a2-wonder,A2,I wonder where Ali is.,Ali'nin nerede olduğunu merak ediyorum.,R5,rewrite
+a2-wardrobe,A2,My clothes are in the wardrobe.,Giysilerim gardıropta.,R6,rewrite
+a2-wet,A2,My hair is wet.,Saçlarım ıslak.,R3 R4 R5,exclude
+a2-crown,A2,The queen wears a crown.,Kraliçe bir taç takıyor.,R1,exclude
+a2-switch,A2,Where is the light switch?,Işık anahtarı nerede?,R1 R5,exclude
+a2-bowling,A2,We went bowling on Friday.,Cuma günü bovlinge gittik.,R1,exclude
+a2-drawing,A2,This drawing is for you.,Bu çizim senin için.,R1 R5,exclude
+a2-snowboard,A2,He wants a new snowboard.,Yeni bir snowboard istiyor.,R1,exclude
+a2-brake,A2,The brake does not work.,Fren çalışmıyor.,R5,rewrite
+a2-elbow,A2,I broke my elbow.,Dirseğimi kırdım.,R1 R3 R5,exclude
+a2-robber,A2,The robber ran out of the bank.,Soyguncu bankadan dışarı koştu.,R1,exclude
+a2-ribbon,A2,She has a red ribbon in her hair.,Saçında kırmızı bir kurdele var.,R1,exclude
+a2-require,A2,This job will require good English.,Bu iş iyi İngilizce gerektirecek.,R1,exclude
+a2-liquid,A2,Water is a liquid.,Su bir sıvıdır.,R1 R3 R5,exclude
+a2-squeeze,A2,Squeeze a lemon into the tea.,Çaya bir limon sık.,R1,exclude
+a2-antique,A2,This old clock is an antique.,Bu eski saat bir antika.,R1,exclude
+a2-tax,A2,We pay tax every year.,Her yıl vergi öderiz.,R1 R4,exclude
+a2-oxygen,A2,We need oxygen to live.,Yaşamak için oksijene ihtiyacımız var.,R1,exclude
+a2-express,A2,Music helps me express my feelings.,Müzik duygularımı ifade etmeme yardım ediyor.,R1,exclude
+a2-expense,A2,Travel is a big expense.,Seyahat büyük bir masraftır.,R1,exclude
+a2-saxophone,A2,He plays the saxophone in a band.,Bir grupta saksafon çalıyor.,R1,exclude
+a2-amazed,A2,I was amazed by the big show.,Büyük gösteriye şaşırdım.,R1,exclude
+a2-maze,A2,We got lost in the maze.,Labirentte kaybolduk.,R1 R6,exclude
+a2-fizzy,A2,I do not like fizzy drinks.,Gazlı içecekleri sevmem.,R1,exclude
+a2-citizen,A2,She is a citizen of Spain.,"O, İspanya vatandaşı.",R1,exclude
+a2-parking,A2,There is free parking behind the shop.,Dükkânın arkasında ücretsiz otopark var.,R1,exclude
+a2-brick,A2,The wall is made of red brick.,Duvar kırmızı tuğladan yapılmış.,R1,exclude
+a2-sketch,A2,He made a sketch of the old bridge.,Eski köprünün bir taslağını çizdi.,R1,exclude
+a2-stove,A2,The stove is very hot.,Ocak çok sıcak.,R5,rewrite
+a2-tin,A2,He opened a tin of tomatoes.,Bir kutu domates konservesi açtı.,R4,exclude
+a2-campsite,A2,The campsite has a shop.,Kamp alanında bir dükkân var.,R5,rewrite
+a2-headphones,A2,I forgot my headphones.,Kulaklığımı unuttum.,R3 R5,rewrite
+a2-telescope,A2,We looked at the stars with a telescope.,Yıldızlara teleskopla baktık.,R6,rewrite
+a2-ant,A2,An ant is carrying a crumb.,Bir karınca ufak bir kırıntı taşıyor.,R4,exclude
+a2-bat,A2,The bat flew out of the tree.,Yarasa ağaçtan uçarak çıktı.,R4,exclude
+a2-compass,A2,The compass points north.,Pusula kuzeyi gösteriyor.,R3,rewrite
+a2-van,A2,A van is waiting at the door.,Kapıda bir kamyonet bekliyor.,R4,exclude
+a2-vacation,A2,Our vacation was lovely.,Tatilimiz çok güzeldi.,R3 R5,rewrite
+a2-yard,A2,Our yard is very small.,Avlumuz çok küçük.,R5,rewrite
+a2-size,A2,Do you have this in a bigger size?,Bunun daha büyük bedeni var mı?,R1 R6,exclude
+a2-zip,A2,"Can you zip it, Ali?","Fermuarı çeker misin, Ali?",R4 R5,exclude
+a2-keep,A2,You can keep this badge.,Bu rozeti saklayabilirsin.,R5,rewrite
+a2-violin,A2,The violin sounds lovely.,Keman çok güzel ses çıkarıyor.,R3,rewrite
+a2-voice,A2,Your voice is soft.,Sesin yumuşak.,R3 R5,rewrite
+a2-oil,A2,Put some oil in the pan.,Tavaya biraz yağ koy.,R4,exclude
+a2-yogurt,A2,Yogurt is sour.,Yoğurt ekşidir.,R2 R5,rewrite
+a2-actor,A2,The actor is on TV.,Oyuncu televizyonda.,R5,rewrite
+a2-blanket,A2,The blanket is soft.,Battaniye yumuşak.,R3 R5,rewrite
+a2-hold,A2,Hold the bag.,Çantayı tut.,R2 R5 R6,rewrite
+a2-loud,A2,The music is too loud.,Müzik çok gürültülü.,R5,rewrite
+a2-lose,A2,Do not lose the receipt.,Fişi kaybetme.,R5,rewrite
+a2-volleyball,A2,The girls play volleyball.,Kızlar voleybol oynuyor.,R3,rewrite
+a2-amazing,A2,Ali's painting is amazing.,Ali'nin resmi harika.,R3,rewrite
+a2-bored,A2,Selin looks bored.,Selin sıkılmış görünüyor.,R2,rewrite
+a2-bill,A2,Ali paid the bill.,Ali hesabı ödedi.,R3,rewrite
+a2-fantastic,A2,We had a fantastic trip.,Harika bir gezi yaptık.,R5,rewrite
+a2-hate,A2,I hate mushrooms.,Mantardan nefret ederim.,R2 R5,rewrite
+a2-meeting,A2,Mert missed the meeting.,Mert toplantıyı kaçırdı.,R3,rewrite
+a2-miss,A2,I miss Ali.,Ali'yi özlüyorum.,R2 R5,rewrite
+a2-until,A2,Mert stayed until midnight.,Mert gece yarısına kadar kaldı.,R3,rewrite
+a2-large,A2,This room is large.,Bu oda geniş.,R3 R5,rewrite
+a2-shout,A2,"Don't shout, Ali.","Bağırma, Ali.",R2,rewrite
+a2-borrow,A2,Can I borrow your pen?,Kalemini ödünç alabilir miyim?,R5,rewrite
+a2-injury,A2,He has a leg injury.,Bacağında bir yaralanma var.,R5,rewrite
+a2-luggage,A2,My luggage is very heavy.,Bagajım çok ağır.,R5,rewrite
+a2-manager,A2,The manager is in her office.,Müdür ofisinde.,R6,rewrite
+a2-neighbour,A2,Our neighbor is very kind.,Komşumuz çok kibar.,R5,rewrite
+a2-passport,A2,Don't forget your passport.,Pasaportunu unutma.,R3,rewrite
+a2-fox,A2,The fox runs very fast.,Tilki çok hızlı koşar.,R1 R4,exclude
+a2-lazy,A2,Don't be lazy. Do your homework.,Tembellik yapma. Ödevini yap.,R1,exclude
+b1-act,B1,You must act quickly when you see danger.,Tehlike görünce hızlı hareket etmelisin.,R4,exclude
+b1-admire,B1,I admire your bravery.,Cesaretine hayranım.,R3 R5,rewrite
+b1-aim,B1,My aim is to pass the exam.,Amacım sınavı geçmek.,R4,exclude
+b1-accidentally,B1,I accidentally broke her glasses.,Yanlışlıkla gözlüğünü kırdım.,R6,rewrite
+b1-brilliant,B1,She is a brilliant scientist.,O parlak bir bilim insanı.,R5,rewrite
+b1-doubt,B1,I have no doubt that she will win.,Onun kazanacağından hiç şüphem yok.,R1,exclude
+b1-debate,B1,There was a long debate about school uniforms.,Okul üniformaları hakkında uzun bir tartışma oldu.,R1,exclude
+b1-publish,B1,They will publish her first novel next year.,İlk romanını gelecek yıl yayımlayacaklar.,R1,exclude
+b1-suburb,B1,They live in a quiet suburb of London.,Londra'nın sakin bir banliyösünde yaşıyorlar.,R1,exclude
+b1-absent,B1,Three students were absent today.,Bugün üç öğrenci yoktu.,R1,exclude
+b1-cabin,B1,Our cabin on the ship was tiny.,Gemideki kabinimiz çok küçüktü.,R1,exclude
+b1-tablet,B1,She reads the news on her tablet.,Haberleri tabletinden okuyor.,R1,exclude
+b1-disabled,B1,The building has a lift for disabled people.,Binada engelli insanlar için bir asansör var.,R1,exclude
+b1-obvious,B1,The answer is obvious.,Cevap çok açık.,R1 R3 R5,exclude
+b1-celebrity,B1,She wants to marry a celebrity.,Ünlü biriyle evlenmek istiyor.,R1,exclude
+b1-custard,B1,The apple pie was served with warm custard.,Elmalı turta sıcak muhallebi sosuyla servis edildi.,R1,exclude
+b1-bruise,B1,I got a bruise on my knee when I fell.,Düşünce dizimde bir morluk oluştu.,R1,exclude
+b1-squeak,B1,The door made a loud squeak when I opened it.,Kapıyı açtığımda yüksek bir gıcırtı çıkardı.,R1,exclude
+b1-squint,B1,I had to squint because the sun was so bright.,Güneş çok parlak olduğu için gözlerimi kısmak zorunda kaldım.,R1,exclude
+b1-turquoise,B1,The water near the island was a bright turquoise.,Adanın yakınındaki su parlak bir turkuaz renkteydi.,R1,exclude
+b1-pixel,B1,On a very large screen you can see every pixel.,Çok büyük bir ekranda her pikseli görebilirsin.,R1,exclude
+b1-fax,B1,The company still sends a fax to some clients.,Şirket hâlâ bazı müşterilerine faks gönderiyor.,R1 R4,exclude
+b1-tuxedo,B1,He rented a tuxedo for the party.,Parti için bir smokin kiraladı.,R1,exclude
+b1-waltz,B1,They learned to waltz before their wedding.,Düğünlerinden önce vals yapmayı öğrendiler.,R1,exclude
+b1-freckle,B1,He has a small freckle under his left eye.,Sol gözünün altında küçük bir çil var.,R1,exclude
+b1-eyelash,B1,A small piece of dust fell on her eyelash.,Küçük bir toz parçası kirpiğine düştü.,R1,exclude
+b1-eyelid,B1,The doctor looked at my red eyelid.,Doktor kızarmış göz kapağıma baktı.,R1,exclude
+b1-syrup,B1,He poured maple syrup on his pancakes.,Krepinin üstüne akçaağaç şurubu döktü.,R1,exclude
+b1-daydream,B1,I often daydream during long lessons.,Uzun derslerde sık sık hayal kurarım.,R1,exclude
+b1-cyclist,B1,A cyclist stopped at the red light.,Bir bisikletçi kırmızı ışıkta durdu.,R1,exclude
+b1-cowboy,B1,The cowboy rode his horse across the field.,Kovboy atıyla tarlayı geçti.,R1,exclude
+b1-playful,B1,Our puppy is very playful.,Köpek yavrumuz çok oyuncu.,R1 R5,exclude
+b1-keyhole,B1,He looked through the keyhole and saw nothing.,Anahtar deliğinden baktı ve hiçbir şey görmedi.,R1,exclude
+b1-cemetery,B1,The old cemetery is next to the church.,Eski mezarlık kilisenin yanında.,R1,exclude
+b1-voyage,B1,The voyage across the ocean took ten days.,Okyanus boyunca yolculuk on gün sürdü.,R1,exclude
+b1-buckle,B1,The buckle of my belt broke.,Kemerimin tokası koptu.,R1,exclude
+b1-locker,B1,I left my bag in my locker.,Çantamı dolabımda bıraktım.,R1,exclude
+b1-cracker,B1,She ate cheese on a cracker.,Bisküvinin üzerinde peynir yedi.,R1,exclude
+b1-elevator,B1,Take the elevator to the sixth floor.,Altıncı kata asansörle çık.,R1,exclude
+b1-traveler,B1,The traveler carried a small backpack.,Yolcu küçük bir sırt çantası taşıyordu.,R1,exclude
+b1-boxer,B1,The boxer trained every morning.,Boksör her sabah antrenman yaptı.,R1,exclude
+b1-wig,B1,The actor wore a long wig.,Oyuncu uzun bir peruk taktı.,R4,exclude
+b1-warehouse,B1,The boxes are in the warehouse.,Kutular depoda.,R6,rewrite
+b1-cactus,B1,The cactus needs very little water.,Kaktüs çok az suya ihtiyaç duyar.,R1,exclude
+b1-crumb,B1,There is a crumb on your chin.,Çenende bir kırıntı var.,R1,exclude
+b1-cuddle,B1,The child wanted to cuddle her toy.,Çocuk oyuncağına sarılmak istedi.,R1 R6,exclude
+b1-dumpling,B1,She put one dumpling in each bowl of soup.,Her çorba kasesine bir mantı koydu.,R1,exclude
+b1-oar,B1,He lost an oar in the river.,Nehirde bir küreğini kaybetti.,R4,exclude
+b1-obedient,B1,The dog is very obedient.,Köpek çok itaatkâr.,R5 R6,rewrite
+b1-handwriting,B1,His handwriting is very neat.,El yazısı çok düzgün.,R5,rewrite
+b1-handshake,B1,His handshake was firm.,El sıkışı sağlamdı.,R3 R5,rewrite
+b1-tickle,B1,Don't tickle me!,Beni gıdıklama!,R2 R5,rewrite
+b1-turnip,B1,We ate turnip soup.,Şalgam çorbası içtik.,R3,rewrite
+b1-nearby,B1,Is there a pharmacy nearby?,Yakınlarda eczane var mı?,R5,rewrite
+b1-eel,B1,The fisherman caught a large eel.,Balıkçı büyük bir yılan balığı yakaladı.,R4,exclude
+b1-episode,B1,This episode is very funny.,Bu bölüm çok komik.,R5,rewrite
+b1-marble,B1,The floor of the hotel was made of marble.,Otelin zemini mermerdendi.,R6,rewrite
+b1-certain,B1,I am certain that he is at home.,Evde olduğundan eminim.,R6,rewrite
+b1-communicate,B1,Babies communicate by crying.,Bebekler ağlayarak iletişim kurar.,R3,rewrite
+b1-consider,B1,Please consider my offer.,Lütfen teklifimi düşün.,R3,rewrite
+b1-current,B1,What is your current address?,Güncel adresin nedir?,R5,rewrite
+b1-decision,B1,It was a difficult decision.,Zor bir karardı.,R5,rewrite
+b1-disappear,B1,Some animals may disappear soon.,Bazı hayvanlar yakında yok olabilir.,R6,rewrite
+b1-document,B1,Please sign this document.,Lütfen bu belgeyi imzalayın.,R3,rewrite
+b1-effect,B1,The medicine had no effect.,İlacın hiçbir etkisi olmadı.,R5,rewrite
+b1-electronic,B1,He sells electronic equipment.,Elektronik ekipman satıyor.,R3,rewrite
+b1-emergency,B1,Call 112 in an emergency.,Acil durumda 112'yi ara.,R3 R5,rewrite
+b1-emotion,B1,She could not hide her emotion.,Duygusunu gizleyemedi.,R6,rewrite
+b1-exact,B1,What is the exact time?,Tam saat kaç?,R1 R5,exclude
+b1-examine,B1,The doctor will examine your neck.,Doktor boynunu muayene edecek.,R1,exclude
+b1-excitement,B1,The children jumped with excitement.,Çocuklar heyecandan zıpladı.,R1,exclude
+b1-exhausted,B1,I was exhausted after the long walk.,Uzun yürüyüşten sonra bitkindim.,R1,exclude
+b1-exhibition,B1,We visited a photo exhibition yesterday.,Dün bir fotoğraf sergisini gezdik.,R1,exclude
+b1-exist,B1,Do ghosts really exist?,Hayaletler gerçekten var mı?,R1 R3,exclude
+b1-experiment,B1,We did an experiment in the lab.,Laboratuvarda bir deney yaptık.,R1,exclude
+b1-explanation,B1,I need an explanation for this mistake.,Bu hata için bir açıklamaya ihtiyacım var.,R1,exclude
+b1-explosion,B1,There was a loud explosion near the building.,Binanın yakınında yüksek sesli bir patlama oldu.,R1,exclude
+b1-export,B1,Turkey will export more fruit this year.,Türkiye bu yıl daha fazla meyve ihraç edecek.,R1,exclude
+b1-extreme,B1,They live in extreme heat.,Aşırı sıcakta yaşıyorlar.,R1,exclude
+b1-fail,B1,He did not want to fail the test.,Sınavdan kalmak istemedi.,R6,rewrite
+b1-false,B1,The answer is false.,Cevap yanlış.,R3 R5,rewrite
+b1-female,B1,Female lions work together.,Dişi aslanlar birlikte çalışır.,R3,rewrite
+b1-finance,B1,She works in finance.,Finans alanında çalışıyor.,R3 R5,rewrite
+b1-focus,B1,You must focus on your homework.,Ödevine odaklanmalısın.,R6,rewrite
+b1-fully,B1,I fully agree with you.,Seninle tamamen aynı fikirdeyim.,R5,rewrite
+b1-gap,B1,There is a gap between the two buildings.,İki bina arasında bir boşluk var.,R4,exclude
+b1-garbage,B1,Please take the garbage out.,Lütfen çöpü dışarı çıkar.,R6,rewrite
+b1-genius,B1,Einstein was a genius.,Einstein bir dahiydi.,R3 R5,rewrite
+b1-gentle,B1,She has a gentle voice.,Yumuşak bir sesi var.,R5,rewrite
+b1-handmade,B1,She sells handmade bags.,El yapımı çantalar satıyor.,R3,rewrite
+b1-hardly,B1,I could hardly hear him.,Onu zar zor duyabildim.,R5,rewrite
+b1-heating,B1,The heating is not working.,Isıtma çalışmıyor.,R5,rewrite
+b1-hunt,B1,Lions hunt at night.,Aslanlar geceleri avlanır.,R3,rewrite
+b1-hygiene,B1,Good hygiene stops germs.,İyi hijyen mikropları durdurur.,R3,rewrite
+b1-incorrect,B1,Your answer is incorrect.,Cevabın hatalı.,R3 R5,rewrite
+b1-injure,B1,He may injure his arm if he falls.,Düşerse kolunu yaralayabilir.,R6,rewrite
+b1-insurance,B1,Do you have car insurance?,Araba sigortan var mı?,R5,rewrite
+b1-intelligent,B1,She is an intelligent girl.,Zeki bir kız.,R5,rewrite
+b1-jaw,B1,He hit his jaw on the table.,Çenesini masaya çarptı.,R4,exclude
+b1-jet,B1,The jet landed in Ankara at noon.,Jet uçağı öğlen Ankara'ya indi.,R4,exclude
+b1-joint,B1,It was a joint plan.,Bu ortak bir plandı.,R5,rewrite
+b1-juicy,B1,This orange is very juicy.,Bu portakal çok sulu.,R5,rewrite
+b1-major,B1,Traffic is a major problem here.,Trafik burada büyük bir sorun.,R1,exclude
+b1-majority,B1,The majority of students passed the test.,Öğrencilerin çoğunluğu sınavı geçti.,R1,exclude
+b1-reject,B1,They reject every offer we make.,Yaptığımız her teklifi reddediyorlar.,R1,exclude
+b1-adjust,B1,You can adjust the height of the chair.,Sandalyenin yüksekliğini ayarlayabilirsin.,R1 R6,exclude
+b1-injection,B1,The nurse gave him an injection.,Hemşire ona bir iğne yaptı.,R1,exclude
+b1-objective,B1,Our objective is to finish by Friday.,Hedefimiz cumaya kadar bitirmek.,R1,exclude
+b1-enjoyable,B1,It was an enjoyable evening.,Keyifli bir akşamdı.,R1 R5,exclude
+b1-projector,B1,The teacher turned on the projector.,Öğretmen projektörü açtı.,R1,exclude
+b1-prejudice,B1,Prejudice against foreigners is wrong.,Yabancılara karşı önyargı yanlıştır.,R1,exclude
+b1-banjo,B1,He plays the banjo in a country band.,Bir kantri grubunda banjo çalıyor.,R1,exclude
+b1-package,B1,A package arrived for you this morning.,Bu sabah sana bir paket geldi.,R1,exclude
+b1-network,B1,The school has a fast computer network.,Okulun hızlı bir bilgisayar ağı var.,R1,exclude
+b1-track,B1,The runners are on the track.,Koşucular pistte.,R1 R6,exclude
+b1-cheek,B1,She kissed him on the cheek.,Onu yanağından öptü.,R1,exclude
+b1-socket,B1,There is only one socket in this room.,Bu odada sadece bir priz var.,R1,exclude
+b1-tackle,B1,We must tackle the problem today.,Sorunu bugün ele almalıyız.,R1,exclude
+b1-weakness,B1,Shyness is her only weakness.,Utangaçlık onun tek zayıf yanı.,R1,exclude
+b1-sneaker,B1,She lost one sneaker on the beach.,Plajda bir spor ayakkabısını kaybetti.,R1,exclude
+b1-skeleton,B1,The museum has a dinosaur skeleton.,Müzede bir dinozor iskeleti var.,R1,exclude
+b1-feedback,B1,Thanks for your feedback on my essay.,Kompozisyonuma geri bildirimin için teşekkürler.,R1,exclude
+b1-task,B1,Cleaning the garden was a hard task.,Bahçeyi temizlemek zor bir görevdi.,R1,exclude
+b1-risk,B1,Driving fast is a big risk.,Hızlı araba sürmek büyük bir risk.,R1,exclude
+b1-disk,B1,Save the file on a disk.,Dosyayı bir diske kaydet.,R1,exclude
+b1-marketing,B1,She works in marketing.,Pazarlama alanında çalışıyor.,R1 R3 R5,exclude
+b1-talkative,B1,My little brother is very talkative.,Küçük kardeşim çok konuşkan.,R1,exclude
+b1-bookshelf,B1,He put the novel on the bookshelf.,Romanı kitaplığa koydu.,R1,exclude
+b1-backyard,B1,The children are playing in the backyard.,Çocuklar arka bahçede oynuyor.,R1,exclude
+b1-literature,B1,She studies English literature.,İngiliz edebiyatı okuyor.,R3,rewrite
+b1-loose,B1,These trousers are too loose.,Bu pantolon çok bol.,R5,rewrite
+b1-lately,B1,I have been tired lately.,Son zamanlarda yorgunum.,R5,rewrite
+b1-management,B1,Good management saves money.,İyi yönetim para kazandırır.,R3,rewrite
+b1-matter,B1,It is a serious matter.,Bu ciddi bir mesele.,R5,rewrite
+b1-medical,B1,He needs medical help.,Tıbbi yardıma ihtiyacı var.,R3,rewrite
+b1-mention,B1,Don't mention it to her.,Ona bundan söz etme.,R5,rewrite
+b1-mixture,B1,Stir the mixture slowly.,Karışımı yavaşça karıştır.,R1 R3,exclude
+b1-maximum,B1,The maximum speed here is fifty.,Buradaki azami hız elli.,R1,exclude
+b1-kindness,B1,Thank you for your kindness.,Nezaketin için teşekkürler.,R5,rewrite
+b1-tricky,B1,The last question was tricky.,Son soru zordu.,R1,exclude
+b1-nonsense,B1,Don't talk nonsense.,Saçma sapan konuşma.,R2,rewrite
+b1-planet,B1,Mars is the red planet.,Mars kızıl gezegendir.,R1,exclude
+b1-monitor,B1,My monitor is too small.,Monitörüm çok küçük.,R1 R5,exclude
+b1-launch,B1,The company will launch a new phone in May.,Şirket mayısta yeni bir telefon piyasaya sürecek.,R1,exclude
+b1-unique,B1,Every fingerprint is unique.,Her parmak izi eşsizdir.,R1 R3 R5,exclude
+b1-tension,B1,There was tension in the room.,Odada bir gerginlik vardı.,R1,exclude
+b1-sensible,B1,It is sensible to wear a helmet.,Kask takmak akıllıca.,R1,exclude
+b1-sensitive,B1,She is very sensitive to criticism.,Eleştiriye karşı çok hassas.,R1,exclude
+b1-senior,B1,He is a senior manager in the bank.,Bankada üst düzey bir yönetici.,R1,exclude
+b1-punish,B1,Parents should not punish children too hard.,Anne babalar çocukları çok sert cezalandırmamalı.,R1,exclude
+b1-stranger,B1,Never talk to a stranger online.,İnternette asla bir yabancıyla konuşma.,R1,exclude
+b1-strength,B1,He lifted the box with great strength.,Kutuyu büyük bir güçle kaldırdı.,R1 R6,exclude
+b1-translate,B1,Can you translate this letter for me?,Bu mektubu benim için çevirebilir misin?,R1,exclude
+b1-pension,B1,My grandfather lives on his pension.,Dedem emekli maaşıyla geçiniyor.,R1,exclude
+b1-range,B1,The shop sells a wide range of shoes.,Mağaza geniş bir ayakkabı yelpazesi satıyor.,R1,exclude
+b1-option,B1,You have only one option.,Sadece bir seçeneğin var.,R5,rewrite
+b1-original,B1,This is the original painting.,"Bu, orijinal tablo.",R5,rewrite
+b1-owe,B1,I owe you ten pounds.,Sana on pound borcum var.,R4,exclude
+b1-painful,B1,His knee is still painful.,Dizi hâlâ acıyor.,R6,rewrite
+b1-personality,B1,She has a warm personality.,Sıcak bir kişiliği var.,R5,rewrite
+b1-politics,B1,He is not interested in politics.,Siyasetle ilgilenmiyor.,R6,rewrite
+b1-powerful,B1,This is a powerful engine.,Bu güçlü bir motor.,R5,rewrite
+b1-privacy,B1,Everyone needs some privacy.,Herkesin biraz mahremiyete ihtiyacı var.,R3,rewrite
+b1-private,B1,This is a private beach.,Burası özel bir plaj.,R5,rewrite
+b1-professional,B1,He is a professional footballer.,Profesyonel bir futbolcu.,R5,rewrite
+b1-rare,B1,This bird is very rare.,Bu kuş çok nadir.,R5,rewrite
+b1-rarely,B1,He rarely eats meat.,O nadiren et yer.,R3,rewrite
+b1-recognise,B1,You can rely on me.,Bana güvenebilirsin.,R5,rewrite
+b1-regular,B1,He takes regular exercise.,Düzenli egzersiz yapar.,R3,rewrite
+b1-relationship,B1,They have a close relationship.,Yakın bir ilişkileri var.,R5,rewrite
+b1-reflect,B1,Mirrors reflect light.,Aynalar ışığı yansıtır.,R2,rewrite
+b1-skilled,B1,He is a skilled carpenter.,O usta bir marangoz.,R5,rewrite
+b1-society,B1,Society changes over time.,Toplum zamanla değişir.,R3,rewrite
+b1-spelling,B1,Her spelling is perfect.,Yazımı mükemmel.,R3 R5,rewrite
+b1-strict,B1,Our teacher is very strict.,Öğretmenimiz çok katı.,R5,rewrite
+b1-stubborn,B1,My brother is very stubborn.,Kardeşim çok inatçı.,R5,rewrite
+b1-suggestion,B1,That is a good suggestion.,Bu iyi bir öneri.,R5,rewrite
+b1-suppose,B1,I suppose you are right.,Sanırım haklısın.,R5,rewrite
+b1-surround,B1,Mountains surround the village.,Dağlar köyü çevreler.,R3,rewrite
+b1-teenage,B1,He has two teenage daughters.,İki ergen kızı var.,R5,rewrite
+b1-theory,B1,Einstein's theory changed physics.,Einstein'ın kuramı fiziği değiştirdi.,R3,rewrite
+b1-tough,B1,The meat was tough.,Et sertti.,R3 R5,rewrite
+b1-tower,B1,We climbed to the top of the tower.,Kulenin tepesine tırmandık.,R6,rewrite
+b1-trap,B1,The mouse is in the trap.,Fare tuzakta.,R6,rewrite
+b1-textbook,B1,Open your textbook on page ten.,Ders kitabını on numaralı sayfada aç.,R1,exclude
+b1-unable,B1,He was unable to come to the meeting.,Toplantıya gelemedi.,R6,rewrite
+b1-uncomfortable,B1,This chair is very uncomfortable.,Bu sandalye çok rahatsız.,R5,rewrite
+b1-universe,B1,Stars fill the universe.,Yıldızlar evreni doldurur.,R3,rewrite
+b1-unusual,B1,That is an unusual name.,Bu alışılmadık bir isim.,R5,rewrite
+b1-update,B1,You should update your phone.,Telefonunu güncellemelisin.,R5,rewrite
+b1-understanding,B1,My teacher was very understanding.,Öğretmenim çok anlayışlıydı.,R5,rewrite
+b1-unexpected,B1,We had an unexpected visitor.,Beklenmedik bir misafirimiz geldi.,R5,rewrite
+b1-valuable,B1,The ring is very valuable.,Yüzük çok değerli.,R5,rewrite
+b1-vegetarian,B1,My sister is a vegetarian.,Kız kardeşim vejetaryen.,R5,rewrite
+b1-device,B1,This device charges your phone.,Bu cihaz telefonunu şarj eder.,R1,exclude
+b1-reserve,B1,I want to reserve a table for four.,Dört kişilik bir masa ayırtmak istiyorum.,R1,exclude
+b1-convince,B1,She could not convince her father.,Babasını ikna edemedi.,R1,exclude
+b1-convenient,B1,The hotel is in a convenient place.,Otel elverişli bir yerde.,R1,exclude
+b1-servant,B1,The servant brought tea to the guests.,Hizmetçi misafirlere çay getirdi.,R1,exclude
+b1-overseas,B1,His brother works overseas.,Kardeşi yurt dışında çalışıyor.,R1 R3,exclude
+b1-whatever,B1,Do whatever you like.,Ne istersen yap.,R3 R5,rewrite
+b1-sequence,B1,Put the pictures in the correct sequence.,Resimleri doğru sıraya koy.,R1,exclude
+b1-consequence,B1,Being late had a bad consequence.,Geç kalmanın kötü bir sonucu oldu.,R1,exclude
+b1-technique,B1,She learned a new painting technique.,Yeni bir resim tekniği öğrendi.,R1,exclude
+b1-bouquet,B1,He gave her a bouquet of roses.,Ona bir buket gül verdi.,R1,exclude
+b1-squirrel,B1,A squirrel ran up the tree.,Bir sincap ağaca tırmandı.,R1,exclude
+b1-banquet,B1,The king gave a banquet for his guests.,Kral konukları için bir ziyafet verdi.,R1,exclude
+b1-conquer,B1,The army wanted to conquer the city.,Ordu şehri fethetmek istedi.,R1,exclude
+b1-equality,B1,Equality is important in a school.,Okulda eşitlik önemlidir.,R1,exclude
+b1-squash,B1,She plays squash twice a week.,Haftada iki kez squash oynuyor.,R1,exclude
+b1-enquire,B1,Please inquire at the front desk.,Lütfen danışmadan bilgi alın.,R1,exclude
+b1-requirement,B1,A passport is a requirement for travel.,Pasaport seyahat için bir şarttır.,R1,exclude
+b1-acquire,B1,Children acquire language quickly.,Çocuklar dili hızlı edinir.,R1 R3,exclude
+b1-babysitter,B1,The babysitter put the children to bed.,Bakıcı çocukları yatırdı.,R1,exclude
+b1-everyday,B1,Cooking is an everyday job.,Yemek yapmak günlük bir iştir.,R1,exclude
+b1-policy,B1,The school has a clear policy on phones.,Okulun telefonlar konusunda net bir politikası var.,R1,exclude
+b1-priority,B1,Health is our first priority.,Sağlık birinci önceliğimiz.,R1,exclude
+b1-survey,B1,The survey asked people about their habits.,Anket insanlara alışkanlıklarını sordu.,R1,exclude
+b1-layer,B1,Put a layer of cheese on the bread.,Ekmeğin üzerine bir kat peynir koy.,R1,exclude
+b1-display,B1,The shop will display the new shoes in the window.,Dükkân yeni ayakkabıları vitrinde sergileyecek.,R1,exclude
+b1-deny,B1,He will deny everything.,Her şeyi inkâr edecek.,R1 R3 R5,exclude
+b1-identify,B1,Can you identify this bird?,Bu kuşu tanıyabilir misin?,R1 R5,exclude
+b1-mayor,B1,The mayor opened the new park.,Belediye başkanı yeni parkı açtı.,R1,exclude
+b1-loyalty,B1,Dogs are famous for their loyalty.,Köpekler sadakatleriyle ünlüdür.,R1,exclude
+b1-enjoyment,B1,Reading gives me great enjoyment.,Okumak bana büyük zevk veriyor.,R1,exclude
+b1-satisfy,B1,One sandwich will not satisfy him.,Bir sandviç onu doyurmaz.,R1,exclude
+b1-pyjamas,B1,She sleeps in blue pajamas.,Mavi bir pijamayla uyur.,R1,exclude
+b1-cycle,B1,The water cycle starts with rain.,Su döngüsü yağmurla başlar.,R1,exclude
+b1-zoom,B1,You can zoom in on the map.,Haritada yakınlaştırabilirsin.,R6,rewrite
+b1-amaze,B1,Her skill will amaze you.,Becerisi seni şaşırtacak.,R1 R5,exclude
+b1-blizzard,B1,The blizzard closed all the roads.,Kar fırtınası bütün yolları kapattı.,R1,exclude
+b1-fuzzy,B1,The puppy has fuzzy ears.,Yavrunun tüylü kulakları var.,R1,exclude
+b1-gaze,B1,They gaze at the stars at night.,Geceleri yıldızlara dalıp bakarlar.,R1,exclude
+b1-hazard,B1,Wet floors are a hazard.,Islak zeminler bir tehlikedir.,R1,exclude
+b1-razor,B1,He bought a new razor.,Yeni bir tıraş bıçağı aldı.,R1,exclude
+b1-ozone,B1,Ozone gas protects the earth.,Ozon gazı dünyayı korur.,R1,exclude
+b1-civilization,B1,Ancient Egypt had a great civilization.,Eski Mısır'ın büyük bir uygarlığı vardı.,R1,exclude
+b1-memorize,B1,I have to memorize ten new words.,On yeni kelimeyi ezberlemem gerekiyor.,R1,exclude
+b1-summarize,B1,Please summarize the story in one sentence.,Lütfen hikâyeyi tek cümleyle özetle.,R1,exclude
+b1-emphasize,B1,The teacher likes to emphasize reading.,Öğretmen okumayı vurgulamayı sever.,R1,exclude
+b1-freezing,B1,It is freezing outside today.,Bugün dışarısı dondurucu.,R1,exclude
+b1-puzzled,B1,He looked puzzled by the question.,Soru karşısında şaşkın göründü.,R1,exclude
+b1-pizzeria,B1,We had dinner in a small pizzeria.,Küçük bir pizzacıda yemek yedik.,R1,exclude
+b1-bazaar,B1,We bought a lamp at the bazaar.,Çarşıdan bir lamba aldık.,R1,exclude
+b1-amazement,B1,She looked at it in amazement.,Büyük bir şaşkınlıkla ona baktı.,R1,exclude
+b1-snooze,B1,I like to snooze on the sofa.,Kanepede şekerleme yapmayı severim.,R1,exclude
+b1-dazzle,B1,The sun can dazzle your eyes.,Güneş gözlerini kamaştırabilir.,R1,exclude
+b1-happiness,B1,Money cannot buy happiness.,Para mutluluk satın alamaz.,R3,rewrite
+b1-harbour,B1,The boats are in the harbor.,Tekneler limanda.,R6,rewrite
+b1-hopeless,B1,The case looks hopeless.,Dava umutsuz görünüyor.,R3 R6,rewrite
+b1-endless,B1,The desert seemed endless.,Çöl sonsuz görünüyordu.,R3,rewrite
+b1-embarrassing,B1,It was an embarrassing mistake.,Utanç verici bir hataydı.,R5,rewrite
+b1-odd,B1,That is an odd thing to say.,Bunu söylemek tuhaf.,R4,exclude
+b1-opponent,B1,Our opponent was very strong.,Rakibimiz çok güçlüydü.,R5,rewrite
+b1-outgoing,B1,She is an outgoing girl.,O girişken bir kız.,R5,rewrite
+b1-exception,B1,There is one exception to this rule.,Bu kuralın tek bir istisnası var.,R1,exclude
+b1-expand,B1,The company wants to expand abroad.,Şirket yurt dışına açılmak istiyor.,R1,exclude
+b1-complex,B1,The story has a complex plot.,Hikâyenin karmaşık bir olay örgüsü var.,R1,exclude
+b1-index,B1,Look in the index for the page number.,Sayfa numarası için dizine bak.,R1,exclude
+b1-prefix,B1,"The prefix ""un"" changes the meaning of a word.","""un"" öneki sözcüğün anlamını değiştirir.",R1,exclude
+b1-suffix,B1,"The suffix ""ful"" means full of something.","""ful"" soneki bir şeyle dolu anlamı katar.",R1,exclude
+b1-addicted,B1,He is addicted to his phone.,Telefonuna bağımlı.,R6,rewrite
+b1-aggressive,B1,The dog became aggressive when it was afraid.,Köpek korkunca saldırganlaştı.,R6,rewrite
+b1-automatic,B1,The door is automatic.,Kapı otomatik.,R3 R5,rewrite
+b1-judgement,B1,Trust your own judgement.,Kendi sağduyuna güven.,R3,rewrite
+b1-limited,B1,We have limited time.,Sınırlı zamanımız var.,R3 R5,rewrite
+b1-logical,B1,That is a logical answer.,Bu mantıklı bir cevap.,R5,rewrite
+b1-luckily,B1,"Luckily, nobody was hurt.",Neyse ki kimse yaralanmadı.,R3,rewrite
+b1-military,B1,He did his military service last year.,Askerliğini geçen yıl yaptı.,R6,rewrite
+b1-reality,B1,He cannot accept reality.,Gerçeği kabul edemiyor.,R3,rewrite
+b1-refund,B1,I asked for a refund.,Para iadesi istedim.,R5,rewrite
+b1-regret,B1,I regret saying that.,Bunu söylediğime pişmanım.,R3 R5,rewrite
+b1-shame,B1,It is a shame that you cannot come.,Gelememen yazık.,R6,rewrite
+b1-smooth,B1,The road is smooth.,Yol pürüzsüz.,R3 R5,rewrite
+b1-solid,B1,Ice is solid water.,Buz katı haldeki sudur.,R3,rewrite
+b1-throat,B1,I have a sore throat.,Boğazım ağrıyor.,R5,rewrite
+b1-unclear,B1,The instructions are unclear.,Talimatlar belirsiz.,R3 R5,rewrite
+b1-worrying,B1,The news is worrying.,Haber endişe verici.,R3 R5,rewrite
+b1-environment,B1,We must save the environment.,Çevreyi kurtarmalıyız.,R5,rewrite
+b1-honest,B1,Please be honest with me.,Lütfen bana karşı dürüst ol.,R5,rewrite
+b1-increase,B1,Prices increase every year.,Fiyatlar her yıl artıyor.,R3,rewrite
+b1-reliable,B1,He is a reliable driver.,O güvenilir bir sürücü.,R5,rewrite
+b1-experience,B1,She has ten years of experience.,On yıllık deneyimi var.,R1,exclude
+b1-zone,B1,This is a parking zone.,Burası bir park bölgesi.,R5,rewrite
+b2-accurate,B2,The map is accurate.,Harita doğru.,R3 R5,rewrite
+b2-authentic,B2,We ate authentic Italian pizza.,Otantik bir İtalyan pizzası yedik.,R6,rewrite
+b2-break-down,B2,Our car might break down on the way.,Arabamız yolda bozulabilir.,R6,rewrite
+b2-break-a-leg,B2,Break a leg tonight!,Bu gece bol şans!,R3 R5,rewrite
+b2-balanced,B2,Eat a balanced diet.,Dengeli beslen.,R3,rewrite
+b2-believable,B2,The actor was very believable.,Oyuncu çok inandırıcıydı.,R5,rewrite
+b2-rejection,B2,He could not accept the rejection.,Reddedilmeyi kabullenemedi.,R1 R6,exclude
+b2-adjacent,B2,The hotel is adjacent to the beach.,Otel plaja bitişik.,R1,exclude
+b2-projection,B2,The sales projection looks good for next year.,Gelecek yıl satış tahmini iyi görünüyor.,R1,exclude
+b2-breakdown,B2,Please send me a breakdown of the costs.,Lütfen bana maliyetlerin dökümünü gönderin.,R1,exclude
+b2-clockwise,B2,Turn the handle clockwise.,Kolu saat yönünde çevir.,R1 R3,exclude
+b2-skillful,B2,She is a skillful designer.,O becerikli bir tasarımcı.,R1 R5,exclude
+b2-workplace,B2,Safety is important in the workplace.,İş yerinde güvenlik önemlidir.,R1,exclude
+b2-checklist,B2,Use a checklist before the trip.,Gezi öncesi bir kontrol listesi kullan.,R1,exclude
+b2-booklet,B2,The hotel gave us a booklet about the city.,Otel bize şehir hakkında bir kitapçık verdi.,R1,exclude
+b2-unlock,B2,Use the key to unlock the door.,Kapıyı açmak için anahtarı kullan.,R1,exclude
+b2-verbal,B2,They had a verbal agreement.,Sözlü bir anlaşmaları vardı.,R5,rewrite
+b2-advance,B2,Doctors announced a new advance in medicine.,Doktorlar tıpta yeni bir ilerleme duyurdu.,R1,exclude
+b2-convert,B2,You can convert the file to a PDF.,Dosyayı PDF'ye dönüştürebilirsin.,R1 R6,exclude
+b2-diversity,B2,The city is proud of its cultural diversity.,Şehir kültürel çeşitliliğiyle gurur duyuyor.,R1,exclude
+b2-division,B2,The company has a division in Izmir.,Şirketin İzmir'de bir bölümü var.,R1,exclude
+b2-evident,B2,It was evident that he was tired.,Yorgun olduğu belliydi.,R1,exclude
+b2-invade,B2,The army planned to invade the island.,Ordu adayı işgal etmeyi planladı.,R1,exclude
+b2-overview,B2,The book gives a short overview of history.,Kitap tarihin kısa bir özetini veriyor.,R1,exclude
+b2-systematic,B2,They made a systematic search of the house.,Evde sistemli bir arama yaptılar.,R1,exclude
+b2-symbolic,B2,The dove is a symbolic bird.,Güvercin simgesel bir kuştur.,R1,exclude
+b2-crystal,B2,The glass looks like crystal.,Bardak kristale benziyor.,R1,exclude
+b2-boutique,B2,She bought a dress at a small boutique.,Küçük bir butikten elbise aldı.,R1,exclude
+b2-critique,B2,He wrote a critique of the film.,Film hakkında bir eleştiri yazısı yazdı.,R1,exclude
+b2-plaque,B2,A plaque on the wall marks the poet's house.,Duvardaki levha şairin evini gösteriyor.,R1,exclude
+b2-seize,B2,You must seize the opportunity.,Fırsatı kaçırmamalısın.,R1 R5,exclude
+b2-blaze,B2,Firefighters fought the blaze all night.,İtfaiyeciler bütün gece yangınla savaştı.,R1,exclude
+b2-hazy,B2,The morning was hazy.,Sabah hava pusluydu.,R1 R3 R5,exclude
+b2-authorize,B2,Only the manager can authorize this.,Bunu sadece müdür onaylayabilir.,R1,exclude
+b2-neutralize,B2,Baking soda can neutralize the smell.,Karbonat kokuyu giderebilir.,R1,exclude
+b2-characterize,B2,How would you characterize his style?,Onun tarzını nasıl tanımlarsın?,R1,exclude
+b2-generalize,B2,It is unfair to generalize about teenagers.,Gençler hakkında genelleme yapmak haksızlık.,R1,exclude
+b2-modernize,B2,They want to modernize the school.,Okulu modernleştirmek istiyorlar.,R1,exclude
+b2-standardize,B2,The company decided to standardize its forms.,Şirket formlarını tek tip yapmaya karar verdi.,R1,exclude
+b2-fertilizer,B2,Farmers use fertilizer on their fields.,Çiftçiler tarlalarında gübre kullanır.,R1,exclude
+b2-mozzarella,B2,The chef recommended fresh mozzarella with tomatoes and basil.,Aşçı domates ve fesleğenle taze mozzarella önerdi.,R1,exclude
+b2-topaz,B2,The museum displayed a huge topaz found in the mountains.,Müze dağlarda bulunan kocaman bir topazı sergiledi.,R1,exclude
+b2-competent,B2,She is a competent manager.,O yetkin bir yönetici.,R5,rewrite
+b2-confront,B2,You must confront your fear.,Korkunla yüzleşmelisin.,R5,rewrite
+b2-conscious,B2,She was conscious of the noise.,Gürültünün farkındaydı.,R6,rewrite
+b2-consistent,B2,Her results are consistent.,Sonuçları tutarlı.,R3 R5,rewrite
+b2-consult,B2,You should consult a doctor.,Bir doktora danışmalısın.,R5,rewrite
+b2-contemporary,B2,He likes contemporary art.,Çağdaş sanatı seviyor.,R3,rewrite
+b2-controversial,B2,The film is very controversial.,Film çok tartışmalı.,R5,rewrite
+b2-corrupt,B2,The mayor was corrupt.,Belediye başkanı yozlaşmıştı.,R3 R5,rewrite
+b2-carry-on,B2,"Carry on reading, please.",Lütfen okumaya devam edin.,R3,rewrite
+b2-catch-up,B2,I have to catch up on my homework.,Ödevlerimi tamamlamam gerekiyor.,R6,rewrite
+b2-count-on,B2,You can count on me.,Bana güvenebilirsin.,R5,rewrite
+b2-cut-down,B2,You should cut down on sugar.,Şekeri azaltmalısın.,R6,rewrite
+b2-deliberate,B2,It was a deliberate mistake.,Bu kasıtlı bir hataydı.,R5,rewrite
+b2-distinguish,B2,Can you distinguish the twins?,İkizleri ayırt edebilir misin?,R5,rewrite
+b2-emerge,B2,The sun will emerge from behind the clouds.,Güneş bulutların arkasından çıkacak.,R6,rewrite
+b2-ethical,B2,It is not ethical to copy someone's work.,Birinin işini kopyalamak etik değil.,R6,rewrite
+b2-evolve,B2,Language continues to evolve.,Dil gelişmeye devam eder.,R3,rewrite
+b2-extinct,B2,Dinosaurs are extinct.,Dinozorların soyu tükenmiştir.,R2 R5,rewrite
+b2-extraordinary,B2,She has extraordinary talent.,Olağanüstü bir yeteneği var.,R3 R5,rewrite
+b2-come-down-with,B2,I think I will come down with a cold.,Sanırım nezleye yakalanacağım.,R6,rewrite
+b2-fabulous,B2,We had a fabulous holiday.,Harika bir tatil geçirdik.,R5,rewrite
+b2-former,B2,He is a former footballer.,O eski bir futbolcu.,R5,rewrite
+b2-frustration,B2,I could hear the frustration in his voice.,Sesindeki sıkıntıyı duyabiliyordum.,R6,rewrite
+b2-fair-enough,B2,"Fair enough, you win.","Tamam, sen kazandın.",R3 R5,rewrite
+b2-generate,B2,Wind can generate electricity.,Rüzgâr elektrik üretebilir.,R3,rewrite
+b2-genuinely,B2,She was genuinely surprised.,Gerçekten şaşırmıştı.,R3 R5,rewrite
+b2-grasp,B2,I could not grasp the idea.,Fikri kavrayamadım.,R6,rewrite
+b2-guideline,B2,Follow this safety guideline.,Bu güvenlik yönergesine uyun.,R3,rewrite
+b2-humble,B2,He is a humble man despite his success.,Başarısına rağmen mütevazı bir adam.,R6,rewrite
+b2-instinct,B2,Animals follow their instinct.,Hayvanlar içgüdülerine uyar.,R3,rewrite
+b2-intense,B2,He felt intense pain.,Yoğun bir acı hissetti.,R3,rewrite
+b2-invaluable,B2,Her advice was invaluable.,Tavsiyesi paha biçilmezdi.,R3 R5,rewrite
+b2-isolate,B2,Doctors isolate sick patients.,Doktorlar hasta kişileri ayrı tutar.,R3,rewrite
+b2-harsh,B2,The winter here is harsh.,Buradaki kış çok sert.,R5,rewrite
+b2-firm,B2,Be firm with your decision.,Kararında kararlı ol.,R5,rewrite
+b2-subjective,B2,Taste in music is subjective.,Müzik zevki özneldir.,R1,exclude
+b2-injustice,B2,We must fight injustice.,Haksızlıkla mücadele etmeliyiz.,R1 R3 R5,exclude
+b2-objection,B2,Does anyone have an objection?,İtirazı olan var mı?,R1 R5,exclude
+b2-conjunction,B2,"""And"" is a conjunction.","""And"" bir bağlaçtır.",R1 R3 R5,exclude
+b2-objectively,B2,Try to look at the problem objectively.,Soruna tarafsız bakmaya çalış.,R1,exclude
+b2-skeptical,B2,I am skeptical about the story.,Hikâyeye şüpheyle yaklaşıyorum.,R1,exclude
+b2-stroke,B2,His grandfather had a stroke last year.,Büyükbabası geçen yıl felç geçirdi.,R1,exclude
+b2-outlook,B2,The economic outlook is not good.,Ekonomik görünüm iyi değil.,R1,exclude
+b2-packaging,B2,The packaging is made of paper.,Ambalaj kâğıttan yapılmış.,R1,exclude
+b2-shrink,B2,This sweater might shrink in the wash.,Bu kazak yıkamada çekebilir.,R1,exclude
+b2-workforce,B2,The factory has a young workforce.,Fabrikanın genç bir iş gücü var.,R1,exclude
+b2-workload,B2,My workload is very heavy this month.,Bu ay iş yükü çok ağır.,R1,exclude
+b2-checkup,B2,I have a checkup at the clinic tomorrow.,Yarın klinikte genel kontrolüm var.,R1,exclude
+b2-bookmark,B2,I use a leaf as a bookmark.,Kitap ayracı olarak yaprak kullanıyorum.,R1,exclude
+b2-limitation,B2,Every system has a limitation.,Her sistemin bir sınırlaması vardır.,R5,rewrite
+b2-literally,B2,I was literally freezing.,Kelimenin tam anlamıyla donuyordum.,R3 R5,rewrite
+b2-look-down-on,B2,Don't look down on people who are poor.,Fakir insanları küçümseme.,R6,rewrite
+b2-live-up-to,B2,The film did not live up to my hopes.,Film beklentilerimi karşılamadı.,R6,rewrite
+b2-less-is-more,B2,"In design, less is more.",Tasarımda sadelik daha etkilidir.,R5,rewrite
+b2-meaningful,B2,It was a meaningful conversation.,Anlamlı bir konuşmaydı.,R5,rewrite
+b2-merely,B2,It was merely a joke.,Bu sadece bir şakaydı.,R5,rewrite
+b2-misleading,B2,The advertisement is misleading.,Reklam yanıltıcı.,R3 R5,rewrite
+b2-modify,B2,You can modify the settings.,Ayarları değiştirebilirsin.,R5 R6,rewrite
+b2-mutual,B2,They have mutual respect.,Karşılıklı saygıları var.,R3 R5,rewrite
+b2-make-up,B2,Don't make up stories.,Hikâye uydurma.,R3,rewrite
+b2-make-out,B2,I cannot make out what he is saying.,Ne dediğini anlayamıyorum.,R6,rewrite
+b2-moderate,B2,Doctors suggest moderate exercise.,Doktorlar ölçülü egzersiz öneriyor.,R3,rewrite
+b2-justifiable,B2,His anger was justifiable.,Öfkesi haklıydı.,R3 R5,rewrite
+b2-necessity,B2,Water is a basic necessity.,Su temel bir ihtiyaçtır.,R6,rewrite
+b2-notable,B2,She is a notable artist.,O tanınmış bir sanatçı.,R5,rewrite
+b2-outcome,B2,We are waiting for the outcome of the vote.,Oylamanın sonucunu bekliyoruz.,R6,rewrite
+b2-overcome,B2,He wants to overcome his fear.,Korkusunu yenmek istiyor.,R6,rewrite
+b2-overlook,B2,Don't overlook small details.,Küçük ayrıntıları gözden kaçırma.,R3,rewrite
+b2-out-of-date,B2,My phone is out of date.,Telefonum eskidi.,R6,rewrite
+b2-passionate,B2,She is passionate about music.,Müzik konusunda çok tutkulu.,R5,rewrite
+b2-pollute,B2,Factories pollute the river.,Fabrikalar nehri kirletiyor.,R3,rewrite
+b2-potential,B2,She has great potential.,Büyük bir potansiyeli var.,R3 R5,rewrite
+b2-precise,B2,Give me precise directions.,Bana tam tarif ver.,R3,rewrite
+b2-pass-out,B2,He might pass out in the heat.,Sıcakta bayılabilir.,R6,rewrite
+b2-observation,B2,Her observation was very clever.,Gözlemi çok zekiceydi.,R5,rewrite
+b2-prediction,B2,His prediction came true.,Tahmini gerçek oldu.,R3,rewrite
+b2-provoke,B2,Don't provoke the dog.,Köpeği kışkırtma.,R3,rewrite
+b2-rebel,B2,He was a rebel in his teenage years.,Gençliğinde bir asiydi.,R6,rewrite
+b2-relevant,B2,Only write relevant information.,Sadece konuyla ilgili bilgi yaz.,R3,rewrite
+b2-remarkable,B2,She made remarkable progress.,Dikkat çekici bir ilerleme kaydetti.,R3,rewrite
+b2-restore,B2,They restore old paintings.,Eski tabloları restore ediyorlar.,R3,rewrite
+b2-specific,B2,"Be more specific, please.",Lütfen daha açık ol.,R3 R6,rewrite
+b2-safe-and-sound,B2,They arrived safe and sound.,Sağ salim vardılar.,R5,rewrite
+b2-tendency,B2,He has a tendency to talk too much.,Çok konuşmaya yatkın.,R6,rewrite
+b2-tolerance,B2,Schools should teach tolerance.,Okullar hoşgörüyü öğretmeli.,R3,rewrite
+b2-tragic,B2,It was a tragic accident.,Çok acı bir kazaydı.,R5,rewrite
+b2-tie-the-knot,B2,They plan to tie the knot in June.,Haziranda evlenmeyi planlıyorlar.,R6,rewrite
+b2-unrealistic,B2,Your plan is unrealistic.,Planın gerçekçi değil.,R3 R5,rewrite
+b2-upbringing,B2,She had a strict upbringing.,Sıkı bir terbiye aldı.,R5,rewrite
+b2-unpredictable,B2,The weather here is unpredictable.,Buradaki hava tahmin edilemez.,R5,rewrite
+b2-up-in-the-air,B2,Our plans are still up in the air.,Planlarımız hâlâ belirsiz.,R6,rewrite
+b2-visual,B2,Children enjoy visual learning.,Çocuklar görsel öğrenmeyi sever.,R3,rewrite
+b2-voluntary,B2,The course is voluntary.,Kurs isteğe bağlı.,R3 R5,rewrite
+b2-vulnerable,B2,Small children are vulnerable.,Küçük çocuklar savunmasızdır.,R3,rewrite
+b2-worthwhile,B2,The trip was worthwhile.,Gezi zahmete değdi.,R3 R5,rewrite
+b2-qualified,B2,She is a qualified nurse.,O nitelikli bir hemşire.,R5,rewrite
+b2-frequency,B2,The frequency of buses is low at night.,Geceleri otobüs sıklığı düşük.,R1,exclude
+b2-equation,B2,Solve this equation in your notebook.,Bu denklemi defterinde çöz.,R1,exclude
+b2-equip,B2,The school will equip every room with a screen.,Okul her odayı bir ekranla donatacak.,R1,exclude
+b2-sequel,B2,The sequel is better than the first film.,Devam filmi ilkinden daha iyi.,R1,exclude
+b2-subsequent,B2,Subsequent events proved him right.,Sonraki olaylar onu haklı çıkardı.,R1,exclude
+b2-equally,B2,Share the cake equally.,Keki eşit paylaş.,R1 R3,exclude
+b2-consequently,B2,"He missed the bus; consequently, he was late.",Otobüsü kaçırdı; bu yüzden geç kaldı.,R1 R6,exclude
+b2-acquaintance,B2,"He is just an acquaintance, not a friend.","O sadece bir tanıdık, arkadaş değil.",R1,exclude
+b2-anxiety,B2,Exams cause anxiety in many students.,Sınavlar birçok öğrencide kaygı yaratır.,R1,exclude
+b2-texture,B2,I like the texture of this cloth.,Bu kumaşın dokusunu seviyorum.,R1,exclude
+b2-toxic,B2,Some cleaning products are toxic.,Bazı temizlik ürünleri zehirlidir.,R1,exclude
+b2-exclusive,B2,It is an exclusive club for members.,"Bu, yalnızca üyelere özel bir kulüp.",R1,exclude
+b2-exotic,B2,They sell exotic fruit at the market.,Pazarda egzotik meyveler satıyorlar.,R1,exclude
+b2-expedition,B2,The scientists went on an expedition to the Arctic.,Bilim insanları Kuzey Kutbu'na bir keşif gezisine çıktı.,R1,exclude
+b2-extensive,B2,The hotel has extensive gardens.,Otelin geniş bahçeleri var.,R1,exclude
+b2-expansion,B2,The company plans an expansion abroad.,Şirket yurt dışına genişlemeyi planlıyor.,R1,exclude
+b2-external,B2,Use an external hard drive.,Harici bir sabit disk kullan.,R1,exclude
+b2-exhibit,B2,The museum will exhibit rare paintings.,Müze nadir tabloları sergileyecek.,R1,exclude
+b2-expertise,B2,We need someone with expertise in law.,Hukuk alanında uzmanlığı olan birine ihtiyacımız var.,R1,exclude
+b2-excursion,B2,We went on an excursion to the island.,Adaya günübirlik bir gezi yaptık.,R1,exclude
+b2-executive,B2,She is a senior executive at the bank.,Bankada üst düzey bir yönetici.,R1,exclude
+b2-analysis,B2,The analysis of the data took a week.,Verilerin analizi bir hafta sürdü.,R1,exclude
+b2-comply,B2,All drivers must comply with the law.,Bütün sürücüler yasaya uymalı.,R1,exclude
+b2-consistency,B2,Consistency is the key to learning.,Tutarlılık öğrenmenin anahtarıdır.,R1,exclude
+b2-currency,B2,The Turkish currency is the lira.,Türkiye'nin para birimi liradır.,R1,exclude
+b2-delivery,B2,Delivery usually takes two days.,Teslimat genellikle iki gün sürer.,R1,exclude
+b2-employment,B2,Employment is rising in the region.,Bölgede istihdam artıyor.,R1,exclude
+b2-recovery,B2,The recovery after surgery was quick.,Ameliyattan sonraki iyileşme hızlıydı.,R1,exclude
+b2-stylish,B2,She wore a stylish black coat.,Şık bir siyah palto giymişti.,R1,exclude
+b2-sympathy,B2,I have a lot of sympathy for him.,Ona karşı çok anlayışım var.,R1,exclude
+b2-sympathetic,B2,The nurse was kind and sympathetic.,Hemşire nazik ve anlayışlıydı.,R1,exclude
+b2-typically,B2,"Typically, the shop opens at nine.",Genellikle dükkân dokuzda açılır.,R1,exclude
+b2-enquiry,B2,Send your inquiry by email.,Sorunuzu e-postayla gönderin.,R1,exclude
+b2-specialize,B2,She wants to specialize in children's health.,Çocuk sağlığında uzmanlaşmak istiyor.,R1,exclude
+b2-utilize,B2,We must utilize every chance we get.,Elimizdeki her fırsatı değerlendirmeliyiz.,R1,exclude
+b2-maximize,B2,Try to maximize your study time.,Çalışma süreni en üst düzeye çıkarmaya çalış.,R1,exclude
+b2-minimize,B2,Wash your hands to minimize the risk.,Riski en aza indirmek için ellerini yıka.,R1,exclude
+b2-prioritize,B2,You should prioritize your tasks.,Görevlerini öncelik sırasına koymalısın.,R1 R5,exclude
+b2-visualize,B2,Try to visualize the final result.,Son sonucu zihninde canlandırmaya çalış.,R1,exclude
+b2-citizenship,B2,He applied for Turkish citizenship.,Türk vatandaşlığına başvurdu.,R1,exclude
+b2-energize,B2,A short walk can energize you.,Kısa bir yürüyüş sana enerji verebilir.,R1,exclude
+b2-sympathize,B2,I sympathize with your situation.,Durumunu anlıyorum.,R1 R5,exclude
+b2-privatize,B2,They plan to privatize the railway.,Demiryolunu özelleştirmeyi planlıyorlar.,R1,exclude
+b2-stabilize,B2,The doctors managed to stabilize him.,Doktorlar onun durumunu dengeleyebildi.,R1,exclude
+b2-adventurous,B2,He is an adventurous traveler.,O maceracı bir gezgin.,R5,rewrite
+b2-alarming,B2,The news was alarming.,Haber endişe vericiydi.,R3 R5,rewrite
+b2-assumption,B2,That is a false assumption.,Bu yanlış bir varsayım.,R5,rewrite
+b2-ban,B2,The school wants to ban phones in class.,Okul sınıfta telefonları yasaklamak istiyor.,R4,exclude
+b2-barrier,B2,Language can be a barrier.,Dil bir engel olabilir.,R5,rewrite
+b2-broad,B2,The river is broad here.,Nehir burada geniş.,R5,rewrite
+b2-generosity,B2,Thank you for your generosity.,Cömertliğin için teşekkürler.,R5,rewrite
+b2-gorgeous,B2,What a gorgeous view!,Ne muhteşem bir manzara!,R3 R5,rewrite
+b2-gravity,B2,Gravity pulls things down.,Yer çekimi şeyleri aşağı çeker.,R3,rewrite
+b2-ignorant,B2,He is ignorant of the rules.,Kurallardan habersiz.,R6,rewrite
+b2-immense,B2,The ship was immense.,Gemi devasaydı.,R3 R5,rewrite
+b2-influential,B2,She is an influential writer.,O etkili bir yazar.,R5,rewrite
+b2-inhabit,B2,Penguins inhabit cold regions.,Penguenler soğuk bölgelerde yaşar.,R3,rewrite
+b2-intentional,B2,The damage was intentional.,Hasar kasıtlıydı.,R3 R5,rewrite
+b2-likewise,B2,"She smiled, and he did likewise.","Gülümsedi, o da öyle yaptı.",R6,rewrite
+b2-manual,B2,It is a manual job.,Bu elle yapılan bir iş.,R5,rewrite
+b2-memorable,B2,It was a memorable trip.,Unutulmaz bir geziydi.,R5 R6,rewrite
+b2-multiply,B2,Multiply six by seven.,Altıyı yediyle çarp.,R3,rewrite
+b2-outdated,B2,This software is outdated.,Bu yazılım eskimiş.,R3 R5,rewrite
+b2-overcrowded,B2,The bus was overcrowded.,Otobüs aşırı kalabalıktı.,R3 R5,rewrite
+b2-underestimate,B2,Don't underestimate your opponent.,Rakibini hafife alma.,R3,rewrite
+b2-undermine,B2,Rumors can undermine trust.,Söylentiler güveni zedeleyebilir.,R3,rewrite
+b2-unaware,B2,He was unaware of the danger.,Tehlikeden habersizdi.,R6,rewrite
+b2-uncover,B2,Reporters uncover the truth.,Muhabirler gerçeği ortaya çıkarır.,R3,rewrite
+b2-unwilling,B2,He was unwilling to help.,Yardım etmeye isteksizdi.,R5,rewrite
+b2-unite,B2,Sport can unite people.,Spor insanları birleştirebilir.,R3,rewrite
+b2-unstable,B2,The ladder is unstable.,Merdiven dengesiz.,R3 R5,rewrite
+b2-varied,B2,She has a varied diet.,Çeşitli bir beslenmesi var.,R5,rewrite
+b2-virtually,B2,It is virtually impossible.,Bu neredeyse imkânsız.,R3 R5,rewrite
+b2-vicious,B2,The dog looked vicious.,Köpek saldırgan görünüyordu.,R3,rewrite
+b2-walk-out,B2,The audience started to walk out.,Seyirci salondan çıkmaya başladı.,R6,rewrite
+b2-inevitable,B2,Change is inevitable.,Değişim kaçınılmazdır.,R2 R5,rewrite
+b2-neglect,B2,Don't neglect your health.,Sağlığını ihmal etme.,R3,rewrite
+b2-questionnaire,B2,Please complete this questionnaire.,Lütfen bu anketi tamamlayın.,R3,rewrite
+b2-unanimous,B2,The vote was unanimous.,Oylama oybirliğiyle sonuçlandı.,R3 R5,rewrite
+b2-vague,B2,His answer was vague.,Cevabı belirsizdi.,R3 R5 R6,rewrite
+b2-anxious,B2,She felt anxious before the interview.,Mülakattan önce kaygılıydı.,R1,exclude
+b2-recognize,B2,I did not recognize his voice.,Sesini tanıyamadım.,R1 R6,exclude
+c1-articulate,C1,She is an articulate speaker.,Düşüncelerini akıcı ve net ifade eden bir konuşmacıdır.,R5,rewrite
+c1-behalf,C1,She spoke on behalf of the whole team.,Tüm takım adına konuştu.,R1,exclude
+c1-albeit,C1,"He agreed, albeit reluctantly.",İstemeyerek de olsa kabul etti.,R3,rewrite
+c1-fanatic,C1,He is a football fanatic.,O bir futbol fanatiği.,R5,rewrite
+c1-fury,C1,She shouted in fury.,Öfkeyle bağırdı.,R3 R5,rewrite
+c1-greed,C1,Greed ruined the company.,Açgözlülük şirketi mahvetti.,R3,rewrite
+c1-majestic,C1,The mountains look majestic at dawn.,Dağlar şafakta görkemli görünüyor.,R1,exclude
+c1-conjecture,C1,Their theory is pure conjecture.,Teorileri tamamen tahminden ibaret.,R1,exclude
+c1-rejoice,C1,The nation will rejoice at the news.,Ulus bu habere çok sevinecek.,R1,exclude
+c1-crackdown,C1,The police started a crackdown on speeding.,Polis hız yapanlara karşı sert önlem başlattı.,R1,exclude
+c1-framework,C1,The law provides a framework for trade.,Yasa ticaret için bir çerçeve sunuyor.,R1,exclude
+c1-checkpoint,C1,We were stopped at a checkpoint.,Bir kontrol noktasında durdurulduk.,R1,exclude
+c1-backfire,C1,The plan could backfire badly.,Plan feci şekilde ters tepebilir.,R1,exclude
+c1-blackout,C1,A storm caused a blackout in the city.,Fırtına şehirde elektrik kesintisine yol açtı.,R1,exclude
+c1-logistics,C1,She works in logistics.,Lojistik alanında çalışıyor.,R3 R5,rewrite
+c1-nationwide,C1,There was a nationwide strike.,Ülke çapında bir grev vardı.,R5,rewrite
+c1-acquisition,C1,The acquisition cost millions.,Satın alma milyonlara mal oldu.,R1 R3,exclude
+c1-inadequate,C1,Their training was inadequate.,Eğitimleri yetersizdi.,R1 R3 R5,exclude
+c1-liquidity,C1,The bank has strong liquidity.,Bankanın güçlü bir likiditesi var.,R1 R6,exclude
+c1-tranquil,C1,It was a tranquil village.,Huzurlu bir köydü.,R1 R5,exclude
+c1-qualitative,C1,They did a qualitative study.,Niteliksel bir araştırma yaptılar.,R5,rewrite
+c1-squeamish,C1,I am too squeamish to watch the surgery.,Ameliyatı izlemeye midem dayanmaz.,R1,exclude
+c1-taxpayer,C1,Every taxpayer helps pay for public roads.,Her vergi mükellefi kamu yollarının parasına katkı yapar.,R1,exclude
+c1-proxy,C1,He voted by proxy.,Vekil aracılığıyla oy kullandı.,R1 R3 R5,exclude
+c1-hexagon,C1,A hexagon has six sides.,Altıgenin altı kenarı vardır.,R1,exclude
+c1-complexity,C1,The complexity of the case surprised everyone.,Davanın karmaşıklığı herkesi şaşırttı.,R1,exclude
+c1-synergy,C1,The merger created real synergy.,Birleşme gerçek bir sinerji yarattı.,R1,exclude
+c1-synonym,C1,"""Big"" is a synonym of ""large"".","""Big"", ""large"" kelimesinin eş anlamlısıdır.",R1,exclude
+c1-dynasty,C1,The dynasty ruled for two centuries.,Hanedan iki yüzyıl hüküm sürdü.,R1,exclude
+c1-hypothetical,C1,It is only a hypothetical case.,Bu yalnızca varsayımsal bir durum.,R1,exclude
+c1-analytical,C1,She has an analytical mind.,Analitik bir zihni var.,R1 R5 R6,exclude
+c1-physician,C1,The physician examined the patient.,Hekim hastayı muayene etti.,R1,exclude
+c1-syllable,C1,Say the word one syllable at a time.,Kelimeyi hece hece söyle.,R1,exclude
+c1-skyline,C1,The skyline looks beautiful at night.,Şehrin silueti geceleri çok güzel.,R1,exclude
+c1-frenzy,C1,The crowd was in a frenzy.,Kalabalık çılgına dönmüştü.,R1,exclude
+c1-craze,C1,The dance became a craze.,Dans bir moda furyasına dönüştü.,R1,exclude
+c1-capitalize,C1,They hope to capitalize on the success.,Başarıdan yararlanmayı umuyorlar.,R1,exclude
+c1-drizzle,C1,A fine drizzle fell all morning.,Sabahtan beri ince bir çise yağdı.,R1,exclude
+c1-blatant,C1,It was a blatant lie.,Göz göre göre söylenmiş bir yalandı.,R5,rewrite
+c1-nocturnal,C1,Owls are nocturnal birds.,Baykuşlar geceleri etkin olan kuşlardır.,R3,rewrite
+c1-hoax,C1,The bomb threat turned out to be a hoax.,Bomba ihbarı asılsız çıktı.,R1,exclude
+c1-cynical,C1,He is cynical about politicians.,Politikacılar konusunda kuşkucu.,R5,rewrite
+c1-deceptive,C1,Appearances can be deceptive.,Görünüş yanıltıcı olabilir.,R3 R5,rewrite
+c1-eminent,C1,She is an eminent scientist.,"O, saygın bir bilim insanıdır.",R5,rewrite
+c1-explicit,C1,Her instructions were explicit.,Talimatları son derece açıktı.,R3 R5,rewrite
+c1-extract,C1,Dentists extract damaged teeth.,Diş hekimleri bozuk dişleri çeker.,R3,rewrite
+c1-fringe,C1,They live on the fringe of the city.,Şehrin kenarında yaşıyorlar.,R6,rewrite
+c1-grief,C1,She was overcome by grief.,Kedere boğuldu.,R5,rewrite
+c1-heartbreaking,C1,It was a heartbreaking story.,Yürek parçalayıcı bir hikâyeydi.,R5,rewrite
+c1-imminent,C1,A storm is imminent.,Fırtına çok yakında kopacak.,R3 R5,rewrite
+c1-incompatible,C1,The two programs are incompatible.,İki program birbiriyle uyumsuz.,R5,rewrite
+c1-induce,C1,Some drugs induce sleep.,Bazı ilaçlar uyku getirir.,R3,rewrite
+c1-inequality,C1,Income inequality is growing.,Gelir eşitsizliği büyüyor.,R3,rewrite
+c1-inhibit,C1,Fear can inhibit learning.,Korku öğrenmeyi engelleyebilir.,R3,rewrite
+c1-insufficient,C1,The evidence was insufficient.,Kanıtlar yetersizdi.,R3 R5,rewrite
+c1-intrinsic,C1,Honesty has intrinsic value.,Dürüstlüğün kendi başına bir değeri vardır.,R3,rewrite
+c1-irreversible,C1,The damage may be irreversible.,Hasar geri döndürülemez olabilir.,R5,rewrite
+c1-juvenile,C1,Juvenile crime has fallen this year.,Çocuk suçluluğu bu yıl azaldı.,R6,rewrite
+c1-trajectory,C1,The ball followed a high trajectory.,Top yüksek bir yörünge izledi.,R1,exclude
+c1-kinetic,C1,Kinetic energy depends on speed.,Kinetik enerji hıza bağlıdır.,R6,rewrite
+c1-stakeholder,C1,Every stakeholder was invited to the meeting.,Her paydaş toplantıya davet edildi.,R1,exclude
+c1-backlash,C1,The new rule caused a public backlash.,Yeni kural toplumsal bir tepkiye yol açtı.,R1,exclude
+c1-spokesperson,C1,A spokesperson denied the claim.,Bir sözcü iddiayı yalanladı.,R1,exclude
+c1-legislation,C1,New legislation protects renters.,Yeni mevzuat kiracıları koruyor.,R3,rewrite
+c1-legitimate,C1,Is this a legitimate business?,Bu meşru bir iş mi?,R5,rewrite
+c1-lethal,C1,The snake has a lethal bite.,Yılanın ölümcül bir ısırığı var.,R6,rewrite
+c1-plausible,C1,His excuse sounded plausible.,Mazereti akla yatkın geliyordu.,R3,rewrite
+c1-preliminary,C1,Preliminary results look good.,Ön sonuçlar iyi görünüyor.,R3,rewrite
+c1-equilibrium,C1,The market reached a new equilibrium.,Piyasa yeni bir dengeye ulaştı.,R1,exclude
+c1-colloquial,C1,"""Gonna"" is a colloquial form of ""going to"".","""Gonna"", ""going to"" yapısının günlük konuşma biçimidir.",R1,exclude
+c1-relentless,C1,The relentless rain lasted three days.,Dinmeyen yağmur üç gün sürdü.,R6,rewrite
+c1-renowned,C1,She is a renowned violinist.,Ünlü bir kemancıdır.,R5,rewrite
+c1-rigorous,C1,The test was rigorous.,Test son derece titizlikle hazırlanmıştı.,R3 R5,rewrite
+c1-ruthless,C1,He was a ruthless businessman.,Acımasız bir iş insanıydı.,R5,rewrite
+c1-retail,C1,He works in retail.,Perakende sektöründe çalışıyor.,R3 R5,rewrite
+c1-versatile,C1,She is a versatile actress.,Çok yönlü bir oyuncu.,R5,rewrite
+c1-virtue,C1,Patience is a virtue.,Sabır bir erdemdir.,R3 R5,rewrite
+c1-witty,C1,He is a witty speaker.,Esprili bir konuşmacıdır.,R5,rewrite
+c1-taxation,C1,Taxation affects every worker.,Vergilendirme her çalışanı etkiler.,R1 R3,exclude
+c1-sexism,C1,The campaign fights sexism at work.,Kampanya işyerinde cinsiyetçilikle mücadele ediyor.,R1,exclude
+c1-syntax,C1,The syntax of the sentence is wrong.,Cümlenin söz dizimi yanlış.,R1,exclude
+c1-paradox,C1,It is a paradox that he is poor but generous.,Fakir ama cömert olması bir paradoks.,R1,exclude
+c1-textile,C1,Cotton is the main textile made in the town.,"Pamuk, kasabada üretilen başlıca kumaştır.",R1,exclude
+c1-contextual,C1,Contextual clues help you guess meaning.,Bağlamsal ipuçları anlamı tahmin etmene yardım eder.,R1,exclude
+c1-convex,C1,A convex lens is thicker in the middle.,Dışbükey mercek ortada daha kalındır.,R1,exclude
+c1-hazardous,C1,The road is hazardous in winter.,Yol kışın tehlikelidir.,R1,exclude
+c1-horizon,C1,The sun sank below the horizon.,Güneş ufkun altına battı.,R1,exclude
+c1-sizeable,C1,They won a sizeable amount of money.,Oldukça büyük bir miktar para kazandılar.,R1,exclude
+c1-synthesize,C1,Students must synthesize several sources.,Öğrenciler birkaç kaynağı sentezlemelidir.,R1,exclude
+c1-royalty,C1,The author earns a royalty on every copy.,Yazar her kopyadan telif payı alır.,R1,exclude
+c1-synthetic,C1,The jacket is made of synthetic fiber.,Ceket sentetik elyaftan yapılmış.,R1,exclude
+c1-syndicate,C1,A syndicate of banks funded the project.,Bir banka grubu projeyi finanse etti.,R1,exclude
+c1-eyewitness,C1,An eyewitness described the robber.,Bir görgü tanığı soyguncuyu tarif etti.,R1,exclude
+c1-youthful,C1,She has a youthful face.,Genç görünüşlü bir yüzü var.,R5,rewrite
+nat-amicable,NAT,The split was amicable.,Ayrılık dostane oldu.,R3 R5,rewrite
+nat-beleaguered,NAT,The beleaguered minister resigned.,Dört bir yandan sıkıştırılan bakan istifa etti.,R3,rewrite
+nat-callous,NAT,It was a callous remark.,"Duyarsız, katı yürekli bir sözdü.",R5,rewrite
+nat-candour,NAT,I appreciate your candor.,Açık sözlülüğünü takdir ediyorum.,R3 R5,rewrite
+nat-capricious,NAT,The weather here is capricious.,Burada havanın ne yapacağı belli olmaz.,R5,rewrite
+nat-condone,NAT,We cannot condone violence.,Şiddete göz yumamayız.,R3,rewrite
+nat-contrite,NAT,He looked truly contrite.,Gerçekten pişman görünüyordu.,R3,rewrite
+nat-coy,NAT,She was coy about her age.,Yaşı konusunda ağzını açmadı.,R4,exclude
+nat-dire,NAT,The consequences could be dire.,Sonuçları vahim olabilir.,R5,rewrite
+nat-digress,NAT,But I digress.,"Neyse, konuyu dağıttım.",R2 R5,rewrite
+nat-egregious,NAT,It was an egregious error.,Apaçık ve korkunç bir hataydı.,R5,rewrite
+nat-elucidate,NAT,Could you elucidate your point?,Söylediğini biraz daha açar mısın?,R5,rewrite
+nat-engender,NAT,Such policies engender distrust.,Böyle politikalar güvensizlik doğurur.,R3,rewrite
+nat-ephemeral,NAT,Fame is often ephemeral.,Şöhret çoğu zaman gelip geçicidir.,R3,rewrite
+nat-fastidious,NAT,He is fastidious about cleanliness.,Temizlik konusunda son derece titizdir.,R5,rewrite
+nat-haphazard,NAT,The files were stored in a haphazard way.,Dosyalar gelişigüzel saklanmıştı.,R6,rewrite
+nat-heinous,NAT,It was a heinous crime.,"Affedilmez, iğrenç bir suçtu.",R5,rewrite
+nat-illicit,NAT,They had an illicit affair.,Gizli ve yasak bir ilişki yaşadılar.,R5,rewrite
+nat-impeccable,NAT,He has impeccable manners.,Kusursuz bir görgüsü var.,R3 R5,rewrite
+nat-incorrigible,NAT,He is an incorrigible liar.,Adam olmaz bir yalancıdır.,R5,rewrite
+nat-innocuous,NAT,It was an innocuous question.,Kimseyi incitmeyecek bir soruydu.,R5,rewrite
+nat-insipid,NAT,The soup was insipid.,Çorba tatsız tuzsuzdu.,R3 R5,rewrite
+nat-intransigent,NAT,Both sides remain intransigent.,İki taraf da uzlaşmaz tavrını koruyor.,R3,rewrite
+nat-cajole,NAT,She tried to cajole him into staying.,Kalması için onu tatlı dille ikna etmeye çalıştı.,R1,exclude
+nat-adjudicate,NAT,A judge will adjudicate the dispute.,Anlaşmazlığa bir hâkim karar verecek.,R1,exclude
+nat-pejorative,NAT,The word is often used in a pejorative sense.,Sözcük çoğu zaman aşağılayıcı anlamda kullanılır.,R1,exclude
+nat-subjugate,NAT,The empire tried to subjugate its neighbors.,İmparatorluk komşularını boyunduruk altına almaya çalıştı.,R1,exclude
+nat-perjury,NAT,He was jailed for perjury.,Yalan yere yemin etmekten hapse girdi.,R1 R5,exclude
+nat-dejected,NAT,The dejected players left the pitch.,Morali bozuk oyuncular sahayı terk etti.,R1,exclude
+nat-disjointed,NAT,The film felt disjointed.,Film kopuk kopuk geldi.,R1 R3,exclude
+nat-kindred,NAT,We are kindred spirits.,Biz ruh ikiziyiz.,R3 R5,rewrite
+nat-balk,NAT,Many buyers balk at the high price.,Pek çok alıcı yüksek fiyat karşısında geri durur.,R1,exclude
+nat-shirk,NAT,He never tries to shirk his duties.,Görevlerinden asla kaytarmaya çalışmaz.,R1,exclude
+nat-skulk,NAT,A man was seen to skulk behind the shop.,Dükkânın arkasında sinsice dolaşan bir adam görüldü.,R1,exclude
+nat-sulk,NAT,Don't sulk just because you lost.,Kaybettin diye surat asma.,R1,exclude
+nat-mawkish,NAT,The film has a mawkish ending.,Filmin aşırı duygusal ve yapmacık bir sonu var.,R1,exclude
+nat-rankle,NAT,The defeat still seems to rankle.,Yenilgi hâlâ içine dert olmuş gibi.,R1,exclude
+nat-hoodwink,NAT,Don't let them hoodwink you.,Seni kandırmalarına izin verme.,R1,exclude
+nat-feckless,NAT,Her feckless brother lost all the money.,Beceriksiz ve sorumsuz kardeşi bütün parayı kaybetti.,R1,exclude
+nat-bulwark,NAT,A free press is a bulwark against tyranny.,Özgür basın zorbalığa karşı bir kalkandır.,R1,exclude
+nat-skittish,NAT,Investors are skittish after the crash.,Yatırımcılar çöküşten sonra kolay ürküyor.,R1,exclude
+nat-snarky,NAT,Stop making snarky comments.,İğneleyici yorumlar yapmayı bırak.,R1 R3,exclude
+nat-ludicrous,NAT,The idea is ludicrous.,Fikir gülünç derecede saçma.,R3 R5,rewrite
+nat-magnanimous,NAT,She was magnanimous in victory.,Zaferde yüce gönüllü davrandı.,R5,rewrite
+nat-malleable,NAT,Young minds are malleable.,Genç zihinler kolayca şekillenir.,R3,rewrite
+nat-myopic,NAT,It is a myopic policy.,"Bu yalnızca bugünü gören, dar görüşlü bir politika.",R5,rewrite
+nat-obtuse,NAT,Are you being deliberately obtuse?,Bilerek mi anlamazlıktan geliyorsun?,R5,rewrite
+nat-ominous,NAT,There was an ominous silence.,Uğursuz bir sessizlik vardı.,R5,rewrite
+nat-panacea,NAT,Money is not a panacea.,Para her derde deva değil.,R5,rewrite
+nat-poignant,NAT,It was a poignant moment.,İçe dokunan bir andı.,R5,rewrite
+nat-preposterous,NAT,That is a preposterous claim.,Bu akıl almayacak kadar saçma bir iddia.,R5,rewrite
+nat-pristine,NAT,The beach was pristine.,Plaj el değmemiş gibi tertemizdi.,R3 R5,rewrite
+nat-prodigious,NAT,She has a prodigious memory.,Olağanüstü bir hafızası var.,R5,rewrite
+nat-squander,NAT,Don't squander this chance.,Bu fırsatı heba etme.,R1 R3,exclude
+nat-squalid,NAT,They lived in squalid conditions.,Pis ve sefil koşullarda yaşıyorlardı.,R1,exclude
+nat-antiquated,NAT,The office uses antiquated computers.,Ofis köhne bilgisayarlar kullanıyor.,R1,exclude
+nat-chequered,NAT,He has a checkered past.,"İnişli çıkışlı, lekeli bir geçmişi var.",R1 R5,exclude
+nat-soliloquy,NAT,Hamlet's soliloquy is famous.,Hamlet'in sahnede kendi kendine konuşması ünlüdür.,R1 R3,exclude
+nat-ubiquitous,NAT,Smartphones are now ubiquitous.,Akıllı telefonlar artık her yerde.,R1 R3,exclude
+nat-equanimity,NAT,She accepted the bad news with equanimity.,Kötü haberi sükûnetle karşıladı.,R1,exclude
+nat-obsequious,NAT,The obsequious waiter bowed again and again.,Dalkavuk garson tekrar tekrar eğildi.,R1,exclude
+nat-brusque,NAT,Her brusque reply hurt me.,Ters ve kısa cevabı beni kırdı.,R1,exclude
+nat-grotesque,NAT,The mask had a grotesque face.,Maskenin ürkütücü derecede çirkin bir yüzü vardı.,R1,exclude
+nat-picturesque,NAT,We drove through picturesque villages.,Resim gibi güzel köylerin içinden geçtik.,R1,exclude
+nat-exquisite,NAT,She has exquisite taste in jewelry.,Mücevher konusunda son derece zarif bir zevki var.,R1,exclude
+nat-loquacious,NAT,Our loquacious guide told endless stories.,Konuşkan rehberimiz bitmek bilmeyen hikâyeler anlattı.,R1,exclude
+nat-pique,NAT,She left the room in a fit of pique.,Gururu incinmiş bir öfkeyle odadan çıktı.,R1,exclude
+nat-relinquish,NAT,He refused to relinquish control of the company.,Şirketin kontrolünü bırakmayı reddetti.,R1,exclude
+nat-serene,NAT,She had a serene smile.,Yüzünde huzurlu bir gülümseme vardı.,R5,rewrite
+nat-tacit,NAT,They had a tacit agreement.,Aralarında sözsüz bir anlaşma vardı.,R5,rewrite
+nat-tempestuous,NAT,They had a tempestuous marriage.,Fırtınalı bir evlilikleri vardı.,R5,rewrite
+nat-tenacious,NAT,She is a tenacious defender.,"Pes etmeyen, yılmaz bir defans oyuncusu.",R5,rewrite
+nat-trite,NAT,His advice sounded trite.,Tavsiyesi basmakalıp geldi.,R3,rewrite
+nat-vapid,NAT,The lyrics are vapid.,Şarkı sözleri yavan ve ruhsuz.,R3 R5,rewrite
+nat-verbose,NAT,The report is too verbose.,Rapor fazla uzun ve laf kalabalığıyla dolu.,R5,rewrite
+nat-voracious,NAT,She is a voracious reader.,Doymak bilmez bir okur.,R5,rewrite
+nat-wry,NAT,He has a wry sense of humor.,"Hafif alaycı, buruk bir mizah anlayışı var.",R4,exclude
+nat-woo,NAT,Both parties are trying to woo young voters.,İki parti de genç seçmenlerin gönlünü kazanmaya çalışıyor.,R4,exclude
+nat-awry,NAT,His tie was awry.,Kravatı yamuk duruyordu.,R1 R3 R5,exclude
+nat-erstwhile,NAT,He met his erstwhile rival at the party.,Partide bir zamanki rakibiyle karşılaştı.,R1,exclude
+nat-bellwether,NAT,The town is a bellwether for the national vote.,Kasaba ülke genelindeki oylamanın habercisi sayılır.,R1,exclude
+nat-unwieldy,NAT,The old system is unwieldy and slow.,Eski sistem hantal ve yavaş.,R1,exclude
+nat-overwrought,NAT,She was overwrought after the accident.,Kazadan sonra sinirleri bozulmuştu.,R1,exclude
+nat-newfangled,NAT,He hates newfangled gadgets.,Yeni çıkmış gereksiz aletlerden nefret eder.,R1 R3,exclude
+nat-exasperate,NAT,His constant lateness began to exasperate her.,Sürekli geç kalması onu çileden çıkarmaya başladı.,R1,exclude
+nat-exonerate,NAT,New evidence may exonerate the prisoner.,Yeni kanıtlar mahkûmu aklayabilir.,R1,exclude
+nat-exorbitant,NAT,The hotel charges exorbitant prices.,Otel fahiş fiyatlar istiyor.,R1,exclude
+nat-expunge,NAT,The court agreed to expunge his record.,Mahkeme sicilini tamamen silmeyi kabul etti.,R1,exclude
+nat-extol,NAT,Fans extol the virtues of the new album.,Hayranlar yeni albümü göklere çıkarıyor.,R1,exclude
+nat-exuberant,NAT,The exuberant crowd danced all night.,Taşkın neşeli kalabalık bütün gece dans etti.,R1,exclude
+nat-exhort,NAT,The coach likes to exhort his players to work harder.,Antrenör oyuncularını daha çok çalışmaya ısrarla çağırmayı sever.,R1,exclude
+nat-extricate,NAT,It took hours to extricate the driver from the car.,Sürücüyü arabadan güçlükle çıkarmak saatler sürdü.,R1,exclude
+nat-obnoxious,NAT,An obnoxious man shouted at the waiter.,Son derece itici bir adam garsona bağırdı.,R1,exclude
+nat-lax,NAT,Security at the airport was lax.,Havalimanındaki güvenlik gevşekti.,R1 R4,exclude
+nat-vexed,NAT,Immigration is a vexed issue.,"Göç, yıllardır tartışılıp çözülemeyen bir konu.",R1,exclude
+nat-inexorable,NAT,We watched the inexorable rise of prices.,Fiyatların durdurulamaz yükselişini izledik.,R1,exclude
+nat-crux,NAT,The crux of the problem is money.,Sorunun özü para.,R1,exclude
+nat-maxim,NAT,My maxim is: never borrow money.,Düsturum şu: asla borç para alma.,R1,exclude
+nat-flux,NAT,The industry is in a state of flux.,Sektör sürekli bir değişim halinde.,R1,exclude
+nat-oxymoron,NAT,"""Deafening silence"" is an oxymoron.","""Sağır edici sessizlik"" çelişik sözcüklerden oluşan bir ifadedir.",R1,exclude
+nat-dexterity,NAT,The game requires great dexterity.,Oyun büyük bir el becerisi gerektiriyor.,R1,exclude
+nat-perplex,NAT,Her strange answer will perplex the judges.,Tuhaf cevabı jüriyi şaşırtacak.,R1,exclude
+nat-annex,NAT,The empire tried to annex the island.,İmparatorluk adayı zorla kendi topraklarına katmaya çalıştı.,R1,exclude
+nat-doyen,NAT,He is the doyen of sports writers.,Spor yazarlarının duayenidir.,R1,exclude
+nat-crony,NAT,The mayor gave the contract to an old crony.,Belediye başkanı ihaleyi eski bir yandaşına verdi.,R1,exclude
+nat-tycoon,NAT,The media tycoon owns ten newspapers.,Medya kodamanının on gazetesi var.,R1,exclude
+nat-buoyant,NAT,The housing market remains buoyant.,Konut piyasası canlılığını koruyor.,R1,exclude
+nat-abysmal,NAT,The service was abysmal.,Hizmet rezalet derecesinde kötüydü.,R1 R3 R5,exclude
+nat-eponymous,NAT,The band's eponymous first album was a hit.,Grubun kendi adını taşıyan ilk albümü hit oldu.,R1,exclude
+nat-odyssey,NAT,Their trip became a three-month odyssey.,Gezileri üç aylık destansı bir serüvene dönüştü.,R1,exclude
+nat-apocryphal,NAT,The story is probably apocryphal.,Hikâye muhtemelen uydurma.,R1,exclude
+nat-mystique,NAT,The brand has a certain mystique.,Markanın kendine has gizemli bir çekiciliği var.,R1,exclude
+nat-mayhem,NAT,The storm caused mayhem on the roads.,Fırtına yollarda kaosa yol açtı.,R1,exclude
+nat-haywire,NAT,My computer has gone haywire.,Bilgisayarım kontrolden çıktı.,R1,exclude
+nat-spry,NAT,My spry grandmother still swims every day.,Dinç büyükannem hâlâ her gün yüzüyor.,R1,exclude
+nat-feisty,NAT,She is a feisty old lady.,Atak ve ateşli yaşlı bir hanımefendi.,R1,exclude
+nat-byword,NAT,The brand is a byword for quality.,Marka kalitenin simgesi haline geldi.,R1,exclude
+nat-brazen,NAT,It was a brazen attempt to cheat.,Utanmazca bir hile girişimiydi.,R1,exclude
+nat-frazzled,NAT,"By Friday, the teachers were frazzled.",Cumaya kadar öğretmenler bitap düşmüştü.,R1,exclude
+nat-fizzle,NAT,The protest began to fizzle out.,Protesto yavaş yavaş sönmeye başladı.,R1,exclude
+nat-galvanize,NAT,The speech will galvanize the voters.,Konuşma seçmenleri harekete geçirecek.,R1,exclude
+nat-guzzle,NAT,Big cars guzzle petrol.,Büyük arabalar çok benzin yakar.,R1 R3,exclude
+nat-muzzle,NAT,The regime tried to muzzle the press.,Rejim basını susturmaya çalıştı.,R1,exclude
+nat-raze,NAT,The army threatened to raze the village.,Ordu köyü yerle bir etmekle tehdit etti.,R1,exclude
+nat-bamboozle,NAT,Don't let the salesman bamboozle you.,Satıcının kafanı karıştırıp seni kandırmasına izin verme.,R1,exclude
+nat-daze,NAT,She walked around in a daze after the news.,Haberden sonra afallamış halde dolaşıp durdu.,R1,exclude
+nat-ooze,NAT,He seems to ooze confidence.,Her halinden özgüven saçıyor gibi.,R1,exclude
+nat-sleazy,NAT,They met in a sleazy bar.,Bayağı ve pis bir barda buluştular.,R1,exclude
+nat-lionize,NAT,The press tends to lionize young stars.,Basın genç yıldızları el üstünde tutma eğiliminde.,R1,exclude
+nat-ostracize,NAT,The village decided to ostracize the family.,Köy aileyi dışlamaya karar verdi.,R1,exclude
+nat-tantalize,NAT,The smell from the kitchen began to tantalize us.,Mutfaktan gelen koku ağzımızı sulandırmaya başladı.,R1,exclude
+nat-patronize,NAT,Please don't patronize me.,Lütfen bana tepeden bakma.,R1 R3,exclude
+nat-mesmerize,NAT,Her voice will mesmerize the audience.,Sesi seyirciyi büyüleyecek.,R1,exclude
+nat-next-to-nothing,NAT,I paid next to nothing for this chair.,Bu sandalyeye neredeyse hiç para vermedim.,R1,exclude
