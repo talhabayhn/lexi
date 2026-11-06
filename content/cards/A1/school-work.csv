@@ -4,18 +4,18 @@ a1-student,STUDENT,S,STARTS,noun,öğrenci,I am a student.,Ben öğrenciyim.,1,,
 a1-library,LIBRARY,L,STARTS,noun,kütüphane,I prepare for tests in the library.,Kütüphanede sınavlara hazırlanırım.,2,,school-work
 a1-job,JOB,J,STARTS,noun,"iş, meslek",She loves her job.,İşini seviyor.,1,,school-work
 a1-nurse,NURSE,N,STARTS,noun,hemşire,The nurse is helping a sick patient.,Hemşire hasta birine yardım ediyor.,2,,school-work
-a1-book,BOOK,B,STARTS,noun,kitap,This book is thick.,Bu kitap kalın.,1,,school-work
+a1-book,BOOK,B,STARTS,noun,kitap,Selin turned the pages of her book slowly.,Selin kitabının sayfalarını yavaşça çevirdi.,1,,school-work
 a1-ask,ASK,A,STARTS,verb,sormak,Let us ask the guide.,Rehbere soralım.,1,,school-work
 a1-answer,ANSWER,A,STARTS,noun,cevap,"Is this the answer, Mert?","Bu cevap mı, Mert?",1,,school-work
-a1-office,OFFICE,O,STARTS,noun,çalışılan büro,My office is bright.,Ofisim aydınlık.,1,,school-work
+a1-office,OFFICE,O,STARTS,noun,çalışılan büro,The manager has a meeting in her office.,Müdürün bürosunda bir toplantı var.,1,,school-work
 a1-doctor,DOCTOR,D,STARTS,noun,hastaları tedavi eden kişi,She wants to be a doctor.,Doktor olmak istiyor.,1,,school-work
 a1-pen,PEN,P,STARTS,noun,tükenmez kalem,Can I borrow your pen?,Kalemini ödünç alabilir miyim?,1,,school-work
-a1-read,READ,R,STARTS,verb,okumak,I read stories.,Hikâyeler okurum.,1,,school-work
+a1-read,READ,R,STARTS,verb,okumak,Selin loves to read novels on the ferry.,Selin vapurda roman okumayı sever.,1,,school-work
 a1-work,WORK,W,STARTS,verb,çalışmak,They work in a factory.,Bir fabrikada çalışıyorlar.,1,,school-work
-a1-english,ENGLISH,E,STARTS,noun,İngilizce dili,She speaks English.,İngilizce konuşur.,1,,school-work
+a1-english,ENGLISH,E,STARTS,noun,İngilizce dili,Our tour guide speaks fluent English.,Rehberimiz akıcı İngilizce konuşuyor.,1,,school-work
 a1-letter,LETTER,L,STARTS,noun,mektup,I have a letter for you.,Senin için bir mektubum var.,1,,school-work
 a1-listen,LISTEN,L,STARTS,verb,dinlemek,Listen to this song.,Bu şarkıyı dinle.,1,,school-work
 a1-class,CLASS,C,STARTS,noun,öğrencilerin oluşturduğu sınıf topluluğu,Our class went on a trip.,Sınıfımız gezi yaptı.,1,,school-work
 a1-university,UNIVERSITY,U,STARTS,noun,liseden sonra gidilen okul,She studies at university.,Üniversitede okuyor.,1,,school-work
-a1-understand,UNDERSTAND,U,STARTS,verb,anlamak,I do not understand.,Anlamıyorum.,1,,school-work
-a1-homework,HOMEWORK,H,STARTS,noun,evde yapılan ödev,Do you have homework?,Ödevin var mı?,1,,school-work
+a1-understand,UNDERSTAND,U,STARTS,verb,anlamak,I do not understand these instructions.,Bu talimatları anlayamıyorum.,1,,school-work
+a1-homework,HOMEWORK,H,STARTS,noun,evde yapılan ödev,Mom checked Ali's homework and signed it.,Annem Ali'nin ödevini kontrol edip imzaladı.,1,,school-work

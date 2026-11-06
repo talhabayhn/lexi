@@ -2,7 +2,7 @@ id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
 a1-important,IMPORTANT,I,STARTS,adj,"çok önemli, değerli",Health is important for us.,Sağlık bizim için önemlidir.,2,,school-work
 a1-invite,INVITE,I,STARTS,verb,bir kişiyi partiye çağırmak,Selin wants to invite her friends.,Selin arkadaşlarını davet etmek istiyor.,2,,daily-life
 a1-insect,INSECT,I,STARTS,noun,sineğin ve karıncanın da türü olan altı bacaklı küçük canlı,Ali sees an insect on his shoulder.,Ali omzunda bir böcek görüyor.,2,,animals
-a1-iron,IRON,I,STARTS,noun,kıyafetlerin kırışıklığını gideren sıcak alet,Mum has an iron.,Annemin bir ütüsü var.,2,,home
+a1-iron,IRON,I,STARTS,noun,kıyafetlerin kırışıklığını gideren sıcak alet,The tailor pressed the wrinkles with a steam iron.,Terzi buruşukları buharlı ütüyle düzeltti.,2,,home
 a1-skin,SKIN,I,CONTAINS,noun,vücudu dıştan saran doku,Her skin is soft.,Cildi yumuşak.,2,,body-health
 a1-chin,CHIN,I,CONTAINS,noun,ağzın altındaki yüz bölümü,Ali has a beard on his chin.,Ali'nin çenesinde sakal var.,2,,body-health
 a1-life,LIFE,I,CONTAINS,noun,doğumdan ölüme kadar süren zaman,Selin loves her life.,Selin hayatını seviyor.,2,,daily-life

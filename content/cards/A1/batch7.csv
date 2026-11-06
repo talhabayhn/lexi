@@ -7,12 +7,12 @@ a1-bee,BEE,B,STARTS,noun,bal yapan sarı siyah çizgili böcek,A bee stung Ali.,
 a1-break,BREAK,B,STARTS,verb,bir şeyi parçalayıp kırmak,Do not break the vase.,Vazoyu kırma.,2,,daily-life
 a1-call,CALL,C,STARTS,verb,birini telefonla aramak,Ali must call Ayşe.,Ali'nin Ayşe'yi araması gerek.,1,,daily-life
 a1-christmas,CHRISTMAS,C,STARTS,noun,25 Aralık'ta kutlanan Hristiyan bayramı,They exchange presents at Christmas.,Noel'de hediyeleşirler.,2,,daily-life
-a1-carpet,CARPET,C,STARTS,noun,yer döşemesini kaplayan kalın örtü,The carpet is wet.,Halı ıslak.,1,,home
+a1-carpet,CARPET,C,STARTS,noun,yer döşemesini kaplayan kalın örtü,Mert vacuums the carpet on Saturdays.,Mert cumartesileri halıyı süpürür.,1,,home
 a1-cupboard,CUPBOARD,C,STARTS,noun,içine tabak ve yiyecek konan dolap,The plates are in the cupboard.,Tabaklar dolapta.,2,,home
 a1-curtain,CURTAIN,C,STARTS,noun,pencereyi örten kumaş,Selin washed the curtain.,Selin perdeyi yıkadı.,1,,home
 a1-cooker,COOKER,C,STARTS,noun,yemek pişirilen mutfak aleti,Ayşe cleaned the cooker.,Ayşe ocağı temizledi.,2,,home
 a1-cloud,CLOUD,C,STARTS,noun,gökyüzünde yüzen beyaz buğu kümesi,A huge cloud moved slowly.,Kocaman bir bulut yavaşça ilerledi.,1,,time-weather
-a1-catch,CATCH,C,STARTS,verb,havadaki bir şeyi tutmak,Catch the rope!,İpi yakala!,2,,daily-life
+a1-catch,CATCH,C,STARTS,verb,havadaki bir şeyi tutmak,"Ali, throw the frisbee and I will catch it.","Ali, frizbiyi at, ben yakalarım.",2,,daily-life
 a1-cry,CRY,C,STARTS,verb,gözyaşı dökmek,Selin began to cry.,Selin ağlamaya başladı.,2,,daily-life
 a1-cream,CREAM,C,STARTS,noun,sütün yağlı beyaz üst kısmı,Ayşe whipped some cream.,Ayşe krema çırptı.,2,,food-drink
 a1-date,DATE,D,STARTS,noun,"gün, ay ve yıl bilgisi",Ali forgot the date.,Ali tarihi unuttu.,2,,time-weather
@@ -21,7 +21,7 @@ a1-dolphin,DOLPHIN,D,STARTS,noun,denizde yaşayan zeki ve sevimli memeli,A dolph
 a1-england,ENGLAND,E,STARTS,noun,başkenti Londra olan ülke,Ali studied in England.,Ali İngiltere'de okudu.,2,,daily-life
 a1-every,EVERY,E,STARTS,adj,tek tek hepsi; her bir,Every lamb is cute.,Her kuzu sevimli.,2,,daily-life
 a1-eighth,EIGHTH,E,STARTS,adj,sekizinci,Her seat is in the eighth row.,Koltuğu sekizinci sırada.,2,,colors-numbers
-a1-friendly,FRIENDLY,F,STARTS,adj,"sıcakkanlı, cana yakın",Our neighbors are friendly.,Komşularımız cana yakın.,2,,family-people
+a1-friendly,FRIENDLY,F,STARTS,adj,"sıcakkanlı, cana yakın",The shopkeeper greets us with a friendly wave.,Dükkâncı bizi cana yakın bir el sallamayla karşılıyor.,2,,family-people
 a1-fall,FALL,F,STARTS,verb,yukarıdan aşağıya düşmek,"Be careful, or you will fall.","Dikkat et, yoksa düşeceksin.",2,,daily-life
 a1-foggy,FOGGY,F,STARTS,adj,sisin çöktüğü,It was foggy at the port.,Limanda hava sisliydi.,2,,time-weather
 a1-fourth,FOURTH,F,STARTS,adj,dördüncü,Ali sits in the fourth row.,Ali dördüncü sırada oturur.,2,,colors-numbers
@@ -32,7 +32,7 @@ a1-history,HISTORY,H,STARTS,noun,geçmiş olayları anlatan ders,Selin loves his
 a1-kilometre,KILOMETER,K,STARTS,noun,bin metreye eşit uzunluk birimi,The pharmacy is a kilometer from the bakery.,Eczane fırına bir kilometre uzaklıkta.,2,,city-transport
 a1-kick,KICK,K,STARTS,verb,ayakla vurmak,Do not kick the fence.,Çite tekme atma.,2,,daily-life
 a1-match,MATCH,M,STARTS,noun,iki takımın oynadığı karşılaşma,The match was exciting.,Maç heyecanlıydı.,2,,daily-life
-a1-move,MOVE,M,STARTS,verb,bulunduğu yerden başka yere kıpırdamak,Do not move!,Kıpırdama!,2,,daily-life
+a1-move,MOVE,M,STARTS,verb,bulunduğu yerden başka yere kıpırdamak,Be still and do not move; the wasp is on you.,Hareketsiz dur ve kıpırdama; yaban arısı üzerinde.,2,,daily-life
 a1-million,MILLION,M,STARTS,noun,bin kere bin,Selin has a million questions.,Selin'in bir milyon sorusu var.,2,,colors-numbers
 a1-ninth,NINTH,N,STARTS,adj,dokuzuncu,Ali was ninth in the race.,Ali yarışta dokuzuncu oldu.,2,,colors-numbers
 a1-noodles,NOODLES,N,STARTS,noun,ince uzun hamurdan yapılan yemek,The noodles are tasty.,Erişteler lezzetli.,2,,food-drink

@@ -3,38 +3,38 @@ a1-away,AWAY,A,STARTS,adv,"uzağa, başka bir yere",The thief ran away.,Hırsız
 a1-apartment,APARTMENT,A,STARTS,noun,çok katlı binadaki daire,Our apartment has a wide balcony.,Dairemizde geniş bir balkon var.,1,,home
 a1-art,ART,A,STARTS,noun,resim ve heykel gibi güzel sanatlar,He is interested in modern art.,"O, modern sanatla ilgileniyor.",2,,school-work
 a1-alphabet,ALPHABET,A,STARTS,noun,harflerin belirli sırayla dizildiği takım,The alphabet starts with A.,Alfabe A ile başlar.,2,,school-work
-a1-america,AMERICA,A,STARTS,noun,başkenti Washington olan ülke,She studied in America.,"O, Amerika'da okudu.",2,,daily-life
-a1-american,AMERICAN,A,STARTS,adj,Amerika'dan olan,Grace is American.,Grace Amerikalı.,2,,daily-life
+a1-america,AMERICA,A,STARTS,noun,başkenti Washington olan ülke,Hollywood films are made in America.,Hollywood filmleri Amerika'da çekilir.,2,,daily-life
+a1-american,AMERICAN,A,STARTS,adj,Amerika'dan olan,"Grace is American, but she lives in Paris.",Grace Amerikalı ama Paris'te yaşıyor.,2,,daily-life
 a1-asia,ASIA,A,STARTS,noun,Çin ve Japonya'nın bulunduğu en büyük kıta,Asia has the highest mountains.,Asya'da en yüksek dağlar var.,2,,daily-life
 a1-africa,AFRICA,A,STARTS,noun,Mısır ve Nijerya'nın bulunduğu kıta,Lions hunt in Africa.,Aslanlar Afrika'da avlanır.,2,,daily-life
-a1-beer,BEER,B,STARTS,noun,"arpadan yapılan köpüklü, alkollü içki",He ordered a beer.,Bir bira sipariş etti.,2,,food-drink
+a1-beer,BEER,B,STARTS,noun,"arpadan yapılan köpüklü, alkollü içki",Brewers brew beer from barley and hops.,Bira üreticileri birayı arpa ve şerbetçiotundan yapar.,2,,food-drink
 a1-basketball,BASKETBALL,B,STARTS,noun,potaya top atılan takım sporu,Ayşe plays basketball with Ali.,Ayşe Ali'yle basketbol oynuyor.,2,,daily-life
 a1-before,BEFORE,B,STARTS,adv,"daha önce, geçmişte",I have seen this before.,Bunu daha önce gördüm.,2,,daily-life
-a1-boots,BOOTS,B,STARTS,noun,bilekten yukarı çıkan sağlam ayakkabılar,Her boots are muddy.,Çizmeleri çamurlu.,2,,daily-life
-a1-british,BRITISH,B,STARTS,adj,İngiltere'den olan,Tom is British.,Tom İngiliz.,2,,daily-life
+a1-boots,BOOTS,B,STARTS,noun,bilekten yukarı çıkan sağlam ayakkabılar,Farmers trudge through the puddles in rubber boots.,Çiftçiler lastik çizmelerle su birikintilerinde yürüyor.,2,,daily-life
+a1-british,BRITISH,B,STARTS,adj,İngiltere'den olan,Lucy is British and lives in London.,Lucy İngiliz ve Londra'da yaşıyor.,2,,daily-life
 a1-brazil,BRAZIL,B,STARTS,noun,Güney Amerika'nın en büyük ülkesi,Samba is popular in Brazil.,Samba Brezilya'da popülerdir.,2,,daily-life
 a1-card,CARD,C,STARTS,noun,üzerinde yazı olan küçük karton parça,He sent a card from Paris.,Paris'ten bir kart gönderdi.,1,,daily-life
 a1-cool,COOL,C,STARTS,adj,"hafif soğuk, serin",It is cool in the shade.,Gölgede serin.,2,,time-weather
 a1-classroom,CLASSROOM,C,STARTS,noun,derslerin işlendiği oda,The pupils are in the classroom.,Öğrenciler sınıfta.,1,,school-work
 a1-chips,CHIPS,C,STARTS,noun,kızartılmış patates çubukları,Ayşe is eating chips.,Ayşe patates kızartması yiyor.,2,,food-drink
 a1-centre,CENTER,C,STARTS,noun,bir yerin tam orta kısmı,Ali works in the center of Ankara.,"Ali, Ankara'nın merkezinde çalışır.",2,,city-transport
-a1-classmate,CLASSMATE,C,STARTS,noun,aynı sınıfta okuyan kişi,Selin is my classmate.,Selin benim sınıf arkadaşım.,1,,school-work
+a1-classmate,CLASSMATE,C,STARTS,noun,aynı sınıfta okuyan kişi,Ali borrowed a calculator from his classmate during the test.,Ali sınav sırasında sınıf arkadaşından hesap makinesi ödünç aldı.,1,,school-work
 a1-cap,CAP,C,STARTS,noun,siperlikli yumuşak başlık,This cap is too tight.,Bu şapka çok dar.,2,,daily-life
 a1-china,CHINA,C,STARTS,noun,başkenti Pekin olan ülke,This silk is made in China.,Bu ipek Çin'de yapılmış.,2,,daily-life
 a1-chinese,CHINESE,C,STARTS,noun,Çin'de konuşulan dil,Chinese has thousands of characters.,Çincede binlerce karakter var.,2,,daily-life
 a1-change,CHANGE,C,STARTS,verb,bir şeyi farklı hâle getirmek,She will change her plans.,Planlarını değiştirecek.,2,,daily-life
-a1-doll,DOLL,D,STARTS,noun,çocukların oynadığı küçük insan figürü,She hugged her doll.,Bebeğine sarıldı.,1,,daily-life
+a1-doll,DOLL,D,STARTS,noun,çocukların oynadığı küçük insan figürü,Selin sewed tiny pajamas for her doll.,Selin bebeği için minik pijamalar dikti.,1,,daily-life
 a1-dollar,DOLLAR,D,STARTS,noun,Amerika'nın para birimi,She paid a dollar for it.,Bunun için bir dolar ödedi.,1,,daily-life
 a1-dish,DISH,D,STARTS,noun,özel olarak pişirilmiş bir çeşit yemek,Manti is a tasty dish.,Mantı lezzetli bir yemektir.,2,,food-drink
-a1-eighteen,EIGHTEEN,E,STARTS,adj,on sekiz sayısı,Selin is eighteen.,Selin on sekiz yaşında.,1,,colors-numbers
-a1-eighty,EIGHTY,E,STARTS,adj,seksen sayısı,Our neighbor is eighty.,Komşumuz seksen yaşında.,2,,colors-numbers
+a1-eighteen,EIGHTEEN,E,STARTS,adj,on sekiz sayısı,Selin passed her driving test at eighteen.,Selin on sekiz yaşında direksiyon sınavını geçti.,1,,colors-numbers
+a1-eighty,EIGHTY,E,STARTS,adj,seksen sayısı,"Grandpa Ali just turned eighty, and he still gardens.",Ali dede seksen yaşına girdi ama hâlâ bahçeyle uğraşıyor.,2,,colors-numbers
 a1-example,EXAMPLE,E,STARTS,noun,"kuralı göstermek için verilen model, misal",Her poem is a lovely example.,Şiiri güzel bir örnek.,2,,school-work
 a1-europe,EUROPE,E,STARTS,noun,İtalya ve Fransa'nın bulunduğu kıta,Europe has lots of countries.,Avrupa'da çok ülke var.,2,,daily-life
-a1-fourteen,FOURTEEN,F,STARTS,adj,on dört sayısı,There are fourteen chairs.,On dört sandalye var.,1,,colors-numbers
+a1-fourteen,FOURTEEN,F,STARTS,adj,on dört sayısı,Fourteen players stood on the field.,Sahada on dört oyuncu duruyordu.,1,,colors-numbers
 a1-forty,FORTY,F,STARTS,adj,kırk sayısı,The hall has forty seats.,Salonda kırk koltuk var.,1,,colors-numbers
 a1-fifty,FIFTY,F,STARTS,adj,elli sayısı,It costs fifty lira.,Elli lira tutuyor.,1,,colors-numbers
 a1-first,FIRST,F,STARTS,adj,sıralamada en başta gelen,This is my first trip.,Bu benim ilk gezim.,1,,daily-life
-a1-feel,FEEL,F,STARTS,verb,kendini iyi ya da kötü hissetmek,I feel better.,Daha iyi hissediyorum.,2,,body-health
+a1-feel,FEEL,F,STARTS,verb,kendini iyi ya da kötü hissetmek,"Do you feel dizzy or sick, Selin?","Selin, kendini sersem veya hasta mı hissediyorsun?",2,,body-health
 a1-fine,FINE,F,STARTS,adj,"iyi, hoş; sağlıklı ya da memnun","I am fine, thank you.","İyiyim, teşekkür ederim.",2,,daily-life
 a1-frog,FROG,F,STARTS,noun,"gölde yaşayan, sıçrayan yeşil hayvan",The frog sat on a rock.,Kurbağa bir kayanın üstüne oturdu.,2,,animals
 a1-france,FRANCE,F,STARTS,noun,başkenti Paris olan ülke,Paris is the capital of France.,"Paris, Fransa'nın başkentidir.",2,,daily-life
@@ -44,7 +44,7 @@ a1-germany,GERMANY,G,STARTS,noun,başkenti Berlin olan ülke,Selin works in Germ
 a1-german,GERMAN,G,STARTS,noun,Almanya'da konuşulan dil,Selin studies German online.,Selin internetten Almanca çalışıyor.,2,,daily-life
 a1-half,HALF,H,STARTS,noun,bir bütünün iki eşit parçasından biri,Half of the students are absent.,Öğrencilerin yarısı gelmedi.,2,,daily-life
 a1-in-front-of,IN FRONT OF,I,STARTS,phrase,bir şeyin ön tarafında,Ali is in front of Selin.,"Ali, Selin'in önünde.",2,,daily-life
-a1-italy,ITALY,I,STARTS,noun,başkenti Roma olan ülke,Rome is in Italy.,Roma İtalya'dadır.,2,,daily-life
+a1-italy,ITALY,I,STARTS,noun,başkenti Roma olan ülke,Rome and Venice are cities in Italy.,Roma ve Venedik İtalya'daki şehirlerdir.,2,,daily-life
 a1-italian,ITALIAN,I,STARTS,noun,İtalya'da konuşulan dil,Ali speaks Italian with Selin.,"Ali, Selin'le İtalyanca konuşuyor.",2,,daily-life
 a1-japan,JAPAN,J,STARTS,noun,başkenti Tokyo olan ada ülkesi,Japan has thousands of islands.,Japonya'da binlerce ada var.,2,,daily-life
 a1-japanese,JAPANESE,J,STARTS,noun,Japonya'da konuşulan dil,Selin is learning Japanese.,Selin Japonca öğreniyor.,2,,daily-life

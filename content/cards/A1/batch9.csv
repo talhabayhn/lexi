@@ -22,13 +22,13 @@ a1-everything,EVERYTHING,E,STARTS,noun,tüm nesnelerin hepsi,Ali ate everything.
 a1-far,FAR,F,STARTS,adj,"yakın olmayan, uzakta","Is it far, Ali?","Uzak mı, Ali?",2,,city-transport
 a1-film,FILM,F,STARTS,noun,sinemada ya da evde izlenen hikâyeli görüntüler,Ali and I watched a film.,Ali ve ben bir film izledik.,1,,daily-life
 a1-fire,FIRE,F,STARTS,noun,odunu yakan alev ve sıcaklık,Selin is afraid of fire.,Selin ateşten korkuyor.,1,,daily-life
-a1-free,FREE,F,STARTS,adj,parası alınmayan,This concert is free.,Bu konser ücretsiz.,1,,daily-life
+a1-free,FREE,F,STARTS,adj,parası alınmayan,Kids can enter the gallery for free.,Çocuklar galeriye parasız girebilir.,1,,daily-life
 a1-full,FULL,F,STARTS,adj,içinde boş yer kalmayan,The basket is full of apples.,Sepet elmalarla dolu.,1,,daily-life
 a1-fun,FUN,F,STARTS,noun,keyifli ve neşeli vakit,The children had fun.,Çocuklar eğlendi.,2,,daily-life
-a1-funny,FUNNY,F,STARTS,adj,insanı güldüren,The clown is funny.,Palyaço komik.,1,,daily-life
-a1-great,GREAT,G,STARTS,adj,"olağanüstü güzel, çok başarılı",The concert was great.,Konser harikaydı.,2,,daily-life
+a1-funny,FUNNY,F,STARTS,adj,insanı güldüren,"Ali's jokes are funny, so everybody giggles.","Ali'nin fıkraları komik, herkesi güldürüyor.",1,,daily-life
+a1-great,GREAT,G,STARTS,adj,"olağanüstü güzel, çok başarılı",The chef's lasagna was absolutely great.,Şefin lazanyası kesinlikle harikaydı.,2,,daily-life
 a1-here,HERE,H,STARTS,adv,konuşanın bulunduğu yerde,"Selin is here, Ali.","Selin burada, Ali.",1,,daily-life
-a1-high,HIGH,H,STARTS,adj,yerden çok yukarıda olan,The ceiling is high.,Tavan yüksek.,1,,daily-life
+a1-high,HIGH,H,STARTS,adj,yerden çok yukarıda olan,The eagle flew high above the cliffs.,Kartal kayalıkların çok yukarısında uçtu.,1,,daily-life
 a1-how,HOW,H,STARTS,phrase,bir şeyin nasıl olduğunu soran sözcük,"How are you, Ali?","Nasılsın, Ali?",1,,daily-life
 a1-kitten,KITTEN,K,STARTS,noun,yavru kedi,The kitten is asleep.,Yavru kedi uyuyor.,2,,animals
 a1-leaf,LEAF,L,STARTS,noun,ağacın dalında biten yeşil parça,A leaf fell on Ali.,Ali'nin üstüne bir yaprak düştü.,2,,time-weather
