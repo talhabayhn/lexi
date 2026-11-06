@@ -1,0 +1,28 @@
+# Answers that never count as an example_en leak (very basic glue words / quantifiers / adjectives).
+# One lowercase word per line; '#' starts a comment. Read by tools/content-qa/qa.py, fill_blank_scan.py (R9)
+# and ContentCompiler.checkExampleLeaks. Rationale: docs/content/LEAK-EXEMPT-PROPOSAL.md
+about
+after
+all
+also
+always
+around
+because
+before
+big
+every
+first
+good
+last
+little
+long
+many
+more
+much
+new
+next
+old
+one
+ten
+very
+when

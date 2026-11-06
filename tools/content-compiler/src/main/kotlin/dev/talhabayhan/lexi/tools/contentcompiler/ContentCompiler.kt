@@ -15,6 +15,7 @@ import kotlin.io.path.isDirectory
 import kotlin.io.path.isRegularFile
 import kotlin.io.path.listDirectoryEntries
 import kotlin.io.path.name
+import kotlin.io.path.readLines
 
 /**
  * `content/` (+ optional external exam-pack directory) → validated [CompiledContent] → `content.db`.
@@ -110,7 +111,7 @@ object ContentCompiler {
         val cards = baseCards + packCards
         val cardsById = cards.associateBy { it.id }
         checkDuplicates(cards, diagnostics)
-        checkExampleLeaks(cards, diagnostics)
+        checkExampleLeaks(cards, readLeakExempt(contentDir.resolve("leak-exempt.txt")), diagnostics)
         val packMembership = checkPackMembership(packs, packCardRows, packCards, seenIds, diagnostics)
         checkCoverage(baseCards, meta.shippedLevels, meta.smokeLevels, metaFile, diagnostics)
         val effectiveShippedPacks = meta.shippedPacks
@@ -433,13 +434,15 @@ object ContentCompiler {
 
     /**
      * `CONTENT.md` §2/§3: `example_en` must not contain another answer of the same level (base and pack cards
-     * alike) as whole word(s), or the Example joker leaks it. A card's own answer is ignored.
+     * alike) as whole word(s), or the Example joker leaks it. A card's own answer is ignored, and so are answers
+     * listed in `content/leak-exempt.txt` (very basic glue words, see `docs/content/LEAK-EXEMPT-PROPOSAL.md`).
      */
-    private fun checkExampleLeaks(cards: List<CardEntry>, diagnostics: Diagnostics) {
+    private fun checkExampleLeaks(cards: List<CardEntry>, exempt: Set<String>, diagnostics: Diagnostics) {
         cards.groupBy { it.level }.values.forEach { levelCards ->
             for (card in levelCards) {
                 for (other in levelCards) {
                     if (other === card || other.answer == card.answer) continue
+                    if (other.answer.lowercase() in exempt) continue
                     if (TextMatch.containsWords(card.exampleEn, other.answer)) {
                         diagnostics.error(
                             card.source.file,
@@ -450,6 +453,12 @@ object ContentCompiler {
                 }
             }
         }
+    }
+
+    /** One lowercase word per line; `#` starts a comment; a missing file means no exemptions. */
+    private fun readLeakExempt(file: Path): Set<String> {
+        if (!file.isRegularFile()) return emptySet()
+        return file.readLines().map { it.substringBefore('#').trim().lowercase() }.filter { it.isNotEmpty() }.toSet()
     }
 
     /** `CONTENT.md` §3: every letter of a shipped level has ≥ [MIN_CARDS_PER_LETTER] cards; base content only. */

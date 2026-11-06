@@ -117,6 +117,29 @@ class ContentValidationTest {
     }
 
     @Test
+    fun `an answer listed in leak-exempt is not a leak`() {
+        content.resolve("leak-exempt.txt").writeText("# glue words\nZoo  # inline comment\n")
+        val result = withExtraA1(
+            cardRow(id = "a1-zebra", exampleEn = "The zebra is at the zoo."),
+            cardRow(id = "a1-zoo", answer = "ZOO", exampleEn = "A zoo is big."),
+            cardRow(id = "a1-zip", answer = "ZIP", exampleEn = "A zip."),
+        )
+
+        result.assertNoErrors()
+    }
+
+    @Test
+    fun `a non-exempt answer still leaks when others are exempt`() {
+        content.resolve("leak-exempt.txt").writeText("zoo\n")
+        val result = withExtraA1(
+            cardRow(id = "a1-zebra", exampleEn = "The zebra has a zip."),
+            cardRow(id = "a1-zip", answer = "ZIP", exampleEn = "A zip."),
+        )
+
+        result.assertError("extra.csv", 2, "contains the answer 'ZIP' of 'a1-zip'")
+    }
+
+    @Test
     fun `a substring of another answer is not a leak`() {
         val result = withExtraA1(
             cardRow(id = "a1-zebra", exampleEn = "The zebra visits the zoology class."),

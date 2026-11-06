@@ -44,6 +44,14 @@ def pattern(phrase, whole=True):
     return re.compile(r"(?<![^\W_])" + words + (r"(?![^\W_])" if whole else ""))
 
 
+def load_leak_exempt(path):
+    """content/leak-exempt.txt: one lowercase word per line, '#' comments; missing file = no exemptions."""
+    if not Path(path).is_file():
+        return set()
+    lines = Path(path).read_text(encoding="utf-8-sig").splitlines()
+    return {l.split("#")[0].strip().lower() for l in lines if l.split("#")[0].strip()}
+
+
 def read_table(path, columns):
     with open(path, encoding="utf-8-sig", newline="") as f:
         rows = list(csv.reader(f))
@@ -159,6 +167,7 @@ def main():
     categories = {r["id"]: r["levels"].split("|") for r in read_table(content / "categories.csv",
                   "id,name_tr,name_en,levels,sort,is_pro".split(","))}
     blocklist = load_blocklist(content / "blocklist.txt")
+    exempt = load_leak_exempt(content / "leak-exempt.txt")
     base = load_cards(content / "cards", categories, blocklist)
     n_base_errors = len(errors)
     pack_cards = load_cards(packs_dir / "cards", categories, blocklist)
@@ -188,7 +197,7 @@ def main():
         for c in lc:
             ex = norm(c["example_en"])
             for o, p in pats:
-                if o is c or o["answer"] == c["answer"]:
+                if o is c or o["answer"] == c["answer"] or o["answer"].lower() in exempt:
                     continue
                 if p.search(ex):
                     err(c["_src"], f"example_en of '{c['id']}' contains the answer '{o['answer']}' of '{o['id']}'")

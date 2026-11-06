@@ -4,7 +4,8 @@
 Usage (repo root): python3 tools/content-qa/fill_blank_scan.py [--content content/cards]
     [--report docs/content-review/FILL-BLANK-SCAN.md] [--csv docs/content-review/FILL-BLANK-REVIEW.csv]
 Rules: R1 contains, R2 short-3, R3 short-4, R4 short-answer, R5 poor-context, R6 no-tr-match, R7 generic-frame,
-plus R8 answer-absent (the answer does not appear as a whole word in example_en, so it cannot be blanked).
+plus R8 answer-absent (the answer does not appear as a whole word in example_en, so it cannot be blanked),
+R9 leak (example_en contains another same-level answer as a whole word, unless listed in content/leak-exempt.txt).
 """
 import argparse
 import csv
@@ -14,9 +15,9 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 LEVELS = ["A1", "A2", "B1", "B2", "C1", "NAT"]
-RULES = ["R1", "R2", "R3", "R4", "R5", "R6", "R7", "R8"]
+RULES = ["R1", "R2", "R3", "R4", "R5", "R6", "R7", "R8", "R9"]
 NAMES = {"R1": "contains", "R2": "short-3", "R3": "short-4", "R4": "short-answer", "R5": "poor-context",
-         "R6": "no-tr-match", "R7": "generic-frame", "R8": "answer-absent"}
+         "R6": "no-tr-match", "R7": "generic-frame", "R8": "answer-absent", "R9": "leak"}
 FRAME_MIN = 5
 # Function words: articles, pronouns, be/have/do, modals, prepositions, conjunctions, common fillers.
 FUNCTION_WORDS = set("""a an the i you he she it we they me him her us them my your his its our their this that these those
@@ -44,8 +45,32 @@ def blank(example, answer):
     return pat.sub("___", example)
 
 
+VOWELS = set("aeiou")
+
+
+def drop_last_vowel(w):
+    """Turkish vowel drop on suffixing (agiz -> agz-ini, boyun -> boyn-u): remove the last vowel that is followed by a
+    consonant, only for words of >= 4 letters ending in a consonant."""
+    if len(w) < 4 or w[-1] in VOWELS:
+        return w
+    for i in range(len(w) - 2, 0, -1):
+        if w[i] in VOWELS:
+            return w[:i] + w[i + 1:]
+    return w
+
+
 def stems(s):
-    return {fold(w)[:4] for w in re.findall(r"[^\W\d_]+", s) if len(w) >= 3}
+    """Folded lowercase words (>= 3 letters) of s."""
+    return {fold(w) for w in re.findall(r"[^\W\d_]+", s) if len(w) >= 3}
+
+
+def stem_match(a, b):
+    """Turkish inflection tolerant word match: shared 4-letter prefix, a shared 3-letter prefix (yuzmek ~ yuzebilir),
+    or either of those after the clue word loses its last vowel (agiz ~ agzini, boyun ~ boynu)."""
+    for c in {a, drop_last_vowel(a)}:
+        if c[:4] == b[:4] or c[:3] == b[:3]:
+            return True
+    return False
 
 
 def no_tr_match(clue_tr, example_tr, example_en=""):
@@ -55,7 +80,8 @@ def no_tr_match(clue_tr, example_tr, example_en=""):
     if n_en and not 0.4 <= n_tr / n_en <= 2.5:
         return True
     clue = stems(clue_tr)
-    return 0 < len(clue_tr.split()) <= 2 and bool(clue) and clue.isdisjoint(stems(example_tr))
+    tr = stems(example_tr)
+    return 0 < len(clue_tr.split()) <= 2 and bool(clue) and not any(stem_match(c, w) for c in clue for w in tr)
 
 
 def poor_context(example, answer):
@@ -108,13 +134,35 @@ def apply_frames(rows):
             r["rules"].append("R7")
 
 
+def load_exempt(path):
+    p = Path(path)
+    if not p.is_file():
+        return set()
+    lines = p.read_text(encoding="utf-8-sig").splitlines()
+    return {l.split("#")[0].strip().lower() for l in lines if l.split("#")[0].strip()}
+
+
+def apply_leaks(rows, exempt):
+    """R9: example_en contains another same-level answer (whole word, diacritic-insensitive), except exempt ones."""
+    by_level = defaultdict(list)
+    for r in rows:
+        by_level[r["level"]].append(r)
+    for lr in by_level.values():
+        pats = [(o, re.compile(r"(?<![^\W_])" + r"\s+".join(re.escape(w) for w in fold(o["answer"]).split()) + r"(?![^\W_])"))
+                for o in lr if o["answer"].strip().lower() not in exempt]
+        for r in lr:
+            ex = fold(r["example_en"])
+            if any(o is not r and o["answer"] != r["answer"] and p.search(ex) for o, p in pats):
+                r["rules"].append("R9")
+
+
 def action(rules):
     if not rules:
         return "keep"
     return "exclude" if EXCLUDE_RULES & set(rules) else "rewrite"
 
 
-def load(content):
+def load(content, exempt=frozenset()):
     rows = []
     for path in sorted(Path(content).rglob("*.csv")):
         with open(path, newline="", encoding="utf-8") as f:
@@ -127,6 +175,7 @@ def load(content):
                 r["rules"] = evaluate(r)
                 rows.append(r)
     apply_frames(rows)
+    apply_leaks(rows, exempt)
     for r in rows:
         r["rules"].sort(key=RULES.index)
         r["action"] = action(r["rules"])
@@ -184,8 +233,9 @@ def main():
     ap.add_argument("--content", default="content/cards")
     ap.add_argument("--report", default="docs/content-review/FILL-BLANK-SCAN.md")
     ap.add_argument("--csv", default="docs/content-review/FILL-BLANK-REVIEW.csv")
+    ap.add_argument("--exempt", default="content/leak-exempt.txt")
     a = ap.parse_args()
-    rows = load(a.content)
+    rows = load(a.content, load_exempt(a.exempt))
     write_csv(rows, a.csv)
     write_report(rows, a.report)
     print(f"{len(rows)} cards, {sum(bool(r['rules']) for r in rows)} flagged")

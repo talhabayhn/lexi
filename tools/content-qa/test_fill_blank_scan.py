@@ -37,6 +37,16 @@ class Rules(unittest.TestCase):
         self.assertNotIn("R6", s.evaluate(row(example_tr="Bugün eski köprüyü geçtiler.")))
         self.assertNotIn("R6", s.evaluate(row(clue_tr="iki şehri bağlayan yapı", example_tr="Bugün eve gittiler.")))
 
+    def test_r6_turkish_inflection_tolerance(self):
+        def r6(clue, tr):
+            return "R6" in s.evaluate(row(clue_tr=clue, example_tr=tr, example_en="Ali covered his bridge as he yawned."))
+        self.assertFalse(r6("ağız", "Esnerken ağzını eliyle kapattı."))   # consonant drop
+        self.assertFalse(r6("boyun", "Yumuşak yastık ağrıyan boynu destekler."))
+        self.assertFalse(r6("yüzmek", "Ördekler gölette yüzebilir."))     # shared 3-letter prefix
+        self.assertFalse(r6("tuz", "Patates bir tutam tuzla daha güzel."))
+        self.assertTrue(r6("ağız", "Esnerken elini kapattı derhal."))     # still catches a missing word
+        self.assertTrue(r6("kedi", "Esnerken elini kapattı derhal."))
+
     def test_r6_length_ratio(self):
         self.assertIn("R6", s.evaluate(row(example_tr="Köprü.")))
 
@@ -59,6 +69,22 @@ class Rules(unittest.TestCase):
     def test_r8_answer_absent_and_whole_word(self):
         self.assertIn("R8", s.evaluate(row(example_en="They crossed the bridges together slowly.")))
         self.assertEqual(s.blank("Cross the Bridge now", "BRIDGE"), "Cross the ___ now")
+
+    def test_r9_leak_and_exempt(self):
+        def rows():
+            rs = [row(id="a", answer="BRIDGE", example_en="The old bridge crosses a very wide river."),
+                  row(id="b", answer="VERY", example_en="It is very cold."),
+                  row(id="c", answer="RIVER", example_en="The river is wide and calm."),
+                  row(id="d", answer="BRIDGE", level="B1", example_en="A bridge near a river.")]
+            for r in rs:
+                r["rules"] = []
+            return rs
+        rs = rows()
+        s.apply_leaks(rs, set())
+        self.assertEqual([r["id"] for r in rs if "R9" in r["rules"]], ["a", "d"][:1] + [])
+        rs = rows()
+        s.apply_leaks(rs, {"very", "river"})
+        self.assertFalse(any("R9" in r["rules"] for r in rs))
 
     def test_actions(self):
         self.assertEqual(s.action([]), "keep")

@@ -122,6 +122,8 @@ How the compiler applies them (`tools/content-compiler`, every error is `file:li
   other card's answer as whole word(s) (case/diacritic-insensitive, multi-word answers as a phrase; `meet` in
   `meeting` is fine, the card's own answer is ignored). Error is reported at the leaking card and names the
   leaked answer and its card id. Answers of other levels are not checked.
+  Answers listed in `content/leak-exempt.txt` (very basic glue words, see `docs/content/LEAK-EXEMPT-PROPOSAL.md`) are
+  never reported; `qa.py`, the compiler and `fill_blank_scan.py` (rule R9) read the same file.
 - Columns: `clue_tr` 1–60 chars, `example_en`/`example_tr` non-empty, `pos` from §2 (lowercase), `difficulty` 1–5,
   tags `a|b` (lowercase slug, `:` allowed), `category` exists and is not `mixed`; a category not listed for the
   card's level is a warning.
