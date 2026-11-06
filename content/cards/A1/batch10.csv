@@ -1,0 +1,61 @@
+id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
+a1-important,IMPORTANT,I,STARTS,adj,"çok önemli, değerli",Health is important for us.,Sağlık bizim için önemlidir.,2,,school-work
+a1-invite,INVITE,I,STARTS,verb,bir kişiyi partiye çağırmak,Selin wants to invite her friends.,Selin arkadaşlarını davet etmek istiyor.,2,,daily-life
+a1-insect,INSECT,I,STARTS,noun,sineğin ve karıncanın da türü olan altı bacaklı küçük canlı,Ali sees an insect on his shoulder.,Ali omzunda bir böcek görüyor.,2,,animals
+a1-iron,IRON,I,STARTS,noun,kıyafetlerin kırışıklığını gideren sıcak alet,Mum has an iron.,Annemin bir ütüsü var.,2,,home
+a1-skin,SKIN,I,CONTAINS,noun,vücudu dıştan saran doku,Her skin is soft.,Cildi yumuşak.,2,,body-health
+a1-chin,CHIN,I,CONTAINS,noun,ağzın altındaki yüz bölümü,Ali has a beard on his chin.,Ali'nin çenesinde sakal var.,2,,body-health
+a1-life,LIFE,I,CONTAINS,noun,doğumdan ölüme kadar süren zaman,Selin loves her life.,Selin hayatını seviyor.,2,,daily-life
+a1-piece,PIECE,I,CONTAINS,noun,bir bütünden ayrılmış küçük bölüm,Ali wants a piece of watermelon.,Ali bir parça karpuz istiyor.,2,,food-drink
+a1-spicy,SPICY,I,CONTAINS,adj,içinde acı baharat olan,Mert likes spicy sauce.,Mert acılı sosu sever.,2,,food-drink
+a1-rich,RICH,I,CONTAINS,adj,çok parası olan,Mr Aksoy is rich.,Bay Aksoy zengin.,2,,daily-life
+a1-sign,SIGN,I,CONTAINS,noun,yolda uyarı veya bilgi veren levha,Ali reads the sign.,Ali levhayı okuyor.,2,,city-transport
+a1-uniform,UNIFORM,U,STARTS,noun,okulda ya da işte giyilen aynı tip kıyafet,Selin wears a uniform.,Selin üniforma giyiyor.,2,,school-work
+a1-unhappy,UNHAPPY,U,STARTS,adj,"mutlu olmayan, üzgün ve keyifsiz",Mert is unhappy.,Mert mutsuz.,2,,family-people
+a1-sound,SOUND,U,CONTAINS,noun,kulakla duyduğumuz şey,Ali likes the sound of birds.,Ali kuşların sesini seviyor.,2,,daily-life
+a1-button,BUTTON,U,CONTAINS,noun,gömleği iliğe takarak kapatan küçük yuvarlak parça,Ali has a button on his sleeve.,Ali'nin kolunda bir düğme var.,2,,daily-life
+a1-museum,MUSEUM,U,CONTAINS,noun,eski ve değerli eserlerin sergilendiği yer,Selin goes to the museum with Mert.,Selin Mert'le müzeye gidiyor.,2,,city-transport
+a1-bug,BUG,U,CONTAINS,noun,yatakta ya da evde çıkan küçük haşere,Mert sees a bug on his pillow.,Mert yastığında bir böcek görüyor.,2,,animals
+a1-nut,NUT,U,CONTAINS,noun,kabuğu sert yağlı yemiş,Selin eats a nut.,Selin bir fındık yiyor.,2,,food-drink
+a1-plus,PLUS,U,CONTAINS,noun,"toplama işareti, artı",3 plus 4 is 7.,"3 artı 4, 7 eder.",2,,school-work
+a1-hug,HUG,U,CONTAINS,noun,sevgiyle sarılma,Ali wants a hug.,Ali bir sarılma istiyor.,2,,family-people
+a1-oil,OIL,O,STARTS,noun,yemek pişirirken kullanılan sıvı yağ,Mum cooks with oil.,Annem yağ ile yemek yapıyor.,2,,food-drink
+a1-own,OWN,O,STARTS,adj,"başkasına ait olmayan, kendine ait",Selin has her own diary.,Selin'in kendi günlüğü var.,2,,home
+a1-olive,OLIVE,O,STARTS,noun,zeytinyağı da çıkan küçük yeşil ya da siyah meyve,Ali eats an olive.,Ali bir zeytin yiyor.,2,,food-drink
+a1-soccer,SOCCER,O,CONTAINS,noun,Amerikan İngilizcesinde futbol,Mert plays soccer with Ali.,"Mert, Ali'yle futbol oynuyor.",2,,daily-life
+a1-rose,ROSE,O,CONTAINS,noun,"dikenli saplı, güzel kokulu çiçek",Ali gives Selin a rose.,Ali Selin'e bir gül veriyor.,2,,daily-life
+a1-stone,STONE,O,CONTAINS,noun,yerde bulunan sert küçük kaya parçası,Mert throws a stone.,Mert bir taş atıyor.,2,,daily-life
+a1-wood,WOOD,O,CONTAINS,noun,"ağaçtan elde edilen, masa yapılan malzeme",The shelf is made of wood.,Raf ahşaptan yapılmış.,2,,home
+a1-broom,BROOM,O,CONTAINS,noun,yeri süpürmeye yarayan uzun saplı alet,Mum has a broom.,Annemin bir süpürgesi var.,2,,home
+a1-van,VAN,V,STARTS,noun,küçük kapalı yük ve yolcu aracı,A van stops.,Bir minibüs duruyor.,2,,city-transport
+a1-violin,VIOLIN,V,STARTS,noun,yay ile çalınan dört telli müzik aleti,Ayşe plays the violin.,Ayşe keman çalıyor.,2,,daily-life
+a1-voice,VOICE,V,STARTS,noun,konuşurken ya da şarkı söylerken çıkan ses,Selin has a soft voice.,Selin'in yumuşak bir sesi var.,2,,daily-life
+a1-view,VIEW,V,STARTS,noun,pencereden görülen manzara,Ali loves the view.,Ali manzarayı çok seviyor.,2,,home
+a1-yard,YARD,Y,STARTS,noun,evin önündeki ya da arkasındaki açık alan,Ali plays in the yard.,Ali avluda oynuyor.,2,,home
+a1-yogurt,YOGURT,Y,STARTS,noun,"sütten yapılan, kaşıkla yenen ekşi gıda",Ali eats yogurt.,Ali yoğurt yiyor.,2,,food-drink
+a1-yoga,YOGA,Y,STARTS,noun,esneme ve nefes egzersizlerinden oluşan spor,Mum does yoga.,Annem yoga yapıyor.,2,,body-health
+a1-yummy,YUMMY,Y,STARTS,adj,çok lezzetli (çocuk dili),This dessert is yummy!,Bu tatlı çok lezzetli!,1,,food-drink
+a1-candy,CANDY,Y,CONTAINS,noun,çocukların sevdiği şekerli küçük tatlı,Selin gets candy.,Selin şeker alıyor.,2,,food-drink
+a1-lucky,LUCKY,Y,CONTAINS,adj,şansı yaver giden,Ali is lucky.,Ali şanslı.,2,,daily-life
+a1-teddy,TEDDY,Y,CONTAINS,noun,çocukların sarıldığı tüylü oyuncak ayı,Ayşe sleeps with her teddy.,Ayşe oyuncak ayısıyla uyuyor.,2,,home
+a1-copy,COPY,Y,CONTAINS,verb,aynısını yapmak ya da yazmak,"Ali, copy the sentence.","Ali, cümleyi kopyala.",2,,school-work
+a1-squirrel,SQUIRREL,Q,CONTAINS,noun,fındık toplayan kuyruğu gür küçük orman hayvanı,A squirrel eats an acorn.,Bir sincap meşe palamudu yiyor.,2,,animals
+a1-fox,FOX,X,CONTAINS,noun,"kızıl tüylü, kurnaz bilinen ormandaki hayvan",A fox sleeps.,Bir tilki uyuyor.,2,,animals
+a1-mix,MIX,X,CONTAINS,verb,iki ya da daha fazla şeyi karıştırmak,Mix the flour and the eggs.,Unu ve yumurtaları karıştır.,2,,food-drink
+a1-exit,EXIT,X,CONTAINS,noun,binadan çıkış kapısı,The exit is there.,Çıkış orada.,2,,city-transport
+a1-extra,EXTRA,X,CONTAINS,adj,"gerekenden fazla, ek",Selin has an extra coin.,Selin'in fazladan bir bozuk parası var.,2,,school-work
+a1-fix,FIX,X,CONTAINS,verb,bozuk bir şeyi onarmak,Mert can fix it.,Mert onu tamir edebilir.,2,,home
+a1-size,SIZE,Z,CONTAINS,noun,"bir şeyin büyüklüğü, beden",My size is 38.,Bedenim 38.,2,,daily-life
+a1-lazy,LAZY,Z,CONTAINS,adj,"çalışmaktan hoşlanmayan, tembel",The hamster is lazy.,Hamster tembel.,2,,animals
+a1-crazy,CRAZY,Z,CONTAINS,adj,"çok garip ve akıldışı, deli gibi",That plan is crazy!,O plan çılgınca!,3,,daily-life
+a1-dozen,DOZEN,Z,CONTAINS,noun,on iki tane,Ali buys a dozen eggs.,Ali bir düzine yumurta alıyor.,3,,food-drink
+a1-dust,DUST,U,CONTAINS,noun,eşyaların üstünde biriken ince toz,Dust is on the shelf.,Rafta toz var.,2,,home
+a1-suit,SUIT,U,CONTAINS,noun,ceket ve pantolondan oluşan takım elbise,Ali wears a suit.,Ali takım elbise giyiyor.,2,,daily-life
+a1-jungle,JUNGLE,U,CONTAINS,noun,sıcak ülkelerdeki sık yağmur ormanı,Ali sees tigers in the jungle.,Ali tropik ormanda kaplanlar görüyor.,2,,animals
+a1-mud,MUD,U,CONTAINS,noun,yağmurdan sonra yerde oluşan ıslak çamur,Ali has mud on his shoes.,Ali'nin ayakkabılarında çamur var.,2,,time-weather
+a1-popcorn,POPCORN,O,CONTAINS,noun,sinemada yenen patlamış mısır,Ali eats popcorn at the movies.,Ali sinemada patlamış mısır yiyor.,1,,food-drink
+a1-jelly,JELLY,Y,CONTAINS,noun,çocukların sevdiği sallanan meyveli tatlı,Selin loves jelly.,Selin jöleyi çok seviyor.,2,,food-drink
+a1-bunny,BUNNY,Y,CONTAINS,noun,"küçük tavşan, çocuk dili",The bunny jumps.,Tavşan zıplıyor.,2,,animals
+a1-snowman,SNOWMAN,O,CONTAINS,noun,kardan yapılan havuç burunlu figür,Ali builds a snowman.,Ali bir kardan adam yapıyor.,2,,time-weather
+a1-comb,COMB,O,CONTAINS,noun,saçı düzeltmek için kullanılan dişli araç,Ayşe has a comb.,Ayşe'nin bir tarağı var.,2,,daily-life
+a1-owner,OWNER,O,STARTS,noun,dükkânın ya da evin sahibi,Mert is the owner.,Mert sahibi.,2,,family-people
