@@ -111,7 +111,7 @@ before shipping.
 - **Level select never scrolls (normally).** `FitToHeight` (feature:levels) steps down `LevelSelectTier`s inside the safe-drawing insets: Regular (the design; padding 24 / 24, gaps 18 / 12), Compact (DESIGN-DEBT: padding 12 / 16, gaps 12 / 10, card min 112, card padding 10), Tight (padding 8 / 12, gaps 8, content-sized cards with padding 8, mode picker 48); the category row is 48 in every tier. BAŞLA is pinned above the bottom padding; only if even Tight does not fit (tiny screen / huge font) the part above it scrolls. `LevelSelectLayoutTest` covers 360 × 640, 390 × 844, 412 × 915.
 - **Home never scrolls.** `FitToHeight` (feature:home) measures the home for each tier (`HomeTier`) inside the safe-drawing
   insets and keeps the first that fits: Regular (the design, 390 × 844 pixel-identical; the spacer absorbs spare height
-  up to the design's, then the tiles grow), Compact (DESIGN-DEBT, derived from `02-home`: padding 12 / 16, gaps 12, logo blocks 46, daily card padding 12 with a
+  up to the design's, then the tiles grow), Snug (DESIGN-DEBT: every card at its design size — owner decision, the duel box (`02b-home-duel`, under OYNA) never shrinks the other cards — with padding 12 / 16 and gaps 12; taken when the daily goal chip plus the duel box just miss the regular tier), Compact (DESIGN-DEBT, derived from `02-home`: padding 12 / 16, gaps 12, logo blocks 46, daily card padding 12 with a
   48 circle, OYNA 60, tiles min 84 with gap 10), Tight (padding 8 / 12, gaps 8, OYNA 52, tiles content-sized with
   16 / 12sp text). Both tile rows have equal heights. Font scale is capped at 1.15 on the home; decor shapes stay
   edge-to-edge decoration. `HomeLayoutTest` asserts all texts stay on screen at 320 × 568, 360 × 640, 360 × 780,

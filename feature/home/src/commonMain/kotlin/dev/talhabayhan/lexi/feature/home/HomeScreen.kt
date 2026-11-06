@@ -181,8 +181,12 @@ private fun GiftToast(notice: DailyGiftNotice, onDismiss: () -> Unit, modifier: 
     )
 }
 
-/** Heights of one layout tier (`screen-map.md`): regular is the design, the others are DESIGN-DEBT scalings of it. */
-internal enum class HomeTier { Regular, Compact, Tight }
+/**
+ * Heights of one layout tier (`screen-map.md`): regular is the design, the others are DESIGN-DEBT scalings of it. Snug
+ * keeps every card of the design at its size (owner decision: the duel box never shrinks the other Home cards) and
+ * only tightens the paddings and gaps, for phones where the daily goal chip and the duel box just miss the design.
+ */
+internal enum class HomeTier { Regular, Snug, Compact, Tight }
 
 private class HomeMetrics(
     val paddingTop: Dp,
@@ -209,6 +213,18 @@ private fun HomeTier.metrics(tileGrowth: Dp): HomeMetrics {
             HomeDefaults.RegularPlayHeight,
             DuelDefaults.HomeBoxHeight,
             CardDefaults.MenuTileHeight + tileGrowth,
+            dimens.gap12,
+            compactDaily = false,
+        )
+
+        HomeTier.Snug -> HomeMetrics(
+            HomeDefaults.CompactPaddingTop,
+            HomeDefaults.CompactPaddingBottom,
+            dimens.gap12,
+            LexiLogoSize.Menu,
+            HomeDefaults.RegularPlayHeight,
+            DuelDefaults.HomeBoxHeight,
+            CardDefaults.MenuTileHeight,
             dimens.gap12,
             compactDaily = false,
         )
@@ -297,7 +313,7 @@ private fun HomeContent(
         Column(verticalArrangement = Arrangement.spacedBy(metrics.gap)) {
             TopBar(state, onIntent)
             Column(
-                Modifier.padding(top = if (tier == HomeTier.Regular) dimens.gap8 else dimens.gap4),
+                Modifier.padding(top = if (tier <= HomeTier.Snug) dimens.gap8 else dimens.gap4),
                 verticalArrangement = Arrangement.spacedBy(dimens.gap6),
             ) {
                 LexiLogo(size = metrics.logo)
