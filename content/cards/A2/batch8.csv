@@ -20,7 +20,7 @@ a2-treasure,TREASURE,T,STARTS,noun,saklanmış değerli altın ve mücevherler,T
 a2-triangle,TRIANGLE,T,STARTS,noun,"üç kenarlı şekil, üçgen",Draw a triangle on the board.,Tahtaya bir üçgen çiz.,2,,school-work
 a2-trick,TRICK,T,STARTS,noun,insanı şaşırtmak için yapılan ustaca oyun,He showed us a card trick.,Bize bir kart numarası gösterdi.,3,,daily-life
 a2-trouble,TROUBLE,T,STARTS,noun,"sıkıntı, güçlük",I had trouble with my bike.,Bisikletimle sorun yaşadım.,3,,daily-life
-a2-true,TRUE,T,STARTS,adj,"gerçeğe uygun, doğru",Is this story true?,Bu hikâye gerçek mi?,2,,daily-life
+a2-true,TRUE,T,STARTS,adj,"gerçeğe uygun, doğru",Is it true that you speak three languages?,Üç dil konuştuğun doğru mu?,2,,daily-life
 a2-tunnel,TUNNEL,T,STARTS,noun,dağın ya da yerin altından geçen yol,The train goes into a long tunnel.,Tren uzun bir tünele giriyor.,3,,city-transport
 a2-twin,TWIN,T,STARTS,noun,aynı anda doğan iki kardeşten biri,She has a twin brother.,Onun ikiz bir erkek kardeşi var.,3,,family-people
 a2-tyre,TIRE,T,STARTS,noun,aracın tekerleğini saran lastik,The car has a flat tire.,Arabanın lastiği patlak.,3,,city-transport
@@ -33,7 +33,7 @@ a2-trumpet,TRUMPET,T,STARTS,noun,ağızdan üflenerek çalınan parlak metal ça
 a2-tube,TUBE,T,STARTS,noun,"boya ya da krem konan, sıkılarak boşaltılan kap",The paint comes in a tube.,Boya bir tüp içinde geliyor.,3,,daily-life
 a2-tune,TUNE,T,STARTS,noun,akılda kalan kısa ezgi,I know the tune but not the words.,Ezgiyi biliyorum ama sözleri bilmiyorum.,3,,music
 a2-torch,TORCH,T,STARTS,noun,karanlıkta yolu aydınlatan el lambası,Take a torch with you.,Yanına bir el feneri al.,2,,daily-life
-a2-total,TOTAL,T,STARTS,noun,"toplanınca çıkan sayı, toplam",What is the total?,Toplam ne kadar?,3,,school-work
+a2-total,TOTAL,T,STARTS,noun,"toplanınca çıkan sayı, toplam",The total on the receipt was twenty dollars.,Fişteki toplam yirmi dolardı.,3,,school-work
 a2-trust,TRUST,T,STARTS,verb,birine güvenmek,I trust my best friend.,En yakın arkadaşıma güveniyorum.,3,,daily-life
 a2-statue,STATUE,T,CONTAINS,noun,taştan ya da metalden yapılmış insan heykeli,There is a statue in the park.,Parkta bir heykel var.,3,,travel
 a2-waitress,WAITRESS,T,CONTAINS,noun,lokantada yemek getiren kadın,The waitress brought our tea.,Kadın garson çayımızı getirdi.,2,,food-drink
@@ -41,11 +41,11 @@ a2-lettuce,LETTUCE,T,CONTAINS,noun,"salatada kullanılan yeşil yapraklı sebze,
 a2-hostel,HOSTEL,T,CONTAINS,noun,gençlerin ucuza kaldığı konaklama yeri,We stayed in a cheap hostel.,Ucuz bir hostelde kaldık.,3,,travel
 a2-watermelon,WATERMELON,T,CONTAINS,noun,"içi kırmızı, çekirdekli büyük yazlık meyve, karpuz",We ate watermelon on the beach.,Plajda karpuz yedik.,2,,food-drink
 a2-warn,WARN,W,STARTS,verb,birini olası tehlikeye karşı uyarmak,The red light will warn drivers.,Kırmızı ışık sürücüleri uyarır.,3,,city-transport
-a2-waste,WASTE,W,STARTS,verb,bir şeyi boşuna harcamak,Do not waste water.,Su israf etme.,3,,daily-life
+a2-waste,WASTE,W,STARTS,verb,bir şeyi boşuna harcamak,"Do not waste food, because many people are hungry.",Yiyecekleri israf etme çünkü birçok insan aç.,3,,daily-life
 a2-waterfall,WATERFALL,W,STARTS,noun,"yüksekten dökülen doğal su akıntısı, şelale",The waterfall is very high.,Şelale çok yüksek.,3,,travel
 a2-weak,WEAK,W,STARTS,adj,"gücü az, kuvvetsiz","After being ill, she felt weak.",Hasta olduktan sonra kendini güçsüz hissetti.,3,,body-health
 a2-whisper,WHISPER,W,STARTS,verb,"çok alçak sesle konuşmak, fısıldamak",Do not whisper in class.,Derste fısıldaşma.,3,,school-work
-a2-whose,WHOSE,W,STARTS,phrase,kime ait olduğunu soran sözcük,Whose bag is this?,Bu kimin çantası?,3,,daily-life
+a2-whose,WHOSE,W,STARTS,phrase,kime ait olduğunu soran sözcük,Whose umbrella is this on the table?,Masanın üstündeki bu şemsiye kimin?,3,,daily-life
 a2-wild,WILD,W,STARTS,adj,"doğada yaşayan, evcilleştirilmemiş",Wild animals live in the forest.,Yabani hayvanlar ormanda yaşar.,3,,animals
 a2-winner,WINNER,W,STARTS,noun,yarışta ya da oyunda birinci olan kişi,The winner gets a prize.,Kazanan ödül alır.,2,,sports
 a2-wish,WISH,W,STARTS,verb,birine iyi bir şey dilemek ya da dilek tutmak,I wish you a happy birthday.,Sana mutlu bir doğum günü dilerim.,3,,daily-life
@@ -65,7 +65,7 @@ a2-drawing,DRAWING,W,CONTAINS,noun,"kalemle çizilmiş resim, çizim",This drawi
 a2-snowboard,SNOWBOARD,W,CONTAINS,noun,karda kaymak için kullanılan geniş tek tahta,He wants a new snowboard.,Yeni bir snowboard istiyor.,3,,sports
 a2-beard,BEARD,B,STARTS,noun,erkeğin çenesindeki sakal,My uncle has a long beard.,Amcamın uzun bir sakalı var.,2,,body-health
 a2-bookshop,BOOKSHOP,B,STARTS,noun,kitap satılan dükkân,I bought this at the bookshop.,Bunu kitapçıdan aldım.,2,,city-transport
-a2-brake,BRAKE,B,STARTS,noun,aracı durdurmaya yarayan fren,The brake does not work.,Fren çalışmıyor.,3,,city-transport
+a2-brake,BRAKE,B,STARTS,noun,aracı durdurmaya yarayan fren,He pressed the brake when the light turned red.,Işık kırmızıya dönünce frene bastı.,3,,city-transport
 a2-block,BLOCK,B,STARTS,noun,"içinde çok sayıda daire olan büyük bina, blok",He lives in the next block.,Bir sonraki blokta oturuyor.,3,,city-transport
 a2-beginning,BEGINNING,B,STARTS,noun,"bir şeyin ilk kısmı, başlangıç",The film has a good beginning.,Filmin başlangıcı güzel.,3,,time-weather
 a2-elbow,ELBOW,B,CONTAINS,noun,"kolun ortasındaki eklem, dirsek",I broke my elbow.,Dirseğimi kırdım.,3,,body-health

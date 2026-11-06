@@ -50,9 +50,9 @@ a2-tractor,TRACTOR,T,STARTS,noun,"tarlada çalışan güçlü araç, traktör",T
 a2-trampoline,TRAMPOLINE,T,STARTS,noun,üstünde zıplanan yaylı eğlence aracı,The children jump on the trampoline.,Çocuklar trambolinde zıplıyor.,2,,sports
 a2-yacht,YACHT,Y,STARTS,noun,"zevk için kullanılan büyük yelkenli tekne, yat",They have a big white yacht.,Büyük beyaz bir yatları var.,3,,travel
 a2-caravan,CARAVAN,C,STARTS,noun,"arkasına bağlanan, içinde yatılan araç",We stayed in a caravan by the sea.,Deniz kenarında bir karavanda kaldık.,3,,travel
-a2-campsite,CAMPSITE,C,STARTS,noun,"çadır kurulan yer, kamp alanı",The campsite has a shop.,Kamp alanında bir dükkân var.,3,,travel
+a2-campsite,CAMPSITE,C,STARTS,noun,"çadır kurulan yer, kamp alanı",The campsite is near a quiet lake.,Kamp alanı sessiz bir gölün yakınında.,3,,travel
 a2-gallery,GALLERY,G,STARTS,noun,resim ve heykellerin sergilendiği yer,The gallery is free on Sundays.,Galeri pazarları ücretsiz.,3,,city-transport
-a2-headphones,HEADPHONES,H,STARTS,noun,"kulağa takılarak müzik dinlenen cihaz, kulaklık",I forgot my headphones.,Kulaklığımı unuttum.,3,,music
+a2-headphones,HEADPHONES,H,STARTS,noun,"kulağa takılarak müzik dinlenen cihaz, kulaklık",He wore his headphones to listen to music on the bus.,Otobüste müzik dinlemek için kulaklığını taktı.,3,,music
 a2-lighthouse,LIGHTHOUSE,L,STARTS,noun,gemilere yol gösteren kıyıdaki yüksek ışık kulesi,The lighthouse is at the end of the beach.,Deniz feneri plajın sonunda.,3,,travel
 a2-postman,POSTMAN,P,STARTS,noun,"mektup dağıtan görevli, postacı",The postman comes at ten.,Postacı saat onda gelir.,2,,school-work
 a2-scientist,SCIENTIST,S,STARTS,noun,"bilimsel araştırma yapan kişi, bilim insanı",The scientist works in a laboratory.,Bilim insanı laboratuvarda çalışıyor.,3,,school-work
@@ -70,4 +70,4 @@ a2-hammer,HAMMER,H,STARTS,noun,"çivi çakmak için kullanılan alet, çekiç",H
 a2-ant,ANT,A,STARTS,noun,"koloni halinde yaşayan çok küçük böcek, karınca",An ant is carrying a crumb.,Bir karınca ufak bir kırıntı taşıyor.,2,,animals
 a2-bat,BAT,B,STARTS,noun,"geceleri uçan küçük memeli, yarasa",The bat flew out of the tree.,Yarasa ağaçtan uçarak çıktı.,2,,animals
 a2-bandage,BANDAGE,B,STARTS,noun,yarayı saran sargı bezi,The nurse put a bandage on my arm.,Hemşire koluma sargı sardı.,3,,body-health
-a2-compass,COMPASS,C,STARTS,noun,"yönü gösteren alet, pusula",The compass points north.,Pusula kuzeyi gösteriyor.,3,,travel
+a2-compass,COMPASS,C,STARTS,noun,"yönü gösteren alet, pusula",The hikers used a compass to find north.,Yürüyüşçüler kuzeyi bulmak için pusula kullandı.,3,,travel

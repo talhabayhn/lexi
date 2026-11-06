@@ -1,4 +1,4 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
 a2-unit,UNIT,U,STARTS,noun,kitabın ayrı bir konu bölümü,Ali reads unit 9.,Ali 9. üniteyi okuyor.,3,,school-work
-a2-vowel,VOWEL,V,STARTS,noun,"A, E, I, O, U gibi harf",A is a vowel.,A bir sesli harftir.,3,,school-work
+a2-vowel,VOWEL,V,STARTS,noun,"A, E, I, O, U gibi harf",The word apple starts with a vowel.,Apple sözcüğü bir sesli harfle başlar.,3,,school-work
 a2-vest,VEST,V,STARTS,noun,"kolsuz iç ya da dış giysi, yelek",Mert wears a vest.,Mert yelek giyiyor.,2,,daily-life

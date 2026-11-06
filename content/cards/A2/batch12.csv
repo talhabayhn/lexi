@@ -60,9 +60,9 @@ a2-chick,CHICK,K,CONTAINS,noun,yumurtadan yeni çıkmış tavuk yavrusu,The chic
 a2-kindly,KINDLY,K,STARTS,adv,nazik bir şekilde,He kindly helps the old man.,Yaşlı adama nazikçe yardım ediyor.,3,,daily-life
 a2-nation,NATION,N,STARTS,noun,aynı topraklarda yaşayan büyük halk,The nation loves its team.,Ulus takımını seviyor.,3,,city-transport
 a2-nod,NOD,N,STARTS,verb,kafayı aşağı yukarı sallamak,Ali gives a nod and smiles.,Ali başını sallayıp gülümsüyor.,3,,daily-life
-a2-nowhere,NOWHERE,N,STARTS,adv,"hiçbir yerde, hiçbir yere",There is nowhere to sit.,Oturacak hiçbir yer yok.,3,,daily-life
+a2-nowhere,NOWHERE,N,STARTS,adv,"hiçbir yerde, hiçbir yere","I looked in every room, but my keys are nowhere.",Her odaya baktım ama anahtarlarım hiçbir yerde yok.,3,,daily-life
 a2-oak,OAK,O,STARTS,noun,palamut veren büyük orman ağacı,An old oak stands in the park.,Parkta yaşlı bir meşe duruyor.,3,,animals
-a2-outdoor,OUTDOOR,O,STARTS,adj,"binanın dışında, açık havada yapılan",Mert loves outdoor sports.,Mert açık hava sporlarını seviyor.,3,,sports
+a2-outdoor,OUTDOOR,O,STARTS,adj,"binanın dışında, açık havada yapılan",We bought a new outdoor table for the garden.,Bahçe için yeni bir açık hava masası aldık.,3,,sports
 a2-goose,GOOSE,G,STARTS,noun,çiftlikte yaşayan büyük beyaz su kuşu,A goose swims on the lake.,Bir kaz gölde yüzüyor.,3,,animals
 a2-indoor,INDOOR,I,STARTS,adj,binanın içinde yapılan veya bulunan,Selin likes indoor games on rainy days.,Selin yağmurlu günlerde kapalı alan oyunlarını sever.,3,,sports
 a2-bride,BRIDE,I,CONTAINS,noun,düğünde evlenen kadın,The bride wears a white dress.,Gelin beyaz bir elbise giyiyor.,3,,family-people
