@@ -24,7 +24,8 @@
     <!-- Empty states -->
     <string name="notebook_empty_due">Nothing to review today. Come back tomorrow!</string>
     <string name="notebook_empty_all">Your notebook is empty. Words you miss in a game land here.</string>
-    <string name="notebook_empty_hard">No hard words yet. Words you get wrong twice show up here.</string>
+    <string name="notebook_empty_hard">No hard words yet. Words you answer wrong %1$d or more times show up here; passes don't count.</string>
+    <string name="notebook_hard_info">Words you answer wrong or pass are saved to your notebook. Words answered wrong %1$d or more times count as Hard; passes don't count.</string>
     <string name="notebook_empty_search">No word matches your search.</string>
 
     <!-- Word detail sheet (design debt) -->

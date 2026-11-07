@@ -1,17 +1,26 @@
 package dev.talhabayhan.lexi.feature.notebook
 
 import app.cash.turbine.test
+import dev.talhabayhan.lexi.core.domain.game.GameConfig
+import dev.talhabayhan.lexi.core.domain.game.GameEngine
+import dev.talhabayhan.lexi.core.domain.game.GameEvent
+import dev.talhabayhan.lexi.core.domain.game.GameMode
+import dev.talhabayhan.lexi.core.domain.game.GameState
+import dev.talhabayhan.lexi.core.domain.game.KeyState
 import dev.talhabayhan.lexi.core.domain.model.CardId
 import dev.talhabayhan.lexi.core.domain.model.Level
+import dev.talhabayhan.lexi.core.domain.session.FinishGame
 import dev.talhabayhan.lexi.core.domain.srs.CardProgress
 import dev.talhabayhan.lexi.core.testing.FakeAppClock
 import dev.talhabayhan.lexi.core.testing.FakeCardRepository
 import dev.talhabayhan.lexi.core.testing.FakeCategoryRepository
 import dev.talhabayhan.lexi.core.testing.FakeCrashReporter
 import dev.talhabayhan.lexi.core.testing.FakeProgressRepository
+import dev.talhabayhan.lexi.core.testing.FakeSessionRepository
 import dev.talhabayhan.lexi.core.testing.FakeSpeaker
 import dev.talhabayhan.lexi.core.testing.testCard
 import dev.talhabayhan.lexi.core.testing.testCategory
+import dev.talhabayhan.lexi.core.testing.testWheel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
@@ -284,5 +293,70 @@ class NotebookViewModelTest {
 
         assertEquals(reads, cards.reads)
         assertFalse(viewModel.state.value.hasError)
+    }
+
+    /** BREAD answered as [typed] (the B is given) or passed until time is up when null, in a recorded mode. */
+    private fun breadGame(engine: GameEngine, config: GameConfig, typed: String?): GameState {
+        var state = engine.newGame(1L, GameMode.CLASSIC, Level.A1, testWheel("BREAD"))
+        fun send(event: GameEvent) {
+            state = engine.reduce(state, event).state
+        }
+        send(GameEvent.Start(timestampMs = 1_000L))
+        if (typed == null) {
+            // Time runs out with BREAD passed (a forfeit would turn the pass into a wrong answer).
+            send(GameEvent.Pass)
+            send(GameEvent.Tick(TIME_UP_MS))
+        } else {
+            typed.forEach { letter ->
+                val keys = checkNotNull(state.currentInput).keys
+                send(
+                    GameEvent.KeyTapped(
+                        keys.indices.first {
+                            keys[it].letter == letter &&
+                                keys[it].state == KeyState.AVAILABLE
+                        },
+                    ),
+                )
+            }
+            send(GameEvent.Tick(config.revealMs))
+        }
+        return state
+    }
+
+    // Regression (notebook "Zor" audit): the Hard tab reads the rows FinishGame writes; only wrong answers count.
+    @Test
+    fun `a word answered wrong twice in games reaches the hard tab and a pass does not count`() = runTest {
+        val config = GameConfig()
+        val engine = GameEngine(config)
+        val store = FakeProgressRepository()
+        val vm =
+            NotebookViewModel(
+                store,
+                FakeCardRepository(listOf(testCard("BREAD"))),
+                categories,
+                clock,
+                speaker,
+                crashReporter,
+            )
+        vm.onIntent(NotebookIntent.SelectTab(NotebookTab.Hard))
+        suspend fun play(typed: String?) = FinishGame(FakeSessionRepository(config), store, clock, config)(
+            breadGame(engine, config, typed),
+            category = null,
+        )
+
+        play(typed = null)
+        assertEquals(1, vm.state.value.allCount, "a pass saves the word")
+        assertEquals(0, vm.state.value.hardCount, "a pass is not a wrong answer")
+
+        play(typed = "RDEA")
+        assertEquals(0, vm.state.value.hardCount, "one wrong answer is not hard yet")
+
+        play(typed = "RDEA")
+        assertEquals(listOf("a1-bread"), vm.ids)
+        assertEquals(1, vm.state.value.hardCount)
+    }
+
+    private companion object {
+        const val TIME_UP_MS = 60L * 60_000L
     }
 }

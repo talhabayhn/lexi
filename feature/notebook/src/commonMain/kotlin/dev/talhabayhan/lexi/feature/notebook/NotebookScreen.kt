@@ -53,6 +53,7 @@ import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.core.designsystem.theme.lexiContentWidth
 import dev.talhabayhan.lexi.core.domain.model.CardId
 import dev.talhabayhan.lexi.core.domain.model.Level
+import dev.talhabayhan.lexi.core.domain.srs.Srs
 import dev.talhabayhan.lexi.feature.notebook.generated.resources.Res
 import dev.talhabayhan.lexi.feature.notebook.generated.resources.notebook_back
 import dev.talhabayhan.lexi.feature.notebook.generated.resources.notebook_empty_all
@@ -60,6 +61,7 @@ import dev.talhabayhan.lexi.feature.notebook.generated.resources.notebook_empty_
 import dev.talhabayhan.lexi.feature.notebook.generated.resources.notebook_empty_hard
 import dev.talhabayhan.lexi.feature.notebook.generated.resources.notebook_empty_search
 import dev.talhabayhan.lexi.feature.notebook.generated.resources.notebook_error
+import dev.talhabayhan.lexi.feature.notebook.generated.resources.notebook_hard_info
 import dev.talhabayhan.lexi.feature.notebook.generated.resources.notebook_meta_days
 import dev.talhabayhan.lexi.feature.notebook.generated.resources.notebook_meta_mastered
 import dev.talhabayhan.lexi.feature.notebook.generated.resources.notebook_meta_today
@@ -118,6 +120,7 @@ internal fun NotebookScreen(
         ) {
             Header(onBack = { onIntent(NotebookIntent.Back) })
             Tabs(state, onIntent)
+            if (state.tab == NotebookTab.Hard) HardInfo()
             val search = rememberTextFieldState(state.query)
             LaunchedEffect(search) {
                 snapshotFlow { search.text.toString() }
@@ -136,7 +139,7 @@ internal fun NotebookScreen(
                         modifier = Modifier.fillMaxWidth(),
                     )
                 } else if (state.words.isEmpty()) {
-                    EmptyState(stringResource(emptyMessage(state)), Modifier.fillMaxWidth())
+                    EmptyState(emptyMessage(state), Modifier.fillMaxWidth())
                 } else {
                     WordList(state, onIntent, Modifier.weight(1f, fill = false))
                 }
@@ -214,11 +217,25 @@ private fun ReviewButton(dueCount: Int, onClick: () -> Unit) {
     }
 }
 
-private fun emptyMessage(state: NotebookUiState) = when {
-    state.query.isNotBlank() -> Res.string.notebook_empty_search
-    state.tab == NotebookTab.Due -> Res.string.notebook_empty_due
-    state.tab == NotebookTab.Hard -> Res.string.notebook_empty_hard
-    else -> Res.string.notebook_empty_all
+@Composable
+private fun emptyMessage(state: NotebookUiState): String = when {
+    state.query.isNotBlank() -> stringResource(Res.string.notebook_empty_search)
+    state.tab == NotebookTab.Due -> stringResource(Res.string.notebook_empty_due)
+    state.tab == NotebookTab.Hard -> stringResource(Res.string.notebook_empty_hard, Srs.HARD_WRONGS)
+    else -> stringResource(Res.string.notebook_empty_all)
+}
+
+/**
+ * Needs design (built from `16-components` text styles): on the "Zor" tab, one muted caption that says what the
+ * notebook keeps and what makes a word hard (`GAME_RULES.md` §10, [Srs.HARD_WRONGS]).
+ */
+@Composable
+private fun HardInfo() {
+    Text(
+        text = stringResource(Res.string.notebook_hard_info, Srs.HARD_WRONGS),
+        style = LexiTheme.typography.caption12,
+        color = LexiTheme.colors.inkMuted,
+    )
 }
 
 @Composable

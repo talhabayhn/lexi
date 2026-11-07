@@ -10,6 +10,7 @@ import dev.talhabayhan.lexi.core.domain.model.CardId
 import dev.talhabayhan.lexi.core.domain.model.CategoryId
 import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.core.domain.srs.CardProgress
+import dev.talhabayhan.lexi.core.domain.srs.Srs
 import dev.talhabayhan.lexi.core.testing.FakeAppClock
 import dev.talhabayhan.lexi.core.testing.FakeDailyRepository
 import dev.talhabayhan.lexi.core.testing.FakeProgressRepository
@@ -211,6 +212,63 @@ class FinishGameTest {
         val game = finishedGame(GameMode.DAILY)
         assertFailsWith<IllegalStateException> {
             finish(game, category = null)
+        }
+    }
+
+    /** One BREAD slot answered wrong ("BRDEA"), then the reveal ends the game. */
+    private fun wrongAnswerGame(mode: GameMode): GameState {
+        var state = engine.newGame(SEED, mode, Level.A1, testWheel("BREAD"))
+        fun send(event: GameEvent) {
+            state = engine.reduce(state, event).state
+        }
+        send(GameEvent.Start(timestampMs = START_MS))
+        "RDEA".forEach { letter ->
+            val keys = checkNotNull(state.currentInput).keys
+            send(
+                GameEvent.KeyTapped(
+                    keys.indices.first {
+                        keys[it].letter == letter &&
+                            keys[it].state == KeyState.AVAILABLE
+                    },
+                ),
+            )
+        }
+        send(GameEvent.Tick(config.revealMs))
+        return state
+    }
+
+    // Regression (notebook "Zor" audit): every recording mode must count a wrong answer in the row the notebook reads.
+    @Test
+    fun `a wrong answer increments wrong and enters the notebook in every recording mode`() = runTest {
+        val recording = GameMode.entries - config.srsExcludedModes
+        assertEquals(
+            setOf(GameMode.CLASSIC, GameMode.PRACTICE, GameMode.HARDCORE, GameMode.DAILY, GameMode.REVIEW),
+            recording.toSet(),
+        )
+        recording.forEach { mode ->
+            val store =
+                FakeProgressRepository(listOf(CardProgress(CardId("a1-bread"), box = 2, dueEpochDay = 0L, wrong = 1)))
+            val finish = FinishGame(FakeSessionRepository(config), store, clock, config, daily = FakeDailyRepository())
+
+            finish(wrongAnswerGame(mode), category = null)
+
+            val bread = store.get(listOf(CardId("a1-bread"))).getValue(CardId("a1-bread"))
+            assertEquals(2, bread.wrong, "wrong count in $mode")
+            assertEquals(0, bread.box, "box in $mode")
+            assertTrue(bread.wrong >= Srs.HARD_WRONGS, "hard in $mode")
+        }
+    }
+
+    @Test
+    fun `duel and level test answers never touch the wrong count`() = runTest {
+        config.srsExcludedModes.forEach { mode ->
+            val store =
+                FakeProgressRepository(listOf(CardProgress(CardId("a1-bread"), box = 2, dueEpochDay = 0L, wrong = 1)))
+
+            FinishGame(FakeSessionRepository(config), store, clock, config)(wrongAnswerGame(mode), category = null)
+
+            assertEquals(1, store.progress.getValue(CardId("a1-bread")).wrong, "wrong count in $mode")
+            assertEquals(0, store.saveCalls, "saves in $mode")
         }
     }
 

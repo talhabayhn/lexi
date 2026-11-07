@@ -41,6 +41,27 @@ class NotebookScreenshotTest {
     }
 
     @Test
+    fun hardTab() {
+        captureRoboImage("src/androidHostTest/screenshots/NotebookHard.png") {
+            LexiTheme(reducedMotion = false) {
+                NotebookScreen(state = NotebookSampleState.copy(tab = NotebookTab.Hard), onIntent = {})
+            }
+        }
+    }
+
+    @Test
+    fun hardTabEmpty() {
+        captureRoboImage("src/androidHostTest/screenshots/NotebookHardEmpty.png") {
+            LexiTheme(reducedMotion = false) {
+                NotebookScreen(
+                    state = NotebookUiState(tab = NotebookTab.Hard, allCount = 4, isLoaded = true),
+                    onIntent = {},
+                )
+            }
+        }
+    }
+
+    @Test
     fun noReviewDue() {
         captureRoboImage("src/androidHostTest/screenshots/NotebookNothingDue.png") {
             LexiTheme(reducedMotion = false) {

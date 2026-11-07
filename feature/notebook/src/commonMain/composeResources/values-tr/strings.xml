@@ -24,7 +24,8 @@
     <!-- Boş durumlar -->
     <string name="notebook_empty_due">Bugün tekrar edilecek kelime yok. Yarın yine bekleriz!</string>
     <string name="notebook_empty_all">Defterin boş. Oyunda kaçırdığın kelimeler buraya düşer.</string>
-    <string name="notebook_empty_hard">Henüz zor kelime yok. İki kez yanlış yaptığın kelimeler burada görünür.</string>
+    <string name="notebook_empty_hard">Henüz zor kelime yok. %1$d veya daha fazla kez yanlış yaptığın kelimeler burada görünür; paslar sayılmaz.</string>
+    <string name="notebook_hard_info">Yanlış yaptığın ya da pas geçtiğin kelimeler deftere kaydedilir. %1$d veya daha fazla kez yanlış yaptıkların Zor sayılır; paslar sayılmaz.</string>
     <string name="notebook_empty_search">Aramanla eşleşen kelime yok.</string>
 
     <!-- Kelime detay sayfası (tasarımı yok) -->
