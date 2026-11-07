@@ -62,14 +62,4 @@ class OpenSourceLicensesTest {
             cancelAndIgnoreRemainingEvents()
         }
     }
-
-    @Test
-    fun `about viewmodel emits open url on open url intent`() = runTest {
-        val viewModel = AboutViewModel(FakeReviewRequester())
-        viewModel.effects.test {
-            viewModel.onIntent(AboutIntent.OpenUrl("https://example.com"))
-            assertEquals(AboutEffect.OpenUrl("https://example.com"), awaitItem())
-            cancelAndIgnoreRemainingEvents()
-        }
-    }
 }

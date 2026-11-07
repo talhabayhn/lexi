@@ -28,7 +28,6 @@ import dev.talhabayhan.lexi.core.designsystem.icon.LexiIcons
 import dev.talhabayhan.lexi.core.designsystem.modifier.lexiHeading
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.core.designsystem.theme.lexiContentWidth
-import dev.talhabayhan.lexi.core.domain.platform.AppLinks
 import dev.talhabayhan.lexi.feature.settings.generated.resources.Res
 import dev.talhabayhan.lexi.feature.settings.generated.resources.about_back
 import dev.talhabayhan.lexi.feature.settings.generated.resources.about_description
@@ -98,7 +97,7 @@ internal fun AboutScreen(state: AboutUiState, onIntent: (AboutIntent) -> Unit, m
             if (state.storePageUrl.isNotBlank()) {
                 ListRow(
                     label = stringResource(Res.string.about_link_rate),
-                    onClick = { onIntent(AboutIntent.OpenUrl(state.storePageUrl)) },
+                    onClick = { onIntent(AboutIntent.Rate) },
                 ) {
                     Icon(
                         imageVector = LexiIcons.ChevronRight,
@@ -109,7 +108,7 @@ internal fun AboutScreen(state: AboutUiState, onIntent: (AboutIntent) -> Unit, m
             }
             ListRow(
                 label = stringResource(Res.string.about_link_privacy),
-                onClick = { onIntent(AboutIntent.OpenUrl(AppLinks.PRIVACY_POLICY)) },
+                onClick = { onIntent(AboutIntent.OpenPrivacy) },
             ) {
                 Icon(
                     imageVector = LexiIcons.ChevronRight,
@@ -119,7 +118,7 @@ internal fun AboutScreen(state: AboutUiState, onIntent: (AboutIntent) -> Unit, m
             }
             ListRow(
                 label = stringResource(Res.string.about_link_terms),
-                onClick = { onIntent(AboutIntent.OpenUrl(AppLinks.TERMS_OF_SERVICE)) },
+                onClick = { onIntent(AboutIntent.OpenTerms) },
             ) {
                 Icon(
                     imageVector = LexiIcons.ChevronRight,
@@ -129,7 +128,7 @@ internal fun AboutScreen(state: AboutUiState, onIntent: (AboutIntent) -> Unit, m
             }
             ListRow(
                 label = stringResource(Res.string.about_link_support),
-                onClick = { onIntent(AboutIntent.OpenUrl(AppLinks.SUPPORT)) },
+                onClick = { onIntent(AboutIntent.OpenSupport) },
             ) {
                 Icon(
                     imageVector = LexiIcons.ChevronRight,

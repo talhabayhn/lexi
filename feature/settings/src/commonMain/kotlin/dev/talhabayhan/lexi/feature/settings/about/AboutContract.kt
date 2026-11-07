@@ -17,7 +17,12 @@ internal data class AboutUiState(
 
 internal sealed interface AboutIntent {
     data object Back : AboutIntent
-    data class OpenUrl(val url: String) : AboutIntent
+
+    /** "Rate": the store listing ([AboutUiState.storePageUrl]). */
+    data object Rate : AboutIntent
+    data object OpenPrivacy : AboutIntent
+    data object OpenTerms : AboutIntent
+    data object OpenSupport : AboutIntent
 }
 
 internal sealed interface AboutEffect {

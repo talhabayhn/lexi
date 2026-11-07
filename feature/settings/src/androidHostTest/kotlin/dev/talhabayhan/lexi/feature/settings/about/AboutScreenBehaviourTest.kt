@@ -6,7 +6,6 @@ import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.runComposeUiTest
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
-import dev.talhabayhan.lexi.core.domain.platform.AppLinks
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
@@ -34,25 +33,31 @@ class AboutScreenBehaviourTest {
     }
 
     @Test
-    fun `legal and support links emit OpenUrl intents`() = runComposeUiTest {
+    fun `rate, legal and support rows emit their intents`() = runComposeUiTest {
         val intents = mutableListOf<AboutIntent>()
         setContent {
             LexiTheme(reducedMotion = true) {
-                AboutScreen(AboutUiState(), onIntent = { intents += it })
+                AboutScreen(AboutUiState(storePageUrl = "https://store.example/lexi"), onIntent = { intents += it })
             }
         }
 
+        onNodeWithText(RATE_LABEL).performClick()
         onNodeWithText("Gizlilik Politikası").performClick()
         onNodeWithText("Kullanım Koşulları").performClick()
         onNodeWithText("Destek").performClick()
 
         assertEquals(
             listOf<AboutIntent>(
-                AboutIntent.OpenUrl(AppLinks.PRIVACY_POLICY),
-                AboutIntent.OpenUrl(AppLinks.TERMS_OF_SERVICE),
-                AboutIntent.OpenUrl(AppLinks.SUPPORT),
+                AboutIntent.Rate,
+                AboutIntent.OpenPrivacy,
+                AboutIntent.OpenTerms,
+                AboutIntent.OpenSupport,
             ),
             intents,
         )
+    }
+
+    private companion object {
+        const val RATE_LABEL = "Uygulamayı puanla"
     }
 }
