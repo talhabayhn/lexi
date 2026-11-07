@@ -128,7 +128,7 @@ class SettingsScreenBehaviourTest {
             LexiTheme(reducedMotion = true) { SettingsScreen(SettingsUiState(), onIntent = { intents += it }) }
         }
 
-        val row = onNodeWithContentDescription("Türkçe, ipucu dili")
+        val row = onNodeWithContentDescription("İpucu dili: Türkçe. Yakında başka ipucu dilleri de gelecek.")
         row.assertHasNoClickAction()
         row.performClick()
 

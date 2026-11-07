@@ -63,8 +63,8 @@
     <string name="settings_reminder_close">Kapat</string>
     <string name="settings_reminder_open_settings">Ayarları aç</string>
     <string name="settings_reminder_denied_hint">Bildirimler kapalı. Ayarlar'dan açabilirsin.</string>
-    <string name="settings_clue_language_value">Türkçe</string>
-    <string name="settings_clue_language_description">Türkçe, ipucu dili</string>
+    <string name="settings_clue_language_value">Türkçe (yakında başka diller)</string>
+    <string name="settings_clue_language_description">İpucu dili: Türkçe. Yakında başka ipucu dilleri de gelecek.</string>
     <string name="reminder_preprompt_title">Hatırlatıcı ister misin?</string>
     <string name="reminder_preprompt_body">Günde en fazla bir bildirim göndeririz. İstediğin saati sen seçersin.</string>
     <string name="reminder_preprompt_yes">Evet, hatırlat</string>

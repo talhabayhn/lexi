@@ -88,9 +88,9 @@ import org.jetbrains.compose.resources.stringResource
 /**
  * `11-settings`: back button and title, the Lexi Pro card, then the OYUN, ÖĞRENME and DİL cards. Every row is live
  * except the Pro card (a "YAKINDA" chip until the store arrives) and the clue language, which is fixed to Turkish
- * (no chevron, read as "Türkçe, ipucu dili", not clickable). The reminder row shows its time ("20:00", "Kapalı" when
- * off) and opens the [ReminderSheet]. The page scrolls on small screens; the footer links open About, privacy and
- * terms.
+ * and says more languages are coming (no chevron, one screen-reader node, not clickable; no fake picker). The
+ * reminder row shows its time ("20:00", "Kapalı" when off) and opens the [ReminderSheet]. The page scrolls on small
+ * screens; the footer links open About, privacy and terms.
  */
 @Composable
 internal fun SettingsScreen(state: SettingsUiState, onIntent: (SettingsIntent) -> Unit, modifier: Modifier = Modifier) {

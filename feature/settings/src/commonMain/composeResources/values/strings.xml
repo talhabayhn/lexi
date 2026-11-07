@@ -63,8 +63,8 @@
     <string name="settings_reminder_close">Close</string>
     <string name="settings_reminder_open_settings">Open settings</string>
     <string name="settings_reminder_denied_hint">Notifications are off. You can turn them on in Settings.</string>
-    <string name="settings_clue_language_value">Turkish</string>
-    <string name="settings_clue_language_description">Turkish, clue language</string>
+    <string name="settings_clue_language_value">Turkish (more languages coming)</string>
+    <string name="settings_clue_language_description">Clue language: Turkish. More clue languages are coming.</string>
     <string name="reminder_preprompt_title">Want a reminder?</string>
     <string name="reminder_preprompt_body">At most one a day, at the time you choose.</string>
     <string name="reminder_preprompt_yes">Yes, remind me</string>
