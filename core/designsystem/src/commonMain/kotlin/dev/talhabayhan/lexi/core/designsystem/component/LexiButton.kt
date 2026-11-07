@@ -96,6 +96,9 @@ public object LexiButtonDefaults {
     /** Text link: `height: 44px; padding: 0 8px`. */
     public val LinkHeight: Dp = 44.dp
     public val LinkContentPadding: PaddingValues = PaddingValues(horizontal = 8.dp)
+
+    /** Minimum touch target (Material / Android a11y 48dp) for links outside a designed 44dp row. */
+    public val MinTouchTarget: Dp = 48.dp
 }
 
 @Composable

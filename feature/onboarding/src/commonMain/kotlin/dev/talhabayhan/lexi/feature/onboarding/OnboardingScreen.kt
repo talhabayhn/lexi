@@ -59,6 +59,7 @@ import dev.talhabayhan.lexi.feature.onboarding.generated.resources.onboarding_3_
 import dev.talhabayhan.lexi.feature.onboarding.generated.resources.onboarding_analytics_label
 import dev.talhabayhan.lexi.feature.onboarding.generated.resources.onboarding_analytics_notice
 import dev.talhabayhan.lexi.feature.onboarding.generated.resources.onboarding_analytics_privacy
+import dev.talhabayhan.lexi.feature.onboarding.generated.resources.onboarding_analytics_privacy_description
 import dev.talhabayhan.lexi.feature.onboarding.generated.resources.onboarding_next
 import dev.talhabayhan.lexi.feature.onboarding.generated.resources.onboarding_skip
 import dev.talhabayhan.lexi.feature.onboarding.generated.resources.onboarding_start
@@ -316,9 +317,12 @@ private fun AnalyticsConsent(checked: Boolean, onIntent: (OnboardingIntent) -> U
             style = LexiTheme.typography.caption12,
             color = LexiTheme.colors.inkMuted,
         )
+        val privacyDescription = stringResource(Res.string.onboarding_analytics_privacy_description)
         LexiTextLink(
             text = stringResource(Res.string.onboarding_analytics_privacy),
             onClick = { onIntent(OnboardingIntent.OpenPrivacy) },
+            modifier = Modifier.semantics { contentDescription = privacyDescription },
+            minHeight = LexiButtonDefaults.MinTouchTarget,
         )
     }
 }

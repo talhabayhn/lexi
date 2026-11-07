@@ -6,10 +6,14 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.semantics.SemanticsProperties
 import androidx.compose.ui.test.ExperimentalTestApi
 import androidx.compose.ui.test.SemanticsMatcher
+import androidx.compose.ui.test.assertHasClickAction
+import androidx.compose.ui.test.assertHeightIsAtLeast
 import androidx.compose.ui.test.assertIsOff
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.performClick
+import androidx.compose.ui.test.performScrollTo
 import androidx.compose.ui.test.runComposeUiTest
+import androidx.compose.ui.unit.dp
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -75,5 +79,24 @@ class OnboardingA11yTest {
         }
 
         onNodeWithContentDescription("Anonim kullanım istatistiklerini paylaş").assertDoesNotExist()
+    }
+
+    // Regression (store review): the privacy link must be a described, 48dp tap target that asks for the policy.
+    @Test
+    fun `the privacy link is a 48dp described button that opens the policy`() = runComposeUiTest {
+        val intents = mutableListOf<OnboardingIntent>()
+        setContent {
+            LexiTheme(reducedMotion = true) {
+                OnboardingScreen(OnboardingUiState(currentStep = OnboardingStep.Step3), onIntent = { intents += it })
+            }
+        }
+
+        val link = onNodeWithContentDescription("Gizlilik politikası, tarayıcıda açılır")
+        link.performScrollTo()
+        link.assertHasClickAction()
+        link.assertHeightIsAtLeast(48.dp)
+        link.performClick()
+
+        assertEquals(listOf<OnboardingIntent>(OnboardingIntent.OpenPrivacy), intents)
     }
 }
