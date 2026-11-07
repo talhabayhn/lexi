@@ -275,7 +275,12 @@ the app goes to background.
 - In any game: WRONG or PASSED (never answered later) ⇒ card enters/returns to box 0 and appears in
   "Tekrar edilecekler" on the result screen. Correct in a game for a card already in the notebook ⇒ box +1.
 - Review wheel: correct ⇒ box +1; wrong ⇒ box 0.
-- "Zor" tab: notebook cards with ≥ 2 wrongs. "Tümü": every notebook card (box ≠ null; mastered ones last). "Tekrar": the
+- "Zor" tab: notebook cards (box ≠ null) with `wrong` ≥ ⚙`Srs.HARD_WRONGS = 2`, most wrong first. Only WRONG answers
+  count (incl. slots a `Forfeit` turned WRONG, §3); PASSED saves the word but never counts toward Hard. `wrong` is
+  incremented by every recorded mode (CLASSIC, PRACTICE, HARDCORE, DAILY, REVIEW) through `FinishGame` → `Srs.update`,
+  and the notebook reads the same `progress` rows; a removed card keeps its count but leaves the tab until it is
+  missed again. In-app: the Hard tab shows the rule line "Words you answer wrong or pass are saved to your notebook. Words
+  answered wrong 2 or more times count as Hard; passes don't count." and its empty state repeats it. "Tümü": every notebook card (box ≠ null; mastered ones last). "Tekrar": the
   due cards, most overdue first. Due count drives home & notebook badges. Rows show 1–4 bars = box + 1 (box 4 and
   mastered both 4; red at 1, yellow at 2, blue from 3). The word sheet's "Defterden çıkar" (`Srs.removeFromNotebook`)
   clears box and due day, keeps the counters; a later wrong or passed answer brings the card back into box 0.
