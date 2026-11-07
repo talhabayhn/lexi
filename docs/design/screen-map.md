@@ -68,7 +68,7 @@ before shipping.
 | Reminder sheet (`ReminderSheet`, Settings bottom sheet) | M7 | built from `16-components`: time list 08:00–21:30 in 30-min steps (scrollable, selected time visible on open); denied hint `settings_reminder_denied_hint` + "open settings" button |
 | Reminder sheet: "Hatırlatmada kelime göster" switch row — **needs design** | M7 | built from `16-components` (`ListRow` switch) as a second row under "Günlük hatırlatma" in the sheet's `ListCard`; stored in `Settings.reminderShowWord` (default on) |
 | Reminder row value "Kapalı" (off) | M7 | built: the reminder row shows "Kapalı" when off, else the time; no design for the off value |
-| Clue language row without chevron | M7 | built: only TR content, so no chevron and not clickable; value "Türkçe (yakında başka diller)" / "Turkish (more languages coming)" (screen reader: "İpucu dili: Türkçe. Yakında başka ipucu dilleri de gelecek.") |
+| Clue language row without chevron | M7 | built: only TR content, so no chevron and not clickable; value "Türkçe" / "Turkish" with a muted caption12 line "Yakında başka diller" / "More languages coming soon" under the label (NEEDS DESIGN; screen reader: "İpucu dili: Türkçe. Yakında başka diller.") |
 | Rating prompt | M8 | `ConfirmDialog` |
 | Untimed / unscored game HUD (Practice, Review) | M5 | built: the timer bar stays empty with "SÜRESİZ" in place of the clock; the score badge counts correct answers (unscored modes score 0, content description "Doğru: N"); point-cost jokers show "ücretsiz" |
 | Result of unscored modes (Practice, Review) | M5 | built: the hero number is the correct answers with "doğru" instead of "puan"; no "kalan süre" |

@@ -53,6 +53,7 @@ import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_analyt
 import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_back
 import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_classic_time
 import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_clue_language
+import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_clue_language_caption
 import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_clue_language_description
 import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_clue_language_value
 import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_daily_goal
@@ -88,7 +89,7 @@ import org.jetbrains.compose.resources.stringResource
 /**
  * `11-settings`: back button and title, the Lexi Pro card, then the OYUN, ÖĞRENME and DİL cards. Every row is live
  * except the Pro card (a "YAKINDA" chip until the store arrives) and the clue language, which is fixed to Turkish
- * and says more languages are coming (no chevron, one screen-reader node, not clickable; no fake picker). The
+ * with a "more languages coming soon" caption (no chevron, one screen-reader node, not clickable; no fake picker). The
  * reminder row shows its time ("20:00", "Kapalı" when off) and opens the [ReminderSheet]. The page scrolls on small
  * screens; the footer links open About, privacy and terms.
  */
@@ -386,11 +387,26 @@ private fun Section(title: StringResource, rows: @Composable () -> Unit) {
 @Composable
 private fun ClueLanguageRow() {
     val description = stringResource(Res.string.settings_clue_language_description)
-    ListRow(
-        label = stringResource(Res.string.settings_clue_language),
-        modifier = Modifier.clearAndSetSemantics { contentDescription = description },
-    ) {
-        Text(stringResource(Res.string.settings_clue_language_value), style = LexiTheme.typography.bodyStrong15)
+    // Needs design: the caption under the label is built from `16-components` text styles (no PNG for it).
+    ListRow(modifier = Modifier.clearAndSetSemantics { contentDescription = description }) {
+        AdaptiveTrailingRow(
+            gap = ListDefaults.RowGap,
+            stackedGap = LexiTheme.dimens.gap4,
+            modifier = Modifier.weight(1f),
+            main = {
+                Column(verticalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap2)) {
+                    Text(stringResource(Res.string.settings_clue_language), style = LexiTheme.typography.body16SemiBold)
+                    Text(
+                        stringResource(Res.string.settings_clue_language_caption),
+                        style = LexiTheme.typography.caption12,
+                        color = LexiTheme.colors.inkMuted,
+                    )
+                }
+            },
+            trailing = {
+                Text(stringResource(Res.string.settings_clue_language_value), style = LexiTheme.typography.bodyStrong15)
+            },
+        )
     }
 }
 
