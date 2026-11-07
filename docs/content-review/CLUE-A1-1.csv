@@ -1,0 +1,166 @@
+id,current_clue,proposed_clue
+a1-leaf,ağacın dalında biten yeşil parça,ağacın yeşil yaprağı
+a1-bird,kuş,"kanatları olan, uçan küçük hayvan"
+a1-cat,kedi,"miyavlayan, tüylü evcil hayvan"
+a1-elephant,fil,hortumlu dev hayvan
+a1-fish,balık,suda yaşayan solungaçlı hayvan
+a1-lion,aslan,yelesi olan büyük yırtıcı kedi
+a1-rabbit,tavşan,"uzun kulaklı, havuç seven hayvan"
+a1-animal,hayvan,insan dışındaki canlıların genel adı
+a1-pig,domuz,çiftlikte yaşayan pembe hayvan
+a1-clothes,giysiler,insanların üzerine giydiği şeyler
+a1-heavy,ağır,kaldırması çok zor olan
+a1-really,gerçekten,"gerçek anlamda, hiç abartmadan"
+a1-together,birlikte,"yalnız olmadan, bir arada"
+a1-pasta,makarna,İtalyan usulü haşlanan hamur yemeği
+a1-glasses,gözlük,iyi görmek için takılan cam
+a1-arm,kol,omuzdan ele uzanan vücut parçası
+a1-eye,göz,görmemizi sağlayan organ
+a1-hand,el,"parmakları olan, tutmaya yarayan uzuv"
+a1-hair,saç,kafada biten ince teller
+a1-leg,bacak,yürümek için kullanılan uzuv
+a1-mouth,ağız,yemek yediğimiz yüz bölümü
+a1-neck,boyun,baş ile gövdeyi bağlayan kısım
+a1-ill,hasta,sağlığı bozuk olan kişi
+a1-ear,kulak,sesleri duyduğumuz organ
+a1-finger,parmak,elin ucundaki beş uzuvdan biri
+a1-healthy,sağlıklı,"vücuda iyi gelen, hasta olmayan"
+a1-airport,havalimanı,uçakların kalkıp indiği yer
+a1-car,araba,dört tekerlekli motorlu aile taşıtı
+a1-hospital,hastane,hastaların tedavi edildiği yer
+a1-island,ada,her yanı suyla çevrili kara
+a1-tree,ağaç,gövdesi ve dalları olan bitki
+a1-bus,otobüs,çok yolcu taşıyan büyük taşıt
+a1-ticket,bilet,binmek veya girmek için gereken kâğıt
+a1-map,harita,yerleri gösteren çizili kâğıt
+a1-north,kuzey,pusulada yukarıyı gösteren yön
+a1-sleep,uyumak,gözleri kapatıp dinlenmek
+a1-walk,yürümek,ayaklarla yavaşça ilerlemek
+a1-play,oynamak,eğlenmek için bir oyuna katılmak
+a1-open,açmak,kapıyı ya da kavanozu aralamak
+a1-jump,zıplamak,yerden havaya sıçramak
+a1-money,para,alışverişte ödediğimiz şey
+a1-happy,mutlu,sevinçli ve neşeli hisseden
+a1-quiet,sessiz,"gürültü yapmayan, ses çıkarmayan"
+a1-use,kullanmak,bir eşyadan işi için yararlanmak
+a1-idea,fikir,aklımıza gelen düşünce
+a1-good,iyi,"kötü olmayan, hoşa giden"
+a1-shirt,gömlek,üst gövdeye giyilen düğmeli giysi
+a1-hat,şapka,başa takılan giysi
+a1-dress,elbise,kadınların giydiği tek parça giysi
+a1-gift,hediye,sevdiğimize verdiğimiz armağan
+a1-game,oyun,kuralları olan eğlence etkinliği
+a1-hello,merhaba,biriyle karşılaşınca söylenen selam
+a1-ocean,okyanus,kıtaları birbirinden ayıran dev su kütlesi
+a1-inside,içeride,"dışarıda değil, bir yerin iç kısmında"
+a1-under,altında,bir şeyin alt tarafında
+a1-up,yukarı,aşağının tersi olan yön
+a1-usually,genellikle,"çoğu zaman, sık sık"
+a1-only,sadece,"ondan fazlası olmayan, yalnızca"
+a1-sit,oturmak,ayakta durmayıp bir yere çökmek
+a1-wash,yıkamak,suyla ve sabunla temizlemek
+a1-yes,evet,hayır'ın tersi olan onay sözü
+a1-skirt,etek,belden aşağı giyilen kumaş giysi
+a1-phone,telefon,uzaktakiyle konuşmaya yarayan cihaz
+a1-holiday,tatil,çalışmayıp dinlendiğimiz özel günler
+a1-bike,bisiklet,iki tekerlekli pedallı taşıt
+a1-colour,renk,"gökkuşağında görülen kırmızı, mavi gibi özellik"
+a1-swim,yüzmek,suda kollarla ilerlemek
+a1-write,yazmak,kalemle harfleri kâğıda dökmek
+a1-wear,giymek,giysiyi üzerine geçirip taşımak
+a1-wait,beklemek,biri gelene kadar yerinde durmak
+a1-learn,öğrenmek,yeni bilgiyi aklına yerleştirmek
+a1-know,bilmek,bir bilgiyi hafızasında taşımak
+a1-go,gitmek,bir yerden başka yere hareket etmek
+a1-wrong,yanlış,"doğru olmayan, hatalı"
+a1-sea,deniz,kıyısında tatil yaptığımız tuzlu su
+a1-farm,çiftlik,hayvan ve ekin yetiştirilen arazi
+a1-father,baba,çocuğu olan erkek ebeveyn
+a1-young,genç,yaşı küçük olan
+a1-old,yaşlı,çok yıl yaşamış olan
+a1-queen,kraliçe,taç giyen kadın hükümdar
+a1-woman,kadın,erkek olmayan yetişkin insan
+a1-friend,arkadaş,"sevdiğimiz, güvendiğimiz yakın kişi"
+a1-king,kral,ülkeyi yöneten erkek hükümdar
+a1-people,insanlar,bir araya gelen çok sayıda kişi
+a1-cheese,peynir,sütten yapılan sarı veya beyaz gıda
+a1-milk,süt,inekten sağılan beyaz içecek
+a1-onion,soğan,kesince gözümüzü yaşartan sebze
+a1-vegetable,sebze,ıspanak ve havuç gibi bitkisel yiyecek
+a1-chicken,tavuk,"yumurtlayan, tüylü çiftlik kuşu"
+a1-soup,çorba,kaşıkla içilen sıcak sulu yemek
+a1-water,su,"musluktan akan, susuzluğu gideren sıvı"
+a1-drink,içmek,sıvı bir şeyi yutmak
+a1-banana,muz,sarı kabuklu uzun tropikal meyve
+a1-coffee,kahve,çekirdeğinden yapılan koyu sıcak içecek
+a1-food,yiyecek,karnımızı doyurmak için yenen şeyler
+a1-fruit,meyve,ağaçta yetişen tatlı bitki ürünü
+a1-meat,et,hayvanın yenen kas kısmı
+a1-potato,patates,topraktan çıkan nişastalı yumru sebze
+a1-tea,çay,demlenip bardakta içilen sıcak içecek
+a1-tomato,domates,salatada kullanılan kırmızı sulu sebze
+a1-cup,fincan,sıcak içecek içtiğimiz küçük kap
+a1-cook,pişirmek,yiyeceği ateşte hazır hale getirmek
+a1-jam,reçel,meyveden yapılıp ekmeğe sürülen tatlı
+a1-salt,tuz,yemeğe lezzet veren beyaz tanecik
+a1-spoon,kaşık,çorbayı ağza götüren çukur araç
+a1-bed,yatak,uyumak için üzerine yattığımız eşya
+a1-door,kapı,odaya girip çıktığımız açılır kapanır parça
+a1-garden,bahçe,evin yanındaki çiçekli ve ağaçlı alan
+a1-glass,bardak,su içtiğimiz şeffaf kap
+a1-key,anahtar,kilidi açmaya yarayan küçük metal
+a1-knife,bıçak,ekmek kesmeye yarayan keskin araç
+a1-plate,tabak,yemeğin üstüne konduğu yassı kap
+a1-room,oda,evde duvarlarla ayrılmış bölüm
+a1-wall,duvar,odayı çevreleyen dik yapı
+a1-bag,çanta,eşyaları içine koyup taşıdığımız şey
+a1-apple,elma,kırmızı veya yeşil yuvarlak meyve
+a1-bread,ekmek,"fırında pişen, her gün yenen hamur"
+a1-chair,sandalye,oturmak için kullanılan arkalıklı eşya
+a1-dog,köpek,"havlayan, sadık evcil hayvan"
+a1-egg,yumurta,"tavuğun bıraktığı, kabuklu kahvaltılık gıda"
+a1-family,aile,"anne, baba ve çocuklardan oluşan topluluk"
+a1-horse,at,"binilen, kişneyen dört ayaklı hayvan"
+a1-ice,buz,donmuş suyun sert hali
+a1-kitchen,mutfak,yemek pişirilen ev bölümü
+a1-lemon,limon,ekşi sarı narenciye
+a1-mirror,ayna,yüzümüzü içinde gördüğümüz cam
+a1-nose,burun,koku almamızı sağlayan organ
+a1-orange,portakal,kabuğu soyulup yenen turuncu narenciye
+a1-question,soru,bilgi öğrenmek için söylenen cümle
+a1-river,nehir,dağdan denize akan uzun su
+a1-school,okul,öğrencilerin ders gördüğü bina
+a1-table,masa,üstüne eşya koyduğumuz ayaklı mobilya
+a1-umbrella,şemsiye,yağmurda başımızı koruyan açılır araç
+a1-village,köy,"az nüfuslu, tarım yapılan yerleşim"
+a1-window,pencere,ışık girsin diye duvardaki camlı açıklık
+a1-box,kutu,içine eşya konulan köşeli kap
+a1-teacher,öğretmen,okulda ders anlatan kişi
+a1-student,öğrenci,okulda ders gören kişi
+a1-library,kütüphane,ödünç kitap alınan sessiz bina
+a1-nurse,hemşire,doktora yardım eden bakım görevlisi
+a1-book,kitap,sayfaları ciltli okunan yayın
+a1-ask,sormak,merak ettiğini birine yöneltmek
+a1-answer,cevap,soruya verilen karşılık
+a1-read,okumak,kitap veya yazıdaki sözcükleri izlemek
+a1-work,çalışmak,gelir için bir iş yapmak
+a1-letter,mektup,zarfla postalanan yazılı kâğıt
+a1-listen,dinlemek,kulak vererek sesi takip etmek
+a1-understand,anlamak,söylenenin anlamını kafada kavramak
+a1-autumn,sonbahar,yazdan sonra gelen mevsim
+a1-cold,soğuk,sıcaklığı çok düşük olan
+a1-hot,sıcak,sıcaklığı çok yüksek olan
+a1-day,gün,yirmi dört saatlik zaman dilimi
+a1-evening,akşam,gün batarken başlayan zaman
+a1-night,gece,"karanlık olan, uyuduğumuz zaman"
+a1-rain,yağmur,bulutlardan damla damla düşen su
+a1-snow,kar,kışın beyaz pul gibi yağan yağış
+a1-today,bugün,içinde bulunduğumuz gün
+a1-winter,kış,yılın en soğuk mevsimi
+a1-year,yıl,on iki ay süren zaman dilimi
+a1-yesterday,dün,bugünden önceki gün
+a1-week,hafta,yedi günlük zaman dilimi
+a1-early,erken,"zamanından önce, vaktinden evvel"
+a1-late,geç,"zamanında gelmeyen, gecikmiş"
+a1-sun,güneş,gündüz gökyüzünü aydınlatan yıldız
+a1-spring,ilkbahar,kıştan sonra çiçeklerin açtığı mevsim

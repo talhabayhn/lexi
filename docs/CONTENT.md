@@ -102,6 +102,20 @@ Level comes from the folder name (`A1`, `A2`, `B1`, `B2`, `C1`, `NAT`). See `con
 - **`pos` matches the example's usage** (TODAY `adv` ⇒ "I am busy today.", not "Today is …").
 - If the Turkish translation is the answer itself (PIZZA), use a short description instead.
 
+### Clue standard (TR)
+A clue is judged on the card's answer, `pos` and the sense used in `example_en`. Scan: `python3 tools/content-qa/clue_scan.py`
+→ `docs/content-review/CLUE-SCAN.csv` (rules C1 single word, C2 > 8 words; C3 no clear head noun and C4 clue/example mismatch are advisory only).
+- **a) Own meaning:** the clue defines the answer itself, never a neighbouring or different word.
+- **b) Bare translation:** 1:1 translations are kept only for numbers, ordinals, colours, days and months (excluded from
+  rule C1, list in `clue_scan.py`). Every other single-word clue becomes a short defining gloss of 3–7 words that the
+  player can map to the answer (MILK → "inekten sağılan beyaz içecek", LEAF → "ağacın yeşil yaprağı"). The answer's own
+  English word never appears in the clue.
+- **c) Form:** 2–8 words; no comma chaining of 3+ phrases; no circular reference (clue explained by a word that is
+  itself explained by the answer); a noun clue ends in a clear head noun ("… yeşil parça" is not one).
+- **d) Fit:** the clue matches `pos` (verb → "…mak/…mek", adj → quality, adv → manner/time) and the sense in `example_en`.
+- **e) Level wording:** A1–A2 clues use only A1–A2 Turkish vocabulary and short sentences; B2+ may use a definition.
+- **f) Leak rules** (§3 "Clue leak", blocklist) stay unchanged.
+
 ## 3. Validation (compiler fails the build on any error)
 - unique `id`; answer charset & length; rule consistency with `letter`; clue doesn't contain the answer (case/
   diacritic-insensitive); example contains the answer; no duplicate answer within a level;
