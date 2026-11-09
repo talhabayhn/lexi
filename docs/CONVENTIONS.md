@@ -21,6 +21,8 @@
   (also `borders`, `shapes`, `shadows`, `motion`).
 - `Modifier` is the first optional parameter. Hoist state. `remember` keys explicit.
 - Strings: `stringResource(Res.string.xxx)`; keys `screen_element_purpose` (e.g. `game_button_pass`).
+  Write apostrophes and quotes plain (`It's`), never `\'` / `\"`: Compose resources show the backslash
+  (`checkComposeStringEscapes`, part of `check`, fails the build).
 - Accessibility: every icon-only button has `contentDescription`; wheel letters announce state ("K, doğru").
 
 ## Accessibility checklist (every new or changed screen)

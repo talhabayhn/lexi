@@ -218,13 +218,13 @@
     <string name="duel_handover_time">TIME LEFT</string>
     <string name="duel_handover_letters">LETTERS LEFT</string>
     <string name="duel_handover_previous">Last player: %1$s · %2$d correct · %3$d wrong</string>
-    <string name="duel_handover_ready">I\'M READY</string>
+    <string name="duel_handover_ready">I'M READY</string>
     <string name="duel_game_turn">TURN</string>
     <string name="duel_game_player_description">%1$s: %2$d correct, time left %3$d min %4$d sec</string>
-    <string name="duel_game_player_active">this player\'s turn</string>
+    <string name="duel_game_player_active">this player's turn</string>
     <string name="duel_announce_turn">Up next: %1$s</string>
     <string name="duel_result_winner">%1$s wins</string>
-    <string name="duel_result_draw">It\'s a draw</string>
+    <string name="duel_result_draw">It's a draw</string>
     <string name="duel_result_score">%1$d – %2$d correct</string>
     <string name="duel_result_tiebreak_wrong">Tied on correct: fewer wrong answers wins</string>
     <string name="duel_result_tiebreak_time">Tied on correct and wrong: more time left wins</string>

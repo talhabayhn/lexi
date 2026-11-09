@@ -65,3 +65,29 @@ val checkIosVersionSync = tasks.register("checkIosVersionSync") {
     }
 }
 tasks.named("check") { dependsOn(checkIosVersionSync) }
+
+// Compose Multiplatform resources don't unescape Android-style \' and \" — they render literally ("I\'m ready").
+val checkComposeStringEscapes = tasks.register("checkComposeStringEscapes") {
+    group = "verification"
+    description = "Fails when a composeResources strings.xml contains \\' or \\\" (use a plain ' or \")."
+    val files = fileTree(rootDir) {
+        include("**/src/*/composeResources/values*/strings.xml")
+        exclude("**/build/**", ".gradle/**", "**/node_modules/**")
+    }
+    inputs.files(files).withPropertyName("composeStrings")
+    val root = rootDir
+    doLast {
+        val hits = files.files.sorted().flatMap { file ->
+            file.readLines().mapIndexedNotNull { index, line ->
+                if ("\\'" in line || "\\\"" in line) "${file.relativeTo(root)}:${index + 1}: ${line.trim()}" else null
+            }
+        }
+        if (hits.isNotEmpty()) {
+            throw GradleException(
+                "Escaped quotes render literally in Compose resources; use a plain ' or \" instead:\n" +
+                    hits.joinToString("\n"),
+            )
+        }
+    }
+}
+tasks.named("check") { dependsOn(checkComposeStringEscapes) }
