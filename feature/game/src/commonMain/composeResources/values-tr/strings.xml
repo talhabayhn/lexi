@@ -205,6 +205,8 @@
     <string name="duel_player_change_description">%1$s: adı değiştir</string>
     <string name="duel_level_label">SEVİYE</string>
     <string name="duel_time_label">HER OYUNCUNUN SÜRESİ</string>
+    <!-- Duel setup clock option per player in whole minutes ("3 min · 5 min · 7 min") -->
+    <string name="duel_clock_option_minutes">%1$d dk</string>
     <string name="duel_rules_note">Doğru bildikçe sıra sende kalır. Yanlış ya da pas sırayı rakibe geçirir. Bu modda joker yok.</string>
     <string name="duel_start">BAŞLA</string>
     <string name="duel_name_title">Oyuncu adı</string>

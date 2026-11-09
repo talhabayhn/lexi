@@ -58,6 +58,7 @@ import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.core.designsystem.theme.lexiContentWidth
 import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.feature.game.generated.resources.Res
+import dev.talhabayhan.lexi.feature.game.generated.resources.duel_clock_option_minutes
 import dev.talhabayhan.lexi.feature.game.generated.resources.duel_level_label
 import dev.talhabayhan.lexi.feature.game.generated.resources.duel_name_cancel
 import dev.talhabayhan.lexi.feature.game.generated.resources.duel_name_hint
@@ -171,7 +172,7 @@ internal fun DuelSetupScreen(
                 }
                 Section(stringResource(Res.string.duel_time_label)) {
                     SegmentedControl(
-                        segments = state.clockOptionsSeconds.map { Segment(formatClock(it)) },
+                        segments = state.clockOptionsSeconds.map { Segment(clockOptionLabel(it)) },
                         selectedIndex = state.clockOptionsSeconds.indexOf(state.clockSeconds),
                         onSelect = { onIntent(DuelSetupIntent.SelectClock(state.clockOptionsSeconds[it])) },
                         dividerWidth = LexiTheme.borders.regular,
@@ -359,12 +360,22 @@ private fun NameDialog(state: DuelSetupUiState, onIntent: (DuelSetupIntent) -> U
     }
 }
 
+/** "5 dk" / "5 min" for whole minutes (every offered clock); any other value falls back to "m:ss". */
+@Composable
+private fun clockOptionLabel(seconds: Int): String = if (seconds % SECONDS_PER_MINUTE == 0) {
+    stringResource(Res.string.duel_clock_option_minutes, seconds / SECONDS_PER_MINUTE)
+} else {
+    formatClock(seconds)
+}
+
+private const val SECONDS_PER_MINUTE = 60
+
 // design sample, not user-facing
 internal val DuelSetupSample = DuelSetupUiState(
     isLoaded = true,
     level = Level.A1,
-    clockSeconds = 150,
-    clockOptionsSeconds = persistentListOf(90, 150, 240),
+    clockSeconds = 300,
+    clockOptionsSeconds = persistentListOf(180, 300, 420),
 )
 
 @Preview(widthDp = 390, heightDp = 844)

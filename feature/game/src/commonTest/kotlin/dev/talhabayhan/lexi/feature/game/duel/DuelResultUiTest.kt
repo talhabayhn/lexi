@@ -14,7 +14,7 @@ class DuelResultUiTest {
         b: DuelPlayerOutcome,
         winner: Int?,
         end: DuelEnd = DuelEnd.ALL_ANSWERED,
-    ) = DuelOutcome(Level.A1, 150, end, winner, listOf(a, b))
+    ) = DuelOutcome(Level.A1, 300, end, winner, listOf(a, b))
 
     @Test
     fun `a win by correct answers has no explanation`() {

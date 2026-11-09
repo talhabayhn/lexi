@@ -312,7 +312,7 @@ internal object DuelResultSamples {
     /** Equal correct counts, fewer wrong wins (the design). */
     val tieBreakWrong = DuelOutcome(
         level = Level.A1,
-        clockSeconds = 150,
+        clockSeconds = 300,
         end = DuelEnd.ALL_ANSWERED,
         winner = 0,
         players = listOf(

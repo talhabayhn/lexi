@@ -8,7 +8,8 @@ import dev.talhabayhan.lexi.core.domain.game.SlotState
 /** The finished match as the result screen shows it (`20-duel-result`). */
 internal object DuelOutcomes {
     /**
-     * [timeLimitMs] is the clock per player. After a forfeit the other player's game may still be running (or not
+     * [timeLimitMs] is the clock per player the engine played with (also the outcome's clock, so "play again" never
+     * repeats a stale route value). After a forfeit the other player's game may still be running (or not
      * started): their counts come from the wheel and their clock stands where it was.
      */
     fun of(match: MatchState, route: DuelRoute, timeLimitMs: Long): DuelOutcome {
@@ -39,10 +40,12 @@ internal object DuelOutcomes {
         }
         return DuelOutcome(
             level = match.players.first().level,
-            clockSeconds = route.clockSeconds,
+            clockSeconds = (timeLimitMs / MS_PER_SECOND).toInt(),
             end = end,
             winner = result.winner,
             players = players,
         )
     }
 }
+
+private const val MS_PER_SECOND = 1_000L

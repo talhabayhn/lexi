@@ -18,10 +18,14 @@ public data class GameConfig(
     val hardcoreTimeLimitSeconds: Int = 180,
     val dailyTimeLimitSeconds: Int = 180,
     val levelTestTimeLimitSeconds: Int = 120,
-    /** §5/§8: each duel player's own clock; the duel setup picks one of [duelClockOptionsSeconds] per match. */
-    val duelClockSeconds: Int = 150,
-    /** §8: the duel setup's clock choices per player (owner decision: 1:30 / 2:30 / 4:00). */
-    val duelClockOptionsSeconds: List<Int> = listOf(90, 150, 240),
+    /**
+     * §5/§8: each duel player's own clock. The duel setup picks one of [duelClockOptionsSeconds] per match and the
+     * match engine gets it through this config, so the clock is part of the deterministic input (seed + config +
+     * events).
+     */
+    val duelClockSeconds: Int = 300,
+    /** §8: the duel setup's clock choices per player (owner decision: 3 / 5 default / 7 min). */
+    val duelClockOptionsSeconds: List<Int> = listOf(180, 300, 420),
     /** §8: longest duel player name (characters); longer input is cut. */
     val duelNameMaxLength: Int = 12,
     /** §12: `TimeWarning` is emitted every second while seconds left ≤ this. */
@@ -98,6 +102,9 @@ public data class GameConfig(
     val leastRecentlySeenCandidates: Int = 3,
 ) {
     init {
+        require(duelClockSeconds in duelClockOptionsSeconds) {
+            "duelClockSeconds must be one of $duelClockOptionsSeconds, was $duelClockSeconds"
+        }
         require(minStartsCandidates >= 1) { "minStartsCandidates must be at least 1, was $minStartsCandidates" }
         require(leastRecentlySeenCandidates >= 1) {
             "leastRecentlySeenCandidates must be at least 1, was $leastRecentlySeenCandidates"

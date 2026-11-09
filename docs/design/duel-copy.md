@@ -16,6 +16,7 @@ Length class: EN ≤ TR + 10 %. **DECISION** = needs the owner.
 | `duel_player_change` | Değiştir | Change | 17 card action | 8 | |
 | `duel_level_label` | SEVİYE | LEVEL | 17 | 8 | |
 | `duel_time_label` | HER OYUNCUNUN SÜRESİ | TIME PER PLAYER | 17 | 22 | |
+| `duel_clock_option_minutes` | {n} dk | {n} min | 17 clock segments (3 · 5 · 7) | 6 | 1.0.11; segment design is **needs design** (built from `16-components` SegmentedControl) |
 | `duel_rules_note` | Doğru bildikçe sıra sende kalır. Yanlış ya da pas sırayı rakibe geçirir. Bu modda joker yok. | Keep answering right and the turn stays yours. A wrong answer or a pass hands it over. No jokers in this mode. | 17 | 100 | 3 lines at 14 sp |
 | `duel_start` | BAŞLA | START | 17 CTA | 8 | reuse the level-select BAŞLA/START if same |
 | `duel_handover_eyebrow` | DÜELLO | DUEL | 18 top | 10 | reuse `result_mode_duel` |
@@ -62,3 +63,7 @@ Length class: EN ≤ TR + 10 %. **DECISION** = needs the owner.
 2. Tie-break explanation is a separate line under the winner headline; the score line is always visible.
 3. Forfeit header reason: `PES ETTİ` / `GAVE UP` (TR resource `result_reason_forfeit` changes from BIRAKILDI when wired).
 4. EN title "Take turns"; Home box "Two players, one phone".
+5. Clock per player (1.0.11, owner): 3 / 5 (default) / 7 minutes, labels "3 dk · 5 dk · 7 dk" / "3 min · 5 min · 7 min"
+   (was 1:30 / 2:30 / 4:00). The result and handover screens show the remaining time as m:ss and need no change.
+6. EN apostrophes are plain `'` in the resource; never `\'` (Compose resources show the backslash;
+   `checkComposeStringEscapes` fails the build).

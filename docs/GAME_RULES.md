@@ -111,7 +111,7 @@ correct = blue circle, wrong = red square, passed = yellow leaf.
 | Daily | ⚙ 180 s | yes | ONE shared mixed-level wheel for all players, one scored attempt per local day, resets at local midnight, shareable |
 | Review | none | no | SRS-due cards |
 | Level test | ⚙ 120 s | no | adaptive, see §9 |
-| Duel (hot-seat / online) | per-player clocks ⚙ 150 s each | yes | §8 |
+| Duel (hot-seat / online) | per-player clocks ⚙ 300 s each (setup: 180 / 300 / 420 s) | yes | §8 |
 
 Practice and Hardcore in the app (M5): Practice has no clock and never times out; it scores 0 (§6), so the HUD
 badge and the result header count correct answers instead, and joker point costs are shown as free (they take
@@ -213,13 +213,15 @@ the app goes to background.
   player's remaining letters count as wrong.
 - Same-device app flow (M8.1, `feature:game` `duel`): setup with two names (owner decision: free text, trimmed, max
   ⚙ `duelNameMaxLength = 12`, empty ⇒ "1. Oyuncu"/"2. Oyuncu"; the last match's names, level and clock are kept in
-  the settings), one shared level and a clock per player from ⚙ `duelClockOptionsSeconds` (1:30 / 2:30 default / 4:00;
-  the match engine gets it as `duelClockSeconds`). Both wheels: mixed category, no card history, `Seeds.derive(seed,
-  "player:<n>")`. No jokers, no restart; nothing is recorded (no session, notebook, streak, last-seen). The app
-  going to the background pauses the active clock (the pause dialog shows on return); system back pauses a running
-  board and asks "Pes etmek istiyor musun?" on the handover card. Process death: the match is not restored — it is
-  dropped and the app returns to Home (decision: a hot-seat match is short and both players are present; restoring
-  would need a saved match log).
+  the settings), one shared level and a clock per player from ⚙ `duelClockOptionsSeconds` (owner decision,
+  1.0.11: 180 / 300 default / 420 s, shown as "3 dk · 5 dk · 7 dk"). The choice reaches the match engine as the
+  match config's `duelClockSeconds` (`GameConfig` rejects any other value), so same seed + clock + events ⇒ same
+  match; a stored clock that is no longer offered (e.g. 150 s from before 1.0.11) falls back to 300 s. Both wheels:
+  mixed category, no card history, `Seeds.derive(seed, "player:<n>")`. No jokers, no restart; nothing is recorded
+  (no session, notebook, streak, last-seen). The app going to the background pauses the active clock (the pause
+  dialog shows on return); system back pauses a running board and asks "Pes etmek istiyor musun?" on the handover
+  card. Process death: the match is not restored — it is dropped and the app returns to Home (decision: a hot-seat
+  match is short and both players are present; restoring would need a saved match log).
 - Result: winner headline (or "Berabere"), the score line always, then one explanation line: fewer wrong / more time
   left when the winner was decided by a tie-break, "<name> pes etti" after a forfeit. Header reason: ÇARK TAMAM (both
   wheels completed), SÜRE BİTTİ (otherwise), PES ETTİ (forfeit; the same reason text in every mode).

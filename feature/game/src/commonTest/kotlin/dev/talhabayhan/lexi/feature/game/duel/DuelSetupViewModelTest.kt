@@ -44,20 +44,20 @@ class DuelSetupViewModelTest {
         assertEquals(true, state.isLoaded)
         assertEquals(listOf("", ""), state.names)
         assertEquals(Level.A1, state.level)
-        assertEquals(150, state.clockSeconds)
-        assertEquals(listOf(90, 150, 240), state.clockOptionsSeconds)
+        assertEquals(300, state.clockSeconds)
+        assertEquals(listOf(180, 300, 420), state.clockOptionsSeconds)
     }
 
     @Test
     fun `the last match's names and level and clock come back`() = runTest {
         val settings = FakeSettingsRepository(
-            Settings(duelPlayerNames = listOf("Ayşe", "Can"), duelLevel = Level.B2, duelClockSeconds = 240),
+            Settings(duelPlayerNames = listOf("Ayşe", "Can"), duelLevel = Level.B2, duelClockSeconds = 420),
         )
         val state = viewModel(settings).state.value
 
         assertEquals(listOf("Ayşe", "Can"), state.names)
         assertEquals(Level.B2, state.level)
-        assertEquals(240, state.clockSeconds)
+        assertEquals(420, state.clockSeconds)
     }
 
     @Test
@@ -106,10 +106,10 @@ class DuelSetupViewModelTest {
     @Test
     fun `only the offered clocks can be picked`() = runTest {
         val vm = viewModel()
-        vm.onIntent(DuelSetupIntent.SelectClock(90))
+        vm.onIntent(DuelSetupIntent.SelectClock(180))
         vm.onIntent(DuelSetupIntent.SelectClock(100))
 
-        assertEquals(90, vm.state.value.clockSeconds)
+        assertEquals(180, vm.state.value.clockSeconds)
     }
 
     @Test
@@ -120,17 +120,17 @@ class DuelSetupViewModelTest {
         vm.onIntent(DuelSetupIntent.NameChanged("Ayşe"))
         vm.onIntent(DuelSetupIntent.SaveName)
         vm.onIntent(DuelSetupIntent.SelectLevel(Level.C1))
-        vm.onIntent(DuelSetupIntent.SelectClock(240))
+        vm.onIntent(DuelSetupIntent.SelectClock(420))
 
         vm.effects.test {
             vm.onIntent(DuelSetupIntent.Start)
             vm.onIntent(DuelSetupIntent.Start)
-            assertEquals(DuelSetupEffect.StartDuel(DuelRoute("C1", 240, "Ayşe", "")), awaitItem())
+            assertEquals(DuelSetupEffect.StartDuel(DuelRoute("C1", 420, "Ayşe", "")), awaitItem())
             expectNoEvents()
         }
         val stored = settings.settings.value
         assertEquals(listOf("Ayşe", ""), stored.duelPlayerNames)
         assertEquals(Level.C1, stored.duelLevel)
-        assertEquals(240, stored.duelClockSeconds)
+        assertEquals(420, stored.duelClockSeconds)
     }
 }

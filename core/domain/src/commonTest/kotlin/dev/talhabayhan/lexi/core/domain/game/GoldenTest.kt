@@ -118,7 +118,8 @@ class GoldenTest {
                 random = SeededRandom(MatchEngine.playerSeed(seed, player)).derive(WheelGenerator.SEED_PURPOSE),
             )
         }
-        val engine = MatchEngine()
+        // Recorded with the former 150 s duel clock: the clock is part of the match config, so it replays with it.
+        val engine = MatchEngine(GameConfig(duelClockSeconds = 150, duelClockOptionsSeconds = listOf(150)))
         // Recorded before the given first letter (GAME_RULES.md §3): replays with the old rule.
         val initial = engine.newMatch(
             seed,

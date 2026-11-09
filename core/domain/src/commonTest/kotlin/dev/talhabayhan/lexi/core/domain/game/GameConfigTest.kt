@@ -37,8 +37,23 @@ class GameConfigTest {
     }
 
     @Test
-    fun `duel gives each player a 150 s clock`() {
-        assertEquals(150_000L, config.timeLimitMs(GameMode.DUEL))
+    fun `duel gives each player a 300 s clock by default and offers 180 300 420 s`() {
+        assertEquals(300, config.duelClockSeconds)
+        assertEquals(listOf(180, 300, 420), config.duelClockOptionsSeconds)
+        assertEquals(300_000L, config.timeLimitMs(GameMode.DUEL))
+    }
+
+    @Test
+    fun `duel clock follows the setup choice`() {
+        for (seconds in config.duelClockOptionsSeconds) {
+            assertEquals(seconds * 1_000L, config.copy(duelClockSeconds = seconds).timeLimitMs(GameMode.DUEL))
+        }
+    }
+
+    @Test
+    fun `duel clock must be one of the options`() {
+        assertFailsWith<IllegalArgumentException> { GameConfig(duelClockSeconds = 150) }
+        assertFailsWith<IllegalArgumentException> { config.copy(duelClockSeconds = 0) }
     }
 
     @Test

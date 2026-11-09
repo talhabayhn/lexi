@@ -206,6 +206,8 @@
     <string name="duel_player_change_description">%1$s: change name</string>
     <string name="duel_level_label">LEVEL</string>
     <string name="duel_time_label">TIME PER PLAYER</string>
+    <!-- Duel setup clock option per player in whole minutes ("3 min · 5 min · 7 min") -->
+    <string name="duel_clock_option_minutes">%1$d min</string>
     <string name="duel_rules_note">Keep answering right and the turn stays yours. A wrong answer or a pass hands it over. No jokers in this mode.</string>
     <string name="duel_start">START</string>
     <string name="duel_name_title">Player name</string>

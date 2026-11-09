@@ -51,7 +51,7 @@ class DuelViewModelTest {
     private val speaker = FakeSpeaker()
     private val analytics = FakeAnalyticsTracker()
     private val crashReporter = FakeCrashReporter()
-    private val route = DuelRoute(Level.A1, clockSeconds = 90, names = listOf("Ayşe", ""))
+    private val route = DuelRoute(Level.A1, clockSeconds = 180, names = listOf("Ayşe", ""))
 
     @BeforeTest
     fun setUp() {
@@ -66,8 +66,9 @@ class DuelViewModelTest {
     private fun TestScope.viewModel(
         handle: SavedStateHandle = SavedStateHandle(),
         repository: FakeCardRepository = cards,
+        duelRoute: DuelRoute = route,
     ) = DuelViewModel(
-        route = route,
+        route = duelRoute,
         handle = handle,
         loader = DuelLoader(repository, config, SeedSource { SEED }, cpu = StandardTestDispatcher(testScheduler)),
         settings = settings,
@@ -151,10 +152,10 @@ class DuelViewModelTest {
         assertEquals(0, state.activePlayer)
         assertEquals(listOf("Ayşe", ""), state.players.map { it.name })
         val handover = assertNotNull(state.handover)
-        assertEquals(90_000L, handover.remainingMs)
+        assertEquals(180_000L, handover.remainingMs)
         assertNull(handover.previous)
-        assertEquals(listOf(90_000L, 90_000L), state.players.map { it.remainingMs })
-        assertEquals(listOf<AnalyticsEvent>(AnalyticsEvent.DuelStart(90)), analytics.events)
+        assertEquals(listOf(180_000L, 180_000L), state.players.map { it.remainingMs })
+        assertEquals(listOf<AnalyticsEvent>(AnalyticsEvent.DuelStart(180)), analytics.events)
     }
 
     @Test
@@ -164,8 +165,8 @@ class DuelViewModelTest {
         advance(3_000)
 
         assertEquals(MatchPhase.PLAYING, vm.state.value.phase)
-        assertEquals(87_000L, vm.clock.value.remainingMs)
-        assertEquals(90_000L, vm.remainingMs(1))
+        assertEquals(177_000L, vm.clock.value.remainingMs)
+        assertEquals(180_000L, vm.remainingMs(1))
         assertFalse(vm.state.value.board.jokers.any { it.enabled })
         assertFalse(vm.state.value.board.canRestart)
     }
@@ -199,7 +200,7 @@ class DuelViewModelTest {
         val stopped = vm.remainingMs(0)
         advance(4_000)
         assertEquals(stopped, vm.remainingMs(0))
-        assertEquals(90_000L, vm.state.value.handover?.remainingMs)
+        assertEquals(180_000L, vm.state.value.handover?.remainingMs)
     }
 
     @Test
@@ -226,8 +227,8 @@ class DuelViewModelTest {
         advance(1_000)
 
         assertEquals(1, vm.state.value.activePlayer)
-        assertEquals(89_000L, vm.clock.value.remainingMs)
-        assertEquals(88_000L, vm.remainingMs(0))
+        assertEquals(179_000L, vm.clock.value.remainingMs)
+        assertEquals(178_000L, vm.remainingMs(0))
     }
 
     @Test
@@ -241,11 +242,11 @@ class DuelViewModelTest {
         advance(10_000)
 
         assertTrue(vm.state.value.board.isPaused)
-        assertEquals(89_000L, vm.clock.value.remainingMs)
+        assertEquals(179_000L, vm.clock.value.remainingMs)
 
         vm.board(GameIntent.Resume)
         advance(1_000)
-        assertEquals(88_000L, vm.clock.value.remainingMs)
+        assertEquals(178_000L, vm.clock.value.remainingMs)
     }
 
     @Test
@@ -275,6 +276,26 @@ class DuelViewModelTest {
     }
 
     @Test
+    fun `a clock that is no longer offered plays and reports the default 5 min`() = runTest {
+        // Regression (1.0.11): a route saved with the old 150 s clock must not carry 150 into the outcome.
+        val vm = viewModel(duelRoute = route.copy(clockSeconds = 150)).also {
+            runCurrent()
+            it.onIntent(DuelIntent.Board(GameIntent.Foreground))
+        }
+        assertEquals(300_000L, vm.state.value.handover?.remainingMs)
+        vm.effects.test {
+            vm.onIntent(DuelIntent.Ready)
+            vm.board(GameIntent.Pause)
+            vm.board(GameIntent.RequestQuit)
+            vm.board(GameIntent.Forfeit)
+
+            assertEquals(300, awaitResult().outcome.clockSeconds)
+            cancelAndIgnoreRemainingEvents()
+        }
+        assertEquals(AnalyticsEvent.DuelStart(300), analytics.events.first())
+    }
+
+    @Test
     fun `giving up on the handover card ends the match and the other player wins`() = runTest {
         val vm = loaded()
         vm.effects.test {
@@ -288,7 +309,7 @@ class DuelViewModelTest {
             assertEquals(DuelEnd.FORFEIT, outcome.end)
             assertEquals(0, outcome.winner)
             assertEquals(listOf("Ayşe", ""), outcome.players.map { it.name })
-            assertEquals(90, outcome.clockSeconds)
+            assertEquals(180, outcome.clockSeconds)
             cancelAndIgnoreRemainingEvents()
         }
         assertEquals(
@@ -329,12 +350,12 @@ class DuelViewModelTest {
             vm.effects.test {
                 vm.onIntent(DuelIntent.Ready)
                 vm.type(vm.answer)
-                advance(90_000)
+                advance(180_000)
                 assertEquals(MatchPhase.HANDOVER, vm.state.value.phase)
                 assertEquals(true, vm.state.value.handover?.previousTimeUp)
 
                 vm.onIntent(DuelIntent.Ready)
-                advance(90_000)
+                advance(180_000)
 
                 val outcome = awaitResult().outcome
                 assertEquals(DuelEnd.TIME_UP, outcome.end)

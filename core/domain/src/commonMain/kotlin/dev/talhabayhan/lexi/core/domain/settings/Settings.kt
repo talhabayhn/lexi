@@ -60,7 +60,7 @@ public data class Settings(
 
     public companion object {
         public const val DEFAULT_CLASSIC_TIME_LIMIT_SECONDS: Int = 180
-        public const val DEFAULT_DUEL_CLOCK_SECONDS: Int = 150
+        public const val DEFAULT_DUEL_CLOCK_SECONDS: Int = 300
         public const val DEFAULT_REMINDER_MINUTE_OF_DAY: Int = ReminderTimes.DEFAULT_MINUTE
         public const val MINUTES_PER_DAY: Int = 24 * 60
     }

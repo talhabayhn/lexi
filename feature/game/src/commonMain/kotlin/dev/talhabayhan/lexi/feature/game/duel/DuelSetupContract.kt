@@ -2,6 +2,7 @@ package dev.talhabayhan.lexi.feature.game.duel
 
 import androidx.compose.runtime.Immutable
 import dev.talhabayhan.lexi.core.domain.model.Level
+import dev.talhabayhan.lexi.core.domain.settings.Settings
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.persistentListOf
 
@@ -12,7 +13,7 @@ internal data class DuelSetupUiState(
     val isLoaded: Boolean = false,
     val names: ImmutableList<String> = persistentListOf("", ""),
     val level: Level = Level.A1,
-    val clockSeconds: Int = 150,
+    val clockSeconds: Int = Settings.DEFAULT_DUEL_CLOCK_SECONDS,
     val clockOptionsSeconds: ImmutableList<Int> = persistentListOf(),
     /** The name dialog is open for this player (0-based); null when closed. */
     val editingPlayer: Int? = null,

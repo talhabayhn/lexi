@@ -67,7 +67,7 @@ class SettingsRepositoryTest {
             accent = Accent.UK,
             duelPlayerNames = listOf("Ayşe", ""),
             duelLevel = Level.B2,
-            duelClockSeconds = 240,
+            duelClockSeconds = 420,
         )
 
         repository.settings.test {
@@ -108,6 +108,16 @@ class SettingsRepositoryTest {
         val settings = SettingsRepositoryImpl(dataStore, GameConfig(), backgroundScope).settings.first()
 
         assertEquals(listOf("Bir çok uzun", "Can"), settings.duelPlayerNames)
+    }
+
+    @Test
+    fun `duel clock stored before the 3-5-7 min options falls back to 5 min`() = runTest {
+        val dataStore = createSettingsDataStore(path, backgroundScope)
+        dataStore.edit { it[intPreferencesKey("duel_clock_seconds")] = 150 }
+
+        val settings = SettingsRepositoryImpl(dataStore, GameConfig(), backgroundScope).settings.first()
+
+        assertEquals(300, settings.duelClockSeconds)
     }
 
     @Test

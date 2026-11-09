@@ -68,8 +68,9 @@ class MatchEngineTest {
         first: Wheel = wheelOf("APPLE", "BREAD", "CHAIR"),
         second: Wheel = wheelOf("DOG", "EGG", "FISH"),
         seed: Long = 9L,
+        clockSeconds: Int = GameConfig().duelClockSeconds,
     ): Duel {
-        val engine = MatchEngine()
+        val engine = MatchEngine(GameConfig(duelClockSeconds = clockSeconds))
         return Duel(engine.newMatch(seed = seed, level = Level.A1, wheels = listOf(first, second)), engine)
     }
 
@@ -101,10 +102,58 @@ class MatchEngineTest {
     }
 
     @Test
-    fun `each player has a 150 s clock`() {
-        val game = duel().begin()
+    fun `each player has a 300 s clock by default`() {
+        val game = duel().begin().pass().begin()
 
-        assertEquals(150_000L, game.active.remainingMs)
+        assertEquals(300_000L, game.state.players[0].remainingMs)
+        assertEquals(300_000L, game.state.players[1].remainingMs)
+    }
+
+    @Test
+    fun `both players get the clock chosen in the setup`() {
+        for (seconds in listOf(180, 300, 420)) {
+            val game = duel(clockSeconds = seconds).begin().pass().begin()
+
+            assertEquals(seconds * 1_000L, game.state.players[0].remainingMs)
+            assertEquals(seconds * 1_000L, game.state.players[1].remainingMs)
+        }
+    }
+
+    @Test
+    fun `clock runs out exactly at the chosen time`() {
+        for (seconds in listOf(180, 300, 420)) {
+            val game = duel(clockSeconds = seconds).begin().play(GameEvent.Tick(seconds * 1_000L - 1L))
+            assertEquals(GameStatus.PLAYING, game.state.players[0].status)
+            assertEquals(1L, game.state.players[0].remainingMs)
+
+            game.play(GameEvent.Tick(1L))
+
+            assertEquals(GameOverReason.TIME_UP, game.state.players[0].summary?.reason)
+            assertEquals(0L, game.state.players[0].summary?.remainingMs)
+            assertEquals(1, game.state.activePlayer)
+            assertEquals(MatchPhase.HANDOVER, game.state.phase)
+        }
+    }
+
+    @Test
+    fun `match ends when both chosen clocks run out`() {
+        val game = duel(clockSeconds = 180).begin().play(GameEvent.Tick(180_000L)).begin().answer()
+            .play(GameEvent.Tick(180_000L))
+
+        assertEquals(MatchPhase.FINISHED, game.state.phase)
+        assertEquals(MatchEndReason.ALL_FINISHED, game.state.result?.reason)
+        assertEquals(1, game.state.result?.winner)
+    }
+
+    @Test
+    fun `same seed clock and events give the same match`() {
+        fun replay(seconds: Int) = duel(clockSeconds = seconds).begin().answer().play(GameEvent.Tick(7_000L)).pass()
+            .begin().wrongAndWait().begin().play(GameEvent.Tick(2_500L)).state
+
+        for (seconds in listOf(180, 300, 420)) {
+            assertEquals(replay(seconds), replay(seconds))
+        }
+        assertNotEquals(replay(180), replay(420))
     }
 
     @Test
@@ -160,21 +209,21 @@ class MatchEngineTest {
     fun `clock runs only on the active player's turn`() {
         val game = duel().begin().play(GameEvent.Tick(10_000L)).pass().begin().play(GameEvent.Tick(3_000L))
 
-        assertEquals(140_000L, game.state.players[0].remainingMs)
-        assertEquals(147_000L, game.state.players[1].remainingMs)
+        assertEquals(290_000L, game.state.players[0].remainingMs)
+        assertEquals(297_000L, game.state.players[1].remainingMs)
     }
 
     @Test
     fun `clock stands still during the handover`() {
         val game = duel().begin().pass().play(GameEvent.Tick(10_000L)).begin()
 
-        assertEquals(150_000L, game.state.players[0].remainingMs)
-        assertEquals(150_000L, game.state.players[1].remainingMs)
+        assertEquals(300_000L, game.state.players[0].remainingMs)
+        assertEquals(300_000L, game.state.players[1].remainingMs)
     }
 
     @Test
     fun `player whose clock runs out hands over to the other`() {
-        val game = duel().begin().play(GameEvent.Tick(150_000L))
+        val game = duel().begin().play(GameEvent.Tick(300_000L))
 
         assertEquals(GameOverReason.TIME_UP, game.state.players[0].summary?.reason)
         assertEquals(1, game.state.activePlayer)
@@ -209,7 +258,7 @@ class MatchEngineTest {
 
     @Test
     fun `match ends when both clocks are at 0`() {
-        val game = duel().begin().play(GameEvent.Tick(150_000L)).begin().answer().play(GameEvent.Tick(150_000L))
+        val game = duel().begin().play(GameEvent.Tick(300_000L)).begin().answer().play(GameEvent.Tick(300_000L))
 
         assertEquals(MatchPhase.FINISHED, game.state.phase)
         assertEquals(1, game.state.result?.winner)
@@ -217,7 +266,7 @@ class MatchEngineTest {
 
     @Test
     fun `events after the match are ignored`() {
-        val game = duel().begin().play(GameEvent.Tick(150_000L)).begin().play(GameEvent.Tick(150_000L))
+        val game = duel().begin().play(GameEvent.Tick(300_000L)).begin().play(GameEvent.Tick(300_000L))
         val before = game.state
 
         game.begin().play(GameEvent.Pass)
@@ -251,7 +300,7 @@ class MatchEngineTest {
         val summary = checkNotNull(game.state.players[1].summary)
         assertEquals(GameOverReason.FORFEIT, summary.reason)
         assertEquals(3, summary.wrong)
-        assertEquals(150_000L, summary.remainingMs)
+        assertEquals(300_000L, summary.remainingMs)
     }
 
     @Test
