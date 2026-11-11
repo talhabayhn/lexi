@@ -131,8 +131,4 @@ public object Srs {
     /** Drives the home and notebook badges. */
     public fun dueCount(progress: Collection<CardProgress>, todayEpochDay: Long): Int =
         progress.count { it.isDue(todayEpochDay) }
-
-    /** "Zor" tab: cards with ≥ [HARD_WRONGS] wrong answers, by id. */
-    public fun hardCards(progress: Collection<CardProgress>): List<CardId> =
-        progress.filter { it.wrong >= HARD_WRONGS }.map { it.cardId }.sortedBy { it.value }
 }

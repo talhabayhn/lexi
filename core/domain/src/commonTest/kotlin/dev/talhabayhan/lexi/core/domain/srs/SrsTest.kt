@@ -131,17 +131,6 @@ class SrsTest {
     }
 
     @Test
-    fun `hard cards have at least 2 wrongs`() {
-        val cards = listOf(
-            CardProgress(CardId("a"), box = 0, dueEpochDay = today, wrong = 2),
-            CardProgress(CardId("b"), box = 0, dueEpochDay = today, wrong = 1),
-            CardProgress(CardId("c"), box = 3, dueEpochDay = today, wrong = 5),
-        )
-
-        assertEquals(listOf("a", "c"), Srs.hardCards(cards).map { it.value })
-    }
-
-    @Test
     fun `results of a finished game come from the final slot states`() {
         val game = play("APPLE", "BREAD", "CHAIR", "DOG").answer().answerWrongAndWait().send(GameEvent.Pass)
             .send(GameEvent.Tick(180_000L))
