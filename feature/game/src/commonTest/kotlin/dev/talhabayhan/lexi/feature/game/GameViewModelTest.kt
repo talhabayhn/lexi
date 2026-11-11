@@ -8,6 +8,7 @@ import app.cash.turbine.test
 import dev.talhabayhan.lexi.core.designsystem.component.AnswerSlotState
 import dev.talhabayhan.lexi.core.designsystem.component.WheelLetterState
 import dev.talhabayhan.lexi.core.domain.config.FeatureFlags
+import dev.talhabayhan.lexi.core.domain.daily.DailyAttempt
 import dev.talhabayhan.lexi.core.domain.daily.GetDailyWheel
 import dev.talhabayhan.lexi.core.domain.game.GameConfig
 import dev.talhabayhan.lexi.core.domain.game.GameEngine
@@ -21,6 +22,7 @@ import dev.talhabayhan.lexi.core.domain.model.CardId
 import dev.talhabayhan.lexi.core.domain.model.CategoryId
 import dev.talhabayhan.lexi.core.domain.model.ExamPackId
 import dev.talhabayhan.lexi.core.domain.model.Level
+import dev.talhabayhan.lexi.core.domain.repository.DailyRepository
 import dev.talhabayhan.lexi.core.domain.repository.JokerRepository
 import dev.talhabayhan.lexi.core.domain.repository.SessionRepository
 import dev.talhabayhan.lexi.core.domain.session.FinishGame
@@ -107,13 +109,14 @@ class GameViewModelTest {
         seeds: SeedSource = SeedSource { SEED },
         getDailyWheel: GetDailyWheel? = null,
         preparer: GamePreparer? = null,
+        dailyRepository: DailyRepository? = null,
     ): GameViewModel = GameViewModel(
         route = gameRoute,
         handle = handle,
         loader = loader(jokerRepository, seeds, getDailyWheel),
         jokers = jokerRepository,
         settings = settings,
-        finishGame = FinishGame(sessionRepository, progress, appClock, config),
+        finishGame = FinishGame(sessionRepository, progress, appClock, config, daily = dailyRepository),
         appClock = appClock,
         speaker = speaker,
         config = config,
@@ -122,6 +125,7 @@ class GameViewModelTest {
         crashReporter = crashReporter,
         flags = flags,
         preparer = preparer,
+        dailyAttempt = dailyRepository?.let { DailyAttempt(it, appClock) },
     )
 
     /** The loader's CPU work runs on the test scheduler too, so `runCurrent` completes a load. */
@@ -1674,6 +1678,64 @@ class GameViewModelTest {
         assertNull(vm.state.value.loadError)
         assertFalse(vm.state.value.isLoading)
         assertEquals(26, vm.state.value.wheel.size)
+    }
+
+    /** A Daily screen over the alphabet pools of every level, its attempts in [dailyRepo]. */
+    private fun TestScope.dailyViewModel(dailyRepo: FakeDailyRepository): GameViewModel {
+        val pool = FakeCardRepository(Level.entries.flatMap { dev.talhabayhan.lexi.core.testing.testAlphabetPool(it) })
+        return viewModel(
+            handle = routeHandle(mapOf("mode" to "DAILY")),
+            gameRoute = GameRoute.daily(),
+            getDailyWheel = GetDailyWheel(pool, FakeContentVersionRepository(1), dailyRepo, appClock),
+            dailyRepository = dailyRepo,
+        ).also { runCurrent() }
+    }
+
+    // Regression (owner decision D1, GAME_RULES.md §5): killing the app must not give a second Daily attempt.
+    @Test
+    fun `a started daily counts as played today with its progress when the app is killed`() = runTest {
+        val dailyRepo = FakeDailyRepository()
+        val today = appClock.epochDay(appClock.nowMs())
+        val vm = dailyViewModel(dailyRepo)
+        assertNull(dailyRepo.get(today), "not an attempt before Start")
+
+        vm.onIntent(GameIntent.Foreground)
+        runCurrent()
+        assertEquals(0, assertNotNull(dailyRepo.get(today), "counts at Start").score)
+
+        vm.type("AXY")
+        appClock.advanceBy(30_000L)
+        vm.onIntent(GameIntent.Background)
+        runCurrent()
+        val progress = assertNotNull(dailyRepo.get(today))
+        assertTrue(vm.state.value.score > 0)
+        assertEquals(vm.state.value.score, progress.score, "the score so far")
+        assertEquals(30_000L, progress.timeMs)
+
+        // The app is killed here: the next Daily screen finds the day played.
+        val next = dailyViewModel(dailyRepo)
+        next.effects.test { assertEquals(GameEffect.Abandoned, awaitItem()) }
+    }
+
+    @Test
+    fun `a daily wheel is filed under the day it was built for`() = runTest {
+        val dailyRepo = FakeDailyRepository()
+        val wheelDay = appClock.epochDay(appClock.nowMs())
+        appClock.currentMs = (wheelDay + 1) * FakeAppClock.MS_PER_DAY - 60_000L // 23:59
+        val vm = dailyViewModel(dailyRepo)
+        appClock.advanceBy(2 * 60_000L) // started at 00:01 of the next day
+
+        vm.effects.test {
+            vm.onIntent(GameIntent.Foreground)
+            vm.onIntent(GameIntent.Pause)
+            vm.onIntent(GameIntent.RequestQuit)
+            vm.onIntent(GameIntent.Forfeit)
+            awaitResult()
+            cancelAndIgnoreRemainingEvents()
+        }
+
+        assertNotNull(dailyRepo.get(wheelDay))
+        assertNull(dailyRepo.get(wheelDay + 1))
     }
 
     // endregion

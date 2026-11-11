@@ -3,6 +3,7 @@ package dev.talhabayhan.lexi.di
 import androidx.compose.runtime.Composable
 import dev.talhabayhan.lexi.core.data.db.BundledContentDb
 import dev.talhabayhan.lexi.core.data.di.dataModule
+import dev.talhabayhan.lexi.core.domain.daily.DailyAttempt
 import dev.talhabayhan.lexi.core.domain.daily.GetDailyWheel
 import dev.talhabayhan.lexi.core.domain.game.GameConfig
 import dev.talhabayhan.lexi.core.domain.goal.GetDailyGoalProgress
@@ -42,6 +43,7 @@ internal val appCoreModule: Module = module {
     factory { FinishGame(sessions = get(), progress = get(), clock = get(), config = get(), daily = get()) }
     factory { GrantDailyJokers(jokers = get(), streaks = get(), clock = get(), config = get()) }
     factory { GetDailyWheel(cards = get(), contentVersion = get(), daily = get(), clock = get()) }
+    factory { DailyAttempt(daily = get(), clock = get()) }
     factory { GetStreakStatus(streaks = get(), clock = get()) }
     factory { GetDailyGoalProgress(sessions = get(), settings = get(), clock = get()) }
     // Haptics, SoundPlayer and Speaker are bound per platform (rememberPlatformModule) on top of this snapshot.

@@ -41,9 +41,15 @@ public class FinishGame(
 
     /**
      * Records [finished] (status FINISHED) once. [category] is the wheel's category (null for review, daily and
-     * level-test wheels); the engine state doesn't carry it.
+     * level-test wheels); the engine state doesn't carry it. [dailyEpochDay] is the day a Daily wheel was built for
+     * (`DailyPlayState.Ready.epochDay`); its final result replaces the attempt stored at `Start` (`DailyAttempt`).
+     * Without it the start day is used.
      */
-    public suspend operator fun invoke(finished: GameState, category: CategoryId?): SessionResult = mutex.withLock {
+    public suspend operator fun invoke(
+        finished: GameState,
+        category: CategoryId?,
+        dailyEpochDay: Long? = null,
+    ): SessionResult = mutex.withLock {
         require(finished.status == GameStatus.FINISHED) { "only finished games are recorded (${finished.status})" }
         val first = game
         check(first == null || first == finished) { "FinishGame records one game; use a new instance per game" }
@@ -61,15 +67,14 @@ public class FinishGame(
         }
         if (!dailyRecorded && result.mode == GameMode.DAILY) {
             val dailyRepo = checkNotNull(daily) { "DailyRepository is required for DAILY mode" }
-            val dailyEpochDay = clock.epochDay(result.startedAtMs)
             val dailyResult = DailyResult(
-                epochDay = dailyEpochDay,
+                epochDay = dailyEpochDay ?: clock.epochDay(result.startedAtMs),
                 level = null,
                 score = result.score,
                 timeMs = result.endedAtMs - result.startedAtMs,
                 shareCode = null,
             )
-            dailyRepo.record(dailyResult)
+            dailyRepo.save(dailyResult)
             dailyRecorded = true
         }
         result

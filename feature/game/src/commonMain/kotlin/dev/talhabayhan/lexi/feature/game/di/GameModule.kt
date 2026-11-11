@@ -67,6 +67,7 @@ val gameModule: Module = module {
             crashReporter = get(),
             flags = get(),
             preparer = get(),
+            dailyAttempt = get(),
         )
     }
     viewModel {

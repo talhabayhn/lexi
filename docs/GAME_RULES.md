@@ -126,7 +126,12 @@ doesn't apply), its time jokers cost seconds like Classic, and the first WRONG e
 total); a pass doesn't end it.
 Daily in the app (M6): ONE shared mixed-level wheel for all players (26 slots, fixed distribution: A1 ×6, A2 ×5,
 B1 ×5, B2 ×4, C1 ×3, NAT ×3, deterministically shuffled by seed). One scored attempt per local day, resetting at
-local midnight. Passes have no penalty in Daily mode. Rule changes to wheel generation (e.g. the `STARTS`
+local midnight. The attempt counts at `Start` (owner decision 2026-11-11, `DailyAttempt`): it is stored with 0 points
+at `Start`, replaced with the progress so far whenever the game goes to the background and with the final result at
+the end. A game killed in between (no restore) stays played for that day with the progress last stored, as if its
+time had run out then (score so far, no time bonus; no session, streak or SRS update, since the game never ended).
+The attempt belongs to the day its wheel was built for, so a wheel loaded at 23:59 and started at 00:01 counts for
+the earlier day. Passes have no penalty in Daily mode. Rule changes to wheel generation (e.g. the `STARTS`
 preference, §1) are not versioned in the daily seed: a started daily game is saved with its card ids and an
 already played day is stored, so only not-yet-started days get the new wheel, the same for every player on that
 app version (like a `contentVersion` change). Players on older app versions get a different wheel that day; daily

@@ -197,6 +197,18 @@ internal class DailyRepositoryImpl(databases: Databases, io: CoroutineDispatcher
         }
     }
 
+    override suspend fun save(result: DailyResult) {
+        write {
+            dailyResultQueries.replace(
+                epoch_day = result.epochDay,
+                level = result.level?.name ?: SHARED_SENTINEL,
+                score = result.score.toLong(),
+                time_ms = result.timeMs,
+                share_code = result.shareCode,
+            )
+        }
+    }
+
     private companion object {
         const val SHARED_SENTINEL = "SHARED"
 

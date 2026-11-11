@@ -48,7 +48,10 @@ public interface StreakRepository {
     public fun observeDays(): Flow<List<Long>>
 }
 
-/** The Daily wheel's one scored attempt per day (`GAME_RULES.md` §5). */
+/**
+ * The Daily wheel's one scored attempt per day (`GAME_RULES.md` §5): stored at `Start` ([record]), then replaced with
+ * the progress and the final result ([save], see `DailyAttempt`).
+ */
 public interface DailyRepository {
     /** Observes the daily attempt for [epochDay], or null if not yet played. */
     public fun observe(epochDay: Long): Flow<DailyResult?>
@@ -58,6 +61,9 @@ public interface DailyRepository {
 
     /** Stores the day's attempt; returns false and changes nothing when the day was already played. */
     public suspend fun record(result: DailyResult): Boolean
+
+    /** Stores or replaces the attempt of `result.epochDay` (the running attempt's progress, its final result). */
+    public suspend fun save(result: DailyResult)
 
     /** Backward-compatible overload observing [epochDay] (ignoring level). */
     public fun observe(epochDay: Long, level: Level): Flow<DailyResult?> = observe(epochDay)

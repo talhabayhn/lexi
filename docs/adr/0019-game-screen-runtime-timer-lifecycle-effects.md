@@ -99,7 +99,10 @@ kotlinx-datetime.
 - New engine property test (tick additivity) and new domain types (`AppClock`, `Speaker`, `FinishGame`).
 - Orientation: the app is portrait-only (all designs are portrait; Android `screenOrientation=portrait`,
   iOS `UISupportedInterfaceOrientations` portrait). Owner decision: v1.0 is iPhone-only (`TARGETED_DEVICE_FAMILY = 1`). `configChanges` above still covers fold/multi-window resizes.
-- Open (M6): for the Daily wheel, whether an attempt counts at `Start` (otherwise killing the app could replay it).
+- Resolved (was Open M6, owner decision 2026-11-11): a Daily attempt counts at `Start`. `DailyAttempt` stores it with
+  0 points at `Start` and the progress so far on every background (the `ON_PAUSE` flush), `FinishGame` the final
+  result, all under the day the wheel was built for (`DailyPlayState.Ready.epochDay`, kept in the `SavedStateHandle`);
+  killing the app no longer gives a second attempt (`GAME_RULES.md` §5).
 - Resolved (was Open M7, 2026-11-11): `FinishGame` is idempotent across instances. `SessionRepository.record` stores a
   game (mode + seed + `startedAtMs`, checked in the insert's transaction, no schema change) only once and reports
   whether it was newly stored; only that call applies the SRS update. A finished game restored after a process death

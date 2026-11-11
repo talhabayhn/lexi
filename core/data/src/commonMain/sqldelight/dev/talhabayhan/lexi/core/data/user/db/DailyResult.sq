@@ -12,6 +12,10 @@ CREATE TABLE daily_result(
 insertIfAbsent:
 INSERT OR IGNORE INTO daily_result(epoch_day, level, score, time_ms, share_code) VALUES (?, ?, ?, ?, ?);
 
+-- The running attempt's progress and its final result replace the row stored at Start.
+replace:
+INSERT OR REPLACE INTO daily_result(epoch_day, level, score, time_ms, share_code) VALUES (?, ?, ?, ?, ?);
+
 byDayAndLevel:
 SELECT * FROM daily_result WHERE epoch_day = ? AND level = ?;
 

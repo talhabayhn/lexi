@@ -223,6 +223,23 @@ class FinishGameTest {
     }
 
     @Test
+    fun `a daily game is filed under the wheel's day and replaces the attempt stored at start`() = runTest {
+        val wheelDay = 20_740L
+        val daily = FakeDailyRepository(listOf(DailyResult(epochDay = wheelDay, score = 0, timeMs = 0L)))
+        // Loaded at 23:59 of the wheel's day, started and finished on the next day.
+        val startMs = (wheelDay + 1) * FakeAppClock.MS_PER_DAY + 60_000L
+        clock.currentMs = startMs + 90_000L
+        var state = engine.newGame(SEED, GameMode.DAILY, Level.A1, testWheel("APPLE", "BREAD"))
+        state = engine.reduce(state, GameEvent.Start(timestampMs = startMs)).state
+        state = engine.reduce(state, GameEvent.Forfeit).state
+
+        FinishGame(sessions, progress, clock, config, daily = daily)(state, category = null, dailyEpochDay = wheelDay)
+
+        assertEquals(DailyResult(epochDay = wheelDay, score = 0, timeMs = 90_000L), daily.get(wheelDay))
+        assertEquals(null, daily.get(wheelDay + 1))
+    }
+
+    @Test
     fun `finishing a daily game without DailyRepository fails loudly`() = runTest {
         val finish = FinishGame(sessions, progress, clock, config, daily = null)
         val game = finishedGame(GameMode.DAILY)

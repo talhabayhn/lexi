@@ -186,6 +186,22 @@ class UserRepositoriesTest {
         assertNull(daily.get(20_001))
     }
 
+    @Test
+    fun `save replaces the day's attempt and leaves other days alone`() = runTest(io) {
+        val daily = DailyRepositoryImpl(db.databases, io)
+        val started = DailyResult(epochDay = 20_000, score = 0, timeMs = 0)
+        val yesterday = DailyResult(epochDay = 19_999, score = 150, timeMs = 120_000)
+        daily.record(yesterday)
+        assertTrue(daily.record(started))
+
+        daily.save(started.copy(score = 40, timeMs = 30_000))
+        daily.save(started.copy(score = 310, timeMs = 95_000))
+
+        assertEquals(started.copy(score = 310, timeMs = 95_000), daily.get(20_000))
+        assertEquals(yesterday, daily.get(19_999))
+        assertFalse(daily.record(started), "still one attempt per day")
+    }
+
     // Jokers
 
     @Test

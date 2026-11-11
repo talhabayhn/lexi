@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import co.touchlab.kermit.Logger
 import dev.talhabayhan.lexi.core.domain.config.FeatureFlags
+import dev.talhabayhan.lexi.core.domain.daily.DailyAttempt
 import dev.talhabayhan.lexi.core.domain.feedback.Speaker
 import dev.talhabayhan.lexi.core.domain.game.EngineEffect
 import dev.talhabayhan.lexi.core.domain.game.GameConfig
@@ -82,6 +83,8 @@ internal class GameViewModel(
     private val flags: FeatureFlags = FeatureFlags(),
     /** A new game prepared before the navigation ([GamePreparer]); taken once, unless a saved game is restored. */
     preparer: GamePreparer? = null,
+    /** Stores the Daily attempt from `Start` on (`GAME_RULES.md` §5); required for Daily games. */
+    private val dailyAttempt: DailyAttempt? = null,
 ) : ViewModel() {
     private val mutableState = MutableStateFlow(GameUiState())
     val state: StateFlow<GameUiState> = mutableState.asStateFlow()
@@ -106,6 +109,9 @@ internal class GameViewModel(
 
     /** Joker use writes run one after another (ADR 0019). */
     private val jokerSaves = Mutex()
+
+    /** Daily attempt writes (start, progress, final result) run one after another, in the order they were made. */
+    private val dailyWrites = Mutex()
 
     /** The running [load], so a double tap on "Tekrar dene" loads once. */
     private var loading: Job? = null
@@ -176,6 +182,8 @@ internal class GameViewModel(
                 foreground = false
                 input(GameEvent.Pause)
                 stopSpeaking()
+                // The app may be killed now: the Daily attempt keeps the progress so far (GAME_RULES.md §5).
+                session?.state?.let { current -> writeDaily("daily progress not saved") { progress(current, it) } }
             }
 
             GameIntent.Foreground -> {
@@ -294,6 +302,7 @@ internal class GameViewModel(
                 session = opened.session
                 handle[KEY_CLASSIC_LIMIT] = opened.engine.config.classicTimeLimitSeconds
                 opened.snapshot?.let { handle[KEY_GAME] = it }
+                opened.dailyEpochDay?.let { handle[KEY_DAILY_DAY] = it }
                 val state = opened.session.state
                 publish(state, opened.ui)
                 when {
@@ -328,6 +337,8 @@ internal class GameViewModel(
             val started = current.state
             if (started.status == GameStatus.PLAYING) {
                 analytics.track(AnalyticsEvent.GameStart(started.mode, started.level))
+                // The Daily attempt counts from here (GAME_RULES.md §5).
+                if (started.mode == GameMode.DAILY) writeDaily("daily start not saved") { started(it) }
             }
         }
     }
@@ -465,6 +476,29 @@ internal class GameViewModel(
     }
 
     /**
+     * A Daily attempt write for the wheel's day ([KEY_DAILY_DAY]), at once (undispatched), not cancellable and in
+     * order; a failure is logged and reported, the game goes on.
+     */
+    private fun writeDaily(what: String, write: suspend DailyAttempt.(epochDay: Long) -> Unit) {
+        val attempt = dailyAttempt ?: return
+        val day = handle.get<Long>(KEY_DAILY_DAY) ?: return
+        viewModelScope.launch(start = CoroutineStart.UNDISPATCHED) {
+            withContext(NonCancellable) {
+                dailyWrites.withLock {
+                    try {
+                        attempt.write(day)
+                    } catch (e: CancellationException) {
+                        throw e
+                    } catch (e: Exception) {
+                        log.e(e) { what }
+                        crashReporter.recordException(e, what)
+                    }
+                }
+            }
+        }
+    }
+
+    /**
      * Records the game exactly once (one retry after a storage failure), then leaves for the result. The saved
      * snapshot is removed only after [FinishGame] succeeded. [track] sends `game_finish` (`docs/ANALYTICS.md`).
      */
@@ -482,7 +516,8 @@ internal class GameViewModel(
         viewModelScope.launch {
             // The snapshot goes in the same non-cancellable step, also when the screen is closed meanwhile.
             val recorded = withContext(NonCancellable) {
-                record(final, category).also { if (it) handle.remove<String>(KEY_GAME) }
+                // After any Daily progress write still running, so the final result is the one that stays.
+                dailyWrites.withLock { record(final, category) }.also { if (it) handle.remove<String>(KEY_GAME) }
             }
             val result = ResultRoute.of(final, route.categoryId, recorded, route.packId)
             effectChannel.send(GameEffect.NavigateToResult(result))
@@ -493,7 +528,7 @@ internal class GameViewModel(
     private suspend fun record(final: GameState, category: CategoryId?): Boolean {
         repeat(FINISH_ATTEMPTS) { attempt ->
             try {
-                finishGame(final, category = category)
+                finishGame(final, category = category, dailyEpochDay = handle.get<Long>(KEY_DAILY_DAY))
                 return true
             } catch (e: CancellationException) {
                 throw e
@@ -568,8 +603,12 @@ internal class GameViewModel(
 
         private val log = Logger.withTag("GameViewModel")
 
-        /** [SavedStateHandle] keys: the [SavedGame] JSON and the Classic time limit the game started with. */
+        /**
+         * [SavedStateHandle] keys: the [SavedGame] JSON, the Classic time limit the game started with and the day a
+         * Daily wheel was built for.
+         */
         const val KEY_GAME: String = "game.saved"
         const val KEY_CLASSIC_LIMIT: String = "game.classicLimitSeconds"
+        const val KEY_DAILY_DAY: String = "game.dailyEpochDay"
     }
 }

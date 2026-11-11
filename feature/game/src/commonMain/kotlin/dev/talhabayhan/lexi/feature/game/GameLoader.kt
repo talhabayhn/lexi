@@ -31,6 +31,7 @@ internal sealed interface Opened {
     /**
      * A playable game: [ui] is its first screen state ([GameUiMapper.map]); [snapshot] is the [SavedGameCodec] JSON
      * of a new game for the `SavedStateHandle` (null for a restored game, whose snapshot is already there).
+     * [dailyEpochDay] is the day a new Daily wheel was built for (`DailyPlayState.Ready.epochDay`), null otherwise.
      */
     data class Ready(
         val engine: GameEngine,
@@ -38,6 +39,7 @@ internal sealed interface Opened {
         val restored: Boolean,
         val ui: GameUiState,
         val snapshot: String?,
+        val dailyEpochDay: Long? = null,
     ) : Opened
 
     data object Abandoned : Opened
@@ -107,6 +109,7 @@ internal class GameLoader(
         var seed = seeds.nextSeed()
         val random = SeededRandom(seed).derive(WheelGenerator.SEED_PURPOSE)
         var level = route.gameLevel
+        var dailyEpochDay: Long? = null
         val wheel = when {
             mode == GameMode.REVIEW -> {
                 // Review (GAME_RULES.md §1, §10): the due notebook cards of any level; the route's level is a placeholder.
@@ -122,6 +125,7 @@ internal class GameLoader(
                 when (val dailyState = dailyWheelLoader(level)) {
                     is DailyPlayState.Ready -> {
                         seed = dailyState.seed
+                        dailyEpochDay = dailyState.epochDay
                         dailyState.wheel
                     }
 
@@ -167,16 +171,18 @@ internal class GameLoader(
         jokers.grantStartPack(config.jokerStartPack)
         val inventory = jokers.observeInventory().first()
         val initial = engine.newGame(seed = seed, mode = mode, level = level, wheel = wheel, jokers = inventory)
-        return ready(engine, GameSession.start(engine, initial), restored = false)
+        return ready(engine, GameSession.start(engine, initial), restored = false, dailyEpochDay = dailyEpochDay)
     }
 
-    private fun ready(engine: GameEngine, session: GameSession, restored: Boolean) = Opened.Ready(
-        engine = engine,
-        session = session,
-        restored = restored,
-        ui = GameUiMapper.map(session.state, engine),
-        snapshot = if (restored) null else SavedGameCodec.encode(session.saved),
-    )
+    private fun ready(engine: GameEngine, session: GameSession, restored: Boolean, dailyEpochDay: Long? = null) =
+        Opened.Ready(
+            engine = engine,
+            session = session,
+            restored = restored,
+            ui = GameUiMapper.map(session.state, engine),
+            snapshot = if (restored) null else SavedGameCodec.encode(session.saved),
+            dailyEpochDay = dailyEpochDay,
+        )
 
     private companion object {
         val log = Logger.withTag("GameLoader")

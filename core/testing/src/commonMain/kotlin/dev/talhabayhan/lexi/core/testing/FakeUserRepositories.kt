@@ -164,4 +164,8 @@ public class FakeDailyRepository(initial: Collection<DailyResult> = emptyList())
         state.value += result
         return true
     }
+
+    override suspend fun save(result: DailyResult) {
+        state.value = state.value.filterNot { it.epochDay == result.epochDay && it.level == result.level } + result
+    }
 }
