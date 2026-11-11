@@ -83,25 +83,34 @@ class DailyGoalTest {
     }
 
     @Test
-    fun `level test is not counted while timed out and completed games count`() = runTest {
+    fun `level test is not counted and completed games count`() = runTest {
         val today = clock.epochDay(clock.nowMs())
 
-        // Level test: should NOT count
         sessions.record(session(mode = GameMode.LEVEL_TEST, day = today, completed = true))
 
         val progressInitial = getDailyGoalProgress.observe().first()
         assertEquals(0, progressInitial.done)
         assertFalse(progressInitial.reached)
 
-        // Classic game where time ran out (completed = false in engine): counts as a completed wheel!
-        sessions.record(session(mode = GameMode.CLASSIC, day = today, completed = false))
-        val progressAfterTimeUp = getDailyGoalProgress.observe().first()
-        assertEquals(1, progressAfterTimeUp.done)
-
-        // Classic game with all answered (completed = true): also counts!
         sessions.record(session(mode = GameMode.CLASSIC, day = today, completed = true))
         val progressAfterAllAnswered = getDailyGoalProgress.observe().first()
-        assertEquals(2, progressAfterAllAnswered.done)
+        assertEquals(1, progressAfterAllAnswered.done)
+    }
+
+    @Test
+    fun `only completed wheels count so time-ups forfeits and empty wheels do not`() = runTest {
+        val today = clock.epochDay(clock.nowMs())
+
+        // TIME_UP, FORFEIT, WRONG_IN_HARDCORE and EMPTY_WHEEL all record completed = false (owner decision D2).
+        sessions.record(session(mode = GameMode.CLASSIC, day = today, completed = false))
+        sessions.record(session(mode = GameMode.HARDCORE, day = today, completed = false))
+        sessions.record(session(mode = GameMode.DAILY, day = today, completed = false))
+        sessions.record(session(mode = GameMode.REVIEW, day = today, completed = false))
+
+        val progress = getDailyGoalProgress.observe().first()
+        assertEquals(0, progress.done)
+        assertFalse(progress.reached)
+        assertFalse(DailyGoal.isCounted(SessionRecord(today, completed = false, correct = 20, GameMode.CLASSIC), today))
     }
 
     @Test

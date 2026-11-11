@@ -315,6 +315,9 @@ Card-based stats read `CardProgress`, which duel and level-test answers don't to
 records no `SessionRecord` for those modes either, so streaks and words per day exclude them too.
 Current streak (`Stats.currentStreak`, home and the joker streak bonus §7) = the run of consecutive streak days
 ending today, or yesterday while today's wheel isn't done yet.
+Daily goal (`DailyGoal`, home chip; owner decision 2026-11-11): today's count = the COMPLETED wheels of the current
+local day (`completed`, the same notion as the streak; any mode except the level test, the Daily wheel counts as
+one). Time-ups, forfeits, Hardcore failures and empty wheels don't count.
 
 ## 12. Engine events & effects (contract)
 ```

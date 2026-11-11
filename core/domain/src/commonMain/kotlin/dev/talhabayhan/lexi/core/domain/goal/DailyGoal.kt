@@ -11,7 +11,8 @@ import kotlinx.coroutines.flow.first
 
 /**
  * Daily goal progress for the player's current local day.
- * [done] is the count of completed wheels today (any scored or practice mode; level tests and abandoned games excluded).
+ * [done] is the count of completed wheels today (any mode except the level test; time-ups, forfeits, Hardcore failures
+ * and empty wheels are not completed, so they don't count).
  * [goal] is the target wheels per day from settings.
  * [reached] is true when [done] >= [goal].
  */
@@ -21,13 +22,14 @@ public data class DailyGoalProgress(val done: Int, val goal: Int, val reached: B
 }
 
 /**
- * Pure calculation for the daily goal (GAME_RULES.md stats/streak rules, owner decision).
- * A "çark" is any completed game played on the current local day. Daily wheel counts as one.
- * Level-test games, abandoned/quit games, and restart-dropped games do NOT count.
+ * Pure calculation for the daily goal (`GAME_RULES.md` §11, owner decision D2 of 2026-11-11).
+ * A "çark" is a COMPLETED wheel (`SessionRecord.completed`, the same notion as the streak) played on the current local
+ * day; the Daily wheel counts as one. Time-ups, forfeits, Hardcore failures, empty wheels, level tests and
+ * restart-dropped games do NOT count.
  */
 public object DailyGoal {
     public fun isCounted(record: SessionRecord, today: Long): Boolean =
-        record.epochDay == today && record.mode != null && record.mode != GameMode.LEVEL_TEST
+        record.epochDay == today && record.completed && record.mode != null && record.mode != GameMode.LEVEL_TEST
 
     public fun progress(today: Long, sessions: Collection<SessionRecord>, goal: Int): DailyGoalProgress {
         val count = sessions.count { isCounted(it, today) }
