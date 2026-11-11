@@ -121,8 +121,9 @@ badge and the result header count correct answers instead, and joker point costs
 nothing, §7). A Practice wheel is still stored like any other: SRS applies (§10) and it counts in the statistics
 (completed wheels, streak, words per day, §11). There is no leaderboard or personal best yet; when one comes, only
 `GameMode.isScored` modes submit to it. Hardcore always has ⚙ `hardcoreTimeLimitSeconds` (the Classic time setting
-doesn't apply), its time jokers cost seconds like Classic, and the first WRONG ends the game at once (no reveal,
-reason `WRONG_IN_HARDCORE`, ×1.5 on the final total); a pass doesn't end it.
+doesn't apply), its time jokers cost seconds like Classic, and the first WRONG ends the game once its answer reveal
+(⚙ `revealMs`, §3.6; the clock stands still meanwhile) is over (reason `WRONG_IN_HARDCORE`, ×1.5 on the final
+total); a pass doesn't end it.
 Daily in the app (M6): ONE shared mixed-level wheel for all players (26 slots, fixed distribution: A1 ×6, A2 ×5,
 B1 ×5, B2 ×4, C1 ×3, NAT ×3, deterministically shuffled by seed). One scored attempt per local day, resetting at
 local midnight. Passes have no penalty in Daily mode. Rule changes to wheel generation (e.g. the `STARTS`
