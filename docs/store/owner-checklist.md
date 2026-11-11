@@ -66,8 +66,8 @@
 - [ ] Designs for the consent block, reminder sheet, level-test intro/result.
 
 ### 1.0.8
-- [ ] Share card link: set `StoreLinks.SHARE_LINK_LABEL` to the website URL https://talhabayhn.github.io/lexi (one link offering both stores).
-- [ ] Check that the in-app rating prompt uses the official Play In-App Review API and iOS `requestReview`.
+- [x] Share card link: `StoreLinks.SHARE_LINK_LABEL` is the website URL https://talhabayhn.github.io/lexi (one link offering both stores).
+- [x] The in-app rating prompt uses the official APIs: Play In-App Review (`PlayReviewRequester`, `ReviewManager`) and iOS `SKStoreReviewController.requestReviewInScene` (`IosReviewRequester`), ADR 0024.
 - [ ] Play Data safety: add approximate location (optional, analytics) for consistency with App Privacy.
 
 ### Payments
