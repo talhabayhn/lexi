@@ -19,6 +19,7 @@ lexi/
 ├── androidApp/                  Thin Android shell: MainActivity, manifest, launcher icons (com.android.application)
 ├── shared/                      KMP umbrella: App(), navigation graph, Koin start, iOS framework export (`Shared`)
 ├── iosApp/                      Xcode project (Swift entry + native SDK bridges)
+├── benchmark/                   Macrobenchmark + baseline profile generator for androidApp (com.android.test, ADR 0025)
 ├── core/
 │   ├── domain/                  PURE KOTLIN: models, repository interfaces, use cases, GameEngine, SRS, RNG
 │   ├── data/                    SQLDelight DBs, repositories, DataStore, content loader, remote packs (later)
@@ -49,7 +50,8 @@ lexi/
 | `core:platform` | `core:domain` (implementations only; the interfaces are declared in domain) |
 | `feature:*` | `core:domain`, `core:designsystem`, `core:platform` (interfaces) — **never** `core:data` |
 | `shared` | everything (wires DI) |
-| `androidApp` | `shared` only |
+| `androidApp` | `shared` only (+ `baselineProfile(:benchmark)`: profile producer, not a code dependency, ADR 0025) |
+| `benchmark` | nothing (test APK that drives `androidApp` from outside: Macrobenchmark, baseline profile generator, ADR 0025) |
 | `tools:content-compiler` | `core:domain` (JVM target), SQLDelight + JVM sqlite driver, kotlinx-serialization-json — **not** `core:data` (it generates its own writer from core:data's content schema files) |
 
 The table is enforced by `verifyModuleDependencies` (part of `check`, rules in

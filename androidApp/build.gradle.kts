@@ -5,12 +5,17 @@ plugins {
     // Firebase (ADR 0023): google-services.json -> resources; Crashlytics build id + R8 mapping upload.
     alias(libs.plugins.googleServices)
     alias(libs.plugins.firebaseCrashlytics)
+    // Generated baseline + startup profile from :benchmark (ADR 0025); only on request, committed under src/release.
+    alias(libs.plugins.baselineprofile)
 }
 
 dependencies {
     implementation(project(":shared"))
 
     implementation(libs.androidx.activity.compose)
+    // Installs the baseline profile on sideloaded installs and lets Macrobenchmark compile it (ADR 0025).
+    implementation(libs.androidx.profileinstaller)
+    baselineProfile(project(":benchmark"))
 
     implementation(libs.compose.uiToolingPreview)
     debugImplementation(libs.compose.uiTooling)
@@ -75,6 +80,25 @@ android {
             if (releaseKeystore != null) {
                 signingConfig = signingConfigs.getByName("release")
             }
+        }
+    }
+}
+
+baselineProfile {
+    // CI generates it on demand (.github/workflows/perf.yml); a normal build only uses the committed profile.
+    automaticGenerationDuringBuild = false
+    saveInSrc = true
+}
+
+// The plugin's benchmark build types run only on test devices: debug-signed (release signing comes from CI secrets)
+// and without telemetry, so emulator runs never reach Analytics or Crashlytics. finalizeDsl runs after the plugin's
+// own callback (applied earlier), which creates them as copies of `release`.
+val benchmarkBuildTypes = setOf("benchmarkRelease", "nonMinifiedRelease")
+androidComponents {
+    finalizeDsl { android ->
+        android.buildTypes.matching { it.name in benchmarkBuildTypes }.configureEach {
+            signingConfig = android.signingConfigs.getByName("debug")
+            manifestPlaceholders["telemetryEnabled"] = "false"
         }
     }
 }

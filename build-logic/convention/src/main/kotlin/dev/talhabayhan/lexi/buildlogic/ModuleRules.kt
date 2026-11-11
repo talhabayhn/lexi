@@ -19,6 +19,8 @@ internal object ModuleRules {
         module == ":core:testing" -> setOf(":core:domain")
         module.startsWith(":feature:") -> FEATURE_ALLOWED
         module == ":tools:content-compiler" -> setOf(":core:domain")
+        // Test APK that drives the installed app from outside (ADR 0025); `targetProjectPath` is no dependency.
+        module == ":benchmark" -> emptySet()
         else -> emptySet()
     }
 

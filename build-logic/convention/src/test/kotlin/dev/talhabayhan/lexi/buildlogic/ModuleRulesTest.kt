@@ -57,6 +57,12 @@ class ModuleRulesTest {
     }
 
     @Test
+    fun `benchmark depends on no module`() {
+        forbidden(":benchmark", "implementation", ProjectDep(":shared"))
+        forbidden(":benchmark", "implementation", ProjectDep(":core:domain"))
+    }
+
+    @Test
     fun `content compiler may depend only on domain`() {
         ok(":tools:content-compiler", "implementation", ProjectDep(":core:domain"))
         forbidden(":tools:content-compiler", "implementation", ProjectDep(":core:data"))

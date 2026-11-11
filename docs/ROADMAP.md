@@ -118,6 +118,8 @@ Module mapping (replaces the earlier `composeApp`): `androidApp` = thin Android 
 - [ ] Rating prompt, About/licenses (licences done; word-list attributions pending owner confirmation in docs/store/ATTRIBUTION-TODO.md)
 - [ ] Performance: cold start < 1.5 s mid-range Android; 60 fps game screen
   - Landed so far: perf tour, T1–T4 (see `docs/PERF.md`); iOS numbers pending a Mac measurement.
+  - CI emulator measurement (ADR 0025): `:benchmark` startup benchmark + generated baseline profile, `perf.yml`;
+    the phone target still needs a mid-range device.
 - [ ] Store listing TR/EN, screenshots, privacy policy, data safety / privacy nutrition labels
 - [ ] Release: Play internal testing + TestFlight
 **Done when:** v1.0 submitted.

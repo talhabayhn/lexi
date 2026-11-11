@@ -42,3 +42,21 @@ interval, platform, reduced-motion flag), then `LexiPerf DONE`. `LexiPerf ABORT 
 destination never resumed. Lines go to `println` and the Kermit tag `LexiPerf`.
 
 The gap math is `PerfStats.kt` (tested in `PerfStatsTest`).
+
+## Macrobenchmark and generated baseline profile (ADR 0025)
+
+`:benchmark` (test APK) drives the release-like `benchmarkRelease` build (debug-signed, telemetry off) from outside:
+
+- `BaselineProfileGenerator`: `startup` (cold launch to Home; a fresh install first skips the onboarding, which picks
+  A1) is also the startup profile; `screens` adds the perf tour (2 loops) to the baseline profile only. Output:
+  `androidApp/src/release/generated/baselineProfiles/`, merged with the hand-written `androidApp/src/main/baseline-prof.txt`.
+- `StartupBenchmark`: cold start to the first Home frame, 10 runs with no AOT code (`None`) and with the profile.
+
+Run on CI: Actions → **perf** → Run workflow (`commit` = commit the regenerated profile). The Summary page shows the
+`timeToInitialDisplay` median/min/max per mode; traces and JSON are in the `perf-results` artifact. The runner is an
+emulator with a software GPU: compare runs with each other, not with the M8 target (< 1.5 s on a mid-range phone).
+
+Locally (emulator or phone): `./gradlew :androidApp:generateBaselineProfile` (managed device `pixel6Api34`) and
+`./gradlew :benchmark:pixel6Api34BenchmarkReleaseAndroidTest
+-Pandroid.testInstrumentationRunnerArguments.androidx.benchmark.enabledRules=Macrobenchmark` (add
+`...suppressErrors=EMULATOR` on an emulator); for a connected phone use `:benchmark:connectedBenchmarkReleaseAndroidTest`.
