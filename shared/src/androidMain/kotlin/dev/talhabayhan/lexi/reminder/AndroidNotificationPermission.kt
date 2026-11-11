@@ -132,6 +132,7 @@ public class AndroidNotificationPermission(context: Context) : NotificationPermi
         PackageManager.PERMISSION_GRANTED
 
     private fun status(rationale: Boolean?): PermissionStatus {
+        migrateLegacyAsked(rationale)
         // The rationale is true only between a first and a final denial; remember that it was seen.
         if (rationale == true && !prefs.getBoolean(KEY_RATIONALE_SEEN, false)) {
             prefs.edit().putBoolean(KEY_RATIONALE_SEEN, true).apply()
@@ -145,6 +146,24 @@ public class AndroidNotificationPermission(context: Context) : NotificationPermi
             // Without an activity the rationale is unknown: never conclude BLOCKED from that.
             shouldShowRationale = rationale ?: true,
         )
+    }
+
+    /**
+     * One-time migration of the former "asked" flag (a dialog was launched once). Asked, still not granted and no
+     * rationale now meant BLOCKED under the old rule, and for a real final denial the system shows no dialog any more,
+     * so the unanswered count is seeded to the threshold instead of costing two silent taps. Waits for a known
+     * rationale (an attached activity) unless granted; afterwards the flag is removed and never read again.
+     */
+    private fun migrateLegacyAsked(rationale: Boolean?) {
+        if (!prefs.contains(KEY_LEGACY_ASKED)) return
+        val granted = permissionGranted()
+        if (rationale == null && !granted) return
+        val edit = prefs.edit().remove(KEY_LEGACY_ASKED)
+        val wasBlocked = prefs.getBoolean(KEY_LEGACY_ASKED, false) && !granted && rationale == false
+        if (wasBlocked && prefs.getInt(KEY_UNANSWERED, 0) < BLOCKED_AFTER_UNANSWERED) {
+            edit.putInt(KEY_UNANSWERED, BLOCKED_AFTER_UNANSWERED)
+        }
+        edit.apply()
     }
 
     override fun openSystemSettings() {
@@ -162,7 +181,8 @@ public class AndroidNotificationPermission(context: Context) : NotificationPermi
     }
 
     private companion object {
-        // The former "asked" flag counted a dismissed dialog as a denial; it is no longer read.
+        // The former flag counted a dismissed dialog as a denial; only [migrateLegacyAsked] reads it, once.
+        const val KEY_LEGACY_ASKED = "asked"
         const val KEY_RATIONALE_SEEN = "rationale_seen"
         const val KEY_UNANSWERED = "unanswered_requests"
     }
