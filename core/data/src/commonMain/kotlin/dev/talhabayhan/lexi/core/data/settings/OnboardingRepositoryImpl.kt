@@ -13,11 +13,11 @@ import kotlinx.coroutines.flow.map
 
 internal class OnboardingRepositoryImpl(private val dataStore: DataStore<Preferences>) : OnboardingRepository {
 
-    override val onboardingCompleted: Flow<Boolean> = dataStore.data
+    override val onboardingCompleted: Flow<Boolean> = dataStore.dataOrDefaults()
         .map { it[ONBOARDING_COMPLETED] ?: false }
         .distinctUntilChanged()
 
-    override val selectedLevel: Flow<Level> = dataStore.data
+    override val selectedLevel: Flow<Level> = dataStore.dataOrDefaults()
         .map { prefs ->
             prefs[SELECTED_LEVEL]?.let { name ->
                 Level.entries.firstOrNull { it.name == name }

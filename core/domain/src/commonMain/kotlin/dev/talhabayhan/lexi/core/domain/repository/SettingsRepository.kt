@@ -6,7 +6,10 @@ import kotlinx.coroutines.flow.StateFlow
 
 /** Player settings (DataStore Preferences, `ARCHITECTURE.md` §6). */
 public interface SettingsRepository {
-    /** Current settings; defaults until changed. Invalid stored values fall back to the default. */
+    /**
+     * Current settings; defaults until changed. Invalid stored values fall back to the default. Never throws: a store
+     * that can't be read emits the defaults and completes.
+     */
     public val settings: Flow<Settings>
 
     /**

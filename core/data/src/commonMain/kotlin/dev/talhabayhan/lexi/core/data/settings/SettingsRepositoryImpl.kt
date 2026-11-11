@@ -1,11 +1,13 @@
 package dev.talhabayhan.lexi.core.data.settings
 
 import androidx.datastore.core.DataStore
+import androidx.datastore.core.handlers.ReplaceFileCorruptionHandler
 import androidx.datastore.preferences.core.MutablePreferences
 import androidx.datastore.preferences.core.PreferenceDataStoreFactory
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.emptyPreferences
 import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.longPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
@@ -18,6 +20,7 @@ import dev.talhabayhan.lexi.core.domain.settings.Accent
 import dev.talhabayhan.lexi.core.domain.settings.ClueLanguage
 import dev.talhabayhan.lexi.core.domain.settings.Settings
 import dev.talhabayhan.lexi.core.domain.settings.UiLanguage
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.SharingStarted
@@ -28,9 +31,25 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import okio.Path.Companion.toPath
 
-/** DataStore Preferences file at [path] (absolute; see `DatabaseFiles.settingsFilePath`). One per process. */
+/**
+ * DataStore Preferences file at [path] (absolute; see `DatabaseFiles.settingsFilePath`). One per process. A corrupted
+ * file is replaced by empty preferences (the defaults) instead of failing every read and write.
+ */
 public fun createSettingsDataStore(path: String, scope: CoroutineScope): DataStore<Preferences> =
-    PreferenceDataStoreFactory.createWithPath(scope = scope, produceFile = { path.toPath() })
+    PreferenceDataStoreFactory.createWithPath(
+        corruptionHandler = ReplaceFileCorruptionHandler { emptyPreferences() },
+        scope = scope,
+        produceFile = { path.toPath() },
+    )
+
+/**
+ * [DataStore.data] that reads as empty preferences (the defaults) and completes when the file can't be read, so a
+ * storage failure never escapes into a collector (`LaunchedEffect`, `viewModelScope`) and crashes the app.
+ */
+internal fun DataStore<Preferences>.dataOrDefaults(): Flow<Preferences> = data.catch { e ->
+    if (e !is Exception || e is CancellationException) throw e
+    emit(emptyPreferences())
+}
 
 /**
  * [Settings] in DataStore Preferences. Keys are stable (renaming one loses the stored value); invalid stored values
@@ -41,11 +60,10 @@ internal class SettingsRepositoryImpl(
     private val config: GameConfig,
     scope: CoroutineScope,
 ) : SettingsRepository {
-    override val settings: Flow<Settings> = dataStore.data.map { it.toSettings() }.distinctUntilChanged()
+    override val settings: Flow<Settings> = dataStore.dataOrDefaults().map { it.toSettings() }.distinctUntilChanged()
 
     // Collected eagerly in the app-scoped [scope] so the stored values are ready before the first screen needs them.
-    override val loaded: StateFlow<Settings?> = settings.catch {
-    }.stateIn<Settings?>(scope, SharingStarted.Eagerly, null)
+    override val loaded: StateFlow<Settings?> = settings.stateIn<Settings?>(scope, SharingStarted.Eagerly, null)
 
     override suspend fun update(transform: (Settings) -> Settings) {
         dataStore.edit { prefs -> prefs.write(transform(prefs.toSettings())) }

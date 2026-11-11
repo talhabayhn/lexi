@@ -5,7 +5,8 @@ import kotlinx.coroutines.flow.Flow
 
 /**
  * First-run onboarding state (`ARCHITECTURE.md` §2, `BACKLOG.md` row B4).
- * Stored in DataStore Preferences alongside settings.
+ * Stored in DataStore Preferences alongside settings. The flows never throw: a store that can't be read emits the
+ * defaults (not completed, A1) and completes.
  */
 public interface OnboardingRepository {
     /** True once the player has completed or skipped the first-run onboarding. */
