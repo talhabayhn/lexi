@@ -64,3 +64,15 @@ Locally (emulator or phone): `./gradlew :androidApp:generateBaselineProfile` (ma
 `./gradlew :benchmark:pixel6Api34BenchmarkReleaseAndroidTest
 -Pandroid.testInstrumentationRunnerArguments.androidx.benchmark.enabledRules=Macrobenchmark` (add
 `...suppressErrors=EMULATOR` on an emulator); for a connected phone use `:benchmark:connectedBenchmarkReleaseAndroidTest`.
+
+### First CI results (2026-11-12, perf runs 43088244259 and 43109920469)
+
+- Cold start, splash first frame (TTID): median 0.94 s and 1.52 s on two runners, the same with and without the
+  profile (the hand-written wildcards already cover the splash path). Time to Home after the splash (TTFD): 3.9 s with
+  the profile, 4.2 s without.
+- The traces show where the emulator time goes: one splash frame waits ≈ 1.6 s in `postAndWait` on the RenderThread
+  (software GPU), frames of the tour are GPU-bound the same way, and runner noise is large (Crashlytics init in
+  `bindApplication` 27–240 ms across iterations). So CI can show regressions and the profile's TTFD gain (≈ 0.3 s),
+  but not the phone target or the 60 fps target.
+- App-side costs seen on every run: `bindApplication` 180–500 ms (Firebase Crashlytics + sessions init), the first
+  frame's composition and text layout ≈ 200 ms of CPU. Re-check both on a phone before optimising them.
