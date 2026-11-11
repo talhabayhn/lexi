@@ -99,29 +99,46 @@ public class AndroidNotificationPermission(context: Context) : NotificationPermi
     private val context = context.applicationContext
     private val prefs = this.context.getSharedPreferences(NOTIFICATION_PERMISSION_PREFS, Context.MODE_PRIVATE)
 
-    override suspend fun status(): PermissionStatus {
-        val sdk = Build.VERSION.SDK_INT
-        val granted = sdk < Build.VERSION_CODES.TIRAMISU ||
-            ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) ==
-            PackageManager.PERMISSION_GRANTED
-        val rationale = NotificationPermissionHost.currentActivity()?.let {
-            it.shouldShowRequestPermissionRationale(Manifest.permission.POST_NOTIFICATIONS)
-        } ?: true
-        return resolveNotificationStatus(
-            sdk = sdk,
-            permissionGranted = granted,
-            notificationsEnabled = NotificationManagerCompat.from(context).areNotificationsEnabled(),
-            askedBefore = prefs.getBoolean(KEY_ASKED, false),
-            shouldShowRationale = rationale,
-        )
-    }
+    override suspend fun status(): PermissionStatus = status(rationale())
 
     override suspend fun request(): PermissionStatus {
-        val current = status()
+        val rationaleBefore = rationale()
+        val current = status(rationaleBefore)
         if (current != PermissionStatus.CAN_ASK) return current
-        // Not shown (no activity attached): not "asked", or the next status would turn into BLOCKED.
-        if (NotificationPermissionHost.launch()) prefs.edit().putBoolean(KEY_ASKED, true).apply()
-        return status()
+        // Not shown (no activity attached): nothing to learn from the answer.
+        if (!NotificationPermissionHost.launch()) return status()
+        val rationaleAfter = rationale()
+        if (rationaleBefore == false && rationaleAfter == false && !permissionGranted()) {
+            // Dismissed (back/outside: not a denial on API 33+) or refused without a dialog (a denial that was final
+            // before this install's bookkeeping, e.g. restored from another device).
+            val count = prefs.getInt(KEY_UNANSWERED, 0) + 1
+            prefs.edit().putInt(KEY_UNANSWERED, count).apply()
+        }
+        return status(rationaleAfter)
+    }
+
+    /** Null without an attached activity (the system only answers for one). */
+    private fun rationale(): Boolean? = NotificationPermissionHost.currentActivity()
+        ?.shouldShowRequestPermissionRationale(Manifest.permission.POST_NOTIFICATIONS)
+
+    private fun permissionGranted(): Boolean = Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU ||
+        ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) ==
+        PackageManager.PERMISSION_GRANTED
+
+    private fun status(rationale: Boolean?): PermissionStatus {
+        // The rationale is true only between a first and a final denial; remember that it was seen.
+        if (rationale == true && !prefs.getBoolean(KEY_RATIONALE_SEEN, false)) {
+            prefs.edit().putBoolean(KEY_RATIONALE_SEEN, true).apply()
+        }
+        return resolveNotificationStatus(
+            sdk = Build.VERSION.SDK_INT,
+            permissionGranted = permissionGranted(),
+            notificationsEnabled = NotificationManagerCompat.from(context).areNotificationsEnabled(),
+            rationaleSeenBefore = prefs.getBoolean(KEY_RATIONALE_SEEN, false),
+            unansweredRequests = prefs.getInt(KEY_UNANSWERED, 0),
+            // Without an activity the rationale is unknown: never conclude BLOCKED from that.
+            shouldShowRationale = rationale ?: true,
+        )
     }
 
     override fun openSystemSettings() {
@@ -139,25 +156,36 @@ public class AndroidNotificationPermission(context: Context) : NotificationPermi
     }
 
     private companion object {
-        const val KEY_ASKED = "asked"
+        // The former "asked" flag counted a dismissed dialog as a denial; it is no longer read.
+        const val KEY_RATIONALE_SEEN = "rationale_seen"
+        const val KEY_UNANSWERED = "unanswered_requests"
     }
 }
 
 /**
  * Pure mapping of the Android signals to [PermissionStatus]. Below API 33 there is no dialog: notifications are on or
- * the player has to enable them in the system settings. On 33+ a denied permission is final when it was asked before
- * and the system no longer wants a rationale (the player chose "don't allow" twice, or "don't ask again").
+ * the player has to enable them in the system settings. On 33+ the system wants a rationale only after a first denial
+ * and stops wanting it once a second denial made it final, so a denied permission is final when the rationale was
+ * seen before and is gone now. A dismissed dialog (back/outside) is no denial and leaves the rationale off, so it
+ * stays [PermissionStatus.CAN_ASK]; only after [BLOCKED_AFTER_UNANSWERED] requests without any answer (dismissed
+ * each time, or refused without a dialog) does the way out become the system settings.
  */
 internal fun resolveNotificationStatus(
     sdk: Int,
     permissionGranted: Boolean,
     notificationsEnabled: Boolean,
-    askedBefore: Boolean,
+    rationaleSeenBefore: Boolean,
+    unansweredRequests: Int,
     shouldShowRationale: Boolean,
 ): PermissionStatus = when {
     permissionGranted && notificationsEnabled -> PermissionStatus.GRANTED
     sdk < Build.VERSION_CODES.TIRAMISU -> PermissionStatus.BLOCKED
     permissionGranted -> PermissionStatus.BLOCKED
-    askedBefore && !shouldShowRationale -> PermissionStatus.BLOCKED
+    shouldShowRationale -> PermissionStatus.CAN_ASK
+    rationaleSeenBefore -> PermissionStatus.BLOCKED
+    unansweredRequests >= BLOCKED_AFTER_UNANSWERED -> PermissionStatus.BLOCKED
     else -> PermissionStatus.CAN_ASK
 }
+
+/** Requests without a denial or a grant (see [resolveNotificationStatus]) after which the status turns BLOCKED. */
+internal const val BLOCKED_AFTER_UNANSWERED: Int = 2

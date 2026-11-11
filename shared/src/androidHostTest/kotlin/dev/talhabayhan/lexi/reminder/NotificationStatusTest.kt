@@ -12,9 +12,10 @@ class NotificationStatusTest {
         sdk: Int = t,
         granted: Boolean = false,
         enabled: Boolean = false,
-        asked: Boolean = false,
+        rationaleSeen: Boolean = false,
+        unanswered: Int = 0,
         rationale: Boolean = false,
-    ) = resolveNotificationStatus(sdk, granted, enabled, asked, rationale)
+    ) = resolveNotificationStatus(sdk, granted, enabled, rationaleSeen, unanswered, rationale)
 
     @Test
     fun grantedWhenPermissionAndAppSwitchAreOn() {
@@ -28,13 +29,30 @@ class NotificationStatusTest {
     }
 
     @Test
-    fun firstDenialStillCanAskBecauseTheSystemWantsARationale() {
-        assertEquals(PermissionStatus.CAN_ASK, status(asked = true, rationale = true))
+    fun aDismissedDialogStillCanAsk() {
+        // Back or a tap outside: no denial, the system shows no rationale, one unanswered request.
+        assertEquals(PermissionStatus.CAN_ASK, status(unanswered = 1))
     }
 
     @Test
-    fun deniedWithoutRationaleAfterAskingIsBlocked() {
-        assertEquals(PermissionStatus.BLOCKED, status(asked = true, rationale = false))
+    fun firstDenialStillCanAskBecauseTheSystemWantsARationale() {
+        assertEquals(PermissionStatus.CAN_ASK, status(rationaleSeen = true, rationale = true))
+    }
+
+    @Test
+    fun aDismissalAfterTheFirstDenialStillCanAsk() {
+        assertEquals(PermissionStatus.CAN_ASK, status(rationaleSeen = true, unanswered = 1, rationale = true))
+    }
+
+    @Test
+    fun secondDenialAfterTheRationaleIsBlocked() {
+        assertEquals(PermissionStatus.BLOCKED, status(rationaleSeen = true, rationale = false))
+    }
+
+    @Test
+    fun repeatedRequestsWithoutAnyAnswerAreBlocked() {
+        // Dismissed twice, or a final denial restored from elsewhere: the system refuses without a dialog.
+        assertEquals(PermissionStatus.BLOCKED, status(unanswered = BLOCKED_AFTER_UNANSWERED))
     }
 
     @Test
