@@ -1,8 +1,8 @@
 # Perf tour
 
 A launch-flag harness (`shared/.../perf`) that scripts the screen transitions and prints frame statistics. It is off
-unless launched with the flag, works in release builds, and uses the same navigation functions as the real buttons
-(`LexiNavigator`).
+unless launched with the flag, works in release builds (Android: only via `adb shell`, see below), and uses the same
+navigation functions as the real buttons (`LexiNavigator`).
 
 ## Run
 
@@ -14,7 +14,11 @@ Finish onboarding once first (the tour waits 60 s for Home, then aborts).
   with `xcrun devicectl device process launch ... -LexiPerfTour`. Output goes to the console; the full JSON is also
   written to the app's `Documents/lexi-perf.json`.
 
-The flag is ignored when the activity is recreated (rotation, language change). Default is 5 loops. A release build on a real device is the baseline; simulators and debug builds are not comparable.
+The flag is ignored when the activity is recreated (rotation, language change). Default is 5 loops (Android clamps
+`lexi.perfTourLoops` to 1–20). The Android launcher activity is exported, so a release build honours the extras only
+when started from the shell (`adb shell am start`, referrer `com.android.shell`; a caller-set `Intent.EXTRA_REFERRER`
+disables it); a debuggable build honours them from any caller. A release build on a real device is the baseline;
+simulators and debug builds are not comparable.
 
 ## Script (per loop)
 

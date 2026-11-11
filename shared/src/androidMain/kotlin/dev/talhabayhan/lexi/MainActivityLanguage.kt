@@ -22,14 +22,10 @@ public object MainActivityLanguage {
     }
 
     @Composable
-    public fun LexiApp(
-        activity: Activity,
-        perfTour: Boolean = false,
-        perfTourLoops: Int = PerfTourConfig.DEFAULT_LOOPS,
-    ) {
+    public fun LexiApp(activity: Activity, perfTour: PerfTourConfig? = null) {
         val currentLanguage = AndroidPlatformLanguage.getStoredLanguage(activity)
         App(
-            perfTour = if (perfTour) PerfTourConfig(perfTourLoops) else null,
+            perfTour = perfTour,
             onLanguageChanged = { newLanguage ->
                 if (newLanguage != currentLanguage) {
                     AndroidPlatformLanguage.setStoredLanguage(activity, newLanguage)
