@@ -530,12 +530,15 @@ class HomeViewModelTest {
             }
         }
 
+    /** Every helper session is its own game (a repeated mode + seed + start is the same game, stored once). */
+    private var nextSeed = 1L
+
     private fun session(mode: GameMode = GameMode.CLASSIC, day: Long = today, completed: Boolean = true) =
         SessionResult(
             mode = mode,
             level = Level.A1,
             category = CategoryId("basics"),
-            seed = 1L,
+            seed = nextSeed++,
             startedAtMs = clock.nowMs() - 60_000L,
             endedAtMs = clock.nowMs(),
             epochDay = day,

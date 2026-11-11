@@ -23,5 +23,9 @@ insert:
 INSERT INTO session(mode, level, category, seed, started_ms, ended_ms, epoch_day, score, correct, wrong, passed, completed)
 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
 
+-- One game is identified by mode + seed + start time: a game restored after a process death is not stored twice.
+countGame:
+SELECT count(*) FROM session WHERE mode = ? AND seed = ? AND started_ms = ?;
+
 records:
 SELECT epoch_day, completed, correct, mode FROM session ORDER BY id;

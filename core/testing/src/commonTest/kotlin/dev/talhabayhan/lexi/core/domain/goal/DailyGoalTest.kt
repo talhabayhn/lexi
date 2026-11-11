@@ -23,6 +23,9 @@ class DailyGoalTest {
     private val settings = FakeSettingsRepository(Settings(dailyGoalWheels = 3))
     private val getDailyGoalProgress = GetDailyGoalProgress(sessions, settings, clock)
 
+    /** Every helper session is its own game (a repeated mode + seed + start is the same game, stored once). */
+    private var nextSeed = 1L
+
     private fun session(
         mode: GameMode = GameMode.CLASSIC,
         day: Long = clock.epochDay(clock.nowMs()),
@@ -31,7 +34,7 @@ class DailyGoalTest {
         mode = mode,
         level = Level.A1,
         category = CategoryId("basics"),
-        seed = 1L,
+        seed = nextSeed++,
         startedAtMs = clock.nowMs() - 60_000L,
         endedAtMs = clock.nowMs(),
         epochDay = day,

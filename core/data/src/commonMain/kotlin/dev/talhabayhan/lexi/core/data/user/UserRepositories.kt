@@ -115,8 +115,14 @@ internal class SessionRepositoryImpl(databases: Databases, io: CoroutineDispatch
     SessionRepository {
     override suspend fun record(session: SessionResult): Boolean {
         if (session.mode in config.srsExcludedModes) return false
-        write {
-            transaction {
+        return write {
+            transactionWithResult {
+                val stored = sessionQueries.countGame(
+                    session.mode.name,
+                    session.seed,
+                    session.startedAtMs,
+                ).executeAsOne()
+                if (stored > 0) return@transactionWithResult false
                 sessionQueries.insert(
                     mode = session.mode.name,
                     level = session.level.name,
@@ -132,9 +138,9 @@ internal class SessionRepositoryImpl(databases: Databases, io: CoroutineDispatch
                     completed = if (session.completed) 1L else 0L,
                 )
                 if (session.completed) streakQueries.markDay(session.epochDay)
+                true
             }
         }
-        return true
     }
 
     override fun observeRecords(): Flow<List<SessionRecord>> = observe {

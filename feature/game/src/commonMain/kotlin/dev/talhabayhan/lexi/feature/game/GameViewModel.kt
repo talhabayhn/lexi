@@ -480,8 +480,10 @@ internal class GameViewModel(
         if (track) trackFinish(final)
         val category = sessionCategory()
         viewModelScope.launch {
-            val recorded = withContext(NonCancellable) { record(final, category) }
-            if (recorded) handle.remove<String>(KEY_GAME)
+            // The snapshot goes in the same non-cancellable step, also when the screen is closed meanwhile.
+            val recorded = withContext(NonCancellable) {
+                record(final, category).also { if (it) handle.remove<String>(KEY_GAME) }
+            }
             val result = ResultRoute.of(final, route.categoryId, recorded, route.packId)
             effectChannel.send(GameEffect.NavigateToResult(result))
         }

@@ -107,6 +107,22 @@ class FinishGameTest {
         assertEquals(1, progress.saveCalls)
     }
 
+    // Regression (ADR 0019 Open M7): a restored finished game gets a new FinishGame instance.
+    @Test
+    fun `a game already recorded by an earlier instance is neither recorded nor applied to the notebook again`() =
+        runTest {
+            val game = finishedGame()
+            finishGame(game, category = null)
+            val afterFirst = progress.progress
+
+            clock.advanceBy(60_000L)
+            FinishGame(sessions, progress, clock, config)(game, category = null)
+
+            assertEquals(1, sessions.sessions.size)
+            assertEquals(afterFirst, progress.progress)
+            assertEquals(1, progress.saveCalls)
+        }
+
     @Test
     fun `a failed record is retried by the next call and the notebook is updated once`() = runTest {
         val game = finishedGame()

@@ -154,11 +154,14 @@ class ReminderPrePromptTest {
         assertEquals(0, f.permission.requestCalls)
     }
 
+    /** Every helper session is its own game (a repeated mode + seed + start is the same game, stored once). */
+    private var nextSeed = 1L
+
     private fun completedSession(mode: GameMode) = SessionResult(
         mode = mode,
         level = Level.A1,
         category = null,
-        seed = 1L,
+        seed = nextSeed++,
         startedAtMs = 0L,
         endedAtMs = 1L,
         epochDay = 1L,

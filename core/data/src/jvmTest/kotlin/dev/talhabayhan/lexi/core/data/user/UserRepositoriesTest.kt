@@ -116,8 +116,8 @@ class UserRepositoriesTest {
         val streak = StreakRepositoryImpl(db.databases, io)
 
         assertTrue(sessions.record(session(day = 20_000, completed = true, correct = 20)))
-        assertTrue(sessions.record(session(day = 20_001, completed = false, correct = 7)))
-        assertTrue(sessions.record(session(day = 20_000, completed = true, correct = 22)))
+        assertTrue(sessions.record(session(day = 20_001, completed = false, correct = 7).copy(seed = 43)))
+        assertTrue(sessions.record(session(day = 20_000, completed = true, correct = 22).copy(seed = 44)))
 
         sessions.observeRecords().test {
             assertEquals(
@@ -130,6 +130,21 @@ class UserRepositoriesTest {
             )
         }
         streak.observeDays().test { assertEquals(listOf(20_000L), awaitItem()) }
+    }
+
+    @Test
+    fun `a game already stored is not stored again`() = runTest(io) {
+        val sessions = SessionRepositoryImpl(db.databases, io, GameConfig())
+        val game = session(day = 20_000, completed = true)
+
+        assertTrue(sessions.record(game))
+        // The same game recorded again after a restore: a later end time, the same mode, seed and start.
+        assertFalse(sessions.record(game.copy(endedAtMs = 200_000, epochDay = 20_001)))
+        assertTrue(sessions.record(game.copy(seed = 43)), "another game")
+        assertTrue(sessions.record(game.copy(startedAtMs = 2_000)), "another game")
+
+        sessions.observeRecords().test { assertEquals(3, awaitItem().size) }
+        StreakRepositoryImpl(db.databases, io).observeDays().test { assertEquals(listOf(20_000L), awaitItem()) }
     }
 
     @Test

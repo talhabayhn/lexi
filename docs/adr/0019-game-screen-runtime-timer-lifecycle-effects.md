@@ -100,9 +100,11 @@ kotlinx-datetime.
 - Orientation: the app is portrait-only (all designs are portrait; Android `screenOrientation=portrait`,
   iOS `UISupportedInterfaceOrientations` portrait). Owner decision: v1.0 is iPhone-only (`TARGETED_DEVICE_FAMILY = 1`). `configChanges` above still covers fold/multi-window resizes.
 - Open (M6): for the Daily wheel, whether an attempt counts at `Start` (otherwise killing the app could replay it).
-- Open (M7): `FinishGame` is not idempotent. If `SessionRepository.record` succeeded but the SRS update failed in
-  both attempts, the snapshot is kept, so a game restored after a process death records the session a second time.
-  Fix with an idempotent record keyed by `seed + startedAtMs` (unique key in `user.db`), not by a schema change now.
+- Resolved (was Open M7, 2026-11-11): `FinishGame` is idempotent across instances. `SessionRepository.record` stores a
+  game (mode + seed + `startedAtMs`, checked in the insert's transaction, no schema change) only once and reports
+  whether it was newly stored; only that call applies the SRS update. A finished game restored after a process death
+  is therefore neither stored nor counted in the notebook twice (if the SRS step had failed twice, that update is
+  lost rather than doubled).
 
 ## Addendum (M4 joker sheet, pause, result — 2026-10-15)
 - **Result payload:** `ResultRoute` carries a small summary instead of a session id (level, mode, category, reason,

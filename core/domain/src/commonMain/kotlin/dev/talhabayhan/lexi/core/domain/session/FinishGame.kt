@@ -21,7 +21,9 @@ import kotlinx.coroutines.sync.withLock
  *
  * One instance per game (Koin `factory`): the first call does the work, later calls for the same game return the
  * same result without writing again (safe to call from every `GameOver` path). A step that threw is retried by the
- * next call; steps that succeeded are not repeated. Callers run it under `NonCancellable`.
+ * next call; steps that succeeded are not repeated. Callers run it under `NonCancellable`. Across instances (a
+ * finished game restored after a process death) the session is stored once ([SessionRepository.record] is
+ * idempotent) and the notebook is updated only by the call that newly stored it, so it never counts a game twice.
  */
 public class FinishGame(
     private val sessions: SessionRepository,
@@ -49,7 +51,8 @@ public class FinishGame(
 
         val result = session ?: sessionOf(finished, category).also { session = it }
         if (!recorded) {
-            sessions.record(result)
+            // Already stored by an earlier instance: its notebook update must not be applied a second time.
+            if (!sessions.record(result) && result.mode !in config.srsExcludedModes) srsApplied = true
             recorded = true
         }
         if (!srsApplied) {

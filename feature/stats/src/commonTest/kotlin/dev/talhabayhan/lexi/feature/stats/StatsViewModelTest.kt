@@ -59,11 +59,14 @@ class StatsViewModelTest {
     private fun progress(id: String, correct: Int, wrong: Int) =
         CardProgress(CardId(id), seen = correct + wrong, correct = correct, wrong = wrong)
 
+    /** Every helper session is its own game (a repeated mode + seed + start is the same game, stored once). */
+    private var nextSeed = 1L
+
     private fun session(daysAgo: Int, completed: Boolean, correct: Int) = SessionResult(
         mode = GameMode.CLASSIC,
         level = Level.A1,
         category = null,
-        seed = 1,
+        seed = nextSeed++,
         startedAtMs = 0,
         endedAtMs = 0,
         epochDay = today - daysAgo,

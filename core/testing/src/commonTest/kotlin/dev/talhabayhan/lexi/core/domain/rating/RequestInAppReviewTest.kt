@@ -25,13 +25,16 @@ class RequestInAppReviewTest {
     private val requester = FakeReviewRequester()
     private val request = RequestInAppReview(settings, sessions, requester, analytics, clock)
 
+    /** Every helper session is its own game (a repeated mode + seed + start is the same game, stored once). */
+    private var nextSeed = 1L
+
     private suspend fun play(times: Int, completed: Boolean = true, mode: GameMode = GameMode.CLASSIC) = repeat(times) {
         sessions.record(
             SessionResult(
                 mode = mode,
                 level = Level.A1,
                 category = null,
-                seed = 1L,
+                seed = nextSeed++,
                 startedAtMs = clock.nowMs() - 60_000L,
                 endedAtMs = clock.nowMs(),
                 epochDay = clock.epochDay(clock.nowMs()),

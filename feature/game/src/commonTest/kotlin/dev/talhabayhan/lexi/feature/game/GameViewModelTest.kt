@@ -44,6 +44,7 @@ import dev.talhabayhan.lexi.core.testing.packCards
 import dev.talhabayhan.lexi.core.testing.testCard
 import dev.talhabayhan.lexi.core.testing.testExamPack
 import dev.talhabayhan.lexi.feature.game.result.ResultRoute
+import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -1104,6 +1105,34 @@ class GameViewModelTest {
             assertNull(handle.get<String>(GameViewModel.KEY_GAME))
             cancelAndIgnoreRemainingEvents()
         }
+    }
+
+    @Test
+    fun `the snapshot is removed once recorded even when the screen was closed meanwhile`() = runTest {
+        val handle = routeHandle()
+        val gate = CompletableDeferred<Unit>()
+        val gated = object : SessionRepository by sessions {
+            override suspend fun record(session: SessionResult): Boolean {
+                gate.await()
+                return sessions.record(session)
+            }
+        }
+        val vm = viewModel(handle, sessionRepository = gated).also {
+            runCurrent()
+            it.onIntent(GameIntent.Foreground)
+        }
+        vm.type("APPLE")
+        vm.type("BREAD")
+        vm.type("CHAIR")
+        runCurrent()
+        assertNotNull(handle.get<String>(GameViewModel.KEY_GAME))
+
+        ViewModelStore().apply { put("game", vm) }.clear()
+        gate.complete(Unit)
+        runCurrent()
+
+        assertEquals(1, sessions.sessions.size)
+        assertNull(handle.get<String>(GameViewModel.KEY_GAME))
     }
 
     @Test

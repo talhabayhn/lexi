@@ -29,8 +29,9 @@ public interface ProgressRepository {
 /** Finished games (`GAME_RULES.md` §11). */
 public interface SessionRepository {
     /**
-     * Stores a finished game and, when completed, marks its day for the streak. Modes in
-     * `GameConfig.srsExcludedModes` (hot-seat duel) are not recorded; returns whether it was stored.
+     * Stores a finished game and, when completed, marks its day for the streak; returns whether it was newly stored.
+     * Idempotent: a game already stored (same mode, seed and `startedAtMs`, e.g. restored after a process death) is
+     * not stored again. Modes in `GameConfig.srsExcludedModes` (hot-seat duel) are not recorded.
      */
     public suspend fun record(session: SessionResult): Boolean
 

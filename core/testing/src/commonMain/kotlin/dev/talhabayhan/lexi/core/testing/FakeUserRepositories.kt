@@ -58,7 +58,10 @@ public class FakeProgressRepository(initial: Collection<CardProgress> = emptyLis
         state.value.mapNotNull { (id, p) -> p.lastSeenMs?.let { id to it } }.toMap()
 }
 
-/** In-memory [SessionRepository] that skips `GameConfig.srsExcludedModes` like the real one. */
+/**
+ * In-memory [SessionRepository] that, like the real one, skips `GameConfig.srsExcludedModes` and stores a game (mode,
+ * seed, `startedAtMs`) only once.
+ */
 public class FakeSessionRepository(private val config: GameConfig = GameConfig()) : SessionRepository {
     private val stored = MutableStateFlow<List<SessionResult>>(emptyList())
 
@@ -79,6 +82,10 @@ public class FakeSessionRepository(private val config: GameConfig = GameConfig()
             throw IllegalStateException("injected record failure")
         }
         if (session.mode in config.srsExcludedModes) return false
+        val sameGame = stored.value.any {
+            it.mode == session.mode && it.seed == session.seed && it.startedAtMs == session.startedAtMs
+        }
+        if (sameGame) return false
         stored.value += session
         return true
     }
