@@ -1,9 +1,12 @@
 package dev.talhabayhan.lexi.core.platform.language
 
 import android.app.Activity
+import android.app.LocaleManager
 import android.content.Context
 import android.content.res.Configuration
 import android.content.res.Resources
+import android.os.Build
+import android.os.LocaleList
 import dev.talhabayhan.lexi.core.domain.settings.AppLanguage
 import java.util.Locale
 
@@ -30,10 +33,11 @@ public object AndroidPlatformLanguage {
 
     public fun applyLanguage(activity: Activity, language: AppLanguage) {
         val locale = when (language) {
-            AppLanguage.SYSTEM -> {
-                val systemLocales = Resources.getSystem().configuration.locales
-                if (!systemLocales.isEmpty) systemLocales[0] else Locale.getDefault()
-            }
+            AppLanguage.SYSTEM -> systemLanguageLocale(
+                appLocales = applicationLocales(activity).toList(),
+                systemLocales = Resources.getSystem().configuration.locales.toList(),
+                fallback = Locale.getDefault(),
+            )
 
             AppLanguage.TR -> Locale.forLanguageTag("tr")
 
@@ -46,4 +50,20 @@ public object AndroidPlatformLanguage {
         @Suppress("DEPRECATION")
         resources.updateConfiguration(config, resources.displayMetrics)
     }
+
+    /** The per-app language chosen in the system settings (Android 13+, `android:localeConfig`); empty if none. */
+    private fun applicationLocales(context: Context): LocaleList {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) return LocaleList.getEmptyLocaleList()
+        return context.getSystemService(LocaleManager::class.java)?.applicationLocales
+            ?: LocaleList.getEmptyLocaleList()
+    }
+
+    private fun LocaleList.toList(): List<Locale> = List(size()) { get(it) }
 }
+
+/**
+ * Locale of the in-app "System" language: the per-app language from the system settings when the player picked one
+ * there (Android 13+), else the device language, else [fallback].
+ */
+internal fun systemLanguageLocale(appLocales: List<Locale>, systemLocales: List<Locale>, fallback: Locale): Locale =
+    appLocales.firstOrNull() ?: systemLocales.firstOrNull() ?: fallback
