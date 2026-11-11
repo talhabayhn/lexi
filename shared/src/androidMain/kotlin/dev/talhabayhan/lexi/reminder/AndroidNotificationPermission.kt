@@ -67,15 +67,16 @@ public object NotificationPermissionHost {
     internal fun currentActivity(): Activity? = activity?.get()
 
     /**
-     * Shows the system dialog and returns when the player answered; a second caller waits for the same answer.
-     * Returns false at once (no dialog shown) without an attached activity.
+     * Shows the system dialog and returns when the player answered: [LaunchResult.SHOWN] for the caller that launched
+     * it, [LaunchResult.JOINED] for a caller that waited for the same answer, [LaunchResult.NOT_SHOWN] at once without
+     * an attached activity.
      */
-    internal suspend fun launch(): Boolean = withContext(Dispatchers.Main) {
+    internal suspend fun launch(): LaunchResult = withContext(Dispatchers.Main) {
         pending?.let {
             it.await()
-            return@withContext true
+            return@withContext LaunchResult.JOINED
         }
-        val active = launcher ?: return@withContext false
+        val active = launcher ?: return@withContext LaunchResult.NOT_SHOWN
         val answered = CompletableDeferred<Unit>()
         pending = answered
         try {
@@ -84,8 +85,10 @@ public object NotificationPermissionHost {
         } finally {
             if (pending === answered) pending = null
         }
-        true
+        LaunchResult.SHOWN
     }
+
+    internal enum class LaunchResult { SHOWN, JOINED, NOT_SHOWN }
 }
 
 /**
@@ -105,10 +108,13 @@ public class AndroidNotificationPermission(context: Context) : NotificationPermi
         val rationaleBefore = rationale()
         val current = status(rationaleBefore)
         if (current != PermissionStatus.CAN_ASK) return current
+        val launched = NotificationPermissionHost.launch()
         // Not shown (no activity attached): nothing to learn from the answer.
-        if (!NotificationPermissionHost.launch()) return status()
+        if (launched == NotificationPermissionHost.LaunchResult.NOT_SHOWN) return status()
         val rationaleAfter = rationale()
-        if (rationaleBefore == false && rationaleAfter == false && !permissionGranted()) {
+        // Only the caller that launched the dialog counts it; a concurrent caller waited for the same dialog.
+        val counts = launched == NotificationPermissionHost.LaunchResult.SHOWN
+        if (counts && rationaleBefore == false && rationaleAfter == false && !permissionGranted()) {
             // Dismissed (back/outside: not a denial on API 33+) or refused without a dialog (a denial that was final
             // before this install's bookkeeping, e.g. restored from another device).
             val count = prefs.getInt(KEY_UNANSWERED, 0) + 1
