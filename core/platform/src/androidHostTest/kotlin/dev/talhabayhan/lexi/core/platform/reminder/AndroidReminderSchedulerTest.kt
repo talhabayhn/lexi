@@ -19,6 +19,7 @@ import org.robolectric.Shadows.shadowOf
 import java.time.LocalDate
 import java.time.ZoneId
 import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
 import kotlin.test.assertFalse
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
@@ -224,6 +225,21 @@ class AndroidReminderSchedulerTest {
         ReminderAlarmReceiver().onReceive(app, intent)
 
         assertEquals(listOf(at(402)), alarms().map { it.triggerAtMs })
+    }
+
+    @Test
+    fun aFiredReminderStillArmsTheNextOnesWhenPostingThrows() = runBlocking {
+        val plan = List(3) { reminder(it, 400L + it) }
+        scheduler.replaceAll(plan)
+        val intent = Intent(app, ReminderAlarmReceiver::class.java)
+            .putExtra(ReminderAlarms.EXTRA_ID, plan[0].id)
+            .putExtra(ReminderAlarms.EXTRA_TITLE, plan[0].title)
+            .putExtra(ReminderAlarms.EXTRA_BODY, plan[0].body)
+        val receiver = ReminderAlarmReceiver { _, _, _, _ -> throw SecurityException("notify refused") }
+
+        assertFailsWith<SecurityException> { receiver.onReceive(app, intent) }
+
+        assertEquals(listOf(at(401), at(402)), alarms().map { it.triggerAtMs }.sorted())
     }
 
     @Test

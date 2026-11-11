@@ -11,16 +11,26 @@ import androidx.core.app.NotificationManagerCompat
 
 /**
  * Posts the reminder when its alarm fires (the tap opens the launcher activity) and arms the next ones of the stored
- * plan, even when the notification could not be posted.
+ * plan, even when the notification could not be posted or posting threw.
+ *
+ * The work stays on the main thread (no `goAsync()`): it is one small SharedPreferences read, at most two
+ * AlarmManager calls and one notify, far below the receiver's time limit, and a synchronous [onReceive] keeps the
+ * re-arm ordered with the next alarm and directly testable.
  */
-public class ReminderAlarmReceiver : BroadcastReceiver() {
+public class ReminderAlarmReceiver internal constructor(private val post: (Context, Int, String, String) -> Unit) :
+    BroadcastReceiver() {
+    public constructor() : this({ context, id, title, body -> ReminderNotifier.post(context, id, title, body) })
+
     override fun onReceive(context: Context, intent: Intent) {
         val id = intent.getIntExtra(ReminderAlarms.EXTRA_ID, -1)
         val title = intent.getStringExtra(ReminderAlarms.EXTRA_TITLE)
         val body = intent.getStringExtra(ReminderAlarms.EXTRA_BODY)
         if (id < 0 || title == null || body == null) return
-        ReminderNotifier.post(context, id, title, body)
-        AndroidReminderScheduler.rearmStoredPlan(context, System.currentTimeMillis(), firedId = id)
+        try {
+            post(context, id, title, body)
+        } finally {
+            AndroidReminderScheduler.rearmStoredPlan(context, System.currentTimeMillis(), firedId = id)
+        }
     }
 }
 
