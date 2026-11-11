@@ -11,6 +11,7 @@ import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.core.domain.share.ShareCaption
 import dev.talhabayhan.lexi.core.domain.share.ShareCell
 import dev.talhabayhan.lexi.core.domain.share.SlotOutcome
+import dev.talhabayhan.lexi.core.domain.srs.CardProgress
 import dev.talhabayhan.lexi.core.domain.telemetry.AnalyticsEvent
 import dev.talhabayhan.lexi.core.domain.time.civilDateOfEpochDay
 import dev.talhabayhan.lexi.core.testing.FakeAnalyticsTracker
@@ -179,6 +180,49 @@ class ResultViewModelTest {
         assertEquals(1, state.addedToNotebook)
         val stored = progress.get(listOf(CardId("a1-goat")))[CardId("a1-goat")]
         assertEquals(0, stored?.box)
+    }
+
+    private fun timeUpRoute() = ResultRoute(
+        level = "A1",
+        mode = GameMode.CLASSIC.name,
+        reason = GameOverReason.TIME_UP.name,
+        score = 280,
+        correct = 0,
+        wrong = 0,
+        passed = 0,
+        longestStreak = 0,
+        timeUpCards = listOf("a1-goat"),
+    )
+
+    @Test
+    fun `adding a card whose progress cannot be read changes nothing`() = runTest {
+        val goat = CardProgress(CardId("a1-goat"), seen = 5, correct = 3, wrong = 2, lastSeenMs = 7L)
+        progress.save(listOf(goat))
+        val vm = viewModel(timeUpRoute())
+        progress.failing = true
+
+        vm.onIntent(ResultIntent.AddToNotebook("a1-goat"))
+        runCurrent()
+
+        assertFalse(vm.state.value.groups.single().rows.single().isAddedToNotebook)
+        assertEquals(0, vm.state.value.addedToNotebook)
+        assertEquals(goat, progress.progress.getValue(CardId("a1-goat")), "counters kept")
+        assertEquals(1, crashReporter.recorded.size)
+    }
+
+    @Test
+    fun `a double tap adds a card to the notebook once`() = runTest {
+        val vm = viewModel(timeUpRoute())
+        val savesBefore = progress.saveCalls
+
+        vm.onIntent(ResultIntent.AddToNotebook("a1-goat"))
+        vm.onIntent(ResultIntent.AddToNotebook("a1-goat"))
+        runCurrent()
+        vm.onIntent(ResultIntent.AddToNotebook("a1-goat"))
+        runCurrent()
+
+        assertEquals(1, vm.state.value.addedToNotebook)
+        assertEquals(savesBefore + 1, progress.saveCalls)
     }
 
     @Test

@@ -75,6 +75,9 @@ internal class ResultViewModel(
             null
         }
 
+    /** Card ids whose [ResultIntent.AddToNotebook] write is running. */
+    private val adding = mutableSetOf<String>()
+
     private var allGroups: List<ReviewGroupUi> = emptyList()
     private var allRows: List<ReviewRowUi> = emptyList()
 
@@ -101,55 +104,7 @@ internal class ResultViewModel(
                 loading = viewModelScope.launch { load() }
             }
 
-            is ResultIntent.AddToNotebook -> {
-                viewModelScope.launch {
-                    val cardId = CardId(intent.cardId)
-                    val today = clock.epochDay(clock.nowMs())
-                    val existing = try {
-                        progress.get(listOf(cardId))[cardId]
-                    } catch (e: CancellationException) {
-                        throw e
-                    } catch (e: Exception) {
-                        null
-                    }
-                    val updated = (existing ?: CardProgress(cardId)).copy(
-                        box = 0,
-                        dueEpochDay = today,
-                        mastered = false,
-                    )
-                    try {
-                        progress.save(listOf(updated))
-                    } catch (e: CancellationException) {
-                        throw e
-                    } catch (e: Exception) {
-                        log.e(e) { "could not save progress for ${intent.cardId}" }
-                        return@launch
-                    }
-                    allGroups = allGroups.map { group ->
-                        if (group.outcome == ReviewOutcome.TimeUp) {
-                            group.copy(
-                                rows = group.rows.map { row ->
-                                    if (row.cardId == intent.cardId) {
-                                        row.copy(isAddedToNotebook = true)
-                                    } else {
-                                        row
-                                    }
-                                }.toImmutableList(),
-                            )
-                        } else {
-                            group
-                        }
-                    }
-                    allRows = allGroups.flatMap { it.rows }
-                    mutableState.update { current ->
-                        current.copy(
-                            groups = allGroups.toImmutableList(),
-                            rows = allRows.toImmutableList(),
-                            addedToNotebook = current.addedToNotebook + 1,
-                        )
-                    }
-                }
-            }
+            is ResultIntent.AddToNotebook -> addToNotebook(intent.cardId)
 
             // An early tap (card not built yet) waits: the screen captures once `shareCard` is set.
             ResultIntent.Share -> if (!mutableState.value.isSharing) {
@@ -167,6 +122,53 @@ internal class ResultViewModel(
 
             // Navigation: handled by the route composable.
             ResultIntent.PlayAgain, ResultIntent.Home -> Unit
+        }
+    }
+
+    /**
+     * Puts a Süre bitti card into box 0, due today, keeping its counters. Once per card: taps on a card that is added
+     * or being added are ignored. A failed read or write changes nothing (a fresh entry would wipe the counters), so
+     * the row stays tappable.
+     */
+    private fun addToNotebook(id: String) {
+        val added = allRows.any { it.cardId == id && it.isAddedToNotebook }
+        if (added || !adding.add(id)) return
+        viewModelScope.launch {
+            try {
+                val cardId = CardId(id)
+                val today = clock.epochDay(clock.nowMs())
+                val existing = progress.get(listOf(cardId))[cardId]
+                progress.save(
+                    listOf((existing ?: CardProgress(cardId)).copy(box = 0, dueEpochDay = today, mastered = false)),
+                )
+            } catch (e: CancellationException) {
+                throw e
+            } catch (e: Exception) {
+                log.e(e) { "could not add $id to the notebook" }
+                crashReporter.recordException(e, "could not add a card to the notebook")
+                return@launch
+            } finally {
+                adding.remove(id)
+            }
+            markAdded(id)
+        }
+    }
+
+    private fun markAdded(id: String) {
+        allGroups = allGroups.map { group ->
+            if (group.outcome != ReviewOutcome.TimeUp) return@map group
+            group.copy(
+                rows = group.rows.map { row -> if (row.cardId == id) row.copy(isAddedToNotebook = true) else row }
+                    .toImmutableList(),
+            )
+        }
+        allRows = allGroups.flatMap { it.rows }
+        mutableState.update { current ->
+            current.copy(
+                groups = allGroups.toImmutableList(),
+                rows = allRows.toImmutableList(),
+                addedToNotebook = current.addedToNotebook + 1,
+            )
         }
     }
 
