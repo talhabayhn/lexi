@@ -69,8 +69,14 @@ public interface DailyRepository {
 public interface JokerRepository {
     public fun observeInventory(): Flow<JokerInventory>
 
-    /** Replaces the inventory, e.g. with `GameState.jokers` after `JokerApplied`. */
+    /** Replaces the whole inventory (start-up and test fixtures); a game stores its use with [consume]. */
     public suspend fun save(inventory: JokerInventory)
+
+    /**
+     * Takes one joker of [type] (a game's `JokerApplied`): a decrement of the stored count, so jokers granted while the
+     * game ran (daily gift, rewarded ad) are kept. Returns false and changes nothing when none is stored.
+     */
+    public suspend fun consume(type: JokerType): Boolean
 
     /** Adds [amount] jokers of [type] (rewarded ad, Pro refill); daily gifts go through [updateWallet]. */
     public suspend fun add(type: JokerType, amount: Int)

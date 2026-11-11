@@ -108,6 +108,12 @@ public class FakeJokerRepository(initial: JokerInventory? = null) : JokerReposit
         state.value = (state.value ?: JokerInventory()).plus(type, amount)
     }
 
+    override suspend fun consume(type: JokerType): Boolean {
+        val after = state.value?.consume(type) ?: return false
+        state.value = after
+        return true
+    }
+
     override suspend fun grantStartPack(startPack: JokerInventory): Boolean {
         if (state.value != null) return false
         state.value = startPack

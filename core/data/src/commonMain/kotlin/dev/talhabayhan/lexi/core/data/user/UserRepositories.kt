@@ -226,6 +226,13 @@ internal class JokerRepositoryImpl(databases: Databases, io: CoroutineDispatcher
         }
     }
 
+    override suspend fun consume(type: JokerType): Boolean = write {
+        jokerQueries.transactionWithResult {
+            jokerQueries.consumeOne(type.name)
+            jokerQueries.changes().executeAsOne() > 0
+        }
+    }
+
     override suspend fun add(type: JokerType, amount: Int) {
         require(amount >= 0) { "amount must not be negative, was $amount" }
         write {

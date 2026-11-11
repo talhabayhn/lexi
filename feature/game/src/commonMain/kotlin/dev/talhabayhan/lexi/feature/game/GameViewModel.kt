@@ -104,7 +104,7 @@ internal class GameViewModel(
     private var quitConfirmation = false
     private var restartConfirmation = false
 
-    /** Joker inventory writes run one after another, each saving the latest inventory (ADR 0019). */
+    /** Joker use writes run one after another (ADR 0019). */
     private val jokerSaves = Mutex()
 
     /** The running [load], so a double tap on "Tekrar dene" loads once. */
@@ -415,7 +415,7 @@ internal class GameViewModel(
             is EngineEffect.TimeWarning -> emit(GameEffect.TimeWarning(effect.secondsLeft))
 
             is EngineEffect.JokerApplied -> {
-                saveJokers()
+                saveJokerUse(effect.type)
                 analytics.track(AnalyticsEvent.JokerUsed(effect.type))
                 // "Telaffuzu dinle": the answer is spoken (whatever the speak-on-correct setting).
                 if (effect.type == JokerType.LISTEN) {
@@ -443,16 +443,16 @@ internal class GameViewModel(
     }
 
     /**
-     * Saved at once and not cancellable: killing the app or leaving the screen never refunds a joker (ADR 0019). The
-     * writes are serialized and each stores the inventory current when it runs, so the last write is the newest.
+     * Saved at once and not cancellable: killing the app or leaving the screen never refunds a joker (ADR 0019). Each
+     * use is stored as a decrement ([JokerRepository.consume]), never as the game's whole inventory, so jokers granted
+     * while the game ran (daily gift) are kept. The writes are serialized.
      */
-    private fun saveJokers() {
+    private fun saveJokerUse(type: JokerType) {
         viewModelScope.launch(start = CoroutineStart.UNDISPATCHED) {
             withContext(NonCancellable) {
                 jokerSaves.withLock {
-                    val inventory = session?.state?.jokers ?: return@withLock
                     try {
-                        jokers.save(inventory)
+                        jokers.consume(type)
                     } catch (e: CancellationException) {
                         throw e
                     } catch (e: Exception) {

@@ -195,6 +195,25 @@ class UserRepositoriesTest {
     }
 
     @Test
+    fun `consume takes one joker and keeps jokers granted meanwhile and never goes below zero`() = runTest(io) {
+        val jokers = JokerRepositoryImpl(db.databases, io)
+        jokers.save(JokerInventory(mapOf(JokerType.REVEAL_LETTER to 1, JokerType.EXAMPLE to 2)))
+        // A gift stored while a game holds the older inventory.
+        jokers.add(JokerType.EXAMPLE, 1)
+
+        assertTrue(jokers.consume(JokerType.REVEAL_LETTER))
+        assertFalse(jokers.consume(JokerType.REVEAL_LETTER), "none left")
+        assertFalse(jokers.consume(JokerType.LISTEN), "no row")
+
+        jokers.observeInventory().test {
+            val inventory = awaitItem()
+            assertEquals(0, inventory.count(JokerType.REVEAL_LETTER))
+            assertEquals(3, inventory.count(JokerType.EXAMPLE))
+            assertEquals(0, inventory.count(JokerType.LISTEN))
+        }
+    }
+
+    @Test
     fun `wallet update writes inventory and gift days together and keeps them`() = runTest(io) {
         val jokers = JokerRepositoryImpl(db.databases, io)
         val pack = GameConfig().jokerStartPack

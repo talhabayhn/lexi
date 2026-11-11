@@ -764,6 +764,20 @@ class GameViewModelTest {
     }
 
     @Test
+    fun `using a joker keeps a joker gift stored while the game was running`() = runTest {
+        val vm = started()
+        val example = checkNotNull(jokers.inventory.value).count(JokerType.EXAMPLE)
+        // The daily gift lands while the game holds the inventory it loaded.
+        jokers.add(JokerType.EXAMPLE, 1)
+
+        vm.onIntent(GameIntent.UseJoker(JokerType.REVEAL_LETTER))
+        runCurrent()
+
+        assertEquals(example + 1, jokers.inventory.value?.count(JokerType.EXAMPLE))
+        assertEquals(1, jokers.inventory.value?.count(JokerType.REVEAL_LETTER))
+    }
+
+    @Test
     fun `a joker write is finished even when the screen is closed meanwhile`() = runTest {
         val slow = SlowJokerRepository(jokers)
         val vm = viewModel(jokerRepository = slow).also {
@@ -1642,9 +1656,9 @@ class GameViewModelTest {
 
     /** Delays every save, like a slow disk; the write must still happen after the ViewModel is cleared. */
     private class SlowJokerRepository(private val delegate: FakeJokerRepository) : JokerRepository by delegate {
-        override suspend fun save(inventory: JokerInventory) {
+        override suspend fun consume(type: JokerType): Boolean {
             delay(DELAY_MS)
-            delegate.save(inventory)
+            return delegate.consume(type)
         }
 
         companion object {

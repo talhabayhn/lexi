@@ -117,7 +117,8 @@ kotlinx-datetime.
 - **Jokers:** the sheet is ViewModel state (not engine state); the clock keeps running while it is open; it closes
   when a joker is applied, on pause/background, reveal and game over. Rows are enabled by `GameEngine.canUseJoker`,
   the same rule `reduce` applies. Inventory writes run undispatched under `NonCancellable`, serialized by a mutex, and
-  each stores the latest inventory. The Listen joker speaks the answer; the Example joker's blanked sentence is shown
+  each stores one decrement (`JokerRepository.consume`), not the game's whole inventory, so a gift granted while the
+  game ran is kept. The Listen joker speaks the answer; the Example joker's blanked sentence is shown
   in the clue card (design debt).
 - **Back / pause:** system back (both platforms, `NavigationBackHandler` in common code; `navigationevent-compose`
   is declared through a catalog alias of the version navigation-compose already resolves, not a new library) closes
