@@ -126,6 +126,11 @@ public object WheelGenerator {
      * - For each letter, picks one card from that level's candidates in [pool] using [random], preferring STARTS
      *   cards ([preferStarts]).
      * - Ignores history so every player receives the identical wheel for the same date + contentVersion.
+     *
+     * Unlike the other wheels there is deliberately no "answer already on this wheel" filter: adding one would change
+     * the shared daily wheel between app versions on any day it applies, and with today's content it cannot trigger:
+     * a word can only sit under a second letter as CONTAINS, and [preferStarts] drops CONTAINS cards because every
+     * shipped (level, letter) with such a card also has a STARTS card (checked against `content/` on 2026-11-11).
      */
     public fun daily(
         pool: List<Card>,
@@ -158,11 +163,20 @@ public object WheelGenerator {
     /**
      * Review wheel from SRS-due cards (any level/category): only letters that have due cards, A–Z order, one card
      * per letter picked with [random], preferring STARTS cards ([preferStarts]). Empty when nothing is due.
+     *
+     * A due card whose answer is already on the wheel is dropped, and a letter left without due cards is left out
+     * (they wait for the next review): content keeps answers unique per level only, so the same word can be due at
+     * two levels under two letters (e.g. JUNGLE as A1 `U` CONTAINS and A2 `J` STARTS).
      */
     public fun review(dueCards: List<Card>, random: SeededRandom, config: GameConfig = GameConfig()): Wheel {
         val byLetter = dueCards.candidatesByLetter()
-        val slots = byLetter.keys.sorted().map { letter ->
-            Slot(letter, random.pick(byLetter.getValue(letter).preferStarts(config)), SlotState.TODO)
+        val usedAnswers = mutableSetOf<String>()
+        val slots = byLetter.keys.sorted().mapNotNull { letter ->
+            val fresh = byLetter.getValue(letter).filter { it.answer !in usedAnswers }
+            if (fresh.isEmpty()) return@mapNotNull null
+            val card = random.pick(fresh.preferStarts(config))
+            usedAnswers += card.answer
+            Slot(letter, card, SlotState.TODO)
         }
         return Wheel(slots)
     }

@@ -219,6 +219,31 @@ class WheelGeneratorTest {
     }
 
     @Test
+    fun `review wheel never shows an answer twice`() {
+        // Content keeps answers unique per level only: the same word can be due at two levels and two letters.
+        val due = listOf(
+            card("JUNGLE", level = Level.A2),
+            card("JUNGLE", letter = 'U', level = Level.A1),
+            card("MUG", letter = 'U', level = Level.A1),
+        )
+
+        val answers = (1L..30L).map { seed ->
+            WheelGenerator.review(due, wheelRandom(seed)).slots.map { it.letter to it.card?.answer }
+        }.toSet()
+
+        assertEquals(setOf(listOf('J' to "JUNGLE", 'U' to "MUG")), answers)
+    }
+
+    @Test
+    fun `review wheel leaves out a letter whose due cards are all already on the wheel`() {
+        val due = listOf(card("JUNGLE", level = Level.A2), card("JUNGLE", letter = 'U', level = Level.A1))
+
+        val wheel = WheelGenerator.review(due, wheelRandom(1L))
+
+        assertEquals(listOf('J' to "JUNGLE"), wheel.slots.map { it.letter to it.card?.answer })
+    }
+
+    @Test
     fun `review wheel without due cards is empty`() {
         assertTrue(WheelGenerator.review(emptyList(), wheelRandom(1L)).slots.isEmpty())
     }

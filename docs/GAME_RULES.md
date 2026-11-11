@@ -35,8 +35,11 @@ exact defaults.
   of the letter were shown, so never twice in a row (a 2-card letter alternates, a 1-card letter repeats). With no history the steps reduce to
   the previous rule, so history-free wheels (daily, duel, level test, the goldens) are unchanged.
 - Review wheel: built from SRS-due cards (any level/category); may have fewer than 26 slots (only letters that
-  have due cards), in A–Z order; one card per letter, picked the same way (`STARTS` preferred). Other due cards wait
-  for the next review.
+  have due cards), in A–Z order; one card per letter, picked the same way (`STARTS` preferred). A due card whose
+  answer is already on the wheel is dropped and a letter left without due cards is left out (answers are unique per
+  level only, so e.g. JUNGLE can be due as A1 `U` and A2 `J`). Other due cards wait for the next review. The daily
+  wheel has no such filter on purpose (it would change the shared wheel between app versions; shipped content can't
+  trigger it, see `WheelGenerator.daily`).
 - Exam pack wheel (M7, `WheelGenerator.pack`): pool = every card of the pack (`exam_pack_card`: its pack-only
   cards and the base/other-pack cards it references), any level and category, the whole pack (no unit choice yet).
   26 slots A–Z picked exactly like the regular wheel (recently seen avoided, `STARTS` preferred, so `CONTAINS` only
