@@ -12,9 +12,10 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 /**
- * Cold start to the first Home frame (ADR 0025, M8 target < 1.5 s on a mid-range phone; emulator numbers show the
- * trend only). `None` = no ahead-of-time code, like a first launch without the profile; `BaselineProfile` = what Play
- * installs. Run with `./gradlew :benchmark:pixel6Api34BenchmarkReleaseAndroidTest`.
+ * Cold start (ADR 0025, M8 target < 1.5 s on a mid-range phone; emulator numbers show the trend only):
+ * `timeToInitialDisplay` = the splash's first frame, `timeToFullDisplay` = Home drawn after the splash (≈ 1.2 s of
+ * designed animation, motion.md #9). `None` = no ahead-of-time code, like a first launch without the profile;
+ * `BaselineProfile` = what Play installs. Run with `./gradlew :benchmark:pixel6Api34BenchmarkReleaseAndroidTest`.
  */
 @RunWith(AndroidJUnit4::class)
 class StartupBenchmark {
@@ -44,6 +45,7 @@ class StartupBenchmark {
         },
     ) {
         startActivityAndWait()
+        waitForHome()
     }
 
     private companion object {

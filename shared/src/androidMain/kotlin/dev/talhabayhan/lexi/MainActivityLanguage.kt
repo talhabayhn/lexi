@@ -5,9 +5,13 @@ import android.content.pm.ApplicationInfo
 import android.os.Process
 import android.os.SystemClock
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.withFrameNanos
 import dev.talhabayhan.lexi.core.platform.language.AndroidPlatformLanguage
 import dev.talhabayhan.lexi.perf.PerfTourConfig
+import dev.talhabayhan.lexi.splash.SplashState
 import dev.talhabayhan.lexi.startup.StartupTrace
+import kotlinx.coroutines.flow.first
 
 /**
  * Android activity helper for app-level language initialization and dynamic locale updates.
@@ -24,6 +28,13 @@ public object MainActivityLanguage {
     @Composable
     public fun LexiApp(activity: Activity, perfTour: PerfTourConfig? = null) {
         val currentLanguage = AndroidPlatformLanguage.getStoredLanguage(activity)
+        LaunchedEffect(activity) {
+            // Time to full display (Macrobenchmark StartupTimingMetric, ADR 0025): the first screen after the splash
+            // (Home or the onboarding) has drawn. Two frames: the one composing it and the one after it was drawn.
+            SplashState.finished.first { it }
+            repeat(FRAMES_UNTIL_DRAWN) { withFrameNanos { } }
+            activity.reportFullyDrawn()
+        }
         App(
             perfTour = perfTour,
             onLanguageChanged = { newLanguage ->
@@ -35,4 +46,6 @@ public object MainActivityLanguage {
             },
         )
     }
+
+    private const val FRAMES_UNTIL_DRAWN = 2
 }

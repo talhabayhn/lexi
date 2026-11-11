@@ -33,9 +33,12 @@ internal fun MacrobenchmarkScope.completeOnboardingIfShown() {
         check(System.currentTimeMillis() < deadline) { "Neither the onboarding nor Home appeared" }
         Thread.sleep(UI_POLL_MS)
     }
-    checkNotNull(device.wait(Until.findObject(HOME_SETTINGS), UI_TIMEOUT_MS)) {
-        "Home did not appear after the onboarding"
-    }
+    waitForHome()
+}
+
+/** Waits until Home is on screen (after the splash), so the app's fully-drawn report is inside the measurement. */
+internal fun MacrobenchmarkScope.waitForHome() {
+    checkNotNull(device.wait(Until.findObject(HOME_SETTINGS), UI_TIMEOUT_MS)) { "Home did not appear" }
 }
 
 /**

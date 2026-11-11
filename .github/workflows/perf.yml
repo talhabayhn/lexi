@@ -2,7 +2,8 @@ name: perf
 
 # Android performance on a Gradle managed emulator (ADR 0025, docs/PERF.md). Manual only.
 # 1. Regenerates the baseline + startup profile with :benchmark's BaselineProfileGenerator (onboarding + perf tour).
-# 2. Measures cold start (StartupBenchmark: no AOT code vs the baseline profile), 10 runs each.
+# 2. Measures cold start (StartupBenchmark: no AOT code vs the baseline profile, 10 runs each) and the frame times
+#    of one perf tour through the main screens and the game (ScreensBenchmark, 3 runs).
 # Results: the run's Summary page and the `perf-results` artifact. Emulator numbers show the trend and the profile's
 # gain, not the M8 phone target. With `commit`, the regenerated profile is committed to main.
 on:
@@ -56,7 +57,7 @@ jobs:
       - name: Generate baseline profile
         run: ./gradlew :androidApp:generateBaselineProfile $GMD_FLAGS
 
-      - name: Cold start benchmark
+      - name: Benchmarks
         run: >-
           ./gradlew :benchmark:pixel6Api34BenchmarkReleaseAndroidTest $GMD_FLAGS
           -Pandroid.testInstrumentationRunnerArguments.androidx.benchmark.enabledRules=Macrobenchmark
@@ -66,18 +67,24 @@ jobs:
         run: |
           python3 - <<'EOF' >> "$GITHUB_STEP_SUMMARY"
           import glob, json
-          print("## Cold start (emulator, ms)\n")
-          print("| Test | timeToInitialDisplay median | min | max | frameDuration P90 |")
+          def stat(d, key):
+              v = d.get(key)
+              return "-" if v is None else f"{v:.0f}"
+          rows = []
+          for path in glob.glob("benchmark/build/outputs/**/*benchmarkData.json", recursive=True):
+              rows += json.load(open(path)).get("benchmarks", [])
+          print("## Emulator results (ms; trend only, not the phone target)\n")
+          print("| Test | initial display median (min-max) | full display median (min-max) | frame CPU P50 / P90 / P99 | overrun P90 |")
           print("|---|---|---|---|---|")
-          files = glob.glob("benchmark/build/outputs/**/*benchmarkData.json", recursive=True)
-          for path in files:
-              for b in json.load(open(path)).get("benchmarks", []):
-                  m = b.get("metrics", {})
-                  t = m.get("timeToInitialDisplayMs", {})
-                  f = b.get("sampledMetrics", {}).get("frameDurationCpuMs", {})
-                  print(f"| {b.get('name')} | {t.get('median', 0):.0f} | {t.get('minimum', 0):.0f} | "
-                        f"{t.get('maximum', 0):.0f} | {f.get('P90', 0):.1f} |")
-          if not files:
+          for b in rows:
+              m, sm = b.get("metrics", {}), b.get("sampledMetrics", {})
+              ti, tf = m.get("timeToInitialDisplayMs", {}), m.get("timeToFullDisplayMs", {})
+              f, o = sm.get("frameDurationCpuMs", {}), sm.get("frameOverrunMs", {})
+              disp = lambda t: f"{stat(t, 'median')} ({stat(t, 'minimum')}-{stat(t, 'maximum')})" if t else "-"
+              frames = f"{f.get('P50', 0):.1f} / {f.get('P90', 0):.1f} / {f.get('P99', 0):.1f}" if f else "-"
+              over = f"{o.get('P90', 0):.1f}" if o else "-"
+              print(f"| {b.get('name')} | {disp(ti)} | {disp(tf)} | {frames} | {over} |")
+          if not rows:
               print("| no results | | | | |")
           EOF
           git status --short -- androidApp/src/release/generated >> "$GITHUB_STEP_SUMMARY" || true

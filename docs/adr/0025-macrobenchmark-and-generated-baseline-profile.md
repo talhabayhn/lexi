@@ -17,7 +17,9 @@ screen transitions are compiled ahead of time only where a person guessed them.
     also the startup profile; `screens` adds the perf tour (`lexi.perfTour`, 2 loops) so Home, Settings, LevelSelect,
     Game, Stats and Notebook are in the baseline profile only.
   - `StartupBenchmark`: cold startup (`startActivityAndWait`, Home drawn) with `CompilationMode.None` and
-    `CompilationMode.Partial(BaselineProfile)`, 10 iterations each, `StartupTimingMetric` + `FrameTimingMetric`.
+    `CompilationMode.Partial(BaselineProfile)`, 10 iterations each, `StartupTimingMetric` + `FrameTimingMetric`; the
+    app reports fully drawn when the first screen after the splash has drawn (`timeToFullDisplay`).
+  - `ScreensBenchmark`: `FrameTimingMetric` over one perf tour, 3 iterations.
 - **`androidx.baselineprofile` Gradle plugin 1.5.0** on `:androidApp` and `:benchmark`; generation only on request
   (`automaticGenerationDuringBuild = false`), the result committed under `androidApp/src/release/generated/`
   (merged with the hand-written file). `dexLayoutOptimization` (R8 startup dex layout) stays off until the first
