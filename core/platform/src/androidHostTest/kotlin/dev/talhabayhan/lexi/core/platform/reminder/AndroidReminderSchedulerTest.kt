@@ -181,4 +181,58 @@ class AndroidReminderSchedulerTest {
         assertEquals(Intent.ACTION_MAIN, tap.action)
         assertTrue(tap.hasCategory(Intent.CATEGORY_LAUNCHER))
     }
+
+    private fun at(dayOffset: Long, minute: Int = 20 * 60): Long =
+        LocalDate.ofEpochDay(today + dayOffset).atTime(minute / 60, minute % 60).atZone(zone).toInstant().toEpochMilli()
+
+    @Test
+    fun onlyTheNextTwoOfAFullPlanAreArmed() = runBlocking {
+        val plan = List(15) { reminder(it, it.toLong()) }
+
+        scheduler.replaceAll(plan)
+
+        assertEquals(ReminderAlarms.ARMED_AHEAD, alarms().size)
+        assertEquals(listOf(at(0), at(1)), alarms().map { it.triggerAtMs }.sorted())
+        assertEquals(15, ReminderPlanStore(app).load().size)
+    }
+
+    @Test
+    fun aFiredReminderArmsTheFollowingOnes() = runBlocking {
+        // Far ahead of the real clock the receiver reads: only the fired id decides what is next.
+        val plan = List(15) { reminder(it, 400L + it) }
+        scheduler.replaceAll(plan)
+        val intent = Intent(app, ReminderAlarmReceiver::class.java)
+            .putExtra(ReminderAlarms.EXTRA_ID, plan[0].id)
+            .putExtra(ReminderAlarms.EXTRA_TITLE, plan[0].title)
+            .putExtra(ReminderAlarms.EXTRA_BODY, plan[0].body)
+
+        ReminderAlarmReceiver().onReceive(app, intent)
+
+        assertEquals(listOf(at(401), at(402)), alarms().map { it.triggerAtMs }.sorted())
+    }
+
+    @Test
+    fun aFiredReminderStillArmsTheNextOnesWhenNotificationsAreOff() = runBlocking {
+        val plan = List(3) { reminder(it, 400L + it) }
+        scheduler.replaceAll(plan)
+        shadowOf(app.getSystemService(NotificationManager::class.java)).setNotificationsEnabled(false)
+        val intent = Intent(app, ReminderAlarmReceiver::class.java)
+            .putExtra(ReminderAlarms.EXTRA_ID, plan[1].id)
+            .putExtra(ReminderAlarms.EXTRA_TITLE, plan[1].title)
+            .putExtra(ReminderAlarms.EXTRA_BODY, plan[1].body)
+
+        ReminderAlarmReceiver().onReceive(app, intent)
+
+        assertEquals(listOf(at(402)), alarms().map { it.triggerAtMs })
+    }
+
+    @Test
+    fun upcomingSortsByTriggerAndSkipsPastEntries() {
+        val items = listOf(reminder(3, 3), reminder(0, 0, minute = 8 * 60), reminder(2, 2), reminder(1, 1))
+
+        val next = ReminderAlarms.upcoming(items, nowMs, zone = zone)
+
+        assertEquals(listOf(items[3].id, items[2].id), next.map { it.first.id })
+        assertEquals(listOf(at(1), at(2)), next.map { it.second })
+    }
 }

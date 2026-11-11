@@ -67,7 +67,10 @@ internal class ReminderPlanStore(context: Context) {
 
 internal const val DEFAULT_CHANNEL_NAME = "Reminders"
 
-/** AlarmManager side of the reminders: inexact `setAndAllowWhileIdle`, no exact-alarm permission needed. */
+/**
+ * AlarmManager side of the reminders: inexact `setAndAllowWhileIdle`, no exact-alarm permission needed. Only the next
+ * [ARMED_AHEAD] entries of the stored plan are armed at a time (see [arm]).
+ */
 internal object ReminderAlarms {
     /** Wall-clock instant of [item] in the current time zone. */
     fun triggerAtMs(item: ScheduledReminder, zone: ZoneId = ZoneId.systemDefault()): Long =
@@ -77,13 +80,15 @@ internal object ReminderAlarms {
             .toInstant()
             .toEpochMilli()
 
-    /** Arms every entry that is still in the future; past entries are skipped. Returns the armed ids. */
+    /**
+     * Arms the next [ARMED_AHEAD] entries that are still ahead of [nowMs]; past entries are skipped. Below API 31 an
+     * inexact alarm may be delayed by up to 3/4 of its lead time, so a reminder armed two weeks ahead could arrive days
+     * late: [ReminderAlarmReceiver] re-arms the following ones each time one fires. Returns the armed ids.
+     */
     fun arm(context: Context, items: List<ScheduledReminder>, nowMs: Long): List<Int> {
         val alarms = context.getSystemService(AlarmManager::class.java) ?: return emptyList()
         val armed = mutableListOf<Int>()
-        for (item in items) {
-            val at = triggerAtMs(item)
-            if (at <= nowMs) continue
+        for ((item, at) in upcoming(items, nowMs)) {
             val intent = intentFor(context, item.id).putExtra(EXTRA_TITLE, item.title).putExtra(EXTRA_BODY, item.body)
             val pending = PendingIntent.getBroadcast(
                 context,
@@ -96,6 +101,18 @@ internal object ReminderAlarms {
         }
         return armed
     }
+
+    /** The first [limit] entries strictly after [afterMs] in trigger order, with their trigger instants. */
+    fun upcoming(
+        items: List<ScheduledReminder>,
+        afterMs: Long,
+        limit: Int = ARMED_AHEAD,
+        zone: ZoneId = ZoneId.systemDefault(),
+    ): List<Pair<ScheduledReminder, Long>> = items
+        .map { it to triggerAtMs(it, zone) }
+        .filter { (_, at) -> at > afterMs }
+        .sortedBy { (_, at) -> at }
+        .take(limit)
 
     /** Cancels every id a plan can use, whether or not it is armed. */
     fun cancelAll(context: Context) {
@@ -119,5 +136,8 @@ internal object ReminderAlarms {
     const val EXTRA_ID: String = "id"
     const val EXTRA_TITLE: String = "title"
     const val EXTRA_BODY: String = "body"
+
+    /** Alarms armed at a time: the next reminder plus one spare in case the re-arm on fire is missed. */
+    const val ARMED_AHEAD: Int = 2
     private const val MINUTES_PER_HOUR = 60
 }

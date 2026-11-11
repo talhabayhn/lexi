@@ -23,7 +23,9 @@ has to be known when the notification is scheduled. `ARCHITECTURE.md` §7 alread
   `openSystemSettings()`) and `ReminderTextProvider`; implementations in `core:platform` / `shared`.
 - **Android**: AlarmManager `setAndAllowWhileIdle(RTC_WAKEUP)`, which is inexact, so the app needs no
   `SCHEDULE_EXACT_ALARM`. The plan is stored as local date + minute + title + body in private SharedPreferences.
-  `ReminderAlarmReceiver` posts the notification on the "reminders" channel. `ReminderRescheduleReceiver` re-arms the
+  Only the next two entries are armed at a time (below API 31 an inexact alarm may slip by 3/4 of its lead time, so
+  one armed two weeks ahead could arrive days late). `ReminderAlarmReceiver` posts the notification on the
+  "reminders" channel and arms the following entries. `ReminderRescheduleReceiver` re-arms the
   alarms from the stored plan on `BOOT_COMPLETED`, `TIME_SET`, `TIMEZONE_CHANGED` and `MY_PACKAGE_REPLACED`.
   `POST_NOTIFICATIONS` is a runtime request on API 33+ (ActivityResult launcher registered in `MainActivity.onCreate`).
 - **iOS**: `UNUserNotificationCenter` from Kotlin/Native (no Swift bridge), with non-repeating

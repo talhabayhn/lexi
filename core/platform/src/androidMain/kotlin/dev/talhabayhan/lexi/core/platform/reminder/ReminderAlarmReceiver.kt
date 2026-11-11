@@ -9,7 +9,10 @@ import android.content.Intent
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 
-/** Posts the reminder when its alarm fires (the tap opens the launcher activity). */
+/**
+ * Posts the reminder when its alarm fires (the tap opens the launcher activity) and arms the next ones of the stored
+ * plan, even when the notification could not be posted.
+ */
 public class ReminderAlarmReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         val id = intent.getIntExtra(ReminderAlarms.EXTRA_ID, -1)
@@ -17,6 +20,7 @@ public class ReminderAlarmReceiver : BroadcastReceiver() {
         val body = intent.getStringExtra(ReminderAlarms.EXTRA_BODY)
         if (id < 0 || title == null || body == null) return
         ReminderNotifier.post(context, id, title, body)
+        AndroidReminderScheduler.rearmStoredPlan(context, System.currentTimeMillis(), firedId = id)
     }
 }
 

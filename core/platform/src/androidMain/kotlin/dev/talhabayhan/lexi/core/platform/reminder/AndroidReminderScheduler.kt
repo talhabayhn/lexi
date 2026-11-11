@@ -11,7 +11,7 @@ import kotlinx.coroutines.withContext
 /**
  * [ReminderScheduler] on AlarmManager (ADR 0021). [channelName] is the localized notification channel name; it is
  * stored with the plan so [ReminderAlarmReceiver] can create the channel without the app's resources running. The
- * AlarmManager binder calls (up to ~45 per call) and SharedPreferences writes run on [io], never on the main thread.
+ * AlarmManager binder calls (about 20 per call) and SharedPreferences writes run on [io], never on the main thread.
  */
 public class AndroidReminderScheduler(
     context: Context,
@@ -41,12 +41,17 @@ public class AndroidReminderScheduler(
     }
 
     public companion object {
-        /** Re-arms the stored plan (boot, clock or time zone change, app update); past entries are skipped. */
-        public fun rearmStoredPlan(context: Context, nowMs: Long = System.currentTimeMillis()) {
+        /**
+         * Re-arms the next entries of the stored plan (boot, clock or time zone change, app update, a reminder fired);
+         * past entries are skipped. [firedId] is the reminder that just fired: it and everything before it stay
+         * unarmed even if the clock says it is still ahead.
+         */
+        public fun rearmStoredPlan(context: Context, nowMs: Long = System.currentTimeMillis(), firedId: Int? = null) {
             val app = context.applicationContext
             val plan = ReminderPlanStore(app).load()
+            val fired = firedId?.let { id -> plan.firstOrNull { it.id == id } }?.let(ReminderAlarms::triggerAtMs)
             ReminderAlarms.cancelAll(app)
-            ReminderAlarms.arm(app, plan, nowMs)
+            ReminderAlarms.arm(app, plan, maxOf(nowMs, fired ?: nowMs))
         }
     }
 }
