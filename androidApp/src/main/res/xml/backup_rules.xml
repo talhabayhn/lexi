@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Auto Backup on API 26-30 (android:fullBackupContent). Only excludes, so everything else is backed up as before.
+     The notification-permission bookkeeping describes this device's permission dialog; restored on a new phone it would
+     report the reminder permission as blocked there. Keep in sync with data_extraction_rules.xml. -->
+<full-backup-content>
+    <exclude domain="sharedpref" path="lexi_notification_permission.xml" />
+</full-backup-content>

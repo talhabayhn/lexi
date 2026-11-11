@@ -28,12 +28,15 @@
 
     <application
         android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:localeConfig="@xml/locales_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Lexi">
+        android:theme="@style/Theme.Lexi"
+        tools:targetApi="31">
         <!-- Portrait-only phone app; configChanges keep the game's activity (and its clock) alive on resizes and
              dark-mode toggles instead of recreating it (ADR 0019). -->
         <activity

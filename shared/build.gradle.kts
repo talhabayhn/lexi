@@ -88,4 +88,10 @@ run {
 // Robolectric (SDK 36) touches FileDescriptor internals that JDK 17+ hides; see ADR 0013.
 tasks.withType<Test>().configureEach {
     jvmArgs("--add-exports=java.base/jdk.internal.access=ALL-UNNAMED")
+    // BackupRulesTest reads the app's manifest and backup rules.
+    inputs.files(
+        rootProject.file("androidApp/src/main/AndroidManifest.xml"),
+        rootProject.file("androidApp/src/main/res/xml/backup_rules.xml"),
+        rootProject.file("androidApp/src/main/res/xml/data_extraction_rules.xml"),
+    ).withPropertyName("appBackupRules").withPathSensitivity(PathSensitivity.RELATIVE)
 }

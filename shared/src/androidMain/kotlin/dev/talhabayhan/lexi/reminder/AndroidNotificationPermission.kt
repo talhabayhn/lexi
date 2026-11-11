@@ -88,10 +88,16 @@ public object NotificationPermissionHost {
     }
 }
 
+/**
+ * SharedPreferences file of [AndroidNotificationPermission]. Device-specific, so it is excluded from Auto Backup and
+ * device transfer (`androidApp/src/main/res/xml/backup_rules.xml` and `data_extraction_rules.xml`).
+ */
+internal const val NOTIFICATION_PERMISSION_PREFS: String = "lexi_notification_permission"
+
 /** [NotificationPermission] for Android: runtime permission on API 33+, the app-level switch below. */
 public class AndroidNotificationPermission(context: Context) : NotificationPermission {
     private val context = context.applicationContext
-    private val prefs = this.context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
+    private val prefs = this.context.getSharedPreferences(NOTIFICATION_PERMISSION_PREFS, Context.MODE_PRIVATE)
 
     override suspend fun status(): PermissionStatus {
         val sdk = Build.VERSION.SDK_INT
@@ -133,7 +139,6 @@ public class AndroidNotificationPermission(context: Context) : NotificationPermi
     }
 
     private companion object {
-        const val PREFS = "lexi_notification_permission"
         const val KEY_ASKED = "asked"
     }
 }
