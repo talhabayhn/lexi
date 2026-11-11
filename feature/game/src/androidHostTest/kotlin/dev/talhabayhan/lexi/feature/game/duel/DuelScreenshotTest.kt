@@ -12,7 +12,7 @@ import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
 import org.robolectric.annotation.GraphicsMode
 
-/** `17-duel-setup`, `18-duel-handover`, `19-duel-game` and `20-duel-result` at 390 × 844dp, xhdpi (2×), Turkish like the designs. */
+/** `17-duel-setup`, `18-duel-handover`, `19-duel-game`, `20-duel-result` and the answer review (needs design) at 390 × 844dp, xhdpi (2×), Turkish like the designs. */
 @RunWith(RobolectricTestRunner::class)
 @GraphicsMode(GraphicsMode.Mode.NATIVE)
 @Config(sdk = [36], qualifiers = "tr-w390dp-h844dp-xhdpi")
@@ -133,6 +133,30 @@ class DuelScreenshotTest {
             LexiTheme(reducedMotion = false) {
                 DuelResultScreen(DuelResultSamples.tieBreakWrong, onPlayAgain = {}, onHome = {})
             }
+        }
+    }
+
+    @Test
+    fun resultLongName() {
+        captureRoboImage("src/androidHostTest/screenshots/DuelResultLongName.png") {
+            LexiTheme(reducedMotion = false) {
+                DuelResultScreen(DuelResultSamples.longName, onPlayAgain = {}, onHome = {})
+            }
+        }
+    }
+
+    @Test
+    fun review() {
+        captureRoboImage("src/androidHostTest/screenshots/DuelReview.png") {
+            LexiTheme(reducedMotion = false) { DuelReviewScreen(DuelReviewSamples.design, onIntent = {}) }
+        }
+    }
+
+    @Test
+    @Config(qualifiers = "en-w390dp-h844dp-xhdpi")
+    fun reviewEnglish() {
+        captureRoboImage("src/androidHostTest/screenshots/DuelReviewEnglish.png") {
+            LexiTheme(reducedMotion = false) { DuelReviewScreen(DuelReviewSamples.design, onIntent = {}) }
         }
     }
 

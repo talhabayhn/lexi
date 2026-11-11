@@ -24,7 +24,9 @@ data class DuelRoute(val level: String, val clockSeconds: Int, val player1: Stri
 /**
  * The duel result (`20-duel-result`). The finished match travels in the route as flat primitives (nested data has no
  * built-in nav type on iOS); it is never stored (`GameConfig.srsExcludedModes`). [end] is a [DuelEnd] name, [winner]
- * the 0-based winner or -1 for a draw, `slotsN` one [DuelSlotOutcome.code] per playable letter in wheel order.
+ * the 0-based winner or -1 for a draw, `slotsN` one [DuelSlotOutcome.code] per playable letter in wheel order and
+ * `cardsN` the card id of each of those letters (same order; empty in a route saved by a build before 1.0.12). Card ids
+ * only, like `ResultRoute`: the answer review reads clue and example from the content by id.
  */
 @Serializable
 data class DuelResultRoute(
@@ -44,6 +46,8 @@ data class DuelResultRoute(
     val remainingMs2: Long,
     val slots1: String,
     val slots2: String,
+    val cards1: List<String> = emptyList(),
+    val cards2: List<String> = emptyList(),
 ) {
     internal val outcome: DuelOutcome
         get() = DuelOutcome(
@@ -52,8 +56,24 @@ data class DuelResultRoute(
             end = DuelEnd.valueOf(end),
             winner = winner.takeIf { it >= 0 },
             players = listOf(
-                DuelPlayerOutcome(name1, correct1, wrong1, passed1, remainingMs1, DuelSlotOutcome.parse(slots1)),
-                DuelPlayerOutcome(name2, correct2, wrong2, passed2, remainingMs2, DuelSlotOutcome.parse(slots2)),
+                DuelPlayerOutcome(
+                    name1,
+                    correct1,
+                    wrong1,
+                    passed1,
+                    remainingMs1,
+                    DuelSlotOutcome.parse(slots1),
+                    cards1,
+                ),
+                DuelPlayerOutcome(
+                    name2,
+                    correct2,
+                    wrong2,
+                    passed2,
+                    remainingMs2,
+                    DuelSlotOutcome.parse(slots2),
+                    cards2,
+                ),
             ),
         )
 
@@ -77,6 +97,47 @@ data class DuelResultRoute(
                 remainingMs2 = second.remainingMs,
                 slots1 = first.slots.joinToString("") { it.code.toString() },
                 slots2 = second.slots.joinToString("") { it.code.toString() },
+                cards1 = first.cards,
+                cards2 = second.cards,
+            )
+        }
+    }
+}
+
+/**
+ * One player's answer review after a duel (opened from a player card of `20-duel-result`; needs design, it reuses the
+ * review list of `06-result`). [player] is 0-based, [name] as typed ("" = the default name), [end] a [DuelEnd] name.
+ * The card ids of the letters the player answered correctly, wrongly or passed, each in wheel order; letters the
+ * player never reached (the clock ran out, a forfeit) are left out.
+ */
+@Serializable
+data class DuelReviewRoute(
+    val level: String,
+    val end: String,
+    val player: Int,
+    val name: String,
+    val correctCards: List<String> = emptyList(),
+    val wrongCards: List<String> = emptyList(),
+    val passedCards: List<String> = emptyList(),
+) {
+    internal val duelLevel: Level get() = Level.valueOf(level)
+
+    internal val duelEnd: DuelEnd get() = DuelEnd.valueOf(end)
+
+    internal companion object {
+        /** The review of [player] (0-based) in the finished [outcome]. */
+        fun of(outcome: DuelOutcome, player: Int): DuelReviewRoute {
+            val played = outcome.players[player]
+            val pairs = played.slots.zip(played.cards).filter { (_, card) -> card.isNotEmpty() }
+            fun cardsWith(slot: DuelSlotOutcome) = pairs.filter { it.first == slot }.map { it.second }
+            return DuelReviewRoute(
+                level = outcome.level.name,
+                end = outcome.end.name,
+                player = player,
+                name = played.name,
+                correctCards = cardsWith(DuelSlotOutcome.CORRECT),
+                wrongCards = cardsWith(DuelSlotOutcome.WRONG),
+                passedCards = cardsWith(DuelSlotOutcome.PASSED),
             )
         }
     }
@@ -122,6 +183,8 @@ internal data class DuelPlayerOutcome(
     val passed: Int,
     val remainingMs: Long,
     val slots: List<DuelSlotOutcome>,
+    /** The card id of each of [slots], same order (empty when the route predates 1.0.12). */
+    val cards: List<String> = emptyList(),
 )
 
 /** The finished duel; [winner] is the 0-based player index, null for a draw. */

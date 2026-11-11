@@ -97,6 +97,15 @@ public object DuelDefaults {
     public val ResultCircleEndBleed: Dp = 90.dp
     public val ResultCircleTopBleed: Dp = 80.dp
 
+    /**
+     * End inset of the winner / draw headline so it never runs under the circle: the circle shows 86dp at the end
+     * (176 − 90), minus the 20dp screen padding, plus an 8dp gap. The design breaks "1. Oyuncu / kazandı" there too.
+     */
+    public val ResultTitleEndInset: Dp = 74.dp
+
+    /** Smallest scale the headline shrinks to (two lines) before it ellipsizes: 16-character single-word names. */
+    public const val RESULT_TITLE_MIN_SCALE: Float = 0.5f
+
     /** Headline spacing: score line `margin-top: 4px`, explanation `margin-top: 2px`. */
     public val ResultScoreTop: Dp = 4.dp
     public val ResultExplanationTop: Dp = 2.dp

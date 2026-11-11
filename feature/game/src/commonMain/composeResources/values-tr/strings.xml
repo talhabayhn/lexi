@@ -232,4 +232,8 @@
     <string name="duel_result_forfeit">%1$s pes etti</string>
     <string name="duel_result_winner_badge">KAZANAN</string>
     <string name="duel_result_time_left">kalan süre</string>
+    <!-- Duel answer review (needs design). -->
+    <string name="duel_result_see_answers">%1$s: cevapları gör</string>
+    <string name="duel_review_back">Sonuca dön</string>
+    <string name="duel_review_empty">Bu oyuncu hiç kelime cevaplamadı.</string>
 </resources>

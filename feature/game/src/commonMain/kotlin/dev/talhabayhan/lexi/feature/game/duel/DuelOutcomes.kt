@@ -17,13 +17,14 @@ internal object DuelOutcomes {
         val players = match.players.mapIndexed { index, game ->
             val summary = game.summary
             val slots = game.wheel.slots
+            val playable = slots.filter { it.isPlayable }
             DuelPlayerOutcome(
                 name = route.names[index],
                 correct = summary?.correct ?: slots.count { it.state == SlotState.CORRECT },
                 wrong = summary?.wrong ?: slots.count { it.state == SlotState.WRONG },
                 passed = summary?.passed ?: slots.count { it.state == SlotState.PASSED },
                 remainingMs = (summary?.remainingMs ?: game.remainingMs ?: timeLimitMs).coerceAtLeast(0L),
-                slots = game.wheel.slots.filter { it.isPlayable }.map {
+                slots = playable.map {
                     when (it.state) {
                         SlotState.CORRECT -> DuelSlotOutcome.CORRECT
                         SlotState.WRONG -> DuelSlotOutcome.WRONG
@@ -31,6 +32,7 @@ internal object DuelOutcomes {
                         SlotState.TODO, SlotState.CURRENT, SlotState.SKIPPED -> DuelSlotOutcome.OPEN
                     }
                 },
+                cards = playable.map { checkNotNull(it.card).id.value },
             )
         }
         val end = when {

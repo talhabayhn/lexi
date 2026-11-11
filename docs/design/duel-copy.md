@@ -29,7 +29,7 @@ Length class: EN ≤ TR + 10 %. **DECISION** = needs the owner.
 | `game_pause_quit` | PES ET | GIVE UP | 18 link | 8 | **reuse**; asks "Pes etmek istiyor musun?" first |
 | `duel_game_turn` | SIRA | TURN | 19 active card chip | 6 | |
 | `result_mode_duel` | DÜELLO | DUEL | 20 header | 8 | **reuse**; header = `result_header` with `result_reason_*` |
-| `duel_result_winner` | {name} kazandı | {name} wins | 20 headline | 18+name | name capped at 12 chars, ellipsis |
+| `duel_result_winner` | {name} kazandı | {name} wins | 20 headline | 18+name | ends before the circle; wraps to 2 lines, then shrinks (to 50 %) before an ellipsis |
 | `duel_result_draw` | Berabere | It's a draw | 20 headline | 12 | |
 | `duel_result_score` | {a} – {b} doğru | {a} – {b} correct | 20 line 2, always shown | 16 | |
 | `duel_result_tiebreak_wrong` | Doğrular eşit: yanlışı az olan kazandı | Tied on correct: fewer wrong answers wins | 20 line 3, under the score (14 sp) | 40 | rules §8 |
@@ -42,6 +42,9 @@ Length class: EN ≤ TR + 10 %. **DECISION** = needs the owner.
 | `duel_name_cancel` | Vazgeç | Cancel | name dialog | 8 | |
 | `duel_result_time_up` | SÜRE BİTTİ | TIME UP | 20 header reason / player card | 12 | **reuse** `result_reason_time_up` |
 | `duel_result_winner_badge` | KAZANAN | WINNER | 20 card badge | 10 | |
+| `duel_result_see_answers` | {name}: cevapları gör | {name}: see answers | 20 player card (screen reader only) | — | 1.0.12; the card's chevron is **needs design** |
+| `duel_review_back` | Sonuca dön | Back to the result | answer review back button (screen reader only) | — | **needs design** |
+| `duel_review_empty` | Bu oyuncu hiç kelime cevaplamadı. | This player didn't answer any words. | answer review empty state | 36 | **needs design** |
 | `result_correct` / `result_wrong` / `result_passed` / `result_time_left` | doğru / yanlış / pas / kalan süre | correct / wrong / passed / time left | 20 stats | — | **reuse** (EN "pass" vs "passed" — check `values/strings.xml`) |
 | `result_play_again` | TEKRAR OYNA | PLAY AGAIN | 20 CTA | 12 | **reuse** |
 | `result_home` | Ana menüye dön | Back to menu | 20 link | 16 | **reuse** |

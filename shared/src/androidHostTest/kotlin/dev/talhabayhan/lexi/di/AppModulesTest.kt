@@ -15,6 +15,7 @@ import dev.talhabayhan.lexi.core.domain.repository.EntitlementRepository
 import dev.talhabayhan.lexi.core.domain.telemetry.AnalyticsTracker
 import dev.talhabayhan.lexi.core.domain.telemetry.CrashReporter
 import dev.talhabayhan.lexi.feature.game.GameRoute
+import dev.talhabayhan.lexi.feature.game.duel.DuelReviewRoute
 import dev.talhabayhan.lexi.feature.game.duel.DuelRoute
 import dev.talhabayhan.lexi.feature.game.result.ResultRoute
 import dev.talhabayhan.lexi.feature.levels.CategoriesRoute
@@ -51,6 +52,7 @@ class AppModulesTest {
                 GameRoute::class,
                 ResultRoute::class,
                 DuelRoute::class,
+                DuelReviewRoute::class,
                 CategoriesRoute::class,
                 LevelSelectRoute::class,
                 LevelTestResultRoute::class,

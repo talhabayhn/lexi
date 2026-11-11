@@ -4,6 +4,7 @@ import androidx.compose.runtime.Immutable
 import dev.talhabayhan.lexi.core.designsystem.component.ReviewOutcome
 import dev.talhabayhan.lexi.core.domain.game.GameMode
 import dev.talhabayhan.lexi.core.domain.game.GameOverReason
+import dev.talhabayhan.lexi.core.domain.model.Card
 import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.core.domain.share.ShareCard
 import kotlinx.collections.immutable.ImmutableList
@@ -70,6 +71,18 @@ internal data class ReviewRowUi(
     val level: Level? = null,
     val cardId: String = "",
     val isAddedToNotebook: Boolean = false,
+)
+
+/** The review row of this card with [outcome] (the solo result and the duel's answer review). */
+internal fun Card.toReviewRow(outcome: ReviewOutcome, isAddedToNotebook: Boolean = false) = ReviewRowUi(
+    letter = letter,
+    word = answer.lowercase(),
+    clue = clue,
+    example = example,
+    outcome = outcome,
+    level = level,
+    cardId = id.value,
+    isAddedToNotebook = isAddedToNotebook,
 )
 
 internal sealed interface ResultIntent {

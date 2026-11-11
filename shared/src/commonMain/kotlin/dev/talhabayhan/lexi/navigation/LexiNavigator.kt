@@ -14,6 +14,7 @@ import dev.talhabayhan.lexi.feature.game.GamePreparer
 import dev.talhabayhan.lexi.feature.game.GameRoute
 import dev.talhabayhan.lexi.feature.game.LevelTestRoute
 import dev.talhabayhan.lexi.feature.game.duel.DuelResultRoute
+import dev.talhabayhan.lexi.feature.game.duel.DuelReviewRoute
 import dev.talhabayhan.lexi.feature.game.duel.DuelRoute
 import dev.talhabayhan.lexi.feature.game.duel.DuelSetupRoute
 import dev.talhabayhan.lexi.feature.game.result.ResultRoute
@@ -149,6 +150,9 @@ internal class LexiNavigator(
             popUpTo(HomeRoute) { inclusive = false }
         }
     }
+
+    /** A player card on the duel result: that player's answers above the result, which back returns to unchanged. */
+    fun openDuelReview(review: DuelReviewRoute): Boolean = ifResumed { navigate(review) { launchSingleTop = true } }
 
     fun openNotebook(): Boolean = ifResumed { navigate(NotebookRoute) { launchSingleTop = true } }
 

@@ -233,4 +233,8 @@
     <string name="duel_result_forfeit">%1$s gave up</string>
     <string name="duel_result_winner_badge">WINNER</string>
     <string name="duel_result_time_left">time left</string>
+    <!-- Duel answer review (needs design). -->
+    <string name="duel_result_see_answers">%1$s: see answers</string>
+    <string name="duel_review_back">Back to the result</string>
+    <string name="duel_review_empty">This player didn't answer any words.</string>
 </resources>

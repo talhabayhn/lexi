@@ -225,6 +225,8 @@ the app goes to background.
 - Result: winner headline (or "Berabere"), the score line always, then one explanation line: fewer wrong / more time
   left when the winner was decided by a tie-break, "<name> pes etti" after a forfeit. Header reason: ÇARK TAMAM (both
   wheels completed), SÜRE BİTTİ (otherwise), PES ETTİ (forfeit; the same reason text in every mode).
+  Tapping a player card opens that player's answer review (1.0.12): the cards they answered correctly, wrongly or
+  passed, grouped like the solo result; letters never reached are left out. Nothing goes into the notebook.
 - Race (online): same wheel, simultaneous, no turns; first to finish all slots wins, else most correct at time-up.
   Level handicap (optional room setting): each player plays own level; score = normalized points.
 

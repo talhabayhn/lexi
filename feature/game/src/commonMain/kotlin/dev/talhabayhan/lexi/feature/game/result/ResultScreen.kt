@@ -36,11 +36,8 @@ import dev.talhabayhan.lexi.core.designsystem.component.LexiButton
 import dev.talhabayhan.lexi.core.designsystem.component.LexiButtonDefaults
 import dev.talhabayhan.lexi.core.designsystem.component.LexiButtonVariant
 import dev.talhabayhan.lexi.core.designsystem.component.LexiTextLink
-import dev.talhabayhan.lexi.core.designsystem.component.ListCard
 import dev.talhabayhan.lexi.core.designsystem.component.ResultDefaults
-import dev.talhabayhan.lexi.core.designsystem.component.ReviewMoreRow
 import dev.talhabayhan.lexi.core.designsystem.component.ReviewOutcome
-import dev.talhabayhan.lexi.core.designsystem.component.ReviewRow
 import dev.talhabayhan.lexi.core.designsystem.component.SlidingToast
 import dev.talhabayhan.lexi.core.designsystem.component.StatGrid
 import dev.talhabayhan.lexi.core.designsystem.component.StatTile
@@ -51,16 +48,10 @@ import dev.talhabayhan.lexi.core.designsystem.theme.lexiContentWidth
 import dev.talhabayhan.lexi.core.domain.game.GameMode
 import dev.talhabayhan.lexi.core.domain.game.GameOverReason
 import dev.talhabayhan.lexi.feature.game.generated.resources.Res
-import dev.talhabayhan.lexi.feature.game.generated.resources.result_add_to_notebook
 import dev.talhabayhan.lexi.feature.game.generated.resources.result_added
-import dev.talhabayhan.lexi.feature.game.generated.resources.result_added_to_notebook
 import dev.talhabayhan.lexi.feature.game.generated.resources.result_best_streak
 import dev.talhabayhan.lexi.feature.game.generated.resources.result_correct
 import dev.talhabayhan.lexi.feature.game.generated.resources.result_empty
-import dev.talhabayhan.lexi.feature.game.generated.resources.result_group_correct
-import dev.talhabayhan.lexi.feature.game.generated.resources.result_group_passed
-import dev.talhabayhan.lexi.feature.game.generated.resources.result_group_time_up
-import dev.talhabayhan.lexi.feature.game.generated.resources.result_group_wrong
 import dev.talhabayhan.lexi.feature.game.generated.resources.result_header
 import dev.talhabayhan.lexi.feature.game.generated.resources.result_home
 import dev.talhabayhan.lexi.feature.game.generated.resources.result_mode_classic
@@ -70,11 +61,6 @@ import dev.talhabayhan.lexi.feature.game.generated.resources.result_mode_hardcor
 import dev.talhabayhan.lexi.feature.game.generated.resources.result_mode_level_test
 import dev.talhabayhan.lexi.feature.game.generated.resources.result_mode_practice
 import dev.talhabayhan.lexi.feature.game.generated.resources.result_mode_review
-import dev.talhabayhan.lexi.feature.game.generated.resources.result_more
-import dev.talhabayhan.lexi.feature.game.generated.resources.result_outcome_correct
-import dev.talhabayhan.lexi.feature.game.generated.resources.result_outcome_passed
-import dev.talhabayhan.lexi.feature.game.generated.resources.result_outcome_time_up
-import dev.talhabayhan.lexi.feature.game.generated.resources.result_outcome_wrong
 import dev.talhabayhan.lexi.feature.game.generated.resources.result_passed
 import dev.talhabayhan.lexi.feature.game.generated.resources.result_play_again
 import dev.talhabayhan.lexi.feature.game.generated.resources.result_points
@@ -87,8 +73,6 @@ import dev.talhabayhan.lexi.feature.game.generated.resources.result_retry
 import dev.talhabayhan.lexi.feature.game.generated.resources.result_review_error
 import dev.talhabayhan.lexi.feature.game.generated.resources.result_review_title
 import dev.talhabayhan.lexi.feature.game.generated.resources.result_share
-import dev.talhabayhan.lexi.feature.game.generated.resources.result_show_less
-import dev.talhabayhan.lexi.feature.game.generated.resources.result_speak
 import dev.talhabayhan.lexi.feature.game.generated.resources.result_time_left
 import dev.talhabayhan.lexi.feature.game.generated.resources.result_wrong
 import dev.talhabayhan.lexi.feature.game.generated.resources.share_error
@@ -305,63 +289,14 @@ private fun Review(state: ResultUiState, onIntent: (ResultIntent) -> Unit) {
             // DESIGN-DEBT: no design for a wheel without misses; the component library's empty state.
             groups.isEmpty() -> EmptyState(stringResource(Res.string.result_empty), Modifier.fillMaxWidth())
 
-            else -> Column(verticalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap16)) {
-                groups.forEach { group ->
-                    Column(verticalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap6)) {
-                        Text(
-                            text = stringResource(group.outcome.titleRes()),
-                            style = typography.heading18,
-                        )
-                        val expanded = group.outcome in state.expandedGroups
-                        val hidden = group.rows.size - ReviewGroupUi.PREVIEW_ROWS
-                        ListCard(Modifier.fillMaxWidth(), shadow = LexiTheme.shadows.s6) {
-                            (if (expanded) group.rows else group.rows.take(ReviewGroupUi.PREVIEW_ROWS)).forEach { row ->
-                                ReviewRow(
-                                    letter = row.letter,
-                                    word = row.word,
-                                    clue = row.clue,
-                                    example = row.example,
-                                    outcome = row.outcome,
-                                    outcomeDescription = stringResource(row.outcome.descriptionRes()),
-                                    speakContentDescription = stringResource(Res.string.result_speak, row.word),
-                                    onSpeak = { onIntent(ResultIntent.Speak(row.word)) },
-                                    level = if (state.mode == GameMode.DAILY) row.level?.name else null,
-                                    onAddToNotebook = if (
-                                        row.outcome == ReviewOutcome.TimeUp &&
-                                        !row.isAddedToNotebook
-                                    ) {
-                                        { onIntent(ResultIntent.AddToNotebook(row.cardId)) }
-                                    } else {
-                                        null
-                                    },
-                                    addToNotebookText = if (row.outcome == ReviewOutcome.TimeUp) {
-                                        stringResource(
-                                            if (row.isAddedToNotebook) {
-                                                Res.string.result_added_to_notebook
-                                            } else {
-                                                Res.string.result_add_to_notebook
-                                            },
-                                        )
-                                    } else {
-                                        null
-                                    },
-                                    isAddedToNotebook = row.isAddedToNotebook,
-                                )
-                            }
-                            if (hidden > 0) {
-                                ReviewMoreRow(
-                                    text = if (expanded) {
-                                        stringResource(Res.string.result_show_less)
-                                    } else {
-                                        pluralStringResource(Res.plurals.result_more, hidden, hidden)
-                                    },
-                                    onClick = { onIntent(ResultIntent.ToggleGroup(group.outcome)) },
-                                )
-                            }
-                        }
-                    }
-                }
-            }
+            else -> ReviewGroupList(
+                groups = groups,
+                expandedGroups = state.expandedGroups,
+                onToggleGroup = { onIntent(ResultIntent.ToggleGroup(it)) },
+                onSpeak = { onIntent(ResultIntent.Speak(it)) },
+                showLevel = state.mode == GameMode.DAILY,
+                onAddToNotebook = { onIntent(ResultIntent.AddToNotebook(it)) },
+            )
         }
     }
 }
@@ -414,20 +349,6 @@ private fun GameOverReason.label(): StringResource = when (this) {
     GameOverReason.WRONG_IN_HARDCORE -> Res.string.result_reason_wrong_in_hardcore
     GameOverReason.FORFEIT -> Res.string.result_reason_forfeit
     GameOverReason.EMPTY_WHEEL -> Res.string.result_reason_empty_wheel
-}
-
-private fun ReviewOutcome.titleRes(): StringResource = when (this) {
-    ReviewOutcome.Correct -> Res.string.result_group_correct
-    ReviewOutcome.Wrong -> Res.string.result_group_wrong
-    ReviewOutcome.Passed -> Res.string.result_group_passed
-    ReviewOutcome.TimeUp -> Res.string.result_group_time_up
-}
-
-private fun ReviewOutcome.descriptionRes(): StringResource = when (this) {
-    ReviewOutcome.Correct -> Res.string.result_outcome_correct
-    ReviewOutcome.Wrong -> Res.string.result_outcome_wrong
-    ReviewOutcome.Passed -> Res.string.result_outcome_passed
-    ReviewOutcome.TimeUp -> Res.string.result_outcome_time_up
 }
 
 @Preview(widthDp = 390, heightDp = 844)

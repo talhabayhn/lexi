@@ -362,6 +362,17 @@ class DuelViewModelTest {
                 assertEquals(0, outcome.winner)
                 assertEquals(listOf(1, 0), outcome.players.map { it.correct })
                 assertEquals(listOf(0L, 0L), outcome.players.map { it.remainingMs })
+                // Each player's card ids travel with the result in wheel order, for their answer review.
+                val wheelIds = pool.map { it.id.value }
+                assertEquals(listOf(wheelIds, wheelIds), outcome.players.map { it.cards })
+                val firstReview = DuelReviewRoute.of(outcome, 0)
+                assertEquals(1, firstReview.correctCards.size)
+                assertEquals(
+                    outcome.players[0].slots.indexOf(DuelSlotOutcome.CORRECT),
+                    wheelIds.indexOf(firstReview.correctCards.single()),
+                )
+                val secondReview = DuelReviewRoute.of(outcome, 1)
+                assertTrue(secondReview.correctCards.isEmpty() && secondReview.wrongCards.isEmpty())
                 cancelAndIgnoreRemainingEvents()
             }
             assertEquals(

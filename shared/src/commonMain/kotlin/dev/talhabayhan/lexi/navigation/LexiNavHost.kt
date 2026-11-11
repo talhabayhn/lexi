@@ -183,6 +183,7 @@ private fun LexiNavGraph(
             onOpenSettings = { navigator.openSettings() },
             onPlayAgain = { duel -> navigator.playDuelAgain(duel) },
             onHome = { navigator.home() },
+            onOpenReview = { review -> navigator.openDuelReview(review) },
         )
         resultScreen(
             onPlayAgain = { game -> navigator.playAgain(game) },

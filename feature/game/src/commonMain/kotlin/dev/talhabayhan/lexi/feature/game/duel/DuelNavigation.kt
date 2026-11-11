@@ -32,11 +32,12 @@ import kotlinx.coroutines.launch
 import org.koin.compose.viewmodel.koinViewModel
 
 /**
- * The hot-seat duel's three destinations (`GAME_RULES.md` §8, `screen-map.md` 17–20): setup → duel (handover card and
- * board) → result. [onStartDuel] opens a duel from the setup; [onFinished] shows the result (pops everything above
+ * The hot-seat duel's destinations (`GAME_RULES.md` §8, `screen-map.md` 17–20): setup → duel (handover card and
+ * board) → result → a player's answer review. [onStartDuel] opens a duel from the setup; [onFinished] shows the result (pops everything above
  * Home); [onAbandoned] returns Home when a match was dropped (process death); [onBack] leaves the setup or a duel that
  * could not be loaded; [onOpenSettings] is the pause dialog's "Ayarlar"; [onPlayAgain] starts the same setup again
- * from the result; [onHome] is "Ana menüye dön".
+ * from the result; [onHome] is "Ana menüye dön"; [onOpenReview] opens a player's answers from the result (its back is
+ * [onBack], to the result).
  */
 fun NavGraphBuilder.duelScreens(
     onStartDuel: (DuelRoute) -> Unit,
@@ -46,6 +47,7 @@ fun NavGraphBuilder.duelScreens(
     onOpenSettings: () -> Unit,
     onPlayAgain: (DuelRoute) -> Unit,
     onHome: () -> Unit,
+    onOpenReview: (DuelReviewRoute) -> Unit,
 ) {
     composable<DuelSetupRoute> { DuelSetupRoute(onStartDuel = onStartDuel, onBack = onBack) }
     composable<DuelRoute> {
@@ -59,8 +61,19 @@ fun NavGraphBuilder.duelScreens(
                 onPlayAgain(DuelRoute(outcome.level, outcome.clockSeconds, outcome.players.map { it.name }))
             },
             onHome = onHome,
+            onOpenReview = { player -> onOpenReview(DuelReviewRoute.of(outcome, player)) },
         )
     }
+    composable<DuelReviewRoute> { DuelReviewRoute(onBack = onBack) }
+}
+
+@Composable
+internal fun DuelReviewRoute(onBack: () -> Unit, viewModel: DuelReviewViewModel = koinViewModel()) {
+    val state by viewModel.state.collectAsStateWithLifecycle()
+    DuelReviewScreen(
+        state = state,
+        onIntent = { intent -> if (intent == DuelReviewIntent.Back) onBack() else viewModel.onIntent(intent) },
+    )
 }
 
 @Composable

@@ -7,7 +7,6 @@ import dev.talhabayhan.lexi.core.designsystem.component.ResultDefaults
 import dev.talhabayhan.lexi.core.designsystem.component.ReviewOutcome
 import dev.talhabayhan.lexi.core.domain.feedback.Speaker
 import dev.talhabayhan.lexi.core.domain.game.GameConfig
-import dev.talhabayhan.lexi.core.domain.model.Card
 import dev.talhabayhan.lexi.core.domain.model.CardId
 import dev.talhabayhan.lexi.core.domain.platform.ShareService
 import dev.talhabayhan.lexi.core.domain.repository.CardRepository
@@ -270,18 +269,18 @@ internal class ResultViewModel(
         }
 
         val correctRows = correctList.mapNotNull { id ->
-            byId[CardId(id)]?.toRow(ReviewOutcome.Correct)
+            byId[CardId(id)]?.toReviewRow(ReviewOutcome.Correct)
         }
         val wrongRows = wrongList.mapNotNull { id ->
-            byId[CardId(id)]?.toRow(ReviewOutcome.Wrong)
+            byId[CardId(id)]?.toReviewRow(ReviewOutcome.Wrong)
         }
         val passedRows = passedList.mapNotNull { id ->
-            byId[CardId(id)]?.toRow(ReviewOutcome.Passed)
+            byId[CardId(id)]?.toReviewRow(ReviewOutcome.Passed)
         }
         val timeUpRows = timeUpList.mapNotNull { id ->
             val cardId = CardId(id)
             val inNotebook = timeUpProgress[cardId]?.inNotebook == true
-            byId[cardId]?.toRow(ReviewOutcome.TimeUp, isAddedToNotebook = inNotebook)
+            byId[cardId]?.toReviewRow(ReviewOutcome.TimeUp, isAddedToNotebook = inNotebook)
         }
 
         val groupList = buildList {
@@ -326,16 +325,5 @@ internal class ResultViewModel(
                 addedToNotebook = if (stored) route.missedCards.size else 0,
             )
         }
-
-        fun Card.toRow(outcome: ReviewOutcome, isAddedToNotebook: Boolean = false) = ReviewRowUi(
-            letter = letter,
-            word = answer.lowercase(),
-            clue = clue,
-            example = example,
-            outcome = outcome,
-            level = level,
-            cardId = id.value,
-            isAddedToNotebook = isAddedToNotebook,
-        )
     }
 }

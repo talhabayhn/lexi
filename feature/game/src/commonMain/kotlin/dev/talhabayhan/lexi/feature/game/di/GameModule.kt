@@ -9,6 +9,8 @@ import dev.talhabayhan.lexi.feature.game.GameViewModel
 import dev.talhabayhan.lexi.feature.game.LevelTestViewModel
 import dev.talhabayhan.lexi.feature.game.SeedSource
 import dev.talhabayhan.lexi.feature.game.duel.DuelLoader
+import dev.talhabayhan.lexi.feature.game.duel.DuelReviewRoute
+import dev.talhabayhan.lexi.feature.game.duel.DuelReviewViewModel
 import dev.talhabayhan.lexi.feature.game.duel.DuelRoute
 import dev.talhabayhan.lexi.feature.game.duel.DuelSetupViewModel
 import dev.talhabayhan.lexi.feature.game.duel.DuelViewModel
@@ -94,6 +96,14 @@ val gameModule: Module = module {
             speaker = get(),
             timeSource = get(),
             analytics = get(),
+            crashReporter = get(),
+        )
+    }
+    viewModel {
+        DuelReviewViewModel(
+            route = get<SavedStateHandle>().toRoute<DuelReviewRoute>(),
+            cards = get(),
+            speaker = get(),
             crashReporter = get(),
         )
     }
