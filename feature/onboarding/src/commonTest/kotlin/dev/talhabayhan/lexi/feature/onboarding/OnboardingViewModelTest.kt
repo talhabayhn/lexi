@@ -6,6 +6,7 @@ import dev.talhabayhan.lexi.core.domain.platform.AppLinks
 import dev.talhabayhan.lexi.core.domain.telemetry.AnalyticsEvent
 import dev.talhabayhan.lexi.core.testing.FakeAnalyticsTracker
 import dev.talhabayhan.lexi.core.testing.FakeCardRepository
+import dev.talhabayhan.lexi.core.testing.FakeCrashReporter
 import dev.talhabayhan.lexi.core.testing.FakeOnboardingRepository
 import dev.talhabayhan.lexi.core.testing.FakeSettingsRepository
 import kotlinx.coroutines.Dispatchers
@@ -28,6 +29,7 @@ class OnboardingViewModelTest {
     private val onboarding = FakeOnboardingRepository()
     private val cards = FakeCardRepository()
     private val settings = FakeSettingsRepository()
+    private val crashReporter = FakeCrashReporter()
 
     @BeforeTest
     fun setUp() {
@@ -39,7 +41,7 @@ class OnboardingViewModelTest {
         Dispatchers.resetMain()
     }
 
-    private fun viewModel() = OnboardingViewModel(onboarding, cards, settings, analytics)
+    private fun viewModel() = OnboardingViewModel(onboarding, cards, settings, analytics, crashReporter)
 
     private fun levelChoice() = viewModel().apply {
         repeat(3) { onIntent(OnboardingIntent.Next) }
@@ -300,6 +302,29 @@ class OnboardingViewModelTest {
     }
 
     @Test
+    fun `a failed save is reported and stays on the level choice and a later pick still finishes`() = runTest {
+        val vm = levelChoice()
+
+        vm.effects.test {
+            onboarding.failingWrites = true
+            vm.onIntent(OnboardingIntent.PickLevel(Level.B1))
+
+            expectNoEvents()
+            assertEquals(OnboardingStep.LevelChoice, vm.state.value.currentStep)
+            assertFalse(onboarding.onboardingCompleted.first())
+            assertEquals(listOf("onboarding not saved"), crashReporter.recorded.map { it.second })
+            assertTrue(analytics.events.isEmpty())
+
+            onboarding.failingWrites = false
+            vm.onIntent(OnboardingIntent.PickLevel(Level.B1))
+
+            assertEquals(OnboardingEffect.NavigateToHome, awaitItem())
+            assertTrue(onboarding.onboardingCompleted.first())
+            assertEquals(Level.B1, onboarding.selectedLevel.first())
+        }
+    }
+
+    @Test
     fun `ticking the checkbox stores the consent and unticking withdraws it`() = runTest {
         val vm = viewModel()
 
@@ -325,7 +350,7 @@ class OnboardingViewModelTest {
     @Test
     fun `first-run routing navigates to home when already completed`() = runTest {
         val completedRepo = FakeOnboardingRepository(initialCompleted = true)
-        val vm = OnboardingViewModel(completedRepo, cards, settings, analytics)
+        val vm = OnboardingViewModel(completedRepo, cards, settings, analytics, crashReporter)
 
         vm.effects.test {
             assertEquals(OnboardingEffect.NavigateToHome, awaitItem())
@@ -335,7 +360,7 @@ class OnboardingViewModelTest {
     @Test
     fun `first-run routing does not navigate away when not completed`() = runTest {
         val freshRepo = FakeOnboardingRepository(initialCompleted = false)
-        val vm = OnboardingViewModel(freshRepo, cards, settings, analytics)
+        val vm = OnboardingViewModel(freshRepo, cards, settings, analytics, crashReporter)
 
         assertFalse(freshRepo.onboardingCompleted.first())
         assertEquals(OnboardingStep.Step1, vm.state.value.currentStep)

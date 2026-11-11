@@ -5,6 +5,7 @@ import app.cash.turbine.test
 import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.core.domain.telemetry.AnalyticsEvent
 import dev.talhabayhan.lexi.core.testing.FakeAnalyticsTracker
+import dev.talhabayhan.lexi.core.testing.FakeCrashReporter
 import dev.talhabayhan.lexi.core.testing.FakeOnboardingRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -25,6 +26,7 @@ import kotlin.test.assertTrue
 class LevelTestResultViewModelTest {
     private val analytics = FakeAnalyticsTracker()
     private val onboarding = FakeOnboardingRepository()
+    private val crashReporter = FakeCrashReporter()
 
     @BeforeTest
     fun setUp() {
@@ -36,8 +38,8 @@ class LevelTestResultViewModelTest {
         Dispatchers.resetMain()
     }
 
-    private fun viewModel(level: String = "B1") =
-        LevelTestResultViewModel(LevelTestResultRoute(level), onboarding, analytics)
+    private fun viewModel(level: String = "B1", handle: SavedStateHandle = SavedStateHandle()) =
+        LevelTestResultViewModel(LevelTestResultRoute(level), onboarding, analytics, crashReporter, handle)
 
     @Test
     fun `shows the placement of the route on the result page`() {
@@ -50,10 +52,11 @@ class LevelTestResultViewModelTest {
     @Test
     fun `the picker page survives process death through the saved state`() {
         val handle = SavedStateHandle()
-        val first = LevelTestResultViewModel(LevelTestResultRoute("B1"), onboarding, analytics, handle)
+        val first = viewModel("B1", handle)
         first.onIntent(LevelTestResultIntent.ChangeLevel)
 
-        val restored = LevelTestResultViewModel(LevelTestResultRoute("B1"), onboarding, analytics, handle)
+        val restored =
+            viewModel("B1", handle)
 
         assertEquals(LevelTestResultPage.Picker, restored.state.value.page)
     }
@@ -61,11 +64,12 @@ class LevelTestResultViewModelTest {
     @Test
     fun `going back from the picker is saved too`() {
         val handle = SavedStateHandle()
-        val first = LevelTestResultViewModel(LevelTestResultRoute("B1"), onboarding, analytics, handle)
+        val first = viewModel("B1", handle)
         first.onIntent(LevelTestResultIntent.ChangeLevel)
         first.onIntent(LevelTestResultIntent.Back)
 
-        val restored = LevelTestResultViewModel(LevelTestResultRoute("B1"), onboarding, analytics, handle)
+        val restored =
+            viewModel("B1", handle)
 
         assertEquals(LevelTestResultPage.Result, restored.state.value.page)
     }
@@ -86,6 +90,29 @@ class LevelTestResultViewModelTest {
             assertEquals(Level.B1, onboarding.selectedLevel.first())
             assertTrue(onboarding.onboardingCompleted.first())
             assertEquals(listOf<AnalyticsEvent>(AnalyticsEvent.OnboardingComplete), analytics.events)
+        }
+    }
+
+    @Test
+    fun `a failed save is reported and stays on the result and a later start still finishes`() = runTest {
+        val vm = viewModel("B1")
+
+        vm.effects.test {
+            onboarding.failingWrites = true
+            vm.onIntent(LevelTestResultIntent.Start)
+
+            expectNoEvents()
+            assertEquals(LevelTestResultPage.Result, vm.state.value.page)
+            assertFalse(onboarding.onboardingCompleted.first())
+            assertEquals(listOf("level test result not saved"), crashReporter.recorded.map { it.second })
+            assertTrue(analytics.events.isEmpty())
+
+            onboarding.failingWrites = false
+            vm.onIntent(LevelTestResultIntent.Start)
+
+            assertEquals(LevelTestResultEffect.NavigateToHome, awaitItem())
+            assertTrue(onboarding.onboardingCompleted.first())
+            assertEquals(Level.B1, onboarding.selectedLevel.first())
         }
     }
 

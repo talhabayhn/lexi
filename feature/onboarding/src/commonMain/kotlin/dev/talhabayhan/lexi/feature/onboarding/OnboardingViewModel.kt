@@ -9,6 +9,7 @@ import dev.talhabayhan.lexi.core.domain.repository.OnboardingRepository
 import dev.talhabayhan.lexi.core.domain.repository.SettingsRepository
 import dev.talhabayhan.lexi.core.domain.telemetry.AnalyticsEvent
 import dev.talhabayhan.lexi.core.domain.telemetry.AnalyticsTracker
+import dev.talhabayhan.lexi.core.domain.telemetry.CrashReporter
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.channels.Channel
@@ -33,6 +34,7 @@ internal class OnboardingViewModel(
     private val cards: CardRepository,
     private val settings: SettingsRepository,
     private val analytics: AnalyticsTracker,
+    private val crashReporter: CrashReporter,
 ) : ViewModel() {
     private val mutableState =
         MutableStateFlow(OnboardingUiState(analyticsConsent = settings.loaded.value?.analyticsConsent == true))
@@ -123,8 +125,17 @@ internal class OnboardingViewModel(
         if (finishing) return
         finishing = true
         viewModelScope.launch {
-            onboarding.saveSelectedLevel(level)
-            onboarding.setOnboardingCompleted(true)
+            try {
+                onboarding.saveSelectedLevel(level)
+                onboarding.setOnboardingCompleted(true)
+            } catch (e: CancellationException) {
+                throw e
+            } catch (@Suppress("TooGenericExceptionCaught") e: Exception) {
+                // Not stored (e.g. a full disk): stay on this step so the player can try again.
+                crashReporter.recordException(e, "onboarding not saved")
+                finishing = false
+                return@launch
+            }
             analytics.track(AnalyticsEvent.OnboardingComplete)
             effectChannel.trySend(OnboardingEffect.NavigateToHome)
         }

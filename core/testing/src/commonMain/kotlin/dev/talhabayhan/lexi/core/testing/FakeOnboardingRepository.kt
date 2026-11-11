@@ -15,11 +15,16 @@ public class FakeOnboardingRepository(initialCompleted: Boolean = false, initial
     private val _selectedLevel: MutableStateFlow<Level> = MutableStateFlow(initialLevel)
     override val selectedLevel: Flow<Level> = _selectedLevel.asStateFlow()
 
+    /** While true, every write throws [IllegalStateException] without storing (a full disk; failure injection). */
+    public var failingWrites: Boolean = false
+
     override suspend fun setOnboardingCompleted(completed: Boolean) {
+        check(!failingWrites) { "injected onboarding write failure" }
         _onboardingCompleted.value = completed
     }
 
     override suspend fun saveSelectedLevel(level: Level) {
+        check(!failingWrites) { "injected onboarding write failure" }
         _selectedLevel.value = level
     }
 }

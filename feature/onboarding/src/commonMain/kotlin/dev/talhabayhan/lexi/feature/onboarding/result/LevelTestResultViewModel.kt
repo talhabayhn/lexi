@@ -7,6 +7,8 @@ import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.core.domain.repository.OnboardingRepository
 import dev.talhabayhan.lexi.core.domain.telemetry.AnalyticsEvent
 import dev.talhabayhan.lexi.core.domain.telemetry.AnalyticsTracker
+import dev.talhabayhan.lexi.core.domain.telemetry.CrashReporter
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -19,12 +21,14 @@ import kotlinx.coroutines.launch
 /**
  * The level test result (`GAME_RULES.md` §9, owner decisions 3 and 4). The level is saved through
  * [OnboardingRepository.saveSelectedLevel] (what the level select preselects), then the onboarding is marked
- * completed and the app goes Home; no game starts. One tap finishes: later taps are ignored.
+ * completed and the app goes Home; no game starts. One tap finishes: later taps are ignored. A failed save is
+ * reported and the page stays, so the player can tap again.
  */
 internal class LevelTestResultViewModel(
     route: LevelTestResultRoute,
     private val onboarding: OnboardingRepository,
     private val analytics: AnalyticsTracker,
+    private val crashReporter: CrashReporter,
     private val savedState: SavedStateHandle = SavedStateHandle(),
 ) : ViewModel() {
     private val mutableState = MutableStateFlow(
@@ -74,8 +78,17 @@ internal class LevelTestResultViewModel(
         if (finishing) return
         finishing = true
         viewModelScope.launch {
-            onboarding.saveSelectedLevel(level)
-            onboarding.setOnboardingCompleted(true)
+            try {
+                onboarding.saveSelectedLevel(level)
+                onboarding.setOnboardingCompleted(true)
+            } catch (e: CancellationException) {
+                throw e
+            } catch (@Suppress("TooGenericExceptionCaught") e: Exception) {
+                // Not stored (e.g. a full disk): stay on this page so the player can try again.
+                crashReporter.recordException(e, "level test result not saved")
+                finishing = false
+                return@launch
+            }
             analytics.track(AnalyticsEvent.OnboardingComplete)
             effectChannel.send(LevelTestResultEffect.NavigateToHome)
         }

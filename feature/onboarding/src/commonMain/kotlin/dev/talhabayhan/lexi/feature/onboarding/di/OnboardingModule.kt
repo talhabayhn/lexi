@@ -19,6 +19,7 @@ public val onboardingModule: Module = module {
             route = handle.toRoute<LevelTestResultRoute>(),
             onboarding = get(),
             analytics = get(),
+            crashReporter = get(),
             savedState = handle,
         )
     }
