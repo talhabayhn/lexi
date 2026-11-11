@@ -72,7 +72,7 @@ public class MatchEngine(public val config: GameConfig = GameConfig()) {
     private fun MatchState.play(event: GameEvent, fx: MutableList<EngineEffect>): MatchState {
         if (event is GameEvent.Start) return this
         val before = players[activePlayer]
-        val transition = games.reduce(before, event)
+        val transition = games.reduce(before, cappedToReveal(event, before))
         val after = transition.state
         if (after === before) return this
         fx += transition.effects
@@ -81,6 +81,19 @@ public class MatchEngine(public val config: GameConfig = GameConfig()) {
             !after.isRevealing && (before.isRevealing || transition.effects.any { it is EngineEffect.Wrong })
         val passed = transition.effects.any { it is EngineEffect.Passed }
         return if (after.status == GameStatus.FINISHED || passed || revealOver) next.endTurn(fx) else next
+    }
+
+    /**
+     * A tick during a wrong answer's reveal is cut at the reveal's end when that end hands the turn over: a clock only
+     * runs on its player's turn (`GAME_RULES.md` §8), so the rest of the tick is dropped instead of being charged to
+     * the outgoing player (like `LevelTestRunner.leftoverOf`, but nobody plays during the handover). When the other
+     * player is already finished the turn stays, so the whole tick is spent as in a solo game.
+     */
+    private fun MatchState.cappedToReveal(event: GameEvent, game: GameState): GameEvent {
+        val handsOver = players[other(activePlayer)].status != GameStatus.FINISHED
+        val endsReveal = event is GameEvent.Tick && game.isRevealing && !game.isPaused &&
+            event.elapsedMs > game.revealRemainingMs
+        return if (handsOver && endsReveal) GameEvent.Tick(game.revealRemainingMs) else event
     }
 
     /**

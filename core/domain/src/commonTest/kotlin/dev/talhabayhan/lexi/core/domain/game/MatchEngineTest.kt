@@ -188,6 +188,42 @@ class MatchEngineTest {
     }
 
     @Test
+    fun `tick time after the reveal that ends the turn is not charged to the outgoing player`() {
+        val game = duel().begin().answer(wrong = true)
+        val before = checkNotNull(game.active.remainingMs)
+
+        game.play(GameEvent.Tick(5_000L))
+
+        assertEquals(1, game.state.activePlayer)
+        assertEquals(MatchPhase.HANDOVER, game.state.phase)
+        assertEquals(before, game.state.players[0].remainingMs)
+        assertTrue(game.lastEffects.none { it is EngineEffect.TimeWarning || it is EngineEffect.GameOver })
+    }
+
+    @Test
+    fun `a long tick after a wrong answer never runs out the outgoing player's clock`() {
+        val game = duel(clockSeconds = 180).begin().play(GameEvent.Tick(179_000L)).answer(wrong = true)
+
+        game.play(GameEvent.Tick(10_000L))
+
+        assertEquals(GameStatus.PLAYING, game.state.players[0].status)
+        assertEquals(1_000L, game.state.players[0].remainingMs)
+        assertEquals(1, game.state.activePlayer)
+    }
+
+    @Test
+    fun `tick time after the reveal still runs the clock when the turn stays because the other player is finished`() {
+        val game = duel().begin().answer().answer().answer().begin().answer(wrong = true)
+        assertEquals(1, game.state.activePlayer)
+        val before = checkNotNull(game.active.remainingMs)
+
+        game.play(GameEvent.Tick(5_000L))
+
+        assertEquals(1, game.state.activePlayer)
+        assertEquals(before - 3_800L, game.active.remainingMs)
+    }
+
+    @Test
     fun `second player starts on their first turn`() {
         val game = duel().begin().pass().send(MatchEvent.BeginTurn(timestampMs = 8_000L))
 

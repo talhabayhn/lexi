@@ -208,7 +208,9 @@ the app goes to background.
 - Same device: between turns show a full-screen "Sıra: <name>" handover card (prevents peeking).
 - Game ends when both wheels are finished or both clocks are at 0. Winner: more correct; tie → fewer wrong;
   tie → more remaining time; else draw.
-- Engine (`MatchEngine`, `MatchState`): a wrong answer ends the turn once its reveal is over. A player whose wheel
+- Engine (`MatchEngine`, `MatchState`): a wrong answer ends the turn once its reveal is over; a `Tick` that runs
+  past the reveal's end is cut there when the turn hands over (the rest is dropped, never charged to the outgoing
+  player's clock), and spent in full when the turn stays because the other player is finished. A player whose wheel
   is finished (completed or clock at 0) hands over; when the other player is already finished, the turn stays
   without handover. The handover card is dismissed with `MatchEvent.BeginTurn`; until then nothing runs and the
   second player's game starts on their first turn. Owner decision: `Forfeit` (also during the handover, even
