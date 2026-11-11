@@ -11,14 +11,14 @@ import kotlinx.coroutines.withContext
 import java.io.File
 
 /**
- * Shares the card through the system chooser. The PNG is one overwritten file in `cache/share/`, the only path the
- * app's FileProvider exposes (ADR 0020).
+ * Shares the card through the system chooser. Each share writes its own PNG in `cache/share/`, the only path the app's
+ * FileProvider exposes (ADR 0020): a target that reads the URI late (an upload after the chooser closed) still gets
+ * the card it was given, not a later one. Only the newest [SHARE_FILES_KEPT] files are kept.
  */
 public class AndroidShareService(private val context: Context) : ShareService {
     override suspend fun sharePng(png: ByteArray, text: String): Boolean = try {
         val uri = withContext(Dispatchers.IO) {
-            val dir = File(context.cacheDir, "share").apply { mkdirs() }
-            val file = File(dir, "lexi-share.png").apply { writeBytes(png) }
+            val file = writeShareFile(File(context.cacheDir, "share"), png)
             FileProvider.getUriForFile(context, "${context.packageName}.share", file)
         }
         val send = Intent(Intent.ACTION_SEND).apply {
@@ -36,4 +36,19 @@ public class AndroidShareService(private val context: Context) : ShareService {
     } catch (_: Exception) {
         false
     }
+}
+
+/** Share PNGs kept in `cache/share/` (the new one included); older ones are deleted on the next share. */
+internal const val SHARE_FILES_KEPT: Int = 5
+
+/** Writes [png] to a new uniquely named file in [dir] and deletes all but the newest [keep] share files there. */
+internal fun writeShareFile(dir: File, png: ByteArray, keep: Int = SHARE_FILES_KEPT): File {
+    dir.mkdirs()
+    val file = File.createTempFile("lexi-share-", ".png", dir).apply { writeBytes(png) }
+    dir.listFiles { f -> f.isFile && f.name.startsWith("lexi-share") && f.name.endsWith(".png") && f != file }
+        .orEmpty()
+        .sortedByDescending { it.lastModified() }
+        .drop(keep - 1)
+        .forEach { it.delete() }
+    return file
 }

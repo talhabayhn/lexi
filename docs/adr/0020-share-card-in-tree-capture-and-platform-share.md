@@ -10,7 +10,8 @@ a bitmap, then handed to Android's chooser or iOS's `UIActivityViewController` b
 ## Decision
 - Capture: in-tree Compose graphics-layer capture of the card composable (no screenshot or capture library). The
   PNG bytes go to `ShareService.sharePng(png, text)`.
-- Android: `AndroidShareService` writes one overwritten file `cacheDir/share/lexi-share.png` and shares a
+- Android: `AndroidShareService` writes a new file `cacheDir/share/lexi-share-*.png` per share (a target that reads
+  the URI late still gets its own card) and shares a
   `FileProvider` URI (`${applicationId}.share`) via `ACTION_SEND` + chooser. The provider is not exported and its
   `share_paths.xml` declares only `<cache-path path="share/">`, so nothing else in the cache is exposed.
 - iOS: `IosShareService` presents a `UIActivityViewController` (image + text) from the top-most view controller of
@@ -19,6 +20,6 @@ a bitmap, then handed to Android's chooser or iOS's `UIActivityViewController` b
   as an explicit edge in `:core:platform` androidMain for `FileProvider`.
 
 ## Consequences
-- The file stays in the app cache until the OS evicts it; the next share overwrites it.
+- The files stay in the app cache until the OS evicts them; each share deletes all but the newest five.
 - Sharing needs no storage permission on either platform.
 - The share result only says whether the sheet was shown, not whether the user completed the share.
