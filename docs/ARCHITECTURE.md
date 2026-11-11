@@ -149,13 +149,16 @@ Exam-pack extra cards have `card.pack_only = 1`: `CardRepository` level/category
 Lifecycle (ADR 0018): `Databases` opens both lazily on the injected IO dispatcher. Content: if the bundled
 `files/content-version.txt` differs from the installed copy's `meta.contentVersion` (or there is no readable copy),
 the bundle is copied (temp file, stale `-wal`/`-shm`/`-journal` removed, atomic rename), then opened with
-`PRAGMA query_only = 1`. Platform paths and drivers come from `DatabaseFiles` (Android: `getDatabasePath`; iOS:
+`PRAGMA query_only = 1`. If that copy fails (disk full, rename failed) and the old copy is readable with the current
+content schema (`ContentDatabaseInstaller.OLDEST_SCHEMA_COMPATIBLE_CONTENT_VERSION`, raise it on every
+`ContentSchema.sq` change), the old copy is used for this run and the next start retries. Platform paths and drivers come from `DatabaseFiles` (Android: `getDatabasePath`; iOS:
 `Application Support/databases`), the bundle from `BundledContentDb` (implemented in `shared` with `Res`).
 
 Keeping content separate means content updates never touch user data; `card.id` is a stable slug
 (`a1-kitchen`) so progress survives content updates.
 
-Settings: DataStore Preferences (`SettingsRepository` exposes `Flow<Settings>`).
+Settings: DataStore Preferences (`SettingsRepository` exposes `Flow<Settings>`). A corrupted file is replaced by the
+defaults (`ReplaceFileCorruptionHandler`); an unreadable store emits the defaults instead of throwing.
 
 ### Repositories (interfaces in domain)
 `CardRepository`, `CategoryRepository`, `ExamPackRepository`, `ProgressRepository` (SRS),
