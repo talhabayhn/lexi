@@ -1,5 +1,6 @@
 package dev.talhabayhan.lexi.feature.onboarding
 
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dev.talhabayhan.lexi.core.domain.model.Level
@@ -27,7 +28,8 @@ import kotlinx.coroutines.launch
  * finishes; "SEVİYE TESTİNE BAŞLA" opens the intro, which starts reading the level test's cards right away
  * ([CardRepository.levelCards], kept in memory by the repository) so the test opens without a wait. Once the test
  * covers this screen ([OnboardingIntent.ScreenStopped]) the step goes back to the level choice, where "Pes et" and a
- * test that can't start return to (`GAME_RULES.md` §9, owner decision 2).
+ * test that can't start return to (`GAME_RULES.md` §9, owner decision 2). The step and whether the level test was
+ * opened live in [savedState], so a process death under the level test still returns to the level choice.
  */
 internal class OnboardingViewModel(
     private val onboarding: OnboardingRepository,
@@ -35,19 +37,35 @@ internal class OnboardingViewModel(
     private val settings: SettingsRepository,
     private val analytics: AnalyticsTracker,
     private val crashReporter: CrashReporter,
+    private val savedState: SavedStateHandle = SavedStateHandle(),
 ) : ViewModel() {
-    private val mutableState =
-        MutableStateFlow(OnboardingUiState(analyticsConsent = settings.loaded.value?.analyticsConsent == true))
+    private val mutableState = MutableStateFlow(
+        OnboardingUiState(
+            currentStep = restoredStep(),
+            analyticsConsent = settings.loaded.value?.analyticsConsent == true,
+        ),
+    )
     val state: StateFlow<OnboardingUiState> = mutableState.asStateFlow()
 
     private val effectChannel = Channel<OnboardingEffect>(Channel.BUFFERED)
     val effects: Flow<OnboardingEffect> = effectChannel.receiveAsFlow()
 
     private var warmUp: Job? = null
-    private var levelTestStarted = false
     private var finishing = false
 
+    private var levelTestStarted: Boolean
+        get() = savedState.get<Boolean>(LEVEL_TEST_STARTED_KEY) == true
+        set(value) {
+            savedState[LEVEL_TEST_STARTED_KEY] = value
+        }
+
     init {
+        // Restored under or after the level test: back to the level choice, as on a stop with the test opened.
+        if (levelTestStarted) {
+            levelTestStarted = false
+            setStep(OnboardingStep.LevelChoice)
+        }
+        if (state.value.currentStep == OnboardingStep.LevelTestIntro) warmUpLevelCards()
         viewModelScope.launch {
             if (onboarding.onboardingCompleted.first()) {
                 effectChannel.trySend(OnboardingEffect.NavigateToHome)
@@ -57,13 +75,11 @@ internal class OnboardingViewModel(
 
     fun onIntent(intent: OnboardingIntent) {
         when (intent) {
-            OnboardingIntent.Next -> mutableState.update { current ->
-                when (current.currentStep) {
-                    OnboardingStep.Step1 -> current.copy(currentStep = OnboardingStep.Step2)
-                    OnboardingStep.Step2 -> current.copy(currentStep = OnboardingStep.Step3)
-                    OnboardingStep.Step3 -> current.copy(currentStep = OnboardingStep.LevelChoice)
-                    OnboardingStep.LevelChoice, OnboardingStep.LevelTestIntro -> current
-                }
+            OnboardingIntent.Next -> when (state.value.currentStep) {
+                OnboardingStep.Step1 -> setStep(OnboardingStep.Step2)
+                OnboardingStep.Step2 -> setStep(OnboardingStep.Step3)
+                OnboardingStep.Step3 -> setStep(OnboardingStep.LevelChoice)
+                OnboardingStep.LevelChoice, OnboardingStep.LevelTestIntro -> Unit
             }
 
             OnboardingIntent.Skip -> finish(Level.A1)
@@ -72,14 +88,12 @@ internal class OnboardingViewModel(
 
             OnboardingIntent.OpenPrivacy -> effectChannel.trySend(OnboardingEffect.OpenUrl(AppLinks.PRIVACY_POLICY))
 
-            OnboardingIntent.Back -> mutableState.update { current ->
-                when (current.currentStep) {
-                    OnboardingStep.LevelTestIntro -> current.copy(currentStep = OnboardingStep.LevelChoice)
-                    OnboardingStep.LevelChoice -> current.copy(currentStep = OnboardingStep.Step3)
-                    OnboardingStep.Step3 -> current.copy(currentStep = OnboardingStep.Step2)
-                    OnboardingStep.Step2 -> current.copy(currentStep = OnboardingStep.Step1)
-                    OnboardingStep.Step1 -> current
-                }
+            OnboardingIntent.Back -> when (state.value.currentStep) {
+                OnboardingStep.LevelTestIntro -> setStep(OnboardingStep.LevelChoice)
+                OnboardingStep.LevelChoice -> setStep(OnboardingStep.Step3)
+                OnboardingStep.Step3 -> setStep(OnboardingStep.Step2)
+                OnboardingStep.Step2 -> setStep(OnboardingStep.Step1)
+                OnboardingStep.Step1 -> Unit
             }
 
             is OnboardingIntent.PickLevel -> {
@@ -89,7 +103,7 @@ internal class OnboardingViewModel(
 
             OnboardingIntent.StartLevelTest -> {
                 if (state.value.currentStep != OnboardingStep.LevelChoice) return
-                mutableState.update { it.copy(currentStep = OnboardingStep.LevelTestIntro) }
+                setStep(OnboardingStep.LevelTestIntro)
                 warmUpLevelCards()
             }
 
@@ -102,9 +116,18 @@ internal class OnboardingViewModel(
 
             OnboardingIntent.ScreenStopped -> if (levelTestStarted) {
                 levelTestStarted = false
-                mutableState.update { it.copy(currentStep = OnboardingStep.LevelChoice) }
+                setStep(OnboardingStep.LevelChoice)
             }
         }
+    }
+
+    private fun restoredStep(): OnboardingStep = savedState.get<String>(STEP_KEY)?.let { name ->
+        OnboardingStep.entries.firstOrNull { it.name == name }
+    } ?: OnboardingStep.Step1
+
+    private fun setStep(step: OnboardingStep) {
+        savedState[STEP_KEY] = step.name
+        mutableState.update { it.copy(currentStep = step) }
     }
 
     private fun setAnalyticsConsent(enabled: Boolean) {
@@ -155,3 +178,6 @@ internal class OnboardingViewModel(
         }
     }
 }
+
+private const val STEP_KEY = "step"
+private const val LEVEL_TEST_STARTED_KEY = "levelTestStarted"

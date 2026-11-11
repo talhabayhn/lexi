@@ -1,5 +1,6 @@
 package dev.talhabayhan.lexi.feature.onboarding
 
+import androidx.lifecycle.SavedStateHandle
 import app.cash.turbine.test
 import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.core.domain.platform.AppLinks
@@ -41,9 +42,10 @@ class OnboardingViewModelTest {
         Dispatchers.resetMain()
     }
 
-    private fun viewModel() = OnboardingViewModel(onboarding, cards, settings, analytics, crashReporter)
+    private fun viewModel(handle: SavedStateHandle = SavedStateHandle()) =
+        OnboardingViewModel(onboarding, cards, settings, analytics, crashReporter, handle)
 
-    private fun levelChoice() = viewModel().apply {
+    private fun levelChoice(handle: SavedStateHandle = SavedStateHandle()) = viewModel(handle).apply {
         repeat(3) { onIntent(OnboardingIntent.Next) }
         assertEquals(OnboardingStep.LevelChoice, state.value.currentStep)
     }
@@ -79,6 +81,57 @@ class OnboardingViewModelTest {
 
         vm.onIntent(OnboardingIntent.Back)
         assertEquals(OnboardingStep.Step1, vm.state.value.currentStep)
+    }
+
+    @Test
+    fun `the step survives process death through the saved state`() = runTest {
+        val handle = SavedStateHandle()
+        viewModel(handle).onIntent(OnboardingIntent.Next)
+
+        assertEquals(OnboardingStep.Step2, viewModel(handle).state.value.currentStep)
+    }
+
+    @Test
+    fun `a restored intro warms up the level cards again`() = runTest {
+        val handle = SavedStateHandle()
+        levelChoice(handle).onIntent(OnboardingIntent.StartLevelTest)
+        val readsBefore = cards.reads
+
+        val restored = viewModel(handle)
+
+        assertEquals(OnboardingStep.LevelTestIntro, restored.state.value.currentStep)
+        assertEquals(readsBefore + 1, cards.reads)
+    }
+
+    @Test
+    fun `after process death during the level test the restored screen shows the level choice`() = runTest {
+        val handle = SavedStateHandle()
+        levelChoice(handle).apply {
+            onIntent(OnboardingIntent.StartLevelTest)
+            onIntent(OnboardingIntent.BeginLevelTest)
+            onIntent(OnboardingIntent.LevelTestOpened)
+            onIntent(OnboardingIntent.ScreenStopped)
+        }
+
+        assertEquals(OnboardingStep.LevelChoice, viewModel(handle).state.value.currentStep)
+    }
+
+    @Test
+    fun `process death before the level test covered the screen still restores the level choice`() = runTest {
+        val handle = SavedStateHandle()
+        levelChoice(handle).apply {
+            onIntent(OnboardingIntent.StartLevelTest)
+            onIntent(OnboardingIntent.BeginLevelTest)
+            onIntent(OnboardingIntent.LevelTestOpened)
+        }
+
+        val restored = viewModel(handle)
+        assertEquals(OnboardingStep.LevelChoice, restored.state.value.currentStep)
+
+        // The level test is gone from this screen's point of view: a later stop changes nothing.
+        restored.onIntent(OnboardingIntent.StartLevelTest)
+        restored.onIntent(OnboardingIntent.ScreenStopped)
+        assertEquals(OnboardingStep.LevelTestIntro, restored.state.value.currentStep)
     }
 
     @Test

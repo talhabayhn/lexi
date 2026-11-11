@@ -7,12 +7,23 @@ import dev.talhabayhan.lexi.feature.onboarding.result.LevelTestResultRoute
 import dev.talhabayhan.lexi.feature.onboarding.result.LevelTestResultViewModel
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.viewModel
-import org.koin.core.module.dsl.viewModelOf
 import org.koin.dsl.module
 
-/** Onboarding and the level test result; the result's route comes from the back-stack entry's `SavedStateHandle`. */
+/**
+ * Onboarding and the level test result. Both keep their page in the back-stack entry's `SavedStateHandle`; the result's
+ * route comes from it too.
+ */
 public val onboardingModule: Module = module {
-    viewModelOf(::OnboardingViewModel)
+    viewModel {
+        OnboardingViewModel(
+            onboarding = get(),
+            cards = get(),
+            settings = get(),
+            analytics = get(),
+            crashReporter = get(),
+            savedState = get(),
+        )
+    }
     viewModel {
         val handle = get<SavedStateHandle>()
         LevelTestResultViewModel(
