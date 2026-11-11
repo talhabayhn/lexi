@@ -35,8 +35,7 @@ internal object ReminderNotifier {
         val manager = NotificationManagerCompat.from(context)
         if (!manager.areNotificationsEnabled()) return false
         ensureChannel(context, ReminderPlanStore(context).channelName)
-        val launch = context.packageManager.getLaunchIntentForPackage(context.packageName)
-            ?.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        val launch = context.packageManager.getLaunchIntentForPackage(context.packageName)?.let(::reminderTapIntent)
         val tap = launch?.let {
             val flags = PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
             PendingIntent.getActivity(context, id, it, flags)
@@ -60,4 +59,15 @@ internal object ReminderNotifier {
         val res = context.resources.getIdentifier("ic_stat_reminder", "drawable", context.packageName)
         return if (res != 0) res else context.applicationInfo.icon
     }
+}
+
+/**
+ * The notification tap behaves like the launcher icon: an existing task (a running game) just comes to the front.
+ * CLEAR_TOP would finish and recreate the standard-launchMode MainActivity. The package is cleared so the intent
+ * filter-equals the launcher's own intent (action, category, component), which lets the system reuse the task's root
+ * activity instead of starting a second instance on top.
+ */
+internal fun reminderTapIntent(launch: Intent): Intent = Intent(launch).apply {
+    setPackage(null)
+    flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED
 }

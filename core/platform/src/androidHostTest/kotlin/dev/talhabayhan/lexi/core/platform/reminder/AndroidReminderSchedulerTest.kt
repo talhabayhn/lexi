@@ -4,7 +4,9 @@ import android.Manifest
 import android.app.AlarmManager
 import android.app.Application
 import android.app.NotificationManager
+import android.content.ComponentName
 import android.content.Intent
+import android.content.IntentFilter
 import dev.talhabayhan.lexi.core.domain.reminder.ScheduledReminder
 import dev.talhabayhan.lexi.core.domain.time.AppClock
 import kotlinx.coroutines.runBlocking
@@ -18,6 +20,7 @@ import java.time.LocalDate
 import java.time.ZoneId
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
+import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
 @RunWith(RobolectricTestRunner::class)
@@ -137,5 +140,45 @@ class AndroidReminderSchedulerTest {
         ReminderAlarmReceiver().onReceive(app, intent)
 
         assertFalse(shadowOf(app.getSystemService(NotificationManager::class.java)).allNotifications.isNotEmpty())
+    }
+
+    @Test
+    fun notificationTapBringsTheExistingTaskForwardLikeTheLauncher() {
+        val launcher = ComponentName(app, "dev.talhabayhan.lexi.MainActivity")
+        val packages = shadowOf(app.packageManager)
+        packages.addActivityIfNotPresent(launcher)
+        packages.addIntentFilterForActivity(
+            launcher,
+            IntentFilter(Intent.ACTION_MAIN).apply { addCategory(Intent.CATEGORY_LAUNCHER) },
+        )
+        val intent = Intent(app, ReminderAlarmReceiver::class.java)
+            .putExtra(ReminderAlarms.EXTRA_ID, 7100)
+            .putExtra(ReminderAlarms.EXTRA_TITLE, "Title")
+            .putExtra(ReminderAlarms.EXTRA_BODY, "Body")
+
+        ReminderAlarmReceiver().onReceive(app, intent)
+
+        val posted = shadowOf(app.getSystemService(NotificationManager::class.java)).allNotifications.single()
+        val tap = shadowOf(posted.contentIntent).savedIntent
+        assertEquals(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED, tap.flags)
+        assertEquals(launcher, tap.component)
+        assertNull(tap.`package`)
+    }
+
+    @Test
+    fun tapIntentDropsClearTopAndThePackage() {
+        val launch = Intent(Intent.ACTION_MAIN)
+            .addCategory(Intent.CATEGORY_LAUNCHER)
+            .setPackage(app.packageName)
+            .setClassName(app.packageName, "dev.talhabayhan.lexi.MainActivity")
+            .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
+
+        val tap = reminderTapIntent(launch)
+
+        assertEquals(0, tap.flags and Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        assertEquals(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED, tap.flags)
+        assertNull(tap.`package`)
+        assertEquals(Intent.ACTION_MAIN, tap.action)
+        assertTrue(tap.hasCategory(Intent.CATEGORY_LAUNCHER))
     }
 }
