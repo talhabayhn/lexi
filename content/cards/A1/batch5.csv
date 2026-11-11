@@ -32,12 +32,12 @@ a1-okay,OKAY,O,STARTS,adj,sorunu olmayan,"Selin fell, but she is okay.",Selin d�
 a1-photo,PHOTO,P,STARTS,noun,kamerayla çekilen görüntü,Her photo is in my purse.,Onun fotoğrafı çantamda.,1,,daily-life
 a1-place,PLACE,P,STARTS,noun,"yer, mekân",This is a lovely place.,Burası güzel bir yer.,2,,city-transport
 a1-price,PRICE,P,STARTS,noun,bir şey için ödenecek para miktarı,The price is low.,Fiyat düşük.,2,,daily-life
-a1-really,REALLY,R,STARTS,adv,gerçekten,That is really lovely!,Bu gerçekten çok güzel!,2,,daily-life
+a1-really,REALLY,R,STARTS,adv,"sahiden, cidden",That is really lovely!,Bu gerçekten çok güzel!,2,,daily-life
 a1-rainy,RAINY,R,STARTS,adj,çok yağmur yağan,It is rainy in Rize.,Rize'de hava yağmurlu.,2,,time-weather
 a1-sometimes,SOMETIMES,S,STARTS,adv,"bazen, ara ara",Sometimes Ali cries.,Bazen Ali ağlar.,2,,time-weather
 a1-stop,STOP,S,STARTS,verb,hareketi bırakıp durmak,"Stop, thief!","Dur, hırsız!",1,,daily-life
 a1-talk,TALK,T,STARTS,verb,biriyle sohbet etmek,We talk for hours.,Saatlerce sohbet ederiz.,2,,daily-life
-a1-together,TOGETHER,T,STARTS,adv,birlikte,We practice together.,Birlikte pratik yapıyoruz.,2,,daily-life
+a1-together,TOGETHER,T,STARTS,adv,"yalnız olmadan, bir arada",We practice together.,Birlikte pratik yapıyoruz.,2,,daily-life
 a1-try,TRY,T,STARTS,verb,bir şeyi denemek,Can I try it on?,Bunu deneyebilir miyim?,1,,daily-life
 a1-welcome,WELCOME,W,STARTS,phrase,gelen birini karşılarken söylenen söz,Welcome to İzmir!,İzmir'e hoş geldin!,1,,daily-life
 a1-world,WORLD,W,STARTS,noun,yeryüzü ve üzerindeki her şey,She wants to see the world.,Dünyayı görmek istiyor.,2,,daily-life
@@ -59,7 +59,7 @@ a1-windy,WINDY,W,STARTS,adj,rüzgârın çok estiği,The summit is windy.,Zirve 
 a1-cloudy,CLOUDY,C,STARTS,adj,gökyüzünün bulutlarla kaplı olduğu,It is cloudy in Bursa.,Bursa'da hava bulutlu.,1,,time-weather
 a1-sugar,SUGAR,S,STARTS,noun,çayı tatlandırmak için kullanılan beyaz toz,Do we have sugar?,Şekerimiz var mı?,1,,food-drink
 a1-honey,HONEY,H,STARTS,noun,arıların yaptığı tatlı besin,Bees collect honey.,Arılar bal toplar.,1,,food-drink
-a1-pasta,PASTA,P,STARTS,noun,makarna,She makes pasta on Fridays.,Cuma günleri makarna yapar.,1,,food-drink
+a1-pasta,PASTA,P,STARTS,noun,İtalyan usulü haşlanan hamur yemeği,She makes pasta on Fridays.,Cuma günleri makarna yapar.,1,,food-drink
 a1-biscuit,BISCUIT,B,STARTS,noun,çayın yanında yenen kuru ve küçük tatlı,She dunked a biscuit in her cocoa.,Kakaosuna bir bisküvi batırdı.,2,,food-drink
 a1-strawberry,STRAWBERRY,S,STARTS,noun,kırmızı ve küçük yaz meyvesi,This strawberry is sour.,Bu çilek ekşi.,2,,food-drink
 a1-boat,BOAT,B,STARTS,noun,su üstünde giden küçük araç,The fishermen are in the boat.,Balıkçılar teknede.,1,,city-transport

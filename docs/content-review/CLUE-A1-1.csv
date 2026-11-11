@@ -10,10 +10,10 @@ a1-animal,hayvan,insan dışındaki canlıların genel adı
 a1-pig,domuz,çiftlikte yaşayan pembe hayvan
 a1-clothes,giysiler,insanların üzerine giydiği şeyler
 a1-heavy,ağır,kaldırması çok zor olan
-a1-really,gerçekten,"gerçek anlamda, hiç abartmadan"
+a1-really,gerçekten,"sahiden, cidden"
 a1-together,birlikte,"yalnız olmadan, bir arada"
 a1-pasta,makarna,İtalyan usulü haşlanan hamur yemeği
-a1-glasses,gözlük,iyi görmek için takılan cam
+a1-glasses,gözlük,iyi görmek için takılan çerçeveli camlar
 a1-arm,kol,omuzdan ele uzanan vücut parçası
 a1-eye,göz,görmemizi sağlayan organ
 a1-hand,el,"parmakları olan, tutmaya yarayan uzuv"
@@ -21,10 +21,10 @@ a1-hair,saç,kafada biten ince teller
 a1-leg,bacak,yürümek için kullanılan uzuv
 a1-mouth,ağız,yemek yediğimiz yüz bölümü
 a1-neck,boyun,baş ile gövdeyi bağlayan kısım
-a1-ill,hasta,sağlığı bozuk olan kişi
+a1-ill,hasta,"sağlığı bozuk, rahatsız"
 a1-ear,kulak,sesleri duyduğumuz organ
 a1-finger,parmak,elin ucundaki beş uzuvdan biri
-a1-healthy,sağlıklı,"vücuda iyi gelen, hasta olmayan"
+a1-healthy,sağlıklı,"hasta olmayan, sağlığı yerinde"
 a1-airport,havalimanı,uçakların kalkıp indiği yer
 a1-car,araba,dört tekerlekli motorlu aile taşıtı
 a1-hospital,hastane,hastaların tedavi edildiği yer
@@ -37,12 +37,12 @@ a1-north,kuzey,pusulada yukarıyı gösteren yön
 a1-sleep,uyumak,gözleri kapatıp dinlenmek
 a1-walk,yürümek,ayaklarla yavaşça ilerlemek
 a1-play,oynamak,eğlenmek için bir oyuna katılmak
-a1-open,açmak,kapıyı ya da kavanozu aralamak
+a1-open,açmak,kapalı olanı açık hale getirmek
 a1-jump,zıplamak,yerden havaya sıçramak
 a1-money,para,alışverişte ödediğimiz şey
 a1-happy,mutlu,sevinçli ve neşeli hisseden
 a1-quiet,sessiz,"gürültü yapmayan, ses çıkarmayan"
-a1-use,kullanmak,bir eşyadan işi için yararlanmak
+a1-use,kullanmak,bir aletten iş görmek için yararlanmak
 a1-idea,fikir,aklımıza gelen düşünce
 a1-good,iyi,"kötü olmayan, hoşa giden"
 a1-shirt,gömlek,üst gövdeye giyilen düğmeli giysi
@@ -56,10 +56,10 @@ a1-inside,içeride,"dışarıda değil, bir yerin iç kısmında"
 a1-under,altında,bir şeyin alt tarafında
 a1-up,yukarı,aşağının tersi olan yön
 a1-usually,genellikle,"çoğu zaman, sık sık"
-a1-only,sadece,"ondan fazlası olmayan, yalnızca"
-a1-sit,oturmak,ayakta durmayıp bir yere çökmek
+a1-only,sadece,"yalnızca, bundan başkası değil"
+a1-sit,oturmak,ayakta durmayı bırakıp sandalyeye yerleşmek
 a1-wash,yıkamak,suyla ve sabunla temizlemek
-a1-yes,evet,hayır'ın tersi olan onay sözü
+a1-yes,evet,"hayır sözünün tersi, onay"
 a1-skirt,etek,belden aşağı giyilen kumaş giysi
 a1-phone,telefon,uzaktakiyle konuşmaya yarayan cihaz
 a1-holiday,tatil,çalışmayıp dinlendiğimiz özel günler
@@ -70,7 +70,7 @@ a1-write,yazmak,kalemle harfleri kâğıda dökmek
 a1-wear,giymek,giysiyi üzerine geçirip taşımak
 a1-wait,beklemek,biri gelene kadar yerinde durmak
 a1-learn,öğrenmek,yeni bilgiyi aklına yerleştirmek
-a1-know,bilmek,bir bilgiyi hafızasında taşımak
+a1-know,bilmek,bir konuda bilgi sahibi olmak
 a1-go,gitmek,bir yerden başka yere hareket etmek
 a1-wrong,yanlış,"doğru olmayan, hatalı"
 a1-sea,deniz,kıyısında tatil yaptığımız tuzlu su

@@ -1,27 +1,27 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
-a1-apple,APPLE,A,STARTS,noun,elma,Mom baked an apple pie with cinnamon.,Annem tarçınlı elmalı turta pişirdi.,1,,food-drink
-a1-bread,BREAD,B,STARTS,noun,ekmek,Fresh bread smells lovely.,Taze ekmeğin kokusu çok güzel.,1,,food-drink
-a1-chair,CHAIR,C,STARTS,noun,sandalye,Grandpa dozed in the rocking chair.,Dedem sallanan sandalyede şekerleme yaptı.,1,,home
-a1-dog,DOG,D,STARTS,noun,köpek,My dog likes bones.,Köpeğim kemik sever.,1,,animals
-a1-egg,EGG,E,STARTS,noun,yumurta,I boil an egg.,Bir yumurta haşlıyorum.,1,,food-drink
-a1-family,FAMILY,F,STARTS,noun,aile,My family lives in Izmir.,Ailem İzmir'de yaşıyor.,1,,family-people
+a1-apple,APPLE,A,STARTS,noun,kırmızı veya yeşil yuvarlak meyve,Mom baked an apple pie with cinnamon.,Annem tarçınlı elmalı turta pişirdi.,1,,food-drink
+a1-bread,BREAD,B,STARTS,noun,"fırında pişen, her gün yenen hamur",Fresh bread smells lovely.,Taze ekmeğin kokusu çok güzel.,1,,food-drink
+a1-chair,CHAIR,C,STARTS,noun,oturmak için kullanılan arkalıklı eşya,Grandpa dozed in the rocking chair.,Dedem sallanan sandalyede şekerleme yaptı.,1,,home
+a1-dog,DOG,D,STARTS,noun,"havlayan, sadık evcil hayvan",My dog likes bones.,Köpeğim kemik sever.,1,,animals
+a1-egg,EGG,E,STARTS,noun,"tavuğun bıraktığı, kabuklu kahvaltılık gıda",I boil an egg.,Bir yumurta haşlıyorum.,1,,food-drink
+a1-family,FAMILY,F,STARTS,noun,"anne, baba ve çocuklardan oluşan topluluk",My family lives in Izmir.,Ailem İzmir'de yaşıyor.,1,,family-people
 a1-green,GREEN,G,STARTS,adj,yeşil,Frogs and cucumbers are mostly green.,Kurbağalar ve salatalıklar çoğunlukla yeşildir.,1,,colors-numbers
-a1-horse,HORSE,H,STARTS,noun,at,The horse runs in the meadow.,At çayırda koşuyor.,1,,animals
-a1-ice,ICE,I,STARTS,noun,buz,Ice melts quickly.,Buz çabuk erir.,1,,food-drink
+a1-horse,HORSE,H,STARTS,noun,"binilen, kişneyen dört ayaklı hayvan",The horse runs in the meadow.,At çayırda koşuyor.,1,,animals
+a1-ice,ICE,I,STARTS,noun,donmuş suyun sert hali,Ice melts quickly.,Buz çabuk erir.,1,,food-drink
 a1-juice,JUICE,J,STARTS,noun,meyve suyu,The juice is fresh.,Meyve suyu taze.,1,,food-drink
-a1-kitchen,KITCHEN,K,STARTS,noun,mutfak,Mom is cooking in the kitchen.,Annem mutfakta yemek yapıyor.,1,,home
-a1-lemon,LEMON,L,STARTS,noun,limon,This lemon is sour.,Bu limon ekşi.,1,,food-drink
-a1-mirror,MIRROR,M,STARTS,noun,ayna,The mirror is round.,Ayna yuvarlak.,2,,home
-a1-nose,NOSE,N,STARTS,noun,burun,He has a pointed nose.,Sivri bir burnu var.,1,,body-health
-a1-orange,ORANGE,O,STARTS,noun,portakal,An orange has a lot of vitamin C.,Portakalda çok C vitamini vardır.,1,,food-drink
+a1-kitchen,KITCHEN,K,STARTS,noun,yemek pişirilen ev bölümü,Mom is cooking in the kitchen.,Annem mutfakta yemek yapıyor.,1,,home
+a1-lemon,LEMON,L,STARTS,noun,ekşi sarı narenciye,This lemon is sour.,Bu limon ekşi.,1,,food-drink
+a1-mirror,MIRROR,M,STARTS,noun,yüzümüzü içinde gördüğümüz cam,The mirror is round.,Ayna yuvarlak.,2,,home
+a1-nose,NOSE,N,STARTS,noun,koku almamızı sağlayan organ,He has a pointed nose.,Sivri bir burnu var.,1,,body-health
+a1-orange,ORANGE,O,STARTS,noun,kabuğu soyulup yenen turuncu narenciye,An orange has a lot of vitamin C.,Portakalda çok C vitamini vardır.,1,,food-drink
 a1-pencil,PENCIL,P,STARTS,noun,kurşun kalem,Can I borrow your pencil?,Kurşun kalemini ödünç alabilir miyim?,1,,school-work
-a1-question,QUESTION,Q,STARTS,noun,soru,The speaker answered Ali's question clearly.,Konuşmacı Ali'nin sorusunu net şekilde yanıtladı.,2,,school-work
-a1-river,RIVER,R,STARTS,noun,nehir,The river is wide.,Nehir geniş.,1,,city-transport
-a1-school,SCHOOL,S,STARTS,noun,okul,Our school is modern.,Okulumuz modern.,1,,school-work
-a1-table,TABLE,T,STARTS,noun,masa,The keys are on the table.,Anahtarlar masanın üstünde.,1,,home
-a1-umbrella,UMBRELLA,U,STARTS,noun,şemsiye,"It is raining, but I have an umbrella.",Yağmur yağıyor ama şemsiyem var.,2,,time-weather
-a1-village,VILLAGE,V,STARTS,noun,köy,Our village is on a slope.,Köyümüz bir yamaçta.,2,,city-transport
-a1-window,WINDOW,W,STARTS,noun,pencere,Wipe the window.,Pencereyi sil.,1,,home
-a1-box,BOX,X,CONTAINS,noun,kutu,The toys are in the box.,Oyuncaklar kutunun içinde.,1,,home
+a1-question,QUESTION,Q,STARTS,noun,bilgi öğrenmek için söylenen cümle,The speaker answered Ali's question clearly.,Konuşmacı Ali'nin sorusunu net şekilde yanıtladı.,2,,school-work
+a1-river,RIVER,R,STARTS,noun,dağdan denize akan uzun su,The river is wide.,Nehir geniş.,1,,city-transport
+a1-school,SCHOOL,S,STARTS,noun,öğrencilerin ders gördüğü bina,Our school is modern.,Okulumuz modern.,1,,school-work
+a1-table,TABLE,T,STARTS,noun,üstüne eşya koyduğumuz ayaklı mobilya,The keys are on the table.,Anahtarlar masanın üstünde.,1,,home
+a1-umbrella,UMBRELLA,U,STARTS,noun,yağmurda başımızı koruyan açılır araç,"It is raining, but I have an umbrella.",Yağmur yağıyor ama şemsiyem var.,2,,time-weather
+a1-village,VILLAGE,V,STARTS,noun,"az nüfuslu, tarım yapılan yerleşim",Our village is on a slope.,Köyümüz bir yamaçta.,2,,city-transport
+a1-window,WINDOW,W,STARTS,noun,ışık girsin diye duvardaki camlı açıklık,Wipe the window.,Pencereyi sil.,1,,home
+a1-box,BOX,X,CONTAINS,noun,içine eşya konulan köşeli kap,The toys are in the box.,Oyuncaklar kutunun içinde.,1,,home
 a1-yellow,YELLOW,Y,STARTS,adj,sarı,My raincoat is yellow.,Yağmurluğum sarı.,1,,colors-numbers
 a1-zoo,ZOO,Z,STARTS,noun,hayvanat bahçesi,We saw lions at the zoo.,Hayvanat bahçesinde aslan gördük.,1,,animals

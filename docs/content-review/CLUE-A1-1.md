@@ -87,7 +87,7 @@ Generated from `docs/content-review/CLUE-A1-1.csv` by `clue_scan.py --review-md`
 | 48 | garden | bahçe | evin yanındaki çiçekli ve ağaçlı alan |
 | 49 | gift | hediye | sevdiğimize verdiğimiz armağan |
 | 50 | glass | bardak | su içtiğimiz şeffaf kap |
-| 51 | glasses | gözlük | iyi görmek için takılan cam |
+| 51 | glasses | gözlük | iyi görmek için takılan çerçeveli camlar |
 | 52 | go | gitmek | bir yerden başka yere hareket etmek |
 | 53 | good | iyi | kötü olmayan, hoşa giden |
 
@@ -99,7 +99,7 @@ Generated from `docs/content-review/CLUE-A1-1.csv` by `clue_scan.py --review-md`
 | 55 | hand | el | parmakları olan, tutmaya yarayan uzuv |
 | 56 | happy | mutlu | sevinçli ve neşeli hisseden |
 | 57 | hat | şapka | başa takılan giysi |
-| 58 | healthy | sağlıklı | vücuda iyi gelen, hasta olmayan |
+| 58 | healthy | sağlıklı | hasta olmayan, sağlığı yerinde |
 | 59 | heavy | ağır | kaldırması çok zor olan |
 | 60 | hello | merhaba | biriyle karşılaşınca söylenen selam |
 | 61 | holiday | tatil | çalışmayıp dinlendiğimiz özel günler |
@@ -113,7 +113,7 @@ Generated from `docs/content-review/CLUE-A1-1.csv` by `clue_scan.py --review-md`
 |---|---|---|---|
 | 65 | ice | buz | donmuş suyun sert hali |
 | 66 | idea | fikir | aklımıza gelen düşünce |
-| 67 | ill | hasta | sağlığı bozuk olan kişi |
+| 67 | ill | hasta | sağlığı bozuk, rahatsız |
 | 68 | inside | içeride | dışarıda değil, bir yerin iç kısmında |
 | 69 | island | ada | her yanı suyla çevrili kara |
 
@@ -132,7 +132,7 @@ Generated from `docs/content-review/CLUE-A1-1.csv` by `clue_scan.py --review-md`
 | 73 | king | kral | ülkeyi yöneten erkek hükümdar |
 | 74 | kitchen | mutfak | yemek pişirilen ev bölümü |
 | 75 | knife | bıçak | ekmek kesmeye yarayan keskin araç |
-| 76 | know | bilmek | bir bilgiyi hafızasında taşımak |
+| 76 | know | bilmek | bir konuda bilgi sahibi olmak |
 
 ## L
 
@@ -176,8 +176,8 @@ Generated from `docs/content-review/CLUE-A1-1.csv` by `clue_scan.py --review-md`
 | 97 | ocean | okyanus | kıtaları birbirinden ayıran dev su kütlesi |
 | 98 | old | yaşlı | çok yıl yaşamış olan |
 | 99 | onion | soğan | kesince gözümüzü yaşartan sebze |
-| 100 | only | sadece | ondan fazlası olmayan, yalnızca |
-| 101 | open | açmak | kapıyı ya da kavanozu aralamak |
+| 100 | only | sadece | yalnızca, bundan başkası değil |
+| 101 | open | açmak | kapalı olanı açık hale getirmek |
 | 102 | orange | portakal | kabuğu soyulup yenen turuncu narenciye |
 
 ## P
@@ -207,7 +207,7 @@ Generated from `docs/content-review/CLUE-A1-1.csv` by `clue_scan.py --review-md`
 | 113 | rabbit | tavşan | uzun kulaklı, havuç seven hayvan |
 | 114 | rain | yağmur | bulutlardan damla damla düşen su |
 | 115 | read | okumak | kitap veya yazıdaki sözcükleri izlemek |
-| 116 | really | gerçekten | gerçek anlamda, hiç abartmadan |
+| 116 | really | gerçekten | sahiden, cidden |
 | 117 | river | nehir | dağdan denize akan uzun su |
 | 118 | room | oda | evde duvarlarla ayrılmış bölüm |
 
@@ -219,7 +219,7 @@ Generated from `docs/content-review/CLUE-A1-1.csv` by `clue_scan.py --review-md`
 | 120 | school | okul | öğrencilerin ders gördüğü bina |
 | 121 | sea | deniz | kıyısında tatil yaptığımız tuzlu su |
 | 122 | shirt | gömlek | üst gövdeye giyilen düğmeli giysi |
-| 123 | sit | oturmak | ayakta durmayıp bir yere çökmek |
+| 123 | sit | oturmak | ayakta durmayı bırakıp sandalyeye yerleşmek |
 | 124 | skirt | etek | belden aşağı giyilen kumaş giysi |
 | 125 | sleep | uyumak | gözleri kapatıp dinlenmek |
 | 126 | snow | kar | kışın beyaz pul gibi yağan yağış |
@@ -251,7 +251,7 @@ Generated from `docs/content-review/CLUE-A1-1.csv` by `clue_scan.py --review-md`
 | 142 | under | altında | bir şeyin alt tarafında |
 | 143 | understand | anlamak | söylenenin anlamını kafada kavramak |
 | 144 | up | yukarı | aşağının tersi olan yön |
-| 145 | use | kullanmak | bir eşyadan işi için yararlanmak |
+| 145 | use | kullanmak | bir aletten iş görmek için yararlanmak |
 | 146 | usually | genellikle | çoğu zaman, sık sık |
 
 ## V
@@ -284,6 +284,6 @@ Generated from `docs/content-review/CLUE-A1-1.csv` by `clue_scan.py --review-md`
 | # | answer | current | proposed |
 |---|---|---|---|
 | 162 | year | yıl | on iki ay süren zaman dilimi |
-| 163 | yes | evet | hayır'ın tersi olan onay sözü |
+| 163 | yes | evet | hayır sözünün tersi, onay |
 | 164 | yesterday | dün | bugünden önceki gün |
 | 165 | young | genç | yaşı küçük olan |

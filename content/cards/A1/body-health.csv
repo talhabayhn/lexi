@@ -1,20 +1,20 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
-a1-arm,ARM,A,STARTS,noun,kol,My arm hurts.,Kolum ağrıyor.,1,,body-health
-a1-eye,EYE,E,STARTS,noun,göz,My eye hurts.,Gözüm ağrıyor.,1,,body-health
+a1-arm,ARM,A,STARTS,noun,omuzdan ele uzanan vücut parçası,My arm hurts.,Kolum ağrıyor.,1,,body-health
+a1-eye,EYE,E,STARTS,noun,görmemizi sağlayan organ,My eye hurts.,Gözüm ağrıyor.,1,,body-health
 a1-foot,FOOT,F,STARTS,noun,tek bir ayak,Anna stepped on a sharp shell with her bare foot.,Çıplak ayağıyla keskin bir deniz kabuğuna bastı.,2,,body-health
-a1-hand,HAND,H,STARTS,noun,el,Ali held my hand tightly and grinned.,Ali elimi sıkıca tuttu ve sırıttı.,1,,body-health
-a1-hair,HAIR,H,STARTS,noun,saç,The barber trims his hair and beard.,Berber saç ve sakalını kesiyor.,1,,body-health
-a1-leg,LEG,L,STARTS,noun,bacak,He broke his leg.,Bacağını kırdı.,1,,body-health
-a1-mouth,MOUTH,M,STARTS,noun,ağız,He covered his mouth as he yawned.,Esnerken ağzını eliyle kapattı.,2,,body-health
+a1-hand,HAND,H,STARTS,noun,"parmakları olan, tutmaya yarayan uzuv",Ali held my hand tightly and grinned.,Ali elimi sıkıca tuttu ve sırıttı.,1,,body-health
+a1-hair,HAIR,H,STARTS,noun,kafada biten ince teller,The barber trims his hair and beard.,Berber saç ve sakalını kesiyor.,1,,body-health
+a1-leg,LEG,L,STARTS,noun,yürümek için kullanılan uzuv,He broke his leg.,Bacağını kırdı.,1,,body-health
+a1-mouth,MOUTH,M,STARTS,noun,yemek yediğimiz yüz bölümü,He covered his mouth as he yawned.,Esnerken ağzını eliyle kapattı.,2,,body-health
 a1-tooth,TOOTH,T,STARTS,noun,tek bir diş,The wobbly tooth finally came out.,Oynayan diş sonunda düştü.,2,,body-health
-a1-neck,NECK,N,STARTS,noun,boyun,She wears a gold chain around her neck.,Boynunda altın bir zincir takıyor.,2,,body-health
-a1-ill,ILL,I,STARTS,adj,hasta,My neighbor is ill.,Komşum hasta.,2,,body-health
-a1-ear,EAR,E,STARTS,noun,kulak,My ear hurts.,Kulağım ağrıyor.,1,,body-health
-a1-finger,FINGER,F,STARTS,noun,parmak,Mert pricked his finger with a needle.,Mert iğneyle parmağını batırdı.,1,,body-health
+a1-neck,NECK,N,STARTS,noun,baş ile gövdeyi bağlayan kısım,She wears a gold chain around her neck.,Boynunda altın bir zincir takıyor.,2,,body-health
+a1-ill,ILL,I,STARTS,adj,"sağlığı bozuk, rahatsız",My neighbor is ill.,Komşum hasta.,2,,body-health
+a1-ear,EAR,E,STARTS,noun,sesleri duyduğumuz organ,My ear hurts.,Kulağım ağrıyor.,1,,body-health
+a1-finger,FINGER,F,STARTS,noun,elin ucundaki beş uzuvdan biri,Mert pricked his finger with a needle.,Mert iğneyle parmağını batırdı.,1,,body-health
 a1-hungry,HUNGRY,H,STARTS,adj,"aç, yemek isteyen",The hikers were so hungry that they ate quickly.,Yürüyüşçüler o kadar açtı ki hızla yediler.,1,,body-health
 a1-head,HEAD,H,STARTS,noun,boynun üstündeki vücut parçası,A helmet protects your head in a crash.,"Kask, kazada başını korur.",1,,body-health
 a1-face,FACE,F,STARTS,noun,gözleri ve ağzı olan ön kısım,He has a round face.,Yuvarlak bir yüzü var.,1,,body-health
 a1-back,BACK,B,STARTS,noun,omurganın olduğu arka kısım,The backpack straps hurt her back.,Sırt çantasının askıları sırtını acıtıyor.,1,,body-health
 a1-knee,KNEE,K,STARTS,noun,bacağı büken eklem,Ali fell from his skateboard and hurt his knee.,Ali kaykayından düştü ve dizini yaraladı.,1,,body-health
 a1-body,BODY,B,STARTS,noun,baştan ayağa insan vücudu,She has a strong body.,Güçlü bir vücudu var.,1,,body-health
-a1-healthy,HEALTHY,H,STARTS,adj,sağlıklı,Salmon and spinach are healthy choices.,Somon ve ıspanak sağlıklı seçimlerdir.,1,,body-health
+a1-healthy,HEALTHY,H,STARTS,adj,"hasta olmayan, sağlığı yerinde",Salmon and spinach are healthy choices.,Somon ve ıspanak sağlıklı seçimlerdir.,1,,body-health

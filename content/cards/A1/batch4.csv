@@ -12,7 +12,7 @@ a1-cousin,COUSIN,C,STARTS,noun,"amca, dayı, hala ya da teyze çocuğu",My cousi
 a1-child,CHILD,C,STARTS,noun,büyümekte olan küçük insan,A lost child cried at the entrance.,Kayıp bir çocuk girişte ağladı.,1,,family-people
 a1-cinema,CINEMA,C,STARTS,noun,film izlemeye gidilen salon,We went to the cinema.,Sinemaya gittik.,1,,city-transport
 a1-camera,CAMERA,C,STARTS,noun,fotoğraf çeken alet,Tourists photographed the castle with a camera.,Turistler kaleyi fotoğraf makinesiyle çekti.,2,,daily-life
-a1-clothes,CLOTHES,C,STARTS,noun,giysiler,She hangs her wet clothes on the line.,Islak giysilerini ipe asıyor.,2,,daily-life
+a1-clothes,CLOTHES,C,STARTS,noun,insanların üzerine giydiği şeyler,She hangs her wet clothes on the line.,Islak giysilerini ipe asıyor.,2,,daily-life
 a1-carrot,CARROT,C,STARTS,noun,turuncu renkli kök sebze,Ayşe sliced a carrot carefully.,Ayşe havucu dikkatle dilimledi.,2,,food-drink
 a1-draw,DRAW,D,STARTS,verb,kalemle resim yapmak,She likes to draw flowers.,Çiçek çizmeyi sever.,1,,daily-life
 a1-drive,DRIVE,D,STARTS,verb,araç kullanmak,He can drive a truck.,Kamyon kullanabilir.,2,,daily-life
@@ -37,7 +37,7 @@ a1-goodbye,GOODBYE,G,STARTS,phrase,ayrılırken söylenen söz,Selin hugged her 
 a1-garage,GARAGE,G,STARTS,noun,arabanın park edildiği kapalı yer,Mert keeps his tools in the garage.,Mert aletlerini garajda tutuyor.,2,,home
 a1-giraffe,GIRAFFE,G,STARTS,noun,boynu çok uzun hayvan,The giraffe is taller than the fence.,Zürafa çitten daha uzun.,2,,animals
 a1-hear,HEAR,H,STARTS,verb,sesi kulakla algılamak,I cannot hear you in this noisy hall.,Bu gürültülü salonda seni duyamıyorum.,1,,daily-life
-a1-heavy,HEAVY,H,STARTS,adj,ağır,The closet is too heavy to lift alone.,Dolap tek başına kaldırmak için fazla ağır.,2,,daily-life
+a1-heavy,HEAVY,H,STARTS,adj,kaldırması çok zor olan,The closet is too heavy to lift alone.,Dolap tek başına kaldırmak için fazla ağır.,2,,daily-life
 a1-hamburger,HAMBURGER,H,STARTS,noun,köfteli sandviç,He ordered a hamburger with fries and ketchup.,Patates kızartması ve ketçaplı bir hamburger sipariş etti.,2,,food-drink
 a1-interesting,INTERESTING,I,STARTS,adj,ilgini çeken,The gallery has an interesting dinosaur exhibit.,Galerideki dinozor sergisi ilgimi çekiyor.,3,,daily-life
 a1-kangaroo,KANGAROO,K,STARTS,noun,"keseli, zıplayan Avustralya hayvanı",A kangaroo hops across the field.,Bir kanguru tarlada zıplıyor.,2,,animals

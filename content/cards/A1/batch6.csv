@@ -39,7 +39,7 @@ a1-fine,FINE,F,STARTS,adj,"iyi, hoş; sağlıklı ya da memnun","I am fine, than
 a1-frog,FROG,F,STARTS,noun,"gölde yaşayan, sıçrayan yeşil hayvan",The frog sat on a rock.,Kurbağa bir kayanın üstüne oturdu.,2,,animals
 a1-france,FRANCE,F,STARTS,noun,başkenti Paris olan ülke,Paris is the capital of France.,"Paris, Fransa'nın başkentidir.",2,,daily-life
 a1-french,FRENCH,F,STARTS,noun,Fransa'da konuşulan dil,Ali is learning French.,Ali Fransızca öğreniyor.,2,,daily-life
-a1-glasses,GLASSES,G,STARTS,noun,gözlük,Ali cleaned his glasses.,Ali gözlüğünü sildi.,2,,daily-life
+a1-glasses,GLASSES,G,STARTS,noun,iyi görmek için takılan çerçeveli camlar,Ali cleaned his glasses.,Ali gözlüğünü sildi.,2,,daily-life
 a1-germany,GERMANY,G,STARTS,noun,başkenti Berlin olan ülke,Selin works in Germany.,Selin Almanya'da çalışıyor.,2,,daily-life
 a1-german,GERMAN,G,STARTS,noun,Almanya'da konuşulan dil,Selin studies German online.,Selin internetten Almanca çalışıyor.,2,,daily-life
 a1-half,HALF,H,STARTS,noun,bir bütünün iki eşit parçasından biri,Half of the students are absent.,Öğrencilerin yarısı gelmedi.,2,,daily-life

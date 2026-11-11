@@ -1,22 +1,22 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
-a1-airport,AIRPORT,A,STARTS,noun,havalimanı,Passengers form lines for flights at the airport.,Yolcular havalimanında uçuşlar için sıra oluşturuyor.,2,,city-transport
-a1-car,CAR,C,STARTS,noun,araba,This car is electric.,Bu araba elektrikli.,1,,city-transport
-a1-hospital,HOSPITAL,H,STARTS,noun,hastane,The hospital is beside the bakery.,Hastane fırının yanında.,2,,city-transport
-a1-island,ISLAND,I,STARTS,noun,ada,There are lots of trees on the island.,Adada çok ağaç var.,3,,city-transport
-a1-tree,TREE,T,STARTS,noun,ağaç,The tree has lots of leaves.,Ağacın bir sürü yaprağı var.,1,,city-transport
-a1-bus,BUS,B,STARTS,noun,otobüs,The bus stops at the gate.,Otobüs kapıda duruyor.,1,,city-transport
+a1-airport,AIRPORT,A,STARTS,noun,uçakların kalkıp indiği yer,Passengers form lines for flights at the airport.,Yolcular havalimanında uçuşlar için sıra oluşturuyor.,2,,city-transport
+a1-car,CAR,C,STARTS,noun,dört tekerlekli motorlu aile taşıtı,This car is electric.,Bu araba elektrikli.,1,,city-transport
+a1-hospital,HOSPITAL,H,STARTS,noun,hastaların tedavi edildiği yer,The hospital is beside the bakery.,Hastane fırının yanında.,2,,city-transport
+a1-island,ISLAND,I,STARTS,noun,her yanı suyla çevrili kara,There are lots of trees on the island.,Adada çok ağaç var.,3,,city-transport
+a1-tree,TREE,T,STARTS,noun,gövdesi ve dalları olan bitki,The tree has lots of leaves.,Ağacın bir sürü yaprağı var.,1,,city-transport
+a1-bus,BUS,B,STARTS,noun,çok yolcu taşıyan büyük taşıt,The bus stops at the gate.,Otobüs kapıda duruyor.,1,,city-transport
 a1-city,CITY,C,STARTS,noun,büyük şehir,Istanbul is a huge city.,İstanbul kocaman bir şehirdir.,1,,city-transport
 a1-road,ROAD,R,STARTS,noun,"yol, cadde",The road is wet.,Yol ıslak.,1,,city-transport
 a1-train,TRAIN,T,STARTS,noun,raylarda giden araç,The train is crowded.,Tren kalabalık.,1,,city-transport
-a1-ticket,TICKET,T,STARTS,noun,bilet,I lost my ticket.,Biletimi kaybettim.,1,,city-transport
-a1-map,MAP,M,STARTS,noun,harita,This is a map of Greece.,Bu Yunanistan'ın haritası.,1,,city-transport
+a1-ticket,TICKET,T,STARTS,noun,binmek veya girmek için gereken kâğıt,I lost my ticket.,Biletimi kaybettim.,1,,city-transport
+a1-map,MAP,M,STARTS,noun,yerleri gösteren çizili kâğıt,This is a map of Greece.,Bu Yunanistan'ın haritası.,1,,city-transport
 a1-hotel,HOTEL,H,STARTS,noun,tatilde kalınan yer,We rest at a hotel.,Bir otelde dinleniyoruz.,1,,city-transport
 a1-park,PARK,P,STARTS,noun,şehirdeki yeşil alan,The park is lovely.,Park çok güzel.,1,,city-transport
 a1-shop,SHOP,S,STARTS,noun,"dükkân, mağaza",The shop is closed.,Dükkân kapalı.,1,,city-transport
 a1-street,STREET,S,STARTS,noun,evlerin arasındaki sokak,This street is noisy.,Bu sokak gürültülü.,1,,city-transport
 a1-taxi,TAXI,X,CONTAINS,noun,ücretle binilen sarı araç,The taxi is waiting.,Taksi bekliyor.,1,,city-transport
 a1-station,STATION,S,STARTS,noun,tren durağı,The station is crowded with travelers.,İstasyon yolcularla dolu.,1,,city-transport
-a1-north,NORTH,N,STARTS,noun,kuzey,Trabzon is in the north.,Trabzon kuzeydedir.,1,,city-transport
+a1-north,NORTH,N,STARTS,noun,pusulada yukarıyı gösteren yön,Trabzon is in the north.,Trabzon kuzeydedir.,1,,city-transport
 a1-left,LEFT,L,STARTS,adv,sağın zıddı yön,The pharmacy is on the left.,Eczane solda.,1,,city-transport
 a1-right,RIGHT,R,STARTS,adv,solun zıddı yön,The stadium is on the right.,Stadyum sağda.,1,,city-transport
 a1-near,NEAR,N,STARTS,adj,uzak olmayan,The bakery is near the mosque.,Fırın camiye yakın.,1,,city-transport

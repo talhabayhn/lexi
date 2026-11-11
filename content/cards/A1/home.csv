@@ -1,18 +1,18 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
-a1-bed,BED,B,STARTS,noun,yatak,My bed is soft.,Yatağım yumuşak.,1,,home
-a1-door,DOOR,D,STARTS,noun,kapı,Someone knocked on the front door at midnight.,Gece yarısı ön kapı çalındı.,1,,home
-a1-garden,GARDEN,G,STARTS,noun,bahçe,There are flowers in our garden.,Bahçemizde çiçekler var.,1,,home
-a1-glass,GLASS,G,STARTS,noun,bardak,Mert accidentally broke a glass and swept the pieces.,Mert yanlışlıkla bir bardak kırdı ve parçaları süpürdü.,1,,home
-a1-key,KEY,K,STARTS,noun,anahtar,I lost my key.,Anahtarımı kaybettim.,1,,home
-a1-knife,KNIFE,K,STARTS,noun,bıçak,Be careful. The knife is sharp.,Dikkat et. Bıçak keskin.,3,,home
-a1-plate,PLATE,P,STARTS,noun,tabak,The plate is in the sink.,Tabak evyede.,1,,home
+a1-bed,BED,B,STARTS,noun,uyumak için üzerine yattığımız eşya,My bed is soft.,Yatağım yumuşak.,1,,home
+a1-door,DOOR,D,STARTS,noun,odaya girip çıktığımız açılır kapanır parça,Someone knocked on the front door at midnight.,Gece yarısı ön kapı çalındı.,1,,home
+a1-garden,GARDEN,G,STARTS,noun,evin yanındaki çiçekli ve ağaçlı alan,There are flowers in our garden.,Bahçemizde çiçekler var.,1,,home
+a1-glass,GLASS,G,STARTS,noun,su içtiğimiz şeffaf kap,Mert accidentally broke a glass and swept the pieces.,Mert yanlışlıkla bir bardak kırdı ve parçaları süpürdü.,1,,home
+a1-key,KEY,K,STARTS,noun,kilidi açmaya yarayan küçük metal,I lost my key.,Anahtarımı kaybettim.,1,,home
+a1-knife,KNIFE,K,STARTS,noun,ekmek kesmeye yarayan keskin araç,Be careful. The knife is sharp.,Dikkat et. Bıçak keskin.,3,,home
+a1-plate,PLATE,P,STARTS,noun,yemeğin üstüne konduğu yassı kap,The plate is in the sink.,Tabak evyede.,1,,home
 a1-house,HOUSE,H,STARTS,noun,"konut, ev binası",They have a wooden house.,Ahşap bir evleri var.,1,,home
 a1-home,HOME,H,STARTS,noun,"yuva, insanın yaşadığı yer",Ali finished his shift and walked home.,Ali vardiyasını bitirdi ve eve yürüdü.,2,,home
-a1-room,ROOM,R,STARTS,noun,oda,This room is bright.,Bu oda aydınlık.,1,,home
+a1-room,ROOM,R,STARTS,noun,evde duvarlarla ayrılmış bölüm,This room is bright.,Bu oda aydınlık.,1,,home
 a1-lamp,LAMP,L,STARTS,noun,masa veya yer lambası,The lamp is broken.,Lamba bozuk.,1,,home
-a1-wall,WALL,W,STARTS,noun,duvar,There is a poster on the wall.,Duvarda bir poster var.,1,,home
+a1-wall,WALL,W,STARTS,noun,odayı çevreleyen dik yapı,There is a poster on the wall.,Duvarda bir poster var.,1,,home
 a1-desk,DESK,D,STARTS,noun,çalışma masası,There is a stapler on the desk.,Masada bir zımba var.,1,,home
-a1-bag,BAG,B,STARTS,noun,çanta,Her bag is leather.,Çantası deri.,1,,home
+a1-bag,BAG,B,STARTS,noun,eşyaları içine koyup taşıdığımız şey,Her bag is leather.,Çantası deri.,1,,home
 a1-bedroom,BEDROOM,B,STARTS,noun,yatılan oda,"Her bedroom is big, with a new closet and a soft rug.",Onun yatak odası büyük; yeni bir dolabı ve yumuşak bir halısı var.,1,,home
 a1-bathroom,BATHROOM,B,STARTS,noun,lavabo ve duşun olduğu oda,Shampoo and towels are in the bathroom.,Şampuan ve havlular banyoda.,1,,home
 a1-floor,FLOOR,F,STARTS,noun,ayakların bastığı zemin,Selin dropped her keys on the floor.,Selin anahtarlarını yere düşürdü.,1,,home
