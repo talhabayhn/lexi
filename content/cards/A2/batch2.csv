@@ -2,7 +2,7 @@ id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
 a2-unhappy,UNHAPPY,U,STARTS,adj,"mutlu olmayan, hüzünlü",He looks unhappy today.,Bugün keyifsiz görünüyor.,2,,daily-life
 a2-usual,USUAL,U,STARTS,adj,"her zamanki, alışılmış",I got up at the usual time.,Her zamanki saatte kalktım.,3,,daily-life
 a2-unless,UNLESS,U,STARTS,phrase,"eğer ... olmazsa, -medikçe",We will go unless it rains.,Yağmur yağmazsa gideceğiz.,4,,daily-life
-a2-unfriendly,UNFRIENDLY,U,STARTS,adj,insanlara sıcak davranmayan,The man at the desk was unfriendly.,Masadaki adam soğuk davrandı.,3,,daily-life
+a2-unfriendly,UNFRIENDLY,U,STARTS,adj,insanlara sıcak davranmayan,The man at the desk was unfriendly.,Masadaki adam soğuk davrandı.,3,,family-people
 a2-untidy,UNTIDY,U,STARTS,adj,"düzensiz, toplanmamış","Her desk is untidy, with papers everywhere.","Masası düzensiz, her yerde kâğıtlar var.",2,,home
 a2-unlucky,UNLUCKY,U,STARTS,adj,şansı yaver gitmeyen,He was unlucky in the match.,Maçta şanssızdı.,3,,daily-life
 a2-user,USER,U,STARTS,noun,bir ürünü ya da hizmeti kullanan kişi,Every user needs a password.,Her kullanıcının bir parolaya ihtiyacı var.,3,,daily-life
@@ -36,13 +36,13 @@ a2-improve,IMPROVE,I,STARTS,verb,bir şeyi daha iyi hale getirmek,I want to impr
 a2-ignore,IGNORE,I,STARTS,verb,bir şeye bilerek dikkat etmemek,Do not ignore the red light.,Kırmızı ışığı görmezden gelme.,4,,city-transport
 a2-invent,INVENT,I,STARTS,verb,daha önce olmayan bir şey bulmak,Many people want to invent something new.,Birçok kişi yeni bir şey icat etmek ister.,4,,daily-life
 a2-international,INTERNATIONAL,I,STARTS,adj,birçok ülkeyi ilgilendiren,Istanbul has a big international airport.,İstanbul'da büyük bir uluslararası havalimanı var.,3,,school-work
-a2-immediately,IMMEDIATELY,I,STARTS,adv,"hiç beklemeden, hemen","When the teacher called my name, I answered immediately.",Öğretmen adımı söyleyince hemen cevap verdim.,4,,daily-life
+a2-immediately,IMMEDIATELY,I,STARTS,adv,"hiç beklemeden, hemen","When the teacher called my name, I answered immediately.",Öğretmen adımı söyleyince hemen cevap verdim.,4,,time-weather
 a2-opposite,OPPOSITE,O,STARTS,noun,bir şeyin tam tersi,Hot is the opposite of cold.,"Sıcak, soğuğun tersidir.",3,,school-work
 a2-opinion,OPINION,O,STARTS,noun,bir konudaki kişisel düşünce,"In my opinion, the film is great.",Bence film harika.,4,,daily-life
 a2-order,ORDER,O,STARTS,verb,"restoranda yiyecek istemek, sipariş etmek",We order pizza on Fridays.,Cuma günleri pizza sipariş ederiz.,2,,food-drink
 a2-outdoors,OUTDOORS,O,STARTS,adv,"açık havada, binanın dışında","On sunny days, we love to eat outdoors.",Güneşli günlerde dışarıda yemek yemeyi seviyoruz.,3,,daily-life
 a2-own,OWN,O,STARTS,adj,"başkasına değil, kişinin kendisine ait",She has her own room.,Kendine ait bir odası var.,3,,daily-life
-a2-owner,OWNER,O,STARTS,noun,bir şeye sahip olan kişi,The owner of the shop is kind.,Dükkânın sahibi nazik.,3,,daily-life
+a2-owner,OWNER,O,STARTS,noun,bir şeye sahip olan kişi,The owner of the shop is kind.,Dükkânın sahibi nazik.,3,,family-people
 a2-orchestra,ORCHESTRA,O,STARTS,noun,birçok çalgıcıdan oluşan müzik topluluğu,The orchestra played music for the dancers.,Orkestra dansçılar için müzik çaldı.,3,,music
 a2-organise,ORGANIZE,O,STARTS,verb,bir işi düzenli biçimde ayarlamak,We need to organize a party for Mom.,Annem için bir parti düzenlememiz gerek.,4,,daily-life
 a2-outfit,OUTFIT,O,STARTS,noun,birlikte giyilen kıyafetler,She chose a blue outfit for the party.,Parti için mavi bir kıyafet seçti.,3,,daily-life
@@ -51,7 +51,7 @@ a2-otherwise,OTHERWISE,O,STARTS,adv,"yoksa, aksi halde","Go now, otherwise the b
 a2-online,ONLINE,O,STARTS,adv,internete bağlı olarak,Selin bought her new shoes online.,Selin yeni ayakkabılarını çevrimiçi aldı.,2,,daily-life
 a2-olive,OLIVE,O,STARTS,noun,zeytinyağı da veren küçük yeşil ya da siyah meyve,He put an olive on the pizza.,Pizzanın üstüne bir zeytin koydu.,2,,food-drink
 a2-hockey,HOCKEY,O,CONTAINS,noun,sopayla oynanan takım sporu,My cousin plays hockey.,Kuzenim hokey oynuyor.,2,,sports
-a2-polite,POLITE,O,CONTAINS,adj,başkalarına karşı kibar ve saygılı,The waiter is very polite.,Garson çok kibar.,3,,daily-life
+a2-polite,POLITE,O,CONTAINS,adj,başkalarına karşı kibar ve saygılı,The waiter is very polite.,Garson çok kibar.,3,,family-people
 a2-cookie,COOKIE,O,CONTAINS,noun,"yuvarlak, tatlı ve kuru küçük hamur işi",Would you like a cookie?,Bir kurabiye ister misin?,2,,food-drink
 a2-broken,BROKEN,O,CONTAINS,adj,"kırılmış, bozulmuş",The window is broken.,Pencere kırık.,2,,home
 a2-wood,WOOD,O,CONTAINS,noun,ağaçtan elde edilen sert malzeme,The table is made of wood.,Masa tahtadan yapılmış.,2,,home
@@ -93,9 +93,9 @@ a2-enter,ENTER,E,STARTS,verb,bir yere girmek,Please take off your shoes before y
 a2-entrance,ENTRANCE,E,STARTS,noun,bir yere girilen kapı ya da geçit,Let us meet at the park entrance at noon.,Öğlen park girişinde buluşalım.,2,,city-transport
 a2-even,EVEN,E,STARTS,adv,beklenmeyeni vurgulayan sözcük: bile,Even my little brother knows this.,Küçük kardeşim bile bunu biliyor.,3,,daily-life
 a2-event,EVENT,E,STARTS,noun,yaşanan önemli olay ya da etkinlik,The school event starts at six.,Okul etkinliği altıda başlıyor.,3,,daily-life
-a2-ever,EVER,E,STARTS,adv,herhangi bir zamanda,Have you ever seen a whale?,Hiç balina gördün mü?,3,,daily-life
+a2-ever,EVER,E,STARTS,adv,herhangi bir zamanda,Have you ever seen a whale?,Hiç balina gördün mü?,3,,time-weather
 a2-easily,EASILY,E,STARTS,adv,"zorlanmadan, kolaylıkla",Mert lifted the heavy box easily.,Mert ağır kutuyu kolayca kaldırdı.,3,,daily-life
-a2-enemy,ENEMY,E,STARTS,noun,"karşı tarafta savaşılan kişi, düşman",The soldiers fought the enemy.,Askerler düşmanla savaştı.,3,,daily-life
+a2-enemy,ENEMY,E,STARTS,noun,"karşı tarafta savaşılan kişi, düşman",The soldiers fought the enemy.,Askerler düşmanla savaştı.,3,,family-people
 a2-eraser,ERASER,E,STARTS,noun,kurşun kalem izini silen küçük nesne,The pencil has a small eraser on the end.,Kalemin ucunda küçük bir silgi var.,2,,school-work
 a2-essay,ESSAY,E,STARTS,noun,belli bir konuda yazılan kısa yazı,I wrote an essay about dogs.,Köpekler üzerine bir kompozisyon yazdım.,3,,school-work
 a2-edge,EDGE,E,STARTS,noun,"bir şeyin kenarı, ucu",Do not stand near the edge.,Kenarın yakınında durma.,3,,daily-life

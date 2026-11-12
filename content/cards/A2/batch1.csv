@@ -34,7 +34,7 @@ a2-sneeze,SNEEZE,Z,CONTAINS,verb,burundan ani ve gürültülü hava vermek,Use a
 a2-realize,REALIZE,Z,CONTAINS,verb,bir şeyin farkına varmak,I did not realize it was so late.,Bu kadar geç olduğunu fark etmedim.,3,,daily-life
 a2-dizzy,DIZZY,Z,CONTAINS,adj,etrafı dönüyormuş gibi hisseden,I feel dizzy after the ride.,Gezintiden sonra başım dönüyor.,3,,body-health
 a2-jazz,JAZZ,Z,CONTAINS,noun,doğaçlama ağırlıklı müzik türü,He plays jazz on the piano.,Piyanoda caz çalıyor.,2,,music
-a2-wizard,WIZARD,Z,CONTAINS,noun,masallarda büyü yapan adam,The wizard lives in a tall tower.,Büyücü uzun bir kulede yaşıyor.,3,,daily-life
+a2-wizard,WIZARD,Z,CONTAINS,noun,masallarda büyü yapan adam,The wizard lives in a tall tower.,Büyücü uzun bir kulede yaşıyor.,3,,family-people
 a2-lizard,LIZARD,Z,CONTAINS,noun,"kuru derili, dört bacaklı küçük sürüngen",A lizard sat on the warm wall.,Sıcak duvarın üstünde bir kertenkele duruyordu.,2,,animals
 a2-journey,JOURNEY,J,STARTS,noun,bir yerden başka bir yere yapılan uzun yolculuk,The journey to Izmir takes five hours.,İzmir'e yolculuk beş saat sürüyor.,2,,travel
 a2-jungle,JUNGLE,J,STARTS,noun,sıcak ülkelerdeki sık ve yoğun orman,Monkeys live in the jungle.,Maymunlar ormanda yaşar.,2,,animals
@@ -85,7 +85,7 @@ a2-believe,BELIEVE,V,CONTAINS,verb,bir şeyin doğru olduğunu düşünmek,I bel
 a2-cave,CAVE,V,CONTAINS,noun,dağ ya da kayalıktaki doğal oyuk,Bats sleep in the cave.,Yarasalar mağarada uyur.,2,,travel
 a2-save,SAVE,V,CONTAINS,verb,ileride kullanmak için para biriktirmek,I save ten lira every week.,Her hafta on lira biriktiriyorum.,2,,daily-life
 a2-wave,WAVE,V,CONTAINS,verb,elini bir yandan öbür yana sallamak,Wave to your friends.,Arkadaşlarına el salla.,2,,daily-life
-a2-yet,YET,Y,STARTS,adv,"şimdiye kadar, henüz",I have not finished my homework yet.,Ödevimi henüz bitirmedim.,3,,daily-life
+a2-yet,YET,Y,STARTS,adv,"şimdiye kadar, henüz",I have not finished my homework yet.,Ödevimi henüz bitirmedim.,3,,time-weather
 a2-yourself,YOURSELF,Y,STARTS,phrase,karşımızdaki kişinin kendisi,Look at yourself in the mirror.,Aynada kendine bak.,3,,daily-life
 a2-yoga,YOGA,Y,STARTS,noun,beden ve zihin egzersizi,She does yoga every morning.,Her sabah yoga yapıyor.,2,,sports
 a2-yummy,YUMMY,Y,STARTS,adj,"tadı çok güzel, nefis","The cookies were yummy, so I ate five.","Kurabiyeler nefisti, bu yüzden beş tane yedim.",2,,food-drink
@@ -94,7 +94,7 @@ a2-style,STYLE,Y,CONTAINS,noun,bir şeyin kendine özgü tarzı,I like your styl
 a2-guy,GUY,Y,CONTAINS,noun,"günlük dilde adam, tip",He is a really nice guy.,O gerçekten iyi bir adam.,3,,family-people
 a2-spicy,SPICY,Y,CONTAINS,adj,baharatlı ve acı olan,I do not like spicy food.,Acılı yemek sevmem.,2,,food-drink
 a2-copy,COPY,Y,CONTAINS,verb,bir şeyin aynısını yapmak ya da çoğaltmak,Please copy the words from the board.,Lütfen sözcükleri tahtadan kopyala.,2,,school-work
-a2-daily,DAILY,Y,CONTAINS,adj,her gün olan,I take a daily walk in the park.,Parkta günlük yürüyüşümü yaparım.,3,,daily-life
+a2-daily,DAILY,Y,CONTAINS,adj,her gün olan,I take a daily walk in the park.,Parkta günlük yürüyüşümü yaparım.,3,,time-weather
 a2-candy,CANDY,Y,CONTAINS,noun,şekerden yapılan küçük tatlı,The boy ate too much candy.,Çocuk çok fazla şekerleme yedi.,2,,food-drink
 a2-royal,ROYAL,Y,CONTAINS,adj,kral ve kraliçeyle ilgili,The royal family lives in a big house.,Kraliyet ailesi büyük bir evde yaşıyor.,3,,family-people
 a2-plenty,PLENTY,Y,CONTAINS,phrase,ihtiyaçtan fazla miktar,We have plenty of time.,Bol bol zamanımız var.,3,,daily-life

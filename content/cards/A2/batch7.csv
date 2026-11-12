@@ -12,7 +12,7 @@ a2-rich,RICH,R,STARTS,adj,"çok parası olan, zengin",The rich man has three car
 a2-rock,ROCK,R,STARTS,noun,"büyük, sert taş kütlesi, kaya",The cat sat on a big rock.,Kedi büyük bir kayanın üstünde oturdu.,3,,travel
 a2-rose,ROSE,R,STARTS,noun,"dikenli, güzel kokulu çiçek, gül",He gave her a red rose.,Ona kırmızı bir gül verdi.,2,,daily-life
 a2-route,ROUTE,R,STARTS,noun,bir yere giden yol,What is the best route to the station?,İstasyona giden en iyi yol hangisi?,3,,city-transport
-a2-rude,RUDE,R,STARTS,adj,"kaba, nezaketsiz",It is rude to talk with food in your mouth.,Ağzında yemekle konuşmak kabalıktır.,3,,daily-life
+a2-rude,RUDE,R,STARTS,adj,"kaba, nezaketsiz",It is rude to talk with food in your mouth.,Ağzında yemekle konuşmak kabalıktır.,3,,family-people
 a2-rule,RULE,R,STARTS,noun,uyulması gereken kural,Please follow this rule.,Lütfen bu kurala uy.,2,,school-work
 a2-railway,RAILWAY,R,STARTS,noun,trenlerin üzerinde gittiği demir yol,The railway is near our house.,Demir yolu evimize yakın.,3,,city-transport
 a2-raincoat,RAINCOAT,R,STARTS,noun,yağmurdan korumak için giyilen su geçirmez mont,Take your raincoat today.,Bugün yağmurluğunu al.,2,,daily-life
@@ -43,7 +43,7 @@ a2-shoot,SHOOT,S,STARTS,verb,silahla ateş etmek ya da topla gol denemek,He trie
 a2-shy,SHY,S,STARTS,adj,"insanlarla konuşurken çekinen, utangaç",The new girl is shy.,Yeni kız utangaç.,2,,family-people
 a2-sick,SICK,S,STARTS,adj,"midesi bulanan, kusacak gibi olan",I feel sick after the boat ride.,Tekne gezisinden sonra midem bulanıyor.,2,,body-health
 a2-side,SIDE,S,STARTS,noun,"bir şeyin bir tarafı, yanı",Sit on this side of the table.,Masanın bu tarafına otur.,3,,daily-life
-a2-silly,SILLY,S,STARTS,adj,"aptalca ve komik, saçma",The kids made silly faces and giggled all day.,Çocuklar saçma suratlar yapıp bütün gün kıkırdadı.,2,,daily-life
+a2-silly,SILLY,S,STARTS,adj,"aptalca ve komik, saçma",The kids made silly faces and giggled all day.,Çocuklar saçma suratlar yapıp bütün gün kıkırdadı.,2,,family-people
 a2-silver,SILVER,S,STARTS,noun,"beyazımsı parlak değerli maden, gümüş",This spoon is made of silver.,Bu kaşık gümüşten yapılmış.,2,,daily-life
 a2-sink,SINK,S,STARTS,noun,mutfakta bulaşık yıkanan lavabo,There are dishes in the sink.,Lavaboda tabaklar var.,2,,home
 a2-slice,SLICE,S,STARTS,noun,ekmek ya da pastadan kesilen ince parça,Would you like a slice of cake?,Bir dilim kek ister misin?,2,,food-drink

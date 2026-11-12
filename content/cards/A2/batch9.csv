@@ -11,9 +11,9 @@ a2-saxophone,SAXOPHONE,X,CONTAINS,noun,"kıvrık metal gövdeli üflemeli çalg�
 a2-amazed,AMAZED,Z,CONTAINS,adj,"çok şaşırmış, hayretler içinde",I was amazed by the big show.,Büyük gösteriye şaşırdım.,3,,daily-life
 a2-maze,MAZE,Z,CONTAINS,noun,"çıkışı bulunması zor dolambaçlı yollar, labirent",We got lost in the maze.,Labirentte kaybolduk.,3,,travel
 a2-fizzy,FIZZY,Z,CONTAINS,adj,içinde gaz kabarcıkları olan,I do not like fizzy drinks.,Gazlı içecekleri sevmem.,3,,food-drink
-a2-citizen,CITIZEN,Z,CONTAINS,noun,bir ülkenin vatandaşı,She is a citizen of Spain.,"O, İspanya vatandaşı.",4,,daily-life
+a2-citizen,CITIZEN,Z,CONTAINS,noun,bir ülkenin vatandaşı,She is a citizen of Spain.,"O, İspanya vatandaşı.",4,,family-people
 a2-zigzag,ZIGZAG,Z,STARTS,noun,"iki yana kıvrılan kırık çizgi, zikzak",The road goes in a zigzag up the hill.,Yol tepeye doğru zikzak çizerek çıkıyor.,4,,travel
-a2-knight,KNIGHT,K,STARTS,noun,"ortaçağda zırh giyen atlı savaşçı, şövalye",The knight fought a long battle.,Şövalye uzun bir savaş verdi.,3,,daily-life
+a2-knight,KNIGHT,K,STARTS,noun,"ortaçağda zırh giyen atlı savaşçı, şövalye",The knight fought a long battle.,Şövalye uzun bir savaş verdi.,3,,family-people
 a2-kindergarten,KINDERGARTEN,K,STARTS,noun,okuldan önceki yaşlarda gidilen anaokulu,My little brother goes to kindergarten.,Küçük kardeşim anaokuluna gidiyor.,3,,school-work
 a2-parking,PARKING,K,CONTAINS,noun,aracı bir yere bırakma ya da bırakılan yer,There is free parking behind the shop.,Dükkânın arkasında ücretsiz otopark var.,3,,city-transport
 a2-brick,BRICK,K,CONTAINS,noun,"duvar örmekte kullanılan pişmiş toprak blok, tuğla",The wall is made of red brick.,Duvar kırmızı tuğladan yapılmış.,3,,home
@@ -35,7 +35,7 @@ a2-mechanic,MECHANIC,M,STARTS,noun,arabaları tamir eden usta,The mechanic is un
 a2-microwave,MICROWAVE,M,STARTS,noun,yemeği çabuk ısıtan mutfak aleti,Put the soup in the microwave.,Çorbayı mikrodalgaya koy.,3,,home
 a2-octopus,OCTOPUS,O,STARTS,noun,"sekiz kollu deniz canlısı, ahtapot",The octopus has eight arms.,Ahtapotun sekiz kolu var.,2,,animals
 a2-painter,PAINTER,P,STARTS,noun,resim yapan sanatçı ya da boya yapan usta,The painter works in a small studio.,Ressam küçük bir stüdyoda çalışıyor.,3,,school-work
-a2-pirate,PIRATE,P,STARTS,noun,"denizde gemileri soyan haydut, korsan",The pirate has a wooden leg.,Korsanın tahta bir bacağı var.,2,,daily-life
+a2-pirate,PIRATE,P,STARTS,noun,"denizde gemileri soyan haydut, korsan",The pirate has a wooden leg.,Korsanın tahta bir bacağı var.,2,,family-people
 a2-puppet,PUPPET,P,STARTS,noun,"iplerle ya da elle oynatılan oyuncak bebek, kukla",The children watch a puppet show.,Çocuklar kukla gösterisi izliyor.,2,,daily-life
 a2-pyramid,PYRAMID,P,STARTS,noun,dört yüzü üçgen biçimli eski Mısır yapısı,We visited a pyramid in Egypt.,Mısır'da bir piramit gezdik.,3,,travel
 a2-sailor,SAILOR,S,STARTS,noun,"gemide çalışan kişi, denizci",The sailor tells an old story.,Denizci eski bir hikâye anlatıyor.,2,,school-work

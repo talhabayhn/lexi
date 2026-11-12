@@ -2,7 +2,7 @@ id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
 a2-quite,QUITE,Q,STARTS,adv,oldukça,The story is quite good.,Hikâye oldukça iyi.,3,,daily-life
 a2-uniform,UNIFORM,U,STARTS,noun,aynı işi yapanların giydiği kıyafet,The pilot wears a uniform.,Pilot üniforma giyer.,3,,school-work
 a2-van,VAN,V,STARTS,noun,yük taşıyan küçük kapalı araç,A van is waiting at the door.,Kapıda bir kamyonet bekliyor.,2,,city-transport
-a2-vacation,VACATION,V,STARTS,noun,işten ya da okuldan izinli geçirilen günler,We are going on vacation to Italy next week.,Gelecek hafta İtalya'ya tatile gidiyoruz.,3,,daily-life
+a2-vacation,VACATION,V,STARTS,noun,işten ya da okuldan izinli geçirilen günler,We are going on vacation to Italy next week.,Gelecek hafta İtalya'ya tatile gidiyoruz.,3,,travel
 a2-view,VIEW,V,STARTS,noun,pencereden görünen doğa ya da şehir,The view from the window is great.,Pencereden manzara çok güzel.,3,,daily-life
 a2-yard,YARD,Y,STARTS,noun,evin yanındaki taş döşeli açık alan,Our yard is very small.,Avlumuz çok küçük.,3,,home
 a2-size,SIZE,Z,CONTAINS,noun,giysinin numarası,Do you have this in a bigger size?,Bunun daha büyük bedeni var mı?,2,,daily-life
@@ -19,21 +19,21 @@ a2-actor,ACTOR,A,STARTS,noun,filmlerde ya da tiyatroda rol yapan kişi,The actor
 a2-blanket,BLANKET,B,STARTS,noun,yatağı örten kalın yünlü örtü,She pulled a warm blanket over her legs.,Bacaklarının üzerine sıcak bir battaniye çekti.,2,,home
 a2-church,CHURCH,C,STARTS,noun,Hristiyanların ibadet ettiği bina,The church is near the park.,Kilise parkın yakınında.,2,,city-transport
 a2-hold,HOLD,H,STARTS,verb,elinde tutmak,Please hold my bag so I can tie my shoes.,Ayakkabılarımı bağlayabilmem için lütfen çantamı tut.,2,,daily-life
-a2-loud,LOUD,L,STARTS,adj,"yüksek sesli, gürültülü",The music was too loud last night.,Müzik dün gece çok gürültülüydü.,2,,daily-life
-a2-lose,LOSE,L,STARTS,verb,"yitirmek, elinden kaçırmak",Try not to lose your ticket on the trip.,Gezide biletini kaybetmemeye çalış.,2,,daily-life
-a2-volleyball,VOLLEYBALL,V,STARTS,noun,file üzerinden top aşırılan takım oyunu,The girls play volleyball.,Kızlar voleybol oynuyor.,2,,daily-life
+a2-loud,LOUD,L,STARTS,adj,"yüksek sesli, gürültülü",The music was too loud last night.,Müzik dün gece çok gürültülüydü.,2,,music
+a2-lose,LOSE,L,STARTS,verb,"yitirmek, elinden kaçırmak",Try not to lose your ticket on the trip.,Gezide biletini kaybetmemeye çalış.,2,,travel
+a2-volleyball,VOLLEYBALL,V,STARTS,noun,file üzerinden top aşırılan takım oyunu,The girls play volleyball.,Kızlar voleybol oynuyor.,2,,sports
 a2-amazing,AMAZING,A,STARTS,adj,"şaşkınlık uyandıran, hayret verici",Our trip to the mountains was amazing.,Dağlara yaptığımız gezi harikaydı.,2,,daily-life
 a2-bored,BORED,B,STARTS,adj,"sıkılmış, canı sıkkın","I was bored, so I called my friend.","Canım sıkıldı, bu yüzden arkadaşımı aradım.",2,,daily-life
 a2-bill,BILL,B,STARTS,noun,restoranda yemekten sonra ödenen hesap,Dad asked the waiter for the bill.,Babam garsondan hesabı istedi.,2,,food-drink
 a2-fantastic,FANTASTIC,F,STARTS,adj,"çok güzel, süper",We had a fantastic time at the party last night.,Dün gece partide harika vakit geçirdik.,2,,daily-life
 a2-flight,FLIGHT,F,STARTS,noun,uçakla yapılan yolculuk,Her flight leaves at midnight.,Uçağı gece yarısı kalkıyor.,2,,city-transport
 a2-hate,HATE,H,STARTS,verb,hiç sevmemek ve nefret etmek,I hate waiting in long lines at the bank.,Bankada uzun kuyruklarda beklemekten nefret ederim.,2,,daily-life
-a2-just,JUST,J,STARTS,adv,"az önce, demin",Ayşe has just arrived.,Ayşe az önce geldi.,2,,daily-life
+a2-just,JUST,J,STARTS,adv,"az önce, demin",Ayşe has just arrived.,Ayşe az önce geldi.,2,,time-weather
 a2-meeting,MEETING,M,STARTS,noun,bir konuyu görüşmek için yapılan toplantı,The meeting starts at ten in the morning.,Toplantı sabah onda başlıyor.,2,,school-work
 a2-miss,MISS,M,STARTS,verb,yanında olmayan birini özlemek,I miss my grandmother when she is away.,Büyükannem uzaktayken onu özlüyorum.,2,,daily-life
 a2-poor,POOR,P,STARTS,adj,parası az olan,The poor man had no shoes.,Yoksul adamın ayakkabısı yoktu.,2,,daily-life
-a2-piece,PIECE,P,STARTS,noun,bir bütünden ayrılmış küçük bölüm,Ali ate a piece of pie.,Ali bir parça turta yedi.,2,,food-drink
+a2-piece,PIECE,P,STARTS,noun,bir bütünden ayrılmış küçük bölüm,Ali ate a piece of cake.,Ali bir parça kek yedi.,2,,food-drink
 a2-plan,PLAN,P,STARTS,noun,yapılacak işin önceden belirlenmiş düzeni,"Do you have a plan, Mert?","Bir planın var mı, Mert?",2,,daily-life
-a2-until,UNTIL,U,STARTS,phrase,bir zamana kadar,Mert stayed until midnight.,Mert gece yarısına kadar kaldı.,2,,daily-life
+a2-until,UNTIL,U,STARTS,phrase,bir zamana kadar,Mert stayed until midnight.,Mert gece yarısına kadar kaldı.,2,,time-weather
 a2-large,LARGE,L,STARTS,adj,"ölçüsü büyük, geniş",We ordered a large pizza for six people.,Altı kişi için büyük bir pizza sipariş ettik.,2,,daily-life
 a2-shout,SHOUT,S,STARTS,verb,çok yüksek sesle bağırmak,"Don't shout, Ali.","Bağırma, Ali.",2,,daily-life

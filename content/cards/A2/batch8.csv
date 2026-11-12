@@ -2,7 +2,7 @@ id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
 a2-tail,TAIL,T,STARTS,noun,"hayvanın arkasında uzanan uzun uzuv, kuyruk",The dog wags its tail.,Köpek kuyruğunu sallıyor.,2,,animals
 a2-taste,TASTE,T,STARTS,verb,yemeğin tadına bakmak ya da belli bir tadı olmak,Taste the soup before you add salt.,Tuz eklemeden önce çorbanın tadına bak.,2,,food-drink
 a2-tasty,TASTY,T,STARTS,adj,"tadı güzel, lezzetli",The cake is very tasty.,Kek çok lezzetli.,2,,food-drink
-a2-thief,THIEF,T,STARTS,noun,başkasının malını çalan kişi,The thief ran away.,Hırsız kaçtı.,2,,daily-life
+a2-thief,THIEF,T,STARTS,noun,başkasının malını çalan kişi,The thief ran away.,Hırsız kaçtı.,2,,family-people
 a2-through,THROUGH,T,STARTS,phrase,bir şeyin bir ucundan öbür ucuna geçerek,We walked through the park.,Parkın içinden yürüdük.,3,,city-transport
 a2-throw,THROW,T,STARTS,verb,elindeki şeyi havaya doğru fırlatmak,Throw the ball to me.,Topu bana at.,2,,sports
 a2-thunder,THUNDER,T,STARTS,noun,şimşekten sonra gelen gök gürültüsü,I heard thunder last night.,Dün gece gök gürültüsü duydum.,3,,time-weather
@@ -69,5 +69,5 @@ a2-brake,BRAKE,B,STARTS,noun,aracı durdurmaya yarayan fren,He pressed the brake
 a2-block,BLOCK,B,STARTS,noun,"içinde çok sayıda daire olan büyük bina, blok",He lives in the next block.,Bir sonraki blokta oturuyor.,3,,city-transport
 a2-beginning,BEGINNING,B,STARTS,noun,"bir şeyin ilk kısmı, başlangıç",The film has a good beginning.,Filmin başlangıcı güzel.,3,,time-weather
 a2-elbow,ELBOW,B,CONTAINS,noun,"kolun ortasındaki eklem, dirsek",I broke my elbow.,Dirseğimi kırdım.,3,,body-health
-a2-robber,ROBBER,B,CONTAINS,noun,zorla ya da silahla soygun yapan kişi,The robber ran out of the bank.,Soyguncu bankadan dışarı koştu.,3,,daily-life
+a2-robber,ROBBER,B,CONTAINS,noun,zorla ya da silahla soygun yapan kişi,The robber ran out of the bank.,Soyguncu bankadan dışarı koştu.,3,,family-people
 a2-ribbon,RIBBON,B,CONTAINS,noun,"süs olarak kullanılan ince şerit kumaş, kurdele",She has a red ribbon in her hair.,Saçında kırmızı bir kurdele var.,2,,daily-life

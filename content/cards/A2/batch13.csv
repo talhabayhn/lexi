@@ -1,0 +1,7 @@
+id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
+a2-curly,CURLY,C,STARTS,adj,kıvır kıvır olan saç için,My sister has long curly hair.,Kız kardeşimin uzun kıvırcık saçları var.,3,,body-health
+a2-fit,FIT,F,STARTS,adj,spor yapan ve sağlığı yerinde olan,My uncle is very fit for his age.,Amcam yaşına göre çok formda.,3,,body-health
+a2-pie,PIE,E,CONTAINS,noun,içi meyve ya da etle dolu hamur işi,Grandma makes a delicious apple pie.,Büyükannem lezzetli bir elmalı turta yapar.,3,,food-drink
+a2-pop,POP,P,STARTS,noun,"gençlerin sevdiği, radyoda çok çalan müzik türü",She loves pop and dances at home.,Pop müziği sever ve evde dans eder.,2,,music
+a2-already,ALREADY,A,STARTS,adv,beklenenden önce olmuş bir şey için,I have already eaten lunch.,Öğle yemeğini çoktan yedim.,2,,time-weather
+a2-past,PAST,P,STARTS,noun,"şu andan önceki zaman, eski günler",My grandfather often talks about the past.,Dedem sık sık geçmişten bahseder.,3,,time-weather

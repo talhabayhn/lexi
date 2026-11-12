@@ -24,4 +24,4 @@ a2-visitor,VISITOR,V,STARTS,noun,bir yeri ziyarete gelen kişi,Every visitor mus
 a2-weight,WEIGHT,W,STARTS,noun,bir şeyin kaç kilo geldiği,What is the weight of this box?,Bu kutunun ağırlığı ne kadar?,2,,daily-life
 a2-fox,FOX,X,CONTAINS,noun,tilki,The fox runs very fast.,Tilki çok hızlı koşar.,2,,animals
 a2-yawn,YAWN,Y,STARTS,verb,uykumuz gelince ağzımızı açıp derin nefes almak,I always yawn in the morning.,Sabahları hep esnerim.,2,,body-health
-a2-lazy,LAZY,Z,CONTAINS,adj,tembel,Don't be lazy. Do your homework.,Tembellik yapma. Ödevini yap.,2,,daily-life
+a2-lazy,LAZY,Z,CONTAINS,adj,tembel,Don't be lazy. Do your homework.,Tembellik yapma. Ödevini yap.,2,,family-people

@@ -7,7 +7,7 @@ a2-nest,NEST,N,STARTS,noun,kuşun yumurtalarını koyduğu yuva,There are three 
 a2-net,NET,N,STARTS,noun,iplerden örülmüş ağ,The ball went into the net.,Top fileye girdi.,3,,sports
 a2-navy,NAVY,N,STARTS,noun,"bir ülkenin denizdeki askerî gücü, donanma",My grandfather served in the navy for years.,Dedem yıllarca donanmada görev yaptı.,3,,daily-life
 a2-neighbourhood,NEIGHBORHOOD,N,STARTS,noun,insanın yaşadığı mahalle,Our neighborhood has a small park and a library.,Mahallemizde küçük bir park ve bir kütüphane var.,3,,city-transport
-a2-officer,OFFICER,O,STARTS,noun,polis ya da orduda görevli yetkili kişi,A police officer stopped the car.,Bir polis memuru arabayı durdurdu.,3,,daily-life
+a2-officer,OFFICER,O,STARTS,noun,polis ya da orduda görevli yetkili kişi,A police officer stopped the car.,Bir polis memuru arabayı durdurdu.,3,,school-work
 a2-omelette,OMELETTE,O,STARTS,noun,"çırpılmış yumurtadan yapılan yemek, omlet",I made an omelette for breakfast.,Kahvaltı için omlet yaptım.,2,,food-drink
 a2-opera,OPERA,O,STARTS,noun,şarkıyla anlatılan büyük sahne gösterisi,We went to the opera in Rome.,Roma'da operaya gittik.,3,,music
 a2-popcorn,POPCORN,O,CONTAINS,noun,ısıtılınca patlayan mısır,We ate popcorn at the cinema.,Sinemada patlamış mısır yedik.,2,,food-drink
@@ -53,7 +53,7 @@ a2-teapot,TEAPOT,T,STARTS,noun,"içinde çay demlenen kap, demlik",The teapot is
 a2-trophy,TROPHY,T,STARTS,noun,yarışmayı kazananlara verilen kupa,Our team won the trophy.,Takımımız kupayı kazandı.,3,,sports
 a2-collection,COLLECTION,C,STARTS,noun,bir araya getirilmiş eşyalar topluluğu,He has a big stamp collection.,Büyük bir pul koleksiyonu var.,3,,daily-life
 a2-corridor,CORRIDOR,C,STARTS,noun,"odalar arasındaki dar geçit, koridor",Students wait in the corridor before class.,Öğrenciler dersten önce koridorda bekler.,3,,school-work
-a2-cheerful,CHEERFUL,C,STARTS,adj,"neşeli, keyfi yerinde",The cheerful waiter smiled at everyone in the cafe.,Neşeli garson kafedeki herkese gülümsedi.,3,,daily-life
+a2-cheerful,CHEERFUL,C,STARTS,adj,"neşeli, keyfi yerinde",The cheerful waiter smiled at everyone in the cafe.,Neşeli garson kafedeki herkese gülümsedi.,3,,family-people
 a2-gardener,GARDENER,G,STARTS,noun,"bahçe işleriyle uğraşan kişi, bahçıvan",The gardener waters the flowers.,Bahçıvan çiçekleri suluyor.,3,,school-work
 a2-coin,COIN,C,STARTS,noun,madenden yapılmış bozuk para,I found a coin on the street.,Sokakta bir bozuk para buldum.,2,,daily-life
 a2-bean,BEAN,B,STARTS,noun,"sebze olarak yenen küçük çekirdek, fasulye",I do not like green bean soup.,Yeşil fasulye çorbasını sevmem.,2,,food-drink

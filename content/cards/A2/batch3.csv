@@ -28,13 +28,13 @@ a2-argue,ARGUE,A,STARTS,verb,biriyle fikir ayrılığı yüzünden tartışmak,P
 a2-army,ARMY,A,STARTS,noun,"bir ülkenin askerî gücü, ordu",My uncle joined the army last year.,Amcam geçen yıl orduya katıldı.,3,,daily-life
 a2-article,ARTICLE,A,STARTS,noun,gazete ya da dergideki yazı,I read an article about robots.,Robotlar hakkında bir makale okudum.,3,,school-work
 a2-artist,ARTIST,A,STARTS,noun,resim ya da heykel gibi sanat eseri yapan kişi,The artist painted a blue horse.,Sanatçı mavi bir at resmi yaptı.,2,,school-work
-a2-asleep,ASLEEP,A,STARTS,adj,uyuyor durumda olan,The baby fell asleep in the car.,Bebek arabada uyuyakaldı.,2,,daily-life
+a2-asleep,ASLEEP,A,STARTS,adj,uyuyor durumda olan,The baby fell asleep in the car.,Bebek arabada uyuyakaldı.,2,,body-health
 a2-athlete,ATHLETE,A,STARTS,noun,spor yapan ya da yarışan kişi,The athlete trains every day.,Sporcu her gün antrenman yapıyor.,3,,sports
 a2-author,AUTHOR,A,STARTS,noun,kitap yazan kişi,The author lives in Paris.,Yazar Paris'te yaşıyor.,3,,school-work
 a2-average,AVERAGE,A,STARTS,adj,"ne çok iyi ne çok kötü olan, ortalama",The average age of the players is twelve.,Oyuncuların yaş ortalaması on iki.,4,,time-weather
 a2-awful,AWFUL,A,STARTS,adj,"çok kötü, berbat","The soup tasted awful, so I did not finish it.","Çorbanın tadı berbattı, bu yüzden bitirmedim.",3,,food-drink
 a2-above,ABOVE,A,STARTS,phrase,"bir şeyin üstünde, daha yukarıda",The picture is above the sofa.,Resim kanepenin üstünde.,2,,home
-a2-awake,AWAKE,A,STARTS,adj,"uyumayan, gözleri açık olan",The coffee kept me awake all night.,Kahve beni bütün gece uyanık tuttu.,3,,daily-life
+a2-awake,AWAKE,A,STARTS,adj,"uyumayan, gözleri açık olan",The coffee kept me awake all night.,Kahve beni bütün gece uyanık tuttu.,3,,body-health
 a2-actually,ACTUALLY,A,STARTS,adv,"gerçekte, aslında","Actually, I do not like fish.",Aslında balık sevmem.,4,,daily-life
 a2-appointment,APPOINTMENT,A,STARTS,noun,doktor gibi biriyle önceden ayarlanan görüşme,I have a doctor's appointment at ten.,Saat onda doktor randevum var.,3,,body-health
 a2-bake,BAKE,B,STARTS,verb,fırında pişirmek,I bake bread on Sundays.,Pazar günleri ekmek pişiririm.,2,,food-drink
@@ -52,7 +52,7 @@ a2-blow,BLOW,B,STARTS,verb,ağızdan hızla hava vermek,Blow gently on your soup
 a2-boil,BOIL,B,STARTS,verb,"kaynatmak, kaynar suda pişirmek",Boil the eggs for ten minutes.,Yumurtaları on dakika kaynat.,2,,food-drink
 a2-boss,BOSS,B,STARTS,noun,"patron, işyerinde emir veren kişi",Her boss gave everyone a day off.,Patronu herkese bir gün izin verdi.,3,,school-work
 a2-bottom,BOTTOM,B,STARTS,noun,bir şeyin en alt kısmı,The coins fell to the bottom of the well.,Bozuk paralar kuyunun dibine düştü.,3,,daily-life
-a2-brave,BRAVE,B,STARTS,adj,"korkusuz, cesur",The brave boy saved the cat.,Cesur çocuk kediyi kurtardı.,3,,daily-life
+a2-brave,BRAVE,B,STARTS,adj,"korkusuz, cesur",The brave boy saved the cat.,Cesur çocuk kediyi kurtardı.,3,,family-people
 a2-bright,BRIGHT,B,STARTS,adj,"çok ışık veren, parlak",The sun is bright today.,Güneş bugün parlak.,3,,time-weather
 a2-build,BUILD,B,STARTS,verb,"inşa etmek, yapmak",They will build a new bridge.,Yeni bir köprü yapacaklar.,3,,daily-life
 a2-burn,BURN,B,STARTS,verb,ateşte yanmak ya da yakmak,Watch out. Hot tea can burn you.,Dikkat et. Sıcak çay seni yakabilir.,3,,body-health
