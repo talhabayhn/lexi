@@ -83,8 +83,8 @@ public object WheelGenerator {
         val slots = ('A'..'Z').map { letter ->
             val own = byLetter[letter].orEmpty()
             val candidates = if (own.isNotEmpty() && own.all { it.id in recent }) {
-                // A category wheel passes the whole level, which always holds this letter; `own` only when no fallback map is
-                // passed (mixed and pack wheels).
+                // A category wheel passes the whole level, which always holds this letter; `own` only when no
+                // fallback map is passed (mixed and pack wheels).
                 fallback[letter] ?: own
             } else {
                 own
