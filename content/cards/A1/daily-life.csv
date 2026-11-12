@@ -1,5 +1,5 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
-a1-sleep,SLEEP,S,STARTS,verb,gözleri kapatıp dinlenmek,Babies sleep a lot.,Bebekler çok uyur.,1,,daily-life
+a1-sleep,SLEEP,S,STARTS,verb,gözleri kapatıp dinlenmek,Babies sleep a lot.,Bebekler çok uyur.,1,,body-health
 a1-walk,WALK,W,STARTS,verb,ayaklarla yavaşça ilerlemek,Let us walk slowly.,Yavaş yürüyelim.,1,,daily-life
 a1-play,PLAY,P,STARTS,verb,eğlenmek için bir oyuna katılmak,Do you play chess?,Satranç oynar mısın?,1,,daily-life
 a1-open,OPEN,O,STARTS,verb,kapalı olanı açık hale getirmek,Can you open this jar?,Bu kavanozu açabilir misin?,1,,daily-life
@@ -12,7 +12,7 @@ a1-very,VERY,V,STARTS,adv,sıfatın önüne gelip anlamı güçlendiren 'çok',T
 a1-use,USE,U,STARTS,verb,bir aletten iş görmek için yararlanmak,Can I use your charger?,Şarj aletini kullanabilir miyim?,1,,daily-life
 a1-idea,IDEA,I,STARTS,noun,aklımıza gelen düşünce,Selin thought of a clever idea for the project.,Selin proje için zekice bir fikir buldu.,1,,daily-life
 a1-good,GOOD,G,STARTS,adj,"kötü olmayan, hoşa giden",This is a good song.,Bu iyi bir şarkı.,1,,daily-life
-a1-next,NEXT,X,CONTAINS,adj,bir sonraki,Selin is next.,Sıra Selin'de.,2,,daily-life
+a1-next,NEXT,X,CONTAINS,adj,bir sonraki,Selin is next.,Sıra Selin'de.,2,,time-weather
 a1-jacket,JACKET,J,STARTS,noun,"ceket, mont",Mert's jacket is thick.,Mert'in ceketi kalın.,1,,daily-life
 a1-jeans,JEANS,J,STARTS,noun,kot pantolon,These jeans are too tight.,Bu kot çok dar.,1,,daily-life
 a1-shirt,SHIRT,S,STARTS,noun,üst gövdeye giyilen düğmeli giysi,His shirt is wet.,Gömleği ıslak.,1,,daily-life
@@ -23,21 +23,21 @@ a1-gift,GIFT,G,STARTS,noun,sevdiğimize verdiğimiz armağan,This is a gift for 
 a1-game,GAME,G,STARTS,noun,kuralları olan eğlence etkinliği,Mert and Ali finished the chess game quickly.,Mert ve Ali satranç oyununu hızlıca bitirdi.,1,,daily-life
 a1-internet,INTERNET,I,STARTS,noun,dünya çapında bilgisayar ağı,The internet is not working.,İnternet çalışmıyor.,1,,daily-life
 a1-video,VIDEO,V,STARTS,noun,hareketli görüntü kaydı,Let's see the video.,Videoyu izleyelim.,1,,daily-life
-a1-music,MUSIC,M,STARTS,noun,şarkı ve melodi sanatı,Ali loves music.,Ali müziği çok sever.,1,,daily-life
-a1-radio,RADIO,R,STARTS,noun,haber ve müzik dinlenen cihaz,The radio is noisy.,Radyo çok gürültülü.,1,,daily-life
+a1-music,MUSIC,M,STARTS,noun,şarkı ve melodi sanatı,Ali loves music.,Ali müziği çok sever.,1,,school-work
+a1-radio,RADIO,R,STARTS,noun,haber ve müzik dinlenen cihaz,The radio is noisy.,Radyo çok gürültülü.,1,,home
 a1-hello,HELLO,H,STARTS,phrase,biriyle karşılaşınca söylenen selam,Selin smiled and said hello to the neighbors.,Selin gülümsedi ve komşulara merhaba dedi.,1,,daily-life
 a1-into,INTO,I,STARTS,phrase,bir şeyin içine doğru,She stepped into the lift.,Asansöre bindi.,2,,daily-life
-a1-ocean,OCEAN,O,STARTS,noun,kıtaları birbirinden ayıran dev su kütlesi,The ocean is deep.,Okyanus derin.,1,,daily-life
+a1-ocean,OCEAN,O,STARTS,noun,kıtaları birbirinden ayıran dev su kütlesi,The ocean is deep.,Okyanus derin.,1,,city-transport
 a1-inside,INSIDE,I,STARTS,adv,"dışarıda değil, bir yerin iç kısmında","Thunder is loud, so the hens hide inside.","Gök gürültüsü çok, tavuklar içeride saklanıyor.",1,,daily-life
 a1-under,UNDER,U,STARTS,phrase,bir şeyin alt tarafında,The coin is under the bench.,Bozuk para bankın altında.,1,,daily-life
 a1-up,UP,U,STARTS,adv,aşağının tersi olan yön,"Hurry up, Ali.","Çabuk ol, Ali.",1,,daily-life
-a1-usually,USUALLY,U,STARTS,adv,"çoğu zaman, sık sık",Usually I have porridge.,Genellikle yulaf lapası yerim.,2,,daily-life
+a1-usually,USUALLY,U,STARTS,adv,"çoğu zaman, sık sık",Usually I have porridge.,Genellikle yulaf lapası yerim.,2,,time-weather
 a1-only,ONLY,O,STARTS,adv,"yalnızca, bundan başkası değil",I only have a few coins.,Sadece birkaç madeni param var.,1,,daily-life
 a1-sit,SIT,S,STARTS,verb,ayakta durmayı bırakıp sandalyeye yerleşmek,"Sit with me, Ali.","Benimle otur, Ali.",1,,daily-life
-a1-wash,WASH,W,STARTS,verb,suyla ve sabunla temizlemek,I wash the dishes while Selin dries them.,Ben bulaşıkları yıkarken Selin onları kurular.,1,,daily-life
+a1-wash,WASH,W,STARTS,verb,suyla ve sabunla temizlemek,I wash the dishes while Selin dries them.,Ben bulaşıkları yıkarken Selin onları kurular.,1,,body-health
 a1-love,LOVE,L,STARTS,verb,"sevmek, âşık olmak",I love you.,Seni seviyorum.,1,,daily-life
 a1-dance,DANCE,D,STARTS,verb,dans etmek,They dance at the festival.,Festivalde dans ederler.,1,,daily-life
-a1-beach,BEACH,B,STARTS,noun,"plaj, kumsal",Children build sandcastles on the beach.,Çocuklar kumsalda kumdan kaleler yapıyor.,1,,daily-life
+a1-beach,BEACH,B,STARTS,noun,"plaj, kumsal",Children build sandcastles on the beach.,Çocuklar kumsalda kumdan kaleler yapıyor.,1,,city-transport
 a1-name,NAME,N,STARTS,noun,"ad, isim",Selin glued a name tag to her lunchbox.,Selin beslenme çantasına bir isim etiketi yapıştırdı.,1,,daily-life
 a1-yes,YES,Y,STARTS,adv,"hayır sözünün tersi, onay","Yes, sure.","Evet, tabii.",1,,daily-life
 a1-grass,GRASS,G,STARTS,noun,"çimen, ot",Mert mows the grass on Sundays.,Mert pazar günleri çimenleri biçer.,1,,daily-life
@@ -47,28 +47,28 @@ a1-coat,COAT,C,STARTS,noun,kalın dış giysi,My coat is in the hall.,Paltom kor
 a1-skirt,SKIRT,S,STARTS,noun,belden aşağı giyilen kumaş giysi,She wore a pleated skirt and a blouse.,Pliseli bir etek ve bluz giydi.,1,,daily-life
 a1-phone,PHONE,P,STARTS,noun,uzaktakiyle konuşmaya yarayan cihaz,My phone rang.,Telefonum çaldı.,1,,daily-life
 a1-hobby,HOBBY,H,STARTS,noun,boş zamanda yapılan sevilen iş,Collecting stamps is Mert's hobby.,Pul biriktirmek Mert'in hobisi.,1,,daily-life
-a1-holiday,HOLIDAY,H,STARTS,noun,çalışmayıp dinlendiğimiz özel günler,We spent our Easter holiday at the seaside.,Paskalya tatilimizi deniz kenarında geçirdik.,1,,daily-life
-a1-bike,BIKE,B,STARTS,noun,iki tekerlekli pedallı taşıt,Tom rides his bike to the bakery.,Tom bisikletiyle fırına gider.,1,,daily-life
+a1-holiday,HOLIDAY,H,STARTS,noun,çalışmayıp dinlendiğimiz özel günler,We spent our Easter holiday at the seaside.,Paskalya tatilimizi deniz kenarında geçirdik.,1,,time-weather
+a1-bike,BIKE,B,STARTS,noun,iki tekerlekli pedallı taşıt,Tom rides his bike to the bakery.,Tom bisikletiyle fırına gider.,1,,city-transport
 a1-email,EMAIL,E,STARTS,noun,elektronik posta,Mert wrote an email to his boss.,Mert patronuna elektronik posta yazdı.,1,,daily-life
-a1-colour,COLOR,C,STARTS,noun,"gökkuşağında görülen kırmızı, mavi gibi özellik",A chameleon changes its color to hide.,Bukalemun saklanmak için renk değiştirir.,1,,daily-life
+a1-colour,COLOR,C,STARTS,noun,"gökkuşağında görülen kırmızı, mavi gibi özellik",A chameleon changes its color to hide.,Bukalemun saklanmak için renk değiştirir.,1,,colors-numbers
 a1-guitar,GUITAR,G,STARTS,noun,altı telli çalgı,Mert strummed his guitar by the campfire.,Mert kamp ateşinin başında gitar çaldı.,1,,daily-life
 a1-movie,MOVIE,M,STARTS,noun,sinema filmi,The movie is a comedy.,Film bir komedi.,1,,daily-life
-a1-travel,TRAVEL,T,STARTS,verb,uzak yerlere yolculuk etmek,We travel a lot.,Çok seyahat ederiz.,1,,daily-life
+a1-travel,TRAVEL,T,STARTS,verb,uzak yerlere yolculuk etmek,We travel a lot.,Çok seyahat ederiz.,1,,city-transport
 a1-sing,SING,S,STARTS,verb,şarkı söylemek,She can sing in a choir.,Korada şarkı söyleyebilir.,1,,daily-life
 a1-swim,SWIM,S,STARTS,verb,suda kollarla ilerlemek,Ducks can swim in the pond.,Ördekler gölette yüzebilir.,1,,daily-life
-a1-write,WRITE,W,STARTS,verb,kalemle harfleri kâğıda dökmek,"Write a poem, Selin.","Bir şiir yaz, Selin.",1,,daily-life
+a1-write,WRITE,W,STARTS,verb,kalemle harfleri kâğıda dökmek,"Write a poem, Selin.","Bir şiir yaz, Selin.",1,,school-work
 a1-wear,WEAR,W,STARTS,verb,giysiyi üzerine geçirip taşımak,Do you wear contact lenses?,Kontakt lens takıyor musun?,1,,daily-life
 a1-wait,WAIT,W,STARTS,verb,biri gelene kadar yerinde durmak,Wait for me!,Beni bekle!,1,,daily-life
-a1-learn,LEARN,L,STARTS,verb,yeni bilgiyi aklına yerleştirmek,Children learn quickly.,Çocuklar hızlı öğrenir.,1,,daily-life
+a1-learn,LEARN,L,STARTS,verb,yeni bilgiyi aklına yerleştirmek,Children learn quickly.,Çocuklar hızlı öğrenir.,1,,school-work
 a1-know,KNOW,K,STARTS,verb,bir konuda bilgi sahibi olmak,I do not know the poem by heart yet.,Şiiri henüz ezbere bilmiyorum.,1,,daily-life
 a1-go,GO,G,STARTS,verb,bir yerden başka yere hareket etmek,Let us go!,Hadi gidelim!,1,,daily-life
 a1-beautiful,BEAUTIFUL,B,STARTS,adj,"çok güzel, göz alıcı",The sunset at the bay was beautiful.,Koydaki gün batımı çok güzeldi.,1,,daily-life
 a1-difficult,DIFFICULT,D,STARTS,adj,kolay olmayan,This puzzle is too difficult for me.,Bu bulmaca benim için fazla zor.,2,,daily-life
 a1-easy,EASY,E,STARTS,adj,zor olmayan,"That quiz was easy, and Selin finished in minutes.",Sınav kolaydı ve Selin dakikalar içinde bitirdi.,1,,daily-life
 a1-wrong,WRONG,W,STARTS,adj,"doğru olmayan, hatalı",It is the wrong way.,Bu yanlış yol.,1,,daily-life
-a1-lake,LAKE,L,STARTS,noun,etrafı karayla çevrili büyük su,The lake is calm.,Göl sakin.,1,,daily-life
-a1-mountain,MOUNTAIN,M,STARTS,noun,çok yüksek kayalık yer,The mountain is steep.,Dağ dik.,1,,daily-life
-a1-sea,SEA,S,STARTS,noun,kıyısında tatil yaptığımız tuzlu su,The sea is calm.,Deniz sakin.,1,,daily-life
-a1-farm,FARM,F,STARTS,noun,hayvan ve ekin yetiştirilen arazi,The tractor is parked beside the barn on the farm.,Traktör çiftlikteki ahırın yanında duruyor.,1,,daily-life
+a1-lake,LAKE,L,STARTS,noun,etrafı karayla çevrili büyük su,The lake is calm.,Göl sakin.,1,,city-transport
+a1-mountain,MOUNTAIN,M,STARTS,noun,çok yüksek kayalık yer,The mountain is steep.,Dağ dik.,1,,city-transport
+a1-sea,SEA,S,STARTS,noun,kıyısında tatil yaptığımız tuzlu su,The sea is calm.,Deniz sakin.,1,,city-transport
+a1-farm,FARM,F,STARTS,noun,hayvan ve ekin yetiştirilen arazi,The tractor is parked beside the barn on the farm.,Traktör çiftlikteki ahırın yanında duruyor.,1,,city-transport
 a1-short,SHORT,S,STARTS,adj,boyu veya süresi az,The poem is short.,Şiir kısa.,1,,daily-life
 a1-prize,PRIZE,Z,CONTAINS,noun,yarışmayı kazanana verilen şey,The winner gets a prize.,Kazanan bir ödül alır.,2,,daily-life

@@ -14,13 +14,13 @@ a1-cinema,CINEMA,C,STARTS,noun,film izlemeye gidilen salon,We went to the cinema
 a1-camera,CAMERA,C,STARTS,noun,fotoğraf çeken alet,Tourists photographed the castle with a camera.,Turistler kaleyi fotoğraf makinesiyle çekti.,2,,daily-life
 a1-clothes,CLOTHES,C,STARTS,noun,insanların üzerine giydiği şeyler,She hangs her wet clothes on the line.,Islak giysilerini ipe asıyor.,2,,daily-life
 a1-carrot,CARROT,C,STARTS,noun,turuncu renkli kök sebze,Ayşe sliced a carrot carefully.,Ayşe havucu dikkatle dilimledi.,2,,food-drink
-a1-draw,DRAW,D,STARTS,verb,kalemle resim yapmak,She likes to draw flowers.,Çiçek çizmeyi sever.,1,,daily-life
-a1-drive,DRIVE,D,STARTS,verb,araç kullanmak,He can drive a truck.,Kamyon kullanabilir.,2,,daily-life
+a1-draw,DRAW,D,STARTS,verb,kalemle resim yapmak,She likes to draw flowers.,Çiçek çizmeyi sever.,1,,school-work
+a1-drive,DRIVE,D,STARTS,verb,araç kullanmak,He can drive a truck.,Kamyon kullanabilir.,2,,city-transport
 a1-dirty,DIRTY,D,STARTS,adj,temiz olmayan,His socks are dirty from the muddy path.,Çorapları çamurlu patikadan dolayı kirli.,1,,daily-life
 a1-dark,DARK,D,STARTS,adj,ışığı olmayan,It is dark and I cannot see anything.,Karanlık ve hiçbir şey göremiyorum.,1,,daily-life
 a1-delicious,DELICIOUS,D,STARTS,adj,tadı çok güzel,The baklava was crispy and delicious.,Baklava çıtır çıtır ve lezzetliydi.,2,,food-drink
 a1-dictionary,DICTIONARY,D,STARTS,noun,kelimelerin anlamını bulduğun kitap,I checked the meaning in a dictionary.,Anlamına sözlükten baktım.,2,,school-work
-a1-downstairs,DOWNSTAIRS,D,STARTS,adv,alt katta,"Grandma sleeps downstairs, since the steps are steep.",Büyükannem alt katta uyuyor çünkü merdivenler dik.,3,,home
+a1-downstairs,DOWNSTAIRS,D,STARTS,adv,alt katta,"Mr. Demir sleeps downstairs, since the steps are steep.",Bay Demir alt katta uyuyor çünkü merdivenler dik.,3,,home
 a1-enjoy,ENJOY,E,STARTS,verb,bir şeyden zevk almak,Kids enjoy riding roller coasters at the fair.,Çocuklar lunaparkta hız trenine binmekten keyif alır.,2,,daily-life
 a1-exam,EXAM,E,STARTS,noun,okulda bilgiyi ölçen yazılı iş,Mert revised for the final exam with his notes.,Mert notlarıyla final sınavına çalıştı.,2,,school-work
 a1-exercise,EXERCISE,E,STARTS,noun,sağlık için yapılan spor hareketleri,Exercise makes you strong.,Egzersiz seni güçlendirir.,2,,body-health
@@ -30,7 +30,7 @@ a1-flower,FLOWER,F,STARTS,noun,güzel kokan renkli bitki parçası,The flower sm
 a1-fly,FLY,F,STARTS,verb,kanatla ya da uçakla havada gitmek,Birds can fly.,Kuşlar uçabilir.,1,,daily-life
 a1-football,FOOTBALL,F,STARTS,noun,ayakla oynanan takım sporu,Football is popular in my area.,Futbol bölgemde çok sevilir.,1,,daily-life
 a1-finish,FINISH,F,STARTS,verb,"bitirmek, sona ermek",Ali can finish the puzzle.,Ali bulmacayı bitirebilir.,2,,daily-life
-a1-forest,FOREST,F,STARTS,noun,ağaçlarla kaplı geniş alan,We walked in the forest.,Ormanda yürüdük.,2,,daily-life
+a1-forest,FOREST,F,STARTS,noun,ağaçlarla kaplı geniş alan,We walked in the forest.,Ormanda yürüdük.,2,,city-transport
 a1-get,GET,G,STARTS,verb,"elde etmek, almak",Did you get my parcel?,Paketimi aldın mı?,1,,daily-life
 a1-give,GIVE,G,STARTS,verb,bir şeyi başkasına vermek,I will give Selin a surprise.,Selin'e bir sürpriz vereceğim.,1,,daily-life
 a1-goodbye,GOODBYE,G,STARTS,phrase,ayrılırken söylenen söz,Selin hugged her grandpa goodbye at the harbor.,Selin büyükbabasına limanda sarılıp veda etti.,1,,daily-life
@@ -53,10 +53,10 @@ a1-married,MARRIED,M,STARTS,adj,evlenmiş olan,Ali and Selin got married in a lo
 a1-need,NEED,N,STARTS,verb,ihtiyaç duymak,Plants need sunlight.,Bitkilerin güneş ışığına ihtiyacı var.,1,,daily-life
 a1-newspaper,NEWSPAPER,N,STARTS,noun,her gün çıkan haber gazetesi,The newspaper is on the shelf.,Gazete rafta.,2,,daily-life
 a1-notebook,NOTEBOOK,N,STARTS,noun,not tutulan defter,Her notebook has lovely drawings.,Defterinde güzel çizimler var.,2,,school-work
-a1-never,NEVER,N,STARTS,adv,hiçbir zaman,"Ali never eats onions, but he likes tomatoes.",Ali hiçbir zaman soğan yemez ama domatesi sever.,2,,daily-life
-a1-often,OFTEN,O,STARTS,adv,sık sık,She often calls me.,Beni sık sık arar.,2,,daily-life
+a1-never,NEVER,N,STARTS,adv,hiçbir zaman,"Ali never eats onions, but he likes tomatoes.",Ali hiçbir zaman soğan yemez ama domatesi sever.,2,,time-weather
+a1-often,OFTEN,O,STARTS,adv,sık sık,She often calls me.,Beni sık sık arar.,2,,time-weather
 a1-other,OTHER,O,STARTS,adj,"diğer, öteki",I lost my other earring.,Diğer küpemi kaybettim.,2,,daily-life
-a1-picture,PICTURE,P,STARTS,noun,boya ya da kalemle yapılan resim,That picture is lovely.,Şu resim çok güzel.,2,,daily-life
+a1-picture,PICTURE,P,STARTS,noun,boya ya da kalemle yapılan resim,That picture is lovely.,Şu resim çok güzel.,2,,home
 a1-plane,PLANE,P,STARTS,noun,havalimanından kalkan taşıt,The plane is landing.,Uçak iniyor.,1,,city-transport
 a1-paper,PAPER,P,STARTS,noun,üzerine yazı yazılan ince yaprak,Do you have a sheet of paper?,Elinde bir yaprak kâğıt var mı?,1,,school-work
 a1-pool,POOL,P,STARTS,noun,içinde yüzülen su dolu çukur,The pool is deep.,Havuz derin.,2,,city-transport
@@ -72,13 +72,13 @@ a1-roof,ROOF,R,STARTS,noun,binanın en üstündeki örtü,A pigeon sits on the r
 a1-speak,SPEAK,S,STARTS,verb,dil kullanarak konuşmak,I speak some Arabic.,Biraz Arapça konuşurum.,1,,daily-life
 a1-slow,SLOW,S,STARTS,adj,hızlı olmayan,"The ferry is slow, but the trip is relaxing.",Vapur yavaş ama yolculuk rahatlatıcı.,1,,daily-life
 a1-sport,SPORT,S,STARTS,noun,beden gücüyle yapılan yarışma oyunu,Rugby is a popular sport.,Ragbi popüler bir spordur.,2,,daily-life
-a1-tired,TIRED,T,STARTS,adj,dinlenmeye ihtiyacı olan,They are tired from the trip.,Geziden sonra yorgunlar.,1,,daily-life
+a1-tired,TIRED,T,STARTS,adj,dinlenmeye ihtiyacı olan,They are tired from the trip.,Geziden sonra yorgunlar.,1,,body-health
 a1-think,THINK,T,STARTS,verb,aklından bir şey geçirmek,"Do you think so, Selin?","Sen de öyle mi düşünüyorsun, Selin?",2,,daily-life
 a1-toilet,TOILET,T,STARTS,noun,klozet ve lavabo olan küçük yer,Is there a toilet in this mall?,Bu alışveriş merkezinde tuvalet var mı?,2,,home
 a1-ugly,UGLY,U,STARTS,adj,görünüşü hoş olmayan,The monster is ugly.,Canavar çirkin.,2,,daily-life
 a1-useful,USEFUL,U,STARTS,adj,işe yarayan,A calculator is useful for big numbers.,Hesap makinesi büyük sayılar için işe yarar.,2,,daily-life
 a1-upstairs,UPSTAIRS,U,STARTS,adv,üst katta,The bedrooms are upstairs.,Yatak odaları üst katta.,3,,home
-a1-warm,WARM,W,STARTS,adj,ne soğuk ne de çok sıcak,This jumper is warm.,Bu kazak sıcak tutuyor.,2,,daily-life
+a1-warm,WARM,W,STARTS,adj,ne soğuk ne de çok sıcak,This jumper is warm.,Bu kazak sıcak tutuyor.,2,,time-weather
 a1-watch,WATCH,W,STARTS,verb,ilgiyle izlemek,They watch cartoons.,Çizgi film izlerler.,1,,daily-life
 a1-weekend,WEEKEND,W,STARTS,noun,cumartesi ve pazar günleri,Ali plays chess at the weekend.,Ali hafta sonu satranç oynuyor.,2,,time-weather
 a1-melon,MELON,M,STARTS,noun,"yazın yenen büyük, sulu meyve",This melon is juicy.,Bu kavun sulu.,2,,food-drink

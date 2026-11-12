@@ -28,3 +28,5 @@ a1-parents,PARENTS,P,STARTS,noun,anne ve baba,My parents are in Izmir.,Anne baba
 a1-husband,HUSBAND,H,STARTS,noun,evli kadının eşi,Her husband is a baker.,Kocası fırıncı.,1,,family-people
 a1-people,PEOPLE,P,STARTS,noun,bir araya gelen çok sayıda kişi,Lots of people are waiting.,Bir sürü insan bekliyor.,1,,family-people
 a1-son,SON,S,STARTS,noun,erkek evlat,Our son is shy.,Oğlumuz utangaç.,1,,family-people
+a1-grandma,GRANDMA,G,STARTS,noun,annenin veya babanın annesi,My grandma tells long stories.,Büyükannem uzun hikâyeler anlatır.,1,,family-people
+a1-mum,MUM,M,STARTS,noun,anneye kısaca seslenme biçimi,My mum cooks nicely.,Annem güzel yemek yapar.,1,,family-people

@@ -11,7 +11,7 @@ a1-look,LOOK,L,STARTS,verb,gözünü bir yöne çevirmek,"Look, it is snowing!",
 a1-outside,OUTSIDE,O,STARTS,adv,binanın dışında,The cats rest outside.,Kediler dışarıda dinleniyor.,2,,daily-life
 a1-again,AGAIN,A,STARTS,adv,bir kez daha,Selin missed the ferry again.,Selin vapuru bir kez daha kaçırdı.,2,,daily-life
 a1-also,ALSO,A,STARTS,adv,bunun yanında,Ali plays the drums and also writes songs.,"Ali davul çalar, bunun yanında şarkı da yazar.",2,,daily-life
-a1-birthday,BIRTHDAY,B,STARTS,noun,doğduğun günün her yılki kutlaması,Selin blew out the candles on her birthday.,Selin doğum gününde mumları üfledi.,1,,daily-life
+a1-birthday,BIRTHDAY,B,STARTS,noun,doğduğun günün her yılki kutlaması,Selin blew out the candles on her birthday.,Selin doğum gününde mumları üfledi.,1,,time-weather
 a1-boring,BORING,B,STARTS,adj,insanı sıkan,The trip was so boring that I almost fell asleep.,Gezi o kadar sıkıcıydı ki neredeyse uyuyakalacaktım.,2,,daily-life
 a1-cheap,CHEAP,C,STARTS,adj,fiyatı düşük,"These pants are cheap, just a few dollars.","Bu pantolon ucuz, sadece birkaç dolar.",1,,daily-life
 a1-country,COUNTRY,C,STARTS,noun,sınırları ve hükûmeti olan toprak parçası,This country has lovely beaches.,Bu ülkenin güzel plajları var.,2,,city-transport
@@ -40,7 +40,7 @@ a1-talk,TALK,T,STARTS,verb,biriyle sohbet etmek,We talk for hours.,Saatlerce soh
 a1-together,TOGETHER,T,STARTS,adv,"yalnız olmadan, bir arada",We practice together.,Birlikte pratik yapıyoruz.,2,,daily-life
 a1-try,TRY,T,STARTS,verb,bir şeyi denemek,Can I try it on?,Bunu deneyebilir miyim?,1,,daily-life
 a1-welcome,WELCOME,W,STARTS,phrase,gelen birini karşılarken söylenen söz,Welcome to İzmir!,İzmir'e hoş geldin!,1,,daily-life
-a1-world,WORLD,W,STARTS,noun,yeryüzü ve üzerindeki her şey,She wants to see the world.,Dünyayı görmek istiyor.,2,,daily-life
+a1-world,WORLD,W,STARTS,noun,yeryüzü ve üzerindeki her şey,She wants to see the world.,Dünyayı görmek istiyor.,2,,city-transport
 a1-excuse-me,EXCUSE ME,X,CONTAINS,phrase,dikkat çekerken söylenen kibar söz,"Excuse me, is this seat taken?","Afedersiniz, bu koltuk dolu mu?",2,,daily-life
 a1-favourite,FAVORITE,F,STARTS,adj,en çok sevilen,That is my favorite song.,Bu benim en sevdiğim şarkı.,2,,daily-life
 a1-sheep,SHEEP,S,STARTS,noun,yünü için yetiştirilen çiftlik hayvanı,The sheep are in the field.,Koyunlar tarlada.,1,,animals
@@ -85,7 +85,7 @@ a1-sad,SAD,S,STARTS,adj,keyfi kaçmış,Ali looks sad.,Ali üzgün görünüyor.
 a1-thirsty,THIRSTY,T,STARTS,adj,su içmek isteyen,Are you thirsty?,Susadın mı?,1,,food-drink
 a1-bring,BRING,B,STARTS,verb,bir şeyi bulunduğun yere getirmek,Mert will bring snacks to the barbecue.,Mert barbekü partisine atıştırmalık getirecek.,2,,daily-life
 a1-word,WORD,W,STARTS,noun,anlamı olan harf dizisi,Selin knows this word.,Selin bu sözcüğü biliyor.,1,,school-work
-a1-scarf,SCARF,S,STARTS,noun,boyna sarılan uzun kumaş,My grandma made this scarf.,Büyükannem bu atkıyı yaptı.,1,,daily-life
+a1-scarf,SCARF,S,STARTS,noun,boyna sarılan uzun kumaş,Ayşe made this scarf.,Ayşe bu atkıyı yaptı.,1,,daily-life
 a1-sock,SOCK,S,STARTS,noun,ayağa ayakkabıdan önce giyilen yumuşak kumaş,There is a hole in my sock.,Çorabımda bir delik var.,1,,daily-life
 a1-dentist,DENTIST,D,STARTS,noun,dişleri tedavi eden kişi,The dentist looks at my teeth.,Diş hekimi dişlerime bakıyor.,2,,body-health
 a1-pilot,PILOT,P,STARTS,noun,uçağı kullanan kişi,The pilot speaks to the passengers.,Pilot yolcularla konuşuyor.,2,,school-work

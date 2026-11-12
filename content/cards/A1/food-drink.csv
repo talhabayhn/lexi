@@ -5,7 +5,7 @@ a1-rice,RICE,R,STARTS,noun,"pirinç, pilav",Rice is a tasty side.,Pilav lezzetli
 a1-onion,ONION,O,STARTS,noun,kesince gözümüzü yaşartan sebze,Peel the onion.,Soğanı soy.,2,,food-drink
 a1-vegetable,VEGETABLE,V,STARTS,noun,ıspanak ve havuç gibi bitkisel yiyecek,Spinach is a vegetable.,Ispanak bir sebzedir.,3,,food-drink
 a1-lunch,LUNCH,L,STARTS,noun,öğle yemeği,We have lunch outdoors.,Öğle yemeğini açık havada yeriz.,1,,food-drink
-a1-chicken,CHICKEN,C,STARTS,noun,"yumurtlayan, tüylü çiftlik kuşu",Grandma roasted a chicken with potatoes.,Büyükannem patateslerle birlikte tavuk fırınladı.,1,,food-drink
+a1-chicken,CHICKEN,C,STARTS,noun,"yumurtlayan, tüylü çiftlik kuşu",Ayşe roasted a chicken with potatoes.,Ayşe patateslerle birlikte tavuk fırınladı.,1,,food-drink
 a1-soup,SOUP,S,STARTS,noun,kaşıkla içilen sıcak sulu yemek,This soup is salty.,Bu çorba tuzlu.,1,,food-drink
 a1-dinner,DINNER,D,STARTS,noun,akşam yemeği,We lit candles for a romantic dinner.,Romantik bir akşam yemeği için mum yaktık.,1,,food-drink
 a1-water,WATER,W,STARTS,noun,"musluktan akan, susuzluğu gideren sıvı",Can I have some water?,Biraz su alabilir miyim?,1,,food-drink
@@ -22,7 +22,7 @@ a1-tea,TEA,T,STARTS,noun,demlenip bardakta içilen sıcak içecek,Ali pours the 
 a1-tomato,TOMATO,T,STARTS,noun,salatada kullanılan kırmızı sulu sebze,Slice the tomato.,Domatesi dilimle.,1,,food-drink
 a1-cup,CUP,C,STARTS,noun,sıcak içecek içtiğimiz küçük kap,Can I have a cup?,Bir fincan alabilir miyim?,1,,food-drink
 a1-cook,COOK,C,STARTS,verb,yiyeceği ateşte hazır hale getirmek,"My mom likes to cook, and her pies are tasty.",Annem pişirmeyi sever ve turtaları lezzetli.,1,,food-drink
-a1-jam,JAM,J,STARTS,noun,meyveden yapılıp ekmeğe sürülen tatlı,Grandma makes plum jam.,Anneannem erik reçeli yapar.,1,,food-drink
+a1-jam,JAM,J,STARTS,noun,meyveden yapılıp ekmeğe sürülen tatlı,Ayşe makes plum jam.,Ayşe erik reçeli yapar.,1,,food-drink
 a1-eat,EAT,E,STARTS,verb,yemek yemek,"Let us eat, Ayşe.","Yemek yiyelim, Ayşe.",1,,food-drink
 a1-breakfast,BREAKFAST,B,STARTS,noun,sabah yemeği,Pancakes and cereal are popular for breakfast.,Krep ve gevrek sabah yemeği olarak popüler.,1,,food-drink
 a1-butter,BUTTER,B,STARTS,noun,sütten yapılan sürülebilir yağ,Melt the butter in a frying pan.,Tereyağını tavada eritin.,1,,food-drink
@@ -33,3 +33,10 @@ a1-salt,SALT,S,STARTS,noun,yemeğe lezzet veren beyaz tanecik,Fries taste better
 a1-restaurant,RESTAURANT,R,STARTS,noun,dışarıda yemek yenen yer,This restaurant is closed.,Bu restoran kapalı.,1,,food-drink
 a1-fork,FORK,F,STARTS,noun,yemek yemek için çatal,Mert ate the pancakes with a fork.,Mert krepleri çatalla yedi.,1,,food-drink
 a1-spoon,SPOON,S,STARTS,noun,çorbayı ağza götüren çukur araç,A spoon is in the drawer.,Bir kaşık çekmecede.,1,,food-drink
+a1-berry,BERRY,B,STARTS,noun,çalıda yetişen küçük yuvarlak meyve,He picked a berry from the bush.,Çalıdan bir yemiş topladı.,2,,food-drink
+a1-corn,CORN,C,STARTS,noun,"sarı taneli, koçanda yetişen bitki",We grill corn at the barbecue.,Mangalda mısır ızgara yaparız.,2,,food-drink
+a1-mango,MANGO,M,STARTS,noun,"tropik bölgelerde yetişen sarı, sulu meyve",This mango is juicy.,Bu mango sulu.,2,,food-drink
+a1-peanut,PEANUT,P,STARTS,noun,toprak altında yetişen kuruyemiş,He ate a peanut.,O bir yer fıstığı yedi.,2,,food-drink
+a1-roll,ROLL,R,STARTS,noun,küçük yuvarlak ekmek,He bought a fresh roll.,Taze bir sandviç ekmeği aldı.,2,,food-drink
+a1-soda,SODA,S,STARTS,noun,gazlı ve şekerli içecek,She opened a can of soda.,Bir kutu gazoz açtı.,2,,food-drink
+a1-steak,STEAK,S,STARTS,noun,ızgarada pişen kalın et dilimi,He ordered a steak.,O bir biftek sipariş etti.,2,,food-drink

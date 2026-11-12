@@ -20,3 +20,5 @@ a1-shower,SHOWER,S,STARTS,noun,akan suyun altında yıkanma,I have a shower dail
 a1-bath,BATH,B,STARTS,noun,küvette yıkanma,Mara fills the tub and takes a relaxing bath.,Mara küveti doldurur ve rahatlatıcı bir banyo yapar.,1,,home
 a1-fridge,FRIDGE,F,STARTS,noun,yiyecekleri soğuk tutan dolap,Mert stored the leftovers in the fridge.,Mert artık yemekleri buzdolabına kaldırdı.,1,,home
 a1-clock,CLOCK,C,STARTS,noun,saati gösteren duvar aleti,The clock is on the shelf.,Saat rafta.,1,,home
+a1-heater,HEATER,H,STARTS,noun,odayı ısıtan cihaz,The heater is broken.,Isıtıcı bozuk.,2,,home
+a1-mat,MAT,M,STARTS,noun,kapının önüne serilen küçük paspas,Wipe your shoes on the mat.,Ayakkabılarını paspasa sil.,2,,home

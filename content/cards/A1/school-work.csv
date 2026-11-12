@@ -19,3 +19,4 @@ a1-class,CLASS,C,STARTS,noun,öğrencilerin oluşturduğu sınıf topluluğu,Our
 a1-university,UNIVERSITY,U,STARTS,noun,liseden sonra gidilen okul,She studies at university.,Üniversitede okuyor.,1,,school-work
 a1-understand,UNDERSTAND,U,STARTS,verb,söylenenin anlamını kafada kavramak,I do not understand these instructions.,Bu talimatları anlayamıyorum.,1,,school-work
 a1-homework,HOMEWORK,H,STARTS,noun,evde yapılan ödev,Mom checked Ali's homework and signed it.,Annem Ali'nin ödevini kontrol edip imzaladı.,1,,school-work
+a1-blackboard,BLACKBOARD,B,STARTS,noun,öğretmenin tebeşirle yazı yazdığı tahta,The blackboard is dusty.,Karatahta tozlu.,2,,school-work

@@ -1,12 +1,12 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
-a1-ago,AGO,A,STARTS,adv,"şimdiden geriye doğru, önce",Ayşe arrived a few minutes ago.,Ayşe birkaç dakika önce geldi.,2,,daily-life
+a1-ago,AGO,A,STARTS,adv,"şimdiden geriye doğru, önce",Ayşe arrived a few minutes ago.,Ayşe birkaç dakika önce geldi.,2,,time-weather
 a1-band,BAND,B,STARTS,noun,birlikte müzik çalan grup,The band played for hours.,Grup saatlerce çaldı.,2,,daily-life
 a1-born,BORN,B,STARTS,adj,"dünyaya gelmiş, doğmuş",Ali was born in Izmir.,Ali İzmir'de doğdu.,2,,daily-life
 a1-brush,BRUSH,B,STARTS,noun,boyamak veya temizlemek için kıllı araç,The brush is in the drawer.,Fırça çekmecede.,2,,daily-life
 a1-bee,BEE,B,STARTS,noun,bal yapan sarı siyah çizgili böcek,A bee stung Ali.,Ali'yi bir arı soktu.,1,,animals
 a1-break,BREAK,B,STARTS,verb,bir şeyi parçalayıp kırmak,Do not break the vase.,Vazoyu kırma.,2,,daily-life
 a1-call,CALL,C,STARTS,verb,birini telefonla aramak,Ali must call Ayşe.,Ali'nin Ayşe'yi araması gerek.,1,,daily-life
-a1-christmas,CHRISTMAS,C,STARTS,noun,25 Aralık'ta kutlanan Hristiyan bayramı,They exchange presents at Christmas.,Noel'de hediyeleşirler.,2,,daily-life
+a1-christmas,CHRISTMAS,C,STARTS,noun,25 Aralık'ta kutlanan Hristiyan bayramı,They exchange presents at Christmas.,Noel'de hediyeleşirler.,2,,time-weather
 a1-carpet,CARPET,C,STARTS,noun,yer döşemesini kaplayan kalın örtü,Mert vacuums the carpet on Saturdays.,Mert cumartesileri halıyı süpürür.,1,,home
 a1-cupboard,CUPBOARD,C,STARTS,noun,içine tabak ve yiyecek konan dolap,The plates are in the cupboard.,Tabaklar dolapta.,2,,home
 a1-curtain,CURTAIN,C,STARTS,noun,pencereyi örten kumaş,Selin washed the curtain.,Selin perdeyi yıkadı.,1,,home
@@ -18,15 +18,15 @@ a1-cream,CREAM,C,STARTS,noun,sütün yağlı beyaz üst kısmı,Ayşe whipped so
 a1-date,DATE,D,STARTS,noun,"gün, ay ve yıl bilgisi",Ali forgot the date.,Ali tarihi unuttu.,2,,time-weather
 a1-dear,DEAR,D,STARTS,adj,mektupta hitap başında kullanılan sevgili,"Dear Ali, we arrived safely.","Sevgili Ali, sağ salim vardık.",2,,daily-life
 a1-dolphin,DOLPHIN,D,STARTS,noun,denizde yaşayan zeki ve sevimli memeli,A dolphin swam beside us.,Bir yunus yanımızda yüzdü.,2,,animals
-a1-england,ENGLAND,E,STARTS,noun,başkenti Londra olan ülke,Ali studied in England.,Ali İngiltere'de okudu.,2,,daily-life
+a1-england,ENGLAND,E,STARTS,noun,başkenti Londra olan ülke,Ali studied in England.,Ali İngiltere'de okudu.,2,,city-transport
 a1-every,EVERY,E,STARTS,adj,tek tek hepsi; her bir,Every lamb is cute.,Her kuzu sevimli.,2,,daily-life
 a1-eighth,EIGHTH,E,STARTS,adj,sekizinci,Her seat is in the eighth row.,Koltuğu sekizinci sırada.,2,,colors-numbers
 a1-friendly,FRIENDLY,F,STARTS,adj,"sıcakkanlı, cana yakın",The shopkeeper greets us with a friendly wave.,Dükkâncı bizi cana yakın bir el sallamayla karşılıyor.,2,,family-people
 a1-fall,FALL,F,STARTS,verb,yukarıdan aşağıya düşmek,"Be careful, or you will fall.","Dikkat et, yoksa düşeceksin.",2,,daily-life
-a1-foggy,FOGGY,F,STARTS,adj,sisin çöktüğü,It was foggy at the port.,Limanda hava sisliydi.,2,,time-weather
+a1-foggy,FOGGY,F,STARTS,adj,sisin çöktüğü,It was foggy at the harbor.,Limanda hava sisliydi.,2,,time-weather
 a1-fourth,FOURTH,F,STARTS,adj,dördüncü,Ali sits in the fourth row.,Ali dördüncü sırada oturur.,2,,colors-numbers
 a1-fifth,FIFTH,F,STARTS,adj,beşinci,The fifth bulb is broken.,Beşinci ampul bozuk.,2,,colors-numbers
-a1-gym,GYM,G,STARTS,noun,spor yapılan salon,The gym has modern machines.,Spor salonunda modern makineler var.,2,,daily-life
+a1-gym,GYM,G,STARTS,noun,spor yapılan salon,The gym has modern machines.,Spor salonunda modern makineler var.,2,,body-health
 a1-hill,HILL,H,STARTS,noun,dağdan küçük yükselti,A tower stands on the hill.,Tepenin üstünde bir kule duruyor.,2,,city-transport
 a1-history,HISTORY,H,STARTS,noun,geçmiş olayları anlatan ders,Selin loves history.,Selin tarihi çok sever.,2,,school-work
 a1-kilometre,KILOMETER,K,STARTS,noun,bin metreye eşit uzunluk birimi,The pharmacy is a kilometer from the bakery.,Eczane fırına bir kilometre uzaklıkta.,2,,city-transport
@@ -47,7 +47,7 @@ a1-surname,SURNAME,S,STARTS,noun,adın yanına gelen aile adı,Is this your surn
 a1-sweater,SWEATER,S,STARTS,noun,yünden örülmüş sıcak tutan üst giysi,Ayşe knitted a sweater.,Ayşe bir kazak ördü.,2,,daily-life
 a1-sausage,SAUSAGE,S,STARTS,noun,kıymadan yapılan ince uzun et ürünü,He fried a sausage.,O bir sosis kızarttı.,2,,food-drink
 a1-spaghetti,SPAGHETTI,S,STARTS,noun,uzun ince çubuk biçimli makarna,We ate spaghetti with sauce.,Soslu spagetti yedik.,2,,food-drink
-a1-spider,SPIDER,S,STARTS,noun,ağ ören sekiz bacaklı küçük hayvan,A spider lives in the attic.,Çatı arasında bir örümcek yaşıyor.,1,,animals
+a1-spider,SPIDER,S,STARTS,noun,ağ ören sekiz bacaklı küçük hayvan,A spider lives in the shed.,Kulübede bir örümcek yaşıyor.,1,,animals
 a1-study,STUDY,S,STARTS,verb,sınava veya derse çalışmak,Ayşe must study for the test.,Ayşe sınav için ders çalışmalı.,1,,school-work
 a1-stand,STAND,S,STARTS,verb,ayakta durmak,Pupils must stand.,Öğrenciler ayakta durmalı.,2,,daily-life
 a1-stairs,STAIRS,S,STARTS,noun,iki kat arasındaki basamaklar,The stairs are steep.,Merdivenler dik.,2,,home
@@ -69,7 +69,7 @@ a1-toothpaste,TOOTHPASTE,T,STARTS,noun,diş fırçasına sürülen nanemli macun
 a1-belt,BELT,B,STARTS,noun,pantolonu belde tutan kemer,Hasan wears a leather belt.,Hasan deri bir kemer takar.,2,,daily-life
 a1-tie,TIE,T,STARTS,noun,gömleğin yakasına bağlanan uzun kumaş,Mr Demir wears a tie.,Bay Demir kravat takar.,2,,daily-life
 a1-wallet,WALLET,W,STARTS,noun,para ve kart taşınan küçük cüzdan,Ali lost his wallet.,Ali cüzdanını kaybetti.,2,,daily-life
-a1-whale,WHALE,W,STARTS,noun,okyanusta yaşayan dev memeli,A whale swam past the ship.,Bir balina geminin yanından geçti.,2,,animals
+a1-whale,WHALE,W,STARTS,noun,okyanusta yaşayan dev memeli,A whale swam by the ship.,Bir balina geminin yanından geçti.,2,,animals
 a1-shark,SHARK,S,STARTS,noun,keskin dişli yırtıcı deniz balığı,The shark circled the diver.,Köpek balığı dalgıcın etrafında döndü.,2,,animals
 a1-butterfly,BUTTERFLY,B,STARTS,noun,renkli kanatlarıyla çiçeklere konan böcek,A butterfly landed on Ayşe's shoulder.,Ayşe'nin omzuna bir kelebek kondu.,2,,animals
 a1-donkey,DONKEY,D,STARTS,noun,"uzun kulaklı, yük taşıyan ve anıran hayvan",A donkey carried the sacks.,Bir eşek çuvalları taşıdı.,2,,animals

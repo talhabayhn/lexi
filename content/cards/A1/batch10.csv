@@ -19,21 +19,21 @@ a1-bug,BUG,U,CONTAINS,noun,yatakta ya da evde çıkan küçük haşere,Mert sees
 a1-nut,NUT,U,CONTAINS,noun,kabuğu sert yağlı yemiş,Selin eats a nut.,Selin bir fındık yiyor.,2,,food-drink
 a1-plus,PLUS,U,CONTAINS,noun,"toplama işareti, artı",3 plus 4 is 7.,"3 artı 4, 7 eder.",2,,school-work
 a1-hug,HUG,U,CONTAINS,noun,sevgiyle sarılma,Ali wants a hug.,Ali bir sarılma istiyor.,2,,family-people
-a1-oil,OIL,O,STARTS,noun,yemek pişirirken kullanılan sıvı yağ,Mum cooks with oil.,Annem yağ ile yemek yapıyor.,2,,food-drink
+a1-oil,OIL,O,STARTS,noun,yemek pişirirken kullanılan sıvı yağ,Ayşe cooks with oil.,Ayşe yağ ile yemek yapıyor.,2,,food-drink
 a1-own,OWN,O,STARTS,adj,"başkasına ait olmayan, kendine ait",Selin has her own diary.,Selin'in kendi günlüğü var.,2,,home
 a1-olive,OLIVE,O,STARTS,noun,zeytinyağı da çıkan küçük yeşil ya da siyah meyve,Ali eats an olive.,Ali bir zeytin yiyor.,2,,food-drink
 a1-soccer,SOCCER,O,CONTAINS,noun,Amerikan İngilizcesinde futbol,Mert plays soccer with Ali.,"Mert, Ali'yle futbol oynuyor.",2,,daily-life
 a1-rose,ROSE,O,CONTAINS,noun,"dikenli saplı, güzel kokulu çiçek",Ali gives Selin a rose.,Ali Selin'e bir gül veriyor.,2,,daily-life
 a1-stone,STONE,O,CONTAINS,noun,yerde bulunan sert küçük kaya parçası,Mert throws a stone.,Mert bir taş atıyor.,2,,daily-life
 a1-wood,WOOD,O,CONTAINS,noun,"ağaçtan elde edilen, masa yapılan malzeme",The shelf is made of wood.,Raf ahşaptan yapılmış.,2,,home
-a1-broom,BROOM,O,CONTAINS,noun,yeri süpürmeye yarayan uzun saplı alet,Mum has a broom.,Annemin bir süpürgesi var.,2,,home
+a1-broom,BROOM,O,CONTAINS,noun,yeri süpürmeye yarayan uzun saplı alet,Ayşe has a broom.,Ayşe'nin bir süpürgesi var.,2,,home
 a1-van,VAN,V,STARTS,noun,küçük kapalı yük ve yolcu aracı,A van stops.,Bir minibüs duruyor.,2,,city-transport
 a1-violin,VIOLIN,V,STARTS,noun,yay ile çalınan dört telli müzik aleti,Ayşe plays the violin.,Ayşe keman çalıyor.,2,,daily-life
 a1-voice,VOICE,V,STARTS,noun,konuşurken ya da şarkı söylerken çıkan ses,Selin has a soft voice.,Selin'in yumuşak bir sesi var.,2,,daily-life
 a1-view,VIEW,V,STARTS,noun,pencereden görülen manzara,Ali loves the view.,Ali manzarayı çok seviyor.,2,,home
 a1-yard,YARD,Y,STARTS,noun,evin önündeki ya da arkasındaki açık alan,Ali plays in the yard.,Ali avluda oynuyor.,2,,home
 a1-yogurt,YOGURT,Y,STARTS,noun,"sütten yapılan, kaşıkla yenen ekşi gıda",Ali eats yogurt.,Ali yoğurt yiyor.,2,,food-drink
-a1-yoga,YOGA,Y,STARTS,noun,esneme ve nefes egzersizlerinden oluşan spor,Mum does yoga.,Annem yoga yapıyor.,2,,body-health
+a1-yoga,YOGA,Y,STARTS,noun,esneme ve nefes egzersizlerinden oluşan spor,Ayşe does yoga.,Ayşe yoga yapıyor.,2,,body-health
 a1-yummy,YUMMY,Y,STARTS,adj,çok lezzetli (çocuk dili),This dessert is yummy!,Bu tatlı çok lezzetli!,1,,food-drink
 a1-candy,CANDY,Y,CONTAINS,noun,çocukların sevdiği şekerli küçük tatlı,Selin gets candy.,Selin şeker alıyor.,2,,food-drink
 a1-lucky,LUCKY,Y,CONTAINS,adj,şansı yaver giden,Ali is lucky.,Ali şanslı.,2,,daily-life
@@ -57,5 +57,5 @@ a1-popcorn,POPCORN,O,CONTAINS,noun,sinemada yenen patlamış mısır,Ali eats po
 a1-jelly,JELLY,Y,CONTAINS,noun,çocukların sevdiği sallanan meyveli tatlı,Selin loves jelly.,Selin jöleyi çok seviyor.,2,,food-drink
 a1-bunny,BUNNY,Y,CONTAINS,noun,"küçük tavşan, çocuk dili",The bunny jumps.,Tavşan zıplıyor.,2,,animals
 a1-snowman,SNOWMAN,O,CONTAINS,noun,kardan yapılan havuç burunlu figür,Ali builds a snowman.,Ali bir kardan adam yapıyor.,2,,time-weather
-a1-comb,COMB,O,CONTAINS,noun,saçı düzeltmek için kullanılan dişli araç,Ayşe has a comb.,Ayşe'nin bir tarağı var.,2,,daily-life
+a1-comb,COMB,O,CONTAINS,noun,saçı düzeltmek için kullanılan dişli araç,Ayşe has a comb.,Ayşe'nin bir tarağı var.,2,,body-health
 a1-owner,OWNER,O,STARTS,noun,dükkânın ya da evin sahibi,Mert is the owner.,Mert sahibi.,2,,family-people

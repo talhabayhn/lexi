@@ -12,3 +12,8 @@ a1-duck,DUCK,D,STARTS,noun,vaklayan su kuşu,The duck makes a strange noise.,Ör
 a1-cow,COW,C,STARTS,noun,süt veren çiftlik hayvanı,There is a cow by the barn.,Ahırın arkasında bir inek var.,1,,animals
 a1-monkey,MONKEY,M,STARTS,noun,ağaçlara tırmanan hayvan,The monkey is clever.,Maymun akıllı.,1,,animals
 a1-bear,BEAR,B,STARTS,noun,kış uykusuna yatan iri hayvan,The bear caught a salmon in the stream.,Ayı derede bir somon yakaladı.,2,,animals
+a1-camel,CAMEL,C,STARTS,noun,sırtında hörgücü olan çöl hayvanı,The camel walks slowly in the desert.,Deve çölde yavaş yürür.,2,,animals
+a1-hen,HEN,H,STARTS,noun,yumurta veren dişi çiftlik kuşu,The hen makes a soft noise.,Tavuk yumuşak bir ses çıkarır.,1,,animals
+a1-panda,PANDA,P,STARTS,noun,"siyah beyaz renkli, bambu yiyen ayı",The panda is slowly chewing.,Panda yavaşça çiğniyor.,2,,animals
+a1-rat,RAT,R,STARTS,noun,"fareden büyük, uzun kuyruklu kemirgen",The rat has a long tail.,Sıçanın uzun bir kuyruğu var.,2,,animals
+a1-rooster,ROOSTER,R,STARTS,noun,sabahları ötmesiyle bilinen erkek kuş,The rooster crows at dawn.,Horoz şafakta öter.,2,,animals

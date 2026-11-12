@@ -3,7 +3,7 @@ a1-arm,ARM,A,STARTS,noun,omuzdan ele uzanan vücut parçası,My arm hurts.,Kolum
 a1-eye,EYE,E,STARTS,noun,görmemizi sağlayan organ,My eye hurts.,Gözüm ağrıyor.,1,,body-health
 a1-foot,FOOT,F,STARTS,noun,tek bir ayak,Anna stepped on a sharp shell with her bare foot.,Çıplak ayağıyla keskin bir deniz kabuğuna bastı.,2,,body-health
 a1-hand,HAND,H,STARTS,noun,"parmakları olan, tutmaya yarayan uzuv",Ali held my hand tightly and grinned.,Ali elimi sıkıca tuttu ve sırıttı.,1,,body-health
-a1-hair,HAIR,H,STARTS,noun,kafada biten ince teller,The barber trims his hair and beard.,Berber saç ve sakalını kesiyor.,1,,body-health
+a1-hair,HAIR,H,STARTS,noun,kafada biten ince teller,He trims his hair and beard.,Saçını ve sakalını kesiyor.,1,,body-health
 a1-leg,LEG,L,STARTS,noun,yürümek için kullanılan uzuv,He broke his leg.,Bacağını kırdı.,1,,body-health
 a1-mouth,MOUTH,M,STARTS,noun,yemek yediğimiz yüz bölümü,He covered his mouth as he yawned.,Esnerken ağzını eliyle kapattı.,2,,body-health
 a1-tooth,TOOTH,T,STARTS,noun,tek bir diş,The wobbly tooth finally came out.,Oynayan diş sonunda düştü.,2,,body-health
@@ -18,3 +18,4 @@ a1-back,BACK,B,STARTS,noun,omurganın olduğu arka kısım,The backpack straps h
 a1-knee,KNEE,K,STARTS,noun,bacağı büken eklem,Ali fell from his skateboard and hurt his knee.,Ali kaykayından düştü ve dizini yaraladı.,1,,body-health
 a1-body,BODY,B,STARTS,noun,baştan ayağa insan vücudu,She has a strong body.,Güçlü bir vücudu var.,1,,body-health
 a1-healthy,HEALTHY,H,STARTS,adj,"hasta olmayan, sağlığı yerinde",Salmon and spinach are healthy choices.,Somon ve ıspanak sağlıklı seçimlerdir.,1,,body-health
+a1-pain,PAIN,P,STARTS,noun,vücutta hissedilen ağrı,Do you have any pain?,Hiç ağrın var mı?,2,,body-health

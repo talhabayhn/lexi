@@ -1,6 +1,6 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
 a1-armchair,ARMCHAIR,A,STARTS,noun,kolluğu olan rahat tekli koltuk,Grandpa sleeps in the armchair.,Dedem koltukta uyur.,2,,home
-a1-after,AFTER,A,STARTS,phrase,bir şeyden sonra,Ali felt sleepy after the concert.,Ali konserden sonra uykulu hissetti.,1,,daily-life
+a1-after,AFTER,A,STARTS,phrase,bir şeyden sonra,Ali felt sleepy after the concert.,Ali konserden sonra uykulu hissetti.,1,,time-weather
 a1-another,ANOTHER,A,STARTS,adj,bir tane daha,Ali asked for another cookie.,Ali bir kurabiye daha istedi.,2,,daily-life
 a1-agree,AGREE,A,STARTS,verb,aynı fikirde olmak,I agree with Ayşe.,Ayşe'ye katılıyorum.,2,,daily-life
 a1-air,AIR,A,STARTS,noun,soluduğumuz görünmez gaz,The air is fresh in the mountains.,Dağlarda hava taze.,2,,time-weather
@@ -12,11 +12,11 @@ a1-club,CLUB,C,STARTS,noun,ortak ilgisi olanların bir araya geldiği topluluk,M
 a1-climb,CLIMB,C,STARTS,verb,eller ve ayaklarla yukarı tırmanmak,Ali can climb the ladder.,Ali merdivene tırmanabilir.,2,,daily-life
 a1-count,COUNT,C,STARTS,verb,sayıları sırayla söyleyerek miktarı bulmak,Let us count the chairs.,Sandalyeleri sayalım.,2,,school-work
 a1-cartoon,CARTOON,C,STARTS,noun,çocukların televizyonda izlediği çizgi film,Ali is watching a cartoon.,Ali çizgi film izliyor.,2,,daily-life
-a1-canada,CANADA,C,STARTS,noun,başkenti Ottawa olan Kuzey Amerika ülkesi,Ayşe studies in Canada.,Ayşe Kanada'da okuyor.,2,,daily-life
-a1-dancer,DANCER,D,STARTS,noun,sahnede dans eden kişi,Selin's mom is a dancer.,Selin'in annesi dansçı.,2,,daily-life
+a1-canada,CANADA,C,STARTS,noun,başkenti Ottawa olan Kuzey Amerika ülkesi,Ayşe studies in Canada.,Ayşe Kanada'da okuyor.,2,,city-transport
+a1-dancer,DANCER,D,STARTS,noun,sahnede dans eden kişi,Selin's mom is a dancer.,Selin'in annesi dansçı.,2,,school-work
 a1-famous,FAMOUS,F,STARTS,adj,herkesin tanıdığı ve adı duyulmuş,The painter is famous in Greece.,Ressam Yunanistan'da ünlü.,2,,daily-life
 a1-follow,FOLLOW,F,STARTS,verb,birinin ardından gitmek,Ducklings follow the leader in a line.,Yavru ördekler lideri sırayla takip eder.,2,,daily-life
-a1-india,INDIA,I,STARTS,noun,başkenti Yeni Delhi olan Güney Asya ülkesi,Mert went to India alone.,Mert Hindistan'a tek başına gitti.,2,,daily-life
+a1-india,INDIA,I,STARTS,noun,başkenti Yeni Delhi olan Güney Asya ülkesi,Mert went to India alone.,Mert Hindistan'a tek başına gitti.,2,,city-transport
 a1-kite,KITE,K,STARTS,noun,ipiyle rüzgârda uçurulan hafif oyuncak,Mert's kite is bright.,Mert'in uçurtması parlak renkli.,2,,daily-life
 a1-lorry,LORRY,L,STARTS,noun,ağır yük taşıyan büyük kara taşıtı,The lorry was too wide for the gate.,Kamyon kapı için fazla genişti.,3,,city-transport
 a1-list,LIST,L,STARTS,noun,alt alta yazılmış şeylerin dizisi,"Check the list, Ali.","Listeyi kontrol et, Ali.",2,,daily-life
@@ -27,4 +27,4 @@ a1-player,PLAYER,P,STARTS,noun,bir oyunu ya da sporu oynayan kişi,Ali is the be
 a1-playground,PLAYGROUND,P,STARTS,noun,okulda çocukların oynadığı açık alan,The children are in the playground.,Çocuklar oyun alanında.,3,,school-work
 a1-robot,ROBOT,R,STARTS,noun,insan yerine iş yapan mekanik makine,The tiny robot is made of metal.,Minik robot metalden yapılmış.,2,,daily-life
 a1-text,TEXT,X,CONTAINS,noun,kitapta veya ekranda yazılı kelimeler bütünü,The text is too tiny.,Yazı çok ufak.,2,,school-work
-a1-australia,AUSTRALIA,A,STARTS,noun,Sidney'in bulunduğu Güney Yarımküre ülkesi,Selin went to Australia by ship.,Selin Avustralya'ya gemiyle gitti.,2,,daily-life
+a1-australia,AUSTRALIA,A,STARTS,noun,Sidney'in bulunduğu Güney Yarımküre ülkesi,Selin went to Australia by ship.,Selin Avustralya'ya gemiyle gitti.,2,,city-transport
