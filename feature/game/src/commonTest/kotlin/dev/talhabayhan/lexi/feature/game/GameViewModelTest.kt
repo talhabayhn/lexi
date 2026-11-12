@@ -526,6 +526,32 @@ class GameViewModelTest {
     }
 
     @Test
+    fun `a category letter whose cards were all seen recently takes a card of another category of the level`() =
+        runTest {
+            cards.cards = listOf(
+                testCard("BREAD", category = "home"),
+                testCard("BAGEL"),
+                testCard("CHAIR", category = "home"),
+            )
+            // BREAD, the only "home" card on B, was answered an hour ago (GAME_RULES §1 category fallback).
+            progress.save(listOf(CardProgress(CardId("a1-bread"), lastSeenMs = appClock.nowMs() - 3_600_000L)))
+            val vm = viewModel(gameRoute = GameRoute(Level.A1, GameMode.CLASSIC, CategoryId("home"))).also {
+                runCurrent()
+                it.onIntent(GameIntent.Foreground)
+            }
+
+            assertEquals(listOf('B', 'C'), vm.state.value.wheel.map { it.letter })
+            vm.effects.test {
+                vm.type("BAGEL")
+                vm.type("CHAIR")
+                runCurrent()
+
+                val result = awaitResult()
+                assertEquals(listOf(2, 0, 0), listOf(result.correct, result.wrong, result.passed))
+            }
+        }
+
+    @Test
     fun `game over records the session exactly once and then navigates`() = runTest {
         val handle = routeHandle()
         val vm = started(handle)

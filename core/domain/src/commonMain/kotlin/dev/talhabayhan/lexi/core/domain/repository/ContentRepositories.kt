@@ -16,8 +16,9 @@ import dev.talhabayhan.lexi.core.domain.model.Level
  */
 public interface CardRepository {
     /**
-     * Wheel pool for `WheelGenerator.generate`: cards of [level] in [category] ([CategoryId.MIXED] = all
-     * categories), sorted by id. Exam-pack-only cards are never included.
+     * Cards of [level] in [category] ([CategoryId.MIXED] = all categories), sorted by id. Exam-pack-only cards are
+     * never included. `WheelGenerator.generate` gets the whole level ([CategoryId.MIXED]) even for a category wheel:
+     * it filters by category itself and needs the level's other cards for the category fallback (`GAME_RULES.md` §1).
      */
     public suspend fun wheelPool(level: Level, category: CategoryId = CategoryId.MIXED): List<Card>
 

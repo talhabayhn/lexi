@@ -193,18 +193,65 @@ class WheelRotationTest {
         picksOf(wheels, 'B').zipWithNext { a, b -> assertNotEquals(a, b) }
     }
 
+    /** 3 animals cards and 20 home cards on A (answers distinct across categories, like real content). */
+    private fun animalsAndHomeOnA(): List<Card> = letterCards('A', starts = 3, contains = 0, category = "animals") +
+        letterCards('A', starts = 20, contains = 0, category = "home").map {
+            it.copy(id = CardId("h-${it.id.value}"), answer = "${it.answer}H")
+        }
+
     @Test
-    fun `a small category pool rotates its own cards only`() {
-        val pool = letterCards('A', starts = 3, contains = 0, category = "animals") +
-            letterCards('A', starts = 20, contains = 0, category = "home").map {
-                it.copy(id = CardId("h-${it.id.value}"), answer = "${it.answer}H")
-            }
+    fun `a small category pool uses its own cards first and then other cards of the level`() {
+        val pool = animalsAndHomeOnA()
 
         val picks = picksOf(simulate(pool, games = 9, stepMs = HOUR, category = CategoryId("animals")), 'A')
 
-        assertTrue(picks.all { it.category == CategoryId("animals") })
+        // Category fallback (§1): once all 3 animals cards were seen recently, the letter picks from the whole level.
+        assertTrue(picks.take(3).all { it.category == CategoryId("animals") })
         assertEquals(3, picks.take(3).toSet().size)
-        picks.zipWithNext { a, b -> assertNotEquals(a, b) }
+        assertTrue(picks.drop(3).all { it.category == CategoryId("home") })
+        assertEquals(picks.size, picks.toSet().size, "no card repeats within the recently-seen window")
+    }
+
+    @Test
+    fun `the category fallback needs every category card of the letter to be recent`() {
+        val pool = animalsAndHomeOnA()
+        val animals = pool.filter { it.category == CategoryId("animals") }
+        fun pickA(history: CardHistory) = WheelGenerator.generate(
+            pool,
+            Level.A1,
+            CategoryId("animals"),
+            GameMode.CLASSIC,
+            SeededRandom(5L).derive(WheelGenerator.SEED_PURPOSE),
+            history,
+        ).slots.first { it.letter == 'A' }.card!!
+
+        val twoRecent = CardHistory(animals.take(2).associate { it.id to START - HOUR }, START)
+        assertEquals(animals[2], pickA(twoRecent))
+
+        val allLongAgo = CardHistory(animals.associate { it.id to START - 30 * DAY }, START)
+        assertEquals(CategoryId("animals"), pickA(allLongAgo).category)
+
+        val allRecent = CardHistory(animals.associate { it.id to START - HOUR }, START)
+        assertEquals(CategoryId("home"), pickA(allRecent).category)
+    }
+
+    @Test
+    fun `a letter without category cards stays skipped and history-free category wheels are unchanged`() {
+        val pool = animalsAndHomeOnA() + letterCards('B', starts = 5, contains = 0, category = "home")
+        val history = CardHistory(pool.associate { it.id to START - HOUR }, START)
+        fun wheel(mode: GameMode, h: CardHistory) = WheelGenerator.generate(
+            pool,
+            Level.A1,
+            CategoryId("animals"),
+            mode,
+            SeededRandom(9L).derive(WheelGenerator.SEED_PURPOSE),
+            h,
+        )
+
+        assertEquals(SlotState.SKIPPED, wheel(GameMode.CLASSIC, history).slots.first { it.letter == 'B' }.state)
+        for (mode in GameMode.entries.filter { !it.usesCardHistory && it != GameMode.REVIEW }) {
+            assertEquals(wheel(mode, CardHistory.NONE), wheel(mode, history), "$mode")
+        }
     }
 
     @Test

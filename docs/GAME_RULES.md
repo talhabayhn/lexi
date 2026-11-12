@@ -34,6 +34,12 @@ exact defaults.
   eligible `STARTS` card is left); after that a card comes back only once at least `max(pool − 3, 1)` other cards
   of the letter were shown, so never twice in a row (a 2-card letter alternates, a 1-card letter repeats). With no history the steps reduce to
   the previous rule, so history-free wheels (daily, duel, level test, the goldens) are unchanged.
+- Category fallback (owner decision 2026-11-12: thin categories repeated the same words every game): in a category
+  wheel (not `mixed`) with history, a letter whose category cards were **all** seen recently picks from every card
+  of the level for that letter instead (same steps as above, so never-seen and least recently seen cards of other
+  categories win). A letter with at least one category card not seen recently keeps its own cards; a letter
+  without category cards stays `SKIPPED`; history-free wheels are unchanged. Such a card still counts toward its own
+  category's progress (Categories screen), while the session is recorded under the chosen category.
 - Review wheel: built from SRS-due cards (any level/category); may have fewer than 26 slots (only letters that
   have due cards), in A–Z order; one card per letter, picked the same way (`STARTS` preferred). A due card whose
   answer is already on the wheel is dropped and a letter left without due cards is left out (answers are unique per

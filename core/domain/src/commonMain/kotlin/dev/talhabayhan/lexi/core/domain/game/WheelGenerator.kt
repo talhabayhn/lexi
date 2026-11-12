@@ -32,6 +32,11 @@ public object WheelGenerator {
      * [CategoryId.MIXED]) is picked with [random]. When [mode] uses card history, [history] steers the pick
      * ([pickFresh]); otherwise it is ignored. Letters without any card become [SlotState.SKIPPED] slots. Exactly one
      * `nextInt` is drawn per non-skipped letter, in A–Z order.
+     *
+     * Category fallback (`GAME_RULES.md` §1, owner decision 2026-11-12): in a category wheel, a letter whose category
+     * cards were all seen recently picks from every card of [level] for that letter instead, so a thin category does
+     * not repeat the same words game after game. Needs history, so history-free wheels are unchanged; a letter
+     * without category cards stays skipped.
      */
     public fun generate(
         pool: List<Card>,
@@ -44,8 +49,10 @@ public object WheelGenerator {
     ): Wheel {
         require(mode != GameMode.REVIEW) { "use review() for the review wheel" }
         val used = if (mode.usesCardHistory) history else CardHistory.NONE
-        val cards = pool.filter { it.level == level && (category == CategoryId.MIXED || it.category == category) }
-        return alphabetWheel(cards, random, used, config)
+        val levelCards = pool.filter { it.level == level }
+        if (category == CategoryId.MIXED) return alphabetWheel(levelCards, random, used, config)
+        val cards = levelCards.filter { it.category == category }
+        return alphabetWheel(cards, random, used, config, fallback = levelCards.candidatesByLetter())
     }
 
     /**
@@ -66,6 +73,7 @@ public object WheelGenerator {
         random: SeededRandom,
         history: CardHistory,
         config: GameConfig,
+        fallback: Map<Char, List<Card>> = emptyMap(),
     ): Wheel {
         val byLetter = cards.candidatesByLetter()
         val recent = recentlySeen(history.lastSeenMs, history.nowMs, config)
@@ -73,7 +81,14 @@ public object WheelGenerator {
         // answer within a level or a pack.
         val usedAnswers = mutableSetOf<String>()
         val slots = ('A'..'Z').map { letter ->
-            val candidates = byLetter[letter].orEmpty()
+            val own = byLetter[letter].orEmpty()
+            val candidates = if (own.isNotEmpty() && own.all { it.id in recent }) {
+                // A category wheel passes the whole level, which always holds this letter; `own` only when no fallback map is
+                // passed (mixed and pack wheels).
+                fallback[letter] ?: own
+            } else {
+                own
+            }
             if (candidates.isEmpty()) {
                 Slot(letter, card = null, state = SlotState.SKIPPED)
             } else {

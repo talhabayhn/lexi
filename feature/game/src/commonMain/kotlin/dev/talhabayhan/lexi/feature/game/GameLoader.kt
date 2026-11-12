@@ -155,7 +155,9 @@ internal class GameLoader(
                     CardHistory.NONE
                 }
                 WheelGenerator.generate(
-                    pool = cards.wheelPool(level, category),
+                    // The whole level: a category wheel falls back to the level's other cards on a letter whose
+                    // category cards were all seen recently (GAME_RULES §1); generate() filters by category itself.
+                    pool = cards.wheelPool(level),
                     level = level,
                     category = category,
                     mode = mode,
