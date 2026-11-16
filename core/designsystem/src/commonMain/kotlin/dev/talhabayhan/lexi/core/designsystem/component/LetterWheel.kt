@@ -37,6 +37,8 @@ import dev.talhabayhan.lexi.core.designsystem.generated.resources.Res
 import dev.talhabayhan.lexi.core.designsystem.generated.resources.wheel_summary
 import dev.talhabayhan.lexi.core.designsystem.generated.resources.wheel_summary_counts
 import dev.talhabayhan.lexi.core.designsystem.icon.LexiIcons
+import dev.talhabayhan.lexi.core.designsystem.motion.FlowMorphKeys
+import dev.talhabayhan.lexi.core.designsystem.motion.morphAnchor
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.core.designsystem.theme.descenderOverflowPx
 import dev.talhabayhan.lexi.core.designsystem.theme.resized
@@ -168,6 +170,17 @@ public fun LetterWheel(
                 modifier = Modifier
                     .offset((centerX - chip.value / 2).dp, (centerY - chip.value / 2).dp)
                     .zIndex(if (itemMotion != null) 1f else 0f)
+                    // The letter morph (#16, video flow phase 3) lands on the current letter; a no-op outside a
+                    // MorphOverlayHost.
+                    .then(
+                        if (item.state ==
+                            WheelLetterState.Current
+                        ) {
+                            Modifier.morphAnchor(FlowMorphKeys.WHEEL_MARKER)
+                        } else {
+                            Modifier
+                        },
+                    )
                     // Read in the centre's summary: 26 chips in geometric order would be a scrambled list to swipe.
                     .semantics { hideFromAccessibility() },
             )

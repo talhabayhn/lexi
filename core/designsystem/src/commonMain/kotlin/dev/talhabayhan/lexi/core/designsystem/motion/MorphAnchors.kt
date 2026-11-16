@@ -114,3 +114,9 @@ private class MorphAnchorNode(var key: Any) :
         lastRect = null
     }
 }
+
+/** The [morphAnchor] keys of the video flow's letter morph (#16): the dialog's OYNA button and the wheel's marker. */
+public object FlowMorphKeys {
+    public const val PLAY_BUTTON: String = "flow.playButton"
+    public const val WHEEL_MARKER: String = "flow.wheelMarker"
+}
