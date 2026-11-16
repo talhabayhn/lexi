@@ -49,7 +49,11 @@ public class MorphAnchors {
     public fun release(key: Any, owner: Any) {
         val list = entries[key] ?: return
         val remaining = list.filterNot { it.owner === owner }
-        if (remaining.isEmpty()) entries.remove(key) else if (remaining.size != list.size) entries[key] = remaining
+        if (remaining.isEmpty()) {
+            entries.remove(key)
+        } else if (remaining.size != list.size) {
+            entries[key] = remaining
+        }
     }
 }
 
