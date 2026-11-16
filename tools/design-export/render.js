@@ -1,5 +1,7 @@
 // Renders Design-canvas .dc.html artboards into static HTML + PNG (2x).
-// usage: node render.js <srcDir> <outDir> <fontPath> <name=Out,name=Out,...>
+// usage: node render.js <srcDir> <outDir> <fontPath|fontDir> <name=Out,name=Out,...>
+// fontDir = a folder of static Jost-{Medium,SemiBold,Bold,ExtraBold}.ttf (docs/design/fonts): every weight renders
+// with its own file. A single variable-font file also works (registered for weights 100-900).
 const fs = require('fs');
 const path = require('path');
 const { chromium } = require('playwright');
@@ -56,9 +58,16 @@ document.addEventListener('DOMContentLoaded', () => {
   fs.mkdirSync(outDir, { recursive: true });
   const browser = await chromium.launch();
   const ctx = await browser.newContext({ deviceScaleFactor: 2, viewport: { width: 1400, height: 1100 } });
-  await ctx.route('https://fonts.googleapis.com/**', (r) => r.fulfill({ contentType: 'text/css',
-    body: "@font-face{font-family:'Jost';src:url('https://local.fonts/Jost.ttf') format('truetype');font-weight:100 900;}" }));
-  await ctx.route('https://local.fonts/**', (r) => r.fulfill({ contentType: 'font/ttf', body: fs.readFileSync(fontPath) }));
+  const WEIGHTS = { Medium: 500, SemiBold: 600, Bold: 700, ExtraBold: 800 };
+  const isDir = fs.statSync(fontPath).isDirectory();
+  const faces = isDir
+    ? Object.entries(WEIGHTS).map(([n, w]) => `@font-face{font-family:'Jost';src:url('https://local.fonts/Jost-${n}.ttf') format('truetype');font-weight:${w};}`).join('')
+    : "@font-face{font-family:'Jost';src:url('https://local.fonts/Jost.ttf') format('truetype');font-weight:100 900;}";
+  await ctx.route('https://fonts.googleapis.com/**', (r) => r.fulfill({ contentType: 'text/css', body: faces }));
+  await ctx.route('https://local.fonts/**', (r) => {
+    const file = isDir ? path.join(fontPath, path.basename(new URL(r.request().url()).pathname)) : fontPath;
+    return r.fulfill({ contentType: 'font/ttf', body: fs.readFileSync(file) });
+  });
   await ctx.route('https://fonts.gstatic.com/**', (r) => r.abort());
   for (const [src, out] of Object.entries(map)) {
     const raw = fs.readFileSync(path.join(srcDir, src + '.dc.html'), 'utf8');
