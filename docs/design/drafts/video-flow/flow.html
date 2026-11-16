@@ -1,0 +1,328 @@
+<!doctype html><html lang="tr"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lexi — akış ve hareket prototipi</title>
+<style>
+@font-face{font-family:Jost;font-weight:500;src:url(../../fonts/Jost-Medium.ttf)}
+@font-face{font-family:Jost;font-weight:600;src:url(../../fonts/Jost-SemiBold.ttf)}
+@font-face{font-family:Jost;font-weight:700;src:url(../../fonts/Jost-Bold.ttf)}
+@font-face{font-family:Jost;font-weight:800;src:url(../../fonts/Jost-ExtraBold.ttf)}
+:root{--cream:#F7F4EE;--ink:#1F242D;--red:#E0534C;--blue:#3D68B2;--yel:#E29E2E;--mut:#606673;--bm:#8A8F9B}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{background:#cfcbc2;font-family:Jost,Arial,sans-serif;font-weight:800;color:var(--ink);display:flex;gap:28px;justify-content:center;align-items:flex-start;padding:16px}
+#side{width:250px;font:500 13px/1.45 Arial;color:#333;padding-top:8px}#side h1{font:800 18px Jost,Arial;margin-bottom:8px}
+#side button{font:700 14px Arial;padding:9px 14px;border:3px solid var(--ink);background:#fff;box-shadow:3px 3px 0 var(--ink);margin:6px 6px 6px 0;cursor:pointer}
+#side li{margin:4px 0 4px 16px}
+#phone{width:390px;height:844px;background:var(--cream);position:relative;overflow:hidden;flex:none}
+.abs{position:absolute}.scr{position:absolute;inset:0}
+.el{will-change:transform,opacity}
+.box{border:3px solid var(--ink);background:#fff;box-shadow:var(--sh,4px) var(--sh,4px) 0 var(--ink)}
+.lab{font-size:12px;letter-spacing:.16em;font-weight:800}
+.small{font-size:12px;font-weight:600}
+/* home */
+.logo{display:flex;gap:3px}.logo i{width:38px;height:38px;display:grid;place-items:center;font-style:normal;font-size:22px;color:#fff;border:3px solid var(--ink)}
+.stat{text-align:right}.stat b{font-size:20px;display:block;line-height:1}.stat span{font-size:11px;font-weight:600;color:var(--mut)}
+#hero{left:20px;top:112px;width:350px;height:230px;background:var(--red);color:#fff;padding:20px;cursor:pointer}
+#hero h2{font-size:34px;line-height:1}#hero .chips{display:flex;gap:8px;margin-top:14px}
+.mchip{border:2.5px solid var(--ink);background:#fff;color:var(--ink);font-size:13px;padding:4px 10px}
+#heroPlay{position:absolute;right:20px;bottom:22px;width:68px;height:68px;border-radius:50%;background:#fff;border:3px solid var(--ink);display:grid;place-items:center;font-size:26px;color:var(--ink)}
+.row{left:20px;width:350px;height:64px;padding:0 14px;display:flex;align-items:center;gap:12px}
+.row b{font-size:18px;display:block;line-height:1.1}.row small{font-size:12px;font-weight:600}.row .chev{margin-left:auto;font-size:24px}
+.ico{width:36px;height:36px;border:3px solid var(--ink);background:#fff;display:grid;place-items:center;flex:none}
+.ico i{width:14px;height:14px;background:var(--ink);display:block}
+#daily{background:var(--yel)}
+.badge{background:#fff;border:3px solid var(--ink);padding:4px 9px;display:flex;gap:6px;align-items:center;font-size:13px}.pip{width:13px;height:13px;border-radius:50%;border:3px solid var(--ink);background:#fff}
+.mini{width:171px;height:84px;padding:0 12px;display:flex;align-items:center;gap:10px}.mini b{font-size:17px;line-height:1.05;display:block}.mini small{font-size:11px;font-weight:600}
+#tabs{left:0;right:0;bottom:0;height:78px;border-top:3px solid var(--ink);background:var(--cream);display:flex;justify-content:space-around;align-items:center;padding:0 12px}
+.tab{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:12px;width:100px}.tab .ic{width:54px;height:34px;display:grid;place-items:center}
+.tab.on .ic{background:var(--ink);color:#fff}
+/* cats */
+.back{width:44px;height:44px;display:grid;place-items:center;font-size:24px;background:#fff;cursor:pointer}
+.chiprow{display:flex;gap:6px;left:20px;width:350px;top:84px}
+.lc{flex:1;border:3px solid var(--ink);background:#fff;height:40px;display:grid;place-items:center;font-size:15px}.lc.on{background:var(--ink);color:var(--yel)}
+.cc{width:169px;height:164px;background:#fff;cursor:pointer;overflow:visible}
+.cc .art{height:98px;position:relative;overflow:hidden;border-bottom:3px solid var(--ink)}
+.cc .inf{padding:8px 10px}.cc b{font-size:14px;line-height:1.1;display:block}.cc .meta{display:flex;align-items:center;gap:8px;margin-top:6px;font-size:12px}
+.pb{flex:1;height:8px;border:2px solid var(--ink);background:#fff;position:relative}.pb i{position:absolute;left:0;top:0;bottom:0;background:var(--blue)}
+.s{position:absolute}
+#catsScroll{left:0;top:136px;width:390px;height:708px;overflow-y:auto;scrollbar-width:none}#catsScroll::-webkit-scrollbar{display:none}
+#catsGrid{display:grid;grid-template-columns:169px 169px;gap:14px 12px;padding:10px 20px 120px;justify-content:center}
+.cc{position:relative}.cc svg{position:absolute;inset:0;width:100%;height:100%}
+/* dialog */
+#scrim{background:var(--ink);opacity:0;pointer-events:none}
+#dlg{left:20px;top:238px;width:350px;height:340px;background:var(--cream);border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);overflow:hidden;visibility:hidden}
+#dlgIn{position:absolute;left:0;top:0;width:344px;height:334px;padding:16px}
+.seg{display:flex;border:3px solid var(--ink);background:#fff;position:relative;height:46px}
+.seg div{flex:1;display:grid;place-items:center;font-size:16px;position:relative;z-index:1;cursor:pointer}
+.seg .ind{position:absolute;top:0;bottom:0;left:0;background:var(--ink);z-index:0}
+.seg div.sel{color:var(--yel)}
+#playBtn{background:var(--red);color:#fff;height:56px;display:flex;align-items:center;justify-content:center;font-size:24px;letter-spacing:.1em;cursor:pointer}
+/* ink */
+#ink{background:var(--red);display:none;overflow:hidden;z-index:50}
+#bigA{position:absolute;inset:0;display:grid;place-items:center;color:var(--yel);font-weight:800;line-height:1}
+/* game */
+#game{visibility:hidden}
+.gc{position:absolute;border-radius:50%}
+.chipL{position:absolute;width:30px;height:30px;border-radius:50%;border:2.5px solid var(--ink);background:var(--cream);display:grid;place-items:center;font-size:14px}
+.chipL.ok{background:var(--blue);color:#fff}
+#center{left:105px;top:155px;width:180px;height:180px;border-radius:50%;background:var(--yel);border:3px solid var(--ink);display:grid;place-items:center;text-align:center;overflow:hidden}
+#cLet{font-size:100px;line-height:.92;position:relative}#cSub{font-size:13px;letter-spacing:.12em;margin-top:4px}
+#marker{width:36px;height:36px;background:var(--ink);color:var(--yel);display:grid;place-items:center;font-size:18px}
+.key{width:62px;height:52px;display:grid;place-items:center;font-size:24px;cursor:pointer;background:#fff}
+.key.used{border-style:dashed;border-color:var(--bm);color:var(--bm);box-shadow:none;background:var(--cream)}
+.slot{width:44px;height:52px;border:3px solid var(--ink);background:#fff;display:grid;place-items:center;font-size:28px}.slot.on{background:var(--ink);color:var(--cream)}.slot.act{border-color:var(--red)}
+#clue{left:20px;top:418px;width:350px;height:80px;display:flex;padding:0}
+#clue .l{flex:1;padding:10px 14px;overflow:hidden;position:relative}#clue .l small{font-size:12px;letter-spacing:.14em}#clue .l b{font-size:30px;display:block;line-height:1.1}#clue .r{width:92px;background:var(--blue);color:#fff;display:grid;place-items:center;text-align:center;font-size:20px;line-height:1.1}
+.fly{position:absolute;width:44px;height:44px;display:grid;place-items:center;font-size:26px;pointer-events:none;z-index:30}
+#tap{width:44px;height:44px;border-radius:50%;border:3px solid rgba(31,36,45,.55);background:rgba(255,255,255,.45);left:0;top:0;pointer-events:none;opacity:0;z-index:99}
+#cap{position:absolute;left:0;right:0;top:6px;text-align:center;font:700 12px Arial;color:#fff;z-index:98;pointer-events:none;opacity:0}
+</style>
+<body>
+<div id="side"><h1>Lexi akış prototipi</h1>
+<div>Bileşenler mevcut tasarım sistemimizden: sert köşe, 3 dp çerçeve, ofset gölge, Jost, token renkleri.</div>
+<p><button id="bDemo">▶ Demoyu oynat</button><button id="bReset">↺ Başa dön</button></p>
+<div>Elle de deneyin: kartlara, kategoriye, OYNA'ya ve oyundaki tuşlara dokunun (kelime: APPLE).</div>
+<ul><li>Tuş: 80 ms bas/bırak</li><li>Ekran: kayma + solma 260 ms</li><li>Kategori: kalkma → kartın yerinden pencere</li><li>OYNA: düğme → mürekkep kare → harf → çark işareti</li><li>Zamanlayıcı geçiş bitince başlar</li></ul></div>
+<div id="phone">
+<!-- HOME -->
+<div id="home" class="scr el">
+ <div class="abs el ent" style="left:20px;top:26px"><div class="logo"><i style="background:var(--red)">L</i><i style="background:var(--yel);border-radius:50%">E</i><i style="background:var(--blue);border-radius:0 60% 0 60%">X</i><i style="background:var(--ink)">I</i></div></div>
+ <div class="abs el ent stat" style="right:96px;top:28px"><b>7</b><span>gün seri</span></div>
+ <div class="abs el ent stat" style="right:20px;top:28px"><b>12.480</b><span>toplam puan</span></div>
+ <div class="abs el ent lab" style="left:20px;top:92px">OYNA</div><div class="abs el ent small" style="right:20px;top:90px">Bugünkü hedef <b>1 / 2</b> çark</div>
+ <div id="hero" class="abs el ent box"><h2>Tek kişilik</h2><div class="small" style="margin-top:6px;font-size:14px;font-weight:600">Seviyeni, kategoriyi ve süreyi seç</div><div class="chips"><span class="mchip">Klasik</span><span class="mchip">Pratik</span><span class="mchip">Hardcore</span></div><div id="heroPlay">▶</div></div>
+ <div class="abs el ent box row" style="top:358px;height:64px"><div class="ico"><i></i></div><div><b>Aynı cihazda</b><small>iki kişi · tek telefon</small></div><span class="chev">›</span></div>
+ <div id="daily" class="abs el ent box row" style="top:434px;height:64px"><div><b>Günün çarkı</b><small>Herkes aynı çarkı çözüyor</small></div><div class="badge" style="margin-left:auto"><span class="pip"></span>Çöz<span style="font-size:18px">›</span></div></div>
+ <div class="abs el ent lab" style="left:20px;top:572px">ÇALIŞ</div>
+ <div class="abs el ent box mini" style="left:20px;top:596px"><div class="ico"><i></i></div><div><b>Defter</b><small>24 tekrar</small></div></div>
+ <div class="abs el ent box mini" style="left:199px;top:596px"><div class="ico"><i></i></div><div><b>Sınavlar</b><small>LGS · YDS</small></div></div>
+ <div id="tabs" class="abs el ent"><div class="tab on"><div class="ic">⌂</div>Ana sayfa</div><div class="tab"><div class="ic">▮▮</div>İstatistik</div><div class="tab"><div class="ic">✲</div>Ayarlar</div></div>
+</div>
+<!-- CATS -->
+<div id="cats" class="scr el" style="visibility:hidden;opacity:0">
+ <div id="backCats" class="abs el box back" style="left:20px;top:24px">←</div><div class="abs" style="left:78px;top:26px;font-size:30px">Çarkını seç</div>
+ <div class="abs chiprow el"><div class="lc on">A1</div><div class="lc">A2</div><div class="lc">B1</div><div class="lc">B2</div><div class="lc">C1</div><div class="lc">NAT</div></div>
+ <div id="catsScroll" class="abs"><div id="catsGrid"></div></div>
+</div>
+<!-- SCRIM + DIALOG -->
+<div id="scrim" class="scr"></div>
+<div id="dlg" class="abs"><div id="dlgIn" class="el">
+ <div style="display:flex;gap:12px;align-items:center"><div id="backDlg" class="box back" style="width:42px;height:42px;box-shadow:3px 3px 0 var(--ink)">←</div><div><div style="font-size:22px;line-height:1.05">Yiyecek ve içecek</div><div class="small">A1 · 90 kelime · 48 öğrenildi</div></div></div>
+ <div class="lab dlgI" style="margin:16px 0 6px;font-size:11px;color:var(--mut)">MOD</div>
+ <div class="seg dlgI" id="segMode"><div class="ind"></div><div class="sel">Klasik</div><div>Pratik</div><div>Hardcore</div></div>
+ <div class="lab dlgI" style="margin:14px 0 6px;font-size:11px;color:var(--mut)">SÜRE</div>
+ <div class="seg dlgI" id="segTime"><div class="ind"></div><div>2:00</div><div class="sel">3:00</div><div>4:00</div><div>5:00</div></div>
+ <div id="playBtn" class="box dlgI" style="margin-top:18px">OYNA ▸</div>
+</div></div>
+<!-- INK -->
+<div id="ink" class="abs"><div id="bigA">A</div></div>
+<!-- GAME -->
+<div id="game" class="scr">
+ <div class="gc el" style="left:300px;top:140px;width:150px;height:150px;background:var(--red);opacity:.0" id="decR"></div>
+ <div class="gc el" style="left:-90px;top:300px;width:160px;height:160px;background:var(--blue);opacity:0" id="decB"></div>
+ <div id="gTop" class="el"><div class="abs box" style="left:20px;top:20px;width:48px;height:48px;display:grid;place-items:center;font-size:16px;box-shadow:3px 3px 0 var(--ink)">II</div>
+  <div class="abs box" style="left:76px;top:20px;width:238px;height:48px;background:#fff;box-shadow:3px 3px 0 var(--ink);overflow:hidden"><div id="tFill" style="position:absolute;left:0;top:0;bottom:0;width:100%;background:var(--yel)"></div><div id="tTxt" style="position:absolute;left:12px;top:0;bottom:0;display:flex;align-items:center;font-size:20px">3:00</div></div>
+  <div id="score" class="abs el" style="left:322px;top:20px;width:48px;height:48px;border-radius:50%;background:var(--blue);color:#fff;border:3px solid var(--ink);display:grid;place-items:center;font-size:18px">0</div></div>
+ <div id="ring" class="abs" style="left:0;top:0;width:390px;height:520px"></div>
+ <div id="center" class="abs el"><div><div id="cLet">A</div><div id="cSub">İLE BAŞLA</div></div></div>
+ <div id="marker" class="abs el">A</div>
+ <div id="clue" class="abs el box"><div class="l"><small id="clueLab">İPUCU · İSİM</small><b id="clueTxt">elma</b></div><div class="r"><div>A1<br><span style="font-size:12px;letter-spacing:.1em">5 HARF</span></div></div></div>
+ <div id="slots" class="abs" style="left:0;right:0;top:516px;display:flex;justify-content:center;gap:6px"></div>
+ <div id="keys" class="abs" style="left:20px;top:584px;width:350px"></div>
+ <div id="gBot" class="el"><div class="abs el" id="hint" style="left:20px;top:764px;width:56px;height:56px;border-radius:50%;background:var(--red);border:3px solid var(--ink);display:grid;place-items:center;color:#fff;font-size:22px">●</div>
+  <div class="abs box el" id="bks" style="left:86px;top:764px;width:56px;height:56px;display:grid;place-items:center;font-size:22px;cursor:pointer">⌫</div>
+  <div class="abs box el" id="pas" style="left:152px;top:764px;width:218px;height:56px;background:var(--yel);display:grid;place-items:center;font-size:24px;letter-spacing:.1em">PAS</div></div>
+</div>
+<div id="tap" class="abs"></div><div id="cap"></div>
+</div>
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+function bez(x1,y1,x2,y2){return t=>{if(t<=0)return 0;if(t>=1)return 1;let lo=0,hi=1,s=t;for(let i=0;i<22;i++){s=(lo+hi)/2;const x=3*(1-s)*(1-s)*s*x1+3*(1-s)*s*s*x2+s*s*s;if(x<t)lo=s;else hi=s}return 3*(1-s)*(1-s)*s*y1+3*(1-s)*s*s*y2+s*s*s}}
+const EASE={mech:bez(.2,.8,.2,1),fly:bez(.3,.7,.2,1),pop:bez(.3,1.6,.5,1),turn:bez(.4,0,.2,1),lin:t=>t};
+const clock={t:0,tasks:[],ticks:[]};
+function tw(delay,dur,fn,ease=EASE.mech,done){clock.tasks.push({s:clock.t+delay,d:Math.max(dur,1e-4),fn,ease,done})}
+function T(delay,fn){tw(delay,0,()=>{},EASE.lin,fn)}
+const SPEED=0.86;function step(dt){dt*=SPEED;clock.t+=dt;const cur=clock.tasks;clock.tasks=[];for(const k of cur){if(clock.t>=k.s){const p=clamp((clock.t-k.s)/k.d);k.fn(k.ease(p),p);if(p>=1){k.done&&k.done();continue}}clock.tasks.push(k)}clock.ticks.forEach(f=>f(dt))}
+window.__step=step;
+const DEF={x:0,y:0,s:1,r:0,o:1,sh:4,sx:1,sy:1,ry:0};
+function st(el){return el.__s||(el.__s={...DEF})}
+function ap(el){const s=st(el);el.style.transform=`perspective(900px) translate(${s.x}px,${s.y}px) rotate(${s.r}deg) rotateY(${s.ry}deg) scale(${s.s*s.sx},${s.s*s.sy})`;el.style.opacity=s.o;el.style.setProperty('--sh',s.sh+'px')}
+function set(el,p){Object.assign(st(el),p);ap(el)}
+function A(el,to,delay=0,dur=260,ease=EASE.mech,from){const s=st(el);let f={};tw(delay,dur,(e)=>{if(!f.init){f.init=1;f.from={};for(const k in to)f.from[k]=(from&&k in from)?from[k]:s[k]}for(const k in to)s[k]=f.from[k]+(to[k]-f.from[k])*e;ap(el)},ease)}
+function M(el,to,delay,dur,ease=EASE.mech,done){let f;tw(delay,dur,(e)=>{if(!f){f={};for(const k of['left','top','width','height'])f[k]=parseFloat(el.style[k])}for(const k in to)el.style[k]=(f[k]+(to[k]-f[k])*e)+'px'},ease,done)}
+const phone=$('#phone');
+function rect(el){const a=el.getBoundingClientRect(),b=phone.getBoundingClientRect();return{left:a.left-b.left,top:a.top-b.top,width:a.width,height:a.height}}
+function press(el,d=0){A(el,{x:4,y:4,sh:0},d,80,EASE.lin);A(el,{x:0,y:0,sh:4},d+.08,80,EASE.lin)}
+// bug: durations are ms in A(); convert
+</script>
+<script>
+/* durations in seconds from here on: wrap A/M */
+const _A=A,_M=M;A=(el,to,d=0,dur=.26,e=EASE.mech,from)=>_A(el,to,d,dur,e,from);M=(el,to,d,dur,e,done)=>_M(el,to,d,dur,e,done);
+press=(el,d=0)=>{A(el,{x:4,y:4,sh:0},d,.08,EASE.lin);A(el,{x:0,y:0,sh:4},d+.08,.08,EASE.lin)};
+const LET='ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+/* build ring */
+const CX=195,CY=245,R=146,chips=[];
+LET.split('').forEach((c,i)=>{const a=(-90+i*360/26)*Math.PI/180,d=document.createElement('div');d.className='chipL el';d.textContent=c;d.style.left=(CX+R*Math.cos(a)-15)+'px';d.style.top=(CY+R*Math.sin(a)-15)+'px';d.__pos={x:CX+R*Math.cos(a),y:CY+R*Math.sin(a)};$('#ring').appendChild(d);chips.push(d)});
+function markerAt(i){const p=chips[i].__pos;$('#marker').style.left=(p.x-18)+'px';$('#marker').style.top=(p.y-18)+'px'}
+markerAt(0);chips[0].style.visibility='hidden';
+const WORDS=[{w:'APPLE',clue:'elma',keys:'PLANSEYPRU',let:'A'},{w:'BREAD',clue:'ekmek',keys:'RBTASEODKM',let:'B'}];
+let wi=0,typed=[],slots=[],keyEls=[],locked=false,gameStart=null,score=0;
+function buildSlots(n){const c=$('#slots');c.innerHTML='';slots=[];for(let i=0;i<n;i++){const s=document.createElement('div');s.className='slot el';c.appendChild(s);slots.push(s)}updAct()}
+function updAct(){slots.forEach((s,i)=>s.classList.toggle('act',i===typed.length&&!s.classList.contains('on')))}
+function buildKeys(letters){const c=$('#keys');c.innerHTML='';keyEls=[];letters.split('').forEach((ch,i)=>{const k=document.createElement('div');k.className='key box el';k.textContent=ch;k.style.position='absolute';k.style.left=((i%5)*72)+'px';k.style.top=(Math.floor(i/5)*60)+'px';k.dataset.i=i;k.onclick=()=>typeKey(k);c.appendChild(k);keyEls.push(k)})}
+buildSlots(5);buildKeys(WORDS[0].keys);
+/* initial game hidden */
+function hideGame(){['#gTop','#center','#clue','#gBot','#marker'].forEach(s=>set($(s),{o:0}));chips.forEach(c=>set(c,{o:0}));slots.forEach(s=>set(s,{o:0}));keyEls.forEach(k=>set(k,{o:0}))}
+function showText(t,dur=2){const c=$('#cap');}
+/* tap indicator */
+let DEMO=false;
+function tapAt(x,y,d=0){if(!DEMO)return;const t=$('#tap');T(d,()=>{t.style.left=(x-22)+'px';t.style.top=(y-22)+'px';set(t,{o:.9,s:.6})});A(t,{s:1.25,o:0},d,.4,EASE.mech,{s:.6,o:.9})}
+const CENTER=r=>[r.left+r.width/2,r.top+r.height/2];
+
+const K='#1F242D',Rr='#E0534C',Yy='#E29E2E',Bb='#3D68B2',Cc='#F7F4EE',Ww='#fff';
+const SW='stroke="'+K+'" stroke-width="3"';
+const CATS=[
+ {n:'Karışık',c:'412 / 850',p:48,bg:K,svg:`<rect x="24" y="30" width="38" height="38" fill="${Rr}"/><circle cx="76" cy="40" r="20" fill="${Yy}"/><path d="M96 70C96 42 116 30 140 32C142 52 128 70 96 70Z" fill="${Bb}"/>`},
+ {n:'Yiyecek ve içecek',c:'48 / 90',p:53,bg:Yy,svg:`<circle cx="62" cy="54" r="26" fill="${Rr}" ${SW}/><rect x="60" y="16" width="5" height="12" fill="${K}"/><path d="M66 22q12-10 22-2q-8 10-22 2z" fill="${Bb}" ${SW}/><rect x="104" y="40" width="32" height="38" fill="${Ww}" ${SW}/><path d="M136 48h8a8 8 0 0 1 0 16h-8" fill="none" ${SW}/>`},
+ {n:'Günlük hayat',c:'62 / 120',p:52,bg:Bb,svg:`<circle cx="84" cy="49" r="34" fill="${Cc}" ${SW}/><path d="M84 49V28M84 49L100 58" stroke="${K}" stroke-width="5" stroke-linecap="round"/><rect x="82" y="19" width="4" height="5" fill="${K}"/><rect x="82" y="74" width="4" height="5" fill="${K}"/><rect x="113" y="47" width="5" height="4" fill="${K}"/><rect x="50" y="47" width="5" height="4" fill="${K}"/><circle cx="84" cy="49" r="4" fill="${Rr}"/>`},
+ {n:'Ev ve eşyalar',c:'30 / 70',p:43,bg:Rr,svg:`<rect x="46" y="46" width="76" height="42" fill="${Cc}" ${SW}/><path d="M36 50L84 12L132 50Z" fill="${K}"/><rect x="74" y="60" width="20" height="28" fill="${Yy}" ${SW}/><rect x="100" y="56" width="14" height="14" fill="${Bb}" ${SW}/>`},
+ {n:'Aile ve insanlar',c:'41 / 80',p:51,bg:Cc,svg:`<circle cx="62" cy="30" r="14" fill="${Bb}" ${SW}/><path d="M38 86A24 24 0 0 1 86 86Z" fill="${Bb}" ${SW}/><circle cx="114" cy="48" r="10" fill="${Yy}" ${SW}/><path d="M96 86A18 18 0 0 1 132 86Z" fill="${Yy}" ${SW}/>`},
+ {n:'Renkler ve sayılar',c:'60 / 60',p:100,bg:Cc,svg:`<circle cx="46" cy="48" r="26" fill="${Rr}" ${SW}/><circle cx="84" cy="48" r="26" fill="${Yy}" ${SW}/><circle cx="122" cy="48" r="26" fill="${Bb}" ${SW}/><text x="46" y="58" text-anchor="middle" font-size="28" font-weight="800" fill="${Ww}" font-family="Jost">1</text><text x="84" y="58" text-anchor="middle" font-size="28" font-weight="800" fill="${K}" font-family="Jost">2</text><text x="122" y="58" text-anchor="middle" font-size="28" font-weight="800" fill="${Ww}" font-family="Jost">3</text>`},
+ {n:'Vücut ve sağlık',c:'23 / 75',p:31,bg:Yy,svg:`<path d="M84 82C40 54 50 20 84 38C118 20 128 54 84 82Z" fill="${Rr}" ${SW}/><polyline points="8,56 52,56 64,40 78,76 92,48 102,56 161,56" fill="none" stroke="${K}" stroke-width="3" stroke-linejoin="round"/>`},
+ {n:'Okul ve iş',c:'18 / 65',p:28,bg:Bb,svg:`<path d="M30 30h52v46H30z" fill="${Cc}" ${SW}/><path d="M86 30h52v46H86z" fill="${Cc}" ${SW}/><path d="M42 44h28M42 54h28M98 44h28M98 54h28" stroke="${K}" stroke-width="3"/><path d="M118 74L150 34L160 42L128 82Z" fill="${Yy}" ${SW}/><path d="M118 74L128 82L112 86Z" fill="${K}"/>`},
+ {n:'Hayvanlar',c:'30 / 70',p:43,bg:Bb,svg:`<path d="M56 38L58 10L78 26Z" fill="${Yy}" ${SW}/><path d="M112 38L110 10L90 26Z" fill="${Yy}" ${SW}/><circle cx="84" cy="54" r="32" fill="${Yy}" ${SW}/><circle cx="72" cy="50" r="4" fill="${K}"/><circle cx="96" cy="50" r="4" fill="${K}"/><path d="M78 62h12l-6 7z" fill="${Rr}" ${SW}/><path d="M44 58h14M44 66h14M110 58h14M110 66h14" stroke="${K}" stroke-width="2.5"/>`},
+ {n:'Şehir ve ulaşım',c:'0 / 85',p:0,bg:Cc,svg:`<rect x="26" y="30" width="116" height="44" fill="${Yy}" ${SW}/><rect x="36" y="38" width="22" height="16" fill="${Cc}" ${SW}/><rect x="64" y="38" width="22" height="16" fill="${Cc}" ${SW}/><rect x="92" y="38" width="22" height="16" fill="${Cc}" ${SW}/><rect x="120" y="38" width="16" height="30" fill="${Cc}" ${SW}/><circle cx="52" cy="76" r="9" fill="${K}"/><circle cx="116" cy="76" r="9" fill="${K}"/>`},
+ {n:'Zaman ve hava',c:'0 / 60',p:0,bg:Bb,svg:`<circle cx="62" cy="38" r="22" fill="${Yy}" ${SW}/><circle cx="92" cy="62" r="17" fill="${Ww}"/><circle cx="112" cy="54" r="21" fill="${Ww}"/><circle cx="134" cy="64" r="15" fill="${Ww}"/><rect x="92" y="62" width="42" height="17" fill="${Ww}"/>`}
+];
+CATS.forEach((c,i)=>{const d=document.createElement('div');d.id='cc'+i;d.className='box cc el cin';d.style.cursor='pointer';
+ d.innerHTML=`<div class="art" style="background:${c.bg}"><svg viewBox="0 0 163 95" preserveAspectRatio="xMidYMid slice">${c.svg}</svg></div><div class="inf"><b>${c.n}</b><div class="meta">${c.c}<div class="pb"><i style="width:${c.p}%"></i></div></div></div>`;
+ $('#catsGrid').appendChild(d)});
+/* ---------- entrance ---------- */
+function homeEnter(){$$('#home .ent').forEach((e,i)=>{set(e,{o:0,y:14});A(e,{o:1,y:0},i*.045,.26,EASE.mech)})}
+/* ---------- navigation home -> cats ---------- */
+let screen='home',busy=false;
+function goCats(){if(busy||screen!=='home')return;busy=true;press($('#hero'));const h=$('#home'),c=$('#cats');
+ T(.16,()=>{c.style.visibility='visible';set(c,{x:24,o:0});$$('#cats .cin').forEach(e=>set(e,{o:0,y:16}))});
+ A(h,{x:-24,o:0},.16,.26,EASE.mech);A(c,{x:0,o:1},.16,.26,EASE.mech);
+ $$('#cats .cin').forEach((e,i)=>A(e,{o:1,y:0},.30+i*.045,.26,EASE.mech));
+ T(.8,()=>{screen='cats';busy=false;h.style.visibility='hidden'})}
+function backHome(){if(busy||screen!=='cats')return;busy=true;const h=$('#home'),c=$('#cats');h.style.visibility='visible';A(c,{x:24,o:0},0,.26,EASE.mech);A(h,{x:0,o:1},0,.26,EASE.mech,{x:-24,o:0});T(.3,()=>{screen='home';busy=false;c.style.visibility='hidden'})}
+/* ---------- dialog (container transform from card) ---------- */
+const card=()=>window.__sel||$('#cc1');let cardR=null;
+function openDlg(){if(busy||screen!=='cats')return;busy=true;const cd=card(),dl=$('#dlg'),sc=$('#scrim'),inner=$('#dlgIn');
+ const r0=rect(cd);cardR={left:r0.left,top:r0.top-6,width:r0.width,height:r0.height};
+ // 1) lift  2) card flips away on Y  3) dialog flips in from the card rect while growing
+ A(cd,{y:-6,r:-2,sh:10},0,.12,EASE.pop);
+ A(cd,{ry:90},.1,.16,EASE.turn);T(.26,()=>set(cd,{o:0}));
+ dl.style.visibility='visible';dl.style.left=cardR.left+'px';dl.style.top=cardR.top+'px';dl.style.width=cardR.width+'px';dl.style.height=cardR.height+'px';
+ set(dl,{o:0,ry:-90});T(.25,()=>set(dl,{o:1,ry:-90}));
+ set(inner,{o:0});$$('.dlgI').forEach(e=>set(e,{o:0,y:10}));
+ A(sc,{o:.55},.1,.22,EASE.lin);
+ A(dl,{ry:0},.25,.2,EASE.mech,{ry:-90});
+ M(dl,{left:20,top:238,width:350,height:340},.25,.3,EASE.mech);
+ A(inner,{o:1},.4,.14,EASE.lin);
+ $$('.dlgI').forEach((e,i)=>A(e,{o:1,y:0},.42+i*.035,.2,EASE.mech));
+ sc.style.pointerEvents='auto';
+ T(.7,()=>{busy=false;screen='dlg'})}
+function closeDlg(){if(busy||screen!=='dlg')return;busy=true;const cd=card(),dl=$('#dlg'),sc=$('#scrim'),inner=$('#dlgIn');
+ A(inner,{o:0},0,.09,EASE.lin);
+ M(dl,{left:cardR.left,top:cardR.top,width:cardR.width,height:cardR.height},.06,.24,EASE.turn);
+ A(dl,{ry:-90},.14,.16,EASE.turn);
+ A(sc,{o:0},.06,.22,EASE.lin);
+ T(.28,()=>{set(cd,{o:1,ry:90});set(dl,{o:0})});
+ A(cd,{ry:0},.28,.18,EASE.mech,{ry:90});
+ A(cd,{y:0,r:0,sh:4},.42,.18,EASE.pop);
+ T(.3,()=>{dl.style.visibility='hidden'});
+ T(.62,()=>{sc.style.pointerEvents='none';busy=false;screen='cats'})}
+function seg(id,idx,delay=0){const s=$(id),kids=[...s.children].slice(1),ind=s.children[0];const w=(s.clientWidth-6)/kids.length;
+ kids.forEach((k,i)=>k.classList.toggle('sel',i===idx));
+ const cur=parseFloat(ind.dataset.x||(kids.findIndex(k=>0)));}
+function initSeg(id,idx){const s=$(id),kids=[...s.children].slice(1),ind=s.children[0];const w=(s.clientWidth-6)/kids.length;ind.style.width=w+'px';ind.dataset.x=idx*w;ind.style.transform=`translateX(${idx*w}px)`;kids.forEach((k,i)=>k.classList.toggle('sel',i===idx));
+ kids.forEach((k,i)=>k.onclick=()=>moveSeg(id,i))}
+function moveSeg(id,idx,delay=0){const s=$(id),kids=[...s.children].slice(1),ind=s.children[0];const w=(s.clientWidth-6)/kids.length;const from=parseFloat(ind.dataset.x||0),to=idx*w;
+ tw(delay,.16,(e)=>{const x=from+(to-from)*e;ind.style.transform=`translateX(${x}px)`;ind.dataset.x=x},EASE.mech);kids.forEach((k,i)=>k.classList.toggle('sel',i===idx))}
+/* ---------- OYNA -> game (letter morph) ---------- */
+function startGame(){if(busy||screen!=='dlg')return;busy=true;const pb=$('#playBtn'),ink=$('#ink'),big=$('#bigA'),sc=$('#scrim');
+ press(pb);const r=rect(pb);
+ ink.style.display='block';ink.style.left=r.left+'px';ink.style.top=r.top+'px';ink.style.width=r.width+'px';ink.style.height=r.height+'px';ink.style.background='#E0534C';set(ink,{o:1});set(big,{o:0,s:.85});big.style.fontSize='230px';
+ const c1=[224,83,76],c2=[31,36,45];
+ // 1) expand: button -> full screen (red -> ink)
+ M(ink,{left:0,top:0,width:390,height:844},.16,.30,EASE.mech);
+ tw(.16,.20,(e)=>{ink.style.background=`rgb(${c1.map((v,i)=>Math.round(v+(c2[i]-v)*e))})`},EASE.lin);
+ // 2) big letter pops in
+ A(big,{o:1,s:1},.34,.2,EASE.pop,{o:0,s:.85});
+ // prepare game underneath at 0.46
+ T(.3,()=>{$('#game').style.visibility='visible';hideGame();set($('#decR'),{o:0});set($('#decB'),{o:0})});
+ T(.5,()=>{$('#dlg').style.visibility='hidden';sc.style.opacity=0;sc.style.pointerEvents='none';$('#cats').style.visibility='hidden'});
+ // 3) hold, then shrink into the wheel marker (t=.64)
+ const mk=rect($('#marker'));const t0=.66;
+ M(ink,{left:mk.left,top:mk.top,width:mk.width,height:mk.height},t0,.30,EASE.mech);
+ tw(t0,.30,(e)=>{big.style.fontSize=(230+(20-230)*e)+'px'},EASE.mech);
+ tw(t0,.2,(e)=>{},EASE.lin);
+ T(t0+.30,()=>{ink.style.display='none';set($('#marker'),{o:1})});
+ // 4) staggers
+ A($('#gTop'),{o:1,y:0},t0+.02,.22,EASE.mech,{o:0,y:-10});
+ chips.forEach((c,i)=>A(c,{o:1},t0+.04+i*.008,.2,EASE.lin));
+ T(t0+.04,()=>{chips[0].style.visibility='hidden'});
+ A($('#center'),{o:1,s:1},t0+.08,.26,EASE.pop,{o:0,s:.7});
+ A($('#decR'),{o:1},t0+.1,.3,EASE.lin);A($('#decB'),{o:1},t0+.1,.3,EASE.lin);
+ A($('#clue'),{o:1,y:0},t0+.18,.24,EASE.mech,{o:0,y:14});
+ slots.forEach((s,i)=>A(s,{o:1,y:0},t0+.24+i*.03,.2,EASE.mech,{o:0,y:12}));
+ keyEls.forEach((k,i)=>A(k,{o:1,y:0},t0+.3+i*.02,.2,EASE.mech,{o:0,y:12}));
+ A($('#gBot'),{o:1,y:0},t0+.46,.22,EASE.mech,{o:0,y:12});
+ T(t0+.78,()=>{screen='game';busy=false;gameStart=clock.t;locked=false;updAct()})}
+clock.ticks.push(()=>{if(gameStart===null)return;const el=clock.t-gameStart,rem=Math.max(0,180-el),m=Math.floor(rem/60),s=Math.floor(rem%60);$('#tTxt').textContent=m+':'+String(s).padStart(2,'0');$('#tFill').style.width=(100*rem/180)+'%'});
+/* ---------- game input ---------- */
+function typeKey(k,demoDelay=0){if(screen!=='game'||locked||k.classList.contains('used')||typed.length>=slots.length)return;
+ const slot=slots[typed.length];typed.push(k);press(k);k.classList.add('used');
+ const kr=rect(k),sr=rect(slot);const f=document.createElement('div');f.className='fly';f.textContent=k.textContent;f.style.left=(kr.left+kr.width/2-22)+'px';f.style.top=(kr.top+kr.height/2-22)+'px';phone.appendChild(f);
+ const dx=(sr.left+sr.width/2)-(kr.left+kr.width/2),dy=(sr.top+sr.height/2)-(kr.top+kr.height/2);
+ tw(.04,.2,(e)=>{const mid=Math.sin(Math.PI*e);f.style.transform=`translate(${dx*e}px,${dy*e}px) scale(${1+.15*mid})`;f.style.opacity=1},EASE.fly,()=>{f.remove();slot.textContent=k.textContent;slot.classList.add('on');A(slot,{s:1},0,.08,EASE.pop,{s:1.12});updAct();if(typed.length===slots.length)check()});
+ updAct()}
+function back(){if(screen!=='game'||locked||!typed.length)return;const k=typed.pop(),s=slots[typed.length];s.textContent='';s.classList.remove('on');k.classList.remove('used');updAct()}
+$('#bks').onclick=back;
+function check(){const w=typed.map(k=>k.textContent).join('');locked=true;
+ if(w===WORDS[wi].w){correct()}else{wrong()}}
+function wrong(){slots.forEach(s=>{s.style.borderColor='var(--red)';s.style.background='var(--red)'});
+ [-12,12,-9,9,-4,0].forEach((dx,i)=>slots.forEach(s=>A(s,{x:dx},i*.06,.06,EASE.lin)));
+ T(.5,()=>{slots.forEach(s=>{s.style.borderColor='';s.style.background='';s.textContent='';s.classList.remove('on')});keyEls.forEach(k=>k.classList.remove('used'));typed=[];locked=false;updAct()})}
+function correct(){const ch=chips[wi];ch.style.visibility='visible';ch.classList.add('ok');
+ A(ch,{s:1.45},0,.16,EASE.pop,{s:1});A(ch,{s:1},.16,.16,EASE.mech,{s:1.45});
+ const ring=document.createElement('div');ring.style.cssText='position:absolute;border:4px solid var(--blue);border-radius:50%;width:30px;height:30px;pointer-events:none';ring.style.left=(ch.__pos.x-15)+'px';ring.style.top=(ch.__pos.y-15)+'px';$('#ring').appendChild(ring);tw(0,.32,(e)=>{ring.style.transform=`scale(${.6+1.2*e})`;ring.style.opacity=1-e},EASE.mech,()=>ring.remove());
+ slots.forEach((s,i)=>{s.style.background='var(--blue)';s.style.borderColor='var(--ink)'});
+ const sc=$('#score');const from=score;score+=10;tw(.05,.3,(e)=>{sc.textContent=Math.round(from+10*e)},EASE.mech);A(sc,{s:1},.05,.2,EASE.pop,{s:1.25});
+ // advance after a beat
+ T(.55,()=>nextWord())}
+function nextWord(){if(wi>=1){locked=false;return}
+ wi++;const w=WORDS[wi],m=$('#marker');const a=chips[wi-1].__pos,b=chips[wi].__pos;
+ tw(0,.14,(e)=>{m.style.left=(a.x+(b.x-a.x)*e-18)+'px';m.style.top=(a.y+(b.y-a.y)*e-18)+'px'},EASE.lin,()=>{m.textContent=w.let;chips[wi].style.visibility='hidden'});
+ const cl=$('#cLet');A(cl,{y:60,o:0},0,.14,EASE.turn);T(.14,()=>{cl.textContent=w.let;set(cl,{y:-60,o:0})});A(cl,{y:0,o:1},.14,.16,EASE.mech,{y:-60,o:0});
+ const ct=$('#clueTxt');A(ct,{x:-30,o:0},.05,.12,EASE.turn);T(.17,()=>{ct.textContent=w.clue;set(ct,{x:30,o:0})});A(ct,{x:0,o:1},.17,.18,EASE.mech,{x:30,o:0});
+ slots.forEach(s=>A(s,{o:0,y:8},0,.1,EASE.lin));
+ T(.2,()=>{typed=[];buildSlots(5);buildKeys(w.keys);slots.forEach((s,i)=>A(s,{o:1,y:0},i*.03,.2,EASE.mech,{o:0,y:12}));keyEls.forEach((k,i)=>A(k,{o:1,y:0},i*.02,.2,EASE.mech,{o:0,y:12}));locked=false;updAct()})}
+/* ---------- wiring ---------- */
+$('#hero').onclick=goCats;$$('#catsGrid .cc').forEach(c=>c.onclick=()=>{window.__sel=c;openDlg()});$('#backCats').onclick=backHome;$('#backDlg').onclick=closeDlg;$('#scrim').onclick=closeDlg;$('#playBtn').onclick=startGame;
+initSeg('#segMode',0);initSeg('#segTime',1);
+function resetAll(){location.reload()}
+$('#bReset').onclick=resetAll;
+/* ---------- demo script ---------- */
+function demo(){DEMO=true;const c=(id)=>CENTER(rect($(id)));
+ // times relative to now (seconds)
+ T(1.0,()=>{tapAt(...c('#hero'))});T(1.15,()=>goCats());
+ T(2.7,()=>tapAt(...c('#cc1')));T(2.8,()=>openDlg());
+ T(4.2,()=>tapAt(...c('#segTime>div:nth-child(4)')));T(4.3,()=>moveSeg('#segTime',2));
+ T(5.3,()=>tapAt(...c('#backDlg')));T(5.4,()=>closeDlg());
+ T(6.6,()=>tapAt(...c('#cc1')));T(6.7,()=>openDlg());
+ T(7.5,()=>moveSeg('#segTime',1));
+ T(8.4,()=>tapAt(...c('#playBtn')));T(8.5,()=>startGame());
+ const seq=[['P',0],['P',1],['L',0],['A',0],['E',0]];
+ // A P P L E : keys order PLANS EYPRU -> A=idx2, P=idx0 and idx7, L=idx1, E=idx5
+ const order=[2,0,7,1,5];let t=11.0;
+ order.forEach((idx,i)=>{T(t+i*.55-.1,()=>tapAt(...CENTER(rect(keyEls[idx]))));T(t+i*.55,()=>typeKey(keyEls[idx]))});
+ }
+$('#bDemo').onclick=()=>{location.href='flow.html?demo=1'};
+hideGame();
+if(location.search.includes('demo')||location.search.includes('record')){window.__ready=true}
+if(!location.search.includes('record')){let last=performance.now();const loop=n=>{step(Math.min(.05,(n-last)/1000));last=n;requestAnimationFrame(loop)};requestAnimationFrame(loop)}
+if(location.search.includes('demo')||location.search.includes('record')){T(0,()=>{});demo()}
+window.__keys=()=>keyEls;
+</script></body></html>
