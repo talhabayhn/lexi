@@ -5,8 +5,6 @@ import dev.talhabayhan.lexi.core.domain.config.FeatureFlags
 import dev.talhabayhan.lexi.core.domain.daily.GetDailyWheel
 import dev.talhabayhan.lexi.core.domain.game.GameConfig
 import dev.talhabayhan.lexi.core.domain.game.GameMode
-import dev.talhabayhan.lexi.core.domain.goal.DailyGoalProgress
-import dev.talhabayhan.lexi.core.domain.goal.GetDailyGoalProgress
 import dev.talhabayhan.lexi.core.domain.joker.GrantDailyJokers
 import dev.talhabayhan.lexi.core.domain.model.CardId
 import dev.talhabayhan.lexi.core.domain.model.CategoryId
@@ -19,7 +17,7 @@ import dev.talhabayhan.lexi.core.domain.session.DailyResult
 import dev.talhabayhan.lexi.core.domain.session.SessionResult
 import dev.talhabayhan.lexi.core.domain.settings.Settings
 import dev.talhabayhan.lexi.core.domain.srs.CardProgress
-import dev.talhabayhan.lexi.core.domain.streak.GetStreakStatus
+import dev.talhabayhan.lexi.core.domain.telemetry.AnalyticsEvent
 import dev.talhabayhan.lexi.core.domain.time.AppClock
 import dev.talhabayhan.lexi.core.testing.FakeAnalyticsTracker
 import dev.talhabayhan.lexi.core.testing.FakeAppClock
@@ -33,6 +31,7 @@ import dev.talhabayhan.lexi.core.testing.FakeProgressRepository
 import dev.talhabayhan.lexi.core.testing.FakeReviewRequester
 import dev.talhabayhan.lexi.core.testing.FakeSessionRepository
 import dev.talhabayhan.lexi.core.testing.FakeSettingsRepository
+import dev.talhabayhan.lexi.core.testing.FakeShareService
 import dev.talhabayhan.lexi.core.testing.FakeStreakRepository
 import dev.talhabayhan.lexi.core.testing.testAlphabetPool
 import dev.talhabayhan.lexi.core.testing.testExamPack
@@ -65,14 +64,14 @@ class HomeViewModelTest {
     private val daily = FakeDailyRepository()
     private val sessions = FakeSessionRepository()
     private val settings = FakeSettingsRepository()
-    private val getStreakStatus = GetStreakStatus(streaks, clock)
     private val getDailyWheel = GetDailyWheel(cards, contentVersion, daily, clock)
-    private val getDailyGoalProgress = GetDailyGoalProgress(sessions, settings, clock)
     private val grantDailyJokers = GrantDailyJokers(jokers, streaks, clock, GameConfig())
     private val examPacks = FakeExamPackRepository()
     private val permission = FakeNotificationPermission(PermissionStatus.CAN_ASK)
     private val shouldShowPrePrompt = ShouldShowReminderPrePrompt(settings, sessions, permission, clock)
     private val reviewRequester = FakeReviewRequester()
+    private var share = FakeShareService()
+    private val analytics = FakeAnalyticsTracker()
     private val requestInAppReview =
         RequestInAppReview(settings, sessions, reviewRequester, FakeAnalyticsTracker(), clock)
 
@@ -88,17 +87,19 @@ class HomeViewModelTest {
     }
 
     private fun viewModel(): HomeViewModel = HomeViewModel(
-        progress,
-        getStreakStatus,
-        getDailyWheel,
-        daily,
-        clock,
-        getDailyGoalProgress,
-        grantDailyJokers,
-        shouldShowPrePrompt,
-        requestInAppReview,
-        examPacks,
-        FeatureFlags(),
+        progress = progress,
+        sessions = sessions,
+        settings = settings,
+        getDailyWheel = getDailyWheel,
+        daily = daily,
+        appClock = clock,
+        grantDailyJokers = grantDailyJokers,
+        shouldShowReminderPrePrompt = shouldShowPrePrompt,
+        requestInAppReview = requestInAppReview,
+        examPacks = examPacks,
+        flags = FeatureFlags(),
+        shareService = share,
+        analytics = analytics,
     )
 
     private fun runHomeTest(block: suspend TestScope.() -> Unit) = runTest {
@@ -109,112 +110,12 @@ class HomeViewModelTest {
         CardProgress(CardId(id), box = box, dueEpochDay = due, seen = 1, correct = correct)
 
     @Test
-    fun `nothing played yet shows real zeros and today's date`() = runHomeTest {
-        viewModel().state.test {
-            val state = awaitItem()
-            assertEquals(0, state.streakDays)
-            assertEquals(0, state.dueReviews)
-            assertEquals(0, state.learnedWords)
-            assertEquals(15, state.dailyDay)
-            assertEquals(10, state.dailyMonth)
-            assertEquals(DailyCardState.Available, state.dailyState)
-        }
-    }
-
-    @Test
     fun `exam tile lists only packs playable in this build`() = runHomeTest {
         examPacks.packs = listOf(testExamPack("lgs", sort = 0), testExamPack("yds", isPro = true, sort = 1))
         viewModel().state.test {
             var state = awaitItem()
             while (state.examPackNames.isEmpty()) state = awaitItem()
             assertEquals(listOf("lgs"), state.examPackNames)
-        }
-    }
-
-    @Test
-    fun `numbers come from the repositories and follow their changes`() = runHomeTest {
-        progress.save(
-            listOf(
-                card("a", correct = 2),
-                card("b", box = 0, due = today, correct = 1),
-                card("c", box = 1, due = today + 1),
-            ),
-        )
-        streaks.days = listOf(today - 1, today)
-
-        viewModel().state.test {
-            val state = expectMostRecentItem()
-            assertEquals(2, state.streakDays)
-            assertEquals(1, state.dueReviews)
-            assertEquals(2, state.learnedWords)
-
-            streaks.days = listOf(today - 2, today - 1, today)
-            assertEquals(3, awaitItem().streakDays)
-        }
-    }
-
-    @Test
-    fun `numbers move on to the new day when the screen is resumed after midnight`() = runHomeTest {
-        progress.save(listOf(card("b", box = 0, due = today + 1, correct = 1)))
-        streaks.days = listOf(today)
-        val viewModel = viewModel()
-        viewModel.state.test {
-            val before = expectMostRecentItem()
-            assertEquals(15, before.dailyDay)
-            assertEquals(0, before.dueReviews)
-            assertEquals(1, before.streakDays)
-
-            clock.advanceBy(FakeAppClock.MS_PER_DAY)
-            viewModel.onIntent(HomeIntent.Refresh)
-
-            val after = expectMostRecentItem()
-            assertEquals(16, after.dailyDay)
-            assertEquals(1, after.dueReviews)
-            // Yesterday was played, today is still open: the streak is alive.
-            assertEquals(1, after.streakDays)
-        }
-    }
-
-    @Test
-    fun `streak and daily card recompute on refresh when midnight passes while app is open`() = runHomeTest {
-        streaks.days = listOf(today)
-        daily.record(DailyResult(today, Level.A1, score = 150, timeMs = 45000))
-        val viewModel = viewModel()
-        viewModel.state.test {
-            val before = expectMostRecentItem()
-            assertEquals(1, before.streakDays)
-            assertEquals(15, before.dailyDay)
-            assertEquals(
-                DailyCardState.AlreadyPlayed(150, hoursUntilNext = 12, minutesUntilNext = 0),
-                before.dailyState,
-            )
-
-            // Advance past midnight and drive periodic refresh
-            val msToMidnight = clock.msUntilNextDay()
-            clock.advanceBy(msToMidnight + 1000L)
-            viewModel.onIntent(HomeIntent.Refresh)
-
-            val after = expectMostRecentItem()
-            assertEquals(16, after.dailyDay)
-            assertEquals(1, after.streakDays) // streak alive from yesterday
-            assertEquals(DailyCardState.Available, after.dailyState) // new daily available!
-        }
-    }
-
-    @Test
-    fun `streak badge resets on resume after a missed day`() = runHomeTest {
-        // Played today - 1 (alive), then advance 2 days without playing (missed)
-        streaks.days = listOf(today)
-        val viewModel = viewModel()
-        viewModel.state.test {
-            val before = expectMostRecentItem()
-            assertEquals(1, before.streakDays)
-
-            clock.advanceBy(FakeAppClock.MS_PER_DAY * 2)
-            viewModel.onIntent(HomeIntent.Refresh)
-
-            val after = expectMostRecentItem()
-            assertEquals(0, after.streakDays) // missed day resets streak
         }
     }
 
@@ -283,17 +184,19 @@ class HomeViewModelTest {
         val getDaily = GetDailyWheel(cards, contentVersion, daily, dstClock)
         daily.record(DailyResult(100L, Level.A1, score = 180, timeMs = 20000))
         val vm = HomeViewModel(
-            progress,
-            GetStreakStatus(streaks, dstClock),
-            getDaily,
-            daily,
-            dstClock,
-            GetDailyGoalProgress(sessions, settings, dstClock),
-            GrantDailyJokers(jokers, streaks, dstClock, GameConfig()),
-            shouldShowPrePrompt,
-            requestInAppReview,
-            examPacks,
-            FeatureFlags(),
+            progress = progress,
+            sessions = sessions,
+            settings = settings,
+            getDailyWheel = getDaily,
+            daily = daily,
+            appClock = dstClock,
+            grantDailyJokers = GrantDailyJokers(jokers, streaks, dstClock, GameConfig()),
+            shouldShowReminderPrePrompt = shouldShowPrePrompt,
+            requestInAppReview = requestInAppReview,
+            examPacks = examPacks,
+            flags = FeatureFlags(),
+            shareService = share,
+            analytics = analytics,
         )
         vm.state.test {
             val state = awaitItem()
@@ -317,13 +220,78 @@ class HomeViewModelTest {
     }
 
     @Test
-    fun `play opens the level select`() = runHomeTest {
+    fun `nothing played yet shows real zeros, A1 and 3 min`() = runHomeTest {
+        viewModel().state.test {
+            val state = expectMostRecentItem()
+            assertEquals(0L, state.totalScore)
+            assertEquals(0, state.dueReviews)
+            assertEquals(Level.A1, state.selectedLevel)
+            assertEquals(180, state.classicTimeLimitSeconds)
+            assertEquals(DailyCardState.Available, state.dailyState)
+        }
+    }
+
+    @Test
+    fun `total score and due reviews come from the repositories and follow their changes`() = runHomeTest {
+        progress.save(listOf(card("a", correct = 2), card("b", box = 0, due = today, correct = 1)))
+        sessions.record(session())
+        viewModel().state.test {
+            val state = expectMostRecentItem()
+            assertEquals(200L, state.totalScore)
+            assertEquals(1, state.dueReviews)
+
+            sessions.record(session())
+            assertEquals(400L, expectMostRecentItem().totalScore)
+        }
+    }
+
+    @Test
+    fun `due reviews move on to the new day when the screen is refreshed after midnight`() = runHomeTest {
+        progress.save(listOf(card("b", box = 0, due = today + 1, correct = 1)))
+        val viewModel = viewModel()
+        viewModel.state.test {
+            assertEquals(0, expectMostRecentItem().dueReviews)
+
+            clock.advanceBy(FakeAppClock.MS_PER_DAY)
+            viewModel.onIntent(HomeIntent.Refresh)
+
+            assertEquals(1, expectMostRecentItem().dueReviews)
+        }
+    }
+
+    @Test
+    fun `play opens the category picker on the stored level`() = runHomeTest {
+        settings.update { it.copy(selectedLevel = Level.B2) }
         val viewModel = viewModel()
         viewModel.effects.test {
             viewModel.onIntent(HomeIntent.Play)
 
-            assertEquals(HomeEffect.NavigateToLevelSelect, awaitItem())
+            assertEquals(HomeEffect.NavigateToCategoryPicker(Level.B2), awaitItem())
         }
+    }
+
+    @Test
+    fun `invite shares the message and tracks share with type invite`() = runHomeTest {
+        val viewModel = viewModel()
+
+        viewModel.onIntent(HomeIntent.Invite("Sen de dene: https://talhabayhn.github.io/lexi/tr/"))
+
+        assertEquals(listOf("Sen de dene: https://talhabayhn.github.io/lexi/tr/"), share.sharedTexts)
+        assertEquals(
+            listOf<AnalyticsEvent>(AnalyticsEvent.Share(AnalyticsEvent.ShareType.INVITE)),
+            analytics.events,
+        )
+    }
+
+    @Test
+    fun `an invite whose sheet could not be shown is not tracked`() = runHomeTest {
+        share = FakeShareService(result = false)
+        val viewModel = viewModel()
+
+        viewModel.onIntent(HomeIntent.Invite("message"))
+
+        assertEquals(1, share.sharedTexts.size)
+        assertTrue(analytics.events.isEmpty())
     }
 
     @Test
@@ -353,16 +321,6 @@ class HomeViewModelTest {
             viewModel.onIntent(HomeIntent.OpenSettings)
 
             assertEquals(HomeEffect.NavigateToSettings, awaitItem())
-        }
-    }
-
-    @Test
-    fun `the practice tile opens the practice select`() = runHomeTest {
-        val viewModel = viewModel()
-        viewModel.effects.test {
-            viewModel.onIntent(HomeIntent.OpenPractice)
-
-            assertEquals(HomeEffect.NavigateToPractice, awaitItem())
         }
     }
 
@@ -548,57 +506,6 @@ class HomeViewModelTest {
             passed = 3,
             completed = completed,
         )
-
-    @Test
-    fun `daily goal progress reflects completed wheels and updates on session record`() = runHomeTest {
-        settings.update { it.copy(dailyGoalWheels = 2) }
-        val viewModel = viewModel()
-        viewModel.state.test {
-            val initial = expectMostRecentItem()
-            assertEquals(DailyGoalProgress(done = 0, goal = 2, reached = false), initial.dailyGoalProgress)
-
-            sessions.record(session(completed = true))
-            val afterOne = expectMostRecentItem()
-            assertEquals(DailyGoalProgress(done = 1, goal = 2, reached = false), afterOne.dailyGoalProgress)
-
-            sessions.record(session(completed = true))
-            val reached = expectMostRecentItem()
-            assertEquals(DailyGoalProgress(done = 2, goal = 2, reached = true), reached.dailyGoalProgress)
-        }
-    }
-
-    @Test
-    fun `daily goal progress updates when settings goal is changed`() = runHomeTest {
-        sessions.record(session(completed = true))
-        val viewModel = viewModel()
-        viewModel.state.test {
-            val initial = expectMostRecentItem()
-            assertEquals(DailyGoalProgress(done = 1, goal = 1, reached = true), initial.dailyGoalProgress)
-
-            settings.update { it.copy(dailyGoalWheels = 3) }
-            val updated = expectMostRecentItem()
-            assertEquals(DailyGoalProgress(done = 1, goal = 3, reached = false), updated.dailyGoalProgress)
-        }
-    }
-
-    @Test
-    fun `daily goal progress resets today count after midnight refresh`() = runHomeTest {
-        settings.update { it.copy(dailyGoalWheels = 2) }
-        sessions.record(session(day = today, completed = true))
-        val viewModel = viewModel()
-        viewModel.state.test {
-            val before = expectMostRecentItem()
-            assertEquals(DailyGoalProgress(done = 1, goal = 2, reached = false), before.dailyGoalProgress)
-
-            // Advance past midnight and trigger refresh
-            val msToMidnight = clock.msUntilNextDay()
-            clock.advanceBy(msToMidnight + 1000L)
-            viewModel.onIntent(HomeIntent.Refresh)
-
-            val after = expectMostRecentItem()
-            assertEquals(DailyGoalProgress(done = 0, goal = 2, reached = false), after.dailyGoalProgress)
-        }
-    }
 
     @Test
     fun `daily gift notice shows once when grant is returned and dismisses on intent`() = runHomeTest {

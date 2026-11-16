@@ -1,9 +1,8 @@
 package dev.talhabayhan.lexi.feature.home
 
 import androidx.compose.runtime.Immutable
-import dev.talhabayhan.lexi.core.domain.game.GameMode
-import dev.talhabayhan.lexi.core.domain.goal.DailyGoalProgress
 import dev.talhabayhan.lexi.core.domain.model.Level
+import dev.talhabayhan.lexi.core.domain.settings.Settings
 
 /**
  * State of the daily wheel card on the home screen.
@@ -35,31 +34,25 @@ internal enum class DailyGiftNoticeType {
 internal data class DailyGiftNotice(val type: DailyGiftNoticeType, val amount: Int)
 
 /**
- * What `02-home` shows. The zero values are real ones (nothing played yet); they are replaced as the repositories
- * emit.
+ * What the video flow's Home shows (`video-flow-notes.md` §1, `home_v5.png`). The zero values are real ones (nothing
+ * played yet); they are replaced as the repositories emit. No streak anywhere on Home.
  */
 @Immutable
 internal data class HomeUiState(
-    /** Consecutive days with a completed wheel, ending today (or yesterday while today is still open). 0 hides badge. */
-    val streakDays: Int = 0,
-    /** Notebook cards due today ("N tekrar bekliyor"). */
+    /** "toplam puan": the scores of every stored game added up. */
+    val totalScore: Long = 0L,
+    /** Notebook cards due today ("24 tekrar" on the Defter tile). */
     val dueReviews: Int = 0,
-    /** Cards ever answered correctly ("N kelime öğrenildi"). */
-    val learnedWords: Int = 0,
-    /** Day of the month and month (1–12) of today, for the daily card. */
-    val dailyDay: Int = 1,
-    val dailyMonth: Int = 1,
     /** State of the daily wheel card (Available, AlreadyPlayed, Unavailable). */
     val dailyState: DailyCardState = DailyCardState.Available,
-    /** Level and mode on the OYNA badge. TODO(M5): the last played choice, once it is persisted. */
-    val playLevel: Level = Level.A1,
-    val playMode: GameMode = GameMode.CLASSIC,
-    /** Daily goal progress for today ("Bugün {done}/{goal}"). */
-    val dailyGoalProgress: DailyGoalProgress? = null,
     /** Daily joker gift notice (toast) when GrantDailyJokers gives a gift or streak bonus. */
     val dailyGiftNotice: DailyGiftNotice? = null,
-    /** Names of the exam packs playable in this build, in display order; the "Sınav paketleri" tile lists them. */
+    /** Names of the exam packs playable in this build, in display order; the Sınavlar tile lists them. */
     val examPackNames: List<String> = emptyList(),
+    /** The level "Çarkını seç" opens on: the onboarding's choice, then the last level chip picked. */
+    val selectedLevel: Level = Level.A1,
+    /** The time last chosen for Classic / Hardcore, for the play card's "3 dk". */
+    val classicTimeLimitSeconds: Int = Settings.DEFAULT_CLASSIC_TIME_LIMIT_SECONDS,
 )
 
 internal sealed interface HomeIntent {
@@ -85,33 +78,37 @@ internal sealed interface HomeIntent {
      */
     data object Entered : HomeIntent
 
-    /** OYNA: opens the level and mode select. */
+    /** The play card: opens "Çarkını seç" on the selected level. */
     data object Play : HomeIntent
 
     /** The daily wheel card: opens the daily wheel when available. */
     data object OpenDaily : HomeIntent
 
-    /** The gear icon. */
+    /** "Ayarlar" in the bottom bar. */
     data object OpenSettings : HomeIntent
 
-    /** The Kelime Defterim tile. */
+    /** The Defter tile. */
     data object OpenNotebook : HomeIntent
 
-    /** The Istatistikler tile. */
+    /** "İstatistik" in the bottom bar. */
     data object OpenStats : HomeIntent
 
-    /** The practice tile: the level select on Practice mode. */
-    data object OpenPractice : HomeIntent
-
-    /** The exam packs tile: a "coming soon" page until M7. */
+    /** The Sınavlar tile: the exam packs page. */
     data object OpenExamPacks : HomeIntent
+
+    /**
+     * "Davet et" in the bottom bar: shares [message] (the invite text with the landing link, in the app language)
+     * through the system share sheet.
+     */
+    data class Invite(val message: String) : HomeIntent
 
     /** The "İki kişi, tek telefon" box: the hot-seat duel setup. */
     data object OpenDuel : HomeIntent
 }
 
 internal sealed interface HomeEffect {
-    data object NavigateToLevelSelect : HomeEffect
+    /** "Çarkını seç" on [level]. */
+    data class NavigateToCategoryPicker(val level: Level) : HomeEffect
 
     data object NavigateToDaily : HomeEffect
 
@@ -120,8 +117,6 @@ internal sealed interface HomeEffect {
     data object NavigateToStats : HomeEffect
 
     data object NavigateToSettings : HomeEffect
-
-    data object NavigateToPractice : HomeEffect
 
     data object NavigateToDuel : HomeEffect
 

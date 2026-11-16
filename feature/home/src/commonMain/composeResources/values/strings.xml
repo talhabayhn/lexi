@@ -1,69 +1,50 @@
 <resources>
-    <!-- Top bar (02-home) -->
-    <plurals name="home_streak">
-        <item quantity="one">%1$d day streak</item>
-        <item quantity="other">%1$d day streak</item>
-    </plurals>
+    <!-- Top (video flow, home_v5): total points; "12,480" with a thousands separator -->
     <string name="home_settings">Settings</string>
-    <string name="home_tagline">FROM A TO Z IN ENGLISH</string>
+    <string name="home_total_points">total points</string>
+    <string name="home_total_points_description">Total points: %1$s</string>
+    <string name="home_thousands_separator">,</string>
 
-    <!-- Daily wheel card: month in capitals, "DAILY WHEEL · OCTOBER" -->
-    <string name="home_daily_label">DAILY WHEEL · %1$s</string>
-    <string name="home_daily_title">Same wheel for everyone: solve what you know</string>
-    <string name="home_daily_completed_score">Completed · %1$d pts</string>
-    <string name="home_daily_next_wheel_hours_minutes">Next wheel: %1$d h %2$d min</string>
-    <string name="home_daily_next_wheel_minutes">Next wheel: %1$d min</string>
-    <plurals name="home_daily_next_wheel_hours">
-        <item quantity="one">Next wheel in %1$d hour</item>
-        <item quantity="other">Next wheel in %1$d hours</item>
-    </plurals>
-    <string name="home_daily_next_wheel_less_than_hour">Next wheel in less than an hour</string>
-    <string name="home_daily_unavailable">Unavailable</string>
-    <string-array name="home_months">
-        <item>JANUARY</item>
-        <item>FEBRUARY</item>
-        <item>MARCH</item>
-        <item>APRIL</item>
-        <item>MAY</item>
-        <item>JUNE</item>
-        <item>JULY</item>
-        <item>AUGUST</item>
-        <item>SEPTEMBER</item>
-        <item>OCTOBER</item>
-        <item>NOVEMBER</item>
-        <item>DECEMBER</item>
-    </string-array>
-
-    <!-- Play button and its badge "A1 · CLASSIC" -->
+    <!-- Play card: label on top, three informational mode boxes, PLAY at the bottom -->
+    <string name="home_play_label">PICK YOUR LEVEL, CATEGORY AND MODE</string>
+    <string name="home_mode_classic">Classic</string>
+    <string name="home_mode_classic_caption">%1$d min</string>
+    <string name="home_mode_practice">Practice</string>
+    <string name="home_mode_practice_caption">no timer</string>
+    <string name="home_mode_hardcore">Hardcore</string>
+    <string name="home_mode_hardcore_caption">one mistake</string>
     <string name="home_play">PLAY</string>
-    <string name="home_play_badge">%1$s · %2$s</string>
-    <string name="home_mode_classic">CLASSIC</string>
-    <string name="home_mode_practice">PRACTICE</string>
-    <string name="home_mode_hardcore">HARDCORE</string>
+    <string name="home_play_description">Play. Pick your level, category and mode. Classic %1$d minutes, Practice without a timer, Hardcore one mistake.</string>
 
-    <!-- Menu tiles -->
-    <string name="home_tile_notebook">My Notebook</string>
-    <plurals name="home_tile_notebook_due">
-        <item quantity="one">%1$d review due</item>
-        <item quantity="other">%1$d reviews due</item>
-    </plurals>
-    <string name="home_tile_stats">Statistics</string>
-    <plurals name="home_tile_stats_learned">
-        <item quantity="one">%1$d word learned</item>
-        <item quantity="other">%1$d words learned</item>
-    </plurals>
-    <string name="home_tile_practice">Practice mode</string>
-    <string name="home_tile_practice_subtitle">Untimed, no pressure</string>
+    <!-- Daily wheel card (Home v2 badges) -->
+    <string name="home_daily_card_title">Daily wheel</string>
+    <string name="home_daily_title">Everyone solves the same wheel</string>
+    <string name="home_daily_badge_solve">Solve</string>
+    <string name="home_daily_badge_done">Completed</string>
+    <string name="home_daily_done_hours_minutes">%1$d points · new wheel in %2$d h %3$d min</string>
+    <string name="home_daily_done_minutes">%1$d points · new wheel in %2$d min</string>
+    <string name="home_daily_unavailable">Not available right now</string>
+    <string name="home_daily_desc_solve">Daily wheel, everyone solves the same wheel, not solved</string>
+    <string name="home_daily_desc_done">Daily wheel, completed, %1$d points</string>
+    <string name="home_daily_desc_unavailable">Daily wheel, not available right now</string>
+
+    <!-- Two players, one phone and STUDY -->
     <string name="home_tile_duel">Two players, one phone</string>
     <string name="home_tile_duel_subtitle">Take turns against a friend</string>
-    <string name="home_tile_exams">Exam packs</string>
+    <string name="home_study_header">STUDY</string>
+    <string name="home_tile_notebook">Notebook</string>
+    <plurals name="home_tile_notebook_due">
+        <item quantity="one">%1$d review</item>
+        <item quantity="other">%1$d reviews</item>
+    </plurals>
+    <string name="home_tile_exams">Exams</string>
     <string name="home_tile_exams_subtitle">Exam word lists</string>
 
-    <!-- Daily goal progress chip -->
-    <string name="home_daily_goal_progress">Today %1$d/%2$d</string>
-    <string name="home_daily_goal_reached">Goal reached</string>
-    <string name="home_daily_goal_desc">Daily goal: %1$d of %2$d wheels completed</string>
-    <string name="home_daily_goal_desc_reached">Daily goal completed: %1$d of %2$d wheels</string>
+    <!-- Bottom bar and invite -->
+    <string name="home_bar_stats">Stats</string>
+    <string name="home_bar_invite">Invite</string>
+    <string name="home_bar_invite_description">Invite a friend</string>
+    <string name="home_invite_message">I'm learning English words with Lexi: read the Turkish clue and find the English word on an A–Z wheel. Try it: %1$s</string>
 
     <!-- Daily joker gift notice (D10, DESIGN-DEBT) -->
     <string name="home_joker_gift_daily">Daily gift: +%1$d joker</string>

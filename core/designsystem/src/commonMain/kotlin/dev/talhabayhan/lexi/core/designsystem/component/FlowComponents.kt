@@ -74,6 +74,9 @@ public object FlowDefaults {
     /** Control text (badges, chips, mode boxes, bar labels) follows the system font size up to this scale. */
     public const val CONTROL_FONT_SCALE_CAP: Float = 1.3f
 
+    /** Home's header (logo blocks 38 + frame): the daily-gift toast floats below it. */
+    public val HomeHeaderHeight: Dp = 40.dp
+
     /** Play card: padding 20, label → mode boxes 14, mode boxes → OYNA row 16, boxes 8 apart, play circle 68. */
     public val PlayCardPadding: Dp = 20.dp
     internal val PlayCardLabelGap: Dp = 14.dp
@@ -174,61 +177,66 @@ public fun PlayCard(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    val colors = LexiTheme.colors
-    val typography = LexiTheme.typography
     PressableSurface(
         onClick = onClick,
         modifier = modifier.fillMaxWidth().semantics { this.contentDescription = contentDescription },
-        color = colors.red,
+        color = LexiTheme.colors.red,
         shadow = LexiTheme.shadows.s6,
         contentAlignment = Alignment.TopStart,
     ) {
-        Column(Modifier.fillMaxWidth().clearAndSetSemantics {}.padding(FlowDefaults.PlayCardPadding)) {
-            Text(label, style = typography.label12, color = colors.white)
-            WithCappedFontScale(FlowDefaults.CONTROL_FONT_SCALE_CAP) {
-                Row(
-                    modifier = Modifier.fillMaxWidth().padding(top = FlowDefaults.PlayCardLabelGap)
-                        .height(IntrinsicSize.Min),
-                    horizontalArrangement = Arrangement.spacedBy(FlowDefaults.ModeBoxGap),
+        // All of the card's text is control text (also spoken through [contentDescription]): capped, so OYNA stays on
+        // the first screen of a 320 × 568 phone at 200 % font size.
+        WithCappedFontScale(FlowDefaults.CONTROL_FONT_SCALE_CAP) { PlayCardContent(label, modes, playLabel) }
+    }
+}
+
+@Composable
+private fun PlayCardContent(label: String, modes: List<PlayCardMode>, playLabel: String) {
+    val colors = LexiTheme.colors
+    val typography = LexiTheme.typography
+    Column(Modifier.fillMaxWidth().clearAndSetSemantics {}.padding(FlowDefaults.PlayCardPadding)) {
+        Text(label, style = typography.label12, color = colors.white)
+        Row(
+            modifier = Modifier.fillMaxWidth().padding(top = FlowDefaults.PlayCardLabelGap)
+                .height(IntrinsicSize.Min),
+            horizontalArrangement = Arrangement.spacedBy(FlowDefaults.ModeBoxGap),
+        ) {
+            modes.forEach { mode ->
+                Column(
+                    modifier = Modifier
+                        .weight(1f)
+                        .fillMaxHeight()
+                        .lexiSurface(colors.white, BorderStroke(LexiTheme.borders.regular, colors.ink))
+                        .padding(FlowDefaults.ModeBoxPadding),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.Center,
                 ) {
-                    modes.forEach { mode ->
-                        Column(
-                            modifier = Modifier
-                                .weight(1f)
-                                .fillMaxHeight()
-                                .lexiSurface(colors.white, BorderStroke(LexiTheme.borders.regular, colors.ink))
-                                .padding(FlowDefaults.ModeBoxPadding),
-                            horizontalAlignment = Alignment.CenterHorizontally,
-                            verticalArrangement = Arrangement.Center,
-                        ) {
-                            FitLine(mode.title, typography.bodyStrong16, colors.ink)
-                            FitLine(mode.caption, typography.caption12SemiBold, colors.ink)
-                        }
-                    }
+                    FitLine(mode.title, typography.bodyStrong16, colors.ink)
+                    FitLine(mode.caption, typography.caption12SemiBold, colors.ink)
                 }
             }
-            Row(
-                modifier = Modifier.fillMaxWidth().padding(top = FlowDefaults.PlayCardRowGap),
-                verticalAlignment = Alignment.CenterVertically,
+        }
+        Row(
+            modifier = Modifier.fillMaxWidth().padding(top = FlowDefaults.PlayCardRowGap),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            FitLine(playLabel, typography.display46, colors.white, Modifier.weight(1f))
+            Box(
+                modifier = Modifier
+                    .size(FlowDefaults.PlayCircleSize)
+                    .lexiSurface(
+                        color = colors.white,
+                        border = BorderStroke(LexiTheme.borders.regular, colors.ink),
+                        shape = LexiTheme.shapes.circle,
+                    ),
+                contentAlignment = Alignment.Center,
             ) {
-                FitLine(playLabel, typography.display46, colors.white, Modifier.weight(1f))
-                Box(
-                    modifier = Modifier
-                        .size(FlowDefaults.PlayCircleSize)
-                        .lexiSurface(
-                            color = colors.white,
-                            border = BorderStroke(LexiTheme.borders.regular, colors.ink),
-                            shape = LexiTheme.shapes.circle,
-                        ),
-                    contentAlignment = Alignment.Center,
-                ) {
-                    Icon(
-                        LexiIcons.Play,
-                        contentDescription = null,
-                        tint = colors.ink,
-                        modifier = Modifier.size(FlowDefaults.PlayIconSize),
-                    )
-                }
+                Icon(
+                    LexiIcons.Play,
+                    contentDescription = null,
+                    tint = colors.ink,
+                    modifier = Modifier.size(FlowDefaults.PlayIconSize),
+                )
             }
         }
     }

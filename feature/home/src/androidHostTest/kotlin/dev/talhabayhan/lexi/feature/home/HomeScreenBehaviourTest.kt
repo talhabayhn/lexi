@@ -5,16 +5,19 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.semantics.LiveRegionMode
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.SemanticsActions
 import androidx.compose.ui.semantics.SemanticsProperties
 import androidx.compose.ui.test.ComposeUiTest
 import androidx.compose.ui.test.ExperimentalTestApi
 import androidx.compose.ui.test.SemanticsMatcher
 import androidx.compose.ui.test.assert
 import androidx.compose.ui.test.getBoundsInRoot
+import androidx.compose.ui.test.hasContentDescription
 import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
+import androidx.compose.ui.test.performScrollTo
 import androidx.compose.ui.test.runComposeUiTest
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import org.junit.Test
@@ -23,113 +26,89 @@ import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
 import org.robolectric.annotation.GraphicsMode
 import kotlin.test.assertEquals
+import kotlin.test.assertTrue
 
-/** Every button of the home sends its intent (the view model turns each into its navigation effect). */
+/** Every button of the video-flow Home sends its intent (the view model turns each into its effect). */
 @OptIn(ExperimentalTestApi::class)
 @RunWith(RobolectricTestRunner::class)
 @GraphicsMode(GraphicsMode.Mode.NATIVE)
 @Config(sdk = [36], qualifiers = "tr-w390dp-h844dp-xhdpi")
 class HomeScreenBehaviourTest {
 
-    private fun clicking(target: ComposeUiTest.() -> Unit): List<HomeIntent> {
+    private fun clicking(state: HomeUiState = HomeSampleState, target: ComposeUiTest.() -> Unit): List<HomeIntent> {
         val intents = mutableListOf<HomeIntent>()
         runComposeUiTest {
-            setContent {
-                LexiTheme(reducedMotion = true) { HomeScreen(HomeSampleState, onIntent = { intents += it }) }
-            }
+            setContent { LexiTheme(reducedMotion = true) { HomeScreen(state, onIntent = { intents += it }) } }
             target()
         }
         return intents
     }
 
     @Test
-    fun `the gear sends open settings`() {
-        assertEquals(
-            listOf<HomeIntent>(HomeIntent.OpenSettings),
-            clicking { onNodeWithContentDescription("Ayarlar").performClick() },
-        )
-    }
-
-    @Test
-    fun `the play button sends play`() {
+    fun `the play card is one button that sends play`() {
         assertEquals(
             listOf<HomeIntent>(HomeIntent.Play),
-            clicking { onNodeWithText("OYNA").performClick() },
-        )
-    }
-
-    @Test
-    fun `the duel box sends open duel and is one button`() {
-        assertEquals(
-            listOf<HomeIntent>(HomeIntent.OpenDuel),
             clicking {
-                onNodeWithText("İki kişi, tek telefon", substring = true).assert(
-                    SemanticsMatcher.expectValue(SemanticsProperties.Role, Role.Button),
-                )
-                onNodeWithText("İki kişi, tek telefon", substring = true).performClick()
+                onNode(hasContentDescription("Oyna.", substring = true))
+                    .assert(SemanticsMatcher.expectValue(SemanticsProperties.Role, Role.Button))
+                    .performClick()
+                // The mode boxes are information inside the one button, not buttons of their own.
+                onNodeWithText("Hardcore").assertDoesNotExist()
             },
         )
     }
 
     @Test
-    fun `the daily card sends open daily`() {
+    fun `the bottom bar sends stats, invite with the Turkish landing link and settings`() {
+        val intents = clicking {
+            onNodeWithText("İstatistik").performClick()
+            onNodeWithContentDescription("Arkadaşını davet et").performClick()
+            onNodeWithText("Ayarlar").performClick()
+        }
+
+        assertEquals(HomeIntent.OpenStats, intents[0])
+        val invite = intents[1] as HomeIntent.Invite
+        assertTrue(invite.message.startsWith("Lexi ile İngilizce kelime çalışıyorum"), invite.message)
+        assertTrue(invite.message.endsWith("https://talhabayhn.github.io/lexi/tr/"), invite.message)
+        assertEquals(HomeIntent.OpenSettings, intents[2])
+    }
+
+    @Test
+    fun `the duel box and the study tiles send their intents`() {
+        assertEquals(
+            listOf(HomeIntent.OpenDuel, HomeIntent.OpenNotebook, HomeIntent.OpenExamPacks),
+            clicking {
+                onNodeWithText("İki kişi, tek telefon", substring = true).performScrollTo().performClick()
+                onNodeWithText("Defter", substring = true).performScrollTo().performClick()
+                onNodeWithText("Sınavlar", substring = true).performScrollTo().performClick()
+            },
+        )
+    }
+
+    @Test
+    fun `the daily card opens the daily wheel only while it is unsolved`() {
         assertEquals(
             listOf<HomeIntent>(HomeIntent.OpenDaily),
-            clicking { onNodeWithText("Herkesle aynı çark: bildiğin kadarını çöz").performClick() },
-        )
-    }
-
-    @Test
-    fun `the daily card is inert when already played`() {
-        val intents = mutableListOf<HomeIntent>()
-        runComposeUiTest {
-            setContent {
-                LexiTheme(reducedMotion = true) {
-                    HomeScreen(
-                        HomeSampleState.copy(dailyState = DailyCardState.AlreadyPlayed(310, hoursUntilNext = 6)),
-                        onIntent = { intents += it },
-                    )
-                }
-            }
-            onNodeWithText("Tamamlandı · 310 puan").performClick()
-            onNodeWithText("Yeni çark: 6 sa 0 dk").assertExists()
-        }
-        assertEquals(emptyList(), intents)
-    }
-
-    @Test
-    fun `the daily card is inert when unavailable`() {
-        val intents = mutableListOf<HomeIntent>()
-        runComposeUiTest {
-            setContent {
-                LexiTheme(reducedMotion = true) {
-                    HomeScreen(
-                        HomeSampleState.copy(dailyState = DailyCardState.Unavailable),
-                        onIntent = { intents += it },
-                    )
-                }
-            }
-            onNodeWithText("Kullanılamıyor").performClick()
-        }
-        assertEquals(emptyList(), intents)
-    }
-
-    @Test
-    fun `the menu tiles send their intents`() {
-        assertEquals(
-            listOf(
-                HomeIntent.OpenNotebook,
-                HomeIntent.OpenStats,
-                HomeIntent.OpenPractice,
-                HomeIntent.OpenExamPacks,
-            ),
             clicking {
-                onNodeWithText("Kelime Defterim").performClick()
-                onNodeWithText("İstatistikler").performClick()
-                onNodeWithText("Pratik modu").performClick()
-                onNodeWithText("Sınav paketleri").performClick()
+                onNodeWithContentDescription("Günün çarkı, herkes aynı çarkı çözüyor, çözülmedi").performClick()
             },
         )
+        clicking(HomeSampleState.copy(dailyState = DailyCardState.AlreadyPlayed(310, 6, 42))) {
+            onNodeWithContentDescription("Günün çarkı, tamamlandı, 310 puan")
+                .assert(SemanticsMatcher.keyNotDefined(SemanticsActions.OnClick))
+        }
+        clicking(HomeSampleState.copy(dailyState = DailyCardState.Unavailable)) {
+            onNodeWithContentDescription("Günün çarkı, şu an kullanılamıyor")
+                .assert(SemanticsMatcher.keyNotDefined(SemanticsActions.OnClick))
+        }
+    }
+
+    @Test
+    fun `total points are grouped and read with their label, and Home shows no streak`() {
+        clicking {
+            onNodeWithContentDescription("Toplam puan: 12.480").assertExists()
+            onNode(hasText("seri", substring = true)).assertDoesNotExist()
+        }
     }
 
     @Test
@@ -153,25 +132,22 @@ class HomeScreenBehaviourTest {
     }
 
     @Test
-    fun `the gift toast floats and leaves home's sizes and positions unchanged`() = runComposeUiTest {
+    fun `the gift toast floats and leaves home's positions unchanged`() = runComposeUiTest {
         var notice by mutableStateOf<DailyGiftNotice?>(null)
         setContent {
             LexiTheme(reducedMotion = true) {
                 HomeScreen(HomeSampleState.copy(dailyGiftNotice = notice), onIntent = {})
             }
         }
-        fun bounds() = listOf("OYNA", "Herkesle aynı çark: bildiğin kadarını çöz", "Kelime Defterim")
-            .map { onNodeWithText(it).getBoundsInRoot() }
+        fun bounds() = listOf(
+            onNode(hasContentDescription("Oyna.", substring = true)).getBoundsInRoot(),
+            onNodeWithText("İstatistik").getBoundsInRoot(),
+        )
 
         val before = bounds()
         notice = DailyGiftNotice(DailyGiftNoticeType.Daily, 1)
         waitForIdle()
         onNode(hasText("Günün hediyesi", substring = true)).assertExists()
-        assertEquals(before, bounds())
-
-        notice = null
-        waitForIdle()
-        onNode(hasText("Günün hediyesi", substring = true)).assertDoesNotExist()
         assertEquals(before, bounds())
     }
 

@@ -1,69 +1,50 @@
 <resources>
-    <!-- Üst çubuk (02-home) -->
-    <plurals name="home_streak">
-        <item quantity="one">%1$d gün seri</item>
-        <item quantity="other">%1$d gün seri</item>
-    </plurals>
+    <!-- Üst kısım (video akışı, home_v5): toplam puan; "12.480" binlik ayırıcıyla -->
     <string name="home_settings">Ayarlar</string>
-    <string name="home_tagline">A'DAN Z'YE İNGİLİZCE</string>
+    <string name="home_total_points">toplam puan</string>
+    <string name="home_total_points_description">Toplam puan: %1$s</string>
+    <string name="home_thousands_separator">.</string>
 
-    <!-- Günün çarkı kartı: ay büyük harfle, "GÜNÜN ÇARKI · EKİM" -->
-    <string name="home_daily_label">GÜNÜN ÇARKI · %1$s</string>
-    <string name="home_daily_title">Herkesle aynı çark: bildiğin kadarını çöz</string>
-    <string name="home_daily_completed_score">Tamamlandı · %1$d puan</string>
-    <string name="home_daily_next_wheel_hours_minutes">Yeni çark: %1$d sa %2$d dk</string>
-    <string name="home_daily_next_wheel_minutes">Yeni çark: %1$d dk</string>
-    <plurals name="home_daily_next_wheel_hours">
-        <item quantity="one">Yeni çark %1$d saat sonra</item>
-        <item quantity="other">Yeni çark %1$d saat sonra</item>
-    </plurals>
-    <string name="home_daily_next_wheel_less_than_hour">Yeni çark 1 saatten az kaldı</string>
-    <string name="home_daily_unavailable">Kullanılamıyor</string>
-    <string-array name="home_months">
-        <item>OCAK</item>
-        <item>ŞUBAT</item>
-        <item>MART</item>
-        <item>NİSAN</item>
-        <item>MAYIS</item>
-        <item>HAZİRAN</item>
-        <item>TEMMUZ</item>
-        <item>AĞUSTOS</item>
-        <item>EYLÜL</item>
-        <item>EKİM</item>
-        <item>KASIM</item>
-        <item>ARALIK</item>
-    </string-array>
-
-    <!-- OYNA düğmesi ve rozeti "A1 · KLASİK" -->
+    <!-- Oyna kartı: üstte etiket, ortada bilgi amaçlı üç mod kutusu, altta OYNA -->
+    <string name="home_play_label">SEVİYENİ, KATEGORİNİ VE MODUNU SEÇ</string>
+    <string name="home_mode_classic">Klasik</string>
+    <string name="home_mode_classic_caption">%1$d dk</string>
+    <string name="home_mode_practice">Pratik</string>
+    <string name="home_mode_practice_caption">süresiz</string>
+    <string name="home_mode_hardcore">Hardcore</string>
+    <string name="home_mode_hardcore_caption">tek hata</string>
     <string name="home_play">OYNA</string>
-    <string name="home_play_badge">%1$s · %2$s</string>
-    <string name="home_mode_classic">KLASİK</string>
-    <string name="home_mode_practice">PRATİK</string>
-    <string name="home_mode_hardcore">HARDCORE</string>
+    <string name="home_play_description">Oyna. Seviyeni, kategorini ve modunu seç. Klasik %1$d dakika, Pratik süresiz, Hardcore tek hata.</string>
 
-    <!-- Menü kutuları -->
-    <string name="home_tile_notebook">Kelime Defterim</string>
-    <plurals name="home_tile_notebook_due">
-        <item quantity="one">%1$d tekrar bekliyor</item>
-        <item quantity="other">%1$d tekrar bekliyor</item>
-    </plurals>
-    <string name="home_tile_stats">İstatistikler</string>
-    <plurals name="home_tile_stats_learned">
-        <item quantity="one">%1$d kelime öğrenildi</item>
-        <item quantity="other">%1$d kelime öğrenildi</item>
-    </plurals>
-    <string name="home_tile_practice">Pratik modu</string>
-    <string name="home_tile_practice_subtitle">Süresiz, baskısız</string>
+    <!-- Günün çarkı kartı (Home v2 rozetleri) -->
+    <string name="home_daily_card_title">Günün çarkı</string>
+    <string name="home_daily_title">Herkes aynı çarkı çözüyor</string>
+    <string name="home_daily_badge_solve">Çöz</string>
+    <string name="home_daily_badge_done">Tamamlandı</string>
+    <string name="home_daily_done_hours_minutes">%1$d puan · yeni çark %2$d sa %3$d dk</string>
+    <string name="home_daily_done_minutes">%1$d puan · yeni çark %2$d dk</string>
+    <string name="home_daily_unavailable">Şu an kullanılamıyor</string>
+    <string name="home_daily_desc_solve">Günün çarkı, herkes aynı çarkı çözüyor, çözülmedi</string>
+    <string name="home_daily_desc_done">Günün çarkı, tamamlandı, %1$d puan</string>
+    <string name="home_daily_desc_unavailable">Günün çarkı, şu an kullanılamıyor</string>
+
+    <!-- İki kişi, tek telefon ve ÇALIŞ -->
     <string name="home_tile_duel">İki kişi, tek telefon</string>
     <string name="home_tile_duel_subtitle">Arkadaşınla sırayla yarış</string>
-    <string name="home_tile_exams">Sınav paketleri</string>
+    <string name="home_study_header">ÇALIŞ</string>
+    <string name="home_tile_notebook">Defter</string>
+    <plurals name="home_tile_notebook_due">
+        <item quantity="one">%1$d tekrar</item>
+        <item quantity="other">%1$d tekrar</item>
+    </plurals>
+    <string name="home_tile_exams">Sınavlar</string>
     <string name="home_tile_exams_subtitle">Sınav kelime listeleri</string>
 
-    <!-- Günlük hedef ilerleme rozeti -->
-    <string name="home_daily_goal_progress">Bugün %1$d/%2$d</string>
-    <string name="home_daily_goal_reached">Hedefe ulaşıldı</string>
-    <string name="home_daily_goal_desc">Günlük hedef: %1$d / %2$d çark tamamlandı</string>
-    <string name="home_daily_goal_desc_reached">Günlük hedef tamamlandı: %1$d / %2$d çark</string>
+    <!-- Alt çubuk ve davet -->
+    <string name="home_bar_stats">İstatistik</string>
+    <string name="home_bar_invite">Davet et</string>
+    <string name="home_bar_invite_description">Arkadaşını davet et</string>
+    <string name="home_invite_message">Lexi ile İngilizce kelime çalışıyorum: harf çarkında Türkçe ipucundan İngilizce kelimeyi buluyorsun. Sen de dene: %1$s</string>
 
     <!-- Günlük joker hediye bildirimi (D10, DESIGN-DEBT) -->
     <string name="home_joker_gift_daily">Günün hediyesi: +%1$d joker</string>

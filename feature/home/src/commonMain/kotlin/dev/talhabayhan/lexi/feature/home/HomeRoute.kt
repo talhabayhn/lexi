@@ -11,6 +11,7 @@ import androidx.lifecycle.compose.currentStateAsState
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
+import dev.talhabayhan.lexi.core.domain.model.Level
 import kotlinx.coroutines.awaitCancellation
 import kotlinx.serialization.Serializable
 import org.koin.compose.viewmodel.koinViewModel
@@ -20,16 +21,16 @@ import org.koin.compose.viewmodel.koinViewModel
 data object HomeRoute
 
 /**
- * [onPlay] opens the level and mode select, [onOpenDaily] the daily wheel, [onOpenNotebook] the notebook, [onOpenStats] the statistics,
- * [onOpenSettings] the settings, [onOpenPractice] the level select on Practice, [onOpenExamPacks] the exam packs page, [onOpenDuel] the hot-seat duel setup (the graph in `shared` decides the routes).
+ * [onPlay] opens "Çarkını seç" on a level, [onOpenDaily] the daily wheel, [onOpenNotebook] the notebook, [onOpenStats]
+ * the statistics, [onOpenSettings] the settings, [onOpenExamPacks] the exam packs page, [onOpenDuel] the hot-seat duel
+ * setup (the graph in `shared` decides the routes).
  */
 fun NavGraphBuilder.homeScreen(
-    onPlay: () -> Unit,
+    onPlay: (Level) -> Unit,
     onOpenDaily: () -> Unit,
     onOpenNotebook: () -> Unit,
     onOpenStats: () -> Unit,
     onOpenSettings: () -> Unit,
-    onOpenPractice: () -> Unit,
     onOpenExamPacks: () -> Unit,
     onOpenDuel: () -> Unit,
     onOpenReminderPrePrompt: () -> Unit = {},
@@ -41,7 +42,6 @@ fun NavGraphBuilder.homeScreen(
             onOpenNotebook = onOpenNotebook,
             onOpenStats = onOpenStats,
             onOpenSettings = onOpenSettings,
-            onOpenPractice = onOpenPractice,
             onOpenExamPacks = onOpenExamPacks,
             onOpenDuel = onOpenDuel,
             onOpenReminderPrePrompt = onOpenReminderPrePrompt,
@@ -51,12 +51,11 @@ fun NavGraphBuilder.homeScreen(
 
 @Composable
 internal fun HomeRoute(
-    onPlay: () -> Unit,
+    onPlay: (Level) -> Unit,
     onOpenDaily: () -> Unit,
     onOpenNotebook: () -> Unit,
     onOpenStats: () -> Unit,
     onOpenSettings: () -> Unit,
-    onOpenPractice: () -> Unit,
     onOpenExamPacks: () -> Unit,
     onOpenDuel: () -> Unit,
     onOpenReminderPrePrompt: () -> Unit,
@@ -68,7 +67,6 @@ internal fun HomeRoute(
     val currentOnOpenNotebook by rememberUpdatedState(onOpenNotebook)
     val currentOnOpenStats by rememberUpdatedState(onOpenStats)
     val currentOnOpenSettings by rememberUpdatedState(onOpenSettings)
-    val currentOnOpenPractice by rememberUpdatedState(onOpenPractice)
     val currentOnOpenExamPacks by rememberUpdatedState(onOpenExamPacks)
     val currentOnOpenDuel by rememberUpdatedState(onOpenDuel)
     val currentOnOpenReminderPrePrompt by rememberUpdatedState(onOpenReminderPrePrompt)
@@ -77,12 +75,11 @@ internal fun HomeRoute(
         lifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
             viewModel.effects.collect { effect ->
                 when (effect) {
-                    HomeEffect.NavigateToLevelSelect -> currentOnPlay()
+                    is HomeEffect.NavigateToCategoryPicker -> currentOnPlay(effect.level)
                     HomeEffect.NavigateToDaily -> currentOnOpenDaily()
                     HomeEffect.NavigateToNotebook -> currentOnOpenNotebook()
                     HomeEffect.NavigateToStats -> currentOnOpenStats()
                     HomeEffect.NavigateToSettings -> currentOnOpenSettings()
-                    HomeEffect.NavigateToPractice -> currentOnOpenPractice()
                     HomeEffect.NavigateToExamPacks -> currentOnOpenExamPacks()
                     HomeEffect.NavigateToDuel -> currentOnOpenDuel()
                     HomeEffect.NavigateToReminderPrePrompt -> currentOnOpenReminderPrePrompt()
@@ -90,7 +87,7 @@ internal fun HomeRoute(
             }
         }
     }
-    // Periodic refresh (daily card state, streak badge, countdown) on resume and once per minute while STARTED.
+    // Periodic refresh (daily card state, due reviews, countdown) on resume and once per minute while STARTED.
     LaunchedEffect(viewModel, lifecycleOwner) {
         lifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
             viewModel.onIntent(HomeIntent.Entered)

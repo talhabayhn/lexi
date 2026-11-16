@@ -50,6 +50,9 @@ public enum class LexiLogoSize(
 
     /** 46dp blocks, 3dp border, 28 letters, gap 5 (home on short phones; DESIGN-DEBT, scaled from [Menu]). */
     MenuCompact(46.dp, 3.dp, 28.dp, 5.dp),
+
+    /** 38dp blocks, 3dp border, 22 letters, gap 3 (the video flow's Home header, `drafts/video-flow/flow.html`). */
+    Header(38.dp, 3.dp, 22.dp, 3.dp),
 }
 
 /** Sizes of the horizontal wordmark ([LexiWordmark]): its three shapes, their gap and the gap before "lexi". */

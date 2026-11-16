@@ -5,18 +5,20 @@ import androidx.lifecycle.viewModelScope
 import dev.talhabayhan.lexi.core.domain.config.FeatureFlags
 import dev.talhabayhan.lexi.core.domain.daily.DailyPlayState
 import dev.talhabayhan.lexi.core.domain.daily.GetDailyWheel
-import dev.talhabayhan.lexi.core.domain.goal.GetDailyGoalProgress
 import dev.talhabayhan.lexi.core.domain.joker.GrantDailyJokers
 import dev.talhabayhan.lexi.core.domain.joker.JokerGrantReason
+import dev.talhabayhan.lexi.core.domain.platform.ShareService
 import dev.talhabayhan.lexi.core.domain.rating.RequestInAppReview
 import dev.talhabayhan.lexi.core.domain.reminder.ShouldShowReminderPrePrompt
 import dev.talhabayhan.lexi.core.domain.repository.DailyRepository
 import dev.talhabayhan.lexi.core.domain.repository.ExamPackRepository
 import dev.talhabayhan.lexi.core.domain.repository.ProgressRepository
+import dev.talhabayhan.lexi.core.domain.repository.SessionRepository
+import dev.talhabayhan.lexi.core.domain.repository.SettingsRepository
 import dev.talhabayhan.lexi.core.domain.stats.Stats
-import dev.talhabayhan.lexi.core.domain.streak.GetStreakStatus
+import dev.talhabayhan.lexi.core.domain.telemetry.AnalyticsEvent
+import dev.talhabayhan.lexi.core.domain.telemetry.AnalyticsTracker
 import dev.talhabayhan.lexi.core.domain.time.AppClock
-import dev.talhabayhan.lexi.core.domain.time.civilDateOfEpochDay
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.Channel
@@ -26,6 +28,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.receiveAsFlow
@@ -34,19 +37,25 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 
-/** Home (`02-home`): streak, daily card, notebook and statistics numbers from the repositories; navigation as effects. */
+/**
+ * Home of the video flow (`video-flow-notes.md` §1): total score, daily card, due reviews and the level "Çarkını seç"
+ * opens on from the repositories; navigation as effects; the invite through the [shareService]. The streak, the daily
+ * goal and the joker gifts still run (gift toast, reminders); only Home's UI shows no streak.
+ */
 internal class HomeViewModel(
     progress: ProgressRepository,
-    getStreakStatus: GetStreakStatus,
+    sessions: SessionRepository,
+    settings: SettingsRepository,
     private val getDailyWheel: GetDailyWheel,
     private val daily: DailyRepository,
     private val appClock: AppClock,
-    getDailyGoalProgress: GetDailyGoalProgress,
     private val grantDailyJokers: GrantDailyJokers,
     private val shouldShowReminderPrePrompt: ShouldShowReminderPrePrompt,
     private val requestInAppReview: RequestInAppReview,
     private val examPacks: ExamPackRepository,
     private val flags: FeatureFlags,
+    private val shareService: ShareService,
+    private val analytics: AnalyticsTracker,
 ) : ViewModel() {
     private val mutableState = MutableStateFlow(HomeUiState())
     val state: StateFlow<HomeUiState> = mutableState.asStateFlow()
@@ -66,32 +75,26 @@ internal class HomeViewModel(
 
     init {
         viewModelScope.launch {
-            combine(progress.observeAll(), getStreakStatus.observe(today), today) { cards, streak, day ->
-                val date = civilDateOfEpochDay(day)
-                cards to (streak to (date to day))
-            }
+            combine(progress.observeAll(), today) { cards, day -> cards.count { it.isDue(day) } }
                 // A broken read keeps the last numbers (zeros at first); the menu itself still works.
                 .catch { }
-                .collect { (cards, streakAndDate) ->
-                    val (streak, dateAndDay) = streakAndDate
-                    val (date, day) = dateAndDay
-                    mutableState.update { current ->
-                        current.copy(
-                            streakDays = streak.currentStreak,
-                            dueReviews = cards.count { it.isDue(day) },
-                            learnedWords = Stats.learnedWords(cards),
-                            dailyDay = date.day,
-                            dailyMonth = date.month,
-                        )
-                    }
-                }
+                .collect { due -> mutableState.update { it.copy(dueReviews = due) } }
         }
 
         viewModelScope.launch {
-            getDailyGoalProgress.observe(today)
+            sessions.observeRecords()
+                .map(Stats::totalScore)
                 .catch { }
-                .collect { goalProgress ->
-                    mutableState.update { it.copy(dailyGoalProgress = goalProgress) }
+                .collect { total -> mutableState.update { it.copy(totalScore = total) } }
+        }
+
+        viewModelScope.launch {
+            settings.settings
+                .map { it.selectedLevel to it.classicTimeLimitSeconds }
+                .distinctUntilChanged()
+                .catch { }
+                .collect { (level, seconds) ->
+                    mutableState.update { it.copy(selectedLevel = level, classicTimeLimitSeconds = seconds) }
                 }
         }
 
@@ -231,7 +234,9 @@ internal class HomeViewModel(
                 mutableState.update { it.copy(dailyGiftNotice = null) }
             }
 
-            HomeIntent.Play -> effectChannel.trySend(HomeEffect.NavigateToLevelSelect)
+            HomeIntent.Play -> effectChannel.trySend(
+                HomeEffect.NavigateToCategoryPicker(mutableState.value.selectedLevel),
+            )
 
             HomeIntent.OpenDaily -> {
                 if (mutableState.value.dailyState is DailyCardState.Available) {
@@ -245,11 +250,31 @@ internal class HomeViewModel(
 
             HomeIntent.OpenSettings -> effectChannel.trySend(HomeEffect.NavigateToSettings)
 
-            HomeIntent.OpenPractice -> effectChannel.trySend(HomeEffect.NavigateToPractice)
-
             HomeIntent.OpenDuel -> effectChannel.trySend(HomeEffect.NavigateToDuel)
 
             HomeIntent.OpenExamPacks -> effectChannel.trySend(HomeEffect.NavigateToExamPacks)
+
+            is HomeIntent.Invite -> invite(intent.message)
+        }
+    }
+
+    /** One share sheet at a time; `share` (type invite) is tracked only when the sheet was shown. */
+    private var inviting = false
+
+    private fun invite(message: String) {
+        if (inviting) return
+        inviting = true
+        viewModelScope.launch {
+            val shown = try {
+                shareService.shareText(message)
+            } catch (e: CancellationException) {
+                throw e
+            } catch (@Suppress("TooGenericExceptionCaught") e: Exception) {
+                false
+            } finally {
+                inviting = false
+            }
+            if (shown) analytics.track(AnalyticsEvent.Share(AnalyticsEvent.ShareType.INVITE))
         }
     }
 }
