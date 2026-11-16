@@ -102,7 +102,11 @@ internal fun SplashRoute(
                 progress.animateTo(1f, tween(motion.splashDurationMillis, easing = motion.linear))
                 landings.cancel()
             }
+            // Home starts from the stored level, mode and category (`02c-home-v2`): no frame of the defaults. A store
+            // that can't be read delivers the defaults, so this never hangs.
+            val settingsLoaded = async { settings.loaded.first { it != null } }
             ready.await()
+            settingsLoaded.await()
             isCompleted.await()
         }
         StartupTrace.mark("splash finished")

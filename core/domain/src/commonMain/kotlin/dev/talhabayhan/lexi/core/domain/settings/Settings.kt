@@ -1,5 +1,7 @@
 package dev.talhabayhan.lexi.core.domain.settings
 
+import dev.talhabayhan.lexi.core.domain.game.GameMode
+import dev.talhabayhan.lexi.core.domain.model.CategoryId
 import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.core.domain.reminder.ReminderTimes
 
@@ -46,6 +48,15 @@ public data class Settings(
     val firstLaunchMs: Long = 0L,
     /** Epoch ms of our last rating request (0 = never); the next one waits 120 days. */
     val ratingLastRequestMs: Long = 0L,
+    /**
+     * Home's selected level (`02c-home-v2`): seeded by the onboarding's level choice or the level test (same stored
+     * key), then changed by Home's level chips.
+     */
+    val selectedLevel: Level = Level.A1,
+    /** Home's selected mode; one of [HOME_MODES]. */
+    val homeMode: GameMode = GameMode.CLASSIC,
+    /** Home's selected category of [selectedLevel]; null = "Karışık" (the level's mixed wheel). */
+    val homeCategory: CategoryId? = null,
 ) {
     public val uiLanguage: AppLanguage get() = appLanguage
 
@@ -56,6 +67,7 @@ public data class Settings(
         require(reminderMinuteOfDay in 0 until MINUTES_PER_DAY) { "reminderMinuteOfDay $reminderMinuteOfDay" }
         require(dailyGoalWheels >= 1) { "dailyGoalWheels $dailyGoalWheels must be at least 1" }
         require(duelPlayerNames.size == 2) { "duelPlayerNames needs 2 entries, was ${duelPlayerNames.size}" }
+        require(homeMode in HOME_MODES) { "homeMode $homeMode is not selectable on Home" }
     }
 
     public companion object {
@@ -63,6 +75,9 @@ public data class Settings(
         public const val DEFAULT_DUEL_CLOCK_SECONDS: Int = 300
         public const val DEFAULT_REMINDER_MINUTE_OF_DAY: Int = ReminderTimes.DEFAULT_MINUTE
         public const val MINUTES_PER_DAY: Int = 24 * 60
+
+        /** The modes Home's mode control offers, in display order (`02c-home-v2`). */
+        public val HOME_MODES: List<GameMode> = listOf(GameMode.CLASSIC, GameMode.PRACTICE, GameMode.HARDCORE)
     }
 }
 

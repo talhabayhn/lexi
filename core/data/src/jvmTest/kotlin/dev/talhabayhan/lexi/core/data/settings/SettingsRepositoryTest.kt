@@ -6,6 +6,8 @@ import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import app.cash.turbine.test
 import dev.talhabayhan.lexi.core.domain.game.GameConfig
+import dev.talhabayhan.lexi.core.domain.game.GameMode
+import dev.talhabayhan.lexi.core.domain.model.CategoryId
 import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.core.domain.settings.Accent
 import dev.talhabayhan.lexi.core.domain.settings.Settings
@@ -68,6 +70,9 @@ class SettingsRepositoryTest {
             duelPlayerNames = listOf("Ayşe", ""),
             duelLevel = Level.B2,
             duelClockSeconds = 420,
+            selectedLevel = Level.C1,
+            homeMode = GameMode.HARDCORE,
+            homeCategory = CategoryId("travel"),
         )
 
         repository.settings.test {
@@ -153,5 +158,42 @@ class SettingsRepositoryTest {
 
         assertEquals(1, settings.reminderPrePromptAsks)
         assertEquals(0L, settings.reminderPrePromptLastAskMs)
+    }
+
+    @Test
+    fun `home selection reads the onboarding's level and survives a restart`() = runTest {
+        val dataStore = createSettingsDataStore(path, backgroundScope)
+        // Written by OnboardingRepositoryImpl (the onboarding's level choice), the same key.
+        OnboardingRepositoryImpl(dataStore).saveSelectedLevel(Level.B1)
+        val repository = SettingsRepositoryImpl(dataStore, GameConfig(), backgroundScope)
+
+        assertEquals(Level.B1, repository.settings.first().selectedLevel)
+        repository.update { it.copy(homeMode = GameMode.PRACTICE, homeCategory = CategoryId("animals")) }
+
+        val restarted = SettingsRepositoryImpl(dataStore, GameConfig(), backgroundScope).settings.first()
+        assertEquals(Level.B1, restarted.selectedLevel)
+        assertEquals(GameMode.PRACTICE, restarted.homeMode)
+        assertEquals(CategoryId("animals"), restarted.homeCategory)
+        assertEquals("PRACTICE", dataStore.data.first()[stringPreferencesKey("home_mode")])
+    }
+
+    @Test
+    fun `mixed is stored as an empty category and unknown home values fall back`() = runTest {
+        val dataStore = createSettingsDataStore(path, backgroundScope)
+        dataStore.edit {
+            it[stringPreferencesKey("selected_level")] = "Z9"
+            // Not selectable on Home (daily, review, ...): Classic.
+            it[stringPreferencesKey("home_mode")] = "DAILY"
+            it[stringPreferencesKey("home_category")] = ""
+        }
+        val repository = SettingsRepositoryImpl(dataStore, GameConfig(), backgroundScope)
+
+        val settings = repository.settings.first()
+        assertEquals(Level.A1, settings.selectedLevel)
+        assertEquals(GameMode.CLASSIC, settings.homeMode)
+        assertEquals(null, settings.homeCategory)
+
+        repository.update { it.copy(homeCategory = null) }
+        assertEquals("", dataStore.data.first()[stringPreferencesKey("home_category")])
     }
 }

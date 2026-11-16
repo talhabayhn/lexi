@@ -13,6 +13,8 @@ import androidx.datastore.preferences.core.longPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import dev.talhabayhan.lexi.core.domain.game.DuelNames
 import dev.talhabayhan.lexi.core.domain.game.GameConfig
+import dev.talhabayhan.lexi.core.domain.game.GameMode
+import dev.talhabayhan.lexi.core.domain.model.CategoryId
 import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.core.domain.reminder.ReminderTimes
 import dev.talhabayhan.lexi.core.domain.repository.SettingsRepository
@@ -102,6 +104,9 @@ internal class SettingsRepositoryImpl(
                 ?: defaults.duelClockSeconds,
             firstLaunchMs = this[FIRST_LAUNCH] ?: defaults.firstLaunchMs,
             ratingLastRequestMs = this[RATING_LAST_REQUEST] ?: defaults.ratingLastRequestMs,
+            selectedLevel = enumOrNull<Level>(this[SELECTED_LEVEL]) ?: defaults.selectedLevel,
+            homeMode = enumOrNull<GameMode>(this[HOME_MODE])?.takeIf { it in Settings.HOME_MODES } ?: defaults.homeMode,
+            homeCategory = this[HOME_CATEGORY]?.takeIf { it.isNotEmpty() }?.let(::CategoryId),
         )
     }
 
@@ -127,6 +132,9 @@ internal class SettingsRepositoryImpl(
         this[DUEL_CLOCK] = settings.duelClockSeconds
         this[FIRST_LAUNCH] = settings.firstLaunchMs
         this[RATING_LAST_REQUEST] = settings.ratingLastRequestMs
+        this[SELECTED_LEVEL] = settings.selectedLevel.name
+        this[HOME_MODE] = settings.homeMode.name
+        this[HOME_CATEGORY] = settings.homeCategory?.value.orEmpty()
     }
 
     private inline fun <reified E : Enum<E>> enumOrNull(name: String?): E? =
@@ -154,5 +162,12 @@ internal class SettingsRepositoryImpl(
         val DUEL_CLOCK = intPreferencesKey("duel_clock_seconds")
         val FIRST_LAUNCH = longPreferencesKey("first_launch_ms")
         val RATING_LAST_REQUEST = longPreferencesKey("rating_last_request_ms")
+
+        /** Shared with `OnboardingRepositoryImpl` (the onboarding's level choice seeds Home's level). */
+        val SELECTED_LEVEL = stringPreferencesKey("selected_level")
+        val HOME_MODE = stringPreferencesKey("home_mode")
+
+        /** The category id; "" = mixed. */
+        val HOME_CATEGORY = stringPreferencesKey("home_category")
     }
 }
