@@ -1,0 +1,37 @@
+<resources>
+    <!-- "Pick your wheel" (video flow, cats_v3) -->
+    <string name="picker_title">Pick your wheel</string>
+    <string name="picker_back">Back</string>
+    <string name="picker_level_description">Level %1$s</string>
+    <string name="picker_progress">%1$d / %2$d</string>
+    <string name="picker_card_description">%1$s, %2$d of %3$d words learned</string>
+    <string name="picker_mixed_fallback">Mixed</string>
+    <string name="picker_error">Categories could not be loaded.</string>
+    <string name="picker_retry">Try again</string>
+    <string name="picker_scroll_top">Back to top</string>
+
+    <!-- Exam packs: LGS open, the others locked -->
+    <string name="picker_exams_header">EXAM PACKS</string>
+    <string name="picker_exams_subtitle">Spin the wheel to prepare for your exam</string>
+    <string name="picker_soon">SOON</string>
+    <string name="picker_soon_description">%1$s, coming soon</string>
+    <string name="picker_exam_yds_yokdil">YDS / YÖKDİL</string>
+    <string name="picker_exam_yks_dil">YKS-DİL</string>
+    <string name="picker_exam_toefl">TOEFL</string>
+    <string name="picker_exam_ielts">IELTS</string>
+
+    <!-- Mode and time dialog -->
+    <string name="dialog_meta">%1$s · %2$d words · %3$d learned</string>
+    <string name="dialog_close">Close</string>
+    <string name="dialog_mode_label">MODE</string>
+    <string name="dialog_time_label">TIME</string>
+    <string name="dialog_mode_classic">Classic</string>
+    <string name="dialog_mode_practice">Practice</string>
+    <string name="dialog_mode_hardcore">Hardcore</string>
+    <string name="dialog_mode_classic_hint">Get as many words as you can before the time runs out.</string>
+    <string name="dialog_mode_practice_hint">No timer: practise at your own pace.</string>
+    <string name="dialog_mode_hardcore_hint">One mistake allowed. The first wrong answer ends the game.</string>
+    <string name="dialog_time_none">Practice mode has no timer.</string>
+    <string name="dialog_play">PLAY</string>
+    <string name="dialog_play_description">Play</string>
+</resources>

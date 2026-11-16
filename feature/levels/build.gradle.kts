@@ -5,6 +5,10 @@ plugins {
 
 kotlin {
     sourceSets {
+        commonMain.dependencies {
+            // System back closes the mode / time dialog (as the game screen's back handler).
+            implementation(libs.androidx.navigationevent.compose)
+        }
         getByName("androidHostTest").dependencies {
             implementation(libs.junit)
             implementation(libs.robolectric)

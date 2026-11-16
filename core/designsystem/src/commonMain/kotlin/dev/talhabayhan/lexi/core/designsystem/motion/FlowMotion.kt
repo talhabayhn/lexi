@@ -102,6 +102,12 @@ public class FlowMotion internal constructor() {
     public val redealSlot: MotionStep = fromPrototype(200, 200)
     public val redealKey: MotionStep = fromPrototype(200, 200)
 
+    /**
+     * Tier Lite (and phase 2's placeholder dialog before the #14 flip lands): a Y flip becomes a scale from this value
+     * to 1 with a fade, over the flip's grow step ([dialogGrow], `mechanical`).
+     */
+    public val liteFlipStartScale: Float = 0.92f
+
     // #18 "Çarkını seç" grid entrance (owner decision: first open per session, tier Full only): after the screen
     // transition starts, each card rises [gridCardOffset] and fades in (`mechanical`), one after another.
     public val gridCardIn: MotionStep = fromPrototype(140, 260)

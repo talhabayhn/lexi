@@ -500,11 +500,17 @@ public fun LevelChipRow(
         ) {
             labels.forEachIndexed { index, label ->
                 val selected = index == selectedIndex
+                // A 48dp touch band around the 40dp chip.
                 Box(
                     modifier = Modifier
                         .weight(1f)
-                        .heightIn(min = FlowDefaults.LevelChipHeight)
-                        .selectable(selected = selected, role = Role.RadioButton) {
+                        .heightIn(min = LexiTheme.dimens.minTouchTargetAccessible)
+                        .selectable(
+                            selected = selected,
+                            role = Role.RadioButton,
+                            interactionSource = null,
+                            indication = null,
+                        ) {
                             if (!selected) {
                                 haptics.perform(HapticKind.Light)
                                 sounds.play(SoundEffect.Tap)
@@ -515,19 +521,26 @@ public fun LevelChipRow(
                             contentDescriptions?.getOrNull(index)?.let { description ->
                                 Modifier.semantics { contentDescription = description }
                             } ?: Modifier,
-                        )
-                        .lexiSurface(
-                            if (selected) colors.ink else colors.white,
-                            BorderStroke(LexiTheme.borders.regular, colors.ink),
                         ),
                     contentAlignment = Alignment.Center,
                 ) {
-                    FitLine(
-                        label,
-                        LexiTheme.typography.bodyStrong15.copy(textAlign = TextAlign.Center),
-                        if (selected) colors.yellow else colors.ink,
-                        Modifier.padding(horizontal = LexiTheme.dimens.gap2),
-                    )
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .heightIn(min = FlowDefaults.LevelChipHeight)
+                            .lexiSurface(
+                                if (selected) colors.ink else colors.white,
+                                BorderStroke(LexiTheme.borders.regular, colors.ink),
+                            ),
+                        contentAlignment = Alignment.Center,
+                    ) {
+                        FitLine(
+                            label,
+                            LexiTheme.typography.bodyStrong15.copy(textAlign = TextAlign.Center),
+                            if (selected) colors.yellow else colors.ink,
+                            Modifier.padding(horizontal = LexiTheme.dimens.gap2),
+                        )
+                    }
                 }
             }
         }
@@ -537,7 +550,7 @@ public fun LevelChipRow(
 /**
  * An illustrated card of "Çarkını seç" (`cats_v3.png`, `art_v3.png`): the [art] field on top (95dp, 3dp rule), the
  * [name] and a row of [progressText] ("412 / 850") + a progress bar of [progress]. With [onClick] it is a radio button
- * of its group ([selected] = the last chosen category); with [locked] it is dimmed information only: a lock badge on
+ * of its group ([selected] = the last chosen category) or, with [role] Button, an action; with [locked] it is dimmed information only: a lock badge on
  * the art and [lockedLabel] ("YAKINDA") instead of the progress. Read as [contentDescription].
  */
 @Composable
@@ -551,6 +564,8 @@ public fun PickerCard(
     selected: Boolean = false,
     locked: Boolean = false,
     lockedLabel: String? = null,
+    /** [Role.RadioButton] for a category of the picker's group; [Role.Button] for an action (an exam pack). */
+    role: Role = Role.RadioButton,
     onClick: (() -> Unit)? = null,
 ) {
     val colors = LexiTheme.colors
@@ -627,10 +642,10 @@ public fun PickerCard(
             onClick = onClick,
             modifier = modifier.fillMaxWidth().semantics {
                 this.contentDescription = contentDescription
-                this.selected = selected
+                if (role == Role.RadioButton) this.selected = selected
             },
             shadow = LexiTheme.shadows.s4,
-            role = Role.RadioButton,
+            role = role,
             contentAlignment = Alignment.TopStart,
         ) { content() }
     } else {

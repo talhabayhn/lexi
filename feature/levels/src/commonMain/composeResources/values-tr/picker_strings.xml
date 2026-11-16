@@ -1,0 +1,37 @@
+<resources>
+    <!-- "Çarkını seç" (video akışı, cats_v3) -->
+    <string name="picker_title">Çarkını seç</string>
+    <string name="picker_back">Geri</string>
+    <string name="picker_level_description">%1$s seviyesi</string>
+    <string name="picker_progress">%1$d / %2$d</string>
+    <string name="picker_card_description">%1$s, %2$d / %3$d kelime öğrenildi</string>
+    <string name="picker_mixed_fallback">Karışık</string>
+    <string name="picker_error">Kategoriler yüklenemedi.</string>
+    <string name="picker_retry">Tekrar dene</string>
+    <string name="picker_scroll_top">Başa dön</string>
+
+    <!-- Sınav paketleri: LGS açık, diğerleri kilitli -->
+    <string name="picker_exams_header">SINAV PAKETLERİ</string>
+    <string name="picker_exams_subtitle">Sınava çark çevirerek hazırlan</string>
+    <string name="picker_soon">YAKINDA</string>
+    <string name="picker_soon_description">%1$s, yakında</string>
+    <string name="picker_exam_yds_yokdil">YDS / YÖKDİL</string>
+    <string name="picker_exam_yks_dil">YKS-DİL</string>
+    <string name="picker_exam_toefl">TOEFL</string>
+    <string name="picker_exam_ielts">IELTS</string>
+
+    <!-- Mod ve süre penceresi -->
+    <string name="dialog_meta">%1$s · %2$d kelime · %3$d öğrenildi</string>
+    <string name="dialog_close">Kapat</string>
+    <string name="dialog_mode_label">MOD</string>
+    <string name="dialog_time_label">SÜRE</string>
+    <string name="dialog_mode_classic">Klasik</string>
+    <string name="dialog_mode_practice">Pratik</string>
+    <string name="dialog_mode_hardcore">Hardcore</string>
+    <string name="dialog_mode_classic_hint">Süre dolana kadar olabildiğince çok kelime bil.</string>
+    <string name="dialog_mode_practice_hint">Süre yok, istediğin kadar rahat çalış.</string>
+    <string name="dialog_mode_hardcore_hint">Tek hata hakkın var. İlk yanlışta oyun biter.</string>
+    <string name="dialog_time_none">Pratik modda süre yok.</string>
+    <string name="dialog_play">OYNA</string>
+    <string name="dialog_play_description">Oyna</string>
+</resources>
