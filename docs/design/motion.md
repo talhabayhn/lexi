@@ -32,6 +32,21 @@ scale or rotation; splash shows the logo statically.
 | 11 | Toast | slides down from top 16dp, auto-dismiss 2.5 s (home notice: 6 s, a11y) | 180 ms | — | — |
 | 12 | Screen transitions | slide + fade-through: incoming slides in from +24dp (260 ms) and fades 0 → 1 (200 ms, starts at 60 ms); outgoing slides to −24dp (260 ms) and fades 1 → 0 over its first 90 ms; reverse on back; reduced motion: 150 ms crossfade, no translation | 260 ms, `mechanical` | — | — |
 
+### Video flow (#13–#17, proposal on branch `redesign/video-flow`)
+Source: `drafts/video-flow/flow.html` (+ mp4); spec `video-flow-notes.md`; tokens `LexiMotion.flow` (`FlowMotion`).
+Every value is the prototype's ÷ 0.86 (`MotionStep.fromPrototype`); times are from the start of each sequence.
+Press (#1), screen transitions (#12) and the marker jump (#6) keep their shipped tokens. Tiers: Full as listed; Lite
+drops tilt/shadow growth, Y flips → scale 0.92 → 1 + fade, no letter pop, staggered groups together; Minimal
+(reduced motion) = one 120 ms cross-fade per transition.
+
+| # | Event | Animation | Timing (ms) | Haptic | Sound |
+|---|---|---|---|---|---|
+| 13 | Category card tapped: lift | card −6 dp up, −2°, hard shadow 4 → 10 dp, `pop` | 0–140 | light (#1) | "tık" (#1) |
+| 14 | Card → mode/duration dialog | card turns away on Y 0° → 90° (`turn`, 116 + 186) and hides; scrim → 55 % (linear, 116 + 256); dialog flips in −90° → 0° from the card rect (`mechanical`, 291 + 233) while growing to its final rect (`mechanical`, 291 + 349); content fades in (linear, 465 + 163); rows rise 10 dp + fade, 41 ms stagger (`mechanical`, from 488, 233 each); input from 814 | ≈ 0.81 s | — | — |
+| 15 | Dialog closed (back / scrim) | content fades out (linear, 0 + 105); dialog collapses to the card rect (`turn`, 70 + 279) and turns 0° → −90° (`turn`, 163 + 186); scrim out (linear, 70 + 256); card turns back 90° → 0° (`mechanical`, 326 + 209) and lands from its lift (`pop`, 488 + 209); input from 721 | ≈ 0.70 s | — | — |
+| 16 | OYNA → game (letter morph) | after the press (#1): ink rect grows button → full screen (`mechanical`, 186 + 349) while red → ink (linear sRGB, 186 + 233); yellow letter pops 0.85 → 1 (`pop`, 395 + 233); hold; from 767 at the earliest — and only once the game is ready — the ink shrinks into the wheel marker (`mechanical`, 349) with the letter 230 → 20 sp. Board entrance from the shrink start: top bar −10 dp (23 + 256), ring chips fade (47 + 233, 9 ms stagger), centre circle 0.7 → 1 (`pop`, 93 + 302), décor (116 + 349), clue 14 dp (209 + 279), slots 12 dp (279 + 233, 35 ms stagger), keys 12 dp (349 + 233, 23 ms stagger), bottom row (535 + 256); clock + input at 907 | ink 930 (expand → shrink end) | light (#1) | "tık" (#1) |
+| 17 | In game, correct answer (video flow additions) | #3 pop + ring as shipped; score counts up (`mechanical`, 58 + 349) with a pop 1.25 → 1 (`pop`, 58 + 233); marker jumps (#6); centre letter slides out 60 dp down (`turn`, 0 + 163) and the next in from above (`mechanical`, 163 + 186); clue slides out −30 dp (`turn`, 58 + 140) and in from +30 dp (`mechanical`, 198 + 209); slots fade (0 + 116), slots and keys re-dealt 12 dp (from 233, 233 each, 35 / 23 ms stagger) | ≈ 0.7 s | success (#3) | as #3 |
+
 #1 is implemented once in `PressableSurface` (`core:designsystem`): CSS `ease-out` per direction (`.lx-press` in
 `source/15-motion.dc.html`); a quick tap still plays the full 80 ms press before returning; haptic and sound fire on
 click (release inside the element), not on touch-down, so a cancelled touch stays silent. Reduced motion: no

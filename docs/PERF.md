@@ -55,6 +55,8 @@ The gap math is `PerfStats.kt` (tested in `PerfStatsTest`).
   frames after `SplashState.finished`, `MainActivityLanguage.LexiApp`), so it includes the designed ≈ 1.2 s splash.
 - `ScreensBenchmark`: frame times over one perf tour (main screens + game), 3 runs with the profile. CI renders with a
   software GPU, so frame times there are far above a phone's; use them only to compare runs.
+- `VideoFlowBenchmark` (branch `redesign/video-flow`, ADR 0027): Home → Categories → Dialog → Game journeys,
+  `@Ignore`d placeholders until phase 3; bar P95 < 16.6 ms, no frame > 100 ms on real devices.
 
 Run on CI: Actions → **perf** → Run workflow (`commit` = commit the regenerated profile). The Summary page shows
 initial and full display (median, min-max) and frame CPU time P50/P90/P99 plus overrun P90 per test; traces and JSON are in the `perf-results` artifact. The runner is an
