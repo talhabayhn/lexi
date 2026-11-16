@@ -6,6 +6,7 @@ import androidx.compose.animation.core.LinearEasing
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import dev.talhabayhan.lexi.core.designsystem.motion.FlowMotion
 
 /**
  * Motion tokens (`docs/design/motion.md`): short, mechanical movements, 80–420 ms, no soft fades for state changes.
@@ -152,4 +153,7 @@ public class LexiMotion internal constructor(
 
     /** #12 horizontal slide distance of screen transitions (fade-through, see the durations above). */
     public val screenTransitionSlideDistance: Dp = 24.dp
+
+    /** #13–#17 video-flow choreography (proposal, `docs/design/video-flow-notes.md`). */
+    public val flow: FlowMotion = FlowMotion()
 }
