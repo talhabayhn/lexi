@@ -61,9 +61,9 @@ class HomeScreenBehaviourTest {
     @Test
     fun `the bottom bar sends stats, invite with the Turkish landing link and settings`() {
         val intents = clicking {
-            onNodeWithText("İstatistik").performClick()
+            onNodeWithContentDescription("İstatistik").performClick()
             onNodeWithContentDescription("Arkadaşını davet et").performClick()
-            onNodeWithText("Ayarlar").performClick()
+            onNodeWithContentDescription("Ayarlar").performClick()
         }
 
         assertEquals(HomeIntent.OpenStats, intents[0])
@@ -141,7 +141,7 @@ class HomeScreenBehaviourTest {
         }
         fun bounds() = listOf(
             onNode(hasContentDescription("Oyna.", substring = true)).getBoundsInRoot(),
-            onNodeWithText("İstatistik").getBoundsInRoot(),
+            onNodeWithContentDescription("İstatistik").getBoundsInRoot(),
         )
 
         val before = bounds()

@@ -26,7 +26,6 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiMotion
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
-import dev.talhabayhan.lexi.core.domain.game.GameMode
 import dev.talhabayhan.lexi.core.domain.platform.UrlOpener
 import dev.talhabayhan.lexi.feature.exams.examPacksScreen
 import dev.talhabayhan.lexi.feature.game.GamePreparer
@@ -37,8 +36,7 @@ import dev.talhabayhan.lexi.feature.game.levelTestScreen
 import dev.talhabayhan.lexi.feature.game.result.resultScreen
 import dev.talhabayhan.lexi.feature.home.HomeRoute
 import dev.talhabayhan.lexi.feature.home.homeScreen
-import dev.talhabayhan.lexi.feature.levels.categoriesScreen
-import dev.talhabayhan.lexi.feature.levels.levelSelectScreen
+import dev.talhabayhan.lexi.feature.levels.picker.categoryPickerScreen
 import dev.talhabayhan.lexi.feature.notebook.notebookScreen
 import dev.talhabayhan.lexi.feature.onboarding.onboardingScreen
 import dev.talhabayhan.lexi.feature.onboarding.result.levelTestResultScreen
@@ -53,9 +51,9 @@ import dev.talhabayhan.lexi.splash.splashScreen
 import org.koin.compose.koinInject
 
 /**
- * The app graph: `Splash → Home → LevelSelect [→ Categories] → Game → Result`, `Home → Notebook → Game (review)
- * → Result` and `Home → Stats`, `Home → Settings`, `Home → Practice` (level select preselected to Practice) and
- * `Home → Exam packs`, and `Home → Reminder pre-prompt` (once, after the first real game) or `Settings → Reminder
+ * The app graph (video flow): `Splash → Home → CategoryPicker ("Çarkını seç", mode / time dialog) → Game → Result`,
+ * `CategoryPicker → Game (exam pack)`, `Home → Notebook → Game (review) → Result` and `Home → Stats`,
+ * `Home → Settings`, `Home → Exam packs`, and `Home → Reminder pre-prompt` (once, after the first real game) or `Settings → Reminder
  * pre-prompt` (turning the reminder on). First run: `Splash → Onboarding → Home`, or `Onboarding → LevelTest → LevelTestResult → Home`
  * (the result replaces the test; "Pes et" and back from the result return to the onboarding). The
  * result replaces everything above Home, so system back and "Ana menüye dön" both return to Home; TEKRAR OYNA starts
@@ -133,12 +131,11 @@ private fun LexiNavGraph(
             onBack = navigator::quitLevelTest,
         )
         homeScreen(
-            onPlay = { navigator.openLevelSelect() },
+            onPlay = { level -> navigator.openCategoryPicker(level) },
             onOpenDaily = { navigator.startDaily() },
             onOpenNotebook = { navigator.openNotebook() },
             onOpenStats = { navigator.openStats() },
             onOpenSettings = { navigator.openSettings() },
-            onOpenPractice = { navigator.openLevelSelect(GameMode.PRACTICE) },
             onOpenExamPacks = { navigator.openExamPacks() },
             onOpenDuel = { navigator.openDuelSetup() },
             onOpenReminderPrePrompt = { navigator.openReminderPrePrompt() },
@@ -160,14 +157,10 @@ private fun LexiNavGraph(
             onBack = { navigator.back() },
             onStartReview = { navigator.startReview() },
         )
-        levelSelectScreen(
+        categoryPickerScreen(
             onBack = { navigator.back() },
-            onStart = { level, mode -> navigator.startGame(level, mode) },
-            onOpenCategories = { level, mode -> navigator.openCategories(level, mode) },
-        )
-        categoriesScreen(
-            onBack = { navigator.back() },
-            onStart = { level, mode, category -> navigator.startGame(level, mode, category) },
+            onStart = { level, mode, category, time -> navigator.startGame(level, mode, category, time) },
+            onStartPack = { pack -> navigator.startExamPack(pack) },
         )
         gameScreen(
             onFinished = navigator::finishGame,

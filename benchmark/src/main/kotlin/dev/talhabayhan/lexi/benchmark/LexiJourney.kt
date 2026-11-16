@@ -42,7 +42,7 @@ internal fun MacrobenchmarkScope.waitForHome() {
 }
 
 /**
- * Runs the perf tour (`docs/PERF.md`) in the running app: Home, Settings, LevelSelect, Game, Stats and Notebook through
+ * Runs the perf tour (`docs/PERF.md`) in the running app: Home, Settings, CategoryPicker, Game, Stats and Notebook through
  * the real navigation. Started from the shell, so a release build honours the extras. Waits for `LexiPerf DONE`.
  */
 internal fun MacrobenchmarkScope.runPerfTour(loops: Int) {

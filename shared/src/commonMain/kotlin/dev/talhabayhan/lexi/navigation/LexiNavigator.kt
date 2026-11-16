@@ -19,8 +19,7 @@ import dev.talhabayhan.lexi.feature.game.duel.DuelRoute
 import dev.talhabayhan.lexi.feature.game.duel.DuelSetupRoute
 import dev.talhabayhan.lexi.feature.game.result.ResultRoute
 import dev.talhabayhan.lexi.feature.home.HomeRoute
-import dev.talhabayhan.lexi.feature.levels.CategoriesRoute
-import dev.talhabayhan.lexi.feature.levels.LevelSelectRoute
+import dev.talhabayhan.lexi.feature.levels.picker.CategoryPickerRoute
 import dev.talhabayhan.lexi.feature.notebook.NotebookRoute
 import dev.talhabayhan.lexi.feature.onboarding.OnboardingRoute
 import dev.talhabayhan.lexi.feature.onboarding.result.LevelTestResultRoute
@@ -106,16 +105,14 @@ internal class LexiNavigator(
         navController.popBackStack(OnboardingRoute, inclusive = false)
     }
 
-    fun openLevelSelect(mode: GameMode? = null): Boolean = ifResumed {
-        navigate(if (mode == null) LevelSelectRoute() else LevelSelectRoute(mode)) { launchSingleTop = true }
+    /** Home's play card: "Çarkını seç" on the remembered [level] (video flow). */
+    fun openCategoryPicker(level: Level): Boolean = ifResumed {
+        navigate(CategoryPickerRoute(level)) { launchSingleTop = true }
     }
 
-    fun openCategories(level: Level, mode: GameMode): Boolean = ifResumed {
-        navigate(CategoriesRoute(level, mode)) { launchSingleTop = true }
-    }
-
-    fun startGame(level: Level, mode: GameMode, category: CategoryId? = null): Boolean =
-        openGame(GameRoute(level, mode, category)) { launchSingleTop = true }
+    /** OYNA of the mode / time dialog; [timeSeconds] null = the stored choice (or untimed modes). */
+    fun startGame(level: Level, mode: GameMode, category: CategoryId? = null, timeSeconds: Int? = null): Boolean =
+        openGame(GameRoute(level, mode, category, timeSeconds = timeSeconds)) { launchSingleTop = true }
 
     fun startDaily(): Boolean = openGame(GameRoute.daily()) { launchSingleTop = true }
 

@@ -9,7 +9,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 /**
- * Frame times over one perf tour (`docs/PERF.md`): Home, Settings, LevelSelect, Game, Stats, Notebook and back, with
+ * Frame times over one perf tour (`docs/PERF.md`): Home, Settings, CategoryPicker, Game, Stats, Notebook and back, with
  * the baseline profile (what Play installs). Includes the launch's frames before the tour starts. M8 target: 60 fps,
  * i.e. `frameOverrunMs` P90 ≤ 0 and few frames over 16.7 ms; on the CI emulator only the trend counts.
  */

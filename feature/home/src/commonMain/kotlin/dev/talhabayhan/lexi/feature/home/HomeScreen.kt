@@ -171,18 +171,25 @@ internal fun HomeScreen(
             }
             RuledBottomBar(
                 items = listOf(
-                    BottomBarItem(LexiIcons.Stats, stringResource(Res.string.home_bar_stats), {
-                        onIntent(HomeIntent.OpenStats)
-                    }),
+                    BottomBarItem(
+                        icon = LexiIcons.Stats,
+                        label = stringResource(Res.string.home_bar_stats),
+                        onClick = { onIntent(HomeIntent.OpenStats) },
+                        contentDescription = stringResource(Res.string.home_bar_stats),
+                    ),
                     BottomBarItem(
                         icon = LexiIcons.Invite,
                         label = stringResource(Res.string.home_bar_invite),
                         onClick = { onIntent(HomeIntent.Invite(inviteMessage)) },
                         contentDescription = stringResource(Res.string.home_bar_invite_description),
                     ),
-                    BottomBarItem(LexiIcons.Settings, stringResource(Res.string.home_settings), {
-                        onIntent(HomeIntent.OpenSettings)
-                    }),
+                    // Also the macrobenchmark's "Home is shown" marker (`By.desc("Settings")`, `LexiJourney`).
+                    BottomBarItem(
+                        icon = LexiIcons.Settings,
+                        label = stringResource(Res.string.home_settings),
+                        onClick = { onIntent(HomeIntent.OpenSettings) },
+                        contentDescription = stringResource(Res.string.home_settings),
+                    ),
                 ),
                 modifier = Modifier
                     .background(colors.cream)
