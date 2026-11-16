@@ -1,0 +1,288 @@
+id,level,answer,letter,rule,difficulty,reason,suggested_action
+a1-important,A1,IMPORTANT,I,STARTS,2,length 9 >= 9,keep
+a1-mix,A1,MIX,X,CONTAINS,2,"not beginner: mid-frequency verb; coverage exception: CONTAINS, hard letter X",keep
+a1-exit,A1,EXIT,X,CONTAINS,2,"not beginner: sign vocabulary, not core; coverage exception: CONTAINS, hard letter X",move to a higher level
+a1-extra,A1,EXTRA,X,CONTAINS,2,"not beginner: abstract adjective; coverage exception: CONTAINS, hard letter X",move to a higher level
+a1-fix,A1,FIX,X,CONTAINS,2,"not beginner: mid-frequency verb; coverage exception: CONTAINS, hard letter X",keep
+a1-size,A1,SIZE,Z,CONTAINS,2,"not beginner: abstract noun; coverage exception: CONTAINS, hard letter Z",keep
+a1-crazy,A1,CRAZY,Z,CONTAINS,3,"difficulty 3 >= 3; common adjective, d3 is top of the A1 scale; coverage exception: CONTAINS, hard letter Z",keep
+a1-dozen,A1,DOZEN,Z,CONTAINS,3,"difficulty 3 >= 3; not beginner: uncommon measure word; A2/B1 word; coverage exception: CONTAINS, hard letter Z",move to a higher level
+a1-suit,A1,SUIT,U,CONTAINS,2,not beginner: ambiguous (clothes / verb); coverage exception: CONTAINS,keep
+a1-delicious,A1,DELICIOUS,D,STARTS,2,length 9 >= 9,keep
+a1-dictionary,A1,DICTIONARY,D,STARTS,2,length 10 >= 9,keep
+a1-downstairs,A1,DOWNSTAIRS,D,STARTS,3,"length 10 >= 9; difficulty 3 >= 3; taught with upstairs/house vocabulary, d2 is enough",lower difficulty
+a1-exercise,A1,EXERCISE,E,STARTS,2,not beginner: abstract (noun/verb),keep
+a1-expensive,A1,EXPENSIVE,E,STARTS,2,length 9 >= 9,keep
+a1-goodbye,A1,GOODBYE,G,STARTS,1,function word tagged phrase,keep
+a1-hamburger,A1,HAMBURGER,H,STARTS,2,length 9 >= 9,keep
+a1-interesting,A1,INTERESTING,I,STARTS,3,"length 11 >= 9; difficulty 3 >= 3; high-frequency adjective, long but easy",lower difficulty
+a1-newspaper,A1,NEWSPAPER,N,STARTS,2,length 9 >= 9,keep
+a1-quarter,A1,QUARTER,Q,STARTS,3,"difficulty 3 >= 3; not beginner: fraction / time idiom; time telling (quarter past), but needs the clue to stay concrete; coverage exception: hard letter Q",keep
+a1-upstairs,A1,UPSTAIRS,U,STARTS,3,"difficulty 3 >= 3; taught with downstairs/house vocabulary, d2 is enough",lower difficulty
+a1-sorry,A1,SORRY,S,STARTS,1,function word tagged phrase,keep
+a1-thanks,A1,THANKS,T,STARTS,1,function word tagged phrase,keep
+a1-different,A1,DIFFERENT,D,STARTS,2,length 9 >= 9,keep
+a1-news,A1,NEWS,N,STARTS,2,not beginner: uncountable abstract noun,move to a higher level
+a1-of-course,A1,OF COURSE,O,STARTS,2,multi-word,keep
+a1-price,A1,PRICE,P,STARTS,2,not beginner: abstract noun,keep
+a1-sometimes,A1,SOMETIMES,S,STARTS,2,length 9 >= 9,keep
+a1-welcome,A1,WELCOME,W,STARTS,1,function word tagged phrase,keep
+a1-excuse-me,A1,EXCUSE ME,X,CONTAINS,2,"multi-word; coverage exception: CONTAINS, hard letter X",keep
+a1-strawberry,A1,STRAWBERRY,S,STARTS,2,length 10 >= 9,keep
+a1-supermarket,A1,SUPERMARKET,S,STARTS,2,length 11 >= 9,keep
+a1-grandparents,A1,GRANDPARENTS,G,STARTS,2,length 12 >= 9,keep
+a1-boyfriend,A1,BOYFRIEND,B,STARTS,2,length 9 >= 9,keep
+a1-girlfriend,A1,GIRLFRIEND,G,STARTS,2,length 10 >= 9,keep
+a1-tourist,A1,TOURIST,T,STARTS,2,not beginner: mid-frequency,keep
+a1-apartment,A1,APARTMENT,A,STARTS,1,length 9 >= 9,keep
+a1-alphabet,A1,ALPHABET,A,STARTS,2,not beginner: metalanguage,move to a higher level
+a1-basketball,A1,BASKETBALL,B,STARTS,2,length 10 >= 9,keep
+a1-classroom,A1,CLASSROOM,C,STARTS,1,length 9 >= 9,keep
+a1-classmate,A1,CLASSMATE,C,STARTS,1,length 9 >= 9,keep
+a1-example,A1,EXAMPLE,E,STARTS,2,not beginner: abstract noun,keep
+a1-in-front-of,A1,IN FRONT OF,I,STARTS,2,length 9 >= 9; multi-word,keep
+a1-language,A1,LANGUAGE,L,STARTS,2,not beginner: abstract noun,keep
+a1-motorbike,A1,MOTORBIKE,M,STARTS,2,length 9 >= 9,keep
+a1-seventeen,A1,SEVENTEEN,S,STARTS,1,length 9 >= 9,keep
+a1-television,A1,TELEVISION,T,STARTS,1,length 10 >= 9,keep
+a1-telephone,A1,TELEPHONE,T,STARTS,1,length 9 >= 9,keep
+a1-toothache,A1,TOOTHACHE,T,STARTS,2,length 9 >= 9,keep
+a1-christmas,A1,CHRISTMAS,C,STARTS,2,length 9 >= 9,keep
+a1-history,A1,HISTORY,H,STARTS,2,not beginner: abstract noun,keep
+a1-kilometre,A1,KILOMETER,K,STARTS,2,length 9 >= 9,keep
+a1-problem,A1,PROBLEM,P,STARTS,2,not beginner: abstract noun,keep
+a1-pound,A1,POUND,P,STARTS,2,"not beginner: ambiguous (money / weight), abstract for beginners",keep
+a1-policeman,A1,POLICEMAN,P,STARTS,2,length 9 >= 9,keep
+a1-surname,A1,SURNAME,S,STARTS,2,"not beginner: formal word, 'last name' is taught first",move to a higher level
+a1-spaghetti,A1,SPAGHETTI,S,STARTS,2,length 9 >= 9,keep
+a1-wonderful,A1,WONDERFUL,W,STARTS,2,length 9 >= 9,keep
+a1-toothbrush,A1,TOOTHBRUSH,T,STARTS,2,length 10 >= 9,keep
+a1-toothpaste,A1,TOOTHPASTE,T,STARTS,2,length 10 >= 9,keep
+a1-butterfly,A1,BUTTERFLY,B,STARTS,2,length 9 >= 9,keep
+a1-after,A1,AFTER,A,STARTS,1,function word tagged phrase,keep
+a1-behind,A1,BEHIND,B,STARTS,1,function word tagged phrase,keep
+a1-between,A1,BETWEEN,B,STARTS,2,function word tagged phrase,keep
+a1-because,A1,BECAUSE,B,STARTS,2,function word tagged phrase,keep
+a1-famous,A1,FAMOUS,F,STARTS,2,not beginner: abstract adjective,keep
+a1-lorry,A1,LORRY,L,STARTS,3,"difficulty 3 >= 3; not beginner: British-only, rare for beginners; British-only; 'truck' is the beginner word",move to a higher level
+a1-playground,A1,PLAYGROUND,P,STARTS,3,length 10 >= 9; difficulty 3 >= 3; concrete school noun,lower difficulty
+a1-australia,A1,AUSTRALIA,A,STARTS,2,length 9 >= 9,keep
+a1-around,A1,AROUND,A,STARTS,2,function word tagged phrase,keep
+a1-about,A1,ABOUT,A,STARTS,1,function word tagged phrase,keep
+a1-crocodile,A1,CROCODILE,C,STARTS,2,length 9 >= 9,keep
+a1-everything,A1,EVERYTHING,E,STARTS,2,length 10 >= 9,keep
+a1-how,A1,HOW,H,STARTS,1,function word tagged phrase,keep
+a1-over,A1,OVER,O,STARTS,2,function word tagged phrase,keep
+a1-something,A1,SOMETHING,S,STARTS,2,length 9 >= 9,keep
+a1-what,A1,WHAT,W,STARTS,1,function word tagged phrase,keep
+a1-when,A1,WHEN,W,STARTS,1,function word tagged phrase,keep
+a1-where,A1,WHERE,W,STARTS,1,function word tagged phrase,keep
+a1-which,A1,WHICH,W,STARTS,2,function word tagged phrase,keep
+a1-who,A1,WHO,W,STARTS,1,function word tagged phrase,keep
+a1-why,A1,WHY,W,STARTS,1,function word tagged phrase,keep
+a1-healthy,A1,HEALTHY,H,STARTS,1,not beginner: abstract adjective,keep
+a1-island,A1,ISLAND,I,STARTS,3,"difficulty 3 >= 3; not beginner: irregular spelling, mid-frequency; silent S makes it hard to spell",keep
+a1-idea,A1,IDEA,I,STARTS,1,not beginner: abstract noun,keep
+a1-hello,A1,HELLO,H,STARTS,1,function word tagged phrase,keep
+a1-into,A1,INTO,I,STARTS,2,function word tagged phrase,keep
+a1-under,A1,UNDER,U,STARTS,1,function word tagged phrase,keep
+a1-hobby,A1,HOBBY,H,STARTS,1,not beginner: abstract noun,keep
+a1-beautiful,A1,BEAUTIFUL,B,STARTS,1,length 9 >= 9,keep
+a1-difficult,A1,DIFFICULT,D,STARTS,2,length 9 >= 9,keep
+a1-prize,A1,PRIZE,Z,CONTAINS,2,"not beginner: mid-frequency; coverage exception: CONTAINS, hard letter Z",keep
+a1-daughter,A1,DAUGHTER,D,STARTS,3,difficulty 3 >= 3; family word taught with son; only the spelling is hard,lower difficulty
+a1-grandfather,A1,GRANDFATHER,G,STARTS,1,length 11 >= 9,keep
+a1-grandmother,A1,GRANDMOTHER,G,STARTS,1,length 11 >= 9,keep
+a1-vegetable,A1,VEGETABLE,V,STARTS,3,"length 9 >= 9; difficulty 3 >= 3; core food word, only the spelling is long",lower difficulty
+a1-breakfast,A1,BREAKFAST,B,STARTS,1,length 9 >= 9,keep
+a1-chocolate,A1,CHOCOLATE,C,STARTS,1,length 9 >= 9,keep
+a1-restaurant,A1,RESTAURANT,R,STARTS,1,length 10 >= 9,keep
+a1-knife,A1,KNIFE,K,STARTS,3,difficulty 3 >= 3; core table word; silent K is a spelling issue only,lower difficulty
+a1-university,A1,UNIVERSITY,U,STARTS,1,length 10 >= 9,keep
+a1-understand,A1,UNDERSTAND,U,STARTS,1,length 10 >= 9,keep
+a1-blackboard,A1,BLACKBOARD,B,STARTS,2,length 10 >= 9,keep
+a1-yesterday,A1,YESTERDAY,Y,STARTS,2,length 9 >= 9,keep
+a1-afternoon,A1,AFTERNOON,A,STARTS,1,length 9 >= 9,keep
+a1-september,A1,SEPTEMBER,S,STARTS,1,length 9 >= 9,keep
+a1-wednesday,A1,WEDNESDAY,W,STARTS,1,length 9 >= 9,keep
+a2-quality,A2,QUALITY,Q,STARTS,3,reviewer judgement: B1 word; coverage exception: hard letter Q,move to a higher level
+a2-equal,A2,EQUAL,Q,CONTAINS,3,"reviewer judgement: B1 word; coverage exception: CONTAINS, hard letter Q",move to a higher level
+a2-equipment,A2,EQUIPMENT,Q,CONTAINS,3,"reviewer judgement: B1 word; coverage exception: CONTAINS, hard letter Q",move to a higher level
+a2-cheque,A2,QUILT,Q,STARTS,4,difficulty 4 >= 4; reviewer judgement: B2 word; rare household word; coverage exception: hard letter Q,move to a higher level
+a2-except,A2,EXCEPT,X,CONTAINS,4,"difficulty 4 >= 4; reviewer judgement: B1 word; coverage exception: CONTAINS, hard letter X",move to a higher level
+a2-expert,A2,EXPERT,X,CONTAINS,4,"difficulty 4 >= 4; reviewer judgement: B1 word; coverage exception: CONTAINS, hard letter X",move to a higher level
+a2-explore,A2,EXPLORE,X,CONTAINS,4,"difficulty 4 >= 4; reviewer judgement: B1 word; coverage exception: CONTAINS, hard letter X",move to a higher level
+a2-exchange,A2,EXCHANGE,X,CONTAINS,4,"difficulty 4 >= 4; reviewer judgement: B1 word; coverage exception: CONTAINS, hard letter X",move to a higher level
+a2-zebra-crossing,A2,ZEBRA CROSSING,Z,STARTS,3,length 13 >= 11; coverage exception: hard letter Z,keep
+a2-judge,A2,JUDGE,J,STARTS,4,difficulty 4 >= 4; reviewer judgement: B2 word; coverage exception: hard letter J,move to a higher level
+a2-vehicle,A2,VEHICLE,V,STARTS,3,reviewer judgement: B1 word,move to a higher level
+a2-vote,A2,VOTE,V,STARTS,4,difficulty 4 >= 4; reviewer judgement: B1 word,move to a higher level
+a2-nervous,A2,NERVOUS,V,CONTAINS,3,reviewer judgement: B1 word; coverage exception: CONTAINS,move to a higher level
+a2-nationality,A2,NATIONALITY,N,STARTS,3,length 11 >= 11,keep
+a2-neighbourhood,A2,NEIGHBORHOOD,N,STARTS,3,length 12 >= 11,keep
+a2-departure,A2,DEPARTURE,D,STARTS,3,reviewer judgement: B1 word,move to a higher level
+a2-hairdresser,A2,HAIRDRESSER,H,STARTS,3,length 11 >= 11,keep
+a2-firefighter,A2,FIREFIGHTER,F,STARTS,2,length 11 >= 11,keep
+a2-explode,A2,EXPLODE,X,CONTAINS,3,"reviewer judgement: B1 word; coverage exception: CONTAINS, hard letter X",move to a higher level
+a2-unless,A2,UNLESS,U,STARTS,4,difficulty 4 >= 4; reviewer judgement: B1 word,move to a higher level
+a2-countryside,A2,COUNTRYSIDE,U,CONTAINS,3,length 11 >= 11; coverage exception: CONTAINS,keep
+a2-information,A2,INFORMATION,I,STARTS,3,length 11 >= 11,keep
+a2-illness,A2,ILLNESS,I,STARTS,3,reviewer judgement: B1 word,move to a higher level
+a2-improve,A2,IMPROVE,I,STARTS,3,reviewer judgement: B1 word,move to a higher level
+a2-ignore,A2,IGNORE,I,STARTS,4,difficulty 4 >= 4; reviewer judgement: B2 word,move to a higher level
+a2-invent,A2,INVENT,I,STARTS,4,difficulty 4 >= 4; reviewer judgement: B1 word,move to a higher level
+a2-international,A2,INTERNATIONAL,I,STARTS,3,length 13 >= 11,keep
+a2-immediately,A2,IMMEDIATELY,I,STARTS,4,length 11 >= 11; difficulty 4 >= 4; reviewer judgement: B1 word,move to a higher level
+a2-opinion,A2,OPINION,O,STARTS,4,difficulty 4 >= 4,lower difficulty
+a2-organise,A2,ORGANIZE,O,STARTS,4,difficulty 4 >= 4; reviewer judgement: B1 word,move to a higher level
+a2-otherwise,A2,OTHERWISE,O,STARTS,4,difficulty 4 >= 4; reviewer judgement: B1 word,move to a higher level
+a2-education,A2,EDUCATION,E,STARTS,3,reviewer judgement: B1 word,move to a higher level
+a2-electricity,A2,ELECTRICITY,E,STARTS,3,length 11 >= 11,keep
+a2-enemy,A2,ENEMY,E,STARTS,3,reviewer judgement: B1 word,move to a higher level
+a2-foreign,A2,FOREIGN,G,CONTAINS,3,reviewer judgement: B1 word; coverage exception: CONTAINS,move to a higher level
+a2-although,A2,ALTHOUGH,A,STARTS,4,difficulty 4 >= 4; reviewer judgement: B1 word,move to a higher level
+a2-apply,A2,APPLY,A,STARTS,4,difficulty 4 >= 4,lower difficulty
+a2-argue,A2,ARGUE,A,STARTS,3,reviewer judgement: B1 word,move to a higher level
+a2-article,A2,ARTICLE,A,STARTS,3,reviewer judgement: B1 word,move to a higher level
+a2-average,A2,AVERAGE,A,STARTS,4,difficulty 4 >= 4; reviewer judgement: B1 word,move to a higher level
+a2-actually,A2,ACTUALLY,A,STARTS,4,difficulty 4 >= 4; reviewer judgement: B1 word,move to a higher level
+a2-appointment,A2,APPOINTMENT,A,STARTS,3,length 11 >= 11; reviewer judgement: B1 word,move to a higher level
+a2-beauty,A2,BEAUTY,B,STARTS,4,difficulty 4 >= 4,lower difficulty
+a2-chance,A2,CHANCE,C,STARTS,3,reviewer judgement: B1 word,move to a higher level
+a2-comfortable,A2,COMFORTABLE,C,STARTS,3,length 11 >= 11,keep
+a2-competition,A2,COMPETITION,C,STARTS,3,length 11 >= 11; reviewer judgement: B1 word,move to a higher level
+a2-conversation,A2,CONVERSATION,C,STARTS,3,length 12 >= 11; reviewer judgement: B1 word,move to a higher level
+a2-since,A2,SINCE,C,CONTAINS,4,difficulty 4 >= 4; coverage exception: CONTAINS,keep
+a2-distance,A2,DISTANCE,D,STARTS,3,reviewer judgement: B1 word,move to a higher level
+a2-degree,A2,DEGREE,D,STARTS,2,reviewer judgement: B1 word,move to a higher level
+a2-fashion,A2,FASHION,F,STARTS,3,reviewer judgement: B1 word,move to a higher level
+a2-flood,A2,FLOOD,F,STARTS,3,reviewer judgement: B2 word,move to a higher level
+a2-habit,A2,HABIT,H,STARTS,3,reviewer judgement: B1 word,move to a higher level
+a2-law,A2,LAW,L,STARTS,4,difficulty 4 >= 4; reviewer judgement: B1 word,move to a higher level
+a2-lawyer,A2,LAWYER,L,STARTS,3,reviewer judgement: B1 word,move to a higher level
+a2-personal,A2,PERSONAL,P,STARTS,4,difficulty 4 >= 4; reviewer judgement: B1 word,move to a higher level
+a2-prison,A2,PRISON,P,STARTS,4,difficulty 4 >= 4; reviewer judgement: B1 word,move to a higher level
+a2-especially,A2,ESPECIALLY,P,CONTAINS,4,difficulty 4 >= 4; reviewer judgement: B1 word; coverage exception: CONTAINS,move to a higher level
+a2-salary,A2,SALARY,S,STARTS,3,reviewer judgement: B1 word,move to a higher level
+a2-traditional,A2,TRADITIONAL,T,STARTS,3,length 11 >= 11,keep
+a2-warn,A2,WARN,W,STARTS,3,reviewer judgement: B1 word,move to a higher level
+a2-require,A2,REQUIRE,Q,CONTAINS,4,"difficulty 4 >= 4; reviewer judgement: B2 word; coverage exception: CONTAINS, hard letter Q",move to a higher level
+a2-antique,A2,ANTIQUE,Q,CONTAINS,4,"difficulty 4 >= 4; reviewer judgement: B2 word; B2 adjective/noun; coverage exception: CONTAINS, hard letter Q",move to a higher level
+a2-tax,A2,TAX,X,CONTAINS,4,"difficulty 4 >= 4; reviewer judgement: B1 word; coverage exception: CONTAINS, hard letter X",move to a higher level
+a2-oxygen,A2,OXYGEN,X,CONTAINS,4,"difficulty 4 >= 4; reviewer judgement: B2 word; coverage exception: CONTAINS, hard letter X",move to a higher level
+a2-express,A2,EXPRESS,X,CONTAINS,4,"difficulty 4 >= 4; reviewer judgement: B1 word; coverage exception: CONTAINS, hard letter X",move to a higher level
+a2-expense,A2,EXPENSE,X,CONTAINS,4,"difficulty 4 >= 4; reviewer judgement: B2 word; coverage exception: CONTAINS, hard letter X",move to a higher level
+a2-saxophone,A2,SAXOPHONE,X,CONTAINS,4,"difficulty 4 >= 4; concrete music word, hard spelling only; coverage exception: CONTAINS, hard letter X",lower difficulty
+a2-citizen,A2,CITIZEN,Z,CONTAINS,4,"difficulty 4 >= 4; reviewer judgement: B2 word; coverage exception: CONTAINS, hard letter Z",move to a higher level
+a2-zigzag,A2,ZIGZAG,Z,STARTS,4,difficulty 4 >= 4; Z coverage exception; coverage exception: hard letter Z,keep
+a2-kindergarten,A2,KINDERGARTEN,K,STARTS,3,length 12 >= 11,keep
+a2-sketch,A2,SKETCH,K,CONTAINS,4,difficulty 4 >= 4; reviewer judgement: B2 word; coverage exception: CONTAINS,move to a higher level
+a2-hurricane,A2,HURRICANE,H,STARTS,3,reviewer judgement: B2 word,move to a higher level
+a2-gallery,A2,GALLERY,G,STARTS,3,reviewer judgement: B1 word,move to a higher level
+a2-injury,A2,INJURY,I,STARTS,2,reviewer judgement: B1 word,move to a higher level
+a2-journalist,A2,JOURNALIST,J,STARTS,2,reviewer judgement: B1 word; coverage exception: hard letter J,move to a higher level
+a2-temperature,A2,TEMPERATURE,T,STARTS,2,length 11 >= 11,keep
+a2-underground,A2,UNDERGROUND,U,STARTS,2,length 11 >= 11,keep
+b1-biological,B1,BIOLOGICAL,B,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-claim,B1,CLAIM,C,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-criticise,B1,CRITICIZE,C,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-demand,B1,DEMAND,D,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-distant,B1,DISTANT,D,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-entire,B1,ENTIRE,E,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-evidence,B1,EVIDENCE,E,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-extreme,B1,EXTREME,X,CONTAINS,4,"reviewer judgement: B2 word; coverage exception: CONTAINS, hard letter X",move to a higher level
+b1-facility,B1,FACILITY,F,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-finance,B1,FINANCE,F,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-fortune,B1,FORTUNE,F,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-frequent,B1,FREQUENT,F,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-guarantee,B1,GUARANTEE,G,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-highlight,B1,HIGHLIGHT,H,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-identity,B1,IDENTITY,I,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-impress,B1,IMPRESS,I,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-incident,B1,INCIDENT,I,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-influence,B1,INFLUENCE,I,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-insist,B1,INSIST,I,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-inspire,B1,INSPIRE,I,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-insurance,B1,INSURANCE,I,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-investigate,B1,INVESTIGATE,I,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-investment,B1,INVESTMENT,I,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-issue,B1,ISSUE,I,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-immigrant,B1,IMMIGRANT,I,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-infection,B1,INFECTION,I,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-individual,B1,INDIVIDUAL,I,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-justice,B1,JUSTICE,J,STARTS,4,reviewer judgement: B2 word; coverage exception: hard letter J,move to a higher level
+b1-majority,B1,MAJORITY,J,CONTAINS,4,"reviewer judgement: B2 word; coverage exception: CONTAINS, hard letter J",move to a higher level
+b1-reject,B1,REJECT,J,CONTAINS,4,"reviewer judgement: B2 word; coverage exception: CONTAINS, hard letter J",move to a higher level
+b1-adjust,B1,ADJUST,J,CONTAINS,4,"reviewer judgement: B2 word; coverage exception: CONTAINS, hard letter J",move to a higher level
+b1-objective,B1,OBJECTIVE,J,CONTAINS,4,"reviewer judgement: B2 word; coverage exception: CONTAINS, hard letter J",move to a higher level
+b1-prejudice,B1,PREJUDICE,J,CONTAINS,4,"reviewer judgement: B2 word; coverage exception: CONTAINS, hard letter J",move to a higher level
+b1-tackle,B1,TACKLE,K,CONTAINS,4,reviewer judgement: B2 word; coverage exception: CONTAINS,move to a higher level
+b1-loan,B1,LOAN,L,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-luxury,B1,LUXURY,L,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-maximum,B1,MAXIMUM,X,CONTAINS,4,"reviewer judgement: B2 word; coverage exception: CONTAINS, hard letter X",move to a higher level
+b1-launch,B1,LAUNCH,N,CONTAINS,4,reviewer judgement: B2 word; coverage exception: CONTAINS,move to a higher level
+b1-unique,B1,UNIQUE,N,CONTAINS,4,reviewer judgement: B2 word; coverage exception: CONTAINS,move to a higher level
+b1-tension,B1,TENSION,N,CONTAINS,4,reviewer judgement: B2 word; coverage exception: CONTAINS,move to a higher level
+b1-pension,B1,PENSION,N,CONTAINS,4,reviewer judgement: B2 word; coverage exception: CONTAINS,move to a higher level
+b1-occupation,B1,OCCUPATION,O,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-particular,B1,PARTICULAR,P,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-permit,B1,PERMIT,P,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-poverty,B1,POVERTY,P,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-predict,B1,PREDICT,P,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-prevent,B1,PREVENT,P,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-privacy,B1,PRIVACY,P,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-profit,B1,PROFIT,P,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-property,B1,PROPERTY,P,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-reflect,B1,REFLECT,R,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-shortage,B1,SHORTAGE,S,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-species,B1,SPECIES,S,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-struggle,B1,STRUGGLE,S,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-suspect,B1,SUSPECT,S,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-symbol,B1,SYMBOL,S,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-theory,B1,THEORY,T,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-threat,B1,THREAT,T,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-trade,B1,TRADE,T,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-urban,B1,URBAN,U,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-victim,B1,VICTIM,V,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-violence,B1,VIOLENCE,V,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-convince,B1,CONVINCE,V,CONTAINS,4,reviewer judgement: B2 word; coverage exception: CONTAINS,move to a higher level
+b1-convenient,B1,CONVENIENT,V,CONTAINS,4,reviewer judgement: B2 word; coverage exception: CONTAINS,move to a higher level
+b1-weapon,B1,WEAPON,W,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-witness,B1,WITNESS,W,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-worth,B1,WORTH,W,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-quote,B1,QUOTE,Q,STARTS,4,reviewer judgement: B2 word; coverage exception: hard letter Q,move to a higher level
+b1-qualification,B1,QUALIFICATION,Q,STARTS,4,reviewer judgement: B2 word; coverage exception: hard letter Q,move to a higher level
+b1-sequence,B1,SEQUENCE,Q,CONTAINS,4,"reviewer judgement: B2 word; coverage exception: CONTAINS, hard letter Q",move to a higher level
+b1-consequence,B1,CONSEQUENCE,Q,CONTAINS,4,"reviewer judgement: B2 word; coverage exception: CONTAINS, hard letter Q",move to a higher level
+b1-technique,B1,TECHNIQUE,Q,CONTAINS,4,"reviewer judgement: B2 word; coverage exception: CONTAINS, hard letter Q",move to a higher level
+b1-requirement,B1,REQUIREMENT,Q,CONTAINS,4,"reviewer judgement: B2 word; coverage exception: CONTAINS, hard letter Q",move to a higher level
+b1-acquire,B1,ACQUIRE,Q,CONTAINS,4,"reviewer judgement: B2 word; coverage exception: CONTAINS, hard letter Q",move to a higher level
+b1-policy,B1,POLICY,Y,CONTAINS,4,reviewer judgement: B2 word; coverage exception: CONTAINS,move to a higher level
+b1-priority,B1,PRIORITY,Y,CONTAINS,4,reviewer judgement: B2 word; coverage exception: CONTAINS,move to a higher level
+b1-survey,B1,SURVEY,Y,CONTAINS,4,reviewer judgement: B2 word; coverage exception: CONTAINS,move to a higher level
+b1-deny,B1,DENY,Y,CONTAINS,4,reviewer judgement: B2 word; coverage exception: CONTAINS,move to a higher level
+b1-identify,B1,IDENTIFY,Y,CONTAINS,4,reviewer judgement: B2 word; coverage exception: CONTAINS,move to a higher level
+b1-loyalty,B1,LOYALTY,Y,CONTAINS,4,reviewer judgement: B2 word; coverage exception: CONTAINS,move to a higher level
+b1-summarize,B1,SUMMARIZE,Z,CONTAINS,4,"reviewer judgement: B2 word; coverage exception: CONTAINS, hard letter Z",move to a higher level
+b1-emphasize,B1,EMPHASIZE,Z,CONTAINS,4,"reviewer judgement: B2 word; coverage exception: CONTAINS, hard letter Z",move to a higher level
+b1-heritage,B1,HERITAGE,H,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-enthusiasm,B1,ENTHUSIASM,E,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-opponent,B1,OPPONENT,O,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-outline,B1,OUTLINE,O,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-exception,B1,EXCEPTION,X,CONTAINS,4,"reviewer judgement: B2 word; coverage exception: CONTAINS, hard letter X",move to a higher level
+b1-expand,B1,EXPAND,X,CONTAINS,4,"reviewer judgement: B2 word; coverage exception: CONTAINS, hard letter X",move to a higher level
+b1-complex,B1,COMPLEX,X,CONTAINS,4,"reviewer judgement: B2 word; coverage exception: CONTAINS, hard letter X",move to a higher level
+b1-assume,B1,ASSUME,A,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-awkward,B1,AWKWARD,A,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-desperate,B1,DESPERATE,D,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-generation,B1,GENERATION,G,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-logical,B1,LOGICAL,L,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-massive,B1,MASSIVE,M,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-military,B1,MILITARY,M,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-motivate,B1,MOTIVATE,M,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-refund,B1,REFUND,R,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-regret,B1,REGRET,R,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-relief,B1,RELIEF,R,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-resident,B1,RESIDENT,R,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-vary,B1,VARY,V,STARTS,4,reviewer judgement: B2 word,move to a higher level
+b1-wealth,B1,WEALTH,W,STARTS,4,reviewer judgement: B2 word,move to a higher level
