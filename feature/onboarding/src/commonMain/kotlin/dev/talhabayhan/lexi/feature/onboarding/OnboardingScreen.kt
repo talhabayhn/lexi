@@ -389,7 +389,11 @@ private fun LevelTestIntroContent(onIntent: (OnboardingIntent) -> Unit, modifier
     }
 }
 
-/** Top row ([topStart] + "Atla"), illustration, title + body (+ [extra]), then [actions] pushed to the bottom. */
+/**
+ * Top row ([topStart] + "Atla"), illustration, title + body (+ [extra]) in a scrolling area, and the [actions] pinned
+ * under it. The actions never scroll: when the content is taller than the screen (large font / display size, long
+ * Turkish copy) it is the content that scrolls, so the primary button is never cut off at the viewport edge.
+ */
 @Composable
 private fun OnboardingPage(
     illustration: OnboardingStep,
@@ -401,41 +405,42 @@ private fun OnboardingPage(
     extra: (@Composable () -> Unit)? = null,
     actions: @Composable ColumnScope.() -> Unit,
 ) {
-    Column(
-        modifier = modifier
-            .fillMaxSize()
-            .verticalScroll(rememberScrollState()),
-        verticalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap20),
-    ) {
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically,
+    Column(modifier = modifier.fillMaxSize()) {
+        Column(
+            modifier = Modifier
+                .weight(1f)
+                .fillMaxWidth()
+                .verticalScroll(rememberScrollState()),
+            verticalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap20),
         ) {
-            topStart()
-            LexiTextLink(text = stringResource(Res.string.onboarding_skip), onClick = onSkip)
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                topStart()
+                LexiTextLink(text = stringResource(Res.string.onboarding_skip), onClick = onSkip)
+            }
+
+            OnboardingIllustration(step = illustration)
+
+            Column(
+                modifier = Modifier.fillMaxWidth(),
+                verticalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap10),
+            ) {
+                Text(
+                    text = title,
+                    style = LexiTheme.typography.display,
+                    color = LexiTheme.colors.ink,
+                    modifier = Modifier.lexiHeading(),
+                )
+                Text(text = body, style = LexiTheme.typography.body16, color = LexiTheme.colors.ink)
+                extra?.invoke()
+            }
         }
 
-        OnboardingIllustration(step = illustration)
-
         Column(
-            modifier = Modifier.fillMaxWidth(),
-            verticalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap10),
-        ) {
-            Text(
-                text = title,
-                style = LexiTheme.typography.display,
-                color = LexiTheme.colors.ink,
-                modifier = Modifier.lexiHeading(),
-            )
-            Text(text = body, style = LexiTheme.typography.body16, color = LexiTheme.colors.ink)
-            extra?.invoke()
-        }
-
-        Spacer(Modifier.weight(1f))
-
-        Column(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth().padding(top = LexiTheme.dimens.gap20),
             verticalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap10),
             content = actions,
         )

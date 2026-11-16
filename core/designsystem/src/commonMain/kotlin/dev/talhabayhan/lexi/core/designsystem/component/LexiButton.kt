@@ -142,9 +142,12 @@ public fun LexiButton(
     val border = LexiTheme.borders.regular
     val size = if (fixedHeight) Modifier.height(height) else Modifier.heightIn(min = height)
     val wrapPadding = if (fixedHeight) Modifier else Modifier.padding(vertical = LexiButtonDefaults.WrapPaddingVertical)
+    // A minimum-height button must not fill a bounded parent: the surface passes its minimum down (propagateMinConstraints)
+    // and the row centres its content inside it, so the button is as tall as its content needs, at least [height].
+    val fill = if (fixedHeight) Modifier.fillMaxHeight() else Modifier
     val row: @Composable () -> Unit = {
         Row(
-            modifier = Modifier.fillMaxHeight().padding(contentPadding).then(wrapPadding),
+            modifier = fill.padding(contentPadding).then(wrapPadding),
             horizontalArrangement = horizontalArrangement,
             verticalAlignment = Alignment.CenterVertically,
             content = content,
