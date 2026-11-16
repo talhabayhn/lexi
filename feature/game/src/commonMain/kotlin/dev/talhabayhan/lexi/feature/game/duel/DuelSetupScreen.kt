@@ -43,6 +43,7 @@ import dev.talhabayhan.lexi.core.designsystem.component.DecorShapeKind
 import dev.talhabayhan.lexi.core.designsystem.component.DialogButton
 import dev.talhabayhan.lexi.core.designsystem.component.DuelDefaults
 import dev.talhabayhan.lexi.core.designsystem.component.FeedbackDefaults
+import dev.talhabayhan.lexi.core.designsystem.component.FitOneLineText
 import dev.talhabayhan.lexi.core.designsystem.component.LexiButton
 import dev.talhabayhan.lexi.core.designsystem.component.ModalScrim
 import dev.talhabayhan.lexi.core.designsystem.component.NavSquareButton
@@ -55,6 +56,7 @@ import dev.talhabayhan.lexi.core.designsystem.icon.LexiIcons
 import dev.talhabayhan.lexi.core.designsystem.modifier.lexiHeading
 import dev.talhabayhan.lexi.core.designsystem.modifier.lexiSurface
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
+import dev.talhabayhan.lexi.core.designsystem.theme.WithCappedFontScale
 import dev.talhabayhan.lexi.core.designsystem.theme.lexiContentWidth
 import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.feature.game.generated.resources.Res
@@ -143,11 +145,17 @@ internal fun DuelSetupScreen(
                     Text(stringResource(Res.string.duel_setup_eyebrow), style = LexiTheme.typography.label13)
                 }
                 Column(verticalArrangement = Arrangement.spacedBy(dimens.gap4)) {
-                    Text(
-                        stringResource(Res.string.duel_setup_title),
-                        style = LexiTheme.typography.display,
-                        modifier = Modifier.lexiHeading(),
-                    )
+                    // One line beside the blue circle: shrinks to fit down to 28sp, wraps only below that.
+                    WithCappedFontScale(DuelDefaults.SETUP_TITLE_FONT_SCALE_CAP) {
+                        FitOneLineText(
+                            text = stringResource(Res.string.duel_setup_title),
+                            style = LexiTheme.typography.display,
+                            minFontSize = DuelDefaults.SetupTitleMinSize,
+                            modifier = Modifier
+                                .lexiHeading()
+                                .padding(end = DuelDefaults.SetupTitleEndReserve),
+                        )
+                    }
                     Text(stringResource(Res.string.duel_setup_subtitle), style = LexiTheme.typography.body15)
                 }
                 Column(verticalArrangement = Arrangement.spacedBy(dimens.gap10)) {

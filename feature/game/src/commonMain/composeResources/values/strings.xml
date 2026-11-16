@@ -197,7 +197,7 @@
     <string name="leveltest_error">The test couldn't start. You can pick a level manually.</string>
     <!-- Hot-seat duel (docs/design/duel-copy.md; screens 17–20) -->
     <string name="duel_setup_eyebrow">TWO PLAYERS · ONE PHONE</string>
-    <string name="duel_setup_title">Take\nturns</string>
+    <string name="duel_setup_title">Take turns</string>
     <string name="duel_setup_subtitle">Everyone gets their own wheel and clock.</string>
     <string name="duel_setup_back">Back</string>
     <string name="duel_player_label">PLAYER %1$d</string>
