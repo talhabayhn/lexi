@@ -101,9 +101,9 @@ class LevelSelectViewModelTest {
         viewModel().state.test {
             assertEquals(180, expectMostRecentItem().classicTimeLimitSeconds)
 
-            settings.update { it.copy(classicTimeLimitSeconds = 240) }
+            settings.update { it.copy(classicTimeLimitSeconds = 300) }
 
-            assertEquals(240, awaitItem().classicTimeLimitSeconds)
+            assertEquals(300, awaitItem().classicTimeLimitSeconds)
         }
     }
 

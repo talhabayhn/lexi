@@ -432,16 +432,16 @@ class GameViewModelTest {
 
     @Test
     fun `the classic time limit comes from the settings`() = runTest {
-        settings.update { it.copy(classicTimeLimitSeconds = 120) }
+        settings.update { it.copy(classicTimeLimitSeconds = 420) }
 
         val vm = started()
 
-        assertEquals(120_000L, vm.remainingMs)
+        assertEquals(420_000L, vm.remainingMs)
     }
 
     @Test
     fun `the daily wheel ignores classic time setting and uses daily limit`() = runTest {
-        settings.update { it.copy(classicTimeLimitSeconds = 120) }
+        settings.update { it.copy(classicTimeLimitSeconds = 420) }
 
         val vm = startedIn(GameMode.DAILY)
 
@@ -450,7 +450,7 @@ class GameViewModelTest {
 
     @Test
     fun `the hardcore wheel ignores classic time setting and uses hardcore limit`() = runTest {
-        settings.update { it.copy(classicTimeLimitSeconds = 120) }
+        settings.update { it.copy(classicTimeLimitSeconds = 420) }
 
         val vm = startedIn(GameMode.HARDCORE)
 
