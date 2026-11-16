@@ -20,7 +20,7 @@ import kotlinx.coroutines.launch
 
 /**
  * The level test result (`GAME_RULES.md` §9, owner decisions 3 and 4). The level is saved through
- * [OnboardingRepository.saveSelectedLevel] (what the level select preselects), then the onboarding is marked
+ * [OnboardingRepository.saveSelectedLevel] (the level Home starts on, `Settings.selectedLevel`), then the onboarding is marked
  * completed and the app goes Home; no game starts. One tap finishes: later taps are ignored. A failed save is
  * reported and the page stays, so the player can tap again.
  */

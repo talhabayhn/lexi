@@ -3,7 +3,11 @@ package dev.talhabayhan.lexi.feature.home
 import androidx.compose.runtime.Immutable
 import dev.talhabayhan.lexi.core.domain.game.GameMode
 import dev.talhabayhan.lexi.core.domain.goal.DailyGoalProgress
+import dev.talhabayhan.lexi.core.domain.model.CategoryId
 import dev.talhabayhan.lexi.core.domain.model.Level
+import dev.talhabayhan.lexi.core.domain.settings.Settings
+import kotlinx.collections.immutable.ImmutableList
+import kotlinx.collections.immutable.toImmutableList
 
 /**
  * State of the daily wheel card on the home screen.
@@ -34,33 +38,90 @@ internal enum class DailyGiftNoticeType {
 @Immutable
 internal data class DailyGiftNotice(val type: DailyGiftNoticeType, val amount: Int)
 
+/** Words learned of a level's [total] cards ("412 / 850 kelime"); 0 / 0 while the content is read or unreadable. */
+@Immutable
+internal data class LevelProgressUi(val level: Level, val learned: Int, val total: Int) {
+    val fraction: Float get() = if (total <= 0) 0f else (learned.toFloat() / total).coerceIn(0f, 1f)
+}
+
+/** One option of the category sheet: a category of the selected level with its learned words. */
+@Immutable
+internal data class CategoryUi(
+    val id: CategoryId,
+    val nameTr: String,
+    val nameEn: String,
+    val learned: Int,
+    val total: Int,
+) {
+    val isComplete: Boolean get() = total > 0 && learned >= total
+}
+
+/** The selected level's categories as the sheet shows them. */
+@Immutable
+internal sealed interface CategoriesState {
+    /** Being read (also right after a level change). */
+    data object Loading : CategoriesState
+
+    /** Read; empty for a level without categories (NAT): the category row is hidden. */
+    data class Loaded(val categories: ImmutableList<CategoryUi>) : CategoriesState
+
+    /** The content could not be read: the row shows Karışık, the sheet offers "Tekrar dene". */
+    data object Error : CategoriesState
+}
+
 /**
- * What `02-home` shows. The zero values are real ones (nothing played yet); they are replaced as the repositories
- * emit.
+ * What `02c-home-v2` shows. The zero values are real ones (nothing played yet); they are replaced as the repositories
+ * emit. The selection (level, mode, category) is the stored one from the first frame (`home-v2-notes.md` §2).
  */
 @Immutable
 internal data class HomeUiState(
-    /** Consecutive days with a completed wheel, ending today (or yesterday while today is still open). 0 hides badge. */
+    /** Consecutive days with a completed wheel, ending today (or yesterday while today is still open). 0 hides it. */
     val streakDays: Int = 0,
-    /** Notebook cards due today ("N tekrar bekliyor"). */
+    /** Notebook cards due today: the notebook key's badge (hidden at 0, "99+" above 99). */
     val dueReviews: Int = 0,
-    /** Cards ever answered correctly ("N kelime öğrenildi"). */
-    val learnedWords: Int = 0,
     /** Day of the month and month (1–12) of today, for the daily card. */
     val dailyDay: Int = 1,
     val dailyMonth: Int = 1,
     /** State of the daily wheel card (Available, AlreadyPlayed, Unavailable). */
     val dailyState: DailyCardState = DailyCardState.Available,
-    /** Level and mode on the OYNA badge. TODO(M5): the last played choice, once it is persisted. */
-    val playLevel: Level = Level.A1,
-    val playMode: GameMode = GameMode.CLASSIC,
-    /** Daily goal progress for today ("Bugün {done}/{goal}"). */
+    /** Daily goal progress for today ("bugünkü hedef 0/1"). */
     val dailyGoalProgress: DailyGoalProgress? = null,
     /** Daily joker gift notice (toast) when GrantDailyJokers gives a gift or streak bonus. */
     val dailyGiftNotice: DailyGiftNotice? = null,
-    /** Names of the exam packs playable in this build, in display order; the "Sınav paketleri" tile lists them. */
-    val examPackNames: List<String> = emptyList(),
-)
+    /** The six levels with their progress, in chip order. */
+    val levels: ImmutableList<LevelProgressUi> = Level.entries.map { LevelProgressUi(it, 0, 0) }.toImmutableList(),
+    val selectedLevel: Level = Level.A1,
+    val selectedMode: GameMode = GameMode.CLASSIC,
+    /** The selected category of [selectedLevel]; null = Karışık. */
+    val selectedCategory: CategoryId? = null,
+    val categories: CategoriesState = CategoriesState.Loading,
+    val categorySheetOpen: Boolean = false,
+    /** Classic total time, the mode control's "3:00" (the player's setting). */
+    val classicTimeLimitSeconds: Int = Settings.DEFAULT_CLASSIC_TIME_LIMIT_SECONDS,
+    /** Slots of a regular wheel, for OYNA's badge "26 HARF". */
+    val letterCount: Int = ('A'..'Z').count(),
+) {
+    val selectedProgress: LevelProgressUi get() = levels.first { it.level == selectedLevel }
+
+    /** The category row is hidden when the level has none (NAT, or an empty list once read). */
+    val showCategoryRow: Boolean
+        get() = selectedLevel != Level.NAT && (categories as? CategoriesState.Loaded)?.categories?.isEmpty() != true
+
+    /** The selected category as shown (null = Karışık; also while the list is read or unreadable). */
+    val selectedCategoryUi: CategoryUi?
+        get() = (categories as? CategoriesState.Loaded)?.categories?.firstOrNull { it.id == selectedCategory }
+
+    /**
+     * The category OYNA plays: the stored one while the list is still read (content never changes, it was valid when
+     * stored), Karışık when the list could not be read or the level has none.
+     */
+    val playCategory: CategoryId?
+        get() = when {
+            selectedLevel == Level.NAT -> null
+            categories is CategoriesState.Loading -> selectedCategory
+            else -> selectedCategoryUi?.id
+        }
+}
 
 internal sealed interface HomeIntent {
     /** Periodic refresh (on resume and once per minute while STARTED). */
@@ -85,7 +146,25 @@ internal sealed interface HomeIntent {
      */
     data object Entered : HomeIntent
 
-    /** OYNA: opens the level and mode select. */
+    /** A level chip: selects the level and resets the category to Karışık (saved). */
+    data class SelectLevel(val level: Level) : HomeIntent
+
+    /** A mode cell (saved). */
+    data class SelectMode(val mode: GameMode) : HomeIntent
+
+    /** The category row: opens the sheet. */
+    data object OpenCategories : HomeIntent
+
+    /** Scrim, close button or system back on the sheet. */
+    data object CloseCategories : HomeIntent
+
+    /** A sheet option: null = Karışık (saved); closes the sheet. */
+    data class SelectCategory(val category: CategoryId?) : HomeIntent
+
+    /** "Tekrar dene" in the sheet after the categories could not be read. */
+    data object RetryCategories : HomeIntent
+
+    /** OYNA: starts a game of the selection. */
     data object Play : HomeIntent
 
     /** The daily wheel card: opens the daily wheel when available. */
@@ -94,24 +173,22 @@ internal sealed interface HomeIntent {
     /** The gear icon. */
     data object OpenSettings : HomeIntent
 
-    /** The Kelime Defterim tile. */
+    /** The Defter key. */
     data object OpenNotebook : HomeIntent
 
-    /** The Istatistikler tile. */
+    /** The İstatistik key. */
     data object OpenStats : HomeIntent
 
-    /** The practice tile: the level select on Practice mode. */
-    data object OpenPractice : HomeIntent
-
-    /** The exam packs tile: a "coming soon" page until M7. */
+    /** The Sınavlar key: the exam packs page. */
     data object OpenExamPacks : HomeIntent
 
-    /** The "İki kişi, tek telefon" box: the hot-seat duel setup. */
+    /** The Düello key: the hot-seat duel setup. */
     data object OpenDuel : HomeIntent
 }
 
 internal sealed interface HomeEffect {
-    data object NavigateToLevelSelect : HomeEffect
+    /** OYNA: a game of [level], [mode] and [category] (null = the level's mixed wheel). */
+    data class StartGame(val level: Level, val mode: GameMode, val category: CategoryId?) : HomeEffect
 
     data object NavigateToDaily : HomeEffect
 
@@ -120,8 +197,6 @@ internal sealed interface HomeEffect {
     data object NavigateToStats : HomeEffect
 
     data object NavigateToSettings : HomeEffect
-
-    data object NavigateToPractice : HomeEffect
 
     data object NavigateToDuel : HomeEffect
 

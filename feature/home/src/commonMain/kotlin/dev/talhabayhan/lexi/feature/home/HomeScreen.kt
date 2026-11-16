@@ -1,6 +1,5 @@
 package dev.talhabayhan.lexi.feature.home
 
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -15,96 +14,150 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.heightIn
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.windowInsetsPadding
-import androidx.compose.material3.Icon
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.selection.selectableGroup
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.Stable
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.graphics.drawOutline
+import androidx.compose.ui.graphics.drawscope.DrawScope
+import androidx.compose.ui.graphics.drawscope.translate
 import androidx.compose.ui.layout.Layout
+import androidx.compose.ui.layout.LayoutCoordinates
 import androidx.compose.ui.layout.Placeable
 import androidx.compose.ui.layout.SubcomposeLayout
+import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.semantics.Role
-import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.isTraversalGroup
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.traversalIndex
+import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Constraints
-import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.min
-import dev.talhabayhan.lexi.core.designsystem.component.CardDefaults
+import androidx.navigationevent.NavigationEventInfo
+import androidx.navigationevent.compose.NavigationBackHandler
+import androidx.navigationevent.compose.rememberNavigationEventState
+import dev.talhabayhan.lexi.core.designsystem.component.BottomSheet
+import dev.talhabayhan.lexi.core.designsystem.component.CategoryCard
+import dev.talhabayhan.lexi.core.designsystem.component.CategoryCardDefaults
 import dev.talhabayhan.lexi.core.designsystem.component.DailyCard
-import dev.talhabayhan.lexi.core.designsystem.component.DecorShape
+import dev.talhabayhan.lexi.core.designsystem.component.DailyCardStatus
 import dev.talhabayhan.lexi.core.designsystem.component.DecorShapeKind
-import dev.talhabayhan.lexi.core.designsystem.component.DuelDefaults
-import dev.talhabayhan.lexi.core.designsystem.component.DuelHomeBox
+import dev.talhabayhan.lexi.core.designsystem.component.EmptyState
 import dev.talhabayhan.lexi.core.designsystem.component.HomeDefaults
+import dev.talhabayhan.lexi.core.designsystem.component.HomePlayButton
+import dev.talhabayhan.lexi.core.designsystem.component.HomeTierSize
 import dev.talhabayhan.lexi.core.designsystem.component.IconButtonDefaults
+import dev.talhabayhan.lexi.core.designsystem.component.KeyTile
+import dev.talhabayhan.lexi.core.designsystem.component.LevelChipRow
+import dev.talhabayhan.lexi.core.designsystem.component.LevelHeroCard
 import dev.talhabayhan.lexi.core.designsystem.component.LexiLogo
-import dev.talhabayhan.lexi.core.designsystem.component.LexiLogoSize
-import dev.talhabayhan.lexi.core.designsystem.component.MenuTile
+import dev.talhabayhan.lexi.core.designsystem.component.MixedWheelCard
 import dev.talhabayhan.lexi.core.designsystem.component.NavSquareButton
-import dev.talhabayhan.lexi.core.designsystem.component.PlayButton
+import dev.talhabayhan.lexi.core.designsystem.component.PickerRow
+import dev.talhabayhan.lexi.core.designsystem.component.Segment
+import dev.talhabayhan.lexi.core.designsystem.component.SegmentedControl
 import dev.talhabayhan.lexi.core.designsystem.component.SlidingToast
-import dev.talhabayhan.lexi.core.designsystem.component.StreakChip
-import dev.talhabayhan.lexi.core.designsystem.component.menuTileMinWidth
+import dev.talhabayhan.lexi.core.designsystem.format.formatClock
 import dev.talhabayhan.lexi.core.designsystem.icon.LexiIcons
-import dev.talhabayhan.lexi.core.designsystem.modifier.lexiSurface
+import dev.talhabayhan.lexi.core.designsystem.modifier.lexiHeading
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
+import dev.talhabayhan.lexi.core.designsystem.theme.WithCappedFontScale
 import dev.talhabayhan.lexi.core.designsystem.theme.lexiContentWidth
 import dev.talhabayhan.lexi.core.domain.game.GameMode
 import dev.talhabayhan.lexi.core.domain.goal.DailyGoalProgress
+import dev.talhabayhan.lexi.core.domain.model.CategoryId
+import dev.talhabayhan.lexi.core.domain.model.Level
+import dev.talhabayhan.lexi.core.domain.settings.Settings
 import dev.talhabayhan.lexi.feature.home.generated.resources.Res
-import dev.talhabayhan.lexi.feature.home.generated.resources.home_daily_completed_score
-import dev.talhabayhan.lexi.feature.home.generated.resources.home_daily_goal_desc
-import dev.talhabayhan.lexi.feature.home.generated.resources.home_daily_goal_desc_reached
-import dev.talhabayhan.lexi.feature.home.generated.resources.home_daily_goal_progress
-import dev.talhabayhan.lexi.feature.home.generated.resources.home_daily_label
-import dev.talhabayhan.lexi.feature.home.generated.resources.home_daily_next_wheel_hours_minutes
-import dev.talhabayhan.lexi.feature.home.generated.resources.home_daily_next_wheel_minutes
+import dev.talhabayhan.lexi.feature.home.generated.resources.home_build_label
+import dev.talhabayhan.lexi.feature.home.generated.resources.home_caption_classic
+import dev.talhabayhan.lexi.feature.home.generated.resources.home_caption_hardcore
+import dev.talhabayhan.lexi.feature.home.generated.resources.home_caption_practice
+import dev.talhabayhan.lexi.feature.home.generated.resources.home_category_card_desc
+import dev.talhabayhan.lexi.feature.home.generated.resources.home_category_error
+import dev.talhabayhan.lexi.feature.home.generated.resources.home_category_label
+import dev.talhabayhan.lexi.feature.home.generated.resources.home_category_mixed
+import dev.talhabayhan.lexi.feature.home.generated.resources.home_category_mixed_subtitle
+import dev.talhabayhan.lexi.feature.home.generated.resources.home_category_mixed_title
+import dev.talhabayhan.lexi.feature.home.generated.resources.home_category_progress
+import dev.talhabayhan.lexi.feature.home.generated.resources.home_category_progress_done
+import dev.talhabayhan.lexi.feature.home.generated.resources.home_category_row_desc
+import dev.talhabayhan.lexi.feature.home.generated.resources.home_category_sheet_close
+import dev.talhabayhan.lexi.feature.home.generated.resources.home_category_sheet_hint
+import dev.talhabayhan.lexi.feature.home.generated.resources.home_category_sheet_title
+import dev.talhabayhan.lexi.feature.home.generated.resources.home_daily_badge_done
+import dev.talhabayhan.lexi.feature.home.generated.resources.home_daily_badge_solve
+import dev.talhabayhan.lexi.feature.home.generated.resources.home_daily_card_title
+import dev.talhabayhan.lexi.feature.home.generated.resources.home_daily_desc_done
+import dev.talhabayhan.lexi.feature.home.generated.resources.home_daily_desc_solve
+import dev.talhabayhan.lexi.feature.home.generated.resources.home_daily_desc_unavailable
+import dev.talhabayhan.lexi.feature.home.generated.resources.home_daily_done_hours_minutes
+import dev.talhabayhan.lexi.feature.home.generated.resources.home_daily_done_minutes
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_daily_title
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_daily_unavailable
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_joker_gift_combined
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_joker_gift_daily
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_joker_gift_streak
+import dev.talhabayhan.lexi.feature.home.generated.resources.home_key_badge_overflow
+import dev.talhabayhan.lexi.feature.home.generated.resources.home_key_duel
+import dev.talhabayhan.lexi.feature.home.generated.resources.home_key_duel_desc
+import dev.talhabayhan.lexi.feature.home.generated.resources.home_key_exams
+import dev.talhabayhan.lexi.feature.home.generated.resources.home_key_exams_desc
+import dev.talhabayhan.lexi.feature.home.generated.resources.home_key_notebook
+import dev.talhabayhan.lexi.feature.home.generated.resources.home_key_notebook_desc
+import dev.talhabayhan.lexi.feature.home.generated.resources.home_key_notebook_desc_none
+import dev.talhabayhan.lexi.feature.home.generated.resources.home_key_stats
+import dev.talhabayhan.lexi.feature.home.generated.resources.home_key_stats_desc
+import dev.talhabayhan.lexi.feature.home.generated.resources.home_level_a1
+import dev.talhabayhan.lexi.feature.home.generated.resources.home_level_a2
+import dev.talhabayhan.lexi.feature.home.generated.resources.home_level_b1
+import dev.talhabayhan.lexi.feature.home.generated.resources.home_level_b2
+import dev.talhabayhan.lexi.feature.home.generated.resources.home_level_c1
+import dev.talhabayhan.lexi.feature.home.generated.resources.home_level_chip_desc
+import dev.talhabayhan.lexi.feature.home.generated.resources.home_level_hero_desc
+import dev.talhabayhan.lexi.feature.home.generated.resources.home_level_nat
+import dev.talhabayhan.lexi.feature.home.generated.resources.home_level_progress
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_mode_classic
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_mode_hardcore
+import dev.talhabayhan.lexi.feature.home.generated.resources.home_mode_hardcore_hint
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_mode_practice
-import dev.talhabayhan.lexi.feature.home.generated.resources.home_months
+import dev.talhabayhan.lexi.feature.home.generated.resources.home_mode_practice_hint
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_notice_dismiss
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_play
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_play_badge
+import dev.talhabayhan.lexi.feature.home.generated.resources.home_retry
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_settings
-import dev.talhabayhan.lexi.feature.home.generated.resources.home_streak
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_tagline
-import dev.talhabayhan.lexi.feature.home.generated.resources.home_tile_duel
-import dev.talhabayhan.lexi.feature.home.generated.resources.home_tile_duel_subtitle
-import dev.talhabayhan.lexi.feature.home.generated.resources.home_tile_exams
-import dev.talhabayhan.lexi.feature.home.generated.resources.home_tile_exams_subtitle
-import dev.talhabayhan.lexi.feature.home.generated.resources.home_tile_notebook
-import dev.talhabayhan.lexi.feature.home.generated.resources.home_tile_notebook_due
-import dev.talhabayhan.lexi.feature.home.generated.resources.home_tile_practice
-import dev.talhabayhan.lexi.feature.home.generated.resources.home_tile_practice_subtitle
-import dev.talhabayhan.lexi.feature.home.generated.resources.home_tile_stats
-import dev.talhabayhan.lexi.feature.home.generated.resources.home_tile_stats_learned
+import kotlinx.collections.immutable.persistentListOf
+import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.pluralStringResource
-import org.jetbrains.compose.resources.stringArrayResource
 import org.jetbrains.compose.resources.stringResource
 
 /**
- * `02-home`: streak chip and settings, the logo, the daily card, OYNA, the duel box (`02b-home-duel`) and the 2 × 2 menu tiles. The blue circle and
- * red half-pill behind are edge-to-edge decoration at 210dp from the top / bottom of the screen; the content keeps the
- * design paddings inside the system-bar insets and never scrolls: on short phones it steps down [HomeTier]s. The daily
- * gift is a floating toast shown only while [noticeVisible] (the screen is resumed); it never affects the layout.
+ * `02c-home-v2`: logo and settings, the daily card (title, description, one status badge), "ÇARKINI KUR" (the selected
+ * level's hero card, six level chips, the mode control, the category row) with OYNA right under it, and the four footer
+ * key tiles pinned at the bottom. When even the tightest [HomeTierSize] does not fit, OYNA is pinned above the footer
+ * and the part above it scrolls ([HomeLayout], `home-v2-notes.md` §1).
+ * The blue circle and red half-pill are edge-to-edge decoration drawn behind everything at the screen's right edge
+ * beside the daily card and at its left edge beside the footer, so they never sit behind a chip or the hero card. The
+ * daily gift is a floating toast shown only while [noticeVisible] (the screen is resumed); it never affects the layout.
  */
 @Composable
 internal fun HomeScreen(
@@ -114,52 +167,115 @@ internal fun HomeScreen(
     noticeVisible: Boolean = true,
 ) {
     val colors = LexiTheme.colors
-    val dimens = LexiTheme.dimens
-    Box(modifier.fillMaxSize().background(colors.cream)) {
-        DecorShape(
-            kind = DecorShapeKind.Circle,
-            color = colors.blue,
-            modifier = Modifier
-                .align(Alignment.TopEnd)
-                .offset(x = HomeDefaults.CircleBleed, y = HomeDefaults.DecorOffset)
-                .size(HomeDefaults.CircleSize),
-        )
-        DecorShape(
-            kind = DecorShapeKind.HalfPill,
-            color = colors.red,
-            modifier = Modifier
-                .align(Alignment.BottomStart)
-                .offset(x = -HomeDefaults.PillBleed, y = -HomeDefaults.DecorOffset)
-                .size(HomeDefaults.PillWidth, HomeDefaults.PillHeight),
-        )
-        CompositionLocalProvider(LocalDensity provides LocalDensity.current.withCappedFontScale()) {
-            FitToHeight(
-                Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing).lexiContentWidth(),
-            ) { tier, tileGrowth, fit ->
-                HomeContent(tier, tileGrowth, fit, state, onIntent)
-            }
-            // Floats above the content: it takes no layout space, so the gift never resizes or moves Home's parts.
-            val notice = state.dailyGiftNotice
-            if (notice != null && noticeVisible) {
-                GiftToast(
-                    notice = notice,
-                    onDismiss = { onIntent(HomeIntent.DismissNotice) },
-                    modifier = Modifier
-                        .align(Alignment.TopCenter)
-                        .windowInsetsPadding(WindowInsets.safeDrawing)
-                        .lexiContentWidth()
-                        .padding(
-                            start = dimens.screenPaddingHorizontal,
-                            end = dimens.screenPaddingHorizontal,
-                            top = dimens.screenPaddingTop + HomeDefaults.StreakChipHeight + dimens.gap8,
-                        ),
-                )
-            }
+    val decor = remember { DecorAnchors() }
+    val circle = LexiTheme.shapes.circle
+    val halfPill = LexiTheme.shapes.halfPill
+    Box(
+        modifier
+            .fillMaxSize()
+            .background(colors.cream)
+            .onGloballyPositioned { decor.root = it }
+            .drawBehind { drawDecor(decor, circle, halfPill, colors.blue, colors.red) },
+    ) {
+        FitToHeight(
+            Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing).lexiContentWidth(),
+            onChosen = { decor.chosen.value = it },
+        ) { layout, fit -> HomeContent(layout, fit, state, onIntent, decor) }
+        // Floats above the content: it takes no layout space, so the gift never resizes or moves Home's parts.
+        val notice = state.dailyGiftNotice
+        if (notice != null && noticeVisible) {
+            val tier = decor.chosen.value.tier
+            GiftToast(
+                notice = notice,
+                onDismiss = { onIntent(HomeIntent.DismissNotice) },
+                modifier = Modifier
+                    .align(Alignment.TopCenter)
+                    .windowInsetsPadding(WindowInsets.safeDrawing)
+                    .lexiContentWidth()
+                    .padding(
+                        start = tier.paddingHorizontal,
+                        end = tier.paddingHorizontal,
+                        top = tier.paddingTop + HomeDefaults.HeaderHeight + LexiTheme.dimens.gap8,
+                    ),
+            )
+        }
+        CategorySheet(state, onIntent)
+    }
+    // System back closes the category sheet instead of leaving Home.
+    NavigationBackHandler(
+        state = rememberNavigationEventState(NavigationEventInfo.None),
+        isBackEnabled = state.categorySheetOpen,
+        onBackCompleted = { onIntent(HomeIntent.CloseCategories) },
+    )
+}
+
+/**
+ * One layout [FitToHeight] tries, in order: each tier with OYNA right under the category row (nothing scrolls), and
+ * as the last resort the tightest tier with OYNA pinned above the footer and the part above it scrolling
+ * (`home-v2-notes.md` §1).
+ */
+internal enum class HomeLayout(val tier: HomeTierSize, val pinnedPlay: Boolean) {
+    Regular(HomeTierSize.Regular, pinnedPlay = false),
+    Compact(HomeTierSize.Compact, pinnedPlay = false),
+    Tight(HomeTierSize.Tight, pinnedPlay = false),
+    TightPinned(HomeTierSize.Tight, pinnedPlay = true),
+}
+
+/** Where the decoration goes: the daily card and the footer row, in the screen's coordinates (read while drawing). */
+@Stable
+private class DecorAnchors {
+    var root: LayoutCoordinates? = null
+
+    /**
+     * The tier [FitToHeight] placed (written while it measures). Tiers measured but not chosen stay attached with stale
+     * positions, so only the chosen tier's anchors are drawn.
+     */
+    val chosen = mutableStateOf(HomeLayout.Regular)
+    private val daily = mutableMapOf<HomeLayout, LayoutCoordinates>()
+    private val footer = mutableMapOf<HomeLayout, LayoutCoordinates>()
+
+    /** Bumped on every new position, so the decoration is redrawn in the same frame. */
+    val version = mutableIntStateOf(0)
+
+    fun onDaily(layout: HomeLayout, coordinates: LayoutCoordinates) {
+        daily[layout] = coordinates
+        version.intValue++
+    }
+
+    fun onFooter(layout: HomeLayout, coordinates: LayoutCoordinates) {
+        footer[layout] = coordinates
+        version.intValue++
+    }
+
+    /** Vertical centre of [anchor] in the screen's coordinates; null while not laid out. */
+    fun centreY(anchor: (DecorAnchors) -> LayoutCoordinates?): Float? {
+        val screen = root?.takeIf { it.isAttached } ?: return null
+        val coordinates = anchor(this)?.takeIf { it.isAttached } ?: return null
+        return screen.localPositionOf(coordinates, Offset.Zero).y + coordinates.size.height / 2f
+    }
+
+    val dailyAnchor: (DecorAnchors) -> LayoutCoordinates? = { it.daily[it.chosen.value] }
+    val footerAnchor: (DecorAnchors) -> LayoutCoordinates? = { it.footer[it.chosen.value] }
+}
+
+private fun DrawScope.drawDecor(decor: DecorAnchors, circle: Shape, halfPill: Shape, blue: Color, red: Color) {
+    decor.version.intValue
+    decor.centreY(decor.dailyAnchor)?.let { y ->
+        val diameter = HomeDefaults.CircleSize.toPx()
+        translate(left = size.width - diameter / 2, top = y - diameter / 2) {
+            drawOutline(circle.createOutline(Size(diameter, diameter), layoutDirection, this), blue)
+        }
+    }
+    decor.centreY(decor.footerAnchor)?.let { y ->
+        val width = HomeDefaults.PillWidth.toPx()
+        val height = HomeDefaults.PillHeight.toPx()
+        translate(left = HomeDefaults.PillVisible.toPx() - width, top = y - height / 2) {
+            drawOutline(halfPill.createOutline(Size(width, height), layoutDirection, this), red)
         }
     }
 }
 
-/** The daily joker gift as an info toast below the top bar (never over the streak chip or the gear); tap to dismiss. */
+/** The daily joker gift as an info toast below the logo (never over the gear); tap to dismiss. */
 @Composable
 private fun GiftToast(notice: DailyGiftNotice, onDismiss: () -> Unit, modifier: Modifier = Modifier) {
     val message = when (notice.type) {
@@ -181,75 +297,6 @@ private fun GiftToast(notice: DailyGiftNotice, onDismiss: () -> Unit, modifier: 
     )
 }
 
-/**
- * Heights of one layout tier (`screen-map.md`): regular is the design, the others are DESIGN-DEBT scalings of it. Snug
- * keeps every card of the design at its size (owner decision: the duel box never shrinks the other Home cards) and
- * only tightens the paddings and gaps, for phones where the daily goal chip and the duel box just miss the design.
- */
-internal enum class HomeTier { Regular, Snug, Compact, Tight }
-
-private class HomeMetrics(
-    val paddingTop: Dp,
-    val paddingBottom: Dp,
-    val gap: Dp,
-    val logo: LexiLogoSize,
-    val playHeight: Dp,
-    val duelHeight: Dp,
-    val tileHeight: Dp,
-    val tileGap: Dp,
-    val compactDaily: Boolean,
-    val compactTiles: Boolean = false,
-)
-
-@Composable
-private fun HomeTier.metrics(tileGrowth: Dp): HomeMetrics {
-    val dimens = LexiTheme.dimens
-    return when (this) {
-        HomeTier.Regular -> HomeMetrics(
-            dimens.screenPaddingTop,
-            dimens.screenPaddingBottom,
-            dimens.gap20,
-            LexiLogoSize.Menu,
-            HomeDefaults.RegularPlayHeight,
-            DuelDefaults.HomeBoxHeight,
-            CardDefaults.MenuTileHeight + tileGrowth,
-            dimens.gap12,
-            compactDaily = false,
-        )
-
-        HomeTier.Snug -> HomeMetrics(
-            HomeDefaults.CompactPaddingTop,
-            HomeDefaults.CompactPaddingBottom,
-            dimens.gap12,
-            LexiLogoSize.Menu,
-            HomeDefaults.RegularPlayHeight,
-            DuelDefaults.HomeBoxHeight,
-            CardDefaults.MenuTileHeight,
-            dimens.gap12,
-            compactDaily = false,
-        )
-
-        HomeTier.Compact -> HomeMetrics(
-            HomeDefaults.CompactPaddingTop,
-            HomeDefaults.CompactPaddingBottom,
-            HomeDefaults.CompactGap,
-            LexiLogoSize.MenuCompact,
-            HomeDefaults.CompactPlayHeight,
-            DuelDefaults.HomeBoxCompactHeight,
-            HomeDefaults.CompactTileHeight,
-            HomeDefaults.CompactTileGap,
-            compactDaily = true,
-        )
-
-        HomeTier.Tight -> HomeMetrics(
-            HomeDefaults.TightPaddingTop, HomeDefaults.TightPaddingBottom, HomeDefaults.TightGap,
-            LexiLogoSize.MenuCompact, HomeDefaults.TightPlayHeight, DuelDefaults.HomeBoxTightHeight,
-            HomeDefaults.TightTileHeight,
-            HomeDefaults.TightTileGap, compactDaily = true, compactTiles = true,
-        )
-    }
-}
-
 /** Natural height of one tier's content, written by [HomeColumn] while it is measured. */
 private class HomeFit {
     var naturalHeight: Int = 0
@@ -257,160 +304,41 @@ private class HomeFit {
 
 /**
  * Measures the content of each tier in turn (from regular) at exactly the available size and keeps the first whose
- * natural height ([HomeColumn] reports it in the same measure pass) fits; the last one otherwise. The home never
- * scrolls. Each tier is composed once and reused, so the usual case (regular fits) costs a single composition: no
- * separate probe has to be composed on the first frame of a screen transition. Tiers measured but not chosen stay
- * unplaced (hidden from accessibility). In the regular tier, height beyond the design's OYNA–tiles space
- * ([HomeDefaults.RegularMaxSpare]) becomes tile growth (per tile row) instead of widening that hole.
+ * natural height fits; the last one (whose upper part then scrolls) otherwise. Each tier is composed once and reused,
+ * so the usual case (regular fits) costs a single composition. Tiers measured but not chosen stay unplaced (hidden
+ * from accessibility).
  */
 @Composable
-private fun FitToHeight(modifier: Modifier, content: @Composable (HomeTier, Dp, HomeFit) -> Unit) {
-    val fits = remember { HomeTier.entries.associateWith { HomeFit() } }
-    val grownFit = remember { HomeFit() }
+private fun FitToHeight(
+    modifier: Modifier,
+    onChosen: (HomeLayout) -> Unit,
+    content: @Composable (HomeLayout, HomeFit) -> Unit,
+) {
+    val fits = remember { HomeLayout.entries.associateWith { HomeFit() } }
     // Stable slot lambdas: SubcomposeLayout recomposes a slot whenever it gets a new lambda instance.
     val slots = remember(content) {
-        HomeTier.entries.associateWith { tier -> @Composable { content(tier, Dp(0f), fits.getValue(tier)) } }
+        HomeLayout.entries.associateWith { layout -> @Composable { content(layout, fits.getValue(layout)) } }
     }
     SubcomposeLayout(modifier) { constraints ->
         val width = constraints.maxWidth
         val height = constraints.maxHeight
         val fixed = Constraints.fixed(width, height)
-        var tier = HomeTier.entries.last()
         var placeables = emptyList<Placeable>()
-        for (candidate in HomeTier.entries) {
+        var chosen = HomeLayout.entries.last()
+        for (candidate in HomeLayout.entries) {
             placeables = subcompose(candidate, slots.getValue(candidate)).map { it.measure(fixed) }
-            tier = candidate
+            chosen = candidate
             if (fits.getValue(candidate).naturalHeight <= height) break
         }
-        if (tier == HomeTier.Regular) {
-            val excess = height - fits.getValue(tier).naturalHeight - HomeDefaults.RegularMaxSpare.roundToPx()
-            if (excess > 0) {
-                val growth = min(excess.toDp() / 2, HomeDefaults.TileMaxGrowth)
-                placeables = subcompose(tier to growth) { content(tier, growth, grownFit) }.map { it.measure(fixed) }
-            }
-        }
+        onChosen(chosen)
         layout(width, height) { placeables.forEach { it.place(0, 0) } }
     }
 }
 
-@Composable
-private fun HomeContent(
-    tier: HomeTier,
-    tileGrowth: Dp,
-    fit: HomeFit,
-    state: HomeUiState,
-    onIntent: (HomeIntent) -> Unit,
-) {
-    val dimens = LexiTheme.dimens
-    val metrics = tier.metrics(tileGrowth)
-    HomeColumn(
-        fit = fit,
-        paddingTop = metrics.paddingTop,
-        paddingBottom = metrics.paddingBottom,
-        gap = metrics.gap,
-        modifier = Modifier.fillMaxSize().padding(horizontal = dimens.screenPaddingHorizontal),
-    ) {
-        Column(verticalArrangement = Arrangement.spacedBy(metrics.gap)) {
-            TopBar(state, onIntent)
-            Column(
-                Modifier.padding(top = if (tier <= HomeTier.Snug) dimens.gap8 else dimens.gap4),
-                verticalArrangement = Arrangement.spacedBy(dimens.gap6),
-            ) {
-                LexiLogo(size = metrics.logo)
-                Text(stringResource(Res.string.home_tagline), style = LexiTheme.typography.label15)
-            }
-            val months = stringArrayResource(Res.array.home_months)
-            val monthName = months.getOrNull(state.dailyMonth - 1).orEmpty()
-            val dailyLabel = stringResource(Res.string.home_daily_label, monthName)
-            Column(
-                verticalArrangement = Arrangement.spacedBy(if (metrics.compactDaily) dimens.gap4 else dimens.gap8),
-            ) {
-                when (val daily = state.dailyState) {
-                    is DailyCardState.Available -> {
-                        DailyCard(
-                            day = state.dailyDay.toString(),
-                            label = dailyLabel,
-                            title = stringResource(Res.string.home_daily_title),
-                            onClick = { onIntent(HomeIntent.OpenDaily) },
-                            compact = metrics.compactDaily,
-                            enabled = true,
-                            showChevron = true,
-                        )
-                    }
-
-                    is DailyCardState.AlreadyPlayed -> {
-                        val nextWheelSubtitle = if (daily.hoursUntilNext > 0) {
-                            stringResource(
-                                Res.string.home_daily_next_wheel_hours_minutes,
-                                daily.hoursUntilNext,
-                                daily.minutesUntilNext,
-                            )
-                        } else {
-                            stringResource(
-                                Res.string.home_daily_next_wheel_minutes,
-                                daily.minutesUntilNext,
-                            )
-                        }
-                        DailyCard(
-                            day = state.dailyDay.toString(),
-                            label = dailyLabel,
-                            title = stringResource(Res.string.home_daily_completed_score, daily.score),
-                            subtitle = nextWheelSubtitle,
-                            onClick = {},
-                            compact = metrics.compactDaily,
-                            enabled = false,
-                            showChevron = false,
-                        )
-                    }
-
-                    is DailyCardState.Unavailable -> {
-                        DailyCard(
-                            day = state.dailyDay.toString(),
-                            label = dailyLabel,
-                            title = stringResource(Res.string.home_daily_unavailable),
-                            onClick = {},
-                            compact = metrics.compactDaily,
-                            enabled = false,
-                            showChevron = false,
-                        )
-                    }
-                }
-                state.dailyGoalProgress?.let { goal ->
-                    DailyGoalChip(
-                        progress = goal,
-                        compact = metrics.compactDaily,
-                    )
-                }
-            }
-            PlayButton(
-                label = stringResource(Res.string.home_play),
-                badge = stringResource(
-                    Res.string.home_play_badge,
-                    state.playLevel.name,
-                    stringResource(state.playMode.nameRes()),
-                ),
-                onClick = { onIntent(HomeIntent.Play) },
-                height = metrics.playHeight,
-            )
-            val duelTitle = stringResource(Res.string.home_tile_duel)
-            DuelHomeBox(
-                title = duelTitle,
-                subtitle = stringResource(Res.string.home_tile_duel_subtitle),
-                onClick = { onIntent(HomeIntent.OpenDuel) },
-                onClickLabel = duelTitle,
-                height = metrics.duelHeight,
-                showSubtitle = tier != HomeTier.Tight,
-            )
-        }
-        MenuGrid(state, onIntent, metrics)
-    }
-}
-
 /**
- * `02-home`'s flex column: [top] (top bar, logo, daily card, OYNA) from [paddingTop], the tile grid at the bottom
- * (`margin-top: auto`) with at least one [gap] above it (`02b-home-duel`: 20dp between the duel box and the tiles). Writes the natural
- * height (paddings, sections, gaps, grid) to [fit] while it is measured; content taller than the bounds overflows at
- * the bottom.
+ * The flex column: the first child (the scrolling part, OYNA included unless pinned) from the top padding, the second
+ * (the footer, with OYNA when pinned) above the bottom padding with at least [gap] to the first; the free height in
+ * between stays empty (the design's spacer). Writes the natural height to [fit] while it is measured.
  */
 @Composable
 private fun HomeColumn(
@@ -422,20 +350,428 @@ private fun HomeColumn(
     content: @Composable () -> Unit,
 ) {
     Layout(content, modifier) { measurables, constraints ->
-        val natural = Constraints(maxWidth = constraints.maxWidth)
-        val top = measurables[0].measure(natural)
-        val grid = measurables[1].measure(natural)
-        val top0 = paddingTop.roundToPx()
-        val gaps = gap.roundToPx()
-        val naturalHeight = top0 + top.height + gaps + grid.height + paddingBottom.roundToPx()
-        fit.naturalHeight = naturalHeight
-        val height = if (constraints.hasBoundedHeight) constraints.maxHeight else naturalHeight
-        layout(constraints.maxWidth, height) {
-            top.place(0, top0)
-            grid.place(0, maxOf(top0 + top.height + gaps, height - paddingBottom.roundToPx() - grid.height))
+        val width = constraints.maxWidth
+        val pinned = measurables[1].measure(Constraints(maxWidth = width))
+        val top = paddingTop.roundToPx()
+        val gapPx = gap.roundToPx()
+        val bottomPad = paddingBottom.roundToPx()
+        fit.naturalHeight = top + measurables[0].maxIntrinsicHeight(width) + gapPx + pinned.height + bottomPad
+        val height = if (constraints.hasBoundedHeight) constraints.maxHeight else fit.naturalHeight
+        val room = (height - top - gapPx - pinned.height - bottomPad).coerceAtLeast(0)
+        val upper = measurables[0].measure(Constraints(maxWidth = width, maxHeight = room))
+        layout(width, height) {
+            upper.place(0, top)
+            pinned.place(0, height - bottomPad - pinned.height)
         }
     }
 }
+
+@Composable
+private fun HomeContent(
+    layout: HomeLayout,
+    fit: HomeFit,
+    state: HomeUiState,
+    onIntent: (HomeIntent) -> Unit,
+    decor: DecorAnchors,
+) {
+    val tier = layout.tier
+    val play: @Composable () -> Unit = {
+        WithCappedFontScale(HomeDefaults.CONTROL_FONT_SCALE_CAP) {
+            HomePlayButton(
+                label = stringResource(Res.string.home_play),
+                badge = stringResource(
+                    Res.string.home_play_badge,
+                    state.selectedLevel.name,
+                    stringResource(state.selectedMode.captionRes()),
+                    state.letterCount,
+                ),
+                onClick = { onIntent(HomeIntent.Play) },
+                tier = tier,
+                // The design's OYNA leaves its 6dp shadow inside the content width.
+                modifier = Modifier.padding(end = LexiTheme.shadows.s6.offset),
+            )
+        }
+    }
+    HomeColumn(
+        fit = fit,
+        paddingTop = tier.paddingTop,
+        paddingBottom = tier.paddingBottom,
+        gap = tier.blockGap,
+        modifier = Modifier.fillMaxSize(),
+    ) {
+        Column(
+            Modifier
+                .verticalScroll(rememberScrollState())
+                .padding(horizontal = tier.paddingHorizontal)
+                // The room under the last row keeps its hard shadow (OYNA's s6 or the hero's s5) out of the clip.
+                .padding(bottom = LexiTheme.shadows.s6.offset),
+        ) {
+            Header(onIntent, tier)
+            Spacer(Modifier.height(tier.headerGap))
+            WithCappedFontScale(HomeDefaults.DAILY_FONT_SCALE_CAP) {
+                DailyWheelCard(state, onIntent, tier, Modifier.onGloballyPositioned { decor.onDaily(layout, it) })
+            }
+            Spacer(Modifier.height(tier.blockGap))
+            Text(
+                stringResource(Res.string.home_build_label),
+                style = LexiTheme.typography.label12,
+                modifier = Modifier.lexiHeading(),
+            )
+            Spacer(Modifier.height(tier.labelGap))
+            BuildBlock(state, onIntent, tier)
+            if (!layout.pinnedPlay) {
+                // OYNA follows the category row; the free height stays under it, above the footer.
+                Spacer(Modifier.height(tier.blockGap))
+                play()
+            }
+        }
+        Column(
+            Modifier.padding(horizontal = tier.paddingHorizontal),
+            verticalArrangement = Arrangement.spacedBy(tier.blockGap),
+        ) {
+            // Too short for everything: OYNA is pinned above the footer so it is never off screen.
+            if (layout.pinnedPlay) play()
+            WithCappedFontScale(HomeDefaults.CONTROL_FONT_SCALE_CAP) {
+                Footer(state, onIntent, tier, Modifier.onGloballyPositioned { decor.onFooter(layout, it) })
+            }
+        }
+    }
+}
+
+/** Logo (36dp blocks) and the tagline; the gear on the right, read first. */
+@Composable
+private fun Header(onIntent: (HomeIntent) -> Unit, tier: HomeTierSize) {
+    Row(
+        modifier = Modifier.fillMaxWidth().semantics { isTraversalGroup = true },
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.Top,
+    ) {
+        Column(
+            modifier = Modifier.weight(1f).padding(end = LexiTheme.dimens.gap8),
+            verticalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap4),
+        ) {
+            LexiLogo(size = tier.logo)
+            WithCappedFontScale(HomeDefaults.CONTROL_FONT_SCALE_CAP) {
+                Text(stringResource(Res.string.home_tagline), style = LexiTheme.typography.tagline11)
+            }
+        }
+        NavSquareButton(
+            icon = LexiIcons.Settings,
+            contentDescription = stringResource(Res.string.home_settings),
+            onClick = { onIntent(HomeIntent.OpenSettings) },
+            iconSize = IconButtonDefaults.IconSizeMedium,
+            modifier = Modifier.semantics { traversalIndex = -1f },
+        )
+    }
+}
+
+/** The daily card's three states (`02c-home-v2`); streak and daily goal are kept in the state but not shown here. */
+@Composable
+private fun DailyWheelCard(
+    state: HomeUiState,
+    onIntent: (HomeIntent) -> Unit,
+    tier: HomeTierSize,
+    modifier: Modifier = Modifier,
+) {
+    val title = stringResource(Res.string.home_daily_card_title)
+    when (val daily = state.dailyState) {
+        DailyCardState.Available -> DailyCard(
+            title = title,
+            description = stringResource(Res.string.home_daily_title),
+            status = DailyCardStatus.Solve,
+            badgeLabel = stringResource(Res.string.home_daily_badge_solve),
+            contentDescription = stringResource(Res.string.home_daily_desc_solve),
+            onClick = { onIntent(HomeIntent.OpenDaily) },
+            modifier = modifier,
+            size = tier.daily,
+        )
+
+        is DailyCardState.AlreadyPlayed -> DailyCard(
+            title = title,
+            description = if (daily.hoursUntilNext > 0) {
+                stringResource(
+                    Res.string.home_daily_done_hours_minutes,
+                    daily.score,
+                    daily.hoursUntilNext,
+                    daily.minutesUntilNext,
+                )
+            } else {
+                stringResource(Res.string.home_daily_done_minutes, daily.score, daily.minutesUntilNext)
+            },
+            status = DailyCardStatus.Completed,
+            badgeLabel = stringResource(Res.string.home_daily_badge_done),
+            contentDescription = stringResource(Res.string.home_daily_desc_done, daily.score),
+            onClick = {},
+            modifier = modifier,
+            size = tier.daily,
+        )
+
+        DailyCardState.Unavailable -> DailyCard(
+            title = title,
+            description = stringResource(Res.string.home_daily_unavailable),
+            status = DailyCardStatus.Unavailable,
+            badgeLabel = null,
+            contentDescription = stringResource(Res.string.home_daily_desc_unavailable),
+            onClick = {},
+            modifier = modifier,
+            size = tier.daily,
+        )
+    }
+}
+
+/** Hero card, level chips, mode control and the category row (hidden for a level without categories). */
+@Composable
+private fun BuildBlock(state: HomeUiState, onIntent: (HomeIntent) -> Unit, tier: HomeTierSize) {
+    Column(verticalArrangement = Arrangement.spacedBy(tier.buildGap)) {
+        val selected = state.selectedProgress
+        val name = stringResource(state.selectedLevel.nameRes())
+        val count = if (selected.total > 0) {
+            stringResource(Res.string.home_level_progress, selected.learned, selected.total)
+        } else {
+            ""
+        }
+        LevelHeroCard(
+            code = state.selectedLevel.name,
+            name = name,
+            count = count,
+            progress = selected.fraction,
+            description = stringResource(
+                Res.string.home_level_hero_desc,
+                state.selectedLevel.name,
+                name,
+                selected.learned,
+                selected.total,
+            ),
+            minHeight = tier.heroMinHeight,
+            paddingVertical = tier.heroPaddingVertical,
+        )
+        WithCappedFontScale(HomeDefaults.CONTROL_FONT_SCALE_CAP) {
+            Column(verticalArrangement = Arrangement.spacedBy(tier.buildGap)) {
+                val levels = Level.entries
+                LevelChipRow(
+                    labels = levels.map { it.name },
+                    descriptions = levels.map {
+                        stringResource(Res.string.home_level_chip_desc, it.name, stringResource(it.nameRes()))
+                    },
+                    selectedIndex = levels.indexOf(state.selectedLevel),
+                    onSelect = { onIntent(HomeIntent.SelectLevel(levels[it])) },
+                    chipHeight = tier.chipHeight,
+                )
+                SegmentedControl(
+                    segments = Settings.HOME_MODES.map { mode ->
+                        Segment(stringResource(mode.titleRes()), mode.hint(state.classicTimeLimitSeconds))
+                    },
+                    selectedIndex = Settings.HOME_MODES.indexOf(state.selectedMode),
+                    onSelect = { onIntent(HomeIntent.SelectMode(Settings.HOME_MODES[it])) },
+                    height = tier.modeHeight,
+                    dividerWidth = LexiTheme.borders.regular,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+                if (state.showCategoryRow) {
+                    val value = categoryName(state)
+                    PickerRow(
+                        label = stringResource(Res.string.home_category_label),
+                        value = value,
+                        description = stringResource(Res.string.home_category_row_desc, value),
+                        onClick = { onIntent(HomeIntent.OpenCategories) },
+                        height = tier.pickerHeight,
+                    )
+                }
+            }
+        }
+    }
+}
+
+/**
+ * The category row's value: the selected category's name, Karışık for none (also when the list is unreadable); blank
+ * for the moment a stored category's name is still being read, so the row never shows a wrong value.
+ */
+@Composable
+private fun categoryName(state: HomeUiState): String {
+    val selected = state.selectedCategoryUi
+    return when {
+        selected != null -> selected.localizedName()
+        state.categories is CategoriesState.Loading && state.selectedCategory != null -> ""
+        else -> stringResource(Res.string.home_category_mixed)
+    }
+}
+
+/** Category names are content in both languages; the UI language picks one (as `07-categories` did). */
+@Composable
+private fun CategoryUi.localizedName(): String = if (Locale.current.language == TURKISH) nameTr else nameEn
+
+private const val TURKISH = "tr"
+
+@Composable
+private fun Footer(state: HomeUiState, onIntent: (HomeIntent) -> Unit, tier: HomeTierSize, modifier: Modifier) {
+    val due = state.dueReviews
+    val badge = when {
+        due > MAX_BADGE_COUNT -> stringResource(Res.string.home_key_badge_overflow)
+        due > 0 -> due.toString()
+        else -> null
+    }
+    val notebookDescription = if (due > 0) {
+        pluralStringResource(Res.plurals.home_key_notebook_desc, due, due)
+    } else {
+        stringResource(Res.string.home_key_notebook_desc_none)
+    }
+    Row(modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(HomeDefaults.FooterGap)) {
+        val key = Modifier.weight(1f)
+        KeyTile(
+            icon = LexiIcons.Notebook,
+            label = stringResource(Res.string.home_key_notebook),
+            description = notebookDescription,
+            onClick = { onIntent(HomeIntent.OpenNotebook) },
+            modifier = key,
+            keySize = tier.keySize,
+            labelGap = tier.keyLabelGap,
+            badge = badge,
+        )
+        KeyTile(
+            icon = LexiIcons.Stats,
+            label = stringResource(Res.string.home_key_stats),
+            description = stringResource(Res.string.home_key_stats_desc),
+            onClick = { onIntent(HomeIntent.OpenStats) },
+            modifier = key,
+            keySize = tier.keySize,
+            labelGap = tier.keyLabelGap,
+        )
+        KeyTile(
+            icon = LexiIcons.Exams,
+            label = stringResource(Res.string.home_key_exams),
+            description = stringResource(Res.string.home_key_exams_desc),
+            onClick = { onIntent(HomeIntent.OpenExamPacks) },
+            modifier = key,
+            keySize = tier.keySize,
+            labelGap = tier.keyLabelGap,
+        )
+        KeyTile(
+            icon = LexiIcons.Duel,
+            label = stringResource(Res.string.home_key_duel),
+            description = stringResource(Res.string.home_key_duel_desc),
+            onClick = { onIntent(HomeIntent.OpenDuel) },
+            modifier = key,
+            keySize = tier.keySize,
+            labelGap = tier.keyLabelGap,
+        )
+    }
+}
+
+/** The badge shows at most 99, then "99+" (`home-v2-notes.md` §1). */
+private const val MAX_BADGE_COUNT = 99
+
+/**
+ * The category sheet (`02c-home-v2`, the `07-categories` cards): a grab handle, at most 85 % of the screen high, the
+ * cards scroll under the title with a fade at the bottom. The "Karışık çark" card first, then the level's categories in
+ * two columns (one from font scale 1.3 or when a card would get narrower than 140dp). A card only selects (and closes
+ * the sheet); OYNA starts the game. A read failure shows the empty state with "Tekrar dene".
+ */
+@Composable
+private fun CategorySheet(state: HomeUiState, onIntent: (HomeIntent) -> Unit) {
+    BottomSheet(
+        visible = state.categorySheetOpen,
+        onDismissRequest = { onIntent(HomeIntent.CloseCategories) },
+        title = stringResource(Res.string.home_category_sheet_title),
+        closeContentDescription = stringResource(Res.string.home_category_sheet_close),
+        maxHeightFraction = HomeDefaults.SHEET_MAX_HEIGHT_FRACTION,
+        showHandle = true,
+        scrollContent = true,
+    ) {
+        Text(
+            stringResource(Res.string.home_category_sheet_hint, state.selectedLevel.name),
+            style = LexiTheme.typography.caption13,
+            color = LexiTheme.colors.inkMuted,
+        )
+        when (val categories = state.categories) {
+            CategoriesState.Loading -> Unit
+
+            CategoriesState.Error -> EmptyState(
+                message = stringResource(Res.string.home_category_error),
+                actionText = stringResource(Res.string.home_retry),
+                onAction = { onIntent(HomeIntent.RetryCategories) },
+                modifier = Modifier.fillMaxWidth(),
+            )
+
+            is CategoriesState.Loaded -> CategoryChoices(state, categories.categories, onIntent)
+        }
+    }
+}
+
+@Composable
+private fun CategoryChoices(state: HomeUiState, categories: List<CategoryUi>, onIntent: (HomeIntent) -> Unit) {
+    val level = state.selectedProgress
+    val gap = CategoryCardDefaults.GridGap
+    Column(Modifier.selectableGroup(), verticalArrangement = Arrangement.spacedBy(gap)) {
+        val mixedTitle = stringResource(Res.string.home_category_mixed_title)
+        MixedWheelCard(
+            title = mixedTitle,
+            subtitle = stringResource(
+                Res.string.home_category_mixed_subtitle,
+                state.selectedLevel.name,
+                state.letterCount,
+            ),
+            trailing = level.total.toString(),
+            description = stringResource(Res.string.home_category_card_desc, mixedTitle, level.learned, level.total),
+            onClick = { onIntent(HomeIntent.SelectCategory(null)) },
+            selected = state.selectedCategory == null,
+        )
+        BoxWithConstraints {
+            val oneColumn = LocalDensity.current.fontScale >= CategoryCardDefaults.ONE_COLUMN_FONT_SCALE ||
+                (maxWidth - gap) / CATEGORY_COLUMNS < CategoryCardDefaults.MinColumnWidth
+            val columns = if (oneColumn) 1 else CATEGORY_COLUMNS
+            Column(verticalArrangement = Arrangement.spacedBy(gap)) {
+                categories.withIndex().chunked(columns).forEach { row ->
+                    Row(
+                        modifier = Modifier.fillMaxWidth().height(IntrinsicSize.Max),
+                        horizontalArrangement = Arrangement.spacedBy(gap),
+                    ) {
+                        row.forEach { (index, category) ->
+                            CategoryChoice(index, category, state, onIntent, Modifier.weight(1f).fillMaxHeight())
+                        }
+                        // An odd last row keeps its card at half width.
+                        repeat(columns - row.size) { Spacer(Modifier.weight(1f)) }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun CategoryChoice(
+    index: Int,
+    category: CategoryUi,
+    state: HomeUiState,
+    onIntent: (HomeIntent) -> Unit,
+    modifier: Modifier,
+) {
+    val colors = LexiTheme.colors
+    // The `07-categories` cycle down the list: red square, yellow circle, blue leaf.
+    val (marker, markerColor) = when (index % 3) {
+        0 -> DecorShapeKind.Square to colors.red
+        1 -> DecorShapeKind.Circle to colors.yellow
+        else -> DecorShapeKind.Leaf to colors.blue
+    }
+    val name = category.localizedName()
+    CategoryCard(
+        title = name,
+        progress = if (category.total > 0) category.learned.toFloat() / category.total else 0f,
+        caption = stringResource(
+            if (category.isComplete) Res.string.home_category_progress_done else Res.string.home_category_progress,
+            category.learned,
+            category.total,
+        ),
+        marker = marker,
+        markerColor = markerColor,
+        description = stringResource(Res.string.home_category_card_desc, name, category.learned, category.total),
+        onClick = { onIntent(HomeIntent.SelectCategory(category.id)) },
+        modifier = modifier,
+        complete = category.isComplete,
+        selected = state.selectedCategory == category.id,
+    )
+}
+
+private const val CATEGORY_COLUMNS = 2
 
 /**
  * How long the daily-gift notice stays. Longer than the design's 2.5 s toast: a screen reader needs time to speak it
@@ -443,182 +779,60 @@ private fun HomeColumn(
  */
 private const val NOTICE_VISIBLE_MILLIS = 6_000L
 
-/** The home honours the system font size up to [HomeDefaults.MAX_FONT_SCALE] (`screen-map.md`). */
-private fun Density.withCappedFontScale(): Density = if (fontScale <= HomeDefaults.MAX_FONT_SCALE) {
-    this
-} else {
-    Density(density, HomeDefaults.MAX_FONT_SCALE)
+private fun Level.nameRes(): StringResource = when (this) {
+    Level.A1 -> Res.string.home_level_a1
+    Level.A2 -> Res.string.home_level_a2
+    Level.B1 -> Res.string.home_level_b1
+    Level.B2 -> Res.string.home_level_b2
+    Level.C1 -> Res.string.home_level_c1
+    Level.NAT -> Res.string.home_level_nat
 }
 
-@Composable
-private fun TopBar(state: HomeUiState, onIntent: (HomeIntent) -> Unit) {
-    Row(
-        modifier = Modifier.fillMaxWidth().heightIn(min = HomeDefaults.StreakChipHeight),
-        horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        StreakChip(pluralStringResource(Res.plurals.home_streak, state.streakDays, state.streakDays))
-        NavSquareButton(
-            icon = LexiIcons.Settings,
-            contentDescription = stringResource(Res.string.home_settings),
-            onClick = { onIntent(HomeIntent.OpenSettings) },
-            iconSize = IconButtonDefaults.IconSizeMedium,
-        )
-    }
-}
-
-@Composable
-private fun MenuGrid(state: HomeUiState, onIntent: (HomeIntent) -> Unit, metrics: HomeMetrics) {
-    val colors = LexiTheme.colors
-    val gap = metrics.tileGap
-    val titles = listOf(
-        stringResource(Res.string.home_tile_notebook),
-        stringResource(Res.string.home_tile_stats),
-        stringResource(Res.string.home_tile_practice),
-        stringResource(Res.string.home_tile_exams),
-    )
-    val tiles: List<@Composable (Modifier) -> Unit> = listOf(
-        { modifier ->
-            MenuTile(
-                title = titles[0],
-                subtitle = pluralStringResource(Res.plurals.home_tile_notebook_due, state.dueReviews, state.dueReviews),
-                marker = DecorShapeKind.Circle,
-                markerColor = colors.blue,
-                onClick = { onIntent(HomeIntent.OpenNotebook) },
-                modifier = modifier,
-                minHeight = metrics.tileHeight,
-                compact = metrics.compactTiles,
-            )
-        },
-        { modifier ->
-            MenuTile(
-                title = titles[1],
-                subtitle = pluralStringResource(
-                    Res.plurals.home_tile_stats_learned,
-                    state.learnedWords,
-                    state.learnedWords,
-                ),
-                marker = DecorShapeKind.Square,
-                markerColor = colors.red,
-                onClick = { onIntent(HomeIntent.OpenStats) },
-                modifier = modifier,
-                minHeight = metrics.tileHeight,
-                compact = metrics.compactTiles,
-            )
-        },
-        { modifier ->
-            MenuTile(
-                title = titles[2],
-                subtitle = stringResource(Res.string.home_tile_practice_subtitle),
-                marker = DecorShapeKind.Leaf,
-                markerColor = colors.yellow,
-                onClick = { onIntent(HomeIntent.OpenPractice) },
-                modifier = modifier,
-                minHeight = metrics.tileHeight,
-                compact = metrics.compactTiles,
-            )
-        },
-        { modifier ->
-            MenuTile(
-                title = titles[3],
-                subtitle = if (state.examPackNames.isEmpty()) {
-                    stringResource(Res.string.home_tile_exams_subtitle)
-                } else {
-                    state.examPackNames.joinToString(" · ")
-                },
-                marker = DecorShapeKind.Diamond,
-                markerColor = colors.yellow,
-                onClick = { onIntent(HomeIntent.OpenExamPacks) },
-                modifier = modifier,
-                minHeight = metrics.tileHeight,
-                compact = metrics.compactTiles,
-                inverted = true,
-            )
-        },
-    )
-    val minTileWidth = menuTileMinWidth(titles, metrics.compactTiles)
-    BoxWithConstraints {
-        // 2 × 2 as designed; one tile per row when a title word would not fit a half-width tile (large font sizes).
-        val columns = if ((maxWidth - gap) / 2 < minTileWidth) 1 else 2
-        Column(verticalArrangement = Arrangement.spacedBy(gap)) {
-            tiles.chunked(columns).forEach { row ->
-                Row(Modifier.height(IntrinsicSize.Min), horizontalArrangement = Arrangement.spacedBy(gap)) {
-                    row.forEach { tile -> tile(Modifier.weight(1f).fillMaxHeight()) }
-                }
-            }
-        }
-    }
-}
-
-private fun GameMode.nameRes() = when (this) {
+private fun GameMode.titleRes(): StringResource = when (this) {
     GameMode.PRACTICE -> Res.string.home_mode_practice
     GameMode.HARDCORE -> Res.string.home_mode_hardcore
     else -> Res.string.home_mode_classic
 }
 
-/**
- * Daily goal progress chip ("Bugün {shown}/{goal}", DESIGN-DEBT); extra wheels after the goal keep it at goal/goal.
- * Reached (done >= goal): yellow filled chip with checkmark icon.
- * In-progress: white chip with blue circle marker.
- */
+private fun GameMode.captionRes(): StringResource = when (this) {
+    GameMode.PRACTICE -> Res.string.home_caption_practice
+    GameMode.HARDCORE -> Res.string.home_caption_hardcore
+    else -> Res.string.home_caption_classic
+}
+
+/** The small second line of a mode cell: Classic shows its time ("3:00"), the others a short rule. */
 @Composable
-private fun DailyGoalChip(progress: DailyGoalProgress, compact: Boolean, modifier: Modifier = Modifier) {
-    val colors = LexiTheme.colors
-    val text = stringResource(Res.string.home_daily_goal_progress, progress.shown, progress.goal)
-    val reached = progress.reached
-    val bg = if (reached) colors.yellow else colors.white
-    val description = if (reached) {
-        stringResource(Res.string.home_daily_goal_desc_reached, progress.shown, progress.goal)
-    } else {
-        stringResource(Res.string.home_daily_goal_desc, progress.shown, progress.goal)
-    }
-    Row(
-        modifier = modifier
-            .semantics(mergeDescendants = true) {
-                contentDescription = description
-            }
-            .lexiSurface(
-                color = bg,
-                border = BorderStroke(LexiTheme.borders.regular, colors.ink),
-            )
-            .padding(
-                horizontal = if (compact) LexiTheme.dimens.gap8 else LexiTheme.dimens.gap10,
-                vertical = if (compact) LexiTheme.dimens.gap4 else LexiTheme.dimens.gap6,
-            ),
-        horizontalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap6),
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        if (reached) {
-            Icon(
-                imageVector = LexiIcons.Check,
-                contentDescription = null,
-                tint = colors.ink,
-                modifier = Modifier.size(if (compact) LexiTheme.dimens.gap14 else LexiTheme.dimens.gap16),
-            )
-        } else {
-            DecorShape(
-                kind = DecorShapeKind.Circle,
-                color = colors.blue,
-                border = BorderStroke(LexiTheme.borders.thin, colors.ink),
-                modifier = Modifier.size(if (compact) LexiTheme.dimens.gap10 else LexiTheme.dimens.gap12),
-            )
-        }
-        Text(
-            text = text,
-            style = if (compact) LexiTheme.typography.caption13SemiBold else LexiTheme.typography.bodyStrong15,
-            color = colors.ink,
-        )
-    }
+private fun GameMode.hint(classicSeconds: Int): String = when (this) {
+    GameMode.PRACTICE -> stringResource(Res.string.home_mode_practice_hint)
+    GameMode.HARDCORE -> stringResource(Res.string.home_mode_hardcore_hint)
+    else -> formatClock(classicSeconds)
 }
 
 // design sample, not user-facing
 internal val HomeSampleState = HomeUiState(
     streakDays = 7,
     dueReviews = 24,
-    learnedWords = 412,
-    dailyDay = 14,
-    dailyMonth = 10,
-    examPackNames = listOf("LGS"),
+    dailyDay = 16,
+    dailyMonth = 11,
+    dailyGoalProgress = DailyGoalProgress(done = 0, goal = 1, reached = false),
+    levels = persistentListOf(
+        LevelProgressUi(Level.A1, 412, 850),
+        LevelProgressUi(Level.A2, 96, 900),
+        LevelProgressUi(Level.B1, 0, 1200),
+        LevelProgressUi(Level.B2, 38, 1400),
+        LevelProgressUi(Level.C1, 0, 1500),
+        LevelProgressUi(Level.NAT, 0, 800),
+    ),
+    // The A1 categories of the category sheet (`02c-home-v2` frame 04).
+    categories = CategoriesState.Loaded(
+        persistentListOf(
+            CategoryUi(CategoryId("daily-life"), "Günlük hayat", "Daily life", 64, 120),
+            CategoryUi(CategoryId("food-drink"), "Yiyecek ve içecek", "Food and drink", 80, 110),
+            CategoryUi(CategoryId("home"), "Ev ve eşyalar", "Home and things", 41, 90),
+            CategoryUi(CategoryId("family-people"), "Aile ve insanlar", "Family and people", 55, 100),
+            CategoryUi(CategoryId("colors-numbers"), "Renkler ve sayılar", "Colours and numbers", 26, 26),
+        ),
+    ),
 )
 
 @Preview(widthDp = 390, heightDp = 844)

@@ -1,69 +1,71 @@
 <resources>
-    <!-- Üst çubuk (02-home) -->
-    <plurals name="home_streak">
-        <item quantity="one">%1$d gün seri</item>
-        <item quantity="other">%1$d gün seri</item>
-    </plurals>
+    <!-- Başlık (02c-home-v2) -->
     <string name="home_settings">Ayarlar</string>
     <string name="home_tagline">A'DAN Z'YE İNGİLİZCE</string>
 
-    <!-- Günün çarkı kartı: ay büyük harfle, "GÜNÜN ÇARKI · EKİM" -->
-    <string name="home_daily_label">GÜNÜN ÇARKI · %1$s</string>
-    <string name="home_daily_title">Herkesle aynı çark: bildiğin kadarını çöz</string>
-    <string name="home_daily_completed_score">Tamamlandı · %1$d puan</string>
-    <string name="home_daily_next_wheel_hours_minutes">Yeni çark: %1$d sa %2$d dk</string>
-    <string name="home_daily_next_wheel_minutes">Yeni çark: %1$d dk</string>
-    <plurals name="home_daily_next_wheel_hours">
-        <item quantity="one">Yeni çark %1$d saat sonra</item>
-        <item quantity="other">Yeni çark %1$d saat sonra</item>
-    </plurals>
-    <string name="home_daily_next_wheel_less_than_hour">Yeni çark 1 saatten az kaldı</string>
-    <string name="home_daily_unavailable">Kullanılamıyor</string>
-    <string-array name="home_months">
-        <item>OCAK</item>
-        <item>ŞUBAT</item>
-        <item>MART</item>
-        <item>NİSAN</item>
-        <item>MAYIS</item>
-        <item>HAZİRAN</item>
-        <item>TEMMUZ</item>
-        <item>AĞUSTOS</item>
-        <item>EYLÜL</item>
-        <item>EKİM</item>
-        <item>KASIM</item>
-        <item>ARALIK</item>
-    </string-array>
+    <!-- Günün çarkı kartı: başlık + açıklama, sağda tek durum rozeti (Çöz / Tamamlandı) -->
+    <string name="home_daily_card_title">Günün çarkı</string>
+    <string name="home_daily_title">Herkes aynı çarkı çözüyor</string>
+    <string name="home_daily_badge_solve">Çöz</string>
+    <string name="home_daily_badge_done">Tamamlandı</string>
+    <string name="home_daily_done_hours_minutes">%1$d puan · yeni çark %2$d sa %3$d dk</string>
+    <string name="home_daily_done_minutes">%1$d puan · yeni çark %2$d dk</string>
+    <string name="home_daily_unavailable">Şu an kullanılamıyor</string>
+    <string name="home_daily_desc_solve">Günün çarkı, herkes aynı çarkı çözüyor, çözülmedi</string>
+    <string name="home_daily_desc_done">Günün çarkı, tamamlandı, %1$d puan</string>
+    <string name="home_daily_desc_unavailable">Günün çarkı, şu an kullanılamıyor</string>
 
-    <!-- OYNA düğmesi ve rozeti "A1 · KLASİK" -->
+    <!-- Çarkını kur: seçili seviye, seviye çipleri, mod, kategori -->
+    <string name="home_build_label">ÇARKINI KUR</string>
+    <string name="home_level_a1">Başlangıç</string>
+    <string name="home_level_a2">Temel</string>
+    <string name="home_level_b1">Orta</string>
+    <string name="home_level_b2">İyi orta</string>
+    <string name="home_level_c1">İleri</string>
+    <string name="home_level_nat">Deyim · phrasal verb</string>
+    <string name="home_level_progress">%1$d / %2$d kelime</string>
+    <string name="home_level_hero_desc">%1$s, %2$s, %3$d / %4$d kelime</string>
+    <string name="home_level_chip_desc">%1$s, %2$s</string>
+    <string name="home_mode_classic">Klasik</string>
+    <string name="home_mode_practice">Pratik</string>
+    <string name="home_mode_hardcore">Hardcore</string>
+    <string name="home_mode_practice_hint">süresiz</string>
+    <string name="home_mode_hardcore_hint">tek hata</string>
+    <string name="home_category_label">Kategori</string>
+    <string name="home_category_mixed">Karışık</string>
+    <string name="home_category_row_desc">Kategori: %1$s, değiştirmek için dokun</string>
+    <string name="home_category_sheet_title">Kategori</string>
+    <string name="home_category_sheet_hint">%1$s · Bu seviyenin kategorileri</string>
+    <string name="home_category_sheet_close">Kapat</string>
+    <string name="home_category_progress">%1$d / %2$d</string>
+    <string name="home_category_progress_done">%1$d / %2$d · tamam</string>
+    <string name="home_category_mixed_title">Karışık çark</string>
+    <string name="home_category_mixed_subtitle">Tüm %1$s kategorilerinden %2$d kelime</string>
+    <string name="home_category_card_desc">%1$s, %2$d / %3$d kelime</string>
+    <string name="home_category_error">Kategoriler yüklenemedi.</string>
+    <string name="home_retry">Tekrar dene</string>
+
+    <!-- OYNA düğmesi ve rozeti "A1 · KLASİK · 26 HARF" -->
     <string name="home_play">OYNA</string>
-    <string name="home_play_badge">%1$s · %2$s</string>
-    <string name="home_mode_classic">KLASİK</string>
-    <string name="home_mode_practice">PRATİK</string>
-    <string name="home_mode_hardcore">HARDCORE</string>
+    <string name="home_play_badge">%1$s · %2$s · %3$d HARF</string>
+    <string name="home_caption_classic">KLASİK</string>
+    <string name="home_caption_practice">PRATİK</string>
+    <string name="home_caption_hardcore">HARDCORE</string>
 
-    <!-- Menü kutuları -->
-    <string name="home_tile_notebook">Kelime Defterim</string>
-    <plurals name="home_tile_notebook_due">
-        <item quantity="one">%1$d tekrar bekliyor</item>
-        <item quantity="other">%1$d tekrar bekliyor</item>
+    <!-- Alt sıra: tuş kutuları -->
+    <string name="home_key_notebook">Defter</string>
+    <string name="home_key_stats">İstatistik</string>
+    <string name="home_key_exams">Sınavlar</string>
+    <string name="home_key_duel">Düello</string>
+    <string name="home_key_badge_overflow">99+</string>
+    <plurals name="home_key_notebook_desc">
+        <item quantity="one">Defter, %1$d tekrar bekliyor</item>
+        <item quantity="other">Defter, %1$d tekrar bekliyor</item>
     </plurals>
-    <string name="home_tile_stats">İstatistikler</string>
-    <plurals name="home_tile_stats_learned">
-        <item quantity="one">%1$d kelime öğrenildi</item>
-        <item quantity="other">%1$d kelime öğrenildi</item>
-    </plurals>
-    <string name="home_tile_practice">Pratik modu</string>
-    <string name="home_tile_practice_subtitle">Süresiz, baskısız</string>
-    <string name="home_tile_duel">İki kişi, tek telefon</string>
-    <string name="home_tile_duel_subtitle">Arkadaşınla sırayla yarış</string>
-    <string name="home_tile_exams">Sınav paketleri</string>
-    <string name="home_tile_exams_subtitle">Sınav kelime listeleri</string>
-
-    <!-- Günlük hedef ilerleme rozeti -->
-    <string name="home_daily_goal_progress">Bugün %1$d/%2$d</string>
-    <string name="home_daily_goal_reached">Hedefe ulaşıldı</string>
-    <string name="home_daily_goal_desc">Günlük hedef: %1$d / %2$d çark tamamlandı</string>
-    <string name="home_daily_goal_desc_reached">Günlük hedef tamamlandı: %1$d / %2$d çark</string>
+    <string name="home_key_notebook_desc_none">Defter, tekrar yok</string>
+    <string name="home_key_stats_desc">İstatistik</string>
+    <string name="home_key_exams_desc">Sınavlar, sınav paketleri</string>
+    <string name="home_key_duel_desc">Düello, iki oyuncu, tek telefon</string>
 
     <!-- Günlük joker hediye bildirimi (D10, DESIGN-DEBT) -->
     <string name="home_joker_gift_daily">Günün hediyesi: +%1$d joker</string>

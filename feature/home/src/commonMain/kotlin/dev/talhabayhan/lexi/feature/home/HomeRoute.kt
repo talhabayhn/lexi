@@ -11,6 +11,9 @@ import androidx.lifecycle.compose.currentStateAsState
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
+import dev.talhabayhan.lexi.core.domain.game.GameMode
+import dev.talhabayhan.lexi.core.domain.model.CategoryId
+import dev.talhabayhan.lexi.core.domain.model.Level
 import kotlinx.coroutines.awaitCancellation
 import kotlinx.serialization.Serializable
 import org.koin.compose.viewmodel.koinViewModel
@@ -20,28 +23,28 @@ import org.koin.compose.viewmodel.koinViewModel
 data object HomeRoute
 
 /**
- * [onPlay] opens the level and mode select, [onOpenDaily] the daily wheel, [onOpenNotebook] the notebook, [onOpenStats] the statistics,
- * [onOpenSettings] the settings, [onOpenPractice] the level select on Practice, [onOpenExamPacks] the exam packs page, [onOpenDuel] the hot-seat duel setup (the graph in `shared` decides the routes).
+ * [onStartGame] starts a game of the level, mode and category chosen on Home (null = the level's mixed wheel),
+ * [onOpenDaily] the daily wheel, [onOpenNotebook] the notebook, [onOpenStats] the statistics, [onOpenSettings] the
+ * settings, [onOpenExamPacks] the exam packs page, [onOpenDuel] the hot-seat duel setup (the graph in `shared` decides
+ * the routes).
  */
 fun NavGraphBuilder.homeScreen(
-    onPlay: () -> Unit,
+    onStartGame: (Level, GameMode, CategoryId?) -> Unit,
     onOpenDaily: () -> Unit,
     onOpenNotebook: () -> Unit,
     onOpenStats: () -> Unit,
     onOpenSettings: () -> Unit,
-    onOpenPractice: () -> Unit,
     onOpenExamPacks: () -> Unit,
     onOpenDuel: () -> Unit,
     onOpenReminderPrePrompt: () -> Unit = {},
 ) {
     composable<HomeRoute> {
         HomeRoute(
-            onPlay = onPlay,
+            onStartGame = onStartGame,
             onOpenDaily = onOpenDaily,
             onOpenNotebook = onOpenNotebook,
             onOpenStats = onOpenStats,
             onOpenSettings = onOpenSettings,
-            onOpenPractice = onOpenPractice,
             onOpenExamPacks = onOpenExamPacks,
             onOpenDuel = onOpenDuel,
             onOpenReminderPrePrompt = onOpenReminderPrePrompt,
@@ -51,24 +54,22 @@ fun NavGraphBuilder.homeScreen(
 
 @Composable
 internal fun HomeRoute(
-    onPlay: () -> Unit,
+    onStartGame: (Level, GameMode, CategoryId?) -> Unit,
     onOpenDaily: () -> Unit,
     onOpenNotebook: () -> Unit,
     onOpenStats: () -> Unit,
     onOpenSettings: () -> Unit,
-    onOpenPractice: () -> Unit,
     onOpenExamPacks: () -> Unit,
     onOpenDuel: () -> Unit,
     onOpenReminderPrePrompt: () -> Unit,
     viewModel: HomeViewModel = koinViewModel(),
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
-    val currentOnPlay by rememberUpdatedState(onPlay)
+    val currentOnStartGame by rememberUpdatedState(onStartGame)
     val currentOnOpenDaily by rememberUpdatedState(onOpenDaily)
     val currentOnOpenNotebook by rememberUpdatedState(onOpenNotebook)
     val currentOnOpenStats by rememberUpdatedState(onOpenStats)
     val currentOnOpenSettings by rememberUpdatedState(onOpenSettings)
-    val currentOnOpenPractice by rememberUpdatedState(onOpenPractice)
     val currentOnOpenExamPacks by rememberUpdatedState(onOpenExamPacks)
     val currentOnOpenDuel by rememberUpdatedState(onOpenDuel)
     val currentOnOpenReminderPrePrompt by rememberUpdatedState(onOpenReminderPrePrompt)
@@ -77,12 +78,11 @@ internal fun HomeRoute(
         lifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
             viewModel.effects.collect { effect ->
                 when (effect) {
-                    HomeEffect.NavigateToLevelSelect -> currentOnPlay()
+                    is HomeEffect.StartGame -> currentOnStartGame(effect.level, effect.mode, effect.category)
                     HomeEffect.NavigateToDaily -> currentOnOpenDaily()
                     HomeEffect.NavigateToNotebook -> currentOnOpenNotebook()
                     HomeEffect.NavigateToStats -> currentOnOpenStats()
                     HomeEffect.NavigateToSettings -> currentOnOpenSettings()
-                    HomeEffect.NavigateToPractice -> currentOnOpenPractice()
                     HomeEffect.NavigateToExamPacks -> currentOnOpenExamPacks()
                     HomeEffect.NavigateToDuel -> currentOnOpenDuel()
                     HomeEffect.NavigateToReminderPrePrompt -> currentOnOpenReminderPrePrompt()

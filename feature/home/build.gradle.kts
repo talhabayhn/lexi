@@ -5,6 +5,11 @@ plugins {
 
 kotlin {
     sourceSets {
+        commonMain.dependencies {
+            // System back closes the category sheet; already a transitive dependency of navigation-compose, declared
+            // explicitly at the same version (like feature:game).
+            implementation(libs.androidx.navigationevent.compose)
+        }
         getByName("androidHostTest").dependencies {
             implementation(libs.junit)
             implementation(libs.robolectric)
