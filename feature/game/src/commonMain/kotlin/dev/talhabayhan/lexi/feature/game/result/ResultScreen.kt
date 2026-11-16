@@ -7,12 +7,10 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
@@ -119,26 +117,37 @@ internal fun ResultScreen(
                     .size(ResultDefaults.DecorCircleSize),
             )
         }
-        BoxWithConstraints(
-            Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing).lexiContentWidth(),
-        ) {
-            val screenHeight = maxHeight
+        // The review scrolls; the actions are pinned below it so they are never cut off (large font, small phone).
+        Column(Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing).lexiContentWidth()) {
             Column(
                 modifier = Modifier
+                    .weight(1f)
+                    .fillMaxWidth()
                     .verticalScroll(rememberScrollState())
-                    .heightIn(min = screenHeight)
+                    // Room under the last row keeps its hard shadow out of the scroll clip.
                     .padding(
                         start = dimens.screenPaddingHorizontal,
                         top = dimens.screenPaddingTop,
                         end = dimens.screenPaddingHorizontal,
-                        bottom = dimens.screenPaddingBottom,
+                        bottom = LexiTheme.shadows.s4.offset,
                     ),
                 verticalArrangement = Arrangement.spacedBy(dimens.gap16),
             ) {
                 Header(state)
                 Stats(state)
                 Review(state, onIntent)
-                Spacer(Modifier.weight(1f))
+            }
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(
+                        start = dimens.screenPaddingHorizontal,
+                        top = dimens.gap16,
+                        end = dimens.screenPaddingHorizontal,
+                        bottom = dimens.screenPaddingBottom,
+                    ),
+                verticalArrangement = Arrangement.spacedBy(dimens.gap16),
+            ) {
                 Actions(state.canPlayAgain, onIntent)
                 LexiTextLink(
                     text = stringResource(Res.string.result_home),

@@ -86,7 +86,7 @@ class ResultScreenBehaviourTest {
     }
 
     @Test
-    fun `an open group shows every row and show less and the actions below`() = runComposeUiTest {
+    fun `an open group shows every row and show less, and the actions stay pinned below`() = runComposeUiTest {
         setContent {
             LexiTheme(reducedMotion = true) {
                 ResultScreen(
@@ -100,7 +100,7 @@ class ResultScreenBehaviourTest {
 
         onNodeWithText("key").assertExists()
         onNodeWithText("Daha az göster ↑").assertExists()
-        onNodeWithText("TEKRAR OYNA").performScrollTo().assertIsDisplayed()
+        onNodeWithText("TEKRAR OYNA").assertIsDisplayed()
     }
 
     @Test

@@ -23,6 +23,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
@@ -390,9 +392,32 @@ private fun LevelTestIntroContent(onIntent: (OnboardingIntent) -> Unit, modifier
 }
 
 /**
- * Top row ([topStart] + "Atla"), illustration, title + body (+ [extra]) in a scrolling area, and the [actions] pinned
- * under it. The actions never scroll: when the content is taller than the screen (large font / display size, long
- * Turkish copy) it is the content that scrolls, so the primary button is never cut off at the viewport edge.
+ * Needs design (not in `01-onboarding`): a cream fade over the bottom edge of a scrolling page, so content cut off by
+ * the fold reads as "more below".
+ */
+@Composable
+private fun ScrollCue(modifier: Modifier = Modifier) {
+    val cream = LexiTheme.colors.cream
+    Box(
+        modifier = modifier
+            .fillMaxWidth()
+            .height(LexiTheme.dimens.gap24)
+            .background(Brush.verticalGradient(listOf(cream.copy(alpha = 0f), cream)))
+            .testTag(OnboardingTestTags.SCROLL_CUE)
+            .clearAndSetSemantics {},
+    )
+}
+
+/** Test tags of the onboarding pages. */
+internal object OnboardingTestTags {
+    const val SCROLL_CUE: String = "onboarding-scroll-cue"
+}
+
+/**
+ * Top row ([topStart] + "Atla"), illustration, title + body (+ [extra]) in a scrolling area (with a fade cue while
+ * more is below the fold), and the [actions] pinned under it. The actions never scroll: when the content is taller
+ * than the screen (large font / display size, long Turkish copy) it is the content that scrolls, so the primary
+ * button is never cut off at the viewport edge.
  */
 @Composable
 private fun OnboardingPage(
@@ -405,38 +430,42 @@ private fun OnboardingPage(
     extra: (@Composable () -> Unit)? = null,
     actions: @Composable ColumnScope.() -> Unit,
 ) {
+    val scrollState = rememberScrollState()
     Column(modifier = modifier.fillMaxSize()) {
-        Column(
-            modifier = Modifier
-                .weight(1f)
-                .fillMaxWidth()
-                .verticalScroll(rememberScrollState()),
-            verticalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap20),
-        ) {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
-                topStart()
-                LexiTextLink(text = stringResource(Res.string.onboarding_skip), onClick = onSkip)
-            }
-
-            OnboardingIllustration(step = illustration)
-
+        Box(Modifier.weight(1f).fillMaxWidth()) {
             Column(
-                modifier = Modifier.fillMaxWidth(),
-                verticalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap10),
+                modifier = Modifier
+                    .fillMaxSize()
+                    .verticalScroll(scrollState),
+                verticalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap20),
             ) {
-                Text(
-                    text = title,
-                    style = LexiTheme.typography.display,
-                    color = LexiTheme.colors.ink,
-                    modifier = Modifier.lexiHeading(),
-                )
-                Text(text = body, style = LexiTheme.typography.body16, color = LexiTheme.colors.ink)
-                extra?.invoke()
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    topStart()
+                    LexiTextLink(text = stringResource(Res.string.onboarding_skip), onClick = onSkip)
+                }
+
+                OnboardingIllustration(step = illustration)
+
+                Column(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap10),
+                ) {
+                    Text(
+                        text = title,
+                        style = LexiTheme.typography.display,
+                        color = LexiTheme.colors.ink,
+                        modifier = Modifier.lexiHeading(),
+                    )
+                    Text(text = body, style = LexiTheme.typography.body16, color = LexiTheme.colors.ink)
+                    extra?.invoke()
+                }
             }
+            // Scroll cue: the content continues under the fold (small phone, large font), e.g. the analytics opt-in.
+            if (scrollState.canScrollForward) ScrollCue(Modifier.align(Alignment.BottomCenter))
         }
 
         Column(

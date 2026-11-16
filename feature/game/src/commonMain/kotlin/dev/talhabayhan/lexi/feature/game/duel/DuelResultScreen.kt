@@ -4,18 +4,15 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
@@ -109,17 +106,19 @@ internal fun DuelResultScreen(
                     .size(DuelDefaults.ResultCircleSize),
             )
         }
-        BoxWithConstraints(Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing).lexiContentWidth()) {
-            val screenHeight = maxHeight
+        // The players scroll; the actions are pinned below them so they are never cut off (large font, small phone).
+        Column(Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing).lexiContentWidth()) {
             Column(
                 modifier = Modifier
+                    .weight(1f)
+                    .fillMaxWidth()
                     .verticalScroll(rememberScrollState())
-                    .heightIn(min = screenHeight)
+                    // Room under the last card keeps its hard shadow out of the scroll clip.
                     .padding(
                         start = dimens.screenPaddingHorizontal,
                         top = dimens.screenPaddingTop,
                         end = dimens.screenPaddingHorizontal,
-                        bottom = dimens.screenPaddingBottom,
+                        bottom = LexiTheme.shadows.s4.offset,
                     ),
                 verticalArrangement = Arrangement.spacedBy(dimens.gap16),
             ) {
@@ -185,27 +184,33 @@ internal fun DuelResultScreen(
                         onClick = { onOpenReview(index) },
                     )
                 }
-                Spacer(Modifier.weight(1f))
-                Column(
+            }
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(
+                        start = dimens.screenPaddingHorizontal,
+                        top = dimens.gap16,
+                        end = dimens.screenPaddingHorizontal,
+                        bottom = dimens.screenPaddingBottom,
+                    ),
+                verticalArrangement = Arrangement.spacedBy(dimens.gap12),
+                horizontalAlignment = Alignment.CenterHorizontally,
+            ) {
+                LexiButton(
+                    text = stringResource(Res.string.result_play_again),
+                    onClick = onPlayAgain,
+                    textStyle = LexiTheme.typography.button24,
+                    height = DuelDefaults.ResultPlayAgainHeight,
                     modifier = Modifier.fillMaxWidth(),
-                    verticalArrangement = Arrangement.spacedBy(dimens.gap12),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                ) {
-                    LexiButton(
-                        text = stringResource(Res.string.result_play_again),
-                        onClick = onPlayAgain,
-                        textStyle = LexiTheme.typography.button24,
-                        height = DuelDefaults.ResultPlayAgainHeight,
-                        modifier = Modifier.fillMaxWidth(),
-                    )
-                    LexiTextLink(
-                        text = stringResource(Res.string.result_home),
-                        onClick = onHome,
-                        textStyle = LexiTheme.typography.link16,
-                        contentPadding = PaddingValues(DuelDefaults.ResultHomeLinkPadding),
-                        minHeight = Dp.Unspecified,
-                    )
-                }
+                )
+                LexiTextLink(
+                    text = stringResource(Res.string.result_home),
+                    onClick = onHome,
+                    textStyle = LexiTheme.typography.link16,
+                    contentPadding = PaddingValues(DuelDefaults.ResultHomeLinkPadding),
+                    minHeight = Dp.Unspecified,
+                )
             }
         }
     }

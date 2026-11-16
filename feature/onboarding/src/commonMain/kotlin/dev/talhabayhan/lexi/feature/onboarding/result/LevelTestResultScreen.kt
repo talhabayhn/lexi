@@ -5,7 +5,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.fillMaxSize
@@ -101,51 +100,59 @@ private fun ResultPage(
             modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing),
             contentAlignment = Alignment.TopCenter,
         ) {
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .lexiContentWidth()
-                    .verticalScroll(rememberScrollState())
-                    .padding(
-                        start = dimens.screenPaddingHorizontal,
-                        top = dimens.screenPaddingTop,
-                        end = dimens.screenPaddingHorizontal,
-                        bottom = dimens.screenPaddingBottom,
-                    ),
-                verticalArrangement = Arrangement.spacedBy(dimens.gap16),
-            ) {
-                val heading = stringResource(Res.string.leveltest_result_level, level)
+            // The text scrolls; the buttons are pinned below it so they are never cut off (large font, small phone).
+            Column(Modifier.fillMaxSize().lexiContentWidth()) {
                 Column(
-                    modifier = Modifier.clearAndSetSemantics {
-                        contentDescription = heading
-                        heading()
-                    },
-                    verticalArrangement = Arrangement.spacedBy(dimens.gap2),
-                ) {
-                    Text(stringResource(Res.string.leveltest_result_label), style = typography.label13)
-                    Text(level, style = typography.scoreHero)
-                    // Under the level, so long names ("Deyim · phrasal verb") fit narrow phones.
-                    LevelBadge(
-                        text = stringResource(state.level.subtitleRes()),
-                        style = state.level.badgeStyle(),
-                        modifier = Modifier.padding(top = dimens.gap6),
-                    )
-                }
-                Text(stringResource(Res.string.leveltest_result_body), style = typography.body15SemiBold)
-                state.flavour?.let { flavour ->
-                    Text(
-                        text = stringResource(
-                            when (flavour) {
-                                LevelTestFlavour.Basics -> Res.string.leveltest_result_a1
-                                LevelTestFlavour.High -> Res.string.leveltest_result_high
-                            },
+                    modifier = Modifier
+                        .weight(1f)
+                        .fillMaxWidth()
+                        .verticalScroll(rememberScrollState())
+                        .padding(
+                            start = dimens.screenPaddingHorizontal,
+                            top = dimens.screenPaddingTop,
+                            end = dimens.screenPaddingHorizontal,
                         ),
-                        style = typography.bodyStrong16,
-                    )
+                    verticalArrangement = Arrangement.spacedBy(dimens.gap16),
+                ) {
+                    val heading = stringResource(Res.string.leveltest_result_level, level)
+                    Column(
+                        modifier = Modifier.clearAndSetSemantics {
+                            contentDescription = heading
+                            heading()
+                        },
+                        verticalArrangement = Arrangement.spacedBy(dimens.gap2),
+                    ) {
+                        Text(stringResource(Res.string.leveltest_result_label), style = typography.label13)
+                        Text(level, style = typography.scoreHero)
+                        // Under the level, so long names ("Deyim · phrasal verb") fit narrow phones.
+                        LevelBadge(
+                            text = stringResource(state.level.subtitleRes()),
+                            style = state.level.badgeStyle(),
+                            modifier = Modifier.padding(top = dimens.gap6),
+                        )
+                    }
+                    Text(stringResource(Res.string.leveltest_result_body), style = typography.body15SemiBold)
+                    state.flavour?.let { flavour ->
+                        Text(
+                            text = stringResource(
+                                when (flavour) {
+                                    LevelTestFlavour.Basics -> Res.string.leveltest_result_a1
+                                    LevelTestFlavour.High -> Res.string.leveltest_result_high
+                                },
+                            ),
+                            style = typography.bodyStrong16,
+                        )
+                    }
                 }
-                Spacer(Modifier.weight(1f))
                 Column(
-                    modifier = Modifier.fillMaxWidth(),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(
+                            start = dimens.screenPaddingHorizontal,
+                            top = dimens.gap16,
+                            end = dimens.screenPaddingHorizontal,
+                            bottom = dimens.screenPaddingBottom,
+                        ),
                     verticalArrangement = Arrangement.spacedBy(dimens.gap16),
                 ) {
                     HeroButton(
