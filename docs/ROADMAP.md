@@ -103,8 +103,9 @@ Module mapping (replaces the earlier `composeApp`): `androidApp` = thin Android 
   reminder 2 days before it ends
 - [x] Exam packs (`10-exam-packs`): compiler pipeline on in-repo `content/exam-packs/` (metadata, per-pack coverage,
   level window), pack wheel (Classic rules), screen, Pro gate behind `EntitlementRepository` (never Pro in release,
-  unlocked in debug). Locked Pro packs show PRO + "Yakında"; purchase/paywall and the YDS free preview letters come
-  with the RevenueCat item above (only the entitlement binding changes)
+  unlocked in debug). The screen lists free packs only (LGS); Pro packs (YDS) are no longer listed and the upcoming
+  exams (YDS / YÖKDİL, YKS-DİL, TOEFL, IELTS) are static locked "Yakında" rows (`ComingSoonExams`, needs design);
+  purchase/paywall and the YDS free preview letters come with the RevenueCat item above
 - [x] Firebase Analytics + Crashlytics behind interfaces; event list in `docs/ANALYTICS.md` (ADR 0023; iOS verified by
   macOS CI only; console declarations pending, see the re-check item)
 **Done when:** sandbox purchase unlocks Pro on both platforms; ads only where allowed.

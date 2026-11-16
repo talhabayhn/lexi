@@ -1,7 +1,6 @@
 package dev.talhabayhan.lexi.feature.exams
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -9,16 +8,18 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.text.intl.Locale
@@ -26,13 +27,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import dev.talhabayhan.lexi.core.designsystem.component.EmptyState
 import dev.talhabayhan.lexi.core.designsystem.component.ExamIntroCard
 import dev.talhabayhan.lexi.core.designsystem.component.ExamPackBadgeStyle
-import dev.talhabayhan.lexi.core.designsystem.component.ExamPackProChip
 import dev.talhabayhan.lexi.core.designsystem.component.ExamPackProgressChip
 import dev.talhabayhan.lexi.core.designsystem.component.ExamPackRow
 import dev.talhabayhan.lexi.core.designsystem.component.IconButtonDefaults
 import dev.talhabayhan.lexi.core.designsystem.component.NavSquareButton
-import dev.talhabayhan.lexi.core.designsystem.component.SlidingToast
 import dev.talhabayhan.lexi.core.designsystem.icon.LexiIcons
+import dev.talhabayhan.lexi.core.designsystem.modifier.dashedBorder
 import dev.talhabayhan.lexi.core.designsystem.modifier.lexiHeading
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.core.designsystem.theme.lexiContentWidth
@@ -43,14 +43,13 @@ import dev.talhabayhan.lexi.feature.exams.generated.resources.exams_empty
 import dev.talhabayhan.lexi.feature.exams.generated.resources.exams_error
 import dev.talhabayhan.lexi.feature.exams.generated.resources.exams_intro_text
 import dev.talhabayhan.lexi.feature.exams.generated.resources.exams_intro_title
-import dev.talhabayhan.lexi.feature.exams.generated.resources.exams_locked_description
-import dev.talhabayhan.lexi.feature.exams.generated.resources.exams_locked_toast
 import dev.talhabayhan.lexi.feature.exams.generated.resources.exams_play_action
-import dev.talhabayhan.lexi.feature.exams.generated.resources.exams_pro
 import dev.talhabayhan.lexi.feature.exams.generated.resources.exams_progress
 import dev.talhabayhan.lexi.feature.exams.generated.resources.exams_progress_description
 import dev.talhabayhan.lexi.feature.exams.generated.resources.exams_retry
 import dev.talhabayhan.lexi.feature.exams.generated.resources.exams_soon
+import dev.talhabayhan.lexi.feature.exams.generated.resources.exams_soon_row_description
+import dev.talhabayhan.lexi.feature.exams.generated.resources.exams_soon_section
 import dev.talhabayhan.lexi.feature.exams.generated.resources.exams_subtitle
 import dev.talhabayhan.lexi.feature.exams.generated.resources.exams_subtitle_count
 import dev.talhabayhan.lexi.feature.exams.generated.resources.exams_title
@@ -58,10 +57,10 @@ import kotlinx.collections.immutable.persistentListOf
 import org.jetbrains.compose.resources.stringResource
 
 /**
- * `10-exam-packs`: back button and title, the yellow intro banner and one row per pack with its real card count. A
- * free (or unlocked) pack shows the learned share ("%34") and starts its wheel; a locked Pro pack shows "PRO" over
- * "Yakında" (DESIGN-DEBT: the design has the PRO chip only) and a polite toast on tap (no paywall until RevenueCat).
- * DESIGN-DEBT: loading, empty and error states and the toast are built from `16-components`.
+ * `10-exam-packs`: back button and title, the yellow intro banner and one row per pack with its real card count; a
+ * pack shows the learned share ("%34") and starts its wheel. Under the packs, a "Yakında" section lists the upcoming
+ * exams as locked, non-clickable rows (DESIGN-DEBT, needs design: the design lists Pro packs with a PRO chip instead).
+ * DESIGN-DEBT: loading, empty and error states are built from `16-components`.
  */
 @Composable
 internal fun ExamPacksScreen(
@@ -115,27 +114,12 @@ internal fun ExamPacksScreen(
 
                     state.packs.isEmpty() -> EmptyState(stringResource(Res.string.exams_empty), Modifier.fillMaxWidth())
 
-                    else -> PackList(state, onIntent)
+                    else -> {
+                        PackList(state, onIntent)
+                        ComingSoonSection(state.comingSoon)
+                    }
                 }
             }
-        }
-        if (state.lockedNotice) {
-            SlidingToast(
-                message = stringResource(Res.string.exams_locked_toast),
-                onDismissed = { onIntent(ExamPacksIntent.DismissNotice) },
-                modifier = Modifier
-                    .align(Alignment.TopCenter)
-                    .windowInsetsPadding(WindowInsets.safeDrawing)
-                    .lexiContentWidth()
-                    // Below the header (never over the back button), like the home toast under its top bar.
-                    .padding(
-                        start = dimens.screenPaddingHorizontal,
-                        top = dimens.screenPaddingTop + IconButtonDefaults.NavSize + dimens.gap14,
-                        end = dimens.screenPaddingHorizontal,
-                    )
-                    .fillMaxWidth()
-                    .clickable(role = Role.Button, onClick = { onIntent(ExamPacksIntent.DismissNotice) }),
-            )
         }
     }
 }
@@ -158,11 +142,9 @@ private fun PackList(state: ExamPacksUiState, onIntent: (ExamPacksIntent) -> Uni
                     else -> stringResource(Res.string.exams_subtitle_count, pack.cardCount)
                 },
                 onClick = { onIntent(ExamPacksIntent.OpenPack(pack.id)) },
-                onClickLabel = stringResource(
-                    if (pack.locked) Res.string.exams_locked_description else Res.string.exams_play_action,
-                ),
+                onClickLabel = stringResource(Res.string.exams_play_action),
             ) {
-                if (pack.locked) LockedBadge() else ProgressBadge(pack.learnedPercent)
+                ProgressBadge(pack.learnedPercent)
             }
         }
     }
@@ -177,15 +159,54 @@ private fun ProgressBadge(percent: Int) {
     )
 }
 
-/** "PRO" chip (design) over "Yakında" (DESIGN-DEBT) until purchases exist. */
+/** DESIGN-DEBT (needs design): the "Yakında" heading over the locked rows of the upcoming exams. */
 @Composable
-private fun LockedBadge() {
-    Column(
-        horizontalAlignment = Alignment.End,
-        verticalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap4),
+private fun ComingSoonSection(exams: List<ComingSoonExamUi>) {
+    if (exams.isEmpty()) return
+    Column(verticalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap10)) {
+        Text(
+            stringResource(Res.string.exams_soon_section),
+            style = LexiTheme.typography.heading18,
+            modifier = Modifier.lexiHeading(),
+        )
+        exams.forEach { ComingSoonRow(it) }
+    }
+}
+
+/**
+ * DESIGN-DEBT (needs design): a disabled row built from the `16-components` disabled look (`disabledFill`, dashed
+ * `borderMuted` frame, `inkMuted` text, no shadow). Not clickable; one spoken description ("<title>, yakında, kilitli").
+ */
+@Composable
+private fun ComingSoonRow(exam: ComingSoonExamUi) {
+    val colors = LexiTheme.colors
+    val typography = LexiTheme.typography
+    val title = stringResource(exam.title)
+    val description = stringResource(Res.string.exams_soon_row_description, title)
+    val border = LexiTheme.borders.thin
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .heightIn(min = LexiTheme.dimens.minTouchTargetAccessible)
+            .background(colors.disabledFill)
+            .dashedBorder(border, colors.borderMuted)
+            .padding(border)
+            .padding(horizontal = LexiTheme.dimens.gap12, vertical = LexiTheme.dimens.gap10)
+            .clearAndSetSemantics { contentDescription = description },
+        horizontalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap12),
+        verticalAlignment = Alignment.CenterVertically,
     ) {
-        ExamPackProChip(stringResource(Res.string.exams_pro))
-        Text(stringResource(Res.string.exams_soon), style = LexiTheme.typography.caption12Bold)
+        Icon(
+            LexiIcons.Lock,
+            contentDescription = null,
+            tint = colors.inkMuted,
+            modifier = Modifier.size(IconButtonDefaults.IconSizeMedium),
+        )
+        Column(Modifier.weight(1f)) {
+            Text(title, style = typography.bodyStrong17, color = colors.inkMuted)
+            Text(stringResource(exam.description), style = typography.caption13, color = colors.inkMuted)
+        }
+        Text(stringResource(Res.string.exams_soon), style = typography.caption12Bold, color = colors.inkMuted)
     }
 }
 
@@ -204,20 +225,6 @@ internal val ExamPacksSampleState = ExamPacksUiState(
             descriptionTr = "8. sınıf · ünite bazlı",
             cardCount = 573,
             learnedPercent = 34,
-            isPro = false,
-            locked = false,
-        ),
-        ExamPackUi(
-            id = ExamPackId("yds-yokdil"),
-            badge = "YDS",
-            badgeIndex = 3,
-            titleTr = "YDS / YÖKDİL",
-            titleEn = "YDS / YÖKDİL",
-            descriptionTr = "Akademik metin kelimeleri",
-            cardCount = 990,
-            learnedPercent = 0,
-            isPro = true,
-            locked = true,
         ),
     ),
 )

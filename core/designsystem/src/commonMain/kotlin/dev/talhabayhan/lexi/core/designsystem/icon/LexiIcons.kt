@@ -74,6 +74,9 @@ public object LexiIcons {
     /** Check mark (✓): completed goals and selection. */
     public val Check: ImageVector by lazy { strokeIcon("Check", 3f, "M5 13l4 4L19 7") }
 
+    /** Padlock: a locked, not yet available item (DESIGN-DEBT: not in the design icon set). */
+    public val Lock: ImageVector by lazy { strokeIcon("Lock", 2.4f, "M5 11h14v10H5z", "M8 11V7a4 4 0 0 1 8 0v4") }
+
     /** Four tiles: the category picker. */
     public val Categories: ImageVector by lazy {
         strokeIcon("Categories", 2.5f, "M4 4h6v6H4z", "M14 4h6v6h-6z", "M4 14h6v6H4z", "M14 14h6v6h-6z")

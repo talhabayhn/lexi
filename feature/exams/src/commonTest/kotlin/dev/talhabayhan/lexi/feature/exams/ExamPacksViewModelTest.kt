@@ -1,13 +1,11 @@
 package dev.talhabayhan.lexi.feature.exams
 
 import app.cash.turbine.test
-import dev.talhabayhan.lexi.core.domain.config.FeatureFlags
 import dev.talhabayhan.lexi.core.domain.model.CardId
 import dev.talhabayhan.lexi.core.domain.model.ExamPackId
 import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.core.domain.srs.CardProgress
 import dev.talhabayhan.lexi.core.testing.FakeCrashReporter
-import dev.talhabayhan.lexi.core.testing.FakeEntitlementRepository
 import dev.talhabayhan.lexi.core.testing.FakeExamPackRepository
 import dev.talhabayhan.lexi.core.testing.FakeProgressRepository
 import dev.talhabayhan.lexi.core.testing.packCards
@@ -40,7 +38,6 @@ class ExamPacksViewModelTest {
             yds to packCards(listOf(testCard("ABSTRACT", level = Level.C1))),
         ),
     )
-    private val entitlements = FakeEntitlementRepository()
     private val progress = FakeProgressRepository()
     private val crashReporter = FakeCrashReporter()
 
@@ -54,8 +51,7 @@ class ExamPacksViewModelTest {
         Dispatchers.resetMain()
     }
 
-    private fun viewModel(proEnabled: Boolean = true) =
-        ExamPacksViewModel(examPacks, entitlements, progress, crashReporter, FeatureFlags(proEnabled = proEnabled))
+    private fun viewModel() = ExamPacksViewModel(examPacks, progress, crashReporter)
 
     @Test
     fun `lists the packs with real card counts and learned share and design badges`() = runTest {
@@ -69,33 +65,29 @@ class ExamPacksViewModelTest {
         val state = viewModel().state.value
 
         assertTrue(state.isLoaded)
-        val (free, pro) = state.packs
-        assertEquals(ExamPackUi(lgs, "LGS", 0, "LGS İngilizce", "LGS English", "8. sınıf", 3, 33, false, false), free)
-        assertEquals("YDS", pro.badge)
-        assertEquals(3, pro.badgeIndex)
-        assertEquals(1, pro.cardCount)
+        assertEquals(
+            listOf(ExamPackUi(lgs, "LGS", 0, "LGS İngilizce", "LGS English", "8. sınıf", 3, 33)),
+            state.packs,
+        )
     }
 
     @Test
-    fun `without pro the pro pack is locked and a tap shows the soon toast instead of a game`() = runTest {
+    fun `a pro pack is not listed and cannot be opened`() = runTest {
         val vm = viewModel()
-        assertTrue(vm.state.value.packs.single { it.id == yds }.locked)
-        assertFalse(vm.state.value.packs.single { it.id == lgs }.locked)
+        assertEquals(listOf(lgs), vm.state.value.packs.map { it.id })
 
         vm.effects.test {
             vm.onIntent(ExamPacksIntent.OpenPack(yds))
-            assertTrue(vm.state.value.lockedNotice)
             expectNoEvents()
-
-            vm.onIntent(ExamPacksIntent.DismissNotice)
-            assertFalse(vm.state.value.lockedNotice)
         }
     }
 
     @Test
-    fun `without the pro flag the pro pack is not listed`() = runTest {
-        val vm = viewModel(proEnabled = false)
-        assertEquals(listOf(lgs), vm.state.value.packs.map { it.id })
+    fun `the four upcoming exams are listed in order after a successful load`() = runTest {
+        val state = viewModel().state.value
+
+        assertTrue(state.isLoaded)
+        assertEquals(listOf("yds-yokdil", "yks-dil", "toefl", "ielts"), state.comingSoon.map { it.id })
     }
 
     @Test
@@ -104,21 +96,6 @@ class ExamPacksViewModelTest {
         vm.effects.test {
             vm.onIntent(ExamPacksIntent.OpenPack(lgs))
             assertEquals(ExamPacksEffect.StartPack(lgs), awaitItem())
-        }
-        assertFalse(vm.state.value.lockedNotice)
-    }
-
-    @Test
-    fun `pro unlocks the pro pack also while the screen is open`() = runTest {
-        val vm = viewModel()
-        assertTrue(vm.state.value.packs.single { it.id == yds }.locked)
-
-        entitlements.pro.value = true
-
-        assertFalse(vm.state.value.packs.single { it.id == yds }.locked)
-        vm.effects.test {
-            vm.onIntent(ExamPacksIntent.OpenPack(yds))
-            assertEquals(ExamPacksEffect.StartPack(yds), awaitItem())
         }
     }
 
@@ -134,7 +111,7 @@ class ExamPacksViewModelTest {
         vm.onIntent(ExamPacksIntent.Retry)
 
         assertFalse(vm.state.value.hasError)
-        assertEquals(2, vm.state.value.packs.size)
+        assertEquals(1, vm.state.value.packs.size)
     }
 
     @Test
@@ -165,7 +142,7 @@ class ExamPacksViewModelTest {
         val state = viewModel().state.value
 
         assertTrue(state.isLoaded)
-        assertEquals(listOf(0, 0), state.packs.map { it.learnedPercent })
+        assertEquals(listOf(0), state.packs.map { it.learnedPercent })
         assertEquals(1, crashReporter.recorded.size)
     }
 }

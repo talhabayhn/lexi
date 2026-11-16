@@ -2,10 +2,8 @@ package dev.talhabayhan.lexi.feature.exams
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import dev.talhabayhan.lexi.core.domain.config.FeatureFlags
 import dev.talhabayhan.lexi.core.domain.model.CardId
 import dev.talhabayhan.lexi.core.domain.model.ExamPack
-import dev.talhabayhan.lexi.core.domain.repository.EntitlementRepository
 import dev.talhabayhan.lexi.core.domain.repository.ExamPackRepository
 import dev.talhabayhan.lexi.core.domain.repository.ProgressRepository
 import dev.talhabayhan.lexi.core.domain.srs.CardProgress
@@ -20,23 +18,18 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 /**
- * Exam packs (`10-exam-packs`): the packs with their card counts and the player's progress, locked while a Pro pack
- * meets a player without Pro ([EntitlementRepository]). A tap on an unlocked pack starts its wheel; on a locked one it
- * shows a polite "coming soon" toast (no paywall until RevenueCat). Without [FeatureFlags.proEnabled] (release builds)
- * the Pro packs are not listed at all.
+ * Exam packs (`10-exam-packs`): the free packs with their card counts and the player's progress; a tap starts the
+ * pack's wheel. Pro packs are not listed (the upcoming exams are the static, non-clickable [ComingSoonExams] rows).
  */
 internal class ExamPacksViewModel(
     private val examPacks: ExamPackRepository,
-    private val entitlements: EntitlementRepository,
     private val progress: ProgressRepository,
     private val crashReporter: CrashReporter,
-    private val flags: FeatureFlags,
 ) : ViewModel() {
     private val mutableState = MutableStateFlow(ExamPacksUiState())
     val state: StateFlow<ExamPacksUiState> = mutableState.asStateFlow()
@@ -60,12 +53,11 @@ internal class ExamPacksViewModel(
                     crashReporter.recordException(e, "exam pack progress not read")
                     emit(emptyList())
                 }
-                combine(entitlements.isPro, answered) { hasPro, cards -> rows(content, hasPro, cards) }
-                    .collect { packs ->
-                        mutableState.update {
-                            it.copy(packs = packs.toImmutableList(), isLoaded = true, hasError = false)
-                        }
+                answered.collect { cards ->
+                    mutableState.update {
+                        it.copy(packs = rows(content, cards).toImmutableList(), isLoaded = true, hasError = false)
                     }
+                }
             }
         }
     }
@@ -74,9 +66,7 @@ internal class ExamPacksViewModel(
 
     /** Content never changes while the app runs; null when it cannot be read. */
     private suspend fun loadContent(): List<PackContent>? = try {
-        examPacks.packs().filter {
-            flags.proEnabled || !it.isPro
-        }.map { PackContent(it, examPacks.cardIds(it.id).toSet()) }
+        examPacks.packs().filter { !it.isPro }.map { PackContent(it, examPacks.cardIds(it.id).toSet()) }
     } catch (e: CancellationException) {
         throw e
     } catch (@Suppress("TooGenericExceptionCaught") e: Exception) {
@@ -84,7 +74,7 @@ internal class ExamPacksViewModel(
         null
     }
 
-    private fun rows(content: List<PackContent>, hasPro: Boolean, answered: List<CardProgress>): List<ExamPackUi> {
+    private fun rows(content: List<PackContent>, answered: List<CardProgress>): List<ExamPackUi> {
         val learned = answered.filter { it.correct > 0 }.map { it.cardId }.toSet()
         return content.mapIndexed { index, entry ->
             val pack = entry.pack
@@ -97,8 +87,6 @@ internal class ExamPacksViewModel(
                 descriptionTr = pack.descriptionTr,
                 cardCount = entry.cardIds.size,
                 learnedPercent = percent(entry.cardIds.count { it in learned }, entry.cardIds.size),
-                isPro = pack.isPro,
-                locked = pack.isLocked(hasPro),
             )
         }
     }
@@ -106,8 +94,6 @@ internal class ExamPacksViewModel(
     fun onIntent(intent: ExamPacksIntent) {
         when (intent) {
             is ExamPacksIntent.OpenPack -> open(intent)
-
-            ExamPacksIntent.DismissNotice -> mutableState.update { it.copy(lockedNotice = false) }
 
             ExamPacksIntent.Back -> effectChannel.trySend(ExamPacksEffect.NavigateBack)
 
@@ -120,9 +106,7 @@ internal class ExamPacksViewModel(
 
     private fun open(intent: ExamPacksIntent.OpenPack) {
         val pack = mutableState.value.packs.firstOrNull { it.id == intent.id } ?: return
-        if (pack.locked) {
-            mutableState.update { it.copy(lockedNotice = true) }
-        } else if (pack.cardCount > 0) {
+        if (pack.cardCount > 0) {
             // A pack without cards (never shipped: the compiler requires cards for every letter) is not started.
             effectChannel.trySend(ExamPacksEffect.StartPack(pack.id))
         }
