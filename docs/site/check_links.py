@@ -17,7 +17,7 @@ from urllib.parse import unquote, urldefrag, urlparse
 import build
 
 PAGES = ("", "privacy/", "terms/", "support/")
-ALLOWED_HOSTS = {"talhabayhn.github.io", "play.google.com"}
+ALLOWED_HOSTS = {"talhabayhn.github.io", "play.google.com", "apps.apple.com"}
 
 
 class Refs(HTMLParser):
@@ -75,6 +75,9 @@ def check(site: Path) -> list[str]:
             got = resolve(site, page, parser.lang_link) if parser.lang_link else None
             if got != want:
                 errors.append(f"/{rel}: language switch {parser.lang_link!r} should reach /{other}")
+    for og in ("og-en.png", "og-tr.png"):
+        if not (site / "assets" / og).is_file():
+            errors.append(f"missing share image assets/{og}")
     print(f"checked {count} internal links on {2 * len(PAGES)} pages")
     return errors
 

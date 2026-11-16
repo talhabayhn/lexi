@@ -148,6 +148,10 @@ URL: `https://talhabayhn.github.io/lexi/` — EN at the root, TR under `/tr/`; p
 terms at `terms/`, support at `support/`. Use these as the store Privacy Policy / Support URLs.
 Before the store submission: fill the `[PLACEHOLDERS]` and remove the DRAFT banners in
 `docs/store/*.md` (lawyer review, `owner-checklist.md`).
+The landing page shows both store buttons (`IOS_URL` / `ANDROID_URL` in `build.py`); visitors arriving from outside the site
+are sent to their store (iPhone/iPad → App Store, Android → Google Play) and Turkish browsers on the EN root to `/tr/`
+(inline script, skipped for bots, in-site navigation and after a manual language switch). Share previews use
+`docs/site/assets/og-{en,tr}.png` (regenerate with `docs/site/make_og.py`).
 Local preview: `python docs/site/build.py --out _site` and open `_site/index.html`.
 
 ## 9. Store graphics and videos

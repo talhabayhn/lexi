@@ -17,10 +17,17 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 STORE = ROOT / "docs" / "store"
 FONTS = ROOT / "docs" / "design" / "fonts"
+OG_DIR = ROOT / "docs" / "site" / "assets"
 ICON = ROOT / "docs" / "store" / "graphics" / "play" / "icon-512.png"
 
 # Brand name lives here once for the site (app: AppInfo.NAME + string resources).
 NAME = "Lexi"
+
+# Public site root (Pages project site) and the store pages; absolute because Open Graph and hreflang need it.
+SITE = "https://talhabayhn.github.io/lexi/"
+IOS_URL = "https://apps.apple.com/app/id6824403074"
+ANDROID_URL = "https://play.google.com/store/apps/details?id=dev.talhabayhan.lexi"
+IOS_APP_ID = "6824403074"
 
 T = {
     "en": {
@@ -35,8 +42,9 @@ T = {
             ("Learn, not just play", "Review list after every game, word notebook with spaced repetition, stats."),
             ("Works offline", "All words are stored on your device. No account needed."),
         ],
-        "soon": "Get it on Google Play",
-        "soon_ios": "App Store: coming soon.",
+        "get_ios": "Download on the App Store",
+        "get_android": "Get it on Google Play",
+        "og_alt": "Lexi: from A to Z in English",
         "nav": {"home": "Home", "privacy": "Privacy", "terms": "Terms", "support": "Support"},
         "other": "Türkçe",
         "support_title": "Support",
@@ -61,8 +69,9 @@ T = {
             ("Sadece oynama, öğren", "Her oyundan sonra tekrar listesi, aralıklı tekrarlı kelime defteri, istatistikler."),
             ("Çevrimdışı çalışır", "Tüm kelimeler cihazında saklanır. Hesap gerekmez."),
         ],
-        "soon": "Google Play'den indir",
-        "soon_ios": "App Store: yakında.",
+        "get_ios": "App Store'dan indir",
+        "get_android": "Google Play'den indir",
+        "og_alt": "Lexi: A'dan Z'ye İngilizce",
         "nav": {"home": "Ana sayfa", "privacy": "Gizlilik", "terms": "Koşullar", "support": "Destek"},
         "other": "English",
         "support_title": "Destek",
@@ -113,8 +122,9 @@ main{padding:8px 0 56px}
 .card h3{margin:0 0 6px;font-size:20px;font-weight:700}.card p{margin:0}
 .card:nth-child(1){box-shadow:6px 6px 0 var(--red)}.card:nth-child(2){box-shadow:6px 6px 0 var(--yellow)}
 .card:nth-child(3){box-shadow:6px 6px 0 var(--blue)}.card:nth-child(4){box-shadow:6px 6px 0 var(--ink)}
-.hero p.ios{font-size:15px;margin-top:10px}
-.soon{display:inline-block;text-decoration:none;background:var(--ink);color:var(--cream);font-weight:700;padding:12px 18px;margin-top:16px}
+.stores{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
+.store{display:inline-block;text-decoration:none;background:var(--ink);color:var(--cream);font-weight:700;padding:12px 18px;border:3px solid var(--ink)}
+.store:hover{color:var(--cream);background:var(--blue);border-color:var(--blue)}
 .doc h1{font-size:36px;line-height:1.15;font-weight:800;margin:32px 0 12px}
 .doc h2{font-size:22px;font-weight:700;margin:32px 0 8px;padding-top:12px;border-top:3px solid var(--ink)}
 .doc h3{font-size:18px;font-weight:700;margin:20px 0 6px}
@@ -212,16 +222,32 @@ def page(lang: str, key: str, title: str, body: str, depth: int) -> str:
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{html.escape(full_title)}</title>
 <meta name="description" content="{html.escape(t['hero'])}">
-<link rel="alternate" hreflang="en" href="{up}{sub}">
-<link rel="alternate" hreflang="tr" href="{up}tr/{sub}">
-<link rel="icon" href="{up}assets/icon.png">
+<meta name="apple-itunes-app" content="app-id={IOS_APP_ID}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="{NAME}">
+<meta property="og:locale" content="{'tr_TR' if lang == 'tr' else 'en_US'}">
+<meta property="og:title" content="{html.escape(full_title)}">
+<meta property="og:description" content="{html.escape(t['hero'])}">
+<meta property="og:url" content="{SITE}{'tr/' if lang == 'tr' else ''}{sub}">
+<meta property="og:image" content="{SITE}assets/og-{lang}.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{html.escape(t['og_alt'])}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{html.escape(full_title)}">
+<meta name="twitter:description" content="{html.escape(t['hero'])}">
+<meta name="twitter:image" content="{SITE}assets/og-{lang}.png">
+<link rel="alternate" hreflang="en" href="{SITE}{sub}">
+<link rel="alternate" hreflang="tr" href="{SITE}tr/{sub}">
+<link rel="alternate" hreflang="x-default" href="{SITE}{sub}">
+{REDIRECT_JS.replace('%TR%', up + 'tr/') if key == 'home' else ''}<link rel="icon" href="{up}assets/icon.png">
 <link rel="stylesheet" href="{up}assets/site.css">
 </head>
 <body>
 <header><div class="wrap">
 <span class="mark" aria-hidden="true"><i class="sq"></i><i class="ci"></i><i class="lf"></i></span>
 <a class="brand" href="{lang_root}">lexi</a>
-<nav>{nav}<a class="lang" href="{other_root}{sub}" hreflang="{'tr' if lang == 'en' else 'en'}">{t['other']}</a></nav>
+<nav>{nav}<a class="lang" href="{other_root}{sub}" hreflang="{'tr' if lang == 'en' else 'en'}" onclick="try{{sessionStorage.setItem('lexi-lang','1')}}catch(e){{}}">{t['other']}</a></nav>
 </div></header>
 <main><div class="wrap">
 {body}
@@ -232,11 +258,24 @@ def page(lang: str, key: str, title: str, body: str, depth: int) -> str:
 """
 
 
+# Home pages only. Runs for visitors arriving from outside the site (share link), never for in-site navigation or
+# crawlers/link-preview bots; with JS off the page just shows both store buttons. EN root + Turkish browser -> /tr/
+# unless the visitor switched language by hand this session (flag set by the language link).
+REDIRECT_JS = """<script>(function(){var d=document,n=navigator,u=n.userAgent||"";
+if(d.referrer.indexOf(location.origin)===0||/bot|crawl|spider|slurp|preview|facebookexternalhit|whatsapp|telegram|twitter|slack|discord|linkedin/i.test(u))return;
+var go=function(h){location.replace(h)};
+if(/iPhone|iPad|iPod/.test(u)||(n.platform==="MacIntel"&&n.maxTouchPoints>1))return go("%IOS%");
+if(/Android/.test(u))return go("%ANDROID%");
+var s;try{s=sessionStorage.getItem("lexi-lang")}catch(e){}
+if(!s&&d.documentElement.lang==="en"&&/^tr/i.test(n.language||""))go("%TR%")})()</script>
+""".replace("%IOS%", IOS_URL).replace("%ANDROID%", ANDROID_URL)
+
+
 def landing(lang: str) -> str:
     t = T[lang]
     cards = "".join(f'<div class="card"><h3>{inline(h)}</h3><p>{inline(p)}</p></div>' for h, p in t["features"])
     return f"""<section class="hero">
-<div><h1>{inline(t['hero'])}</h1><p>{inline(t['lead'])}</p><a class="soon" href="https://play.google.com/store/apps/details?id=dev.talhabayhan.lexi">{t['soon']}</a><p class="ios">{t['soon_ios']}</p></div>
+<div><h1>{inline(t['hero'])}</h1><p>{inline(t['lead'])}</p><div class="stores"><a class="store" href="{IOS_URL}">{t['get_ios']}</a><a class="store" href="{ANDROID_URL}">{t['get_android']}</a></div></div>
 <div class="logo" role="img" aria-label="Lexi"><span class="sq">L</span><span class="ci">E</span><span class="lf">X</span><span class="bk">I</span></div>
 </section>
 <section class="grid">{cards}</section>"""
@@ -259,6 +298,8 @@ def build(out: Path) -> None:
     shutil.copy(FONTS / "OFL.txt", assets / "Jost-OFL.txt")
     if ICON.exists():
         shutil.copy(ICON, assets / "icon.png")
+    for og in OG_DIR.glob("og-*.png"):
+        shutil.copy(og, assets / og.name)
     (out / ".nojekyll").write_text("", encoding="utf-8")
 
     for lang in ("en", "tr"):

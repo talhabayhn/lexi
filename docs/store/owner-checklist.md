@@ -59,8 +59,8 @@
 - [ ] Confirm Firebase "Granular location" is off; check iOS Crashlytics stack traces are symbolicated (app dSYM).
 
 ### Before the public release
-- [x] Play production live (https://play.google.com/store/apps/details?id=dev.talhabayhan.lexi); site links Google Play.
-- [ ] iOS: pending App Store review; when approved, replace the site's "App Store: coming soon" note with the store link.
+- [x] Play production live (https://play.google.com/store/apps/details?id=dev.talhabayhan.lexi); the site links both stores.
+- [x] iOS live (https://apps.apple.com/app/id6824403074); the site shows both store buttons and sends iPhone/Android visitors to their store.
 - [ ] App Store Connect App Privacy per `app-privacy-apple.md` §0; Play Data safety already submitted.
 - [ ] Store listing TR/EN, screenshots.
 - [ ] Designs for the consent block, reminder sheet, level-test intro/result.
