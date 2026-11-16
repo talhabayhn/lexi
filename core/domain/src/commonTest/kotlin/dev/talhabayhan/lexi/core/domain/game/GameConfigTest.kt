@@ -19,14 +19,14 @@ class GameConfigTest {
     }
 
     @Test
-    fun `classic lasts 180 s and offers 120 180 240 300 s in settings`() {
+    fun `classic lasts 180 s and offers 180 300 420 s like the duel clock`() {
         assertEquals(180_000L, config.timeLimitMs(GameMode.CLASSIC))
-        assertEquals(listOf(120, 180, 240, 300), config.classicTimeLimitOptionsSeconds)
+        assertEquals(listOf(180, 300, 420), config.classicTimeLimitOptionsSeconds)
     }
 
     @Test
     fun `classic time limit follows the settings override`() {
-        assertEquals(240_000L, config.copy(classicTimeLimitSeconds = 240).timeLimitMs(GameMode.CLASSIC))
+        assertEquals(420_000L, config.copy(classicTimeLimitSeconds = 420).timeLimitMs(GameMode.CLASSIC))
     }
 
     @Test

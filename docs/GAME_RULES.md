@@ -114,7 +114,7 @@ correct = blue circle, wrong = red square, passed = yellow leaf.
 ## 5. Modes
 | Mode | Timer | Scoring | Notes |
 |---|---|---|---|
-| Classic | ⚙ 180 s total (settings: 120/180/240/300) | yes | default |
+| Classic | ⚙ 180 s total (settings: 180 / 300 / 420 s; a stored 120 / 240 s falls back to 180 s) | yes | default |
 | Practice | none | no leaderboard, still SRS | "süresiz, baskısız" |
 | Hardcore | ⚙ 180 s | yes ×1.5 | first wrong ends the game |
 | Daily | ⚙ 180 s | yes | ONE shared mixed-level wheel for all players, one scored attempt per local day, resets at local midnight, shareable |

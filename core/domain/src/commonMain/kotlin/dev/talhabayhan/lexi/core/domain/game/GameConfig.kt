@@ -14,7 +14,11 @@ public data class GameConfig(
     val revealMs: Long = 1_200L,
     /** §5: Classic total time; the player's setting (one of [classicTimeLimitOptionsSeconds]) overrides it. */
     val classicTimeLimitSeconds: Int = 180,
-    val classicTimeLimitOptionsSeconds: List<Int> = listOf(120, 180, 240, 300),
+    /**
+     * §5: Classic time choices, the same 3 / 5 / 7 min as the duel clock (video-flow decision); a stored value no
+     * longer offered (120 / 240 s) falls back to [classicTimeLimitSeconds] when settings are read.
+     */
+    val classicTimeLimitOptionsSeconds: List<Int> = listOf(180, 300, 420),
     val hardcoreTimeLimitSeconds: Int = 180,
     val dailyTimeLimitSeconds: Int = 180,
     val levelTestTimeLimitSeconds: Int = 120,

@@ -12,7 +12,7 @@ public data class Settings(
     val haptics: Boolean = true,
     /** "Doğru cevapta telaffuzu çal": speak the answer after a correct answer. */
     val speakOnCorrect: Boolean = true,
-    /** Classic total time; one of `GameConfig.classicTimeLimitOptionsSeconds` (120/180/240/300). */
+    /** Classic total time; one of `GameConfig.classicTimeLimitOptionsSeconds` (180/300/420). */
     val classicTimeLimitSeconds: Int = DEFAULT_CLASSIC_TIME_LIMIT_SECONDS,
     /** Daily reminder notification; off until the player turns it on or accepts the pre-prompt (`ReminderPlanner`). */
     val dailyReminder: Boolean = false,

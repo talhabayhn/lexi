@@ -55,7 +55,7 @@ class SettingsRepositoryTest {
             soundEffects = false,
             haptics = false,
             speakOnCorrect = false,
-            classicTimeLimitSeconds = 240,
+            classicTimeLimitSeconds = 300,
             dailyReminder = true,
             reminderMinuteOfDay = 21 * 60 + 30,
             reminderPrePromptAsks = 2,
@@ -74,8 +74,8 @@ class SettingsRepositoryTest {
             assertEquals(Settings(), awaitItem())
             repository.update { changed }
             assertEquals(changed, awaitItem())
-            repository.update { it.copy(classicTimeLimitSeconds = 120) }
-            assertEquals(changed.copy(classicTimeLimitSeconds = 120), awaitItem())
+            repository.update { it.copy(classicTimeLimitSeconds = 420) }
+            assertEquals(changed.copy(classicTimeLimitSeconds = 420), awaitItem())
         }
     }
 
@@ -108,6 +108,17 @@ class SettingsRepositoryTest {
         val settings = SettingsRepositoryImpl(dataStore, GameConfig(), backgroundScope).settings.first()
 
         assertEquals(listOf("Bir çok uzun", "Can"), settings.duelPlayerNames)
+    }
+
+    @Test
+    fun `classic time stored before the 3-5-7 min options falls back to 3 min`() = runTest {
+        val dataStore = createSettingsDataStore(path, backgroundScope)
+        val repository = SettingsRepositoryImpl(dataStore, GameConfig(), backgroundScope)
+        for (stored in listOf(120, 240)) {
+            dataStore.edit { it[intPreferencesKey("classic_time_limit_seconds")] = stored }
+
+            assertEquals(180, repository.settings.first().classicTimeLimitSeconds, "stored $stored")
+        }
     }
 
     @Test
