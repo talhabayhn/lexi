@@ -3,7 +3,7 @@ a1-cheese,CHEESE,C,STARTS,noun,sütten yapılan sarı veya beyaz gıda,Ali grate
 a1-milk,MILK,M,STARTS,noun,inekten sağılan beyaz içecek,The milk is fresh.,Süt taze.,1,,food-drink
 a1-rice,RICE,R,STARTS,noun,"pirinç, pilav",Rice is a tasty side.,Pilav lezzetli bir garnitür.,1,,food-drink
 a1-onion,ONION,O,STARTS,noun,kesince gözümüzü yaşartan sebze,Peel the onion.,Soğanı soy.,2,,food-drink
-a1-vegetable,VEGETABLE,V,STARTS,noun,ıspanak ve havuç gibi bitkisel yiyecek,Spinach is a vegetable.,Ispanak bir sebzedir.,3,,food-drink
+a1-vegetable,VEGETABLE,V,STARTS,noun,ıspanak ve havuç gibi bitkisel yiyecek,Spinach is a vegetable.,Ispanak bir sebzedir.,2,,food-drink
 a1-lunch,LUNCH,L,STARTS,noun,öğle yemeği,We have lunch outdoors.,Öğle yemeğini açık havada yeriz.,1,,food-drink
 a1-chicken,CHICKEN,C,STARTS,noun,"yumurtlayan, tüylü çiftlik kuşu",Ayşe roasted a chicken with potatoes.,Ayşe patateslerle birlikte tavuk fırınladı.,1,,food-drink
 a1-soup,SOUP,S,STARTS,noun,kaşıkla içilen sıcak sulu yemek,This soup is salty.,Bu çorba tuzlu.,1,,food-drink

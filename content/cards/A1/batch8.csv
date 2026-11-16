@@ -24,7 +24,7 @@ a1-menu,MENU,M,STARTS,noun,restoranda yemeklerin fiyatıyla yazıldığı kâğ�
 a1-nothing,NOTHING,N,STARTS,noun,hiçbir şey,Ali has nothing to do.,Ali'nin yapacak bir şeyi yok.,2,,daily-life
 a1-paint,PAINT,P,STARTS,verb,fırça ya da rulo ile boya sürmek,Mert will paint the fence.,Mert çiti boyayacak.,2,,daily-life
 a1-player,PLAYER,P,STARTS,noun,bir oyunu ya da sporu oynayan kişi,Ali is the best player in his team.,Ali takımının en iyi oyuncusu.,2,,daily-life
-a1-playground,PLAYGROUND,P,STARTS,noun,okulda çocukların oynadığı açık alan,The children are in the playground.,Çocuklar oyun alanında.,3,,school-work
+a1-playground,PLAYGROUND,P,STARTS,noun,okulda çocukların oynadığı açık alan,The children are in the playground.,Çocuklar oyun alanında.,2,,school-work
 a1-robot,ROBOT,R,STARTS,noun,insan yerine iş yapan mekanik makine,The tiny robot is made of metal.,Minik robot metalden yapılmış.,2,,daily-life
 a1-text,TEXT,X,CONTAINS,noun,kitapta veya ekranda yazılı kelimeler bütünü,The text is too tiny.,Yazı çok ufak.,2,,school-work
 a1-australia,AUSTRALIA,A,STARTS,noun,Sidney'in bulunduğu Güney Yarımküre ülkesi,Selin went to Australia by ship.,Selin Avustralya'ya gemiyle gitti.,2,,city-transport

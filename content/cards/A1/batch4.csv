@@ -20,7 +20,7 @@ a1-dirty,DIRTY,D,STARTS,adj,temiz olmayan,His socks are dirty from the muddy pat
 a1-dark,DARK,D,STARTS,adj,ışığı olmayan,It is dark and I cannot see anything.,Karanlık ve hiçbir şey göremiyorum.,1,,daily-life
 a1-delicious,DELICIOUS,D,STARTS,adj,tadı çok güzel,The baklava was crispy and delicious.,Baklava çıtır çıtır ve lezzetliydi.,2,,food-drink
 a1-dictionary,DICTIONARY,D,STARTS,noun,kelimelerin anlamını bulduğun kitap,I checked the meaning in a dictionary.,Anlamına sözlükten baktım.,2,,school-work
-a1-downstairs,DOWNSTAIRS,D,STARTS,adv,alt katta,"Mr. Demir sleeps downstairs, since the steps are steep.",Bay Demir alt katta uyuyor çünkü merdivenler dik.,3,,home
+a1-downstairs,DOWNSTAIRS,D,STARTS,adv,alt katta,"Mr. Demir sleeps downstairs, since the steps are steep.",Bay Demir alt katta uyuyor çünkü merdivenler dik.,2,,home
 a1-enjoy,ENJOY,E,STARTS,verb,bir şeyden zevk almak,Kids enjoy riding roller coasters at the fair.,Çocuklar lunaparkta hız trenine binmekten keyif alır.,2,,daily-life
 a1-exam,EXAM,E,STARTS,noun,okulda bilgiyi ölçen yazılı iş,Mert revised for the final exam with his notes.,Mert notlarıyla final sınavına çalıştı.,2,,school-work
 a1-exercise,EXERCISE,E,STARTS,noun,sağlık için yapılan spor hareketleri,Exercise makes you strong.,Egzersiz seni güçlendirir.,2,,body-health
@@ -39,7 +39,7 @@ a1-giraffe,GIRAFFE,G,STARTS,noun,boynu çok uzun hayvan,The giraffe is taller th
 a1-hear,HEAR,H,STARTS,verb,sesi kulakla algılamak,I cannot hear you in this noisy hall.,Bu gürültülü salonda seni duyamıyorum.,1,,daily-life
 a1-heavy,HEAVY,H,STARTS,adj,kaldırması çok zor olan,The closet is too heavy to lift alone.,Dolap tek başına kaldırmak için fazla ağır.,2,,daily-life
 a1-hamburger,HAMBURGER,H,STARTS,noun,köfteli sandviç,He ordered a hamburger with fries and ketchup.,Patates kızartması ve ketçaplı bir hamburger sipariş etti.,2,,food-drink
-a1-interesting,INTERESTING,I,STARTS,adj,ilgini çeken,The gallery has an interesting dinosaur exhibit.,Galerideki dinozor sergisi ilgimi çekiyor.,3,,daily-life
+a1-interesting,INTERESTING,I,STARTS,adj,ilgini çeken,The gallery has an interesting dinosaur exhibit.,Galerideki dinozor sergisi ilgimi çekiyor.,2,,daily-life
 a1-kangaroo,KANGAROO,K,STARTS,noun,"keseli, zıplayan Avustralya hayvanı",A kangaroo hops across the field.,Bir kanguru tarlada zıplıyor.,2,,animals
 a1-keyboard,KEYBOARD,K,STARTS,noun,bilgisayarda harf yazdığın tuşlar,The keyboard is broken.,Klavye bozuk.,2,,school-work
 a1-kiss,KISS,K,STARTS,verb,dudaklarla öpmek,He wants to kiss her.,Onu öpmek istiyor.,2,,daily-life
@@ -77,7 +77,7 @@ a1-think,THINK,T,STARTS,verb,aklından bir şey geçirmek,"Do you think so, Seli
 a1-toilet,TOILET,T,STARTS,noun,klozet ve lavabo olan küçük yer,Is there a toilet in this mall?,Bu alışveriş merkezinde tuvalet var mı?,2,,home
 a1-ugly,UGLY,U,STARTS,adj,görünüşü hoş olmayan,The monster is ugly.,Canavar çirkin.,2,,daily-life
 a1-useful,USEFUL,U,STARTS,adj,işe yarayan,A calculator is useful for big numbers.,Hesap makinesi büyük sayılar için işe yarar.,2,,daily-life
-a1-upstairs,UPSTAIRS,U,STARTS,adv,üst katta,The bedrooms are upstairs.,Yatak odaları üst katta.,3,,home
+a1-upstairs,UPSTAIRS,U,STARTS,adv,üst katta,The bedrooms are upstairs.,Yatak odaları üst katta.,2,,home
 a1-warm,WARM,W,STARTS,adj,ne soğuk ne de çok sıcak,This jumper is warm.,Bu kazak sıcak tutuyor.,2,,time-weather
 a1-watch,WATCH,W,STARTS,verb,ilgiyle izlemek,They watch cartoons.,Çizgi film izlerler.,1,,daily-life
 a1-weekend,WEEKEND,W,STARTS,noun,cumartesi ve pazar günleri,Ali plays chess at the weekend.,Ali hafta sonu satranç oynuyor.,2,,time-weather

@@ -1,7 +1,7 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
 a1-aunt,AUNT,A,STARTS,noun,"teyze, hala",My aunt lives in Ankara.,Teyzem Ankara'da yaşıyor.,1,,family-people
 a1-brother,BROTHER,B,STARTS,noun,erkek kardeş,My brother plays chess with his cousins.,Erkek kardeşim kuzenleriyle satranç oynar.,1,,family-people
-a1-daughter,DAUGHTER,D,STARTS,noun,kız evlat,Mr. Kaya proudly watched his daughter graduate.,Bay Kaya kızının mezuniyetini gururla izledi.,3,,family-people
+a1-daughter,DAUGHTER,D,STARTS,noun,kız evlat,Mr. Kaya proudly watched his daughter graduate.,Bay Kaya kızının mezuniyetini gururla izledi.,2,,family-people
 a1-father,FATHER,F,STARTS,noun,çocuğu olan erkek ebeveyn,My father likes fishing.,Babam balık tutmayı sever.,1,,family-people
 a1-girl,GIRL,G,STARTS,noun,kız çocuğu,The girl in the raincoat jumped in puddles.,Yağmurluklu kız çocuğu su birikintilerine atladı.,1,,family-people
 a1-uncle,UNCLE,U,STARTS,noun,"amca, dayı",My uncle lives in Ankara.,Amcam Ankara'da yaşıyor.,1,,family-people
