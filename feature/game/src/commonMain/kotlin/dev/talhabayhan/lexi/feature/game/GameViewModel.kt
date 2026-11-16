@@ -229,8 +229,9 @@ internal class GameViewModel(
 
     /**
      * "Yeniden başlat" confirmed: the paused game is dropped without being recorded (its saved snapshot too; used
-     * jokers stay used, ADR 0019) and [load] starts a new wheel for the same route with a new seed. The Classic time
-     * limit the game started with is kept ([KEY_CLASSIC_LIMIT]); the new game starts at once (the screen is resumed).
+     * jokers stay used, ADR 0019) and [load] starts a new wheel for the same route with a new seed. The time limits
+     * the game started with are kept ([KEY_CLASSIC_LIMIT], [KEY_HARDCORE_LIMIT]); the new game starts at once (the
+     * screen is resumed).
      */
     private fun restart() {
         if (!restartConfirmation || !isPausedGame() || !state.value.canRestart || loading?.isActive == true) return
@@ -259,9 +260,14 @@ internal class GameViewModel(
      */
     private suspend fun load() {
         val opened = try {
-            val limit = loader.classicLimit(handle.get<Int>(KEY_CLASSIC_LIMIT))
-            handle[KEY_CLASSIC_LIMIT] = limit
-            loader.open(route, limit, handle.get<String>(KEY_GAME))
+            val limits = loader.timeLimits(
+                route,
+                handle.get<Int>(KEY_CLASSIC_LIMIT),
+                handle.get<Int>(KEY_HARDCORE_LIMIT),
+            )
+            handle[KEY_CLASSIC_LIMIT] = limits.classic
+            handle[KEY_HARDCORE_LIMIT] = limits.hardcore
+            loader.open(route, limits, handle.get<String>(KEY_GAME))
         } catch (e: CancellationException) {
             throw e
         } catch (e: Exception) {
@@ -301,6 +307,7 @@ internal class GameViewModel(
                 engine = opened.engine
                 session = opened.session
                 handle[KEY_CLASSIC_LIMIT] = opened.engine.config.classicTimeLimitSeconds
+                handle[KEY_HARDCORE_LIMIT] = opened.engine.config.hardcoreTimeLimitSeconds
                 opened.snapshot?.let { handle[KEY_GAME] = it }
                 opened.dailyEpochDay?.let { handle[KEY_DAILY_DAY] = it }
                 val state = opened.session.state
@@ -604,11 +611,13 @@ internal class GameViewModel(
         private val log = Logger.withTag("GameViewModel")
 
         /**
-         * [SavedStateHandle] keys: the [SavedGame] JSON, the Classic time limit the game started with and the day a
-         * Daily wheel was built for.
+         * [SavedStateHandle] keys: the [SavedGame] JSON, the Classic and Hardcore time limits the game started with
+         * (a game saved before Hardcore took the chosen time has no Hardcore key) and the day a Daily wheel was built
+         * for.
          */
         const val KEY_GAME: String = "game.saved"
         const val KEY_CLASSIC_LIMIT: String = "game.classicLimitSeconds"
+        const val KEY_HARDCORE_LIMIT: String = "game.hardcoreLimitSeconds"
         const val KEY_DAILY_DAY: String = "game.dailyEpochDay"
     }
 }

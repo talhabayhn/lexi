@@ -27,12 +27,25 @@ import org.koin.compose.viewmodel.koinViewModel
 
 /**
  * Type-safe destination of the game screen. Arguments are enum *names*: navigation 2.10 has no enum nav type on iOS
- * (`parseEnum()` is unsupported outside Android), so strings keep the route identical on both platforms.
+ * (`parseEnum()` is unsupported outside Android), so strings keep the route identical on both platforms. [time] is
+ * the total time chosen in the mode dialog (seconds, Classic and Hardcore, `GAME_RULES.md` §5); null = the stored
+ * choice (`Settings.classicTimeLimitSeconds`). A value that is not an offered option is ignored.
  */
 @Serializable
-data class GameRoute(val level: String, val mode: String, val category: String? = null, val pack: String? = null) {
-    constructor(level: Level, mode: GameMode, category: CategoryId? = null, pack: ExamPackId? = null) :
-        this(level = level.name, mode = mode.name, category = category?.value, pack = pack?.value)
+data class GameRoute(
+    val level: String,
+    val mode: String,
+    val category: String? = null,
+    val pack: String? = null,
+    val time: Int? = null,
+) {
+    constructor(
+        level: Level,
+        mode: GameMode,
+        category: CategoryId? = null,
+        pack: ExamPackId? = null,
+        timeSeconds: Int? = null,
+    ) : this(level = level.name, mode = mode.name, category = category?.value, pack = pack?.value, time = timeSeconds)
 
     internal val gameLevel: Level get() = Level.valueOf(level)
 

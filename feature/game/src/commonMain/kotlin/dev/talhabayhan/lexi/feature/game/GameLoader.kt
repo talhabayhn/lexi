@@ -69,18 +69,32 @@ internal class GameLoader(
     private val entitlements: EntitlementRepository? = null,
     private val cpu: CoroutineDispatcher = Dispatchers.Default,
 ) {
-    /** The Classic time limit of a game: the one it started with ([stored]), else the setting if it is an option. */
-    suspend fun classicLimit(stored: Int?): Int = stored
-        ?: settings.settings.first().classicTimeLimitSeconds.takeIf { it in config.classicTimeLimitOptionsSeconds }
-        ?: config.classicTimeLimitSeconds
+    /**
+     * The Classic and Hardcore time limits of a game (`GAME_RULES.md` §5). A game that already started keeps its own
+     * ([storedClassic] / [storedHardcore]; a game saved before Hardcore took the chosen time has no Hardcore value and
+     * keeps the fixed 180 s). A new game takes the route's time, else the stored choice, if it is an option; both
+     * modes get the same chosen time.
+     */
+    suspend fun timeLimits(route: GameRoute, storedClassic: Int?, storedHardcore: Int?): TimeLimits {
+        if (storedClassic != null) {
+            return TimeLimits(storedClassic, storedHardcore ?: config.hardcoreTimeLimitSeconds)
+        }
+        val options = config.classicTimeLimitOptionsSeconds
+        val chosen = route.time?.takeIf { it in options }
+            ?: settings.settings.first().classicTimeLimitSeconds.takeIf { it in options }
+            ?: config.classicTimeLimitSeconds
+        return TimeLimits(classic = chosen, hardcore = chosen)
+    }
 
     /**
      * Restores [saved] (the snapshot JSON) or starts a new game for [route]. A read failure throws (a retry keeps the
      * saved game); [Opened.Abandoned] when a card of the saved game left the content or a review has nothing due,
      * [Opened.NoCards] for a wheel without cards (never recorded).
      */
-    suspend fun open(route: GameRoute, classicLimit: Int, saved: String?): Opened = withContext(cpu) {
-        val engine = GameEngine(config.copy(classicTimeLimitSeconds = classicLimit))
+    suspend fun open(route: GameRoute, limits: TimeLimits, saved: String?): Opened = withContext(cpu) {
+        val engine = GameEngine(
+            config.copy(classicTimeLimitSeconds = limits.classic, hardcoreTimeLimitSeconds = limits.hardcore),
+        )
         val savedGame = saved?.let(SavedGameCodec::decodeOrNull)
         if (savedGame == null) {
             newSession(route, engine)
@@ -91,9 +105,9 @@ internal class GameLoader(
         }
     }
 
-    /** A new game for [route] with the Classic limit from the settings; a failure is [Opened.Failed], never thrown. */
+    /** A new game for [route] with its chosen time limits; a failure is [Opened.Failed], never thrown. */
     suspend fun openNew(route: GameRoute): Opened = try {
-        open(route, classicLimit(stored = null), saved = null)
+        open(route, timeLimits(route, storedClassic = null, storedHardcore = null), saved = null)
     } catch (e: CancellationException) {
         throw e
     } catch (e: Exception) {
@@ -190,3 +204,6 @@ internal class GameLoader(
         val log = Logger.withTag("GameLoader")
     }
 }
+
+/** Total seconds of a Classic and of a Hardcore game (`GAME_RULES.md` §5). */
+internal data class TimeLimits(val classic: Int, val hardcore: Int)

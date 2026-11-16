@@ -449,12 +449,45 @@ class GameViewModelTest {
     }
 
     @Test
-    fun `the hardcore wheel ignores classic time setting and uses hardcore limit`() = runTest {
+    fun `the hardcore wheel takes the chosen time like classic`() = runTest {
         settings.update { it.copy(classicTimeLimitSeconds = 420) }
 
         val vm = startedIn(GameMode.HARDCORE)
 
+        assertEquals(420_000L, vm.remainingMs)
+    }
+
+    @Test
+    fun `the time of the route wins over the stored choice and an unoffered one is ignored`() = runTest {
+        settings.update { it.copy(classicTimeLimitSeconds = 420) }
+
+        val hardcore = viewModel(gameRoute = GameRoute(Level.A1, GameMode.HARDCORE, timeSeconds = 300)).also {
+            runCurrent()
+            it.onIntent(GameIntent.Foreground)
+        }
+        assertEquals(300_000L, hardcore.remainingMs)
+
+        val classic = viewModel(gameRoute = GameRoute(Level.A1, GameMode.CLASSIC, timeSeconds = 240)).also {
+            runCurrent()
+            it.onIntent(GameIntent.Foreground)
+        }
+        assertEquals(420_000L, classic.remainingMs)
+    }
+
+    @Test
+    fun `a hardcore game saved before the chosen time keeps its fixed limit`() = runTest {
+        settings.update { it.copy(classicTimeLimitSeconds = 420) }
+        val handle = SavedStateHandle(
+            mapOf<String, Any?>("level" to "A1", "mode" to "HARDCORE", GameViewModel.KEY_CLASSIC_LIMIT to 420),
+        )
+
+        val vm = viewModel(handle, gameRoute = GameRoute(Level.A1, GameMode.HARDCORE)).also {
+            runCurrent()
+            it.onIntent(GameIntent.Foreground)
+        }
+
         assertEquals(config.hardcoreTimeLimitSeconds * 1_000L, vm.remainingMs)
+        assertEquals(config.hardcoreTimeLimitSeconds, handle.get<Int>(GameViewModel.KEY_HARDCORE_LIMIT))
     }
 
     @Test
