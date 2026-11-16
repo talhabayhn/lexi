@@ -14,6 +14,7 @@ import dev.talhabayhan.lexi.core.domain.reminder.ReminderTextProvider
 import dev.talhabayhan.lexi.core.domain.reminder.RescheduleReminders
 import dev.talhabayhan.lexi.core.domain.reminder.ShouldShowReminderPrePrompt
 import dev.talhabayhan.lexi.core.domain.session.FinishGame
+import dev.talhabayhan.lexi.core.domain.stats.GetLevelCategories
 import dev.talhabayhan.lexi.core.domain.streak.GetStreakStatus
 import dev.talhabayhan.lexi.core.domain.time.AppClock
 import dev.talhabayhan.lexi.core.platform.feedback.LiveSettings
@@ -22,7 +23,6 @@ import dev.talhabayhan.lexi.data.ResourcesBundledContentDb
 import dev.talhabayhan.lexi.feature.exams.di.examsModule
 import dev.talhabayhan.lexi.feature.game.di.gameModule
 import dev.talhabayhan.lexi.feature.home.di.homeModule
-import dev.talhabayhan.lexi.feature.levels.di.levelsModule
 import dev.talhabayhan.lexi.feature.notebook.di.notebookModule
 import dev.talhabayhan.lexi.feature.onboarding.di.onboardingModule
 import dev.talhabayhan.lexi.feature.settings.di.settingsModule
@@ -46,6 +46,7 @@ internal val appCoreModule: Module = module {
     factory { DailyAttempt(daily = get(), clock = get()) }
     factory { GetStreakStatus(streaks = get(), clock = get()) }
     factory { GetDailyGoalProgress(sessions = get(), settings = get(), clock = get()) }
+    factory { GetLevelCategories(cards = get(), categories = get()) }
     // Haptics, SoundPlayer and Speaker are bound per platform (rememberPlatformModule) on top of this snapshot.
     single { LiveSettings(get()) }
     // Local reminders (ADR 0021): ReminderScheduler and NotificationPermission are bound per platform. A single: it
@@ -81,7 +82,6 @@ val appModules: List<Module> = listOf(
     onboardingModule,
     homeModule,
     examsModule,
-    levelsModule,
     notebookModule,
     statsModule,
     settingsModule,

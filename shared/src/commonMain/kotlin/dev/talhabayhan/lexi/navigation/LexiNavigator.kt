@@ -19,8 +19,6 @@ import dev.talhabayhan.lexi.feature.game.duel.DuelRoute
 import dev.talhabayhan.lexi.feature.game.duel.DuelSetupRoute
 import dev.talhabayhan.lexi.feature.game.result.ResultRoute
 import dev.talhabayhan.lexi.feature.home.HomeRoute
-import dev.talhabayhan.lexi.feature.levels.CategoriesRoute
-import dev.talhabayhan.lexi.feature.levels.LevelSelectRoute
 import dev.talhabayhan.lexi.feature.notebook.NotebookRoute
 import dev.talhabayhan.lexi.feature.onboarding.OnboardingRoute
 import dev.talhabayhan.lexi.feature.onboarding.result.LevelTestResultRoute
@@ -106,14 +104,7 @@ internal class LexiNavigator(
         navController.popBackStack(OnboardingRoute, inclusive = false)
     }
 
-    fun openLevelSelect(mode: GameMode? = null): Boolean = ifResumed {
-        navigate(if (mode == null) LevelSelectRoute() else LevelSelectRoute(mode)) { launchSingleTop = true }
-    }
-
-    fun openCategories(level: Level, mode: GameMode): Boolean = ifResumed {
-        navigate(CategoriesRoute(level, mode)) { launchSingleTop = true }
-    }
-
+    /** OYNA on Home: a game of the level, mode and category chosen there (null = the level's mixed wheel). */
     fun startGame(level: Level, mode: GameMode, category: CategoryId? = null): Boolean =
         openGame(GameRoute(level, mode, category)) { launchSingleTop = true }
 

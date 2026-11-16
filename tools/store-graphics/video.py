@@ -41,7 +41,7 @@ SCENES = {
         "end": "Hemen\noyna",
         "stills": [
             ("feature/home/HomeScreen.png", YELLOW, "Her gün yeni\nGünün Çarkı"),
-            ("feature/levels/LevelSelect.png", BLUE, "A1'den ana dile\naltı seviye"),
+            ("feature/home/HomeScreenDue120.png", BLUE, "A1'den ana dile\naltı seviye"),
             ("feature/game/ResultScreen.png", RED, "Her oyundan sonra\ntekrar listesi"),
             ("feature/notebook/Notebook.png", INK, "Aralıklı tekrarlı\nkelime defteri"),
             ("feature/stats/Stats.png", YELLOW, "İlerlemeni\nadım adım gör"),
@@ -52,7 +52,7 @@ SCENES = {
         "end": "Play\nnow",
         "stills": [
             ("store:home/Home.png", YELLOW, "A new Daily Wheel\nevery day"),
-            ("feature/levels/LevelSelectNatPracticeEn.png", BLUE, "Six levels,\nA1 to native"),
+            ("feature/home/HomeScreenEnB2.png", BLUE, "Six levels,\nA1 to native"),
             ("store:game/Result.png", RED, "Review every\nword you missed"),
             ("store:notebook/Notebook.png", INK, "A notebook with\nspaced repetition"),
             ("feature/stats/StatsEn.png", YELLOW, "Watch your\nprogress grow"),

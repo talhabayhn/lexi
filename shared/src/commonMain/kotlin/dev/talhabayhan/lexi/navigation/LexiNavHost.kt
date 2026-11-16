@@ -26,7 +26,6 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiMotion
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
-import dev.talhabayhan.lexi.core.domain.game.GameMode
 import dev.talhabayhan.lexi.core.domain.platform.UrlOpener
 import dev.talhabayhan.lexi.feature.exams.examPacksScreen
 import dev.talhabayhan.lexi.feature.game.GamePreparer
@@ -37,8 +36,6 @@ import dev.talhabayhan.lexi.feature.game.levelTestScreen
 import dev.talhabayhan.lexi.feature.game.result.resultScreen
 import dev.talhabayhan.lexi.feature.home.HomeRoute
 import dev.talhabayhan.lexi.feature.home.homeScreen
-import dev.talhabayhan.lexi.feature.levels.categoriesScreen
-import dev.talhabayhan.lexi.feature.levels.levelSelectScreen
 import dev.talhabayhan.lexi.feature.notebook.notebookScreen
 import dev.talhabayhan.lexi.feature.onboarding.onboardingScreen
 import dev.talhabayhan.lexi.feature.onboarding.result.levelTestResultScreen
@@ -53,8 +50,8 @@ import dev.talhabayhan.lexi.splash.splashScreen
 import org.koin.compose.koinInject
 
 /**
- * The app graph: `Splash → Home → LevelSelect [→ Categories] → Game → Result`, `Home → Notebook → Game (review)
- * → Result` and `Home → Stats`, `Home → Settings`, `Home → Practice` (level select preselected to Practice) and
+ * The app graph: `Splash → Home → Game → Result` (OYNA starts the level, mode and category chosen on Home,
+ * `02c-home-v2`), `Home → Notebook → Game (review) → Result` and `Home → Stats`, `Home → Settings`, `Home → Duel setup`,
  * `Home → Exam packs`, and `Home → Reminder pre-prompt` (once, after the first real game) or `Settings → Reminder
  * pre-prompt` (turning the reminder on). First run: `Splash → Onboarding → Home`, or `Onboarding → LevelTest → LevelTestResult → Home`
  * (the result replaces the test; "Pes et" and back from the result return to the onboarding). The
@@ -133,12 +130,11 @@ private fun LexiNavGraph(
             onBack = navigator::quitLevelTest,
         )
         homeScreen(
-            onPlay = { navigator.openLevelSelect() },
+            onStartGame = { level, mode, category -> navigator.startGame(level, mode, category) },
             onOpenDaily = { navigator.startDaily() },
             onOpenNotebook = { navigator.openNotebook() },
             onOpenStats = { navigator.openStats() },
             onOpenSettings = { navigator.openSettings() },
-            onOpenPractice = { navigator.openLevelSelect(GameMode.PRACTICE) },
             onOpenExamPacks = { navigator.openExamPacks() },
             onOpenDuel = { navigator.openDuelSetup() },
             onOpenReminderPrePrompt = { navigator.openReminderPrePrompt() },
@@ -159,15 +155,6 @@ private fun LexiNavGraph(
         notebookScreen(
             onBack = { navigator.back() },
             onStartReview = { navigator.startReview() },
-        )
-        levelSelectScreen(
-            onBack = { navigator.back() },
-            onStart = { level, mode -> navigator.startGame(level, mode) },
-            onOpenCategories = { level, mode -> navigator.openCategories(level, mode) },
-        )
-        categoriesScreen(
-            onBack = { navigator.back() },
-            onStart = { level, mode, category -> navigator.startGame(level, mode, category) },
         )
         gameScreen(
             onFinished = navigator::finishGame,

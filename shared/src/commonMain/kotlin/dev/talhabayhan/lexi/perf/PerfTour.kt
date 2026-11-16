@@ -9,7 +9,6 @@ import dev.talhabayhan.lexi.core.domain.game.GameMode
 import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.feature.game.GameRoute
 import dev.talhabayhan.lexi.feature.home.HomeRoute
-import dev.talhabayhan.lexi.feature.levels.LevelSelectRoute
 import dev.talhabayhan.lexi.feature.notebook.NotebookRoute
 import dev.talhabayhan.lexi.feature.settings.SettingsRoute
 import dev.talhabayhan.lexi.feature.stats.StatsRoute
@@ -107,9 +106,9 @@ private class PerfTourRunner(
     private suspend fun script(loop: Int): Boolean =
         segment(loop, "Home→Settings", SettingsRoute::class) { navigator.openSettings() } &&
             segment(loop, "Settings→Home", HomeRoute::class) { navigator.back() } &&
-            segment(loop, "Home→LevelSelect", LevelSelectRoute::class) { navigator.openLevelSelect() } &&
-            // Practice has no clock; the game is left unfinished, so nothing is recorded. Daily is never used.
-            segment(loop, "LevelSelect→Game", GameRoute::class) { navigator.startGame(Level.A1, GameMode.PRACTICE) } &&
+            // OYNA on Home (`02c-home-v2`). Practice has no clock; the game is left unfinished, so nothing is recorded.
+            // Daily is never used.
+            segment(loop, "Home→Game", GameRoute::class) { navigator.startGame(Level.A1, GameMode.PRACTICE) } &&
             stay(STAY_IN_GAME_MS) &&
             segment(loop, "Game→Settings", SettingsRoute::class) { navigator.openSettings() } &&
             segment(loop, "Settings→Game", GameRoute::class) { navigator.back() } &&
