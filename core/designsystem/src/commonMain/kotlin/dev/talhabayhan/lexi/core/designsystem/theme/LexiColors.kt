@@ -25,6 +25,8 @@ public class LexiColors internal constructor(
     public val blue: Color,
     /** **Pass** state, timer bar, highlights, selected-segment text on ink. */
     public val yellow: Color,
+    /** Lighter yellow (yellow 50 % over cream): the daily card once today's wheel is solved (Home v2 daily card). */
+    public val yellowMuted: Color,
     /** Placeholder, disabled text. */
     public val inkMuted: Color,
     /** Dashed border of a disabled button / used key. */
@@ -47,6 +49,7 @@ internal val LightLexiColors: LexiColors = LexiColors(
     redText = Color(0xFFD42D25),
     blue = Color(0xFF3D68B2),
     yellow = Color(0xFFE29E2E),
+    yellowMuted = Color(0xFFECC98E),
     inkMuted = Color(0xFF606673),
     borderMuted = Color(0xFF8A8F9B),
     disabledFill = Color(0xFFEAE6DF),

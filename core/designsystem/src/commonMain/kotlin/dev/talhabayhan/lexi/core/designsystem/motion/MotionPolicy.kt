@@ -1,8 +1,10 @@
 package dev.talhabayhan.lexi.core.designsystem.motion
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.ProvidableCompositionLocal
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.staticCompositionLocalOf
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 
 /**
@@ -19,9 +21,18 @@ public class MotionPolicy(public val frameMonitor: FrameMonitor = FrameMonitor()
     }
 }
 
+/**
+ * The app session's [MotionPolicy]. The default is one process-wide instance, so a slow streak seen on one screen
+ * keeps every later video-flow screen on [MotionTier.Lite]; tests and previews may provide their own.
+ */
+public val LocalMotionPolicy: ProvidableCompositionLocal<MotionPolicy> =
+    staticCompositionLocalOf { SessionMotionPolicy }
+
+private val SessionMotionPolicy: MotionPolicy = MotionPolicy()
+
 /** The current tier: `LexiTheme.motion.reducedMotion`, the device signals and [policy]'s frame monitor, observed. */
 @Composable
-public fun rememberMotionTier(policy: MotionPolicy): MotionTier {
+public fun rememberMotionTier(policy: MotionPolicy = LocalMotionPolicy.current): MotionTier {
     FrameMonitorEffect(policy.frameMonitor)
     val reduced = LexiTheme.motion.reducedMotion
     val device = deviceMotionSignals()

@@ -102,6 +102,12 @@ public class FlowMotion internal constructor() {
     public val redealSlot: MotionStep = fromPrototype(200, 200)
     public val redealKey: MotionStep = fromPrototype(200, 200)
 
+    // #18 "Çarkını seç" grid entrance (owner decision: first open per session, tier Full only): after the screen
+    // transition starts, each card rises [gridCardOffset] and fades in (`mechanical`), one after another.
+    public val gridCardIn: MotionStep = fromPrototype(140, 260)
+    public val gridCardStaggerMillis: Int = prototypeMillis(45)
+    public val gridCardOffset: Dp = 16.dp
+
     /** Reduced motion (tier [MotionTier.Minimal]): every flow transition becomes one cross-fade of this length. */
     public val reducedCrossfadeMillis: Int = 120
 

@@ -81,6 +81,29 @@ public object LexiIcons {
     public val Categories: ImageVector by lazy {
         strokeIcon("Categories", 2.5f, "M4 4h6v6H4z", "M14 4h6v6h-6z", "M4 14h6v6H4z", "M14 14h6v6h-6z")
     }
+
+    /** Bar chart: "İstatistik" in Home's bottom bar (from the Home v2 key tile, needs design). */
+    public val Stats: ImageVector by lazy {
+        strokeIcon("Stats", 2.4f, "M4 20h16", "M7 20v-7", "M12 20V5", "M17 20v-10")
+    }
+
+    /**
+     * Person + plus: "Davet et" in Home's bottom bar (video flow). Built from the stroke rules of the other icons;
+     * needs design in the `16-components` style.
+     */
+    public val Invite: ImageVector by lazy {
+        strokeIcon(
+            "Invite",
+            2.4f,
+            "M5 8a4 4 0 1 0 8 0a4 4 0 1 0-8 0z",
+            "M2 21c0-3.9 3.1-7 7-7s7 3.1 7 7",
+            "M19 8v6",
+            "M16 11h6",
+        )
+    }
+
+    /** Arrow up: the "Başa dön" pill of "Çarkını seç". */
+    public val ArrowUp: ImageVector by lazy { strokeIcon("ArrowUp", 3f, "M12 20V5", "M5 11l7-7 7 7") }
 }
 
 private const val VIEWPORT = 24f

@@ -114,8 +114,16 @@ public fun SegmentedControl(
     scrollable: Boolean = false,
     /** Style of a one-line title; the default is `bodyStrong14` (`17-duel-setup` uses 16/800). */
     titleStyle: TextStyle? = null,
+    /** Accessibility role of a segment: [Role.Tab] (default) or [Role.RadioButton] for a choice in a form. */
+    role: Role = Role.Tab,
+    /**
+     * Off: muted frame and text, no selected segment, nothing selectable (the video flow's time row in Practice). The
+     * segments stay in the semantics tree, disabled, so the row is still announced.
+     */
+    enabled: Boolean = true,
 ) {
     val colors = LexiTheme.colors
+    val frameMuted = colors.borderMuted
     val scrolling = scrollable && LocalDensity.current.fontScale > ControlDefaults.SCROLL_FONT_SCALE
     val scrollState = rememberScrollState()
     val requesters = remember(segments.size) { List(segments.size) { BringIntoViewRequester() } }
@@ -133,21 +141,27 @@ public fun SegmentedControl(
     Row(
         modifier = modifier
             .height(IntrinsicSize.Min)
-            .lexiSurface(colors.white, BorderStroke(LexiTheme.borders.regular, colors.ink))
+            .lexiSurface(colors.white, BorderStroke(LexiTheme.borders.regular, if (enabled) colors.ink else frameMuted))
             .selectableGroup()
             .then(if (scrolling) Modifier.horizontalScroll(scrollState) else Modifier),
     ) {
         segments.forEachIndexed { index, segment ->
-            val selected = index == selectedIndex
+            val selected = enabled && index == selectedIndex
             Column(
                 modifier = Modifier
                     .then(if (scrolling) Modifier else Modifier.weight(1f))
                     .bringIntoViewRequester(requesters[index])
                     .fillMaxHeight()
                     .heightIn(min = height)
-                    .then(if (index > 0) Modifier.leftBorder(dividerWidth, colors.ink) else Modifier)
+                    .then(if (index > 0 && enabled) Modifier.leftBorder(dividerWidth, colors.ink) else Modifier)
                     .background(if (selected) colors.ink else colors.white)
-                    .selectable(selected = selected, role = Role.Tab, interactionSource = null, indication = null) {
+                    .selectable(
+                        selected = selected,
+                        enabled = enabled,
+                        role = role,
+                        interactionSource = null,
+                        indication = null,
+                    ) {
                         haptics.perform(HapticKind.Light)
                         sounds.play(SoundEffect.Tap)
                         onSelect(index)
@@ -156,7 +170,11 @@ public fun SegmentedControl(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center,
             ) {
-                val titleColor = if (selected) colors.yellow else colors.ink
+                val titleColor = when {
+                    !enabled -> colors.inkMuted
+                    selected -> colors.yellow
+                    else -> colors.ink
+                }
                 // Wrapped lines are centred per line; the one-line case keeps the default alignment (design pixels).
                 var titleWrapped by remember { mutableStateOf(false) }
                 val wrapAlign = if (titleWrapped) TextAlign.Center else TextAlign.Unspecified

@@ -13,6 +13,7 @@ Unit mapping: **1 CSS px in the design HTML = 1.dp in Compose; font-size px = sp
 | `redText` | `#D42D25` | small red TEXT on white/cream only (5.00:1 on white, 4.55:1 on cream); `red` stays for fills |
 | `blue` | `#3D68B2` | **correct** state, score badge, progress fill, toggle on |
 | `yellow` | `#E29E2E` | **pass** state, timer bar, highlights, selected-segment text on ink |
+| `yellowMuted` | `#ECC98E` | daily card once today's wheel is solved (video flow / Home v2; yellow 50 % over cream) |
 | `inkMuted` | `#606673` | placeholder, disabled text |
 | `borderMuted` | `#8A8F9B` | dashed border of disabled button / used key |
 | `disabledFill` | `#EAE6DF` | disabled button fill |
