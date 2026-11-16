@@ -87,7 +87,7 @@ class CategoryPickerViewModelTest {
     private fun learned(id: String) = CardProgress(CardId(id), seen = 1, correct = 1)
 
     @Test
-    fun `mixed comes first then every category of the level in sort order, empty ones included`() = runTest {
+    fun `mixed comes first then every category of the level in sort order - empty ones included`() = runTest {
         progress.save(listOf(learned("a1-apple"), learned("a1-chair")))
 
         val state = viewModel().state.value
@@ -116,7 +116,7 @@ class CategoryPickerViewModelTest {
     }
 
     @Test
-    fun `the stored mode, time and category are preselected`() = runTest {
+    fun `the stored mode - time and category are preselected`() = runTest {
         settings.update {
             it.copy(
                 selectedLevel = Level.A1,
@@ -164,7 +164,7 @@ class CategoryPickerViewModelTest {
     }
 
     @Test
-    fun `opening a card remembers it and opens the dialog, mode and time are remembered`() = runTest {
+    fun `opening a card remembers it and opens the dialog - mode and time are remembered`() = runTest {
         val viewModel = viewModel()
 
         viewModel.onIntent(CategoryPickerIntent.OpenCategory(CategoryId("food-drink")))
@@ -250,7 +250,7 @@ class CategoryPickerViewModelTest {
     }
 
     @Test
-    fun `back closes the dialog first, then leaves`() = runTest {
+    fun `back closes the dialog first - then leaves`() = runTest {
         val viewModel = viewModel()
         viewModel.onIntent(CategoryPickerIntent.OpenCategory(CategoryId.MIXED))
 
