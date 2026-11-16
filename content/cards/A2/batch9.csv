@@ -1,23 +1,15 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
-a2-require,REQUIRE,Q,CONTAINS,verb,bir şeyin gerekli olmasını istemek,This job will require good English.,Bu iş iyi İngilizce gerektirecek.,4,,school-work
 a2-liquid,LIQUID,Q,CONTAINS,noun,"su gibi akan madde, sıvı",Water is a liquid.,Su bir sıvıdır.,3,,school-work
 a2-squeeze,SQUEEZE,Q,CONTAINS,verb,bir şeyi sıkıp suyunu çıkarmak,Squeeze a lemon into the tea.,Çaya bir limon sık.,3,,food-drink
-a2-antique,ANTIQUE,Q,CONTAINS,noun,çok eski ve değerli eşya,This old clock is an antique.,Bu eski saat bir antika.,4,,home
-a2-tax,TAX,X,CONTAINS,noun,devlete ödenen vergi,We pay tax every year.,Her yıl vergi öderiz.,4,,daily-life
-a2-oxygen,OXYGEN,X,CONTAINS,noun,"solunan havadaki gaz, oksijen",We need oxygen to live.,Yaşamak için oksijene ihtiyacımız var.,4,,school-work
-a2-express,EXPRESS,X,CONTAINS,verb,duygu ya da düşünceyi dile getirmek,Music helps me express my feelings.,Müzik duygularımı ifade etmeme yardım ediyor.,4,,music
-a2-expense,EXPENSE,X,CONTAINS,noun,"bir şey için harcanan para, masraf",Travel is a big expense.,Seyahat büyük bir masraftır.,4,,travel
-a2-saxophone,SAXOPHONE,X,CONTAINS,noun,"kıvrık metal gövdeli üflemeli çalgı, saksafon",He plays the saxophone in a band.,Bir grupta saksafon çalıyor.,4,,music
+a2-saxophone,SAXOPHONE,X,CONTAINS,noun,"kıvrık metal gövdeli üflemeli çalgı, saksafon",He plays the saxophone in a band.,Bir grupta saksafon çalıyor.,3,,music
 a2-amazed,AMAZED,Z,CONTAINS,adj,"çok şaşırmış, hayretler içinde",I was amazed by the big show.,Büyük gösteriye şaşırdım.,3,,daily-life
 a2-maze,MAZE,Z,CONTAINS,noun,"çıkışı bulunması zor dolambaçlı yollar, labirent",We got lost in the maze.,Labirentte kaybolduk.,3,,travel
 a2-fizzy,FIZZY,Z,CONTAINS,adj,içinde gaz kabarcıkları olan,I do not like fizzy drinks.,Gazlı içecekleri sevmem.,3,,food-drink
-a2-citizen,CITIZEN,Z,CONTAINS,noun,bir ülkenin vatandaşı,She is a citizen of Spain.,"O, İspanya vatandaşı.",4,,family-people
 a2-zigzag,ZIGZAG,Z,STARTS,noun,"iki yana kıvrılan kırık çizgi, zikzak",The road goes in a zigzag up the hill.,Yol tepeye doğru zikzak çizerek çıkıyor.,4,,travel
 a2-knight,KNIGHT,K,STARTS,noun,"ortaçağda zırh giyen atlı savaşçı, şövalye",The knight fought a long battle.,Şövalye uzun bir savaş verdi.,3,,family-people
 a2-kindergarten,KINDERGARTEN,K,STARTS,noun,okuldan önceki yaşlarda gidilen anaokulu,My little brother goes to kindergarten.,Küçük kardeşim anaokuluna gidiyor.,3,,school-work
 a2-parking,PARKING,K,CONTAINS,noun,aracı bir yere bırakma ya da bırakılan yer,There is free parking behind the shop.,Dükkânın arkasında ücretsiz otopark var.,3,,city-transport
 a2-brick,BRICK,K,CONTAINS,noun,"duvar örmekte kullanılan pişmiş toprak blok, tuğla",The wall is made of red brick.,Duvar kırmızı tuğladan yapılmış.,3,,home
-a2-sketch,SKETCH,K,CONTAINS,noun,"hızlıca çizilen kaba resim, taslak",He made a sketch of the old bridge.,Eski köprünün bir taslağını çizdi.,4,,school-work
 a2-alien,ALIEN,A,STARTS,noun,başka gezegenden geldiği düşünülen yaratık,The film is about an alien.,Film bir uzaylı hakkında.,2,,daily-life
 a2-astronaut,ASTRONAUT,A,STARTS,noun,uzaya giden kişi,The astronaut walked on the moon.,Astronot ayda yürüdü.,2,,school-work
 a2-ballet,BALLET,B,STARTS,noun,müzik eşliğinde yapılan klasik dans gösterisi,She learns ballet on Saturdays.,Cumartesi günleri bale öğreniyor.,3,,music
@@ -30,7 +22,6 @@ a2-fisherman,FISHERMAN,F,STARTS,noun,balık tutarak geçinen kişi,The fisherman
 a2-ghost,GHOST,G,STARTS,noun,ölmüş birinin ruhu olduğuna inanılan görüntü,The children ran away from the ghost.,Çocuklar hayaletten kaçtı.,2,,daily-life
 a2-gorilla,GORILLA,G,STARTS,noun,Afrika ormanlarında yaşayan iri maymun,The gorilla is eating a banana.,Goril muz yiyor.,2,,animals
 a2-hippo,HIPPO,H,STARTS,noun,"nehirlerde yaşayan iri, kalın derili hayvan, su aygırı",A hippo lay in the river.,Bir su aygırı nehirde yatıyordu.,2,,animals
-a2-hurricane,HURRICANE,H,STARTS,noun,"çok şiddetli tropik fırtına, kasırga",The hurricane came to the island.,Kasırga adaya geldi.,3,,time-weather
 a2-mechanic,MECHANIC,M,STARTS,noun,arabaları tamir eden usta,The mechanic is under the car.,Tamirci arabanın altında.,3,,school-work
 a2-microwave,MICROWAVE,M,STARTS,noun,yemeği çabuk ısıtan mutfak aleti,Put the soup in the microwave.,Çorbayı mikrodalgaya koy.,3,,home
 a2-octopus,OCTOPUS,O,STARTS,noun,"sekiz kollu deniz canlısı, ahtapot",The octopus has eight arms.,Ahtapotun sekiz kolu var.,2,,animals

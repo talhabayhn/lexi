@@ -26,7 +26,6 @@ a2-fairy,FAIRY,R,CONTAINS,noun,masallarda sihirli güçleri olan küçük kanatl
 a2-scary,SCARY,R,CONTAINS,adj,"korku veren, ürkütücü",The film was too scary for me.,Film benim için çok korkutucuydu.,2,,daily-life
 a2-safe,SAFE,S,STARTS,adj,"zarar görme tehlikesi olmayan, güvenli",The park is safe for children.,Park çocuklar için güvenli.,2,,daily-life
 a2-sail,SAIL,S,STARTS,verb,yelkenli ile denizde ilerlemek,They sail on the sea every summer.,Her yaz yelkenliyle denizde gezerler.,3,,travel
-a2-salary,SALARY,S,STARTS,noun,çalışanın her ay aldığı maaş,Her new job has a much better salary.,Yeni işinin maaşı çok daha iyi.,3,,school-work
 a2-sale,SALE,S,STARTS,noun,"ucuz fiyatla yapılan satış, indirim",There is a sale at the shoe shop.,Ayakkabı dükkânında indirim var.,2,,daily-life
 a2-sauce,SAUCE,S,STARTS,noun,yemeğin üstüne eklenen sıvı,I like tomato sauce on pasta.,Makarnanın üstüne domates sosunu severim.,2,,food-drink
 a2-score,SCORE,S,STARTS,noun,bir maçta atılan gol ya da kazanılan sayılar,The score was two to one at halftime.,Devre arasında skor ikiye birdi.,2,,sports

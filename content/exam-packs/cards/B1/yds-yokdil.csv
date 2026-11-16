@@ -1,5 +1,5 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
-b1-hydrogen,HYDROGEN,Y,CONTAINS,noun,en hafif ve en yaygın element,Water is made of hydrogen and oxygen.,Su hidrojen ve oksijenden oluşur.,3,exam:yds-yokdil,technology
+b1-hydrogen,HYDROGEN,Y,CONTAINS,noun,en hafif ve en yaygın element,Hydrogen is the lightest gas there is.,Hidrojen var olan en hafif gazdır.,3,exam:yds-yokdil,technology
 b1-cancer,CANCER,C,STARTS,noun,hücrelerin kontrolsüz çoğaldığı ağır hastalık,Smoking is the main reason for many types of cancer.,Sigara pek çok kanser türünün başlıca nedenidir.,3,exam:yds-yokdil,body-health
 b1-clinic,CLINIC,C,STARTS,noun,belirli hastalıklara bakan sağlık merkezi,The eye clinic opens at nine.,Göz kliniği dokuzda açılır.,2,exam:yds-yokdil,body-health
 b1-organ,ORGAN,O,STARTS,noun,kalp ya da karaciğer gibi belli işi olan vücut parçası,The heart is a vital organ.,Kalp hayati bir organdır.,3,exam:yds-yokdil,body-health

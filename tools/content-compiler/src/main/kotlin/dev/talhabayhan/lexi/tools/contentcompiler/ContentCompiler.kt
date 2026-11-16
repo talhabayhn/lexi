@@ -80,13 +80,15 @@ object ContentCompiler {
             Blocklist.EMPTY
         }
 
+        val legacyIdFile = contentDir.resolve("legacy-ids.txt")
+        val legacyIds = readLegacyIds(legacyIdFile)
         val seenIds = mutableSetOf<String>()
         fun readCards(cardsDir: Path, fromPack: Boolean): List<CardEntry> = cardFiles(cardsDir, diagnostics)
             .flatMap { (level, file) ->
                 val rows = CsvFiles.readTable(file, CardRules.COLUMNS, diagnostics).orEmpty()
                 rows.mapNotNull { row ->
                     seenIds += row["id"]
-                    CardRules.parse(row, level, fromPack, categoryById, blocklist, diagnostics)
+                    CardRules.parse(row, level, fromPack, categoryById, blocklist, diagnostics, legacyIds.keys)
                 }
             }
 
@@ -111,6 +113,9 @@ object ContentCompiler {
         val cards = baseCards + packCards
         val cardsById = cards.associateBy { it.id }
         checkDuplicates(cards, diagnostics)
+        legacyIds.filterKeys { it !in seenIds }.forEach { (id, line) ->
+            diagnostics.error(legacyIdFile, line, "legacy id '$id' matches no card")
+        }
         checkExampleLeaks(cards, readLeakExempt(contentDir.resolve("leak-exempt.txt")), diagnostics)
         val packMembership = checkPackMembership(packs, packCardRows, packCards, seenIds, diagnostics)
         checkCoverage(baseCards, meta.shippedLevels, meta.smokeLevels, metaFile, diagnostics)
@@ -453,6 +458,17 @@ object ContentCompiler {
                 }
             }
         }
+    }
+
+    /** `content/legacy-ids.txt`: one card id per line (id -> line number), '#' starts a comment; missing file = none. */
+    private fun readLegacyIds(file: Path): Map<String, Int> {
+        if (!file.isRegularFile()) return emptyMap()
+        val ids = linkedMapOf<String, Int>()
+        file.readLines().forEachIndexed { index, text ->
+            val id = text.substringBefore('#').trim()
+            if (id.isNotEmpty()) ids.putIfAbsent(id, index + 1)
+        }
+        return ids
     }
 
     /** One lowercase word per line; `#` starts a comment; a missing file means no exemptions. */

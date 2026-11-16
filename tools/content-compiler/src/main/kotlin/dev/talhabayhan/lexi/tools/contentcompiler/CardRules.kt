@@ -27,6 +27,7 @@ object CardRules {
         categories: Map<String, CategoryEntry>,
         blocklist: Blocklist,
         diagnostics: Diagnostics,
+        legacyIds: Set<String> = emptySet(),
     ): CardEntry? {
         var ok = true
         fun error(message: String) {
@@ -37,9 +38,13 @@ object CardRules {
 
         val id = row["id"]
         val levelPrefix = level.name.lowercase(Locale.ROOT) + "-"
+        // A card moved up a level keeps its id (user progress is keyed by it); `content/legacy-ids.txt` lists those.
+        val legacy = id in legacyIds
         when {
             !SLUG.matches(id) -> error("id '$id' must be a lowercase slug (a-z, 0-9, single dashes)")
-            !id.startsWith(levelPrefix) -> error("id '$id' must start with '$levelPrefix' (level folder ${level.name})")
+
+            !legacy && !id.startsWith(levelPrefix) ->
+                error("id '$id' must start with '$levelPrefix' (level folder ${level.name})")
         }
 
         val answer = row["answer"]
@@ -49,7 +54,7 @@ object CardRules {
                 "answer '$answer' must be uppercase A-Z words separated by single spaces, " +
                     "${AnswerRules.MIN_LETTERS}-${AnswerRules.MAX_LETTERS} letters",
             )
-        } else if (SLUG.matches(id) && id.startsWith(levelPrefix)) {
+        } else if (SLUG.matches(id) && !legacy && id.startsWith(levelPrefix)) {
             val expected = levelPrefix + answer.lowercase(Locale.ROOT).replace(' ', '-')
             if (id != expected && !Regex(Regex.escape(expected) + "-\\d+").matches(id)) {
                 warning(

@@ -138,6 +138,36 @@ class RepositoryScenariosTest {
     }
 
     @Test
+    fun `a card that moves to a higher level keeps its id and its progress`() = runTest(io) {
+        // content/legacy-ids.txt: a2-law now lives in cards/B1 but keeps its id (and so the player's notebook row).
+        val moved = CardId("a2-law")
+        val before = TestDatabases(io, cards = fullA1 + FixtureCard("a2-law", "LAW", level = "A2"), contentVersion = 1)
+        val answered = Srs.apply(null, moved, CardOutcome.CORRECT, 1, day)
+        ProgressRepositoryImpl(before.databases, io).save(listOf(answered))
+
+        val after = TestDatabases(
+            io,
+            cards = fullA1 + FixtureCard("a2-law", "LAW", level = "B1"),
+            contentVersion = 2,
+            userDriver = before.userDriver,
+        )
+        val progress = ProgressRepositoryImpl(after.databases, io).observeAll().first()
+        val cards = CardRepositoryImpl(after.databases, io)
+        val index = cards.contentIndex()
+
+        assertEquals(listOf(moved), progress.map { it.cardId })
+        assertEquals(listOf(moved), cards.cards(listOf(moved)).map { it.id })
+        assertEquals(Level.B1, cards.cards(listOf(moved)).single().level)
+        assertEquals(Level.B1, index.levelOf.getValue(moved))
+        val stats = Stats.levelProgress(progress, index.levelOf, index.totals)
+        assertEquals(1, stats.getValue(Level.B1).learned)
+        assertEquals(null, stats[Level.A2])
+        before.contentDriver.close()
+        after.contentDriver.close()
+        before.close()
+    }
+
+    @Test
     fun `sessions feed stats and the streak, duel games feed neither`() = runTest(io) {
         val db = TestDatabases(io)
         val sessions = SessionRepositoryImpl(db.databases, io, config)

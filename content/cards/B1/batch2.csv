@@ -23,7 +23,7 @@ b1-cigarette,CIGARETTE,C,STARTS,noun,ağızda içilen sarılı tütün,Every cig
 b1-claim,CLAIM,C,STARTS,verb,kanıtı olmadan bir şeyin doğru olduğunu söylemek,They claim that the story is true.,Hikâyenin doğru olduğunu iddia ediyorlar.,4,,daily-life
 b1-classic,CLASSIC,C,STARTS,adj,"uzun yıllar sevilen, klasik",This is a classic film from the 1950s.,"Bu, 1950'lerden kalma klasik bir film.",3,,film-tv
 b1-clerk,CLERK,C,STARTS,noun,ofis veya mağazada kayıt tutan memur,The hotel clerk gave me the key.,Otel görevlisi bana anahtarı verdi.,3,,business
-b1-client,CLIENT,C,STARTS,noun,"avukat veya danışmandan hizmet alan kişi, müvekkil",The lawyer is meeting a client now.,Avukat şu anda bir müvekkille görüşüyor.,3,,business
+b1-client,CLIENT,C,STARTS,noun,"avukat veya danışmandan hizmet alan kişi, müvekkil",The bank manager is meeting a client now.,Banka müdürü şu anda bir müşteriyle görüşüyor.,3,,business
 b1-climate,CLIMATE,C,STARTS,noun,bir bölgenin uzun süreli hava koşulları,Turkey has a warm climate.,Türkiye'nin ılık bir iklimi var.,3,,daily-life
 b1-clothing,CLOTHING,C,STARTS,noun,giyim (toplu ad; çocuk giyimi gibi),The shop sells children's clothing.,Mağaza çocuk giyimi satıyor.,3,,daily-life
 b1-clue,CLUE,C,STARTS,noun,bir gizemi çözmeye yardım eden ipucu,The police found a clue near the door.,Polis kapının yanında bir ipucu buldu.,3,,daily-life
@@ -33,7 +33,7 @@ b1-comedy,COMEDY,C,STARTS,noun,insanları güldürmek için yapılan oyun veya f
 b1-comfort,COMFORT,C,STARTS,noun,rahatlık ve huzur hissi,They live in comfort in a big house.,Büyük bir evde rahat yaşıyorlar.,3,,daily-life
 b1-comment,COMMENT,C,STARTS,noun,bir konuda söylenen kısa görüş,Do you have any comment on this idea?,Bu fikir hakkında bir yorumun var mı?,3,,daily-life
 b1-communicate,COMMUNICATE,C,STARTS,verb,bilgi ve düşünceleri başkalarıyla paylaşmak,Babies communicate by crying.,Bebekler ağlayarak iletişim kurar.,3,,daily-life
-b1-community,COMMUNITY,C,STARTS,noun,aynı yerde yaşayan insan topluluğu,The whole community helped after the flood.,Selden sonra bütün topluluk yardım etti.,3,,family-people
+b1-community,COMMUNITY,C,STARTS,noun,aynı yerde yaşayan insan topluluğu,The whole community helped after the storm.,Fırtınadan sonra bütün topluluk yardım etti.,3,,family-people
 b1-compare,COMPARE,C,STARTS,verb,iki şeyin benzerlik ve farklarına bakmak,Let's compare the prices of these two phones.,Bu iki telefonun fiyatlarını karşılaştıralım.,3,,school-work
 b1-complain,COMPLAIN,C,STARTS,verb,"memnuniyetsizliğini dile getirmek, şikâyet etmek",Guests often complain about the noise.,Misafirler sık sık gürültüden şikâyet eder.,3,,daily-life
 b1-complete,COMPLETE,C,STARTS,adj,"eksiksiz, tam",I need a complete list of names.,Tam bir isim listesine ihtiyacım var.,3,,school-work

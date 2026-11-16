@@ -1,0 +1,31 @@
+# Cards moved to a higher level that keep their original id (user progress is keyed by card id).
+# An id listed here may keep the level prefix of the folder it was first created in (e.g. a2-law in cards/B1).
+# One id per line; '#' starts a comment. Read by tools/content-compiler (CardRules, typo guard) and tools/content-qa/qa.py.
+a2-antique
+a2-cheque
+a2-citizen
+a2-except
+a2-exchange
+a2-expense
+a2-expert
+a2-explore
+a2-express
+a2-flood
+a2-hurricane
+a2-ignore
+a2-immediately
+a2-invent
+a2-judge
+a2-law
+a2-lawyer
+a2-organise
+a2-otherwise
+a2-oxygen
+a2-personal
+a2-prison
+a2-require
+a2-salary
+a2-sketch
+a2-tax
+a2-unless
+a2-vote

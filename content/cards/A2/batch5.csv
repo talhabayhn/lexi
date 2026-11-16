@@ -17,7 +17,6 @@ a2-fry,FRY,F,STARTS,verb,"yağda pişirmek, kızartmak",Fry the onions in a pan.
 a2-furniture,FURNITURE,F,STARTS,noun,masa ve sandalye gibi ev eşyaları,They bought new furniture for the house.,Ev için yeni mobilya aldılar.,3,,home
 a2-future,FUTURE,F,STARTS,noun,henüz gelmemiş zaman,What will you do in the future?,Gelecekte ne yapacaksın?,3,,time-weather
 a2-feather,FEATHER,F,STARTS,noun,kuşun vücudunu kaplayan hafif tüy,I found a blue feather.,Mavi bir tüy buldum.,3,,animals
-a2-flood,FLOOD,F,STARTS,noun,"suyun kara üstüne taşması, sel",The flood covered the road.,Sel yolu kapladı.,3,,time-weather
 a2-fold,FOLD,F,STARTS,verb,kâğıdı ya da kumaşı katlamak,Fold the paper in half.,Kâğıdı ortadan katla.,3,,school-work
 a2-fence,FENCE,F,STARTS,noun,bahçeyi çevreleyen ahşap ya da telden sınır,The dog jumped over the fence.,Köpek çitin üstünden atladı.,3,,home
 a2-fireworks,FIREWORKS,F,STARTS,noun,gece gökyüzünde patlayan renkli gösteri,We watched the fireworks on New Year.,Yılbaşında havai fişekleri izledik.,3,,daily-life
@@ -58,8 +57,6 @@ a2-shampoo,SHAMPOO,H,CONTAINS,noun,saç yıkamak için kullanılan sıvı sabun,
 a2-shape,SHAPE,H,CONTAINS,noun,bir şeyin dış biçimi,The cake has the shape of a star.,Kek yıldız şeklinde.,3,,school-work
 a2-share,SHARE,H,CONTAINS,verb,bir şeyi başkasıyla paylaşmak,Please share your sweets.,Lütfen şekerlerini paylaş.,2,,daily-life
 a2-machine,MACHINE,H,CONTAINS,noun,iş yapan makine,The machine is very old.,Makine çok eski.,3,,home
-a2-law,LAW,L,STARTS,noun,bir ülkede uyulması zorunlu kurallar,Everyone must follow the law.,Herkes yasaya uymalı.,4,,daily-life
-a2-lawyer,LAWYER,L,STARTS,noun,mahkemede insanları savunan hukukçu,The lawyer read the contract very carefully.,Avukat sözleşmeyi çok dikkatli okudu.,3,,school-work
 a2-leader,LEADER,L,STARTS,noun,bir grubu yöneten kişi,She is the leader of our team.,"O, takımımızın lideri.",3,,school-work
 a2-leather,LEATHER,L,STARTS,noun,hayvan derisinden yapılan malzeme,These boots are made of leather.,Bu botlar deriden yapılmış.,3,,daily-life
 a2-less,LESS,L,STARTS,phrase,daha az miktarda,I eat less meat now.,Artık daha az et yiyorum.,3,,daily-life

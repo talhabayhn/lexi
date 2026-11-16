@@ -54,6 +54,30 @@ class ContentValidationTest {
     }
 
     @Test
+    fun `a legacy id may keep its old level prefix, an unlisted mismatch still fails`() {
+        content.resolve("legacy-ids.txt").writeText("# moved up\na1-moved # trailing comment\n")
+        val result = content.let {
+            it.writeCards(
+                "cards/B1/moved.csv",
+                cardRow(id = "a1-moved", answer = "MOVED", letter = "M", exampleEn = "He moved the box."),
+                cardRow(id = "a1-other", answer = "OTHER", letter = "O", exampleEn = "Take the other one."),
+            )
+            validate()
+        }
+
+        result.assertNoErrorAt(2)
+        result.assertError("moved.csv", 3, "must start with 'b1-'")
+        assertEquals(Level.B1, result.content.cards.single { it.id == "a1-moved" }.level)
+    }
+
+    @Test
+    fun `a legacy id that matches no card is an error`() {
+        content.resolve("legacy-ids.txt").writeText("a1-typo\n")
+
+        validate().assertError("legacy-ids.txt", 1, "legacy id 'a1-typo' matches no card")
+    }
+
+    @Test
     fun `answers use the shared AnswerRules charset and length`() {
         val bad = listOf("Zebra", "Z3BRA", "ZEBRA  CROSSING", "Z", "ZABCDEFGHIJKLMN", "ZEBRA-X")
         val rows = bad.mapIndexed { i, answer -> cardRow(id = "a1-z$i", answer = answer, exampleEn = "x $answer x") }

@@ -54,7 +54,7 @@ b1-curiosity,CURIOSITY,C,STARTS,noun,"bir şeyi öğrenme isteği, merak",Curios
 b1-scientific,SCIENTIFIC,S,STARTS,adj,"bilimle ilgili, bilimsel",This is a scientific magazine for kids.,"Bu, çocuklar için bir bilim dergisi.",3,exam:lgs,school-work
 b1-steam-engine,STEAM ENGINE,S,STARTS,phrase,buharın gücüyle çalışan makine,The steam engine changed transport forever.,Buhar makinesi ulaşımı sonsuza dek değiştirdi.,4,exam:lgs,school-work
 b1-test-tube,TEST TUBE,T,STARTS,phrase,laboratuvarda kullanılan ince uzun cam tüp,Pour the liquid into the test tube.,Sıvıyı deney tüpüne dök.,3,exam:lgs,school-work
-b1-disaster,DISASTER,D,STARTS,noun,"büyük zarara ve kayba yol açan olay, felaket",The flood was a disaster for the village.,Sel köy için bir felaketti.,3,exam:lgs,school-work
+b1-disaster,DISASTER,D,STARTS,noun,"büyük zarara ve kayba yol açan olay, felaket",The storm was a disaster for the village.,Fırtına köy için bir felaketti.,3,exam:lgs,school-work
 b1-tsunami,TSUNAMI,T,STARTS,noun,deniz altındaki depremden doğan dev dalga,The tsunami hit the coast an hour after the earthquake.,Dev dalga depremden bir saat sonra kıyıya ulaştı.,3,exam:lgs,school-work
 b1-erupt,ERUPT,E,STARTS,verb,yanardağın lav ve kül püskürtmesi,Scientists think the volcano will erupt soon.,Bilim insanları yanardağın yakında püskürteceğini düşünüyor.,4,exam:lgs,school-work
 b1-avalanche,AVALANCHE,A,STARTS,noun,"dağdan hızla kayan büyük kar kütlesi, çığ",The road is closed because of an avalanche.,Yol bir çığ nedeniyle kapalı.,3,exam:lgs,school-work

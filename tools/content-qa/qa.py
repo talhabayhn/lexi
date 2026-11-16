@@ -23,6 +23,7 @@ TAG = re.compile(r"[a-z0-9]+([-:][a-z0-9]+)*")
 ANSWER = re.compile(r"[A-Z]+( [A-Z]+)*")
 
 errors, warnings = [], []
+LEGACY_IDS = {}  # filled in main() from content/legacy-ids.txt
 
 
 def err(src, msg):
@@ -92,10 +93,22 @@ def load_blocklist(path):
     return terms
 
 
+def load_legacy_ids(path):
+    """content/legacy-ids.txt: ids of cards moved to a higher level that keep their old level prefix.
+    Returns {id: line}; '#' starts a comment; missing file = none."""
+    ids = {}
+    if path.is_file():
+        for n, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+            cid = line.split("#", 1)[0].strip()
+            if cid:
+                ids.setdefault(cid, n)
+    return ids
+
+
 def check_card(c, level, categories, blocklist):
     src = c["_src"]
     cid, answer, letter, rule = c["id"], c["answer"], c["letter"], c["rule"]
-    if not SLUG.fullmatch(cid) or not cid.startswith(level.lower() + "-"):
+    if not SLUG.fullmatch(cid) or not (cid.startswith(level.lower() + "-") or cid in LEGACY_IDS):
         err(src, f"id '{cid}' must be a slug starting with '{level.lower()}-'")
     letters = len(answer.replace(" ", ""))
     ok = bool(ANSWER.fullmatch(answer)) and 2 <= letters <= 14
@@ -168,6 +181,7 @@ def main():
                   "id,name_tr,name_en,levels,sort,is_pro".split(","))}
     blocklist = load_blocklist(content / "blocklist.txt")
     exempt = load_leak_exempt(content / "leak-exempt.txt")
+    LEGACY_IDS.update(load_legacy_ids(content / "legacy-ids.txt"))
     base = load_cards(content / "cards", categories, blocklist)
     n_base_errors = len(errors)
     pack_cards = load_cards(packs_dir / "cards", categories, blocklist)
@@ -179,6 +193,9 @@ def main():
         if c["id"] in by_id:
             err(c["_src"], f"duplicate id '{c['id']}' (also {by_id[c['id']]['_src']})")
         by_id.setdefault(c["id"], c)
+    for cid, line in LEGACY_IDS.items():
+        if cid not in by_id:
+            err(f"{content / 'legacy-ids.txt'}:{line}", f"legacy id '{cid}' matches no card")
     seen = {}
     for c in cards:
         key = (c["_level"], c["answer"])

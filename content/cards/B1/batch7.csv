@@ -47,7 +47,7 @@ b1-various,VARIOUS,V,STARTS,adj,farklı çeşitlerde olan,He worked in various c
 b1-vegetarian,VEGETARIAN,V,STARTS,noun,et yemeyen kişi,My sister is a vegetarian.,Kız kardeşim vejetaryen.,3,,food-drink
 b1-victim,VICTIM,V,STARTS,noun,kaza veya suçtan zarar gören kişi,The victim was taken to hospital.,Mağdur hastaneye kaldırıldı.,4,,daily-life
 b1-victory,VICTORY,V,STARTS,noun,bir yarışta veya savaşta kazanılan zafer,The team celebrated its victory.,Takım zaferini kutladı.,3,,sports
-b1-viewer,VIEWER,V,STARTS,noun,televizyon izleyen kişi,Every viewer can vote for a winner.,Her izleyici bir kazanan için oy verebilir.,3,,film-tv
+b1-viewer,VIEWER,V,STARTS,noun,televizyon izleyen kişi,Every viewer can choose a winner.,Her izleyici bir kazanan seçebilir.,3,,film-tv
 b1-violence,VIOLENCE,V,STARTS,noun,başkalarına zarar veren şiddet,The film shows too much violence.,Film çok fazla şiddet gösteriyor.,4,,film-tv
 b1-violent,VIOLENT,V,STARTS,adj,"şiddet içeren, sert",The game is too violent for children.,Oyun çocuklar için fazla şiddet içeriyor.,4,,film-tv
 b1-virtual,VIRTUAL,V,STARTS,adj,"bilgisayarda var olan, sanal",We took a virtual tour of the museum.,Müzenin sanal turunu yaptık.,4,,technology

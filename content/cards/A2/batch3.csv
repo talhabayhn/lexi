@@ -23,7 +23,7 @@ a2-ambulance,AMBULANCE,A,STARTS,noun,hastaları hastaneye taşıyan araç,The am
 a2-among,AMONG,A,STARTS,phrase,birçok kişi ya da şeyin arasında,He sat among his friends.,Arkadaşlarının arasında oturdu.,3,,daily-life
 a2-amount,AMOUNT,A,STARTS,noun,bir şeyin toplam miktarı (sayılamayan),Add a small amount of salt.,Biraz tuz ekle.,3,,daily-life
 a2-ankle,ANKLE,A,STARTS,noun,ayakla bacağı birleştiren eklem,I broke my ankle when I ran.,Koşarken ayak bileğimi kırdım.,3,,body-health
-a2-apply,APPLY,A,STARTS,verb,bir iş ya da okul için resmen başvurmak,He wants to apply for a job.,Bir işe başvurmak istiyor.,4,,school-work
+a2-apply,APPLY,A,STARTS,verb,bir iş ya da okul için resmen başvurmak,He wants to apply for a job.,Bir işe başvurmak istiyor.,3,,school-work
 a2-argue,ARGUE,A,STARTS,verb,biriyle fikir ayrılığı yüzünden tartışmak,Please do not argue about the TV again.,Lütfen yine televizyon yüzünden tartışmayın.,3,,family-people
 a2-army,ARMY,A,STARTS,noun,"bir ülkenin askerî gücü, ordu",My uncle joined the army last year.,Amcam geçen yıl orduya katıldı.,3,,daily-life
 a2-article,ARTICLE,A,STARTS,noun,gazete ya da dergideki yazı,I read an article about robots.,Robotlar hakkında bir makale okudum.,3,,school-work
@@ -40,7 +40,7 @@ a2-appointment,APPOINTMENT,A,STARTS,noun,doktor gibi biriyle önceden ayarlanan 
 a2-bake,BAKE,B,STARTS,verb,fırında pişirmek,I bake bread on Sundays.,Pazar günleri ekmek pişiririm.,2,,food-drink
 a2-bakery,BAKERY,B,STARTS,noun,ekmek ve pasta satılan dükkân,The bakery opens at seven.,Fırın yedide açılıyor.,2,,food-drink
 a2-battery,BATTERY,B,STARTS,noun,"saat gibi aletlere güç veren küçük parça, pil",My phone battery is empty.,Telefonumun pili bitti.,3,,daily-life
-a2-beauty,BEAUTY,B,STARTS,noun,güzel olmanın niteliği,She admired the beauty of the lake.,Gölün güzelliğine hayran kaldı.,4,,daily-life
+a2-beauty,BEAUTY,B,STARTS,noun,güzel olmanın niteliği,She admired the beauty of the lake.,Gölün güzelliğine hayran kaldı.,3,,daily-life
 a2-bell,BELL,B,STARTS,noun,"çalınca ses çıkaran metal alet, çan",The bell rings at nine every morning.,Zil her sabah dokuzda çalar.,2,,school-work
 a2-below,BELOW,B,STARTS,phrase,"bir şeyin altında, daha aşağıda",It is below zero outside.,Dışarısı sıfırın altında.,3,,time-weather
 a2-bench,BENCH,B,STARTS,noun,parkta birkaç kişinin oturduğu uzun oturak,We sat on a bench in the park.,Parkta bir bankta oturduk.,2,,city-transport

@@ -128,6 +128,9 @@ How the compiler applies them (`tools/content-compiler`, every error is `file:li
   double-encoded UTF-8 (Latin-1 or cp1252 mojibake such as `Ä±` for `ı`, `ÅŸ` for `ş`) in any value.
 - `id`: lowercase slug starting with `<level>-` (error); not `<level>-<answer>[-n]` is a warning (ids never change
   when an answer is corrected). Unique across all levels and packs.
+  **Moving a card to another level keeps its id** (user progress is keyed by it): list the id in
+  `content/legacy-ids.txt` (one per line, `#` comments) and it may keep the prefix of its original level, e.g.
+  `a2-law` in `cards/B1/`. A listed id that matches no card is an error (typo guard); `qa.py` applies the same rule.
 - `answer`/`letter`/`rule`: the same `AnswerRules` and `LetterRule` as the app (`core:domain`).
 - Clue leak: answers with ≥ 4 letters must not start any clue word (`zebra` → `Zebralar` fails); shorter answers
   must not appear as a whole word (`GO` vs `gol` is fine). Example: must contain the answer as whole words,
