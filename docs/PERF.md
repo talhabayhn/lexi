@@ -22,7 +22,7 @@ simulators and debug builds are not comparable.
 
 ## Script (per loop)
 
-Home→Settings, back; Home→LevelSelect; LevelSelect→Game (A1, Practice: no clock, left unfinished so never recorded); stay 1.5 s;
+Home→Settings, back; Home→Game (OYNA, A1, Practice: no clock, left unfinished so never recorded); stay 1.5 s;
 Game→Settings, back to Game; Game→Home (abandoned, never recorded); Home→Stats, back; Home→Notebook, back.
 
 The tour starts when Home is RESUMED, the one-time game warm-up (`GameWarmUp`, two frames) is over, plus 1 s idle. The refresh interval is the median frame gap of that idle second.

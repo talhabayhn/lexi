@@ -18,6 +18,7 @@ Unit mapping: **1 CSS px in the design HTML = 1.dp in Compose; font-size px = sp
 | `disabledFill` | `#EAE6DF` | disabled button fill |
 | `gridLine` | `#C8C4BC` | chart guide lines (dashed 1dp) |
 | `scrim` | `#1F242D` @ 55% | behind bottom sheets / dialogs |
+| `yellowMuted` | `#ECC98E` | yellow 50 % over cream: the daily card once today's wheel is solved (`02c-home-v2`) |
 
 Text on colors: on `red`/`blue`/`ink` → `white` or `cream`; on `yellow`/`white`/`cream` → `ink`.
 State is never color-only: correct = circle, wrong = square, pass = leaf, current = black square.

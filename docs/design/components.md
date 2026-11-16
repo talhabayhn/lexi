@@ -23,7 +23,15 @@ each with a `@Preview` and a Roborazzi screenshot. Feature screens compose ONLY 
 | `ProgressBar` | thin (8dp), thick (12dp), level card style | 2dp border, fill blue/ink |
 | `LevelBadge` | A1 red, A2 white, B1 yellow, B2 blue, C1 white, NAT ink | small square chip |
 | `LevelCard` | normal, selected (red bg + s6) | 2-col grid, 150dp high, shape icon + progress |
-| `MenuTile` | white, ink (with red shadow) | 110dp, shape icon + title + subtitle, shadow s4 |
+| `MenuTile` | white, ink (with red shadow) | 110dp, shape icon + title + subtitle, shadow s4 (former `02-home`; kept for the component sample) |
+| `DailyCard` | Solve (yellow, button), Completed (`yellowMuted`), Unavailable (muted, no badge) | `02c-home-v2`: ~56dp, title 16/800 + description 12/600, one status badge (ring + "Çöz" + chevron / check + "Tamamlandı"; icon only when the text would get under 140dp) |
+| `LevelHeroCard` | — | `02c-home-v2`: red, s5, min 76; code 34/800 + name 13/600 left, count 13/600 + 12dp bar right (132dp column) |
+| `LevelChipRow` | selected = ink + yellow | six equal chips ≥ 48dp, gap 6, 16/800 (shrinks to 70 %); radio group |
+| `PickerRow` | — | "Kategori  Karışık ▾": white, 48dp, muted label + bold value + chevron down; opens a sheet |
+| `KeyTile` / `CountBadge` | pressed (motion #1), badge hidden / number / "99+" | footer key: 56dp (44 below regular) white key, s3, 24dp icon, 12/700 label; blue 22dp badge |
+| `CategoryCard` / `MixedWheelCard` | normal, complete (blue bar + "· tamam"), selected (ink, yellow name and fill, white bar outline, yellow ✓ badge; Karışık red → ink) | `07-categories` cards, now in Home's category sheet: card ≥ 92dp, 3dp, s3, marker 20, name 15/800, 6dp bar; mixed 64dp, s5; radio buttons |
+| `FitOneLineText` | — | a headline kept on one line: shrinks in 0.5sp steps to a floor that does not grow with the font scale, wraps only below it (`17-duel-setup` title) |
+| `HomePlayButton` / `HomeTierSize` | Regular / Compact / Tight | OYNA 68 / 52dp with an 11sp badge; tier geometry of `02c-home-v2` (`home-v2-notes.md` §1) |
 | `ListRow` / `ListCard` | with chip, with speaker button, with toggle, with value+chevron | rows separated by 2dp ink dividers inside a 3dp bordered white card |
 | `WordRow` | notebook: word · tr, level · due, SRS bars (4), speaker | bars colored by box (red/yellow/blue) |
 | `StatTile` / `StatGrid` | 2×2 grid (2dp dividers), 1×3 on the result screen (3dp) | shape + big number 30sp + label |
@@ -43,7 +51,7 @@ each with a `@Preview` and a Roborazzi screenshot. Feature screens compose ONLY 
 
 Implemented in `core/designsystem/.../component`; sizes from the screens live in `XxxDefaults` objects next to each
 component. Screenshots: `ComponentGallery.png` reproduces 16-components at its own size and 2x, and
-`*Components.png` lay the components out like 04-game, 03-level-select, 02-home, 08-notebook, 09-stats, 11-settings,
+`*Components.png` lay the components out like 04-game, 03-level-select (removed screen), 02-home, 08-notebook, 09-stats, 11-settings,
 05-joker-sheet and 13-logo-and-icon at the PNGs' 2x scale for crop comparison.
 
 Naming in code: the `Lexi` prefix is used only where a name would collide with Material/foundation (`LexiButton`,

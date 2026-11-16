@@ -51,7 +51,7 @@ Module mapping (replaces the earlier `composeApp`): `androidApp` = thin Android 
 
 ## M4 — Core loop UI
 - [x] Splash (`14-splash`) with motion spec
-- [x] Home (`02-home`), Level select (`03-level-select`)
+- [x] Home (`02-home`), Level select (`03-level-select`; replaced by Home v2, see "Shipped since 1.0.0")
 - [x] Game screen (`04-game`) wired to engine: wheel, timer, clue, slots, keys, backspace, pass, score
 - [x] Joker sheet (`05-joker-sheet`) + jokers inventory
 - [x] Daily joker gift + 7-day streak bonus, cap 5 per type (owner decision, `GAME_RULES.md` §7; notice = design debt)
@@ -62,7 +62,7 @@ Module mapping (replaces the earlier `composeApp`): `androidApp` = thin Android 
 **Done when:** a full A1 classic game is playable start→result on both platforms, screenshots match designs.
 
 ## M5 — Learning & progress
-- [x] Categories (`07-categories`) + category wheels
+- [x] Categories (`07-categories`) + category wheels (the screen is replaced by Home v2's category sheet)
 - [x] Notebook (`08-notebook`): tabs, search, rows, review wheel, word detail sheet (design debt)
 - [x] Stats (`09-stats`): numbers, weekly chart, level bars, hardest letters, empty/error states
 - [x] Practice & Hardcore modes; empty/error states (retry / back via `EmptyState` with action, design debt)
@@ -132,6 +132,9 @@ Postponed by owner until the payment/tax situation is clear (Nov 2026): RevenueC
 - 1.0.5–1.0.12: Firebase analytics behind consent, same-device duel with 3/5/7 min clocks, word reminders, smart word
   selection, rating prompt, iOS links hotfix, clue standard + A1 clue rewrite, duel answer review, category letter
   fill (A1/A2), perf benchmark.
+- [x] Home v2 (`02c-home-v2`, ADR 0026): level chips, mode control and category sheet on Home, OYNA starts the game
+  directly, the selection survives a restart; footer key tiles (Defter with due badge, İstatistik, Sınavlar, Düello).
+  `03-level-select`, `07-categories` and `feature:levels` removed. Goldens re-recorded on CI.
 
 ## Content completion (after M8, before/within v1.0.x)
 - [x] Full A2 set (878 cards, `docs/content-review/A2-*.md`; Q thin at 16)

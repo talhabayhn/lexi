@@ -112,7 +112,7 @@ result screen skeleton, saved-game format (cards are stored), `ContentRepository
    the usable filter (or filter in `:core:domain`), compiler fill-blank report + `no-blank` tag validation (no new column).
 3. `feature:game`: `GameUiMapper` turn = sentence + translation (clue card variant), `RoundStrip` composable (reuses wheel chip
    look), result summary carrying sentence/translation for missed rows, ViewModel branch by mode.
-4. `feature:levels`: 4th mode segment, hidden category row; `feature:stats`: "Boşluk turları" row; Home unchanged.
+4. `feature:home` (the level select is gone since Home v2, ADR 0026; see `home-v2-notes.md` §7): 4th mode segment, hidden category row; `feature:stats`: "Boşluk turları" row; Home unchanged.
 5. Resources TR/EN, Roborazzi screenshots (23, 24, small phone 360 × 640 with the 13-word worst case).
 Roughly 70 % reuse. **Effort: L** in total (domain M, UI M, content QA S–M). **Tier: Risky** (new game-mode rules in the
 engine config, persistence of a new mode, more than two modules); plan first, `code-reviewer` until APPROVE, one Gradle

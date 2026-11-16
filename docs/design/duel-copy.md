@@ -9,7 +9,7 @@ Length class: EN ≤ TR + 10 %. **DECISION** = needs the owner.
 | `home_tile_duel` | İki kişi, tek telefon | Two players, one phone | 02b title | 24 | |
 | `home_tile_duel_subtitle` | Arkadaşınla sırayla yarış | Take turns against a friend | 02b line 2 | 28 | |
 | `duel_setup_eyebrow` | İKİ KİŞİ · TEK TELEFON | TWO PLAYERS · ONE PHONE | 17 header | 26 | uppercase in resource |
-| `duel_setup_title` | Sırayla yarışın | Take turns | 17 headline (2 lines) | 16 | |
+| `duel_setup_title` | Sırayla yarışın | Take turns | 17 headline (one line beside the circle; shrinks to fit down to 28 sp, wraps only below that) | 16 | |
 | `duel_setup_subtitle` | Herkesin kendi çarkı ve kendi süresi var. | Everyone gets their own wheel and clock. | 17 | 44 | |
 | `duel_player_label` | {n}. OYUNCU | PLAYER {n} | 17 card label | 12 | |
 | `duel_player_default` | {n}. Oyuncu | Player {n} | 17 default name, 18–20 | 10 | used when the name field is left empty; saved names replace it |
@@ -18,7 +18,7 @@ Length class: EN ≤ TR + 10 %. **DECISION** = needs the owner.
 | `duel_time_label` | HER OYUNCUNUN SÜRESİ | TIME PER PLAYER | 17 | 22 | |
 | `duel_clock_option_minutes` | {n} dk | {n} min | 17 clock segments (3 · 5 · 7) | 6 | 1.0.11; segment design is **needs design** (built from `16-components` SegmentedControl) |
 | `duel_rules_note` | Doğru bildikçe sıra sende kalır. Yanlış ya da pas sırayı rakibe geçirir. Bu modda joker yok. | Keep answering right and the turn stays yours. A wrong answer or a pass hands it over. No jokers in this mode. | 17 | 100 | 3 lines at 14 sp |
-| `duel_start` | BAŞLA | START | 17 CTA | 8 | reuse the level-select BAŞLA/START if same |
+| `duel_start` | BAŞLA | START | 17 CTA | 8 | reuse the former level-select BAŞLA/START if same |
 | `duel_handover_eyebrow` | DÜELLO | DUEL | 18 top | 10 | reuse `result_mode_duel` |
 | `duel_handover_turn` | SIRA | UP NEXT | 18 label over name | 10 | |
 | `duel_handover_body` | Telefonu sıradaki oyuncuya ver. Hazır olunca dokun, süre o zaman başlar. | Pass the phone to the next player. Tap when ready: the clock starts then. | 18 | 80 | |

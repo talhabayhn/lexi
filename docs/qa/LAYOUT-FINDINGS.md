@@ -31,3 +31,5 @@ puts the chip under the text (`AdaptiveTrailingRow`): words wrap, they are never
 | Notebook SegmentedControl | 390x844 @ 2.0 | Tab counts were clipped ("Tekrar ·") | yes (segments wrap and grow) |
 | SearchField, LexiButton | 390x844 @ 2.0 | A long placeholder or label was cut mid-glyph | yes (ellipsis) |
 | Onboarding level choice | 390x844 @ 2.0 | "Kendim seçeceğim" was clipped at the button edge | yes (ellipsis) |
+
+> Since Home v2 (ADR 0026) the level select and categories screens and `feature:levels` are removed; their rows above are history.

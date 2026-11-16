@@ -1,6 +1,6 @@
 # Home v2 (`02c-home-v2`) — interaction rules and implementation plan
 
-Status: **owner-approved design, not implemented.** Visual truth: `screens/02c-home-v2.png` (+ `.html`, source
+Status: **implemented** (ADR 0026; the board is the golden reference, goldens recorded on CI). Visual truth: `screens/02c-home-v2.png` (+ `.html`, source
 `source/02c-home-v2.dc.html`). Palette/sizes are `tokens.md` (the older `02-home` HTML still carries the pre-contrast
 hexes; use the tokens). Level, mode and category are chosen **on Home**; `03-level-select` is superseded once this ships.
 New pieces marked **needs design**: the four footer icons (book, bar chart, graduation cap, two people — add to
@@ -12,35 +12,49 @@ disabled/hidden category state. Their values are from the board; everything else
 
 ## 1. Layout and tiers (360 × 640 at 100 %, 130 %, 200 %)
 Order: header (logo 36 + tagline 11 sp 0.2em, gear) → daily card → `ÇARKINI KUR` (hero card, 6 chips, mode control,
-category row) → **OYNA** → footer tiles. OYNA and the footer are **pinned**; everything above them is one scroll
-column (the onboarding rule). Tiers (`HomeTier`, DESIGN-DEBT, measured like `FitToHeight`, first that fits inside the
+category row) → **OYNA right under the category row** → free space → **footer tiles pinned at the bottom**. Tiers
+(`HomeTierSize` + `HomeLayout`, DESIGN-DEBT below regular, measured by `FitToHeight`, first that fits inside the
 safe-drawing insets wins; sizes in dp):
 
-| Tier | Padding T / X / B | Block gap / build gap | Logo | Daily circle | Hero min | Chip | Mode | Category | OYNA | Key |
+| Tier | Padding T / X / B | Block gap / build gap | Logo | Daily padding V / H | Hero min | Chip | Mode | Category | OYNA | Key |
 |---|---|---|---|---|---|---|---|---|---|---|
-| Regular (390 × 844, as drawn) | 24 / 20 / 28 | 16 / 10 | 36 | 42 | 76 | 48 | 56 | 48 | 68 | 56 |
-| Compact (360 × 640 drawn) | 8 / 20 / 12 | 8 / 6 | 28 | 34 | 56 | 48 | 48 | 48 | 52 | 44 |
-| Tight (200 % font drawn) | 8 / 16 / 12 | 8 / 6 | 28 | 32 | 56 | 48 | 48 | 48 | 52 | 44 |
+| Regular (390 × 844, as drawn) | 24 / 20 / 28 | 16 / 10 | 36 | 8 / 12 | 76 | 48 | 56 | 48 | 68 | 56 |
+| Compact (360 × 640 drawn) | 8 / 20 / 12 | 8 / 6 | 28 | 6 / 12 | 56 | 48 | 48 | 48 | 52 | 44 |
+| Tight | 8 / 16 / 12 | 8 / 6 | 28 | 6 / 10 | 56 | 48 | 48 | 48 | 52 | 44 |
 
-- Regular uses the spare height as a spacer between the category row and OYNA (nothing grows); that is why the
-  390 × 844 board has a gap. At 360 × 640 with 24 / 16 dp system bars Compact has ~20 dp left.
+- Order tried: Regular → Compact → Tight, each with OYNA under the category row and nothing scrolling. If even Tight
+  does not fit (tiny screen / huge font, board frame 08), **OYNA is pinned just above the footer** and the part above it
+  scrolls (`HomeLayout.TightPinned`), so OYNA is never off screen.
+- The spare height sits between OYNA and the footer (nothing grows). The daily card v2 saved ~39 dp at 360 × 640
+  (Compact: ~88 → ~49 dp); that space now shows under OYNA.
 - Chips and key tiles never go below 48 / 44 dp touch height; chip row is a 6-column grid, gap 6.
 - Font scale: scrolling text follows the system scale up to 2.0. **Pinned and control text (OYNA, badge, footer
-  labels, chips, mode cells, hero count, streak pill, tagline) is capped at 1.3** so four footer columns and six chips
-  keep fitting; their content descriptions carry the full text. The old Home cap of 1.15 goes away.
+  labels, chips, mode cells, hero count, daily badge, tagline) is capped at 1.3**, the daily card's text at 1.5.
 - Hero card: long names wrap on the left; the count and the 12 dp bar stay in the right column (width 132 × min(scale,
-  1.3)). Daily card: the streak pill wraps under the label when the label gets long.
-- Daily card states keep their copy: Available (title + goal line), Completed (`Tamamlandı · N puan`, next-wheel
-  countdown, goal line `1/1` with a filled pip — 3 text lines, ~10 dp taller than Available, inside the tier budget),
-  Unavailable (muted `Kullanılamıyor`, no chevron). Streak 0 hides the pill. The old floating "Bugün 0/1" chip and the old
-  streak chip are removed; `DailyGoalProgress` feeds the pip (`done >= goal` ⇒ filled).
+  1.3)).
 - Footer badge = due reviews (`dueReviews`): blue circle 22 dp, 2 dp ink border, 11 sp white; hidden at 0, `99+` from 100.
   Blue chosen over red because red means "wrong" in this app; flip if the owner prefers.
-- EN strings to add: tagline `FROM A TO Z IN ENGLISH`, `SET UP YOUR WHEEL`, `Everyone solves the same wheel`,
-  `today's goal %1$d/%2$d`, footer `Notebook / Statistics / Exams / Duel`; TR `ÇARKINI KUR`, `Herkes aynı çarkı
-  çözüyor`, `bugünkü hedef %1$d/%2$d`, `Defter / İstatistik / Sınavlar / Düello`. Level names, mode labels/hints,
-  `levels_progress` and the badge format are the existing `levels_*` / `home_play_badge` strings (move them to the
-  shared place the Home owns; `feature:home` may not depend on `feature:levels` internals — see §6).
+- OYNA is inset by its 6 dp shadow, the hero card is not (as on the board). Decoration: the blue circle (112 dp) is
+  centred on the screen's right edge at the daily card's centre, the red half-pill on the left edge at the footer's
+  centre with 16 dp showing, so neither sits behind a chip or the hero card. Level chip labels shrink to 70 % before
+  they would touch the frame.
+
+### Daily card (owner feedback, replaces the first version)
+Left: title `home_daily_card_title` "Günün çarkı" / "Daily wheel" (16/800) over a description (12/600). Right: ONE
+status badge (white, 3 dp ink border, min 32 high, padding 0 8, gap 6). About 56 dp high in the regular tier; the
+completed state may grow to ~64 dp when its line wraps.
+
+| State | Card | Description | Badge | Content description |
+|---|---|---|---|---|
+| Not played (`Available`) | yellow, s6, button | `home_daily_title` "Herkes aynı çarkı çözüyor" | empty 14 dp ring + `home_daily_badge_solve` "Çöz" / "Solve" + chevron | `home_daily_desc_solve` "Günün çarkı, herkes aynı çarkı çözüyor, çözülmedi" |
+| Played today (`AlreadyPlayed`) | `yellowMuted` #ECC98E, s6, not clickable | `home_daily_done_hours_minutes` / `_minutes` "1840 puan · yeni çark 5 sa 12 dk" | filled ink circle with a check + `home_daily_badge_done` "Tamamlandı" / "Completed", no chevron | `home_daily_desc_done` "Günün çarkı, tamamlandı, 1840 puan" |
+| Unavailable | `disabledFill`, muted text, no shadow | `home_daily_unavailable` "Şu an kullanılamıyor" | none | `home_daily_desc_unavailable` |
+
+- When the text column would get narrower than 140 dp (320 dp phones, large fonts) the badge drops its word and keeps
+  the ring / check (and the chevron); the content description always carries the full text.
+- Removed from Home's UI: the month label, the day-number circle, the streak pill and the daily-goal line (their
+  strings are deleted). The streak, daily goal, 7-day gift bonus and its notice still run unchanged in the view model;
+  Statistics shows only the **longest** streak, so the current streak is no longer visible anywhere (owner to decide).
 
 ## 2. Remembered selection
 Today: the only stored level is `selected_level` (`OnboardingRepositoryImpl`, written once by the onboarding level
@@ -60,11 +74,22 @@ started from Home writes nothing extra (the selection is already saved). Categor
 level; a stored id that no longer exists silently becomes Karışık.
 
 ## 3. Category row and sheet
-Row `Kategori  <seçim> ▾` (48 dp) opens a bottom sheet (`BottomSheet`, scrim 55 %, cream, 4 dp top border): title,
-`Karışık` first (selected = ink row, yellow text, filled yellow radio), then the level's categories with
-`learned / total` (same data and exclusions as `07-categories`: no virtual `mixed`, no `general`), a completed category
-reads `· tamam`. Tapping a row selects it and closes the sheet (no start). Sheet scrolls past ~6 rows; read failure ⇒
-`EmptyState` with "Tekrar dene" and the row falls back to Karışık (play still works, like the level select's error).
+Row `Kategori  <seçim> ▾` (48 dp) opens a bottom sheet (`BottomSheet`: scrim 55 %, cream, 4 dp top border, a 40 × 4
+grab handle, as tall as its content up to **85 %** of the screen; title, close button and hint stay, the cards scroll
+under them with a 24 dp cream fade at the bottom while more is below). Board frame 04. Content = the old
+`07-categories` cards (`CategoryCard`, `MixedWheelCard`):
+- First the full-width **"Karışık çark"** card (yellow circle, "Tüm <LEVEL> kategorilerinden 26 kelime", the level's
+  word total on the right; red, ink when selected).
+- Then the level's categories in **two columns** (gap 10, cards ≥ 92 dp, 3 dp frame, s3): red square / yellow circle /
+  blue leaf cycling down the list, name (2 lines), a 6 dp bar and `learned / total`; complete = blue bar + "· tamam".
+  Same data and exclusions as `07-categories` (no virtual `mixed`, no `general`).
+- **One column** from font scale 1.3 or when a card would get narrower than 140 dp.
+- **Selected:** ink card, yellow name, yellow fill, white bar outline, a 20 dp yellow check badge on the top-right
+  corner (Karışık selected ⇒ its card is ink instead of red).
+- A tap only **selects** and closes the sheet; OYNA starts the game. The row shows the selection.
+- Accessibility: a radio group; each card reads "<name>, <learned> / <total> kelime" with selected / not selected.
+- Read failure ⇒ `EmptyState` with "Tekrar dene" and the row falls back to Karışık (play still works). System back,
+  the scrim and × close the sheet.
 - **Level without categories (today: NAT):** the row is **hidden** (as `LevelSelectScreen` does). It is the last item
   of the scroll column, so nothing above it moves; the spacer absorbs the freed height. The OYNA badge still reads
   `NAT · … · 26 HARF`. A level whose category list is empty or unreadable behaves the same.
@@ -105,8 +130,8 @@ review, rule 11 doesn't apply: no SDK change); if wanted later: `home_selection_
 - The mode control and chips are the existing level-select components (`LevelSelectDefaults`); the key tile is the game
   keyboard key (56 / 44 dp, `s3`) with a 24 dp `LexiIcons` glyph and a 12 sp label below, whole column = one 44 dp+
   target; pressed state = translate by the shadow (motion.md).
-- Tiers: extend `HomeTier` (Regular / Compact / Tight) as in §1; `FitToHeight` scrolls only the part above the pinned
-  OYNA + footer. Roborazzi: 390 × 844, 360 × 640, 360 × 640 @ 2.0, 412 × 915 and `HomeLayoutTest` (all texts on screen).
+- Tiers: `HomeTierSize` (Regular / Compact / Tight) and `HomeLayout` as in §1; `FitToHeight` scrolls only when OYNA had
+  to be pinned above the footer. Roborazzi: 390 × 844, 360 × 640, 360 × 640 @ 2.0, 412 × 915 and `HomeLayoutTest` (all texts on screen).
 - Home "never scrolls" in `screen-map.md` becomes "scrolls only above OYNA/footer when no tier fits".
 
 ## 7. Fill-the-blank (open item — owner decision needed)
@@ -119,7 +144,7 @@ control's own row below as a text link; (c) a separate entry on the Düello-styl
 proposal) is done. Until then `SelectableModes` stays three entries and `HomeUiState` must not hard-code three cells.
 
 ## 8. Accessibility
-- **Reading order:** gear → logo ("Lexi") → daily card → streak → "Çarkını kur" heading → hero card → level chips →
+- **Reading order:** gear → logo ("Lexi") → daily card → "Çarkını kur" heading → hero card → level chips →
   mode control → category row → OYNA → footer (Defter, İstatistik, Sınavlar, Düello). The scroll column and the pinned
   group are separate focus regions; the pinned group is always reachable.
 - **Hero card:** one node, not clickable: "B2, İyi orta seviye, 412 / 850 kelime" (EN "B2, Upper intermediate, 38 of
@@ -133,8 +158,6 @@ proposal) is done. Until then `SelectableModes` stays three entries and `HomeUiS
 - **Footer tiles:** buttons named by their label; Defter "Defter, 24 tekrar bekliyor" (plural, none ⇒ "Defter, tekrar
   yok"), the badge is hidden from semantics; the icons are decorative. İstatistik, Sınavlar ("Sınav paketleri"),
   Düello ("Düello, iki oyuncu, tek telefon").
-- Daily card: one node "Günün çarkı, 16 Kasım, 7 gün seri, bugünkü hedef 0 / 1" (existing `home_daily_goal_desc*` strings);
-  the 9 sp label is below the usual minimum, so it must scale with font size (it does, uncapped) and carries nothing
-  that the node description lacks.
+- Daily card: one node read as its content description (see §1 "Daily card"); a button only while unsolved.
 - Targets: chips ≥ 48, key tiles ≥ 44 × 44 (whole column), category row 48, mode cells ≥ 48, gear 44.
 - Reduced motion: chip / mode selection is a color swap, the sheet slides per motion.md and just fades when reduced.

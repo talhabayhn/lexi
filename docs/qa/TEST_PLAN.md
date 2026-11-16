@@ -16,7 +16,7 @@ Also: one device set to English UI, one to Turkish; one with font size at max; o
 ## 1. Smoke checklist (every build, ~10 min)
 1. Fresh install launches: splash plays, no crash, home appears (< 1.5 s cold on mid-range Android).
 2. Onboarding (3 steps) → level choice → home. Back/skip behave.
-3. Home → OYNA → level select → start A1 Classic → answer some letters, pass one, finish or let time run out → result.
+3. Home → pick A1, Klasik (and a category) → OYNA → answer some letters, pass one, finish or let time run out → result.
 4. Result: score, counts, "Tekrar edilecekler" list, TEKRAR OYNA starts a new game, back to home.
 5. Daily wheel opens, plays, result; opening it again shows the already-played state.
 6. Notebook shows missed words; word detail sheet opens; review wheel starts when something is due.
@@ -34,7 +34,7 @@ Compare each screen with its PNG in `docs/design/screens/` side by side (spacing
 | Splash `14` | Plays once, ≤ ~2 s, no white flash; reduced-motion shows a static logo |
 | Onboarding `01` | 3 steps, progress indicator, skip, back; level test vs pick-myself; result card "Seviyen: X", change level; interrupted test (home button) restarts cleanly |
 | Home `02` | Streak badge "N gün seri" hidden at 0, shown from 1; due-count badge; daily card state (new / played); tiles inert vs live as in screen-map; never scrolls at 320×568 |
-| Level select `03` | Each level selectable; mode chips (Classic / Practice / Hardcore); "Kategori: Karışık" row; level without full content marked/behaves per release decision |
+| Home v2 `02c` | Each level chip selectable; mode control (Classic / Practice / Hardcore); "Kategori ▾" row opens the sheet, hidden for NAT; selection survives an app restart; OYNA starts the shown selection; level without full content marked/behaves per release decision |
 | Categories `07` | Cards list, mixed wheel, empty level shows `EmptyState`, read failure retry |
 | Game `04` | Wheel states (todo/current/correct/wrong/passed); keys place/remove letters; backspace; multi-word answers (fixed gaps); pass → returns next lap; wrong → reveal ~1.2 s, input blocked; timer, pause, background stops clock; combo badge at 3/5/10; Hardcore ends on first wrong; Practice shows "SÜRESİZ" |
 | Joker sheet `05` | Each joker works once per slot; one joker per letter total; refused when cost ≥ time left; Listen disabled at C1/NAT; none in Daily and level test; inventory counts update |

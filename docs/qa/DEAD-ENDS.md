@@ -20,3 +20,5 @@
 | 13 | `feature/levels/src/commonMain/kotlin/dev/talhabayhan/lexi/feature/levels/CategoriesScreen.kt` | Empty category state (`categories_empty`) | When a level has no categories, shows `EmptyState` without any action other than navigating back. | keep as "yakinda" |
 | 14 | `feature/notebook/src/commonMain/kotlin/dev/talhabayhan/lexi/feature/notebook/NotebookScreen.kt` | Empty notebook state (`notebook_empty_*`) | When notebook has no words, shows `EmptyState` without any call-to-action button to start playing. | fix |
 | 15 | `feature/stats/src/commonMain/kotlin/dev/talhabayhan/lexi/feature/stats/StatsScreen.kt` | Empty stats state (`stats_empty`) | When user has not played any game, shows `EmptyState` without any call-to-action button to start playing. | fix |
+
+> Since Home v2 (ADR 0026) the level select and categories screens and `feature:levels` are removed; their rows above are history.
