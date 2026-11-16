@@ -77,9 +77,34 @@ public object LexiIcons {
     /** Padlock: a locked, not yet available item (DESIGN-DEBT: not in the design icon set). */
     public val Lock: ImageVector by lazy { strokeIcon("Lock", 2.4f, "M5 11h14v10H5z", "M8 11V7a4 4 0 0 1 8 0v4") }
 
-    /** Four tiles: the category picker. */
-    public val Categories: ImageVector by lazy {
-        strokeIcon("Categories", 2.5f, "M4 4h6v6H4z", "M14 4h6v6h-6z", "M4 14h6v6H4z", "M14 14h6v6h-6z")
+    /** Chevron down: a row that opens a picker sheet (`02c-home-v2` category row). */
+    public val ChevronDown: ImageVector by lazy { strokeIcon("ChevronDown", 3f, "M6 9l6 6 6-6") }
+
+    /** Book: the notebook key tile on Home (`02c-home-v2`, needs design). */
+    public val Notebook: ImageVector by lazy {
+        strokeIcon("Notebook", 2.4f, "M5 3h13v18H8a3 3 0 0 1-3-3V3z", "M5 18a3 3 0 0 1 3-3h10")
+    }
+
+    /** Bar chart: the statistics key tile on Home (`02c-home-v2`, needs design). */
+    public val Stats: ImageVector by lazy {
+        strokeIcon("Stats", 2.4f, "M4 20h16", "M7 20v-7", "M12 20V5", "M17 20v-10")
+    }
+
+    /** Graduation cap: the exam packs key tile on Home (`02c-home-v2`, needs design). */
+    public val Exams: ImageVector by lazy {
+        strokeIcon("Exams", 2.4f, "M2 9l10-5 10 5-10 5z", "M6 11.5V16c0 1.5 3 3 6 3s6-1.5 6-3v-4.5", "M22 9v6")
+    }
+
+    /** Two people: the duel key tile on Home (`02c-home-v2`, needs design). */
+    public val Duel: ImageVector by lazy {
+        strokeIcon(
+            "Duel",
+            2.4f,
+            "M5 8a3 3 0 1 0 6 0a3 3 0 1 0-6 0z",
+            "M14.5 8.5a2.5 2.5 0 1 0 5 0a2.5 2.5 0 1 0-5 0z",
+            "M2 20c0-3.6 2.7-6 6-6s6 2.4 6 6",
+            "M15 14.2c.6-.2 1.3-.2 2-.2 2.8 0 5 2 5 5",
+        )
     }
 }
 

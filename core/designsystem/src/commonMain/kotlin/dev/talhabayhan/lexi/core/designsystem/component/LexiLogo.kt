@@ -45,11 +45,14 @@ public enum class LexiLogoSize(
     /** 74dp blocks, 4dp border, 48 letters, gap 8 (splash). */
     Splash(74.dp, 4.dp, 48.dp, 8.dp),
 
-    /** 64dp blocks, 3dp border, 40 letters, gap 6 (home). */
+    /** 64dp blocks, 3dp border, 40 letters, gap 6 (the former home, `02-home`; the default size). */
     Menu(64.dp, 3.dp, 40.dp, 6.dp),
 
-    /** 46dp blocks, 3dp border, 28 letters, gap 5 (home on short phones; DESIGN-DEBT, scaled from [Menu]). */
-    MenuCompact(46.dp, 3.dp, 28.dp, 5.dp),
+    /** 36dp blocks, 3dp border, 22 letters, gap 4 (home header, `02c-home-v2`). */
+    Header(36.dp, 3.dp, 22.dp, 4.dp),
+
+    /** 28dp blocks, 3dp border, 17 letters, gap 4 (home header on short phones, `02c-home-v2` compact tier). */
+    HeaderCompact(28.dp, 3.dp, 17.dp, 4.dp),
 }
 
 /** Sizes of the horizontal wordmark ([LexiWordmark]): its three shapes, their gap and the gap before "lexi". */

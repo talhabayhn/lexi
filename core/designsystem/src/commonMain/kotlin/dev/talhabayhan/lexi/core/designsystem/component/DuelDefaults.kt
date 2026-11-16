@@ -6,42 +6,25 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 /**
- * Geometry of the hot-seat duel screens: `02b-home-duel` (the Home box), `17-duel-setup`, `18-duel-handover` and
+ * Geometry of the hot-seat duel screens: `17-duel-setup`, `18-duel-handover` and
  * `20-duel-result`. Spacing that equals a `LexiDimens` gap or a border token is read from there instead.
  */
 public object DuelDefaults {
-    // 02b-home-duel: the "İki kişi, tek telefon" box.
-    /** `height: 84px`. */
-    public val HomeBoxHeight: Dp = 84.dp
-
-    /** DESIGN-DEBT: Compact / Tight Home tiers (derived: the box shrinks with the other tiers' tiles). */
-    public val HomeBoxCompactHeight: Dp = 64.dp
-    public val HomeBoxTightHeight: Dp = 44.dp
-
-    /** DESIGN-DEBT: the one-line title of the tightest tier shrinks from 18sp down to this. */
-    public val HomeBoxMinTitleSize: TextUnit = 13.sp
-    public val HomeBoxTitleStep: TextUnit = 0.5.sp
-
-    /** `padding: 0 16px; gap: 14px`. */
-    public val HomeBoxPaddingHorizontal: Dp = 16.dp
-    public val HomeBoxGap: Dp = 14.dp
-
-    /** Marker: a 52 × 30 box with a 26dp square at left 0 and a 26dp circle at left 22, both 2dp from the top. */
-    public val HomeBoxMarkerWidth: Dp = 52.dp
-    public val HomeBoxMarkerHeight: Dp = 30.dp
-    public val HomeBoxMarkerSize: Dp = 26.dp
-    public val HomeBoxMarkerTop: Dp = 2.dp
-    public val HomeBoxMarkerCircleStart: Dp = 22.dp
-
-    /** Chevron `width="22"`. */
-    public val HomeBoxChevronSize: Dp = 22.dp
-
     // 17-duel-setup
 
     /** Blue circle 140 at `right: -60px; top: 90px`. */
     public val SetupCircleSize: Dp = 140.dp
     public val SetupCircleBleed: Dp = 60.dp
     public val SetupCircleTop: Dp = 90.dp
+
+    /**
+     * The headline "Sırayla yarışın" stays on one line: it keeps clear of the circle's visible 80dp (minus the 20dp
+     * screen padding), shrinks down to 28sp (the size at font scale 1, it does not grow) and follows the system font
+     * size up to 1.3× like the other headings.
+     */
+    public val SetupTitleEndReserve: Dp = 60.dp
+    public val SetupTitleMinSize: TextUnit = 28.sp
+    public const val SETUP_TITLE_FONT_SCALE_CAP: Float = 1.3f
 
     /** Red half pill 60 × 120 at `left: -30px; bottom: 200px`. */
     public val SetupPillWidth: Dp = 60.dp

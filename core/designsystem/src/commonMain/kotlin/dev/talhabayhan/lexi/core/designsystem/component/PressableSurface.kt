@@ -170,7 +170,7 @@ internal fun pressAnimationSpec(motion: LexiMotion): FiniteAnimationSpec<Float> 
     if (motion.reducedMotion) snap() else tween(durationMillis = motion.pressDurationMillis, easing = motion.press)
 
 @Composable
-private fun rememberPressProgress(source: InteractionSource, enabled: Boolean, motion: LexiMotion): State<Float> {
+internal fun rememberPressProgress(source: InteractionSource, enabled: Boolean, motion: LexiMotion): State<Float> {
     val progress = remember { Animatable(0f) }
     // Restarting the effect cancels any running press/release job (they are its children) before the snap, so a
     // disabled surface always rests at 0 without racing a release animation.

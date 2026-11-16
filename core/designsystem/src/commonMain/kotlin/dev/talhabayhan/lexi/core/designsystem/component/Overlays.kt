@@ -14,6 +14,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.PaddingValues
@@ -23,6 +24,7 @@ import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
@@ -36,6 +38,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.isTraversalGroup
@@ -65,6 +68,13 @@ public object OverlayDefaults {
             )
         }
     public val SheetGap: Dp = 12.dp
+
+    /** Grab handle of sheets that opt in ([BottomSheet] `showHandle`): a 40 × 4 ink bar centred above the title. */
+    public val HandleWidth: Dp = 40.dp
+    public val HandleHeight: Dp = 4.dp
+
+    /** Fade over the bottom edge of a sheet's scrolling content while more is below ([BottomSheet] `scrollContent`). */
+    public val SheetFadeHeight: Dp = 24.dp
 
     /** DESIGN-DEBT (reminder sheet): the scrolling option list stops at 4.5 rows of 52 + 2 dividers, so the last row peeks. */
     public val SheetListMaxHeight: Dp = 236.dp
@@ -101,7 +111,10 @@ public fun ModalScrim(onDismissRequest: () -> Unit, modifier: Modifier = Modifie
  * (`mechanical`); under reduced motion the sheet appears without sliding. Fills its parent; [content] is laid out in
  * a cream panel with a 4dp ink top edge, padding 20/20/28 plus the bottom/side safe-drawing insets, gap 12, under a
  * title row with the close button. [topReserved] is kept free above the sheet (e.g. for a status pill over the
- * scrim): a taller sheet (large font sizes) stops below it and scrolls instead of covering it.
+ * scrim): a taller sheet (large font sizes) stops below it and scrolls instead of covering it. [maxHeightFraction]
+ * caps the sheet at that share of the host's height, [showHandle] adds a grab handle and [scrollContent] keeps the
+ * title fixed while only [content] scrolls (see [BottomSheetPanel]). The host is a `BoxWithConstraints`: do not measure
+ * it with intrinsics (place it at the screen root, as all sheets do).
  */
 @Composable
 public fun BottomSheet(
@@ -111,11 +124,15 @@ public fun BottomSheet(
     closeContentDescription: String,
     modifier: Modifier = Modifier,
     topReserved: Dp = 0.dp,
+    maxHeightFraction: Float = 1f,
+    showHandle: Boolean = false,
+    scrollContent: Boolean = false,
     content: @Composable ColumnScope.() -> Unit,
 ) {
     val motion = LexiTheme.motion
     val duration = motion.bottomSheetDurationMillis
-    Box(modifier.fillMaxSize()) {
+    BoxWithConstraints(modifier.fillMaxSize()) {
+        val maxSheetHeight = maxHeight * maxHeightFraction
         AnimatedVisibility(
             visible = visible,
             enter = fadeIn(tween(duration, easing = motion.mechanical)),
@@ -151,22 +168,32 @@ public fun BottomSheet(
             BottomSheetPanel(
                 title = title,
                 trailing = { SheetCloseButton(closeContentDescription, onClick = onDismissRequest) },
+                modifier = Modifier.heightIn(max = maxSheetHeight),
+                showHandle = showHandle,
+                scrollContent = scrollContent,
                 content = content,
             )
         }
     }
 }
 
-/** The sheet panel alone (cream, 4dp top border, padding, gap 12) with its title row. */
+/**
+ * The sheet panel alone (cream, 4dp top border, padding, gap 12) with its title row. [showHandle] adds a grab handle
+ * above the title. By default the whole panel scrolls when it is taller than its room; with [scrollContent] the
+ * handle and title stay and only [content] scrolls, with a cream fade over its bottom edge while more is below.
+ */
 @Composable
 public fun BottomSheetPanel(
     title: String,
     modifier: Modifier = Modifier,
     trailing: @Composable () -> Unit = {},
+    showHandle: Boolean = false,
+    scrollContent: Boolean = false,
     content: @Composable ColumnScope.() -> Unit,
 ) {
     val colors = LexiTheme.colors
     val topBorder = LexiTheme.borders.thick
+    val panelScroll = rememberScrollState()
     Column(
         modifier = modifier
             .fillMaxWidth()
@@ -181,9 +208,18 @@ public fun BottomSheetPanel(
             .padding(top = topBorder)
             .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Bottom + WindowInsetsSides.Horizontal))
             .padding(OverlayDefaults.SheetPadding)
-            .verticalScroll(rememberScrollState()),
+            .then(if (scrollContent) Modifier else Modifier.verticalScroll(panelScroll)),
         verticalArrangement = Arrangement.spacedBy(OverlayDefaults.SheetGap),
     ) {
+        if (showHandle) {
+            Box(
+                Modifier
+                    .align(Alignment.CenterHorizontally)
+                    .size(OverlayDefaults.HandleWidth, OverlayDefaults.HandleHeight)
+                    .clearAndSetSemantics {}
+                    .background(colors.ink),
+            )
+        }
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween,
@@ -192,7 +228,28 @@ public fun BottomSheetPanel(
             Text(title, style = LexiTheme.typography.heading24, modifier = Modifier.lexiHeading())
             trailing()
         }
-        content()
+        if (scrollContent) {
+            val contentScroll = rememberScrollState()
+            Box(Modifier.weight(1f, fill = false)) {
+                Column(
+                    modifier = Modifier.verticalScroll(contentScroll),
+                    verticalArrangement = Arrangement.spacedBy(OverlayDefaults.SheetGap),
+                    content = content,
+                )
+                if (contentScroll.canScrollForward) {
+                    Box(
+                        Modifier
+                            .align(Alignment.BottomCenter)
+                            .fillMaxWidth()
+                            .height(OverlayDefaults.SheetFadeHeight)
+                            .clearAndSetSemantics {}
+                            .background(Brush.verticalGradient(listOf(colors.cream.copy(alpha = 0f), colors.cream))),
+                    )
+                }
+            }
+        } else {
+            content()
+        }
     }
 }
 

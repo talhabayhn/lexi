@@ -35,6 +35,8 @@ public class LexiColors internal constructor(
     public val gridLine: Color,
     /** Behind bottom sheets and dialogs (ink at 55 %). */
     public val scrim: Color,
+    /** Lighter yellow (yellow 50 % over cream): the daily card once today's wheel is solved (`02c-home-v2`). */
+    public val yellowMuted: Color,
 )
 
 private val Ink = Color(0xFF1F242D)
@@ -52,4 +54,5 @@ internal val LightLexiColors: LexiColors = LexiColors(
     disabledFill = Color(0xFFEAE6DF),
     gridLine = Color(0xFFC8C4BC),
     scrim = Ink.copy(alpha = 0.55f),
+    yellowMuted = Color(0xFFECC98E),
 )

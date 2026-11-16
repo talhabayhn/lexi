@@ -165,6 +165,14 @@ public class LexiTypography internal constructor(
     public val statValue28: TextStyle,
     /** 16 / 700, underlined: "Ana menüye dön" on the duel result (`20-duel-result`). */
     public val link16: TextStyle,
+    /** 9 / 700, letter-spacing 0.14em, UPPERCASE: the daily card label on Home (`02c-home-v2`). */
+    public val label9: TextStyle,
+    /** 11 / 700, letter-spacing 0.2em, UPPERCASE: the tagline under Home's logo (`02c-home-v2`). */
+    public val tagline11: TextStyle,
+    /** 11 / 700, letter-spacing 0.04em: OYNA's badge "A1 · KLASİK · 26 HARF" (`02c-home-v2`). */
+    public val badge11: TextStyle,
+    /** 11 / 800: the count badge on a key tile ("24", "99+", `02c-home-v2`). */
+    public val count11: TextStyle,
 )
 
 /** Static Jost instances shipped in `composeResources/font` (OFL, `files/licenses/jost-ofl.txt`). */
@@ -315,6 +323,10 @@ internal fun lexiTypography(jost: FontFamily): LexiTypography {
         statHero56 = style(56, extraBold, lineHeight = 0.9),
         statValue28 = style(28, extraBold, lineHeight = 1.0),
         link16 = style(16, FontWeight.Bold).copy(textDecoration = TextDecoration.Underline),
+        label9 = style(9, FontWeight.Bold, letterSpacing = 0.14.em),
+        tagline11 = style(11, FontWeight.Bold, letterSpacing = 0.2.em),
+        badge11 = style(11, FontWeight.Bold, letterSpacing = 0.04.em),
+        count11 = style(11, extraBold),
     )
 }
 
