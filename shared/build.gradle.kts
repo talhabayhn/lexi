@@ -46,9 +46,14 @@ kotlin {
             implementation(libs.androidx.activity.compose)
             implementation(libs.androidx.core.ktx)
         }
+        commonTest.dependencies {
+            // ADR 0027 shared-element spike: Compose UI test on the Android host and the iOS simulator.
+            implementation(libs.compose.uiTest)
+        }
         getByName("androidHostTest").dependencies {
             implementation(libs.koin.test)
             implementation(libs.robolectric)
+            implementation(libs.androidx.compose.uiTestManifest)
         }
     }
 }
