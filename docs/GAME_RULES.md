@@ -114,9 +114,9 @@ correct = blue circle, wrong = red square, passed = yellow leaf.
 ## 5. Modes
 | Mode | Timer | Scoring | Notes |
 |---|---|---|---|
-| Classic | ⚙ 180 s total (settings: 180 / 300 / 420 s; a stored 120 / 240 s falls back to 180 s) | yes | default |
+| Classic | ⚙ 180 s total (mode / time dialog of "Çarkını seç": 180 / 300 / 420 s, remembered; a stored 120 / 240 s falls back to 180 s; no Settings row) | yes | default |
 | Practice | none | no leaderboard, still SRS | "süresiz, baskısız" |
-| Hardcore | ⚙ 180 s | yes ×1.5 | first wrong ends the game |
+| Hardcore | the same chosen 180 / 300 / 420 s as Classic (owner decision, video flow) | yes ×1.5 | first wrong ends the game |
 | Daily | ⚙ 180 s | yes | ONE shared mixed-level wheel for all players, one scored attempt per local day, resets at local midnight, shareable |
 | Review | none | no | SRS-due cards |
 | Level test | ⚙ 120 s | no | adaptive, see §9 |
@@ -126,8 +126,8 @@ Practice and Hardcore in the app (M5): Practice has no clock and never times out
 badge and the result header count correct answers instead, and joker point costs are shown as free (they take
 nothing, §7). A Practice wheel is still stored like any other: SRS applies (§10) and it counts in the statistics
 (completed wheels, streak, words per day, §11). There is no leaderboard or personal best yet; when one comes, only
-`GameMode.isScored` modes submit to it. Hardcore always has ⚙ `hardcoreTimeLimitSeconds` (the Classic time setting
-doesn't apply), its time jokers cost seconds like Classic, and the first WRONG ends the game once its answer reveal
+`GameMode.isScored` modes submit to it. Hardcore takes the time chosen in the mode dialog like Classic
+(`GameRoute.time`, else the remembered choice; a game saved before this rule keeps its 180 s), its time jokers cost seconds like Classic, and the first WRONG ends the game once its answer reveal
 (⚙ `revealMs`, §3.6; the clock stands still meanwhile) is over (reason `WRONG_IN_HARDCORE`, ×1.5 on the final
 total); a pass doesn't end it.
 Daily in the app (M6): ONE shared mixed-level wheel for all players (26 slots, fixed distribution: A1 ×6, A2 ×5,
@@ -149,7 +149,7 @@ i.e. never answered, also after a Hardcore wrong or a forfeit). Remaining second
 the time segment is dropped in untimed modes, the streak segment at 0 days. A Daily card shows no level. Caption:
 Daily mode → Daily(correct); a completed (ALL_ANSWERED) timed wheel → Time(seconds); otherwise Streak(days) from 2
 days; otherwise (decision) Score(correct, total).
-Exam pack wheels (M7): Classic rules (timer from the Classic setting, scoring, jokers, SRS, history), no own
+Exam pack wheels (M7): Classic rules (timer = the remembered game time, scoring, jokers, SRS, history), no own
 `GameMode`. Like review and daily, the game's level is its first card's and points use each card's level (§6); the
 session has no category. TEKRAR OYNA plays the same pack. A Pro pack only starts with Pro (`EntitlementRepository`);
 the loader refuses a locked pack even if a route reaches it.

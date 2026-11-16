@@ -8,9 +8,9 @@ into the game. Owner-approved prototype in `drafts/video-flow/` (`flow.html`, `l
 **Reversible.** Everything lives on `redesign/video-flow`, built on `main` and independent of `redesign/home-v2`. If
 the owner prefers Home v2, this branch is dropped as a whole. Nothing on `main` refers to it.
 
-**Phases.** 1 (this branch, done): spec, motion tokens/tiers/frame monitor, morph overlay skeleton, shared-element
-spike, benchmark placeholders, classic 3/5/7 min. 2: designs still missing (invite icon, illustrations final art) +
-components. 3: screens, wiring, benchmarks filled in.
+**Phases.** 1 (done, tag `video-flow-phase1`): spec, motion tokens/tiers/frame monitor, morph overlay skeleton,
+shared-element spike, benchmark placeholders, classic 3/5/7 min. 2 (done, tag `video-flow-phase2`): the screens
+without the new transitions (§8). 3: card flip (#13–#15), letter morph (#16–#17), benchmarks filled in.
 
 ## 1. Home
 
@@ -57,13 +57,17 @@ Opens by flipping the tapped card (§5 #13–#14). Header: back arrow + category
 - **SÜRE** segmented control: 3:00 / 5:00 / 7:00 (180 / 300 / 420 s), default 3:00. Applies to Klasik **and**
   Hardcore. In Pratik the row is disabled (muted) with "Pratik modda süre yok." Daily stays 180 s.
 - **OYNA ▸** (red, full width) → letter morph (§5 #16).
-- **Engine (done in phase 1):** `GameConfig.classicTimeLimitOptionsSeconds = [180, 300, 420]`; a stored 120 / 240 s
-  falls back to 180 s (same pattern as the duel clock in 1.0.11; `GAME_RULES.md` §5). **Phase 3:** Hardcore uses the
-  chosen duration too (today `hardcoreTimeLimitSeconds` is fixed 180 s): pass the chosen limit per game.
-- **Settings "Klasik süre" row — proposal: remove it.** The dialog becomes the only place to pick a duration and
+- **Engine:** `GameConfig.classicTimeLimitOptionsSeconds = [180, 300, 420]`; a stored 120 / 240 s falls back to
+  180 s (`GAME_RULES.md` §5). Hardcore uses the chosen duration too (owner decision; phase 2): `GameRoute.time`
+  carries it, else the remembered choice; a game keeps its limits for restore (`game.classicLimitSeconds`,
+  `game.hardcoreLimitSeconds`; a Hardcore game saved before this has no Hardcore key and keeps 180 s).
+- **Settings "Klasik süre" row: removed** (owner decision). The dialog is the only place to pick a duration and
   remembers the last choice in the same DataStore key (`classic_time_limit_seconds`, so no migration) as its
-  preselection for Klasik and Hardcore. Keeping both would show one value in two places with two meanings. (Owner
-  decision, see Open items.)
+  preselection for Klasik and Hardcore.
+- **Remembered selection** (`Settings`): level `selected_level` (the onboarding's key, so the onboarding / level test
+  choice seeds it), mode `play_mode`, category `play_category` ("" = Karışık), time `classic_time_limit_seconds`.
+  Unknown or removed values read as the defaults (A1, Klasik, Karışık, 3:00); a level change resets the category to
+  Karışık; a stored category the level does not have reads as Karışık.
 
 ## 4. Copy (TR; EN in `values`)
 
@@ -82,6 +86,9 @@ flip 160 → 186 ms, morph expand/shrink 300 → 349 ms; letter morph total (exp
   `MorphOverlayState.markReady()` + the marker anchor laid out); the game clock and input start when the board
   entrance has settled (`FlowMotion.boardSettledMillis` after the shrink start), never before the overlay's
   `onFinished`.
+- **Grid entrance (#18, owner decision):** the cards of "Çarkını seç" rise 16 dp and fade in, 52 ms apart, on the
+  first open per app session and only in tier Full (`FlowMotion.gridCardIn`); the run is registered with the
+  session's `FrameMonitor` (`LocalMotionPolicy`).
 - **Reduced motion** (tier Minimal): every flow transition is a 120 ms cross-fade; nothing moves, scales or rotates.
 
 ## 6. Performance
@@ -109,21 +116,53 @@ flip 160 → 186 ms, morph expand/shrink 300 → 349 ms; letter morph total (exp
   current iPhone; Android 8 low-RAM, a Samsung A-series, a Pixel. iOS has no macrobenchmark: measure with Instruments
   (Animation Hitches) on the same journeys.
 
-## 7. Open items
+## 7. Owner decisions (phase 1 open items) and what is still open
 
-1. **Settings "Klasik süre" row:** remove (proposal, §3) or keep as the dialog's default? Owner decision.
-2. **Shipped tokens vs ÷ 0.86:** press (#1) would be 93 ms, screen transition (#12) 302 ms and marker jump (#6)
-   163 ms if scaled. Kept at 80 / 260 / 140 ms so the whole app stays consistent; confirm.
-3. **Invite icon** (person + plus): needs design in `16-components` style; until then build it from
-   `LexiIcons.Settings`' stroke rules and flag "needs design".
-4. **Category illustrations:** `art_v3.png` is a first draft; final shapes/colours need design sign-off before the
-   Path code is frozen. YDS / YKS-DİL / TOEFL / IELTS locked art (graduation cap, EN sheet, globe, …) is in
-   `cats_v3.png` only partly (IELTS is cut off): needs design.
-5. **Category grid entrance:** the prototype staggers the cards (45 ms prototype → 52 ms) on entering "Çarkını seç";
-   not in the approved catalogue, so not tokenised. Include?
-6. **Hardcore duration** (§3) changes Hardcore scoring comparability (longer games ⇒ more points): accept, or keep
-   Hardcore at 3:00 only?
-7. **Android battery saver** as a Lite signal (iOS Low Power Mode counterpart)? Not requested; not implemented.
-8. **Mixed in NAT:** NAT has one content category (`general`); Karışık = that category. Confirm no separate card.
-9. **Screenshot golden** `LetterMorphLayer.png` was recorded locally (macOS); re-record on Linux with the
-   `screenshots-record` workflow before this branch is merged.
+Decided: (1) Settings "Klasik süre" row removed; (2) tokens #1 / #6 / #12 stay 80 / 140 / 260 ms; (3) invite icon
+built from the `LexiIcons` stroke rules (`LexiIcons.Invite`), **needs design**; (4) `art_v3.png` implemented as the
+first draft (`CategoryArt`), **needs design**; (5) grid entrance stagger included: motion #18, first open per app
+session, tier Full only; (6) Hardcore uses the same 3 / 5 / 7 choice as Klasik; (7) no Android battery-saver signal;
+(8) NAT shows only the Karışık card; (9) goldens are written as tests and recorded on CI only (list in §8).
+
+Still open:
+1. **Design sign-off:** invite icon; the 19 category illustrations and the exam art (`ExamArt`; the IELTS art is a
+   placeholder: speech bubble + headphones, not in the drafts).
+2. **Home header logo** uses a new `LexiLogoSize.Header` (38dp blocks, from `flow.html`); `home_v5.png` has no
+   pixel spec for the total-points type size (built 24sp / 12sp).
+3. **Play card caption** "3 dk" shows the remembered time ("5 dk" after choosing 5:00); the draft shows a fixed
+   "3 dk". Confirm.
+4. **Touch targets:** the dialog's segments and the back buttons are 48dp (draft 46 / 44) to meet the 48dp rule.
+5. **Old components** only the deleted screens used (`StartButton`, `LevelCard`, `CategoryCard`, `MixedWheelCard`,
+   `StreakChip`, `PlayButton`, the old `DailyCard`) stay in `core:designsystem` (gallery and its goldens) until the
+   flow is merged; remove them then.
+
+## 8. Built in phase 2 (no new transitions)
+
+- **Home** (`feature:home`): §1 as specified; content scrolls above the ruled bar, the play card's text is capped at
+  1.3× so it stays on the first screen of a 320 × 568 phone at 200 % font size; "Davet et" shares the invite text
+  with `AppLinks.landing(app language)` through `ShareService.shareText` and tracks `share` with `type=invite` once
+  the sheet was shown (`ANALYTICS.md`; an enum code, no new data type).
+- **"Çarkını seç"** (`feature:levels`, `picker` package; `CategoryPickerRoute(level)`): replaces `LevelSelectRoute`
+  and `CategoriesRoute` (deleted). `LazyVerticalGrid` with keys and content types; LGS starts its wheel as before;
+  locked YDS / YÖKDİL, YKS-DİL, TOEFL, IELTS are information only.
+- **Dialog** (`PlayDialog`): phase 2 placeholder presentation (fade + scale 0.92 → 1 over `dialogGrow`, cross-fade
+  with reduced motion); OYNA carries `morphAnchor(FlowMorphKeys.PLAY_BUTTON)`; the wheel's current letter carries
+  `FlowMorphKeys.WHEEL_MARKER`. System back closes the dialog.
+- **Navigation:** Home → `CategoryPickerRoute(level)` → `GameRoute(level, mode, category, time)`; the perf tour goes
+  Home → CategoryPicker → Game.
+- **Tests:** view models (selection persistence, level change, time fallback, Practice, NAT, locked packs, invite),
+  layout matrices for Home and "Çarkını seç" + dialog at 320 × 568, 360 × 640, 390 × 844, 412 × 915, font scale
+  1.0 / 1.3 / 2.0, TR and EN (primary actions on screen, every button ≥ 48dp), behaviour / semantics tests.
+- **Goldens for CI to record** (`screenshots-record`; not recorded on macOS):
+  - `core/designsystem`: `CategoryArt.png`, `FlowComponents.png`, `FlowComponents_w320_fontScale200.png`
+    (+ `LetterMorphLayer.png` from phase 1, recorded on macOS: re-record).
+  - `feature/home`: `HomeScreen.png`, `HomeScreenEmpty.png`, `HomeScreenDailyPlayed.png`,
+    `HomeScreenDailyUnavailable.png`, `HomeScreenDailyGiftNotice.png`, `HomeScreenEn.png`,
+    `HomeScreen_w320h568_fontScale200.png`, `HomeScreen_w360h640_fontScale130.png` (the old Home goldens were
+    deleted).
+  - `feature/levels`: `CategoryPicker.png`, `CategoryPickerNat.png`, `CategoryPickerError.png`, `CategoryPickerEn.png`,
+    `CategoryPicker_w320h568_fontScale200.png`, `PlayDialogClassic.png`, `PlayDialogPractice.png`,
+    `PlayDialogHardcoreEn.png`, `PlayDialog_w320h568_fontScale200.png` (the LevelSelect / Categories goldens were
+    deleted).
+  - `feature/settings`: every `Settings*.png` (the row is gone; deleted, re-record).
+  - `tools/store-graphics` now reads `feature/levels/CategoryPicker.png` / `CategoryPickerEn.png`.

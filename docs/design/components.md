@@ -40,6 +40,14 @@ each with a `@Preview` and a Roborazzi screenshot. Feature screens compose ONLY 
 | `DecorShape` | circle, square, halfPill, leaf, diamond | markers and background decoration; size includes the border (HTML markers are content-box) |
 | `HardShadow` modifier | s3–s8, color | core primitive |
 | `PressableSurface` | — | shared press animation + haptic + sound |
+| `PlayCard` / `PlayCardMode` | — | video flow Home: red, 3dp, s6, label 12 + three info mode boxes + OYNA 46 + 68dp play circle; one button; text capped at 1.3× (`FlowComponents.kt`) |
+| `DailyWheelCard` / `DailyCardStatus` | Solve (yellow, button), Completed (`yellowMuted`), Unavailable (muted) | Home v2 daily card copied to the video flow; badge drops its word below 140dp of text |
+| `RuledBottomBar` / `BottomBarItem` | — | 4dp ink rule, equal icon + label items (56dp high), no selected tab |
+| `LevelChipRow` | selected (ink + yellow text) | six equal 40dp chips in a 48dp touch band, radio group |
+| `PickerCard` | open (radio button or button), selected, locked (dimmed art, lock badge, "YAKINDA") | "Çarkını seç" card: 95dp art field + 3dp rule, name, `learned / total` + 6dp bar, s4 |
+| `CategoryArt` / `ExamArt` | 20 category kinds (Karışık + 19), 5 exam kinds, locked | Canvas `Path`s built once in `drawWithCache`, 163 × 95 art box (cover); first draft of `art_v3.png`, **needs design** |
+| `ScrollToTopPill` | — | ink pill, cream text + up arrow, ≥ 48dp |
+| `SegmentedControl` (video flow) | `role` RadioButton, `enabled = false` (muted frame and text, nothing selected) | the dialog's mode and time rows, 48dp |
 
 Implemented in `core/designsystem/.../component`; sizes from the screens live in `XxxDefaults` objects next to each
 component. Screenshots: `ComponentGallery.png` reproduces 16-components at its own size and 2x, and

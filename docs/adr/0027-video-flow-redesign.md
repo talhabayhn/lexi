@@ -55,6 +55,11 @@ NavHost destinations on both Android and iOS; (2) how do we keep a ~1 s choreogr
 7. **Classic duration options become 3 / 5 / 7 min** (`GameConfig.classicTimeLimitOptionsSeconds`), a stored
    120 / 240 s falls back to 180 s (`GAME_RULES.md` §5). Done in phase 1 because the dialog needs it and the
    fallback is the existing settings validation.
+8. **Phase 2 (owner decisions on the phase 1 open items):** Hardcore takes the same chosen time (`GameRoute.time`);
+   the Settings "Klasik süre" row is removed; "Çarkını seç" (`CategoryPickerRoute`, `feature:levels`) replaces the
+   level select and categories screens, which are deleted; the selection is remembered in `Settings` (level on the
+   onboarding's `selected_level`, new `play_mode` / `play_category`); the grid entrance (#18) runs in tier Full only.
+   The dialog is a fade + scale placeholder until the phase 3 flip.
 
 Alternatives considered: **Home v2** (one Home with level/mode/category; ADR 0026) — kept as the fallback branch;
 **shared elements for the morph** — proven feasible, rejected for the reasons in 3; **an expect/actual
