@@ -14,6 +14,8 @@ public data class SessionRecord(
     val completed: Boolean,
     val correct: Int,
     val mode: GameMode? = null,
+    /** The game's final score (`GAME_RULES.md` §6). */
+    val score: Int = 0,
 )
 
 /** [percent] is rounded half up; null when nothing was answered. */
@@ -73,6 +75,10 @@ public object Stats {
     }
 
     public fun completedWheels(sessions: Collection<SessionRecord>): Int = sessions.count { it.completed }
+
+    /** Home's "toplam puan": the scores of every stored game added up (negative scores never lower it below 0). */
+    public fun totalScore(sessions: Collection<SessionRecord>): Long =
+        sessions.sumOf { it.score.toLong() }.coerceAtLeast(0L)
 
     /** Correct answers per day for the last [days] days ending today, oldest first (completed or not). */
     public fun wordsPerDay(

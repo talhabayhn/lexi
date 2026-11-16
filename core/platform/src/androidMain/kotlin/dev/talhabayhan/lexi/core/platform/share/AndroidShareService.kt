@@ -36,6 +36,20 @@ public class AndroidShareService(private val context: Context) : ShareService {
     } catch (_: Exception) {
         false
     }
+
+    override suspend fun shareText(text: String): Boolean = try {
+        val send = Intent(Intent.ACTION_SEND).apply {
+            type = "text/plain"
+            putExtra(Intent.EXTRA_TEXT, text)
+        }
+        val chooser = Intent.createChooser(send, null).apply { addFlags(Intent.FLAG_ACTIVITY_NEW_TASK) }
+        withContext(Dispatchers.Main) { context.startActivity(chooser) }
+        true
+    } catch (e: CancellationException) {
+        throw e
+    } catch (_: Exception) {
+        false
+    }
 }
 
 /** Share PNGs kept in `cache/share/` (the new one included); older ones are deleted on the next share. */

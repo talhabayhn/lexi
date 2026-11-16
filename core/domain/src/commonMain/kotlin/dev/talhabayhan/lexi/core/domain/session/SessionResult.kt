@@ -24,7 +24,7 @@ public data class SessionResult(
     val completed: Boolean,
 ) {
     public fun toRecord(): SessionRecord =
-        SessionRecord(epochDay = epochDay, completed = completed, correct = correct, mode = mode)
+        SessionRecord(epochDay = epochDay, completed = completed, correct = correct, mode = mode, score = score)
 }
 
 /** The one scored Daily wheel attempt of a day (`GAME_RULES.md` §5). [shareCode] is the share-card payload (M6). */

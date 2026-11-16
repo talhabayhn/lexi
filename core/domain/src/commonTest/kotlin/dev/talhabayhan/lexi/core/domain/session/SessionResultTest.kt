@@ -25,7 +25,7 @@ class SessionResultTest {
         )
 
         assertEquals(
-            SessionRecord(epochDay = 20_000, completed = true, correct = 12, mode = GameMode.CLASSIC),
+            SessionRecord(epochDay = 20_000, completed = true, correct = 12, mode = GameMode.CLASSIC, score = 120),
             session.toRecord(),
         )
     }

@@ -85,6 +85,21 @@ class StatsTest {
     }
 
     @Test
+    fun `total score adds every stored game and never goes below zero`() {
+        val games = listOf(
+            SessionRecord(epochDay = 1, completed = true, correct = 3, score = 1_200),
+            SessionRecord(epochDay = 2, completed = false, correct = 0, score = 11_280),
+        )
+
+        assertEquals(12_480L, Stats.totalScore(games))
+        assertEquals(0L, Stats.totalScore(emptyList()))
+        assertEquals(
+            0L,
+            Stats.totalScore(listOf(SessionRecord(epochDay = 1, completed = true, correct = 0, score = -5))),
+        )
+    }
+
+    @Test
     fun `words per day sums correct answers of the last 7 days oldest first`() {
         val sessions = listOf(
             session(93, correct = 50),

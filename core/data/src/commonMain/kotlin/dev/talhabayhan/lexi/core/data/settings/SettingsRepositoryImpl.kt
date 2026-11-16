@@ -13,6 +13,8 @@ import androidx.datastore.preferences.core.longPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import dev.talhabayhan.lexi.core.domain.game.DuelNames
 import dev.talhabayhan.lexi.core.domain.game.GameConfig
+import dev.talhabayhan.lexi.core.domain.game.GameMode
+import dev.talhabayhan.lexi.core.domain.model.CategoryId
 import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.core.domain.reminder.ReminderTimes
 import dev.talhabayhan.lexi.core.domain.repository.SettingsRepository
@@ -102,6 +104,9 @@ internal class SettingsRepositoryImpl(
                 ?: defaults.duelClockSeconds,
             firstLaunchMs = this[FIRST_LAUNCH] ?: defaults.firstLaunchMs,
             ratingLastRequestMs = this[RATING_LAST_REQUEST] ?: defaults.ratingLastRequestMs,
+            selectedLevel = enumOrNull<Level>(this[SELECTED_LEVEL]) ?: defaults.selectedLevel,
+            playMode = enumOrNull<GameMode>(this[PLAY_MODE])?.takeIf { it in Settings.PLAY_MODES } ?: defaults.playMode,
+            playCategory = this[PLAY_CATEGORY]?.takeIf { it.isNotEmpty() }?.let(::CategoryId),
         )
     }
 
@@ -127,6 +132,9 @@ internal class SettingsRepositoryImpl(
         this[DUEL_CLOCK] = settings.duelClockSeconds
         this[FIRST_LAUNCH] = settings.firstLaunchMs
         this[RATING_LAST_REQUEST] = settings.ratingLastRequestMs
+        this[SELECTED_LEVEL] = settings.selectedLevel.name
+        this[PLAY_MODE] = settings.playMode.name
+        this[PLAY_CATEGORY] = settings.playCategory?.value.orEmpty()
     }
 
     private inline fun <reified E : Enum<E>> enumOrNull(name: String?): E? =
@@ -154,5 +162,12 @@ internal class SettingsRepositoryImpl(
         val DUEL_CLOCK = intPreferencesKey("duel_clock_seconds")
         val FIRST_LAUNCH = longPreferencesKey("first_launch_ms")
         val RATING_LAST_REQUEST = longPreferencesKey("rating_last_request_ms")
+
+        /** Shared with `OnboardingRepositoryImpl`: the onboarding's level choice seeds "Çarkını seç". */
+        val SELECTED_LEVEL = stringPreferencesKey("selected_level")
+        val PLAY_MODE = stringPreferencesKey("play_mode")
+
+        /** The category id; "" = Karışık. A category the level no longer has falls back to Karışık on the screen. */
+        val PLAY_CATEGORY = stringPreferencesKey("play_category")
     }
 }

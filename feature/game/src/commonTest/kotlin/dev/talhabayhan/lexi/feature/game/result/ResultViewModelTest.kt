@@ -411,7 +411,10 @@ class ResultViewModelTest {
             assertContentEquals(png, sharedPng)
             assertEquals("caption and message", sharedText)
             assertFalse(vm.state.value.isSharing)
-            assertEquals(listOf<AnalyticsEvent>(AnalyticsEvent.Share), analytics.events)
+            assertEquals(
+                listOf<AnalyticsEvent>(AnalyticsEvent.Share(AnalyticsEvent.ShareType.RESULT)),
+                analytics.events,
+            )
             expectNoEvents()
         }
     }

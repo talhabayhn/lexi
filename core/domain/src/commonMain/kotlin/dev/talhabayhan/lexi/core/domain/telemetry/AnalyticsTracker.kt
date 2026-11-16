@@ -39,7 +39,16 @@ public sealed class AnalyticsEvent(public val name: String) {
             )
     }
 
-    public data object Share : AnalyticsEvent("share")
+    /** A share sheet was shown: the result card ([ShareType.RESULT]) or Home's invite ([ShareType.INVITE]). */
+    public data class Share(val type: ShareType) : AnalyticsEvent("share") {
+        override val params: Map<String, Any> get() = mapOf("type" to type.code)
+    }
+
+    /** The `type` of [Share]. */
+    public enum class ShareType(public val code: String) {
+        RESULT("result"),
+        INVITE("invite"),
+    }
 
     /** The store's rating request was invoked (the OS decides whether the player sees it); `RequestInAppReview`. */
     public data object RatingPromptRequested : AnalyticsEvent("rating_prompt_requested")

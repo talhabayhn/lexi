@@ -6,6 +6,8 @@ import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import app.cash.turbine.test
 import dev.talhabayhan.lexi.core.domain.game.GameConfig
+import dev.talhabayhan.lexi.core.domain.game.GameMode
+import dev.talhabayhan.lexi.core.domain.model.CategoryId
 import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.core.domain.settings.Accent
 import dev.talhabayhan.lexi.core.domain.settings.Settings
@@ -119,6 +121,30 @@ class SettingsRepositoryTest {
 
             assertEquals(180, repository.settings.first().classicTimeLimitSeconds, "stored $stored")
         }
+    }
+
+    @Test
+    fun `an unknown or removed play mode, level or empty category reads as the defaults`() = runTest {
+        val dataStore = createSettingsDataStore(path, backgroundScope)
+        val repository = SettingsRepositoryImpl(dataStore, GameConfig(), backgroundScope)
+        dataStore.edit {
+            it[stringPreferencesKey("play_mode")] = "DUEL"
+            it[stringPreferencesKey("selected_level")] = "Z9"
+            it[stringPreferencesKey("play_category")] = ""
+        }
+
+        val settings = repository.settings.first()
+        assertEquals(GameMode.CLASSIC, settings.playMode)
+        assertEquals(Level.A1, settings.selectedLevel)
+        assertEquals(null, settings.playCategory)
+
+        repository.update {
+            it.copy(selectedLevel = Level.B2, playMode = GameMode.HARDCORE, playCategory = CategoryId("idioms"))
+        }
+        val stored = repository.settings.first()
+        assertEquals(Level.B2, stored.selectedLevel)
+        assertEquals(GameMode.HARDCORE, stored.playMode)
+        assertEquals(CategoryId("idioms"), stored.playCategory)
     }
 
     @Test

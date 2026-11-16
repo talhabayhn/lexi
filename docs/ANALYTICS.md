@@ -18,7 +18,7 @@ The event list is closed: a new event or parameter is added here first, then to 
 | `level_test_complete` | `level` | The placement test ends with a placement (`LevelTestViewModel`) |
 | `game_start` | `mode`, `level` | A new wheel starts (not a restored one) (`GameViewModel`) |
 | `game_finish` | `mode`, `level`, `correct`, `duration_s` | A wheel ends for any reason (all answered, time up, Hardcore wrong, forfeit) (`GameViewModel`) |
-| `share` | – | The share sheet was shown for the result card (`ResultViewModel`) |
+| `share` | `type` | The share sheet was shown: the result card (`ResultViewModel`, `type=result`) or Home's "Davet et" invite (`HomeViewModel`, `type=invite`) |
 | `reminder_enabled` | – | The daily reminder was turned on: Settings switch with permission, or pre-prompt accepted and granted |
 | `rating_prompt_requested` | – | The store rating API was invoked (`RequestInAppReview`, `GAME_RULES.md` §14); the OS decides whether the player sees it, so it says nothing about a rating |
 | `joker_used` | `type` | A joker was applied (`GameViewModel`) |
@@ -33,7 +33,7 @@ The event list is closed: a new event or parameter is added here first, then to 
 | `level` | string | `A1`, `A2`, `B1`, `B2`, `C1`, `NAT` (review: the level of the wheel's first card) |
 | `correct` | int | correct answers of the wheel |
 | `duration_s` | int | wall-clock seconds from the start to the end of the wheel |
-| `type` | string | `reveal_letter`, `remove_distractors`, `example`, `listen` |
+| `type` | string | `joker_used`: `reveal_letter`, `remove_distractors`, `example`, `listen`; `share`: `result`, `invite` (an enum code, no new data type: still app interactions) |
 | `clock_s` | int | the duel's clock per player in seconds: `90`, `150`, `240` |
 | `result_type` | string | `win` (decided by the §8 rules), `draw`, `forfeit` |
 

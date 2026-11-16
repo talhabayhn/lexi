@@ -1,5 +1,7 @@
 package dev.talhabayhan.lexi.core.domain.settings
 
+import dev.talhabayhan.lexi.core.domain.game.GameMode
+import dev.talhabayhan.lexi.core.domain.model.CategoryId
 import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.core.domain.reminder.ReminderTimes
 
@@ -12,7 +14,10 @@ public data class Settings(
     val haptics: Boolean = true,
     /** "Doğru cevapta telaffuzu çal": speak the answer after a correct answer. */
     val speakOnCorrect: Boolean = true,
-    /** Classic total time; one of `GameConfig.classicTimeLimitOptionsSeconds` (180/300/420). */
+    /**
+     * The game time last chosen in the mode dialog (`video-flow-notes.md` §3), for Classic **and** Hardcore; one of
+     * `GameConfig.classicTimeLimitOptionsSeconds` (180/300/420). The stored key keeps its old Classic-only name.
+     */
     val classicTimeLimitSeconds: Int = DEFAULT_CLASSIC_TIME_LIMIT_SECONDS,
     /** Daily reminder notification; off until the player turns it on or accepts the pre-prompt (`ReminderPlanner`). */
     val dailyReminder: Boolean = false,
@@ -46,6 +51,15 @@ public data class Settings(
     val firstLaunchMs: Long = 0L,
     /** Epoch ms of our last rating request (0 = never); the next one waits 120 days. */
     val ratingLastRequestMs: Long = 0L,
+    /**
+     * The level of "Çarkını seç" (`video-flow-notes.md` §2): seeded by the onboarding's level choice or the level test
+     * (the same stored key as `OnboardingRepository.selectedLevel`), then changed by the level chips.
+     */
+    val selectedLevel: Level = Level.A1,
+    /** The mode last chosen in the mode dialog; one of [PLAY_MODES]. */
+    val playMode: GameMode = GameMode.CLASSIC,
+    /** The category last opened on "Çarkını seç" for [selectedLevel]; null = "Karışık" (the level's mixed wheel). */
+    val playCategory: CategoryId? = null,
 ) {
     public val uiLanguage: AppLanguage get() = appLanguage
 
@@ -56,6 +70,7 @@ public data class Settings(
         require(reminderMinuteOfDay in 0 until MINUTES_PER_DAY) { "reminderMinuteOfDay $reminderMinuteOfDay" }
         require(dailyGoalWheels >= 1) { "dailyGoalWheels $dailyGoalWheels must be at least 1" }
         require(duelPlayerNames.size == 2) { "duelPlayerNames needs 2 entries, was ${duelPlayerNames.size}" }
+        require(playMode in PLAY_MODES) { "playMode $playMode is not offered by the mode dialog" }
     }
 
     public companion object {
@@ -63,6 +78,9 @@ public data class Settings(
         public const val DEFAULT_DUEL_CLOCK_SECONDS: Int = 300
         public const val DEFAULT_REMINDER_MINUTE_OF_DAY: Int = ReminderTimes.DEFAULT_MINUTE
         public const val MINUTES_PER_DAY: Int = 24 * 60
+
+        /** The modes the mode dialog offers, in display order (`video-flow-notes.md` §3). */
+        public val PLAY_MODES: List<GameMode> = listOf(GameMode.CLASSIC, GameMode.PRACTICE, GameMode.HARDCORE)
     }
 }
 

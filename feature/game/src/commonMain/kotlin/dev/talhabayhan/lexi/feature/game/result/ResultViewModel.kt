@@ -186,7 +186,13 @@ internal class ResultViewModel(
 
     private fun finishShare(shown: Boolean) {
         mutableState.update { it.copy(isSharing = false) }
-        if (shown) analytics.track(AnalyticsEvent.Share) else effectChannel.trySend(ResultEffect.ShareFailed)
+        if (shown) {
+            analytics.track(
+                AnalyticsEvent.Share(AnalyticsEvent.ShareType.RESULT),
+            )
+        } else {
+            effectChannel.trySend(ResultEffect.ShareFailed)
+        }
     }
 
     /** The share card with the current streak (read once; an unreadable streak counts as none). */

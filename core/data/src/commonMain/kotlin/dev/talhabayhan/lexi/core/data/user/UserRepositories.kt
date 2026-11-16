@@ -144,12 +144,13 @@ internal class SessionRepositoryImpl(databases: Databases, io: CoroutineDispatch
     }
 
     override fun observeRecords(): Flow<List<SessionRecord>> = observe {
-        sessionQueries.records { epochDay, completed, correct, mode ->
+        sessionQueries.records { epochDay, completed, correct, mode, score ->
             SessionRecord(
                 epochDay = epochDay,
                 completed = completed != 0L,
                 correct = correct.toInt(),
                 mode = runCatching { GameMode.valueOf(mode) }.getOrNull(),
+                score = score.toInt(),
             )
         }.asFlow().mapToList(io)
     }

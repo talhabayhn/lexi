@@ -12,7 +12,15 @@ class AnalyticsEventTest {
     fun `names and parameters match docs ANALYTICS`() {
         assertEquals("app_open", AnalyticsEvent.AppOpen.name)
         assertEquals("onboarding_complete", AnalyticsEvent.OnboardingComplete.name)
-        assertEquals("share", AnalyticsEvent.Share.name)
+        assertEquals("share", AnalyticsEvent.Share(AnalyticsEvent.ShareType.RESULT).name)
+        assertEquals(
+            mapOf<String, Any>("type" to "invite"),
+            AnalyticsEvent.Share(AnalyticsEvent.ShareType.INVITE).params,
+        )
+        assertEquals(
+            mapOf<String, Any>("type" to "result"),
+            AnalyticsEvent.Share(AnalyticsEvent.ShareType.RESULT).params,
+        )
         assertEquals("reminder_enabled", AnalyticsEvent.ReminderEnabled.name)
         assertEquals(
             mapOf<String, Any>("level" to "NAT"),
@@ -53,7 +61,8 @@ class AnalyticsEventTest {
             AnalyticsEvent.LevelTestComplete(Level.A1),
             AnalyticsEvent.GameStart(GameMode.REVIEW, Level.C1),
             AnalyticsEvent.GameFinish(GameMode.PRACTICE, Level.B2, correct = 1, durationSeconds = 1),
-            AnalyticsEvent.Share,
+            AnalyticsEvent.Share(AnalyticsEvent.ShareType.RESULT),
+            AnalyticsEvent.Share(AnalyticsEvent.ShareType.INVITE),
             AnalyticsEvent.ReminderEnabled,
         ) + JokerType.entries.map(AnalyticsEvent::JokerUsed)
         val snake = Regex("[a-z][a-z0-9_]{0,39}")

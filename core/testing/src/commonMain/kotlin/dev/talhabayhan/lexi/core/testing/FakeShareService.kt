@@ -9,8 +9,18 @@ public class FakeShareService(private val result: Boolean = true) : ShareService
     /** Every (png, text) passed to [sharePng], in order. */
     public val shared: List<Pair<ByteArray, String>> get() = _shared.toList()
 
+    private val _sharedTexts = mutableListOf<String>()
+
+    /** Every text passed to [shareText], in order. */
+    public val sharedTexts: List<String> get() = _sharedTexts.toList()
+
     override suspend fun sharePng(png: ByteArray, text: String): Boolean {
         _shared += png to text
+        return result
+    }
+
+    override suspend fun shareText(text: String): Boolean {
+        _sharedTexts += text
         return result
     }
 }

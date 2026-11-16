@@ -20,11 +20,19 @@ import platform.UIKit.UIWindow
 import platform.UIKit.UIWindowScene
 import platform.UIKit.popoverPresentationController
 
-/** Shares the card with a `UIActivityViewController` presented from the top-most view controller of the key window. */
+/**
+ * Shares the card or a text with a `UIActivityViewController` presented from the top-most view controller of the key
+ * window.
+ */
 public class IosShareService : ShareService {
     @OptIn(ExperimentalForeignApi::class)
-    override suspend fun sharePng(png: ByteArray, text: String): Boolean = withContext(Dispatchers.Main) {
-        val image = UIImage(data = png.toNSData())
+    override suspend fun sharePng(png: ByteArray, text: String): Boolean =
+        present(listOf(UIImage(data = png.toNSData()), text))
+
+    override suspend fun shareText(text: String): Boolean = present(listOf(text))
+
+    @OptIn(ExperimentalForeignApi::class)
+    private suspend fun present(items: List<Any>): Boolean = withContext(Dispatchers.Main) {
         // UIApplication.windows is deprecated since iOS 15: find the key window through the connected scenes.
         val window = UIApplication.sharedApplication.connectedScenes
             .filterIsInstance<UIWindowScene>()
@@ -33,7 +41,7 @@ public class IosShareService : ShareService {
         var top: UIViewController? = window?.rootViewController
         while (top?.presentedViewController != null) top = top.presentedViewController
         val presenter = top ?: return@withContext false
-        val sheet = UIActivityViewController(activityItems = listOf(image, text), applicationActivities = null)
+        val sheet = UIActivityViewController(activityItems = items, applicationActivities = null)
         sheet.popoverPresentationController?.let { popover ->
             popover.sourceView = presenter.view
             val (width, height) = presenter.view.bounds.useContents { size.width to size.height }

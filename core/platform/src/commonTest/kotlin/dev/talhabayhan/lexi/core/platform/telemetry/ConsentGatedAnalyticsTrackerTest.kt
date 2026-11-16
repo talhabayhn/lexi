@@ -56,7 +56,7 @@ class ConsentGatedAnalyticsTrackerTest {
         val tracker = tracker(Store(consent = false))
 
         tracker.track(AnalyticsEvent.AppOpen)
-        tracker.track(AnalyticsEvent.Share)
+        tracker.track(AnalyticsEvent.Share(AnalyticsEvent.ShareType.RESULT))
 
         assertTrue(sink.events.isEmpty())
         assertEquals(listOf(false), sink.collection)
@@ -70,7 +70,7 @@ class ConsentGatedAnalyticsTrackerTest {
         store.set(true)
         tracker.track(AnalyticsEvent.AppOpen)
         store.set(false)
-        tracker.track(AnalyticsEvent.Share)
+        tracker.track(AnalyticsEvent.Share(AnalyticsEvent.ShareType.RESULT))
 
         assertEquals(listOf<AnalyticsEvent>(AnalyticsEvent.AppOpen), sink.events)
         assertEquals(listOf(false, true, false), sink.collection)
