@@ -109,20 +109,28 @@ Module mapping (replaces the earlier `composeApp`): `androidApp` = thin Android 
   macOS CI only; console declarations pending, see the re-check item)
 **Done when:** sandbox purchase unlocks Pro on both platforms; ads only where allowed.
 
+Postponed by owner until the payment/tax situation is clear (Nov 2026): RevenueCat, Play Console re-check, AdMob, Pro limits, Global languages.
+
 ## M8 — Same-device duel, polish, release
 - [x] Hot-seat duel: setup, handover card, per-player clocks, duel result (name dialog: needs design)
 - [x] Duel result: per-player answer review from each player card; headline kept clear of the circle (1.0.12;
   needs design: card chevron + review screen)
 - [x] Accessibility pass (TalkBack/VoiceOver labels, font scale caps, contrast, reduced motion)
 - [x] Small-screen & tablet layout rules (`screen-map.md`)
-- [ ] Rating prompt, About/licenses (licences done; word-list attributions pending owner confirmation in docs/store/ATTRIBUTION-TODO.md)
-- [ ] Performance: cold start < 1.5 s mid-range Android; 60 fps game screen
+- [x] Rating prompt (Play In-App Review, StoreKit), About/licenses
+- [ ] Word-list attributions: pending owner confirmation, see docs/store/ATTRIBUTION-TODO.md
+- [ ] Performance: cold start < 1.5 s mid-range Android; 60 fps game screen (open: CI emulator only, splash first frame 0.94 s / 1.52 s median, time to Home 3.9 s incl. ≈ 1.2 s splash; needs a phone and a Mac measurement)
   - Landed so far: perf tour, T1–T4 (see `docs/PERF.md`); iOS numbers pending a Mac measurement.
   - CI emulator measurement (ADR 0025): `:benchmark` startup benchmark + generated baseline profile, `perf.yml`;
     the phone target still needs a mid-range device.
-- [ ] Store listing TR/EN, screenshots, privacy policy, data safety / privacy nutrition labels
-- [ ] Release: Play internal testing + TestFlight
+- [x] Store listing TR/EN, screenshots, privacy policy, data safety / privacy nutrition labels
+- [x] Release: Play internal testing + TestFlight
 **Done when:** v1.0 submitted.
+
+## Shipped since 1.0.0
+- 1.0.5–1.0.12: Firebase analytics behind consent, same-device duel with 3/5/7 min clocks, word reminders, smart word
+  selection, rating prompt, iOS links hotfix, clue standard + A1 clue rewrite, duel answer review, category letter
+  fill (A1/A2), perf benchmark.
 
 ## Content completion (after M8, before/within v1.0.x)
 - [x] Full A2 set (878 cards, `docs/content-review/A2-*.md`; Q thin at 16)
