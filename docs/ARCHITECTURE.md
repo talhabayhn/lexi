@@ -198,12 +198,12 @@ Navigation Compose (JetBrains multiplatform artifact, 2.10.0-rc01 pinned until 2
 `@Serializable` routes. Each feature exposes its route + `NavGraphBuilder.xxxScreen()`; the graph is `LexiNavHost` in
 `shared`. Route arguments are primitives/strings (enums as their `name`): navigation 2.10 has no enum nav type on iOS.
 ViewModels that need arguments get the route from Koin (`get<SavedStateHandle>().toRoute<T>()` in the module), so
-their tests construct it directly. The graph today is `Splash → Home → LevelSelect [→ Categories] → Game → Result`; the result pops
+their tests construct it directly. The graph today is `Splash → Home → CategoryPicker ("Çarkını seç" + mode / time dialog) → Game → Result` (branch `redesign/video-flow`); the result pops
 everything above Home (back returns Home, TEKRAR OYNA starts the next game from there); its route carries the
 finished game's summary (ADR 0019 addendum). `core:domain` keeps its own small `civilDateOfEpochDay` (day/month of the home daily card) instead of adding kotlinx-datetime to the pure module. Splash (`shared/splash`) plays the logo animation while the content DB is
 installed/version-checked and `GrantDailyJokers` gives today's free jokers (`GAME_RULES.md` §7), then pops itself. Flows:
 `Splash → Onboarding? → Home`; `Onboarding → LevelTest → LevelTestResult → Home` (the result replaces the test;
-"Pes et" and back from the result pop to the onboarding's level choice, nothing saved); `Home → LevelSelect [→ Categories] → Game → Result`; `Home → Notebook | Stats | Exams | Settings | Daily`;
+"Pes et" and back from the result pop to the onboarding's level choice, nothing saved); `Home → CategoryPicker → Game → Result`; `Home → Notebook | Stats | Exams | Settings | Daily`;
 `Game → JokerSheet (bottom sheet) | Pause (dialog)`; `Home → DuelSetup → Duel (handover card ↔ board) → DuelResult` (the result pops everything above Home; a duel is never restored after a process death, it returns Home); `Settings → Paywall`.
 Screen ↔ design map: `docs/design/screen-map.md`.
 
