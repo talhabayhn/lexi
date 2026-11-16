@@ -18,7 +18,6 @@
     <string name="settings_sound">Sound effects</string>
     <string name="settings_haptics">Vibration</string>
     <string name="settings_speak_on_correct">Play pronunciation on a correct answer</string>
-    <string name="settings_classic_time">Classic mode time</string>
     <string name="settings_daily_reminder">Daily reminder</string>
     <string name="settings_reminder_show_word">Show a word in the reminder</string>
     <string name="settings_daily_goal">Daily goal</string>

@@ -37,7 +37,6 @@ import dev.talhabayhan.lexi.core.designsystem.component.ListRow
 import dev.talhabayhan.lexi.core.designsystem.component.ListRowValue
 import dev.talhabayhan.lexi.core.designsystem.component.NavSquareButton
 import dev.talhabayhan.lexi.core.designsystem.component.ProBanner
-import dev.talhabayhan.lexi.core.designsystem.format.formatClock
 import dev.talhabayhan.lexi.core.designsystem.format.formatTimeOfDay
 import dev.talhabayhan.lexi.core.designsystem.icon.LexiIcons
 import dev.talhabayhan.lexi.core.designsystem.modifier.lexiHeading
@@ -51,7 +50,6 @@ import dev.talhabayhan.lexi.feature.settings.generated.resources.Res
 import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_accent
 import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_analytics
 import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_back
-import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_classic_time
 import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_clue_language
 import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_clue_language_caption
 import dev.talhabayhan.lexi.feature.settings.generated.resources.settings_clue_language_description
@@ -163,12 +161,6 @@ private fun SettingsPage(state: SettingsUiState, onIntent: (SettingsIntent) -> U
                 checked = state.speakOnCorrect,
                 onCheckedChange = { onIntent(SettingsIntent.SetSpeakOnCorrect(it)) },
             )
-            ListRow(
-                label = stringResource(Res.string.settings_classic_time),
-                onClick = { onIntent(SettingsIntent.CycleClassicTime) },
-            ) {
-                ListRowValue(formatClock(state.classicTimeLimitSeconds))
-            }
         }
         Section(Res.string.settings_section_learning) {
             ListRow(

@@ -56,7 +56,7 @@ class SettingsViewModelTest {
 
     @Test
     fun `the first state is the stored settings when the store is already loaded`() = runTest {
-        repository.update { it.copy(soundEffects = false, dailyGoalWheels = 5, classicTimeLimitSeconds = 300) }
+        repository.update { it.copy(soundEffects = false, dailyGoalWheels = 5) }
         // The collector is never started: the very first state must already hold the stored values.
         Dispatchers.setMain(StandardTestDispatcher())
 
@@ -64,7 +64,6 @@ class SettingsViewModelTest {
             val first = awaitItem()
             assertFalse(first.soundEffects)
             assertEquals(5, first.dailyGoalWheels)
-            assertEquals(300, first.classicTimeLimitSeconds)
             cancelAndIgnoreRemainingEvents()
         }
     }
@@ -75,7 +74,6 @@ class SettingsViewModelTest {
             it.copy(
                 soundEffects = false,
                 speakOnCorrect = false,
-                classicTimeLimitSeconds = 300,
                 dailyGoalWheels = 3,
                 appLanguage = AppLanguage.TR,
                 accent = dev.talhabayhan.lexi.core.domain.settings.Accent.UK,
@@ -87,7 +85,6 @@ class SettingsViewModelTest {
         assertFalse(state.soundEffects)
         assertTrue(state.haptics)
         assertFalse(state.speakOnCorrect)
-        assertEquals(300, state.classicTimeLimitSeconds)
         assertEquals(3, state.dailyGoalWheels)
         assertEquals(AppLanguage.TR, state.appLanguage)
         assertEquals(dev.talhabayhan.lexi.core.domain.settings.Accent.UK, state.accent)
@@ -112,24 +109,6 @@ class SettingsViewModelTest {
         viewModel.onIntent(SettingsIntent.SetHaptics(true))
         assertTrue(repository.settings.value.haptics)
         assertTrue(viewModel.state.value.haptics)
-    }
-
-    @Test
-    fun `cycle classic time cycles through allowed options`() = runTest {
-        val viewModel = viewModel()
-        assertEquals(180, viewModel.state.value.classicTimeLimitSeconds)
-
-        viewModel.onIntent(SettingsIntent.CycleClassicTime)
-        assertEquals(300, viewModel.state.value.classicTimeLimitSeconds)
-        assertEquals(300, repository.settings.value.classicTimeLimitSeconds)
-
-        viewModel.onIntent(SettingsIntent.CycleClassicTime)
-        assertEquals(420, viewModel.state.value.classicTimeLimitSeconds)
-        assertEquals(420, repository.settings.value.classicTimeLimitSeconds)
-
-        viewModel.onIntent(SettingsIntent.CycleClassicTime)
-        assertEquals(180, viewModel.state.value.classicTimeLimitSeconds)
-        assertEquals(180, repository.settings.value.classicTimeLimitSeconds)
     }
 
     @Test
@@ -209,10 +188,6 @@ class SettingsViewModelTest {
     @Test
     fun `explicit setters write to settings and update state`() = runTest {
         val viewModel = viewModel()
-
-        viewModel.onIntent(SettingsIntent.SetClassicTimeLimit(300))
-        assertEquals(300, repository.settings.value.classicTimeLimitSeconds)
-        assertEquals(300, viewModel.state.value.classicTimeLimitSeconds)
 
         viewModel.onIntent(SettingsIntent.SetDailyGoalWheels(5))
         assertEquals(5, repository.settings.value.dailyGoalWheels)

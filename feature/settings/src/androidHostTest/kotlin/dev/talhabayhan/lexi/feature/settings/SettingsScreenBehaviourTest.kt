@@ -211,14 +211,12 @@ class SettingsScreenBehaviourTest {
             LexiTheme(reducedMotion = true) { SettingsScreen(SettingsUiState(), onIntent = { intents += it }) }
         }
 
-        onNodeWithText("Klasik mod süresi").performClick()
         onNodeWithText("Günlük hedef").performClick()
         onNodeWithText("Arayüz dili").performClick()
         onNodeWithText("İngilizce aksanı").performClick()
 
         assertEquals(
             listOf(
-                SettingsIntent.CycleClassicTime,
                 SettingsIntent.CycleDailyGoal,
                 SettingsIntent.CycleAppLanguage,
                 SettingsIntent.CycleAccent,

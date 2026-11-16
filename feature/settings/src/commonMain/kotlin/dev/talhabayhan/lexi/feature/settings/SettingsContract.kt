@@ -4,7 +4,6 @@ import androidx.compose.runtime.Immutable
 import dev.talhabayhan.lexi.core.domain.reminder.ReminderTimes
 import dev.talhabayhan.lexi.core.domain.settings.Accent
 import dev.talhabayhan.lexi.core.domain.settings.AppLanguage
-import dev.talhabayhan.lexi.core.domain.settings.Settings
 
 /** What `11-settings` shows: the live settings, plus the state of the reminder sheet (DESIGN-DEBT, no design). */
 @Immutable
@@ -12,7 +11,6 @@ internal data class SettingsUiState(
     val soundEffects: Boolean = true,
     val haptics: Boolean = true,
     val speakOnCorrect: Boolean = true,
-    val classicTimeLimitSeconds: Int = Settings.DEFAULT_CLASSIC_TIME_LIMIT_SECONDS,
     val dailyGoalWheels: Int = 1,
     /** "Günlük hatırlatma": the stored switch; its row shows [reminderMinuteOfDay] when on. */
     val dailyReminder: Boolean = false,
@@ -41,15 +39,11 @@ internal sealed interface SettingsIntent {
 
     data class SetSpeakOnCorrect(val enabled: Boolean) : SettingsIntent
 
-    data object CycleClassicTime : SettingsIntent
-
     data object CycleDailyGoal : SettingsIntent
 
     data object CycleAppLanguage : SettingsIntent
 
     data object CycleAccent : SettingsIntent
-
-    data class SetClassicTimeLimit(val seconds: Int) : SettingsIntent
 
     data class SetDailyGoalWheels(val wheels: Int) : SettingsIntent
 

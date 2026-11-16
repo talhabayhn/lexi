@@ -3,7 +3,6 @@ package dev.talhabayhan.lexi.feature.settings
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dev.talhabayhan.lexi.core.domain.config.FeatureFlags
-import dev.talhabayhan.lexi.core.domain.game.GameConfig
 import dev.talhabayhan.lexi.core.domain.platform.AppLinks
 import dev.talhabayhan.lexi.core.domain.reminder.NotificationPermission
 import dev.talhabayhan.lexi.core.domain.reminder.PermissionStatus
@@ -37,7 +36,6 @@ internal class SettingsViewModel(
     private val permission: NotificationPermission,
     private val analytics: AnalyticsTracker,
     private val crashReporter: CrashReporter,
-    private val config: GameConfig = GameConfig(),
     flags: FeatureFlags = FeatureFlags(),
 ) : ViewModel() {
     // Starts from the stored values when they are already loaded, so the screen composes once with the real ones.
@@ -70,13 +68,6 @@ internal class SettingsViewModel(
 
             is SettingsIntent.SetSpeakOnCorrect -> write { it.copy(speakOnCorrect = intent.enabled) }
 
-            SettingsIntent.CycleClassicTime -> write { current ->
-                val options = config.classicTimeLimitOptionsSeconds
-                val idx = options.indexOf(current.classicTimeLimitSeconds)
-                val next = if (idx >= 0) options[(idx + 1) % options.size] else options.first()
-                current.copy(classicTimeLimitSeconds = next)
-            }
-
             SettingsIntent.CycleDailyGoal -> write { current ->
                 val idx = DAILY_GOAL_OPTIONS.indexOf(current.dailyGoalWheels)
                 val next = if (idx >= 0) {
@@ -99,8 +90,6 @@ internal class SettingsViewModel(
                 val next = if (current.accent == Accent.US) Accent.UK else Accent.US
                 current.copy(accent = next)
             }
-
-            is SettingsIntent.SetClassicTimeLimit -> write { it.copy(classicTimeLimitSeconds = intent.seconds) }
 
             is SettingsIntent.SetDailyGoalWheels -> write { it.copy(dailyGoalWheels = intent.wheels) }
 
@@ -196,7 +185,6 @@ private fun withStored(settings: Settings, current: SettingsUiState = SettingsUi
     soundEffects = settings.soundEffects,
     haptics = settings.haptics,
     speakOnCorrect = settings.speakOnCorrect,
-    classicTimeLimitSeconds = settings.classicTimeLimitSeconds,
     dailyGoalWheels = settings.dailyGoalWheels,
     dailyReminder = settings.dailyReminder,
     reminderMinuteOfDay = settings.reminderMinuteOfDay,
