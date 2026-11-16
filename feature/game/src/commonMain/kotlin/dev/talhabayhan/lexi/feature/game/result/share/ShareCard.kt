@@ -19,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import dev.talhabayhan.lexi.core.designsystem.component.DecorShape
@@ -32,7 +33,7 @@ import dev.talhabayhan.lexi.core.designsystem.component.rememberWheelLetterLabel
 import dev.talhabayhan.lexi.core.designsystem.modifier.lexiSurface
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.core.domain.game.GameMode
-import dev.talhabayhan.lexi.core.domain.platform.StoreLinks
+import dev.talhabayhan.lexi.core.domain.platform.AppLinks
 import dev.talhabayhan.lexi.core.domain.share.ShareCaption
 import dev.talhabayhan.lexi.core.domain.share.ShareCard
 import dev.talhabayhan.lexi.core.domain.share.ShareCell
@@ -67,7 +68,7 @@ private const val SEPARATOR = " · "
  * out when the card has none. A blank [link] leaves the footer with the wordmark only (same height, no gap).
  */
 @Composable
-internal fun ShareCard(card: ShareCard, modifier: Modifier = Modifier, link: String = StoreLinks.SHARE_LINK_LABEL) {
+internal fun ShareCard(card: ShareCard, modifier: Modifier = Modifier, link: String = shareLink()) {
     val colors = LexiTheme.colors
     val dimens = LexiTheme.dimens
     val description = stringResource(Res.string.share_card_content_description, card.correct, card.total)
@@ -205,10 +206,17 @@ private fun SlotOutcome.chipState(): WheelLetterState = when (this) {
 }
 
 /**
+ * The landing page in the language the UI is in (Compose resources follow the same locale); the card footer and the
+ * share text both use it, so the two always show the same link.
+ */
+@Composable
+internal fun shareLink(): String = AppLinks.landing(turkish = Locale.current.language == "tr")
+
+/**
  * The text shared with the card: the caption, then "Lexi'de oynuyorum." or, with a [link], "Lexi'de oynuyorum: link".
  */
 @Composable
-internal fun shareText(card: ShareCard, link: String = StoreLinks.SHARE_LINK_LABEL): String {
+internal fun shareText(card: ShareCard, link: String = shareLink()): String {
     val caption = when (val c = card.caption) {
         is ShareCaption.Daily -> stringResource(Res.string.share_caption_daily, c.correct, card.total)
         is ShareCaption.Time -> stringResource(Res.string.share_caption_time, c.seconds)

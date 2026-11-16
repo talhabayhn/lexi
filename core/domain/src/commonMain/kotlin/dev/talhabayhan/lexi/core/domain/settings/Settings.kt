@@ -71,6 +71,14 @@ public enum class AppLanguage(public val localeTag: String?) {
     SYSTEM(null),
     TR("tr"),
     EN("en"),
+    ;
+
+    /** Whether the UI is Turkish: the chosen language, or for [SYSTEM] the device language ([deviceLanguageTag]). */
+    public fun isTurkish(deviceLanguageTag: String): Boolean = when (this) {
+        TR -> true
+        EN -> false
+        SYSTEM -> deviceLanguageTag.substringBefore('-').equals("tr", ignoreCase = true)
+    }
 }
 
 public typealias UiLanguage = AppLanguage

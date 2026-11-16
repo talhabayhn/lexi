@@ -176,7 +176,7 @@ closing it) allows **one more** ask 7 days later, only while the OS dialog can s
 ## 7. Share-card captions (432×540 card)
 
 The share text sent with the card image: caption (`ShareCaption` from `ShareCardBuilder`) + new line + message;
-`share_message_link` only when `StoreLinks.SHARE_LINK_LABEL` is set. `{n}` of `share_caption_time` is the seconds left
+`share_message_link` takes `AppLinks.landing` in the UI language (`share_message` without a link is for tests and previews only). `{n}` of `share_caption_time` is the seconds left
 on the clock (what the card shows), not the playing time.
 
 | Key | TR | EN | Budget |

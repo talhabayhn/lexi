@@ -12,6 +12,9 @@ import java.util.Locale
 
 public actual val isIos: Boolean = false
 
+// applyLanguage() sets the default locale to the language the UI actually uses (incl. the per-app language).
+public actual fun deviceLanguageTag(): String = Locale.getDefault().toLanguageTag()
+
 public actual fun syncPlatformAppLanguage(language: AppLanguage) {
     // Android live switching is managed at Activity recreate time via AndroidPlatformLanguage.
 }

@@ -16,7 +16,7 @@ import androidx.compose.ui.unit.dp
 import dev.talhabayhan.lexi.core.designsystem.component.ReviewOutcome
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.core.domain.game.GameMode
-import dev.talhabayhan.lexi.core.domain.platform.StoreLinks
+import dev.talhabayhan.lexi.core.domain.platform.AppLinks
 import dev.talhabayhan.lexi.feature.game.result.share.ShareCardSamples
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
@@ -136,7 +136,7 @@ class ResultScreenBehaviourTest {
         val bitmap = assertNotNull(BitmapFactory.decodeByteArray(shared.png, 0, shared.png.size))
         assertEquals(1080 to 1350, bitmap.width to bitmap.height)
         assertEquals(
-            "A'dan Z'ye 34 sn kala bitirdim. Yenebilir misin?\nLexi'de oynuyorum: ${StoreLinks.SHARE_LINK_LABEL}",
+            "A'dan Z'ye 34 sn kala bitirdim. Yenebilir misin?\nLexi'de oynuyorum: ${AppLinks.LANDING_TR}",
             shared.text,
         )
         // Never visible and not in the accessibility tree.

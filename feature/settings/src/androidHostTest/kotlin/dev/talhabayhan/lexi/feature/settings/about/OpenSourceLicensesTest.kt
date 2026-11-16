@@ -3,6 +3,7 @@ package dev.talhabayhan.lexi.feature.settings.about
 import app.cash.turbine.test
 import dev.talhabayhan.lexi.core.domain.AppInfo
 import dev.talhabayhan.lexi.core.testing.FakeReviewRequester
+import dev.talhabayhan.lexi.core.testing.FakeSettingsRepository
 import kotlinx.coroutines.test.runTest
 import org.junit.Test
 import kotlin.test.assertEquals
@@ -55,7 +56,7 @@ class OpenSourceLicensesTest {
 
     @Test
     fun `about viewmodel emits navigate back on back intent`() = runTest {
-        val viewModel = AboutViewModel(FakeReviewRequester())
+        val viewModel = AboutViewModel(FakeReviewRequester(), FakeSettingsRepository())
         viewModel.effects.test {
             viewModel.onIntent(AboutIntent.Back)
             assertEquals(AboutEffect.NavigateBack, awaitItem())

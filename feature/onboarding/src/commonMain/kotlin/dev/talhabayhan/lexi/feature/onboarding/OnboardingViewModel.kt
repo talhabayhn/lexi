@@ -8,9 +8,11 @@ import dev.talhabayhan.lexi.core.domain.platform.AppLinks
 import dev.talhabayhan.lexi.core.domain.repository.CardRepository
 import dev.talhabayhan.lexi.core.domain.repository.OnboardingRepository
 import dev.talhabayhan.lexi.core.domain.repository.SettingsRepository
+import dev.talhabayhan.lexi.core.domain.settings.AppLanguage
 import dev.talhabayhan.lexi.core.domain.telemetry.AnalyticsEvent
 import dev.talhabayhan.lexi.core.domain.telemetry.AnalyticsTracker
 import dev.talhabayhan.lexi.core.domain.telemetry.CrashReporter
+import dev.talhabayhan.lexi.core.platform.language.isTurkishUi
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.channels.Channel
@@ -86,7 +88,9 @@ internal class OnboardingViewModel(
 
             is OnboardingIntent.SetAnalyticsConsent -> setAnalyticsConsent(intent.enabled)
 
-            OnboardingIntent.OpenPrivacy -> effectChannel.trySend(OnboardingEffect.OpenUrl(AppLinks.PRIVACY_POLICY))
+            OnboardingIntent.OpenPrivacy -> effectChannel.trySend(
+                OnboardingEffect.OpenUrl(AppLinks.privacyPolicy(uiIsTurkish())),
+            )
 
             OnboardingIntent.Back -> when (state.value.currentStep) {
                 OnboardingStep.LevelTestIntro -> setStep(OnboardingStep.LevelChoice)
@@ -129,6 +133,8 @@ internal class OnboardingViewModel(
         savedState[STEP_KEY] = step.name
         mutableState.update { it.copy(currentStep = step) }
     }
+
+    private fun uiIsTurkish(): Boolean = (settings.loaded.value?.appLanguage ?: AppLanguage.SYSTEM).isTurkishUi()
 
     private fun setAnalyticsConsent(enabled: Boolean) {
         mutableState.update { it.copy(analyticsConsent = enabled) }

@@ -4,6 +4,7 @@ import androidx.lifecycle.SavedStateHandle
 import app.cash.turbine.test
 import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.core.domain.platform.AppLinks
+import dev.talhabayhan.lexi.core.domain.settings.AppLanguage
 import dev.talhabayhan.lexi.core.domain.telemetry.AnalyticsEvent
 import dev.talhabayhan.lexi.core.testing.FakeAnalyticsTracker
 import dev.talhabayhan.lexi.core.testing.FakeCardRepository
@@ -391,7 +392,19 @@ class OnboardingViewModelTest {
     }
 
     @Test
+    fun `the privacy link opens the Turkish policy for a Turkish UI`() = runTest {
+        settings.update { it.copy(appLanguage = AppLanguage.TR) }
+        val vm = viewModel()
+
+        vm.effects.test {
+            vm.onIntent(OnboardingIntent.OpenPrivacy)
+            assertEquals(OnboardingEffect.OpenUrl("https://talhabayhn.github.io/lexi/tr/privacy/"), awaitItem())
+        }
+    }
+
+    @Test
     fun `the privacy link opens the policy`() = runTest {
+        settings.update { it.copy(appLanguage = AppLanguage.EN) }
         val vm = viewModel()
 
         vm.effects.test {

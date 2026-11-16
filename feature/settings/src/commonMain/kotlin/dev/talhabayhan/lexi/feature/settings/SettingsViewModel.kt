@@ -15,6 +15,7 @@ import dev.talhabayhan.lexi.core.domain.settings.Settings
 import dev.talhabayhan.lexi.core.domain.telemetry.AnalyticsEvent
 import dev.talhabayhan.lexi.core.domain.telemetry.AnalyticsTracker
 import dev.talhabayhan.lexi.core.domain.telemetry.CrashReporter
+import dev.talhabayhan.lexi.core.platform.language.isTurkishUi
 import dev.talhabayhan.lexi.core.platform.language.syncPlatformAppLanguage
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.channels.Channel
@@ -136,11 +137,17 @@ internal class SettingsViewModel(
 
             SettingsIntent.OpenAbout -> effectChannel.trySend(SettingsEffect.NavigateToAbout)
 
-            SettingsIntent.OpenPrivacy -> effectChannel.trySend(SettingsEffect.OpenUrl(AppLinks.PRIVACY_POLICY))
+            SettingsIntent.OpenPrivacy -> effectChannel.trySend(
+                SettingsEffect.OpenUrl(AppLinks.privacyPolicy(uiIsTurkish())),
+            )
 
-            SettingsIntent.OpenTerms -> effectChannel.trySend(SettingsEffect.OpenUrl(AppLinks.TERMS_OF_SERVICE))
+            SettingsIntent.OpenTerms -> effectChannel.trySend(
+                SettingsEffect.OpenUrl(AppLinks.termsOfService(uiIsTurkish())),
+            )
         }
     }
+
+    private fun uiIsTurkish(): Boolean = state.value.appLanguage.isTurkishUi()
 
     /** Granted: on. Can ask: our pre-prompt (it asks the OS and turns the reminder on). Blocked: stays off, hint. */
     private fun turnReminderOn() {

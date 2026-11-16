@@ -253,6 +253,7 @@ class SettingsViewModelTest {
 
     @Test
     fun `open privacy emits open url effect with privacy link`() = runTest {
+        repository.update { it.copy(appLanguage = AppLanguage.EN) }
         val viewModel = viewModel()
         viewModel.effects.test {
             viewModel.onIntent(SettingsIntent.OpenPrivacy)
@@ -262,7 +263,32 @@ class SettingsViewModelTest {
     }
 
     @Test
+    fun `a Turkish UI opens the Turkish privacy and terms pages`() = runTest {
+        repository.update { it.copy(appLanguage = AppLanguage.TR) }
+        val viewModel = viewModel()
+        viewModel.effects.test {
+            viewModel.onIntent(SettingsIntent.OpenPrivacy)
+            assertEquals(SettingsEffect.OpenUrl("https://talhabayhn.github.io/lexi/tr/privacy/"), awaitItem())
+
+            viewModel.onIntent(SettingsIntent.OpenTerms)
+            assertEquals(SettingsEffect.OpenUrl("https://talhabayhn.github.io/lexi/tr/terms/"), awaitItem())
+        }
+    }
+
+    @Test
+    fun `switching the language switches the links`() = runTest {
+        repository.update { it.copy(appLanguage = AppLanguage.TR) }
+        val viewModel = viewModel()
+        viewModel.effects.test {
+            viewModel.onIntent(SettingsIntent.SetAppLanguage(AppLanguage.EN))
+            viewModel.onIntent(SettingsIntent.OpenPrivacy)
+            assertEquals(SettingsEffect.OpenUrl(AppLinks.PRIVACY_POLICY), awaitItem())
+        }
+    }
+
+    @Test
     fun `open terms emits open url effect with terms link`() = runTest {
+        repository.update { it.copy(appLanguage = AppLanguage.EN) }
         val viewModel = viewModel()
         viewModel.effects.test {
             viewModel.onIntent(SettingsIntent.OpenTerms)
