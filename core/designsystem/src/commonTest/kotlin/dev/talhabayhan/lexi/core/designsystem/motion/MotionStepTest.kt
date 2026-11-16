@@ -20,7 +20,7 @@ class MotionStepTest {
     }
 
     @Test
-    fun `progress is 0 before the delay, linear inside and 1 after the end`() {
+    fun `progress is 0 before the delay and linear inside and 1 after the end`() {
         val step = MotionStep(delayMillis = 100, durationMillis = 200)
 
         assertEquals(0f, step.progressAt(0))

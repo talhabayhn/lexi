@@ -52,6 +52,8 @@ public class FrameMonitor(
             return
         }
         val previous = lastFrameNanos
+        // Two feeders (host + rememberMotionTier) report the same frame twice: count it once.
+        if (frameTimeNanos == previous) return
         lastFrameNanos = frameTimeNanos
         if (previous == NO_FRAME) return
         if (frameTimeNanos - previous > slowFrameNanos) {
@@ -74,7 +76,10 @@ public class FrameMonitor(
     }
 }
 
-/** Feeds [monitor] from the composition's frame clock while it has a registered transition. */
+/**
+ * Feeds [monitor] from the composition's frame clock while it has a registered transition. Safe to compose more than
+ * once for the same monitor (each frame is counted once).
+ */
 @Composable
 public fun FrameMonitorEffect(monitor: FrameMonitor) {
     LaunchedEffect(monitor) {

@@ -6,6 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
 
+/** Low-RAM is a fixed device property, read once; Android has no low-power signal here (open item). */
 @Composable
 internal actual fun deviceMotionSignals(): MotionSignals {
     val context = LocalContext.current

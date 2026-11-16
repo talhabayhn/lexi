@@ -110,4 +110,18 @@ class FrameMonitorTest {
 
         assertTrue(monitor.slowStreakDetected)
     }
+
+    @Test
+    fun `the same frame reported twice is counted once`() {
+        val monitor = FrameMonitor()
+        monitor.beginTransition()
+        var t = 0L
+        repeat(4) {
+            monitor.onFrame(t)
+            monitor.onFrame(t)
+            t += 30_000_000L
+        }
+
+        assertTrue(monitor.slowStreakDetected)
+    }
 }

@@ -66,6 +66,8 @@ than the prototype's sRGB mix.
 
 - No new library or module: `compose-ui-test` is added to `:shared`'s test source sets only (catalog entries).
 - `LetterMorphLayer.png` was recorded locally; re-record on Linux (`screenshots-record`) before a merge to `main`.
+- While a morph runs the host swallows touches; phase 3 must also block system back (`GameBackHandler` /
+  `NavigationBackHandler`) until the overlay's `onFinished`.
 - Phase 3 must call `MorphOverlayState.markReady()` once the game's data is loaded and its board composed, put
   `Modifier.morphAnchor` on the OYNA button and the wheel marker, and start the game clock only after the board
   entrance (`FlowMotion.boardSettledMillis` after the shrink start).

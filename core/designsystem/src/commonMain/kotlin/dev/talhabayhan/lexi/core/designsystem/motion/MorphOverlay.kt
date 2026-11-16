@@ -12,6 +12,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.withFrameMillis
 import androidx.compose.ui.Alignment
@@ -21,6 +22,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.graphics.TransformOrigin
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.layout.positionInWindow
 import androidx.compose.ui.tooling.preview.Preview
@@ -39,6 +41,9 @@ public class MorphOverlayState(public val anchors: MorphAnchors = MorphAnchors()
         private set
     internal var elapsedMillis by mutableLongStateOf(0L)
     internal var shrinkStartMillis: Long? by mutableStateOf(null)
+
+    /** Target window rect when the shrink started; used if the marker's anchor goes away mid-shrink. */
+    internal var shrinkTargetInWindow: Rect? by mutableStateOf(null)
     internal var ready by mutableStateOf(false)
         private set
 
@@ -51,6 +56,7 @@ public class MorphOverlayState(public val anchors: MorphAnchors = MorphAnchors()
         run = MorphRun(source, targetKey, letter)
         elapsedMillis = 0L
         shrinkStartMillis = null
+        shrinkTargetInWindow = null
         ready = false
         return true
     }
@@ -63,6 +69,7 @@ public class MorphOverlayState(public val anchors: MorphAnchors = MorphAnchors()
     internal fun finish() {
         run = null
         shrinkStartMillis = null
+        shrinkTargetInWindow = null
         ready = false
     }
 }
@@ -75,7 +82,12 @@ internal class MorphRun(val sourceInWindow: Rect, val targetKey: Any, val letter
  * `Modifier.morphAnchor(key)` works on any screen below. All per-frame values are read in `graphicsLayer` /
  * `drawBehind` lambdas, so a running morph never recomposes or re-lays out anything: the ink is one full-screen layer
  * scaled and translated onto the current rectangle, the letter one text layer measured once and scaled.
- * [frameMonitor] (optional) is told about the transition so a slow device drops to [MotionTier.Lite].
+ * While a morph runs the host swallows all touches (phase 3 must also block system back).
+ *
+ * [frameMonitor] (optional, fed by the host itself) measures only the moving parts — expand + letter pop, and the
+ * shrink — not the hold, during which the NavHost builds the game screen under the ink; a slow first composition of
+ * the game must not downgrade the whole session to [MotionTier.Lite]. If the host leaves the composition mid-morph the
+ * state is reset and [onFinished] is not called.
  */
 @Composable
 public fun MorphOverlayHost(
@@ -93,27 +105,42 @@ public fun MorphOverlayHost(
     val hostOrigin = remember { mutableStateOf(Offset.Zero) }
     val run = state.run
 
+    val currentOnFinished by rememberUpdatedState(onFinished)
+    if (frameMonitor != null) FrameMonitorEffect(frameMonitor)
+
     LaunchedEffect(run) {
         if (run == null) return@LaunchedEffect
-        frameMonitor?.beginTransition()
+        val flow = motion.flow
+        val expandEnd = maxOf(flow.inkExpand.endMillis, flow.letterIn.endMillis).toLong()
+        var watching = false
+        fun watch(on: Boolean) {
+            if (on == watching || frameMonitor == null) return
+            if (on) frameMonitor.beginTransition() else frameMonitor.endTransition()
+            watching = on
+        }
+        var completed = false
         try {
             val startMillis = withFrameMillis { it }
-            var finished = false
-            while (!finished) {
+            while (!completed) {
                 withFrameMillis { now ->
                     val elapsed = now - startMillis
                     state.elapsedMillis = elapsed
-                    if (state.shrinkStartMillis == null && state.ready && state.anchors[run.targetKey] != null) {
-                        state.shrinkStartMillis = timeline.shrinkStartFor(elapsed)
+                    if (state.shrinkStartMillis == null && state.ready) {
+                        val target = state.anchors[run.targetKey]
+                        if (target != null && elapsed >= flow.inkShrink.delayMillis) {
+                            state.shrinkTargetInWindow = target
+                            state.shrinkStartMillis = timeline.shrinkStartFor(elapsed)
+                        }
                     }
-                    finished = timeline.isFinished(elapsed, state.shrinkStartMillis)
+                    watch(elapsed in flow.inkExpand.delayMillis..expandEnd || state.shrinkStartMillis != null)
+                    completed = timeline.isFinished(elapsed, state.shrinkStartMillis)
                 }
             }
         } finally {
-            frameMonitor?.endTransition()
+            watch(false)
+            state.finish()
         }
-        state.finish()
-        onFinished()
+        if (completed) currentOnFinished()
     }
 
     Box(modifier.fillMaxSize().onGloballyPositioned { hostOrigin.value = it.positionInWindow() }) {
@@ -127,9 +154,17 @@ public fun MorphOverlayHost(
                         elapsedMillis = state.elapsedMillis,
                         source = run.sourceInWindow.translate(-origin),
                         screen = screen,
-                        target = state.anchors[run.targetKey]?.translate(-origin),
+                        target = (state.anchors[run.targetKey] ?: state.shrinkTargetInWindow)?.translate(-origin),
                         shrinkStartMillis = state.shrinkStartMillis,
                     )
+                },
+            )
+            // Swallow every touch so nothing under the ink (dialog, game board) reacts before the clock starts.
+            Box(
+                Modifier.matchParentSize().pointerInput(Unit) {
+                    awaitPointerEventScope {
+                        while (true) awaitPointerEvent().changes.forEach { it.consume() }
+                    }
                 },
             )
         }

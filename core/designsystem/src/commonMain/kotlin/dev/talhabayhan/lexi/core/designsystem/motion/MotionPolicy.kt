@@ -29,6 +29,9 @@ public fun rememberMotionTier(policy: MotionPolicy): MotionTier {
     return policy.tier(signals)
 }
 
-/** OS signals for the tier ([MotionSignals.reducedMotion] is filled in by [rememberMotionTier]); observed. */
+/**
+ * OS signals for the tier ([MotionSignals.reducedMotion] is filled in by [rememberMotionTier]). iOS Low Power Mode is
+ * observed; Android's low-RAM flag is fixed per device and read once.
+ */
 @Composable
 internal expect fun deviceMotionSignals(): MotionSignals

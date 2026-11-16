@@ -100,7 +100,9 @@ flip 160 → 186 ms, morph expand/shrink 300 → 349 ms; letter morph total (exp
 - **Quality tiers** (`MotionTier`, `MotionPolicy`): Full / Lite / Minimal. Lite keeps timing and structure but drops
   tilt and shadow growth, replaces Y flips with scale 0.92 → 1 + fade, drops the letter pop, and lets staggered groups
   enter together. Automatic downgrade: 3 consecutive frames > 24 ms during a registered transition (`FrameMonitor`)
-  ⇒ Lite for the rest of the session. Android `isLowRamDevice` and iOS Low Power Mode start in Lite. Reduced motion
+  ⇒ Lite for the rest of the session. Only the moving parts are registered: for the morph the expand + letter pop and
+  the shrink, **not the hold** (the game screen is composed under the ink then, and its first frames must not
+  downgrade the session). Android `isLowRamDevice` and iOS Low Power Mode start in Lite. Reduced motion
   ⇒ Minimal.
 - **Acceptance:** macrobenchmark `FrameTimingMetric` P95 < 16.6 ms and no frame > 100 ms per journey
   (`benchmark/.../VideoFlowBenchmark.kt`, placeholders until phase 3). Device matrix: iPhone 8, SE (2nd gen), 11,
