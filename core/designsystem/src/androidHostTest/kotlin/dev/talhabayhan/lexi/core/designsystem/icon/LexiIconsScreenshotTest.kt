@@ -59,6 +59,11 @@ private fun IconSheet() {
         "Backspace" to LexiIcons.Backspace,
         "Speaker" to LexiIcons.Speaker,
         "Search" to LexiIcons.Search,
+        "ChevronDown" to LexiIcons.ChevronDown,
+        "Notebook" to LexiIcons.Notebook,
+        "Stats" to LexiIcons.Stats,
+        "Exams" to LexiIcons.Exams,
+        "Duel" to LexiIcons.Duel,
     )
     Column(
         modifier = Modifier.fillMaxSize().background(colors.cream).padding(20.dp),

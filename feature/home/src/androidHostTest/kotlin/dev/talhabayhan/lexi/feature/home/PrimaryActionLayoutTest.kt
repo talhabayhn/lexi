@@ -2,7 +2,8 @@ package dev.talhabayhan.lexi.feature.home
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.test.ExperimentalTestApi
-import androidx.compose.ui.test.onAllNodesWithText
+import androidx.compose.ui.test.hasContentDescription
+import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.onRoot
 import androidx.compose.ui.test.runComposeUiTest
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
@@ -23,14 +24,15 @@ import kotlin.test.assertTrue
 @GraphicsMode(GraphicsMode.Mode.NATIVE)
 abstract class PrimaryActionLayoutChecks(private val labels: List<String>) {
     @Test
-    fun `home keeps play on screen`() = assertVisible { HomeScreen(HomeSampleState, onIntent = {}) }
+    fun `home keeps play and the footer on screen`() = assertVisible { HomeScreen(HomeSampleState, onIntent = {}) }
 
     private fun assertVisible(screen: @Composable () -> Unit) = runComposeUiTest {
         setContent { LexiTheme(reducedMotion = true) { LexiViewport { screen() } } }
         // The unclipped layout bounds: a button scrolled out of its viewport still lies below the screen.
         val rootHeight = onRoot().fetchSemanticsNode().size.height
         labels.forEach { label ->
-            val node = onAllNodesWithText(label).fetchSemanticsNodes().maxBy { it.positionInRoot.y }
+            val node = onAllNodes(hasText(label) or hasContentDescription(label, substring = true))
+                .fetchSemanticsNodes().maxBy { it.positionInRoot.y }
             val top = node.positionInRoot.y
             val bottom = top + node.size.height
             assertTrue(top >= 0f, "$label starts above the screen: $top")
@@ -39,8 +41,8 @@ abstract class PrimaryActionLayoutChecks(private val labels: List<String>) {
     }
 }
 
-private val TR = listOf("OYNA")
-private val EN = listOf("PLAY")
+private val TR = listOf("OYNA", "Defter", "İstatistik", "Sınavlar", "Düello")
+private val EN = listOf("PLAY", "Notebook", "Statistics", "Exams", "Duel")
 
 @Config(sdk = [36], qualifiers = "tr-w320dp-h568dp-xhdpi")
 class PrimaryActionLayoutTr100Test : PrimaryActionLayoutChecks(TR)

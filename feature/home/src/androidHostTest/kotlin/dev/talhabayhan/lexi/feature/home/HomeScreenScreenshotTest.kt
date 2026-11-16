@@ -3,180 +3,149 @@ package dev.talhabayhan.lexi.feature.home
 import com.github.takahirom.roborazzi.captureRoboImage
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiViewport
+import dev.talhabayhan.lexi.core.domain.game.GameMode
 import dev.talhabayhan.lexi.core.domain.goal.DailyGoalProgress
+import dev.talhabayhan.lexi.core.domain.model.CategoryId
+import dev.talhabayhan.lexi.core.domain.model.Level
+import kotlinx.collections.immutable.persistentListOf
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
 import org.robolectric.annotation.GraphicsMode
 
-/** The stateless home at the size and scale of `docs/design/screens/02-home.png` (390 × 844dp, xhdpi = 2×), in Turkish. */
+/**
+ * The stateless home at the size and scale of `docs/design/screens/02c-home-v2.png` (390 × 844dp, xhdpi = 2×): the
+ * board's frames (TR default, EN B2, daily completed, category sheet, 0 / 120 due reviews, 360 × 640 at 100 % and
+ * 200 % font) and the other states.
+ */
 @RunWith(RobolectricTestRunner::class)
 @GraphicsMode(GraphicsMode.Mode.NATIVE)
 @Config(sdk = [36], qualifiers = "tr-w390dp-h844dp-xhdpi")
 class HomeScreenScreenshotTest {
 
+    /** Board frame 01. */
     @Test
-    fun designSample() {
-        captureRoboImage("src/androidHostTest/screenshots/HomeScreen.png") {
-            LexiTheme(reducedMotion = false) { HomeScreen(state = HomeSampleState, onIntent = {}) }
-        }
-    }
+    fun designSample() = capture("HomeScreen", HomeSampleState)
+
+    /** Board frame 02. */
+    @Test
+    @Config(qualifiers = "en-w390dp-h844dp-xhdpi")
+    fun englishB2() = capture(
+        "HomeScreenEnB2",
+        HomeSampleState.copy(
+            streakDays = 1,
+            selectedLevel = Level.B2,
+            selectedMode = GameMode.HARDCORE,
+            selectedCategory = CategoryId("food-drink"),
+        ),
+    )
+
+    /** Board frame 03. */
+    @Test
+    fun dailyCompleted() = capture(
+        "HomeScreenDailyPlayed",
+        HomeSampleState.copy(
+            streakDays = 8,
+            dailyState = DailyCardState.AlreadyPlayed(score = 1840, hoursUntilNext = 5, minutesUntilNext = 12),
+            dailyGoalProgress = DailyGoalProgress(done = 1, goal = 1, reached = true),
+        ),
+    )
+
+    /** Board frame 04 (reduced motion: the sheet is already in place). */
+    @Test
+    fun categorySheet() = capture("HomeScreenCategorySheet", HomeSampleState.copy(categorySheetOpen = true))
+
+    /** Board frame 05: no due reviews (no badge), NAT (no category row), Practice, no streak (no pill). */
+    @Test
+    fun natNothingDue() = capture(
+        "HomeScreenNatNothingDue",
+        HomeSampleState.copy(
+            streakDays = 0,
+            dueReviews = 0,
+            selectedLevel = Level.NAT,
+            selectedMode = GameMode.PRACTICE,
+            categories = CategoriesState.Loaded(persistentListOf()),
+        ),
+    )
+
+    /** Board frame 06: 120 due reviews show "99+". */
+    @Test
+    fun manyDue() = capture(
+        "HomeScreenDue120",
+        HomeSampleState.copy(streakDays = 3, dueReviews = 120, selectedLevel = Level.A2),
+    )
+
+    /** The sheet with a category selected (ink card, yellow check badge; Karışık back to red). */
+    @Test
+    fun categorySheetCategorySelected() = capture(
+        "HomeScreenCategorySheetSelected",
+        HomeSampleState.copy(categorySheetOpen = true, selectedCategory = CategoryId("food-drink")),
+    )
+
+    /** From font scale 1.3 the cards stack in one column. */
+    @Test
+    @Config(fontScale = 2.0f)
+    fun categorySheetOneColumn() =
+        capture("HomeScreenCategorySheet_fontScale200", HomeSampleState.copy(categorySheetOpen = true))
 
     @Test
-    fun nothingPlayedYet() {
-        captureRoboImage("src/androidHostTest/screenshots/HomeScreenEmpty.png") {
-            LexiTheme(reducedMotion = false) { HomeScreen(state = HomeUiState(), onIntent = {}) }
-        }
-    }
+    @Config(qualifiers = "en-w390dp-h844dp-xhdpi")
+    fun categorySheetEnglish() = capture(
+        "HomeScreenCategorySheetEn",
+        HomeSampleState.copy(categorySheetOpen = true, selectedCategory = CategoryId("home")),
+    )
 
     @Test
-    fun dailyAlreadyPlayed() {
-        captureRoboImage("src/androidHostTest/screenshots/HomeScreenDailyPlayed.png") {
-            LexiTheme(reducedMotion = false) {
-                HomeScreen(
-                    state = HomeSampleState.copy(
-                        dailyState = DailyCardState.AlreadyPlayed(
-                            score = 310,
-                            hoursUntilNext = 6,
-                            minutesUntilNext = 42,
-                        ),
-                    ),
-                    onIntent = {},
-                )
-            }
-        }
-    }
+    fun dailyUnavailable() =
+        capture("HomeScreenDailyUnavailable", HomeSampleState.copy(dailyState = DailyCardState.Unavailable))
 
     @Test
-    fun dailyUnavailable() {
-        captureRoboImage("src/androidHostTest/screenshots/HomeScreenDailyUnavailable.png") {
-            LexiTheme(reducedMotion = false) {
-                HomeScreen(
-                    state = HomeSampleState.copy(dailyState = DailyCardState.Unavailable),
-                    onIntent = {},
-                )
-            }
-        }
-    }
+    fun nothingPlayedYet() = capture("HomeScreenEmpty", HomeUiState())
 
     @Test
-    fun goalProgress0Of3() {
-        captureRoboImage("src/androidHostTest/screenshots/HomeScreenGoal0Of3.png") {
-            LexiTheme(reducedMotion = false) {
-                HomeScreen(
-                    state = HomeSampleState.copy(
-                        dailyGoalProgress = DailyGoalProgress(done = 0, goal = 3, reached = false),
-                    ),
-                    onIntent = {},
-                )
-            }
-        }
-    }
-
-    @Test
-    fun goalProgress2Of3() {
-        captureRoboImage("src/androidHostTest/screenshots/HomeScreenGoal2Of3.png") {
-            LexiTheme(reducedMotion = false) {
-                HomeScreen(
-                    state = HomeSampleState.copy(
-                        dailyGoalProgress = DailyGoalProgress(done = 2, goal = 3, reached = false),
-                    ),
-                    onIntent = {},
-                )
-            }
-        }
-    }
-
-    @Test
-    fun goalProgressReached() {
-        captureRoboImage("src/androidHostTest/screenshots/HomeScreenGoalReached.png") {
-            LexiTheme(reducedMotion = false) {
-                HomeScreen(
-                    state = HomeSampleState.copy(
-                        dailyGoalProgress = DailyGoalProgress(done = 3, goal = 3, reached = true),
-                    ),
-                    onIntent = {},
-                )
-            }
-        }
-    }
-
-    /** More wheels than the goal (5 of 3): the chip stays "3/3" with the reached look; the stored count is 5. */
-    @Test
-    fun goalProgressExceeded() {
-        captureRoboImage("src/androidHostTest/screenshots/HomeScreenGoalExceeded.png") {
-            LexiTheme(reducedMotion = false) {
-                HomeScreen(
-                    state = HomeSampleState.copy(
-                        dailyGoalProgress = DailyGoalProgress(done = 5, goal = 3, reached = true),
-                    ),
-                    onIntent = {},
-                )
-            }
-        }
-    }
-
-    @Test
-    @Config(fontScale = 1.3f)
-    fun goalProgressLargeFont() {
-        captureRoboImage("src/androidHostTest/screenshots/HomeScreenGoalLargeFont.png") {
-            LexiTheme(reducedMotion = false) {
-                HomeScreen(
-                    state = HomeSampleState.copy(
-                        dailyGoalProgress = DailyGoalProgress(done = 2, goal = 3, reached = false),
-                    ),
-                    onIntent = {},
-                )
-            }
-        }
-    }
+    fun categorySheetError() = capture(
+        "HomeScreenCategoryError",
+        HomeSampleState.copy(categories = CategoriesState.Error, categorySheetOpen = true),
+    )
 
     /** The gift toast floats over the unchanged home (reduced motion: already in place, no mid-slide frame). */
     @Test
-    fun dailyGiftNotice() {
-        captureRoboImage("src/androidHostTest/screenshots/HomeScreenDailyGiftNotice.png") {
-            LexiTheme(reducedMotion = true) {
-                HomeScreen(
-                    state = HomeSampleState.copy(
-                        dailyGiftNotice = DailyGiftNotice(DailyGiftNoticeType.Daily, 1),
-                    ),
-                    onIntent = {},
-                )
-            }
-        }
-    }
+    fun dailyGiftNotice() = capture(
+        "HomeScreenDailyGiftNotice",
+        HomeSampleState.copy(dailyGiftNotice = DailyGiftNotice(DailyGiftNoticeType.Daily, 1)),
+    )
+
+    /** Board frame 07. */
+    @Test
+    @Config(qualifiers = "tr-w360dp-h640dp-xhdpi")
+    fun w360h640() = capture("HomeLayout_w360h640")
+
+    /** Board frame 08. */
+    @Test
+    @Config(qualifiers = "tr-w360dp-h640dp-xhdpi", fontScale = 2.0f)
+    fun w360h640FontScale200() =
+        capture("HomeLayout_w360h640_fontScale200", HomeSampleState.copy(selectedLevel = Level.B2))
+
+    @Test
+    @Config(qualifiers = "tr-w360dp-h640dp-xhdpi", fontScale = 1.3f)
+    fun w360h640FontScale130() = capture("HomeLayout_w360h640_fontScale130")
 
     @Test
     @Config(qualifiers = "tr-w320dp-h568dp-xhdpi")
     fun w320h568() = capture("HomeLayout_w320h568")
 
     @Test
-    @Config(qualifiers = "tr-w360dp-h640dp-xhdpi")
-    fun w360h640() = capture("HomeLayout_w360h640")
-
-    @Test
-    @Config(qualifiers = "tr-w360dp-h780dp-xhdpi")
-    fun w360h780() = capture("HomeLayout_w360h780")
-
-    @Test
-    fun w390h844() = capture("HomeLayout_w390h844")
-
-    @Test
     @Config(qualifiers = "tr-w412dp-h915dp-xhdpi")
     fun w412h915() = capture("HomeLayout_w412h915")
-
-    @Test
-    @Config(fontScale = 1.15f)
-    fun fontScale115() = capture("HomeLayout_fontScale115")
 
     @Test
     @Config(fontScale = 1.3f)
     fun fontScale130() = capture("HomeLayout_fontScale130")
 
     @Test
-    @Config(qualifiers = "tr-w320dp-h568dp-xhdpi", fontScale = 1.3f)
-    fun w320h568FontScale130() = capture("HomeLayout_w320h568_fontScale130")
+    @Config(fontScale = 2.0f)
+    fun fontScale200() = capture("HomeLayout_fontScale200")
 
     /** Expanded tier (`LexiViewport`): large viewports ("smallest display size") draw the design scaled. */
     @Test
@@ -191,25 +160,9 @@ class HomeScreenScreenshotTest {
     @Config(qualifiers = "tr-w600dp-h960dp-mdpi")
     fun w600h960() = capture("HomeLayout_w600h960")
 
-    @Test
-    @Config(qualifiers = "tr-w360dp-h640dp-xhdpi", fontScale = 1.3f)
-    fun w360h640FontScale130() = capture("HomeLayout_w360h640_fontScale130")
-
-    @Test
-    @Config(qualifiers = "tr-w600dp-h960dp-mdpi", fontScale = 1.3f)
-    fun w600h960FontScale130() = capture("HomeLayout_w600h960_fontScale130")
-
-    @Test
-    @Config(qualifiers = "tr-w390dp-h844dp-xhdpi", fontScale = 2.0f)
-    fun fontScale200() = capture("HomeLayout_fontScale200")
-
-    @Test
-    @Config(qualifiers = "tr-w320dp-h568dp-xhdpi", fontScale = 2.0f)
-    fun w320h568FontScale200() = capture("HomeLayout_w320h568_fontScale200")
-
-    private fun capture(name: String) {
+    private fun capture(name: String, state: HomeUiState = HomeSampleState) {
         captureRoboImage("src/androidHostTest/screenshots/$name.png") {
-            LexiTheme(reducedMotion = false) { LexiViewport { HomeScreen(state = HomeSampleState, onIntent = {}) } }
+            LexiTheme(reducedMotion = true) { LexiViewport { HomeScreen(state = state, onIntent = {}) } }
         }
     }
 }

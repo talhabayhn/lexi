@@ -1,7 +1,6 @@
 package dev.talhabayhan.lexi.feature.home
 
 import app.cash.turbine.test
-import dev.talhabayhan.lexi.core.domain.config.FeatureFlags
 import dev.talhabayhan.lexi.core.domain.daily.GetDailyWheel
 import dev.talhabayhan.lexi.core.domain.game.GameConfig
 import dev.talhabayhan.lexi.core.domain.game.GameMode
@@ -19,14 +18,16 @@ import dev.talhabayhan.lexi.core.domain.session.DailyResult
 import dev.talhabayhan.lexi.core.domain.session.SessionResult
 import dev.talhabayhan.lexi.core.domain.settings.Settings
 import dev.talhabayhan.lexi.core.domain.srs.CardProgress
+import dev.talhabayhan.lexi.core.domain.stats.GetLevelCategories
 import dev.talhabayhan.lexi.core.domain.streak.GetStreakStatus
 import dev.talhabayhan.lexi.core.domain.time.AppClock
 import dev.talhabayhan.lexi.core.testing.FakeAnalyticsTracker
 import dev.talhabayhan.lexi.core.testing.FakeAppClock
 import dev.talhabayhan.lexi.core.testing.FakeCardRepository
+import dev.talhabayhan.lexi.core.testing.FakeCategoryRepository
 import dev.talhabayhan.lexi.core.testing.FakeContentVersionRepository
+import dev.talhabayhan.lexi.core.testing.FakeCrashReporter
 import dev.talhabayhan.lexi.core.testing.FakeDailyRepository
-import dev.talhabayhan.lexi.core.testing.FakeExamPackRepository
 import dev.talhabayhan.lexi.core.testing.FakeJokerRepository
 import dev.talhabayhan.lexi.core.testing.FakeNotificationPermission
 import dev.talhabayhan.lexi.core.testing.FakeProgressRepository
@@ -35,7 +36,9 @@ import dev.talhabayhan.lexi.core.testing.FakeSessionRepository
 import dev.talhabayhan.lexi.core.testing.FakeSettingsRepository
 import dev.talhabayhan.lexi.core.testing.FakeStreakRepository
 import dev.talhabayhan.lexi.core.testing.testAlphabetPool
-import dev.talhabayhan.lexi.core.testing.testExamPack
+import dev.talhabayhan.lexi.core.testing.testCard
+import dev.talhabayhan.lexi.core.testing.testCategory
+import kotlinx.collections.immutable.persistentListOf
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.TestScope
@@ -69,7 +72,16 @@ class HomeViewModelTest {
     private val getDailyWheel = GetDailyWheel(cards, contentVersion, daily, clock)
     private val getDailyGoalProgress = GetDailyGoalProgress(sessions, settings, clock)
     private val grantDailyJokers = GrantDailyJokers(jokers, streaks, clock, GameConfig())
-    private val examPacks = FakeExamPackRepository()
+    private val categories = FakeCategoryRepository(
+        listOf(
+            testCategory("mixed", "Karışık", "Mixed", sort = 0),
+            testCategory("food-drink", "Yiyecek ve içecek", "Food and drink", sort = 1),
+            testCategory("home", "Ev ve eşyalar", "Home", setOf(Level.A1, Level.A2), sort = 2),
+            testCategory("animals", "Hayvanlar", "Animals", setOf(Level.A2), sort = 3),
+            testCategory("general", "Genel", "General", setOf(Level.NAT), sort = 9),
+        ),
+    )
+    private val crashReporter = FakeCrashReporter()
     private val permission = FakeNotificationPermission(PermissionStatus.CAN_ASK)
     private val shouldShowPrePrompt = ShouldShowReminderPrePrompt(settings, sessions, permission, clock)
     private val reviewRequester = FakeReviewRequester()
@@ -79,7 +91,10 @@ class HomeViewModelTest {
     @BeforeTest
     fun setUp() {
         Dispatchers.setMain(UnconfinedTestDispatcher())
-        cards.cards = Level.entries.flatMap { testAlphabetPool(it) }
+        // As in the content: NAT cards are all in the neutral "general" bucket (no category selection).
+        cards.cards = Level.entries.flatMap { level ->
+            testAlphabetPool(level, category = if (level == Level.NAT) "general" else "food-drink")
+        }
     }
 
     @AfterTest
@@ -97,8 +112,10 @@ class HomeViewModelTest {
         grantDailyJokers,
         shouldShowPrePrompt,
         requestInAppReview,
-        examPacks,
-        FeatureFlags(),
+        settings,
+        cards,
+        GetLevelCategories(cards, categories),
+        crashReporter,
     )
 
     private fun runHomeTest(block: suspend TestScope.() -> Unit) = runTest {
@@ -114,20 +131,9 @@ class HomeViewModelTest {
             val state = awaitItem()
             assertEquals(0, state.streakDays)
             assertEquals(0, state.dueReviews)
-            assertEquals(0, state.learnedWords)
             assertEquals(15, state.dailyDay)
             assertEquals(10, state.dailyMonth)
             assertEquals(DailyCardState.Available, state.dailyState)
-        }
-    }
-
-    @Test
-    fun `exam tile lists only packs playable in this build`() = runHomeTest {
-        examPacks.packs = listOf(testExamPack("lgs", sort = 0), testExamPack("yds", isPro = true, sort = 1))
-        viewModel().state.test {
-            var state = awaitItem()
-            while (state.examPackNames.isEmpty()) state = awaitItem()
-            assertEquals(listOf("lgs"), state.examPackNames)
         }
     }
 
@@ -146,7 +152,6 @@ class HomeViewModelTest {
             val state = expectMostRecentItem()
             assertEquals(2, state.streakDays)
             assertEquals(1, state.dueReviews)
-            assertEquals(2, state.learnedWords)
 
             streaks.days = listOf(today - 2, today - 1, today)
             assertEquals(3, awaitItem().streakDays)
@@ -292,8 +297,10 @@ class HomeViewModelTest {
             GrantDailyJokers(jokers, streaks, dstClock, GameConfig()),
             shouldShowPrePrompt,
             requestInAppReview,
-            examPacks,
-            FeatureFlags(),
+            settings,
+            cards,
+            GetLevelCategories(cards, categories),
+            crashReporter,
         )
         vm.state.test {
             val state = awaitItem()
@@ -317,17 +324,20 @@ class HomeViewModelTest {
     }
 
     @Test
-    fun `play opens the level select`() = runHomeTest {
+    fun `play starts a game of the stored selection right away`() = runHomeTest {
+        settings.update {
+            it.copy(selectedLevel = Level.A1, homeMode = GameMode.HARDCORE, homeCategory = CategoryId("food-drink"))
+        }
         val viewModel = viewModel()
         viewModel.effects.test {
             viewModel.onIntent(HomeIntent.Play)
 
-            assertEquals(HomeEffect.NavigateToLevelSelect, awaitItem())
+            assertEquals(HomeEffect.StartGame(Level.A1, GameMode.HARDCORE, CategoryId("food-drink")), awaitItem())
         }
     }
 
     @Test
-    fun `the notebook tile opens the notebook`() = runHomeTest {
+    fun `the notebook key opens the notebook`() = runHomeTest {
         val viewModel = viewModel()
         viewModel.effects.test {
             viewModel.onIntent(HomeIntent.OpenNotebook)
@@ -337,7 +347,7 @@ class HomeViewModelTest {
     }
 
     @Test
-    fun `the statistics tile opens the statistics`() = runHomeTest {
+    fun `the statistics key opens the statistics`() = runHomeTest {
         val viewModel = viewModel()
         viewModel.effects.test {
             viewModel.onIntent(HomeIntent.OpenStats)
@@ -357,17 +367,7 @@ class HomeViewModelTest {
     }
 
     @Test
-    fun `the practice tile opens the practice select`() = runHomeTest {
-        val viewModel = viewModel()
-        viewModel.effects.test {
-            viewModel.onIntent(HomeIntent.OpenPractice)
-
-            assertEquals(HomeEffect.NavigateToPractice, awaitItem())
-        }
-    }
-
-    @Test
-    fun `the duel box opens the duel setup`() = runHomeTest {
+    fun `the duel key opens the duel setup`() = runHomeTest {
         val viewModel = viewModel()
         viewModel.effects.test {
             viewModel.onIntent(HomeIntent.OpenDuel)
@@ -377,7 +377,7 @@ class HomeViewModelTest {
     }
 
     @Test
-    fun `the exam packs tile opens the exam packs page`() = runHomeTest {
+    fun `the exams key opens the exam packs page`() = runHomeTest {
         val viewModel = viewModel()
         viewModel.effects.test {
             viewModel.onIntent(HomeIntent.OpenExamPacks)
@@ -683,5 +683,217 @@ class HomeViewModelTest {
             vm.onIntent(HomeIntent.Refresh)
             assertEquals(DailyGiftNotice(DailyGiftNoticeType.Daily, 1), expectMostRecentItem().dailyGiftNotice)
         }
+    }
+
+    // --- Level, mode and category on Home (02c-home-v2, home-v2-notes.md §2–§3) ---
+
+    private fun ready(state: HomeUiState) = state.categories !is CategoriesState.Loading
+
+    @Test
+    fun `the stored selection is there from the first state`() = runHomeTest {
+        settings.update {
+            it.copy(selectedLevel = Level.A2, homeMode = GameMode.PRACTICE, homeCategory = CategoryId("food-drink"))
+        }
+        val first = viewModel().state.value
+
+        assertEquals(Level.A2, first.selectedLevel)
+        assertEquals(GameMode.PRACTICE, first.selectedMode)
+        assertEquals(CategoryId("food-drink"), first.selectedCategory)
+    }
+
+    @Test
+    fun `a new player lands on the onboarding's level choice`() = runHomeTest {
+        // OnboardingRepository.saveSelectedLevel writes the same stored key that Settings.selectedLevel reads.
+        settings.update { it.copy(selectedLevel = Level.B1) }
+
+        val state = viewModel().state.value
+
+        assertEquals(Level.B1, state.selectedLevel)
+        assertEquals(GameMode.CLASSIC, state.selectedMode)
+        assertEquals(null, state.selectedCategory)
+    }
+
+    @Test
+    fun `a level stored just after home opened still wins until the player picks one`() = runHomeTest {
+        val viewModel = viewModel()
+        settings.update { it.copy(selectedLevel = Level.C1) }
+        assertEquals(Level.C1, viewModel.state.value.selectedLevel)
+
+        viewModel.onIntent(HomeIntent.SelectLevel(Level.A2))
+        // A later stored value no longer moves Home's own choice.
+        settings.update { it.copy(selectedLevel = Level.NAT) }
+        assertEquals(Level.A2, viewModel.state.value.selectedLevel)
+    }
+
+    @Test
+    fun `every level shows its card total and learned words`() = runHomeTest {
+        progress.save(listOf(CardProgress(testAlphabetPool(Level.A1).first().id, seen = 1, correct = 1)))
+
+        val levels = viewModel().state.value.levels
+
+        assertEquals(Level.entries, levels.map { it.level })
+        assertEquals(LevelProgressUi(Level.A1, 1, 26), levels.first { it.level == Level.A1 })
+        assertEquals(LevelProgressUi(Level.B2, 0, 26), levels.first { it.level == Level.B2 })
+    }
+
+    @Test
+    fun `changing the level resets the category to mixed and saves both`() = runHomeTest {
+        settings.update { it.copy(selectedLevel = Level.A1, homeCategory = CategoryId("home")) }
+        val viewModel = viewModel()
+
+        viewModel.onIntent(HomeIntent.SelectLevel(Level.A2))
+
+        val state = viewModel.state.value
+        assertEquals(Level.A2, state.selectedLevel)
+        assertEquals(null, state.selectedCategory)
+        assertEquals(Level.A2, settings.settings.value.selectedLevel)
+        assertEquals(null, settings.settings.value.homeCategory)
+    }
+
+    @Test
+    fun `tapping the selected level keeps the category`() = runHomeTest {
+        settings.update { it.copy(selectedLevel = Level.A1, homeCategory = CategoryId("food-drink")) }
+        val viewModel = viewModel()
+
+        viewModel.onIntent(HomeIntent.SelectLevel(Level.A1))
+
+        assertEquals(CategoryId("food-drink"), viewModel.state.value.selectedCategory)
+    }
+
+    @Test
+    fun `mode and category are saved and survive a restart`() = runHomeTest {
+        val viewModel = viewModel()
+        viewModel.onIntent(HomeIntent.SelectMode(GameMode.HARDCORE))
+        viewModel.onIntent(HomeIntent.OpenCategories)
+        assertTrue(viewModel.state.value.categorySheetOpen)
+        viewModel.onIntent(HomeIntent.SelectCategory(CategoryId("food-drink")))
+        assertFalse(viewModel.state.value.categorySheetOpen)
+
+        val restarted = viewModel().state.value
+        assertEquals(GameMode.HARDCORE, restarted.selectedMode)
+        assertEquals(CategoryId("food-drink"), restarted.selectedCategory)
+    }
+
+    @Test
+    fun `only the home modes can be selected`() = runHomeTest {
+        val viewModel = viewModel()
+
+        viewModel.onIntent(HomeIntent.SelectMode(GameMode.DAILY))
+
+        assertEquals(GameMode.CLASSIC, viewModel.state.value.selectedMode)
+        assertEquals(GameMode.CLASSIC, settings.settings.value.homeMode)
+    }
+
+    @Test
+    fun `the sheet lists the level's categories in order with total and learned words`() = runHomeTest {
+        cards.cards = listOf(
+            testCard("APPLE", category = "food-drink"),
+            testCard("BREAD", category = "food-drink"),
+            testCard("CHAIR", category = "home"),
+            testCard("EAGLE", level = Level.A2, category = "animals"),
+        )
+        progress.save(listOf(CardProgress(cards.cards.first().id, seen = 1, correct = 1)))
+
+        val state = viewModel().state.value
+
+        assertTrue(ready(state))
+        assertEquals(
+            listOf(
+                CategoryUi(CategoryId("food-drink"), "Yiyecek ve içecek", "Food and drink", learned = 1, total = 2),
+                CategoryUi(CategoryId("home"), "Ev ve eşyalar", "Home", learned = 0, total = 1),
+            ),
+            (state.categories as CategoriesState.Loaded).categories,
+        )
+        assertTrue(state.showCategoryRow)
+    }
+
+    @Test
+    fun `NAT has no categories so the row is hidden and the sheet never opens`() = runHomeTest {
+        settings.update { it.copy(selectedLevel = Level.NAT, homeCategory = CategoryId("home")) }
+        val viewModel = viewModel()
+
+        val state = viewModel.state.value
+        assertFalse(state.showCategoryRow)
+        assertEquals(CategoriesState.Loaded(persistentListOf()), state.categories)
+        viewModel.onIntent(HomeIntent.OpenCategories)
+        assertFalse(viewModel.state.value.categorySheetOpen)
+        viewModel.effects.test {
+            viewModel.onIntent(HomeIntent.Play)
+            assertEquals(HomeEffect.StartGame(Level.NAT, GameMode.CLASSIC, null), awaitItem())
+        }
+    }
+
+    @Test
+    fun `a stored category the level does not have becomes mixed`() = runHomeTest {
+        settings.update { it.copy(selectedLevel = Level.A1, homeCategory = CategoryId("animals")) }
+        val viewModel = viewModel()
+
+        assertEquals(null, viewModel.state.value.selectedCategory)
+        // Forgotten in storage too, so a later settings emission can't bring it back.
+        assertEquals(null, settings.settings.value.homeCategory)
+        viewModel.effects.test {
+            viewModel.onIntent(HomeIntent.Play)
+            assertEquals(HomeEffect.StartGame(Level.A1, GameMode.CLASSIC, null), awaitItem())
+        }
+    }
+
+    @Test
+    fun `switching the level away and back still reads the categories`() = runHomeTest {
+        val viewModel = viewModel()
+
+        viewModel.onIntent(HomeIntent.SelectLevel(Level.A2))
+        viewModel.onIntent(HomeIntent.SelectLevel(Level.A1))
+
+        assertTrue(viewModel.state.value.categories is CategoriesState.Loaded)
+    }
+
+    @Test
+    fun `an unreadable category list falls back to mixed and retry reads it again`() = runHomeTest {
+        settings.update { it.copy(homeCategory = CategoryId("food-drink")) }
+        categories.failing = true
+        val viewModel = viewModel()
+
+        assertEquals(CategoriesState.Error, viewModel.state.value.categories)
+        assertTrue(viewModel.state.value.showCategoryRow)
+        assertTrue(crashReporter.recorded.isNotEmpty())
+        viewModel.effects.test {
+            viewModel.onIntent(HomeIntent.Play)
+            assertEquals(HomeEffect.StartGame(Level.A1, GameMode.CLASSIC, null), awaitItem())
+        }
+
+        categories.failing = false
+        viewModel.onIntent(HomeIntent.RetryCategories)
+
+        val state = viewModel.state.value
+        assertTrue(state.categories is CategoriesState.Loaded)
+        assertEquals(CategoryId("food-drink"), state.playCategory)
+    }
+
+    @Test
+    fun `an unreadable content keeps zero totals and home still works`() = runHomeTest {
+        cards.failing = true
+        val viewModel = viewModel()
+
+        assertTrue(viewModel.state.value.levels.all { it.total == 0 })
+        viewModel.effects.test {
+            viewModel.onIntent(HomeIntent.Play)
+            assertEquals(HomeEffect.StartGame(Level.A1, GameMode.CLASSIC, null), awaitItem())
+        }
+    }
+
+    @Test
+    fun `the classic time follows the setting`() = runHomeTest {
+        val viewModel = viewModel()
+
+        settings.update { it.copy(classicTimeLimitSeconds = 240) }
+
+        assertEquals(240, viewModel.state.value.classicTimeLimitSeconds)
+    }
+
+    @Test
+    fun `due reviews feed the notebook badge`() = runHomeTest {
+        progress.save((1..120).map { card("c$it", box = 0, due = today) })
+
+        assertEquals(120, viewModel().state.value.dueReviews)
     }
 }
