@@ -39,9 +39,13 @@ android {
     }
 }
 
+// `-Plexi.profileOnConnectedDevice` records the profile on the connected phone / emulator instead of the managed device
+// (local hand-test builds: `docs/PERF.md` § Hand-test build). CI keeps the managed device.
+val profileOnConnectedDevice = providers.gradleProperty("lexi.profileOnConnectedDevice").isPresent
+
 baselineProfile {
-    managedDevices += perfDevice
-    useConnectedDevices = false
+    if (!profileOnConnectedDevice) managedDevices += perfDevice
+    useConnectedDevices = profileOnConnectedDevice
 }
 
 dependencies {

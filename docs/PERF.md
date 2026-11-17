@@ -162,3 +162,19 @@ Compare `frameDurationCpuMs` P99 / max of `firstDialogFlip` with and without the
 `CompilationMode.None()` vs the default. The warm-up costs one extra composition of the dialog on an idle picker (about
 the cost of one flip's first frame, invisible behind the background); if a device shows no gain, remove
 `rememberDialogWarmUp` (one call in `CategoryPickerScreen`) and keep the profile.
+
+### Hand-test build (optimised, non-debuggable, no secrets)
+
+`benchmarkRelease` = the release build type (R8 + resource shrinking + the committed baseline profile) signed with the
+debug keystore, no telemetry, no debug overlay (`src/nodebug`), not debuggable. Same applicationId as the store build, so
+uninstall the store build first (`adb uninstall dev.talhabayhan.lexi`; its data goes with it).
+
+```bash
+adb devices
+# only when the video flow changed since the profile was last recorded (≈ 6 min on an emulator, phone or emulator connected):
+./gradlew :androidApp:generateBaselineProfile -Plexi.profileOnConnectedDevice \
+  -Pandroid.testInstrumentationRunnerArguments.androidx.benchmark.suppressErrors=EMULATOR   # drop suppressErrors on a phone
+adb uninstall dev.talhabayhan.lexi            # the store build or an older hand-test build
+./gradlew :androidApp:installBenchmarkRelease
+adb shell cmd package compile -m speed-profile -f dev.talhabayhan.lexi   # make sure the profile is compiled now
+```
