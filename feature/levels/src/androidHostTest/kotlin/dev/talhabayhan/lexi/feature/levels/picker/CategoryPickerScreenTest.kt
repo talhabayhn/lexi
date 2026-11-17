@@ -1,5 +1,8 @@
 package dev.talhabayhan.lexi.feature.levels.picker
 
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.SemanticsActions
 import androidx.compose.ui.semantics.SemanticsProperties
@@ -7,6 +10,7 @@ import androidx.compose.ui.test.ComposeUiTest
 import androidx.compose.ui.test.ExperimentalTestApi
 import androidx.compose.ui.test.SemanticsMatcher
 import androidx.compose.ui.test.assert
+import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertIsNotEnabled
 import androidx.compose.ui.test.assertIsSelected
 import androidx.compose.ui.test.hasContentDescription
@@ -132,5 +136,19 @@ class CategoryPickerScreenTest {
     fun `the dialog's back arrow closes it`() {
         val intents = run(PickerSampleState.withDialog()) { onNodeWithContentDescription("Kapat").performClick() }
         assertEquals(listOf<CategoryPickerIntent>(CategoryPickerIntent.CloseDialog), intents)
+    }
+
+    @Test
+    fun `the grid opens at the top once the cards load and not scrolled to the exams`() {
+        runComposeUiTest {
+            var state by mutableStateOf(PickerSampleState.copy(categories = persistentListOf(), isLoaded = false))
+            setContent { LexiTheme(reducedMotion = true) { CategoryPickerScreen(state, onIntent = {}) } }
+            onNodeWithContentDescription("TOEFL, yakında").assertDoesNotExist()
+
+            state = PickerSampleState
+            waitForIdle()
+            onNodeWithContentDescription("Karışık", substring = true).assertIsDisplayed()
+            onNodeWithText("Başa dön").assertDoesNotExist()
+        }
     }
 }

@@ -236,6 +236,9 @@ private fun PickerGrid(
                     ),
             )
         }
+        // The exam section waits for the level's cards: shown alone first, it would be the first visible item, and
+        // the grid would keep it in place when the cards are inserted above it (opening scrolled to the exams).
+        if (!state.isLoaded || state.categories.isEmpty()) return@LazyVerticalGrid
         item(key = EXAMS_HEADER, span = { GridItemSpan(maxLineSpan) }, contentType = HEADER) { ExamsHeader() }
         itemsIndexed(state.packs, key = { _, pack ->
             "pack:${pack.id.value}"
