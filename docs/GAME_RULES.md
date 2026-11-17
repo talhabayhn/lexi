@@ -37,9 +37,18 @@ exact defaults.
 - Category fallback (owner decision 2026-11-12: thin categories repeated the same words every game): in a category
   wheel (not `mixed`) with history, a letter whose category cards were **all** seen recently picks from every card
   of the level for that letter instead (same steps as above, so never-seen and least recently seen cards of other
-  categories win). A letter with at least one category card not seen recently keeps its own cards; a letter
-  without category cards stays `SKIPPED`; history-free wheels are unchanged. Such a card still counts toward its own
-  category's progress (Categories screen), while the session is recorded under the chosen category.
+  categories win). A letter with at least one category card not seen recently keeps its own cards; history-free
+  wheels are unchanged. Such a card still counts toward its own category's progress (Categories screen), while the
+  session is recorded under the chosen category.
+- Thin category fill (owner decision 2026-11-17: a one-card category was a one-letter game): a category wheel
+  whose category cards cover at least 1 but fewer than ⚙ `minCategoryLetters = 13` letters takes, for every letter
+  without a category card, the level's cards for that letter (same pick steps as above: seeded, recently seen
+  dropped, `STARTS` preferred, history; a card whose answer is one of the category's own is never taken). Every
+  level has all 26 letters, so such a wheel has 26 playable slots; a category card still wins its own letter. A
+  category with 13 or more letters keeps a letter without category cards `SKIPPED` and is unchanged bit for bit;
+  a category with no card stays empty ("no words", never started). Mixed, daily, review, pack and duel wheels are
+  unchanged. Filled cards are normal answered cards (progress rows, notebook) and count toward their own
+  category's progress, like the fallback above.
 - Review wheel: built from SRS-due cards (any level/category); may have fewer than 26 slots (only letters that
   have due cards), in A–Z order; one card per letter, picked the same way (`STARTS` preferred). A due card whose
   answer is already on the wheel is dropped and a letter left without due cards is left out (answers are unique per
@@ -169,7 +178,9 @@ the app goes to background.
 - Points use the card's level (review wheels mix levels); unscored modes (§5) score 0 everywhere. All rounding is
   half up. "Completed" = ended with no TODO/PASSED left (wrong answers allowed); the time bonus counts whole
   remaining seconds. Joker point costs never take the running score below 0. A wheel without playable slots ends
-  at `Start` with reason `EMPTY_WHEEL` (not completed, no time bonus).
+  at `Start` with reason `EMPTY_WHEEL` (not completed, no time bonus). With shipped content (every level covers
+  A–Z) a category wheel always has at least ⚙ `minCategoryLetters` playable letters (§1 thin category fill), so the time bonus cannot be farmed by
+  finishing a one-letter wheel in a second.
 - Multipliers are stored as integer percentages in `GameConfig` (110 = ×1.1) so scoring is exact on every platform.
 
 ## 7. Jokers

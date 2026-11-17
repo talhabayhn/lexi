@@ -170,7 +170,8 @@ internal class GameLoader(
                 }
                 WheelGenerator.generate(
                     // The whole level: a category wheel falls back to the level's other cards on a letter whose
-                    // category cards were all seen recently (GAME_RULES §1); generate() filters by category itself.
+                    // category cards were all seen recently, and a thin category fills its missing letters from them
+                    // (GAME_RULES §1); generate() filters by category itself.
                     pool = cards.wheelPool(level),
                     level = level,
                     category = category,

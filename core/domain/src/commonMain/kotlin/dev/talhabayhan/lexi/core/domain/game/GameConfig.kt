@@ -104,6 +104,11 @@ public data class GameConfig(
      * ago (never-seen cards always come first), so cards rotate through the whole pool while wheels still vary.
      */
     val leastRecentlySeenCandidates: Int = 3,
+    /**
+     * §1: a category wheel with at least one but fewer than this many letters that have a category card takes the
+     * level's cards for its other letters, so a thin category is never a one-letter game (owner decision 2026-11-17).
+     */
+    val minCategoryLetters: Int = 13,
 ) {
     init {
         require(duelClockSeconds in duelClockOptionsSeconds) {
@@ -112,6 +117,9 @@ public data class GameConfig(
         require(minStartsCandidates >= 1) { "minStartsCandidates must be at least 1, was $minStartsCandidates" }
         require(leastRecentlySeenCandidates >= 1) {
             "leastRecentlySeenCandidates must be at least 1, was $leastRecentlySeenCandidates"
+        }
+        require(minCategoryLetters in 1..LETTERS) {
+            "minCategoryLetters must be in 1..$LETTERS, was $minCategoryLetters"
         }
     }
 
@@ -155,3 +163,4 @@ public data class GameConfig(
 
 private const val MS_PER_SECOND = 1_000L
 private const val PERCENT = 100
+private const val LETTERS = 26

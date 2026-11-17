@@ -35,8 +35,12 @@ public object WheelGenerator {
      *
      * Category fallback (`GAME_RULES.md` §1, owner decision 2026-11-12): in a category wheel, a letter whose category
      * cards were all seen recently picks from every card of [level] for that letter instead, so a thin category does
-     * not repeat the same words game after game. Needs history, so history-free wheels are unchanged; a letter
-     * without category cards stays skipped.
+     * not repeat the same words game after game. Needs history, so history-free wheels are unchanged.
+     *
+     * Thin category fill (`GAME_RULES.md` §1, owner decision 2026-11-17): a category whose cards cover at least one
+     * but fewer than [GameConfig.minCategoryLetters] letters takes the level's cards for every other letter (same
+     * pick, never an answer of a category card), so it is never a one-letter game. A category with no card stays
+     * empty, and one with [GameConfig.minCategoryLetters] or more letters keeps its letters without a card skipped.
      */
     public fun generate(
         pool: List<Card>,
@@ -52,7 +56,9 @@ public object WheelGenerator {
         val levelCards = pool.filter { it.level == level }
         if (category == CategoryId.MIXED) return alphabetWheel(levelCards, random, used, config)
         val cards = levelCards.filter { it.category == category }
-        return alphabetWheel(cards, random, used, config, fallback = levelCards.candidatesByLetter())
+        val letters = cards.mapTo(mutableSetOf()) { it.letter }.size
+        val fill = letters in 1 until config.minCategoryLetters
+        return alphabetWheel(cards, random, used, config, fallback = levelCards.candidatesByLetter(), fill = fill)
     }
 
     /**
@@ -74,20 +80,27 @@ public object WheelGenerator {
         history: CardHistory,
         config: GameConfig,
         fallback: Map<Char, List<Card>> = emptyMap(),
+        fill: Boolean = false,
     ): Wheel {
         val byLetter = cards.candidatesByLetter()
+        val ownAnswers = if (fill) cards.mapTo(mutableSetOf()) { it.answer } else emptySet()
         val recent = recentlySeen(history.lastSeenMs, history.nowMs, config)
         // A word already on the wheel is not shown again. Safety net only: content validation forbids a repeated
         // answer within a level or a pack.
         val usedAnswers = mutableSetOf<String>()
         val slots = ('A'..'Z').map { letter ->
             val own = byLetter[letter].orEmpty()
-            val candidates = if (own.isNotEmpty() && own.all { it.id in recent }) {
+            val candidates = when {
+                // Thin category fill: a letter without category cards takes the level's cards for it. Leaving out
+                // the category's answers keeps a later category letter from losing its card to the usedAnswers net.
+                own.isEmpty() && fill -> fallback[letter].orEmpty().filter { it.answer !in ownAnswers }
+
                 // A category wheel passes the whole level, which always holds this letter; `own` only when no
-                // fallback map is passed (mixed and pack wheels).
-                fallback[letter] ?: own
-            } else {
-                own
+                // fallback map is passed (mixed and pack wheels). No ownAnswers filter here: answers are unique per
+                // level, and adding one would move non-thin wheels.
+                own.isNotEmpty() && own.all { it.id in recent } -> fallback[letter] ?: own
+
+                else -> own
             }
             if (candidates.isEmpty()) {
                 Slot(letter, card = null, state = SlotState.SKIPPED)
