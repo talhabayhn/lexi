@@ -113,7 +113,8 @@ internal class LexiNavigator(
     /**
      * OYNA of the mode / time dialog; [timeSeconds] null = the stored choice (or untimed modes). With [awaitCover]
      * (the letter morph, #16) the navigation also waits until the ink covers the screen and is dropped if the morph
-     * is cancelled first.
+     * is cancelled first; [onDropped] runs whenever an accepted start ends without navigating (so the caller can take
+     * its morph down instead of leaving the ink on screen).
      */
     fun startGame(
         level: Level,
@@ -121,9 +122,13 @@ internal class LexiNavigator(
         category: CategoryId? = null,
         timeSeconds: Int? = null,
         awaitCover: (suspend () -> Boolean)? = null,
-    ): Boolean = openGame(GameRoute(level, mode, category, timeSeconds = timeSeconds), awaitCover) {
+        onDropped: () -> Unit = {},
+    ): Boolean = openGame(GameRoute(level, mode, category, timeSeconds = timeSeconds), awaitCover, onDropped) {
         launchSingleTop = true
     }
+
+    /** A game start would be accepted now (the current entry is RESUMED and no game is being prepared). */
+    fun canStartGame(): Boolean = resumedEntry() != null
 
     fun startDaily(): Boolean = openGame(GameRoute.daily()) { launchSingleTop = true }
 
@@ -215,6 +220,7 @@ internal class LexiNavigator(
     private fun openGame(
         route: GameRoute,
         awaitCover: (suspend () -> Boolean)? = null,
+        onDropped: () -> Unit = {},
         options: NavOptionsBuilder.() -> Unit,
     ): Boolean {
         val source = resumedEntry() ?: return false
@@ -231,7 +237,10 @@ internal class LexiNavigator(
                 }
             } finally {
                 // Also when the host left the composition while preparing.
-                if (!navigated) gamePreparer.discard(route)
+                if (!navigated) {
+                    gamePreparer.discard(route)
+                    onDropped()
+                }
             }
         }
         return true

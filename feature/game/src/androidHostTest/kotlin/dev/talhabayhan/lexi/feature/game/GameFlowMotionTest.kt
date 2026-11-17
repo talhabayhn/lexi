@@ -17,6 +17,7 @@ import androidx.compose.ui.graphics.toPixelMap
 import androidx.compose.ui.test.ComposeUiTest
 import androidx.compose.ui.test.ExperimentalTestApi
 import androidx.compose.ui.test.captureToImage
+import androidx.compose.ui.test.click
 import androidx.compose.ui.test.hasAnyAncestor
 import androidx.compose.ui.test.hasClickAction
 import androidx.compose.ui.test.hasContentDescription
@@ -24,6 +25,7 @@ import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.onFirst
 import androidx.compose.ui.test.onRoot
 import androidx.compose.ui.test.performClick
+import androidx.compose.ui.test.performTouchInput
 import androidx.compose.ui.test.runComposeUiTest
 import androidx.compose.ui.unit.dp
 import dev.talhabayhan.lexi.core.designsystem.component.AnswerSlotState
@@ -111,7 +113,9 @@ class GameFlowMotionTest {
             // The ink has landed on the marker; the bottom row (from 535 ms after the shrink start) still waits.
             advanceTo(start + flow.inkShrink.endMillis + 3 * FRAME_MS)
             assertEquals(colors.cream, pixelOfPass(colors), "the bottom row is hidden until its turn")
-            keys().onFirst().performClick()
+            // Hidden from screen readers under the ink: tap where the first key is.
+            val firstKey = keys(useUnmergedTree = true).onFirst().fetchSemanticsNode().boundsInRoot.center
+            onRoot().performTouchInput { click(firstKey) }
             mainClock.advanceTimeBy(FRAME_MS)
             assertEquals(0, intents.count { it is GameIntent.KeyTapped }, "no input before the board has landed")
 
@@ -146,6 +150,23 @@ class GameFlowMotionTest {
         val dealt = onRoot().captureToImage()
         update { generation++ }
         assertEquals(0, dealt.differingPixels(onRoot().captureToImage()), "the turn change ends on the board at rest")
+    }
+
+    @Test
+    fun `a key hidden by the re-deal takes no tap until it starts to appear`() = runComposeUiTest {
+        var state by mutableStateOf(GameSamples.design)
+        val intents = mutableListOf<GameIntent>()
+        setBoard({ state }, { 0 }, onIntent = { intents += it })
+
+        update { state = nextTurn }
+        keys().onFirst().performClick()
+        mainClock.advanceTimeBy(FRAME_MS)
+        assertEquals(0, intents.count { it is GameIntent.KeyTapped }, "the previous keys still show: no tap counts")
+
+        mainClock.advanceTimeBy(REDEAL_DONE_MS)
+        keys().onFirst().performClick()
+        mainClock.advanceTimeBy(FRAME_MS)
+        assertEquals(listOf<GameIntent>(GameIntent.KeyTapped(0)), intents.filterIsInstance<GameIntent.KeyTapped>())
     }
 
     @Test
@@ -241,13 +262,14 @@ class GameFlowMotionTest {
         state: () -> GameUiState,
         generation: () -> Int,
         reducedMotion: Boolean = false,
+        onIntent: (GameIntent) -> Unit = {},
     ) {
         mainClock.autoAdvance = false
         setContent {
             LexiTheme(reducedMotion = reducedMotion) {
                 motion = LexiTheme.motion
                 key(generation()) {
-                    GameScreen(state(), clock = { GameSamples.designClock }, onIntent = {})
+                    GameScreen(state(), clock = { GameSamples.designClock }, onIntent = onIntent)
                 }
             }
         }
@@ -267,7 +289,8 @@ class GameFlowMotionTest {
         mainClock.advanceTimeBy(time - mainClock.currentTime)
     }
 
-    private fun ComposeUiTest.keys() = onAllNodes(hasClickAction() and hasAnyAncestor(hasTestTag(GameTestTags.KEYS)))
+    private fun ComposeUiTest.keys(useUnmergedTree: Boolean = false) =
+        onAllNodes(hasClickAction() and hasAnyAncestor(hasTestTag(GameTestTags.KEYS)), useUnmergedTree)
 
     private fun ComposeUiTest.keysImage(): ImageBitmap = onNode(hasTestTag(GameTestTags.KEYS)).captureToImage()
 
@@ -276,7 +299,8 @@ class GameFlowMotionTest {
 
     /** A point on the PAS button clear of its label: 12dp inside the right end of the bottom row. */
     private fun ComposeUiTest.pixelOfPass(colors: LexiColors): Color {
-        val row = onNode(hasTestTag(GameTestTags.ACTIONS)).fetchSemanticsNode().boundsInRoot
+        // Under the ink the board is hidden from screen readers (cleared semantics): the unmerged tree still has it.
+        val row = onNode(hasTestTag(GameTestTags.ACTIONS), useUnmergedTree = true).fetchSemanticsNode().boundsInRoot
         val inset = with(density) { 12.dp.toPx() }
         val pixel = onRoot().captureToImage().toPixelMap()[
             (row.right - inset).roundToInt(),

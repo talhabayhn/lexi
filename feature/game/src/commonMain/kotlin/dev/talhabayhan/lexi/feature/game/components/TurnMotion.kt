@@ -106,6 +106,12 @@ internal class TurnSwap(
 
     fun keyProgress(index: Int): Float = progress(flow.redealKey.staggered(index, keyStagger), motion.mechanical)
 
+    /**
+     * Whether a tap on the new key [index] counts: not while the previous keys still show (they are decorative) and
+     * not before this key has started to appear, so an invisible key is never typed. Read at tap time.
+     */
+    fun keyTakesInput(index: Int): Boolean = !ghostsShown && keyProgress(index) > 0f
+
     val itemOffset: Float get() = itemOffsetPx
 }
 
@@ -160,11 +166,14 @@ internal class ScoreCount(
     }
 
     /** The value to draw, or null once the count has ended (the badge then shows the state's value). */
-    fun text(): String? {
+    fun text(): String? = value()?.toString()
+
+    /** The counted value on screen now, or null once the count has ended. */
+    fun value(): Int? {
         val t = time.value.toLong()
         if (t >= flow.scoreCountUp.endMillis) return null
         val p = motion.mechanical.transform(flow.scoreCountUp.progressAt(t))
-        return lerp(from.toFloat(), to.toFloat(), p).roundToInt().toString()
+        return lerp(from.toFloat(), to.toFloat(), p).roundToInt()
     }
 
     /** 1 until the pop starts, then 1.25 → 1 on `pop` (its overshoot dips below 1 before it settles). */
@@ -184,13 +193,17 @@ internal fun rememberScoreCount(score: Int): ScoreCount? {
     val motion = LexiTheme.motion
     val tier = rememberMotionTier()
     val previous = rememberPrevious(score)
+    val running = remember { ScoreCountHolder() }
     val count = remember(score) {
         if (previous == null || score <= previous || tier == MotionTier.Minimal) {
             null
         } else {
-            ScoreCount(from = previous, to = score, flow = motion.flow, motion = motion)
+            // A second rise while a count runs continues from the number on screen (no jump back).
+            val from = running.count?.value() ?: previous
+            ScoreCount(from = from, to = score, flow = motion.flow, motion = motion)
         }
     }
+    SideEffect { running.count = count }
     LaunchedEffect(count) { count?.run() }
     return count
 }
@@ -202,6 +215,10 @@ private fun <T : Any> rememberPrevious(current: T?): T? {
     val previous = holder.value
     SideEffect { holder.value = current }
     return previous
+}
+
+private class ScoreCountHolder {
+    var count: ScoreCount? = null
 }
 
 private class PreviousHolder<T : Any> {

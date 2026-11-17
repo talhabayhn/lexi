@@ -10,6 +10,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.snapshotFlow
 import androidx.compose.runtime.withFrameMillis
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
@@ -22,11 +23,13 @@ import dev.talhabayhan.lexi.core.designsystem.motion.DialogFlipChoreography
 import dev.talhabayhan.lexi.core.designsystem.motion.DialogFlipFrame
 import dev.talhabayhan.lexi.core.designsystem.motion.DialogFlipMachine
 import dev.talhabayhan.lexi.core.designsystem.motion.DialogFlipPhase
+import dev.talhabayhan.lexi.core.designsystem.motion.LocalMorphOverlay
 import dev.talhabayhan.lexi.core.designsystem.motion.LocalMotionPolicy
 import dev.talhabayhan.lexi.core.designsystem.motion.MotionTier
 import dev.talhabayhan.lexi.core.designsystem.motion.rememberMotionTier
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.core.domain.model.CategoryId
+import kotlinx.coroutines.flow.first
 
 /**
  * Motion #13–#15 of "Çarkını seç": one [DialogFlipMachine] ticked by the frame clock. The only state written per frame
@@ -152,7 +155,13 @@ internal fun rememberPickerDialogFlip(dialog: PickerCategoryUi?): PickerDialogFl
     if (dialog != null && flip.card != dialog) flip.card = dialog
     val currentTier by rememberUpdatedState(tier)
     val monitor = LocalMotionPolicy.current.frameMonitor
+    val morph = LocalMorphOverlay.current
     LaunchedEffect(flip, open) {
+        if (!open && morph != null && morph.isRunning) {
+            // OYNA: the dialog stays at rest under the letter morph's ink (no close competing with the expand, nothing
+            // measured); once the morph is over (the game covers this screen, or it was cancelled) it closes as usual.
+            snapshotFlow { morph.isRunning }.first { !it }
+        }
         flip.request(open, currentTier)
         if (!flip.isRunning) return@LaunchedEffect
         monitor.beginTransition()

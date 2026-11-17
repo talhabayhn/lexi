@@ -8,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.ProvidableCompositionLocal
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableLongStateOf
@@ -28,6 +29,7 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.layout.positionInWindow
+import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
@@ -169,7 +171,7 @@ public fun MorphOverlayHost(
         LetterMorphTimeline(motion.flow, motion.mechanical, motion.pop, colors.red, colors.ink)
     }
     val machine = remember(motion) { LetterMorphMachine(motion.flow) }
-    state.machine = machine
+    SideEffect { state.machine = machine }
     val hostOrigin = remember { mutableStateOf(Offset.Zero) }
     val run = state.run
 
@@ -223,7 +225,13 @@ public fun MorphOverlayHost(
         CompositionLocalProvider(
             LocalMorphAnchors provides state.anchors,
             LocalMorphOverlay provides state,
-        ) { content() }
+        ) {
+            // Under the ink nothing may be focused or activated by a screen reader either (touches are swallowed
+            // below). Toggled at the start and the end of a run only: the content is not recomposed by it.
+            Box(Modifier.fillMaxSize().then(if (run != null) Modifier.clearAndSetSemantics {} else Modifier)) {
+                content()
+            }
+        }
         if (run != null) {
             LetterMorphLayer(
                 letter = run.letter,

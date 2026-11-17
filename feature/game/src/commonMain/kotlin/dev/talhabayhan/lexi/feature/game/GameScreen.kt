@@ -321,7 +321,10 @@ private fun GameContent(
                     KeyGrid(
                         keys = turn.keys,
                         enabled = state.inputEnabled || state.isStarting,
-                        onKey = { onIntent(GameIntent.KeyTapped(it)) },
+                        // #17: a key still hidden by the re-deal (the previous keys show over it) takes no tap.
+                        onKey = { index ->
+                            if (swap?.keyTakesInput(index) != false) onIntent(GameIntent.KeyTapped(index))
+                        },
                         keyHeight = layout.keyHeight,
                         gap = layout.keyGap,
                         onKeyPlaced = motion::onKeyPlaced,

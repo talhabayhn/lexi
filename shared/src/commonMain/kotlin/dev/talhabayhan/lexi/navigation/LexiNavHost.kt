@@ -31,15 +31,12 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigationevent.NavigationEventInfo
 import androidx.navigationevent.compose.NavigationBackHandler
 import androidx.navigationevent.compose.rememberNavigationEventState
-import dev.talhabayhan.lexi.core.designsystem.feedback.LocalHaptics
-import dev.talhabayhan.lexi.core.designsystem.motion.FlowMorphKeys
 import dev.talhabayhan.lexi.core.designsystem.motion.LocalMotionPolicy
 import dev.talhabayhan.lexi.core.designsystem.motion.MorphOverlayHost
 import dev.talhabayhan.lexi.core.designsystem.motion.MorphOverlayState
 import dev.talhabayhan.lexi.core.designsystem.motion.rememberMotionTier
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiMotion
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
-import dev.talhabayhan.lexi.core.domain.feedback.HapticKind
 import dev.talhabayhan.lexi.core.domain.game.GameMode
 import dev.talhabayhan.lexi.core.domain.model.CategoryId
 import dev.talhabayhan.lexi.core.domain.model.Level
@@ -116,54 +113,49 @@ fun LexiNavHost(modifier: Modifier = Modifier, perfTour: PerfTourConfig? = null)
     val policy = LocalMotionPolicy.current
     val tier = rememberMotionTier(policy)
     val currentTier by rememberUpdatedState(tier)
-    val haptics = LocalHaptics.current
-    var cancelledByBack by remember { mutableStateOf(false) }
-    val startGame: (Level, GameMode, CategoryId?, Int?) -> Unit = { level, mode, category, time ->
-        val morphing = morph.start(
-            FlowMorphKeys.PLAY_BUTTON,
-            FlowMorphKeys.WHEEL_MARKER,
-            MORPH_FIRST_LETTER,
-            currentTier,
+    val launcher = remember(morph, navigator, navController) {
+        LetterMorphLauncher(
+            morph = OverlayLetterMorph(morph),
+            navigation = object : GameStartNavigation {
+                override fun canStartGame() = navigator.canStartGame()
+
+                override fun isOnGame() = navController.currentDestination?.hasRoute(GameRoute::class) == true
+
+                override fun popGame() {
+                    navController.popBackStack()
+                }
+            },
         )
-        if (morphing) haptics.perform(HapticKind.Soft)
-        val awaitCover: (suspend () -> Boolean)? = if (morphing) morph::awaitCovered else null
-        val accepted = navigator.startGame(level, mode, category, time, awaitCover)
-        if (!accepted && morphing) morph.cancel()
+    }
+    val startGame: (Level, GameMode, CategoryId?, Int?) -> Unit = { level, mode, category, time ->
+        // OYNA's own press already plays the light haptic (#1, #16).
+        launcher.start(currentTier) { awaitCover, onDropped ->
+            navigator.startGame(level, mode, category, time, awaitCover, onDropped)
+        }
     }
     MorphOverlayHost(
         state = morph,
         modifier = modifier,
         frameMonitor = policy.frameMonitor,
         tier = { currentTier },
-        onCancelled = {
-            // Back under the ink after the game was opened: leave it again (it never started).
-            if (cancelledByBack && navController.currentDestination?.hasRoute(GameRoute::class) == true) {
-                navController.popBackStack()
-            }
-            cancelledByBack = false
-        },
+        onCancelled = launcher::onCancelled,
     ) {
         Box(Modifier.fillMaxSize()) {
             // Behind the NavHost and its opaque cream background, so it is never seen.
             if (warmingUp) GameWarmUp(Modifier.matchParentSize())
             LexiNavGraph(navController, navigator, transitions, urlOpener, morph, startGame)
         }
-        // Composed after the NavHost, so it outranks the screens' own back handlers while a morph runs.
+        // Enabled only while a morph runs. The screens' own handlers that could outrank it (newer handlers win) step
+        // aside while it runs: the picker's dialog handler is off, the game's is off before its start.
         NavigationBackHandler(
             state = rememberNavigationEventState(NavigationEventInfo.None),
             isBackEnabled = morph.isRunning,
-            onBackCompleted = {
-                cancelledByBack = true
-                morph.cancel()
-            },
+            onBackCompleted = launcher::onBack,
         )
     }
-    LifecycleEventEffect(Lifecycle.Event.ON_STOP) { morph.cancel() }
+    LifecycleEventEffect(Lifecycle.Event.ON_STOP) { launcher.onStop() }
     if (perfTour != null && warmedUp) PerfTour(navigator = navigator, config = perfTour)
 }
-
-/** The wheel always starts on A (A-Z, every letter has cards): the morph's big letter. */
-private const val MORPH_FIRST_LETTER = "A"
 
 /** Frames the game board warm-up ([GameWarmUp]) stays composed. */
 private const val GAME_WARM_UP_FRAMES = 2

@@ -11,12 +11,16 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshots.Snapshot
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.test.ComposeUiTest
 import androidx.compose.ui.test.ExperimentalTestApi
+import androidx.compose.ui.test.click
 import androidx.compose.ui.test.onNodeWithTag
+import androidx.compose.ui.test.onRoot
 import androidx.compose.ui.test.performClick
+import androidx.compose.ui.test.performTouchInput
 import androidx.compose.ui.test.runComposeUiTest
 import androidx.compose.ui.unit.dp
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiMotion
@@ -118,7 +122,9 @@ class MorphOverlayHostTest {
         mainClock.autoAdvance = false
         startMorph(state)
         mainClock.advanceTimeBy(300L)
-        onNodeWithTag("play").performClick()
+        // Hidden from screen readers under the ink (cleared semantics); the touch itself is swallowed.
+        onNodeWithTag("play").assertDoesNotExist()
+        onRoot().performTouchInput { click(Offset(195f, 740f)) }
 
         assertEquals(1, clicks)
     }

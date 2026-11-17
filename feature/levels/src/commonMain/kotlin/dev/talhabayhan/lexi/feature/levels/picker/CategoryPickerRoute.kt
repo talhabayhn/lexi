@@ -13,6 +13,7 @@ import androidx.navigation.compose.composable
 import androidx.navigationevent.NavigationEventInfo
 import androidx.navigationevent.compose.NavigationBackHandler
 import androidx.navigationevent.compose.rememberNavigationEventState
+import dev.talhabayhan.lexi.core.designsystem.motion.LocalMorphOverlay
 import dev.talhabayhan.lexi.core.domain.game.GameMode
 import dev.talhabayhan.lexi.core.domain.model.CategoryId
 import dev.talhabayhan.lexi.core.domain.model.ExamPackId
@@ -73,10 +74,12 @@ internal fun CategoryPickerRoute(
     }
     val flip = rememberPickerDialogFlip(state.dialog)
     // System back (Android back / predictive back, iOS swipe-back) closes the open dialog first (reversing a running
-    // open) and is held while the dialog animates out.
+    // open) and is held while the dialog animates out. While the letter morph runs (OYNA) back belongs to the morph
+    // (it cancels it; newer handlers win, so this one must step aside).
+    val morphRunning = LocalMorphOverlay.current?.isRunning == true
     NavigationBackHandler(
         state = rememberNavigationEventState(NavigationEventInfo.None),
-        isBackEnabled = state.dialog != null || flip.dialogShown,
+        isBackEnabled = (state.dialog != null || flip.dialogShown) && !morphRunning,
         onBackCompleted = { viewModel.onIntent(CategoryPickerIntent.CloseDialog) },
     )
     CategoryPickerScreen(
