@@ -33,7 +33,7 @@ def fold(s):
 
 
 def tr_words(s):
-    return re.findall(r"[A-Za-zÇĞİÖŞÜçğıöşü]+", s)
+    return re.findall(r"[A-Za-zÇĞİÖŞÜâîûÂÎÛçğıöşü]+", s)
 
 
 def stem(w):
