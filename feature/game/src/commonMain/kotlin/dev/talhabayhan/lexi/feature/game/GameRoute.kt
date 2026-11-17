@@ -162,7 +162,7 @@ internal fun GameBackHandler(enabled: Boolean, onBack: () -> Unit) {
  * released at once, so a game can never stay unstarted.
  */
 @Composable
-private fun LetterMorphEntrance(isLoading: Boolean, hasError: Boolean, onIntent: (GameIntent) -> Unit) {
+internal fun LetterMorphEntrance(isLoading: Boolean, hasError: Boolean, onIntent: (GameIntent) -> Unit) {
     val morph = LocalMorphOverlay.current
     val entering = remember(morph) { morph?.isRunning == true }
     val currentOnIntent by rememberUpdatedState(onIntent)

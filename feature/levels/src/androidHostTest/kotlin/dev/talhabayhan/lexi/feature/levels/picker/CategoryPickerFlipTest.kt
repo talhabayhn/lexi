@@ -43,8 +43,8 @@ import kotlin.test.assertTrue
 class CategoryPickerFlipTest {
 
     /** The view model's dialog rules, enough for the screen: open from rest, close, play. */
-    private class Harness {
-        var state by mutableStateOf(PickerSampleState)
+    private class Harness(initial: CategoryPickerUiState = PickerSampleState) {
+        var state by mutableStateOf(initial)
         val intents = mutableListOf<CategoryPickerIntent>()
 
         fun onIntent(intent: CategoryPickerIntent) {
@@ -74,8 +74,12 @@ class CategoryPickerFlipTest {
         }
     }
 
-    private fun flip(reducedMotion: Boolean, block: ComposeUiTest.(Harness, FlowMotion) -> Unit) {
-        val harness = Harness()
+    private fun flip(
+        reducedMotion: Boolean,
+        initial: CategoryPickerUiState = PickerSampleState,
+        block: ComposeUiTest.(Harness, FlowMotion) -> Unit,
+    ) {
+        val harness = Harness(initial)
         lateinit var flow: FlowMotion
         runComposeUiTest {
             setContent {
@@ -158,6 +162,21 @@ class CategoryPickerFlipTest {
 
             advance(MID_CLOSE + SLACK)
             assertTrue(playTapped(harness), "back at rest, open")
+        }
+
+    @Test
+    fun `a screen recreated with its dialog open shows it at rest and plays no flip`() =
+        flip(reducedMotion = false, initial = PickerSampleState.withDialog()) { harness, flow ->
+            // Process restore or an activity recreation: the view model still holds the open card.
+            advance(FRAME)
+            onNodeWithTag(PlayDialogTags.SCRIM).assertExists()
+            assertTrue(playTapped(harness), "OYNA works on the first frame, nothing is opening")
+
+            // Closing it then plays as usual and leaves a normal grid.
+            harness.close()
+            advance(flow.dialogOpenSettledMillis + SLACK)
+            onNodeWithTag(PlayDialogTags.SCRIM).assertDoesNotExist()
+            onNodeWithContentDescription("Karışık, 412 / 850 kelime öğrenildi").assertExists()
         }
 
     @Test

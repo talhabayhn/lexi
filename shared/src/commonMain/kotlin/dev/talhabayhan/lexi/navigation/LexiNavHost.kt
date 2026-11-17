@@ -127,9 +127,9 @@ fun LexiNavHost(modifier: Modifier = Modifier, perfTour: PerfTourConfig? = null)
             },
         )
     }
-    val startGame: (Level, GameMode, CategoryId?, Int?) -> Unit = { level, mode, category, time ->
+    val startGame: (Level, GameMode, CategoryId?, Int?, Char) -> Unit = { level, mode, category, time, firstLetter ->
         // OYNA's own press already plays the light haptic (#1, #16).
-        launcher.start(currentTier) { awaitCover, onDropped ->
+        launcher.start(currentTier, firstLetter.toString()) { awaitCover, onDropped ->
             navigator.startGame(level, mode, category, time, awaitCover, onDropped)
         }
     }
@@ -170,7 +170,7 @@ private fun LexiNavGraph(
     transitions: ScreenTransitions,
     urlOpener: UrlOpener,
     morph: MorphOverlayState,
-    startGame: (Level, GameMode, CategoryId?, Int?) -> Unit,
+    startGame: (Level, GameMode, CategoryId?, Int?, Char) -> Unit,
 ) {
     NavHost(
         navController = navController,

@@ -13,10 +13,12 @@ class LetterMorphLauncherTest {
     private class FakeMorph(var startable: Boolean = true) : LetterMorph {
         var starts = 0
         var cancels = 0
+        var letters = mutableListOf<String>()
 
-        override fun start(tier: MotionTier): Boolean {
+        override fun start(tier: MotionTier, letter: String): Boolean {
             if (!startable || tier == MotionTier.Minimal) return false
             starts++
+            letters += letter
             return true
         }
 
@@ -47,8 +49,8 @@ class LetterMorphLauncherTest {
     private var awaitCover: (suspend () -> Boolean)? = null
     private var onDropped: (() -> Unit)? = null
 
-    private fun start(tier: MotionTier = MotionTier.Full, accepted: Boolean = true): Boolean =
-        launcher.start(tier) { cover, dropped ->
+    private fun start(tier: MotionTier = MotionTier.Full, accepted: Boolean = true, letter: String = "A"): Boolean =
+        launcher.start(tier, letter) { cover, dropped ->
             awaitCover = cover
             onDropped = dropped
             accepted
@@ -60,6 +62,21 @@ class LetterMorphLauncherTest {
         assertEquals(1, morph.starts)
         assertNotNull(awaitCover, "the navigation waits for the ink")
         assertEquals(0, morph.cancels)
+    }
+
+    @Test
+    fun `the morph's big letter is the wheel's first letter and not always A`() {
+        assertTrue(start(letter = "B"))
+        assertEquals(listOf("B"), morph.letters)
+    }
+
+    @Test
+    fun `a second OYNA tap while the first is still navigating starts nothing`() {
+        assertTrue(start())
+        navigation.canStart = false // the navigator is preparing the game: taps are dropped
+        assertFalse(start())
+        assertEquals(1, morph.starts, "one morph, one navigation")
+        assertEquals(0, morph.cancels, "the running morph is not touched by the dropped tap")
     }
 
     @Test

@@ -34,11 +34,11 @@ data class CategoryPickerRoute(val level: String = Level.A1.name) {
 
 /**
  * Registers "Çarkını seç". [onStart] opens a game of the level, mode, category (null = Karışık) and time (seconds;
- * null = untimed), [onStartPack] an exam pack's wheel; the graph in `shared` owns the game route.
+ * null = untimed) and the letter its wheel opens on (the morph's big letter), [onStartPack] an exam pack's wheel; the graph in `shared` owns the game route.
  */
 fun NavGraphBuilder.categoryPickerScreen(
     onBack: () -> Unit,
-    onStart: (Level, GameMode, CategoryId?, Int?) -> Unit,
+    onStart: (Level, GameMode, CategoryId?, Int?, Char) -> Unit,
     onStartPack: (ExamPackId) -> Unit,
 ) {
     composable<CategoryPickerRoute> {
@@ -49,7 +49,7 @@ fun NavGraphBuilder.categoryPickerScreen(
 @Composable
 internal fun CategoryPickerRoute(
     onBack: () -> Unit,
-    onStart: (Level, GameMode, CategoryId?, Int?) -> Unit,
+    onStart: (Level, GameMode, CategoryId?, Int?, Char) -> Unit,
     onStartPack: (ExamPackId) -> Unit,
     viewModel: CategoryPickerViewModel = koinViewModel(),
 ) {
@@ -65,7 +65,13 @@ internal fun CategoryPickerRoute(
                     CategoryPickerEffect.NavigateBack -> currentOnBack()
 
                     is CategoryPickerEffect.StartGame ->
-                        currentOnStart(effect.level, effect.mode, effect.category, effect.timeSeconds)
+                        currentOnStart(
+                            effect.level,
+                            effect.mode,
+                            effect.category,
+                            effect.timeSeconds,
+                            effect.firstLetter,
+                        )
 
                     is CategoryPickerEffect.StartPack -> currentOnStartPack(effect.pack)
                 }

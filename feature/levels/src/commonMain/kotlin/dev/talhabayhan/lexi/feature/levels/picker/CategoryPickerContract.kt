@@ -22,6 +22,11 @@ internal data class PickerCategoryUi(
     val nameEn: String,
     val learned: Int,
     val total: Int,
+    /**
+     * The letter the wheel opens on: the first letter that has a card of this level and category (a category thin on
+     * "A" opens on "B"). The letter morph shows it from the first frame, before the wheel is built.
+     */
+    val firstLetter: Char = DEFAULT_FIRST_LETTER,
 ) {
     val fraction: Float get() = if (total <= 0) 0f else (learned.toFloat() / total).coerceIn(0f, 1f)
 
@@ -99,10 +104,21 @@ internal sealed interface CategoryPickerIntent {
     data object Retry : CategoryPickerIntent
 }
 
+/** The wheel's first letter when a category has no card at all (that game never starts: "no words"). */
+internal const val DEFAULT_FIRST_LETTER: Char = 'A'
+
 internal sealed interface CategoryPickerEffect {
-    /** [category] null = the level's mixed wheel; [timeSeconds] null = untimed (Practice). */
-    data class StartGame(val level: Level, val mode: GameMode, val category: CategoryId?, val timeSeconds: Int?) :
-        CategoryPickerEffect
+    /**
+     * [category] null = the level's mixed wheel; [timeSeconds] null = untimed (Practice); [firstLetter] = the letter
+     * the wheel opens on ([PickerCategoryUi.firstLetter]).
+     */
+    data class StartGame(
+        val level: Level,
+        val mode: GameMode,
+        val category: CategoryId?,
+        val timeSeconds: Int?,
+        val firstLetter: Char = DEFAULT_FIRST_LETTER,
+    ) : CategoryPickerEffect
 
     data class StartPack(val pack: ExamPackId) : CategoryPickerEffect
 

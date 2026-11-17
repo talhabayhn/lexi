@@ -134,6 +134,7 @@ internal class CategoryPickerViewModel(
         val mixed: Category?,
         val categories: List<Category>,
         val categoryOf: Map<CardId, CategoryId>,
+        val letterOf: Map<CardId, Char>,
         val packs: List<Pair<ExamPack, List<CardId>>>,
     ) {
         fun cards(learned: Set<CardId>): List<PickerCategoryUi> {
@@ -144,13 +145,25 @@ internal class CategoryPickerViewModel(
                 nameEn = mixed?.nameEn.orEmpty(),
                 learned = categoryOf.keys.count { it in learned },
                 total = categoryOf.size,
+                firstLetter = firstLetter(categoryOf.keys),
             )
             // Every category of the level, never hidden: one without cards shows 0 / 0.
             return listOf(mixedCard) + categories.map { category ->
                 val ids = byCategory[category.id].orEmpty()
-                PickerCategoryUi(category.id, category.nameTr, category.nameEn, ids.count { it in learned }, ids.size)
+                PickerCategoryUi(
+                    id = category.id,
+                    nameTr = category.nameTr,
+                    nameEn = category.nameEn,
+                    learned = ids.count { it in learned },
+                    total = ids.size,
+                    firstLetter = firstLetter(ids),
+                )
             }
         }
+
+        /** The wheel opens on the first letter with a card; a letter without one is skipped (`WheelGenerator`). */
+        private fun firstLetter(ids: Collection<CardId>): Char =
+            ids.mapNotNull { letterOf[it] }.minOrNull() ?: DEFAULT_FIRST_LETTER
 
         fun packs(learned: Set<CardId>): List<PickerPackUi> = packs.map { (pack, ids) ->
             PickerPackUi(pack.id, pack.titleTr, pack.titleEn, ids.count { it in learned }, ids.size)
@@ -165,6 +178,7 @@ internal class CategoryPickerViewModel(
             // NAT has only the neutral GENERAL bucket: Karışık plays it, no card of its own (CONTENT.md §4).
             categories = all.filter { it.id != CategoryId.MIXED && it.id != CategoryId.GENERAL },
             categoryOf = cards.categoryOfCards(level),
+            letterOf = cards.contentIndex().letterOf,
             // Pro packs are not listed (as on the exam packs page); the upcoming exams are the static locked cards.
             packs = examPacks.packs().filter { !it.isPro }.sortedBy { it.sort }.map { it to examPacks.cardIds(it.id) },
         )
@@ -253,6 +267,7 @@ internal class CategoryPickerViewModel(
                 mode = current.mode,
                 category = card.id.takeUnless { card.isMixed },
                 timeSeconds = current.timeSeconds.takeIf { current.mode != GameMode.PRACTICE },
+                firstLetter = card.firstLetter,
             ),
         )
     }

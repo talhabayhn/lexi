@@ -6,8 +6,8 @@ import dev.talhabayhan.lexi.core.designsystem.motion.MotionTier
 
 /** What [LetterMorphLauncher] needs from the letter morph; [MorphOverlayState] in the app, a fake in tests. */
 internal interface LetterMorph {
-    /** Starts the morph from OYNA; false when it cannot (tier Minimal, one runs, OYNA not laid out). */
-    fun start(tier: MotionTier): Boolean
+    /** Starts the morph from OYNA with [letter] as its big letter; false when it cannot (tier Minimal, one runs, OYNA not laid out). */
+    fun start(tier: MotionTier, letter: String): Boolean
 
     fun cancel()
 
@@ -36,16 +36,17 @@ internal class LetterMorphLauncher(private val morph: LetterMorph, private val n
     private var cancelledByBack = false
 
     /**
-     * OYNA in [tier]; [startGame] is [LexiNavigator.startGame] for the chosen game with the morph's cover wait and the
+     * OYNA in [tier] with the wheel's first [letter]; [startGame] is [LexiNavigator.startGame] for the chosen game with the morph's cover wait and the
      * dropped callback. True when the game start was accepted (with or without a morph).
      */
     fun start(
         tier: MotionTier,
+        letter: String,
         startGame: (awaitCover: (suspend () -> Boolean)?, onDropped: () -> Unit) -> Boolean,
     ): Boolean {
         if (!navigation.canStartGame()) return false
         cancelledByBack = false
-        val morphing = morph.start(tier)
+        val morphing = morph.start(tier, letter)
         val awaitCover: (suspend () -> Boolean)? = if (morphing) morph::awaitCovered else null
         val accepted = startGame(awaitCover) { if (morphing) morph.cancel() }
         if (!accepted && morphing) morph.cancel()
@@ -70,17 +71,12 @@ internal class LetterMorphLauncher(private val morph: LetterMorph, private val n
     }
 }
 
-/** [LetterMorph] on the app's [MorphOverlayState]: from OYNA to the wheel marker, always on A (A–Z wheel). */
+/** [LetterMorph] on the app's [MorphOverlayState]: from OYNA to the wheel marker, on the wheel's first letter. */
 internal class OverlayLetterMorph(private val state: MorphOverlayState) : LetterMorph {
-    override fun start(tier: MotionTier): Boolean =
-        state.start(FlowMorphKeys.PLAY_BUTTON, FlowMorphKeys.WHEEL_MARKER, FIRST_LETTER, tier)
+    override fun start(tier: MotionTier, letter: String): Boolean =
+        state.start(FlowMorphKeys.PLAY_BUTTON, FlowMorphKeys.WHEEL_MARKER, letter, tier)
 
     override fun cancel() = state.cancel()
 
     override suspend fun awaitCovered(): Boolean = state.awaitCovered()
-
-    private companion object {
-        /** The wheel always starts on A (every letter has cards): the morph's big letter. */
-        const val FIRST_LETTER = "A"
-    }
 }

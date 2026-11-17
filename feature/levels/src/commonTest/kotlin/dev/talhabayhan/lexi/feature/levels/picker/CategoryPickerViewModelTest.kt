@@ -108,6 +108,29 @@ class CategoryPickerViewModelTest {
     }
 
     @Test
+    fun `a category thin on A opens its wheel on its first letter and so does the effect`() = runTest {
+        // No "A" card in food-drink: the wheel skips A and opens on B, so the morph's big letter must be B.
+        cards.cards = listOf(
+            testCard("BREAD", category = "food-drink"),
+            testCard("CHERRY", category = "food-drink"),
+            testCard("ARM", category = "home"),
+        )
+        val viewModel = viewModel()
+        val byId = viewModel.state.value.categories.associateBy { it.id.value }
+
+        assertEquals('B', byId.getValue("food-drink").firstLetter)
+        assertEquals('A', byId.getValue("home").firstLetter)
+        assertEquals('A', byId.getValue("mixed").firstLetter, "mixed: the first letter of any card of the level")
+        assertEquals('A', byId.getValue("travel").firstLetter, "no card at all: the default, that game never starts")
+
+        viewModel.onIntent(CategoryPickerIntent.OpenCategory(CategoryId("food-drink")))
+        viewModel.effects.test {
+            viewModel.onIntent(CategoryPickerIntent.Play)
+            assertEquals('B', (awaitItem() as CategoryPickerEffect.StartGame).firstLetter)
+        }
+    }
+
+    @Test
     fun `NAT shows only the mixed card`() = runTest {
         val state = viewModel(Level.NAT).state.value
 
@@ -209,7 +232,7 @@ class CategoryPickerViewModelTest {
             viewModel.onIntent(CategoryPickerIntent.Play)
 
             assertEquals(
-                CategoryPickerEffect.StartGame(Level.A1, GameMode.CLASSIC, CategoryId("home"), 420),
+                CategoryPickerEffect.StartGame(Level.A1, GameMode.CLASSIC, CategoryId("home"), 420, firstLetter = 'C'),
                 awaitItem(),
             )
         }
