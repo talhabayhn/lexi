@@ -209,6 +209,38 @@ class GameViewModelTest {
     }
 
     @Test
+    fun `during the letter morph the game waits for the entrance before its clock starts`() = runTest {
+        val vm = viewModel(routeHandle())
+        vm.onIntent(GameIntent.HoldStart)
+        runCurrent()
+        vm.onIntent(GameIntent.Foreground)
+        assertTrue(vm.state.value.isStarting, "resumed under the ink: not started")
+        assertFalse(vm.state.value.inputEnabled)
+        assertTrue(analytics.events.isEmpty())
+        advance(5_000)
+        assertEquals(180_000L, vm.remainingMs, "no time is charged before the start")
+
+        vm.onIntent(GameIntent.ReleaseStart)
+        assertFalse(vm.state.value.isStarting)
+        assertTrue(vm.state.value.inputEnabled)
+        assertEquals(listOf<AnalyticsEvent>(AnalyticsEvent.GameStart(GameMode.CLASSIC, Level.A1)), analytics.events)
+    }
+
+    @Test
+    fun `a release before the screen is resumed starts the game on resume as usual`() = runTest {
+        val vm = viewModel(routeHandle())
+        vm.onIntent(GameIntent.HoldStart)
+        runCurrent()
+        vm.onIntent(GameIntent.ReleaseStart)
+        assertTrue(vm.state.value.isStarting, "not resumed yet")
+        vm.onIntent(GameIntent.ReleaseStart)
+
+        vm.onIntent(GameIntent.Foreground)
+        assertFalse(vm.state.value.isStarting)
+        assertEquals(1, analytics.events.size)
+    }
+
+    @Test
     fun `ticks charge the clock every 100 ms while playing`() = runTest {
         val vm = started()
 

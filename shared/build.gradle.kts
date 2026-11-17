@@ -38,6 +38,8 @@ kotlin {
             implementation(libs.koin.compose.viewmodel)
             // Re-plan the reminders on app start/resume (ON_START).
             implementation(libs.androidx.lifecycle.runtimeCompose)
+            // System back cancels the letter morph (video flow #16); the same catalog entry the features use.
+            implementation(libs.androidx.navigationevent.compose)
             // Debug-only speech timing logs (ADR 0015).
             implementation(libs.kermit)
         }

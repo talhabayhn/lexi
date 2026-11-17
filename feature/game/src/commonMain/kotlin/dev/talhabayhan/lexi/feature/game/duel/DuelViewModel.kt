@@ -150,6 +150,9 @@ internal class DuelViewModel(
                 syncTicker()
             }
 
+            // Never opened under the letter morph (only the video flow's dialog starts one).
+            GameIntent.HoldStart, GameIntent.ReleaseStart -> Unit
+
             // No jokers and no restart in a duel (GAME_RULES.md §7, the pause dialog hides YENİDEN BAŞLAT).
             GameIntent.OpenJokers, GameIntent.CloseJokers, is GameIntent.UseJoker,
             GameIntent.RequestRestart, GameIntent.CancelRestart, GameIntent.Restart,

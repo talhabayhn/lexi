@@ -157,6 +157,9 @@ internal class LevelTestViewModel(
                 startIfReady()
             }
 
+            // Never opened under the letter morph (only the video flow's dialog starts one).
+            GameIntent.HoldStart, GameIntent.ReleaseStart -> Unit
+
             // No jokers and no restart in the level test (GAME_RULES.md §9): the screen doesn't offer them.
             GameIntent.OpenJokers, GameIntent.CloseJokers, is GameIntent.UseJoker,
             GameIntent.RequestRestart, GameIntent.CancelRestart, GameIntent.Restart,

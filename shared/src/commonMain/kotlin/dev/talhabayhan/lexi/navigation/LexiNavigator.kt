@@ -110,9 +110,20 @@ internal class LexiNavigator(
         navigate(CategoryPickerRoute(level)) { launchSingleTop = true }
     }
 
-    /** OYNA of the mode / time dialog; [timeSeconds] null = the stored choice (or untimed modes). */
-    fun startGame(level: Level, mode: GameMode, category: CategoryId? = null, timeSeconds: Int? = null): Boolean =
-        openGame(GameRoute(level, mode, category, timeSeconds = timeSeconds)) { launchSingleTop = true }
+    /**
+     * OYNA of the mode / time dialog; [timeSeconds] null = the stored choice (or untimed modes). With [awaitCover]
+     * (the letter morph, #16) the navigation also waits until the ink covers the screen and is dropped if the morph
+     * is cancelled first.
+     */
+    fun startGame(
+        level: Level,
+        mode: GameMode,
+        category: CategoryId? = null,
+        timeSeconds: Int? = null,
+        awaitCover: (suspend () -> Boolean)? = null,
+    ): Boolean = openGame(GameRoute(level, mode, category, timeSeconds = timeSeconds), awaitCover) {
+        launchSingleTop = true
+    }
 
     fun startDaily(): Boolean = openGame(GameRoute.daily()) { launchSingleTop = true }
 
@@ -201,12 +212,18 @@ internal class LexiNavigator(
      * are dropped; it navigates only if the tapped entry is still the current one and RESUMED, otherwise the
      * preparation is discarded. True when the start was accepted.
      */
-    private fun openGame(route: GameRoute, options: NavOptionsBuilder.() -> Unit): Boolean {
+    private fun openGame(
+        route: GameRoute,
+        awaitCover: (suspend () -> Boolean)? = null,
+        options: NavOptionsBuilder.() -> Unit,
+    ): Boolean {
         val source = resumedEntry() ?: return false
         startingGame = scope.launch(start = CoroutineStart.UNDISPATCHED) {
             var navigated = false
             try {
                 gamePreparer.prepare(route)
+                // Letter morph: under the ink only; a cancelled morph leaves the dialog's screen as it is.
+                if (awaitCover != null && !awaitCover()) return@launch
                 val current = navController.currentBackStackEntry
                 if (current === source && source.lifecycle.currentState == Lifecycle.State.RESUMED) {
                     navController.navigate(route, options)

@@ -1,10 +1,12 @@
 package dev.talhabayhan.lexi.feature.game
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberUpdatedState
+import androidx.compose.runtime.snapshotFlow
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -14,6 +16,7 @@ import androidx.navigation.compose.composable
 import androidx.navigationevent.NavigationEventInfo
 import androidx.navigationevent.compose.NavigationBackHandler
 import androidx.navigationevent.compose.rememberNavigationEventState
+import dev.talhabayhan.lexi.core.designsystem.motion.LocalMorphOverlay
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.core.domain.game.GameMode
 import dev.talhabayhan.lexi.core.domain.model.CategoryId
@@ -21,6 +24,7 @@ import dev.talhabayhan.lexi.core.domain.model.ExamPackId
 import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.feature.game.components.rememberGameMotion
 import dev.talhabayhan.lexi.feature.game.result.ResultRoute
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.serialization.Serializable
 import org.koin.compose.viewmodel.koinViewModel
@@ -122,6 +126,11 @@ internal fun GameRoute(
             }
         }
     }
+    LetterMorphEntrance(
+        isLoading = state.isLoading,
+        hasError = state.loadError != null,
+        onIntent = viewModel::onIntent,
+    )
     // System back on both platforms: sheet → closed, running game → paused (GameIntent.Back). While loading, before
     // the start or after a load error, back leaves the screen as usual.
     GameBackHandler(
@@ -143,4 +152,37 @@ internal fun GameBackHandler(enabled: Boolean, onBack: () -> Unit) {
         isBackEnabled = enabled,
         onBackCompleted = onBack,
     )
+}
+
+/**
+ * The video flow's letter morph (#16, `video-flow-notes.md` §5) when this screen was opened under its ink: the clock
+ * and input wait ([GameIntent.HoldStart]) until the board has landed or the morph was cancelled
+ * ([GameIntent.ReleaseStart]); the morph's shrink waits until the game is loaded ([MorphOverlayState.markReady]); a
+ * game that cannot open cancels it. Opened without a morph (or recreated after a configuration change), the hold is
+ * released at once, so a game can never stay unstarted.
+ */
+@Composable
+private fun LetterMorphEntrance(isLoading: Boolean, hasError: Boolean, onIntent: (GameIntent) -> Unit) {
+    val morph = LocalMorphOverlay.current
+    val entering = remember(morph) { morph?.isRunning == true }
+    val currentOnIntent by rememberUpdatedState(onIntent)
+    if (morph == null || !entering) {
+        LaunchedEffect(Unit) { currentOnIntent(GameIntent.ReleaseStart) }
+        return
+    }
+    // At the first composition's apply: before the screen can be RESUMED (ON_RESUME starts the game otherwise).
+    DisposableEffect(morph) {
+        currentOnIntent(GameIntent.HoldStart)
+        onDispose { if (morph.isRunning) morph.cancel() }
+    }
+    LaunchedEffect(morph) {
+        snapshotFlow { morph.isRunning }.first { !it }
+        currentOnIntent(GameIntent.ReleaseStart)
+    }
+    LaunchedEffect(morph, isLoading, hasError) {
+        when {
+            hasError -> morph.cancel()
+            !isLoading -> morph.markReady()
+        }
+    }
 }

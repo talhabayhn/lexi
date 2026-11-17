@@ -1,0 +1,76 @@
+package dev.talhabayhan.lexi.core.designsystem.motion
+
+import androidx.compose.animation.core.Easing
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.Stable
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.unit.Density
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
+import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
+
+/**
+ * The game board's entrance under the letter morph (`motion.md` #16): each piece fades in and rises (or pops from a
+ * scale) on its [MotionStep], counted from the start of the ink's shrink ([MorphOverlayState.boardClockMillis]).
+ * Before the shrink the pieces are hidden under the ink; after the morph (or without one) they are at rest. Values
+ * are read only in `graphicsLayer`, so the entrance never recomposes or re-lays out the board. In tier Lite
+ * ([MorphOverlayState.boardStagger] false) a group enters together.
+ */
+@Stable
+public class BoardEntrance internal constructor(
+    private val state: MorphOverlayState,
+    private val density: Density,
+    private val mechanical: Easing,
+    private val pop: Easing,
+) {
+    /** 0..1 progress of [step] for the [index]-th piece of a group [staggerMillis] apart (eased). */
+    public fun progress(step: MotionStep, index: Int = 0, staggerMillis: Int = 0, popEasing: Boolean = false): Float {
+        val clock = state.boardClockMillis()
+        if (clock == Long.MAX_VALUE) return 1f
+        val stagger = if (state.boardStagger) staggerMillis else 0
+        val linear = step.staggered(index, stagger).progressAt(clock)
+        return (if (popEasing) pop else mechanical).transform(linear)
+    }
+
+    /**
+     * A piece that fades in and moves [offset] (vertical; negative = from above) back to rest, or scales from
+     * [startScale] to 1 ([popEasing] for the centre circle's pop).
+     */
+    public fun piece(
+        step: MotionStep,
+        index: Int = 0,
+        staggerMillis: Int = 0,
+        offset: Dp = 0.dp,
+        startScale: Float = 1f,
+        popEasing: Boolean = false,
+    ): Modifier {
+        val offsetPx = with(density) { offset.toPx() }
+        return Modifier.graphicsLayer {
+            val p = progress(step, index, staggerMillis, popEasing)
+            alpha = p.coerceIn(0f, 1f)
+            translationY = (1f - p) * offsetPx
+            if (startScale != 1f) {
+                val scale = startScale + (1f - startScale) * p
+                scaleX = scale
+                scaleY = scale
+            }
+        }
+    }
+}
+
+/**
+ * The board entrance for a screen composed **while** a letter morph runs (the game opened under the ink); null when
+ * the screen was opened without one (restored game, review, daily, tests): its pieces are simply there.
+ */
+@Composable
+public fun rememberBoardEntrance(): BoardEntrance? {
+    val state = LocalMorphOverlay.current ?: return null
+    val motion = LexiTheme.motion
+    val density = LocalDensity.current
+    val entering = remember(state) { state.isRunning }
+    if (!entering) return null
+    return remember(state, density, motion) { BoardEntrance(state, density, motion.mechanical, motion.pop) }
+}

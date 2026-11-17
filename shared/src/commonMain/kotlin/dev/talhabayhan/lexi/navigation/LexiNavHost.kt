@@ -16,19 +16,37 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.withFrameNanos
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.IntOffset
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.compose.LifecycleEventEffect
+import androidx.navigation.NavDestination.Companion.hasRoute
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
+import androidx.navigationevent.NavigationEventInfo
+import androidx.navigationevent.compose.NavigationBackHandler
+import androidx.navigationevent.compose.rememberNavigationEventState
+import dev.talhabayhan.lexi.core.designsystem.feedback.LocalHaptics
+import dev.talhabayhan.lexi.core.designsystem.motion.FlowMorphKeys
+import dev.talhabayhan.lexi.core.designsystem.motion.LocalMotionPolicy
+import dev.talhabayhan.lexi.core.designsystem.motion.MorphOverlayHost
+import dev.talhabayhan.lexi.core.designsystem.motion.MorphOverlayState
+import dev.talhabayhan.lexi.core.designsystem.motion.rememberMotionTier
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiMotion
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
+import dev.talhabayhan.lexi.core.domain.feedback.HapticKind
+import dev.talhabayhan.lexi.core.domain.game.GameMode
+import dev.talhabayhan.lexi.core.domain.model.CategoryId
+import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.core.domain.platform.UrlOpener
 import dev.talhabayhan.lexi.feature.exams.examPacksScreen
 import dev.talhabayhan.lexi.feature.game.GamePreparer
+import dev.talhabayhan.lexi.feature.game.GameRoute
 import dev.talhabayhan.lexi.feature.game.GameWarmUp
 import dev.talhabayhan.lexi.feature.game.duel.duelScreens
 import dev.talhabayhan.lexi.feature.game.gameScreen
@@ -65,6 +83,12 @@ import org.koin.compose.koinInject
  * fades in over 200 ms starting at 60 ms; the old one slides 24dp the other way and fades out over its first 90 ms;
  * back plays it in reverse. The host is filled with `cream` so the mid-fade never shows the window background.
  * Reduced motion: a 150 ms crossfade, no translation.
+ *
+ * Letter morph (`motion.md` #16, video flow): the host sits in a [MorphOverlayHost]. OYNA of the mode / time dialog
+ * starts the morph from the button (tiers Full and Lite; Minimal keeps the cross-fade), the game is prepared during
+ * the expand and navigated to under the ink without a transition; the game screen holds its clock until the board
+ * has landed. System back or the app going to the background cancels the morph (no stuck overlay, no navigation once
+ * cancelled); back after the game was opened under the ink also leaves it again.
  */
 @Composable
 fun LexiNavHost(modifier: Modifier = Modifier, perfTour: PerfTourConfig? = null) {
@@ -88,13 +112,58 @@ fun LexiNavHost(modifier: Modifier = Modifier, perfTour: PerfTourConfig? = null)
         warmingUp = false
         warmedUp = true
     }
-    Box(modifier.fillMaxSize()) {
-        // Behind the NavHost and its opaque cream background, so it is never seen.
-        if (warmingUp) GameWarmUp(Modifier.matchParentSize())
-        LexiNavGraph(navController, navigator, transitions, urlOpener)
+    val morph = remember { MorphOverlayState() }
+    val policy = LocalMotionPolicy.current
+    val tier = rememberMotionTier(policy)
+    val currentTier by rememberUpdatedState(tier)
+    val haptics = LocalHaptics.current
+    var cancelledByBack by remember { mutableStateOf(false) }
+    val startGame: (Level, GameMode, CategoryId?, Int?) -> Unit = { level, mode, category, time ->
+        val morphing = morph.start(
+            FlowMorphKeys.PLAY_BUTTON,
+            FlowMorphKeys.WHEEL_MARKER,
+            MORPH_FIRST_LETTER,
+            currentTier,
+        )
+        if (morphing) haptics.perform(HapticKind.Soft)
+        val awaitCover: (suspend () -> Boolean)? = if (morphing) morph::awaitCovered else null
+        val accepted = navigator.startGame(level, mode, category, time, awaitCover)
+        if (!accepted && morphing) morph.cancel()
     }
+    MorphOverlayHost(
+        state = morph,
+        modifier = modifier,
+        frameMonitor = policy.frameMonitor,
+        tier = { currentTier },
+        onCancelled = {
+            // Back under the ink after the game was opened: leave it again (it never started).
+            if (cancelledByBack && navController.currentDestination?.hasRoute(GameRoute::class) == true) {
+                navController.popBackStack()
+            }
+            cancelledByBack = false
+        },
+    ) {
+        Box(Modifier.fillMaxSize()) {
+            // Behind the NavHost and its opaque cream background, so it is never seen.
+            if (warmingUp) GameWarmUp(Modifier.matchParentSize())
+            LexiNavGraph(navController, navigator, transitions, urlOpener, morph, startGame)
+        }
+        // Composed after the NavHost, so it outranks the screens' own back handlers while a morph runs.
+        NavigationBackHandler(
+            state = rememberNavigationEventState(NavigationEventInfo.None),
+            isBackEnabled = morph.isRunning,
+            onBackCompleted = {
+                cancelledByBack = true
+                morph.cancel()
+            },
+        )
+    }
+    LifecycleEventEffect(Lifecycle.Event.ON_STOP) { morph.cancel() }
     if (perfTour != null && warmedUp) PerfTour(navigator = navigator, config = perfTour)
 }
+
+/** The wheel always starts on A (A-Z, every letter has cards): the morph's big letter. */
+private const val MORPH_FIRST_LETTER = "A"
 
 /** Frames the game board warm-up ([GameWarmUp]) stays composed. */
 private const val GAME_WARM_UP_FRAMES = 2
@@ -105,15 +174,18 @@ private fun LexiNavGraph(
     navigator: LexiNavigator,
     transitions: ScreenTransitions,
     urlOpener: UrlOpener,
+    morph: MorphOverlayState,
+    startGame: (Level, GameMode, CategoryId?, Int?) -> Unit,
 ) {
     NavHost(
         navController = navController,
         startDestination = SplashRoute,
         modifier = Modifier.fillMaxSize().background(LexiTheme.colors.cream),
-        enterTransition = { transitions.enter(forward = true) },
-        exitTransition = { transitions.exit(forward = true) },
-        popEnterTransition = { transitions.enter(forward = false) },
-        popExitTransition = { transitions.exit(forward = false) },
+        // Under the morph's ink the switch is instant (it is never seen, and must not cost frames).
+        enterTransition = { if (morph.isRunning) EnterTransition.None else transitions.enter(forward = true) },
+        exitTransition = { if (morph.isRunning) ExitTransition.None else transitions.exit(forward = true) },
+        popEnterTransition = { if (morph.isRunning) EnterTransition.None else transitions.enter(forward = false) },
+        popExitTransition = { if (morph.isRunning) ExitTransition.None else transitions.exit(forward = false) },
     ) {
         splashScreen(onFinished = navigator::finishSplash)
         onboardingScreen(
@@ -159,7 +231,7 @@ private fun LexiNavGraph(
         )
         categoryPickerScreen(
             onBack = { navigator.back() },
-            onStart = { level, mode, category, time -> navigator.startGame(level, mode, category, time) },
+            onStart = startGame,
             onStartPack = { pack -> navigator.startExamPack(pack) },
         )
         gameScreen(

@@ -98,6 +98,9 @@ internal class GameViewModel(
     private var engine: GameEngine? = null
     private var session: GameSession? = null
     private var foreground = false
+
+    /** Opened under the letter morph: [startIfReady] waits for [GameIntent.ReleaseStart]. */
+    private var entranceHold = false
     private var speakOnCorrect = true
     private var finished = false
     private var ticker: Job? = null
@@ -188,6 +191,13 @@ internal class GameViewModel(
 
             GameIntent.Foreground -> {
                 foreground = true
+                startIfReady()
+            }
+
+            GameIntent.HoldStart -> entranceHold = true
+
+            GameIntent.ReleaseStart -> {
+                entranceHold = false
                 startIfReady()
             }
         }
@@ -339,7 +349,7 @@ internal class GameViewModel(
     /** `Start` once the wheel is loaded and the screen is resumed for the first time. */
     private fun startIfReady() {
         val current = session ?: return
-        if (foreground && current.state.status == GameStatus.NOT_STARTED) {
+        if (foreground && !entranceHold && current.state.status == GameStatus.NOT_STARTED) {
             dispatch(GameEvent.Start(timestampMs = appClock.nowMs()))
             val started = current.state
             if (started.status == GameStatus.PLAYING) {

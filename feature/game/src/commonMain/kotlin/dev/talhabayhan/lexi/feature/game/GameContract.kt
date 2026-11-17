@@ -247,6 +247,15 @@ internal sealed interface GameIntent {
 
     /** Screen RESUMED: starts a loaded game the first time; a paused game stays paused. */
     data object Foreground : GameIntent
+
+    /**
+     * The screen opened under the letter morph (video flow #16): the clock and input wait for [ReleaseStart] even
+     * when the screen is RESUMED.
+     */
+    data object HoldStart : GameIntent
+
+    /** The morph's board entrance has landed or the morph was cancelled: start as on [Foreground] (once resumed). */
+    data object ReleaseStart : GameIntent
 }
 
 /**
