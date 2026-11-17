@@ -7,7 +7,7 @@ a2-unlucky,UNLUCKY,U,STARTS,adj,şansı yaver gitmeyen,He was unlucky in the mat
 a2-user,USER,U,STARTS,noun,bir ürünü ya da hizmeti kullanan kişi,Every user needs a password.,Her kullanıcının bir parolaya ihtiyacı var.,3,,daily-life
 a2-underwear,UNDERWEAR,U,STARTS,noun,giysilerin altına giyilen iç çamaşırı,Take some underwear with you.,Yanına iç çamaşırı al.,2,,daily-life
 a2-underline,UNDERLINE,U,STARTS,verb,bir yazının altına çizgi çekmek,Underline the new words.,Yeni sözcüklerin altını çiz.,3,,school-work
-a2-button,BUTTON,U,CONTAINS,noun,giysiyi ilikleyen küçük yuvarlak parça,A button fell off my coat.,Paltomdan bir düğme düştü.,2,,daily-life
+a2-button,BUTTON,U,CONTAINS,noun,giysiyi kapatan küçük yuvarlak tutturucu,A button fell off my coat.,Paltomdan bir düğme düştü.,2,,daily-life
 a2-rubbish,RUBBISH,U,CONTAINS,noun,"atılacak şeyler, çöp","Put the rubbish outside, please.",Çöpü lütfen dışarı koy.,2,,home
 a2-purse,PURSE,U,CONTAINS,noun,bozuk para koymak için küçük kese,She keeps coins in her purse.,Bozuk paraları para cüzdanında tutuyor.,3,,daily-life
 a2-pupil,PUPIL,U,CONTAINS,noun,ilkokulda ders gören çocuk,Every pupil has a desk.,Her öğrencinin bir sırası var.,2,,school-work
@@ -43,7 +43,7 @@ a2-orchestra,ORCHESTRA,O,STARTS,noun,birçok çalgıcıdan oluşan müzik toplul
 a2-outfit,OUTFIT,O,STARTS,noun,birlikte giyilen kıyafetler,She chose a blue outfit for the party.,Parti için mavi bir kıyafet seçti.,3,,daily-life
 a2-once,ONCE,O,STARTS,adv,"bir kere, bir defa",I go swimming once a week.,Haftada bir kez yüzmeye giderim.,2,,time-weather
 a2-online,ONLINE,O,STARTS,adv,internete bağlı olarak,Selin bought her new shoes online.,Selin yeni ayakkabılarını çevrimiçi aldı.,2,,daily-life
-a2-olive,OLIVE,O,STARTS,noun,zeytinyağı da veren küçük yeşil ya da siyah meyve,He put an olive on the pizza.,Pizzanın üstüne bir zeytin koydu.,2,,food-drink
+a2-olive,OLIVE,O,STARTS,noun,yeşil ya da siyah küçük yağlı meyve,He put an olive on the pizza.,Pizzanın üstüne bir zeytin koydu.,2,,food-drink
 a2-hockey,HOCKEY,O,CONTAINS,noun,sopayla oynanan takım sporu,My cousin plays hockey.,Kuzenim hokey oynuyor.,2,,sports
 a2-polite,POLITE,O,CONTAINS,adj,başkalarına karşı kibar ve saygılı,The waiter is very polite.,Garson çok kibar.,3,,family-people
 a2-cookie,COOKIE,O,CONTAINS,noun,"yuvarlak, tatlı ve kuru küçük hamur işi",Would you like a cookie?,Bir kurabiye ister misin?,2,,food-drink
@@ -68,7 +68,7 @@ a2-niece,NIECE,N,STARTS,noun,kardeşin ya da eşin kardeşinin kız çocuğu,My 
 a2-nephew,NEPHEW,N,STARTS,noun,kardeşin ya da eşin kardeşinin erkek çocuğu,My nephew is learning to ride a bike.,Yeğenim bisiklete binmeyi öğreniyor.,2,,family-people
 a2-nut,NUT,N,STARTS,noun,"kabuğu sert, yağlı yemiş",There is a nut in the cake.,Kekin içinde bir fındık var.,2,,food-drink
 a2-novel,NOVEL,N,STARTS,noun,"uzun kurgusal kitap, roman",She read a long novel on the plane.,Uçakta uzun bir roman okudu.,3,,school-work
-a2-bone,BONE,N,CONTAINS,noun,vücudun iskeletini oluşturan sert parça,The dog has a bone.,Köpeğin bir kemiği var.,2,,body-health
+a2-bone,BONE,N,CONTAINS,noun,iskeleti oluşturan sert doku,The dog has a bone.,Köpeğin bir kemiği var.,2,,body-health
 a2-stone,STONE,N,CONTAINS,noun,yerden toplanan küçük sert kaya parçası,He threw a stone into the lake.,Göle bir taş attı.,2,,daily-life
 a2-brain,BRAIN,N,CONTAINS,noun,kafatasında bulunan düşünme organı,The brain controls the body.,Beyin vücudu yönetir.,3,,body-health
 a2-sentence,SENTENCE,N,CONTAINS,noun,"bir düşünceyi anlatan sözcük dizisi, cümle",Write a sentence with this word.,Bu sözcükle bir cümle yaz.,2,,school-work
@@ -90,7 +90,7 @@ a2-event,EVENT,E,STARTS,noun,yaşanan önemli olay ya da etkinlik,The school eve
 a2-ever,EVER,E,STARTS,adv,herhangi bir zamanda,Have you ever seen a whale?,Hiç balina gördün mü?,3,,time-weather
 a2-easily,EASILY,E,STARTS,adv,"zorlanmadan, kolaylıkla",Mert lifted the heavy box easily.,Mert ağır kutuyu kolayca kaldırdı.,3,,daily-life
 a2-enemy,ENEMY,E,STARTS,noun,"karşı tarafta savaşılan kişi, düşman",The soldiers fought the enemy.,Askerler düşmanla savaştı.,3,,family-people
-a2-eraser,ERASER,E,STARTS,noun,kurşun kalem izini silen küçük nesne,The pencil has a small eraser on the end.,Kalemin ucunda küçük bir silgi var.,2,,school-work
+a2-eraser,ERASER,E,STARTS,noun,kalem izini silen küçük lastik,The pencil has a small eraser on the end.,Kalemin ucunda küçük bir silgi var.,2,,school-work
 a2-essay,ESSAY,E,STARTS,noun,belli bir konuda yazılan kısa yazı,I wrote an essay about dogs.,Köpekler üzerine bir kompozisyon yazdım.,3,,school-work
 a2-edge,EDGE,E,STARTS,noun,"bir şeyin kenarı, ucu",Do not stand near the edge.,Kenarın yakınında durma.,3,,daily-life
 a2-ending,ENDING,E,STARTS,noun,bir hikâyenin ya da filmin sonu,The film has a sad ending.,Filmin hüzünlü bir sonu var.,3,,daily-life
@@ -103,7 +103,7 @@ a2-gate,GATE,G,STARTS,noun,bahçe ya da havalimanında girişteki kapı,The gard
 a2-gentleman,GENTLEMAN,G,STARTS,noun,kibar ve görgülü erkek,The gentleman opened the door for her.,Beyefendi onun için kapıyı açtı.,3,,family-people
 a2-giant,GIANT,G,STARTS,noun,"masallardaki kocaman yaratık, dev",The giant in the story lived on a hill.,Hikâyedeki dev bir tepede yaşıyordu.,2,,daily-life
 a2-ground,GROUND,G,STARTS,noun,üzerinde yürüdüğümüz toprak yüzey,The apples fell to the ground in the wind.,Elmalar rüzgârda yere düştü.,3,,daily-life
-a2-group,GROUP,G,STARTS,noun,bir arada olan insanlar ya da şeyler,A group of students is waiting.,Bir grup öğrenci bekliyor.,2,,school-work
+a2-group,GROUP,G,STARTS,noun,birlikte duran ya da çalışan topluluk,A group of students is waiting.,Bir grup öğrenci bekliyor.,2,,school-work
 a2-grow,GROW,G,STARTS,verb,"boyu uzamak, büyümek",Tomatoes grow best in warm weather.,Domatesler en iyi sıcak havada büyür.,2,,daily-life
 a2-guard,GUARD,G,STARTS,noun,"bir yeri koruyan görevli, bekçi",The guard stands at the door.,Bekçi kapıda duruyor.,3,,daily-life
 a2-guide,GUIDE,G,STARTS,noun,turistlere yerleri gezdiren kişi,The guide showed us the old tower.,Rehber bize eski kuleyi gösterdi.,3,,travel

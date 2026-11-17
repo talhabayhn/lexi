@@ -32,7 +32,7 @@ c1-audit,AUDIT,A,STARTS,noun,hesapların resmî olarak denetlenmesi,The company 
 c1-assault,ASSAULT,A,STARTS,noun,birine yönelik fiziksel saldırı,The man was arrested for assault.,Adam saldırı suçundan tutuklandı.,4,,school-work
 c1-acquit,ACQUIT,A,STARTS,verb,mahkemede beraat ettirmek,The jury decided to acquit him.,Jüri onu beraat ettirmeye karar verdi.,5,,school-work
 c1-atrocity,ATROCITY,A,STARTS,noun,korkunç ve vahşi bir şiddet olayı,The army was accused of an atrocity against civilians.,"Ordu, sivillere karşı bir vahşetle suçlandı.",5,,school-work
-c1-artefact,ARTIFACT,A,STARTS,noun,tarihî değeri olan el yapımı eşya,The museum shows an artifact from ancient Rome.,Müze Antik Roma'dan kalma bir eser sergiliyor.,4,,travel
+c1-artefact,ARTIFACT,A,STARTS,noun,"geçmişten kalan, el yapımı tarihî buluntu",The museum shows an artifact from ancient Rome.,Müze Antik Roma'dan kalma bir eser sergiliyor.,4,,travel
 c1-affiliate,AFFILIATE,A,STARTS,noun,büyük bir kuruluşa bağlı şirket ya da kuruluş,The shop is an affiliate of a large chain.,Mağaza büyük bir zincire bağlı bir kuruluştur.,5,,business
 c1-appraisal,APPRAISAL,A,STARTS,noun,bir kişinin ya da şeyin değerlendirilmesi,Every employee has a yearly appraisal.,Her çalışanın yıllık bir performans değerlendirmesi var.,5,,business
 c1-arguably,ARGUABLY,A,STARTS,adv,"belki de, pek çok kişiye göre (en ...)",He is arguably the best chef in the city.,Belki de şehrin en iyi aşçısıdır.,5,,school-work

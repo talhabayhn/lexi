@@ -8,7 +8,7 @@ b2-twilight,TWILIGHT,T,STARTS,noun,güneş battıktan sonraki loş ışık; alac
 b2-unload,UNLOAD,U,STARTS,verb,araçtaki ya da gemideki yükü boşaltmak,The crew needed two hours to unload the cargo ship.,Mürettebatın kargo gemisini boşaltması iki saat sürdü.,3,,travel
 b2-eel,EEL,E,STARTS,noun,"yılana benzeyen, uzun ve kaygan nehir balığı",The eel slipped through his fingers and back into the river.,Yılan balığı parmaklarının arasından kayıp nehre geri döndü.,3,,daily-life
 b2-embassy,EMBASSY,E,STARTS,noun,bir ülkenin başka bir ülkedeki resmi temsilciliği,She waited for hours at the embassy to replace her lost passport.,Kaybolan pasaportunu değiştirmek için saatlerce büyükelçilikte bekledi.,3,,travel
-b2-errand,ERRAND,E,STARTS,noun,"bir yere gidip yapılan küçük iş (postane, market vb.)",Picking up the dry cleaning was the last errand on her list.,"Kuru temizlemeden giysileri almak, listesindeki son işti.",3,,daily-life
+b2-errand,ERRAND,E,STARTS,noun,bir yere gidip yapılan küçük iş,Picking up the dry cleaning was the last errand on her list.,"Kuru temizlemeden giysileri almak, listesindeki son işti.",3,,daily-life
 b2-lifeboat,LIFEBOAT,L,STARTS,noun,batan gemiden kurtulmak için kullanılan küçük tekne,Passengers were told to board the lifeboat in an orderly line.,Yolculara cankurtaran botuna düzenli bir sırayla binmeleri söylendi.,3,,travel
 b2-limp,LIMP,L,STARTS,verb,ayağı ağrıdığı için düzensiz basarak yürümek,He had to limp to the finish line after twisting his ankle.,Bileğini burkunca bitiş çizgisine topallayarak gitmek zorunda kaldı.,3,,body-health
 b2-mansion,MANSION,M,STARTS,noun,"bahçeli, çok büyük ve lüks ev; konak",A security guard patrols the mansion at night.,Bir güvenlik görevlisi geceleri konağı devriye gezer.,3,,daily-life

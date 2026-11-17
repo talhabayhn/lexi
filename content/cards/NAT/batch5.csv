@@ -4,7 +4,7 @@ nat-quash,QUASH,Q,STARTS,verb,"(mahkeme kararını, söylentiyi) geçersiz kıl�
 nat-quibble,QUIBBLE,Q,STARTS,verb,önemsiz ayrıntılar için itiraz edip tartışmak,Let's not quibble over a few pounds.,Birkaç sterlin için tartışmayalım.,5,,general
 nat-quintessential,QUINTESSENTIAL,Q,STARTS,adj,"bir şeyin en tipik, en saf örneği olan",Fish and chips is the quintessential British meal.,Balık ve patates kızartması en tipik İngiliz yemeğidir.,5,,general
 nat-quixotic,QUIXOTIC,Q,STARTS,adj,"hayalperest, gerçek dışı derecede idealist",It was a quixotic attempt to end all wars.,Tüm savaşları bitirmeye yönelik hayalperest bir girişimdi.,5,,general
-nat-quagmire,QUAGMIRE,Q,STARTS,noun,içinden çıkılmaz bataklık gibi durum,The war became a political quagmire.,Savaş siyasi bir bataklığa dönüştü.,5,,general
+nat-quagmire,QUAGMIRE,Q,STARTS,noun,"içinden çıkılması zor, bataklık gibi sorun",The war became a political quagmire.,Savaş siyasi bir bataklığa dönüştü.,5,,general
 nat-squander,SQUANDER,Q,CONTAINS,verb,"(para, fırsat) çarçur etmek, heba etmek",Don't squander this chance.,Bu fırsatı heba etme.,4,,general
 nat-squalid,SQUALID,Q,CONTAINS,adj,"(konut) pis, bakımsız ve sefil",They lived in squalid conditions.,Pis ve sefil koşullarda yaşıyorlardı.,5,,general
 nat-antiquated,ANTIQUATED,Q,CONTAINS,adj,"(yöntem, yasa) çağ dışı, köhne",The office uses antiquated computers.,Ofis köhne bilgisayarlar kullanıyor.,4,,general
@@ -68,9 +68,9 @@ nat-sublime,SUBLIME,S,STARTS,adj,"ruhu yücelten, olağanüstü güzel",The view
 nat-superfluous,SUPERFLUOUS,S,STARTS,adj,"gereksiz yere eklenmiş, lüzumsuz",Cut out any superfluous words.,Lüzumsuz sözcükleri çıkar.,5,,general
 nat-surly,SURLY,S,STARTS,adj,"kaba ve huysuz (garson, satıcı)",A surly waiter took our order.,Kaba ve huysuz bir garson siparişimizi aldı.,5,,general
 nat-sycophant,SYCOPHANT,S,STARTS,noun,"yağcı, dalkavuk kişi",Only a sycophant would praise such a bad plan.,Böyle kötü bir planı ancak bir dalkavuk över.,5,,general
-nat-shambles,SHAMBLES,S,STARTS,noun,"darmadağın, rezalet halinde durum",The meeting was a complete shambles.,Toplantı tam bir rezaletti.,4,,general
+nat-shambles,SHAMBLES,S,STARTS,noun,tam bir karmaşa ve düzensizlik,The meeting was a complete shambles.,Toplantı tam bir rezaletti.,4,,general
 nat-snub,SNUB,S,STARTS,verb,kasten görmezden gelip küçük düşürmek,She chose to snub me at the party.,Partide beni kasten görmezden gelmeyi seçti.,4,,general
-nat-spate,SPATE,S,STARTS,noun,"(soygun, saldırı) kısa sürede sel gibi patlak veren çokluk",There has been a spate of burglaries.,Ard arda bir dizi hırsızlık oldu.,5,,general
+nat-spate,SPATE,S,STARTS,noun,kısa sürede art arda yaşanan olaylar,There has been a spate of burglaries.,Ard arda bir dizi hırsızlık oldu.,5,,general
 nat-stupor,STUPOR,S,STARTS,noun,"sersemlik, kendinde olmama hali",He woke up in a drunken stupor.,Sarhoşluktan sersemlemiş halde uyandı.,5,,general
 nat-suave,SUAVE,S,STARTS,adj,"(erkek) cilalı tavırlı, nazik ve çekici",The suave actor charmed everyone.,Kibar ve şık oyuncu herkesi büyüledi.,5,,general
 nat-swindle,SWINDLE,S,STARTS,verb,"hileyle birinin parasını almak, dolandırmak",They tried to swindle old people out of their savings.,Yaşlıları dolandırıp birikimlerini almaya çalıştılar.,4,,general

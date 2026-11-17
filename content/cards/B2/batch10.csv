@@ -18,7 +18,7 @@ b2-vertical,VERTICAL,V,STARTS,adj,"dikey, yukarı aşağı",Draw a vertical line
 b2-vision,VISION,V,STARTS,noun,görme gücü; gelecek hayali,She has a clear vision for the company.,Şirket için net bir vizyonu var.,4,,business
 b2-advance,ADVANCE,V,CONTAINS,noun,bilimde ya da teknolojide atılım,Doctors announced a new advance in medicine.,Doktorlar tıpta yeni bir ilerleme duyurdu.,4,,technology
 b2-convert,CONVERT,V,CONTAINS,verb,bir şeyi başka biçime dönüştürmek,You can convert the file to a PDF.,Dosyayı PDF'ye dönüştürebilirsin.,4,,technology
-b2-diversity,DIVERSITY,V,CONTAINS,noun,çeşitlilik,The city is proud of its cultural diversity.,Şehir kültürel çeşitliliğiyle gurur duyuyor.,4,,daily-life
+b2-diversity,DIVERSITY,V,CONTAINS,noun,çok farklı türden öğelerin bir arada olması,The city is proud of its cultural diversity.,Şehir kültürel çeşitliliğiyle gurur duyuyor.,4,,daily-life
 b2-division,DIVISION,V,CONTAINS,noun,bir şeyin bölümlere ayrılması; bölüm,The company has a division in Izmir.,Şirketin İzmir'de bir bölümü var.,4,,business
 b2-evident,EVIDENT,V,CONTAINS,adj,açıkça belli,It was evident that he was tired.,Yorgun olduğu belliydi.,4,,daily-life
 b2-invade,INVADE,V,CONTAINS,verb,bir ülkeye silahla girmek,The army planned to invade the island.,Ordu adayı işgal etmeyi planladı.,4,,school-work

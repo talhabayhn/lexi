@@ -9,7 +9,7 @@ b2-norm,NORM,N,STARTS,noun,toplumda kabul gören davranış kuralı,Shaking hand
 b2-notable,NOTABLE,N,STARTS,adj,dikkat çekecek ölçüde önemli,She is a notable artist.,O tanınmış bir sanatçı.,4,,music
 b2-notion,NOTION,N,STARTS,noun,bir konudaki kabaca fikir,The notion of free time is new to him.,Boş zaman kavramı onun için yeni.,4,,school-work
 b2-numerous,NUMEROUS,N,STARTS,adj,sayısı çok olan,I have called him on numerous occasions.,Onu defalarca aradım.,4,,daily-life
-b2-nutrient,NUTRIENT,N,STARTS,noun,beslenmede vücudun ihtiyaç duyduğu madde,This food has an important nutrient.,Bu yiyecekte önemli bir besin maddesi var.,4,,food-drink
+b2-nutrient,NUTRIENT,N,STARTS,noun,vücudun beslenmek için ihtiyaç duyduğu besin öğesi,This food has an important nutrient.,Bu yiyecekte önemli bir besin maddesi var.,4,,food-drink
 b2-nod-off,NOD OFF,N,STARTS,phrasal,istemeden uyuyakalmak,I might nod off during the film.,Film sırasında uyuyakalabilirim.,4,,phrasal-verbs
 b2-no-doubt,NO DOUBT,N,STARTS,idiom,"şüphesiz, kesinlikle",He is no doubt the best player.,O şüphesiz en iyi oyuncu.,3,,idioms
 b2-no-matter,NO MATTER,N,STARTS,idiom,ne olursa olsun,"No matter what happens, call me.","Ne olursa olsun, beni ara.",3,,idioms
@@ -58,7 +58,7 @@ b2-prospect,PROSPECT,P,STARTS,noun,gelecekte olabilecek ihtimal,The prospect of 
 b2-psychology,PSYCHOLOGY,P,STARTS,noun,insan zihnini inceleyen bilim,She wants to study psychology.,Psikoloji okumak istiyor.,4,,school-work
 b2-publicity,PUBLICITY,P,STARTS,noun,bir şeyin kamuoyuna duyurulması,The film got a lot of publicity.,Film çok tanıtım aldı.,4,,film-tv
 b2-pursue,PURSUE,P,STARTS,verb,bir hedefin peşinden gitmek,She wants to pursue a career in law.,Hukuk alanında kariyer yapmak istiyor.,4,,business
-b2-pass-out,PASS OUT,P,STARTS,phrasal,bayılmak,He might pass out in the heat.,Sıcakta bayılabilir.,4,,phrasal-verbs
+b2-pass-out,PASS OUT,P,STARTS,phrasal,bilincini bir anda kaybedip düşmek,He might pass out in the heat.,Sıcakta bayılabilir.,4,,phrasal-verbs
 b2-pay-off,PAY OFF,P,STARTS,phrasal,emeğin karşılığını vermek,Hard work will pay off.,Çok çalışmak karşılığını verecek.,4,,phrasal-verbs
 b2-play-down,PLAY DOWN,P,STARTS,phrasal,bir şeyin önemini küçük göstermek,He tried to play down the problem.,Sorunu küçük göstermeye çalıştı.,4,,phrasal-verbs
 b2-put-up-with,PUT UP WITH,P,STARTS,phrasal,bir şeye katlanmak,I cannot put up with this noise.,Bu gürültüye katlanamıyorum.,4,,phrasal-verbs

@@ -3,11 +3,11 @@ b1-jaw,JAW,J,STARTS,noun,"ağzın alt bölümünü oluşturan kemik, çene",He h
 b1-jealousy,JEALOUSY,J,STARTS,noun,başkasında olanı istemekten doğan kıskançlık,Jealousy can make you very unhappy.,Kıskançlık seni çok mutsuz edebilir.,4,,family-people
 b1-jewel,JEWEL,J,STARTS,noun,"değerli, parlak taş",The queen wore a red jewel.,Kraliçe kırmızı bir mücevher taktı.,4,,daily-life
 b1-jet,JET,J,STARTS,noun,çok hızlı giden büyük yolcu uçağı,The jet landed in Ankara at noon.,Jet uçağı öğlen Ankara'ya indi.,3,,travel
-b1-joint,JOINT,J,STARTS,adj,"iki ya da daha çok kişinin birlikte yaptığı, ortak",It was a joint plan.,Bu ortak bir plandı.,4,,business
+b1-joint,JOINT,J,STARTS,adj,birkaç kişinin birlikte yaptığı,It was a joint plan.,Bu ortak bir plandı.,4,,business
 b1-juicy,JUICY,J,STARTS,adj,"içinde bol su bulunan, sulu",This orange is very juicy.,Bu portakal çok sulu.,3,,food-drink
 b1-junior,JUNIOR,J,STARTS,adj,yaşça ya da kıdemce daha alt konumda olan,He is a junior doctor at the hospital.,Hastanede asistan doktor olarak çalışıyor.,4,,business
 b1-junk,JUNK,J,STARTS,noun,"işe yaramaz eski eşyalar, hurda",The garage is full of junk.,Garaj eski eşyalarla dolu.,3,,daily-life
-b1-justice,JUSTICE,J,STARTS,noun,adalet,Everyone wants justice for the victims.,Herkes mağdurlar için adalet ister.,4,,daily-life
+b1-justice,JUSTICE,J,STARTS,noun,herkese hak ettiğini veren adil sistem,Everyone wants justice for the victims.,Herkes mağdurlar için adalet ister.,4,,daily-life
 b1-major,MAJOR,J,CONTAINS,adj,"çok önemli, büyük",Traffic is a major problem here.,Trafik burada büyük bir sorun.,3,,daily-life
 b1-majority,MAJORITY,J,CONTAINS,noun,bir grubun büyük çoğunluğu,The majority of students passed the test.,Öğrencilerin çoğunluğu sınavı geçti.,4,,school-work
 b1-reject,REJECT,J,CONTAINS,verb,bir teklifi kabul etmeyip geri çevirmek,They reject every offer we make.,Yaptığımız her teklifi reddediyorlar.,4,,business
@@ -37,7 +37,7 @@ b1-talkative,TALKATIVE,K,CONTAINS,adj,çok konuşan,My little brother is very ta
 b1-bookshelf,BOOKSHELF,K,CONTAINS,noun,kitapların dizildiği raf,He put the novel on the bookshelf.,Romanı kitaplığa koydu.,3,,daily-life
 b1-backyard,BACKYARD,K,CONTAINS,noun,evin arkasındaki bahçe,The children are playing in the backyard.,Çocuklar arka bahçede oynuyor.,3,,daily-life
 b1-label,LABEL,L,STARTS,noun,ürünün üzerindeki etiket,Read the label before you eat it.,Yemeden önce etiketi oku.,3,,food-drink
-b1-laboratory,LABORATORY,L,STARTS,noun,bilimsel deneylerin yapıldığı yer,The laboratory is on the second floor.,Laboratuvar ikinci katta.,3,,school-work
+b1-laboratory,LABORATORY,L,STARTS,noun,bilimsel deney yapılan özel oda,The laboratory is on the second floor.,Laboratuvar ikinci katta.,3,,school-work
 b1-landlord,LANDLORD,L,STARTS,noun,"evini kiraya veren kişi, ev sahibi",The landlord wants more rent.,Ev sahibi daha fazla kira istiyor.,3,,business
 b1-landscape,LANDSCAPE,L,STARTS,noun,bir bölgenin doğal manzarası,The mountain landscape was beautiful.,Dağ manzarası çok güzeldi.,4,,travel
 b1-lawn,LAWN,L,STARTS,noun,evin önündeki kısa kesilmiş çimenlik,He cuts the lawn every Sunday.,Her pazar çimleri biçiyor.,3,,daily-life
@@ -63,7 +63,7 @@ b1-mainly,MAINLY,M,STARTS,adv,"çoğunlukla, esas olarak",The class is mainly gi
 b1-male,MALE,M,STARTS,adj,erkek cinsiyetinde,The male bird has bright feathers.,Erkek kuşun parlak tüyleri var.,3,,animals
 b1-management,MANAGEMENT,M,STARTS,noun,bir işi veya şirketi yönetme,Good management saves money.,İyi yönetim para kazandırır.,4,,business
 b1-manner,MANNER,M,STARTS,noun,"birinin davranış ya da konuşma tarzı, tavır",He spoke in a friendly manner.,Dostça bir tavırla konuştu.,4,,daily-life
-b1-marriage,MARRIAGE,M,STARTS,noun,evlilik,Their marriage lasted fifty years.,Evlilikleri elli yıl sürdü.,3,,family-people
+b1-marriage,MARRIAGE,M,STARTS,noun,iki kişinin resmî birlikteliği,Their marriage lasted fifty years.,Evlilikleri elli yıl sürdü.,3,,family-people
 b1-master,MASTER,M,STARTS,verb,bir şeyi çok iyi öğrenmek,It takes years to master a language.,Bir dili tam öğrenmek yıllar alır.,4,,school-work
 b1-material,MATERIAL,M,STARTS,noun,bir şey yapılırken kullanılan malzeme,What material is this chair made of?,Bu sandalye hangi malzemeden yapılmış?,3,,daily-life
 b1-matter,MATTER,M,STARTS,noun,ele alınan konu veya sorun,It is a serious matter.,Bu ciddi bir mesele.,3,,daily-life

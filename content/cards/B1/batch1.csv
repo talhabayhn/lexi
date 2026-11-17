@@ -5,7 +5,7 @@ b1-accent,ACCENT,A,STARTS,noun,"bir kişinin kendine özgü konuşma biçimi, ş
 b1-account,ACCOUNT,A,STARTS,noun,bankada paranın tutulduğu kayıtlı hesap,I opened a new bank account yesterday.,Dün yeni bir banka hesabı açtım.,3,,business
 b1-achievement,ACHIEVEMENT,A,STARTS,noun,çabayla elde edilen büyük başarı,Finishing the marathon was a great achievement.,Maratonu bitirmek büyük bir başarıydı.,3,,school-work
 b1-act,ACT,A,STARTS,verb,"bir durumda harekete geçmek, davranmak",You must act quickly when you see danger.,Tehlike görünce hızlı hareket etmelisin.,3,,daily-life
-b1-action,ACTION,A,STARTS,noun,"yapılan şey, eylem",The police took action at once.,Polis derhal harekete geçti.,3,,daily-life
+b1-action,ACTION,A,STARTS,noun,bir sorunu çözmek için atılan adım,The police took action at once.,Polis derhal harekete geçti.,3,,daily-life
 b1-admire,ADMIRE,A,STARTS,verb,"birine veya bir şeye hayran olmak, takdir etmek",I admire your bravery.,Cesaretine hayranım.,3,,family-people
 b1-admit,ADMIT,A,STARTS,verb,yanlış bir şeyi yaptığını kabul etmek,He did not want to admit that he was wrong.,Yanıldığını kabul etmek istemedi.,3,,daily-life
 b1-advantage,ADVANTAGE,A,STARTS,noun,"bir kişiyi öne geçiren yarar, avantaj",Speaking two languages is a big advantage.,İki dil konuşmak büyük bir avantaj.,3,,business
@@ -16,7 +16,7 @@ b1-agent,AGENT,A,STARTS,noun,başkası adına iş yapan aracı kişi,The travel 
 b1-agreement,AGREEMENT,A,STARTS,noun,iki tarafın üzerinde anlaştığı karar,They signed an agreement last week.,Geçen hafta bir anlaşma imzaladılar.,3,,business
 b1-aim,AIM,A,STARTS,noun,ulaşılmak istenen amaç,My aim is to pass the exam.,Amacım sınavı geçmek.,3,,school-work
 b1-airline,AIRLINE,A,STARTS,noun,uçak seferleri yapan şirket,This airline has cheap tickets.,Bu havayolu şirketinin ucuz biletleri var.,3,,travel
-b1-alcohol,ALCOHOL,A,STARTS,noun,bira ve şarap gibi içeceklerdeki sarhoş edici madde,Drivers must not drink alcohol.,Sürücüler alkol içmemeli.,3,,body-health
+b1-alcohol,ALCOHOL,A,STARTS,noun,bira ve şarapta bulunan sarhoş edici sıvı,Drivers must not drink alcohol.,Sürücüler alkol içmemeli.,3,,body-health
 b1-ambition,AMBITION,A,STARTS,noun,başarılı olmak için duyulan güçlü istek,Her ambition is to become a doctor.,En büyük hayali doktor olmak.,3,,school-work
 b1-announce,ANNOUNCE,A,STARTS,verb,önemli bir haberi herkese duyurmak,The school will announce the results today.,Okul sonuçları bugün açıklayacak.,3,,daily-life
 b1-annoy,ANNOY,A,STARTS,verb,birini sinirlendirmek veya rahatsız etmek,His loud music began to annoy me.,Yüksek sesli müziği beni rahatsız etmeye başladı.,3,,daily-life
@@ -44,7 +44,7 @@ b1-accidentally,ACCIDENTALLY,A,STARTS,adv,"istemeden, kazara",I accidentally bro
 b1-background,BACKGROUND,B,STARTS,noun,bir resmin arkası; kişinin geçmişi ve geldiği çevre,He has a good educational background.,İyi bir eğitim geçmişi var.,3,,daily-life
 b1-balance,BALANCE,B,STARTS,noun,dengede durabilme hali,It is hard to keep your balance on ice.,Buzda dengeni korumak zor.,3,,body-health
 b1-barbecue,BARBECUE,B,STARTS,noun,açık havada ateşte et pişirilen yemek,We had a barbecue in the garden.,Bahçede mangal yaptık.,3,,food-drink
-b1-bargain,BARGAIN,B,STARTS,noun,normal fiyatından çok ucuza alınan şey,This coat was a real bargain.,Bu mont gerçek bir kelepirdi.,3,,daily-life
+b1-bargain,BARGAIN,B,STARTS,noun,normal fiyatının çok altında alınan ürün,This coat was a real bargain.,Bu mont gerçek bir kelepirdi.,3,,daily-life
 b1-behave,BEHAVE,B,STARTS,verb,belirli bir biçimde davranmak,The children know how to behave at a party.,Çocuklar partide nasıl davranılacağını biliyor.,3,,family-people
 b1-behaviour,BEHAVIOR,B,STARTS,noun,bir kişinin davranış biçimi,His behavior in class is very good.,Sınıftaki davranışı çok iyi.,3,,school-work
 b1-belong,BELONG,B,STARTS,verb,bir kişiye ait olmak,Does this bag belong to your sister?,Bu çanta kız kardeşine mi ait?,3,,daily-life

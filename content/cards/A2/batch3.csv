@@ -21,13 +21,13 @@ a2-along,ALONG,A,STARTS,phrase,bir yolun ya da hattın boyunca,We walked along t
 a2-although,ALTHOUGH,A,STARTS,phrase,"-e rağmen, olmasına karşın","Although it was cold, we went out.",Hava soğuk olmasına rağmen dışarı çıktık.,4,,daily-life
 a2-ambulance,AMBULANCE,A,STARTS,noun,hastaları hastaneye taşıyan araç,The ambulance arrived in five minutes.,Ambulans beş dakikada geldi.,2,,city-transport
 a2-among,AMONG,A,STARTS,phrase,birçok kişi ya da şeyin arasında,He sat among his friends.,Arkadaşlarının arasında oturdu.,3,,daily-life
-a2-amount,AMOUNT,A,STARTS,noun,bir şeyin toplam miktarı (sayılamayan),Add a small amount of salt.,Biraz tuz ekle.,3,,daily-life
+a2-amount,AMOUNT,A,STARTS,noun,bir şeyin ne kadar olduğunu gösteren ölçü,Add a small amount of salt.,Biraz tuz ekle.,3,,daily-life
 a2-ankle,ANKLE,A,STARTS,noun,ayakla bacağı birleştiren eklem,I broke my ankle when I ran.,Koşarken ayak bileğimi kırdım.,3,,body-health
 a2-apply,APPLY,A,STARTS,verb,bir iş ya da okul için resmen başvurmak,He wants to apply for a job.,Bir işe başvurmak istiyor.,3,,school-work
 a2-argue,ARGUE,A,STARTS,verb,biriyle fikir ayrılığı yüzünden tartışmak,Please do not argue about the TV again.,Lütfen yine televizyon yüzünden tartışmayın.,3,,family-people
 a2-army,ARMY,A,STARTS,noun,"bir ülkenin askerî gücü, ordu",My uncle joined the army last year.,Amcam geçen yıl orduya katıldı.,3,,daily-life
 a2-article,ARTICLE,A,STARTS,noun,gazete ya da dergideki yazı,I read an article about robots.,Robotlar hakkında bir makale okudum.,3,,school-work
-a2-artist,ARTIST,A,STARTS,noun,resim ya da heykel gibi sanat eseri yapan kişi,The artist painted a blue horse.,Sanatçı mavi bir at resmi yaptı.,2,,school-work
+a2-artist,ARTIST,A,STARTS,noun,resim ya da heykel yapan kişi,The artist painted a blue horse.,Sanatçı mavi bir at resmi yaptı.,2,,school-work
 a2-asleep,ASLEEP,A,STARTS,adj,uyuyor durumda olan,The baby fell asleep in the car.,Bebek arabada uyuyakaldı.,2,,body-health
 a2-athlete,ATHLETE,A,STARTS,noun,spor yapan ya da yarışan kişi,The athlete trains every day.,Sporcu her gün antrenman yapıyor.,3,,sports
 a2-author,AUTHOR,A,STARTS,noun,kitap yazan kişi,The author lives in Paris.,Yazar Paris'te yaşıyor.,3,,school-work

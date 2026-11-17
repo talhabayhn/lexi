@@ -32,7 +32,7 @@ nat-duplicity,DUPLICITY,D,STARTS,noun,"iki yüzlülükle aldatma, hilekârlık",
 nat-defunct,DEFUNCT,D,STARTS,adj,"(şirket, kurum) artık var olmayan, işlemeyen",The airline has been defunct since 2010.,Havayolu 2010'dan beri faaliyette değil.,4,,general
 nat-demise,DEMISE,D,STARTS,noun,"(şirket, akım) yavaş yavaş tarihe karışması",The internet led to the demise of many newspapers.,İnternet pek çok gazetenin sonunu getirdi.,4,,general
 nat-devoid,DEVOID,D,STARTS,adj,(bir şeyden) tamamen yoksun,The speech was devoid of emotion.,Konuşma duygudan tamamen yoksundu.,4,,general
-nat-desolate,DESOLATE,D,STARTS,adj,hem ıssız hem de iç karartıcı (yer),We drove along a desolate road.,Issız ve kasvetli bir yolda ilerledik.,4,,general
+nat-desolate,DESOLATE,D,STARTS,adj,"ıssız, boş ve iç karartıcı",We drove along a desolate road.,Issız ve kasvetli bir yolda ilerledik.,4,,general
 nat-digress,DIGRESS,D,STARTS,verb,konuşurken asıl konudan sapmak,But I digress.,"Neyse, konuyu dağıttım.",4,,general
 nat-eclectic,ECLECTIC,E,STARTS,adj,farklı kaynaklardan seçilip harmanlanmış,She has eclectic taste in music.,"Müzikte çok çeşitli, harman bir zevki var.",4,,general
 nat-epitaph,EPITAPH,E,STARTS,noun,mezar taşına yazılan söz,His epitaph says simply: he tried.,Mezar taşında sadece şu yazıyor: denedi.,4,,general
@@ -48,7 +48,7 @@ nat-enamoured,ENAMOURED,E,STARTS,adj,"(bir şeye) vurgun, hayran",I'm not enamou
 nat-encroach,ENCROACH,E,STARTS,verb,"başkasının alanına yavaş yavaş girmek, yayılmak",The city continues to encroach on the forest.,Şehir ormana doğru yayılmaya devam ediyor.,5,,general
 nat-endemic,ENDEMIC,E,STARTS,adj,"(sorun) bir yerde kökleşmiş, yerleşik",Corruption is endemic in the system.,Yolsuzluk sistemde kökleşmiş.,5,,general
 nat-engender,ENGENDER,E,STARTS,verb,"(duygu, durum) doğurmak, yol açmak",Such policies engender distrust.,Böyle politikalar güvensizlik doğurur.,5,,general
-nat-enigma,ENIGMA,E,STARTS,noun,"anlaşılmaz, esrarengiz kişi veya şey",My new neighbor remains an enigma to me.,Yeni komşum benim için hâlâ bir muamma.,4,,general
+nat-enigma,ENIGMA,E,STARTS,noun,çözülmesi çok zor bir gizem,My new neighbor remains an enigma to me.,Yeni komşum benim için hâlâ bir muamma.,4,,general
 nat-enmity,ENMITY,E,STARTS,noun,"köklü düşmanlık, husumet",There is old enmity between the two families.,İki aile arasında eski bir husumet var.,5,,general
 nat-ephemeral,EPHEMERAL,E,STARTS,adj,"çok kısa süren, gelip geçici",Fame is often ephemeral.,Şöhret çoğu zaman gelip geçicidir.,5,,general
 nat-epiphany,EPIPHANY,E,STARTS,noun,"aniden gelen aydınlanma, kavrayış anı",I had an epiphany in the shower.,Duşta aniden bir aydınlanma yaşadım.,4,,general
@@ -59,10 +59,10 @@ nat-eschew,ESCHEW,E,STARTS,verb,"bilerek kaçınmak, uzak durmak",Many chefs esc
 nat-esoteric,ESOTERIC,E,STARTS,adj,yalnızca küçük bir çevrenin anladığı,The book is full of esoteric jokes.,Kitap yalnızca az kişinin anlayacağı esprilerle dolu.,5,,general
 nat-espouse,ESPOUSE,E,STARTS,verb,"(fikri, davayı) benimseyip savunmak",He came to espouse radical views.,Radikal görüşleri benimseyip savunur hale geldi.,5,,general
 nat-ethereal,ETHEREAL,E,STARTS,adj,"dünyadışı, narin ve uçucu güzellikte",Her voice had an ethereal quality.,"Sesinde dünyadışı, uçucu bir güzellik vardı.",5,,general
-nat-euphemism,EUPHEMISM,E,STARTS,noun,acı ya da kaba bir şeyi yumuşatan dolaylı söz,"""Let go"" is a euphemism for ""fired"".","""Yollarını ayırmak"", ""kovulmak"" için yumuşatılmış bir sözdür.",4,,general
+nat-euphemism,EUPHEMISM,E,STARTS,noun,kaba gerçeği yumuşatan dolaylı söz,"""Let go"" is a euphemism for ""fired"".","""Yollarını ayırmak"", ""kovulmak"" için yumuşatılmış bir sözdür.",4,,general
 nat-euphoria,EUPHORIA,E,STARTS,noun,"(zafer sonrası) toplu, sarhoş eden coşku",The euphoria after the win lasted for days.,Galibiyetin ardından gelen coşku günlerce sürdü.,4,,general
 nat-entice,ENTICE,E,STARTS,verb,"cazip bir şey sunarak çekmek, ayartmak",Shops use free gifts to entice customers.,Mağazalar müşterileri çekmek için bedava hediyeler kullanır.,4,,general
-nat-eyesore,EYESORE,E,STARTS,noun,göz zevkini bozan çirkin yapı veya şey,That old car park is an eyesore.,O eski otopark göze batan bir çirkinlik.,4,,general
+nat-eyesore,EYESORE,E,STARTS,noun,göz zevkini bozan çirkin yapı,That old car park is an eyesore.,O eski otopark göze batan bir çirkinlik.,4,,general
 nat-facile,FACILE,F,STARTS,adj,"(fikir, cevap) yüzeysel, fazla basite indirgenmiş",That is a facile answer to a complex problem.,"Bu, karmaşık bir soruna yüzeysel bir cevap.",5,,general
 nat-fallacy,FALLACY,F,STARTS,noun,yaygın ama yanlış inanış; mantık hatası,It is a fallacy that money brings happiness.,Paranın mutluluk getirdiği yanlış bir inanıştır.,4,,general
 nat-fastidious,FASTIDIOUS,F,STARTS,adj,"her şeyin kusursuz olmasını isteyen, aşırı titiz",He is fastidious about cleanliness.,Temizlik konusunda son derece titizdir.,5,,general

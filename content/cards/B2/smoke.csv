@@ -13,7 +13,7 @@ b2-keen,KEEN,K,STARTS,adj,bir şeye çok istekli ve hevesli,She is keen on learn
 b2-lenient,LENIENT,L,STARTS,adj,"cezada hoşgörülü, yumuşak davranan",The teacher was lenient with late students.,Öğretmen geç kalan öğrencilere hoşgörülüydü.,3,,school-work
 b2-mediocre,MEDIOCRE,M,STARTS,adj,"ne iyi ne kötü, vasat",The food was mediocre at best.,Yemek olsa olsa vasattı.,3,,food-drink
 b2-neglect,NEGLECT,N,STARTS,verb,gereken ilgiyi ve bakımı göstermemek,Don't neglect your health.,Sağlığını ihmal etme.,3,,body-health
-b2-obstacle,OBSTACLE,O,STARTS,noun,"yolu kapatan, ilerlemeyi zorlaştıran şey",Fear is the biggest obstacle to success.,"Korku, başarının önündeki en büyük engeldir.",3,,daily-life
+b2-obstacle,OBSTACLE,O,STARTS,noun,ilerlemeyi zorlaştıran ya da durduran sorun,Fear is the biggest obstacle to success.,"Korku, başarının önündeki en büyük engeldir.",3,,daily-life
 b2-persuade,PERSUADE,P,STARTS,verb,birini ikna edip fikrini değiştirmek,I tried to persuade him to stay.,Onu kalmaya ikna etmeye çalıştım.,3,,daily-life
 b2-questionnaire,QUESTIONNAIRE,Q,STARTS,noun,cevaplanması istenen soru listesi,Please complete this questionnaire.,Lütfen bu anketi tamamlayın.,3,,school-work
 b2-reluctant,RELUCTANT,R,STARTS,adj,bir şeyi yapmaya isteksiz,He was reluctant to speak in public.,Topluluk önünde konuşmaya isteksizdi.,3,,daily-life

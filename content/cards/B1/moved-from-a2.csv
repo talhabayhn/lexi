@@ -1,5 +1,5 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
-a2-antique,ANTIQUE,Q,CONTAINS,noun,çok eski ve değerli eşya,This old clock is an antique.,Bu eski saat bir antika.,3,,daily-life
+a2-antique,ANTIQUE,Q,CONTAINS,noun,çok eski olduğu için değerli koleksiyon parçası,This old clock is an antique.,Bu eski saat bir antika.,3,,daily-life
 a2-cheque,QUILT,Q,STARTS,noun,"battaniye gibi, dikişli yatak örtüsü",Grandma made this quilt by hand.,Büyükannem bu yorganı elle yaptı.,3,,daily-life
 a2-citizen,CITIZEN,Z,CONTAINS,noun,bir ülkenin vatandaşı,She is a citizen of Spain.,"O, İspanya vatandaşı.",3,,family-people
 a2-except,EXCEPT,X,CONTAINS,phrase,"dışında, hariç",Everyone came except Ali.,Ali dışında herkes geldi.,3,,daily-life

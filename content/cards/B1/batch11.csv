@@ -35,7 +35,7 @@ b1-veteran,VETERAN,V,STARTS,noun,savaşa katılmış ya da yılların deneyimi o
 b1-elevator,ELEVATOR,V,CONTAINS,noun,binada katlar arasında inip çıkaran kabin,Take the elevator to the sixth floor.,Altıncı kata asansörle çık.,3,,city-transport
 b1-traveler,TRAVELER,V,CONTAINS,noun,bir yerden başka yere yolculuk eden kişi,The traveler carried a small backpack.,Yolcu küçük bir sırt çantası taşıyordu.,3,,travel
 b1-boxer,BOXER,X,CONTAINS,noun,yumruk yumruğa dövüşen sporcu,The boxer trained every morning.,Boksör her sabah antrenman yaptı.,3,,sports
-b1-wagon,WAGON,W,STARTS,noun,at ya da traktörün çektiği dört tekerlekli yük arabası,The farmer filled the wagon with hay.,Çiftçi arabayı samanla doldurdu.,3,,city-transport
+b1-wagon,WAGON,W,STARTS,noun,atın ya da traktörün çektiği yük arabası,The farmer filled the wagon with hay.,Çiftçi arabayı samanla doldurdu.,3,,city-transport
 b1-waist,WAIST,W,STARTS,noun,vücudun kaburgalarla kalça arasındaki ince kısmı,The belt fits tightly around my waist.,Kemer belimi sıkıca sarıyor.,3,,body-health
 b1-wasp,WASP,W,STARTS,noun,"sarı siyah çizgili, acı sokan böcek",A wasp stung my arm.,Bir eşek arısı koluma soktu.,3,,animals
 b1-widow,WIDOW,W,STARTS,noun,eşi ölmüş kadın,The widow lives alone near the sea.,Dul kadın denizin yakınında tek başına yaşıyor.,3,,family-people
@@ -51,7 +51,7 @@ b1-unicorn,UNICORN,U,STARTS,noun,alnında tek boynuz olan masal atı,The girl dr
 b1-union,UNION,U,STARTS,noun,işçilerin haklarını savunan örgüt,The union asked for higher pay.,Sendika daha yüksek maaş istedi.,3,,business
 b1-uphill,UPHILL,U,STARTS,adv,yokuş yukarı,We walked uphill for an hour.,Bir saat yokuş yukarı yürüdük.,3,,travel
 b1-cactus,CACTUS,U,CONTAINS,noun,çölde yetişen dikenli bitki,The cactus needs very little water.,Kaktüs çok az suya ihtiyaç duyar.,3,,daily-life
-b1-crumb,CRUMB,U,CONTAINS,noun,ekmekten dökülen çok küçük parça,There is a crumb on your chin.,Çenende bir kırıntı var.,3,,food-drink
+b1-crumb,CRUMB,U,CONTAINS,noun,ekmekten kopup dökülen minik tanecik,There is a crumb on your chin.,Çenende bir kırıntı var.,3,,food-drink
 b1-cuddle,CUDDLE,U,CONTAINS,verb,sevgiyle kucaklamak,The child wanted to cuddle her toy.,Çocuk oyuncağına sarılmak istedi.,3,,family-people
 b1-dumpling,DUMPLING,U,CONTAINS,noun,"içi dolgulu küçük hamur parçası, mantı gibi",She put one dumpling in each bowl of soup.,Her çorba kasesine bir mantı koydu.,3,,food-drink
 b1-oar,OAR,O,STARTS,noun,kayıkta suyu itip ilerlemeyi sağlayan uzun tahta,He lost an oar in the river.,Nehirde bir küreğini kaybetti.,3,,sports
@@ -66,7 +66,7 @@ b1-guilt,GUILT,G,STARTS,noun,yanlış yapınca duyulan kötü his,He felt guilt 
 b1-geography,GEOGRAPHY,G,STARTS,noun,"dağları, nehirleri ve ülkeleri öğreten ders",Geography is my favourite subject.,Coğrafya en sevdiğim ders.,3,,school-work
 b1-handwriting,HANDWRITING,H,STARTS,noun,bir kişinin elle yazış biçimi,His handwriting is very neat.,El yazısı çok düzgün.,3,,school-work
 b1-handshake,HANDSHAKE,H,STARTS,noun,tanışırken iki kişinin birbirinin elini sıkması,His handshake was firm.,El sıkışı sağlamdı.,3,,business
-b1-hook,HOOK,H,STARTS,noun,ceketi asmak için duvardaki kıvrık metal parça,Hang your coat on the hook.,Montunu askıya as.,3,,daily-life
+b1-hook,HOOK,H,STARTS,noun,bir şeyi asmaya yarayan kıvrık metal çubuk,Hang your coat on the hook.,Montunu askıya as.,3,,daily-life
 b1-honeymoon,HONEYMOON,H,STARTS,noun,evlenen çiftin düğünden sonra çıktığı ilk tatil,They went to Italy on their honeymoon.,Balayı için İtalya'ya gittiler.,3,,travel
 b1-horseshoe,HORSESHOE,H,STARTS,noun,atın toynağına çakılan demir,The farmer found an old horseshoe.,Çiftçi eski bir nal buldu.,3,,animals
 b1-neighbor,NEIGHBOR,N,STARTS,noun,yan dairede oturan kişi,Our neighbor plays the piano.,Komşumuz piyano çalar.,3,,family-people

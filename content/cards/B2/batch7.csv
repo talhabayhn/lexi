@@ -1,7 +1,7 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
 b2-tempt,TEMPT,T,STARTS,verb,birini yapmaması gereken bir şeye özendirmek,The cake will tempt him to break his diet.,Kek onu diyetini bozmaya özendirecek.,4,,food-drink
 b2-tendency,TENDENCY,T,STARTS,noun,bir şeyi yapmaya yatkınlık,He has a tendency to talk too much.,Çok konuşmaya yatkın.,4,,daily-life
-b2-tense,TENSE,T,STARTS,adj,gergin,The atmosphere in the room was tense.,Odadaki hava gergindi.,3,,daily-life
+b2-tense,TENSE,T,STARTS,adj,huzursuzluk ve baskı hissettiren,The atmosphere in the room was tense.,Odadaki hava gergindi.,3,,daily-life
 b2-thorough,THOROUGH,T,STARTS,adj,ayrıntılı ve eksiksiz,The police made a thorough search.,Polis kapsamlı bir arama yaptı.,4,,business
 b2-thrive,THRIVE,T,STARTS,verb,iyi gelişip büyümek,Plants thrive in warm weather.,Bitkiler ılık havada iyi gelişir.,4,,daily-life
 b2-tolerance,TOLERANCE,T,STARTS,noun,farklılıklara saygı gösterme,Schools should teach tolerance.,Okullar hoşgörüyü öğretmeli.,4,,school-work
@@ -21,7 +21,7 @@ b2-turn-out,TURN OUT,T,STARTS,phrasal,sonuçta ... olduğu ortaya çıkmak,I hop
 b2-turn-up,TURN UP,T,STARTS,phrasal,"bir yere gelmek, ortaya çıkmak",Only ten people will turn up.,Sadece on kişi gelecek.,4,,phrasal-verbs
 b2-top-up,TOP UP,T,STARTS,phrasal,"yarım kalanı doldurmak, yüklemek",I need to top up my phone credit.,Telefon kontörümü yüklemem gerekiyor.,4,,phrasal-verbs
 b2-time-flies,TIME FLIES,T,STARTS,idiom,zamanın hızla geçtiğini söyleyen deyiş,Time flies when you have fun.,Eğlenirken zaman uçar.,3,,idioms
-b2-tie-the-knot,TIE THE KNOT,T,STARTS,idiom,evlenmek,They plan to tie the knot in June.,Haziranda evlenmeyi planlıyorlar.,4,,idioms
+b2-tie-the-knot,TIE THE KNOT,T,STARTS,idiom,resmî olarak karı koca olmak,They plan to tie the knot in June.,Haziranda evlenmeyi planlıyorlar.,4,,idioms
 b2-the-last-straw,THE LAST STRAW,T,STARTS,idiom,sabrı taşıran son olay,His rude comment was the last straw.,Kaba sözü bardağı taşıran son damlaydı.,4,,idioms
 b2-turn-a-blind-eye,TURN A BLIND EYE,T,STARTS,idiom,gördüğü hâlde görmezden gelmek,The teacher will turn a blind eye to the noise.,Öğretmen gürültüye göz yumacak.,4,,idioms
 b2-undergo,UNDERGO,U,STARTS,verb,zorlu bir işlem veya değişim geçirmek,He will undergo surgery next week.,Gelecek hafta ameliyat olacak.,4,,body-health
@@ -33,7 +33,7 @@ b2-use-up,USE UP,U,STARTS,phrasal,bir şeyi tamamen tüketmek,We might use up al
 b2-under-pressure,UNDER PRESSURE,U,STARTS,idiom,baskı altında,She works well under pressure.,Baskı altında iyi çalışır.,4,,idioms
 b2-up-in-the-air,UP IN THE AIR,U,STARTS,idiom,"kararı henüz verilmemiş, askıda olan",Our plans are still up in the air.,Planlarımız hâlâ belirsiz.,4,,idioms
 b2-up-to-date,UP TO DATE,U,STARTS,phrase,"güncel, en yeni bilgilere sahip",Keep your software up to date.,Yazılımını güncel tut.,3,,technology
-b2-valid,VALID,V,STARTS,adj,geçerli,Your ticket is valid for one month.,Biletin bir ay geçerli.,3,,travel
+b2-valid,VALID,V,STARTS,adj,hâlâ kullanılabilir ve kabul edilen,Your ticket is valid for one month.,Biletin bir ay geçerli.,3,,travel
 b2-variable,VARIABLE,V,STARTS,adj,"değişken, sabit olmayan",The weather is variable in spring.,İlkbaharda hava değişkendir.,4,,daily-life
 b2-variation,VARIATION,V,STARTS,noun,miktar ya da düzeyde görülen farklılık,There is little variation in temperature.,Sıcaklıkta çok az değişiklik var.,4,,food-drink
 b2-vast,VAST,V,STARTS,adj,"çok geniş, uçsuz bucaksız",A vast desert lies to the south.,Güneyde uçsuz bucaksız bir çöl uzanır.,4,,travel

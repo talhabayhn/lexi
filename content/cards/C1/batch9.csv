@@ -27,7 +27,7 @@ c1-violate,VIOLATE,V,STARTS,verb,kural veya yasayı çiğnemek,The firm will vio
 c1-virtue,VIRTUE,V,STARTS,noun,ahlaki iyilik; bir şeyin artı yanı,Patience is a virtue.,Sabır bir erdemdir.,5,,school-work
 c1-void,VOID,V,STARTS,noun,"boşluk, dolmamış alan",His death left a void in her life.,Ölümü hayatında bir boşluk bıraktı.,5,,school-work
 c1-warrant,WARRANT,W,STARTS,noun,polisin arama veya tutuklama izni,Police need a warrant to search the house.,Polisin evi aramak için arama izni gerekir.,5,,school-work
-c1-whereabouts,WHEREABOUTS,W,STARTS,noun,bir kişinin bulunduğu yer,His whereabouts are still unknown.,Nerede olduğu hâlâ bilinmiyor.,5,,school-work
+c1-whereabouts,WHEREABOUTS,W,STARTS,noun,bir kişinin şu an bulunduğu konum,His whereabouts are still unknown.,Nerede olduğu hâlâ bilinmiyor.,5,,school-work
 c1-wilderness,WILDERNESS,W,STARTS,noun,insan eli değmemiş vahşi doğa,They hiked through the wilderness for days.,Günlerce vahşi doğada yürüdüler.,4,,travel
 c1-withhold,WITHHOLD,W,STARTS,verb,bilgiyi veya parayı vermemek,The bank may withhold the money until he signs.,Banka imzalayana kadar parayı vermeyebilir.,5,,business
 c1-withstand,WITHSTAND,W,STARTS,verb,baskıya veya zorluğa dayanmak,The bridge can withstand strong winds.,Köprü kuvvetli rüzgârlara dayanabilir.,5,,technology
@@ -36,7 +36,7 @@ c1-wellbeing,WELLBEING,W,STARTS,noun,sağlık ve mutluluk hâli,The school cares
 c1-taxation,TAXATION,X,CONTAINS,noun,vergi uygulama sistemi,Taxation affects every worker.,Vergilendirme her çalışanı etkiler.,5,,business
 c1-sexism,SEXISM,X,CONTAINS,noun,cinsiyete dayalı ayrımcılık,The campaign fights sexism at work.,Kampanya işyerinde cinsiyetçilikle mücadele ediyor.,5,,school-work
 c1-syntax,SYNTAX,X,CONTAINS,noun,cümlede sözcük dizilişi kuralları,The syntax of the sentence is wrong.,Cümlenin söz dizimi yanlış.,5,,school-work
-c1-paradox,PARADOX,X,CONTAINS,noun,çelişkili görünen ama doğru olan durum,It is a paradox that he is poor but generous.,Fakir ama cömert olması bir paradoks.,5,,school-work
+c1-paradox,PARADOX,X,CONTAINS,noun,çelişkili görünen ama doğru olan ifade,It is a paradox that he is poor but generous.,Fakir ama cömert olması bir paradoks.,5,,school-work
 c1-textile,TEXTILE,X,CONTAINS,noun,dokuma kumaş,Cotton is the main textile made in the town.,"Pamuk, kasabada üretilen başlıca kumaştır.",5,,business
 c1-contextual,CONTEXTUAL,X,CONTAINS,adj,bağlama ait,Contextual clues help you guess meaning.,Bağlamsal ipuçları anlamı tahmin etmene yardım eder.,5,,school-work
 c1-convex,CONVEX,X,CONTAINS,adj,"dışa doğru kıvrık, dışbükey",A convex lens is thicker in the middle.,Dışbükey mercek ortada daha kalındır.,5,,school-work

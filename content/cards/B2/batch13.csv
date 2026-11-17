@@ -1,13 +1,13 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
 b2-explosive,EXPLOSIVE,X,CONTAINS,adj,"patlamaya yol açabilen, kolay patlayan","The gas is highly explosive, so keep it away from the flame.","Gaz son derece patlayıcıdır, bu yüzden alevden uzak tutun.",3,,daily-life
 b2-exposure,EXPOSURE,X,CONTAINS,noun,"zararlı bir etkiye (güneş, gürültü) açık kalma durumu",Long exposure to loud noise can damage your hearing.,Yüksek sese uzun süre maruz kalmak işitmenize zarar verebilir.,3,,body-health
-b2-exclaim,EXCLAIM,X,CONTAINS,verb,şaşkınlık ya da öfkeyle ani ve yüksek sesle söz etmek,Visitors often exclaim in surprise when they first see the canyon.,Ziyaretçiler kanyonu ilk gördüklerinde çoğu zaman şaşkınlıkla haykırır.,3,,daily-life
+b2-exclaim,EXCLAIM,X,CONTAINS,verb,şaşkınlıkla ya da öfkeyle bağırarak söylemek,Visitors often exclaim in surprise when they first see the canyon.,Ziyaretçiler kanyonu ilk gördüklerinde çoğu zaman şaşkınlıkla haykırır.,3,,daily-life
 b2-existence,EXISTENCE,X,CONTAINS,noun,"bir şeyin var olması, gerçekten mevcut olma durumu",Many people still doubt the existence of life on other planets.,Birçok kişi diğer gezegenlerde yaşamın varlığından hâlâ şüphe ediyor.,3,,daily-life
 b2-exhaust,EXHAUST,X,CONTAINS,verb,bir kişiyi çok yorup gücünü tüketmek,Do not exhaust yourself before the race even starts.,Yarış başlamadan kendini tüketme.,3,,body-health
 b2-expire,EXPIRE,X,CONTAINS,verb,geçerlilik süresi dolmak,"My passport will expire in March, so I need a new one soon.","Pasaportumun süresi mart ayında dolacak, bu yüzden yakında yenisini almam gerek.",3,,daily-life
 b2-relaxation,RELAXATION,X,CONTAINS,noun,dinlenip gerginlikten kurtulma,Yoga gives her a sense of calm and relaxation after work.,Yoga ona işten sonra huzur ve rahatlama hissi veriyor.,3,,body-health
 b2-exploration,EXPLORATION,X,CONTAINS,noun,bilinmeyen yerleri araştırarak keşfetme,Early exploration of the Arctic cost many sailors their lives.,Kuzey Kutbu'nun ilk keşif seferleri birçok denizcinin hayatına mal oldu.,3,,travel
-b2-squad,SQUAD,Q,CONTAINS,noun,spor ya da polis gibi küçük bir ekip veya kadro,The national squad trains twice a day before the final.,Milli takım kadrosu final öncesi günde iki kez antrenman yapıyor.,3,,sports
+b2-squad,SQUAD,Q,CONTAINS,noun,sporda bir araya getirilen oyuncu kadrosu,The national squad trains twice a day before the final.,Milli takım kadrosu final öncesi günde iki kez antrenman yapıyor.,3,,sports
 b2-quake,QUAKE,Q,STARTS,noun,"isim: yer sarsıntısı, ""earthquake""in kısa hali",The quake shook the whole region at dawn.,Deprem şafakta bütün bölgeyi salladı.,3,,daily-life
 b2-judgment,JUDGMENT,J,STARTS,noun,"iyi karar verebilme yeteneği, sağduyu","Good judgment comes from experience, not from books.",İyi muhakeme kitaplardan değil deneyimden gelir.,4,,daily-life
 b2-jobless,JOBLESS,J,STARTS,adj,çalışacak işi olmayan,"After the factory closed, hundreds of workers were suddenly jobless.",Fabrika kapanınca yüzlerce işçi birdenbire işsiz kaldı.,3,,business
@@ -22,7 +22,7 @@ b2-wellness,WELLNESS,W,STARTS,noun,beden ve ruh sağlığının iyi olması,Many
 b2-worsen,WORSEN,W,STARTS,verb,daha kötü hale gelmek ya da getirmek,Heavy rain could worsen the flooding in the valley.,Şiddetli yağmur vadideki taşkını daha da kötüleştirebilir.,3,,daily-life
 b2-wrapper,WRAPPER,W,STARTS,noun,şeker ya da yiyecek paketinin dış kâğıdı,Please put the candy wrapper in the bin.,Lütfen şeker ambalajını çöp kutusuna at.,3,,food-drink
 b2-wasteful,WASTEFUL,W,STARTS,adj,"gereksiz yere harcayan, israf eden",It is wasteful to leave the lights on all night.,Bütün gece ışıkları açık bırakmak israftır.,3,,daily-life
-b2-lease,LEASE,L,STARTS,noun,ev ya da iş yeri için yapılan uzun süreli kira sözleşmesi,"Our lease ends in June, so we must find a new apartment.","Kira sözleşmemiz haziranda bitiyor, bu yüzden yeni bir daire bulmalıyız.",4,,business
+b2-lease,LEASE,L,STARTS,noun,uzun süreli yapılan kira sözleşmesi,"Our lease ends in June, so we must find a new apartment.","Kira sözleşmemiz haziranda bitiyor, bu yüzden yeni bir daire bulmalıyız.",4,,business
 b2-linen,LINEN,L,STARTS,noun,ketenden dokunan hafif kumaş,A white linen shirt is perfect for hot summer days.,Beyaz keten gömlek sıcak yaz günleri için mükemmeldir.,4,,daily-life
 b2-leadership,LEADERSHIP,L,STARTS,noun,bir grubu yönetme becerisi ya da yönetici konumu,Strong leadership helped the team through the crisis.,Güçlü liderlik ekibin krizi atlatmasına yardımcı oldu.,3,,business
 b2-lengthy,LENGTHY,L,STARTS,adj,"çok uzun süren, uzayıp giden",The lengthy meeting ended after midnight.,Uzayıp giden toplantı gece yarısından sonra bitti.,3,,business

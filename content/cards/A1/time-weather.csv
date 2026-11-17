@@ -42,6 +42,6 @@ a1-wednesday,WEDNESDAY,W,STARTS,noun,çarşamba,The bakery is closed on Wednesda
 a1-thursday,THURSDAY,T,STARTS,noun,perşembe,We have a test on Thursday.,Perşembe günü sınavımız var.,1,,time-weather
 a1-spring,SPRING,S,STARTS,noun,kıştan sonra çiçeklerin açtığı mevsim,It rains a lot in spring.,İlkbaharda çok yağmur yağar.,1,,time-weather
 a1-weather,WEATHER,W,STARTS,noun,hava durumu,The weather is lovely.,Hava çok güzel.,1,,time-weather
-a1-wind,WIND,W,STARTS,noun,rüzgâr,The wind is strong.,Rüzgâr güçlü.,1,,time-weather
+a1-wind,WIND,W,STARTS,noun,"esen, yön değiştiren hava akımı",The wind is strong.,Rüzgâr güçlü.,1,,time-weather
 a1-noon,NOON,N,STARTS,noun,"öğle vakti, gün ortası",He arrives at noon.,Öğlen gelir.,1,,time-weather
 a1-month,MONTH,M,STARTS,noun,yılın on iki bölümünden biri,This month is cooler.,Bu ay daha serin.,1,,time-weather

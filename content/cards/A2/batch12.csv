@@ -25,7 +25,7 @@ a2-stripe,STRIPE,I,CONTAINS,noun,zebranın sırtındaki gibi uzun çizgi,The shi
 a2-swing,SWING,I,CONTAINS,noun,çocuk parkında iki ipten sarkan salıncak,The child plays on the swing.,Çocuk salıncakta oynuyor.,3,,daily-life
 a2-turtle,TURTLE,U,CONTAINS,noun,sırtında sert kabuk taşıyan yavaş hayvan,A turtle walks on the beach.,Bir kaplumbağa plajda yürüyor.,3,,animals
 a2-plum,PLUM,U,CONTAINS,noun,mor veya kırmızı kabuklu yuvarlak yaz meyvesi,Ali eats a plum.,Ali bir erik yiyor.,3,,food-drink
-a2-gum,GUM,U,CONTAINS,noun,ağızda çiğnenen tatlı şey,Don't chew gum in class.,Derste sakız çiğneme.,3,,food-drink
+a2-gum,GUM,U,CONTAINS,noun,"ağızda çiğnenen, yutulmayan şekerleme",Don't chew gum in class.,Derste sakız çiğneme.,3,,food-drink
 a2-mug,MUG,U,CONTAINS,noun,kulplu büyük çay veya kahve bardağı,Mert drinks tea from a big mug.,Mert büyük bir kupadan çay içiyor.,3,,home
 a2-rug,RUG,U,CONTAINS,noun,odanın zeminine serilen küçük halı,The cat sleeps on the rug.,Kedi küçük halının üstünde uyuyor.,3,,home
 a2-plug,PLUG,U,CONTAINS,noun,elektrik kablosunun prize takılan ucu,Put the plug into the wall.,Fişi duvara tak.,3,,home
@@ -34,7 +34,7 @@ a2-sunshine,SUNSHINE,U,CONTAINS,noun,güneşin verdiği ışık ve sıcaklık,We
 a2-sunburn,SUNBURN,U,CONTAINS,noun,güneşte kalınca derinin kızarması,Selin has sunburn on her nose.,Selin'in burnunda güneş yanığı var.,3,,body-health
 a2-trunk,TRUNK,U,CONTAINS,noun,filin uzun burnu,The elephant lifts its trunk.,Fil hortumunu kaldırıyor.,3,,animals
 a2-puddle,PUDDLE,U,CONTAINS,noun,yağmurdan sonra yerde biriken küçük su,The boy jumps in a puddle.,Çocuk su birikintisine atlıyor.,3,,time-weather
-a2-pump,PUMP,U,CONTAINS,noun,su veya havayı basan alet,Ali uses a pump for the bike tyre.,Ali bisiklet lastiği için pompa kullanıyor.,3,,city-transport
+a2-pump,PUMP,U,CONTAINS,noun,su veya havayı basan makine,Ali uses a pump for the bike tyre.,Ali bisiklet lastiği için pompa kullanıyor.,3,,city-transport
 a2-weekday,WEEKDAY,Y,CONTAINS,noun,cumartesi ve pazar dışındaki herhangi bir gün,I work every weekday.,Her hafta içi günü çalışıyorum.,3,,time-weather
 a2-subway,SUBWAY,Y,CONTAINS,noun,yerin altında giden şehir treni,Mert takes the subway to work.,Mert işe metroyla gidiyor.,3,,city-transport
 a2-doorway,DOORWAY,Y,CONTAINS,noun,kapının bulunduğu açıklık,A cat sits in the doorway.,Bir kedi kapı aralığında oturuyor.,3,,home

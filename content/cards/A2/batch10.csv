@@ -1,8 +1,8 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
 a2-ice-cream,ICE CREAM,I,STARTS,noun,"sütten yapılan soğuk ve tatlı yiyecek, dondurma",The children want ice cream.,Çocuklar dondurma istiyor.,2,,food-drink
-a2-invitation,INVITATION,I,STARTS,noun,birini bir yere çağıran yazılı ya da sözlü davet,I got an invitation to her party.,Onun partisine bir davetiye aldım.,3,,daily-life
+a2-invitation,INVITATION,I,STARTS,noun,birini bir etkinliğe çağıran mesaj,I got an invitation to her party.,Onun partisine bir davetiye aldım.,3,,daily-life
 a2-interest,INTEREST,I,STARTS,noun,bir şeye duyulan merak ve ilgi,He has an interest in old coins.,Eski paralara ilgisi var.,3,,daily-life
-a2-nationality,NATIONALITY,N,STARTS,noun,bir kişinin hangi ülkenin vatandaşı olduğu,The man asked about her name and nationality.,Adam onun adını ve uyruğunu sordu.,3,,daily-life
+a2-nationality,NATIONALITY,N,STARTS,noun,bir kişinin hangi ülkeden olduğu bilgisi,The man asked about her name and nationality.,Adam onun adını ve uyruğunu sordu.,3,,daily-life
 a2-nest,NEST,N,STARTS,noun,kuşun yumurtalarını koyduğu yuva,There are three eggs in the nest.,Yuvada üç yumurta var.,2,,animals
 a2-net,NET,N,STARTS,noun,iplerden örülmüş ağ,The ball went into the net.,Top fileye girdi.,3,,sports
 a2-navy,NAVY,N,STARTS,noun,"bir ülkenin denizdeki askerî gücü, donanma",My grandfather served in the navy for years.,Dedem yıllarca donanmada görev yaptı.,3,,daily-life
@@ -20,9 +20,9 @@ a2-globe,GLOBE,G,STARTS,noun,dünyanın küre biçimli modeli,There is a globe o
 a2-grill,GRILL,G,STARTS,verb,ızgarada pişirmek,We grill fish on Sundays.,Pazar günleri balık ızgara yaparız.,3,,food-drink
 a2-departure,DEPARTURE,D,STARTS,noun,bir yerden ayrılma ve yola çıkma,Look at the departure time.,Hareket saatine bak.,3,,travel
 a2-drawer,DRAWER,D,STARTS,noun,masa ya da dolabın içindeki çekmece,Mert put the keys in the top drawer.,Mert anahtarları üst çekmeceye koydu.,2,,home
-a2-disco,DISCO,D,STARTS,noun,insanların dans edip müzik dinlediği yer,They danced all night at the disco.,Bütün gece diskoda dans ettiler.,2,,music
+a2-disco,DISCO,D,STARTS,noun,gece dans edilen eğlence yeri,They danced all night at the disco.,Bütün gece diskoda dans ettiler.,2,,music
 a2-plural,PLURAL,U,CONTAINS,noun,birden fazla olduğunu gösteren dil bilgisi biçimi,The plural of child is children.,Child'ın çoğulu children'dır.,3,,school-work
-a2-dive,DIVE,V,CONTAINS,verb,suya başı önde atlamak ya da suyun altına dalmak,He likes to dive into the sea.,Denize dalmayı sever.,3,,sports
+a2-dive,DIVE,V,CONTAINS,verb,suyun içine başı önde atlamak,He likes to dive into the sea.,Denize dalmayı sever.,3,,sports
 a2-sleeve,SLEEVE,V,CONTAINS,noun,giysinin kolu,The sleeve of my shirt is short.,Gömleğimin kolu kısa.,3,,daily-life
 a2-divide,DIVIDE,V,CONTAINS,verb,bir şeyi parçalara ayırmak,Divide the cake into eight parts.,Keki sekiz parçaya böl.,3,,school-work
 a2-shave,SHAVE,V,CONTAINS,verb,"sakalını kesmek, tıraş olmak",My father must shave every morning.,Babam her sabah tıraş olmalı.,3,,body-health

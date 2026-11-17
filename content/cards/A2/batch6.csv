@@ -7,7 +7,7 @@ a2-mean,MEAN,M,STARTS,verb,"bir sözcüğün karşılığı olmak, anlamına gel
 a2-medicine,MEDICINE,M,STARTS,noun,hastalığı iyileştirmek için alınan ilaç,Take this medicine at night.,Bu ilacı geceleri al.,2,,body-health
 a2-member,MEMBER,M,STARTS,noun,bir kulübün ya da grubun üyesi,She became a member of the school club.,Okul kulübünün üyesi oldu.,3,,school-work
 a2-mess,MESS,M,STARTS,noun,"karmakarışık, dağınık bir ortam",The kids left a big mess in the kitchen.,Çocuklar mutfakta büyük bir dağınıklık bıraktı.,3,,home
-a2-metal,METAL,M,STARTS,noun,demir ve bakır gibi sert madde,The key is made of metal.,Anahtar metalden yapılmış.,3,,home
+a2-metal,METAL,M,STARTS,noun,"demir ve bakır gibi sert, parlak malzeme",The key is made of metal.,Anahtar metalden yapılmış.,3,,home
 a2-mind,MIND,M,STARTS,verb,"bir şeyden rahatsız olmak, sakıncası olmak",Do you mind if I sit here?,Buraya oturmamın sakıncası var mı?,3,,daily-life
 a2-mistake,MISTAKE,M,STARTS,noun,yanlışlıkla yapılan hata,There is a mistake in my homework.,Ödevimde bir hata var.,2,,school-work
 a2-mobile,MOBILE,M,STARTS,adj,"taşınabilir, her yere götürülebilir",I forgot my mobile phone.,Cep telefonumu unuttum.,3,,daily-life
@@ -31,7 +31,7 @@ a2-pair,PAIR,P,STARTS,noun,birlikte kullanılan iki parçadan oluşan takım,I n
 a2-palace,PALACE,P,STARTS,noun,kral ve kraliçenin yaşadığı büyük ve süslü yapı,The king lives in a palace.,Kral bir sarayda yaşıyor.,2,,travel
 a2-parcel,PARCEL,P,STARTS,noun,kargoyla ya da postayla gönderilen koli,A parcel came for you today.,Bugün sana bir koli geldi.,3,,daily-life
 a2-partner,PARTNER,P,STARTS,noun,birlikte iş yapan ya da yaşayan kişi,Find a partner for this game.,Bu oyun için bir eş bul.,3,,school-work
-a2-pass,PASS,P,STARTS,verb,bir sınavı başarıyla geçmek ya da bir şeyi uzatmak,I want to pass the exam.,Sınavı geçmek istiyorum.,3,,school-work
+a2-pass,PASS,P,STARTS,verb,bir sınavı başarıyla geçmek,I want to pass the exam.,Sınavı geçmek istiyorum.,3,,school-work
 a2-passenger,PASSENGER,P,STARTS,noun,araca binen ama sürmeyen yolcu,Every passenger must wear a belt.,Her yolcu kemer takmalı.,3,,city-transport
 a2-path,PATH,P,STARTS,noun,yürümek için kullanılan dar yol,This path goes to the lake.,Bu patika göle gidiyor.,3,,travel
 a2-pharmacy,PHARMACY,P,STARTS,noun,"ilaç satılan dükkân, eczane",The pharmacy is next to the bank.,Eczane bankanın yanında.,3,,city-transport

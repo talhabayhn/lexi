@@ -61,9 +61,9 @@ c1-lapse,LAPSE,L,STARTS,noun,kısa süreli dikkat veya hafıza hatası,He had a 
 c1-lavish,LAVISH,L,STARTS,adj,aşırı bol ve gösterişli,They held a lavish wedding.,Gösterişli bir düğün yaptılar.,5,,school-work
 c1-legislation,LEGISLATION,L,STARTS,noun,"bir konudaki yasaların bütünü, mevzuat",New legislation protects renters.,Yeni mevzuat kiracıları koruyor.,5,,school-work
 c1-legitimate,LEGITIMATE,L,STARTS,adj,yasal ve haklı olan,Is this a legitimate business?,Bu meşru bir iş mi?,5,,business
-c1-lethal,LETHAL,L,STARTS,adj,öldürücü,The snake has a lethal bite.,Yılanın ölümcül bir ısırığı var.,5,,school-work
+c1-lethal,LETHAL,L,STARTS,adj,ölüme yol açabilecek kadar tehlikeli,The snake has a lethal bite.,Yılanın ölümcül bir ısırığı var.,5,,school-work
 c1-leverage,LEVERAGE,L,STARTS,noun,bir kişiye üstünlük sağlayan güç,His fame gave him leverage in the talks.,Ünü ona görüşmelerde üstünlük sağladı.,5,,business
-c1-liability,LIABILITY,L,STARTS,noun,yasal sorumluluk; yük olan şey,The company accepts no liability for lost items.,Şirket kayıp eşyalardan sorumluluk kabul etmez.,5,,business
+c1-liability,LIABILITY,L,STARTS,noun,yasal olarak üstlenilen sorumluluk,The company accepts no liability for lost items.,Şirket kayıp eşyalardan sorumluluk kabul etmez.,5,,business
 c1-liable,LIABLE,L,STARTS,adj,yasal olarak sorumlu veya yatkın,You are liable for any damage.,Her türlü zarardan siz sorumlusunuz.,5,,business
 c1-likelihood,LIKELIHOOD,L,STARTS,noun,bir şeyin olma ihtimali,There is a high likelihood of rain.,Yağmur ihtimali yüksek.,4,,school-work
 c1-linger,LINGER,L,STARTS,verb,"gitmeyip oyalanmak, sürüp gitmek",The smell of smoke would linger for days.,Duman kokusu günlerce sürerdi.,5,,school-work
