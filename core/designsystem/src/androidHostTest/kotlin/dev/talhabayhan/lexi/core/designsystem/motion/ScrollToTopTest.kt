@@ -133,7 +133,7 @@ class ScrollToTopTest {
     @Test
     fun `the distance estimate counts the rows above the first visible one`() = withGrid(items = 100) { h ->
         jumpTo(h, 20) // row 10, 2 columns
-        val pitch = (120 + 8) * h.state.layoutInfo.let { 1 } // row height 120dp + 8dp spacing at mdpi
+        val pitch = 128 // row height 120dp + 8dp spacing, the test runs at mdpi (1 dp = 1 px)
         val estimate = h.state.distanceToTopPx()
         assertEquals((10 * pitch).toFloat(), estimate, 1f)
     }

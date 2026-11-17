@@ -140,7 +140,8 @@ internal fun PlayDialog(
  * posed mid-turn of the open flip (the Y rotation with the flip's perspective, the grown frame with its hard shadow,
  * the rows, the segmented controls, OYNA), so the first card the player taps does not pay for the first composition of
  * these classes or the first compile of their GPU shaders. The caller places it **behind** the picker's opaque
- * background for a few frames while the picker is idle; it has no semantics, takes no input and is not a morph anchor.
+ * background for a few frames while the picker is idle; it has no semantics, its intents do nothing and it is not a morph
+ * anchor. It always poses the Full tier's Y flip (Lite devices play a scale + fade, which it does not draw).
  */
 @Composable
 internal fun PickerDialogWarmUp(card: PickerCategoryUi, state: CategoryPickerUiState, turkish: Boolean) {
