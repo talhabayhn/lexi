@@ -142,7 +142,10 @@ fun LexiNavHost(modifier: Modifier = Modifier, perfTour: PerfTourConfig? = null)
     ) {
         Box(Modifier.fillMaxSize()) {
             // Behind the NavHost and its opaque cream background, so it is never seen.
-            if (warmingUp) GameWarmUp(Modifier.matchParentSize())
+            if (warmingUp) {
+                GameWarmUp(Modifier.matchParentSize())
+                FlowWarmUp(Modifier.matchParentSize())
+            }
             LexiNavGraph(navController, navigator, transitions, urlOpener, morph, startGame)
         }
         // Enabled only while a morph runs. The screens' own handlers that could outrank it (newer handlers win) step

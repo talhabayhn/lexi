@@ -157,6 +157,8 @@ internal fun rememberPickerDialogFlip(dialog: PickerCategoryUi?): PickerDialogFl
     val monitor = LocalMotionPolicy.current.frameMonitor
     val morph = LocalMorphOverlay.current
     LaunchedEffect(flip, open) {
+        // OYNA closes the dialog and starts the morph in the same frame, in either order: decide one frame later.
+        if (!open && morph != null) withFrameMillis { }
         if (!open && morph != null && morph.isRunning) {
             // OYNA: the dialog stays at rest under the letter morph's ink (no close competing with the expand, nothing
             // measured); once the morph is over (the game covers this screen, or it was cancelled) it closes as usual.
