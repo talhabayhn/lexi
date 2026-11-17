@@ -51,7 +51,7 @@ class CategoryPickerViewModelTest {
             testCategory("food-drink", "Yiyecek ve içecek", "Food and drink", setOf(Level.A1, Level.A2), sort = 2),
             testCategory("daily-life", "Günlük hayat", "Daily life", setOf(Level.A1, Level.A2), sort = 1),
             testCategory("home", "Ev ve eşyalar", "Home", setOf(Level.A1), sort = 3),
-            // Listed for A1 but without a card there: still shown (0 / 0), never hidden.
+            // Listed for A1 but without a card there: hidden from the picker ("0 words" is not a wheel).
             testCategory("travel", "Seyahat", "Travel", setOf(Level.A1), sort = 4),
             testCategory("general", "Genel", "General", setOf(Level.NAT), sort = 99),
         ),
@@ -87,25 +87,34 @@ class CategoryPickerViewModelTest {
     private fun learned(id: String) = CardProgress(CardId(id), seen = 1, correct = 1)
 
     @Test
-    fun `mixed comes first then every category of the level in sort order - empty ones included`() = runTest {
+    fun `mixed comes first then the categories of the level that have cards in sort order`() = runTest {
         progress.save(listOf(learned("a1-apple"), learned("a1-chair")))
 
         val state = viewModel().state.value
 
-        assertEquals(
-            listOf("mixed", "daily-life", "food-drink", "home", "travel"),
-            state.categories.map {
-                it.id.value
-            },
-        )
+        // daily-life and travel are listed for A1 but have no A1 card: not shown.
+        assertEquals(listOf("mixed", "food-drink", "home"), state.categories.map { it.id.value })
         assertEquals(
             PickerCategoryUi(CategoryId.MIXED, "Karışık", "Mixed", learned = 2, total = 3),
             state.categories[0],
         )
-        assertEquals(0 to 0, state.categories[1].let { it.learned to it.total })
-        assertEquals(1 to 2, state.categories[2].let { it.learned to it.total })
-        assertEquals(0 to 0, state.categories[4].let { it.learned to it.total })
+        assertEquals(1 to 2, state.categories[1].let { it.learned to it.total })
+        assertEquals(1 to 1, state.categories[2].let { it.learned to it.total })
     }
+
+    @Test
+    fun `a category without cards at the selected level is hidden and shows again at a level that has them`() =
+        runTest {
+            val viewModel = viewModel()
+            assertEquals(false, viewModel.state.value.categories.any { it.id.value == "daily-life" })
+            assertEquals(false, viewModel.state.value.categories.any { it.id.value == "travel" })
+
+            cards.cards = cards.cards + testCard("DAWN", category = "daily-life")
+            assertEquals(true, viewModel().state.value.categories.any { it.id.value == "daily-life" })
+            // Mixed stays even when the level has no category card at all (its own total can be 0).
+            cards.cards = emptyList()
+            assertEquals(listOf("mixed"), viewModel().state.value.categories.map { it.id.value })
+        }
 
     @Test
     fun `a category thin on A opens its wheel on its first letter and so does the effect`() = runTest {
@@ -121,7 +130,7 @@ class CategoryPickerViewModelTest {
         assertEquals('B', byId.getValue("food-drink").firstLetter)
         assertEquals('A', byId.getValue("home").firstLetter)
         assertEquals('A', byId.getValue("mixed").firstLetter, "mixed: the first letter of any card of the level")
-        assertEquals('A', byId.getValue("travel").firstLetter, "no card at all: the default, that game never starts")
+        assertEquals(false, "travel" in byId, "no card at all: not listed, so no game that never starts")
 
         viewModel.onIntent(CategoryPickerIntent.OpenCategory(CategoryId("food-drink")))
         viewModel.effects.test {
@@ -180,7 +189,7 @@ class CategoryPickerViewModelTest {
         val state = viewModel.state.value
         assertEquals(Level.A2, state.level)
         assertEquals(CategoryId.MIXED, state.selectedCategory)
-        assertEquals(listOf("mixed", "daily-life", "food-drink"), state.categories.map { it.id.value })
+        assertEquals(listOf("mixed", "food-drink"), state.categories.map { it.id.value })
         assertEquals(Level.A2, settings.settings.value.selectedLevel)
         assertNull(settings.settings.value.playCategory)
     }
@@ -299,6 +308,6 @@ class CategoryPickerViewModelTest {
         viewModel.onIntent(CategoryPickerIntent.Retry)
 
         assertEquals(false, viewModel.state.value.hasError)
-        assertEquals(5, viewModel.state.value.categories.size)
+        assertEquals(3, viewModel.state.value.categories.size)
     }
 }

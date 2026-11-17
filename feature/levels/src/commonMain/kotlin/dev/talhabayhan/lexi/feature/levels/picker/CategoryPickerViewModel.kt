@@ -147,9 +147,11 @@ internal class CategoryPickerViewModel(
                 total = categoryOf.size,
                 firstLetter = firstLetter(categoryOf.keys),
             )
-            // Every category of the level, never hidden: one without cards shows 0 / 0.
-            return listOf(mixedCard) + categories.map { category ->
+            // A category the level declares but has no card for (C1 False friends, Idioms, Phrasal verbs today) is not
+            // listed: "0 words" cannot be played. The CSV's `levels` stays as the content owner's intent.
+            return listOf(mixedCard) + categories.mapNotNull { category ->
                 val ids = byCategory[category.id].orEmpty()
+                if (ids.isEmpty()) return@mapNotNull null
                 PickerCategoryUi(
                     id = category.id,
                     nameTr = category.nameTr,
