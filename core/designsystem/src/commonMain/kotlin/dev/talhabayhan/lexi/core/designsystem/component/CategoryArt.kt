@@ -343,12 +343,12 @@ private fun Sketch.familyPeople(c: LexiColors) {
 
 private fun Sketch.colorsNumbers(c: LexiColors) {
     ink = c.ink
-    circle(46f, 48f, 26f, c.red, line = true)
-    circle(84f, 48f, 26f, c.yellow, line = true)
-    circle(122f, 48f, 26f, c.blue, line = true)
-    text("1", 46f, 58f, 28f, c.white)
+    circle(47f, 48f, 25f, c.red, line = true)
+    circle(84f, 48f, 25f, c.yellow, line = true)
+    circle(121f, 48f, 25f, c.blue, line = true)
+    text("1", 47f, 58f, 28f, c.white)
     text("2", 84f, 58f, 28f, c.ink)
-    text("3", 122f, 58f, 28f, c.white)
+    text("3", 121f, 58f, 28f, c.white)
 }
 
 private fun Sketch.bodyHealth(c: LexiColors) {
@@ -359,11 +359,11 @@ private fun Sketch.bodyHealth(c: LexiColors) {
 
 private fun Sketch.schoolWork(c: LexiColors) {
     ink = c.ink
-    path("M30 30h52v46H30z", c.cream, line = true)
-    path("M86 30h52v46H86z", c.cream, line = true)
-    stroke("M42 44h28M42 54h28M98 44h28M98 54h28", c.ink)
-    path("M118 74L150 34L160 42L128 82Z", c.yellow, line = true)
-    path("M118 74L128 82L112 86Z", c.ink)
+    path("M20 30h52v46H20z", c.cream, line = true)
+    path("M76 30h52v46H76z", c.cream, line = true)
+    stroke("M32 44h28M32 54h28M88 44h28M88 54h28", c.ink)
+    path("M108 72L130 38L139 45L118 80Z", c.yellow, line = true)
+    path("M108 72L118 80L102 84Z", c.ink)
 }
 
 private fun Sketch.animals(c: LexiColors) {
@@ -401,19 +401,21 @@ private fun Sketch.timeWeather(c: LexiColors) {
 
 private fun Sketch.travel(c: LexiColors) {
     ink = c.ink
-    circle(26f, 22f, 8f, c.white)
-    stroke("M118 20L140 14L134 38", c.white)
-    rect(44f, 34f, 76f, 47f, c.yellow, line = true)
-    rect(44f, 34f, 14f, 47f, c.yellow, line = true)
-    rect(106f, 34f, 14f, 47f, c.yellow, line = true)
-    path("M68 34V24Q68 22 70 22H95Q97 22 97 24V34", null, line = true)
+    circle(26f, 24f, 7f, c.white)
+    // Airliner seen from above, nose up: wings and tail behind the fuselage.
+    polygon(c.yellow, true, 91f, 38f, 134f, 62f, 134f, 72f, 91f, 58f)
+    polygon(c.yellow, true, 77f, 38f, 34f, 62f, 34f, 72f, 77f, 58f)
+    polygon(c.yellow, true, 91f, 68f, 110f, 78f, 110f, 84f, 91f, 80f)
+    polygon(c.yellow, true, 77f, 68f, 58f, 78f, 58f, 84f, 77f, 80f)
+    path("M77 30Q77 10 84 10Q91 10 91 30V84H77Z", c.white, line = true)
+    rect(81f, 22f, 6f, 5f, c.ink)
 }
 
 private fun Sketch.sports(c: LexiColors) {
     ink = c.ink
     circle(84f, 48f, 34f, c.yellow, line = true)
     stroke("M84 14V82M50 48H118", c.ink)
-    stroke("M64 17C48 33 48 63 64 79M104 17C120 33 120 63 104 79", c.ink)
+    stroke("M64 20.5C52 34 52 62 64 75.5M104 20.5C116 34 116 62 104 75.5", c.ink)
 }
 
 private fun Sketch.music(c: LexiColors) {
@@ -454,11 +456,11 @@ private fun Sketch.technology(c: LexiColors) {
 
 private fun Sketch.falseFriends(c: LexiColors) {
     ink = c.ink
-    rect(22f, 27f, 46f, 46f, c.blue, line = true)
-    text("?", 45f, 62f, 34f, c.white)
-    stroke("M83 47H101M83 55H101M88 62L97 40", c.ink, width = 4f)
-    circle(137f, 50f, 24f, c.red, line = true)
-    text("?", 137f, 62f, 34f, c.white)
+    rect(20f, 27f, 44f, 44f, c.blue, line = true)
+    text("?", 42f, 61f, 34f, c.white)
+    stroke("M71 47H89M71 55H89M76 62L85 40", c.ink, width = 4f)
+    circle(122f, 49f, 22f, c.red, line = true)
+    text("?", 122f, 61f, 34f, c.white)
 }
 
 private fun Sketch.idioms(c: LexiColors) {
@@ -466,12 +468,10 @@ private fun Sketch.idioms(c: LexiColors) {
     polygon(c.cream, true, 52f, 62f, 44f, 86f, 76f, 62f)
     rect(28f, 14f, 106f, 50f, c.cream, line = true)
     rect(31f, 59f, 44f, 8f, c.cream)
-    for (cx in floatArrayOf(63f, 97f)) {
-        path(
-            "M${cx - 7} 35A7 7 0 1 1 ${cx + 7} 35C${cx + 7} 45 ${cx + 1} 49 ${cx - 6} 53" +
-                "C${cx - 3} 47 ${cx - 7} 42 ${cx - 7} 35Z",
-            c.ink,
-        )
+    // Two closing quotation marks: a ball with a tail curling down to the left.
+    for (cx in floatArrayOf(65f, 99f)) {
+        circle(cx, 33f, 8f, c.ink)
+        path("M${cx + 8} 33C${cx + 8} 45 ${cx + 2} 51 ${cx - 8} 54L${cx - 8} 48C${cx - 3} 45 $cx 41 $cx 33Z", c.ink)
     }
 }
 
@@ -532,17 +532,18 @@ private fun Sketch.toefl(c: LexiColors) {
     circle(84.5f, 46f, 35f, null, line = true)
 }
 
-/** Needs design: IELTS is cut off in the draft; speech bubble plus headphones from the same primitives. */
+/** Needs design: IELTS is cut off in the draft; headphones around a speech bubble from the same primitives. */
 private fun Sketch.ielts(c: LexiColors) {
     ink = c.ink
-    stroke("M40 62A44 44 0 0 1 128 62", c.ink, width = 5f)
-    rect(32f, 56f, 14f, 26f, c.ink)
-    rect(122f, 56f, 14f, 26f, c.ink)
-    polygon(c.cream, true, 66f, 68f, 66f, 82f, 80f, 68f)
-    rect(58f, 40f, 52f, 28f, c.cream, line = true)
-    circle(72f, 54f, 3f, c.ink)
-    circle(84f, 54f, 3f, c.ink)
-    circle(96f, 54f, 3f, c.ink)
+    stroke("M38 56A46 46 0 0 1 130 56", c.ink, width = 5f)
+    rect(30f, 50f, 16f, 32f, c.yellow, line = true)
+    rect(122f, 50f, 16f, 32f, c.yellow, line = true)
+    polygon(c.cream, true, 66f, 66f, 66f, 82f, 80f, 66f)
+    rect(56f, 38f, 56f, 28f, c.cream, line = true)
+    rect(59f, 63f, 14f, 6f, c.cream)
+    circle(72f, 52f, 3f, c.ink)
+    circle(84f, 52f, 3f, c.ink)
+    circle(96f, 52f, 3f, c.ink)
 }
 
 // endregion
