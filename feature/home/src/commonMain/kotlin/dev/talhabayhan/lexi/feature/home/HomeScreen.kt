@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
@@ -26,6 +27,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
@@ -96,6 +98,9 @@ import dev.talhabayhan.lexi.feature.home.generated.resources.home_total_points_d
 import org.jetbrains.compose.resources.pluralStringResource
 import org.jetbrains.compose.resources.stringResource
 
+/** Test handle of the ruled bottom bar (its real top edge, not the first label). */
+internal const val HOME_BOTTOM_BAR_TAG = "home-bottom-bar"
+
 /**
  * Home of the video flow (`docs/design/video-flow-notes.md` §1, `drafts/video-flow/home_v5.png`): header (logo + total
  * points, no streak), the play card, "Günün çarkı", "İki kişi, tek telefon", ÇALIŞ (Defter, Sınavlar) and the ruled
@@ -118,58 +123,69 @@ internal fun HomeScreen(
     )
     Box(modifier.fillMaxSize().background(colors.cream)) {
         Column(Modifier.fillMaxSize()) {
-            Column(
-                modifier = Modifier
-                    .weight(1f)
-                    .fillMaxWidth()
-                    .verticalScroll(rememberScrollState())
-                    .windowInsetsPadding(
-                        WindowInsets.safeDrawing.only(WindowInsetsSides.Top + WindowInsetsSides.Horizontal),
+            // The viewport height lets the content column be at least as tall as the space above the bar, so the
+            // flexible spacer before ÇALIŞ pushes it to the bottom (a fixed 24dp above the bar); when the content is
+            // taller (short screen, large font) the spacer is zero and everything scrolls as one list.
+            BoxWithConstraints(Modifier.weight(1f).fillMaxWidth()) {
+                val viewportHeight = maxHeight
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .verticalScroll(rememberScrollState())
+                        .heightIn(min = viewportHeight)
+                        .windowInsetsPadding(
+                            WindowInsets.safeDrawing.only(WindowInsetsSides.Top + WindowInsetsSides.Horizontal),
+                        )
+                        .lexiContentWidth()
+                        .padding(
+                            start = dimens.screenPaddingHorizontal,
+                            end = dimens.screenPaddingHorizontal,
+                            top = dimens.screenPaddingTop,
+                            bottom = dimens.gap24,
+                        ),
+                    verticalArrangement = Arrangement.spacedBy(dimens.gap16),
+                ) {
+                    Header(state.totalScore)
+                    PlayCard(
+                        label = stringResource(Res.string.home_play_label),
+                        modes = listOf(
+                            PlayCardMode(
+                                stringResource(Res.string.home_mode_classic),
+                                stringResource(Res.string.home_mode_classic_caption, state.classicMinutes),
+                            ),
+                            PlayCardMode(
+                                stringResource(Res.string.home_mode_practice),
+                                stringResource(Res.string.home_mode_practice_caption),
+                            ),
+                            PlayCardMode(
+                                stringResource(Res.string.home_mode_hardcore),
+                                stringResource(Res.string.home_mode_hardcore_caption),
+                            ),
+                        ),
+                        playLabel = stringResource(Res.string.home_play),
+                        contentDescription = stringResource(Res.string.home_play_description, state.classicMinutes),
+                        onClick = { onIntent(HomeIntent.Play) },
                     )
-                    .lexiContentWidth()
-                    .padding(
-                        start = dimens.screenPaddingHorizontal,
-                        end = dimens.screenPaddingHorizontal,
-                        top = dimens.screenPaddingTop,
-                        bottom = dimens.screenPaddingBottomList,
-                    ),
-                verticalArrangement = Arrangement.spacedBy(dimens.gap16),
-            ) {
-                Header(state.totalScore)
-                PlayCard(
-                    label = stringResource(Res.string.home_play_label),
-                    modes = listOf(
-                        PlayCardMode(
-                            stringResource(Res.string.home_mode_classic),
-                            stringResource(Res.string.home_mode_classic_caption, state.classicMinutes),
-                        ),
-                        PlayCardMode(
-                            stringResource(Res.string.home_mode_practice),
-                            stringResource(Res.string.home_mode_practice_caption),
-                        ),
-                        PlayCardMode(
-                            stringResource(Res.string.home_mode_hardcore),
-                            stringResource(Res.string.home_mode_hardcore_caption),
-                        ),
-                    ),
-                    playLabel = stringResource(Res.string.home_play),
-                    contentDescription = stringResource(Res.string.home_play_description, state.classicMinutes),
-                    onClick = { onIntent(HomeIntent.Play) },
-                )
-                DailyCard(state.dailyState, onOpen = { onIntent(HomeIntent.OpenDaily) })
-                DuelHomeBox(
-                    title = stringResource(Res.string.home_tile_duel),
-                    subtitle = stringResource(Res.string.home_tile_duel_subtitle),
-                    onClick = { onIntent(HomeIntent.OpenDuel) },
-                )
-                Spacer(Modifier.height(dimens.gap8))
-                Text(
-                    stringResource(Res.string.home_study_header),
-                    style = LexiTheme.typography.label12,
-                    color = colors.ink,
-                    modifier = Modifier.lexiHeading(),
-                )
-                StudyTiles(state, onIntent)
+                    DailyCard(state.dailyState, onOpen = { onIntent(HomeIntent.OpenDaily) })
+                    DuelHomeBox(
+                        title = stringResource(Res.string.home_tile_duel),
+                        subtitle = stringResource(Res.string.home_tile_duel_subtitle),
+                        onClick = { onIntent(HomeIntent.OpenDuel) },
+                    )
+                    Spacer(Modifier.weight(1f))
+                    Column(
+                        modifier = Modifier.padding(top = dimens.gap8),
+                        verticalArrangement = Arrangement.spacedBy(dimens.gap16),
+                    ) {
+                        Text(
+                            stringResource(Res.string.home_study_header),
+                            style = LexiTheme.typography.label12,
+                            color = colors.ink,
+                            modifier = Modifier.lexiHeading(),
+                        )
+                        StudyTiles(state, onIntent)
+                    }
+                }
             }
             RuledBottomBar(
                 items = listOf(
@@ -194,6 +210,7 @@ internal fun HomeScreen(
                     ),
                 ),
                 modifier = Modifier
+                    .testTag(HOME_BOTTOM_BAR_TAG)
                     .background(colors.cream)
                     .windowInsetsPadding(
                         WindowInsets.safeDrawing.only(WindowInsetsSides.Bottom + WindowInsetsSides.Horizontal),
