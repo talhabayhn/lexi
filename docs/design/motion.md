@@ -48,6 +48,24 @@ drops tilt/shadow growth, Y flips → scale 0.92 → 1 + fade, no letter pop, st
 | 17 | In game, correct answer (video flow additions) | #3 pop + ring as shipped; score counts up (`mechanical`, 58 + 349) with a pop 1.25 → 1 (`pop`, 58 + 233); marker jumps (#6); centre letter slides out 60 dp down (`turn`, 0 + 163) and the next in from above (`mechanical`, 163 + 186); clue slides out −30 dp (`turn`, 58 + 140) and in from +30 dp (`mechanical`, 198 + 209); slots fade (0 + 116), slots and keys re-dealt 12 dp (from 233, 233 each, 35 / 23 ms stagger) | ≈ 0.7 s | success (#3) | as #3 |
 | 18 | "Çarkını seç" grid entrance | each category card rises 16 dp + fades in (`mechanical`, 163 + 302 from the start of the screen transition, 52 ms stagger); only the first open per app session and only in tier Full (Lite / Minimal: the cards are just there) | ≈ 0.47 s + stagger | — | — |
 
+#13–#16 sequencing (phase 3, `core:designsystem` `motion/`): `DialogFlipChoreography` / `DialogFlipMachine` and
+`LetterMorphMachine` are pure state machines fed with frame times (unit-tested with a fake clock); every value is read
+in `graphicsLayer` / draw lambdas. Interruptions: a close requested mid-open (back, arrow, scrim) plays the **same**
+open timeline backwards from where it is, a reopen mid-close (tap on the same card) plays the close backwards, so
+nothing jumps; other taps wait for rest. #16 waits for the game: if it is not ready at the hold's end (767 ms) the big
+letter pulses (`letterPulseScale` 1.04, one pulse per `letterPulseMillis` 700 ms; **not in the prototype**, whose game
+was always ready) and the pulse fades out with the shrink. System back or the app going to the background cancels the
+morph: the overlay fades out over 120 ms (back after the game was opened under the ink also leaves that unstarted
+game). The tier is latched at the morph start (letter pop) and at the shrink start (board stagger). OYNA keeps the
+dialog at rest under the ink; it closes after the morph. No extra haptic at the morph start (OYNA's press plays #1).
+
+Changes from the prototype, with reasons: (1) the letter pulse above (a real game may load slower than the hold);
+(2) the dialog's frame is drawn at the current rect while it grows (the prototype's `overflow: hidden` box) instead of
+scaling the laid-out panel, so the 3 dp border and s6 shadow stay crisp; (3) the header row of the dialog rises with
+the others (the prototype animates only the choice rows); (4) the turn motions of #17 also play after a pass and after
+a wrong answer's reveal (the prototype only showed a correct answer), so every turn change looks the same; (5) the
+card's own s4 shadow stays under the growing 4 → 10 dp one (a ≤ 6 × 4 dp ink step at two corners while lifted).
+
 #16 / #17 on the game board (`feature:game`, `TurnMotion.kt`; `LetterWheel` for ring, chips, centre): all values are
 `graphicsLayer` / draw-phase only. The board entrance applies only to a game screen composed while the morph runs
 (`rememberBoardEntrance`); the ring line fades with the first chip; chips and décor fade linearly (prototype `EASE.lin`).

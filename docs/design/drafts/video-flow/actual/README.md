@@ -12,3 +12,9 @@ with the drafts (`../home_v5.png`, `../cats_v3.png`). The source of truth stays 
 | `04-picker-exam-section.png` | `CategoryPickerNat.png` (NAT: Karışık, then the exam packs) |
 | `05-dialog-klasik.png` | `PlayDialogClassic.png` |
 | `06-dialog-320x568-font200.png` | `PlayDialog_w320h568_fontScale200.png` |
+
+`flow-android.mp4` (phase 3): screen recording of the release-like `benchmarkRelease` build on an Android emulator
+(API 35, arm64, host GPU; `adb shell screenrecord --size 540x1200 --bit-rate 2000000`, no re-encode): Home → play
+card → "Pick your wheel" (grid entrance) → Mixed card lift + Y flip into the dialog → Practice / Classic → close →
+reopen → PLAY letter morph → board entrance → letters and passes (#17). Compare with `../prototype/` and the
+prototype video. An emulator renders through the host GPU: timing feel is right, smoothness is not a phone's.
