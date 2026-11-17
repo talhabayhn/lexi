@@ -60,6 +60,15 @@ NavHost destinations on both Android and iOS; (2) how do we keep a ~1 s choreogr
    level select and categories screens, which are deleted; the selection is remembered in `Settings` (level on the
    onboarding's `selected_level`, new `play_mode` / `play_category`); the grid entrance (#18) runs in tier Full only.
    The dialog is a fade + scale placeholder until the phase 3 flip.
+9. **Phase 3 (transitions):** the morph and the flip are sequenced by pure state machines (`LetterMorphMachine`,
+   `DialogFlipMachine`) fed with frame times, so ordering, interruption and cancel rules are unit-tested with a fake
+   clock instead of by timing in UI tests. The game opened under the ink holds its clock with an explicit intent pair
+   (`HoldStart` / `ReleaseStart`) rather than a route flag, so a restored or recreated screen can never stay unstarted.
+   The OYNA rules live in `LetterMorphLauncher` (shared) behind two small interfaces. Developer tools (tier switch,
+   frame graph): `MotionDebugOverlay` in `:shared` androidMain, referenced only from `:androidApp`'s debug source set;
+   release-like build types compile a no-op twin and R8 drops the unused overlay (the module rules forbid
+   `:androidApp` → `:core:designsystem`, even for debug). `:shared` declares `navigationevent-compose` itself: a
+   catalog entry the features already use, no new library.
 
 Alternatives considered: **Home v2** (one Home with level/mode/category; ADR 0026) — kept as the fallback branch;
 **shared elements for the morph** — proven feasible, rejected for the reasons in 3; **an expect/actual
@@ -71,8 +80,9 @@ than the prototype's sRGB mix.
 
 - No new library or module: `compose-ui-test` is added to `:shared`'s test source sets only (catalog entries).
 - `LetterMorphLayer.png` was recorded locally; re-record on Linux (`screenshots-record`) before a merge to `main`.
-- While a morph runs the host swallows touches; phase 3 must also block system back (`GameBackHandler` /
-  `NavigationBackHandler`) until the overlay's `onFinished`.
+- While a morph runs the host swallows touches and clears the content's semantics; system back cancels the morph
+  (phase 3: a handler in `LexiNavHost`; the picker's dialog handler steps aside while a morph runs, because newer
+  handlers win).
 - Phase 3 must call `MorphOverlayState.markReady()` once the game's data is loaded and its board composed, put
   `Modifier.morphAnchor` on the OYNA button and the wheel marker, and start the game clock only after the board
   entrance (`FlowMotion.boardSettledMillis` after the shrink start).

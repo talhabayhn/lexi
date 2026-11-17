@@ -133,6 +133,13 @@ Postponed by owner until the payment/tax situation is clear (Nov 2026): RevenueC
   selection, rating prompt, iOS links hotfix, clue standard + A1 clue rewrite, duel answer review, category letter
   fill (A1/A2), perf benchmark.
 
+## Redesign candidate: video flow (branch `redesign/video-flow`, ADR 0027; not on `main`)
+- [x] Phase 1: motion infrastructure (tokens, tiers, frame monitor, morph overlay)
+- [x] Phase 2: Home, "Çarkını seç", mode / time dialog, invite (no new transitions)
+- [x] Phase 3: card flip, letter morph, board entrance, #17, warm-up, benchmarks (`docs/PERF.md` § Video flow)
+- [ ] Owner: real-device check (iPhone + older Android), design sign-off (art, invite icon), merge decision vs Home v2
+**Done when:** the owner picks this flow and it passes the device matrix; then it is merged to `main`.
+
 ## Content completion (after M8, before/within v1.0.x)
 - [x] Full A2 set (878 cards, `docs/content-review/A2-*.md`; Q thin at 16)
 - [x] Full B1 set (849 cards, `docs/content-review/B1-*.md`; Q, Y thin at true B1)

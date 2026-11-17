@@ -55,8 +55,11 @@ The gap math is `PerfStats.kt` (tested in `PerfStatsTest`).
   frames after `SplashState.finished`, `MainActivityLanguage.LexiApp`), so it includes the designed ≈ 1.2 s splash.
 - `ScreensBenchmark`: frame times over one perf tour (main screens + game), 3 runs with the profile. CI renders with a
   software GPU, so frame times there are far above a phone's; use them only to compare runs.
-- `VideoFlowBenchmark` (branch `redesign/video-flow`, ADR 0027): Home → Categories → Dialog → Game journeys,
-  `@Ignore`d placeholders until phase 3; bar P95 < 16.6 ms, no frame > 100 ms on real devices.
+- `VideoFlowBenchmark` (branch `redesign/video-flow`, ADR 0027): `homeToCategories` (play card → "Pick your wheel",
+  grid fling down / up, back), `categoryDialogFlip` (card lift + Y flip into the dialog, mode change, close by the
+  arrow and by back), `playLetterMorph` (OYNA → letter morph → board entrance, three letters, two passes) and
+  `fullVideoFlow` (all of it, with a close and reopen), 5 iterations each, a fresh process per iteration. Bar: P95
+  < 16.6 ms and no frame > 100 ms on real devices (results: § Video flow).
 
 Run on CI: Actions → **perf** → Run workflow (`commit` = commit the regenerated profile). The Summary page shows
 initial and full display (median, min-max) and frame CPU time P50/P90/P99 plus overrun P90 per test; traces and JSON are in the `perf-results` artifact. The runner is an
@@ -78,3 +81,49 @@ Locally (emulator or phone): `./gradlew :androidApp:generateBaselineProfile` (ma
   but not the phone target or the 60 fps target.
 - App-side costs seen on every run: `bindApplication` 180–500 ms (Firebase Crashlytics + sessions init), the first
   frame's composition and text layout ≈ 200 ms of CPU. Re-check both on a phone before optimising them.
+
+## Video flow (phase 3, branch `redesign/video-flow`)
+
+### Local emulator results (2026-11-17, `VideoFlowBenchmark`, 5 iterations, `CompilationMode.Partial`)
+
+Android emulator API 35 (`sdk_gphone64_arm64`, Apple-silicon host, host GPU), `benchmarkRelease`,
+`./gradlew :benchmark:connectedBenchmarkReleaseAndroidTest -P…class=…VideoFlowBenchmark -P…suppressErrors=EMULATOR`.
+Frame CPU time (`frameDurationCpuMs`, ms) and frame overrun (`frameOverrunMs`, ms; > 0 = missed its deadline):
+
+| Journey | frames | P50 | P90 | P95 | P99 | max | overrun P95 / max | frames > 100 ms |
+|---|---|---|---|---|---|---|---|---|
+| homeToCategories | 699 | 2.6 | 12.1 | 17.6 | 18.6 | 23.7 | 1.7 / 9.4 | 0 |
+| categoryDialogFlip | 1348 | 3.1 | 17.4 | 17.9 | 18.7 | 21.3 | 2.0 / 6.2 | 0 |
+| playLetterMorph | 1540 | 2.9 | 17.1 | 17.8 | 18.6 | 19.7 | 1.9 / 3.9 | 0 |
+| fullVideoFlow | 2020 | 2.9 | 8.8 | 17.5 | 18.5 | 19.9 | 1.6 / 5.4 | 0 |
+
+- **Acceptance (P95 < 16.6 ms, no frame > 100 ms):** "no frame > 100 ms" is met; P95 is 17.5–17.9 ms, so the bar is
+  **not met on this emulator**. The traces show why: the ≈ 17 ms frames are the RenderThread blocked in
+  `eglSwapBuffers` → `dequeueBuffer` (14–15 ms, waiting for a free buffer from the emulator's compositor), not app
+  work. The main thread's `Choreographer#doFrame` in the same runs: P50 0.5–0.7, P95 1.5–2.2, worst 12.6 ms. The app's
+  per-frame work fits a 60 Hz frame many times over; whether the swap wait exists on a phone must be measured there.
+- **Fixed in this phase:** the first iteration had one 163–187 ms frame per journey: the main thread waited
+  (`postAndWait`) while the RenderThread compiled GPU shaders the first time a perspective-turned card or the morph's
+  scaled letter was drawn (`AtlasTextOp` 127 ms on the emulator's GL translation). `FlowWarmUp` draws both behind the
+  NavHost during the two warm-up frames on Home; worst frames are now 19.7–23.7 ms. On a phone the shader cache
+  persists across launches, so this mainly helps the first launch after install or an update.
+- **Earlier bug found by the journeys:** a fresh install opened "Pick your wheel" scrolled to the exam packs (the grid
+  kept its first visible item when the cards were inserted above it); fixed with a regression test.
+- **What an emulator cannot tell:** GPU and display timing (the host GPU, a 60 Hz virtual display without real
+  vsync pressure), thermal throttling, a low-RAM device's memory pressure, and how a real panel shows the motion. It
+  does tell: main-thread work per frame, first-use costs (shader compile, class init) and regressions between runs.
+  Real-device runs (`:benchmark:connectedBenchmarkReleaseAndroidTest`) on an Android 8 low-RAM phone, a Samsung
+  A-series and a Pixel are still open.
+- **Debug builds:** two chips under the status bar (developer only) force the tier (auto / Full / Lite / Minimal) and
+  show a frame-time graph (16.7 and 24 ms lines, P95, worst) to check the tiers by eye on a phone.
+
+### iOS: Instruments (no macrobenchmark on iOS)
+
+1. Xcode → Product → Profile (Release configuration) on a real iPhone (iPhone 8 / SE 2nd gen / 11 / current), not the
+   simulator (it renders on the Mac's GPU).
+2. Template **Animation Hitches**; record the same journeys by hand: Home → play card → "Çarkını seç", fling the grid,
+   open a card's dialog, close, reopen, OYNA → game, a few letters.
+3. Read the **Hitches** track: every hitch with its duration and type (commit / render); the bar is no hitch above
+   one frame interval in the flip and the morph, and the hitch-time ratio below 5 ms/s ("good" in Apple's scale).
+   **Time Profiler** in the same run shows what the main thread did in a hitch (Compose recomposition vs Skia draw).
+4. Repeat with Low Power Mode on (the flow starts in tier Lite) and with Reduce Motion on (tier Minimal: cross-fades).

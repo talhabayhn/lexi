@@ -171,3 +171,43 @@ Still open:
     deleted).
   - `feature/settings`: every `Settings*.png` (the row is gone; deleted, re-record).
   - `tools/store-graphics` now reads `feature/levels/CategoryPicker.png` / `CategoryPickerEn.png`.
+
+## 9. Built in phase 3 (transitions and performance)
+
+- **Card → dialog (#13–#15):** `PickerDialogFlip` drives `DialogFlipMachine`; Full: lift, Y flips with a 900 dp
+  perspective, the dialog's frame grows from the card rect, rows rise one after another; Lite: scale 0.92 → 1 + fade;
+  Minimal: 120 ms cross-fade. Interruptible (a close mid-open and a reopen mid-close play the same timeline
+  backwards); back, the arrow and the scrim always close; the run is registered with the session `FrameMonitor`.
+- **Letter morph (#16):** `LexiNavHost` hosts the NavHost in `MorphOverlayHost`; OYNA starts the morph
+  (`LetterMorphLauncher`), the game is prepared during the expand and navigated to under the ink without a
+  transition; the shrink waits for the loaded game (`markReady`) and the marker; the letter pulses meanwhile; the game
+  clock and input wait for the board entrance (`GameIntent.HoldStart` / `ReleaseStart`). Back or the app going to the
+  background cancels it (120 ms fade, no navigation once cancelled; back after the game was opened leaves it again);
+  a navigation that does not happen after all also cancels it. Under the ink the content takes no touch and is hidden
+  from screen readers. Minimal: no morph, the cross-fade.
+- **Board entrance and #17:** every board piece enters from the shrink start (`BoardEntrance`); the score counts up
+  with a pop, the clue slides, slots and keys are re-dealt, the centre letter leaves down and the next comes from
+  above. Hidden keys take no tap during a re-deal.
+- **#18 grid entrance** (phase 2) unchanged; Home has no entrance; other screen changes keep #12.
+- **Performance:** draw-phase only; `FlowWarmUp` compiles the flip and morph shaders on Home; low-RAM / Low Power Mode
+  start in Lite, a slow streak (3 frames > 24 ms during a registered transition) switches the session to Lite; debug
+  builds have a tier switch and a frame-time graph (`MotionDebugOverlay`, shown from `androidApp/src/debug`). Numbers: `docs/PERF.md` § Video flow.
+- **Goldens:** no new screenshot test and no golden change at rest (the motions start from and end on the resting
+  look; `verifyRoborazzi` of `core/designsystem`, `feature/levels` and `feature/game` matched on macOS except the two
+  known macOS failures `GameMotionComboBurst` and `GameMotionPassTurn`, which also fail on the phase 2 commit).
+- **Recording:** `drafts/video-flow/actual/flow-android.mp4` (emulator).
+
+Open after phase 3:
+1. **Real devices:** Instruments (Animation Hitches) on iPhone 8 / SE 2 / 11 / current and the macrobenchmark on an
+   Android 8 low-RAM phone, a Samsung A-series and a Pixel (`docs/PERF.md`); the emulator's P95 is 17.5–17.9 ms
+   (RenderThread buffer wait), the bar is P95 < 16.6 ms.
+2. **Owner check of the feel** against the prototype video, especially the pulse (new), the #17 motions on pass and
+   after a wrong answer (the prototype only showed a correct answer), and the dialog header rising with the rows.
+3. **#6 token:** the marker still jumps in one step; `wheelAdvanceDurationMillis` (140 ms) is no longer used by the
+   centre letter (#17 steps now). Keep or remove when the flow is merged.
+4. **A key tap dropped during a re-deal** still plays the key's press, haptic and sound (≤ 0.5 s after a turn
+   change); acceptable or silence it.
+5. **Navigation test gap:** `LexiNavigator.openGame`'s `onDropped` and the picker's back-handler gate are covered by
+   reading and the launcher's unit tests, not by a NavHost integration test (GamePreparer is internal to
+   `feature:game`).
+
