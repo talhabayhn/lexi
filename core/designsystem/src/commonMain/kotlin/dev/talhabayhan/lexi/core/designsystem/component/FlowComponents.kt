@@ -122,6 +122,9 @@ public object FlowDefaults {
     public val GridColumnGap: Dp = 12.dp
     public val GridRowGap: Dp = 14.dp
 
+    /** Room under the last grid row: the "Başa dön" pill (48 + 20 margin) floats over it. */
+    public val GridBottomRoom: Dp = 76.dp
+
     /** "Başa dön" pill: at least 48 high, padding 0 14, icon 16. */
     internal val PillMinHeight: Dp = 48.dp
     internal val PillPaddingHorizontal: Dp = 14.dp

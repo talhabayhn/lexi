@@ -1,6 +1,7 @@
 package dev.talhabayhan.lexi.feature.levels.picker
 
 import androidx.compose.runtime.Immutable
+import dev.talhabayhan.lexi.core.domain.game.GameConfig
 import dev.talhabayhan.lexi.core.domain.game.GameMode
 import dev.talhabayhan.lexi.core.domain.model.CategoryId
 import dev.talhabayhan.lexi.core.domain.model.ExamPackId
@@ -8,6 +9,7 @@ import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.core.domain.settings.Settings
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.persistentListOf
+import kotlinx.collections.immutable.toImmutableList
 
 /**
  * One card of "Çarkını seç": Karışık ([id] = [CategoryId.MIXED], the level's mixed wheel) or a category of the level.
@@ -56,7 +58,7 @@ internal data class CategoryPickerUiState(
     val selectedCategory: CategoryId = CategoryId.MIXED,
     val mode: GameMode = GameMode.CLASSIC,
     val timeSeconds: Int = Settings.DEFAULT_CLASSIC_TIME_LIMIT_SECONDS,
-    val timeOptions: ImmutableList<Int> = persistentListOf(180, 300, 420),
+    val timeOptions: ImmutableList<Int> = GameConfig().classicTimeLimitOptionsSeconds.toImmutableList(),
     /** The card whose mode / time dialog is open; null = no dialog. */
     val dialog: PickerCategoryUi? = null,
     /** False until the level's content is read. */

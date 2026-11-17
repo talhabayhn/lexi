@@ -54,6 +54,19 @@ class OnboardingRepositoryTest {
     }
 
     @Test
+    fun `saving a level clears the category remembered for the old one`() = runTest {
+        val dataStore = createSettingsDataStore(path, backgroundScope)
+        val repository = OnboardingRepositoryImpl(dataStore)
+        dataStore.edit { it[stringPreferencesKey("play_category")] = "home" }
+
+        repository.saveSelectedLevel(Level.B1)
+
+        val prefs = dataStore.data.first()
+        assertEquals("B1", prefs[stringPreferencesKey("selected_level")])
+        assertEquals(null, prefs[stringPreferencesKey("play_category")])
+    }
+
+    @Test
     fun `invalid stored level falls back to A1`() = runTest {
         val dataStore = createSettingsDataStore(path, backgroundScope)
         dataStore.edit {

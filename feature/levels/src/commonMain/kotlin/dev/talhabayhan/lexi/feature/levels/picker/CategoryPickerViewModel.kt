@@ -71,7 +71,10 @@ internal class CategoryPickerViewModel(
     init {
         viewModelScope.launch {
             val stored = readSettings()
-            storedCategory = stored.playCategory?.takeIf { stored.selectedLevel == route.startLevel }
+            // A level chip tapped while the settings were read wins: its own category starts at Karışık.
+            if (selectedLevel.value == route.startLevel) {
+                storedCategory = stored.playCategory?.takeIf { stored.selectedLevel == route.startLevel }
+            }
             mutableState.update {
                 it.copy(
                     mode = stored.playMode,
@@ -79,8 +82,6 @@ internal class CategoryPickerViewModel(
                         ?: config.classicTimeLimitSeconds,
                 )
             }
-            // The level Home opened on is the remembered one from now on.
-            if (stored.selectedLevel != route.startLevel) persist { it.copy(selectedLevel = route.startLevel) }
             combine(selectedLevel, reloads) { level, _ -> level }.collectLatest { level -> observe(level) }
         }
     }
@@ -111,13 +112,13 @@ internal class CategoryPickerViewModel(
             .collect { answered ->
                 val learned = answered.learnedIds()
                 val ui = content.cards(learned)
+                val stored = storedCategory?.takeIf { id -> ui.any { it.id == id } }
+                storedCategory = null
                 mutableState.update { current ->
-                    val category = storedCategory?.takeIf { id -> ui.any { it.id == id } }
-                    storedCategory = null
                     current.copy(
                         categories = ui.toImmutableList(),
                         packs = content.packs(learned).toImmutableList(),
-                        selectedCategory = category ?: current.selectedCategory.takeIf { id -> ui.any { it.id == id } }
+                        selectedCategory = stored ?: current.selectedCategory.takeIf { id -> ui.any { it.id == id } }
                             ?: CategoryId.MIXED,
                         isLoaded = true,
                         hasError = false,

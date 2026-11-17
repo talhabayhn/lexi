@@ -34,11 +34,16 @@ internal class OnboardingRepositoryImpl(private val dataStore: DataStore<Prefere
     override suspend fun saveSelectedLevel(level: Level) {
         dataStore.edit { prefs ->
             prefs[SELECTED_LEVEL] = level.name
+            // A new level starts on Karışık (the remembered category belongs to the old level).
+            prefs.remove(PLAY_CATEGORY)
         }
     }
 
     private companion object {
         val ONBOARDING_COMPLETED = booleanPreferencesKey("onboarding_completed")
         val SELECTED_LEVEL = stringPreferencesKey("selected_level")
+
+        /** Shared with `SettingsRepositoryImpl` (`Settings.playCategory`). */
+        val PLAY_CATEGORY = stringPreferencesKey("play_category")
     }
 }

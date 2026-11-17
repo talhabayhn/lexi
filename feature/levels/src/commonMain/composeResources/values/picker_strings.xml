@@ -33,5 +33,4 @@
     <string name="dialog_mode_hardcore_hint">One mistake allowed. The first wrong answer ends the game.</string>
     <string name="dialog_time_none">Practice mode has no timer.</string>
     <string name="dialog_play">PLAY</string>
-    <string name="dialog_play_description">Play</string>
 </resources>

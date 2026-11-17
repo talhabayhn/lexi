@@ -45,7 +45,7 @@ import kotlinx.coroutines.sync.withLock
 internal class HomeViewModel(
     progress: ProgressRepository,
     sessions: SessionRepository,
-    settings: SettingsRepository,
+    private val settings: SettingsRepository,
     private val getDailyWheel: GetDailyWheel,
     private val daily: DailyRepository,
     private val appClock: AppClock,
@@ -234,8 +234,11 @@ internal class HomeViewModel(
                 mutableState.update { it.copy(dailyGiftNotice = null) }
             }
 
+            // The stored level once the store has delivered, even before this screen's collector did (a very early tap).
             HomeIntent.Play -> effectChannel.trySend(
-                HomeEffect.NavigateToCategoryPicker(mutableState.value.selectedLevel),
+                HomeEffect.NavigateToCategoryPicker(
+                    settings.loaded.value?.selectedLevel ?: mutableState.value.selectedLevel,
+                ),
             )
 
             HomeIntent.OpenDaily -> {

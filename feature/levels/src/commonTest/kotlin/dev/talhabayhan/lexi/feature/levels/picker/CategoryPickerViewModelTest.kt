@@ -143,7 +143,6 @@ class CategoryPickerViewModelTest {
 
         assertEquals(CategoryId.MIXED, state.selectedCategory)
         assertEquals(180, state.timeSeconds)
-        assertEquals(Level.A1, settings.settings.value.selectedLevel)
     }
 
     @Test
@@ -175,7 +174,6 @@ class CategoryPickerViewModelTest {
         assertEquals(CategoryId("food-drink"), state.dialog?.id)
         assertEquals(
             Settings().copy(
-                selectedLevel = Level.A1,
                 playCategory = CategoryId("food-drink"),
                 playMode = GameMode.HARDCORE,
                 classicTimeLimitSeconds = 300,

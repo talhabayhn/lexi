@@ -33,5 +33,4 @@
     <string name="dialog_mode_hardcore_hint">Tek hata hakkın var. İlk yanlışta oyun biter.</string>
     <string name="dialog_time_none">Pratik modda süre yok.</string>
     <string name="dialog_play">OYNA</string>
-    <string name="dialog_play_description">Oyna</string>
 </resources>

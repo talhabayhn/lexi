@@ -155,13 +155,11 @@ internal fun CategoryPickerScreen(
                 PickerGrid(state, gridState, turkish, entrance, onIntent)
             }
         }
-        ScrollTopButton(gridState, Modifier.align(Alignment.BottomEnd))
+        // Behind the scrim while the dialog is open: not shown, so a screen reader cannot reach it either.
+        if (state.dialog == null) ScrollTopButton(gridState, Modifier.align(Alignment.BottomEnd))
         PlayDialog(state, turkish, onIntent)
     }
 }
-
-/** Bottom room of the grid: the "Başa dön" pill floats over it and the navigation bar comes below. */
-private val GridBottomRoom = 76.dp
 
 @Composable
 private fun PickerGrid(
@@ -173,7 +171,7 @@ private fun PickerGrid(
 ) {
     val dimens = LexiTheme.dimens
     val navigationBar = WindowInsets.safeDrawing.only(WindowInsetsSides.Bottom).asPaddingValues()
-    val enter = rememberGridEntrance(entrance)
+    val enter = rememberGridEntrance(entrance, ready = state.isLoaded && state.categories.isNotEmpty())
     val mixedFallback = stringResource(Res.string.picker_mixed_fallback)
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
@@ -183,7 +181,7 @@ private fun PickerGrid(
             start = dimens.screenPaddingHorizontal,
             end = dimens.screenPaddingHorizontal,
             top = dimens.gap16,
-            bottom = GridBottomRoom + navigationBar.calculateBottomPadding(),
+            bottom = FlowDefaults.GridBottomRoom + navigationBar.calculateBottomPadding(),
         ),
         horizontalArrangement = Arrangement.spacedBy(FlowDefaults.GridColumnGap),
         verticalArrangement = Arrangement.spacedBy(FlowDefaults.GridRowGap),
@@ -336,7 +334,7 @@ private class GridEntrance(
 private const val ENTRANCE_CARDS = 8
 
 @Composable
-private fun rememberGridEntrance(play: Boolean): GridEntrance {
+private fun rememberGridEntrance(play: Boolean, ready: Boolean): GridEntrance {
     val motion = LexiTheme.motion
     val flow = motion.flow
     val offsetPx = with(LocalDensity.current) { flow.gridCardOffset.toPx() }
@@ -344,7 +342,9 @@ private fun rememberGridEntrance(play: Boolean): GridEntrance {
     val clock = remember { Animatable(0f) }
     val monitor = LocalMotionPolicy.current.frameMonitor
     val end = flow.gridCardIn.staggered(ENTRANCE_CARDS - 1, flow.gridCardStaggerMillis).endMillis
-    LaunchedEffect(Unit) {
+    // Starts when the cards are there (content is read off the main thread), not on the first frame.
+    LaunchedEffect(ready) {
+        if (!ready) return@LaunchedEffect
         monitor.beginTransition()
         try {
             clock.animateTo(end.toFloat(), tween(end, easing = LinearEasing))
