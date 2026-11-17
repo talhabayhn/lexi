@@ -26,18 +26,31 @@ public class BoardEntrance internal constructor(
     private val mechanical: Easing,
     private val pop: Easing,
 ) {
-    /** 0..1 progress of [step] for the [index]-th piece of a group [staggerMillis] apart (eased). */
-    public fun progress(step: MotionStep, index: Int = 0, staggerMillis: Int = 0, popEasing: Boolean = false): Float {
+    /**
+     * 0..1 progress of [step] for the [index]-th piece of a group [staggerMillis] apart, on `mechanical`, on `pop`
+     * ([popEasing]) or unchanged ([linear]: the prototype's fades of the ring chips and the décor).
+     */
+    public fun progress(
+        step: MotionStep,
+        index: Int = 0,
+        staggerMillis: Int = 0,
+        popEasing: Boolean = false,
+        linear: Boolean = false,
+    ): Float {
         val clock = state.boardClockMillis()
         if (clock == Long.MAX_VALUE) return 1f
         val stagger = if (state.boardStagger) staggerMillis else 0
-        val linear = step.staggered(index, stagger).progressAt(clock)
-        return (if (popEasing) pop else mechanical).transform(linear)
+        val fraction = step.staggered(index, stagger).progressAt(clock)
+        return when {
+            linear -> fraction
+            popEasing -> pop.transform(fraction)
+            else -> mechanical.transform(fraction)
+        }
     }
 
     /**
      * A piece that fades in and moves [offset] (vertical; negative = from above) back to rest, or scales from
-     * [startScale] to 1 ([popEasing] for the centre circle's pop).
+     * [startScale] to 1 ([popEasing] for the centre circle's pop; [linear] for a plain fade).
      */
     public fun piece(
         step: MotionStep,
@@ -46,10 +59,11 @@ public class BoardEntrance internal constructor(
         offset: Dp = 0.dp,
         startScale: Float = 1f,
         popEasing: Boolean = false,
+        linear: Boolean = false,
     ): Modifier {
         val offsetPx = with(density) { offset.toPx() }
         return Modifier.graphicsLayer {
-            val p = progress(step, index, staggerMillis, popEasing)
+            val p = progress(step, index, staggerMillis, popEasing, linear)
             alpha = p.coerceIn(0f, 1f)
             translationY = (1f - p) * offsetPx
             if (startScale != 1f) {

@@ -48,6 +48,16 @@ drops tilt/shadow growth, Y flips → scale 0.92 → 1 + fade, no letter pop, st
 | 17 | In game, correct answer (video flow additions) | #3 pop + ring as shipped; score counts up (`mechanical`, 58 + 349) with a pop 1.25 → 1 (`pop`, 58 + 233); marker jumps (#6); centre letter slides out 60 dp down (`turn`, 0 + 163) and the next in from above (`mechanical`, 163 + 186); clue slides out −30 dp (`turn`, 58 + 140) and in from +30 dp (`mechanical`, 198 + 209); slots fade (0 + 116), slots and keys re-dealt 12 dp (from 233, 233 each, 35 / 23 ms stagger) | ≈ 0.7 s | success (#3) | as #3 |
 | 18 | "Çarkını seç" grid entrance | each category card rises 16 dp + fades in (`mechanical`, 163 + 302 from the start of the screen transition, 52 ms stagger); only the first open per app session and only in tier Full (Lite / Minimal: the cards are just there) | ≈ 0.47 s + stagger | — | — |
 
+#16 / #17 on the game board (`feature:game`, `TurnMotion.kt`; `LetterWheel` for ring, chips, centre): all values are
+`graphicsLayer` / draw-phase only. The board entrance applies only to a game screen composed while the morph runs
+(`rememberBoardEntrance`); the ring line fades with the first chip; chips and décor fade linearly (prototype `EASE.lin`).
+#17 is driven by the state, not by an effect: the engine publishes the next turn before `Correct` / `Advanced`, so the
+composition that first shows a new turn letter keeps the previous turn's clue, slots and keys as decorative copies
+(no semantics, no input) until the re-deal (233 ms). It plays on every turn change after the first (correct, pass,
+after a wrong answer's reveal), like #6's centre letter; the count-up plays whenever the score badge's value rises.
+The marker stays a step with the state (#6); the centre letter uses #17's out / in steps. Tier Lite: no stagger;
+Minimal: the new turn and score are just there.
+
 #1 is implemented once in `PressableSurface` (`core:designsystem`): CSS `ease-out` per direction (`.lx-press` in
 `source/15-motion.dc.html`); a quick tap still plays the full 80 ms press before returning; haptic and sound fire on
 click (release inside the element), not on touch-down, so a cancelled touch stays silent. Reduced motion: no
@@ -75,7 +85,7 @@ Implemented in `feature:game` (`GameMotion`, `GameMotionLayer`, `GameFeedback`) 
   resting leaf. The arrow runs in the same 260 ms (opacity peak at 2/7) and slides clockwise along the wheel, towards
   the next letter (on the wheel "right" means clockwise).
 - #6: the current square jumps with the state; the centre letter slides down out of its box and the next one follows
-  from above (`mechanical`).
+  from above (timing and easings from #17).
 - #7: burst and badge sit in the HUD row next to the score circle (design debt, `screen-map.md`); the badge pops in 420 ms, holds 720 ms
   and shrinks to 0 in 240 ms (`aCombo`). Reduced motion: the badge rests at −4° for 420 + 720 ms, no burst.
 - #8: in the warning the counter is `redText` on the white track and ink where the red fill runs under it (clipped second layer), so it is readable at any progress. `TimerBar` pulses whenever the counter changes (and when the warning starts), not on first composition, so a

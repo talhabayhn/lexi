@@ -191,9 +191,10 @@ class ComponentBehaviourTest {
                 Snapshot.sendApplyNotifications()
             }
             mainClock.advanceTimeBy(FRAME * 2)
-            val early = onNodeWithText(next.toString(), useUnmergedTree = true).fetchSemanticsNode().boundsInRoot.top
+            // Unclipped position: the centre clips the letter (its bounds stop at the clip while it is outside).
+            val early = onNodeWithText(next.toString(), useUnmergedTree = true).fetchSemanticsNode().positionInRoot.y
             mainClock.advanceTimeBy(1_000)
-            return early - onNodeWithText(next.toString(), useUnmergedTree = true).fetchSemanticsNode().boundsInRoot.top
+            return early - onNodeWithText(next.toString(), useUnmergedTree = true).fetchSemanticsNode().positionInRoot.y
         }
 
         assertEquals(0f, offsetAfterOneFrame('K'), absoluteTolerance = 0.5f)

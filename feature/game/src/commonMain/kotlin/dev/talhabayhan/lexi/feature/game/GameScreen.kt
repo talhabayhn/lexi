@@ -22,6 +22,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.input.pointer.PointerEventPass
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.onPlaced
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.testTag
@@ -35,6 +37,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.LifecycleEventEffect
 import dev.talhabayhan.lexi.core.designsystem.component.ActionCircleButton
 import dev.talhabayhan.lexi.core.designsystem.component.ClueCard
+import dev.talhabayhan.lexi.core.designsystem.component.ClueCardSwap
 import dev.talhabayhan.lexi.core.designsystem.component.DecorShape
 import dev.talhabayhan.lexi.core.designsystem.component.DecorShapeKind
 import dev.talhabayhan.lexi.core.designsystem.component.EmptyState
@@ -45,6 +48,8 @@ import dev.talhabayhan.lexi.core.designsystem.component.LexiButton
 import dev.talhabayhan.lexi.core.designsystem.component.LexiButtonVariant
 import dev.talhabayhan.lexi.core.designsystem.component.rememberClueCardMetrics
 import dev.talhabayhan.lexi.core.designsystem.icon.LexiIcons
+import dev.talhabayhan.lexi.core.designsystem.motion.BoardEntrance
+import dev.talhabayhan.lexi.core.designsystem.motion.rememberBoardEntrance
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.core.designsystem.theme.ViewportDefaults
 import dev.talhabayhan.lexi.core.designsystem.theme.lexiContentWidth
@@ -60,8 +65,11 @@ import dev.talhabayhan.lexi.feature.game.components.GameMotionLayer
 import dev.talhabayhan.lexi.feature.game.components.JokerSheet
 import dev.talhabayhan.lexi.feature.game.components.KeyGrid
 import dev.talhabayhan.lexi.feature.game.components.PauseDialog
+import dev.talhabayhan.lexi.feature.game.components.TurnSwap
+import dev.talhabayhan.lexi.feature.game.components.dealtPiece
 import dev.talhabayhan.lexi.feature.game.components.gameLayout
 import dev.talhabayhan.lexi.feature.game.components.rememberGameMotion
+import dev.talhabayhan.lexi.feature.game.components.rememberTurnSwap
 import dev.talhabayhan.lexi.feature.game.generated.resources.Res
 import dev.talhabayhan.lexi.feature.game.generated.resources.game_button_backspace
 import dev.talhabayhan.lexi.feature.game.generated.resources.game_button_joker
@@ -94,6 +102,10 @@ import org.jetbrains.compose.resources.stringResource
  * as background / foreground intents (ADR 0019). Insets: `safeDrawing` on top of the design paddings; the background
  * shapes reach the screen edges. Overlays: the joker sheet (`05-joker-sheet`) and the pause dialog (design debt).
  *
+ * Opened under the letter morph (`motion.md` #16, [rememberBoardEntrance] non-null only then) the board's pieces wait
+ * hidden under the ink and come in from the start of its shrink; each turn change plays #17 ([rememberTurnSwap]). Both
+ * are `graphicsLayer` values only; without a morph and at rest the board is drawn as before.
+ *
  * Accessibility: the board is read HUD, clue, wheel, answer, keys, actions ([GameColumn]); game events are announced
  * by [GameAnnouncer]; while an overlay is open the board is removed from the accessibility tree, so the overlay's
  * title is the first thing a screen reader reaches.
@@ -114,18 +126,20 @@ internal fun GameScreen(
 
     // The joker sheet and the pause dialog are modal: screen readers can't reach the board behind them.
     val modal = state.isPaused || state.isJokerSheetOpen
+    // Latched by the first composition: a board composed while a letter morph runs enters under it.
+    val entrance = rememberBoardEntrance()
     BoxWithConstraints(modifier.fillMaxSize().background(LexiTheme.colors.cream)) {
         val screenWidth = maxWidth
         val screenHeight = maxHeight
         Box(Modifier.fillMaxSize().then(if (modal) Modifier.clearAndSetSemantics {} else Modifier)) {
             // The board only; the sheet and the dialog below follow the system font size in full (and scroll).
             CompositionLocalProvider(LocalDensity provides LocalDensity.current.withCappedFontScale()) {
-                GameDecor()
+                GameDecor(entrance)
                 val loadError = state.loadError
                 if (loadError != null) {
                     GameLoadErrorContent(loadError, onIntent)
                 } else if (!state.isLoading) {
-                    GameContent(state, clock, onIntent, motion, screenWidth, screenHeight, duelHud)
+                    GameContent(state, clock, onIntent, motion, screenWidth, screenHeight, duelHud, entrance)
                 }
                 GameMotionLayer(motion)
             }
@@ -163,8 +177,10 @@ private fun GameContent(
     maxWidth: Dp,
     maxHeight: Dp,
     duelHud: DuelHudUi?,
+    entrance: BoardEntrance?,
 ) {
     val dimens = LexiTheme.dimens
+    val flow = LexiTheme.motion.flow
     val density = LocalDensity.current
     val insets = WindowInsets.safeDrawing
     val width = with(density) {
@@ -181,6 +197,9 @@ private fun GameContent(
         gameLayout(width, height, dimens, clueMetrics, duel)
     }
     val turn = state.turn
+    val swap = rememberTurnSwap(turn)
+    val itemOffsetPx = with(density) { flow.boardItemOffset.toPx() }
+    val hudEntrance = entrance?.piece(flow.boardTopBar, offset = flow.boardTopBarOffset) ?: Modifier
     GameColumn(
         gap = layout.gap,
         answerTopMargin = layout.answerTopMargin,
@@ -193,7 +212,7 @@ private fun GameContent(
                     hud = duelHud,
                     clock = clock,
                     onPause = { onIntent(GameIntent.Pause) },
-                    modifier = Modifier.testTag(GameTestTags.HUD).onPlaced(motion::onHudPlaced),
+                    modifier = Modifier.testTag(GameTestTags.HUD).onPlaced(motion::onHudPlaced).then(hudEntrance),
                     height = layout.hudHeight,
                 )
             } else {
@@ -203,7 +222,7 @@ private fun GameContent(
                     isScored = state.isScored,
                     clock = clock,
                     onPause = { onIntent(GameIntent.Pause) },
-                    modifier = Modifier.testTag(GameTestTags.HUD).onPlaced(motion::onHudPlaced),
+                    modifier = Modifier.testTag(GameTestTags.HUD).onPlaced(motion::onHudPlaced).then(hudEntrance),
                     height = layout.hudHeight,
                 )
             }
@@ -215,6 +234,7 @@ private fun GameContent(
                 ruleLabel = turn?.let { stringResource(it.rule.label()) }.orEmpty(),
                 size = size,
                 chipMotion = motion::chipMotion,
+                entrance = entrance,
                 modifier = Modifier.testTag(GameTestTags.WHEEL),
             )
         },
@@ -235,36 +255,90 @@ private fun GameContent(
                     ),
                     example = turn.example,
                     clueAreaHeight = layout.clueAreaHeight,
-                    modifier = Modifier.testTag(GameTestTags.CLUE),
+                    swap = swap?.let {
+                        val outgoing = it.outgoing.takeIf { _ -> it.ghostsShown }
+                        ClueCardSwap(outgoing?.clue, outgoing?.example, it.outgoingClue, it.incomingClue)
+                    },
+                    modifier = Modifier.testTag(GameTestTags.CLUE).then(
+                        entrance?.piece(flow.boardClue, offset = flow.boardClueOffset) ?: Modifier,
+                    ),
                 )
             }
         },
         answer = {
             if (turn != null) {
-                AnswerSlots(
-                    words = turn.words,
-                    offset = { motion.slotsOffset },
-                    height = layout.slotHeight,
-                    flyingCells = motion::flyingCells,
-                    onCellPlaced = motion::onCellPlaced,
-                    deleteEnabled = state.inputEnabled || state.isStarting,
-                    onDelete = { onIntent(GameIntent.Backspace) },
-                    modifier = Modifier.testTag(GameTestTags.ANSWER),
-                )
+                // #17: the previous turn's slots fade under the new ones (decorative, below them).
+                Box(propagateMinConstraints = true) {
+                    val ghost = swap?.takeIf { it.ghostsShown }
+                    if (ghost != null) {
+                        AnswerSlots(
+                            words = ghost.outgoing.words,
+                            offset = { Dp(0f) },
+                            height = layout.slotHeight,
+                            modifier = Modifier.decorativeGhost().then(ghost.outgoingSlots),
+                        )
+                    }
+                    AnswerSlots(
+                        words = turn.words,
+                        offset = { motion.slotsOffset },
+                        height = layout.slotHeight,
+                        flyingCells = motion::flyingCells,
+                        onCellPlaced = motion::onCellPlaced,
+                        deleteEnabled = state.inputEnabled || state.isStarting,
+                        onDelete = { onIntent(GameIntent.Backspace) },
+                        cellModifier = { index ->
+                            dealtPiece(
+                                index = index,
+                                entrance = entrance,
+                                entranceStep = flow.boardSlot,
+                                entranceStagger = flow.boardSlotStaggerMillis,
+                                swap = swap,
+                                redeal = TurnSwap::slotProgress,
+                                itemOffsetPx = itemOffsetPx,
+                            )
+                        },
+                        modifier = Modifier.testTag(GameTestTags.ANSWER),
+                    )
+                }
             }
         },
         keys = {
             if (turn != null) {
-                // Before the start the keys already look ready (no dimming flash on resume); the game ignores them.
-                KeyGrid(
-                    keys = turn.keys,
-                    enabled = state.inputEnabled || state.isStarting,
-                    onKey = { onIntent(GameIntent.KeyTapped(it)) },
-                    keyHeight = layout.keyHeight,
-                    gap = layout.keyGap,
-                    onKeyPlaced = motion::onKeyPlaced,
-                    modifier = Modifier.testTag(GameTestTags.KEYS),
-                )
+                // #17: the previous turn's keys stay under the new ones until the re-deal (decorative, below them).
+                Box(propagateMinConstraints = true) {
+                    val ghost = swap?.takeIf { it.ghostsShown }
+                    if (ghost != null) {
+                        KeyGrid(
+                            keys = ghost.outgoing.keys,
+                            enabled = true,
+                            onKey = {},
+                            keyHeight = layout.keyHeight,
+                            gap = layout.keyGap,
+                            modifier = Modifier.decorativeGhost().then(ghost.outgoingKeys),
+                        )
+                    }
+                    // Before the start the keys already look ready (no dimming flash on resume); the game ignores them.
+                    KeyGrid(
+                        keys = turn.keys,
+                        enabled = state.inputEnabled || state.isStarting,
+                        onKey = { onIntent(GameIntent.KeyTapped(it)) },
+                        keyHeight = layout.keyHeight,
+                        gap = layout.keyGap,
+                        onKeyPlaced = motion::onKeyPlaced,
+                        keyModifier = { index ->
+                            dealtPiece(
+                                index = index,
+                                entrance = entrance,
+                                entranceStep = flow.boardKey,
+                                entranceStagger = flow.boardKeyStaggerMillis,
+                                swap = swap,
+                                redeal = TurnSwap::keyProgress,
+                                itemOffsetPx = itemOffsetPx,
+                            )
+                        },
+                        modifier = Modifier.testTag(GameTestTags.KEYS),
+                    )
+                }
             }
         },
         actions = {
@@ -273,7 +347,9 @@ private fun GameContent(
                 showJoker = !state.isLevelTest && !duel,
                 size = layout.actionSize,
                 onIntent = onIntent,
-                modifier = Modifier.testTag(GameTestTags.ACTIONS),
+                modifier = Modifier.testTag(GameTestTags.ACTIONS).then(
+                    entrance?.piece(flow.boardBottomRow, offset = flow.boardItemOffset) ?: Modifier,
+                ),
             )
         },
         modifier = Modifier
@@ -350,11 +426,27 @@ private fun GameLoadErrorContent(error: GameLoadError, onIntent: (GameIntent) ->
     }
 }
 
-/** Red circle (top right) and blue half pill (left), behind the content; they move with the top inset. */
+/**
+ * A copy of the previous turn's slots or keys during #17: hidden from screen readers and never touched (it lies under
+ * the new row; anything that still reaches it is consumed before its keys see it).
+ */
+private fun Modifier.decorativeGhost(): Modifier = clearAndSetSemantics {}.pointerInput(Unit) {
+    awaitPointerEventScope {
+        while (true) awaitPointerEvent(PointerEventPass.Initial).changes.forEach { it.consume() }
+    }
+}
+
+/**
+ * Red circle (top right) and blue half pill (left), behind the content; they move with the top inset. Under the letter
+ * morph they fade in (#16, [entrance]).
+ */
 @Composable
-private fun GameDecor() {
+private fun GameDecor(entrance: BoardEntrance?) {
     val colors = LexiTheme.colors
-    Box(Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Top))) {
+    Box(
+        Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Top))
+            .then(entrance?.piece(LexiTheme.motion.flow.boardDecor, linear = true) ?: Modifier),
+    ) {
         DecorShape(
             kind = DecorShapeKind.Circle,
             color = colors.red,

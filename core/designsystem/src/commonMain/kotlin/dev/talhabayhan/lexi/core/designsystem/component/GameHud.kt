@@ -21,9 +21,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.Stable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.geometry.Offset
@@ -36,6 +38,7 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.TextMeasurer
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.drawText
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.text.style.TextAlign
@@ -43,6 +46,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -118,6 +122,9 @@ private const val METRICS_SAMPLE = "A"
  * line, and the clue (up to [GameHudDefaults.CLUE_MAX_LINES] lines) and the example shrink from their full sizes down
  * to [GameHudDefaults.ClueMinFontSize] / [GameHudDefaults.ExampleMinFontSize] until they fit, centred vertically in the
  * area; at the minimum they are cut with an ellipsis. Without it the card wraps its content.
+ *
+ * [swap] (`motion.md` #17, game screen only, with a [clueAreaHeight]): while the clue changes, the previous clue is
+ * drawn in the same area as the new one; the left column clips both, so they slide out of and into the card.
  */
 @Composable
 public fun ClueCard(
@@ -128,6 +135,7 @@ public fun ClueCard(
     modifier: Modifier = Modifier,
     example: String? = null,
     clueAreaHeight: Dp? = null,
+    swap: ClueCardSwap? = null,
 ) {
     val colors = LexiTheme.colors
     val typography = LexiTheme.typography
@@ -146,6 +154,7 @@ public fun ClueCard(
                 .weight(1f)
                 .fillMaxHeight()
                 .semantics(mergeDescendants = true) {}
+                .then(if (swap != null) Modifier.clipToBounds() else Modifier)
                 .padding(
                     horizontal = GameHudDefaults.CluePaddingHorizontal,
                     vertical = GameHudDefaults.CluePaddingVertical,
@@ -158,7 +167,27 @@ public fun ClueCard(
                 if (example != null) Text(example, style = typography.caption14, fontStyle = FontStyle.Italic)
             } else {
                 Text(label, style = typography.label12, maxLines = 1, overflow = TextOverflow.Ellipsis)
-                FittedClue(clue = clue, example = example, modifier = Modifier.weight(1f).fillMaxWidth())
+                if (swap == null) {
+                    FittedClue(clue = clue, example = example, modifier = Modifier.weight(1f).fillMaxWidth())
+                } else {
+                    Box(Modifier.weight(1f).fillMaxWidth()) {
+                        val outgoing = swap.outgoingClue
+                        if (outgoing != null) {
+                            // Decorative: screen readers get only the new clue.
+                            FittedClue(
+                                clue = outgoing,
+                                example = swap.outgoingExample,
+                                modifier = Modifier.matchParentSize().clearAndSetSemantics {}
+                                    .then(swap.outgoingModifier),
+                            )
+                        }
+                        FittedClue(
+                            clue = clue,
+                            example = example,
+                            modifier = Modifier.matchParentSize().then(swap.incomingModifier),
+                        )
+                    }
+                }
             }
         }
         Box(Modifier.width(LexiTheme.borders.regular).fillMaxHeight().background(colors.ink))
@@ -369,9 +398,32 @@ private class PulseGate {
     var seen: Boolean = false
 }
 
-/** Score badge: 48dp ([size]) blue circle, 3dp border, white 15sp/800. */
+/**
+ * #17 a clue being replaced on the [ClueCard]: [outgoingClue] / [outgoingExample] (the previous turn's; null once it
+ * has left) drawn with [outgoingModifier], the new clue with [incomingModifier] (both transient `graphicsLayer`s).
+ */
+@Stable
+public class ClueCardSwap(
+    public val outgoingClue: String?,
+    public val outgoingExample: String?,
+    public val outgoingModifier: Modifier,
+    public val incomingModifier: Modifier,
+)
+
+/**
+ * Score badge: 48dp ([size]) blue circle, 3dp border, white 15sp/800. [countingScore] (`motion.md` #17 count-up) is
+ * read in the draw phase: while it returns a value, that value is drawn in place of [score] (same style, centred), so a
+ * count-up never recomposes or re-lays out the badge; null shows [score].
+ */
 @Composable
-public fun ScoreBadge(score: String, modifier: Modifier = Modifier, size: Dp = GameHudDefaults.BarHeight) {
+public fun ScoreBadge(
+    score: String,
+    modifier: Modifier = Modifier,
+    size: Dp = GameHudDefaults.BarHeight,
+    countingScore: (() -> String?)? = null,
+) {
+    val style = LexiTheme.typography.bodyStrong15.copy(color = LexiTheme.colors.white)
+    val measurer = if (countingScore != null) rememberTextMeasurer(cacheSize = COUNT_CACHE_SIZE) else null
     Box(
         modifier = modifier
             .size(size)
@@ -379,12 +431,35 @@ public fun ScoreBadge(score: String, modifier: Modifier = Modifier, size: Dp = G
                 color = LexiTheme.colors.blue,
                 border = BorderStroke(LexiTheme.borders.regular, LexiTheme.colors.ink),
                 shape = LexiTheme.shapes.circle,
+            )
+            .then(
+                if (countingScore == null || measurer == null) {
+                    Modifier
+                } else {
+                    Modifier.drawWithContent {
+                        val counting = countingScore()
+                        if (counting == null) {
+                            drawContent()
+                        } else {
+                            val layout = measurer.measure(counting, style, density = this)
+                            val position = Alignment.Center.align(
+                                layout.size,
+                                IntSize(this.size.width.roundToInt(), this.size.height.roundToInt()),
+                                layoutDirection,
+                            )
+                            drawText(layout, topLeft = Offset(position.x.toFloat(), position.y.toFloat()))
+                        }
+                    }
+                },
             ),
         contentAlignment = Alignment.Center,
     ) {
-        Text(score, style = LexiTheme.typography.bodyStrong15, color = LexiTheme.colors.white)
+        Text(score, style = style)
     }
 }
+
+/** The values a count-up passes through are re-measured from this cache (a +10 step has 11). */
+private const val COUNT_CACHE_SIZE = 16
 
 // design sample, not user-facing
 @Preview(widthDp = 390)

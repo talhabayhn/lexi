@@ -90,7 +90,10 @@ public class LexiMotion internal constructor(
     /** #5 part of [passDurationMillis] at which the arrow is fully visible (`aArrow`: 0 → 1 → 0 opacity). */
     public val passArrowPeakFraction: Float = 2f / 7f
 
-    /** #6 wheel advance (step, no easing between slots). */
+    /**
+     * #6 wheel advance (step, no easing between slots; owner decision: kept). The marker jumps with the state; the
+     * centre letter's slide follows #17 (`FlowMotion.centreLetterOut` / `centreLetterIn`).
+     */
     public val wheelAdvanceDurationMillis: Int = 140
 
     /** #7 combo: burst of the four shapes and pop of the badge. */

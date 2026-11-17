@@ -4,6 +4,8 @@ import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
 import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
 import androidx.compose.animation.togetherWith
@@ -37,6 +39,7 @@ import dev.talhabayhan.lexi.core.designsystem.generated.resources.Res
 import dev.talhabayhan.lexi.core.designsystem.generated.resources.wheel_summary
 import dev.talhabayhan.lexi.core.designsystem.generated.resources.wheel_summary_counts
 import dev.talhabayhan.lexi.core.designsystem.icon.LexiIcons
+import dev.talhabayhan.lexi.core.designsystem.motion.BoardEntrance
 import dev.talhabayhan.lexi.core.designsystem.motion.FlowMorphKeys
 import dev.talhabayhan.lexi.core.designsystem.motion.morphAnchor
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
@@ -65,10 +68,12 @@ public object LetterWheelDefaults {
  * under it and never overlaps the label. When large font sizes make that stack (letter, reserve, label) too big for the
  * centre, i.e. its bounding box's corners leave the circle, letter and label shrink together until they touch it.
  *
- * Motion (`motion.md`): #6 the black current square jumps with the state (a step, no easing); the centre letter slides
- * down and the next one follows from above (`wheelAdvanceDurationMillis`, no fade; in place under reduced motion).
- * [chipMotion] gives a chip's transient #3 / #5 motion; a moving chip is drawn above its neighbours and its #5 arrow
- * slides clockwise along the wheel, towards the next letter.
+ * Motion (`motion.md`): #6 the black current square jumps with the state (a step, no easing); #17 the centre letter
+ * slides 60dp down and fades out (`turn`, `FlowMotion.centreLetterOut`), then the next one comes in from 60dp above
+ * (`mechanical`, `centreLetterIn`); in place under reduced motion. [chipMotion] gives a chip's transient #3 / #5
+ * motion; a moving chip is drawn above its neighbours and its #5 arrow slides clockwise along the wheel, towards the
+ * next letter. [entrance] (#16, only for a board opened under the letter morph; null everywhere else) fades the ring
+ * and the chips in one after another and pops the centre in from 0.7; values are read in `graphicsLayer` only.
  *
  * Accessibility: the wheel is one node, the centre, read as a summary (current letter, rule, how many letters are
  * correct, wrong, passed and left); the chips are hidden from screen readers.
@@ -81,6 +86,7 @@ public fun LetterWheel(
     modifier: Modifier = Modifier,
     size: Dp = LetterWheelDefaults.Size,
     chipMotion: (Char) -> WheelChipMotion? = { null },
+    entrance: BoardEntrance? = null,
 ) {
     val colors = LexiTheme.colors
     val motion = LexiTheme.motion
@@ -116,17 +122,25 @@ public fun LetterWheel(
     val descenderReserve = with(density) { letterStyle.descenderOverflowPx(density).toDp() }
     val chipLabels = rememberWheelLetterLabels()
     val summary = rememberWheelSummary(letters, centerLetter, ruleLabel)
+    val flow = motion.flow
+    val letterOffsetPx = with(density) { (flow.centreLetterOffset * scale).roundToPx() }
     Box(modifier.size(size)) {
         Box(
             Modifier
                 .padding((LetterWheelDefaults.RING_INSET * scale).dp)
                 .size(size - (2 * LetterWheelDefaults.RING_INSET * scale).dp)
+                // #16: the ring line comes in with the first chip.
+                .then(entrance?.piece(flow.boardRingChip, linear = true) ?: Modifier)
                 .border(LexiTheme.borders.regular, colors.ink, LexiTheme.shapes.circle),
         )
         Column(
             modifier = Modifier
                 .align(Alignment.Center)
                 .size(centerSize)
+                .then(
+                    entrance?.piece(flow.boardCentre, startScale = flow.boardCentreStartScale, popEasing = true)
+                        ?: Modifier,
+                )
                 // The wheel's only accessibility node: the summary replaces the letter and rule texts.
                 .semantics(mergeDescendants = true) { contentDescription = summary }
                 .background(colors.yellow, LexiTheme.shapes.circle)
@@ -141,8 +155,15 @@ public fun LetterWheel(
                     if (motion.reducedMotion || initialState == ' ') {
                         EnterTransition.None togetherWith ExitTransition.None
                     } else {
-                        val slide = tween<IntOffset>(motion.wheelAdvanceDurationMillis, easing = motion.mechanical)
-                        slideInVertically(slide) { -it } togetherWith slideOutVertically(slide) { it }
+                        val out = flow.centreLetterOut
+                        val into = flow.centreLetterIn
+                        val enter = slideInVertically(
+                            tween<IntOffset>(into.durationMillis, into.delayMillis, motion.mechanical),
+                        ) { -letterOffsetPx } + fadeIn(tween(into.durationMillis, into.delayMillis, motion.mechanical))
+                        val exit = slideOutVertically(
+                            tween<IntOffset>(out.durationMillis, out.delayMillis, motion.turn),
+                        ) { letterOffsetPx } + fadeOut(tween(out.durationMillis, out.delayMillis, motion.turn))
+                        enter togetherWith exit
                     }
                 },
                 contentAlignment = Alignment.Center,
@@ -180,6 +201,10 @@ public fun LetterWheel(
                         } else {
                             Modifier
                         },
+                    )
+                    .then(
+                        entrance?.piece(flow.boardRingChip, i, flow.boardRingChipStaggerMillis, linear = true)
+                            ?: Modifier,
                     )
                     // Read in the centre's summary: 26 chips in geometric order would be a scrambled list to swipe.
                     .semantics { hideFromAccessibility() },

@@ -41,6 +41,9 @@ import kotlinx.coroutines.delay
  * - #6: the current square jumps with the state; the centre letter slides inside `LetterWheel`.
  * - #7 [ComboAnimation]: burst and badge in the HUD row next to the score ([GameMotionLayer]).
  * - #8: only feedback here; colours and the per-second counter pulse live in `TimerBar`.
+ *
+ * The video flow's #17 (clue swap, re-deal, score count-up) follows the state, not an effect: see [TurnSwap] and
+ * [ScoreCount].
  */
 @Stable
 internal class GameMotion(

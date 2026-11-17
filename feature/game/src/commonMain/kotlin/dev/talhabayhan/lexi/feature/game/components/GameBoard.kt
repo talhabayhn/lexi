@@ -60,6 +60,8 @@ import org.jetbrains.compose.resources.stringResource
  * clock (ADR 0019 §3): the fill in the draw phase, the counter and warning colour through derived state, i.e. once
  * per second. Unscored modes ([isScored] false: Practice, Review) have no design (DESIGN-DEBT): the badge shows
  * [correct] instead of the score (always 0 there), and an untimed bar stays empty with "SÜRESİZ" in place of the clock.
+ * When the badge's value rises it counts up with a pop (`motion.md` #17, [rememberScoreCount]; draw and layer phase
+ * only); screen readers get the new value at once.
  */
 @Composable
 internal fun GameHudBar(
@@ -75,6 +77,7 @@ internal fun GameHudBar(
     val timed by remember(clock) { derivedStateOf { clock().isTimed } }
     val warning by remember(clock) { derivedStateOf { clock().isWarning } }
     val badge = if (isScored) score else correct
+    val count = rememberScoreCount(badge)
     val badgeDescription = stringResource(
         if (isScored) Res.string.game_score_description else Res.string.game_correct_description,
         badge,
@@ -116,7 +119,20 @@ internal fun GameHudBar(
         ScoreBadge(
             score = badge.toString(),
             size = height,
-            modifier = Modifier.clearAndSetSemantics { contentDescription = badgeDescription },
+            countingScore = count?.let { it::text },
+            modifier = Modifier
+                .clearAndSetSemantics { contentDescription = badgeDescription }
+                .then(
+                    if (count == null) {
+                        Modifier
+                    } else {
+                        Modifier.graphicsLayer {
+                            val scale = count.scale()
+                            scaleX = scale
+                            scaleY = scale
+                        }
+                    },
+                ),
         )
     }
 }
@@ -130,7 +146,7 @@ private const val SPOKEN_LETTER_SEPARATOR = " "
  * Answer boxes, centred, gap 6; words of a multi-word answer are separated by [GameScreenDefaults.AnswerWordGap].
  * Boxes keep 40dp up to the width of the column, then narrow (with the letter) so 14-letter answers still fit; the
  * compact tier's lower boxes ([height]) shrink the letter too.
- * [offset] is the #4 shake, applied in the layer phase. [flyingCells] are cells whose letter is still in the air (#2):
+ * [offset] is the #4 shake, applied in the layer phase; [cellModifier] adds a cell's #16 / #17 layer. [flyingCells] are cells whose letter is still in the air (#2):
  * they keep their look from before it lands, so the first of them is the red-bordered next box and the rest (with the
  * state's next box) stay empty. [onCellPlaced] reports each cell (letters only, in answer order) for the flight.
  * Screen readers get the row as one node: "Cevap, 7 harf, 3 dolu: K I T" instead of a stop on every box.
@@ -145,6 +161,7 @@ internal fun AnswerSlots(
     onCellPlaced: (index: Int, coordinates: LayoutCoordinates) -> Unit = { _, _ -> },
     deleteEnabled: Boolean = false,
     onDelete: () -> Unit = {},
+    cellModifier: (index: Int) -> Modifier = { Modifier },
 ) {
     val flying = flyingCells()
     val firstFlying = flying.minOrNull()
@@ -191,7 +208,8 @@ internal fun AnswerSlots(
                             state = state,
                             // The row speaks as one node (above); only the deletable cell is a node of its own.
                             modifier = Modifier.width(slotWidth).onPlaced { onCellPlaced(cellIndex, it) }
-                                .then(if (deletable) Modifier else Modifier.clearAndSetSemantics {}),
+                                .then(if (deletable) Modifier else Modifier.clearAndSetSemantics {})
+                                .then(cellModifier(cellIndex)),
                             textStyle = textStyle,
                             labels = labels,
                             height = height,
@@ -223,7 +241,7 @@ private fun AnswerSlotState.showsLetter(): Boolean = this != AnswerSlotState.Emp
 /**
  * Letter keys in rows of 5 (gap 8; [keyHeight] and [gap] 44 / 6 in the compact tier); keys keep their order for the whole slot (`GAME_RULES.md` §4). Not [enabled]
  * while input is blocked (wrong-answer reveal): the keys are disabled and drawn at 50 %. [onKeyPlaced] reports each
- * key for the #2 flight.
+ * key for the #2 flight; [keyModifier] adds a key's #16 / #17 layer.
  */
 @Composable
 internal fun KeyGrid(
@@ -234,6 +252,7 @@ internal fun KeyGrid(
     keyHeight: Dp = LetterKeyDefaults.Height,
     gap: Dp = LetterKeyDefaults.GridGap,
     onKeyPlaced: (index: Int, coordinates: LayoutCoordinates) -> Unit = { _, _ -> },
+    keyModifier: (index: Int) -> Modifier = { Modifier },
 ) {
     Column(modifier, verticalArrangement = Arrangement.spacedBy(gap)) {
         keys.indices.chunked(LetterKeyDefaults.COLUMNS).forEach { row ->
@@ -245,7 +264,7 @@ internal fun KeyGrid(
                         enabled = enabled,
                         onClick = { onKey(index) },
                         height = keyHeight,
-                        modifier = Modifier.weight(1f).onPlaced { onKeyPlaced(index, it) },
+                        modifier = Modifier.weight(1f).onPlaced { onKeyPlaced(index, it) }.then(keyModifier(index)),
                     )
                 }
                 // A short last row keeps the 5-column grid (key counts are multiples of 5 today).
