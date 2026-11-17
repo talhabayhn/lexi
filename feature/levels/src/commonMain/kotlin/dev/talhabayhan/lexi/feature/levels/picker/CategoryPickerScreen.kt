@@ -27,6 +27,7 @@ import androidx.compose.foundation.lazy.grid.itemsIndexed
 import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
@@ -34,13 +35,19 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.lerp
+import androidx.compose.ui.zIndex
 import dev.talhabayhan.lexi.core.designsystem.component.CategoryArt
 import dev.talhabayhan.lexi.core.designsystem.component.CategoryArtKind
 import dev.talhabayhan.lexi.core.designsystem.component.ExamArt
@@ -58,6 +65,7 @@ import dev.talhabayhan.lexi.core.designsystem.modifier.lexiHeading
 import dev.talhabayhan.lexi.core.designsystem.motion.FlowMotion
 import dev.talhabayhan.lexi.core.designsystem.motion.LocalMotionPolicy
 import dev.talhabayhan.lexi.core.designsystem.motion.MotionTier
+import dev.talhabayhan.lexi.core.designsystem.motion.perspective
 import dev.talhabayhan.lexi.core.designsystem.motion.rememberMotionTier
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.core.designsystem.theme.lexiContentWidth
@@ -88,8 +96,9 @@ import org.jetbrains.compose.resources.stringResource
  * "Çarkını seç" (`video-flow-notes.md` §2, `drafts/video-flow/cats_v3.png`): back + title and the six level chips stay
  * on top; below them a 2-column grid scrolls: Karışık and every category of the level, then "Sınav paketleri" (open
  * packs, then the locked upcoming exams), above the system-bar insets. "Başa dön" floats once the first screen is
- * scrolled past. The mode / time dialog ([PlayDialog]) opens over it. [entrance] plays motion #18 (the Route decides:
- * first open per session, tier Full).
+ * scrolled past. The mode / time dialog ([PlayDialog]) opens over it with motion #13–#15 driven by [flip] (the tapped
+ * card lifts, turns away and becomes the dialog). [entrance] plays motion #18 (the Route decides: first open per
+ * session, tier Full).
  */
 @Composable
 internal fun CategoryPickerScreen(
@@ -97,11 +106,13 @@ internal fun CategoryPickerScreen(
     onIntent: (CategoryPickerIntent) -> Unit,
     modifier: Modifier = Modifier,
     entrance: Boolean = false,
+    flip: PickerDialogFlip = rememberPickerDialogFlip(state.dialog),
 ) {
     val colors = LexiTheme.colors
     val dimens = LexiTheme.dimens
     val gridState = rememberLazyGridState()
     val turkish = Locale.current.language == "tr"
+    val dialogUp = state.dialog != null || flip.dialogShown
     Box(modifier.fillMaxSize().background(colors.cream)) {
         Column(
             modifier = Modifier
@@ -111,7 +122,7 @@ internal fun CategoryPickerScreen(
                 )
                 .lexiContentWidth()
                 // While the dialog is open only the dialog is read.
-                .then(if (state.dialog != null) Modifier.clearAndSetSemantics {} else Modifier),
+                .then(if (dialogUp) Modifier.clearAndSetSemantics {} else Modifier),
         ) {
             Row(
                 modifier = Modifier.padding(
@@ -152,12 +163,12 @@ internal fun CategoryPickerScreen(
             if (state.hasError) {
                 ErrorState(onRetry = { onIntent(CategoryPickerIntent.Retry) })
             } else {
-                PickerGrid(state, gridState, turkish, entrance, onIntent)
+                PickerGrid(state, gridState, turkish, entrance, flip, onIntent)
             }
         }
         // Behind the scrim while the dialog is open: not shown, so a screen reader cannot reach it either.
-        if (state.dialog == null) ScrollTopButton(gridState, Modifier.align(Alignment.BottomEnd))
-        PlayDialog(state, turkish, onIntent)
+        if (!dialogUp) ScrollTopButton(gridState, Modifier.align(Alignment.BottomEnd))
+        PlayDialog(state, turkish, onIntent, flip)
     }
 }
 
@@ -167,9 +178,12 @@ private fun PickerGrid(
     gridState: LazyGridState,
     turkish: Boolean,
     entrance: Boolean,
+    flip: PickerDialogFlip,
     onIntent: (CategoryPickerIntent) -> Unit,
 ) {
     val dimens = LexiTheme.dimens
+    val flow = LexiTheme.motion.flow
+    val shadowColor = LexiTheme.shadows.s4.color
     val navigationBar = WindowInsets.safeDrawing.only(WindowInsetsSides.Bottom).asPaddingValues()
     val enter = rememberGridEntrance(entrance, ready = state.isLoaded && state.categories.isNotEmpty())
     val mixedFallback = stringResource(Res.string.picker_mixed_fallback)
@@ -193,6 +207,11 @@ private fun PickerGrid(
                 card,
             ->
             val name = (if (turkish) card.nameTr else card.nameEn).ifEmpty { if (card.isMixed) mixedFallback else "" }
+            DisposableEffect(flip, card.id) { onDispose { flip.cardRects.remove(card.id) } }
+            // Only the card the dialog belongs to recomposes when a flip starts or ends.
+            val flipping by remember(flip, card.id) {
+                derivedStateOf { flip.dialogShown && flip.card?.id == card.id }
+            }
             PickerCard(
                 name = name,
                 contentDescription = stringResource(Res.string.picker_card_description, name, card.learned, card.total),
@@ -202,8 +221,19 @@ private fun PickerGrid(
                 progressText = stringResource(Res.string.picker_progress, card.learned, card.total),
                 progress = card.fraction,
                 selected = card.id == state.selectedCategory,
-                onClick = { onIntent(CategoryPickerIntent.OpenCategory(card.id)) },
-                modifier = enter.modifier(index),
+                // The grid takes taps only while no dialog is up (the dialog's own layers handle a reopen).
+                onClick = { if (!flip.dialogShown) onIntent(CategoryPickerIntent.OpenCategory(card.id)) },
+                modifier = Modifier
+                    // The laid-out rectangle (before the animated layers) the dialog grows from.
+                    .onGloballyPositioned { flip.cardRects[card.id] = it.rectInRoot() }
+                    .then(enter.modifier(index))
+                    .then(
+                        if (flipping) {
+                            Modifier.flipCard(flip, flow, shadowColor)
+                        } else {
+                            Modifier
+                        },
+                    ),
             )
         }
         item(key = EXAMS_HEADER, span = { GridItemSpan(maxLineSpan) }, contentType = HEADER) { ExamsHeader() }
@@ -238,6 +268,29 @@ private fun PickerGrid(
         }
     }
 }
+
+/**
+ * Motion #13 / #14 / #15 on the tapped card, read in the layer and draw phase only: it rises and tilts with `cardLift`
+ * (Full), its hard shadow grows 4 → 10 dp (an extra ink rectangle behind the card's own s4 shadow, only while lifted),
+ * it turns on Y and hides once edge-on. Drawn above its neighbours while it moves.
+ */
+private fun Modifier.flipCard(flip: PickerDialogFlip, flow: FlowMotion, shadowColor: Color): Modifier = this
+    .zIndex(1f)
+    .graphicsLayer {
+        val frame = flip.frame()
+        translationY = frame.cardLift * flow.cardLiftOffset.toPx()
+        rotationZ = frame.cardLift * flow.cardLiftRotationDegrees
+        rotationY = frame.cardTurnDegrees
+        perspective(flow.flipPerspective)
+        alpha = frame.cardAlpha
+    }
+    .drawBehind {
+        val lift = flip.frame().cardLift
+        if (lift > 0f) {
+            val shift = lerp(flow.cardRestShadow, flow.cardLiftShadow, lift).toPx()
+            drawRect(shadowColor, Offset(shift, shift), size)
+        }
+    }
 
 private const val CARD = "card"
 private const val HEADER = "header"

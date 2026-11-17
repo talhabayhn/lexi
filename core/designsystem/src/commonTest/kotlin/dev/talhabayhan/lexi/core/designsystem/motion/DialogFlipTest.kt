@@ -197,6 +197,25 @@ class DialogFlipTest {
         assertEquals(DialogFlipPhase.Closed, machine.phase)
     }
 
+    @Test
+    fun `snapping open in a tier shows that tier's rest look and latches it`() {
+        machine.snapTo(open = true, tier = MotionTier.Minimal)
+        assertEquals(MotionTier.Minimal, machine.tier)
+        assertTrue(machine.dialogTakesInput)
+        val frame = machine.frame()
+        assertEquals(1f, frame.cardAlpha, "the card stays under the scrim")
+        assertEquals(0f, frame.cardLift)
+        assertEquals(1f, frame.dialogAlpha)
+        assertEquals(1f, frame.scrimAlpha)
+
+        // A close from that rest plays the latched tier's timeline.
+        machine.close(MotionTier.Full)
+        assertEquals(MotionTier.Full, machine.tier, "a run from rest latches the tier it is given")
+        machine.snapTo(open = true, tier = MotionTier.Lite)
+        assertEquals(MotionTier.Lite, machine.tier)
+        assertEquals(1f, machine.frame().dialogScale)
+    }
+
     private fun assertFramesClose(expected: DialogFlipFrame, actual: DialogFlipFrame) {
         val tolerance = 1e-3f
         assertEquals(expected.cardLift, actual.cardLift, tolerance, "cardLift")

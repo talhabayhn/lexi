@@ -205,6 +205,12 @@ public class DialogFlipMachine(private val choreography: DialogFlipChoreography)
 
     /** Jumps to rest without motion (a screen restored with the dialog open, or tests). */
     public fun snapTo(open: Boolean) {
+        snapTo(open, tier)
+    }
+
+    /** [snapTo] showing the rest look of [tier] (e.g. a screen restored with the dialog open under reduced motion). */
+    public fun snapTo(open: Boolean, tier: MotionTier) {
+        this.tier = tier
         running = false
         forward = true
         timeline = if (open) DialogFlipTimeline.Open else DialogFlipTimeline.Close

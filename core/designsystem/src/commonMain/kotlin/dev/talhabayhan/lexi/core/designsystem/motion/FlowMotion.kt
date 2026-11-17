@@ -36,6 +36,9 @@ public class FlowMotion internal constructor() {
     public val dialogItemOffset: Dp = 10.dp
     public val flipDegrees: Float = 90f
 
+    /** #13–#15 the Y flips are seen through the prototype's CSS `perspective(900px)`. */
+    public val flipPerspective: Dp = 900.dp
+
     /** #14 the dialog takes input from here on. */
     public val dialogOpenSettledMillis: Int = prototypeMillis(700)
 

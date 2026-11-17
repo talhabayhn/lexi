@@ -71,11 +71,18 @@ internal fun CategoryPickerRoute(
             }
         }
     }
-    // System back (Android back / predictive back, iOS swipe-back) closes the open dialog first.
+    val flip = rememberPickerDialogFlip(state.dialog)
+    // System back (Android back / predictive back, iOS swipe-back) closes the open dialog first (reversing a running
+    // open) and is held while the dialog animates out.
     NavigationBackHandler(
         state = rememberNavigationEventState(NavigationEventInfo.None),
-        isBackEnabled = state.dialog != null,
+        isBackEnabled = state.dialog != null || flip.dialogShown,
         onBackCompleted = { viewModel.onIntent(CategoryPickerIntent.CloseDialog) },
     )
-    CategoryPickerScreen(state = state, onIntent = viewModel::onIntent, entrance = rememberPlayGridEntrance())
+    CategoryPickerScreen(
+        state = state,
+        onIntent = viewModel::onIntent,
+        entrance = rememberPlayGridEntrance(),
+        flip = flip,
+    )
 }
