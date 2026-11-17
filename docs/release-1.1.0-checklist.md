@@ -10,7 +10,7 @@ Runbook details: `docs/RELEASE.md`. Open questions of the flow: `docs/design/vid
       and locked, art at 0.75x, the bottom-bar icons). Phase 4 redrew Seyahat, Deyimler, IELTS, Yalancı eşdeğerler and
       the invite icon.
 - [ ] **Thin categories** (`video-flow-notes.md` §10): Yalancı eşdeğerler has one card at B1 and B2, so its game is one
-      letter long and pays up to 180 time-bonus points. Pick the rule (proposal there) or leave it; it is an engine
+      letter long and pays up to 420 time-bonus points (180 on the 3-minute clock). Pick the rule (proposal there) or leave it; it is an engine
       change, so it ships in its own commit with `GAME_RULES.md` updated.
 - [ ] **Real-device pass** (§5 below). The emulator misses the 16.6 ms P95 bar (`docs/PERF.md`); only a phone decides.
 - [ ] **Flow vs Home v2** (`docs/design/` home v2 reference on `main`): this branch already carries the new Home.
@@ -43,7 +43,7 @@ with `main` as of phase 4 (`5a08e04`).
    `./gradlew :androidApp:generateBaselineProfile -Pandroid.testoptions.manageddevices.emulator.gpu=swiftshader_indirect
    -Pandroid.experimental.testOptions.managedDevices.setupTimeoutMinutes=20` (managed device `pixel6Api34`), then
    commit the changed files under `generated/baselineProfiles/`. Compare cold start with
-   `:benchmark:pixel6Api34BenchmarkReleaseAndroidTest -Pandroid.testInstrumentationRunnerArguments.enabledRules=Macrobenchmark
+   `:benchmark:pixel6Api34BenchmarkReleaseAndroidTest -Pandroid.testInstrumentationRunnerArguments.androidx.benchmark.enabledRules=Macrobenchmark
    -Pandroid.testInstrumentationRunnerArguments.androidx.benchmark.suppressErrors=EMULATOR` (`StartupBenchmark`).
 5. **Store graphics:** the sources are `feature/home/HomeScreen.png`, `feature/levels/CategoryPicker.png`,
    `CategoryPickerEn.png`, the English `store:home/Home.png` capture and the 4x `StoreHiResCapture` of the picker and
@@ -91,7 +91,7 @@ iPhone (Xcode build or TestFlight; at least an iPhone 8 / SE 2nd gen or 11 and a
 Android: an Android 8 / low-RAM phone (tier Lite from the start), a mid-range Samsung A-series, a Pixel:
 - [ ] Macrobenchmark on a USB device, release-like build:
       `./gradlew :benchmark:connectedBenchmarkReleaseAndroidTest
-      -Pandroid.testInstrumentationRunnerArguments.enabledRules=Macrobenchmark
+      -Pandroid.testInstrumentationRunnerArguments.androidx.benchmark.enabledRules=Macrobenchmark
       -Pandroid.testInstrumentationRunnerArguments.class=dev.talhabayhan.lexi.benchmark.VideoFlowBenchmark`
       (no `suppressErrors` on a real phone; results in `benchmark/build/outputs/`). Bar: P95 < 16.6 ms, no frame > 100 ms.
 - [ ] Debug build: `MotionDebugOverlay` (frame times + tier switch) to watch the FrameMonitor downgrade to Lite.

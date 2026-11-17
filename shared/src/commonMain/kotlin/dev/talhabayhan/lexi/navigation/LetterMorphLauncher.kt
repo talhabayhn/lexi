@@ -6,7 +6,10 @@ import dev.talhabayhan.lexi.core.designsystem.motion.MotionTier
 
 /** What [LetterMorphLauncher] needs from the letter morph; [MorphOverlayState] in the app, a fake in tests. */
 internal interface LetterMorph {
-    /** Starts the morph from OYNA with [letter] as its big letter; false when it cannot (tier Minimal, one runs, OYNA not laid out). */
+    /**
+     * Starts the morph from OYNA with [letter] as its big letter; false when it cannot (tier Minimal, one runs, OYNA
+     * not laid out).
+     */
     fun start(tier: MotionTier, letter: String): Boolean
 
     fun cancel()
@@ -36,8 +39,8 @@ internal class LetterMorphLauncher(private val morph: LetterMorph, private val n
     private var cancelledByBack = false
 
     /**
-     * OYNA in [tier] with the wheel's first [letter]; [startGame] is [LexiNavigator.startGame] for the chosen game with the morph's cover wait and the
-     * dropped callback. True when the game start was accepted (with or without a morph).
+     * OYNA in [tier] with the wheel's first [letter]; [startGame] is [LexiNavigator.startGame] for the chosen game with
+     * the morph's cover wait and the dropped callback. True when the game start was accepted (with or without a morph).
      */
     fun start(
         tier: MotionTier,

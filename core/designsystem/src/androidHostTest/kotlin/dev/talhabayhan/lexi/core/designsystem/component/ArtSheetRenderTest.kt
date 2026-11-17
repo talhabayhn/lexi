@@ -22,6 +22,7 @@ import androidx.compose.ui.unit.dp
 import dev.talhabayhan.lexi.core.designsystem.icon.LexiIcons
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import org.junit.Assert.assertTrue
+import org.junit.Assume.assumeTrue
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
@@ -33,7 +34,8 @@ import javax.imageio.ImageIO
 
 /**
  * Renders the review contact sheet of every category and exam card (real card size, then the art alone at 0.75x) as a
- * plain PNG into `build/art-sheet/` (copy it to `docs/design/drafts/video-flow/actual/art-sheet.png`, see
+ * plain PNG into `build/art-sheet/`. A generator, not a check: it only runs with `LEXI_ART_SHEET=1`
+ * (`LEXI_ART_SHEET=1 ./gradlew :core:designsystem:testAndroidHostTest --tests '*ArtSheetRenderTest*'`). Copy it to `docs/design/drafts/video-flow/actual/art-sheet.png`, see
  * `docs/design/video-flow-notes.md`). It is a design-review aid, not a golden: nothing is compared or recorded.
  * Names are the Turkish `content/categories.csv` names, spelled here because the sheet is not user-facing.
  */
@@ -44,6 +46,7 @@ import javax.imageio.ImageIO
 class ArtSheetRenderTest {
     @Test
     fun rendersTheContactSheet() = runComposeUiTest {
+        assumeTrue("set LEXI_ART_SHEET=1 to render the sheet", System.getenv("LEXI_ART_SHEET") == "1")
         setContent { LexiTheme(reducedMotion = false) { Sheet() } }
         val bitmap = onNodeWithTag(TAG).captureToImage().asAndroidBitmap()
         val pixels = IntArray(bitmap.width * bitmap.height)

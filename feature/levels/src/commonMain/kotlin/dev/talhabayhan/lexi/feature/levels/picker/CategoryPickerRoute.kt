@@ -34,7 +34,8 @@ data class CategoryPickerRoute(val level: String = Level.A1.name) {
 
 /**
  * Registers "Çarkını seç". [onStart] opens a game of the level, mode, category (null = Karışık) and time (seconds;
- * null = untimed) and the letter its wheel opens on (the morph's big letter), [onStartPack] an exam pack's wheel; the graph in `shared` owns the game route.
+ * null = untimed) and the letter its wheel opens on (the morph's big letter), [onStartPack] an exam pack's wheel; the
+ * graph in `shared` owns the game route.
  */
 fun NavGraphBuilder.categoryPickerScreen(
     onBack: () -> Unit,

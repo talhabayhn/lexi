@@ -228,7 +228,7 @@ The LGS locked card's lock badge covers its top-right dot (unchanged, cosmetic).
 
 **Robustness (tests added, one bug fixed).**
 - *Bug:* the letter morph always showed "A", but a category without an A card opens its wheel on its first letter
-  (13 of the 57 level × category pairs have no A: Müzik B1/B2/C1, Spor B1/B2, Yalancı eşdeğerler B1/B2, Renkler ve sayılar
+  (13 of the 56 level × category pairs that have cards (59 are declared; false-friends, idioms and phrasal-verbs at C1 have none) have no A: Müzik B1/B2/C1, Spor B1/B2, Yalancı eşdeğerler B1/B2, Renkler ve sayılar
   A1, Film ve dizi C1, Deyimler B2, Şehir ve ulaşım B1, Vücut ve sağlık B2, Yiyecek ve içecek B1), so the big letter landed on a different marker. `PickerCategoryUi.firstLetter` and
   `StartGame.firstLetter` now carry the wheel's first letter into the morph. Tests: first letter per category, effect,
   launcher.
@@ -250,14 +250,15 @@ The LGS locked card's lock badge covers its top-right dot (unchanged, cosmetic).
   category cards, all seen recently; it never fills a letter with none ("a letter without category cards stays
   skipped", `GAME_RULES.md` §1). Every level has all 26 letters in `content/`, so a level-wide fill is always possible.
 - Shipped content (letters with a card / cards): Yalancı eşdeğerler B1 **1 / 1** and B2 **1 / 1**, Müzik B1 8 / 9, B2 10 / 12,
-  C1 10 / 10, Spor B2 11 / 17, Teknoloji C1 12 / 25; 41 more pairs have 13–25 letters and 9 have all 26.
+  C1 10 / 10, Spor B2 11 / 17, Teknoloji C1 12 / 25; 41 more pairs have 13–25 letters and 8 have all 26.
 - A one-card category is a **one-letter game**: no loader guard (only a wheel with zero playable slots is refused,
   `Opened.NoCards`), the engine starts, the first answer (right or wrong) leaves no open slot and ends the game
   `ALL_ANSWERED` = *completed*, so Classic pays the **time bonus** (1 point per remaining second, up to 180 / 300 / 420)
   and records a finished wheel for the streak, daily goal and "completed in N seconds" share card. Pass cycles on the
   same letter until the clock runs out. A 1-letter game is therefore also a points farm.
 - **Smallest rule:** a category wheel with fewer than `minCategoryLetters` playable letters (⚙ 13, in `GameConfig`)
-  takes every letter without a category card from the level's cards for that letter (the same candidates and
+  (and has at least one category card, so a category without any card stays "no words": false-friends, idioms and
+  phrasal-verbs at C1 today) takes every letter without a category card from the level's cards for that letter (the same candidates and
   `pickFresh` steps the recently-seen fallback uses). Categories with 13+ letters, mixed, packs, daily and review are
   unchanged, so no seed, golden or saved game moves; only the seven pairs under 13 letters change (Yalancı eşdeğerler B1 / B2,
   Müzik B1 / B2 / C1, Spor B2, Teknoloji C1). Per letter a category card still wins.
@@ -270,7 +271,7 @@ The LGS locked card's lock badge covers its top-right dot (unchanged, cosmetic).
   gives 26 playable slots, own card on its letter, level cards elsewhere, one `nextInt` per non-skipped letter in A–Z
   order, deterministic per seed; a category at exactly the floor is unchanged; with history the recently-seen
   fallback still applies; mixed / pack unchanged. A content test (compiler or `core:data`) that every shipped
-  (category, level) pair yields ≥ `minCategoryLetters` playable letters. `GameViewModel`/loader: the thin category
+  (category, level) pair that has cards yields ≥ `minCategoryLetters` playable letters; one for a 0-card category staying empty. `GameViewModel`/loader: the thin category
   loads as a normal game. `CategoryPickerViewModelTest`: `firstLetter` for a filled wheel. Session recording and the
   category progress bar keep working: the filled cards belong to other categories ("counts toward its own category").
 - **Alternatives:** (a) a floor-fill that adds only enough letters (A–Z order) to reach 13: smaller change of feel,
