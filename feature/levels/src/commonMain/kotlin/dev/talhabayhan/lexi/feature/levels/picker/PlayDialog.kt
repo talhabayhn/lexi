@@ -20,9 +20,11 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.geometry.Offset
@@ -39,6 +41,7 @@ import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.layout.onPlaced
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.isTraversalGroup
 import androidx.compose.ui.semantics.paneTitle
 import androidx.compose.ui.semantics.semantics
@@ -55,9 +58,13 @@ import dev.talhabayhan.lexi.core.designsystem.feedback.LocalHaptics
 import dev.talhabayhan.lexi.core.designsystem.format.formatClock
 import dev.talhabayhan.lexi.core.designsystem.icon.LexiIcons
 import dev.talhabayhan.lexi.core.designsystem.modifier.lexiSurface
+import dev.talhabayhan.lexi.core.designsystem.motion.DialogFlipChoreography
+import dev.talhabayhan.lexi.core.designsystem.motion.DialogFlipMachine
 import dev.talhabayhan.lexi.core.designsystem.motion.DialogFlipPhase
 import dev.talhabayhan.lexi.core.designsystem.motion.FlowMorphKeys
 import dev.talhabayhan.lexi.core.designsystem.motion.FlowMotion
+import dev.talhabayhan.lexi.core.designsystem.motion.LocalMorphAnchors
+import dev.talhabayhan.lexi.core.designsystem.motion.LocalMorphOverlay
 import dev.talhabayhan.lexi.core.designsystem.motion.MotionTier
 import dev.talhabayhan.lexi.core.designsystem.motion.morphAnchor
 import dev.talhabayhan.lexi.core.designsystem.motion.perspective
@@ -127,6 +134,46 @@ internal fun PlayDialog(
     }
     if (closing) ReopenCatcher(card, flip, onIntent)
 }
+
+/**
+ * One-time warm-up of the dialog (`video-flow-notes.md` § Phase 5): the real [DialogPanel] is composed and drawn once,
+ * posed mid-turn of the open flip (the Y rotation with the flip's perspective, the grown frame with its hard shadow,
+ * the rows, the segmented controls, OYNA), so the first card the player taps does not pay for the first composition of
+ * these classes or the first compile of their GPU shaders. The caller places it **behind** the picker's opaque
+ * background for a few frames while the picker is idle; it has no semantics, takes no input and is not a morph anchor.
+ */
+@Composable
+internal fun PickerDialogWarmUp(card: PickerCategoryUi, state: CategoryPickerUiState, turkish: Boolean) {
+    val motion = LexiTheme.motion
+    val flip = remember {
+        PickerDialogFlip(
+            DialogFlipMachine(DialogFlipChoreography(motion.flow, motion.mechanical, motion.turn, motion.pop)),
+        ).also {
+            it.card = card
+            it.cardRects[card.id] = Rect(Offset(WARM_UP_CARD_X, WARM_UP_CARD_Y), Size(WARM_UP_CARD_W, WARM_UP_CARD_H))
+            it.request(open = true, tier = MotionTier.Full)
+            it.advanceBy(WARM_UP_POSE_MILLIS)
+        }
+    }
+    CompositionLocalProvider(LocalMorphAnchors provides null, LocalMorphOverlay provides null) {
+        Box(
+            Modifier.fillMaxSize().windowInsetsPadding(
+                WindowInsets.safeDrawing,
+            ).lexiContentWidth().clearAndSetSemantics {
+            },
+        ) {
+            Box(Modifier.align(Alignment.Center)) { DialogPanel(card, state, turkish, {}, flip) }
+        }
+    }
+}
+
+// A card-sized rectangle near the top left and a pose a little past the middle of the open run: the panel is turned,
+// partly grown and already visible, which draws every layer the real flip draws.
+private const val WARM_UP_CARD_X = 24f
+private const val WARM_UP_CARD_Y = 260f
+private const val WARM_UP_CARD_W = 160f
+private const val WARM_UP_CARD_H = 190f
+private const val WARM_UP_POSE_MILLIS = 330L
 
 /** Test tags of the dialog's parts that have no text of their own. */
 internal object PlayDialogTags {
@@ -249,6 +296,7 @@ private fun DialogPanel(
         .ifEmpty { if (card.isMixed) stringResource(Res.string.picker_mixed_fallback) else "" }
     val animating = flip.animating
     val rise = flow.dialogItemOffset
+    val noTimer = stringResource(Res.string.dialog_time_none)
     // The choices and OYNA act only once the dialog rests (the back arrow always closes it).
     val settled: (CategoryPickerIntent) -> Unit = { if (flip.dialogTakesInput) onIntent(it) }
     Column(
@@ -312,12 +360,7 @@ private fun DialogPanel(
                     )
                 }
             }
-            Text(
-                stringResource(state.mode.hintRes()),
-                style = typography.body14,
-                color = colors.ink,
-                modifier = Modifier.flipItem(flip, ROW_HINT, animating, rise).padding(top = dimens.gap8),
-            )
+            ModeHint(state.mode, Modifier.flipItem(flip, ROW_HINT, animating, rise).padding(top = dimens.gap8))
             Column(Modifier.flipItem(flip, ROW_TIME, animating, rise)) {
                 SectionLabel(Res.string.dialog_time_label)
                 WithCappedFontScale(FlowDefaults.CONTROL_FONT_SCALE_CAP) {
@@ -330,15 +373,11 @@ private fun DialogPanel(
                         enabled = state.timeEnabled,
                         titleStyle = typography.bodyStrong16,
                         fitTitle = true,
-                        modifier = Modifier.fillMaxWidth(),
-                    )
-                }
-                if (!state.timeEnabled) {
-                    Text(
-                        stringResource(Res.string.dialog_time_none),
-                        style = typography.caption12SemiBold,
-                        color = colors.inkMuted,
-                        modifier = Modifier.padding(top = dimens.gap6),
+                        // Practice dims the row where it is; the description above is its only visible text, so the
+                        // reason is just spoken (no second line, nothing below the row moves).
+                        modifier = Modifier.fillMaxWidth().then(
+                            if (state.timeEnabled) Modifier else Modifier.semantics { contentDescription = noTimer },
+                        ),
                     )
                 }
             }
@@ -386,6 +425,27 @@ private fun DialogHeader(name: String, meta: String, onClose: () -> Unit, modifi
                 WordSafeText(name, typography.heading22, colors.ink)
                 WordSafeText(meta, typography.caption12SemiBold, colors.ink)
             }
+        }
+    }
+}
+
+/**
+ * The mode's one-sentence description. All three sentences are laid out in the same cell (the others transparent and
+ * hidden from readers), so the cell is as tall as the longest of them in the current language and font scale and
+ * switching modes moves nothing below it.
+ */
+@Composable
+private fun ModeHint(selected: GameMode, modifier: Modifier = Modifier) {
+    Box(modifier) {
+        PickerModes.forEach { mode ->
+            Text(
+                stringResource(mode.hintRes()),
+                style = LexiTheme.typography.body14,
+                color = LexiTheme.colors.ink,
+                modifier = Modifier.fillMaxWidth().then(
+                    if (mode == selected) Modifier else Modifier.alpha(0f).clearAndSetSemantics { },
+                ),
+            )
         }
     }
 }

@@ -123,11 +123,15 @@ class CategoryPickerScreenTest {
     }
 
     @Test
-    fun `in practice the time row is disabled and says so`() {
+    fun `in practice the time row is disabled in place - one visible no-timer text, the row only describes itself`() {
         val intents = run(PickerSampleState.withDialog(GameMode.PRACTICE)) {
             onNodeWithText("5:00").assertIsNotEnabled().performClick()
-            onNodeWithText("Pratik modda süre yok.").assertExists()
+            // The visible text is the description only; "Pratik modda süre yok." is just the row's content description.
+            onNodeWithText("Pratik modda süre yok.").assertDoesNotExist()
+            onNodeWithContentDescription("Pratik modda süre yok.").assertExists()
             onNodeWithText("Süre yok, istediğin kadar rahat çalış.").assertExists()
+            // The other two sentences are laid out (to reserve their room) but invisible to users and readers.
+            onNodeWithText("Tek hata hakkın var. İlk yanlışta oyun biter.").assertDoesNotExist()
         }
         assertEquals(emptyList(), intents)
     }

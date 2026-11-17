@@ -7,7 +7,7 @@ import dev.talhabayhan.lexi.core.designsystem.motion.MotionStep.Companion.fromPr
 import dev.talhabayhan.lexi.core.designsystem.motion.MotionStep.Companion.prototypeMillis
 
 /**
- * Video-flow motion tokens, `docs/design/motion.md` #13–#17 (proposal on branch `redesign/video-flow`). Every step is
+ * Video-flow motion tokens, `docs/design/motion.md` #13–#19 (proposal on branch `redesign/video-flow`). Every step is
  * written with the prototype's own numbers (`docs/design/drafts/video-flow/flow.html`) and converted with
  * [MotionStep.fromPrototype] (÷ 0.86), so each value can be traced back to the prototype. Easings are the existing
  * [dev.talhabayhan.lexi.core.designsystem.theme.LexiMotion] curves named in each comment. Press (#1), screen
@@ -123,6 +123,11 @@ public class FlowMotion internal constructor() {
     public val gridCardIn: MotionStep = fromPrototype(140, 260)
     public val gridCardStaggerMillis: Int = prototypeMillis(45)
     public val gridCardOffset: Dp = 16.dp
+
+    // #19 "Başa dön ↑": the picker scrolls to its top in this time whatever the distance (`easeOut`); a longer list
+    // skips what is beyond [scrollTopMaxStretchViewports] viewports and animates only the last stretch.
+    public val scrollTopMillis: Int = 400
+    public val scrollTopMaxStretchViewports: Float = 1.5f
 
     /** Reduced motion (tier [MotionTier.Minimal]): every flow transition becomes one cross-fade of this length. */
     public val reducedCrossfadeMillis: Int = 120

@@ -104,6 +104,12 @@ internal class PickerDialogFlip(private val machine: DialogFlipMachine) {
         return lerp(start, Rect(Offset.Zero, size), grow)
     }
 
+    /** Moves a run on by [millis] without a frame clock (the warm-up poses one mid-turn frame). */
+    fun advanceBy(millis: Long) {
+        machine.tick(millis)
+        version++
+    }
+
     fun snapTo(open: Boolean, tier: MotionTier) {
         machine.snapTo(open, tier)
         version++

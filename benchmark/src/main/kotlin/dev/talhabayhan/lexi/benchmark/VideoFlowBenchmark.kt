@@ -6,9 +6,7 @@ import androidx.benchmark.macro.MacrobenchmarkScope
 import androidx.benchmark.macro.junit4.MacrobenchmarkRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.uiautomator.By
-import androidx.test.uiautomator.BySelector
 import androidx.test.uiautomator.Direction
-import androidx.test.uiautomator.Until
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -56,6 +54,25 @@ class VideoFlowBenchmark {
         waitForHome()
     }
 
+    /**
+     * Only the first card flip of a fresh process: the categories are opened and settled in setup (the idle time the
+     * dialog warm-up uses), so the measured frames are the tap, the lift, the Y flip and the dialog's first
+     * composition: the stutter `PickerDialogWarmUp` and the baseline profile (`videoFlow`) are meant to remove. Compare
+     * `CompilationMode.None()` (no profile) with the default [CompilationMode.Partial] on the device matrix.
+     */
+    @Test
+    fun firstDialogFlip() = journey(
+        setup = {
+            openCategories()
+            // The dialog warm-up runs ≈ 1.1 s after the grid entrance, while nothing moves.
+            Thread.sleep(WARM_UP_MS)
+        },
+    ) {
+        click(MIXED_CARD)
+        waitFor(PLAY_BUTTON)
+        Thread.sleep(OPEN_SETTLE_MS)
+    }
+
     /** Dialog OYNA → letter morph (#16) → board entrance, then a few letters and passes (#17). */
     @Test
     fun playLetterMorph() = journey {
@@ -77,76 +94,32 @@ class VideoFlowBenchmark {
         playAFewMoves()
     }
 
-    private fun journey(steps: MacrobenchmarkScope.() -> Unit) = rule.measureRepeated(
-        packageName = PACKAGE_NAME,
-        metrics = listOf(FrameTimingMetric()),
-        compilationMode = CompilationMode.Partial(),
-        startupMode = null,
-        iterations = ITERATIONS,
-        setupBlock = {
-            // A fresh process each time: no game left from the previous iteration.
-            killProcess()
-            pressHome()
-            startActivityAndWait()
-            completeOnboardingIfShown()
-        },
-    ) {
-        waitForHome()
-        steps()
-    }
-
-    private fun MacrobenchmarkScope.openCategories() {
-        click(By.descStartsWith("Play."))
-        waitFor(MIXED_CARD)
-        // The grid entrance (#18) plays on the first open only; let it land before the next step.
-        Thread.sleep(SETTLE_MS)
-    }
-
-    private fun MacrobenchmarkScope.openDialog() {
-        click(MIXED_CARD)
-        waitFor(PLAY_BUTTON)
-        // The dialog takes input once the flip has landed (#14, ≈ 0.81 s).
-        Thread.sleep(SETTLE_MS)
-    }
-
-    /** Waits for the board (pause button), lets the entrance land, then types three letters and passes twice. */
-    private fun MacrobenchmarkScope.playAFewMoves() {
-        waitFor(By.desc("Pause"))
-        Thread.sleep(SETTLE_MS)
-        repeat(LETTERS) {
-            device.findObjects(By.descStartsWith("Letter ")).firstOrNull {
-                it.contentDescription?.endsWith("used") ==
-                    false
-            }
-                ?.click()
-            device.waitForIdle()
+    private fun journey(setup: (MacrobenchmarkScope.() -> Unit)? = null, steps: MacrobenchmarkScope.() -> Unit) =
+        rule.measureRepeated(
+            packageName = PACKAGE_NAME,
+            metrics = listOf(FrameTimingMetric()),
+            compilationMode = CompilationMode.Partial(),
+            startupMode = null,
+            iterations = ITERATIONS,
+            setupBlock = {
+                // A fresh process each time: no game left from the previous iteration.
+                killProcess()
+                pressHome()
+                startActivityAndWait()
+                completeOnboardingIfShown()
+                // Journeys that measure one step start from where the previous steps end (outside the measurement).
+                waitForHome()
+                setup?.invoke(this)
+            },
+        ) {
+            // Without a setup the journey starts on Home; with one it continues from where the setup ended.
+            if (setup == null) waitForHome()
+            steps()
         }
-        repeat(PASSES) {
-            click(By.text("PASS"))
-            Thread.sleep(PASS_SETTLE_MS)
-        }
-    }
-
-    private fun MacrobenchmarkScope.click(selector: BySelector) {
-        checkNotNull(device.wait(Until.findObject(selector), UI_TIMEOUT_MS)) { "not found: $selector" }.click()
-    }
-
-    private fun MacrobenchmarkScope.waitFor(selector: BySelector) {
-        checkNotNull(device.wait(Until.findObject(selector), UI_TIMEOUT_MS)) { "did not appear: $selector" }
-    }
-
-    private fun MacrobenchmarkScope.waitGone(selector: BySelector) {
-        device.wait(Until.gone(selector), UI_TIMEOUT_MS)
-    }
 
     private companion object {
         const val ITERATIONS = 5
-        const val UI_TIMEOUT_MS = 10_000L
-        const val SETTLE_MS = 1_000L
-        const val PASS_SETTLE_MS = 800L
-        const val LETTERS = 3
-        const val PASSES = 2
-        val MIXED_CARD: BySelector = By.descStartsWith("Mixed")
-        val PLAY_BUTTON: BySelector = By.text("PLAY")
+        const val WARM_UP_MS = 2_500L
+        const val OPEN_SETTLE_MS = 1_000L
     }
 }

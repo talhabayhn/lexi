@@ -133,3 +133,32 @@ not heavier than the existing screens; they say nothing about a phone.
    one frame interval in the flip and the morph, and the hitch-time ratio below 5 ms/s ("good" in Apple's scale).
    **Time Profiler** in the same run shows what the main thread did in a hitch (Compose recomposition vs Skia draw).
 4. Repeat with Low Power Mode on (the flow starts in tier Lite) and with Reduce Motion on (tier Minimal: cross-fades).
+
+
+### Phase 5: first card flip (2026-11-18, debug build, emulator)
+
+Question: does the first card flip of a session stutter more than the later ones, and does `PickerDialogWarmUp` (+ the
+`videoFlow` baseline profile journey) remove it? Method: `installDebug` before (tracked changes stashed) and after,
+fresh process, Home → play card → "Pick your wheel", 4 s idle, then 3 × (tap the Mixed card → 1.6 s → `dumpsys gfxinfo
+framestats`, reset before each tap; frame time = FrameCompleted − IntendedVsync); three sessions each.
+Worst frame of a flip (ms), flips 1 / 2 / 3: before 50 / 181 / 38, 279 / 35 / 249, 200 / 35 / 175; after 144 / 267 / 34,
+51 / 163 / 301, 217 / 34 / 210. P50 17.5–18 ms in all (the emulator's buffer wait, see above).
+
+**Result: no measurable difference, and no "first flip is worse" pattern.** Outliers of 150–300 ms occur on any flip in both
+builds; the worst frame's breakdown is a 156 ms wait *before* the frame started (the main thread busy with the tap's
+recomposition of the dialog and the first measure of its text), then 18 ms animation + 17 ms draw: main-thread work per
+open on a debug build (JIT-interpreted Compose, no baseline profile, a debug overlay), not a shader compile. What this
+setup **can** show: that nothing got worse and where a stall sits (main thread vs RenderThread). What it **cannot**:
+the effect of a baseline profile (debug builds ignore it), shader-cache behaviour of a phone's GPU, or the P95 bar.
+Next step on a device (release-like build, fresh install so the profile applies; compare no profile with the profile):
+
+```bash
+./gradlew :androidApp:generateBaselineProfile        # records the new videoFlow journey (managed device or emulator)
+./gradlew :benchmark:connectedBenchmarkReleaseAndroidTest \
+  -Pandroid.testInstrumentationRunnerArguments.class=dev.talhabayhan.lexi.benchmark.VideoFlowBenchmark#firstDialogFlip
+# add -Pandroid.testInstrumentationRunnerArguments.androidx.benchmark.suppressErrors=EMULATOR on an emulator
+```
+Compare `frameDurationCpuMs` P99 / max of `firstDialogFlip` with and without the warm-up commit and with
+`CompilationMode.None()` vs the default. The warm-up costs one extra composition of the dialog on an idle picker (about
+the cost of one flip's first frame, invisible behind the background); if a device shows no gain, remove
+`rememberDialogWarmUp` (one call in `CategoryPickerScreen`) and keep the profile.

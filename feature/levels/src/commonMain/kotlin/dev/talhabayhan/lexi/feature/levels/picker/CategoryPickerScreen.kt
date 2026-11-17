@@ -31,8 +31,12 @@ import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
+import androidx.compose.runtime.snapshotFlow
+import androidx.compose.runtime.withFrameMillis
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
@@ -65,6 +69,7 @@ import dev.talhabayhan.lexi.core.designsystem.modifier.lexiHeading
 import dev.talhabayhan.lexi.core.designsystem.motion.FlowMotion
 import dev.talhabayhan.lexi.core.designsystem.motion.LocalMotionPolicy
 import dev.talhabayhan.lexi.core.designsystem.motion.MotionTier
+import dev.talhabayhan.lexi.core.designsystem.motion.animateScrollToTop
 import dev.talhabayhan.lexi.core.designsystem.motion.perspective
 import dev.talhabayhan.lexi.core.designsystem.motion.rememberMotionTier
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
@@ -88,6 +93,8 @@ import dev.talhabayhan.lexi.feature.levels.generated.resources.picker_scroll_top
 import dev.talhabayhan.lexi.feature.levels.generated.resources.picker_soon
 import dev.talhabayhan.lexi.feature.levels.generated.resources.picker_soon_description
 import dev.talhabayhan.lexi.feature.levels.generated.resources.picker_title
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
@@ -113,64 +120,112 @@ internal fun CategoryPickerScreen(
     val gridState = rememberLazyGridState()
     val turkish = Locale.current.language == "tr"
     val dialogUp = state.dialog != null || flip.dialogShown
-    Box(modifier.fillMaxSize().background(colors.cream)) {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .windowInsetsPadding(
-                    WindowInsets.safeDrawing.only(WindowInsetsSides.Top + WindowInsetsSides.Horizontal),
-                )
-                .lexiContentWidth()
-                // While the dialog is open only the dialog is read.
-                .then(if (dialogUp) Modifier.clearAndSetSemantics {} else Modifier),
-        ) {
-            Row(
-                modifier = Modifier.padding(
-                    start = dimens.screenPaddingHorizontal,
-                    end = dimens.screenPaddingHorizontal,
-                    top = dimens.screenPaddingTop,
-                ),
-                horizontalArrangement = Arrangement.spacedBy(dimens.gap14),
-                verticalAlignment = Alignment.CenterVertically,
+    val warmUpCard = rememberDialogWarmUp(state, gridState, entrance, dialogUp)
+    Box(modifier.fillMaxSize()) {
+        // Behind the opaque cream layer below, so it is never seen (like the NavHost's `FlowWarmUp`).
+        if (warmUpCard != null) PickerDialogWarmUp(warmUpCard, state, turkish)
+        Box(Modifier.fillMaxSize().background(colors.cream)) {
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .windowInsetsPadding(
+                        WindowInsets.safeDrawing.only(WindowInsetsSides.Top + WindowInsetsSides.Horizontal),
+                    )
+                    .lexiContentWidth()
+                    // While the dialog is open only the dialog is read.
+                    .then(if (dialogUp) Modifier.clearAndSetSemantics {} else Modifier),
             ) {
-                NavSquareButton(
-                    icon = LexiIcons.Back,
-                    contentDescription = stringResource(Res.string.picker_back),
-                    onClick = { onIntent(CategoryPickerIntent.Back) },
-                    size = IconButtonDefaults.NavSizeLarge,
+                Row(
+                    modifier = Modifier.padding(
+                        start = dimens.screenPaddingHorizontal,
+                        end = dimens.screenPaddingHorizontal,
+                        top = dimens.screenPaddingTop,
+                    ),
+                    horizontalArrangement = Arrangement.spacedBy(dimens.gap14),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    NavSquareButton(
+                        icon = LexiIcons.Back,
+                        contentDescription = stringResource(Res.string.picker_back),
+                        onClick = { onIntent(CategoryPickerIntent.Back) },
+                        size = IconButtonDefaults.NavSizeLarge,
+                    )
+                    Text(
+                        stringResource(Res.string.picker_title),
+                        style = LexiTheme.typography.title,
+                        color = colors.ink,
+                        maxLines = 2,
+                        overflow = TextOverflow.Ellipsis,
+                        modifier = Modifier.lexiHeading(),
+                    )
+                }
+                val levelDescription = Level.entries.map {
+                    stringResource(Res.string.picker_level_description, it.name)
+                }
+                LevelChipRow(
+                    labels = Level.entries.map { it.name },
+                    selectedIndex = Level.entries.indexOf(state.level),
+                    onSelect = { onIntent(CategoryPickerIntent.SelectLevel(Level.entries[it])) },
+                    contentDescriptions = levelDescription,
+                    modifier = Modifier.padding(
+                        start = dimens.screenPaddingHorizontal,
+                        end = dimens.screenPaddingHorizontal,
+                        top = dimens.gap16,
+                    ),
                 )
-                Text(
-                    stringResource(Res.string.picker_title),
-                    style = LexiTheme.typography.title,
-                    color = colors.ink,
-                    maxLines = 2,
-                    overflow = TextOverflow.Ellipsis,
-                    modifier = Modifier.lexiHeading(),
-                )
+                if (state.hasError) {
+                    ErrorState(onRetry = { onIntent(CategoryPickerIntent.Retry) })
+                } else {
+                    PickerGrid(state, gridState, turkish, entrance, flip, onIntent)
+                }
             }
-            val levelDescription = Level.entries.map { stringResource(Res.string.picker_level_description, it.name) }
-            LevelChipRow(
-                labels = Level.entries.map { it.name },
-                selectedIndex = Level.entries.indexOf(state.level),
-                onSelect = { onIntent(CategoryPickerIntent.SelectLevel(Level.entries[it])) },
-                contentDescriptions = levelDescription,
-                modifier = Modifier.padding(
-                    start = dimens.screenPaddingHorizontal,
-                    end = dimens.screenPaddingHorizontal,
-                    top = dimens.gap16,
-                ),
-            )
-            if (state.hasError) {
-                ErrorState(onRetry = { onIntent(CategoryPickerIntent.Retry) })
-            } else {
-                PickerGrid(state, gridState, turkish, entrance, flip, onIntent)
-            }
+            // Behind the scrim while the dialog is open: not shown, so a screen reader cannot reach it either.
+            if (!dialogUp) ScrollTopButton(gridState, Modifier.align(Alignment.BottomEnd))
+            PlayDialog(state, turkish, onIntent, flip)
         }
-        // Behind the scrim while the dialog is open: not shown, so a screen reader cannot reach it either.
-        if (!dialogUp) ScrollTopButton(gridState, Modifier.align(Alignment.BottomEnd))
-        PlayDialog(state, turkish, onIntent, flip)
     }
 }
+
+/** The dialog is warmed up once per app process (shader cache and loaded classes outlive the screen). */
+private object DialogWarmUpState {
+    var done = false
+}
+
+/**
+ * The card to pose the dialog warm-up with, for a few frames, once the picker is idle: loaded, the grid entrance
+ * (#18) landed, nothing scrolling, no dialog up, tier not Minimal (reduced motion has no flip to warm). Null otherwise
+ * and for good once it ran. A player who taps a card before it ran gets the flip as before.
+ */
+@Composable
+private fun rememberDialogWarmUp(
+    state: CategoryPickerUiState,
+    gridState: LazyGridState,
+    entrance: Boolean,
+    dialogUp: Boolean,
+): PickerCategoryUi? {
+    val tier = rememberMotionTier()
+    val card = state.categories.firstOrNull()
+    val ready = state.isLoaded && card != null && !dialogUp && tier != MotionTier.Minimal && !DialogWarmUpState.done
+    var shown by remember { mutableStateOf(false) }
+    LaunchedEffect(ready) {
+        if (!ready) return@LaunchedEffect
+        try {
+            delay(if (entrance) WARM_UP_AFTER_ENTRANCE_MILLIS else WARM_UP_IDLE_MILLIS)
+            snapshotFlow { gridState.isScrollInProgress }.first { !it }
+            shown = true
+            // Three frames: composed and measured, drawn once (shaders compiled), and one more to be safe.
+            repeat(WARM_UP_FRAMES) { withFrameMillis { } }
+            DialogWarmUpState.done = true
+        } finally {
+            shown = false
+        }
+    }
+    return if (shown && ready) card else null
+}
+
+private const val WARM_UP_AFTER_ENTRANCE_MILLIS = 1_100L
+private const val WARM_UP_IDLE_MILLIS = 400L
+private const val WARM_UP_FRAMES = 3
 
 @Composable
 private fun PickerGrid(
@@ -353,11 +408,20 @@ private fun ScrollTopButton(gridState: LazyGridState, modifier: Modifier) {
     }
     if (!pastFirstScreen) return
     val scope = rememberCoroutineScope()
-    val reduced = LexiTheme.motion.reducedMotion
+    val motion = LexiTheme.motion
+    val minimal = rememberMotionTier() == MotionTier.Minimal
     ScrollToTopPill(
         label = stringResource(Res.string.picker_scroll_top),
         onClick = {
-            scope.launch { if (reduced) gridState.scrollToItem(0) else gridState.animateScrollToItem(0) }
+            // Motion #19: 400 ms ease-out whatever the distance (120 ms with reduced motion); a drag takes over.
+            scope.launch {
+                val flow = motion.flow
+                gridState.animateScrollToTop(
+                    durationMillis = if (minimal) flow.reducedCrossfadeMillis else flow.scrollTopMillis,
+                    easing = motion.easeOut,
+                    maxStretchPx = gridState.layoutInfo.viewportSize.height * flow.scrollTopMaxStretchViewports,
+                )
+            }
         },
         modifier = modifier
             .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Bottom + WindowInsetsSides.End))

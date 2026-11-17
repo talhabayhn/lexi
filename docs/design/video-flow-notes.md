@@ -25,7 +25,10 @@ without the new transitions (§8). 3: card flip (#13–#15), letter morph (#16�
 - **"İki kişi, tek telefon":** exactly as the current app (red square + blue circle icon, subtitle "Arkadaşınla
   sırayla yarış").
 - **ÇALIŞ:** Defter (white card, blue circle shape, due count "24 tekrar") and Sınavlar (dark card, yellow diamond,
-  subtitle "LGS İngilizce"), the same shape icons the current Home uses.
+  subtitle "LGS İngilizce"), the same shape icons the current Home uses. **Anchored (phase 5):** the section (label +
+  both cards) sits 24 dp above the bottom bar, at the bottom of the content area, while the cards above stay at the
+  top; when the content is taller than the space (short screens, large fonts) the spacer collapses and ÇALIŞ flows
+  under the other cards with the usual scroll (the old 40 dp gap to the "İki kişi" box; 24 dp below the tiles).
 - **Bottom bar ("thin ruled"):** 4 dp ink top rule, icon + label, no boxes, three items: İstatistik
   (`LexiIcons.Stats`), Davet et, Ayarlar (`LexiIcons.Settings`). No Home tab.
 - **Davet et:** new invite icon (person + plus) — **needs design** in `16-components` style. Opens the system share
@@ -39,14 +42,16 @@ without the new transitions (§8). 3: card flip (#13–#15), letter morph (#16�
 - Back button (icon vertically centred in its box), title "Çarkını seç".
 - Level chips A1 · A2 · B1 · B2 · C1 · NAT, equal width, selected = ink fill with yellow text.
 - 2-column grid (`LazyVerticalGrid`) of category cards: **Karışık first**, then **all** categories of that level from
-  `content/categories.csv` in `sort` order — never hide a category (no "empty" filtering). NAT shows only Karışık
+  `content/categories.csv` in `sort` order, **except a category with no card at the selected level (phase 5: hidden;
+  C1 Yalancı eşdeğerler / Deyimler / Phrasal verbs today)**. NAT shows only Karışık
   (its single `general` category is what Karışık plays).
 - Card = its own illustration (top, coloured field) + name + "learned / total" + progress bar. Illustrations: 19
   categories (`art_v3.png`), drawn from Bauhaus primitives (rect, circle, leaf, triangle, lines) as cached Canvas
   `Path`s — **no bitmap assets**. Final art **needs design sign-off** (art_v3 is a first draft).
 - Bottom: section "SINAV PAKETLERİ" / "Sınava çark çevirerek hazırlan": LGS İngilizce open (with its progress);
   YDS / YÖKDİL, YKS-DİL, TOEFL, IELTS locked: art dimmed, lock badge, "YAKINDA" tag, not tappable (a11y: "…, yakında").
-- Floating "Başa dön ↑" pill (ink, bottom-right) once scrolled past the first screen; scrolls the grid to the top.
+- Floating "Başa dön ↑" pill (ink, bottom-right) once scrolled past the first screen; scrolls the grid to the top
+  smoothly (motion #19: 400 ms ease-out whatever the distance, 120 ms with reduced motion, the user's drag takes over).
 
 ## 3. Mode and duration dialog
 
@@ -55,7 +60,8 @@ Opens by flipping the tapped card (§5 #13–#14). Header: back arrow + category
   Klasik "Süre dolana kadar olabildiğince çok kelime bil." · Pratik "Süre yok, istediğin kadar rahat çalış." ·
   Hardcore "Tek hata hakkın var. İlk yanlışta oyun biter."
 - **SÜRE** segmented control: 3:00 / 5:00 / 7:00 (180 / 300 / 420 s), default 3:00. Applies to Klasik **and**
-  Hardcore. In Pratik the row is disabled (muted) with "Pratik modda süre yok." Daily stays 180 s.
+  Hardcore. In Pratik the row is disabled (dimmed in place) and the only visible no-timer text is the mode's description; "Pratik
+  modda süre yok." is just the row's content description (phase 5). Daily stays 180 s.
 - **OYNA ▸** (red, full width) → letter morph (§5 #16).
 - **Engine:** `GameConfig.classicTimeLimitOptionsSeconds = [180, 300, 420]`; a stored 120 / 240 s falls back to
   180 s (`GAME_RULES.md` §5). Hardcore uses the chosen duration too (owner decision; phase 2): `GameRoute.time`
@@ -280,3 +286,41 @@ The LGS locked card's lock badge covers its top-right dot (unchanged, cosmetic).
 
 Open after phase 4: the art / icon sign-off (sheet above), the thin-category rule, the real-device pass and
 the owner steps of `docs/release-1.1.0-checklist.md`.
+
+
+## 11. Phase 5 (owner's device test): polish batch
+
+1. **Home ÇALIŞ anchored** (see §1): the content column is at least as tall as the viewport (`BoxWithConstraints` +
+   `heightIn(min)`), a `Spacer(weight(1f))` before the ÇALIŞ group takes the free height; bottom padding is 24 dp (was
+   20, so the flowing layout also ends 24 dp above the bar). `HomeLayoutTest` (4 sizes × 3 font scales × TR/EN) now
+   asserts per size that ÇALIŞ is either anchored (tiles end 24 design-dp above the bar's real top, `HOME_BOTTOM_BAR_TAG`)
+   or flowing (40 dp below the duel box, tiles at or below the anchored position), and that 390 × 844 / 412 × 915 at 100 %
+   are anchored. Gaps are measured in design dp: `LexiViewport` scales them by min(w / 390, h / 844) on bigger phones.
+2. **"Başa dön" scroll** (#19, `animateScrollToTop` in `core:designsystem` `motion/`): see motion.md. Distance = rows
+   above × row pitch (+ the first row's offset); beyond 1.5 viewports it is skipped in one `scrollBy` first, then a
+   `tween(400, easeOut)` drives `scrollBy`, and a last `scrollToItem(0)` lands exactly (rows can differ in height). It
+   runs at the default scroll priority, so a drag cancels it. Test: capped time from a short and a very long distance,
+   120 ms, no-op at the top, a touch cancels it. Not registered with the frame monitor (a scroll is not a transition).
+3. **Dialog never shifts:** the description cell lays out all three sentences (the other two transparent and without
+   semantics), so it is as tall as the longest in the language and font scale; Pratik shows no second line (the row is
+   dimmed in place, content description "Pratik modda süre yok."). `CategoryPickerLayoutTest` records the tops of the
+   SÜRE label, the 3:00 box and OYNA in all three modes (4 sizes × 3 scales × TR/EN) and asserts they are identical (it
+   fails on the old dialog: Pratik sat 44 px higher, OYNA 4 px lower at 100 %); `WordSplitRecorder` still guards it.
+4. **First-use jank on the first flip:** `PickerDialogWarmUp` composes and draws the real dialog panel once per app
+   process, posed mid-way through the open flip (rotation with perspective, grown frame, hard shadow, rows, segmented
+   controls, OYNA), **behind the picker's opaque background** for 3 frames, ≈ 1.1 s after the grid entrance (0.4 s when
+   there is none) and only when the grid is not scrolling, no dialog is up and the tier is not Minimal; no semantics, no
+   input, no morph anchors. The baseline profile has a new `videoFlow` journey (`BaselineProfileGenerator`, steps shared
+   with `VideoFlowBenchmark` in `VideoFlowJourney.kt`: picker → flip → dialog (mode switch, close by arrow and back,
+   reopen) → morph → board), and `VideoFlowBenchmark.firstDialogFlip` measures only the first flip of a fresh process.
+   Numbers and what they can and cannot show: `docs/PERF.md` § Phase 5.
+5. **Empty categories hidden** (`CategoryPickerViewModel`): a category with no card at the selected level is not listed
+   (Karışık stays). `content/categories.csv` is **not** edited: the validator only warns for a card at a level a category
+   does not declare, so removing C1 from the three categories would pass, but any `categories.csv` change needs a
+   `contentVersion` bump and collides with the parallel work on thin categories; the picker rule also holds for any
+   future empty pair. The thin and unbalanced categories themselves are untouched.
+
+**Goldens for CI to record after phase 5** (`screenshots-record`, not recorded here): `feature/home` `HomeScreen*.png` (ÇALIŞ
+sits on the bottom on tall phones), `feature/levels` `PlayDialogPractice.png` (no second no-timer line) and every
+`CategoryPicker*.png` / `PlayDialog*.png` whose content moved by the hidden empty categories or the reserved description
+cell; `verifyRoborazzi` was not run on macOS for this batch.

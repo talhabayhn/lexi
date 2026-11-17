@@ -26,6 +26,7 @@ import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
 import org.robolectric.annotation.GraphicsMode
+import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
 /**
@@ -42,6 +43,7 @@ abstract class CategoryPickerLayoutChecks(
     private val chip: String,
     private val mixed: String,
     private val play: String,
+    private val timeLabel: String,
 ) {
     @Test
     @Config(qualifiers = "+w320dp-h568dp")
@@ -77,6 +79,28 @@ abstract class CategoryPickerLayoutChecks(
             assertNoWordSplits(recorder)
         }
         PickerModes.forEach { mode -> checkDialog(mode) }
+        checkDialogDoesNotShift()
+    }
+
+    /**
+     * Switching Klasik / Pratik / Hardcore moves nothing: the description area is as tall as the longest of the three
+     * sentences, the Süre label, its box and OYNA keep their top edge (Pratik dims Süre in place, no second line).
+     */
+    private fun checkDialogDoesNotShift() {
+        val tops = PickerModes.map { mode ->
+            var tops: List<Float> = emptyList()
+            runComposeUiTest {
+                show(PickerSampleState.withDialog(mode))
+                waitForIdle()
+                tops =
+                    listOf(timeLabel, TIME_BOX, play).map { onNode(hasText(it)).fetchSemanticsNode().boundsInRoot.top }
+            }
+            mode to tops
+        }
+        val first = tops.first().second
+        tops.forEach { (mode, top) ->
+            assertEquals(first, top, "Süre label, Süre box and OYNA tops of $mode differ from ${tops.first().first}")
+        }
     }
 
     /** OYNA is on screen without scrolling; the last choice (7:00) scrolls into view and OYNA stays put. */
@@ -127,29 +151,30 @@ abstract class CategoryPickerLayoutChecks(
     private companion object {
         const val MIN_TOUCH_DP = 48f
         const val LAST_TIME = "7:00"
+        const val TIME_BOX = "3:00"
 
         /** The last locked exam card (`LockedExamIds`); its description is the same in both languages. */
         const val LOCKED_LAST = "IELTS"
     }
 }
 
-private val TR = arrayOf("Geri", "B2 seviyesi", "Karışık", "OYNA")
-private val EN = arrayOf("Back", "Level B2", "Mixed", "PLAY")
+private val TR = arrayOf("Geri", "B2 seviyesi", "Karışık", "OYNA", "SÜRE")
+private val EN = arrayOf("Back", "Level B2", "Mixed", "PLAY", "TIME")
 
 @Config(sdk = [36], qualifiers = "tr-xhdpi")
-class CategoryPickerLayoutTr100Test : CategoryPickerLayoutChecks(TR[0], TR[1], TR[2], TR[3])
+class CategoryPickerLayoutTr100Test : CategoryPickerLayoutChecks(TR[0], TR[1], TR[2], TR[3], TR[4])
 
 @Config(sdk = [36], qualifiers = "tr-xhdpi", fontScale = 1.3f)
-class CategoryPickerLayoutTr130Test : CategoryPickerLayoutChecks(TR[0], TR[1], TR[2], TR[3])
+class CategoryPickerLayoutTr130Test : CategoryPickerLayoutChecks(TR[0], TR[1], TR[2], TR[3], TR[4])
 
 @Config(sdk = [36], qualifiers = "tr-xhdpi", fontScale = 2.0f)
-class CategoryPickerLayoutTr200Test : CategoryPickerLayoutChecks(TR[0], TR[1], TR[2], TR[3])
+class CategoryPickerLayoutTr200Test : CategoryPickerLayoutChecks(TR[0], TR[1], TR[2], TR[3], TR[4])
 
 @Config(sdk = [36], qualifiers = "en-xhdpi")
-class CategoryPickerLayoutEn100Test : CategoryPickerLayoutChecks(EN[0], EN[1], EN[2], EN[3])
+class CategoryPickerLayoutEn100Test : CategoryPickerLayoutChecks(EN[0], EN[1], EN[2], EN[3], EN[4])
 
 @Config(sdk = [36], qualifiers = "en-xhdpi", fontScale = 1.3f)
-class CategoryPickerLayoutEn130Test : CategoryPickerLayoutChecks(EN[0], EN[1], EN[2], EN[3])
+class CategoryPickerLayoutEn130Test : CategoryPickerLayoutChecks(EN[0], EN[1], EN[2], EN[3], EN[4])
 
 @Config(sdk = [36], qualifiers = "en-xhdpi", fontScale = 2.0f)
-class CategoryPickerLayoutEn200Test : CategoryPickerLayoutChecks(EN[0], EN[1], EN[2], EN[3])
+class CategoryPickerLayoutEn200Test : CategoryPickerLayoutChecks(EN[0], EN[1], EN[2], EN[3], EN[4])

@@ -10,7 +10,8 @@ import org.junit.runner.RunWith
  * Generates `androidApp/src/release/generated/baselineProfiles/` (ADR 0025):
  * `./gradlew :androidApp:generateBaselineProfile` (managed device, CI `perf.yml`). Only [startup] (cold launch to Home)
  * goes into the startup profile; [screens] (the perf tour) adds the first frames of every main screen and the game to
- * the baseline profile only.
+ * the baseline profile only; [videoFlow] adds the video flow's first card flip, dialog, letter morph and board entrance
+ * (the first flip of a fresh install used to stutter while those classes were still interpreted).
  */
 @RunWith(AndroidJUnit4::class)
 class BaselineProfileGenerator {
@@ -30,6 +31,14 @@ class BaselineProfileGenerator {
         startActivityAndWait()
         completeOnboardingIfShown()
         runPerfTour(loops = TOUR_LOOPS)
+    }
+
+    @Test
+    fun videoFlow() = rule.collect(packageName = PACKAGE_NAME, includeInStartupProfile = false, maxIterations = 3) {
+        pressHome()
+        startActivityAndWait()
+        completeOnboardingIfShown()
+        runVideoFlowTour()
     }
 
     private companion object {
