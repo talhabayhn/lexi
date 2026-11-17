@@ -93,3 +93,10 @@ configurations.consumable("contentDbElements") {
         builtBy(generateContentDb)
     }
 }
+
+// ShippedCategoryWheelTest builds wheels from the real content/ (thin-category regression, GAME_RULES.md §1).
+tasks.named<Test>("test") {
+    val contentDir = rootProject.layout.projectDirectory.dir("content")
+    inputs.dir(contentDir).withPathSensitivity(PathSensitivity.RELATIVE).withPropertyName("shippedContent")
+    systemProperty("lexi.contentDir", contentDir.asFile.path)
+}

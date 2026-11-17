@@ -28,6 +28,8 @@ import dev.talhabayhan.lexi.core.domain.repository.SessionRepository
 import dev.talhabayhan.lexi.core.domain.session.FinishGame
 import dev.talhabayhan.lexi.core.domain.session.SessionResult
 import dev.talhabayhan.lexi.core.domain.srs.CardProgress
+import dev.talhabayhan.lexi.core.domain.stats.LevelProgress
+import dev.talhabayhan.lexi.core.domain.stats.Stats
 import dev.talhabayhan.lexi.core.domain.telemetry.AnalyticsEvent
 import dev.talhabayhan.lexi.core.testing.FakeAnalyticsTracker
 import dev.talhabayhan.lexi.core.testing.FakeAppClock
@@ -496,33 +498,71 @@ class GameViewModelTest {
 
     @Test
     fun `a category wheel skips letters without a card and counts them as neither right nor wrong`() = runTest {
-        cards.cards = listOf(
-            testCard("APPLE"),
-            testCard("BREAD", category = "home"),
-            testCard("CHAIR", category = "home"),
-        )
+        // "home" has 13 letters (B..N), the minimum, so A is not filled from the level (GAME_RULES §1).
+        cards.cards = listOf(testCard("APPLE")) + ('B'..'N').map { testCard("${it}HOME", category = "home") }
         val vm = viewModel(gameRoute = GameRoute(Level.A1, GameMode.CLASSIC, CategoryId("home"))).also {
             runCurrent()
             it.onIntent(GameIntent.Foreground)
         }
 
         // A has no card in "home": its slot is SKIPPED, not shown, and the first turn is B.
-        assertEquals(listOf('B', 'C'), vm.state.value.wheel.map { it.letter })
+        assertEquals(('B'..'N').toList(), vm.state.value.wheel.map { it.letter })
         assertEquals('B', vm.state.value.turn?.letter)
         vm.effects.test {
-            vm.type("BREAD")
-            vm.type("CHAIR")
+            ('B'..'N').forEach { vm.type("${it}HOME") }
             runCurrent()
 
-            // Both playable letters answered: the wheel is complete although 24 slots were skipped.
+            // Every playable letter answered: the wheel is complete although 13 slots were skipped.
             val result = awaitResult()
             assertEquals("home", result.category)
-            assertEquals(listOf(2, 0, 0), listOf(result.correct, result.wrong, result.passed))
+            assertEquals(listOf(13, 0, 0), listOf(result.correct, result.wrong, result.passed))
             val session = sessions.sessions.single()
             assertEquals(CategoryId("home"), session.category)
             assertTrue(session.completed)
-            assertEquals(listOf(2, 0, 0), listOf(session.correct, session.wrong, session.passed))
+            assertEquals(listOf(13, 0, 0), listOf(session.correct, session.wrong, session.passed))
         }
+    }
+
+    @Test
+    fun `a thin category plays the whole wheel and its filled cards count toward their own category`() = runTest {
+        // Regression (one-letter game): "home" has 2 letters, below the 13 minimum, so A and D come from the level.
+        val apple = testCard("APPLE")
+        val door = testCard("DOOR", category = "things")
+        val home = listOf(testCard("BREAD", category = "home"), testCard("CHAIR", category = "home"))
+        cards.cards = listOf(apple, door) + home
+        val vm = viewModel(gameRoute = GameRoute(Level.A1, GameMode.CLASSIC, CategoryId("home"))).also {
+            runCurrent()
+            it.onIntent(GameIntent.Foreground)
+        }
+
+        assertNull(vm.state.value.loadError)
+        assertEquals(listOf('A', 'B', 'C', 'D'), vm.state.value.wheel.map { it.letter })
+        assertEquals('A', vm.state.value.turn?.letter)
+        vm.effects.test {
+            vm.type("APPLE")
+            // One answer no longer ends the game (it used to leave no open letter: completed + time bonus).
+            runCurrent()
+            assertEquals('B', vm.state.value.turn?.letter)
+            assertTrue(sessions.sessions.isEmpty())
+            vm.type("BREAD")
+            vm.type("CHAIR")
+            vm.type("DOOR")
+            runCurrent()
+
+            val result = awaitResult()
+            assertEquals("home", result.category)
+            assertEquals(listOf(4, 0, 0), listOf(result.correct, result.wrong, result.passed))
+            assertEquals(CategoryId("home"), sessions.sessions.single().category)
+        }
+        // The filled cards get normal progress rows; the category bar counts each card toward its own category.
+        val answered = progress.progress
+        assertEquals(setOf(apple.id, door.id) + home.map { it.id }, answered.keys)
+        assertTrue(answered.values.all { it.seen == 1 && it.correct == 1 })
+        val categoryOf = (listOf(apple, door) + home).associate { it.id to it.category }
+        val byCategory = Stats.categoryProgress(answered.values, categoryOf)
+        assertEquals(LevelProgress(learned = 2, total = 2), byCategory[CategoryId("home")])
+        assertEquals(LevelProgress(learned = 1, total = 1), byCategory[CategoryId("food-drink")])
+        assertEquals(LevelProgress(learned = 1, total = 1), byCategory[CategoryId("things")])
     }
 
     @Test

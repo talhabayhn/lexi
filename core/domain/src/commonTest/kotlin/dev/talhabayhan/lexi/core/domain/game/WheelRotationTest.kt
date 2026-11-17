@@ -237,7 +237,9 @@ class WheelRotationTest {
 
     @Test
     fun `a letter without category cards stays skipped and history-free category wheels are unchanged`() {
-        val pool = animalsAndHomeOnA() + letterCards('B', starts = 5, contains = 0, category = "home")
+        // Animals on A and C..N: 13 letters, the minimum, so B is not filled from the level (thin-category fill, §1).
+        val pool = animalsAndHomeOnA() + letterCards('B', starts = 5, contains = 0, category = "home") +
+            ('C'..'N').flatMap { letterCards(it, starts = 1, contains = 0, category = "animals") }
         val history = CardHistory(pool.associate { it.id to START - HOUR }, START)
         fun wheel(mode: GameMode, h: CardHistory) = WheelGenerator.generate(
             pool,

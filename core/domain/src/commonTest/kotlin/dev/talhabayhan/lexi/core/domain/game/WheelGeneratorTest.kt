@@ -415,6 +415,198 @@ class WheelGeneratorTest {
 
     // endregion
 
+    // region thin category fill (GAME_RULES.md §1, owner decision 2026-11-17)
+
+    private val falseFriends = CategoryId("false-friends")
+
+    /** [letters] category cards (one per letter, distinct answers), all A1 like [triplePool]. */
+    private fun categoryCards(letters: Iterable<Char>, category: String = "false-friends"): List<Card> =
+        letters.map { card("${it}CAT", category = category) }
+
+    @Test
+    fun `a one-card category fills every other letter from the level`() {
+        val own = card("EVENTUALLY", category = "false-friends")
+        val pool = triplePool + own
+
+        for (seed in 1L..50L) {
+            val wheel = generate(pool = pool, seed = seed, category = falseFriends)
+            assertEquals(26, wheel.playableSlots.size, "seed $seed")
+            assertEquals(own, wheel.slots[wheel.indexOf('E')].card, "seed $seed")
+            assertTrue(wheel.slots.filter { it.letter != 'E' }.all { it.card!!.category != falseFriends })
+            val picked = wheel.playableSlots.map { it.card!! }
+            assertEquals(picked.size, picked.distinctBy { it.id }.size, "seed $seed")
+            assertEquals(picked.size, picked.distinctBy { it.answer }.size, "seed $seed")
+        }
+    }
+
+    @Test
+    fun `a thin category keeps its own card on every letter it has`() {
+        // Like Müzik B1: 9 letters, some with two cards.
+        val ownLetters = "BCDGHMPRS".toList()
+        val own = categoryCards(ownLetters) + categoryCards("BMS".toList()).map {
+            it.copy(id = CardId("${it.id.value}-2"), answer = "${it.answer}S")
+        }
+
+        for (seed in 1L..50L) {
+            val wheel = generate(pool = triplePool + own, seed = seed, category = falseFriends)
+            assertEquals(26, wheel.playableSlots.size, "seed $seed")
+            for (slot in wheel.slots) {
+                assertEquals(
+                    slot.letter in ownLetters,
+                    slot.card!!.category == falseFriends,
+                    "seed $seed ${slot.letter}",
+                )
+            }
+        }
+    }
+
+    @Test
+    fun `a thin category wheel picks like a mixed wheel of its own cards plus the level's other letters`() {
+        // One nextInt per playable letter in A-Z order: the fill draws exactly like a mixed wheel over the same cards.
+        val ownLetters = "AEKQZ".toList()
+        val own = categoryCards(ownLetters)
+        val equivalent = own + triplePool.filter { it.letter !in ownLetters }
+
+        for (seed in 1L..50L) {
+            assertEquals(
+                generate(pool = equivalent, seed = seed, category = CategoryId.MIXED),
+                generate(pool = triplePool + own, seed = seed, category = falseFriends),
+                "seed $seed",
+            )
+        }
+    }
+
+    @Test
+    fun `a category at the minimum letter count is unchanged`() {
+        val own = categoryCards('A'..'M')
+        assertEquals(GameConfig().minCategoryLetters, own.size)
+
+        for (seed in 1L..50L) {
+            val wheel = generate(pool = triplePool + own, seed = seed, category = falseFriends)
+            // The level's cards change nothing: the wheel is the one built from the category alone.
+            assertEquals(generate(pool = own, seed = seed, category = falseFriends), wheel, "seed $seed")
+            assertEquals(13, wheel.playableSlots.size)
+            assertTrue(wheel.slots.filter { it.letter > 'M' }.all { it.state == SlotState.SKIPPED })
+        }
+    }
+
+    @Test
+    fun `a category at the minimum keeps letters without a category card skipped even with history`() {
+        val own = categoryCards('A'..'M')
+        val wheel = generate(pool = triplePool + own, category = falseFriends, recentlySeen = triplePool.toSet())
+
+        assertEquals(13, wheel.playableSlots.size)
+        assertTrue(wheel.playableSlots.all { it.card!!.category == falseFriends })
+    }
+
+    @Test
+    fun `the minimum letter count comes from the config`() {
+        val own = categoryCards('A'..'M')
+        val wheel = WheelGenerator.generate(
+            pool = triplePool + own,
+            level = Level.A1,
+            category = falseFriends,
+            mode = GameMode.CLASSIC,
+            random = wheelRandom(42L),
+            config = GameConfig(minCategoryLetters = 14),
+        )
+
+        assertEquals(26, wheel.playableSlots.size)
+        assertFailsWith<IllegalArgumentException> { GameConfig(minCategoryLetters = 0) }
+        assertFailsWith<IllegalArgumentException> { GameConfig(minCategoryLetters = 27) }
+    }
+
+    @Test
+    fun `a category without cards stays empty`() {
+        val wheel = generate(pool = triplePool, category = falseFriends)
+
+        assertTrue(wheel.playableSlots.isEmpty())
+        assertEquals(26, wheel.slots.size)
+    }
+
+    @Test
+    fun `a thin category fills only from its own level`() {
+        val pool = fullAlphabetPool(level = Level.B1, suffix = "BB").filter { it.letter < 'N' } +
+            fullAlphabetPool(level = Level.B2, suffix = "CC") +
+            card("ECAT", level = Level.B1, category = "false-friends")
+
+        val wheel = generate(pool = pool, level = Level.B1, category = falseFriends)
+
+        assertEquals(13, wheel.playableSlots.size)
+        assertTrue(wheel.playableSlots.all { it.card!!.level == Level.B1 })
+    }
+
+    @Test
+    fun `a filled letter avoids recently seen level cards and prefers starts cards`() {
+        val own = card("EVENTUALLY", category = "false-friends")
+        val seen = triplePool.filterNot { it.answer.endsWith("TWO") }.toSet()
+
+        for (seed in 1L..20L) {
+            val wheel = generate(pool = triplePool + own, seed = seed, category = falseFriends, recentlySeen = seen)
+            assertTrue(
+                wheel.slots.filter { it.letter != 'E' }.all { it.card!!.answer.endsWith("TWO") },
+                "seed $seed",
+            )
+        }
+        val withContains = mixedRulePool + card("EVENTUALLY", category = "false-friends")
+        for (seed in 1L..20L) {
+            val wheel = generate(pool = withContains, seed = seed, category = falseFriends)
+            assertTrue(wheel.slots.all { it.rule == LetterRule.STARTS }, "seed $seed")
+        }
+    }
+
+    @Test
+    fun `a filled letter never takes the answer of a category card`() {
+        // ANNOY is the category's card on Y (CONTAINS); the level also has an ANNOY on A, which comes first.
+        val own = card("ANNOY", letter = 'Y', category = "false-friends", id = "a1-annoy-ff")
+        val pool = triplePool + card("ANNOY", id = "a1-annoy")
+
+        for (seed in 1L..50L) {
+            val wheel = generate(pool = pool + own, seed = seed, category = falseFriends)
+            assertNotEquals("ANNOY", wheel.slots[wheel.indexOf('A')].card!!.answer, "seed $seed")
+            assertEquals(own, wheel.slots[wheel.indexOf('Y')].card, "seed $seed")
+        }
+    }
+
+    @Test
+    fun `a thin category wheel is deterministic per seed whatever the pool order`() {
+        val pool = triplePool + categoryCards("BCDGHMPRS".toList())
+
+        for (seed in 1L..20L) {
+            val wheel = generate(pool = pool, seed = seed, category = falseFriends)
+            assertEquals(wheel, generate(pool = pool.reversed(), seed = seed, category = falseFriends))
+            assertEquals(
+                wheel,
+                generate(pool = SeededRandom(seed).shuffled(pool), seed = seed, category = falseFriends),
+            )
+        }
+        assertNotEquals(
+            generate(pool = pool, seed = 1L, category = falseFriends),
+            generate(pool = pool, seed = 2L, category = falseFriends),
+        )
+    }
+
+    @Test
+    fun `property - a category wheel is filled exactly when it has fewer letters than the minimum`() {
+        val random = SeededRandom(2026L)
+        repeat(200) { run ->
+            val count = random.nextInt(27)
+            val ownLetters = random.shuffled(('A'..'Z').toList()).take(count).toSet()
+            val own = categoryCards(ownLetters)
+            val seed = random.nextLong()
+
+            val wheel = generate(pool = triplePool + own, seed = seed, category = falseFriends)
+
+            val expected = if (count in 1 until GameConfig().minCategoryLetters) 26 else count
+            assertEquals(expected, wheel.playableSlots.size, "run $run, $count letters")
+            assertTrue(wheel.slots.filter { it.letter in ownLetters }.all { it.card!!.category == falseFriends })
+            val answers = wheel.playableSlots.map { it.card!!.answer }
+            assertEquals(answers.size, answers.toSet().size, "run $run")
+        }
+    }
+
+    // endregion
+
     private companion object {
         const val DAY = 86_400_000L
         const val NOW = 1_000 * DAY

@@ -176,6 +176,10 @@ How the compiler applies them (`tools/content-compiler`, every error is `file:li
 | `phrasal-verbs` | Phrasal verbs | B2, C1 |
 | `general` | Genel | NAT (neutral bucket of every NAT card; hidden from the category list, NAT has no category selection) |
 
+Minimum category size: a category × level pair with cards on fewer than 13 letters (⚙ `minCategoryLetters`) is
+played with the level's cards on its other letters (`GAME_RULES.md` §1, thin category fill), so it stays playable
+but is not really "that category"; aim for 13+ letters per listed level (the report's category × level table).
+
 ## 5. Volume targets (v1.0)
 | Level | Cards | Notes |
 |---|---|---|
