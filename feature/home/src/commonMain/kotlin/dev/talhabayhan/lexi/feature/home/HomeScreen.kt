@@ -37,6 +37,7 @@ import dev.talhabayhan.lexi.core.designsystem.component.DailyCardStatus
 import dev.talhabayhan.lexi.core.designsystem.component.DailyWheelCard
 import dev.talhabayhan.lexi.core.designsystem.component.DecorShapeKind
 import dev.talhabayhan.lexi.core.designsystem.component.DuelHomeBox
+import dev.talhabayhan.lexi.core.designsystem.component.FitLine
 import dev.talhabayhan.lexi.core.designsystem.component.FlowDefaults
 import dev.talhabayhan.lexi.core.designsystem.component.LexiLogo
 import dev.talhabayhan.lexi.core.designsystem.component.LexiLogoSize
@@ -45,6 +46,7 @@ import dev.talhabayhan.lexi.core.designsystem.component.PlayCard
 import dev.talhabayhan.lexi.core.designsystem.component.PlayCardMode
 import dev.talhabayhan.lexi.core.designsystem.component.RuledBottomBar
 import dev.talhabayhan.lexi.core.designsystem.component.SlidingToast
+import dev.talhabayhan.lexi.core.designsystem.component.WithCappedFontScale
 import dev.talhabayhan.lexi.core.designsystem.component.menuTileMinWidth
 import dev.talhabayhan.lexi.core.designsystem.icon.LexiIcons
 import dev.talhabayhan.lexi.core.designsystem.modifier.lexiHeading
@@ -221,29 +223,41 @@ private val HomeUiState.classicMinutes: Int get() = classicTimeLimitSeconds / SE
 
 private const val SECONDS_PER_MINUTE = 60
 
-/** Logo left, total points right ("12.480" over "toplam puan"); the points are one node read with their label. */
+/**
+ * Logo left, total points right ("12.480" over "toplam puan"); the points are one node read with their label. The
+ * text follows the font size up to 1.3× and each line shrinks instead of wrapping, so the header stays two short lines
+ * and never pushes the play card down.
+ */
 @Composable
 private fun Header(totalScore: Long) {
     val colors = LexiTheme.colors
     val separator = stringResource(Res.string.home_thousands_separator)
     val total = remember(totalScore, separator) { groupThousands(totalScore, separator) }
     val description = stringResource(Res.string.home_total_points_description, total)
-    Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+    Row(
+        Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
         LexiLogo(size = LexiLogoSize.Header)
-        Spacer(Modifier.weight(1f))
-        Column(
-            modifier = Modifier.padding(start = LexiTheme.dimens.gap12).clearAndSetSemantics {
-                contentDescription = description
-            },
-            horizontalAlignment = Alignment.End,
-        ) {
-            Text(total, style = LexiTheme.typography.heading24, color = colors.ink, textAlign = TextAlign.End)
-            Text(
-                stringResource(Res.string.home_total_points),
-                style = LexiTheme.typography.caption12SemiBold,
-                color = colors.inkMuted,
-                textAlign = TextAlign.End,
-            )
+        WithCappedFontScale(FlowDefaults.CONTROL_FONT_SCALE_CAP) {
+            // Only as wide as the points (the spoken node's focus box), but never wider than the room beside the logo.
+            Column(
+                modifier = Modifier.weight(
+                    1f,
+                    fill = false,
+                ).padding(start = LexiTheme.dimens.gap12).clearAndSetSemantics {
+                    contentDescription = description
+                },
+                horizontalAlignment = Alignment.End,
+            ) {
+                FitLine(total, LexiTheme.typography.heading24.copy(textAlign = TextAlign.End), colors.ink)
+                FitLine(
+                    stringResource(Res.string.home_total_points),
+                    LexiTheme.typography.caption12SemiBold.copy(textAlign = TextAlign.End),
+                    colors.inkMuted,
+                )
+            }
         }
     }
 }

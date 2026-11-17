@@ -1,5 +1,6 @@
 package dev.talhabayhan.lexi.feature.home
 
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.semantics.SemanticsActions
 import androidx.compose.ui.semantics.SemanticsNode
 import androidx.compose.ui.semantics.SemanticsProperties
@@ -11,6 +12,9 @@ import androidx.compose.ui.test.hasContentDescription
 import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.onRoot
 import androidx.compose.ui.test.runComposeUiTest
+import dev.talhabayhan.lexi.core.designsystem.text.LocalTextLayoutProbe
+import dev.talhabayhan.lexi.core.designsystem.text.WordSplitRecorder
+import dev.talhabayhan.lexi.core.designsystem.text.textWordProblems
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiViewport
 import org.junit.Test
@@ -22,8 +26,9 @@ import kotlin.test.assertTrue
 
 /**
  * Home at 320 × 568, 360 × 640, 390 × 844 and 412 × 915, font scale 1.0 / 1.3 / 2.0, Turkish and English: the play
- * card and the bottom bar are fully on screen without scrolling (the rest scrolls), and every button is at least 48dp
- * high (`video-flow-notes.md` §1; the onboarding lesson: primary actions never cut off).
+ * card and the bottom bar are fully on screen without scrolling (the rest scrolls), every button is at least 48dp high
+ * (`video-flow-notes.md` §1; the onboarding lesson: primary actions never cut off), and no label (points, mode boxes,
+ * badge, bar labels, tiles) breaks a word across lines or is cut off.
  */
 @OptIn(ExperimentalTestApi::class)
 @RunWith(RobolectricTestRunner::class)
@@ -45,8 +50,20 @@ abstract class HomeLayoutChecks(private val play: String, private val barItems: 
     @Config(qualifiers = "+w412dp-h915dp")
     fun w412h915() = check()
 
-    private fun check() = runComposeUiTest {
-        setContent { LexiTheme(reducedMotion = true) { LexiViewport { HomeScreen(HomeSampleState, onIntent = {}) } } }
+    private fun check() {
+        check(HomeSampleState)
+        // The completed daily card: the longer description and the "Tamamlandı" badge.
+        val played = DailyCardState.AlreadyPlayed(score = 1840, hoursUntilNext = 5, minutesUntilNext = 12)
+        check(HomeSampleState.copy(dailyState = played))
+    }
+
+    private fun check(state: HomeUiState) = runComposeUiTest {
+        val recorder = WordSplitRecorder()
+        setContent {
+            CompositionLocalProvider(LocalTextLayoutProbe provides recorder) {
+                LexiTheme(reducedMotion = true) { LexiViewport { HomeScreen(state, onIntent = {}) } }
+            }
+        }
         val rootHeight = onRoot().fetchSemanticsNode().size.height.toFloat()
         val bars = barItems.map { label ->
             onNode(hasContentDescription(label).or(hasText(label))).fetchSemanticsNode().also { node ->
@@ -57,6 +74,14 @@ abstract class HomeLayoutChecks(private val play: String, private val barItems: 
         val barTop = bars.minOf { it.positionInRoot.y }
         assertOnScreen(onNode(hasContentDescription(play, substring = true)).fetchSemanticsNode(), play, barTop)
         assertButtonsTallEnough()
+        assertNoWordSplits(recorder)
+    }
+
+    /** Every label, also those hidden behind a component's content description, keeps its words whole. */
+    private fun ComposeUiTest.assertNoWordSplits(recorder: WordSplitRecorder) {
+        waitForIdle()
+        val problems = recorder.problems + onRoot(useUnmergedTree = true).fetchSemanticsNode().textWordProblems()
+        assertTrue(problems.isEmpty(), "words broken or cut: ${problems.distinct()}")
     }
 
     private fun assertOnScreen(node: SemanticsNode, label: String, bottomLimit: Float) {

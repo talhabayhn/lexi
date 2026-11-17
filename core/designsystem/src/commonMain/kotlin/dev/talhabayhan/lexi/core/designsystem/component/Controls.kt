@@ -121,6 +121,11 @@ public fun SegmentedControl(
      * segments stay in the semantics tree, disabled, so the row is still announced.
      */
     enabled: Boolean = true,
+    /**
+     * One-line titles shrink to fit their segment ([FitLine]) instead of wrapping, so a word is never broken (the video
+     * flow's mode / time dialog at large font sizes). Off: a title that does not fit wraps.
+     */
+    fitTitle: Boolean = false,
 ) {
     val colors = LexiTheme.colors
     val frameMuted = colors.borderMuted
@@ -178,7 +183,9 @@ public fun SegmentedControl(
                 // Wrapped lines are centred per line; the one-line case keeps the default alignment (design pixels).
                 var titleWrapped by remember { mutableStateOf(false) }
                 val wrapAlign = if (titleWrapped) TextAlign.Center else TextAlign.Unspecified
-                if (segment.subtitle == null) {
+                if (segment.subtitle == null && fitTitle) {
+                    FitLine(segment.title, titleStyle ?: typography.bodyStrong14, titleColor)
+                } else if (segment.subtitle == null) {
                     Text(
                         segment.title,
                         style = titleStyle ?: typography.bodyStrong14,

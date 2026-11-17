@@ -47,7 +47,9 @@ each with a `@Preview` and a Roborazzi screenshot. Feature screens compose ONLY 
 | `PickerCard` | open (radio button or button), selected, locked (dimmed art, lock badge, "YAKINDA") | "Çarkını seç" card: 95dp art field + 3dp rule, name, `learned / total` + 6dp bar, s4 |
 | `CategoryArt` / `ExamArt` | 20 category kinds (Karışık + 19), 5 exam kinds, locked | Canvas `Path`s built once in `drawWithCache`, 163 × 95 art box (cover); first draft of `art_v3.png`, **needs design** |
 | `ScrollToTopPill` | — | ink pill, cream text + up arrow, ≥ 48dp |
-| `SegmentedControl` (video flow) | `role` RadioButton, `enabled = false` (muted frame and text, nothing selected) | the dialog's mode and time rows, 48dp |
+| `SegmentedControl` (video flow) | `role` RadioButton, `enabled = false` (muted frame and text, nothing selected), `fitTitle` (one-line titles shrink instead of wrapping) | the dialog's mode and time rows, 48dp |
+| `FitLine` / `WordSafeText` | one line that shrinks; text that wraps only between words and shrinks when a word (or `maxLines`) does not fit | pinned labels (points, mode boxes, chips, bar labels, card names, dialog title); `text/WordSafeText.kt` |
+| `WordSplitRecorder` / `textWordProblems` | — | layout-test helpers: a label that breaks a word across lines or is cut off fails the test (Home and "Çarkını seç" layout matrices) |
 
 Implemented in `core/designsystem/.../component`; sizes from the screens live in `XxxDefaults` objects next to each
 component. Screenshots: `ComponentGallery.png` reproduces 16-components at its own size and 2x, and

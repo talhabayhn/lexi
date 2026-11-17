@@ -41,16 +41,19 @@ import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.isTraversalGroup
 import androidx.compose.ui.semantics.paneTitle
 import androidx.compose.ui.semantics.semantics
+import dev.talhabayhan.lexi.core.designsystem.component.FlowDefaults
 import dev.talhabayhan.lexi.core.designsystem.component.IconButtonDefaults
 import dev.talhabayhan.lexi.core.designsystem.component.LexiButton
 import dev.talhabayhan.lexi.core.designsystem.component.NavSquareButton
 import dev.talhabayhan.lexi.core.designsystem.component.Segment
 import dev.talhabayhan.lexi.core.designsystem.component.SegmentedControl
+import dev.talhabayhan.lexi.core.designsystem.component.WithCappedFontScale
 import dev.talhabayhan.lexi.core.designsystem.format.formatClock
 import dev.talhabayhan.lexi.core.designsystem.icon.LexiIcons
 import dev.talhabayhan.lexi.core.designsystem.modifier.lexiSurface
 import dev.talhabayhan.lexi.core.designsystem.motion.FlowMorphKeys
 import dev.talhabayhan.lexi.core.designsystem.motion.morphAnchor
+import dev.talhabayhan.lexi.core.designsystem.text.WordSafeText
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiMotion
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.core.designsystem.theme.lexiContentWidth
@@ -157,78 +160,97 @@ private fun DialogPanel(
                 paneTitle = name
                 isTraversalGroup = true
             }
-            .verticalScroll(rememberScrollState())
             .padding(dimens.gap16),
     ) {
-        Row(
-            horizontalArrangement = Arrangement.spacedBy(dimens.gap12),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            NavSquareButton(
-                icon = LexiIcons.Back,
-                contentDescription = stringResource(Res.string.dialog_close),
-                onClick = { onIntent(CategoryPickerIntent.CloseDialog) },
-                size = IconButtonDefaults.NavSizeLarge,
+        // The back arrow and OYNA stay pinned; the choices between them scroll when the panel does not fit (small
+        // phones, large fonts).
+        DialogHeader(name, stringResource(Res.string.dialog_meta, state.level.name, card.total, card.learned)) {
+            onIntent(CategoryPickerIntent.CloseDialog)
+        }
+        Column(Modifier.weight(1f, fill = false).verticalScroll(rememberScrollState())) {
+            SectionLabel(Res.string.dialog_mode_label)
+            val modeIndex = PickerModes.indexOf(state.mode).coerceAtLeast(0)
+            WithCappedFontScale(FlowDefaults.CONTROL_FONT_SCALE_CAP) {
+                SegmentedControl(
+                    segments = PickerModes.map { Segment(stringResource(it.titleRes())) },
+                    selectedIndex = modeIndex,
+                    onSelect = { onIntent(CategoryPickerIntent.SelectMode(PickerModes[it])) },
+                    height = LexiTheme.dimens.minTouchTargetAccessible,
+                    role = Role.RadioButton,
+                    titleStyle = typography.bodyStrong16,
+                    fitTitle = true,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+            }
+            Text(
+                stringResource(state.mode.hintRes()),
+                style = typography.body14,
+                color = colors.ink,
+                modifier = Modifier.padding(top = dimens.gap8),
             )
-            Column {
-                Text(name, style = typography.heading22, color = colors.ink)
+            SectionLabel(Res.string.dialog_time_label)
+            WithCappedFontScale(FlowDefaults.CONTROL_FONT_SCALE_CAP) {
+                SegmentedControl(
+                    segments = state.timeOptions.map { Segment(formatClock(it)) },
+                    selectedIndex = state.timeOptions.indexOf(state.timeSeconds),
+                    onSelect = { onIntent(CategoryPickerIntent.SelectTime(state.timeOptions[it])) },
+                    height = LexiTheme.dimens.minTouchTargetAccessible,
+                    role = Role.RadioButton,
+                    enabled = state.timeEnabled,
+                    titleStyle = typography.bodyStrong16,
+                    fitTitle = true,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+            }
+            if (!state.timeEnabled) {
                 Text(
-                    stringResource(Res.string.dialog_meta, state.level.name, card.total, card.learned),
+                    stringResource(Res.string.dialog_time_none),
                     style = typography.caption12SemiBold,
-                    color = colors.ink,
+                    color = colors.inkMuted,
+                    modifier = Modifier.padding(top = dimens.gap6),
                 )
             }
         }
-        SectionLabel(Res.string.dialog_mode_label)
-        val modeIndex = PickerModes.indexOf(state.mode).coerceAtLeast(0)
-        SegmentedControl(
-            segments = PickerModes.map { Segment(stringResource(it.titleRes())) },
-            selectedIndex = modeIndex,
-            onSelect = { onIntent(CategoryPickerIntent.SelectMode(PickerModes[it])) },
-            height = LexiTheme.dimens.minTouchTargetAccessible,
-            role = Role.RadioButton,
-            titleStyle = typography.bodyStrong16,
-            modifier = Modifier.fillMaxWidth(),
-        )
-        Text(
-            stringResource(state.mode.hintRes()),
-            style = typography.body14,
-            color = colors.ink,
-            modifier = Modifier.padding(top = dimens.gap8),
-        )
-        SectionLabel(Res.string.dialog_time_label)
-        SegmentedControl(
-            segments = state.timeOptions.map { Segment(formatClock(it)) },
-            selectedIndex = state.timeOptions.indexOf(state.timeSeconds),
-            onSelect = { onIntent(CategoryPickerIntent.SelectTime(state.timeOptions[it])) },
-            height = LexiTheme.dimens.minTouchTargetAccessible,
-            role = Role.RadioButton,
-            enabled = state.timeEnabled,
-            titleStyle = typography.bodyStrong16,
-            modifier = Modifier.fillMaxWidth(),
-        )
-        if (!state.timeEnabled) {
-            Text(
-                stringResource(Res.string.dialog_time_none),
-                style = typography.caption12SemiBold,
-                color = colors.inkMuted,
-                modifier = Modifier.padding(top = dimens.gap6),
-            )
+        WithCappedFontScale(FlowDefaults.CONTROL_FONT_SCALE_CAP) {
+            LexiButton(
+                onClick = { onIntent(CategoryPickerIntent.Play) },
+                modifier = Modifier
+                    .padding(top = dimens.gap18)
+                    .fillMaxWidth()
+                    .morphAnchor(FlowMorphKeys.PLAY_BUTTON),
+            ) {
+                Text(stringResource(Res.string.dialog_play), style = typography.button24, color = colors.white)
+                Icon(
+                    LexiIcons.Play,
+                    contentDescription = null,
+                    tint = colors.white,
+                    modifier = Modifier.padding(start = dimens.gap10).size(IconButtonDefaults.IconSizeMedium),
+                )
+            }
         }
-        LexiButton(
-            onClick = { onIntent(CategoryPickerIntent.Play) },
-            modifier = Modifier
-                .padding(top = dimens.gap18)
-                .fillMaxWidth()
-                .morphAnchor(FlowMorphKeys.PLAY_BUTTON),
-        ) {
-            Text(stringResource(Res.string.dialog_play), style = typography.button24, color = colors.white)
-            Icon(
-                LexiIcons.Play,
-                contentDescription = null,
-                tint = colors.white,
-                modifier = Modifier.padding(start = dimens.gap10).size(IconButtonDefaults.IconSizeMedium),
-            )
+    }
+}
+
+/** Back arrow, the card's name and "B2 · 20 kelime · 6 öğrenildi"; capped at 1.3× so a word never breaks. */
+@Composable
+private fun DialogHeader(name: String, meta: String, onClose: () -> Unit) {
+    val colors = LexiTheme.colors
+    val typography = LexiTheme.typography
+    Row(
+        horizontalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap12),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        NavSquareButton(
+            icon = LexiIcons.Back,
+            contentDescription = stringResource(Res.string.dialog_close),
+            onClick = onClose,
+            size = IconButtonDefaults.NavSizeLarge,
+        )
+        WithCappedFontScale(FlowDefaults.CONTROL_FONT_SCALE_CAP) {
+            Column {
+                WordSafeText(name, typography.heading22, colors.ink)
+                WordSafeText(meta, typography.caption12SemiBold, colors.ink)
+            }
         }
     }
 }

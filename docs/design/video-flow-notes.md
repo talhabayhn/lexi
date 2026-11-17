@@ -147,7 +147,12 @@ Still open:
   locked YDS / YÖKDİL, YKS-DİL, TOEFL, IELTS are information only.
 - **Dialog** (`PlayDialog`): phase 2 placeholder presentation (fade + scale 0.92 → 1 over `dialogGrow`, cross-fade
   with reduced motion); OYNA carries `morphAnchor(FlowMorphKeys.PLAY_BUTTON)`; the wheel's current letter carries
-  `FlowMorphKeys.WHEEL_MARKER`. System back closes the dialog.
+  `FlowMorphKeys.WHEEL_MARKER`. System back closes the dialog. The header (back arrow, name) and OYNA are pinned;
+  the mode and time choices between them scroll (OYNA always reachable at 320 × 568, 200 %).
+- **Large fonts:** no label breaks a word or is cut off (layout tests at 320 × 568 … 412 × 915, 100 / 130 / 200 %,
+  TR + EN, with `WordSplitRecorder`). Home's points and "toplam puan" and the dialog's segments follow the font size
+  up to 1.3× and shrink to one line; the dialog's title (wraps between words) and OYNA are capped at 1.3×; card names
+  and the play card's mode captions shrink only when a word would not fit (`WordSafeText`).
 - **Navigation:** Home → `CategoryPickerRoute(level)` → `GameRoute(level, mode, category, time)`; the perf tour goes
   Home → CategoryPicker → Game.
 - **Tests:** view models (selection persistence, level change, time fallback, Practice, NAT, locked packs, invite),

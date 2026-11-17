@@ -1,5 +1,6 @@
 package dev.talhabayhan.lexi.feature.levels.picker
 
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.semantics.SemanticsActions
 import androidx.compose.ui.semantics.SemanticsNode
 import androidx.compose.ui.semantics.SemanticsProperties
@@ -8,12 +9,18 @@ import androidx.compose.ui.test.ComposeUiTest
 import androidx.compose.ui.test.ExperimentalTestApi
 import androidx.compose.ui.test.SemanticsMatcher
 import androidx.compose.ui.test.hasContentDescription
+import androidx.compose.ui.test.hasScrollToNodeAction
 import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.onRoot
 import androidx.compose.ui.test.performScrollTo
+import androidx.compose.ui.test.performScrollToNode
 import androidx.compose.ui.test.runComposeUiTest
+import dev.talhabayhan.lexi.core.designsystem.text.LocalTextLayoutProbe
+import dev.talhabayhan.lexi.core.designsystem.text.WordSplitRecorder
+import dev.talhabayhan.lexi.core.designsystem.text.textWordProblems
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiViewport
+import dev.talhabayhan.lexi.core.domain.game.GameMode
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
@@ -23,8 +30,9 @@ import kotlin.test.assertTrue
 
 /**
  * "Çarkını seç" and its dialog at 320 × 568, 360 × 640, 390 × 844 and 412 × 915, font scale 1.0 / 1.3 / 2.0, Turkish
- * and English: back, the level chips and the first card are on screen without scrolling; the dialog's OYNA can always
- * be scrolled fully into view (never cut off); every button is at least 48dp high.
+ * and English: back, the level chips and the first card are on screen without scrolling; the dialog's OYNA is pinned
+ * fully on screen (its choices scroll above it) in every mode; every button is at least 48dp high; no label (chips,
+ * card names, progress, "YAKINDA", dialog segments, OYNA) breaks a word across lines or is cut off.
  */
 @OptIn(ExperimentalTestApi::class)
 @RunWith(RobolectricTestRunner::class)
@@ -53,9 +61,7 @@ abstract class CategoryPickerLayoutChecks(
 
     private fun check() {
         runComposeUiTest {
-            setContent {
-                LexiTheme(reducedMotion = true) { LexiViewport { CategoryPickerScreen(PickerSampleState, {}) } }
-            }
+            val recorder = show(PickerSampleState)
             val height = onRoot().fetchSemanticsNode().size.height.toFloat()
             listOf(back, chip, mixed).forEach { label ->
                 assertOnScreen(
@@ -65,18 +71,41 @@ abstract class CategoryPickerLayoutChecks(
                 )
             }
             assertButtonsTallEnough()
+            assertNoWordSplits(recorder)
+            // The exam section at the end of the grid: the open pack and the locked "YAKINDA" cards.
+            onNode(hasScrollToNodeAction()).performScrollToNode(hasContentDescription(LOCKED_LAST, substring = true))
+            assertNoWordSplits(recorder)
         }
-        runComposeUiTest {
-            setContent {
-                LexiTheme(reducedMotion = true) {
-                    LexiViewport { CategoryPickerScreen(PickerSampleState.withDialog(), {}) }
-                }
+        PickerModes.forEach { mode -> checkDialog(mode) }
+    }
+
+    /** OYNA is on screen without scrolling; the last choice (7:00) scrolls into view and OYNA stays put. */
+    private fun checkDialog(mode: GameMode) = runComposeUiTest {
+        val recorder = show(PickerSampleState.withDialog(mode))
+        val height = onRoot().fetchSemanticsNode().size.height.toFloat()
+        assertOnScreen(onNode(hasText(play)).fetchSemanticsNode(), "$play ($mode)", height)
+        onNode(hasText(LAST_TIME)).performScrollTo()
+        assertOnScreen(onNode(hasText(LAST_TIME)).fetchSemanticsNode(), "$LAST_TIME ($mode)", height)
+        assertOnScreen(onNode(hasText(play)).fetchSemanticsNode(), "$play after scrolling ($mode)", height)
+        assertButtonsTallEnough()
+        assertNoWordSplits(recorder)
+    }
+
+    private fun ComposeUiTest.show(state: CategoryPickerUiState): WordSplitRecorder {
+        val recorder = WordSplitRecorder()
+        setContent {
+            CompositionLocalProvider(LocalTextLayoutProbe provides recorder) {
+                LexiTheme(reducedMotion = true) { LexiViewport { CategoryPickerScreen(state, {}) } }
             }
-            val height = onRoot().fetchSemanticsNode().size.height.toFloat()
-            val button = onNode(hasText(play)).performScrollTo()
-            assertOnScreen(button.fetchSemanticsNode(), play, height)
-            assertButtonsTallEnough()
         }
+        return recorder
+    }
+
+    /** Every label, also those hidden behind a component's content description, keeps its words whole. */
+    private fun ComposeUiTest.assertNoWordSplits(recorder: WordSplitRecorder) {
+        waitForIdle()
+        val problems = recorder.problems + onRoot(useUnmergedTree = true).fetchSemanticsNode().textWordProblems()
+        assertTrue(problems.isEmpty(), "words broken or cut: ${problems.distinct()}")
     }
 
     private fun assertOnScreen(node: SemanticsNode, label: String, bottomLimit: Float) {
@@ -97,6 +126,10 @@ abstract class CategoryPickerLayoutChecks(
 
     private companion object {
         const val MIN_TOUCH_DP = 48f
+        const val LAST_TIME = "7:00"
+
+        /** The last locked exam card (`LockedExamIds`); its description is the same in both languages. */
+        const val LOCKED_LAST = "IELTS"
     }
 }
 

@@ -59,6 +59,8 @@ import dev.talhabayhan.lexi.core.designsystem.feedback.LocalHaptics
 import dev.talhabayhan.lexi.core.designsystem.feedback.LocalSoundPlayer
 import dev.talhabayhan.lexi.core.designsystem.icon.LexiIcons
 import dev.talhabayhan.lexi.core.designsystem.modifier.lexiSurface
+import dev.talhabayhan.lexi.core.designsystem.text.WordSafeText
+import dev.talhabayhan.lexi.core.designsystem.text.rememberTextLayoutReport
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.core.designsystem.theme.withCssLineHeight
 import dev.talhabayhan.lexi.core.domain.feedback.HapticKind
@@ -145,13 +147,17 @@ public fun WithCappedFontScale(cap: Float, content: @Composable () -> Unit) {
     }
 }
 
-/** One line of control text: shrinks (down to [FlowDefaults.MinControlTextSize]) instead of wrapping or overflowing. */
+/**
+ * One line of control text: shrinks (down to [FlowDefaults.MinControlTextSize]) instead of wrapping or overflowing.
+ * Reports its layout to `LocalTextLayoutProbe` (layout tests).
+ */
 @Composable
-internal fun FitLine(text: String, style: TextStyle, color: Color, modifier: Modifier = Modifier) {
+public fun FitLine(text: String, style: TextStyle, color: Color, modifier: Modifier = Modifier) {
     BasicText(
         text = text,
         modifier = modifier,
         style = style.copy(color = color),
+        onTextLayout = rememberTextLayoutReport(),
         maxLines = 1,
         overflow = TextOverflow.Ellipsis,
         autoSize = TextAutoSize.StepBased(
@@ -198,7 +204,7 @@ private fun PlayCardContent(label: String, modes: List<PlayCardMode>, playLabel:
     val colors = LexiTheme.colors
     val typography = LexiTheme.typography
     Column(Modifier.fillMaxWidth().clearAndSetSemantics {}.padding(FlowDefaults.PlayCardPadding)) {
-        Text(label, style = typography.label12, color = colors.white)
+        WordSafeText(label, typography.label12, colors.white)
         Row(
             modifier = Modifier.fillMaxWidth().padding(top = FlowDefaults.PlayCardLabelGap)
                 .height(IntrinsicSize.Min),
@@ -215,7 +221,14 @@ private fun PlayCardContent(label: String, modes: List<PlayCardMode>, playLabel:
                     verticalArrangement = Arrangement.Center,
                 ) {
                     FitLine(mode.title, typography.bodyStrong16, colors.ink)
-                    FitLine(mode.caption, typography.caption12SemiBold, colors.ink)
+                    // A caption too wide for its box ("one mistake" on a 320dp phone) wraps between its words.
+                    WordSafeText(
+                        mode.caption,
+                        typography.caption12SemiBold,
+                        colors.ink,
+                        maxLines = 2,
+                        textAlign = TextAlign.Center,
+                    )
                 }
             }
         }
@@ -288,15 +301,11 @@ public fun DailyWheelCard(
             contents = listOf(
                 {
                     Column(verticalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap2)) {
-                        Text(
-                            title,
-                            style = typography.heading18.withCssLineHeight(TITLE_LINE_HEIGHT),
-                            color = textColor,
-                        )
-                        Text(
+                        WordSafeText(title, typography.heading18.withCssLineHeight(TITLE_LINE_HEIGHT), textColor)
+                        WordSafeText(
                             description,
-                            style = typography.caption12SemiBold.withCssLineHeight(TEXT_LINE_HEIGHT),
-                            color = textColor,
+                            typography.caption12SemiBold.withCssLineHeight(TEXT_LINE_HEIGHT),
+                            textColor,
                         )
                     }
                 },
@@ -398,7 +407,14 @@ private fun DailyBadge(status: DailyCardStatus, label: String?) {
                     )
                 }
             }
-            if (label != null) Text(label, style = LexiTheme.typography.caption12ExtraBold, maxLines = 1)
+            if (label != null) {
+                Text(
+                    label,
+                    style = LexiTheme.typography.caption12ExtraBold,
+                    maxLines = 1,
+                    onTextLayout = rememberTextLayoutReport(),
+                )
+            }
             if (!solved) {
                 Icon(
                     LexiIcons.ChevronRight,
@@ -599,12 +615,12 @@ public fun PickerCard(
                 modifier = Modifier.padding(FlowDefaults.CategoryInfoPadding),
                 verticalArrangement = Arrangement.spacedBy(FlowDefaults.CategoryInfoGap),
             ) {
-                Text(
+                // Two lines at most; a long word shrinks instead of breaking ("İngilizcesi" at 2× font size).
+                WordSafeText(
                     name,
-                    style = LexiTheme.typography.bodyStrong14.withCssLineHeight(TITLE_LINE_HEIGHT),
-                    color = colors.ink,
+                    LexiTheme.typography.bodyStrong14.withCssLineHeight(TITLE_LINE_HEIGHT),
+                    colors.ink,
                     maxLines = 2,
-                    overflow = TextOverflow.Ellipsis,
                 )
                 if (locked && lockedLabel != null) {
                     WithCappedFontScale(FlowDefaults.CONTROL_FONT_SCALE_CAP) {
@@ -612,6 +628,7 @@ public fun PickerCard(
                             lockedLabel,
                             style = LexiTheme.typography.label12,
                             color = colors.ink,
+                            onTextLayout = rememberTextLayoutReport(),
                             modifier = Modifier
                                 .lexiSurface(colors.white, BorderStroke(LexiTheme.borders.thin, colors.ink))
                                 .padding(FlowDefaults.SoonTagPadding),
@@ -684,7 +701,13 @@ public fun ScrollToTopPill(label: String, onClick: () -> Unit, modifier: Modifie
                 horizontalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap6),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
-                Text(label, style = LexiTheme.typography.bodyStrong15, color = colors.cream, maxLines = 1)
+                Text(
+                    label,
+                    style = LexiTheme.typography.bodyStrong15,
+                    color = colors.cream,
+                    maxLines = 1,
+                    onTextLayout = rememberTextLayoutReport(),
+                )
                 Icon(
                     LexiIcons.ArrowUp,
                     contentDescription = null,
