@@ -97,6 +97,12 @@ Frame CPU time (`frameDurationCpuMs`, ms) and frame overrun (`frameOverrunMs`, m
 | playLetterMorph | 1540 | 2.9 | 17.1 | 17.8 | 18.6 | 19.7 | 1.9 / 3.9 | 0 |
 | fullVideoFlow | 2020 | 2.9 | 8.8 | 17.5 | 18.5 | 19.9 | 1.6 / 5.4 | 0 |
 
+CI (`perf` workflow on the branch, run 44080753974; Gradle managed device API 34 x86_64, **software GPU**
+`swiftshader_indirect`): frame CPU P95 homeToCategories 188.7, categoryDialogFlip 154.6, playLetterMorph 164.8,
+fullVideoFlow 158.0 ms, against 202.0 ms for the existing perf tour (`ScreensBenchmark`) in the same run. Every frame
+there is GPU-bound in software rendering, so these only compare runs and screens with each other: the video flow is
+not heavier than the existing screens; they say nothing about a phone.
+
 - **Acceptance (P95 < 16.6 ms, no frame > 100 ms):** "no frame > 100 ms" is met; P95 is 17.5–17.9 ms, so the bar is
   **not met on this emulator**. The traces show why: the ≈ 17 ms frames are the RenderThread blocked in
   `eglSwapBuffers` → `dequeueBuffer` (14–15 ms, waiting for a free buffer from the emulator's compositor), not app
