@@ -66,9 +66,9 @@ NavHost destinations on both Android and iOS; (2) how do we keep a ~1 s choreogr
    (`HoldStart` / `ReleaseStart`) rather than a route flag, so a restored or recreated screen can never stay unstarted.
    The OYNA rules live in `LetterMorphLauncher` (shared) behind two small interfaces. Developer tools (tier switch,
    frame graph): `MotionDebugOverlay` in `:shared` androidMain, referenced only from `:androidApp`'s debug source set;
-   release-like build types compile a no-op twin and R8 drops the unused overlay (the module rules forbid
-   `:androidApp` → `:core:designsystem`, even for debug). `:shared` declares `navigationevent-compose` itself: a
-   catalog entry the features already use, no new library.
+   release-like build types compile a no-op twin, so it is unreferenced there and removed by R8 where minified (the
+   module rules forbid `:androidApp` → `:core:designsystem`, even for debug). `:shared` declares
+   `navigationevent-compose` itself: a catalog entry the features already use, no new library.
 
 Alternatives considered: **Home v2** (one Home with level/mode/category; ADR 0026) — kept as the fallback branch;
 **shared elements for the morph** — proven feasible, rejected for the reasons in 3; **an expect/actual

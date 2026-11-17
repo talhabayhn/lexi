@@ -36,7 +36,7 @@ import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 
 /**
  * Developer switch for the video flow's motion tiers (`video-flow-notes.md` §5), shown only by the Android debug build
- * (`androidApp/src/debug` `DebugTools`; release-like build types reference nothing of it and R8 removes it). Two small
+ * (`androidApp/src/debug` `DebugTools`; unreferenced in release-like builds, removed by R8 where minified). Two small
  * chips under the status bar: the first cycles the session's tier Auto → Full → Lite → Minimal
  * ([dev.talhabayhan.lexi.core.designsystem.motion.MotionPolicy.forcedTier]), the second shows a frame-time graph (last
  * [GRAPH_FRAMES] frames, the 16.7 ms and 24 ms lines, P95 and the worst frame). Not user-facing: no string resources.
