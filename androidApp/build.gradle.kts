@@ -19,6 +19,11 @@ dependencies {
 
     implementation(libs.compose.uiToolingPreview)
     debugImplementation(libs.compose.uiTooling)
+    // Developer tools of debug builds only (src/debug: motion tier switch, frame-time graph); project modules and
+    // catalog entries the app already ships through :shared.
+    debugImplementation(project(":core:designsystem"))
+    debugImplementation(libs.compose.foundation)
+    debugImplementation(libs.compose.material3)
 }
 
 // Release signing comes only from the environment (CI writes the keystore from a secret, see docs/RELEASE.md).
@@ -95,6 +100,11 @@ baselineProfile {
 // own callback (applied earlier), which creates them as copies of `release`.
 val benchmarkBuildTypes = setOf("benchmarkRelease", "nonMinifiedRelease")
 androidComponents {
+    // Developer tools (motion tier switch, frame-time graph) live in src/debug; every other build type compiles the
+    // no-op twin in src/nodebug, so release-like builds contain none of it.
+    onVariants { variant ->
+        if (variant.buildType != "debug") variant.sources.kotlin?.addStaticSourceDirectory("src/nodebug/kotlin")
+    }
     finalizeDsl { android ->
         android.buildTypes.matching { it.name in benchmarkBuildTypes }.configureEach {
             signingConfig = android.signingConfigs.getByName("debug")

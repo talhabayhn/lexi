@@ -34,10 +34,15 @@ import org.koin.dsl.koinConfiguration
  * scaled, `screen-map.md`).
  * [perfTour] (launch flag only, `docs/PERF.md`) runs the scripted perf tour. With "Doğru cevapta telaffuz" on,
  * the speech engine and voice are warmed up right after the splash so the first correct answer is spoken at once, and
- * every module's strings are preloaded into the resource cache on a background dispatcher.
+ * every module's strings are preloaded into the resource cache on a background dispatcher. [debugOverlay] (Android
+ * debug builds only) is drawn above everything inside the theme: the motion tier switch and frame-time graph.
  */
 @Composable
-fun App(onLanguageChanged: ((AppLanguage) -> Unit)? = null, perfTour: PerfTourConfig? = null) {
+fun App(
+    onLanguageChanged: ((AppLanguage) -> Unit)? = null,
+    perfTour: PerfTourConfig? = null,
+    debugOverlay: (@Composable () -> Unit)? = null,
+) {
     StartupTrace.mark("app composition")
     LaunchedEffect(Unit) {
         withFrameNanos { }
@@ -83,6 +88,7 @@ fun App(onLanguageChanged: ((AppLanguage) -> Unit)? = null, perfTour: PerfTourCo
             LexiTheme {
                 LexiViewport {
                     LexiNavHost(perfTour = perfTour)
+                    debugOverlay?.invoke()
                 }
             }
         }

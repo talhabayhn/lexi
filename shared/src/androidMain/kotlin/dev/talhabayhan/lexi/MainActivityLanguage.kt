@@ -26,7 +26,11 @@ public object MainActivityLanguage {
     }
 
     @Composable
-    public fun LexiApp(activity: Activity, perfTour: PerfTourConfig? = null) {
+    public fun LexiApp(
+        activity: Activity,
+        perfTour: PerfTourConfig? = null,
+        debugOverlay: (@Composable () -> Unit)? = null,
+    ) {
         val currentLanguage = AndroidPlatformLanguage.getStoredLanguage(activity)
         LaunchedEffect(activity) {
             // Time to full display (Macrobenchmark StartupTimingMetric, ADR 0025): the first screen after the splash
@@ -37,6 +41,7 @@ public object MainActivityLanguage {
         }
         App(
             perfTour = perfTour,
+            debugOverlay = debugOverlay,
             onLanguageChanged = { newLanguage ->
                 if (newLanguage != currentLanguage) {
                     AndroidPlatformLanguage.setStoredLanguage(activity, newLanguage)

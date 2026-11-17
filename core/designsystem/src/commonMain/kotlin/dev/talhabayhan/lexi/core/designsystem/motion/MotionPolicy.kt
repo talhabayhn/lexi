@@ -3,7 +3,10 @@ package dev.talhabayhan.lexi.core.designsystem.motion
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.ProvidableCompositionLocal
 import androidx.compose.runtime.Stable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.runtime.staticCompositionLocalOf
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 
@@ -14,7 +17,13 @@ import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
  */
 @Stable
 public class MotionPolicy(public val frameMonitor: FrameMonitor = FrameMonitor()) {
-    public fun tier(signals: MotionSignals): MotionTier = when {
+    /**
+     * Developer override (the Android debug build's tier switch; never set in release builds): when not null it wins
+     * over every signal, reduced motion included.
+     */
+    public var forcedTier: MotionTier? by mutableStateOf(null)
+
+    public fun tier(signals: MotionSignals): MotionTier = forcedTier ?: when {
         signals.reducedMotion -> MotionTier.Minimal
         signals.lowRamDevice || signals.lowPowerMode || frameMonitor.slowStreakDetected -> MotionTier.Lite
         else -> MotionTier.Full

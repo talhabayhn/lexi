@@ -51,4 +51,14 @@ class MotionPolicyTest {
         // Reduced motion still wins over the downgrade.
         assertEquals(MotionTier.Minimal, policy.tier(normal.copy(reducedMotion = true)))
     }
+
+    @Test
+    fun `a forced tier wins over every signal and clearing it restores them`() {
+        val policy = MotionPolicy()
+        val reduced = MotionSignals(reducedMotion = true, lowRamDevice = false, lowPowerMode = false)
+        policy.forcedTier = MotionTier.Full
+        assertEquals(MotionTier.Full, policy.tier(reduced))
+        policy.forcedTier = null
+        assertEquals(MotionTier.Minimal, policy.tier(reduced))
+    }
 }

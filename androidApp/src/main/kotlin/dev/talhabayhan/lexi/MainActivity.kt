@@ -32,6 +32,8 @@ class MainActivity : ComponentActivity() {
             MainActivityLanguage.LexiApp(
                 activity = this,
                 perfTour = perfTour,
+                // Debug builds only: the motion tier switch and frame-time graph (src/debug).
+                debugOverlay = DebugTools.overlay,
             )
         }
     }
