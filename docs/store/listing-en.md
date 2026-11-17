@@ -136,6 +136,49 @@ vocabulary,word game,cefr,flashcards,offline,letters,clues,spaced repetition,not
 
 **Support URL**: https://talhabayhn.github.io/lexi/support · **Marketing URL**: https://talhabayhn.github.io/lexi · **Copyright**: © 2026 Hüseyin Talha Bayhan
 
+## 1.1.0 (video flow) — DRAFT, not for submission yet
+
+> DRAFT. Written for `docs/release-1.1.0-checklist.md`; check the claims against the final build and the owner's decisions
+> (art, thin categories) before pasting into a console. Counts are verified by `check-limits.py`.
+
+**What's new 1.1.0 DRAFT, Google Play (≤500)**
+```
+A new look and flow. Start from Home with one tap, choose Classic, Practice or Hardcore and your time, then pick your wheel from illustrated category cards. Cards flip open, and the big letter grows into the wheel when you press PLAY. Invite a friend from the bottom bar. Animations soften on low-power phones and follow Reduce Motion.
+```
+
+**What's new 1.1.0 DRAFT, App Store (≤4000)**
+```
+A new look and flow for Lexi.
+
+• Home: one tap to play. Choose Classic, Practice or Hardcore and your time right on the play card; the Daily Wheel sits below it.
+• Pick your wheel: illustrated cards for every category of your level, with your progress on each, and the exam packs below.
+• Cards flip open into the mode and time choice; press PLAY and the big letter grows into the wheel.
+• A smoother board: the next clue and keys slide in after every turn, and your score counts up.
+• Invite a friend from the bottom bar of Home.
+• Animations soften on devices in Low Power Mode and follow Reduce Motion.
+```
+
+**Promotional text 1.1.0 DRAFT (≤170)**
+```
+A new look: pick your wheel from illustrated cards and watch the letter grow into the board. Turkish clues, English answers, A1 to native. Play offline, invite a friend.
+```
+
+**Changed sections of the full description (both stores)**
+```
+CHOOSE YOUR LEVEL AND YOUR WHEEL
+• A1, A2, B1, B2, C1 and Native (idioms, phrasal verbs)
+• Illustrated category cards inside each level, plus a mixed wheel, with your progress on every card
+• Exam packs: LGS today, more exams coming
+• A short placement test helps you find your starting level
+
+GAME MODES
+• Classic – race the clock (3, 5 or 7 minutes)
+• Practice – no timer, no pressure
+• Hardcore – one mistake ends the game
+...
+```
+Also add one line to LEARN, NOT JUST PLAY: "• Invite a friend with one tap from Home". The rest of the description stays. Keep "FREE, NO ADS".
+
 ## Notes
 - v1.0 is free: no ads, no Pro, no subscriptions, only the free LGS pack (flag `FeatureFlags.proEnabled` is off in release). Re-add the Pro/ad text only together with those features.
 - Audited against the release build in `submission-audit.md`. Same-device duel (home screen entry) and word reminders (`reminderShowWord`, on by default) are listed because they are in the build on main.
