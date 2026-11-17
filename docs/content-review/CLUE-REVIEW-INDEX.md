@@ -1,8 +1,13 @@
 # Turkish clue review, A2 to NAT (index)
 
 The clue standard (`docs/CONTENT.md` "Clue standard (TR)") and the scanner (`tools/content-qa/clue_scan.py`) are applied to
-A2, B1, B2, C1 and NAT, as was done for A1 (`CLUE-A1-1.md`). **No card was edited**: every proposal is in a review
-sheet, waiting for the owner. Sheets (read on a phone, grouped by letter): [A2](CLUE-A2-1.md), [B1](CLUE-B1-1.md),
+A2, B1, B2, C1 and NAT, as was done for A1 (`CLUE-A1-1.md`). Every proposal is in a review sheet.
+
+**Applied on 2026-11-17, contentVersion 36** (owner: "hepsi onay" with two exceptions): 120 clues rewritten in
+`content/cards/` (A2 34, B1 32, B2 27, C1 13, NAT 14) plus `a1-wind`. Exceptions: `b1-device` → "belirli bir işlevi gören
+teknik alet" (instead of the proposal), `a1-wind` → "esen, yön değiştiren hava akımı" (A1, not in any sheet). Keep rows
+are unchanged. `CLUE-SCAN.csv` regenerated: C1 and C2 hits are gone from A2 to NAT; remaining advisory hits are C3/C4 only
+(A2 41/33, B1 21/38, B2 10/45, C1 8/26, NAT 3/1). Sheets (read on a phone, grouped by letter): [A2](CLUE-A2-1.md), [B1](CLUE-B1-1.md),
 [B2](CLUE-B2-1.md), [C1](CLUE-C1-1.md), [NAT](CLUE-NAT-1.md); the same rows as CSV (`CLUE-<LEVEL>-1.csv`: id, answer,
 current_clue, example_en, rule, proposed_clue, note).
 

@@ -1,6 +1,6 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
 a2-tail,TAIL,T,STARTS,noun,"hayvanın arkasında uzanan uzun uzuv, kuyruk",The dog wags its tail.,Köpek kuyruğunu sallıyor.,2,,animals
-a2-taste,TASTE,T,STARTS,verb,yemeğin tadına bakmak ya da belli bir tadı olmak,Taste the soup before you add salt.,Tuz eklemeden önce çorbanın tadına bak.,2,,food-drink
+a2-taste,TASTE,T,STARTS,verb,yemeğin tadına bakmak,Taste the soup before you add salt.,Tuz eklemeden önce çorbanın tadına bak.,2,,food-drink
 a2-tasty,TASTY,T,STARTS,adj,"tadı güzel, lezzetli",The cake is very tasty.,Kek çok lezzetli.,2,,food-drink
 a2-thief,THIEF,T,STARTS,noun,başkasının malını çalan kişi,The thief ran away.,Hırsız kaçtı.,2,,family-people
 a2-through,THROUGH,T,STARTS,phrase,bir şeyin bir ucundan öbür ucuna geçerek,We walked through the park.,Parkın içinden yürüdük.,3,,city-transport
@@ -11,7 +11,7 @@ a2-tight,TIGHT,T,STARTS,adj,vücuda çok yapışan ya da sıkı,These shoes are 
 a2-tiny,TINY,T,STARTS,adj,"çok küçük, minicik",A tiny spider sat on my hand.,Elimde minicik bir örümcek vardı.,3,,animals
 a2-tip,TIP,T,STARTS,noun,garsona bırakılan fazladan para ya da küçük öneri,We left a tip for the waiter.,Garson için bahşiş bıraktık.,3,,food-drink
 a2-title,TITLE,T,STARTS,noun,kitabın ya da filmin adı,What is the title of the book?,Kitabın adı ne?,3,,school-work
-a2-tool,TOOL,T,STARTS,noun,çekiç gibi iş yapmaya yarayan alet,A spade is a tool.,Kürek bir alettir.,3,,home
+a2-tool,TOOL,T,STARTS,noun,çekiç ya da tornavida gibi iş gereci,A spade is a tool.,Kürek bir alettir.,3,,home
 a2-towards,TOWARD,T,STARTS,phrase,bir yere doğru yönelerek,The boy ran toward the sea.,Çocuk denize doğru koştu.,3,,city-transport
 a2-traditional,TRADITIONAL,T,STARTS,adj,eski zamanlardan beri süren geleneksel,We cooked a traditional dish.,Geleneksel bir yemek pişirdik.,3,,food-drink
 a2-trainer,TRAINER,T,STARTS,noun,spor için giyilen rahat ayakkabı,My left trainer is dirty.,Sol spor ayakkabım kirli.,3,,sports
@@ -48,7 +48,7 @@ a2-whisper,WHISPER,W,STARTS,verb,"çok alçak sesle konuşmak, fısıldamak",Do 
 a2-whose,WHOSE,W,STARTS,phrase,kime ait olduğunu soran sözcük,Whose umbrella is this on the table?,Masanın üstündeki bu şemsiye kimin?,3,,daily-life
 a2-wild,WILD,W,STARTS,adj,"doğada yaşayan, evcilleştirilmemiş",Wild animals live in the forest.,Yabani hayvanlar ormanda yaşar.,3,,animals
 a2-winner,WINNER,W,STARTS,noun,yarışta ya da oyunda birinci olan kişi,The winner gets a prize.,Kazanan ödül alır.,2,,sports
-a2-wish,WISH,W,STARTS,verb,birine iyi bir şey dilemek ya da dilek tutmak,I wish you a happy birthday.,Sana mutlu bir doğum günü dilerim.,3,,daily-life
+a2-wish,WISH,W,STARTS,verb,birine iyi bir şey dilemek,I wish you a happy birthday.,Sana mutlu bir doğum günü dilerim.,3,,daily-life
 a2-without,WITHOUT,W,STARTS,phrase,"bir şey olmadan, -sız",Do not go out without a coat.,Paltosuz dışarı çıkma.,3,,daily-life
 a2-wonder,WONDER,W,STARTS,verb,merak edip kendi kendine sormak,I wonder where Ali is.,Ali'nin nerede olduğunu merak ediyorum.,3,,daily-life
 a2-worker,WORKER,W,STARTS,noun,"bir işte çalışan kişi, işçi",The factory worker starts at seven.,Fabrika işçisi yedide başlıyor.,3,,school-work

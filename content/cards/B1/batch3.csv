@@ -1,7 +1,7 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
 b1-fabric,FABRIC,F,STARTS,noun,elbise ve perde yapımında kullanılan kumaş,This fabric feels soft and warm.,Bu kumaş yumuşak ve sıcak.,3,,daily-life
 b1-facility,FACILITY,F,STARTS,noun,bir hizmet için ayrılmış yer veya olanak,The hotel has a sports facility.,Otelde bir spor tesisi var.,4,,business
-b1-factory,FACTORY,F,STARTS,noun,ürünlerin makinelerle üretildiği yer,My father works in a car factory.,Babam bir araba fabrikasında çalışıyor.,3,,business
+b1-factory,FACTORY,F,STARTS,noun,ürünlerin makinelerle üretildiği tesis,My father works in a car factory.,Babam bir araba fabrikasında çalışıyor.,3,,business
 b1-fail,FAIL,F,STARTS,verb,bir sınavı ya da denemeyi başaramamak,He did not want to fail the test.,Sınavdan kalmak istemedi.,3,,school-work
 b1-failure,FAILURE,F,STARTS,noun,bir şeyi başaramama durumu,The project ended in failure.,Proje başarısızlıkla sonuçlandı.,3,,business
 b1-false,FALSE,F,STARTS,adj,"doğru olmayan, yanlış",The answer is false.,Cevap yanlış.,3,,school-work
@@ -33,7 +33,7 @@ b1-fully,FULLY,F,STARTS,adv,"eksiksiz biçimde, sonuna kadar",I fully agree with
 b1-function,FUNCTION,F,STARTS,noun,bir şeyin görevi veya işlevi,What is the function of this button?,Bu düğmenin işlevi nedir?,4,,technology
 b1-further,FURTHER,F,STARTS,adv,"daha uzağa, daha ileriye",The station is further down the road.,İstasyon yolun biraz daha ilerisinde.,3,,city-transport
 b1-fascinating,FASCINATING,F,STARTS,adj,"çok ilgi çekici, büyüleyici",The story of the old city is fascinating.,Eski şehrin hikâyesi çok büyüleyici.,4,,travel
-b1-gadget,GADGET,G,STARTS,noun,"küçük, işe yarar elektronik alet",This gadget saves a lot of time.,Bu alet çok zaman kazandırıyor.,3,,technology
+b1-gadget,GADGET,G,STARTS,noun,"küçük, pratik elektronik araç",This gadget saves a lot of time.,Bu alet çok zaman kazandırıyor.,3,,technology
 b1-gain,GAIN,G,STARTS,verb,"zamanla deneyim, beceri ya da kilo kazanmak",You can gain skills by working here.,Burada çalışarak beceri kazanabilirsin.,4,,business
 b1-gap,GAP,G,STARTS,noun,iki şey arasındaki boşluk,There is a gap between the two buildings.,İki bina arasında bir boşluk var.,3,,daily-life
 b1-garbage,GARBAGE,G,STARTS,noun,"çöp, atık",Please take the garbage out.,Lütfen çöpü dışarı çıkar.,3,,daily-life
@@ -103,7 +103,7 @@ b1-investigate,INVESTIGATE,I,STARTS,verb,bir olayın nedenini araştırmak,The p
 b1-investment,INVESTMENT,I,STARTS,noun,kazanç için para yatırma,Buying a house can be a good investment.,Ev almak iyi bir yatırım olabilir.,4,,business
 b1-involve,INVOLVE,I,STARTS,verb,bir işin içine katmak veya gerektirmek,The job will involve a lot of travel.,İş çok seyahat gerektirecek.,4,,business
 b1-issue,ISSUE,I,STARTS,noun,tartışılan konu veya sorun,Traffic is an important issue.,Trafik önemli bir mesele.,4,,school-work
-b1-item,ITEM,I,STARTS,noun,bir listedeki ya da sepetteki tek tek şeylerden biri,Each item in the shop costs one pound.,Dükkândaki her ürün bir pound.,3,,business
+b1-item,ITEM,I,STARTS,noun,listedeki ya da satıştaki tek bir ürün,Each item in the shop costs one pound.,Dükkândaki her ürün bir pound.,3,,business
 b1-immigrant,IMMIGRANT,I,STARTS,noun,başka ülkeden gelip yerleşen kişi,My grandfather was an immigrant from Greece.,Büyükbabam Yunanistan'dan gelmiş bir göçmendi.,4,,family-people
 b1-infection,INFECTION,I,STARTS,noun,mikropların neden olduğu hastalık,The wound got an infection.,Yarada enfeksiyon oluştu.,4,,body-health
 b1-individual,INDIVIDUAL,I,STARTS,adj,"tek bir kişiye ait, bireysel",Each student gets individual help.,Her öğrenci bireysel yardım alır.,4,,school-work

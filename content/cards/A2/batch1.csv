@@ -6,7 +6,7 @@ a2-quietly,QUIETLY,Q,STARTS,adv,"ses çıkarmadan, gürültüsüzce",The baby sl
 a2-square,SQUARE,Q,CONTAINS,noun,dört kenarı eşit olan şekil,Draw a square on the paper.,Kâğıda bir kare çiz.,2,,school-work
 a2-equal,EQUAL,Q,CONTAINS,adj,miktarı ya da değeri birbirine denk olan,Two and two is equal to four.,İki artı iki dörde eşittir.,3,,school-work
 a2-request,REQUEST,Q,CONTAINS,noun,"nazikçe istenen şey, rica",I have a small request for you.,Senden küçük bir ricam var.,3,,daily-life
-a2-equipment,EQUIPMENT,Q,CONTAINS,noun,bir iş ya da spor için gereken araç gereç,The gym has new equipment.,Spor salonunun yeni ekipmanları var.,3,,sports
+a2-equipment,EQUIPMENT,Q,CONTAINS,noun,bir iş için gereken araç gereç,The gym has new equipment.,Spor salonunun yeni ekipmanları var.,3,,sports
 a2-mosque,MOSQUE,Q,CONTAINS,noun,Müslümanların ibadet ettiği yapı,The mosque is near the market.,Cami pazarın yakınında.,2,,city-transport
 a2-extra,EXTRA,X,CONTAINS,adj,"olması gerekenden fazla, ek",We need an extra chair.,Fazladan bir sandalyeye ihtiyacımız var.,2,,daily-life
 a2-exactly,EXACTLY,X,CONTAINS,adv,"tam olarak, hiç eksiksiz",It is exactly ten o'clock.,Saat tam olarak on.,3,,daily-life

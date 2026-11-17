@@ -8,7 +8,7 @@ a2-fizzy,FIZZY,Z,CONTAINS,adj,içinde gaz kabarcıkları olan,I do not like fizz
 a2-zigzag,ZIGZAG,Z,STARTS,noun,"iki yana kıvrılan kırık çizgi, zikzak",The road goes in a zigzag up the hill.,Yol tepeye doğru zikzak çizerek çıkıyor.,4,,travel
 a2-knight,KNIGHT,K,STARTS,noun,"ortaçağda zırh giyen atlı savaşçı, şövalye",The knight fought a long battle.,Şövalye uzun bir savaş verdi.,3,,family-people
 a2-kindergarten,KINDERGARTEN,K,STARTS,noun,okuldan önceki yaşlarda gidilen anaokulu,My little brother goes to kindergarten.,Küçük kardeşim anaokuluna gidiyor.,3,,school-work
-a2-parking,PARKING,K,CONTAINS,noun,aracı bir yere bırakma ya da bırakılan yer,There is free parking behind the shop.,Dükkânın arkasında ücretsiz otopark var.,3,,city-transport
+a2-parking,PARKING,K,CONTAINS,noun,araçların bırakılması için ayrılmış bölge,There is free parking behind the shop.,Dükkânın arkasında ücretsiz otopark var.,3,,city-transport
 a2-brick,BRICK,K,CONTAINS,noun,"duvar örmekte kullanılan pişmiş toprak blok, tuğla",The wall is made of red brick.,Duvar kırmızı tuğladan yapılmış.,3,,home
 a2-alien,ALIEN,A,STARTS,noun,başka gezegenden geldiği düşünülen yaratık,The film is about an alien.,Film bir uzaylı hakkında.,2,,daily-life
 a2-astronaut,ASTRONAUT,A,STARTS,noun,uzaya giden kişi,The astronaut walked on the moon.,Astronot ayda yürüdü.,2,,school-work
@@ -42,7 +42,7 @@ a2-trampoline,TRAMPOLINE,T,STARTS,noun,üstünde zıplanan yaylı eğlence arac�
 a2-yacht,YACHT,Y,STARTS,noun,"zevk için kullanılan büyük yelkenli tekne, yat",They have a big white yacht.,Büyük beyaz bir yatları var.,3,,travel
 a2-caravan,CARAVAN,C,STARTS,noun,"arkasına bağlanan, içinde yatılan araç",We stayed in a caravan by the sea.,Deniz kenarında bir karavanda kaldık.,3,,travel
 a2-campsite,CAMPSITE,C,STARTS,noun,"çadır kurulan yer, kamp alanı",The campsite is near a quiet lake.,Kamp alanı sessiz bir gölün yakınında.,3,,travel
-a2-gallery,GALLERY,G,STARTS,noun,resim ve heykellerin sergilendiği yer,The gallery is free on Sundays.,Galeri pazarları ücretsiz.,3,,city-transport
+a2-gallery,GALLERY,G,STARTS,noun,resim ve heykellerin sergilendiği salon,The gallery is free on Sundays.,Galeri pazarları ücretsiz.,3,,city-transport
 a2-headphones,HEADPHONES,H,STARTS,noun,"kulağa takılarak müzik dinlenen cihaz, kulaklık",He wore his headphones to listen to music on the bus.,Otobüste müzik dinlemek için kulaklığını taktı.,3,,music
 a2-lighthouse,LIGHTHOUSE,L,STARTS,noun,gemilere yol gösteren kıyıdaki yüksek ışık kulesi,The lighthouse is at the end of the beach.,Deniz feneri plajın sonunda.,3,,travel
 a2-postman,POSTMAN,P,STARTS,noun,"mektup dağıtan görevli, postacı",The postman comes at ten.,Postacı saat onda gelir.,2,,school-work
@@ -53,7 +53,7 @@ a2-pigeon,PIGEON,P,STARTS,noun,"şehirlerde yaşayan gri kuş, güvercin",A pige
 a2-rocket,ROCKET,R,STARTS,noun,uzaya fırlatılan araç,The rocket flew to the moon.,Roket aya uçtu.,3,,travel
 a2-scooter,SCOOTER,S,STARTS,noun,ayakla itilen iki tekerlekli küçük taşıt,My brother rides a scooter.,Kardeşim scooter kullanıyor.,2,,city-transport
 a2-seagull,SEAGULL,S,STARTS,noun,"deniz kıyısında yaşayan beyaz kuş, martı",A seagull took my sandwich.,Bir martı sandviçimi aldı.,2,,animals
-a2-telescope,TELESCOPE,T,STARTS,noun,uzaktaki yıldızları yakın gösteren alet,We looked at the stars with a telescope.,Yıldızlara teleskopla baktık.,3,,school-work
+a2-telescope,TELESCOPE,T,STARTS,noun,uzaktaki yıldızları yakına getiren gözlem aracı,We looked at the stars with a telescope.,Yıldızlara teleskopla baktık.,3,,school-work
 a2-toaster,TOASTER,T,STARTS,noun,ekmeği kızartan elektrikli alet,The toaster is next to the fridge.,Ekmek kızartma makinesi buzdolabının yanında.,2,,home
 a2-whistle,WHISTLE,W,STARTS,noun,"ağızla üflenerek ses çıkaran küçük alet, düdük",The referee blew his whistle.,Hakem düdüğünü çaldı.,3,,sports
 a2-racket,RACKET,R,STARTS,noun,"tenis gibi oyunlarda topa vurulan araç, raket",I need a new tennis racket.,Yeni bir tenis raketine ihtiyacım var.,3,,sports

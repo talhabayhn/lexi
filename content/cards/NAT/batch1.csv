@@ -19,8 +19,8 @@ nat-allude,ALLUDE,A,STARTS,verb,"açıkça söylemeden ima etmek, değinmek","In
 nat-aloof,ALOOF,A,STARTS,adj,"soğuk ve mesafeli, kimseye karışmayan",He stayed aloof from the other guests.,Diğer misafirlere karşı mesafeli durdu.,4,,general
 nat-ambivalent,AMBIVALENT,A,STARTS,adj,"bir konuda karışık, çelişkili duygular içinde",I feel ambivalent about moving abroad.,Yurt dışına taşınma konusunda karışık duygular içindeyim.,4,,general
 nat-amicable,AMICABLE,A,STARTS,adj,"(ayrılık, anlaşma) kavgasız, dostane",The split was amicable.,Ayrılık dostane oldu.,4,,general
-nat-anachronism,ANACHRONISM,A,STARTS,noun,ait olduğu çağın dışında kalmış şey,A fax machine feels like an anachronism today.,Faks makinesi bugün çağ dışı bir şey gibi.,5,,general
-nat-anathema,ANATHEMA,A,STARTS,noun,"birine son derece itici, kabul edilemez gelen şey",Debt was anathema to my grandfather.,"Borç, dedem için kesinlikle kabul edilemez bir şeydi.",5,,general
+nat-anachronism,ANACHRONISM,A,STARTS,noun,"kendi çağına uymayan, zamanı geçmiş unsur",A fax machine feels like an anachronism today.,Faks makinesi bugün çağ dışı bir şey gibi.,5,,general
+nat-anathema,ANATHEMA,A,STARTS,noun,birine kesinlikle kabul edilemez gelen düşünce,Debt was anathema to my grandfather.,"Borç, dedem için kesinlikle kabul edilemez bir şeydi.",5,,general
 nat-anomaly,ANOMALY,A,STARTS,noun,"beklenen kalıba uymayan tuhaf durum, sapma",The scientists could not explain the anomaly.,Bilim insanları bu sapmayı açıklayamadı.,4,,general
 nat-appease,APPEASE,A,STARTS,verb,taviz vererek birini yatıştırmak,They tried to appease the angry crowd.,Öfkeli kalabalığı taviz vererek yatıştırmaya çalıştılar.,4,,general
 nat-arcane,ARCANE,A,STARTS,adj,"yalnızca az kişinin anladığı, gizemli ve karmaşık",The tax rules are arcane.,Vergi kuralları gizemli ve karmaşık.,5,,general
@@ -46,7 +46,7 @@ nat-bicker,BICKER,B,STARTS,verb,önemsiz şeyler için didişmek,The twins bicke
 nat-boisterous,BOISTEROUS,B,STARTS,adj,"gürültülü, coşkulu ve hareketli",The boisterous children ran outside.,"Coşkulu, gürültücü çocuklar dışarı koştu.",4,,general
 nat-bolster,BOLSTER,B,STARTS,verb,"(iddiayı, güveni) destekleyip sağlamlaştırmak",The win will bolster their confidence.,Galibiyet özgüvenlerini güçlendirecek.,4,,general
 nat-bombastic,BOMBASTIC,B,STARTS,adj,"(söz) şişirilmiş, tumturaklı",His bombastic speech impressed no one.,Tumturaklı konuşması kimseyi etkilemedi.,5,,general
-nat-boon,BOON,B,STARTS,noun,"büyük nimet, çok işe yarayan şey",The new bridge is a boon to local shops.,Yeni köprü yerel dükkânlar için büyük bir nimet.,4,,general
+nat-boon,BOON,B,STARTS,noun,beklenmedik ve çok işe yarayan nimet,The new bridge is a boon to local shops.,Yeni köprü yerel dükkânlar için büyük bir nimet.,4,,general
 nat-brevity,BREVITY,B,STARTS,noun,"(söz, yazı) kısalık, özlülük",Brevity is the soul of wit.,Özlülük zekânın ruhudur.,4,,general
 nat-broach,BROACH,B,STARTS,verb,"hassas bir konuyu açmak, söze girmek",How do I broach the subject of money?,Para konusunu nasıl açayım?,5,,general
 nat-buffoon,BUFFOON,B,STARTS,noun,soytarı gibi davranan gülünç kişi,He acted like a buffoon at the wedding.,Düğünde soytarı gibi davrandı.,4,,general

@@ -30,7 +30,7 @@ b2-construct,CONSTRUCT,C,STARTS,verb,bir yapıyı inşa etmek,They plan to const
 b2-consult,CONSULT,C,STARTS,verb,bir uzmana danışmak,You should consult a doctor.,Bir doktora danışmalısın.,3,,body-health
 b2-consume,CONSUME,C,STARTS,verb,yiyip içmek ya da enerji tüketmek,Cars consume a lot of fuel.,Arabalar çok yakıt tüketir.,4,,daily-life
 b2-contemporary,CONTEMPORARY,C,STARTS,adj,günümüzle aynı döneme ait,He likes contemporary art.,Çağdaş sanatı seviyor.,4,,music
-b2-context,CONTEXT,C,STARTS,noun,bir sözcüğü çevreleyen metin veya durum,You can guess the meaning from the context.,Anlamı bağlamdan tahmin edebilirsin.,4,,school-work
+b2-context,CONTEXT,C,STARTS,noun,bir sözcüğü çevreleyen metin ya da koşullar,You can guess the meaning from the context.,Anlamı bağlamdan tahmin edebilirsin.,4,,school-work
 b2-contradict,CONTRADICT,C,STARTS,verb,biriyle ya da kendisiyle çelişmek,His words contradict his actions.,Sözleri davranışlarıyla çelişiyor.,4,,daily-life
 b2-contrast,CONTRAST,C,STARTS,noun,iki şey arasındaki belirgin zıtlık,There is a big contrast between summer and winter here.,Burada yaz ile kış arasında büyük bir zıtlık var.,4,,school-work
 b2-contribute,CONTRIBUTE,C,STARTS,verb,ortak bir amaca katkıda bulunmak,Everyone can contribute to the project.,Herkes projeye katkıda bulunabilir.,4,,business
@@ -96,7 +96,7 @@ b2-engage,ENGAGE,E,STARTS,verb,dikkat çekmek; bir işe girişmek,A good teacher
 b2-enhance,ENHANCE,E,STARTS,verb,bir şeyin kalitesini artırmak,Music can enhance your mood.,Müzik ruh halini iyileştirebilir.,4,,music
 b2-ensure,ENSURE,E,STARTS,verb,bir şeyin olacağından emin olmak,Please ensure that all windows are closed.,Lütfen tüm pencerelerin kapalı olduğundan emin olun.,3,,business
 b2-entrepreneur,ENTREPRENEUR,E,STARTS,noun,kendi işini kuran iş insanı,The young entrepreneur opened three shops.,Genç girişimci üç dükkân açtı.,4,,business
-b2-equivalent,EQUIVALENT,E,STARTS,noun,başka bir şeyle eş değerde olan şey,What is the Turkish equivalent of this word?,Bu sözcüğün Türkçe karşılığı nedir?,4,,school-work
+b2-equivalent,EQUIVALENT,E,STARTS,noun,başka bir şeyle aynı değeri taşıyan karşılık,What is the Turkish equivalent of this word?,Bu sözcüğün Türkçe karşılığı nedir?,4,,school-work
 b2-establish,ESTABLISH,E,STARTS,verb,bir kurumu kurmak,They want to establish a new school.,Yeni bir okul kurmak istiyorlar.,4,,school-work
 b2-estimate,ESTIMATE,E,STARTS,verb,yaklaşık olarak hesaplamak,Can you estimate the cost of the trip?,Gezinin maliyetini tahmin edebilir misin?,4,,business
 b2-ethical,ETHICAL,E,STARTS,adj,ahlaka uygun,It is not ethical to copy someone's work.,Birinin işini kopyalamak etik değil.,4,,school-work

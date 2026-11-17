@@ -2,7 +2,7 @@ id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
 b2-admission,ADMISSION,A,STARTS,noun,"okul, müze vb. yere kabul; giriş ücreti",Admission to the museum is free for students.,Müzeye giriş öğrenciler için ücretsiz.,4,,travel
 b2-adventurous,ADVENTUROUS,A,STARTS,adj,yeni ve riskli şeyleri denemeyi seven,He is an adventurous traveler.,O maceracı bir gezgin.,3,,travel
 b2-alarming,ALARMING,A,STARTS,adj,korku veya endişe yaratan,The news was alarming.,Haber endişe vericiydi.,4,,daily-life
-b2-applaud,APPLAUD,A,STARTS,verb,alkışlamak,The audience began to applaud.,Seyirci alkışlamaya başladı.,3,,film-tv
+b2-applaud,APPLAUD,A,STARTS,verb,beğenisini el çırparak göstermek,The audience began to applaud.,Seyirci alkışlamaya başladı.,3,,film-tv
 b2-assemble,ASSEMBLE,A,STARTS,verb,parçaları birleştirmek veya bir araya toplanmak,It takes an hour to assemble this shelf.,Bu rafı monte etmek bir saat sürer.,4,,daily-life
 b2-asset,ASSET,A,STARTS,noun,bir kişi veya şirketin değerli varlığı,Her language skills are a big asset.,Dil becerileri büyük bir artı.,4,,business
 b2-assumption,ASSUMPTION,A,STARTS,noun,kanıtsız kabul edilen varsayım,That is a false assumption.,Bu yanlış bir varsayım.,4,,school-work
@@ -16,7 +16,7 @@ b2-bond,BOND,B,STARTS,noun,insanları birbirine bağlayan güçlü bağ,There is
 b2-briefly,BRIEFLY,B,STARTS,adv,"kısaca, kısa bir süreliğine",Let me briefly explain the plan.,Planı kısaca açıklayayım.,3,,business
 b2-broad,BROAD,B,STARTS,adj,"geniş, kapsamı geniş",The river is broad here.,Nehir burada geniş.,3,,daily-life
 b2-guidance,GUIDANCE,G,STARTS,noun,"yol gösterme, rehberlik",Students need guidance from their teachers.,Öğrencilerin öğretmenlerinden rehberliğe ihtiyacı var.,4,,school-work
-b2-generosity,GENEROSITY,G,STARTS,noun,cömertlik,Thank you for your generosity.,Cömertliğin için teşekkürler.,4,,daily-life
+b2-generosity,GENEROSITY,G,STARTS,noun,karşılık beklemeden bol bol verme isteği,Thank you for your generosity.,Cömertliğin için teşekkürler.,4,,daily-life
 b2-gloomy,GLOOMY,G,STARTS,adj,karamsar veya kasvetli,"It was a gloomy, rainy day.","Kasvetli, yağmurlu bir gündü.",4,,daily-life
 b2-gorgeous,GORGEOUS,G,STARTS,adj,göz kamaştıracak kadar güzel,What a gorgeous view!,Ne muhteşem bir manzara!,3,,travel
 b2-gravity,GRAVITY,G,STARTS,noun,cisimleri yere çeken kütle çekimi,Gravity pulls things down.,Yer çekimi şeyleri aşağı çeker.,4,,school-work
@@ -62,7 +62,7 @@ b2-multiply,MULTIPLY,M,STARTS,verb,çarpmak veya katlanarak artmak,Multiply six 
 b2-monotonous,MONOTONOUS,M,STARTS,adj,sıkıcı ve değişmeyen,The work is boring and monotonous.,İş sıkıcı ve monoton.,4,,business
 b2-modest,MODEST,M,STARTS,adj,alçakgönüllü; küçük ölçekli,She is modest about her success.,Başarısı konusunda mütevazı.,4,,daily-life
 b2-noticeable,NOTICEABLE,N,STARTS,adj,kolayca fark edilen,The difference is clearly noticeable.,Fark açıkça fark ediliyor.,4,,daily-life
-b2-nuisance,NUISANCE,N,STARTS,noun,can sıkan kişi veya şey,The noise is a real nuisance.,Gürültü gerçekten rahatsız edici.,4,,daily-life
+b2-nuisance,NUISANCE,N,STARTS,noun,sürekli rahatsız eden sıkıntı kaynağı,The noise is a real nuisance.,Gürültü gerçekten rahatsız edici.,4,,daily-life
 b2-nominate,NOMINATE,N,STARTS,verb,aday göstermek,They will nominate her for the prize.,Onu ödül için aday gösterecekler.,4,,film-tv
 b2-origin,ORIGIN,O,STARTS,noun,"bir şeyin ilk çıktığı yer, köken",The origin of this word is Greek.,Bu sözcüğün kökeni Yunanca.,4,,school-work
 b2-outbreak,OUTBREAK,O,STARTS,noun,hastalık ya da savaşın aniden başlaması,There was an outbreak of flu at school.,Okulda grip salgını çıktı.,4,,body-health
@@ -75,8 +75,8 @@ b2-unaware,UNAWARE,U,STARTS,adj,bir şeyden haberi olmayan,He was unaware of the
 b2-uneasy,UNEASY,U,STARTS,adj,"huzursuz, tedirgin",I felt uneasy in the dark street.,Karanlık sokakta tedirgin hissettim.,4,,daily-life
 b2-uncover,UNCOVER,U,STARTS,verb,gizli olanı ortaya çıkarmak,Reporters uncover the truth.,Muhabirler gerçeği ortaya çıkarır.,4,,film-tv
 b2-unfamiliar,UNFAMILIAR,U,STARTS,adj,"tanıdık gelmeyen, yabancı",The street was unfamiliar to me.,Sokak bana yabancıydı.,4,,travel
-b2-unwilling,UNWILLING,U,STARTS,adj,isteksiz,He was unwilling to help.,Yardım etmeye isteksizdi.,4,,daily-life
-b2-upcoming,UPCOMING,U,STARTS,adj,yaklaşan,We are preparing for the upcoming exam.,Yaklaşan sınava hazırlanıyoruz.,3,,school-work
+b2-unwilling,UNWILLING,U,STARTS,adj,bir şeyi yapmak istemeyen,He was unwilling to help.,Yardım etmeye isteksizdi.,4,,daily-life
+b2-upcoming,UPCOMING,U,STARTS,adj,çok yakında gerçekleşecek olan,We are preparing for the upcoming exam.,Yaklaşan sınava hazırlanıyoruz.,3,,school-work
 b2-unite,UNITE,U,STARTS,verb,birleştirmek veya birleşmek,Sport can unite people.,Spor insanları birleştirebilir.,4,,sports
 b2-unstable,UNSTABLE,U,STARTS,adj,"dengesiz, sabit olmayan",The ladder is unstable.,Merdiven dengesiz.,4,,daily-life
 b2-vanish,VANISH,V,STARTS,verb,birden gözden kaybolmak,The magician made the coin vanish.,Sihirbaz parayı yok etti.,3,,film-tv

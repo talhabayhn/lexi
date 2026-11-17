@@ -62,14 +62,14 @@ b1-greeting,GREETING,G,STARTS,noun,selamlaşma sözü,He answered with a friendl
 b1-growth,GROWTH,G,STARTS,noun,büyüme veya artış,The growth of the town is fast.,Kasabanın büyümesi hızlı.,4,,business
 b1-habitat,HABITAT,H,STARTS,noun,bir hayvanın doğal yaşam alanı,Forests are the habitat of many animals.,Ormanlar birçok hayvanın yaşam alanıdır.,4,,animals
 b1-happily,HAPPILY,H,STARTS,adv,mutlu bir şekilde,They lived happily in a small house.,Küçük bir evde mutlu yaşadılar.,3,,family-people
-b1-happiness,HAPPINESS,H,STARTS,noun,mutluluk,Money cannot buy happiness.,Para mutluluk satın alamaz.,3,,family-people
+b1-happiness,HAPPINESS,H,STARTS,noun,mutlu olmanın verdiği güzel his,Money cannot buy happiness.,Para mutluluk satın alamaz.,3,,family-people
 b1-harbour,HARBOR,H,STARTS,noun,gemilerin demirlediği liman,The boats are in the harbor.,Tekneler limanda.,3,,city-transport
 b1-heritage,HERITAGE,H,STARTS,noun,bir ülkenin geçmişten kalan kültürel mirası,The old town is part of our heritage.,Eski şehir mirasımızın bir parçası.,4,,travel
 b1-hidden,HIDDEN,H,STARTS,adj,"gizlenmiş, gözden saklı",The treasure was hidden in a cave.,Hazine bir mağarada saklıydı.,3,,daily-life
 b1-honestly,HONESTLY,H,STARTS,adv,"dürüstçe, açıkçası","Honestly, I did not like the film.",Açıkçası filmi beğenmedim.,3,,daily-life
 b1-hopeless,HOPELESS,H,STARTS,adj,umudu kalmamış,The case looks hopeless.,Dava umutsuz görünüyor.,4,,daily-life
 b1-electrician,ELECTRICIAN,E,STARTS,noun,elektrik tesisatını kuran veya onaran usta,The electrician fixed the lights.,Elektrikçi ışıkları tamir etti.,3,,school-work
-b1-element,ELEMENT,E,STARTS,noun,bir bütünü oluşturan parça,Water is an important element of life.,"Su, hayatın önemli bir unsurudur.",4,,school-work
+b1-element,ELEMENT,E,STARTS,noun,bir şeyi oluşturan temel ögelerden biri,Water is an important element of life.,"Su, hayatın önemli bir unsurudur.",4,,school-work
 b1-endless,ENDLESS,E,STARTS,adj,"hiç bitmeyen, sonsuz",The desert seemed endless.,Çöl sonsuz görünüyordu.,4,,travel
 b1-enthusiasm,ENTHUSIASM,E,STARTS,noun,"bir işe duyulan büyük istek, coşku",She worked with great enthusiasm.,Büyük bir coşkuyla çalıştı.,4,,school-work
 b1-error,ERROR,E,STARTS,noun,yapılan hata,The computer showed an error.,Bilgisayar bir hata gösterdi.,3,,technology
@@ -85,7 +85,7 @@ b1-offline,OFFLINE,O,STARTS,adj,internete bağlı olmayan,My computer is offline
 b1-outgoing,OUTGOING,O,STARTS,adj,"girişken, herkesle kolay arkadaş olan",She is an outgoing girl.,O girişken bir kız.,4,,family-people
 b1-outline,OUTLINE,O,STARTS,noun,bir konunun kısa taslağı,Write an outline before your essay.,Kompozisyonundan önce bir taslak yaz.,4,,school-work
 b1-overtime,OVERTIME,O,STARTS,noun,normal mesai dışındaki fazla çalışma,He works overtime every Friday.,Her cuma fazla mesai yapıyor.,3,,business
-b1-exception,EXCEPTION,X,CONTAINS,noun,kuralın dışında kalan durum,There is one exception to this rule.,Bu kuralın tek bir istisnası var.,4,,school-work
+b1-exception,EXCEPTION,X,CONTAINS,noun,kurala uymayan tek örnek,There is one exception to this rule.,Bu kuralın tek bir istisnası var.,4,,school-work
 b1-expand,EXPAND,X,CONTAINS,verb,"büyüyüp yayılmak, genişlemek",The company wants to expand abroad.,Şirket yurt dışına açılmak istiyor.,4,,business
 b1-complex,COMPLEX,X,CONTAINS,adj,"birçok parçası olan, karmaşık",The story has a complex plot.,Hikâyenin karmaşık bir olay örgüsü var.,4,,film-tv
 b1-index,INDEX,X,CONTAINS,noun,kitabın sonunda yer alan dizin,Look in the index for the page number.,Sayfa numarası için dizine bak.,4,,school-work

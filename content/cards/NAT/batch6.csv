@@ -53,7 +53,7 @@ nat-wince,WINCE,W,STARTS,verb,"(acı, utançtan) yüzünü buruşturup irkilmek"
 nat-woo,WOO,W,STARTS,verb,"(seçmen, müşteri) gönlünü kazanmaya çalışmak",Both parties are trying to woo young voters.,İki parti de genç seçmenlerin gönlünü kazanmaya çalışıyor.,4,,general
 nat-awry,AWRY,W,CONTAINS,adj,"(şapka, kravat) yamuk, çarpık duran",His tie was awry.,Kravatı yamuk duruyordu.,5,,general
 nat-erstwhile,ERSTWHILE,W,CONTAINS,adj,"eski, bir zamanki (dost, rakip)",He met his erstwhile rival at the party.,Partide bir zamanki rakibiyle karşılaştı.,5,,general
-nat-bellwether,BELLWETHER,W,CONTAINS,noun,bir eğilimin önceden belirtisi sayılan şey,The town is a bellwether for the national vote.,Kasaba ülke genelindeki oylamanın habercisi sayılır.,5,,general
+nat-bellwether,BELLWETHER,W,CONTAINS,noun,sonucu önceden gösteren öncü belirti,The town is a bellwether for the national vote.,Kasaba ülke genelindeki oylamanın habercisi sayılır.,5,,general
 nat-unwieldy,UNWIELDY,W,CONTAINS,adj,"büyüklüğü yüzünden taşınması, yönetilmesi zor",The old system is unwieldy and slow.,Eski sistem hantal ve yavaş.,5,,general
 nat-overwrought,OVERWROUGHT,W,CONTAINS,adj,"aşırı gergin ve heyecanlı, sinirleri bozuk",She was overwrought after the accident.,Kazadan sonra sinirleri bozulmuştu.,5,,general
 nat-newfangled,NEWFANGLED,W,CONTAINS,adj,"(alay) yeni çıkmış, gereksiz modern",He hates newfangled gadgets.,Yeni çıkmış gereksiz aletlerden nefret eder.,5,,general

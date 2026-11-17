@@ -2,7 +2,7 @@ id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
 nat-gaffe,GAFFE,G,STARTS,noun,toplum içinde kırılan utandırıcı pot,The minister made a terrible gaffe on live TV.,Bakan canlı yayında korkunç bir pot kırdı.,4,,general
 nat-garrulous,GARRULOUS,G,STARTS,adj,"durmadan ve gereksiz yere konuşan, geveze",A garrulous taxi driver talked all the way.,Geveze bir taksici yol boyunca konuştu.,5,,general
 nat-gauche,GAUCHE,G,STARTS,adj,sosyal ortamda sakar ve görgüsüz,He felt gauche among the rich guests.,Zengin misafirlerin arasında kendini sakar ve görgüsüz hissetti.,5,,general
-nat-gaunt,GAUNT,G,STARTS,adj,hastalık ya da açlıktan bir deri bir kemik kalmış,He looked gaunt after his long illness.,Uzun hastalığından sonra bir deri bir kemik kalmıştı.,5,,general
+nat-gaunt,GAUNT,G,STARTS,adj,"aşırı zayıflamış, çökük yüzlü",He looked gaunt after his long illness.,Uzun hastalığından sonra bir deri bir kemik kalmıştı.,5,,general
 nat-genial,GENIAL,G,STARTS,adj,"güler yüzlü, hoş sohbet ve misafirperver",The genial landlord offered us tea.,Sıcakkanlı ev sahibi bize çay ikram etti.,4,,general
 nat-germane,GERMANE,G,STARTS,adj,tartışılan konuyla doğrudan ilgili,That point is not germane to the discussion.,O nokta tartışmayla doğrudan ilgili değil.,5,,general
 nat-glib,GLIB,G,STARTS,adj,fazla rahat ve akıcı ama samimiyetsiz konuşan,The salesman gave a glib answer.,Satıcı akıcı ama içi boş bir cevap verdi.,5,,general
@@ -75,7 +75,7 @@ nat-jaded,JADED,J,STARTS,adj,"aşırı tecrübeden bıkmış, heyecanını yitir
 nat-jaunty,JAUNTY,J,STARTS,adj,"(adım, şapka) kurumlu, havalı ve kendinden emin",He walked in with a jaunty step.,Neşeli ve kendinden emin adımlarla içeri girdi.,5,,general
 nat-jeer,JEER,J,STARTS,verb,alay ederek yuhalamak,Fans began to jeer the referee.,Taraftarlar hakemi yuhalamaya başladı.,4,,general
 nat-jettison,JETTISON,J,STARTS,verb,"(plan, yük) işe yaramaz diye atıp kurtulmak",We had to jettison the old plan.,Eski planı çöpe atmak zorunda kaldık.,5,,general
-nat-jovial,JOVIAL,J,STARTS,adj,güler yüzlü ve hoş sohbet (çoğu zaman yaşlıca adam),Our jovial uncle told jokes all night.,Şen şakrak amcamız bütün gece fıkra anlattı.,4,,general
+nat-jovial,JOVIAL,J,STARTS,adj,"güler yüzlü ve şen, hoş sohbet",Our jovial uncle told jokes all night.,Şen şakrak amcamız bütün gece fıkra anlattı.,4,,general
 nat-jostle,JOSTLE,J,STARTS,verb,kalabalıkta itişip kakışmak,Reporters began to jostle for position.,Muhabirler yer kapmak için itişip kakışmaya başladı.,5,,general
 nat-jubilant,JUBILANT,J,STARTS,adj,(zafer sonrası) zafer sarhoşluğuyla bayram eden,Jubilant fans poured into the streets.,Coşkulu taraftarlar sokaklara döküldü.,4,,general
 nat-juxtapose,JUXTAPOSE,J,STARTS,verb,karşılaştırmak için yan yana koymak,The artist likes to juxtapose old and new.,Sanatçı eskiyle yeniyi yan yana koymayı sever.,5,,general

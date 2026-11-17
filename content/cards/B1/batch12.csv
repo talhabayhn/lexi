@@ -3,7 +3,7 @@ b1-giggle,GIGGLE,G,STARTS,verb,hafif sesle ve kıkır kıkır gülmek,The childr
 b1-grammar,GRAMMAR,G,STARTS,noun,bir dilin cümle kurma kuralları,My teacher explains English grammar very clearly.,Öğretmenim İngilizce dil bilgisini çok net anlatıyor.,3,,school-work
 b1-grin,GRIN,G,STARTS,noun,"yüzde beliren geniş, neşeli gülümseme",He had a big grin on his face after the game.,Maçtan sonra yüzünde kocaman bir sırıtış vardı.,3,,daily-life
 b1-goldfish,GOLDFISH,G,STARTS,noun,akvaryumda beslenen turuncu küçük balık,Our goldfish lives in a small bowl.,Japon balığımız küçük bir fanusta yaşıyor.,3,,animals
-b1-gown,GOWN,G,STARTS,noun,uzun ve şık kadın elbisesi ya da mezuniyet cübbesi,She wore a long blue gown to the party.,Partiye uzun mavi bir elbise giydi.,3,,daily-life
+b1-gown,GOWN,G,STARTS,noun,"uzun, şık ve süslü kadın elbisesi",She wore a long blue gown to the party.,Partiye uzun mavi bir elbise giydi.,3,,daily-life
 b1-greenhouse,GREENHOUSE,G,STARTS,noun,bitki yetiştirilen camdan yapılmış sıcak yapı,We grow tomatoes in the greenhouse.,Domatesleri serada yetiştiriyoruz.,3,,daily-life
 b1-grasshopper,GRASSHOPPER,G,STARTS,noun,uzun bacaklarıyla zıplayan yeşil böcek,A grasshopper jumped onto my shoe.,Bir çekirge ayakkabımın üstüne zıpladı.,3,,animals
 b1-guitarist,GUITARIST,G,STARTS,noun,gitar çalan müzisyen,The guitarist played a slow song.,Gitarist yavaş bir şarkı çaldı.,3,,music
@@ -20,7 +20,7 @@ b1-nearby,NEARBY,N,STARTS,adv,yakın bir yerde (zarf; ardından isim almaz),"Is 
 b1-nasty,NASTY,N,STARTS,adj,"tadı, kokusu ya da davranışı iğrenç (sıfat)",This medicine has a nasty taste.,Bu ilacın berbat bir tadı var.,3,,daily-life
 b1-necktie,NECKTIE,N,STARTS,noun,gömleğin yakasına bağlanan uzun şerit,He wore a red necktie to the interview.,Mülakata kırmızı bir kravat taktı.,3,,daily-life
 b1-newborn,NEWBORN,N,STARTS,noun,yeni doğmuş bebek,The newborn slept all afternoon.,Yeni doğan bebek öğleden sonra boyunca uyudu.,3,,family-people
-b1-noun,NOUN,N,STARTS,noun,"isim; kişi, yer ya da şeyin adı olan sözcük türü","'Book' is a noun, not a verb.","'Book' bir fiil değil, isimdir.",3,,school-work
+b1-noun,NOUN,N,STARTS,noun,varlıkları adlandıran sözcük türü,"'Book' is a noun, not a verb.","'Book' bir fiil değil, isimdir.",3,,school-work
 b1-normally,NORMALLY,N,STARTS,adv,"olağan koşullarda, istisna yoksa (zarf)",I normally wake up at seven.,Genellikle yedide uyanırım.,3,,daily-life
 b1-nosebleed,NOSEBLEED,N,STARTS,noun,burundan kan gelmesi,He had a nosebleed in the hot classroom.,Sıcak sınıfta burnu kanadı.,3,,body-health
 b1-obese,OBESE,O,STARTS,adj,sağlığı tehlikeye atacak kadar çok kilolu,The doctor told him he was obese.,Doktor ona obez olduğunu söyledi.,3,,body-health
@@ -59,11 +59,11 @@ b1-episode,EPISODE,E,STARTS,noun,bir dizinin tek bölümü,I stayed up late to w
 b1-ladybug,LADYBUG,L,STARTS,noun,kırmızı üzerine siyah benekli küçük böcek,A ladybug landed on the leaf.,Yaprağın üstüne bir uğur böceği kondu.,3,,animals
 b1-lantern,LANTERN,L,STARTS,noun,"kamp yaparken taşınan, mum ya da ampullü fener",They lit a lantern in the tent.,Çadırda bir fener yaktılar.,3,,travel
 b1-lamb,LAMB,L,STARTS,noun,yavru koyun; eti de böyle anılır,We had roast lamb for dinner.,Akşam yemeğinde kuzu kızartması yedik.,3,,food-drink
-b1-lasagna,LASAGNA,L,STARTS,noun,"kat kat makarna, kıyma ve peynirle yapılan İtalyan yemeği",My dad makes great lasagna.,Babam harika lazanya yapar.,3,,food-drink
+b1-lasagna,LASAGNA,L,STARTS,noun,katmanlı makarnayla yapılan İtalyan yemeği,My dad makes great lasagna.,Babam harika lazanya yapar.,3,,food-drink
 b1-leak,LEAK,L,STARTS,noun,borudan ya da çatıdan sıvının sızması,There is a leak under the kitchen sink.,Mutfak lavabosunun altında bir sızıntı var.,3,,daily-life
 b1-leopard,LEOPARD,L,STARTS,noun,benekli tüylü büyük yırtıcı kedi,The leopard climbed up a tree.,Leopar bir ağaca tırmandı.,3,,animals
 b1-leggings,LEGGINGS,L,STARTS,noun,bacağa tam oturan esnek spor tayt,She wears leggings to the gym.,Spor salonuna tayt giyer.,3,,daily-life
-b1-lightbulb,LIGHTBULB,L,STARTS,noun,"lambaya takılan, ışık veren cam parça",We need a new lightbulb in the hall.,Koridora yeni bir ampul lazım.,3,,daily-life
+b1-lightbulb,LIGHTBULB,L,STARTS,noun,lambaya takılan ışık veren cam balon,We need a new lightbulb in the hall.,Koridora yeni bir ampul lazım.,3,,daily-life
 b1-loaf,LOAF,L,STARTS,noun,bir bütün halinde pişmiş ekmek,She bought a loaf of bread.,Bir somun ekmek aldı.,3,,food-drink
 b1-laughter,LAUGHTER,L,STARTS,noun,gülen insanların çıkardığı ses,The room was full of laughter.,Oda kahkahayla doluydu.,3,,daily-life
 b1-librarian,LIBRARIAN,L,STARTS,noun,kütüphanede çalışan görevli,The librarian helped me find the book.,Kütüphaneci kitabı bulmama yardım etti.,3,,school-work

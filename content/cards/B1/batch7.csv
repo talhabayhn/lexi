@@ -1,7 +1,7 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
 b1-talent,TALENT,T,STARTS,noun,doğuştan gelen özel yetenek,She has a talent for music.,Müzik konusunda yeteneği var.,3,,music
 b1-target,TARGET,T,STARTS,noun,ulaşılmak veya vurulmak istenen hedef,Our target is fifty new customers.,Hedefimiz elli yeni müşteri.,3,,business
-b1-teenage,TEENAGE,T,STARTS,adj,on üç ile on dokuz yaş arasındaki gençlerle ilgili,He has two teenage daughters.,İki ergen kızı var.,3,,family-people
+b1-teenage,TEENAGE,T,STARTS,adj,ergenlik çağındaki gençlere ait,He has two teenage daughters.,İki ergen kızı var.,3,,family-people
 b1-temporary,TEMPORARY,T,STARTS,adj,"kısa süreliğine olan, geçici",It is only a temporary job.,Bu sadece geçici bir iş.,3,,business
 b1-theft,THEFT,T,STARTS,noun,başkasının malını çalma suçu,The theft happened at night.,Hırsızlık gece oldu.,4,,daily-life
 b1-theory,THEORY,T,STARTS,noun,bir olayı açıklamaya çalışan kuram,Einstein's theory changed physics.,Einstein'ın kuramı fiziği değiştirdi.,4,,school-work
@@ -28,7 +28,7 @@ b1-unfair,UNFAIR,U,STARTS,adj,"adil olmayan, haksız",It is unfair to give him e
 b1-unit,UNIT,U,STARTS,noun,bir bütünü oluşturan birim veya bölüm,We finished unit three today.,Bugün üçüncü üniteyi bitirdik.,3,,school-work
 b1-united,UNITED,U,STARTS,adj,"birleşmiş, bir araya gelmiş",The team was united after the match.,Takım maçtan sonra kenetlenmişti.,4,,sports
 b1-universe,UNIVERSE,U,STARTS,noun,bütün gök cisimlerini kapsayan evren,Stars fill the universe.,Yıldızlar evreni doldurur.,4,,school-work
-b1-unknown,UNKNOWN,U,STARTS,adj,bilinmeyen,The reason is still unknown.,Sebep hâlâ bilinmiyor.,3,,daily-life
+b1-unknown,UNKNOWN,U,STARTS,adj,kimsenin tanımadığı ya da bilmediği,The reason is still unknown.,Sebep hâlâ bilinmiyor.,3,,daily-life
 b1-unlikely,UNLIKELY,U,STARTS,adj,gerçekleşmesi pek mümkün olmayan,It is unlikely that it will snow today.,Bugün kar yağması pek olası değil.,4,,daily-life
 b1-unpleasant,UNPLEASANT,U,STARTS,adj,"hoşa gitmeyen, nahoş",There was an unpleasant smell in the room.,Odada nahoş bir koku vardı.,3,,daily-life
 b1-unusual,UNUSUAL,U,STARTS,adj,"alışılmamış, sıra dışı",That is an unusual name.,Bu alışılmadık bir isim.,3,,daily-life
@@ -39,7 +39,7 @@ b1-urban,URBAN,U,STARTS,adj,"şehirle ilgili, kentsel",Urban life can be noisy.,
 b1-urgent,URGENT,U,STARTS,adj,"hemen yapılması gereken, acil",I have an urgent message for you.,Sana acil bir mesajım var.,3,,business
 b1-useless,USELESS,U,STARTS,adj,hiçbir işe yaramayan,This old phone is useless.,Bu eski telefon işe yaramaz.,3,,technology
 b1-understanding,UNDERSTANDING,U,STARTS,adj,"başkasının durumunu anlayan, anlayışlı",My teacher was very understanding.,Öğretmenim çok anlayışlıydı.,4,,family-people
-b1-unexpected,UNEXPECTED,U,STARTS,adj,beklenmeyen,We had an unexpected visitor.,Beklenmedik bir misafirimiz geldi.,4,,daily-life
+b1-unexpected,UNEXPECTED,U,STARTS,adj,önceden hiç tahmin edilmeyen,We had an unexpected visitor.,Beklenmedik bir misafirimiz geldi.,4,,daily-life
 b1-valuable,VALUABLE,V,STARTS,adj,"çok değerli, kıymetli",The ring is very valuable.,Yüzük çok değerli.,3,,daily-life
 b1-value,VALUE,V,STARTS,noun,bir şeyin değeri,The value of the house has doubled.,Evin değeri iki katına çıktı.,3,,business
 b1-variety,VARIETY,V,STARTS,noun,"birçok farklı türün bulunması, çeşitlilik",The market sells a variety of fruit.,Pazar çok çeşitli meyve satıyor.,3,,food-drink
@@ -55,7 +55,7 @@ b1-virus,VIRUS,V,STARTS,noun,hastalık yapan mikroskobik canlı; bilgisayar zara
 b1-vocabulary,VOCABULARY,V,STARTS,noun,bir dilde bilinen sözcüklerin tamamı,I want to improve my English vocabulary.,İngilizce kelime dağarcığımı geliştirmek istiyorum.,3,,school-work
 b1-volume,VOLUME,V,STARTS,noun,bir sesin yüksekliği; hacim,Please turn down the volume.,Lütfen sesi kıs.,3,,technology
 b1-version,VERSION,V,STARTS,noun,bir şeyin farklı bir hali veya sürümü,Which version of the app do you use?,Uygulamanın hangi sürümünü kullanıyorsun?,3,,technology
-b1-device,DEVICE,V,CONTAINS,noun,belirli bir iş için yapılmış küçük alet,This device charges your phone.,Bu cihaz telefonunu şarj eder.,3,,technology
+b1-device,DEVICE,V,CONTAINS,noun,belirli bir işlevi gören teknik alet,This device charges your phone.,Bu cihaz telefonunu şarj eder.,3,,technology
 b1-reserve,RESERVE,V,CONTAINS,verb,önceden yer ayırtmak,I want to reserve a table for four.,Dört kişilik bir masa ayırtmak istiyorum.,3,,travel
 b1-convince,CONVINCE,V,CONTAINS,verb,birini bir şeyin doğru olduğuna inandırmak,She could not convince her father.,Babasını ikna edemedi.,4,,daily-life
 b1-convenient,CONVENIENT,V,CONTAINS,adj,işe yarar ve kolaylık sağlayan,The hotel is in a convenient place.,Otel elverişli bir yerde.,4,,travel

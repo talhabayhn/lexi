@@ -21,7 +21,7 @@ a2-storm,STORM,S,STARTS,noun,şiddetli rüzgârlı ve yağmurlu hava,A storm is 
 a2-temperature,TEMPERATURE,T,STARTS,noun,havanın veya cismin sıcaklık derecesi,The temperature is very low today.,Bugün sıcaklık çok düşük.,2,,time-weather
 a2-underground,UNDERGROUND,U,STARTS,noun,şehirde yer altından giden tren,I go to work by underground.,İşe metroyla gidiyorum.,2,,city-transport
 a2-visitor,VISITOR,V,STARTS,noun,bir yeri ziyarete gelen kişi,Every visitor must buy a ticket.,Her ziyaretçi bilet almak zorunda.,2,,travel
-a2-weight,WEIGHT,W,STARTS,noun,bir şeyin kaç kilo geldiği,What is the weight of this box?,Bu kutunun ağırlığı ne kadar?,2,,daily-life
-a2-fox,FOX,X,CONTAINS,noun,tilki,The fox runs very fast.,Tilki çok hızlı koşar.,2,,animals
+a2-weight,WEIGHT,W,STARTS,noun,terazide ölçülen kilo değeri,What is the weight of this box?,Bu kutunun ağırlığı ne kadar?,2,,daily-life
+a2-fox,FOX,X,CONTAINS,noun,"kızıl tüylü, kurnaz bilinen orman hayvanı",The fox runs very fast.,Tilki çok hızlı koşar.,2,,animals
 a2-yawn,YAWN,Y,STARTS,verb,uykumuz gelince ağzımızı açıp derin nefes almak,I always yawn in the morning.,Sabahları hep esnerim.,2,,body-health
-a2-lazy,LAZY,Z,CONTAINS,adj,tembel,Don't be lazy. Do your homework.,Tembellik yapma. Ödevini yap.,2,,family-people
+a2-lazy,LAZY,Z,CONTAINS,adj,çalışmak ya da iş yapmak istemeyen,Don't be lazy. Do your homework.,Tembellik yapma. Ödevini yap.,2,,family-people

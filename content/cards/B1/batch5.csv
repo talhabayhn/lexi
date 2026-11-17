@@ -60,7 +60,7 @@ b1-pollution,POLLUTION,P,STARTS,noun,"hava, su ve toprağın kirlenmesi",Air pol
 b1-population,POPULATION,P,STARTS,noun,bir yerde yaşayan insanların sayısı,The population of the city is two million.,Şehrin nüfusu iki milyon.,3,,city-transport
 b1-position,POSITION,P,STARTS,noun,"takımda oyuncunun oynadığı yer, mevki",What position does he play in the team?,Takımda hangi pozisyonda oynuyor?,3,,sports
 b1-positive,POSITIVE,P,STARTS,adj,"olumlu, iyimser",She feels positive about life.,Hayata dair olumlu hissediyor.,3,,daily-life
-b1-poverty,POVERTY,P,STARTS,noun,yoksulluk,Many families live in poverty.,Birçok aile yoksulluk içinde yaşıyor.,4,,daily-life
+b1-poverty,POVERTY,P,STARTS,noun,geçinmek için yeterli paranın olmaması,Many families live in poverty.,Birçok aile yoksulluk içinde yaşıyor.,4,,daily-life
 b1-powerful,POWERFUL,P,STARTS,adj,"çok güçlü, etkili",This is a powerful engine.,Bu güçlü bir motor.,3,,technology
 b1-practical,PRACTICAL,P,STARTS,adj,"işe yarar, pratik",A backpack is more practical than a suitcase.,Sırt çantası valizden daha pratiktir.,3,,daily-life
 b1-praise,PRAISE,P,STARTS,verb,birini överek takdir etmek,Teachers should praise good work.,Öğretmenler iyi işi övmelidir.,3,,school-work

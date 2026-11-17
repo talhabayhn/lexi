@@ -40,7 +40,7 @@ b1-complete,COMPLETE,C,STARTS,adj,"eksiksiz, tam",I need a complete list of name
 b1-complicated,COMPLICATED,C,STARTS,adj,"anlaması veya yapması zor, karışık",The rules of the game are too complicated.,Oyunun kuralları çok karışık.,3,,daily-life
 b1-concentrate,CONCENTRATE,C,STARTS,verb,bütün dikkatini bir şeye vermek,I cannot concentrate with that noise.,O gürültüyle konsantre olamıyorum.,3,,school-work
 b1-conclusion,CONCLUSION,C,STARTS,noun,bir düşünce sürecinin vardığı sonuç,What is your conclusion after reading the report?,Raporu okuduktan sonra vardığın sonuç nedir?,4,,school-work
-b1-condition,CONDITION,C,STARTS,noun,bir şeyin içinde bulunduğu durum,The car is in good condition.,Araba iyi durumda.,3,,daily-life
+b1-condition,CONDITION,C,STARTS,noun,bir şeyin o andaki genel hâli,The car is in good condition.,Araba iyi durumda.,3,,daily-life
 b1-confidence,CONFIDENCE,C,STARTS,noun,kendine duyulan güven,She speaks English with confidence.,İngilizceyi kendinden emin konuşuyor.,3,,school-work
 b1-confident,CONFIDENT,C,STARTS,adj,kendine güvenen,I feel confident about the test.,Test konusunda kendime güveniyorum.,3,,school-work
 b1-confused,CONFUSED,C,STARTS,adj,"ne yapacağını bilemeyen, kafası karışmış",I am confused by this map.,Bu haritadan kafam karıştı.,3,,daily-life
@@ -100,7 +100,7 @@ b1-elderly,ELDERLY,E,STARTS,adj,"yaşlı, ileri yaşta",The bus stops for elderl
 b1-election,ELECTION,E,STARTS,noun,oy verilerek yapılan seçim,The election will be held in May.,Seçim mayıs ayında yapılacak.,3,,daily-life
 b1-electronic,ELECTRONIC,E,STARTS,adj,elektronik cihazlarla ilgili,He sells electronic equipment.,Elektronik ekipman satıyor.,3,,technology
 b1-embarrassed,EMBARRASSED,E,STARTS,adj,"utanmış, mahcup olmuş",I felt embarrassed when I forgot his name.,Adını unutunca mahcup oldum.,3,,daily-life
-b1-emergency,EMERGENCY,E,STARTS,noun,hemen müdahale gerektiren tehlikeli durum,Call 112 in an emergency.,Acil durumda 112'yi ara.,3,,daily-life
+b1-emergency,EMERGENCY,E,STARTS,noun,hemen yardım gerektiren ani tehlike,Call 112 in an emergency.,Acil durumda 112'yi ara.,3,,daily-life
 b1-emotion,EMOTION,E,STARTS,noun,"sevinç, korku gibi duygu",She could not hide her emotion.,Duygusunu gizleyemedi.,3,,family-people
 b1-employ,EMPLOY,E,STARTS,verb,birini işe almak,The company will employ fifty new workers.,Şirket elli yeni işçi alacak.,3,,business
 b1-employee,EMPLOYEE,E,STARTS,noun,bir işyerinde maaşla çalışan kişi,Every employee gets a free lunch.,Her çalışan bedava öğle yemeği alır.,3,,business

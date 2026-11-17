@@ -1,5 +1,5 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
-a2-quite,QUITE,Q,STARTS,adv,oldukça,The story is quite good.,Hikâye oldukça iyi.,3,,daily-life
+a2-quite,QUITE,Q,STARTS,adv,fazla olmasa da epeyce,The story is quite good.,Hikâye oldukça iyi.,3,,daily-life
 a2-uniform,UNIFORM,U,STARTS,noun,aynı işi yapanların giydiği kıyafet,The pilot wears a uniform.,Pilot üniforma giyer.,3,,school-work
 a2-van,VAN,V,STARTS,noun,yük taşıyan küçük kapalı araç,A van is waiting at the door.,Kapıda bir kamyonet bekliyor.,2,,city-transport
 a2-vacation,VACATION,V,STARTS,noun,işten ya da okuldan izinli geçirilen günler,We are going on vacation to Italy next week.,Gelecek hafta İtalya'ya tatile gidiyoruz.,3,,travel

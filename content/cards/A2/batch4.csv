@@ -52,11 +52,11 @@ a2-peace,PEACE,C,CONTAINS,noun,"savaşın olmadığı sakin durum, barış",Ever
 a2-twice,TWICE,C,CONTAINS,adv,iki kez,I call my mother twice a week.,Annemi haftada iki kez ararım.,2,,time-weather
 a2-practise,PRACTICE,C,CONTAINS,verb,iyi olmak için tekrar tekrar çalışmak,I practice the piano every day.,Her gün piyano çalışıyorum.,3,,music
 a2-decide,DECIDE,C,CONTAINS,verb,bir konuda kesin karara varmak,We cannot decide where to eat.,Nerede yemek yiyeceğimize karar veremiyoruz.,3,,daily-life
-a2-danger,DANGER,D,STARTS,noun,can ya da mal kaybı riski olan durum,The red light means danger.,Kırmızı ışık tehlike demek.,3,,city-transport
+a2-danger,DANGER,D,STARTS,noun,insana zarar gelme olasılığı,The red light means danger.,Kırmızı ışık tehlike demek.,3,,city-transport
 a2-deep,DEEP,D,STARTS,adj,"yüzeyden aşağıya doğru uzun, derin","The river is deep here, so do not swim.","Nehir burada derin, o yüzden yüzme.",2,,travel
 a2-describe,DESCRIBE,D,STARTS,verb,bir şeyin nasıl olduğunu anlatmak,Can you describe the man you saw?,Gördüğün adamı tarif edebilir misin?,3,,school-work
 a2-desert,DESERT,D,STARTS,noun,çok az yağmur alan kumlu kurak bölge,It is very hot in the desert.,Çölde hava çok sıcak.,2,,travel
-a2-design,DESIGN,D,STARTS,noun,bir şeyin nasıl görüneceğini gösteren çizim ya da plan,I like the design of this bag.,Bu çantanın tasarımını beğeniyorum.,3,,daily-life
+a2-design,DESIGN,D,STARTS,noun,bir şeyin görünüşünü belirleyen çizim,I like the design of this bag.,Bu çantanın tasarımını beğeniyorum.,3,,daily-life
 a2-diamond,DIAMOND,D,STARTS,noun,"çok sert ve değerli, parlak taş",The ring has a small diamond.,Yüzüğün küçük bir elması var.,3,,daily-life
 a2-diary,DIARY,D,STARTS,noun,her gün yaşananların yazıldığı defter,She writes in her diary at night.,Geceleri günlüğüne yazıyor.,2,,daily-life
 a2-diet,DIET,D,STARTS,noun,"sağlık için seçilen yeme düzeni, perhiz",The doctor told him to follow a healthy diet.,Doktor ona sağlıklı bir diyet uygulamasını söyledi.,3,,body-health
@@ -78,7 +78,7 @@ a2-dessert,DESSERT,D,STARTS,noun,yemekten sonra yenen tatlı,"For dessert, we at
 a2-wedding,WEDDING,D,CONTAINS,noun,iki kişinin evlendiği tören,Their wedding is in June.,Düğünleri haziranda.,3,,family-people
 a2-middle,MIDDLE,D,CONTAINS,noun,bir şeyin tam ortası,Stand in the middle of the room.,Odanın ortasında dur.,3,,daily-life
 a2-wide,WIDE,D,CONTAINS,adj,"iki yan arasındaki mesafesi çok olan, geniş",The river is very wide here.,Nehir burada çok geniş.,3,,travel
-a2-sand,SAND,D,CONTAINS,noun,plajda bulunan ince taneli madde,The children play in the sand.,Çocuklar kumda oynuyor.,2,,travel
+a2-sand,SAND,D,CONTAINS,noun,çölde ve plajda bulunan ince taneler,The children play in the sand.,Çocuklar kumda oynuyor.,2,,travel
 a2-field,FIELD,D,CONTAINS,noun,ekin ya da çimen ekili geniş açık alan,The cows are in the field.,İnekler tarlada.,3,,animals
 a2-ladder,LADDER,D,CONTAINS,noun,yüksek yere çıkmak için basamaklı araç,He climbed the ladder to the roof.,Merdivenle çatıya tırmandı.,3,,home
 a2-shoulder,SHOULDER,D,CONTAINS,noun,boyunla kolu birleştiren üst vücut kısmı,My shoulder hurts.,Omzum ağrıyor.,3,,body-health

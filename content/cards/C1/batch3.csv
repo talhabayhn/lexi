@@ -14,7 +14,7 @@ c1-depict,DEPICT,D,STARTS,verb,bir şeyi resim veya sözle betimlemek,The painti
 c1-deplete,DEPLETE,D,STARTS,verb,kaynakları azaltıp tüketmek,Overfishing may deplete the stock of fish.,Aşırı avlanma balık stokunu tüketebilir.,5,,school-work
 c1-deploy,DEPLOY,D,STARTS,verb,asker veya kaynağı bir yere konuşlandırmak,The army will deploy more troops to the border.,Ordu sınıra daha fazla asker konuşlandıracak.,5,,school-work
 c1-depreciate,DEPRECIATE,D,STARTS,verb,değer kaybetmek,A new car will depreciate quickly.,Sıfır bir araba hızla değer kaybeder.,5,,business
-c1-descent,DESCENT,D,STARTS,noun,aşağı iniş; soy,The plane began its descent into the city.,Uçak şehre doğru alçalmaya başladı.,5,,travel
+c1-descent,DESCENT,D,STARTS,noun,yüksekten aşağıya doğru hareket,The plane began its descent into the city.,Uçak şehre doğru alçalmaya başladı.,5,,travel
 c1-designate,DESIGNATE,D,STARTS,verb,resmî olarak bir görev veya yer için belirlemek,The city will designate a new area for parking.,Şehir otopark için yeni bir alan belirleyecek.,5,,business
 c1-despair,DESPAIR,D,STARTS,noun,tamamen umudunu yitirme duygusu,She wept in despair at the news.,Haberi duyunca çaresizlik içinde ağladı.,4,,school-work
 c1-detach,DETACH,D,STARTS,verb,bir parçayı bütünden ayırmak,Detach the form and send it back.,Formu koparıp geri gönderin.,4,,school-work
@@ -67,7 +67,7 @@ c1-enrol,ENROLL,E,STARTS,verb,bir kursa kayıt olmak veya kaydetmek,You can enro
 c1-ensue,ENSUE,E,STARTS,verb,bir olayın ardından ortaya çıkmak,A long argument will ensue if you mention it.,Bundan söz edersen uzun bir tartışma çıkar.,5,,school-work
 c1-entail,ENTAIL,E,STARTS,verb,bir şeyin gereği olarak getirmek,The job will entail a lot of travel.,İş çok seyahat gerektirecek.,5,,business
 c1-entitle,ENTITLE,E,STARTS,verb,birine bir hak tanımak,This ticket will entitle you to a free drink.,Bu bilet size bedava bir içecek hakkı tanır.,5,,travel
-c1-entity,ENTITY,E,STARTS,noun,bağımsız varlığı olan kuruluş veya şey,The bank is a separate legal entity.,Banka ayrı bir tüzel kişiliktir.,5,,business
+c1-entity,ENTITY,E,STARTS,noun,tüzel kişiliği olan bağımsız kuruluş,The bank is a separate legal entity.,Banka ayrı bir tüzel kişiliktir.,5,,business
 c1-envisage,ENVISAGE,E,STARTS,verb,gelecekte olabilecek bir şeyi zihinde canlandırmak,I cannot envisage living in a big city.,Büyük şehirde yaşamayı hayal bile edemiyorum.,5,,school-work
 c1-equity,EQUITY,E,STARTS,noun,"hakkaniyet, fırsat eşitliği; şirket hissesi",The group works for equity in education.,Grup eğitimde hakkaniyet için çalışıyor.,5,,business
 c1-eradicate,ERADICATE,E,STARTS,verb,bir şeyi kökünden yok etmek,The country hopes to eradicate the disease.,Ülke hastalığı kökünden yok etmeyi umuyor.,5,,school-work

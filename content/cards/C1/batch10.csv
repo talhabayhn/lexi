@@ -45,7 +45,7 @@ c1-nonprofit,NONPROFIT,N,STARTS,adj,kâr amacı gütmeyen,She works for a nonpro
 c1-numerical,NUMERICAL,N,STARTS,adj,sayılarla ilgili,Put the files in numerical order.,Dosyaları sayısal sıraya koy.,5,,school-work
 c1-nationwide,NATIONWIDE,N,STARTS,adj,ülkenin her yerinde,There was a nationwide strike.,Ülke çapında bir grev vardı.,4,,business
 c1-acquisition,ACQUISITION,Q,CONTAINS,noun,bir şeyi satın alma veya elde etme,The acquisition cost millions.,Satın alma milyonlara mal oldu.,5,,business
-c1-inadequate,INADEQUATE,Q,CONTAINS,adj,yetersiz,Their training was inadequate.,Eğitimleri yetersizdi.,4,,business
+c1-inadequate,INADEQUATE,Q,CONTAINS,adj,gereken düzeyin altında kalan,Their training was inadequate.,Eğitimleri yetersizdi.,4,,business
 c1-liquidity,LIQUIDITY,Q,CONTAINS,noun,paraya çevrilebilirlik,The bank has strong liquidity.,Bankanın güçlü bir likiditesi var.,5,,business
 c1-tranquil,TRANQUIL,Q,CONTAINS,adj,huzurlu ve sakin,It was a tranquil village.,Huzurlu bir köydü.,5,,travel
 c1-quantify,QUANTIFY,Q,STARTS,verb,bir şeyi sayısal olarak ölçmek,It is hard to quantify the damage.,Zararı ölçmek zor.,5,,school-work
@@ -61,7 +61,7 @@ c1-synonym,SYNONYM,Y,CONTAINS,noun,eş anlamlı sözcük,"""Big"" is a synonym o
 c1-dynasty,DYNASTY,Y,CONTAINS,noun,aynı aileden gelen hükümdarlar zinciri,The dynasty ruled for two centuries.,Hanedan iki yüzyıl hüküm sürdü.,5,,school-work
 c1-hypothetical,HYPOTHETICAL,Y,CONTAINS,adj,"varsayıma dayanan, gerçek olmayan",It is only a hypothetical case.,Bu yalnızca varsayımsal bir durum.,5,,school-work
 c1-analytical,ANALYTICAL,Y,CONTAINS,adj,çözümlemeye dayalı,She has an analytical mind.,Analitik bir zihni var.,5,,school-work
-c1-physician,PHYSICIAN,Y,CONTAINS,noun,hekim,The physician examined the patient.,Hekim hastayı muayene etti.,5,,school-work
+c1-physician,PHYSICIAN,Y,CONTAINS,noun,hastaları muayene edip tedavi eden doktor,The physician examined the patient.,Hekim hastayı muayene etti.,5,,school-work
 c1-syllable,SYLLABLE,Y,CONTAINS,noun,bir sözcüğün hece birimi,Say the word one syllable at a time.,Kelimeyi hece hece söyle.,4,,school-work
 c1-skyline,SKYLINE,Y,CONTAINS,noun,şehrin gökyüzüne karşı silueti,The skyline looks beautiful at night.,Şehrin silueti geceleri çok güzel.,4,,travel
 c1-frenzy,FRENZY,Z,CONTAINS,noun,kontrolsüz aşırı heyecan,The crowd was in a frenzy.,Kalabalık çılgına dönmüştü.,5,,sports
