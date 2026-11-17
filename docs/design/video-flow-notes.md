@@ -126,7 +126,8 @@ session, tier Full only; (6) Hardcore uses the same 3 / 5 / 7 choice as Klasik; 
 
 Still open:
 1. **Design sign-off:** invite icon; the 19 category illustrations and the exam art (`ExamArt`; the IELTS art is a
-   placeholder: speech bubble + headphones, not in the drafts).
+   placeholder: headphones + speech bubble, not in the drafts). Phase 4 redrew the weakest ones; review them on
+   `drafts/video-flow/actual/art-sheet.png` (§10).
 2. **Home header logo** uses a new `LexiLogoSize.Header` (38dp blocks, from `flow.html`); `home_v5.png` has no
    pixel spec for the total-points type size (built 24sp / 12sp).
 3. **Play card caption** "3 dk" shows the remembered time ("5 dk" after choosing 5:00); the draft shows a fixed
@@ -211,3 +212,70 @@ Open after phase 3:
    reading and the launcher's unit tests, not by a NavHost integration test (GamePreparer is internal to
    `feature:game`).
 
+
+## 10. Phase 4 (no device needed): art, robustness, engine investigation
+
+**Art and icon (drafts, still need design sign-off).** Contact sheet of every card:
+`drafts/video-flow/actual/art-sheet.png` (written by `ArtSheetRenderTest` to `core/designsystem/build/art-sheet/`; it
+compares nothing and records no golden). Redrawn with the same primitives and tokens: Seyahat is an airliner seen from
+above (the draft's plane was a faint stroke), Deyimler has proper closing quotation marks (ball with a tail), IELTS
+is headphones around a speech bubble with yellow ear cups (still a placeholder), Yalancı eşdeğerler is rebalanced. A card
+shows only the middle of the art on a narrow phone (cover scaling: at 320 dp 15.5 units of the 163 are cropped per
+side), so Colours, School and False friends were pulled inside x 16–147; the Sports ball's seams now end on the circle
+(they poked out). Stroke widths: 3 for outlines, 2.5 / 4 / 5 for glyph strokes as before. The invite icon's plus no
+longer touches the head (gap 0.6 → 1.8 viewBox units). Checked at 163×95 dp, at 0.75x and cropped to 132 dp.
+The LGS locked card's lock badge covers its top-right dot (unchanged, cosmetic).
+
+**Robustness (tests added, one bug fixed).**
+- *Bug:* the letter morph always showed "A", but a category without an A card opens its wheel on its first letter
+  (13 of the 57 level × category pairs have no A: Müzik B1/B2/C1, Spor B1/B2, Yalancı eşdeğerler B1/B2, Renkler ve sayılar
+  A1, Film ve dizi C1, Deyimler B2, Şehir ve ulaşım B1, Vücut ve sağlık B2, Yiyecek ve içecek B1), so the big letter landed on a different marker. `PickerCategoryUi.firstLetter` and
+  `StartGame.firstLetter` now carry the wheel's first letter into the morph. Tests: first letter per category, effect,
+  launcher.
+- *Orientation:* portrait only (Android `screenOrientation="portrait"` with `orientation|screenSize|…` in
+  `configChanges`; iOS target is iPhone). Font scale and per-app language changes do recreate the activity.
+- *Recreation / process death:* the morph state is `remember`ed, so a recreated activity has no overlay and the
+  game, which `LetterMorphEntrance` finds with an idle morph, releases its clock at once (never a hold without a running
+  morph, never ink left over). A dialog the view model still holds is shown at rest (no replay). Tests:
+  `LetterMorphEntranceTest` (no morph, recreated, hold until the morph is over, cancel, load error, leaving the game
+  mid-morph), `CategoryPickerFlipTest` (restored open).
+- *Double OYNA:* the navigator drops taps while a game is preparing (`openGame`); the launcher test pins that the
+  second tap starts no second morph and does not cancel the first.
+- *Backgrounded mid-transition:* the morph cancels on ON_STOP (phase 3); a dialog flip resumes with the next frame's
+  delta and ends at rest.
+
+**Engine investigation (read-only, nothing changed).** What a category with few cards does today:
+- `WheelGenerator.generate` builds 26 slots; a letter without a category card is `SKIPPED` and the wheel UI draws only
+  playable slots (`GameUiMapper.map`). The category fallback (`alphabetWheel`, `fallback`) only helps a letter that *has*
+  category cards, all seen recently; it never fills a letter with none ("a letter without category cards stays
+  skipped", `GAME_RULES.md` §1). Every level has all 26 letters in `content/`, so a level-wide fill is always possible.
+- Shipped content (letters with a card / cards): Yalancı eşdeğerler B1 **1 / 1** and B2 **1 / 1**, Müzik B1 8 / 9, B2 10 / 12,
+  C1 10 / 10, Spor B2 11 / 17, Teknoloji C1 12 / 25; 41 more pairs have 13–25 letters and 9 have all 26.
+- A one-card category is a **one-letter game**: no loader guard (only a wheel with zero playable slots is refused,
+  `Opened.NoCards`), the engine starts, the first answer (right or wrong) leaves no open slot and ends the game
+  `ALL_ANSWERED` = *completed*, so Classic pays the **time bonus** (1 point per remaining second, up to 180 / 300 / 420)
+  and records a finished wheel for the streak, daily goal and "completed in N seconds" share card. Pass cycles on the
+  same letter until the clock runs out. A 1-letter game is therefore also a points farm.
+- **Smallest rule:** a category wheel with fewer than `minCategoryLetters` playable letters (⚙ 13, in `GameConfig`)
+  takes every letter without a category card from the level's cards for that letter (the same candidates and
+  `pickFresh` steps the recently-seen fallback uses). Categories with 13+ letters, mixed, packs, daily and review are
+  unchanged, so no seed, golden or saved game moves; only the seven pairs under 13 letters change (Yalancı eşdeğerler B1 / B2,
+  Müzik B1 / B2 / C1, Spor B2, Teknoloji C1). Per letter a category card still wins.
+  The first letter becomes A for a filled wheel (the level always has an A), so the picker's `firstLetter` must use
+  the same rule: expose it from the domain (`WheelGenerator.firstLetter(categoryLetters, config)`) instead of
+  duplicating it in `CategoryPickerViewModel`.
+- **Files:** `core/domain/.../game/WheelGenerator.kt` (the `generate` category branch and `alphabetWheel`),
+  `GameConfig.kt` (`minCategoryLetters`), `feature/levels/.../CategoryPickerViewModel.kt` (`firstLetter`),
+  `docs/GAME_RULES.md` §1, `docs/CONTENT.md` (thin categories). **Tests:** `WheelGeneratorTest`: a 1-card category
+  gives 26 playable slots, own card on its letter, level cards elsewhere, one `nextInt` per non-skipped letter in A–Z
+  order, deterministic per seed; a category at exactly the floor is unchanged; with history the recently-seen
+  fallback still applies; mixed / pack unchanged. A content test (compiler or `core:data`) that every shipped
+  (category, level) pair yields ≥ `minCategoryLetters` playable letters. `GameViewModel`/loader: the thin category
+  loads as a normal game. `CategoryPickerViewModelTest`: `firstLetter` for a filled wheel. Session recording and the
+  category progress bar keep working: the filled cards belong to other categories ("counts toward its own category").
+- **Alternatives:** (a) a floor-fill that adds only enough letters (A–Z order) to reach 13: smaller change of feel,
+  an uneven wheel; (b) hide or disable categories below the floor in the picker (product call: the card exists in the
+  draft with its art); (c) no time bonus when fewer than 26 letters were playable (does not make the game fun).
+
+Open after phase 4: the art / icon sign-off (sheet above), the thin-category rule, the real-device pass and
+the owner steps of `docs/release-1.1.0-checklist.md`.
