@@ -1,0 +1,66 @@
+id,answer,current_clue,example_en,rule,proposed_clue,note
+a2-amount,AMOUNT,bir şeyin toplam miktarı (sayılamayan),Add a small amount of salt.,C3,bir şeyin ne kadar olduğunu gösteren ölçü,
+a2-artist,ARTIST,resim ya da heykel gibi sanat eseri yapan kişi,The artist painted a blue horse.,C2,resim ya da heykel yapan kişi,
+a2-bell,BELL,"çalınca ses çıkaran metal alet, çan",The bell rings at nine every morning.,C3,keep,"clear head noun ""çan""; hit is the -an ending"
+a2-bone,BONE,vücudun iskeletini oluşturan sert parça,The dog has a bone.,C3,iskeleti oluşturan sert doku,
+a2-brake,BRAKE,aracı durdurmaya yarayan fren,He pressed the brake when the light turned red.,C3,keep,clear head noun; hit is the -an ending
+a2-burger,BURGER,iki ekmek arasında köfteli yemek,Mert eats a burger for lunch.,C3,keep,"""yemek"" is the noun here, not a verb"
+a2-button,BUTTON,giysiyi ilikleyen küçük yuvarlak parça,A button fell off my coat.,C3,giysiyi kapatan küçük yuvarlak tutturucu,
+a2-countryside,COUNTRYSIDE,şehir dışındaki kırsal alan,We live in the countryside.,C3,keep,"""alan"" is a noun here (area); hit is the -an ending"
+a2-curry,CURRY,Hint mutfağında baharatlı soslu yemek,Mert loves hot curry.,C3,keep,"""yemek"" is the noun here, not a verb"
+a2-danger,DANGER,can ya da mal kaybı riski olan durum,The red light means danger.,C3,insana zarar gelme olasılığı,
+a2-deer,DEER,"dallı boynuzları olan, ormanda yaşayan hayvan",We saw a deer in the forest.,C3,keep,"head noun ""hayvan""; hit is the -an ending"
+a2-design,DESIGN,bir şeyin nasıl görüneceğini gösteren çizim ya da plan,I like the design of this bag.,C2+C3,bir şeyin görünüşünü belirleyen çizim,
+a2-dinosaur,DINOSAUR,milyonlarca yıl önce yaşamış dev sürüngen,The film has a big dinosaur.,C3,keep,"head noun ""sürüngen""; hit is the -en ending"
+a2-disco,DISCO,insanların dans edip müzik dinlediği yer,They danced all night at the disco.,C3,gece dans edilen eğlence yeri,
+a2-dive,DIVE,suya başı önde atlamak ya da suyun altına dalmak,He likes to dive into the sea.,C2,suyun içine başı önde atlamak,
+a2-enemy,ENEMY,"karşı tarafta savaşılan kişi, düşman",The soldiers fought the enemy.,C3,keep,"clear head noun ""düşman""; hit is the -an ending"
+a2-equipment,EQUIPMENT,bir iş ya da spor için gereken araç gereç,The gym has new equipment.,C2,bir iş için gereken araç gereç,
+a2-eraser,ERASER,kurşun kalem izini silen küçük nesne,The pencil has a small eraser on the end.,C3,kalem izini silen küçük lastik,
+a2-escalator,ESCALATOR,alışveriş merkezlerindeki yürüyen merdiven,Take the escalator to the second floor.,C3,keep,"clear head noun ""merdiven""; hit is the -en ending"
+a2-field,FIELD,ekin ya da çimen ekili geniş açık alan,The cows are in the field.,C3,keep,"""alan"" is a noun here (area); hit is the -an ending"
+a2-flu,FLU,"ateş ve öksürükle gelen bulaşıcı hastalık, grip",I have the flu.,C3,keep,"clear head noun ""hastalık""; hit is the -ip ending of ""grip"""
+a2-fox,FOX,tilki,The fox runs very fast.,C1,"kızıl tüylü, kurnaz bilinen orman hayvanı",
+a2-gallery,GALLERY,resim ve heykellerin sergilendiği yer,The gallery is free on Sundays.,C3,resim ve heykellerin sergilendiği salon,
+a2-gardener,GARDENER,"bahçe işleriyle uğraşan kişi, bahçıvan",The gardener waters the flowers.,C3,keep,clear head noun; hit is the -an ending
+a2-gold,GOLD,"parlak sarı, değerli maden",The ring is made of gold.,C3,keep,"clear head noun ""maden""; hit is the -en ending"
+a2-group,GROUP,bir arada olan insanlar ya da şeyler,A group of students is waiting.,C3,birlikte duran ya da çalışan topluluk,
+a2-gum,GUM,ağızda çiğnenen tatlı şey,Don't chew gum in class.,C3,"ağızda çiğnenen, yutulmayan şekerleme",
+a2-guy,GUY,"günlük dilde adam, tip",He is a really nice guy.,C3,keep,"colloquial synonyms ""adam, tip"" are clear noun heads"
+a2-handsome,HANDSOME,yakışıklı,My uncle is tall and very handsome.,C1,yüzü çekici ve hoş görünen,
+a2-hero,HERO,"cesaretiyle örnek olan kişi, kahraman",The pilot is a real hero.,C3,keep,"clear head noun ""kahraman""; hit is the -an ending"
+a2-invitation,INVITATION,birini bir yere çağıran yazılı ya da sözlü davet,I got an invitation to her party.,C2,birini bir etkinliğe çağıran mesaj,
+a2-jungle,JUNGLE,sıcak ülkelerdeki sık ve yoğun orman,Monkeys live in the jungle.,C3,keep,"clear head noun ""orman""; hit is the -an ending"
+a2-lazy,LAZY,tembel,Don't be lazy. Do your homework.,C1,çalışmak ya da iş yapmak istemeyen,
+a2-lifeguard,LIFEGUARD,"plajda yüzenleri koruyan görevli, cankurtaran",The lifeguard saved the little boy.,C3,keep,clear head noun; hit is the -an ending
+a2-lizard,LIZARD,"kuru derili, dört bacaklı küçük sürüngen",A lizard sat on the warm wall.,C3,keep,"head noun ""sürüngen""; hit is the -en ending"
+a2-mark,MARK,okulda bir sınava verilen puan,She got a high mark in math.,C3,keep,"""puan"" is a noun here; hit is the -an ending"
+a2-metal,METAL,demir ve bakır gibi sert madde,The key is made of metal.,C3,"demir ve bakır gibi sert, parlak malzeme",
+a2-moment,MOMENT,"çok kısa bir zaman dilimi, an","Please wait a moment, I will be right back.",C3,keep,"""an"" (instant) is the exact head noun"
+a2-nationality,NATIONALITY,bir kişinin hangi ülkenin vatandaşı olduğu,The man asked about her name and nationality.,C3,bir kişinin hangi ülkeden olduğu bilgisi,
+a2-olive,OLIVE,zeytinyağı da veren küçük yeşil ya da siyah meyve,He put an olive on the pizza.,C2,yeşil ya da siyah küçük yağlı meyve,
+a2-parking,PARKING,aracı bir yere bırakma ya da bırakılan yer,There is free parking behind the shop.,C3,araçların bırakılması için ayrılmış bölge,
+a2-pass,PASS,bir sınavı başarıyla geçmek ya da bir şeyi uzatmak,I want to pass the exam.,C2,bir sınavı başarıyla geçmek,
+a2-pirate,PIRATE,"denizde gemileri soyan haydut, korsan",The pirate has a wooden leg.,C3,keep,clear head noun; hit is the -an ending
+a2-project,PROJECT,üzerinde bir süre çalışılan ödev ya da plan,We have a history project this week.,C3,keep,"""plan"" is a noun here; hit is the -an ending"
+a2-pump,PUMP,su veya havayı basan alet,Ali uses a pump for the bike tyre.,C3,su veya havayı basan makine,
+a2-quite,QUITE,oldukça,The story is quite good.,C1,fazla olmasa da epeyce,
+a2-reach,REACH,bir yere varmak ya da uzanıp bir şeye ulaşmak,We reach the village at noon.,C2,gidilen bir yere varmak,
+a2-record,RECORD,müzik ya da konuşmanın kaydedildiği plak ya da dosya,I bought a record of old songs.,C2,müziğin kaydedildiği plak,
+a2-sand,SAND,plajda bulunan ince taneli madde,The children play in the sand.,C3,çölde ve plajda bulunan ince taneler,
+a2-shovel,SHOVEL,toprağı kazmak için kullanılan geniş uçlu alet,Dad digs with a shovel.,C3,keep,"""alet"" is the right head here, qualifiers are specific"
+a2-skyscraper,SKYSCRAPER,"çok katlı çok yüksek bina, gökdelen",I work in a tall skyscraper.,C3,keep,"clear head noun ""bina""; hit is the -en ending"
+a2-slice,SLICE,ekmek ya da pastadan kesilen ince parça,Would you like a slice of cake?,C3,pastadan ya da ekmekten kesilen ince bölüm,
+a2-space,SPACE,dünyanın dışındaki sonsuz boşluk ya da boş yer,There is no space in my bag.,C3,içine bir şey sığabilen boşluk,
+a2-squid,SQUID,"kalamar, denizde yaşayan yumuşakça hayvan",We eat fried squid by the sea.,C3,keep,"head noun ""hayvan""; hit is the -an ending"
+a2-takeaway,TAKEAWAY,dışarı alınıp evde yenen yemek,Let's get a takeaway tonight.,C3,keep,"""yemek"" is the noun here, not a verb"
+a2-taste,TASTE,yemeğin tadına bakmak ya da belli bir tadı olmak,Taste the soup before you add salt.,C2,yemeğin tadına bakmak,
+a2-telescope,TELESCOPE,uzaktaki yıldızları yakın gösteren alet,We looked at the stars with a telescope.,C3,uzaktaki yıldızları yakına getiren gözlem aracı,
+a2-tool,TOOL,çekiç gibi iş yapmaya yarayan alet,A spade is a tool.,C3,çekiç ya da tornavida gibi iş gereci,
+a2-turtle,TURTLE,sırtında sert kabuk taşıyan yavaş hayvan,A turtle walks on the beach.,C3,keep,"head noun ""hayvan""; hit is the -an ending"
+a2-underground,UNDERGROUND,şehirde yer altından giden tren,I go to work by underground.,C3,keep,"clear head noun ""tren""; hit is the -en ending"
+a2-weight,WEIGHT,bir şeyin kaç kilo geldiği,What is the weight of this box?,C3,terazide ölçülen kilo değeri,
+a2-wish,WISH,birine iyi bir şey dilemek ya da dilek tutmak,I wish you a happy birthday.,C2,birine iyi bir şey dilemek,
+a2-wolf,WOLF,ormanda sürü halinde yaşayan vahşi hayvan,The wolf howled at the moon.,C3,keep,"head noun ""hayvan""; hit is the -an ending"
+a2-yard,YARD,evin yanındaki taş döşeli açık alan,Our yard is very small.,C3,keep,"""alan"" is a noun here (area); hit is the -an ending"
+a2-zebra-crossing,ZEBRA CROSSING,yayaların yolu geçtiği çizgili alan,Wait at the zebra crossing.,C3,keep,"""alan"" is a noun here (area); hit is the -an ending"
