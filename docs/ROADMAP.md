@@ -132,13 +132,20 @@ Postponed by owner until the payment/tax situation is clear (Nov 2026): RevenueC
 - 1.0.5–1.0.12: Firebase analytics behind consent, same-device duel with 3/5/7 min clocks, word reminders, smart word
   selection, rating prompt, iOS links hotfix, clue standard + A1 clue rewrite, duel answer review, category letter
   fill (A1/A2), perf benchmark.
+- 1.0.13: live in Google Play and the App Store (approved): pinned primary actions (onboarding, result, level test),
+  Turkish legal links and share link, locked "coming soon" exam rows, A2/B1 content moves.
 
 ## Redesign candidate: video flow (branch `redesign/video-flow`, ADR 0027; not on `main`)
 - [x] Phase 1: motion infrastructure (tokens, tiers, frame monitor, morph overlay)
 - [x] Phase 2: Home, "Çarkını seç", mode / time dialog, invite (no new transitions)
 - [x] Phase 3: card flip, letter morph, board entrance, #17, warm-up, benchmarks (`docs/PERF.md` § Video flow)
-- [ ] Owner: real-device check (iPhone + older Android), design sign-off (art, invite icon), merge decision vs Home v2
-**Done when:** the owner picks this flow and it passes the device matrix; then it is merged to `main`.
+- [x] Phase 4 (no device needed): redrawn art + invite icon with a contact sheet, restart / double-tap / recreation
+  tests, a fix for the morph's first letter, engine investigation of thin categories (report only), 1.1.0 checklist
+  and DRAFT store texts (`docs/release-1.1.0-checklist.md`, `docs/store/listing-*.md`)
+- [ ] Owner: real-device check (iPhone + older Android), design sign-off (art sheet, invite icon), thin-category rule
+  (`video-flow-notes.md` §10), merge decision vs Home v2
+**Done when:** the owner picks this flow and it passes the device matrix; then it is merged to `main` and shipped as
+1.1.0 along `docs/release-1.1.0-checklist.md`.
 
 ## Content completion (after M8, before/within v1.0.x)
 - [x] Full A2 set (878 cards, `docs/content-review/A2-*.md`; Q thin at 16)
