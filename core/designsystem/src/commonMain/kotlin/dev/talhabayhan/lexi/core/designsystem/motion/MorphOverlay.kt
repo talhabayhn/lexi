@@ -7,6 +7,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.ProvidableCompositionLocal
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableLongStateOf
@@ -14,6 +15,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.snapshotFlow
+import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.runtime.withFrameMillis
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -28,36 +31,54 @@ import androidx.compose.ui.layout.positionInWindow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
+import kotlinx.coroutines.flow.first
 
 /**
- * State of the letter morph (`motion.md` #16) drawn by a [MorphOverlayHost] above the NavHost. [start] begins it from
- * the anchor `sourceKey` (OYNA button); the ink then holds the full screen until [markReady] is called (game data
- * loaded) *and* the anchor `targetKey` (wheel marker) is laid out, and only then shrinks into it. The game clock must
- * start from [onFinished] of [MorphOverlayHost], never earlier.
+ * State of the letter morph (`motion.md` #16) drawn by a [MorphOverlayHost] above the NavHost, sequenced by a
+ * [LetterMorphMachine]. [start] begins it from the anchor `sourceKey` (OYNA button); the ink covers the screen
+ * ([covered], [awaitCovered]: navigate to the game under it), then holds until [markReady] is called (game loaded)
+ * *and* the anchor `targetKey` (wheel marker) is laid out, and only then shrinks into it while the board comes in
+ * ([boardClockMillis]). [cancel] fades it out. The game clock waits for [isRunning] to turn false.
  */
 @Stable
 public class MorphOverlayState(public val anchors: MorphAnchors = MorphAnchors()) {
     internal var run: MorphRun? by mutableStateOf(null)
         private set
+
+    /** Frame-time snapshot of the machine, written once per frame by the host (draw-phase readers observe it). */
     internal var elapsedMillis by mutableLongStateOf(0L)
-    internal var shrinkStartMillis: Long? by mutableStateOf(null)
+    internal var phase: LetterMorphPhase by mutableStateOf(LetterMorphPhase.Idle)
 
     /** Target window rect when the shrink started; used if the marker's anchor goes away mid-shrink. */
     internal var shrinkTargetInWindow: Rect? by mutableStateOf(null)
     internal var ready by mutableStateOf(false)
         private set
+    internal var cancelRequested by mutableStateOf(false)
+        private set
 
+    /** Created by the host with the theme's [FlowMotion]; null outside a host. */
+    internal var machine: LetterMorphMachine? = null
+
+    /** A morph runs (from [start] until the board has landed or the cancel fade is over). */
     public val isRunning: Boolean get() = run != null
 
-    /** Starts a morph; false (nothing happens) when one runs already or [sourceKey] has no laid-out anchor. */
-    public fun start(sourceKey: Any, targetKey: Any, letter: String): Boolean {
-        if (run != null) return false
+    /** The ink covers the whole screen right now: the game may be navigated to under it. */
+    public val covered: Boolean
+        get() = run != null && (phase == LetterMorphPhase.Holding || phase == LetterMorphPhase.Waiting)
+
+    /**
+     * Starts a morph in [tier]; false (nothing happens) when one runs already, the tier is [MotionTier.Minimal] (no
+     * morph: the caller cross-fades) or [sourceKey] has no laid-out anchor.
+     */
+    public fun start(sourceKey: Any, targetKey: Any, letter: String, tier: MotionTier = MotionTier.Full): Boolean {
+        if (run != null || tier == MotionTier.Minimal) return false
         val source = anchors[sourceKey] ?: return false
-        run = MorphRun(source, targetKey, letter)
+        run = MorphRun(source, targetKey, letter, tier)
         elapsedMillis = 0L
-        shrinkStartMillis = null
+        phase = LetterMorphPhase.Expanding
         shrinkTargetInWindow = null
         ready = false
+        cancelRequested = false
         return true
     }
 
@@ -66,35 +87,80 @@ public class MorphOverlayState(public val anchors: MorphAnchors = MorphAnchors()
         if (run != null) ready = true
     }
 
+    /** Leaves the morph (system back, app in the background, the game could not open): the overlay fades out. */
+    public fun cancel() {
+        if (run != null) cancelRequested = true
+    }
+
+    /**
+     * Suspends until the ink covers the screen (true) or the morph ends or is cancelled before that (false). The
+     * navigation to the game waits for it, so the game never slides in visibly and a cancelled morph never navigates.
+     */
+    public suspend fun awaitCovered(): Boolean {
+        val outcome = snapshotFlow {
+            when {
+                run == null || cancelRequested -> false
+                covered -> true
+                else -> null
+            }
+        }.first { it != null }
+        return outcome == true
+    }
+
+    /**
+     * The board entrance's clock for screens composed while a morph runs: 0 until the shrink starts (pieces wait,
+     * hidden under the ink), then ms since the shrink start; [Long.MAX_VALUE] once the morph is over or cancelled
+     * (everything at rest). Reads snapshot state: call it in draw-phase lambdas.
+     */
+    public fun boardClockMillis(): Long {
+        if (run == null || phase == LetterMorphPhase.Cancelling) return Long.MAX_VALUE
+        // Observed, so the readers redraw every frame; the machine holds this frame's values.
+        elapsedMillis
+        return machine?.boardElapsedMillis ?: 0L
+    }
+
+    /** Full: board pieces enter one after another; Lite: groups enter together (latched at the shrink start). */
+    public val boardStagger: Boolean get() = machine?.boardStagger ?: true
+
     internal fun finish() {
         run = null
-        shrinkStartMillis = null
+        phase = LetterMorphPhase.Idle
         shrinkTargetInWindow = null
         ready = false
+        cancelRequested = false
+        machine?.reset()
     }
 }
 
-/** One morph: window rect of the source when it started, the target anchor key and the big letter. */
-internal class MorphRun(val sourceInWindow: Rect, val targetKey: Any, val letter: String)
+/** One morph: window rect of the source when it started, the target anchor key, the big letter and the tier. */
+internal class MorphRun(val sourceInWindow: Rect, val targetKey: Any, val letter: String, val tier: MotionTier)
+
+/** The [MorphOverlayState] of the nearest [MorphOverlayHost]; null outside one. */
+public val LocalMorphOverlay: ProvidableCompositionLocal<MorphOverlayState?> = staticCompositionLocalOf { null }
 
 /**
- * Hosts [content] (the NavHost) and draws the letter morph above it. Provides [LocalMorphAnchors] so
- * `Modifier.morphAnchor(key)` works on any screen below. All per-frame values are read in `graphicsLayer` /
- * `drawBehind` lambdas, so a running morph never recomposes or re-lays out anything: the ink is one full-screen layer
- * scaled and translated onto the current rectangle, the letter one text layer measured once and scaled.
- * While a morph runs the host swallows all touches (phase 3 must also block system back).
+ * Hosts [content] (the NavHost) and draws the letter morph above it. Provides [LocalMorphAnchors] (so
+ * `Modifier.morphAnchor(key)` works on any screen below) and [LocalMorphOverlay]. A [LetterMorphMachine] fed from the
+ * frame clock sequences it; all per-frame values are read in `graphicsLayer` / `drawBehind` lambdas, so a running
+ * morph never recomposes or re-lays out anything: the ink is one full-screen layer scaled and translated onto the
+ * current rectangle, the letter one text layer measured once and scaled. While a morph runs the host swallows all
+ * touches (until the board has landed); system back and the app going to the background are the caller's to turn
+ * into [MorphOverlayState.cancel] (the host has no navigation or lifecycle dependency).
  *
  * [frameMonitor] (optional, fed by the host itself) measures only the moving parts — expand + letter pop, and the
  * shrink — not the hold, during which the NavHost builds the game screen under the ink; a slow first composition of
- * the game must not downgrade the whole session to [MotionTier.Lite]. If the host leaves the composition mid-morph the
- * state is reset and [onFinished] is not called.
+ * the game must not downgrade the whole session to [MotionTier.Lite]. [tier] is read every frame (a downgrade applies
+ * at the machine's next latch point). If the host leaves the composition mid-morph the state is reset and neither
+ * callback is called. [onFinished]: the board has landed (start the clock); [onCancelled]: the cancel fade is over.
  */
 @Composable
 public fun MorphOverlayHost(
     state: MorphOverlayState,
     modifier: Modifier = Modifier,
     frameMonitor: FrameMonitor? = null,
+    tier: () -> MotionTier = { MotionTier.Full },
     onFinished: () -> Unit = {},
+    onCancelled: () -> Unit = {},
     content: @Composable () -> Unit,
 ) {
     val motion = LexiTheme.motion
@@ -102,64 +168,82 @@ public fun MorphOverlayHost(
     val timeline = remember(motion, colors) {
         LetterMorphTimeline(motion.flow, motion.mechanical, motion.pop, colors.red, colors.ink)
     }
+    val machine = remember(motion) { LetterMorphMachine(motion.flow) }
+    state.machine = machine
     val hostOrigin = remember { mutableStateOf(Offset.Zero) }
     val run = state.run
 
     val currentOnFinished by rememberUpdatedState(onFinished)
+    val currentOnCancelled by rememberUpdatedState(onCancelled)
+    val currentTier by rememberUpdatedState(tier)
     if (frameMonitor != null) FrameMonitorEffect(frameMonitor)
 
     LaunchedEffect(run) {
         if (run == null) return@LaunchedEffect
-        val flow = motion.flow
-        val expandEnd = maxOf(flow.inkExpand.endMillis, flow.letterIn.endMillis).toLong()
         var watching = false
         fun watch(on: Boolean) {
             if (on == watching || frameMonitor == null) return
             if (on) frameMonitor.beginTransition() else frameMonitor.endTransition()
             watching = on
         }
-        var completed = false
+        var outcome = LetterMorphPhase.Idle
         try {
-            val startMillis = withFrameMillis { it }
-            while (!completed) {
+            withFrameMillis { now -> machine.start(now, run.tier) }
+            while (machine.isActive) {
                 withFrameMillis { now ->
-                    val elapsed = now - startMillis
-                    state.elapsedMillis = elapsed
-                    if (state.shrinkStartMillis == null && state.ready) {
-                        val target = state.anchors[run.targetKey]
-                        if (target != null && elapsed >= flow.inkShrink.delayMillis) {
-                            state.shrinkTargetInWindow = target
-                            state.shrinkStartMillis = timeline.shrinkStartFor(elapsed)
-                        }
+                    machine.setTier(currentTier())
+                    machine.setTargetLaidOut(state.anchors[run.targetKey] != null)
+                    if (state.ready) machine.markReady()
+                    if (state.cancelRequested) machine.cancel()
+                    val wasShrinking = machine.shrinkStartMillis != null
+                    val phase = machine.tick(now)
+                    if (!wasShrinking && machine.shrinkStartMillis != null) {
+                        state.shrinkTargetInWindow = state.anchors[run.targetKey]
                     }
-                    watch(elapsed in flow.inkExpand.delayMillis..expandEnd || state.shrinkStartMillis != null)
-                    completed = timeline.isFinished(elapsed, state.shrinkStartMillis)
+                    state.elapsedMillis = machine.elapsedMillis
+                    state.phase = phase
+                    watch(phase == LetterMorphPhase.Expanding || phase == LetterMorphPhase.Shrinking)
                 }
             }
+            outcome = machine.phase
         } finally {
             watch(false)
+            // Also when the host leaves the composition mid-morph: nothing stays on screen.
+            if (machine.isActive) machine.cancel()
             state.finish()
         }
-        if (completed) currentOnFinished()
+        when (outcome) {
+            LetterMorphPhase.Finished -> currentOnFinished()
+            LetterMorphPhase.Cancelled -> currentOnCancelled()
+            else -> Unit
+        }
     }
 
     Box(modifier.fillMaxSize().onGloballyPositioned { hostOrigin.value = it.positionInWindow() }) {
-        CompositionLocalProvider(LocalMorphAnchors provides state.anchors) { content() }
+        CompositionLocalProvider(
+            LocalMorphAnchors provides state.anchors,
+            LocalMorphOverlay provides state,
+        ) { content() }
         if (run != null) {
             LetterMorphLayer(
                 letter = run.letter,
                 frame = { screen ->
                     val origin = hostOrigin.value
+                    // Observed so each frame redraws; the machine holds the values of this frame.
+                    val elapsed = state.elapsedMillis
                     timeline.frameAt(
-                        elapsedMillis = state.elapsedMillis,
+                        elapsedMillis = elapsed,
                         source = run.sourceInWindow.translate(-origin),
                         screen = screen,
                         target = (state.anchors[run.targetKey] ?: state.shrinkTargetInWindow)?.translate(-origin),
-                        shrinkStartMillis = state.shrinkStartMillis,
+                        shrinkStartMillis = machine.shrinkStartMillis,
+                        letterPop = machine.letterPop,
+                        pulse = machine.pulseScale(),
+                        overlayAlpha = machine.overlayAlpha(),
                     )
                 },
             )
-            // Swallow every touch so nothing under the ink (dialog, game board) reacts before the clock starts.
+            // Swallow every touch until the board has landed, so nothing under the ink reacts before the clock starts.
             Box(
                 Modifier.matchParentSize().pointerInput(Unit) {
                     awaitPointerEventScope {
@@ -188,7 +272,7 @@ public fun BoxScope.LetterMorphLayer(letter: String, frame: (screen: Rect) -> Le
             .matchParentSize()
             .graphicsLayer {
                 val f = frame(Rect(Offset.Zero, size))
-                alpha = if (f.visible) 1f else 0f
+                alpha = if (f.visible) f.overlayAlpha else 0f
                 transformOrigin = TransformOrigin(0f, 0f)
                 translationX = f.inkRect.left
                 translationY = f.inkRect.top
@@ -203,7 +287,7 @@ public fun BoxScope.LetterMorphLayer(letter: String, frame: (screen: Rect) -> Le
             .matchParentSize()
             .graphicsLayer {
                 val f = frame(Rect(Offset.Zero, size))
-                alpha = if (f.visible) f.letterAlpha else 0f
+                alpha = if (f.visible) f.letterAlpha * f.overlayAlpha else 0f
                 translationX = f.inkRect.center.x - size.width / 2f
                 translationY = f.inkRect.center.y - size.height / 2f
                 scaleX = f.letterScale

@@ -66,6 +66,13 @@ public class FlowMotion internal constructor() {
     public val letterStartSize: Float = 230f
     public val letterEndSize: Float = 20f
 
+    /**
+     * #16 not in the prototype (its game was always ready): when the game is still loading at the end of the hold, the
+     * big letter pulses up to this scale, one pulse every [letterPulseMillis], until the shrink can start.
+     */
+    public val letterPulseScale: Float = 1.04f
+    public val letterPulseMillis: Int = 700
+
     // #16 game board entrance, relative to the start of the shrink.
     public val boardTopBar: MotionStep = fromPrototype(20, 220)
     public val boardTopBarOffset: Dp = (-10).dp

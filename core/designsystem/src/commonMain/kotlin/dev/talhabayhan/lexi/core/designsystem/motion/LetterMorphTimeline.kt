@@ -15,6 +15,8 @@ public data class LetterMorphFrame(
     /** Scale of the big letter, drawn once at [FlowMotion.letterStartSize]. */
     val letterScale: Float,
     val letterAlpha: Float,
+    /** Opacity of the whole overlay: 1, fading out when the morph is cancelled. */
+    val overlayAlpha: Float = 1f,
 )
 
 /**
@@ -35,15 +37,24 @@ public class LetterMorphTimeline(
     public fun isFinished(elapsedMillis: Long, shrinkStartMillis: Long?): Boolean =
         shrinkStartMillis != null && elapsedMillis >= shrinkStartMillis + flow.inkShrink.durationMillis
 
+    /**
+     * [letterPop] false (tier Lite): the letter only fades in, at full size. [pulse] multiplies the letter's scale
+     * ([LetterMorphMachine.pulseScale]); [overlayAlpha] fades everything ([LetterMorphMachine.overlayAlpha]).
+     */
     public fun frameAt(
         elapsedMillis: Long,
         source: Rect,
         screen: Rect,
         target: Rect?,
         shrinkStartMillis: Long?,
+        letterPop: Boolean = true,
+        pulse: Float = 1f,
+        overlayAlpha: Float = 1f,
     ): LetterMorphFrame {
         val expand = mechanical.transform(flow.inkExpand.progressAt(elapsedMillis))
-        val letterIn = pop.transform(flow.letterIn.progressAt(elapsedMillis))
+        val letterProgress = flow.letterIn.progressAt(elapsedMillis)
+        val letterIn = if (letterPop) pop.transform(letterProgress) else letterProgress
+        val startScale = if (letterPop) flow.letterStartScale else 1f
         val shrinkProgress = if (shrinkStartMillis == null || target == null) {
             0f
         } else {
@@ -52,14 +63,15 @@ public class LetterMorphTimeline(
         }
         val expanded = lerpRect(source, screen, expand)
         val endRatio = flow.letterEndSize / flow.letterStartSize
-        val letterScale = (flow.letterStartScale + (1f - flow.letterStartScale) * letterIn) *
-            (1f + (endRatio - 1f) * shrinkProgress)
+        val letterScale = (startScale + (1f - startScale) * letterIn) *
+            (1f + (endRatio - 1f) * shrinkProgress) * pulse
         return LetterMorphFrame(
             visible = elapsedMillis >= flow.inkExpand.delayMillis && !isFinished(elapsedMillis, shrinkStartMillis),
             inkRect = if (target == null) expanded else lerpRect(expanded, target, shrinkProgress),
             inkColor = lerpSrgb(startColor, endColor, flow.inkColor.progressAt(elapsedMillis)),
             letterScale = letterScale,
             letterAlpha = letterIn.coerceIn(0f, 1f),
+            overlayAlpha = overlayAlpha,
         )
     }
 }

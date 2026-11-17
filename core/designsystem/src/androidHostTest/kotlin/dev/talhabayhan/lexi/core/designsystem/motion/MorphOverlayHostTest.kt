@@ -21,6 +21,9 @@ import androidx.compose.ui.test.runComposeUiTest
 import androidx.compose.ui.unit.dp
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiMotion
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
@@ -82,10 +85,13 @@ class MorphOverlayHostTest {
         mainClock.advanceTimeBy(100L)
         assertTrue(monitor.isWatching, "the shrink is measured")
         mainClock.advanceTimeBy(flow.inkShrink.durationMillis.toLong())
+        assertTrue(state.isRunning, "the ink has landed but the board is still coming in")
+        assertEquals(0, finished)
+        mainClock.advanceTimeBy(flow.boardSettledMillis.toLong())
         waitForIdle()
 
         assertFalse(state.isRunning)
-        assertEquals(1, finished)
+        assertEquals(1, finished, "the clock may start once the board has landed")
         assertFalse(monitor.isWatching)
         assertEquals(compositionsBefore, contentCompositions, "the morph must not recompose the content")
     }
@@ -173,6 +179,103 @@ class MorphOverlayHostTest {
         setContent { LexiTheme(reducedMotion = false) { MorphOverlayHost(state) {} } }
 
         assertFalse(runOnUiThread { state.start("missing", "marker", "A") })
+        assertFalse(state.isRunning)
+    }
+
+    private fun ComposeUiTest.hostWithAnchors(
+        state: MorphOverlayState,
+        onFinished: () -> Unit = {},
+        onCancelled: () -> Unit = {},
+    ) {
+        mainClock.autoAdvance = false
+        setContent {
+            LexiTheme(reducedMotion = false) {
+                MorphOverlayHost(state, onFinished = onFinished, onCancelled = onCancelled) {
+                    Box(Modifier.fillMaxSize()) {
+                        Box(Modifier.offset(20.dp, 700.dp).size(350.dp, 80.dp).morphAnchor("play"))
+                        Box(Modifier.offset(177.dp, 120.dp).size(36.dp).morphAnchor("marker"))
+                    }
+                }
+            }
+        }
+        mainClock.advanceTimeByFrame()
+        waitForIdle()
+    }
+
+    @Test
+    fun `a cancel mid-hold fades the overlay out and reports it once without finishing`() = runComposeUiTest {
+        val state = MorphOverlayState()
+        var finished = 0
+        var cancelled = 0
+        hostWithAnchors(state, onFinished = { finished++ }, onCancelled = { cancelled++ })
+        startMorph(state)
+        mainClock.advanceTimeBy(flow.inkShrink.delayMillis.toLong())
+        assertTrue(state.covered)
+
+        runOnUiThread {
+            state.cancel()
+            state.markReady()
+        }
+        Snapshot.sendApplyNotifications()
+        mainClock.advanceTimeBy(flow.reducedCrossfadeMillis + 100L)
+        waitForIdle()
+
+        assertFalse(state.isRunning)
+        assertEquals(1, cancelled)
+        assertEquals(0, finished)
+        assertEquals(Long.MAX_VALUE, runOnUiThread { state.boardClockMillis() }, "the board is at rest")
+    }
+
+    @Test
+    fun `awaitCovered is true once the ink covers the screen and false after a cancel`() = runComposeUiTest {
+        val state = MorphOverlayState()
+        hostWithAnchors(state)
+        var covered: Boolean? = null
+        startMorph(state)
+        val scope = runOnUiThread { CoroutineScope(Dispatchers.Main.immediate) }
+        runOnUiThread { scope.launch { covered = state.awaitCovered() } }
+        mainClock.advanceTimeBy(flow.inkExpand.delayMillis.toLong())
+        waitForIdle()
+        assertEquals(null, covered, "not yet covered while the ink grows")
+        mainClock.advanceTimeBy(flow.inkExpand.durationMillis + 50L)
+        waitForIdle()
+        assertEquals(true, covered)
+
+        runOnUiThread { state.cancel() }
+        Snapshot.sendApplyNotifications()
+        mainClock.advanceTimeBy(flow.reducedCrossfadeMillis + 50L)
+        waitForIdle()
+        var second: Boolean? = null
+        startMorph(state)
+        runOnUiThread {
+            state.cancel()
+            scope.launch { second = state.awaitCovered() }
+        }
+        waitForIdle()
+        assertEquals(false, second, "a cancelled morph never navigates")
+    }
+
+    @Test
+    fun `the board clock waits under the ink and runs from the shrink start`() = runComposeUiTest {
+        val state = MorphOverlayState()
+        hostWithAnchors(state)
+        startMorph(state)
+        runOnUiThread { state.markReady() }
+        Snapshot.sendApplyNotifications()
+        mainClock.advanceTimeBy(flow.inkShrink.delayMillis - 100L)
+        assertEquals(0L, runOnUiThread { state.boardClockMillis() })
+
+        mainClock.advanceTimeBy(300L)
+        val clock = runOnUiThread { state.boardClockMillis() }
+        assertTrue(clock in 1L..300L, "board clock $clock")
+        assertTrue(state.boardStagger)
+    }
+
+    @Test
+    fun `minimal never starts a morph`() = runComposeUiTest {
+        val state = MorphOverlayState()
+        hostWithAnchors(state)
+        assertFalse(runOnUiThread { state.start("play", "marker", "A", MotionTier.Minimal) })
         assertFalse(state.isRunning)
     }
 }
