@@ -19,11 +19,6 @@ dependencies {
 
     implementation(libs.compose.uiToolingPreview)
     debugImplementation(libs.compose.uiTooling)
-    // Developer tools of debug builds only (src/debug: motion tier switch, frame-time graph); project modules and
-    // catalog entries the app already ships through :shared.
-    debugImplementation(project(":core:designsystem"))
-    debugImplementation(libs.compose.foundation)
-    debugImplementation(libs.compose.material3)
 }
 
 // Release signing comes only from the environment (CI writes the keystore from a secret, see docs/RELEASE.md).
