@@ -1,0 +1,48 @@
+id,answer,current_clue,example_en,rule,proposed_clue,note
+c1-analytical,ANALYTICAL,çözümlemeye dayalı,She has an analytical mind.,C4,keep,accurate adjective gloss; C4 is a stem mismatch
+c1-artefact,ARTIFACT,tarihî değeri olan el yapımı eşya,The museum shows an artifact from ancient Rome.,C3,"geçmişten kalan, el yapımı tarihî buluntu",
+c1-backdrop,BACKDROP,"bir olayın geçtiği fon, arka plan",The mountains made a perfect backdrop for the photo.,C3,keep,"""plan"" is a noun here; hit is the -an ending"
+c1-bureaucracy,BUREAUCRACY,kâğıt işleri yüzünden yavaşlayan resmî düzen,Getting a permit means dealing with a lot of bureaucracy.,C3,keep,"clear head noun ""düzen""; hit is the -en ending"
+c1-capitalism,CAPITALISM,özel mülkiyete dayalı ekonomik düzen,Many debates focus on the pros and cons of capitalism.,C3,keep,"clear head noun ""düzen""; hit is the -en ending"
+c1-catalyst,CATALYST,bir değişimi hızlandıran etken,The crisis was a catalyst for reform.,C3,keep,"clear head noun ""etken""; hit is the -en ending"
+c1-conscience,CONSCIENCE,"doğru ile yanlışı ayıran iç ses, vicdan",He had a guilty conscience after the lie.,C3,keep,"clear head noun ""vicdan""; hit is the -an ending"
+c1-counterpart,COUNTERPART,başka yerdeki aynı konumdaki kişi veya şey,The minister met his French counterpart.,C3,başka kurumda aynı görevi yapan kişi,
+c1-descent,DESCENT,aşağı iniş; soy,The plane began its descent into the city.,C4,yüksekten aşağıya doğru hareket,
+c1-empathy,EMPATHY,başkasının duygularını anlayabilme,A good nurse shows empathy for patients.,C4,keep,accurate gloss; C4 is a stem mismatch
+c1-entity,ENTITY,bağımsız varlığı olan kuruluş veya şey,The bank is a separate legal entity.,C3,tüzel kişiliği olan bağımsız kuruluş,
+c1-fragment,FRAGMENT,kırılıp ayrılmış küçük parça,The police found a fragment of glass.,C3,bütünden kopmuş çok küçük bölüm,
+c1-frenzy,FRENZY,kontrolsüz aşırı heyecan,The crowd was in a frenzy.,C4,keep,accurate gloss; C4 is a stem mismatch
+c1-fusion,FUSION,farklı şeylerin birleşimi,The band plays a fusion of jazz and rock.,C4,keep,accurate gloss; C4 is a stem mismatch
+c1-glitch,GLITCH,küçük teknik arıza,A software glitch delayed the flights.,C4,keep,accurate gloss; C4 is a stem mismatch
+c1-hamper,HAMPER,ilerlemeyi zorlaştırıp engellemek,Bad roads hamper the delivery of aid.,C4,keep,accurate verb gloss; C4 is a stem mismatch
+c1-homeland,HOMELAND,insanın doğduğu yurt,She dreams of returning to her homeland.,C4,keep,accurate gloss; C4 is a stem mismatch
+c1-hypothesis,HYPOTHESIS,kanıtlanmaya çalışılan varsayım,The scientist tested her hypothesis.,C4,keep,accurate gloss; C4 is a stem mismatch
+c1-implicit,IMPLICIT,açıkça söylenmeden anlaşılan,There was an implicit threat in his words.,C4,keep,accurate adjective gloss; C4 is a stem mismatch
+c1-inadequate,INADEQUATE,yetersiz,Their training was inadequate.,C1,gereken düzeyin altında kalan,
+c1-ingenious,INGENIOUS,zekice ve yaratıcı,It was an ingenious way to save water.,C4,keep,accurate adjective gloss; C4 is a stem mismatch
+c1-intact,INTACT,"zarar görmemiş, bozulmamış",The old vase arrived intact.,C4,keep,accurate adjective gloss; C4 is a stem mismatch
+c1-justification,JUSTIFICATION,bir davranışı haklı gösteren neden,There is no justification for such behavior.,C3,keep,"clear head noun ""neden""; hit is the -en ending"
+c1-juvenile,JUVENILE,gençlerle ilgili,Juvenile crime has fallen this year.,C4,keep,accurate adjective gloss; C4 is a stem mismatch
+c1-kinetic,KINETIC,hareketle ilgili,Kinetic energy depends on speed.,C4,keep,accurate adjective gloss; C4 is a stem mismatch
+c1-lethal,LETHAL,öldürücü,The snake has a lethal bite.,C1,ölüme yol açabilecek kadar tehlikeli,
+c1-liability,LIABILITY,yasal sorumluluk; yük olan şey,The company accepts no liability for lost items.,C3,yasal olarak üstlenilen sorumluluk,
+c1-liquidity,LIQUIDITY,paraya çevrilebilirlik,The bank has strong liquidity.,C4,keep,accurate gloss; C4 is a stem mismatch
+c1-motive,MOTIVE,bir davranışın arkasındaki neden,The police could not find a motive for the crime.,C3,keep,"clear head noun ""neden""; hit is the -en ending"
+c1-nostalgia,NOSTALGIA,geçmişi özleyiş duygusu,The old song filled him with nostalgia.,C4,keep,accurate gloss; C4 is a stem mismatch
+c1-nurture,NURTURE,bakıp gelişmesini desteklemek,Parents nurture their children's talents.,C4,keep,accurate verb gloss; C4 is a stem mismatch
+c1-oversight,OVERSIGHT,gözden kaçan hata,It was an oversight on my part.,C4,keep,accurate gloss; C4 is a stem mismatch
+c1-paradox,PARADOX,çelişkili görünen ama doğru olan durum,It is a paradox that he is poor but generous.,C3,çelişkili görünen ama doğru olan ifade,
+c1-persist,PERSIST,"ısrarla sürmek, geçmemek",The pain may persist for several days.,C4,keep,accurate verb gloss; C4 is a stem mismatch
+c1-physician,PHYSICIAN,hekim,The physician examined the patient.,C1,hastaları muayene edip tedavi eden doktor,
+c1-proximity,PROXIMITY,yakınlık,The hotel is in close proximity to the beach.,C1,iki şey arasındaki az mesafe,
+c1-qualm,QUALM,"vicdani rahatsızlık, tereddüt",My only qualm is the cost.,C4,keep,accurate gloss; C4 is a stem mismatch
+c1-quandary,QUANDARY,ne yapacağını bilemediğin zor durum,I am in a quandary about which offer to accept.,C3,ne yapacağını bilemeyip kararsız kalma hâli,
+c1-relentless,RELENTLESS,"durmayan, amansız",The relentless rain lasted three days.,C4,keep,accurate adjective gloss; C4 is a stem mismatch
+c1-resilient,RESILIENT,zorluklardan çabuk toparlanan,Children are often more resilient than adults.,C4,keep,accurate adjective gloss; C4 is a stem mismatch
+c1-setback,SETBACK,ilerlemeyi geciktiren engel,The injury was a major setback for the team.,C4,keep,accurate gloss; C4 is a stem mismatch
+c1-sheer,SHEER,"saf, tam anlamıyla",The sheer size of the building amazed us.,C4,keep,accurate adjective gloss; C4 is a stem mismatch
+c1-stakeholder,STAKEHOLDER,bir işte çıkarı olan kişi veya grup,Every stakeholder was invited to the meeting.,C3,keep,"clear head noun ""grup""; hit is the -up ending"
+c1-terminate,TERMINATE,resmen sona erdirmek,The firm may terminate your contract.,C4,keep,accurate verb gloss; C4 is a stem mismatch
+c1-transmit,TRANSMIT,iletmek veya yaymak,Mosquitoes can transmit the virus.,C4,keep,accurate verb gloss; C4 is a stem mismatch
+c1-vigorous,VIGOROUS,güçlü ve enerjik,He took a vigorous walk every morning.,C4,keep,accurate adjective gloss; C4 is a stem mismatch
+c1-whereabouts,WHEREABOUTS,bir kişinin bulunduğu yer,His whereabouts are still unknown.,C3,bir kişinin şu an bulunduğu konum,

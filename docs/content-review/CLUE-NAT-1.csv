@@ -1,0 +1,19 @@
+id,answer,current_clue,example_en,rule,proposed_clue,note
+nat-anachronism,ANACHRONISM,ait olduğu çağın dışında kalmış şey,A fax machine feels like an anachronism today.,C3,"kendi çağına uymayan, zamanı geçmiş unsur",
+nat-anathema,ANATHEMA,"birine son derece itici, kabul edilemez gelen şey",Debt was anathema to my grandfather.,C3,birine kesinlikle kabul edilemez gelen düşünce,
+nat-bellwether,BELLWETHER,bir eğilimin önceden belirtisi sayılan şey,The town is a bellwether for the national vote.,C3,sonucu önceden gösteren öncü belirti,
+nat-boon,BOON,"büyük nimet, çok işe yarayan şey",The new bridge is a boon to local shops.,C3,beklenmedik ve çok işe yarayan nimet,
+nat-connoisseur,CONNOISSEUR,"(sanat, yemek, şarap) ehli, uzman",He is a connoisseur of fine wine.,C3,keep,"clear head noun ""uzman""; hit is the -an ending"
+nat-desolate,DESOLATE,hem ıssız hem de iç karartıcı (yer),We drove along a desolate road.,C3,"ıssız, boş ve iç karartıcı",
+nat-enigma,ENIGMA,"anlaşılmaz, esrarengiz kişi veya şey",My new neighbor remains an enigma to me.,C3,çözülmesi çok zor bir gizem,
+nat-euphemism,EUPHEMISM,acı ya da kaba bir şeyi yumuşatan dolaylı söz,"""Let go"" is a euphemism for ""fired"".",C2,kaba gerçeği yumuşatan dolaylı söz,
+nat-eyesore,EYESORE,göz zevkini bozan çirkin yapı veya şey,That old car park is an eyesore.,C3,göz zevkini bozan çirkin yapı,
+nat-gaunt,GAUNT,hastalık ya da açlıktan bir deri bir kemik kalmış,He looked gaunt after his long illness.,C2,"aşırı zayıflamış, çökük yüzlü",
+nat-jovial,JOVIAL,güler yüzlü ve hoş sohbet (çoğu zaman yaşlıca adam),Our jovial uncle told jokes all night.,C2,"güler yüzlü ve şen, hoş sohbet",
+nat-linchpin,LINCHPIN,her şeyin ona bağlı olduğu kilit kişi veya şey,She is the linchpin of the whole team.,C2+C3,bir işin bağlı olduğu kilit kişi,
+nat-loathe,LOATHE,iğrenircesine nefret etmek,I loathe having to wait in queues.,C4,keep,accurate verb gloss; C4 is a stem mismatch
+nat-odyssey,ODYSSEY,(destansı) uzun ve olaylı serüven,Their trip became a three-month odyssey.,C3,keep,"clear head noun ""serüven""; hit is the -en ending"
+nat-pundit,PUNDIT,medyada yorum yapan uzman,One TV pundit predicted a close race.,C3,keep,"clear head noun ""uzman""; hit is the -an ending"
+nat-quagmire,QUAGMIRE,içinden çıkılmaz bataklık gibi durum,The war became a political quagmire.,C3,"içinden çıkılması zor, bataklık gibi sorun",
+nat-shambles,SHAMBLES,"darmadağın, rezalet halinde durum",The meeting was a complete shambles.,C3,tam bir karmaşa ve düzensizlik,
+nat-spate,SPATE,"(soygun, saldırı) kısa sürede sel gibi patlak veren çokluk",There has been a spate of burglaries.,C2,kısa sürede art arda yaşanan olaylar,

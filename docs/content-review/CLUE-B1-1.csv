@@ -1,0 +1,66 @@
+id,answer,current_clue,example_en,rule,proposed_clue,note
+b1-accidentally,ACCIDENTALLY,"istemeden, kazara",I accidentally broke her glasses.,C4,keep,two synonyms already define the adverb; C4 is a stem mismatch
+b1-action,ACTION,"yapılan şey, eylem",The police took action at once.,C4,bir sorunu çözmek için atılan adım,
+b1-alcohol,ALCOHOL,bira ve şarap gibi içeceklerdeki sarhoş edici madde,Drivers must not drink alcohol.,C3,bira ve şarapta bulunan sarhoş edici sıvı,
+a2-antique,ANTIQUE,çok eski ve değerli eşya,This old clock is an antique.,C3,çok eski olduğu için değerli koleksiyon parçası,
+b1-barbecue,BARBECUE,açık havada ateşte et pişirilen yemek,We had a barbecue in the garden.,C3,keep,"""yemek"" is the noun here, not a verb"
+b1-bargain,BARGAIN,normal fiyatından çok ucuza alınan şey,This coat was a real bargain.,C3,normal fiyatının çok altında alınan ürün,
+b1-bouquet,BOUQUET,çiçeklerden oluşan demet,He gave her a bouquet of roses.,C4,keep,"accurate head noun ""demet""; C4 is a stem mismatch"
+b1-ceiling,CEILING,"bir odanın üst yüzeyi, tavan",There is a spider on the ceiling.,C3,keep,"clear head noun ""tavan""; hit is the -an ending"
+b1-cemetery,CEMETERY,ölülerin gömüldüğü yer,The old cemetery is next to the church.,C4,keep,accurate and short; C4 is a stem mismatch
+b1-condition,CONDITION,bir şeyin içinde bulunduğu durum,The car is in good condition.,C3,bir şeyin o andaki genel hâli,
+b1-crumb,CRUMB,ekmekten dökülen çok küçük parça,There is a crumb on your chin.,C3,ekmekten kopup dökülen minik tanecik,
+b1-cuddle,CUDDLE,sevgiyle kucaklamak,The child wanted to cuddle her toy.,C4,keep,accurate verb gloss; C4 is a stem mismatch
+b1-deaf,DEAF,duyma yetisi olmayan,My grandfather is a little deaf.,C4,keep,accurate adjective gloss; C4 is a stem mismatch
+b1-device,DEVICE,belirli bir iş için yapılmış küçük alet,This device charges your phone.,C3,belirli bir iş için yapılmış küçük makine,
+b1-disappear,DISAPPEAR,gözden kaybolmak,Some animals may disappear soon.,C4,keep,accurate verb gloss; C4 is a stem mismatch
+b1-element,ELEMENT,bir bütünü oluşturan parça,Water is an important element of life.,C3,bir şeyi oluşturan temel ögelerden biri,
+b1-emergency,EMERGENCY,hemen müdahale gerektiren tehlikeli durum,Call 112 in an emergency.,C3,hemen yardım gerektiren ani tehlike,
+b1-employ,EMPLOY,birini işe almak,The company will employ fifty new workers.,C4,keep,accurate verb gloss; C4 is a stem mismatch
+b1-enormous,ENORMOUS,"olağanüstü büyük, devasa",They live in an enormous house.,C4,keep,accurate adjective gloss; C4 is a stem mismatch
+b1-exception,EXCEPTION,kuralın dışında kalan durum,There is one exception to this rule.,C3,kurala uymayan tek örnek,
+b1-expand,EXPAND,"büyüyüp yayılmak, genişlemek",The company wants to expand abroad.,C4,keep,accurate verb gloss; C4 is a stem mismatch
+b1-factory,FACTORY,ürünlerin makinelerle üretildiği yer,My father works in a car factory.,C3,ürünlerin makinelerle üretildiği tesis,
+b1-gadget,GADGET,"küçük, işe yarar elektronik alet",This gadget saves a lot of time.,C3,"küçük, pratik elektronik araç",
+b1-gown,GOWN,uzun ve şık kadın elbisesi ya da mezuniyet cübbesi,She wore a long blue gown to the party.,C2,"uzun, şık ve süslü kadın elbisesi",
+b1-happiness,HAPPINESS,mutluluk,Money cannot buy happiness.,C1,mutlu olmanın verdiği güzel his,
+b1-hedgehog,HEDGEHOG,sırtı dikenlerle kaplı küçük hayvan,A hedgehog was sleeping under the bush.,C3,keep,"head noun ""hayvan""; hit is the -an ending"
+b1-hook,HOOK,ceketi asmak için duvardaki kıvrık metal parça,Hang your coat on the hook.,C3,bir şeyi asmaya yarayan kıvrık metal çubuk,
+b1-item,ITEM,bir listedeki ya da sepetteki tek tek şeylerden biri,Each item in the shop costs one pound.,C2,listedeki ya da satıştaki tek bir ürün,
+b1-joint,JOINT,"iki ya da daha çok kişinin birlikte yaptığı, ortak",It was a joint plan.,C2,birkaç kişinin birlikte yaptığı,
+b1-justice,JUSTICE,adalet,Everyone wants justice for the victims.,C1,herkese hak ettiğini veren adil sistem,
+b1-knob,KNOB,kapıyı çevirerek açtığımız yuvarlak tutamak,Turn the knob and push the door.,C3,keep,"""tutamak"" is a noun (handle); hit is the -mak ending"
+b1-laboratory,LABORATORY,bilimsel deneylerin yapıldığı yer,The laboratory is on the second floor.,C3,bilimsel deney yapılan özel oda,
+b1-lasagna,LASAGNA,"kat kat makarna, kıyma ve peynirle yapılan İtalyan yemeği",My dad makes great lasagna.,C2,katmanlı makarnayla yapılan İtalyan yemeği,
+b1-lightbulb,LIGHTBULB,"lambaya takılan, ışık veren cam parça",We need a new lightbulb in the hall.,C3,lambaya takılan ışık veren cam balon,
+b1-loaf,LOAF,bir bütün halinde pişmiş ekmek,She bought a loaf of bread.,C3,keep,"""ekmek"" is a noun; hit is the -mek ending"
+b1-marriage,MARRIAGE,evlilik,Their marriage lasted fifty years.,C1,iki kişinin resmî birlikteliği,
+b1-military,MILITARY,orduyla ilgili,He did his military service last year.,C4,keep,accurate adjective gloss; C4 is a stem mismatch
+b1-minister,MINISTER,"hükümette bir bakanlığı yöneten kişi, bakan",The minister spoke on television.,C3,keep,"clear head noun ""bakan""; hit is the -an ending"
+b1-monitor,MONITOR,bilgisayar görüntüsünü gösteren ekran,My monitor is too small.,C3,keep,"clear head noun ""ekran""; hit is the -an ending"
+b1-noodle,NOODLE,uzun ince hamur şeritlerinden yapılan yemek,There was a long noodle in my soup.,C3,keep,"""yemek"" is the noun here, not a verb"
+b1-noun,NOUN,"isim; kişi, yer ya da şeyin adı olan sözcük türü","'Book' is a noun, not a verb.",C2,varlıkları adlandıran sözcük türü,
+b1-obedient,OBEDIENT,söz dinleyen,The dog is very obedient.,C4,keep,accurate adjective gloss; C4 is a stem mismatch
+b1-opponent,OPPONENT,bir yarışta karşı taraftaki rakip,Our opponent was very strong.,C3,keep,"clear head noun ""rakip""; hit is the -ip ending"
+b1-opportunity,OPPORTUNITY,bir şeyi yapmak için uygun zaman,This job is a great opportunity.,C3,keep,"head noun ""zaman""; hit is the -an ending"
+a2-oxygen,OXYGEN,"solunan havadaki gaz, oksijen",We need oxygen to live.,C3,keep,"clear head noun ""gaz""; hit is the -en ending of ""oksijen"""
+b1-pattern,PATTERN,kumaştaki ya da duvardaki tekrarlayan desen,I like the pattern on that dress.,C3,keep,"clear head noun ""desen""; hit is the -en ending"
+b1-poverty,POVERTY,yoksulluk,Many families live in poverty.,C1,geçinmek için yeterli paranın olmaması,
+b1-shelter,SHELTER,yağmurdan ve soğuktan korunacak yer,We found shelter under a tree.,C3,yağmurdan ya da soğuktan korunacak sığınak,
+b1-sight,SIGHT,görme duyusu; görülecek yer,He lost his sight in the accident.,C3,gözlerin görme yeteneği,
+b1-squirrel,SQUIRREL,"ağaçlarda yaşayan, kuyruğu gür küçük hayvan",A squirrel ran up the tree.,C3,keep,"head noun ""hayvan""; hit is the -an ending"
+b1-system,SYSTEM,birbirine bağlı parçalardan oluşan düzen,The school has a new computer system.,C3,keep,"clear head noun ""düzen""; hit is the -en ending"
+b1-teenage,TEENAGE,on üç ile on dokuz yaş arasındaki gençlerle ilgili,He has two teenage daughters.,C2,ergenlik çağındaki gençlere ait,
+b1-thumb,THUMB,"elin kalın ve kısa parmağı, başparmak",He hit his thumb with a hammer.,C3,keep,"clear head noun ""başparmak""; hit is the -mak ending"
+b1-tutor,TUTOR,özel ders veren öğretmen,She has a tutor for math.,C3,keep,"clear head noun ""öğretmen""; hit is the -en ending"
+b1-unemployment,UNEMPLOYMENT,işsizlik,Unemployment is high in the north.,C1,çalışmak isteyenin iş bulamaması,
+b1-unexpected,UNEXPECTED,beklenmeyen,We had an unexpected visitor.,C1,önceden hiç tahmin edilmeyen,
+b1-universe,UNIVERSE,bütün gök cisimlerini kapsayan evren,Stars fill the universe.,C3,keep,"clear head noun ""evren""; hit is the -en ending"
+b1-unknown,UNKNOWN,bilinmeyen,The reason is still unknown.,C1,kimsenin tanımadığı ya da bilmediği,
+a2-unless,UNLESS,"eğer ... olmazsa, -medikçe",We will go unless it rains.,C4,keep,accurate conditional gloss; C4 is a stem mismatch
+b1-venue,VENUE,konferansın ya da konserin yapıldığı mekan,The venue is near the station.,C3,keep,"clear head noun ""mekan""; hit is the -an ending"
+a2-vote,VOTE,seçimde tercihini belirtmek,Everyone can vote at eighteen.,C4,keep,accurate verb gloss; C4 is a stem mismatch
+b1-wagon,WAGON,at ya da traktörün çektiği dört tekerlekli yük arabası,The farmer filled the wagon with hay.,C2,atın ya da traktörün çektiği yük arabası,
+b1-wireless,WIRELESS,kablosuz,We use a wireless keyboard.,C1,kablo gerektirmeden çalışan,
+b1-worm,WORM,"toprakta yaşayan uzun, ayaksız hayvan",A bird pulled a worm out of the ground.,C3,keep,"head noun ""hayvan""; hit is the -an ending"
+b1-yarn,YARN,örgü örmek için kullanılan renkli yün ip,She bought blue yarn to knit a scarf.,C3,keep,"clear head noun ""ip""; hit is the -ip ending"
