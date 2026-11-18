@@ -53,6 +53,7 @@ kotlin {
             implementation(libs.compose.uiTest)
         }
         getByName("androidHostTest").dependencies {
+            implementation(project(":core:testing"))
             implementation(libs.koin.test)
             implementation(libs.robolectric)
             implementation(libs.androidx.compose.uiTestManifest)
