@@ -57,7 +57,7 @@ Your progress, notebook and stats are unchanged.
 ```
 
 ## Store declarations (privacy, data safety, permissions)
-Checked against `git diff v1.0.14..HEAD`: no change to `gradle/libs.versions.toml`, any `build.gradle.kts`, `AndroidManifest.xml`, `Info.plist` or a privacy manifest. The release contains only card CSV and `categories.csv` content, two string resources and one layout change in `feature/levels`. So it adds no SDK, no permission and no data type; Play "Data safety" and App Store "App Privacy" stay as they are (CLAUDE.md rule 11: nothing to re-check). No ads, Pro, login or user-to-user feature is touched.
+Checked against `git diff v1.0.14..HEAD`: no change to `gradle/libs.versions.toml`, any `build.gradle.kts`, `AndroidManifest.xml`, `Info.plist` or a privacy manifest. The release contains only card CSV and `categories.csv` content, two string resources and one layout change in `feature/levels` (plus the content compiler's build-time category checks, which are not part of the app). So it adds no SDK, no permission and no data type; Play "Data safety" and App Store "App Privacy" stay as they are (CLAUDE.md rule 11: nothing to re-check). No ads, Pro, login or user-to-user feature is touched.
 
 ## Owner checklist (TestFlight and a real phone)
 1. Fresh update over 1.0.14 (not a clean install): the app opens, no crash, progress and streak are the same.
