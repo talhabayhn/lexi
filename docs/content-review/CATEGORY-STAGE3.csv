@@ -1,0 +1,1430 @@
+id,answer,level,pos,current_category,proposed_category,reason
+a1-again,AGAIN,A1,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+a1-all,ALL,A1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a1-also,ALSO,A1,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+a1-american,AMERICAN,A1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a1-angry,ANGRY,A1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a1-another,ANOTHER,A1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a1-away,AWAY,A1,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+a1-bad,BAD,A1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a1-beautiful,BEAUTIFUL,A1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a1-boring,BORING,A1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a1-born,BORN,A1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a1-both,BOTH,A1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a1-british,BRITISH,A1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a1-busy,BUSY,A1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a1-clean,CLEAN,A1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a1-crazy,CRAZY,A1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a1-dark,DARK,A1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a1-dear,DEAR,A1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a1-different,DIFFERENT,A1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a1-difficult,DIFFICULT,A1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a1-dirty,DIRTY,A1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a1-down,DOWN,A1,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+a1-easy,EASY,A1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a1-every,EVERY,A1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a1-famous,FAMOUS,A1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a1-fast,FAST,A1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a1-favourite,FAVORITE,A1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a1-fine,FINE,A1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a1-free,FREE,A1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a1-full,FULL,A1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a1-funny,FUNNY,A1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a1-good,GOOD,A1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a1-great,GREAT,A1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a1-happy,HAPPY,A1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a1-hard,HARD,A1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a1-heavy,HEAVY,A1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a1-here,HERE,A1,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+a1-high,HIGH,A1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a1-inside,INSIDE,A1,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+a1-interesting,INTERESTING,A1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a1-light,LIGHT,A1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a1-little,LITTLE,A1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a1-long,LONG,A1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a1-lucky,LUCKY,A1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a1-many,MANY,A1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a1-maybe,MAYBE,A1,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+a1-more,MORE,A1,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+a1-much,MUCH,A1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a1-new,NEW,A1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a1-nice,NICE,A1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a1-off,OFF,A1,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+a1-okay,OKAY,A1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a1-only,ONLY,A1,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+a1-other,OTHER,A1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a1-outside,OUTSIDE,A1,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+a1-please,PLEASE,A1,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+a1-pretty,PRETTY,A1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a1-quick,QUICK,A1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a1-quiet,QUIET,A1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a1-ready,READY,A1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a1-really,REALLY,A1,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+a1-rich,RICH,A1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a1-sad,SAD,A1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a1-same,SAME,A1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a1-short,SHORT,A1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a1-slow,SLOW,A1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a1-small,SMALL,A1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a1-their,THEIR,A1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a1-thin,THIN,A1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a1-together,TOGETHER,A1,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+a1-ugly,UGLY,A1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a1-up,UP,A1,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+a1-useful,USEFUL,A1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a1-very,VERY,A1,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+a1-well,WELL,A1,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+a1-wonderful,WONDERFUL,A1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a1-wrong,WRONG,A1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a1-yes,YES,A1,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+a1-about,ABOUT,A1,phrase,daily-life,daily-life,R1 stays: function word / greeting (pos phrase) remains in daily-life
+a1-address,ADDRESS,A1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a1-age,AGE,A1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a1-around,AROUND,A1,phrase,daily-life,daily-life,R1 stays: function word / greeting (pos phrase) remains in daily-life
+a1-because,BECAUSE,A1,phrase,daily-life,daily-life,R1 stays: function word / greeting (pos phrase) remains in daily-life
+a1-behind,BEHIND,A1,phrase,daily-life,daily-life,R1 stays: function word / greeting (pos phrase) remains in daily-life
+a1-between,BETWEEN,A1,phrase,daily-life,daily-life,R1 stays: function word / greeting (pos phrase) remains in daily-life
+a1-brush,BRUSH,A1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a1-button,BUTTON,A1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a1-card,CARD,A1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a1-chinese,CHINESE,A1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a1-club,CLUB,A1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a1-email,EMAIL,A1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a1-end,END,A1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a1-everything,EVERYTHING,A1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a1-excuse-me,EXCUSE ME,A1,phrase,daily-life,daily-life,R1 stays: function word / greeting (pos phrase) remains in daily-life
+a1-fire,FIRE,A1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a1-flower,FLOWER,A1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a1-french,FRENCH,A1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a1-fun,FUN,A1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a1-german,GERMAN,A1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a1-gift,GIFT,A1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a1-goodbye,GOODBYE,A1,phrase,daily-life,daily-life,R1 stays: function word / greeting (pos phrase) remains in daily-life
+a1-grass,GRASS,A1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a1-hello,HELLO,A1,phrase,daily-life,daily-life,R1 stays: function word / greeting (pos phrase) remains in daily-life
+a1-how,HOW,A1,phrase,daily-life,daily-life,R1 stays: function word / greeting (pos phrase) remains in daily-life
+a1-idea,IDEA,A1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a1-in-front-of,IN FRONT OF,A1,phrase,daily-life,daily-life,R1 stays: function word / greeting (pos phrase) remains in daily-life
+a1-internet,INTERNET,A1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a1-into,INTO,A1,phrase,daily-life,daily-life,R1 stays: function word / greeting (pos phrase) remains in daily-life
+a1-italian,ITALIAN,A1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a1-japanese,JAPANESE,A1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a1-joke,JOKE,A1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a1-life,LIFE,A1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a1-list,LIST,A1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a1-match,MATCH,A1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a1-message,MESSAGE,A1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a1-name,NAME,A1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a1-news,NEWS,A1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a1-newspaper,NEWSPAPER,A1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a1-nothing,NOTHING,A1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a1-of-course,OF COURSE,A1,phrase,daily-life,daily-life,R1 stays: function word / greeting (pos phrase) remains in daily-life
+a1-over,OVER,A1,phrase,daily-life,daily-life,R1 stays: function word / greeting (pos phrase) remains in daily-life
+a1-phone,PHONE,A1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a1-postcard,POSTCARD,A1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a1-prize,PRIZE,A1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a1-problem,PROBLEM,A1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a1-rubber,RING,A1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a1-rose,ROSE,A1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a1-russian,RUSSIAN,A1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a1-something,SOMETHING,A1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a1-sorry,SORRY,A1,phrase,daily-life,daily-life,R1 stays: function word / greeting (pos phrase) remains in daily-life
+a1-sound,SOUND,A1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a1-spanish,SPANISH,A1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a1-stone,STONE,A1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a1-story,STORY,A1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a1-tent,TENT,A1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a1-thanks,THANKS,A1,phrase,daily-life,daily-life,R1 stays: function word / greeting (pos phrase) remains in daily-life
+a1-thing,THING,A1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a1-top,TOP,A1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a1-turkish,TURKISH,A1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a1-under,UNDER,A1,phrase,daily-life,daily-life,R1 stays: function word / greeting (pos phrase) remains in daily-life
+a1-voice,VOICE,A1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a1-website,WEBSITE,A1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a1-welcome,WELCOME,A1,phrase,daily-life,daily-life,R1 stays: function word / greeting (pos phrase) remains in daily-life
+a1-what,WHAT,A1,phrase,daily-life,daily-life,R1 stays: function word / greeting (pos phrase) remains in daily-life
+a1-when,WHEN,A1,phrase,daily-life,daily-life,R1 stays: function word / greeting (pos phrase) remains in daily-life
+a1-where,WHERE,A1,phrase,daily-life,daily-life,R1 stays: function word / greeting (pos phrase) remains in daily-life
+a1-which,WHICH,A1,phrase,daily-life,daily-life,R1 stays: function word / greeting (pos phrase) remains in daily-life
+a1-who,WHO,A1,phrase,daily-life,daily-life,R1 stays: function word / greeting (pos phrase) remains in daily-life
+a1-why,WHY,A1,phrase,daily-life,daily-life,R1 stays: function word / greeting (pos phrase) remains in daily-life
+a1-agree,AGREE,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-arrive,ARRIVE,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-begin,BEGIN,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-break,BREAK,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-bring,BRING,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-call,CALL,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-carry,CARRY,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-catch,CATCH,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-change,CHANGE,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-close,CLOSE,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-come,COME,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-cry,CRY,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-cut,CUT,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-enjoy,ENJOY,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-fall,FALL,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-find,FIND,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-finish,FINISH,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-fly,FLY,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-follow,FOLLOW,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-forget,FORGET,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-get,GET,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-give,GIVE,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-go,GO,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-hear,HEAR,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-help,HELP,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-invite,INVITE,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-jump,JUMP,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-kick,KICK,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-kiss,KISS,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-know,KNOW,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-laugh,LAUGH,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-leave,LEAVE,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-like,LIKE,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-live,LIVE,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-look,LOOK,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-love,LOVE,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-make,MAKE,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-meet,MEET,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-move,MOVE,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-need,NEED,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-open,OPEN,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-paint,PAINT,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-pull,PULL,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-push,PUSH,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-put,PUT,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-relax,RELAX,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-remember,REMEMBER,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-run,RUN,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-say,SAY,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-send,SEND,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-show,SHOW,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-sit,SIT,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-smile,SMILE,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-speak,SPEAK,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-stand,STAND,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-start,START,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-stay,STAY,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-stop,STOP,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-take,TAKE,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-talk,TALK,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-tell,TELL,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-think,THINK,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-try,TRY,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-turn,TURN,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-use,USE,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-visit,VISIT,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-wait,WAIT,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-wake,WAKE,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-walk,WALK,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-want,WANT,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-watch,WATCH,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a1-win,WIN,A1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a2-able,ABLE,A2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a2-actually,ACTUALLY,A2,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+a2-afraid,AFRAID,A2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a2-almost,ALMOST,A2,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+a2-alone,ALONE,A2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a2-amazed,AMAZED,A2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a2-amazing,AMAZING,A2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a2-anyway,ANYWAY,A2,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+a2-anywhere,ANYWHERE,A2,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+a2-bored,BORED,A2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a2-careful,CAREFUL,A2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a2-common,COMMON,A2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a2-crazy,CRAZY,A2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a2-dangerous,DANGEROUS,A2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a2-dead,DEAD,A2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a2-easily,EASILY,A2,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+a2-enough,ENOUGH,A2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a2-especially,ESPECIALLY,A2,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+a2-even,EVEN,A2,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+a2-exactly,EXACTLY,A2,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+a2-excited,EXCITED,A2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a2-exciting,EXCITING,A2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a2-extra,EXTRA,A2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a2-extremely,EXTREMELY,A2,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+a2-fantastic,FANTASTIC,A2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a2-glad,GLAD,A2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a2-horrible,HORRIBLE,A2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a2-important,IMPORTANT,A2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a2-impossible,IMPOSSIBLE,A2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a2-indoors,INDOORS,A2,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+a2-instead,INSTEAD,A2,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+a2-kindly,KINDLY,A2,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+a2-large,LARGE,A2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a2-lucky,LUCKY,A2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a2-medium,MEDIUM,A2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a2-mobile,MOBILE,A2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a2-noisy,NOISY,A2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a2-normal,NORMAL,A2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a2-nowhere,NOWHERE,A2,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+a2-online,ONLINE,A2,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+a2-outdoors,OUTDOORS,A2,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+a2-own,OWN,A2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a2-poor,POOR,A2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a2-possible,POSSIBLE,A2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a2-quickly,QUICKLY,A2,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+a2-quietly,QUIETLY,A2,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+a2-quite,QUITE,A2,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+a2-relaxed,RELAXED,A2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a2-rich,RICH,A2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a2-round,ROUND,A2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a2-safe,SAFE,A2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a2-scary,SCARY,A2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a2-serious,SERIOUS,A2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a2-several,SEVERAL,A2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a2-shiny,SHINY,A2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a2-single,SINGLE,A2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a2-slowly,SLOWLY,A2,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+a2-somewhere,SOMEWHERE,A2,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+a2-special,SPECIAL,A2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a2-stupid,STUPID,A2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a2-true,TRUE,A2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a2-unhappy,UNHAPPY,A2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a2-unlucky,UNLUCKY,A2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a2-usual,USUAL,A2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a2-worst,WORST,A2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a2-advice,ADVICE,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-alarm,ALARM,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-although,ALTHOUGH,A2,phrase,daily-life,daily-life,R1 stays: function word / greeting (pos phrase) remains in daily-life
+a2-among,AMONG,A2,phrase,daily-life,daily-life,R1 stays: function word / greeting (pos phrase) remains in daily-life
+a2-amount,AMOUNT,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-anyone,ANYONE,A2,phrase,daily-life,daily-life,R1 stays: function word / greeting (pos phrase) remains in daily-life
+a2-anything,ANYTHING,A2,phrase,daily-life,daily-life,R1 stays: function word / greeting (pos phrase) remains in daily-life
+a2-army,ARMY,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-battery,BATTERY,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-beauty,BEAUTY,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-beside,BESIDE,A2,phrase,daily-life,daily-life,R1 stays: function word / greeting (pos phrase) remains in daily-life
+a2-bottom,BOTTOM,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-bubble,BUBBLE,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-button,BUTTON,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-calendar,CALENDAR,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-care,CARE,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-chain,CHAIN,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-chance,CHANCE,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-comb,COMB,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-conversation,CONVERSATION,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-crown,CROWN,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-design,DESIGN,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-diary,DIARY,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-dream,DREAM,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-earth,EARTH,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-edge,EDGE,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-either,EITHER,A2,phrase,daily-life,daily-life,R1 stays: function word / greeting (pos phrase) remains in daily-life
+a2-ending,ENDING,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-envelope,ENVELOPE,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-event,EVENT,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-gold,GOLD,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-ground,GROUND,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-guard,GUARD,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-habit,HABIT,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-hole,HOLE,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-information,INFORMATION,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-interest,INTEREST,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-invitation,INVITATION,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-jail,JAIL,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-joy,JOY,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-knot,KNOT,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-less,LESS,A2,phrase,daily-life,daily-life,R1 stays: function word / greeting (pos phrase) remains in daily-life
+a2-life,LIFE,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-middle,MIDDLE,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-model,MODEL,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-mud,MUD,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-myself,MYSELF,A2,phrase,daily-life,daily-life,R1 stays: function word / greeting (pos phrase) remains in daily-life
+a2-nationality,NATIONALITY,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-navy,NAVY,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-nobody,NOBODY,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-noise,NOISE,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-object,OBJECT,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-opinion,OPINION,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-pair,PAIR,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-parcel,PARCEL,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-peace,PEACE,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-pin,PIN,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-plan,PLAN,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-plastic,PLASTIC,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-plenty,PLENTY,A2,phrase,daily-life,daily-life,R1 stays: function word / greeting (pos phrase) remains in daily-life
+a2-present,PRESENT,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-programme,PROGRAM,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-quality,QUALITY,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-reason,REASON,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-request,REQUEST,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-rope,ROPE,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-rose,ROSE,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-screen,SCREEN,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-secret,SECRET,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-service,SERVICE,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-shampoo,SHAMPOO,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-side,SIDE,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-silver,SILVER,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-soldier,SOLDIER,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-someone,SOMEONE,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-sound,SOUND,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-space,SPACE,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-step,STEP,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-stone,STONE,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-stripe,STRIPE,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-style,STYLE,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-surprise,SURPRISE,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-torch,TORCH,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-treasure,TREASURE,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-trick,TRICK,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-trouble,TROUBLE,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-tube,TUBE,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-type,TYPE,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-user,USER,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-view,VIEW,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-vine,VINE,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-voice,VOICE,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-weight,WEIGHT,A2,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-whose,WHOSE,A2,phrase,daily-life,daily-life,R1 stays: function word / greeting (pos phrase) remains in daily-life
+a2-without,WITHOUT,A2,phrase,daily-life,daily-life,R1 stays: function word / greeting (pos phrase) remains in daily-life
+a2-yourself,YOURSELF,A2,phrase,daily-life,daily-life,R1 stays: function word / greeting (pos phrase) remains in daily-life
+a2-accept,ACCEPT,A2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a2-allow,ALLOW,A2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a2-believe,BELIEVE,A2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a2-blow,BLOW,A2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a2-borrow,BORROW,A2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a2-build,BUILD,A2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a2-celebrate,CELEBRATE,A2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a2-chat,CHAT,A2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a2-decide,DECIDE,A2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a2-download,DOWNLOAD,A2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a2-drop,DROP,A2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a2-expect,EXPECT,A2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a2-explode,EXPLODE,A2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a2-fight,FIGHT,A2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a2-fill,FILL,A2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a2-fix,FIX,A2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a2-grow,GROW,A2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a2-guess,GUESS,A2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a2-happen,HAPPEN,A2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a2-hate,HATE,A2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a2-hold,HOLD,A2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a2-hope,HOPE,A2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a2-hurry,HURRY,A2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a2-imagine,IMAGINE,A2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a2-introduce,INTRODUCE,A2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a2-invite,INVITE,A2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a2-join,JOIN,A2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a2-keep,KEEP,A2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a2-kill,KILL,A2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a2-kneel,KNEEL,A2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a2-knock,KNOCK,A2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a2-lend,LEND,A2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a2-mind,MIND,A2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a2-miss,MISS,A2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a2-nod,NOD,A2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a2-pick,PICK,A2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a2-post,POST,A2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a2-prefer,PREFER,A2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a2-promise,PROMISE,A2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a2-realize,REALIZE,A2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a2-reply,REPLY,A2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a2-save,SAVE,A2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a2-search,SEARCH,A2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a2-share,SHARE,A2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a2-shout,SHOUT,A2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a2-steal,STEAL,A2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a2-touch,TOUCH,A2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a2-trust,TRUST,A2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a2-waste,WASTE,A2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a2-wave,WAVE,A2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a2-wish,WISH,A2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a2-wonder,WONDER,A2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a2-worry,WORRY,A2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b1-accidentally,ACCIDENTALLY,B1,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+b1-aware,AWARE,B1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b1-casual,CASUAL,B1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b1-certain,CERTAIN,B1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b1-certainly,CERTAINLY,B1,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+b1-complicated,COMPLICATED,B1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b1-current,CURRENT,B1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b1-definitely,DEFINITELY,B1,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+b1-directly,DIRECTLY,B1,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+b1-enormous,ENORMOUS,B1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b1-eventually,EVENTUALLY,B1,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+b1-everyday,EVERYDAY,B1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b1-exact,EXACT,B1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b1-extreme,EXTREME,B1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b1-fashionable,FASHIONABLE,B1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b1-freezing,FREEZING,B1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b1-frequent,FREQUENT,B1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b1-frequently,FREQUENTLY,B1,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+b1-fully,FULLY,B1,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+b1-gradually,GRADUALLY,B1,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+b1-handmade,HANDMADE,B1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b1-hardly,HARDLY,B1,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+b1-hidden,HIDDEN,B1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b1-honestly,HONESTLY,B1,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+b1-ideal,IDEAL,B1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a2-immediately,IMMEDIATELY,B1,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+b1-khaki,KHAKI,B1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b1-lately,LATELY,B1,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+b1-likely,LIKELY,B1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b1-loose,LOOSE,B1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b1-luckily,LUCKILY,B1,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+b1-major,MAJOR,B1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b1-meanwhile,MEANWHILE,B1,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+b1-military,MILITARY,B1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b1-missing,MISSING,B1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b1-nasty,NASTY,B1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b1-naturally,NATURALLY,B1,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+b1-necessary,NECESSARY,B1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b1-negative,NEGATIVE,B1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b1-neither,NEITHER,B1,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+b1-normally,NORMALLY,B1,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+b1-nowadays,NOWADAYS,B1,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+b1-occasionally,OCCASIONALLY,B1,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+b1-odd,ODD,B1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b1-ordinary,ORDINARY,B1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b1-original,ORIGINAL,B1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a2-otherwise,OTHERWISE,B1,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+b1-outer,OUTER,B1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b1-oval,OVAL,B1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b1-particular,PARTICULAR,B1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b1-patient,PATIENT,B1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+a2-personal,PERSONAL,B1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b1-positive,POSITIVE,B1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b1-practical,PRACTICAL,B1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b1-private,PRIVATE,B1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b1-rarely,RARELY,B1,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+b1-rather,RATHER,B1,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+b1-realistic,REALISTIC,B1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b1-recent,RECENT,B1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b1-recently,RECENTLY,B1,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+b1-reliable,RELIABLE,B1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b1-rough,ROUGH,B1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b1-sensible,SENSIBLE,B1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b1-slightly,SLIGHTLY,B1,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+b1-spare,SPARE,B1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b1-steady,STEADY,B1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b1-sudden,SUDDEN,B1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b1-totally,TOTALLY,B1,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+b1-typical,TYPICAL,B1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b1-uncomfortable,UNCOMFORTABLE,B1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b1-uneven,UNEVEN,B1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b1-unexpected,UNEXPECTED,B1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b1-unfortunately,UNFORTUNATELY,B1,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+b1-unique,UNIQUE,B1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b1-unknown,UNKNOWN,B1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b1-unlikely,UNLIKELY,B1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b1-unnecessary,UNNECESSARY,B1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b1-unpleasant,UNPLEASANT,B1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b1-unsafe,UNSAFE,B1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b1-unusual,UNUSUAL,B1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b1-upper,UPPER,B1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b1-valuable,VALUABLE,B1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b1-violet,VIOLET,B1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b1-visible,VISIBLE,B1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b1-waterproof,WATERPROOF,B1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b1-weekly,WEEKLY,B1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b1-weird,WEIRD,B1,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b1-accent,ACCENT,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-action,ACTION,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-antique,ANTIQUE,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-atmosphere,ATMOSPHERE,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-attempt,ATTEMPT,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-attitude,ATTITUDE,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-background,BACKGROUND,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-backyard,BACKYARD,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-bargain,BARGAIN,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-basement,BASEMENT,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-belief,BELIEF,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-billion,BILLION,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-bookcase,BOOKCASE,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-bookshelf,BOOKSHELF,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-bouquet,BOUQUET,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-buckle,BUCKLE,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-bulb,BULB,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-cardboard,CARDBOARD,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-cause,CAUSE,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-ceiling,CEILING,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-clothing,CLOTHING,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-clue,CLUE,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-comment,COMMENT,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-condition,CONDITION,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-consequence,CONSEQUENCE,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-contact,CONTACT,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-damage,DAMAGE,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-decision,DECISION,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-despite,DESPITE,B1,phrase,daily-life,daily-life,R1 stays: function word / greeting (pos phrase) remains in daily-life
+b1-detail,DETAIL,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-difficulty,DIFFICULTY,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-doubt,DOUBT,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-echo,ECHO,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-emergency,EMERGENCY,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-evidence,EVIDENCE,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-except,EXCEPT,B1,phrase,daily-life,daily-life,R1 stays: function word / greeting (pos phrase) remains in daily-life
+b1-explosion,EXPLOSION,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-fabric,FABRIC,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-fault,FAULT,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-force,FORCE,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-frame,FRAME,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-freedom,FREEDOM,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-gap,GAP,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-garbage,GARBAGE,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-gesture,GESTURE,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-gossip,GOSSIP,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-gown,GOWN,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-greeting,GREETING,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-hazard,HAZARD,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-headline,HEADLINE,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-heating,HEATING,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-hometown,HOMETOWN,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-hood,HOOD,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-hook,HOOK,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-host,HOST,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-hunter,HUNTER,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-identity,IDENTITY,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-incident,INCIDENT,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-intention,INTENTION,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-jewel,JEWEL,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-joker,JOKER,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-judgement,JUDGEMENT,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-junk,JUNK,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-keyhole,KEYHOLE,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-knob,KNOB,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-leak,LEAK,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-leggings,LEGGINGS,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-length,LENGTH,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-lightbulb,LIGHTBULB,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-mailbox,MAILBOX,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-makeup,MAKEUP,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-manner,MANNER,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-marble,MARBLE,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-material,MATERIAL,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-matter,MATTER,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-midnight,MIDNIGHT,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-mitten,MITTEN,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-movement,MOVEMENT,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-necktie,NECKTIE,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-needle,NEEDLE,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-nightmare,NIGHTMARE,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-nonsense,NONSENSE,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-occasion,OCCASION,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-opening,OPENING,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-option,OPTION,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-overcoat,OVERCOAT,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-package,PACKAGE,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-pyjamas,PAJAMAS,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-pattern,PATTERN,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-permission,PERMISSION,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-pixel,PIXEL,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-privacy,PRIVACY,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-purpose,PURPOSE,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-cheque,QUILT,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-reaction,REACTION,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-reality,REALITY,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-reward,REWARD,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-risk,RISK,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-routine,ROUTINE,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-safety,SAFETY,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-shelter,SHELTER,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-shortage,SHORTAGE,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-silence,SILENCE,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-statement,STATEMENT,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-storage,STORAGE,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-suggestion,SUGGESTION,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-surface,SURFACE,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-suspect,SUSPECT,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-threat,THREAT,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-throughout,THROUGHOUT,B1,phrase,daily-life,daily-life,R1 stays: function word / greeting (pos phrase) remains in daily-life
+b1-trend,TREND,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-tuxedo,TUXEDO,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+a2-unless,UNLESS,B1,phrase,daily-life,daily-life,R1 stays: function word / greeting (pos phrase) remains in daily-life
+b1-velvet,VELVET,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-warning,WARNING,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-weapon,WEAPON,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-whatever,WHATEVER,B1,phrase,daily-life,daily-life,R1 stays: function word / greeting (pos phrase) remains in daily-life
+b1-whenever,WHENEVER,B1,phrase,daily-life,daily-life,R1 stays: function word / greeting (pos phrase) remains in daily-life
+b1-wherever,WHEREVER,B1,phrase,daily-life,daily-life,R1 stays: function word / greeting (pos phrase) remains in daily-life
+b1-whether,WHETHER,B1,phrase,daily-life,daily-life,R1 stays: function word / greeting (pos phrase) remains in daily-life
+b1-wig,WIG,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-within,WITHIN,B1,phrase,daily-life,daily-life,R1 stays: function word / greeting (pos phrase) remains in daily-life
+b1-yarn,YARN,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-zipper,ZIPPER,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-zodiac,ZODIAC,B1,noun,daily-life,daily-life,R1 stays: noun at A1-B1 remains in daily-life
+b1-act,ACT,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b1-adjust,ADJUST,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b1-admit,ADMIT,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b1-affect,AFFECT,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b1-afford,AFFORD,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b1-announce,ANNOUNCE,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b1-apologise,APOLOGIZE,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b1-appear,APPEAR,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b1-assume,ASSUME,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b1-attack,ATTACK,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b1-belong,BELONG,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b1-blame,BLAME,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b1-bother,BOTHER,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b1-claim,CLAIM,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b1-communicate,COMMUNICATE,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b1-complain,COMPLAIN,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b1-consider,CONSIDER,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b1-convince,CONVINCE,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b1-criticise,CRITICIZE,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b1-dare,DARE,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b1-dazzle,DAZZLE,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b1-decorate,DECORATE,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b1-deny,DENY,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b1-depend,DEPEND,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b1-deserve,DESERVE,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b1-destroy,DESTROY,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b1-disagree,DISAGREE,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b1-disappear,DISAPPEAR,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b1-disturb,DISTURB,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b1-escape,ESCAPE,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a2-exchange,EXCHANGE,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b1-exist,EXIST,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b1-gather,GATHER,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b1-gaze,GAZE,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b1-glance,GLANCE,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b1-grab,GRAB,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b1-insist,INSIST,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b1-interrupt,INTERRUPT,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a2-invent,INVENT,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b1-investigate,INVESTIGATE,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b1-locate,LOCATE,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b1-mention,MENTION,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b1-notice,NOTICE,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b1-obey,OBEY,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b1-occur,OCCUR,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+a2-organise,ORGANIZE,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b1-oversleep,OVERSLEEP,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b1-refuse,REFUSE,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b1-recognise,RELY,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b1-remain,REMAIN,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b1-remind,REMIND,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b1-remove,REMOVE,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b1-rescue,RESCUE,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b1-settle,SETTLE,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b1-snooze,SNOOZE,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b1-spoil,SPOIL,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b1-spread,SPREAD,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b1-struggle,STRUGGLE,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b1-suggest,SUGGEST,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b1-suppose,SUPPOSE,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b1-threaten,THREATEN,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b1-undo,UNDO,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b1-unwrap,UNWRAP,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b1-wrap,WRAP,B1,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b2-abstract,ABSTRACT,B2,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+b2-accurate,ACCURATE,B2,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+b2-adequate,ADEQUATE,B2,adj,food-drink,adjectives,R5 food-drink B2 generic word: adj -> adjectives
+b2-apparent,APPARENT,B2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b2-appropriate,APPROPRIATE,B2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b2-artificial,ARTIFICIAL,B2,adj,food-drink,adjectives,R5 food-drink B2 generic word: adj -> adjectives
+b2-authentic,AUTHENTIC,B2,adj,food-drink,adjectives,R5 food-drink B2 generic word: adj -> adjectives
+b2-barely,BARELY,B2,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+b2-believable,BELIEVABLE,B2,adj,hobbies,adjectives,R3 hobbies B2/C1 leftover: adj -> adjectives
+b2-broad,BROAD,B2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b2-clockwise,CLOCKWISE,B2,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+b2-conscious,CONSCIOUS,B2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b2-consistent,CONSISTENT,B2,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+b2-constant,CONSTANT,B2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b2-contemporary,CONTEMPORARY,B2,adj,hobbies,adjectives,R3 hobbies B2/C1 leftover: adj -> adjectives
+b2-controversial,CONTROVERSIAL,B2,adj,hobbies,adjectives,R3 hobbies B2/C1 leftover: adj -> adjectives
+b2-deliberate,DELIBERATE,B2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b2-dominant,DOMINANT,B2,adj,hobbies,adjectives,R3 hobbies B2/C1 leftover: adj -> adjectives
+b2-dramatic,DRAMATIC,B2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b2-effortless,EFFORTLESS,B2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b2-elegant,ELEGANT,B2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b2-equally,EQUALLY,B2,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+b2-ethical,ETHICAL,B2,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+b2-evident,EVIDENT,B2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b2-exotic,EXOTIC,B2,adj,food-drink,adjectives,R5 food-drink B2 generic word: adj -> adjectives
+b2-explosive,EXPLOSIVE,B2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b2-extinct,EXTINCT,B2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b2-extraordinary,EXTRAORDINARY,B2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b2-fairly,FAIRLY,B2,adv,school-work,adjectives,R2 school-work B2/C1: adv -> adjectives
+b2-fierce,FIERCE,B2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b2-firm,FIRM,B2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b2-fluent,FLUENT,B2,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+b2-former,FORMER,B2,adj,hobbies,adjectives,R3 hobbies B2/C1 leftover: adj -> adjectives
+b2-fortunate,FORTUNATE,B2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b2-fragile,FRAGILE,B2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b2-fundamental,FUNDAMENTAL,B2,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+b2-genuine,GENUINE,B2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b2-genuinely,GENUINELY,B2,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+b2-graceful,GRACEFUL,B2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b2-harsh,HARSH,B2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b2-hazy,HAZY,B2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b2-humid,HUMID,B2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b2-identical,IDENTICAL,B2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b2-ignorant,IGNORANT,B2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b2-imaginary,IMAGINARY,B2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b2-increasingly,INCREASINGLY,B2,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+b2-inevitable,INEVITABLE,B2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b2-influential,INFLUENTIAL,B2,adj,hobbies,adjectives,R3 hobbies B2/C1 leftover: adj -> adjectives
+b2-initial,INITIAL,B2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b2-intentional,INTENTIONAL,B2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b2-intermediate,INTERMEDIATE,B2,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+b2-justifiable,JUSTIFIABLE,B2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b2-keen,KEEN,B2,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+b2-knowingly,KNOWINGLY,B2,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+b2-lenient,LENIENT,B2,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+b2-likewise,LIKEWISE,B2,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+b2-literally,LITERALLY,B2,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+b2-literary,LITERARY,B2,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+b2-mature,MATURE,B2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b2-meaningful,MEANINGFUL,B2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b2-mediocre,MEDIOCRE,B2,adj,food-drink,adjectives,R5 food-drink B2 generic word: adj -> adjectives
+b2-merely,MERELY,B2,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+b2-minor,MINOR,B2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b2-mistaken,MISTAKEN,B2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b2-modest,MODEST,B2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b2-mutual,MUTUAL,B2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b2-mysterious,MYSTERIOUS,B2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b2-necessarily,NECESSARILY,B2,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+b2-needy,NEEDY,B2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b2-neutral,NEUTRAL,B2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b2-nevertheless,NEVERTHELESS,B2,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+b2-notable,NOTABLE,B2,adj,hobbies,adjectives,R3 hobbies B2/C1 leftover: adj -> adjectives
+b2-noticeable,NOTICEABLE,B2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b2-notorious,NOTORIOUS,B2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b2-numerous,NUMEROUS,B2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b2-objectively,OBJECTIVELY,B2,adv,school-work,adjectives,R2 school-work B2/C1: adv -> adjectives
+b2-offensive,OFFENSIVE,B2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b2-optional,OPTIONAL,B2,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+b2-outstanding,OUTSTANDING,B2,adj,hobbies,adjectives,R3 hobbies B2/C1 leftover: adj -> adjectives
+b2-overcrowded,OVERCROWDED,B2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b2-overdue,OVERDUE,B2,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+b2-overwhelming,OVERWHELMING,B2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b2-passionate,PASSIONATE,B2,adj,hobbies,adjectives,R3 hobbies B2/C1 leftover: adj -> adjectives
+b2-precise,PRECISE,B2,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+b2-primarily,PRIMARILY,B2,adv,school-work,adjectives,R2 school-work B2/C1: adv -> adjectives
+b2-questionable,QUESTIONABLE,B2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b2-relevant,RELEVANT,B2,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+b2-remarkable,REMARKABLE,B2,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+b2-rigid,RIGID,B2,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+b2-scarce,SCARCE,B2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b2-secure,SECURE,B2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b2-severe,SEVERE,B2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b2-specific,SPECIFIC,B2,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+b2-stylish,STYLISH,B2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b2-subjective,SUBJECTIVE,B2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b2-subsequent,SUBSEQUENT,B2,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+b2-subtle,SUBTLE,B2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b2-symbolic,SYMBOLIC,B2,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+b2-systematic,SYSTEMATIC,B2,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+b2-tense,TENSE,B2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b2-tremendous,TREMENDOUS,B2,adj,hobbies,adjectives,R3 hobbies B2/C1 leftover: adj -> adjectives
+b2-typically,TYPICALLY,B2,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+b2-ultimate,ULTIMATE,B2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b2-unaware,UNAWARE,B2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b2-unbearable,UNBEARABLE,B2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b2-uncommon,UNCOMMON,B2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b2-underneath,UNDERNEATH,B2,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+b2-universal,UNIVERSAL,B2,adj,hobbies,adjectives,R3 hobbies B2/C1 leftover: adj -> adjectives
+b2-unpredictable,UNPREDICTABLE,B2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b2-unstable,UNSTABLE,B2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b2-upcoming,UPCOMING,B2,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+b2-vague,VAGUE,B2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b2-variable,VARIABLE,B2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b2-varied,VARIED,B2,adj,food-drink,adjectives,R5 food-drink B2 generic word: adj -> adjectives
+b2-vertical,VERTICAL,B2,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+b2-virtually,VIRTUALLY,B2,adv,daily-life,adjectives,R1 daily-life: adv -> adjectives
+b2-visual,VISUAL,B2,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+b2-vivid,VIVID,B2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b2-voluntary,VOLUNTARY,B2,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+b2-wasteful,WASTEFUL,B2,adj,daily-life,adjectives,R1 daily-life: adj -> adjectives
+b2-whereas,WHEREAS,B2,phrase,school-work,adjectives,R2 school-work B2/C1: phrase -> adjectives
+b2-wicked,WICKED,B2,adj,hobbies,adjectives,R3 hobbies B2/C1 leftover: adj -> adjectives
+b2-acquaintance,ACQUAINTANCE,B2,noun,daily-life,ideas,R1 daily-life: noun -> ideas
+b2-analysis,ANALYSIS,B2,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+b2-appeal,APPEAL,B2,noun,hobbies,ideas,R3 hobbies B2/C1 leftover: noun -> ideas
+b2-assumption,ASSUMPTION,B2,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+b2-attendance,ATTENDANCE,B2,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+b2-awareness,AWARENESS,B2,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+b2-barrier,BARRIER,B2,noun,daily-life,ideas,R1 daily-life: noun -> ideas
+b2-bias,BIAS,B2,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+b2-blaze,BLAZE,B2,noun,daily-life,ideas,R1 daily-life: noun -> ideas
+b2-bond,BOND,B2,noun,daily-life,ideas,R1 daily-life: noun -> ideas
+b2-bookmark,BOOKMARK,B2,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+b2-boutique,BOUTIQUE,B2,noun,daily-life,ideas,R1 daily-life: noun -> ideas
+b2-breakdown,BREAKDOWN,B2,noun,daily-life,ideas,R1 daily-life: noun -> ideas
+b2-ceremony,CEREMONY,B2,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+b2-circumstance,CIRCUMSTANCE,B2,noun,daily-life,ideas,R1 daily-life: noun -> ideas
+b2-clash,CLASH,B2,noun,hobbies,ideas,R3 hobbies B2/C1 leftover: noun -> ideas
+b2-coincidence,COINCIDENCE,B2,noun,daily-life,ideas,R1 daily-life: noun -> ideas
+b2-compliment,COMPLIMENT,B2,noun,daily-life,ideas,R1 daily-life: noun -> ideas
+b2-conjunction,CONJUNCTION,B2,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+b2-consistency,CONSISTENCY,B2,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+b2-context,CONTEXT,B2,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+b2-contrast,CONTRAST,B2,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+b2-convention,CONVENTION,B2,noun,daily-life,ideas,R1 daily-life: noun -> ideas
+b2-crystal,CRYSTAL,B2,noun,daily-life,ideas,R1 daily-life: noun -> ideas
+b2-curriculum,CURRICULUM,B2,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+b2-discipline,DISCIPLINE,B2,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+b2-eel,EEL,B2,noun,daily-life,ideas,R1 daily-life: noun -> ideas
+b2-emphasis,EMPHASIS,B2,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+b2-equation,EQUATION,B2,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+b2-equivalent,EQUIVALENT,B2,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+b2-errand,ERRAND,B2,noun,daily-life,ideas,R1 daily-life: noun -> ideas
+b2-existence,EXISTENCE,B2,noun,daily-life,ideas,R1 daily-life: noun -> ideas
+b2-extent,EXTENT,B2,noun,daily-life,ideas,R1 daily-life: noun -> ideas
+b2-fertilizer,FERTILIZER,B2,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+b2-formula,FORMULA,B2,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+b2-frequency,FREQUENCY,B2,noun,daily-life,ideas,R1 daily-life: noun -> ideas
+b2-gravity,GRAVITY,B2,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+b2-guidance,GUIDANCE,B2,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+b2-harmony,HARMONY,B2,noun,daily-life,ideas,R1 daily-life: noun -> ideas
+b2-hassle,HASSLE,B2,noun,daily-life,ideas,R1 daily-life: noun -> ideas
+b2-hedge,HEDGE,B2,noun,daily-life,ideas,R1 daily-life: noun -> ideas
+b2-hint,HINT,B2,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+b2-humanity,HUMANITY,B2,noun,daily-life,ideas,R1 daily-life: noun -> ideas
+b2-insight,INSIGHT,B2,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+b2-instinct,INSTINCT,B2,noun,daily-life,ideas,R1 daily-life: noun -> ideas
+b2-interior,INTERIOR,B2,noun,daily-life,ideas,R1 daily-life: noun -> ideas
+b2-jackal,JACKAL,B2,noun,daily-life,ideas,R1 daily-life: noun -> ideas
+b2-journal,JOURNAL,B2,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+b2-journalism,JOURNALISM,B2,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+b2-judgment,JUDGMENT,B2,noun,daily-life,ideas,R1 daily-life: noun -> ideas
+b2-junction,JUNCTION,B2,noun,daily-life,ideas,R1 daily-life: noun -> ideas
+b2-layout,LAYOUT,B2,noun,daily-life,ideas,R1 daily-life: noun -> ideas
+b2-legacy,LEGACY,B2,noun,hobbies,ideas,R3 hobbies B2/C1 leftover: noun -> ideas
+b2-lifespan,LIFESPAN,B2,noun,daily-life,ideas,R1 daily-life: noun -> ideas
+b2-linen,LINEN,B2,noun,daily-life,ideas,R1 daily-life: noun -> ideas
+b2-mansion,MANSION,B2,noun,daily-life,ideas,R1 daily-life: noun -> ideas
+b2-margin,MARGIN,B2,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+b2-mass,MASS,B2,noun,daily-life,ideas,R1 daily-life: noun -> ideas
+b2-meadow,MEADOW,B2,noun,daily-life,ideas,R1 daily-life: noun -> ideas
+b2-milestone,MILESTONE,B2,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+b2-minority,MINORITY,B2,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+b2-miracle,MIRACLE,B2,noun,daily-life,ideas,R1 daily-life: noun -> ideas
+b2-motivation,MOTIVATION,B2,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+b2-narrative,NARRATIVE,B2,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+b2-necessity,NECESSITY,B2,noun,daily-life,ideas,R1 daily-life: noun -> ideas
+b2-nightgown,NIGHTGOWN,B2,noun,daily-life,ideas,R1 daily-life: noun -> ideas
+b2-nitrogen,NITROGEN,B2,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+b2-nonfiction,NONFICTION,B2,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+b2-norm,NORM,B2,noun,daily-life,ideas,R1 daily-life: noun -> ideas
+b2-notion,NOTION,B2,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+b2-novelty,NOVELTY,B2,noun,daily-life,ideas,R1 daily-life: noun -> ideas
+b2-nuisance,NUISANCE,B2,noun,daily-life,ideas,R1 daily-life: noun -> ideas
+b2-observation,OBSERVATION,B2,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+b2-obstacle,OBSTACLE,B2,noun,daily-life,ideas,R1 daily-life: noun -> ideas
+b2-odor,ODOR,B2,noun,daily-life,ideas,R1 daily-life: noun -> ideas
+b2-orchid,ORCHID,B2,noun,daily-life,ideas,R1 daily-life: noun -> ideas
+b2-origin,ORIGIN,B2,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+b2-otter,OTTER,B2,noun,daily-life,ideas,R1 daily-life: noun -> ideas
+b2-overview,OVERVIEW,B2,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+b2-peer,PEER,B2,noun,daily-life,ideas,R1 daily-life: noun -> ideas
+b2-percentage,PERCENTAGE,B2,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+b2-phenomenon,PHENOMENON,B2,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+b2-philosophy,PHILOSOPHY,B2,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+b2-potential,POTENTIAL,B2,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+b2-prediction,PREDICTION,B2,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+b2-preference,PREFERENCE,B2,noun,food-drink,ideas,R5 food-drink B2 generic word: noun -> ideas
+b2-principle,PRINCIPLE,B2,noun,daily-life,ideas,R1 daily-life: noun -> ideas
+b2-proportion,PROPORTION,B2,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+b2-psychology,PSYCHOLOGY,B2,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+b2-quake,QUAKE,B2,noun,daily-life,ideas,R1 daily-life: noun -> ideas
+b2-questionnaire,QUESTIONNAIRE,B2,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+b2-rejection,REJECTION,B2,noun,daily-life,ideas,R1 daily-life: noun -> ideas
+b2-reputation,REPUTATION,B2,noun,food-drink,ideas,R5 food-drink B2 generic word: noun -> ideas
+b2-resource,RESOURCE,B2,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+b2-scale,SCALE,B2,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+b2-scenario,SCENARIO,B2,noun,daily-life,ideas,R1 daily-life: noun -> ideas
+b2-stake,STAKE,B2,noun,hobbies,ideas,R3 hobbies B2/C1 leftover: noun -> ideas
+b2-statistics,STATISTICS,B2,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+b2-stereotype,STEREOTYPE,B2,noun,daily-life,ideas,R1 daily-life: noun -> ideas
+b2-structure,STRUCTURE,B2,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+b2-tendency,TENDENCY,B2,noun,daily-life,ideas,R1 daily-life: noun -> ideas
+b2-texture,TEXTURE,B2,noun,daily-life,ideas,R1 daily-life: noun -> ideas
+b2-tolerance,TOLERANCE,B2,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+b2-topaz,TOPAZ,B2,noun,daily-life,ideas,R1 daily-life: noun -> ideas
+b2-tortoise,TORTOISE,B2,noun,daily-life,ideas,R1 daily-life: noun -> ideas
+b2-tragedy,TRAGEDY,B2,noun,daily-life,ideas,R1 daily-life: noun -> ideas
+b2-trait,TRAIT,B2,noun,daily-life,ideas,R1 daily-life: noun -> ideas
+b2-tuition,TUITION,B2,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+b2-twilight,TWILIGHT,B2,noun,daily-life,ideas,R1 daily-life: noun -> ideas
+b2-upbringing,UPBRINGING,B2,noun,daily-life,ideas,R1 daily-life: noun -> ideas
+b2-variation,VARIATION,B2,noun,food-drink,ideas,R5 food-drink B2 generic word: noun -> ideas
+b2-viewpoint,VIEWPOINT,B2,noun,daily-life,ideas,R1 daily-life: noun -> ideas
+b2-warmth,WARMTH,B2,noun,daily-life,ideas,R1 daily-life: noun -> ideas
+b2-workaholic,WORKAHOLIC,B2,noun,daily-life,ideas,R1 daily-life: noun -> ideas
+b2-zinc,ZINC,B2,noun,daily-life,ideas,R1 daily-life: noun -> ideas
+b2-abandon,ABANDON,B2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b2-absorb,ABSORB,B2,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+b2-acknowledge,ACKNOWLEDGE,B2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b2-adapt,ADAPT,B2,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+b2-amuse,AMUSE,B2,verb,hobbies,verbs,R3 hobbies B2/C1 leftover: verb -> verbs
+b2-analyse,ANALYZE,B2,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+b2-arise,ARISE,B2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b2-assemble,ASSEMBLE,B2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b2-assess,ASSESS,B2,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+b2-associate,ASSOCIATE,B2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b2-assure,ASSURE,B2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b2-attribute,ATTRIBUTE,B2,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+b2-ban,BAN,B2,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+b2-boost,BOOST,B2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b2-characterize,CHARACTERIZE,B2,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+b2-cite,CITE,B2,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+b2-clarify,CLARIFY,B2,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+b2-collapse,COLLAPSE,B2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b2-commit,COMMIT,B2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b2-conduct,CONDUCT,B2,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+b2-confess,CONFESS,B2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b2-confront,CONFRONT,B2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b2-construct,CONSTRUCT,B2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b2-consume,CONSUME,B2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b2-contradict,CONTRADICT,B2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b2-convey,CONVEY,B2,verb,hobbies,verbs,R3 hobbies B2/C1 leftover: verb -> verbs
+b2-correspond,CORRESPOND,B2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b2-define,DEFINE,B2,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+b2-demonstrate,DEMONSTRATE,B2,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+b2-derive,DERIVE,B2,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+b2-devote,DEVOTE,B2,verb,hobbies,verbs,R3 hobbies B2/C1 leftover: verb -> verbs
+b2-discard,DISCARD,B2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b2-distinguish,DISTINGUISH,B2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b2-eliminate,ELIMINATE,B2,verb,hobbies,verbs,R3 hobbies B2/C1 leftover: verb -> verbs
+b2-emerge,EMERGE,B2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b2-endure,ENDURE,B2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b2-engage,ENGAGE,B2,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+b2-enhance,ENHANCE,B2,verb,hobbies,verbs,R3 hobbies B2/C1 leftover: verb -> verbs
+b2-establish,ESTABLISH,B2,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+b2-evaluate,EVALUATE,B2,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+b2-evolve,EVOLVE,B2,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+b2-exaggerate,EXAGGERATE,B2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b2-exceed,EXCEED,B2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b2-exclaim,EXCLAIM,B2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b2-expire,EXPIRE,B2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b2-expose,EXPOSE,B2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b2-flee,FLEE,B2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b2-fulfil,FULFILL,B2,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+b2-furnish,FURNISH,B2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b2-generalize,GENERALIZE,B2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b2-grant,GRANT,B2,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+b2-grasp,GRASP,B2,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+b2-groan,GROAN,B2,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+b2-grumble,GRUMBLE,B2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b2-hesitate,HESITATE,B2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b2-illustrate,ILLUSTRATE,B2,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+b2-implement,IMPLEMENT,B2,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+b2-imply,IMPLY,B2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b2-indicate,INDICATE,B2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b2-infer,INFER,B2,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+b2-inhabit,INHABIT,B2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b2-instruct,INSTRUCT,B2,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+b2-integrate,INTEGRATE,B2,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+b2-interact,INTERACT,B2,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+b2-interfere,INTERFERE,B2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b2-interpret,INTERPRET,B2,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+b2-invade,INVADE,B2,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+b2-juggle,JUGGLE,B2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b2-maximize,MAXIMIZE,B2,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+b2-migrate,MIGRATE,B2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b2-mount,MOUNT,B2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b2-multiply,MULTIPLY,B2,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+b2-mumble,MUMBLE,B2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b2-neutralize,NEUTRALIZE,B2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b2-notify,NOTIFY,B2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b2-observe,OBSERVE,B2,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+b2-overcome,OVERCOME,B2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b2-overflow,OVERFLOW,B2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b2-overlook,OVERLOOK,B2,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+b2-perceive,PERCEIVE,B2,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+b2-persuade,PERSUADE,B2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b2-pollute,POLLUTE,B2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b2-postpone,POSTPONE,B2,verb,hobbies,verbs,R3 hobbies B2/C1 leftover: verb -> verbs
+b2-provoke,PROVOKE,B2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b2-recall,RECALL,B2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b2-recognize,RECOGNIZE,B2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b2-regard,REGARD,B2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b2-register,REGISTER,B2,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+b2-resemble,RESEMBLE,B2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b2-retain,RETAIN,B2,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+b2-reveal,REVEAL,B2,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+b2-reverse,REVERSE,B2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b2-seek,SEEK,B2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b2-shrink,SHRINK,B2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b2-stimulate,STIMULATE,B2,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+b2-supervise,SUPERVISE,B2,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+b2-surrender,SURRENDER,B2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b2-sustain,SUSTAIN,B2,verb,hobbies,verbs,R3 hobbies B2/C1 leftover: verb -> verbs
+b2-tempt,TEMPT,B2,verb,food-drink,verbs,R5 food-drink B2 generic word: verb -> verbs
+b2-thrive,THRIVE,B2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b2-transform,TRANSFORM,B2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b2-uncover,UNCOVER,B2,verb,hobbies,verbs,R3 hobbies B2/C1 leftover: verb -> verbs
+b2-underestimate,UNDERESTIMATE,B2,verb,hobbies,verbs,R3 hobbies B2/C1 leftover: verb -> verbs
+b2-unite,UNITE,B2,verb,hobbies,verbs,R3 hobbies B2/C1 leftover: verb -> verbs
+b2-vanish,VANISH,B2,verb,hobbies,verbs,R3 hobbies B2/C1 leftover: verb -> verbs
+b2-visualize,VISUALIZE,B2,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+b2-widen,WIDEN,B2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b2-worsen,WORSEN,B2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+b2-yield,YIELD,B2,verb,daily-life,verbs,R1 daily-life: verb -> verbs
+c1-abrupt,ABRUPT,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-absurd,ABSURD,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-accountable,ACCOUNTABLE,C1,adj,business,adjectives,R4 business C1 (optional rule): adj -> adjectives
+c1-acute,ACUTE,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-aesthetic,AESTHETIC,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-albeit,ALBEIT,C1,adv,school-work,adjectives,R2 school-work B2/C1: adv -> adjectives
+c1-ambiguous,AMBIGUOUS,C1,adj,business,adjectives,R4 business C1 (optional rule): adj -> adjectives
+c1-ample,AMPLE,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-analytical,ANALYTICAL,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-arbitrary,ARBITRARY,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-arguably,ARGUABLY,C1,adv,school-work,adjectives,R2 school-work B2/C1: adv -> adjectives
+c1-articulate,ARTICULATE,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-benign,BENIGN,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-bizarre,BIZARRE,C1,adj,hobbies,adjectives,R3 hobbies B2/C1 leftover: adj -> adjectives
+c1-blatant,BLATANT,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-bleak,BLEAK,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-bogus,BOGUS,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-brutal,BRUTAL,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-chronic,CHRONIC,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-chronological,CHRONOLOGICAL,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-cognitive,COGNITIVE,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-coherent,COHERENT,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-colloquial,COLLOQUIAL,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-complacent,COMPLACENT,C1,adj,hobbies,adjectives,R3 hobbies B2/C1 leftover: adj -> adjectives
+c1-concise,CONCISE,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-confidential,CONFIDENTIAL,C1,adj,business,adjectives,R4 business C1 (optional rule): adj -> adjectives
+c1-contextual,CONTEXTUAL,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-convex,CONVEX,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-credible,CREDIBLE,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-cumulative,CUMULATIVE,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-daunting,DAUNTING,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-debatable,DEBATABLE,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-deceptive,DECEPTIVE,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-detrimental,DETRIMENTAL,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-discreet,DISCREET,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-distinctive,DISTINCTIVE,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-drastic,DRASTIC,C1,adj,business,adjectives,R4 business C1 (optional rule): adj -> adjectives
+c1-dubious,DUBIOUS,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-elaborate,ELABORATE,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-elusive,ELUSIVE,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-eminent,EMINENT,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-empirical,EMPIRICAL,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-exempt,EXEMPT,C1,adj,business,adjectives,R4 business C1 (optional rule): adj -> adjectives
+c1-explicit,EXPLICIT,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-extravagant,EXTRAVAGANT,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-feasible,FEASIBLE,C1,adj,business,adjectives,R4 business C1 (optional rule): adj -> adjectives
+c1-fertile,FERTILE,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-flawed,FLAWED,C1,adj,business,adjectives,R4 business C1 (optional rule): adj -> adjectives
+c1-forthcoming,FORTHCOMING,C1,adj,hobbies,adjectives,R3 hobbies B2/C1 leftover: adj -> adjectives
+c1-futile,FUTILE,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-generic,GENERIC,C1,adj,business,adjectives,R4 business C1 (optional rule): adj -> adjectives
+c1-grave,GRAVE,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-grim,GRIM,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-groundbreaking,GROUNDBREAKING,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-heartbreaking,HEARTBREAKING,C1,adj,hobbies,adjectives,R3 hobbies B2/C1 leftover: adj -> adjectives
+c1-hectic,HECTIC,C1,adj,business,adjectives,R4 business C1 (optional rule): adj -> adjectives
+c1-holistic,HOLISTIC,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-hostile,HOSTILE,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-hypothetical,HYPOTHETICAL,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-idle,IDLE,C1,adj,business,adjectives,R4 business C1 (optional rule): adj -> adjectives
+c1-imminent,IMMINENT,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-immune,IMMUNE,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-impartial,IMPARTIAL,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-imperative,IMPERATIVE,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-implicit,IMPLICIT,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-inadequate,INADEQUATE,C1,adj,business,adjectives,R4 business C1 (optional rule): adj -> adjectives
+c1-inclusive,INCLUSIVE,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-incompatible,INCOMPATIBLE,C1,adj,business,adjectives,R4 business C1 (optional rule): adj -> adjectives
+c1-indefinite,INDEFINITE,C1,adj,hobbies,adjectives,R3 hobbies B2/C1 leftover: adj -> adjectives
+c1-indispensable,INDISPENSABLE,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-infamous,INFAMOUS,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-ingenious,INGENIOUS,C1,adj,business,adjectives,R4 business C1 (optional rule): adj -> adjectives
+c1-inherent,INHERENT,C1,adj,business,adjectives,R4 business C1 (optional rule): adj -> adjectives
+c1-insufficient,INSUFFICIENT,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-intact,INTACT,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-intermittent,INTERMITTENT,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-intimate,INTIMATE,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-intricate,INTRICATE,C1,adj,hobbies,adjectives,R3 hobbies B2/C1 leftover: adj -> adjectives
+c1-intrinsic,INTRINSIC,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-irrelevant,IRRELEVANT,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-irreversible,IRREVERSIBLE,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-juvenile,JUVENILE,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-kinetic,KINETIC,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-lavish,LAVISH,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-lethal,LETHAL,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-liable,LIABLE,C1,adj,business,adjectives,R4 business C1 (optional rule): adj -> adjectives
+c1-liberal,LIBERAL,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-lifelong,LIFELONG,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-linguistic,LINGUISTIC,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-mandatory,MANDATORY,C1,adj,hobbies,adjectives,R3 hobbies B2/C1 leftover: adj -> adjectives
+c1-marginal,MARGINAL,C1,adj,business,adjectives,R4 business C1 (optional rule): adj -> adjectives
+c1-mounting,MOUNTING,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-nationwide,NATIONWIDE,C1,adj,business,adjectives,R4 business C1 (optional rule): adj -> adjectives
+c1-negligible,NEGLIGIBLE,C1,adj,business,adjectives,R4 business C1 (optional rule): adj -> adjectives
+c1-nocturnal,NOCTURNAL,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-nominal,NOMINAL,C1,adj,business,adjectives,R4 business C1 (optional rule): adj -> adjectives
+c1-nonetheless,NONETHELESS,C1,adv,school-work,adjectives,R2 school-work B2/C1: adv -> adjectives
+c1-nonprofit,NONPROFIT,C1,adj,business,adjectives,R4 business C1 (optional rule): adj -> adjectives
+c1-numerical,NUMERICAL,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-obscure,OBSCURE,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-obsolete,OBSOLETE,C1,adj,business,adjectives,R4 business C1 (optional rule): adj -> adjectives
+c1-ongoing,ONGOING,C1,adj,business,adjectives,R4 business C1 (optional rule): adj -> adjectives
+c1-optimum,OPTIMUM,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-orthodox,ORTHODOX,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-outspoken,OUTSPOKEN,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-pending,PENDING,C1,adj,business,adjectives,R4 business C1 (optional rule): adj -> adjectives
+c1-peripheral,PERIPHERAL,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-pivotal,PIVOTAL,C1,adj,business,adjectives,R4 business C1 (optional rule): adj -> adjectives
+c1-plausible,PLAUSIBLE,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-pragmatic,PRAGMATIC,C1,adj,business,adjectives,R4 business C1 (optional rule): adj -> adjectives
+c1-predominant,PREDOMINANT,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-preliminary,PRELIMINARY,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-prevalent,PREVALENT,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-proficient,PROFICIENT,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-profound,PROFOUND,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-prolific,PROLIFIC,C1,adj,hobbies,adjectives,R3 hobbies B2/C1 leftover: adj -> adjectives
+c1-prominent,PROMINENT,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-pronounced,PRONOUNCED,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-prosperous,PROSPEROUS,C1,adj,business,adjectives,R4 business C1 (optional rule): adj -> adjectives
+c1-provisional,PROVISIONAL,C1,adj,business,adjectives,R4 business C1 (optional rule): adj -> adjectives
+c1-punitive,PUNITIVE,C1,adj,business,adjectives,R4 business C1 (optional rule): adj -> adjectives
+c1-qualitative,QUALITATIVE,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-readily,READILY,C1,adv,business,adjectives,R4 business C1 (optional rule): adv -> adjectives
+c1-redundant,REDUNDANT,C1,adj,business,adjectives,R4 business C1 (optional rule): adj -> adjectives
+c1-relentless,RELENTLESS,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-renowned,RENOWNED,C1,adj,hobbies,adjectives,R3 hobbies B2/C1 leftover: adj -> adjectives
+c1-rigorous,RIGOROUS,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-robust,ROBUST,C1,adj,business,adjectives,R4 business C1 (optional rule): adj -> adjectives
+c1-ruthless,RUTHLESS,C1,adj,business,adjectives,R4 business C1 (optional rule): adj -> adjectives
+c1-sheer,SHEER,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-sizeable,SIZEABLE,C1,adj,business,adjectives,R4 business C1 (optional rule): adj -> adjectives
+c1-spontaneous,SPONTANEOUS,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-swift,SWIFT,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-synthetic,SYNTHETIC,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-tangible,TANGIBLE,C1,adj,business,adjectives,R4 business C1 (optional rule): adj -> adjectives
+c1-tedious,TEDIOUS,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-thereby,THEREBY,C1,adv,school-work,adjectives,R2 school-work B2/C1: adv -> adjectives
+c1-timely,TIMELY,C1,adj,business,adjectives,R4 business C1 (optional rule): adj -> adjectives
+c1-trivial,TRIVIAL,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-unconditional,UNCONDITIONAL,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-underlying,UNDERLYING,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-uniquely,UNIQUELY,C1,adv,school-work,adjectives,R2 school-work B2/C1: adv -> adjectives
+c1-unprecedented,UNPRECEDENTED,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-utmost,UTMOST,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-verbatim,VERBATIM,C1,adv,school-work,adjectives,R2 school-work B2/C1: adv -> adjectives
+c1-versatile,VERSATILE,C1,adj,hobbies,adjectives,R3 hobbies B2/C1 leftover: adj -> adjectives
+c1-viable,VIABLE,C1,adj,business,adjectives,R4 business C1 (optional rule): adj -> adjectives
+c1-vigilant,VIGILANT,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-vigorous,VIGOROUS,C1,adj,hobbies,adjectives,R3 hobbies B2/C1 leftover: adj -> adjectives
+c1-youthful,YOUTHFUL,C1,adj,school-work,adjectives,R2 school-work B2/C1: adj -> adjectives
+c1-abundance,ABUNDANCE,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-adolescent,ADOLESCENT,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-aftermath,AFTERMATH,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-analogy,ANALOGY,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-anecdote,ANECDOTE,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-assault,ASSAULT,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-autonomy,AUTONOMY,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-biodiversity,BIODIVERSITY,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-breakthrough,BREAKTHROUGH,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-briefing,BRIEFING,C1,noun,hobbies,ideas,R3 hobbies B2/C1 leftover: noun -> ideas
+c1-buffer,BUFFER,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-clutter,CLUTTER,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-complexity,COMPLEXITY,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-compound,COMPOUND,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-conjecture,CONJECTURE,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-debris,DEBRIS,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-disposal,DISPOSAL,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-dynasty,DYNASTY,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-ecosystem,ECOSYSTEM,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-elite,ELITE,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-endeavour,ENDEAVOR,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-essence,ESSENCE,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-ethos,ETHOS,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-excerpt,EXCERPT,C1,noun,hobbies,ideas,R3 hobbies B2/C1 leftover: noun -> ideas
+c1-famine,FAMINE,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-fraction,FRACTION,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-fragment,FRAGMENT,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-frenzy,FRENZY,C1,noun,hobbies,ideas,R3 hobbies B2/C1 leftover: noun -> ideas
+c1-fringe,FRINGE,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-fundraising,FUNDRAISING,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-gimmick,GIMMICK,C1,noun,hobbies,ideas,R3 hobbies B2/C1 leftover: noun -> ideas
+c1-guardian,GUARDIAN,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-handicap,HANDICAP,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-hardship,HARDSHIP,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-hexagon,HEXAGON,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-hindsight,HINDSIGHT,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-hoax,HOAX,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-hypothesis,HYPOTHESIS,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-illusion,ILLUSION,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-impetus,IMPETUS,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-implication,IMPLICATION,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-incidence,INCIDENCE,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-inclination,INCLINATION,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-integrity,INTEGRITY,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-irony,IRONY,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-jackpot,JACKPOT,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-jargon,JARGON,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-jeopardy,JEOPARDY,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-justification,JUSTIFICATION,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-kernel,KERNEL,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-knack,KNACK,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-lapse,LAPSE,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-likelihood,LIKELIHOOD,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-literacy,LITERACY,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-livelihood,LIVELIHOOD,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-magnitude,MAGNITUDE,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-merit,MERIT,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-metaphor,METAPHOR,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-mindset,MINDSET,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-misconception,MISCONCEPTION,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-momentum,MOMENTUM,C1,noun,hobbies,ideas,R3 hobbies B2/C1 leftover: noun -> ideas
+c1-morale,MORALE,C1,noun,hobbies,ideas,R3 hobbies B2/C1 leftover: noun -> ideas
+c1-mortality,MORTALITY,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-motive,MOTIVE,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-negligence,NEGLIGENCE,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-newcomer,NEWCOMER,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-nostalgia,NOSTALGIA,C1,noun,hobbies,ideas,R3 hobbies B2/C1 leftover: noun -> ideas
+c1-nuance,NUANCE,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-offspring,OFFSPRING,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-onset,ONSET,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-ordeal,ORDEAL,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-outcry,OUTCRY,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-paradigm,PARADIGM,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-paradox,PARADOX,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-physician,PHYSICIAN,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-pioneer,PIONEER,C1,noun,hobbies,ideas,R3 hobbies B2/C1 leftover: noun -> ideas
+c1-pursuit,PURSUIT,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-quest,QUEST,C1,noun,hobbies,ideas,R3 hobbies B2/C1 leftover: noun -> ideas
+c1-realm,REALM,C1,noun,hobbies,ideas,R3 hobbies B2/C1 leftover: noun -> ideas
+c1-recipient,RECIPIENT,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-reflex,REFLEX,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-remedy,REMEDY,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-restraint,RESTRAINT,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-retrospect,RETROSPECT,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-ripple,RIPPLE,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-ritual,RITUAL,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-royalty,ROYALTY,C1,noun,hobbies,ideas,R3 hobbies B2/C1 leftover: noun -> ideas
+c1-sentiment,SENTIMENT,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-setback,SETBACK,C1,noun,hobbies,ideas,R3 hobbies B2/C1 leftover: noun -> ideas
+c1-sibling,SIBLING,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-span,SPAN,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-spectrum,SPECTRUM,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-stance,STANCE,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-staple,STAPLE,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-strain,STRAIN,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-succession,SUCCESSION,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-supplement,SUPPLEMENT,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-syllable,SYLLABLE,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-synonym,SYNONYM,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-syntax,SYNTAX,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-synthesis,SYNTHESIS,C1,noun,hobbies,ideas,R3 hobbies B2/C1 leftover: noun -> ideas
+c1-token,TOKEN,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-toll,TOLL,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-trajectory,TRAJECTORY,C1,noun,hobbies,ideas,R3 hobbies B2/C1 leftover: noun -> ideas
+c1-transcript,TRANSCRIPT,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-trauma,TRAUMA,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-turmoil,TURMOIL,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-usage,USAGE,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-void,VOID,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-wellbeing,WELLBEING,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-whereabouts,WHEREABOUTS,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-yearbook,YEARBOOK,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-zenith,ZENITH,C1,noun,school-work,ideas,R2 school-work B2/C1: noun -> ideas
+c1-accelerate,ACCELERATE,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-accumulate,ACCUMULATE,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-advocate,ADVOCATE,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-alleviate,ALLEVIATE,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-aspire,ASPIRE,C1,verb,hobbies,verbs,R3 hobbies B2/C1 leftover: verb -> verbs
+c1-assert,ASSERT,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-attain,ATTAIN,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-betray,BETRAY,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-blur,BLUR,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-boycott,BOYCOTT,C1,verb,hobbies,verbs,R3 hobbies B2/C1 leftover: verb -> verbs
+c1-breed,BREED,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-circulate,CIRCULATE,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-coincide,COINCIDE,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-collide,COLLIDE,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-commemorate,COMMEMORATE,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-complement,COMPLEMENT,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-comprise,COMPRISE,C1,verb,hobbies,verbs,R3 hobbies B2/C1 leftover: verb -> verbs
+c1-concede,CONCEDE,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-conceive,CONCEIVE,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-confine,CONFINE,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-conform,CONFORM,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-contaminate,CONTAMINATE,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-contemplate,CONTEMPLATE,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-contend,CONTEND,C1,verb,hobbies,verbs,R3 hobbies B2/C1 leftover: verb -> verbs
+c1-correlate,CORRELATE,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-curb,CURB,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-dedicate,DEDICATE,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-deduce,DEDUCE,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-degrade,DEGRADE,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-demolish,DEMOLISH,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-denote,DENOTE,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-deplete,DEPLETE,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-deploy,DEPLOY,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-detach,DETACH,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-deteriorate,DETERIORATE,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-devastate,DEVASTATE,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-diminish,DIMINISH,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-disguise,DISGUISE,C1,verb,hobbies,verbs,R3 hobbies B2/C1 leftover: verb -> verbs
+c1-dissolve,DISSOLVE,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-distort,DISTORT,C1,verb,hobbies,verbs,R3 hobbies B2/C1 leftover: verb -> verbs
+c1-dwell,DWELL,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-elicit,ELICIT,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-embody,EMBODY,C1,verb,hobbies,verbs,R3 hobbies B2/C1 leftover: verb -> verbs
+c1-enact,ENACT,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-encompass,ENCOMPASS,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-enforce,ENFORCE,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-enrol,ENROLL,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-ensue,ENSUE,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-envisage,ENVISAGE,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-eradicate,ERADICATE,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-erode,ERODE,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-escalate,ESCALATE,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-evade,EVADE,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-evoke,EVOKE,C1,verb,hobbies,verbs,R3 hobbies B2/C1 leftover: verb -> verbs
+c1-exacerbate,EXACERBATE,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-exert,EXERT,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-extinguish,EXTINGUISH,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-extract,EXTRACT,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-foster,FOSTER,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-gauge,GAUGE,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-haunt,HAUNT,C1,verb,hobbies,verbs,R3 hobbies B2/C1 leftover: verb -> verbs
+c1-heighten,HEIGHTEN,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-herald,HERALD,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-hinder,HINDER,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-impair,IMPAIR,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-incorporate,INCORPORATE,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-induce,INDUCE,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-inflict,INFLICT,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-inherit,INHERIT,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-inhibit,INHIBIT,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-intervene,INTERVENE,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-intrigue,INTRIGUE,C1,verb,hobbies,verbs,R3 hobbies B2/C1 leftover: verb -> verbs
+c1-invoke,INVOKE,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-kindle,KINDLE,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-linger,LINGER,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-manifest,MANIFEST,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-manipulate,MANIPULATE,C1,verb,hobbies,verbs,R3 hobbies B2/C1 leftover: verb -> verbs
+c1-mitigate,MITIGATE,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-mobilise,MOBILIZE,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-nurture,NURTURE,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-oblige,OBLIGE,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-omit,OMIT,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-overshadow,OVERSHADOW,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-overwhelm,OVERWHELM,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-penalise,PENALIZE,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-persevere,PERSEVERE,C1,verb,hobbies,verbs,R3 hobbies B2/C1 leftover: verb -> verbs
+c1-persist,PERSIST,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-pledge,PLEDGE,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-precede,PRECEDE,C1,verb,hobbies,verbs,R3 hobbies B2/C1 leftover: verb -> verbs
+c1-prevail,PREVAIL,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-quantify,QUANTIFY,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-quell,QUELL,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-reconcile,RECONCILE,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-refrain,REFRAIN,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-shatter,SHATTER,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-signify,SIGNIFY,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-spark,SPARK,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-speculate,SPECULATE,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-stagger,STAGGER,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-stumble,STUMBLE,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-summon,SUMMON,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-suppress,SUPPRESS,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-suspend,SUSPEND,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-synthesize,SYNTHESIZE,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-transmit,TRANSMIT,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-unfold,UNFOLD,C1,verb,hobbies,verbs,R3 hobbies B2/C1 leftover: verb -> verbs
+c1-unify,UNIFY,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-uphold,UPHOLD,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs
+c1-utter,UTTER,C1,verb,school-work,verbs,R2 school-work B2/C1: verb -> verbs

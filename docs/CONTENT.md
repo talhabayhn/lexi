@@ -155,30 +155,34 @@ How the compiler applies them (`tools/content-compiler`, every error is `file:li
 | id | TR name | Levels |
 |---|---|---|
 | `mixed` | Karışık | all (virtual: all categories of the level) |
-| `daily-life` | Günlük hayat | A1–B2 |
-| `food-drink` | Yiyecek ve içecek | A1–B2 |
+| `daily-life` | Günlük hayat | A1–B1 (leftover nouns, function words, greetings; B2 has 4 cards: hidden) |
+| `food-drink` | Yiyecek ve içecek | A1–B1 (B2 has 10 cards: hidden) |
 | `home` | Ev ve eşyalar | A1–A2 |
 | `family-people` | Aile ve insanlar | A1–B1 |
 | `colors-numbers` | Renkler ve sayılar | A1 |
 | `body-health` | Vücut ve sağlık | A1–B2 |
-| `school-work` | Okul ve iş | A1–C1 |
-| `animals` | Hayvanlar | A1–B1 |
+| `school-work` | Okul ve iş | A1–B1 |
+| `animals` | Hayvanlar ve doğa | A1–B1 |
 | `city-transport` | Şehir ve ulaşım | A1–B1 |
 | `time-weather` | Zaman ve hava | A1–A2 |
 | `travel` | Seyahat | A2–C1 |
-| `sports` | Spor | A2–C1 |
-| `music` | Müzik | A2–C1 |
-| `film-tv` | Film ve dizi | B1–C1 |
-| `business` | İş İngilizcesi | B1–C1 |
-| `technology` | Teknoloji | B1–C1 |
-| `false-friends` | Yalancı eşdeğerler | B1–C1 |
-| `idioms` | Deyimler | B2, C1 |
-| `phrasal-verbs` | Phrasal verbs | B2, C1 |
+| `clothes-shopping` | Giysi ve alışveriş | A1–A2 |
+| `hobbies` | Hobiler ve eğlence | A1–C1 (B2 and C1: 32 cards each after stage 4; was Spor + Müzik + Film ve dizi) |
+| `verbs` | Fiiller | A1–C1 (word class: leftover verbs of the dump categories) |
+| `adjectives` | Sıfatlar ve zarflar | A1–C1 (word class: leftover adjectives and adverbs) |
+| `ideas` | Fikirler ve kavramlar | B2–C1 (word class: leftover nouns at B2–C1) |
+| `business` | İş ve teknoloji | B1–C1 (was İş İngilizcesi + Teknoloji) |
+| `economy` | Para ve ekonomi | B1–C1 (B2: 32 cards after stage 4) |
+| `feelings` | Duygu ve karakter | B1–C1 |
+| `society-law` | Toplum ve hukuk | B1–C1 (B2: 32 cards on 22 letters after stage 4) |
+| `idioms` | Deyimler | B2 |
+| `phrasal-verbs` | Phrasal verbs | B2 |
 | `general` | Genel | NAT (neutral bucket of every NAT card; hidden from the category list, NAT has no category selection) |
 
-Minimum category size: a category × level pair with cards on fewer than 13 letters (⚙ `minCategoryLetters`) is
-played with the level's cards on its other letters (`GAME_RULES.md` §1, thin category fill), so it stays playable
-but is not really "that category"; aim for 13+ letters per listed level (the report's category × level table).
+Minimum category size: a category is listed for a level only with **≥ 30 cards on ≥ 13 letters** there. The compiler
+errors for a listed pair under 25 cards or 13 letters, warns under 30 cards (drop the level from `levels` instead of
+shipping the pair thin) and over 140 cards (too broad). The engine's thin fill (`minCategoryLetters`, `GAME_RULES.md` §1)
+stays as a safety net only. Word-class rule (stage 3): verb → `verbs`, adj/adv → `adjectives`, noun → `daily-life` (A1–B1) or `ideas` (B2–C1); a new card of a dump word that fits no topic category follows it. Removed ids (`sports`, `music`, `film-tv`, `technology`, `false-friends`) are never reused.
 
 ## 5. Volume targets (v1.0)
 | Level | Cards | Notes |

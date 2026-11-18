@@ -1,0 +1,623 @@
+n,id,answer,level,current_category,csv_target,proposed_category,confidence,reason,clue_tr,example_en
+1,b1-admire,ADMIRE,B1,family-people,feelings,feelings,high,feelings / character word,"birine veya bir şeye hayran olmak, takdir etmek",I admire your bravery.
+2,b1-amaze,AMAZE,B1,daily-life,feelings,feelings,high,feelings / character word,çok şaşırtmak,Her skill will amaze you.
+3,b1-amazement,AMAZEMENT,B1,daily-life,feelings,feelings,high,feelings / character word,büyük şaşkınlık,She looked at it in amazement.
+4,b1-ambition,AMBITION,B1,school-work,feelings,feelings,high,feelings / character word,başarılı olmak için duyulan güçlü istek,Her ambition is to become a doctor.
+5,b1-annoy,ANNOY,B1,daily-life,feelings,feelings,high,feelings / character word,birini sinirlendirmek veya rahatsız etmek,His loud music began to annoy me.
+6,b1-annoyed,ANNOYED,B1,daily-life,feelings,feelings,high,feelings / character word,"bir şeye canı sıkılmış, kızgın",She was annoyed because he was late.
+7,b1-annoying,ANNOYING,B1,daily-life,feelings,feelings,high,feelings / character word,"insanı sinirlendiren, can sıkıcı",The noise from the street is annoying.
+8,b1-awkward,AWKWARD,B1,daily-life,feelings,feelings,high,feelings / character word,rahatsız edici ve utandırıcı; beceriksiz,There was an awkward moment after his joke.
+9,b1-calm,CALM,B1,daily-life,feelings,feelings,high,feelings / character word,"sakin, heyecanlanmayan",Stay calm and listen to me.
+10,b1-careless,CARELESS,B1,daily-life,feelings,feelings,high,feelings / character word,"dikkatsiz, özensiz",A careless driver can have an accident.
+11,b1-comfort,COMFORT,B1,daily-life,feelings,feelings,high,feelings / character word,rahatlık ve huzur hissi,They live in comfort in a big house.
+12,b1-confidence,CONFIDENCE,B1,school-work,feelings,feelings,high,feelings / character word,kendine duyulan güven,She speaks English with confidence.
+13,b1-confident,CONFIDENT,B1,school-work,feelings,feelings,high,feelings / character word,kendine güvenen,I feel confident about the test.
+14,b1-confused,CONFUSED,B1,daily-life,feelings,feelings,high,feelings / character word,"ne yapacağını bilemeyen, kafası karışmış",I am confused by this map.
+15,b1-courage,COURAGE,B1,family-people,feelings,feelings,high,feelings / character word,korkuya rağmen harekete geçebilme gücü,It takes courage to speak in public.
+16,b1-cuddle,CUDDLE,B1,family-people,feelings,feelings,high,feelings / character word,sevgiyle kucaklamak,The child wanted to cuddle her toy.
+17,b1-curious,CURIOUS,B1,family-people,feelings,feelings,high,feelings / character word,öğrenmeye meraklı,Children are curious about everything.
+18,b1-daydream,DAYDREAM,B1,daily-life,feelings,feelings,high,feelings / character word,dalıp gidip hoş hayaller kurmak,I often daydream during long lessons.
+19,b1-delight,DELIGHT,B1,family-people,feelings,feelings,high,feelings / character word,büyük sevinç ve zevk,The children shouted with delight.
+20,b1-desperate,DESPERATE,B1,daily-life,feelings,feelings,high,feelings / character word,"çaresiz, umutsuz; bir şeye çok ihtiyaç duyan",He is desperate for a job.
+21,b1-embarrassed,EMBARRASSED,B1,daily-life,feelings,feelings,high,feelings / character word,"utanmış, mahcup olmuş",I felt embarrassed when I forgot his name.
+22,b1-embarrassing,EMBARRASSING,B1,daily-life,feelings,feelings,high,feelings / character word,insanı utandıran,It was an embarrassing mistake.
+23,b1-emotion,EMOTION,B1,family-people,feelings,feelings,high,feelings / character word,"sevinç, korku gibi duygu",She could not hide her emotion.
+24,b1-emotional,EMOTIONAL,B1,daily-life,feelings,feelings,high,feelings / character word,çabuk duygulanan ya da duygu yüklü (sıfat),It was an emotional goodbye at the airport.
+25,b1-encourage,ENCOURAGE,B1,school-work,feelings,feelings,low,"borderline: trait / social-emotional verb; fits ""character"" loosely",birine cesaret ve destek vermek,Teachers should encourage students to read.
+26,b1-enjoyable,ENJOYABLE,B1,daily-life,feelings,feelings,low,"borderline: trait / social-emotional verb; fits ""character"" loosely","keyif veren, zevkli",It was an enjoyable evening.
+27,b1-enjoyment,ENJOYMENT,B1,daily-life,feelings,feelings,high,feelings / character word,bir şeyden alınan zevk,Reading gives me great enjoyment.
+28,b1-enthusiasm,ENTHUSIASM,B1,school-work,feelings,feelings,high,feelings / character word,"bir işe duyulan büyük istek, coşku",She worked with great enthusiasm.
+29,b1-enthusiastic,ENTHUSIASTIC,B1,school-work,feelings,feelings,high,feelings / character word,bir işe büyük heyecan duyan,The students were enthusiastic about the visit.
+30,b1-excitement,EXCITEMENT,B1,daily-life,feelings,feelings,high,feelings / character word,"heyecan, coşku",The children jumped with excitement.
+31,b1-feeling,FEELING,B1,family-people,feelings,feelings,high,feelings / character word,içinde duyulan his,I have a good feeling about this plan.
+32,b1-forgive,FORGIVE,B1,family-people,feelings,feelings,high,feelings / character word,bir hatayı bağışlamak,Please forgive me for being late.
+33,b1-frightened,FRIGHTENED,B1,family-people,feelings,feelings,high,feelings / character word,"korkmuş, ürkmüş",The frightened child hid under the bed.
+34,b1-generous,GENEROUS,B1,family-people,feelings,feelings,high,feelings / character word,"paylaşmaktan çekinmeyen, eli açık",He is very generous with his friends.
+35,b1-genius,GENIUS,B1,school-work,feelings,feelings,low,"borderline: trait / social-emotional verb; fits ""character"" loosely","olağanüstü zeki kişi, deha",Einstein was a genius.
+36,b1-gentle,GENTLE,B1,family-people,feelings,feelings,high,feelings / character word,"yumuşak huylu, nazik",She has a gentle voice.
+37,b1-giggle,GIGGLE,B1,daily-life,feelings,feelings,high,feelings / character word,hafif sesle ve kıkır kıkır gülmek,The children began to giggle during the film.
+38,b1-grateful,GRATEFUL,B1,family-people,feelings,feelings,high,feelings / character word,yardım için minnettar olan,I am grateful for your help.
+39,b1-greedy,GREEDY,B1,family-people,feelings,feelings,high,feelings / character word,"hep daha fazlasını isteyen, açgözlü",Don't be greedy; leave some cake for me.
+40,b1-grin,GRIN,B1,daily-life,feelings,feelings,high,feelings / character word,"yüzde beliren geniş, neşeli gülümseme",He had a big grin on his face after the game.
+41,b1-guilt,GUILT,B1,daily-life,feelings,feelings,high,feelings / character word,yanlış yapınca duyulan kötü his,He felt guilt after the lie.
+42,b1-guilty,GUILTY,B1,daily-life,feelings,feelings,low,"legal ""guilty"" vs feeling; example is the feeling",suç işlemiş veya suçluluk duyan,He felt guilty about the lie.
+43,b1-happiness,HAPPINESS,B1,family-people,feelings,feelings,high,feelings / character word,mutlu olmanın verdiği güzel his,Money cannot buy happiness.
+44,b1-honest,HONEST,B1,family-people,feelings,feelings,high,feelings / character word,"doğru sözlü, yalan söylemeyen",Please be honest with me.
+45,b1-hopeful,HOPEFUL,B1,daily-life,feelings,feelings,high,feelings / character word,"iyi bir sonuç bekleyen, umutlu",We are hopeful about the result.
+46,b1-hopeless,HOPELESS,B1,daily-life,feelings,feelings,high,feelings / character word,umudu kalmamış,The case looks hopeless.
+47,b1-humour,HUMOR,B1,family-people,feelings,feelings,high,feelings / character word,insanları güldürme yeteneği,I love his dry humor.
+48,b1-impatient,IMPATIENT,B1,family-people,feelings,feelings,high,feelings / character word,"beklemekten hoşlanmayan, sabırsız",Don't be so impatient; the food is nearly ready.
+49,b1-impressed,IMPRESSED,B1,family-people,feelings,feelings,high,feelings / character word,"etkilenmiş, hayran kalmış",I was impressed by her singing.
+50,b1-inspire,INSPIRE,B1,school-work,feelings,feelings,low,"borderline: trait / social-emotional verb; fits ""character"" loosely",birine yeni fikir ve heves vermek,Her story can inspire young people.
+51,b1-intelligent,INTELLIGENT,B1,school-work,feelings,feelings,low,"borderline: trait / social-emotional verb; fits ""character"" loosely","zeki, öğrenme yeteneği yüksek",She is an intelligent girl.
+52,b1-jealousy,JEALOUSY,B1,family-people,feelings,feelings,high,feelings / character word,başkasında olanı istemekten doğan kıskançlık,Jealousy can make you very unhappy.
+53,b1-joyful,JOYFUL,B1,daily-life,feelings,feelings,high,feelings / character word,çok mutlu ve sevinçli,It was a joyful day for the whole family.
+54,b1-kindness,KINDNESS,B1,family-people,feelings,feelings,high,feelings / character word,başkalarına nazik ve iyi davranma,Thank you for your kindness.
+55,b1-laughter,LAUGHTER,B1,daily-life,feelings,feelings,high,feelings / character word,gülen insanların çıkardığı ses,The room was full of laughter.
+56,b1-loyal,LOYAL,B1,family-people,feelings,feelings,high,feelings / character word,"bağlı, ihanet etmeyen",A dog is a loyal friend.
+57,b1-miserable,MISERABLE,B1,family-people,feelings,feelings,high,feelings / character word,çok mutsuz,She felt miserable in the rain.
+58,b1-mood,MOOD,B1,family-people,feelings,feelings,high,feelings / character word,o anki ruh hali,She is in a good mood today.
+59,b1-motivate,MOTIVATE,B1,school-work,feelings,feelings,low,"borderline: trait / social-emotional verb; fits ""character"" loosely","birini bir şeyi yapmaya isteklendirmek, güdülemek",A good teacher can motivate students.
+60,b1-obedient,OBEDIENT,B1,family-people,feelings,feelings,high,feelings / character word,söz dinleyen,The dog is very obedient.
+61,b1-optimist,OPTIMIST,B1,family-people,feelings,feelings,high,feelings / character word,olayların iyi biteceğine inanan kişi (isim),My brother is an optimist and never worries.
+62,b1-optimistic,OPTIMISTIC,B1,family-people,feelings,feelings,high,feelings / character word,"her şeyin iyi olacağına inanan, iyimser",I am optimistic about the future.
+63,b1-outgoing,OUTGOING,B1,family-people,feelings,feelings,high,feelings / character word,"girişken, herkesle kolay arkadaş olan",She is an outgoing girl.
+64,b1-personality,PERSONALITY,B1,family-people,feelings,feelings,high,feelings / character word,bir kişinin kendine özgü karakteri,She has a warm personality.
+65,b1-playful,PLAYFUL,B1,daily-life,feelings,feelings,high,feelings / character word,"oyun oynamayı seven, neşeli ve haylaz",Our puppy is very playful.
+66,b1-praise,PRAISE,B1,school-work,feelings,feelings,low,"borderline: trait / social-emotional verb; fits ""character"" loosely",birini överek takdir etmek,Teachers should praise good work.
+67,b1-pride,PRIDE,B1,family-people,feelings,feelings,high,feelings / character word,başarıdan duyulan gurur,He looked at his son with pride.
+68,b1-regret,REGRET,B1,family-people,feelings,feelings,high,feelings / character word,yaptığına veya yapmadığına üzülmek,I regret saying that.
+69,b1-relief,RELIEF,B1,daily-life,feelings,feelings,high,feelings / character word,kaygı geçince duyulan rahatlama,It was a relief to hear that she was safe.
+70,b1-respect,RESPECT,B1,family-people,feelings,feelings,high,feelings / character word,birine duyulan saygı,Children should show respect to older people.
+71,b1-romantic,ROMANTIC,B1,family-people,feelings,feelings,low,"borderline: trait / social-emotional verb; fits ""character"" loosely",aşk ve duygularla ilgili,We had a romantic dinner by the sea.
+72,b1-satisfied,SATISFIED,B1,daily-life,feelings,feelings,high,feelings / character word,durumdan memnun olan,Are you satisfied with your new phone?
+73,b1-scream,SCREAM,B1,daily-life,feelings,feelings,low,"borderline: trait / social-emotional verb; fits ""character"" loosely",korku ya da acıyla çığlık atmak,The children scream on the roller coaster.
+74,b1-selfish,SELFISH,B1,family-people,feelings,feelings,high,feelings / character word,"yalnızca kendini düşünen, bencil",Don't be so selfish; share your toys.
+75,b1-sensitive,SENSITIVE,B1,family-people,feelings,feelings,high,feelings / character word,çabuk duygulanan veya kolay etkilenen,She is very sensitive to criticism.
+76,b1-shame,SHAME,B1,daily-life,feelings,feelings,high,feelings / character word,utanç; yazık,It is a shame that you cannot come.
+77,b1-shock,SHOCK,B1,daily-life,feelings,feelings,high,feelings / character word,kötü bir haberin yarattığı ani sarsıntı,The news came as a shock.
+78,b1-stubborn,STUBBORN,B1,family-people,feelings,feelings,high,feelings / character word,"fikrinden dönmeyen, inatçı",My brother is very stubborn.
+79,b1-talkative,TALKATIVE,B1,family-people,feelings,feelings,high,feelings / character word,çok konuşan,My little brother is very talkative.
+80,b1-terrified,TERRIFIED,B1,family-people,feelings,feelings,high,feelings / character word,"dehşete düşmüş, çok korkmuş",She was terrified of the dark.
+81,b1-thrilled,THRILLED,B1,family-people,feelings,feelings,high,feelings / character word,çok heyecanlı ve sevinçli,She was thrilled to get the job.
+82,b1-understanding,UNDERSTANDING,B1,family-people,feelings,feelings,high,feelings / character word,"başkasının durumunu anlayan, anlayışlı",My teacher was very understanding.
+83,b1-upset,UPSET,B1,family-people,feelings,feelings,high,feelings / character word,"kötü bir olay yüzünden morali bozulmuş, kırılmış",She was upset about the news.
+84,b1-weakness,WEAKNESS,B1,family-people,feelings,feelings,low,"borderline: trait / social-emotional verb; fits ""character"" loosely",zayıf olan yön,Shyness is her only weakness.
+85,b1-willing,WILLING,B1,daily-life,feelings,feelings,low,"borderline: trait / social-emotional verb; fits ""character"" loosely","bir şeyi yapmaya hazır, gönüllü",Are you willing to help us?
+86,b1-worrying,WORRYING,B1,daily-life,feelings,feelings,high,feelings / character word,insanı endişelendiren,The news is worrying.
+87,b2-alarming,ALARMING,B2,daily-life,feelings,feelings,high,feelings / character word,korku veya endişe yaratan,The news was alarming.
+88,b2-cautious,CAUTIOUS,B2,daily-life,feelings,feelings,high,feelings / character word,"riskten kaçınan, tedbirli",Be cautious when you cross the road.
+89,b2-eager,EAGER,B2,daily-life,feelings,feelings,high,feelings / character word,"bir şeyi yapmayı çok isteyen, hevesli",The children were eager to open their presents.
+90,b2-easygoing,EASYGOING,B2,daily-life,feelings,feelings,high,feelings / character word,"rahat tavırlı, kolay kızmayan",My boss is easygoing and rarely gets upset.
+91,b2-embarrass,EMBARRASS,B2,daily-life,feelings,feelings,high,feelings / character word,birini başkalarının yanında mahcup etmek,Do not embarrass me in front of my friends.
+92,b2-frustration,FRUSTRATION,B2,daily-life,feelings,feelings,high,feelings / character word,isteneni yapamamaktan doğan hayal kırıklığı,I could hear the frustration in his voice.
+93,b2-furious,FURIOUS,B2,daily-life,feelings,feelings,high,feelings / character word,çok öfkeli,He was furious about the delay.
+94,b2-generosity,GENEROSITY,B2,daily-life,feelings,feelings,high,feelings / character word,karşılık beklemeden bol bol verme isteği,Thank you for your generosity.
+95,b2-gloomy,GLOOMY,B2,daily-life,feelings,feelings,high,feelings / character word,karamsar veya kasvetli,"It was a gloomy, rainy day."
+96,b2-hatred,HATRED,B2,daily-life,feelings,feelings,high,feelings / character word,birine duyulan derin nefret,Years of war left a deep hatred between the two peoples.
+97,b2-humble,HUMBLE,B2,daily-life,feelings,feelings,high,feelings / character word,"alçakgönüllü, gösterişsiz",He is a humble man despite his success.
+98,b2-humorous,HUMOROUS,B2,daily-life,feelings,feelings,high,feelings / character word,"komik, espriye yatkın",He wrote a humorous story.
+99,b2-irritate,IRRITATE,B2,daily-life,feelings,feelings,high,feelings / character word,rahatsız edip sinirlendirmek,Loud music can irritate the neighbors.
+100,b2-naive,NAIVE,B2,daily-life,feelings,feelings,high,feelings / character word,"deneyimsiz ve kolay kandırılan, saf",It was naive to believe everything he said.
+101,b2-obsession,OBSESSION,B2,daily-life,feelings,feelings,low,borderline fit; example is about feeling or trait,zihni sürekli meşgul eden saplantı,Football is an obsession for him.
+102,b2-offend,OFFEND,B2,daily-life,feelings,feelings,high,feelings / character word,birini kırmak veya gücendirmek,I hope I did not offend you.
+103,b2-optimism,OPTIMISM,B2,daily-life,feelings,feelings,high,feelings / character word,iyimserlik; olumlu bakış,His optimism helped the team.
+104,b2-panic,PANIC,B2,daily-life,feelings,feelings,high,feelings / character word,ani ve kontrolsüz korku,There was panic when the fire alarm rang.
+105,b2-reluctant,RELUCTANT,B2,daily-life,feelings,feelings,high,feelings / character word,bir şeyi yapmaya isteksiz,He was reluctant to speak in public.
+106,b2-skeptical,SKEPTICAL,B2,daily-life,feelings,feelings,high,feelings / character word,"bir şeye inanmakta tereddüt eden, şüpheci",I am skeptical about the story.
+107,b2-sympathetic,SYMPATHETIC,B2,daily-life,feelings,feelings,high,"Yalancı eşdeğerler card: kind/understanding person, fits character","başkalarının derdini anlayan, ilgili",The nurse was kind and sympathetic.
+108,b2-sympathize,SYMPATHIZE,B2,daily-life,feelings,feelings,high,feelings / character word,başkasının duygularını anlayıp paylaşmak,I sympathize with your situation.
+109,b2-sympathy,SYMPATHY,B2,daily-life,feelings,feelings,high,feelings / character word,başkasının acısını paylaşma,I have a lot of sympathy for him.
+110,b2-temper,TEMPER,B2,daily-life,feelings,feelings,high,feelings / character word,kolay öfkelenmeye yatkın huy,He has a terrible temper and shouts when he loses.
+111,b2-thrill,THRILL,B2,daily-life,hobbies,feelings,low,CSV said hobbies. a feeling (example: roller-coaster thrill),"ani ve güçlü bir heyecan, haz",Riding the roller coaster gave him a thrill he would never forget.
+112,b2-tolerate,TOLERATE,B2,daily-life,feelings,feelings,low,borderline fit; example is about feeling or trait,rahatsız edici bir şeye katlanmak,I cannot tolerate this noise.
+113,b2-uneasy,UNEASY,B2,daily-life,feelings,feelings,high,feelings / character word,"huzursuz, tedirgin",I felt uneasy in the dark street.
+114,b2-unwilling,UNWILLING,B2,daily-life,feelings,feelings,high,feelings / character word,bir şeyi yapmak istemeyen,He was unwilling to help.
+115,b2-vicious,VICIOUS,B2,daily-life,feelings,feelings,low,borderline fit; example is about feeling or trait,çok acımasız ve saldırgan,The dog looked vicious.
+116,b2-vulnerable,VULNERABLE,B2,daily-life,feelings,feelings,low,borderline fit; example is about feeling or trait,"zarar görmeye açık, savunmasız",Small children are vulnerable.
+117,b2-wisdom,WISDOM,B2,daily-life,feelings,feelings,low,borderline fit; example is about feeling or trait,deneyimle kazanılan bilgelik,Old people are full of wisdom.
+118,c1-alienate,ALIENATE,C1,school-work,feelings,feelings,low,borderline fit with feelings,birini kendinden soğutup uzaklaştırmak,Harsh words may alienate your friends.
+119,c1-apathy,APATHY,C1,school-work,feelings,feelings,high,feelings / character word,"her şeye karşı ilgisizlik, umursamazlık",Voter apathy is a real problem.
+120,c1-avid,AVID,C1,school-work,feelings,feelings,high,feelings / character word,"(okur, hayran) çok hevesli, tutkulu",She is an avid reader of crime novels.
+121,c1-benevolent,BENEVOLENT,C1,school-work,feelings,feelings,high,feelings / character word,"iyiliksever, yardım etmeyi seven",A benevolent donor paid for the new library.
+122,c1-blunt,BLUNT,C1,school-work,feelings,feelings,high,feelings / character word,"açık sözlü, nezaketle yumuşatmayan",She gave a blunt answer to the question.
+123,c1-boast,BOAST,C1,school-work,feelings,feelings,high,feelings / character word,kendi başarılarıyla övünmek,He likes to boast about his new car.
+124,c1-charitable,CHARITABLE,C1,school-work,feelings,feelings,low,borderline fit with feelings,yardımsever; hayır işleriyle ilgili,She gave money to a charitable organization.
+125,c1-cherish,CHERISH,C1,school-work,feelings,feelings,high,feelings / character word,çok değer verip sevgiyle korumak,I will always cherish these memories.
+126,c1-conscience,CONSCIENCE,C1,school-work,feelings,feelings,high,feelings / character word,"doğru ile yanlışı ayıran iç ses, vicdan",He had a guilty conscience after the lie.
+127,c1-contempt,CONTEMPT,C1,school-work,feelings,feelings,high,feelings / character word,"birini değersiz görme, küçümseme duygusu",He looked at the offer with contempt.
+128,c1-crave,CRAVE,C1,school-work,feelings,feelings,low,borderline fit with feelings,bir şeyi aşırı derecede canı çekmek,I always crave something sweet after dinner.
+129,c1-cynical,CYNICAL,C1,school-work,feelings,feelings,high,feelings / character word,"insanlara kuşkuyla bakan, her şeye inanmayan",He is cynical about politicians.
+130,c1-despair,DESPAIR,C1,school-work,feelings,feelings,high,feelings / character word,tamamen umudunu yitirme duygusu,She wept in despair at the news.
+131,c1-dread,DREAD,C1,school-work,feelings,feelings,high,feelings / character word,kötü bir şeyden çok korkmak,I dread meeting his family.
+132,c1-eccentric,ECCENTRIC,C1,school-work,feelings,feelings,high,feelings / character word,davranışları sıra dışı ve tuhaf,The eccentric professor wore two different socks.
+133,c1-empathy,EMPATHY,C1,school-work,feelings,feelings,high,feelings / character word,başkasının duygularını anlayabilme,A good nurse shows empathy for patients.
+134,c1-frantic,FRANTIC,C1,school-work,feelings,feelings,high,feelings / character word,korku veya telaştan çılgına dönmüş,She made a frantic search for the keys.
+135,c1-fury,FURY,C1,school-work,feelings,feelings,high,feelings / character word,kontrolsüz büyük öfke,She shouted in fury.
+136,c1-gratitude,GRATITUDE,C1,school-work,feelings,feelings,high,feelings / character word,"minnet, teşekkür duygusu",She wrote a letter to show her gratitude.
+137,c1-grief,GRIEF,C1,school-work,feelings,feelings,high,feelings / character word,birinin ölümünden duyulan derin acı,She was overcome by grief.
+138,c1-gullible,GULLIBLE,C1,school-work,feelings,feelings,high,feelings / character word,"her söylenene hemen inanıp kanan, saf",Gullible tourists bought fake tickets.
+139,c1-humiliate,HUMILIATE,C1,school-work,feelings,feelings,high,feelings / character word,birini herkesin önünde küçük düşürmek,He did not mean to humiliate her.
+140,c1-hypocrisy,HYPOCRISY,C1,school-work,feelings,feelings,high,feelings / character word,söylediği gibi yaşamayan ikiyüzlülük,People criticised the hypocrisy of the leaders.
+141,c1-impulse,IMPULSE,C1,school-work,feelings,feelings,high,feelings / character word,ani ve düşünmeden gelen istek,She bought the hat on impulse.
+142,c1-indulge,INDULGE,C1,school-work,feelings,feelings,low,borderline fit with feelings,bir zevke kendini kaptırıp şımartmak,Let yourself indulge in a bit of chocolate.
+143,c1-intimidate,INTIMIDATE,C1,school-work,feelings,feelings,low,borderline fit with feelings,korkutarak sindirmek,The big dog may intimidate small children.
+144,c1-mischief,MISCHIEF,C1,school-work,feelings,feelings,high,feelings / character word,çocukça yaramazlık,The kids were up to mischief again.
+145,c1-outburst,OUTBURST,C1,school-work,feelings,feelings,high,feelings / character word,ani öfke veya duygu patlaması,His outburst surprised the whole room.
+146,c1-outrage,OUTRAGE,C1,school-work,feelings,feelings,high,feelings / character word,haksızlığa duyulan öfke,She could not hide her outrage at the decision.
+147,c1-qualm,QUALM,C1,school-work,feelings,feelings,high,feelings / character word,"vicdani rahatsızlık, tereddüt",My only qualm is the cost.
+148,c1-quirk,QUIRK,C1,school-work,feelings,feelings,high,feelings / character word,kişiye özgü tuhaf alışkanlık,Her quirk is that she never uses a pen.
+149,c1-rejoice,REJOICE,C1,school-work,feelings,feelings,high,feelings / character word,büyük sevinç duymak,The nation will rejoice at the news.
+150,c1-resent,RESENT,C1,school-work,feelings,feelings,high,feelings / character word,haksızlık sandığı bir şeye içerlemek,She began to resent his comments.
+151,c1-resilient,RESILIENT,C1,school-work,feelings,feelings,high,feelings / character word,zorluklardan çabuk toparlanan,Children are often more resilient than adults.
+152,c1-squeamish,SQUEAMISH,C1,school-work,feelings,feelings,high,feelings / character word,kan veya kötü kokudan hemen tiksinen,I am too squeamish to watch the surgery.
+153,c1-virtue,VIRTUE,C1,school-work,feelings,feelings,high,feelings / character word,ahlaki iyilik; bir şeyin artı yanı,Patience is a virtue.
+154,c1-whimsical,WHIMSICAL,C1,school-work,feelings,feelings,high,feelings / character word,"tuhaf, oyunbaz ve ciddiyetten uzak",She has a whimsical sense of humor.
+155,c1-witty,WITTY,C1,school-work,feelings,feelings,high,feelings / character word,zekice ve eğlenceli konuşan,He is a witty speaker.
+156,c1-yearn,YEARN,C1,school-work,feelings,feelings,high,feelings / character word,"özlem duymak, çok istemek",He began to yearn for his childhood home.
+157,c1-zealous,ZEALOUS,C1,school-work,feelings,feelings,high,feelings / character word,aşırı hevesli ve tutkulu,A zealous fan waited all night outside.
+158,c1-zest,ZEST,C1,school-work,feelings,feelings,high,feelings / character word,(hayata karşı) heves ve yaşama sevinci,She has a real zest for life.
+159,b1-arrest,ARREST,B1,daily-life,society-law,society-law,high,law / politics / society word,"(polis) birini tutuklamak, gözaltına almak",The police will arrest the thief.
+160,b1-burglar,BURGLAR,B1,daily-life,society-law,society-law,high,law / politics / society word,eve girip eşya çalan hırsız,A burglar broke into the shop.
+161,b1-charity,CHARITY,B1,daily-life,society-law,society-law,low,society / history: fits loosely,yoksullara yardım eden kuruluş,They gave the money to charity.
+162,a2-citizen,CITIZEN,B1,family-people,society-law,society-law,high,law / politics / society word,bir ülkenin vatandaşı,She is a citizen of Spain.
+163,b1-civilization,CIVILIZATION,B1,school-work,society-law,society-law,low,society / history: fits loosely,"gelişmiş bir toplumun kültürü, uygarlık",Ancient Egypt had a great civilization.
+164,b1-community,COMMUNITY,B1,family-people,society-law,society-law,high,law / politics / society word,aynı yerde yaşayan insan topluluğu,The whole community helped after the storm.
+165,b1-conquer,CONQUER,B1,school-work,society-law,society-law,low,society / history: fits loosely,"bir ülkeyi savaşla ele geçirmek, fethetmek",The army wanted to conquer the city.
+166,b1-crime,CRIME,B1,daily-life,society-law,society-law,high,law / politics / society word,yasaya aykırı suç,Crime is a problem in big cities.
+167,b1-criminal,CRIMINAL,B1,daily-life,society-law,society-law,high,law / politics / society word,suç işleyen kişi,The criminal was caught at the airport.
+168,b1-election,ELECTION,B1,daily-life,society-law,society-law,high,law / politics / society word,oy verilerek yapılan seçim,The election will be held in May.
+169,b1-equality,EQUALITY,B1,school-work,society-law,society-law,high,law / politics / society word,"herkese aynı haklar verilmesi, eşitlik",Equality is important in a school.
+170,b1-government,GOVERNMENT,B1,daily-life,society-law,society-law,high,law / politics / society word,bir ülkeyi yöneten siyasi yönetim,The government plans to build new roads.
+171,b1-homeless,HOMELESS,B1,family-people,society-law,society-law,high,law / politics / society word,barınacak yeri olmayan,The homeless man sleeps in the park.
+172,b1-illegal,ILLEGAL,B1,daily-life,society-law,society-law,high,law / politics / society word,yasalara aykırı,It is illegal to park here.
+173,b1-immigrant,IMMIGRANT,B1,family-people,society-law,society-law,high,law / politics / society word,başka ülkeden gelip yerleşen kişi,My grandfather was an immigrant from Greece.
+174,b1-innocent,INNOCENT,B1,daily-life,feelings,society-law,low,"CSV said feelings. example is a court verdict, not a trait",suçsuz; saf,The court said he was innocent.
+175,a2-judge,JUDGE,B1,daily-life,society-law,society-law,high,law / politics / society word,mahkemede karar veren kişi,The judge asked the man to stand up.
+176,b1-justice,JUSTICE,B1,daily-life,society-law,society-law,high,law / politics / society word,herkese hak ettiğini veren adil sistem,Everyone wants justice for the victims.
+177,b1-kingdom,KINGDOM,B1,school-work,society-law,society-law,low,society / history: fits loosely,kral veya kraliçenin yönettiği ülke,Spain is a kingdom in Europe.
+178,a2-law,LAW,B1,daily-life,society-law,society-law,high,law / politics / society word,bir ülkede uyulması zorunlu kurallar,Everyone must follow the law.
+179,b1-legal,LEGAL,B1,daily-life,society-law,society-law,high,law / politics / society word,yasalara uygun,It is legal to drive at eighteen.
+180,b1-minister,MINISTER,B1,daily-life,society-law,society-law,high,law / politics / society word,"hükümette bir bakanlığı yöneten kişi, bakan",The minister spoke on television.
+181,b1-politics,POLITICS,B1,school-work,society-law,society-law,high,law / politics / society word,"ülke yönetimiyle ilgili işler, siyaset",He is not interested in politics.
+182,b1-poverty,POVERTY,B1,daily-life,society-law,society-law,high,law / politics / society word,geçinmek için yeterli paranın olmaması,Many families live in poverty.
+183,b1-prejudice,PREJUDICE,B1,family-people,society-law,society-law,high,law / politics / society word,tanımadan beslenen önyargı,Prejudice against foreigners is wrong.
+184,a2-prison,PRISON,B1,daily-life,society-law,society-law,high,law / politics / society word,suçluların ceza çektiği büyük bina,He was in prison for a year.
+185,b1-protest,PROTEST,B1,daily-life,society-law,society-law,high,law / politics / society word,bir şeye karşı yapılan gösteri,There was a large protest in the city center.
+186,b1-religion,RELIGION,B1,daily-life,society-law,society-law,high,law / politics / society word,"inanç sistemi, din",Religion is important to many people.
+187,b1-society,SOCIETY,B1,school-work,society-law,society-law,high,law / politics / society word,birlikte yaşayan insanların oluşturduğu toplum,Society changes over time.
+188,b1-theft,THEFT,B1,daily-life,society-law,society-law,high,law / politics / society word,başkasının malını çalma suçu,The theft happened at night.
+189,b1-tradition,TRADITION,B1,family-people,society-law,society-law,low,society / history: fits loosely,nesilden nesile geçen âdet,It is a tradition to eat pasta on that day.
+190,b1-victim,VICTIM,B1,daily-life,society-law,society-law,high,law / politics / society word,kaza veya suçtan zarar gören kişi,The victim was taken to hospital.
+191,a2-vote,VOTE,B1,daily-life,society-law,society-law,high,law / politics / society word,seçimde tercihini belirtmek,Everyone can vote at eighteen.
+192,b1-witness,WITNESS,B1,daily-life,society-law,society-law,high,law / politics / society word,bir olayı gözüyle görmüş kişi,The witness saw the accident.
+193,b2-abuse,ABUSE,B2,daily-life,society-law,society-law,high,law / politics / society word,birine kötü davranma veya bir şeyi kötüye kullanma,Animal abuse is a crime.
+194,b2-accuse,ACCUSE,B2,daily-life,society-law,society-law,high,law / politics / society word,birini suç işlemekle suçlamak,They accuse him of stealing the bike.
+195,b2-citizenship,CITIZENSHIP,B2,daily-life,society-law,society-law,high,law / politics / society word,bir ülkenin vatandaşı olma hakkı,He applied for Turkish citizenship.
+196,b2-conflict,CONFLICT,B2,daily-life,society-law,society-law,high,law / politics / society word,uzun süren anlaşmazlık veya savaş,The conflict lasted for years.
+197,b2-dispute,DISPUTE,B2,daily-life,society-law,society-law,high,law / politics / society word,tarafların uzun süren tartışması,The neighbors had a dispute about the fence.
+198,b2-diversity,DIVERSITY,B2,daily-life,society-law,society-law,high,law / politics / society word,çok farklı türden öğelerin bir arada olması,The city is proud of its cultural diversity.
+199,b2-forbid,FORBID,B2,daily-life,society-law,society-law,high,law / politics / society word,bir şeyi yasaklamak,The law will forbid smoking in schools.
+200,b2-fraud,FRAUD,B2,business,economy,society-law,low,CSV said economy. fraud is a crime (example: prison); not an economy word,para kazanmak için yapılan dolandırıcılık,He went to prison for fraud.
+201,b2-injustice,INJUSTICE,B2,daily-life,society-law,society-law,high,law / politics / society word,"haksızlık, adaletsizlik",We must fight injustice.
+202,b2-jury,JURY,B2,daily-life,society-law,society-law,high,law / politics / society word,mahkemede karar veren halk heyeti,The jury found him not guilty.
+203,b2-kidnap,KIDNAP,B2,daily-life,society-law,society-law,high,law / politics / society word,bir kişiyi zorla kaçırıp alıkoymak,Two men tried to kidnap the businessman outside his hotel.
+204,b2-oppose,OPPOSE,B2,daily-life,society-law,society-law,high,law / politics / society word,bir fikre karşı çıkmak,Many people oppose the new law.
+205,b2-orphan,ORPHAN,B2,daily-life,society-law,society-law,high,law / politics / society word,anne babasını yitirmiş çocuk,The charity helps every orphan find a safe home.
+206,b2-rebel,REBEL,B2,daily-life,society-law,society-law,high,law / politics / society word,"düzene karşı gelen kişi, asi",He was a rebel in his teenage years.
+207,b2-tribe,TRIBE,B2,daily-life,society-law,society-law,high,law / politics / society word,ortak kültürü olan geleneksel topluluk,The tribe lives deep in the rainforest and hunts with bows.
+208,b2-verdict,VERDICT,B2,daily-life,society-law,society-law,high,law / politics / society word,mahkemenin kararı,The court reached a verdict.
+209,c1-abolish,ABOLISH,C1,school-work,society-law,society-law,high,law / politics / society word,bir yasayı ya da uygulamayı tamamen kaldırmak,Many countries chose to abolish the death penalty.
+210,c1-acquit,ACQUIT,C1,school-work,society-law,society-law,high,law / politics / society word,mahkemede beraat ettirmek,The jury decided to acquit him.
+211,c1-allegation,ALLEGATION,C1,school-work,society-law,society-law,high,law / politics / society word,kanıtsız ileri sürülen suçlama,The mayor denied the allegation.
+212,c1-allege,ALLEGE,C1,school-work,society-law,society-law,high,law / politics / society word,kanıt göstermeden bir şeyi iddia etmek,Neighbors allege that the factory pollutes the river.
+213,c1-amend,AMEND,C1,school-work,society-law,society-law,high,law / politics / society word,metni ya da yasayı düzeltip değiştirmek,Parliament voted to amend the law.
+214,c1-asylum,ASYLUM,C1,school-work,society-law,society-law,high,law / politics / society word,tehlikeden kaçan kişiye verilen sığınma,The family applied for asylum last year.
+215,c1-atrocity,ATROCITY,C1,school-work,society-law,society-law,high,law / politics / society word,korkunç ve vahşi bir şiddet olayı,The army was accused of an atrocity against civilians.
+216,c1-backlash,BACKLASH,C1,school-work,society-law,society-law,high,law / politics / society word,bir olaya karşı sert toplumsal tepki,The new rule caused a public backlash.
+217,c1-ballot,BALLOT,C1,school-work,society-law,society-law,high,law / politics / society word,oy pusulası ya da gizli oylama,The result of the ballot will be known tonight.
+218,c1-bribe,BRIBE,C1,school-work,society-law,society-law,high,law / politics / society word,çıkar sağlamak için verilen rüşvet,The officer refused to take a bribe.
+219,c1-bureaucracy,BUREAUCRACY,C1,business,society-law,society-law,high,law / politics / society word,kâğıt işleri yüzünden yavaşlayan resmî düzen,Getting a permit means dealing with a lot of bureaucracy.
+220,c1-condemn,CONDEMN,C1,school-work,society-law,society-law,high,law / politics / society word,bir şeyi sert biçimde kınamak,Leaders will condemn the attack on the school.
+221,c1-confiscate,CONFISCATE,C1,school-work,society-law,society-law,high,law / politics / society word,yetkili olarak birinin eşyasına el koymak,Teachers can confiscate phones in class.
+222,c1-convict,CONVICT,C1,school-work,society-law,society-law,high,law / politics / society word,mahkemede birini suçlu bulup mahkûm etmek,The jury could not convict him without proof.
+223,c1-crackdown,CRACKDOWN,C1,school-work,society-law,society-law,high,law / politics / society word,suça karşı sert önlem,The police started a crackdown on speeding.
+224,c1-decree,DECREE,C1,school-work,society-law,society-law,high,law / politics / society word,yetkili birinin çıkardığı resmî emir,The king issued a decree against hunting.
+225,c1-diplomacy,DIPLOMACY,C1,school-work,society-law,society-law,high,law / politics / society word,devletler arası ilişkileri yürütme sanatı,The crisis ended through quiet diplomacy.
+226,c1-dissent,DISSENT,C1,school-work,society-law,society-law,high,law / politics / society word,"çoğunluktan farklı düşünme, karşı çıkma",The leader did not accept any dissent.
+227,c1-extremist,EXTREMIST,C1,school-work,society-law,society-law,high,law / politics / society word,aşırı uçta görüşleri olan kimse,The attack was blamed on a known extremist.
+228,c1-eyewitness,EYEWITNESS,C1,school-work,society-law,society-law,high,law / politics / society word,olayı gözüyle gören tanık,An eyewitness described the robber.
+229,c1-govern,GOVERN,C1,school-work,society-law,society-law,high,law / politics / society word,bir ülkeyi veya kurumu yönetmek,The party will govern for four years.
+230,c1-grassroots,GRASSROOTS,C1,school-work,society-law,society-law,low,borderline: politics vs general word,"halkın tabanı, sıradan insanlar",Support for the plan came from the grassroots.
+231,c1-harass,HARASS,C1,school-work,feelings,society-law,low,CSV said feelings. harassment is a legal / social issue,sürekli rahatsız edip taciz etmek,Reporters continued to harass the family.
+232,c1-homeland,HOMELAND,C1,school-work,society-law,society-law,low,borderline: politics vs general word,insanın doğduğu yurt,She dreams of returning to her homeland.
+233,c1-hostage,HOSTAGE,C1,school-work,society-law,society-law,high,law / politics / society word,rehin tutulan kişi,The hostage was released after two days.
+234,c1-humanitarian,HUMANITARIAN,C1,school-work,society-law,society-law,high,law / politics / society word,insanların acısını azaltmaya yönelik,The charity gives humanitarian aid.
+235,c1-indigenous,INDIGENOUS,C1,school-work,society-law,society-law,low,borderline: politics vs general word,bir bölgenin yerli halkı veya yerli türü,Indigenous people lived here for centuries.
+236,c1-inequality,INEQUALITY,C1,school-work,society-law,society-law,high,law / politics / society word,gelir veya haklar arasındaki eşitsizlik,Income inequality is growing.
+237,c1-infrastructure,INFRASTRUCTURE,C1,business,economy,society-law,low,CSV said economy. roads / energy / communication: public works,"yol, enerji ve iletişim gibi temel yapılar",The country needs better infrastructure.
+238,c1-judicial,JUDICIAL,C1,school-work,society-law,society-law,high,law / politics / society word,mahkemeler ve yargıyla ilgili,The country has an independent judicial system.
+239,c1-jurisdiction,JURISDICTION,C1,school-work,society-law,society-law,high,law / politics / society word,bir mahkemenin yetki alanı,The case falls under federal jurisdiction.
+240,c1-lawsuit,LAWSUIT,C1,business,society-law,society-law,high,law / politics / society word,mahkemede açılan hukuk davası,The firm faces a lawsuit.
+241,c1-legislation,LEGISLATION,C1,school-work,society-law,society-law,high,law / politics / society word,"bir konudaki yasaların bütünü, mevzuat",New legislation protects renters.
+242,c1-legitimate,LEGITIMATE,C1,business,society-law,society-law,low,borderline: politics vs general word,yasal ve haklı olan,Is this a legitimate business?
+243,c1-liberate,LIBERATE,C1,school-work,society-law,society-law,high,law / politics / society word,esaretten kurtarmak,Troops came to liberate the town.
+244,c1-migrant,MIGRANT,C1,school-work,society-law,society-law,high,law / politics / society word,iş veya yaşam için yer değiştiren kişi,He came to the city as a migrant looking for work.
+245,c1-overthrow,OVERTHROW,C1,school-work,society-law,society-law,high,law / politics / society word,yönetimi zorla devirmek,Rebels tried to overthrow the king.
+246,c1-partisan,PARTISAN,C1,school-work,society-law,society-law,high,law / politics / society word,tek bir tarafı körü körüne tutan,The newspaper has become more partisan.
+247,c1-perpetrator,PERPETRATOR,C1,school-work,society-law,society-law,high,law / politics / society word,kötü bir eylemi yapan fail,The police are still hunting for the perpetrator.
+248,c1-polarise,POLARIZE,C1,school-work,society-law,society-law,high,law / politics / society word,insanları zıt iki uca bölmek,The issue could polarize the nation.
+249,c1-precedent,PRECEDENT,C1,school-work,society-law,society-law,high,law / politics / society word,sonraki kararlara örnek olan önceki olay,The ruling sets a precedent for future cases.
+250,c1-proclaim,PROCLAIM,C1,school-work,society-law,society-law,low,borderline: politics vs general word,resmen ve açıkça duyurmak,The king will proclaim a holiday.
+251,c1-ratify,RATIFY,C1,school-work,society-law,society-law,high,law / politics / society word,anlaşmayı resmen onaylamak,Parliament must ratify the treaty.
+252,c1-regime,REGIME,C1,school-work,society-law,society-law,high,law / politics / society word,bir ülkeyi yöneten sistem,The old regime fell in 1990.
+253,c1-revolt,REVOLT,C1,school-work,society-law,society-law,high,law / politics / society word,yönetime karşı ayaklanma,A revolt broke out in the north.
+254,c1-sanction,SANCTION,C1,school-work,society-law,society-law,low,borderline: politics vs general word,bir ülkeye uygulanan yaptırım,The country faced a trade sanction last year.
+255,c1-sexism,SEXISM,C1,school-work,society-law,society-law,high,law / politics / society word,cinsiyete dayalı ayrımcılık,The campaign fights sexism at work.
+256,c1-solidarity,SOLIDARITY,C1,school-work,feelings,society-law,low,CSV said feelings. example is workers and strikers,ortak çıkar için dayanışma,Workers marched in solidarity with the strikers.
+257,c1-sovereign,SOVEREIGN,C1,school-work,society-law,society-law,high,law / politics / society word,bağımsız ve kendi kendini yöneten,The island became a sovereign state.
+258,c1-testimony,TESTIMONY,C1,school-work,society-law,society-law,high,law / politics / society word,mahkemede verilen ifade,The witness gave her testimony.
+259,c1-unrest,UNREST,C1,school-work,society-law,society-law,high,law / politics / society word,toplumsal huzursuzluk ve kargaşa,The city suffers from political unrest.
+260,c1-uprising,UPRISING,C1,school-work,society-law,society-law,high,law / politics / society word,yönetime karşı halk ayaklanması,The army crushed the uprising.
+261,c1-vandalism,VANDALISM,C1,school-work,society-law,society-law,high,law / politics / society word,kamu malına kasten zarar verme,The park suffered from vandalism.
+262,c1-veto,VETO,C1,school-work,society-law,society-law,high,law / politics / society word,bir kararı engelleme hakkı,The president used his veto against the bill.
+263,c1-warrant,WARRANT,C1,school-work,society-law,society-law,high,law / politics / society word,polisin arama veya tutuklama izni,Police need a warrant to search the house.
+264,b1-account,ACCOUNT,B1,business,economy,economy,high,money / trade / finance word,bankada paranın tutulduğu kayıtlı hesap,I opened a new bank account yesterday.
+265,b1-advertise,ADVERTISE,B1,business,economy,economy,low,"company / commerce operations: could equally be İş ve teknoloji, but that category is already over 140 cards; kept in economy",bir ürünü duyurmak için reklam yapmak,They advertise their shop on the radio.
+266,b1-brand,BRAND,B1,business,economy,economy,low,"company / commerce operations: could equally be İş ve teknoloji, but that category is already over 140 cards; kept in economy",bir ürünün ticari markası,What brand of shoes do you wear?
+267,b1-budget,BUDGET,B1,business,economy,economy,high,money / trade / finance word,harcamalar için ayrılan para,We have a small budget for the party.
+268,b1-charge,CHARGE,B1,business,economy,economy,low,general / multi-sense word; example is about money or trade but the sense is broad,bir hizmet için belli bir ücret istemek,The hotel will charge you fifty euros a night.
+269,b1-deal,DEAL,B1,business,economy,economy,high,money / trade / finance word,"iki taraf arasında yapılan anlaşma, pazarlık",We made a good deal on the car.
+270,b1-debt,DEBT,B1,business,economy,economy,high,money / trade / finance word,ödenmesi gereken borç,He is in debt to the bank.
+271,b1-demand,DEMAND,B1,business,economy,economy,high,money / trade / finance word,bir şeye duyulan güçlü talep,There is a big demand for new houses.
+272,b1-discount,DISCOUNT,B1,business,economy,economy,high,money / trade / finance word,fiyattan yapılan indirim,Students get a ten percent discount.
+273,b1-economy,ECONOMY,B1,business,economy,economy,high,money / trade / finance word,bir ülkenin üretim ve ticaret düzeni,The economy is growing slowly.
+274,b1-expand,EXPAND,B1,business,economy,economy,low,general / multi-sense word; example is about money or trade but the sense is broad,"büyüyüp yayılmak, genişlemek",The company wants to expand abroad.
+275,b1-export,EXPORT,B1,business,economy,economy,high,money / trade / finance word,"malı yurt dışına satmak, ihraç etmek",Turkey will export more fruit this year.
+276,b1-factory,FACTORY,B1,business,economy,economy,low,"company / commerce operations: could equally be İş ve teknoloji, but that category is already over 140 cards; kept in economy",ürünlerin makinelerle üretildiği tesis,My father works in a car factory.
+277,b1-finance,FINANCE,B1,business,economy,economy,high,money / trade / finance word,paranın yönetimi ve parayla ilgili işler,She works in finance.
+278,b1-fortune,FORTUNE,B1,business,economy,economy,high,money / trade / finance word,büyük miktarda para; şans,He made a fortune in the oil business.
+279,b1-goods,GOODS,B1,business,economy,economy,high,money / trade / finance word,"satılan mallar, eşyalar",The shop sells sports goods.
+280,b1-growth,GROWTH,B1,business,economy,economy,low,general / multi-sense word; example is about money or trade but the sense is broad,büyüme veya artış,The growth of the town is fast.
+281,b1-guarantee,GUARANTEE,B1,business,economy,economy,low,general / multi-sense word; example is about money or trade but the sense is broad,bir ürünün bozulmasına karşı verilen güvence,The watch has a two-year guarantee.
+282,b1-income,INCOME,B1,business,economy,economy,high,money / trade / finance word,düzenli olarak kazanılan para,Her main income comes from teaching.
+283,b1-industry,INDUSTRY,B1,business,economy,economy,low,"company / commerce operations: could equally be İş ve teknoloji, but that category is already over 140 cards; kept in economy",bir ülkedeki üretim ve fabrika sektörü,The car industry employs many people.
+284,b1-insurance,INSURANCE,B1,business,economy,economy,high,money / trade / finance word,olası zarara karşı yapılan sigorta,Do you have car insurance?
+285,b1-investment,INVESTMENT,B1,business,economy,economy,high,money / trade / finance word,kazanç için para yatırma,Buying a house can be a good investment.
+286,b1-loan,LOAN,B1,business,economy,economy,high,money / trade / finance word,bankadan alınan borç,He took out a loan to buy a house.
+287,b1-loss,LOSS,B1,business,economy,economy,low,general / multi-sense word; example is about money or trade but the sense is broad,"kaybetme; bir işte para kaybı, zarar",The company reported a loss this year.
+288,b1-marketing,MARKETING,B1,business,economy,economy,low,"company / commerce operations: could equally be İş ve teknoloji, but that category is already over 140 cards; kept in economy",ürünlerin tanıtılıp satılması işi,She works in marketing.
+289,b1-owe,OWE,B1,business,economy,economy,high,money / trade / finance word,birine borçlu olmak,I owe you ten pounds.
+290,b1-payment,PAYMENT,B1,business,economy,economy,high,money / trade / finance word,bir şey için yapılan ödeme,We accept payment by card.
+291,b1-pension,PENSION,B1,business,economy,economy,high,money / trade / finance word,emeklilikte alınan aylık maaş,My grandfather lives on his pension.
+292,b1-produce,PRODUCE,B1,business,economy,economy,low,general / multi-sense word; example is about money or trade but the sense is broad,bir şeyi üretmek,The farm will produce more milk this year.
+293,b1-product,PRODUCT,B1,business,economy,economy,high,money / trade / finance word,satılmak üzere üretilen mal,This product is made in Turkey.
+294,b1-production,PRODUCTION,B1,business,economy,economy,low,general / multi-sense word; example is about money or trade but the sense is broad,bir şeyin üretilmesi,Car production has fallen this year.
+295,b1-profit,PROFIT,B1,business,economy,economy,high,money / trade / finance word,satıştan elde edilen kazanç,The shop made a small profit.
+296,b1-property,PROPERTY,B1,business,economy,economy,low,general / multi-sense word; example is about money or trade but the sense is broad,bir kişiye ait mal veya mülk,This land is my family's property.
+297,b1-receipt,RECEIPT,B1,business,economy,economy,high,money / trade / finance word,"alışverişte verilen ödeme belgesi, fiş",Keep the receipt in case you need to return it.
+298,b1-refund,REFUND,B1,business,economy,economy,high,money / trade / finance word,alınan ürün iade edilince geri verilen para,I asked for a refund.
+299,b1-supply,SUPPLY,B1,business,economy,economy,low,general / multi-sense word; example is about money or trade but the sense is broad,ihtiyaç duyulan malzeme stoku,The shop has a large supply of fruit.
+300,a2-tax,TAX,B1,daily-life,society-law,economy,low,"CSV said society-law. money / trade word; tax is paid, not a law",devlete ödenen vergi,We pay tax every year.
+301,b1-trade,TRADE,B1,business,economy,economy,high,money / trade / finance word,ülkeler veya şirketler arasında mal alım satımı,Trade between the two countries is growing.
+302,b1-unemployed,UNEMPLOYED,B1,business,economy,economy,high,money / trade / finance word,"işi olmayan, iş arayan",He has been unemployed for a year.
+303,b1-unemployment,UNEMPLOYMENT,B1,business,economy,economy,high,money / trade / finance word,çalışmak isteyenin iş bulamaması,Unemployment is high in the north.
+304,b1-value,VALUE,B1,business,economy,economy,low,general / multi-sense word; example is about money or trade but the sense is broad,bir şeyin değeri,The value of the house has doubled.
+305,b1-voucher,VOUCHER,B1,business,economy,economy,high,money / trade / finance word,mağazada nakit yerine geçen kupon,I got a voucher for a free coffee.
+306,b1-wage,WAGE,B1,business,economy,economy,high,money / trade / finance word,saat veya gün başına ödenen ücret,The wage in this shop is low.
+307,b1-warehouse,WAREHOUSE,B1,business,economy,economy,low,"company / commerce operations: could equally be İş ve teknoloji, but that category is already over 140 cards; kept in economy",ürünlerin depolandığı büyük bina,The boxes are in the warehouse.
+308,b1-wealth,WEALTH,B1,business,economy,economy,high,money / trade / finance word,çok miktarda para ve mal varlığı,Wealth does not always make people kind.
+309,b1-worth,WORTH,B1,business,economy,economy,low,general / multi-sense word; example is about money or trade but the sense is broad,"belli bir değerde olan, ... eden (fiyat)",This old car is worth about a thousand euros.
+310,b2-affordable,AFFORDABLE,B2,business,economy,economy,low,general word; example is about money or sales,fiyatı herkesin ödeyebileceği kadar makul,They sell affordable clothes for students.
+311,b2-bankrupt,BANKRUPT,B2,business,economy,economy,high,money / trade / finance word,"borçlarını ödeyemeyecek duruma gelmiş, iflas etmiş",The company went bankrupt last year.
+312,b2-currency,CURRENCY,B2,business,economy,economy,high,money / trade / finance word,bir ülkenin parası,The Turkish currency is the lira.
+313,b2-decline,DECLINE,B2,business,economy,economy,low,general word; example is about money or sales,azalma veya düşüş,There has been a decline in sales.
+314,b2-delivery,DELIVERY,B2,business,economy,economy,low,"company / commerce operations: could equally be İş ve teknoloji, but that category is already over 140 cards; kept in economy",bir şeyin adrese getirilmesi,Delivery usually takes two days.
+315,b2-expansion,EXPANSION,B2,business,economy,economy,low,general word; example is about money or sales,"bir şeyin büyümesi, genişleme",The company plans an expansion abroad.
+316,b2-fluctuate,FLUCTUATE,B2,business,economy,economy,low,general word; example is about money or sales,"sürekli inip çıkmak, değişkenlik göstermek",Prices fluctuate during the summer.
+317,b2-inflation,INFLATION,B2,business,economy,economy,high,money / trade / finance word,"fiyatların genel olarak artması, enflasyon",Inflation makes life more expensive.
+318,b2-lease,LEASE,B2,business,economy,economy,low,general word; example is about money or sales,uzun süreli yapılan kira sözleşmesi,"Our lease ends in June, so we must find a new apartment."
+319,b2-manufacture,MANUFACTURE,B2,business,economy,economy,low,general word; example is about money or sales,fabrikada büyük miktarda üretmek,They manufacture cars in this city.
+320,b2-mortgage,MORTGAGE,B2,business,economy,economy,high,money / trade / finance word,ev almak için bankadan alınan uzun vadeli kredi,They took out a mortgage to buy their first home.
+321,b2-output,OUTPUT,B2,business,economy,economy,low,general word; example is about money or sales,üretilen miktar veya çıktı,The factory doubled its output.
+322,b2-packaging,PACKAGING,B2,business,economy,economy,low,"company / commerce operations: could equally be İş ve teknoloji, but that category is already over 140 cards; kept in economy",ürünün ambalajı,The packaging is made of paper.
+323,b2-privatize,PRIVATIZE,B2,business,economy,economy,high,money / trade / finance word,devlet şirketini özel sektöre devretmek,They plan to privatize the railway.
+324,b2-projection,PROJECTION,B2,business,economy,economy,low,general word; example is about money or sales,gelecek hakkında yapılan hesap; yansıtma,The sales projection looks good for next year.
+325,b2-quota,QUOTA,B2,business,economy,economy,low,general word; example is about money or sales,izin verilen ya da hedeflenen pay,Each country has a fishing quota.
+326,b2-revenue,REVENUE,B2,business,economy,economy,high,money / trade / finance word,bir şirketin geliri,The company's revenue grew by ten percent.
+327,b2-tenant,TENANT,B2,daily-life,society-law,economy,low,CSV said society-law. renting a home: rent is a money word,ev sahibine kira ödeyerek oturan kişi,The tenant paid the rent on the first day of every month.
+328,b2-turnover,TURNOVER,B2,business,economy,economy,high,money / trade / finance word,bir şirketin yıllık satış cirosu,The company's turnover doubled last year.
+329,b2-underpaid,UNDERPAID,B2,business,economy,economy,high,money / trade / finance word,emeğinin karşılığından az maaş alan,Nurses are often underpaid for the long hours they work.
+330,b2-venture,VENTURE,B2,business,economy,economy,low,"company / commerce operations: could equally be İş ve teknoloji, but that category is already over 140 cards; kept in economy",riskli yeni girişim,The shop is a new business venture.
+331,c1-acquisition,ACQUISITION,C1,business,economy,economy,low,"company / commerce operations: could equally be İş ve teknoloji, but that category is already over 140 cards; kept in economy",bir şeyi satın alma veya elde etme,The acquisition cost millions.
+332,c1-affiliate,AFFILIATE,C1,business,economy,economy,low,"company / commerce operations: could equally be İş ve teknoloji, but that category is already over 140 cards; kept in economy",büyük bir kuruluşa bağlı şirket ya da kuruluş,The shop is an affiliate of a large chain.
+333,c1-allocate,ALLOCATE,C1,business,economy,economy,low,fits economy; check sense,kaynağı ya da parayı bir amaca ayırmak,The council will allocate more money to schools.
+334,c1-appraisal,APPRAISAL,C1,business,economy,economy,low,"company / commerce operations: could equally be İş ve teknoloji, but that category is already over 140 cards; kept in economy",bir kişinin ya da şeyin değerlendirilmesi,Every employee has a yearly appraisal.
+335,c1-audit,AUDIT,C1,business,economy,economy,high,money / trade / finance word,hesapların resmî olarak denetlenmesi,The company passed the annual audit.
+336,c1-boom,BOOM,C1,business,economy,economy,high,money / trade / finance word,ekonomide ani ve hızlı yükseliş,The city enjoyed an economic boom in the nineties.
+337,c1-capitalism,CAPITALISM,C1,business,society-law,economy,low,"CSV said society-law. money / trade word; tax is paid, not a law",özel mülkiyete dayalı ekonomik düzen,Many debates focus on the pros and cons of capitalism.
+338,c1-commodity,COMMODITY,C1,business,economy,economy,high,money / trade / finance word,"alınıp satılan ürün, emtia",Oil is an important global commodity.
+339,c1-deficit,DEFICIT,C1,business,economy,economy,high,money / trade / finance word,"gelirin giderden az olması, açık",The country has a large budget deficit.
+340,c1-depreciate,DEPRECIATE,C1,business,economy,economy,high,money / trade / finance word,değer kaybetmek,A new car will depreciate quickly.
+341,c1-franchise,FRANCHISE,C1,business,economy,economy,low,"company / commerce operations: could equally be İş ve teknoloji, but that category is already over 140 cards; kept in economy",bir markanın adını kullanma hakkı,He bought a franchise of a burger chain.
+342,c1-freelance,FREELANCE,C1,business,economy,economy,low,"company / commerce operations: could equally be İş ve teknoloji, but that category is already over 140 cards; kept in economy",belirli bir işverene bağlı olmayan,She works as a freelance writer.
+343,c1-incentive,INCENTIVE,C1,business,economy,economy,low,fits economy; check sense,bir şeyi yapmaya teşvik eden ödül,Lower taxes are an incentive to invest.
+344,c1-incur,INCUR,C1,business,economy,economy,high,money / trade / finance word,istemeden bir masrafa veya zarara uğramak,The company will incur heavy losses.
+345,c1-liquidity,LIQUIDITY,C1,business,economy,economy,high,money / trade / finance word,paraya çevrilebilirlik,The bank has strong liquidity.
+346,c1-logistics,LOGISTICS,C1,business,economy,economy,low,"company / commerce operations: could equally be İş ve teknoloji, but that category is already over 140 cards; kept in economy",malların taşınması ve düzenlenmesi,She works in logistics.
+347,c1-lucrative,LUCRATIVE,C1,business,economy,economy,high,money / trade / finance word,çok kazanç getiren,He left for a more lucrative job abroad.
+348,c1-monopoly,MONOPOLY,C1,business,society-law,economy,low,"CSV said society-law. money / trade word; tax is paid, not a law",bir pazarda tek satıcı olma durumu,The firm has a monopoly on rail travel.
+349,c1-outlet,OUTLET,C1,business,economy,economy,low,"company / commerce operations: could equally be İş ve teknoloji, but that category is already over 140 cards; kept in economy",ürün satış noktası; boşalma yolu,The brand opened a new outlet in the mall.
+350,c1-plunge,PLUNGE,C1,business,economy,economy,low,fits economy; check sense,aniden dalmak veya sert düşmek,Share prices began to plunge on Monday.
+351,c1-quarterly,QUARTERLY,C1,business,economy,economy,low,fits economy; check sense,üç ayda bir yapılan,The firm publishes a quarterly report.
+352,c1-recession,RECESSION,C1,business,economy,economy,high,money / trade / finance word,ekonomide geçici gerileme dönemi,The recession cost many jobs.
+353,c1-retail,RETAIL,C1,business,economy,economy,low,"company / commerce operations: could equally be İş ve teknoloji, but that category is already over 140 cards; kept in economy","ürünün tek tek satışı, perakende",He works in retail.
+354,c1-soar,SOAR,C1,business,economy,economy,low,fits economy; check sense,hızla yükselmek veya havada süzülmek,Prices began to soar last winter.
+355,c1-stakeholder,STAKEHOLDER,C1,business,economy,economy,low,"company / commerce operations: could equally be İş ve teknoloji, but that category is already over 140 cards; kept in economy",bir işte çıkarı olan kişi veya grup,Every stakeholder was invited to the meeting.
+356,c1-subsidy,SUBSIDY,C1,business,society-law,economy,low,"CSV said society-law. money / trade word; tax is paid, not a law",devletin verdiği mali destek,Farmers receive a government subsidy.
+357,c1-surge,SURGE,C1,business,economy,economy,low,fits economy; check sense,talep veya fiyatta ani sıçrama,There was a surge in demand for masks.
+358,c1-syndicate,SYNDICATE,C1,business,economy,economy,low,"company / commerce operations: could equally be İş ve teknoloji, but that category is already over 140 cards; kept in economy",ortak çıkar için kurulan iş birliği grubu,A syndicate of banks funded the project.
+359,c1-taxation,TAXATION,C1,business,society-law,economy,low,"CSV said society-law. money / trade word; tax is paid, not a law",vergi uygulama sistemi,Taxation affects every worker.
+360,c1-taxpayer,TAXPAYER,C1,business,society-law,economy,low,"CSV said society-law. money / trade word; tax is paid, not a law",vergi veren kişi,Every taxpayer helps pay for public roads.
+361,c1-volatile,VOLATILE,C1,business,economy,economy,low,fits economy; check sense,ani ve öngörülemez biçimde değişen,Oil prices are highly volatile this year.
+362,a1-belt,BELT,A1,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,pantolonu belde tutan kemer,Hasan wears a leather belt.
+363,a1-boots,BOOTS,A1,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,bilekten yukarı çıkan sağlam ayakkabılar,Farmers trudge through the puddles in rubber boots.
+364,a1-buy,BUY,A1,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,parasını verip almak,I will buy some stamps.
+365,a1-cap,CAP,A1,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,siperlikli yumuşak başlık,This cap is too tight.
+366,a1-cheap,CHEAP,A1,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,fiyatı düşük,"These pants are cheap, just a few dollars."
+367,a1-clothes,CLOTHES,A1,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,insanların üzerine giydiği şeyler,She hangs her wet clothes on the line.
+368,a1-coat,COAT,A1,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,kalın dış giysi,My coat is in the hall.
+369,a1-dollar,DOLLAR,A1,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,Amerika'nın para birimi,She paid a dollar for it.
+370,a1-dress,DRESS,A1,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,kadınların giydiği tek parça giysi,She wears a silk dress.
+371,a1-expensive,EXPENSIVE,A1,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,fiyatı çok yüksek,These shoes are too expensive.
+372,a1-glasses,GLASSES,A1,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,iyi görmek için takılan çerçeveli camlar,Ali cleaned his glasses.
+373,a1-glove,GLOVE,A1,daily-life,clothes-shopping,clothes-shopping,low,borderline: shopping / money verb or accessory; fits the category loosely,parmakları saran ve eli koruyan giysi,The goalkeeper wore a padded glove to save penalties.
+374,a1-hat,HAT,A1,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,başa takılan giysi,My hat is woolen.
+375,a1-jacket,JACKET,A1,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,"ceket, mont",Mert's jacket is thick.
+376,a1-jeans,JEANS,A1,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,kot pantolon,These jeans are too tight.
+377,a1-money,MONEY,A1,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,alışverişte ödediğimiz şey,I don't have any money.
+378,a1-pay,PAY,A1,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,karşılığında para vermek,I pay in cash.
+379,a1-pound,POUND,A1,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,İngiltere'de kullanılan para birimi,The tickets cost a pound.
+380,a1-price,PRICE,A1,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,bir şey için ödenecek para miktarı,The price is low.
+381,a1-scarf,SCARF,A1,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,boyna sarılan uzun kumaş,Ayşe made this scarf.
+382,a1-sell,SELL,A1,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,malı para karşılığında başkasına vermek,They sell lemons at the stall.
+383,a1-shirt,SHIRT,A1,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,üst gövdeye giyilen düğmeli giysi,His shirt is wet.
+384,a1-shoe,SHOE,A1,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,tek ayakkabı,My shoe is wet.
+385,a1-shopping,SHOPPING,A1,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,mağazalardan bir şeyler satın alma işi,Ali hates shopping.
+386,a1-shorts,SHORTS,A1,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,"yazın giyilen, dizin üstünde biten pantolon",Ali wears shorts for jogging.
+387,a1-size,SIZE,A1,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,"bir şeyin büyüklüğü, beden",My size is 38.
+388,a1-skirt,SKIRT,A1,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,belden aşağı giyilen kumaş giysi,She wore a pleated skirt and a blouse.
+389,a1-sock,SOCK,A1,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,ayağa ayakkabıdan önce giyilen yumuşak kumaş,There is a hole in my sock.
+390,a1-suit,SUIT,A1,daily-life,clothes-shopping,clothes-shopping,low,homograph (suit); both examples are the clothing sense,ceket ve pantolondan oluşan takım elbise,Ali wears a suit.
+391,a1-sweater,SWEATER,A1,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,yünden örülmüş sıcak tutan üst giysi,Ayşe knitted a sweater.
+392,a1-tie,TIE,A1,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,gömleğin yakasına bağlanan uzun kumaş,Mr Demir wears a tie.
+393,a1-trousers,TROUSERS,A1,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,iki bacağı da örten uzun giysi,Ali bought trousers.
+394,a1-wallet,WALLET,A1,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,para ve kart taşınan küçük cüzdan,Ali lost his wallet.
+395,a1-wear,WEAR,A1,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,giysiyi üzerine geçirip taşımak,Do you wear contact lenses?
+396,a2-bikini,BIKINI,A2,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,plajda giyilen iki parçalı kadın mayosu,She has a new bikini for the beach.
+397,a2-blouse,BLOUSE,A2,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,kadınların giydiği hafif gömlek,She wears a white blouse.
+398,a2-bracelet,BRACELET,A2,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,bileğe takılan süs,She wears a thin bracelet on her arm.
+399,a2-cash,CASH,A2,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,banknot ve bozuk para olarak elde bulunan para,Do you pay by card or by cash?
+400,a2-coin,COIN,A2,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,madenden yapılmış bozuk para,I found a coin on the street.
+401,a2-collar,COLLAR,A2,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,gömleğin boyun çevresindeki yaka kısmı,The collar of this shirt is dirty.
+402,a2-cost,COST,A2,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,bir şeyin fiyatı kadar olmak,How much does this jacket cost?
+403,a2-cotton,COTTON,A2,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,bitkiden elde edilen yumuşak kumaş malzemesi,This shirt is made of cotton.
+404,a2-customer,CUSTOMER,A2,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,dükkândan alışveriş yapan kişi,The customer paid at the desk.
+405,a2-diamond,DIAMOND,A2,daily-life,clothes-shopping,clothes-shopping,low,borderline: shopping / money verb or accessory; fits the category loosely,"çok sert ve değerli, parlak taş",The ring has a small diamond.
+406,a2-earring,EARRING,A2,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,kulağa takılan süs,Selin lost an earring at the beach.
+407,a2-euro,EURO,A2,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,bazı Avrupa ülkelerinde kullanılan para birimi,The ticket costs one euro.
+408,a2-fashion,FASHION,A2,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,giyim tarzındaki geçici moda,Her sister works in the fashion industry.
+409,a2-handbag,HANDBAG,A2,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,kadınların elde taşıdığı çanta,She lost her handbag on the bus.
+410,a2-jewellery,JEWELRY,A2,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,yüzük ve kolye gibi süs eşyaları,She keeps her jewelry in a box.
+411,a2-jumper,JUMPER,A2,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,"yünden örülmüş, baştan geçirilen kazak",She wears a red jumper.
+412,a2-jumpsuit,JUMPSUIT,A2,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,tek parça pantolonlu giysi,Selin wears a blue jumpsuit.
+413,a2-leather,LEATHER,A2,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,hayvan derisinden yapılan malzeme,These boots are made of leather.
+414,a2-lipstick,LIPSTICK,A2,daily-life,clothes-shopping,clothes-shopping,low,borderline: shopping / money verb or accessory; fits the category loosely,dudaklara sürülen renkli makyaj ürünü,Her lipstick is red.
+415,a2-necklace,NECKLACE,A2,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,boyna takılan süs,She wears a long necklace.
+416,a2-outfit,OUTFIT,A2,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,birlikte giyilen kıyafetler,She chose a blue outfit for the party.
+417,a2-perfume,PERFUME,A2,daily-life,clothes-shopping,clothes-shopping,low,borderline: shopping / money verb or accessory; fits the category loosely,"güzel koku veren sıvı, parfüm",She wears a sweet perfume.
+418,a2-pocket,POCKET,A2,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,giysilerde küçük eşya konan göz,He put his keys in his pocket.
+419,a2-purse,PURSE,A2,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,bozuk para koymak için küçük kese,She keeps coins in her purse.
+420,a2-pyjamas,PYJAMAS,A2,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,gece yatarken giyilen giysi takımı,Ali wears blue pyjamas at night.
+421,a2-raincoat,RAINCOAT,A2,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,yağmurdan korumak için giyilen su geçirmez mont,Take your raincoat today.
+422,a2-ribbon,RIBBON,A2,daily-life,clothes-shopping,clothes-shopping,low,borderline: shopping / money verb or accessory; fits the category loosely,"süs olarak kullanılan ince şerit kumaş, kurdele",She has a red ribbon in her hair.
+423,a2-sale,SALE,A2,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,"ucuz fiyatla yapılan satış, indirim",There is a sale at the shoe shop.
+424,a2-sandals,SANDALS,A2,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,"yazın giyilen açık ayakkabı, sandalet",I wear sandals in the summer.
+425,a2-size,SIZE,A2,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,giysinin numarası,Do you have this in a bigger size?
+426,a2-sleeve,SLEEVE,A2,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,giysinin kolu,The sleeve of my shirt is short.
+427,a2-sneakers,SNEAKERS,A2,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,spor yapmak için giyilen rahat ayakkabılar,Mert wears white sneakers.
+428,a2-spend,SPEND,A2,daily-life,clothes-shopping,clothes-shopping,low,money or time; example is money,para harcamak ya da zaman geçirmek,I spend too much money on books.
+429,a2-suit,SUIT,A2,daily-life,clothes-shopping,clothes-shopping,low,homograph (suit); both examples are the clothing sense,aynı kumaştan ceket ve pantolon takımı,He wears a dark suit at work.
+430,a2-sunglasses,SUNGLASSES,A2,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,güneşten korunmak için takılan gözlük,Wear your sunglasses today.
+431,a2-sweatshirt,SWEATSHIRT,A2,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,pamuktan yapılmış kalın spor üst,He wears a gray sweatshirt.
+432,a2-tight,TIGHT,A2,daily-life,clothes-shopping,clothes-shopping,low,borderline: shopping / money verb or accessory; fits the category loosely,vücuda çok yapışan ya da sıkı,These shoes are too tight.
+433,a2-underwear,UNDERWEAR,A2,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,giysilerin altına giyilen iç çamaşırı,Take some underwear with you.
+434,a2-vest,VEST,A2,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,"kolsuz iç ya da dış giysi, yelek",Mert wears a vest.
+435,a2-wool,WOOL,A2,daily-life,clothes-shopping,clothes-shopping,high,clothes / shopping word,koyundan alınan yumuşak lif,This scarf is made of wool.
+436,a2-zip,ZIP,A2,daily-life,clothes-shopping,clothes-shopping,low,"verb: closing a zip, clothing sense",fermuarı çekip kapatmak,"Can you zip it, Ali?"
+437,a1-ball,BALL,A1,daily-life,hobbies,hobbies,high,hobby / entertainment word,oyunlarda tepilen ya da atılan yuvarlak nesne,Selin throws the ball.
+438,a1-balloon,BALLOON,A1,daily-life,hobbies,hobbies,low,general word used for play / leisure; fits hobbies loosely,içine hava üflenerek şişirilen renkli lastik,Ayşe is holding a balloon.
+439,a1-band,BAND,A1,daily-life,hobbies,hobbies,low,general word used for play / leisure; fits hobbies loosely,birlikte müzik çalan grup,The band played for hours.
+440,a1-basketball,BASKETBALL,A1,daily-life,hobbies,hobbies,high,hobby / entertainment word,potaya top atılan takım sporu,Ayşe plays basketball with Ali.
+441,a1-camera,CAMERA,A1,daily-life,hobbies,hobbies,low,general word used for play / leisure; fits hobbies loosely,fotoğraf çeken alet,Tourists photographed the castle with a camera.
+442,a1-cartoon,CARTOON,A1,daily-life,hobbies,hobbies,high,hobby / entertainment word,çocukların televizyonda izlediği çizgi film,Ali is watching a cartoon.
+443,a1-climb,CLIMB,A1,daily-life,hobbies,hobbies,low,general word used for play / leisure; fits hobbies loosely,eller ve ayaklarla yukarı tırmanmak,Ali can climb the ladder.
+444,a1-dance,DANCE,A1,daily-life,hobbies,hobbies,low,general word used for play / leisure; fits hobbies loosely,dans etmek,They dance at the festival.
+445,a1-doll,DOLL,A1,daily-life,hobbies,hobbies,high,hobby / entertainment word,çocukların oynadığı küçük insan figürü,Selin sewed tiny pajamas for her doll.
+446,a1-film,FILM,A1,daily-life,hobbies,hobbies,high,hobby / entertainment word,sinemada ya da evde izlenen hikâyeli görüntüler,Ali and I watched a film.
+447,a1-football,FOOTBALL,A1,daily-life,hobbies,hobbies,high,hobby / entertainment word,ayakla oynanan takım sporu,Football is popular in my area.
+448,a1-game,GAME,A1,daily-life,hobbies,hobbies,high,hobby / entertainment word,kuralları olan eğlence etkinliği,Mert and Ali finished the chess game quickly.
+449,a1-guitar,GUITAR,A1,daily-life,hobbies,hobbies,high,hobby / entertainment word,altı telli çalgı,Mert strummed his guitar by the campfire.
+450,a1-hobby,HOBBY,A1,daily-life,hobbies,hobbies,high,hobby / entertainment word,boş zamanda yapılan sevilen iş,Collecting stamps is Mert's hobby.
+451,a1-kite,KITE,A1,daily-life,hobbies,hobbies,high,hobby / entertainment word,ipiyle rüzgârda uçurulan hafif oyuncak,Mert's kite is bright.
+452,a1-magazine,MAGAZINE,A1,daily-life,hobbies,hobbies,low,general word used for play / leisure; fits hobbies loosely,"düzenli çıkan resimli yayın, dergi",This magazine has colorful pictures.
+453,a1-movie,MOVIE,A1,daily-life,hobbies,hobbies,high,hobby / entertainment word,sinema filmi,The movie is a comedy.
+454,a1-party,PARTY,A1,daily-life,hobbies,hobbies,high,hobby / entertainment word,arkadaşlarla yapılan eğlence,The party was lovely.
+455,a1-photo,PHOTO,A1,daily-life,hobbies,hobbies,low,general word used for play / leisure; fits hobbies loosely,kamerayla çekilen görüntü,Her photo is in my purse.
+456,a1-piano,PIANO,A1,daily-life,hobbies,hobbies,high,hobby / entertainment word,tuşlara basılarak çalınan büyük çalgı,She plays the piano.
+457,a1-play,PLAY,A1,daily-life,hobbies,hobbies,low,general word used for play / leisure; fits hobbies loosely,eğlenmek için bir oyuna katılmak,Do you play chess?
+458,a1-player,PLAYER,A1,daily-life,hobbies,hobbies,low,general word used for play / leisure; fits hobbies loosely,bir oyunu ya da sporu oynayan kişi,Ali is the best player in his team.
+459,a1-ride,RIDE,A1,daily-life,hobbies,hobbies,low,general word used for play / leisure; fits hobbies loosely,hayvanın ya da aracın üstünde gitmek,Can you ride a scooter?
+460,a1-robot,ROBOT,A1,daily-life,hobbies,hobbies,low,general word used for play / leisure; fits hobbies loosely,insan yerine iş yapan mekanik makine,The tiny robot is made of metal.
+461,a1-sing,SING,A1,daily-life,hobbies,hobbies,low,general word used for play / leisure; fits hobbies loosely,şarkı söylemek,She can sing in a choir.
+462,a1-soccer,SOCCER,A1,daily-life,hobbies,hobbies,low,general word used for play / leisure; fits hobbies loosely,Amerikan İngilizcesinde futbol,Mert plays soccer with Ali.
+463,a1-sport,SPORT,A1,daily-life,hobbies,hobbies,low,general word used for play / leisure; fits hobbies loosely,beden gücüyle yapılan yarışma oyunu,Rugby is a popular sport.
+464,a1-stamp,STAMP,A1,daily-life,hobbies,hobbies,low,general word used for play / leisure; fits hobbies loosely,mektubun üstüne yapıştırılan küçük kâğıt,This stamp is rare.
+465,a1-swim,SWIM,A1,daily-life,hobbies,hobbies,low,general word used for play / leisure; fits hobbies loosely,suda kollarla ilerlemek,Ducks can swim in the pond.
+466,a1-tennis,TENNIS,A1,daily-life,hobbies,hobbies,high,hobby / entertainment word,raketle file üzerinden oynanan spor,Ali plays tennis.
+467,a1-toy,TOY,A1,daily-life,hobbies,hobbies,high,hobby / entertainment word,çocukların oynadığı eşya,This toy is for children.
+468,a1-video,VIDEO,A1,daily-life,hobbies,hobbies,low,general word used for play / leisure; fits hobbies loosely,hareketli görüntü kaydı,Let's see the video.
+469,a1-violin,VIOLIN,A1,daily-life,hobbies,hobbies,high,hobby / entertainment word,yay ile çalınan dört telli müzik aleti,Ayşe plays the violin.
+470,a2-alien,ALIEN,A2,daily-life,hobbies,hobbies,low,"story / fantasy creature: entertainment (films, tales), loosely a hobby",başka gezegenden geldiği düşünülen yaratık,The film is about an alien.
+471,a2-chess,CHESS,A2,daily-life,hobbies,hobbies,high,hobby / entertainment word,iki kişinin satranç tahtasında oynadığı oyun,My grandfather teaches me chess.
+472,a2-circus,CIRCUS,A2,daily-life,hobbies,hobbies,high,hobby / entertainment word,palyaço ve akrobatların gösteri yaptığı çadır,The children love the circus.
+473,a2-clown,CLOWN,A2,daily-life,hobbies,hobbies,high,hobby / entertainment word,renkli giyip insanları güldüren sirk sanatçısı,The clown made the children laugh.
+474,a2-collect,COLLECT,A2,daily-life,hobbies,hobbies,high,hobby / entertainment word,bir şeyleri biriktirmek ya da toplamak,He likes to collect stamps.
+475,a2-collection,COLLECTION,A2,daily-life,hobbies,hobbies,high,hobby / entertainment word,bir araya getirilmiş eşyalar topluluğu,He has a big stamp collection.
+476,a2-dragon,DRAGON,A2,daily-life,hobbies,hobbies,low,"story / fantasy creature: entertainment (films, tales), loosely a hobby","ateş püskürten, masallardaki kanatlı canavar",The dragon lives on a mountain.
+477,a2-fairy,FAIRY,A2,daily-life,hobbies,hobbies,low,"story / fantasy creature: entertainment (films, tales), loosely a hobby",masallarda sihirli güçleri olan küçük kanatlı kız,The fairy waved her wand.
+478,a2-fireworks,FIREWORKS,A2,daily-life,hobbies,hobbies,high,hobby / entertainment word,gece gökyüzünde patlayan renkli gösteri,We watched the fireworks on New Year.
+479,a2-ghost,GHOST,A2,daily-life,hobbies,hobbies,low,"story / fantasy creature: entertainment (films, tales), loosely a hobby",ölmüş birinin ruhu olduğuna inanılan görüntü,The children ran away from the ghost.
+480,a2-giant,GIANT,A2,daily-life,hobbies,hobbies,low,"story / fantasy creature: entertainment (films, tales), loosely a hobby","masallardaki kocaman yaratık, dev",The giant in the story lived on a hill.
+481,a2-horror,HORROR,A2,daily-life,hobbies,hobbies,low,"story / fantasy creature: entertainment (films, tales), loosely a hobby","korku türü (film, kitap)",I do not like horror films.
+482,a2-magic,MAGIC,A2,daily-life,hobbies,hobbies,low,"story / fantasy creature: entertainment (films, tales), loosely a hobby","olağanüstü şeyler yapan gizemli güç, sihir",The story is full of magic.
+483,a2-mask,MASK,A2,daily-life,hobbies,hobbies,low,"story / fantasy creature: entertainment (films, tales), loosely a hobby","yüze takılan, kimliği gizleyen örtü",He wore a mask at the party.
+484,a2-monster,MONSTER,A2,daily-life,hobbies,hobbies,low,"story / fantasy creature: entertainment (films, tales), loosely a hobby","korkunç ve garip görünümlü masal yaratığı, canavar",There is a monster in the story.
+485,a2-puppet,PUPPET,A2,daily-life,hobbies,hobbies,high,hobby / entertainment word,"iplerle ya da elle oynatılan oyuncak bebek, kukla",The children watch a puppet show.
+486,a2-puzzle,PUZZLE,A2,daily-life,hobbies,hobbies,high,hobby / entertainment word,parçaları birleştirilerek çözülen oyun,This puzzle has a hundred pieces.
+487,a2-swing,SWING,A2,daily-life,hobbies,hobbies,high,hobby / entertainment word,çocuk parkında iki ipten sarkan salıncak,The child plays on the swing.
+488,a2-zombie,ZOMBIE,A2,daily-life,hobbies,hobbies,low,"story / fantasy creature: entertainment (films, tales), loosely a hobby",filmlerde ölüden dirilen korkunç yaratık,The zombie in the film is ugly.
+489,b1-gardening,GARDENING,B1,daily-life,hobbies,hobbies,high,hobby / entertainment word,bahçede bitki yetiştirme işi,Gardening is my father's hobby.
+490,b1-jigsaw,JIGSAW,B1,daily-life,hobbies,hobbies,high,hobby / entertainment word,küçük parçaları birleştirerek resim yapılan oyun,We finished the jigsaw in two hours.
+491,b1-leisure,LEISURE,B1,daily-life,hobbies,hobbies,high,hobby / entertainment word,boş zaman,What do you do in your leisure time?
+492,b2-gamble,GAMBLE,B2,daily-life,hobbies,hobbies,low,gambling as a pastime; also a crime / money word,"şansa güvenip para oynamak, kumar oynamak",He lost his savings when he began to gamble at the casino.
+493,b2-knit,KNIT,B2,daily-life,hobbies,hobbies,high,hobby / entertainment word,yün ipliğini şişle örmek,My grandmother used to knit scarves for the whole family.
+494,b1-blizzard,BLIZZARD,B1,daily-life,animals,animals,high,nature word,çok şiddetli kar fırtınası,The blizzard closed all the roads.
+495,b1-cactus,CACTUS,B1,daily-life,animals,animals,low,"garden / plant words: fit ""nature"" loosely",çölde yetişen dikenli bitki,The cactus needs very little water.
+496,b1-climate,CLIMATE,B1,daily-life,animals,animals,high,nature word,bir bölgenin uzun süreli hava koşulları,Turkey has a warm climate.
+497,b1-environment,ENVIRONMENT,B1,daily-life,animals,animals,high,nature word,doğayı da kapsayan yaşam çevresi,We must save the environment.
+498,a2-flood,FLOOD,B1,daily-life,animals,animals,high,nature word,"suyun kara üstüne taşması, sel",The flood covered the road.
+499,b1-greenhouse,GREENHOUSE,B1,daily-life,animals,animals,low,"garden / plant words: fit ""nature"" loosely",bitki yetiştirilen camdan yapılmış sıcak yapı,We grow tomatoes in the greenhouse.
+500,a2-hurricane,HURRICANE,B1,daily-life,animals,animals,high,nature word,"çok şiddetli tropik fırtına, kasırga",The hurricane came to the island.
+501,b1-jasmine,JASMINE,B1,daily-life,animals,animals,low,"garden / plant words: fit ""nature"" loosely",beyaz ve çok güzel kokulu bir çiçek,The garden smells of jasmine in summer.
+502,b1-lawn,LAWN,B1,daily-life,animals,animals,low,"garden / plant words: fit ""nature"" loosely",evin önündeki kısa kesilmiş çimenlik,He cuts the lawn every Sunday.
+503,b1-orchard,ORCHARD,B1,daily-life,animals,animals,low,"garden / plant words: fit ""nature"" loosely",meyve ağaçlarının dikildiği bahçe,They pick apples in the orchard.
+504,b1-pollution,POLLUTION,B1,daily-life,animals,animals,high,nature word,"hava, su ve toprağın kirlenmesi",Air pollution is a problem in big cities.
+505,b1-recycle,RECYCLE,B1,daily-life,animals,animals,low,"garden / plant words: fit ""nature"" loosely",kullanılmış maddeleri yeniden kullanıma kazandırmak,We recycle paper and glass at home.
+506,b1-thunderstorm,THUNDERSTORM,B1,daily-life,animals,animals,high,nature word,"şimşek, gök gürültüsü ve yağmurlu fırtına",We stayed inside during the thunderstorm.
+507,b1-tulip,TULIP,B1,daily-life,animals,animals,high,nature word,"soğanından yetişen, Hollanda ile anılan bahar çiçeği",A red tulip grew in the garden.
+508,b2-blaze,BLAZE,B2,daily-life,ideas,ideas,low,"nature word moved to ideas per owner decision (animals ends at B1); weak topical fit, check","büyük, şiddetli yangın",Firefighters fought the blaze all night.
+509,b2-crystal,CRYSTAL,B2,daily-life,ideas,ideas,low,"nature word moved to ideas per owner decision (animals ends at B1); weak topical fit, check","şeffaf, sert mineral parçası; kristal",The glass looks like crystal.
+510,b2-extinct,EXTINCT,B2,daily-life,ideas,ideas,high,"nature word (to ideas, animals ends at B1)",soyu tükenmiş,Dinosaurs are extinct.
+511,b2-hazy,HAZY,B2,daily-life,ideas,ideas,low,"nature word moved to ideas per owner decision (animals ends at B1); weak topical fit, check",sisli veya belirsiz,The morning was hazy.
+512,b2-hedge,HEDGE,B2,daily-life,ideas,ideas,low,"nature word moved to ideas per owner decision (animals ends at B1); weak topical fit, check","bahçeyi çeviren, düzenli kesilen sık çalı sırası",A tall hedge separates our garden from the road.
+513,b2-meadow,MEADOW,B2,daily-life,ideas,ideas,low,"nature word moved to ideas per owner decision (animals ends at B1); weak topical fit, check",çiçekli otlarla kaplı açık arazi; çayır,Wildflowers covered the meadow behind the old farmhouse.
+514,b2-orchid,ORCHID,B2,daily-life,ideas,ideas,low,"nature word moved to ideas per owner decision (animals ends at B1); weak topical fit, check","gösterişli çiçekleriyle bilinen, saksıda yetişen bitki",The orchid on the windowsill blooms once a year.
+515,b2-pollute,POLLUTE,B2,daily-life,ideas,ideas,high,"nature word (to ideas, animals ends at B1)",çevreyi kirletmek,Factories pollute the river.
+516,b2-quake,QUAKE,B2,daily-life,ideas,ideas,low,"nature word moved to ideas per owner decision (animals ends at B1); weak topical fit, check","isim: yer sarsıntısı, ""earthquake""in kısa hali",The quake shook the whole region at dawn.
+517,b2-topaz,TOPAZ,B2,daily-life,ideas,ideas,low,"nature word moved to ideas per owner decision (animals ends at B1); weak topical fit, check",sarı renkli değerli bir taş,The museum displayed a huge topaz found in the mountains.
+518,b2-twilight,TWILIGHT,B2,daily-life,ideas,ideas,low,"nature word moved to ideas per owner decision (animals ends at B1); weak topical fit, check",güneş battıktan sonraki loş ışık; alacakaranlık,The mountains turned purple in the twilight.
+519,b2-zinc,ZINC,B2,daily-life,ideas,ideas,low,"nature word moved to ideas per owner decision (animals ends at B1); weak topical fit, check",paslanmayı önleyen gümüşi mavi metal,Workers coat the steel with zinc to protect it from rust.
+520,c1-biodiversity,BIODIVERSITY,C1,school-work,ideas,ideas,high,"nature word (to ideas, animals ends at B1)",bir bölgedeki canlı türlerinin çeşitliliği,Forests protect the biodiversity of the region.
+521,c1-breed,BREED,C1,school-work,ideas,ideas,low,homograph (breed): example is horses = animals sense,hayvan yetiştirmek veya üretmek,Farmers here breed horses for racing.
+522,c1-contaminate,CONTAMINATE,C1,school-work,ideas,ideas,high,"nature word (to ideas, animals ends at B1)",bir şeyi zararlı maddeyle kirletmek,Waste can contaminate the drinking water.
+523,c1-deplete,DEPLETE,C1,school-work,ideas,ideas,low,"resource use (fish stock): ideas, borderline",kaynakları azaltıp tüketmek,Overfishing may deplete the stock of fish.
+524,c1-ecosystem,ECOSYSTEM,C1,school-work,ideas,ideas,high,"nature word (to ideas, animals ends at B1)",canlıların ve çevrenin oluşturduğu doğal bütün,Pollution can harm the whole ecosystem of a lake.
+525,c1-erode,ERODE,C1,school-work,ideas,ideas,high,"nature word (to ideas, animals ends at B1)",su veya rüzgârla yavaşça aşınmak,Rain will erode the soil on the hill.
+526,c1-fertile,FERTILE,C1,school-work,ideas,ideas,high,"nature word (to ideas, animals ends at B1)","toprak verimli, bol ürün veren",The river valley has fertile soil.
+527,c1-nocturnal,NOCTURNAL,C1,school-work,ideas,ideas,high,"nature word (to ideas, animals ends at B1)",(hayvan) geceleri etkin olan,Owls are nocturnal birds.
+528,c1-offspring,OFFSPRING,C1,school-work,ideas,ideas,high,"nature word (to ideas, animals ends at B1)",bir canlının yavruları veya çocukları,The bird protects its offspring.
+529,a1-paint,PAINT,A1,daily-life,hobbies,daily-life,low,"CSV said hobbies; keep in daily-life. example is painting a fence (a chore), not art",fırça ya da rulo ile boya sürmek,Mert will paint the fence.
+530,a1-top,TOP,A1,daily-life,clothes-shopping,daily-life,low,"CSV said clothes-shopping; keep in daily-life. example is the top of a ladder, not clothing",bir şeyin en üst kısmı,Ali is at the top of the ladder.
+531,a2-lend,LEND,A2,daily-life,clothes-shopping,daily-life,low,CSV said clothes-shopping; keep in daily-life. lending is not shopping; stage 3 (verbs),geri almak üzere birine bir şey vermek,Can you lend me a pencil?
+532,a2-style,STYLE,A2,daily-life,clothes-shopping,daily-life,low,"CSV said clothes-shopping; keep in daily-life. ""style"" is general (example: your style)",bir şeyin kendine özgü tarzı,I like your style.
+533,b1-aware,AWARE,B1,daily-life,feelings,daily-life,low,"CSV said feelings; keep in daily-life. general adjective, not an emotion or trait; stage 3 (adjectives)",bir durumun farkında olan,Are you aware of the problem?
+534,b1-brilliant,BRILLIANT,B1,school-work,feelings,school-work,low,"CSV said feelings; keep in school-work. general adjective, not an emotion or trait; stage 3 (adjectives)",çok zeki veya harika,She is a brilliant scientist.
+535,b1-bulb,BULB,B1,daily-life,animals,daily-life,low,"CSV said animals; keep in daily-life. electric light bulb / colour, not nature",elektrikle ışık veren cam lamba,The bulb in the kitchen is broken.
+536,b1-emergency,EMERGENCY,B1,daily-life,society-law,daily-life,low,CSV said society-law; keep in daily-life. not clearly law or society,hemen yardım gerektiren ani tehlike,Call 112 in an emergency.
+537,b1-gain,GAIN,B1,business,economy,business,low,"CSV said economy; keep in business. example is gaining skills or weight, not money","zamanla deneyim, beceri ya da kilo kazanmak",You can gain skills by working here.
+538,b1-happily,HAPPILY,B1,family-people,feelings,family-people,low,CSV said feelings; keep in family-people. adverb of manner; stage 3 (adjectives and adverbs),mutlu bir şekilde,They lived happily in a small house.
+539,b1-honestly,HONESTLY,B1,daily-life,feelings,daily-life,low,CSV said feelings; keep in daily-life. adverb of manner; stage 3 (adjectives and adverbs),"dürüstçe, açıkçası","Honestly, I did not like the film."
+540,b1-increase,INCREASE,B1,business,economy,business,low,CSV said economy; keep in business. general verb (prices increase),artmak veya artırmak,Prices increase every year.
+541,b1-independent,INDEPENDENT,B1,family-people,feelings,family-people,low,"CSV said feelings; keep in family-people. general adjective, not an emotion or trait; stage 3 (adjectives)","başkasına bağlı olmayan, bağımsız",She wants to be independent from her parents.
+542,b1-joker,JOKER,B1,daily-life,hobbies,daily-life,low,CSV said hobbies; keep in daily-life. not a hobby word (joker = funny person; juggle = manage tasks; novelty = newness),esprili şaka yapmayı seven kişi,Our uncle is a real joker at parties.
+543,b1-military,MILITARY,B1,daily-life,society-law,daily-life,low,CSV said society-law; keep in daily-life. not clearly law or society,orduyla ilgili,He did his military service last year.
+544,b1-negative,NEGATIVE,B1,daily-life,feelings,daily-life,low,"CSV said feelings; keep in daily-life. general adjective, not an emotion or trait; stage 3 (adjectives)","olumsuz, kötü yönde",Try not to be so negative.
+545,b1-nightmare,NIGHTMARE,B1,daily-life,feelings,daily-life,low,"CSV said feelings; keep in daily-life. a dream, not a feeling word",korkutucu kötü rüya,I had a nightmare last night.
+546,b1-positive,POSITIVE,B1,daily-life,feelings,daily-life,low,"CSV said feelings; keep in daily-life. general adjective, not an emotion or trait; stage 3 (adjectives)","olumlu, iyimser",She feels positive about life.
+547,b1-quantity,QUANTITY,B1,business,economy,business,low,CSV said economy; keep in business. general measure noun,sayılan ya da ölçülen nicelik,A large quantity of rice was sold.
+548,b1-rate,RATE,B1,business,economy,business,low,CSV said economy; keep in business. general measure noun (unemployment rate),bir şeyin ölçüsü veya oranı,The rate of people without jobs is falling.
+549,b1-sensible,SENSIBLE,B1,daily-life,feelings,daily-life,low,"CSV said feelings; keep in daily-life. Yalancı eşdeğerler card: ""sensible"" = reasonable/judgement, an adjective rather than a feeling; stage 3 word-class rule",mantıklı ve akıllıca davranan,It is sensible to wear a helmet.
+550,b1-threat,THREAT,B1,daily-life,society-law,daily-life,low,CSV said society-law; keep in daily-life. not clearly law or society,zarar verme ihtimali olan tehlike,The storm is a threat to the village.
+551,b1-uncomfortable,UNCOMFORTABLE,B1,daily-life,feelings,daily-life,low,"CSV said feelings; keep in daily-life. general adjective, not an emotion or trait; stage 3 (adjectives)","rahatsız hissettiren, rahat olmayan",This chair is very uncomfortable.
+552,b1-unpleasant,UNPLEASANT,B1,daily-life,feelings,daily-life,low,"CSV said feelings; keep in daily-life. general adjective, not an emotion or trait; stage 3 (adjectives)","hoşa gitmeyen, nahoş",There was an unpleasant smell in the room.
+553,b1-violet,VIOLET,B1,daily-life,animals,daily-life,low,"CSV said animals; keep in daily-life. electric light bulb / colour, not nature","mora yakın, açık mor renk",The wall was painted a soft violet colour.
+554,b1-weapon,WEAPON,B1,daily-life,society-law,daily-life,low,CSV said society-law; keep in daily-life. not clearly law or society,saldırı veya savunmada kullanılan silah,The police found a weapon in the car.
+555,b1-weird,WEIRD,B1,daily-life,feelings,daily-life,low,"CSV said feelings; keep in daily-life. general adjective, not an emotion or trait; stage 3 (adjectives)","tuhaf, garip",I had a weird dream last night.
+556,b2-asset,ASSET,B2,business,economy,business,low,"CSV said economy; keep in business. example is language skills, not finance",bir kişi veya şirketin değerli varlığı,Her language skills are a big asset.
+557,b2-blend,BLEND,B2,food-drink,food-drink,food-drink,high,CSV said food-drink; keep in food-drink. real food word: stays in food-drink (owner decision: not folded into body-health),birkaç şeyi karıştırıp birleştirmek,Blend the fruit with milk.
+558,b2-compliment,COMPLIMENT,B2,daily-life,feelings,daily-life,low,"CSV said feelings; keep in daily-life. speech act / movement / general adjective, not a feeling; stage 3 word class","birine söylenen hoş söz, iltifat",He gave me a nice compliment.
+559,b2-confess,CONFESS,B2,daily-life,feelings,daily-life,low,"CSV said feelings; keep in daily-life. speech act / movement / general adjective, not a feeling; stage 3 word class",yapılan hatayı itiraf etmek,He will confess that he broke the window.
+560,b2-confront,CONFRONT,B2,daily-life,society-law,daily-life,low,"CSV said society-law; keep in daily-life. example is not about law or society (fear, handshake, job offer, house)",bir sorunla veya kişiyle yüz yüze gelmek,You must confront your fear.
+561,b2-conscious,CONSCIOUS,B2,daily-life,feelings,daily-life,low,"CSV said feelings; keep in daily-life. speech act / movement / general adjective, not a feeling; stage 3 word class",bir şeyin farkında olan,She was conscious of the noise.
+562,b2-convention,CONVENTION,B2,daily-life,society-law,daily-life,low,"CSV said society-law; keep in daily-life. example is not about law or society (fear, handshake, job offer, house)",toplumun kabul ettiği gelenek; büyük toplantı,It is a social convention to shake hands.
+563,b2-distribute,DISTRIBUTE,B2,business,economy,business,low,CSV said economy; keep in business. general verb,bir şeyi insanlara paylaştırmak,They distribute food to poor families.
+564,b2-eel,EEL,B2,daily-life,ideas,daily-life,low,"CSV said ideas; keep in daily-life. an animal word: Hayvanlar ve doğa ends at B1 and ""Fikirler ve kavramlar"" would hide it; stays in its category until the word-class stage","yılana benzeyen, uzun ve kaygan nehir balığı",The eel slipped through his fingers and back into the river.
+565,b2-estimate,ESTIMATE,B2,business,economy,business,low,CSV said economy; keep in business. general verb,yaklaşık olarak hesaplamak,Can you estimate the cost of the trip?
+566,b2-gallon,GALLON,B2,food-drink,food-drink,food-drink,low,"CSV said food-drink; keep in food-drink. stays in food-drink for now; example is fuel / candy wrapper, not food (fate in stage 3)",yaklaşık dört litre ölçü birimi,The old car uses a gallon of fuel every thirty miles.
+567,b2-graceful,GRACEFUL,B2,daily-life,feelings,daily-life,low,"CSV said feelings; keep in daily-life. speech act / movement / general adjective, not a feeling; stage 3 word class",hareketleri akıcı ve narin,The dancer's graceful movements amazed the audience.
+568,b2-grumble,GRUMBLE,B2,daily-life,feelings,daily-life,low,"CSV said feelings; keep in daily-life. speech act / movement / general adjective, not a feeling; stage 3 word class",homurdanarak şikâyet etmek,He likes to grumble about cold coffee.
+569,b2-herbal,HERBAL,B2,food-drink,food-drink,food-drink,high,CSV said food-drink; keep in food-drink. real food word: stays in food-drink (owner decision: not folded into body-health),"bitkilerden elde edilen (çay, ilaç)",She drinks herbal tea before bed.
+570,b2-hesitate,HESITATE,B2,daily-life,feelings,daily-life,low,"CSV said feelings; keep in daily-life. speech act / movement / general adjective, not a feeling; stage 3 word class",karar verirken duraksamak,Don't hesitate to call me.
+571,b2-ignorant,IGNORANT,B2,daily-life,feelings,daily-life,low,"CSV said feelings; keep in daily-life. speech act / movement / general adjective, not a feeling; stage 3 word class","bilgisiz, haberi olmayan",He is ignorant of the rules.
+572,b2-jackal,JACKAL,B2,daily-life,ideas,daily-life,low,"CSV said ideas; keep in daily-life. an animal word: Hayvanlar ve doğa ends at B1 and ""Fikirler ve kavramlar"" would hide it; stays in its category until the word-class stage","kurda benzeyen, leşle beslenen yabani hayvan","A jackal howled somewhere in the dark, far from the camp."
+573,b2-juggle,JUGGLE,B2,daily-life,hobbies,daily-life,low,CSV said hobbies; keep in daily-life. not a hobby word (joker = funny person; juggle = manage tasks; novelty = newness),birkaç işi aynı anda yetiştirmeye çalışmak,She has to juggle work and school.
+574,b2-lobster,LOBSTER,B2,food-drink,food-drink,food-drink,high,CSV said food-drink; keep in food-drink. real food word: stays in food-drink (owner decision: not folded into body-health),"büyük pençeli, kırmızı kabuklu deniz canlısı",We ordered grilled lobster at a restaurant by the sea.
+575,b2-mansion,MANSION,B2,daily-life,society-law,daily-life,low,"CSV said society-law; keep in daily-life. example is not about law or society (fear, handshake, job offer, house)","bahçeli, çok büyük ve lüks ev; konak",A security guard patrols the mansion at night.
+576,b2-migrate,MIGRATE,B2,daily-life,society-law,daily-life,low,"CSV said society-law; keep in daily-life. example is birds migrating (nature, not society)",mevsimsel ya da toplu olarak göç etmek,Birds migrate south in winter.
+577,b2-mozzarella,MOZZARELLA,B2,food-drink,food-drink,food-drink,high,CSV said food-drink; keep in food-drink. real food word: stays in food-drink (owner decision: not folded into body-health),pizzada eriyen İtalyan beyaz peyniri,The chef recommended fresh mozzarella with tomatoes and basil.
+578,b2-mumble,MUMBLE,B2,daily-life,feelings,daily-life,low,"CSV said feelings; keep in daily-life. speech act / movement / general adjective, not a feeling; stage 3 word class",anlaşılmayacak kadar alçak sesle konuşmak,Please do not mumble; I cannot hear a word you say.
+579,b2-nibble,NIBBLE,B2,food-drink,food-drink,food-drink,high,CSV said food-drink; keep in food-drink. real food word: stays in food-drink (owner decision: not folded into body-health),ufak ufak ısırarak yemek,Guests like to nibble on olives while they wait for dinner.
+580,b2-novelty,NOVELTY,B2,daily-life,hobbies,daily-life,low,CSV said hobbies; keep in daily-life. not a hobby word (joker = funny person; juggle = manage tasks; novelty = newness),yeni olmanın verdiği ilginçlik,The novelty of the toy soon wore off.
+581,b2-nutrient,NUTRIENT,B2,food-drink,food-drink,food-drink,high,CSV said food-drink; keep in food-drink. food / health word: stays in food-drink,vücudun beslenmek için ihtiyaç duyduğu besin öğesi,This food has an important nutrient.
+582,b2-organic,ORGANIC,B2,food-drink,food-drink,food-drink,high,CSV said food-drink; keep in food-drink. real food word: stays in food-drink (owner decision: not folded into body-health),kimyasal gübre kullanılmadan yetiştirilen,We buy organic vegetables from the farmers' market.
+583,b2-otter,OTTER,B2,daily-life,ideas,daily-life,low,"CSV said ideas; keep in daily-life. an animal word: Hayvanlar ve doğa ends at B1 and ""Fikirler ve kavramlar"" would hide it; stays in its category until the word-class stage",suda yüzen kahverengi kürklü hayvan,An otter carried a fish up onto the river bank.
+584,b2-oyster,OYSTER,B2,food-drink,food-drink,food-drink,high,CSV said food-drink; keep in food-drink. real food word: stays in food-drink (owner decision: not folded into body-health),kabuğunun içinde inci yapabilen deniz hayvanı,The pearl was hidden inside a single oyster.
+585,b2-rejection,REJECTION,B2,daily-life,society-law,daily-life,low,"CSV said society-law; keep in daily-life. example is not about law or society (fear, handshake, job offer, house)",bir teklifin reddedilmesi,He could not accept the rejection.
+586,b2-tortoise,TORTOISE,B2,daily-life,ideas,daily-life,low,"CSV said ideas; keep in daily-life. an animal word: Hayvanlar ve doğa ends at B1 and ""Fikirler ve kavramlar"" would hide it; stays in its category until the word-class stage",sırtında kabuğu olan yavaş hayvan,A tortoise can live for more than a hundred years.
+587,b2-unaware,UNAWARE,B2,daily-life,feelings,daily-life,low,"CSV said feelings; keep in daily-life. speech act / movement / general adjective, not a feeling; stage 3 word class",bir şeyden haberi olmayan,He was unaware of the danger.
+588,b2-unbearable,UNBEARABLE,B2,daily-life,feelings,daily-life,low,"CSV said feelings; keep in daily-life. speech act / movement / general adjective, not a feeling; stage 3 word class",katlanılamayacak kadar kötü,The heat in the tiny room was unbearable.
+589,b2-warmth,WARMTH,B2,daily-life,feelings,daily-life,low,"CSV said feelings; keep in daily-life. speech act / movement / general adjective, not a feeling; stage 3 word class",sıcaklık veya sıcakkanlılık,I enjoyed the warmth of the fire.
+590,b2-wrapper,WRAPPER,B2,food-drink,food-drink,food-drink,low,"CSV said food-drink; keep in food-drink. stays in food-drink for now; example is fuel / candy wrapper, not food (fate in stage 3)",şeker ya da yiyecek paketinin dış kâğıdı,Please put the candy wrapper in the bin.
+591,c1-absurd,ABSURD,C1,school-work,feelings,school-work,low,"CSV said feelings; keep in school-work. general adjective (medical, weather, appearance...) not a feeling or trait; stage 3",saçma ve mantıksız,It is absurd to pay so much for a small cup of tea.
+592,c1-advocate,ADVOCATE,C1,school-work,society-law,school-work,low,CSV said society-law; keep in school-work. example is doctors and diet,bir fikri açıkça savunmak ve desteklemek,Doctors advocate a healthy diet for everyone.
+593,c1-benchmark,BENCHMARK,C1,business,economy,business,low,CSV said economy; keep in business. general or multi-sense word; stage 3,başkalarını karşılaştırmak için ölçüt,The test sets a benchmark for the whole industry.
+594,c1-benign,BENIGN,C1,school-work,feelings,school-work,low,"CSV said feelings; keep in school-work. general adjective (medical, weather, appearance...) not a feeling or trait; stage 3","zararsız, kötü huylu olmayan",The doctor said the lump was benign.
+595,c1-brutal,BRUTAL,C1,school-work,feelings,school-work,low,"CSV said feelings; keep in school-work. general adjective (medical, weather, appearance...) not a feeling or trait; stage 3",acımasız ve çok sert,The winter was brutal for the animals.
+596,c1-bulk,BULK,C1,business,economy,business,low,CSV said economy; keep in business. general or multi-sense word; stage 3,bir şeyin büyük kısmı veya yığın hacmi,The bulk of the work is already finished.
+597,c1-capitalize,CAPITALIZE,C1,business,economy,business,low,CSV said economy; keep in business. general or multi-sense word; stage 3,fırsattan yararlanmak,They hope to capitalize on the success.
+598,c1-consolidate,CONSOLIDATE,C1,business,economy,business,low,CSV said economy; keep in business. general or multi-sense word; stage 3,pekiştirmek; birkaç şeyi tek yapıda birleştirmek,The firm plans to consolidate its small offices.
+599,c1-daunting,DAUNTING,C1,school-work,feelings,school-work,low,"CSV said feelings; keep in school-work. general adjective (medical, weather, appearance...) not a feeling or trait; stage 3",korkutucu ve gözünü yıldıran,The exam seemed a daunting task.
+600,c1-discreet,DISCREET,C1,school-work,feelings,school-work,low,"CSV said feelings; keep in school-work. general adjective (medical, weather, appearance...) not a feeling or trait; stage 3",dikkatli ve gizliliğe saygılı,Please be discreet about this matter.
+601,c1-equity,EQUITY,C1,business,economy,business,low,CSV said economy; keep in business. general or multi-sense word; stage 3,"hakkaniyet, fırsat eşitliği; şirket hissesi",The group works for equity in education.
+602,c1-eradicate,ERADICATE,C1,school-work,ideas,school-work,low,CSV said ideas; keep in school-work. example is eradicating a disease; stage 3,bir şeyi kökünden yok etmek,The country hopes to eradicate the disease.
+603,c1-famine,FAMINE,C1,school-work,society-law,school-work,low,"CSV said society-law; keep in school-work. hunger / disaster; nature or society, no clear home",yaygın kıtlık ve açlık,The famine forced thousands to leave the region.
+604,c1-grim,GRIM,C1,school-work,feelings,school-work,low,"CSV said feelings; keep in school-work. general adjective (medical, weather, appearance...) not a feeling or trait; stage 3","korkunç, ümitsiz ve kasvetli",The doctor had grim news for the family.
+605,c1-leverage,LEVERAGE,C1,business,economy,business,low,CSV said economy; keep in business. general or multi-sense word; stage 3,bir kişiye üstünlük sağlayan güç,His fame gave him leverage in the talks.
+606,c1-liability,LIABILITY,C1,business,economy,business,low,CSV said economy; keep in business. general or multi-sense word; stage 3,yasal olarak üstlenilen sorumluluk,The company accepts no liability for lost items.
+607,c1-marginal,MARGINAL,C1,business,economy,business,low,CSV said economy; keep in business. general or multi-sense word; stage 3,"çok küçük, önemsiz düzeyde olan",There was only a marginal improvement in sales.
+608,c1-newcomer,NEWCOMER,C1,school-work,society-law,school-work,low,"CSV said society-law; keep in school-work. ""newcomer"" is a general noun (example: feeling lost)",bir yere yeni gelen kişi,"As a newcomer, she felt lost."
+609,c1-nominal,NOMINAL,C1,business,economy,business,low,CSV said economy; keep in business. general or multi-sense word; stage 3,"çok düşük, sembolik düzeyde",A nominal fee is charged for entry.
+610,c1-nonprofit,NONPROFIT,C1,business,economy,business,low,CSV said economy; keep in business. general or multi-sense word; stage 3,kâr amacı gütmeyen,She works for a nonprofit group.
+611,c1-offset,OFFSET,C1,business,economy,business,low,CSV said economy; keep in business. general or multi-sense word; stage 3,bir etkiyi dengeleyerek azaltmak,Savings will offset the higher rent.
+612,c1-outspoken,OUTSPOKEN,C1,school-work,feelings,school-work,low,"CSV said feelings; keep in school-work. general adjective (medical, weather, appearance...) not a feeling or trait; stage 3",düşüncesini açıkça söyleyen,She is an outspoken critic of the plan.
+613,c1-pledge,PLEDGE,C1,school-work,society-law,school-work,low,CSV said society-law; keep in school-work. general verb; example is a mayor and money,söz verip taahhüt etmek,The mayor will pledge more money for parks.
+614,c1-relentless,RELENTLESS,C1,school-work,feelings,school-work,low,"CSV said feelings; keep in school-work. general adjective (medical, weather, appearance...) not a feeling or trait; stage 3","durmayan, amansız",The relentless rain lasted three days.
+615,c1-sentiment,SENTIMENT,C1,school-work,feelings,school-work,low,"CSV said feelings; keep in school-work. means public opinion, an abstract noun",bir konudaki yaygın duygu veya görüş,Public sentiment turned against the plan.
+616,c1-tangible,TANGIBLE,C1,business,economy,business,low,CSV said economy; keep in business. general or multi-sense word; stage 3,"elle tutulur, somut",We need tangible proof of the progress.
+617,c1-tedious,TEDIOUS,C1,school-work,feelings,school-work,low,"CSV said feelings; keep in school-work. general adjective (medical, weather, appearance...) not a feeling or trait; stage 3","bitmek bilmeyen, tekdüze ve sıkıcı (iş)",Filling in forms is tedious.
+618,c1-textile,TEXTILE,C1,business,economy,business,low,CSV said economy; keep in business. general or multi-sense word; stage 3,dokuma kumaş,Cotton is the main textile made in the town.
+619,c1-timescale,TIMESCALE,C1,business,economy,business,low,CSV said economy; keep in business. general or multi-sense word; stage 3,bir işin planlanan süresi,We need a clear timescale for the work.
+620,c1-unconditional,UNCONDITIONAL,C1,school-work,feelings,school-work,low,"CSV said feelings; keep in school-work. general adjective (medical, weather, appearance...) not a feeling or trait; stage 3",hiçbir şart koşulmayan,The team gave unconditional support.
+621,c1-vigilant,VIGILANT,C1,school-work,feelings,school-work,low,"CSV said feelings; keep in school-work. general adjective (medical, weather, appearance...) not a feeling or trait; stage 3",tehlikeye karşı tetikte,Drivers must stay vigilant at night.
+622,c1-youthful,YOUTHFUL,C1,school-work,feelings,school-work,low,"CSV said feelings; keep in school-work. general adjective (medical, weather, appearance...) not a feeling or trait; stage 3","genç görünüşlü, dinç",She has a youthful face.

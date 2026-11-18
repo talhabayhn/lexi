@@ -1,0 +1,43 @@
+id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
+b2-referee,REFEREE,R,STARTS,noun,maçı yöneten ve kuralları uygulatan kişi,The referee blew his whistle and stopped the match.,Hakem düdüğünü çaldı ve maçı durdurdu.,3,,hobbies
+b2-encore,ENCORE,E,STARTS,noun,konserin sonunda seyircinin istediği ek parça,The band played one more song as an encore.,Grup bis olarak bir şarkı daha çaldı.,4,,hobbies
+b2-villain,VILLAIN,V,STARTS,noun,filmde ya da hikâyede kötü karakter,The villain in the film is both clever and cruel.,Filmdeki kötü adam hem zeki hem acımasız.,3,,hobbies
+b2-league,LEAGUE,L,STARTS,noun,takımların sezon boyunca yarıştığı organizasyon,Our team finished second in the league this year.,Takımımız bu yıl ligde ikinci oldu.,3,,hobbies
+b2-underdog,UNDERDOG,U,STARTS,noun,kazanma şansı düşük görülen takım ya da kişi,Nobody expected the underdog to win the final.,Kimse zayıf görülen takımın finali kazanacağını beklemiyordu.,4,,hobbies
+b2-dribble,DRIBBLE,D,STARTS,verb,topu yerde sürerek rakibin yanından geçmek,He can dribble past three defenders with ease.,Üç savunmacıyı kolayca geçerek topu sürebiliyor.,4,,hobbies
+b2-shareholder,SHAREHOLDER,S,STARTS,noun,bir şirketin hisselerine sahip olan kişi,Each shareholder received a letter about the merger.,Her hissedar birleşme hakkında bir mektup aldı.,4,,economy
+b2-merchant,MERCHANT,M,STARTS,noun,mal alıp satarak ticaret yapan kişi,The merchant sold silk and spices at the market.,Tüccar pazarda ipek ve baharat satıyordu.,3,,economy
+b2-broker,BROKER,B,STARTS,noun,alıcı ile satıcı arasında aracılık eden kişi,A broker helped them buy shares at a good price.,Bir komisyoncu iyi bir fiyata hisse almalarına yardım etti.,4,,economy
+b2-creditor,CREDITOR,C,STARTS,noun,borç veren ve parasını geri isteyen kişi ya da kurum,The creditor demanded payment within thirty days.,Alacaklı otuz gün içinde ödeme istedi.,4,,economy
+b2-earnings,EARNINGS,E,STARTS,noun,çalışarak kazanılan toplam gelir,His earnings rose sharply after he changed jobs.,İş değiştirdikten sonra kazancı hızla arttı.,4,,economy
+b2-dividend,DIVIDEND,D,STARTS,noun,şirketin ortaklara dağıttığı kâr payı,The company paid a higher dividend this year.,Şirket bu yıl daha yüksek kâr payı ödedi.,4,,economy
+b2-auction,AUCTION,A,STARTS,noun,malların en yüksek teklife satıldığı açık satış,The painting was sold at auction for a record price.,Tablo rekor bir fiyata açık artırmada satıldı.,3,,economy
+b2-overdraft,OVERDRAFT,O,STARTS,noun,hesapta olmayan parayı bankadan çekme durumu,He went into overdraft after paying the rent.,Kirayı ödedikten sonra hesabı eksiye düştü.,4,,economy
+b2-purchase,PURCHASE,P,STARTS,noun,para karşılığı bir şey alma işlemi,Keep the receipt as proof of purchase.,Satın alma kanıtı olarak fişi sakla.,3,,economy
+b2-downturn,DOWNTURN,D,STARTS,noun,ekonomik faaliyetlerin gerilediği dönem,The economic downturn forced many shops to close.,Ekonomik durgunluk birçok dükkânı kapanmaya zorladı.,4,,economy
+b2-payroll,PAYROLL,P,STARTS,noun,şirketin çalışanlara ödediği maaşların listesi,The company has more than fifty people on its payroll.,Şirketin maaş bordrosunda elliden fazla kişi var.,4,,economy
+b2-burglary,BURGLARY,B,STARTS,noun,eve ya da işyerine girip hırsızlık yapma suçu,The burglary happened while the family was on vacation.,"Hırsızlık, aile tatildeyken gerçekleşti.",4,,society-law
+b2-eviction,EVICTION,E,STARTS,noun,kiracıyı evden yasal olarak çıkarma işlemi,Many families face eviction when they cannot pay the rent.,Birçok aile kirayı ödeyemeyince tahliyeyle karşı karşıya kalıyor.,4,,society-law
+b2-gang,GANG,G,STARTS,noun,birlikte suç işleyen kişi grubu,The police arrested a gang that stole cars across the city.,Polis şehir genelinde araba çalan bir çeteyi yakaladı.,3,,society-law
+b2-hijack,HIJACK,H,STARTS,verb,uçak ya da aracı zorla ele geçirmek,Two men tried to hijack the plane but failed.,İki adam uçağı kaçırmaya çalıştı ama başaramadı.,4,,society-law
+b2-imprison,IMPRISON,I,STARTS,verb,birini hapse atıp özgürlüğünden yoksun bırakmak,The government can imprison anyone who breaks this law.,Hükümet bu yasayı çiğneyen herkesi hapse atabilir.,4,,society-law
+b2-liberty,LIBERTY,L,STARTS,noun,insanın özgürce yaşama ve davranma hakkı,Many people fought for liberty and equal rights.,Birçok insan özgürlük ve eşit haklar için savaştı.,4,,society-law
+b2-mugging,MUGGING,M,STARTS,noun,sokakta birine saldırıp parasını çalma,The mugging took place near the bus station.,Soygun otobüs durağının yakınında yaşandı.,4,,society-law
+b2-parliament,PARLIAMENT,P,STARTS,noun,yasaları çıkaran seçilmiş ulusal meclis,Parliament will vote on the new law tomorrow.,Meclis yarın yeni yasa için oy kullanacak.,3,,society-law
+b2-smuggle,SMUGGLE,S,STARTS,verb,bir şeyi yasadışı yoldan sınırdan geçirmek,They tried to smuggle gold across the border.,Altını sınırdan kaçak geçirmeye çalıştılar.,4,,society-law
+b2-unlawful,UNLAWFUL,U,STARTS,adj,yasalara ya da kurallara aykırı olan,The judge decided that the arrest was unlawful.,Yargıç tutuklamanın yasalara aykırı olduğuna karar verdi.,4,,society-law
+b2-wrongdoing,WRONGDOING,W,STARTS,noun,yasaya veya ahlaka aykırı davranış,The company denied any wrongdoing in the case.,Şirket davada herhangi bir kusur işlediğini reddetti.,4,,society-law
+b2-trial,TRIAL,T,STARTS,noun,suçlamanın mahkemede incelenip karara bağlanması,His trial will begin next month in the capital.,Davası gelecek ay başkentte başlayacak.,3,,society-law
+b2-defendant,DEFENDANT,D,STARTS,noun,mahkemede hakkında dava açılmış kişi,The defendant said that he was not guilty.,Sanık suçlu olmadığını söyledi.,4,,society-law
+b2-robbery,ROBBERY,R,STARTS,noun,silah ya da şiddet kullanarak para çalma,Two men were arrested for the bank robbery.,İki adam banka soygunu nedeniyle tutuklandı.,3,,society-law
+b2-activist,ACTIVIST,A,STARTS,noun,toplumsal ya da siyasi değişim için çalışan kişi,The activist spoke about climate change at the meeting.,Aktivist toplantıda iklim değişikliğinden söz etti.,4,,society-law
+b2-cabinet,CABINET,C,STARTS,noun,bakanlardan oluşan hükümet kurulu,The cabinet met to discuss the new budget plan.,Bakanlar kurulu yeni bütçe planını görüşmek için toplandı.,4,,society-law
+c1-quintet,QUINTET,Q,STARTS,noun,beş çalgıcı ya da şarkıcıdan oluşan topluluk,A jazz quintet played in the hotel lobby every night.,Bir caz beşlisi her gece otel lobisinde çalıyordu.,4,,hobbies
+c1-knockout,KNOCKOUT,K,STARTS,noun,boksta rakibi yere serip kazanılan galibiyet,He won the fight by a knockout in the third round.,Dövüşü üçüncü rauntta nakavtla kazandı.,4,,hobbies
+c1-virtuoso,VIRTUOSO,V,STARTS,noun,çalgısını olağanüstü ustalıkla çalan sanatçı,She became a famous violin virtuoso at the age of twenty.,Yirmi yaşında ünlü bir keman virtüözü oldu.,5,,hobbies
+c1-ensemble,ENSEMBLE,E,STARTS,noun,birlikte çalan ya da oynayan küçük topluluk,The string ensemble performed at the opening ceremony.,Yaylı çalgılar topluluğu açılış töreninde sahne aldı.,4,,hobbies
+c1-improvise,IMPROVISE,I,STARTS,verb,önceden hazırlanmadan anında çalmak ya da oynamak,The pianist began to improvise a new melody.,Piyanist yeni bir melodiyi doğaçlama çalmaya başladı.,4,,hobbies
+c1-lineup,LINEUP,L,STARTS,noun,sahneye çıkacak sanatçıların ya da oyuncuların listesi,This year's festival lineup includes several famous bands.,Bu yılki festival programında birkaç ünlü grup var.,4,,hobbies
+c1-upbeat,UPBEAT,U,STARTS,adj,"neşeli, enerjik ve olumlu havada olan",The band played an upbeat song to cheer up the crowd.,Grup kalabalığı neşelendirmek için hareketli bir şarkı çaldı.,4,,hobbies
+c1-hooligan,HOOLIGAN,H,STARTS,noun,spor maçlarında şiddet çıkaran taraftar,The hooligan was banned from every stadium for five years.,Holigan beş yıl boyunca bütün stadyumlardan men edildi.,4,,hobbies
+c1-offside,OFFSIDE,O,STARTS,adj,futbolda kural dışı ileri konumda olan,The goal was disallowed because he was offside.,"Gol, ofsaytta olduğu için iptal edildi.",4,,hobbies

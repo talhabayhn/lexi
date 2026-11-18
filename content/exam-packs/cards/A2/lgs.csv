@@ -13,22 +13,22 @@ a2-bully,BULLY,B,STARTS,noun,kendinden güçsüzlere sürekli eziyet eden kişi,
 a2-fan,FAN,F,STARTS,noun,bir şarkıcıya ya da takıma tutkuyla bağlı hayran,Mert is a big fan of that football club.,Mert o futbol kulübünün büyük bir hayranı.,1,exam:lgs,daily-life
 a2-mall,MALL,M,STARTS,noun,içinde pek çok mağaza bulunan büyük kapalı çarşı,We met at the mall on Saturday afternoon.,Cumartesi öğleden sonra alışveriş merkezinde buluştuk.,1,exam:lgs,city-transport
 a2-comic,COMIC,C,STARTS,noun,resimli konuşma balonlarıyla anlatılan hikâye dergisi,Emre reads a comic before he goes to sleep.,Emre uyumadan önce bir çizgi roman okur.,2,exam:lgs,daily-life
-a2-sporty,SPORTY,S,STARTS,adj,spor yapmayı seven ve formda olan,Zeynep is very sporty; she runs every morning.,Zeynep çok sportif; her sabah koşar.,2,exam:lgs,sports
+a2-sporty,SPORTY,S,STARTS,adj,spor yapmayı seven ve formda olan,Zeynep is very sporty; she runs every morning.,Zeynep çok sportif; her sabah koşar.,2,exam:lgs,hobbies
 a2-hardworking,HARDWORKING,H,STARTS,adj,işine ya da derslerine çok emek veren,Selin is a hardworking student.,Selin çalışkan bir öğrencidir.,2,exam:lgs,school-work
 a2-sociable,SOCIABLE,S,STARTS,adj,başkalarıyla vakit geçirmekten hoşlanan,Deniz is sociable and talks to everyone at parties.,Deniz girişkendir ve partilerde herkesle konuşur.,3,exam:lgs,family-people
 a2-awesome,AWESOME,A,STARTS,adj,"günlük dilde: harika, müthiş",Your new bike is awesome!,Yeni bisikletin müthiş!,2,exam:lgs,daily-life
 a2-dislike,DISLIKE,D,STARTS,verb,bir şeyden hoşlanmamak,"I dislike cold weather, so I love summer.","Soğuk havadan hoşlanmam, bu yüzden yazı severim.",2,exam:lgs,daily-life
 a2-fond,FOND,F,STARTS,adj,"bir şeye ya da birine düşkün, sevgi besleyen",My grandma is fond of old songs.,Büyükannem eski şarkılara düşkündür.,3,exam:lgs,daily-life
 a2-interested,INTERESTED,I,STARTS,adj,bir konuya merak ve ilgi duyan,Elif is interested in photography.,Elif fotoğrafçılıkla ilgileniyor.,1,exam:lgs,daily-life
-a2-choir,CHOIR,C,STARTS,noun,birlikte şarkı söyleyen kişilerden oluşan grup,Ayşe sings in the school choir.,Ayşe okul korosunda şarkı söylüyor.,3,exam:lgs,music
-a2-teammate,TEAMMATE,T,STARTS,noun,aynı takımda oynadığın kişi,My teammate passed me the ball and I scored.,Takım arkadaşım bana pas verdi ve gol attım.,2,exam:lgs,sports
+a2-choir,CHOIR,C,STARTS,noun,birlikte şarkı söyleyen kişilerden oluşan grup,Ayşe sings in the school choir.,Ayşe okul korosunda şarkı söylüyor.,3,exam:lgs,hobbies
+a2-teammate,TEAMMATE,T,STARTS,noun,aynı takımda oynadığın kişi,My teammate passed me the ball and I scored.,Takım arkadaşım bana pas verdi ve gol attım.,2,exam:lgs,hobbies
 a2-video-game,VIDEO GAME,V,STARTS,phrase,ekranda oynanan elektronik oyun,Mert plays a video game after his homework.,Mert ödevinden sonra bir video oyunu oynar.,1,exam:lgs,daily-life
 a2-sitcom,SITCOM,S,STARTS,noun,aynı karakterlerle süren komik televizyon dizisi,We watch a funny sitcom every Friday evening.,Her cuma akşamı komik bir durum komedisi izleriz.,3,exam:lgs,daily-life
 a2-thriller,THRILLER,T,STARTS,noun,izleyeni gerilimde tutan heyecanlı film ya da kitap,Ali stayed up late to finish the thriller.,Ali gerilim romanını bitirmek için geç saate kadar oturdu.,3,exam:lgs,daily-life
-a2-classical,CLASSICAL,C,STARTS,adj,Mozart gibi bestecilerin geleneksel müziği için,My dad listens to classical music in the car.,Babam arabada klasik müzik dinler.,2,exam:lgs,music
-a2-playlist,PLAYLIST,P,STARTS,noun,sırayla çalınmak üzere seçilmiş şarkı listesi,I made a playlist for our road trip.,Yol gezimiz için bir çalma listesi hazırladım.,2,exam:lgs,music
-a2-lyrics,LYRICS,L,STARTS,noun,bir şarkının sözleri,Deniz learned the lyrics in one day.,Deniz şarkı sözlerini bir günde öğrendi.,3,exam:lgs,music
-a2-karaoke,KARAOKE,K,STARTS,noun,ekrandaki sözlere bakarak müzik eşliğinde şarkı söyleme,We sang karaoke at Selin's birthday party.,Selin'in doğum günü partisinde karaoke yaptık.,2,exam:lgs,music
+a2-classical,CLASSICAL,C,STARTS,adj,Mozart gibi bestecilerin geleneksel müziği için,My dad listens to classical music in the car.,Babam arabada klasik müzik dinler.,2,exam:lgs,hobbies
+a2-playlist,PLAYLIST,P,STARTS,noun,sırayla çalınmak üzere seçilmiş şarkı listesi,I made a playlist for our road trip.,Yol gezimiz için bir çalma listesi hazırladım.,2,exam:lgs,hobbies
+a2-lyrics,LYRICS,L,STARTS,noun,bir şarkının sözleri,Deniz learned the lyrics in one day.,Deniz şarkı sözlerini bir günde öğrendi.,3,exam:lgs,hobbies
+a2-karaoke,KARAOKE,K,STARTS,noun,ekrandaki sözlere bakarak müzik eşliğinde şarkı söyleme,We sang karaoke at Selin's birthday party.,Selin'in doğum günü partisinde karaoke yaptık.,2,exam:lgs,hobbies
 a2-knitting,KNITTING,K,STARTS,noun,şiş ve yünle örgü örme işi,My aunt taught me knitting last winter.,Teyzem geçen kış bana örgü örmeyi öğretti.,3,exam:lgs,daily-life
 a2-junk-food,JUNK FOOD,J,STARTS,phrase,"yağlı, şekerli ve besleyici olmayan hazır yiyecek",Teenagers should not eat junk food every day.,Gençler her gün abur cubur yememeli.,2,exam:lgs,food-drink
 a2-social-media,SOCIAL MEDIA,S,STARTS,phrase,insanların paylaşım yaptığı internet platformları,Zeynep spends an hour on social media every day.,Zeynep her gün bir saatini sosyal ağlarda geçiriyor.,2,exam:lgs,daily-life
@@ -130,30 +130,30 @@ a2-webcam,WEBCAM,W,STARTS,noun,bilgisayara bağlı küçük kamera,Turn on your 
 a2-microphone,MICROPHONE,M,STARTS,noun,sesi kaydeden ya da yükselten alet,"The microphone is not working, so we cannot hear you.","Mikrofon çalışmıyor, bu yüzden seni duyamıyoruz.",2,exam:lgs,daily-life
 a2-browse,BROWSE,B,STARTS,verb,internette sayfaları rastgele gezmek,I like to browse music websites at the weekend.,Hafta sonu müzik sitelerinde gezinmeyi severim.,4,exam:lgs,daily-life
 a2-headset,HEADSET,H,STARTS,noun,mikrofonlu kulaklık,Gamers wear a headset to talk to their team.,Oyuncular takımlarıyla konuşmak için mikrofonlu kulaklık takar.,3,exam:lgs,daily-life
-a2-bungee-jumping,BUNGEE JUMPING,B,STARTS,phrase,ayağa bağlı lastik iple yüksekten atlama sporu,Bungee jumping from a bridge is not for me.,Köprüden lastik iple atlamak bana göre değil.,3,exam:lgs,sports
-a2-paragliding,PARAGLIDING,P,STARTS,noun,kanat biçimli paraşütle dağdan süzülme sporu,We watched people paragliding over Ölüdeniz.,Ölüdeniz üzerinde yamaç paraşütü yapan insanları izledik.,3,exam:lgs,sports
-a2-skydiving,SKYDIVING,S,STARTS,noun,uçaktan atlayıp paraşütle inme sporu,My uncle tried skydiving on his fortieth birthday.,Amcam kırkıncı doğum gününde paraşütle atlamayı denedi.,3,exam:lgs,sports
-a2-rafting,RAFTING,R,STARTS,noun,şişme botla hızlı akan nehirde ilerleme sporu,We went rafting on the Köprüçay River.,Köprüçay'da rafting yaptık.,3,exam:lgs,sports
-a2-scuba-diving,SCUBA DIVING,S,STARTS,phrase,oksijen tüpüyle suyun derinliklerine dalma,Scuba diving lets you see fish up close.,Tüplü dalış balıkları yakından görmeni sağlar.,3,exam:lgs,sports
-a2-surfing,SURFING,S,STARTS,noun,dalgaların üstünde tahtayla kayma sporu,Surfing is a favorite sport in Alaçatı.,Alaçatı'da sörf sevilen bir spordur.,2,exam:lgs,sports
-a2-skiing,SKIING,S,STARTS,noun,karlı dağdan kayaklarla kayma sporu,We go skiing on Uludağ every winter.,Her kış Uludağ'da kayak yaparız.,2,exam:lgs,sports
-a2-caving,CAVING,C,STARTS,noun,mağaraları keşfetme etkinliği,Caving is my uncle's hobby.,Mağaracılık amcamın hobisi.,4,exam:lgs,sports
-a2-kayaking,KAYAKING,K,STARTS,noun,tek kişilik dar teknede kürek çekme sporu,Kayaking on the lake was fun.,Gölde kano yapmak eğlenceliydi.,3,exam:lgs,sports
-a2-sailing,SAILING,S,STARTS,noun,rüzgârla ilerleyen teknede yol alma sporu,Sailing in the Aegean is a great summer hobby.,Ege'de yelken açmak harika bir yaz hobisidir.,3,exam:lgs,sports
-a2-risky,RISKY,R,STARTS,adj,tehlike ya da kayıp ihtimali taşıyan,It is risky to swim in a rough sea.,Dalgalı denizde yüzmek risklidir.,3,exam:lgs,sports
-a2-thrilling,THRILLING,T,STARTS,adj,"insanı heyecandan titreten, çok heyecanlı",The roller coaster ride was thrilling.,Hız treni yolculuğu çok heyecanlıydı.,3,exam:lgs,sports
+a2-bungee-jumping,BUNGEE JUMPING,B,STARTS,phrase,ayağa bağlı lastik iple yüksekten atlama sporu,Bungee jumping from a bridge is not for me.,Köprüden lastik iple atlamak bana göre değil.,3,exam:lgs,hobbies
+a2-paragliding,PARAGLIDING,P,STARTS,noun,kanat biçimli paraşütle dağdan süzülme sporu,We watched people paragliding over Ölüdeniz.,Ölüdeniz üzerinde yamaç paraşütü yapan insanları izledik.,3,exam:lgs,hobbies
+a2-skydiving,SKYDIVING,S,STARTS,noun,uçaktan atlayıp paraşütle inme sporu,My uncle tried skydiving on his fortieth birthday.,Amcam kırkıncı doğum gününde paraşütle atlamayı denedi.,3,exam:lgs,hobbies
+a2-rafting,RAFTING,R,STARTS,noun,şişme botla hızlı akan nehirde ilerleme sporu,We went rafting on the Köprüçay River.,Köprüçay'da rafting yaptık.,3,exam:lgs,hobbies
+a2-scuba-diving,SCUBA DIVING,S,STARTS,phrase,oksijen tüpüyle suyun derinliklerine dalma,Scuba diving lets you see fish up close.,Tüplü dalış balıkları yakından görmeni sağlar.,3,exam:lgs,hobbies
+a2-surfing,SURFING,S,STARTS,noun,dalgaların üstünde tahtayla kayma sporu,Surfing is a favorite sport in Alaçatı.,Alaçatı'da sörf sevilen bir spordur.,2,exam:lgs,hobbies
+a2-skiing,SKIING,S,STARTS,noun,karlı dağdan kayaklarla kayma sporu,We go skiing on Uludağ every winter.,Her kış Uludağ'da kayak yaparız.,2,exam:lgs,hobbies
+a2-caving,CAVING,C,STARTS,noun,mağaraları keşfetme etkinliği,Caving is my uncle's hobby.,Mağaracılık amcamın hobisi.,4,exam:lgs,hobbies
+a2-kayaking,KAYAKING,K,STARTS,noun,tek kişilik dar teknede kürek çekme sporu,Kayaking on the lake was fun.,Gölde kano yapmak eğlenceliydi.,3,exam:lgs,hobbies
+a2-sailing,SAILING,S,STARTS,noun,rüzgârla ilerleyen teknede yol alma sporu,Sailing in the Aegean is a great summer hobby.,Ege'de yelken açmak harika bir yaz hobisidir.,3,exam:lgs,hobbies
+a2-risky,RISKY,R,STARTS,adj,tehlike ya da kayıp ihtimali taşıyan,It is risky to swim in a rough sea.,Dalgalı denizde yüzmek risklidir.,3,exam:lgs,hobbies
+a2-thrilling,THRILLING,T,STARTS,adj,"insanı heyecandan titreten, çok heyecanlı",The roller coaster ride was thrilling.,Hız treni yolculuğu çok heyecanlıydı.,3,exam:lgs,hobbies
 a2-frightening,FRIGHTENING,F,STARTS,adj,"korku veren, ürkütücü","The film was frightening, so I closed my eyes.","Film ürkütücüydü, bu yüzden gözlerimi kapattım.",3,exam:lgs,daily-life
 a2-terrifying,TERRIFYING,T,STARTS,adj,"insanı dehşete düşüren, çok korkutucu",That big dog is terrifying.,O büyük köpek çok korkutucu.,3,exam:lgs,daily-life
 a2-scared,SCARED,S,STARTS,adj,"korkmuş, ürkmüş",My little brother is scared of the dark.,Küçük erkek kardeşim karanlıktan korkar.,1,exam:lgs,daily-life
-a2-parachute,PARACHUTE,P,STARTS,noun,havadan yavaşça inmeye yarayan büyük şemsiye biçimli kumaş,The parachute opened at two thousand meters.,Paraşüt iki bin metrede açıldı.,3,exam:lgs,sports
-a2-instructor,INSTRUCTOR,I,STARTS,noun,bir sporu ya da beceriyi öğreten eğitmen,Our diving instructor checked our tanks.,Dalış eğitmenimiz tüplerimizi kontrol etti.,3,exam:lgs,sports
-a2-challenging,CHALLENGING,C,STARTS,adj,zor ama insanı geliştiren,The last part of the trek was challenging.,Yürüyüşün son bölümü zorlayıcıydı.,4,exam:lgs,sports
-a2-adrenaline,ADRENALINE,A,STARTS,noun,heyecan ve korku anında salgılanan hormon,Extreme sports give you a rush of adrenaline.,Ekstrem sporlar insana adrenalin patlaması yaşatır.,4,exam:lgs,sports
-a2-goggles,GOGGLES,G,STARTS,noun,suda ya da karda gözü koruyan özel gözlük,Wear goggles in the swimming pool.,Yüzme havuzunda deniz gözlüğü tak.,3,exam:lgs,sports
+a2-parachute,PARACHUTE,P,STARTS,noun,havadan yavaşça inmeye yarayan büyük şemsiye biçimli kumaş,The parachute opened at two thousand meters.,Paraşüt iki bin metrede açıldı.,3,exam:lgs,hobbies
+a2-instructor,INSTRUCTOR,I,STARTS,noun,bir sporu ya da beceriyi öğreten eğitmen,Our diving instructor checked our tanks.,Dalış eğitmenimiz tüplerimizi kontrol etti.,3,exam:lgs,hobbies
+a2-challenging,CHALLENGING,C,STARTS,adj,zor ama insanı geliştiren,The last part of the trek was challenging.,Yürüyüşün son bölümü zorlayıcıydı.,4,exam:lgs,hobbies
+a2-adrenaline,ADRENALINE,A,STARTS,noun,heyecan ve korku anında salgılanan hormon,Extreme sports give you a rush of adrenaline.,Ekstrem sporlar insana adrenalin patlaması yaşatır.,4,exam:lgs,hobbies
+a2-goggles,GOGGLES,G,STARTS,noun,suda ya da karda gözü koruyan özel gözlük,Wear goggles in the swimming pool.,Yüzme havuzunda deniz gözlüğü tak.,3,exam:lgs,hobbies
 a2-cliff,CLIFF,C,STARTS,noun,denize ya da vadiye bakan dik kaya yüzü,The house stands on top of a cliff.,Ev bir uçurumun tepesinde duruyor.,3,exam:lgs,travel
 a2-canyon,CANYON,C,STARTS,noun,iki yanı dik yamaçlı derin vadi,We visited Saklıkent Canyon in July.,Temmuzda Saklıkent Kanyonu'nu ziyaret ettik.,3,exam:lgs,travel
 a2-peak,PEAK,P,STARTS,noun,"bir dağın en yüksek noktası, zirve",The climbers reached the peak at noon.,Dağcılar öğlen zirveye ulaştı.,3,exam:lgs,travel
-a2-gear,GEAR,G,STARTS,noun,bir etkinlik için gereken alet ve giysiler,Mert forgot his football gear at home.,Mert futbol malzemelerini evde unuttu.,4,exam:lgs,sports
+a2-gear,GEAR,G,STARTS,noun,bir etkinlik için gereken alet ve giysiler,Mert forgot his football gear at home.,Mert futbol malzemelerini evde unuttu.,4,exam:lgs,hobbies
 a2-unforgettable,UNFORGETTABLE,U,STARTS,adj,hiç unutulmayacak kadar etkileyici,Our trip to Cappadocia was unforgettable.,Kapadokya gezimiz unutulmazdı.,3,exam:lgs,travel
 a2-trekking,TREKKING,T,STARTS,noun,dağlık bölgelerde uzun yürüyüş yapma,Trekking on the Lycian Way takes many days.,Likya Yolu'nda doğa yürüyüşü günlerce sürer.,4,exam:lgs,travel
 a2-sightseeing,SIGHTSEEING,S,STARTS,noun,bir yerin ünlü yerlerini gezip görme,We went sightseeing in Rome.,Roma'da şehri gezdik.,2,exam:lgs,travel

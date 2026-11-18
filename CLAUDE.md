@@ -104,6 +104,10 @@ iOS: open `iosApp/iosApp.xcodeproj` in Xcode and run. (Update this section if ta
 - After each ROADMAP task group, give the product owner a short Turkish status: what landed, what is next,
   anything that needs their action (e.g. a Mac check).
 
+### Release batching
+
+Do not cut a TestFlight / Play build after every task. Accumulate finished work and cut one build per batch. Agents never tag or bump the version on their own: when a batch is done (code-reviewer APPROVE, CI green on main), report "release candidate ready" with the list of changes and wait for the owner's explicit "GO RELEASE". Production publishing stays in the store consoles (owner only).
+
 ### Decisions and docs
 
 - Decide yourself using `docs/ARCHITECTURE.md`, the ADRs and best practice; record the decision in the commit
