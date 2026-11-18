@@ -1,5 +1,7 @@
 package dev.talhabayhan.lexi.feature.home
 
+import com.github.takahirom.roborazzi.RoborazziOptions
+import com.github.takahirom.roborazzi.RoborazziTaskType
 import com.github.takahirom.roborazzi.captureRoboImage
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import org.junit.Test
@@ -22,7 +24,8 @@ class HomeScreenScreenshotTest {
 
     @Test
     fun homePreview() {
-        captureRoboImage("build/art-previews/home.png") {
+        // A review aid, not a golden: always written, never compared (verify has no reference for it).
+        captureRoboImage("build/art-previews/home.png", roborazziOptions = PreviewOnly) {
             LexiTheme(reducedMotion = false) { HomeScreen(state = HomeSampleState, onIntent = {}) }
         }
     }
@@ -66,3 +69,5 @@ class HomeScreenScreenshotTest {
         }
     }
 }
+
+private val PreviewOnly = RoborazziOptions(taskType = RoborazziTaskType.Record)

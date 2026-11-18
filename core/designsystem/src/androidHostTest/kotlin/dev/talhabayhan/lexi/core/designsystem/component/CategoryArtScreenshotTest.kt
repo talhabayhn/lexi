@@ -8,6 +8,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.github.takahirom.roborazzi.RoborazziOptions
+import com.github.takahirom.roborazzi.RoborazziTaskType
 import com.github.takahirom.roborazzi.captureRoboImage
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import org.junit.Test
@@ -58,7 +60,8 @@ class CategoryArtScreenshotTest {
             "ideas" to CategoryArtKind.Ideas,
         )
         newKinds.forEach { (name, kind) ->
-            captureRoboImage("build/art-previews/$name.png") {
+            // A review aid, not a golden: always written, never compared (verify has no reference for it).
+            captureRoboImage("build/art-previews/$name.png", roborazziOptions = PreviewOnly) {
                 LexiTheme(reducedMotion = false) {
                     CategoryArt(kind, Modifier.size(163.dp, 95.dp))
                 }
@@ -66,3 +69,5 @@ class CategoryArtScreenshotTest {
         }
     }
 }
+
+private val PreviewOnly = RoborazziOptions(taskType = RoborazziTaskType.Record)
