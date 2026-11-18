@@ -25,6 +25,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.Immutable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
@@ -47,6 +48,7 @@ import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.selected
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
@@ -98,6 +100,11 @@ public object FlowDefaults {
     internal val BadgeIcon: Dp = 14.dp
     internal val BadgeCheck: Dp = 10.dp
     internal val BadgeChevron: Dp = 14.dp
+
+    /** Study tile (`home_v5.png`, `flow.html` .mini): width 171 (fills grid column), height 84, padding 0 12, gap 10. */
+    public val StudyTileMinHeight: Dp = 84.dp
+    internal val StudyTilePaddingHorizontal: Dp = 12.dp
+    internal val StudyTileGap: Dp = 10.dp
 
     /** Bottom bar: 4dp ink rule on top, items at least 56 high, icon 24, icon → label 4. */
     public val BottomBarMinHeight: Dp = 64.dp
@@ -428,6 +435,85 @@ private fun DailyBadge(status: DailyCardStatus, label: String?) {
 
 private const val TITLE_LINE_HEIGHT = 1.1
 private const val TEXT_LINE_HEIGHT = 1.2
+
+/**
+ * Study tile on Home ("Defter", "Sınavlar", `home_v5.png`, `flow.html` `.mini`):
+ * marker shape (circle / diamond) on the LEFT, title (17/800) and subtitle on the RIGHT.
+ * Height 84dp, padding horizontal 12dp, gap 10dp between marker and text column.
+ */
+@Composable
+public fun StudyTile(
+    title: String,
+    subtitle: String,
+    marker: DecorShapeKind,
+    markerColor: Color,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    inverted: Boolean = false,
+) {
+    val colors = LexiTheme.colors
+    val content = if (inverted) colors.cream else colors.ink
+    PressableSurface(
+        onClick = onClick,
+        modifier = modifier.heightIn(min = FlowDefaults.StudyTileMinHeight),
+        color = if (inverted) colors.ink else colors.white,
+        shadow = if (inverted) LexiTheme.shadows.s4Red else LexiTheme.shadows.s4,
+        propagateMinConstraints = true,
+    ) {
+        Row(
+            modifier = Modifier.padding(horizontal = FlowDefaults.StudyTilePaddingHorizontal),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(FlowDefaults.StudyTileGap),
+        ) {
+            DecorShape(
+                kind = marker,
+                color = markerColor,
+                border = BorderStroke(LexiTheme.borders.thin, if (inverted) colors.cream else colors.ink),
+                modifier = Modifier.size(CardDefaults.TileMarkerSize),
+            )
+            Column(
+                modifier = Modifier.weight(1f, fill = false),
+                verticalArrangement = Arrangement.spacedBy(LexiTheme.dimens.gap2),
+            ) {
+                Text(
+                    text = title,
+                    style = LexiTheme.typography.bodyStrong17.withCssLineHeight(1.05),
+                    color = content,
+                )
+                Text(
+                    text = subtitle,
+                    style = LexiTheme.typography.caption12SemiBold,
+                    color = content,
+                )
+            }
+        }
+    }
+}
+
+/**
+ * The narrowest [StudyTile] whose text column still holds the longest word of every one of [titles] on one line.
+ * If the column width is narrower, the tiles stack into a Column.
+ */
+@Composable
+public fun studyTileMinWidth(titles: List<String>): Dp {
+    val measurer = rememberTextMeasurer()
+    val titleStyle = LexiTheme.typography.bodyStrong17
+    val subtitleStyle = LexiTheme.typography.caption12SemiBold
+    val padding = FlowDefaults.StudyTilePaddingHorizontal
+    val gap = FlowDefaults.StudyTileGap
+    val markerSize = CardDefaults.TileMarkerSize
+    val border = LexiTheme.borders.regular
+    val density = LocalDensity.current
+    return remember(titles, titleStyle, subtitleStyle, padding, gap, markerSize, border, density, measurer) {
+        val widest = titles.flatMap { it.split(' ') }.maxOfOrNull { word ->
+            maxOf(
+                measurer.measure(word, titleStyle, softWrap = false, maxLines = 1).size.width,
+                measurer.measure(word, subtitleStyle, softWrap = false, maxLines = 1).size.width,
+            )
+        } ?: 0
+        with(density) { widest.toDp() } + padding * 2 + border * 2 + markerSize + gap
+    }
+}
 
 /** One item of [RuledBottomBar]: an [icon] over its [label]; [contentDescription] replaces the label when spoken. */
 @Immutable

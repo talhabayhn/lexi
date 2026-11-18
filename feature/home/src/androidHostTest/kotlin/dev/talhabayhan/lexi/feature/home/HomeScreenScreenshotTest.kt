@@ -21,6 +21,13 @@ class HomeScreenScreenshotTest {
     fun designSample() = capture("HomeScreen", HomeSampleState)
 
     @Test
+    fun homePreview() {
+        captureRoboImage("build/art-previews/home.png") {
+            LexiTheme(reducedMotion = false) { HomeScreen(state = HomeSampleState, onIntent = {}) }
+        }
+    }
+
+    @Test
     fun nothingPlayedYet() = capture("HomeScreenEmpty", HomeUiState())
 
     @Test

@@ -78,6 +78,14 @@ public enum class CategoryArtKind {
     FalseFriends,
     Idioms,
     PhrasalVerbs,
+    ClothesShopping,
+    Hobbies,
+    Verbs,
+    Adjectives,
+    Economy,
+    Feelings,
+    SocietyLaw,
+    Ideas,
     ;
 
     public companion object {
@@ -103,6 +111,14 @@ public enum class CategoryArtKind {
             "false-friends" -> FalseFriends
             "idioms" -> Idioms
             "phrasal-verbs" -> PhrasalVerbs
+            "clothes-shopping" -> ClothesShopping
+            "hobbies" -> Hobbies
+            "verbs" -> Verbs
+            "adjectives" -> Adjectives
+            "economy" -> Economy
+            "feelings" -> Feelings
+            "society-law" -> SocietyLaw
+            "ideas" -> Ideas
             else -> null
         }
     }
@@ -295,6 +311,14 @@ private fun categoryDrawing(kind: CategoryArtKind, c: LexiColors): Drawing = whe
     CategoryArtKind.FalseFriends -> Drawing(c.yellow) { falseFriends(c) }
     CategoryArtKind.Idioms -> Drawing(c.red) { idioms(c) }
     CategoryArtKind.PhrasalVerbs -> Drawing(c.ink) { phrasalVerbs(c) }
+    CategoryArtKind.ClothesShopping -> Drawing(c.cream) { clothesShopping(c) }
+    CategoryArtKind.Hobbies -> Drawing(c.blue) { hobbies(c) }
+    CategoryArtKind.Verbs -> Drawing(c.yellow) { verbs(c) }
+    CategoryArtKind.Adjectives -> Drawing(c.cream) { adjectives(c) }
+    CategoryArtKind.Economy -> Drawing(c.cream) { economy(c) }
+    CategoryArtKind.Feelings -> Drawing(c.cream) { feelings(c) }
+    CategoryArtKind.SocietyLaw -> Drawing(c.blue) { societyLaw(c) }
+    CategoryArtKind.Ideas -> Drawing(c.ink) { ideas(c) }
 }
 
 // Exact flow.html SVGs: mixed ... timeWeather.
@@ -482,6 +506,145 @@ private fun Sketch.phrasalVerbs(c: LexiColors) {
     rect(65f, 53f, 75f, 26f, c.yellow)
     text("up", 102.5f, 73f, 24f, c.ink)
     stroke("M113 30H138M130 23L138 30L130 37", c.white)
+}
+
+private fun Sketch.clothesShopping(c: LexiColors) {
+    ink = c.ink
+    // T-shirt on the left:
+    rect(38f, 34f, 32f, 44f, c.blue, line = true)
+    polygon(c.blue, true, 38f, 34f, 22f, 45f, 27f, 54f, 38f, 46f)
+    polygon(c.blue, true, 70f, 34f, 86f, 45f, 81f, 54f, 70f, 46f)
+    path("M47 34 C47 41 61 41 61 34 Z", c.cream, line = true)
+    rect(44f, 46f, 8f, 8f, c.red, line = true)
+    // Shopping bag on the right:
+    rect(94f, 38f, 40f, 42f, c.red, line = true)
+    stroke("M104 38 V28 C104 20 124 20 124 28 V38", c.ink, width = 3f)
+    stroke("M114 38 V80", c.ink, width = 1.5f)
+    circle(114f, 58f, 7f, c.yellow, line = true)
+}
+
+private fun Sketch.hobbies(c: LexiColors) {
+    ink = c.ink
+    // Artist paint palette on the left:
+    path(
+        "M28 46 C28 26 52 22 76 26 C90 28 98 38 94 48 C90 58 94 64 100 64 C103 64 104 61 104 58 C108 68 94 78 78 78 C50 78 28 66 28 46 Z",
+        c.yellow,
+        line = true,
+    )
+    circle(86f, 62f, 5.5f, c.blue, line = true)
+    circle(42f, 38f, 4.5f, c.red)
+    circle(58f, 34f, 4.5f, c.white)
+    circle(74f, 38f, 4.5f, c.ink)
+    // Ball on the right:
+    circle(122f, 50f, 18f, c.white, line = true)
+    stroke("M110 40 C118 46 126 46 134 40 M110 60 C118 54 126 54 134 60", c.ink, width = 2.5f)
+    stroke("M114 74 C122 76 128 76 134 74", c.white, width = 3f, cap = StrokeCap.Round)
+}
+
+private fun Sketch.verbs(c: LexiColors) {
+    ink = c.ink
+    // Running figure:
+    circle(82f, 22f, 9f, c.ink)
+    polygon(c.red, true, 73f, 32f, 84f, 32f, 77f, 54f, 67f, 53f)
+    stroke("M78 36 L94 42 L90 54", c.ink, width = 4f, cap = StrokeCap.Round, join = StrokeJoin.Round)
+    stroke("M71 38 L58 43 L62 52", c.ink, width = 4f, cap = StrokeCap.Round, join = StrokeJoin.Round)
+    stroke("M74 54 L86 64 L82 78", c.ink, width = 4.5f, cap = StrokeCap.Round, join = StrokeJoin.Round)
+    stroke("M69 54 L54 62 L42 58", c.ink, width = 4.5f, cap = StrokeCap.Round, join = StrokeJoin.Round)
+    // Forward motion arrow:
+    stroke("M104 36 H134 M124 26 L134 36 L124 46", c.blue, width = 4.5f, cap = StrokeCap.Round, join = StrokeJoin.Round)
+    // Speed lines trailing behind:
+    stroke("M22 46 H42 M16 54 H36 M24 62 H44", c.ink, width = 3f, cap = StrokeCap.Round)
+}
+
+private fun Sketch.adjectives(c: LexiColors) {
+    ink = c.ink
+    stroke("M22 78 H142", c.ink, width = 3f)
+    // Big circle on the left:
+    circle(52f, 50f, 28f, c.blue, line = true)
+    circle(44f, 42f, 7f, c.white)
+    // Small circle on the right:
+    circle(116f, 68f, 10f, c.red, line = true)
+    // Sparkle stars:
+    polygon(c.yellow, true, 116f, 16f, 119f, 25f, 128f, 28f, 119f, 31f, 116f, 40f, 113f, 31f, 104f, 28f, 113f, 25f)
+    polygon(c.yellow, true, 86f, 30f, 88f, 36f, 94f, 38f, 88f, 40f, 86f, 46f, 84f, 40f, 78f, 38f, 84f, 36f)
+}
+
+private fun Sketch.economy(c: LexiColors) {
+    ink = c.ink
+    stroke("M24 78 H140", c.ink, width = 3f)
+    // Stacked coins on the left:
+    rect(30f, 64f, 36f, 14f, c.yellow, line = true)
+    rect(30f, 50f, 36f, 14f, c.yellow, line = true)
+    rect(30f, 36f, 36f, 14f, c.yellow, line = true)
+    stroke("M38 43 H58 M38 57 H58 M38 71 H58", c.ink, width = 2f)
+    // Front coin standing:
+    circle(60f, 58f, 16f, c.yellow, line = true)
+    circle(60f, 58f, 11f, null, line = true)
+    circle(60f, 58f, 3f, c.ink)
+    // Small bar chart on the right:
+    rect(88f, 56f, 14f, 22f, c.red, line = true)
+    rect(106f, 42f, 14f, 36f, c.blue, line = true)
+    rect(124f, 26f, 14f, 52f, c.yellow, line = true)
+    // Upward trend arrow:
+    stroke("M86 52 L104 38 L122 28 L136 18", c.ink, width = 3f)
+    polygon(c.ink, false, 138f, 14f, 128f, 17f, 134f, 24f)
+}
+
+private fun Sketch.feelings(c: LexiColors) {
+    ink = c.ink
+    // Smiling face on the left:
+    circle(52f, 48f, 25f, c.yellow, line = true)
+    circle(44f, 42f, 3.5f, c.ink)
+    circle(60f, 42f, 3.5f, c.ink)
+    stroke("M43 54 C47 65 57 65 61 54", c.ink, width = 3f, cap = StrokeCap.Round)
+    circle(39f, 52f, 3f, c.red)
+    circle(65f, 52f, 3f, c.red)
+    // Sad face on the right:
+    circle(110f, 48f, 25f, c.blue, line = true)
+    circle(102f, 42f, 3.5f, c.ink)
+    circle(118f, 42f, 3.5f, c.ink)
+    stroke("M101 62 C105 53 115 53 119 62", c.ink, width = 3f, cap = StrokeCap.Round)
+    circle(102f, 52f, 2.5f, c.white)
+}
+
+private fun Sketch.societyLaw(c: LexiColors) {
+    ink = c.ink
+    // Stand & pillar:
+    rect(66f, 78f, 32f, 8f, c.yellow, line = true)
+    polygon(c.ink, false, 82f, 68f, 74f, 78f, 90f, 78f)
+    rect(80f, 22f, 4f, 56f, c.ink)
+    circle(82f, 18f, 5f, c.yellow, line = true)
+    // Horizontal beam:
+    stroke("M40 28 H124", c.ink, width = 4f, cap = StrokeCap.Round)
+    circle(82f, 28f, 4f, c.ink)
+    // Chains:
+    stroke("M42 28 L32 50 M42 28 L52 50 M122 28 L112 50 M122 28 L132 50", c.ink, width = 2f)
+    // Pans:
+    path("M30 50 C30 62 54 62 54 50 Z", c.yellow, line = true)
+    path("M110 50 C110 62 134 62 134 50 Z", c.yellow, line = true)
+    // Weights:
+    rect(38f, 44f, 8f, 6f, c.red, line = true)
+    circle(122f, 47f, 3f, c.white, line = true)
+}
+
+private fun Sketch.ideas(c: LexiColors) {
+    ink = c.ink
+    // Glowing bulb:
+    path("M66 52 C58 44 58 30 68 20 C76 12 88 12 96 20 C106 30 106 44 98 52 L94 64 H70 Z", c.yellow, line = true)
+    // Filament:
+    stroke("M77 64 V50 L82 44 L87 50 V64", c.ink, width = 2.5f, join = StrokeJoin.Round)
+    // Screw cap base:
+    rect(72f, 66f, 20f, 4f, c.cream, line = true)
+    rect(73f, 72f, 18f, 4f, c.cream, line = true)
+    path("M76 78 H88 L85 84 H79 Z", c.cream)
+    // Radiant rays:
+    val rays = "M82 4 V10 M48 14 L53 19 M116 14 L111 19 M36 36 H42 M122 36 H128 M48 58 L53 53 M116 58 L111 53"
+    stroke(
+        d = rays,
+        color = c.yellow,
+        width = 3.5f,
+        cap = StrokeCap.Round,
+    )
 }
 
 // endregion

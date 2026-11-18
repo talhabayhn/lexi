@@ -151,6 +151,14 @@ class ArtSheetRenderTest {
         CategoryArtKind.FalseFriends -> "Yalancı eşdeğerler"
         CategoryArtKind.Idioms -> "Deyimler"
         CategoryArtKind.PhrasalVerbs -> "Phrasal verbs"
+        CategoryArtKind.ClothesShopping -> "Giysi ve alışveriş"
+        CategoryArtKind.Hobbies -> "Hobiler ve eğlence"
+        CategoryArtKind.Verbs -> "Fiiller"
+        CategoryArtKind.Adjectives -> "Sıfatlar ve zarflar"
+        CategoryArtKind.Economy -> "Para ve ekonomi"
+        CategoryArtKind.Feelings -> "Duygu ve karakter"
+        CategoryArtKind.SocietyLaw -> "Toplum ve hukuk"
+        CategoryArtKind.Ideas -> "Fikirler ve kavramlar"
     }
 
     private fun examName(kind: ExamArtKind) = when (kind) {

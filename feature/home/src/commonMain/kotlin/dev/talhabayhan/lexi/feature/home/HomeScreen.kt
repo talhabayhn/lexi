@@ -43,13 +43,13 @@ import dev.talhabayhan.lexi.core.designsystem.component.FitLine
 import dev.talhabayhan.lexi.core.designsystem.component.FlowDefaults
 import dev.talhabayhan.lexi.core.designsystem.component.LexiLogo
 import dev.talhabayhan.lexi.core.designsystem.component.LexiLogoSize
-import dev.talhabayhan.lexi.core.designsystem.component.MenuTile
 import dev.talhabayhan.lexi.core.designsystem.component.PlayCard
 import dev.talhabayhan.lexi.core.designsystem.component.PlayCardMode
 import dev.talhabayhan.lexi.core.designsystem.component.RuledBottomBar
 import dev.talhabayhan.lexi.core.designsystem.component.SlidingToast
+import dev.talhabayhan.lexi.core.designsystem.component.StudyTile
 import dev.talhabayhan.lexi.core.designsystem.component.WithCappedFontScale
-import dev.talhabayhan.lexi.core.designsystem.component.menuTileMinWidth
+import dev.talhabayhan.lexi.core.designsystem.component.studyTileMinWidth
 import dev.talhabayhan.lexi.core.designsystem.icon.LexiIcons
 import dev.talhabayhan.lexi.core.designsystem.modifier.lexiHeading
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
@@ -342,7 +342,7 @@ private fun StudyTiles(state: HomeUiState, onIntent: (HomeIntent) -> Unit) {
         ?: stringResource(Res.string.home_tile_exams_subtitle)
     val tiles: List<@Composable (Modifier) -> Unit> = listOf(
         { modifier ->
-            MenuTile(
+            StudyTile(
                 title = notebook,
                 subtitle = pluralStringResource(Res.plurals.home_tile_notebook_due, state.dueReviews, state.dueReviews),
                 marker = DecorShapeKind.Circle,
@@ -352,7 +352,7 @@ private fun StudyTiles(state: HomeUiState, onIntent: (HomeIntent) -> Unit) {
             )
         },
         { modifier ->
-            MenuTile(
+            StudyTile(
                 title = exams,
                 subtitle = examSubtitle,
                 marker = DecorShapeKind.Diamond,
@@ -363,7 +363,7 @@ private fun StudyTiles(state: HomeUiState, onIntent: (HomeIntent) -> Unit) {
             )
         },
     )
-    val minWidth = menuTileMinWidth(listOf(notebook, exams))
+    val minWidth = studyTileMinWidth(listOf(notebook, exams, examSubtitle))
     BoxWithConstraints(Modifier.fillMaxWidth()) {
         val gap = LexiTheme.dimens.gap12
         if ((maxWidth - gap) / 2 >= minWidth) {

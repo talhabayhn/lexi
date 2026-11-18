@@ -16,10 +16,10 @@ import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
 import org.robolectric.annotation.GraphicsMode
 
-/** All 20 category arts (163 x 95 dp each) plus the 5 exam arts (LGS unlocked, the rest locked). */
+/** All category arts (163 x 95 dp each) plus the 5 exam arts (LGS unlocked, the rest locked). */
 @RunWith(RobolectricTestRunner::class)
 @GraphicsMode(GraphicsMode.Mode.NATIVE)
-@Config(sdk = [36], qualifiers = "w880dp-h560dp-mdpi")
+@Config(sdk = [36], qualifiers = "w880dp-h800dp-mdpi")
 class CategoryArtScreenshotTest {
 
     @Test
@@ -40,6 +40,27 @@ class CategoryArtScreenshotTest {
                             ExamArt(it, Modifier.size(163.dp, 95.dp), locked = it != ExamArtKind.Lgs)
                         }
                     }
+                }
+            }
+        }
+    }
+
+    @Test
+    fun newCategoryPreviews() {
+        val newKinds = listOf(
+            "clothes-shopping" to CategoryArtKind.ClothesShopping,
+            "hobbies" to CategoryArtKind.Hobbies,
+            "verbs" to CategoryArtKind.Verbs,
+            "adjectives" to CategoryArtKind.Adjectives,
+            "economy" to CategoryArtKind.Economy,
+            "feelings" to CategoryArtKind.Feelings,
+            "society-law" to CategoryArtKind.SocietyLaw,
+            "ideas" to CategoryArtKind.Ideas,
+        )
+        newKinds.forEach { (name, kind) ->
+            captureRoboImage("build/art-previews/$name.png") {
+                LexiTheme(reducedMotion = false) {
+                    CategoryArt(kind, Modifier.size(163.dp, 95.dp))
                 }
             }
         }
