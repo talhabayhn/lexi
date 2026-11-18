@@ -3,8 +3,9 @@ name: screenshots-record
 # Re-records every Roborazzi golden on Linux, the single source of truth (docs/CONVENTIONS.md). Manual only.
 # tools/screenshots/classify_goldens.py sorts each changed golden into RENDERING (font/antialiasing only) or SUSPECT
 # (new/deleted golden, size, color, moved or missing element). Report: the run's Summary page; old/new/diff images:
-# the `golden-review` artifact; every recorded golden: the `recorded-goldens` artifact. With `commit` (main only), RENDERING goldens (plus SUSPECT ones named in `accept` after a
-# person reviewed them) are committed to main; the other SUSPECT goldens are not recorded and fail the run.
+# the `golden-review` artifact; every recorded golden: the `recorded-goldens` artifact (commit those on a branch).
+# With `commit` (main runs only), RENDERING goldens (plus SUSPECT ones named in `accept` after a person reviewed them)
+# are committed to main; the other SUSPECT goldens are not recorded and fail the run.
 on:
   workflow_dispatch:
     inputs:
@@ -70,7 +71,7 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: recorded-goldens
-          path: '*/src/androidHostTest/screenshots/*.png'
+          path: '**/src/androidHostTest/screenshots/*.png'
           retention-days: 14
 
       # Owner identity, no bot/AI attribution (CLAUDE.md rule 9). Only goldens are committed. Only from a main run:
