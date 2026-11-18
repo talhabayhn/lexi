@@ -9,32 +9,37 @@ import platform.UIKit.UINotificationFeedbackGenerator
 import platform.UIKit.UINotificationFeedbackType
 import platform.UIKit.UISelectionFeedbackGenerator
 
-/** [Haptics] on UIKit feedback generators (`docs/design/motion.md` haptic map). Call on the main thread. */
+/**
+ * [Haptics] on UIKit feedback generators (`docs/design/motion.md` haptic map). Call on the main thread.
+ *
+ * One generator per kind, created on first use and kept (Apple's guidance), instead of a new one per call: the splash
+ * plays four light impacts in its first half second, and setting up a generator each time is main-thread work inside
+ * that animation. The light one is created and prepared when this object is built (first composition, before the splash clock starts).
+ */
 @OptIn(ExperimentalForeignApi::class)
 public class IosHaptics : Haptics {
+    private val light = UIImpactFeedbackGenerator(style = UIImpactFeedbackStyle.UIImpactFeedbackStyleLight)
+        .also { it.prepare() }
+    private val soft by lazy { UIImpactFeedbackGenerator(style = UIImpactFeedbackStyle.UIImpactFeedbackStyleSoft) }
+    private val heavy by lazy { UIImpactFeedbackGenerator(style = UIImpactFeedbackStyle.UIImpactFeedbackStyleHeavy) }
+    private val notification by lazy { UINotificationFeedbackGenerator() }
+    private val selection by lazy { UISelectionFeedbackGenerator() }
+
     override fun perform(kind: HapticKind) {
         when (kind) {
-            HapticKind.Light -> impact(UIImpactFeedbackStyle.UIImpactFeedbackStyleLight)
+            HapticKind.Light -> light.impactOccurred()
 
-            HapticKind.Soft -> impact(UIImpactFeedbackStyle.UIImpactFeedbackStyleSoft)
+            HapticKind.Soft -> soft.impactOccurred()
 
-            HapticKind.Heavy -> impact(UIImpactFeedbackStyle.UIImpactFeedbackStyleHeavy)
+            HapticKind.Heavy -> heavy.impactOccurred()
 
             HapticKind.Success ->
-                UINotificationFeedbackGenerator().notificationOccurred(
-                    UINotificationFeedbackType.UINotificationFeedbackTypeSuccess,
-                )
+                notification.notificationOccurred(UINotificationFeedbackType.UINotificationFeedbackTypeSuccess)
 
             HapticKind.Error ->
-                UINotificationFeedbackGenerator().notificationOccurred(
-                    UINotificationFeedbackType.UINotificationFeedbackTypeError,
-                )
+                notification.notificationOccurred(UINotificationFeedbackType.UINotificationFeedbackTypeError)
 
-            HapticKind.Tick -> UISelectionFeedbackGenerator().selectionChanged()
+            HapticKind.Tick -> selection.selectionChanged()
         }
-    }
-
-    private fun impact(style: UIImpactFeedbackStyle) {
-        UIImpactFeedbackGenerator(style = style).impactOccurred()
     }
 }

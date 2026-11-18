@@ -2,13 +2,20 @@ package dev.talhabayhan.lexi.splash
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberUpdatedState
+import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshotFlow
+import androidx.compose.runtime.withFrameNanos
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.ui.semantics.testTag
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import dev.talhabayhan.lexi.core.designsystem.component.LexiSplash
@@ -59,6 +66,13 @@ fun NavGraphBuilder.splashScreen(onFinished: (onboardingCompleted: Boolean) -> U
  * database is installed or version-checked in the background (the first read opens it). The app moves on when all are
  * done, so a fast start is never held up beyond the animation and a slow first-run copy is waited for. With reduced
  * motion the logo is shown statically for a short hold. Each landing gives a light haptic and a "tık".
+ *
+ * Pre-roll (`docs/PERF.md` § iOS first launch): before the 1.2 s clock starts, the logo is drawn at a few of its own
+ * poses ([SplashWarmUp]) behind the splash's opaque cream for [SPLASH_WARM_UP_FRAMES] frames, while the visible splash
+ * still shows its first frame (plain cream, like the launch screen). After a fresh install Metal builds each GPU
+ * pipeline the first time it is drawn; without the pre-roll that happened inside the animation and made it stutter. The
+ * animation itself (keyframes, duration, easing, haptics) is unchanged; it only starts these frames later. Not with
+ * reduced motion (a static logo has nothing to stutter).
  */
 @Composable
 internal fun SplashRoute(
@@ -74,6 +88,7 @@ internal fun SplashRoute(
     val sounds = LocalSoundPlayer.current
     val currentOnFinished by rememberUpdatedState(onFinished)
     val progress = remember { Animatable(if (motion.reducedMotion) 1f else 0f) }
+    var warmingUp by remember { mutableStateOf(!motion.reducedMotion) }
     LaunchedEffect(content, onboarding, analytics, motion) {
         val completed = coroutineScope {
             val ready = async { StartupTrace.measureSuspend("content warm-up") { content.warmUp() } }
@@ -87,6 +102,9 @@ internal fun SplashRoute(
             if (motion.reducedMotion) {
                 delay(motion.splashReducedHoldMillis.toLong())
             } else {
+                // The pre-roll: drawn in the first frames, then removed before the clock starts.
+                repeat(SPLASH_WARM_UP_FRAMES) { withFrameNanos { } }
+                warmingUp = false
                 val landings = launch {
                     var landed = 0
                     snapshotFlow { progress.value }.collect { value ->
@@ -119,8 +137,33 @@ internal fun SplashRoute(
         }
         currentOnFinished(completed)
     }
-    SplashScreen(progress = { progress.value })
+    Box(Modifier.fillMaxSize()) {
+        // Behind the splash's opaque background, so it is never seen.
+        if (warmingUp) SplashWarmUp(stringResource(Res.string.splash_tagline))
+        SplashScreen(progress = { progress.value })
+    }
 }
+
+/**
+ * The splash's drawing at poses that between them use every kind of layer the animation uses: the shapes and the X
+ * scaling in, the X turned, the tagline half faded in, and the landed logo. Drawn once each; no semantics, no input.
+ */
+@Composable
+private fun SplashWarmUp(tagline: String) {
+    Box(Modifier.fillMaxSize().clearAndSetSemantics { testTag = SPLASH_WARM_UP_TAG }) {
+        for (pose in SplashWarmUpPoses) LexiSplash(progress = { pose }, tagline = tagline)
+    }
+}
+
+/** Frames the pre-roll stays drawn before the animation starts (drawn once, plus one to be safe, like `GameWarmUp`). */
+internal const val SPLASH_WARM_UP_FRAMES = 2
+
+/** Test tag of the pre-roll (tests only; it has no other semantics). */
+internal const val SPLASH_WARM_UP_TAG = "splashWarmUp"
+
+// Fractions of `SplashDefaults`' keyframes: shapes scaling in and L / E moving (0.12), X spinning and scaling (0.28),
+// tagline at half alpha (0.53), everything landed (1).
+private val SplashWarmUpPoses = floatArrayOf(0.12f, 0.28f, 0.53f, 1f)
 
 /** Stateless splash: the animation position (0..1) is read in the draw phase only. */
 @Composable
