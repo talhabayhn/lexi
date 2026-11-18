@@ -5,7 +5,7 @@ b1-factory,FACTORY,F,STARTS,noun,ürünlerin makinelerle üretildiği tesis,My f
 b1-fail,FAIL,F,STARTS,verb,bir sınavı ya da denemeyi başaramamak,He did not want to fail the test.,Sınavdan kalmak istemedi.,3,,school-work
 b1-failure,FAILURE,F,STARTS,noun,bir şeyi başaramama durumu,The project ended in failure.,Proje başarısızlıkla sonuçlandı.,3,,business
 b1-false,FALSE,F,STARTS,adj,"doğru olmayan, yanlış",The answer is false.,Cevap yanlış.,3,,school-work
-b1-fashionable,FASHIONABLE,F,STARTS,adj,şu anda moda olan,She always wears fashionable shoes.,Hep modaya uygun ayakkabılar giyer.,4,,daily-life
+b1-fashionable,FASHIONABLE,F,STARTS,adj,şu anda moda olan,She always wears fashionable shoes.,Hep modaya uygun ayakkabılar giyer.,4,,adjectives
 b1-fault,FAULT,F,STARTS,noun,"bir hatanın sorumluluğu, kusur","It was my fault, not yours.","Bu benim hatamdı, seninki değil.",3,,daily-life
 b1-fear,FEAR,F,STARTS,noun,tehlikeden doğan korku,She has a fear of heights.,Yükseklik korkusu var.,3,,body-health
 b1-feature,FEATURE,F,STARTS,noun,bir şeyin belirgin özelliği,This phone has a new camera feature.,Bu telefonun yeni bir kamera özelliği var.,3,,business
@@ -24,12 +24,12 @@ b1-formal,FORMAL,F,STARTS,adj,"resmî, ciddi ortamlara uygun",He wore a formal s
 b1-fortune,FORTUNE,F,STARTS,noun,büyük miktarda para; şans,He made a fortune in the oil business.,Petrol işinde servet yaptı.,4,,economy
 b1-frame,FRAME,F,STARTS,noun,tablo veya aynanın çevresindeki çerçeve,She put the photo in a wooden frame.,Fotoğrafı ahşap bir çerçeveye koydu.,3,,daily-life
 b1-freedom,FREEDOM,F,STARTS,noun,özgür olma durumu,Everyone wants freedom of speech.,Herkes ifade özgürlüğü ister.,3,,daily-life
-b1-frequent,FREQUENT,F,STARTS,adj,sık sık olan,Frequent rain spoiled our holiday.,Sık yağmur tatilimizi bozdu.,4,,daily-life
-b1-frequently,FREQUENTLY,F,STARTS,adv,"çok sık, sıklıkla",He frequently visits his grandmother.,Büyükannesini sık sık ziyaret eder.,4,,daily-life
+b1-frequent,FREQUENT,F,STARTS,adj,sık sık olan,Frequent rain spoiled our holiday.,Sık yağmur tatilimizi bozdu.,4,,adjectives
+b1-frequently,FREQUENTLY,F,STARTS,adv,"çok sık, sıklıkla",He frequently visits his grandmother.,Büyükannesini sık sık ziyaret eder.,4,,adjectives
 b1-friendship,FRIENDSHIP,F,STARTS,noun,arkadaşlar arasındaki bağ,Their friendship began at school.,Arkadaşlıkları okulda başladı.,3,,family-people
 b1-frightened,FRIGHTENED,F,STARTS,adj,"korkmuş, ürkmüş",The frightened child hid under the bed.,Korkmuş çocuk yatağın altına saklandı.,3,,feelings
 b1-fuel,FUEL,F,STARTS,noun,araçlara güç veren yakıt,The car is out of fuel.,Arabanın yakıtı bitti.,3,,city-transport
-b1-fully,FULLY,F,STARTS,adv,"eksiksiz biçimde, sonuna kadar",I fully agree with you.,Seninle tamamen aynı fikirdeyim.,4,,daily-life
+b1-fully,FULLY,F,STARTS,adv,"eksiksiz biçimde, sonuna kadar",I fully agree with you.,Seninle tamamen aynı fikirdeyim.,4,,adjectives
 b1-function,FUNCTION,F,STARTS,noun,bir şeyin görevi veya işlevi,What is the function of this button?,Bu düğmenin işlevi nedir?,4,,business
 b1-further,FURTHER,F,STARTS,adv,"daha uzağa, daha ileriye",The station is further down the road.,İstasyon yolun biraz daha ilerisinde.,3,,city-transport
 b1-fascinating,FASCINATING,F,STARTS,adj,"çok ilgi çekici, büyüleyici",The story of the old city is fascinating.,Eski şehrin hikâyesi çok büyüleyici.,4,,travel
@@ -37,7 +37,7 @@ b1-gadget,GADGET,G,STARTS,noun,"küçük, pratik elektronik araç",This gadget s
 b1-gain,GAIN,G,STARTS,verb,"zamanla deneyim, beceri ya da kilo kazanmak",You can gain skills by working here.,Burada çalışarak beceri kazanabilirsin.,4,,business
 b1-gap,GAP,G,STARTS,noun,iki şey arasındaki boşluk,There is a gap between the two buildings.,İki bina arasında bir boşluk var.,3,,daily-life
 b1-garbage,GARBAGE,G,STARTS,noun,"çöp, atık",Please take the garbage out.,Lütfen çöpü dışarı çıkar.,3,,daily-life
-b1-gather,GATHER,G,STARTS,verb,bir yerde toplanmak veya toplamak,People gather in the square every morning.,İnsanlar her sabah meydanda toplanır.,3,,daily-life
+b1-gather,GATHER,G,STARTS,verb,bir yerde toplanmak veya toplamak,People gather in the square every morning.,İnsanlar her sabah meydanda toplanır.,3,,verbs
 b1-general,GENERAL,G,STARTS,adj,"belirli bir şeye değil çoğuna ait, genel",We had a general talk about the project.,Proje hakkında genel bir konuşma yaptık.,3,,business
 b1-genius,GENIUS,G,STARTS,noun,"olağanüstü zeki kişi, deha",Einstein was a genius.,Einstein bir dahiydi.,3,,feelings
 b1-gentle,GENTLE,G,STARTS,adj,"yumuşak huylu, nazik",She has a gentle voice.,Yumuşak bir sesi var.,3,,feelings
@@ -45,7 +45,7 @@ b1-gesture,GESTURE,G,STARTS,noun,anlam taşıyan el kol hareketi,He made a rude 
 b1-global,GLOBAL,G,STARTS,adj,bütün dünyayı ilgilendiren,Global warming is a serious problem.,Küresel ısınma ciddi bir sorun.,4,,school-work
 b1-gossip,GOSSIP,G,STARTS,noun,başkaları hakkında yapılan dedikodu,I do not like office gossip.,Ofis dedikodusundan hoşlanmıyorum.,3,,daily-life
 b1-government,GOVERNMENT,G,STARTS,noun,bir ülkeyi yöneten siyasi yönetim,The government plans to build new roads.,Hükümet yeni yollar yapmayı planlıyor.,3,,society-law
-b1-grab,GRAB,G,STARTS,verb,bir şeyi aniden tutup almak,He will grab his coat and run out.,Montunu kapıp dışarı koşacak.,3,,daily-life
+b1-grab,GRAB,G,STARTS,verb,bir şeyi aniden tutup almak,He will grab his coat and run out.,Montunu kapıp dışarı koşacak.,3,,verbs
 b1-graduate,GRADUATE,G,STARTS,verb,bir okulu başarıyla bitirmek,She will graduate from university in June.,Haziranda üniversiteden mezun olacak.,3,,school-work
 b1-grateful,GRATEFUL,G,STARTS,adj,yardım için minnettar olan,I am grateful for your help.,Yardımın için minnettarım.,3,,feelings
 b1-grocery,GROCERY,G,STARTS,noun,"gıda ve ev ürünleri satan küçük dükkân, bakkal",There is a small grocery on the corner.,Köşede küçük bir bakkal var.,3,,food-drink
@@ -53,8 +53,8 @@ b1-guarantee,GUARANTEE,G,STARTS,noun,bir ürünün bozulmasına karşı verilen 
 b1-guilty,GUILTY,G,STARTS,adj,suç işlemiş veya suçluluk duyan,He felt guilty about the lie.,Yalan yüzünden kendini suçlu hissetti.,3,,feelings
 b1-gardening,GARDENING,G,STARTS,noun,bahçede bitki yetiştirme işi,Gardening is my father's hobby.,Bahçe işleri babamın hobisi.,3,,hobbies
 b1-handle,HANDLE,H,STARTS,verb,"bir işi veya sorunu yönetmek, ele almak",Can you handle this problem alone?,Bu sorunu tek başına halledebilir misin?,3,,business
-b1-handmade,HANDMADE,H,STARTS,adj,elle yapılmış,She sells handmade bags.,El yapımı çantalar satıyor.,3,,daily-life
-b1-hardly,HARDLY,H,STARTS,adv,"neredeyse hiç, güçlükle",I could hardly hear him.,Onu zar zor duyabildim.,3,,daily-life
+b1-handmade,HANDMADE,H,STARTS,adj,elle yapılmış,She sells handmade bags.,El yapımı çantalar satıyor.,3,,adjectives
+b1-hardly,HARDLY,H,STARTS,adv,"neredeyse hiç, güçlükle",I could hardly hear him.,Onu zar zor duyabildim.,3,,adjectives
 b1-harm,HARM,H,STARTS,verb,sağlığa ya da doğaya uzun vadede zarar vermek,Smoking can harm your health.,Sigara sağlığınıza zarar verebilir.,3,,body-health
 b1-harmful,HARMFUL,H,STARTS,adj,sağlığa veya çevreye zararlı,Too much sun is harmful to the skin.,Fazla güneş cilde zararlıdır.,3,,body-health
 b1-harvest,HARVEST,H,STARTS,noun,"olgunlaşan ürünün toplanması, hasat",The harvest was good this year.,Bu yıl hasat iyiydi.,4,,food-drink
@@ -71,7 +71,7 @@ b1-household,HOUSEHOLD,H,STARTS,noun,bir evde birlikte yaşayan insanlar,There a
 b1-humour,HUMOR,H,STARTS,noun,insanları güldürme yeteneği,I love his dry humor.,Onun kuru mizahını seviyorum.,3,,feelings
 b1-hunt,HUNT,H,STARTS,verb,hayvanları yemek için avlamak,Lions hunt at night.,Aslanlar geceleri avlanır.,3,,animals
 b1-hygiene,HYGIENE,H,STARTS,noun,sağlığı korumak için temizliğe dikkat etme,Good hygiene stops germs.,İyi hijyen mikropları durdurur.,4,,body-health
-b1-ideal,IDEAL,I,STARTS,adj,"her yönden en uygun, mükemmel",This is an ideal place for a picnic.,Burası piknik için ideal bir yer.,3,,daily-life
+b1-ideal,IDEAL,I,STARTS,adj,"her yönden en uygun, mükemmel",This is an ideal place for a picnic.,Burası piknik için ideal bir yer.,3,,adjectives
 b1-identity,IDENTITY,I,STARTS,noun,bir kişinin kim olduğunu gösteren kimlik,The police checked his identity card.,Polis kimlik kartını kontrol etti.,4,,daily-life
 b1-illegal,ILLEGAL,I,STARTS,adj,yasalara aykırı,It is illegal to park here.,Buraya park etmek yasa dışı.,3,,society-law
 b1-image,IMAGE,I,STARTS,noun,"görüntü, resim",The image on the screen is not clear.,Ekrandaki görüntü net değil.,3,,business
@@ -91,15 +91,15 @@ b1-inform,INFORM,I,STARTS,verb,birine bir konuda bilgi vermek,Please inform us o
 b1-ingredient,INGREDIENT,I,STARTS,noun,yemeğin yapıldığı malzemelerden biri,Eggs are the main ingredient of this cake.,Yumurta bu kekin ana malzemesi.,3,,food-drink
 b1-injure,INJURE,I,STARTS,verb,birini yaralamak,He may injure his arm if he falls.,Düşerse kolunu yaralayabilir.,3,,body-health
 b1-innocent,INNOCENT,I,STARTS,adj,suçsuz; saf,The court said he was innocent.,Mahkeme onun suçsuz olduğunu söyledi.,4,,society-law
-b1-insist,INSIST,I,STARTS,verb,bir şeyde ısrar etmek,I insist on paying for dinner.,Akşam yemeğini ben ödeyeceğim diye ısrar ediyorum.,4,,daily-life
+b1-insist,INSIST,I,STARTS,verb,bir şeyde ısrar etmek,I insist on paying for dinner.,Akşam yemeğini ben ödeyeceğim diye ısrar ediyorum.,4,,verbs
 b1-inspire,INSPIRE,I,STARTS,verb,birine yeni fikir ve heves vermek,Her story can inspire young people.,Onun hikâyesi gençlere ilham verebilir.,4,,feelings
 b1-install,INSTALL,I,STARTS,verb,bir programı veya cihazı kurmak,I need to install a new program.,Yeni bir program kurmam gerekiyor.,3,,business
 b1-instruction,INSTRUCTION,I,STARTS,noun,nasıl yapılacağını anlatan talimat,Read the instruction before you start.,Başlamadan önce talimatı oku.,3,,school-work
 b1-insurance,INSURANCE,I,STARTS,noun,olası zarara karşı yapılan sigorta,Do you have car insurance?,Araba sigortan var mı?,4,,economy
 b1-intelligent,INTELLIGENT,I,STARTS,adj,"zeki, öğrenme yeteneği yüksek",She is an intelligent girl.,Zeki bir kız.,3,,feelings
 b1-intention,INTENTION,I,STARTS,noun,bir şeyi yapmaya yönelik niyet,I have no intention of leaving.,Ayrılmaya hiç niyetim yok.,4,,daily-life
-b1-interrupt,INTERRUPT,I,STARTS,verb,konuşan birinin sözünü kesmek,Don't interrupt me while I'm speaking.,Ben konuşurken sözümü kesme.,3,,daily-life
-b1-investigate,INVESTIGATE,I,STARTS,verb,bir olayın nedenini araştırmak,The police will investigate the case.,Polis davayı araştıracak.,4,,daily-life
+b1-interrupt,INTERRUPT,I,STARTS,verb,konuşan birinin sözünü kesmek,Don't interrupt me while I'm speaking.,Ben konuşurken sözümü kesme.,3,,verbs
+b1-investigate,INVESTIGATE,I,STARTS,verb,bir olayın nedenini araştırmak,The police will investigate the case.,Polis davayı araştıracak.,4,,verbs
 b1-investment,INVESTMENT,I,STARTS,noun,kazanç için para yatırma,Buying a house can be a good investment.,Ev almak iyi bir yatırım olabilir.,4,,economy
 b1-involve,INVOLVE,I,STARTS,verb,bir işin içine katmak veya gerektirmek,The job will involve a lot of travel.,İş çok seyahat gerektirecek.,4,,business
 b1-issue,ISSUE,I,STARTS,noun,tartışılan konu veya sorun,Traffic is an important issue.,Trafik önemli bir mesele.,4,,school-work

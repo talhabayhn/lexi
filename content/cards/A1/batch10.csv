@@ -1,6 +1,6 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
 a1-important,IMPORTANT,I,STARTS,adj,"çok önemli, değerli",Health is important for us.,Sağlık bizim için önemlidir.,2,,school-work
-a1-invite,INVITE,I,STARTS,verb,bir kişiyi partiye çağırmak,Selin wants to invite her friends.,Selin arkadaşlarını davet etmek istiyor.,2,,daily-life
+a1-invite,INVITE,I,STARTS,verb,bir kişiyi partiye çağırmak,Selin wants to invite her friends.,Selin arkadaşlarını davet etmek istiyor.,2,,verbs
 a1-insect,INSECT,I,STARTS,noun,sineğin ve karıncanın da türü olan altı bacaklı küçük canlı,Ali sees an insect on his shoulder.,Ali omzunda bir böcek görüyor.,2,,animals
 a1-iron,IRON,I,STARTS,noun,kıyafetlerin kırışıklığını gideren sıcak alet,The tailor pressed the wrinkles with a steam iron.,Terzi buruşukları buharlı ütüyle düzeltti.,2,,home
 a1-skin,SKIN,I,CONTAINS,noun,vücudu dıştan saran doku,Her skin is soft.,Cildi yumuşak.,2,,body-health
@@ -8,7 +8,7 @@ a1-chin,CHIN,I,CONTAINS,noun,ağzın altındaki yüz bölümü,Ali has a beard o
 a1-life,LIFE,I,CONTAINS,noun,doğumdan ölüme kadar süren zaman,Selin loves her life.,Selin hayatını seviyor.,2,,daily-life
 a1-piece,PIECE,I,CONTAINS,noun,bir bütünden ayrılmış küçük bölüm,Ali wants a piece of watermelon.,Ali bir parça karpuz istiyor.,2,,food-drink
 a1-spicy,SPICY,I,CONTAINS,adj,içinde acı baharat olan,Mert likes spicy sauce.,Mert acılı sosu sever.,2,,food-drink
-a1-rich,RICH,I,CONTAINS,adj,çok parası olan,Mr Aksoy is rich.,Bay Aksoy zengin.,2,,daily-life
+a1-rich,RICH,I,CONTAINS,adj,çok parası olan,Mr Aksoy is rich.,Bay Aksoy zengin.,2,,adjectives
 a1-sign,SIGN,I,CONTAINS,noun,yolda uyarı veya bilgi veren levha,Ali reads the sign.,Ali levhayı okuyor.,2,,city-transport
 a1-uniform,UNIFORM,U,STARTS,noun,okulda ya da işte giyilen aynı tip kıyafet,Selin wears a uniform.,Selin üniforma giyiyor.,2,,school-work
 a1-unhappy,UNHAPPY,U,STARTS,adj,"mutlu olmayan, üzgün ve keyifsiz",Mert is unhappy.,Mert mutsuz.,2,,family-people
@@ -36,7 +36,7 @@ a1-yogurt,YOGURT,Y,STARTS,noun,"sütten yapılan, kaşıkla yenen ekşi gıda",A
 a1-yoga,YOGA,Y,STARTS,noun,esneme ve nefes egzersizlerinden oluşan spor,Ayşe does yoga.,Ayşe yoga yapıyor.,2,,body-health
 a1-yummy,YUMMY,Y,STARTS,adj,çok lezzetli (çocuk dili),This dessert is yummy!,Bu tatlı çok lezzetli!,1,,food-drink
 a1-candy,CANDY,Y,CONTAINS,noun,çocukların sevdiği şekerli küçük tatlı,Selin gets candy.,Selin şeker alıyor.,2,,food-drink
-a1-lucky,LUCKY,Y,CONTAINS,adj,şansı yaver giden,Ali is lucky.,Ali şanslı.,2,,daily-life
+a1-lucky,LUCKY,Y,CONTAINS,adj,şansı yaver giden,Ali is lucky.,Ali şanslı.,2,,adjectives
 a1-teddy,TEDDY,Y,CONTAINS,noun,çocukların sarıldığı tüylü oyuncak ayı,Ayşe sleeps with her teddy.,Ayşe oyuncak ayısıyla uyuyor.,2,,home
 a1-copy,COPY,Y,CONTAINS,verb,aynısını yapmak ya da yazmak,"Ali, copy the sentence.","Ali, cümleyi kopyala.",2,,school-work
 a1-squirrel,SQUIRREL,Q,CONTAINS,noun,fındık toplayan kuyruğu gür küçük orman hayvanı,A squirrel eats an acorn.,Bir sincap meşe palamudu yiyor.,2,,animals
@@ -47,7 +47,7 @@ a1-extra,EXTRA,X,CONTAINS,adj,"gerekenden fazla, ek",Selin has an extra coin.,Se
 a1-fix,FIX,X,CONTAINS,verb,bozuk bir şeyi onarmak,Mert can fix it.,Mert onu tamir edebilir.,2,,home
 a1-size,SIZE,Z,CONTAINS,noun,"bir şeyin büyüklüğü, beden",My size is 38.,Bedenim 38.,2,,clothes-shopping
 a1-lazy,LAZY,Z,CONTAINS,adj,"çalışmaktan hoşlanmayan, tembel",The hamster is lazy.,Hamster tembel.,2,,animals
-a1-crazy,CRAZY,Z,CONTAINS,adj,"çok garip ve akıldışı, deli gibi",That plan is crazy!,O plan çılgınca!,3,,daily-life
+a1-crazy,CRAZY,Z,CONTAINS,adj,"çok garip ve akıldışı, deli gibi",That plan is crazy!,O plan çılgınca!,3,,adjectives
 a1-dozen,DOZEN,Z,CONTAINS,noun,on iki tane,Ali buys a dozen eggs.,Ali bir düzine yumurta alıyor.,3,,food-drink
 a1-dust,DUST,U,CONTAINS,noun,eşyaların üstünde biriken ince toz,Dust is on the shelf.,Rafta toz var.,2,,home
 a1-suit,SUIT,U,CONTAINS,noun,ceket ve pantolondan oluşan takım elbise,Ali wears a suit.,Ali takım elbise giyiyor.,2,,clothes-shopping

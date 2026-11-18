@@ -4,32 +4,32 @@ b1-academic,ACADEMIC,A,STARTS,adj,okul ve üniversite eğitimiyle ilgili,His aca
 b1-accent,ACCENT,A,STARTS,noun,"bir kişinin kendine özgü konuşma biçimi, şive",She speaks with a strong French accent.,Güçlü bir Fransız aksanıyla konuşuyor.,3,,daily-life
 b1-account,ACCOUNT,A,STARTS,noun,bankada paranın tutulduğu kayıtlı hesap,I opened a new bank account yesterday.,Dün yeni bir banka hesabı açtım.,3,,economy
 b1-achievement,ACHIEVEMENT,A,STARTS,noun,çabayla elde edilen büyük başarı,Finishing the marathon was a great achievement.,Maratonu bitirmek büyük bir başarıydı.,3,,school-work
-b1-act,ACT,A,STARTS,verb,"bir durumda harekete geçmek, davranmak",You must act quickly when you see danger.,Tehlike görünce hızlı hareket etmelisin.,3,,daily-life
+b1-act,ACT,A,STARTS,verb,"bir durumda harekete geçmek, davranmak",You must act quickly when you see danger.,Tehlike görünce hızlı hareket etmelisin.,3,,verbs
 b1-action,ACTION,A,STARTS,noun,bir sorunu çözmek için atılan adım,The police took action at once.,Polis derhal harekete geçti.,3,,daily-life
 b1-admire,ADMIRE,A,STARTS,verb,"birine veya bir şeye hayran olmak, takdir etmek",I admire your bravery.,Cesaretine hayranım.,3,,feelings
-b1-admit,ADMIT,A,STARTS,verb,yanlış bir şeyi yaptığını kabul etmek,He did not want to admit that he was wrong.,Yanıldığını kabul etmek istemedi.,3,,daily-life
+b1-admit,ADMIT,A,STARTS,verb,yanlış bir şeyi yaptığını kabul etmek,He did not want to admit that he was wrong.,Yanıldığını kabul etmek istemedi.,3,,verbs
 b1-advantage,ADVANTAGE,A,STARTS,noun,"bir kişiyi öne geçiren yarar, avantaj",Speaking two languages is a big advantage.,İki dil konuşmak büyük bir avantaj.,3,,business
 b1-advertise,ADVERTISE,A,STARTS,verb,bir ürünü duyurmak için reklam yapmak,They advertise their shop on the radio.,Dükkânlarının reklamını radyoda yapıyorlar.,3,,economy
-b1-affect,AFFECT,A,STARTS,verb,bir şey üzerinde etki bırakmak,The weather can affect how you feel.,Hava durumu nasıl hissettiğini etkileyebilir.,3,,daily-life
-b1-afford,AFFORD,A,STARTS,verb,bir şeyi almaya yetecek parası olmak,We cannot afford a new car.,Yeni bir araba almaya gücümüz yetmez.,3,,daily-life
+b1-affect,AFFECT,A,STARTS,verb,bir şey üzerinde etki bırakmak,The weather can affect how you feel.,Hava durumu nasıl hissettiğini etkileyebilir.,3,,verbs
+b1-afford,AFFORD,A,STARTS,verb,bir şeyi almaya yetecek parası olmak,We cannot afford a new car.,Yeni bir araba almaya gücümüz yetmez.,3,,verbs
 b1-agent,AGENT,A,STARTS,noun,başkası adına iş yapan aracı kişi,The travel agent booked our hotel.,Seyahat acentesi görevlisi otelimizi ayırttı.,3,,business
 b1-agreement,AGREEMENT,A,STARTS,noun,iki tarafın üzerinde anlaştığı karar,They signed an agreement last week.,Geçen hafta bir anlaşma imzaladılar.,3,,business
 b1-aim,AIM,A,STARTS,noun,ulaşılmak istenen amaç,My aim is to pass the exam.,Amacım sınavı geçmek.,3,,school-work
 b1-airline,AIRLINE,A,STARTS,noun,uçak seferleri yapan şirket,This airline has cheap tickets.,Bu havayolu şirketinin ucuz biletleri var.,3,,travel
 b1-alcohol,ALCOHOL,A,STARTS,noun,bira ve şarapta bulunan sarhoş edici sıvı,Drivers must not drink alcohol.,Sürücüler alkol içmemeli.,3,,body-health
 b1-ambition,AMBITION,A,STARTS,noun,başarılı olmak için duyulan güçlü istek,Her ambition is to become a doctor.,En büyük hayali doktor olmak.,3,,feelings
-b1-announce,ANNOUNCE,A,STARTS,verb,önemli bir haberi herkese duyurmak,The school will announce the results today.,Okul sonuçları bugün açıklayacak.,3,,daily-life
+b1-announce,ANNOUNCE,A,STARTS,verb,önemli bir haberi herkese duyurmak,The school will announce the results today.,Okul sonuçları bugün açıklayacak.,3,,verbs
 b1-annoy,ANNOY,A,STARTS,verb,birini sinirlendirmek veya rahatsız etmek,His loud music began to annoy me.,Yüksek sesli müziği beni rahatsız etmeye başladı.,3,,feelings
 b1-annoyed,ANNOYED,A,STARTS,adj,"bir şeye canı sıkılmış, kızgın",She was annoyed because he was late.,Geç kaldığı için canı sıkıldı.,3,,feelings
-b1-apologise,APOLOGIZE,A,STARTS,verb,yaptığı şey için özür dilemek,I must apologize for being late.,Geç kaldığım için özür dilemeliyim.,3,,daily-life
-b1-appear,APPEAR,A,STARTS,verb,"görünür hale gelmek, ortaya çıkmak",A rainbow will appear after the rain.,Yağmurdan sonra bir gökkuşağı belirecek.,3,,daily-life
+b1-apologise,APOLOGIZE,A,STARTS,verb,yaptığı şey için özür dilemek,I must apologize for being late.,Geç kaldığım için özür dilemeliyim.,3,,verbs
+b1-appear,APPEAR,A,STARTS,verb,"görünür hale gelmek, ortaya çıkmak",A rainbow will appear after the rain.,Yağmurdan sonra bir gökkuşağı belirecek.,3,,verbs
 b1-appearance,APPEARANCE,A,STARTS,noun,bir kişinin dışarıdan görünüşü,She cares a lot about her appearance.,Dış görünüşüne çok önem veriyor.,3,,family-people
 b1-application,APPLICATION,A,STARTS,noun,iş veya okul için yapılan resmî başvuru,I sent my application yesterday.,Başvurumu dün gönderdim.,3,,school-work
 b1-arrange,ARRANGE,A,STARTS,verb,bir toplantıyı ya da işi önceden ayarlamak,Can you arrange a meeting for Monday?,Pazartesi için bir toplantı ayarlayabilir misin?,3,,business
 b1-arrangement,ARRANGEMENT,A,STARTS,noun,önceden yapılan plan ve hazırlık,We made an arrangement to meet at six.,Altıda buluşmak için bir düzenleme yaptık.,3,,business
 b1-arrest,ARREST,A,STARTS,verb,"(polis) birini tutuklamak, gözaltına almak",The police will arrest the thief.,Polis hırsızı tutuklayacak.,3,,society-law
 b1-atmosphere,ATMOSPHERE,A,STARTS,noun,bir yerin havası; yeryüzünü saran gaz tabakası,The cafe has a friendly atmosphere.,Kafenin samimi bir havası var.,3,,daily-life
-b1-attack,ATTACK,A,STARTS,verb,şiddetle saldırmak,Dogs may attack when they are afraid.,Köpekler korktuklarında saldırabilir.,3,,daily-life
+b1-attack,ATTACK,A,STARTS,verb,şiddetle saldırmak,Dogs may attack when they are afraid.,Köpekler korktuklarında saldırabilir.,3,,verbs
 b1-attempt,ATTEMPT,A,STARTS,noun,bir şeyi başarmak için yapılan deneme,It was his first attempt to swim across the lake.,Gölü yüzerek geçmeye ilk denemesiydi.,3,,daily-life
 b1-attend,ATTEND,A,STARTS,verb,bir toplantıya veya derse katılmak,Over fifty people will attend the meeting.,Toplantıya ellinin üzerinde kişi katılacak.,3,,school-work
 b1-attention,ATTENTION,A,STARTS,noun,bir şeye verilen dikkat,Please pay attention to the teacher.,Lütfen öğretmeni dikkatle dinleyin.,3,,school-work
@@ -39,22 +39,22 @@ b1-attractive,ATTRACTIVE,A,STARTS,adj,"göze hoş gelen, çekici",The old town i
 b1-audience,AUDIENCE,A,STARTS,noun,konser veya oyunu izleyen seyirci topluluğu,The audience clapped for ten minutes.,Seyirciler on dakika alkışladı.,3,,hobbies
 b1-avoid,AVOID,A,STARTS,verb,"bir şeyden uzak durmak, kaçınmak",I try to avoid sugar.,Şekerden kaçınmaya çalışıyorum.,3,,body-health
 b1-award,AWARD,A,STARTS,noun,başarı için verilen ödül,She won an award for her film.,Filmiyle bir ödül kazandı.,3,,hobbies
-b1-aware,AWARE,A,STARTS,adj,bir durumun farkında olan,Are you aware of the problem?,Sorunun farkında mısın?,3,,daily-life
-b1-accidentally,ACCIDENTALLY,A,STARTS,adv,"istemeden, kazara",I accidentally broke her glasses.,Yanlışlıkla gözlüğünü kırdım.,4,,daily-life
+b1-aware,AWARE,A,STARTS,adj,bir durumun farkında olan,Are you aware of the problem?,Sorunun farkında mısın?,3,,adjectives
+b1-accidentally,ACCIDENTALLY,A,STARTS,adv,"istemeden, kazara",I accidentally broke her glasses.,Yanlışlıkla gözlüğünü kırdım.,4,,adjectives
 b1-background,BACKGROUND,B,STARTS,noun,bir resmin arkası; kişinin geçmişi ve geldiği çevre,He has a good educational background.,İyi bir eğitim geçmişi var.,3,,daily-life
 b1-balance,BALANCE,B,STARTS,noun,dengede durabilme hali,It is hard to keep your balance on ice.,Buzda dengeni korumak zor.,3,,body-health
 b1-barbecue,BARBECUE,B,STARTS,noun,açık havada ateşte et pişirilen yemek,We had a barbecue in the garden.,Bahçede mangal yaptık.,3,,food-drink
 b1-bargain,BARGAIN,B,STARTS,noun,normal fiyatının çok altında alınan ürün,This coat was a real bargain.,Bu mont gerçek bir kelepirdi.,3,,daily-life
 b1-behave,BEHAVE,B,STARTS,verb,belirli bir biçimde davranmak,The children know how to behave at a party.,Çocuklar partide nasıl davranılacağını biliyor.,3,,family-people
 b1-behaviour,BEHAVIOR,B,STARTS,noun,bir kişinin davranış biçimi,His behavior in class is very good.,Sınıftaki davranışı çok iyi.,3,,school-work
-b1-belong,BELONG,B,STARTS,verb,bir kişiye ait olmak,Does this bag belong to your sister?,Bu çanta kız kardeşine mi ait?,3,,daily-life
+b1-belong,BELONG,B,STARTS,verb,bir kişiye ait olmak,Does this bag belong to your sister?,Bu çanta kız kardeşine mi ait?,3,,verbs
 b1-benefit,BENEFIT,B,STARTS,noun,bir şeyden sağlanan yarar,Exercise has a clear benefit for your health.,Egzersizin sağlığa açık bir yararı var.,3,,body-health
 b1-biography,BIOGRAPHY,B,STARTS,noun,bir kişinin hayatını anlatan kitap,I am reading a biography of Atatürk.,Atatürk'ün biyografisini okuyorum.,4,,school-work
-b1-blame,BLAME,B,STARTS,verb,kötü bir şeyin suçunu birine yüklemek,Don't blame me for the mistake.,Hata için beni suçlama.,3,,daily-life
+b1-blame,BLAME,B,STARTS,verb,kötü bir şeyin suçunu birine yüklemek,Don't blame me for the mistake.,Hata için beni suçlama.,3,,verbs
 b1-blank,BLANK,B,STARTS,adj,"üzerinde hiçbir şey yazılı olmayan, boş",Please leave the last page blank.,Lütfen son sayfayı boş bırakın.,3,,school-work
 b1-blind,BLIND,B,STARTS,adj,gözleri görmeyen,The blind man crossed the road with a stick.,Görme engelli adam bastonla karşıdan karşıya geçti.,3,,body-health
 b1-border,BORDER,B,STARTS,noun,iki ülkenin sınırı,We crossed the border at night.,Sınırı geceleyin geçtik.,3,,travel
-b1-bother,BOTHER,B,STARTS,verb,rahatsız etmek veya zahmete girmek,Sorry to bother you so late.,Seni bu kadar geç rahatsız ettiğim için üzgünüm.,3,,daily-life
+b1-bother,BOTHER,B,STARTS,verb,rahatsız etmek veya zahmete girmek,Sorry to bother you so late.,Seni bu kadar geç rahatsız ettiğim için üzgünüm.,3,,verbs
 b1-brand,BRAND,B,STARTS,noun,bir ürünün ticari markası,What brand of shoes do you wear?,Hangi marka ayakkabı giyiyorsun?,3,,economy
 b1-breathe,BREATHE,B,STARTS,verb,havayı içine çekip dışarı vermek,It is hard to breathe in the smoke.,Dumanda nefes almak zor.,3,,body-health
 b1-broadcast,BROADCAST,B,STARTS,verb,radyo veya televizyonda yayın yapmak,The match will be broadcast live.,Maç canlı yayınlanacak.,4,,hobbies

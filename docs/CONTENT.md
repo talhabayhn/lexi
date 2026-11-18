@@ -155,19 +155,22 @@ How the compiler applies them (`tools/content-compiler`, every error is `file:li
 | id | TR name | Levels |
 |---|---|---|
 | `mixed` | Karışık | all (virtual: all categories of the level) |
-| `daily-life` | Günlük hayat | A1–B2 |
-| `food-drink` | Yiyecek ve içecek | A1–B1 (B2 has 20 cards: hidden) |
+| `daily-life` | Günlük hayat | A1–B1 (leftover nouns, function words, greetings) |
+| `food-drink` | Yiyecek ve içecek | A1–B1 (B2 has 10 cards: hidden) |
 | `home` | Ev ve eşyalar | A1–A2 |
 | `family-people` | Aile ve insanlar | A1–B1 |
 | `colors-numbers` | Renkler ve sayılar | A1 |
 | `body-health` | Vücut ve sağlık | A1–B2 |
-| `school-work` | Okul ve iş | A1–C1 |
+| `school-work` | Okul ve iş | A1–B1 |
 | `animals` | Hayvanlar ve doğa | A1–B1 |
 | `city-transport` | Şehir ve ulaşım | A1–B1 |
 | `time-weather` | Zaman ve hava | A1–A2 |
 | `travel` | Seyahat | A2–C1 |
 | `clothes-shopping` | Giysi ve alışveriş | A1–A2 |
-| `hobbies` | Hobiler ve eğlence | A1–C1 (was Spor + Müzik + Film ve dizi) |
+| `hobbies` | Hobiler ve eğlence | A1–B1 (B2: 26 and C1: 23 cards, hidden; was Spor + Müzik + Film ve dizi) |
+| `verbs` | Fiiller | A1–C1 (word class: leftover verbs of the dump categories) |
+| `adjectives` | Sıfatlar ve zarflar | A1–C1 (word class: leftover adjectives and adverbs) |
+| `ideas` | Fikirler ve kavramlar | B2–C1 (word class: leftover nouns at B2–C1) |
 | `business` | İş ve teknoloji | B1–C1 (was İş İngilizcesi + Teknoloji) |
 | `economy` | Para ve ekonomi | B1, C1 (B2 has 21 cards: hidden) |
 | `feelings` | Duygu ve karakter | B1–C1 |
@@ -179,7 +182,7 @@ How the compiler applies them (`tools/content-compiler`, every error is `file:li
 Minimum category size: a category is listed for a level only with **≥ 30 cards on ≥ 13 letters** there. The compiler
 errors for a listed pair under 25 cards or 13 letters, warns under 30 cards (drop the level from `levels` instead of
 shipping the pair thin) and over 140 cards (too broad). The engine's thin fill (`minCategoryLetters`, `GAME_RULES.md` §1)
-stays as a safety net only. Removed ids (`sports`, `music`, `film-tv`, `technology`, `false-friends`) are never reused.
+stays as a safety net only. Word-class rule (stage 3): verb → `verbs`, adj/adv → `adjectives`, noun → `daily-life` (A1–B1) or `ideas` (B2–C1); a new card of a dump word that fits no topic category follows it. Removed ids (`sports`, `music`, `film-tv`, `technology`, `false-friends`) are never reused.
 
 ## 5. Volume targets (v1.0)
 | Level | Cards | Notes |

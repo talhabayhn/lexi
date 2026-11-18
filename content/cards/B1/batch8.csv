@@ -20,13 +20,13 @@ b1-requirement,REQUIREMENT,Q,CONTAINS,noun,bir şey için gereken şart,A passpo
 b1-acquire,ACQUIRE,Q,CONTAINS,verb,çabayla bir beceri veya mal edinmek,Children acquire language quickly.,Çocuklar dili hızlı edinir.,4,,school-work
 b1-yell,YELL,Y,STARTS,verb,öfkeyle veya yüksek sesle bağırmak,Don't yell at your brother.,Kardeşine bağırma.,3,,family-people
 b1-babysitter,BABYSITTER,Y,CONTAINS,noun,ebeveynler yokken çocuğa bakan kişi,The babysitter put the children to bed.,Bakıcı çocukları yatırdı.,3,,family-people
-b1-everyday,EVERYDAY,Y,CONTAINS,adj,"her gün olan, günlük",Cooking is an everyday job.,Yemek yapmak günlük bir iştir.,3,,daily-life
+b1-everyday,EVERYDAY,Y,CONTAINS,adj,"her gün olan, günlük",Cooking is an everyday job.,Yemek yapmak günlük bir iştir.,3,,adjectives
 b1-policy,POLICY,Y,CONTAINS,noun,bir kurumun belirlediği kural ve ilkeler,The school has a clear policy on phones.,Okulun telefonlar konusunda net bir politikası var.,4,,business
 b1-priority,PRIORITY,Y,CONTAINS,noun,diğerlerinden önce gelen öncelik,Health is our first priority.,Sağlık birinci önceliğimiz.,4,,business
 b1-survey,SURVEY,Y,CONTAINS,noun,insanların fikrini öğrenmek için yapılan anket,The survey asked people about their habits.,Anket insanlara alışkanlıklarını sordu.,4,,school-work
 b1-layer,LAYER,Y,CONTAINS,noun,bir şeyin üst üste gelen tabakalarından biri,Put a layer of cheese on the bread.,Ekmeğin üzerine bir kat peynir koy.,3,,food-drink
 b1-display,DISPLAY,Y,CONTAINS,verb,bir şeyi herkesin görebileceği şekilde sergilemek,The shop will display the new shoes in the window.,Dükkân yeni ayakkabıları vitrinde sergileyecek.,3,,business
-b1-deny,DENY,Y,CONTAINS,verb,doğru olduğunu kabul etmeyip yadsımak,He will deny everything.,Her şeyi inkâr edecek.,4,,daily-life
+b1-deny,DENY,Y,CONTAINS,verb,doğru olduğunu kabul etmeyip yadsımak,He will deny everything.,Her şeyi inkâr edecek.,4,,verbs
 b1-identify,IDENTIFY,Y,CONTAINS,verb,bir şeyin ne olduğunu belirleyip tanımak,Can you identify this bird?,Bu kuşu tanıyabilir misin?,4,,animals
 b1-mayor,MAYOR,Y,CONTAINS,noun,bir şehrin belediye başkanı,The mayor opened the new park.,Belediye başkanı yeni parkı açtı.,3,,city-transport
 b1-loyalty,LOYALTY,Y,CONTAINS,noun,birine sadakatle bağlı olma,Dogs are famous for their loyalty.,Köpekler sadakatleriyle ünlüdür.,4,,animals
@@ -41,7 +41,7 @@ b1-zoom,ZOOM,Z,STARTS,verb,hızla geçmek; görüntüyü yakınlaştırmak,You c
 b1-amaze,AMAZE,Z,CONTAINS,verb,çok şaşırtmak,Her skill will amaze you.,Becerisi seni şaşırtacak.,3,,feelings
 b1-blizzard,BLIZZARD,Z,CONTAINS,noun,çok şiddetli kar fırtınası,The blizzard closed all the roads.,Kar fırtınası bütün yolları kapattı.,4,,animals
 b1-fuzzy,FUZZY,Z,CONTAINS,adj,tüylü ve yumuşak; bulanık,The puppy has fuzzy ears.,Yavrunun tüylü kulakları var.,4,,animals
-b1-gaze,GAZE,Z,CONTAINS,verb,bir şeye uzun uzun hayranlıkla bakmak,They gaze at the stars at night.,Geceleri yıldızlara dalıp bakarlar.,4,,daily-life
+b1-gaze,GAZE,Z,CONTAINS,verb,bir şeye uzun uzun hayranlıkla bakmak,They gaze at the stars at night.,Geceleri yıldızlara dalıp bakarlar.,4,,verbs
 b1-hazard,HAZARD,Z,CONTAINS,noun,tehlike yaratan şey,Wet floors are a hazard.,Islak zeminler bir tehlikedir.,4,,daily-life
 b1-razor,RAZOR,Z,CONTAINS,noun,sakal tıraşı için kullanılan jilet,He bought a new razor.,Yeni bir tıraş bıçağı aldı.,3,,body-health
 b1-ozone,OZONE,Z,CONTAINS,noun,dünyayı güneş ışınlarından koruyan gaz,Ozone gas protects the earth.,Ozon gazı dünyayı korur.,4,,school-work
@@ -49,15 +49,15 @@ b1-civilization,CIVILIZATION,Z,CONTAINS,noun,"gelişmiş bir toplumun kültürü
 b1-memorize,MEMORIZE,Z,CONTAINS,verb,bir şeyi ezberlemek,I have to memorize ten new words.,On yeni kelimeyi ezberlemem gerekiyor.,3,,school-work
 b1-summarize,SUMMARIZE,Z,CONTAINS,verb,bir metni kısaca özetlemek,Please summarize the story in one sentence.,Lütfen hikâyeyi tek cümleyle özetle.,4,,school-work
 b1-emphasize,EMPHASIZE,Z,CONTAINS,verb,bir noktaya özel önem verip vurgulamak,The teacher likes to emphasize reading.,Öğretmen okumayı vurgulamayı sever.,4,,school-work
-b1-freezing,FREEZING,Z,CONTAINS,adj,"çok soğuk, dondurucu",It is freezing outside today.,Bugün dışarısı dondurucu.,3,,daily-life
+b1-freezing,FREEZING,Z,CONTAINS,adj,"çok soğuk, dondurucu",It is freezing outside today.,Bugün dışarısı dondurucu.,3,,adjectives
 b1-puzzled,PUZZLED,Z,CONTAINS,adj,"ne olduğunu anlayamayıp şaşıran, kafası karışmış",He looked puzzled by the question.,Soru karşısında şaşkın göründü.,4,,school-work
 b1-pizzeria,PIZZERIA,Z,CONTAINS,noun,pizza yapılıp satılan lokanta,We had dinner in a small pizzeria.,Küçük bir pizzacıda yemek yedik.,3,,food-drink
 b1-bazaar,BAZAAR,Z,CONTAINS,noun,dükkânların sıralandığı çarşı,We bought a lamp at the bazaar.,Çarşıdan bir lamba aldık.,3,,travel
 b1-amazement,AMAZEMENT,Z,CONTAINS,noun,büyük şaşkınlık,She looked at it in amazement.,Büyük bir şaşkınlıkla ona baktı.,4,,feelings
-b1-snooze,SNOOZE,Z,CONTAINS,verb,kısa ve hafif uyumak,I like to snooze on the sofa.,Kanepede şekerleme yapmayı severim.,4,,daily-life
-b1-dazzle,DAZZLE,Z,CONTAINS,verb,parlak ışıkla gözü kamaştırmak,The sun can dazzle your eyes.,Güneş gözlerini kamaştırabilir.,4,,daily-life
-b1-glance,GLANCE,G,STARTS,verb,bir şeye kısaca göz atmak,He will glance at the clock.,Saate bir göz atacak.,4,,daily-life
-b1-gradually,GRADUALLY,G,STARTS,adv,"yavaş yavaş, aşama aşama",The weather is gradually getting warmer.,Hava yavaş yavaş ısınıyor.,4,,daily-life
+b1-snooze,SNOOZE,Z,CONTAINS,verb,kısa ve hafif uyumak,I like to snooze on the sofa.,Kanepede şekerleme yapmayı severim.,4,,verbs
+b1-dazzle,DAZZLE,Z,CONTAINS,verb,parlak ışıkla gözü kamaştırmak,The sun can dazzle your eyes.,Güneş gözlerini kamaştırabilir.,4,,verbs
+b1-glance,GLANCE,G,STARTS,verb,bir şeye kısaca göz atmak,He will glance at the clock.,Saate bir göz atacak.,4,,verbs
+b1-gradually,GRADUALLY,G,STARTS,adv,"yavaş yavaş, aşama aşama",The weather is gradually getting warmer.,Hava yavaş yavaş ısınıyor.,4,,adjectives
 b1-greeting,GREETING,G,STARTS,noun,selamlaşma sözü,He answered with a friendly greeting.,Dostça bir selamla karşılık verdi.,3,,daily-life
 b1-growth,GROWTH,G,STARTS,noun,büyüme veya artış,The growth of the town is fast.,Kasabanın büyümesi hızlı.,4,,economy
 b1-habitat,HABITAT,H,STARTS,noun,bir hayvanın doğal yaşam alanı,Forests are the habitat of many animals.,Ormanlar birçok hayvanın yaşam alanıdır.,4,,animals
@@ -65,8 +65,8 @@ b1-happily,HAPPILY,H,STARTS,adv,mutlu bir şekilde,They lived happily in a small
 b1-happiness,HAPPINESS,H,STARTS,noun,mutlu olmanın verdiği güzel his,Money cannot buy happiness.,Para mutluluk satın alamaz.,3,,feelings
 b1-harbour,HARBOR,H,STARTS,noun,gemilerin demirlediği liman,The boats are in the harbor.,Tekneler limanda.,3,,city-transport
 b1-heritage,HERITAGE,H,STARTS,noun,bir ülkenin geçmişten kalan kültürel mirası,The old town is part of our heritage.,Eski şehir mirasımızın bir parçası.,4,,travel
-b1-hidden,HIDDEN,H,STARTS,adj,"gizlenmiş, gözden saklı",The treasure was hidden in a cave.,Hazine bir mağarada saklıydı.,3,,daily-life
-b1-honestly,HONESTLY,H,STARTS,adv,"dürüstçe, açıkçası","Honestly, I did not like the film.",Açıkçası filmi beğenmedim.,3,,daily-life
+b1-hidden,HIDDEN,H,STARTS,adj,"gizlenmiş, gözden saklı",The treasure was hidden in a cave.,Hazine bir mağarada saklıydı.,3,,adjectives
+b1-honestly,HONESTLY,H,STARTS,adv,"dürüstçe, açıkçası","Honestly, I did not like the film.",Açıkçası filmi beğenmedim.,3,,adjectives
 b1-hopeless,HOPELESS,H,STARTS,adj,umudu kalmamış,The case looks hopeless.,Dava umutsuz görünüyor.,4,,feelings
 b1-electrician,ELECTRICIAN,E,STARTS,noun,elektrik tesisatını kuran veya onaran usta,The electrician fixed the lights.,Elektrikçi ışıkları tamir etti.,3,,school-work
 b1-element,ELEMENT,E,STARTS,noun,bir şeyi oluşturan temel ögelerden biri,Water is an important element of life.,"Su, hayatın önemli bir unsurudur.",4,,school-work
@@ -75,8 +75,8 @@ b1-enthusiasm,ENTHUSIASM,E,STARTS,noun,"bir işe duyulan büyük istek, coşku",
 b1-error,ERROR,E,STARTS,noun,yapılan hata,The computer showed an error.,Bilgisayar bir hata gösterdi.,3,,business
 b1-elsewhere,ELSEWHERE,E,STARTS,adv,başka bir yerde,"If it is full, let's eat elsewhere.",Doluysa başka yerde yiyelim.,4,,city-transport
 b1-embarrassing,EMBARRASSING,E,STARTS,adj,insanı utandıran,It was an embarrassing mistake.,Utanç verici bir hataydı.,4,,feelings
-b1-enormous,ENORMOUS,E,STARTS,adj,"olağanüstü büyük, devasa",They live in an enormous house.,Kocaman bir evde yaşıyorlar.,3,,daily-life
-b1-odd,ODD,O,STARTS,adj,tuhaf; tek sayı,That is an odd thing to say.,Bunu söylemek tuhaf.,3,,daily-life
+b1-enormous,ENORMOUS,E,STARTS,adj,"olağanüstü büyük, devasa",They live in an enormous house.,Kocaman bir evde yaşıyorlar.,3,,adjectives
+b1-odd,ODD,O,STARTS,adj,tuhaf; tek sayı,That is an odd thing to say.,Bunu söylemek tuhaf.,3,,adjectives
 b1-operation,OPERATION,O,STARTS,noun,doktorun yaptığı ameliyat; bir makinenin çalışması,He had an operation on his knee.,Dizinden ameliyat oldu.,3,,body-health
 b1-opponent,OPPONENT,O,STARTS,noun,bir yarışta karşı taraftaki rakip,Our opponent was very strong.,Rakibimiz çok güçlüydü.,4,,hobbies
 b1-optimistic,OPTIMISTIC,O,STARTS,adj,"her şeyin iyi olacağına inanan, iyimser",I am optimistic about the future.,Gelecek konusunda iyimserim.,4,,feelings

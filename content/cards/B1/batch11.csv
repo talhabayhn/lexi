@@ -21,14 +21,14 @@ b1-jockey,JOCKEY,J,STARTS,noun,yarışlarda atı süren kişi,The jockey won the
 b1-joker,JOKER,J,STARTS,noun,esprili şaka yapmayı seven kişi,Our uncle is a real joker at parties.,Amcamız partilerde tam bir şakacıdır.,3,,daily-life
 b1-kayak,KAYAK,K,STARTS,noun,tek kişilik küçük kano teknesi,He crossed the river in a kayak.,Nehri bir kayakla geçti.,3,,hobbies
 b1-keeper,KEEPER,K,STARTS,noun,golde kaleyi koruyan oyuncu,The keeper saved the last shot.,Kaleci son şutu kurtardı.,3,,hobbies
-b1-khaki,KHAKI,K,STARTS,adj,toprak rengini andıran yeşilimsi kahverengi,He wore khaki trousers to the picnic.,Pikniğe haki pantolon giydi.,3,,daily-life
+b1-khaki,KHAKI,K,STARTS,adj,toprak rengini andıran yeşilimsi kahverengi,He wore khaki trousers to the picnic.,Pikniğe haki pantolon giydi.,3,,adjectives
 b1-knob,KNOB,K,STARTS,noun,kapıyı çevirerek açtığımız yuvarlak tutamak,Turn the knob and push the door.,Topuzu çevir ve kapıyı it.,3,,daily-life
 b1-buckle,BUCKLE,K,CONTAINS,noun,kemerin ucundaki metal tokası,The buckle of my belt broke.,Kemerimin tokası koptu.,3,,daily-life
 b1-locker,LOCKER,K,CONTAINS,noun,okulda ya da spor salonunda kilitli küçük dolap,I left my bag in my locker.,Çantamı dolabımda bıraktım.,3,,school-work
 b1-cracker,CRACKER,K,CONTAINS,noun,"peynirle yenen ince, kuru, tuzlu bisküvi",She ate cheese on a cracker.,Bisküvinin üzerinde peynir yedi.,3,,food-drink
 b1-velvet,VELVET,V,STARTS,noun,"yumuşak, tüylü ve parlak lüks kumaş",She wore a red velvet dress.,Kırmızı kadife bir elbise giydi.,3,,daily-life
 b1-venue,VENUE,V,STARTS,noun,konferansın ya da konserin yapıldığı mekan,The venue is near the station.,Mekan garın yakınında.,3,,business
-b1-violet,VIOLET,V,STARTS,adj,"mora yakın, açık mor renk",The wall was painted a soft violet colour.,Duvar yumuşak bir menekşe renge boyandı.,3,,daily-life
+b1-violet,VIOLET,V,STARTS,adj,"mora yakın, açık mor renk",The wall was painted a soft violet colour.,Duvar yumuşak bir menekşe renge boyandı.,3,,adjectives
 b1-voucher,VOUCHER,V,STARTS,noun,mağazada nakit yerine geçen kupon,I got a voucher for a free coffee.,Bedava kahve için bir kupon aldım.,3,,economy
 b1-vacancy,VACANCY,V,STARTS,noun,boş iş pozisyonu ya da boş otel odası,The hotel has no vacancy tonight.,Otelde bu gece boş oda yok.,3,,business
 b1-veteran,VETERAN,V,STARTS,noun,savaşa katılmış ya da yılların deneyimi olan kişi,My grandfather is a war veteran.,Büyükbabam bir savaş gazisi.,3,,family-people

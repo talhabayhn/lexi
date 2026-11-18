@@ -2,7 +2,7 @@ id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
 a2-liquid,LIQUID,Q,CONTAINS,noun,"su gibi akan madde, sıvı",Water is a liquid.,Su bir sıvıdır.,3,,school-work
 a2-squeeze,SQUEEZE,Q,CONTAINS,verb,bir şeyi sıkıp suyunu çıkarmak,Squeeze a lemon into the tea.,Çaya bir limon sık.,3,,food-drink
 a2-saxophone,SAXOPHONE,X,CONTAINS,noun,"kıvrık metal gövdeli üflemeli çalgı, saksafon",He plays the saxophone in a band.,Bir grupta saksafon çalıyor.,3,,hobbies
-a2-amazed,AMAZED,Z,CONTAINS,adj,"çok şaşırmış, hayretler içinde",I was amazed by the big show.,Büyük gösteriye şaşırdım.,3,,daily-life
+a2-amazed,AMAZED,Z,CONTAINS,adj,"çok şaşırmış, hayretler içinde",I was amazed by the big show.,Büyük gösteriye şaşırdım.,3,,adjectives
 a2-maze,MAZE,Z,CONTAINS,noun,"çıkışı bulunması zor dolambaçlı yollar, labirent",We got lost in the maze.,Labirentte kaybolduk.,3,,travel
 a2-fizzy,FIZZY,Z,CONTAINS,adj,içinde gaz kabarcıkları olan,I do not like fizzy drinks.,Gazlı içecekleri sevmem.,3,,food-drink
 a2-zigzag,ZIGZAG,Z,STARTS,noun,"iki yana kıvrılan kırık çizgi, zikzak",The road goes in a zigzag up the hill.,Yol tepeye doğru zikzak çizerek çıkıyor.,4,,travel

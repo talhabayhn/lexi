@@ -1,7 +1,7 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
-a2-able,ABLE,A,STARTS,adj,bir şeyi yapabilecek güçte ya da durumda,She is able to swim very fast.,Çok hızlı yüzebiliyor.,2,,daily-life
+a2-able,ABLE,A,STARTS,adj,bir şeyi yapabilecek güçte ya da durumda,She is able to swim very fast.,Çok hızlı yüzebiliyor.,2,,adjectives
 a2-abroad,ABROAD,A,STARTS,adv,kendi ülkesinin dışında,They travel abroad every summer.,Her yaz yurt dışına seyahat ediyorlar.,2,,travel
-a2-accept,ACCEPT,A,STARTS,verb,önerilen bir şeyi kabul etmek,Please accept this small gift.,Lütfen bu küçük hediyeyi kabul et.,3,,daily-life
+a2-accept,ACCEPT,A,STARTS,verb,önerilen bir şeyi kabul etmek,Please accept this small gift.,Lütfen bu küçük hediyeyi kabul et.,3,,verbs
 a2-accident,ACCIDENT,A,STARTS,noun,"istemeden olan, zarar veren kötü olay",There was an accident on the road.,Yolda bir kaza oldu.,2,,city-transport
 a2-across,ACROSS,A,STARTS,phrase,bir şeyin bir yanından öbür yanına,He swam across the river.,Nehri yüzerek geçti.,3,,city-transport
 a2-active,ACTIVE,A,STARTS,adj,"sürekli hareket eden, enerjik",My grandfather is still very active.,Büyükbabam hâlâ çok hareketli.,3,,body-health
@@ -9,14 +9,14 @@ a2-activity,ACTIVITY,A,STARTS,noun,insanların yaptığı eğlenceli iş ya da e
 a2-adult,ADULT,A,STARTS,noun,"büyümüş, ergin kişi",Children must come with an adult.,Çocuklar bir yetişkinle gelmeli.,3,,family-people
 a2-adventure,ADVENTURE,V,CONTAINS,noun,"heyecan verici, bazen tehlikeli yolculuk",Our trip was a big adventure.,Gezimiz büyük bir maceraydı.,3,,travel
 a2-advice,ADVICE,A,STARTS,noun,birine verilen öğüt,Can you give me some advice?,Bana biraz öğüt verir misin?,3,,daily-life
-a2-afraid,AFRAID,A,STARTS,adj,"korku duyan, çekinen",The little boy is afraid of the dark.,Küçük çocuk karanlıktan korkuyor.,2,,daily-life
+a2-afraid,AFRAID,A,STARTS,adj,"korku duyan, çekinen",The little boy is afraid of the dark.,Küçük çocuk karanlıktan korkuyor.,2,,adjectives
 a2-against,AGAINST,A,STARTS,phrase,bir şeye karşı olarak,We play against the best team.,En iyi takıma karşı oynuyoruz.,3,,hobbies
 a2-alarm,ALARM,A,STARTS,noun,uyarmak için çalan ses ya da cihaz,The alarm rang at six.,Alarm altıda çaldı.,2,,daily-life
 a2-album,ALBUM,A,STARTS,noun,fotoğraf ya da şarkıların toplandığı koleksiyon,I like her new album.,Onun yeni albümünü beğeniyorum.,2,,hobbies
 a2-alive,ALIVE,A,STARTS,adj,"yaşayan, ölmemiş",The doctor saw that the man was still alive.,Doktor adamın hâlâ yaşadığını gördü.,3,,animals
-a2-allow,ALLOW,A,STARTS,verb,birinin bir şeyi yapmasına izin vermek,My school does not allow phones in class.,Okulum sınıfta telefona izin vermiyor.,3,,daily-life
-a2-almost,ALMOST,A,STARTS,adv,"hemen hemen, çok yakın",We are almost at the top of the hill.,Tepenin tepesine neredeyse ulaştık.,2,,daily-life
-a2-alone,ALONE,A,STARTS,adj,"yanında kimse olmayan, tek başına",She lives alone in a small flat.,Küçük bir dairede tek başına yaşıyor.,2,,daily-life
+a2-allow,ALLOW,A,STARTS,verb,birinin bir şeyi yapmasına izin vermek,My school does not allow phones in class.,Okulum sınıfta telefona izin vermiyor.,3,,verbs
+a2-almost,ALMOST,A,STARTS,adv,"hemen hemen, çok yakın",We are almost at the top of the hill.,Tepenin tepesine neredeyse ulaştık.,2,,adjectives
+a2-alone,ALONE,A,STARTS,adj,"yanında kimse olmayan, tek başına",She lives alone in a small flat.,Küçük bir dairede tek başına yaşıyor.,2,,adjectives
 a2-along,ALONG,A,STARTS,phrase,bir yolun ya da hattın boyunca,We walked along the beach.,Plaj boyunca yürüdük.,3,,travel
 a2-although,ALTHOUGH,A,STARTS,phrase,"-e rağmen, olmasına karşın","Although it was cold, we went out.",Hava soğuk olmasına rağmen dışarı çıktık.,4,,daily-life
 a2-ambulance,AMBULANCE,A,STARTS,noun,hastaları hastaneye taşıyan araç,The ambulance arrived in five minutes.,Ambulans beş dakikada geldi.,2,,city-transport
@@ -35,7 +35,7 @@ a2-average,AVERAGE,A,STARTS,adj,"ne çok iyi ne çok kötü olan, ortalama",The 
 a2-awful,AWFUL,A,STARTS,adj,"çok kötü, berbat","The soup tasted awful, so I did not finish it.","Çorbanın tadı berbattı, bu yüzden bitirmedim.",3,,food-drink
 a2-above,ABOVE,A,STARTS,phrase,"bir şeyin üstünde, daha yukarıda",The picture is above the sofa.,Resim kanepenin üstünde.,2,,home
 a2-awake,AWAKE,A,STARTS,adj,"uyumayan, gözleri açık olan",The coffee kept me awake all night.,Kahve beni bütün gece uyanık tuttu.,3,,body-health
-a2-actually,ACTUALLY,A,STARTS,adv,"gerçekte, aslında","Actually, I do not like fish.",Aslında balık sevmem.,4,,daily-life
+a2-actually,ACTUALLY,A,STARTS,adv,"gerçekte, aslında","Actually, I do not like fish.",Aslında balık sevmem.,4,,adjectives
 a2-appointment,APPOINTMENT,A,STARTS,noun,doktor gibi biriyle önceden ayarlanan görüşme,I have a doctor's appointment at ten.,Saat onda doktor randevum var.,3,,body-health
 a2-bake,BAKE,B,STARTS,verb,fırında pişirmek,I bake bread on Sundays.,Pazar günleri ekmek pişiririm.,2,,food-drink
 a2-bakery,BAKERY,B,STARTS,noun,ekmek ve pasta satılan dükkân,The bakery opens at seven.,Fırın yedide açılıyor.,2,,food-drink
@@ -48,13 +48,13 @@ a2-bin,BIN,B,STARTS,noun,çöp atılan kutu,Put it in the bin.,Onu çöp kutusun
 a2-biology,BIOLOGY,B,STARTS,noun,canlıları inceleyen bilim dalı,Selin has a biology test on Friday.,Selin'in cuma günü biyoloji sınavı var.,2,,school-work
 a2-bite,BITE,B,STARTS,verb,dişleriyle ısırmak,Do not pet that dog; it may bite you.,O köpeği sevme; seni ısırabilir.,3,,animals
 a2-blood,BLOOD,B,STARTS,noun,damarlarda dolaşan kırmızı sıvı,The doctor took some blood.,Doktor biraz kan aldı.,3,,body-health
-a2-blow,BLOW,B,STARTS,verb,ağızdan hızla hava vermek,Blow gently on your soup; it is very hot.,Çorbana yavaşça üfle; çok sıcak.,3,,daily-life
+a2-blow,BLOW,B,STARTS,verb,ağızdan hızla hava vermek,Blow gently on your soup; it is very hot.,Çorbana yavaşça üfle; çok sıcak.,3,,verbs
 a2-boil,BOIL,B,STARTS,verb,"kaynatmak, kaynar suda pişirmek",Boil the eggs for ten minutes.,Yumurtaları on dakika kaynat.,2,,food-drink
 a2-boss,BOSS,B,STARTS,noun,"patron, işyerinde emir veren kişi",Her boss gave everyone a day off.,Patronu herkese bir gün izin verdi.,3,,school-work
 a2-bottom,BOTTOM,B,STARTS,noun,bir şeyin en alt kısmı,The coins fell to the bottom of the well.,Bozuk paralar kuyunun dibine düştü.,3,,daily-life
 a2-brave,BRAVE,B,STARTS,adj,"korkusuz, cesur",The brave boy saved the cat.,Cesur çocuk kediyi kurtardı.,3,,family-people
 a2-bright,BRIGHT,B,STARTS,adj,"çok ışık veren, parlak",The sun is bright today.,Güneş bugün parlak.,3,,time-weather
-a2-build,BUILD,B,STARTS,verb,"inşa etmek, yapmak",They will build a new bridge.,Yeni bir köprü yapacaklar.,3,,daily-life
+a2-build,BUILD,B,STARTS,verb,"inşa etmek, yapmak",They will build a new bridge.,Yeni bir köprü yapacaklar.,3,,verbs
 a2-burn,BURN,B,STARTS,verb,ateşte yanmak ya da yakmak,Watch out. Hot tea can burn you.,Dikkat et. Sıcak çay seni yakabilir.,3,,body-health
 a2-business,BUSINESS,B,STARTS,noun,para kazanmak için yapılan iş,Her father has a small business.,Babasının küçük bir işi var.,3,,school-work
 a2-badminton,BADMINTON,B,STARTS,noun,raketle ve tüylü topla oynanan spor,We play badminton in the garden.,Bahçede badminton oynuyoruz.,3,,hobbies

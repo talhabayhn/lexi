@@ -1,12 +1,12 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
 a2-ancient,ANCIENT,A,STARTS,adj,çok eski çağlara ait,We visited an ancient city.,Eski bir şehri ziyaret ettik.,2,,travel
-a2-borrow,BORROW,B,STARTS,verb,geri vermek üzere ödünç almak,May I borrow your dictionary for a minute?,Sözlüğünü bir dakikalığına ödünç alabilir miyim?,2,,daily-life
+a2-borrow,BORROW,B,STARTS,verb,geri vermek üzere ödünç almak,May I borrow your dictionary for a minute?,Sözlüğünü bir dakikalığına ödünç alabilir miyim?,2,,verbs
 a2-customer,CUSTOMER,C,STARTS,noun,dükkândan alışveriş yapan kişi,The customer paid at the desk.,Müşteri kasada ödeme yaptı.,2,,clothes-shopping
-a2-dangerous,DANGEROUS,D,STARTS,adj,zarar verme ihtimali olan,This road is dangerous at night.,Bu yol geceleri tehlikeli.,2,,daily-life
+a2-dangerous,DANGEROUS,D,STARTS,adj,zarar verme ihtimali olan,This road is dangerous at night.,Bu yol geceleri tehlikeli.,2,,adjectives
 a2-envelope,ENVELOPE,E,STARTS,noun,mektubu içine koyduğumuz kâğıt zarf,She put the letter in an envelope.,Mektubu bir zarfa koydu.,2,,daily-life
 a2-fever,FEVER,F,STARTS,noun,hastayken vücudun ısısının yükselmesi,The boy has a high fever.,Çocuğun ateşi yüksek.,2,,body-health
 a2-guest,GUEST,G,STARTS,noun,evimize davet edilen kişi,Our guest arrives at seven.,Misafirimiz yedide geliyor.,2,,family-people
-a2-hurry,HURRY,H,STARTS,verb,bir işi çabucak yapmaya çalışmak,Hurry up or we will be late.,Acele et yoksa geç kalacağız.,2,,daily-life
+a2-hurry,HURRY,H,STARTS,verb,bir işi çabucak yapmaya çalışmak,Hurry up or we will be late.,Acele et yoksa geç kalacağız.,2,,verbs
 a2-injury,INJURY,I,STARTS,noun,kaza sonucu vücutta oluşan yara,The player missed the game because of an injury.,Oyuncu bir sakatlık yüzünden maçı kaçırdı.,2,,body-health
 a2-journalist,JOURNALIST,J,STARTS,noun,gazete veya televizyon için haber yazan kişi,The journalist asked many questions.,Gazeteci çok soru sordu.,2,,school-work
 a2-kettle,KETTLE,K,STARTS,noun,çay veya kahve için su kaynatan kap,Put the kettle on for tea.,Çay için su ısıt.,2,,home

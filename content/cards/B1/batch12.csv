@@ -17,34 +17,34 @@ b1-hunter,HUNTER,H,STARTS,noun,hayvan avlamak için ormanda dolaşan kişi,The h
 b1-heartbeat,HEARTBEAT,H,STARTS,noun,kalbin düzenli atışı,You can hear your heartbeat after running.,Koştuktan sonra kalp atışını duyabilirsin.,3,,body-health
 b1-headlight,HEADLIGHT,H,STARTS,noun,"arabanın önündeki, geceyi aydınlatan lamba",One headlight of the car is broken.,Arabanın bir farı bozuk.,3,,city-transport
 b1-nearby,NEARBY,N,STARTS,adv,yakın bir yerde (zarf; ardından isim almaz),"Is there an ATM or a pharmacy nearby, please?","Yakınlarda bir ATM ya da eczane var mı, lütfen?",3,,city-transport
-b1-nasty,NASTY,N,STARTS,adj,"tadı, kokusu ya da davranışı iğrenç (sıfat)",This medicine has a nasty taste.,Bu ilacın berbat bir tadı var.,3,,daily-life
+b1-nasty,NASTY,N,STARTS,adj,"tadı, kokusu ya da davranışı iğrenç (sıfat)",This medicine has a nasty taste.,Bu ilacın berbat bir tadı var.,3,,adjectives
 b1-necktie,NECKTIE,N,STARTS,noun,gömleğin yakasına bağlanan uzun şerit,He wore a red necktie to the interview.,Mülakata kırmızı bir kravat taktı.,3,,daily-life
 b1-newborn,NEWBORN,N,STARTS,noun,yeni doğmuş bebek,The newborn slept all afternoon.,Yeni doğan bebek öğleden sonra boyunca uyudu.,3,,family-people
 b1-noun,NOUN,N,STARTS,noun,varlıkları adlandıran sözcük türü,"'Book' is a noun, not a verb.","'Book' bir fiil değil, isimdir.",3,,school-work
-b1-normally,NORMALLY,N,STARTS,adv,"olağan koşullarda, istisna yoksa (zarf)",I normally wake up at seven.,Genellikle yedide uyanırım.,3,,daily-life
+b1-normally,NORMALLY,N,STARTS,adv,"olağan koşullarda, istisna yoksa (zarf)",I normally wake up at seven.,Genellikle yedide uyanırım.,3,,adjectives
 b1-nosebleed,NOSEBLEED,N,STARTS,noun,burundan kan gelmesi,He had a nosebleed in the hot classroom.,Sıcak sınıfta burnu kanadı.,3,,body-health
 b1-obese,OBESE,O,STARTS,adj,sağlığı tehlikeye atacak kadar çok kilolu,The doctor told him he was obese.,Doktor ona obez olduğunu söyledi.,3,,body-health
 b1-oily,OILY,O,STARTS,adj,yağ içeren ya da yağ bulaşmış,I don't like oily food at night.,Geceleri yağlı yemek sevmem.,3,,food-drink
-b1-outer,OUTER,O,STARTS,adj,en dışta bulunan (sıfat; isimden önce gelir),The outer door was painted green.,Dış kapı yeşile boyanmıştı.,3,,daily-life
-b1-oversleep,OVERSLEEP,O,STARTS,verb,alarma rağmen planladığından geç uyanmak,I often oversleep on Sundays.,Pazar günleri sık sık fazla uyurum.,3,,daily-life
-b1-occasionally,OCCASIONALLY,O,STARTS,adv,"düzensiz aralıklarla, arada bir (zarf)",We occasionally eat out on Sundays.,Pazar günleri ara sıra dışarıda yeriz.,3,,daily-life
+b1-outer,OUTER,O,STARTS,adj,en dışta bulunan (sıfat; isimden önce gelir),The outer door was painted green.,Dış kapı yeşile boyanmıştı.,3,,adjectives
+b1-oversleep,OVERSLEEP,O,STARTS,verb,alarma rağmen planladığından geç uyanmak,I often oversleep on Sundays.,Pazar günleri sık sık fazla uyurum.,3,,verbs
+b1-occasionally,OCCASIONALLY,O,STARTS,adv,"düzensiz aralıklarla, arada bir (zarf)",We occasionally eat out on Sundays.,Pazar günleri ara sıra dışarıda yeriz.,3,,adjectives
 b1-optimist,OPTIMIST,O,STARTS,noun,olayların iyi biteceğine inanan kişi (isim),My brother is an optimist and never worries.,Kardeşim iyimserdir ve hiç endişelenmez.,3,,feelings
 b1-outing,OUTING,O,STARTS,noun,eğlenmek için yapılan kısa gezi,The class had an outing to the zoo.,Sınıf hayvanat bahçesine bir gezi yaptı.,3,,travel
 b1-teamwork,TEAMWORK,T,STARTS,noun,bir hedef için birlikte çalışma,Good teamwork helped us win the game.,İyi bir takım çalışması maçı kazanmamıza yardım etti.,3,,school-work
 b1-tangerine,TANGERINE,T,STARTS,noun,"portakala benzeyen küçük, kolay soyulan meyve",She peeled a tangerine for dessert.,Tatlı olarak bir mandalina soydu.,3,,food-drink
 b1-thunderstorm,THUNDERSTORM,T,STARTS,noun,"şimşek, gök gürültüsü ve yağmurlu fırtına",We stayed inside during the thunderstorm.,Gök gürültülü fırtına sırasında içeride kaldık.,3,,animals
 b1-toddler,TODDLER,T,STARTS,noun,yeni yürümeye başlayan 1-3 yaş arası çocuk,The toddler is learning to walk.,Küçük çocuk yürümeyi öğreniyor.,3,,family-people
-b1-unfortunately,UNFORTUNATELY,U,STARTS,adv,ne yazık ki; kötü haber verirken (zarf),"Unfortunately, the store was closed.",Maalesef mağaza kapalıydı.,3,,daily-life
+b1-unfortunately,UNFORTUNATELY,U,STARTS,adv,ne yazık ki; kötü haber verirken (zarf),"Unfortunately, the store was closed.",Maalesef mağaza kapalıydı.,3,,adjectives
 b1-underwater,UNDERWATER,U,STARTS,adj,suyun altında olan,We took photos of underwater fish.,Su altındaki balıkların fotoğraflarını çektik.,3,,travel
-b1-undo,UNDO,U,STARTS,verb,yapılmış bir işlemi geri almak,Click this button to undo the last change.,Son değişikliği geri almak için bu tuşa bas.,3,,daily-life
-b1-uneven,UNEVEN,U,STARTS,adj,"düz olmayan, engebeli",The road was uneven and full of holes.,Yol engebeliydi ve çukurlarla doluydu.,3,,daily-life
+b1-undo,UNDO,U,STARTS,verb,yapılmış bir işlemi geri almak,Click this button to undo the last change.,Son değişikliği geri almak için bu tuşa bas.,3,,verbs
+b1-uneven,UNEVEN,U,STARTS,adj,"düz olmayan, engebeli",The road was uneven and full of holes.,Yol engebeliydi ve çukurlarla doluydu.,3,,adjectives
 b1-unlimited,UNLIMITED,U,STARTS,adj,sınırı olmayan,The plan includes unlimited internet.,Pakette sınırsız internet var.,3,,business
-b1-unnecessary,UNNECESSARY,U,STARTS,adj,"gerekli olmayan, lüzumsuz",Do not buy unnecessary things.,Gereksiz şeyler satın alma.,3,,daily-life
-b1-unsafe,UNSAFE,U,STARTS,adj,"insanı tehlikeye atabilecek, güvenli olmayan",The old bridge is unsafe to cross.,Eski köprüden geçmek güvenli değil.,3,,daily-life
-b1-unwrap,UNWRAP,U,STARTS,verb,paketin sarmalını açmak,The kids unwrap their gifts on New Year's Day.,Çocuklar yılbaşında hediyelerini açar.,3,,daily-life
+b1-unnecessary,UNNECESSARY,U,STARTS,adj,"gerekli olmayan, lüzumsuz",Do not buy unnecessary things.,Gereksiz şeyler satın alma.,3,,adjectives
+b1-unsafe,UNSAFE,U,STARTS,adj,"insanı tehlikeye atabilecek, güvenli olmayan",The old bridge is unsafe to cross.,Eski köprüden geçmek güvenli değil.,3,,adjectives
+b1-unwrap,UNWRAP,U,STARTS,verb,paketin sarmalını açmak,The kids unwrap their gifts on New Year's Day.,Çocuklar yılbaşında hediyelerini açar.,3,,verbs
 b1-wallpaper,WALLPAPER,W,STARTS,noun,odanın duvarına yapıştırılan desenli kâğıt,Mom peeled the old wallpaper off the hallway wall.,Annem koridor duvarındaki eski duvar kâğıdını söktü.,3,,business
-b1-waterproof,WATERPROOF,W,STARTS,adj,su geçirmeyen,"My jacket is waterproof, so I stay dry.","Montum su geçirmez, o yüzden kuru kalırım.",3,,daily-life
-b1-weekly,WEEKLY,W,STARTS,adj,haftada bir olan,We have a weekly meeting on Mondays.,Pazartesi günleri haftalık toplantımız var.,3,,daily-life
+b1-waterproof,WATERPROOF,W,STARTS,adj,su geçirmeyen,"My jacket is waterproof, so I stay dry.","Montum su geçirmez, o yüzden kuru kalırım.",3,,adjectives
+b1-weekly,WEEKLY,W,STARTS,adj,haftada bir olan,We have a weekly meeting on Mondays.,Pazartesi günleri haftalık toplantımız var.,3,,adjectives
 b1-western,WESTERN,W,STARTS,adj,"batıda olan, batıya ait",They live in the western part of the city.,Şehrin batı kesiminde yaşıyorlar.,3,,travel
 b1-witch,WITCH,W,STARTS,noun,"masallarda süpürgeyle uçan, büyü yapan kadın",The witch in the story had a black cat.,Hikâyedeki cadının kara bir kedisi vardı.,3,,hobbies
 b1-worm,WORM,W,STARTS,noun,"toprakta yaşayan uzun, ayaksız hayvan",A bird pulled a worm out of the ground.,Bir kuş yerden bir solucan çıkardı.,3,,animals

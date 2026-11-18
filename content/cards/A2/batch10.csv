@@ -39,7 +39,7 @@ a2-meaning,MEANING,M,STARTS,noun,"bir sözcüğün ya da cümlenin anlattığı 
 a2-monster,MONSTER,M,STARTS,noun,"korkunç ve garip görünümlü masal yaratığı, canavar",There is a monster in the story.,Hikâyede bir canavar var.,2,,hobbies
 a2-plumber,PLUMBER,M,CONTAINS,noun,"su borularını döşeyen ve tamir eden usta, tesisatçı",We called a plumber.,Bir tesisatçı çağırdık.,3,,school-work
 a2-platform,PLATFORM,P,STARTS,noun,"istasyonda trene binilen yüksek yer, peron",The train leaves from platform two.,Tren iki numaralı perondan kalkıyor.,3,,city-transport
-a2-possible,POSSIBLE,P,STARTS,adj,"olabilen, mümkün",Is it possible to leave early?,Erken çıkmak mümkün mü?,3,,daily-life
+a2-possible,POSSIBLE,P,STARTS,adj,"olabilen, mümkün",Is it possible to leave early?,Erken çıkmak mümkün mü?,3,,adjectives
 a2-perfume,PERFUME,P,STARTS,noun,"güzel koku veren sıvı, parfüm",She wears a sweet perfume.,Tatlı bir parfüm sürüyor.,3,,clothes-shopping
 a2-pianist,PIANIST,P,STARTS,noun,piyano çalan kişi,The pianist is only ten years old.,Piyanist sadece on yaşında.,3,,hobbies
 a2-relative,RELATIVE,R,STARTS,noun,aile bağıyla bağlı olunan akraba,A relative of mine lives in Ankara.,Bir akrabam Ankara'da yaşıyor.,3,,family-people

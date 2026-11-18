@@ -5,8 +5,8 @@ a2-fat,FAT,F,STARTS,adj,"çok kilolu, şişman",The cat is very fat.,Kedi çok �
 a2-feed,FEED,F,STARTS,verb,"yemek vermek, beslemek",I feed the birds every morning.,Her sabah kuşları besliyorum.,2,,animals
 a2-ferry,FERRY,F,STARTS,noun,"insan ve araç taşıyan deniz taşıtı, vapur",We took the ferry to the island.,Adaya vapurla gittik.,2,,city-transport
 a2-festival,FESTIVAL,F,STARTS,noun,kutlamaların ve gösterilerin olduğu etkinlik,The music festival lasts three days.,Müzik festivali üç gün sürüyor.,3,,hobbies
-a2-fight,FIGHT,F,STARTS,verb,"biriyle kavga etmek, dövüşmek",The boys fight over the ball.,Çocuklar top için kavga ediyor.,3,,daily-life
-a2-fill,FILL,F,STARTS,verb,boş bir yeri dolu hale getirmek,Fill the glass with water.,Bardağı suyla doldur.,2,,daily-life
+a2-fight,FIGHT,F,STARTS,verb,"biriyle kavga etmek, dövüşmek",The boys fight over the ball.,Çocuklar top için kavga ediyor.,3,,verbs
+a2-fill,FILL,F,STARTS,verb,boş bir yeri dolu hale getirmek,Fill the glass with water.,Bardağı suyla doldur.,2,,verbs
 a2-final,FINAL,F,STARTS,adj,"bir dizide en sonda gelen, son",This is the final question on the test.,"Bu, testteki son soru.",3,,school-work
 a2-finally,FINALLY,F,STARTS,adv,"uzun beklemeden sonra, en sonunda","After two hours, the train finally arrived.",İki saat sonra tren sonunda geldi.,3,,time-weather
 a2-flour,FLOUR,F,STARTS,noun,ekmek ve kek için öğütülmüş buğday tozu,You need flour and eggs for this cake.,Bu kek için un ve yumurta lazım.,2,,food-drink
@@ -29,7 +29,7 @@ a2-perfect,PERFECT,F,CONTAINS,adj,"hiç eksiği olmayan, kusursuz",Your English 
 a2-habit,HABIT,H,STARTS,noun,sürekli tekrarlanan alışkanlık,Biting your nails is a bad habit.,Tırnak yemek kötü bir alışkanlık.,3,,daily-life
 a2-handbag,HANDBAG,H,STARTS,noun,kadınların elde taşıdığı çanta,She lost her handbag on the bus.,Çantasını otobüste kaybetti.,2,,clothes-shopping
 a2-handsome,HANDSOME,H,STARTS,adj,yüzü çekici ve hoş görünen,My uncle is tall and very handsome.,Amcam uzun boylu ve çok yakışıklı.,2,,family-people
-a2-happen,HAPPEN,H,STARTS,verb,"olmak, gerçekleşmek",Nothing will happen to you if you stay calm.,Sakin kalırsan sana hiçbir şey olmayacak.,3,,daily-life
+a2-happen,HAPPEN,H,STARTS,verb,"olmak, gerçekleşmek",Nothing will happen to you if you stay calm.,Sakin kalırsan sana hiçbir şey olmayacak.,3,,verbs
 a2-health,HEALTH,H,STARTS,noun,beden ve zihnin genel durumu,Good food is good for your health.,İyi yemek sağlığın için faydalıdır.,3,,body-health
 a2-heart,HEART,H,STARTS,noun,"kanı pompalayan organ, kalp",My heart beats fast when I run.,Koşarken kalbim hızlı atıyor.,2,,body-health
 a2-heat,HEAT,H,STARTS,noun,havadaki bunaltıcı yüksek sıcaklık,The heat is too much today.,Bugün sıcaklık çok bunaltıcı.,3,,time-weather
@@ -40,8 +40,8 @@ a2-hide,HIDE,H,STARTS,verb,görünmeyecek şekilde saklamak ya da saklanmak,The 
 a2-hiking,HIKING,H,STARTS,noun,doğada uzun yürüyüş yapma,We go hiking in the mountains every autumn.,Her sonbahar dağlarda yürüyüşe çıkarız.,3,,hobbies
 a2-hit,HIT,H,STARTS,verb,bir şeye vurmak,He hit the ball very hard.,Topa çok sert vurdu.,2,,hobbies
 a2-hole,HOLE,H,STARTS,noun,bir şeyde açılan delik,There is a hole in my sock.,Çorabımda bir delik var.,2,,daily-life
-a2-hope,HOPE,H,STARTS,verb,bir şeyin olmasını istemek ve beklemek,I hope you feel better soon.,Umarım yakında kendini daha iyi hissedersin.,3,,daily-life
-a2-horrible,HORRIBLE,H,STARTS,adj,"çok kötü, korkunç",The weather was horrible yesterday.,Dün hava korkunçtu.,3,,daily-life
+a2-hope,HOPE,H,STARTS,verb,bir şeyin olmasını istemek ve beklemek,I hope you feel better soon.,Umarım yakında kendini daha iyi hissedersin.,3,,verbs
+a2-horrible,HORRIBLE,H,STARTS,adj,"çok kötü, korkunç",The weather was horrible yesterday.,Dün hava korkunçtu.,3,,adjectives
 a2-housework,HOUSEWORK,H,STARTS,noun,evde yapılan temizlik ve düzen işleri,My mother does the housework in the morning.,Annem sabahları ev işlerini yapar.,3,,home
 a2-hug,HUG,H,STARTS,verb,sevgiyle kollarını birine sarmak,Please hug your little brother.,Lütfen küçük kardeşine sarıl.,2,,family-people
 a2-human,HUMAN,H,STARTS,noun,insan türünden olan canlı,A human has two arms and two legs.,Bir insanın iki kolu ve iki bacağı vardır.,3,,family-people
@@ -55,7 +55,7 @@ a2-wheel,WHEEL,H,CONTAINS,noun,"arabanın dönen yuvarlak parçası, tekerlek",T
 a2-fishing,FISHING,H,CONTAINS,noun,olta ile balık tutma,My uncle goes fishing at weekends.,Amcam hafta sonları balık avına gider.,2,,hobbies
 a2-shampoo,SHAMPOO,H,CONTAINS,noun,saç yıkamak için kullanılan sıvı sabun,I need new shampoo.,Yeni şampuana ihtiyacım var.,2,,daily-life
 a2-shape,SHAPE,H,CONTAINS,noun,bir şeyin dış biçimi,The cake has the shape of a star.,Kek yıldız şeklinde.,3,,school-work
-a2-share,SHARE,H,CONTAINS,verb,bir şeyi başkasıyla paylaşmak,Please share your sweets.,Lütfen şekerlerini paylaş.,2,,daily-life
+a2-share,SHARE,H,CONTAINS,verb,bir şeyi başkasıyla paylaşmak,Please share your sweets.,Lütfen şekerlerini paylaş.,2,,verbs
 a2-machine,MACHINE,H,CONTAINS,noun,iş yapan makine,The machine is very old.,Makine çok eski.,3,,home
 a2-leader,LEADER,L,STARTS,noun,bir grubu yöneten kişi,She is the leader of our team.,"O, takımımızın lideri.",3,,school-work
 a2-leather,LEATHER,L,STARTS,noun,hayvan derisinden yapılan malzeme,These boots are made of leather.,Bu botlar deriden yapılmış.,3,,clothes-shopping
@@ -68,12 +68,12 @@ a2-lip,LIP,L,STARTS,noun,ağzın üst ve alt kenarı,He cut his lip.,Dudağını
 a2-local,LOCAL,L,STARTS,adj,"bulunulan yere ait olan, yerel",We ate at a local restaurant.,Yerel bir lokantada yemek yedik.,3,,travel
 a2-lock,LOCK,L,STARTS,verb,"anahtarla kapatmak, kilitlemek",Do not forget to lock the door.,Kapıyı kilitlemeyi unutma.,2,,home
 a2-lonely,LONELY,L,STARTS,adj,yalnız olduğu için üzgün hisseden,The old man feels lonely.,Yaşlı adam kendini yalnız hissediyor.,3,,family-people
-a2-lend,LEND,L,STARTS,verb,geri almak üzere birine bir şey vermek,Can you lend me a pencil?,Bana bir kurşun kalem ödünç verebilir misin?,3,,daily-life
+a2-lend,LEND,L,STARTS,verb,geri almak üzere birine bir şey vermek,Can you lend me a pencil?,Bana bir kurşun kalem ödünç verebilir misin?,3,,verbs
 a2-living-room,LIVING ROOM,L,STARTS,noun,evde misafir kabul edilen ve oturulan oda,We watch TV in the living room.,Oturma odasında televizyon izleriz.,2,,home
-a2-lucky,LUCKY,L,STARTS,adj,şansı yaver giden,I was lucky to catch the last bus home.,Eve giden son otobüsü yakaladığım için şanslıydım.,2,,daily-life
+a2-lucky,LUCKY,L,STARTS,adj,şansı yaver giden,I was lucky to catch the last bus home.,Eve giden son otobüsü yakaladığım için şanslıydım.,2,,adjectives
 a2-smell,SMELL,L,CONTAINS,noun,burunla algılanan koku,I like the smell of bread.,Ekmeğin kokusunu severim.,2,,food-drink
 a2-shell,SHELL,L,CONTAINS,noun,deniz canlısının dış kabuğu,I found a shell on the beach.,Plajda bir deniz kabuğu buldum.,2,,travel
-a2-special,SPECIAL,L,CONTAINS,adj,"sıradan olmayan, özel",Today is a special day.,Bugün özel bir gün.,2,,daily-life
+a2-special,SPECIAL,L,CONTAINS,adj,"sıradan olmayan, özel",Today is a special day.,Bugün özel bir gün.,2,,adjectives
 a2-pillow,PILLOW,L,CONTAINS,noun,yatakta başın altına konan yumuşak yastık,I need another pillow.,Bir yastığa daha ihtiyacım var.,2,,home
 a2-balcony,BALCONY,L,CONTAINS,noun,binanın dışa açılan küçük çıkıntısı,We drink tea on the balcony.,Balkonda çay içiyoruz.,2,,home
 a2-plastic,PLASTIC,L,CONTAINS,noun,şişe ve poşetlerin yapıldığı hafif malzeme,This bottle is made of plastic.,Bu şişe plastikten yapılmış.,2,,daily-life

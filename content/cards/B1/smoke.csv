@@ -11,8 +11,8 @@ b1-knowledge,KNOWLEDGE,K,STARTS,noun,öğrenilmiş şeylerin tümü,Reading adds
 b1-loyal,LOYAL,L,STARTS,adj,"bağlı, ihanet etmeyen",A dog is a loyal friend.,Köpek sadık bir arkadaştır.,3,,feelings
 b1-manage,MANAGE,M,STARTS,verb,"bir işi yürütmek, idare etmek",She can manage a small shop alone.,Küçük bir dükkânı tek başına yönetebilir.,3,,business
 b1-opportunity,OPPORTUNITY,O,STARTS,noun,bir şeyi yapmak için uygun zaman,This job is a great opportunity.,Bu iş harika bir fırsat.,3,,business
-b1-patient,PATIENT,P,STARTS,adj,beklerken sakin kalabilen,"Be patient, the bus will come soon.","Sabırlı ol, otobüs yakında gelecek.",3,,daily-life
-b1-reliable,RELIABLE,R,STARTS,adj,"kendisine güvenilen, sözünde duran",He is a reliable driver.,O güvenilir bir sürücü.,3,,daily-life
+b1-patient,PATIENT,P,STARTS,adj,beklerken sakin kalabilen,"Be patient, the bus will come soon.","Sabırlı ol, otobüs yakında gelecek.",3,,adjectives
+b1-reliable,RELIABLE,R,STARTS,adj,"kendisine güvenilen, sözünde duran",He is a reliable driver.,O güvenilir bir sürücü.,3,,adjectives
 b1-scenery,SCENERY,S,STARTS,noun,bir bölgenin doğal görünümü,The scenery in the mountains is beautiful.,Dağlardaki manzara çok güzel.,3,,travel
 b1-unemployed,UNEMPLOYED,U,STARTS,adj,"işi olmayan, iş arayan",He has been unemployed for a year.,Bir yıldır işsiz.,3,,economy
 b1-volunteer,VOLUNTEER,V,STARTS,noun,karşılıksız çalışan gönüllü kişi,She works as a volunteer at the hospital.,Hastanede gönüllü olarak çalışıyor.,3,,school-work
