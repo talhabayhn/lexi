@@ -73,14 +73,14 @@ class CategoryPickerViewModelTest {
         Dispatchers.resetMain()
     }
 
-    private fun viewModel(level: Level = Level.A1) = CategoryPickerViewModel(
+    private fun viewModel(level: Level = Level.A1, config: GameConfig = GameConfig()) = CategoryPickerViewModel(
         route = CategoryPickerRoute(level),
         cards = cards,
         categories = categories,
         examPacks = examPacks,
         progress = progress,
         settings = settings,
-        config = GameConfig(),
+        config = config,
         crashReporter = crashReporter,
     )
 
@@ -117,8 +117,9 @@ class CategoryPickerViewModelTest {
         }
 
     @Test
-    fun `a category thin on A opens its wheel on its first letter and so does the effect`() = runTest {
-        // No "A" card in food-drink: the wheel skips A and opens on B, so the morph's big letter must be B.
+    fun `a thin category is filled from the level so it opens on the level's first letter`() = runTest {
+        // food-drink covers 2 letters (< minCategoryLetters): the engine fills A from the level (ARM), so the morph's
+        // big letter is A even though the category itself has no A card.
         cards.cards = listOf(
             testCard("BREAD", category = "food-drink"),
             testCard("CHERRY", category = "food-drink"),
@@ -127,17 +128,37 @@ class CategoryPickerViewModelTest {
         val viewModel = viewModel()
         val byId = viewModel.state.value.categories.associateBy { it.id.value }
 
-        assertEquals('B', byId.getValue("food-drink").firstLetter)
-        assertEquals('A', byId.getValue("home").firstLetter)
-        assertEquals('A', byId.getValue("mixed").firstLetter, "mixed: the first letter of any card of the level")
-        assertEquals(false, "travel" in byId, "no card at all: not listed, so no game that never starts")
-
+        assertEquals('A', byId.getValue("food-drink").firstLetter)
         viewModel.onIntent(CategoryPickerIntent.OpenCategory(CategoryId("food-drink")))
         viewModel.effects.test {
             viewModel.onIntent(CategoryPickerIntent.Play)
-            assertEquals('B', (awaitItem() as CategoryPickerEffect.StartGame).firstLetter)
+            assertEquals('A', (awaitItem() as CategoryPickerEffect.StartGame).firstLetter)
         }
     }
+
+    @Test
+    fun `a category without an A card at the minimum opens its wheel on its first letter and so does the effect`() =
+        runTest {
+            // food-drink covers exactly minCategoryLetters letters: not filled, the wheel skips A and opens on B.
+            cards.cards = listOf(
+                testCard("BREAD", category = "food-drink"),
+                testCard("CHERRY", category = "food-drink"),
+                testCard("ARM", category = "home"),
+            )
+            val viewModel = viewModel(config = GameConfig(minCategoryLetters = 2))
+            val byId = viewModel.state.value.categories.associateBy { it.id.value }
+
+            assertEquals('B', byId.getValue("food-drink").firstLetter)
+            assertEquals('A', byId.getValue("home").firstLetter)
+            assertEquals('A', byId.getValue("mixed").firstLetter, "mixed: the first letter of any card of the level")
+            assertEquals(false, "travel" in byId, "no card at all: not listed, so no game that never starts")
+
+            viewModel.onIntent(CategoryPickerIntent.OpenCategory(CategoryId("food-drink")))
+            viewModel.effects.test {
+                viewModel.onIntent(CategoryPickerIntent.Play)
+                assertEquals('B', (awaitItem() as CategoryPickerEffect.StartGame).firstLetter)
+            }
+        }
 
     @Test
     fun `NAT shows only the mixed card`() = runTest {
@@ -241,7 +262,8 @@ class CategoryPickerViewModelTest {
             viewModel.onIntent(CategoryPickerIntent.Play)
 
             assertEquals(
-                CategoryPickerEffect.StartGame(Level.A1, GameMode.CLASSIC, CategoryId("home"), 420, firstLetter = 'C'),
+                // home has only CHAIR (thin): the engine fills it from the level, so the wheel opens on A.
+                CategoryPickerEffect.StartGame(Level.A1, GameMode.CLASSIC, CategoryId("home"), 420, firstLetter = 'A'),
                 awaitItem(),
             )
         }

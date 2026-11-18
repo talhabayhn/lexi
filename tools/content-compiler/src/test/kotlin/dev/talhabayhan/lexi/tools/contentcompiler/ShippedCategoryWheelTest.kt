@@ -94,6 +94,22 @@ class ShippedCategoryWheelTest {
         }
     }
 
+    @Test
+    fun `the picker's first letter is the letter every shipped wheel opens on`() {
+        for (level in content.shippedLevels) {
+            val levelLetters = pool.filter { it.level == level }.mapTo(mutableSetOf()) { it.letter }
+            val ids = content.categories.filter { level in it.levels }.map { it.id } + CategoryId.MIXED.value
+            for (category in ids.distinct()) {
+                val own = if (category == CategoryId.MIXED.value) levelLetters else ownLetters(level, category)
+                val expected = WheelGenerator.firstLetter(own, levelLetters, config)
+                for (seed in 1L..3L) {
+                    val opening = wheel(level, category, seed).playableSlots.firstOrNull()?.letter
+                    assertEquals(expected, opening, "$category $level seed $seed")
+                }
+            }
+        }
+    }
+
     private fun CardEntry.toCard() = Card(
         id = CardId(id),
         level = level,

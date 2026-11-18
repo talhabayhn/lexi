@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dev.talhabayhan.lexi.core.domain.game.GameConfig
 import dev.talhabayhan.lexi.core.domain.game.GameMode
+import dev.talhabayhan.lexi.core.domain.game.WheelGenerator
 import dev.talhabayhan.lexi.core.domain.model.CardId
 import dev.talhabayhan.lexi.core.domain.model.Category
 import dev.talhabayhan.lexi.core.domain.model.CategoryId
@@ -136,6 +137,7 @@ internal class CategoryPickerViewModel(
         val categoryOf: Map<CardId, CategoryId>,
         val letterOf: Map<CardId, Char>,
         val packs: List<Pair<ExamPack, List<CardId>>>,
+        val config: GameConfig,
     ) {
         fun cards(learned: Set<CardId>): List<PickerCategoryUi> {
             val byCategory = categoryOf.entries.groupBy({ it.value }, { it.key })
@@ -163,9 +165,17 @@ internal class CategoryPickerViewModel(
             }
         }
 
-        /** The wheel opens on the first letter with a card; a letter without one is skipped (`WheelGenerator`). */
-        private fun firstLetter(ids: Collection<CardId>): Char =
-            ids.mapNotNull { letterOf[it] }.minOrNull() ?: DEFAULT_FIRST_LETTER
+        private val levelLetters: Set<Char> = categoryOf.keys.mapNotNullTo(HashSet()) { letterOf[it] }
+
+        /**
+         * The letter the wheel opens on, by the engine's own rule ([WheelGenerator.firstLetter]): a letter without a
+         * card is skipped, and a thin category is filled from the level (so it opens on the level's first letter).
+         */
+        private fun firstLetter(ids: Collection<CardId>): Char = WheelGenerator.firstLetter(
+            categoryLetters = ids.mapNotNullTo(HashSet()) { letterOf[it] },
+            levelLetters = levelLetters,
+            config = config,
+        ) ?: DEFAULT_FIRST_LETTER
 
         fun packs(learned: Set<CardId>): List<PickerPackUi> = packs.map { (pack, ids) ->
             PickerPackUi(pack.id, pack.titleTr, pack.titleEn, ids.count { it in learned }, ids.size)
@@ -183,6 +193,7 @@ internal class CategoryPickerViewModel(
             letterOf = cards.contentIndex().letterOf,
             // Pro packs are not listed (as on the exam packs page); the upcoming exams are the static locked cards.
             packs = examPacks.packs().filter { !it.isPro }.sortedBy { it.sort }.map { it to examPacks.cardIds(it.id) },
+            config = config,
         )
     } catch (e: CancellationException) {
         throw e

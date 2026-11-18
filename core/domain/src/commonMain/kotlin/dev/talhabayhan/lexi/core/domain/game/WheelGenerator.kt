@@ -62,6 +62,23 @@ public object WheelGenerator {
     }
 
     /**
+     * The letter a [generate] wheel opens on (its first playable slot), from letters alone, so a screen can show it
+     * before the wheel is built (the picker's letter morph). [categoryLetters]: the letters the category's cards cover
+     * (the level's letters for [CategoryId.MIXED]); [levelLetters]: the letters of every card of the level. A thin
+     * category is filled from the level, so it opens on the level's first letter. Null when the category has no card.
+     * Exact because answers are unique per level (content validation), so the fill never drops a level letter.
+     */
+    public fun firstLetter(
+        categoryLetters: Set<Char>,
+        levelLetters: Set<Char>,
+        config: GameConfig = GameConfig(),
+    ): Char? {
+        val fill = categoryLetters.size in 1 until config.minCategoryLetters
+        val letters = if (fill) categoryLetters + levelLetters else categoryLetters
+        return letters.filter { it in 'A'..'Z' }.minOrNull()
+    }
+
+    /**
      * Exam pack wheel (`GAME_RULES.md` §1): 26 slots A–Z over every card of the pack, whatever its level or
      * category, picked exactly like [generate] ([pickFresh], one `nextInt` per non-skipped letter in A–Z order).
      * Letters without a pack card become [SlotState.SKIPPED]. The pack is played with Classic rules, so [history]

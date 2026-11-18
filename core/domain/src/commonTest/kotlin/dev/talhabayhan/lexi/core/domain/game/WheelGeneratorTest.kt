@@ -607,6 +607,50 @@ class WheelGeneratorTest {
 
     // endregion
 
+    private fun firstLetterOf(pool: List<Card>, category: CategoryId): Char? {
+        val level = pool.filter { it.level == Level.A1 }
+        val own = if (category == CategoryId.MIXED) level else level.filter { it.category == category }
+        return WheelGenerator.firstLetter(
+            categoryLetters = own.mapTo(mutableSetOf()) { it.letter },
+            levelLetters = level.mapTo(mutableSetOf()) { it.letter },
+        )
+    }
+
+    private fun Wheel.openingLetter(): Char? = playableSlots.firstOrNull()?.letter
+
+    @Test
+    fun `the first letter of a thin category is the filled wheel's first letter`() {
+        val pool = triplePool + card("EVENTUALLY", category = "false-friends")
+
+        assertEquals('A', firstLetterOf(pool, falseFriends))
+        for (seed in 1L..20L) {
+            assertEquals('A', generate(pool = pool, seed = seed, category = falseFriends).openingLetter(), "seed $seed")
+        }
+    }
+
+    @Test
+    fun `the first letter of a category at the minimum is its own first letter`() {
+        val pool = triplePool + categoryCards('D'..'P')
+
+        assertEquals('D', firstLetterOf(pool, falseFriends))
+        assertEquals('D', generate(pool = pool, category = falseFriends).openingLetter())
+    }
+
+    @Test
+    fun `the first letter follows the minimum from the config`() {
+        val own = setOf('D', 'E')
+
+        assertEquals('A', WheelGenerator.firstLetter(own, ('A'..'Z').toSet()))
+        assertEquals('D', WheelGenerator.firstLetter(own, ('A'..'Z').toSet(), GameConfig(minCategoryLetters = 2)))
+    }
+
+    @Test
+    fun `the first letter of the mixed wheel and of an empty category`() {
+        assertEquals('A', firstLetterOf(triplePool, CategoryId.MIXED))
+        assertNull(firstLetterOf(triplePool, falseFriends))
+        assertNull(generate(pool = triplePool, category = falseFriends).openingLetter())
+    }
+
     private companion object {
         const val DAY = 86_400_000L
         const val NOW = 1_000 * DAY
