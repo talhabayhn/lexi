@@ -121,6 +121,8 @@ with `cream` so the mid-fade never shows the window background. Reduced motion: 
 
 Splash timing in app (scale the demo keyframe percentages from 3.6 s to 1.2 s; keep order and overshoots):
 bg 0–216 ms, L 48–312 ms, E 120–384 ms, X 192–480 ms, I 264–552 ms, tagline 576–696 ms, hold to 1200 ms.
+The 1.2 s clock starts after a 2-frame pre-roll on the splash's plain cream first frame (its poses drawn hidden, to
+build GPU pipelines before the animation, `docs/PERF.md` § iOS first launch); none with reduced motion.
 
 ## Haptic map (`HapticKind`)
 Android uses the device `Vibrator` (no View dependency); API 29+ uses predefined effects, API 26-28 a waveform

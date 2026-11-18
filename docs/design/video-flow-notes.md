@@ -199,7 +199,8 @@ Still open:
   with a pop, the clue slides, slots and keys are re-dealt, the centre letter leaves down and the next comes from
   above. Hidden keys take no tap during a re-deal.
 - **#18 grid entrance** (phase 2) unchanged; Home has no entrance; other screen changes keep #12.
-- **Performance:** draw-phase only; `FlowWarmUp` compiles the flip and morph shaders on Home; low-RAM / Low Power Mode
+- **Performance:** draw-phase only; `FlowWarmUp` compiles the flip and morph shaders on Home (since 1.1.x also the
+  real card mid-flip and the dialog mid-open, `CategoryFlipWarmUp`; iOS first launch: `docs/PERF.md`); low-RAM / Low Power Mode
   start in Lite, slow transitions switch the session to Lite (rules since phase 6: §12); debug
   builds have a tier switch and a frame-time graph (`MotionDebugOverlay`, shown from `androidApp/src/debug`). Numbers: `docs/PERF.md` § Video flow.
 - **Goldens:** no new screenshot test and no golden change at rest (the motions start from and end on the resting

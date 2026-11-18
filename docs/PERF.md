@@ -196,3 +196,37 @@ done
 ```
 Result: release 0, benchmarkRelease 0, debug 14. `nonMinifiedRelease` (benchmark-only build type, no R8) still holds
 the unreferenced classes (11); it is never shipped.
+
+## iOS first launch after install (2026-11-18, TestFlight 1.1.0, iPhone 13)
+
+Owner report: on the first launch after a fresh install the splash and the first category-card flip stutter a little;
+after closing and reopening the app both are smooth; the letter morph → game is fine. So the cost is one-time per
+install, not the animations. Checked in code (no device trace yet):
+
+| Hypothesis | Verdict |
+|---|---|
+| content.db copy / user DB / DataStore on the main thread or in the splash | **No.** Installed and opened on `Dispatchers.IO` while the splash plays (`SplashRoute` → `ContentVersionRepository`, `Databases`); 1.7 MB, off-main. The user DB opens on the first progress read (IO), DataStore runs on an IO scope. |
+| First queries (categories, progress) on the main thread | **No.** All repository reads are `withContext(io)`; the picker only maps the rows on main (a few ms, the same on every launch). |
+| GPU shaders compiled on first draw | **Yes.** After an install Metal builds every pipeline the first time Skia draws it and the OS caches the result for the next launches, which is exactly "first launch only". The splash had no warm-up at all (its shaders were built inside its own animation); the Home `FlowWarmUp` drew only the card's art and text turned, not the card's own fill / border / shadows / lift under perspective, and the dialog warm-up (`PickerDialogWarmUp`) waits ≈ 1.1 s on the picker, so a quick first tap beat it. |
+| Category art / fonts decoded on first draw | **No.** The art is vector `Path`s (no bitmaps); the Jost fonts are read in the first composition, before the splash clock starts. |
+| Koin / lazy init during the splash | **Partly (iOS).** Koin resolves in the first composition (before the clock). But `IosSoundPlayer` read the sound files and created + prepared every `AVAudioPlayer` on the **main thread** right after the first frame, i.e. inside the splash (slowest on the first launch: audio set-up, cold files), and `IosHaptics` created a new feedback generator for each of the splash's four landing haptics. |
+
+What changed (no design, duration, easing, tier or reduced-motion change; nothing debug-only):
+
+- **Splash pre-roll** (`SplashRoute`): the logo is drawn at 4 of its own poses behind the splash's opaque cream for 2
+  frames, while the visible splash still shows its plain-cream first frame; then the 1.2 s clock starts. Not with
+  reduced motion. Test: `SplashWarmUpTest` (no landing during the pre-roll, landings timed from the clock's start).
+- **Flip warm-up on Home**: `FlowWarmUp` also draws `CategoryFlipWarmUp` (feature:levels): the real `PickerCard`
+  posed lifted and half-turned with the flip's own layer, plus the real dialog panel mid-open, in the existing two
+  warm-up frames after Home is first resumed (common code: Android and iOS). Test: `CategoryFlipWarmUpTest`.
+- **iOS sounds off the main thread** (`IosSoundPlayer`): the audio session and the players are set up on
+  `Dispatchers.Default`; each ready player is published to the main thread (Tap first). Test: `IosSoundPlayerTest`
+  (Mac only, `:core:platform:iosSimulatorArm64Test`; Linux CI does not run iosTest).
+- **iOS haptics**: one generator per kind, kept; the light one is created and prepared when `IosHaptics` is built
+  (first composition, before the splash clock starts).
+
+**Re-test (owner, iPhone):** the effect only shows once per install, so: delete the app (long press → Remove App →
+Delete App; this also drops Metal's cached pipelines), install the build from TestFlight, open it once and watch the
+splash, finish the onboarding, Home → play card → tap a category card right away and watch the flip. Then close the app
+from the app switcher, reopen and compare. For numbers, profile the same first launch with Instruments → Animation
+Hitches on a Release build installed fresh from Xcode (delete the app before each run).
