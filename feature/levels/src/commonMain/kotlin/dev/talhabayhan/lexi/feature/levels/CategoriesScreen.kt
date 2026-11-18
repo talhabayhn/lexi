@@ -21,6 +21,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.tooling.preview.Preview
 import dev.talhabayhan.lexi.core.designsystem.component.CategoryCard
@@ -40,6 +41,7 @@ import dev.talhabayhan.lexi.feature.levels.generated.resources.Res
 import dev.talhabayhan.lexi.feature.levels.generated.resources.categories_empty
 import dev.talhabayhan.lexi.feature.levels.generated.resources.categories_error
 import dev.talhabayhan.lexi.feature.levels.generated.resources.categories_mixed_subtitle
+import dev.talhabayhan.lexi.feature.levels.generated.resources.categories_mixed_subtitle_large
 import dev.talhabayhan.lexi.feature.levels.generated.resources.categories_mixed_title
 import dev.talhabayhan.lexi.feature.levels.generated.resources.categories_progress
 import dev.talhabayhan.lexi.feature.levels.generated.resources.categories_progress_done
@@ -51,7 +53,7 @@ import org.jetbrains.compose.resources.stringResource
 
 /**
  * `07-categories`: back button and title, the level tabs, the red mixed-wheel card and the 2-column category grid with
- * the learned words per category. Scrolls when the categories do not fit.
+ * the learned words per category. Scrolls when the categories do not fit; at font scale 1.3 and above the grid is one column.
  */
 @Composable
 internal fun CategoriesScreen(
@@ -120,7 +122,12 @@ internal fun CategoriesScreen(
 private fun MixedWheel(state: CategoriesUiState, onIntent: (CategoriesIntent) -> Unit) {
     MixedWheelCard(
         title = stringResource(Res.string.categories_mixed_title),
-        subtitle = stringResource(Res.string.categories_mixed_subtitle, state.level.name, state.letterCount),
+        // The level name is dropped at the largest fonts: its long word would otherwise break in the middle.
+        subtitle = if (LocalDensity.current.fontScale >= LARGE_FONT_SCALE) {
+            stringResource(Res.string.categories_mixed_subtitle_large, state.letterCount)
+        } else {
+            stringResource(Res.string.categories_mixed_subtitle, state.level.name, state.letterCount)
+        },
         trailing = state.levelTotal.toString(),
         onClick = { onIntent(CategoriesIntent.PlayMixed) },
         enabled = state.levelTotal > 0,
@@ -132,8 +139,10 @@ private fun CategoryGrid(state: CategoriesUiState, onIntent: (CategoriesIntent) 
     val gap = LexiTheme.dimens.gap10
     // TODO(M7): follow Settings.uiLanguage once the in-app language setting is applied.
     val turkish = Locale.current.language == TURKISH
+    // Large system fonts do not fit a name beside the marker in half a screen: one full-width card per row.
+    val columns = if (LocalDensity.current.fontScale >= SINGLE_COLUMN_FONT_SCALE) 1 else CATEGORY_COLUMNS
     Column(verticalArrangement = Arrangement.spacedBy(gap)) {
-        state.categories.withIndex().chunked(CATEGORY_COLUMNS).forEach { row ->
+        state.categories.withIndex().chunked(columns).forEach { row ->
             Row(
                 modifier = Modifier.fillMaxWidth().height(IntrinsicSize.Max),
                 horizontalArrangement = Arrangement.spacedBy(gap),
@@ -160,13 +169,20 @@ private fun CategoryGrid(state: CategoriesUiState, onIntent: (CategoriesIntent) 
                     )
                 }
                 // An odd last row keeps its card at half width.
-                repeat(CATEGORY_COLUMNS - row.size) { Spacer(Modifier.weight(1f)) }
+                repeat(columns - row.size) { Spacer(Modifier.weight(1f)) }
             }
         }
     }
 }
 
 private const val CATEGORY_COLUMNS = 2
+
+/** System font scale from which the category grid becomes a single column (below it: the design's two columns). */
+internal const val SINGLE_COLUMN_FONT_SCALE = 1.3f
+
+/** System font scale from which the mixed-wheel subtitle uses its short text. */
+private const val LARGE_FONT_SCALE = 1.5f
+
 private const val TURKISH = "tr"
 
 /** Marker shape and color of a category card; the design cycles square, circle, leaf down the list. */
@@ -192,7 +208,7 @@ internal val CategoriesSampleState = CategoriesUiState(
         CategoryUi(CategoryId("food-drink"), "Yiyecek ve içecek", "Food and drink", 61, 95),
         CategoryUi(CategoryId("home"), "Ev ve eşyalar", "Home", 52, 80),
         CategoryUi(CategoryId("family-people"), "Aile ve insanlar", "Family and people", 70, 70),
-        CategoryUi(CategoryId("colors-numbers"), "Renkler ve sayılar", "Colours and numbers", 60, 60),
+        CategoryUi(CategoryId("colors-numbers"), "Renkler ve sayılar", "Colors and numbers", 60, 60),
         CategoryUi(CategoryId("body-health"), "Vücut ve sağlık", "Body and health", 23, 75),
         CategoryUi(CategoryId("school-work"), "Okul ve iş", "School and work", 18, 65),
         CategoryUi(CategoryId("animals"), "Hayvanlar", "Animals", 30, 70),
