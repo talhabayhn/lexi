@@ -1,8 +1,11 @@
 package dev.talhabayhan.lexi.feature.levels.picker
 
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.ui.semantics.SemanticsProperties
+import androidx.compose.ui.semantics.getOrNull
 import androidx.compose.ui.test.ComposeUiTest
 import androidx.compose.ui.test.ExperimentalTestApi
+import androidx.compose.ui.test.SemanticsMatcher
 import androidx.compose.ui.test.hasContentDescription
 import androidx.compose.ui.test.hasScrollToNodeAction
 import androidx.compose.ui.test.onRoot
@@ -72,16 +75,22 @@ abstract class CategoryPickerContentLayoutChecks(private val turkish: Boolean, p
             val height = onRoot().fetchSemanticsNode().size.height.toFloat()
             // Every card is there once (also those below the fold), and each can be scrolled fully into view.
             categories.forEach { card ->
-                val description = card.name()
-                grid.performScrollToNode(hasContentDescription(description, substring = true))
+                val name = card.name()
+                // The card's description starts with its exact name ("<name>, 3 / 40 ..."), so "Verbs" never
+                // matches "Phrasal verbs".
+                val matcher = SemanticsMatcher("card '$name'") { node ->
+                    node.config.getOrNull(SemanticsProperties.ContentDescription).orEmpty()
+                        .any { it.startsWith("$name, ") }
+                }
+                grid.performScrollToNode(matcher)
                 waitForIdle()
-                val nodes = onAllNodes(hasContentDescription(description, substring = true)).fetchSemanticsNodes()
-                if (nodes.isEmpty()) {
-                    problems += "$label '${card.name()}' not listed"
+                val nodes = onAllNodes(matcher).fetchSemanticsNodes()
+                if (nodes.size != 1) {
+                    problems += "$label '$name' listed ${nodes.size} times"
                     return@forEach
                 }
-                val bounds = nodes.first().boundsInRoot
-                if (bounds.top < -1f || bounds.bottom > height + 1f) problems += "$label '$description' not reachable"
+                val bounds = nodes.single().boundsInRoot
+                if (bounds.top < -1f || bounds.bottom > height + 1f) problems += "$label '$name' not reachable"
             }
             grid.performScrollToNode(hasContentDescription(LOCKED_LAST, substring = true))
             waitForIdle()

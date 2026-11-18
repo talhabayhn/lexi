@@ -94,6 +94,7 @@ class ShippedCategoryWheelTest {
         }
     }
 
+    // No shipped pair is thin today, so this mostly checks 'A'; the fill path is covered by WheelGeneratorTest.
     @Test
     fun `the picker's first letter is the letter every shipped wheel opens on`() {
         for (level in content.shippedLevels) {
