@@ -6,7 +6,7 @@ b1-goldfish,GOLDFISH,G,STARTS,noun,akvaryumda beslenen turuncu küçük balık,O
 b1-gown,GOWN,G,STARTS,noun,"uzun, şık ve süslü kadın elbisesi",She wore a long blue gown to the party.,Partiye uzun mavi bir elbise giydi.,3,,daily-life
 b1-greenhouse,GREENHOUSE,G,STARTS,noun,bitki yetiştirilen camdan yapılmış sıcak yapı,We grow tomatoes in the greenhouse.,Domatesleri serada yetiştiriyoruz.,3,,daily-life
 b1-grasshopper,GRASSHOPPER,G,STARTS,noun,uzun bacaklarıyla zıplayan yeşil böcek,A grasshopper jumped onto my shoe.,Bir çekirge ayakkabımın üstüne zıpladı.,3,,animals
-b1-guitarist,GUITARIST,G,STARTS,noun,gitar çalan müzisyen,The guitarist played a slow song.,Gitarist yavaş bir şarkı çaldı.,3,,music
+b1-guitarist,GUITARIST,G,STARTS,noun,gitar çalan müzisyen,The guitarist played a slow song.,Gitarist yavaş bir şarkı çaldı.,3,,hobbies
 b1-gasoline,GASOLINE,G,STARTS,noun,arabanın deposuna doldurulan yakıt,We stopped to buy gasoline on the way.,Yolda benzin almak için durduk.,3,,city-transport
 b1-hedgehog,HEDGEHOG,H,STARTS,noun,sırtı dikenlerle kaplı küçük hayvan,A hedgehog was sleeping under the bush.,Bir kirpi çalının altında uyuyordu.,3,,animals
 b1-herb,HERB,H,STARTS,noun,yemeğe lezzet katan yeşil yapraklı bitki (nane vb.),She added fresh herb leaves to the soup.,Çorbaya taze ot yaprakları ekledi.,3,,food-drink
@@ -38,24 +38,24 @@ b1-unfortunately,UNFORTUNATELY,U,STARTS,adv,ne yazık ki; kötü haber verirken 
 b1-underwater,UNDERWATER,U,STARTS,adj,suyun altında olan,We took photos of underwater fish.,Su altındaki balıkların fotoğraflarını çektik.,3,,travel
 b1-undo,UNDO,U,STARTS,verb,yapılmış bir işlemi geri almak,Click this button to undo the last change.,Son değişikliği geri almak için bu tuşa bas.,3,,daily-life
 b1-uneven,UNEVEN,U,STARTS,adj,"düz olmayan, engebeli",The road was uneven and full of holes.,Yol engebeliydi ve çukurlarla doluydu.,3,,daily-life
-b1-unlimited,UNLIMITED,U,STARTS,adj,sınırı olmayan,The plan includes unlimited internet.,Pakette sınırsız internet var.,3,,technology
+b1-unlimited,UNLIMITED,U,STARTS,adj,sınırı olmayan,The plan includes unlimited internet.,Pakette sınırsız internet var.,3,,business
 b1-unnecessary,UNNECESSARY,U,STARTS,adj,"gerekli olmayan, lüzumsuz",Do not buy unnecessary things.,Gereksiz şeyler satın alma.,3,,daily-life
 b1-unsafe,UNSAFE,U,STARTS,adj,"insanı tehlikeye atabilecek, güvenli olmayan",The old bridge is unsafe to cross.,Eski köprüden geçmek güvenli değil.,3,,daily-life
 b1-unwrap,UNWRAP,U,STARTS,verb,paketin sarmalını açmak,The kids unwrap their gifts on New Year's Day.,Çocuklar yılbaşında hediyelerini açar.,3,,daily-life
-b1-wallpaper,WALLPAPER,W,STARTS,noun,odanın duvarına yapıştırılan desenli kâğıt,Mom peeled the old wallpaper off the hallway wall.,Annem koridor duvarındaki eski duvar kâğıdını söktü.,3,,technology
+b1-wallpaper,WALLPAPER,W,STARTS,noun,odanın duvarına yapıştırılan desenli kâğıt,Mom peeled the old wallpaper off the hallway wall.,Annem koridor duvarındaki eski duvar kâğıdını söktü.,3,,business
 b1-waterproof,WATERPROOF,W,STARTS,adj,su geçirmeyen,"My jacket is waterproof, so I stay dry.","Montum su geçirmez, o yüzden kuru kalırım.",3,,daily-life
 b1-weekly,WEEKLY,W,STARTS,adj,haftada bir olan,We have a weekly meeting on Mondays.,Pazartesi günleri haftalık toplantımız var.,3,,daily-life
 b1-western,WESTERN,W,STARTS,adj,"batıda olan, batıya ait",They live in the western part of the city.,Şehrin batı kesiminde yaşıyorlar.,3,,travel
-b1-witch,WITCH,W,STARTS,noun,"masallarda süpürgeyle uçan, büyü yapan kadın",The witch in the story had a black cat.,Hikâyedeki cadının kara bir kedisi vardı.,3,,film-tv
+b1-witch,WITCH,W,STARTS,noun,"masallarda süpürgeyle uçan, büyü yapan kadın",The witch in the story had a black cat.,Hikâyedeki cadının kara bir kedisi vardı.,3,,hobbies
 b1-worm,WORM,W,STARTS,noun,"toprakta yaşayan uzun, ayaksız hayvan",A bird pulled a worm out of the ground.,Bir kuş yerden bir solucan çıkardı.,3,,animals
-b1-earphones,EARPHONES,E,STARTS,noun,kulağa takılan küçük müzik dinleme aygıtı,I forgot my earphones at home.,Kulaklıklarımı evde unuttum.,3,,technology
+b1-earphones,EARPHONES,E,STARTS,noun,kulağa takılan küçük müzik dinleme aygıtı,I forgot my earphones at home.,Kulaklıklarımı evde unuttum.,3,,business
 b1-eastern,EASTERN,E,STARTS,adj,"doğuda olan, doğuya ait",They live in the eastern part of the city.,Şehrin doğu kesiminde yaşıyorlar.,3,,travel
 b1-echo,ECHO,E,STARTS,noun,dağda bağırınca duyulan geri dönen ses,We heard our echo in the cave.,Mağarada kendi yankımızı duyduk.,3,,daily-life
 b1-edition,EDITION,E,STARTS,noun,bir kitabın belirli basımı,This is the second edition of the book.,"Bu, kitabın ikinci baskısı.",3,,school-work
 b1-eggplant,EGGPLANT,E,STARTS,noun,"mor renkli, uzun sebze",My mother cooks eggplant with tomatoes.,Annem patlıcanı domatesle pişirir.,3,,food-drink
 b1-emotional,EMOTIONAL,E,STARTS,adj,çabuk duygulanan ya da duygu yüklü (sıfat),It was an emotional goodbye at the airport.,Havalimanında duygusal bir veda oldu.,3,,daily-life
 b1-energetic,ENERGETIC,E,STARTS,adj,"çok enerjisi olan, hareketli",My grandfather is still very energetic.,Dedem hâlâ çok enerjik.,3,,body-health
-b1-episode,EPISODE,E,STARTS,noun,bir dizinin tek bölümü,I stayed up late to watch the final episode of the show.,Programın son bölümünü izlemek için geç saate kadar uyanık kaldım.,3,,film-tv
+b1-episode,EPISODE,E,STARTS,noun,bir dizinin tek bölümü,I stayed up late to watch the final episode of the show.,Programın son bölümünü izlemek için geç saate kadar uyanık kaldım.,3,,hobbies
 b1-ladybug,LADYBUG,L,STARTS,noun,kırmızı üzerine siyah benekli küçük böcek,A ladybug landed on the leaf.,Yaprağın üstüne bir uğur böceği kondu.,3,,animals
 b1-lantern,LANTERN,L,STARTS,noun,"kamp yaparken taşınan, mum ya da ampullü fener",They lit a lantern in the tent.,Çadırda bir fener yaktılar.,3,,travel
 b1-lamb,LAMB,L,STARTS,noun,yavru koyun; eti de böyle anılır,We had roast lamb for dinner.,Akşam yemeğinde kuzu kızartması yedik.,3,,food-drink
@@ -71,6 +71,6 @@ b1-macaroni,MACARONI,M,STARTS,noun,"kısa, içi boş kıvrık makarna",We had ma
 b1-mailbox,MAILBOX,M,STARTS,noun,postacının mektup bıraktığı kutu,There was a letter in the mailbox.,Posta kutusunda bir mektup vardı.,3,,daily-life
 b1-makeup,MAKEUP,M,STARTS,noun,"yüze sürülen ruj, far gibi güzellik ürünleri",She put on some makeup before the party.,Partiden önce biraz makyaj yaptı.,3,,daily-life
 b1-marble,MARBLE,M,STARTS,noun,heykel ve yer döşemesinde kullanılan parlak taş,The floor of the hotel was made of marble.,Otelin zemini mermerden yapılmıştı.,3,,daily-life
-b1-mermaid,MERMAID,M,STARTS,noun,masallarda yarı insan yarı balık deniz kızı,The film is about a young mermaid.,Film genç bir deniz kızı hakkında.,3,,film-tv
+b1-mermaid,MERMAID,M,STARTS,noun,masallarda yarı insan yarı balık deniz kızı,The film is about a young mermaid.,Film genç bir deniz kızı hakkında.,3,,hobbies
 b1-midnight,MIDNIGHT,M,STARTS,noun,gece saat on iki,We watched the fireworks at midnight.,Havai fişekleri gece yarısı izledik.,3,,daily-life
 b1-mitten,MITTEN,M,STARTS,noun,parmakları ayrı olmayan kış eldiveni,She lost one mitten in the snow.,Karda tek eldivenini kaybetti.,3,,daily-life

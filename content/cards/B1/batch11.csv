@@ -6,7 +6,7 @@ b1-eyelid,EYELID,Y,CONTAINS,noun,gözü kapatan ince deri,The doctor looked at m
 b1-syrup,SYRUP,Y,CONTAINS,noun,krepin üstüne dökülen tatlı yapışkan sıvı,He poured maple syrup on his pancakes.,Krepinin üstüne akçaağaç şurubu döktü.,3,,food-drink
 b1-daydream,DAYDREAM,Y,CONTAINS,verb,dalıp gidip hoş hayaller kurmak,I often daydream during long lessons.,Uzun derslerde sık sık hayal kurarım.,3,,daily-life
 b1-tire,TIRE,T,STARTS,noun,araç tekerleğinin dışındaki lastik,We need to change the front tire.,Ön lastiği değiştirmemiz gerekiyor.,3,,city-transport
-b1-cyclist,CYCLIST,Y,CONTAINS,noun,bisiklete binen kişi,A cyclist stopped at the red light.,Bir bisikletçi kırmızı ışıkta durdu.,3,,sports
+b1-cyclist,CYCLIST,Y,CONTAINS,noun,bisiklete binen kişi,A cyclist stopped at the red light.,Bir bisikletçi kırmızı ışıkta durdu.,3,,hobbies
 b1-cowboy,COWBOY,Y,CONTAINS,noun,Amerikan Batı'sında at üstünde sığır güden kişi,The cowboy rode his horse across the field.,Kovboy atıyla tarlayı geçti.,3,,family-people
 b1-playful,PLAYFUL,Y,CONTAINS,adj,"oyun oynamayı seven, neşeli ve haylaz",Our puppy is very playful.,Köpek yavrumuz çok oyuncu.,3,,daily-life
 b1-keyhole,KEYHOLE,Y,CONTAINS,noun,kilide anahtarın girdiği küçük delik,He looked through the keyhole and saw nothing.,Anahtar deliğinden baktı ve hiçbir şey görmedi.,3,,daily-life
@@ -15,12 +15,12 @@ b1-voyage,VOYAGE,Y,CONTAINS,noun,denizde ya da uzayda yapılan uzun yolculuk,The
 b1-janitor,JANITOR,J,STARTS,noun,okulda ya da binada temizlik yapan görevli,The janitor opens the school at seven.,Hizmetli okulu yedide açar.,3,,school-work
 b1-jasmine,JASMINE,J,STARTS,noun,beyaz ve çok güzel kokulu bir çiçek,The garden smells of jasmine in summer.,Bahçe yazın yasemin kokar.,3,,daily-life
 b1-jigsaw,JIGSAW,J,STARTS,noun,küçük parçaları birleştirerek resim yapılan oyun,We finished the jigsaw in two hours.,Yapbozu iki saatte bitirdik.,3,,daily-life
-b1-jogger,JOGGER,J,STARTS,noun,sağlık için yavaş tempoyla koşan kişi,A jogger passed us in the park.,Bir koşucu parkta yanımızdan geçti.,3,,sports
+b1-jogger,JOGGER,J,STARTS,noun,sağlık için yavaş tempoyla koşan kişi,A jogger passed us in the park.,Bir koşucu parkta yanımızdan geçti.,3,,hobbies
 b1-joyful,JOYFUL,J,STARTS,adj,çok mutlu ve sevinçli,It was a joyful day for the whole family.,Bütün aile için neşeli bir gündü.,3,,daily-life
-b1-jockey,JOCKEY,J,STARTS,noun,yarışlarda atı süren kişi,The jockey won the race by a small distance.,Jokey yarışı kısa bir farkla kazandı.,3,,sports
+b1-jockey,JOCKEY,J,STARTS,noun,yarışlarda atı süren kişi,The jockey won the race by a small distance.,Jokey yarışı kısa bir farkla kazandı.,3,,hobbies
 b1-joker,JOKER,J,STARTS,noun,esprili şaka yapmayı seven kişi,Our uncle is a real joker at parties.,Amcamız partilerde tam bir şakacıdır.,3,,daily-life
-b1-kayak,KAYAK,K,STARTS,noun,tek kişilik küçük kano teknesi,He crossed the river in a kayak.,Nehri bir kayakla geçti.,3,,sports
-b1-keeper,KEEPER,K,STARTS,noun,golde kaleyi koruyan oyuncu,The keeper saved the last shot.,Kaleci son şutu kurtardı.,3,,sports
+b1-kayak,KAYAK,K,STARTS,noun,tek kişilik küçük kano teknesi,He crossed the river in a kayak.,Nehri bir kayakla geçti.,3,,hobbies
+b1-keeper,KEEPER,K,STARTS,noun,golde kaleyi koruyan oyuncu,The keeper saved the last shot.,Kaleci son şutu kurtardı.,3,,hobbies
 b1-khaki,KHAKI,K,STARTS,adj,toprak rengini andıran yeşilimsi kahverengi,He wore khaki trousers to the picnic.,Pikniğe haki pantolon giydi.,3,,daily-life
 b1-knob,KNOB,K,STARTS,noun,kapıyı çevirerek açtığımız yuvarlak tutamak,Turn the knob and push the door.,Topuzu çevir ve kapıyı it.,3,,daily-life
 b1-buckle,BUCKLE,K,CONTAINS,noun,kemerin ucundaki metal tokası,The buckle of my belt broke.,Kemerimin tokası koptu.,3,,daily-life
@@ -34,7 +34,7 @@ b1-vacancy,VACANCY,V,STARTS,noun,boş iş pozisyonu ya da boş otel odası,The h
 b1-veteran,VETERAN,V,STARTS,noun,savaşa katılmış ya da yılların deneyimi olan kişi,My grandfather is a war veteran.,Büyükbabam bir savaş gazisi.,3,,family-people
 b1-elevator,ELEVATOR,V,CONTAINS,noun,binada katlar arasında inip çıkaran kabin,Take the elevator to the sixth floor.,Altıncı kata asansörle çık.,3,,city-transport
 b1-traveler,TRAVELER,V,CONTAINS,noun,bir yerden başka yere yolculuk eden kişi,The traveler carried a small backpack.,Yolcu küçük bir sırt çantası taşıyordu.,3,,travel
-b1-boxer,BOXER,X,CONTAINS,noun,yumruk yumruğa dövüşen sporcu,The boxer trained every morning.,Boksör her sabah antrenman yaptı.,3,,sports
+b1-boxer,BOXER,X,CONTAINS,noun,yumruk yumruğa dövüşen sporcu,The boxer trained every morning.,Boksör her sabah antrenman yaptı.,3,,hobbies
 b1-wagon,WAGON,W,STARTS,noun,atın ya da traktörün çektiği yük arabası,The farmer filled the wagon with hay.,Çiftçi arabayı samanla doldurdu.,3,,city-transport
 b1-waist,WAIST,W,STARTS,noun,vücudun kaburgalarla kalça arasındaki ince kısmı,The belt fits tightly around my waist.,Kemer belimi sıkıca sarıyor.,3,,body-health
 b1-wasp,WASP,W,STARTS,noun,"sarı siyah çizgili, acı sokan böcek",A wasp stung my arm.,Bir eşek arısı koluma soktu.,3,,animals
@@ -46,7 +46,7 @@ b1-worksheet,WORKSHEET,W,STARTS,noun,"öğretmenin dağıttığı, soruları yaz
 b1-wrinkle,WRINKLE,W,STARTS,noun,yaşlanınca deride oluşan çizgi,She has a small wrinkle near her eye.,Gözünün yanında küçük bir kırışıklığı var.,3,,body-health
 b1-wheat,WHEAT,W,STARTS,noun,ekmek yapmak için una öğütülen tahıl,The farmers grow wheat and corn.,Çiftçiler buğday ve mısır yetiştiriyor.,3,,food-drink
 b1-warehouse,WAREHOUSE,W,STARTS,noun,ürünlerin depolandığı büyük bina,The boxes are in the warehouse.,Kutular depoda.,3,,business
-b1-wrestling,WRESTLING,W,STARTS,noun,iki kişinin birbirini yere yıkmaya çalıştığı spor,Wrestling is popular in Turkey.,Güreş Türkiye'de popülerdir.,3,,sports
+b1-wrestling,WRESTLING,W,STARTS,noun,iki kişinin birbirini yere yıkmaya çalıştığı spor,Wrestling is popular in Turkey.,Güreş Türkiye'de popülerdir.,3,,hobbies
 b1-unicorn,UNICORN,U,STARTS,noun,alnında tek boynuz olan masal atı,The girl drew a unicorn.,Kız bir tek boynuzlu at çizdi.,3,,animals
 b1-union,UNION,U,STARTS,noun,işçilerin haklarını savunan örgüt,The union asked for higher pay.,Sendika daha yüksek maaş istedi.,3,,business
 b1-uphill,UPHILL,U,STARTS,adv,yokuş yukarı,We walked uphill for an hour.,Bir saat yokuş yukarı yürüdük.,3,,travel
@@ -54,7 +54,7 @@ b1-cactus,CACTUS,U,CONTAINS,noun,çölde yetişen dikenli bitki,The cactus needs
 b1-crumb,CRUMB,U,CONTAINS,noun,ekmekten kopup dökülen minik tanecik,There is a crumb on your chin.,Çenende bir kırıntı var.,3,,food-drink
 b1-cuddle,CUDDLE,U,CONTAINS,verb,sevgiyle kucaklamak,The child wanted to cuddle her toy.,Çocuk oyuncağına sarılmak istedi.,3,,family-people
 b1-dumpling,DUMPLING,U,CONTAINS,noun,"içi dolgulu küçük hamur parçası, mantı gibi",She put one dumpling in each bowl of soup.,Her çorba kasesine bir mantı koydu.,3,,food-drink
-b1-oar,OAR,O,STARTS,noun,kayıkta suyu itip ilerlemeyi sağlayan uzun tahta,He lost an oar in the river.,Nehirde bir küreğini kaybetti.,3,,sports
+b1-oar,OAR,O,STARTS,noun,kayıkta suyu itip ilerlemeyi sağlayan uzun tahta,He lost an oar in the river.,Nehirde bir küreğini kaybetti.,3,,hobbies
 b1-oatmeal,OATMEAL,O,STARTS,noun,yulaf ezmesinden yapılan sıcak kahvaltı,He eats oatmeal for breakfast.,Kahvaltıda yulaf ezmesi yer.,3,,food-drink
 b1-obedient,OBEDIENT,O,STARTS,adj,söz dinleyen,The dog is very obedient.,Köpek çok itaatkâr.,3,,family-people
 b1-orchard,ORCHARD,O,STARTS,noun,meyve ağaçlarının dikildiği bahçe,They pick apples in the orchard.,Meyve bahçesinde elma topluyorlar.,3,,daily-life

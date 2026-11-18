@@ -1,6 +1,6 @@
 # Category rebalancing — proposal
 
-Status: **proposal only**. No card, CSV or code was changed. Data: `content/cards/**` on `origin/main` (contentVersion 36),
+Status: **proposal; stage 1 applied** (owner decisions: listing minimum is **30 cards and 13 letters** instead of the 40 used below, the compiler errors under 25 cards / 13 letters; Hayvanlar ve doğa ends at B1; A1 stays as is; `food-drink` B2 and `animals` B1 are hidden until stage 2; the "too broad" warnings for daily-life, school-work and business are expected until stage 3). No card, CSV or code was changed. Data: `content/cards/**` on `origin/main` (contentVersion 36),
 **4,991 base cards** (A1 865 · A2 940 · B1 1,050 · B2 842 · C1 683 · NAT 611; exam-pack-only cards are not counted, see §4.6).
 Counts below are produced by script from the CSVs (reproducible: category column + level folder).
 Move list for the recommended option: `docs/content-review/CATEGORY-MOVES-C.csv` (1,937 rows, nothing applied).

@@ -2,7 +2,7 @@ id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
 b2-admission,ADMISSION,A,STARTS,noun,"okul, müze vb. yere kabul; giriş ücreti",Admission to the museum is free for students.,Müzeye giriş öğrenciler için ücretsiz.,4,,travel
 b2-adventurous,ADVENTUROUS,A,STARTS,adj,yeni ve riskli şeyleri denemeyi seven,He is an adventurous traveler.,O maceracı bir gezgin.,3,,travel
 b2-alarming,ALARMING,A,STARTS,adj,korku veya endişe yaratan,The news was alarming.,Haber endişe vericiydi.,4,,daily-life
-b2-applaud,APPLAUD,A,STARTS,verb,beğenisini el çırparak göstermek,The audience began to applaud.,Seyirci alkışlamaya başladı.,3,,film-tv
+b2-applaud,APPLAUD,A,STARTS,verb,beğenisini el çırparak göstermek,The audience began to applaud.,Seyirci alkışlamaya başladı.,3,,hobbies
 b2-assemble,ASSEMBLE,A,STARTS,verb,parçaları birleştirmek veya bir araya toplanmak,It takes an hour to assemble this shelf.,Bu rafı monte etmek bir saat sürer.,4,,daily-life
 b2-asset,ASSET,A,STARTS,noun,bir kişi veya şirketin değerli varlığı,Her language skills are a big asset.,Dil becerileri büyük bir artı.,4,,business
 b2-assumption,ASSUMPTION,A,STARTS,noun,kanıtsız kabul edilen varsayım,That is a false assumption.,Bu yanlış bir varsayım.,4,,school-work
@@ -36,7 +36,7 @@ b2-identical,IDENTICAL,I,STARTS,adj,birbirinin aynısı,The twins wore identical
 b2-ignorant,IGNORANT,I,STARTS,adj,"bilgisiz, haberi olmayan",He is ignorant of the rules.,Kurallardan habersiz.,4,,daily-life
 b2-immense,IMMENSE,I,STARTS,adj,"çok büyük, devasa",The ship was immense.,Gemi devasaydı.,4,,travel
 b2-infer,INFER,I,STARTS,verb,ipuçlarından sonuç çıkarmak,What can you infer from this text?,Bu metinden ne çıkarabilirsin?,4,,school-work
-b2-influential,INFLUENTIAL,I,STARTS,adj,başkalarını etkileyebilen,She is an influential writer.,O etkili bir yazar.,4,,film-tv
+b2-influential,INFLUENTIAL,I,STARTS,adj,başkalarını etkileyebilen,She is an influential writer.,O etkili bir yazar.,4,,hobbies
 b2-inhabit,INHABIT,I,STARTS,verb,bir yerde canlı olarak barınmak,Penguins inhabit cold regions.,Penguenler soğuk bölgelerde yaşar.,4,,daily-life
 b2-instruct,INSTRUCT,I,STARTS,verb,talimat vermek veya öğretmek,The guard will instruct us what to do.,Görevli bize ne yapacağımızı söyleyecek.,4,,school-work
 b2-intentional,INTENTIONAL,I,STARTS,adj,bile bile yapılan,The damage was intentional.,Hasar kasıtlıydı.,4,,daily-life
@@ -46,7 +46,7 @@ b2-internal,INTERNAL,I,STARTS,adj,"kurumun veya vücudun içinde olan, dahili",T
 b2-knock-out,KNOCK OUT,K,STARTS,phrasal,bayıltmak veya turnuvadan elemek,The boxer may knock out his rival.,Boksör rakibini nakavt edebilir.,4,,phrasal-verbs
 b2-kick-out,KICK OUT,K,STARTS,phrasal,birini zorla dışarı atmak,They might kick out the noisy fans.,Gürültücü taraftarları dışarı atabilirler.,4,,phrasal-verbs
 b2-lack,LACK,L,STARTS,noun,bir şeyin eksikliği,A lack of sleep can make you ill.,Uykusuzluk seni hasta edebilir.,3,,body-health
-b2-legacy,LEGACY,L,STARTS,noun,geçmişten kalan miras,The artist left a great legacy.,Sanatçı büyük bir miras bıraktı.,4,,music
+b2-legacy,LEGACY,L,STARTS,noun,geçmişten kalan miras,The artist left a great legacy.,Sanatçı büyük bir miras bıraktı.,4,,hobbies
 b2-likewise,LIKEWISE,L,STARTS,adv,aynı şekilde,"She smiled, and he did likewise.","Gülümsedi, o da öyle yaptı.",4,,daily-life
 b2-lobby,LOBBY,L,STARTS,noun,otel veya binanın giriş salonu,Let's meet in the hotel lobby.,Otelin lobisinde buluşalım.,3,,travel
 b2-lay-off,LAY OFF,L,STARTS,phrasal,işçiyi işten çıkarmak,The factory will lay off fifty workers.,Fabrika elli işçiyi işten çıkaracak.,4,,phrasal-verbs
@@ -63,23 +63,23 @@ b2-monotonous,MONOTONOUS,M,STARTS,adj,sıkıcı ve değişmeyen,The work is bori
 b2-modest,MODEST,M,STARTS,adj,alçakgönüllü; küçük ölçekli,She is modest about her success.,Başarısı konusunda mütevazı.,4,,daily-life
 b2-noticeable,NOTICEABLE,N,STARTS,adj,kolayca fark edilen,The difference is clearly noticeable.,Fark açıkça fark ediliyor.,4,,daily-life
 b2-nuisance,NUISANCE,N,STARTS,noun,sürekli rahatsız eden sıkıntı kaynağı,The noise is a real nuisance.,Gürültü gerçekten rahatsız edici.,4,,daily-life
-b2-nominate,NOMINATE,N,STARTS,verb,aday göstermek,They will nominate her for the prize.,Onu ödül için aday gösterecekler.,4,,film-tv
+b2-nominate,NOMINATE,N,STARTS,verb,aday göstermek,They will nominate her for the prize.,Onu ödül için aday gösterecekler.,4,,hobbies
 b2-origin,ORIGIN,O,STARTS,noun,"bir şeyin ilk çıktığı yer, köken",The origin of this word is Greek.,Bu sözcüğün kökeni Yunanca.,4,,school-work
 b2-outbreak,OUTBREAK,O,STARTS,noun,hastalık ya da savaşın aniden başlaması,There was an outbreak of flu at school.,Okulda grip salgını çıktı.,4,,body-health
-b2-outdated,OUTDATED,O,STARTS,adj,"güncelliğini yitirmiş, yeni sürümü çıkmış",This software is outdated.,Bu yazılım eskimiş.,4,,technology
+b2-outdated,OUTDATED,O,STARTS,adj,"güncelliğini yitirmiş, yeni sürümü çıkmış",This software is outdated.,Bu yazılım eskimiş.,4,,business
 b2-overcrowded,OVERCROWDED,O,STARTS,adj,aşırı kalabalık,The bus was overcrowded.,Otobüs aşırı kalabalıktı.,3,,daily-life
 b2-overdue,OVERDUE,O,STARTS,adj,zamanı geçmiş,The library book is overdue.,Kütüphane kitabının süresi geçmiş.,4,,school-work
-b2-underestimate,UNDERESTIMATE,U,STARTS,verb,bir şeyi olduğundan az değerlendirmek,Don't underestimate your opponent.,Rakibini hafife alma.,4,,sports
+b2-underestimate,UNDERESTIMATE,U,STARTS,verb,bir şeyi olduğundan az değerlendirmek,Don't underestimate your opponent.,Rakibini hafife alma.,4,,hobbies
 b2-undermine,UNDERMINE,U,STARTS,verb,güveni veya gücü içten zayıflatmak,Rumors can undermine trust.,Söylentiler güveni zedeleyebilir.,4,,business
 b2-unaware,UNAWARE,U,STARTS,adj,bir şeyden haberi olmayan,He was unaware of the danger.,Tehlikeden habersizdi.,4,,daily-life
 b2-uneasy,UNEASY,U,STARTS,adj,"huzursuz, tedirgin",I felt uneasy in the dark street.,Karanlık sokakta tedirgin hissettim.,4,,daily-life
-b2-uncover,UNCOVER,U,STARTS,verb,gizli olanı ortaya çıkarmak,Reporters uncover the truth.,Muhabirler gerçeği ortaya çıkarır.,4,,film-tv
+b2-uncover,UNCOVER,U,STARTS,verb,gizli olanı ortaya çıkarmak,Reporters uncover the truth.,Muhabirler gerçeği ortaya çıkarır.,4,,hobbies
 b2-unfamiliar,UNFAMILIAR,U,STARTS,adj,"tanıdık gelmeyen, yabancı",The street was unfamiliar to me.,Sokak bana yabancıydı.,4,,travel
 b2-unwilling,UNWILLING,U,STARTS,adj,bir şeyi yapmak istemeyen,He was unwilling to help.,Yardım etmeye isteksizdi.,4,,daily-life
 b2-upcoming,UPCOMING,U,STARTS,adj,çok yakında gerçekleşecek olan,We are preparing for the upcoming exam.,Yaklaşan sınava hazırlanıyoruz.,3,,school-work
-b2-unite,UNITE,U,STARTS,verb,birleştirmek veya birleşmek,Sport can unite people.,Spor insanları birleştirebilir.,4,,sports
+b2-unite,UNITE,U,STARTS,verb,birleştirmek veya birleşmek,Sport can unite people.,Spor insanları birleştirebilir.,4,,hobbies
 b2-unstable,UNSTABLE,U,STARTS,adj,"dengesiz, sabit olmayan",The ladder is unstable.,Merdiven dengesiz.,4,,daily-life
-b2-vanish,VANISH,V,STARTS,verb,birden gözden kaybolmak,The magician made the coin vanish.,Sihirbaz parayı yok etti.,3,,film-tv
+b2-vanish,VANISH,V,STARTS,verb,birden gözden kaybolmak,The magician made the coin vanish.,Sihirbaz parayı yok etti.,3,,hobbies
 b2-varied,VARIED,V,STARTS,adj,birbirinden farklı öğelerden oluşan,She has a varied diet.,Çeşitli bir beslenmesi var.,3,,food-drink
 b2-venture,VENTURE,V,STARTS,noun,riskli yeni girişim,The shop is a new business venture.,Dükkân yeni bir ticari girişim.,4,,business
 b2-verdict,VERDICT,V,STARTS,noun,mahkemenin kararı,The court reached a verdict.,Mahkeme bir karara vardı.,4,,daily-life

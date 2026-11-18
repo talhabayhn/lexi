@@ -156,29 +156,26 @@ How the compiler applies them (`tools/content-compiler`, every error is `file:li
 |---|---|---|
 | `mixed` | Karışık | all (virtual: all categories of the level) |
 | `daily-life` | Günlük hayat | A1–B2 |
-| `food-drink` | Yiyecek ve içecek | A1–B2 |
+| `food-drink` | Yiyecek ve içecek | A1–B1 (B2 hidden until stage 2 of `docs/content/CATEGORY-REBALANCE.md`) |
 | `home` | Ev ve eşyalar | A1–A2 |
 | `family-people` | Aile ve insanlar | A1–B1 |
 | `colors-numbers` | Renkler ve sayılar | A1 |
 | `body-health` | Vücut ve sağlık | A1–B2 |
 | `school-work` | Okul ve iş | A1–C1 |
-| `animals` | Hayvanlar | A1–B1 |
+| `animals` | Hayvanlar | A1–A2 (B1 hidden until stage 2) |
 | `city-transport` | Şehir ve ulaşım | A1–B1 |
 | `time-weather` | Zaman ve hava | A1–A2 |
 | `travel` | Seyahat | A2–C1 |
-| `sports` | Spor | A2–C1 |
-| `music` | Müzik | A2–C1 |
-| `film-tv` | Film ve dizi | B1–C1 |
-| `business` | İş İngilizcesi | B1–C1 |
-| `technology` | Teknoloji | B1–C1 |
-| `false-friends` | Yalancı eşdeğerler | B1–C1 |
-| `idioms` | Deyimler | B2, C1 |
-| `phrasal-verbs` | Phrasal verbs | B2, C1 |
+| `hobbies` | Hobiler ve eğlence | A2–C1 (was Spor + Müzik + Film ve dizi) |
+| `business` | İş ve teknoloji | B1–C1 (was İş İngilizcesi + Teknoloji) |
+| `idioms` | Deyimler | B2 |
+| `phrasal-verbs` | Phrasal verbs | B2 |
 | `general` | Genel | NAT (neutral bucket of every NAT card; hidden from the category list, NAT has no category selection) |
 
-Minimum category size: a category × level pair with cards on fewer than 13 letters (⚙ `minCategoryLetters`) is
-played with the level's cards on its other letters (`GAME_RULES.md` §1, thin category fill), so it stays playable
-but is not really "that category"; aim for 13+ letters per listed level (the report's category × level table).
+Minimum category size: a category is listed for a level only with **≥ 30 cards on ≥ 13 letters** there. The compiler
+errors for a listed pair under 25 cards or 13 letters, warns under 30 cards (drop the level from `levels` instead of
+shipping the pair thin) and over 140 cards (too broad). The engine's thin fill (`minCategoryLetters`, `GAME_RULES.md` §1)
+stays as a safety net only. Removed ids (`sports`, `music`, `film-tv`, `technology`, `false-friends`) are never reused.
 
 ## 5. Volume targets (v1.0)
 | Level | Cards | Notes |

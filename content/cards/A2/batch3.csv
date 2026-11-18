@@ -5,14 +5,14 @@ a2-accept,ACCEPT,A,STARTS,verb,önerilen bir şeyi kabul etmek,Please accept thi
 a2-accident,ACCIDENT,A,STARTS,noun,"istemeden olan, zarar veren kötü olay",There was an accident on the road.,Yolda bir kaza oldu.,2,,city-transport
 a2-across,ACROSS,A,STARTS,phrase,bir şeyin bir yanından öbür yanına,He swam across the river.,Nehri yüzerek geçti.,3,,city-transport
 a2-active,ACTIVE,A,STARTS,adj,"sürekli hareket eden, enerjik",My grandfather is still very active.,Büyükbabam hâlâ çok hareketli.,3,,body-health
-a2-activity,ACTIVITY,A,STARTS,noun,insanların yaptığı eğlenceli iş ya da etkinlik,Swimming is my favorite activity.,Yüzmek en sevdiğim etkinlik.,3,,sports
+a2-activity,ACTIVITY,A,STARTS,noun,insanların yaptığı eğlenceli iş ya da etkinlik,Swimming is my favorite activity.,Yüzmek en sevdiğim etkinlik.,3,,hobbies
 a2-adult,ADULT,A,STARTS,noun,"büyümüş, ergin kişi",Children must come with an adult.,Çocuklar bir yetişkinle gelmeli.,3,,family-people
 a2-adventure,ADVENTURE,V,CONTAINS,noun,"heyecan verici, bazen tehlikeli yolculuk",Our trip was a big adventure.,Gezimiz büyük bir maceraydı.,3,,travel
 a2-advice,ADVICE,A,STARTS,noun,birine verilen öğüt,Can you give me some advice?,Bana biraz öğüt verir misin?,3,,daily-life
 a2-afraid,AFRAID,A,STARTS,adj,"korku duyan, çekinen",The little boy is afraid of the dark.,Küçük çocuk karanlıktan korkuyor.,2,,daily-life
-a2-against,AGAINST,A,STARTS,phrase,bir şeye karşı olarak,We play against the best team.,En iyi takıma karşı oynuyoruz.,3,,sports
+a2-against,AGAINST,A,STARTS,phrase,bir şeye karşı olarak,We play against the best team.,En iyi takıma karşı oynuyoruz.,3,,hobbies
 a2-alarm,ALARM,A,STARTS,noun,uyarmak için çalan ses ya da cihaz,The alarm rang at six.,Alarm altıda çaldı.,2,,daily-life
-a2-album,ALBUM,A,STARTS,noun,fotoğraf ya da şarkıların toplandığı koleksiyon,I like her new album.,Onun yeni albümünü beğeniyorum.,2,,music
+a2-album,ALBUM,A,STARTS,noun,fotoğraf ya da şarkıların toplandığı koleksiyon,I like her new album.,Onun yeni albümünü beğeniyorum.,2,,hobbies
 a2-alive,ALIVE,A,STARTS,adj,"yaşayan, ölmemiş",The doctor saw that the man was still alive.,Doktor adamın hâlâ yaşadığını gördü.,3,,animals
 a2-allow,ALLOW,A,STARTS,verb,birinin bir şeyi yapmasına izin vermek,My school does not allow phones in class.,Okulum sınıfta telefona izin vermiyor.,3,,daily-life
 a2-almost,ALMOST,A,STARTS,adv,"hemen hemen, çok yakın",We are almost at the top of the hill.,Tepenin tepesine neredeyse ulaştık.,2,,daily-life
@@ -29,7 +29,7 @@ a2-army,ARMY,A,STARTS,noun,"bir ülkenin askerî gücü, ordu",My uncle joined t
 a2-article,ARTICLE,A,STARTS,noun,gazete ya da dergideki yazı,I read an article about robots.,Robotlar hakkında bir makale okudum.,3,,school-work
 a2-artist,ARTIST,A,STARTS,noun,resim ya da heykel yapan kişi,The artist painted a blue horse.,Sanatçı mavi bir at resmi yaptı.,2,,school-work
 a2-asleep,ASLEEP,A,STARTS,adj,uyuyor durumda olan,The baby fell asleep in the car.,Bebek arabada uyuyakaldı.,2,,body-health
-a2-athlete,ATHLETE,A,STARTS,noun,spor yapan ya da yarışan kişi,The athlete trains every day.,Sporcu her gün antrenman yapıyor.,3,,sports
+a2-athlete,ATHLETE,A,STARTS,noun,spor yapan ya da yarışan kişi,The athlete trains every day.,Sporcu her gün antrenman yapıyor.,3,,hobbies
 a2-author,AUTHOR,A,STARTS,noun,kitap yazan kişi,The author lives in Paris.,Yazar Paris'te yaşıyor.,3,,school-work
 a2-average,AVERAGE,A,STARTS,adj,"ne çok iyi ne çok kötü olan, ortalama",The average age of the players is twelve.,Oyuncuların yaş ortalaması on iki.,4,,time-weather
 a2-awful,AWFUL,A,STARTS,adj,"çok kötü, berbat","The soup tasted awful, so I did not finish it.","Çorbanın tadı berbattı, bu yüzden bitirmedim.",3,,food-drink
@@ -57,7 +57,7 @@ a2-bright,BRIGHT,B,STARTS,adj,"çok ışık veren, parlak",The sun is bright tod
 a2-build,BUILD,B,STARTS,verb,"inşa etmek, yapmak",They will build a new bridge.,Yeni bir köprü yapacaklar.,3,,daily-life
 a2-burn,BURN,B,STARTS,verb,ateşte yanmak ya da yakmak,Watch out. Hot tea can burn you.,Dikkat et. Sıcak çay seni yakabilir.,3,,body-health
 a2-business,BUSINESS,B,STARTS,noun,para kazanmak için yapılan iş,Her father has a small business.,Babasının küçük bir işi var.,3,,school-work
-a2-badminton,BADMINTON,B,STARTS,noun,raketle ve tüylü topla oynanan spor,We play badminton in the garden.,Bahçede badminton oynuyoruz.,3,,sports
+a2-badminton,BADMINTON,B,STARTS,noun,raketle ve tüylü topla oynanan spor,We play badminton in the garden.,Bahçede badminton oynuyoruz.,3,,hobbies
 a2-basket,BASKET,B,STARTS,noun,hasır ya da telden örülmüş taşıma kabı,The basket is full of apples.,Sepet elmalarla dolu.,2,,home
 a2-beef,BEEF,B,STARTS,noun,sığır eti,Dad grilled beef and vegetables for dinner.,Babam akşam yemeğinde dana eti ve sebze ızgara yaptı.,3,,food-drink
 a2-blouse,BLOUSE,B,STARTS,noun,kadınların giydiği hafif gömlek,She wears a white blouse.,Beyaz bir bluz giyiyor.,2,,daily-life

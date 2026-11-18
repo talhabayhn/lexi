@@ -1,12 +1,12 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
 c1-sabotage,SABOTAGE,S,STARTS,verb,bir planı gizlice bozmak veya zarar vermek,Rivals tried to sabotage the launch.,Rakipler lansmanı sabote etmeye çalıştı.,5,,business
 c1-sanction,SANCTION,S,STARTS,noun,bir ülkeye uygulanan yaptırım,The country faced a trade sanction last year.,Ülke geçen yıl bir ticari yaptırımla karşılaştı.,5,,school-work
-c1-segment,SEGMENT,S,STARTS,noun,bir bütünün ayrılmış parçası,The show has a new segment on travel.,Programın seyahatle ilgili yeni bir bölümü var.,5,,film-tv
+c1-segment,SEGMENT,S,STARTS,noun,bir bütünün ayrılmış parçası,The show has a new segment on travel.,Programın seyahatle ilgili yeni bir bölümü var.,5,,hobbies
 c1-sentiment,SENTIMENT,S,STARTS,noun,bir konudaki yaygın duygu veya görüş,Public sentiment turned against the plan.,Kamuoyu planın aleyhine döndü.,5,,school-work
-c1-setback,SETBACK,S,STARTS,noun,ilerlemeyi geciktiren engel,The injury was a major setback for the team.,Sakatlık takım için büyük bir aksilikti.,5,,sports
+c1-setback,SETBACK,S,STARTS,noun,ilerlemeyi geciktiren engel,The injury was a major setback for the team.,Sakatlık takım için büyük bir aksilikti.,5,,hobbies
 c1-shatter,SHATTER,S,STARTS,verb,paramparça etmek veya olmak,The glass will shatter if you drop it.,Düşürürsen cam paramparça olur.,4,,school-work
 c1-signify,SIGNIFY,S,STARTS,verb,bir anlama gelmek veya göstermek,A red flag may signify danger.,Kırmızı bayrak tehlikeyi gösterebilir.,5,,school-work
-c1-simulate,SIMULATE,S,STARTS,verb,gerçeğe benzer şekilde taklit etmek,The program can simulate an earthquake.,Program bir depremi simüle edebilir.,5,,technology
+c1-simulate,SIMULATE,S,STARTS,verb,gerçeğe benzer şekilde taklit etmek,The program can simulate an earthquake.,Program bir depremi simüle edebilir.,5,,business
 c1-soar,SOAR,S,STARTS,verb,hızla yükselmek veya havada süzülmek,Prices began to soar last winter.,Fiyatlar geçen kış fırlamaya başladı.,5,,business
 c1-solidarity,SOLIDARITY,S,STARTS,noun,ortak çıkar için dayanışma,Workers marched in solidarity with the strikers.,İşçiler grevcilerle dayanışma içinde yürüdü.,5,,school-work
 c1-sovereign,SOVEREIGN,S,STARTS,adj,bağımsız ve kendi kendini yöneten,The island became a sovereign state.,Ada bağımsız bir devlet oldu.,5,,school-work
@@ -27,10 +27,10 @@ c1-supplement,SUPPLEMENT,S,STARTS,noun,eksik olanı tamamlayan ek,She takes a vi
 c1-suppress,SUPPRESS,S,STARTS,verb,bastırmak veya yayılmasını önlemek,The police used force to suppress the protest.,Polis protestoyu bastırmak için güç kullandı.,5,,school-work
 c1-surge,SURGE,S,STARTS,noun,talep veya fiyatta ani sıçrama,There was a surge in demand for masks.,Maske talebinde ani bir artış oldu.,5,,business
 c1-surpass,SURPASS,S,STARTS,verb,bir şeyi geride bırakıp aşmak,Sales may surpass last year's record.,Satışlar geçen yılın rekorunu aşabilir.,5,,business
-c1-surveillance,SURVEILLANCE,S,STARTS,noun,bir kişi veya yerin gizlice izlenmesi,The shop uses video surveillance.,Mağaza video gözetimi kullanıyor.,5,,technology
+c1-surveillance,SURVEILLANCE,S,STARTS,noun,bir kişi veya yerin gizlice izlenmesi,The shop uses video surveillance.,Mağaza video gözetimi kullanıyor.,5,,business
 c1-suspend,SUSPEND,S,STARTS,verb,geçici olarak durdurmak veya askıya almak,The school may suspend the pupil for a week.,Okul öğrenciyi bir hafta uzaklaştırabilir.,5,,school-work
 c1-swift,SWIFT,S,STARTS,adj,hızlı ve çabuk,The government promised swift action.,Hükümet hızlı bir adım atacağına söz verdi.,5,,school-work
-c1-synthesis,SYNTHESIS,S,STARTS,noun,farklı unsurların birleşimi,The song is a synthesis of jazz and rock.,Şarkı cazla rock'ın bir sentezi.,5,,music
+c1-synthesis,SYNTHESIS,S,STARTS,noun,farklı unsurların birleşimi,The song is a synthesis of jazz and rock.,Şarkı cazla rock'ın bir sentezi.,5,,hobbies
 c1-sheer,SHEER,S,STARTS,adj,"saf, tam anlamıyla",The sheer size of the building amazed us.,Binanın devasa büyüklüğü bizi şaşırttı.,5,,school-work
 c1-sibling,SIBLING,S,STARTS,noun,kız ya da erkek kardeş,"She has one sibling, an older brother.","Bir kardeşi var, ağabeyi.",5,,school-work
 c1-stagger,STAGGER,S,STARTS,verb,sarhoş gibi yalpalayarak yürümek,The man began to stagger down the road.,Adam yolda sendeleyerek yürümeye başladı.,5,,school-work
@@ -46,10 +46,10 @@ c1-toll,TOLL,T,STARTS,noun,"ağır bir bedel, zarar",The war took a heavy toll o
 c1-transcript,TRANSCRIPT,T,STARTS,noun,konuşmanın yazıya geçirilmiş hâli,The court released a transcript of the call.,Mahkeme görüşmenin yazılı dökümünü yayımladı.,5,,school-work
 c1-transmit,TRANSMIT,T,STARTS,verb,iletmek veya yaymak,Mosquitoes can transmit the virus.,Sivrisinekler virüsü bulaştırabilir.,5,,school-work
 c1-trauma,TRAUMA,T,STARTS,noun,derin ruhsal yara,The accident left him with deep trauma.,Kaza onda derin bir travma bıraktı.,5,,school-work
-c1-tribute,TRIBUTE,T,STARTS,noun,"saygı belirten anma, övgü",The film is a tribute to its director.,Film yönetmenine bir saygı duruşu.,5,,film-tv
+c1-tribute,TRIBUTE,T,STARTS,noun,"saygı belirten anma, övgü",The film is a tribute to its director.,Film yönetmenine bir saygı duruşu.,5,,hobbies
 c1-trivial,TRIVIAL,T,STARTS,adj,önemsiz ve basit,They argued about a trivial matter.,Önemsiz bir konuda tartıştılar.,5,,school-work
-c1-triumph,TRIUMPH,T,STARTS,noun,büyük başarı veya zafer,The match ended in a triumph for the home team.,Maç ev sahibi takımın zaferiyle bitti.,4,,sports
+c1-triumph,TRIUMPH,T,STARTS,noun,büyük başarı veya zafer,The match ended in a triumph for the home team.,Maç ev sahibi takımın zaferiyle bitti.,4,,hobbies
 c1-turmoil,TURMOIL,T,STARTS,noun,büyük karışıklık ve kargaşa,The country was in political turmoil.,Ülke siyasi karmaşa içindeydi.,5,,school-work
-c1-tempo,TEMPO,T,STARTS,noun,müziğin veya işin ilerleme hızı,The song has a fast tempo.,Şarkının hızlı bir temposu var.,4,,music
+c1-tempo,TEMPO,T,STARTS,noun,müziğin veya işin ilerleme hızı,The song has a fast tempo.,Şarkının hızlı bir temposu var.,4,,hobbies
 c1-token,TOKEN,T,STARTS,noun,sembolik hediye veya jeton,He gave her a small gift as a token of thanks.,Ona teşekkür niyetine küçük bir hediye verdi.,5,,school-work
 c1-timescale,TIMESCALE,T,STARTS,noun,bir işin planlanan süresi,We need a clear timescale for the work.,İş için net bir zaman planına ihtiyacımız var.,5,,business

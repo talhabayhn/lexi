@@ -3,7 +3,7 @@ a2-calendar,CALENDAR,C,STARTS,noun,günleri ve ayları gösteren liste,There is 
 a2-camping,CAMPING,C,STARTS,noun,çadırda kalarak yapılan tatil,Camping is cheap and fun.,Kamp yapmak ucuz ve eğlencelidir.,2,,travel
 a2-candle,CANDLE,C,STARTS,noun,yanınca ışık veren mum,Dad lit a candle when the lights went out.,Işıklar sönünce babam bir mum yaktı.,2,,home
 a2-capital,CAPITAL,C,STARTS,noun,bir ülkenin yönetim merkezi olan şehir,Ankara is the capital of Turkey.,"Ankara, Türkiye'nin başkentidir.",2,,travel
-a2-captain,CAPTAIN,C,STARTS,noun,bir takımın ya da geminin lideri,The captain of our team is Mert.,Takımımızın kaptanı Mert.,3,,sports
+a2-captain,CAPTAIN,C,STARTS,noun,bir takımın ya da geminin lideri,The captain of our team is Mert.,Takımımızın kaptanı Mert.,3,,hobbies
 a2-care,CARE,C,STARTS,noun,bir şeye gösterilen özen ve ilgi,The nurse takes care of the baby.,Hemşire bebeğe özenle bakıyor.,3,,daily-life
 a2-careful,CAREFUL,C,STARTS,adj,dikkatli davranan,Be careful with the hot water.,Sıcak suya dikkat et.,2,,daily-life
 a2-cabbage,CABBAGE,C,STARTS,noun,yaprakları sıkı sarılı yeşil sebze,We cooked cabbage for dinner.,Akşam yemeğinde lahana pişirdik.,2,,food-drink
@@ -12,7 +12,7 @@ a2-castle,CASTLE,C,STARTS,noun,kralların yaşadığı taştan büyük yapı,The
 a2-celebrate,CELEBRATE,C,STARTS,verb,özel bir günü kutlamak,We celebrate her birthday in May.,Onun doğum gününü mayısta kutluyoruz.,3,,daily-life
 a2-century,CENTURY,C,STARTS,noun,"yüz yıllık süre, yüzyıl",A hundred years is one century.,Yüz yıl bir asırdır.,3,,time-weather
 a2-cereal,CEREAL,C,STARTS,noun,sütle yenen kahvaltılık tahıl,I eat cereal with milk every morning.,Her sabah sütle mısır gevreği yerim.,2,,food-drink
-a2-champion,CHAMPION,C,STARTS,noun,bir yarışmayı kazanan kişi,She is the school swimming champion.,"O, okul yüzme şampiyonu.",3,,sports
+a2-champion,CHAMPION,C,STARTS,noun,bir yarışmayı kazanan kişi,She is the school swimming champion.,"O, okul yüzme şampiyonu.",3,,hobbies
 a2-chance,CHANCE,C,STARTS,noun,bir şeyi yapabilmek için uygun fırsat,This is your chance to win.,"Bu, kazanmak için senin fırsatın.",3,,daily-life
 a2-chat,CHAT,C,STARTS,verb,biriyle rahat ve kısa konuşmak,We chat on the phone every night.,Her gece telefonda sohbet ederiz.,2,,daily-life
 a2-check,CHECK,C,STARTS,verb,doğru olup olmadığına bakmak,Please check the time of the next train.,Lütfen bir sonraki trenin saatini kontrol edin.,3,,school-work
@@ -24,15 +24,15 @@ a2-circus,CIRCUS,C,STARTS,noun,palyaço ve akrobatların gösteri yaptığı ça
 a2-clear,CLEAR,C,STARTS,adj,"bulutsuz, açık",The sky is clear tonight.,Gökyüzü bu gece açık.,3,,time-weather
 a2-clever,CLEVER,C,STARTS,adj,çabuk öğrenen ve akıllıca düşünen,The clever dog opened the door by himself.,Zeki köpek kapıyı kendi başına açtı.,2,,school-work
 a2-clown,CLOWN,C,STARTS,noun,renkli giyip insanları güldüren sirk sanatçısı,The clown made the children laugh.,Palyaço çocukları güldürdü.,2,,daily-life
-a2-coach,COACH,C,STARTS,noun,sporcuları çalıştıran antrenör,The coach told the team to run faster.,Antrenör takıma daha hızlı koşmasını söyledi.,3,,sports
+a2-coach,COACH,C,STARTS,noun,sporcuları çalıştıran antrenör,The coach told the team to run faster.,Antrenör takıma daha hızlı koşmasını söyledi.,3,,hobbies
 a2-coast,COAST,C,STARTS,noun,karanın denizle buluştuğu kıyı şeridi,Many small towns lie on the coast.,Birçok küçük kasaba kıyıda yer alır.,3,,travel
 a2-collect,COLLECT,C,STARTS,verb,bir şeyleri biriktirmek ya da toplamak,He likes to collect stamps.,Pul biriktirmeyi seviyor.,3,,daily-life
 a2-comb,COMB,C,STARTS,noun,saçı düzeltmek için kullanılan dişli araç,He used a comb on his long hair.,Uzun saçında tarak kullandı.,2,,daily-life
 a2-comfortable,COMFORTABLE,C,STARTS,adj,"rahat, sıkıntı vermeyen",These new shoes are very comfortable to wear.,Bu yeni ayakkabılar giymek için çok rahat.,3,,home
 a2-common,COMMON,C,STARTS,adj,"çok görülen, yaygın",Smith is a common name in England.,"Smith, İngiltere'de yaygın bir isimdir.",3,,daily-life
 a2-company,COMPANY,C,STARTS,noun,"birçok insanın çalıştığı iş yeri, şirket",My uncle works for a big company.,Amcam büyük bir şirkette çalışıyor.,3,,school-work
-a2-competition,COMPETITION,C,STARTS,noun,birçok kişinin kazanmak için yarıştığı etkinlik,She won the singing competition.,Şarkı yarışmasını kazandı.,3,,sports
-a2-concert,CONCERT,C,STARTS,noun,canlı müzik dinletisi,We went to a concert last night.,Dün gece bir konsere gittik.,2,,music
+a2-competition,COMPETITION,C,STARTS,noun,birçok kişinin kazanmak için yarıştığı etkinlik,She won the singing competition.,Şarkı yarışmasını kazandı.,3,,hobbies
+a2-concert,CONCERT,C,STARTS,noun,canlı müzik dinletisi,We went to a concert last night.,Dün gece bir konsere gittik.,2,,hobbies
 a2-continue,CONTINUE,C,STARTS,verb,bir işi durmadan sürdürmek,"After a short break, we will continue the lesson.",Kısa bir aradan sonra derse devam edeceğiz.,3,,school-work
 a2-conversation,CONVERSATION,C,STARTS,noun,"uzunca, karşılıklı konuşma, sohbet",I had a long conversation with my aunt.,Teyzemle uzun bir konuşma yaptım.,3,,daily-life
 a2-correct,CORRECT,C,STARTS,adj,"doğru, yanlışı olmayan",Only one answer on the list is correct.,Listedeki cevaplardan yalnızca biri doğru.,2,,school-work
@@ -45,12 +45,12 @@ a2-cover,COVER,C,STARTS,verb,bir şeyin üstünü örtmek,Cover the bowl with a 
 a2-crab,CRAB,C,STARTS,noun,"yana doğru yürüyen, kıskaçlı deniz canlısı",A crab walked on the beach.,Bir yengeç plajda yürüdü.,2,,animals
 a2-cross,CROSS,C,STARTS,verb,bir yolun öbür tarafına geçmek,Look left before you cross the road.,Yolu geçmeden önce sola bak.,3,,city-transport
 a2-crowded,CROWDED,C,STARTS,adj,içinde çok insan olan,The bus is crowded this morning.,Otobüs bu sabah kalabalık.,3,,city-transport
-a2-cycling,CYCLING,C,STARTS,noun,bisiklete binme sporu,Cycling is good for your legs.,Bisiklete binmek bacakların için iyidir.,3,,sports
+a2-cycling,CYCLING,C,STARTS,noun,bisiklete binme sporu,Cycling is good for your legs.,Bisiklete binmek bacakların için iyidir.,3,,hobbies
 a2-chef,CHEF,C,STARTS,noun,restoran mutfağını yöneten baş aşçı,The chef cooks fish very well.,Aşçıbaşı balığı çok iyi pişirir.,2,,food-drink
 a2-since,SINCE,C,CONTAINS,phrase,belirli bir zamandan beri,I have lived here since 2020.,2020'den beri burada yaşıyorum.,4,,time-weather
 a2-peace,PEACE,C,CONTAINS,noun,"savaşın olmadığı sakin durum, barış",Everyone wants peace.,Herkes barış ister.,3,,daily-life
 a2-twice,TWICE,C,CONTAINS,adv,iki kez,I call my mother twice a week.,Annemi haftada iki kez ararım.,2,,time-weather
-a2-practise,PRACTICE,C,CONTAINS,verb,iyi olmak için tekrar tekrar çalışmak,I practice the piano every day.,Her gün piyano çalışıyorum.,3,,music
+a2-practise,PRACTICE,C,CONTAINS,verb,iyi olmak için tekrar tekrar çalışmak,I practice the piano every day.,Her gün piyano çalışıyorum.,3,,hobbies
 a2-decide,DECIDE,C,CONTAINS,verb,bir konuda kesin karara varmak,We cannot decide where to eat.,Nerede yemek yiyeceğimize karar veremiyoruz.,3,,daily-life
 a2-danger,DANGER,D,STARTS,noun,insana zarar gelme olasılığı,The red light means danger.,Kırmızı ışık tehlike demek.,3,,city-transport
 a2-deep,DEEP,D,STARTS,adj,"yüzeyden aşağıya doğru uzun, derin","The river is deep here, so do not swim.","Nehir burada derin, o yüzden yüzme.",2,,travel
@@ -69,7 +69,7 @@ a2-download,DOWNLOAD,D,STARTS,verb,internetten bilgisayara dosya indirmek,I down
 a2-dragon,DRAGON,D,STARTS,noun,"ateş püskürten, masallardaki kanatlı canavar",The dragon lives on a mountain.,Ejderha bir dağda yaşıyor.,2,,daily-life
 a2-dream,DREAM,D,STARTS,noun,uykuda görülen düş,I had a strange dream last night.,Dün gece garip bir rüya gördüm.,2,,daily-life
 a2-drop,DROP,D,STARTS,verb,elden istemeden düşürmek,Do not drop the eggs on the kitchen floor.,Yumurtaları mutfak zeminine düşürme.,2,,daily-life
-a2-drum,DRUM,D,STARTS,noun,çubuklarla vurularak çalınan müzik aleti,Mert plays the drum in a band.,Mert bir grupta davul çalıyor.,2,,music
+a2-drum,DRUM,D,STARTS,noun,çubuklarla vurularak çalınan müzik aleti,Mert plays the drum in a band.,Mert bir grupta davul çalıyor.,2,,hobbies
 a2-dust,DUST,D,STARTS,noun,eşyaların üstünde biriken ince toz,There is dust on the table.,Masanın üstünde toz var.,2,,home
 a2-dead,DEAD,D,STARTS,adj,"artık yaşamayan, ölmüş",The plant is dead because we forgot to water it.,Bitki ölmüş çünkü sulamayı unuttuk.,3,,daily-life
 a2-degree,DEGREE,D,STARTS,noun,sıcaklığın ölçü birimi,One degree is not very cold.,Bir derece çok soğuk sayılmaz.,2,,time-weather

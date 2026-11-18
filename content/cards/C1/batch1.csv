@@ -10,7 +10,7 @@ c1-adhere,ADHERE,A,STARTS,verb,kurala ya da ilkeye sıkıca uymak,All staff must
 c1-adverse,ADVERSE,A,STARTS,adj,olumsuz ve zarar verici nitelikte,Adverse weather delayed the flight by hours.,Elverişsiz hava uçuşu saatlerce geciktirdi.,5,,travel
 c1-advocate,ADVOCATE,A,STARTS,verb,bir fikri açıkça savunmak ve desteklemek,Doctors advocate a healthy diet for everyone.,Doktorlar herkes için sağlıklı beslenmeyi savunur.,4,,school-work
 c1-aesthetic,AESTHETIC,A,STARTS,adj,"güzellik anlayışıyla ilgili, estetik",The room has a simple but pleasing aesthetic design.,Odanın sade ama hoş bir estetik tasarımı var.,5,,school-work
-c1-agile,AGILE,A,STARTS,adj,"çevik, hızlı ve kolay hareket eden",The young goalkeeper was agile and quick.,Genç kaleci çevik ve hızlıydı.,4,,sports
+c1-agile,AGILE,A,STARTS,adj,"çevik, hızlı ve kolay hareket eden",The young goalkeeper was agile and quick.,Genç kaleci çevik ve hızlıydı.,4,,hobbies
 c1-allege,ALLEGE,A,STARTS,verb,kanıt göstermeden bir şeyi iddia etmek,Neighbors allege that the factory pollutes the river.,Komşular fabrikanın nehri kirlettiğini iddia ediyor.,5,,school-work
 c1-alleviate,ALLEVIATE,A,STARTS,verb,acıyı ya da sorunu hafifletmek,Some tea can alleviate a sore throat.,Biraz çay boğaz ağrısını hafifletebilir.,5,,school-work
 c1-allocate,ALLOCATE,A,STARTS,verb,kaynağı ya da parayı bir amaca ayırmak,The council will allocate more money to schools.,Belediye okullara daha fazla para ayıracak.,4,,business
@@ -19,10 +19,10 @@ c1-amend,AMEND,A,STARTS,verb,metni ya da yasayı düzeltip değiştirmek,Parliam
 c1-ample,AMPLE,A,STARTS,adj,"ihtiyaçtan bile fazla, yeterince bol",There is ample room for all the guests.,Tüm misafirler için fazlasıyla yer var.,4,,school-work
 c1-analogy,ANALOGY,A,STARTS,noun,"iki şey arasındaki benzerlik, benzetme",He used an analogy to explain the idea.,Fikri açıklamak için bir benzetme kullandı.,4,,school-work
 c1-anecdote,ANECDOTE,A,STARTS,noun,kısa ve eğlenceli kişisel anı,He opened the speech with a funny anecdote.,Konuşmaya komik bir anekdotla başladı.,4,,school-work
-c1-apparatus,APPARATUS,A,STARTS,noun,belirli bir iş için kullanılan alet takımı,The lab bought new apparatus for the tests.,Laboratuvar deneyler için yeni aygıtlar aldı.,5,,technology
+c1-apparatus,APPARATUS,A,STARTS,noun,belirli bir iş için kullanılan alet takımı,The lab bought new apparatus for the tests.,Laboratuvar deneyler için yeni aygıtlar aldı.,5,,business
 c1-arbitrary,ARBITRARY,A,STARTS,adj,"nedensiz, keyfi olarak yapılan",The rules seemed arbitrary and unfair.,Kurallar keyfi ve adaletsiz görünüyordu.,5,,school-work
 c1-articulate,ARTICULATE,A,STARTS,adj,düşüncelerini açık ve akıcı anlatabilen,She is an articulate speaker.,Düşüncelerini akıcı ve net ifade eden bir konuşmacıdır.,5,,school-work
-c1-aspire,ASPIRE,A,STARTS,verb,büyük bir hedefe ulaşmayı çok istemek,Many young players aspire to join a big club.,Birçok genç oyuncu büyük bir kulübe katılmayı hedefliyor.,5,,sports
+c1-aspire,ASPIRE,A,STARTS,verb,büyük bir hedefe ulaşmayı çok istemek,Many young players aspire to join a big club.,Birçok genç oyuncu büyük bir kulübe katılmayı hedefliyor.,5,,hobbies
 c1-assert,ASSERT,A,STARTS,verb,bir şeyin doğru olduğunu kesinlikle ileri sürmek,She continues to assert that she is innocent.,Masum olduğunu ısrarla ileri sürmeye devam ediyor.,5,,school-work
 c1-attain,ATTAIN,A,STARTS,verb,çabayla bir hedefe ya da düzeye ulaşmak,She worked hard to attain her goal.,Hedefine ulaşmak için çok çalıştı.,4,,school-work
 c1-autonomy,AUTONOMY,A,STARTS,noun,bağımsız karar verebilme özgürlüğü,The region wants more autonomy from the capital.,Bölge başkentten daha fazla özerklik istiyor.,5,,school-work
@@ -38,13 +38,13 @@ c1-appraisal,APPRAISAL,A,STARTS,noun,bir kişinin ya da şeyin değerlendirilmes
 c1-arguably,ARGUABLY,A,STARTS,adv,"belki de, pek çok kişiye göre (en ...)",He is arguably the best chef in the city.,Belki de şehrin en iyi aşçısıdır.,5,,school-work
 c1-benchmark,BENCHMARK,B,STARTS,noun,başkalarını karşılaştırmak için ölçüt,The test sets a benchmark for the whole industry.,Test bütün sektör için bir ölçüt belirliyor.,5,,business
 c1-betray,BETRAY,B,STARTS,verb,güvenen birine ihanet etmek,He would never betray a friend.,"O, asla bir arkadaşına ihanet etmez.",4,,school-work
-c1-bizarre,BIZARRE,B,STARTS,adj,"çok tuhaf, alışılmışın dışında",He told us a bizarre story about a talking dog.,Bize konuşan bir köpekle ilgili çok tuhaf bir hikâye anlattı.,4,,film-tv
+c1-bizarre,BIZARRE,B,STARTS,adj,"çok tuhaf, alışılmışın dışında",He told us a bizarre story about a talking dog.,Bize konuşan bir köpekle ilgili çok tuhaf bir hikâye anlattı.,4,,hobbies
 c1-bleak,BLEAK,B,STARTS,adj,"umutsuz, kasvetli ve soğuk",The future looked bleak for the small farm.,Küçük çiftliğin geleceği umutsuz görünüyordu.,5,,school-work
 c1-blunt,BLUNT,B,STARTS,adj,"açık sözlü, nezaketle yumuşatmayan",She gave a blunt answer to the question.,"Soruya doğrudan, yumuşatmayan bir cevap verdi.",4,,school-work
 c1-breach,BREACH,B,STARTS,noun,kuralın ya da anlaşmanın çiğnenmesi,Sharing the files was a breach of the contract.,Dosyaları paylaşmak sözleşmenin ihlaliydi.,5,,business
 c1-brutal,BRUTAL,B,STARTS,adj,acımasız ve çok sert,The winter was brutal for the animals.,Kış hayvanlar için çok acımasızdı.,4,,school-work
 c1-bypass,BYPASS,B,STARTS,verb,bir engeli ya da sistemi atlayarak geçmek,Some drivers bypass the town by using the ring road.,Bazı sürücüler çevre yolunu kullanıp kasabaya girmeden geçiyor.,4,,travel
-c1-backdrop,BACKDROP,B,STARTS,noun,"bir olayın geçtiği fon, arka plan",The mountains made a perfect backdrop for the photo.,Dağlar fotoğraf için mükemmel bir fon oldu.,5,,film-tv
+c1-backdrop,BACKDROP,B,STARTS,noun,"bir olayın geçtiği fon, arka plan",The mountains made a perfect backdrop for the photo.,Dağlar fotoğraf için mükemmel bir fon oldu.,5,,hobbies
 c1-ballot,BALLOT,B,STARTS,noun,oy pusulası ya da gizli oylama,The result of the ballot will be known tonight.,Oylamanın sonucu bu gece belli olacak.,5,,school-work
 c1-benign,BENIGN,B,STARTS,adj,"zararsız, kötü huylu olmayan",The doctor said the lump was benign.,Doktor yumrunun iyi huylu olduğunu söyledi.,5,,school-work
 c1-blur,BLUR,B,STARTS,verb,net görüntüyü bulanıklaştırmak,Tears began to blur her vision.,Gözyaşları görüşünü bulanıklaştırmaya başladı.,4,,school-work
@@ -60,7 +60,7 @@ c1-albeit,ALBEIT,A,STARTS,adv,karşıt bir durumu kabul eden bağlaç: ...se de,
 c1-allegation,ALLEGATION,A,STARTS,noun,kanıtsız ileri sürülen suçlama,The mayor denied the allegation.,Belediye başkanı iddiayı reddetti.,4,,school-work
 c1-await,AWAIT,A,STARTS,verb,bir şeyin gerçekleşmesini beklemek,We await your reply with interest.,Cevabınızı merakla bekliyoruz.,4,,business
 c1-array,ARRAY,A,STARTS,noun,geniş çeşitlilikte bir dizi,The shop sells a wide array of spices.,Dükkân çok çeşitli baharat satıyor.,5,,business
-c1-align,ALIGN,A,STARTS,verb,bir şeyi başka bir şeyle aynı hizaya getirmek,Please align the text to the left.,Lütfen metni sola hizalayın.,4,,technology
+c1-align,ALIGN,A,STARTS,verb,bir şeyi başka bir şeyle aynı hizaya getirmek,Please align the text to the left.,Lütfen metni sola hizalayın.,4,,business
 c1-boast,BOAST,B,STARTS,verb,kendi başarılarıyla övünmek,He likes to boast about his new car.,Yeni arabasıyla övünmeyi sever.,4,,school-work
 c1-bulk,BULK,B,STARTS,noun,bir şeyin büyük kısmı veya yığın hacmi,The bulk of the work is already finished.,İşin büyük kısmı çoktan bitti.,5,,business
 c1-beneficiary,BENEFICIARY,B,STARTS,noun,bir paradan veya yardımdan yararlanan kişi,She is the sole beneficiary of the will.,Vasiyetin tek hak sahibi o.,5,,business

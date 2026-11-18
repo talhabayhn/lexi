@@ -28,6 +28,21 @@ object ContentCompiler {
     /** ⚙ Below this a shipped level gets a coverage warning. */
     const val RECOMMENDED_CARDS_PER_LETTER = 5
 
+    /** ⚙ A category listed for a shipped level needs at least this many cards, or the level is dropped from `levels`. */
+    const val MIN_CATEGORY_CARDS_LISTED = 30
+
+    /** ⚙ Below this many cards a listed category x level pair fails the build. */
+    const val MIN_CATEGORY_CARDS_ERROR = 25
+
+    /** ⚙ Below this many distinct letters a listed pair fails the build (matches `GameConfig.minCategoryLetters`). */
+    const val MIN_CATEGORY_LETTERS = 13
+
+    /** ⚙ Above this many cards a listed pair gets a "too broad" warning. */
+    const val MAX_CATEGORY_CARDS = 140
+
+    // The hidden NAT bucket is not a picker tile, so the "too broad" warning does not apply to it.
+    private const val GENERAL_CATEGORY = "general"
+
     private val CATEGORY_COLUMNS = listOf("id", "name_tr", "name_en", "levels", "sort", "is_pro")
     private val PACK_COLUMNS = listOf("id", "name", "description", "is_pro", "sort")
     private val PACK_META_COLUMNS = listOf(
@@ -119,6 +134,7 @@ object ContentCompiler {
         checkExampleLeaks(cards, readLeakExempt(contentDir.resolve("leak-exempt.txt")), diagnostics)
         val packMembership = checkPackMembership(packs, packCardRows, packCards, seenIds, diagnostics)
         checkCoverage(baseCards, meta.shippedLevels, meta.smokeLevels, metaFile, diagnostics)
+        checkCategorySizes(categories, baseCards, meta.shippedLevels, contentDir.resolve("categories.csv"), diagnostics)
         val effectiveShippedPacks = meta.shippedPacks
             ?: (if (meta.shippedLevels.isEmpty()) emptySet() else packs.map { it.id }.toSet())
         checkPackCoverage(packs, packMembership, cardsById, effectiveShippedPacks, packsDir, diagnostics)
@@ -475,6 +491,53 @@ object ContentCompiler {
     private fun readLeakExempt(file: Path): Set<String> {
         if (!file.isRegularFile()) return emptySet()
         return file.readLines().map { it.substringBefore('#').trim().lowercase() }.filter { it.isNotEmpty() }.toSet()
+    }
+
+    /**
+     * Minimum size of a category listed for a shipped level (`CATEGORY-REBALANCE.md` §4.5): below
+     * [MIN_CATEGORY_CARDS_ERROR] cards or [MIN_CATEGORY_LETTERS] letters is an error, below [MIN_CATEGORY_CARDS_LISTED]
+     * cards a warning (drop the level from `levels` instead of shipping the pair thin), above
+     * [MAX_CATEGORY_CARDS] cards a warning (too broad for one tile).
+     */
+    private fun checkCategorySizes(
+        categories: List<CategoryEntry>,
+        baseCards: List<CardEntry>,
+        shipped: Set<Level>,
+        file: Path,
+        diagnostics: Diagnostics,
+    ) {
+        for (category in categories) {
+            if (category.id == CategoryId.MIXED.value) continue
+            for (level in category.levels.filter { it in shipped }) {
+                val own = baseCards.filter { it.level == level && it.categoryId == category.id }
+                val letters = own.mapTo(mutableSetOf()) { it.letter }.size
+                val label = "category '${category.id}' at ${level.name}"
+                when {
+                    own.size < MIN_CATEGORY_CARDS_ERROR || letters < MIN_CATEGORY_LETTERS ->
+                        diagnostics.error(
+                            file,
+                            null,
+                            "$label has ${own.size} card(s) on $letters letter(s), " +
+                                "minimum $MIN_CATEGORY_CARDS_ERROR / $MIN_CATEGORY_LETTERS: drop the level from levels",
+                        )
+
+                    own.size < MIN_CATEGORY_CARDS_LISTED ->
+                        diagnostics.warning(
+                            file,
+                            null,
+                            "$label has ${own.size} card(s), listing minimum is $MIN_CATEGORY_CARDS_LISTED: " +
+                                "drop the level from levels",
+                        )
+
+                    own.size > MAX_CATEGORY_CARDS && category.id != GENERAL_CATEGORY ->
+                        diagnostics.warning(
+                            file,
+                            null,
+                            "$label has ${own.size} card(s), above $MAX_CATEGORY_CARDS (too broad)",
+                        )
+                }
+            }
+        }
     }
 
     /** `CONTENT.md` §3: every letter of a shipped level has ≥ [MIN_CARDS_PER_LETTER] cards; base content only. */

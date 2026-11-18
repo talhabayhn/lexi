@@ -36,28 +36,26 @@ Landed so far: A1 batch 10 (60 cards), A2 batch 11 (3 cards), A2 batch 12 (81 ca
 | Y | 9/6 | 8/15 | 4/14 | 1/15 | 2/12 | 2/14 |
 | Z | 3/6 | 3/18 | 3/18 | 0/22 | 3/8 | 2/16 |
 
-## 2. Current counts per category × level
+## 2. Counts per category × level
+
+Snapshot from before stage 1 of the category rebalance, with Spor / Müzik / Film ve dizi merged into `hobbies`, Teknoloji into `business` and Yalancı eşdeğerler into `daily-life` (ids `sports`, `music`, `film-tv`, `technology`, `false-friends` no longer exist).
 
 | Category | A1 | A2 | B1 | B2 | C1 | NAT |
 |---|---|---|---|---|---|---|
 | animals | 45 | 36 | 14 | 0 | 0 | 0 |
 | body-health | 32 | 41 | 59 | 34 | 0 | 0 |
-| business | 0 | 0 | 118 | 115 | 162 | 0 |
+| business (incl. technology) | 0 | 0 | 160 | 135 | 187 | 0 |
 | city-transport | 52 | 60 | 23 | 0 | 0 | 0 |
 | colors-numbers | 51 | 0 | 0 | 0 | 0 | 0 |
-| daily-life | 344 | 302 | 275 | 185 | 0 | 0 |
-| false-friends | 0 | 0 | 1 | 1 | 0 | 0 |
+| daily-life (B1/B2 incl. false-friends) | 344 | 302 | 276 | 186 | 0 | 0 |
 | family-people | 44 | 26 | 71 | 0 | 0 | 0 |
-| film-tv | 0 | 0 | 27 | 18 | 31 | 0 |
 | food-drink | 79 | 69 | 20 | 12 | 0 | 0 |
 | general | 0 | 0 | 0 | 0 | 0 | 611 |
 | home | 58 | 65 | 0 | 0 | 0 | 0 |
 | idioms | 0 | 0 | 0 | 45 | 0 | 0 |
-| music | 0 | 26 | 6 | 10 | 9 | 0 |
 | phrasal-verbs | 0 | 0 | 0 | 121 | 0 | 0 |
 | school-work | 65 | 122 | 133 | 111 | 385 | 0 |
-| sports | 0 | 46 | 20 | 12 | 20 | 0 |
-| technology | 0 | 0 | 42 | 20 | 25 | 0 |
+| hobbies (sports + music + film-tv) | 0 | 72 | 53 | 40 | 60 | 0 |
 | time-weather | 77 | 32 | 0 | 0 | 0 | 0 |
 | travel | 0 | 56 | 40 | 45 | 43 | 0 |
 
@@ -96,10 +94,10 @@ Thin letters first inside each level. Effort: S ≈ 1 session (draft + QA) plus 
 | # | Level | Cards | Letter focus | Categories | Effort |
 |---|---|---|---|---|---|
 | 12 | A2 | ≤100 | Q, X, Z, Y, V, I, U (many CONTAINS) | daily-life, school-work, travel, food-drink | M (hard letters) |
-| 13 | A2 | ≤57 | rest of A2 gaps (I 17, W 15, U 14, N 13, O 12, G 11, R 10, J 9, Q 9, E 7) | daily-life, sports, music | S |
-| 14–15 | B1 | ≈ 179 in 2 batches | O 17, U 16, W 16, G 12, H 12, Y 12, N 11, T 11, E 9, J 9 | daily-life, business, technology | S |
+| 13 | A2 | ≤57 | rest of A2 gaps (I 17, W 15, U 14, N 13, O 12, G 11, R 10, J 9, Q 9, E 7) | daily-life, hobbies | S |
+| 14–15 | B1 | ≈ 179 in 2 batches | O 17, U 16, W 16, G 12, H 12, Y 12, N 11, T 11, E 9, J 9 | daily-life, business | S |
 | 16–18 | B2 | ≈ 251 in 3 batches | L 21, U 20, W 20, N 19, H 17, T 14, Y 14, E 13, G 13, J 12 | phrasal-verbs, idioms, business | M |
-| 19–22 | C1 | ≈ 322 in 4 batches | W 32, U 26, G 23, N 23, T 21, J 18, L 18, H 16, M 16, Y 16 | school-work, business, technology | M–L |
+| 19–22 | C1 | ≈ 322 in 4 batches | W 32, U 26, G 23, N 23, T 21, J 18, L 18, H 16, M 16, Y 16 | school-work, business | M–L |
 | 23–26 | NAT | ≈ 344 in 4 batches | N 26, L 22, O 22, T 21, U 20, W 20, H 19, M 19, G 17, R 16 | general | M |
 
 Batch numbers continue the global numbering (batch files per level: `content/cards/<level>/batchNN.csv`).

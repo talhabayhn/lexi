@@ -7,7 +7,7 @@ a2-exchange,EXCHANGE,X,CONTAINS,verb,karşılıklı değiş tokuş etmek,Can I e
 a2-expense,EXPENSE,X,CONTAINS,noun,"bir şey için harcanan para, masraf",Travel is a big expense.,Seyahat büyük bir masraftır.,3,,travel
 a2-expert,EXPERT,X,CONTAINS,noun,bir konuyu çok iyi bilen kişi,She is an expert on birds.,Kuşlar konusunda bir uzman.,3,,school-work
 a2-explore,EXPLORE,X,CONTAINS,verb,bilinmeyen bir yeri gezip keşfetmek,We want to explore the old town.,Eski şehri keşfetmek istiyoruz.,3,,travel
-a2-express,EXPRESS,X,CONTAINS,verb,duygu ya da düşünceyi dile getirmek,Music helps me express my feelings.,Müzik duygularımı ifade etmeme yardım ediyor.,3,,music
+a2-express,EXPRESS,X,CONTAINS,verb,duygu ya da düşünceyi dile getirmek,Music helps me express my feelings.,Müzik duygularımı ifade etmeme yardım ediyor.,3,,hobbies
 a2-flood,FLOOD,F,STARTS,noun,"suyun kara üstüne taşması, sel",The flood covered the road.,Sel yolu kapladı.,3,,daily-life
 a2-hurricane,HURRICANE,H,STARTS,noun,"çok şiddetli tropik fırtına, kasırga",The hurricane came to the island.,Kasırga adaya geldi.,3,,daily-life
 a2-ignore,IGNORE,I,STARTS,verb,bir şeye bilerek dikkat etmemek,Do not ignore the red light.,Kırmızı ışığı görmezden gelme.,3,,city-transport

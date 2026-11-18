@@ -23,7 +23,7 @@ b2-bookmark,BOOKMARK,K,CONTAINS,noun,kitabın sayfa arasına konan işaret,I use
 b2-landmark,LANDMARK,L,STARTS,noun,bir yeri tanıtan tanınmış yapı,The tower is a famous landmark.,Kule ünlü bir simgedir.,3,,travel
 b2-layout,LAYOUT,L,STARTS,noun,bir şeyin yerleşim düzeni,I like the layout of the kitchen.,Mutfağın yerleşim düzenini beğeniyorum.,4,,daily-life
 b2-lifespan,LIFESPAN,L,STARTS,noun,bir canlının veya aletin ömrü,A butterfly has a short lifespan.,Kelebeğin ömrü kısadır.,4,,daily-life
-b2-limitation,LIMITATION,L,STARTS,noun,bir şeyi sınırlayan etken,Every system has a limitation.,Her sistemin bir sınırlaması vardır.,4,,technology
+b2-limitation,LIMITATION,L,STARTS,noun,bir şeyi sınırlayan etken,Every system has a limitation.,Her sistemin bir sınırlaması vardır.,4,,business
 b2-literally,LITERALLY,L,STARTS,adv,kelimenin tam anlamıyla,I was literally freezing.,Kelimenin tam anlamıyla donuyordum.,3,,daily-life
 b2-luxurious,LUXURIOUS,L,STARTS,adj,çok lüks ve rahat,They stayed in a luxurious hotel.,Lüks bir otelde kaldılar.,3,,travel
 b2-look-into,LOOK INTO,L,STARTS,phrasal,bir meseleyi araştırmak,The police will look into the case.,Polis olayı araştıracak.,4,,phrasal-verbs
@@ -38,7 +38,7 @@ b2-meaningful,MEANINGFUL,M,STARTS,adj,anlamlı ve önemli,It was a meaningful co
 b2-merely,MERELY,M,STARTS,adv,"sadece, yalnızca",It was merely a joke.,Bu sadece bir şakaydı.,4,,daily-life
 b2-minor,MINOR,M,STARTS,adj,"önemsiz, küçük çaplı",It was only a minor accident.,Sadece küçük bir kazaydı.,3,,daily-life
 b2-misleading,MISLEADING,M,STARTS,adj,insanı yanıltan,The advertisement is misleading.,Reklam yanıltıcı.,4,,business
-b2-modify,MODIFY,M,STARTS,verb,"uyarlamak, düzenlemek",You can modify the settings.,Ayarları değiştirebilirsin.,4,,technology
+b2-modify,MODIFY,M,STARTS,verb,"uyarlamak, düzenlemek",You can modify the settings.,Ayarları değiştirebilirsin.,4,,business
 b2-moreover,MOREOVER,M,STARTS,adv,"ayrıca, üstelik","Moreover, the food was cheap.",Üstelik yemek ucuzdu.,4,,business
 b2-motivation,MOTIVATION,M,STARTS,noun,bir şeyi yapma isteği,Low motivation is a common problem.,Düşük motivasyon yaygın bir sorun.,3,,school-work
 b2-mount,MOUNT,M,STARTS,verb,ata ya da bisiklete binmek,He will mount the horse slowly.,Ata yavaşça binecek.,4,,daily-life

@@ -4,7 +4,7 @@ a2-taste,TASTE,T,STARTS,verb,yemeğin tadına bakmak,Taste the soup before you a
 a2-tasty,TASTY,T,STARTS,adj,"tadı güzel, lezzetli",The cake is very tasty.,Kek çok lezzetli.,2,,food-drink
 a2-thief,THIEF,T,STARTS,noun,başkasının malını çalan kişi,The thief ran away.,Hırsız kaçtı.,2,,family-people
 a2-through,THROUGH,T,STARTS,phrase,bir şeyin bir ucundan öbür ucuna geçerek,We walked through the park.,Parkın içinden yürüdük.,3,,city-transport
-a2-throw,THROW,T,STARTS,verb,elindeki şeyi havaya doğru fırlatmak,Throw the ball to me.,Topu bana at.,2,,sports
+a2-throw,THROW,T,STARTS,verb,elindeki şeyi havaya doğru fırlatmak,Throw the ball to me.,Topu bana at.,2,,hobbies
 a2-thunder,THUNDER,T,STARTS,noun,şimşekten sonra gelen gök gürültüsü,I heard thunder last night.,Dün gece gök gürültüsü duydum.,3,,time-weather
 a2-tidy,TIDY,T,STARTS,adj,"her şeyi yerli yerinde olan, derli toplu",Her desk is always tidy.,Masası her zaman derli toplu.,3,,home
 a2-tight,TIGHT,T,STARTS,adj,vücuda çok yapışan ya da sıkı,These shoes are too tight.,Bu ayakkabılar çok dar.,3,,daily-life
@@ -14,7 +14,7 @@ a2-title,TITLE,T,STARTS,noun,kitabın ya da filmin adı,What is the title of the
 a2-tool,TOOL,T,STARTS,noun,çekiç ya da tornavida gibi iş gereci,A spade is a tool.,Kürek bir alettir.,3,,home
 a2-towards,TOWARD,T,STARTS,phrase,bir yere doğru yönelerek,The boy ran toward the sea.,Çocuk denize doğru koştu.,3,,city-transport
 a2-traditional,TRADITIONAL,T,STARTS,adj,eski zamanlardan beri süren geleneksel,We cooked a traditional dish.,Geleneksel bir yemek pişirdik.,3,,food-drink
-a2-trainer,TRAINER,T,STARTS,noun,spor için giyilen rahat ayakkabı,My left trainer is dirty.,Sol spor ayakkabım kirli.,3,,sports
+a2-trainer,TRAINER,T,STARTS,noun,spor için giyilen rahat ayakkabı,My left trainer is dirty.,Sol spor ayakkabım kirli.,3,,hobbies
 a2-transport,TRANSPORT,T,STARTS,noun,insanları ya da malları taşıma sistemi,The city has good transport.,Şehirde ulaşım iyi.,3,,city-transport
 a2-treasure,TREASURE,T,STARTS,noun,saklanmış değerli altın ve mücevherler,The pirates hid the treasure.,Korsanlar hazineyi sakladılar.,3,,daily-life
 a2-triangle,TRIANGLE,T,STARTS,noun,"üç kenarlı şekil, üçgen",Draw a triangle on the board.,Tahtaya bir üçgen çiz.,2,,school-work
@@ -29,9 +29,9 @@ a2-tap,TAP,T,STARTS,noun,suyun akmasını sağlayan musluk,Turn off the tap.,Mus
 a2-thick,THICK,T,STARTS,adj,kalınlığı çok olan,The book is very thick.,Kitap çok kalın.,2,,school-work
 a2-tongue,TONGUE,T,STARTS,noun,"ağız içindeki tat alan organ, dil",The doctor looked at my tongue.,Doktor dilime baktı.,3,,body-health
 a2-traveller,TRAVELER,T,STARTS,noun,uzak yerlere sık sık yolculuk eden kişi,The traveler carries a big bag.,Gezgin büyük bir çanta taşıyor.,3,,travel
-a2-trumpet,TRUMPET,T,STARTS,noun,ağızdan üflenerek çalınan parlak metal çalgı,He plays the trumpet in a band.,Bir grupta trompet çalıyor.,3,,music
+a2-trumpet,TRUMPET,T,STARTS,noun,ağızdan üflenerek çalınan parlak metal çalgı,He plays the trumpet in a band.,Bir grupta trompet çalıyor.,3,,hobbies
 a2-tube,TUBE,T,STARTS,noun,"boya ya da krem konan, sıkılarak boşaltılan kap",The paint comes in a tube.,Boya bir tüp içinde geliyor.,3,,daily-life
-a2-tune,TUNE,T,STARTS,noun,akılda kalan kısa ezgi,I know the tune but not the words.,Ezgiyi biliyorum ama sözleri bilmiyorum.,3,,music
+a2-tune,TUNE,T,STARTS,noun,akılda kalan kısa ezgi,I know the tune but not the words.,Ezgiyi biliyorum ama sözleri bilmiyorum.,3,,hobbies
 a2-torch,TORCH,T,STARTS,noun,karanlıkta yolu aydınlatan el lambası,Take a torch with you.,Yanına bir el feneri al.,2,,daily-life
 a2-total,TOTAL,T,STARTS,noun,"toplanınca çıkan sayı, toplam",The total on the receipt was twenty dollars.,Fişteki toplam yirmi dolardı.,3,,school-work
 a2-trust,TRUST,T,STARTS,verb,birine güvenmek,I trust my best friend.,En yakın arkadaşıma güveniyorum.,3,,daily-life
@@ -47,7 +47,7 @@ a2-weak,WEAK,W,STARTS,adj,"gücü az, kuvvetsiz","After being ill, she felt weak
 a2-whisper,WHISPER,W,STARTS,verb,"çok alçak sesle konuşmak, fısıldamak",Do not whisper in class.,Derste fısıldaşma.,3,,school-work
 a2-whose,WHOSE,W,STARTS,phrase,kime ait olduğunu soran sözcük,Whose umbrella is this on the table?,Masanın üstündeki bu şemsiye kimin?,3,,daily-life
 a2-wild,WILD,W,STARTS,adj,"doğada yaşayan, evcilleştirilmemiş",Wild animals live in the forest.,Yabani hayvanlar ormanda yaşar.,3,,animals
-a2-winner,WINNER,W,STARTS,noun,yarışta ya da oyunda birinci olan kişi,The winner gets a prize.,Kazanan ödül alır.,2,,sports
+a2-winner,WINNER,W,STARTS,noun,yarışta ya da oyunda birinci olan kişi,The winner gets a prize.,Kazanan ödül alır.,2,,hobbies
 a2-wish,WISH,W,STARTS,verb,birine iyi bir şey dilemek,I wish you a happy birthday.,Sana mutlu bir doğum günü dilerim.,3,,daily-life
 a2-without,WITHOUT,W,STARTS,phrase,"bir şey olmadan, -sız",Do not go out without a coat.,Paltosuz dışarı çıkma.,3,,daily-life
 a2-wonder,WONDER,W,STARTS,verb,merak edip kendi kendine sormak,I wonder where Ali is.,Ali'nin nerede olduğunu merak ediyorum.,3,,daily-life
@@ -60,9 +60,9 @@ a2-wardrobe,WARDROBE,W,STARTS,noun,giysilerin asıldığı büyük dolap,My clot
 a2-wet,WET,W,STARTS,adj,"ıslak, kuru olmayan",My hair is wet.,Saçlarım ıslak.,2,,time-weather
 a2-crown,CROWN,W,CONTAINS,noun,kralın başına taktığı süslü altın başlık,The queen wears a crown.,Kraliçe bir taç takıyor.,2,,daily-life
 a2-switch,SWITCH,W,CONTAINS,noun,ışığı açıp kapatan düğme,Where is the light switch?,Işık anahtarı nerede?,3,,home
-a2-bowling,BOWLING,W,CONTAINS,noun,topla labutları devirmeye çalışılan oyun,We went bowling on Friday.,Cuma günü bovlinge gittik.,3,,sports
+a2-bowling,BOWLING,W,CONTAINS,noun,topla labutları devirmeye çalışılan oyun,We went bowling on Friday.,Cuma günü bovlinge gittik.,3,,hobbies
 a2-drawing,DRAWING,W,CONTAINS,noun,"kalemle çizilmiş resim, çizim",This drawing is for you.,Bu çizim senin için.,2,,school-work
-a2-snowboard,SNOWBOARD,W,CONTAINS,noun,karda kaymak için kullanılan geniş tek tahta,He wants a new snowboard.,Yeni bir snowboard istiyor.,3,,sports
+a2-snowboard,SNOWBOARD,W,CONTAINS,noun,karda kaymak için kullanılan geniş tek tahta,He wants a new snowboard.,Yeni bir snowboard istiyor.,3,,hobbies
 a2-beard,BEARD,B,STARTS,noun,erkeğin çenesindeki sakal,My uncle has a long beard.,Amcamın uzun bir sakalı var.,2,,body-health
 a2-bookshop,BOOKSHOP,B,STARTS,noun,kitap satılan dükkân,I bought this at the bookshop.,Bunu kitapçıdan aldım.,2,,city-transport
 a2-brake,BRAKE,B,STARTS,noun,aracı durdurmaya yarayan fren,He pressed the brake when the light turned red.,Işık kırmızıya dönünce frene bastı.,3,,city-transport

@@ -14,9 +14,9 @@ a2-mobile,MOBILE,M,STARTS,adj,"taşınabilir, her yere götürülebilir",I forgo
 a2-modern,MODERN,M,STARTS,adj,"çağdaş, yeni tarzda",They live in a modern flat.,Modern bir dairede yaşıyorlar.,3,,home
 a2-moment,MOMENT,M,STARTS,noun,"çok kısa bir zaman dilimi, an","Please wait a moment, I will be right back.","Lütfen bir an bekle, hemen döneceğim.",2,,time-weather
 a2-mud,MUD,M,STARTS,noun,"toprak ve suyun karışımı, çamur",The boots are full of mud.,Botlar çamurla dolu.,2,,daily-life
-a2-musician,MUSICIAN,M,STARTS,noun,müzik çalan ya da besteleyen kişi,The musician plays the guitar well.,Müzisyen gitarı iyi çalıyor.,2,,music
+a2-musician,MUSICIAN,M,STARTS,noun,müzik çalan ya da besteleyen kişi,The musician plays the guitar well.,Müzisyen gitarı iyi çalıyor.,2,,hobbies
 a2-myself,MYSELF,M,STARTS,phrase,konuşanın kendisi,I made this cake myself.,Bu keki kendim yaptım.,3,,daily-life
-a2-medal,MEDAL,M,STARTS,noun,"boyna asılan altın, gümüş ya da bronz ödül",She won a medal last year.,Geçen yıl madalya kazandı.,3,,sports
+a2-medal,MEDAL,M,STARTS,noun,"boyna asılan altın, gümüş ya da bronz ödül",She won a medal last year.,Geçen yıl madalya kazandı.,3,,hobbies
 a2-medium,MEDIUM,M,STARTS,adj,"ne büyük ne küçük, orta boy",I wear a medium T-shirt.,Orta boy tişört giyiyorum.,3,,daily-life
 a2-mushroom,MUSHROOM,M,STARTS,noun,"ormanda biten, saplı şapkalı yenebilen bitki",We had mushroom soup for lunch.,Öğle yemeğinde mantar çorbası içtik.,2,,food-drink
 a2-mosquito,MOSQUITO,M,STARTS,noun,"insanı sokan, vızıldayan küçük böcek",A mosquito landed on my arm.,Koluma bir sivrisinek kondu.,3,,animals
@@ -37,8 +37,8 @@ a2-path,PATH,P,STARTS,noun,yürümek için kullanılan dar yol,This path goes to
 a2-pharmacy,PHARMACY,P,STARTS,noun,"ilaç satılan dükkân, eczane",The pharmacy is next to the bank.,Eczane bankanın yanında.,3,,city-transport
 a2-pick,PICK,P,STARTS,verb,birçok şey arasından seçmek ya da koparmak,Let us pick apples from the tree today.,Bugün ağaçtan elma toplayalım.,3,,daily-life
 a2-poem,POEM,P,STARTS,noun,"dizelerle yazılmış edebî eser, şiir",She wrote a poem for her mother.,Annesi için bir şiir yazdı.,3,,school-work
-a2-point,POINT,P,STARTS,noun,bir oyunda kazanılan puan,Our team won a point in the last minute.,Takımımız son dakikada bir puan kazandı.,3,,sports
-a2-popular,POPULAR,P,STARTS,adj,"çok sevilen, beğenilen",This game is very popular with young people.,Bu oyun gençler arasında çok seviliyor.,3,,music
+a2-point,POINT,P,STARTS,noun,bir oyunda kazanılan puan,Our team won a point in the last minute.,Takımımız son dakikada bir puan kazandı.,3,,hobbies
+a2-popular,POPULAR,P,STARTS,adj,"çok sevilen, beğenilen",This game is very popular with young people.,Bu oyun gençler arasında çok seviliyor.,3,,hobbies
 a2-post,POST,P,STARTS,verb,mektubu göndermek üzere kutuya atmak,I will post this letter today.,Bu mektubu bugün postaya vereceğim.,3,,daily-life
 a2-poster,POSTER,P,STARTS,noun,duvara asılan büyük resim ya da afiş,There is a film poster on my wall.,Duvarımda bir film afişi var.,2,,home
 a2-pot,POT,P,STARTS,noun,yemek pişirmek için kullanılan derin kap,Put the pot on the cooker.,Tencereyi ocağa koy.,2,,home

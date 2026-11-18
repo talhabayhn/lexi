@@ -1,23 +1,23 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
 c1-adolescent,ADOLESCENT,A,STARTS,noun,çocukluk ile yetişkinlik arasındaki genç,Every adolescent needs plenty of sleep.,Her ergenin bol uykuya ihtiyacı vardır.,4,,school-work
-c1-automate,AUTOMATE,A,STARTS,verb,bir işi makineyle otomatik yapmak,The firm plans to automate the factory.,Firma fabrikayı otomatikleştirmeyi planlıyor.,5,,technology
+c1-automate,AUTOMATE,A,STARTS,verb,bir işi makineyle otomatik yapmak,The firm plans to automate the factory.,Firma fabrikayı otomatikleştirmeyi planlıyor.,5,,business
 c1-biodiversity,BIODIVERSITY,B,STARTS,noun,bir bölgedeki canlı türlerinin çeşitliliği,Forests protect the biodiversity of the region.,Ormanlar bölgenin biyolojik çeşitliliğini korur.,5,,school-work
 c1-brainstorm,BRAINSTORM,B,STARTS,verb,grup olarak fikir üretmek,Let's brainstorm some names for the shop.,Dükkân için birkaç isim fikri üretelim.,5,,business
-c1-briefing,BRIEFING,B,STARTS,noun,bir konuda yapılan kısa bilgilendirme,The team had a briefing before the match.,Takım maçtan önce bir bilgilendirme toplantısı yaptı.,5,,sports
-c1-boycott,BOYCOTT,B,STARTS,verb,protesto için bir şeyi kullanmamak,Many fans will boycott the match.,Birçok taraftar maçı boykot edecek.,5,,sports
-c1-fanatic,FANATIC,F,STARTS,noun,bir şeye aşırı bağlı kimse,He is a football fanatic.,O bir futbol fanatiği.,5,,sports
-c1-footage,FOOTAGE,F,STARTS,noun,çekilmiş film görüntüsü,The news showed footage of the flood.,Haberler selin görüntülerini yayınladı.,5,,film-tv
+c1-briefing,BRIEFING,B,STARTS,noun,bir konuda yapılan kısa bilgilendirme,The team had a briefing before the match.,Takım maçtan önce bir bilgilendirme toplantısı yaptı.,5,,hobbies
+c1-boycott,BOYCOTT,B,STARTS,verb,protesto için bir şeyi kullanmamak,Many fans will boycott the match.,Birçok taraftar maçı boykot edecek.,5,,hobbies
+c1-fanatic,FANATIC,F,STARTS,noun,bir şeye aşırı bağlı kimse,He is a football fanatic.,O bir futbol fanatiği.,5,,hobbies
+c1-footage,FOOTAGE,F,STARTS,noun,çekilmiş film görüntüsü,The news showed footage of the flood.,Haberler selin görüntülerini yayınladı.,5,,hobbies
 c1-freelance,FREELANCE,F,STARTS,adj,belirli bir işverene bağlı olmayan,She works as a freelance writer.,Serbest yazar olarak çalışıyor.,4,,business
 c1-friction,FRICTION,F,STARTS,noun,sürtünme; taraflar arası gerginlik,There is friction between the two partners.,İki ortak arasında sürtüşme var.,5,,business
 c1-frontier,FRONTIER,F,STARTS,noun,iki ülke arasındaki sınır,They crossed the frontier at night.,Geceleyin sınırı geçtiler.,4,,travel
 c1-fury,FURY,F,STARTS,noun,kontrolsüz büyük öfke,She shouted in fury.,Öfkeyle bağırdı.,5,,school-work
-c1-fusion,FUSION,F,STARTS,noun,farklı şeylerin birleşimi,The band plays a fusion of jazz and rock.,Grup caz ve rock karışımı çalıyor.,4,,music
+c1-fusion,FUSION,F,STARTS,noun,farklı şeylerin birleşimi,The band plays a fusion of jazz and rock.,Grup caz ve rock karışımı çalıyor.,4,,hobbies
 c1-generic,GENERIC,G,STARTS,adj,"marka değil, genel nitelikte",He bought a generic brand of aspirin.,Markasız bir aspirin aldı.,5,,business
 c1-graffiti,GRAFFITI,G,STARTS,noun,duvara yazılmış veya çizilmiş yazı,The wall was covered in graffiti.,Duvar grafitiyle kaplıydı.,4,,travel
 c1-grassroots,GRASSROOTS,G,STARTS,noun,"halkın tabanı, sıradan insanlar",Support for the plan came from the grassroots.,Plana destek tabandan geldi.,5,,school-work
 c1-greed,GREED,G,STARTS,noun,daha fazlasına duyulan aşırı hırs,Greed ruined the company.,Açgözlülük şirketi mahvetti.,4,,business
 c1-governance,GOVERNANCE,G,STARTS,noun,kurumların yönetilme ve denetlenme biçimi,Good governance builds public trust.,İyi yönetişim kamu güvenini artırır.,5,,business
-c1-haunt,HAUNT,H,STARTS,verb,hayalet gibi bir yere musallat olmak,They say a ghost will haunt the old house.,Eski eve bir hayaletin musallat olduğunu söylüyorlar.,5,,film-tv
+c1-haunt,HAUNT,H,STARTS,verb,hayalet gibi bir yere musallat olmak,They say a ghost will haunt the old house.,Eski eve bir hayaletin musallat olduğunu söylüyorlar.,5,,hobbies
 c1-hectic,HECTIC,H,STARTS,adj,çok yoğun ve telaşlı,It was a hectic week at work.,İşte çok yoğun bir hafta geçti.,4,,business
 c1-herald,HERALD,H,STARTS,verb,bir şeyin habercisi olmak,The report may herald a new era.,Rapor yeni bir dönemin habercisi olabilir.,5,,school-work
 c1-hierarchy,HIERARCHY,H,STARTS,noun,rütbe veya önem sıralaması,The company has a strict hierarchy.,Şirketin katı bir hiyerarşisi var.,5,,business
@@ -64,7 +64,7 @@ c1-analytical,ANALYTICAL,Y,CONTAINS,adj,çözümlemeye dayalı,She has an analyt
 c1-physician,PHYSICIAN,Y,CONTAINS,noun,hastaları muayene edip tedavi eden doktor,The physician examined the patient.,Hekim hastayı muayene etti.,5,,school-work
 c1-syllable,SYLLABLE,Y,CONTAINS,noun,bir sözcüğün hece birimi,Say the word one syllable at a time.,Kelimeyi hece hece söyle.,4,,school-work
 c1-skyline,SKYLINE,Y,CONTAINS,noun,şehrin gökyüzüne karşı silueti,The skyline looks beautiful at night.,Şehrin silueti geceleri çok güzel.,4,,travel
-c1-frenzy,FRENZY,Z,CONTAINS,noun,kontrolsüz aşırı heyecan,The crowd was in a frenzy.,Kalabalık çılgına dönmüştü.,5,,sports
-c1-craze,CRAZE,Z,CONTAINS,noun,kısa süreli moda furyası,The dance became a craze.,Dans bir moda furyasına dönüştü.,5,,music
+c1-frenzy,FRENZY,Z,CONTAINS,noun,kontrolsüz aşırı heyecan,The crowd was in a frenzy.,Kalabalık çılgına dönmüştü.,5,,hobbies
+c1-craze,CRAZE,Z,CONTAINS,noun,kısa süreli moda furyası,The dance became a craze.,Dans bir moda furyasına dönüştü.,5,,hobbies
 c1-capitalize,CAPITALIZE,Z,CONTAINS,verb,fırsattan yararlanmak,They hope to capitalize on the success.,Başarıdan yararlanmayı umuyorlar.,5,,business
 c1-drizzle,DRIZZLE,Z,CONTAINS,noun,ince ve hafif yağmur,A fine drizzle fell all morning.,Sabahtan beri ince bir çise yağdı.,4,,travel

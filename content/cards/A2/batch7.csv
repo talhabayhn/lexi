@@ -1,8 +1,8 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
-a2-race,RACE,R,STARTS,noun,kimin daha hızlı olduğunu belirleyen yarış,Ali ran fast and won the race.,Ali hızlı koştu ve yarışı kazandı.,2,,sports
+a2-race,RACE,R,STARTS,noun,kimin daha hızlı olduğunu belirleyen yarış,Ali ran fast and won the race.,Ali hızlı koştu ve yarışı kazandı.,2,,hobbies
 a2-reach,REACH,R,STARTS,verb,gidilen bir yere varmak,We reach the village at noon.,Köye öğlen varıyoruz.,3,,travel
 a2-reason,REASON,R,STARTS,noun,bir şeyin neden olduğunu açıklayan sebep,He gave a good reason for being late.,Geç kaldığı için iyi bir sebep gösterdi.,3,,daily-life
-a2-record,RECORD,R,STARTS,noun,müziğin kaydedildiği plak,I bought a record of old songs.,Eski şarkıların olduğu bir plak aldım.,3,,music
+a2-record,RECORD,R,STARTS,noun,müziğin kaydedildiği plak,I bought a record of old songs.,Eski şarkıların olduğu bir plak aldım.,3,,hobbies
 a2-rent,RENT,R,STARTS,verb,bir şeyi ücret karşılığında geçici olarak kullanmak,We rent a flat near the sea.,Deniz kenarında bir daire kiralıyoruz.,3,,home
 a2-repair,REPAIR,R,STARTS,verb,bozulan bir şeyi tamir etmek,Dad can repair my bike.,Babam bisikletimi tamir edebilir.,3,,home
 a2-report,REPORT,R,STARTS,noun,bir olay ya da konu hakkında yazılan rapor,I must write a report for school.,Okul için bir rapor yazmam lazım.,3,,school-work
@@ -28,7 +28,7 @@ a2-safe,SAFE,S,STARTS,adj,"zarar görme tehlikesi olmayan, güvenli",The park is
 a2-sail,SAIL,S,STARTS,verb,yelkenli ile denizde ilerlemek,They sail on the sea every summer.,Her yaz yelkenliyle denizde gezerler.,3,,travel
 a2-sale,SALE,S,STARTS,noun,"ucuz fiyatla yapılan satış, indirim",There is a sale at the shoe shop.,Ayakkabı dükkânında indirim var.,2,,daily-life
 a2-sauce,SAUCE,S,STARTS,noun,yemeğin üstüne eklenen sıvı,I like tomato sauce on pasta.,Makarnanın üstüne domates sosunu severim.,2,,food-drink
-a2-score,SCORE,S,STARTS,noun,bir maçta atılan gol ya da kazanılan sayılar,The score was two to one at halftime.,Devre arasında skor ikiye birdi.,2,,sports
+a2-score,SCORE,S,STARTS,noun,bir maçta atılan gol ya da kazanılan sayılar,The score was two to one at halftime.,Devre arasında skor ikiye birdi.,2,,hobbies
 a2-season,SEASON,S,STARTS,noun,yılın dört bölümünden biri,Summer is my favorite season.,Yaz en sevdiğim mevsim.,2,,time-weather
 a2-seat,SEAT,S,STARTS,noun,"otobüs, sinema gibi yerlerde tek kişilik koltuk",Please give your seat to an older person.,Lütfen yaşlı birine yerinizi verin.,2,,city-transport
 a2-secret,SECRET,S,STARTS,noun,başkalarına söylenmemesi gereken bilgi,It is a big secret.,Bu büyük bir sır.,3,,daily-life
@@ -38,7 +38,7 @@ a2-shake,SHAKE,S,STARTS,verb,bir şeyi hızlıca ileri geri sallamak,Shake the b
 a2-sharp,SHARP,S,STARTS,adj,"keskin, kolayca kesen",The knife is very sharp.,Bıçak çok keskin.,3,,home
 a2-sheet,SHEET,S,STARTS,noun,yatağa serilen çarşaf ya da tek bir kâğıt,I need a clean sheet of paper.,Temiz bir kâğıt yaprağına ihtiyacım var.,3,,school-work
 a2-shine,SHINE,S,STARTS,verb,"parlamak, ışık saçmak",The sun will shine tomorrow.,Yarın güneş parlayacak.,3,,time-weather
-a2-shoot,SHOOT,S,STARTS,verb,silahla ateş etmek ya da topla gol denemek,He tried to shoot from far away.,Uzaktan şut çekmeye çalıştı.,3,,sports
+a2-shoot,SHOOT,S,STARTS,verb,silahla ateş etmek ya da topla gol denemek,He tried to shoot from far away.,Uzaktan şut çekmeye çalıştı.,3,,hobbies
 a2-shy,SHY,S,STARTS,adj,"insanlarla konuşurken çekinen, utangaç",The new girl is shy.,Yeni kız utangaç.,2,,family-people
 a2-sick,SICK,S,STARTS,adj,"midesi bulanan, kusacak gibi olan",I feel sick after the boat ride.,Tekne gezisinden sonra midem bulanıyor.,2,,body-health
 a2-side,SIDE,S,STARTS,noun,"bir şeyin bir tarafı, yanı",Sit on this side of the table.,Masanın bu tarafına otur.,3,,daily-life
@@ -53,13 +53,13 @@ a2-soldier,SOLDIER,S,STARTS,noun,orduda görev yapan asker,The soldier stood at 
 a2-solve,SOLVE,S,STARTS,verb,bir sorunun cevabını bulmak,Can you solve this problem?,Bu sorunu çözebilir misin?,3,,school-work
 a2-someone,SOMEONE,S,STARTS,noun,bilinmeyen bir kişi,Someone is at the door.,Kapıda biri var.,3,,daily-life
 a2-somewhere,SOMEWHERE,S,STARTS,adv,belirsiz bir yer,I left my keys somewhere.,Anahtarlarımı bir yerde bıraktım.,3,,daily-life
-a2-song,SONG,S,STARTS,noun,sözlü ve melodili müzik parçası,This is my favorite song.,Bu en sevdiğim şarkı.,2,,music
+a2-song,SONG,S,STARTS,noun,sözlü ve melodili müzik parçası,This is my favorite song.,Bu en sevdiğim şarkı.,2,,hobbies
 a2-space,SPACE,S,STARTS,noun,içine bir şey sığabilen boşluk,There is no space in my bag.,Çantamda yer yok.,3,,daily-life
-a2-speaker,SPEAKER,S,STARTS,noun,sesi yükselten hoparlör ya da konuşmacı,The speaker on my phone is too quiet.,Telefonumdaki hoparlör çok kısık.,3,,music
+a2-speaker,SPEAKER,S,STARTS,noun,sesi yükselten hoparlör ya da konuşmacı,The speaker on my phone is too quiet.,Telefonumdaki hoparlör çok kısık.,3,,hobbies
 a2-speech,SPEECH,S,STARTS,noun,topluluk önünde yapılan konuşma,The teacher gave a short speech.,Öğretmen kısa bir konuşma yaptı.,3,,school-work
-a2-stadium,STADIUM,S,STARTS,noun,büyük spor karşılaşmalarının yapıldığı yapı,The stadium is full tonight.,Stadyum bu gece dolu.,3,,sports
+a2-stadium,STADIUM,S,STARTS,noun,büyük spor karşılaşmalarının yapıldığı yapı,The stadium is full tonight.,Stadyum bu gece dolu.,3,,hobbies
 a2-staff,STAFF,S,STARTS,noun,bir işyerinde çalışan kişiler,The hotel staff are friendly.,Otel personeli sıcakkanlı.,3,,school-work
-a2-stage,STAGE,S,STARTS,noun,"tiyatroda oyuncuların çıktığı yükseltilmiş yer, sahne",The singer walked onto the stage.,Şarkıcı sahneye çıktı.,3,,music
+a2-stage,STAGE,S,STARTS,noun,"tiyatroda oyuncuların çıktığı yükseltilmiş yer, sahne",The singer walked onto the stage.,Şarkıcı sahneye çıktı.,3,,hobbies
 a2-steal,STEAL,S,STARTS,verb,başkasına ait bir şeyi izinsiz almak,A man tried to steal my bike.,Bir adam bisikletimi çalmaya çalıştı.,3,,daily-life
 a2-step,STEP,S,STARTS,noun,yürürken atılan adım ya da merdiven basamağı,Take one step back.,Bir adım geri çekil.,2,,daily-life
 a2-stick,STICK,S,STARTS,noun,"ağaçtan kopan ince uzun dal parçası, sopa",The dog ran after the stick.,Köpek sopanın peşinden koştu.,2,,animals

@@ -2,7 +2,7 @@ id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
 b2-fabulous,FABULOUS,F,STARTS,adj,"masal gibi muhteşem, şahane",We had a fabulous holiday.,Harika bir tatil geçirdik.,3,,travel
 b2-factor,FACTOR,F,STARTS,noun,bir sonucu etkileyen etken,Price is an important factor.,Fiyat önemli bir etkendir.,3,,business
 b2-fairly,FAIRLY,F,STARTS,adv,"oldukça, makul ölçüde",The test was fairly easy.,Sınav oldukça kolaydı.,3,,school-work
-b2-fame,FAME,F,STARTS,noun,ünlü olma durumu,Fame came to her at the age of twenty.,Yirmi yaşında ünlü oldu.,3,,film-tv
+b2-fame,FAME,F,STARTS,noun,ünlü olma durumu,Fame came to her at the age of twenty.,Yirmi yaşında ünlü oldu.,3,,hobbies
 b2-fierce,FIERCE,F,STARTS,adj,çok sert ve saldırgan,A fierce wind blew all night.,Bütün gece sert bir rüzgâr esti.,4,,daily-life
 b2-flaw,FLAW,F,STARTS,noun,bir planda veya üründe zayıf nokta,The plan has one big flaw.,Planın tek büyük bir kusuru var.,4,,business
 b2-flee,FLEE,F,STARTS,verb,tehlikeden kaçmak,Thousands of people had to flee the flood.,Binlerce insan sel yüzünden kaçmak zorunda kaldı.,4,,daily-life
@@ -10,7 +10,7 @@ b2-flexibility,FLEXIBILITY,F,STARTS,noun,değişen şartlara uyum sağlama esnek
 b2-fluent,FLUENT,F,STARTS,adj,bir dili akıcı konuşabilen,She is fluent in three languages.,Üç dilde akıcı konuşuyor.,3,,school-work
 b2-forbid,FORBID,F,STARTS,verb,bir şeyi yasaklamak,The law will forbid smoking in schools.,Yasa okullarda sigara içmeyi yasaklayacak.,4,,daily-life
 b2-foresee,FORESEE,F,STARTS,verb,olacakları önceden görmek,Nobody could foresee the problem.,Hiç kimse sorunu önceden göremezdi.,4,,business
-b2-former,FORMER,F,STARTS,adj,"eskiden olan, önceki",He is a former footballer.,O eski bir futbolcu.,3,,sports
+b2-former,FORMER,F,STARTS,adj,"eskiden olan, önceki",He is a former footballer.,O eski bir futbolcu.,3,,hobbies
 b2-formula,FORMULA,F,STARTS,noun,bir sonuca ulaştıran kural veya bilimsel formül,There is no magic formula for success.,Başarı için sihirli bir formül yok.,4,,school-work
 b2-fortunate,FORTUNATE,F,STARTS,adj,"şanslı, talihli",We were fortunate to find a seat.,Yer bulabildiğimiz için şanslıydık.,4,,daily-life
 b2-fragile,FRAGILE,F,STARTS,adj,kolayca kırılabilen,Be careful; this glass is fragile.,Dikkatli ol; bu bardak kırılgan.,3,,daily-life
@@ -28,7 +28,7 @@ b2-fight-back,FIGHT BACK,F,STARTS,phrasal,saldırıya karşılık vermek,The tea
 b2-face-the-music,FACE THE MUSIC,F,STARTS,idiom,yaptığının sonuçlarına katlanmak,"You broke it, so face the music.","Sen kırdın, sonuçlarına katlan.",4,,idioms
 b2-for-good,FOR GOOD,F,STARTS,idiom,"sonsuza dek, bir daha geri dönmemek üzere",He left the country for good.,Ülkeyi sonsuza dek terk etti.,3,,idioms
 b2-fair-enough,FAIR ENOUGH,F,STARTS,idiom,"tamam, kabul ediyorum","Fair enough, you win.","Tamam, sen kazandın.",3,,idioms
-b2-generate,GENERATE,G,STARTS,verb,enerji ya da fikir üretmek,Wind can generate electricity.,Rüzgâr elektrik üretebilir.,4,,technology
+b2-generate,GENERATE,G,STARTS,verb,enerji ya da fikir üretmek,Wind can generate electricity.,Rüzgâr elektrik üretebilir.,4,,business
 b2-genuinely,GENUINELY,G,STARTS,adv,"içtenlikle, gerçekten",She was genuinely surprised.,Gerçekten şaşırmıştı.,4,,daily-life
 b2-grant,GRANT,G,STARTS,verb,resmen izin veya hak vermek,The school will grant him a place.,Okul ona bir yer verecek.,4,,school-work
 b2-grasp,GRASP,G,STARTS,verb,bir şeyi sıkıca tutmak; anlamak,I could not grasp the idea.,Fikri kavrayamadım.,4,,school-work
@@ -61,7 +61,7 @@ b2-indicate,INDICATE,I,STARTS,verb,bir şeyin işareti olmak; göstermek,The sig
 b2-inflation,INFLATION,I,STARTS,noun,"fiyatların genel olarak artması, enflasyon",Inflation makes life more expensive.,Enflasyon hayatı pahalılaştırıyor.,4,,business
 b2-initial,INITIAL,I,STARTS,adj,"en baştaki, ilk",My initial reaction was fear.,İlk tepkim korkuydu.,4,,daily-life
 b2-initiative,INITIATIVE,I,STARTS,noun,bir işe başlama girişimi,She took the initiative and called the manager.,İnisiyatif alıp müdürü aradı.,4,,business
-b2-innovation,INNOVATION,I,STARTS,noun,yeni bir fikir veya yöntem,The company is famous for innovation.,Şirket yenilikçiliğiyle ünlü.,4,,technology
+b2-innovation,INNOVATION,I,STARTS,noun,yeni bir fikir veya yöntem,The company is famous for innovation.,Şirket yenilikçiliğiyle ünlü.,4,,business
 b2-insight,INSIGHT,I,STARTS,noun,bir konuyu derinlemesine kavrayış,The book gives a fresh insight into history.,Kitap tarihe yeni bir bakış sunuyor.,4,,school-work
 b2-inspect,INSPECT,I,STARTS,verb,dikkatle incelemek,The officer will inspect your bags.,Görevli çantalarınızı inceleyecek.,4,,travel
 b2-instinct,INSTINCT,I,STARTS,noun,doğuştan gelen sezgi,Animals follow their instinct.,Hayvanlar içgüdülerine uyar.,4,,daily-life
@@ -71,7 +71,7 @@ b2-intense,INTENSE,I,STARTS,adj,çok yoğun ve güçlü,He felt intense pain.,Yo
 b2-interact,INTERACT,I,STARTS,verb,başkalarıyla karşılıklı iletişim kurmak,Children learn to interact at school.,Çocuklar okulda iletişim kurmayı öğrenir.,4,,school-work
 b2-interfere,INTERFERE,I,STARTS,verb,bir işe izinsiz karışmak,Please don't interfere in my work.,Lütfen işime karışma.,4,,daily-life
 b2-interpret,INTERPRET,I,STARTS,verb,bir şeyin anlamını yorumlamak; sözlü çevirmek,How do you interpret this poem?,Bu şiiri nasıl yorumluyorsun?,4,,school-work
-b2-interval,INTERVAL,I,STARTS,noun,iki olay arasındaki ara,There was a short interval in the middle of the play.,Oyunun ortasında kısa bir ara vardı.,3,,film-tv
+b2-interval,INTERVAL,I,STARTS,noun,iki olay arasındaki ara,There was a short interval in the middle of the play.,Oyunun ortasında kısa bir ara vardı.,3,,hobbies
 b2-invaluable,INVALUABLE,I,STARTS,adj,"paha biçilmez, çok değerli",Her advice was invaluable.,Tavsiyesi paha biçilmezdi.,4,,business
 b2-irritate,IRRITATE,I,STARTS,verb,rahatsız edip sinirlendirmek,Loud music can irritate the neighbors.,Yüksek sesli müzik komşuları rahatsız edebilir.,4,,daily-life
 b2-isolate,ISOLATE,I,STARTS,verb,bir şeyi diğerlerinden ayrı tutmak,Doctors isolate sick patients.,Doktorlar hasta kişileri ayrı tutar.,4,,body-health

@@ -15,23 +15,23 @@ b1-adjust,ADJUST,J,CONTAINS,verb,bir şeyi yeni duruma uyacak şekilde ayarlamak
 b1-injection,INJECTION,J,CONTAINS,noun,"iğneyle vücuda ilaç verme, iğne",The nurse gave him an injection.,Hemşire ona bir iğne yaptı.,3,,body-health
 b1-objective,OBJECTIVE,J,CONTAINS,noun,ulaşılmak istenen hedef,Our objective is to finish by Friday.,Hedefimiz cumaya kadar bitirmek.,4,,business
 b1-enjoyable,ENJOYABLE,J,CONTAINS,adj,"keyif veren, zevkli",It was an enjoyable evening.,Keyifli bir akşamdı.,3,,daily-life
-b1-projector,PROJECTOR,J,CONTAINS,noun,görüntüyü perdeye yansıtan cihaz,The teacher turned on the projector.,Öğretmen projektörü açtı.,3,,technology
+b1-projector,PROJECTOR,J,CONTAINS,noun,görüntüyü perdeye yansıtan cihaz,The teacher turned on the projector.,Öğretmen projektörü açtı.,3,,business
 b1-prejudice,PREJUDICE,J,CONTAINS,noun,tanımadan beslenen önyargı,Prejudice against foreigners is wrong.,Yabancılara karşı önyargı yanlıştır.,4,,family-people
-b1-banjo,BANJO,J,CONTAINS,noun,dört ya da beş telli yuvarlak gövdeli çalgı,He plays the banjo in a country band.,Bir kantri grubunda banjo çalıyor.,4,,music
+b1-banjo,BANJO,J,CONTAINS,noun,dört ya da beş telli yuvarlak gövdeli çalgı,He plays the banjo in a country band.,Bir kantri grubunda banjo çalıyor.,4,,hobbies
 b1-kingdom,KINGDOM,K,STARTS,noun,kral veya kraliçenin yönettiği ülke,Spain is a kingdom in Europe.,İspanya Avrupa'da bir krallıktır.,3,,school-work
 b1-package,PACKAGE,K,CONTAINS,noun,postayla gönderilen kutu veya paket,A package arrived for you this morning.,Bu sabah sana bir paket geldi.,3,,daily-life
-b1-network,NETWORK,K,CONTAINS,noun,birbirine bağlı bilgisayar veya yol sistemi,The school has a fast computer network.,Okulun hızlı bir bilgisayar ağı var.,3,,technology
-b1-track,TRACK,K,CONTAINS,noun,"yarış veya tren için yapılmış yol, pist",The runners are on the track.,Koşucular pistte.,3,,sports
+b1-network,NETWORK,K,CONTAINS,noun,birbirine bağlı bilgisayar veya yol sistemi,The school has a fast computer network.,Okulun hızlı bir bilgisayar ağı var.,3,,business
+b1-track,TRACK,K,CONTAINS,noun,"yarış veya tren için yapılmış yol, pist",The runners are on the track.,Koşucular pistte.,3,,hobbies
 b1-cheek,CHEEK,K,CONTAINS,noun,yüzün göz ile çene arasındaki yumuşak yanı,She kissed him on the cheek.,Onu yanağından öptü.,3,,body-health
-b1-socket,SOCKET,K,CONTAINS,noun,duvardaki elektrik prizi,There is only one socket in this room.,Bu odada sadece bir priz var.,3,,technology
+b1-socket,SOCKET,K,CONTAINS,noun,duvardaki elektrik prizi,There is only one socket in this room.,Bu odada sadece bir priz var.,3,,business
 b1-tackle,TACKLE,K,CONTAINS,verb,bir sorunla uğraşıp çözmeye çalışmak,We must tackle the problem today.,Sorunu bugün ele almalıyız.,4,,business
 b1-weakness,WEAKNESS,K,CONTAINS,noun,zayıf olan yön,Shyness is her only weakness.,Utangaçlık onun tek zayıf yanı.,3,,family-people
-b1-sneaker,SNEAKER,K,CONTAINS,noun,spor için giyilen bağcıklı ayakkabı,She lost one sneaker on the beach.,Plajda bir spor ayakkabısını kaybetti.,3,,sports
+b1-sneaker,SNEAKER,K,CONTAINS,noun,spor için giyilen bağcıklı ayakkabı,She lost one sneaker on the beach.,Plajda bir spor ayakkabısını kaybetti.,3,,hobbies
 b1-skeleton,SKELETON,K,CONTAINS,noun,vücudu oluşturan kemiklerin bütünü,The museum has a dinosaur skeleton.,Müzede bir dinozor iskeleti var.,4,,body-health
 b1-feedback,FEEDBACK,K,CONTAINS,noun,yapılan işe dair verilen geri bildirim,Thanks for your feedback on my essay.,Kompozisyonuma geri bildirimin için teşekkürler.,4,,school-work
 b1-task,TASK,K,CONTAINS,noun,yapılacak belirli bir iş,Cleaning the garden was a hard task.,Bahçeyi temizlemek zor bir görevdi.,3,,business
 b1-risk,RISK,K,CONTAINS,noun,"zarar görme ihtimali, tehlike",Driving fast is a big risk.,Hızlı araba sürmek büyük bir risk.,3,,daily-life
-b1-disk,DISK,K,CONTAINS,noun,bilgi saklamak için kullanılan yuvarlak ortam,Save the file on a disk.,Dosyayı bir diske kaydet.,3,,technology
+b1-disk,DISK,K,CONTAINS,noun,bilgi saklamak için kullanılan yuvarlak ortam,Save the file on a disk.,Dosyayı bir diske kaydet.,3,,business
 b1-marketing,MARKETING,K,CONTAINS,noun,ürünlerin tanıtılıp satılması işi,She works in marketing.,Pazarlama alanında çalışıyor.,4,,business
 b1-talkative,TALKATIVE,K,CONTAINS,adj,çok konuşan,My little brother is very talkative.,Küçük kardeşim çok konuşkan.,4,,family-people
 b1-bookshelf,BOOKSHELF,K,CONTAINS,noun,kitapların dizildiği raf,He put the novel on the bookshelf.,Romanı kitaplığa koydu.,3,,daily-life
@@ -69,7 +69,7 @@ b1-material,MATERIAL,M,STARTS,noun,bir şey yapılırken kullanılan malzeme,Wha
 b1-matter,MATTER,M,STARTS,noun,ele alınan konu veya sorun,It is a serious matter.,Bu ciddi bir mesele.,3,,daily-life
 b1-meanwhile,MEANWHILE,M,STARTS,adv,"o sırada, bu arada","Cook the rice. Meanwhile, I will make the salad.",Pilavı pişir. Bu arada ben salatayı yapacağım.,4,,daily-life
 b1-measure,MEASURE,M,STARTS,verb,bir şeyin boyutunu ölçmek,Measure the table before you buy a cloth.,Örtü almadan önce masayı ölç.,3,,school-work
-b1-media,MEDIA,M,STARTS,noun,"gazete, televizyon ve internet gibi haber araçları",The media reported the news quickly.,Medya haberi hızla duyurdu.,3,,film-tv
+b1-media,MEDIA,M,STARTS,noun,"gazete, televizyon ve internet gibi haber araçları",The media reported the news quickly.,Medya haberi hızla duyurdu.,3,,hobbies
 b1-medical,MEDICAL,M,STARTS,adj,tıpla ve hastalıkla ilgili,He needs medical help.,Tıbbi yardıma ihtiyacı var.,3,,body-health
 b1-memory,MEMORY,M,STARTS,noun,hatırlama yetisi veya hatıra,I have a good memory for faces.,Yüzleri hatırlama konusunda belleğim iyi.,3,,body-health
 b1-mental,MENTAL,M,STARTS,adj,akıl ve zihinle ilgili,Sleep is good for mental health.,Uyku zihinsel sağlık için iyidir.,4,,body-health
@@ -80,9 +80,9 @@ b1-monthly,MONTHLY,M,STARTS,adj,ayda bir yapılan veya ödenen,I pay a monthly f
 b1-mood,MOOD,M,STARTS,noun,o anki ruh hali,She is in a good mood today.,Bugün keyfi yerinde.,3,,family-people
 b1-motorway,MOTORWAY,M,STARTS,noun,şehirler arası hızlı araç yolu,The motorway was closed last night.,Otoyol dün gece kapalıydı.,3,,city-transport
 b1-movement,MOVEMENT,M,STARTS,noun,hareket etme veya hareket,She felt a movement behind her.,Arkasında bir hareket hissetti.,3,,daily-life
-b1-murder,MURDER,M,STARTS,noun,bir insanı kasten öldürme,The film is about a murder in a small town.,Film küçük bir kasabada işlenen bir cinayeti anlatıyor.,4,,film-tv
+b1-murder,MURDER,M,STARTS,noun,bir insanı kasten öldürme,The film is about a murder in a small town.,Film küçük bir kasabada işlenen bir cinayeti anlatıyor.,4,,hobbies
 b1-muscle,MUSCLE,M,STARTS,noun,vücut hareketini sağlayan kas,He has a strong arm muscle.,Kolunda güçlü bir kası var.,3,,body-health
-b1-mystery,MYSTERY,M,STARTS,noun,açıklanamayan gizemli olay,The disappearance remains a mystery.,Kayboluş bir gizem olarak kalıyor.,3,,film-tv
+b1-mystery,MYSTERY,M,STARTS,noun,açıklanamayan gizemli olay,The disappearance remains a mystery.,Kayboluş bir gizem olarak kalıyor.,3,,hobbies
 b1-mixture,MIXTURE,X,CONTAINS,noun,iki ya da daha çok şeyin karışımı,Stir the mixture slowly.,Karışımı yavaşça karıştır.,3,,food-drink
 b1-maximum,MAXIMUM,X,CONTAINS,adj,ulaşılabilecek en yüksek,The maximum speed here is fifty.,Buradaki azami hız elli.,4,,city-transport
 b1-kindness,KINDNESS,K,STARTS,noun,başkalarına nazik ve iyi davranma,Thank you for your kindness.,Nezaketin için teşekkürler.,3,,family-people

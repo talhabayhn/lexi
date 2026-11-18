@@ -15,11 +15,11 @@ b1-nuclear,NUCLEAR,N,STARTS,adj,atom çekirdeğiyle ilgili,The country has a nuc
 b1-nursery,NURSERY,N,STARTS,noun,küçük çocukların bakıldığı kreş,Her son goes to nursery in the morning.,Oğlu sabahları kreşe gidiyor.,3,,family-people
 b1-nutrition,NUTRITION,N,STARTS,noun,"vücudun ihtiyacı olan besinleri alma, beslenme",Good nutrition keeps children healthy.,İyi beslenme çocukları sağlıklı tutar.,4,,body-health
 b1-planet,PLANET,N,CONTAINS,noun,Dünya gibi Güneş'in etrafında dönen gök cismi,Mars is the red planet.,Mars kızıl gezegendir.,3,,school-work
-b1-monitor,MONITOR,N,CONTAINS,noun,bilgisayar görüntüsünü gösteren ekran,My monitor is too small.,Monitörüm çok küçük.,3,,technology
+b1-monitor,MONITOR,N,CONTAINS,noun,bilgisayar görüntüsünü gösteren ekran,My monitor is too small.,Monitörüm çok küçük.,3,,business
 b1-launch,LAUNCH,N,CONTAINS,verb,yeni bir ürünü piyasaya sürmek,The company will launch a new phone in May.,Şirket mayısta yeni bir telefon piyasaya sürecek.,4,,business
 b1-unique,UNIQUE,N,CONTAINS,adj,"dünyada bir benzeri olmayan, eşsiz",Every fingerprint is unique.,Her parmak izi eşsizdir.,4,,daily-life
 b1-tension,TENSION,N,CONTAINS,noun,insanlar arasındaki gergin hava,There was tension in the room.,Odada bir gerginlik vardı.,4,,family-people
-b1-sensible,SENSIBLE,N,CONTAINS,adj,mantıklı ve akıllıca davranan,It is sensible to wear a helmet.,Kask takmak akıllıca.,3,,false-friends
+b1-sensible,SENSIBLE,N,CONTAINS,adj,mantıklı ve akıllıca davranan,It is sensible to wear a helmet.,Kask takmak akıllıca.,3,,daily-life
 b1-sensitive,SENSITIVE,N,CONTAINS,adj,çabuk duygulanan veya kolay etkilenen,She is very sensitive to criticism.,Eleştiriye karşı çok hassas.,4,,family-people
 b1-senior,SENIOR,N,CONTAINS,adj,yaşça ya da konumca üstte olan,He is a senior manager in the bank.,Bankada üst düzey bir yönetici.,4,,business
 b1-punish,PUNISH,N,CONTAINS,verb,yanlış yapan birine ceza vermek,Parents should not punish children too hard.,Anne babalar çocukları çok sert cezalandırmamalı.,3,,family-people
@@ -34,7 +34,7 @@ b1-occupation,OCCUPATION,O,STARTS,noun,"insanın yaptığı iş, meslek",Please 
 b1-occur,OCCUR,O,STARTS,verb,meydana gelmek (resmî dil),Accidents often occur at night.,Kazalar sık sık geceleri meydana gelir.,4,,daily-life
 b1-official,OFFICIAL,O,STARTS,adj,"resmî, yetkili makamlarca onaylanan",This is the official website of the city.,Bu şehrin resmî web sitesi.,3,,business
 b1-opening,OPENING,O,STARTS,noun,bir yerin ilk açılışı; boşluk,The opening of the new library is on Friday.,Yeni kütüphanenin açılışı cuma günü.,3,,daily-life
-b1-operate,OPERATE,O,STARTS,verb,bir makineyi çalıştırmak veya ameliyat etmek,Do you know how to operate this machine?,Bu makineyi nasıl çalıştıracağını biliyor musun?,4,,technology
+b1-operate,OPERATE,O,STARTS,verb,bir makineyi çalıştırmak veya ameliyat etmek,Do you know how to operate this machine?,Bu makineyi nasıl çalıştıracağını biliyor musun?,4,,business
 b1-option,OPTION,O,STARTS,noun,seçilebilecek yollardan biri,You have only one option.,Sadece bir seçeneğin var.,3,,daily-life
 b1-ordinary,ORDINARY,O,STARTS,adj,"sıradan, özel olmayan",It was an ordinary day at school.,Okulda sıradan bir gündü.,3,,daily-life
 b1-organisation,ORGANIZATION,O,STARTS,noun,belli bir amaçla kurulmuş kuruluş,She works for a big organization.,Büyük bir kuruluşta çalışıyor.,3,,business
@@ -47,8 +47,8 @@ b1-particular,PARTICULAR,P,STARTS,adj,"belirli, özel olan",Is there a particula
 b1-pattern,PATTERN,P,STARTS,noun,kumaştaki ya da duvardaki tekrarlayan desen,I like the pattern on that dress.,O elbisenin üzerindeki deseni beğeniyorum.,3,,daily-life
 b1-payment,PAYMENT,P,STARTS,noun,bir şey için yapılan ödeme,We accept payment by card.,Kartla ödeme kabul ediyoruz.,3,,business
 b1-peaceful,PEACEFUL,P,STARTS,adj,"huzurlu, sessiz ve sakin",The village is quiet and peaceful.,Köy sessiz ve huzurlu.,3,,travel
-b1-perform,PERFORM,P,STARTS,verb,sahnede gösteri yapmak,The band will perform tonight.,Grup bu gece sahne alacak.,3,,music
-b1-performance,PERFORMANCE,P,STARTS,noun,sahnede sunulan gösteri,The performance starts at eight.,Gösteri sekizde başlıyor.,3,,music
+b1-perform,PERFORM,P,STARTS,verb,sahnede gösteri yapmak,The band will perform tonight.,Grup bu gece sahne alacak.,3,,hobbies
+b1-performance,PERFORMANCE,P,STARTS,noun,sahnede sunulan gösteri,The performance starts at eight.,Gösteri sekizde başlıyor.,3,,hobbies
 b1-period,PERIOD,P,STARTS,noun,belirli bir zaman dilimi,He lived abroad for a long period.,Uzun bir süre yurt dışında yaşadı.,3,,school-work
 b1-permission,PERMISSION,P,STARTS,noun,bir şeyi yapmak için alınan izin,You need permission to park here.,Buraya park etmek için izne ihtiyacın var.,3,,daily-life
 b1-permit,PERMIT,P,STARTS,verb,izin vermek,The school does not permit mobile phones.,Okul cep telefonlarına izin vermiyor.,4,,school-work
@@ -58,14 +58,14 @@ b1-poet,POET,P,STARTS,noun,şiir yazan kişi,The poet read her work aloud.,Şair
 b1-politics,POLITICS,P,STARTS,noun,"ülke yönetimiyle ilgili işler, siyaset",He is not interested in politics.,Siyasetle ilgilenmiyor.,4,,school-work
 b1-pollution,POLLUTION,P,STARTS,noun,"hava, su ve toprağın kirlenmesi",Air pollution is a problem in big cities.,Hava kirliliği büyük şehirlerde bir sorun.,3,,daily-life
 b1-population,POPULATION,P,STARTS,noun,bir yerde yaşayan insanların sayısı,The population of the city is two million.,Şehrin nüfusu iki milyon.,3,,city-transport
-b1-position,POSITION,P,STARTS,noun,"takımda oyuncunun oynadığı yer, mevki",What position does he play in the team?,Takımda hangi pozisyonda oynuyor?,3,,sports
+b1-position,POSITION,P,STARTS,noun,"takımda oyuncunun oynadığı yer, mevki",What position does he play in the team?,Takımda hangi pozisyonda oynuyor?,3,,hobbies
 b1-positive,POSITIVE,P,STARTS,adj,"olumlu, iyimser",She feels positive about life.,Hayata dair olumlu hissediyor.,3,,daily-life
 b1-poverty,POVERTY,P,STARTS,noun,geçinmek için yeterli paranın olmaması,Many families live in poverty.,Birçok aile yoksulluk içinde yaşıyor.,4,,daily-life
-b1-powerful,POWERFUL,P,STARTS,adj,"çok güçlü, etkili",This is a powerful engine.,Bu güçlü bir motor.,3,,technology
+b1-powerful,POWERFUL,P,STARTS,adj,"çok güçlü, etkili",This is a powerful engine.,Bu güçlü bir motor.,3,,business
 b1-practical,PRACTICAL,P,STARTS,adj,"işe yarar, pratik",A backpack is more practical than a suitcase.,Sırt çantası valizden daha pratiktir.,3,,daily-life
 b1-praise,PRAISE,P,STARTS,verb,birini överek takdir etmek,Teachers should praise good work.,Öğretmenler iyi işi övmelidir.,3,,school-work
 b1-predict,PREDICT,P,STARTS,verb,gelecekte olacakları önceden söylemek,No one can predict the weather exactly.,Hiç kimse havayı tam olarak tahmin edemez.,4,,school-work
-b1-press,PRESS,P,STARTS,noun,gazete ve dergiler; basın,The press was waiting outside.,Basın dışarıda bekliyordu.,3,,film-tv
+b1-press,PRESS,P,STARTS,noun,gazete ve dergiler; basın,The press was waiting outside.,Basın dışarıda bekliyordu.,3,,hobbies
 b1-pressure,PRESSURE,P,STARTS,noun,bir kişi üzerindeki baskı,Students feel pressure before exams.,Öğrenciler sınavlardan önce baskı hisseder.,3,,school-work
 b1-prevent,PREVENT,P,STARTS,verb,bir şeyin olmasını engellemek,Washing your hands can prevent illness.,El yıkamak hastalığı önleyebilir.,4,,body-health
 b1-pride,PRIDE,P,STARTS,noun,başarıdan duyulan gurur,He looked at his son with pride.,Oğluna gururla baktı.,3,,family-people
@@ -75,10 +75,10 @@ b1-process,PROCESS,P,STARTS,noun,bir sonuca götüren işlem adımları,Making c
 b1-produce,PRODUCE,P,STARTS,verb,bir şeyi üretmek,The farm will produce more milk this year.,Çiftlik bu yıl daha çok süt üretecek.,3,,business
 b1-product,PRODUCT,P,STARTS,noun,satılmak üzere üretilen mal,This product is made in Turkey.,Bu ürün Türkiye'de yapılmış.,3,,business
 b1-production,PRODUCTION,P,STARTS,noun,bir şeyin üretilmesi,Car production has fallen this year.,Araba üretimi bu yıl düştü.,4,,business
-b1-professional,PROFESSIONAL,P,STARTS,adj,işini para karşılığı ve uzmanca yapan,He is a professional footballer.,Profesyonel bir futbolcu.,3,,sports
+b1-professional,PROFESSIONAL,P,STARTS,adj,işini para karşılığı ve uzmanca yapan,He is a professional footballer.,Profesyonel bir futbolcu.,3,,hobbies
 b1-profit,PROFIT,P,STARTS,noun,satıştan elde edilen kazanç,The shop made a small profit.,Dükkân küçük bir kâr elde etti.,4,,business
 b1-progress,PROGRESS,P,STARTS,noun,"sürekli ilerleme, gelişme",She is making good progress at school.,Okulda iyi ilerleme kaydediyor.,3,,school-work
-b1-properly,PROPERLY,P,STARTS,adv,doğru ve uygun biçimde,The machine is not working properly.,Makine düzgün çalışmıyor.,3,,technology
+b1-properly,PROPERLY,P,STARTS,adv,doğru ve uygun biçimde,The machine is not working properly.,Makine düzgün çalışmıyor.,3,,business
 b1-property,PROPERTY,P,STARTS,noun,bir kişiye ait mal veya mülk,This land is my family's property.,Bu arazi ailemin mülkü.,4,,business
 b1-protect,PROTECT,P,STARTS,verb,zarardan korumak,Sunscreen will protect your skin.,Güneş kremi cildini koruyacak.,3,,body-health
 b1-protest,PROTEST,P,STARTS,noun,bir şeye karşı yapılan gösteri,There was a large protest in the city center.,Şehir merkezinde büyük bir protesto vardı.,4,,daily-life

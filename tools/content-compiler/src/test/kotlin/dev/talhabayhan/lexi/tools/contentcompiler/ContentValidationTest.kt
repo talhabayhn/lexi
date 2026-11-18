@@ -296,6 +296,36 @@ class ContentValidationTest {
     }
 
     @Test
+    fun `a listed category with too few cards or letters fails, a thin one warns`() {
+        content.resolve("meta.json").writeText("""{"contentVersion": 1, "shippedLevels": ["A1"]}""")
+        val letters = ('A'..'Z').toList()
+        fun rows(count: Int, letterCount: Int) = (0 until count).map {
+            val letter = letters[it % letterCount]
+            val answer = letter.toString().repeat(it / letterCount + 2)
+            cardRow(
+                id = "a1-$answer".lowercase(),
+                answer = answer,
+                letter = "$letter",
+                exampleEn = "I like $answer a lot.",
+                category = "things",
+            )
+        }.toTypedArray()
+
+        content.writeCards("cards/A1/extra.csv", *rows(25, 20))
+        validate().assertWarning(
+            "categories.csv",
+            null,
+            "category 'things' at A1 has 27 card(s), listing minimum is 30",
+        )
+
+        content.writeCards("cards/A1/extra.csv", *rows(22, 20))
+        validate().assertError("categories.csv", null, "category 'things' at A1 has 24 card(s)")
+
+        content.writeCards("cards/A1/extra.csv", *rows(38, 10))
+        validate().assertError("categories.csv", null, "category 'things' at A1 has 40 card(s) on")
+    }
+
+    @Test
     fun `blocklisted terms are rejected per language`() {
         val result = withExtraA1(
             cardRow(id = "a1-zebra", exampleEn = "The zebra said badword."),

@@ -37,15 +37,15 @@ b2-secure,SECURE,S,STARTS,adj,sağlam kilitli ya da sıkıca bağlanmış,Make s
 b2-seek,SEEK,S,STARTS,verb,(resmî) yardım ya da tavsiye talep etmek,He decided to seek help.,Yardım istemeye karar verdi.,4,,daily-life
 b2-selection,SELECTION,S,STARTS,noun,seçilmiş çeşitler topluluğu,The shop has a wide selection of books.,Mağazada geniş bir kitap seçkisi var.,3,,business
 b2-sensation,SENSATION,S,STARTS,noun,vücutta hissedilen belirgin his,She felt a strange sensation in her arm.,Kolunda garip bir his duydu.,4,,body-health
-b2-setting,SETTING,S,STARTS,noun,bir olayın geçtiği yer ve ortam,The story has a beautiful setting.,Hikâyenin güzel bir mekânı var.,4,,film-tv
+b2-setting,SETTING,S,STARTS,noun,bir olayın geçtiği yer ve ortam,The story has a beautiful setting.,Hikâyenin güzel bir mekânı var.,4,,hobbies
 b2-severe,SEVERE,S,STARTS,adj,çok ciddi ve şiddetli,A severe storm hit the coast.,Kıyıya şiddetli bir fırtına vurdu.,4,,daily-life
 b2-shift,SHIFT,S,STARTS,noun,vardiya; kayma,He works the night shift.,Gece vardiyasında çalışıyor.,3,,business
 b2-significant,SIGNIFICANT,S,STARTS,adj,"büyük önemi olan, kayda değer",There was a significant increase in sales.,Satışlarda kayda değer bir artış oldu.,4,,business
-b2-sophisticated,SOPHISTICATED,S,STARTS,adj,gelişmiş ve ince ayrıntılı,The phone has sophisticated technology.,Telefon gelişmiş bir teknolojiye sahip.,4,,technology
+b2-sophisticated,SOPHISTICATED,S,STARTS,adj,gelişmiş ve ince ayrıntılı,The phone has sophisticated technology.,Telefon gelişmiş bir teknolojiye sahip.,4,,business
 b2-specific,SPECIFIC,S,STARTS,adj,"belirli, ayrıntılı","Be more specific, please.",Lütfen daha açık ol.,3,,school-work
 b2-spectacular,SPECTACULAR,S,STARTS,adj,çok etkileyici ve görkemli,The view from the top was spectacular.,Tepeden manzara muhteşemdi.,3,,travel
-b2-sponsor,SPONSOR,S,STARTS,noun,bir etkinliğe para veren destekçi,The company is the main sponsor of the team.,Şirket takımın ana sponsoru.,4,,sports
-b2-stake,STAKE,S,STARTS,noun,kaybetme riskiyle ortaya konan değer,There is a lot at stake in this match.,Bu maçta çok şey tehlikede.,4,,sports
+b2-sponsor,SPONSOR,S,STARTS,noun,bir etkinliğe para veren destekçi,The company is the main sponsor of the team.,Şirket takımın ana sponsoru.,4,,hobbies
+b2-stake,STAKE,S,STARTS,noun,kaybetme riskiyle ortaya konan değer,There is a lot at stake in this match.,Bu maçta çok şey tehlikede.,4,,hobbies
 b2-standard,STANDARD,S,STARTS,noun,kabul edilen kalite ölçüsü,The hotel has a high standard of service.,Otelin hizmet standardı yüksek.,3,,travel
 b2-statistics,STATISTICS,S,STARTS,noun,"sayısal veriler, istatistik",The statistics show a rise in prices.,İstatistikler fiyatlarda bir artış gösteriyor.,4,,school-work
 b2-stereotype,STEREOTYPE,S,STARTS,noun,bir gruba dair basmakalıp ve genellikle yanlış kanı,It is a stereotype that all teenagers are lazy.,Bütün gençlerin tembel olduğu basmakalıp bir yargıdır.,4,,daily-life
@@ -54,11 +54,11 @@ b2-strategy,STRATEGY,S,STARTS,noun,hedefe ulaşmak için uzun vadeli plan,Our st
 b2-strike,STRIKE,S,STARTS,noun,"işçilerin işi bırakması, grev",The workers went on strike.,İşçiler greve gitti.,4,,business
 b2-structure,STRUCTURE,S,STARTS,noun,bir şeyin yapısı ve düzeni,The structure of the essay is clear.,Kompozisyonun yapısı net.,3,,school-work
 b2-substantial,SUBSTANTIAL,S,STARTS,adj,"miktarı ya da boyutu büyük, hatırı sayılır",They received a substantial amount of money.,Hatırı sayılır miktarda para aldılar.,4,,business
-b2-substitute,SUBSTITUTE,S,STARTS,noun,bir başkasının yerine geçen kişi,He came on as a substitute in the second half.,İkinci yarıda yedek olarak oyuna girdi.,4,,sports
+b2-substitute,SUBSTITUTE,S,STARTS,noun,bir başkasının yerine geçen kişi,He came on as a substitute in the second half.,İkinci yarıda yedek olarak oyuna girdi.,4,,hobbies
 b2-sufficient,SUFFICIENT,S,STARTS,adj,ihtiyacı karşılamaya yetecek kadar,We do not have sufficient time.,Yeterli zamanımız yok.,4,,business
 b2-supervise,SUPERVISE,S,STARTS,verb,bir işi veya kişiyi gözetmek,A teacher will supervise the children.,Bir öğretmen çocukları gözetecek.,4,,school-work
 b2-surrender,SURRENDER,S,STARTS,verb,mücadeleyi bırakıp teslim olmak,The thief decided to surrender.,Hırsız teslim olmaya karar verdi.,4,,daily-life
-b2-sustain,SUSTAIN,S,STARTS,verb,"bir şeyi sürdürmek, ayakta tutmak",It is hard to sustain this speed.,Bu hızı sürdürmek zor.,4,,sports
+b2-sustain,SUSTAIN,S,STARTS,verb,"bir şeyi sürdürmek, ayakta tutmak",It is hard to sustain this speed.,Bu hızı sürdürmek zor.,4,,hobbies
 b2-sort-out,SORT OUT,S,STARTS,phrasal,dağınık şeyleri ayıklayıp düzene koymak,We need to sort out this mess.,Bu karışıklığı düzene sokmamız gerekiyor.,4,,phrasal-verbs
 b2-stand-out,STAND OUT,S,STARTS,phrasal,diğerlerinden belirgin biçimde ayrılmak,Her red coat will stand out in the crowd.,Kırmızı montu kalabalıkta göze çarpacak.,4,,phrasal-verbs
 b2-stick-to,STICK TO,S,STARTS,phrasal,plan veya kurala sadık kalmak,"Stick to the plan, please.",Lütfen plana sadık kal.,4,,phrasal-verbs

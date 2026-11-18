@@ -18,8 +18,8 @@ import kotlin.test.assertTrue
 
 /**
  * Category wheels built from the shipped `content/` (`GAME_RULES.md` §1, thin-category fill). Regression for the
- * one-letter game: a category with fewer than [GameConfig.minCategoryLetters] letters (False friends B1 / B2 had one
- * card, Music B1 nine) used to give a wheel that one answer completed, paying the Classic time bonus.
+ * one-letter game: a category with fewer than [GameConfig.minCategoryLetters] letters (the removed False friends B1 / B2
+ * had one card, Music B1 nine) used to give a wheel that one answer completed, paying the Classic time bonus.
  */
 class ShippedCategoryWheelTest {
     private val config = GameConfig()
@@ -54,18 +54,14 @@ class ShippedCategoryWheelTest {
     }
 
     @Test
-    fun `the reported thin pairs now play a full wheel with their own cards on their letters`() {
-        val thin = listOf(Level.B1 to "false-friends", Level.B2 to "false-friends", Level.B1 to "music")
-        for ((level, category) in thin) {
-            val own = ownLetters(level, category)
-            assertTrue(own.isNotEmpty(), "$category $level has cards")
-            for (seed in 1L..10L) {
-                val wheel = wheel(level, category, seed)
-                val expected = if (own.size < config.minCategoryLetters) 26 else own.size
-                assertEquals(expected, wheel.playableSlots.size, "$category $level seed $seed")
+    fun `no shipped category is listed below the minimum listing size`() {
+        for (category in content.categories.filter { it.id != CategoryId.MIXED.value }) {
+            for (level in category.levels.filter { it in content.shippedLevels }) {
+                val own = pool.count { it.level == level && it.category == CategoryId(category.id) }
+                assertTrue(own >= ContentCompiler.MIN_CATEGORY_CARDS_LISTED, "${category.id} $level has $own cards")
                 assertTrue(
-                    wheel.slots.filter { it.letter in own }.all { it.card!!.category == CategoryId(category) },
-                    "$category $level seed $seed",
+                    ownLetters(level, category.id).size >= config.minCategoryLetters,
+                    "${category.id} $level has too few letters",
                 )
             }
         }
