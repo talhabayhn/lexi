@@ -356,3 +356,24 @@ default and stays Full unless the device is really struggling; a downgrade must 
 - **Tests:** `FrameMonitorTest` (fake frame clock: cold start ignored, 2-transition rule, 5-frame rule, recovery after
   3 good, evidence fading, short transitions) and `MotionPolicyTest` (cold start keeps Full; Minimal, forced, low-RAM
   and Low Power Mode never overridden).
+
+## 13. Phase 7: main merged (category rebalance)
+
+- `git merge origin/main` (merge commit, tag `video-flow-phase7-merged`): content is main's (rebalance stages 1-4,
+  contentVersion 40). Conflicts: main changed the old `CategoriesScreen`, its strings and its 4 `Categories_*` goldens,
+  which this branch had deleted: deletion kept. None of the 33 old `feature/levels` string keys is used by the picker;
+  the shortened English names live in `content/categories.csv`. main's `CategoriesLayoutTest` (old screen) is removed
+  and ported as `CategoryPickerContentLayoutTest`.
+- **Picker list per level** (declared in `categories.csv` and with cards): A1 14, A2 14, B1 15, B2 12, C1 9, plus
+  Karışık and the exam cards (`ShippedPickerCountsTest` pins the numbers). B2 `daily-life` (4 cards) and `food-drink`
+  (10) are not declared at B2, so hidden.
+- **Layout** (`CategoryPickerContentLayoutTest`, every shipped name, 320/360/390 dp × 1.0/1.3/2.0 × TR/EN): nothing
+  cut or split; names keep 14 sp at 1.0 and 18.2 sp at 1.3; at 2.0 `WordSafeText` shrinks the longest to 19 sp
+  ("Clothes and shopping", 320 dp; TR smallest 21 sp), never below the 1.0 size, so the two columns stay.
+- **First letter:** `WheelGenerator.firstLetter(categoryLetters, levelLetters, config)` is the engine's opening-letter
+  rule (a thin category is filled, so it opens on the level's first letter); the picker uses it, and
+  `ShippedCategoryWheelTest` checks it against every shipped wheel. With the rebalance no shipped category is thin.
+- **Categories without art** (Mixed fallback via `CategoryArtKind.forId(...) ?: Mixed`, needs design):
+  `clothes-shopping`, `hobbies`, `verbs`, `adjectives`, `economy`, `feelings`, `society-law`, `ideas`. Art for
+  `sports`, `music`, `film-tv`, `technology`, `false-friends` is now unused (those categories were merged away).
+

@@ -9,9 +9,9 @@ Runbook details: `docs/RELEASE.md`. Open questions of the flow: `docs/design/vid
 - [ ] **Design sign-off** on `docs/design/drafts/video-flow/actual/art-sheet.png` (20 category cards, 5 exam cards open
       and locked, art at 0.75x, the bottom-bar icons). Phase 4 redrew Seyahat, Deyimler, IELTS, Yalancı eşdeğerler and
       the invite icon.
-- [ ] **Thin categories** (`video-flow-notes.md` §10): Yalancı eşdeğerler has one card at B1 and B2, so its game is one
-      letter long and pays up to 420 time-bonus points (180 on the 3-minute clock). Pick the rule (proposal there) or leave it; it is an engine
-      change, so it ships in its own commit with `GAME_RULES.md` updated.
+- [x] **Thin categories**: the fill rule is in the engine and main's rebalance removed the thin pairs (merged in phase 7,
+      `video-flow-notes.md` §13).
+- [ ] **Art for the 8 new categories** (`video-flow-notes.md` §13): they show the Mixed fallback until drawn.
 - [ ] **Real-device pass** (§5 below). The emulator misses the 16.6 ms P95 bar (`docs/PERF.md`); only a phone decides.
 - [ ] **Flow vs Home v2** (`docs/design/` home v2 reference on `main`): this branch already carries the new Home.
 
@@ -22,7 +22,7 @@ the branch is about 40 small commits that are individually revertable (CLAUDE.md
 tags `video-flow-phase1…4` stay reachable from `main`. A squash would orphan them and lose the per-phase revert points.
 Write the merge message in the owner identity without any attribution line (`author-check.yml` fails the push
 otherwise). `git merge origin/main` into the branch first if `main` moved (merge, never rebase); the branch is current
-with `main` as of phase 4 (`5a08e04`).
+with `main` as of phase 7 (tag `video-flow-phase7-merged`).
 
 ## 2. After the merge, in this order (wait for green CI between steps)
 
