@@ -38,7 +38,7 @@ Landed so far: A1 batch 10 (60 cards), A2 batch 11 (3 cards), A2 batch 12 (81 ca
 
 ## 2. Counts per category × level
 
-After stage 3 of the category rebalance (`docs/content/CATEGORY-REBALANCE.md`). Old batch ids map as: sports / music / film-tv → `hobbies`, technology → `business`; `daily-life` ends at B1 and `school-work` at B1, so B2–C1 batches name `verbs`, `adjectives` or `ideas` (by word class) or a topic id (`feelings`, `society-law`, `economy`, `business`). New cards for a hidden pair (`hobbies` B2 / C1, `economy` B2, `society-law` B2) go to that topic id.
+After stage 4 of the category rebalance (`docs/content/CATEGORY-REBALANCE.md`). Old batch ids map as: sports / music / film-tv → `hobbies`, technology → `business`; `daily-life` ends at B1 and `school-work` at B1, so B2–C1 batches name `verbs`, `adjectives` or `ideas` (by word class) or a topic id (`feelings`, `society-law`, `economy`, `business`). Stage 4 (42 new cards) lifted `hobbies` B2 / C1, `economy` B2 and `society-law` B2 over the floor; `food-drink` B2 (10) and `daily-life` B2 (4) stay hidden.
 
 | Category | A1 | A2 | B1 | B2 | C1 | NAT |
 |---|---|---|---|---|---|---|
@@ -50,18 +50,18 @@ After stage 3 of the category rebalance (`docs/content/CATEGORY-REBALANCE.md`). 
 | clothes-shopping | 34 | 41 | 0 | 0 | 0 | 0 |
 | colors-numbers | 54 | 0 | 0 | 0 | 0 | 0 |
 | daily-life | 71 | 96 | 125 | 4 | 0 | 0 |
-| economy | 0 | 0 | 46 | 21 | 31 | 0 |
+| economy | 0 | 0 | 46 | 32 | 31 | 0 |
 | family-people | 46 | 47 | 35 | 0 | 0 | 0 |
 | feelings | 0 | 0 | 86 | 31 | 41 | 0 |
 | food-drink | 86 | 84 | 42 | 10 | 0 | 0 |
 | general | 0 | 0 | 0 | 0 | 0 | 611 |
-| hobbies | 33 | 99 | 71 | 26 | 23 | 0 |
+| hobbies | 33 | 99 | 71 | 32 | 32 | 0 |
 | home | 62 | 74 | 0 | 0 | 0 | 0 |
 | ideas | 0 | 0 | 0 | 111 | 113 | 0 |
 | idioms | 0 | 0 | 0 | 45 | 0 | 0 |
 | phrasal-verbs | 0 | 0 | 0 | 121 | 0 | 0 |
 | school-work | 72 | 119 | 134 | 0 | 0 | 0 |
-| society-law | 0 | 0 | 34 | 16 | 55 | 0 |
+| society-law | 0 | 0 | 34 | 32 | 55 | 0 |
 | time-weather | 89 | 43 | 0 | 0 | 0 | 0 |
 | travel | 0 | 57 | 54 | 53 | 44 | 0 |
 | verbs | 72 | 53 | 64 | 109 | 109 | 0 |

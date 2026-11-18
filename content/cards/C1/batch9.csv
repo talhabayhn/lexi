@@ -50,3 +50,5 @@ c1-synthetic,SYNTHETIC,Y,CONTAINS,adj,"doğal olmayan, yapay üretilmiş",The ja
 c1-syndicate,SYNDICATE,Y,CONTAINS,noun,ortak çıkar için kurulan iş birliği grubu,A syndicate of banks funded the project.,Bir banka grubu projeyi finanse etti.,5,,economy
 c1-eyewitness,EYEWITNESS,Y,CONTAINS,noun,olayı gözüyle gören tanık,An eyewitness described the robber.,Bir görgü tanığı soyguncuyu tarif etti.,5,,society-law
 c1-youthful,YOUTHFUL,Y,STARTS,adj,"genç görünüşlü, dinç",She has a youthful face.,Genç görünüşlü bir yüzü var.,4,,adjectives
+c1-virtuoso,VIRTUOSO,V,STARTS,noun,çalgısını olağanüstü ustalıkla çalan sanatçı,She became a famous violin virtuoso at the age of twenty.,Yirmi yaşında ünlü bir keman virtüözü oldu.,5,,hobbies
+c1-upbeat,UPBEAT,U,STARTS,adj,"neşeli, enerjik ve olumlu havada olan",The band played an upbeat song to cheer up the crowd.,Grup kalabalığı neşelendirmek için hareketli bir şarkı çaldı.,4,,hobbies

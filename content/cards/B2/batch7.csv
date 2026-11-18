@@ -55,3 +55,8 @@ b2-wear-out,WEAR OUT,W,STARTS,phrasal,kullanımdan aşınmak veya yıpranmak,My 
 b2-wipe-out,WIPE OUT,W,STARTS,phrasal,tamamen yok etmek,A flood can wipe out the village.,Sel köyü yok edebilir.,4,,phrasal-verbs
 b2-wrap-up,WRAP UP,W,STARTS,phrasal,bir işi bitirmek; sarınmak,Let's wrap up the meeting.,Toplantıyı bitirelim.,4,,phrasal-verbs
 b2-when-in-rome,WHEN IN ROME,W,STARTS,idiom,gittiğin yerin adetlerine uymak gerektiğini söyleyen deyiş,"When in Rome, do as the Romans do.",Roma'da Romalılar gibi davran.,4,,idioms
+b2-villain,VILLAIN,V,STARTS,noun,filmde ya da hikâyede kötü karakter,The villain in the film is both clever and cruel.,Filmdeki kötü adam hem zeki hem acımasız.,3,,hobbies
+b2-underdog,UNDERDOG,U,STARTS,noun,kazanma şansı düşük görülen takım ya da kişi,Nobody expected the underdog to win the final.,Kimse zayıf görülen takımın finali kazanacağını beklemiyordu.,4,,hobbies
+b2-unlawful,UNLAWFUL,U,STARTS,adj,yasalara ya da kurallara aykırı olan,The judge decided that the arrest was unlawful.,Yargıç tutuklamanın yasalara aykırı olduğuna karar verdi.,4,,society-law
+b2-wrongdoing,WRONGDOING,W,STARTS,noun,yasaya veya ahlaka aykırı davranış,The company denied any wrongdoing in the case.,Şirket davada herhangi bir kusur işlediğini reddetti.,4,,society-law
+b2-trial,TRIAL,T,STARTS,noun,suçlamanın mahkemede incelenip karara bağlanması,His trial will begin next month in the capital.,Davası gelecek ay başkentte başlayacak.,3,,society-law

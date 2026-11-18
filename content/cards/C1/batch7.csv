@@ -76,3 +76,4 @@ c1-robust,ROBUST,R,STARTS,adj,güçlü ve sağlam,The new design is robust.,Yeni
 c1-ruthless,RUTHLESS,R,STARTS,adj,acımasız ve hiç merhamet göstermeyen,He was a ruthless businessman.,Acımasız bir iş insanıydı.,5,,adjectives
 c1-recession,RECESSION,R,STARTS,noun,ekonomide geçici gerileme dönemi,The recession cost many jobs.,Ekonomik durgunluk birçok işe mal oldu.,4,,economy
 c1-retail,RETAIL,R,STARTS,noun,"ürünün tek tek satışı, perakende",He works in retail.,Perakende sektöründe çalışıyor.,4,,economy
+c1-quintet,QUINTET,Q,STARTS,noun,beş çalgıcı ya da şarkıcıdan oluşan topluluk,A jazz quintet played in the hotel lobby every night.,Bir caz beşlisi her gece otel lobisinde çalıyordu.,4,,hobbies

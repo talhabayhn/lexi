@@ -72,3 +72,7 @@ b2-prediction,PREDICTION,P,STARTS,noun,gelecekle ilgili tahmin,His prediction ca
 b2-provoke,PROVOKE,P,STARTS,verb,birini kışkırtmak,Don't provoke the dog.,Köpeği kışkırtma.,4,,verbs
 b2-put-forward,PUT FORWARD,P,STARTS,phrasal,bir öneriyi ortaya atmak,She put forward a clever plan.,Zekice bir plan ortaya attı.,4,,phrasal-verbs
 b2-pull-through,PULL THROUGH,P,STARTS,phrasal,zor bir durumu atlatmak,The doctors think he will pull through.,Doktorlar onun atlatacağını düşünüyor.,4,,phrasal-verbs
+b2-overdraft,OVERDRAFT,O,STARTS,noun,hesapta olmayan parayı bankadan çekme durumu,He went into overdraft after paying the rent.,Kirayı ödedikten sonra hesabı eksiye düştü.,4,,economy
+b2-purchase,PURCHASE,P,STARTS,noun,para karşılığı bir şey alma işlemi,Keep the receipt as proof of purchase.,Satın alma kanıtı olarak fişi sakla.,3,,economy
+b2-payroll,PAYROLL,P,STARTS,noun,şirketin çalışanlara ödediği maaşların listesi,The company has more than fifty people on its payroll.,Şirketin maaş bordrosunda elliden fazla kişi var.,4,,economy
+b2-parliament,PARLIAMENT,P,STARTS,noun,yasaları çıkaran seçilmiş ulusal meclis,Parliament will vote on the new law tomorrow.,Meclis yarın yeni yasa için oy kullanacak.,3,,society-law

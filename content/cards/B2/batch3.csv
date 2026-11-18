@@ -89,3 +89,6 @@ b2-implement,IMPLEMENT,I,STARTS,verb,bir planı uygulamaya koymak,The school wil
 b2-firm,FIRM,F,STARTS,adj,sert ve sağlam; kararlı,Be firm with your decision.,Kararında kararlı ol.,3,,adjectives
 b2-furious,FURIOUS,F,STARTS,adj,çok öfkeli,He was furious about the delay.,Gecikmeye çok öfkelendi.,3,,feelings
 b2-in-hot-water,IN HOT WATER,I,STARTS,idiom,başı belada olmak,He is in hot water with his boss.,"Patronuyla arası açık, başı belada.",4,,idioms
+b2-gang,GANG,G,STARTS,noun,birlikte suç işleyen kişi grubu,The police arrested a gang that stole cars across the city.,Polis şehir genelinde araba çalan bir çeteyi yakaladı.,3,,society-law
+b2-hijack,HIJACK,H,STARTS,verb,uçak ya da aracı zorla ele geçirmek,Two men tried to hijack the plane but failed.,İki adam uçağı kaçırmaya çalıştı ama başaramadı.,4,,society-law
+b2-imprison,IMPRISON,I,STARTS,verb,birini hapse atıp özgürlüğünden yoksun bırakmak,The government can imprison anyone who breaks this law.,Hükümet bu yasayı çiğneyen herkesi hapse atabilir.,4,,society-law

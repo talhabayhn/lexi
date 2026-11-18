@@ -167,14 +167,14 @@ How the compiler applies them (`tools/content-compiler`, every error is `file:li
 | `time-weather` | Zaman ve hava | A1–A2 |
 | `travel` | Seyahat | A2–C1 |
 | `clothes-shopping` | Giysi ve alışveriş | A1–A2 |
-| `hobbies` | Hobiler ve eğlence | A1–B1 (B2: 26 and C1: 23 cards, hidden; was Spor + Müzik + Film ve dizi) |
+| `hobbies` | Hobiler ve eğlence | A1–C1 (B2 and C1: 32 cards each after stage 4; was Spor + Müzik + Film ve dizi) |
 | `verbs` | Fiiller | A1–C1 (word class: leftover verbs of the dump categories) |
 | `adjectives` | Sıfatlar ve zarflar | A1–C1 (word class: leftover adjectives and adverbs) |
 | `ideas` | Fikirler ve kavramlar | B2–C1 (word class: leftover nouns at B2–C1) |
 | `business` | İş ve teknoloji | B1–C1 (was İş İngilizcesi + Teknoloji) |
-| `economy` | Para ve ekonomi | B1, C1 (B2 has 21 cards: hidden) |
+| `economy` | Para ve ekonomi | B1–C1 (B2: 32 cards after stage 4) |
 | `feelings` | Duygu ve karakter | B1–C1 |
-| `society-law` | Toplum ve hukuk | B1, C1 (B2 has 16 cards on 11 letters: hidden) |
+| `society-law` | Toplum ve hukuk | B1–C1 (B2: 32 cards on 22 letters after stage 4) |
 | `idioms` | Deyimler | B2 |
 | `phrasal-verbs` | Phrasal verbs | B2 |
 | `general` | Genel | NAT (neutral bucket of every NAT card; hidden from the category list, NAT has no category selection) |

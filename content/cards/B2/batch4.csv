@@ -56,3 +56,7 @@ b2-moderate,MODERATE,M,STARTS,adj,"ölçülü, aşırı olmayan",Doctors suggest
 b2-minority,MINORITY,M,STARTS,noun,"bir grubun küçük bölümü, azınlık",Only a minority of students disagreed.,Öğrencilerin yalnızca azınlığı karşı çıktı.,4,,ideas
 b2-jury,JURY,J,STARTS,noun,mahkemede karar veren halk heyeti,The jury found him not guilty.,Jüri onu suçsuz buldu.,4,,society-law
 b2-justifiable,JUSTIFIABLE,J,STARTS,adj,haklı gösterilebilir,His anger was justifiable.,Öfkesi haklıydı.,4,,adjectives
+b2-league,LEAGUE,L,STARTS,noun,takımların sezon boyunca yarıştığı organizasyon,Our team finished second in the league this year.,Takımımız bu yıl ligde ikinci oldu.,3,,hobbies
+b2-merchant,MERCHANT,M,STARTS,noun,mal alıp satarak ticaret yapan kişi,The merchant sold silk and spices at the market.,Tüccar pazarda ipek ve baharat satıyordu.,3,,economy
+b2-liberty,LIBERTY,L,STARTS,noun,insanın özgürce yaşama ve davranma hakkı,Many people fought for liberty and equal rights.,Birçok insan özgürlük ve eşit haklar için savaştı.,4,,society-law
+b2-mugging,MUGGING,M,STARTS,noun,sokakta birine saldırıp parasını çalma,The mugging took place near the bus station.,Soygun otobüs durağının yakınında yaşandı.,4,,society-law

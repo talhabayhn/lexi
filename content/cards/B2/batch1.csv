@@ -55,3 +55,7 @@ b2-broaden,BROADEN,B,STARTS,verb,bir şeyi genişletmek,Travel can broaden your 
 b2-bulletin,BULLETIN,B,STARTS,noun,kısa güncel haber bülteni,I watch the news bulletin at nine.,Dokuzda haber bültenini izlerim.,4,,hobbies
 b2-burden,BURDEN,B,STARTS,noun,taşınması zor yük veya sorumluluk,Debt is a heavy burden for many families.,Borç birçok aile için ağır bir yüktür.,4,,business
 b2-bankrupt,BANKRUPT,B,STARTS,adj,"borçlarını ödeyemeyecek duruma gelmiş, iflas etmiş",The company went bankrupt last year.,Şirket geçen yıl iflas etti.,4,,economy
+b2-broker,BROKER,B,STARTS,noun,alıcı ile satıcı arasında aracılık eden kişi,A broker helped them buy shares at a good price.,Bir komisyoncu iyi bir fiyata hisse almalarına yardım etti.,4,,economy
+b2-auction,AUCTION,A,STARTS,noun,malların en yüksek teklife satıldığı açık satış,The painting was sold at auction for a record price.,Tablo rekor bir fiyata açık artırmada satıldı.,3,,economy
+b2-burglary,BURGLARY,B,STARTS,noun,eve ya da işyerine girip hırsızlık yapma suçu,The burglary happened while the family was on vacation.,"Hırsızlık, aile tatildeyken gerçekleşti.",4,,society-law
+b2-activist,ACTIVIST,A,STARTS,noun,toplumsal ya da siyasi değişim için çalışan kişi,The activist spoke about climate change at the meeting.,Aktivist toplantıda iklim değişikliğinden söz etti.,4,,society-law

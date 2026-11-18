@@ -74,3 +74,6 @@ c1-liberal,LIBERAL,L,STARTS,adj,özgürlükçü; hoşgörülü,The city has a li
 c1-liberate,LIBERATE,L,STARTS,verb,esaretten kurtarmak,Troops came to liberate the town.,Askerler kasabayı kurtarmaya geldi.,5,,society-law
 c1-lifelong,LIFELONG,L,STARTS,adj,bir ömür boyu süren,They shared a lifelong friendship.,Ömür boyu süren bir arkadaşlık paylaştılar.,4,,adjectives
 c1-livelihood,LIVELIHOOD,L,STARTS,noun,geçimini sağlayan iş veya gelir,Fishing is their main livelihood.,Balıkçılık onların asıl geçim kaynağı.,5,,ideas
+c1-knockout,KNOCKOUT,K,STARTS,noun,boksta rakibi yere serip kazanılan galibiyet,He won the fight by a knockout in the third round.,Dövüşü üçüncü rauntta nakavtla kazandı.,4,,hobbies
+c1-improvise,IMPROVISE,I,STARTS,verb,önceden hazırlanmadan anında çalmak ya da oynamak,The pianist began to improvise a new melody.,Piyanist yeni bir melodiyi doğaçlama çalmaya başladı.,4,,hobbies
+c1-lineup,LINEUP,L,STARTS,noun,sahneye çıkacak sanatçıların ya da oyuncuların listesi,This year's festival lineup includes several famous bands.,Bu yılki festival programında birkaç ünlü grup var.,4,,hobbies

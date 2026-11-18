@@ -119,3 +119,12 @@ b2-critical,CRITICAL,C,STARTS,adj,çok önemli; eleştirel,It is critical to arr
 b2-decline,DECLINE,D,STARTS,noun,azalma veya düşüş,There has been a decline in sales.,Satışlarda bir düşüş yaşandı.,4,,economy
 b2-dispute,DISPUTE,D,STARTS,noun,tarafların uzun süren tartışması,The neighbors had a dispute about the fence.,Komşuların çit konusunda bir anlaşmazlığı oldu.,4,,society-law
 b2-extent,EXTENT,E,STARTS,noun,bir şeyin kapsamı veya ölçüsü,Nobody knows the extent of the damage.,Hasarın boyutunu kimse bilmiyor.,4,,ideas
+b2-encore,ENCORE,E,STARTS,noun,konserin sonunda seyircinin istediği ek parça,The band played one more song as an encore.,Grup bis olarak bir şarkı daha çaldı.,4,,hobbies
+b2-dribble,DRIBBLE,D,STARTS,verb,topu yerde sürerek rakibin yanından geçmek,He can dribble past three defenders with ease.,Üç savunmacıyı kolayca geçerek topu sürebiliyor.,4,,hobbies
+b2-creditor,CREDITOR,C,STARTS,noun,borç veren ve parasını geri isteyen kişi ya da kurum,The creditor demanded payment within thirty days.,Alacaklı otuz gün içinde ödeme istedi.,4,,economy
+b2-earnings,EARNINGS,E,STARTS,noun,çalışarak kazanılan toplam gelir,His earnings rose sharply after he changed jobs.,İş değiştirdikten sonra kazancı hızla arttı.,4,,economy
+b2-dividend,DIVIDEND,D,STARTS,noun,şirketin ortaklara dağıttığı kâr payı,The company paid a higher dividend this year.,Şirket bu yıl daha yüksek kâr payı ödedi.,4,,economy
+b2-downturn,DOWNTURN,D,STARTS,noun,ekonomik faaliyetlerin gerilediği dönem,The economic downturn forced many shops to close.,Ekonomik durgunluk birçok dükkânı kapanmaya zorladı.,4,,economy
+b2-eviction,EVICTION,E,STARTS,noun,kiracıyı evden yasal olarak çıkarma işlemi,Many families face eviction when they cannot pay the rent.,Birçok aile kirayı ödeyemeyince tahliyeyle karşı karşıya kalıyor.,4,,society-law
+b2-defendant,DEFENDANT,D,STARTS,noun,mahkemede hakkında dava açılmış kişi,The defendant said that he was not guilty.,Sanık suçlu olmadığını söyledi.,4,,society-law
+b2-cabinet,CABINET,C,STARTS,noun,bakanlardan oluşan hükümet kurulu,The cabinet met to discuss the new budget plan.,Bakanlar kurulu yeni bütçe planını görüşmek için toplandı.,4,,society-law
