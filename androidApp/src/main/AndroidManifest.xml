@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+    <!-- Portrait lock on the activity implies this feature; mark it optional so landscape-only devices
+         (tablets, Chromebooks, foldables) are not filtered out by Google Play. -->
+    <uses-feature
+        android:name="android.hardware.screen.portrait"
+        android:required="false" />
+
     <!-- Haptics (normal permission, no prompt). -->
     <uses-permission android:name="android.permission.VIBRATE" />
 
