@@ -332,7 +332,7 @@ private fun PickerGrid(
  * (Full), its hard shadow grows 4 → 10 dp (an extra ink rectangle behind the card's own s4 shadow, only while lifted),
  * it turns on Y and hides once edge-on. Drawn above its neighbours while it moves.
  */
-private fun Modifier.flipCard(flip: PickerDialogFlip, flow: FlowMotion, shadowColor: Color): Modifier = this
+internal fun Modifier.flipCard(flip: PickerDialogFlip, flow: FlowMotion, shadowColor: Color): Modifier = this
     .zIndex(1f)
     .graphicsLayer {
         val frame = flip.frame()

@@ -129,6 +129,9 @@ public object FlowDefaults {
 
     /** Grid: 2 columns, 12 apart, rows 14 apart. */
     public val GridColumnGap: Dp = 12.dp
+
+    /** Width of the hidden picker card the flip warm-up draws (about a grid card on a phone; never seen). */
+    public val WarmUpCardWidth: Dp = 160.dp
     public val GridRowGap: Dp = 14.dp
 
     /** Room under the last grid row: the "Başa dön" pill (48 + 20 margin) floats over it. */
