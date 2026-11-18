@@ -29,28 +29,37 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import dev.talhabayhan.lexi.core.designsystem.motion.FrameDowngrade
+import dev.talhabayhan.lexi.core.designsystem.motion.FrameMonitor
+import dev.talhabayhan.lexi.core.designsystem.motion.FrameMonitorEffect
 import dev.talhabayhan.lexi.core.designsystem.motion.LocalMotionPolicy
 import dev.talhabayhan.lexi.core.designsystem.motion.MotionTier
-import dev.talhabayhan.lexi.core.designsystem.motion.rememberMotionTier
+import dev.talhabayhan.lexi.core.designsystem.motion.MotionTierReason
+import dev.talhabayhan.lexi.core.designsystem.motion.rememberMotionSignals
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 
 /**
  * Developer switch for the video flow's motion tiers (`video-flow-notes.md` §5), shown only by the Android debug build
- * (`androidApp/src/debug` `DebugTools`; unreferenced in release-like builds, removed by R8 where minified). Two small
- * chips under the status bar: the first cycles the session's tier Auto → Full → Lite → Minimal
- * ([dev.talhabayhan.lexi.core.designsystem.motion.MotionPolicy.forcedTier]), the second shows a frame-time graph (last
- * [GRAPH_FRAMES] frames, the 16.7 ms and 24 ms lines, P95 and the worst frame). Not user-facing: no string resources.
+ * (`androidApp/src/debug` `DebugTools`; release-like builds compile the no-op twin in `src/nodebug`, so this is
+ * unreferenced there and R8 removes it: `docs/PERF.md` § Hand-test build has the dex check). Two small chips under
+ * the status bar: the first cycles the session's tier Auto → Full → Lite → Minimal
+ * ([dev.talhabayhan.lexi.core.designsystem.motion.MotionPolicy.forcedTier]) and shows the current tier with its reason
+ * ([tierLabel], e.g. "Lite: slow transitions x2 · good 1/3"); the second shows a frame-time graph (last [GRAPH_FRAMES]
+ * frames, the 16.7 ms and 24 ms lines, P95 and the worst frame). Not user-facing: no string resources.
  */
 @Composable
 public fun MotionDebugOverlay() {
     val policy = LocalMotionPolicy.current
-    val tier = rememberMotionTier(policy)
+    FrameMonitorEffect(policy.frameMonitor)
+    val signals = rememberMotionSignals()
+    val tier = policy.tier(signals)
+    val reason = policy.tierReason(signals)
     var graph by remember { mutableStateOf(false) }
     Box(Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
         Column(Modifier.align(Alignment.TopCenter), horizontalAlignment = Alignment.CenterHorizontally) {
             Row(horizontalArrangement = Arrangement.spacedBy(CHIP_GAP)) {
                 val forced = policy.forcedTier
-                DebugChip("tier ${forced?.name ?: "auto"} (${tier.name})") {
+                DebugChip("${forced?.name ?: "auto"} · ${tierLabel(tier, reason, policy.frameMonitor)}") {
                     policy.forcedTier = when (forced) {
                         null -> MotionTier.Full
                         MotionTier.Full -> MotionTier.Lite
@@ -61,6 +70,34 @@ public fun MotionDebugOverlay() {
                 DebugChip(if (graph) "frames on" else "frames off") { graph = !graph }
             }
             if (graph) FrameTimeGraph()
+        }
+    }
+}
+
+/** "<tier>: <reason>", plus the frame monitor's progress toward the next downgrade or recovery. */
+internal fun tierLabel(tier: MotionTier, reason: MotionTierReason, monitor: FrameMonitor): String = when (reason) {
+    MotionTierReason.Forced -> "${tier.name}: forced"
+
+    MotionTierReason.ReducedMotion -> "${tier.name}: reduced motion"
+
+    MotionTierReason.LowRamDevice -> "${tier.name}: low RAM device"
+
+    MotionTierReason.LowPowerMode -> "${tier.name}: low power mode"
+
+    MotionTierReason.SlowFrames -> {
+        val why = when (val downgrade = monitor.downgrade) {
+            is FrameDowngrade.SlowTransitions -> "slow transitions x${downgrade.count}"
+            is FrameDowngrade.LongStreak -> "${downgrade.frames} slow frames in a row"
+            null -> "slow frames"
+        }
+        "${tier.name}: $why · good ${monitor.goodTransitionsInARow}/${monitor.goodTransitionsToRecover}"
+    }
+
+    MotionTierReason.Default -> buildString {
+        append("${tier.name}: default")
+        if (monitor.recoveries > 0) append(" · recovered x${monitor.recoveries}")
+        if (monitor.slowTransitions > 0) {
+            append(" · slow ${monitor.slowTransitions}/${monitor.slowTransitionsToDowngrade}")
         }
     }
 }
