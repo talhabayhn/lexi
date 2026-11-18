@@ -6,6 +6,7 @@
 - Decision pending: video-flow vs home-v2, owner tests on a real phone first (installBenchmarkRelease build, see docs/PERF.md "Hand-test build").
 
 ## Pending work (in order)
+0. 1.1.0 candidate (2026-11-18): `release/1.1.0-rc` = video-flow + main 1.0.15, Linux goldens and the baseline profile committed on the branch from CI artifacts, release notes in `docs/store/release-notes-1.1.0.md` (since 1.0.13, the last published version). Waits for GO RELEASE: then `release-1.1.0-checklist.md` §2 steps 1, 2, 5, 6.
 1. Finish the 1.0.15 run, owner types GO RELEASE, the build goes to TestFlight / Play closed test; the owner submits in the consoles.
 2. Prompt N on redesign/video-flow: make the automatic quality-tier downgrade less trigger-happy and reversible (default must stay Full; the debug tier chip never ships). Ignore cold-start transitions, require two slow transitions or 5 slow frames, re-upgrade after 3 good transitions, never override Minimal/forced/lowRam/lowPower, show the reason in the debug chip, tests + docs, tag video-flow-phase6.
 3. Merge main into video-flow (merge, never rebase), fix PickerCategoryUi.firstLetter so the morph letter comes from the domain wheel (thin categories are now filled), draw illustrations for the new categories (hobbies, feelings, society-law, economy, clothes-shopping, verbs, adjectives, ideas), regenerate the baseline profile, record goldens with screenshots-record (Linux CI) AFTER the merge, regenerate store graphics (tools/store-graphics), then release as 1.1.0.

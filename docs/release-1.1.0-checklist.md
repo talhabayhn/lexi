@@ -11,7 +11,7 @@ Runbook details: `docs/RELEASE.md`. Open questions of the flow: `docs/design/vid
       the invite icon.
 - [x] **Thin categories**: the fill rule is in the engine and main's rebalance removed the thin pairs (merged in phase 7,
       `video-flow-notes.md` §13).
-- [ ] **Art for the 8 new categories** (`video-flow-notes.md` §13): they show the Mixed fallback until drawn.
+- [x] **Art for the 8 new categories** (`video-flow-notes.md` §13): drawn in phase 8 (`a0018e2`).
 - [ ] **Real-device pass** (§5 below). The emulator misses the 16.6 ms P95 bar (`docs/PERF.md`); only a phone decides.
 - [ ] **Flow vs Home v2** (`docs/design/` home v2 reference on `main`): this branch already carries the new Home.
 
@@ -31,13 +31,16 @@ with `main` as of phase 7 (tag `video-flow-phase7-merged`).
 2. **Remove the old components** the redesign orphaned (`video-flow-notes.md` §7 item 5: `StartButton`, `LevelCard`,
    `CategoryCard`, `MixedWheelCard`, `StreakChip`, `PlayButton`, the old `DailyCard`, with the gallery and their goldens)
    and the now unused `wheelAdvanceDurationMillis` token. Own commit.
-3. **Goldens (Linux CI only):** Actions → `screenshots-record` → run once with `commit` **off**, read the Summary, then
+3. **Goldens (Linux CI only): done on `release/1.1.0-rc` before the merge** (run 44335681158, `commit` off; the
+   byte-exact goldens come from the `recorded-goldens` artifact and were committed on the branch; the commit steps of
+   `screenshots-record` and `perf` now run only on `main`). Later re-records: Actions → `screenshots-record` → run once with `commit` **off**, read the Summary, then
    again with `commit` **on** (it writes to `main`). Phase 4 changed these on purpose, expect them in the report:
    `CategoryArt`, `LexiIcons`, `FlowComponents` (+`_w320_fontScale200`), all 8 `HomeScreen*` (the Invite icon is in the
    bottom bar), `CategoryPicker`, `CategoryPickerEn`, `CategoryPicker_w320h568_fontScale200` and the `PlayDialog*`
    (Seyahat, Okul ve iş, Deyimler are on screen). New art classifies as SUSPECT (colour / moved element): look at the
    `golden-review` images, then pass the reviewed paths in `accept`. Never record on macOS.
-4. **Baseline profile** (needs an emulator, so CI): Actions → `perf` → `commit` **on** (writes
+4. **Baseline profile: done on `release/1.1.0-rc`** from the `perf-results` artifact of run 44330233473. Later:
+   (needs an emulator, so CI): Actions → `perf` → `commit` **on** (writes
    `androidApp/src/release/generated/baselineProfiles/` to `main`). The profile tour is the app's own `PerfTour`
    through the real navigation, so it picks up the new Home, picker and game. Locally on a machine with an emulator:
    `./gradlew :androidApp:generateBaselineProfile -Pandroid.testoptions.manageddevices.emulator.gpu=swiftshader_indirect
