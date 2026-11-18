@@ -155,7 +155,7 @@ How the compiler applies them (`tools/content-compiler`, every error is `file:li
 | id | TR name | Levels |
 |---|---|---|
 | `mixed` | Karışık | all (virtual: all categories of the level) |
-| `daily-life` | Günlük hayat | A1–B1 (leftover nouns, function words, greetings) |
+| `daily-life` | Günlük hayat | A1–B1 (leftover nouns, function words, greetings; B2 has 4 cards: hidden) |
 | `food-drink` | Yiyecek ve içecek | A1–B1 (B2 has 10 cards: hidden) |
 | `home` | Ev ve eşyalar | A1–A2 |
 | `family-people` | Aile ve insanlar | A1–B1 |

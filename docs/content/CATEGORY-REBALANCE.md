@@ -1,12 +1,12 @@
 # Category rebalancing — proposal
 
-Status: **stages 1, 2, 3 and 4 applied** (stage 4: 42 new cards per `docs/content-review/CATEGORY-FILL-STAGE4.csv`, approved without exceptions, `contentVersion` 40; `hobbies` B2 and C1, `economy` B2 and `society-law` B2 are listed again, each with 32 cards; only `food-drink` B2 (10) and `daily-life` B2 (4) stay hidden) — (stage 3: 1,133 word-class moves per `docs/content-review/CATEGORY-STAGE3.csv`, incl. optional R4 and R5, the owner kept `eel`, `jackal`, `otter`, `tortoise` in `daily-life` B2; new ids `verbs`, `adjectives`, `ideas`; `daily-life` and `school-work` end at B1; hidden for the floor: `hobbies` B2/C1, `economy` B2, `society-law` B2, `food-drink` B2, `daily-life` B2; stage 4 = new cards) — (stage 2: 507 topic moves per `docs/content-review/CATEGORY-STAGE2.csv`, the owner kept 21 B2/C1 nature words where they were; new ids `feelings`, `society-law`, `economy`, `clothes-shopping`; pairs below the floor stay hidden: `economy` B2 21, `society-law` B2 16 cards / 11 letters, `food-drink` B2 20; `ideas` arrives with stage 3) (owner decisions: listing minimum is **30 cards and 13 letters** instead of the 40 used below, the compiler errors under 25 cards / 13 letters; Hayvanlar ve doğa ends at B1; A1 stays as is; `food-drink` B2 and `animals` B1 were hidden after stage 1 (animals B1 is listed again since stage 2); the only remaining "too broad" warning is `adjectives` C1 (150 cards, accepted with R4)). The data below is the pre-stage-1 snapshot (contentVersion 36),
+Status: **stages 1, 2, 3 and 4 applied**; after stage 4 six English names were shortened or respelled so every name fits two lines at 320dp (`Colors and numbers`, `Animals & nature`, `Adjectives & adverbs`, `Business & tech`, `Money & economy`, `Feelings & traits`; the tables below keep the names of the original proposal) (stage 4: 42 new cards per `docs/content-review/CATEGORY-FILL-STAGE4.csv`, approved without exceptions, `contentVersion` 40; `hobbies` B2 and C1, `economy` B2 and `society-law` B2 are listed again, each with 32 cards; only `food-drink` B2 (10) and `daily-life` B2 (4) stay hidden) — (stage 3: 1,133 word-class moves per `docs/content-review/CATEGORY-STAGE3.csv`, incl. optional R4 and R5, the owner kept `eel`, `jackal`, `otter`, `tortoise` in `daily-life` B2; new ids `verbs`, `adjectives`, `ideas`; `daily-life` and `school-work` end at B1; hidden for the floor: `hobbies` B2/C1, `economy` B2, `society-law` B2, `food-drink` B2, `daily-life` B2; stage 4 = new cards) — (stage 2: 507 topic moves per `docs/content-review/CATEGORY-STAGE2.csv`, the owner kept 21 B2/C1 nature words where they were; new ids `feelings`, `society-law`, `economy`, `clothes-shopping`; pairs below the floor stay hidden: `economy` B2 21, `society-law` B2 16 cards / 11 letters, `food-drink` B2 20; `ideas` arrives with stage 3) (owner decisions: listing minimum is **30 cards and 13 letters** instead of the 40 used below, the compiler errors under 25 cards / 13 letters; Hayvanlar ve doğa ends at B1; A1 stays as is; `food-drink` B2 and `animals` B1 were hidden after stage 1 (animals B1 is listed again since stage 2); the only remaining "too broad" warning is `adjectives` C1 (150 cards, accepted with R4)). The data below is the pre-stage-1 snapshot (contentVersion 36),
 **4,991 base cards** (A1 865 · A2 940 · B1 1,050 · B2 842 · C1 683 · NAT 611; exam-pack-only cards are not counted, see §4.6).
 Counts below are produced by script from the CSVs (reproducible: category column + level folder).
 Move list for the recommended option: `docs/content-review/CATEGORY-MOVES-C.csv` (1,937 rows, nothing applied).
 
 Rules used to judge a category × level pair (from `CONTENT.md` §4 and `GAME_RULES.md` §1):
-**floor 40 cards**, **≥ 13 letters** (`minCategoryLetters`, below that the engine fills the wheel from the level), and a soft
+**floor 40 cards** (analysis figure; the shipped floor is 30, see §4.5), **≥ 13 letters** (`minCategoryLetters`, below that the engine fills the wheel from the level), and a soft
 **ceiling of about 130 cards** so no tile dwarfs the others. Marks in the tables: `▼` below 40 cards, `✖` below 13 letters,
 `▲` above 130 cards, `+n` = new cards needed to reach 40.
 
@@ -274,9 +274,9 @@ and `ShippedCategoryWheelTest` gets a new thin list (or none).
 
 ### 4.5 Rule for the minimum category size shown in the picker
 Keep the picker as is (no runtime hiding) and enforce the size **in the content**, because `levels` already controls what is shown:
-- a category is listed for a level only if it has **≥ 40 cards and ≥ 13 letters** there;
+- a category is listed for a level only if it has **≥ 30 cards and ≥ 13 letters** there (owner decision after stage 1; the analysis tables above still use the original 40);
 - the compiler **errors** for a listed pair under 25 cards or under 13 letters (this would have caught Yalancı eşdeğerler C1 with no card), **warns**
-  under 40 cards and over 140 cards (too broad), and **warns** for a level that has cards of a category but does not list it (already exists);
+  under 30 cards and over 140 cards (too broad), and **warns** for a level that has cards of a category but does not list it (already exists);
 - the engine's thin fill (`minCategoryLetters = 13`) stays as a safety net, not as a design tool.
 
 ### 4.6 Exam packs
