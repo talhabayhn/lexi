@@ -100,9 +100,10 @@ jobs:
             androidApp/src/release/generated/baselineProfiles/
           retention-days: 14
 
-      # Owner identity, no bot/AI attribution (CLAUDE.md rule 9). Only the generated profile is committed.
+      # Owner identity, no bot/AI attribution (CLAUDE.md rule 9). Only the generated profile is committed, and only
+      # from a main run: on another branch take the profile from the `perf-results` artifact.
       - name: Commit to main
-        if: inputs.commit
+        if: inputs.commit && github.ref == 'refs/heads/main'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |

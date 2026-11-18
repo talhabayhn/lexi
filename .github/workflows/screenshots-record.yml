@@ -3,7 +3,7 @@ name: screenshots-record
 # Re-records every Roborazzi golden on Linux, the single source of truth (docs/CONVENTIONS.md). Manual only.
 # tools/screenshots/classify_goldens.py sorts each changed golden into RENDERING (font/antialiasing only) or SUSPECT
 # (new/deleted golden, size, color, moved or missing element). Report: the run's Summary page; old/new/diff images:
-# the `golden-review` artifact. With `commit`, RENDERING goldens (plus SUSPECT ones named in `accept` after a
+# the `golden-review` artifact; every recorded golden: the `recorded-goldens` artifact. With `commit` (main only), RENDERING goldens (plus SUSPECT ones named in `accept` after a
 # person reviewed them) are committed to main; the other SUSPECT goldens are not recorded and fail the run.
 on:
   workflow_dispatch:
@@ -64,9 +64,19 @@ jobs:
           path: build/golden-review
           retention-days: 14
 
-      # Owner identity, no bot/AI attribution (CLAUDE.md rule 9). Only goldens are committed.
+      # The raw recorded goldens (byte-exact Roborazzi output), so a branch can commit them without writing to main.
+      - name: Upload recorded goldens
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: recorded-goldens
+          path: '*/src/androidHostTest/screenshots/*.png'
+          retention-days: 14
+
+      # Owner identity, no bot/AI attribution (CLAUDE.md rule 9). Only goldens are committed. Only from a main run:
+      # a dispatch on another branch never writes that branch's goldens onto main.
       - name: Commit to main
-        if: inputs.commit
+        if: inputs.commit && github.ref == 'refs/heads/main'
         env:
           ACCEPT: ${{ inputs.accept }}
           GH_TOKEN: ${{ github.token }}
