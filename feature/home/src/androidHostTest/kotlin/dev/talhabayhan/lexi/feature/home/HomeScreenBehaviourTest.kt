@@ -3,6 +3,7 @@ package dev.talhabayhan.lexi.feature.home
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.semantics.LiveRegionMode
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.SemanticsActions
@@ -11,6 +12,7 @@ import androidx.compose.ui.test.ComposeUiTest
 import androidx.compose.ui.test.ExperimentalTestApi
 import androidx.compose.ui.test.SemanticsMatcher
 import androidx.compose.ui.test.assert
+import androidx.compose.ui.test.click
 import androidx.compose.ui.test.getBoundsInRoot
 import androidx.compose.ui.test.hasContentDescription
 import androidx.compose.ui.test.hasText
@@ -18,7 +20,9 @@ import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performScrollTo
+import androidx.compose.ui.test.performTouchInput
 import androidx.compose.ui.test.runComposeUiTest
+import androidx.compose.ui.test.swipeUp
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -132,6 +136,25 @@ class HomeScreenBehaviourTest {
     }
 
     @Test
+    fun `tapping the gift notice via touch dismisses it`() = runComposeUiTest {
+        val intents = mutableListOf<HomeIntent>()
+        setContent {
+            LexiTheme(reducedMotion = true) {
+                HomeScreen(
+                    HomeSampleState.copy(dailyGiftNotice = DailyGiftNotice(DailyGiftNoticeType.Daily, 1)),
+                    onIntent = { intents += it },
+                )
+            }
+        }
+
+        onNode(hasText("Günün hediyesi", substring = true)).performTouchInput {
+            click()
+        }
+
+        assertEquals(listOf<HomeIntent>(HomeIntent.DismissNotice), intents)
+    }
+
+    @Test
     fun `the gift toast floats and leaves home's positions unchanged`() = runComposeUiTest {
         var notice by mutableStateOf<DailyGiftNotice?>(null)
         setContent {
@@ -163,5 +186,89 @@ class HomeScreenBehaviourTest {
             }
         }
         onNode(hasText("Günün hediyesi", substring = true)).assertDoesNotExist()
+    }
+
+    @Test
+    fun `swipe-up dismiss animates out with toast duration`() = runComposeUiTest {
+        val intents = mutableListOf<HomeIntent>()
+        setContent {
+            LexiTheme(reducedMotion = false) {
+                HomeScreen(
+                    HomeSampleState.copy(dailyGiftNotice = DailyGiftNotice(DailyGiftNoticeType.Daily, 1)),
+                    onIntent = { intents += it },
+                )
+            }
+        }
+        mainClock.autoAdvance = false
+        // Let SlidingToast entrance finish (180 ms)
+        mainClock.advanceTimeBy(300)
+
+        onNode(hasText("Günün hediyesi", substring = true)).performTouchInput {
+            swipeUp()
+        }
+
+        // Mid-animation: not dismissed yet
+        mainClock.advanceTimeBy(50)
+        assertTrue(intents.isEmpty())
+
+        // After motion.toastDurationMillis (180 ms + slack): dismissed
+        mainClock.advanceTimeBy(200)
+        assertEquals(listOf<HomeIntent>(HomeIntent.DismissNotice), intents)
+    }
+
+    @Test
+    fun `swipe-up with reduced motion dismisses instantly`() = runComposeUiTest {
+        val intents = mutableListOf<HomeIntent>()
+        setContent {
+            LexiTheme(reducedMotion = true) {
+                HomeScreen(
+                    HomeSampleState.copy(dailyGiftNotice = DailyGiftNotice(DailyGiftNoticeType.Daily, 1)),
+                    onIntent = { intents += it },
+                )
+            }
+        }
+        onNode(hasText("Günün hediyesi", substring = true)).performTouchInput {
+            swipeUp()
+        }
+        assertEquals(listOf<HomeIntent>(HomeIntent.DismissNotice), intents)
+    }
+
+    @Test
+    fun `drag below threshold springs back and does not dismiss`() = runComposeUiTest {
+        val intents = mutableListOf<HomeIntent>()
+        setContent {
+            LexiTheme(reducedMotion = false) {
+                HomeScreen(
+                    HomeSampleState.copy(dailyGiftNotice = DailyGiftNotice(DailyGiftNoticeType.Daily, 1)),
+                    onIntent = { intents += it },
+                )
+            }
+        }
+        onNode(hasText("Günün hediyesi", substring = true)).performTouchInput {
+            val h = bottom - top
+            down(center)
+            moveBy(Offset(0f, -h * 0.15f), delayMillis = 300)
+            up()
+        }
+        waitForIdle()
+        assertTrue(intents.isEmpty())
+        onNode(hasText("Günün hediyesi", substring = true)).assertExists()
+    }
+
+    @Test
+    fun `upward fling dismisses the gift notice`() = runComposeUiTest {
+        val intents = mutableListOf<HomeIntent>()
+        setContent {
+            LexiTheme(reducedMotion = true) {
+                HomeScreen(
+                    HomeSampleState.copy(dailyGiftNotice = DailyGiftNotice(DailyGiftNoticeType.Daily, 1)),
+                    onIntent = { intents += it },
+                )
+            }
+        }
+        onNode(hasText("Günün hediyesi", substring = true)).performTouchInput {
+            swipeUp(durationMillis = 50)
+        }
+        assertEquals(listOf<HomeIntent>(HomeIntent.DismissNotice), intents)
     }
 }

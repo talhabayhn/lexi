@@ -1,7 +1,11 @@
 package dev.talhabayhan.lexi.feature.home
 
+import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.focusable
+import androidx.compose.foundation.gestures.awaitEachGesture
+import androidx.compose.foundation.gestures.awaitFirstDown
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
@@ -24,13 +28,28 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableFloatStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberUpdatedState
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.input.pointer.changedToUp
+import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.input.pointer.util.VelocityTracker
+import androidx.compose.ui.layout.onSizeChanged
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalViewConfiguration
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.onClick
+import androidx.compose.ui.semantics.role
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -95,6 +114,9 @@ import dev.talhabayhan.lexi.feature.home.generated.resources.home_tile_notebook
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_tile_notebook_due
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_total_points
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_total_points_description
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.pluralStringResource
 import org.jetbrains.compose.resources.stringResource
 
@@ -378,7 +400,14 @@ private fun StudyTiles(state: HomeUiState, onIntent: (HomeIntent) -> Unit) {
     }
 }
 
-/** The daily joker gift as an info toast below the header; tap to dismiss. */
+/**
+ * The daily joker gift as an info toast below the header; dismissible by tap or upward swipe.
+ *
+ * Tap dismisses immediately. An upward drag tracks the finger via [translationY] on [graphicsLayer]
+ * (no layout changes). On release below ~1/3 of its height it springs back; past that threshold
+ * or on an upward fling, it animates out using row 11 motion tokens ([LexiMotion.toastDurationMillis] 180 ms,
+ * [LexiMotion.mechanical] easing) and dispatches dismissal. With reduced motion, dismissal is instant.
+ */
 @Composable
 private fun GiftToast(notice: DailyGiftNotice, onDismiss: () -> Unit, modifier: Modifier = Modifier) {
     val message = when (notice.type) {
@@ -386,17 +415,165 @@ private fun GiftToast(notice: DailyGiftNotice, onDismiss: () -> Unit, modifier: 
         DailyGiftNoticeType.Streak -> stringResource(Res.string.home_joker_gift_streak, notice.amount)
         DailyGiftNoticeType.Combined -> stringResource(Res.string.home_joker_gift_combined, notice.amount)
     }
+    val dismissLabel = stringResource(Res.string.home_notice_dismiss)
+    val motion = LexiTheme.motion
+    val dimens = LexiTheme.dimens
+    val density = LocalDensity.current
+    val viewConfiguration = LocalViewConfiguration.current
+    val dragOffsetY = remember { Animatable(0f) }
+    var itemHeightPx by remember { mutableFloatStateOf(0f) }
+    var isDismissing by remember { mutableStateOf(false) }
+    val latestOnDismiss by rememberUpdatedState(onDismiss)
+
     SlidingToast(
         message = message,
-        onDismissed = onDismiss,
+        onDismissed = {
+            if (!isDismissing) {
+                isDismissing = true
+                latestOnDismiss()
+            }
+        },
         visibleMillis = NOTICE_VISIBLE_MILLIS,
         modifier = modifier
             .fillMaxWidth()
-            .clickable(
-                onClickLabel = stringResource(Res.string.home_notice_dismiss),
-                role = Role.Button,
-                onClick = onDismiss,
-            ),
+            .onSizeChanged { itemHeightPx = it.height.toFloat() }
+            .focusable()
+            .semantics(mergeDescendants = true) {
+                role = Role.Button
+                onClick(label = dismissLabel) {
+                    if (!isDismissing) {
+                        isDismissing = true
+                        latestOnDismiss()
+                    }
+                    true
+                }
+            }
+            .pointerInput(density, motion, viewConfiguration) {
+                coroutineScope {
+                    var dragJob: Job? = null
+                    awaitEachGesture {
+                        val down = awaitFirstDown(requireUnconsumed = false)
+                        if (isDismissing) return@awaitEachGesture
+                        dragJob?.cancel()
+                        val startY = down.position.y
+                        var isDrag = false
+                        val velocityTracker = VelocityTracker()
+                        velocityTracker.addPosition(down.uptimeMillis, down.position)
+
+                        val fallbackThresholdPx = with(density) { dimens.gap20.toPx() }
+                        val thresholdPx = if (itemHeightPx > 0f) itemHeightPx / 3f else fallbackThresholdPx
+                        val tapSlopPx = (thresholdPx * 0.35f).coerceAtMost(viewConfiguration.touchSlop)
+                        val flingThresholdPx = with(density) { (dimens.minTouchTarget * 5).toPx() }
+
+                        val pointerId = down.id
+                        var gestureEndedCleanly = false
+
+                        try {
+                            while (true) {
+                                val event = awaitPointerEvent()
+                                val change = event.changes.firstOrNull { it.id == pointerId } ?: break
+
+                                if (change.changedToUp()) {
+                                    gestureEndedCleanly = true
+                                    velocityTracker.addPosition(change.uptimeMillis, change.position)
+                                    val velocityY = velocityTracker.calculateVelocity().y
+                                    change.consume()
+                                    if (!isDrag) {
+                                        if (!isDismissing) {
+                                            isDismissing = true
+                                            latestOnDismiss()
+                                        }
+                                    } else {
+                                        val isPastThreshold = -dragOffsetY.value >= thresholdPx
+                                        val isUpwardFling = velocityY <= -flingThresholdPx
+                                        if (isPastThreshold || isUpwardFling) {
+                                            if (!isDismissing) {
+                                                isDismissing = true
+                                                dragJob?.cancel()
+                                                launch {
+                                                    if (motion.reducedMotion) {
+                                                        latestOnDismiss()
+                                                    } else {
+                                                        val slideDistancePx =
+                                                            with(density) { motion.toastSlideDistance.toPx() }
+                                                        val exitDistance =
+                                                            if (itemHeightPx > 0f) {
+                                                                itemHeightPx + slideDistancePx
+                                                            } else {
+                                                                slideDistancePx * 4f
+                                                            }
+                                                        dragOffsetY.animateTo(
+                                                            targetValue = -exitDistance,
+                                                            animationSpec = tween(
+                                                                durationMillis = motion.toastDurationMillis,
+                                                                easing = motion.mechanical,
+                                                            ),
+                                                        )
+                                                        latestOnDismiss()
+                                                    }
+                                                }
+                                            }
+                                        } else if (!isDismissing) {
+                                            dragJob?.cancel()
+                                            dragJob = launch {
+                                                if (motion.reducedMotion) {
+                                                    dragOffsetY.snapTo(0f)
+                                                } else {
+                                                    dragOffsetY.animateTo(
+                                                        targetValue = 0f,
+                                                        animationSpec = tween(
+                                                            durationMillis = motion.toastDurationMillis,
+                                                            easing = motion.mechanical,
+                                                        ),
+                                                    )
+                                                }
+                                            }
+                                        }
+                                    }
+                                    break
+                                }
+
+                                if (change.isConsumed) {
+                                    break
+                                }
+
+                                val currentY = change.position.y
+                                val deltaY = currentY - startY
+                                velocityTracker.addPosition(change.uptimeMillis, change.position)
+
+                                if (!isDrag && (deltaY < -tapSlopPx || deltaY > tapSlopPx)) {
+                                    isDrag = true
+                                }
+
+                                if (isDrag && !isDismissing) {
+                                    change.consume()
+                                    val target = deltaY.coerceAtMost(0f)
+                                    dragJob?.cancel()
+                                    dragJob = launch { dragOffsetY.snapTo(target) }
+                                }
+                            }
+                        } finally {
+                            if (!gestureEndedCleanly && !isDismissing) {
+                                dragJob?.cancel()
+                                launch {
+                                    if (motion.reducedMotion) {
+                                        dragOffsetY.snapTo(0f)
+                                    } else {
+                                        dragOffsetY.animateTo(
+                                            targetValue = 0f,
+                                            animationSpec = tween(
+                                                durationMillis = motion.toastDurationMillis,
+                                                easing = motion.mechanical,
+                                            ),
+                                        )
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .graphicsLayer { translationY = dragOffsetY.value },
     )
 }
 
