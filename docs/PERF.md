@@ -121,7 +121,13 @@ not heavier than the existing screens; they say nothing about a phone.
   Real-device runs (`:benchmark:connectedBenchmarkReleaseAndroidTest`) on an Android 8 low-RAM phone, a Samsung
   A-series and a Pixel are still open.
 - **Debug builds:** two chips under the status bar (developer only) force the tier (auto / Full / Lite / Minimal) and
-  show a frame-time graph (16.7 and 24 ms lines, P95, worst) to check the tiers by eye on a phone.
+  show the current tier with its reason (e.g. `auto · Lite: slow transitions x2 · good 1/3`), and a frame-time graph
+  (16.7 and 24 ms lines, P95, worst) to check the tiers by eye on a phone. Not in release-like builds: the strings
+  `slow transitions x` / `frames on` must not appear in the minified APK's dex (§ Hand-test build).
+- **Automatic tier (phase 6):** a cold start can no longer downgrade the session: the first transition of each key per
+  process is a warm-up; Lite needs 2 slow transitions or one run of 5 slow frames, and 3 good transitions return to
+  Full (`video-flow-notes.md` §12). When reading `VideoFlowBenchmark` numbers, note that each iteration is a fresh
+  process, so its first flip / morph is never judged.
 
 ### iOS: Instruments (no macrobenchmark on iOS)
 
@@ -178,3 +184,15 @@ adb uninstall dev.talhabayhan.lexi            # the store build or an older hand
 ./gradlew :androidApp:installBenchmarkRelease
 adb shell cmd package compile -m speed-profile -f dev.talhabayhan.lexi   # make sure the profile is compiled now
 ```
+
+**Debug overlay not in release (phase 6, 2026-11-18):** the tier chip and frame graph (`MotionDebugOverlay`) are
+referenced only from `androidApp/src/debug`; R8 removes them from minified builds. Check after `assembleRelease` /
+`assembleBenchmarkRelease` (expect 0; the debug APK gives > 0):
+
+```bash
+for a in androidApp/build/outputs/apk/{release,benchmarkRelease}/*.apk; do
+  echo "$a: $(unzip -p "$a" 'classes*.dex' | LC_ALL=C grep -a -c -E 'slow transitions x|frames on|MotionDebugOverlay')"
+done
+```
+Result: release 0, benchmarkRelease 0, debug 14. `nonMinifiedRelease` (benchmark-only build type, no R8) still holds
+the unreferenced classes (11); it is never shipped.

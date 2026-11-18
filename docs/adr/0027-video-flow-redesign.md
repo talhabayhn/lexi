@@ -40,8 +40,11 @@ NavHost destinations on both Android and iOS; (2) how do we keep a ~1 s choreogr
 5. **Motion infrastructure in `core:designsystem` (`motion` package)**, no dependency on Home or any feature module:
    `FlowMotion` tokens on `LexiMotion.flow` (prototype values ÷ 0.86 through `MotionStep.fromPrototype`, so every
    number is traceable); `MotionTier` {Full, Lite, Minimal} + `MotionPolicy` (reduced motion ⇒ Minimal; Android
-   `isLowRamDevice`, iOS Low Power Mode or a slow streak ⇒ Lite, sticky for the session); `FrameMonitor` (3
-   consecutive frames > 24 ms during a registered transition), fed from Compose's frame clock (`withFrameNanos`:
+   `isLowRamDevice`, iOS Low Power Mode or slow transitions ⇒ Lite); `FrameMonitor` (phase 1: 3 consecutive frames
+   > 24 ms during a registered transition, sticky for the session; **amended in phase 6**: first transition per key and
+   process is a warm-up, Lite after 2 slow transitions or a run of 5 slow frames, back to Full after 3 good
+   transitions, never overriding reduced motion / forced tier / low-RAM / Low Power Mode;
+   `video-flow-notes.md` §12), fed from Compose's frame clock (`withFrameNanos`:
    Choreographer on Android, CADisplayLink on iOS) only while a transition is registered, so no expect/actual and no
    idle frames; `MorphOverlayHost` + `MorphOverlayState` + `Modifier.morphAnchor(key)` (a modifier node writing
    window rectangles to `MorphAnchors`; newest owner wins so leaving/entering screens don't clobber each other).

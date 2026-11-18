@@ -112,11 +112,14 @@ flip 160 → 186 ms, morph expand/shrink 300 → 349 ms; letter morph total (exp
   the NavHost switches to the game under the ink after the expand, without the #12 slide.
 - **Quality tiers** (`MotionTier`, `MotionPolicy`): Full / Lite / Minimal. Lite keeps timing and structure but drops
   tilt and shadow growth, replaces Y flips with scale 0.92 → 1 + fade, drops the letter pop, and lets staggered groups
-  enter together. Automatic downgrade: 3 consecutive frames > 24 ms during a registered transition (`FrameMonitor`)
-  ⇒ Lite for the rest of the session. Only the moving parts are registered: for the morph the expand + letter pop and
-  the shrink, **not the hold** (the game screen is composed under the ink then, and its first frames must not
+  enter together. Full is the default and stays Full unless the device is really struggling; the automatic downgrade
+  (`FrameMonitor`, phase 6, §12) is reversible: the first transition of each key per process is a warm-up and
+  never counts; Lite after 2 separate transitions each with a slow streak (3 frames > 24 ms in a row) or one run
+  of 5 slow frames; back to Full after 3 good transitions in a row. Only the moving parts are registered: for the
+  morph the expand + letter pop and the shrink, **not the hold** (the game screen is composed under the ink then, and its first frames must not
   downgrade the session). Android `isLowRamDevice` and iOS Low Power Mode start in Lite. Reduced motion
-  ⇒ Minimal.
+  ⇒ Minimal. The frame rules only move between Full and Lite: they never override reduced motion, the debug
+  `forcedTier`, low-RAM or Low Power Mode.
 - **Acceptance:** macrobenchmark `FrameTimingMetric` P95 < 16.6 ms and no frame > 100 ms per journey
   (`benchmark/.../VideoFlowBenchmark.kt`, placeholders until phase 3). Device matrix: iPhone 8, SE (2nd gen), 11,
   current iPhone; Android 8 low-RAM, a Samsung A-series, a Pixel. iOS has no macrobenchmark: measure with Instruments
@@ -197,7 +200,7 @@ Still open:
   above. Hidden keys take no tap during a re-deal.
 - **#18 grid entrance** (phase 2) unchanged; Home has no entrance; other screen changes keep #12.
 - **Performance:** draw-phase only; `FlowWarmUp` compiles the flip and morph shaders on Home; low-RAM / Low Power Mode
-  start in Lite, a slow streak (3 frames > 24 ms during a registered transition) switches the session to Lite; debug
+  start in Lite, slow transitions switch the session to Lite (rules since phase 6: §12); debug
   builds have a tier switch and a frame-time graph (`MotionDebugOverlay`, shown from `androidApp/src/debug`). Numbers: `docs/PERF.md` § Video flow.
 - **Goldens:** no new screenshot test and no golden change at rest (the motions start from and end on the resting
   look; `verifyRoborazzi` of `core/designsystem`, `feature/levels` and `feature/game` matched on macOS except the two
@@ -324,3 +327,32 @@ the owner steps of `docs/release-1.1.0-checklist.md`.
 sits on the bottom on tall phones), `feature/levels` `PlayDialogPractice.png` (no second no-timer line) and every
 `CategoryPicker*.png` / `PlayDialog*.png` whose content moved by the hidden empty categories or the reserved description
 cell; `verifyRoborazzi` was not run on macOS for this batch.
+
+## 12. Phase 6: reversible frame downgrade
+
+Owner's emulator test: the old rule (3 frames > 24 ms in any registered transition ⇒ Lite for the whole session)
+tripped on the first cold-start transition, so the flip disappeared for the session. Owner decision: Full is the
+default and stays Full unless the device is really struggling; a downgrade must be reversible.
+
+- **Warm-up:** `beginTransition(key)` takes a stable key per motion (`picker.flip.open`, `picker.flip.close`,
+  `picker.gridEntrance`, `morph.expand`, `morph.shrink`). The first transition of each key in the process is not
+  judged (JIT, class loading, first shader use), nor is anything overlapping it from the moment the cold key joins;
+  a key stays cold until one of its transitions had at least 4 frames (a flip cancelled at once warms nothing up).
+  The grid entrance plays once per session, so in practice it is never judged.
+- **Verdict per transition** (first begin → last end): *slow* = a run of 3 frames > 24 ms; *good* = at least 4
+  measured frames and no such run; shorter (e.g. cancelled at once) = no verdict.
+- **Downgrade to Lite:** 2 slow transitions (not necessarily in a row), or 5 slow frames in a row in one transition (at
+  once, mid-transition). 3 good transitions in a row while still in Full clear the slow count, so old evidence fades.
+- **Recovery to Full:** 3 good transitions in a row (they are measured in Lite, which is cheaper; if Full is still too
+  heavy the device downgrades again on fresh evidence, so a borderline device can alternate Full / Lite every ≈ 5
+  transitions: owner to hand-test; if it shows, require more good transitions after each recovery). A slow
+  transition restarts the count.
+- **Priority** (`MotionPolicy.tierReason`): forced tier > reduced motion (Minimal) > low-RAM > Low Power Mode > frames
+  > Full; tests cover that the frame rules never override the first four.
+- **Debug chip** (`MotionDebugOverlay`, debug builds only): `auto · Lite: slow transitions x2 · good 1/3`,
+  `auto · Lite: 5 slow frames in a row · good 0/3`, `auto · Full: default · recovered x1 · slow 1/2`,
+  `Lite · Lite: forced`, `auto · Minimal: reduced motion`. Release-like builds compile the no-op `DebugTools`;
+  the overlay is unreferenced there and R8 removes it (dex check on the `benchmarkRelease` APK: `docs/PERF.md`).
+- **Tests:** `FrameMonitorTest` (fake frame clock: cold start ignored, 2-transition rule, 5-frame rule, recovery after
+  3 good, evidence fading, short transitions) and `MotionPolicyTest` (cold start keeps Full; Minimal, forced, low-RAM
+  and Low Power Mode never overridden).
