@@ -182,11 +182,13 @@ public fun MorphOverlayHost(
 
     LaunchedEffect(run) {
         if (run == null) return@LaunchedEffect
-        var watching = false
-        fun watch(on: Boolean) {
-            if (on == watching || frameMonitor == null) return
-            if (on) frameMonitor.beginTransition() else frameMonitor.endTransition()
-            watching = on
+        // The registered transition key (expand and shrink warm up and are judged separately); null: not measured.
+        var watching: String? = null
+        fun watch(key: String?) {
+            if (key == watching || frameMonitor == null) return
+            if (watching != null) frameMonitor.endTransition()
+            if (key != null) frameMonitor.beginTransition(key)
+            watching = key
         }
         var outcome = LetterMorphPhase.Idle
         try {
@@ -204,12 +206,18 @@ public fun MorphOverlayHost(
                     }
                     state.elapsedMillis = machine.elapsedMillis
                     state.phase = phase
-                    watch(phase == LetterMorphPhase.Expanding || phase == LetterMorphPhase.Shrinking)
+                    watch(
+                        when (phase) {
+                            LetterMorphPhase.Expanding -> MORPH_EXPAND_TRANSITION
+                            LetterMorphPhase.Shrinking -> MORPH_SHRINK_TRANSITION
+                            else -> null
+                        },
+                    )
                 }
             }
             outcome = machine.phase
         } finally {
-            watch(false)
+            watch(null)
             // Also when the host leaves the composition mid-morph: nothing stays on screen.
             if (machine.isActive) machine.cancel()
             state.finish()
@@ -329,3 +337,6 @@ private fun LetterMorphLayerPreview() {
         }
     }
 }
+
+private const val MORPH_EXPAND_TRANSITION = "morph.expand"
+private const val MORPH_SHRINK_TRANSITION = "morph.shrink"

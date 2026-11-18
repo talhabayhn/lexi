@@ -465,7 +465,8 @@ private fun rememberGridEntrance(play: Boolean, ready: Boolean): GridEntrance {
     // Starts when the cards are there (content is read off the main thread), not on the first frame.
     LaunchedEffect(ready) {
         if (!ready) return@LaunchedEffect
-        monitor.beginTransition()
+        // Plays on the first open per session only, so in practice it is this key's warm-up and never judged.
+        monitor.beginTransition(GRID_ENTRANCE_TRANSITION)
         try {
             clock.animateTo(end.toFloat(), tween(end, easing = LinearEasing))
         } finally {
@@ -490,3 +491,5 @@ internal fun rememberPlayGridEntrance(): Boolean {
 private object GridEntranceSession {
     var played: Boolean = false
 }
+
+private const val GRID_ENTRANCE_TRANSITION = "picker.gridEntrance"

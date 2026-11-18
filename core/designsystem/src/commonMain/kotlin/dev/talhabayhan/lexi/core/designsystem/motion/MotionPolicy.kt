@@ -11,9 +11,11 @@ import androidx.compose.runtime.staticCompositionLocalOf
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 
 /**
- * Picks the [MotionTier] for the video flow: reduced motion ⇒ [MotionTier.Minimal]; Android low-RAM device, iOS Low
- * Power Mode or a slow streak seen by [frameMonitor] this session ⇒ [MotionTier.Lite]; otherwise [MotionTier.Full].
- * One instance per app session (the frame downgrade is sticky, the OS signals are re-read on every call).
+ * Picks the [MotionTier] for the video flow, first match wins ([tierReason]): [forcedTier]; reduced motion ⇒
+ * [MotionTier.Minimal]; Android low-RAM device or iOS Low Power Mode ⇒ [MotionTier.Lite]; a [FrameMonitor.downgrade]
+ * ⇒ [MotionTier.Lite]; otherwise [MotionTier.Full]. The frame rules only move between Full and Lite (they never
+ * override the signals above them) and are reversible. One instance per app session (the monitor keeps its evidence
+ * and its per-process warm-up), the OS signals are re-read on every call.
  */
 @Stable
 public class MotionPolicy(public val frameMonitor: FrameMonitor = FrameMonitor()) {
@@ -23,16 +25,41 @@ public class MotionPolicy(public val frameMonitor: FrameMonitor = FrameMonitor()
      */
     public var forcedTier: MotionTier? by mutableStateOf(null)
 
-    public fun tier(signals: MotionSignals): MotionTier = forcedTier ?: when {
-        signals.reducedMotion -> MotionTier.Minimal
-        signals.lowRamDevice || signals.lowPowerMode || frameMonitor.slowStreakDetected -> MotionTier.Lite
-        else -> MotionTier.Full
+    public fun tier(signals: MotionSignals): MotionTier = forcedTier ?: when (tierReason(signals)) {
+        MotionTierReason.ReducedMotion -> MotionTier.Minimal
+        MotionTierReason.LowRamDevice, MotionTierReason.LowPowerMode, MotionTierReason.SlowFrames -> MotionTier.Lite
+        MotionTierReason.Forced, MotionTierReason.Default -> MotionTier.Full
+    }
+
+    /** Which rule decides [tier] for [signals] (the debug tier chip shows it). */
+    public fun tierReason(signals: MotionSignals): MotionTierReason = when {
+        forcedTier != null -> MotionTierReason.Forced
+        signals.reducedMotion -> MotionTierReason.ReducedMotion
+        signals.lowRamDevice -> MotionTierReason.LowRamDevice
+        signals.lowPowerMode -> MotionTierReason.LowPowerMode
+        frameMonitor.isDowngraded -> MotionTierReason.SlowFrames
+        else -> MotionTierReason.Default
     }
 }
 
+/** The rule behind [MotionPolicy.tier], in priority order. */
+public enum class MotionTierReason {
+    /** [MotionPolicy.forcedTier] (debug builds only). */
+    Forced,
+    ReducedMotion,
+    LowRamDevice,
+    LowPowerMode,
+
+    /** [FrameMonitor.downgrade] (details there). */
+    SlowFrames,
+
+    /** Nothing asks for less: [MotionTier.Full]. */
+    Default,
+}
+
 /**
- * The app session's [MotionPolicy]. The default is one process-wide instance, so a slow streak seen on one screen
- * keeps every later video-flow screen on [MotionTier.Lite]; tests and previews may provide their own.
+ * The app session's [MotionPolicy]. The default is one process-wide instance, so a frame downgrade seen on one screen
+ * applies to every later video-flow screen until the monitor recovers; tests and previews may provide their own.
  */
 public val LocalMotionPolicy: ProvidableCompositionLocal<MotionPolicy> =
     staticCompositionLocalOf { SessionMotionPolicy }
@@ -43,10 +70,15 @@ private val SessionMotionPolicy: MotionPolicy = MotionPolicy()
 @Composable
 public fun rememberMotionTier(policy: MotionPolicy = LocalMotionPolicy.current): MotionTier {
     FrameMonitorEffect(policy.frameMonitor)
+    return policy.tier(rememberMotionSignals())
+}
+
+/** The signals [rememberMotionTier] decides on: `LexiTheme.motion.reducedMotion` and the device signals, observed. */
+@Composable
+public fun rememberMotionSignals(): MotionSignals {
     val reduced = LexiTheme.motion.reducedMotion
     val device = deviceMotionSignals()
-    val signals = remember(reduced, device) { device.copy(reducedMotion = reduced) }
-    return policy.tier(signals)
+    return remember(reduced, device) { device.copy(reducedMotion = reduced) }
 }
 
 /**

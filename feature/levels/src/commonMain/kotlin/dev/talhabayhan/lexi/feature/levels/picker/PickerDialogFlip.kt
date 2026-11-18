@@ -172,7 +172,7 @@ internal fun rememberPickerDialogFlip(dialog: PickerCategoryUi?): PickerDialogFl
         }
         flip.request(open, currentTier)
         if (!flip.isRunning) return@LaunchedEffect
-        monitor.beginTransition()
+        monitor.beginTransition(if (open) FLIP_OPEN_TRANSITION else FLIP_CLOSE_TRANSITION)
         try {
             flip.runFrames()
         } finally {
@@ -181,3 +181,7 @@ internal fun rememberPickerDialogFlip(dialog: PickerCategoryUi?): PickerDialogFl
     }
     return flip
 }
+
+// FrameMonitor keys: opening and closing warm up (first use per process) and are judged separately.
+private const val FLIP_OPEN_TRANSITION = "picker.flip.open"
+private const val FLIP_CLOSE_TRANSITION = "picker.flip.close"
