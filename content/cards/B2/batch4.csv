@@ -4,17 +4,17 @@ b2-journalism,JOURNALISM,J,STARTS,noun,haber toplayıp yayımlama mesleği,She s
 b2-jump-at,JUMP AT,J,STARTS,phrasal,fırsatı hemen değerlendirmek,He will jump at the chance to travel.,Seyahat fırsatını hemen değerlendirecek.,4,,phrasal-verbs
 b2-juggle,JUGGLE,J,STARTS,verb,birkaç işi aynı anda yetiştirmeye çalışmak,She has to juggle work and school.,İş ve okulu bir arada yürütmek zorunda.,4,,daily-life
 b2-subjective,SUBJECTIVE,J,CONTAINS,adj,"kişisel görüşe dayanan, nesnel olmayan",Taste in music is subjective.,Müzik zevki özneldir.,4,,daily-life
-b2-injustice,INJUSTICE,J,CONTAINS,noun,"haksızlık, adaletsizlik",We must fight injustice.,Haksızlıkla mücadele etmeliyiz.,4,,daily-life
+b2-injustice,INJUSTICE,J,CONTAINS,noun,"haksızlık, adaletsizlik",We must fight injustice.,Haksızlıkla mücadele etmeliyiz.,4,,society-law
 b2-objection,OBJECTION,J,CONTAINS,noun,bir fikre karşı yapılan itiraz,Does anyone have an objection?,İtirazı olan var mı?,4,,business
 b2-conjunction,CONJUNCTION,J,CONTAINS,noun,"cümleleri bağlayan sözcük, bağlaç","""And"" is a conjunction.","""And"" bir bağlaçtır.",4,,school-work
 b2-objectively,OBJECTIVELY,J,CONTAINS,adv,"kişisel görüşten bağımsız olarak, tarafsızca",Try to look at the problem objectively.,Soruna tarafsız bakmaya çalış.,4,,school-work
 b2-keep-up,KEEP UP,K,STARTS,phrasal,geri kalmadan birine ayak uydurmak,It is hard to keep up with her.,Ona ayak uydurmak zor.,3,,phrasal-verbs
 b2-kick-off,KICK OFF,K,STARTS,phrasal,bir maç ya da etkinliğin başlaması,The match will kick off at eight.,Maç sekizde başlayacak.,3,,phrasal-verbs
 b2-knock-down,KNOCK DOWN,K,STARTS,phrasal,bir şeyi yıkmak veya yere devirmek,They will knock down the old school.,Eski okulu yıkacaklar.,4,,phrasal-verbs
-b2-skeptical,SKEPTICAL,K,CONTAINS,adj,"bir şeye inanmakta tereddüt eden, şüpheci",I am skeptical about the story.,Hikâyeye şüpheyle yaklaşıyorum.,4,,daily-life
+b2-skeptical,SKEPTICAL,K,CONTAINS,adj,"bir şeye inanmakta tereddüt eden, şüpheci",I am skeptical about the story.,Hikâyeye şüpheyle yaklaşıyorum.,4,,feelings
 b2-stroke,STROKE,K,CONTAINS,noun,"beyne kan gitmemesiyle gelen inme, felç",His grandfather had a stroke last year.,Büyükbabası geçen yıl felç geçirdi.,4,,body-health
 b2-outlook,OUTLOOK,K,CONTAINS,noun,gelecekle ilgili genel görünüm veya bakış,The economic outlook is not good.,Ekonomik görünüm iyi değil.,4,,business
-b2-packaging,PACKAGING,K,CONTAINS,noun,ürünün ambalajı,The packaging is made of paper.,Ambalaj kâğıttan yapılmış.,3,,business
+b2-packaging,PACKAGING,K,CONTAINS,noun,ürünün ambalajı,The packaging is made of paper.,Ambalaj kâğıttan yapılmış.,3,,economy
 b2-shrink,SHRINK,K,CONTAINS,verb,yıkandıktan sonra küçülmek,This sweater might shrink in the wash.,Bu kazak yıkamada çekebilir.,3,,daily-life
 b2-workforce,WORKFORCE,K,CONTAINS,noun,bir şirketin tüm çalışanları,The factory has a young workforce.,Fabrikanın genç bir iş gücü var.,4,,business
 b2-workload,WORKLOAD,K,CONTAINS,noun,kişiye düşen iş miktarı,My workload is very heavy this month.,Bu ay iş yükü çok ağır.,4,,business
@@ -51,8 +51,8 @@ b2-mess-up,MESS UP,M,STARTS,phrasal,bir işi berbat etmek,I don't want to mess u
 b2-miss-out,MISS OUT,M,STARTS,phrasal,güzel bir fırsatı kaçırmak,Don't miss out on this offer.,Bu fırsatı kaçırma.,3,,phrasal-verbs
 b2-make-ends-meet,MAKE ENDS MEET,M,STARTS,idiom,geliri ile zar zor geçinmek,It is hard to make ends meet these days.,Bu günlerde geçinmek zor.,4,,idioms
 b2-more-or-less,MORE OR LESS,M,STARTS,idiom,"aşağı yukarı, yaklaşık olarak",The work is more or less finished.,İş aşağı yukarı bitti.,3,,idioms
-b2-manufacture,MANUFACTURE,M,STARTS,verb,fabrikada büyük miktarda üretmek,They manufacture cars in this city.,Bu şehirde araba üretiyorlar.,4,,business
+b2-manufacture,MANUFACTURE,M,STARTS,verb,fabrikada büyük miktarda üretmek,They manufacture cars in this city.,Bu şehirde araba üretiyorlar.,4,,economy
 b2-moderate,MODERATE,M,STARTS,adj,"ölçülü, aşırı olmayan",Doctors suggest moderate exercise.,Doktorlar ölçülü egzersiz öneriyor.,4,,body-health
 b2-minority,MINORITY,M,STARTS,noun,"bir grubun küçük bölümü, azınlık",Only a minority of students disagreed.,Öğrencilerin yalnızca azınlığı karşı çıktı.,4,,school-work
-b2-jury,JURY,J,STARTS,noun,mahkemede karar veren halk heyeti,The jury found him not guilty.,Jüri onu suçsuz buldu.,4,,daily-life
+b2-jury,JURY,J,STARTS,noun,mahkemede karar veren halk heyeti,The jury found him not guilty.,Jüri onu suçsuz buldu.,4,,society-law
 b2-justifiable,JUSTIFIABLE,J,STARTS,adj,haklı gösterilebilir,His anger was justifiable.,Öfkesi haklıydı.,4,,daily-life

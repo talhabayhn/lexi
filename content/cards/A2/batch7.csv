@@ -15,18 +15,18 @@ a2-route,ROUTE,R,STARTS,noun,bir yere giden yol,What is the best route to the st
 a2-rude,RUDE,R,STARTS,adj,"kaba, nezaketsiz",It is rude to talk with food in your mouth.,Ağzında yemekle konuşmak kabalıktır.,3,,family-people
 a2-rule,RULE,R,STARTS,noun,uyulması gereken kural,Please follow this rule.,Lütfen bu kurala uy.,2,,school-work
 a2-railway,RAILWAY,R,STARTS,noun,trenlerin üzerinde gittiği demir yol,The railway is near our house.,Demir yolu evimize yakın.,3,,city-transport
-a2-raincoat,RAINCOAT,R,STARTS,noun,yağmurdan korumak için giyilen su geçirmez mont,Take your raincoat today.,Bugün yağmurluğunu al.,2,,daily-life
+a2-raincoat,RAINCOAT,R,STARTS,noun,yağmurdan korumak için giyilen su geçirmez mont,Take your raincoat today.,Bugün yağmurluğunu al.,2,,clothes-shopping
 a2-reception,RECEPTION,R,STARTS,noun,otelde gelenleri karşılayan masa,Leave your key at reception.,Anahtarını resepsiyonda bırak.,3,,travel
 a2-reply,REPLY,R,STARTS,verb,bir soru ya da mesaja karşılık vermek,Please reply to my email.,Lütfen e-postama cevap ver.,3,,daily-life
 a2-surprise,SURPRISE,R,CONTAINS,noun,beklenmedik bir olay ya da hediye,The party was a nice surprise.,Parti güzel bir sürprizdi.,3,,daily-life
 a2-straight,STRAIGHT,R,CONTAINS,adv,"eğri olmayan biçimde, doğruca","Go straight on, then turn left.","Dümdüz git, sonra sola dön.",3,,city-transport
 a2-writer,WRITER,R,CONTAINS,noun,"yazmayı meslek edinen kişi (gazete, dizi vb.)",My favorite writer lives in London.,En sevdiğim yazar Londra'da yaşıyor.,3,,school-work
 a2-terrible,TERRIBLE,R,CONTAINS,adj,"dayanılmaz derecede kötü (ağrı, hata vb.)",I have a terrible headache.,Korkunç bir baş ağrım var.,3,,body-health
-a2-fairy,FAIRY,R,CONTAINS,noun,masallarda sihirli güçleri olan küçük kanatlı kız,The fairy waved her wand.,Peri değneğini salladı.,2,,daily-life
+a2-fairy,FAIRY,R,CONTAINS,noun,masallarda sihirli güçleri olan küçük kanatlı kız,The fairy waved her wand.,Peri değneğini salladı.,2,,hobbies
 a2-scary,SCARY,R,CONTAINS,adj,"korku veren, ürkütücü",The film was too scary for me.,Film benim için çok korkutucuydu.,2,,daily-life
 a2-safe,SAFE,S,STARTS,adj,"zarar görme tehlikesi olmayan, güvenli",The park is safe for children.,Park çocuklar için güvenli.,2,,daily-life
 a2-sail,SAIL,S,STARTS,verb,yelkenli ile denizde ilerlemek,They sail on the sea every summer.,Her yaz yelkenliyle denizde gezerler.,3,,travel
-a2-sale,SALE,S,STARTS,noun,"ucuz fiyatla yapılan satış, indirim",There is a sale at the shoe shop.,Ayakkabı dükkânında indirim var.,2,,daily-life
+a2-sale,SALE,S,STARTS,noun,"ucuz fiyatla yapılan satış, indirim",There is a sale at the shoe shop.,Ayakkabı dükkânında indirim var.,2,,clothes-shopping
 a2-sauce,SAUCE,S,STARTS,noun,yemeğin üstüne eklenen sıvı,I like tomato sauce on pasta.,Makarnanın üstüne domates sosunu severim.,2,,food-drink
 a2-score,SCORE,S,STARTS,noun,bir maçta atılan gol ya da kazanılan sayılar,The score was two to one at halftime.,Devre arasında skor ikiye birdi.,2,,hobbies
 a2-season,SEASON,S,STARTS,noun,yılın dört bölümünden biri,Summer is my favorite season.,Yaz en sevdiğim mevsim.,2,,time-weather
@@ -63,9 +63,9 @@ a2-stage,STAGE,S,STARTS,noun,"tiyatroda oyuncuların çıktığı yükseltilmiş
 a2-steal,STEAL,S,STARTS,verb,başkasına ait bir şeyi izinsiz almak,A man tried to steal my bike.,Bir adam bisikletimi çalmaya çalıştı.,3,,daily-life
 a2-step,STEP,S,STARTS,noun,yürürken atılan adım ya da merdiven basamağı,Take one step back.,Bir adım geri çekil.,2,,daily-life
 a2-stick,STICK,S,STARTS,noun,"ağaçtan kopan ince uzun dal parçası, sopa",The dog ran after the stick.,Köpek sopanın peşinden koştu.,2,,animals
-a2-suit,SUIT,S,STARTS,noun,aynı kumaştan ceket ve pantolon takımı,He wears a dark suit at work.,İşte koyu renk bir takım elbise giyiyor.,3,,daily-life
+a2-suit,SUIT,S,STARTS,noun,aynı kumaştan ceket ve pantolon takımı,He wears a dark suit at work.,İşte koyu renk bir takım elbise giyiyor.,3,,clothes-shopping
 a2-suitcase,SUITCASE,S,STARTS,noun,yolculukta giysilerin konduğu büyük bavul,My suitcase is very heavy.,Bavulum çok ağır.,2,,travel
-a2-sunglasses,SUNGLASSES,S,STARTS,noun,güneşten korunmak için takılan gözlük,Wear your sunglasses today.,Bugün güneş gözlüğünü tak.,2,,daily-life
+a2-sunglasses,SUNGLASSES,S,STARTS,noun,güneşten korunmak için takılan gözlük,Wear your sunglasses today.,Bugün güneş gözlüğünü tak.,2,,clothes-shopping
 a2-sunset,SUNSET,S,STARTS,noun,güneşin batma anı,We watched the sunset from the roof.,Gün batımını çatıdan izledik.,3,,time-weather
 a2-search,SEARCH,S,STARTS,verb,bir şeyi bulmak için dikkatle aramak,I search for my keys everywhere.,Her yerde anahtarlarımı arıyorum.,3,,daily-life
 a2-serve,SERVE,S,STARTS,verb,yiyecek ya da içecek sunmak,They serve breakfast from seven.,Yediden itibaren kahvaltı servis ediyorlar.,3,,food-drink

@@ -5,11 +5,11 @@ a2-unfriendly,UNFRIENDLY,U,STARTS,adj,insanlara sıcak davranmayan,The man at th
 a2-untidy,UNTIDY,U,STARTS,adj,"düzensiz, toplanmamış","Her desk is untidy, with papers everywhere.","Masası düzensiz, her yerde kâğıtlar var.",2,,home
 a2-unlucky,UNLUCKY,U,STARTS,adj,şansı yaver gitmeyen,He was unlucky in the match.,Maçta şanssızdı.,3,,daily-life
 a2-user,USER,U,STARTS,noun,bir ürünü ya da hizmeti kullanan kişi,Every user needs a password.,Her kullanıcının bir parolaya ihtiyacı var.,3,,daily-life
-a2-underwear,UNDERWEAR,U,STARTS,noun,giysilerin altına giyilen iç çamaşırı,Take some underwear with you.,Yanına iç çamaşırı al.,2,,daily-life
+a2-underwear,UNDERWEAR,U,STARTS,noun,giysilerin altına giyilen iç çamaşırı,Take some underwear with you.,Yanına iç çamaşırı al.,2,,clothes-shopping
 a2-underline,UNDERLINE,U,STARTS,verb,bir yazının altına çizgi çekmek,Underline the new words.,Yeni sözcüklerin altını çiz.,3,,school-work
 a2-button,BUTTON,U,CONTAINS,noun,giysiyi kapatan küçük yuvarlak tutturucu,A button fell off my coat.,Paltomdan bir düğme düştü.,2,,daily-life
 a2-rubbish,RUBBISH,U,CONTAINS,noun,"atılacak şeyler, çöp","Put the rubbish outside, please.",Çöpü lütfen dışarı koy.,2,,home
-a2-purse,PURSE,U,CONTAINS,noun,bozuk para koymak için küçük kese,She keeps coins in her purse.,Bozuk paraları para cüzdanında tutuyor.,3,,daily-life
+a2-purse,PURSE,U,CONTAINS,noun,bozuk para koymak için küçük kese,She keeps coins in her purse.,Bozuk paraları para cüzdanında tutuyor.,3,,clothes-shopping
 a2-pupil,PUPIL,U,CONTAINS,noun,ilkokulda ders gören çocuk,Every pupil has a desk.,Her öğrencinin bir sırası var.,2,,school-work
 a2-huge,HUGE,U,CONTAINS,adj,"çok büyük, kocaman",They live in a huge house.,Kocaman bir evde yaşıyorlar.,2,,home
 a2-stupid,STUPID,U,CONTAINS,adj,"akılsızca olan, aptalca",That was a stupid answer.,O aptalca bir cevaptı.,2,,daily-life
@@ -40,7 +40,7 @@ a2-outdoors,OUTDOORS,O,STARTS,adv,"açık havada, binanın dışında","On sunny
 a2-own,OWN,O,STARTS,adj,"başkasına değil, kişinin kendisine ait",She has her own room.,Kendine ait bir odası var.,3,,daily-life
 a2-owner,OWNER,O,STARTS,noun,bir şeye sahip olan kişi,The owner of the shop is kind.,Dükkânın sahibi nazik.,3,,family-people
 a2-orchestra,ORCHESTRA,O,STARTS,noun,birçok çalgıcıdan oluşan müzik topluluğu,The orchestra played music for the dancers.,Orkestra dansçılar için müzik çaldı.,3,,hobbies
-a2-outfit,OUTFIT,O,STARTS,noun,birlikte giyilen kıyafetler,She chose a blue outfit for the party.,Parti için mavi bir kıyafet seçti.,3,,daily-life
+a2-outfit,OUTFIT,O,STARTS,noun,birlikte giyilen kıyafetler,She chose a blue outfit for the party.,Parti için mavi bir kıyafet seçti.,3,,clothes-shopping
 a2-once,ONCE,O,STARTS,adv,"bir kere, bir defa",I go swimming once a week.,Haftada bir kez yüzmeye giderim.,2,,time-weather
 a2-online,ONLINE,O,STARTS,adv,internete bağlı olarak,Selin bought her new shoes online.,Selin yeni ayakkabılarını çevrimiçi aldı.,2,,daily-life
 a2-olive,OLIVE,O,STARTS,noun,yeşil ya da siyah küçük yağlı meyve,He put an olive on the pizza.,Pizzanın üstüne bir zeytin koydu.,2,,food-drink
@@ -49,7 +49,7 @@ a2-polite,POLITE,O,CONTAINS,adj,başkalarına karşı kibar ve saygılı,The wai
 a2-cookie,COOKIE,O,CONTAINS,noun,"yuvarlak, tatlı ve kuru küçük hamur işi",Would you like a cookie?,Bir kurabiye ister misin?,2,,food-drink
 a2-broken,BROKEN,O,CONTAINS,adj,"kırılmış, bozulmuş",The window is broken.,Pencere kırık.,2,,home
 a2-wood,WOOD,O,CONTAINS,noun,ağaçtan elde edilen sert malzeme,The table is made of wood.,Masa tahtadan yapılmış.,2,,home
-a2-wool,WOOL,O,CONTAINS,noun,koyundan alınan yumuşak lif,This scarf is made of wool.,Bu atkı yünden yapılmış.,2,,daily-life
+a2-wool,WOOL,O,CONTAINS,noun,koyundan alınan yumuşak lif,This scarf is made of wool.,Bu atkı yünden yapılmış.,2,,clothes-shopping
 a2-goal,GOAL,O,CONTAINS,noun,futbolda topun ağlara girmesi,He scored a goal in the last minute.,Son dakikada bir gol attı.,2,,hobbies
 a2-napkin,NAPKIN,N,STARTS,noun,yemekte ağzı silmek için kâğıt ya da bez,Put a napkin on the table.,Masaya bir peçete koy.,2,,home
 a2-narrow,NARROW,N,STARTS,adj,"geniş olmayan, dar",The street is too narrow for two cars.,Sokak iki araba için fazla dar.,3,,city-transport
@@ -73,7 +73,7 @@ a2-stone,STONE,N,CONTAINS,noun,yerden toplanan küçük sert kaya parçası,He t
 a2-brain,BRAIN,N,CONTAINS,noun,kafatasında bulunan düşünme organı,The brain controls the body.,Beyin vücudu yönetir.,3,,body-health
 a2-sentence,SENTENCE,N,CONTAINS,noun,"bir düşünceyi anlatan sözcük dizisi, cümle",Write a sentence with this word.,Bu sözcükle bir cümle yaz.,2,,school-work
 a2-earn,EARN,E,STARTS,verb,çalışarak para kazanmak,He works two jobs to earn more money.,Daha fazla para kazanmak için iki işte çalışıyor.,3,,school-work
-a2-earring,EARRING,E,STARTS,noun,kulağa takılan süs,Selin lost an earring at the beach.,Selin plajda bir küpesini kaybetti.,2,,daily-life
+a2-earring,EARRING,E,STARTS,noun,kulağa takılan süs,Selin lost an earring at the beach.,Selin plajda bir küpesini kaybetti.,2,,clothes-shopping
 a2-earth,EARTH,E,STARTS,noun,Güneş'in çevresinde dönen gezegenimiz,The earth moves around the sun.,Dünya Güneş'in etrafında döner.,3,,daily-life
 a2-education,EDUCATION,E,STARTS,noun,okullarda verilen öğretim,Good education helps young people.,İyi eğitim gençlere yardım eder.,3,,school-work
 a2-either,EITHER,E,STARTS,phrase,iki seçenekten herhangi biri,You can have either tea or coffee.,Ya çay ya da kahve alabilirsin.,3,,daily-life
@@ -101,7 +101,7 @@ a2-teenager,TEENAGER,E,CONTAINS,noun,on üç ile on dokuz yaş arasındaki genç
 a2-helmet,HELMET,E,CONTAINS,noun,başı korumak için takılan sert şapka,Wear a helmet when you ride.,Bisiklete binerken kask tak.,3,,hobbies
 a2-gate,GATE,G,STARTS,noun,bahçe ya da havalimanında girişteki kapı,The garden gate is open.,Bahçe kapısı açık.,2,,home
 a2-gentleman,GENTLEMAN,G,STARTS,noun,kibar ve görgülü erkek,The gentleman opened the door for her.,Beyefendi onun için kapıyı açtı.,3,,family-people
-a2-giant,GIANT,G,STARTS,noun,"masallardaki kocaman yaratık, dev",The giant in the story lived on a hill.,Hikâyedeki dev bir tepede yaşıyordu.,2,,daily-life
+a2-giant,GIANT,G,STARTS,noun,"masallardaki kocaman yaratık, dev",The giant in the story lived on a hill.,Hikâyedeki dev bir tepede yaşıyordu.,2,,hobbies
 a2-ground,GROUND,G,STARTS,noun,üzerinde yürüdüğümüz toprak yüzey,The apples fell to the ground in the wind.,Elmalar rüzgârda yere düştü.,3,,daily-life
 a2-group,GROUP,G,STARTS,noun,birlikte duran ya da çalışan topluluk,A group of students is waiting.,Bir grup öğrenci bekliyor.,2,,school-work
 a2-grow,GROW,G,STARTS,verb,"boyu uzamak, büyümek",Tomatoes grow best in warm weather.,Domatesler en iyi sıcak havada büyür.,2,,daily-life
@@ -118,5 +118,5 @@ a2-gymnastics,GYMNASTICS,G,STARTS,noun,beden esnekliğine dayanan jimnastik spor
 a2-foreign,FOREIGN,G,CONTAINS,adj,"başka bir ülkeden olan, yabancı",She speaks three foreign languages.,Üç yabancı dil konuşuyor.,3,,school-work
 a2-strong,STRONG,G,CONTAINS,adj,"gücü çok olan, kuvvetli",He is very strong.,O çok güçlü.,2,,body-health
 a2-single,SINGLE,G,CONTAINS,adj,bir tane olan ya da evli olmayan,I did not eat a single biscuit.,Tek bir bisküvi bile yemedim.,3,,daily-life
-a2-magic,MAGIC,G,CONTAINS,noun,"olağanüstü şeyler yapan gizemli güç, sihir",The story is full of magic.,Hikâye sihirle dolu.,3,,daily-life
+a2-magic,MAGIC,G,CONTAINS,noun,"olağanüstü şeyler yapan gizemli güç, sihir",The story is full of magic.,Hikâye sihirle dolu.,3,,hobbies
 a2-sign,SIGN,G,CONTAINS,noun,bir şey bildiren işaret ya da tabela,Read the sign on the door.,Kapıdaki tabelayı oku.,2,,city-transport

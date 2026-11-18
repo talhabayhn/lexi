@@ -3,7 +3,7 @@ a1-address,ADDRESS,A,STARTS,noun,evin sokak ve numara bilgisi,The mailman lost t
 a1-age,AGE,A,STARTS,noun,kişinin kaç yaşında olduğu,Her age is a secret.,Yaşı bir sır.,2,,daily-life
 a1-angry,ANGRY,A,STARTS,adj,çok kızgın,My neighbor is angry with me.,Komşum bana kızgın.,2,,daily-life
 a1-arrive,ARRIVE,A,STARTS,verb,yolculuk sonunda bir yere varmak,The guests arrive by coach.,Misafirler otobüsle geliyor.,2,,daily-life
-a1-buy,BUY,B,STARTS,verb,parasını verip almak,I will buy some stamps.,Birkaç pul alacağım.,1,,daily-life
+a1-buy,BUY,B,STARTS,verb,parasını verip almak,I will buy some stamps.,Birkaç pul alacağım.,1,,clothes-shopping
 a1-bank,BANK,B,STARTS,noun,paranı yatırdığın kurum,Is there a bank in this area?,Bu çevrede banka var mı?,2,,city-transport
 a1-building,BUILDING,B,STARTS,noun,ev ya da ofis gibi çok katlı yapı,Mert lives in that building.,Mert o binada yaşıyor.,2,,city-transport
 a1-close,CLOSE,C,STARTS,verb,açık olanı kapatmak,"Close the gate, Ali.","Ali, bahçe kapısını kapat.",1,,daily-life
@@ -11,8 +11,8 @@ a1-come,COME,C,STARTS,verb,bulunduğun yere doğru gelmek,"Can you come with me,
 a1-cousin,COUSIN,C,STARTS,noun,"amca, dayı, hala ya da teyze çocuğu",My cousin lives in Izmir.,Kuzenim İzmir'de yaşıyor.,2,,family-people
 a1-child,CHILD,C,STARTS,noun,büyümekte olan küçük insan,A lost child cried at the entrance.,Kayıp bir çocuk girişte ağladı.,1,,family-people
 a1-cinema,CINEMA,C,STARTS,noun,film izlemeye gidilen salon,We went to the cinema.,Sinemaya gittik.,1,,city-transport
-a1-camera,CAMERA,C,STARTS,noun,fotoğraf çeken alet,Tourists photographed the castle with a camera.,Turistler kaleyi fotoğraf makinesiyle çekti.,2,,daily-life
-a1-clothes,CLOTHES,C,STARTS,noun,insanların üzerine giydiği şeyler,She hangs her wet clothes on the line.,Islak giysilerini ipe asıyor.,2,,daily-life
+a1-camera,CAMERA,C,STARTS,noun,fotoğraf çeken alet,Tourists photographed the castle with a camera.,Turistler kaleyi fotoğraf makinesiyle çekti.,2,,hobbies
+a1-clothes,CLOTHES,C,STARTS,noun,insanların üzerine giydiği şeyler,She hangs her wet clothes on the line.,Islak giysilerini ipe asıyor.,2,,clothes-shopping
 a1-carrot,CARROT,C,STARTS,noun,turuncu renkli kök sebze,Ayşe sliced a carrot carefully.,Ayşe havucu dikkatle dilimledi.,2,,food-drink
 a1-draw,DRAW,D,STARTS,verb,kalemle resim yapmak,She likes to draw flowers.,Çiçek çizmeyi sever.,1,,school-work
 a1-drive,DRIVE,D,STARTS,verb,araç kullanmak,He can drive a truck.,Kamyon kullanabilir.,2,,city-transport
@@ -24,11 +24,11 @@ a1-downstairs,DOWNSTAIRS,D,STARTS,adv,alt katta,"Mr. Demir sleeps downstairs, si
 a1-enjoy,ENJOY,E,STARTS,verb,bir şeyden zevk almak,Kids enjoy riding roller coasters at the fair.,Çocuklar lunaparkta hız trenine binmekten keyif alır.,2,,daily-life
 a1-exam,EXAM,E,STARTS,noun,okulda bilgiyi ölçen yazılı iş,Mert revised for the final exam with his notes.,Mert notlarıyla final sınavına çalıştı.,2,,school-work
 a1-exercise,EXERCISE,E,STARTS,noun,sağlık için yapılan spor hareketleri,Exercise makes you strong.,Egzersiz seni güçlendirir.,2,,body-health
-a1-expensive,EXPENSIVE,E,STARTS,adj,fiyatı çok yüksek,These shoes are too expensive.,Bu ayakkabılar çok pahalı.,2,,daily-life
+a1-expensive,EXPENSIVE,E,STARTS,adj,fiyatı çok yüksek,These shoes are too expensive.,Bu ayakkabılar çok pahalı.,2,,clothes-shopping
 a1-fast,FAST,F,STARTS,adj,yüksek hızla giden,He is a fast runner.,O hızlı bir koşucu.,2,,daily-life
 a1-flower,FLOWER,F,STARTS,noun,güzel kokan renkli bitki parçası,The flower smells lovely.,Çiçek çok güzel kokuyor.,1,,daily-life
 a1-fly,FLY,F,STARTS,verb,kanatla ya da uçakla havada gitmek,Birds can fly.,Kuşlar uçabilir.,1,,daily-life
-a1-football,FOOTBALL,F,STARTS,noun,ayakla oynanan takım sporu,Football is popular in my area.,Futbol bölgemde çok sevilir.,1,,daily-life
+a1-football,FOOTBALL,F,STARTS,noun,ayakla oynanan takım sporu,Football is popular in my area.,Futbol bölgemde çok sevilir.,1,,hobbies
 a1-finish,FINISH,F,STARTS,verb,"bitirmek, sona ermek",Ali can finish the puzzle.,Ali bulmacayı bitirebilir.,2,,daily-life
 a1-forest,FOREST,F,STARTS,noun,ağaçlarla kaplı geniş alan,We walked in the forest.,Ormanda yürüdük.,2,,city-transport
 a1-get,GET,G,STARTS,verb,"elde etmek, almak",Did you get my parcel?,Paketimi aldın mı?,1,,daily-life
@@ -60,18 +60,18 @@ a1-picture,PICTURE,P,STARTS,noun,boya ya da kalemle yapılan resim,That picture 
 a1-plane,PLANE,P,STARTS,noun,havalimanından kalkan taşıt,The plane is landing.,Uçak iniyor.,1,,city-transport
 a1-paper,PAPER,P,STARTS,noun,üzerine yazı yazılan ince yaprak,Do you have a sheet of paper?,Elinde bir yaprak kâğıt var mı?,1,,school-work
 a1-pool,POOL,P,STARTS,noun,içinde yüzülen su dolu çukur,The pool is deep.,Havuz derin.,2,,city-transport
-a1-party,PARTY,P,STARTS,noun,arkadaşlarla yapılan eğlence,The party was lovely.,Parti çok güzeldi.,1,,daily-life
+a1-party,PARTY,P,STARTS,noun,arkadaşlarla yapılan eğlence,The party was lovely.,Parti çok güzeldi.,1,,hobbies
 a1-police,POLICE,P,STARTS,noun,suçluları yakalayan kurum,The police are on the way.,Polis yolda.,2,,city-transport
 a1-quick,QUICK,Q,STARTS,adj,kısa sürede yapılan,"Be quick, Ali!","Çabuk ol, Ali!",2,,daily-life
 a1-quarter,QUARTER,Q,STARTS,noun,bütünün dörtte biri,A quarter of the pupils are absent.,Öğrencilerin dörtte biri yok.,3,,colors-numbers
 a1-run,RUN,R,STARTS,verb,hızlı adımlarla koşmak,Do not run in the corridor.,Koridorda koşma.,1,,daily-life
-a1-ride,RIDE,R,STARTS,verb,hayvanın ya da aracın üstünde gitmek,Can you ride a scooter?,Scooter'a binebilir misin?,2,,daily-life
+a1-ride,RIDE,R,STARTS,verb,hayvanın ya da aracın üstünde gitmek,Can you ride a scooter?,Scooter'a binebilir misin?,2,,hobbies
 a1-remember,REMEMBER,R,STARTS,verb,unutmayıp aklında tutmak,Do you remember me?,Beni hatırlıyor musun?,2,,daily-life
 a1-relax,RELAX,R,STARTS,verb,"gevşemek, rahatlamak",I relax in a hammock.,Hamakta dinleniyorum.,2,,daily-life
 a1-roof,ROOF,R,STARTS,noun,binanın en üstündeki örtü,A pigeon sits on the roof.,Çatıda bir güvercin oturuyor.,2,,home
 a1-speak,SPEAK,S,STARTS,verb,dil kullanarak konuşmak,I speak some Arabic.,Biraz Arapça konuşurum.,1,,daily-life
 a1-slow,SLOW,S,STARTS,adj,hızlı olmayan,"The ferry is slow, but the trip is relaxing.",Vapur yavaş ama yolculuk rahatlatıcı.,1,,daily-life
-a1-sport,SPORT,S,STARTS,noun,beden gücüyle yapılan yarışma oyunu,Rugby is a popular sport.,Ragbi popüler bir spordur.,2,,daily-life
+a1-sport,SPORT,S,STARTS,noun,beden gücüyle yapılan yarışma oyunu,Rugby is a popular sport.,Ragbi popüler bir spordur.,2,,hobbies
 a1-tired,TIRED,T,STARTS,adj,dinlenmeye ihtiyacı olan,They are tired from the trip.,Geziden sonra yorgunlar.,1,,body-health
 a1-think,THINK,T,STARTS,verb,aklından bir şey geçirmek,"Do you think so, Selin?","Sen de öyle mi düşünüyorsun, Selin?",2,,daily-life
 a1-toilet,TOILET,T,STARTS,noun,klozet ve lavabo olan küçük yer,Is there a toilet in this mall?,Bu alışveriş merkezinde tuvalet var mı?,2,,home
@@ -84,7 +84,7 @@ a1-weekend,WEEKEND,W,STARTS,noun,cumartesi ve pazar günleri,Ali plays chess at 
 a1-melon,MELON,M,STARTS,noun,"yazın yenen büyük, sulu meyve",This melon is juicy.,Bu kavun sulu.,2,,food-drink
 a1-towel,TOWEL,T,STARTS,noun,yıkandıktan sonra kurulanmak için kullanılan bez,My towel is wet.,Havlum ıslak.,2,,home
 a1-sandwich,SANDWICH,S,STARTS,noun,iki dilim ekmek arasına konan yiyecek,He made a sandwich.,Bir sandviç yaptı.,2,,food-drink
-a1-stamp,STAMP,S,STARTS,noun,mektubun üstüne yapıştırılan küçük kâğıt,This stamp is rare.,Bu pul nadir.,2,,daily-life
+a1-stamp,STAMP,S,STARTS,noun,mektubun üstüne yapıştırılan küçük kâğıt,This stamp is rare.,Bu pul nadir.,2,,hobbies
 a1-joke,JOKE,J,STARTS,noun,güldürmek için söylenen kısa söz,Mert told a joke.,Mert bir fıkra anlattı.,2,,daily-life
 a1-computer,COMPUTER,C,STARTS,noun,ekranı ve klavyesi olan makine,Selin typed her essay on the computer.,Selin kompozisyonunu bilgisayarda yazdı.,2,,school-work
 a1-laptop,LAPTOP,L,STARTS,noun,taşınabilir bilgisayar,She carries a laptop in her backpack.,Sırt çantasında dizüstü bilgisayar taşıyor.,2,,school-work

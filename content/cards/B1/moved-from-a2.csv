@@ -1,29 +1,29 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
 a2-antique,ANTIQUE,Q,CONTAINS,noun,çok eski olduğu için değerli koleksiyon parçası,This old clock is an antique.,Bu eski saat bir antika.,3,,daily-life
 a2-cheque,QUILT,Q,STARTS,noun,"battaniye gibi, dikişli yatak örtüsü",Grandma made this quilt by hand.,Büyükannem bu yorganı elle yaptı.,3,,daily-life
-a2-citizen,CITIZEN,Z,CONTAINS,noun,bir ülkenin vatandaşı,She is a citizen of Spain.,"O, İspanya vatandaşı.",3,,family-people
+a2-citizen,CITIZEN,Z,CONTAINS,noun,bir ülkenin vatandaşı,She is a citizen of Spain.,"O, İspanya vatandaşı.",3,,society-law
 a2-except,EXCEPT,X,CONTAINS,phrase,"dışında, hariç",Everyone came except Ali.,Ali dışında herkes geldi.,3,,daily-life
 a2-exchange,EXCHANGE,X,CONTAINS,verb,karşılıklı değiş tokuş etmek,Can I exchange this shirt for a bigger one?,Bu gömleği daha büyüğüyle değiştirebilir miyim?,3,,daily-life
 a2-expense,EXPENSE,X,CONTAINS,noun,"bir şey için harcanan para, masraf",Travel is a big expense.,Seyahat büyük bir masraftır.,3,,travel
 a2-expert,EXPERT,X,CONTAINS,noun,bir konuyu çok iyi bilen kişi,She is an expert on birds.,Kuşlar konusunda bir uzman.,3,,school-work
 a2-explore,EXPLORE,X,CONTAINS,verb,bilinmeyen bir yeri gezip keşfetmek,We want to explore the old town.,Eski şehri keşfetmek istiyoruz.,3,,travel
 a2-express,EXPRESS,X,CONTAINS,verb,duygu ya da düşünceyi dile getirmek,Music helps me express my feelings.,Müzik duygularımı ifade etmeme yardım ediyor.,3,,hobbies
-a2-flood,FLOOD,F,STARTS,noun,"suyun kara üstüne taşması, sel",The flood covered the road.,Sel yolu kapladı.,3,,daily-life
-a2-hurricane,HURRICANE,H,STARTS,noun,"çok şiddetli tropik fırtına, kasırga",The hurricane came to the island.,Kasırga adaya geldi.,3,,daily-life
+a2-flood,FLOOD,F,STARTS,noun,"suyun kara üstüne taşması, sel",The flood covered the road.,Sel yolu kapladı.,3,,animals
+a2-hurricane,HURRICANE,H,STARTS,noun,"çok şiddetli tropik fırtına, kasırga",The hurricane came to the island.,Kasırga adaya geldi.,3,,animals
 a2-ignore,IGNORE,I,STARTS,verb,bir şeye bilerek dikkat etmemek,Do not ignore the red light.,Kırmızı ışığı görmezden gelme.,3,,city-transport
 a2-immediately,IMMEDIATELY,I,STARTS,adv,"hiç beklemeden, hemen","When the teacher called my name, I answered immediately.",Öğretmen adımı söyleyince hemen cevap verdim.,3,,daily-life
 a2-invent,INVENT,I,STARTS,verb,daha önce olmayan bir şey bulmak,Many people want to invent something new.,Birçok kişi yeni bir şey icat etmek ister.,3,,daily-life
-a2-judge,JUDGE,J,STARTS,noun,mahkemede karar veren kişi,The judge asked the man to stand up.,Hâkim adamdan ayağa kalkmasını istedi.,3,,daily-life
-a2-law,LAW,L,STARTS,noun,bir ülkede uyulması zorunlu kurallar,Everyone must follow the law.,Herkes yasaya uymalı.,3,,daily-life
+a2-judge,JUDGE,J,STARTS,noun,mahkemede karar veren kişi,The judge asked the man to stand up.,Hâkim adamdan ayağa kalkmasını istedi.,3,,society-law
+a2-law,LAW,L,STARTS,noun,bir ülkede uyulması zorunlu kurallar,Everyone must follow the law.,Herkes yasaya uymalı.,3,,society-law
 a2-lawyer,LAWYER,L,STARTS,noun,mahkemede insanları savunan hukukçu,The lawyer read the letter very carefully.,Avukat mektubu çok dikkatli okudu.,3,,school-work
 a2-organise,ORGANIZE,O,STARTS,verb,bir işi düzenli biçimde ayarlamak,We need to organize a party for Mom.,Annem için bir parti düzenlememiz gerek.,3,,daily-life
 a2-otherwise,OTHERWISE,O,STARTS,adv,"yoksa, aksi halde","Go now, otherwise the bus will leave.","Şimdi git, yoksa otobüs kalkacak.",3,,daily-life
 a2-oxygen,OXYGEN,X,CONTAINS,noun,"solunan havadaki gaz, oksijen",We need oxygen to live.,Yaşamak için oksijene ihtiyacımız var.,3,,school-work
 a2-personal,PERSONAL,P,STARTS,adj,kişiye özel olan,Please do not ask me personal questions.,Lütfen bana kişisel sorular sorma.,3,,daily-life
-a2-prison,PRISON,P,STARTS,noun,suçluların ceza çektiği büyük bina,He was in prison for a year.,Bir yıl hapiste kaldı.,3,,daily-life
+a2-prison,PRISON,P,STARTS,noun,suçluların ceza çektiği büyük bina,He was in prison for a year.,Bir yıl hapiste kaldı.,3,,society-law
 a2-require,REQUIRE,Q,CONTAINS,verb,bir şeyin gerekli olmasını istemek,This job will require good English.,Bu iş iyi İngilizce gerektirecek.,3,,school-work
 a2-salary,SALARY,S,STARTS,noun,çalışanın her ay aldığı maaş,Her new job has a much better salary.,Yeni işinin maaşı çok daha iyi.,3,,school-work
 a2-sketch,SKETCH,K,CONTAINS,noun,"hızlıca çizilen kaba resim, taslak",He made a sketch of the old bridge.,Eski köprünün bir taslağını çizdi.,3,,school-work
-a2-tax,TAX,X,CONTAINS,noun,devlete ödenen vergi,We pay tax every year.,Her yıl vergi öderiz.,3,,daily-life
+a2-tax,TAX,X,CONTAINS,noun,devlete ödenen vergi,We pay tax every year.,Her yıl vergi öderiz.,3,,economy
 a2-unless,UNLESS,U,STARTS,phrase,"eğer ... olmazsa, -medikçe",We will go unless it rains.,Yağmur yağmazsa gideceğiz.,3,,daily-life
-a2-vote,VOTE,V,STARTS,verb,seçimde tercihini belirtmek,Everyone can vote at eighteen.,Herkes on sekiz yaşında oy verebilir.,3,,daily-life
+a2-vote,VOTE,V,STARTS,verb,seçimde tercihini belirtmek,Everyone can vote at eighteen.,Herkes on sekiz yaşında oy verebilir.,3,,society-law

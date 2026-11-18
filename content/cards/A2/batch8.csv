@@ -7,7 +7,7 @@ a2-through,THROUGH,T,STARTS,phrase,bir şeyin bir ucundan öbür ucuna geçerek,
 a2-throw,THROW,T,STARTS,verb,elindeki şeyi havaya doğru fırlatmak,Throw the ball to me.,Topu bana at.,2,,hobbies
 a2-thunder,THUNDER,T,STARTS,noun,şimşekten sonra gelen gök gürültüsü,I heard thunder last night.,Dün gece gök gürültüsü duydum.,3,,time-weather
 a2-tidy,TIDY,T,STARTS,adj,"her şeyi yerli yerinde olan, derli toplu",Her desk is always tidy.,Masası her zaman derli toplu.,3,,home
-a2-tight,TIGHT,T,STARTS,adj,vücuda çok yapışan ya da sıkı,These shoes are too tight.,Bu ayakkabılar çok dar.,3,,daily-life
+a2-tight,TIGHT,T,STARTS,adj,vücuda çok yapışan ya da sıkı,These shoes are too tight.,Bu ayakkabılar çok dar.,3,,clothes-shopping
 a2-tiny,TINY,T,STARTS,adj,"çok küçük, minicik",A tiny spider sat on my hand.,Elimde minicik bir örümcek vardı.,3,,animals
 a2-tip,TIP,T,STARTS,noun,garsona bırakılan fazladan para ya da küçük öneri,We left a tip for the waiter.,Garson için bahşiş bıraktık.,3,,food-drink
 a2-title,TITLE,T,STARTS,noun,kitabın ya da filmin adı,What is the title of the book?,Kitabın adı ne?,3,,school-work
@@ -70,4 +70,4 @@ a2-block,BLOCK,B,STARTS,noun,"içinde çok sayıda daire olan büyük bina, blok
 a2-beginning,BEGINNING,B,STARTS,noun,"bir şeyin ilk kısmı, başlangıç",The film has a good beginning.,Filmin başlangıcı güzel.,3,,time-weather
 a2-elbow,ELBOW,B,CONTAINS,noun,"kolun ortasındaki eklem, dirsek",I broke my elbow.,Dirseğimi kırdım.,3,,body-health
 a2-robber,ROBBER,B,CONTAINS,noun,zorla ya da silahla soygun yapan kişi,The robber ran out of the bank.,Soyguncu bankadan dışarı koştu.,3,,family-people
-a2-ribbon,RIBBON,B,CONTAINS,noun,"süs olarak kullanılan ince şerit kumaş, kurdele",She has a red ribbon in her hair.,Saçında kırmızı bir kurdele var.,2,,daily-life
+a2-ribbon,RIBBON,B,CONTAINS,noun,"süs olarak kullanılan ince şerit kumaş, kurdele",She has a red ribbon in her hair.,Saçında kırmızı bir kurdele var.,2,,clothes-shopping

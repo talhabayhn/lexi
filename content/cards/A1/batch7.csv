@@ -1,6 +1,6 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
 a1-ago,AGO,A,STARTS,adv,"şimdiden geriye doğru, önce",Ayşe arrived a few minutes ago.,Ayşe birkaç dakika önce geldi.,2,,time-weather
-a1-band,BAND,B,STARTS,noun,birlikte müzik çalan grup,The band played for hours.,Grup saatlerce çaldı.,2,,daily-life
+a1-band,BAND,B,STARTS,noun,birlikte müzik çalan grup,The band played for hours.,Grup saatlerce çaldı.,2,,hobbies
 a1-born,BORN,B,STARTS,adj,"dünyaya gelmiş, doğmuş",Ali was born in Izmir.,Ali İzmir'de doğdu.,2,,daily-life
 a1-brush,BRUSH,B,STARTS,noun,boyamak veya temizlemek için kıllı araç,The brush is in the drawer.,Fırça çekmecede.,2,,daily-life
 a1-bee,BEE,B,STARTS,noun,bal yapan sarı siyah çizgili böcek,A bee stung Ali.,Ali'yi bir arı soktu.,1,,animals
@@ -39,12 +39,12 @@ a1-noodles,NOODLES,N,STARTS,noun,ince uzun hamurdan yapılan yemek,The noodles a
 a1-oven,OVEN,O,STARTS,noun,yemeğin pişirildiği kapalı ısıtıcı,The pie is in the oven.,Turta fırında.,2,,home
 a1-pretty,PRETTY,P,STARTS,adj,"hoş görünüşlü, şirin",The cottage is pretty.,Kulübe şirin.,2,,daily-life
 a1-problem,PROBLEM,P,STARTS,noun,çözülmesi gereken sorun,We have a problem with the printer.,Yazıcıyla ilgili bir sorunumuz var.,2,,daily-life
-a1-pound,POUND,P,STARTS,noun,İngiltere'de kullanılan para birimi,The tickets cost a pound.,Biletler bir pound.,2,,daily-life
+a1-pound,POUND,P,STARTS,noun,İngiltere'de kullanılan para birimi,The tickets cost a pound.,Biletler bir pound.,2,,clothes-shopping
 a1-policeman,POLICEMAN,P,STARTS,noun,polis teşkilatında çalışan erkek memur,The policeman stopped the traffic.,Polis memuru trafiği durdurdu.,2,,school-work
 a1-penguin,PENGUIN,P,STARTS,noun,buzullarda yaşayan uçamayan siyah beyaz kuş,A penguin swims quickly.,Penguen hızlı yüzer.,2,,animals
 a1-rubber,RING,R,STARTS,noun,"parmağa takılan halka biçimli takı, yüzük",She wears a gold ring.,Altın bir yüzük takıyor.,2,,daily-life
 a1-surname,SURNAME,S,STARTS,noun,adın yanına gelen aile adı,Is this your surname?,Bu senin soyadın mı?,2,,family-people
-a1-sweater,SWEATER,S,STARTS,noun,yünden örülmüş sıcak tutan üst giysi,Ayşe knitted a sweater.,Ayşe bir kazak ördü.,2,,daily-life
+a1-sweater,SWEATER,S,STARTS,noun,yünden örülmüş sıcak tutan üst giysi,Ayşe knitted a sweater.,Ayşe bir kazak ördü.,2,,clothes-shopping
 a1-sausage,SAUSAGE,S,STARTS,noun,kıymadan yapılan ince uzun et ürünü,He fried a sausage.,O bir sosis kızarttı.,2,,food-drink
 a1-spaghetti,SPAGHETTI,S,STARTS,noun,uzun ince çubuk biçimli makarna,We ate spaghetti with sauce.,Soslu spagetti yedik.,2,,food-drink
 a1-spider,SPIDER,S,STARTS,noun,ağ ören sekiz bacaklı küçük hayvan,A spider lives in the shed.,Kulübede bir örümcek yaşıyor.,1,,animals
@@ -55,7 +55,7 @@ a1-snowy,SNOWY,S,STARTS,adj,karla kaplı veya çok kar yağan,The path is snowy.
 a1-scissors,SCISSORS,S,STARTS,noun,kâğıt kesen iki bıçaklı alet,The scissors are sharp.,Makas keskin.,2,,school-work
 a1-sixth,SIXTH,S,STARTS,adj,altıncı,Kemal is the sixth runner.,Kemal altıncı koşucu.,2,,colors-numbers
 a1-seventh,SEVENTH,S,STARTS,adj,yedinci,My seat is in the seventh row.,Koltuğum yedinci sırada.,2,,colors-numbers
-a1-tennis,TENNIS,T,STARTS,noun,raketle file üzerinden oynanan spor,Ali plays tennis.,Ali tenis oynar.,1,,daily-life
+a1-tennis,TENNIS,T,STARTS,noun,raketle file üzerinden oynanan spor,Ali plays tennis.,Ali tenis oynar.,1,,hobbies
 a1-thing,THING,T,STARTS,noun,"adı söylenmeyen nesne, şey",That is a strange thing.,Bu garip bir şey.,2,,daily-life
 a1-toast,TOAST,T,STARTS,noun,kızartılmış ekmek dilimi,Ayşe made some toast.,Ayşe biraz kızarmış ekmek yaptı.,2,,food-drink
 a1-theatre,THEATER,T,STARTS,noun,oyunların sahnelendiği bina,Selin works at the theater.,Selin tiyatroda çalışıyor.,2,,city-transport
@@ -66,9 +66,9 @@ a1-wake,WAKE,W,STARTS,verb,uykudan uyanmak,Ayşe will wake at dawn.,Ayşe şafak
 a1-soap,SOAP,S,STARTS,noun,ellerin kirini temizleyen köpüren madde,Ali bought some soap.,Ali biraz sabun aldı.,1,,body-health
 a1-toothbrush,TOOTHBRUSH,T,STARTS,noun,dişleri temizlemek için kullanılan fırça,My toothbrush is electric.,Diş fırçam elektrikli.,2,,body-health
 a1-toothpaste,TOOTHPASTE,T,STARTS,noun,diş fırçasına sürülen nanemli macun,The toothpaste is almost finished.,Diş macunu neredeyse bitti.,2,,body-health
-a1-belt,BELT,B,STARTS,noun,pantolonu belde tutan kemer,Hasan wears a leather belt.,Hasan deri bir kemer takar.,2,,daily-life
-a1-tie,TIE,T,STARTS,noun,gömleğin yakasına bağlanan uzun kumaş,Mr Demir wears a tie.,Bay Demir kravat takar.,2,,daily-life
-a1-wallet,WALLET,W,STARTS,noun,para ve kart taşınan küçük cüzdan,Ali lost his wallet.,Ali cüzdanını kaybetti.,2,,daily-life
+a1-belt,BELT,B,STARTS,noun,pantolonu belde tutan kemer,Hasan wears a leather belt.,Hasan deri bir kemer takar.,2,,clothes-shopping
+a1-tie,TIE,T,STARTS,noun,gömleğin yakasına bağlanan uzun kumaş,Mr Demir wears a tie.,Bay Demir kravat takar.,2,,clothes-shopping
+a1-wallet,WALLET,W,STARTS,noun,para ve kart taşınan küçük cüzdan,Ali lost his wallet.,Ali cüzdanını kaybetti.,2,,clothes-shopping
 a1-whale,WHALE,W,STARTS,noun,okyanusta yaşayan dev memeli,A whale swam by the ship.,Bir balina geminin yanından geçti.,2,,animals
 a1-shark,SHARK,S,STARTS,noun,keskin dişli yırtıcı deniz balığı,The shark circled the diver.,Köpek balığı dalgıcın etrafında döndü.,2,,animals
 a1-butterfly,BUTTERFLY,B,STARTS,noun,renkli kanatlarıyla çiçeklere konan böcek,A butterfly landed on Ayşe's shoulder.,Ayşe'nin omzuna bir kelebek kondu.,2,,animals

@@ -15,13 +15,13 @@ b2-no-doubt,NO DOUBT,N,STARTS,idiom,"şüphesiz, kesinlikle",He is no doubt the 
 b2-no-matter,NO MATTER,N,STARTS,idiom,ne olursa olsun,"No matter what happens, call me.","Ne olursa olsun, beni ara.",3,,idioms
 b2-obligation,OBLIGATION,O,STARTS,noun,yapmak zorunda olunan görev,You have no obligation to buy anything.,Hiçbir şey satın alma zorunluluğun yok.,4,,business
 b2-observe,OBSERVE,O,STARTS,verb,dikkatle gözlemlemek,Scientists observe the stars at night.,Bilim insanları geceleri yıldızları gözlemler.,4,,school-work
-b2-obsession,OBSESSION,O,STARTS,noun,zihni sürekli meşgul eden saplantı,Football is an obsession for him.,Futbol onun için bir saplantı.,4,,daily-life
+b2-obsession,OBSESSION,O,STARTS,noun,zihni sürekli meşgul eden saplantı,Football is an obsession for him.,Futbol onun için bir saplantı.,4,,feelings
 b2-obtain,OBTAIN,O,STARTS,verb,çaba göstererek bir şeyi elde etmek,You need to obtain a visa first.,Önce bir vize almalısın.,4,,travel
 b2-occupy,OCCUPY,O,STARTS,verb,bir yeri ya da zamanı kaplamak,The meeting will occupy the whole morning.,Toplantı bütün sabahı alacak.,4,,business
-b2-offend,OFFEND,O,STARTS,verb,birini kırmak veya gücendirmek,I hope I did not offend you.,Umarım seni gücendirmedim.,4,,daily-life
-b2-optimism,OPTIMISM,O,STARTS,noun,iyimserlik; olumlu bakış,His optimism helped the team.,İyimserliği takıma yardımcı oldu.,4,,daily-life
+b2-offend,OFFEND,O,STARTS,verb,birini kırmak veya gücendirmek,I hope I did not offend you.,Umarım seni gücendirmedim.,4,,feelings
+b2-optimism,OPTIMISM,O,STARTS,noun,iyimserlik; olumlu bakış,His optimism helped the team.,İyimserliği takıma yardımcı oldu.,4,,feelings
 b2-outcome,OUTCOME,O,STARTS,noun,bir sürecin sonucu,We are waiting for the outcome of the vote.,Oylamanın sonucunu bekliyoruz.,4,,business
-b2-output,OUTPUT,O,STARTS,noun,üretilen miktar veya çıktı,The factory doubled its output.,Fabrika üretimini iki katına çıkardı.,4,,business
+b2-output,OUTPUT,O,STARTS,noun,üretilen miktar veya çıktı,The factory doubled its output.,Fabrika üretimini iki katına çıkardı.,4,,economy
 b2-outstanding,OUTSTANDING,O,STARTS,adj,"çok başarılı, göze çarpan",She gave an outstanding performance.,Çok başarılı bir performans sergiledi.,4,,hobbies
 b2-overall,OVERALL,O,STARTS,adj,"genel, tümünü kapsayan",The overall result was good.,Genel sonuç iyiydi.,4,,business
 b2-overcome,OVERCOME,O,STARTS,verb,zorluğu aşmak,He wants to overcome his fear.,Korkusunu yenmek istiyor.,4,,daily-life
@@ -66,8 +66,8 @@ b2-play-it-by-ear,PLAY IT BY EAR,P,STARTS,idiom,önceden plan yapmadan duruma g�
 b2-notorious,NOTORIOUS,N,STARTS,adj,kötü bir şey yüzünden herkesçe bilinen,The street is notorious for traffic jams.,Sokak trafik sıkışıklığıyla ünlü.,4,,daily-life
 b2-novelty,NOVELTY,N,STARTS,noun,yeni olmanın verdiği ilginçlik,The novelty of the toy soon wore off.,Oyuncağın yeniliği çabuk geçti.,4,,daily-life
 b2-observation,OBSERVATION,O,STARTS,noun,dikkatle gözlem veya yorum,Her observation was very clever.,Gözlemi çok zekiceydi.,4,,school-work
-b2-oppose,OPPOSE,O,STARTS,verb,bir fikre karşı çıkmak,Many people oppose the new law.,Birçok insan yeni yasaya karşı çıkıyor.,4,,daily-life
-b2-panic,PANIC,P,STARTS,noun,ani ve kontrolsüz korku,There was panic when the fire alarm rang.,Yangın alarmı çalınca panik oldu.,3,,daily-life
+b2-oppose,OPPOSE,O,STARTS,verb,bir fikre karşı çıkmak,Many people oppose the new law.,Birçok insan yeni yasaya karşı çıkıyor.,4,,society-law
+b2-panic,PANIC,P,STARTS,noun,ani ve kontrolsüz korku,There was panic when the fire alarm rang.,Yangın alarmı çalınca panik oldu.,3,,feelings
 b2-prediction,PREDICTION,P,STARTS,noun,gelecekle ilgili tahmin,His prediction came true.,Tahmini gerçek oldu.,4,,school-work
 b2-provoke,PROVOKE,P,STARTS,verb,birini kışkırtmak,Don't provoke the dog.,Köpeği kışkırtma.,4,,daily-life
 b2-put-forward,PUT FORWARD,P,STARTS,phrasal,bir öneriyi ortaya atmak,She put forward a clever plan.,Zekice bir plan ortaya attı.,4,,phrasal-verbs

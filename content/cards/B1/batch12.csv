@@ -1,10 +1,10 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
-b1-giggle,GIGGLE,G,STARTS,verb,hafif sesle ve kıkır kıkır gülmek,The children began to giggle during the film.,Çocuklar film sırasında kıkır kıkır gülmeye başladı.,3,,daily-life
+b1-giggle,GIGGLE,G,STARTS,verb,hafif sesle ve kıkır kıkır gülmek,The children began to giggle during the film.,Çocuklar film sırasında kıkır kıkır gülmeye başladı.,3,,feelings
 b1-grammar,GRAMMAR,G,STARTS,noun,bir dilin cümle kurma kuralları,My teacher explains English grammar very clearly.,Öğretmenim İngilizce dil bilgisini çok net anlatıyor.,3,,school-work
-b1-grin,GRIN,G,STARTS,noun,"yüzde beliren geniş, neşeli gülümseme",He had a big grin on his face after the game.,Maçtan sonra yüzünde kocaman bir sırıtış vardı.,3,,daily-life
+b1-grin,GRIN,G,STARTS,noun,"yüzde beliren geniş, neşeli gülümseme",He had a big grin on his face after the game.,Maçtan sonra yüzünde kocaman bir sırıtış vardı.,3,,feelings
 b1-goldfish,GOLDFISH,G,STARTS,noun,akvaryumda beslenen turuncu küçük balık,Our goldfish lives in a small bowl.,Japon balığımız küçük bir fanusta yaşıyor.,3,,animals
 b1-gown,GOWN,G,STARTS,noun,"uzun, şık ve süslü kadın elbisesi",She wore a long blue gown to the party.,Partiye uzun mavi bir elbise giydi.,3,,daily-life
-b1-greenhouse,GREENHOUSE,G,STARTS,noun,bitki yetiştirilen camdan yapılmış sıcak yapı,We grow tomatoes in the greenhouse.,Domatesleri serada yetiştiriyoruz.,3,,daily-life
+b1-greenhouse,GREENHOUSE,G,STARTS,noun,bitki yetiştirilen camdan yapılmış sıcak yapı,We grow tomatoes in the greenhouse.,Domatesleri serada yetiştiriyoruz.,3,,animals
 b1-grasshopper,GRASSHOPPER,G,STARTS,noun,uzun bacaklarıyla zıplayan yeşil böcek,A grasshopper jumped onto my shoe.,Bir çekirge ayakkabımın üstüne zıpladı.,3,,animals
 b1-guitarist,GUITARIST,G,STARTS,noun,gitar çalan müzisyen,The guitarist played a slow song.,Gitarist yavaş bir şarkı çaldı.,3,,hobbies
 b1-gasoline,GASOLINE,G,STARTS,noun,arabanın deposuna doldurulan yakıt,We stopped to buy gasoline on the way.,Yolda benzin almak için durduk.,3,,city-transport
@@ -28,11 +28,11 @@ b1-oily,OILY,O,STARTS,adj,yağ içeren ya da yağ bulaşmış,I don't like oily 
 b1-outer,OUTER,O,STARTS,adj,en dışta bulunan (sıfat; isimden önce gelir),The outer door was painted green.,Dış kapı yeşile boyanmıştı.,3,,daily-life
 b1-oversleep,OVERSLEEP,O,STARTS,verb,alarma rağmen planladığından geç uyanmak,I often oversleep on Sundays.,Pazar günleri sık sık fazla uyurum.,3,,daily-life
 b1-occasionally,OCCASIONALLY,O,STARTS,adv,"düzensiz aralıklarla, arada bir (zarf)",We occasionally eat out on Sundays.,Pazar günleri ara sıra dışarıda yeriz.,3,,daily-life
-b1-optimist,OPTIMIST,O,STARTS,noun,olayların iyi biteceğine inanan kişi (isim),My brother is an optimist and never worries.,Kardeşim iyimserdir ve hiç endişelenmez.,3,,family-people
+b1-optimist,OPTIMIST,O,STARTS,noun,olayların iyi biteceğine inanan kişi (isim),My brother is an optimist and never worries.,Kardeşim iyimserdir ve hiç endişelenmez.,3,,feelings
 b1-outing,OUTING,O,STARTS,noun,eğlenmek için yapılan kısa gezi,The class had an outing to the zoo.,Sınıf hayvanat bahçesine bir gezi yaptı.,3,,travel
 b1-teamwork,TEAMWORK,T,STARTS,noun,bir hedef için birlikte çalışma,Good teamwork helped us win the game.,İyi bir takım çalışması maçı kazanmamıza yardım etti.,3,,school-work
 b1-tangerine,TANGERINE,T,STARTS,noun,"portakala benzeyen küçük, kolay soyulan meyve",She peeled a tangerine for dessert.,Tatlı olarak bir mandalina soydu.,3,,food-drink
-b1-thunderstorm,THUNDERSTORM,T,STARTS,noun,"şimşek, gök gürültüsü ve yağmurlu fırtına",We stayed inside during the thunderstorm.,Gök gürültülü fırtına sırasında içeride kaldık.,3,,daily-life
+b1-thunderstorm,THUNDERSTORM,T,STARTS,noun,"şimşek, gök gürültüsü ve yağmurlu fırtına",We stayed inside during the thunderstorm.,Gök gürültülü fırtına sırasında içeride kaldık.,3,,animals
 b1-toddler,TODDLER,T,STARTS,noun,yeni yürümeye başlayan 1-3 yaş arası çocuk,The toddler is learning to walk.,Küçük çocuk yürümeyi öğreniyor.,3,,family-people
 b1-unfortunately,UNFORTUNATELY,U,STARTS,adv,ne yazık ki; kötü haber verirken (zarf),"Unfortunately, the store was closed.",Maalesef mağaza kapalıydı.,3,,daily-life
 b1-underwater,UNDERWATER,U,STARTS,adj,suyun altında olan,We took photos of underwater fish.,Su altındaki balıkların fotoğraflarını çektik.,3,,travel
@@ -53,7 +53,7 @@ b1-eastern,EASTERN,E,STARTS,adj,"doğuda olan, doğuya ait",They live in the eas
 b1-echo,ECHO,E,STARTS,noun,dağda bağırınca duyulan geri dönen ses,We heard our echo in the cave.,Mağarada kendi yankımızı duyduk.,3,,daily-life
 b1-edition,EDITION,E,STARTS,noun,bir kitabın belirli basımı,This is the second edition of the book.,"Bu, kitabın ikinci baskısı.",3,,school-work
 b1-eggplant,EGGPLANT,E,STARTS,noun,"mor renkli, uzun sebze",My mother cooks eggplant with tomatoes.,Annem patlıcanı domatesle pişirir.,3,,food-drink
-b1-emotional,EMOTIONAL,E,STARTS,adj,çabuk duygulanan ya da duygu yüklü (sıfat),It was an emotional goodbye at the airport.,Havalimanında duygusal bir veda oldu.,3,,daily-life
+b1-emotional,EMOTIONAL,E,STARTS,adj,çabuk duygulanan ya da duygu yüklü (sıfat),It was an emotional goodbye at the airport.,Havalimanında duygusal bir veda oldu.,3,,feelings
 b1-energetic,ENERGETIC,E,STARTS,adj,"çok enerjisi olan, hareketli",My grandfather is still very energetic.,Dedem hâlâ çok enerjik.,3,,body-health
 b1-episode,EPISODE,E,STARTS,noun,bir dizinin tek bölümü,I stayed up late to watch the final episode of the show.,Programın son bölümünü izlemek için geç saate kadar uyanık kaldım.,3,,hobbies
 b1-ladybug,LADYBUG,L,STARTS,noun,kırmızı üzerine siyah benekli küçük böcek,A ladybug landed on the leaf.,Yaprağın üstüne bir uğur böceği kondu.,3,,animals
@@ -65,7 +65,7 @@ b1-leopard,LEOPARD,L,STARTS,noun,benekli tüylü büyük yırtıcı kedi,The leo
 b1-leggings,LEGGINGS,L,STARTS,noun,bacağa tam oturan esnek spor tayt,She wears leggings to the gym.,Spor salonuna tayt giyer.,3,,daily-life
 b1-lightbulb,LIGHTBULB,L,STARTS,noun,lambaya takılan ışık veren cam balon,We need a new lightbulb in the hall.,Koridora yeni bir ampul lazım.,3,,daily-life
 b1-loaf,LOAF,L,STARTS,noun,bir bütün halinde pişmiş ekmek,She bought a loaf of bread.,Bir somun ekmek aldı.,3,,food-drink
-b1-laughter,LAUGHTER,L,STARTS,noun,gülen insanların çıkardığı ses,The room was full of laughter.,Oda kahkahayla doluydu.,3,,daily-life
+b1-laughter,LAUGHTER,L,STARTS,noun,gülen insanların çıkardığı ses,The room was full of laughter.,Oda kahkahayla doluydu.,3,,feelings
 b1-librarian,LIBRARIAN,L,STARTS,noun,kütüphanede çalışan görevli,The librarian helped me find the book.,Kütüphaneci kitabı bulmama yardım etti.,3,,school-work
 b1-macaroni,MACARONI,M,STARTS,noun,"kısa, içi boş kıvrık makarna",We had macaroni and cheese for lunch.,Öğle yemeğinde peynirli makarna yedik.,3,,food-drink
 b1-mailbox,MAILBOX,M,STARTS,noun,postacının mektup bıraktığı kutu,There was a letter in the mailbox.,Posta kutusunda bir mektup vardı.,3,,daily-life

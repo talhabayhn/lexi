@@ -1,7 +1,7 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
 b2-admission,ADMISSION,A,STARTS,noun,"okul, müze vb. yere kabul; giriş ücreti",Admission to the museum is free for students.,Müzeye giriş öğrenciler için ücretsiz.,4,,travel
 b2-adventurous,ADVENTUROUS,A,STARTS,adj,yeni ve riskli şeyleri denemeyi seven,He is an adventurous traveler.,O maceracı bir gezgin.,3,,travel
-b2-alarming,ALARMING,A,STARTS,adj,korku veya endişe yaratan,The news was alarming.,Haber endişe vericiydi.,4,,daily-life
+b2-alarming,ALARMING,A,STARTS,adj,korku veya endişe yaratan,The news was alarming.,Haber endişe vericiydi.,4,,feelings
 b2-applaud,APPLAUD,A,STARTS,verb,beğenisini el çırparak göstermek,The audience began to applaud.,Seyirci alkışlamaya başladı.,3,,hobbies
 b2-assemble,ASSEMBLE,A,STARTS,verb,parçaları birleştirmek veya bir araya toplanmak,It takes an hour to assemble this shelf.,Bu rafı monte etmek bir saat sürer.,4,,daily-life
 b2-asset,ASSET,A,STARTS,noun,bir kişi veya şirketin değerli varlığı,Her language skills are a big asset.,Dil becerileri büyük bir artı.,4,,business
@@ -16,8 +16,8 @@ b2-bond,BOND,B,STARTS,noun,insanları birbirine bağlayan güçlü bağ,There is
 b2-briefly,BRIEFLY,B,STARTS,adv,"kısaca, kısa bir süreliğine",Let me briefly explain the plan.,Planı kısaca açıklayayım.,3,,business
 b2-broad,BROAD,B,STARTS,adj,"geniş, kapsamı geniş",The river is broad here.,Nehir burada geniş.,3,,daily-life
 b2-guidance,GUIDANCE,G,STARTS,noun,"yol gösterme, rehberlik",Students need guidance from their teachers.,Öğrencilerin öğretmenlerinden rehberliğe ihtiyacı var.,4,,school-work
-b2-generosity,GENEROSITY,G,STARTS,noun,karşılık beklemeden bol bol verme isteği,Thank you for your generosity.,Cömertliğin için teşekkürler.,4,,daily-life
-b2-gloomy,GLOOMY,G,STARTS,adj,karamsar veya kasvetli,"It was a gloomy, rainy day.","Kasvetli, yağmurlu bir gündü.",4,,daily-life
+b2-generosity,GENEROSITY,G,STARTS,noun,karşılık beklemeden bol bol verme isteği,Thank you for your generosity.,Cömertliğin için teşekkürler.,4,,feelings
+b2-gloomy,GLOOMY,G,STARTS,adj,karamsar veya kasvetli,"It was a gloomy, rainy day.","Kasvetli, yağmurlu bir gündü.",4,,feelings
 b2-gorgeous,GORGEOUS,G,STARTS,adj,göz kamaştıracak kadar güzel,What a gorgeous view!,Ne muhteşem bir manzara!,3,,travel
 b2-gravity,GRAVITY,G,STARTS,noun,cisimleri yere çeken kütle çekimi,Gravity pulls things down.,Yer çekimi şeyleri aşağı çeker.,4,,school-work
 b2-grumble,GRUMBLE,G,STARTS,verb,homurdanarak şikâyet etmek,He likes to grumble about cold coffee.,Soğuk kahveden yakınmayı sever.,4,,daily-life
@@ -27,7 +27,7 @@ b2-go-over,GO OVER,G,STARTS,phrasal,bir şeyi baştan sona gözden geçirmek,Let
 b2-headquarters,HEADQUARTERS,H,STARTS,noun,bir şirketin merkez binası,The company's headquarters are in Ankara.,Şirketin genel merkezi Ankara'da.,4,,business
 b2-healthcare,HEALTHCARE,H,STARTS,noun,sağlık hizmetleri,Healthcare is free in some countries.,Bazı ülkelerde sağlık hizmeti ücretsizdir.,4,,body-health
 b2-humanity,HUMANITY,H,STARTS,noun,"insanlık, insan türü",The doctor served humanity all her life.,Doktor bütün hayatı boyunca insanlığa hizmet etti.,4,,daily-life
-b2-humorous,HUMOROUS,H,STARTS,adj,"komik, espriye yatkın",He wrote a humorous story.,Komik bir hikâye yazdı.,3,,daily-life
+b2-humorous,HUMOROUS,H,STARTS,adj,"komik, espriye yatkın",He wrote a humorous story.,Komik bir hikâye yazdı.,3,,feelings
 b2-harmony,HARMONY,H,STARTS,noun,uyum ve ahenk,The neighbors live in harmony.,Komşular uyum içinde yaşıyor.,4,,daily-life
 b2-hold-out,HOLD OUT,H,STARTS,phrasal,direnip dayanmak; ele uzatmak,They cannot hold out much longer.,Daha fazla dayanamazlar.,4,,phrasal-verbs
 b2-hand-down,HAND DOWN,H,STARTS,phrasal,nesilden nesile aktarmak,I will hand down this ring to my daughter.,Bu yüzüğü kızıma miras bırakacağım.,4,,phrasal-verbs
@@ -72,20 +72,20 @@ b2-overdue,OVERDUE,O,STARTS,adj,zamanı geçmiş,The library book is overdue.,K�
 b2-underestimate,UNDERESTIMATE,U,STARTS,verb,bir şeyi olduğundan az değerlendirmek,Don't underestimate your opponent.,Rakibini hafife alma.,4,,hobbies
 b2-undermine,UNDERMINE,U,STARTS,verb,güveni veya gücü içten zayıflatmak,Rumors can undermine trust.,Söylentiler güveni zedeleyebilir.,4,,business
 b2-unaware,UNAWARE,U,STARTS,adj,bir şeyden haberi olmayan,He was unaware of the danger.,Tehlikeden habersizdi.,4,,daily-life
-b2-uneasy,UNEASY,U,STARTS,adj,"huzursuz, tedirgin",I felt uneasy in the dark street.,Karanlık sokakta tedirgin hissettim.,4,,daily-life
+b2-uneasy,UNEASY,U,STARTS,adj,"huzursuz, tedirgin",I felt uneasy in the dark street.,Karanlık sokakta tedirgin hissettim.,4,,feelings
 b2-uncover,UNCOVER,U,STARTS,verb,gizli olanı ortaya çıkarmak,Reporters uncover the truth.,Muhabirler gerçeği ortaya çıkarır.,4,,hobbies
 b2-unfamiliar,UNFAMILIAR,U,STARTS,adj,"tanıdık gelmeyen, yabancı",The street was unfamiliar to me.,Sokak bana yabancıydı.,4,,travel
-b2-unwilling,UNWILLING,U,STARTS,adj,bir şeyi yapmak istemeyen,He was unwilling to help.,Yardım etmeye isteksizdi.,4,,daily-life
+b2-unwilling,UNWILLING,U,STARTS,adj,bir şeyi yapmak istemeyen,He was unwilling to help.,Yardım etmeye isteksizdi.,4,,feelings
 b2-upcoming,UPCOMING,U,STARTS,adj,çok yakında gerçekleşecek olan,We are preparing for the upcoming exam.,Yaklaşan sınava hazırlanıyoruz.,3,,school-work
 b2-unite,UNITE,U,STARTS,verb,birleştirmek veya birleşmek,Sport can unite people.,Spor insanları birleştirebilir.,4,,hobbies
 b2-unstable,UNSTABLE,U,STARTS,adj,"dengesiz, sabit olmayan",The ladder is unstable.,Merdiven dengesiz.,4,,daily-life
 b2-vanish,VANISH,V,STARTS,verb,birden gözden kaybolmak,The magician made the coin vanish.,Sihirbaz parayı yok etti.,3,,hobbies
 b2-varied,VARIED,V,STARTS,adj,birbirinden farklı öğelerden oluşan,She has a varied diet.,Çeşitli bir beslenmesi var.,3,,food-drink
-b2-venture,VENTURE,V,STARTS,noun,riskli yeni girişim,The shop is a new business venture.,Dükkân yeni bir ticari girişim.,4,,business
-b2-verdict,VERDICT,V,STARTS,noun,mahkemenin kararı,The court reached a verdict.,Mahkeme bir karara vardı.,4,,daily-life
+b2-venture,VENTURE,V,STARTS,noun,riskli yeni girişim,The shop is a new business venture.,Dükkân yeni bir ticari girişim.,4,,economy
+b2-verdict,VERDICT,V,STARTS,noun,mahkemenin kararı,The court reached a verdict.,Mahkeme bir karara vardı.,4,,society-law
 b2-virtually,VIRTUALLY,V,STARTS,adv,"neredeyse, hemen hemen",It is virtually impossible.,Bu neredeyse imkânsız.,4,,daily-life
 b2-vivid,VIVID,V,STARTS,adj,"canlı, parlak",She has vivid memories of her childhood.,Çocukluğuna dair canlı anıları var.,4,,daily-life
-b2-vicious,VICIOUS,V,STARTS,adj,çok acımasız ve saldırgan,The dog looked vicious.,Köpek saldırgan görünüyordu.,4,,daily-life
+b2-vicious,VICIOUS,V,STARTS,adj,çok acımasız ve saldırgan,The dog looked vicious.,Köpek saldırgan görünüyordu.,4,,feelings
 b2-warmth,WARMTH,W,STARTS,noun,sıcaklık veya sıcakkanlılık,I enjoyed the warmth of the fire.,Ateşin sıcaklığından keyif aldım.,3,,daily-life
 b2-widen,WIDEN,W,STARTS,verb,bir şeyin enini artırmak,They plan to widen the road.,Yolu genişletmeyi planlıyorlar.,3,,daily-life
 b2-wander,WANDER,W,STARTS,verb,amaçsızca dolaşmak,We like to wander through the old streets.,Eski sokaklarda dolaşmayı severiz.,3,,travel

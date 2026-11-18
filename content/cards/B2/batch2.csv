@@ -20,7 +20,7 @@ b2-concern,CONCERN,C,STARTS,noun,bir konuda duyulan endişe,Her main concern is 
 b2-conduct,CONDUCT,C,STARTS,verb,araştırma ya da deney yürütmek; orkestra yönetmek,They conduct tests in the school lab.,Okul laboratuvarında testler yapıyorlar.,4,,school-work
 b2-confess,CONFESS,C,STARTS,verb,yapılan hatayı itiraf etmek,He will confess that he broke the window.,Camı kırdığını itiraf edecek.,3,,daily-life
 b2-confirm,CONFIRM,C,STARTS,verb,bir bilgiyi doğrulamak,Please confirm your booking by email.,Lütfen rezervasyonunuzu e-postayla onaylayın.,3,,travel
-b2-conflict,CONFLICT,C,STARTS,noun,uzun süren anlaşmazlık veya savaş,The conflict lasted for years.,Anlaşmazlık yıllarca sürdü.,4,,daily-life
+b2-conflict,CONFLICT,C,STARTS,noun,uzun süren anlaşmazlık veya savaş,The conflict lasted for years.,Anlaşmazlık yıllarca sürdü.,4,,society-law
 b2-confront,CONFRONT,C,STARTS,verb,bir sorunla veya kişiyle yüz yüze gelmek,You must confront your fear.,Korkunla yüzleşmelisin.,4,,daily-life
 b2-conscious,CONSCIOUS,C,STARTS,adj,bir şeyin farkında olan,She was conscious of the noise.,Gürültünün farkındaydı.,4,,daily-life
 b2-considerable,CONSIDERABLE,C,STARTS,adj,hatırı sayılır ölçüde büyük,He spent a considerable amount of money.,Hatırı sayılır miktarda para harcadı.,4,,business
@@ -116,6 +116,6 @@ b2-crop-up,CROP UP,C,STARTS,phrasal,beklenmedik biçimde ortaya çıkmak,Problem
 b2-come-down-with,COME DOWN WITH,C,STARTS,phrasal,bir hastalığa yakalanmak,I think I will come down with a cold.,Sanırım nezleye yakalanacağım.,4,,phrasal-verbs
 b2-do-without,DO WITHOUT,D,STARTS,phrasal,bir şey olmadan idare etmek,We can do without a car.,Arabasız idare edebiliriz.,4,,phrasal-verbs
 b2-critical,CRITICAL,C,STARTS,adj,çok önemli; eleştirel,It is critical to arrive on time.,Zamanında varmak çok önemli.,4,,business
-b2-decline,DECLINE,D,STARTS,noun,azalma veya düşüş,There has been a decline in sales.,Satışlarda bir düşüş yaşandı.,4,,business
-b2-dispute,DISPUTE,D,STARTS,noun,tarafların uzun süren tartışması,The neighbors had a dispute about the fence.,Komşuların çit konusunda bir anlaşmazlığı oldu.,4,,daily-life
+b2-decline,DECLINE,D,STARTS,noun,azalma veya düşüş,There has been a decline in sales.,Satışlarda bir düşüş yaşandı.,4,,economy
+b2-dispute,DISPUTE,D,STARTS,noun,tarafların uzun süren tartışması,The neighbors had a dispute about the fence.,Komşuların çit konusunda bir anlaşmazlığı oldu.,4,,society-law
 b2-extent,EXTENT,E,STARTS,noun,bir şeyin kapsamı veya ölçüsü,Nobody knows the extent of the damage.,Hasarın boyutunu kimse bilmiyor.,4,,daily-life

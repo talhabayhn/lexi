@@ -13,7 +13,7 @@ a1-again,AGAIN,A,STARTS,adv,bir kez daha,Selin missed the ferry again.,Selin vap
 a1-also,ALSO,A,STARTS,adv,bunun yanında,Ali plays the drums and also writes songs.,"Ali davul çalar, bunun yanında şarkı da yazar.",2,,daily-life
 a1-birthday,BIRTHDAY,B,STARTS,noun,doğduğun günün her yılki kutlaması,Selin blew out the candles on her birthday.,Selin doğum gününde mumları üfledi.,1,,time-weather
 a1-boring,BORING,B,STARTS,adj,insanı sıkan,The trip was so boring that I almost fell asleep.,Gezi o kadar sıkıcıydı ki neredeyse uyuyakalacaktım.,2,,daily-life
-a1-cheap,CHEAP,C,STARTS,adj,fiyatı düşük,"These pants are cheap, just a few dollars.","Bu pantolon ucuz, sadece birkaç dolar.",1,,daily-life
+a1-cheap,CHEAP,C,STARTS,adj,fiyatı düşük,"These pants are cheap, just a few dollars.","Bu pantolon ucuz, sadece birkaç dolar.",1,,clothes-shopping
 a1-country,COUNTRY,C,STARTS,noun,sınırları ve hükûmeti olan toprak parçası,This country has lovely beaches.,Bu ülkenin güzel plajları var.,2,,city-transport
 a1-different,DIFFERENT,D,STARTS,adj,birbirine benzemeyen,Cats and dogs are different.,Kediler ve köpekler birbirinden farklıdır.,2,,daily-life
 a1-down,DOWN,D,STARTS,adv,aşağıya doğru,Mert ran down the steps.,Mert merdivenlerden aşağı koştu.,2,,daily-life
@@ -29,9 +29,9 @@ a1-now,NOW,N,STARTS,adv,şu anda,Do it now!,Şimdi yap!,1,,time-weather
 a1-news,NEWS,N,STARTS,noun,yeni olaylar hakkında verilen bilgi,I have news for you.,Sana bir haberim var.,2,,daily-life
 a1-of-course,OF COURSE,O,STARTS,phrase,"tabii ki, elbette",Is Ali clever? Of course!,Ali akıllı mı? Tabii ki!,2,,daily-life
 a1-okay,OKAY,O,STARTS,adj,sorunu olmayan,"Selin fell, but she is okay.",Selin düştü ama sorunu yok.,1,,daily-life
-a1-photo,PHOTO,P,STARTS,noun,kamerayla çekilen görüntü,Her photo is in my purse.,Onun fotoğrafı çantamda.,1,,daily-life
+a1-photo,PHOTO,P,STARTS,noun,kamerayla çekilen görüntü,Her photo is in my purse.,Onun fotoğrafı çantamda.,1,,hobbies
 a1-place,PLACE,P,STARTS,noun,"yer, mekân",This is a lovely place.,Burası güzel bir yer.,2,,city-transport
-a1-price,PRICE,P,STARTS,noun,bir şey için ödenecek para miktarı,The price is low.,Fiyat düşük.,2,,daily-life
+a1-price,PRICE,P,STARTS,noun,bir şey için ödenecek para miktarı,The price is low.,Fiyat düşük.,2,,clothes-shopping
 a1-really,REALLY,R,STARTS,adv,"sahiden, cidden",That is really lovely!,Bu gerçekten çok güzel!,2,,daily-life
 a1-rainy,RAINY,R,STARTS,adj,çok yağmur yağan,It is rainy in Rize.,Rize'de hava yağmurlu.,2,,time-weather
 a1-sometimes,SOMETIMES,S,STARTS,adv,"bazen, ara ara",Sometimes Ali cries.,Bazen Ali ağlar.,2,,time-weather
@@ -73,7 +73,7 @@ a1-girlfriend,GIRLFRIEND,G,STARTS,noun,bir erkeğin kız sevgilisi,His girlfrien
 a1-find,FIND,F,STARTS,verb,aranan şeye rastlamak,I cannot find my keys.,Anahtarlarımı bulamıyorum.,1,,daily-life
 a1-forget,FORGET,F,STARTS,verb,aklından çıkarmak,"Selin, do not forget to lock the gate.","Selin, kapıyı kilitlemeyi aklından çıkarma.",2,,daily-life
 a1-make,MAKE,M,STARTS,verb,bir şeyi yapıp ortaya çıkarmak,Let us make a poster.,Bir poster yapalım.,1,,daily-life
-a1-pay,PAY,P,STARTS,verb,karşılığında para vermek,I pay in cash.,Nakit ödüyorum.,1,,daily-life
+a1-pay,PAY,P,STARTS,verb,karşılığında para vermek,I pay in cash.,Nakit ödüyorum.,1,,clothes-shopping
 a1-start,START,S,STARTS,verb,bir işe girişmek,The fireworks will start at midnight.,Havai fişekler gece yarısı başlayacak.,1,,daily-life
 a1-teach,TEACH,T,STARTS,verb,birine bilgi öğretmek,Can you teach me?,Bana öğretir misin?,2,,school-work
 a1-tell,TELL,T,STARTS,verb,bir şeyi söyleyerek bildirmek,Tell me the truth.,Bana doğruyu söyle.,1,,daily-life
@@ -85,8 +85,8 @@ a1-sad,SAD,S,STARTS,adj,keyfi kaçmış,Ali looks sad.,Ali üzgün görünüyor.
 a1-thirsty,THIRSTY,T,STARTS,adj,su içmek isteyen,Are you thirsty?,Susadın mı?,1,,food-drink
 a1-bring,BRING,B,STARTS,verb,bir şeyi bulunduğun yere getirmek,Mert will bring snacks to the barbecue.,Mert barbekü partisine atıştırmalık getirecek.,2,,daily-life
 a1-word,WORD,W,STARTS,noun,anlamı olan harf dizisi,Selin knows this word.,Selin bu sözcüğü biliyor.,1,,school-work
-a1-scarf,SCARF,S,STARTS,noun,boyna sarılan uzun kumaş,Ayşe made this scarf.,Ayşe bu atkıyı yaptı.,1,,daily-life
-a1-sock,SOCK,S,STARTS,noun,ayağa ayakkabıdan önce giyilen yumuşak kumaş,There is a hole in my sock.,Çorabımda bir delik var.,1,,daily-life
+a1-scarf,SCARF,S,STARTS,noun,boyna sarılan uzun kumaş,Ayşe made this scarf.,Ayşe bu atkıyı yaptı.,1,,clothes-shopping
+a1-sock,SOCK,S,STARTS,noun,ayağa ayakkabıdan önce giyilen yumuşak kumaş,There is a hole in my sock.,Çorabımda bir delik var.,1,,clothes-shopping
 a1-dentist,DENTIST,D,STARTS,noun,dişleri tedavi eden kişi,The dentist looks at my teeth.,Diş hekimi dişlerime bakıyor.,2,,body-health
 a1-pilot,PILOT,P,STARTS,noun,uçağı kullanan kişi,The pilot speaks to the passengers.,Pilot yolcularla konuşuyor.,2,,school-work
 a1-farmer,FARMER,F,STARTS,noun,tarlada ürün yetiştiren kişi,The farmer is in the field.,Çiftçi tarlada.,1,,school-work
@@ -94,4 +94,4 @@ a1-waiter,WAITER,W,STARTS,noun,restoranda yemek servisi yapan kişi,The waiter i
 a1-tourist,TOURIST,T,STARTS,noun,gezmek için başka bir yere gelen kişi,The tourist is lost.,Turist yolunu kaybetmiş.,2,,city-transport
 a1-singer,SINGER,S,STARTS,noun,şarkı söylemeyi meslek edinmiş kişi,That singer is excellent.,O şarkıcı mükemmel.,2,,school-work
 a1-cafe,CAFE,C,STARTS,noun,kahve ve hafif yiyecek satılan küçük mekân,Selin met Ali at the cafe for an espresso.,Selin espresso için Ali ile kafede buluştu.,2,,city-transport
-a1-glove,GLOVE,G,STARTS,noun,parmakları saran ve eli koruyan giysi,The goalkeeper wore a padded glove to save penalties.,Kaleci penaltıları kurtarmak için dolgulu bir eldiven taktı.,1,,daily-life
+a1-glove,GLOVE,G,STARTS,noun,parmakları saran ve eli koruyan giysi,The goalkeeper wore a padded glove to save penalties.,Kaleci penaltıları kurtarmak için dolgulu bir eldiven taktı.,1,,clothes-shopping

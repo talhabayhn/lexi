@@ -22,7 +22,7 @@ b2-wellness,WELLNESS,W,STARTS,noun,beden ve ruh sağlığının iyi olması,Many
 b2-worsen,WORSEN,W,STARTS,verb,daha kötü hale gelmek ya da getirmek,Heavy rain could worsen the flooding in the valley.,Şiddetli yağmur vadideki taşkını daha da kötüleştirebilir.,3,,daily-life
 b2-wrapper,WRAPPER,W,STARTS,noun,şeker ya da yiyecek paketinin dış kâğıdı,Please put the candy wrapper in the bin.,Lütfen şeker ambalajını çöp kutusuna at.,3,,food-drink
 b2-wasteful,WASTEFUL,W,STARTS,adj,"gereksiz yere harcayan, israf eden",It is wasteful to leave the lights on all night.,Bütün gece ışıkları açık bırakmak israftır.,3,,daily-life
-b2-lease,LEASE,L,STARTS,noun,uzun süreli yapılan kira sözleşmesi,"Our lease ends in June, so we must find a new apartment.","Kira sözleşmemiz haziranda bitiyor, bu yüzden yeni bir daire bulmalıyız.",4,,business
+b2-lease,LEASE,L,STARTS,noun,uzun süreli yapılan kira sözleşmesi,"Our lease ends in June, so we must find a new apartment.","Kira sözleşmemiz haziranda bitiyor, bu yüzden yeni bir daire bulmalıyız.",4,,economy
 b2-linen,LINEN,L,STARTS,noun,ketenden dokunan hafif kumaş,A white linen shirt is perfect for hot summer days.,Beyaz keten gömlek sıcak yaz günleri için mükemmeldir.,4,,daily-life
 b2-leadership,LEADERSHIP,L,STARTS,noun,bir grubu yönetme becerisi ya da yönetici konumu,Strong leadership helped the team through the crisis.,Güçlü liderlik ekibin krizi atlatmasına yardımcı oldu.,3,,business
 b2-lengthy,LENGTHY,L,STARTS,adj,"çok uzun süren, uzayıp giden",The lengthy meeting ended after midnight.,Uzayıp giden toplantı gece yarısından sonra bitti.,3,,business
@@ -35,28 +35,28 @@ b2-urge,URGE,U,STARTS,verb,fiil: birine bir şey yapması için ısrarla yüklen
 b2-underneath,UNDERNEATH,U,STARTS,adv,"bir şeyin hemen altında, onun örttüğü yerde",She lifted the rug and found a coin underneath.,Halıyı kaldırdı ve altında bir bozuk para buldu.,3,,daily-life
 b2-unbearable,UNBEARABLE,U,STARTS,adj,katlanılamayacak kadar kötü,The heat in the tiny room was unbearable.,Küçücük odadaki sıcak dayanılmazdı.,3,,daily-life
 b2-uncommon,UNCOMMON,U,STARTS,adj,yaygın olmayan; seyrek rastlanan,It is uncommon to see snow in this part of the country.,Ülkenin bu bölgesinde kar görmek nadirdir.,3,,daily-life
-b2-underpaid,UNDERPAID,U,STARTS,adj,emeğinin karşılığından az maaş alan,Nurses are often underpaid for the long hours they work.,Hemşireler çalıştıkları uzun saatler için çoğu zaman düşük maaş alır.,3,,business
+b2-underpaid,UNDERPAID,U,STARTS,adj,emeğinin karşılığından az maaş alan,Nurses are often underpaid for the long hours they work.,Hemşireler çalıştıkları uzun saatler için çoğu zaman düşük maaş alır.,3,,economy
 b2-notify,NOTIFY,N,STARTS,verb,"resmen bilgi vermek, haber vermek",Please notify us if you change your address.,Adresinizi değiştirirseniz lütfen bize bildirin.,4,,daily-life
 b2-nausea,NAUSEA,N,STARTS,noun,mide bulantısı,The smell of the hospital gave him a feeling of nausea.,Hastanenin kokusu ona mide bulantısı hissettirdi.,4,,body-health
 b2-necessarily,NECESSARILY,N,STARTS,adv,"zorunlu olarak, mutlaka",Expensive does not necessarily mean better.,Pahalı olmak mutlaka daha iyi olmak demek değildir.,4,,daily-life
-b2-naive,NAIVE,N,STARTS,adj,"deneyimsiz ve kolay kandırılan, saf",It was naive to believe everything he said.,Söylediği her şeye inanmak saflıktı.,4,,daily-life
+b2-naive,NAIVE,N,STARTS,adj,"deneyimsiz ve kolay kandırılan, saf",It was naive to believe everything he said.,Söylediği her şeye inanmak saflıktı.,4,,feelings
 b2-needy,NEEDY,N,STARTS,adj,maddi olarak yardıma muhtaç,The charity gives hot meals to needy families.,Hayır kurumu yardıma muhtaç ailelere sıcak yemek veriyor.,3,,daily-life
 b2-networking,NETWORKING,N,STARTS,noun,iş için insanlarla tanışıp bağlantı kurma,Networking at conferences can help you find a new job.,Konferanslarda iş çevresi edinmek yeni bir iş bulmanıza yardımcı olabilir.,3,,business
 b2-nitrogen,NITROGEN,N,STARTS,noun,havanın büyük kısmını oluşturan renksiz gaz,Nitrogen makes up about 78 percent of the air we breathe.,"Azot, soluduğumuz havanın yaklaşık yüzde 78'ini oluşturur.",4,,school-work
 b2-nonfiction,NONFICTION,N,STARTS,noun,"gerçeklere dayanan, kurgu olmayan yazılar","She mostly reads nonfiction, such as biographies and history books.",Çoğunlukla biyografi ve tarih kitabı gibi kurgu olmayan eserler okuyor.,3,,school-work
-b2-kidnap,KIDNAP,K,STARTS,verb,bir kişiyi zorla kaçırıp alıkoymak,Two men tried to kidnap the businessman outside his hotel.,İki adam iş insanını otelinin önünde kaçırmaya çalıştı.,3,sensitive,daily-life
-b2-knit,KNIT,K,STARTS,verb,yün ipliğini şişle örmek,My grandmother used to knit scarves for the whole family.,Büyükannem bütün aile için atkı örürdü.,3,,daily-life
+b2-kidnap,KIDNAP,K,STARTS,verb,bir kişiyi zorla kaçırıp alıkoymak,Two men tried to kidnap the businessman outside his hotel.,İki adam iş insanını otelinin önünde kaçırmaya çalıştı.,3,sensitive,society-law
+b2-knit,KNIT,K,STARTS,verb,yün ipliğini şişle örmek,My grandmother used to knit scarves for the whole family.,Büyükannem bütün aile için atkı örürdü.,3,,hobbies
 b2-knowingly,KNOWINGLY,K,STARTS,adv,"bile bile, farkında olarak",He would never knowingly hurt anyone.,"O, kimseyi bile bile asla incitmez.",4,,daily-life
-b2-tenant,TENANT,T,STARTS,noun,ev sahibine kira ödeyerek oturan kişi,The tenant paid the rent on the first day of every month.,Kiracı kirayı her ayın ilk günü ödüyordu.,3,,daily-life
-b2-thrill,THRILL,T,STARTS,noun,"ani ve güçlü bir heyecan, haz",Riding the roller coaster gave him a thrill he would never forget.,Hız treni ona asla unutamayacağı bir heyecan yaşattı.,4,,daily-life
+b2-tenant,TENANT,T,STARTS,noun,ev sahibine kira ödeyerek oturan kişi,The tenant paid the rent on the first day of every month.,Kiracı kirayı her ayın ilk günü ödüyordu.,3,,economy
+b2-thrill,THRILL,T,STARTS,noun,"ani ve güçlü bir heyecan, haz",Riding the roller coaster gave him a thrill he would never forget.,Hız treni ona asla unutamayacağı bir heyecan yaşattı.,4,,feelings
 b2-tragedy,TRAGEDY,T,STARTS,noun,çok insanın acı çektiği büyük felaket,The flood was a tragedy for the whole village.,Sel bütün köy için büyük bir facia oldu.,4,,daily-life
-b2-tribe,TRIBE,T,STARTS,noun,ortak kültürü olan geleneksel topluluk,The tribe lives deep in the rainforest and hunts with bows.,Kabile yağmur ormanının derinlerinde yaşar ve yaylarla avlanır.,4,,daily-life
+b2-tribe,TRIBE,T,STARTS,noun,ortak kültürü olan geleneksel topluluk,The tribe lives deep in the rainforest and hunts with bows.,Kabile yağmur ormanının derinlerinde yaşar ve yaylarla avlanır.,4,,society-law
 b2-tuition,TUITION,T,STARTS,noun,okul ya da üniversite için ödenen eğitim ücreti,Tuition at private universities rises every year.,Özel üniversitelerin öğrenim ücreti her yıl artıyor.,4,,school-work
-b2-temper,TEMPER,T,STARTS,noun,kolay öfkelenmeye yatkın huy,He has a terrible temper and shouts when he loses.,Çok kötü bir huyu var ve kaybedince bağırıyor.,4,,daily-life
+b2-temper,TEMPER,T,STARTS,noun,kolay öfkelenmeye yatkın huy,He has a terrible temper and shouts when he loses.,Çok kötü bir huyu var ve kaybedince bağırıyor.,4,,feelings
 b2-therapist,THERAPIST,T,STARTS,noun,ruhsal sorunlarda görüşme yapan uzman,Her therapist suggested keeping a daily diary.,Terapisti günlük tutmasını önerdi.,3,,body-health
 b2-tactic,TACTIC,T,STARTS,noun,bir mücadelede kullanılan özel yöntem,The coach changed his tactic in the second half.,Antrenör ikinci yarıda taktiğini değiştirdi.,3,,hobbies
 b2-marathon,MARATHON,M,STARTS,noun,42 kilometrelik uzun mesafe koşusu,He trained for months to run the marathon.,Maratonu koşmak için aylarca antrenman yaptı.,3,,hobbies
-b2-mortgage,MORTGAGE,M,STARTS,noun,ev almak için bankadan alınan uzun vadeli kredi,They took out a mortgage to buy their first home.,İlk evlerini almak için konut kredisi çektiler.,4,,business
+b2-mortgage,MORTGAGE,M,STARTS,noun,ev almak için bankadan alınan uzun vadeli kredi,They took out a mortgage to buy their first home.,İlk evlerini almak için konut kredisi çektiler.,4,,economy
 b2-mumble,MUMBLE,M,STARTS,verb,anlaşılmayacak kadar alçak sesle konuşmak,Please do not mumble; I cannot hear a word you say.,Lütfen mırıldanma; söylediğin tek kelimeyi duyamıyorum.,4,,daily-life
 b2-masterpiece,MASTERPIECE,M,STARTS,noun,bir sanatçının en değerli büyük eseri,Critics call the film a masterpiece.,Eleştirmenler filme başyapıt diyor.,4,,hobbies
 b2-miracle,MIRACLE,M,STARTS,noun,bilimle açıklanamayan harika olay,It was a miracle that nobody was hurt in the crash.,Kazada kimsenin yaralanmaması bir mucizeydi.,3,,daily-life
@@ -72,13 +72,13 @@ b2-hassle,HASSLE,H,STARTS,noun,"can sıkan zahmet, dert",Renewing a visa can be 
 b2-handbook,HANDBOOK,H,STARTS,noun,bir konunun temel bilgilerini veren kılavuz kitap,Every new employee receives a handbook on the first day.,Her yeni çalışan ilk gün bir el kitabı alır.,3,,business
 b2-hilarious,HILARIOUS,H,STARTS,adj,güldürmekten kırıp geçiren,"The comedian was hilarious, and we laughed all night.",Komedyen çok komikti ve bütün gece güldük.,4,,hobbies
 b2-herbal,HERBAL,H,STARTS,adj,"bitkilerden elde edilen (çay, ilaç)",She drinks herbal tea before bed.,Yatmadan önce bitki çayı içer.,3,,food-drink
-b2-hatred,HATRED,H,STARTS,noun,birine duyulan derin nefret,Years of war left a deep hatred between the two peoples.,Yıllarca süren savaş iki halk arasında derin bir nefret bıraktı.,4,,daily-life
-b2-eager,EAGER,E,STARTS,adj,"bir şeyi yapmayı çok isteyen, hevesli",The children were eager to open their presents.,Çocuklar hediyelerini açmak için sabırsızlanıyordu.,3,,daily-life
+b2-hatred,HATRED,H,STARTS,noun,birine duyulan derin nefret,Years of war left a deep hatred between the two peoples.,Yıllarca süren savaş iki halk arasında derin bir nefret bıraktı.,4,,feelings
+b2-eager,EAGER,E,STARTS,adj,"bir şeyi yapmayı çok isteyen, hevesli",The children were eager to open their presents.,Çocuklar hediyelerini açmak için sabırsızlanıyordu.,3,,feelings
 b2-effortless,EFFORTLESS,E,STARTS,adj,hiç zorlanmadan yapılmış gibi görünen,"Her dancing looked effortless, though she practiced daily.",Her gün çalışmasına rağmen dansı zahmetsiz görünüyordu.,4,,daily-life
-b2-easygoing,EASYGOING,E,STARTS,adj,"rahat tavırlı, kolay kızmayan",My boss is easygoing and rarely gets upset.,Patronum rahat tavırlı biridir ve nadiren sinirlenir.,3,,daily-life
+b2-easygoing,EASYGOING,E,STARTS,adj,"rahat tavırlı, kolay kızmayan",My boss is easygoing and rarely gets upset.,Patronum rahat tavırlı biridir ve nadiren sinirlenir.,3,,feelings
 b2-elegant,ELEGANT,E,STARTS,adj,"şık ve incelikli, zarif",She wore an elegant black dress to the concert.,Konsere zarif siyah bir elbiseyle gitti.,3,,daily-life
-b2-embarrass,EMBARRASS,E,STARTS,verb,birini başkalarının yanında mahcup etmek,Do not embarrass me in front of my friends.,Arkadaşlarımın önünde beni utandırma.,3,,daily-life
-b2-gamble,GAMBLE,G,STARTS,verb,"şansa güvenip para oynamak, kumar oynamak",He lost his savings when he began to gamble at the casino.,Kumarhanede kumar oynamaya başlayınca birikimini kaybetti.,4,,daily-life
+b2-embarrass,EMBARRASS,E,STARTS,verb,birini başkalarının yanında mahcup etmek,Do not embarrass me in front of my friends.,Arkadaşlarımın önünde beni utandırma.,3,,feelings
+b2-gamble,GAMBLE,G,STARTS,verb,"şansa güvenip para oynamak, kumar oynamak",He lost his savings when he began to gamble at the casino.,Kumarhanede kumar oynamaya başlayınca birikimini kaybetti.,4,,hobbies
 b2-glamorous,GLAMOROUS,G,STARTS,adj,göz alıcı ve gösterişli,Not every actor lives a glamorous life.,Her oyuncu gösterişli bir hayat yaşamaz.,4,,hobbies
 b2-graceful,GRACEFUL,G,STARTS,adj,hareketleri akıcı ve narin,The dancer's graceful movements amazed the audience.,Dansçının zarif hareketleri seyirciyi hayran bıraktı.,4,,daily-life
 b2-groan,GROAN,G,STARTS,verb,acı ya da sıkıntıyla inler gibi ses çıkarmak,The students groan whenever the teacher mentions a test.,Öğretmen sınavdan söz ettiğinde öğrenciler inliyor.,3,,school-work

@@ -5,8 +5,8 @@ a2-van,VAN,V,STARTS,noun,yük taşıyan küçük kapalı araç,A van is waiting 
 a2-vacation,VACATION,V,STARTS,noun,işten ya da okuldan izinli geçirilen günler,We are going on vacation to Italy next week.,Gelecek hafta İtalya'ya tatile gidiyoruz.,3,,travel
 a2-view,VIEW,V,STARTS,noun,pencereden görünen doğa ya da şehir,The view from the window is great.,Pencereden manzara çok güzel.,3,,daily-life
 a2-yard,YARD,Y,STARTS,noun,evin yanındaki taş döşeli açık alan,Our yard is very small.,Avlumuz çok küçük.,3,,home
-a2-size,SIZE,Z,CONTAINS,noun,giysinin numarası,Do you have this in a bigger size?,Bunun daha büyük bedeni var mı?,2,,daily-life
-a2-zip,ZIP,Z,STARTS,verb,fermuarı çekip kapatmak,"Can you zip it, Ali?","Fermuarı çeker misin, Ali?",3,,daily-life
+a2-size,SIZE,Z,CONTAINS,noun,giysinin numarası,Do you have this in a bigger size?,Bunun daha büyük bedeni var mı?,2,,clothes-shopping
+a2-zip,ZIP,Z,STARTS,verb,fermuarı çekip kapatmak,"Can you zip it, Ali?","Fermuarı çeker misin, Ali?",3,,clothes-shopping
 a2-keep,KEEP,K,STARTS,verb,"tutmak, saklamak",You can keep the book for a week.,Kitabı bir hafta boyunca tutabilirsin.,2,,daily-life
 a2-violin,VIOLIN,V,STARTS,noun,"yayla çalınan, dört telli çalgı",The violin sounds lovely.,Keman çok güzel ses çıkarıyor.,2,,hobbies
 a2-voice,VOICE,V,STARTS,noun,insanın konuşurken çıkardığı ses,The singer has a beautiful voice.,Şarkıcının güzel bir sesi var.,2,,daily-life

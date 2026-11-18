@@ -1,6 +1,6 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
 b2-radical,RADICAL,R,STARTS,adj,köklü ve ani değişiklik getiren,The city plans radical changes to its traffic system.,Şehir trafik sisteminde köklü değişiklikler planlıyor.,4,,business
-b2-rebel,REBEL,R,STARTS,noun,"düzene karşı gelen kişi, asi",He was a rebel in his teenage years.,Gençliğinde bir asiydi.,4,,daily-life
+b2-rebel,REBEL,R,STARTS,noun,"düzene karşı gelen kişi, asi",He was a rebel in his teenage years.,Gençliğinde bir asiydi.,4,,society-law
 b2-recall,RECALL,R,STARTS,verb,(resmî) akla getirmek; kusurlu ürünü geri çağırmak,I cannot recall his name.,Adını hatırlayamıyorum.,4,,daily-life
 b2-recruit,RECRUIT,R,STARTS,verb,işe veya orduya eleman almak,The company wants to recruit young graduates.,Şirket genç mezunları işe almak istiyor.,4,,business
 b2-regard,REGARD,R,STARTS,verb,birine veya bir şeye belli gözle bakmak,Many people regard him as a hero.,Birçok insan onu kahraman olarak görüyor.,4,,daily-life
@@ -18,7 +18,7 @@ b2-restore,RESTORE,R,STARTS,verb,eski haline getirmek,They restore old paintings
 b2-restrict,RESTRICT,R,STARTS,verb,"sınırlamak, kısıtlamak",The law will restrict the use of plastic.,Yasa plastik kullanımını kısıtlayacak.,4,,business
 b2-retain,RETAIN,R,STARTS,verb,"bir şeyi elinde tutmak, korumak",It is hard to retain so much information.,Bu kadar çok bilgiyi akılda tutmak zor.,4,,school-work
 b2-reveal,REVEAL,R,STARTS,verb,gizli bir şeyi açığa çıkarmak,The results will reveal the truth.,Sonuçlar gerçeği ortaya çıkaracak.,4,,school-work
-b2-revenue,REVENUE,R,STARTS,noun,bir şirketin geliri,The company's revenue grew by ten percent.,Şirketin geliri yüzde on arttı.,4,,business
+b2-revenue,REVENUE,R,STARTS,noun,bir şirketin geliri,The company's revenue grew by ten percent.,Şirketin geliri yüzde on arttı.,4,,economy
 b2-reverse,REVERSE,R,STARTS,verb,yönünü veya sırasını ters çevirmek,The car began to reverse slowly.,Araba yavaşça geri gitmeye başladı.,3,,daily-life
 b2-rigid,RIGID,R,STARTS,adj,"esnemeyen, katı",The rules at this school are rigid.,Bu okulun kuralları katı.,4,,school-work
 b2-run-into,RUN INTO,R,STARTS,phrasal,birine tesadüfen rastlamak,I might run into an old friend.,Eski bir arkadaşa rastlayabilirim.,4,,phrasal-verbs

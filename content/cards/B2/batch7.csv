@@ -11,7 +11,7 @@ b2-transform,TRANSFORM,T,STARTS,verb,bir şeyi başka bir hale getirmek,The new 
 b2-transparent,TRANSPARENT,T,STARTS,adj,"içinden görülebilen, şeffaf",The box is made of transparent plastic.,Kutu şeffaf plastikten yapılmış.,3,,business
 b2-tremendous,TREMENDOUS,T,STARTS,adj,çok büyük ve etkileyici,The team made a tremendous effort.,Takım muazzam bir çaba gösterdi.,4,,hobbies
 b2-trigger,TRIGGER,T,STARTS,verb,bir olayı başlatmak,Smoke can trigger the alarm.,Duman alarmı çalıştırabilir.,4,,business
-b2-turnover,TURNOVER,T,STARTS,noun,bir şirketin yıllık satış cirosu,The company's turnover doubled last year.,Şirketin cirosu geçen yıl iki katına çıktı.,4,,business
+b2-turnover,TURNOVER,T,STARTS,noun,bir şirketin yıllık satış cirosu,The company's turnover doubled last year.,Şirketin cirosu geçen yıl iki katına çıktı.,4,,economy
 b2-take-over,TAKE OVER,T,STARTS,phrasal,bir şirketin ya da işin yönetimini devralmak,She will take over the business next year.,İşi gelecek yıl devralacak.,4,,phrasal-verbs
 b2-take-up,TAKE UP,T,STARTS,phrasal,yeni bir hobiye başlamak,I want to take up painting.,Resim yapmaya başlamak istiyorum.,3,,phrasal-verbs
 b2-take-after,TAKE AFTER,T,STARTS,phrasal,anne babaya benzemek,She seems to take after her father.,Babasına çekmiş gibi görünüyor.,4,,phrasal-verbs
@@ -42,12 +42,12 @@ b2-viewpoint,VIEWPOINT,V,STARTS,noun,"kişisel görüş noktası, bakış açıs
 b2-visual,VISUAL,V,STARTS,adj,görme duyusuyla ilgili,Children enjoy visual learning.,Çocuklar görsel öğrenmeyi sever.,3,,school-work
 b2-vital,VITAL,V,STARTS,adj,hayati derecede önemli,Water is vital for life.,Su yaşam için hayatidir.,4,,body-health
 b2-voluntary,VOLUNTARY,V,STARTS,adj,"isteğe bağlı, zorunlu olmayan",The course is voluntary.,Kurs isteğe bağlı.,4,,school-work
-b2-vulnerable,VULNERABLE,V,STARTS,adj,"zarar görmeye açık, savunmasız",Small children are vulnerable.,Küçük çocuklar savunmasızdır.,4,,daily-life
+b2-vulnerable,VULNERABLE,V,STARTS,adj,"zarar görmeye açık, savunmasız",Small children are vulnerable.,Küçük çocuklar savunmasızdır.,4,,feelings
 b2-weaken,WEAKEN,W,STARTS,verb,güçsüz hale getirmek veya gücü azalmak,The illness began to weaken him.,Hastalık onu zayıflatmaya başladı.,4,,body-health
 b2-welfare,WELFARE,W,STARTS,noun,kişilerin sağlık ve mutluluk durumu,The government cares about citizens' welfare.,Hükümet vatandaşların refahını önemsiyor.,4,,business
 b2-whereas,WHEREAS,W,STARTS,phrase,"oysa, -e karşılık","He likes tea, whereas she prefers coffee.","O çayı sever, oysa kız kahveyi tercih eder.",4,,school-work
 b2-widespread,WIDESPREAD,W,STARTS,adj,geniş bir alana yayılmış,The flu is widespread this winter.,Bu kış grip yaygın.,4,,body-health
-b2-wisdom,WISDOM,W,STARTS,noun,deneyimle kazanılan bilgelik,Old people are full of wisdom.,Yaşlılar bilgelikle doludur.,4,,daily-life
+b2-wisdom,WISDOM,W,STARTS,noun,deneyimle kazanılan bilgelik,Old people are full of wisdom.,Yaşlılar bilgelikle doludur.,4,,feelings
 b2-worthwhile,WORTHWHILE,W,STARTS,adj,emeğe veya paraya değer,The trip was worthwhile.,Gezi zahmete değdi.,4,,travel
 b2-wreck,WRECK,W,STARTS,noun,kaza sonucu parçalanmış araç veya yapı,The wreck of the ship lay on the beach.,Geminin enkazı sahilde yatıyordu.,4,,travel
 b2-warm-up,WARM UP,W,STARTS,phrasal,ısınmak veya ısıtmak,Warm up before you run.,Koşmadan önce ısın.,3,,phrasal-verbs

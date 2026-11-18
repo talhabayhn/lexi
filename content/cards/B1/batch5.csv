@@ -20,13 +20,13 @@ b1-launch,LAUNCH,N,CONTAINS,verb,yeni bir ürünü piyasaya sürmek,The company 
 b1-unique,UNIQUE,N,CONTAINS,adj,"dünyada bir benzeri olmayan, eşsiz",Every fingerprint is unique.,Her parmak izi eşsizdir.,4,,daily-life
 b1-tension,TENSION,N,CONTAINS,noun,insanlar arasındaki gergin hava,There was tension in the room.,Odada bir gerginlik vardı.,4,,family-people
 b1-sensible,SENSIBLE,N,CONTAINS,adj,mantıklı ve akıllıca davranan,It is sensible to wear a helmet.,Kask takmak akıllıca.,3,,daily-life
-b1-sensitive,SENSITIVE,N,CONTAINS,adj,çabuk duygulanan veya kolay etkilenen,She is very sensitive to criticism.,Eleştiriye karşı çok hassas.,4,,family-people
+b1-sensitive,SENSITIVE,N,CONTAINS,adj,çabuk duygulanan veya kolay etkilenen,She is very sensitive to criticism.,Eleştiriye karşı çok hassas.,4,,feelings
 b1-senior,SENIOR,N,CONTAINS,adj,yaşça ya da konumca üstte olan,He is a senior manager in the bank.,Bankada üst düzey bir yönetici.,4,,business
 b1-punish,PUNISH,N,CONTAINS,verb,yanlış yapan birine ceza vermek,Parents should not punish children too hard.,Anne babalar çocukları çok sert cezalandırmamalı.,3,,family-people
 b1-stranger,STRANGER,N,CONTAINS,noun,"tanımadığımız kişi, yabancı",Never talk to a stranger online.,İnternette asla bir yabancıyla konuşma.,3,,family-people
 b1-strength,STRENGTH,N,CONTAINS,noun,fiziksel güç,He lifted the box with great strength.,Kutuyu büyük bir güçle kaldırdı.,3,,body-health
 b1-translate,TRANSLATE,N,CONTAINS,verb,bir metni başka dile çevirmek,Can you translate this letter for me?,Bu mektubu benim için çevirebilir misin?,3,,school-work
-b1-pension,PENSION,N,CONTAINS,noun,emeklilikte alınan aylık maaş,My grandfather lives on his pension.,Dedem emekli maaşıyla geçiniyor.,4,,business
+b1-pension,PENSION,N,CONTAINS,noun,emeklilikte alınan aylık maaş,My grandfather lives on his pension.,Dedem emekli maaşıyla geçiniyor.,4,,economy
 b1-range,RANGE,N,CONTAINS,noun,bir ürün grubu veya çeşit yelpazesi,The shop sells a wide range of shoes.,Mağaza geniş bir ayakkabı yelpazesi satıyor.,4,,business
 b1-obey,OBEY,O,STARTS,verb,kurala veya emre uymak,Dogs must obey their owners.,Köpekler sahiplerine itaat etmeli.,3,,daily-life
 b1-occasion,OCCASION,O,STARTS,noun,belirli bir özel zaman veya olay,The wedding was a happy occasion.,Düğün mutlu bir vesileydi.,4,,daily-life
@@ -40,47 +40,47 @@ b1-ordinary,ORDINARY,O,STARTS,adj,"sıradan, özel olmayan",It was an ordinary d
 b1-organisation,ORGANIZATION,O,STARTS,noun,belli bir amaçla kurulmuş kuruluş,She works for a big organization.,Büyük bir kuruluşta çalışıyor.,3,,business
 b1-original,ORIGINAL,O,STARTS,adj,"ilk ve gerçek olan, özgün",This is the original painting.,"Bu, orijinal tablo.",3,,daily-life
 b1-overnight,OVERNIGHT,O,STARTS,adv,"bir geceyi geçirerek, gece boyunca",We stayed overnight in a small hotel.,Küçük bir otelde geceledik.,3,,travel
-b1-owe,OWE,O,STARTS,verb,birine borçlu olmak,I owe you ten pounds.,Sana on pound borcum var.,3,,business
+b1-owe,OWE,O,STARTS,verb,birine borçlu olmak,I owe you ten pounds.,Sana on pound borcum var.,3,,economy
 b1-painful,PAINFUL,P,STARTS,adj,acı veren,His knee is still painful.,Dizi hâlâ acıyor.,3,,body-health
 b1-palm,PALM,P,STARTS,noun,elin iç yüzü,She held the coin in her palm.,Parayı avucunda tuttu.,3,,body-health
 b1-particular,PARTICULAR,P,STARTS,adj,"belirli, özel olan",Is there a particular dish you like?,Sevdiğin belirli bir yemek var mı?,4,,daily-life
 b1-pattern,PATTERN,P,STARTS,noun,kumaştaki ya da duvardaki tekrarlayan desen,I like the pattern on that dress.,O elbisenin üzerindeki deseni beğeniyorum.,3,,daily-life
-b1-payment,PAYMENT,P,STARTS,noun,bir şey için yapılan ödeme,We accept payment by card.,Kartla ödeme kabul ediyoruz.,3,,business
+b1-payment,PAYMENT,P,STARTS,noun,bir şey için yapılan ödeme,We accept payment by card.,Kartla ödeme kabul ediyoruz.,3,,economy
 b1-peaceful,PEACEFUL,P,STARTS,adj,"huzurlu, sessiz ve sakin",The village is quiet and peaceful.,Köy sessiz ve huzurlu.,3,,travel
 b1-perform,PERFORM,P,STARTS,verb,sahnede gösteri yapmak,The band will perform tonight.,Grup bu gece sahne alacak.,3,,hobbies
 b1-performance,PERFORMANCE,P,STARTS,noun,sahnede sunulan gösteri,The performance starts at eight.,Gösteri sekizde başlıyor.,3,,hobbies
 b1-period,PERIOD,P,STARTS,noun,belirli bir zaman dilimi,He lived abroad for a long period.,Uzun bir süre yurt dışında yaşadı.,3,,school-work
 b1-permission,PERMISSION,P,STARTS,noun,bir şeyi yapmak için alınan izin,You need permission to park here.,Buraya park etmek için izne ihtiyacın var.,3,,daily-life
 b1-permit,PERMIT,P,STARTS,verb,izin vermek,The school does not permit mobile phones.,Okul cep telefonlarına izin vermiyor.,4,,school-work
-b1-personality,PERSONALITY,P,STARTS,noun,bir kişinin kendine özgü karakteri,She has a warm personality.,Sıcak bir kişiliği var.,3,,family-people
+b1-personality,PERSONALITY,P,STARTS,noun,bir kişinin kendine özgü karakteri,She has a warm personality.,Sıcak bir kişiliği var.,3,,feelings
 b1-physical,PHYSICAL,P,STARTS,adj,bedenle ilgili,Swimming is good physical exercise.,Yüzmek iyi bir bedensel egzersizdir.,3,,body-health
 b1-poet,POET,P,STARTS,noun,şiir yazan kişi,The poet read her work aloud.,Şair eserini yüksek sesle okudu.,3,,school-work
-b1-politics,POLITICS,P,STARTS,noun,"ülke yönetimiyle ilgili işler, siyaset",He is not interested in politics.,Siyasetle ilgilenmiyor.,4,,school-work
-b1-pollution,POLLUTION,P,STARTS,noun,"hava, su ve toprağın kirlenmesi",Air pollution is a problem in big cities.,Hava kirliliği büyük şehirlerde bir sorun.,3,,daily-life
+b1-politics,POLITICS,P,STARTS,noun,"ülke yönetimiyle ilgili işler, siyaset",He is not interested in politics.,Siyasetle ilgilenmiyor.,4,,society-law
+b1-pollution,POLLUTION,P,STARTS,noun,"hava, su ve toprağın kirlenmesi",Air pollution is a problem in big cities.,Hava kirliliği büyük şehirlerde bir sorun.,3,,animals
 b1-population,POPULATION,P,STARTS,noun,bir yerde yaşayan insanların sayısı,The population of the city is two million.,Şehrin nüfusu iki milyon.,3,,city-transport
 b1-position,POSITION,P,STARTS,noun,"takımda oyuncunun oynadığı yer, mevki",What position does he play in the team?,Takımda hangi pozisyonda oynuyor?,3,,hobbies
 b1-positive,POSITIVE,P,STARTS,adj,"olumlu, iyimser",She feels positive about life.,Hayata dair olumlu hissediyor.,3,,daily-life
-b1-poverty,POVERTY,P,STARTS,noun,geçinmek için yeterli paranın olmaması,Many families live in poverty.,Birçok aile yoksulluk içinde yaşıyor.,4,,daily-life
+b1-poverty,POVERTY,P,STARTS,noun,geçinmek için yeterli paranın olmaması,Many families live in poverty.,Birçok aile yoksulluk içinde yaşıyor.,4,,society-law
 b1-powerful,POWERFUL,P,STARTS,adj,"çok güçlü, etkili",This is a powerful engine.,Bu güçlü bir motor.,3,,business
 b1-practical,PRACTICAL,P,STARTS,adj,"işe yarar, pratik",A backpack is more practical than a suitcase.,Sırt çantası valizden daha pratiktir.,3,,daily-life
-b1-praise,PRAISE,P,STARTS,verb,birini överek takdir etmek,Teachers should praise good work.,Öğretmenler iyi işi övmelidir.,3,,school-work
+b1-praise,PRAISE,P,STARTS,verb,birini överek takdir etmek,Teachers should praise good work.,Öğretmenler iyi işi övmelidir.,3,,feelings
 b1-predict,PREDICT,P,STARTS,verb,gelecekte olacakları önceden söylemek,No one can predict the weather exactly.,Hiç kimse havayı tam olarak tahmin edemez.,4,,school-work
 b1-press,PRESS,P,STARTS,noun,gazete ve dergiler; basın,The press was waiting outside.,Basın dışarıda bekliyordu.,3,,hobbies
 b1-pressure,PRESSURE,P,STARTS,noun,bir kişi üzerindeki baskı,Students feel pressure before exams.,Öğrenciler sınavlardan önce baskı hisseder.,3,,school-work
 b1-prevent,PREVENT,P,STARTS,verb,bir şeyin olmasını engellemek,Washing your hands can prevent illness.,El yıkamak hastalığı önleyebilir.,4,,body-health
-b1-pride,PRIDE,P,STARTS,noun,başarıdan duyulan gurur,He looked at his son with pride.,Oğluna gururla baktı.,3,,family-people
+b1-pride,PRIDE,P,STARTS,noun,başarıdan duyulan gurur,He looked at his son with pride.,Oğluna gururla baktı.,3,,feelings
 b1-privacy,PRIVACY,P,STARTS,noun,başkalarından gizli kalma hakkı,Everyone needs some privacy.,Herkesin biraz mahremiyete ihtiyacı var.,4,,daily-life
 b1-private,PRIVATE,P,STARTS,adj,"herkese açık olmayan, yalnızca belli kişilerin kullandığı",This is a private beach.,Burası özel bir plaj.,3,,daily-life
 b1-process,PROCESS,P,STARTS,noun,bir sonuca götüren işlem adımları,Making cheese is a slow process.,Peynir yapmak yavaş bir süreçtir.,4,,business
-b1-produce,PRODUCE,P,STARTS,verb,bir şeyi üretmek,The farm will produce more milk this year.,Çiftlik bu yıl daha çok süt üretecek.,3,,business
-b1-product,PRODUCT,P,STARTS,noun,satılmak üzere üretilen mal,This product is made in Turkey.,Bu ürün Türkiye'de yapılmış.,3,,business
-b1-production,PRODUCTION,P,STARTS,noun,bir şeyin üretilmesi,Car production has fallen this year.,Araba üretimi bu yıl düştü.,4,,business
+b1-produce,PRODUCE,P,STARTS,verb,bir şeyi üretmek,The farm will produce more milk this year.,Çiftlik bu yıl daha çok süt üretecek.,3,,economy
+b1-product,PRODUCT,P,STARTS,noun,satılmak üzere üretilen mal,This product is made in Turkey.,Bu ürün Türkiye'de yapılmış.,3,,economy
+b1-production,PRODUCTION,P,STARTS,noun,bir şeyin üretilmesi,Car production has fallen this year.,Araba üretimi bu yıl düştü.,4,,economy
 b1-professional,PROFESSIONAL,P,STARTS,adj,işini para karşılığı ve uzmanca yapan,He is a professional footballer.,Profesyonel bir futbolcu.,3,,hobbies
-b1-profit,PROFIT,P,STARTS,noun,satıştan elde edilen kazanç,The shop made a small profit.,Dükkân küçük bir kâr elde etti.,4,,business
+b1-profit,PROFIT,P,STARTS,noun,satıştan elde edilen kazanç,The shop made a small profit.,Dükkân küçük bir kâr elde etti.,4,,economy
 b1-progress,PROGRESS,P,STARTS,noun,"sürekli ilerleme, gelişme",She is making good progress at school.,Okulda iyi ilerleme kaydediyor.,3,,school-work
 b1-properly,PROPERLY,P,STARTS,adv,doğru ve uygun biçimde,The machine is not working properly.,Makine düzgün çalışmıyor.,3,,business
-b1-property,PROPERTY,P,STARTS,noun,bir kişiye ait mal veya mülk,This land is my family's property.,Bu arazi ailemin mülkü.,4,,business
+b1-property,PROPERTY,P,STARTS,noun,bir kişiye ait mal veya mülk,This land is my family's property.,Bu arazi ailemin mülkü.,4,,economy
 b1-protect,PROTECT,P,STARTS,verb,zarardan korumak,Sunscreen will protect your skin.,Güneş kremi cildini koruyacak.,3,,body-health
-b1-protest,PROTEST,P,STARTS,noun,bir şeye karşı yapılan gösteri,There was a large protest in the city center.,Şehir merkezinde büyük bir protesto vardı.,4,,daily-life
+b1-protest,PROTEST,P,STARTS,noun,bir şeye karşı yapılan gösteri,There was a large protest in the city center.,Şehir merkezinde büyük bir protesto vardı.,4,,society-law
 b1-provide,PROVIDE,P,STARTS,verb,ihtiyacı olan şeyi sağlamak,The hotel will provide breakfast.,Otel kahvaltı sağlayacak.,3,,business
 b1-purpose,PURPOSE,P,STARTS,noun,bir şeyin yapılma amacı,What is the purpose of your visit?,Ziyaretinin amacı nedir?,3,,daily-life

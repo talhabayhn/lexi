@@ -4,7 +4,7 @@ b2-joystick,JOYSTICK,J,STARTS,noun,oyunlarda kullanılan kumanda kolu,He pushed 
 b2-jot-down,JOT DOWN,J,STARTS,phrasal,hızlıca kısa not almak,Let me jot down your address.,Adresini hızlıca not alayım.,4,,phrasal-verbs
 b2-rejection,REJECTION,J,CONTAINS,noun,bir teklifin reddedilmesi,He could not accept the rejection.,Reddedilmeyi kabullenemedi.,4,,daily-life
 b2-adjacent,ADJACENT,J,CONTAINS,adj,"yan yana olan, bitişik",The hotel is adjacent to the beach.,Otel plaja bitişik.,4,,travel
-b2-projection,PROJECTION,J,CONTAINS,noun,gelecek hakkında yapılan hesap; yansıtma,The sales projection looks good for next year.,Gelecek yıl satış tahmini iyi görünüyor.,4,,business
+b2-projection,PROJECTION,J,CONTAINS,noun,gelecek hakkında yapılan hesap; yansıtma,The sales projection looks good for next year.,Gelecek yıl satış tahmini iyi görünüyor.,4,,economy
 b2-keep-track,KEEP TRACK,K,STARTS,idiom,bir şeyin gidişatını izleyip kaydetmek,It is hard to keep track of all the dates.,Bütün tarihleri takip etmek zor.,4,,idioms
 b2-breakdown,BREAKDOWN,K,CONTAINS,noun,"bir toplamın ayrıntılı dökümü, kalemlere ayırma",Please send me a breakdown of the costs.,Lütfen bana maliyetlerin dökümünü gönderin.,4,,daily-life
 b2-clockwise,CLOCKWISE,K,CONTAINS,adv,saat yönünde,Turn the handle clockwise.,Kolu saat yönünde çevir.,3,,daily-life
@@ -18,7 +18,7 @@ b2-vertical,VERTICAL,V,STARTS,adj,"dikey, yukarı aşağı",Draw a vertical line
 b2-vision,VISION,V,STARTS,noun,görme gücü; gelecek hayali,She has a clear vision for the company.,Şirket için net bir vizyonu var.,4,,business
 b2-advance,ADVANCE,V,CONTAINS,noun,bilimde ya da teknolojide atılım,Doctors announced a new advance in medicine.,Doktorlar tıpta yeni bir ilerleme duyurdu.,4,,business
 b2-convert,CONVERT,V,CONTAINS,verb,bir şeyi başka biçime dönüştürmek,You can convert the file to a PDF.,Dosyayı PDF'ye dönüştürebilirsin.,4,,business
-b2-diversity,DIVERSITY,V,CONTAINS,noun,çok farklı türden öğelerin bir arada olması,The city is proud of its cultural diversity.,Şehir kültürel çeşitliliğiyle gurur duyuyor.,4,,daily-life
+b2-diversity,DIVERSITY,V,CONTAINS,noun,çok farklı türden öğelerin bir arada olması,The city is proud of its cultural diversity.,Şehir kültürel çeşitliliğiyle gurur duyuyor.,4,,society-law
 b2-division,DIVISION,V,CONTAINS,noun,bir şeyin bölümlere ayrılması; bölüm,The company has a division in Izmir.,Şirketin İzmir'de bir bölümü var.,4,,business
 b2-evident,EVIDENT,V,CONTAINS,adj,açıkça belli,It was evident that he was tired.,Yorgun olduğu belliydi.,4,,daily-life
 b2-invade,INVADE,V,CONTAINS,verb,bir ülkeye silahla girmek,The army planned to invade the island.,Ordu adayı işgal etmeyi planladı.,4,,school-work

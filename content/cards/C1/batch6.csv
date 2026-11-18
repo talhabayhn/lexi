@@ -10,7 +10,7 @@ c1-memoir,MEMOIR,M,STARTS,noun,kişinin kendi hayatını anlattığı kitap,She 
 c1-misconception,MISCONCEPTION,M,STARTS,noun,yaygın yanlış kanı,It is a common misconception that sugar makes children hyper.,Şekerin çocukları hareketlendirdiği yaygın bir yanlış kanıdır.,5,,school-work
 c1-mobilise,MOBILIZE,M,STARTS,verb,insanları veya kaynakları harekete geçirmek,The party tried to mobilize young voters.,Parti genç seçmenleri harekete geçirmeye çalıştı.,5,,school-work
 c1-momentum,MOMENTUM,M,STARTS,noun,bir sürecin kazandığı hız ve ivme,The campaign is gaining momentum.,Kampanya ivme kazanıyor.,5,,hobbies
-c1-monopoly,MONOPOLY,M,STARTS,noun,bir pazarda tek satıcı olma durumu,The firm has a monopoly on rail travel.,Firmanın demiryolu ulaşımında tekeli var.,5,,business
+c1-monopoly,MONOPOLY,M,STARTS,noun,bir pazarda tek satıcı olma durumu,The firm has a monopoly on rail travel.,Firmanın demiryolu ulaşımında tekeli var.,5,,economy
 c1-morale,MORALE,M,STARTS,noun,bir grubun güveni ve şevki,Morale in the team was low after the defeat.,Yenilgiden sonra takımın morali düşüktü.,5,,hobbies
 c1-mortality,MORTALITY,M,STARTS,noun,ölüm oranı; ölümlü olma,Infant mortality has fallen sharply.,Bebek ölümleri keskin biçimde azaldı.,5,,school-work
 c1-motive,MOTIVE,M,STARTS,noun,bir davranışın arkasındaki neden,The police could not find a motive for the crime.,Polis suçun arkasındaki nedeni bulamadı.,4,,school-work
@@ -19,9 +19,9 @@ c1-mandatory,MANDATORY,M,STARTS,adj,yasa gereği zorunlu,Helmets are mandatory f
 c1-maritime,MARITIME,M,STARTS,adj,denizle ilgili,The town has a rich maritime history.,Kasabanın zengin bir denizcilik tarihi var.,5,,travel
 c1-mentor,MENTOR,M,STARTS,noun,deneyimli akıl hocası,She had a mentor in her first job.,İlk işinde bir akıl hocası vardı.,4,,business
 c1-metaphor,METAPHOR,M,STARTS,noun,bir şeyi başka bir şeyle anlatan mecaz,Life is often described through the metaphor of a journey.,Hayat çoğu zaman yolculuk mecazıyla anlatılır.,4,,school-work
-c1-migrant,MIGRANT,M,STARTS,noun,iş veya yaşam için yer değiştiren kişi,He came to the city as a migrant looking for work.,İş arayan bir göçmen olarak şehre geldi.,4,,school-work
+c1-migrant,MIGRANT,M,STARTS,noun,iş veya yaşam için yer değiştiren kişi,He came to the city as a migrant looking for work.,İş arayan bir göçmen olarak şehre geldi.,4,,society-law
 c1-mindset,MINDSET,M,STARTS,noun,"bir kişinin düşünme biçimi, zihniyet",A positive mindset helps you learn.,Olumlu bir zihniyet öğrenmene yardım eder.,5,,school-work
-c1-mischief,MISCHIEF,M,STARTS,noun,çocukça yaramazlık,The kids were up to mischief again.,Çocuklar yine yaramazlık peşindeydi.,5,,school-work
+c1-mischief,MISCHIEF,M,STARTS,noun,çocukça yaramazlık,The kids were up to mischief again.,Çocuklar yine yaramazlık peşindeydi.,5,,feelings
 c1-negligence,NEGLIGENCE,N,STARTS,noun,dikkatsizlik yüzünden sorumluluğu ihmal etme,The accident was caused by negligence.,Kaza ihmalden kaynaklandı.,5,,school-work
 c1-negligible,NEGLIGIBLE,N,STARTS,adj,yok denecek kadar az,The difference in price is negligible.,Fiyat farkı yok denecek kadar az.,5,,business
 c1-niche,NICHE,N,STARTS,noun,küçük ve özel bir pazar veya uzmanlık alanı,They found a niche in the market.,Piyasada kendilerine özel bir alan buldular.,5,,business
@@ -45,10 +45,10 @@ c1-optimum,OPTIMUM,O,STARTS,adj,"en uygun, ideal",Plants grow best at optimum te
 c1-optimise,OPTIMIZE,O,STARTS,verb,en verimli hâle getirmek,We can optimize the schedule to save time.,Zaman kazanmak için programı en verimli hâle getirebiliriz.,5,,business
 c1-ordeal,ORDEAL,O,STARTS,noun,çok zor ve acı veren yaşantı,Being trapped for three days was a terrible ordeal.,Üç gün mahsur kalmak korkunç bir çileydi.,5,,school-work
 c1-orthodox,ORTHODOX,O,STARTS,adj,geleneksel kurallara uyan,His methods were far from orthodox.,Yöntemleri geleneksel olmaktan uzaktı.,5,,school-work
-c1-outburst,OUTBURST,O,STARTS,noun,ani öfke veya duygu patlaması,His outburst surprised the whole room.,Öfke patlaması bütün odayı şaşırttı.,5,,school-work
+c1-outburst,OUTBURST,O,STARTS,noun,ani öfke veya duygu patlaması,His outburst surprised the whole room.,Öfke patlaması bütün odayı şaşırttı.,5,,feelings
 c1-outcry,OUTCRY,O,STARTS,noun,halkın sert protestosu,The plan caused a public outcry.,Plan halkta büyük tepkiye yol açtı.,5,,school-work
-c1-outlet,OUTLET,O,STARTS,noun,ürün satış noktası; boşalma yolu,The brand opened a new outlet in the mall.,Marka alışveriş merkezinde yeni bir satış noktası açtı.,5,,business
-c1-outrage,OUTRAGE,O,STARTS,noun,haksızlığa duyulan öfke,She could not hide her outrage at the decision.,Karara duyduğu öfkeyi gizleyemedi.,5,,school-work
+c1-outlet,OUTLET,O,STARTS,noun,ürün satış noktası; boşalma yolu,The brand opened a new outlet in the mall.,Marka alışveriş merkezinde yeni bir satış noktası açtı.,5,,economy
+c1-outrage,OUTRAGE,O,STARTS,noun,haksızlığa duyulan öfke,She could not hide her outrage at the decision.,Karara duyduğu öfkeyi gizleyemedi.,5,,feelings
 c1-outskirts,OUTSKIRTS,O,STARTS,noun,şehrin dış mahalleleri,They live on the outskirts of the capital.,Başkentin dış mahallelerinde yaşıyorlar.,4,,travel
 c1-outset,OUTSET,O,STARTS,noun,bir sürecin en başı (at the ___),We made our goals clear at the outset.,Hedeflerimizi en başta netleştirdik.,5,,business
 c1-outspoken,OUTSPOKEN,O,STARTS,adj,düşüncesini açıkça söyleyen,She is an outspoken critic of the plan.,Planı açıkça eleştiren biridir.,5,,school-work
@@ -57,6 +57,6 @@ c1-overhaul,OVERHAUL,O,STARTS,verb,bir sistemi baştan sona elden geçirmek,The 
 c1-override,OVERRIDE,O,STARTS,verb,bir kararı veya ayarı geçersiz kılmak,The pilot can override the autopilot.,Pilot otomatik pilotu devre dışı bırakabilir.,5,,business
 c1-oversee,OVERSEE,O,STARTS,verb,bir işi gözetip yönetmek,A manager will oversee the project.,Bir yönetici projeyi denetleyecek.,5,,business
 c1-oversight,OVERSIGHT,O,STARTS,noun,gözden kaçan hata,It was an oversight on my part.,Benim açımdan bir dikkatsizlikti.,5,,business
-c1-overthrow,OVERTHROW,O,STARTS,verb,yönetimi zorla devirmek,Rebels tried to overthrow the king.,İsyancılar kralı devirmeye çalıştı.,5,,school-work
+c1-overthrow,OVERTHROW,O,STARTS,verb,yönetimi zorla devirmek,Rebels tried to overthrow the king.,İsyancılar kralı devirmeye çalıştı.,5,,society-law
 c1-overwhelm,OVERWHELM,O,STARTS,verb,güçlü duygu veya etkiyle bunaltmak,Too much work can overwhelm anyone.,Çok fazla iş herkesi bunaltabilir.,4,,school-work
 c1-overshadow,OVERSHADOW,O,STARTS,verb,başka bir şeyin önüne geçip gölgede bırakmak,His fame began to overshadow his brother's.,Ünü kardeşininkini gölgede bırakmaya başladı.,5,,school-work

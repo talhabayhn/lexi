@@ -38,26 +38,30 @@ Landed so far: A1 batch 10 (60 cards), A2 batch 11 (3 cards), A2 batch 12 (81 ca
 
 ## 2. Counts per category × level
 
-Snapshot from before stage 1 of the category rebalance, with Spor / Müzik / Film ve dizi merged into `hobbies`, Teknoloji into `business` and Yalancı eşdeğerler into `daily-life` (ids `sports`, `music`, `film-tv`, `technology`, `false-friends` no longer exist).
+After stage 2 of the category rebalance (`docs/content/CATEGORY-REBALANCE.md`). The batch table in §4 still names the old topic ids where a batch targets a thin letter: use `hobbies` for sports / music / film, `business` for technology, and the new topic ids (`feelings`, `society-law`, `economy`, `clothes-shopping`) where the word fits.
 
 | Category | A1 | A2 | B1 | B2 | C1 | NAT |
 |---|---|---|---|---|---|---|
-| animals | 45 | 36 | 14 | 0 | 0 | 0 |
-| body-health | 32 | 41 | 59 | 34 | 0 | 0 |
-| business (incl. technology) | 0 | 0 | 160 | 135 | 187 | 0 |
-| city-transport | 52 | 60 | 23 | 0 | 0 | 0 |
-| colors-numbers | 51 | 0 | 0 | 0 | 0 | 0 |
-| daily-life (B1/B2 incl. false-friends) | 344 | 302 | 276 | 186 | 0 | 0 |
-| family-people | 44 | 26 | 71 | 0 | 0 | 0 |
-| food-drink | 79 | 69 | 20 | 12 | 0 | 0 |
+| animals | 50 | 47 | 40 | 0 | 0 | 0 |
+| body-health | 38 | 49 | 72 | 47 | 0 | 0 |
+| business | 0 | 0 | 125 | 126 | 153 | 0 |
+| city-transport | 80 | 66 | 35 | 0 | 0 | 0 |
+| clothes-shopping | 34 | 41 | 0 | 0 | 0 | 0 |
+| colors-numbers | 54 | 0 | 0 | 0 | 0 | 0 |
+| daily-life | 221 | 214 | 276 | 192 | 0 | 0 |
+| economy | 0 | 0 | 46 | 21 | 31 | 0 |
+| family-people | 46 | 47 | 35 | 0 | 0 | 0 |
+| feelings | 0 | 0 | 86 | 31 | 41 | 0 |
+| food-drink | 86 | 84 | 42 | 20 | 0 | 0 |
 | general | 0 | 0 | 0 | 0 | 0 | 611 |
-| home | 58 | 65 | 0 | 0 | 0 | 0 |
+| hobbies | 33 | 99 | 71 | 53 | 62 | 0 |
+| home | 62 | 74 | 0 | 0 | 0 | 0 |
 | idioms | 0 | 0 | 0 | 45 | 0 | 0 |
 | phrasal-verbs | 0 | 0 | 0 | 121 | 0 | 0 |
-| school-work | 65 | 122 | 133 | 111 | 385 | 0 |
-| hobbies (sports + music + film-tv) | 0 | 72 | 53 | 40 | 60 | 0 |
-| time-weather | 77 | 32 | 0 | 0 | 0 | 0 |
-| travel | 0 | 56 | 40 | 45 | 43 | 0 |
+| school-work | 72 | 119 | 134 | 117 | 297 | 0 |
+| society-law | 0 | 0 | 34 | 16 | 55 | 0 |
+| time-weather | 89 | 43 | 0 | 0 | 0 | 0 |
+| travel | 0 | 57 | 54 | 53 | 44 | 0 |
 
 ## 3. Targets (cards per letter per level, STARTS + CONTAINS)
 

@@ -23,7 +23,7 @@ a2-crazy,CRAZY,Z,CONTAINS,adj,"aklını kaçırmış gibi davranan, çılgın",T
 a2-dozen,DOZEN,Z,CONTAINS,noun,on iki tane,I bought a dozen eggs.,Bir düzine yumurta aldım.,2,,food-drink
 a2-freeze,FREEZE,Z,CONTAINS,verb,çok soğuktan buza dönüşmek,The lake will freeze tonight.,Göl bu gece donacak.,3,,time-weather
 a2-frozen,FROZEN,Z,CONTAINS,adj,içindeki su buza dönmüş olan,The lake is frozen in winter.,Göl kışın buz tutar.,3,,time-weather
-a2-puzzle,PUZZLE,Z,CONTAINS,noun,parçaları birleştirilerek çözülen oyun,This puzzle has a hundred pieces.,Bu yapbozun yüz parçası var.,2,,daily-life
+a2-puzzle,PUZZLE,Z,CONTAINS,noun,parçaları birleştirilerek çözülen oyun,This puzzle has a hundred pieces.,Bu yapbozun yüz parçası var.,2,,hobbies
 a2-breeze,BREEZE,Z,CONTAINS,noun,hafif ve serin esen rüzgâr,A cool breeze came into the room.,Odaya serin bir esinti girdi.,3,,time-weather
 a2-sneeze,SNEEZE,Z,CONTAINS,verb,burundan ani ve gürültülü hava vermek,Use a tissue when you sneeze.,Hapşırırken mendil kullan.,3,,body-health
 a2-realize,REALIZE,Z,CONTAINS,verb,bir şeyin farkına varmak,I did not realize it was so late.,Bu kadar geç olduğunu fark etmedim.,3,,daily-life
@@ -34,11 +34,11 @@ a2-lizard,LIZARD,Z,CONTAINS,noun,"kuru derili, dört bacaklı küçük sürünge
 a2-journey,JOURNEY,J,STARTS,noun,bir yerden başka bir yere yapılan uzun yolculuk,The journey to Izmir takes five hours.,İzmir'e yolculuk beş saat sürüyor.,2,,travel
 a2-jungle,JUNGLE,J,STARTS,noun,sıcak ülkelerdeki sık ve yoğun orman,Monkeys live in the jungle.,Maymunlar ormanda yaşar.,2,,animals
 a2-join,JOIN,J,STARTS,verb,bir gruba ya da etkinliğe katılmak,Do you want to join our team?,Takımımıza katılmak ister misin?,2,,daily-life
-a2-jumper,JUMPER,J,STARTS,noun,"yünden örülmüş, baştan geçirilen kazak",She wears a red jumper.,Kırmızı bir kazak giyiyor.,2,,daily-life
+a2-jumper,JUMPER,J,STARTS,noun,"yünden örülmüş, baştan geçirilen kazak",She wears a red jumper.,Kırmızı bir kazak giyiyor.,2,,clothes-shopping
 a2-jogging,JOGGING,J,STARTS,noun,sağlık için hafif tempoda koşma,Jogging in the park is fun.,Parkta koşu yapmak eğlenceli.,2,,hobbies
 a2-jug,JUG,J,STARTS,noun,su ya da süt koymak için kulplu kap,There is a jug of water on the table.,Masada bir sürahi su var.,2,,home
 a2-jar,JAR,J,STARTS,noun,reçel gibi şeylerin konduğu ağzı geniş cam kap,Can you open this jar of jam?,Bu reçel kavanozunu açar mısın?,2,,home
-a2-jewellery,JEWELRY,J,STARTS,noun,yüzük ve kolye gibi süs eşyaları,She keeps her jewelry in a box.,Takılarını bir kutuda saklıyor.,3,,daily-life
+a2-jewellery,JEWELRY,J,STARTS,noun,yüzük ve kolye gibi süs eşyaları,She keeps her jewelry in a box.,Takılarını bir kutuda saklıyor.,3,,clothes-shopping
 a2-judo,JUDO,J,STARTS,noun,yere atma ve tutuş tekniklerine dayanan spor,He goes to judo class on Mondays.,Pazartesileri judo dersine gidiyor.,3,,hobbies
 a2-jelly,JELLY,J,STARTS,noun,"meyve sularından yapılan, sallanan tatlı",The red jelly wobbled on the plate.,Kırmızı jöle tabakta sallandı.,3,,food-drink
 a2-jellyfish,JELLYFISH,J,STARTS,noun,"denizde yaşayan, şeffaf ve yumuşak canlı",A jellyfish floated near the boat.,Teknenin yanında bir denizanası yüzüyordu.,3,,animals
@@ -56,12 +56,12 @@ a2-kebab,KEBAB,K,STARTS,noun,şişte ya da ızgarada pişirilen et yemeği,We at
 a2-knot,KNOT,K,STARTS,noun,ip ya da kumaşın bağlanmasıyla oluşan düğüm,He tied a knot in his shoelace.,Ayakkabı bağına bir düğüm attı.,3,,daily-life
 a2-kill,KILL,K,STARTS,verb,bir canlıyı öldürmek,The cold weather can kill plants.,Soğuk hava bitkileri öldürebilir.,3,,daily-life
 a2-kiwi,KIWI,K,STARTS,noun,"yeşil içli, tüylü kahverengi kabuklu meyve",I put a kiwi in my bag.,Çantama bir kivi koydum.,3,,food-drink
-a2-pocket,POCKET,K,CONTAINS,noun,giysilerde küçük eşya konan göz,He put his keys in his pocket.,Anahtarlarını cebine koydu.,2,,daily-life
+a2-pocket,POCKET,K,CONTAINS,noun,giysilerde küçük eşya konan göz,He put his keys in his pocket.,Anahtarlarını cebine koydu.,2,,clothes-shopping
 a2-ski,SKI,K,CONTAINS,verb,karda uzun tahtalarla kaymak,We ski in the mountains every winter.,Her kış dağlarda kayak yaparız.,2,,hobbies
 a2-skate,SKATE,K,CONTAINS,verb,buzda ya da yerde patenle kaymak,Can you skate on ice?,Buzda patenle kayabilir misin?,2,,hobbies
 a2-skin,SKIN,K,CONTAINS,noun,vücudumuzu saran dış tabaka,Her skin is smooth.,Cildi pürüzsüz.,2,,body-health
 a2-skill,SKILL,K,CONTAINS,noun,bir işi iyi yapabilme yeteneği,Cooking is a useful skill.,Yemek yapmak yararlı bir beceri.,3,,school-work
-a2-necklace,NECKLACE,K,CONTAINS,noun,boyna takılan süs,She wears a long necklace.,Uzun bir kolye takıyor.,2,,daily-life
+a2-necklace,NECKLACE,K,CONTAINS,noun,boyna takılan süs,She wears a long necklace.,Uzun bir kolye takıyor.,2,,clothes-shopping
 a2-truck,TRUCK,K,CONTAINS,noun,ağır yük taşıyan büyük araç,The truck is full of apples.,Kamyon elmalarla dolu.,2,,city-transport
 a2-snack,SNACK,K,CONTAINS,noun,öğün arasında yenen küçük yiyecek,I eat a snack after school.,Okuldan sonra bir atıştırmalık yerim.,2,,food-drink
 a2-backpack,BACKPACK,K,CONTAINS,noun,"omuza takılan, içine kitap konan çanta",My backpack is full of books.,Sırt çantam kitap dolu.,2,,school-work

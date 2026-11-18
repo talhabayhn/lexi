@@ -1,28 +1,28 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
-a2-pyjamas,PYJAMAS,J,CONTAINS,noun,gece yatarken giyilen giysi takımı,Ali wears blue pyjamas at night.,Ali geceleri mavi pijama giyiyor.,3,,daily-life
+a2-pyjamas,PYJAMAS,J,CONTAINS,noun,gece yatarken giyilen giysi takımı,Ali wears blue pyjamas at night.,Ali geceleri mavi pijama giyiyor.,3,,clothes-shopping
 a2-bicycle,BICYCLE,Y,CONTAINS,noun,pedalla giden iki tekerlekli taşıt,Selin goes to school by bicycle.,Selin okula bisikletle gidiyor.,2,,city-transport
 a2-quack,QUACK,Q,STARTS,noun,ördeğin çıkardığı ses,The duck gives a quack.,Ördek vak diye ses çıkarıyor.,3,,animals
 a2-squid,SQUID,Q,CONTAINS,noun,"kalamar, denizde yaşayan yumuşakça hayvan",We eat fried squid by the sea.,Denizin kenarında kızarmış kalamar yiyoruz.,3,,animals
 a2-aquarium,AQUARIUM,Q,CONTAINS,noun,balıkların yaşadığı cam fanus,The fish swim in the aquarium.,Balıklar akvaryumda yüzüyor.,3,,home
 a2-extremely,EXTREMELY,X,CONTAINS,adv,"aşırı derecede, çok çok",The soup is extremely hot.,Çorba aşırı sıcak.,3,,daily-life
 a2-explode,EXPLODE,X,CONTAINS,verb,büyük bir sesle patlamak,The balloon can explode.,Balon patlayabilir.,3,,daily-life
-a2-zombie,ZOMBIE,Z,STARTS,noun,filmlerde ölüden dirilen korkunç yaratık,The zombie in the film is ugly.,Filmdeki zombi çirkin.,3,,daily-life
+a2-zombie,ZOMBIE,Z,STARTS,noun,filmlerde ölüden dirilen korkunç yaratık,The zombie in the film is ugly.,Filmdeki zombi çirkin.,3,,hobbies
 a2-bronze,BRONZE,Z,CONTAINS,noun,"madalyada üçüncülük rengi, kırmızımsı kahverengi metal",Ali gets a bronze prize.,Ali bronz bir ödül alıyor.,3,,hobbies
-a2-sneakers,SNEAKERS,K,CONTAINS,noun,spor yapmak için giyilen rahat ayakkabılar,Mert wears white sneakers.,Mert beyaz spor ayakkabı giyiyor.,3,,daily-life
+a2-sneakers,SNEAKERS,K,CONTAINS,noun,spor yapmak için giyilen rahat ayakkabılar,Mert wears white sneakers.,Mert beyaz spor ayakkabı giyiyor.,3,,clothes-shopping
 a2-milkshake,MILKSHAKE,K,CONTAINS,noun,dondurma ve sütle yapılan soğuk içecek,Mert orders a banana milkshake.,Mert muzlu bir milkshake sipariş ediyor.,3,,food-drink
 a2-icy,ICY,I,STARTS,adj,çok soğuk ve buz gibi,The road is icy this morning.,Yol bu sabah buz tutmuş.,3,,time-weather
 a2-ink,INK,I,STARTS,noun,kalemle yazmak için kullanılan renkli sıvı,My pen has no ink.,Kalemimde mürekkep yok.,3,,school-work
 a2-driving,DRIVING,I,CONTAINS,noun,araba kullanma işi,Driving at night is hard for Dad.,Gece araba kullanmak babam için zor.,3,,city-transport
-a2-lipstick,LIPSTICK,I,CONTAINS,noun,dudaklara sürülen renkli makyaj ürünü,Her lipstick is red.,Rujunun rengi kırmızı.,3,,daily-life
+a2-lipstick,LIPSTICK,I,CONTAINS,noun,dudaklara sürülen renkli makyaj ürünü,Her lipstick is red.,Rujunun rengi kırmızı.,3,,clothes-shopping
 a2-shrimp,SHRIMP,I,CONTAINS,noun,kabuklu küçük pembe deniz ürünü,Mert does not like shrimp.,Mert karidesi sevmez.,3,,food-drink
-a2-bikini,BIKINI,I,CONTAINS,noun,plajda giyilen iki parçalı kadın mayosu,She has a new bikini for the beach.,Plaj için yeni bir bikinisi var.,3,,daily-life
+a2-bikini,BIKINI,I,CONTAINS,noun,plajda giyilen iki parçalı kadın mayosu,She has a new bikini for the beach.,Plaj için yeni bir bikinisi var.,3,,clothes-shopping
 a2-pin,PIN,I,CONTAINS,noun,"kumaşları tutturan ince, sivri uçlu metal",Mum puts a pin in the cloth.,Annem kumaşa bir toplu iğne takıyor.,3,,daily-life
 a2-lid,LID,I,CONTAINS,noun,tencerenin üstünü kapatan kapak,Put the lid on the pan.,Kapağı tavanın üstüne koy.,3,,home
 a2-skinny,SKINNY,I,CONTAINS,adj,çok zayıf ve ince,The cat is small and skinny.,Kedi küçük ve sıska.,3,,body-health
 a2-shiny,SHINY,I,CONTAINS,adj,ışıkta parlayan,She wears shiny shoes.,Parlak ayakkabılar giyiyor.,3,,daily-life
 a2-spice,SPICE,I,CONTAINS,noun,yemeğe tat veren baharat,Dad puts spice in the soup.,Babam çorbaya baharat koyuyor.,3,,food-drink
 a2-stripe,STRIPE,I,CONTAINS,noun,zebranın sırtındaki gibi uzun çizgi,The shirt has a white stripe.,Gömlekte beyaz bir çizgi var.,3,,daily-life
-a2-swing,SWING,I,CONTAINS,noun,çocuk parkında iki ipten sarkan salıncak,The child plays on the swing.,Çocuk salıncakta oynuyor.,3,,daily-life
+a2-swing,SWING,I,CONTAINS,noun,çocuk parkında iki ipten sarkan salıncak,The child plays on the swing.,Çocuk salıncakta oynuyor.,3,,hobbies
 a2-turtle,TURTLE,U,CONTAINS,noun,sırtında sert kabuk taşıyan yavaş hayvan,A turtle walks on the beach.,Bir kaplumbağa plajda yürüyor.,3,,animals
 a2-plum,PLUM,U,CONTAINS,noun,mor veya kırmızı kabuklu yuvarlak yaz meyvesi,Ali eats a plum.,Ali bir erik yiyor.,3,,food-drink
 a2-gum,GUM,U,CONTAINS,noun,"ağızda çiğnenen, yutulmayan şekerleme",Don't chew gum in class.,Derste sakız çiğneme.,3,,food-drink
@@ -52,7 +52,7 @@ a2-buzz,BUZZ,Z,CONTAINS,noun,arıların çıkardığı uğultu,I hear the buzz o
 a2-jaguar,JAGUAR,J,STARTS,noun,Güney Amerika'da yaşayan benekli büyük kedi,The jaguar hides in the forest.,Jaguar ormanda saklanıyor.,3,,animals
 a2-jersey,JERSEY,J,STARTS,noun,sporcuların giydiği forma,Ali wears a red jersey.,Ali kırmızı bir forma giyiyor.,3,,hobbies
 a2-jolly,JOLLY,J,STARTS,adj,"şen, keyfi yerinde",Grandpa is a jolly man.,Dedem şen biri.,3,,family-people
-a2-jumpsuit,JUMPSUIT,J,STARTS,noun,tek parça pantolonlu giysi,Selin wears a blue jumpsuit.,Selin mavi bir tulum giyiyor.,3,,daily-life
+a2-jumpsuit,JUMPSUIT,J,STARTS,noun,tek parça pantolonlu giysi,Selin wears a blue jumpsuit.,Selin mavi bir tulum giyiyor.,3,,clothes-shopping
 a2-chalk,CHALK,K,CONTAINS,noun,tahtaya yazmak için kullanılan beyaz çubuk,The teacher writes with chalk.,Öğretmen tebeşirle yazıyor.,3,,school-work
 a2-bark,BARK,K,CONTAINS,verb,köpeğin yüksek sesle ses çıkarması,The dog starts to bark.,Köpek havlamaya başlıyor.,3,,animals
 a2-pickle,PICKLE,K,CONTAINS,noun,sirkede bekletilmiş salatalık,Ali puts a pickle on his plate.,Ali tabağına bir turşu koyuyor.,3,,food-drink

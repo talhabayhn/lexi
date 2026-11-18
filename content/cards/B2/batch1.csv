@@ -3,11 +3,11 @@ b2-absorb,ABSORB,A,STARTS,verb,sıvıyı ya da bilgiyi içine çekip almak,A spo
 b2-access,ACCESS,A,STARTS,noun,bir yere ya da bilgiye ulaşma hakkı,Students have free access to the library.,Öğrencilerin kütüphaneye ücretsiz erişimi var.,3,,business
 b2-accommodate,ACCOMMODATE,A,STARTS,verb,birini yer ayırarak barındırmak,The hotel can accommodate two hundred guests.,Otel iki yüz misafiri barındırabilir.,4,,travel
 b2-accurate,ACCURATE,A,STARTS,adj,hatasız ve doğru,The map is accurate.,Harita doğru.,3,,school-work
-b2-accuse,ACCUSE,A,STARTS,verb,birini suç işlemekle suçlamak,They accuse him of stealing the bike.,Onu bisikleti çalmakla suçluyorlar.,3,,daily-life
+b2-accuse,ACCUSE,A,STARTS,verb,birini suç işlemekle suçlamak,They accuse him of stealing the bike.,Onu bisikleti çalmakla suçluyorlar.,3,,society-law
 b2-acknowledge,ACKNOWLEDGE,A,STARTS,verb,birinin varlığını fark edip selam vermek,She walked past without trying to acknowledge me.,Beni selamlamaya bile çalışmadan yanımdan geçti.,4,,daily-life
 b2-adapt,ADAPT,A,STARTS,verb,yeni koşullara uyum sağlamak,It takes time to adapt to a new school.,Yeni bir okula uyum sağlamak zaman alır.,3,,school-work
 b2-adequate,ADEQUATE,A,STARTS,adj,ihtiyacı karşılayacak ölçüde yeterli,The food was adequate but not exciting.,Yemek yeterliydi ama heyecan verici değildi.,4,,food-drink
-b2-affordable,AFFORDABLE,A,STARTS,adj,fiyatı herkesin ödeyebileceği kadar makul,They sell affordable clothes for students.,Öğrencilere uygun fiyatlı giysiler satıyorlar.,3,,business
+b2-affordable,AFFORDABLE,A,STARTS,adj,fiyatı herkesin ödeyebileceği kadar makul,They sell affordable clothes for students.,Öğrencilere uygun fiyatlı giysiler satıyorlar.,3,,economy
 b2-agenda,AGENDA,A,STARTS,noun,toplantıda ele alınacak konuların listesi,What is on the agenda for today?,Bugünün gündeminde ne var?,4,,business
 b2-alter,ALTER,A,STARTS,verb,bir şeyde değişiklik yapmak,We had to alter our travel plans.,Seyahat planlarımızı değiştirmek zorunda kaldık.,3,,travel
 b2-ambitious,AMBITIOUS,A,STARTS,adj,"büyük hedefleri olan, hırslı",She is an ambitious young lawyer.,O hırslı genç bir avukat.,3,,business
@@ -28,7 +28,7 @@ b2-attribute,ATTRIBUTE,A,STARTS,verb,bir sonucu bir nedene bağlamak,She likes t
 b2-authentic,AUTHENTIC,A,STARTS,adj,"gerçek, orijinal",We ate authentic Italian pizza.,Otantik bir İtalyan pizzası yedik.,4,,food-drink
 b2-authority,AUTHORITY,A,STARTS,noun,karar verme yetkisi veya yetkili kurum,Only the local authority can give permission.,Sadece yerel yönetim izin verebilir.,4,,business
 b2-awareness,AWARENESS,A,STARTS,noun,"bir konudan haberdar olma, farkındalık",The campaign raises awareness about recycling.,Kampanya geri dönüşüm konusunda farkındalık yaratıyor.,4,,school-work
-b2-abuse,ABUSE,A,STARTS,noun,birine kötü davranma veya bir şeyi kötüye kullanma,Animal abuse is a crime.,Hayvanlara kötü muamele bir suçtur.,4,,daily-life
+b2-abuse,ABUSE,A,STARTS,noun,birine kötü davranma veya bir şeyi kötüye kullanma,Animal abuse is a crime.,Hayvanlara kötü muamele bir suçtur.,4,,society-law
 b2-abstract,ABSTRACT,A,STARTS,adj,"somut olmayan, soyut",Love is an abstract idea.,Aşk soyut bir fikirdir.,4,,school-work
 b2-ask-around,ASK AROUND,A,STARTS,phrasal,çevredeki insanlara sorup araştırmak,I will ask around for a cheap flat.,Ucuz bir daire için etrafa sorarım.,3,,phrasal-verbs
 b2-ask-out,ASK OUT,A,STARTS,phrasal,birine çıkma teklif etmek,He wants to ask out his classmate.,Sınıf arkadaşına çıkma teklif etmek istiyor.,3,,phrasal-verbs
@@ -54,4 +54,4 @@ b2-boundary,BOUNDARY,B,STARTS,noun,bir kişinin ya da alanın aşılmaması gere
 b2-broaden,BROADEN,B,STARTS,verb,bir şeyi genişletmek,Travel can broaden your mind.,Seyahat ufkunu genişletebilir.,4,,travel
 b2-bulletin,BULLETIN,B,STARTS,noun,kısa güncel haber bülteni,I watch the news bulletin at nine.,Dokuzda haber bültenini izlerim.,4,,hobbies
 b2-burden,BURDEN,B,STARTS,noun,taşınması zor yük veya sorumluluk,Debt is a heavy burden for many families.,Borç birçok aile için ağır bir yüktür.,4,,business
-b2-bankrupt,BANKRUPT,B,STARTS,adj,"borçlarını ödeyemeyecek duruma gelmiş, iflas etmiş",The company went bankrupt last year.,Şirket geçen yıl iflas etti.,4,,business
+b2-bankrupt,BANKRUPT,B,STARTS,adj,"borçlarını ödeyemeyecek duruma gelmiş, iflas etmiş",The company went bankrupt last year.,Şirket geçen yıl iflas etti.,4,,economy

@@ -8,14 +8,14 @@ b2-flaw,FLAW,F,STARTS,noun,bir planda veya üründe zayıf nokta,The plan has on
 b2-flee,FLEE,F,STARTS,verb,tehlikeden kaçmak,Thousands of people had to flee the flood.,Binlerce insan sel yüzünden kaçmak zorunda kaldı.,4,,daily-life
 b2-flexibility,FLEXIBILITY,F,STARTS,noun,değişen şartlara uyum sağlama esnekliği,The job offers a lot of flexibility.,İş çok esneklik sunuyor.,4,,business
 b2-fluent,FLUENT,F,STARTS,adj,bir dili akıcı konuşabilen,She is fluent in three languages.,Üç dilde akıcı konuşuyor.,3,,school-work
-b2-forbid,FORBID,F,STARTS,verb,bir şeyi yasaklamak,The law will forbid smoking in schools.,Yasa okullarda sigara içmeyi yasaklayacak.,4,,daily-life
+b2-forbid,FORBID,F,STARTS,verb,bir şeyi yasaklamak,The law will forbid smoking in schools.,Yasa okullarda sigara içmeyi yasaklayacak.,4,,society-law
 b2-foresee,FORESEE,F,STARTS,verb,olacakları önceden görmek,Nobody could foresee the problem.,Hiç kimse sorunu önceden göremezdi.,4,,business
 b2-former,FORMER,F,STARTS,adj,"eskiden olan, önceki",He is a former footballer.,O eski bir futbolcu.,3,,hobbies
 b2-formula,FORMULA,F,STARTS,noun,bir sonuca ulaştıran kural veya bilimsel formül,There is no magic formula for success.,Başarı için sihirli bir formül yok.,4,,school-work
 b2-fortunate,FORTUNATE,F,STARTS,adj,"şanslı, talihli",We were fortunate to find a seat.,Yer bulabildiğimiz için şanslıydık.,4,,daily-life
 b2-fragile,FRAGILE,F,STARTS,adj,kolayca kırılabilen,Be careful; this glass is fragile.,Dikkatli ol; bu bardak kırılgan.,3,,daily-life
-b2-fraud,FRAUD,F,STARTS,noun,para kazanmak için yapılan dolandırıcılık,He went to prison for fraud.,Dolandırıcılıktan hapse girdi.,4,,business
-b2-frustration,FRUSTRATION,F,STARTS,noun,isteneni yapamamaktan doğan hayal kırıklığı,I could hear the frustration in his voice.,Sesindeki sıkıntıyı duyabiliyordum.,4,,daily-life
+b2-fraud,FRAUD,F,STARTS,noun,para kazanmak için yapılan dolandırıcılık,He went to prison for fraud.,Dolandırıcılıktan hapse girdi.,4,,society-law
+b2-frustration,FRUSTRATION,F,STARTS,noun,isteneni yapamamaktan doğan hayal kırıklığı,I could hear the frustration in his voice.,Sesindeki sıkıntıyı duyabiliyordum.,4,,feelings
 b2-fulfil,FULFILL,F,STARTS,verb,bir isteği ya da görevi yerine getirmek,She worked hard to fulfill her dream.,Hayalini gerçekleştirmek için çok çalıştı.,4,,school-work
 b2-fundamental,FUNDAMENTAL,F,STARTS,adj,temel ve çok önemli,Reading is a fundamental skill.,Okumak temel bir beceridir.,4,,school-work
 b2-furnish,FURNISH,F,STARTS,verb,bir yeri mobilyalarla donatmak,They plan to furnish the flat with old pieces.,Daireyi eski eşyalarla döşemeyi planlıyorlar.,4,,daily-life
@@ -43,7 +43,7 @@ b2-go-ahead,GO AHEAD,G,STARTS,phrasal,"birine ""buyur, başla"" diye izin vermek
 b2-go-through,GO THROUGH,G,STARTS,phrasal,zor bir dönemden geçmek,She has to go through a hard time.,Zor bir dönemden geçmek zorunda.,4,,phrasal-verbs
 b2-go-for-it,GO FOR IT,G,STARTS,idiom,çekinmeden hedefin peşine düşmek,"If you want the job, go for it!","İşi istiyorsan, hadi dene!",3,,idioms
 b2-hint,HINT,H,STARTS,noun,dolaylı ipucu,Can you give me a hint?,Bana bir ipucu verebilir misin?,3,,school-work
-b2-humble,HUMBLE,H,STARTS,adj,"alçakgönüllü, gösterişsiz",He is a humble man despite his success.,Başarısına rağmen mütevazı bir adam.,4,,daily-life
+b2-humble,HUMBLE,H,STARTS,adj,"alçakgönüllü, gösterişsiz",He is a humble man despite his success.,Başarısına rağmen mütevazı bir adam.,4,,feelings
 b2-humid,HUMID,H,STARTS,adj,havası nemli,Summers here are hot and humid.,Buradaki yazlar sıcak ve nemlidir.,3,,daily-life
 b2-hand-in,HAND IN,H,STARTS,phrasal,ödevi öğretmene teslim etmek,Please hand in your essay on Friday.,Lütfen kompozisyonunuzu cuma teslim edin.,3,,phrasal-verbs
 b2-hand-out,HAND OUT,H,STARTS,phrasal,insanlara dağıtmak,The teacher will hand out the papers.,Öğretmen kâğıtları dağıtacak.,3,,phrasal-verbs
@@ -58,7 +58,7 @@ b2-imaginary,IMAGINARY,I,STARTS,adj,"gerçekte olmayan, hayali",The child has an
 b2-imply,IMPLY,I,STARTS,verb,doğrudan söylemeden anlatmak,I did not mean to imply that you are wrong.,Yanıldığını ima etmek istemedim.,4,,daily-life
 b2-increasingly,INCREASINGLY,I,STARTS,adv,giderek daha çok,It is increasingly hard to find a flat.,Daire bulmak giderek zorlaşıyor.,4,,daily-life
 b2-indicate,INDICATE,I,STARTS,verb,bir şeyin işareti olmak; göstermek,The sign will indicate the way out.,Tabela çıkış yolunu gösterecek.,4,,daily-life
-b2-inflation,INFLATION,I,STARTS,noun,"fiyatların genel olarak artması, enflasyon",Inflation makes life more expensive.,Enflasyon hayatı pahalılaştırıyor.,4,,business
+b2-inflation,INFLATION,I,STARTS,noun,"fiyatların genel olarak artması, enflasyon",Inflation makes life more expensive.,Enflasyon hayatı pahalılaştırıyor.,4,,economy
 b2-initial,INITIAL,I,STARTS,adj,"en baştaki, ilk",My initial reaction was fear.,İlk tepkim korkuydu.,4,,daily-life
 b2-initiative,INITIATIVE,I,STARTS,noun,bir işe başlama girişimi,She took the initiative and called the manager.,İnisiyatif alıp müdürü aradı.,4,,business
 b2-innovation,INNOVATION,I,STARTS,noun,yeni bir fikir veya yöntem,The company is famous for innovation.,Şirket yenilikçiliğiyle ünlü.,4,,business
@@ -73,7 +73,7 @@ b2-interfere,INTERFERE,I,STARTS,verb,bir işe izinsiz karışmak,Please don't in
 b2-interpret,INTERPRET,I,STARTS,verb,bir şeyin anlamını yorumlamak; sözlü çevirmek,How do you interpret this poem?,Bu şiiri nasıl yorumluyorsun?,4,,school-work
 b2-interval,INTERVAL,I,STARTS,noun,iki olay arasındaki ara,There was a short interval in the middle of the play.,Oyunun ortasında kısa bir ara vardı.,3,,hobbies
 b2-invaluable,INVALUABLE,I,STARTS,adj,"paha biçilmez, çok değerli",Her advice was invaluable.,Tavsiyesi paha biçilmezdi.,4,,business
-b2-irritate,IRRITATE,I,STARTS,verb,rahatsız edip sinirlendirmek,Loud music can irritate the neighbors.,Yüksek sesli müzik komşuları rahatsız edebilir.,4,,daily-life
+b2-irritate,IRRITATE,I,STARTS,verb,rahatsız edip sinirlendirmek,Loud music can irritate the neighbors.,Yüksek sesli müzik komşuları rahatsız edebilir.,4,,feelings
 b2-isolate,ISOLATE,I,STARTS,verb,bir şeyi diğerlerinden ayrı tutmak,Doctors isolate sick patients.,Doktorlar hasta kişileri ayrı tutar.,4,,body-health
 b2-in-the-long-run,IN THE LONG RUN,I,STARTS,idiom,"uzun vadede, sonunda",Saving money pays off in the long run.,Para biriktirmek uzun vadede kazandırır.,4,,idioms
 b2-fall-out,FALL OUT,F,STARTS,phrasal,biriyle tartışıp araları bozulmak,The brothers might fall out over money.,Kardeşlerin para yüzünden araları bozulabilir.,4,,phrasal-verbs
@@ -87,5 +87,5 @@ b2-get-rid-of,GET RID OF,G,STARTS,phrasal,istenmeyen bir şeyden kurtulmak,I wan
 b2-harsh,HARSH,H,STARTS,adj,"sert, acımasız",The winter here is harsh.,Buradaki kış çok sert.,4,,daily-life
 b2-implement,IMPLEMENT,I,STARTS,verb,bir planı uygulamaya koymak,The school will implement a new rule.,Okul yeni bir kural uygulayacak.,4,,school-work
 b2-firm,FIRM,F,STARTS,adj,sert ve sağlam; kararlı,Be firm with your decision.,Kararında kararlı ol.,3,,daily-life
-b2-furious,FURIOUS,F,STARTS,adj,çok öfkeli,He was furious about the delay.,Gecikmeye çok öfkelendi.,3,,daily-life
+b2-furious,FURIOUS,F,STARTS,adj,çok öfkeli,He was furious about the delay.,Gecikmeye çok öfkelendi.,3,,feelings
 b2-in-hot-water,IN HOT WATER,I,STARTS,idiom,başı belada olmak,He is in hot water with his boss.,"Patronuyla arası açık, başı belada.",4,,idioms

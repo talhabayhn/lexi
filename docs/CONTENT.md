@@ -156,18 +156,22 @@ How the compiler applies them (`tools/content-compiler`, every error is `file:li
 |---|---|---|
 | `mixed` | Karışık | all (virtual: all categories of the level) |
 | `daily-life` | Günlük hayat | A1–B2 |
-| `food-drink` | Yiyecek ve içecek | A1–B1 (B2 hidden until stage 2 of `docs/content/CATEGORY-REBALANCE.md`) |
+| `food-drink` | Yiyecek ve içecek | A1–B1 (B2 has 20 cards: hidden) |
 | `home` | Ev ve eşyalar | A1–A2 |
 | `family-people` | Aile ve insanlar | A1–B1 |
 | `colors-numbers` | Renkler ve sayılar | A1 |
 | `body-health` | Vücut ve sağlık | A1–B2 |
 | `school-work` | Okul ve iş | A1–C1 |
-| `animals` | Hayvanlar | A1–A2 (B1 hidden until stage 2) |
+| `animals` | Hayvanlar ve doğa | A1–B1 |
 | `city-transport` | Şehir ve ulaşım | A1–B1 |
 | `time-weather` | Zaman ve hava | A1–A2 |
 | `travel` | Seyahat | A2–C1 |
-| `hobbies` | Hobiler ve eğlence | A2–C1 (was Spor + Müzik + Film ve dizi) |
+| `clothes-shopping` | Giysi ve alışveriş | A1–A2 |
+| `hobbies` | Hobiler ve eğlence | A1–C1 (was Spor + Müzik + Film ve dizi) |
 | `business` | İş ve teknoloji | B1–C1 (was İş İngilizcesi + Teknoloji) |
+| `economy` | Para ve ekonomi | B1, C1 (B2 has 21 cards: hidden) |
+| `feelings` | Duygu ve karakter | B1–C1 |
+| `society-law` | Toplum ve hukuk | B1, C1 (B2 has 16 cards on 11 letters: hidden) |
 | `idioms` | Deyimler | B2 |
 | `phrasal-verbs` | Phrasal verbs | B2 |
 | `general` | Genel | NAT (neutral bucket of every NAT card; hidden from the category list, NAT has no category selection) |

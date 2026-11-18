@@ -1,7 +1,7 @@
 id,answer,letter,rule,pos,clue_tr,example_en,example_tr,difficulty,tags,category
 a2-ancient,ANCIENT,A,STARTS,adj,çok eski çağlara ait,We visited an ancient city.,Eski bir şehri ziyaret ettik.,2,,travel
 a2-borrow,BORROW,B,STARTS,verb,geri vermek üzere ödünç almak,May I borrow your dictionary for a minute?,Sözlüğünü bir dakikalığına ödünç alabilir miyim?,2,,daily-life
-a2-customer,CUSTOMER,C,STARTS,noun,dükkândan alışveriş yapan kişi,The customer paid at the desk.,Müşteri kasada ödeme yaptı.,2,,daily-life
+a2-customer,CUSTOMER,C,STARTS,noun,dükkândan alışveriş yapan kişi,The customer paid at the desk.,Müşteri kasada ödeme yaptı.,2,,clothes-shopping
 a2-dangerous,DANGEROUS,D,STARTS,adj,zarar verme ihtimali olan,This road is dangerous at night.,Bu yol geceleri tehlikeli.,2,,daily-life
 a2-envelope,ENVELOPE,E,STARTS,noun,mektubu içine koyduğumuz kâğıt zarf,She put the letter in an envelope.,Mektubu bir zarfa koydu.,2,,daily-life
 a2-fever,FEVER,F,STARTS,noun,hastayken vücudun ısısının yükselmesi,The boy has a high fever.,Çocuğun ateşi yüksek.,2,,body-health

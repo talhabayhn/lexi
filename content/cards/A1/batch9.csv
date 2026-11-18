@@ -4,8 +4,8 @@ a1-add,ADD,A,STARTS,verb,sayıları toplama işlemini yapmak,"Can you add these 
 a1-all,ALL,A,STARTS,adj,"bir şeyin tamamı, hepsi",Ali ate all the cookies.,Ali bütün kurabiyeleri yedi.,1,,daily-life
 a1-around,AROUND,A,STARTS,phrase,"bir şeyi çevreleyecek biçimde, çevresinde",We walked around the pond.,Göletin etrafında yürüdük.,2,,daily-life
 a1-about,ABOUT,A,STARTS,phrase,"bir konu hakkında, ile ilgili",We talked about Selin.,Selin hakkında konuştuk.,1,,daily-life
-a1-ball,BALL,B,STARTS,noun,oyunlarda tepilen ya da atılan yuvarlak nesne,Selin throws the ball.,Selin topu atıyor.,1,,daily-life
-a1-balloon,BALLOON,B,STARTS,noun,içine hava üflenerek şişirilen renkli lastik,Ayşe is holding a balloon.,Ayşe elinde bir balon tutuyor.,2,,daily-life
+a1-ball,BALL,B,STARTS,noun,oyunlarda tepilen ya da atılan yuvarlak nesne,Selin throws the ball.,Selin topu atıyor.,1,,hobbies
+a1-balloon,BALLOON,B,STARTS,noun,içine hava üflenerek şişirilen renkli lastik,Ayşe is holding a balloon.,Ayşe elinde bir balon tutuyor.,2,,hobbies
 a1-begin,BEGIN,B,STARTS,verb,bir işin ilk adımını atmak,"Let's begin, Mert.","Başlayalım, Mert.",2,,daily-life
 a1-both,BOTH,B,STARTS,adj,iki kişi ya da şey için: ikisi de,Ayşe likes both songs.,Ayşe her iki şarkıyı da seviyor.,2,,daily-life
 a1-busy,BUSY,B,STARTS,adj,"yapacak çok işi olan, meşgul",Ayşe is busy with her lessons.,Ayşe dersleriyle meşgul.,1,,daily-life
@@ -20,7 +20,7 @@ a1-end,END,E,STARTS,noun,bir şeyin son kısmı,Ali is at the end of the queue.,
 a1-everyone,EVERYONE,E,STARTS,noun,bir yerdeki bütün insanlar,Everyone clapped for Selin.,Herkes Selin için alkışladı.,2,,family-people
 a1-everything,EVERYTHING,E,STARTS,noun,tüm nesnelerin hepsi,Ali ate everything.,Ali her şeyi yedi.,2,,daily-life
 a1-far,FAR,F,STARTS,adj,"yakın olmayan, uzakta","Is it far, Ali?","Uzak mı, Ali?",2,,city-transport
-a1-film,FILM,F,STARTS,noun,sinemada ya da evde izlenen hikâyeli görüntüler,Ali and I watched a film.,Ali ve ben bir film izledik.,1,,daily-life
+a1-film,FILM,F,STARTS,noun,sinemada ya da evde izlenen hikâyeli görüntüler,Ali and I watched a film.,Ali ve ben bir film izledik.,1,,hobbies
 a1-fire,FIRE,F,STARTS,noun,odunu yakan alev ve sıcaklık,Selin is afraid of fire.,Selin ateşten korkuyor.,1,,daily-life
 a1-free,FREE,F,STARTS,adj,parası alınmayan,Kids can enter the gallery for free.,Çocuklar galeriye parasız girebilir.,1,,daily-life
 a1-full,FULL,F,STARTS,adj,içinde boş yer kalmayan,The basket is full of apples.,Sepet elmalarla dolu.,1,,daily-life
