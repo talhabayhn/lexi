@@ -15,7 +15,7 @@ Lengths (counted with `len()`): see the line under each block.
 - Categories rebalanced (1.0.15): Duygu ve karakter, Toplum ve hukuk, Para ve ekonomi, Giysi ve alışveriş, Hobiler ve
   eğlence, Fiiller, Sıfatlar ve zarflar, Fikirler ve kavramlar; thin ones merged or removed; 42 new words.
 - Thin category wheels are filled from the whole level so every wheel has 26 letters (1.0.14).
-- Large system fonts: words never split, the dialog stays reachable; Reduce Motion / Low Power use lighter animations.
+- Large system fonts: words never split, the dialog stays reachable; Reduce Motion (and Low Power Mode on iOS) use lighter animations.
 - Smoother start and animations on Android (baseline profile with the new flow).
 - Progress, notebook, stats and saved games are unchanged: card ids did not change.
 
@@ -44,14 +44,14 @@ Lexi 1.1 ile oyuna giriş baştan tasarlandı.
 • Klasik ve Hardcore artık 3, 5 veya 7 dakikayla oynanabiliyor. Son seçimin hatırlanır.
 • Her kategoriye yeni bir çizim, yeni kategoriler dahil.
 • Kategoriler yeniden düzenlendi: Duygu ve karakter, Toplum ve hukuk, Para ve ekonomi, Giysi ve alışveriş, Hobiler ve eğlence, Fiiller, Sıfatlar ve zarflar, Fikirler ve kavramlar. Çok az kelimeli kategoriler birleştirildi.
-• 42 yeni kelime; her çark 26 harfin hepsiyle dolu.
+• 42 yeni kelime; her kategori çarkı 26 harfin hepsiyle dolu.
 • Seçtiğin seviyede kelimesi olmayan kategoriler gizleniyor.
 • Arkadaşını davet et: mağaza bağlantısını istediğin uygulamayla paylaş.
 • Büyük yazı boyutu, Hareketi Azalt ve Düşük Güç Modu için iyileştirmeler.
 
 İlerlemen, defterin, istatistiklerin ve kayıtlı oyunların aynen duruyor.
 ```
-TR: 937
+TR: 947
 
 ### EN
 ```
@@ -62,14 +62,14 @@ Lexi 1.1 redesigns the way into a game.
 • Classic and Hardcore can now be played for 3, 5 or 7 minutes. Your last choice is remembered.
 • New artwork for every category, the new ones included.
 • Categories were rebalanced: Feelings & traits, Society and law, Money & economy, Clothes and shopping, Hobbies and fun, Verbs, Adjectives & adverbs, Ideas and concepts. Categories with too few words were merged.
-• 42 new words; every wheel is filled with all 26 letters.
+• 42 new words; every category wheel is filled with all 26 letters.
 • Categories without words at your level are hidden.
 • Invite a friend: share the store link with any app.
 • Better support for large text, Reduce Motion and Low Power Mode.
 
 Your progress, notebook, stats and saved games are unchanged.
 ```
-EN: 928
+EN: 937
 
 ## Play Console release notes (≤ 500)
 
@@ -79,12 +79,12 @@ Lexi 1.1: oyuna giriş baştan tasarlandı.
 • Yeni ana ekran ve "Çarkını seç": kart çevrilir, mod ve süreyi seç, harf çarka dönüşür.
 • Klasik ve Hardcore 3, 5 veya 7 dakika.
 • Her kategoriye yeni çizim; yeni kategoriler ve 42 yeni kelime.
-• Her çark 26 harfle dolu.
+• Her kategori çarkı 26 harfle dolu.
 • Arkadaşını davet et.
 • Daha akıcı animasyonlar, büyük yazı desteği.
 İlerlemen ve defterin aynen duruyor.
 ```
-tr-TR: 369
+tr-TR: 379
 
 ### en-US
 ```
@@ -92,12 +92,12 @@ Lexi 1.1 redesigns the way into a game.
 • New Home and "Pick your wheel": the card flips, pick mode and time, the letter becomes the wheel.
 • Classic and Hardcore for 3, 5 or 7 minutes.
 • New art for every category; new categories and 42 new words.
-• Every wheel has all 26 letters.
+• Every category wheel has all 26 letters.
 • Invite a friend.
 • Smoother animations, large text support.
 Your progress and notebook are unchanged.
 ```
-en-US: 386
+en-US: 395
 
 ## Store declarations (privacy, data safety, permissions)
 `git diff v1.0.13..HEAD` shows no change to `gradle/libs.versions.toml`, any `AndroidManifest.xml`, `Info.plist` or

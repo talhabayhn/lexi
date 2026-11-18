@@ -66,6 +66,7 @@ jobs:
           retention-days: 14
 
       # The raw recorded goldens (byte-exact Roborazzi output), so a branch can commit them without writing to main.
+      # It holds SUSPECT goldens too: commit those only after reviewing them in golden-review.
       - name: Upload recorded goldens
         if: always()
         uses: actions/upload-artifact@v7
