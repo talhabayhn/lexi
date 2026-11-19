@@ -3,7 +3,9 @@ package dev.talhabayhan.lexi.splash
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -18,6 +20,7 @@ import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.testTag
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
+import dev.talhabayhan.lexi.core.designsystem.component.HiddenPreDraw
 import dev.talhabayhan.lexi.core.designsystem.component.LexiSplash
 import dev.talhabayhan.lexi.core.designsystem.component.SplashDefaults
 import dev.talhabayhan.lexi.core.designsystem.feedback.LocalHaptics
@@ -68,11 +71,13 @@ fun NavGraphBuilder.splashScreen(onFinished: (onboardingCompleted: Boolean) -> U
  * motion the logo is shown statically for a short hold. Each landing gives a light haptic and a "tık".
  *
  * Pre-roll (`docs/PERF.md` § iOS first launch): before the 1.2 s clock starts, the logo is drawn at a few of its own
- * poses ([SplashWarmUp]) behind the splash's opaque cream for [SPLASH_WARM_UP_FRAMES] frames, while the visible splash
- * still shows its first frame (plain cream, like the launch screen). After a fresh install Metal builds each GPU
- * pipeline the first time it is drawn; without the pre-roll that happened inside the animation and made it stutter. The
- * animation itself (keyframes, duration, easing, haptics) is unchanged; it only starts these frames later. Not with
- * reduced motion (a static logo has nothing to stutter).
+ * poses ([SplashWarmUp]) for [SPLASH_WARM_UP_FRAMES] frames, above the splash and under an opaque cream cover
+ * ([HiddenPreDraw]) over the top half, which the visible first frame shows as plain cream (only the I peeks in from
+ * below), so that frame looks unchanged. After a fresh install Metal builds each GPU pipeline the first time it is
+ * drawn; without the pre-roll that happened inside the animation and made it stutter. (Up to 1.1.1 the poses were drawn *behind* the splash, whose full-screen cream
+ * made Skia drop them before they reached the GPU, so they warmed nothing.) The animation itself (keyframes, duration,
+ * easing, haptics) is unchanged; it only starts these frames later. Not with reduced motion (a static logo has nothing
+ * to stutter).
  */
 @Composable
 internal fun SplashRoute(
@@ -138,15 +143,23 @@ internal fun SplashRoute(
         currentOnFinished(completed)
     }
     Box(Modifier.fillMaxSize()) {
-        // Behind the splash's opaque background, so it is never seen.
-        if (warmingUp) SplashWarmUp(stringResource(Res.string.splash_tagline))
         SplashScreen(progress = { progress.value })
+        // Above the splash (a pre-draw behind its full-screen cream is dropped), hidden under the cream of its first frame.
+        if (warmingUp) {
+            HiddenPreDraw(
+                cover = LexiTheme.colors.cream,
+                modifier = Modifier.fillMaxWidth().fillMaxHeight(SPLASH_WARM_UP_HEIGHT_FRACTION),
+            ) {
+                SplashWarmUp(stringResource(Res.string.splash_tagline))
+            }
+        }
     }
 }
 
 /**
  * The splash's drawing at poses that between them use every kind of layer the animation uses: the shapes and the X
- * scaling in, the X turned, the tagline half faded in, and the landed logo. Drawn once each; no semantics, no input.
+ * scaling in, the X turned, the tagline half faded in, and the landed logo. Drawn once each inside [HiddenPreDraw]; no
+ * semantics but its test tag, no input.
  */
 @Composable
 private fun SplashWarmUp(tagline: String) {
@@ -157,6 +170,12 @@ private fun SplashWarmUp(tagline: String) {
 
 /** Frames the pre-roll stays drawn before the animation starts (drawn once, plus one to be safe, like `GameWarmUp`). */
 internal const val SPLASH_WARM_UP_FRAMES = 2
+
+/**
+ * The pre-roll covers the top half of the screen: plain cream in the splash's first frame on every screen size (the
+ * shapes start at scale 0, L and E off screen, X at scale 0; only the I, from below, is on screen).
+ */
+private const val SPLASH_WARM_UP_HEIGHT_FRACTION = 0.5f
 
 /** Test tag of the pre-roll (tests only; it has no other semantics). */
 internal const val SPLASH_WARM_UP_TAG = "splashWarmUp"

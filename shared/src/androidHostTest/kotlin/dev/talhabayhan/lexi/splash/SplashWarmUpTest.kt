@@ -1,9 +1,16 @@
 package dev.talhabayhan.lexi.splash
 
+import android.graphics.Bitmap
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.ui.graphics.asAndroidBitmap
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.test.ComposeUiTest
 import androidx.compose.ui.test.ExperimentalTestApi
+import androidx.compose.ui.test.captureToImage
+import androidx.compose.ui.test.getBoundsInRoot
 import androidx.compose.ui.test.onAllNodesWithTag
+import androidx.compose.ui.test.onNodeWithTag
+import androidx.compose.ui.test.onRoot
 import androidx.compose.ui.test.runComposeUiTest
 import dev.talhabayhan.lexi.core.designsystem.component.SplashDefaults
 import dev.talhabayhan.lexi.core.designsystem.feedback.LocalHaptics
@@ -74,6 +81,39 @@ class SplashWarmUpTest {
     }
 
     @Test
+    fun `the pre-roll is drawn above the splash under an inset cover and its first frame stays plain`() =
+        runComposeUiTest {
+            mainClock.autoAdvance = false
+            var cream = 0
+            setSplash(reducedMotion = false) { cream = it }
+            assertTrue(warmUpShown(), "no pre-roll")
+
+            // Regression (1.1.1): drawn behind the splash's full-screen cream, the poses were dropped by Skia's GPU
+            // backends before they reached the GPU. A cover inside the screen's edges is an ordinary draw.
+            val root = onRoot().getBoundsInRoot()
+            val warmUp = onNodeWithTag(SPLASH_WARM_UP_TAG, useUnmergedTree = true).getBoundsInRoot()
+            assertTrue(
+                warmUp.left > root.left && warmUp.top > root.top && warmUp.right < root.right &&
+                    warmUp.bottom < root.bottom,
+                "the pre-roll's cover spans the screen: $warmUp in $root",
+            )
+            // Hidden: the pre-roll frame is pixel for pixel the splash's own first frame (the first one after it, at 0).
+            val withPreRoll = onRoot().captureToImage().asAndroidBitmap().pixels()
+            var frames = 0
+            while (warmUpShown() && frames++ < SPLASH_WARM_UP_FRAMES + 2) mainClock.advanceTimeByFrame()
+            assertTrue(!warmUpShown(), "the pre-roll never ends")
+            assertTrue(landings.isEmpty())
+            val firstFrame = onRoot().captureToImage().asAndroidBitmap().pixels()
+            val other = withPreRoll.indices.firstOrNull { withPreRoll[it] != firstFrame[it] }
+            assertNull(other, "the pre-roll is visible at pixel $other")
+            assertTrue(cream in firstFrame, "nothing drawn")
+        }
+
+    private fun Bitmap.pixels(): IntArray = IntArray(width * height).also {
+        getPixels(it, 0, width, 0, 0, width, height)
+    }
+
+    @Test
     fun `reduced motion has no pre-roll`() = runComposeUiTest {
         mainClock.autoAdvance = false
         setSplash(reducedMotion = true)
@@ -91,8 +131,9 @@ class SplashWarmUpTest {
     private fun ComposeUiTest.warmUpShown(): Boolean =
         onAllNodesWithTag(SPLASH_WARM_UP_TAG, useUnmergedTree = true).fetchSemanticsNodes().isNotEmpty()
 
-    private fun ComposeUiTest.setSplash(reducedMotion: Boolean) {
+    private fun ComposeUiTest.setSplash(reducedMotion: Boolean, onCream: (Int) -> Unit = {}) {
         setContent {
+            onCream(LexiTheme.colors.cream.toArgb())
             CompositionLocalProvider(
                 LocalHaptics provides Haptics { landings += mainClock.currentTime },
                 LocalSoundPlayer provides SoundPlayer { },
