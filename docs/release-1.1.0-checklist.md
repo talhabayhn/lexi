@@ -57,6 +57,7 @@ with `main` as of phase 7 (tag `video-flow-phase7-merged`).
    (`PlayDialogClassic`) instead of the plain grid; the captions in `build.py` (`SCREENS`) stay valid for the grid.
 6. **Release:** check that the push to `main` produced a green unsigned R8 AAB (`release-android.yml`), then
    `git tag v1.1.0 && git push origin v1.1.0` (both release workflows). Keep `mapping.txt`.
+   After every tag the CI uploads the Android build to the Play ALPHA track as a DRAFT: complete and send that draft for review in Play Console; remove stale unsent releases in Publishing overview first.
 
 ## 3. Store re-check (ROADMAP "Play Console re-check")
 
