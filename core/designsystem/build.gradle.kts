@@ -19,6 +19,11 @@ kotlin {
             implementation(libs.compose.uiTest)
             implementation(libs.androidx.compose.uiTestManifest)
         }
+        // Pixel tests on the iOS simulator's Skia renderer (FadingHardShadowIosTest); a test-only use of the catalog's
+        // compose ui-test, which the Android host tests already use.
+        iosTest.dependencies {
+            implementation(libs.compose.uiTest)
+        }
     }
 }
 

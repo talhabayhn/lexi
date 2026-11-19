@@ -5,6 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.LayerOutsets
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Density
@@ -25,6 +26,8 @@ public class BoardEntrance internal constructor(
     private val density: Density,
     private val mechanical: Easing,
     private val pop: Easing,
+    /** Room for the pieces' hard shadows in their fading layers (`LexiShadows.fadeOutsets`). */
+    public val shadowRoom: LayerOutsets = LayerOutsets.Zero,
 ) {
     /**
      * 0..1 progress of [step] for the [index]-th piece of a group [staggerMillis] apart, on `mechanical`, on `pop`
@@ -66,6 +69,7 @@ public class BoardEntrance internal constructor(
             val p = progress(step, index, staggerMillis, popEasing, linear)
             alpha = p.coerceIn(0f, 1f)
             translationY = (1f - p) * offsetPx
+            outsets = shadowRoom
             if (startScale != 1f) {
                 val scale = startScale + (1f - startScale) * p
                 scaleX = scale
@@ -86,5 +90,8 @@ public fun rememberBoardEntrance(): BoardEntrance? {
     val density = LocalDensity.current
     val entering = remember(state) { state.isRunning }
     if (!entering) return null
-    return remember(state, density, motion) { BoardEntrance(state, density, motion.mechanical, motion.pop) }
+    val shadowRoom = LexiTheme.shadows.fadeOutsets
+    return remember(state, density, motion, shadowRoom) {
+        BoardEntrance(state, density, motion.mechanical, motion.pop, shadowRoom)
+    }
 }

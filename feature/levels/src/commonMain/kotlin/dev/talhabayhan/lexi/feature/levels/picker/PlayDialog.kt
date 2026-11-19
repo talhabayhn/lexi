@@ -31,6 +31,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.LayerOutsets
 import androidx.compose.ui.graphics.TransformOrigin
 import androidx.compose.ui.graphics.drawscope.clipRect
 import androidx.compose.ui.graphics.graphicsLayer
@@ -57,6 +58,7 @@ import dev.talhabayhan.lexi.core.designsystem.component.WithCappedFontScale
 import dev.talhabayhan.lexi.core.designsystem.feedback.LocalHaptics
 import dev.talhabayhan.lexi.core.designsystem.format.formatClock
 import dev.talhabayhan.lexi.core.designsystem.icon.LexiIcons
+import dev.talhabayhan.lexi.core.designsystem.modifier.hardShadowOutsets
 import dev.talhabayhan.lexi.core.designsystem.modifier.lexiSurface
 import dev.talhabayhan.lexi.core.designsystem.motion.DialogFlipChoreography
 import dev.talhabayhan.lexi.core.designsystem.motion.DialogFlipMachine
@@ -210,7 +212,8 @@ private fun ReopenCatcher(card: PickerCategoryUi, flip: PickerDialogFlip, onInte
  * The panel's look while #14 / #15 runs. Outer layer: turn on Y around the current rectangle's centre, the Lite scale
  * and the dialog's alpha. Drawn: the hard shadow, fill and border at the current rectangle, the content clipped to it.
  * Inner layer: the content follows the rectangle's top-left and fades with `contentAlpha`. At rest the panel uses
- * `lexiSurface` instead, so the resting look is the static one.
+ * `lexiSurface` instead, so the resting look is the static one. The outer layer fades in Lite (alpha < 1: offscreen,
+ * clipped to its bounds), so it keeps room for the panel's hard shadow, which would otherwise pop in at the end.
  */
 private fun Modifier.flipPanel(
     flip: PickerDialogFlip,
@@ -219,6 +222,7 @@ private fun Modifier.flipPanel(
     borderWidth: Dp,
     borderColor: Color,
     shadow: LexiShadow,
+    shadowOutsets: LayerOutsets = hardShadowOutsets(shadow.offset),
 ): Modifier = this
     .graphicsLayer {
         val frame = flip.frame()
@@ -236,6 +240,7 @@ private fun Modifier.flipPanel(
         rotationY = if (rect != null) frame.dialogTurnDegrees else 0f
         perspective(flow.flipPerspective)
         alpha = frame.dialogAlpha * fallbackShown.coerceIn(0f, 1f)
+        outsets = shadowOutsets
     }
     .drawWithContent {
         val rect = flip.dialogRect(size, flow.cardLiftOffset.toPx()) ?: Rect(Offset.Zero, size)
@@ -259,17 +264,26 @@ private fun Modifier.flipPanel(
     }
     .padding(borderWidth)
 
-/** Row [index] of the panel rises [FlowMotion.dialogItemOffset] and fades in (#14); nothing at rest. */
-private fun Modifier.flipItem(flip: PickerDialogFlip, index: Int, animating: Boolean, offset: Dp): Modifier =
-    if (!animating) {
-        this
-    } else {
-        graphicsLayer {
-            val progress = flip.itemProgress(index)
-            alpha = progress.coerceIn(0f, 1f)
-            translationY = (1f - progress) * offset.toPx()
-        }
+/**
+ * Row [index] of the panel rises [FlowMotion.dialogItemOffset] and fades in (#14); nothing at rest. [shadowRoom] keeps
+ * the hard shadows of its controls (OYNA, the back arrow, the segments) drawn through the fade.
+ */
+private fun Modifier.flipItem(
+    flip: PickerDialogFlip,
+    index: Int,
+    animating: Boolean,
+    offset: Dp,
+    shadowRoom: LayerOutsets,
+): Modifier = if (!animating) {
+    this
+} else {
+    graphicsLayer {
+        val progress = flip.itemProgress(index)
+        alpha = progress.coerceIn(0f, 1f)
+        translationY = (1f - progress) * offset.toPx()
+        outsets = shadowRoom
     }
+}
 
 /** Swallows pointer input before the children see it unless [enabled] (read on each event). */
 private fun Modifier.inputWhen(enabled: () -> Boolean): Modifier = pointerInput(Unit) {
@@ -297,6 +311,7 @@ private fun DialogPanel(
         .ifEmpty { if (card.isMixed) stringResource(Res.string.picker_mixed_fallback) else "" }
     val animating = flip.animating
     val rise = flow.dialogItemOffset
+    val shadowRoom = LexiTheme.shadows.fadeOutsets
     val noTimer = stringResource(Res.string.dialog_time_none)
     // The choices and OYNA act only once the dialog rests (the back arrow always closes it).
     val settled: (CategoryPickerIntent) -> Unit = { if (flip.dialogTakesInput) onIntent(it) }
@@ -337,7 +352,7 @@ private fun DialogPanel(
             name = name,
             meta = stringResource(Res.string.dialog_meta, state.level.name, card.total, card.learned),
             onClose = { onIntent(CategoryPickerIntent.CloseDialog) },
-            modifier = Modifier.flipItem(flip, ROW_HEADER, animating, rise),
+            modifier = Modifier.flipItem(flip, ROW_HEADER, animating, rise, shadowRoom),
         )
         Column(
             Modifier
@@ -345,7 +360,7 @@ private fun DialogPanel(
                 .inputWhen { flip.dialogTakesInput }
                 .verticalScroll(rememberScrollState()),
         ) {
-            Column(Modifier.flipItem(flip, ROW_MODE, animating, rise)) {
+            Column(Modifier.flipItem(flip, ROW_MODE, animating, rise, shadowRoom)) {
                 SectionLabel(Res.string.dialog_mode_label)
                 val modeIndex = PickerModes.indexOf(state.mode).coerceAtLeast(0)
                 WithCappedFontScale(FlowDefaults.CONTROL_FONT_SCALE_CAP) {
@@ -361,8 +376,11 @@ private fun DialogPanel(
                     )
                 }
             }
-            ModeHint(state.mode, Modifier.flipItem(flip, ROW_HINT, animating, rise).padding(top = dimens.gap8))
-            Column(Modifier.flipItem(flip, ROW_TIME, animating, rise)) {
+            ModeHint(
+                state.mode,
+                Modifier.flipItem(flip, ROW_HINT, animating, rise, shadowRoom).padding(top = dimens.gap8),
+            )
+            Column(Modifier.flipItem(flip, ROW_TIME, animating, rise, shadowRoom)) {
                 SectionLabel(Res.string.dialog_time_label)
                 WithCappedFontScale(FlowDefaults.CONTROL_FONT_SCALE_CAP) {
                     SegmentedControl(
@@ -389,7 +407,7 @@ private fun DialogPanel(
                 modifier = Modifier
                     .padding(top = dimens.gap18)
                     .fillMaxWidth()
-                    .flipItem(flip, ROW_PLAY, animating, rise)
+                    .flipItem(flip, ROW_PLAY, animating, rise, shadowRoom)
                     .inputWhen { flip.dialogTakesInput }
                     .morphAnchor(FlowMorphKeys.PLAY_BUTTON),
             ) {

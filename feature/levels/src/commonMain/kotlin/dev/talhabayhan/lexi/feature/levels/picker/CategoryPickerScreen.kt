@@ -42,6 +42,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.LayerOutsets
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalDensity
@@ -340,6 +341,7 @@ internal fun Modifier.flipCard(flip: PickerDialogFlip, flow: FlowMotion, shadowC
         rotationZ = frame.cardLift * flow.cardLiftRotationDegrees
         rotationY = frame.cardTurnDegrees
         perspective(flow.flipPerspective)
+        // Only ever 1 or 0 (shown / hidden edge-on): never drawn offscreen, so its shadows need no layer outsets.
         alpha = frame.cardAlpha
     }
     .drawBehind {
@@ -432,12 +434,14 @@ private fun ScrollTopButton(gridState: LazyGridState, modifier: Modifier) {
 /**
  * Motion #18 (`FlowMotion.gridCardIn`): the cards rise and fade in one after another, read only in the draw phase
  * (one clock for all cards). The run is registered with the session's frame monitor, so a slow device drops to Lite.
+ * [shadowRoom] keeps each card's hard shadow drawn while it fades (a fading layer is clipped to its bounds).
  */
 private class GridEntrance(
     private val flow: FlowMotion?,
     private val clock: Animatable<Float, *>?,
     private val easing: Easing,
     private val offsetPx: Float,
+    private val shadowRoom: LayerOutsets = LayerOutsets.Zero,
 ) {
     fun modifier(index: Int): Modifier {
         if (flow == null || clock == null || index >= ENTRANCE_CARDS) return Modifier
@@ -446,6 +450,7 @@ private class GridEntrance(
             val fraction = easing.transform(step.progressAt(clock.value.toLong()))
             alpha = fraction
             translationY = (1f - fraction) * offsetPx
+            outsets = shadowRoom
         }
     }
 }
@@ -473,7 +478,8 @@ private fun rememberGridEntrance(play: Boolean, ready: Boolean): GridEntrance {
             monitor.endTransition()
         }
     }
-    return remember(clock, offsetPx) { GridEntrance(flow, clock, motion.mechanical, offsetPx) }
+    val shadowRoom = LexiTheme.shadows.fadeOutsets
+    return remember(clock, offsetPx, shadowRoom) { GridEntrance(flow, clock, motion.mechanical, offsetPx, shadowRoom) }
 }
 
 /** The grid entrance (#18) plays on the first open of the screen per app session, in tier Full only. */

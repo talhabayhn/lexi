@@ -2,6 +2,7 @@ package dev.talhabayhan.lexi.core.designsystem.theme
 
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.LayerOutsets
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
@@ -32,7 +33,15 @@ public class LexiShadows internal constructor(
     public val s5Red: LexiShadow,
     /** 4,4 red: exam-packs tile on home. */
     public val s4Red: LexiShadow,
-)
+) {
+    /**
+     * `hardShadowOutsets` of the largest token: a fading `graphicsLayer` around content with any of these shadows
+     * keeps them drawn through the fade. Keep the list in sync with the constructor when a token is added.
+     */
+    public val fadeOutsets: LayerOutsets = listOf(s3, s4, s5, s6, s8, s5Red, s4Red).maxOf { it.offset }.let {
+        LayerOutsets(right = it, bottom = it)
+    }
+}
 
 internal fun lexiShadows(colors: LexiColors): LexiShadows = LexiShadows(
     s3 = LexiShadow(3.dp, colors.ink),

@@ -12,6 +12,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.LayerOutsets
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.util.lerp
@@ -47,6 +48,8 @@ internal class TurnSwap(
     private val itemOffsetPx: Float,
     cells: Int,
     keys: Int,
+    /** Keeps the hard shadows of the fading clue card, slots and keys drawn through their fades. */
+    internal val shadowRoom: LayerOutsets = LayerOutsets.Zero,
 ) {
     /** Milliseconds since the new turn was first drawn. */
     internal val time = Animatable(0f)
@@ -83,6 +86,7 @@ internal class TurnSwap(
         val p = progress(flow.clueOut, motion.turn)
         alpha = (1f - p).coerceIn(0f, 1f)
         translationX = -clueOffsetPx * p
+        outsets = shadowRoom
     }
 
     /** The new clue: hidden until [FlowMotion.clueIn], then in from the right (`mechanical`). */
@@ -90,11 +94,13 @@ internal class TurnSwap(
         val p = progress(flow.clueIn, motion.mechanical)
         alpha = p.coerceIn(0f, 1f)
         translationX = clueOffsetPx * (1f - p)
+        outsets = shadowRoom
     }
 
     /** The previous answer slots fade out (linear). */
     val outgoingSlots: Modifier = Modifier.graphicsLayer {
         alpha = 1f - progress(flow.redealSlotsOut, motion.linear)
+        outsets = shadowRoom
     }
 
     /** The previous keys stay until the new ones are dealt. */
@@ -125,6 +131,7 @@ internal fun rememberTurnSwap(turn: GameTurnUi?): TurnSwap? {
     val tier = rememberMotionTier()
     val density = LocalDensity.current
     val previous = rememberPrevious(turn)
+    val shadowRoom = LexiTheme.shadows.fadeOutsets
     val swap = remember(turn?.letter) {
         if (turn == null || previous == null || previous.letter == turn.letter || tier == MotionTier.Minimal) {
             null
@@ -139,6 +146,7 @@ internal fun rememberTurnSwap(turn: GameTurnUi?): TurnSwap? {
                 itemOffsetPx = with(density) { flow.boardItemOffset.toPx() },
                 cells = turn.words.sumOf { it.size },
                 keys = turn.keys.size,
+                shadowRoom = shadowRoom,
             )
         }
     }
@@ -227,7 +235,8 @@ private class PreviousHolder<T : Any> {
 
 /**
  * One `graphicsLayer` per answer cell or key combining the board entrance (#16: [entranceStep], [entranceStagger]) and
- * the re-deal (#17: [redeal]); both rise [BoardEntrance]'s 12dp and fade in. Without either it adds nothing.
+ * the re-deal (#17: [redeal]); both rise [BoardEntrance]'s 12dp and fade in. Without either it adds nothing. The layer
+ * keeps room for the piece's hard shadow, so it is drawn through the fade.
  */
 internal fun dealtPiece(
     index: Int,
@@ -245,5 +254,6 @@ internal fun dealtPiece(
         val dealt = swap?.redeal(index) ?: 1f
         alpha = (entered * dealt).coerceIn(0f, 1f)
         translationY = ((1f - entered) + (1f - dealt)) * itemOffsetPx
+        outsets = entrance?.shadowRoom ?: swap?.shadowRoom ?: LayerOutsets.Zero
     }
 }
