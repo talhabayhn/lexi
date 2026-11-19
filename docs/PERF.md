@@ -262,7 +262,10 @@ watch the first splash, then kill and reopen and compare.
 - **What:** `SplashRoute` draws `AppWarmUp` in its covered top-half area (`HiddenPreDraw`, frame pixel-identical):
   the splash's 4 poses, the game board (`GameWarmUp`), the card art turned and the morph's ink (`FlowWarmUp`), the real
   category card mid-flip, at rest and mid-entrance (a fading layer with its shadow room), and the dialog mid-open
-  (`CategoryFlipWarmUp` → `PickerDialogWarmUp`). 3 frames, before the 1.2 s clock starts.
+  (`CategoryFlipWarmUp` → `PickerDialogWarmUp`). 3 frames, before the 1.2 s clock starts. The game board and the
+  flow are laid out at the real screen size and drawn at half scale into the covered half (laid out in the half
+  itself, the letter wheel got a size <= 0 and Skia aborted the app on iOS: `SplashWarmUpIosTest`); the GPU pipelines
+  are the same, the glyphs are cached at half size, so the first game's text is still rasterised once in the game.
 - **When:** only when `Settings.warmedUpVersionCode` (DataStore key `warmed_up_version_code`, absent = 0, no migration)
   differs from the running `AppInfo.BUILD_NUMBER` (versionCode); the version is stored after it ran. Every other
   launch skips it. Never with reduced motion (nothing stored then). The decision waits at most 2 frames for the

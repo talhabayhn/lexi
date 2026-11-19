@@ -3,9 +3,12 @@ package dev.talhabayhan.lexi.splash
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.requiredSize
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -15,9 +18,13 @@ import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.runtime.withFrameNanos
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.TransformOrigin
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.testTag
+import androidx.compose.ui.unit.DpSize
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import dev.talhabayhan.lexi.core.designsystem.component.HiddenPreDraw
@@ -161,13 +168,20 @@ internal fun SplashRoute(
     Box(Modifier.fillMaxSize()) {
         SplashScreen(progress = { progress.value })
         // Above the splash (a pre-draw behind its full-screen cream is dropped), hidden under the cream of its first frame.
-        if (warmingUp) {
-            HiddenPreDraw(
-                cover = LexiTheme.colors.cream,
-                modifier = Modifier.fillMaxWidth().fillMaxHeight(SPLASH_WARM_UP_HEIGHT_FRACTION),
-            ) {
-                AppWarmUp(stringResource(Res.string.splash_tagline))
-            }
+        if (warmingUp) SplashWarmUpLayer()
+    }
+}
+
+/** The covered warm-up drawn above the splash's first frame (see [SplashRoute]); fills the splash's own size. */
+@Composable
+internal fun SplashWarmUpLayer() {
+    BoxWithConstraints(Modifier.fillMaxSize()) {
+        val screen = DpSize(maxWidth, maxHeight)
+        HiddenPreDraw(
+            cover = LexiTheme.colors.cream,
+            modifier = Modifier.fillMaxWidth().fillMaxHeight(SPLASH_WARM_UP_HEIGHT_FRACTION),
+        ) {
+            AppWarmUp(stringResource(Res.string.splash_tagline), screen)
         }
     }
 }
@@ -176,16 +190,28 @@ internal fun SplashRoute(
  * Everything the first launch of a version warms up, drawn inside [HiddenPreDraw]: the splash at poses that between
  * them use every kind of layer its animation uses (shapes and X scaling in, X turned, tagline half faded in, landed
  * logo), the game board ([GameWarmUp]) and the video flow ([FlowWarmUp]: card art turned, the real category card
- * mid-flip, the dialog mid-open, the picker cards at rest and entering, the letter morph's ink). Laid out in the
- * covered top half (the game board is measured smaller than in a game: the same kinds of draws, other text sizes). No
- * semantics but its test tag, no input, its intents go nowhere.
+ * mid-flip, the dialog mid-open, the picker cards at rest and entering, the letter morph's ink). The splash poses fill
+ * the covered top half; the game board and the flow are laid out at the size of the real [screen] and drawn at half
+ * scale into it. (Laid out in the half itself, the letter wheel got a size <= 0 and Skia's paragraph builder aborted
+ * the app on iOS: `SplashWarmUpIosTest`.) No semantics but its test tag, no input, its intents go nowhere.
  */
 @Composable
-private fun AppWarmUp(tagline: String) {
+private fun AppWarmUp(tagline: String, screen: DpSize) {
     Box(Modifier.fillMaxSize().clearAndSetSemantics { testTag = SPLASH_WARM_UP_TAG }) {
         for (pose in SplashWarmUpPoses) LexiSplash(progress = { pose }, tagline = tagline)
-        GameWarmUp(Modifier.matchParentSize())
-        FlowWarmUp(Modifier.matchParentSize())
+        Box(
+            Modifier
+                .wrapContentSize(Alignment.TopStart, unbounded = true)
+                .requiredSize(screen)
+                .graphicsLayer {
+                    scaleX = SPLASH_WARM_UP_HEIGHT_FRACTION
+                    scaleY = SPLASH_WARM_UP_HEIGHT_FRACTION
+                    transformOrigin = TransformOrigin(0f, 0f)
+                },
+        ) {
+            GameWarmUp(Modifier.fillMaxSize())
+            FlowWarmUp(Modifier.fillMaxSize())
+        }
     }
 }
 
