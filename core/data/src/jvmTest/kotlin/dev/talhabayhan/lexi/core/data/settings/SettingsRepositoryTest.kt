@@ -70,6 +70,7 @@ class SettingsRepositoryTest {
             duelPlayerNames = listOf("Ayşe", ""),
             duelLevel = Level.B2,
             duelClockSeconds = 420,
+            warmedUpVersionCode = 10102,
         )
 
         repository.settings.test {

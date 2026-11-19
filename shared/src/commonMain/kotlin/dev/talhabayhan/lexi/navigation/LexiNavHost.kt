@@ -8,7 +8,6 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -18,7 +17,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.setValue
-import androidx.compose.runtime.withFrameNanos
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.IntOffset
@@ -44,7 +42,6 @@ import dev.talhabayhan.lexi.core.domain.platform.UrlOpener
 import dev.talhabayhan.lexi.feature.exams.examPacksScreen
 import dev.talhabayhan.lexi.feature.game.GamePreparer
 import dev.talhabayhan.lexi.feature.game.GameRoute
-import dev.talhabayhan.lexi.feature.game.GameWarmUp
 import dev.talhabayhan.lexi.feature.game.duel.duelScreens
 import dev.talhabayhan.lexi.feature.game.gameScreen
 import dev.talhabayhan.lexi.feature.game.levelTestScreen
@@ -73,8 +70,9 @@ import org.koin.compose.koinInject
  * (the result replaces the test; "Pes et" and back from the result return to the onboarding). The
  * result replaces everything above Home, so system back and "Ana menüye dön" both return to Home; TEKRAR OYNA starts
  * the next game in the same place (`Home → Game`). Every navigation to the game first prepares it
- * ([LexiNavigator.startGame], at most 250 ms), so the game slides in with its board already drawn. Once Home is first
- * RESUMED, the game board is warmed up behind the host for two frames ([GameWarmUp]); the perf tour starts after it.
+ * ([LexiNavigator.startGame], at most 250 ms), so the game slides in with its board already drawn. The first-use
+ * drawing (game board, card flip, dialog) is warmed up by the splash on the first launch of each version
+ * (`SplashRoute`); the perf tour starts once Home is first RESUMED.
  *
  * Transitions (`motion.md` #12, slide + fade-through): the new screen slides in horizontally by 24dp over 260 ms and
  * fades in over 200 ms starting at 60 ms; the old one slides 24dp the other way and fades out over its first 90 ms;
@@ -98,16 +96,11 @@ fun LexiNavHost(modifier: Modifier = Modifier, perfTour: PerfTourConfig? = null)
     val distancePx = with(density) { motion.screenTransitionSlideDistance.roundToPx() }
     val transitions = remember(motion, distancePx) { ScreenTransitions(motion, distancePx) }
     val urlOpener = koinInject<UrlOpener>()
-    var warmingUp by remember { mutableStateOf(false) }
-    var warmedUp by remember { mutableStateOf(false) }
+    var homeReady by remember { mutableStateOf(false) }
     LaunchedEffect(navigator) {
-        // After the splash (Home only resumes once its transition is over), never during its animation.
+        // The perf tour starts on Home once its transition is over.
         navigator.awaitResumedOn(HomeRoute::class)
-        warmingUp = true
-        // One more wait: the flag is cleared before the recomposition of the frame it resumes in.
-        repeat(GAME_WARM_UP_FRAMES + 1) { withFrameNanos { } }
-        warmingUp = false
-        warmedUp = true
+        homeReady = true
     }
     val morph = remember { MorphOverlayState() }
     val policy = LocalMotionPolicy.current
@@ -140,14 +133,7 @@ fun LexiNavHost(modifier: Modifier = Modifier, perfTour: PerfTourConfig? = null)
         tier = { currentTier },
         onCancelled = launcher::onCancelled,
     ) {
-        Box(Modifier.fillMaxSize()) {
-            // Behind the NavHost and its opaque cream background, so it is never seen.
-            if (warmingUp) {
-                GameWarmUp(Modifier.matchParentSize())
-                FlowWarmUp(Modifier.matchParentSize())
-            }
-            LexiNavGraph(navController, navigator, transitions, urlOpener, morph, startGame)
-        }
+        LexiNavGraph(navController, navigator, transitions, urlOpener, morph, startGame)
         // Enabled only while a morph runs. The screens' own handlers that could outrank it (newer handlers win) step
         // aside while it runs: the picker's dialog handler is off, the game's is off before its start.
         NavigationBackHandler(
@@ -157,11 +143,8 @@ fun LexiNavHost(modifier: Modifier = Modifier, perfTour: PerfTourConfig? = null)
         )
     }
     LifecycleEventEffect(Lifecycle.Event.ON_STOP) { launcher.onStop() }
-    if (perfTour != null && warmedUp) PerfTour(navigator = navigator, config = perfTour)
+    if (perfTour != null && homeReady) PerfTour(navigator = navigator, config = perfTour)
 }
-
-/** Frames the game board warm-up ([GameWarmUp]) stays composed. */
-private const val GAME_WARM_UP_FRAMES = 2
 
 @Composable
 private fun LexiNavGraph(

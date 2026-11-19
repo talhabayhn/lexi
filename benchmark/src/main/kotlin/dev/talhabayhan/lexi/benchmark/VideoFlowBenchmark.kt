@@ -55,16 +55,16 @@ class VideoFlowBenchmark {
     }
 
     /**
-     * Only the first card flip of a fresh process: the categories are opened and settled in setup (the idle time the
-     * dialog warm-up uses), so the measured frames are the tap, the lift, the Y flip and the dialog's first
-     * composition: the stutter `PickerDialogWarmUp` and the baseline profile (`videoFlow`) are meant to remove. Compare
+     * Only the first card flip of a fresh process: the categories are opened and settled in setup, so the measured
+     * frames are the tap, the lift, the Y flip and the dialog's first composition: the stutter the splash's first-launch
+     * warm-up (`SplashRoute`, once per app version) and the baseline profile (`videoFlow`) are meant to remove. Compare
      * `CompilationMode.None()` (no profile) with the default [CompilationMode.Partial] on the device matrix.
      */
     @Test
     fun firstDialogFlip() = journey(
         setup = {
             openCategories()
-            // The dialog warm-up runs ≈ 1.1 s after the grid entrance, while nothing moves.
+            // Let the grid entrance land and the picker settle before the tap.
             Thread.sleep(WARM_UP_MS)
         },
     ) {

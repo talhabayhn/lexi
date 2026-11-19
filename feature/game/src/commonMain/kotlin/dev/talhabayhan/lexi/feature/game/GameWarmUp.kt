@@ -12,9 +12,9 @@ import androidx.compose.ui.semantics.clearAndSetSemantics
 /**
  * One-time warm-up of the game board: the playing sample ([GameSamples.design]) composed, measured and drawn like the
  * real game screen, so the first-use costs (Kotlin/Native class init, the Jost glyph cache at chip and key sizes,
- * shaders, strings) are paid on Home instead of in the game's first frame. The host draws it for two frames under an
- * opaque background. It has no semantics, takes no touch (every pointer event is consumed before its keys see it) and
- * no focus; its intents go nowhere.
+ * shaders, strings) are paid before the game's first frame. The splash draws it hidden on the first launch of each
+ * version (`SplashRoute`). It has no semantics, takes no touch (every pointer event is consumed before its keys see
+ * it) and no focus; its intents go nowhere.
  */
 @Composable
 fun GameWarmUp(modifier: Modifier = Modifier) {

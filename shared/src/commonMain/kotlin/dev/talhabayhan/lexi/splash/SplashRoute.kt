@@ -26,14 +26,18 @@ import dev.talhabayhan.lexi.core.designsystem.component.SplashDefaults
 import dev.talhabayhan.lexi.core.designsystem.feedback.LocalHaptics
 import dev.talhabayhan.lexi.core.designsystem.feedback.LocalSoundPlayer
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
+import dev.talhabayhan.lexi.core.domain.AppInfo
 import dev.talhabayhan.lexi.core.domain.feedback.HapticKind
 import dev.talhabayhan.lexi.core.domain.feedback.SoundEffect
 import dev.talhabayhan.lexi.core.domain.repository.ContentVersionRepository
 import dev.talhabayhan.lexi.core.domain.repository.OnboardingRepository
 import dev.talhabayhan.lexi.core.domain.repository.SettingsRepository
+import dev.talhabayhan.lexi.core.domain.settings.Settings
 import dev.talhabayhan.lexi.core.domain.telemetry.AnalyticsEvent
 import dev.talhabayhan.lexi.core.domain.telemetry.AnalyticsTracker
 import dev.talhabayhan.lexi.core.domain.time.AppClock
+import dev.talhabayhan.lexi.feature.game.GameWarmUp
+import dev.talhabayhan.lexi.navigation.FlowWarmUp
 import dev.talhabayhan.lexi.shared.generated.resources.Res
 import dev.talhabayhan.lexi.shared.generated.resources.splash_tagline
 import dev.talhabayhan.lexi.startup.StartupTrace
@@ -70,14 +74,17 @@ fun NavGraphBuilder.splashScreen(onFinished: (onboardingCompleted: Boolean) -> U
  * done, so a fast start is never held up beyond the animation and a slow first-run copy is waited for. With reduced
  * motion the logo is shown statically for a short hold. Each landing gives a light haptic and a "tık".
  *
- * Pre-roll (`docs/PERF.md` § iOS first launch): before the 1.2 s clock starts, the logo is drawn at a few of its own
- * poses ([SplashWarmUp]) for [SPLASH_WARM_UP_FRAMES] frames, above the splash and under an opaque cream cover
- * ([HiddenPreDraw]) over the top half, which the visible first frame shows as plain cream (only the I peeks in from
- * below), so that frame looks unchanged. After a fresh install Metal builds each GPU pipeline the first time it is
- * drawn; without the pre-roll that happened inside the animation and made it stutter. (Up to 1.1.1 the poses were drawn *behind* the splash, whose full-screen cream
- * made Skia drop them before they reached the GPU, so they warmed nothing.) The animation itself (keyframes, duration,
- * easing, haptics) is unchanged; it only starts these frames later. Not with reduced motion (a static logo has nothing
- * to stutter).
+ * App warm-up (`docs/PERF.md`): on the **first launch of each app version** ([Settings.warmedUpVersionCode] differs
+ * from [AppInfo.BUILD_NUMBER]), before the 1.2 s clock starts, the app's first-use drawing ([AppWarmUp]: the splash's
+ * poses, the game board, the category card mid-flip, the dialog mid-open, the picker cards at rest and entering) is
+ * drawn for [SPLASH_WARM_UP_FRAMES] frames above the splash, under an opaque cream cover ([HiddenPreDraw]) over the top
+ * half, which the visible first frame shows as plain cream (only the I peeks in from below), so that frame looks
+ * unchanged. After an install or update Metal builds each GPU pipeline the first time it is drawn and caches it; doing
+ * that here keeps it out of every animation. The version is then stored and every later launch skips the warm-up (its
+ * clock starts within [SPLASH_DECISION_FRAMES] frames, never later than the 2-frame pre-roll of 1.1.1). A version
+ * that cannot be read by then counts as warmed (no wait; the next launch tries again). Not with reduced motion.
+ * (Up to 1.1.1 these pre-draws sat *behind* full-screen opaque backgrounds, which made Skia drop them unseen.) The
+ * animation itself (keyframes, duration, easing, haptics) is unchanged.
  */
 @Composable
 internal fun SplashRoute(
@@ -93,7 +100,7 @@ internal fun SplashRoute(
     val sounds = LocalSoundPlayer.current
     val currentOnFinished by rememberUpdatedState(onFinished)
     val progress = remember { Animatable(if (motion.reducedMotion) 1f else 0f) }
-    var warmingUp by remember { mutableStateOf(!motion.reducedMotion) }
+    var warmingUp by remember { mutableStateOf(false) }
     LaunchedEffect(content, onboarding, analytics, motion) {
         val completed = coroutineScope {
             val ready = async { StartupTrace.measureSuspend("content warm-up") { content.warmUp() } }
@@ -107,9 +114,18 @@ internal fun SplashRoute(
             if (motion.reducedMotion) {
                 delay(motion.splashReducedHoldMillis.toLong())
             } else {
-                // The pre-roll: drawn in the first frames, then removed before the clock starts.
-                repeat(SPLASH_WARM_UP_FRAMES) { withFrameNanos { } }
-                warmingUp = false
+                val warmed = settings.warmedUpVersionOrNull()
+                if (warmed != null && warmed != AppInfo.BUILD_NUMBER) {
+                    // First launch of this version: drawn for a few frames, removed before the clock starts.
+                    warmingUp = true
+                    repeat(SPLASH_WARM_UP_FRAMES) { withFrameNanos { } }
+                    warmingUp = false
+                    StartupTrace.mark("warm-up ran")
+                    // A short DataStore write; the splash's finish waits for it (far shorter than the animation).
+                    launch { settings.recordWarmUp() }
+                } else if (warmed == null) {
+                    StartupTrace.mark("warm-up skipped: settings not read in time")
+                }
                 val landings = launch {
                     var landed = 0
                     snapshotFlow { progress.value }.collect { value ->
@@ -150,34 +166,68 @@ internal fun SplashRoute(
                 cover = LexiTheme.colors.cream,
                 modifier = Modifier.fillMaxWidth().fillMaxHeight(SPLASH_WARM_UP_HEIGHT_FRACTION),
             ) {
-                SplashWarmUp(stringResource(Res.string.splash_tagline))
+                AppWarmUp(stringResource(Res.string.splash_tagline))
             }
         }
     }
 }
 
 /**
- * The splash's drawing at poses that between them use every kind of layer the animation uses: the shapes and the X
- * scaling in, the X turned, the tagline half faded in, and the landed logo. Drawn once each inside [HiddenPreDraw]; no
- * semantics but its test tag, no input.
+ * Everything the first launch of a version warms up, drawn inside [HiddenPreDraw]: the splash at poses that between
+ * them use every kind of layer its animation uses (shapes and X scaling in, X turned, tagline half faded in, landed
+ * logo), the game board ([GameWarmUp]) and the video flow ([FlowWarmUp]: card art turned, the real category card
+ * mid-flip, the dialog mid-open, the picker cards at rest and entering, the letter morph's ink). Laid out in the
+ * covered top half (the game board is measured smaller than in a game: the same kinds of draws, other text sizes). No
+ * semantics but its test tag, no input, its intents go nowhere.
  */
 @Composable
-private fun SplashWarmUp(tagline: String) {
+private fun AppWarmUp(tagline: String) {
     Box(Modifier.fillMaxSize().clearAndSetSemantics { testTag = SPLASH_WARM_UP_TAG }) {
         for (pose in SplashWarmUpPoses) LexiSplash(progress = { pose }, tagline = tagline)
+        GameWarmUp(Modifier.matchParentSize())
+        FlowWarmUp(Modifier.matchParentSize())
     }
 }
 
-/** Frames the pre-roll stays drawn before the animation starts (drawn once, plus one to be safe, like `GameWarmUp`). */
-internal const val SPLASH_WARM_UP_FRAMES = 2
+/**
+ * The stored warmed-up version code, waiting at most [SPLASH_DECISION_FRAMES] frames for the store's first read; null
+ * when it is not there by then (no wait on a slow start: the warm-up is skipped and tried on the next launch).
+ */
+private suspend fun SettingsRepository.warmedUpVersionOrNull(): Int? {
+    repeat(SPLASH_DECISION_FRAMES) {
+        loaded.value?.let { return it.warmedUpVersionCode }
+        withFrameNanos { }
+    }
+    return loaded.value?.warmedUpVersionCode
+}
+
+/** Stores that this version has warmed up; a failed write only means one more warm-up on the next launch. */
+private suspend fun SettingsRepository.recordWarmUp() {
+    try {
+        update { it.copy(warmedUpVersionCode = AppInfo.BUILD_NUMBER) }
+    } catch (e: CancellationException) {
+        throw e
+    } catch (@Suppress("TooGenericExceptionCaught") _: Exception) {
+        // Ignored: warmed up again next time.
+    }
+}
 
 /**
- * The pre-roll covers the top half of the screen: plain cream in the splash's first frame on every screen size (the
+ * Frames the warm-up stays composed before the animation starts: composed and drawn, drawn again, then removed (the
+ * Home warm-ups of 1.1.1 used the same count).
+ */
+internal const val SPLASH_WARM_UP_FRAMES = 3
+
+/** Frames the splash waits at most for the stored version before deciding (the 2-frame pre-roll of 1.1.1). */
+private const val SPLASH_DECISION_FRAMES = 2
+
+/**
+ * The warm-up covers the top half of the screen: plain cream in the splash's first frame on every screen size (the
  * shapes start at scale 0, L and E off screen, X at scale 0; only the I, from below, is on screen).
  */
 private const val SPLASH_WARM_UP_HEIGHT_FRACTION = 0.5f
 
-/** Test tag of the pre-roll (tests only; it has no other semantics). */
+/** Test tag of the warm-up (tests only; it has no other semantics). */
 internal const val SPLASH_WARM_UP_TAG = "splashWarmUp"
 
 // Fractions of `SplashDefaults`' keyframes: shapes scaling in and L / E moving (0.12), X spinning and scaling (0.28),

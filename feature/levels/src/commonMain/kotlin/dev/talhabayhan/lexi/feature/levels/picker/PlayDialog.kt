@@ -138,12 +138,13 @@ internal fun PlayDialog(
 }
 
 /**
- * One-time warm-up of the dialog (`video-flow-notes.md` § Phase 5): the real [DialogPanel] is composed and drawn once,
- * posed mid-turn of the open flip (the Y rotation with the flip's perspective, the grown frame with its hard shadow,
- * the rows, the segmented controls, OYNA), so the first card the player taps does not pay for the first composition of
- * these classes or the first compile of their GPU shaders. The caller places it **behind** the picker's opaque
- * background for a few frames while the picker is idle; it has no semantics, its intents do nothing and it is not a morph
- * anchor. It always poses the Full tier's Y flip (Lite devices play a scale + fade, which it does not draw).
+ * Warm-up of the dialog (`video-flow-notes.md` § Phase 5): the real [DialogPanel] is composed and drawn once, posed
+ * mid-turn of the open flip (the Y rotation with the flip's perspective, the grown frame with its hard shadow, the
+ * rows, the segmented controls, OYNA), so the first card the player taps does not pay for the first composition of
+ * these classes or the first compile of their GPU shaders. Drawn by [CategoryFlipWarmUp] inside the splash's hidden
+ * warm-up on the first launch of each version (a pre-draw behind an opaque full-screen background is dropped by Skia,
+ * `docs/PERF.md`); it has no semantics, its intents do nothing and it is not a morph anchor. It always poses the Full
+ * tier's Y flip (Lite devices play a scale + fade, which it does not draw).
  */
 @Composable
 internal fun PickerDialogWarmUp(card: PickerCategoryUi, state: CategoryPickerUiState, turkish: Boolean) {

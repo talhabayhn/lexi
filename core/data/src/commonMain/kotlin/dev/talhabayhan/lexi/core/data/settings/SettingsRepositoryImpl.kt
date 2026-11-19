@@ -104,6 +104,7 @@ internal class SettingsRepositoryImpl(
                 ?: defaults.duelClockSeconds,
             firstLaunchMs = this[FIRST_LAUNCH] ?: defaults.firstLaunchMs,
             ratingLastRequestMs = this[RATING_LAST_REQUEST] ?: defaults.ratingLastRequestMs,
+            warmedUpVersionCode = this[WARMED_UP_VERSION] ?: defaults.warmedUpVersionCode,
             selectedLevel = enumOrNull<Level>(this[SELECTED_LEVEL]) ?: defaults.selectedLevel,
             playMode = enumOrNull<GameMode>(this[PLAY_MODE])?.takeIf { it in Settings.PLAY_MODES } ?: defaults.playMode,
             playCategory = this[PLAY_CATEGORY]?.takeIf { it.isNotEmpty() }?.let(::CategoryId),
@@ -132,6 +133,7 @@ internal class SettingsRepositoryImpl(
         this[DUEL_CLOCK] = settings.duelClockSeconds
         this[FIRST_LAUNCH] = settings.firstLaunchMs
         this[RATING_LAST_REQUEST] = settings.ratingLastRequestMs
+        this[WARMED_UP_VERSION] = settings.warmedUpVersionCode
         this[SELECTED_LEVEL] = settings.selectedLevel.name
         this[PLAY_MODE] = settings.playMode.name
         this[PLAY_CATEGORY] = settings.playCategory?.value.orEmpty()
@@ -162,6 +164,9 @@ internal class SettingsRepositoryImpl(
         val DUEL_CLOCK = intPreferencesKey("duel_clock_seconds")
         val FIRST_LAUNCH = longPreferencesKey("first_launch_ms")
         val RATING_LAST_REQUEST = longPreferencesKey("rating_last_request_ms")
+
+        /** Version code whose first launch ran the hidden GPU warm-up (absent = none: no migration needed). */
+        val WARMED_UP_VERSION = intPreferencesKey("warmed_up_version_code")
 
         /** Shared with `OnboardingRepositoryImpl`: the onboarding's level choice seeds "Çarkını seç". */
         val SELECTED_LEVEL = stringPreferencesKey("selected_level")

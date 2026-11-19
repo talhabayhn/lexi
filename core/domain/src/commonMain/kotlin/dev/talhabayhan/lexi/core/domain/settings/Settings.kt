@@ -52,6 +52,11 @@ public data class Settings(
     /** Epoch ms of our last rating request (0 = never); the next one waits 120 days. */
     val ratingLastRequestMs: Long = 0L,
     /**
+     * The app version code whose first launch already ran the hidden GPU warm-up (0 = none yet); the splash warms up
+     * again only when it differs from the running version (`docs/PERF.md`).
+     */
+    val warmedUpVersionCode: Int = 0,
+    /**
      * The level of "Çarkını seç" (`video-flow-notes.md` §2): seeded by the onboarding's level choice or the level test
      * (the same stored key as `OnboardingRepository.selectedLevel`), then changed by the level chips.
      */
