@@ -82,8 +82,6 @@ internal fun tierLabel(tier: MotionTier, reason: MotionTierReason, monitor: Fram
 
     MotionTierReason.LowRamDevice -> "${tier.name}: low RAM device"
 
-    MotionTierReason.LowPowerMode -> "${tier.name}: low power mode"
-
     MotionTierReason.SlowFrames -> {
         val why = when (val downgrade = monitor.downgrade) {
             is FrameDowngrade.SlowTransitions -> "slow transitions x${downgrade.count}"

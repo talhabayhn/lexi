@@ -12,10 +12,12 @@ import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 
 /**
  * Picks the [MotionTier] for the video flow, first match wins ([tierReason]): [forcedTier]; reduced motion ⇒
- * [MotionTier.Minimal]; Android low-RAM device or iOS Low Power Mode ⇒ [MotionTier.Lite]; a [FrameMonitor.downgrade]
- * ⇒ [MotionTier.Lite]; otherwise [MotionTier.Full]. The frame rules only move between Full and Lite (they never
- * override the signals above them) and are reversible. One instance per app session (the monitor keeps its evidence
- * and its per-process warm-up), the OS signals are re-read on every call.
+ * [MotionTier.Minimal]; Android low-RAM device ⇒ [MotionTier.Lite]; a [FrameMonitor.downgrade] ⇒ [MotionTier.Lite];
+ * otherwise [MotionTier.Full]. Full is the default: only measured jank ([FrameMonitor]) lowers it, reversibly. iOS Low
+ * Power Mode is deliberately not a signal (1.1.1: it kept every iPhone in Low Power on the scale + fade, with no flip,
+ * although the flip runs smoothly there; `docs/design/video-flow-notes.md` § Performance). The frame rules only move
+ * between Full and Lite (they never override the signals above them). One instance per app session (the monitor keeps
+ * its evidence and its per-process warm-up), the OS signals are re-read on every call.
  */
 @Stable
 public class MotionPolicy(public val frameMonitor: FrameMonitor = FrameMonitor()) {
@@ -27,7 +29,7 @@ public class MotionPolicy(public val frameMonitor: FrameMonitor = FrameMonitor()
 
     public fun tier(signals: MotionSignals): MotionTier = forcedTier ?: when (tierReason(signals)) {
         MotionTierReason.ReducedMotion -> MotionTier.Minimal
-        MotionTierReason.LowRamDevice, MotionTierReason.LowPowerMode, MotionTierReason.SlowFrames -> MotionTier.Lite
+        MotionTierReason.LowRamDevice, MotionTierReason.SlowFrames -> MotionTier.Lite
         MotionTierReason.Forced, MotionTierReason.Default -> MotionTier.Full
     }
 
@@ -36,7 +38,6 @@ public class MotionPolicy(public val frameMonitor: FrameMonitor = FrameMonitor()
         forcedTier != null -> MotionTierReason.Forced
         signals.reducedMotion -> MotionTierReason.ReducedMotion
         signals.lowRamDevice -> MotionTierReason.LowRamDevice
-        signals.lowPowerMode -> MotionTierReason.LowPowerMode
         frameMonitor.isDowngraded -> MotionTierReason.SlowFrames
         else -> MotionTierReason.Default
     }
@@ -48,7 +49,6 @@ public enum class MotionTierReason {
     Forced,
     ReducedMotion,
     LowRamDevice,
-    LowPowerMode,
 
     /** [FrameMonitor.downgrade] (details there). */
     SlowFrames,
@@ -82,8 +82,8 @@ public fun rememberMotionSignals(): MotionSignals {
 }
 
 /**
- * OS signals for the tier ([MotionSignals.reducedMotion] is filled in by [rememberMotionTier]). iOS Low Power Mode is
- * observed; Android's low-RAM flag is fixed per device and read once.
+ * OS signals for the tier ([MotionSignals.reducedMotion] is filled in by [rememberMotionTier]). Android's low-RAM flag
+ * is fixed per device and read once; iOS has none (Low Power Mode is not one, see [MotionPolicy]).
  */
 @Composable
 internal expect fun deviceMotionSignals(): MotionSignals

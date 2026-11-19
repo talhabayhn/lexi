@@ -27,6 +27,4 @@ public data class MotionSignals(
     val reducedMotion: Boolean,
     /** Android `ActivityManager.isLowRamDevice`; always false on iOS. */
     val lowRamDevice: Boolean,
-    /** iOS Low Power Mode; always false on Android (open item: Android battery saver). */
-    val lowPowerMode: Boolean,
 )

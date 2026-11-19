@@ -4,10 +4,10 @@ import kotlin.test.Test
 import kotlin.test.assertEquals
 
 class MotionPolicyTest {
-    private val normal = MotionSignals(reducedMotion = false, lowRamDevice = false, lowPowerMode = false)
+    // An iPhone in Low Power Mode reports these too: Low Power Mode is not a signal (Full by default).
+    private val normal = MotionSignals(reducedMotion = false, lowRamDevice = false)
     private val reduced = normal.copy(reducedMotion = true)
     private val lowRam = normal.copy(lowRamDevice = true)
-    private val lowPower = normal.copy(lowPowerMode = true)
     private var clock = 0L
 
     /** One transition of [key] whose frames are [gapNanos] apart ([frames] intervals). */
@@ -56,26 +56,38 @@ class MotionPolicyTest {
         val policy = MotionPolicy()
 
         assertEquals(MotionTier.Minimal, policy.tier(reduced))
-        assertEquals(MotionTier.Minimal, policy.tier(MotionSignals(true, lowRamDevice = true, lowPowerMode = true)))
+        assertEquals(MotionTier.Minimal, policy.tier(MotionSignals(true, lowRamDevice = true)))
         assertEquals(MotionTierReason.ReducedMotion, policy.tierReason(reduced))
     }
 
     @Test
-    fun `low ram android and ios low power mode start in lite`() {
+    fun `a low ram android device starts in lite`() {
         val policy = MotionPolicy()
 
         assertEquals(MotionTier.Lite, policy.tier(lowRam))
-        assertEquals(MotionTier.Lite, policy.tier(lowPower))
         assertEquals(MotionTierReason.LowRamDevice, policy.tierReason(lowRam))
-        assertEquals(MotionTierReason.LowPowerMode, policy.tierReason(lowPower))
     }
 
     @Test
-    fun `leaving low power mode returns to full`() {
+    fun `only the signals and measured jank leave full`() {
+        // Regression (1.1.1): iOS Low Power Mode started every flow in Lite, so the card flip never ran. The only tier
+        // reasons are the forced tier, reduced motion, low RAM and slow frames; none of them is power related.
+        assertEquals(
+            listOf(
+                MotionTierReason.Forced,
+                MotionTierReason.ReducedMotion,
+                MotionTierReason.LowRamDevice,
+                MotionTierReason.SlowFrames,
+                MotionTierReason.Default,
+            ),
+            MotionTierReason.entries.toList(),
+        )
         val policy = MotionPolicy()
-        policy.tier(lowPower)
+        // Good frames on the device (as the flip in Low Power Mode is): Full stays.
+        repeat(4) { policy.frameMonitor.transition(KEY, GOOD) }
 
         assertEquals(MotionTier.Full, policy.tier(normal))
+        assertEquals(MotionTierReason.Default, policy.tierReason(normal))
     }
 
     @Test
@@ -102,15 +114,13 @@ class MotionPolicyTest {
     }
 
     @Test
-    fun `a recovery never lifts low ram or low power mode out of lite`() {
+    fun `a recovery never lifts a low ram device out of lite`() {
         val policy = downgradedPolicy()
 
         policy.recover()
 
         assertEquals(MotionTier.Lite, policy.tier(lowRam))
-        assertEquals(MotionTier.Lite, policy.tier(lowPower))
         assertEquals(MotionTierReason.LowRamDevice, policy.tierReason(lowRam))
-        assertEquals(MotionTierReason.LowPowerMode, policy.tierReason(lowPower))
     }
 
     @Test
