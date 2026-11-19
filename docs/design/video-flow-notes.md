@@ -200,8 +200,9 @@ Still open:
   with a pop, the clue slides, slots and keys are re-dealt, the centre letter leaves down and the next comes from
   above. Hidden keys take no tap during a re-deal.
 - **#18 grid entrance** (phase 2) unchanged; Home has no entrance; other screen changes keep #12.
-- **Performance:** draw-phase only; `FlowWarmUp` compiles the flip and morph shaders on Home (since 1.1.x also the
-  real card mid-flip and the dialog mid-open, `CategoryFlipWarmUp`; iOS first launch: `docs/PERF.md`); low-RAM
+- **Performance:** draw-phase only; `FlowWarmUp` compiles the flip and morph shaders (also the real card mid-flip, at
+  rest and entering, and the dialog mid-open, `CategoryFlipWarmUp`), drawn hidden by the splash on the first launch of
+  each version (`docs/PERF.md`); low-RAM
   starts in Lite (Low Power Mode no longer does, §12), slow transitions switch the session to Lite (rules since
   phase 6: §12); a layer that fades content with hard shadows keeps room for them (`hardShadowOutsets`,
   `motion.md` § Layers); debug
@@ -313,7 +314,8 @@ the owner steps of `docs/release-1.1.0-checklist.md`.
    dimmed in place, content description "Pratik modda süre yok."). `CategoryPickerLayoutTest` records the tops of the
    SÜRE label, the 3:00 box and OYNA in all three modes (4 sizes × 3 scales × TR/EN) and asserts they are identical (it
    fails on the old dialog: Pratik sat 44 px higher, OYNA 4 px lower at 100 %); `WordSplitRecorder` still guards it.
-4. **First-use jank on the first flip:** `PickerDialogWarmUp` composes and draws the real dialog panel once per app
+4. **First-use jank on the first flip** (superseded after the 1.1.1 report: the dialog warm-up now runs in the
+   splash on a version's first launch, `docs/PERF.md`): `PickerDialogWarmUp` composed and drew the real dialog panel once per app
    process, posed mid-way through the open flip (rotation with perspective, grown frame, hard shadow, rows, segmented
    controls, OYNA), **behind the picker's opaque background** for 3 frames, ≈ 1.1 s after the grid entrance (0.4 s when
    there is none) and only when the grid is not scrolling, no dialog is up and the tier is not Minimal; no semantics, no

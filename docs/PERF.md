@@ -25,7 +25,7 @@ simulators and debug builds are not comparable.
 Home→Settings, back; Home→CategoryPicker ("Çarkını seç", A1); CategoryPicker→Game (A1, Practice: no clock, left unfinished so never recorded); stay 1.5 s;
 Game→Settings, back to Game; Game→Home (abandoned, never recorded); Home→Stats, back; Home→Notebook, back.
 
-The tour starts when Home is RESUMED, the one-time game warm-up (`GameWarmUp`, two frames) is over, plus 1 s idle. The refresh interval is the median frame gap of that idle second.
+The tour starts when Home is RESUMED, plus 1 s idle (the game warm-up now runs in the splash on a version's first launch). The refresh interval is the median frame gap of that idle second.
 
 ## Output
 
@@ -111,7 +111,8 @@ not heavier than the existing screens; they say nothing about a phone.
 - **Fixed in this phase:** the first iteration had one 163–187 ms frame per journey: the main thread waited
   (`postAndWait`) while the RenderThread compiled GPU shaders the first time a perspective-turned card or the morph's
   scaled letter was drawn (`AtlasTextOp` 127 ms on the emulator's GL translation). `FlowWarmUp` draws both behind the
-  NavHost during the two warm-up frames on Home; worst frames are now 19.7–23.7 ms. On a phone the shader cache
+  NavHost during the two warm-up frames on Home; worst frames are now 19.7–23.7 ms (since the 1.1.1 report it is drawn
+  in the splash's hidden warm-up instead, § iOS 1.1.1 report). On a phone the shader cache
   persists across launches, so this mainly helps the first launch after install or an update.
 - **Earlier bug found by the journeys:** a fresh install opened "Pick your wheel" scrolled to the exam packs (the grid
   kept its first visible item when the cards were inserted above it); fixed with a regression test.
@@ -244,15 +245,44 @@ opaque (PLAY button every time, category cards on the first picker open of a lau
 | A `graphicsLayer` with alpha < 1 is drawn offscreen **clipped to its own bounds** (Compose `GraphicsLayer.setOutsets` docs; skiko `SkiaGraphicsLayer.requiresLayer`). Hard shadows draw right of / below the bounds, so they were cut off for the whole fade and popped in at alpha 1: the dialog rows' fade (PLAY), the grid entrance (first open per launch), the dialog panel's Lite fade (Full only shows / hides, alpha 0 or 1) | reproduced on the Android host renderer (`FadingHardShadowTest`: fails before, passes after) and on the iOS simulator's Skia (`FadingHardShadowIosTest`: clipped without outsets, drawn with them) | every fading layer with hard shadows sets `outsets` (`hardShadowOutsets`, `LexiShadows.fadeOutsets`): dialog rows and Lite panel, grid entrance, the game board's entrance / re-deal / clue swap. Same pixels at rest, no timing change |
 | (a) The splash pre-roll never reached the GPU: it was drawn **behind** the splash, whose first draw is a full-screen opaque cream rectangle. Skia's GPU backends (Metal on iOS, HWUI on Android) turn such a draw into a clear and drop every draw recorded before it in the frame (and each of the four poses began with its own full-screen cream). So no pipeline was built in advance | code (draw order + Skia's full-screen-clear optimisation); not measurable here (the host and simulator tests render on the CPU) | `HiddenPreDraw` (designsystem): the poses are drawn **above** the splash, clipped to the top half and covered by an opaque cream rectangle that does not span the screen (an ordinary draw; Skia has no occlusion culling). The frame stays pixel-identical (`SplashWarmUpTest`) |
 | (b) Heavy main-thread work during the splash | checked: content DB and DataStore on IO, sounds prepared on `Dispatchers.Default`, haptics prepared before the clock, speech / reminders / string preload after the splash, Firebase configured before the first frame | none needed |
-| (c) First-launch-only extended warm-up | not done: (a) explains the stutter; to be reconsidered only if the re-test still shows it | — |
+| (c) First-launch-only extended warm-up | not done in this step: (a) explains the stutter | later decided by the owner: § First launch of a version |
 
-**Same defect, not fixed here:** the Home warm-ups (`GameWarmUp`, `FlowWarmUp` + `CategoryFlipWarmUp`) and the picker's
-`PickerDialogWarmUp` are also drawn behind a full-screen cream background (NavHost, picker), so they very likely warm
-nothing either (which fits the "no measurable difference" of § Phase 5). They cannot simply move on top: the screens
-over them are not a plain color to cover with. Options for the owner: draw them in the splash pre-roll's hidden area
-(longer static first frame on every launch) or remove them. Decide after the re-test.
+**Same defect in the Home / picker warm-ups:** `GameWarmUp`, `FlowWarmUp` + `CategoryFlipWarmUp` and the picker's
+`PickerDialogWarmUp` were also drawn behind a full-screen cream background (NavHost, picker), so they very likely warmed
+nothing either (which fits the "no measurable difference" of § Phase 5). Owner decision: move them into the splash's
+hidden area and run every warm-up on the first launch of each version only (§ First launch of a version).
 
 **Re-test (owner, iPhone 13):** Low Power Mode ON and OFF: Home → play card → tap a category: the card lifts and
 flips in both; the PLAY button's and the dialog frame's right / bottom shadows fade in with them (no late pop); kill
 the app, reopen, open the picker: the cards' shadows come in with the cards. Fresh install (delete the app first):
 watch the first splash, then kill and reopen and compare.
+
+## First launch of a version: one warm-up (owner decision after the 1.1.1 report)
+
+- **What:** `SplashRoute` draws `AppWarmUp` in its covered top-half area (`HiddenPreDraw`, frame pixel-identical):
+  the splash's 4 poses, the game board (`GameWarmUp`), the card art turned and the morph's ink (`FlowWarmUp`), the real
+  category card mid-flip, at rest and mid-entrance (a fading layer with its shadow room), and the dialog mid-open
+  (`CategoryFlipWarmUp` → `PickerDialogWarmUp`). 3 frames, before the 1.2 s clock starts.
+- **When:** only when `Settings.warmedUpVersionCode` (DataStore key `warmed_up_version_code`, absent = 0, no migration)
+  differs from the running `AppInfo.BUILD_NUMBER` (versionCode); the version is stored after it ran. Every other
+  launch skips it. Never with reduced motion (nothing stored then). The decision waits at most 2 frames for the
+  store's first read (the 2-frame pre-roll every launch paid in 1.1.1); a store not read by then counts as warmed (no
+  wait, the next launch tries again). So later launches start the clock no later than 1.1.1 did.
+- **Removed:** the NavHost's two warm-up frames after Home's first resume and the picker's idle dialog warm-up
+  (`rememberDialogWarmUp`): both sat behind opaque backgrounds.
+- **Why per version:** iOS keeps compiled Metal pipelines across launches until the app is updated or reinstalled; an
+  update can also change the drawing. Android's shader cache behaves the same way.
+- **Trade-off accepted (owner: all warm-ups on a version's first launch only):** the old Home warm-ups also composed
+  and laid out the game board and dialog in every process (class init, text shaping, strings), which do not outlive the
+  process. Later launches and reduced motion now get none of that, so the first game start or first card flip of a
+  later launch may cost a little more main-thread work than in 1.1.1 (launch time itself is not slower). To check on a
+  device: `VideoFlowBenchmark.firstDialogFlip` and a first game start on a second cold start, before / after. Debug
+  builds log `warm-up ran` or `warm-up skipped: settings not read in time` in the startup trace.
+- **Tests:** `SplashWarmUpTest` (first launch of a version warms up before the clock and stores the version; a later
+  launch never shows it and its first landing is no later than before; an update warms up again; a store not read
+  within 2 frames skips it, stores nothing and is no later than before; reduced motion skips it and stores nothing; the
+  warm-up frame is pixel-identical and its cover inset), `SettingsRepositoryTest` (the key round-trips).
+- **Re-test (owner):** after installing the new build, the first launch shows the static cream splash a few frames
+  longer, then the splash, Home → picker, first card flip and OYNA → game should be smooth; kill and reopen: same, with
+  no extra wait.
+
