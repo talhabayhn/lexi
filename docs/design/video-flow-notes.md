@@ -117,9 +117,10 @@ flip 160 → 186 ms, morph expand/shrink 300 → 349 ms; letter morph total (exp
   never counts; Lite after 2 separate transitions each with a slow streak (3 frames > 24 ms in a row) or one run
   of 5 slow frames; back to Full after 3 good transitions in a row. Only the moving parts are registered: for the
   morph the expand + letter pop and the shrink, **not the hold** (the game screen is composed under the ink then, and its first frames must not
-  downgrade the session). Android `isLowRamDevice` and iOS Low Power Mode start in Lite. Reduced motion
-  ⇒ Minimal. The frame rules only move between Full and Lite: they never override reduced motion, the debug
-  `forcedTier`, low-RAM or Low Power Mode.
+  downgrade the session). Android `isLowRamDevice` starts in Lite. iOS Low Power Mode does **not** (after the 1.1.1 report:
+  it kept every iPhone in Low Power on the scale + fade, so the card flip never ran although it plays smoothly
+  there; only measured jank lowers Full). Reduced motion ⇒ Minimal. The frame rules only move between Full and
+  Lite: they never override reduced motion, the debug `forcedTier` or low-RAM.
 - **Acceptance:** macrobenchmark `FrameTimingMetric` P95 < 16.6 ms and no frame > 100 ms per journey
   (`benchmark/.../VideoFlowBenchmark.kt`, placeholders until phase 3). Device matrix: iPhone 8, SE (2nd gen), 11,
   current iPhone; Android 8 low-RAM, a Samsung A-series, a Pixel. iOS has no macrobenchmark: measure with Instruments
@@ -200,8 +201,10 @@ Still open:
   above. Hidden keys take no tap during a re-deal.
 - **#18 grid entrance** (phase 2) unchanged; Home has no entrance; other screen changes keep #12.
 - **Performance:** draw-phase only; `FlowWarmUp` compiles the flip and morph shaders on Home (since 1.1.x also the
-  real card mid-flip and the dialog mid-open, `CategoryFlipWarmUp`; iOS first launch: `docs/PERF.md`); low-RAM / Low Power Mode
-  start in Lite, slow transitions switch the session to Lite (rules since phase 6: §12); debug
+  real card mid-flip and the dialog mid-open, `CategoryFlipWarmUp`; iOS first launch: `docs/PERF.md`); low-RAM
+  starts in Lite (Low Power Mode no longer does, §12), slow transitions switch the session to Lite (rules since
+  phase 6: §12); a layer that fades content with hard shadows keeps room for them (`hardShadowOutsets`,
+  `motion.md` § Layers); debug
   builds have a tier switch and a frame-time graph (`MotionDebugOverlay`, shown from `androidApp/src/debug`). Numbers: `docs/PERF.md` § Video flow.
 - **Goldens:** no new screenshot test and no golden change at rest (the motions start from and end on the resting
   look; `verifyRoborazzi` of `core/designsystem`, `feature/levels` and `feature/game` matched on macOS except the two
@@ -348,15 +351,16 @@ default and stays Full unless the device is really struggling; a downgrade must 
   heavy the device downgrades again on fresh evidence, so a borderline device can alternate Full / Lite every ≈ 5
   transitions: owner to hand-test; if it shows, require more good transitions after each recovery). A slow
   transition restarts the count.
-- **Priority** (`MotionPolicy.tierReason`): forced tier > reduced motion (Minimal) > low-RAM > Low Power Mode > frames
-  > Full; tests cover that the frame rules never override the first four.
+- **Priority** (`MotionPolicy.tierReason`): forced tier > reduced motion (Minimal) > low-RAM > frames > Full; tests
+  cover that the frame rules never override the first three. iOS Low Power Mode was a fourth signal (Lite) up to
+  1.1.1 and was removed: Full is the default and only evidence of real jank lowers it.
 - **Debug chip** (`MotionDebugOverlay`, debug builds only): `auto · Lite: slow transitions x2 · good 1/3`,
   `auto · Lite: 5 slow frames in a row · good 0/3`, `auto · Full: default · recovered x1 · slow 1/2`,
   `Lite · Lite: forced`, `auto · Minimal: reduced motion`. Release-like builds compile the no-op `DebugTools`;
   the overlay is unreferenced there and R8 removes it (dex check on the `benchmarkRelease` APK: `docs/PERF.md`).
 - **Tests:** `FrameMonitorTest` (fake frame clock: cold start ignored, 2-transition rule, 5-frame rule, recovery after
-  3 good, evidence fading, short transitions) and `MotionPolicyTest` (cold start keeps Full; Minimal, forced, low-RAM
-  and Low Power Mode never overridden).
+  3 good, evidence fading, short transitions) and `MotionPolicyTest` (cold start keeps Full; Minimal, forced and
+  low-RAM never overridden; no power-related tier reason).
 
 ## 13. Phase 7: main merged (category rebalance)
 

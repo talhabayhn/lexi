@@ -86,7 +86,7 @@ iPhone (Xcode build or TestFlight; at least an iPhone 8 / SE 2nd gen or 11 and a
 - [ ] Instruments → **Animation Hitches** on: Home → "Çarkını seç"; card flip open / close / interrupted by a second tap;
       OYNA → letter morph → board; a turn change with a pass. Target: no hitch above 100 ms, hitch time ratio in the
       green band; compare with the emulator numbers in `PERF.md`.
-- [ ] **Low Power Mode** on (flow starts in tier Lite: card scale + fade, letter without pop) and **Reduce Motion** on
+- [ ] **Low Power Mode** on (since the 1.1.1 report the flow stays in tier Full: the card flips) and **Reduce Motion** on
       (tier Minimal: cross-fades, no morph). Both must still start a game with the clock correct.
 - [ ] Swipe-back while the morph runs cancels it and stays on the picker; app switcher during the morph.
 - [ ] Largest Dynamic Type on the smallest iPhone: Home points, dialog (OYNA reachable), no split words.

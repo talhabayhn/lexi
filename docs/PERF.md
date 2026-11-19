@@ -138,7 +138,8 @@ not heavier than the existing screens; they say nothing about a phone.
 3. Read the **Hitches** track: every hitch with its duration and type (commit / render); the bar is no hitch above
    one frame interval in the flip and the morph, and the hitch-time ratio below 5 ms/s ("good" in Apple's scale).
    **Time Profiler** in the same run shows what the main thread did in a hitch (Compose recomposition vs Skia draw).
-4. Repeat with Low Power Mode on (the flow starts in tier Lite) and with Reduce Motion on (tier Minimal: cross-fades).
+4. Repeat with Low Power Mode on (still tier Full since the 1.1.1 report; Lite only after measured slow transitions)
+   and with Reduce Motion on (tier Minimal: cross-fades).
 
 
 ### Phase 5: first card flip (2026-11-18, debug build, emulator)
@@ -230,3 +231,28 @@ Delete App; this also drops Metal's cached pipelines), install the build from Te
 splash, finish the onboarding, Home → play card → tap a category card right away and watch the flip. Then close the app
 from the app switcher, reopen and compare. For numbers, profile the same first launch with Instruments → Animation
 Hitches on a Release build installed fresh from Xcode (delete the app before each run).
+
+## iOS 1.1.1 report (2026-11-19, TestFlight 1.1.1, iPhone 13)
+
+Owner report: (1) no card flip with Low Power Mode on; (2) hard shadows appear ≈ 250–300 ms after their element looks
+opaque (PLAY button every time, category cards on the first picker open of a launch, the dialog frame in Lite);
+(3) on the first launch after a fresh install the splash still stutters, in both power modes.
+
+| Finding | Evidence | Fix |
+|---|---|---|
+| `MotionPolicy` mapped iOS Low Power Mode to Lite: no flip, only scale + fade | code; owner: the flip works once Low Power is off | Low Power Mode is no longer a tier signal (Full by default, measured jank only); `MotionPolicyTest` |
+| A `graphicsLayer` with alpha < 1 is drawn offscreen **clipped to its own bounds** (Compose `GraphicsLayer.setOutsets` docs; skiko `SkiaGraphicsLayer.requiresLayer`). Hard shadows draw right of / below the bounds, so they were cut off for the whole fade and popped in at alpha 1: the dialog rows' fade (PLAY), the grid entrance (first open per launch), the dialog panel's Lite fade (Full only shows / hides, alpha 0 or 1) | reproduced on the Android host renderer (`FadingHardShadowTest`: fails before, passes after) and on the iOS simulator's Skia (`FadingHardShadowIosTest`: clipped without outsets, drawn with them) | every fading layer with hard shadows sets `outsets` (`hardShadowOutsets`, `LexiShadows.fadeOutsets`): dialog rows and Lite panel, grid entrance, the game board's entrance / re-deal / clue swap. Same pixels at rest, no timing change |
+| (a) The splash pre-roll never reached the GPU: it was drawn **behind** the splash, whose first draw is a full-screen opaque cream rectangle. Skia's GPU backends (Metal on iOS, HWUI on Android) turn such a draw into a clear and drop every draw recorded before it in the frame (and each of the four poses began with its own full-screen cream). So no pipeline was built in advance | code (draw order + Skia's full-screen-clear optimisation); not measurable here (the host and simulator tests render on the CPU) | `HiddenPreDraw` (designsystem): the poses are drawn **above** the splash, clipped to the top half and covered by an opaque cream rectangle that does not span the screen (an ordinary draw; Skia has no occlusion culling). The frame stays pixel-identical (`SplashWarmUpTest`) |
+| (b) Heavy main-thread work during the splash | checked: content DB and DataStore on IO, sounds prepared on `Dispatchers.Default`, haptics prepared before the clock, speech / reminders / string preload after the splash, Firebase configured before the first frame | none needed |
+| (c) First-launch-only extended warm-up | not done: (a) explains the stutter; to be reconsidered only if the re-test still shows it | — |
+
+**Same defect, not fixed here:** the Home warm-ups (`GameWarmUp`, `FlowWarmUp` + `CategoryFlipWarmUp`) and the picker's
+`PickerDialogWarmUp` are also drawn behind a full-screen cream background (NavHost, picker), so they very likely warm
+nothing either (which fits the "no measurable difference" of § Phase 5). They cannot simply move on top: the screens
+over them are not a plain color to cover with. Options for the owner: draw them in the splash pre-roll's hidden area
+(longer static first frame on every launch) or remove them. Decide after the re-test.
+
+**Re-test (owner, iPhone 13):** Low Power Mode ON and OFF: Home → play card → tap a category: the card lifts and
+flips in both; the PLAY button's and the dialog frame's right / bottom shadows fade in with them (no late pop); kill
+the app, reopen, open the picker: the cards' shadows come in with the cards. Fresh install (delete the app first):
+watch the first splash, then kill and reopen and compare.

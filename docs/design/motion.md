@@ -37,7 +37,8 @@ Source: `drafts/video-flow/flow.html` (+ mp4); spec `video-flow-notes.md`; token
 Every value is the prototype's ÷ 0.86 (`MotionStep.fromPrototype`); times are from the start of each sequence.
 Press (#1), screen transitions (#12) and the marker jump (#6) keep their shipped tokens. Tiers: Full as listed; Lite
 drops tilt/shadow growth, Y flips → scale 0.92 → 1 + fade, no letter pop, staggered groups together; Minimal
-(reduced motion) = one 120 ms cross-fade per transition.
+(reduced motion) = one 120 ms cross-fade per transition. Full is the default; Lite only on an Android low-RAM device or
+after measured slow transitions (`FrameMonitor`, reversible). iOS Low Power Mode does not change the tier.
 
 | # | Event | Animation | Timing (ms) | Haptic | Sound |
 |---|---|---|---|---|---|
@@ -121,8 +122,15 @@ with `cream` so the mid-fade never shows the window background. Reduced motion: 
 
 Splash timing in app (scale the demo keyframe percentages from 3.6 s to 1.2 s; keep order and overshoots):
 bg 0–216 ms, L 48–312 ms, E 120–384 ms, X 192–480 ms, I 264–552 ms, tagline 576–696 ms, hold to 1200 ms.
-The 1.2 s clock starts after a 2-frame pre-roll on the splash's plain cream first frame (its poses drawn hidden, to
-build GPU pipelines before the animation, `docs/PERF.md` § iOS first launch); none with reduced motion.
+The 1.2 s clock starts after a 2-frame pre-roll on the splash's first frame (its poses drawn hidden above it, under a
+cream cover over the top half, to build GPU pipelines before the animation, `docs/PERF.md` § iOS first launch); none
+with reduced motion.
+
+### Layers
+A fade (alpha < 1 in a `graphicsLayer`) is drawn offscreen, clipped to the layer's bounds; hard shadows lie right of and
+below them. Every fading layer around content with a hard shadow sets `outsets = hardShadowOutsets(offset)` (or
+`LexiTheme.shadows.fadeOutsets` when the content is not known), so the shadow fades with its element instead of
+popping in at alpha 1. Same pixels at rest, no timing change.
 
 ## Haptic map (`HapticKind`)
 Android uses the device `Vibrator` (no View dependency); API 29+ uses predefined effects, API 26-28 a waveform
