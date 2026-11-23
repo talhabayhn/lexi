@@ -35,7 +35,7 @@ public class LexiShadows internal constructor(
     public val s4Red: LexiShadow,
 ) {
     /**
-     * `hardShadowOutsets` of the largest token: a fading `graphicsLayer` around content with any of these shadows
+     * `hardShadowOutsets` of the largest token: a `fadeWithShadowRoom` around content with any of these shadows
      * keeps them drawn through the fade. Keep the list in sync with the constructor when a token is added.
      */
     public val fadeOutsets: LayerOutsets = listOf(s3, s4, s5, s6, s8, s5Red, s4Red).maxOf { it.offset }.let {

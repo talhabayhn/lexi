@@ -17,6 +17,10 @@ kotlin {
             implementation(libs.compose.uiTest)
             implementation(libs.androidx.compose.uiTestManifest)
         }
+        // Pixel tests on the iOS simulator's Skia renderer (CategoryPickerEntranceIosTest), as in :core:designsystem.
+        iosTest.dependencies {
+            implementation(libs.compose.uiTest)
+        }
     }
 }
 

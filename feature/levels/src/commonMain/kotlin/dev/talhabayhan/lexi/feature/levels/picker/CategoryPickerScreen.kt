@@ -49,6 +49,8 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.lerp
 import androidx.compose.ui.zIndex
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.compose.LifecycleEventEffect
 import dev.talhabayhan.lexi.core.designsystem.component.CategoryArt
 import dev.talhabayhan.lexi.core.designsystem.component.CategoryArtKind
 import dev.talhabayhan.lexi.core.designsystem.component.ExamArt
@@ -62,6 +64,7 @@ import dev.talhabayhan.lexi.core.designsystem.component.NavSquareButton
 import dev.talhabayhan.lexi.core.designsystem.component.PickerCard
 import dev.talhabayhan.lexi.core.designsystem.component.ScrollToTopPill
 import dev.talhabayhan.lexi.core.designsystem.icon.LexiIcons
+import dev.talhabayhan.lexi.core.designsystem.modifier.fadeWithShadowRoom
 import dev.talhabayhan.lexi.core.designsystem.modifier.lexiHeading
 import dev.talhabayhan.lexi.core.designsystem.motion.FlowMotion
 import dev.talhabayhan.lexi.core.designsystem.motion.LocalMotionPolicy
@@ -90,7 +93,9 @@ import dev.talhabayhan.lexi.feature.levels.generated.resources.picker_scroll_top
 import dev.talhabayhan.lexi.feature.levels.generated.resources.picker_soon
 import dev.talhabayhan.lexi.feature.levels.generated.resources.picker_soon_description
 import dev.talhabayhan.lexi.feature.levels.generated.resources.picker_title
+import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
 
@@ -384,7 +389,7 @@ private fun ScrollTopButton(gridState: LazyGridState, modifier: Modifier) {
 /**
  * Motion #18 (`FlowMotion.gridCardIn`): the cards rise and fade in one after another, read only in the draw phase
  * (one clock for all cards). The run is registered with the session's frame monitor, so a slow device drops to Lite.
- * [shadowRoom] keeps each card's hard shadow drawn while it fades (a fading layer is clipped to its bounds).
+ * [shadowRoom] keeps each card's hard shadow drawn while it fades ([fadeWithShadowRoom]).
  */
 private class GridEntrance(
     private val flow: FlowMotion?,
@@ -396,12 +401,9 @@ private class GridEntrance(
     fun modifier(index: Int): Modifier {
         if (flow == null || clock == null || index >= ENTRANCE_CARDS) return Modifier
         val step = flow.gridCardIn.staggered(index, flow.gridCardStaggerMillis)
-        return Modifier.graphicsLayer {
-            val fraction = easing.transform(step.progressAt(clock.value.toLong()))
-            alpha = fraction
-            translationY = (1f - fraction) * offsetPx
-            outsets = shadowRoom
-        }
+        return Modifier
+            .graphicsLayer { translationY = (1f - easing.transform(step.progressAt(clock.value.toLong()))) * offsetPx }
+            .fadeWithShadowRoom(shadowRoom) { easing.transform(step.progressAt(clock.value.toLong())) }
     }
 }
 
@@ -426,8 +428,13 @@ private fun rememberGridEntrance(play: Boolean, ready: Boolean): GridEntrance {
             clock.animateTo(end.toFloat(), tween(end, easing = LinearEasing))
         } finally {
             monitor.endTransition()
+            // Interrupted or not, the cards end fully drawn (`motion.md` § Fail-safes).
+            withContext(NonCancellable) { clock.snapTo(end.toFloat()) }
         }
     }
+    // Fail-safe: the app going to the background mid-entrance lands every card (frames stop there on iOS).
+    val scope = rememberCoroutineScope()
+    LifecycleEventEffect(Lifecycle.Event.ON_PAUSE) { scope.launch { clock.snapTo(end.toFloat()) } }
     val shadowRoom = LexiTheme.shadows.fadeOutsets
     return remember(clock, offsetPx, shadowRoom) { GridEntrance(flow, clock, motion.mechanical, offsetPx, shadowRoom) }
 }

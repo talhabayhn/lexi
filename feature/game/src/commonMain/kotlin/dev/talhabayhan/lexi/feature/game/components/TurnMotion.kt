@@ -10,12 +10,16 @@ import androidx.compose.runtime.Stable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.LayerOutsets
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.util.lerp
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.compose.LifecycleEventEffect
+import dev.talhabayhan.lexi.core.designsystem.modifier.fadeWithShadowRoom
 import dev.talhabayhan.lexi.core.designsystem.motion.BoardEntrance
 import dev.talhabayhan.lexi.core.designsystem.motion.FlowMotion
 import dev.talhabayhan.lexi.core.designsystem.motion.MotionStep
@@ -24,6 +28,9 @@ import dev.talhabayhan.lexi.core.designsystem.motion.rememberMotionTier
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiMotion
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.feature.game.GameTurnUi
+import kotlinx.coroutines.NonCancellable
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import kotlin.math.max
 import kotlin.math.roundToInt
 
@@ -73,35 +80,43 @@ internal class TurnSwap(
     )
 
     suspend fun run() {
-        time.animateTo(ghostMillis.toFloat(), tween(ghostMillis, easing = motion.linear))
+        // Already landed by the fail-safe (ON_PAUSE before this started): never play time backwards.
+        if (time.value >= totalMillis) {
+            finish()
+            return
+        }
+        try {
+            time.animateTo(ghostMillis.toFloat(), tween(ghostMillis, easing = motion.linear))
+            ghostsShown = false
+            time.animateTo(totalMillis.toFloat(), tween(totalMillis - ghostMillis, easing = motion.linear))
+        } finally {
+            // Interrupted (the app went to the background, the screen left): end at rest, never mid-fade.
+            withContext(NonCancellable) { finish() }
+        }
+    }
+
+    /** Jumps to the end state: the previous turn gone, the new clue, slots and keys fully drawn. Idempotent. */
+    suspend fun finish() {
         ghostsShown = false
-        time.animateTo(totalMillis.toFloat(), tween(totalMillis - ghostMillis, easing = motion.linear))
+        if (time.value < totalMillis) time.snapTo(totalMillis.toFloat())
     }
 
     private fun progress(step: MotionStep, easing: Easing): Float =
         easing.transform(step.progressAt(time.value.toLong()))
 
     /** The previous clue: out to the left while fading (`turn`). */
-    val outgoingClue: Modifier = Modifier.graphicsLayer {
-        val p = progress(flow.clueOut, motion.turn)
-        alpha = (1f - p).coerceIn(0f, 1f)
-        translationX = -clueOffsetPx * p
-        outsets = shadowRoom
-    }
+    val outgoingClue: Modifier = Modifier
+        .graphicsLayer { translationX = -clueOffsetPx * progress(flow.clueOut, motion.turn) }
+        .fadeWithShadowRoom(shadowRoom) { 1f - progress(flow.clueOut, motion.turn) }
 
     /** The new clue: hidden until [FlowMotion.clueIn], then in from the right (`mechanical`). */
-    val incomingClue: Modifier = Modifier.graphicsLayer {
-        val p = progress(flow.clueIn, motion.mechanical)
-        alpha = p.coerceIn(0f, 1f)
-        translationX = clueOffsetPx * (1f - p)
-        outsets = shadowRoom
-    }
+    val incomingClue: Modifier = Modifier
+        .graphicsLayer { translationX = clueOffsetPx * (1f - progress(flow.clueIn, motion.mechanical)) }
+        .fadeWithShadowRoom(shadowRoom) { progress(flow.clueIn, motion.mechanical) }
 
     /** The previous answer slots fade out (linear). */
-    val outgoingSlots: Modifier = Modifier.graphicsLayer {
-        alpha = 1f - progress(flow.redealSlotsOut, motion.linear)
-        outsets = shadowRoom
-    }
+    val outgoingSlots: Modifier =
+        Modifier.fadeWithShadowRoom(shadowRoom) { 1f - progress(flow.redealSlotsOut, motion.linear) }
 
     /** The previous keys stay until the new ones are dealt. */
     val outgoingKeys: Modifier = Modifier.graphicsLayer {
@@ -151,6 +166,9 @@ internal fun rememberTurnSwap(turn: GameTurnUi?): TurnSwap? {
         }
     }
     LaunchedEffect(swap) { swap?.run() }
+    // Fail-safe: a turn change interrupted by the background ends at rest (`motion.md` § Fail-safes).
+    val scope = rememberCoroutineScope()
+    LifecycleEventEffect(Lifecycle.Event.ON_PAUSE) { swap?.let { scope.launch { it.finish() } } }
     return swap
 }
 
@@ -234,9 +252,32 @@ private class PreviousHolder<T : Any> {
 }
 
 /**
- * One `graphicsLayer` per answer cell or key combining the board entrance (#16: [entranceStep], [entranceStagger]) and
- * the re-deal (#17: [redeal]); both rise [BoardEntrance]'s 12dp and fade in. Without either it adds nothing. The layer
- * keeps room for the piece's hard shadow, so it is drawn through the fade.
+ * [dealtPiece] per index, built once per entrance / re-deal and reused: the same [Modifier] instance comes back on every
+ * recomposition (a key tap, a timer tick), so the cells and keys skip it instead of updating and re-recording each
+ * piece. Same pixels and timing as calling [dealtPiece] directly.
+ */
+@Composable
+internal fun rememberDealtPieces(
+    entrance: BoardEntrance?,
+    entranceStep: MotionStep,
+    entranceStagger: Int,
+    swap: TurnSwap?,
+    redeal: TurnSwap.(Int) -> Float,
+    itemOffsetPx: Float,
+): (index: Int) -> Modifier = remember(entrance, entranceStep, entranceStagger, swap, redeal, itemOffsetPx) {
+    val pieces = HashMap<Int, Modifier>()
+    val piece: (Int) -> Modifier = { index ->
+        pieces.getOrPut(index) {
+            dealtPiece(index, entrance, entranceStep, entranceStagger, swap, redeal, itemOffsetPx)
+        }
+    }
+    piece
+}
+
+/**
+ * One `graphicsLayer` (the rise) and one [fadeWithShadowRoom] (the fade, with room for the piece's hard shadow) per
+ * answer cell or key, combining the board entrance (#16: [entranceStep], [entranceStagger]) and the re-deal (#17:
+ * [redeal]); both rise [BoardEntrance]'s 12dp and fade in. Without either it adds nothing.
  */
 internal fun dealtPiece(
     index: Int,
@@ -249,11 +290,13 @@ internal fun dealtPiece(
 ): Modifier = if (entrance == null && swap == null) {
     Modifier
 } else {
-    Modifier.graphicsLayer {
-        val entered = entrance?.progress(entranceStep, index, entranceStagger) ?: 1f
-        val dealt = swap?.redeal(index) ?: 1f
-        alpha = (entered * dealt).coerceIn(0f, 1f)
-        translationY = ((1f - entered) + (1f - dealt)) * itemOffsetPx
-        outsets = entrance?.shadowRoom ?: swap?.shadowRoom ?: LayerOutsets.Zero
-    }
+    Modifier
+        .graphicsLayer {
+            val entered = entrance?.progress(entranceStep, index, entranceStagger) ?: 1f
+            val dealt = swap?.redeal(index) ?: 1f
+            translationY = ((1f - entered) + (1f - dealt)) * itemOffsetPx
+        }
+        .fadeWithShadowRoom(entrance?.shadowRoom ?: swap?.shadowRoom ?: LayerOutsets.Zero) {
+            (entrance?.progress(entranceStep, index, entranceStagger) ?: 1f) * (swap?.redeal(index) ?: 1f)
+        }
 }

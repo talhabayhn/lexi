@@ -179,6 +179,56 @@ class LetterMorphMachineTest {
         assertEquals(600L, machine.elapsedMillis)
     }
 
+    @Test
+    fun `a game that never gets ready ends the wait after the limit with a cancel and frees the clock`() {
+        machine.start(T0, MotionTier.Full)
+        machine.setTargetLaidOut(true)
+
+        assertEquals(LetterMorphPhase.Waiting, at(holdEnd + LetterMorphMachine.WAIT_LIMIT_MILLIS - 1))
+        assertFalse(machine.timedOut)
+        assertEquals(LetterMorphPhase.Cancelling, at(holdEnd + LetterMorphMachine.WAIT_LIMIT_MILLIS))
+        assertTrue(machine.timedOut, "recorded as a fail-safe")
+        assertEquals(
+            LetterMorphPhase.Cancelled,
+            at(holdEnd + LetterMorphMachine.WAIT_LIMIT_MILLIS + flow.reducedCrossfadeMillis),
+        )
+        assertTrue(machine.clockMayStart, "the game starts without the morph")
+    }
+
+    @Test
+    fun `a ready game whose wheel marker is never laid out does not wait forever either`() {
+        machine.start(T0, MotionTier.Full)
+        machine.markReady()
+
+        assertEquals(LetterMorphPhase.Waiting, at(holdEnd + 1_000))
+        assertEquals(LetterMorphPhase.Cancelling, at(holdEnd + LetterMorphMachine.WAIT_LIMIT_MILLIS))
+        assertTrue(machine.timedOut)
+    }
+
+    @Test
+    fun `the wait limit never cuts a shrink that has started`() {
+        machine.start(T0, MotionTier.Full)
+        at(holdEnd + LetterMorphMachine.WAIT_LIMIT_MILLIS - 10)
+        machine.markReady()
+        machine.setTargetLaidOut(true)
+
+        assertEquals(LetterMorphPhase.Shrinking, at(holdEnd + LetterMorphMachine.WAIT_LIMIT_MILLIS - 5))
+        assertEquals(LetterMorphPhase.Shrinking, at(holdEnd + LetterMorphMachine.WAIT_LIMIT_MILLIS + 5))
+        assertFalse(machine.timedOut)
+    }
+
+    @Test
+    fun `a new start clears the timed out flag`() {
+        machine.start(T0, MotionTier.Full)
+        at(holdEnd + LetterMorphMachine.WAIT_LIMIT_MILLIS)
+        at(holdEnd + LetterMorphMachine.WAIT_LIMIT_MILLIS + flow.reducedCrossfadeMillis)
+        assertTrue(machine.timedOut)
+        machine.reset()
+
+        assertTrue(machine.start(T0 + 100_000, MotionTier.Full))
+        assertFalse(machine.timedOut)
+    }
+
     private companion object {
         const val T0 = 1_000_000L
     }

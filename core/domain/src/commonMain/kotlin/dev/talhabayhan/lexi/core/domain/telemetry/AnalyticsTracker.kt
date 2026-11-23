@@ -76,6 +76,20 @@ public sealed class AnalyticsEvent(public val name: String) {
         FORFEIT("forfeit"),
     }
 
+    /**
+     * A motion fail-safe fired: an animation that would otherwise have kept the screen covered or hidden was ended
+     * early ([MotionFailSafeKind]). No personal data; tells whether the fail-safes are ever needed in the field.
+     */
+    public data class MotionFailSafe(val kind: MotionFailSafeKind) : AnalyticsEvent("motion_failsafe") {
+        override val params: Map<String, Any> get() = mapOf("kind" to kind.code)
+    }
+
+    /** `motion_failsafe.kind`. */
+    public enum class MotionFailSafeKind(public val code: String) {
+        /** The letter morph waited too long for the game (`LetterMorphMachine.WAIT_LIMIT_MILLIS`) and was cancelled. */
+        MORPH_TIMEOUT("morph_timeout"),
+    }
+
     private companion object {
         const val PARAM_MODE = "mode"
         const val PARAM_LEVEL = "level"

@@ -24,6 +24,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
+import androidx.compose.ui.graphics.CompositingStrategy
 import androidx.compose.ui.graphics.TransformOrigin
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInput
@@ -154,6 +155,8 @@ public val LocalMorphOverlay: ProvidableCompositionLocal<MorphOverlayState?> = s
  * the game must not downgrade the whole session to [MotionTier.Lite]. [tier] is read every frame (a downgrade applies
  * at the machine's next latch point). If the host leaves the composition mid-morph the state is reset and neither
  * callback is called. [onFinished]: the board has landed (start the clock); [onCancelled]: the cancel fade is over.
+ * [onWaitTimedOut]: the fail-safe ended a morph whose game or wheel marker never came ([LetterMorphMachine.timedOut]);
+ * [onCancelled] follows as for any cancel.
  */
 @Composable
 public fun MorphOverlayHost(
@@ -163,6 +166,7 @@ public fun MorphOverlayHost(
     tier: () -> MotionTier = { MotionTier.Full },
     onFinished: () -> Unit = {},
     onCancelled: () -> Unit = {},
+    onWaitTimedOut: () -> Unit = {},
     content: @Composable () -> Unit,
 ) {
     val motion = LexiTheme.motion
@@ -177,6 +181,7 @@ public fun MorphOverlayHost(
 
     val currentOnFinished by rememberUpdatedState(onFinished)
     val currentOnCancelled by rememberUpdatedState(onCancelled)
+    val currentOnWaitTimedOut by rememberUpdatedState(onWaitTimedOut)
     val currentTier by rememberUpdatedState(tier)
     if (frameMonitor != null) FrameMonitorEffect(frameMonitor)
 
@@ -191,6 +196,7 @@ public fun MorphOverlayHost(
             watching = key
         }
         var outcome = LetterMorphPhase.Idle
+        var timedOut = false
         try {
             withFrameMillis { now -> machine.start(now, run.tier) }
             while (machine.isActive) {
@@ -216,6 +222,7 @@ public fun MorphOverlayHost(
                 }
             }
             outcome = machine.phase
+            timedOut = machine.timedOut
         } finally {
             watch(null)
             // Also when the host leaves the composition mid-morph: nothing stays on screen.
@@ -224,7 +231,12 @@ public fun MorphOverlayHost(
         }
         when (outcome) {
             LetterMorphPhase.Finished -> currentOnFinished()
-            LetterMorphPhase.Cancelled -> currentOnCancelled()
+
+            LetterMorphPhase.Cancelled -> {
+                if (timedOut) currentOnWaitTimedOut()
+                currentOnCancelled()
+            }
+
             else -> Unit
         }
     }
@@ -289,6 +301,8 @@ public fun BoxScope.LetterMorphLayer(letter: String, frame: (screen: Rect) -> Le
             .graphicsLayer {
                 val f = frame(Rect(Offset.Zero, size))
                 alpha = if (f.visible) f.overlayAlpha else 0f
+                // One rectangle: alpha applied to it directly, no screen-sized offscreen buffer (same pixels).
+                compositingStrategy = CompositingStrategy.ModulateAlpha
                 transformOrigin = TransformOrigin(0f, 0f)
                 translationX = f.inkRect.left
                 translationY = f.inkRect.top
@@ -304,6 +318,8 @@ public fun BoxScope.LetterMorphLayer(letter: String, frame: (screen: Rect) -> Le
             .graphicsLayer {
                 val f = frame(Rect(Offset.Zero, size))
                 alpha = if (f.visible) f.letterAlpha * f.overlayAlpha else 0f
+                // One glyph: alpha applied to it directly, no screen-sized offscreen buffer (same pixels).
+                compositingStrategy = CompositingStrategy.ModulateAlpha
                 translationX = f.inkRect.center.x - size.width / 2f
                 translationY = f.inkRect.center.y - size.height / 2f
                 scaleX = f.letterScale

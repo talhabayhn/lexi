@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -32,6 +33,8 @@ import dev.talhabayhan.lexi.core.designsystem.component.LexiSplash
 import dev.talhabayhan.lexi.core.designsystem.component.SplashDefaults
 import dev.talhabayhan.lexi.core.designsystem.feedback.LocalHaptics
 import dev.talhabayhan.lexi.core.designsystem.feedback.LocalSoundPlayer
+import dev.talhabayhan.lexi.core.designsystem.motion.LocalMorphAnchors
+import dev.talhabayhan.lexi.core.designsystem.motion.LocalMorphOverlay
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.core.domain.AppInfo
 import dev.talhabayhan.lexi.core.domain.feedback.HapticKind
@@ -197,6 +200,15 @@ internal fun SplashWarmUpLayer() {
  */
 @Composable
 private fun AppWarmUp(tagline: String, screen: DpSize) {
+    // Isolated from the real screens: no morph anchor (the game board's wheel marker) and no morph state reaches the
+    // app's letter morph, so nothing the warm-up composes can stand in for, or wait on, a real screen.
+    CompositionLocalProvider(LocalMorphAnchors provides null, LocalMorphOverlay provides null) {
+        AppWarmUpContent(tagline, screen)
+    }
+}
+
+@Composable
+private fun AppWarmUpContent(tagline: String, screen: DpSize) {
     Box(Modifier.fillMaxSize().clearAndSetSemantics { testTag = SPLASH_WARM_UP_TAG }) {
         for (pose in SplashWarmUpPoses) LexiSplash(progress = { pose }, tagline = tagline)
         Box(

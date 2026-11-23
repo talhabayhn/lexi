@@ -11,14 +11,17 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import dev.talhabayhan.lexi.core.designsystem.modifier.fadeWithShadowRoom
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 
 /**
  * The game board's entrance under the letter morph (`motion.md` #16): each piece fades in and rises (or pops from a
  * scale) on its [MotionStep], counted from the start of the ink's shrink ([MorphOverlayState.boardClockMillis]).
  * Before the shrink the pieces are hidden under the ink; after the morph (or without one) they are at rest. Values
- * are read only in `graphicsLayer`, so the entrance never recomposes or re-lays out the board. In tier Lite
- * ([MorphOverlayState.boardStagger] false) a group enters together.
+ * are read only in the draw phase (`graphicsLayer` for the move, [fadeWithShadowRoom] for the fade), so the entrance
+ * never recomposes or re-lays out the board. Its end state is derived, not animated: once the morph is over or
+ * cancelled ([MorphOverlayState.boardClockMillis]) every piece is at rest, whatever happened to the frames before.
+ * In tier Lite ([MorphOverlayState.boardStagger] false) a group enters together.
  */
 @Stable
 public class BoardEntrance internal constructor(
@@ -26,7 +29,7 @@ public class BoardEntrance internal constructor(
     private val density: Density,
     private val mechanical: Easing,
     private val pop: Easing,
-    /** Room for the pieces' hard shadows in their fading layers (`LexiShadows.fadeOutsets`). */
+    /** Room for the pieces' hard shadows while they fade (`LexiShadows.fadeOutsets`, [fadeWithShadowRoom]). */
     public val shadowRoom: LayerOutsets = LayerOutsets.Zero,
 ) {
     /**
@@ -51,9 +54,22 @@ public class BoardEntrance internal constructor(
         }
     }
 
+    private data class PieceKey(
+        val step: MotionStep,
+        val index: Int,
+        val staggerMillis: Int,
+        val offset: Dp,
+        val startScale: Float,
+        val popEasing: Boolean,
+        val linear: Boolean,
+    )
+
+    private val pieces = HashMap<PieceKey, Modifier>()
+
     /**
      * A piece that fades in and moves [offset] (vertical; negative = from above) back to rest, or scales from
-     * [startScale] to 1 ([popEasing] for the centre circle's pop; [linear] for a plain fade).
+     * [startScale] to 1 ([popEasing] for the centre circle's pop; [linear] for a plain fade). The same arguments return
+     * the same [Modifier] instance, so a recomposition of the board (a key tap, a timer tick) skips the piece.
      */
     public fun piece(
         step: MotionStep,
@@ -63,19 +79,19 @@ public class BoardEntrance internal constructor(
         startScale: Float = 1f,
         popEasing: Boolean = false,
         linear: Boolean = false,
-    ): Modifier {
+    ): Modifier = pieces.getOrPut(PieceKey(step, index, staggerMillis, offset, startScale, popEasing, linear)) {
         val offsetPx = with(density) { offset.toPx() }
-        return Modifier.graphicsLayer {
-            val p = progress(step, index, staggerMillis, popEasing, linear)
-            alpha = p.coerceIn(0f, 1f)
-            translationY = (1f - p) * offsetPx
-            outsets = shadowRoom
-            if (startScale != 1f) {
-                val scale = startScale + (1f - startScale) * p
-                scaleX = scale
-                scaleY = scale
+        Modifier
+            .graphicsLayer {
+                val p = progress(step, index, staggerMillis, popEasing, linear)
+                translationY = (1f - p) * offsetPx
+                if (startScale != 1f) {
+                    val scale = startScale + (1f - startScale) * p
+                    scaleX = scale
+                    scaleY = scale
+                }
             }
-        }
+            .fadeWithShadowRoom(shadowRoom) { progress(step, index, staggerMillis, popEasing, linear) }
     }
 }
 

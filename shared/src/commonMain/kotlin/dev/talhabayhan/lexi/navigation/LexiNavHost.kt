@@ -39,6 +39,8 @@ import dev.talhabayhan.lexi.core.domain.game.GameMode
 import dev.talhabayhan.lexi.core.domain.model.CategoryId
 import dev.talhabayhan.lexi.core.domain.model.Level
 import dev.talhabayhan.lexi.core.domain.platform.UrlOpener
+import dev.talhabayhan.lexi.core.domain.telemetry.AnalyticsEvent
+import dev.talhabayhan.lexi.core.domain.telemetry.AnalyticsTracker
 import dev.talhabayhan.lexi.feature.exams.examPacksScreen
 import dev.talhabayhan.lexi.feature.game.GamePreparer
 import dev.talhabayhan.lexi.feature.game.GameRoute
@@ -96,6 +98,7 @@ fun LexiNavHost(modifier: Modifier = Modifier, perfTour: PerfTourConfig? = null)
     val distancePx = with(density) { motion.screenTransitionSlideDistance.roundToPx() }
     val transitions = remember(motion, distancePx) { ScreenTransitions(motion, distancePx) }
     val urlOpener = koinInject<UrlOpener>()
+    val analytics = koinInject<AnalyticsTracker>()
     var homeReady by remember { mutableStateOf(false) }
     LaunchedEffect(navigator) {
         // The perf tour starts on Home once its transition is over.
@@ -132,6 +135,9 @@ fun LexiNavHost(modifier: Modifier = Modifier, perfTour: PerfTourConfig? = null)
         frameMonitor = policy.frameMonitor,
         tier = { currentTier },
         onCancelled = launcher::onCancelled,
+        onWaitTimedOut = {
+            analytics.track(AnalyticsEvent.MotionFailSafe(AnalyticsEvent.MotionFailSafeKind.MORPH_TIMEOUT))
+        },
     ) {
         LexiNavGraph(navController, navigator, transitions, urlOpener, morph, startGame)
         // Enabled only while a morph runs. The screens' own handlers that could outrank it (newer handlers win) step

@@ -58,6 +58,7 @@ import dev.talhabayhan.lexi.core.designsystem.component.WithCappedFontScale
 import dev.talhabayhan.lexi.core.designsystem.feedback.LocalHaptics
 import dev.talhabayhan.lexi.core.designsystem.format.formatClock
 import dev.talhabayhan.lexi.core.designsystem.icon.LexiIcons
+import dev.talhabayhan.lexi.core.designsystem.modifier.fadeWithShadowRoom
 import dev.talhabayhan.lexi.core.designsystem.modifier.hardShadowOutsets
 import dev.talhabayhan.lexi.core.designsystem.modifier.lexiSurface
 import dev.talhabayhan.lexi.core.designsystem.motion.DialogFlipChoreography
@@ -213,8 +214,8 @@ private fun ReopenCatcher(card: PickerCategoryUi, flip: PickerDialogFlip, onInte
  * The panel's look while #14 / #15 runs. Outer layer: turn on Y around the current rectangle's centre, the Lite scale
  * and the dialog's alpha. Drawn: the hard shadow, fill and border at the current rectangle, the content clipped to it.
  * Inner layer: the content follows the rectangle's top-left and fades with `contentAlpha`. At rest the panel uses
- * `lexiSurface` instead, so the resting look is the static one. The outer layer fades in Lite (alpha < 1: offscreen,
- * clipped to its bounds), so it keeps room for the panel's hard shadow, which would otherwise pop in at the end.
+ * `lexiSurface` instead, so the resting look is the static one. The panel fades in Lite with room for its hard shadow
+ * ([fadeWithShadowRoom]), which would otherwise be clipped and pop in at the end.
  */
 private fun Modifier.flipPanel(
     flip: PickerDialogFlip,
@@ -240,8 +241,11 @@ private fun Modifier.flipPanel(
         scaleY = scale
         rotationY = if (rect != null) frame.dialogTurnDegrees else 0f
         perspective(flow.flipPerspective)
-        alpha = frame.dialogAlpha * fallbackShown.coerceIn(0f, 1f)
-        outsets = shadowOutsets
+    }
+    .fadeWithShadowRoom(shadowOutsets) {
+        val rect = flip.dialogRect(size, flow.cardLiftOffset.toPx())
+        val fallbackShown = if (rect == null && flip.tier == MotionTier.Full) flip.frame().dialogGrow else 1f
+        flip.frame().dialogAlpha * fallbackShown.coerceIn(0f, 1f)
     }
     .drawWithContent {
         val rect = flip.dialogRect(size, flow.cardLiftOffset.toPx()) ?: Rect(Offset.Zero, size)
@@ -278,12 +282,8 @@ private fun Modifier.flipItem(
 ): Modifier = if (!animating) {
     this
 } else {
-    graphicsLayer {
-        val progress = flip.itemProgress(index)
-        alpha = progress.coerceIn(0f, 1f)
-        translationY = (1f - progress) * offset.toPx()
-        outsets = shadowRoom
-    }
+    graphicsLayer { translationY = (1f - flip.itemProgress(index)) * offset.toPx() }
+        .fadeWithShadowRoom(shadowRoom) { flip.itemProgress(index) }
 }
 
 /** Swallows pointer input before the children see it unless [enabled] (read on each event). */

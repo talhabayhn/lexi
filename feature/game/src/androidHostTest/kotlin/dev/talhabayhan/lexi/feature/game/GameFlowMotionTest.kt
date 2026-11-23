@@ -43,7 +43,10 @@ import dev.talhabayhan.lexi.feature.game.components.ScoreCount
 import dev.talhabayhan.lexi.feature.game.components.TurnSwap
 import kotlinx.collections.immutable.persistentListOf
 import kotlinx.collections.immutable.toImmutableList
+import kotlinx.coroutines.cancelAndJoin
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.yield
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
@@ -52,6 +55,7 @@ import org.robolectric.annotation.GraphicsMode
 import kotlin.math.abs
 import kotlin.math.roundToInt
 import kotlin.test.assertEquals
+import kotlin.test.assertFalse
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
@@ -242,6 +246,35 @@ class GameFlowMotionTest {
         assertEquals(1f, full.keyProgress(turn.keys.size - 1))
     }
 
+    @Test
+    fun `a re-deal interrupted mid-way (background, screen left) ends at rest`() = runComposeUiTest {
+        setMotion()
+        val turn = checkNotNull(nextTurn.turn)
+        val swap = swap(turn, stagger = true)
+        runBlocking {
+            val job = launch(TestFrameClock()) { swap.run() }
+            // A few frames in: the previous pieces still show and the new ones are hidden.
+            repeat(3) { yield() }
+            assertTrue(swap.ghostsShown, "cancelled mid-way")
+            assertTrue(swap.keyProgress(turn.keys.size - 1) < 1f, "cancelled mid-way")
+            job.cancelAndJoin()
+        }
+        assertFalse(swap.ghostsShown, "the previous turn's pieces are gone")
+        assertEquals(1f, swap.keyProgress(turn.keys.size - 1), "every new key is fully drawn")
+        assertEquals(1f, swap.slotProgress(turn.words.sumOf { it.size } - 1))
+    }
+
+    @Test
+    fun `finishing a re-deal (the app went to the background) lands it at once`() = runComposeUiTest {
+        setMotion()
+        val turn = checkNotNull(nextTurn.turn)
+        val swap = swap(turn, stagger = true)
+        runBlocking { swap.finish() }
+        assertFalse(swap.ghostsShown)
+        assertEquals(1f, swap.keyProgress(0))
+        assertEquals(1f, swap.slotProgress(0))
+    }
+
     private fun ComposeUiTest.setMotion() {
         setContent { LexiTheme(reducedMotion = false) { motion = LexiTheme.motion } }
         waitForIdle()
@@ -363,5 +396,16 @@ class GameFlowMotionTest {
                 ),
             )
         }
+    }
+}
+
+/** A frame clock that advances 16 ms per frame, for running a [TurnSwap] outside the composition. */
+private class TestFrameClock : androidx.compose.runtime.MonotonicFrameClock {
+    private var nanos = 0L
+
+    override suspend fun <R> withFrameNanos(onFrame: (frameTimeNanos: Long) -> R): R {
+        yield()
+        nanos += 16_000_000L
+        return onFrame(nanos)
     }
 }

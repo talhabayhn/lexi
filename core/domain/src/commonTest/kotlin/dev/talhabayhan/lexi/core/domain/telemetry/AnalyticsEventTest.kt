@@ -45,6 +45,9 @@ class AnalyticsEventTest {
             listOf("win", "draw", "forfeit"),
             AnalyticsEvent.DuelResultType.entries.map { AnalyticsEvent.DuelFinish(it).params["result_type"] },
         )
+        val failSafe = AnalyticsEvent.MotionFailSafe(AnalyticsEvent.MotionFailSafeKind.MORPH_TIMEOUT)
+        assertEquals("motion_failsafe", failSafe.name)
+        assertEquals(mapOf<String, Any>("kind" to "morph_timeout"), failSafe.params)
     }
 
     @Test
@@ -64,7 +67,8 @@ class AnalyticsEventTest {
             AnalyticsEvent.Share(AnalyticsEvent.ShareType.RESULT),
             AnalyticsEvent.Share(AnalyticsEvent.ShareType.INVITE),
             AnalyticsEvent.ReminderEnabled,
-        ) + JokerType.entries.map(AnalyticsEvent::JokerUsed)
+        ) + AnalyticsEvent.MotionFailSafeKind.entries.map(AnalyticsEvent::MotionFailSafe) +
+            JokerType.entries.map(AnalyticsEvent::JokerUsed)
         val snake = Regex("[a-z][a-z0-9_]{0,39}")
         events.forEach { event ->
             assertTrue(snake.matches(event.name), event.name)

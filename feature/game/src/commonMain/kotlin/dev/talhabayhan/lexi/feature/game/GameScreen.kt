@@ -66,8 +66,8 @@ import dev.talhabayhan.lexi.feature.game.components.JokerSheet
 import dev.talhabayhan.lexi.feature.game.components.KeyGrid
 import dev.talhabayhan.lexi.feature.game.components.PauseDialog
 import dev.talhabayhan.lexi.feature.game.components.TurnSwap
-import dev.talhabayhan.lexi.feature.game.components.dealtPiece
 import dev.talhabayhan.lexi.feature.game.components.gameLayout
+import dev.talhabayhan.lexi.feature.game.components.rememberDealtPieces
 import dev.talhabayhan.lexi.feature.game.components.rememberGameMotion
 import dev.talhabayhan.lexi.feature.game.components.rememberTurnSwap
 import dev.talhabayhan.lexi.feature.game.generated.resources.Res
@@ -286,17 +286,14 @@ private fun GameContent(
                         onCellPlaced = motion::onCellPlaced,
                         deleteEnabled = state.inputEnabled || state.isStarting,
                         onDelete = { onIntent(GameIntent.Backspace) },
-                        cellModifier = { index ->
-                            dealtPiece(
-                                index = index,
-                                entrance = entrance,
-                                entranceStep = flow.boardSlot,
-                                entranceStagger = flow.boardSlotStaggerMillis,
-                                swap = swap,
-                                redeal = TurnSwap::slotProgress,
-                                itemOffsetPx = itemOffsetPx,
-                            )
-                        },
+                        cellModifier = rememberDealtPieces(
+                            entrance = entrance,
+                            entranceStep = flow.boardSlot,
+                            entranceStagger = flow.boardSlotStaggerMillis,
+                            swap = swap,
+                            redeal = TurnSwap::slotProgress,
+                            itemOffsetPx = itemOffsetPx,
+                        ),
                         modifier = Modifier.testTag(GameTestTags.ANSWER),
                     )
                 }
@@ -328,17 +325,14 @@ private fun GameContent(
                         keyHeight = layout.keyHeight,
                         gap = layout.keyGap,
                         onKeyPlaced = motion::onKeyPlaced,
-                        keyModifier = { index ->
-                            dealtPiece(
-                                index = index,
-                                entrance = entrance,
-                                entranceStep = flow.boardKey,
-                                entranceStagger = flow.boardKeyStaggerMillis,
-                                swap = swap,
-                                redeal = TurnSwap::keyProgress,
-                                itemOffsetPx = itemOffsetPx,
-                            )
-                        },
+                        keyModifier = rememberDealtPieces(
+                            entrance = entrance,
+                            entranceStep = flow.boardKey,
+                            entranceStagger = flow.boardKeyStaggerMillis,
+                            swap = swap,
+                            redeal = TurnSwap::keyProgress,
+                            itemOffsetPx = itemOffsetPx,
+                        ),
                         modifier = Modifier.testTag(GameTestTags.KEYS),
                     )
                 }

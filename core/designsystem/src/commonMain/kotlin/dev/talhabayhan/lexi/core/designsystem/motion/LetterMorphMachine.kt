@@ -43,6 +43,9 @@ public enum class LetterMorphPhase {
  *   no freeze, and the pulse fades out with the shrink, so the letter never jumps.
  * - The board entrance plays from the shrink start; [clockMayStart] after [FlowMotion.boardSettledMillis].
  * - [cancel] at any time fades the overlay out over [FlowMotion.reducedCrossfadeMillis]; [clockMayStart] then too.
+ * - Fail-safe: the wait never lasts forever. [WAIT_LIMIT_MILLIS] after the hold end without a shrink (the game never
+ *   got ready or its wheel marker was never laid out) the machine cancels itself ([timedOut]): the overlay fades out
+ *   and the game starts without the morph.
  * - The tier is latched where it matters, so a downgrade mid-run never makes anything jump: the letter pop at
  *   [start] (Lite: the letter only fades in), the board stagger at the shrink start (Lite: groups enter together).
  *   [MotionTier.Minimal] has no morph at all ([start] refuses it: the caller cross-fades instead).
@@ -61,6 +64,10 @@ public class LetterMorphMachine(private val flow: FlowMotion) {
 
     /** When [cancel] was called (ms since [start]), null when not cancelled. */
     public var cancelStartMillis: Long? = null
+        private set
+
+    /** The last run was ended by the wait limit ([WAIT_LIMIT_MILLIS]), not by the game or the caller. */
+    public var timedOut: Boolean = false
         private set
 
     /** Full: the big letter pops 0.85 → 1; Lite: it only fades in. Latched at [start]. */
@@ -109,6 +116,7 @@ public class LetterMorphMachine(private val flow: FlowMotion) {
         elapsedMillis = 0L
         shrinkStartMillis = null
         cancelStartMillis = null
+        timedOut = false
         ready = false
         targetLaidOut = false
         this.tier = tier
@@ -163,6 +171,11 @@ public class LetterMorphMachine(private val flow: FlowMotion) {
             shrinkStartMillis = elapsedMillis
             boardStagger = tier == MotionTier.Full
         }
+        if (shrinkStartMillis == null && elapsedMillis >= holdEndMillis + WAIT_LIMIT_MILLIS) {
+            timedOut = true
+            cancel()
+            return phase
+        }
         val shrinkStart = shrinkStartMillis
         phase = when {
             shrinkStart != null && elapsedMillis >= shrinkStart + flow.boardSettledMillis -> LetterMorphPhase.Finished
@@ -197,6 +210,14 @@ public class LetterMorphMachine(private val flow: FlowMotion) {
         val wave = sin(PI * (elapsedMillis - holdEndMillis) / flow.letterPulseMillis).toFloat()
         val amplitude = (flow.letterPulseScale - 1f) * wave * wave
         return 1f + amplitude * (1f - shrinkProgress())
+    }
+
+    public companion object {
+        /**
+         * Longest wait after the hold for the game and its wheel marker (fail-safe, not a design value): far above a
+         * normal start (the game is prepared in at most 250 ms before the ink even covers the screen).
+         */
+        public const val WAIT_LIMIT_MILLIS: Long = 3_000L
     }
 
     /** Opacity of the whole overlay: 1, fading to 0 while cancelling. */

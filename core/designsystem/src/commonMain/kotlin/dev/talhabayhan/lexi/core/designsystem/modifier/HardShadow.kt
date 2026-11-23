@@ -15,8 +15,8 @@ import dev.talhabayhan.lexi.core.designsystem.theme.LexiShadow
  * Bauhaus hard shadow (CSS `box-shadow: 5px 5px 0 #111111`) from a token: `Modifier.hardShadow(LexiTheme.shadows.s5)`.
  * Preferred API. [shape] is filled with the shadow color, drawn behind the element and offset right and down by the
  * token's offset. No blur, no elevation, no layout space (like CSS, it may draw outside the bounds). Apply it before
- * `background`/`border` in the chain and on an opaque element: the part under the element is not cut out. Inside a
- * `graphicsLayer` that fades, give that layer [hardShadowOutsets].
+ * `background`/`border` in the chain and on an opaque element: the part under the element is not cut out. To fade
+ * it, use [fadeWithShadowRoom] with [hardShadowOutsets] (not a `graphicsLayer` alpha, which clips it).
  */
 public fun Modifier.hardShadow(shadow: LexiShadow, shape: Shape = RectangleShape): Modifier =
     hardShadow(shadow.offset, shadow.color, shape)
@@ -45,10 +45,10 @@ internal fun Modifier.hardShadow(offset: Dp, color: Color, shape: Shape, visible
     }
 
 /**
- * Room for hard shadows of up to [offset] in a `graphicsLayer` that fades its content. A layer with alpha < 1 is drawn
- * offscreen, clipped to its own bounds, and a hard shadow lies right of and below them: without these outsets it stays
- * cut off for the whole fade and pops in when the alpha reaches 1 (`docs/design/motion.md` § Layers). The pixels are the
- * same as at rest, only the offscreen buffer grows; a layer that is never offscreen pays nothing. For a layer whose
- * content is not known in advance use `LexiTheme.shadows.fadeOutsets`.
+ * Room for hard shadows of up to [offset] in a fade ([fadeWithShadowRoom]). A fade is drawn offscreen, clipped to its
+ * bounds, and a hard shadow lies right of and below them: without this room it stays cut off for the whole fade and
+ * pops in when the alpha reaches 1 (`docs/design/motion.md` § Layers). The pixels are the same as at rest, only the
+ * offscreen buffer grows. For content not known in advance use `LexiTheme.shadows.fadeOutsets`. Not for
+ * `graphicsLayer { outsets }` on a changing alpha (frozen on iOS, see [fadeWithShadowRoom]).
  */
 public fun hardShadowOutsets(offset: Dp): LayerOutsets = LayerOutsets(right = offset, bottom = offset)

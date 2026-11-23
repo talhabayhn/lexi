@@ -6,13 +6,13 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.text.intl.Locale
 import dev.talhabayhan.lexi.core.designsystem.component.CategoryArt
 import dev.talhabayhan.lexi.core.designsystem.component.CategoryArtKind
 import dev.talhabayhan.lexi.core.designsystem.component.FlowDefaults
 import dev.talhabayhan.lexi.core.designsystem.component.PickerCard
+import dev.talhabayhan.lexi.core.designsystem.modifier.fadeWithShadowRoom
 import dev.talhabayhan.lexi.core.designsystem.motion.DialogFlipChoreography
 import dev.talhabayhan.lexi.core.designsystem.motion.DialogFlipMachine
 import dev.talhabayhan.lexi.core.designsystem.motion.MotionTier
@@ -28,7 +28,7 @@ import org.jetbrains.compose.resources.stringResource
  * Warm-up of "Çarkını seç" (#13 / #14 / #18), drawn by the splash's hidden warm-up on the first launch of each version
  * (`SplashRoute` in `:shared`), i.e. long before the first tap on a card. The real [PickerCard] (fill, border, s4
  * shadow, progress bar, art, texts) is posed mid-turn with the flip's own layer ([flipCard]: lift, tilt, Y turn with
- * perspective, the grown hard shadow), at rest, and mid-entrance (#18: a fading layer with room for its shadow), and
+ * perspective, the grown hard shadow), at rest, and mid-entrance (#18: faded with room for its shadow), and
  * the real dialog panel mid-open ([PickerDialogWarmUp]). Their GPU pipelines are built (on iOS after an install Metal
  * compiles each one the first time it is drawn, `docs/PERF.md`) and their code is run once, so the first picker and
  * the first flip of a version do not pay for either. No semantics, no input.
@@ -56,7 +56,7 @@ public fun CategoryFlipWarmUp(modifier: Modifier = Modifier) {
     val progressText = stringResource(Res.string.picker_progress, card.learned, card.total)
     val shadowRoom = LexiTheme.shadows.fadeOutsets
     Box(modifier.clearAndSetSemantics {}) {
-        // The grid's cards: at rest, and mid-entrance in the same fading layer as #18.
+        // The grid's cards: at rest, and mid-entrance with the same fade as #18.
         Row {
             WarmUpCard(name, progressText, card.fraction, selected = false, Modifier)
             WarmUpCard(
@@ -64,10 +64,7 @@ public fun CategoryFlipWarmUp(modifier: Modifier = Modifier) {
                 progressText,
                 card.fraction,
                 selected = false,
-                Modifier.graphicsLayer {
-                    alpha = WARM_UP_ENTRANCE_ALPHA
-                    outsets = shadowRoom
-                },
+                Modifier.fadeWithShadowRoom(shadowRoom) { WARM_UP_ENTRANCE_ALPHA },
             )
         }
         WarmUpCard(
