@@ -54,10 +54,22 @@ internal fun FlowWarmUp(modifier: Modifier = Modifier) {
                 letterAlpha = 1f,
             )
         }
+        // The pop's end: the big letter near its real size (above Skia's ≈ 256 px glyph atlas limit even at the
+        // warm-up's half scale, so it is drawn as a path, another pipeline than the small letter) and fading in.
+        LetterMorphLayer(WARM_UP_LETTER) { screen ->
+            LetterMorphFrame(
+                visible = true,
+                inkRect = Rect(screen.center, screen.width / 2f),
+                inkColor = ink,
+                letterScale = 1f,
+                letterAlpha = WARM_UP_LETTER_FADE,
+            )
+        }
     }
 }
 
 private const val WARM_UP_LETTER = "A"
 private const val WARM_UP_TURN_DEGREES = 30f
 private const val WARM_UP_LETTER_SCALE = 0.3f
+private const val WARM_UP_LETTER_FADE = 0.5f
 private val WARM_UP_CARD = 160.dp

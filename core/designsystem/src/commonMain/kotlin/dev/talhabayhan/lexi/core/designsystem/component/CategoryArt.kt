@@ -158,7 +158,9 @@ public enum class ExamArtKind {
 @Composable
 public fun CategoryArt(kind: CategoryArtKind, modifier: Modifier = Modifier) {
     val colors = LexiTheme.colors
-    val art = categoryDrawing(kind, colors)
+    // Remembered: a new drawing lambda would rebuild the cached sketch (path parsing, text measuring) on every
+    // recomposition of the card (grid reuse, flip start).
+    val art = remember(kind, colors) { categoryDrawing(kind, colors) }
     ArtCanvas(art.background, art.draw, modifier)
 }
 
@@ -169,7 +171,7 @@ public fun CategoryArt(kind: CategoryArtKind, modifier: Modifier = Modifier) {
 @Composable
 public fun ExamArt(kind: ExamArtKind, modifier: Modifier = Modifier, locked: Boolean = false) {
     val colors = LexiTheme.colors
-    val art = examDrawing(kind, colors)
+    val art = remember(kind, colors) { examDrawing(kind, colors) }
     val base = if (locked) {
         modifier.background(colors.white).graphicsLayer { alpha = CategoryArtDefaults.LOCKED_ALPHA }
     } else {
