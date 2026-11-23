@@ -129,9 +129,22 @@ reduced motion. Timings, easings and haptics are the same either way.
 
 ### Layers
 A fade (alpha < 1 in a `graphicsLayer`) is drawn offscreen, clipped to the layer's bounds; hard shadows lie right of and
-below them. Every fading layer around content with a hard shadow sets `outsets = hardShadowOutsets(offset)` (or
-`LexiTheme.shadows.fadeOutsets` when the content is not known), so the shadow fades with its element instead of
-popping in at alpha 1. Same pixels at rest, no timing change.
+below them. Content with a hard shadow fades with `Modifier.fadeWithShadowRoom(room) { alpha }` (room:
+`hardShadowOutsets(offset)`, or `LexiTheme.shadows.fadeOutsets` when the content is not known), moves and scales stay
+in a `graphicsLayer` before it. The shadow fades with its element instead of popping in at alpha 1. Same pixels at
+rest, no timing change. **Never** set `outsets` on a `graphicsLayer` whose alpha changes: Compose 1.12's Skia (iOS)
+keeps such a layer at the alpha of its parent's last recording, so a fade-in from 0 stays invisible (the 1.1.2 freeze,
+`docs/PERF.md`).
+
+### Fail-safes
+Every motion ends in its resting, fully drawn state, whatever happens to its frames:
+- The letter morph (#16) waits at most `LetterMorphMachine.WAIT_LIMIT_MILLIS` (3 s, not a design value) after its hold
+  for the game and the wheel marker; then it cancels itself (the overlay fades out over the reduced cross-fade), the
+  game starts without it and `motion_failsafe` (`kind=morph_timeout`) is logged.
+- The board entrance (#16) is derived from the morph's state: once the morph is over or cancelled every piece is at rest.
+- The grid entrance (#18) and the re-deal (#17) land at once when interrupted (cancelled, the screen left) or when the
+  app goes to the background (ON_PAUSE), so they never resume mid-fade (a background before the entrance started skips
+  it for that open).
 
 ## Haptic map (`HapticKind`)
 Android uses the device `Vibrator` (no View dependency); API 29+ uses predefined effects, API 26-28 a waveform

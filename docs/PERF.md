@@ -257,11 +257,33 @@ flips in both; the PLAY button's and the dialog frame's right / bottom shadows f
 the app, reopen, open the picker: the cards' shadows come in with the cards. Fresh install (delete the app first):
 watch the first splash, then kill and reopen and compare.
 
+## 1.1.2 freeze (2026-11-23, TestFlight 1.1.2, iPhone 13 iOS 27 and iPhone 17)
+
+Owner report: (a) "Çarkını seç" shows the header and level tabs but no category cards until the app goes to the
+background and back; (b) after OYNA the game start stays stuck for seconds behind / after the letter morph; (c) first
+launch after install, Low Power Mode on in one capture. 1.1.1 (12d47b07) is fine.
+
+| Finding | Evidence | Fix |
+|---|---|---|
+| **Root cause.** 1.1.2 gave every fading layer `outsets` (shadow room). Compose 1.12.1's Skia layer (`SkiaGraphicsLayer.draw`, skiko) applies a layer with outsets through a `saveLayer` whose paint (with the alpha) is recorded into the **parent's** picture; an alpha change only re-records the layer itself (`GraphicsLayerOwnerLayer.updateLayerProperties` → `triggerRepaint`), so the parent keeps drawing the alpha of its last recording. Entrances start at alpha 0: the picker cards (#18) and the game board's pieces (#16: HUD, clue, slots, keys, bottom row) stayed invisible until something re-recorded their parent (background → foreground redraws everything; backgrounding also cancels the morph). Android's RenderNode is not affected. Low Power Mode matters only because 1.1.2 stopped downgrading it to Lite (no grid entrance in Lite) | `OutsetsAlphaFreezeIosTest` (alpha 0 → 1 with outsets stays white, without stays red); `CategoryPickerEntranceIosTest` on the 1.1.2 code: 0.3 % of the grid band drawn vs 65 % without entrance; `BoardEntranceIosTest` on the 1.1.2 code: the entered piece is not drawn after the morph. All pass with the fix | `Modifier.fadeWithShadowRoom` (designsystem): the fade is a `saveLayer` with shadow room drawn by the element itself, so each alpha change re-records it. Replaces every `alpha` + `outsets` layer (grid entrance, board entrance, re-deal, clue swap, dialog rows and Lite panel, warm-up card). Same pixels, no timing change |
+| H1 warm-up sharing state with the real screens | code: no shared entrance state (`GridEntranceSession` only in the route); the warm-up's game board published a `WHEEL_MARKER` anchor while it was composed (3 splash frames, released after) | refuted as the cause; the warm-up now provides no morph anchors / overlay (`AppWarmUp`) |
+| H2 warm-up layers kept alive | code: composed only while `warmingUp` (3 frames) | refuted |
+| H3 outsets | see root cause | fixed |
+| H4 lifecycle / frame clock stall | background → foreground re-records the whole scene and cancels a running morph (`LetterMorphLauncher.onStop`): it hid the bug, it did not cause it | fail-safes below |
+
+**Compose upgrade canary:** `OutsetsAlphaFreezeIosTest.aLayerWithOutsetsKeepsItsFirstAlpha` asserts the Skia bug
+exists. If it turns red after a Compose bump, the bug is fixed upstream: keep `fadeWithShadowRoom` (or revisit), and
+delete or invert that one assertion knowingly, never the whole test.
+
+Fail-safes added (`motion.md` § Fail-safes): morph wait limit 3 s → cancel, game starts, `motion_failsafe` logged
+(`LetterMorphMachineTest`, `BoardEntranceIosTest`); grid entrance and re-deal land when interrupted or on ON_PAUSE
+(`GridEntranceFailSafeTest`, `GameFlowMotionTest`).
+
 ## First launch of a version: one warm-up (owner decision after the 1.1.1 report)
 
 - **What:** `SplashRoute` draws `AppWarmUp` in its covered top-half area (`HiddenPreDraw`, frame pixel-identical):
   the splash's 4 poses, the game board (`GameWarmUp`), the card art turned and the morph's ink (`FlowWarmUp`), the real
-  category card mid-flip, at rest and mid-entrance (a fading layer with its shadow room), and the dialog mid-open
+  category card mid-flip, at rest and mid-entrance (faded with its shadow room), and the dialog mid-open
   (`CategoryFlipWarmUp` → `PickerDialogWarmUp`). 3 frames, before the 1.2 s clock starts. The game board and the
   flow are laid out at the real screen size and drawn at half scale into the covered half (laid out in the half
   itself, the letter wheel got a size <= 0 and Skia aborted the app on iOS: `SplashWarmUpIosTest`); the GPU pipelines

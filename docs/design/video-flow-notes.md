@@ -204,8 +204,9 @@ Still open:
   rest and entering, and the dialog mid-open, `CategoryFlipWarmUp`), drawn hidden by the splash on the first launch of
   each version (`docs/PERF.md`); low-RAM
   starts in Lite (Low Power Mode no longer does, §12), slow transitions switch the session to Lite (rules since
-  phase 6: §12); a layer that fades content with hard shadows keeps room for them (`hardShadowOutsets`,
-  `motion.md` § Layers); debug
+  phase 6: §12); content with hard shadows fades with room for them (`fadeWithShadowRoom`,
+  `motion.md` § Layers; never `graphicsLayer` outsets, the 1.1.2 freeze); every motion has a fail-safe end
+  (`motion.md` § Fail-safes); debug
   builds have a tier switch and a frame-time graph (`MotionDebugOverlay`, shown from `androidApp/src/debug`). Numbers: `docs/PERF.md` § Video flow.
 - **Goldens:** no new screenshot test and no golden change at rest (the motions start from and end on the resting
   look; `verifyRoborazzi` of `core/designsystem`, `feature/levels` and `feature/game` matched on macOS except the two
