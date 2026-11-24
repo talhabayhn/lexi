@@ -122,10 +122,11 @@ with `cream` so the mid-fade never shows the window background. Reduced motion: 
 
 Splash timing in app (scale the demo keyframe percentages from 3.6 s to 1.2 s; keep order and overshoots):
 bg 0–216 ms, L 48–312 ms, E 120–384 ms, X 192–480 ms, I 264–552 ms, tagline 576–696 ms, hold to 1200 ms.
-On the first launch of each app version the 1.2 s clock starts after a 3-frame warm-up on the splash's first frame
-(the splash poses, game board, card flip, dialog and picker cards drawn hidden above it, under a cream cover over the
-top half, to build GPU pipelines before any animation, `docs/PERF.md`); every other launch starts within at most 2 frames (no later than before); none with
-reduced motion. Timings, easings and haptics are the same either way.
+The splash's first frame is the launch logo (the four blocks at rest, no shapes, no tagline: the iOS launch screen's
+`LaunchLogo` image), and the animation starts from it (its first pose has the blocks off screen). On the first launch of
+each app version the logo is held while the app's first-use drawing is warmed up hidden (`docs/PERF.md` § Launch logo),
+at most 2000 ms; every other launch starts within at most 2 frames (no later than before); no hold with reduced motion.
+Timings, easings and haptics of the animation are the same either way.
 
 ### Layers
 A fade (alpha < 1 in a `graphicsLayer`) is drawn offscreen, clipped to the layer's bounds; hard shadows lie right of and

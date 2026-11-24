@@ -1,5 +1,6 @@
 package dev.talhabayhan.lexi.core.designsystem.component
 
+import androidx.compose.foundation.focusGroup
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.padding
@@ -7,9 +8,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.draw.drawWithContent
+import androidx.compose.ui.focus.focusProperties
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.PointerEventPass
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
@@ -48,3 +51,20 @@ public fun HiddenPreDraw(cover: Color, modifier: Modifier = Modifier, content: @
 
 /** Inset of [HiddenPreDraw]'s cover from the edges: enough that it never spans the whole render target. */
 public val HiddenPreDrawInset: Dp = 1.dp
+
+/**
+ * Makes a warm-up copy of a real screen inert: no semantics, every pointer event consumed before its content sees it,
+ * never focused. For screens composed only to be drawn hidden ([HiddenPreDraw]); their intents go nowhere.
+ */
+public fun Modifier.inertWarmUp(): Modifier = this
+    .clearAndSetSemantics {}
+    .pointerInput(Unit) {
+        awaitPointerEventScope {
+            while (true) awaitPointerEvent(PointerEventPass.Initial).changes.forEach { it.consume() }
+        }
+    }
+    .focusProperties {
+        canFocus = false
+        onEnter = { cancelFocusChange() }
+    }
+    .focusGroup()

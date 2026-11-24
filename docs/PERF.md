@@ -281,6 +281,9 @@ Fail-safes added (`motion.md` § Fail-safes): morph wait limit 3 s → cancel, g
 
 ## First launch of a version: one warm-up (owner decision after the 1.1.1 report)
 
+Updated by S4 (§ Launch logo below): the warm-up is now drawn at real size over the whole screen behind the held
+launch logo, with a 2000 ms cap; the rules below (per-version key, stored after it ran, 2 decision frames) still apply.
+
 - **What:** `SplashRoute` draws `AppWarmUp` in its covered top-half area (`HiddenPreDraw`, frame pixel-identical):
   the splash's 4 poses, the game board (`GameWarmUp`), the card art turned and the morph's ink (`FlowWarmUp`), the real
   category card mid-flip, at rest and mid-entrance (faded with its shadow room), and the dialog mid-open
@@ -311,3 +314,35 @@ Fail-safes added (`motion.md` § Fail-safes): morph wait limit 3 s → cancel, g
   longer, then the splash, Home → picker, first card flip and OYNA → game should be smooth; kill and reopen: same, with
   no extra wait.
 
+
+## Launch logo and first-launch hold (S4, after the 1.1.3 report)
+
+Owner report (TestFlight 1.1.3, iPhone, fresh install): the splash froze on its first frame, then jumped to onboarding;
+the iOS launch screen was plain cream. Cause: one-time Metal pipeline compiles and Compose / Skia start-up landed inside
+the 1.2 s animation, and the 3-frame warm-up drew the screens at half size in the top half only.
+
+- **Launch logo.** `UILaunchScreen` shows `LaunchLogo` (`Assets.xcassets/LaunchLogo.imageset`, 1x/2x/3x, 320 x 118 pt,
+  transparent) centred on `LaunchBackground` (= `cream`). The PNGs are rendered from the real composable
+  (`LexiSplashLogo`) on the iOS simulator's Skia: `LaunchLogoExportIosTest` (run it after any logo change, command in
+  its KDoc; a no-op without `LEXI_LAUNCH_LOGO_DIR`). The crop is symmetric around the screen centre, so the blocks land
+  exactly where the splash's first Compose frame (`LexiSplash(logoOnly = true)`) draws them; the invisible tagline is
+  laid out at font scale 1 in that pose so Dynamic Type does not move the blocks (`LaunchLogoPoseTest`).
+- **Hold.** First launch of a version (`warmed_up_version_code` ≠ `versionCode`): the logo is held while `AppWarmUp`
+  draws, at real screen size, under the inset cream cover (`HiddenPreDraw`, the held logo drawn again above it): the
+  splash poses, onboarding page 1 and Home (mid screen-transition: half alpha, sub-pixel shift), the game board
+  (mid-entrance: sub-pixel move + scale through `fadeWithShadowRoom`), the card flip, picker cards, dialog panel and the
+  letter morph. 3 frames; the animation starts when they are drawn or after **2000 ms** (`FIRST_LAUNCH_HOLD_CAP_MILLIS`),
+  whichever is first. The version is stored only after a completed warm-up (a capped one runs again next launch).
+  Later launches: no hold (≤ 2 decision frames, as before). Reduced motion: no hold, no warm-up.
+- **Tests:** `FirstLaunchHoldTest` (cap, persisted-key rules), `SplashWarmUpTest` (held logo, pixel-identical warm-up
+  frame, cap → animation and nothing stored, later launch without hold, splash measured once with the flag),
+  `SplashFirstLaunchIosTest` + `SplashWarmUpIosTest` (iOS simulator).
+
+## Field frame times (`transition_frames`)
+
+`FrameMonitor` reports each measured span (its keys, worst frame gap, warm-up frames included) to
+`TransitionTelemetry`, which sends `transition_frames` once per transition per process through `AnalyticsTracker`
+(consent-gated; no new SDK). Transitions: `splash`, `onboarding_to_home`, `picker_open`, `dialog_open`,
+`dialog_close`, `morph`, `game_start` (keys in `TransitionKeys`); buckets `le_16` … `gt_100`; plus `motion_tier` and
+`first_launch_of_version`. Read it in Firebase → Events → `transition_frames`, split by `first_launch_of_version`:
+first-launch rows show what the warm-up still misses, the others the steady state. Details: `docs/ANALYTICS.md`.

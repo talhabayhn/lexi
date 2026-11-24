@@ -10,11 +10,14 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.GraphicsLayerScope
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
@@ -113,12 +116,20 @@ private object SplashKeyframes {
  * arriving one by one (L slides from the left, E drops and bounces, X spins in, I rises) and the tagline fading up.
  * [progress] is the animation position 0..1, read in the draw phase only; pass a constant `1f` for reduced motion
  * (the logo is shown statically, motion.md). [tagline] is "A'DAN Z'YE İNGİLİZCE".
+ *
+ * [logoOnly] is the launch pose (`docs/PERF.md` § Launch logo): only the four blocks, at rest, on the cream (no shapes,
+ * no tagline), exactly where the native iOS launch screen's `LaunchLogo` image shows them, so the hand-off from the
+ * launch screen is invisible. The splash holds it until its animation starts ([progress] is ignored meanwhile).
  */
 @Composable
-public fun LexiSplash(progress: () -> Float, tagline: String, modifier: Modifier = Modifier) {
+public fun LexiSplash(
+    progress: () -> Float,
+    tagline: String,
+    modifier: Modifier = Modifier,
+    logoOnly: Boolean = false,
+) {
     val colors = LexiTheme.colors
     val mechanical = LexiTheme.motion.mechanical
-    val easeOut = LexiTheme.motion.press
     Box(modifier.fillMaxSize().background(colors.cream)) {
         DecorShape(
             kind = DecorShapeKind.Circle,
@@ -128,7 +139,7 @@ public fun LexiSplash(progress: () -> Float, tagline: String, modifier: Modifier
                 .offset(SplashDefaults.SunOffset, SplashDefaults.SunOffset)
                 .size(SplashDefaults.SunSize)
                 .graphicsLayer {
-                    val scale = SplashKeyframes.ShapeScale.sample(progress(), mechanical)
+                    val scale = if (logoOnly) 0f else SplashKeyframes.ShapeScale.sample(progress(), mechanical)
                     scaleX = scale
                     scaleY = scale
                 },
@@ -141,29 +152,59 @@ public fun LexiSplash(progress: () -> Float, tagline: String, modifier: Modifier
                 .offset(-SplashDefaults.BlueOffset, -SplashDefaults.BlueOffset)
                 .size(SplashDefaults.BlueSize)
                 .graphicsLayer {
-                    val scale = SplashKeyframes.ShapeScale.sample(progress(), mechanical)
+                    val scale = if (logoOnly) 0f else SplashKeyframes.ShapeScale.sample(progress(), mechanical)
                     scaleX = scale
                     scaleY = scale
                 },
         )
-        Column(
-            modifier = Modifier.fillMaxSize(),
-            verticalArrangement = Arrangement.spacedBy(SplashDefaults.ContentGap, Alignment.CenterVertically),
-            horizontalAlignment = Alignment.CenterHorizontally,
-        ) {
-            LexiLogo(size = LexiLogoSize.Splash) { index -> animateBlock(index, progress(), mechanical) }
+        SplashContent(progress = if (logoOnly) RestingProgress else progress, tagline = tagline, logoOnly = logoOnly)
+    }
+}
+
+/**
+ * The splash's [logoOnly][LexiSplash] pose without its background: the four blocks at rest, laid out exactly as in
+ * [LexiSplash] (same size given). Drawn above the hidden first-launch warm-up's cover, so the held logo stays in front
+ * of it (`SplashRoute`), and rendered into the iOS launch screen's `LaunchLogo` image (`LaunchLogoExportIosTest`).
+ */
+@Composable
+public fun LexiSplashLogo(tagline: String, modifier: Modifier = Modifier) {
+    Box(modifier.fillMaxSize()) {
+        SplashContent(progress = RestingProgress, tagline = tagline, logoOnly = true)
+    }
+}
+
+/**
+ * Logo and tagline, centred as one column. In the [logoOnly] pose the tagline is invisible and laid out at font scale
+ * 1, so the blocks sit where the launch image (rendered at font scale 1) has them whatever the text size; it is laid
+ * out at the real scale again when the animation starts, while the blocks are still off screen.
+ */
+@Composable
+private fun SplashContent(progress: () -> Float, tagline: String, logoOnly: Boolean) {
+    val mechanical = LexiTheme.motion.mechanical
+    val easeOut = LexiTheme.motion.press
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.spacedBy(SplashDefaults.ContentGap, Alignment.CenterVertically),
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        LexiLogo(size = LexiLogoSize.Splash) { index -> animateBlock(index, progress(), mechanical) }
+        val density = LocalDensity.current
+        val taglineDensity = if (logoOnly) Density(density.density, fontScale = 1f) else density
+        CompositionLocalProvider(LocalDensity provides taglineDensity) {
             Text(
                 text = tagline,
                 style = LexiTheme.typography.label15Wide,
                 modifier = Modifier.graphicsLayer {
                     val p = progress()
-                    alpha = SplashKeyframes.TaglineAlpha.sample(p, easeOut)
+                    alpha = if (logoOnly) 0f else SplashKeyframes.TaglineAlpha.sample(p, easeOut)
                     translationY = SplashKeyframes.TaglineRise.sample(p, easeOut, SplashDefaults.TaglineRise.toPx())
                 },
             )
         }
     }
 }
+
+private val RestingProgress: () -> Float = { 1f }
 
 private fun GraphicsLayerScope.animateBlock(index: Int, p: Float, easing: Easing) {
     when (index) {

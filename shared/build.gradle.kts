@@ -51,6 +51,8 @@ kotlin {
         commonTest.dependencies {
             // ADR 0027 shared-element spike: Compose UI test on the Android host and the iOS simulator.
             implementation(libs.compose.uiTest)
+            // Fakes and coroutine test helpers for the splash's first-launch tests (host and iOS simulator).
+            implementation(project(":core:testing"))
         }
         getByName("androidHostTest").dependencies {
             implementation(project(":core:testing"))

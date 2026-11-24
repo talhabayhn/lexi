@@ -31,6 +31,21 @@ it does not cover iOS. Items marked *measure* need an Instruments trace on an iP
 Stats, Exams, Settings / About / Reminder, Duel setup / result / review, Daily (uses the game board: #3 applies), timer
 and HUD (draw-phase fill, per-second `derivedStateOf`), feedback toasts, `PressableSurface`.
 
+## Shader variety (S4, iOS Skia / Metal)
+
+Searched every `clip`, `clipToBounds` / `clipRect`, offscreen layer (`alpha` < 1, `saveLayer`), `blur` /
+`RenderEffect` (none) and gradient (one: onboarding's `ScrollCue`).
+
+| Finding | Status |
+|---|---|
+| Every `lexiSurface` / `PressableSurface` clips its content to its shape (`clip(shape)` = a layer with a clip). Under a fractional transform (entrances, re-deal, flip, nav slide) Skia draws through an anti-aliased clip effect, a pipeline variant per kind of draw; the X block's leaf is a path clip (a coverage mask while it spins) | **not replaced**: dropping the clip changes edge anti-aliasing (round / leaf) or lets overflowing content show (rectangles), so the pixels are not provably identical. Warmed instead: the hidden warm-up now draws Home and onboarding mid screen-transition and the board mid-entrance (sub-pixel move, scale, `fadeWithShadowRoom`), the X turned (pose 0.28) |
+| `ScrollCue` vertical gradient (onboarding) | warmed (onboarding page 1 in the warm-up) |
+| Locked category / exam art at alpha 0.5 (#11) | kept (overlapping shapes: `ModulateAlpha` would change pixels) |
+
+Remaining *measure* items: #5 (now real size in the warm-up), #8 dialog open / close and the transitions above are
+measured in the field by `transition_frames` (`dialog_open`, `dialog_close`, `morph`, `game_start`, `picker_open`;
+`docs/PERF.md` § Field frame times); #7 (in-game motions) and #11 still need an Instruments trace on a fresh install.
+
 ## Rules kept from this audit
 
 - Fades of content with hard shadows: `fadeWithShadowRoom`, never `graphicsLayer` outsets with a changing alpha
