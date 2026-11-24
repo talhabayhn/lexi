@@ -270,9 +270,9 @@ internal class SplashLandingFeedback(private val haptics: Haptics, private val s
 
 /**
  * The landings of the native splash (ADR 0028): a light haptic and a "tık" when each block lands, on the overlay's
- * clock ([LaunchSplash.elapsedMillis], negative before its animation starts) at [SplashDefaults.LandingFractions] of the animation. Composed once at the app
- * root, so it outlives `SplashRoute` (the app may move on before the animation ends). Nothing without a native splash
- * or with reduced motion (the static logo has no landings).
+ * clock ([LaunchSplash.elapsedMillis], negative before its animation starts) at [SplashDefaults.LandingFractions] of
+ * the animation. Composed once at the app root, so it outlives `SplashRoute` (the app may move on before the animation
+ * ends). Nothing without a native splash or with reduced motion (the static logo has no landings).
  */
 @Composable
 internal fun NativeSplashFeedback(launchSplash: LaunchSplash = LocalLaunchSplash.current) {
@@ -286,12 +286,14 @@ internal fun NativeSplashFeedback(launchSplash: LaunchSplash = LocalLaunchSplash
         for (fraction in SplashDefaults.LandingFractions) {
             val at = (fraction * motion.splashDurationMillis).toLong()
             // Re-read after each wait: the overlay's clock is the reference (it may start after this effect).
-            while (true) {
-                val wait = at - launchSplash.elapsedMillis()
-                if (wait <= 0) break
+            var wait = at - launchSplash.elapsedMillis()
+            while (wait > 0) {
                 delay(wait)
+                wait = at - launchSplash.elapsedMillis()
             }
-            current.land()
+            // A landing already long past (start-up or the background held the main thread) is skipped: a late burst
+            // of taps would not match the blocks the render server has already landed.
+            if (wait >= -LANDING_LATE_LIMIT_MILLIS) current.land()
         }
     }
 }
@@ -414,6 +416,9 @@ internal object FirstLaunchWarmUp {
  */
 internal suspend fun holdForWarmUp(capMillis: Long, warmUp: suspend () -> Unit): WarmUpOutcome =
     if (withTimeoutOrNull(capMillis) { warmUp() } != null) WarmUpOutcome.Completed else WarmUpOutcome.CappedOut
+
+/** A native-splash landing later than this (≈ 3 frames) is skipped, not played out of sync. */
+internal const val LANDING_LATE_LIMIT_MILLIS = 50L
 
 /** The longest the first launch of a version holds the logo for its warm-up before the animation starts. */
 internal const val FIRST_LAUNCH_HOLD_CAP_MILLIS = 2_000L

@@ -88,8 +88,8 @@ import kotlin.math.ceil
  * screen's (image centred on the screen). The shapes are plain coloured views (circle: corner radius), the tagline a
  * `UILabel` in Jost Bold. Everything sits in a design-unit stage scaled like `LexiViewport` (Expanded tier).
  *
- * Accessibility: one image element "Lexi" (plus the tagline once loaded), modal, so VoiceOver does not reach the Compose
- * screen being prepared under it. Light only ([UIUserInterfaceStyle.UIUserInterfaceStyleLight], ADR 0010).
+ * Accessibility: one image element "Lexi" (plus the tagline once loaded), modal, so VoiceOver does not reach the
+ * Compose screen being prepared under it. Light only ([UIUserInterfaceStyle.UIUserInterfaceStyleLight], ADR 0010).
  */
 internal class NativeSplashOverlay(
     launchLogo: UIImage?,
@@ -224,9 +224,11 @@ internal class NativeSplashOverlay(
      * Starts the animation (`motion.md` #9, [SplashTimeline], [StandardLexiMotion.splashDurationMillis]) after
      * [handOffMillis] of launch pose; [onEnded] runs on the main thread when Core Animation has finished it (also when
      * the system removed it early, e.g. the app went to the background: every layer's model value is its resting pose,
-     * so nothing is left mid-way). The hand-off is part of the same Core Animation timeline, so the render server
-     * starts the animation on time even if the main thread is blocked then. Nothing is animated with reduced motion
-     * (the resting pose is the static logo); [onEnded] is not called then.
+     * so nothing is left mid-way). The timeline begins when the transaction is committed, i.e. with the first frame
+     * shown, however late that is (a fixed begin time in the past skipped the whole animation on a slow first launch);
+     * [animationBeginTime] gives it afterwards. The hand-off is part of the same timeline, so the render server starts
+     * the animation on time even if the main thread is blocked then. Nothing is animated with reduced motion (the
+     * resting pose is the static logo); [onEnded] is not called then.
      */
     fun play(handOffMillis: Long, onEnded: () -> Unit) {
         if (reducedMotion) return
@@ -265,6 +267,16 @@ internal class NativeSplashOverlay(
             factor = SplashTimeline.taglineRiseDistance.value.toDouble(),
         )
         CATransaction.commit()
+    }
+
+    /**
+     * The `CACurrentMediaTime` at which [play]'s timeline began, known once its transaction has been committed (null
+     * before, or with nothing playing).
+     */
+    fun animationBeginTime(): Double? {
+        val layer = blocks[0].layer
+        val begin = layer.animationForKey("splash.transform.translation.x")?.beginTime ?: return null
+        return if (begin > 0.0) layer.convertTime(begin, toLayer = null) else null
     }
 
     /**

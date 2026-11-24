@@ -60,6 +60,7 @@ class NativeSplashOverlayIosTest {
             schedule = ::schedule,
             now = { clock },
             loadTagline = null,
+            readBeginTime = { null },
         )
         return splash to host
     }
@@ -128,6 +129,34 @@ class NativeSplashOverlayIosTest {
     }
 
     @Test
+    fun everyTrackIsAValidKeyframeAnimationOnOneTimeline() {
+        val (splash, _) = splash()
+        clock = 5.0
+        splash.start()
+        val overlay = splash.overlay
+        val layers = overlay.blockViews.map { it.layer } + overlay.sunView.layer + overlay.blueView.layer +
+            overlay.taglineView.layer
+        var tracks = 0
+        for (layer in layers) {
+            for (key in layer.animationKeys().orEmpty().map { it as String }) {
+                val animation = layer.animationForKey(key) as CAKeyframeAnimation
+                val values = animation.values!!
+                val times = animation.keyTimes!!.map { (it as NSNumber).doubleValue }
+                assertEquals(values.size, times.size, "$key: values and key times")
+                assertEquals(values.size - 1, animation.timingFunctions!!.size, "$key: timing functions")
+                assertClose(0.0, times.first(), "$key: first key time")
+                assertClose(1.0, times.last(), "$key: last key time")
+                times.zipWithNext().forEach { (a, b) -> assertTrue(b > a, "$key: key times not increasing") }
+                // Begins when committed (the first frame shown), never at a fixed time that may be past already.
+                assertClose(0.0, animation.beginTime, "$key: begin time")
+                tracks++
+            }
+        }
+        // L, E, X spin + scale, I, two shapes, tagline fade + rise.
+        assertEquals(9, tracks)
+    }
+
+    @Test
     fun endsOnlyAfterTheAnimationAndTheFirstScreen() {
         val (splash, host) = splash()
         splash.start()
@@ -156,8 +185,9 @@ class NativeSplashOverlayIosTest {
         fire(StandardLexiMotion.screenTransitionDurationMillis.toLong())
         assertTrue(splash.isRemoved)
         assertNull(splash.overlay.view.superview)
-        // The late first screen learns that the fail-safe fired (logged as motion_failsafe).
+        // The late first screen learns that the fail-safe fired (logged as motion_failsafe), once.
         assertTrue(splash.contentReady())
+        assertFalse(splash.contentReady())
     }
 
     @Test
@@ -189,8 +219,10 @@ class NativeSplashOverlayIosTest {
     fun elapsedTimeFollowsTheOverlayClock() {
         val (splash, _) = splash()
         assertTrue(splash.elapsedMillis() < 0, "started before start()")
-        clock = 10.0
+        clock = 9.0
         splash.start()
+        clock = 10.0
+        fire(0L)
         val handOff = IosLaunchSplash.LAUNCH_HAND_OFF_MILLIS
         assertEquals(-handOff, splash.elapsedMillis(), "the animation starts after the hand-off")
         clock = 10.0 + (handOff + 312) / 1000.0

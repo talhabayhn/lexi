@@ -20,7 +20,8 @@ interface LaunchSplash {
 
     /**
      * The first real screen (Onboarding or Home) has been drawn: the overlay leaves once its animation has also ended.
-     * Returns true when the overlay had already left through its time limit (the fail-safe fired). Idempotent.
+     * Returns true once (on the first call) when the overlay had already left through its time limit (the fail-safe
+     * fired), so it is reported once.
      */
     fun contentReady(): Boolean
 }
@@ -60,6 +61,7 @@ internal class NativeSplashGate(
     private var started = false
     private var animationDone = false
     private var ready = false
+    private var timeoutReported = false
 
     /** How it left, or null while the overlay is still up. */
     var leaveReason: SplashLeaveReason? = null
@@ -81,7 +83,9 @@ internal class NativeSplashGate(
     fun contentReady(): Boolean {
         ready = true
         if (animationDone) leave(SplashLeaveReason.Ready)
-        return leaveReason == SplashLeaveReason.TimedOut
+        if (leaveReason != SplashLeaveReason.TimedOut || timeoutReported) return false
+        timeoutReported = true
+        return true
     }
 
     private fun leave(reason: SplashLeaveReason) {

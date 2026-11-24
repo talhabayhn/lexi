@@ -73,7 +73,9 @@ import dev.talhabayhan.lexi.splash.LaunchSplash
 import dev.talhabayhan.lexi.splash.LocalLaunchSplash
 import dev.talhabayhan.lexi.splash.SplashRoute
 import dev.talhabayhan.lexi.splash.splashScreen
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withTimeoutOrNull
 import org.koin.compose.koinInject
 
@@ -191,16 +193,29 @@ private fun SignalNativeSplashReady(
     if (!launchSplash.isNative) return
     val currentOnTimedOut by rememberUpdatedState(onTimedOut)
     LaunchedEffect(navController, launchSplash) {
-        navController.visibleEntries.first { entries ->
-            entries.isNotEmpty() && entries.none { it.destination.hasRoute(SplashRoute::class) }
+        val splashShown = navController.visibleEntries.map { entries ->
+            entries.isEmpty() || entries.any { it.destination.hasRoute(SplashRoute::class) }
         }
-        repeat(READY_FRAMES) { withFrameNanos { } }
-        if (launchSplash.contentReady()) currentOnTimedOut()
+        signalNativeSplashReady(splashShown, launchSplash) { currentOnTimedOut() }
     }
 }
 
+/**
+ * Waits until [splashShown] is false (the splash's entry has left and a screen is visible), lets [READY_FRAMES] frames
+ * be drawn, then calls [LaunchSplash.contentReady]; [onTimedOut] when the overlay had already timed out.
+ */
+internal suspend fun signalNativeSplashReady(
+    splashShown: Flow<Boolean>,
+    launchSplash: LaunchSplash,
+    onTimedOut: () -> Unit,
+) {
+    splashShown.first { !it }
+    repeat(READY_FRAMES) { withFrameNanos { } }
+    if (launchSplash.contentReady()) onTimedOut()
+}
+
 /** Frames the first real screen is drawn before the native splash may leave: composed and drawn, then shown. */
-private const val READY_FRAMES = 2
+internal const val READY_FRAMES = 2
 
 /**
  * Registers the navigation from onboarding (or the level-test result) to Home with [monitor]

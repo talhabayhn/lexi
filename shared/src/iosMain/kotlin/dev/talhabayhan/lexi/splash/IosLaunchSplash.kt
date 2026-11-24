@@ -16,6 +16,8 @@ import org.jetbrains.compose.resources.getString
 import platform.QuartzCore.CACurrentMediaTime
 import platform.UIKit.UIAccessibilityPostNotification
 import platform.UIKit.UIAccessibilityScreenChangedNotification
+import platform.UIKit.UIViewAutoresizingFlexibleHeight
+import platform.UIKit.UIViewAutoresizingFlexibleWidth
 import platform.UIKit.UIViewController
 import platform.UIKit.addChildViewController
 import platform.UIKit.didMoveToParentViewController
@@ -27,10 +29,11 @@ import kotlin.math.roundToLong
 
 /**
  * The iOS [LaunchSplash] (ADR 0028): owns the [NativeSplashOverlay] above the Compose view and decides with a
- * [NativeSplashGate] when it leaves: when its animation (after [LAUNCH_HAND_OFF_MILLIS] of launch pose) has ended (Core Animation's completion; with reduced motion,
- * after [StandardLexiMotion.splashReducedHoldMillis] of static logo) and Compose has drawn its first real screen
- * ([contentReady]), or after [NativeSplashGate.CAP_MILLIS] whatever happens. Then it plays its exit and takes itself
- * out of the view hierarchy. Every call is on the main thread. [schedule] and [now] are injected for tests.
+ * [NativeSplashGate] when it leaves: when its animation (after [LAUNCH_HAND_OFF_MILLIS] of launch pose) has ended (Core
+ * Animation's completion; with reduced motion, after [StandardLexiMotion.splashReducedHoldMillis] of static logo) and
+ * Compose has drawn its first real screen ([contentReady]), or after [NativeSplashGate.CAP_MILLIS] whatever happens.
+ * Then it plays its exit and takes itself out of the view hierarchy. Every call is on the main thread. [schedule] and
+ * [now] are injected for tests.
  */
 internal class IosLaunchSplash(
     val overlay: NativeSplashOverlay,
@@ -38,8 +41,12 @@ internal class IosLaunchSplash(
     private val schedule: (delayMillis: Long, action: () -> Unit) -> Unit = ::onMainAfter,
     private val now: () -> Double = ::CACurrentMediaTime,
     private val loadTagline: (suspend () -> String)? = { getString(Res.string.splash_tagline) },
+    private val readBeginTime: () -> Double? = { overlay.animationBeginTime() },
 ) : LaunchSplash {
     private val gate = NativeSplashGate(NativeSplashGate.CAP_MILLIS, schedule, ::leave)
+    private var started = false
+
+    /** When the timeline (hand-off, then animation) began on screen, in [now]'s seconds; null until known. */
     private var startedAt: Double? = null
     private val scope = MainScope()
 
@@ -52,7 +59,7 @@ internal class IosLaunchSplash(
 
     override val isNative: Boolean = true
 
-    /** Negative during the hand-off; before [start] as if it started now. */
+    /** Negative during the hand-off; until the timeline's begin is known, as if it began now. */
     override fun elapsedMillis(): Long {
         val start = startedAt ?: return -handOffMillis
         return ((now() - start) * MILLIS_PER_SECOND).roundToLong() - handOffMillis
@@ -65,14 +72,16 @@ internal class IosLaunchSplash(
 
     /** Starts the animation and the time limit; called when the host's view is about to appear. Once only. */
     fun start() {
-        if (startedAt != null) return
-        startedAt = now()
+        if (started) return
+        started = true
         StartupTrace.mark("native splash started")
         gate.start()
         if (reducedMotion) {
             schedule(StandardLexiMotion.splashReducedHoldMillis.toLong()) { gate.animationEnded() }
         } else {
             overlay.play(handOffMillis) { gate.animationEnded() }
+            // Runs after this run loop turn's commit: the time the timeline really began (the landings' clock).
+            schedule(0L) { startedAt = readBeginTime() ?: now() }
         }
         val load = loadTagline ?: return
         scope.launch {
@@ -111,9 +120,9 @@ internal class IosLaunchSplash(
 
         /**
          * The launch pose is held this long before the animation starts: iOS cross-fades from the launch screen to the
-         * app's first frame over ≈ 330 ms (measured on the iOS 26 simulator, 2026-11-24), and an animation started under
-         * that fade shows the launch screen's logo as a ghost over the moving blocks. Not a design value; re-check on a
-         * device (`docs/LOCAL-DEVICE-TEST.md`).
+         * app's first frame over ≈ 330 ms (measured on the iOS 26 simulator, 2026-11-24), and an animation started
+         * under that fade shows the launch screen's logo as a ghost over the moving blocks. Not a design value;
+         * re-check on a device (`docs/LOCAL-DEVICE-TEST.md`).
          */
         const val LAUNCH_HAND_OFF_MILLIS: Long = 350L
     }
@@ -132,7 +141,7 @@ internal class NativeSplashHostViewController(
         super.viewDidLoad()
         addChildViewController(content)
         content.view.setFrame(view.bounds)
-        content.view.autoresizingMask = splash.overlay.view.autoresizingMask
+        content.view.autoresizingMask = UIViewAutoresizingFlexibleWidth or UIViewAutoresizingFlexibleHeight
         view.addSubview(content.view)
         content.didMoveToParentViewController(this)
         if (!splash.isRemoved) view.addSubview(splash.overlay.view)

@@ -40,8 +40,8 @@ import kotlin.test.assertTrue
 
 /**
  * `SplashRoute` under the iOS native splash (ADR 0028), on the host renderer with a fake [LaunchSplash]: nothing
- * animates or lands in Compose, the first-launch warm-up still runs (behind the overlay) and stores the version, the app
- * moves on without waiting for the 1.2 s animation, and nothing announces the logo (the overlay does).
+ * animates or lands in Compose, the first-launch warm-up still runs (behind the overlay) and stores the version, the
+ * app moves on without waiting for the 1.2 s animation, and nothing announces the logo (the overlay does).
  * [NativeSplashFeedback] plays the four landings on the overlay's clock, also after the splash screen has gone.
  */
 @OptIn(ExperimentalTestApi::class)
@@ -143,6 +143,19 @@ class NativeSplashRouteTest {
     }
 
     @Test
+    fun `landings already long past are skipped, not played as a burst`() = runComposeUiTest {
+        mainClock.autoAdvance = false
+        currentTime = { mainClock.currentTime }
+        val start = mainClock.currentTime
+        // The feedback is composed only when the overlay's animation is already 450 ms in (a busy start-up): L (312)
+        // and E (384) have landed on screen long ago, X (480) and I (552) are still to come.
+        val splash = FakeNativeSplash { mainClock.currentTime - start + LATE_START_MILLIS }
+        setContent { Locals { LexiTheme(reducedMotion = false) { NativeSplashFeedback(splash) } } }
+        mainClock.advanceTimeBy(SPLASH_MILLIS)
+        assertEquals(2, landings.size, "late landings were played: ${landings.map { it - start }}")
+    }
+
+    @Test
     fun `no landings with reduced motion`() = runComposeUiTest {
         mainClock.autoAdvance = false
         currentTime = { mainClock.currentTime }
@@ -205,5 +218,6 @@ class NativeSplashRouteTest {
         const val FRAME_MILLIS = 16L
         const val DECISION_FRAMES = 3
         const val QUICK_FRAMES = 20
+        const val LATE_START_MILLIS = 450L
     }
 }

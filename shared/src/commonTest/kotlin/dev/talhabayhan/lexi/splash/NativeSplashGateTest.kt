@@ -46,6 +46,7 @@ class NativeSplashGateTest {
         // A late first screen reports that the fail-safe fired; nothing leaves twice.
         gate.animationEnded()
         assertTrue(gate.contentReady())
+        assertFalse(gate.contentReady(), "the timeout was reported twice")
         assertEquals(listOf(SplashLeaveReason.TimedOut), left)
     }
 
