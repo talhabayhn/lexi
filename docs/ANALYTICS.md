@@ -25,6 +25,7 @@ The event list is closed: a new event or parameter is added here first, then to 
 | `duel_start` | `clock_s` | A hot-seat duel is loaded and its first handover card shows (`DuelViewModel`) |
 | `duel_finish` | `result_type` | A hot-seat duel ends (`DuelViewModel`); never the players' names |
 | `motion_failsafe` | `kind` | A motion fail-safe ended an animation early (`kind=morph_timeout`: the letter morph waited `LetterMorphMachine.WAIT_LIMIT_MILLIS` for the game and was cancelled, the game starts without it; `LexiNavHost`). No personal data |
+| `transition_frames` | `transition`, `worst_frame`, `motion_tier`, `first_launch_of_version` | A measured transition ended: its worst frame, at most once per transition per app process (`TransitionTelemetry` on the session's `FrameMonitor`, `LexiNavHost`; `docs/PERF.md` § Field frame times). No personal data |
 | `paywall_view` | `source` | Reserved (RevenueCat item) |
 | `purchase` | `product`, `result` | Reserved (RevenueCat item) |
 
@@ -37,6 +38,10 @@ The event list is closed: a new event or parameter is added here first, then to 
 | `type` | string | `joker_used`: `reveal_letter`, `remove_distractors`, `example`, `listen`; `share`: `result`, `invite` (an enum code, no new data type: still app interactions) |
 | `clock_s` | int | the duel's clock per player in seconds: `90`, `150`, `240` |
 | `result_type` | string | `win` (decided by the §8 rules), `draw`, `forfeit` |
+| `transition` | string | `splash`, `onboarding_to_home`, `picker_open` (grid entrance), `dialog_open`, `dialog_close` (card flip), `morph` (letter morph expand), `game_start` (morph shrink onto the board) |
+| `worst_frame` | string | longest frame of the transition: `le_16` (≤ 16.7 ms, one 60 Hz vsync), `le_24`, `le_33` (≤ 33.4 ms), `le_50`, `le_100`, `gt_100` |
+| `motion_tier` | string | `full`, `lite`, `minimal` (the video flow's tier when the transition ended) |
+| `first_launch_of_version` | int | `1` on the first launch of the running app version (the launch with the hidden warm-up), else `0` |
 
 ## Crash reporting
 - Uncaught crashes are reported by Crashlytics itself. On iOS an uncaught Kotlin exception is also recorded with its

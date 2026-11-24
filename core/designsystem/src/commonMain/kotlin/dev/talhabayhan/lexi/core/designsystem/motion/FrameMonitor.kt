@@ -31,6 +31,8 @@ import kotlinx.coroutines.flow.collectLatest
  *   while still undowngraded clear the slow count, so old evidence fades.
  * - **Recovery** ([downgrade] cleared): [goodTransitionsToRecover] good transitions in a row; a slow one restarts the
  *   count. A later downgrade needs fresh evidence.
+ * - **Field measurement** ([onTransitionMeasured]): when a span ends, its keys and its worst frame (the longest gap
+ *   between two frames, warm-up frames included) are reported, for `transition_frames` (`TransitionTelemetry`).
  */
 public class FrameMonitor(
     private val slowFrameNanos: Long = DEFAULT_SLOW_FRAME_NANOS,
@@ -49,6 +51,11 @@ public class FrameMonitor(
     private val coldKeys = mutableSetOf<String>()
     private var longestRun = 0
     private var measuredFrames = 0
+    private val spanKeys = mutableSetOf<String>()
+    private var worstFrameNanos = 0L
+
+    /** Told about every span that measured at least one frame, when it ends (before it is judged). */
+    public var onTransitionMeasured: TransitionFramesListener? = null
 
     /** Why frames currently hold the session in [MotionTier.Lite]; null while they allow [MotionTier.Full]. */
     public var downgrade: FrameDowngrade? by mutableStateOf(null)
@@ -78,6 +85,7 @@ public class FrameMonitor(
     public fun beginTransition(key: String) {
         if (activeTransitions == 0) startTransition()
         if (key !in warmedUpKeys) coldKeys += key
+        spanKeys += key
         activeTransitions++
     }
 
@@ -85,6 +93,9 @@ public class FrameMonitor(
         if (activeTransitions == 0) return
         activeTransitions--
         if (activeTransitions == 0) {
+            if (measuredFrames > 0) {
+                onTransitionMeasured?.onTransitionMeasured(spanKeys.toSet(), worstFrameNanos, measuredFrames)
+            }
             judgeTransition()
             resetRun()
         }
@@ -98,6 +109,7 @@ public class FrameMonitor(
         lastFrameNanos = frameTimeNanos
         if (!isWatching || previous == NO_FRAME) return
         measuredFrames++
+        worstFrameNanos = maxOf(worstFrameNanos, frameTimeNanos - previous)
         if (coldKeys.isNotEmpty()) return
         if (frameTimeNanos - previous > slowFrameNanos) {
             slowRun++
@@ -111,8 +123,10 @@ public class FrameMonitor(
     private fun startTransition() {
         resetRun()
         coldKeys.clear()
+        spanKeys.clear()
         longestRun = 0
         measuredFrames = 0
+        worstFrameNanos = 0L
     }
 
     private fun judgeTransition() {
@@ -165,6 +179,11 @@ public class FrameMonitor(
         public const val DEFAULT_MIN_FRAMES_TO_JUDGE: Int = 4
         private const val NO_FRAME = Long.MIN_VALUE
     }
+}
+
+/** Receives each measured [FrameMonitor] span: its transition [keys], its worst frame gap and its frame count. */
+public fun interface TransitionFramesListener {
+    public fun onTransitionMeasured(keys: Set<String>, worstFrameNanos: Long, frames: Int)
 }
 
 /** What made a [FrameMonitor] downgrade the session to [MotionTier.Lite]. */

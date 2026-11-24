@@ -280,6 +280,53 @@ class FrameMonitorTest {
         assertEquals(FrameDowngrade.LongStreak(5), monitor.downgrade)
     }
 
+    @Test
+    fun `a measured transition reports its keys and its worst frame with warm-up frames`() {
+        val monitor = FrameMonitor()
+        val reports = mutableListOf<Triple<Set<String>, Long, Int>>()
+        monitor.onTransitionMeasured = TransitionFramesListener { keys, worst, frames ->
+            reports += Triple(keys, worst, frames)
+        }
+        // A cold key (first use): never judged, but its frames are exactly what the field measurement wants.
+        monitor.transition(FLIP, frame, 90_000_000L, frame)
+
+        assertEquals(listOf(Triple(setOf(FLIP), 90_000_000L, 3)), reports)
+        assertFalse(monitor.isDowngraded)
+    }
+
+    @Test
+    fun `overlapping registrations report one span with every key`() {
+        val monitor = warmMonitor(FLIP, MORPH)
+        var report: Pair<Set<String>, Long>? = null
+        monitor.onTransitionMeasured = TransitionFramesListener { keys, worst, _ -> report = keys to worst }
+        monitor.beginTransition(FLIP)
+        monitor.beginTransition(MORPH)
+        monitor.frames(frame, slow, frame)
+        monitor.endTransition()
+        assertNull(report, "reported before the span ended")
+        monitor.endTransition()
+
+        assertEquals(setOf(FLIP, MORPH) to slow, report)
+    }
+
+    @Test
+    fun `a transition without a measured frame reports nothing`() {
+        val monitor = FrameMonitor()
+        var reports = 0
+        monitor.onTransitionMeasured = TransitionFramesListener { _, _, _ -> reports++ }
+        monitor.beginTransition(FLIP)
+        monitor.onFrame(clockAfter(frame))
+        monitor.endTransition()
+        monitor.endTransition()
+
+        assertEquals(0, reports)
+        // The next span starts afresh: its worst frame is its own.
+        var worst = 0L
+        monitor.onTransitionMeasured = TransitionFramesListener { _, w, _ -> worst = w }
+        monitor.transition(GRID, frame, frame)
+        assertEquals(frame, worst)
+    }
+
     private companion object {
         const val FLIP = "flip"
         const val MORPH = "morph"

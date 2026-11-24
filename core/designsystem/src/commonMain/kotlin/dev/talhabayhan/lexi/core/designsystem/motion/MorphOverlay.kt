@@ -354,5 +354,5 @@ private fun LetterMorphLayerPreview() {
     }
 }
 
-private const val MORPH_EXPAND_TRANSITION = "morph.expand"
-private const val MORPH_SHRINK_TRANSITION = "morph.shrink"
+private const val MORPH_EXPAND_TRANSITION = TransitionKeys.MORPH_EXPAND
+private const val MORPH_SHRINK_TRANSITION = TransitionKeys.MORPH_SHRINK

@@ -69,6 +69,7 @@ import dev.talhabayhan.lexi.core.designsystem.modifier.lexiHeading
 import dev.talhabayhan.lexi.core.designsystem.motion.FlowMotion
 import dev.talhabayhan.lexi.core.designsystem.motion.LocalMotionPolicy
 import dev.talhabayhan.lexi.core.designsystem.motion.MotionTier
+import dev.talhabayhan.lexi.core.designsystem.motion.TransitionKeys
 import dev.talhabayhan.lexi.core.designsystem.motion.animateScrollToTop
 import dev.talhabayhan.lexi.core.designsystem.motion.perspective
 import dev.talhabayhan.lexi.core.designsystem.motion.rememberMotionTier
@@ -455,4 +456,4 @@ private object GridEntranceSession {
     var played: Boolean = false
 }
 
-private const val GRID_ENTRANCE_TRANSITION = "picker.gridEntrance"
+private const val GRID_ENTRANCE_TRANSITION = TransitionKeys.PICKER_GRID_ENTRANCE

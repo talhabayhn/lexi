@@ -26,6 +26,7 @@ import dev.talhabayhan.lexi.core.designsystem.motion.DialogFlipPhase
 import dev.talhabayhan.lexi.core.designsystem.motion.LocalMorphOverlay
 import dev.talhabayhan.lexi.core.designsystem.motion.LocalMotionPolicy
 import dev.talhabayhan.lexi.core.designsystem.motion.MotionTier
+import dev.talhabayhan.lexi.core.designsystem.motion.TransitionKeys
 import dev.talhabayhan.lexi.core.designsystem.motion.rememberMotionTier
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.core.domain.model.CategoryId
@@ -183,5 +184,5 @@ internal fun rememberPickerDialogFlip(dialog: PickerCategoryUi?): PickerDialogFl
 }
 
 // FrameMonitor keys: opening and closing warm up (first use per process) and are judged separately.
-private const val FLIP_OPEN_TRANSITION = "picker.flip.open"
-private const val FLIP_CLOSE_TRANSITION = "picker.flip.close"
+private const val FLIP_OPEN_TRANSITION = TransitionKeys.DIALOG_OPEN
+private const val FLIP_CLOSE_TRANSITION = TransitionKeys.DIALOG_CLOSE

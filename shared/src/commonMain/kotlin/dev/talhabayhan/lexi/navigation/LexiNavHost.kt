@@ -10,6 +10,7 @@ import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -22,6 +23,7 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.IntOffset
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.LifecycleEventEffect
+import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavDestination.Companion.hasRoute
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -29,9 +31,12 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigationevent.NavigationEventInfo
 import androidx.navigationevent.compose.NavigationBackHandler
 import androidx.navigationevent.compose.rememberNavigationEventState
+import dev.talhabayhan.lexi.core.designsystem.motion.FrameMonitor
 import dev.talhabayhan.lexi.core.designsystem.motion.LocalMotionPolicy
 import dev.talhabayhan.lexi.core.designsystem.motion.MorphOverlayHost
 import dev.talhabayhan.lexi.core.designsystem.motion.MorphOverlayState
+import dev.talhabayhan.lexi.core.designsystem.motion.TransitionKeys
+import dev.talhabayhan.lexi.core.designsystem.motion.TransitionTelemetry
 import dev.talhabayhan.lexi.core.designsystem.motion.rememberMotionTier
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiMotion
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
@@ -52,7 +57,9 @@ import dev.talhabayhan.lexi.feature.home.HomeRoute
 import dev.talhabayhan.lexi.feature.home.homeScreen
 import dev.talhabayhan.lexi.feature.levels.picker.categoryPickerScreen
 import dev.talhabayhan.lexi.feature.notebook.notebookScreen
+import dev.talhabayhan.lexi.feature.onboarding.OnboardingRoute
 import dev.talhabayhan.lexi.feature.onboarding.onboardingScreen
+import dev.talhabayhan.lexi.feature.onboarding.result.LevelTestResultRoute
 import dev.talhabayhan.lexi.feature.onboarding.result.levelTestResultScreen
 import dev.talhabayhan.lexi.feature.settings.about.aboutScreen
 import dev.talhabayhan.lexi.feature.settings.reminder.reminderPrePromptScreen
@@ -62,6 +69,8 @@ import dev.talhabayhan.lexi.perf.PerfTour
 import dev.talhabayhan.lexi.perf.PerfTourConfig
 import dev.talhabayhan.lexi.splash.SplashRoute
 import dev.talhabayhan.lexi.splash.splashScreen
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.withTimeoutOrNull
 import org.koin.compose.koinInject
 
 /**
@@ -109,6 +118,15 @@ fun LexiNavHost(modifier: Modifier = Modifier, perfTour: PerfTourConfig? = null)
     val policy = LocalMotionPolicy.current
     val tier = rememberMotionTier(policy)
     val currentTier by rememberUpdatedState(tier)
+    // Field frame times (`transition_frames`): every measured span of the session's monitor, once per transition.
+    val telemetry = koinInject<TransitionTelemetry>()
+    DisposableEffect(policy, telemetry) {
+        val monitor = policy.frameMonitor
+        val listener = telemetry.listener { currentTier }
+        monitor.onTransitionMeasured = listener
+        onDispose { if (monitor.onTransitionMeasured === listener) monitor.onTransitionMeasured = null }
+    }
+    MeasureOnboardingToHome(navController, policy.frameMonitor)
     val launcher = remember(morph, navigator, navController) {
         LetterMorphLauncher(
             morph = OverlayLetterMorph(morph),
@@ -151,6 +169,34 @@ fun LexiNavHost(modifier: Modifier = Modifier, perfTour: PerfTourConfig? = null)
     LifecycleEventEffect(Lifecycle.Event.ON_STOP) { launcher.onStop() }
     if (perfTour != null && homeReady) PerfTour(navigator = navigator, config = perfTour)
 }
+
+/**
+ * Registers the navigation from onboarding (or the level-test result) to Home with [monitor]
+ * ([TransitionKeys.ONBOARDING_TO_HOME]) while both screens are visible, i.e. for the screen transition (#12); at most
+ * [ONBOARDING_TO_HOME_LIMIT_MILLIS], so a transition that never settles is not watched for ever.
+ */
+@Composable
+private fun MeasureOnboardingToHome(navController: NavHostController, monitor: FrameMonitor) {
+    LaunchedEffect(navController, monitor) {
+        navController.visibleEntries.first { entries ->
+            entries.any { it.destination.hasRoute(HomeRoute::class) } && entries.any { it.isOnboarding() }
+        }
+        monitor.beginTransition(TransitionKeys.ONBOARDING_TO_HOME)
+        try {
+            withTimeoutOrNull(ONBOARDING_TO_HOME_LIMIT_MILLIS) {
+                navController.visibleEntries.first { entries -> entries.none { it.isOnboarding() } }
+            }
+        } finally {
+            monitor.endTransition()
+        }
+    }
+}
+
+private fun NavBackStackEntry.isOnboarding(): Boolean =
+    destination.hasRoute(OnboardingRoute::class) || destination.hasRoute(LevelTestResultRoute::class)
+
+/** Longest the onboarding → Home measurement lasts (the transition itself takes 260 ms, `motion.md` #12). */
+private const val ONBOARDING_TO_HOME_LIMIT_MILLIS = 2_000L
 
 @Composable
 private fun LexiNavGraph(

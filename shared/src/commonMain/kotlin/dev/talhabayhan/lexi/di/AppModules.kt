@@ -3,6 +3,7 @@ package dev.talhabayhan.lexi.di
 import androidx.compose.runtime.Composable
 import dev.talhabayhan.lexi.core.data.db.BundledContentDb
 import dev.talhabayhan.lexi.core.data.di.dataModule
+import dev.talhabayhan.lexi.core.designsystem.motion.TransitionTelemetry
 import dev.talhabayhan.lexi.core.domain.daily.DailyAttempt
 import dev.talhabayhan.lexi.core.domain.daily.GetDailyWheel
 import dev.talhabayhan.lexi.core.domain.game.GameConfig
@@ -48,6 +49,8 @@ internal val appCoreModule: Module = module {
     factory { GetDailyGoalProgress(sessions = get(), settings = get(), clock = get()) }
     // Haptics, SoundPlayer and Speaker are bound per platform (rememberPlatformModule) on top of this snapshot.
     single { LiveSettings(get()) }
+    // Field frame times (`transition_frames`, docs/ANALYTICS.md); its once-per-transition state is process-wide.
+    single { TransitionTelemetry(analytics = get()) }
     // Local reminders (ADR 0021): ReminderScheduler and NotificationPermission are bound per platform. A single: it
     // remembers the last plan it scheduled.
     single { ComposeReminderTextProvider() }
