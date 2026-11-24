@@ -54,7 +54,7 @@ public class FrameMonitor(
     private val spanKeys = mutableSetOf<String>()
     private var worstFrameNanos = 0L
 
-    /** Told about every span that measured at least one frame, when it ends (before it is judged). */
+    /** Told about every span that measured at least one frame, when it ends (after it is judged; failures ignored). */
     public var onTransitionMeasured: TransitionFramesListener? = null
 
     /** Why frames currently hold the session in [MotionTier.Lite]; null while they allow [MotionTier.Full]. */
@@ -93,11 +93,14 @@ public class FrameMonitor(
         if (activeTransitions == 0) return
         activeTransitions--
         if (activeTransitions == 0) {
-            if (measuredFrames > 0) {
-                onTransitionMeasured?.onTransitionMeasured(spanKeys.toSet(), worstFrameNanos, measuredFrames)
-            }
             judgeTransition()
             resetRun()
+            // After judging: a failing listener can never skip the downgrade rules (it is told nothing else).
+            if (measuredFrames > 0) {
+                runCatching {
+                    onTransitionMeasured?.onTransitionMeasured(spanKeys.toSet(), worstFrameNanos, measuredFrames)
+                }
+            }
         }
     }
 

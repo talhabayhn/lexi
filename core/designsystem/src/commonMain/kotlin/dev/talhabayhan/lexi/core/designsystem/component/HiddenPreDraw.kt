@@ -20,8 +20,8 @@ import androidx.compose.ui.unit.dp
  * Draws [content] for warm-up frames, so its GPU pipelines are built (after an install Metal compiles each one the first
  * time it is drawn, `docs/PERF.md`), without it being seen: [content] is drawn **above** the screen, clipped to a box
  * inset [HiddenPreDrawInset] from the edges of [modifier]'s area, and covered by an opaque [cover] rectangle of that box.
- * [cover] must be the color the screen shows there in these frames (e.g. the splash's plain cream first frame), so the
- * frame looks unchanged. Touches on it are consumed (it is only shown for a few frames); give [content] no semantics of
+ * [cover] must be the color the screen shows there in these frames (e.g. the cream around the splash's held logo, the
+ * logo itself being drawn again above the cover), so the frame looks unchanged. Touches on it are consumed (it is only shown for a few frames); give [content] no semantics of
  * its own (`clearAndSetSemantics`, a test tag at most).
  *
  * Why not simply behind the screen's opaque background, as the warm-ups did up to 1.1.1: Skia's GPU backends (iOS Metal,

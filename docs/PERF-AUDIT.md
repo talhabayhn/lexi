@@ -39,7 +39,7 @@ Searched every `clip`, `clipToBounds` / `clipRect`, offscreen layer (`alpha` < 1
 | Finding | Status |
 |---|---|
 | Every `lexiSurface` / `PressableSurface` clips its content to its shape (`clip(shape)` = a layer with a clip). Under a fractional transform (entrances, re-deal, flip, nav slide) Skia draws through an anti-aliased clip effect, a pipeline variant per kind of draw; the X block's leaf is a path clip (a coverage mask while it spins) | **not replaced**: dropping the clip changes edge anti-aliasing (round / leaf) or lets overflowing content show (rectangles), so the pixels are not provably identical. Warmed instead: the hidden warm-up now draws Home and onboarding mid screen-transition and the board mid-entrance (sub-pixel move, scale, `fadeWithShadowRoom`), the X turned (pose 0.28) |
-| `ScrollCue` vertical gradient (onboarding) | warmed (onboarding page 1 in the warm-up) |
+| `ScrollCue` vertical gradient (onboarding) | warmed only when page 1 overflows (same condition as the real page); otherwise first drawn live (small, one gradient) |
 | Locked category / exam art at alpha 0.5 (#11) | kept (overlapping shapes: `ModulateAlpha` would change pixels) |
 
 Remaining *measure* items: #5 (now real size in the warm-up), #8 dialog open / close and the transitions above are

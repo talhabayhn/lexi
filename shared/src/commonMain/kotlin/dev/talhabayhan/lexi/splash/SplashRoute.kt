@@ -136,6 +136,9 @@ internal fun SplashRoute(
                 }
             }
             if (motion.reducedMotion) {
+                // Reduced motion turned on during a hold (the effect restarts): end on the full static logo.
+                logoOnly = false
+                progress.snapTo(1f)
                 launch {
                     val stored = settings.warmedUpVersionOrNull()
                     telemetry.firstLaunchOfVersion =
@@ -206,7 +209,11 @@ internal fun SplashRoute(
         // held logo drawn again above that cover.
         if (warmingUp) {
             SplashWarmUpLayer()
-            LexiSplashLogo(tagline = stringResource(Res.string.splash_tagline))
+            // A visual copy only: the splash below already announces the logo.
+            LexiSplashLogo(
+                tagline = stringResource(Res.string.splash_tagline),
+                modifier = Modifier.clearAndSetSemantics {},
+            )
         }
     }
 }

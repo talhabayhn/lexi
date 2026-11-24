@@ -284,13 +284,10 @@ Fail-safes added (`motion.md` § Fail-safes): morph wait limit 3 s → cancel, g
 Updated by S4 (§ Launch logo below): the warm-up is now drawn at real size over the whole screen behind the held
 launch logo, with a 2000 ms cap; the rules below (per-version key, stored after it ran, 2 decision frames) still apply.
 
-- **What:** `SplashRoute` draws `AppWarmUp` in its covered top-half area (`HiddenPreDraw`, frame pixel-identical):
-  the splash's 4 poses, the game board (`GameWarmUp`), the card art turned and the morph's ink (`FlowWarmUp`), the real
-  category card mid-flip, at rest and mid-entrance (faded with its shadow room), and the dialog mid-open
-  (`CategoryFlipWarmUp` → `PickerDialogWarmUp`). 3 frames, before the 1.2 s clock starts. The game board and the
-  flow are laid out at the real screen size and drawn at half scale into the covered half (laid out in the half
-  itself, the letter wheel got a size <= 0 and Skia aborted the app on iOS: `SplashWarmUpIosTest`); the GPU pipelines
-  are the same, the glyphs are cached at half size, so the first game's text is still rasterised once in the game.
+- **What (since S4):** `SplashRoute` holds the launch logo and draws `AppWarmUp` at real screen size under a cream
+  cover inset 1dp from the edges (`HiddenPreDraw`), with the logo drawn again above it (frame pixel-identical); see
+  § Launch logo for the content and the 2000 ms cap. (Up to 1.1.3: 4 splash poses, game board and flow at half scale in
+  the covered top half, 3 frames.)
 - **When:** only when `Settings.warmedUpVersionCode` (DataStore key `warmed_up_version_code`, absent = 0, no migration)
   differs from the running `AppInfo.BUILD_NUMBER` (versionCode); the version is stored after it ran. Every other
   launch skips it. Never with reduced motion (nothing stored then). The decision waits at most 2 frames for the
@@ -345,4 +342,6 @@ the 1.2 s animation, and the 3-frame warm-up drew the screens at half size in th
 (consent-gated; no new SDK). Transitions: `splash`, `onboarding_to_home`, `picker_open`, `dialog_open`,
 `dialog_close`, `morph`, `game_start` (keys in `TransitionKeys`); buckets `le_16` … `gt_100`; plus `motion_tier` and
 `first_launch_of_version`. Read it in Firebase → Events → `transition_frames`, split by `first_launch_of_version`:
-first-launch rows show what the warm-up still misses, the others the steady state. Details: `docs/ANALYTICS.md`.
+first-launch rows show what the warm-up still misses, the others the steady state. Analytics is opt-in (onboarding's
+last step), so on a fresh install `splash` and `onboarding_to_home` are not sent (no consent yet): their first-launch
+rows come from updates. Details: `docs/ANALYTICS.md`.
