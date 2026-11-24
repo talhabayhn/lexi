@@ -136,7 +136,8 @@ for ≈ 330 ms and moving blocks under that fade showed the launch logo as a gho
 the animation (no separate hold). The overlay leaves when the animation is over and the first screen is drawn (at most
 3000 ms, a fail-safe): it moves −24dp and fades out over 90 ms, `mechanical` (the old screen's half of #12), revealing
 the first screen at rest; reduced motion: the static logo for 600 ms, then a 150 ms crossfade. Landings: light haptic
-and "tık" at the same fractions, on the overlay's clock. Android keeps the Compose splash above.
+and "tık" at the same fractions, on the overlay's clock (one more than 50 ms late is skipped, never played as a
+burst). Android keeps the Compose splash above.
 
 ### Layers
 A fade (alpha < 1 in a `graphicsLayer`) is drawn offscreen, clipped to the layer's bounds; hard shadows lie right of and

@@ -24,6 +24,9 @@ it keeps playing at the display's rate while the main thread is blocked.
   image, same centre). The animation starts after `LAUNCH_HAND_OFF_MILLIS` (350 ms): iOS cross-fades from the launch
   screen to the app's first frame over ≈ 330 ms (measured on the simulator), and blocks moving under that fade show the
   launch logo as a ghost. The hold is inside the same Core Animation timeline, so it does not depend on the main thread.
+  The timeline begins when its transaction is committed (the first frame shown), never at a fixed earlier time: on a
+  slow fresh install the first commit came ≈ 1.5 s after `viewWillAppear` (Debug, simulator) and a fixed begin time
+  skipped the whole animation. The real begin time is read back after the commit and is the landings' clock.
 - **Lifecycle** (`IosLaunchSplash` + `NativeSplashGate`): the overlay leaves when BOTH its animation has ended (Core
   Animation's completion) AND Compose signals that the first real screen is drawn (`LaunchSplash.contentReady()`,
   called by `LexiNavHost` once the splash entry has left and 2 frames were drawn), or after a hard **3000 ms** cap
@@ -33,12 +36,16 @@ it keeps playing at the display's rate while the main thread is blocked.
   statically and silently (seen only if the cap fires first), runs the S4 first-launch warm-up at once (same rules,
   same 2000 ms cap) and moves on as soon as content and warm-up are done; the switch to the first screen has no
   transition (hidden). Landing haptics and "tık" come from `NativeSplashFeedback` (app root) on the overlay's clock,
-  through the gated `Haptics` / `SoundPlayer` (in-app settings respected).
+  through the gated `Haptics` / `SoundPlayer` (in-app settings respected); a landing more than 50 ms late (start-up
+  held the main thread) is skipped rather than played as a burst out of sync with the blocks.
 - **Every launch** uses the native splash (identical animation); no extra hold besides the hand-off. Reduced motion:
   the static logo for `splashReducedHoldMillis`, then the crossfade.
 - **Accessibility:** the overlay is one modal image element ("Lexi, <tagline>"), so VoiceOver neither announces the
   logo twice nor reaches the screen prepared under it; a screen-changed notification is posted when it goes. Light
   only (`overrideUserInterfaceStyle`).
+- The host controller does not forward status-bar / home-indicator decisions to the Compose child: the app's root is
+  SwiftUI's hosting controller, which does not ask its children, so nothing changes (and the forwarding properties
+  are not overridable from Kotlin/Native).
 - Android keeps the Compose splash (`NoLaunchSplash`).
 
 Alternatives considered: more Compose warm-ups / longer holds (tried for months, `docs/PERF.md`); the overlay in Swift
