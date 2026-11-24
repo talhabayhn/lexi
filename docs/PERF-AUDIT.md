@@ -46,6 +46,21 @@ Remaining *measure* items: #5 (now real size in the warm-up), #8 dialog open / c
 measured in the field by `transition_frames` (`dialog_open`, `dialog_close`, `morph`, `game_start`, `picker_open`;
 `docs/PERF.md` § Field frame times); #7 (in-game motions) and #11 still need an Instruments trace on a fresh install.
 
+## Recording the flip / dialog into a GraphicsLayer (S6 Part C): not done
+
+Evaluated: record the card and the dialog content once (`rememberGraphicsLayer()` + `record`) and only transform the
+recorded layer during #13–#15. Not implemented, because it would not be cheaper:
+- On Skiko (iOS and the host renderer) a `GraphicsLayer` is a `RenderNode` that records a **display list** (Skia
+  picture) and replays it on every draw (`SkiaGraphicsLayer.skiko.kt`); it is not a cached texture. `Modifier.graphicsLayer`
+  already uses the same `GraphicsLayer`, and the flip writes only layer properties per frame (`rotationY`, `translationY`,
+  `rotationZ`, `alpha` in the layer block): the content is already recorded once and replayed. A manually recorded layer
+  would replay the same draw operations, so the GPU work per frame is the same.
+- The per-frame re-recordings that remain are inherent: the dialog's clip rectangle and border follow `dialogRect`
+  every frame (the panel's content is its own layer, so only a layer reference is re-recorded), and the card's lift
+  shadow (`drawBehind`) is a single rectangle.
+- A raster cache (draw the content into an offscreen texture once, then transform the texture) would resample it under
+  the perspective turn: edges and text would not be the same pixels, which the design rules forbid.
+
 ## Rules kept from this audit
 
 - Fades of content with hard shadows: `fadeWithShadowRoom`, never `graphicsLayer` outsets with a changing alpha

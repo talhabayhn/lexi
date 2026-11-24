@@ -35,7 +35,8 @@ import kotlin.test.assertTrue
  * `docs/PERF.md` § Launch logo) from the real composable ([LexiSplashLogo], the splash's held pose) on the iOS
  * simulator's Skia renderer, at 1x, 2x and 3x. The image is cropped symmetrically around the screen centre, so
  * `UILaunchScreen` (which centres it on the `LaunchBackground` cream) shows the blocks exactly where the first Compose
- * frame draws them. Only runs when `LEXI_LAUNCH_LOGO_DIR` is set (a no-op in CI):
+ * frame draws them. The iOS native splash (ADR 0028) cuts its four blocks from this image too. Only runs when
+ * `LEXI_LAUNCH_LOGO_DIR` is set (a no-op in CI):
  *
  * ```
  * SIMCTL_CHILD_LEXI_LAUNCH_LOGO_DIR=$PWD/iosApp/iosApp/Assets.xcassets/LaunchLogo.imageset \

@@ -128,6 +128,16 @@ each app version the logo is held while the app's first-use drawing is warmed up
 at most 2000 ms; every other launch starts within at most 2 frames (no later than before); no hold with reduced motion.
 Timings, easings and haptics of the animation are the same either way.
 
+**iOS: the splash is native** (ADR 0028). The same animation (keyframes, easings, durations, geometry from
+`SplashTimeline`) is played by a Core Animation overlay above Compose on every launch, so it stays smooth while the app
+starts up behind it. Its first frames are the launch pose (the launch screen's image); the animation starts after a
+350 ms hand-off (`IosLaunchSplash.LAUNCH_HAND_OFF_MILLIS`, not a design value: iOS cross-fades from the launch screen
+for ≈ 330 ms and moving blocks under that fade showed the launch logo as a ghost). The first-launch warm-up runs under
+the animation (no separate hold). The overlay leaves when the animation is over and the first screen is drawn (at most
+3000 ms, a fail-safe): it moves −24dp and fades out over 90 ms, `mechanical` (the old screen's half of #12), revealing
+the first screen at rest; reduced motion: the static logo for 600 ms, then a 150 ms crossfade. Landings: light haptic
+and "tık" at the same fractions, on the overlay's clock. Android keeps the Compose splash above.
+
 ### Layers
 A fade (alpha < 1 in a `graphicsLayer`) is drawn offscreen, clipped to the layer's bounds; hard shadows lie right of and
 below them. Content with a hard shadow fades with `Modifier.fadeWithShadowRoom(room) { alpha }` (room:

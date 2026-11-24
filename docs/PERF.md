@@ -335,6 +335,38 @@ the 1.2 s animation, and the 3-frame warm-up drew the screens at half size in th
   frame, cap → animation and nothing stored, later launch without hold, splash measured once with the flag),
   `SplashFirstLaunchIosTest` + `SplashWarmUpIosTest` (iOS simulator).
 
+## Native iOS splash (S6, ADR 0028)
+
+The S4 hold did not fix the iOS first launch: Compose draws on the main thread, where Kotlin/Native start-up and the
+one-time Metal pipeline builds also run. The splash is now a Core Animation overlay (`NativeSplashOverlay`) that the
+render server plays outside the app process; Compose starts, warms up (the S4 warm-up, unchanged rules) and draws the
+first screen behind it. See ADR 0028 and `motion.md` § Splash for the timing (350 ms launch-pose hand-off, 1.2 s
+animation, exit when the animation is over and the first screen is drawn, 3 s cap).
+
+- **Tests:** `NativeSplashGateTest` (leave rules, cap, once), `NativeSplashOverlayIosTest` (simulator UIKit: on top,
+  modal accessibility element, blocks where the launch image has them, keyframes from `SplashTimeline`, ends only after
+  animation and ready, 3 s cap, removed from the hierarchy, reduced motion), `NativeSplashRouteTest` (Compose under the
+  native splash: no animation, warm-up still runs and stores the version, moves on at once, landings on the overlay's
+  clock), plus `SplashWarmUpIosTest`, `SplashFirstLaunchIosTest`, `SplashWarmUpTest` (Android path unchanged).
+- **Checked on the simulator (iOS 26, iPhone 17, Debug):** screen recording at 120 fps sampling: launch logo →
+  overlay's launch pose (same pixels within 3/255), animation without the launch-logo ghost, 90 ms exit to onboarding.
+- **Not provable on the simulator:** real Metal stalls, the render server keeping the animation smooth while the main
+  thread is blocked, the launch cross-fade's length on a device. Owner check: `docs/LOCAL-DEVICE-TEST.md`.
+
+### Compose / Kotlin/Native rendering options (S6 Part B, Compose 1.12.1, Kotlin 2.4.21)
+
+Read in the 1.12.1 sources (`ComposeContainerConfiguration.ios.kt`, `MetalView.ios.kt`, `DisplayLinkFrameRate.ios.kt`)
+and the 2.4.21 compiler. Nothing was changed: what is safe is already on.
+
+| Option | State | Decision |
+|---|---|---|
+| `parallelRendering` (encode Metal commands on a render thread) | `@ExperimentalComposeUiApi`, **default `true`** | already on; leave |
+| ProMotion / frame rate | `CADisableMinimumFrameDurationOnPhone = true` (Info.plist); Compose sets the display link to the screen's maximum and animated layers vote `FrameRateCategory.High` | already 120 Hz; `Modifier.preferredFrameRate` (stable) would add nothing |
+| `opaque` (Metal layer) | experimental, default `true` | already the fast setting |
+| Metal layer pixel format / `framebufferOnly` | internal to Compose, not configurable | — |
+| Kotlin/Native GC | default **CMS** (concurrent mark and sweep: marking off the main thread, short pauses) | already the low-pause GC |
+| `kotlin.native.binary.objcDisposeOnMain=false`, GC tuning (`GC.targetHeapBytes`, `regularGCInterval`) | binary option / `@NativeRuntimeApi` (experimental) | not used: releasing UIKit objects off the main thread is unsafe; experimental runtime API needs the owner's OK and a device measurement first |
+
 ## Field frame times (`transition_frames`)
 
 `FrameMonitor` reports each measured span (its keys, worst frame gap, warm-up frames included) to

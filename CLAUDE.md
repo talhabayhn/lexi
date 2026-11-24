@@ -88,6 +88,7 @@ iOS: open `iosApp/iosApp.xcodeproj` in Xcode and run. (Update this section if ta
 4. UI: record Roborazzi screenshot and compare side-by-side with the design PNG; fix differences.
 5. Run `./gradlew build` before declaring done; update ROADMAP checkbox and docs if behavior changed.
 6. Commit with Conventional Commits (`feat(game): …`). Never commit secrets (`local.properties`, keys).
+7. Prefer testing on a real device with a local Release build before cutting a TestFlight/Play build (`docs/LOCAL-DEVICE-TEST.md`).
 
 ### Git workflow (details in `docs/CONVENTIONS.md` § Git)
 

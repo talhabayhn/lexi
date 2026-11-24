@@ -24,7 +24,7 @@ The event list is closed: a new event or parameter is added here first, then to 
 | `joker_used` | `type` | A joker was applied (`GameViewModel`) |
 | `duel_start` | `clock_s` | A hot-seat duel is loaded and its first handover card shows (`DuelViewModel`) |
 | `duel_finish` | `result_type` | A hot-seat duel ends (`DuelViewModel`); never the players' names |
-| `motion_failsafe` | `kind` | A motion fail-safe ended an animation early (`kind=morph_timeout`: the letter morph waited `LetterMorphMachine.WAIT_LIMIT_MILLIS` for the game and was cancelled, the game starts without it; `LexiNavHost`). No personal data |
+| `motion_failsafe` | `kind` | A motion fail-safe ended an animation early (`kind=morph_timeout`: the letter morph waited `LetterMorphMachine.WAIT_LIMIT_MILLIS` for the game and was cancelled, the game starts without it; `kind=splash_timeout`: the iOS native splash reached its 3 s limit before the first screen was ready, ADR 0028; `LexiNavHost`). No personal data |
 | `transition_frames` | `transition`, `worst_frame`, `motion_tier`, `first_launch_of_version` | A measured transition ended: its worst frame, at most once per transition per app process (`TransitionTelemetry` on the session's `FrameMonitor`, `LexiNavHost`; `docs/PERF.md` § Field frame times). No personal data |
 | `paywall_view` | `source` | Reserved (RevenueCat item) |
 | `purchase` | `product`, `result` | Reserved (RevenueCat item) |
