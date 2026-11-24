@@ -46,7 +46,7 @@ internal class IosLaunchSplash(
     private val gate = NativeSplashGate(NativeSplashGate.CAP_MILLIS, schedule, ::leave)
     private var started = false
 
-    /** When the timeline (hand-off, then animation) began on screen, in [now]'s seconds; null until known. */
+    /** When the timeline (hand-off, then animation) began on screen, `CACurrentMediaTime` seconds; null until known. */
     private var startedAt: Double? = null
     private val scope = MainScope()
 
@@ -59,7 +59,7 @@ internal class IosLaunchSplash(
 
     override val isNative: Boolean = true
 
-    /** Negative during the hand-off; until the timeline's begin is known, as if it began now. */
+    /** Negative during the hand-off; `-handOff` until the timeline's begin is known (the landings wait). */
     override fun elapsedMillis(): Long {
         val start = startedAt ?: return -handOffMillis
         return ((now() - start) * MILLIS_PER_SECOND).roundToLong() - handOffMillis
@@ -80,8 +80,7 @@ internal class IosLaunchSplash(
             schedule(StandardLexiMotion.splashReducedHoldMillis.toLong()) { gate.animationEnded() }
         } else {
             overlay.play(handOffMillis) { gate.animationEnded() }
-            // Runs after this run loop turn's commit: the time the timeline really began (the landings' clock).
-            schedule(0L) { startedAt = readBeginTime() ?: now() }
+            readBeginTimeWhenCommitted()
         }
         val load = loadTagline ?: return
         scope.launch {
@@ -94,6 +93,25 @@ internal class IosLaunchSplash(
                 return@launch
             }
             if (!isRemoved) overlay.setTagline(text)
+        }
+    }
+
+    /**
+     * The time the timeline really began (the landings' clock) is known only once its transaction is committed, which
+     * may be long after [start] on a slow first launch, and a main-queue block may run before that commit: read it
+     * again every frame until it is there (never guess: [elapsedMillis] stays before the animation meanwhile, so the
+     * landings wait rather than play early). Stops when the overlay has left.
+     */
+    private fun readBeginTimeWhenCommitted() {
+        schedule(BEGIN_TIME_POLL_MILLIS) {
+            if (isRemoved || gate.leaveReason != null) return@schedule
+            val begin = readBeginTime()
+            if (begin != null) {
+                startedAt = begin
+                StartupTrace.mark("native splash committed")
+            } else {
+                readBeginTimeWhenCommitted()
+            }
         }
     }
 
@@ -125,6 +143,9 @@ internal class IosLaunchSplash(
          * re-check on a device (`docs/LOCAL-DEVICE-TEST.md`).
          */
         const val LAUNCH_HAND_OFF_MILLIS: Long = 350L
+
+        /** How often the timeline's begin time is looked for until the first frame is committed (one 60 Hz frame). */
+        internal const val BEGIN_TIME_POLL_MILLIS: Long = 16L
     }
 }
 

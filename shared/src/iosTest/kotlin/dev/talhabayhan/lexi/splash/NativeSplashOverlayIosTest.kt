@@ -9,7 +9,9 @@ import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.cinterop.useContents
 import platform.CoreGraphics.CGRectMake
 import platform.Foundation.NSNumber
+import platform.QuartzCore.CACurrentMediaTime
 import platform.QuartzCore.CAKeyframeAnimation
+import platform.QuartzCore.CATransaction
 import platform.UIKit.UIGraphicsImageRenderer
 import platform.UIKit.UIImage
 import platform.UIKit.UIView
@@ -48,6 +50,8 @@ class NativeSplashOverlayIosTest {
         due.forEach { it.second() }
     }
 
+    private var beginTime: Double? = null
+
     private fun splash(reducedMotion: Boolean = false, logo: UIImage? = testLogo()): Pair<IosLaunchSplash, UIView> {
         val host = UIView(frame = CGRectMake(0.0, 0.0, WIDTH, HEIGHT))
         val overlay = NativeSplashOverlay(launchLogo = logo, reducedMotion = reducedMotion, fontScale = 1f)
@@ -60,7 +64,7 @@ class NativeSplashOverlayIosTest {
             schedule = ::schedule,
             now = { clock },
             loadTagline = null,
-            readBeginTime = { null },
+            readBeginTime = { beginTime },
         )
         return splash to host
     }
@@ -216,17 +220,39 @@ class NativeSplashOverlayIosTest {
     }
 
     @Test
-    fun elapsedTimeFollowsTheOverlayClock() {
+    fun theLandingsClockIsTheCommittedBeginTimeNeverTheStartCall() {
         val (splash, _) = splash()
-        assertTrue(splash.elapsedMillis() < 0, "started before start()")
+        val handOff = IosLaunchSplash.LAUNCH_HAND_OFF_MILLIS
+        val poll = IosLaunchSplash.BEGIN_TIME_POLL_MILLIS
         clock = 9.0
         splash.start()
+        // Not committed yet (a slow first launch): the clock stays before the animation, whatever time passes.
         clock = 10.0
-        fire(0L)
-        val handOff = IosLaunchSplash.LAUNCH_HAND_OFF_MILLIS
-        assertEquals(-handOff, splash.elapsedMillis(), "the animation starts after the hand-off")
-        clock = 10.0 + (handOff + 312) / 1000.0
+        fire(poll)
+        assertEquals(-handOff, splash.elapsedMillis(), "guessed a begin time before the commit")
+        clock = 10.5
+        fire(poll)
+        assertEquals(-handOff, splash.elapsedMillis())
+        // Committed at 10.4 (CACurrentMediaTime): the clock follows that, not the start() call at 9.0.
+        beginTime = 10.4
+        fire(poll)
+        clock = 10.4 + (handOff + 312) / 1000.0
         assertEquals(312L, splash.elapsedMillis())
+        assertTrue(timers.none { it.first == poll }, "still polling once the begin time is known")
+    }
+
+    @Test
+    fun theBeginTimeIsReadFromTheCommittedAnimation() {
+        val overlay = NativeSplashOverlay(launchLogo = testLogo(), reducedMotion = false, fontScale = 1f)
+        val window = platform.UIKit.UIWindow(frame = CGRectMake(0.0, 0.0, WIDTH, HEIGHT))
+        window.addSubview(overlay.view)
+        window.setHidden(false)
+        assertNull(overlay.animationBeginTime(), "a begin time before playing")
+        overlay.play(IosLaunchSplash.LAUNCH_HAND_OFF_MILLIS) { }
+        CATransaction.flush()
+        val begin = overlay.animationBeginTime()
+        assertNotNull(begin, "no begin time after the commit")
+        assertTrue(abs(begin - CACurrentMediaTime()) < 1.0, "begin $begin is not media time ${CACurrentMediaTime()}")
     }
 
     @Test
