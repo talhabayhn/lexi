@@ -20,7 +20,7 @@ public class LexiMotion internal constructor(
     public val reducedMotion: Boolean,
 ) {
     /** (0.2, 0.8, 0.2, 1): splash, general enter. */
-    public val mechanical: Easing = CubicBezierEasing(0.2f, 0.8f, 0.2f, 1f)
+    public val mechanical: Easing = LexiCurves.Mechanical.toEasing()
 
     /** (0.3, 0.7, 0.2, 1): key → slot. */
     public val fly: Easing = CubicBezierEasing(0.3f, 0.7f, 0.2f, 1f)
@@ -35,7 +35,7 @@ public class LexiMotion internal constructor(
     public val linear: Easing = LinearEasing
 
     /** CSS `ease-out` (0, 0, 0.58, 1): button press, `.lx-press` in `source/15-motion.dc.html`. */
-    public val press: Easing = CubicBezierEasing(0f, 0f, 0.58f, 1f)
+    public val press: Easing = LexiCurves.EaseOut.toEasing()
 
     /** CSS `ease-out` (0, 0, 0.58, 1): #3 ring (`aRing`) and #7 burst shapes (`aB1`–`aB4`). */
     public val easeOut: Easing = press
@@ -160,3 +160,27 @@ public class LexiMotion internal constructor(
     /** #13–#17 video-flow choreography (proposal, `docs/design/video-flow-notes.md`). */
     public val flow: FlowMotion = FlowMotion()
 }
+
+/**
+ * The control points of the cubic-bezier easings that are also played outside Compose (the iOS native splash,
+ * ADR 0028, builds `CAMediaTimingFunction`s from them): one source for both. Same semantics as CSS `cubic-bezier`.
+ */
+public class CubicCurve(public val x1: Float, public val y1: Float, public val x2: Float, public val y2: Float) {
+    /** This curve as a Compose [Easing]. */
+    public fun toEasing(): Easing = CubicBezierEasing(x1, y1, x2, y2)
+}
+
+/** Shared easing curves ([LexiMotion.mechanical], [LexiMotion.press]). */
+public object LexiCurves {
+    /** (0.2, 0.8, 0.2, 1): [LexiMotion.mechanical]. */
+    public val Mechanical: CubicCurve = CubicCurve(0.2f, 0.8f, 0.2f, 1f)
+
+    /** CSS `ease-out` (0, 0, 0.58, 1): [LexiMotion.press]. */
+    public val EaseOut: CubicCurve = CubicCurve(0f, 0f, 0.58f, 1f)
+}
+
+/**
+ * Motion tokens without reduced motion, for code outside a composition (the iOS native splash, ADR 0028): the same
+ * values `LexiTheme.motion` gives.
+ */
+public val StandardLexiMotion: LexiMotion = LexiMotion(reducedMotion = false)

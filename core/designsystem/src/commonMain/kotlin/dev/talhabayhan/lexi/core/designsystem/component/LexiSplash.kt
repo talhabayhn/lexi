@@ -20,7 +20,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import dev.talhabayhan.lexi.core.designsystem.generated.resources.Res
+import dev.talhabayhan.lexi.core.designsystem.theme.CubicCurve
+import dev.talhabayhan.lexi.core.designsystem.theme.LexiColors
+import dev.talhabayhan.lexi.core.designsystem.theme.LexiCurves
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
+import dev.talhabayhan.lexi.core.designsystem.theme.LightLexiColors
 
 /**
  * Splash geometry and keyframes from `14-splash` (`source/14-splash.dc.html`, `docs/design/motion.md` #9). The demo
@@ -56,14 +61,24 @@ public object SplashDefaults {
 /**
  * CSS keyframes (`at` fractions 0..1 and their values), built once: sampling them every frame allocates nothing.
  * Between two stops the value is interpolated with the easing (CSS applies the `animation-timing-function` per
- * keyframe interval); before the first / after the last stop it holds.
+ * keyframe interval); before the first / after the last stop it holds. Public so the iOS native splash (ADR 0028)
+ * builds its `CAKeyframeAnimation`s from the very same stops ([SplashTimeline]).
  */
-private class Keyframes(vararg stops: Pair<Float, Float>) {
+public class SplashTrack internal constructor(vararg stops: Pair<Float, Float>) {
     private val at = FloatArray(stops.size) { stops[it].first }
     private val values = FloatArray(stops.size) { stops[it].second }
 
+    /** Number of stops. */
+    public val size: Int get() = at.size
+
+    /** Fraction 0..1 of the animation at stop [index]. */
+    public fun fractionAt(index: Int): Float = at[index]
+
+    /** Value at stop [index] (dp, degrees, a scale factor or an alpha, see [SplashTimeline]). */
+    public fun valueAt(index: Int): Float = values[index]
+
     /** The value at [progress]; [scale] multiplies every stop first (dp → px), as `stop(at, value.toPx())` did. */
-    fun sample(progress: Float, easing: Easing, scale: Float = 1f): Float {
+    internal fun sample(progress: Float, easing: Easing, scale: Float = 1f): Float {
         if (progress <= at[0]) return values[0] * scale
         for (i in 1 until at.size) {
             if (progress <= at[i]) {
@@ -76,39 +91,83 @@ private class Keyframes(vararg stops: Pair<Float, Float>) {
     }
 }
 
-private object SplashKeyframes {
-    val ShapeScale = Keyframes(0f to 0f, 0.18f to 1f)
-    val TaglineAlpha = Keyframes(0f to 0f, 0.48f to 0f, 0.58f to 1f)
+/**
+ * The splash animation as data (`motion.md` #9), shared by [LexiSplash] and the iOS native splash overlay (ADR 0028,
+ * `NativeSplashOverlay`): one source for keyframes, easings and geometry. The block tracks are in dp ([blockL],
+ * [blockE], [blockI]), degrees ([blockXSpin]) or scale factors ([blockXScale], [shapeScale]); [taglineRise] is a factor
+ * of [taglineRiseDistance]. The shapes and blocks use [LexiCurves.Mechanical], the tagline [LexiCurves.EaseOut].
+ */
+public object SplashTimeline {
+    public val shapeScale: SplashTrack = SplashTrack(0f to 0f, 0.18f to 1f)
+    public val taglineAlpha: SplashTrack = SplashTrack(0f to 0f, 0.48f to 0f, 0.58f to 1f)
 
-    /** × the tagline rise in px. */
-    val TaglineRise = Keyframes(0f to 1f, 0.48f to 1f, 0.58f to 0f)
+    /** × [taglineRiseDistance]. */
+    public val taglineRise: SplashTrack = SplashTrack(0f to 1f, 0.48f to 1f, 0.58f to 0f)
 
-    // Block tracks in dp (× density) or degrees / scale factors.
-    val L = Keyframes(
+    public val blockL: SplashTrack = SplashTrack(
         0f to SplashDefaults.LeftStart.value,
         0.04f to SplashDefaults.LeftStart.value,
         0.20f to SplashDefaults.LeftOvershoot.value,
         0.26f to 0f,
     )
-    val E = Keyframes(
+    public val blockE: SplashTrack = SplashTrack(
         0f to SplashDefaults.TopStart.value,
         0.10f to SplashDefaults.TopStart.value,
         0.26f to SplashDefaults.TopBounce.value,
         0.32f to 0f,
     )
-    val XSpin = Keyframes(
+    public val blockXSpin: SplashTrack = SplashTrack(
         0f to SplashDefaults.SPIN_START,
         0.16f to SplashDefaults.SPIN_START,
         0.34f to SplashDefaults.SPIN_OVERSHOOT,
         0.40f to 0f,
     )
-    val XScale = Keyframes(0f to 0f, 0.16f to 0f, 0.34f to SplashDefaults.SCALE_OVERSHOOT, 0.40f to 1f)
-    val I = Keyframes(
+    public val blockXScale: SplashTrack =
+        SplashTrack(0f to 0f, 0.16f to 0f, 0.34f to SplashDefaults.SCALE_OVERSHOOT, 0.40f to 1f)
+    public val blockI: SplashTrack = SplashTrack(
         0f to SplashDefaults.BottomStart.value,
         0.22f to SplashDefaults.BottomStart.value,
         0.40f to SplashDefaults.BottomOvershoot.value,
         0.46f to 0f,
     )
+
+    /** Shapes and blocks. */
+    public val curve: CubicCurve = LexiCurves.Mechanical
+
+    /** Tagline fade and rise. */
+    public val taglineCurve: CubicCurve = LexiCurves.EaseOut
+
+    public val sunSize: Dp get() = SplashDefaults.SunSize
+    public val sunOffset: Dp get() = SplashDefaults.SunOffset
+    public val blueSize: Dp get() = SplashDefaults.BlueSize
+    public val blueOffset: Dp get() = SplashDefaults.BlueOffset
+    public val contentGap: Dp get() = SplashDefaults.ContentGap
+    public val taglineRiseDistance: Dp get() = SplashDefaults.TaglineRise
+    public val blockSize: Dp get() = LexiLogoSize.Splash.block
+    public val blockGap: Dp get() = LexiLogoSize.Splash.gap
+
+    /** The tagline's text style (`label15Wide`: 15 / 700, +0.16em, Jost). */
+    public val taglineFontSizeSp: Float = TAGLINE_FONT_SP
+    public const val TAGLINE_LETTER_SPACING_EM: Float = 0.16f
+
+    /** Theme colours of the splash (light theme only, ADR 0010). */
+    public val colors: LexiColors get() = LightLexiColors
+
+    /** URI of the tagline's font file (Jost Bold) in the app's resources, for a native text view. */
+    public fun taglineFontUri(): String = Res.getUri("font/jost_bold.ttf")
+}
+
+private const val TAGLINE_FONT_SP = 15f
+
+private object SplashKeyframes {
+    val ShapeScale = SplashTimeline.shapeScale
+    val TaglineAlpha = SplashTimeline.taglineAlpha
+    val TaglineRise = SplashTimeline.taglineRise
+    val L = SplashTimeline.blockL
+    val E = SplashTimeline.blockE
+    val XSpin = SplashTimeline.blockXSpin
+    val XScale = SplashTimeline.blockXScale
+    val I = SplashTimeline.blockI
 }
 
 /**
