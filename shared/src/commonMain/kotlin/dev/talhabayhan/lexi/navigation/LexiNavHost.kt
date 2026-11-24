@@ -1,5 +1,6 @@
 package dev.talhabayhan.lexi.navigation
 
+import androidx.compose.animation.AnimatedContentTransitionScope
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
 import androidx.compose.animation.core.tween
@@ -18,6 +19,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.withFrameNanos
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.IntOffset
@@ -67,6 +69,8 @@ import dev.talhabayhan.lexi.feature.settings.settingsScreen
 import dev.talhabayhan.lexi.feature.stats.statsScreen
 import dev.talhabayhan.lexi.perf.PerfTour
 import dev.talhabayhan.lexi.perf.PerfTourConfig
+import dev.talhabayhan.lexi.splash.LaunchSplash
+import dev.talhabayhan.lexi.splash.LocalLaunchSplash
 import dev.talhabayhan.lexi.splash.SplashRoute
 import dev.talhabayhan.lexi.splash.splashScreen
 import kotlinx.coroutines.flow.first
@@ -127,6 +131,9 @@ fun LexiNavHost(modifier: Modifier = Modifier, perfTour: PerfTourConfig? = null)
         onDispose { if (monitor.onTransitionMeasured === listener) monitor.onTransitionMeasured = null }
     }
     MeasureOnboardingToHome(navController, policy.frameMonitor)
+    SignalNativeSplashReady(navController, LocalLaunchSplash.current) {
+        analytics.track(AnalyticsEvent.MotionFailSafe(AnalyticsEvent.MotionFailSafeKind.SPLASH_TIMEOUT))
+    }
     val launcher = remember(morph, navigator, navController) {
         LetterMorphLauncher(
             morph = OverlayLetterMorph(morph),
@@ -171,6 +178,31 @@ fun LexiNavHost(modifier: Modifier = Modifier, perfTour: PerfTourConfig? = null)
 }
 
 /**
+ * Native splash (iOS, ADR 0028): tells [launchSplash] that the first real screen is drawn, once the splash's entry has
+ * left the screen (the switch under the overlay has no transition, [LexiNavGraph]) and [READY_FRAMES] frames have
+ * been drawn since. [onTimedOut] runs when the overlay had already left through its time limit.
+ */
+@Composable
+private fun SignalNativeSplashReady(
+    navController: NavHostController,
+    launchSplash: LaunchSplash,
+    onTimedOut: () -> Unit,
+) {
+    if (!launchSplash.isNative) return
+    val currentOnTimedOut by rememberUpdatedState(onTimedOut)
+    LaunchedEffect(navController, launchSplash) {
+        navController.visibleEntries.first { entries ->
+            entries.isNotEmpty() && entries.none { it.destination.hasRoute(SplashRoute::class) }
+        }
+        repeat(READY_FRAMES) { withFrameNanos { } }
+        if (launchSplash.contentReady()) currentOnTimedOut()
+    }
+}
+
+/** Frames the first real screen is drawn before the native splash may leave: composed and drawn, then shown. */
+private const val READY_FRAMES = 2
+
+/**
  * Registers the navigation from onboarding (or the level-test result) to Home with [monitor]
  * ([TransitionKeys.ONBOARDING_TO_HOME]) while both screens are visible, i.e. for the screen transition (#12); at most
  * [ONBOARDING_TO_HOME_LIMIT_MILLIS], so a transition that never settles is not watched for ever.
@@ -207,13 +239,22 @@ private fun LexiNavGraph(
     morph: MorphOverlayState,
     startGame: (Level, GameMode, CategoryId?, Int?, Char) -> Unit,
 ) {
+    val nativeSplash = LocalLaunchSplash.current.isNative
+    val underNativeSplash: AnimatedContentTransitionScope<NavBackStackEntry>.() -> Boolean = {
+        nativeSplash && initialState.destination.hasRoute(SplashRoute::class)
+    }
     NavHost(
         navController = navController,
         startDestination = SplashRoute,
         modifier = Modifier.fillMaxSize().background(LexiTheme.colors.cream),
-        // Under the morph's ink the switch is instant (it is never seen, and must not cost frames).
-        enterTransition = { if (morph.isRunning) EnterTransition.None else transitions.enter(forward = true) },
-        exitTransition = { if (morph.isRunning) ExitTransition.None else transitions.exit(forward = true) },
+        // Under the morph's ink, and under the native splash (ADR 0028), the switch is instant (it is never seen, and
+        // must not cost frames).
+        enterTransition = {
+            if (morph.isRunning || underNativeSplash()) EnterTransition.None else transitions.enter(forward = true)
+        },
+        exitTransition = {
+            if (morph.isRunning || underNativeSplash()) ExitTransition.None else transitions.exit(forward = true)
+        },
         popEnterTransition = { if (morph.isRunning) EnterTransition.None else transitions.enter(forward = false) },
         popExitTransition = { if (morph.isRunning) ExitTransition.None else transitions.exit(forward = false) },
     ) {

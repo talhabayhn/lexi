@@ -1,6 +1,7 @@
 package dev.talhabayhan.lexi.splash
 
 import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
@@ -33,6 +34,7 @@ import dev.talhabayhan.lexi.core.designsystem.component.SplashDefaults
 import dev.talhabayhan.lexi.core.designsystem.feedback.LocalHaptics
 import dev.talhabayhan.lexi.core.designsystem.feedback.LocalSoundPlayer
 import dev.talhabayhan.lexi.core.designsystem.modifier.fadeWithShadowRoom
+import dev.talhabayhan.lexi.core.designsystem.motion.FrameMonitor
 import dev.talhabayhan.lexi.core.designsystem.motion.LocalMorphAnchors
 import dev.talhabayhan.lexi.core.designsystem.motion.LocalMorphOverlay
 import dev.talhabayhan.lexi.core.designsystem.motion.LocalMotionPolicy
@@ -41,7 +43,9 @@ import dev.talhabayhan.lexi.core.designsystem.motion.TransitionTelemetry
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.core.domain.AppInfo
 import dev.talhabayhan.lexi.core.domain.feedback.HapticKind
+import dev.talhabayhan.lexi.core.domain.feedback.Haptics
 import dev.talhabayhan.lexi.core.domain.feedback.SoundEffect
+import dev.talhabayhan.lexi.core.domain.feedback.SoundPlayer
 import dev.talhabayhan.lexi.core.domain.repository.ContentVersionRepository
 import dev.talhabayhan.lexi.core.domain.repository.OnboardingRepository
 import dev.talhabayhan.lexi.core.domain.repository.SettingsRepository
@@ -105,6 +109,13 @@ fun NavGraphBuilder.splashScreen(onFinished: (onboardingCompleted: Boolean) -> U
  * is tried again on the next launch). A version that cannot be read in time counts as warmed (no hold). Not with
  * reduced motion. The animation itself (keyframes, duration, easing, haptics) is unchanged; it is measured for
  * `transition_frames` ([TransitionKeys.SPLASH]).
+ *
+ * Native splash (iOS, ADR 0028, [LaunchSplash.isNative]): the platform plays the animation above this screen with Core
+ * Animation, so here nothing animates: the splash's resting pose is drawn statically and silently (it is only seen if
+ * the overlay's time limit fires first), the first-launch warm-up runs at once behind the overlay (same rules, same
+ * cap), and the app moves on as soon as the content and the warm-up are done; the overlay leaves when its animation is
+ * over and the first real screen is drawn (`LexiNavHost`). Its landings' haptics and "tık" are played by
+ * [NativeSplashFeedback], which outlives this screen.
  */
 @Composable
 internal fun SplashRoute(
@@ -116,16 +127,18 @@ internal fun SplashRoute(
     clock: AppClock = koinInject(),
     telemetry: TransitionTelemetry = koinInject(),
     warmUpFrames: Int = SPLASH_WARM_UP_FRAMES,
+    launchSplash: LaunchSplash = LocalLaunchSplash.current,
 ) {
+    val native = launchSplash.isNative
     val motion = LexiTheme.motion
     val haptics = LocalHaptics.current
     val sounds = LocalSoundPlayer.current
     val monitor = LocalMotionPolicy.current.frameMonitor
     val currentOnFinished by rememberUpdatedState(onFinished)
-    val progress = remember { Animatable(if (motion.reducedMotion) 1f else 0f) }
-    var logoOnly by remember { mutableStateOf(!motion.reducedMotion) }
+    val progress = remember { Animatable(if (motion.reducedMotion || native) 1f else 0f) }
+    var logoOnly by remember { mutableStateOf(!motion.reducedMotion && !native) }
     var warmingUp by remember { mutableStateOf(false) }
-    LaunchedEffect(content, onboarding, analytics, motion) {
+    LaunchedEffect(content, onboarding, analytics, motion, native) {
         val completed = coroutineScope {
             val ready = async { StartupTrace.measureSuspend("content warm-up") { content.warmUp() } }
             val isCompleted = async {
@@ -144,7 +157,8 @@ internal fun SplashRoute(
                     telemetry.firstLaunchOfVersion =
                         FirstLaunchWarmUp.isFirstLaunchOfVersion(stored, AppInfo.BUILD_NUMBER)
                 }
-                delay(motion.splashReducedHoldMillis.toLong())
+                // The native splash holds its own static logo.
+                if (!native) delay(motion.splashReducedHoldMillis.toLong())
             } else {
                 val warmed = settings.warmedUpVersionOrNull()
                 telemetry.firstLaunchOfVersion = FirstLaunchWarmUp.isFirstLaunchOfVersion(warmed, AppInfo.BUILD_NUMBER)
@@ -164,59 +178,138 @@ internal fun SplashRoute(
                 } else if (warmed == null) {
                     StartupTrace.mark("warm-up skipped: settings not read in time")
                 }
-                val landings = launch {
-                    var landed = 0
-                    snapshotFlow { progress.value }.collect { value ->
-                        while (landed < SplashDefaults.LandingFractions.size &&
-                            value >= SplashDefaults.LandingFractions[landed]
-                        ) {
-                            haptics.perform(HapticKind.Light)
-                            sounds.play(SoundEffect.Tap)
-                            landed++
-                        }
+                if (!native) {
+                    playSplash(progress, motion.splashDurationMillis, SplashLandingFeedback(haptics, sounds), monitor) {
+                        logoOnly = false
                     }
                 }
-                monitor.beginTransition(TransitionKeys.SPLASH)
-                try {
-                    // From the held logo to the animation's first pose (blocks off screen, shapes at 0).
-                    logoOnly = false
-                    progress.animateTo(1f, tween(motion.splashDurationMillis, easing = motion.linear))
-                } finally {
-                    monitor.endTransition()
-                }
-                landings.cancel()
             }
             ready.await()
             isCompleted.await()
         }
-        StartupTrace.mark("splash finished")
-        SplashState.finished.value = true
-        // The splash runs once per cold start (docs/ANALYTICS.md).
-        analytics.track(AnalyticsEvent.AppOpen)
-        // The install date for the rating request rules (RequestInAppReview); a failed write only delays it.
-        try {
-            settings.recordFirstLaunch(clock.nowMs())
-        } catch (e: CancellationException) {
-            throw e
-        } catch (@Suppress("TooGenericExceptionCaught") _: Exception) {
-            // Ignored: the rating request then simply waits for the next launch.
-        }
+        finishSplash(analytics, settings, clock)
         currentOnFinished(completed)
     }
     Box(Modifier.fillMaxSize()) {
-        SplashScreen(progress = { progress.value }, logoOnly = logoOnly)
+        if (native) {
+            NativeSplashBackdrop()
+        } else {
+            SplashScreen(progress = { progress.value }, logoOnly = logoOnly)
+        }
         // Above the splash (a pre-draw behind its full-screen cream is dropped), hidden under a cream cover, with the
-        // held logo drawn again above that cover.
+        // held logo (native: the static backdrop) drawn again above that cover.
         if (warmingUp) {
             SplashWarmUpLayer()
-            // A visual copy only: the splash below already announces the logo.
-            LexiSplashLogo(
-                tagline = stringResource(Res.string.splash_tagline),
-                modifier = Modifier.clearAndSetSemantics {},
-            )
+            if (native) {
+                NativeSplashBackdrop()
+            } else {
+                // A visual copy only: the splash below already announces the logo.
+                LexiSplashLogo(
+                    tagline = stringResource(Res.string.splash_tagline),
+                    modifier = Modifier.clearAndSetSemantics {},
+                )
+            }
         }
     }
 }
+
+/**
+ * Plays the Compose splash animation over [durationMillis] (each landing: a light haptic and a "tık"), measured as
+ * [TransitionKeys.SPLASH]; [onStart] leaves the held launch logo for the animation's first pose.
+ */
+private suspend fun playSplash(
+    progress: Animatable<Float, *>,
+    durationMillis: Int,
+    feedback: SplashLandingFeedback,
+    monitor: FrameMonitor,
+    onStart: () -> Unit,
+) = coroutineScope {
+    val landings = launch {
+        var landed = 0
+        snapshotFlow { progress.value }.collect { value ->
+            while (landed < SplashDefaults.LandingFractions.size && value >= SplashDefaults.LandingFractions[landed]) {
+                feedback.land()
+                landed++
+            }
+        }
+    }
+    monitor.beginTransition(TransitionKeys.SPLASH)
+    try {
+        // From the held logo to the animation's first pose (blocks off screen, shapes at 0).
+        onStart()
+        progress.animateTo(1f, tween(durationMillis, easing = LinearEasing))
+    } finally {
+        monitor.endTransition()
+    }
+    landings.cancel()
+}
+
+/** The splash is over: marks it, logs `app_open` and records the install date. */
+private suspend fun finishSplash(analytics: AnalyticsTracker, settings: SettingsRepository, clock: AppClock) {
+    StartupTrace.mark("splash finished")
+    SplashState.finished.value = true
+    // The splash runs once per cold start (docs/ANALYTICS.md).
+    analytics.track(AnalyticsEvent.AppOpen)
+    // The install date for the rating request rules (RequestInAppReview); a failed write only delays it.
+    try {
+        settings.recordFirstLaunch(clock.nowMs())
+    } catch (e: CancellationException) {
+        throw e
+    } catch (@Suppress("TooGenericExceptionCaught") _: Exception) {
+        // Ignored: the rating request then simply waits for the next launch.
+    }
+}
+
+/** One landing of the splash's blocks (`motion.md` #9): a light haptic and a "tık". */
+internal class SplashLandingFeedback(private val haptics: Haptics, private val sounds: SoundPlayer) {
+    fun land() {
+        haptics.perform(HapticKind.Light)
+        sounds.play(SoundEffect.Tap)
+    }
+}
+
+/**
+ * The landings of the native splash (ADR 0028): a light haptic and a "tık" when each block lands, on the overlay's
+ * clock ([LaunchSplash.elapsedMillis], negative before its animation starts) at [SplashDefaults.LandingFractions] of the animation. Composed once at the app
+ * root, so it outlives `SplashRoute` (the app may move on before the animation ends). Nothing without a native splash
+ * or with reduced motion (the static logo has no landings).
+ */
+@Composable
+internal fun NativeSplashFeedback(launchSplash: LaunchSplash = LocalLaunchSplash.current) {
+    if (!launchSplash.isNative) return
+    val motion = LexiTheme.motion
+    val feedback = SplashLandingFeedback(LocalHaptics.current, LocalSoundPlayer.current)
+    val current by rememberUpdatedState(feedback)
+    // Keyed on the splash only: a later reduced-motion change must not replay the landings.
+    LaunchedEffect(launchSplash) {
+        if (motion.reducedMotion) return@LaunchedEffect
+        for (fraction in SplashDefaults.LandingFractions) {
+            val at = (fraction * motion.splashDurationMillis).toLong()
+            // Re-read after each wait: the overlay's clock is the reference (it may start after this effect).
+            while (true) {
+                val wait = at - launchSplash.elapsedMillis()
+                if (wait <= 0) break
+                delay(wait)
+            }
+            current.land()
+        }
+    }
+}
+
+/**
+ * Under the native splash: the splash's resting pose (shapes, logo and tagline at rest), static and without semantics
+ * (the overlay announces the logo). Only seen if the overlay left through its time limit before the app moved on.
+ */
+@Composable
+private fun NativeSplashBackdrop() {
+    LexiSplash(
+        progress = RestingSplash,
+        tagline = stringResource(Res.string.splash_tagline),
+        modifier = Modifier.clearAndSetSemantics {},
+    )
+}
+
+private val RestingSplash: () -> Float = { 1f }
 
 /** The covered warm-up drawn above the splash's held logo (see [SplashRoute]); fills the splash's own size. */
 @Composable

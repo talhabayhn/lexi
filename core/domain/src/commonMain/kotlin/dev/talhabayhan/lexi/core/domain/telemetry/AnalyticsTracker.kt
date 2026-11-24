@@ -88,6 +88,9 @@ public sealed class AnalyticsEvent(public val name: String) {
     public enum class MotionFailSafeKind(public val code: String) {
         /** The letter morph waited too long for the game (`LetterMorphMachine.WAIT_LIMIT_MILLIS`) and was cancelled. */
         MORPH_TIMEOUT("morph_timeout"),
+
+        /** The iOS native splash (ADR 0028) reached its 3 s limit before the first screen was ready and left. */
+        SPLASH_TIMEOUT("splash_timeout"),
     }
 
     /**

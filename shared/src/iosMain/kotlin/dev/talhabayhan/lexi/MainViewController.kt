@@ -2,9 +2,14 @@ package dev.talhabayhan.lexi
 
 import androidx.compose.ui.window.ComposeUIViewController
 import dev.talhabayhan.lexi.perf.PerfTourConfig
+import dev.talhabayhan.lexi.splash.IosLaunchSplash
+import dev.talhabayhan.lexi.splash.NativeSplashHostViewController
+import dev.talhabayhan.lexi.splash.NativeSplashOverlay
 import dev.talhabayhan.lexi.startup.StartupTrace
 import dev.talhabayhan.lexi.telemetry.installUncaughtExceptionReporting
 import platform.Foundation.NSProcessInfo
+import platform.UIKit.UIAccessibilityIsReduceMotionEnabled
+import platform.UIKit.UIImage
 import platform.UIKit.UIViewController
 import kotlin.experimental.ExperimentalNativeApi
 import kotlin.native.Platform
@@ -12,6 +17,10 @@ import kotlin.native.Platform
 /**
  * Entry point called from Swift (`MainViewControllerKt.MainViewController(services:)`); the name is part of that API.
  * [services] are the Swift-implemented platform services (Firebase telemetry, ADR 0023).
+ *
+ * The returned controller hosts the Compose app with the native splash above it (ADR 0028): the splash is animated by
+ * Core Animation from the first frame after the launch screen while Compose starts up behind it, and leaves once its
+ * animation is over and the first real screen is drawn (at most 3 s).
  */
 @Suppress("ktlint:standard:function-naming", "FunctionName")
 @OptIn(ExperimentalNativeApi::class)
@@ -20,8 +29,17 @@ fun MainViewController(services: PlatformServices): UIViewController {
     IosPlatformServices.install(services)
     installUncaughtExceptionReporting(services.telemetry)
     val perfTour = perfTourConfig()
-    return ComposeUIViewController { App(perfTour = perfTour) }
+    val reducedMotion = UIAccessibilityIsReduceMotionEnabled()
+    val splash = IosLaunchSplash(
+        overlay = NativeSplashOverlay(launchLogo = UIImage.imageNamed(LAUNCH_LOGO), reducedMotion = reducedMotion),
+        reducedMotion = reducedMotion,
+    )
+    val content = ComposeUIViewController { App(perfTour = perfTour, launchSplash = splash) }
+    return NativeSplashHostViewController(content, splash)
 }
+
+/** The launch screen's logo image (`Assets.xcassets/LaunchLogo.imageset`), also the native splash's blocks. */
+private const val LAUNCH_LOGO = "LaunchLogo"
 
 /** Perf tour (`docs/PERF.md`): process argument `-LexiPerfTour`, optionally `-LexiPerfTourLoops N`. */
 private fun perfTourConfig(): PerfTourConfig? {

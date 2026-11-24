@@ -19,6 +19,10 @@ import dev.talhabayhan.lexi.di.appModules
 import dev.talhabayhan.lexi.di.rememberPlatformModule
 import dev.talhabayhan.lexi.navigation.LexiNavHost
 import dev.talhabayhan.lexi.perf.PerfTourConfig
+import dev.talhabayhan.lexi.splash.LaunchSplash
+import dev.talhabayhan.lexi.splash.LocalLaunchSplash
+import dev.talhabayhan.lexi.splash.NativeSplashFeedback
+import dev.talhabayhan.lexi.splash.NoLaunchSplash
 import dev.talhabayhan.lexi.splash.SplashState
 import dev.talhabayhan.lexi.startup.StartupTrace
 import dev.talhabayhan.lexi.startup.preloadAllStrings
@@ -36,12 +40,15 @@ import org.koin.dsl.koinConfiguration
  * the speech engine and voice are warmed up right after the splash so the first correct answer is spoken at once, and
  * every module's strings are preloaded into the resource cache on a background dispatcher. [debugOverlay] (Android
  * debug builds only) is drawn above everything inside the theme: the motion tier switch and frame-time graph.
+ * [launchSplash] is the platform's own splash above the app (iOS: the native Core Animation splash, ADR 0028), or
+ * [NoLaunchSplash] (Android: the Compose splash plays).
  */
 @Composable
 fun App(
     onLanguageChanged: ((AppLanguage) -> Unit)? = null,
     perfTour: PerfTourConfig? = null,
     debugOverlay: (@Composable () -> Unit)? = null,
+    launchSplash: LaunchSplash = NoLaunchSplash,
 ) {
     StartupTrace.mark("app composition")
     LaunchedEffect(Unit) {
@@ -84,8 +91,10 @@ fun App(
         CompositionLocalProvider(
             LocalHaptics provides koinInject(),
             LocalSoundPlayer provides koinInject(),
+            LocalLaunchSplash provides launchSplash,
         ) {
             LexiTheme {
+                NativeSplashFeedback()
                 LexiViewport {
                     LexiNavHost(perfTour = perfTour)
                     debugOverlay?.invoke()
