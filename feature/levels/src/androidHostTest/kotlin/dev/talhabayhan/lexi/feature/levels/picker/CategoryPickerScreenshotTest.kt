@@ -1,5 +1,7 @@
 package dev.talhabayhan.lexi.feature.levels.picker
 
+import com.github.takahirom.roborazzi.RoborazziOptions
+import com.github.takahirom.roborazzi.RoborazziTaskType
 import com.github.takahirom.roborazzi.captureRoboImage
 import dev.talhabayhan.lexi.core.designsystem.theme.LexiTheme
 import dev.talhabayhan.lexi.core.domain.game.GameMode
@@ -54,9 +56,29 @@ class CategoryPickerScreenshotTest {
     @Config(qualifiers = "tr-w320dp-h568dp-xhdpi", fontScale = 2.0f)
     fun dialogSmallLargeFont() = capture("PlayDialog_w320h568_fontScale200", PickerSampleState.withDialog())
 
+    @Test
+    @Config(qualifiers = "tr-w360dp-h900dp-xhdpi", fontScale = 1.3f)
+    fun longNamesPreview130() = preview("picker-long-names-130")
+
+    @Test
+    @Config(qualifiers = "tr-w320dp-h900dp-xhdpi", fontScale = 2.0f)
+    fun longNamesPreview200() = preview("picker-long-names-200")
+
+    /** A review aid, not a golden: B1's real names (some wrap to two lines), always written and never compared. */
+    private fun preview(name: String) {
+        val (level, categories) = ShippedPicker.levels.first { it.first == Level.B1 }
+        captureRoboImage("build/art-previews/$name.png", roborazziOptions = PreviewOnly) {
+            LexiTheme(reducedMotion = false) {
+                CategoryPickerScreen(state = ShippedPicker.state(level, categories), onIntent = {})
+            }
+        }
+    }
+
     private fun capture(name: String, state: CategoryPickerUiState) {
         captureRoboImage("src/androidHostTest/screenshots/$name.png") {
             LexiTheme(reducedMotion = false) { CategoryPickerScreen(state = state, onIntent = {}) }
         }
     }
 }
+
+private val PreviewOnly = RoborazziOptions(taskType = RoborazziTaskType.Record)

@@ -8,13 +8,17 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.asPaddingValues
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
@@ -212,77 +216,139 @@ private fun PickerGrid(
         horizontalArrangement = Arrangement.spacedBy(FlowDefaults.GridColumnGap),
         verticalArrangement = Arrangement.spacedBy(FlowDefaults.GridRowGap),
     ) {
-        itemsIndexed(state.categories, key = { _, card ->
-            "category:${card.id.value}"
-        }, contentType = { _, _ -> CARD }) {
-                index,
-                card,
-            ->
-            val name = (if (turkish) card.nameTr else card.nameEn).ifEmpty { if (card.isMixed) mixedFallback else "" }
-            DisposableEffect(flip, card.id) { onDispose { flip.cardRects.remove(card.id) } }
-            // Only the card the dialog belongs to recomposes when a flip starts or ends.
-            val flipping by remember(flip, card.id) {
-                derivedStateOf { flip.dialogShown && flip.card?.id == card.id }
-            }
-            PickerCard(
-                name = name,
-                contentDescription = stringResource(Res.string.picker_card_description, name, card.learned, card.total),
-                art = { modifier ->
-                    CategoryArt(CategoryArtKind.forId(card.id.value) ?: CategoryArtKind.Mixed, modifier)
-                },
-                progressText = stringResource(Res.string.picker_progress, card.learned, card.total),
-                progress = card.fraction,
-                selected = card.id == state.selectedCategory,
-                // The grid takes taps only while no dialog is up (the dialog's own layers handle a reopen).
-                onClick = { if (!flip.dialogShown) onIntent(CategoryPickerIntent.OpenCategory(card.id)) },
-                modifier = Modifier
-                    // The laid-out rectangle (before the animated layers) the dialog grows from.
-                    .onGloballyPositioned { flip.cardRects[card.id] = it.rectInRoot() }
-                    .then(enter.modifier(index))
-                    .then(
-                        if (flipping) {
-                            Modifier.flipCard(flip, flow, shadowColor)
-                        } else {
-                            Modifier
-                        },
+        // Two cards per grid item (a full-width row), so that the cards of a row have the same height whichever of
+        // their names wraps to a second line (the grid alone only makes the row as tall as its tallest card).
+        val rows = state.categories.chunked(CARDS_PER_ROW)
+        itemsIndexed(rows, key = { _, row ->
+            "row:${row.first().id.value}"
+        }, span = { _, _ -> GridItemSpan(maxLineSpan) }, contentType = { _, _ -> CARD }) { rowIndex, row ->
+            CardRow(row.size) { column, modifier ->
+                val card = row[column]
+                val name = (if (turkish) card.nameTr else card.nameEn).ifEmpty {
+                    if (card.isMixed) mixedFallback else ""
+                }
+                DisposableEffect(flip, card.id) { onDispose { flip.cardRects.remove(card.id) } }
+                // Only the card the dialog belongs to recomposes when a flip starts or ends.
+                val flipping by remember(flip, card.id) {
+                    derivedStateOf { flip.dialogShown && flip.card?.id == card.id }
+                }
+                PickerCard(
+                    name = name,
+                    contentDescription = stringResource(
+                        Res.string.picker_card_description,
+                        name,
+                        card.learned,
+                        card.total,
                     ),
-            )
+                    art = { artModifier ->
+                        CategoryArt(CategoryArtKind.forId(card.id.value) ?: CategoryArtKind.Mixed, artModifier)
+                    },
+                    progressText = stringResource(Res.string.picker_progress, card.learned, card.total),
+                    progress = card.fraction,
+                    selected = card.id == state.selectedCategory,
+                    // The grid takes taps only while no dialog is up (the dialog's own layers handle a reopen).
+                    onClick = { if (!flip.dialogShown) onIntent(CategoryPickerIntent.OpenCategory(card.id)) },
+                    modifier = modifier
+                        // The laid-out rectangle (before the animated layers) the dialog grows from.
+                        .onGloballyPositioned { flip.cardRects[card.id] = it.rectInRoot() }
+                        .then(enter.modifier(rowIndex * CARDS_PER_ROW + column))
+                        .then(
+                            if (flipping) {
+                                Modifier.flipCard(flip, flow, shadowColor)
+                            } else {
+                                Modifier
+                            },
+                        ),
+                )
+            }
         }
         // The exam section waits for the level's cards: shown alone first, it would be the first visible item, and
         // the grid would keep it in place when the cards are inserted above it (opening scrolled to the exams).
         if (!state.isLoaded || state.categories.isEmpty()) return@LazyVerticalGrid
         item(key = EXAMS_HEADER, span = { GridItemSpan(maxLineSpan) }, contentType = HEADER) { ExamsHeader() }
-        itemsIndexed(state.packs, key = { _, pack ->
-            "pack:${pack.id.value}"
-        }, contentType = { _, _ -> CARD }) { _, pack ->
-            val title = if (turkish) pack.titleTr else pack.titleEn
-            PickerCard(
-                name = title,
-                contentDescription = stringResource(
-                    Res.string.picker_card_description,
-                    title,
-                    pack.learned,
-                    pack.total,
-                ),
-                art = { modifier -> ExamArt(ExamArtKind.forId(pack.id.value) ?: ExamArtKind.Lgs, modifier) },
-                progressText = stringResource(Res.string.picker_progress, pack.learned, pack.total),
-                progress = pack.fraction,
-                role = Role.Button,
-                onClick = { onIntent(CategoryPickerIntent.OpenPack(pack.id)) },
-            )
-        }
-        itemsIndexed(state.lockedExams, key = { _, id -> "locked:$id" }, contentType = { _, _ -> CARD }) { _, id ->
-            val title = stringResource(lockedTitle(id))
-            PickerCard(
-                name = title,
-                contentDescription = stringResource(Res.string.picker_soon_description, title),
-                art = { modifier -> ExamArt(ExamArtKind.forId(id) ?: ExamArtKind.Lgs, modifier, locked = true) },
-                locked = true,
-                lockedLabel = stringResource(Res.string.picker_soon),
-            )
+        // The open packs, then the locked ones, flow on in the same rows.
+        val exams = state.packs.map { ExamEntry.Open(it) } + state.lockedExams.map { ExamEntry.Locked(it) }
+        itemsIndexed(exams.chunked(CARDS_PER_ROW), key = { _, row ->
+            "exams:${row.first().key}"
+        }, span = { _, _ -> GridItemSpan(maxLineSpan) }, contentType = { _, _ -> CARD }) { _, row ->
+            CardRow(row.size) { column, modifier ->
+                when (val entry = row[column]) {
+                    is ExamEntry.Open -> {
+                        val pack = entry.pack
+                        val title = if (turkish) pack.titleTr else pack.titleEn
+                        PickerCard(
+                            name = title,
+                            contentDescription = stringResource(
+                                Res.string.picker_card_description,
+                                title,
+                                pack.learned,
+                                pack.total,
+                            ),
+                            art = { artModifier ->
+                                ExamArt(ExamArtKind.forId(pack.id.value) ?: ExamArtKind.Lgs, artModifier)
+                            },
+                            progressText = stringResource(Res.string.picker_progress, pack.learned, pack.total),
+                            progress = pack.fraction,
+                            role = Role.Button,
+                            onClick = { onIntent(CategoryPickerIntent.OpenPack(pack.id)) },
+                            modifier = modifier,
+                        )
+                    }
+
+                    is ExamEntry.Locked -> {
+                        val title = stringResource(lockedTitle(entry.id))
+                        PickerCard(
+                            name = title,
+                            contentDescription = stringResource(Res.string.picker_soon_description, title),
+                            art = { artModifier ->
+                                ExamArt(ExamArtKind.forId(entry.id) ?: ExamArtKind.Lgs, artModifier, locked = true)
+                            },
+                            locked = true,
+                            lockedLabel = stringResource(Res.string.picker_soon),
+                            modifier = modifier,
+                        )
+                    }
+                }
+            }
         }
     }
 }
+
+/** An exam-section card: an open pack or a locked "YAKINDA" one. */
+private sealed interface ExamEntry {
+    val key: String
+
+    data class Open(val pack: PickerPackUi) : ExamEntry {
+        override val key = "pack:${pack.id.value}"
+    }
+
+    data class Locked(val id: String) : ExamEntry {
+        override val key = "locked:$id"
+    }
+}
+
+/**
+ * One grid row of up to [CARDS_PER_ROW] cards: the same width each (the grid's two columns and gap) and the height of
+ * the tallest one (`IntrinsicSize.Max`), so a name that wraps to a second line makes its neighbour as tall, not shorter.
+ * Where every name fits on one line the row is exactly the cards' own height. A lone last card keeps its column.
+ */
+@Composable
+private fun CardRow(count: Int, card: @Composable (column: Int, modifier: Modifier) -> Unit) {
+    Row(
+        modifier = Modifier.fillMaxWidth().height(IntrinsicSize.Max),
+        horizontalArrangement = Arrangement.spacedBy(FlowDefaults.GridColumnGap),
+    ) {
+        repeat(CARDS_PER_ROW) { column ->
+            if (column < count) {
+                card(column, Modifier.weight(1f).fillMaxHeight())
+            } else {
+                Spacer(Modifier.weight(1f))
+            }
+        }
+    }
+}
+
+private const val CARDS_PER_ROW = 2
 
 /**
  * Motion #13 / #14 / #15 on the tapped card, read in the layer and draw phase only: it rises and tilts with `cardLift`
@@ -364,10 +430,12 @@ private fun ScrollTopButton(gridState: LazyGridState, modifier: Modifier) {
             visible > 0 && gridState.firstVisibleItemIndex >= visible
         }
     }
-    if (!pastFirstScreen) return
+    // Before the early return: the scroll runs in this scope, and the pill leaves the composition as soon as the grid is
+    // back within its first screen, which would cancel the scroll half way (S8).
     val scope = rememberCoroutineScope()
     val motion = LexiTheme.motion
     val minimal = rememberMotionTier() == MotionTier.Minimal
+    if (!pastFirstScreen) return
     ScrollToTopPill(
         label = stringResource(Res.string.picker_scroll_top),
         onClick = {
