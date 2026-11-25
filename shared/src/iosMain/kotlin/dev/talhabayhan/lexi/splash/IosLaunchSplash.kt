@@ -61,6 +61,9 @@ internal class IosLaunchSplash(
     /** [start]'s `onCommitted`, until it has run (once). */
     private var onCommitted: (() -> Unit)? = null
 
+    /** True once the app's activation has been traced (once). */
+    private var activeTraced = false
+
     /** True once the tagline is on the overlay and committed, or will not come (no loader, failed). */
     private var taglineSettled = loadTagline == null
 
@@ -92,7 +95,7 @@ internal class IosLaunchSplash(
      * Starts the animation and the time limit; called when the host's view is about to appear. Once only.
      * [onCommitted] (the heavy start-up: creating the Compose content) runs once, on a later main-queue pass than the
      * commit of the animation: when its begin time is known, the tagline is on the overlay and the app is active (with
-     * reduced motion, nothing to lose: the tagline and the app); after [CONTENT_FALLBACK_MILLIS] if that is not seen (the content is never held
+     * reduced motion only the tagline and the app's activation are waited for); after [CONTENT_FALLBACK_MILLIS] if that is not seen (the content is never held
      * back for good); or when the overlay leaves first.
      */
     fun start(onCommitted: () -> Unit = {}) {
@@ -120,6 +123,7 @@ internal class IosLaunchSplash(
             } catch (@Suppress("TooGenericExceptionCaught") _: Exception) {
                 // No tagline is better than no splash.
                 taglineSettled = true
+                StartupTrace.mark("native splash tagline failed")
                 return@launch
             }
             if (!isRemoved) {
@@ -128,6 +132,7 @@ internal class IosLaunchSplash(
                 commit()
             }
             taglineSettled = true
+            StartupTrace.mark("native splash tagline set")
         }
     }
 
@@ -151,7 +156,14 @@ internal class IosLaunchSplash(
                     StartupTrace.mark("native splash committed")
                 }
             }
-            val shown = (reducedMotion || startedAt != null) && taglineSettled && isAppActive()
+            val active = isAppActive()
+            if (active && !activeTraced) {
+                activeTraced = true
+                // The device trace shows how long after the commit the launch finished (the hand-off is 350 ms).
+                val afterCommit = startedAt?.let { ((now() - it) * MILLIS_PER_SECOND).roundToLong() }
+                StartupTrace.mark("native splash app active, $afterCommit ms after the commit")
+            }
+            val shown = (reducedMotion || startedAt != null) && taglineSettled && active
             if (shown) committed("shown") else readBeginTimeWhenCommitted()
         }
     }
