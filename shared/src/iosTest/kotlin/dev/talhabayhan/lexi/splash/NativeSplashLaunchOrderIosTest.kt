@@ -38,9 +38,17 @@ import kotlin.test.assertTrue
  */
 class NativeSplashLaunchOrderIosTest {
     private var window: UIWindow? = null
+    private val splashes = mutableListOf<IosLaunchSplash>()
 
     @AfterTest
     fun tearDown() {
+        // Leaves no live splash behind: its timers (3 s cap, exit, poll) would otherwise fire during later tests.
+        splashes.forEach {
+            it.onAnimationEnded()
+            it.contentReady()
+        }
+        runLoopUntil(TIMEOUT_SECONDS) { splashes.all { it.isRemoved } }
+        splashes.clear()
         window?.setHidden(true)
         window?.rootViewController = null
         window = null
@@ -132,7 +140,7 @@ class NativeSplashLaunchOrderIosTest {
                 TAGLINE
             },
             isAppActive = { true },
-        )
+        ).also { splashes += it }
         var textWhenMade: String? = null
         val host = NativeSplashHostViewController(
             makeContent = {
@@ -154,7 +162,7 @@ class NativeSplashLaunchOrderIosTest {
         reducedMotion = false,
         loadTagline = null,
         isAppActive = { true },
-    )
+    ).also { splashes += it }
 
     /** Seconds from the timeline's begin to the animation's [fraction] (after the hand-off). */
     private fun timelineSeconds(fraction: Double): Double =
