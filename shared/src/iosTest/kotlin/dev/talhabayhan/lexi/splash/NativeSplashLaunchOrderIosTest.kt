@@ -91,28 +91,33 @@ class NativeSplashLaunchOrderIosTest {
     fun duringTheStallTheCommittedTimelineMovesOn() {
         val overlay = NativeSplashOverlay(launchLogo = testLogo(), reducedMotion = false, fontScale = 1f)
         val splash = testSplash(overlay)
-        var early: Double? = null
+        var startedAfter: Double? = null
+        var midFade: Double? = null
         var late: Double? = null
         val host = NativeSplashHostViewController(
             makeContent = {
                 // The main thread stays blocked from here on: only Core Animation's clock moves.
                 val begin = assertNotNull(overlay.animationBeginTime(), "Compose created before the commit")
-                val l = overlay.blockViews[0].layer
-                sleepUntil(begin + timelineSeconds(EARLY_FRACTION))
-                early = l.presentationTranslationX()
+                startedAfter = CACurrentMediaTime() - begin
+                val tagline = overlay.taglineView.layer
+                sleepUntil(begin + timelineSeconds(MID_FADE_FRACTION))
+                midFade = tagline.presentationValue("opacity")
                 sleepUntil(begin + timelineSeconds(LATE_FRACTION))
-                late = l.presentationTranslationX()
+                late = tagline.presentationValue("opacity")
                 UIViewController(nibName = null, bundle = null)
             },
             splash = splash,
         )
         show(host)
         runLoopUntil(TIMEOUT_SECONDS) { host.content != null }
-        // L slides in from the left: early on it is still off to the left, late it is at rest. Both were read while
-        // the main thread was blocked, so the timeline ran from its first frame without the main thread.
-        val start = assertNotNull(early, "no presentation layer during the stall")
-        assertTrue(start < -EARLY_MIN_OFFSET, "L is not on its way in early in the animation (x = $start)")
-        assertEquals(0.0, assertNotNull(late), "L is not at rest late in the animation")
+        // The tagline fades in at 48-58 % of the animation (≈ 0.93-1.05 s after the commit, after phase 2 even on a
+        // slow runner): half-way through its fade it is partly visible, late it is fully visible. Both were read while
+        // the main thread was blocked, so the timeline moved on without the main thread.
+        val after = assertNotNull(startedAfter, "Compose was never created")
+        assertTrue(after < timelineSeconds(MID_FADE_FRACTION), "phase 2 came only $after s after the commit")
+        val mid = assertNotNull(midFade, "no presentation layer during the stall")
+        assertTrue(mid > 0.05 && mid < 0.95, "the tagline is not mid-fade half-way through its fade (opacity $mid)")
+        assertTrue(assertNotNull(late) > 0.99, "the tagline is not visible late in the animation (opacity $late)")
     }
 
     @Test
@@ -180,12 +185,12 @@ class NativeSplashLaunchOrderIosTest {
     }
 
     /**
-     * L's on-screen x now. A main-thread pass reads Core Animation's time once and keeps it: the empty commit before
+     * The on-screen value of [keyPath] now. A main-thread pass reads Core Animation's time once and keeps it: the empty commit before
      * the read makes it a fresh one (it sends nothing, so the main thread stays as blocked as before).
      */
-    private fun CALayer.presentationTranslationX(): Double? {
+    private fun CALayer.presentationValue(keyPath: String): Double? {
         CATransaction.flush()
-        return presentationLayer()?.valueForKeyPath("transform.translation.x")?.let { value ->
+        return presentationLayer()?.valueForKeyPath(keyPath)?.let { value ->
             (value as NSNumber).doubleValue
         }
     }
@@ -207,11 +212,8 @@ class NativeSplashLaunchOrderIosTest {
         const val RUN_LOOP_SLICE_SECONDS = 0.01
         const val EPSILON = 0.005
 
-        /** Just after L leaves its start (4 %; its curve is fast at first), and well after it rests (26 %). */
-        const val EARLY_FRACTION = 0.08
+        /** Half-way through the tagline's fade-in (48-58 %), and well after it (fully visible). */
+        const val MID_FADE_FRACTION = 0.53
         const val LATE_FRACTION = 0.9
-
-        /** Early on L is still well off to the left (it starts at -320 dp). */
-        const val EARLY_MIN_OFFSET = 20.0
     }
 }

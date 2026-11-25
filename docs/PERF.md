@@ -370,7 +370,7 @@ and the tagline appeared for 2–3 frames and onboarding followed; the second la
   the begin time is read back, the tagline is set and committed, and the app is active (1000 ms fallback). ADR 0028.
 - **Tests:** `NativeSplashLaunchOrderIosTest` (real run loop: the Compose stand-in blocks the main thread for 2000 ms
   when created; the animation was committed before that, its begin time is the commit's, not the overlay's creation;
-  L's on-screen position moves during the block; the tagline is on the overlay before it), `NativeSplashOverlayIosTest`
+  the tagline's fade-in moves on during the block; the tagline is on the overlay before it), `NativeSplashOverlayIosTest`
   (order with fake timers: no Compose before the commit, the app's activation or the fallback; reduced motion; the
   splash leaving first).
 - **Simulator recording (iOS 18.1, iPhone 16, Debug, fresh install, 2000 ms injected stall when Compose is created, a
