@@ -353,6 +353,34 @@ animation, exit when the animation is over and the first screen is drawn, 3 s ca
 - **Not provable on the simulator:** real Metal stalls, the render server keeping the animation smooth while the main
   thread is blocked, the launch cross-fade's length on a device. Owner check: `docs/LOCAL-DEVICE-TEST.md`.
 
+### First launch showed only the animation's tail (S7, 2026-11-25)
+
+Owner report (iPhone, Release, fresh install, 60 fps recording): the launch logo stood still ≈ 2 s, then the shapes
+and the tagline appeared for 2–3 frames and onboarding followed; the second launch played the whole animation.
+
+- **Cause:** `NativeSplashHostViewController` embedded the Compose view controller in `viewDidLoad`, before the
+  overlay's animation was even added (`viewWillAppear`). Compose's first composition, its synchronous first Metal draw
+  (`ComposeContainerView.didMoveToWindow` → `setNeedsSynchronousDraw`, then `drawRect` →
+  `redrawer.draw(waitUntilCompletion = true)`, Compose 1.12.1) and the first-launch warm-up ran in the same main-thread
+  pass as the commit carrying the animation and right after it, before the app's launch had finished. The timeline's
+  clock ran on behind the launch screen. Measured on the simulator: a slow `drawRect` in the same transaction does
+  *not* move the begin time back (it is stamped at the end of the commit), so the time was lost after the commit,
+  while the main thread was still busy.
+- **Fix (two phases):** the overlay alone is committed first; the Compose controller is created on a later pass, once
+  the begin time is read back, the tagline is set and committed, and the app is active (1000 ms fallback). ADR 0028.
+- **Tests:** `NativeSplashLaunchOrderIosTest` (real run loop: the Compose stand-in blocks the main thread for 2000 ms
+  when created; the animation was committed before that, its begin time is the commit's, not the overlay's creation;
+  L's on-screen position moves during the block; the tagline is on the overlay before it), `NativeSplashOverlayIosTest`
+  (order with fake timers: no Compose before the commit, the app's activation or the fallback; reduced motion; the
+  splash leaving first).
+- **Simulator recording (iOS 18.1, iPhone 16, Debug, fresh install, 2000 ms injected stall when Compose is created, a
+  local patch not committed):** commit 4 ms after `start()`, Compose created 31–52 ms after it, stall over the whole
+  1550 ms timeline. Frame by frame: launch logo → launch pose → shapes grow, L slides, E drops, X spins, I rises at a
+  steady ≈ 16.7 ms cadence → tagline → rest; the full animation was seen while the main thread was blocked. Without
+  the injected stall: same animation, then the exit to onboarding.
+- **Not provable on the simulator:** that an iPhone's render server shows those frames while Metal pipelines are built
+  on the main thread, and when iOS really ends the launch screen on a device. Owner check: `docs/LOCAL-DEVICE-TEST.md`.
+
 ### Compose / Kotlin/Native rendering options (S6 Part B, Compose 1.12.1, Kotlin 2.4.21)
 
 Read in the 1.12.1 sources (`ComposeContainerConfiguration.ios.kt`, `MetalView.ios.kt`, `DisplayLinkFrameRate.ios.kt`)

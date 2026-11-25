@@ -21,9 +21,10 @@ and haptics. Always test the **Release** configuration (Debug builds of Kotlin/N
 7. The store / TestFlight build has the same bundle id: installing from Xcode replaces it (its data stays unless you
    delete the app). Delete the local build before going back to TestFlight.
 
-What to look at (splash, ADR 0028): the launch logo stays still for a moment, then the shapes and blocks animate
-smoothly (L slides, E bounces, X spins, I rises, tagline), four light taps, then the splash slides away and reveals the
-first screen. Fresh install, kill and reopen, Low Power on and off, Reduce Motion on (static logo, short crossfade).
+What to look at (splash, ADR 0028): the launch logo stays still for a moment (≈ 350 ms), then the shapes and blocks
+animate smoothly (L slides, E bounces, X spins, I rises, tagline), four light taps, then the splash slides away and
+reveals the first screen. On a fresh install too the blocks must be seen moving in, not only the last frames (S7).
+Fresh install, kill and reopen, Low Power on and off, Reduce Motion on (static logo, short crossfade).
 
 ## Android (USB, optimised hand-test build)
 

@@ -38,6 +38,16 @@ it keeps playing at the display's rate while the main thread is blocked.
   transition (hidden). Landing haptics and "tık" come from `NativeSplashFeedback` (app root) on the overlay's clock,
   through the gated `Haptics` / `SoundPlayer` (in-app settings respected); a landing more than 50 ms late (start-up
   held the main thread) is skipped rather than played as a burst out of sync with the blocks.
+- **Launch order (S7, 2026-11-25):** two phases. Phase 1 (`viewWillAppear`): the host's view holds only the overlay;
+  the animation is added and committed at once (`CATransaction.flush()` when in a window). Phase 2: the Compose view
+  controller is created and embedded under the overlay only on a later main-queue pass, once the timeline's begin time
+  has been read back from the commit, the tagline (loaded asynchronously) is on the overlay and the app is active (its
+  launch finished, so the system shows the app's frames, not the launch screen); after 1000 ms without that it starts
+  anyway (`CONTENT_FALLBACK_MILLIS`). Before S7 the Compose controller's view was embedded in `viewDidLoad`, so its
+  first composition and synchronous first Metal draw (`ComposeContainerView.drawRect` →
+  `draw(waitUntilCompletion = true)`) and the warm-up ran in the same main-thread pass as the commit and right after it:
+  on a fresh install the timeline ran on behind the launch screen and only its tail was seen. Gate, cap, durations and
+  haptics are unchanged.
 - **Every launch** uses the native splash (identical animation); no extra hold besides the hand-off. Reduced motion:
   the static logo for `splashReducedHoldMillis`, then the crossfade.
 - **Accessibility:** the overlay is one modal image element ("Lexi, <tagline>"), so VoiceOver neither announces the
