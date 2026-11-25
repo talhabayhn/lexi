@@ -6,10 +6,8 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
@@ -81,7 +79,7 @@ public object FlowDefaults {
     /** Home's header (logo blocks 38 + frame): the daily-gift toast floats below it. */
     public val HomeHeaderHeight: Dp = 40.dp
 
-    /** Play card: padding 20, label → mode boxes 14, mode boxes → OYNA row 16, boxes 8 apart, play circle 68. */
+    /** Play card: padding 20, label → OYNA row 16 (chosen in S8, no design), play circle 68. */
     public val PlayCardPadding: Dp = 20.dp
     internal val PlayCardRowGap: Dp = 16.dp
     public val PlayCircleSize: Dp = 68.dp

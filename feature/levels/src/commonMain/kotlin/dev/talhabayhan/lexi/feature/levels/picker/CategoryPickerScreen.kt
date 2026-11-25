@@ -222,7 +222,9 @@ private fun PickerGrid(
         itemsIndexed(rows, key = { _, row ->
             "row:${row.first().id.value}"
         }, span = { _, _ -> GridItemSpan(maxLineSpan) }, contentType = { _, _ -> CARD }) { rowIndex, row ->
-            CardRow(row.size) { column, modifier ->
+            // The row holding the flipping card is drawn above the rows below it (the card rises and casts a larger shadow).
+            val flippingRow = row.any { flip.dialogShown && flip.card?.id == it.id }
+            CardRow(row.size, if (flippingRow) Modifier.zIndex(1f) else Modifier) { column, modifier ->
                 val card = row[column]
                 val name = (if (turkish) card.nameTr else card.nameEn).ifEmpty {
                     if (card.isMixed) mixedFallback else ""
@@ -333,9 +335,13 @@ private sealed interface ExamEntry {
  * Where every name fits on one line the row is exactly the cards' own height. A lone last card keeps its column.
  */
 @Composable
-private fun CardRow(count: Int, card: @Composable (column: Int, modifier: Modifier) -> Unit) {
+private fun CardRow(
+    count: Int,
+    modifier: Modifier = Modifier,
+    card: @Composable (column: Int, modifier: Modifier) -> Unit,
+) {
     Row(
-        modifier = Modifier.fillMaxWidth().height(IntrinsicSize.Max),
+        modifier = modifier.fillMaxWidth().height(IntrinsicSize.Max),
         horizontalArrangement = Arrangement.spacedBy(FlowDefaults.GridColumnGap),
     ) {
         repeat(CARDS_PER_ROW) { column ->

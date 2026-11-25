@@ -5,7 +5,7 @@
     <string name="home_total_points_description">Total points: %1$s</string>
     <string name="home_thousands_separator">,</string>
 
-    <!-- Play card: label on top, three informational mode boxes, PLAY at the bottom -->
+    <!-- Play card: label on top, PLAY at the bottom -->
     <string name="home_play_label">PICK YOUR LEVEL, CATEGORY AND MODE</string>
     <string name="home_play">PLAY</string>
     <string name="home_play_description">Play. Pick your level, category and mode.</string>
