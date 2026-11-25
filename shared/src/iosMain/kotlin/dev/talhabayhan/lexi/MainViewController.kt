@@ -19,8 +19,8 @@ import kotlin.native.Platform
  * [services] are the Swift-implemented platform services (Firebase telemetry, ADR 0023).
  *
  * The returned controller hosts the Compose app with the native splash above it (ADR 0028): the splash is animated by
- * Core Animation from the first frame after the launch screen while Compose starts up behind it, and leaves once its
- * animation is over and the first real screen is drawn (at most 3 s).
+ * Core Animation from the first frame after the launch screen while Compose starts up behind it (created only once that
+ * animation is committed, S7), and leaves once its animation is over and the first real screen is drawn (at most 3 s).
  */
 @Suppress("ktlint:standard:function-naming", "FunctionName")
 @OptIn(ExperimentalNativeApi::class)
@@ -34,8 +34,11 @@ fun MainViewController(services: PlatformServices): UIViewController {
         overlay = NativeSplashOverlay(launchLogo = UIImage.imageNamed(LAUNCH_LOGO), reducedMotion = reducedMotion),
         reducedMotion = reducedMotion,
     )
-    val content = ComposeUIViewController { App(perfTour = perfTour, launchSplash = splash) }
-    return NativeSplashHostViewController(content, splash)
+    // Created only once the splash animation is committed (S7): Compose's start-up must not delay that commit.
+    return NativeSplashHostViewController(
+        makeContent = { ComposeUIViewController { App(perfTour = perfTour, launchSplash = splash) } },
+        splash = splash,
+    )
 }
 
 /** The launch screen's logo image (`Assets.xcassets/LaunchLogo.imageset`), also the native splash's blocks. */

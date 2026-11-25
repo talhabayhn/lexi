@@ -270,6 +270,14 @@ internal class NativeSplashOverlay(
     }
 
     /**
+     * Commits what [play] added now, if the overlay is in a window (`CATransaction.flush`), instead of at the end of
+     * the run-loop pass: the transaction then holds the overlay alone, so its timeline begins at once.
+     */
+    fun commitNow() {
+        if (view.window != null) CATransaction.flush()
+    }
+
+    /**
      * The `CACurrentMediaTime` at which [play]'s timeline began, known once its transaction has been committed (null
      * before, or with nothing playing).
      */
