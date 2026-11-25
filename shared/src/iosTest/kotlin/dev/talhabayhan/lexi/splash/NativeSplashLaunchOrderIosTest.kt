@@ -96,7 +96,7 @@ class NativeSplashLaunchOrderIosTest {
         val host = NativeSplashHostViewController(
             makeContent = {
                 // The main thread stays blocked from here on: only Core Animation's clock moves.
-                val begin = overlay.animationBeginTime() ?: CACurrentMediaTime()
+                val begin = assertNotNull(overlay.animationBeginTime(), "Compose created before the commit")
                 val l = overlay.blockViews[0].layer
                 sleepUntil(begin + timelineSeconds(EARLY_FRACTION))
                 early = l.presentationTranslationX()
@@ -160,14 +160,16 @@ class NativeSplashLaunchOrderIosTest {
         if (wait > 0) NSThread.sleepForTimeInterval(wait)
     }
 
-    private fun show(host: UIViewController) {
+    private fun show(host: NativeSplashHostViewController) {
         val shown = UIWindow(frame = CGRectMake(0.0, 0.0, WIDTH, HEIGHT))
         window = shown
         shown.rootViewController = host
         shown.setHidden(false)
         // Without a window scene the test host may not send appearance callbacks: send them (start() runs once).
-        host.beginAppearanceTransition(true, animated = false)
-        host.endAppearanceTransition()
+        if (host.content == null && host.view.subviews.size == 1) {
+            host.beginAppearanceTransition(true, animated = false)
+            host.endAppearanceTransition()
+        }
     }
 
     private fun runLoopUntil(seconds: Double, done: () -> Boolean) {
@@ -200,7 +202,7 @@ class NativeSplashLaunchOrderIosTest {
         const val TAGLINE = "A'DAN Z'YE İNGİLİZCE"
         const val TAGLINE_DELAY_MILLIS = 200L
         const val PRE_SHOW_SECONDS = 0.3
-        const val PROMPT_SECONDS = 0.25
+        const val PROMPT_SECONDS = 0.5
         const val TIMEOUT_SECONDS = 6.0
         const val RUN_LOOP_SLICE_SECONDS = 0.01
         const val EPSILON = 0.005
