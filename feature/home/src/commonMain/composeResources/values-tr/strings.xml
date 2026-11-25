@@ -7,14 +7,8 @@
 
     <!-- Oyna kartı: üstte etiket, ortada bilgi amaçlı üç mod kutusu, altta OYNA -->
     <string name="home_play_label">SEVİYENİ, KATEGORİNİ VE MODUNU SEÇ</string>
-    <string name="home_mode_classic">Klasik</string>
-    <string name="home_mode_classic_caption">%1$d dk</string>
-    <string name="home_mode_practice">Pratik</string>
-    <string name="home_mode_practice_caption">süresiz</string>
-    <string name="home_mode_hardcore">Hardcore</string>
-    <string name="home_mode_hardcore_caption">tek hata</string>
     <string name="home_play">OYNA</string>
-    <string name="home_play_description">Oyna. Seviyeni, kategorini ve modunu seç. Klasik %1$d dakika, Pratik süresiz, Hardcore tek hata.</string>
+    <string name="home_play_description">Oyna. Seviyeni, kategorini ve modunu seç.</string>
 
     <!-- Günün çarkı kartı (Home v2 rozetleri) -->
     <string name="home_daily_card_title">Günün çarkı</string>

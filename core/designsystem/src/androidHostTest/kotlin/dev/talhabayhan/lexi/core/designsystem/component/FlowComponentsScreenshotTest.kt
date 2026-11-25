@@ -48,11 +48,6 @@ class FlowComponentsScreenshotTest {
             ) {
                 PlayCard(
                     label = "SEVİYENİ, KATEGORİNİ VE MODUNU SEÇ",
-                    modes = listOf(
-                        PlayCardMode("Klasik", "3 dk"),
-                        PlayCardMode("Pratik", "süresiz"),
-                        PlayCardMode("Hardcore", "tek hata"),
-                    ),
                     playLabel = "OYNA",
                     contentDescription = "Oyna",
                     onClick = {},

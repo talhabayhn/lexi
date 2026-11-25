@@ -17,8 +17,10 @@ without the new transitions (§8). 3: card flip (#13–#15), letter morph (#16�
 - **Header:** LEXI logo (left) + total score right-aligned: "12.480" (big) over "toplam puan" (small). **No streak
   anywhere on Home.**
 - **Play card** (red, 3 dp ink border + offset hard shadow; the whole card is one button): top label
-  "SEVİYENİ, KATEGORİNİ VE MODUNU SEÇ"; three informational mode boxes, not tappable: Klasik "3 dk", Pratik "süresiz",
-  Hardcore "tek hata"; then big "OYNA" (left) + round play icon (right). Tap → "Çarkını seç" (§2).
+  "SEVİYENİ, KATEGORİNİ VE MODUNU SEÇ", then big "OYNA" (left) + round play icon (right). Tap → "Çarkını seç" (§2).
+  **Owner-approved change (S8, supersedes `home_v5.png`):** the three informational mode boxes (Klasik / Pratik /
+  Hardcore) are gone; the card is correspondingly shorter and everything below moves up with the design's gaps. Mode
+  and time are chosen in the dialog after a category tap. Preview: `drafts/video-flow/art-previews/home.png`.
 - **Günün çarkı:** the Home v2 card (`home-v2-notes.md`): title + description, right badge "Çöz ›" with an empty ring;
   completed: "Tamamlandı ✓" with a filled check and "N puan · yeni çark …"; unavailable: muted. No month, no day
   number, no streak. Built on this branch from `main`'s code, not from the Home v2 branch.
@@ -385,3 +387,18 @@ default and stays Full unless the device is really struggling; a downgrade must 
   `clothes-shopping`, `hobbies`, `verbs`, `adjectives`, `economy`, `feelings`, `society-law`, `ideas`. Art for
   `sports`, `music`, `film-tv`, `technology`, `false-friends` is now unused (those categories were merged away).
 
+## S8: picker scroll-to-top, equal card heights, simpler play card
+
+- **"Başa dön"** scrolled only part of the way: the pill owned the scroll's coroutine scope and left the composition
+  as soon as the grid was back within its first screen, which cancelled the scroll. The scope now lives above the
+  pill's visibility check; `CategoryPickerScrollTopTest` (B1 / C1 from the last exam card, 320 × 568 and 390 × 844,
+  font scale 1.0 / 1.3 / 2.0) pins that the first card ends where it was on opening.
+- **Equal heights:** the grid holds two cards per full-width item, laid out in a `Row` of `IntrinsicSize.Max`, so the
+  two cards of a row are as tall as the taller one (a wrapped name makes its neighbour as tall, not shorter). Where
+  both names fit on one line nothing changes. `CategoryPickerRowHeightTest` (320/360/390/430 dp × 1.0/1.3/2.0 ×
+  TR/EN, every level and the exam rows) asserts equal heights per row; the layout test still guards the names.
+  Previews: `art-previews/picker-long-names-130.png`, `picker-long-names-200.png`.
+- **Home play card:** see §1; `PlayCardMode`, the `home_mode_*` strings, `HomeUiState.classicTimeLimitSeconds` and the
+  mode / time sentence of `home_play_description` are removed.
+- **Goldens for CI to record** (`screenshots-record`, not recorded on macOS): `feature/home` `HomeScreen*.png` (all 8),
+  `core/designsystem` `FlowComponents*.png` (the play card in the sample column).

@@ -220,13 +220,12 @@ class HomeViewModelTest {
     }
 
     @Test
-    fun `nothing played yet shows real zeros - A1 and 3 min`() = runHomeTest {
+    fun `nothing played yet shows real zeros and level A1`() = runHomeTest {
         viewModel().state.test {
             val state = expectMostRecentItem()
             assertEquals(0L, state.totalScore)
             assertEquals(0, state.dueReviews)
             assertEquals(Level.A1, state.selectedLevel)
-            assertEquals(180, state.classicTimeLimitSeconds)
             assertEquals(DailyCardState.Available, state.dailyState)
         }
     }

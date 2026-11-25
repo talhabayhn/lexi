@@ -7,14 +7,8 @@
 
     <!-- Play card: label on top, three informational mode boxes, PLAY at the bottom -->
     <string name="home_play_label">PICK YOUR LEVEL, CATEGORY AND MODE</string>
-    <string name="home_mode_classic">Classic</string>
-    <string name="home_mode_classic_caption">%1$d min</string>
-    <string name="home_mode_practice">Practice</string>
-    <string name="home_mode_practice_caption">no timer</string>
-    <string name="home_mode_hardcore">Hardcore</string>
-    <string name="home_mode_hardcore_caption">one mistake</string>
     <string name="home_play">PLAY</string>
-    <string name="home_play_description">Play. Pick your level, category and mode. Classic %1$d minutes, Practice without a timer, Hardcore one mistake.</string>
+    <string name="home_play_description">Play. Pick your level, category and mode.</string>
 
     <!-- Daily wheel card (Home v2 badges) -->
     <string name="home_daily_card_title">Daily wheel</string>

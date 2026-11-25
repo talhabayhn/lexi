@@ -2,7 +2,6 @@ package dev.talhabayhan.lexi.feature.home
 
 import androidx.compose.runtime.Immutable
 import dev.talhabayhan.lexi.core.domain.model.Level
-import dev.talhabayhan.lexi.core.domain.settings.Settings
 
 /**
  * State of the daily wheel card on the home screen.
@@ -51,8 +50,6 @@ internal data class HomeUiState(
     val examPackNames: List<String> = emptyList(),
     /** The level "Çarkını seç" opens on: the onboarding's choice, then the last level chip picked. */
     val selectedLevel: Level = Level.A1,
-    /** The time last chosen for Classic / Hardcore, for the play card's "3 dk". */
-    val classicTimeLimitSeconds: Int = Settings.DEFAULT_CLASSIC_TIME_LIMIT_SECONDS,
 )
 
 internal sealed interface HomeIntent {

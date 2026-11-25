@@ -63,7 +63,6 @@ import dev.talhabayhan.lexi.core.designsystem.component.FlowDefaults
 import dev.talhabayhan.lexi.core.designsystem.component.LexiLogo
 import dev.talhabayhan.lexi.core.designsystem.component.LexiLogoSize
 import dev.talhabayhan.lexi.core.designsystem.component.PlayCard
-import dev.talhabayhan.lexi.core.designsystem.component.PlayCardMode
 import dev.talhabayhan.lexi.core.designsystem.component.RuledBottomBar
 import dev.talhabayhan.lexi.core.designsystem.component.SlidingToast
 import dev.talhabayhan.lexi.core.designsystem.component.StudyTile
@@ -93,12 +92,6 @@ import dev.talhabayhan.lexi.feature.home.generated.resources.home_invite_message
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_joker_gift_combined
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_joker_gift_daily
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_joker_gift_streak
-import dev.talhabayhan.lexi.feature.home.generated.resources.home_mode_classic
-import dev.talhabayhan.lexi.feature.home.generated.resources.home_mode_classic_caption
-import dev.talhabayhan.lexi.feature.home.generated.resources.home_mode_hardcore
-import dev.talhabayhan.lexi.feature.home.generated.resources.home_mode_hardcore_caption
-import dev.talhabayhan.lexi.feature.home.generated.resources.home_mode_practice
-import dev.talhabayhan.lexi.feature.home.generated.resources.home_mode_practice_caption
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_notice_dismiss
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_play
 import dev.talhabayhan.lexi.feature.home.generated.resources.home_play_description
@@ -170,22 +163,8 @@ internal fun HomeScreen(
                     Header(state.totalScore)
                     PlayCard(
                         label = stringResource(Res.string.home_play_label),
-                        modes = listOf(
-                            PlayCardMode(
-                                stringResource(Res.string.home_mode_classic),
-                                stringResource(Res.string.home_mode_classic_caption, state.classicMinutes),
-                            ),
-                            PlayCardMode(
-                                stringResource(Res.string.home_mode_practice),
-                                stringResource(Res.string.home_mode_practice_caption),
-                            ),
-                            PlayCardMode(
-                                stringResource(Res.string.home_mode_hardcore),
-                                stringResource(Res.string.home_mode_hardcore_caption),
-                            ),
-                        ),
                         playLabel = stringResource(Res.string.home_play),
-                        contentDescription = stringResource(Res.string.home_play_description, state.classicMinutes),
+                        contentDescription = stringResource(Res.string.home_play_description),
                         onClick = { onIntent(HomeIntent.Play) },
                     )
                     DailyCard(state.dailyState, onOpen = { onIntent(HomeIntent.OpenDaily) })
@@ -257,10 +236,6 @@ internal fun HomeScreen(
         }
     }
 }
-
-private val HomeUiState.classicMinutes: Int get() = classicTimeLimitSeconds / SECONDS_PER_MINUTE
-
-private const val SECONDS_PER_MINUTE = 60
 
 /**
  * Logo left, total points right ("12.480" over "toplam puan"); the points are one node read with their label. The

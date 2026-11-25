@@ -90,12 +90,10 @@ internal class HomeViewModel(
 
         viewModelScope.launch {
             settings.settings
-                .map { it.selectedLevel to it.classicTimeLimitSeconds }
+                .map { it.selectedLevel }
                 .distinctUntilChanged()
                 .catch { }
-                .collect { (level, seconds) ->
-                    mutableState.update { it.copy(selectedLevel = level, classicTimeLimitSeconds = seconds) }
-                }
+                .collect { level -> mutableState.update { it.copy(selectedLevel = level) } }
         }
 
         viewModelScope.launch {

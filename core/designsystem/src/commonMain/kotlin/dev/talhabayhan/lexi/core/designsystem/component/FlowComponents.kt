@@ -83,10 +83,7 @@ public object FlowDefaults {
 
     /** Play card: padding 20, label → mode boxes 14, mode boxes → OYNA row 16, boxes 8 apart, play circle 68. */
     public val PlayCardPadding: Dp = 20.dp
-    internal val PlayCardLabelGap: Dp = 14.dp
     internal val PlayCardRowGap: Dp = 16.dp
-    internal val ModeBoxGap: Dp = 8.dp
-    internal val ModeBoxPadding: PaddingValues = PaddingValues(horizontal = 6.dp, vertical = 4.dp)
     public val PlayCircleSize: Dp = 68.dp
     internal val PlayIconSize: Dp = 26.dp
 
@@ -178,19 +175,15 @@ public fun FitLine(text: String, style: TextStyle, color: Color, modifier: Modif
     )
 }
 
-/** One informational mode box of the play card: "Klasik" over "3 dk". */
-@Immutable
-public data class PlayCardMode(val title: String, val caption: String)
-
 /**
- * Home's play card (`home_v5.png`): red, 3dp ink frame, s6. Top [label] ("SEVİYENİ, KATEGORİNİ VE MODUNU SEÇ"), the
- * three informational [modes] (not tappable), then [playLabel] ("OYNA") left and a round play icon right. The whole
- * card is one button, read as [contentDescription].
+ * Home's play card (`home_v5.png`, simplified by the owner in S8: the three mode boxes are gone, mode and time are
+ * chosen in the dialog after a category tap): red, 3dp ink frame, s6. Top [label] ("SEVİYENİ, KATEGORİNİ VE MODUNU
+ * SEÇ"), then [playLabel] ("OYNA") left and a round play icon right. The whole card is one button, read as
+ * [contentDescription].
  */
 @Composable
 public fun PlayCard(
     label: String,
-    modes: List<PlayCardMode>,
     playLabel: String,
     contentDescription: String,
     onClick: () -> Unit,
@@ -205,43 +198,16 @@ public fun PlayCard(
     ) {
         // All of the card's text is control text (also spoken through [contentDescription]): capped, so OYNA stays on
         // the first screen of a 320 × 568 phone at 200 % font size.
-        WithCappedFontScale(FlowDefaults.CONTROL_FONT_SCALE_CAP) { PlayCardContent(label, modes, playLabel) }
+        WithCappedFontScale(FlowDefaults.CONTROL_FONT_SCALE_CAP) { PlayCardContent(label, playLabel) }
     }
 }
 
 @Composable
-private fun PlayCardContent(label: String, modes: List<PlayCardMode>, playLabel: String) {
+private fun PlayCardContent(label: String, playLabel: String) {
     val colors = LexiTheme.colors
     val typography = LexiTheme.typography
     Column(Modifier.fillMaxWidth().clearAndSetSemantics {}.padding(FlowDefaults.PlayCardPadding)) {
         WordSafeText(label, typography.label12, colors.white)
-        Row(
-            modifier = Modifier.fillMaxWidth().padding(top = FlowDefaults.PlayCardLabelGap)
-                .height(IntrinsicSize.Min),
-            horizontalArrangement = Arrangement.spacedBy(FlowDefaults.ModeBoxGap),
-        ) {
-            modes.forEach { mode ->
-                Column(
-                    modifier = Modifier
-                        .weight(1f)
-                        .fillMaxHeight()
-                        .lexiSurface(colors.white, BorderStroke(LexiTheme.borders.regular, colors.ink))
-                        .padding(FlowDefaults.ModeBoxPadding),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.Center,
-                ) {
-                    FitLine(mode.title, typography.bodyStrong16, colors.ink)
-                    // A caption too wide for its box ("one mistake" on a 320dp phone) wraps between its words.
-                    WordSafeText(
-                        mode.caption,
-                        typography.caption12SemiBold,
-                        colors.ink,
-                        maxLines = 2,
-                        textAlign = TextAlign.Center,
-                    )
-                }
-            }
-        }
         Row(
             modifier = Modifier.fillMaxWidth().padding(top = FlowDefaults.PlayCardRowGap),
             verticalAlignment = Alignment.CenterVertically,
@@ -819,11 +785,6 @@ private fun FlowComponentsPreview() {
         ) {
             PlayCard(
                 label = "SEVİYENİ, KATEGORİNİ VE MODUNU SEÇ",
-                modes = listOf(
-                    PlayCardMode("Klasik", "3 dk"),
-                    PlayCardMode("Pratik", "süresiz"),
-                    PlayCardMode("Hardcore", "tek hata"),
-                ),
                 playLabel = "OYNA",
                 contentDescription = "Oyna",
                 onClick = {},
