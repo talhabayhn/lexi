@@ -100,7 +100,7 @@ class NativeSplashLaunchOrderIosTest {
         val overlay = NativeSplashOverlay(launchLogo = testLogo(), reducedMotion = false, fontScale = 1f)
         val splash = testSplash(overlay)
         var startedAfter: Double? = null
-        var midFade: Double? = null
+        var atStart: Double? = null
         var late: Double? = null
         val host = NativeSplashHostViewController(
             makeContent = {
@@ -108,8 +108,7 @@ class NativeSplashLaunchOrderIosTest {
                 val begin = assertNotNull(overlay.animationBeginTime(), "Compose created before the commit")
                 startedAfter = CACurrentMediaTime() - begin
                 val tagline = overlay.taglineView.layer
-                sleepUntil(begin + timelineSeconds(MID_FADE_FRACTION))
-                midFade = tagline.presentationValue("opacity")
+                atStart = tagline.presentationValue("opacity")
                 sleepUntil(begin + timelineSeconds(LATE_FRACTION))
                 late = tagline.presentationValue("opacity")
                 UIViewController(nibName = null, bundle = null)
@@ -118,13 +117,13 @@ class NativeSplashLaunchOrderIosTest {
         )
         show(host)
         runLoopUntil(TIMEOUT_SECONDS) { host.content != null }
-        // The tagline fades in at 48-58 % of the animation (≈ 0.93-1.05 s after the commit, after phase 2 even on a
-        // slow runner): half-way through its fade it is partly visible, late it is fully visible. Both were read while
-        // the main thread was blocked, so the timeline moved on without the main thread.
+        // The tagline fades in at 48-58 % of the animation (≈ 0.93-1.05 s after the commit): hidden when phase 2 starts
+        // (well before), fully visible late in the animation. Both were read while the main thread was blocked, so the
+        // timeline moved on without the main thread. Wide windows: a shared CI runner's sleeps are not precise.
         val after = assertNotNull(startedAfter, "Compose was never created")
-        assertTrue(after < timelineSeconds(MID_FADE_FRACTION), "phase 2 came only $after s after the commit")
-        val mid = assertNotNull(midFade, "no presentation layer during the stall")
-        assertTrue(mid > 0.05 && mid < 0.95, "the tagline is not mid-fade half-way through its fade (opacity $mid)")
+        assertTrue(after < timelineSeconds(FADE_START_FRACTION), "phase 2 came only $after s after the commit")
+        val start = assertNotNull(atStart, "no presentation layer during the stall")
+        assertTrue(start < 0.01, "the tagline is visible when phase 2 starts (opacity $start)")
         assertTrue(assertNotNull(late) > 0.99, "the tagline is not visible late in the animation (opacity $late)")
     }
 
@@ -220,8 +219,8 @@ class NativeSplashLaunchOrderIosTest {
         const val RUN_LOOP_SLICE_SECONDS = 0.01
         const val EPSILON = 0.005
 
-        /** Half-way through the tagline's fade-in (48-58 %), and well after it (fully visible). */
-        const val MID_FADE_FRACTION = 0.53
+        /** The tagline's fade-in starts at 48 % (`SplashTimeline.taglineAlpha`); well after it, it is fully visible. */
+        const val FADE_START_FRACTION = 0.48
         const val LATE_FRACTION = 0.9
     }
 }
