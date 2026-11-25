@@ -51,6 +51,7 @@ class NativeSplashOverlayIosTest {
     }
 
     private var beginTime: Double? = null
+    private var appActive = true
 
     private fun splash(reducedMotion: Boolean = false, logo: UIImage? = testLogo()): Pair<IosLaunchSplash, UIView> {
         val host = UIView(frame = CGRectMake(0.0, 0.0, WIDTH, HEIGHT))
@@ -65,6 +66,7 @@ class NativeSplashOverlayIosTest {
             now = { clock },
             loadTagline = null,
             readBeginTime = { beginTime },
+            isAppActive = { appActive },
         )
         return splash to host
     }
@@ -266,16 +268,95 @@ class NativeSplashOverlayIosTest {
     }
 
     @Test
-    fun theHostPutsTheOverlayAboveTheComposeView() {
+    fun theHostCreatesTheComposeViewOnlyAfterTheAnimationIsCommitted() {
         val (splash, _) = splash()
         splash.overlay.view.removeFromSuperview()
-        val content = platform.UIKit.UIViewController(nibName = null, bundle = null)
-        val host = NativeSplashHostViewController(content, splash)
+        val made = mutableListOf<platform.UIKit.UIViewController>()
+        val host = NativeSplashHostViewController(
+            makeContent = { platform.UIKit.UIViewController(nibName = null, bundle = null).also { made += it } },
+            splash = splash,
+        )
+        // Phase 1: only the overlay, before and after the animation was added.
+        assertEquals(listOf(splash.overlay.view), host.view.subviews.toList())
+        host.viewWillAppear(false)
+        assertNotNull(splash.overlay.blockViews[0].layer.animationForKey("splash.transform.translation.x"))
+        assertTrue(made.isEmpty(), "Compose created in the pass that commits the animation")
+        fire(IosLaunchSplash.BEGIN_TIME_POLL_MILLIS)
+        assertTrue(made.isEmpty(), "Compose created before the animation was committed")
+        // Phase 2: on the pass after the commit.
+        beginTime = 1.0
+        fire(IosLaunchSplash.BEGIN_TIME_POLL_MILLIS)
+        assertEquals(1, made.size)
+        val content = made.single()
         val views = host.view.subviews
         assertEquals(2, views.size)
         assertTrue(views[0] == content.view, "the Compose view is not under the overlay")
         assertTrue(views[1] == splash.overlay.view, "the overlay is not on top")
         assertTrue(content.parentViewController == host)
+        assertTrue(host.content == content)
+        // Neither the fallback nor a second appearance makes another one.
+        fire(IosLaunchSplash.CONTENT_FALLBACK_MILLIS)
+        host.viewWillAppear(false)
+        assertEquals(1, made.size)
+    }
+
+    @Test
+    fun theContentStillStartsWhenNoCommitIsEverSeen() {
+        val (splash, _) = splash()
+        var made = 0
+        splash.start(onCommitted = { made++ })
+        repeat(3) { fire(IosLaunchSplash.BEGIN_TIME_POLL_MILLIS) }
+        assertEquals(0, made)
+        fire(IosLaunchSplash.CONTENT_FALLBACK_MILLIS)
+        assertEquals(1, made, "the content waits for ever without a commit")
+        beginTime = 2.0
+        fire(IosLaunchSplash.BEGIN_TIME_POLL_MILLIS)
+        assertEquals(1, made)
+        // The landings' clock still follows the commit seen afterwards.
+        clock = 2.0 + IosLaunchSplash.LAUNCH_HAND_OFF_MILLIS / 1000.0
+        assertEquals(0L, splash.elapsedMillis())
+    }
+
+    @Test
+    fun theContentWaitsUntilTheAppIsActive() {
+        val (splash, _) = splash()
+        var made = 0
+        appActive = false
+        splash.start(onCommitted = { made++ })
+        beginTime = 3.0
+        repeat(5) { fire(IosLaunchSplash.BEGIN_TIME_POLL_MILLIS) }
+        assertEquals(0, made, "Compose created while the launch screen may still be shown")
+        // The landings' clock is known already.
+        clock = 3.0 + IosLaunchSplash.LAUNCH_HAND_OFF_MILLIS / 1000.0
+        assertEquals(0L, splash.elapsedMillis())
+        appActive = true
+        fire(IosLaunchSplash.BEGIN_TIME_POLL_MILLIS)
+        assertEquals(1, made)
+        assertTrue(timers.none { it.first == IosLaunchSplash.BEGIN_TIME_POLL_MILLIS }, "still polling")
+    }
+
+    @Test
+    fun theContentStartsWhenTheSplashLeavesBeforeAnyCommit() {
+        val (splash, _) = splash()
+        var made = 0
+        splash.start(onCommitted = { made++ })
+        splash.onAnimationEnded()
+        splash.contentReady()
+        assertNotNull(splash.leaveReason)
+        fire(IosLaunchSplash.BEGIN_TIME_POLL_MILLIS)
+        assertEquals(1, made)
+    }
+
+    @Test
+    fun withReducedMotionTheContentStartsOnTheNextPass() {
+        val (splash, _) = splash(reducedMotion = true)
+        var made = 0
+        splash.start(onCommitted = { made++ })
+        assertEquals(0, made, "Compose created in the pass that shows the static logo")
+        fire(IosLaunchSplash.BEGIN_TIME_POLL_MILLIS)
+        assertEquals(1, made)
+        fire(IosLaunchSplash.CONTENT_FALLBACK_MILLIS)
+        assertEquals(1, made)
     }
 
     private fun assertClose(expected: Double, actual: Double, what: String) =
