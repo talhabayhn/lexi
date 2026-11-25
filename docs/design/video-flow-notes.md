@@ -400,6 +400,6 @@ default and stays Full unless the device is really struggling; a downgrade must 
   Previews: `art-previews/picker-long-names-130.png`, `picker-long-names-200.png`.
 - **Home play card:** see §1; `PlayCardMode`, the `home_mode_*` strings, `HomeUiState.classicTimeLimitSeconds` and the
   mode / time sentence of `home_play_description` are removed.
-- **Goldens for CI to record** (`screenshots-record`, not recorded on macOS): `feature/home` `HomeScreen*.png` (all 8),
-  `core/designsystem` `FlowComponents*.png` (the play card in the sample column), `feature/levels`
-  `CategoryPicker_w320h568_fontScale200.png` and `PlayDialog_w320h568_fontScale200.png` (equal row heights move rows).
+- **Goldens** re-recorded on Linux CI (run 45608903273, reviewed): `feature/home` `HomeScreen*.png` (all 8),
+  `core/designsystem` `FlowComponents*.png`, `feature/levels` `CategoryPicker_w320h568_fontScale200.png` and
+  `CategoryPickerNat.png` (the open LGS pack is as tall as its locked neighbour). Never recorded on macOS.
